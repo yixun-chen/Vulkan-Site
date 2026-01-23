@@ -20,7 +20,7 @@
 vkBindImageMemory - Bind device memory to an image object
 
 To attach memory to a `VkImage` object created without the
-`VK_IMAGE_CREATE_DISJOINT_BIT` set, call:
+[VK_IMAGE_CREATE_DISJOINT_BIT](VkImageCreateFlagBits.html) set, call:
 
 // Provided by VK_VERSION_1_0
 VkResult vkBindImageMemory(
@@ -117,23 +117,23 @@ its `pNext` chain, [VkMemoryDedicatedAllocateInfo](VkMemoryDedicatedAllocateInfo
 * 
 [](#VUID-vkBindImageMemory-None-01901) VUID-vkBindImageMemory-None-01901
 
-If image was created with the `VK_IMAGE_CREATE_PROTECTED_BIT` bit
+If image was created with the [VK_IMAGE_CREATE_PROTECTED_BIT](VkImageCreateFlagBits.html) bit
 set, the image **must** be bound to a memory object allocated with a memory
-type that reports `VK_MEMORY_PROPERTY_PROTECTED_BIT`
+type that reports [VK_MEMORY_PROPERTY_PROTECTED_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
 [](#VUID-vkBindImageMemory-None-01902) VUID-vkBindImageMemory-None-01902
 
-If image was created with the `VK_IMAGE_CREATE_PROTECTED_BIT` bit
+If image was created with the [VK_IMAGE_CREATE_PROTECTED_BIT](VkImageCreateFlagBits.html) bit
 not set, the image **must** not be bound to a memory object created with a
-memory type that reports `VK_MEMORY_PROPERTY_PROTECTED_BIT`
+memory type that reports [VK_MEMORY_PROPERTY_PROTECTED_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
 [](#VUID-vkBindImageMemory-image-01050) VUID-vkBindImageMemory-image-01050
 
 If `image` was created with
 [VkDedicatedAllocationImageCreateInfoNV](VkDedicatedAllocationImageCreateInfoNV.html)::`dedicatedAllocation`
-equal to `VK_TRUE`, `memory` **must** have been created with
+equal to [VK_TRUE](VK_TRUE.html), `memory` **must** have been created with
 [VkDedicatedAllocationMemoryAllocateInfoNV](VkDedicatedAllocationMemoryAllocateInfoNV.html)::`image` equal to an
 image handle created with identical creation parameters to `image`
 and `memoryOffset` **must** be zero
@@ -148,7 +148,7 @@ and `memoryOffset` **must** be zero
 and
     `image` was not created with
     [VkDedicatedAllocationImageCreateInfoNV](VkDedicatedAllocationImageCreateInfoNV.html)::`dedicatedAllocation`
-    equal to `VK_TRUE`, `memory` **must** not have been allocated
+    equal to [VK_TRUE](VK_TRUE.html), `memory` **must** not have been allocated
     dedicated for a specific buffer or image
 
 * 
@@ -176,32 +176,32 @@ in [VkExternalMemoryImageCreateInfo](VkExternalMemoryImageCreateInfo.html)::`han
 If `memory` was created with the
 [VkImportAndroidHardwareBufferInfoANDROID](VkImportAndroidHardwareBufferInfoANDROID.html) memory import operation
 with a non-`NULL` `buffer` value,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](VkExternalMemoryHandleTypeFlagBits.html)
 **must** also have been set in
 [VkExternalMemoryImageCreateInfo](VkExternalMemoryImageCreateInfo.html)::`handleTypes` when
 `image` was created
 
 * 
-[](#VUID-vkBindImageMemory-descriptorBufferCaptureReplay-08113) VUID-vkBindImageMemory-descriptorBufferCaptureReplay-08113
+[](#VUID-vkBindImageMemory-image-08113) VUID-vkBindImageMemory-image-08113
 
 If the `image` was created with the
-`VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` bit set,
+[VK_IMAGE_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_EXT](VkImageCreateFlagBits.html) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](VkMemoryAllocateFlagBits.html) bit set
 
 * 
 [](#VUID-vkBindImageMemory-image-09202) VUID-vkBindImageMemory-image-09202
 
 If the `image` was created with the
-`VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` bit set,
+[VK_IMAGE_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_EXT](VkImageCreateFlagBits.html) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkMemoryAllocateFlagBits.html) bit set
 
 * 
 [](#VUID-vkBindImageMemory-image-01608) VUID-vkBindImageMemory-image-01608
 
 `image` **must** not have been created with the
-`VK_IMAGE_CREATE_DISJOINT_BIT` set
+[VK_IMAGE_CREATE_DISJOINT_BIT](VkImageCreateFlagBits.html) set
 
 * 
 [](#VUID-vkBindImageMemory-memory-01047) VUID-vkBindImageMemory-memory-01047
@@ -215,7 +215,7 @@ allowed in the `memoryTypeBits` member of the
 [](#VUID-vkBindImageMemory-None-10735) VUID-vkBindImageMemory-None-10735
 
 If `memory` was not allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set,
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property set,
 `memoryOffset` **must** be an integer multiple of the `alignment`
 member of the `VkMemoryRequirements` structure returned from a call
 to [vkGetImageMemoryRequirements](vkGetImageMemoryRequirements.html) with `image`
@@ -224,16 +224,16 @@ to [vkGetImageMemoryRequirements](vkGetImageMemoryRequirements.html) with `image
 [](#VUID-vkBindImageMemory-memory-10736) VUID-vkBindImageMemory-memory-10736
 
 If `memory` was allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set,
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property set,
 `memoryOffset` **must** be an integer multiple of the `alignment`
 member of the `VkTileMemoryRequirementsQCOM` structure returned from
-a call to `vkGetImageMemoryRequirements` with `image`
+a call to `vkGetImageMemoryRequirements2` with `image`
 
 * 
 [](#VUID-vkBindImageMemory-None-10737) VUID-vkBindImageMemory-None-10737
 
 If `memory` was not allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set,
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property set,
 `size` member of the `VkMemoryRequirements` structure returned
 from a call to `vkGetImageMemoryRequirements` with `image` **must**
 be less than or equal to the size of `memory` minus
@@ -243,9 +243,9 @@ be less than or equal to the size of `memory` minus
 [](#VUID-vkBindImageMemory-memory-10738) VUID-vkBindImageMemory-memory-10738
 
 If `memory` was allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set, `size`
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property set, `size`
 member of the `VkTileMemoryRequirementsQCOM` structure returned from
-a call to `vkGetImageMemoryRequirements` with `image` **must** be
+a call to `vkGetImageMemoryRequirements2` with `image` **must** be
 less than or equal to the size of `memory` minus `memoryOffset`
 
 * 
@@ -294,21 +294,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkDevice](VkDevice.html), [VkDeviceMemory](VkDeviceMemory.html), `VkDeviceSize`, [VkImage](VkImage.html)
 

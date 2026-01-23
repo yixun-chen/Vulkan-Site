@@ -50,7 +50,7 @@ This command sets the per-viewport shading rate image palettes for
 subsequent drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV` set in
+[VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineViewportShadingRateImageStateCreateInfoNV](VkPipelineViewportShadingRateImageStateCreateInfoNV.html)::`pShadingRatePalettes`
@@ -102,7 +102,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetViewportShadingRatePaletteNV-commandBuffer-cmdpool) VUID-vkCmdSetViewportShadingRatePaletteNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetViewportShadingRatePaletteNV-videocoding) VUID-vkCmdSetViewportShadingRatePaletteNV-videocoding

@@ -50,7 +50,7 @@ micromap.
 * 
 `indexBuffer` is a device or host address of memory containing the
 triangle indices.
-When `indexType` is `VK_INDEX_TYPE_NONE_KHR` it **must** be `NULL`.
+When `indexType` is [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html) it **must** be `NULL`.
 
 * 
 `indexStride` is the byte stride between triangle indices.
@@ -104,7 +104,7 @@ handling **must** be equal to the sum of matching `count` provided.
 
 If `micromap` is [VK_NULL_HANDLE](VK_NULL_HANDLE.html), then every value read from
 `indexBuffer` **must** be one of the values in
-`VkOpacityMicromapSpecialIndexEXT`.
+[VkOpacityMicromapSpecialIndexEXT](VkOpacityMicromapSpecialIndexEXT.html).
 
 Valid Usage
 
@@ -117,20 +117,20 @@ pointer, the other **must** be `NULL`
 * 
 [](#VUID-VkAccelerationStructureTrianglesOpacityMicromapEXT-indexType-10719) VUID-VkAccelerationStructureTrianglesOpacityMicromapEXT-indexType-10719
 
-`indexType` **must** be `VK_INDEX_TYPE_UINT16`,
-`VK_INDEX_TYPE_UINT32`, or `VK_INDEX_TYPE_NONE_KHR`
+`indexType` **must** be [VK_INDEX_TYPE_UINT16](VkIndexType.html),
+[VK_INDEX_TYPE_UINT32](VkIndexType.html), or [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html)
 
 * 
 [](#VUID-VkAccelerationStructureTrianglesOpacityMicromapEXT-indexType-10722) VUID-VkAccelerationStructureTrianglesOpacityMicromapEXT-indexType-10722
 
-If `indexType` is not `VK_INDEX_TYPE_NONE_KHR`, then
+If `indexType` is not [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html), then
 `indexStride` **must** be a multiple of the size in bytes of
 `indexType`
 
 * 
 [](#VUID-VkAccelerationStructureTrianglesOpacityMicromapEXT-indexType-10723) VUID-VkAccelerationStructureTrianglesOpacityMicromapEXT-indexType-10723
 
-If `indexType` is not `VK_INDEX_TYPE_NONE_KHR`, then
+If `indexType` is not [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html), then
 `indexStride` **must** be less than or equal to 232-1
 
 Valid Usage (Implicit)
@@ -138,7 +138,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureTrianglesOpacityMicromapEXT-sType-sType) VUID-VkAccelerationStructureTrianglesOpacityMicromapEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkAccelerationStructureTrianglesOpacityMicromapEXT-indexType-parameter) VUID-VkAccelerationStructureTrianglesOpacityMicromapEXT-indexType-parameter

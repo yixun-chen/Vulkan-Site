@@ -48,7 +48,7 @@ During such periods, operations which require access to the display **must**
 fail with an appropriate error code.
 If the X11 server associated with `dpy` does not own `display`, or
 if permission to access it has already been acquired by another entity, the
-call **must** return the error code `VK_ERROR_INITIALIZATION_FAILED`.
+call **must** return the error code [VK_ERROR_INITIALIZATION_FAILED](VkResult.html).
 
 |  | One example of when an X11 server loses access to a display is when it loses
 | --- | --- |
@@ -81,21 +81,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_EXT_acquire_xlib_display](VK_EXT_acquire_xlib_display.html), [VkDisplayKHR](VkDisplayKHR.html), [VkPhysicalDevice](VkPhysicalDevice.html)
 

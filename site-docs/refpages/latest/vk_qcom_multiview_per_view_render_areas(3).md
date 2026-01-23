@@ -117,10 +117,10 @@ Extending [VkRenderPassBeginInfo](VkRenderPassBeginInfo.html), [VkRenderingInfo]
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM`
+[VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM](VkStructureType.html)
 
 1) Do the per-view `renderAreas` interact with
 [vkGetRenderAreaGranularity](vkGetRenderAreaGranularity.html) ?

@@ -17,7 +17,7 @@
 
 VK_MAX_MEMORY_TYPES - Length of an array of memory types
 
-`VK_MAX_MEMORY_TYPES` is the length of an array of [VkMemoryType](VkMemoryType.html)
+[VK_MAX_MEMORY_TYPES](#) is the length of an array of [VkMemoryType](VkMemoryType.html)
 structures describing memory types, as returned in
 [VkPhysicalDeviceMemoryProperties](VkPhysicalDeviceMemoryProperties.html)::`memoryTypes`.
 

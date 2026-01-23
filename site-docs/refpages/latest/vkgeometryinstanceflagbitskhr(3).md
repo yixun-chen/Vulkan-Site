@@ -53,31 +53,31 @@ typedef enum VkGeometryInstanceFlagBitsKHR {
 typedef VkGeometryInstanceFlagBitsKHR VkGeometryInstanceFlagBitsNV;
 
 * 
-`VK_GEOMETRY_INSTANCE_TRIANGLE_FACING_CULL_DISABLE_BIT_KHR` disables
+[VK_GEOMETRY_INSTANCE_TRIANGLE_FACING_CULL_DISABLE_BIT_KHR](#) disables
 face culling for this instance.
 
 * 
-`VK_GEOMETRY_INSTANCE_TRIANGLE_FLIP_FACING_BIT_KHR` specifies that
+[VK_GEOMETRY_INSTANCE_TRIANGLE_FLIP_FACING_BIT_KHR](#) specifies that
 the [facing determination](../../../../spec/latest/chapters/raytraversal.html#ray-traversal-culling-face) for geometry in
 this instance is inverted.
 Because the facing is determined in object space, an instance transform
 does not change the winding, but a geometry transform does.
 
 * 
-`VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_KHR` causes this instance to
-act as though `VK_GEOMETRY_OPAQUE_BIT_KHR` were specified on all
+[VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_KHR](#) causes this instance to
+act as though [VK_GEOMETRY_OPAQUE_BIT_KHR](VkGeometryFlagBitsKHR.html) were specified on all
 geometries referenced by this instance.
 This behavior **can** be overridden by the SPIR-V `NoOpaqueKHR` ray
 flag.
 
 * 
-`VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_KHR` causes this instance
-to act as though `VK_GEOMETRY_OPAQUE_BIT_KHR` were not specified on
+[VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_KHR](#) causes this instance
+to act as though [VK_GEOMETRY_OPAQUE_BIT_KHR](VkGeometryFlagBitsKHR.html) were not specified on
 all geometries referenced by this instance.
 This behavior **can** be overridden by the SPIR-V `OpaqueKHR` ray flag.
 
-`VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_KHR` and
-`VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_KHR` **must** not be used in the
+[VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_KHR](#) and
+[VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_KHR](#) **must** not be used in the
 same flag.
 
 [VK_KHR_acceleration_structure](VK_KHR_acceleration_structure.html), [VK_NV_ray_tracing](VK_NV_ray_tracing.html), [VkGeometryInstanceFlagsKHR](VkGeometryInstanceFlagsKHR.html)

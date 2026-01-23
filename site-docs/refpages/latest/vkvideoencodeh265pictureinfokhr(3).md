@@ -239,7 +239,7 @@ for the used video profile
 If [VkVideoEncodeH265CapabilitiesKHR](VkVideoEncodeH265CapabilitiesKHR.html)::`flags`, as returned by
 [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the used video
 profile, does not include
-`VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_TILES_PER_SLICE_SEGMENT_BIT_KHR`,
+[VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_TILES_PER_SLICE_SEGMENT_BIT_KHR](VkVideoEncodeH265CapabilityFlagBitsKHR.html),
 then `naluSliceSegmentEntryCount` **must** be greater than or equal to
 the [number of H.265 tiles in the picture](../../../../spec/latest/chapters/videocoding.html#encode-h265-tile-count)
 
@@ -249,7 +249,7 @@ the [number of H.265 tiles in the picture](../../../../spec/latest/chapters/vide
 If [VkVideoEncodeH265CapabilitiesKHR](VkVideoEncodeH265CapabilitiesKHR.html)::`flags`, as returned by
 [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the used video
 profile, does not include
-`VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_SLICE_SEGMENTS_PER_TILE_BIT_KHR`,
+[VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_SLICE_SEGMENTS_PER_TILE_BIT_KHR](VkVideoEncodeH265CapabilityFlagBitsKHR.html),
 then `naluSliceSegmentEntryCount` **must** be less than or equal to the
 [number of H.265 tiles in the picture](../../../../spec/latest/chapters/videocoding.html#encode-h265-tile-count)
 
@@ -259,7 +259,7 @@ then `naluSliceSegmentEntryCount` **must** be less than or equal to the
 If [VkVideoEncodeH265CapabilitiesKHR](VkVideoEncodeH265CapabilitiesKHR.html)::`flags`, as returned by
 [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the used video
 profile, does not include
-`VK_VIDEO_ENCODE_H265_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_KHR`
+[VK_VIDEO_ENCODE_H265_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_KHR](VkVideoEncodeH265CapabilityFlagBitsKHR.html)
 and the slice segment corresponding to any element of
 `pNaluSliceSegmentEntries` uses [explicit    weighted sample prediction](../../../../spec/latest/chapters/videocoding.html#encode-h265-weighted-pred), then
 [VkVideoEncodeH265NaluSliceSegmentInfoKHR](VkVideoEncodeH265NaluSliceSegmentInfoKHR.html)::`pStdSliceSegmentHeader->pWeightTable`
@@ -270,7 +270,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeH265PictureInfoKHR-sType-sType) VUID-VkVideoEncodeH265PictureInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_PICTURE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_PICTURE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoEncodeH265PictureInfoKHR-pNaluSliceSegmentEntries-parameter) VUID-VkVideoEncodeH265PictureInfoKHR-pNaluSliceSegmentEntries-parameter

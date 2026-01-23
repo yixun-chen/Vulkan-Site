@@ -56,7 +56,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceTimelineSemaphoreProperties-sType-sType) VUID-VkPhysicalDeviceTimelineSemaphoreProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_PROPERTIES](VkStructureType.html)
 
 [VK_KHR_timeline_semaphore](VK_KHR_timeline_semaphore.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), [VkStructureType](VkStructureType.html)
 

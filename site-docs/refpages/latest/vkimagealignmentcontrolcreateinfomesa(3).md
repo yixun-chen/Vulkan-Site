@@ -59,7 +59,7 @@ which does not compromise compression.
 If the [`imageCompressionControl`](../../../../spec/latest/chapters/features.html#features-imageCompressionControl)
 feature is enabled, the application **can** chain a
 [VkImageCompressionControlEXT](VkImageCompressionControlEXT.html) with
-`VK_IMAGE_COMPRESSION_DISABLED_EXT`.
+[VK_IMAGE_COMPRESSION_DISABLED_EXT](VkImageCompressionFlagBitsEXT.html).
 In this case, image compression considerations **should** not apply when
 implementation decides alignment.
 
@@ -90,7 +90,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageAlignmentControlCreateInfoMESA-sType-sType) VUID-VkImageAlignmentControlCreateInfoMESA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA](VkStructureType.html)
 
 [VK_MESA_image_alignment_control](VK_MESA_image_alignment_control.html), [VkStructureType](VkStructureType.html)
 

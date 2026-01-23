@@ -55,7 +55,7 @@ If the `VkPhysicalDeviceUniformBufferStandardLayoutFeatures` structure is includ
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceUniformBufferStandardLayoutFeatures`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -63,7 +63,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceUniformBufferStandardLayoutFeatures-sType-sType) VUID-VkPhysicalDeviceUniformBufferStandardLayoutFeatures-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES](VkStructureType.html)
 
 [VK_KHR_uniform_buffer_standard_layout](VK_KHR_uniform_buffer_standard_layout.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

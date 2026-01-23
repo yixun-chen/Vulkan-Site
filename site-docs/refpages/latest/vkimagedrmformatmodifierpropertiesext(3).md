@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageDrmFormatModifierPropertiesEXT-sType-sType) VUID-VkImageDrmFormatModifierPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_PROPERTIES_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkImageDrmFormatModifierPropertiesEXT-pNext-pNext) VUID-VkImageDrmFormatModifierPropertiesEXT-pNext-pNext

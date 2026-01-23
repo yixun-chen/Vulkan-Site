@@ -65,7 +65,7 @@ The [`bufferDeviceAddress`](../../../../spec/latest/chapters/features.html#featu
 [](#VUID-vkGetDeviceMemoryOpaqueCaptureAddress-pInfo-10727) VUID-vkGetDeviceMemoryOpaqueCaptureAddress-pInfo-10727
 
 `pInfo->memory` **must** have been allocated using the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` flag
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkMemoryAllocateFlagBits.html) flag
 
 * 
 [](#VUID-vkGetDeviceMemoryOpaqueCaptureAddress-device-03335) VUID-vkGetDeviceMemoryOpaqueCaptureAddress-device-03335

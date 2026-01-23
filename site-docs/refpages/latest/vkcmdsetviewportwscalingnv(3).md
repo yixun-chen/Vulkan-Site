@@ -53,7 +53,7 @@ The viewport parameters taken from element i of
 This command sets the viewport **W** scaling for subsequent drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV` set in
+[VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineViewportWScalingStateCreateInfoNV](VkPipelineViewportWScalingStateCreateInfoNV.html)::`pViewportWScalings`
@@ -87,7 +87,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetViewportWScalingNV-commandBuffer-cmdpool) VUID-vkCmdSetViewportWScalingNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetViewportWScalingNV-videocoding) VUID-vkCmdSetViewportWScalingNV-videocoding

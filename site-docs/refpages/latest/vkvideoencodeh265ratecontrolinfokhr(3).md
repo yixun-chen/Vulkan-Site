@@ -69,12 +69,12 @@ When an instance of this structure is included in the `pNext` chain of
 the [VkVideoCodingControlInfoKHR](VkVideoCodingControlInfoKHR.html) structure passed to the
 [vkCmdControlVideoCodingKHR](vkCmdControlVideoCodingKHR.html) command, and
 [VkVideoCodingControlInfoKHR](VkVideoCodingControlInfoKHR.html)::`flags` includes
-`VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR`, the parameters in
+[VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR](VkVideoCodingControlFlagBitsKHR.html), the parameters in
 this structure are used as guidance for the implementation’s rate control
 algorithm (see [Video Coding Control](../../../../spec/latest/chapters/videocoding.html#video-coding-control)).
 
 If `flags` includes
-`VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_KHR`, then
+[VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_KHR](VkVideoEncodeH265RateControlFlagBitsKHR.html), then
 the rate control state is reset to an initial state to meet HRD compliance
 requirements.
 Otherwise the new rate control state **may** be applied without a reset
@@ -95,33 +95,33 @@ Valid Usage
 If [VkVideoEncodeH265CapabilitiesKHR](VkVideoEncodeH265CapabilitiesKHR.html)::`flags`, as returned by
 [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the used video
 profile, does not include
-`VK_VIDEO_ENCODE_H265_CAPABILITY_HRD_COMPLIANCE_BIT_KHR`, then
+[VK_VIDEO_ENCODE_H265_CAPABILITY_HRD_COMPLIANCE_BIT_KHR](VkVideoEncodeH265CapabilityFlagBitsKHR.html), then
 `flags` **must** not contain
-`VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_KHR`
+[VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_KHR](VkVideoEncodeH265RateControlFlagBitsKHR.html)
 
 * 
 [](#VUID-VkVideoEncodeH265RateControlInfoKHR-flags-08292) VUID-VkVideoEncodeH265RateControlInfoKHR-flags-08292
 
 If `flags` contains
-`VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR`
+[VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR](VkVideoEncodeH265RateControlFlagBitsKHR.html)
 or
-`VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR`,
+[VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR](VkVideoEncodeH265RateControlFlagBitsKHR.html),
 then it **must** also contain
-`VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP_BIT_KHR`
+[VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP_BIT_KHR](VkVideoEncodeH265RateControlFlagBitsKHR.html)
 
 * 
 [](#VUID-VkVideoEncodeH265RateControlInfoKHR-flags-08293) VUID-VkVideoEncodeH265RateControlInfoKHR-flags-08293
 
 If `flags` contains
-`VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR`,
+[VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR](VkVideoEncodeH265RateControlFlagBitsKHR.html),
 then it **must** not also contain
-`VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR`
+[VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR](VkVideoEncodeH265RateControlFlagBitsKHR.html)
 
 * 
 [](#VUID-VkVideoEncodeH265RateControlInfoKHR-flags-08294) VUID-VkVideoEncodeH265RateControlInfoKHR-flags-08294
 
 If `flags` contains
-`VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP_BIT_KHR`, then
+[VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP_BIT_KHR](VkVideoEncodeH265RateControlFlagBitsKHR.html), then
 `gopFrameCount` **must** be greater than `0`
 
 * 
@@ -141,7 +141,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeH265RateControlInfoKHR-sType-sType) VUID-VkVideoEncodeH265RateControlInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_RATE_CONTROL_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_RATE_CONTROL_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoEncodeH265RateControlInfoKHR-flags-parameter) VUID-VkVideoEncodeH265RateControlInfoKHR-flags-parameter

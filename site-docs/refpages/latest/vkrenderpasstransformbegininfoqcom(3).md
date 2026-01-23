@@ -49,24 +49,24 @@ Valid Usage
 * 
 [](#VUID-VkRenderPassTransformBeginInfoQCOM-transform-02871) VUID-VkRenderPassTransformBeginInfoQCOM-transform-02871
 
-`transform` **must** be `VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR`,
-`VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR`,
-`VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR`, or
-`VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR`
+`transform` **must** be [VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html),
+[VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html),
+[VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html), or
+[VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html)
 
 * 
 [](#VUID-VkRenderPassTransformBeginInfoQCOM-flags-02872) VUID-VkRenderPassTransformBeginInfoQCOM-flags-02872
 
 The `renderpass` **must** have been created with
 [VkRenderPassCreateInfo](VkRenderPassCreateInfo.html)::`flags` containing
-`VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM`
+[VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM](VkRenderPassCreateFlagBits.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkRenderPassTransformBeginInfoQCOM-sType-sType) VUID-VkRenderPassTransformBeginInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_TRANSFORM_BEGIN_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_TRANSFORM_BEGIN_INFO_QCOM](VkStructureType.html)
 
 [VK_QCOM_render_pass_transform](VK_QCOM_render_pass_transform.html), [VkStructureType](VkStructureType.html), [VkSurfaceTransformFlagBitsKHR](VkSurfaceTransformFlagBitsKHR.html)
 

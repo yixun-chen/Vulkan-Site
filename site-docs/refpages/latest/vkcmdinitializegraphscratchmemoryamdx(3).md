@@ -49,9 +49,9 @@ bound execution graph pipeline.
 Execution of this command **may** modify any memory locations in the range
 [`scratch`,`scratch` + `scratchSize`).
 Accesses to this memory range are performed in the
-`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT` pipeline stage with the
-`VK_ACCESS_2_SHADER_STORAGE_READ_BIT` and
-`VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT` access flags.
+[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](VkPipelineStageFlagBits2.html) pipeline stage with the
+[VK_ACCESS_2_SHADER_STORAGE_READ_BIT](VkAccessFlagBits2.html) and
+[VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT](VkAccessFlagBits2.html) access flags.
 
 If any portion of `scratch` is modified by any command other than
 [vkCmdDispatchGraphAMDX](vkCmdDispatchGraphAMDX.html), [vkCmdDispatchGraphIndirectAMDX](vkCmdDispatchGraphIndirectAMDX.html),
@@ -106,7 +106,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdInitializeGraphScratchMemoryAMDX-commandBuffer-cmdpool) VUID-vkCmdInitializeGraphScratchMemoryAMDX-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdInitializeGraphScratchMemoryAMDX-suspended) VUID-vkCmdInitializeGraphScratchMemoryAMDX-suspended

@@ -28,13 +28,13 @@
 ## Content
 
 `[VK_NV_optical_flow](../../appendices/extensions.html#VK_NV_optical_flow)` adds an optical flow queue type bit
-`VK_QUEUE_OPTICAL_FLOW_BIT_NV` to [VkQueueFlagBits](../devsandqueues.html#VkQueueFlagBits).
+[VK_QUEUE_OPTICAL_FLOW_BIT_NV](../devsandqueues.html#VkQueueFlagBits) to [VkQueueFlagBits](../devsandqueues.html#VkQueueFlagBits).
 Optical flow operations are supported by queues with an advertised queue
-capability of `VK_QUEUE_OPTICAL_FLOW_BIT_NV`.
+capability of [VK_QUEUE_OPTICAL_FLOW_BIT_NV](../devsandqueues.html#VkQueueFlagBits).
 As in the case of other queue types, an application **must** use
 [vkGetPhysicalDeviceQueueFamilyProperties](../devsandqueues.html#vkGetPhysicalDeviceQueueFamilyProperties) to query whether the physical
 device has support for the Optical Flow Queue.
-When the implementation reports the `VK_QUEUE_OPTICAL_FLOW_BIT_NV` bit
+When the implementation reports the [VK_QUEUE_OPTICAL_FLOW_BIT_NV](../devsandqueues.html#VkQueueFlagBits) bit
 for a queue family, it advertises general support for Vulkan queue
 operations described in [Devices and Queues](../devsandqueues.html#devsandqueues).
 
@@ -77,8 +77,8 @@ array, and on return the variable is overwritten with the number of values
 actually written to `pImageFormatProperties`.
 If the value of `pFormatCount` is less than the number of optical flow
 properties supported, at most `pFormatCount` values will be written to
-`pImageFormatProperties`, and `VK_INCOMPLETE` will be returned
-instead of `VK_SUCCESS`, to indicate that not all the available values
+`pImageFormatProperties`, and [VK_INCOMPLETE](../fundamentals.html#VkResult) will be returned
+instead of [VK_SUCCESS](../fundamentals.html#VkResult), to indicate that not all the available values
 were returned.
 
 Before creating an image to be used as an optical flow frame, obtain the
@@ -121,44 +121,44 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_EXTENSION_NOT_PRESENT`
+[VK_ERROR_EXTENSION_NOT_PRESENT](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_FORMAT_NOT_SUPPORTED`
+[VK_ERROR_FORMAT_NOT_SUPPORTED](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
-|  | `VK_FORMAT_B8G8R8A8_UNORM`, `VK_FORMAT_R8_UNORM` and
+|  | [VK_FORMAT_B8G8R8A8_UNORM](../formats.html#VkFormat), [VK_FORMAT_R8_UNORM](../formats.html#VkFormat) and
 | --- | --- |
-`VK_FORMAT_G8_B8R8_2PLANE_420_UNORM` are initially supported for images
+[VK_FORMAT_G8_B8R8_2PLANE_420_UNORM](../formats.html#VkFormat) are initially supported for images
 with [optical usage](#opticalflow-usage)
-`VK_OPTICAL_FLOW_USAGE_INPUT_BIT_NV`.
+[VK_OPTICAL_FLOW_USAGE_INPUT_BIT_NV](#VkOpticalFlowUsageFlagBitsNV).
 
-`VK_FORMAT_R16G16_SFIXED5_NV` is initially supported for images with
+[VK_FORMAT_R16G16_SFIXED5_NV](../formats.html#VkFormat) is initially supported for images with
 [optical flow usage](#opticalflow-usage)
-`VK_OPTICAL_FLOW_USAGE_OUTPUT_BIT_NV`,
-`VK_OPTICAL_FLOW_USAGE_HINT_BIT_NV` and
-`VK_OPTICAL_FLOW_USAGE_GLOBAL_FLOW_BIT_NV`.
+[VK_OPTICAL_FLOW_USAGE_OUTPUT_BIT_NV](#VkOpticalFlowUsageFlagBitsNV),
+[VK_OPTICAL_FLOW_USAGE_HINT_BIT_NV](#VkOpticalFlowUsageFlagBitsNV) and
+[VK_OPTICAL_FLOW_USAGE_GLOBAL_FLOW_BIT_NV](#VkOpticalFlowUsageFlagBitsNV).
 
-`VK_FORMAT_R8_UINT` and `VK_FORMAT_R32_UINT` are initially supported
+[VK_FORMAT_R8_UINT](../formats.html#VkFormat) and [VK_FORMAT_R32_UINT](../formats.html#VkFormat) are initially supported
 for images with [optical flow usage](#opticalflow-usage)
-`VK_OPTICAL_FLOW_USAGE_COST_BIT_NV`.
-It is recommended to use `VK_FORMAT_R8_UINT` because of the lower
+[VK_OPTICAL_FLOW_USAGE_COST_BIT_NV](#VkOpticalFlowUsageFlagBitsNV).
+It is recommended to use [VK_FORMAT_R8_UINT](../formats.html#VkFormat) because of the lower
 bandwidth. |
 
 The [VkOpticalFlowImageFormatInfoNV](#VkOpticalFlowImageFormatInfoNV) structure is defined as:
@@ -187,7 +187,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkOpticalFlowImageFormatInfoNV-sType-sType) VUID-VkOpticalFlowImageFormatInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_OPTICAL_FLOW_IMAGE_FORMAT_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_OPTICAL_FLOW_IMAGE_FORMAT_INFO_NV](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkOpticalFlowImageFormatInfoNV-usage-parameter) VUID-VkOpticalFlowImageFormatInfoNV-usage-parameter
@@ -213,23 +213,23 @@ typedef enum VkOpticalFlowUsageFlagBitsNV {
 } VkOpticalFlowUsageFlagBitsNV;
 
 * 
-`VK_OPTICAL_FLOW_USAGE_INPUT_BIT_NV` specifies that the image **can**
+[VK_OPTICAL_FLOW_USAGE_INPUT_BIT_NV](#VkOpticalFlowUsageFlagBitsNV) specifies that the image **can**
 be used as input or reference frame for an optical flow operation.
 
 * 
-`VK_OPTICAL_FLOW_USAGE_OUTPUT_BIT_NV` specifies that the image **can**
+[VK_OPTICAL_FLOW_USAGE_OUTPUT_BIT_NV](#VkOpticalFlowUsageFlagBitsNV) specifies that the image **can**
 be used as output flow vector map for an optical flow operation.
 
 * 
-`VK_OPTICAL_FLOW_USAGE_HINT_BIT_NV` specifies that the image **can** be
+[VK_OPTICAL_FLOW_USAGE_HINT_BIT_NV](#VkOpticalFlowUsageFlagBitsNV) specifies that the image **can** be
 used as hint flow vector map for an optical flow operation.
 
 * 
-`VK_OPTICAL_FLOW_USAGE_COST_BIT_NV` specifies that the image **can** be
+[VK_OPTICAL_FLOW_USAGE_COST_BIT_NV](#VkOpticalFlowUsageFlagBitsNV) specifies that the image **can** be
 used as output cost map for an optical flow operation.
 
 * 
-`VK_OPTICAL_FLOW_USAGE_GLOBAL_FLOW_BIT_NV` specifies that the image
+[VK_OPTICAL_FLOW_USAGE_GLOBAL_FLOW_BIT_NV](#VkOpticalFlowUsageFlagBitsNV) specifies that the image
 **can** be used as global flow vector for an optical flow operation.
 
 // Provided by VK_NV_optical_flow
@@ -264,7 +264,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkOpticalFlowImageFormatPropertiesNV-sType-sType) VUID-VkOpticalFlowImageFormatPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_OPTICAL_FLOW_IMAGE_FORMAT_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_OPTICAL_FLOW_IMAGE_FORMAT_PROPERTIES_NV](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkOpticalFlowImageFormatPropertiesNV-pNext-pNext) VUID-VkOpticalFlowImageFormatPropertiesNV-pNext-pNext
@@ -302,7 +302,7 @@ specifying the creation of the optical flow session.
 * 
 `pSession` is a pointer to a [VkOpticalFlowSessionNV](#VkOpticalFlowSessionNV) handle
 specifying the optical flow session object which will be created by this
-function when it returns `VK_SUCCESS`
+function when it returns [VK_SUCCESS](../fundamentals.html#VkResult)
 
 Valid Usage (Implicit)
 
@@ -336,21 +336,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The [VkOpticalFlowSessionCreateInfoNV](#VkOpticalFlowSessionCreateInfoNV) structure is defined as:
 
@@ -445,22 +445,22 @@ than or equal to
 
 `imageFormat` **must** be one of the formats returned by
 [vkGetPhysicalDeviceOpticalFlowImageFormatsNV](#vkGetPhysicalDeviceOpticalFlowImageFormatsNV) for
-`VK_OPTICAL_FLOW_USAGE_INPUT_BIT_NV`
+[VK_OPTICAL_FLOW_USAGE_INPUT_BIT_NV](#VkOpticalFlowUsageFlagBitsNV)
 
 * 
 [](#VUID-VkOpticalFlowSessionCreateInfoNV-flowVectorFormat-07584) VUID-VkOpticalFlowSessionCreateInfoNV-flowVectorFormat-07584
 
 `flowVectorFormat` **must** be one of the formats returned by
 [vkGetPhysicalDeviceOpticalFlowImageFormatsNV](#vkGetPhysicalDeviceOpticalFlowImageFormatsNV) for
-`VK_OPTICAL_FLOW_USAGE_OUTPUT_BIT_NV`
+[VK_OPTICAL_FLOW_USAGE_OUTPUT_BIT_NV](#VkOpticalFlowUsageFlagBitsNV)
 
 * 
 [](#VUID-VkOpticalFlowSessionCreateInfoNV-costFormat-07585) VUID-VkOpticalFlowSessionCreateInfoNV-costFormat-07585
 
 `costFormat` **must** be one of the formats returned by
 [vkGetPhysicalDeviceOpticalFlowImageFormatsNV](#vkGetPhysicalDeviceOpticalFlowImageFormatsNV) for
-`VK_OPTICAL_FLOW_USAGE_COST_BIT_NV` if
-`VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_COST_BIT_NV` is set in
+[VK_OPTICAL_FLOW_USAGE_COST_BIT_NV](#VkOpticalFlowUsageFlagBitsNV) if
+[VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_COST_BIT_NV](#VkOpticalFlowSessionCreateFlagBitsNV) is set in
 `flags`
 
 * 
@@ -474,37 +474,37 @@ than or equal to
 
 `hintGridSize` **must** be exactly one of the bits reported in
 `VkPhysicalDeviceOpticalFlowPropertiesNV`::`supportedHintGridSizes`
-if `VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_HINT_BIT_NV` is set in
+if [VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_HINT_BIT_NV](#VkOpticalFlowSessionCreateFlagBitsNV) is set in
 `flags`
 
 * 
 [](#VUID-VkOpticalFlowSessionCreateInfoNV-flags-07588) VUID-VkOpticalFlowSessionCreateInfoNV-flags-07588
 
-`VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_HINT_BIT_NV` **must** not be set
+[VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_HINT_BIT_NV](#VkOpticalFlowSessionCreateFlagBitsNV) **must** not be set
 in `flags` if
 `VkPhysicalDeviceOpticalFlowPropertiesNV`::`hintSupported` is
-`VK_FALSE`
+[VK_FALSE](../fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkOpticalFlowSessionCreateInfoNV-flags-07589) VUID-VkOpticalFlowSessionCreateInfoNV-flags-07589
 
-`VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_COST_BIT_NV` **must** not be set
+[VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_COST_BIT_NV](#VkOpticalFlowSessionCreateFlagBitsNV) **must** not be set
 in `flags` if
 `VkPhysicalDeviceOpticalFlowPropertiesNV`::`costSupported` is
-`VK_FALSE`
+[VK_FALSE](../fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkOpticalFlowSessionCreateInfoNV-flags-07590) VUID-VkOpticalFlowSessionCreateInfoNV-flags-07590
 
-`VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_GLOBAL_FLOW_BIT_NV` **must** not
+[VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_GLOBAL_FLOW_BIT_NV](#VkOpticalFlowSessionCreateFlagBitsNV) **must** not
 be set in `flags` if
 `VkPhysicalDeviceOpticalFlowPropertiesNV`::`globalFlowSupported`
-is `VK_FALSE`
+is [VK_FALSE](../fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkOpticalFlowSessionCreateInfoNV-flags-07591) VUID-VkOpticalFlowSessionCreateInfoNV-flags-07591
 
-`VK_OPTICAL_FLOW_SESSION_CREATE_ALLOW_REGIONS_BIT_NV` **must** not be
+[VK_OPTICAL_FLOW_SESSION_CREATE_ALLOW_REGIONS_BIT_NV](#VkOpticalFlowSessionCreateFlagBitsNV) **must** not be
 set in `flags` if
 `VkPhysicalDeviceOpticalFlowPropertiesNV`::`maxNumRegionsOfInterest`
 is 0
@@ -512,17 +512,17 @@ is 0
 * 
 [](#VUID-VkOpticalFlowSessionCreateInfoNV-flags-07592) VUID-VkOpticalFlowSessionCreateInfoNV-flags-07592
 
-`VK_OPTICAL_FLOW_SESSION_CREATE_BOTH_DIRECTIONS_BIT_NV` **must** not be
+[VK_OPTICAL_FLOW_SESSION_CREATE_BOTH_DIRECTIONS_BIT_NV](#VkOpticalFlowSessionCreateFlagBitsNV) **must** not be
 set in `flags` if
 `VkPhysicalDeviceOpticalFlowPropertiesNV`::`bidirectionalFlowSupported`
-is `VK_FALSE`
+is [VK_FALSE](../fundamentals.html#VK_FALSE)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkOpticalFlowSessionCreateInfoNV-sType-sType) VUID-VkOpticalFlowSessionCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_OPTICAL_FLOW_SESSION_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_OPTICAL_FLOW_SESSION_CREATE_INFO_NV](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkOpticalFlowSessionCreateInfoNV-pNext-pNext) VUID-VkOpticalFlowSessionCreateInfoNV-pNext-pNext
@@ -611,7 +611,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkOpticalFlowSessionCreatePrivateDataInfoNV-sType-sType) VUID-VkOpticalFlowSessionCreatePrivateDataInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_OPTICAL_FLOW_SESSION_CREATE_PRIVATE_DATA_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_OPTICAL_FLOW_SESSION_CREATE_PRIVATE_DATA_INFO_NV](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkOpticalFlowSessionCreatePrivateDataInfoNV-pPrivateData-parameter) VUID-VkOpticalFlowSessionCreatePrivateDataInfoNV-pPrivateData-parameter
@@ -640,19 +640,19 @@ typedef enum VkOpticalFlowGridSizeFlagBitsNV {
 } VkOpticalFlowGridSizeFlagBitsNV;
 
 * 
-`VK_OPTICAL_FLOW_GRID_SIZE_1X1_BIT_NV` specifies that grid is 1x1
+[VK_OPTICAL_FLOW_GRID_SIZE_1X1_BIT_NV](#VkOpticalFlowGridSizeFlagBitsNV) specifies that grid is 1x1
 pixel.
 
 * 
-`VK_OPTICAL_FLOW_GRID_SIZE_2X2_BIT_NV` specifies that grid is 2x2
+[VK_OPTICAL_FLOW_GRID_SIZE_2X2_BIT_NV](#VkOpticalFlowGridSizeFlagBitsNV) specifies that grid is 2x2
 pixel.
 
 * 
-`VK_OPTICAL_FLOW_GRID_SIZE_4X4_BIT_NV` specifies that grid is 4x4
+[VK_OPTICAL_FLOW_GRID_SIZE_4X4_BIT_NV](#VkOpticalFlowGridSizeFlagBitsNV) specifies that grid is 4x4
 pixel.
 
 * 
-`VK_OPTICAL_FLOW_GRID_SIZE_8X8_BIT_NV` specifies that grid is 8x8
+[VK_OPTICAL_FLOW_GRID_SIZE_8X8_BIT_NV](#VkOpticalFlowGridSizeFlagBitsNV) specifies that grid is 8x8
 pixel.
 
 // Provided by VK_NV_optical_flow
@@ -675,15 +675,15 @@ typedef enum VkOpticalFlowPerformanceLevelNV {
 } VkOpticalFlowPerformanceLevelNV;
 
 * 
-`VK_OPTICAL_FLOW_PERFORMANCE_LEVEL_SLOW_NV` is a level with slower
+[VK_OPTICAL_FLOW_PERFORMANCE_LEVEL_SLOW_NV](#VkOpticalFlowPerformanceLevelNV) is a level with slower
 performance but higher quality.
 
 * 
-`VK_OPTICAL_FLOW_PERFORMANCE_LEVEL_MEDIUM_NV` is a level with medium
+[VK_OPTICAL_FLOW_PERFORMANCE_LEVEL_MEDIUM_NV](#VkOpticalFlowPerformanceLevelNV) is a level with medium
 performance and medium quality.
 
 * 
-`VK_OPTICAL_FLOW_PERFORMANCE_LEVEL_FAST_NV` is a preset with higher
+[VK_OPTICAL_FLOW_PERFORMANCE_LEVEL_FAST_NV](#VkOpticalFlowPerformanceLevelNV) is a preset with higher
 performance but lower quality.
 
 Bits which **can** be set in
@@ -700,20 +700,20 @@ typedef enum VkOpticalFlowSessionCreateFlagBitsNV {
 } VkOpticalFlowSessionCreateFlagBitsNV;
 
 * 
-`VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_HINT_BIT_NV` specifies that a
+[VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_HINT_BIT_NV](#VkOpticalFlowSessionCreateFlagBitsNV) specifies that a
 [VkImageView](../resources.html#VkImageView) with external flow vectors will be used as hints in
 performing the motion search and **must** be bound to
-`VK_OPTICAL_FLOW_SESSION_BINDING_POINT_HINT_NV`.
+[VK_OPTICAL_FLOW_SESSION_BINDING_POINT_HINT_NV](#VkOpticalFlowSessionBindingPointNV).
 
 * 
-`VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_COST_BIT_NV` specifies that
+[VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_COST_BIT_NV](#VkOpticalFlowSessionCreateFlagBitsNV) specifies that
 the cost for the forward flow is generated in a [VkImageView](../resources.html#VkImageView) which
-**must** be bound to `VK_OPTICAL_FLOW_SESSION_BINDING_POINT_COST_NV`.
+**must** be bound to [VK_OPTICAL_FLOW_SESSION_BINDING_POINT_COST_NV](#VkOpticalFlowSessionBindingPointNV).
 Additionally, if
-`VK_OPTICAL_FLOW_SESSION_CREATE_BOTH_DIRECTIONS_BIT_NV` is also set,
+[VK_OPTICAL_FLOW_SESSION_CREATE_BOTH_DIRECTIONS_BIT_NV](#VkOpticalFlowSessionCreateFlagBitsNV) is also set,
 the cost for backward flow is generated in a [VkImageView](../resources.html#VkImageView) which
 **must** be bound to
-`VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_COST_NV`.
+[VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_COST_NV](#VkOpticalFlowSessionBindingPointNV).
 The cost is the confidence level of the flow vector for each grid in the
 frame.
 The Cost implies how (in)accurate the flow vector is.
@@ -721,18 +721,18 @@ Higher cost value implies the flow vector to be less accurate and
 vice-versa.
 
 * 
-`VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_GLOBAL_FLOW_BIT_NV` specifies
+[VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_GLOBAL_FLOW_BIT_NV](#VkOpticalFlowSessionCreateFlagBitsNV) specifies
 that a global flow vector is estimated from forward flow in a single
 pixel [VkImageView](../resources.html#VkImageView) which **must** be bound to
-`VK_OPTICAL_FLOW_SESSION_BINDING_POINT_GLOBAL_FLOW_NV`.
+[VK_OPTICAL_FLOW_SESSION_BINDING_POINT_GLOBAL_FLOW_NV](#VkOpticalFlowSessionBindingPointNV).
 
 * 
-`VK_OPTICAL_FLOW_SESSION_CREATE_ALLOW_REGIONS_BIT_NV` specifies that
+[VK_OPTICAL_FLOW_SESSION_CREATE_ALLOW_REGIONS_BIT_NV](#VkOpticalFlowSessionCreateFlagBitsNV) specifies that
 regions of interest **can** be specified in
 [VkOpticalFlowExecuteInfoNV](#VkOpticalFlowExecuteInfoNV).
 
 * 
-`VK_OPTICAL_FLOW_SESSION_CREATE_BOTH_DIRECTIONS_BIT_NV` specifies
+[VK_OPTICAL_FLOW_SESSION_CREATE_BOTH_DIRECTIONS_BIT_NV](#VkOpticalFlowSessionCreateFlagBitsNV) specifies
 that backward flow is generated in addition to forward flow which is
 always generated.
 
@@ -857,21 +857,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The optical flow session binding points are defined with the following:
 
@@ -889,39 +889,39 @@ typedef enum VkOpticalFlowSessionBindingPointNV {
 } VkOpticalFlowSessionBindingPointNV;
 
 * 
-`VK_OPTICAL_FLOW_SESSION_BINDING_POINT_INPUT_NV` specifies the
+[VK_OPTICAL_FLOW_SESSION_BINDING_POINT_INPUT_NV](#VkOpticalFlowSessionBindingPointNV) specifies the
 binding point for the input frame.
 
 * 
-`VK_OPTICAL_FLOW_SESSION_BINDING_POINT_REFERENCE_NV` specifies the
+[VK_OPTICAL_FLOW_SESSION_BINDING_POINT_REFERENCE_NV](#VkOpticalFlowSessionBindingPointNV) specifies the
 binding point for the input reference frame.
 
 * 
-`VK_OPTICAL_FLOW_SESSION_BINDING_POINT_HINT_NV` specifies the
+[VK_OPTICAL_FLOW_SESSION_BINDING_POINT_HINT_NV](#VkOpticalFlowSessionBindingPointNV) specifies the
 binding point for the optional external hint flow vectors.
 
 * 
-`VK_OPTICAL_FLOW_SESSION_BINDING_POINT_FLOW_VECTOR_NV` specifies the
+[VK_OPTICAL_FLOW_SESSION_BINDING_POINT_FLOW_VECTOR_NV](#VkOpticalFlowSessionBindingPointNV) specifies the
 binding point for output flow vectors of default forward flow
 calculation.
 
 * 
-`VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_FLOW_VECTOR_NV`
+[VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_FLOW_VECTOR_NV](#VkOpticalFlowSessionBindingPointNV)
 specifies the binding point for the optional output flow vector map of
 optional backward flow calculation.
 
 * 
-`VK_OPTICAL_FLOW_SESSION_BINDING_POINT_COST_NV` specifies the
+[VK_OPTICAL_FLOW_SESSION_BINDING_POINT_COST_NV](#VkOpticalFlowSessionBindingPointNV) specifies the
 binding point for the optional output cost map of default forward flow
 calculation.
 
 * 
-`VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_COST_NV` specifies
+[VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_COST_NV](#VkOpticalFlowSessionBindingPointNV) specifies
 the binding point for the optional output cost map of optional backward
 flow calculation.
 
 * 
-`VK_OPTICAL_FLOW_SESSION_BINDING_POINT_GLOBAL_FLOW_NV` specifies the
+[VK_OPTICAL_FLOW_SESSION_BINDING_POINT_GLOBAL_FLOW_NV](#VkOpticalFlowSessionBindingPointNV) specifies the
 binding point for the optional global flow value of default forward flow
 calculation.
 
@@ -978,7 +978,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdOpticalFlowExecuteNV-commandBuffer-cmdpool) VUID-vkCmdOpticalFlowExecuteNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_OPTICAL_FLOW_BIT_NV` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_OPTICAL_FLOW_BIT_NV](../devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdOpticalFlowExecuteNV-renderpass) VUID-vkCmdOpticalFlowExecuteNV-renderpass
@@ -1052,7 +1052,7 @@ Valid Usage
 [](#VUID-VkOpticalFlowExecuteInfoNV-regionCount-07593) VUID-VkOpticalFlowExecuteInfoNV-regionCount-07593
 
 `regionCount` **must** be 0 if
-`VK_OPTICAL_FLOW_SESSION_CREATE_ALLOW_REGIONS_BIT_NV` was not set
+[VK_OPTICAL_FLOW_SESSION_CREATE_ALLOW_REGIONS_BIT_NV](#VkOpticalFlowSessionCreateFlagBitsNV) was not set
 for `VkOpticalFlowSessionNV` on which this command is operating
 
 Valid Usage (Implicit)
@@ -1060,7 +1060,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkOpticalFlowExecuteInfoNV-sType-sType) VUID-VkOpticalFlowExecuteInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_OPTICAL_FLOW_EXECUTE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_OPTICAL_FLOW_EXECUTE_INFO_NV](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkOpticalFlowExecuteInfoNV-pNext-pNext) VUID-VkOpticalFlowExecuteInfoNV-pNext-pNext
@@ -1086,7 +1086,7 @@ typedef enum VkOpticalFlowExecuteFlagBitsNV {
 } VkOpticalFlowExecuteFlagBitsNV;
 
 * 
-`VK_OPTICAL_FLOW_EXECUTE_DISABLE_TEMPORAL_HINTS_BIT_NV` specifies
+[VK_OPTICAL_FLOW_EXECUTE_DISABLE_TEMPORAL_HINTS_BIT_NV](#VkOpticalFlowExecuteFlagBitsNV) specifies
 that temporal hints from previously generated flow vectors are not used.
 If temporal hints are enabled, optical flow vectors from previous
 [vkCmdOpticalFlowExecuteNV](#vkCmdOpticalFlowExecuteNV) call are automatically used as hints for

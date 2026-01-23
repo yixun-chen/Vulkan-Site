@@ -380,4 +380,4 @@ Test different configurations to find the optimal settings for various device mo
 
 In the next section, we’ll conclude our exploration of mobile development with a summary of key takeaways and best practices.
 
-[Previous: Rendering Approaches](04_rendering_approaches.adoc) | [Next: Conclusion](06_conclusion.adoc)
+[Previous: Rendering Approaches](04_rendering_approaches.html) | [Next: Conclusion](06_conclusion.html)

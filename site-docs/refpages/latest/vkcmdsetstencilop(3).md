@@ -66,7 +66,7 @@ operator used in the stencil test.
 
 This command sets the stencil operation for subsequent drawing commands when
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
-when the graphics pipeline is created with `VK_DYNAMIC_STATE_STENCIL_OP`
+when the graphics pipeline is created with [VK_DYNAMIC_STATE_STENCIL_OP](VkDynamicState.html)
 set in [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the corresponding
 `VkPipelineDepthStencilStateCreateInfo`::`failOp`, `passOp`,
@@ -136,7 +136,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetStencilOp-commandBuffer-cmdpool) VUID-vkCmdSetStencilOp-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetStencilOp-videocoding) VUID-vkCmdSetStencilOp-videocoding

@@ -88,7 +88,7 @@ to create [VkBuffer](VkBuffer.html) objects that **can** be bound to that memory
 * 
 Extending [VkExternalMemoryHandleTypeFlagBits](VkExternalMemoryHandleTypeFlagBits.html):
 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html)
 
 1) How does the application, when creating a [VkImage](VkImage.html) that it intends
 to bind to `dma_buf` [VkDeviceMemory](VkDeviceMemory.html) containing an externally

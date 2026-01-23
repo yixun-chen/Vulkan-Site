@@ -65,7 +65,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMaintenance9PropertiesKHR-sType-sType) VUID-VkPhysicalDeviceMaintenance9PropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_PROPERTIES_KHR](VkStructureType.html)
 
 [VK_KHR_maintenance9](VK_KHR_maintenance9.html), `VkBool32`, [VkDefaultVertexAttributeValueKHR](VkDefaultVertexAttributeValueKHR.html), [VkStructureType](VkStructureType.html)
 

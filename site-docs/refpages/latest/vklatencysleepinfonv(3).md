@@ -56,7 +56,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkLatencySleepInfoNV-sType-sType) VUID-VkLatencySleepInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_LATENCY_SLEEP_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_LATENCY_SLEEP_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkLatencySleepInfoNV-signalSemaphore-parameter) VUID-VkLatencySleepInfoNV-signalSemaphore-parameter

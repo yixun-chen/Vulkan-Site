@@ -143,18 +143,18 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkObjectType](VkObjectType.html):
 
-`VK_OBJECT_TYPE_PRIVATE_DATA_SLOT_EXT`
+[VK_OBJECT_TYPE_PRIVATE_DATA_SLOT_EXT](VkObjectType.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_DEVICE_PRIVATE_DATA_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_DEVICE_PRIVATE_DATA_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIVATE_DATA_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIVATE_DATA_FEATURES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PRIVATE_DATA_SLOT_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_PRIVATE_DATA_SLOT_CREATE_INFO_EXT](VkStructureType.html)
 
 Vulkan APIs in this extension are included in core Vulkan 1.3, with the EXT
 suffix omitted.

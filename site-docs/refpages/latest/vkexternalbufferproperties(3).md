@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalBufferProperties-sType-sType) VUID-VkExternalBufferProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_BUFFER_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_BUFFER_PROPERTIES](VkStructureType.html)
 
 * 
 [](#VUID-VkExternalBufferProperties-pNext-pNext) VUID-VkExternalBufferProperties-pNext-pNext

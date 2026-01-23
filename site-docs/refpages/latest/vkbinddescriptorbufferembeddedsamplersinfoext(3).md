@@ -58,10 +58,10 @@ more pipeline bind points, the binding operation still affects all stages
 corresponding to the given pipeline bind point(s) as if the equivalent
 original version of this command had been called with the same parameters.
 For example, specifying a `stageFlags` value of
-`VK_SHADER_STAGE_VERTEX_BIT` | `VK_SHADER_STAGE_FRAGMENT_BIT` |
-`VK_SHADER_STAGE_COMPUTE_BIT` is equivalent to calling the original
-version of this command once with `VK_PIPELINE_BIND_POINT_GRAPHICS` and
-once with `VK_PIPELINE_BIND_POINT_COMPUTE`.
+[VK_SHADER_STAGE_VERTEX_BIT](VkShaderStageFlagBits.html) | [VK_SHADER_STAGE_FRAGMENT_BIT](VkShaderStageFlagBits.html) |
+[VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html) is equivalent to calling the original
+version of this command once with [VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html) and
+once with [VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html).
 
 Valid Usage
 
@@ -70,7 +70,7 @@ Valid Usage
 
 The [VkDescriptorSetLayout](VkDescriptorSetLayout.html) at index `set` when `layout` was
 created **must** have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html)
 bit set
 
 * 
@@ -98,7 +98,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindDescriptorBufferEmbeddedSamplersInfoEXT-sType-sType) VUID-VkBindDescriptorBufferEmbeddedSamplersInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkBindDescriptorBufferEmbeddedSamplersInfoEXT-pNext-pNext) VUID-VkBindDescriptorBufferEmbeddedSamplersInfoEXT-pNext-pNext

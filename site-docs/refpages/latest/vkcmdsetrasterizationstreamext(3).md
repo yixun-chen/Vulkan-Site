@@ -38,7 +38,7 @@ This command sets the `rasterizationStream` state for subsequent drawing
 commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT` set in
+[VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationStateStreamCreateInfoEXT](VkPipelineRasterizationStateStreamCreateInfoEXT.html)::`rasterizationStream`
@@ -71,7 +71,7 @@ The [`transformFeedback`](../../../../spec/latest/chapters/features.html#feature
 
 `rasterizationStream` **must** be zero if
 `VkPhysicalDeviceTransformFeedbackPropertiesEXT`::`transformFeedbackRasterizationStreamSelect`
-is `VK_FALSE`
+is [VK_FALSE](VK_FALSE.html)
 
 Valid Usage (Implicit)
 
@@ -88,7 +88,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetRasterizationStreamEXT-commandBuffer-cmdpool) VUID-vkCmdSetRasterizationStreamEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetRasterizationStreamEXT-videocoding) VUID-vkCmdSetRasterizationStreamEXT-videocoding

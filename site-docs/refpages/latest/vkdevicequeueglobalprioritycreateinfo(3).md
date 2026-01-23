@@ -53,14 +53,14 @@ queues as specified by [VkQueueGlobalPriority](VkQueueGlobalPriority.html)
 
 Queues created without specifying
 `VkDeviceQueueGlobalPriorityCreateInfo` will default to
-`VK_QUEUE_GLOBAL_PRIORITY_MEDIUM`.
+[VK_QUEUE_GLOBAL_PRIORITY_MEDIUM](VkQueueGlobalPriority.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDeviceQueueGlobalPriorityCreateInfo-sType-sType) VUID-VkDeviceQueueGlobalPriorityCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceQueueGlobalPriorityCreateInfo-globalPriority-parameter) VUID-VkDeviceQueueGlobalPriorityCreateInfo-globalPriority-parameter

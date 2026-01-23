@@ -17,7 +17,7 @@
 
 VK_QUEUE_FAMILY_EXTERNAL - External queue family index sentinel
 
-The special queue family index `VK_QUEUE_FAMILY_EXTERNAL` represents any
+The special queue family index [VK_QUEUE_FAMILY_EXTERNAL](#) represents any
 queue external to the resource’s current Vulkan instance, as long as the
 queue uses the same underlying
 device group or

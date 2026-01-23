@@ -95,7 +95,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetRenderingInputAttachmentIndices-commandBuffer-cmdpool) VUID-vkCmdSetRenderingInputAttachmentIndices-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetRenderingInputAttachmentIndices-renderpass) VUID-vkCmdSetRenderingInputAttachmentIndices-renderpass

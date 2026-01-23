@@ -31,12 +31,12 @@ typedef struct VkGeometryDataNV {
 * 
 `triangles` contains triangle data if
 [VkGeometryNV](VkGeometryNV.html)::`geometryType` is
-`VK_GEOMETRY_TYPE_TRIANGLES_NV`.
+[VK_GEOMETRY_TYPE_TRIANGLES_NV](VkGeometryTypeKHR.html).
 
 * 
 `aabbs` contains axis-aligned bounding box data if
 [VkGeometryNV](VkGeometryNV.html)::`geometryType` is
-`VK_GEOMETRY_TYPE_AABBS_NV`.
+[VK_GEOMETRY_TYPE_AABBS_NV](VkGeometryTypeKHR.html).
 
 Valid Usage (Implicit)
 

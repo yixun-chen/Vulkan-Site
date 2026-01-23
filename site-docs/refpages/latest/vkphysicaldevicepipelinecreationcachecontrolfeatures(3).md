@@ -49,16 +49,16 @@ supports:
 
 The following **can** be used in `Vk*PipelineCreateInfo`::`flags`:
 
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT`
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](VkPipelineCreateFlagBits.html)
 
 * 
-`VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT`
+[VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT](VkPipelineCreateFlagBits.html)
 
 The following **can** be used in
 [VkPipelineCacheCreateInfo](VkPipelineCacheCreateInfo.html)::`flags`:
 
 * 
-`VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT`
+[VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT](VkPipelineCacheCreateFlagBits.html)
 
 If the `VkPhysicalDevicePipelineCreationCacheControlFeatures` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -66,7 +66,7 @@ If the `VkPhysicalDevicePipelineCreationCacheControlFeatures` structure is inclu
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDevicePipelineCreationCacheControlFeatures`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -74,7 +74,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePipelineCreationCacheControlFeatures-sType-sType) VUID-VkPhysicalDevicePipelineCreationCacheControlFeatures-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CREATION_CACHE_CONTROL_FEATURES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CREATION_CACHE_CONTROL_FEATURES](VkStructureType.html)
 
 [VK_EXT_pipeline_creation_cache_control](VK_EXT_pipeline_creation_cache_control.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

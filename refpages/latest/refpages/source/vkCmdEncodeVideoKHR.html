@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:refpages" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -150,9 +150,6 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkAcquireFullScreenExclusiveModeEXT.html">vkAcquireFullScreenExclusiveModeEXT</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="vkAcquireImageOHOS.html">vkAcquireImageOHOS</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkAcquireNextImage2KHR.html">vkAcquireNextImage2KHR</a>
@@ -312,6 +309,12 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkCmdBindPipelineShaderGroupNV.html">vkCmdBindPipelineShaderGroupNV</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkCmdBindResourceHeapEXT.html">vkCmdBindResourceHeapEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkCmdBindSamplerHeapEXT.html">vkCmdBindSamplerHeapEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkCmdBindShadersEXT.html">vkCmdBindShadersEXT</a>
@@ -669,6 +672,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkCmdPushConstants2.html">vkCmdPushConstants2KHR</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkCmdPushDataEXT.html">vkCmdPushDataEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkCmdPushDescriptorSet.html">vkCmdPushDescriptorSet</a>
@@ -1712,6 +1718,9 @@
     <a class="nav-link" href="vkGetDeviceBufferMemoryRequirements.html">vkGetDeviceBufferMemoryRequirementsKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkGetDeviceCombinedImageSamplerIndexNVX.html">vkGetDeviceCombinedImageSamplerIndexNVX</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetDeviceFaultInfoEXT.html">vkGetDeviceFaultInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -1841,6 +1850,9 @@
     <a class="nav-link" href="vkGetImageMemoryRequirements2.html">vkGetImageMemoryRequirements2KHR</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkGetImageOpaqueCaptureDataEXT.html">vkGetImageOpaqueCaptureDataEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetImageOpaqueCaptureDescriptorDataEXT.html">vkGetImageOpaqueCaptureDescriptorDataEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -1956,6 +1968,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetPhysicalDeviceCooperativeVectorPropertiesNV.html">vkGetPhysicalDeviceCooperativeVectorPropertiesNV</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkGetPhysicalDeviceDescriptorSizeEXT.html">vkGetPhysicalDeviceDescriptorSizeEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetPhysicalDeviceDirectFBPresentationSupportEXT.html">vkGetPhysicalDeviceDirectFBPresentationSupportEXT</a>
@@ -2243,9 +2258,6 @@
     <a class="nav-link" href="vkGetSwapchainCounterEXT.html">vkGetSwapchainCounterEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="vkGetSwapchainGrallocUsageOHOS.html">vkGetSwapchainGrallocUsageOHOS</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetSwapchainImagesKHR.html">vkGetSwapchainImagesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -2259,6 +2271,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetTensorMemoryRequirementsARM.html">vkGetTensorMemoryRequirementsARM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkGetTensorOpaqueCaptureDataARM.html">vkGetTensorOpaqueCaptureDataARM</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetTensorOpaqueCaptureDescriptorDataARM.html">vkGetTensorOpaqueCaptureDescriptorDataARM</a>
@@ -2360,9 +2375,6 @@
     <a class="nav-link" href="vkQueueSetPerformanceConfigurationINTEL.html">vkQueueSetPerformanceConfigurationINTEL</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="vkQueueSignalReleaseImageOHOS.html">vkQueueSignalReleaseImageOHOS</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkQueueSubmit.html">vkQueueSubmit</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -2380,6 +2392,9 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">R</span>
 <ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkRegisterCustomBorderColorEXT.html">vkRegisterCustomBorderColorEXT</a>
+  </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkRegisterDeviceEventEXT.html">vkRegisterDeviceEventEXT</a>
   </li>
@@ -2519,6 +2534,9 @@
     <a class="nav-link" href="vkUnmapMemory2.html">vkUnmapMemory2KHR</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkUnregisterCustomBorderColorEXT.html">vkUnregisterCustomBorderColorEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkUpdateDescriptorSets.html">vkUpdateDescriptorSets</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -2562,6 +2580,12 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkWriteMicromapsPropertiesEXT.html">vkWriteMicromapsPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkWriteResourceDescriptorsEXT.html">vkWriteResourceDescriptorsEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkWriteSamplerDescriptorsEXT.html">vkWriteSamplerDescriptorsEXT</a>
   </li>
 </ul>
   </li>
@@ -2791,6 +2815,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkBindDescriptorSetsInfo.html">VkBindDescriptorSetsInfoKHR</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkBindHeapInfoEXT.html">VkBindHeapInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkBindImageMemoryDeviceGroupInfo.html">VkBindImageMemoryDeviceGroupInfo</a>
@@ -3037,6 +3064,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkCommandBufferInheritanceConditionalRenderingInfoEXT.html">VkCommandBufferInheritanceConditionalRenderingInfoEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkCommandBufferInheritanceDescriptorHeapInfoEXT.html">VkCommandBufferInheritanceDescriptorHeapInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkCommandBufferInheritanceInfo.html">VkCommandBufferInheritanceInfo</a>
@@ -3351,6 +3381,30 @@
     <a class="nav-link" href="VkDescriptorImageInfo.html">VkDescriptorImageInfo</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceConstantOffsetEXT.html">VkDescriptorMappingSourceConstantOffsetEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceDataEXT.html">VkDescriptorMappingSourceDataEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceHeapDataEXT.html">VkDescriptorMappingSourceHeapDataEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceIndirectAddressEXT.html">VkDescriptorMappingSourceIndirectAddressEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceIndirectIndexArrayEXT.html">VkDescriptorMappingSourceIndirectIndexArrayEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceIndirectIndexEXT.html">VkDescriptorMappingSourceIndirectIndexEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourcePushIndexEXT.html">VkDescriptorMappingSourcePushIndexEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceShaderRecordIndexEXT.html">VkDescriptorMappingSourceShaderRecordIndexEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkDescriptorPoolCreateInfo.html">VkDescriptorPoolCreateInfo</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -3364,6 +3418,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkDescriptorSetAllocateInfo.html">VkDescriptorSetAllocateInfo</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorSetAndBindingMappingEXT.html">VkDescriptorSetAndBindingMappingEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkDescriptorSetBindingReferenceVALVE.html">VkDescriptorSetBindingReferenceVALVE</a>
@@ -3415,6 +3472,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkDeviceAddressBindingCallbackDataEXT.html">VkDeviceAddressBindingCallbackDataEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDeviceAddressRangeEXT.html">VkDeviceAddressRangeEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkDeviceBufferMemoryRequirements.html">VkDeviceBufferMemoryRequirements</a>
@@ -3936,6 +3996,12 @@
     <a class="nav-link" href="VkHeadlessSurfaceCreateInfoEXT.html">VkHeadlessSurfaceCreateInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkHostAddressRangeConstEXT.html">VkHostAddressRangeConstEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkHostAddressRangeEXT.html">VkHostAddressRangeEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkHostImageCopyDevicePerformanceQuery.html">VkHostImageCopyDevicePerformanceQuery</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -3988,6 +4054,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkImageCreateInfo.html">VkImageCreateInfo</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkImageDescriptorInfoEXT.html">VkImageDescriptorInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkImageDrmFormatModifierExplicitCreateInfoEXT.html">VkImageDrmFormatModifierExplicitCreateInfoEXT</a>
@@ -4186,6 +4255,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkIndirectCommandsLayoutCreateInfoNV.html">VkIndirectCommandsLayoutCreateInfoNV</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkIndirectCommandsLayoutPushDataTokenNV.html">VkIndirectCommandsLayoutPushDataTokenNV</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkIndirectCommandsLayoutTokenEXT.html">VkIndirectCommandsLayoutTokenEXT</a>
@@ -4455,9 +4527,6 @@
     <a class="nav-link" href="VkNativeBufferFormatPropertiesOHOS.html">VkNativeBufferFormatPropertiesOHOS</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="VkNativeBufferOHOS.html">VkNativeBufferOHOS</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkNativeBufferPropertiesOHOS.html">VkNativeBufferPropertiesOHOS</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -4474,6 +4543,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkOffset3D.html">VkOffset3D</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkOpaqueCaptureDataCreateInfoEXT.html">VkOpaqueCaptureDataCreateInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkOpaqueCaptureDescriptorDataCreateInfoEXT.html">VkOpaqueCaptureDescriptorDataCreateInfoEXT</a>
@@ -4792,6 +4864,15 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceDescriptorBufferTensorPropertiesARM.html">VkPhysicalDeviceDescriptorBufferTensorPropertiesARM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceDescriptorHeapFeaturesEXT.html">VkPhysicalDeviceDescriptorHeapFeaturesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceDescriptorHeapPropertiesEXT.html">VkPhysicalDeviceDescriptorHeapPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceDescriptorHeapTensorPropertiesARM.html">VkPhysicalDeviceDescriptorHeapTensorPropertiesARM</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceDescriptorIndexingFeatures.html">VkPhysicalDeviceDescriptorIndexingFeatures</a>
@@ -5145,6 +5226,9 @@
     <a class="nav-link" href="VkPhysicalDeviceInlineUniformBlockProperties.html">VkPhysicalDeviceInlineUniformBlockPropertiesEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR.html">VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceInvocationMaskFeaturesHUAWEI.html">VkPhysicalDeviceInvocationMaskFeaturesHUAWEI</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -5442,9 +5526,6 @@
     <a class="nav-link" href="VkPhysicalDevicePortabilitySubsetPropertiesKHR.html">VkPhysicalDevicePortabilitySubsetPropertiesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="VkPhysicalDevicePresentationPropertiesOHOS.html">VkPhysicalDevicePresentationPropertiesOHOS</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDevicePresentBarrierFeaturesNV.html">VkPhysicalDevicePresentBarrierFeaturesNV</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -5503,6 +5584,12 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceProvokingVertexPropertiesEXT.html">VkPhysicalDeviceProvokingVertexPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDevicePushConstantBankFeaturesNV.html">VkPhysicalDevicePushConstantBankFeaturesNV</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDevicePushConstantBankPropertiesNV.html">VkPhysicalDevicePushConstantBankPropertiesNV</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDevicePushDescriptorProperties.html">VkPhysicalDevicePushDescriptorProperties</a>
@@ -5727,6 +5814,12 @@
     <a class="nav-link" href="VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.html">VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceShaderLongVectorFeaturesEXT.html">VkPhysicalDeviceShaderLongVectorFeaturesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceShaderLongVectorPropertiesEXT.html">VkPhysicalDeviceShaderLongVectorPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR.html">VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -5761,6 +5854,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures.html">VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT.html">VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceShaderSubgroupRotateFeatures.html">VkPhysicalDeviceShaderSubgroupRotateFeatures</a>
@@ -5857,6 +5953,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceTexelBufferAlignmentProperties.html">VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT.html">VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceTextureCompressionASTCHDRFeatures.html">VkPhysicalDeviceTextureCompressionASTCHDRFeatures</a>
@@ -6312,6 +6411,9 @@
     <a class="nav-link" href="VkProtectedSubmitInfo.html">VkProtectedSubmitInfo</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPushConstantBankInfoNV.html">VkPushConstantBankInfoNV</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPushConstantRange.html">VkPushConstantRange</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -6319,6 +6421,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPushConstantsInfo.html">VkPushConstantsInfoKHR</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPushDataInfoEXT.html">VkPushDataInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPushDescriptorSetInfo.html">VkPushDescriptorSetInfo</a>
@@ -6563,6 +6668,12 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkResolveImageModeInfoKHR.html">VkResolveImageModeInfoKHR</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkResourceDescriptorDataEXT.html">VkResourceDescriptorDataEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkResourceDescriptorInfoEXT.html">VkResourceDescriptorInfoEXT</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -6592,6 +6703,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSamplerCustomBorderColorCreateInfoEXT.html">VkSamplerCustomBorderColorCreateInfoEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkSamplerCustomBorderColorIndexCreateInfoEXT.html">VkSamplerCustomBorderColorIndexCreateInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSamplerReductionModeCreateInfo.html">VkSamplerReductionModeCreateInfo</a>
@@ -6679,6 +6793,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkShaderCreateInfoEXT.html">VkShaderCreateInfoEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkShaderDescriptorSetAndBindingMappingInfoEXT.html">VkShaderDescriptorSetAndBindingMappingInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkShaderModuleCreateInfo.html">VkShaderModuleCreateInfo</a>
@@ -6837,6 +6954,9 @@
     <a class="nav-link" href="VkSubresourceLayout2.html">VkSubresourceLayout2KHR</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkSubsampledImageFormatPropertiesEXT.html">VkSubsampledImageFormatPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSurfaceCapabilities2EXT.html">VkSurfaceCapabilities2EXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -6904,9 +7024,6 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSwapchainDisplayNativeHdrCreateInfoAMD.html">VkSwapchainDisplayNativeHdrCreateInfoAMD</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="VkSwapchainImageCreateInfoOHOS.html">VkSwapchainImageCreateInfoOHOS</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSwapchainLatencyCreateInfoNV.html">VkSwapchainLatencyCreateInfoNV</a>
@@ -6982,6 +7099,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkTensorViewCreateInfoARM.html">VkTensorViewCreateInfoARM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkTexelBufferDescriptorInfoEXT.html">VkTexelBufferDescriptorInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkTextureLODGatherFormatPropertiesAMD.html">VkTextureLODGatherFormatPropertiesAMD</a>
@@ -7729,6 +7849,9 @@
     <a class="nav-link" href="VkDescriptorBindingFlagBits.html">VkDescriptorBindingFlagBitsEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceEXT.html">VkDescriptorMappingSourceEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkDescriptorPoolCreateFlagBits.html">VkDescriptorPoolCreateFlagBits</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -8464,6 +8587,9 @@
     <a class="nav-link" href="VkSparseMemoryBindFlagBits.html">VkSparseMemoryBindFlagBits</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkSpirvResourceTypeFlagBitsEXT.html">VkSpirvResourceTypeFlagBitsEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkStencilFaceFlagBits.html">VkStencilFaceFlagBits</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -8498,9 +8624,6 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSwapchainCreateFlagBitsKHR.html">VkSwapchainCreateFlagBitsKHR</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="VkSwapchainImageUsageFlagBitsOHOS.html">VkSwapchainImageUsageFlagBitsOHOS</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSystemAllocationScope.html">VkSystemAllocationScope</a>
@@ -9353,6 +9476,9 @@
     <a class="nav-link" href="VkSparseMemoryBindFlags.html">VkSparseMemoryBindFlags</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkSpirvResourceTypeFlagsEXT.html">VkSpirvResourceTypeFlagsEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkStencilFaceFlags.html">VkStencilFaceFlags</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -9381,9 +9507,6 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSwapchainCreateFlagsKHR.html">VkSwapchainCreateFlagsKHR</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="VkSwapchainImageUsageFlagsOHOS.html">VkSwapchainImageUsageFlagsOHOS</a>
   </li>
 </ul>
   </li>
@@ -9979,9 +10102,6 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">O</span>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="OHBufferHandle.html">OHBufferHandle</a>
-  </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="OHNativeWindow.html">OHNativeWindow</a>
   </li>
@@ -10687,6 +10807,9 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="RayTminKHR.html">RayTminKHR</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ResourceHeapEXT.html">ResourceHeapEXT</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -10701,6 +10824,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="SamplePosition.html">SamplePosition</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="SamplerHeapEXT.html">SamplerHeapEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="ShaderIndexAMDX.html">ShaderIndexAMDX</a>
@@ -11065,6 +11191,9 @@
     <a class="nav-link" href="VK_EXT_descriptor_buffer.html">VK_EXT_descriptor_buffer</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_EXT_descriptor_heap.html">VK_EXT_descriptor_heap</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_EXT_descriptor_indexing.html">VK_EXT_descriptor_indexing</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -11335,6 +11464,9 @@
     <a class="nav-link" href="VK_EXT_shader_image_atomic_int64.html">VK_EXT_shader_image_atomic_int64</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_EXT_shader_long_vector.html">VK_EXT_shader_long_vector</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_EXT_shader_module_identifier.html">VK_EXT_shader_module_identifier</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -11348,6 +11480,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_EXT_shader_subgroup_ballot.html">VK_EXT_shader_subgroup_ballot</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_EXT_shader_subgroup_partitioned.html">VK_EXT_shader_subgroup_partitioned</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_EXT_shader_subgroup_vote.html">VK_EXT_shader_subgroup_vote</a>
@@ -11378,6 +11513,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_EXT_texel_buffer_alignment.html">VK_EXT_texel_buffer_alignment</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_EXT_texture_compression_astc_3d.html">VK_EXT_texture_compression_astc_3d</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_EXT_texture_compression_astc_hdr.html">VK_EXT_texture_compression_astc_hdr</a>
@@ -11651,6 +11789,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_KHR_index_type_uint8.html">VK_KHR_index_type_uint8</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_KHR_internally_synchronized_queues.html">VK_KHR_internally_synchronized_queues</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_KHR_line_rasterization.html">VK_KHR_line_rasterization</a>
@@ -12109,6 +12250,9 @@
     <a class="nav-link" href="VK_NV_present_metering.html">VK_NV_present_metering</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_NV_push_constant_bank.html">VK_NV_push_constant_bank</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_NV_raw_access_chains.html">VK_NV_raw_access_chains</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12167,9 +12311,6 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_OHOS_external_memory.html">VK_OHOS_external_memory</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="VK_OHOS_native_buffer.html">VK_OHOS_native_buffer</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_OHOS_surface.html">VK_OHOS_surface</a>
@@ -12530,7 +12671,7 @@ encode operation.</p>
 </div>
 <div class="paragraph">
 <p>If the bound video session was created with
-<code>VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR</code> and the <code>pNext</code>
+<a href="VkVideoSessionCreateFlagBitsKHR.html" class="xref page">VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR</a> and the <code>pNext</code>
 chain of <code>pEncodeInfo</code> includes a <a href="VkVideoInlineQueryInfoKHR.html" class="xref page">VkVideoInlineQueryInfoKHR</a>
 structure with its <code>queryPool</code> member specifying a valid
 <code>VkQueryPool</code> handle, then this command will execute a query for each
@@ -12703,7 +12844,7 @@ Let the initial value of each element of the array be <code>0</code>.</p>
 </li>
 <li>
 <p>If there is a bound video session parameters object created with
-<code>VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR</code>,
+<a href="VkVideoSessionParametersCreateFlagBitsKHR.html" class="xref page">VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR</a>,
 then let <code>VkExtent2D quantizationMapTexelSize</code> be the
 <a href="../../../../spec/latest/chapters/videocoding.html#encode-quantization-map-texel-size" class="xref page">quantization map texel size</a> the
 bound video session parameters object was created with.</p>
@@ -12803,11 +12944,11 @@ for which <code>slotIndex</code> equals the reference index in question.</p>
 </li>
 <li>
 <p>If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code> and with the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a> and with the
 <a href="../../../../spec/latest/chapters/videocoding.html#encode-intra-refresh-modes" class="xref page">intra refresh mode</a>
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR</code>,
+<a href="VkVideoEncodeIntraRefreshModeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR</a>,
 <code>pEncodeInfo-&gt;flags</code> includes
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</code>, and the <code>pNext</code> chain
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</a>, and the <code>pNext</code> chain
 of <code>pEncodeInfo</code> includes a <a href="VkVideoEncodeIntraRefreshInfoKHR.html" class="xref page">VkVideoEncodeIntraRefreshInfoKHR</a>
 structure, then let <code>uint32_t intraRefreshH264SliceIndex</code> be the
 <a href="../../../../spec/latest/chapters/videocoding.html#encode-intra-refresh-index" class="xref page">intra refresh index</a> specified in
@@ -12848,11 +12989,11 @@ for which <code>slotIndex</code> equals the reference index in question.</p>
 </li>
 <li>
 <p>If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code> and with the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a> and with the
 <a href="../../../../spec/latest/chapters/videocoding.html#encode-intra-refresh-modes" class="xref page">intra refresh mode</a>
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR</code>,
+<a href="VkVideoEncodeIntraRefreshModeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR</a>,
 <code>pEncodeInfo-&gt;flags</code> includes
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</code>, and the <code>pNext</code> chain
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</a>, and the <code>pNext</code> chain
 of <code>pEncodeInfo</code> includes a <a href="VkVideoEncodeIntraRefreshInfoKHR.html" class="xref page">VkVideoEncodeIntraRefreshInfoKHR</a>
 structure, then let <code>uint32_t intraRefreshH265SliceSegmentIndex</code> be the
 <a href="../../../../spec/latest/chapters/videocoding.html#encode-intra-refresh-index" class="xref page">intra refresh index</a> specified in
@@ -12867,7 +13008,7 @@ Otherwise <code>intraRefreshH265SliceSegmentIndex</code> is not defined.</p>
 <li>
 <p>If the <code>primaryReferenceCdfOnly</code> member of the
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a> structure included in the
-<code>pEncodeInfo-&gt;pNext</code> chain is set to <code>VK_TRUE</code>, then let
+<code>pEncodeInfo-&gt;pNext</code> chain is set to <a href="VK_TRUE.html" class="xref page">VK_TRUE</a>, then let
 <code>int32_t cdfOnlyReferenceIndex</code> be the value of
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>::<code>pStdPictureInfo-&gt;primary_ref_frame</code>.</p>
 </li>
@@ -12914,7 +13055,7 @@ be less than or equal to the
 <p><a id="VUID-vkCmdEncodeVideoKHR-pNext-08360" href="#VUID-vkCmdEncodeVideoKHR-pNext-08360"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pNext-08360</span><br>
 
 If the bound video session was created with
-<code>VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR</code>, and the
+<a href="VkVideoSessionCreateFlagBitsKHR.html" class="xref page">VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR</a>, and the
 <code>pNext</code> chain of <code>pEncodeInfo</code> includes a
 <a href="VkVideoInlineQueryInfoKHR.html" class="xref page">VkVideoInlineQueryInfoKHR</a> structure with its <code>queryPool</code>
 member specifying a valid <code>VkQueryPool</code> handle, then
@@ -12924,7 +13065,7 @@ member specifying a valid <code>VkQueryPool</code> handle, then
 <p><a id="VUID-vkCmdEncodeVideoKHR-pNext-08361" href="#VUID-vkCmdEncodeVideoKHR-pNext-08361"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pNext-08361</span><br>
 
 If the bound video session was created with
-<code>VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR</code>, and the
+<a href="VkVideoSessionCreateFlagBitsKHR.html" class="xref page">VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR</a>, and the
 <code>pNext</code> chain of <code>pEncodeInfo</code> includes a
 <a href="VkVideoInlineQueryInfoKHR.html" class="xref page">VkVideoInlineQueryInfoKHR</a> structure with its <code>queryPool</code>
 member specifying a valid <code>VkQueryPool</code> handle, then all the queries
@@ -12935,18 +13076,18 @@ structure, <strong>must</strong> be <em>unavailable</em></p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-queryType-08362" href="#VUID-vkCmdEncodeVideoKHR-queryType-08362"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-queryType-08362</span><br>
 
 If the bound video session was created with
-<code>VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR</code>, then the
+<a href="VkVideoSessionCreateFlagBitsKHR.html" class="xref page">VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR</a>, then the
 <code>queryType</code> used to create the <code>queryPool</code> specified in the
 <a href="VkVideoInlineQueryInfoKHR.html" class="xref page">VkVideoInlineQueryInfoKHR</a> structure included in the <code>pNext</code>
 chain of <code>pEncodeInfo</code> <strong>must</strong> be
-<code>VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</code> or
-<code>VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</code></p>
+<a href="VkQueryType.html" class="xref page">VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</a> or
+<a href="VkQueryType.html" class="xref page">VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-queryPool-08363" href="#VUID-vkCmdEncodeVideoKHR-queryPool-08363"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-queryPool-08363</span><br>
 
 If the bound video session was created with
-<code>VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR</code>, then the
+<a href="VkVideoSessionCreateFlagBitsKHR.html" class="xref page">VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR</a>, then the
 <code>queryPool</code> specified in the <a href="VkVideoInlineQueryInfoKHR.html" class="xref page">VkVideoInlineQueryInfoKHR</a>
 structure included in the <code>pNext</code> chain of <code>pEncodeInfo</code> <strong>must</strong>
 have been created with a <a href="VkVideoProfileInfoKHR.html" class="xref page">VkVideoProfileInfoKHR</a> structure included
@@ -12958,11 +13099,11 @@ the bound video session was created with</p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-queryType-08364" href="#VUID-vkCmdEncodeVideoKHR-queryType-08364"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-queryType-08364</span><br>
 
 If the bound video session was created with
-<code>VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR</code>, and the
+<a href="VkVideoSessionCreateFlagBitsKHR.html" class="xref page">VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR</a>, and the
 <code>queryType</code> used to create the <code>queryPool</code> specified in the
 <a href="VkVideoInlineQueryInfoKHR.html" class="xref page">VkVideoInlineQueryInfoKHR</a> structure included in the <code>pNext</code>
 chain of <code>pEncodeInfo</code> is
-<code>VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</code>, then the <code>VkCommandPool</code>
+<a href="VkQueryType.html" class="xref page">VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</a>, then the <code>VkCommandPool</code>
 that <code>commandBuffer</code> was allocated from <strong>must</strong> have been created with
 a queue family index that supports <a href="../../../../spec/latest/chapters/queries.html#queries-result-status-only" class="xref page">result    status queries</a>, as indicated by
 <a href="VkQueueFamilyQueryResultStatusPropertiesKHR.html" class="xref page">VkQueueFamilyQueryResultStatusPropertiesKHR</a>::<code>queryResultStatusSupport</code></p>
@@ -13034,7 +13175,7 @@ video session was created with</p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-08210" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-08210"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-08210</span><br>
 
 <code>pEncodeInfo-&gt;srcPictureResource.imageViewBinding</code> <strong>must</strong> have been
-created with the <code>VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR</code> usage
+created with the <a href="VkImageUsageFlagBits.html" class="xref page">VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR</a> usage
 flag set</p>
 </li>
 <li>
@@ -13127,10 +13268,10 @@ All elements of <code>dpbFrameUseCount</code> <strong>must</strong> be less than
 
 The image subresource <a href="../../../../spec/latest/chapters/videocoding.html#video-image-subresource-reference" class="xref page">referred</a> to
 by <code>pEncodeInfo-&gt;srcPictureResource</code> <strong>must</strong> be in the
-<code>VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR</code> layout at the time the video
+<a href="VkImageLayout.html" class="xref page">VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR</a> layout at the time the video
 encode operation is executed on the device
 , unless the <a href="../../../../spec/latest/chapters/features.html#features-unifiedImageLayoutsVideo" class="xref page">    <code>unifiedImageLayoutsVideo</code></a> feature is enabled, in which case it
-<strong>may</strong> be in the <code>VK_IMAGE_LAYOUT_GENERAL</code> layout</p>
+<strong>may</strong> be in the <a href="VkImageLayout.html" class="xref page">VK_IMAGE_LAYOUT_GENERAL</a> layout</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10812" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10812"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10812</span><br>
@@ -13138,10 +13279,10 @@ encode operation is executed on the device
 If <code>pEncodeInfo-&gt;pSetupReferenceSlot</code> is not <code>NULL</code>, then the image
 subresource <a href="../../../../spec/latest/chapters/videocoding.html#video-image-subresource-reference" class="xref page">referred</a> to by
 <code>pEncodeInfo-&gt;pSetupReferenceSlot&#8594;pPictureResource</code> <strong>must</strong> be in the
-<code>VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR</code> layout at the time the video
+<a href="VkImageLayout.html" class="xref page">VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR</a> layout at the time the video
 encode operation is executed on the device
 , unless the <a href="../../../../spec/latest/chapters/features.html#features-unifiedImageLayoutsVideo" class="xref page">    <code>unifiedImageLayoutsVideo</code></a> feature is enabled, in which case it
-<strong>may</strong> be in the <code>VK_IMAGE_LAYOUT_GENERAL</code> layout</p>
+<strong>may</strong> be in the <a href="VkImageLayout.html" class="xref page">VK_IMAGE_LAYOUT_GENERAL</a> layout</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pPictureResource-10813" href="#VUID-vkCmdEncodeVideoKHR-pPictureResource-10813"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pPictureResource-10813</span><br>
@@ -13149,42 +13290,42 @@ encode operation is executed on the device
 The image subresource <a href="../../../../spec/latest/chapters/videocoding.html#video-image-subresource-reference" class="xref page">referred</a> to
 by the <code>pPictureResource</code> member of each element of
 <code>pEncodeInfo-&gt;pReferenceSlots</code> <strong>must</strong> be in the
-<code>VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR</code> layout at the time the video
+<a href="VkImageLayout.html" class="xref page">VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR</a> layout at the time the video
 encode operation is executed on the device
 , unless the <a href="../../../../spec/latest/chapters/features.html#features-unifiedImageLayoutsVideo" class="xref page">    <code>unifiedImageLayoutsVideo</code></a> feature is enabled, in which case it
-<strong>may</strong> be in the <code>VK_IMAGE_LAYOUT_GENERAL</code> layout</p>
+<strong>may</strong> be in the <a href="VkImageLayout.html" class="xref page">VK_IMAGE_LAYOUT_GENERAL</a> layout</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10306" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10306"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10306</span><br>
 
 If <code>pEncodeInfo-&gt;flags</code> includes
-<code>VK_VIDEO_ENCODE_WITH_QUANTIZATION_DELTA_MAP_BIT_KHR</code>, then the
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_WITH_QUANTIZATION_DELTA_MAP_BIT_KHR</a>, then the
 bound video session <strong>must</strong> have been created with
-<code>VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR</code></p>
+<a href="VkVideoSessionCreateFlagBitsKHR.html" class="xref page">VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10307" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10307"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10307</span><br>
 
 If <code>pEncodeInfo-&gt;flags</code> includes
-<code>VK_VIDEO_ENCODE_WITH_EMPHASIS_MAP_BIT_KHR</code>, then the bound video
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_WITH_EMPHASIS_MAP_BIT_KHR</a>, then the bound video
 session <strong>must</strong> have been created with
-<code>VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP_BIT_KHR</code></p>
+<a href="VkVideoSessionCreateFlagBitsKHR.html" class="xref page">VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10308" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10308"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10308</span><br>
 
 If the current <a href="../../../../spec/latest/chapters/videocoding.html#encode-rate-control-modes" class="xref page">rate control mode</a> is
-<code>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR</code> or
-<code>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR</code>, then
+<a href="VkVideoEncodeRateControlModeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR</a> or
+<a href="VkVideoEncodeRateControlModeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR</a>, then
 <code>pEncodeInfo-&gt;flags</code> <strong>must</strong> not include
-<code>VK_VIDEO_ENCODE_WITH_EMPHASIS_MAP_BIT_KHR</code></p>
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_WITH_EMPHASIS_MAP_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10309" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10309"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10309</span><br>
 
 If <code>pEncodeInfo-&gt;flags</code> includes
-<code>VK_VIDEO_ENCODE_WITH_QUANTIZATION_DELTA_MAP_BIT_KHR</code> or
-<code>VK_VIDEO_ENCODE_WITH_EMPHASIS_MAP_BIT_KHR</code>, then the <code>pNext</code>
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_WITH_QUANTIZATION_DELTA_MAP_BIT_KHR</a> or
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_WITH_EMPHASIS_MAP_BIT_KHR</a>, then the <code>pNext</code>
 chain of <code>pEncodeInfo</code> <strong>must</strong> include a
 <a href="VkVideoEncodeQuantizationMapInfoKHR.html" class="xref page">VkVideoEncodeQuantizationMapInfoKHR</a> structure with its
 <code>quantizationMap</code> member specifying a valid <code>VkImageView</code> handle</p>
@@ -13193,8 +13334,8 @@ chain of <code>pEncodeInfo</code> <strong>must</strong> include a
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10310" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10310"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10310</span><br>
 
 If <code>pEncodeInfo-&gt;flags</code> includes
-<code>VK_VIDEO_ENCODE_WITH_QUANTIZATION_DELTA_MAP_BIT_KHR</code> or
-<code>VK_VIDEO_ENCODE_WITH_EMPHASIS_MAP_BIT_KHR</code>, then the
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_WITH_QUANTIZATION_DELTA_MAP_BIT_KHR</a> or
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_WITH_EMPHASIS_MAP_BIT_KHR</a>, then the
 <code>VkImageView</code> specified by the <code>quantizationMap</code> member of the
 <a href="VkVideoEncodeQuantizationMapInfoKHR.html" class="xref page">VkVideoEncodeQuantizationMapInfoKHR</a> structure included in the
 <code>pNext</code> chain <strong>must</strong> be <a href="../../../../spec/latest/chapters/videocoding.html#video-profile-compatibility" class="xref page">compatible</a>
@@ -13204,22 +13345,22 @@ with the video profile the bound video session was created with</p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10311" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10311"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10311</span><br>
 
 If <code>pEncodeInfo-&gt;flags</code> includes
-<code>VK_VIDEO_ENCODE_WITH_QUANTIZATION_DELTA_MAP_BIT_KHR</code>, then the
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_WITH_QUANTIZATION_DELTA_MAP_BIT_KHR</a>, then the
 <code>VkImageView</code> specified by the <code>quantizationMap</code> member of the
 <a href="VkVideoEncodeQuantizationMapInfoKHR.html" class="xref page">VkVideoEncodeQuantizationMapInfoKHR</a> structure included in the
 <code>pNext</code> chain of <code>pEncodeInfo</code> <strong>must</strong> have been created with the
-<code>VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR</code> usage
+<a href="VkImageUsageFlagBits.html" class="xref page">VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR</a> usage
 flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10312" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10312"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10312</span><br>
 
 If <code>pEncodeInfo-&gt;flags</code> includes
-<code>VK_VIDEO_ENCODE_WITH_EMPHASIS_MAP_BIT_KHR</code>, then the
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_WITH_EMPHASIS_MAP_BIT_KHR</a>, then the
 <code>VkImageView</code> specified by the <code>quantizationMap</code> member of the
 <a href="VkVideoEncodeQuantizationMapInfoKHR.html" class="xref page">VkVideoEncodeQuantizationMapInfoKHR</a> structure included in the
 <code>pNext</code> chain of <code>pEncodeInfo</code> <strong>must</strong> have been created with the
-<code>VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR</code> usage flag set</p>
+<a href="VkImageUsageFlagBits.html" class="xref page">VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR</a> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pNext-10313" href="#VUID-vkCmdEncodeVideoKHR-pNext-10313"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pNext-10313</span><br>
@@ -13239,10 +13380,10 @@ If an instance of the <a href="VkVideoEncodeQuantizationMapInfoKHR.html" class="
 structure is included in the <code>pNext</code> chain of <code>pEncodeInfo</code> and
 its <code>quantizationMap</code> member is not <a href="VK_NULL_HANDLE.html" class="xref page">VK_NULL_HANDLE</a>, then the
 image subresource range referenced by <code>quantizationMap</code> <strong>must</strong> be in
-the <code>VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR</code> layout at
+the <a href="VkImageLayout.html" class="xref page">VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR</a> layout at
 the time the video encode operation is executed on the device
 , unless the <a href="../../../../spec/latest/chapters/features.html#features-unifiedImageLayoutsVideo" class="xref page">    <code>unifiedImageLayoutsVideo</code></a> feature is enabled, in which case it
-<strong>may</strong> be in the <code>VK_IMAGE_LAYOUT_GENERAL</code> layout</p>
+<strong>may</strong> be in the <a href="VkImageLayout.html" class="xref page">VK_IMAGE_LAYOUT_GENERAL</a> layout</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pNext-10315" href="#VUID-vkCmdEncodeVideoKHR-pNext-10315"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pNext-10315</span><br>
@@ -13252,7 +13393,7 @@ structure is included in the <code>pNext</code> chain of <code>pEncodeInfo</code
 its <code>quantizationMap</code> member is not <a href="VK_NULL_HANDLE.html" class="xref page">VK_NULL_HANDLE</a>, and there
 is a bound video session parameters object, then the bound video session
 parameters object <strong>must</strong> have been created with
-<code>VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR</code></p>
+<a href="VkVideoSessionParametersCreateFlagBitsKHR.html" class="xref page">VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pNext-10316" href="#VUID-vkCmdEncodeVideoKHR-pNext-10316"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pNext-10316</span><br>
@@ -13261,7 +13402,7 @@ If an instance of the <a href="VkVideoEncodeQuantizationMapInfoKHR.html" class="
 structure is included in the <code>pNext</code> chain of <code>pEncodeInfo</code>, its
 <code>quantizationMap</code> member is not <a href="VK_NULL_HANDLE.html" class="xref page">VK_NULL_HANDLE</a>, and there is a
 bound video session parameters object created with
-<code>VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR</code>,
+<a href="VkVideoSessionParametersCreateFlagBitsKHR.html" class="xref page">VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR</a>,
 then <code>quantizationMapExtent</code> <strong>must</strong> equal
 <span class="eq">⌈<code>pEncodeInfo-&gt;srcPictureResource.codedExtent</code> /
 <code>quantizationMapTexelSize</code>⌉</span></p>
@@ -13270,16 +13411,16 @@ then <code>quantizationMapExtent</code> <strong>must</strong> equal
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10837" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10837"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10837</span><br>
 
 If <code>pEncodeInfo-&gt;flags</code> includes
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</code>, then the
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</a>, then the
 <a href="../../../../spec/latest/chapters/videocoding.html#encode-intra-refresh-modes" class="xref page">intra refresh mode</a> the bound video
 session was created with <strong>must</strong> not be
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_NONE_KHR</code></p>
+<a href="VkVideoEncodeIntraRefreshModeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_NONE_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10838" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10838"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10838</span><br>
 
 If <code>pEncodeInfo-&gt;flags</code> includes
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</code>, then
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</a>, then
 <code>pEncodeInfo-&gt;activeReferencePictureCount</code> <strong>must</strong> be less than or
 equal to
 <a href="VkVideoEncodeIntraRefreshCapabilitiesKHR.html" class="xref page">VkVideoEncodeIntraRefreshCapabilitiesKHR</a>::<code>maxIntraRefreshActiveReferencePictures</code>,
@@ -13290,7 +13431,7 @@ video profile the bound video session was created with</p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10839" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10839"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10839</span><br>
 
 If <code>pEncodeInfo-&gt;flags</code> includes
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</code>, then the <code>pNext</code> chain
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</a>, then the <code>pNext</code> chain
 of <code>pEncodeInfo</code> <strong>must</strong> include a
 <a href="VkVideoEncodeIntraRefreshInfoKHR.html" class="xref page">VkVideoEncodeIntraRefreshInfoKHR</a> structure</p>
 </li>
@@ -13298,7 +13439,7 @@ of <code>pEncodeInfo</code> <strong>must</strong> include a
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10840" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10840"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10840</span><br>
 
 If <code>pEncodeInfo-&gt;flags</code> includes
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</code>, then the
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</a>, then the
 <code>intraRefreshCycleDuration</code> member of the
 <a href="VkVideoEncodeIntraRefreshInfoKHR.html" class="xref page">VkVideoEncodeIntraRefreshInfoKHR</a> structure included in the
 <code>pNext</code> chain of <code>pEncodeInfo</code> <strong>must</strong> not be zero</p>
@@ -13307,7 +13448,7 @@ If <code>pEncodeInfo-&gt;flags</code> includes
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10841" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10841"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10841</span><br>
 
 If <code>pEncodeInfo-&gt;flags</code> includes
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</code>, then the
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</a>, then the
 <code>intraRefreshIndex</code> member of the
 <a href="VkVideoEncodeIntraRefreshInfoKHR.html" class="xref page">VkVideoEncodeIntraRefreshInfoKHR</a> structure included in the
 <code>pNext</code> chain of <code>pEncodeInfo</code> <strong>must</strong> be less than
@@ -13320,7 +13461,7 @@ If the <code>pNext</code> chain of any element of
 <code>pEncodeInfo-&gt;pReferenceSlots</code> includes a
 <a href="VkVideoReferenceIntraRefreshInfoKHR.html" class="xref page">VkVideoReferenceIntraRefreshInfoKHR</a> structure with a non-zero
 <code>dirtyIntraRefreshRegions</code> member, then <code>pEncodeInfo-&gt;flags</code>
-<strong>must</strong> include <code>VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</code></p>
+<strong>must</strong> include <a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pNext-10843" href="#VUID-vkCmdEncodeVideoKHR-pNext-10843"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pNext-10843</span><br>
@@ -13350,7 +13491,7 @@ video profile the bound video session was created with</p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pNext-08225" href="#VUID-vkCmdEncodeVideoKHR-pNext-08225"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pNext-08225</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code>, then the <code>pNext</code>
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a>, then the <code>pNext</code>
 chain of <code>pEncodeInfo</code> <strong>must</strong> include a
 <a href="VkVideoEncodeH264PictureInfoKHR.html" class="xref page">VkVideoEncodeH264PictureInfoKHR</a> structure</p>
 </li>
@@ -13358,7 +13499,7 @@ chain of <code>pEncodeInfo</code> <strong>must</strong> include a
 <p><a id="VUID-vkCmdEncodeVideoKHR-StdVideoH264SequenceParameterSet-08226" href="#VUID-vkCmdEncodeVideoKHR-StdVideoH264SequenceParameterSet-08226"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-StdVideoH264SequenceParameterSet-08226</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code>, then the bound video
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a>, then the bound video
 session parameters object <strong>must</strong> contain a
 <code>StdVideoH264SequenceParameterSet</code> entry with
 <code>seq_parameter_set_id</code> matching
@@ -13371,7 +13512,7 @@ provided in the <code>pStdPictureInfo</code> member of the
 <p><a id="VUID-vkCmdEncodeVideoKHR-StdVideoH264PictureParameterSet-08227" href="#VUID-vkCmdEncodeVideoKHR-StdVideoH264PictureParameterSet-08227"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-StdVideoH264PictureParameterSet-08227</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code>, then the bound video
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a>, then the bound video
 session parameters object <strong>must</strong> contain a
 <code>StdVideoH264PictureParameterSet</code> entry with
 <code>seq_parameter_set_id</code> and <code>pic_parameter_set_id</code> matching
@@ -13385,7 +13526,7 @@ the <a href="VkVideoEncodeH264PictureInfoKHR.html" class="xref page">VkVideoEnco
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-08228" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-08228"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-08228</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a> and
 <code>pEncodeInfo-&gt;pSetupReferenceSlot</code> is not <code>NULL</code>, then the
 <code>pNext</code> chain of <code>pEncodeInfo-&gt;pSetupReferenceSlot</code> <strong>must</strong>
 include a <a href="VkVideoEncodeH264DpbSlotInfoKHR.html" class="xref page">VkVideoEncodeH264DpbSlotInfoKHR</a> structure</p>
@@ -13394,7 +13535,7 @@ include a <a href="VkVideoEncodeH264DpbSlotInfoKHR.html" class="xref page">VkVid
 <p><a id="VUID-vkCmdEncodeVideoKHR-pNext-08229" href="#VUID-vkCmdEncodeVideoKHR-pNext-08229"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pNext-08229</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code>, then the <code>pNext</code>
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a>, then the <code>pNext</code>
 chain of each element of <code>pEncodeInfo-&gt;pReferenceSlots</code> <strong>must</strong>
 include a <a href="VkVideoEncodeH264DpbSlotInfoKHR.html" class="xref page">VkVideoEncodeH264DpbSlotInfoKHR</a> structure</p>
 </li>
@@ -13402,9 +13543,9 @@ include a <a href="VkVideoEncodeH264DpbSlotInfoKHR.html" class="xref page">VkVid
 <p><a id="VUID-vkCmdEncodeVideoKHR-constantQp-08269" href="#VUID-vkCmdEncodeVideoKHR-constantQp-08269"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-constantQp-08269</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code> and the current
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a> and the current
 <a href="../../../../spec/latest/chapters/videocoding.html#encode-rate-control-modes" class="xref page">rate control mode</a> is not
-<code>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR</code>, then
+<a href="VkVideoEncodeRateControlModeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR</a>, then
 <a href="VkVideoEncodeH264NaluSliceInfoKHR.html" class="xref page">VkVideoEncodeH264NaluSliceInfoKHR</a>::<code>constantQp</code> <strong>must</strong> be zero
 for each element of the <code>pNaluSliceEntries</code> member of the
 <a href="VkVideoEncodeH264PictureInfoKHR.html" class="xref page">VkVideoEncodeH264PictureInfoKHR</a> structure included in the
@@ -13414,9 +13555,9 @@ for each element of the <code>pNaluSliceEntries</code> member of the
 <p><a id="VUID-vkCmdEncodeVideoKHR-constantQp-08270" href="#VUID-vkCmdEncodeVideoKHR-constantQp-08270"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-constantQp-08270</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code> and the current
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a> and the current
 <a href="../../../../spec/latest/chapters/videocoding.html#encode-rate-control-modes" class="xref page">rate control mode</a> is
-<code>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR</code>, then
+<a href="VkVideoEncodeRateControlModeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR</a>, then
 <a href="VkVideoEncodeH264NaluSliceInfoKHR.html" class="xref page">VkVideoEncodeH264NaluSliceInfoKHR</a>::<code>constantQp</code> <strong>must</strong> be
 between <a href="VkVideoEncodeH264CapabilitiesKHR.html" class="xref page">VkVideoEncodeH264CapabilitiesKHR</a>::<code>minQp</code> and
 <a href="VkVideoEncodeH264CapabilitiesKHR.html" class="xref page">VkVideoEncodeH264CapabilitiesKHR</a>::<code>maxQp</code>, as returned by
@@ -13430,9 +13571,9 @@ bound video session was created with, for each element of the
 <p><a id="VUID-vkCmdEncodeVideoKHR-constantQp-08271" href="#VUID-vkCmdEncodeVideoKHR-constantQp-08271"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-constantQp-08271</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a> and
 <a href="VkVideoEncodeH264CapabilitiesKHR.html" class="xref page">VkVideoEncodeH264CapabilitiesKHR</a>::<code>flags</code> does not include
-<code>VK_VIDEO_ENCODE_H264_CAPABILITY_PER_SLICE_CONSTANT_QP_BIT_KHR</code>, as
+<a href="VkVideoEncodeH264CapabilityFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_H264_CAPABILITY_PER_SLICE_CONSTANT_QP_BIT_KHR</a>, as
 returned by <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the video
 profile the bound video session was created with, then
 <a href="VkVideoEncodeH264NaluSliceInfoKHR.html" class="xref page">VkVideoEncodeH264NaluSliceInfoKHR</a>::<code>constantQp</code> <strong>must</strong> have the
@@ -13444,7 +13585,7 @@ same value for each element of the <code>pNaluSliceEntries</code> member of the
 <p><a id="VUID-vkCmdEncodeVideoKHR-naluSliceEntryCount-08302" href="#VUID-vkCmdEncodeVideoKHR-naluSliceEntryCount-08302"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-naluSliceEntryCount-08302</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code>, then the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a>, then the
 <code>naluSliceEntryCount</code> member of the
 <a href="VkVideoEncodeH264PictureInfoKHR.html" class="xref page">VkVideoEncodeH264PictureInfoKHR</a> structure included in the
 <code>pNext</code> chain of <code>pEncodeInfo</code> <strong>must</strong> be less than or equal to
@@ -13455,9 +13596,9 @@ If the bound video session was created with the video codec operation
 <p><a id="VUID-vkCmdEncodeVideoKHR-naluSliceEntryCount-08312" href="#VUID-vkCmdEncodeVideoKHR-naluSliceEntryCount-08312"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-naluSliceEntryCount-08312</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a> and
 <a href="VkVideoEncodeH264CapabilitiesKHR.html" class="xref page">VkVideoEncodeH264CapabilitiesKHR</a>::<code>flags</code> does not include
-<code>VK_VIDEO_ENCODE_H264_CAPABILITY_ROW_UNALIGNED_SLICE_BIT_KHR</code>, as
+<a href="VkVideoEncodeH264CapabilityFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_H264_CAPABILITY_ROW_UNALIGNED_SLICE_BIT_KHR</a>, as
 returned by <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the video
 profile the bound video session was created with, then the
 <code>naluSliceEntryCount</code> member of the
@@ -13469,13 +13610,13 @@ profile the bound video session was created with, then the
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10845" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10845"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10845</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code> and with an
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a> and with an
 <a href="../../../../spec/latest/chapters/videocoding.html#encode-intra-refresh-modes" class="xref page">intra refresh mode</a> other than
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR</code>,
+<a href="VkVideoEncodeIntraRefreshModeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR</a>,
 <code>pEncodeInfo-&gt;flags</code> includes
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</code>, and
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</a>, and
 <a href="VkVideoEncodeIntraRefreshCapabilitiesKHR.html" class="xref page">VkVideoEncodeIntraRefreshCapabilitiesKHR</a>::<code>partitionIndependentIntraRefreshRegions</code>
-is <code>VK_FALSE</code>, as returned by
+is <a href="VK_FALSE.html" class="xref page">VK_FALSE</a>, as returned by
 <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the video profile the
 bound video session was created with, then the <code>naluSliceEntryCount</code>
 member of the <a href="VkVideoEncodeH264PictureInfoKHR.html" class="xref page">VkVideoEncodeH264PictureInfoKHR</a> structure included
@@ -13485,11 +13626,11 @@ in the <code>pNext</code> chain of <code>pEncodeInfo</code> <strong>must</strong
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10846" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10846"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10846</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code> and with the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a> and with the
 <a href="../../../../spec/latest/chapters/videocoding.html#encode-intra-refresh-modes" class="xref page">intra refresh mode</a>
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR</code>,
+<a href="VkVideoEncodeIntraRefreshModeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR</a>,
 and <code>pEncodeInfo-&gt;flags</code> includes
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</code>, then the
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</a>, then the
 <code>naluSliceEntryCount</code> member of the
 <a href="VkVideoEncodeH264PictureInfoKHR.html" class="xref page">VkVideoEncodeH264PictureInfoKHR</a> structure included in the
 <code>pNext</code> chain of <code>pEncodeInfo</code> <strong>must</strong> equal the
@@ -13510,13 +13651,13 @@ If <code>intraRefreshH264SliceIndex</code> is defined, then
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10848" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10848"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10848</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code> and with the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a> and with the
 <a href="../../../../spec/latest/chapters/videocoding.html#encode-intra-refresh-modes" class="xref page">intra refresh mode</a>
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR</code>,
+<a href="VkVideoEncodeIntraRefreshModeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR</a>,
 <code>pEncodeInfo-&gt;flags</code> includes
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</code>, and
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</a>, and
 <a href="VkVideoEncodeIntraRefreshCapabilitiesKHR.html" class="xref page">VkVideoEncodeIntraRefreshCapabilitiesKHR</a>::<code>nonRectangularIntraRefreshRegions</code>
-is <code>VK_FALSE</code>, as returned by
+is <a href="VK_FALSE.html" class="xref page">VK_FALSE</a>, as returned by
 <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the video profile the
 bound video session was created with, then the <code>naluSliceEntryCount</code>
 member of the <a href="VkVideoEncodeH264PictureInfoKHR.html" class="xref page">VkVideoEncodeH264PictureInfoKHR</a> structure included
@@ -13527,24 +13668,24 @@ equal to <code>minCodingBlockExtent.height</code></p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-h264PictureType-10849" href="#VUID-vkCmdEncodeVideoKHR-h264PictureType-10849"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-h264PictureType-10849</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code>,
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a>,
 <code>h264PictureType</code> is <code>STD_VIDEO_H264_PICTURE_TYPE_B</code>, and
 <a href="VkVideoEncodeH264CapabilitiesKHR.html" class="xref page">VkVideoEncodeH264CapabilitiesKHR</a>::<code>flags</code>, as returned by
 <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the video profile the
 bound video session was created with, does not include
-<code>VK_VIDEO_ENCODE_H264_CAPABILITY_B_PICTURE_INTRA_REFRESH_BIT_KHR</code>,
+<a href="VkVideoEncodeH264CapabilityFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_H264_CAPABILITY_B_PICTURE_INTRA_REFRESH_BIT_KHR</a>,
 then <code>pEncodeInfo-&gt;flags</code> <strong>must</strong> not include
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</code></p>
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-flags-10850" href="#VUID-vkCmdEncodeVideoKHR-flags-10850"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-flags-10850</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a> and
 <a href="VkVideoEncodeH264CapabilitiesKHR.html" class="xref page">VkVideoEncodeH264CapabilitiesKHR</a>::<code>flags</code>, as returned by
 <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the video profile the
 bound video session was created with, does not include
-<code>VK_VIDEO_ENCODE_H264_CAPABILITY_DIFFERENT_SLICE_TYPE_BIT_KHR</code>, then
+<a href="VkVideoEncodeH264CapabilityFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_H264_CAPABILITY_DIFFERENT_SLICE_TYPE_BIT_KHR</a>, then
 <code>pNaluSliceEntries</code>[<span class="eq">i</span>].<code>pStdSliceHeader-&gt;slice_type</code> <strong>must</strong>
 be identical for all elements <span class="eq">i</span> of the <code>pNaluSliceEntries</code>
 member of the <a href="VkVideoEncodeH264PictureInfoKHR.html" class="xref page">VkVideoEncodeH264PictureInfoKHR</a> structure included
@@ -13557,7 +13698,7 @@ defined</p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pNext-08352" href="#VUID-vkCmdEncodeVideoKHR-pNext-08352"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pNext-08352</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code>, the <code>pNext</code>
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a>, the <code>pNext</code>
 chain of <code>pEncodeInfo</code> includes a
 <a href="VkVideoEncodeH264PictureInfoKHR.html" class="xref page">VkVideoEncodeH264PictureInfoKHR</a> structure, and
 <code>pEncodeInfo-&gt;referenceSlotCount</code> is greater than zero, then
@@ -13568,7 +13709,7 @@ chain of <code>pEncodeInfo</code> includes a
 <p><a id="VUID-vkCmdEncodeVideoKHR-pNext-08339" href="#VUID-vkCmdEncodeVideoKHR-pNext-08339"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pNext-08339</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code>, the <code>pNext</code>
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a>, the <code>pNext</code>
 chain of <code>pEncodeInfo</code> includes a
 <a href="VkVideoEncodeH264PictureInfoKHR.html" class="xref page">VkVideoEncodeH264PictureInfoKHR</a> structure, and
 <a href="VkVideoEncodeH264PictureInfoKHR.html" class="xref page">VkVideoEncodeH264PictureInfoKHR</a>::<code>pStdPictureInfo-&gt;pRefLists</code>
@@ -13584,7 +13725,7 @@ the <code>slotIndex</code> member of one of the elements of
 <p><a id="VUID-vkCmdEncodeVideoKHR-pNext-08353" href="#VUID-vkCmdEncodeVideoKHR-pNext-08353"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pNext-08353</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code>, the <code>pNext</code>
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a>, the <code>pNext</code>
 chain of <code>pEncodeInfo</code> includes a
 <a href="VkVideoEncodeH264PictureInfoKHR.html" class="xref page">VkVideoEncodeH264PictureInfoKHR</a> structure, and
 <code>pEncodeInfo-&gt;referenceSlotCount</code> is greater than zero, then the
@@ -13598,7 +13739,7 @@ the <code>RefPicList0</code> or <code>RefPicList1</code> array members of the
 <p><a id="VUID-vkCmdEncodeVideoKHR-maxPPictureL0ReferenceCount-08340" href="#VUID-vkCmdEncodeVideoKHR-maxPPictureL0ReferenceCount-08340"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-maxPPictureL0ReferenceCount-08340</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a> and
 <a href="VkVideoEncodeH264CapabilitiesKHR.html" class="xref page">VkVideoEncodeH264CapabilitiesKHR</a>::<code>maxPPictureL0ReferenceCount</code>
 is zero, as returned by <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a>
 for the video profile the bound video session was created with, then
@@ -13609,7 +13750,7 @@ for the video profile the bound video session was created with, then
 <p><a id="VUID-vkCmdEncodeVideoKHR-maxBPictureL0ReferenceCount-08341" href="#VUID-vkCmdEncodeVideoKHR-maxBPictureL0ReferenceCount-08341"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-maxBPictureL0ReferenceCount-08341</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a> and
 <a href="VkVideoEncodeH264CapabilitiesKHR.html" class="xref page">VkVideoEncodeH264CapabilitiesKHR</a>::<code>maxBPictureL0ReferenceCount</code>
 and <a href="VkVideoEncodeH264CapabilitiesKHR.html" class="xref page">VkVideoEncodeH264CapabilitiesKHR</a>::<code>maxL1ReferenceCount</code>
 are both zero, as returned by
@@ -13622,9 +13763,9 @@ each element of <code>h264L0PictureTypes</code> and <code>h264L1PictureTypes</co
 <p><a id="VUID-vkCmdEncodeVideoKHR-flags-08342" href="#VUID-vkCmdEncodeVideoKHR-flags-08342"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-flags-08342</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a> and
 <a href="VkVideoEncodeH264CapabilitiesKHR.html" class="xref page">VkVideoEncodeH264CapabilitiesKHR</a>::<code>flags</code> does not include
-<code>VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_KHR</code>, as
+<a href="VkVideoEncodeH264CapabilityFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_KHR</a>, as
 returned by <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the video
 profile the bound video session was created with, then each element of
 <code>h264L0PictureTypes</code> <strong>must</strong> not be <code>STD_VIDEO_H264_PICTURE_TYPE_B</code></p>
@@ -13633,9 +13774,9 @@ profile the bound video session was created with, then each element of
 <p><a id="VUID-vkCmdEncodeVideoKHR-flags-08343" href="#VUID-vkCmdEncodeVideoKHR-flags-08343"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-flags-08343</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR</a> and
 <a href="VkVideoEncodeH264CapabilitiesKHR.html" class="xref page">VkVideoEncodeH264CapabilitiesKHR</a>::<code>flags</code> does not include
-<code>VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_KHR</code>, as
+<a href="VkVideoEncodeH264CapabilityFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_KHR</a>, as
 returned by <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the video
 profile the bound video session was created with, then each element of
 <code>h264L1PictureTypes</code> <strong>must</strong> not be <code>STD_VIDEO_H264_PICTURE_TYPE_B</code></p>
@@ -13644,7 +13785,7 @@ profile the bound video session was created with, then each element of
 <p><a id="VUID-vkCmdEncodeVideoKHR-pNext-08230" href="#VUID-vkCmdEncodeVideoKHR-pNext-08230"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pNext-08230</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code>, then the <code>pNext</code>
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a>, then the <code>pNext</code>
 chain of <code>pEncodeInfo</code> <strong>must</strong> include a
 <a href="VkVideoEncodeH265PictureInfoKHR.html" class="xref page">VkVideoEncodeH265PictureInfoKHR</a> structure</p>
 </li>
@@ -13652,7 +13793,7 @@ chain of <code>pEncodeInfo</code> <strong>must</strong> include a
 <p><a id="VUID-vkCmdEncodeVideoKHR-StdVideoH265VideoParameterSet-08231" href="#VUID-vkCmdEncodeVideoKHR-StdVideoH265VideoParameterSet-08231"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-StdVideoH265VideoParameterSet-08231</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code>, then the bound video
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a>, then the bound video
 session parameters object <strong>must</strong> contain a
 <code>StdVideoH265VideoParameterSet</code> entry with
 <code>vps_video_parameter_set_id</code> matching
@@ -13665,7 +13806,7 @@ that is provided in the <code>pStdPictureInfo</code> member of the
 <p><a id="VUID-vkCmdEncodeVideoKHR-StdVideoH265SequenceParameterSet-08232" href="#VUID-vkCmdEncodeVideoKHR-StdVideoH265SequenceParameterSet-08232"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-StdVideoH265SequenceParameterSet-08232</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code>, then the bound video
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a>, then the bound video
 session parameters object <strong>must</strong> contain a
 <code>StdVideoH265SequenceParameterSet</code> entry with
 <code>sps_video_parameter_set_id</code> and <code>sps_seq_parameter_set_id</code>
@@ -13680,7 +13821,7 @@ the <a href="VkVideoEncodeH265PictureInfoKHR.html" class="xref page">VkVideoEnco
 <p><a id="VUID-vkCmdEncodeVideoKHR-StdVideoH265PictureParameterSet-08233" href="#VUID-vkCmdEncodeVideoKHR-StdVideoH265PictureParameterSet-08233"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-StdVideoH265PictureParameterSet-08233</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code>, then the bound video
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a>, then the bound video
 session parameters object <strong>must</strong> contain a
 <code>StdVideoH265PictureParameterSet</code> entry with
 <code>sps_video_parameter_set_id</code>, <code>pps_seq_parameter_set_id</code>, and
@@ -13696,7 +13837,7 @@ the <a href="VkVideoEncodeH265PictureInfoKHR.html" class="xref page">VkVideoEnco
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-08234" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-08234"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-08234</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a> and
 <code>pEncodeInfo-&gt;pSetupReferenceSlot</code> is not <code>NULL</code>, then the
 <code>pNext</code> chain of <code>pEncodeInfo-&gt;pSetupReferenceSlot</code> <strong>must</strong>
 include a <a href="VkVideoEncodeH265DpbSlotInfoKHR.html" class="xref page">VkVideoEncodeH265DpbSlotInfoKHR</a> structure</p>
@@ -13705,7 +13846,7 @@ include a <a href="VkVideoEncodeH265DpbSlotInfoKHR.html" class="xref page">VkVid
 <p><a id="VUID-vkCmdEncodeVideoKHR-pNext-08235" href="#VUID-vkCmdEncodeVideoKHR-pNext-08235"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pNext-08235</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code>, then the <code>pNext</code>
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a>, then the <code>pNext</code>
 chain of each element of <code>pEncodeInfo-&gt;pReferenceSlots</code> <strong>must</strong>
 include a <a href="VkVideoEncodeH265DpbSlotInfoKHR.html" class="xref page">VkVideoEncodeH265DpbSlotInfoKHR</a> structure</p>
 </li>
@@ -13713,9 +13854,9 @@ include a <a href="VkVideoEncodeH265DpbSlotInfoKHR.html" class="xref page">VkVid
 <p><a id="VUID-vkCmdEncodeVideoKHR-constantQp-08272" href="#VUID-vkCmdEncodeVideoKHR-constantQp-08272"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-constantQp-08272</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code> and the current
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a> and the current
 <a href="../../../../spec/latest/chapters/videocoding.html#encode-rate-control-modes" class="xref page">rate control mode</a> is not
-<code>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR</code>, then
+<a href="VkVideoEncodeRateControlModeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR</a>, then
 <a href="VkVideoEncodeH265NaluSliceSegmentInfoKHR.html" class="xref page">VkVideoEncodeH265NaluSliceSegmentInfoKHR</a>::<code>constantQp</code> <strong>must</strong>
 be zero for each element of the <code>pNaluSliceSegmentEntries</code> member of
 the <a href="VkVideoEncodeH265PictureInfoKHR.html" class="xref page">VkVideoEncodeH265PictureInfoKHR</a> structure included in the
@@ -13725,9 +13866,9 @@ the <a href="VkVideoEncodeH265PictureInfoKHR.html" class="xref page">VkVideoEnco
 <p><a id="VUID-vkCmdEncodeVideoKHR-constantQp-08273" href="#VUID-vkCmdEncodeVideoKHR-constantQp-08273"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-constantQp-08273</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code> and the current
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a> and the current
 <a href="../../../../spec/latest/chapters/videocoding.html#encode-rate-control-modes" class="xref page">rate control mode</a> is
-<code>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR</code>, then
+<a href="VkVideoEncodeRateControlModeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR</a>, then
 <a href="VkVideoEncodeH265NaluSliceSegmentInfoKHR.html" class="xref page">VkVideoEncodeH265NaluSliceSegmentInfoKHR</a>::<code>constantQp</code> <strong>must</strong>
 be between <a href="VkVideoEncodeH265CapabilitiesKHR.html" class="xref page">VkVideoEncodeH265CapabilitiesKHR</a>::<code>minQp</code> and
 <a href="VkVideoEncodeH265CapabilitiesKHR.html" class="xref page">VkVideoEncodeH265CapabilitiesKHR</a>::<code>maxQp</code>, as returned by
@@ -13741,9 +13882,9 @@ bound video session was created with, for each element of the
 <p><a id="VUID-vkCmdEncodeVideoKHR-constantQp-08274" href="#VUID-vkCmdEncodeVideoKHR-constantQp-08274"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-constantQp-08274</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a> and
 <a href="VkVideoEncodeH265CapabilitiesKHR.html" class="xref page">VkVideoEncodeH265CapabilitiesKHR</a>::<code>flags</code> does not include
-<code>VK_VIDEO_ENCODE_H265_CAPABILITY_PER_SLICE_SEGMENT_CONSTANT_QP_BIT_KHR</code>,
+<a href="VkVideoEncodeH265CapabilityFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_H265_CAPABILITY_PER_SLICE_SEGMENT_CONSTANT_QP_BIT_KHR</a>,
 as returned by <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the
 video profile the bound video session was created with, then
 <a href="VkVideoEncodeH265NaluSliceSegmentInfoKHR.html" class="xref page">VkVideoEncodeH265NaluSliceSegmentInfoKHR</a>::<code>constantQp</code> <strong>must</strong>
@@ -13756,7 +13897,7 @@ have the same value for each element of the
 <p><a id="VUID-vkCmdEncodeVideoKHR-naluSliceSegmentEntryCount-08307" href="#VUID-vkCmdEncodeVideoKHR-naluSliceSegmentEntryCount-08307"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-naluSliceSegmentEntryCount-08307</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code>, then the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a>, then the
 <code>naluSliceSegmentEntryCount</code> member of the
 <a href="VkVideoEncodeH265PictureInfoKHR.html" class="xref page">VkVideoEncodeH265PictureInfoKHR</a> structure included in the
 <code>pNext</code> chain of <code>pEncodeInfo</code> <strong>must</strong> be less than or equal to
@@ -13767,9 +13908,9 @@ If the bound video session was created with the video codec operation
 <p><a id="VUID-vkCmdEncodeVideoKHR-naluSliceSegmentEntryCount-08313" href="#VUID-vkCmdEncodeVideoKHR-naluSliceSegmentEntryCount-08313"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-naluSliceSegmentEntryCount-08313</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a> and
 <a href="VkVideoEncodeH265CapabilitiesKHR.html" class="xref page">VkVideoEncodeH265CapabilitiesKHR</a>::<code>flags</code> does not include
-<code>VK_VIDEO_ENCODE_H265_CAPABILITY_ROW_UNALIGNED_SLICE_SEGMENT_BIT_KHR</code>,
+<a href="VkVideoEncodeH265CapabilityFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_H265_CAPABILITY_ROW_UNALIGNED_SLICE_SEGMENT_BIT_KHR</a>,
 as returned by <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the
 video profile the bound video session was created with, then the
 <code>naluSliceSegmentEntryCount</code> member of the
@@ -13781,13 +13922,13 @@ video profile the bound video session was created with, then the
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10851" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10851"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10851</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code> and with an
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a> and with an
 <a href="../../../../spec/latest/chapters/videocoding.html#encode-intra-refresh-modes" class="xref page">intra refresh mode</a> other than
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR</code>,
+<a href="VkVideoEncodeIntraRefreshModeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR</a>,
 <code>pEncodeInfo-&gt;flags</code> includes
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</code>, and
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</a>, and
 <a href="VkVideoEncodeIntraRefreshCapabilitiesKHR.html" class="xref page">VkVideoEncodeIntraRefreshCapabilitiesKHR</a>::<code>partitionIndependentIntraRefreshRegions</code>
-is <code>VK_FALSE</code>, as returned by
+is <a href="VK_FALSE.html" class="xref page">VK_FALSE</a>, as returned by
 <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the video profile the
 bound video session was created with, then the
 <code>naluSliceSegmentEntryCount</code> member of the
@@ -13798,11 +13939,11 @@ bound video session was created with, then the
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10852" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10852"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10852</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code> and with the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a> and with the
 <a href="../../../../spec/latest/chapters/videocoding.html#encode-intra-refresh-modes" class="xref page">intra refresh mode</a>
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR</code>,
+<a href="VkVideoEncodeIntraRefreshModeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR</a>,
 and <code>pEncodeInfo-&gt;flags</code> includes
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</code>, then the
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</a>, then the
 <code>naluSliceSegmentEntryCount</code> member of the
 <a href="VkVideoEncodeH265PictureInfoKHR.html" class="xref page">VkVideoEncodeH265PictureInfoKHR</a> structure included in the
 <code>pNext</code> chain of <code>pEncodeInfo</code> <strong>must</strong> equal
@@ -13821,13 +13962,13 @@ If <code>intraRefreshH265SliceSegmentIndex</code> is defined, then
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10854" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10854"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10854</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code> and with the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a> and with the
 <a href="../../../../spec/latest/chapters/videocoding.html#encode-intra-refresh-modes" class="xref page">intra refresh mode</a>
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR</code>,
+<a href="VkVideoEncodeIntraRefreshModeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR</a>,
 <code>pEncodeInfo-&gt;flags</code> includes
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</code>, and
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</a>, and
 <a href="VkVideoEncodeIntraRefreshCapabilitiesKHR.html" class="xref page">VkVideoEncodeIntraRefreshCapabilitiesKHR</a>::<code>nonRectangularIntraRefreshRegions</code>
-is <code>VK_FALSE</code>, as returned by
+is <a href="VK_FALSE.html" class="xref page">VK_FALSE</a>, as returned by
 <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the video profile the
 bound video session was created with, then the
 <code>naluSliceSegmentEntryCount</code> member of the
@@ -13839,24 +13980,24 @@ bound video session was created with, then the
 <p><a id="VUID-vkCmdEncodeVideoKHR-h265PictureType-10855" href="#VUID-vkCmdEncodeVideoKHR-h265PictureType-10855"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-h265PictureType-10855</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code>,
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a>,
 <code>h265PictureType</code> is <code>STD_VIDEO_H265_PICTURE_TYPE_B</code>, and
 <a href="VkVideoEncodeH265CapabilitiesKHR.html" class="xref page">VkVideoEncodeH265CapabilitiesKHR</a>::<code>flags</code>, as returned by
 <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the video profile the
 bound video session was created with, does not include
-<code>VK_VIDEO_ENCODE_H265_CAPABILITY_B_PICTURE_INTRA_REFRESH_BIT_KHR</code>,
+<a href="VkVideoEncodeH265CapabilityFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_H265_CAPABILITY_B_PICTURE_INTRA_REFRESH_BIT_KHR</a>,
 then <code>pEncodeInfo-&gt;flags</code> <strong>must</strong> not include
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</code></p>
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-flags-10856" href="#VUID-vkCmdEncodeVideoKHR-flags-10856"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-flags-10856</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a> and
 <a href="VkVideoEncodeH265CapabilitiesKHR.html" class="xref page">VkVideoEncodeH265CapabilitiesKHR</a>::<code>flags</code>, as returned by
 <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the used video
 profile, does not include
-<code>VK_VIDEO_ENCODE_H265_CAPABILITY_DIFFERENT_SLICE_SEGMENT_TYPE_BIT_KHR</code>,
+<a href="VkVideoEncodeH265CapabilityFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_H265_CAPABILITY_DIFFERENT_SLICE_SEGMENT_TYPE_BIT_KHR</a>,
 then
 <code>pNaluSliceSegmentEntries</code>[<span class="eq">i</span>].<code>pStdSliceSegmentHeader-&gt;slice_type</code>
 <strong>must</strong> be identical for all elements <span class="eq">i</span> of the
@@ -13871,7 +14012,7 @@ then
 <p><a id="VUID-vkCmdEncodeVideoKHR-pNext-08354" href="#VUID-vkCmdEncodeVideoKHR-pNext-08354"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pNext-08354</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code>, the <code>pNext</code>
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a>, the <code>pNext</code>
 chain of <code>pEncodeInfo</code> includes a
 <a href="VkVideoEncodeH265PictureInfoKHR.html" class="xref page">VkVideoEncodeH265PictureInfoKHR</a> structure, and
 <code>pEncodeInfo-&gt;referenceSlotCount</code> is greater than zero, then
@@ -13882,7 +14023,7 @@ chain of <code>pEncodeInfo</code> includes a
 <p><a id="VUID-vkCmdEncodeVideoKHR-pNext-08344" href="#VUID-vkCmdEncodeVideoKHR-pNext-08344"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pNext-08344</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code>, the <code>pNext</code>
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a>, the <code>pNext</code>
 chain of <code>pEncodeInfo</code> includes a
 <a href="VkVideoEncodeH265PictureInfoKHR.html" class="xref page">VkVideoEncodeH265PictureInfoKHR</a> structure, and
 <a href="VkVideoEncodeH265PictureInfoKHR.html" class="xref page">VkVideoEncodeH265PictureInfoKHR</a>::<code>pStdPictureInfo-&gt;pRefLists</code>
@@ -13898,7 +14039,7 @@ the <code>slotIndex</code> member of one of the elements of
 <p><a id="VUID-vkCmdEncodeVideoKHR-pNext-08355" href="#VUID-vkCmdEncodeVideoKHR-pNext-08355"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pNext-08355</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code>, the <code>pNext</code>
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a>, the <code>pNext</code>
 chain of <code>pEncodeInfo</code> includes a
 <a href="VkVideoEncodeH265PictureInfoKHR.html" class="xref page">VkVideoEncodeH265PictureInfoKHR</a> structure, and
 <code>pEncodeInfo-&gt;referenceSlotCount</code> is greater than zero, then the
@@ -13912,7 +14053,7 @@ the <code>RefPicList0</code> or <code>RefPicList1</code> array members of the
 <p><a id="VUID-vkCmdEncodeVideoKHR-maxPPictureL0ReferenceCount-08345" href="#VUID-vkCmdEncodeVideoKHR-maxPPictureL0ReferenceCount-08345"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-maxPPictureL0ReferenceCount-08345</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a> and
 <a href="VkVideoEncodeH265CapabilitiesKHR.html" class="xref page">VkVideoEncodeH265CapabilitiesKHR</a>::<code>maxPPictureL0ReferenceCount</code>
 is zero, as returned by <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a>
 for the video profile the bound video session was created with, then
@@ -13923,7 +14064,7 @@ for the video profile the bound video session was created with, then
 <p><a id="VUID-vkCmdEncodeVideoKHR-maxBPictureL0ReferenceCount-08346" href="#VUID-vkCmdEncodeVideoKHR-maxBPictureL0ReferenceCount-08346"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-maxBPictureL0ReferenceCount-08346</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a> and
 <a href="VkVideoEncodeH265CapabilitiesKHR.html" class="xref page">VkVideoEncodeH265CapabilitiesKHR</a>::<code>maxBPictureL0ReferenceCount</code>
 and <a href="VkVideoEncodeH265CapabilitiesKHR.html" class="xref page">VkVideoEncodeH265CapabilitiesKHR</a>::<code>maxL1ReferenceCount</code>
 are both zero, as returned by
@@ -13936,9 +14077,9 @@ each element of <code>h265L0PictureTypes</code> and <code>h265L1PictureTypes</co
 <p><a id="VUID-vkCmdEncodeVideoKHR-flags-08347" href="#VUID-vkCmdEncodeVideoKHR-flags-08347"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-flags-08347</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a> and
 <a href="VkVideoEncodeH265CapabilitiesKHR.html" class="xref page">VkVideoEncodeH265CapabilitiesKHR</a>::<code>flags</code> does not include
-<code>VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_KHR</code>, as
+<a href="VkVideoEncodeH265CapabilityFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_KHR</a>, as
 returned by <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the video
 profile the bound video session was created with, then each element of
 <code>h265L0PictureTypes</code> <strong>must</strong> not be <code>STD_VIDEO_H264_PICTURE_TYPE_B</code></p>
@@ -13947,9 +14088,9 @@ profile the bound video session was created with, then each element of
 <p><a id="VUID-vkCmdEncodeVideoKHR-flags-08348" href="#VUID-vkCmdEncodeVideoKHR-flags-08348"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-flags-08348</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR</a> and
 <a href="VkVideoEncodeH265CapabilitiesKHR.html" class="xref page">VkVideoEncodeH265CapabilitiesKHR</a>::<code>flags</code> does not include
-<code>VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_KHR</code>, as
+<a href="VkVideoEncodeH265CapabilityFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_KHR</a>, as
 returned by <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the video
 profile the bound video session was created with, then each element of
 <code>h265L1PictureTypes</code> <strong>must</strong> not be <code>STD_VIDEO_H265_PICTURE_TYPE_B</code></p>
@@ -13958,7 +14099,7 @@ profile the bound video session was created with, then each element of
 <p><a id="VUID-vkCmdEncodeVideoKHR-pNext-10317" href="#VUID-vkCmdEncodeVideoKHR-pNext-10317"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pNext-10317</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code>, then the <code>pNext</code>
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a>, then the <code>pNext</code>
 chain of <code>pEncodeInfo</code> <strong>must</strong> include a
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a> structure</p>
 </li>
@@ -13966,7 +14107,7 @@ chain of <code>pEncodeInfo</code> <strong>must</strong> include a
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10318" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10318"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10318</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and
 <code>pEncodeInfo-&gt;pSetupReferenceSlot</code> is not <code>NULL</code>, then the
 <code>pNext</code> chain of <code>pEncodeInfo-&gt;pSetupReferenceSlot</code> <strong>must</strong>
 include a <a href="VkVideoEncodeAV1DpbSlotInfoKHR.html" class="xref page">VkVideoEncodeAV1DpbSlotInfoKHR</a> structure</p>
@@ -13975,7 +14116,7 @@ include a <a href="VkVideoEncodeAV1DpbSlotInfoKHR.html" class="xref page">VkVide
 <p><a id="VUID-vkCmdEncodeVideoKHR-pNext-10319" href="#VUID-vkCmdEncodeVideoKHR-pNext-10319"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pNext-10319</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code>, then the <code>pNext</code>
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a>, then the <code>pNext</code>
 chain of each element of <code>pEncodeInfo-&gt;pReferenceSlots</code> <strong>must</strong>
 include a <a href="VkVideoEncodeAV1DpbSlotInfoKHR.html" class="xref page">VkVideoEncodeAV1DpbSlotInfoKHR</a> structure</p>
 </li>
@@ -13983,9 +14124,9 @@ include a <a href="VkVideoEncodeAV1DpbSlotInfoKHR.html" class="xref page">VkVide
 <p><a id="VUID-vkCmdEncodeVideoKHR-constantQIndex-10320" href="#VUID-vkCmdEncodeVideoKHR-constantQIndex-10320"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-constantQIndex-10320</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and the current
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and the current
 <a href="../../../../spec/latest/chapters/videocoding.html#encode-rate-control-modes" class="xref page">rate control mode</a> is not
-<code>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR</code>, then the
+<a href="VkVideoEncodeRateControlModeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR</a>, then the
 <code>constantQIndex</code> member of the <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>
 structure included in the <code>pNext</code> chain of <code>pEncodeInfo</code> <strong>must</strong>
 be zero</p>
@@ -13994,9 +14135,9 @@ be zero</p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-constantQIndex-10321" href="#VUID-vkCmdEncodeVideoKHR-constantQIndex-10321"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-constantQIndex-10321</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and the current
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and the current
 <a href="../../../../spec/latest/chapters/videocoding.html#encode-rate-control-modes" class="xref page">rate control mode</a> is
-<code>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR</code>, then the
+<a href="VkVideoEncodeRateControlModeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR</a>, then the
 <code>constantQIndex</code> member of the <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>
 structure included in the <code>pNext</code> chain of <code>pEncodeInfo</code> <strong>must</strong>
 be between <a href="VkVideoEncodeAV1CapabilitiesKHR.html" class="xref page">VkVideoEncodeAV1CapabilitiesKHR</a>::<code>minQIndex</code> and
@@ -14008,9 +14149,9 @@ bound video session was created with</p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-flags-10322" href="#VUID-vkCmdEncodeVideoKHR-flags-10322"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-flags-10322</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and
 <a href="VkVideoEncodeAV1CapabilitiesKHR.html" class="xref page">VkVideoEncodeAV1CapabilitiesKHR</a>::<code>flags</code> does not include
-<code>VK_VIDEO_ENCODE_AV1_CAPABILITY_FRAME_SIZE_OVERRIDE_BIT_KHR</code>, as
+<a href="VkVideoEncodeAV1CapabilityFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_AV1_CAPABILITY_FRAME_SIZE_OVERRIDE_BIT_KHR</a>, as
 returned by <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the video
 profile the bound video session was created with, then
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>::<code>pStdPictureInfo-&gt;flags.frame_size_override_flag</code>
@@ -14021,9 +14162,9 @@ included in the <code>pNext</code> chain of <code>pEncodeInfo</code></p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-flags-10323" href="#VUID-vkCmdEncodeVideoKHR-flags-10323"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-flags-10323</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and
 <a href="VkVideoEncodeAV1CapabilitiesKHR.html" class="xref page">VkVideoEncodeAV1CapabilitiesKHR</a>::<code>flags</code> does not include
-<code>VK_VIDEO_ENCODE_AV1_CAPABILITY_FRAME_SIZE_OVERRIDE_BIT_KHR</code>, as
+<a href="VkVideoEncodeAV1CapabilityFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_AV1_CAPABILITY_FRAME_SIZE_OVERRIDE_BIT_KHR</a>, as
 returned by <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the video
 profile the bound video session was created with, then
 <code>pEncodeInfo-&gt;srcPictureResource.codedExtent.width</code> <strong>must</strong> equal
@@ -14034,9 +14175,9 @@ profile the bound video session was created with, then
 <p><a id="VUID-vkCmdEncodeVideoKHR-flags-10324" href="#VUID-vkCmdEncodeVideoKHR-flags-10324"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-flags-10324</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and
 <a href="VkVideoEncodeAV1CapabilitiesKHR.html" class="xref page">VkVideoEncodeAV1CapabilitiesKHR</a>::<code>flags</code> does not include
-<code>VK_VIDEO_ENCODE_AV1_CAPABILITY_FRAME_SIZE_OVERRIDE_BIT_KHR</code>, as
+<a href="VkVideoEncodeAV1CapabilityFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_AV1_CAPABILITY_FRAME_SIZE_OVERRIDE_BIT_KHR</a>, as
 returned by <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the video
 profile the bound video session was created with, then
 <code>pEncodeInfo-&gt;srcPictureResource.codedExtent.height</code> <strong>must</strong> equal
@@ -14047,9 +14188,9 @@ profile the bound video session was created with, then
 <p><a id="VUID-vkCmdEncodeVideoKHR-flags-10325" href="#VUID-vkCmdEncodeVideoKHR-flags-10325"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-flags-10325</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and
 <a href="VkVideoEncodeAV1CapabilitiesKHR.html" class="xref page">VkVideoEncodeAV1CapabilitiesKHR</a>::<code>flags</code> does not include
-<code>VK_VIDEO_ENCODE_AV1_CAPABILITY_MOTION_VECTOR_SCALING_BIT_KHR</code>, as
+<a href="VkVideoEncodeAV1CapabilityFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_AV1_CAPABILITY_MOTION_VECTOR_SCALING_BIT_KHR</a>, as
 returned by <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the video
 profile the bound video session was created with, then for each element
 <span class="eq">i</span> of <code>pEncodeInfo-&gt;pReferenceSlots</code>
@@ -14060,10 +14201,10 @@ profile the bound video session was created with, then for each element
 <p><a id="VUID-vkCmdEncodeVideoKHR-predictionMode-10326" href="#VUID-vkCmdEncodeVideoKHR-predictionMode-10326"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-predictionMode-10326</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and the
 <code>predictionMode</code> member of the <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>
 structure included in the <code>pNext</code> chain of <code>pEncodeInfo</code> is
-<code>VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_INTRA_ONLY_KHR</code>, then
+<a href="VkVideoEncodeAV1PredictionModeKHR.html" class="xref page">VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_INTRA_ONLY_KHR</a>, then
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>::<code>pStdPictureInfo-&gt;frame_type</code>
 <strong>must</strong> be <code>STD_VIDEO_AV1_FRAME_TYPE_KEY</code> or
 <code>STD_VIDEO_AV1_FRAME_TYPE_INTRA_ONLY</code></p>
@@ -14072,35 +14213,35 @@ structure included in the <code>pNext</code> chain of <code>pEncodeInfo</code> i
 <p><a id="VUID-vkCmdEncodeVideoKHR-pStdPictureInfo-10327" href="#VUID-vkCmdEncodeVideoKHR-pStdPictureInfo-10327"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pStdPictureInfo-10327</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and
 <code>pStdPictureInfo-&gt;frame_type</code> for the <code>pStdPictureInfo</code> member
 of the <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a> structure included in the
 <code>pNext</code> chain of <code>pEncodeInfo</code> is
 <code>STD_VIDEO_AV1_FRAME_TYPE_KEY</code> or
 <code>STD_VIDEO_AV1_FRAME_TYPE_INTRA_ONLY</code>, then
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>::<code>predictionMode</code> <strong>must</strong> be
-<code>VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_INTRA_ONLY_KHR</code></p>
+<a href="VkVideoEncodeAV1PredictionModeKHR.html" class="xref page">VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_INTRA_ONLY_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-maxSingleReferenceCount-10328" href="#VUID-vkCmdEncodeVideoKHR-maxSingleReferenceCount-10328"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-maxSingleReferenceCount-10328</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and
 <a href="VkVideoEncodeAV1CapabilitiesKHR.html" class="xref page">VkVideoEncodeAV1CapabilitiesKHR</a>::<code>maxSingleReferenceCount</code> is
 zero, as returned by <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for
 the video profile the bound video session was created with, then the
 <code>predictionMode</code> member of the <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>
 structure included in the <code>pNext</code> chain of <code>pEncodeInfo</code> <strong>must</strong>
-not be <code>VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_SINGLE_REFERENCE_KHR</code></p>
+not be <a href="VkVideoEncodeAV1PredictionModeKHR.html" class="xref page">VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_SINGLE_REFERENCE_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-predictionMode-10329" href="#VUID-vkCmdEncodeVideoKHR-predictionMode-10329"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-predictionMode-10329</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and the
 <code>predictionMode</code> member of the <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>
 structure included in the <code>pNext</code> chain of <code>pEncodeInfo</code> is
-<code>VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_SINGLE_REFERENCE_KHR</code>, then
+<a href="VkVideoEncodeAV1PredictionModeKHR.html" class="xref page">VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_SINGLE_REFERENCE_KHR</a>, then
 there <strong>must</strong> be at least one non-negative element of
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>::<code>referenceNameSlotIndices</code>
 with element index <span class="eq">i</span> that does not equal
@@ -14113,23 +14254,23 @@ profile the bound video session was created with</p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-maxUnidirectionalCompoundReferenceCount-10330" href="#VUID-vkCmdEncodeVideoKHR-maxUnidirectionalCompoundReferenceCount-10330"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-maxUnidirectionalCompoundReferenceCount-10330</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and
 <a href="VkVideoEncodeAV1CapabilitiesKHR.html" class="xref page">VkVideoEncodeAV1CapabilitiesKHR</a>::<code>maxUnidirectionalCompoundReferenceCount</code>
 is zero, as returned by <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a>
 for the video profile the bound video session was created with, then the
 <code>predictionMode</code> member of the <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>
 structure included in the <code>pNext</code> chain of <code>pEncodeInfo</code> <strong>must</strong>
 not be
-<code>VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_UNIDIRECTIONAL_COMPOUND_KHR</code></p>
+<a href="VkVideoEncodeAV1PredictionModeKHR.html" class="xref page">VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_UNIDIRECTIONAL_COMPOUND_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-predictionMode-10331" href="#VUID-vkCmdEncodeVideoKHR-predictionMode-10331"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-predictionMode-10331</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and the
 <code>predictionMode</code> member of the <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>
 structure included in the <code>pNext</code> chain of <code>pEncodeInfo</code> is
-<code>VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_UNIDIRECTIONAL_COMPOUND_KHR</code>,
+<a href="VkVideoEncodeAV1PredictionModeKHR.html" class="xref page">VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_UNIDIRECTIONAL_COMPOUND_KHR</a>,
 then there <strong>must</strong> be at least two non-negative elements of
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>::<code>referenceNameSlotIndices</code>
 with element indices <span class="eq">i</span> and <span class="eq">j</span> where <span class="eq">(i,j) ∈
@@ -14144,23 +14285,23 @@ video profile the bound video session was created with</p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-maxBidirectionalCompoundReferenceCount-10332" href="#VUID-vkCmdEncodeVideoKHR-maxBidirectionalCompoundReferenceCount-10332"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-maxBidirectionalCompoundReferenceCount-10332</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and
 <a href="VkVideoEncodeAV1CapabilitiesKHR.html" class="xref page">VkVideoEncodeAV1CapabilitiesKHR</a>::<code>maxBidirectionalCompoundReferenceCount</code>
 is zero, as returned by <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a>
 for the video profile the bound video session was created with, then the
 <code>predictionMode</code> member of the <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>
 structure included in the <code>pNext</code> chain of <code>pEncodeInfo</code> <strong>must</strong>
 not be
-<code>VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_BIDIRECTIONAL_COMPOUND_KHR</code></p>
+<a href="VkVideoEncodeAV1PredictionModeKHR.html" class="xref page">VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_BIDIRECTIONAL_COMPOUND_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-predictionMode-10333" href="#VUID-vkCmdEncodeVideoKHR-predictionMode-10333"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-predictionMode-10333</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and the
 <code>predictionMode</code> member of the <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>
 structure included in the <code>pNext</code> chain of <code>pEncodeInfo</code> is
-<code>VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_BIDIRECTIONAL_COMPOUND_KHR</code>,
+<a href="VkVideoEncodeAV1PredictionModeKHR.html" class="xref page">VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_BIDIRECTIONAL_COMPOUND_KHR</a>,
 then there <strong>must</strong> be at least two non-negative elements of
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>::<code>referenceNameSlotIndices</code>
 with element indices <span class="eq">i ∈ {0,1,2,3}</span> and <span class="eq">j ∈
@@ -14175,23 +14316,23 @@ video profile the bound video session was created with</p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-predictionMode-10857" href="#VUID-vkCmdEncodeVideoKHR-predictionMode-10857"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-predictionMode-10857</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code>, the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a>, the
 <code>predictionMode</code> member of the <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>
 structure included in the <code>pNext</code> chain of <code>pEncodeInfo</code> is
-<code>VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_UNIDIRECTIONAL_COMPOUND_KHR</code> or
-<code>VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_BIDIRECTIONAL_COMPOUND_KHR</code>,
+<a href="VkVideoEncodeAV1PredictionModeKHR.html" class="xref page">VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_UNIDIRECTIONAL_COMPOUND_KHR</a> or
+<a href="VkVideoEncodeAV1PredictionModeKHR.html" class="xref page">VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_BIDIRECTIONAL_COMPOUND_KHR</a>,
 and <a href="VkVideoEncodeAV1CapabilitiesKHR.html" class="xref page">VkVideoEncodeAV1CapabilitiesKHR</a>::<code>flags</code>, as returned by
 <a href="vkGetPhysicalDeviceVideoCapabilitiesKHR.html" class="xref page">vkGetPhysicalDeviceVideoCapabilitiesKHR</a> for the video profile the
 bound video session was created with, does not include
-<code>VK_VIDEO_ENCODE_AV1_CAPABILITY_COMPOUND_PREDICTION_INTRA_REFRESH_BIT_KHR</code>,
+<a href="VkVideoEncodeAV1CapabilityFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_AV1_CAPABILITY_COMPOUND_PREDICTION_INTRA_REFRESH_BIT_KHR</a>,
 then <code>pEncodeInfo-&gt;flags</code> <strong>must</strong> not include
-<code>VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</code></p>
+<a href="VkVideoEncodeFlagBitsKHR.html" class="xref page">VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-referenceNameSlotIndices-10334" href="#VUID-vkCmdEncodeVideoKHR-referenceNameSlotIndices-10334"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-referenceNameSlotIndices-10334</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code>, then each element of
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a>, then each element of
 the <code>referenceNameSlotIndices</code> array member of the
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a> structure included in the
 <code>pNext</code> chain of <code>pEncodeInfo</code> <strong>must</strong> either be negative or <strong>must</strong>
@@ -14202,7 +14343,7 @@ equal the <code>slotIndex</code> member of one of the elements of
 <p><a id="VUID-vkCmdEncodeVideoKHR-slotIndex-10335" href="#VUID-vkCmdEncodeVideoKHR-slotIndex-10335"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-slotIndex-10335</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code>, then the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a>, then the
 <code>slotIndex</code> member of each element of
 <code>pEncodeInfo-&gt;pReferenceSlots</code> <strong>must</strong> equal one of the elements of
 the <code>referenceNameSlotIndices</code> array member of the
@@ -14213,7 +14354,7 @@ the <code>referenceNameSlotIndices</code> array member of the
 <p><a id="VUID-vkCmdEncodeVideoKHR-pExtensionHeader-10336" href="#VUID-vkCmdEncodeVideoKHR-pExtensionHeader-10336"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pExtensionHeader-10336</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and the
 <code>pExtensionHeader</code> member of
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>::<code>pStdPictureInfo</code> for the
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a> structure included in the
@@ -14227,7 +14368,7 @@ profile the bound video session was created with</p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pExtensionHeader-10337" href="#VUID-vkCmdEncodeVideoKHR-pExtensionHeader-10337"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pExtensionHeader-10337</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and the
 <code>pExtensionHeader</code> member of
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>::<code>pStdPictureInfo</code> for the
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a> structure included in the
@@ -14241,7 +14382,7 @@ profile the bound video session was created with</p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10338" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10338"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10338</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and
 <code>pEncodeInfo-&gt;pSetupReferenceSlot</code> is not <code>NULL</code>, then the
 <code>pExtensionHeader</code> member of
 <a href="VkVideoEncodeAV1DpbSlotInfoKHR.html" class="xref page">VkVideoEncodeAV1DpbSlotInfoKHR</a>::<code>pStdReferenceInfo</code> for the
@@ -14257,7 +14398,7 @@ If the bound video session was created with the video codec operation
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10339" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10339"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10339</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code>,
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a>,
 <code>pEncodeInfo-&gt;pSetupReferenceSlot</code> is not <code>NULL</code>, and the
 <code>pExtensionHeader</code> member of
 <a href="VkVideoEncodeAV1DpbSlotInfoKHR.html" class="xref page">VkVideoEncodeAV1DpbSlotInfoKHR</a>::<code>pStdReferenceInfo</code> for the
@@ -14272,7 +14413,7 @@ If the bound video session was created with the video codec operation
 <p><a id="VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10340" href="#VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10340"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pEncodeInfo-10340</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code>,
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a>,
 <code>pEncodeInfo-&gt;pSetupReferenceSlot</code> is not <code>NULL</code>, and the
 <code>pExtensionHeader</code> member of
 <a href="VkVideoEncodeAV1DpbSlotInfoKHR.html" class="xref page">VkVideoEncodeAV1DpbSlotInfoKHR</a>::<code>pStdReferenceInfo</code> for the
@@ -14287,7 +14428,7 @@ If the bound video session was created with the video codec operation
 <p><a id="VUID-vkCmdEncodeVideoKHR-pExtensionHeader-10341" href="#VUID-vkCmdEncodeVideoKHR-pExtensionHeader-10341"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pExtensionHeader-10341</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and the
 <code>pExtensionHeader</code> member of
 <a href="VkVideoEncodeAV1DpbSlotInfoKHR.html" class="xref page">VkVideoEncodeAV1DpbSlotInfoKHR</a>::<code>pStdReferenceInfo</code> for any of
 the <a href="VkVideoEncodeAV1DpbSlotInfoKHR.html" class="xref page">VkVideoEncodeAV1DpbSlotInfoKHR</a> structures included in the
@@ -14301,7 +14442,7 @@ video profile the bound video session was created with</p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pExtensionHeader-10342" href="#VUID-vkCmdEncodeVideoKHR-pExtensionHeader-10342"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pExtensionHeader-10342</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and the
 <code>pExtensionHeader</code> member of
 <a href="VkVideoEncodeAV1DpbSlotInfoKHR.html" class="xref page">VkVideoEncodeAV1DpbSlotInfoKHR</a>::<code>pStdReferenceInfo</code> for any of
 the <a href="VkVideoEncodeAV1DpbSlotInfoKHR.html" class="xref page">VkVideoEncodeAV1DpbSlotInfoKHR</a> structures included in the
@@ -14315,7 +14456,7 @@ video profile the bound video session was created with</p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pTileInfo-10343" href="#VUID-vkCmdEncodeVideoKHR-pTileInfo-10343"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pTileInfo-10343</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and the
 <code>pTileInfo</code> member of
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>::<code>pStdPictureInfo</code> for the
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a> structure included in the
@@ -14326,7 +14467,7 @@ If the bound video session was created with the video codec operation
 <p><a id="VUID-vkCmdEncodeVideoKHR-pTileInfo-10344" href="#VUID-vkCmdEncodeVideoKHR-pTileInfo-10344"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pTileInfo-10344</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and the
 <code>pTileInfo</code> member of
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>::<code>pStdPictureInfo</code> for the
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a> structure included in the
@@ -14337,7 +14478,7 @@ If the bound video session was created with the video codec operation
 <p><a id="VUID-vkCmdEncodeVideoKHR-pTileInfo-10345" href="#VUID-vkCmdEncodeVideoKHR-pTileInfo-10345"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pTileInfo-10345</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and the
 <code>pTileInfo</code> member of
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>::<code>pStdPictureInfo</code> for the
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a> structure included in the
@@ -14351,7 +14492,7 @@ the bound video session was created with</p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pTileInfo-10346" href="#VUID-vkCmdEncodeVideoKHR-pTileInfo-10346"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pTileInfo-10346</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and the
 <code>pTileInfo</code> member of
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>::<code>pStdPictureInfo</code> for the
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a> structure included in the
@@ -14365,7 +14506,7 @@ profile the bound video session was created with</p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pTileInfo-10347" href="#VUID-vkCmdEncodeVideoKHR-pTileInfo-10347"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pTileInfo-10347</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and the
 <code>pTileInfo</code> member of
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>::<code>pStdPictureInfo</code> for the
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a> structure included in the
@@ -14381,7 +14522,7 @@ for the video profile the bound video session was created with</p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pTileInfo-10348" href="#VUID-vkCmdEncodeVideoKHR-pTileInfo-10348"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pTileInfo-10348</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code> and the
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a> and the
 <code>pTileInfo</code> member of
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>::<code>pStdPictureInfo</code> for the
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a> structure included in the
@@ -14397,7 +14538,7 @@ for the video profile the bound video session was created with</p>
 <p><a id="VUID-vkCmdEncodeVideoKHR-pStdPictureInfo-10349" href="#VUID-vkCmdEncodeVideoKHR-pStdPictureInfo-10349"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pStdPictureInfo-10349</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code>, then
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a>, then
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>::<code>pStdPictureInfo-&gt;flags.segmentation_enabled</code>
 for the <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a> structure included in the
 <code>pNext</code> chain of <code>pEncodeInfo</code> <strong>must</strong> be zero</p>
@@ -14406,7 +14547,7 @@ for the <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoE
 <p><a id="VUID-vkCmdEncodeVideoKHR-pStdPictureInfo-10350" href="#VUID-vkCmdEncodeVideoKHR-pStdPictureInfo-10350"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-pStdPictureInfo-10350</span><br>
 
 If the bound video session was created with the video codec operation
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code>, then
+<a href="VkVideoCodecOperationFlagBitsKHR.html" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a>, then
 <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a>::<code>pStdPictureInfo-&gt;pSegmentation</code>
 for the <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoEncodeAV1PictureInfoKHR</a> structure included in the
 <code>pNext</code> chain of <code>pEncodeInfo</code> <strong>must</strong> be <code>NULL</code></p>
@@ -14434,7 +14575,7 @@ for the <a href="VkVideoEncodeAV1PictureInfoKHR.html" class="xref page">VkVideoE
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-commandBuffer-cmdpool" href="#VUID-vkCmdEncodeVideoKHR-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_VIDEO_ENCODE_BIT_KHR</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="VkQueueFlagBits.html" class="xref page">VK_QUEUE_VIDEO_ENCODE_BIT_KHR</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEncodeVideoKHR-renderpass" href="#VUID-vkCmdEncodeVideoKHR-renderpass"></a> <span class="vuid">VUID-vkCmdEncodeVideoKHR-renderpass</span><br>

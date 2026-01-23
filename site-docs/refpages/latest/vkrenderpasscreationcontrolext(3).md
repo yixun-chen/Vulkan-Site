@@ -47,11 +47,11 @@ merging will be disabled.
 
 If a `VkRenderPassCreationControlEXT` structure is included in the
 `pNext` chain of [VkRenderPassCreateInfo2](VkRenderPassCreateInfo2.html) and its value of
-`disallowMerging` is `VK_TRUE`, the implementation will disable
+`disallowMerging` is [VK_TRUE](VK_TRUE.html), the implementation will disable
 subpass merging for the entire render pass.
 If a `VkRenderPassCreationControlEXT` structure is included in the
 `pNext` chain of [VkSubpassDescription2](VkSubpassDescription2.html) and its value of
-`disallowMerging` is `VK_TRUE`, the implementation will disable
+`disallowMerging` is [VK_TRUE](VK_TRUE.html), the implementation will disable
 merging the described subpass with previous subpasses in the render pass.
 
 Valid Usage (Implicit)
@@ -59,7 +59,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassCreationControlEXT-sType-sType) VUID-VkRenderPassCreationControlEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_CREATION_CONTROL_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_CREATION_CONTROL_EXT](VkStructureType.html)
 
 [VK_EXT_subpass_merge_feedback](VK_EXT_subpass_merge_feedback.html), `VkBool32`, [VkRenderPassCreateInfo2](VkRenderPassCreateInfo2.html), [VkStructureType](VkStructureType.html), [VkSubpassDescription2](VkSubpassDescription2.html), [vkCreateRenderPass2](vkCreateRenderPass2.html)
 

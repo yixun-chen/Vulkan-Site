@@ -51,7 +51,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryHostPointerPropertiesEXT-sType-sType) VUID-VkMemoryHostPointerPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_HOST_POINTER_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_HOST_POINTER_PROPERTIES_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkMemoryHostPointerPropertiesEXT-pNext-pNext) VUID-VkMemoryHostPointerPropertiesEXT-pNext-pNext

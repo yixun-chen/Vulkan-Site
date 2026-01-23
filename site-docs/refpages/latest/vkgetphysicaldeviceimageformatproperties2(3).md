@@ -62,19 +62,19 @@ the profiles specified via [VkVideoProfileListInfoKHR](VkVideoProfileListInfoKHR
 are not supported.
 Furthermore, if [VkPhysicalDeviceImageFormatInfo2](VkPhysicalDeviceImageFormatInfo2.html)::`usage` includes
 any image usage flag not supported by the specified video profiles, then
-this command returns `VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR`.
+this command returns [VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR](VkResult.html).
 
 If the [`hostImageCopy`](../../../../spec/latest/chapters/features.html#features-hostImageCopy) feature is supported,
 and:
 
 * 
-`pImageFormatInfo->usage` includes `VK_IMAGE_USAGE_SAMPLED_BIT`
+`pImageFormatInfo->usage` includes [VK_IMAGE_USAGE_SAMPLED_BIT](VkImageUsageFlagBits.html)
 
 * 
 `pImageFormatInfo->flags` does not include either of
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT`,
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`, or
-`VK_IMAGE_CREATE_SPARSE_ALIASED_BIT`
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](VkImageCreateFlagBits.html),
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](VkImageCreateFlagBits.html), or
+[VK_IMAGE_CREATE_SPARSE_ALIASED_BIT](VkImageCreateFlagBits.html)
 
 * 
 The `pNext` chain of `pImageFormatInfo` does not include a
@@ -83,11 +83,11 @@ The `pNext` chain of `pImageFormatInfo` does not include a
 
 * 
 `pImageFormatInfo->tiling` is not
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html)
 
 Then the result of calls to `vkGetPhysicalDeviceImageFormatProperties2`
 with identical parameters except for the inclusion of
-`VK_IMAGE_USAGE_HOST_TRANSFER_BIT` in `pImageFormatInfo->usage`
+[VK_IMAGE_USAGE_HOST_TRANSFER_BIT](VkImageUsageFlagBits.html) in `pImageFormatInfo->usage`
 **must** be identical.
 
 Valid Usage
@@ -100,7 +100,7 @@ If the `pNext` chain of `pImageFormatProperties` includes a
 chain of `pImageFormatInfo` **must** include a
 [VkPhysicalDeviceExternalImageFormatInfo](VkPhysicalDeviceExternalImageFormatInfo.html) structure with
 `handleType` set to
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](VkExternalMemoryHandleTypeFlagBits.html)
 
 * 
 [](#VUID-vkGetPhysicalDeviceImageFormatProperties2-pNext-09004) VUID-vkGetPhysicalDeviceImageFormatProperties2-pNext-09004
@@ -108,7 +108,7 @@ chain of `pImageFormatInfo` **must** include a
 If the `pNext` chain of `pImageFormatProperties` includes a
 [VkHostImageCopyDevicePerformanceQuery](VkHostImageCopyDevicePerformanceQuery.html) structure,
 `pImageFormatInfo->usage` **must** contain
-`VK_IMAGE_USAGE_HOST_TRANSFER_BIT`
+[VK_IMAGE_USAGE_HOST_TRANSFER_BIT](VkImageUsageFlagBits.html)
 
 Valid Usage (Implicit)
 
@@ -132,39 +132,39 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_FORMAT_NOT_SUPPORTED`
+[VK_ERROR_FORMAT_NOT_SUPPORTED](VkResult.html)
 
 * 
-`VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR`
+[VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 * 
-`VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR](VkResult.html)
 
 * 
-`VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR](VkResult.html)
 
 * 
-`VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR](VkResult.html)
 
 * 
-`VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR](VkResult.html)
 
 [VK_KHR_get_physical_device_properties2](VK_KHR_get_physical_device_properties2.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkImageFormatProperties2](VkImageFormatProperties2.html), [VkPhysicalDevice](VkPhysicalDevice.html), [VkPhysicalDeviceImageFormatInfo2](VkPhysicalDeviceImageFormatInfo2.html)
 

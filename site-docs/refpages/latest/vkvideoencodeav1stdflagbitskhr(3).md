@@ -31,7 +31,7 @@ typedef enum VkVideoEncodeAV1StdFlagBitsKHR {
 } VkVideoEncodeAV1StdFlagBitsKHR;
 
 * 
-`VK_VIDEO_ENCODE_AV1_STD_UNIFORM_TILE_SPACING_FLAG_SET_BIT_KHR`
+[VK_VIDEO_ENCODE_AV1_STD_UNIFORM_TILE_SPACING_FLAG_SET_BIT_KHR](#)
 specifies whether the implementation supports using the
 application-provided value for
 `StdVideoAV1TileInfoFlags`::`uniform_tile_spacing_flag` in the
@@ -40,18 +40,18 @@ regardless of the coded extent of the [encode    input picture](../../../../spec
 `TileCols` and `TileRows` members of `StdVideoAV1TileInfo`.
 
 * 
-`VK_VIDEO_ENCODE_AV1_STD_SKIP_MODE_PRESENT_UNSET_BIT_KHR` specifies
+[VK_VIDEO_ENCODE_AV1_STD_SKIP_MODE_PRESENT_UNSET_BIT_KHR](#) specifies
 whether the implementation supports using the application-provided value
 for `StdVideoEncodeAV1PictureInfoFlags`::`skip_mode_present` when
 that value is `0`.
 
 * 
-`VK_VIDEO_ENCODE_AV1_STD_PRIMARY_REF_FRAME_BIT_KHR` specifies
+[VK_VIDEO_ENCODE_AV1_STD_PRIMARY_REF_FRAME_BIT_KHR](#) specifies
 whether the implementation supports using the application-provided value
 for `StdVideoEncodeAV1PictureInfo`::`primary_ref_frame`.
 
 * 
-`VK_VIDEO_ENCODE_AV1_STD_DELTA_Q_BIT_KHR` specifies whether the
+[VK_VIDEO_ENCODE_AV1_STD_DELTA_Q_BIT_KHR](#) specifies whether the
 implementation supports using the application-provided values for the
 `DeltaQYDc`, `DeltaQUDc`, `DeltaQUAc`, `DeltaQVDc`, and
 `DeltaQVAc` members of `StdVideoAV1Quantization`.

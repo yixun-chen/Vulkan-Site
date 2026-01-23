@@ -39,9 +39,9 @@ structure.
 * 
 
 `combinedImageSamplerDensityMapDescriptorSize` indicates the size in
-bytes of a `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` descriptor
+bytes of a [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) descriptor
 when creating the descriptor with
-`VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT` set.
+[VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](VkSamplerCreateFlagBits.html) set.
 
 If the `VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html) structure passed to
@@ -53,7 +53,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_DENSITY_MAP_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_DENSITY_MAP_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_descriptor_buffer](VK_EXT_descriptor_buffer.html), [VkStructureType](VkStructureType.html)
 

@@ -51,8 +51,8 @@ Valid Usage
 [](#VUID-vkGetMemoryHostPointerPropertiesEXT-handleType-01752) VUID-vkGetMemoryHostPointerPropertiesEXT-handleType-01752
 
 `handleType` **must** be
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html)
 
 * 
 [](#VUID-vkGetMemoryHostPointerPropertiesEXT-pHostPointer-01753) VUID-vkGetMemoryHostPointerPropertiesEXT-pHostPointer-01753
@@ -64,14 +64,14 @@ Valid Usage
 [](#VUID-vkGetMemoryHostPointerPropertiesEXT-handleType-01754) VUID-vkGetMemoryHostPointerPropertiesEXT-handleType-01754
 
 If `handleType` is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html),
 `pHostPointer` **must** be a pointer to host memory
 
 * 
 [](#VUID-vkGetMemoryHostPointerPropertiesEXT-handleType-01755) VUID-vkGetMemoryHostPointerPropertiesEXT-handleType-01755
 
 If `handleType` is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html),
 `pHostPointer` **must** be a pointer to host mapped foreign memory
 
 Valid Usage (Implicit)
@@ -101,21 +101,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_EXT_external_memory_host](VK_EXT_external_memory_host.html), [VkDevice](VkDevice.html), [VkExternalMemoryHandleTypeFlagBits](VkExternalMemoryHandleTypeFlagBits.html), [VkMemoryHostPointerPropertiesEXT](VkMemoryHostPointerPropertiesEXT.html)
 

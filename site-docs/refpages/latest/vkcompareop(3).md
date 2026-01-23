@@ -36,35 +36,35 @@ typedef enum VkCompareOp {
 } VkCompareOp;
 
 * 
-`VK_COMPARE_OP_NEVER` specifies that the comparison always evaluates
+[VK_COMPARE_OP_NEVER](#) specifies that the comparison always evaluates
 false.
 
 * 
-`VK_COMPARE_OP_LESS` specifies that the comparison evaluates
+[VK_COMPARE_OP_LESS](#) specifies that the comparison evaluates
 *reference* .
 
 * 
-`VK_COMPARE_OP_EQUAL` specifies that the comparison evaluates
+[VK_COMPARE_OP_EQUAL](#) specifies that the comparison evaluates
 *reference* = *test*.
 
 * 
-`VK_COMPARE_OP_LESS_OR_EQUAL` specifies that the comparison
+[VK_COMPARE_OP_LESS_OR_EQUAL](#) specifies that the comparison
 evaluates *reference* ≤ *test*.
 
 * 
-`VK_COMPARE_OP_GREATER` specifies that the comparison evaluates
+[VK_COMPARE_OP_GREATER](#) specifies that the comparison evaluates
 *reference* > *test*.
 
 * 
-`VK_COMPARE_OP_NOT_EQUAL` specifies that the comparison evaluates
+[VK_COMPARE_OP_NOT_EQUAL](#) specifies that the comparison evaluates
 *reference* ≠ *test*.
 
 * 
-`VK_COMPARE_OP_GREATER_OR_EQUAL` specifies that the comparison
+[VK_COMPARE_OP_GREATER_OR_EQUAL](#) specifies that the comparison
 evaluates *reference* ≥ *test*.
 
 * 
-`VK_COMPARE_OP_ALWAYS` specifies that the comparison always
+[VK_COMPARE_OP_ALWAYS](#) specifies that the comparison always
 evaluates true.
 
 Comparison operators are used for:

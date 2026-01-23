@@ -57,8 +57,8 @@ The handle types supported by `handleType` are:
 
 | Handle Type | Transference | Permanence Supported |
 | --- | --- | --- |
-| `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT` | Reference | Temporary,Permanent |
-| `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT` | Copy | Temporary |
+| [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT](VkExternalSemaphoreHandleTypeFlagBits.html) | Reference | Temporary,Permanent |
+| [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT](VkExternalSemaphoreHandleTypeFlagBits.html) | Copy | Temporary |
 
 Valid Usage
 
@@ -78,7 +78,7 @@ Valid Usage
 [](#VUID-VkImportSemaphoreFdInfoKHR-handleType-03263) VUID-VkImportSemaphoreFdInfoKHR-handleType-03263
 
 If `handleType` is
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT`, the
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT](VkExternalSemaphoreHandleTypeFlagBits.html), the
 [VkSemaphoreCreateInfo](VkSemaphoreCreateInfo.html)::`flags` field **must** match that of the
 semaphore from which `fd` was exported
 
@@ -87,25 +87,25 @@ semaphore from which `fd` was exported
 
 If `handleType` refers to a handle type with copy payload
 transference semantics, `flags` **must** contain
-`VK_SEMAPHORE_IMPORT_TEMPORARY_BIT`
+[VK_SEMAPHORE_IMPORT_TEMPORARY_BIT](VkSemaphoreImportFlagBits.html)
 
 * 
 [](#VUID-VkImportSemaphoreFdInfoKHR-handleType-03264) VUID-VkImportSemaphoreFdInfoKHR-handleType-03264
 
 If `handleType` is
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT`, the
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT](VkExternalSemaphoreHandleTypeFlagBits.html), the
 [VkSemaphoreTypeCreateInfo](VkSemaphoreTypeCreateInfo.html)::`semaphoreType` field **must** match
 that of the semaphore from which `fd` was exported
 
 * 
 [](#VUID-VkImportSemaphoreFdInfoKHR-flags-03323) VUID-VkImportSemaphoreFdInfoKHR-flags-03323
 
-If `flags` contains `VK_SEMAPHORE_IMPORT_TEMPORARY_BIT`, the
+If `flags` contains [VK_SEMAPHORE_IMPORT_TEMPORARY_BIT](VkSemaphoreImportFlagBits.html), the
 [VkSemaphoreTypeCreateInfo](VkSemaphoreTypeCreateInfo.html)::`semaphoreType` field of the
 semaphore from which `fd` was exported **must** not be
-`VK_SEMAPHORE_TYPE_TIMELINE`
+[VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html)
 
-If `handleType` is `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT`,
+If `handleType` is [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT](VkExternalSemaphoreHandleTypeFlagBits.html),
 the special value `-1` for `fd` is treated like a valid sync file
 descriptor referring to an object that has already signaled.
 The import operation will succeed and the `VkSemaphore` will have a
@@ -119,7 +119,7 @@ an invalid sync file descriptor represents work that has already completed
 and does not need to be waited for.
 It is consistent with the option for implementations to return a `-1` file
 descriptor when exporting a
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT` from a `VkSemaphore`
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT](VkExternalSemaphoreHandleTypeFlagBits.html) from a `VkSemaphore`
 which is signaled. |
 
 Valid Usage (Implicit)
@@ -127,7 +127,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportSemaphoreFdInfoKHR-sType-sType) VUID-VkImportSemaphoreFdInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_FD_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_FD_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkImportSemaphoreFdInfoKHR-pNext-pNext) VUID-VkImportSemaphoreFdInfoKHR-pNext-pNext

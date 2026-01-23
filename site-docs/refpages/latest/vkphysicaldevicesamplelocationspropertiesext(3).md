@@ -64,9 +64,9 @@ is the number of bits of subpixel precision for sample locations.
  `variableSampleLocations`
 specifies whether the sample locations used by all pipelines that will
 be bound to a command buffer during a subpass **must** match.
-If set to `VK_TRUE`, the implementation supports variable sample
+If set to [VK_TRUE](VK_TRUE.html), the implementation supports variable sample
 locations in a subpass.
-If set to `VK_FALSE`, then the sample locations **must** stay constant
+If set to [VK_FALSE](VK_FALSE.html), then the sample locations **must** stay constant
 in each subpass.
 
 If the `VkPhysicalDeviceSampleLocationsPropertiesEXT` structure is included in the `pNext` chain of the
@@ -79,7 +79,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceSampleLocationsPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceSampleLocationsPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_sample_locations](VK_EXT_sample_locations.html), `VkBool32`, [VkExtent2D](VkExtent2D.html), [VkSampleCountFlags](VkSampleCountFlags.html), [VkStructureType](VkStructureType.html)
 

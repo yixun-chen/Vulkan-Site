@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryBarrierAccessFlags3KHR-sType-sType) VUID-VkMemoryBarrierAccessFlags3KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_BARRIER_ACCESS_FLAGS_3_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_BARRIER_ACCESS_FLAGS_3_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkMemoryBarrierAccessFlags3KHR-srcAccessMask3-parameter) VUID-VkMemoryBarrierAccessFlags3KHR-srcAccessMask3-parameter

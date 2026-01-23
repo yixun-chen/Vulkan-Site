@@ -40,8 +40,8 @@ invalidate.
 
 `vkInvalidateMappedMemoryRanges` guarantees that device writes to the
 memory ranges described by `pMemoryRanges`, which have been made
-available to the host memory domain using the `VK_ACCESS_HOST_WRITE_BIT`
-and `VK_ACCESS_HOST_READ_BIT` [access types](../../../../spec/latest/chapters/synchronization.html#synchronization-access-types), are made visible to the host.
+available to the host memory domain using the [VK_ACCESS_HOST_WRITE_BIT](VkAccessFlagBits.html)
+and [VK_ACCESS_HOST_READ_BIT](VkAccessFlagBits.html) [access types](../../../../spec/latest/chapters/synchronization.html#synchronization-access-types), are made visible to the host.
 If a range of non-coherent memory is written by the host and then
 invalidated without first being flushed, its contents are **undefined**.
 
@@ -112,21 +112,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkDevice](VkDevice.html), [VkMappedMemoryRange](VkMappedMemoryRange.html)
 

@@ -239,7 +239,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeAV1CapabilitiesKHR-sType-sType) VUID-VkVideoEncodeAV1CapabilitiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_CAPABILITIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_CAPABILITIES_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_av1](VK_KHR_video_encode_av1.html), `VkBool32`, [VkExtent2D](VkExtent2D.html), [VkStructureType](VkStructureType.html), [VkVideoEncodeAV1CapabilityFlagsKHR](VkVideoEncodeAV1CapabilityFlagsKHR.html), [VkVideoEncodeAV1StdFlagsKHR](VkVideoEncodeAV1StdFlagsKHR.html), [VkVideoEncodeAV1SuperblockSizeFlagsKHR](VkVideoEncodeAV1SuperblockSizeFlagsKHR.html)
 

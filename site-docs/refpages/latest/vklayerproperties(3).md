@@ -30,7 +30,7 @@ typedef struct VkLayerProperties {
 } VkLayerProperties;
 
 * 
-`layerName` is an array of `VK_MAX_EXTENSION_NAME_SIZE`
+`layerName` is an array of [VK_MAX_EXTENSION_NAME_SIZE](VK_MAX_EXTENSION_NAME_SIZE.html)
 `char` containing a null-terminated UTF-8 string which is the name of
 the layer.
 Use this name in the `ppEnabledLayerNames` array passed in the
@@ -46,7 +46,7 @@ encoded as described in [Version Numbers](../../../../spec/latest/chapters/exten
 It is an integer, increasing with backward compatible changes.
 
 * 
-`description` is an array of `VK_MAX_DESCRIPTION_SIZE` `char`
+`description` is an array of [VK_MAX_DESCRIPTION_SIZE](VK_MAX_DESCRIPTION_SIZE.html) `char`
 containing a null-terminated UTF-8 string which provides additional
 details that **can** be used by the application to identify the layer.
 

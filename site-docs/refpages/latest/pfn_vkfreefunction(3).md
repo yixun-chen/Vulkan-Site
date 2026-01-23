@@ -22,7 +22,7 @@ PFN_vkFreeFunction - Application-defined memory free function
 The type of `pfnFree` is:
 
 // Provided by VK_VERSION_1_0
-typedef void (VKAPI_PTR *PFN_vkFreeFunction)(
+typedef void (*PFN_vkFreeFunction)(
     void*                                       pUserData,
     void*                                       pMemory);
 

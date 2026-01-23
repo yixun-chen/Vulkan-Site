@@ -41,9 +41,9 @@ structure.
 * 
 
 `formatRgba10x6WithoutYCbCrSampler` indicates that
-`VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16` **can** be used with a
+[VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16](VkFormat.html) **can** be used with a
 `VkImageView` with `subresourceRange.aspectMask` equal to
-`VK_IMAGE_ASPECT_COLOR_BIT` without a [    sampler Y′CBCR conversion](../../../../spec/latest/chapters/samplers.html#samplers-YCbCr-conversion) enabled.
+[VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html) without a [    sampler Y′CBCR conversion](../../../../spec/latest/chapters/samplers.html#samplers-YCbCr-conversion) enabled.
 
 If the `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -51,7 +51,7 @@ If the `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT` structure is included in the
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -59,7 +59,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RGBA10X6_FORMATS_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RGBA10X6_FORMATS_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_rgba10x6_formats](VK_EXT_rgba10x6_formats.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

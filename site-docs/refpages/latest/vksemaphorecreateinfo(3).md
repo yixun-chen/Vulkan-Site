@@ -46,14 +46,14 @@ Valid Usage
 If the `pNext` chain includes a
 [VkExportMetalObjectCreateInfoEXT](VkExportMetalObjectCreateInfoEXT.html) structure, its
 `exportObjectType` member **must** be
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT`
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT](VkExportMetalObjectTypeFlagBitsEXT.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSemaphoreCreateInfo-sType-sType) VUID-VkSemaphoreCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkSemaphoreCreateInfo-pNext-pNext) VUID-VkSemaphoreCreateInfo-pNext-pNext

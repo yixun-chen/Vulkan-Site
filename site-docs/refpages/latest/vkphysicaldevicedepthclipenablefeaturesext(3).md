@@ -45,7 +45,7 @@ via the [VkPipelineRasterizationDepthClipStateCreateInfoEXT](VkPipelineRasteriza
 pipeline state.
 Otherwise depth clipping is only enabled when
 [VkPipelineRasterizationStateCreateInfo](VkPipelineRasterizationStateCreateInfo.html)::`depthClampEnable` is
-`VK_FALSE`.
+[VK_FALSE](VK_FALSE.html).
 
 If the `VkPhysicalDeviceDepthClipEnableFeaturesEXT` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -53,7 +53,7 @@ If the `VkPhysicalDeviceDepthClipEnableFeaturesEXT` structure is included in the
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceDepthClipEnableFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -61,7 +61,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDepthClipEnableFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceDepthClipEnableFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_ENABLE_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_ENABLE_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_depth_clip_enable](VK_EXT_depth_clip_enable.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

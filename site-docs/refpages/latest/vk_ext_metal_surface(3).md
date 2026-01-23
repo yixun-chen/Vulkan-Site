@@ -96,7 +96,7 @@ the native rendering surface of Apple’s Metal framework.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_METAL_SURFACE_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_METAL_SURFACE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2018-10-01 (Dzmitry Malyshau)

@@ -46,25 +46,29 @@ Each chapter builds on the last to assemble a small but capable engine. Read a c
 
 Let’s begin our journey into engine development with these chapters:
 
-[Engine Architecture](#Engine_Architecture/01_introduction.adoc) - How to structure your code for flexibility, maintainability, and extensibility.
+[Engine Architecture](Engine_Architecture/01_introduction.html) - How to structure your code for flexibility, maintainability, and extensibility.
 
-[Camera Transformations](#Camera_Transformations/01_introduction.adoc) - Implementation of camera systems and transformations.
+[Camera Transformations](Camera_Transformations/01_introduction.html) - Implementation of camera systems and transformations.
 
-[Lighting & Materials](#Lighting_Materials/01_introduction.adoc) - Basic lighting models and push constants.
+[Lighting & Materials](Lighting_Materials/01_introduction.html) - Basic lighting models and push constants.
 
-[GUI](#GUI/01_introduction.adoc) - Implementation of a graphical user interface using Dear ImGui.
+[GUI](GUI/01_introduction.html) - Implementation of a graphical user interface using Dear ImGui.
 
-[Loading Models](#Loading_Models/01_introduction.adoc) - More sophisticated approaches to handling models, textures, and other assets.
+[Loading Models](Loading_Models/01_introduction.html) - More sophisticated approaches to handling models, textures, and other assets.
 
-[Subsystems](#Subsystems/01_introduction.adoc) - Implementation of Audio and Physics subsystems with Vulkan compute capabilities.
+[Subsystems](Subsystems/01_introduction.html) - Implementation of Audio and Physics subsystems with Vulkan compute capabilities.
 
-[Tooling](#Tooling/01_introduction.adoc) - CI/CD, Debugging, Crash minidump, Distribution, and Vulkan extensions for robustness.
+[Tooling](Tooling/01_introduction.html) - CI/CD, Debugging, Crash minidump, Distribution, and Vulkan extensions for robustness.
 
-[Mobile Development](#Mobile_Development/01_introduction.adoc) - Adapting the engine for Android/iOS, focusing on performance considerations and mobile-specific Vulkan extensions.
+[Mobile Development](Mobile_Development/01_introduction.html) - Adapting the engine for Android/iOS, focusing on performance considerations and mobile-specific Vulkan extensions.
 
-[Previous: Main Tutorial Conclusion](../conclusion.html) | [Next: Engine Architecture](#Engine_Architecture/01_introduction.adoc)
+[Advanced Topics](Advanced_Topics/01_introduction.html) - Short, focused tutorials that extend the Simple Engine with specific features and optimizations.
+
+[Previous: Main Tutorial Conclusion](../conclusion.html) | [Next: Engine Architecture](Engine_Architecture/01_introduction.html)
 
 To follow along with the attachments-based Simple Engine examples and scenes, fetch the Bistro assets locally.
+
+![The Bistro scene - a detailed outdoor café environment demonstrating the engine’s rendering capabilities](../_images/images/MainEntry.png)
 
 * 
 Linux/macOS (default target: attachments/simple_engine/Assets/bistro at repository root):

@@ -72,10 +72,10 @@ for samplers and
 for resources.
 
 If any `binding` in `layout` is
-`VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT`, that
+[VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](VkDescriptorBindingFlagBits.html), that
 `binding` **must** have the largest offset of any `binding`.
 
-A descriptor `binding` with type `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+A descriptor `binding` with type [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html)
 **can** be used.
 Any potential types in
 [VkMutableDescriptorTypeCreateInfoEXT](VkMutableDescriptorTypeCreateInfoEXT.html)::`pDescriptorTypes` for
@@ -96,19 +96,19 @@ be enabled
 [](#VUID-vkGetDescriptorSetLayoutBindingOffsetEXT-layout-08014) VUID-vkGetDescriptorSetLayoutBindingOffsetEXT-layout-08014
 
 `layout` **must** have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT` flag set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html) flag set
 
 * 
 [](#VUID-vkGetDescriptorSetLayoutBindingOffsetEXT-layout-11813) VUID-vkGetDescriptorSetLayoutBindingOffsetEXT-layout-11813
 
 `layout` **must** have not been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT` flag set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](VkDescriptorSetLayoutCreateFlagBits.html) flag set
 
 * 
 [](#VUID-vkGetDescriptorSetLayoutBindingOffsetEXT-layout-11814) VUID-vkGetDescriptorSetLayoutBindingOffsetEXT-layout-11814
 
 `layout` **must** have not been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html)
 flag set
 
 Valid Usage (Implicit)

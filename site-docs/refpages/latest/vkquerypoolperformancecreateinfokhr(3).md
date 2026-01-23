@@ -75,7 +75,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueryPoolPerformanceCreateInfoKHR-sType-sType) VUID-VkQueryPoolPerformanceCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkQueryPoolPerformanceCreateInfoKHR-pCounterIndices-parameter) VUID-VkQueryPoolPerformanceCreateInfoKHR-pCounterIndices-parameter

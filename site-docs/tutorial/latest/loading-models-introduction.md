@@ -37,4 +37,4 @@ Experience with [vertex](../../04_Vertex_buffers/00_Vertex_input_description.htm
 
 Finally, basic 3D math understanding (matrices, vectors, quaternions) is crucial for handling model transformations, animations, and scene hierarchies. If you need a refresher, see the [Camera Transformations chapter](../Camera_Transformations/02_math_foundations.html) for detailed coverage of these mathematical concepts.
 
-[Previous: GUI](#../GUI/06_conclusion.adoc) | [Next: Setting Up the Project](#02_project_setup.adoc)
+[Previous: GUI](../GUI/06_conclusion.html) | [Next: Setting Up the Project](02_project_setup.html)

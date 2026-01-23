@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR-sType-sType) VUID-VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_PROPERTIES_KHR](VkStructureType.html)
 
 [VK_KHR_compute_shader_derivatives](VK_KHR_compute_shader_derivatives.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

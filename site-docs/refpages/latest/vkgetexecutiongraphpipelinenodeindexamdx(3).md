@@ -59,7 +59,7 @@ Valid Usage
 * 
 [](#VUID-vkGetExecutionGraphPipelineNodeIndexAMDX-pNodeInfo-09141) VUID-vkGetExecutionGraphPipelineNodeIndexAMDX-pNodeInfo-09141
 
-`pNodeInfo->index` **must** not be `VK_SHADER_INDEX_UNUSED_AMDX`
+`pNodeInfo->index` **must** not be [VK_SHADER_INDEX_UNUSED_AMDX](VK_SHADER_INDEX_UNUSED_AMDX.html)
 
 * 
 [](#VUID-vkGetExecutionGraphPipelineNodeIndexAMDX-executionGraph-09142) VUID-vkGetExecutionGraphPipelineNodeIndexAMDX-executionGraph-09142
@@ -99,18 +99,18 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_AMDX_shader_enqueue](VK_AMDX_shader_enqueue.html), [VkDevice](VkDevice.html), [VkPipeline](VkPipeline.html), [VkPipelineShaderStageNodeCreateInfoAMDX](VkPipelineShaderStageNodeCreateInfoAMDX.html)
 

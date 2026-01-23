@@ -75,30 +75,30 @@ Every element of `pStages` **must** be unique
 * 
 [](#VUID-vkCmdBindShadersEXT-pStages-08464) VUID-vkCmdBindShadersEXT-pStages-08464
 
-`pStages` **must** not contain `VK_SHADER_STAGE_ALL_GRAPHICS` or
-`VK_SHADER_STAGE_ALL`
+`pStages` **must** not contain [VK_SHADER_STAGE_ALL_GRAPHICS](VkShaderStageFlagBits.html) or
+[VK_SHADER_STAGE_ALL](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdBindShadersEXT-pStages-08465) VUID-vkCmdBindShadersEXT-pStages-08465
 
-`pStages` **must** not contain `VK_SHADER_STAGE_RAYGEN_BIT_KHR`,
-`VK_SHADER_STAGE_ANY_HIT_BIT_KHR`,
-`VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR`,
-`VK_SHADER_STAGE_MISS_BIT_KHR`,
-`VK_SHADER_STAGE_INTERSECTION_BIT_KHR`, or
-`VK_SHADER_STAGE_CALLABLE_BIT_KHR`
+`pStages` **must** not contain [VK_SHADER_STAGE_RAYGEN_BIT_KHR](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_ANY_HIT_BIT_KHR](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_MISS_BIT_KHR](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_INTERSECTION_BIT_KHR](VkShaderStageFlagBits.html), or
+[VK_SHADER_STAGE_CALLABLE_BIT_KHR](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdBindShadersEXT-pStages-08467) VUID-vkCmdBindShadersEXT-pStages-08467
 
 `pStages` **must** not contain
-`VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI`
+[VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdBindShadersEXT-pStages-08468) VUID-vkCmdBindShadersEXT-pStages-08468
 
 `pStages` **must** not contain
-`VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI`
+[VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdBindShadersEXT-pShaders-08469) VUID-vkCmdBindShadersEXT-pShaders-08469
@@ -111,45 +111,45 @@ equal to the corresponding element of `pStages`
 * 
 [](#VUID-vkCmdBindShadersEXT-pShaders-08470) VUID-vkCmdBindShadersEXT-pShaders-08470
 
-If `pStages` contains both `VK_SHADER_STAGE_TASK_BIT_EXT` and
-`VK_SHADER_STAGE_VERTEX_BIT`, and `pShaders` is not `NULL`, and
-the same index in `pShaders` as `VK_SHADER_STAGE_TASK_BIT_EXT`
+If `pStages` contains both [VK_SHADER_STAGE_TASK_BIT_EXT](VkShaderStageFlagBits.html) and
+[VK_SHADER_STAGE_VERTEX_BIT](VkShaderStageFlagBits.html), and `pShaders` is not `NULL`, and
+the same index in `pShaders` as [VK_SHADER_STAGE_TASK_BIT_EXT](VkShaderStageFlagBits.html)
 in `pStages` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), the same index in
-`pShaders` as `VK_SHADER_STAGE_VERTEX_BIT` in `pStages`
+`pShaders` as [VK_SHADER_STAGE_VERTEX_BIT](VkShaderStageFlagBits.html) in `pStages`
 **must** be [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
 * 
 [](#VUID-vkCmdBindShadersEXT-pShaders-08471) VUID-vkCmdBindShadersEXT-pShaders-08471
 
-If `pStages` contains both `VK_SHADER_STAGE_MESH_BIT_EXT` and
-`VK_SHADER_STAGE_VERTEX_BIT`, and `pShaders` is not `NULL`, and
-the same index in `pShaders` as `VK_SHADER_STAGE_MESH_BIT_EXT`
+If `pStages` contains both [VK_SHADER_STAGE_MESH_BIT_EXT](VkShaderStageFlagBits.html) and
+[VK_SHADER_STAGE_VERTEX_BIT](VkShaderStageFlagBits.html), and `pShaders` is not `NULL`, and
+the same index in `pShaders` as [VK_SHADER_STAGE_MESH_BIT_EXT](VkShaderStageFlagBits.html)
 in `pStages` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), the same index in
-`pShaders` as `VK_SHADER_STAGE_VERTEX_BIT` in `pStages`
+`pShaders` as [VK_SHADER_STAGE_VERTEX_BIT](VkShaderStageFlagBits.html) in `pStages`
 **must** be [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
 * 
 [](#VUID-vkCmdBindShadersEXT-pShaders-08476) VUID-vkCmdBindShadersEXT-pShaders-08476
 
-If `pStages` contains `VK_SHADER_STAGE_COMPUTE_BIT`, the
+If `pStages` contains [VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html), the
 `VkCommandPool` that `commandBuffer` was allocated from **must**
 support compute operations
 
 * 
 [](#VUID-vkCmdBindShadersEXT-pShaders-08477) VUID-vkCmdBindShadersEXT-pShaders-08477
 
-If `pStages` contains `VK_SHADER_STAGE_VERTEX_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`,
-`VK_SHADER_STAGE_GEOMETRY_BIT`, or
-`VK_SHADER_STAGE_FRAGMENT_BIT`, the `VkCommandPool` that
+If `pStages` contains [VK_SHADER_STAGE_VERTEX_BIT](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_GEOMETRY_BIT](VkShaderStageFlagBits.html), or
+[VK_SHADER_STAGE_FRAGMENT_BIT](VkShaderStageFlagBits.html), the `VkCommandPool` that
 `commandBuffer` was allocated from **must** support graphics operations
 
 * 
 [](#VUID-vkCmdBindShadersEXT-pShaders-08478) VUID-vkCmdBindShadersEXT-pShaders-08478
 
-If `pStages` contains `VK_SHADER_STAGE_MESH_BIT_EXT` or
-`VK_SHADER_STAGE_TASK_BIT_EXT`, the `VkCommandPool` that
+If `pStages` contains [VK_SHADER_STAGE_MESH_BIT_EXT](VkShaderStageFlagBits.html) or
+[VK_SHADER_STAGE_TASK_BIT_EXT](VkShaderStageFlagBits.html), the `VkCommandPool` that
 `commandBuffer` was allocated from **must** support graphics operations
 
 Valid Usage (Implicit)
@@ -177,7 +177,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindShadersEXT-commandBuffer-cmdpool) VUID-vkCmdBindShadersEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBindShadersEXT-videocoding) VUID-vkCmdBindShadersEXT-videocoding

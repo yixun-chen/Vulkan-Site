@@ -101,7 +101,7 @@ the `[VK_KHR_surface](VK_KHR_surface.html)` extension) associated with an
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_VI_SURFACE_CREATE_INFO_NN`
+[VK_STRUCTURE_TYPE_VI_SURFACE_CREATE_INFO_NN](VkStructureType.html)
 
 1) Does VI need a way to query for compatibility between a particular
 physical device (and queue family?) and a specific VI display?

@@ -80,7 +80,7 @@ Extending [VkSemaphoreCreateInfo](VkSemaphoreCreateInfo.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_QUERY_LOW_LATENCY_SUPPORT_NV`
+[VK_STRUCTURE_TYPE_QUERY_LOW_LATENCY_SUPPORT_NV](VkStructureType.html)
 
 1) Why does `VkQueryLowLatencySupportNV` have output parameters in an
 input chain?

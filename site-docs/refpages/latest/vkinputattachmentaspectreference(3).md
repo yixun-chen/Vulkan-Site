@@ -59,7 +59,7 @@ Valid Usage
 * 
 [](#VUID-VkInputAttachmentAspectReference-aspectMask-01964) VUID-VkInputAttachmentAspectReference-aspectMask-01964
 
-`aspectMask` **must** not include `VK_IMAGE_ASPECT_METADATA_BIT`
+`aspectMask` **must** not include [VK_IMAGE_ASPECT_METADATA_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkInputAttachmentAspectReference-aspectMask-02250) VUID-VkInputAttachmentAspectReference-aspectMask-02250

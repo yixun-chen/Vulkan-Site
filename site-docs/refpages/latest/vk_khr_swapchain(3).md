@@ -224,58 +224,58 @@ If [Vulkan Version 1.1](../../../../spec/latest/appendices/versions.html#version
 * 
 Extending [VkImageLayout](VkImageLayout.html):
 
-`VK_IMAGE_LAYOUT_PRESENT_SRC_KHR`
+[VK_IMAGE_LAYOUT_PRESENT_SRC_KHR](VkImageLayout.html)
 
 Extending [VkObjectType](VkObjectType.html):
 
 * 
-`VK_OBJECT_TYPE_SWAPCHAIN_KHR`
+[VK_OBJECT_TYPE_SWAPCHAIN_KHR](VkObjectType.html)
 
 Extending [VkResult](VkResult.html):
 
 * 
-`VK_ERROR_OUT_OF_DATE_KHR`
+[VK_ERROR_OUT_OF_DATE_KHR](VkResult.html)
 
 * 
-`VK_SUBOPTIMAL_KHR`
+[VK_SUBOPTIMAL_KHR](VkResult.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PRESENT_INFO_KHR`
+[VK_STRUCTURE_TYPE_PRESENT_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR](VkStructureType.html)
 
 If [Vulkan Version 1.1](../../../../spec/latest/appendices/versions.html#versions-1.1) is supported:
 
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR`
+[VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR`
+[VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR`
+[VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR`
+[VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR](VkStructureType.html)
 
 Extending [VkSwapchainCreateFlagBitsKHR](VkSwapchainCreateFlagBitsKHR.html):
 
 * 
-`VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR`
+[VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html)
 
 * 
-`VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR`
+[VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html)
 
 1) Does this extension allow the application to specify the memory backing
 of the presentable images?
@@ -354,14 +354,14 @@ application the targeted surface has changed?
 **RESOLVED**: Two new result codes are introduced for this purpose:
 
 * 
-`VK_SUBOPTIMAL_KHR` - Presentation will still succeed, subject to
+[VK_SUBOPTIMAL_KHR](VkResult.html) - Presentation will still succeed, subject to
 the window resize behavior, but the swapchain is no longer configured
 optimally for the surface it targets.
 Applications should query updated surface information and recreate their
 swapchain at the next convenient opportunity.
 
 * 
-`VK_ERROR_OUT_OF_DATE_KHR` - Failure.
+[VK_ERROR_OUT_OF_DATE_KHR](VkResult.html) - Failure.
 The swapchain is no longer compatible with the surface it targets.
 The application must query updated surface information and recreate the
 swapchain before presentation will succeed.
@@ -422,7 +422,7 @@ Applications must choose one of these modes up front when creating a
 swapchain.
 Switching modes can be accomplished by recreating the swapchain.
 
-12) Can `VK_PRESENT_MODE_MAILBOX_KHR` provide non-blocking guarantees
+12) Can [VK_PRESENT_MODE_MAILBOX_KHR](VkPresentModeKHR.html) provide non-blocking guarantees
 for [vkAcquireNextImageKHR](vkAcquireNextImageKHR.html)? If so, what is the proper criteria?
 
 **RESOLVED**: Yes.
@@ -437,7 +437,7 @@ surface’s minimum number of images + 1 then it is guaranteed non-blocking
 behavior when it does not currently own any images.
 
 13) Is there a way to create and initialize a new swapchain for a surface
-that has generated a `VK_SUBOPTIMAL_KHR` return code while still using
+that has generated a [VK_SUBOPTIMAL_KHR](VkResult.html) return code while still using
 the old swapchain?
 
 **RESOLVED**: Not as part of this specification.
@@ -497,7 +497,7 @@ accepts images in.
 For example, a presentation engine that does not support transforming
 surfaces as part of presentation, and which is presenting to a surface that
 is displayed with a 90-degree rotation, would return only one supported
-transform bit: `VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR`.
+transform bit: [VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html).
 Applications must transform their rendering by the transform they specify
 when creating the swapchain in `preTransform` field.
 
@@ -590,7 +590,7 @@ pairs.
 This set can be discovered via [vkGetPhysicalDeviceSurfaceFormatsKHR](vkGetPhysicalDeviceSurfaceFormatsKHR.html).
 As it can be expected that most display devices support the sRGB color
 space, at least one format/color-space pair has to be exposed, where the
-color space is `VK_COLOR_SPACE_SRGB_NONLINEAR_KHR`.
+color space is [VK_COLOR_SPACE_SRGB_NONLINEAR_KHR](VkColorSpaceKHR.html).
 
 24) How are sRGB formats and the sRGB color space related?
 
@@ -601,7 +601,7 @@ non-linear transfer functions defined by the sRGB standard color space when
 reading from or writing to images of those formats.
 Still, it is unlikely that a swapchain will expose a `*_SRGB` format
 along with any color space other than
-`VK_COLOR_SPACE_SRGB_NONLINEAR_KHR`.
+[VK_COLOR_SPACE_SRGB_NONLINEAR_KHR](VkColorSpaceKHR.html).
 
 On the other hand, non-`*_SRGB` formats will be very likely exposed in
 pair with a SRGB color space.
@@ -624,11 +624,11 @@ images is treated by the presentation engine during compositing?
 negotiate with the presentation engine on how to treat image alpha values
 during the compositing process.
 Since not all platforms can practically control this through the Vulkan
-driver, a value of `VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR` is provided like
+driver, a value of [VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR](VkCompositeAlphaFlagBitsKHR.html) is provided like
 for surface transforms.
 
 27) Is [vkCreateSwapchainKHR](vkCreateSwapchainKHR.html) the right function to return
-`VK_ERROR_NATIVE_WINDOW_IN_USE_KHR`, or should the various
+[VK_ERROR_NATIVE_WINDOW_IN_USE_KHR](VkResult.html), or should the various
 platform-specific [VkSurfaceKHR](VkSurfaceKHR.html) factory functions catch this error
 earlier?
 

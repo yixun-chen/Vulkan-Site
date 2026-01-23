@@ -58,7 +58,23 @@
 
 ## Content
 
-::pp: ++
+Table of Contents
+
+[1. Understanding Asset Pipelines](#_understanding_asset_pipelines)
+
+[1.1. Asset Organization Concepts](#_asset_organization_concepts)
+[1.2. Asset Pipeline Concepts](#_asset_pipeline_concepts)
+[1.3. Artist-Engine Collaboration Concepts](#_artist_engine_collaboration_concepts)
+[1.4. Development to Production Concepts](#_development_to_production_concepts)
+[1.5. Implementation Considerations](#_implementation_considerations)
+
+[2. Our Project Implementation](#_our_project_implementation)
+
+[2.1. File Formats and Directory Structure](#_file_formats_and_directory_structure)
+[2.2. Tools and Libraries](#_tools_and_libraries)
+[2.3. Integration with Engine Architecture](#_integration_with_engine_architecture)
+[2.4. Artist Workflow](#_artist_workflow)
+[2.5. Runtime Loading](#_runtime_loading)
 
 After exploring engine architecture and camera systems, it’s important to understand how 3D assets are managed in rendering engines. A well-designed asset pipeline is crucial for efficiently handling models, textures, and other resources in any production environment.
 
@@ -94,10 +110,18 @@ assets/
       └── quality_presets/     // Different quality settings (Scalability)
 
 This example demonstrates all four principles:
-- **Categorization**: Assets are grouped by type (models, textures, shaders, config)
-- **Hierarchy**: Assets are organized in a nested structure (e.g., models > characters > player)
-- **Discoverability**: Common assets are placed in dedicated folders (e.g., common textures, core shaders) making them easy to find
-- **Scalability**: The structure accommodates different quality levels and platform-specific assets (e.g., high-resolution textures, mobile shaders, quality presets)
+
+* 
+**Categorization**: Assets are grouped by type (models, textures, shaders, config)
+
+* 
+**Hierarchy**: Assets are organized in a nested structure (e.g., models > characters > player)
+
+* 
+**Discoverability**: Common assets are placed in dedicated folders (e.g., common textures, core shaders) making them easy to find
+
+* 
+**Scalability**: The structure accommodates different quality levels and platform-specific assets (e.g., high-resolution textures, mobile shaders, quality presets)
 
 The specific organization should be tailored to your project’s needs, but the underlying principles remain consistent across different engines.
 
@@ -604,4 +628,4 @@ Render with appropriate materials and shaders
 
 By implementing these specific approaches, our engine will have a robust and efficient asset pipeline that aligns with the general concepts discussed earlier in this chapter.
 
-[Next: Implementing the Model Loading System](03_model_system.adoc)
+[Previous: Introduction](01_introduction.html) | [Next: Implementing the Model Loading System](03_model_system.html)

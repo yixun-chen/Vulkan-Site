@@ -44,9 +44,9 @@ The structure is dependent on `opType` as shown in the table below.
 
 | `opType` | Format of `argData` |
 | --- | --- |
-| `VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_WRITE_INSTANCE_NV` | [VkPartitionedAccelerationStructureWriteInstanceDataNV](VkPartitionedAccelerationStructureWriteInstanceDataNV.html) |
-| `VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_UPDATE_INSTANCE_NV` | [VkPartitionedAccelerationStructureUpdateInstanceDataNV](VkPartitionedAccelerationStructureUpdateInstanceDataNV.html) |
-| `VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_WRITE_PARTITION_TRANSLATION_NV` | [VkPartitionedAccelerationStructureWritePartitionTranslationDataNV](VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.html) |
+| [VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_WRITE_INSTANCE_NV](VkPartitionedAccelerationStructureOpTypeNV.html) | [VkPartitionedAccelerationStructureWriteInstanceDataNV](VkPartitionedAccelerationStructureWriteInstanceDataNV.html) |
+| [VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_UPDATE_INSTANCE_NV](VkPartitionedAccelerationStructureOpTypeNV.html) | [VkPartitionedAccelerationStructureUpdateInstanceDataNV](VkPartitionedAccelerationStructureUpdateInstanceDataNV.html) |
+| [VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_WRITE_PARTITION_TRANSLATION_NV](VkPartitionedAccelerationStructureOpTypeNV.html) | [VkPartitionedAccelerationStructureWritePartitionTranslationDataNV](VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.html) |
 
 Valid Usage
 

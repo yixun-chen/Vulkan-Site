@@ -36,7 +36,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDescriptorSetLayoutHostMappingInfoVALVE-sType-sType) VUID-VkDescriptorSetLayoutHostMappingInfoVALVE-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_HOST_MAPPING_INFO_VALVE`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_HOST_MAPPING_INFO_VALVE](VkStructureType.html)
 
 * 
 [](#VUID-VkDescriptorSetLayoutHostMappingInfoVALVE-pNext-pNext) VUID-VkDescriptorSetLayoutHostMappingInfoVALVE-pNext-pNext

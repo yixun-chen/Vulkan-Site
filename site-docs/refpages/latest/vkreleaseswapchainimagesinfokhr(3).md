@@ -71,7 +71,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkReleaseSwapchainImagesInfoKHR-sType-sType) VUID-VkReleaseSwapchainImagesInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RELEASE_SWAPCHAIN_IMAGES_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RELEASE_SWAPCHAIN_IMAGES_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkReleaseSwapchainImagesInfoKHR-pNext-pNext) VUID-VkReleaseSwapchainImagesInfoKHR-pNext-pNext

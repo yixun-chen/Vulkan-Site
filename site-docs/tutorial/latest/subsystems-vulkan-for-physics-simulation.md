@@ -73,7 +73,7 @@ Let’s extend our physics system to include Vulkan-accelerated components. We�
 3) Step 3: Simulation dispatch (integrate → broad‑phase → narrow‑phase → resolve with pipeline barriers)
 4) Step 4: Synchronization and readback (update GPU buffers, submit, read back state, integrate in Update)
 
-|  | We avoid repeating Vulkan compute fundamentals here; focus stays on physics‑specific wiring. Use earlier chapters ([Resource Management](../Engine_Architecture/04_resource_management.adoc), [Rendering Pipeline](../Engine_Architecture/05_rendering_pipeline.adoc)) or the Vulkan Guide ([https://docs.vulkan.org/guide/latest/](https://docs.vulkan.org/guide/latest/)) if you need a refresher on descriptors, buffers, or pipeline creation. |
+|  | We avoid repeating Vulkan compute fundamentals here; focus stays on physics‑specific wiring. Use earlier chapters ([Resource Management](../Engine_Architecture/04_resource_management.html), [Rendering Pipeline](../Engine_Architecture/05_rendering_pipeline.html)) or the Vulkan Guide ([https://docs.vulkan.org/guide/latest/](https://docs.vulkan.org/guide/latest/)) if you need a refresher on descriptors, buffers, or pipeline creation. |
 | --- | --- |
 
 // Physics.h (additions)
@@ -747,4 +747,4 @@ In this chapter, we’ve explored how Vulkan compute shaders can be used to acce
 
 The techniques we’ve covered demonstrate the versatility of Vulkan beyond traditional graphics rendering. As you continue to develop your engine, consider other areas where GPU acceleration might provide benefits, such as AI pathfinding, procedural generation, or particle systems.
 
-[Previous: Physics Basics](04_physics_basics.adoc) | [Next: Conclusion](06_conclusion.adoc)
+[Previous: Physics Basics](04_physics_basics.html) | [Next: Conclusion](06_conclusion.html)

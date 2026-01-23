@@ -44,7 +44,7 @@ typedef VkBindImagePlaneMemoryInfo VkBindImagePlaneMemoryInfoKHR;
 structure.
 
 * 
-`planeAspect` is a `VkImageAspectFlagBits` value specifying the
+`planeAspect` is a [VkImageAspectFlagBits](VkImageAspectFlagBits.html) value specifying the
 aspect of the disjoint image plane to bind.
 
 Valid Usage
@@ -52,15 +52,15 @@ Valid Usage
 * 
 [](#VUID-VkBindImagePlaneMemoryInfo-planeAspect-02283) VUID-VkBindImagePlaneMemoryInfo-planeAspect-02283
 
-If the image’s `tiling` is `VK_IMAGE_TILING_LINEAR` or
-`VK_IMAGE_TILING_OPTIMAL`, then `planeAspect` **must** be a single
+If the image’s `tiling` is [VK_IMAGE_TILING_LINEAR](VkImageTiling.html) or
+[VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html), then `planeAspect` **must** be a single
 valid [multi-planar aspect mask](../../../../spec/latest/chapters/formats.html#formats-multiplanar-image-aspect) bit
 
 * 
 [](#VUID-VkBindImagePlaneMemoryInfo-planeAspect-02284) VUID-VkBindImagePlaneMemoryInfo-planeAspect-02284
 
 If the image’s `tiling` is
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then `planeAspect`
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html), then `planeAspect`
 **must** be a single valid *memory plane* for the image (that is,
 `aspectMask` **must** specify a plane index that is less than the
 [VkDrmFormatModifierPropertiesEXT](VkDrmFormatModifierPropertiesEXT.html)::`drmFormatModifierPlaneCount`
@@ -72,7 +72,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindImagePlaneMemoryInfo-sType-sType) VUID-VkBindImagePlaneMemoryInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkBindImagePlaneMemoryInfo-planeAspect-parameter) VUID-VkBindImagePlaneMemoryInfo-planeAspect-parameter

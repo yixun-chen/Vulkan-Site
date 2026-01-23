@@ -44,7 +44,7 @@ specifying the creation of the optical flow session.
 * 
 `pSession` is a pointer to a [VkOpticalFlowSessionNV](VkOpticalFlowSessionNV.html) handle
 specifying the optical flow session object which will be created by this
-function when it returns `VK_SUCCESS`
+function when it returns [VK_SUCCESS](VkResult.html)
 
 Valid Usage (Implicit)
 
@@ -78,21 +78,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_NV_optical_flow](VK_NV_optical_flow.html), [VkAllocationCallbacks](VkAllocationCallbacks.html), [VkDevice](VkDevice.html), [VkOpticalFlowSessionCreateInfoNV](VkOpticalFlowSessionCreateInfoNV.html), [VkOpticalFlowSessionNV](VkOpticalFlowSessionNV.html)
 

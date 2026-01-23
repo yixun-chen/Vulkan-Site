@@ -55,7 +55,7 @@ If the `VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR` structure is incl
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -63,7 +63,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR-sType-sType) VUID-VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_QUANTIZATION_MAP_FEATURES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_QUANTIZATION_MAP_FEATURES_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_quantization_map](VK_KHR_video_encode_quantization_map.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

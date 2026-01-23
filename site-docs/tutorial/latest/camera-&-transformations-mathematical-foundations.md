@@ -148,7 +148,7 @@ Example: `newPosition = currentPosition + movementDirection * speed`
 * 
 Example: Slowing down camera movement by multiplying velocity by a factor 
 
-**Dot Product**: Calculates the cosine of the angle between normalized vectors.
+**Dot Product**: Calculates the dot product between two vectors. For normalized vectors, this equals the cosine of the angle between them.
 
 * 
 Applications: Determining if objects are facing the camera, calculating lighting intensity
@@ -1247,4 +1247,4 @@ If you’re finding some of the mathematical concepts challenging or want to dee
 
 These resources should help you gain a deeper understanding of the mathematical concepts used in 3D graphics and camera systems. If you’re struggling with a particular concept, try looking at multiple resources as different explanations might resonate better with your learning style.
 
-[Next: Transformation Matrices](03_transformation_matrices.adoc)
+[Previous: Introduction](01_introduction.html) | [Next: Transformation Matrices](03_transformation_matrices.html)

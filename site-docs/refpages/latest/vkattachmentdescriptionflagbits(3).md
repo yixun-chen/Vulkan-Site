@@ -31,17 +31,17 @@ typedef enum VkAttachmentDescriptionFlagBits {
 } VkAttachmentDescriptionFlagBits;
 
 * 
-`VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT` specifies that the
+[VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT](#) specifies that the
 attachment aliases the same device memory as other attachments.
 
 * 
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#)
 specifies that resolve operations happening to an sRGB encoded
 attachment **must** not convert samples from nonlinear to linear before
 averaging.
 
 * 
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#)
 specifies that resolve operations happening to an sRGB encoded
 attachment **must** convert samples from nonlinear to linear before
 averaging.

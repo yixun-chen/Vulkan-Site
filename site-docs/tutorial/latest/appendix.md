@@ -241,35 +241,97 @@ Below is a comparative analysis of the architectural patterns discussed in this 
 
 | Pattern | Strengths | Weaknesses | Best Used For |
 | --- | --- | --- | --- |
-| Layered Architecture | * Clear separation of concerns
-  * Easy to understand
-  * Good for beginners | * Can lead to "layer bloat"
-  * May introduce unnecessary indirection
-  * Potential performance overhead from layer traversal | * Smaller engines
-  * Educational projects
-  * When clarity is more important than performance |
-| Component-Based Architecture | * Highly flexible and modular
-  * Promotes code reuse
-  * Avoids deep inheritance hierarchies
-  * Easier to extend with new features | * More complex to implement initially
-  * Can be harder to debug
-  * Potential performance overhead from component lookups | * Modern rendering engines
-  * Systems with diverse object types
-  * Projects requiring frequent extension |
-| Data-Oriented Design | * Excellent performance
-  * Cache-friendly memory access
-  * Good for parallel processing | * Less intuitive than OOP
-  * Steeper learning curve
-  * Can make code harder to read | * Performance-critical systems
-  * Mobile platforms
-  * Systems processing large amounts of similar data |
-| Service Locator Pattern | * Decouples service providers from consumers
-  * Facilitates testing
-  * Allows runtime service swapping | * Can hide dependencies
-  * Potential for runtime errors
-  * Global state concerns | * Cross-cutting concerns
-  * Systems requiring runtime configuration
-  * When loose coupling is critical |
+| Layered Architecture | * 
+Clear separation of concerns
+
+* 
+Easy to understand
+
+* 
+Good for beginners | * 
+Can lead to "layer bloat"
+
+* 
+May introduce unnecessary indirection
+
+* 
+Potential performance overhead from layer traversal | * 
+Smaller engines
+
+* 
+Educational projects
+
+* 
+When clarity is more important than performance |
+| Component-Based Architecture | * 
+Highly flexible and modular
+
+* 
+Promotes code reuse
+
+* 
+Avoids deep inheritance hierarchies
+
+* 
+Easier to extend with new features | * 
+More complex to implement initially
+
+* 
+Can be harder to debug
+
+* 
+Potential performance overhead from component lookups | * 
+Modern rendering engines
+
+* 
+Systems with diverse object types
+
+* 
+Projects requiring frequent extension |
+| Data-Oriented Design | * 
+Excellent performance
+
+* 
+Cache-friendly memory access
+
+* 
+Good for parallel processing | * 
+Less intuitive than OOP
+
+* 
+Steeper learning curve
+
+* 
+Can make code harder to read | * 
+Performance-critical systems
+
+* 
+Mobile platforms
+
+* 
+Systems processing large amounts of similar data |
+| Service Locator Pattern | * 
+Decouples service providers from consumers
+
+* 
+Facilitates testing
+
+* 
+Allows runtime service swapping | * 
+Can hide dependencies
+
+* 
+Potential for runtime errors
+
+* 
+Global state concerns | * 
+Cross-cutting concerns
+
+* 
+Systems requiring runtime configuration
+
+* 
+When loose coupling is critical |
 
 This section provides an overview of advanced rendering techniques commonly used in modern rendering engines. For more comprehensive information, refer to these excellent resources:
 
@@ -334,5 +396,5 @@ When designing your engine architecture, consider:
 
 **Project Scope** - A small project may not need the complexity of a full ECS.
 
-[Back to Architectural Patterns](#../Engine_Architecture/02_architectural_patterns.adoc)
-[Back to Rendering Pipeline](#../Engine_Architecture/05_rendering_pipeline.adoc)
+[Back to Architectural Patterns](../Engine_Architecture/02_architectural_patterns.html)
+[Back to Rendering Pipeline](../Engine_Architecture/05_rendering_pipeline.html)

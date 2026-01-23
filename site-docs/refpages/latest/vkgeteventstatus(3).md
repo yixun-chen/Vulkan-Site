@@ -37,8 +37,8 @@ with the following return codes:
 
 | Status | Meaning |
 | --- | --- |
-| `VK_EVENT_SET` | The event specified by `event` is signaled. |
-| `VK_EVENT_RESET` | The event specified by `event` is unsignaled. |
+| [VK_EVENT_SET](VkResult.html) | The event specified by `event` is signaled. |
+| [VK_EVENT_RESET](VkResult.html) | The event specified by `event` is unsignaled. |
 
 If a `vkCmdSetEvent` or `vkCmdResetEvent` command is in a command
 buffer that is in the [pending state](../../../../spec/latest/chapters/cmdbuffers.html#commandbuffers-lifecycle), then the
@@ -56,7 +56,7 @@ Valid Usage
 [](#VUID-vkGetEventStatus-event-03940) VUID-vkGetEventStatus-event-03940
 
 `event` **must** not have been created with
-`VK_EVENT_CREATE_DEVICE_ONLY_BIT`
+[VK_EVENT_CREATE_DEVICE_ONLY_BIT](VkEventCreateFlagBits.html)
 
 Valid Usage (Implicit)
 
@@ -80,27 +80,27 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_EVENT_RESET`
+[VK_EVENT_RESET](VkResult.html)
 
 * 
-`VK_EVENT_SET`
+[VK_EVENT_SET](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkDevice](VkDevice.html), [VkEvent](VkEvent.html)
 

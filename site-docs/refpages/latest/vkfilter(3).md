@@ -33,13 +33,13 @@ typedef enum VkFilter {
 } VkFilter;
 
 * 
-`VK_FILTER_NEAREST` specifies nearest filtering.
+[VK_FILTER_NEAREST](#) specifies nearest filtering.
 
 * 
-`VK_FILTER_LINEAR` specifies linear filtering.
+[VK_FILTER_LINEAR](#) specifies linear filtering.
 
 * 
-`VK_FILTER_CUBIC_EXT` specifies cubic filtering.
+[VK_FILTER_CUBIC_EXT](#) specifies cubic filtering.
 
 These filters are described in detail in [Texel Filtering](../../../../spec/latest/chapters/textures.html#textures-texel-filtering).
 

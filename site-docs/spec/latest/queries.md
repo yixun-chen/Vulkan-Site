@@ -113,9 +113,9 @@ Valid Usage
 [](#VUID-vkCreateQueryPool-device-09663) VUID-vkCreateQueryPool-device-09663
 
 `device` **must** support at least one queue family with one of the
-`VK_QUEUE_VIDEO_ENCODE_BIT_KHR`,
-`VK_QUEUE_VIDEO_DECODE_BIT_KHR`,
-`VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` capabilities
+[VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits),
+[VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits),
+[VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) capabilities
 
 Valid Usage (Implicit)
 
@@ -149,21 +149,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkQueryPoolCreateInfo` structure is defined as:
 
@@ -200,7 +200,7 @@ is a bitmask of [VkQueryPipelineStatisticFlagBits](#VkQueryPipelineStatisticFlag
 counters will be returned in queries on the new pool, as described below
 in [Pipeline Statistics Queries](#queries-pipestats).
 `pipelineStatistics` is ignored if `queryType` is not
-`VK_QUERY_TYPE_PIPELINE_STATISTICS`.
+[VK_QUERY_TYPE_PIPELINE_STATISTICS](#VkQueryType).
 
 Valid Usage
 
@@ -208,42 +208,42 @@ Valid Usage
 [](#VUID-VkQueryPoolCreateInfo-queryType-00791) VUID-VkQueryPoolCreateInfo-queryType-00791
 
 If the [    `pipelineStatisticsQuery`](features.html#features-pipelineStatisticsQuery) feature is not enabled, `queryType`
-**must** not be `VK_QUERY_TYPE_PIPELINE_STATISTICS`
+**must** not be [VK_QUERY_TYPE_PIPELINE_STATISTICS](#VkQueryType)
 
 * 
 [](#VUID-VkQueryPoolCreateInfo-meshShaderQueries-07068) VUID-VkQueryPoolCreateInfo-meshShaderQueries-07068
 
 If the [`meshShaderQueries`](features.html#features-meshShaderQueries) feature
 is not enabled, `queryType` **must** not be
-`VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT`
+[VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT](#VkQueryType)
 
 * 
 [](#VUID-VkQueryPoolCreateInfo-meshShaderQueries-07069) VUID-VkQueryPoolCreateInfo-meshShaderQueries-07069
 
 If the [`meshShaderQueries`](features.html#features-meshShaderQueries) feature
 is not enabled, and `queryType` is
-`VK_QUERY_TYPE_PIPELINE_STATISTICS`, `pipelineStatistics` **must**
+[VK_QUERY_TYPE_PIPELINE_STATISTICS](#VkQueryType), `pipelineStatistics` **must**
 not contain
-`VK_QUERY_PIPELINE_STATISTIC_TASK_SHADER_INVOCATIONS_BIT_EXT` or
-`VK_QUERY_PIPELINE_STATISTIC_MESH_SHADER_INVOCATIONS_BIT_EXT`
+[VK_QUERY_PIPELINE_STATISTIC_TASK_SHADER_INVOCATIONS_BIT_EXT](#VkQueryPipelineStatisticFlagBits) or
+[VK_QUERY_PIPELINE_STATISTIC_MESH_SHADER_INVOCATIONS_BIT_EXT](#VkQueryPipelineStatisticFlagBits)
 
 * 
 [](#VUID-VkQueryPoolCreateInfo-queryType-00792) VUID-VkQueryPoolCreateInfo-queryType-00792
 
-If `queryType` is `VK_QUERY_TYPE_PIPELINE_STATISTICS`,
+If `queryType` is [VK_QUERY_TYPE_PIPELINE_STATISTICS](#VkQueryType),
 `pipelineStatistics` **must** be a valid combination of
 [VkQueryPipelineStatisticFlagBits](#VkQueryPipelineStatisticFlagBits) values
 
 * 
 [](#VUID-VkQueryPoolCreateInfo-queryType-09534) VUID-VkQueryPoolCreateInfo-queryType-09534
 
-If `queryType` is `VK_QUERY_TYPE_PIPELINE_STATISTICS`,
+If `queryType` is [VK_QUERY_TYPE_PIPELINE_STATISTICS](#VkQueryType),
 `pipelineStatistics` **must** not be zero
 
 * 
 [](#VUID-VkQueryPoolCreateInfo-queryType-03222) VUID-VkQueryPoolCreateInfo-queryType-03222
 
-If `queryType` is `VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, the
+If `queryType` is [VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType), the
 `pNext` chain **must** include a
 [VkQueryPoolPerformanceCreateInfoKHR](#VkQueryPoolPerformanceCreateInfoKHR) structure
 
@@ -255,7 +255,7 @@ If `queryType` is `VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, the
 * 
 [](#VUID-VkQueryPoolCreateInfo-queryType-11839) VUID-VkQueryPoolCreateInfo-queryType-11839
 
-If `queryType` is `VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR`, then
+If `queryType` is [VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR](#VkQueryType), then
 at least one of the queue families of the device **must** support
 [result status queries](#queries-result-status-only), as indicated by
 [VkQueueFamilyQueryResultStatusPropertiesKHR](devsandqueues.html#VkQueueFamilyQueryResultStatusPropertiesKHR)::`queryResultStatusSupport`
@@ -265,28 +265,28 @@ at least one of the queue families of the device **must** support
 
 If the `pNext` chain includes a [VkVideoProfileInfoKHR](videocoding.html#VkVideoProfileInfoKHR)
 structure and its `videoCodecOperation` member is
-`VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR`, then the
+[VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR](videocoding.html#VkVideoCodecOperationFlagBitsKHR), then the
 [`videoDecodeVP9`](features.html#features-videoDecodeVP9) feature **must** be
 enabled
 
 * 
 [](#VUID-VkQueryPoolCreateInfo-queryType-07133) VUID-VkQueryPoolCreateInfo-queryType-07133
 
-If `queryType` is `VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR`,
+If `queryType` is [VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR](#VkQueryType),
 then the `pNext` chain **must** include a [VkVideoProfileInfoKHR](videocoding.html#VkVideoProfileInfoKHR)
 structure with `videoCodecOperation` specifying an encode operation
 
 * 
 [](#VUID-VkQueryPoolCreateInfo-queryType-07906) VUID-VkQueryPoolCreateInfo-queryType-07906
 
-If `queryType` is `VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR`,
+If `queryType` is [VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR](#VkQueryType),
 then the `pNext` chain **must** include a
 [VkQueryPoolVideoEncodeFeedbackCreateInfoKHR](#VkQueryPoolVideoEncodeFeedbackCreateInfoKHR) structure
 
 * 
 [](#VUID-VkQueryPoolCreateInfo-queryType-07907) VUID-VkQueryPoolCreateInfo-queryType-07907
 
-If `queryType` is `VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR`, and
+If `queryType` is [VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR](#VkQueryType), and
 the `pNext` chain includes a [VkVideoProfileInfoKHR](videocoding.html#VkVideoProfileInfoKHR) structure
 and a [VkQueryPoolVideoEncodeFeedbackCreateInfoKHR](#VkQueryPoolVideoEncodeFeedbackCreateInfoKHR) structure, then
 [VkQueryPoolVideoEncodeFeedbackCreateInfoKHR](#VkQueryPoolVideoEncodeFeedbackCreateInfoKHR)::`encodeFeedbackFlags`
@@ -301,7 +301,7 @@ as returned by [vkGetPhysicalDeviceVideoCapabilitiesKHR](videocoding.html#vkGetP
 
 If the `pNext` chain includes a [VkVideoProfileInfoKHR](videocoding.html#VkVideoProfileInfoKHR)
 structure and its `videoCodecOperation` member is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR`, then the
+[VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](videocoding.html#VkVideoCodecOperationFlagBitsKHR), then the
 [`videoEncodeAV1`](features.html#features-videoEncodeAV1) feature **must** be
 enabled
 
@@ -318,7 +318,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueryPoolCreateInfo-sType-sType) VUID-VkQueryPoolCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkQueryPoolCreateInfo-pNext-pNext) VUID-VkQueryPoolCreateInfo-pNext-pNext
@@ -350,7 +350,7 @@ typedef enum VkQueryPoolCreateFlagBits {
 } VkQueryPoolCreateFlagBits;
 
 * 
-`VK_QUERY_POOL_CREATE_RESET_BIT_KHR` specifies that queries in the
+[VK_QUERY_POOL_CREATE_RESET_BIT_KHR](#VkQueryPoolCreateFlagBits) specifies that queries in the
 query pool are initialized on creation and do not need to be reset
 before first use.
 
@@ -416,7 +416,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueryPoolPerformanceCreateInfoKHR-sType-sType) VUID-VkQueryPoolPerformanceCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkQueryPoolPerformanceCreateInfoKHR-pCounterIndices-parameter) VUID-VkQueryPoolPerformanceCreateInfoKHR-pCounterIndices-parameter
@@ -516,7 +516,7 @@ created, `pAllocator` **must** be `NULL`
 |  | Applications **can** verify that `queryPool` **can** be destroyed by checking
 | --- | --- |
 that `vkGetQueryPoolResults`() without the
-`VK_QUERY_RESULT_PARTIAL_BIT` flag returns `VK_SUCCESS` for all
+[VK_QUERY_RESULT_PARTIAL_BIT](#VkQueryResultFlagBits) flag returns [VK_SUCCESS](fundamentals.html#VkResult) for all
 queries that are used in command buffers submitted for execution. |
 
 Valid Usage (Implicit)
@@ -585,65 +585,65 @@ typedef enum VkQueryType {
 } VkQueryType;
 
 * 
-`VK_QUERY_TYPE_OCCLUSION` specifies an [    occlusion query](#queries-occlusion).
+[VK_QUERY_TYPE_OCCLUSION](#VkQueryType) specifies an [    occlusion query](#queries-occlusion).
 
 * 
-`VK_QUERY_TYPE_PIPELINE_STATISTICS` specifies a [    pipeline statistics query](#queries-pipestats).
+[VK_QUERY_TYPE_PIPELINE_STATISTICS](#VkQueryType) specifies a [    pipeline statistics query](#queries-pipestats).
 
 * 
-`VK_QUERY_TYPE_TIMESTAMP` specifies a [    timestamp query](#queries-timestamps).
+[VK_QUERY_TYPE_TIMESTAMP](#VkQueryType) specifies a [    timestamp query](#queries-timestamps).
 
 * 
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR` specifies a
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType) specifies a
 [performance query](#queries-performance).
 
 * 
-`VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT` specifies a
+[VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](#VkQueryType) specifies a
 [transform feedback query](#queries-transform-feedback).
 
 * 
-`VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT` specifies a
+[VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](#VkQueryType) specifies a
 [primitives generated query](#queries-primitives-generated).
 
 * 
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR` specifies
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR](#VkQueryType) specifies
 a [acceleration structure size query](accelstructures.html#acceleration-structure-copying)
 for use with [vkCmdWriteAccelerationStructuresPropertiesKHR](accelstructures.html#vkCmdWriteAccelerationStructuresPropertiesKHR) or
 [vkWriteAccelerationStructuresPropertiesKHR](accelstructures.html#vkWriteAccelerationStructuresPropertiesKHR).
 
 * 
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR](#VkQueryType)
 specifies a [serialization acceleration    structure size query](accelstructures.html#acceleration-structure-copying).
 
 * 
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR` specifies an
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR](#VkQueryType) specifies an
 [acceleration structure size query](accelstructures.html#acceleration-structure-copying)
 for use with [vkCmdWriteAccelerationStructuresPropertiesKHR](accelstructures.html#vkCmdWriteAccelerationStructuresPropertiesKHR) or
 [vkWriteAccelerationStructuresPropertiesKHR](accelstructures.html#vkWriteAccelerationStructuresPropertiesKHR).
 
 * 
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR](#VkQueryType)
 specifies a [serialization acceleration structure    pointer count query](accelstructures.html#serialized-as-header).
 
 * 
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV` specifies
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV](#VkQueryType) specifies
 an [acceleration structure size query](accelstructures.html#acceleration-structure-copying)
 for use with [vkCmdWriteAccelerationStructuresPropertiesNV](accelstructures.html#vkCmdWriteAccelerationStructuresPropertiesNV).
 
 * 
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL` specifies a
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL](#VkQueryType) specifies a
 [Intel performance query](#queries-performance-intel).
 
 * 
-`VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR` specifies a
+[VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR](#VkQueryType) specifies a
 [result status query](#queries-result-status-only).
 
 * 
-`VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR` specifies a
+[VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR](#VkQueryType) specifies a
 [video encode feedback query](#queries-video-encode-feedback).
 
 * 
-`VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT` specifies a
+[VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT](#VkQueryType) specifies a
 [generated mesh primitives query](#queries-mesh-shader).
 
 The operation of queries is controlled by the commands
@@ -679,7 +679,7 @@ calling either [vkGetQueryPoolResults](#vkGetQueryPoolResults) or
 [vkCmdCopyQueryPoolResults](#vkCmdCopyQueryPoolResults).
 
 After query pool creation,
-where `VK_QUERY_POOL_CREATE_RESET_BIT_KHR` was not set in
+where [VK_QUERY_POOL_CREATE_RESET_BIT_KHR](#VkQueryPoolCreateFlagBits) was not set in
 [VkQueryPoolCreateInfo](#VkQueryPoolCreateInfo)::`flags`
 each query is in an uninitialized state and **must** be reset before it is
 used.
@@ -734,7 +734,7 @@ The operation of this command happens after the first scope and happens
 before the second scope.
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, this command sets the status of
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType), this command sets the status of
 query indices [`firstQuery`, `firstQuery` + 
 `queryCount` - 1] to unavailable for each pass of `queryPool`, as
 indicated by a call to
@@ -743,7 +743,7 @@ indicated by a call to
 |  | Because `vkCmdResetQueryPool` resets all the passes of the indicated
 | --- | --- |
 queries, applications must not record a `vkCmdResetQueryPool` command
-for a `queryPool` created with `VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`
+for a `queryPool` created with [VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType)
 in a command buffer that needs to be submitted multiple times as indicated
 by a call to [vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR](#vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR).
 Otherwise applications will never be able to complete the recorded queries. |
@@ -771,7 +771,7 @@ All queries used by the command **must** not be active
 [](#VUID-vkCmdResetQueryPool-firstQuery-02862) VUID-vkCmdResetQueryPool-firstQuery-02862
 
 If `queryPool` was created with
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, this command **must** not be
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType), this command **must** not be
 recorded in a command buffer that, either directly or through secondary
 command buffers, also contains begin commands for a query from the set
 of queries [`firstQuery`, `firstQuery` + 
@@ -797,7 +797,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdResetQueryPool-commandBuffer-cmdpool) VUID-vkCmdResetQueryPool-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_OPTICAL_FLOW_BIT_NV`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_OPTICAL_FLOW_BIT_NV](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdResetQueryPool-renderpass) VUID-vkCmdResetQueryPool-renderpass
@@ -879,7 +879,7 @@ being reset.
 This command sets the status of query indices [`firstQuery`,
 `firstQuery` +  `queryCount` - 1] to unavailable.
 
-If `queryPool` is `VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR` this command
+If `queryPool` is [VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType) this command
 sets the status of query indices [`firstQuery`, `firstQuery`
 +  `queryCount` - 1] to unavailable for each pass.
 
@@ -1002,8 +1002,8 @@ the results.
 `flags` is a bitmask of [VkQueryControlFlagBits](#VkQueryControlFlagBits) specifying
 constraints on the types of queries that **can** be performed.
 
-If the `queryType` of the pool is `VK_QUERY_TYPE_OCCLUSION` and
-`flags` contains `VK_QUERY_CONTROL_PRECISE_BIT`, an implementation
+If the `queryType` of the pool is [VK_QUERY_TYPE_OCCLUSION](#VkQueryType) and
+`flags` contains [VK_QUERY_CONTROL_PRECISE_BIT](#VkQueryControlFlagBits), an implementation
 **must** return a result that matches the actual number of samples passed.
 This is described in more detail in [Occlusion Queries](#queries-occlusion).
 
@@ -1064,35 +1064,35 @@ All queries used by the command **must** be *unavailable*
 [](#VUID-vkCmdBeginQuery-queryType-02804) VUID-vkCmdBeginQuery-queryType-02804
 
 The `queryType` used to create `queryPool` **must** not be
-`VK_QUERY_TYPE_TIMESTAMP`
+[VK_QUERY_TYPE_TIMESTAMP](#VkQueryType)
 
 * 
 [](#VUID-vkCmdBeginQuery-queryType-04728) VUID-vkCmdBeginQuery-queryType-04728
 
 The `queryType` used to create `queryPool` **must** not be
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR` or
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR](#VkQueryType) or
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR](#VkQueryType)
 
 * 
 [](#VUID-vkCmdBeginQuery-queryType-06741) VUID-vkCmdBeginQuery-queryType-06741
 
 The `queryType` used to create `queryPool` **must** not be
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR` or
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR](#VkQueryType) or
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR](#VkQueryType)
 
 * 
 [](#VUID-vkCmdBeginQuery-queryType-04729) VUID-vkCmdBeginQuery-queryType-04729
 
 The `queryType` used to create `queryPool` **must** not be
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV](#VkQueryType)
 
 * 
 [](#VUID-vkCmdBeginQuery-queryType-00800) VUID-vkCmdBeginQuery-queryType-00800
 
 If the [`occlusionQueryPrecise`](features.html#features-occlusionQueryPrecise)
 feature is not enabled, or the `queryType` used to create
-`queryPool` was not `VK_QUERY_TYPE_OCCLUSION`, `flags` **must**
-not contain `VK_QUERY_CONTROL_PRECISE_BIT`
+`queryPool` was not [VK_QUERY_TYPE_OCCLUSION](#VkQueryType), `flags` **must**
+not contain [VK_QUERY_CONTROL_PRECISE_BIT](#VkQueryControlFlagBits)
 
 * 
 [](#VUID-vkCmdBeginQuery-query-00802) VUID-vkCmdBeginQuery-query-00802
@@ -1103,14 +1103,14 @@ not contain `VK_QUERY_CONTROL_PRECISE_BIT`
 [](#VUID-vkCmdBeginQuery-queryType-00803) VUID-vkCmdBeginQuery-queryType-00803
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_OCCLUSION`, the `VkCommandPool` that
+[VK_QUERY_TYPE_OCCLUSION](#VkQueryType), the `VkCommandPool` that
 `commandBuffer` was allocated from **must** support graphics operations
 
 * 
 [](#VUID-vkCmdBeginQuery-queryType-00804) VUID-vkCmdBeginQuery-queryType-00804
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PIPELINE_STATISTICS` and any of the
+[VK_QUERY_TYPE_PIPELINE_STATISTICS](#VkQueryType) and any of the
 `pipelineStatistics` indicate graphics operations, the
 `VkCommandPool` that `commandBuffer` was allocated from **must**
 support graphics operations
@@ -1119,7 +1119,7 @@ support graphics operations
 [](#VUID-vkCmdBeginQuery-queryType-00805) VUID-vkCmdBeginQuery-queryType-00805
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PIPELINE_STATISTICS` and any of the
+[VK_QUERY_TYPE_PIPELINE_STATISTICS](#VkQueryType) and any of the
 `pipelineStatistics` indicate compute operations, the
 `VkCommandPool` that `commandBuffer` was allocated from **must**
 support compute operations
@@ -1140,7 +1140,7 @@ or equal to the number of queries in `queryPool`
 [](#VUID-vkCmdBeginQuery-queryType-07126) VUID-vkCmdBeginQuery-queryType-07126
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR`, then the `VkCommandPool`
+[VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR](#VkQueryType), then the `VkCommandPool`
 that `commandBuffer` was allocated from **must** have been created with
 a queue family index that supports [result    status queries](#queries-result-status-only), as indicated by
 [VkQueueFamilyQueryResultStatusPropertiesKHR](devsandqueues.html#VkQueueFamilyQueryResultStatusPropertiesKHR)::`queryResultStatusSupport`
@@ -1155,13 +1155,13 @@ If there is a bound video session, then there **must** be no
 [](#VUID-vkCmdBeginQuery-None-08370) VUID-vkCmdBeginQuery-None-08370
 
 If there is a bound video session, then it **must** not have been created
-with `VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR`
+with [VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR](videocoding.html#VkVideoSessionCreateFlagBitsKHR)
 
 * 
 [](#VUID-vkCmdBeginQuery-queryType-07128) VUID-vkCmdBeginQuery-queryType-07128
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR` and there is a bound video
+[VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR](#VkQueryType) and there is a bound video
 session, then `queryPool` **must** have been created with a
 [VkVideoProfileInfoKHR](videocoding.html#VkVideoProfileInfoKHR) structure included in the `pNext` chain
 of [VkQueryPoolCreateInfo](#VkQueryPoolCreateInfo) identical to the one specified in
@@ -1172,14 +1172,14 @@ session was created with
 [](#VUID-vkCmdBeginQuery-queryType-07129) VUID-vkCmdBeginQuery-queryType-07129
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR`, then there **must** be a
+[VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR](#VkQueryType), then there **must** be a
 bound video session
 
 * 
 [](#VUID-vkCmdBeginQuery-queryType-07130) VUID-vkCmdBeginQuery-queryType-07130
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR` and there is a bound video
+[VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR](#VkQueryType) and there is a bound video
 session, then `queryPool` **must** have been created with a
 [VkVideoProfileInfoKHR](videocoding.html#VkVideoProfileInfoKHR) structure included in the `pNext` chain
 of [VkQueryPoolCreateInfo](#VkQueryPoolCreateInfo) identical to the one specified in
@@ -1190,8 +1190,8 @@ session was created with
 [](#VUID-vkCmdBeginQuery-queryType-07131) VUID-vkCmdBeginQuery-queryType-07131
 
 If the `queryType` used to create `queryPool` was not
-`VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR`
-or `VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR`,
+[VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR](#VkQueryType)
+or [VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR](#VkQueryType),
 then there **must** be no bound video session
 
 * 
@@ -1212,7 +1212,7 @@ differs from that of any queries that are
 [](#VUID-vkCmdBeginQuery-queryType-07070) VUID-vkCmdBeginQuery-queryType-07070
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT` the
+[VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT](#VkQueryType) the
 `VkCommandPool` that `commandBuffer` was allocated from **must**
 support graphics operations
 
@@ -1220,7 +1220,7 @@ support graphics operations
 [](#VUID-vkCmdBeginQuery-queryType-02327) VUID-vkCmdBeginQuery-queryType-02327
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT` the
+[VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](#VkQueryType) the
 `VkCommandPool` that `commandBuffer` was allocated from **must**
 support graphics operations
 
@@ -1228,7 +1228,7 @@ support graphics operations
 [](#VUID-vkCmdBeginQuery-queryType-02328) VUID-vkCmdBeginQuery-queryType-02328
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT` then
+[VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](#VkQueryType) then
 `VkPhysicalDeviceTransformFeedbackPropertiesEXT`::`transformFeedbackQueries`
 **must** be supported
 
@@ -1236,7 +1236,7 @@ If the `queryType` used to create `queryPool` was
 [](#VUID-vkCmdBeginQuery-queryType-06687) VUID-vkCmdBeginQuery-queryType-06687
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT` the `VkCommandPool`
+[VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](#VkQueryType) the `VkCommandPool`
 that `commandBuffer` was allocated from **must** support graphics
 operations
 
@@ -1244,7 +1244,7 @@ operations
 [](#VUID-vkCmdBeginQuery-queryType-06688) VUID-vkCmdBeginQuery-queryType-06688
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT` then
+[VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](#VkQueryType) then
 [`primitivesGeneratedQuery`](features.html#features-primitivesGeneratedQuery)
 **must** be enabled
 
@@ -1252,7 +1252,7 @@ If the `queryType` used to create `queryPool` was
 [](#VUID-vkCmdBeginQuery-queryPool-07289) VUID-vkCmdBeginQuery-queryPool-07289
 
 If `queryPool` was created with a `queryType` of
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, then the
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType), then the
 [VkQueryPoolPerformanceCreateInfoKHR](#VkQueryPoolPerformanceCreateInfoKHR)::`queueFamilyIndex`
 `queryPool` was created with **must** equal the queue family index of
 the `VkCommandPool` that `commandBuffer` was allocated from
@@ -1261,33 +1261,33 @@ the `VkCommandPool` that `commandBuffer` was allocated from
 [](#VUID-vkCmdBeginQuery-queryPool-03223) VUID-vkCmdBeginQuery-queryPool-03223
 
 If `queryPool` was created with a `queryType` of
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, the [    profiling lock](#profiling-lock) **must** have been held before [vkBeginCommandBuffer](cmdbuffers.html#vkBeginCommandBuffer)
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType), the [    profiling lock](#profiling-lock) **must** have been held before [vkBeginCommandBuffer](cmdbuffers.html#vkBeginCommandBuffer)
 was called on `commandBuffer`
 
 * 
 [](#VUID-vkCmdBeginQuery-queryPool-03224) VUID-vkCmdBeginQuery-queryPool-03224
 
 If `queryPool` was created with a `queryType` of
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR` and one of the counters used
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType) and one of the counters used
 to create `queryPool` was
-`VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR`, the query begin
+[VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR](devsandqueues.html#VkPerformanceCounterScopeKHR), the query begin
 **must** be the first recorded command in `commandBuffer`
 
 * 
 [](#VUID-vkCmdBeginQuery-queryPool-03225) VUID-vkCmdBeginQuery-queryPool-03225
 
 If `queryPool` was created with a `queryType` of
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR` and one of the counters used
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType) and one of the counters used
 to create `queryPool` was
-`VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR`, the begin command
+[VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR](devsandqueues.html#VkPerformanceCounterScopeKHR), the begin command
 **must** not be recorded within a render pass instance
 
 * 
 [](#VUID-vkCmdBeginQuery-queryPool-03226) VUID-vkCmdBeginQuery-queryPool-03226
 
 If `queryPool` was created with a `queryType` of
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR` and another query pool with a
-`queryType` `VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR` has been used
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType) and another query pool with a
+`queryType` [VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType) has been used
 within `commandBuffer`, its parent primary command buffer or
 secondary command buffer recorded within the same parent primary command
 buffer as `commandBuffer`, the
@@ -1297,7 +1297,7 @@ buffer as `commandBuffer`, the
 [](#VUID-vkCmdBeginQuery-None-02863) VUID-vkCmdBeginQuery-None-02863
 
 If `queryPool` was created with a `queryType` of
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, this command **must** not be
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType), this command **must** not be
 recorded in a command buffer that, either directly or through secondary
 command buffers, also contains a `vkCmdResetQueryPool` command
 affecting the same query
@@ -1327,7 +1327,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBeginQuery-commandBuffer-cmdpool) VUID-vkCmdBeginQuery-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBeginQuery-suspended) VUID-vkCmdBeginQuery-suspended
@@ -1394,8 +1394,8 @@ constraints on the types of queries that **can** be performed.
 
 * 
 `index` is the query type specific index.
-When the query type is `VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT`
-or `VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT`,
+When the query type is [VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](#VkQueryType)
+or [VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](#VkQueryType),
 the index represents the vertex stream.
 
 The `vkCmdBeginQueryIndexedEXT` command operates the same as the
@@ -1429,35 +1429,35 @@ All queries used by the command **must** be *unavailable*
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-02804) VUID-vkCmdBeginQueryIndexedEXT-queryType-02804
 
 The `queryType` used to create `queryPool` **must** not be
-`VK_QUERY_TYPE_TIMESTAMP`
+[VK_QUERY_TYPE_TIMESTAMP](#VkQueryType)
 
 * 
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-04728) VUID-vkCmdBeginQueryIndexedEXT-queryType-04728
 
 The `queryType` used to create `queryPool` **must** not be
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR` or
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR](#VkQueryType) or
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR](#VkQueryType)
 
 * 
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-06741) VUID-vkCmdBeginQueryIndexedEXT-queryType-06741
 
 The `queryType` used to create `queryPool` **must** not be
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR` or
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR](#VkQueryType) or
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR](#VkQueryType)
 
 * 
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-04729) VUID-vkCmdBeginQueryIndexedEXT-queryType-04729
 
 The `queryType` used to create `queryPool` **must** not be
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV](#VkQueryType)
 
 * 
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-00800) VUID-vkCmdBeginQueryIndexedEXT-queryType-00800
 
 If the [`occlusionQueryPrecise`](features.html#features-occlusionQueryPrecise)
 feature is not enabled, or the `queryType` used to create
-`queryPool` was not `VK_QUERY_TYPE_OCCLUSION`, `flags` **must**
-not contain `VK_QUERY_CONTROL_PRECISE_BIT`
+`queryPool` was not [VK_QUERY_TYPE_OCCLUSION](#VkQueryType), `flags` **must**
+not contain [VK_QUERY_CONTROL_PRECISE_BIT](#VkQueryControlFlagBits)
 
 * 
 [](#VUID-vkCmdBeginQueryIndexedEXT-query-00802) VUID-vkCmdBeginQueryIndexedEXT-query-00802
@@ -1468,14 +1468,14 @@ not contain `VK_QUERY_CONTROL_PRECISE_BIT`
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-00803) VUID-vkCmdBeginQueryIndexedEXT-queryType-00803
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_OCCLUSION`, the `VkCommandPool` that
+[VK_QUERY_TYPE_OCCLUSION](#VkQueryType), the `VkCommandPool` that
 `commandBuffer` was allocated from **must** support graphics operations
 
 * 
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-00804) VUID-vkCmdBeginQueryIndexedEXT-queryType-00804
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PIPELINE_STATISTICS` and any of the
+[VK_QUERY_TYPE_PIPELINE_STATISTICS](#VkQueryType) and any of the
 `pipelineStatistics` indicate graphics operations, the
 `VkCommandPool` that `commandBuffer` was allocated from **must**
 support graphics operations
@@ -1484,7 +1484,7 @@ support graphics operations
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-00805) VUID-vkCmdBeginQueryIndexedEXT-queryType-00805
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PIPELINE_STATISTICS` and any of the
+[VK_QUERY_TYPE_PIPELINE_STATISTICS](#VkQueryType) and any of the
 `pipelineStatistics` indicate compute operations, the
 `VkCommandPool` that `commandBuffer` was allocated from **must**
 support compute operations
@@ -1505,7 +1505,7 @@ or equal to the number of queries in `queryPool`
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-07126) VUID-vkCmdBeginQueryIndexedEXT-queryType-07126
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR`, then the `VkCommandPool`
+[VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR](#VkQueryType), then the `VkCommandPool`
 that `commandBuffer` was allocated from **must** have been created with
 a queue family index that supports [result    status queries](#queries-result-status-only), as indicated by
 [VkQueueFamilyQueryResultStatusPropertiesKHR](devsandqueues.html#VkQueueFamilyQueryResultStatusPropertiesKHR)::`queryResultStatusSupport`
@@ -1520,13 +1520,13 @@ If there is a bound video session, then there **must** be no
 [](#VUID-vkCmdBeginQueryIndexedEXT-None-08370) VUID-vkCmdBeginQueryIndexedEXT-None-08370
 
 If there is a bound video session, then it **must** not have been created
-with `VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR`
+with [VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR](videocoding.html#VkVideoSessionCreateFlagBitsKHR)
 
 * 
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-07128) VUID-vkCmdBeginQueryIndexedEXT-queryType-07128
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR` and there is a bound video
+[VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR](#VkQueryType) and there is a bound video
 session, then `queryPool` **must** have been created with a
 [VkVideoProfileInfoKHR](videocoding.html#VkVideoProfileInfoKHR) structure included in the `pNext` chain
 of [VkQueryPoolCreateInfo](#VkQueryPoolCreateInfo) identical to the one specified in
@@ -1537,14 +1537,14 @@ session was created with
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-07129) VUID-vkCmdBeginQueryIndexedEXT-queryType-07129
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR`, then there **must** be a
+[VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR](#VkQueryType), then there **must** be a
 bound video session
 
 * 
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-07130) VUID-vkCmdBeginQueryIndexedEXT-queryType-07130
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR` and there is a bound video
+[VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR](#VkQueryType) and there is a bound video
 session, then `queryPool` **must** have been created with a
 [VkVideoProfileInfoKHR](videocoding.html#VkVideoProfileInfoKHR) structure included in the `pNext` chain
 of [VkQueryPoolCreateInfo](#VkQueryPoolCreateInfo) identical to the one specified in
@@ -1555,8 +1555,8 @@ session was created with
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-07131) VUID-vkCmdBeginQueryIndexedEXT-queryType-07131
 
 If the `queryType` used to create `queryPool` was not
-`VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR`
-or `VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR`,
+[VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR](#VkQueryType)
+or [VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR](#VkQueryType),
 then there **must** be no bound video session
 
 * 
@@ -1578,7 +1578,7 @@ the active query
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-02338) VUID-vkCmdBeginQueryIndexedEXT-queryType-02338
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT` the
+[VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](#VkQueryType) the
 `VkCommandPool` that `commandBuffer` was allocated from **must**
 support graphics operations
 
@@ -1586,7 +1586,7 @@ support graphics operations
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-02339) VUID-vkCmdBeginQueryIndexedEXT-queryType-02339
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT` the `index`
+[VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](#VkQueryType) the `index`
 parameter **must** be less than
 `VkPhysicalDeviceTransformFeedbackPropertiesEXT`::`maxTransformFeedbackStreams`
 
@@ -1594,15 +1594,15 @@ parameter **must** be less than
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-06692) VUID-vkCmdBeginQueryIndexedEXT-queryType-06692
 
 If the `queryType` used to create `queryPool` was not
-`VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT`
-and not `VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT`,
+[VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](#VkQueryType)
+and not [VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](#VkQueryType),
 the `index` **must** be zero
 
 * 
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-06689) VUID-vkCmdBeginQueryIndexedEXT-queryType-06689
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT` the `VkCommandPool`
+[VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](#VkQueryType) the `VkCommandPool`
 that `commandBuffer` was allocated from **must** support graphics
 operations
 
@@ -1610,7 +1610,7 @@ operations
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-06690) VUID-vkCmdBeginQueryIndexedEXT-queryType-06690
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT` the `index` parameter
+[VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](#VkQueryType) the `index` parameter
 **must** be less than
 `VkPhysicalDeviceTransformFeedbackPropertiesEXT`::`maxTransformFeedbackStreams`
 
@@ -1618,7 +1618,7 @@ If the `queryType` used to create `queryPool` was
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-06691) VUID-vkCmdBeginQueryIndexedEXT-queryType-06691
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT` and the
+[VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](#VkQueryType) and the
 [    `primitivesGeneratedQueryWithNonZeroStreams`](features.html#features-primitivesGeneratedQueryWithNonZeroStreams) feature is not
 enabled, the `index` parameter **must** be zero
 
@@ -1626,7 +1626,7 @@ enabled, the `index` parameter **must** be zero
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-06693) VUID-vkCmdBeginQueryIndexedEXT-queryType-06693
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT` then
+[VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](#VkQueryType) then
 [`primitivesGeneratedQuery`](features.html#features-primitivesGeneratedQuery)
 **must** be enabled
 
@@ -1634,7 +1634,7 @@ If the `queryType` used to create `queryPool` was
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-02341) VUID-vkCmdBeginQueryIndexedEXT-queryType-02341
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT` then
+[VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](#VkQueryType) then
 `VkPhysicalDeviceTransformFeedbackPropertiesEXT`::`transformFeedbackQueries`
 **must** be supported
 
@@ -1642,13 +1642,13 @@ If the `queryType` used to create `queryPool` was
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryType-07071) VUID-vkCmdBeginQueryIndexedEXT-queryType-07071
 
 The `queryType` used to create `queryPool` **must** not be
-`VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT`
+[VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT](#VkQueryType)
 
 * 
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryPool-07289) VUID-vkCmdBeginQueryIndexedEXT-queryPool-07289
 
 If `queryPool` was created with a `queryType` of
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, then the
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType), then the
 [VkQueryPoolPerformanceCreateInfoKHR](#VkQueryPoolPerformanceCreateInfoKHR)::`queueFamilyIndex`
 `queryPool` was created with **must** equal the queue family index of
 the `VkCommandPool` that `commandBuffer` was allocated from
@@ -1657,33 +1657,33 @@ the `VkCommandPool` that `commandBuffer` was allocated from
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryPool-03223) VUID-vkCmdBeginQueryIndexedEXT-queryPool-03223
 
 If `queryPool` was created with a `queryType` of
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, the [    profiling lock](#profiling-lock) **must** have been held before [vkBeginCommandBuffer](cmdbuffers.html#vkBeginCommandBuffer)
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType), the [    profiling lock](#profiling-lock) **must** have been held before [vkBeginCommandBuffer](cmdbuffers.html#vkBeginCommandBuffer)
 was called on `commandBuffer`
 
 * 
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryPool-03224) VUID-vkCmdBeginQueryIndexedEXT-queryPool-03224
 
 If `queryPool` was created with a `queryType` of
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR` and one of the counters used
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType) and one of the counters used
 to create `queryPool` was
-`VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR`, the query begin
+[VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR](devsandqueues.html#VkPerformanceCounterScopeKHR), the query begin
 **must** be the first recorded command in `commandBuffer`
 
 * 
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryPool-03225) VUID-vkCmdBeginQueryIndexedEXT-queryPool-03225
 
 If `queryPool` was created with a `queryType` of
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR` and one of the counters used
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType) and one of the counters used
 to create `queryPool` was
-`VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR`, the begin command
+[VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR](devsandqueues.html#VkPerformanceCounterScopeKHR), the begin command
 **must** not be recorded within a render pass instance
 
 * 
 [](#VUID-vkCmdBeginQueryIndexedEXT-queryPool-03226) VUID-vkCmdBeginQueryIndexedEXT-queryPool-03226
 
 If `queryPool` was created with a `queryType` of
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR` and another query pool with a
-`queryType` `VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR` has been used
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType) and another query pool with a
+`queryType` [VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType) has been used
 within `commandBuffer`, its parent primary command buffer or
 secondary command buffer recorded within the same parent primary command
 buffer as `commandBuffer`, the
@@ -1693,7 +1693,7 @@ buffer as `commandBuffer`, the
 [](#VUID-vkCmdBeginQueryIndexedEXT-None-02863) VUID-vkCmdBeginQueryIndexedEXT-None-02863
 
 If `queryPool` was created with a `queryType` of
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, this command **must** not be
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType), this command **must** not be
 recorded in a command buffer that, either directly or through secondary
 command buffers, also contains a `vkCmdResetQueryPool` command
 affecting the same query
@@ -1723,7 +1723,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBeginQueryIndexedEXT-commandBuffer-cmdpool) VUID-vkCmdBeginQueryIndexedEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBeginQueryIndexedEXT-suspended) VUID-vkCmdBeginQueryIndexedEXT-suspended
@@ -1776,7 +1776,7 @@ typedef enum VkQueryControlFlagBits {
 } VkQueryControlFlagBits;
 
 * 
-`VK_QUERY_CONTROL_PRECISE_BIT` specifies the precision of
+[VK_QUERY_CONTROL_PRECISE_BIT](#VkQueryControlFlagBits) specifies the precision of
 [occlusion queries](#queries-occlusion).
 
 // Provided by VK_VERSION_1_0
@@ -1852,9 +1852,9 @@ mask **must** be less than or equal to the number of queries in
 [](#VUID-vkCmdEndQuery-queryPool-03227) VUID-vkCmdEndQuery-queryPool-03227
 
 If `queryPool` was created with a `queryType` of
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR` and one or more of the
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType) and one or more of the
 counters used to create `queryPool` was
-`VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR`, the
+[VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR](devsandqueues.html#VkPerformanceCounterScopeKHR), the
 [vkCmdEndQuery](#vkCmdEndQuery) **must** be the last recorded command in
 `commandBuffer`
 
@@ -1862,9 +1862,9 @@ counters used to create `queryPool` was
 [](#VUID-vkCmdEndQuery-queryPool-03228) VUID-vkCmdEndQuery-queryPool-03228
 
 If `queryPool` was created with a `queryType` of
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR` and one or more of the
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType) and one or more of the
 counters used to create `queryPool` was
-`VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR`, the
+[VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR](devsandqueues.html#VkPerformanceCounterScopeKHR), the
 [vkCmdEndQuery](#vkCmdEndQuery) **must** not be recorded within a render pass instance
 
 * 
@@ -1901,7 +1901,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdEndQuery-commandBuffer-cmdpool) VUID-vkCmdEndQuery-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdEndQuery-suspended) VUID-vkCmdEndQuery-suspended
@@ -2013,8 +2013,8 @@ queries in `queryPool`
 [](#VUID-vkCmdEndQueryIndexedEXT-queryType-06694) VUID-vkCmdEndQueryIndexedEXT-queryType-06694
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT`
-or `VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT`,
+[VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](#VkQueryType)
+or [VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](#VkQueryType),
 the `index` parameter **must** be less than
 `VkPhysicalDeviceTransformFeedbackPropertiesEXT`::`maxTransformFeedbackStreams`
 
@@ -2022,16 +2022,16 @@ the `index` parameter **must** be less than
 [](#VUID-vkCmdEndQueryIndexedEXT-queryType-06695) VUID-vkCmdEndQueryIndexedEXT-queryType-06695
 
 If the `queryType` used to create `queryPool` was not
-`VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT`
-and not `VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT`,
+[VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](#VkQueryType)
+and not [VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](#VkQueryType),
 the `index` **must** be zero
 
 * 
 [](#VUID-vkCmdEndQueryIndexedEXT-queryType-06696) VUID-vkCmdEndQueryIndexedEXT-queryType-06696
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT`
-or `VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT`,
+[VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](#VkQueryType)
+or [VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](#VkQueryType),
 `index` **must** equal the `index` used to begin the query
 
 * 
@@ -2068,7 +2068,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdEndQueryIndexedEXT-commandBuffer-cmdpool) VUID-vkCmdEndQueryIndexedEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdEndQueryIndexedEXT-suspended) VUID-vkCmdEndQueryIndexedEXT-suspended
@@ -2173,12 +2173,12 @@ when the pool is created, and the feedback values are written in bit
 order starting from the least significant bit, as described
 [here](#queries-video-encode-feedback).
 
-If `VK_QUERY_RESULT_WITH_AVAILABILITY_BIT` is specified, an
+If [VK_QUERY_RESULT_WITH_AVAILABILITY_BIT](#VkQueryResultFlagBits) is specified, an
 additional unsigned integer result value is written indicating whether
 the query’s result is available, with any non-zero value indicating that
 it is available.
 
-If `VK_QUERY_RESULT_WITH_STATUS_BIT_KHR` is specified, an additional
+If [VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](#VkQueryResultFlagBits) is specified, an additional
 signed integer result value is written indicating the status of the
 query result.
 Positive values indicate success, negative values indicate failure, and
@@ -2247,7 +2247,7 @@ values.
 Behavior when not all queries are available is described
 [below](#queries-wait-bit-not-set).
 
-If `VK_QUERY_RESULT_WITH_AVAILABILITY_BIT` is set, results for all
+If [VK_QUERY_RESULT_WITH_AVAILABILITY_BIT](#VkQueryResultFlagBits) is set, results for all
 queries in `queryPool` identified by `firstQuery` and
 `queryCount` are copied to `pData`, along with an extra availability
 or status
@@ -2257,10 +2257,10 @@ A value of zero indicates that the results are not yet available, otherwise
 the query is complete and results are available.
 The size of the availability
 or status
-values is 64 bits if `VK_QUERY_RESULT_64_BIT` is set in `flags`.
+values is 64 bits if [VK_QUERY_RESULT_64_BIT](#VkQueryResultFlagBits) is set in `flags`.
 Otherwise, it is 32 bits.
 
-If `VK_QUERY_RESULT_WITH_STATUS_BIT_KHR` is set, results for all queries
+If [VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](#VkQueryResultFlagBits) is set, results for all queries
 in `queryPool` identified by `firstQuery` and `queryCount` are
 copied to `pData`, along with an extra status value written directly
 after the results of each query and interpreted as a signed integer.
@@ -2278,9 +2278,9 @@ within the query completed unsuccessfully, then all other results written by
 this command are **undefined** unless otherwise specified for any of the
 results of the used query type.
 
-|  | If `VK_QUERY_RESULT_WITH_AVAILABILITY_BIT`
+|  | If [VK_QUERY_RESULT_WITH_AVAILABILITY_BIT](#VkQueryResultFlagBits)
 | --- | --- |
-or `VK_QUERY_RESULT_WITH_STATUS_BIT_KHR`
+or [VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](#VkQueryResultFlagBits)
 is set, the layout of data in the buffer is a *(result,availability)*
 or *(result,status)*
 pair for each query returned, and `stride` is the stride between each
@@ -2288,17 +2288,17 @@ pair. |
 
 Results for any available query written by this command are final and
 represent the final result of the query.
-If `VK_QUERY_RESULT_PARTIAL_BIT` is set, then for any query that is
+If [VK_QUERY_RESULT_PARTIAL_BIT](#VkQueryResultFlagBits) is set, then for any query that is
 unavailable, an intermediate result between zero and the final result value
 is written for that query.
 Otherwise, any result written by this command is **undefined**.
 
-If `VK_QUERY_RESULT_64_BIT` is set, results and, if returned,
+If [VK_QUERY_RESULT_64_BIT](#VkQueryResultFlagBits) is set, results and, if returned,
 availability
 or status
 values for all queries are written as an array of 64-bit values.
 If the `queryPool` was created with
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, results for each query are
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType), results for each query are
 written as an array of the type indicated by
 [VkPerformanceCounterKHR](devsandqueues.html#VkPerformanceCounterKHR)::`storage` for the counter being queried.
 Otherwise, results and availability
@@ -2314,7 +2314,7 @@ If a signed integer query’s value overflows the result type, the value is
 If a floating-point query’s value is not representable as the result type,
 the value is **undefined**.
 
-If `VK_QUERY_RESULT_WAIT_BIT` is set, this command defines an execution
+If [VK_QUERY_RESULT_WAIT_BIT](#VkQueryResultFlagBits) is set, this command defines an execution
 dependency with any earlier commands that writes one of the identified
 queries.
 The first [synchronization scope](synchronization.html#synchronization-dependencies-scopes)
@@ -2329,13 +2329,13 @@ indicated by `firstQuery` and `queryCount`.
 The second [synchronization scope](synchronization.html#synchronization-dependencies-scopes)
 includes the host operations of this command.
 
-If `VK_QUERY_RESULT_WAIT_BIT` is not set, `vkGetQueryPoolResults`
-**may** return `VK_NOT_READY` if there are queries in the unavailable
+If [VK_QUERY_RESULT_WAIT_BIT](#VkQueryResultFlagBits) is not set, `vkGetQueryPoolResults`
+**may** return [VK_NOT_READY](fundamentals.html#VkResult) if there are queries in the unavailable
 state.
 
 |  | Applications **must** take care to ensure that use of the
 | --- | --- |
-`VK_QUERY_RESULT_WAIT_BIT` bit has the desired effect.
+[VK_QUERY_RESULT_WAIT_BIT](#VkQueryResultFlagBits) bit has the desired effect.
 
 For example, if a query has been used previously and a command buffer
 records the commands `vkCmdResetQueryPool`, `vkCmdBeginQuery`, and
@@ -2347,8 +2347,8 @@ Applications **can** use fences or events to ensure that a query has already
 been reset before checking for its results or availability status.
 Otherwise, a stale value could be returned from a previous use of the query.
 
-The above also applies when `VK_QUERY_RESULT_WAIT_BIT` is used in
-combination with `VK_QUERY_RESULT_WITH_AVAILABILITY_BIT`.
+The above also applies when [VK_QUERY_RESULT_WAIT_BIT](#VkQueryResultFlagBits) is used in
+combination with [VK_QUERY_RESULT_WITH_AVAILABILITY_BIT](#VkQueryResultFlagBits).
 In this case, the returned availability status **may** reflect the result of a
 previous use of the query unless
 `vkResetQueryPool` is called or
@@ -2356,7 +2356,7 @@ the `vkCmdResetQueryPool` command has been executed since the last use
 of the query.
 
 A similar situation can arise with the
-`VK_QUERY_RESULT_WITH_STATUS_BIT_KHR` flag. |
+[VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](#VkQueryResultFlagBits) flag. |
 
 |  | Applications **can** double-buffer query pool usage, with a pool per frame, and
 | --- | --- |
@@ -2385,23 +2385,23 @@ If `queryCount` is greater than 1, `stride` **must** not be zero
 [](#VUID-vkGetQueryPoolResults-queryType-09439) VUID-vkGetQueryPoolResults-queryType-09439
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_TIMESTAMP`, `flags` **must** not contain
-`VK_QUERY_RESULT_PARTIAL_BIT`
+[VK_QUERY_TYPE_TIMESTAMP](#VkQueryType), `flags` **must** not contain
+[VK_QUERY_RESULT_PARTIAL_BIT](#VkQueryResultFlagBits)
 
 * 
 [](#VUID-vkGetQueryPoolResults-queryType-09440) VUID-vkGetQueryPoolResults-queryType-09440
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, `flags` **must** not contain
-`VK_QUERY_RESULT_WITH_AVAILABILITY_BIT`,
-`VK_QUERY_RESULT_WITH_STATUS_BIT_KHR`,
-`VK_QUERY_RESULT_PARTIAL_BIT`, or `VK_QUERY_RESULT_64_BIT`
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType), `flags` **must** not contain
+[VK_QUERY_RESULT_WITH_AVAILABILITY_BIT](#VkQueryResultFlagBits),
+[VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](#VkQueryResultFlagBits),
+[VK_QUERY_RESULT_PARTIAL_BIT](#VkQueryResultFlagBits), or [VK_QUERY_RESULT_64_BIT](#VkQueryResultFlagBits)
 
 * 
 [](#VUID-vkGetQueryPoolResults-queryType-09441) VUID-vkGetQueryPoolResults-queryType-09441
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, the `queryPool` **must**
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType), the `queryPool` **must**
 have been recorded once for each pass as retrieved via a call to
 [vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR](#vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR)
 
@@ -2409,23 +2409,23 @@ have been recorded once for each pass as retrieved via a call to
 [](#VUID-vkGetQueryPoolResults-queryType-11874) VUID-vkGetQueryPoolResults-queryType-11874
 
 If the `queryType` used to create `queryPool` was not
-`VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR`
-or `VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR`,
+[VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR](#VkQueryType)
+or [VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR](#VkQueryType),
 then `flags` **must** not include
-`VK_QUERY_RESULT_WITH_STATUS_BIT_KHR`
+[VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](#VkQueryResultFlagBits)
 
 * 
 [](#VUID-vkGetQueryPoolResults-queryType-09442) VUID-vkGetQueryPoolResults-queryType-09442
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR`, then `flags` **must**
-include `VK_QUERY_RESULT_WITH_STATUS_BIT_KHR`
+[VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR](#VkQueryType), then `flags` **must**
+include [VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](#VkQueryResultFlagBits)
 
 * 
 [](#VUID-vkGetQueryPoolResults-flags-09443) VUID-vkGetQueryPoolResults-flags-09443
 
-If `flags` includes `VK_QUERY_RESULT_WITH_STATUS_BIT_KHR`, then
-it **must** not include `VK_QUERY_RESULT_WITH_AVAILABILITY_BIT`
+If `flags` includes [VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](#VkQueryResultFlagBits), then
+it **must** not include [VK_QUERY_RESULT_WITH_AVAILABILITY_BIT](#VkQueryResultFlagBits)
 
 * 
 [](#VUID-vkGetQueryPoolResults-None-09401) VUID-vkGetQueryPoolResults-None-09401
@@ -2435,37 +2435,37 @@ All queries used by the command **must** not be uninitialized
 * 
 [](#VUID-vkGetQueryPoolResults-flags-02828) VUID-vkGetQueryPoolResults-flags-02828
 
-If `VK_QUERY_RESULT_64_BIT` is not set in `flags`
+If [VK_QUERY_RESULT_64_BIT](#VkQueryResultFlagBits) is not set in `flags`
 and the `queryType` used to create `queryPool` was not
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`,
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType),
 then `pData` **must** be aligned to a multiple of `4`
 
 * 
 [](#VUID-vkGetQueryPoolResults-queryCount-12251) VUID-vkGetQueryPoolResults-queryCount-12251
 
-If `queryCount` is greater than 1, `VK_QUERY_RESULT_64_BIT` is
+If `queryCount` is greater than 1, [VK_QUERY_RESULT_64_BIT](#VkQueryResultFlagBits) is
 not set in `flags`
 and the `queryType` used to create `queryPool` was not
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`,
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType),
 then `stride` **must** be a multiple of `4`
 
 * 
 [](#VUID-vkGetQueryPoolResults-flags-00815) VUID-vkGetQueryPoolResults-flags-00815
 
-If `VK_QUERY_RESULT_64_BIT` is set in `flags` then `pData`
+If [VK_QUERY_RESULT_64_BIT](#VkQueryResultFlagBits) is set in `flags` then `pData`
 **must** be aligned to a multiple of `8`
 
 * 
 [](#VUID-vkGetQueryPoolResults-queryCount-12252) VUID-vkGetQueryPoolResults-queryCount-12252
 
-If `queryCount` is greater than 1 and `VK_QUERY_RESULT_64_BIT`
+If `queryCount` is greater than 1 and [VK_QUERY_RESULT_64_BIT](#VkQueryResultFlagBits)
 is set in `flags`, then `stride` **must** be a multiple of `8`
 
 * 
 [](#VUID-vkGetQueryPoolResults-stride-08993) VUID-vkGetQueryPoolResults-stride-08993
 
     If `queryCount` is greater than 1 and
-    `VK_QUERY_RESULT_WITH_AVAILABILITY_BIT` is set, `stride` **must**
+    [VK_QUERY_RESULT_WITH_AVAILABILITY_BIT](#VkQueryResultFlagBits) is set, `stride` **must**
     be large enough to contain the unsigned integer representing
     availability
 or status
@@ -2475,14 +2475,14 @@ or status
 [](#VUID-vkGetQueryPoolResults-queryType-03229) VUID-vkGetQueryPoolResults-queryType-03229
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, then `pData` **must** be
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType), then `pData` **must** be
 aligned to a multiple of the size of [VkPerformanceCounterResultKHR](#VkPerformanceCounterResultKHR)
 
 * 
 [](#VUID-vkGetQueryPoolResults-queryCount-12253) VUID-vkGetQueryPoolResults-queryCount-12253
 
 If `queryCount` is greater than 1 and the `queryType` used to
-create `queryPool` was `VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`,
+create `queryPool` was [VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType),
 then `stride` **must** be a multiple of the size of
 [VkPerformanceCounterResultKHR](#VkPerformanceCounterResultKHR)
 
@@ -2490,7 +2490,7 @@ then `stride` **must** be a multiple of the size of
 [](#VUID-vkGetQueryPoolResults-queryType-04519) VUID-vkGetQueryPoolResults-queryType-04519
 
 If `queryCount` is greater than 1 and the `queryType` used to
-create `queryPool` was `VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`,
+create `queryPool` was [VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType),
 then `stride` **must** be large enough to contain the
 [VkQueryPoolPerformanceCreateInfoKHR](#VkQueryPoolPerformanceCreateInfoKHR)::`counterIndexCount` used
 to create `queryPool` times the size of
@@ -2539,27 +2539,27 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_NOT_READY`
+[VK_NOT_READY](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Bits which **can** be set in [vkGetQueryPoolResults](#vkGetQueryPoolResults)::`flags` and
 [vkCmdCopyQueryPoolResults](#vkCmdCopyQueryPoolResults)::`flags`, specifying how and when
@@ -2576,25 +2576,25 @@ typedef enum VkQueryResultFlagBits {
 } VkQueryResultFlagBits;
 
 * 
-`VK_QUERY_RESULT_64_BIT` specifies the results will be written as an
+[VK_QUERY_RESULT_64_BIT](#VkQueryResultFlagBits) specifies the results will be written as an
 array of 64-bit unsigned integer values.
 If this bit is not set, the results will be written as an array of
 32-bit unsigned integer values.
 
 * 
-`VK_QUERY_RESULT_WAIT_BIT` specifies that Vulkan will wait for each
+[VK_QUERY_RESULT_WAIT_BIT](#VkQueryResultFlagBits) specifies that Vulkan will wait for each
 query’s status to become available before retrieving its results.
 
 * 
-`VK_QUERY_RESULT_WITH_AVAILABILITY_BIT` specifies that the
+[VK_QUERY_RESULT_WITH_AVAILABILITY_BIT](#VkQueryResultFlagBits) specifies that the
 availability status accompanies the results.
 
 * 
-`VK_QUERY_RESULT_PARTIAL_BIT` specifies that returning partial
+[VK_QUERY_RESULT_PARTIAL_BIT](#VkQueryResultFlagBits) specifies that returning partial
 results is acceptable.
 
 * 
-`VK_QUERY_RESULT_WITH_STATUS_BIT_KHR` specifies that the last value
+[VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](#VkQueryResultFlagBits) specifies that the last value
 returned in the query is a [VkQueryResultStatusKHR](#VkQueryResultStatusKHR) value.
 See [result status query](#queries-result-status-only) for information
 on how an application can determine whether the use of this flag bit is
@@ -2618,19 +2618,19 @@ typedef enum VkQueryResultStatusKHR {
 } VkQueryResultStatusKHR;
 
 * 
-`VK_QUERY_RESULT_STATUS_NOT_READY_KHR` specifies that the query
+[VK_QUERY_RESULT_STATUS_NOT_READY_KHR](#VkQueryResultStatusKHR) specifies that the query
 result is not yet available.
 
 * 
-`VK_QUERY_RESULT_STATUS_ERROR_KHR` specifies that operations did not
+[VK_QUERY_RESULT_STATUS_ERROR_KHR](#VkQueryResultStatusKHR) specifies that operations did not
 complete successfully.
 
 * 
-`VK_QUERY_RESULT_STATUS_COMPLETE_KHR` specifies that operations
+[VK_QUERY_RESULT_STATUS_COMPLETE_KHR](#VkQueryResultStatusKHR) specifies that operations
 completed successfully and the query result is available.
 
 * 
-`VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR`
+[VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR](#VkQueryResultStatusKHR)
 specifies that a video encode operation did not complete successfully
 due to the destination video bitstream buffer range not being
 sufficiently large to fit the encoded bitstream data.
@@ -2688,7 +2688,7 @@ Any results written for a query are written according to
 Results for any query in `queryPool` identified by `firstQuery` and
 `queryCount` that is available are copied to `dstBuffer`.
 
-If `VK_QUERY_RESULT_WITH_AVAILABILITY_BIT` is set, results for all
+If [VK_QUERY_RESULT_WITH_AVAILABILITY_BIT](#VkQueryResultFlagBits) is set, results for all
 queries in `queryPool` identified by `firstQuery` and
 `queryCount` are copied to `dstBuffer`, along with an extra
 availability value written directly after the results of each query and
@@ -2696,7 +2696,7 @@ interpreted as an unsigned integer.
 A value of zero indicates that the results are not yet available, otherwise
 the query is complete and results are available.
 
-If `VK_QUERY_RESULT_WITH_STATUS_BIT_KHR` is set, results for all queries
+If [VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](#VkQueryResultFlagBits) is set, results for all queries
 in `queryPool` identified by `firstQuery` and `queryCount` are
 copied to `dstBuffer`, along with an extra status value written directly
 after the results of each query and interpreted as a signed integer.
@@ -2716,16 +2716,16 @@ results of the used query type.
 
 Results for any available query written by this command are final and
 represent the final result of the query.
-If `VK_QUERY_RESULT_PARTIAL_BIT` is set, then for any query that is
+If [VK_QUERY_RESULT_PARTIAL_BIT](#VkQueryResultFlagBits) is set, then for any query that is
 unavailable, an intermediate result between zero and the final result value
 is written for that query.
 Otherwise, any result written by this command is **undefined**.
 
-If `VK_QUERY_RESULT_64_BIT` is set, results and availability
+If [VK_QUERY_RESULT_64_BIT](#VkQueryResultFlagBits) is set, results and availability
 or status
 values for all queries are written as an array of 64-bit values.
 If the `queryPool` was created with
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, results for each query are
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType), results for each query are
 written as an array of the type indicated by
 [VkPerformanceCounterKHR](devsandqueues.html#VkPerformanceCounterKHR)::`storage` for the counter being queried.
 Otherwise, results and availability
@@ -2748,7 +2748,7 @@ The first [synchronization scope](synchronization.html#synchronization-dependenc
 includes all commands which reference the queries in `queryPool`
 indicated by `query` that occur earlier in
 [submission order](synchronization.html#synchronization-submission-order).
-If `flags` does not include `VK_QUERY_RESULT_WAIT_BIT`,
+If `flags` does not include [VK_QUERY_RESULT_WAIT_BIT](#VkQueryResultFlagBits),
 [vkCmdEndQuery](#vkCmdEndQuery),
 [vkCmdEndQueryIndexedEXT](#vkCmdEndQueryIndexedEXT),
 [vkCmdWriteAccelerationStructuresPropertiesKHR](accelstructures.html#vkCmdWriteAccelerationStructuresPropertiesKHR),
@@ -2767,7 +2767,7 @@ before the second scope.
 
 `vkCmdCopyQueryPoolResults` is considered to be a transfer operation,
 and its writes to buffer memory **must** be synchronized using
-`VK_PIPELINE_STAGE_TRANSFER_BIT` and `VK_ACCESS_TRANSFER_WRITE_BIT`
+[VK_PIPELINE_STAGE_TRANSFER_BIT](synchronization.html#VkPipelineStageFlagBits) and [VK_ACCESS_TRANSFER_WRITE_BIT](synchronization.html#VkAccessFlagBits)
 before using the results.
 
 Valid Usage
@@ -2793,23 +2793,23 @@ If `queryCount` is greater than 1, `stride` **must** not be zero
 [](#VUID-vkCmdCopyQueryPoolResults-queryType-09439) VUID-vkCmdCopyQueryPoolResults-queryType-09439
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_TIMESTAMP`, `flags` **must** not contain
-`VK_QUERY_RESULT_PARTIAL_BIT`
+[VK_QUERY_TYPE_TIMESTAMP](#VkQueryType), `flags` **must** not contain
+[VK_QUERY_RESULT_PARTIAL_BIT](#VkQueryResultFlagBits)
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-queryType-09440) VUID-vkCmdCopyQueryPoolResults-queryType-09440
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, `flags` **must** not contain
-`VK_QUERY_RESULT_WITH_AVAILABILITY_BIT`,
-`VK_QUERY_RESULT_WITH_STATUS_BIT_KHR`,
-`VK_QUERY_RESULT_PARTIAL_BIT`, or `VK_QUERY_RESULT_64_BIT`
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType), `flags` **must** not contain
+[VK_QUERY_RESULT_WITH_AVAILABILITY_BIT](#VkQueryResultFlagBits),
+[VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](#VkQueryResultFlagBits),
+[VK_QUERY_RESULT_PARTIAL_BIT](#VkQueryResultFlagBits), or [VK_QUERY_RESULT_64_BIT](#VkQueryResultFlagBits)
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-queryType-09441) VUID-vkCmdCopyQueryPoolResults-queryType-09441
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, the `queryPool` **must**
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType), the `queryPool` **must**
 have been recorded once for each pass as retrieved via a call to
 [vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR](#vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR)
 
@@ -2817,23 +2817,23 @@ have been recorded once for each pass as retrieved via a call to
 [](#VUID-vkCmdCopyQueryPoolResults-queryType-11874) VUID-vkCmdCopyQueryPoolResults-queryType-11874
 
 If the `queryType` used to create `queryPool` was not
-`VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR`
-or `VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR`,
+[VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR](#VkQueryType)
+or [VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR](#VkQueryType),
 then `flags` **must** not include
-`VK_QUERY_RESULT_WITH_STATUS_BIT_KHR`
+[VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](#VkQueryResultFlagBits)
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-queryType-09442) VUID-vkCmdCopyQueryPoolResults-queryType-09442
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR`, then `flags` **must**
-include `VK_QUERY_RESULT_WITH_STATUS_BIT_KHR`
+[VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR](#VkQueryType), then `flags` **must**
+include [VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](#VkQueryResultFlagBits)
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-flags-09443) VUID-vkCmdCopyQueryPoolResults-flags-09443
 
-If `flags` includes `VK_QUERY_RESULT_WITH_STATUS_BIT_KHR`, then
-it **must** not include `VK_QUERY_RESULT_WITH_AVAILABILITY_BIT`
+If `flags` includes [VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](#VkQueryResultFlagBits), then
+it **must** not include [VK_QUERY_RESULT_WITH_AVAILABILITY_BIT](#VkQueryResultFlagBits)
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-None-09402) VUID-vkCmdCopyQueryPoolResults-None-09402
@@ -2849,25 +2849,25 @@ command is executed
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-flags-00822) VUID-vkCmdCopyQueryPoolResults-flags-00822
 
-If `VK_QUERY_RESULT_64_BIT` is not set in `flags` then
+If [VK_QUERY_RESULT_64_BIT](#VkQueryResultFlagBits) is not set in `flags` then
 `dstOffset` **must** be a multiple of `4`
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-queryCount-12254) VUID-vkCmdCopyQueryPoolResults-queryCount-12254
 
-If `queryCount` is greater than 1 and `VK_QUERY_RESULT_64_BIT`
+If `queryCount` is greater than 1 and [VK_QUERY_RESULT_64_BIT](#VkQueryResultFlagBits)
 is not set in `flags` then `stride` **must** be a multiple of `4`
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-flags-00823) VUID-vkCmdCopyQueryPoolResults-flags-00823
 
-If `VK_QUERY_RESULT_64_BIT` is set in `flags` then
+If [VK_QUERY_RESULT_64_BIT](#VkQueryResultFlagBits) is set in `flags` then
 `dstOffset` **must** be a multiple of `8`
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-queryCount-12255) VUID-vkCmdCopyQueryPoolResults-queryCount-12255
 
-If `queryCount` is greater than 1 and `VK_QUERY_RESULT_64_BIT`
+If `queryCount` is greater than 1 and [VK_QUERY_RESULT_64_BIT](#VkQueryResultFlagBits)
 is set in `flags` then `stride` **must** be a multiple of `8`
 
 * 
@@ -2881,7 +2881,7 @@ contain the result of each query, as described
 [](#VUID-vkCmdCopyQueryPoolResults-dstBuffer-00825) VUID-vkCmdCopyQueryPoolResults-dstBuffer-00825
 
 `dstBuffer` **must** have been created with the
-`VK_BUFFER_USAGE_TRANSFER_DST_BIT` usage flag set
+[VK_BUFFER_USAGE_TRANSFER_DST_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-dstBuffer-00826) VUID-vkCmdCopyQueryPoolResults-dstBuffer-00826
@@ -2893,16 +2893,16 @@ contiguously to a single `VkDeviceMemory` object
 [](#VUID-vkCmdCopyQueryPoolResults-queryType-03232) VUID-vkCmdCopyQueryPoolResults-queryType-03232
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`,
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#VkQueryType),
 [VkPhysicalDevicePerformanceQueryPropertiesKHR](limits.html#VkPhysicalDevicePerformanceQueryPropertiesKHR)::`allowCommandBufferQueryCopies`
-**must** be `VK_TRUE`
+**must** be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-queryType-02734) VUID-vkCmdCopyQueryPoolResults-queryType-02734
 
 [vkCmdCopyQueryPoolResults](#vkCmdCopyQueryPoolResults) **must** not be called if the
 `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL`
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL](#VkQueryType)
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-None-07429) VUID-vkCmdCopyQueryPoolResults-None-07429
@@ -2945,7 +2945,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-commandBuffer-cmdpool) VUID-vkCmdCopyQueryPoolResults-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-renderpass) VUID-vkCmdCopyQueryPoolResults-renderpass
@@ -3007,18 +3007,18 @@ When an occlusion query begins, the count of passing samples always starts
 at zero.
 For each drawing command, the count is incremented as described in
 [Sample Counting](fragops.html#fragops-samplecount).
-If `flags` does not contain `VK_QUERY_CONTROL_PRECISE_BIT` an
+If `flags` does not contain [VK_QUERY_CONTROL_PRECISE_BIT](#VkQueryControlFlagBits) an
 implementation **may** generate any non-zero result value for the query if the
 count of passing samples is non-zero.
 
-|  | Not setting `VK_QUERY_CONTROL_PRECISE_BIT` mode **may** be more efficient
+|  | Not setting [VK_QUERY_CONTROL_PRECISE_BIT](#VkQueryControlFlagBits) mode **may** be more efficient
 | --- | --- |
 on some implementations, and **should** be used where it is sufficient to know
 a boolean result on whether any samples passed the per-fragment tests.
 In this case, some implementations **may** only return zero or one, regardless
 of the actual number of samples passing the per-fragment tests.
 
-Setting `VK_QUERY_CONTROL_PRECISE_BIT` does not guarantee that different
+Setting [VK_QUERY_CONTROL_PRECISE_BIT](#VkQueryControlFlagBits) does not guarantee that different
 implementations return the same number of samples in an occlusion query.
 Some implementations may kill fragments in the
 [pre-rasterization shader stage](pipelines.html#pipelines-graphics-subsets-pre-rasterization), and these killed fragments do not contribute to the final result of
@@ -3092,14 +3092,14 @@ typedef enum VkQueryPipelineStatisticFlagBits {
 } VkQueryPipelineStatisticFlagBits;
 
 * 
-`VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_VERTICES_BIT` specifies
+[VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_VERTICES_BIT](#VkQueryPipelineStatisticFlagBits) specifies
 that queries managed by the pool will count the number of vertices
 processed by the [input assembly](drawing.html#drawing) stage.
 Vertices corresponding to incomplete primitives **may** contribute to the
 count.
 
 * 
-`VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_PRIMITIVES_BIT`
+[VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_PRIMITIVES_BIT](#VkQueryPipelineStatisticFlagBits)
 specifies that queries managed by the pool will count the number of
 primitives processed by the [input assembly](drawing.html#drawing) stage.
 If primitive restart is enabled, restarting the primitive topology has
@@ -3107,14 +3107,14 @@ no effect on the count.
 Incomplete primitives **may** be counted.
 
 * 
-`VK_QUERY_PIPELINE_STATISTIC_VERTEX_SHADER_INVOCATIONS_BIT`
+[VK_QUERY_PIPELINE_STATISTIC_VERTEX_SHADER_INVOCATIONS_BIT](#VkQueryPipelineStatisticFlagBits)
 specifies that queries managed by the pool will count the number of
 vertex shader invocations.
 This counter’s value is incremented each time a vertex shader is
 [invoked](shaders.html#shaders-vertex-execution).
 
 * 
-`VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_INVOCATIONS_BIT`
+[VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_INVOCATIONS_BIT](#VkQueryPipelineStatisticFlagBits)
 specifies that queries managed by the pool will count the number of
 geometry shader invocations.
 This counter’s value is incremented each time a geometry shader is
@@ -3124,7 +3124,7 @@ geometry shader invocations count is incremented for each separate
 instanced invocation.
 
 * 
-`VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_PRIMITIVES_BIT`
+[VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_PRIMITIVES_BIT](#VkQueryPipelineStatisticFlagBits)
 specifies that queries managed by the pool will count the number of
 primitives generated by geometry shader invocations.
 The counter’s value is incremented each time the geometry shader emits a
@@ -3134,7 +3134,7 @@ Restarting primitive topology using the SPIR-V instructions
 geometry shader output primitives count.
 
 * 
-`VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT` specifies
+[VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT](#VkQueryPipelineStatisticFlagBits) specifies
 that queries managed by the pool will count the number of primitives
 processed by the [Primitive Clipping](vertexpostproc.html#vertexpostproc-clipping) stage of
 the pipeline.
@@ -3142,7 +3142,7 @@ The counter’s value is incremented each time a primitive reaches the
 primitive clipping stage.
 
 * 
-`VK_QUERY_PIPELINE_STATISTIC_CLIPPING_PRIMITIVES_BIT` specifies that
+[VK_QUERY_PIPELINE_STATISTIC_CLIPPING_PRIMITIVES_BIT](#VkQueryPipelineStatisticFlagBits) specifies that
 queries managed by the pool will count the number of primitives output
 by the [Primitive Clipping](vertexpostproc.html#vertexpostproc-clipping) stage of the
 pipeline.
@@ -3158,26 +3158,26 @@ volume, the counter is incremented by one or more.
 * 
 Otherwise, the counter is incremented by zero or more.
 
-`VK_QUERY_PIPELINE_STATISTIC_FRAGMENT_SHADER_INVOCATIONS_BIT`
+[VK_QUERY_PIPELINE_STATISTIC_FRAGMENT_SHADER_INVOCATIONS_BIT](#VkQueryPipelineStatisticFlagBits)
 specifies that queries managed by the pool will count the number of
 fragment shader invocations.
 The counter’s value is incremented each time the fragment shader is
 [invoked](fragops.html#fragops-shader).
 
-`VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_CONTROL_SHADER_PATCHES_BIT`
+[VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_CONTROL_SHADER_PATCHES_BIT](#VkQueryPipelineStatisticFlagBits)
 specifies that queries managed by the pool will count the number of
 patches processed by the tessellation control shader.
 The counter’s value is incremented once for each patch for which a
 tessellation control shader is
 [invoked](shaders.html#shaders-tessellation-control-execution).
 
-`VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_EVALUATION_SHADER_INVOCATIONS_BIT`
+[VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_EVALUATION_SHADER_INVOCATIONS_BIT](#VkQueryPipelineStatisticFlagBits)
 specifies that queries managed by the pool will count the number of
 invocations of the tessellation evaluation shader.
 The counter’s value is incremented each time the tessellation evaluation
 shader is [invoked](shaders.html#shaders-tessellation-evaluation-execution).
 
-`VK_QUERY_PIPELINE_STATISTIC_COMPUTE_SHADER_INVOCATIONS_BIT`
+[VK_QUERY_PIPELINE_STATISTIC_COMPUTE_SHADER_INVOCATIONS_BIT](#VkQueryPipelineStatisticFlagBits)
 specifies that queries managed by the pool will count the number of
 compute shader invocations.
 The counter’s value is incremented every time the compute shader is
@@ -3187,13 +3187,13 @@ invocations or execute additional compute shader invocations for
 implementation-dependent reasons as long as the results of rendering
 otherwise remain unchanged.
 
-`VK_QUERY_PIPELINE_STATISTIC_TASK_SHADER_INVOCATIONS_BIT_EXT`
+[VK_QUERY_PIPELINE_STATISTIC_TASK_SHADER_INVOCATIONS_BIT_EXT](#VkQueryPipelineStatisticFlagBits)
 specifies that queries managed by the pool will count the number of task
 shader invocations.
 The counter’s value is incremented every time the task shader is
 invoked.
 
-`VK_QUERY_PIPELINE_STATISTIC_MESH_SHADER_INVOCATIONS_BIT_EXT`
+[VK_QUERY_PIPELINE_STATISTIC_MESH_SHADER_INVOCATIONS_BIT_EXT](#VkQueryPipelineStatisticFlagBits)
 specifies that queries managed by the pool will count the number of mesh
 shader invocations.
 The counter’s value is incremented every time the mesh shader is
@@ -3246,7 +3246,7 @@ The number of valid bits in a timestamp value is determined by the
 queue on which the timestamp is written.
 Timestamps are supported on any queue which reports a non-zero value for
 `timestampValidBits` via [vkGetPhysicalDeviceQueueFamilyProperties](devsandqueues.html#vkGetPhysicalDeviceQueueFamilyProperties).
-If the [`timestampComputeAndGraphics`](limits.html#limits-timestampComputeAndGraphics) limit is `VK_TRUE`, timestamps are
+If the [`timestampComputeAndGraphics`](limits.html#limits-timestampComputeAndGraphics) limit is [VK_TRUE](fundamentals.html#VK_TRUE), timestamps are
 supported by every queue family that supports either graphics or compute
 operations (see [VkQueueFamilyProperties](devsandqueues.html#VkQueueFamilyProperties)).
 
@@ -3316,7 +3316,7 @@ same logical device: any timestamp write that
 have a lower value unless its value overflows the maximum supported integer
 bit width of the query.
 Timestamps written by this command **must** be in the
-`VK_TIME_DOMAIN_DEVICE_KHR`
+[VK_TIME_DOMAIN_DEVICE_KHR](synchronization.html#VkTimeDomainEXT)
 [time domain](synchronization.html#VkTimeDomainKHR).
 If an overflow occurs, the timestamp value **must** wrap back to zero.
 
@@ -3350,50 +3350,50 @@ Valid Usage
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `stage` **must** not contain
-`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdWriteTimestamp2-stage-03930) VUID-vkCmdWriteTimestamp2-stage-03930
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `stage` **must** not contain
-`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdWriteTimestamp2-stage-03931) VUID-vkCmdWriteTimestamp2-stage-03931
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `stage` **must** not contain
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdWriteTimestamp2-stage-03932) VUID-vkCmdWriteTimestamp2-stage-03932
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `stage` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdWriteTimestamp2-stage-03933) VUID-vkCmdWriteTimestamp2-stage-03933
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `stage` **must** not contain
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdWriteTimestamp2-stage-03934) VUID-vkCmdWriteTimestamp2-stage-03934
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `stage` **must** not contain
-`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdWriteTimestamp2-stage-03935) VUID-vkCmdWriteTimestamp2-stage-03935
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `stage` **must** not contain
-`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdWriteTimestamp2-stage-07316) VUID-vkCmdWriteTimestamp2-stage-07316
@@ -3401,21 +3401,21 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `stage` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdWriteTimestamp2-stage-04957) VUID-vkCmdWriteTimestamp2-stage-04957
 
 If the [`subpassShading`](features.html#features-subpassShading) feature is not
 enabled, `stage` **must** not contain
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdWriteTimestamp2-stage-04995) VUID-vkCmdWriteTimestamp2-stage-04995
 
 If the [`invocationMask`](features.html#features-invocationMask) feature is not
 enabled, `stage` **must** not contain
-`VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdWriteTimestamp2-stage-07946) VUID-vkCmdWriteTimestamp2-stage-07946
@@ -3423,28 +3423,28 @@ enabled, `stage` **must** not contain
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `stage` **must** not contain
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdWriteTimestamp2-stage-10751) VUID-vkCmdWriteTimestamp2-stage-10751
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `stage` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdWriteTimestamp2-stage-10752) VUID-vkCmdWriteTimestamp2-stage-10752
 
 If the [`rayTracingMaintenance1`](features.html#features-rayTracingMaintenance1)
 feature is not enabled, `stage` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdWriteTimestamp2-stage-10753) VUID-vkCmdWriteTimestamp2-stage-10753
 
 If the [`micromap`](features.html#features-micromap) feature is not enabled,
 `stage` **must** not contain
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdWriteTimestamp2-synchronization2-03858) VUID-vkCmdWriteTimestamp2-synchronization2-03858
@@ -3468,7 +3468,7 @@ allocated from
 [](#VUID-vkCmdWriteTimestamp2-queryPool-03861) VUID-vkCmdWriteTimestamp2-queryPool-03861
 
 `queryPool` **must** have been created with a `queryType` of
-`VK_QUERY_TYPE_TIMESTAMP`
+[VK_QUERY_TYPE_TIMESTAMP](#VkQueryType)
 
 * 
 [](#VUID-vkCmdWriteTimestamp2-timestampValidBits-03863) VUID-vkCmdWriteTimestamp2-timestampValidBits-03863
@@ -3526,7 +3526,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdWriteTimestamp2-commandBuffer-cmdpool) VUID-vkCmdWriteTimestamp2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_TRANSFER_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdWriteTimestamp2-suspended) VUID-vkCmdWriteTimestamp2-suspended
@@ -3619,7 +3619,7 @@ same logical device: any timestamp write that
 have a lower value unless its value overflows the maximum supported integer
 bit width of the query.
 Timestamps written by this command **must** be in the
-`VK_TIME_DOMAIN_DEVICE_KHR`
+[VK_TIME_DOMAIN_DEVICE_KHR](synchronization.html#VkTimeDomainEXT)
 [time domain](synchronization.html#VkTimeDomainKHR).
 If an overflow occurs, the timestamp value **must** wrap back to zero.
 
@@ -3661,50 +3661,50 @@ was allocated from
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-pipelineStage-04076) VUID-vkCmdWriteTimestamp-pipelineStage-04076
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits) or
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-pipelineStage-04077) VUID-vkCmdWriteTimestamp-pipelineStage-04077
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-pipelineStage-04078) VUID-vkCmdWriteTimestamp-pipelineStage-04078
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-pipelineStage-04079) VUID-vkCmdWriteTimestamp-pipelineStage-04079
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-pipelineStage-04080) VUID-vkCmdWriteTimestamp-pipelineStage-04080
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-pipelineStage-07077) VUID-vkCmdWriteTimestamp-pipelineStage-07077
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-shadingRateImage-07314) VUID-vkCmdWriteTimestamp-shadingRateImage-07314
@@ -3712,14 +3712,14 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-synchronization2-06489) VUID-vkCmdWriteTimestamp-synchronization2-06489
 
 If the [`synchronization2`](features.html#features-synchronization2) feature is
 not enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_NONE`
+[VK_PIPELINE_STAGE_NONE](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-rayTracingPipeline-07943) VUID-vkCmdWriteTimestamp-rayTracingPipeline-07943
@@ -3727,13 +3727,13 @@ not enabled, `pipelineStage` **must** not be
 If neither of the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-queryPool-01416) VUID-vkCmdWriteTimestamp-queryPool-01416
 
 `queryPool` **must** have been created with a `queryType` of
-`VK_QUERY_TYPE_TIMESTAMP`
+[VK_QUERY_TYPE_TIMESTAMP](#VkQueryType)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-timestampValidBits-00829) VUID-vkCmdWriteTimestamp-timestampValidBits-00829
@@ -3791,7 +3791,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdWriteTimestamp-commandBuffer-cmdpool) VUID-vkCmdWriteTimestamp-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_OPTICAL_FLOW_BIT_NV`, `VK_QUEUE_TRANSFER_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_OPTICAL_FLOW_BIT_NV](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdWriteTimestamp-suspended) VUID-vkCmdWriteTimestamp-suspended
@@ -3863,10 +3863,10 @@ queried via a call to
 
 |  | Command buffers recorded with
 | --- | --- |
-`VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT` **must** not be re-submitted.
+[VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT](cmdbuffers.html#VkCommandBufferUsageFlagBits) **must** not be re-submitted.
 Changing command buffer usage bits **may** affect performance.
 To avoid this, the application **should** re-record any command buffers with
-the `VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT` when multiple counter
+the [VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT](cmdbuffers.html#VkCommandBufferUsageFlagBits) when multiple counter
 passes are required. |
 
 Performance counter results from a performance query pool **can** be obtained
@@ -3951,21 +3951,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_TIMEOUT`
+[VK_TIMEOUT](fundamentals.html#VkResult)
 
 The `VkAcquireProfilingLockInfoKHR` structure is defined as:
 
@@ -3996,7 +3996,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAcquireProfilingLockInfoKHR-sType-sType) VUID-VkAcquireProfilingLockInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACQUIRE_PROFILING_LOCK_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACQUIRE_PROFILING_LOCK_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkAcquireProfilingLockInfoKHR-pNext-pNext) VUID-VkAcquireProfilingLockInfoKHR-pNext-pNext
@@ -4096,10 +4096,10 @@ The application **can** then either copy the result to a buffer (via
 
 |  | The result of this query is typically identical to
 | --- | --- |
-`VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT`, but the
+[VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT](#VkQueryPipelineStatisticFlagBits), but the
 primitives generated query is deterministic, i.e. it must be identical to
 the number of primitives processed.
-`VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT` may vary for
+[VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT](#VkQueryPipelineStatisticFlagBits) may vary for
 implementation-dependent reasons, e.g. the same primitive may be processed
 multiple times for purposes of clipping. |
 
@@ -4154,21 +4154,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkInitializePerformanceApiInfoINTEL` structure is defined as :
 
@@ -4194,7 +4194,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkInitializePerformanceApiInfoINTEL-sType-sType) VUID-VkInitializePerformanceApiInfoINTEL-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_INITIALIZE_PERFORMANCE_API_INFO_INTEL`
+ `sType` **must** be [VK_STRUCTURE_TYPE_INITIALIZE_PERFORMANCE_API_INFO_INTEL](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkInitializePerformanceApiInfoINTEL-pNext-pNext) VUID-VkInitializePerformanceApiInfoINTEL-pNext-pNext
@@ -4258,21 +4258,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Possible values of [vkGetPerformanceParameterINTEL](#vkGetPerformanceParameterINTEL)::`parameter`,
 specifying a performance query feature, are:
@@ -4284,11 +4284,11 @@ typedef enum VkPerformanceParameterTypeINTEL {
 } VkPerformanceParameterTypeINTEL;
 
 * 
-`VK_PERFORMANCE_PARAMETER_TYPE_HW_COUNTERS_SUPPORTED_INTEL` has a
+[VK_PERFORMANCE_PARAMETER_TYPE_HW_COUNTERS_SUPPORTED_INTEL](#VkPerformanceParameterTypeINTEL) has a
 boolean result which tells whether hardware counters can be captured.
 
 * 
-`VK_PERFORMANCE_PARAMETER_TYPE_STREAM_MARKER_VALID_BITS_INTEL` has a
+[VK_PERFORMANCE_PARAMETER_TYPE_STREAM_MARKER_VALID_BITS_INTEL](#VkPerformanceParameterTypeINTEL) has a
 32 bits integer result which tells how many bits can be written into the
 `VkPerformanceValueINTEL` value.
 
@@ -4312,23 +4312,23 @@ Possible values of [VkPerformanceValueINTEL](#VkPerformanceValueINTEL)::`type`, 
 type of the data returned in [VkPerformanceValueINTEL](#VkPerformanceValueINTEL)::`data`, are:
 
 * 
-`VK_PERFORMANCE_VALUE_TYPE_UINT32_INTEL` specifies that unsigned
+[VK_PERFORMANCE_VALUE_TYPE_UINT32_INTEL](#VkPerformanceValueTypeINTEL) specifies that unsigned
 32-bit integer data is returned in `data.value32`.
 
 * 
-`VK_PERFORMANCE_VALUE_TYPE_UINT64_INTEL` specifies that unsigned
+[VK_PERFORMANCE_VALUE_TYPE_UINT64_INTEL](#VkPerformanceValueTypeINTEL) specifies that unsigned
 64-bit integer data is returned in `data.value64`.
 
 * 
-`VK_PERFORMANCE_VALUE_TYPE_FLOAT_INTEL` specifies that
+[VK_PERFORMANCE_VALUE_TYPE_FLOAT_INTEL](#VkPerformanceValueTypeINTEL) specifies that
 floating-point data is returned in `data.valueFloat`.
 
 * 
-`VK_PERFORMANCE_VALUE_TYPE_BOOL_INTEL` specifies that
+[VK_PERFORMANCE_VALUE_TYPE_BOOL_INTEL](#VkPerformanceValueTypeINTEL) specifies that
 `VkBool32` data is returned in `data.valueBool`.
 
 * 
-`VK_PERFORMANCE_VALUE_TYPE_STRING_INTEL` specifies that a pointer to
+[VK_PERFORMANCE_VALUE_TYPE_STRING_INTEL](#VkPerformanceValueTypeINTEL) specifies that a pointer to
 a null-terminated UTF-8 string is returned in `data.valueString`.
 The pointer is valid for the lifetime of the `device` parameter
 passed to [vkGetPerformanceParameterINTEL](#vkGetPerformanceParameterINTEL).
@@ -4388,7 +4388,7 @@ typedef VkQueryPoolPerformanceQueryCreateInfoINTEL VkQueryPoolCreateInfoINTEL;
 
 To create a pool for Intel performance queries, set
 [VkQueryPoolCreateInfo](#VkQueryPoolCreateInfo)::`queryType` to
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL` and add a
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL](#VkQueryType) and add a
 `VkQueryPoolPerformanceQueryCreateInfoINTEL` structure to the
 `pNext` chain of the [VkQueryPoolCreateInfo](#VkQueryPoolCreateInfo) structure.
 
@@ -4408,7 +4408,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueryPoolPerformanceQueryCreateInfoINTEL-sType-sType) VUID-VkQueryPoolPerformanceQueryCreateInfoINTEL-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_QUERY_CREATE_INFO_INTEL`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_QUERY_CREATE_INFO_INTEL](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkQueryPoolPerformanceQueryCreateInfoINTEL-performanceCountersSampling-parameter) VUID-VkQueryPoolPerformanceQueryCreateInfoINTEL-performanceCountersSampling-parameter
@@ -4425,7 +4425,7 @@ typedef enum VkQueryPoolSamplingModeINTEL {
 } VkQueryPoolSamplingModeINTEL;
 
 * 
-`VK_QUERY_POOL_SAMPLING_MODE_MANUAL_INTEL` is the default mode in
+[VK_QUERY_POOL_SAMPLING_MODE_MANUAL_INTEL](#VkQueryPoolSamplingModeINTEL) is the default mode in
 which the application calls [vkCmdBeginQuery](#vkCmdBeginQuery) and
 [vkCmdEndQuery](#vkCmdEndQuery) to record performance data.
 
@@ -4461,7 +4461,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetPerformanceMarkerINTEL-commandBuffer-cmdpool) VUID-vkCmdSetPerformanceMarkerINTEL-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, or `VK_QUEUE_TRANSFER_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetPerformanceMarkerINTEL-suspended) VUID-vkCmdSetPerformanceMarkerINTEL-suspended
@@ -4503,21 +4503,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkPerformanceMarkerInfoINTEL` structure is defined as:
 
@@ -4544,7 +4544,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPerformanceMarkerInfoINTEL-sType-sType) VUID-VkPerformanceMarkerInfoINTEL-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PERFORMANCE_MARKER_INFO_INTEL`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_MARKER_INFO_INTEL](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPerformanceMarkerInfoINTEL-pNext-pNext) VUID-VkPerformanceMarkerInfoINTEL-pNext-pNext
@@ -4591,7 +4591,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetPerformanceStreamMarkerINTEL-commandBuffer-cmdpool) VUID-vkCmdSetPerformanceStreamMarkerINTEL-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, or `VK_QUEUE_TRANSFER_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetPerformanceStreamMarkerINTEL-suspended) VUID-vkCmdSetPerformanceStreamMarkerINTEL-suspended
@@ -4633,21 +4633,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkPerformanceStreamMarkerInfoINTEL` structure is defined as:
 
@@ -4676,14 +4676,14 @@ Valid Usage
 
 The value written by the application into `marker` **must** only used
 the valid bits as reported by [vkGetPerformanceParameterINTEL](#vkGetPerformanceParameterINTEL) with
-the `VK_PERFORMANCE_PARAMETER_TYPE_STREAM_MARKER_VALID_BITS_INTEL`
+the [VK_PERFORMANCE_PARAMETER_TYPE_STREAM_MARKER_VALID_BITS_INTEL](#VkPerformanceParameterTypeINTEL)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPerformanceStreamMarkerInfoINTEL-sType-sType) VUID-VkPerformanceStreamMarkerInfoINTEL-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PERFORMANCE_STREAM_MARKER_INFO_INTEL`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_STREAM_MARKER_INFO_INTEL](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPerformanceStreamMarkerInfoINTEL-pNext-pNext) VUID-VkPerformanceStreamMarkerInfoINTEL-pNext-pNext
@@ -4737,7 +4737,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetPerformanceOverrideINTEL-commandBuffer-cmdpool) VUID-vkCmdSetPerformanceOverrideINTEL-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, or `VK_QUEUE_TRANSFER_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetPerformanceOverrideINTEL-videocoding) VUID-vkCmdSetPerformanceOverrideINTEL-videocoding
@@ -4772,21 +4772,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkPerformanceOverrideInfoINTEL` structure is defined as:
 
@@ -4821,7 +4821,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPerformanceOverrideInfoINTEL-sType-sType) VUID-VkPerformanceOverrideInfoINTEL-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PERFORMANCE_OVERRIDE_INFO_INTEL`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_OVERRIDE_INFO_INTEL](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPerformanceOverrideInfoINTEL-pNext-pNext) VUID-VkPerformanceOverrideInfoINTEL-pNext-pNext
@@ -4843,11 +4843,11 @@ typedef enum VkPerformanceOverrideTypeINTEL {
 } VkPerformanceOverrideTypeINTEL;
 
 * 
-`VK_PERFORMANCE_OVERRIDE_TYPE_NULL_HARDWARE_INTEL` turns all
+[VK_PERFORMANCE_OVERRIDE_TYPE_NULL_HARDWARE_INTEL](#VkPerformanceOverrideTypeINTEL) turns all
 rendering operations into noop.
 
 * 
-`VK_PERFORMANCE_OVERRIDE_TYPE_FLUSH_GPU_CACHES_INTEL` stalls the
+[VK_PERFORMANCE_OVERRIDE_TYPE_FLUSH_GPU_CACHES_INTEL](#VkPerformanceOverrideTypeINTEL) stalls the
 stream of commands until all previously emitted commands have completed
 and all caches been flushed and invalidated.
 
@@ -4904,21 +4904,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkPerformanceConfigurationAcquireInfoINTEL` structure is defined
 as:
@@ -4946,7 +4946,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPerformanceConfigurationAcquireInfoINTEL-sType-sType) VUID-VkPerformanceConfigurationAcquireInfoINTEL-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PERFORMANCE_CONFIGURATION_ACQUIRE_INFO_INTEL`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_CONFIGURATION_ACQUIRE_INFO_INTEL](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPerformanceConfigurationAcquireInfoINTEL-pNext-pNext) VUID-VkPerformanceConfigurationAcquireInfoINTEL-pNext-pNext
@@ -5001,6 +5001,8 @@ Host Synchronization
 
 * 
 Host access to `queue` **must** be externally synchronized
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
 
 Command Properties
 | [Command Buffer Levels](cmdbuffers.html#VkCommandBufferLevel) | [Render Pass Scope](renderpass.html#vkCmdBeginRenderPass) | [Video Coding Scope](videocoding.html#vkCmdBeginVideoCodingKHR) | [Supported Queue Types](devsandqueues.html#VkQueueFlagBits) | [Command Type](fundamentals.html#fundamentals-queueoperation-command-types) |
@@ -5012,21 +5014,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To release a device performance configuration, call:
 
@@ -5078,26 +5080,26 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Result status queries serve a single purpose: allowing the application to
 determine whether a set of operations have completed successfully or not, as
 indicated by the [VkQueryResultStatusKHR](#VkQueryResultStatusKHR) value written when retrieving
-the result of a query using the `VK_QUERY_RESULT_WITH_STATUS_BIT_KHR`
+the result of a query using the [VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](#VkQueryResultFlagBits)
 flag.
 
 Unlike other query types, result status queries do not track or maintain any
@@ -5152,7 +5154,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueryPoolVideoEncodeFeedbackCreateInfoKHR-sType-sType) VUID-VkQueryPoolVideoEncodeFeedbackCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUERY_POOL_VIDEO_ENCODE_FEEDBACK_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUERY_POOL_VIDEO_ENCODE_FEEDBACK_CREATE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkQueryPoolVideoEncodeFeedbackCreateInfoKHR-encodeFeedbackFlags-parameter) VUID-VkQueryPoolVideoEncodeFeedbackCreateInfoKHR-encodeFeedbackFlags-parameter
@@ -5176,7 +5178,7 @@ typedef enum VkVideoEncodeFeedbackFlagBitsKHR {
 } VkVideoEncodeFeedbackFlagBitsKHR;
 
 * 
-`VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR` specifies
+[VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR](#VkVideoEncodeFeedbackFlagBitsKHR) specifies
 that queries managed by the pool will capture the byte offset of the
 bitstream data written by the video encode operation to the bitstream
 buffer specified in [VkVideoEncodeInfoKHR](videocoding.html#VkVideoEncodeInfoKHR)::`dstBuffer` relative
@@ -5190,13 +5192,13 @@ the offset specified in
 [VkVideoEncodeInfoKHR](videocoding.html#VkVideoEncodeInfoKHR)::`dstBufferOffset`.
 
 * 
-`VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR` specifies
+[VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR](#VkVideoEncodeFeedbackFlagBitsKHR) specifies
 that queries managed by the pool will capture the number of bytes
 written by the video encode operation to the bitstream buffer specified
 in [VkVideoEncodeInfoKHR](videocoding.html#VkVideoEncodeInfoKHR)::`dstBuffer`.
 
 * 
-`VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR` specifies
+[VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR](#VkVideoEncodeFeedbackFlagBitsKHR) specifies
 that queries managed by the pool will capture a boolean value indicating
 that the data written to the bitstream buffer specified in
 [VkVideoEncodeInfoKHR](videocoding.html#VkVideoEncodeInfoKHR)::`dstBuffer` contains
@@ -5205,13 +5207,13 @@ that the data written to the bitstream buffer specified in
 When retrieving the results of video encode feedback queries, the values
 corresponding to each enabled video encode feedback are written in the order
 of the bits defined above, followed by an optional value indicating
-availability or result status if `VK_QUERY_RESULT_WITH_AVAILABILITY_BIT`
-or `VK_QUERY_RESULT_WITH_STATUS_BIT_KHR` is specified, respectively.
+availability or result status if [VK_QUERY_RESULT_WITH_AVAILABILITY_BIT](#VkQueryResultFlagBits)
+or [VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](#VkQueryResultFlagBits) is specified, respectively.
 
 If the result status of a video encode feedback query is negative, then the
 results of all enabled video encode feedback values will be **undefined**.
 
-|  | Applications should always specify `VK_QUERY_RESULT_WITH_STATUS_BIT_KHR`
+|  | Applications should always specify [VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](#VkQueryResultFlagBits)
 | --- | --- |
 when retrieving the results of video encode feedback queries and ignore such
 **undefined** video encode feedback values for any

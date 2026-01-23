@@ -108,7 +108,7 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_FEATURES_KHR](VkStructureType.html)
 
 * 
 Revision 1, 2020-08-27 (Alan Baker)

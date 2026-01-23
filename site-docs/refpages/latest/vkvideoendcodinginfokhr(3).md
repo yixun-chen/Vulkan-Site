@@ -43,7 +43,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEndCodingInfoKHR-sType-sType) VUID-VkVideoEndCodingInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_END_CODING_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_END_CODING_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoEndCodingInfoKHR-pNext-pNext) VUID-VkVideoEndCodingInfoKHR-pNext-pNext

@@ -37,7 +37,7 @@ structure.
 
 * 
 `tensorView` is a [VkTensorViewARM](VkTensorViewARM.html) handle specifying the
-parameters of a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor.
+parameters of a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html) descriptor.
 
 Valid Usage
 
@@ -52,7 +52,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDescriptorGetTensorInfoARM-sType-sType) VUID-VkDescriptorGetTensorInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_GET_TENSOR_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_GET_TENSOR_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkDescriptorGetTensorInfoARM-tensorView-parameter) VUID-VkDescriptorGetTensorInfoARM-tensorView-parameter

@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImagePipeSurfaceCreateInfoFUCHSIA-sType-sType) VUID-VkImagePipeSurfaceCreateInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGEPIPE_SURFACE_CREATE_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGEPIPE_SURFACE_CREATE_INFO_FUCHSIA](VkStructureType.html)
 
 * 
 [](#VUID-VkImagePipeSurfaceCreateInfoFUCHSIA-pNext-pNext) VUID-VkImagePipeSurfaceCreateInfoFUCHSIA-pNext-pNext

@@ -44,14 +44,14 @@ structure.
 specifying the preferred full-screen transition behavior.
 
 If this structure is not present, `fullScreenExclusive` is considered to
-be `VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT`.
+be [VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT](VkFullScreenExclusiveEXT.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSurfaceFullScreenExclusiveInfoEXT-sType-sType) VUID-VkSurfaceFullScreenExclusiveInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkSurfaceFullScreenExclusiveInfoEXT-fullScreenExclusive-parameter) VUID-VkSurfaceFullScreenExclusiveInfoEXT-fullScreenExclusive-parameter

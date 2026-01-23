@@ -17,7 +17,7 @@
 
 VK_SUBPASS_EXTERNAL - Subpass index sentinel expanding synchronization scope outside a subpass
 
-`VK_SUBPASS_EXTERNAL` is a special subpass index value expanding
+[VK_SUBPASS_EXTERNAL](#) is a special subpass index value expanding
 synchronization scope outside a subpass.
 It is described in more detail by [VkSubpassDependency](VkSubpassDependency.html).
 

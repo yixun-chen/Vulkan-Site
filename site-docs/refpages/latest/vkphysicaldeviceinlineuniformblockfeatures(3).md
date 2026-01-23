@@ -48,7 +48,7 @@ structure.
 indicates whether the implementation supports inline uniform block
 descriptors.
 If this feature is not enabled,
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` **must** not be used.
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) **must** not be used.
 
 * 
 
@@ -56,8 +56,8 @@ If this feature is not enabled,
 indicates whether the implementation supports updating inline uniform
 block descriptors after a set is bound.
 If this feature is not enabled,
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` **must** not be used with
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`.
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html) **must** not be used with
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html).
 
 If the `VkPhysicalDeviceInlineUniformBlockFeatures` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -65,7 +65,7 @@ If the `VkPhysicalDeviceInlineUniformBlockFeatures` structure is included in the
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceInlineUniformBlockFeatures`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -73,7 +73,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceInlineUniformBlockFeatures-sType-sType) VUID-VkPhysicalDeviceInlineUniformBlockFeatures-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_FEATURES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_FEATURES](VkStructureType.html)
 
 [VK_EXT_inline_uniform_block](VK_EXT_inline_uniform_block.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

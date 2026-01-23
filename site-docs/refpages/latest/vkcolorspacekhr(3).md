@@ -63,76 +63,76 @@ typedef enum VkColorSpaceKHR {
 } VkColorSpaceKHR;
 
 * 
-`VK_COLOR_SPACE_SRGB_NONLINEAR_KHR` specifies support for the images
+[VK_COLOR_SPACE_SRGB_NONLINEAR_KHR](#) specifies support for the images
 in sRGB color space, encoded according to the sRGB specification.
 
 * 
-`VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT` specifies support for the
+[VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT](#) specifies support for the
 images in Display-P3 color space, encoded using a Display-P3 transfer
 function.
 
 * 
-`VK_COLOR_SPACE_EXTENDED_SRGB_LINEAR_EXT` specifies support for the
+[VK_COLOR_SPACE_EXTENDED_SRGB_LINEAR_EXT](#) specifies support for the
 images in extended sRGB color space, encoded using a linear transfer
 function.
 
 * 
-`VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT` specifies support for
+[VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT](#) specifies support for
 the images in extended sRGB color space, encoded according to the scRGB
 specification.
 
 * 
-`VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT` specifies support for the
+[VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT](#) specifies support for the
 images in Display-P3 color space, encoded using a linear transfer
 function.
 
 * 
-`VK_COLOR_SPACE_DCI_P3_NONLINEAR_EXT` specifies support for the
+[VK_COLOR_SPACE_DCI_P3_NONLINEAR_EXT](#) specifies support for the
 images in DCI-P3 color space, encoded according to the DCI-P3
 specification.
 Note that values in such an image are interpreted as XYZ encoded color
 data by the presentation engine.
 
 * 
-`VK_COLOR_SPACE_BT709_LINEAR_EXT` specifies support for the images
+[VK_COLOR_SPACE_BT709_LINEAR_EXT](#) specifies support for the images
 in BT709 color space, encoded using a linear transfer function.
 
 * 
-`VK_COLOR_SPACE_BT709_NONLINEAR_EXT` specifies support for the
+[VK_COLOR_SPACE_BT709_NONLINEAR_EXT](#) specifies support for the
 images in BT709 color space, encoded according to the BT709
 specification.
 
 * 
-`VK_COLOR_SPACE_BT2020_LINEAR_EXT` specifies support for the images
+[VK_COLOR_SPACE_BT2020_LINEAR_EXT](#) specifies support for the images
 in BT2020 color space, encoded using a linear transfer function.
 
 * 
-`VK_COLOR_SPACE_HDR10_ST2084_EXT` specifies support for the images
+[VK_COLOR_SPACE_HDR10_ST2084_EXT](#) specifies support for the images
 in HDR10 (BT2020) color space, encoded according to SMPTE ST2084
 Perceptual Quantizer (PQ) specification.
 
 * 
-`VK_COLOR_SPACE_HDR10_HLG_EXT` specifies support for the images in
+[VK_COLOR_SPACE_HDR10_HLG_EXT](#) specifies support for the images in
 HDR10 (BT2020) color space, encoded according to the Hybrid Log Gamma
 (HLG) specification.
 
 * 
-`VK_COLOR_SPACE_ADOBERGB_LINEAR_EXT` specifies support for images in
+[VK_COLOR_SPACE_ADOBERGB_LINEAR_EXT](#) specifies support for images in
 Adobe RGB color space, encoded using a linear transfer function.
 
 * 
-`VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT` specifies support for the
+[VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT](#) specifies support for the
 images in Adobe RGB color space, encoded according to the Adobe RGB
 specification (approximately Gamma 2.2).
 
 * 
-`VK_COLOR_SPACE_PASS_THROUGH_EXT` specifies that color components
+[VK_COLOR_SPACE_PASS_THROUGH_EXT](#) specifies that color components
 are used “as is”.
 This is intended to allow applications to supply data for color spaces
 not described here.
 
 * 
-`VK_COLOR_SPACE_DISPLAY_NATIVE_AMD` specifies support for the
+[VK_COLOR_SPACE_DISPLAY_NATIVE_AMD](#) specifies support for the
 display’s native color space.
 This matches the color space expectations of AMD’s FreeSync2 standard,
 for displays supporting it.
@@ -143,20 +143,20 @@ for displays supporting it.
 `VK_COLORSPACE_SRGB_NONLINEAR_KHR` was used.
 Starting in the 2016-05-13 updates to the extension branches, matching
 release 1.0.13 of the core API specification,
-`VK_COLOR_SPACE_SRGB_NONLINEAR_KHR` is used instead for consistency with
+[VK_COLOR_SPACE_SRGB_NONLINEAR_KHR](#) is used instead for consistency with
 Vulkan naming rules.
 The older enum is still available for backwards compatibility. |
 
 |  | In older versions of this extension
 | --- | --- |
-`VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT` was misnamed
+[VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT](#) was misnamed
 `VK_COLOR_SPACE_DCI_P3_LINEAR_EXT`.
 This has been updated to indicate that it uses RGB color encoding, not XYZ.
 The old name is legacy but is maintained for backwards compatibility. |
 
 |  | In older versions of the `[VK_EXT_swapchain_colorspace](VK_EXT_swapchain_colorspace.html)` extension,
 | --- | --- |
-`VK_COLOR_SPACE_DOLBYVISION_EXT` was exposed.
+[VK_COLOR_SPACE_DOLBYVISION_EXT](#) was exposed.
 The intent was to indicate the presentation engine shall decode an image
 using the SMPTE ST 2084 Perceptual Quantizer (PQ) EOTF, and then apply a
 proprietary OOTF to process the image.
@@ -167,9 +167,9 @@ This enum is legacy but is maintained for backwards compatibility. |
 
 |  | For a traditional “Linear” or non-gamma transfer function color space use
 | --- | --- |
-`VK_COLOR_SPACE_PASS_THROUGH_EXT`. |
+[VK_COLOR_SPACE_PASS_THROUGH_EXT](#). |
 
-|  | On Wayland, `VK_COLOR_SPACE_PASS_THROUGH_EXT` can be used to disable
+|  | On Wayland, [VK_COLOR_SPACE_PASS_THROUGH_EXT](#) can be used to disable
 | --- | --- |
 color management by the WSI on a surface, which makes it possible for the
 application to create a `wp_color_management_surface_v1` object without

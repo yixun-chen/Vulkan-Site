@@ -54,7 +54,7 @@ If the `VkPhysicalDeviceImagelessFramebufferFeatures` structure is included in t
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceImagelessFramebufferFeatures`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -62,7 +62,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceImagelessFramebufferFeatures-sType-sType) VUID-VkPhysicalDeviceImagelessFramebufferFeatures-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES](VkStructureType.html)
 
 [VK_KHR_imageless_framebuffer](VK_KHR_imageless_framebuffer.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

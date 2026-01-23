@@ -70,8 +70,8 @@ If the `dstSet` member of any element of `pDescriptorWrites` or
 was recorded to a command buffer which is currently in the
 [recording or executable state](../../../../spec/latest/chapters/cmdbuffers.html#commandbuffers-lifecycle),
 and any of the descriptor bindings that are updated were not created with
-the `VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` or
-`VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT` bits set,
+the [VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html) or
+[VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT](VkDescriptorBindingFlagBits.html) bits set,
 that command buffer becomes [invalid](../../../../spec/latest/chapters/cmdbuffers.html#commandbuffers-lifecycle).
 
 Copying a descriptor from a descriptor set does not constitute a use of the
@@ -87,8 +87,8 @@ Valid Usage
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` or
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`, elements of the
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html), elements of the
 `pTexelBufferView` member of `pDescriptorWrites`[i] **must** have
 been created on `device`
 
@@ -97,10 +97,10 @@ been created on `device`
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`,
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`,
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`, or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`, the `buffer` member
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html), or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html), the `buffer` member
 of any element of the `pBufferInfo` member of
 `pDescriptorWrites`[i] **must** have been created on `device`
 
@@ -109,8 +109,8 @@ of any element of the `pBufferInfo` member of
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_SAMPLER` or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, and `dstSet` was
+[VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html), and `dstSet` was
 not allocated with a layout that included immutable samplers for
 `dstBinding` with `descriptorType`, the `sampler` member of
 any element of the `pImageInfo` member of `pDescriptorWrites`[i]
@@ -121,10 +121,12 @@ any element of the `pImageInfo` member of `pDescriptorWrites`[i]
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`,
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`, or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` the `imageView`
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](VkDescriptorType.html),
+or [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) the `imageView`
 member of any element of `pDescriptorWrites`[i] **must** have been
 created on `device`
 
@@ -133,7 +135,7 @@ created on `device`
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR`, elements of the
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](VkDescriptorType.html), elements of the
 `pAccelerationStructures` member of a
 [VkWriteDescriptorSetAccelerationStructureKHR](VkWriteDescriptorSetAccelerationStructureKHR.html) structure in the
 `pNext` chain of `pDescriptorWrites`[i] **must** have been created
@@ -144,43 +146,34 @@ on `device`
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV`, elements of the
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](VkDescriptorType.html), elements of the
 `pAccelerationStructures` member of a
 [VkWriteDescriptorSetAccelerationStructureNV](VkWriteDescriptorSetAccelerationStructureNV.html) structure in the
 `pNext` chain of `pDescriptorWrites`[i] **must** have been created
 on `device`
 
 * 
-[](#VUID-vkUpdateDescriptorSets-pDescriptorWrites-06940) VUID-vkUpdateDescriptorSets-pDescriptorWrites-06940
+[](#VUID-vkUpdateDescriptorSets-pDescriptorWrites-12324) VUID-vkUpdateDescriptorSets-pDescriptorWrites-12324
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM` or
-`VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM`, the `imageView`
-member of any element of `pDescriptorWrites`[i] **must** have been
-created on `device`
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html), elements of the `pTensorViews`
+member of a [VkWriteDescriptorSetTensorARM](VkWriteDescriptorSetTensorARM.html) structure in the
+`pNext` chain of `pDescriptorWrites`[i] **must** have been created
+on `device`
 
 * 
 [](#VUID-vkUpdateDescriptorSets-pDescriptorWrites-06493) VUID-vkUpdateDescriptorSets-pDescriptorWrites-06493
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`,
-`pDescriptorWrites`[i].`pImageInfo` **must** be a valid pointer to
-an array of `pDescriptorWrites`[i].`descriptorCount` valid
-`VkDescriptorImageInfo` structures
-
-* 
-[](#VUID-vkUpdateDescriptorSets-pDescriptorWrites-06941) VUID-vkUpdateDescriptorSets-pDescriptorWrites-06941
-
-For each element i where
-`pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM` or
-`VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM`,
+[VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](VkDescriptorType.html),
+or [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html),
 `pDescriptorWrites`[i].`pImageInfo` **must** be a valid pointer to
 an array of `pDescriptorWrites`[i].`descriptorCount` valid
 `VkDescriptorImageInfo` structures
@@ -191,8 +184,8 @@ an array of `pDescriptorWrites`[i].`descriptorCount` valid
 The `dstSet` member of each element of `pDescriptorWrites` or
 `pDescriptorCopies`
 for bindings which were created without the
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` or
-`VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT` bits set
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html) or
+[VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT](VkDescriptorBindingFlagBits.html) bits set
 **must** not be used by any command that was recorded to a command buffer
 which is in the [pending state](../../../../spec/latest/chapters/cmdbuffers.html#commandbuffers-lifecycle)
 

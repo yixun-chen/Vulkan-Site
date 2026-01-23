@@ -39,7 +39,7 @@ This command sets the origin of the tessellation domain space for subsequent
 drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_TESSELLATION_DOMAIN_ORIGIN_EXT` set in
+[VK_DYNAMIC_STATE_TESSELLATION_DOMAIN_ORIGIN_EXT](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineTessellationDomainOriginStateCreateInfo](VkPipelineTessellationDomainOriginStateCreateInfo.html)::`domainOrigin`
@@ -78,7 +78,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetTessellationDomainOriginEXT-commandBuffer-cmdpool) VUID-vkCmdSetTessellationDomainOriginEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetTessellationDomainOriginEXT-videocoding) VUID-vkCmdSetTessellationDomainOriginEXT-videocoding

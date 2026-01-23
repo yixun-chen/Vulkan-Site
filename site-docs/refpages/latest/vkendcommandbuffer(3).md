@@ -36,7 +36,7 @@ an unsuccessful return code returned by `vkEndCommandBuffer`, and the
 command buffer will be moved to the [invalid state](../../../../spec/latest/chapters/cmdbuffers.html#commandbuffers-lifecycle).
 
 In case the application recorded one or more [video encode operations](../../../../spec/latest/chapters/videocoding.html#video-encode-operations) into the command buffer, implementations **may** return the
-`VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR` error if any of the
+[VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR](VkResult.html) error if any of the
 specified Video Std parameters do not adhere to the syntactic or semantic
 requirements of the used video compression standard, or if values derived
 from parameters according to the rules defined by the used video compression
@@ -45,7 +45,7 @@ or the implementation.
 
 |  | Applications **should** not rely on the
 | --- | --- |
-`VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR` error being returned by any
+[VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR](VkResult.html) error being returned by any
 command as a means to verify Video Std parameters, as implementations are
 not required to report the error in any specific set of cases. |
 
@@ -115,24 +115,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR`
+[VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkCommandBuffer](VkCommandBuffer.html)
 

@@ -43,6 +43,23 @@ format properties.
 structure in which physical device properties for `format` are
 returned.
 
+Valid Usage
+
+* 
+[](#VUID-vkGetPhysicalDeviceFormatProperties-None-12272) VUID-vkGetPhysicalDeviceFormatProperties-None-12272
+
+    If
+Vulkan 1.3 is not supported,
+    the [`maintenance5`](../../../../spec/latest/chapters/features.html#features-maintenance5) feature is not
+    supported,
+and
+    the [`ycbcr2plane444Formats`](../../../../spec/latest/chapters/features.html#features-ycbcr2plane444Formats)
+    feature is not supported, `format` **must** not be
+    [VK_FORMAT_G8_B8R8_2PLANE_444_UNORM](VkFormat.html),
+    [VK_FORMAT_G10X6_B10X6R10X6_2PLANE_444_UNORM_3PACK16](VkFormat.html),
+    [VK_FORMAT_G12X4_B12X4R12X4_2PLANE_444_UNORM_3PACK16](VkFormat.html), or
+    [VK_FORMAT_G16_B16R16_2PLANE_444_UNORM](VkFormat.html)
+
 Valid Usage (Implicit)
 
 * 

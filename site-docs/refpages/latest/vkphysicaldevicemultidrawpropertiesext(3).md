@@ -46,7 +46,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMultiDrawPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceMultiDrawPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTI_DRAW_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTI_DRAW_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_multi_draw](VK_EXT_multi_draw.html), [VkStructureType](VkStructureType.html)
 

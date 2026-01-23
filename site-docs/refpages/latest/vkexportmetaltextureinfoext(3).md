@@ -72,7 +72,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMetalTextureInfoEXT-sType-sType) VUID-VkExportMetalTextureInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_METAL_TEXTURE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_METAL_TEXTURE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkExportMetalTextureInfoEXT-image-parameter) VUID-VkExportMetalTextureInfoEXT-image-parameter

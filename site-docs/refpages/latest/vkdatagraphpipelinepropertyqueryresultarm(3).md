@@ -24,7 +24,7 @@ The `VkDataGraphPipelinePropertyQueryResultARM` structure is defined as:
 // Provided by VK_ARM_data_graph
 typedef struct VkDataGraphPipelinePropertyQueryResultARM {
     VkStructureType                   sType;
-    const void*                       pNext;
+    void*                             pNext;
     VkDataGraphPipelinePropertyARM    property;
     VkBool32                          isText;
     size_t                            dataSize;
@@ -44,7 +44,7 @@ property of the data graph pipeline being queried.
 
 * 
 `isText` specifies whether the returned data is text or opaque data.
-If `isText` is `VK_TRUE` then the data returned in `pData`
+If `isText` is [VK_TRUE](VK_TRUE.html) then the data returned in `pData`
 is text and guaranteed to be a null-terminated UTF-8 string.
 
 * 
@@ -63,10 +63,10 @@ number of bytes of data actually written to `pData` including any
 trailing NUL character.
 If `dataSize` is less than the size, in bytes, of the property data, at
 most `dataSize` bytes of data will be written to `pData`, and
-`VK_INCOMPLETE` will be returned by
-[vkGetDataGraphPipelinePropertiesARM](vkGetDataGraphPipelinePropertiesARM.html) instead of `VK_SUCCESS`, to
+[VK_INCOMPLETE](VkResult.html) will be returned by
+[vkGetDataGraphPipelinePropertiesARM](vkGetDataGraphPipelinePropertiesARM.html) instead of [VK_SUCCESS](VkResult.html), to
 indicate that not all the available property data was returned.
-If `isText` is `VK_TRUE` and `pData` is not `NULL` and
+If `isText` is [VK_TRUE](VK_TRUE.html) and `pData` is not `NULL` and
 `dataSize` is not zero, the last byte written to `pData` will be a
 NUL character.
 
@@ -75,7 +75,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDataGraphPipelinePropertyQueryResultARM-sType-sType) VUID-VkDataGraphPipelinePropertyQueryResultARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_PROPERTY_QUERY_RESULT_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_PROPERTY_QUERY_RESULT_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkDataGraphPipelinePropertyQueryResultARM-pNext-pNext) VUID-VkDataGraphPipelinePropertyQueryResultARM-pNext-pNext

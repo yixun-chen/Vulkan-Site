@@ -27,7 +27,7 @@ typedef enum VkInternalAllocationType {
 } VkInternalAllocationType;
 
 * 
-`VK_INTERNAL_ALLOCATION_TYPE_EXECUTABLE` specifies that the
+[VK_INTERNAL_ALLOCATION_TYPE_EXECUTABLE](#) specifies that the
 allocation is intended for execution by the host.
 
 [PFN_vkInternalAllocationNotification](PFN_vkInternalAllocationNotification.html), [PFN_vkInternalFreeNotification](PFN_vkInternalFreeNotification.html), [VK_VERSION_1_0](VK_VERSION_1_0.html)

@@ -54,15 +54,15 @@ exclusive.
 `pDiscardRectangles` is a pointer to an array of [VkRect2D](VkRect2D.html)
 structures defining discard rectangles.
 
-If the `VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT` dynamic state is enabled
+If the [VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](VkDynamicState.html) dynamic state is enabled
 for a pipeline, the `pDiscardRectangles` member is ignored.
-If the `VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT` dynamic state is
+If the [VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT](VkDynamicState.html) dynamic state is
 not enabled for the pipeline the presence of this structure in the
 [VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html) chain, and a `discardRectangleCount`
 greater than zero, implicitly enables discard rectangles in the pipeline,
 otherwise discard rectangles **must** enabled or disabled by
 [vkCmdSetDiscardRectangleEnableEXT](vkCmdSetDiscardRectangleEnableEXT.html).
-If the `VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT` dynamic state is
+If the [VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT](VkDynamicState.html) dynamic state is
 enabled for the pipeline, the `discardRectangleMode` member is ignored,
 and the discard rectangle mode **must** be set by
 [vkCmdSetDiscardRectangleModeEXT](vkCmdSetDiscardRectangleModeEXT.html).
@@ -70,13 +70,13 @@ and the discard rectangle mode **must** be set by
 When this structure is included in the `pNext` chain of
 [VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html), it defines parameters of the discard
 rectangle test.
-If the `VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT` dynamic state is not
+If the [VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](VkDynamicState.html) dynamic state is not
 enabled, and this structure is not included in the `pNext` chain, it is
 equivalent to specifying this structure with a `discardRectangleCount`
 of `0`.
-If all `VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT`,
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT`, and
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT` dynamic states are
+If all [VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](VkDynamicState.html),
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT](VkDynamicState.html), and
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT](VkDynamicState.html) dynamic states are
 enabled, the application **can** omit this structure from the `pNext` chain
 of [VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html) and still use discard rectangles by
 setting all state dynamically.
@@ -100,7 +100,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineDiscardRectangleStateCreateInfoEXT-sType-sType) VUID-VkPipelineDiscardRectangleStateCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineDiscardRectangleStateCreateInfoEXT-flags-zerobitmask) VUID-VkPipelineDiscardRectangleStateCreateInfoEXT-flags-zerobitmask

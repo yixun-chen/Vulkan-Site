@@ -57,7 +57,7 @@ Valid Usage
 
 If the [`perStageDescriptorSet`](../../../../spec/latest/chapters/features.html#features-perStageDescriptorSet)
 feature is not enabled, or `flags` does not contain
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV`, then the
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV](VkDescriptorSetLayoutCreateFlagBits.html), then the
 [VkDescriptorSetLayoutBinding](VkDescriptorSetLayoutBinding.html)::`binding` members of the
 elements of the `pBindings` array **must** each have different values
 
@@ -65,7 +65,7 @@ elements of the `pBindings` array **must** each have different values
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-10354) VUID-VkDescriptorSetLayoutCreateInfo-flags-10354
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](VkDescriptorSetLayoutCreateFlagBits.html),
 and the [VK_KHR_push_descriptor](VK_KHR_push_descriptor.html) extension is not enabled,
 [`pushDescriptor`](../../../../spec/latest/chapters/features.html#features-pushDescriptor) **must** be enabled
 
@@ -73,24 +73,24 @@ and the [VK_KHR_push_descriptor](VK_KHR_push_descriptor.html) extension is not e
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-00280) VUID-VkDescriptorSetLayoutCreateInfo-flags-00280
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`, then all
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](VkDescriptorSetLayoutCreateFlagBits.html), then all
 elements of `pBindings` **must** not have a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-02208) VUID-VkDescriptorSetLayoutCreateInfo-flags-02208
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`, then all
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](VkDescriptorSetLayoutCreateFlagBits.html), then all
 elements of `pBindings` **must** not have a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-00281) VUID-VkDescriptorSetLayoutCreateInfo-flags-00281
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`, then the
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](VkDescriptorSetLayoutCreateFlagBits.html), then the
 total number of elements of all bindings **must** be less than or equal to
 [VkPhysicalDevicePushDescriptorProperties](VkPhysicalDevicePushDescriptorProperties.html)::`maxPushDescriptors`
 
@@ -98,46 +98,46 @@ total number of elements of all bindings **must** be less than or equal to
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-04590) VUID-VkDescriptorSetLayoutCreateInfo-flags-04590
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`, `flags`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](VkDescriptorSetLayoutCreateFlagBits.html), `flags`
 **must** not contain
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-04591) VUID-VkDescriptorSetLayoutCreateInfo-flags-04591
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](VkDescriptorSetLayoutCreateFlagBits.html),
 `pBindings` **must** not have a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-03000) VUID-VkDescriptorSetLayoutCreateInfo-flags-03000
 
-If any binding has the `VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`
+If any binding has the [VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html)
 bit set, `flags` **must** include
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-descriptorType-03001) VUID-VkDescriptorSetLayoutCreateInfo-descriptorType-03001
 
-If any binding has the `VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`
+If any binding has the [VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html)
 bit set, then all bindings **must** not have `descriptorType` of
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-04592) VUID-VkDescriptorSetLayoutCreateInfo-flags-04592
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html),
 `flags` **must** not contain
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-pBindings-07303) VUID-VkDescriptorSetLayoutCreateInfo-pBindings-07303
 
 If any element `pBindings`[i] has a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, then the `pNext` chain **must**
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html), then the `pNext` chain **must**
 include a [VkMutableDescriptorTypeCreateInfoEXT](VkMutableDescriptorTypeCreateInfoEXT.html) structure, and
 `mutableDescriptorTypeListCount` **must** be greater than i
 
@@ -145,7 +145,7 @@ include a [VkMutableDescriptorTypeCreateInfoEXT](VkMutableDescriptorTypeCreateIn
 [](#VUID-VkDescriptorSetLayoutCreateInfo-descriptorType-04594) VUID-VkDescriptorSetLayoutCreateInfo-descriptorType-04594
 
 If a binding has a `descriptorType` value of
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, then `pImmutableSamplers`
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html), then `pImmutableSamplers`
 **must** be `NULL`
 
 * 
@@ -154,13 +154,13 @@ If a binding has a `descriptorType` value of
 If
 [VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT](VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.html)::`mutableDescriptorType`
 is not enabled, `pBindings` **must** not contain a `descriptorType`
-of `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+of [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-04596) VUID-VkDescriptorSetLayoutCreateInfo-flags-04596
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html),
 [VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT](VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.html)::`mutableDescriptorType`
 **must** be enabled
 
@@ -168,40 +168,40 @@ If `flags` contains
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-08000) VUID-VkDescriptorSetLayoutCreateInfo-flags-08000
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, then
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html), then
 all elements of `pBindings` **must** not have a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-08001) VUID-VkDescriptorSetLayoutCreateInfo-flags-08001
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html),
 `flags` **must** also contain
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-08002) VUID-VkDescriptorSetLayoutCreateInfo-flags-08002
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, then
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html), then
 `flags` **must** not contain
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-08003) VUID-VkDescriptorSetLayoutCreateInfo-flags-08003
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, then
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html), then
 `flags` **must** not contain
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-09463) VUID-VkDescriptorSetLayoutCreateInfo-flags-09463
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV`, then
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV](VkDescriptorSetLayoutCreateFlagBits.html), then
 [`perStageDescriptorSet`](../../../../spec/latest/chapters/features.html#features-perStageDescriptorSet) **must** be
 enabled
 
@@ -209,7 +209,7 @@ enabled
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-09464) VUID-VkDescriptorSetLayoutCreateInfo-flags-09464
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV`, then there **must**
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV](VkDescriptorSetLayoutCreateFlagBits.html), then there **must**
 not be any two elements of the `pBindings` array with the same
 [VkDescriptorSetLayoutBinding](VkDescriptorSetLayoutBinding.html)::`binding` value and their
 [VkDescriptorSetLayoutBinding](VkDescriptorSetLayoutBinding.html)::`stageFlags` containing the same
@@ -220,7 +220,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-sType-sType) VUID-VkDescriptorSetLayoutCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-pNext-pNext) VUID-VkDescriptorSetLayoutCreateInfo-pNext-pNext

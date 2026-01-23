@@ -57,7 +57,7 @@ The handle types supported by `handleType` are:
 
 | Handle Type | Transference | Permanence Supported |
 | --- | --- | --- |
-| `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_ZIRCON_EVENT_BIT_FUCHSIA` | Reference | Temporary,Permanent |
+| [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_ZIRCON_EVENT_BIT_FUCHSIA](VkExternalSemaphoreHandleTypeFlagBits.html) | Reference | Temporary,Permanent |
 
 Valid Usage
 
@@ -84,14 +84,14 @@ Valid Usage
 [](#VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-semaphoreType-04768) VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-semaphoreType-04768
 
 The [VkSemaphoreTypeCreateInfo](VkSemaphoreTypeCreateInfo.html)::`semaphoreType` field **must** not
-be `VK_SEMAPHORE_TYPE_TIMELINE`
+be [VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-sType-sType) VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_ZIRCON_HANDLE_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_ZIRCON_HANDLE_INFO_FUCHSIA](VkStructureType.html)
 
 * 
 [](#VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-pNext-pNext) VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-pNext-pNext

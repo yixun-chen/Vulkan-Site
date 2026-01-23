@@ -177,14 +177,14 @@ Extending [VkRenderingAttachmentInfo](VkRenderingAttachmentInfo.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_UNIFIED_IMAGE_LAYOUTS_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_UNIFIED_IMAGE_LAYOUTS_FEATURES_KHR](VkStructureType.html)
 
 If [VK_EXT_attachment_feedback_loop_layout](VK_EXT_attachment_feedback_loop_layout.html) and [Vulkan Version 1.3](../../../../spec/latest/appendices/versions.html#versions-1.3) or [VK_KHR_dynamic_rendering](VK_KHR_dynamic_rendering.html) is supported:
 
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_ATTACHMENT_FEEDBACK_LOOP_INFO_EXT`
+[VK_STRUCTURE_TYPE_ATTACHMENT_FEEDBACK_LOOP_INFO_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2024-10-15 (Shahbaz Youssefi)

@@ -45,14 +45,14 @@ Valid Usage
 * 
 [](#VUID-VkImageSubresourceLayers-aspectMask-00167) VUID-VkImageSubresourceLayers-aspectMask-00167
 
-If `aspectMask` contains `VK_IMAGE_ASPECT_COLOR_BIT`, it **must**
-not contain either of `VK_IMAGE_ASPECT_DEPTH_BIT` or
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+If `aspectMask` contains [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html), it **must**
+not contain either of [VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) or
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkImageSubresourceLayers-aspectMask-00168) VUID-VkImageSubresourceLayers-aspectMask-00168
 
-`aspectMask` **must** not contain `VK_IMAGE_ASPECT_METADATA_BIT`
+`aspectMask` **must** not contain [VK_IMAGE_ASPECT_METADATA_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkImageSubresourceLayers-aspectMask-02247) VUID-VkImageSubresourceLayers-aspectMask-02247
@@ -65,12 +65,12 @@ not contain either of `VK_IMAGE_ASPECT_DEPTH_BIT` or
 
 If the [`maintenance5`](../../../../spec/latest/chapters/features.html#features-maintenance5) feature is not
 enabled,
-`layerCount` **must** not be `VK_REMAINING_ARRAY_LAYERS`
+`layerCount` **must** not be [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html)
 
 * 
 [](#VUID-VkImageSubresourceLayers-layerCount-01700) VUID-VkImageSubresourceLayers-layerCount-01700
 
-If `layerCount` is not `VK_REMAINING_ARRAY_LAYERS`, it **must** be
+If `layerCount` is not [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), it **must** be
 greater than 0
 
 Valid Usage (Implicit)

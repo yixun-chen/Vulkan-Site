@@ -54,7 +54,7 @@ failure.
 
 If any of the memory binding operations described by `pBindInfos` fail,
 the [VkResult](VkResult.html) returned by this command **must** be the return value of any
-one of the memory binding operations which did not return `VK_SUCCESS`.
+one of the memory binding operations which did not return [VK_SUCCESS](VkResult.html).
 
 |  | If the `vkBindImageMemory2` command failed,
 | --- | --- |
@@ -71,7 +71,7 @@ Valid Usage
 [](#VUID-vkBindImageMemory2-pBindInfos-02858) VUID-vkBindImageMemory2-pBindInfos-02858
 
 If any [VkBindImageMemoryInfo](VkBindImageMemoryInfo.html)::`image` was created with
-`VK_IMAGE_CREATE_DISJOINT_BIT` then all planes of
+[VK_IMAGE_CREATE_DISJOINT_BIT](VkImageCreateFlagBits.html) then all planes of
 [VkBindImageMemoryInfo](VkBindImageMemoryInfo.html)::`image` **must** be bound individually in
 separate `pBindInfos`
 
@@ -103,21 +103,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_bind_memory2](VK_KHR_bind_memory2.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkBindImageMemoryInfo](VkBindImageMemoryInfo.html), [VkDevice](VkDevice.html)
 

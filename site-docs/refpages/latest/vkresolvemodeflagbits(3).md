@@ -52,26 +52,26 @@ typedef enum VkResolveModeFlagBits {
 typedef VkResolveModeFlagBits VkResolveModeFlagBitsKHR;
 
 * 
-`VK_RESOLVE_MODE_NONE` specifies that no resolve operation is done.
+[VK_RESOLVE_MODE_NONE](#) specifies that no resolve operation is done.
 
 * 
-`VK_RESOLVE_MODE_SAMPLE_ZERO_BIT` specifies that result of the
+[VK_RESOLVE_MODE_SAMPLE_ZERO_BIT](#) specifies that result of the
 resolve operation is equal to the value of sample 0.
 
 * 
-`VK_RESOLVE_MODE_AVERAGE_BIT` specifies that result of the resolve
+[VK_RESOLVE_MODE_AVERAGE_BIT](#) specifies that result of the resolve
 operation is the average of the sample values.
 
 * 
-`VK_RESOLVE_MODE_MIN_BIT` specifies that result of the resolve
+[VK_RESOLVE_MODE_MIN_BIT](#) specifies that result of the resolve
 operation is the minimum of the sample values.
 
 * 
-`VK_RESOLVE_MODE_MAX_BIT` specifies that result of the resolve
+[VK_RESOLVE_MODE_MAX_BIT](#) specifies that result of the resolve
 operation is the maximum of the sample values.
 
 * 
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID` specifies
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#) specifies
 that rather than a multisample resolve, a single sampled color
 attachment will be downsampled into a Y′CBCR format image specified by
 an external Android format.
@@ -90,14 +90,14 @@ according to
 and the chroma sample rate of the resolved image.
 
 * 
-`VK_RESOLVE_MODE_CUSTOM_BIT_EXT` specifies that the attachment will
+[VK_RESOLVE_MODE_CUSTOM_BIT_EXT](#) specifies that the attachment will
 be resolved by shaders in the render pass instead of fixed-function
 operations.
 
-If no resolve mode is otherwise specified, `VK_RESOLVE_MODE_AVERAGE_BIT`
+If no resolve mode is otherwise specified, [VK_RESOLVE_MODE_AVERAGE_BIT](#)
 is used.
 
-If `VK_RESOLVE_MODE_AVERAGE_BIT` is used, and the source format is a
+If [VK_RESOLVE_MODE_AVERAGE_BIT](#) is used, and the source format is a
 floating-point or normalized type, the sample values for each pixel are
 resolved with implementation-defined numerical precision.
 
@@ -116,10 +116,10 @@ This behavior **can** be overridden with appropriate
 
 |  | No range compression or Y′CBCR model conversion is performed by
 | --- | --- |
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`; applications
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#); applications
 have to do these conversions themselves.
 Value outputs are expected to match those that would be read through a
-[Y′CBCR sampler using `VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY`](../../../../spec/latest/chapters/textures.html#textures-sampler-YCbCr-conversion-modelconversion).
+[Y′CBCR sampler using ](../../../../spec/latest/chapters/textures.html#textures-sampler-YCbCr-conversion-modelconversion)[VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY](VkSamplerYcbcrModelConversion.html).
 The color space that the values should be in is defined by the platform and
 is not exposed via Vulkan. |
 

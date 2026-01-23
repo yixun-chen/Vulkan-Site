@@ -38,7 +38,7 @@ This command sets whether logical operations are enabled for subsequent
 drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT` set in
+[VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineColorBlendStateCreateInfo](VkPipelineColorBlendStateCreateInfo.html)::`logicOpEnable` value used to
@@ -60,7 +60,7 @@ The [`shaderObject`](../../../../spec/latest/chapters/features.html#features-sha
 [](#VUID-vkCmdSetLogicOpEnableEXT-logicOp-07366) VUID-vkCmdSetLogicOpEnableEXT-logicOp-07366
 
 If the [`logicOp`](../../../../spec/latest/chapters/features.html#features-logicOp) feature is not enabled,
-`logicOpEnable` **must** be `VK_FALSE`
+`logicOpEnable` **must** be [VK_FALSE](VK_FALSE.html)
 
 Valid Usage (Implicit)
 
@@ -77,7 +77,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetLogicOpEnableEXT-commandBuffer-cmdpool) VUID-vkCmdSetLogicOpEnableEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetLogicOpEnableEXT-videocoding) VUID-vkCmdSetLogicOpEnableEXT-videocoding

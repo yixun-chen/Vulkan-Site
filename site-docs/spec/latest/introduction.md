@@ -118,7 +118,7 @@ behavior describe the behavior of **conformant** implementations, and express
 normative requirements which an implementation must satisfy in order to
 conform to the specification.
 For example, if the specification says “Under **specified condition**, the
-error code `VK_ERROR_FEATURE_NOT_PRESENT` is returned”, that behavior
+error code [VK_ERROR_FEATURE_NOT_PRESENT](fundamentals.html#VkResult) is returned”, that behavior
 is a requirement of the specification, and an implementation which does not
 return that error code under that condition is not conformant.
 

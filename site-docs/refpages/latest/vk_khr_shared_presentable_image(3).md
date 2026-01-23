@@ -139,20 +139,20 @@ Extending [VkSurfaceCapabilities2KHR](VkSurfaceCapabilities2KHR.html):
 * 
 Extending [VkImageLayout](VkImageLayout.html):
 
-`VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`
+[VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](VkImageLayout.html)
 
 Extending [VkPresentModeKHR](VkPresentModeKHR.html):
 
 * 
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](VkPresentModeKHR.html)
 
 * 
-`VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR`
+[VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](VkPresentModeKHR.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR`
+[VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR](VkStructureType.html)
 
 1) Should we allow a Vulkan WSI swapchain to toggle between normal usage and
 shared presentation usage?
@@ -186,13 +186,13 @@ images and swapchains.
 values?
 
 **RESOLVED**: `minImageCount` must be 1, and `presentMode` should be
-set to either `VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR` or
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`.
+set to either [VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](VkPresentModeKHR.html) or
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](VkPresentModeKHR.html).
 
 6) What should the layout of the shared presentable image be?
 
 **RESOLVED**: After acquiring the shared presentable image, the application
-must transition it to the `VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR` layout
+must transition it to the [VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](VkImageLayout.html) layout
 prior to it being used.
 After this initial transition, any image usage that was requested during
 swapchain creation **can** be performed on the image without layout transitions
@@ -204,15 +204,15 @@ being performed.
 will allow combination with other compatible extensions to
 [vkQueuePresentKHR](vkQueuePresentKHR.html).
 
-8) How should an application detect a `VK_ERROR_OUT_OF_DATE_KHR` error
-on a swapchain using the `VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`
+8) How should an application detect a [VK_ERROR_OUT_OF_DATE_KHR](VkResult.html) error
+on a swapchain using the [VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](VkPresentModeKHR.html)
 present mode?
 
 **RESOLVED**: Introduce [vkGetSwapchainStatusKHR](vkGetSwapchainStatusKHR.html) to allow applications to
 query the status of a swapchain using a shared presentation mode.
 
 9) What should subsequent calls to [vkQueuePresentKHR](vkQueuePresentKHR.html) for
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR` swapchains be defined to
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](VkPresentModeKHR.html) swapchains be defined to
 do?
 
 **RESOLVED**: State that implementations may use it as a hint for updated
@@ -223,14 +223,14 @@ different queue?
 
 **RESOLVED**: No.
 It is not possible to transfer ownership of a shared presentable image
-obtained from a swapchain created using `VK_SHARING_MODE_EXCLUSIVE`
+obtained from a swapchain created using [VK_SHARING_MODE_EXCLUSIVE](VkSharingMode.html)
 after it has been presented.
 
 11) How should [vkQueueSubmit](vkQueueSubmit.html) behave if a command buffer uses an image
-from a `VK_ERROR_OUT_OF_DATE_KHR` swapchain?
+from a [VK_ERROR_OUT_OF_DATE_KHR](VkResult.html) swapchain?
 
 **RESOLVED**: [vkQueueSubmit](vkQueueSubmit.html) is expected to return the
-`VK_ERROR_DEVICE_LOST` error.
+[VK_ERROR_DEVICE_LOST](VkResult.html) error.
 
 12) Can Vulkan provide any guarantee on the order of rendering, to enable
 beam chasing?

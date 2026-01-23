@@ -112,15 +112,15 @@ Extending [VkQueueFamilyProperties2](VkQueueFamilyProperties2.html):
 `VK_EXT_GLOBAL_PRIORITY_QUERY_SPEC_VERSION`
 
 * 
-`VK_MAX_GLOBAL_PRIORITY_SIZE_EXT`
+[VK_MAX_GLOBAL_PRIORITY_SIZE_EXT](VK_MAX_GLOBAL_PRIORITY_SIZE.html)
 
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GLOBAL_PRIORITY_QUERY_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GLOBAL_PRIORITY_QUERY_FEATURES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES_EXT`
+[VK_STRUCTURE_TYPE_QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES_EXT](VkStructureType.html)
 
 1) Can we additionally query whether a caller is permitted to acquire a
 specific global queue priority in this extension?

@@ -163,7 +163,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeH265CapabilitiesKHR-sType-sType) VUID-VkVideoEncodeH265CapabilitiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_CAPABILITIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_CAPABILITIES_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_h265](VK_KHR_video_encode_h265.html), `VkBool32`, [VkExtent2D](VkExtent2D.html), [VkStructureType](VkStructureType.html), [VkVideoEncodeH265CapabilityFlagsKHR](VkVideoEncodeH265CapabilityFlagsKHR.html), [VkVideoEncodeH265CtbSizeFlagsKHR](VkVideoEncodeH265CtbSizeFlagsKHR.html), [VkVideoEncodeH265StdFlagsKHR](VkVideoEncodeH265StdFlagsKHR.html), [VkVideoEncodeH265TransformBlockSizeFlagsKHR](VkVideoEncodeH265TransformBlockSizeFlagsKHR.html)
 

@@ -65,7 +65,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkXcbSurfaceCreateInfoKHR-sType-sType) VUID-VkXcbSurfaceCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkXcbSurfaceCreateInfoKHR-pNext-pNext) VUID-VkXcbSurfaceCreateInfoKHR-pNext-pNext

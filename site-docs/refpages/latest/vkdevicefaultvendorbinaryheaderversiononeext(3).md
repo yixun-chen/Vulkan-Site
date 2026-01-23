@@ -60,7 +60,7 @@ of the implementation.
 implementation.
 
 * 
-`pipelineCacheUUID` is an array of `VK_UUID_SIZE` `uint8_t`
+`pipelineCacheUUID` is an array of [VK_UUID_SIZE](VK_UUID_SIZE.html) `uint8_t`
 values matching the
 `VkPhysicalDeviceProperties`::`pipelineCacheUUID` property of
 the implementation.
@@ -118,7 +118,7 @@ Valid Usage
 [](#VUID-VkDeviceFaultVendorBinaryHeaderVersionOneEXT-headerVersion-07341) VUID-VkDeviceFaultVendorBinaryHeaderVersionOneEXT-headerVersion-07341
 
 `headerVersion` **must** be
-`VK_DEVICE_FAULT_VENDOR_BINARY_HEADER_VERSION_ONE_EXT`
+[VK_DEVICE_FAULT_VENDOR_BINARY_HEADER_VERSION_ONE_EXT](VkDeviceFaultVendorBinaryHeaderVersionEXT.html)
 
 Valid Usage (Implicit)
 

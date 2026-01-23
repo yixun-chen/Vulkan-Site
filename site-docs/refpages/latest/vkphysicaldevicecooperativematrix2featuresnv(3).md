@@ -98,7 +98,7 @@ If the `VkPhysicalDeviceCooperativeMatrix2FeaturesNV` structure is included in t
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceCooperativeMatrix2FeaturesNV`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -106,7 +106,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceCooperativeMatrix2FeaturesNV-sType-sType) VUID-VkPhysicalDeviceCooperativeMatrix2FeaturesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV](VkStructureType.html)
 
 [VK_NV_cooperative_matrix2](VK_NV_cooperative_matrix2.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

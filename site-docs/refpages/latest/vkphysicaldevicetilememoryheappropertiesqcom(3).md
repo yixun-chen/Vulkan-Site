@@ -56,7 +56,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceTileMemoryHeapPropertiesQCOM-sType-sType) VUID-VkPhysicalDeviceTileMemoryHeapPropertiesQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_PROPERTIES_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_PROPERTIES_QCOM](VkStructureType.html)
 
 [VK_QCOM_tile_memory_heap](VK_QCOM_tile_memory_heap.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

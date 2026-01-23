@@ -45,7 +45,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceCustomBorderColorPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceCustomBorderColorPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_custom_border_color](VK_EXT_custom_border_color.html), [VkStructureType](VkStructureType.html)
 

@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSparseImageFormatProperties2-sType-sType) VUID-VkSparseImageFormatProperties2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SPARSE_IMAGE_FORMAT_PROPERTIES_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SPARSE_IMAGE_FORMAT_PROPERTIES_2](VkStructureType.html)
 
 * 
 [](#VUID-VkSparseImageFormatProperties2-pNext-pNext) VUID-VkSparseImageFormatProperties2-pNext-pNext

@@ -45,7 +45,7 @@ structure.
 
 Any returned values beyond the first `keySize` bytes are **undefined**.
 Implementations **must** return a `keySize` greater than 0, and
-less-or-equal to `VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR`.
+less-or-equal to [VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR](VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR.html).
 
 Two keys are considered equal if `keySize` is equal and the first
 `keySize` bytes of `key` compare equal.
@@ -61,7 +61,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineBinaryKeyKHR-sType-sType) VUID-VkPipelineBinaryKeyKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_BINARY_KEY_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_BINARY_KEY_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineBinaryKeyKHR-pNext-pNext) VUID-VkPipelineBinaryKeyKHR-pNext-pNext

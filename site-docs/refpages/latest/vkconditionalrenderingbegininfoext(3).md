@@ -70,7 +70,7 @@ contiguously to a single `VkDeviceMemory` object
 [](#VUID-VkConditionalRenderingBeginInfoEXT-buffer-01982) VUID-VkConditionalRenderingBeginInfoEXT-buffer-01982
 
 `buffer` **must** have been created with the
-`VK_BUFFER_USAGE_CONDITIONAL_RENDERING_BIT_EXT` usage flag set
+[VK_BUFFER_USAGE_CONDITIONAL_RENDERING_BIT_EXT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkConditionalRenderingBeginInfoEXT-offset-01983) VUID-VkConditionalRenderingBeginInfoEXT-offset-01983
@@ -88,7 +88,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkConditionalRenderingBeginInfoEXT-sType-sType) VUID-VkConditionalRenderingBeginInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CONDITIONAL_RENDERING_BEGIN_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CONDITIONAL_RENDERING_BEGIN_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkConditionalRenderingBeginInfoEXT-pNext-pNext) VUID-VkConditionalRenderingBeginInfoEXT-pNext-pNext

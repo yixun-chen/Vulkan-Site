@@ -51,7 +51,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSetLatencyMarkerInfoNV-sType-sType) VUID-VkSetLatencyMarkerInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SET_LATENCY_MARKER_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SET_LATENCY_MARKER_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkSetLatencyMarkerInfoNV-marker-parameter) VUID-VkSetLatencyMarkerInfoNV-marker-parameter

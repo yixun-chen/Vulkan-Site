@@ -31,12 +31,12 @@ typedef struct VkFormatProperties {
 * 
 `linearTilingFeatures` is a bitmask of [VkFormatFeatureFlagBits](VkFormatFeatureFlagBits.html)
 specifying features supported by images created with a `tiling`
-parameter of `VK_IMAGE_TILING_LINEAR`.
+parameter of [VK_IMAGE_TILING_LINEAR](VkImageTiling.html).
 
 * 
 `optimalTilingFeatures` is a bitmask of
 [VkFormatFeatureFlagBits](VkFormatFeatureFlagBits.html) specifying features supported by images
-created with a `tiling` parameter of `VK_IMAGE_TILING_OPTIMAL`.
+created with a `tiling` parameter of [VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html).
 
 * 
 `bufferFeatures` is a bitmask of [VkFormatFeatureFlagBits](VkFormatFeatureFlagBits.html)
@@ -53,7 +53,7 @@ features for the format.
 
 If `format` is not a multi-plane format then `linearTilingFeatures`
 and `optimalTilingFeatures` **must** not contain
-`VK_FORMAT_FEATURE_DISJOINT_BIT`.
+[VK_FORMAT_FEATURE_DISJOINT_BIT](VkFormatFeatureFlagBits.html).
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkFormatFeatureFlags](VkFormatFeatureFlags.html), [VkFormatProperties2](VkFormatProperties2.html), [vkGetPhysicalDeviceFormatProperties](vkGetPhysicalDeviceFormatProperties.html)
 

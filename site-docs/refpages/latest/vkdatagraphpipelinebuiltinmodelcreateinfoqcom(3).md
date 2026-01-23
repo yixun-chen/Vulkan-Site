@@ -49,7 +49,7 @@ Applications **should** verify that the `pVendorOptions`, `layout`, and
 other state included with this pipeline creation are compatible with the
 `pOperation`.
 Implementations **may** fail if any state is not compatible and return
-`VK_PIPELINE_COMPILE_REQUIRED`.
+[VK_PIPELINE_COMPILE_REQUIRED](VkResult.html).
 
 |  | Built-in models are defined by the provider of the model, therefore Vulkan
 | --- | --- |
@@ -77,7 +77,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDataGraphPipelineBuiltinModelCreateInfoQCOM-sType-sType) VUID-VkDataGraphPipelineBuiltinModelCreateInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_BUILTIN_MODEL_CREATE_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_BUILTIN_MODEL_CREATE_INFO_QCOM](VkStructureType.html)
 
 * 
 [](#VUID-VkDataGraphPipelineBuiltinModelCreateInfoQCOM-pOperation-parameter) VUID-VkDataGraphPipelineBuiltinModelCreateInfoQCOM-pOperation-parameter

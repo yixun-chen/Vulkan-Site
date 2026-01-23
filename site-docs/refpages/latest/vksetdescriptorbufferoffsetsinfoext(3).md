@@ -73,10 +73,10 @@ more pipeline bind points, the binding operation still affects all stages
 corresponding to the given pipeline bind point(s) as if the equivalent
 original version of this command had been called with the same parameters.
 For example, specifying a `stageFlags` value of
-`VK_SHADER_STAGE_VERTEX_BIT` | `VK_SHADER_STAGE_FRAGMENT_BIT` |
-`VK_SHADER_STAGE_COMPUTE_BIT` is equivalent to calling the original
-version of this command once with `VK_PIPELINE_BIND_POINT_GRAPHICS` and
-once with `VK_PIPELINE_BIND_POINT_COMPUTE`.
+[VK_SHADER_STAGE_VERTEX_BIT](VkShaderStageFlagBits.html) | [VK_SHADER_STAGE_FRAGMENT_BIT](VkShaderStageFlagBits.html) |
+[VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html) is equivalent to calling the original
+version of this command once with [VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html) and
+once with [VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html).
 
 Valid Usage
 
@@ -91,7 +91,7 @@ The offsets in `pOffsets` **must** be aligned to
 
 The offsets in `pOffsets` **must** be small enough such that any
 descriptor binding referenced by `layout`
-without the `VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT`
+without the [VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](VkDescriptorBindingFlagBits.html)
 flag
 computes a valid address inside the underlying [VkBuffer](VkBuffer.html)
 
@@ -137,7 +137,7 @@ to [VkPipelineLayoutCreateInfo](VkPipelineLayoutCreateInfo.html)::`setLayoutCoun
 The [VkDescriptorSetLayout](VkDescriptorSetLayout.html) for each set from `firstSet` to
 `firstSet` +  `setCount` when `layout` was created
 **must** have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 
 * 
 [](#VUID-VkSetDescriptorBufferOffsetsInfoEXT-firstSet-11803) VUID-VkSetDescriptorBufferOffsetsInfoEXT-firstSet-11803
@@ -145,7 +145,7 @@ The [VkDescriptorSetLayout](VkDescriptorSetLayout.html) for each set from `first
 The [VkDescriptorSetLayout](VkDescriptorSetLayout.html) for each set from `firstSet` to
 `firstSet` +  `setCount` when `layout` was created
 **must** not have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 
 * 
 [](#VUID-VkSetDescriptorBufferOffsetsInfoEXT-firstSet-11804) VUID-VkSetDescriptorBufferOffsetsInfoEXT-firstSet-11804
@@ -153,7 +153,7 @@ The [VkDescriptorSetLayout](VkDescriptorSetLayout.html) for each set from `first
 The [VkDescriptorSetLayout](VkDescriptorSetLayout.html) for each set from `firstSet` to
 `firstSet` +  `setCount` when `layout` was created
 **must** not have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html)
 bit set
 
 * 
@@ -174,7 +174,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSetDescriptorBufferOffsetsInfoEXT-sType-sType) VUID-VkSetDescriptorBufferOffsetsInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkSetDescriptorBufferOffsetsInfoEXT-pNext-pNext) VUID-VkSetDescriptorBufferOffsetsInfoEXT-pNext-pNext

@@ -45,11 +45,11 @@ typedef enum VkFrontFace {
 } VkFrontFace;
 
 * 
-`VK_FRONT_FACE_COUNTER_CLOCKWISE` specifies that a triangle with
+[VK_FRONT_FACE_COUNTER_CLOCKWISE](#) specifies that a triangle with
 positive area is considered front-facing.
 
 * 
-`VK_FRONT_FACE_CLOCKWISE` specifies that a triangle with negative
+[VK_FRONT_FACE_CLOCKWISE](#) specifies that a triangle with negative
 area is considered front-facing.
 
 Any triangle which is not front-facing is back-facing, including zero-area

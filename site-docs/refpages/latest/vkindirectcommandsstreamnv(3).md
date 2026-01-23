@@ -43,7 +43,7 @@ Valid Usage
 [](#VUID-VkIndirectCommandsStreamNV-buffer-02942) VUID-VkIndirectCommandsStreamNV-buffer-02942
 
 The `buffer`’s usage flag **must** have the
-`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` bit set
+[VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](VkBufferUsageFlagBits.html) bit set
 
 * 
 [](#VUID-VkIndirectCommandsStreamNV-offset-02943) VUID-VkIndirectCommandsStreamNV-offset-02943

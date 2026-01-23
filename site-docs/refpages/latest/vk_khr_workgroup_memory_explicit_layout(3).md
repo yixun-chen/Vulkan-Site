@@ -124,7 +124,7 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_FEATURES_KHR](VkStructureType.html)
 
 * 
 [    `WorkgroupMemoryExplicitLayoutKHR`](../../../../spec/latest/appendices/spirvenv.html#spirvenv-capabilities-table-WorkgroupMemoryExplicitLayoutKHR)

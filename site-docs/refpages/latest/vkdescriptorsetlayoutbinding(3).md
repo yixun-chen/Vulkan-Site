@@ -42,7 +42,7 @@ of resource descriptors are used for this binding.
 `descriptorCount` is the number of descriptors contained in the
 binding, accessed in a shader as an
 array, except if `descriptorType` is
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` in which case
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) in which case
 `descriptorCount` is the size in bytes of the inline uniform block.
 If `descriptorCount` is zero this binding entry is reserved and the
 resource **must** not be accessed from any stage via this binding within
@@ -52,7 +52,7 @@ any pipeline using the set layout.
 `stageFlags` member is a bitmask of [VkShaderStageFlagBits](VkShaderStageFlagBits.html)
 specifying which pipeline shader stages **can** access a resource for this
 binding.
-`VK_SHADER_STAGE_ALL` is a shorthand specifying that all defined
+[VK_SHADER_STAGE_ALL](VkShaderStageFlagBits.html) is a shorthand specifying that all defined
 shader stages, including any additional stages defined by extensions,
 **can** access the resource.
 
@@ -66,14 +66,14 @@ and the compute stage.
 
 * 
 `pImmutableSamplers` affects initialization of samplers.
-If `descriptorType` specifies a `VK_DESCRIPTOR_TYPE_SAMPLER` or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` type descriptor, then
+If `descriptorType` specifies a [VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) type descriptor, then
 `pImmutableSamplers` **can** be used to initialize a set of *immutable
 samplers*.
 Immutable samplers are permanently bound into the set layout and **must**
-not be changed; updating a `VK_DESCRIPTOR_TYPE_SAMPLER` descriptor
+not be changed; updating a [VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html) descriptor
 with immutable samplers is not allowed and updates to a
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` descriptor with
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) descriptor with
 immutable samplers does not modify the samplers (the image views are
 updated, but the sampler updates are ignored).
 If `pImmutableSamplers` is not `NULL`, then it is a pointer to an
@@ -109,8 +109,8 @@ Valid Usage
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-descriptorType-00282) VUID-VkDescriptorSetLayoutBinding-descriptorType-00282
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_SAMPLER` or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, and
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html), and
 `descriptorCount` is not `0` and `pImmutableSamplers` is not
 `NULL`, `pImmutableSamplers` **must** be a valid pointer to an array of
 `descriptorCount` valid `VkSampler` handles
@@ -119,7 +119,7 @@ If `descriptorType` is `VK_DESCRIPTOR_TYPE_SAMPLER` or
 [](#VUID-VkDescriptorSetLayoutBinding-descriptorType-12200) VUID-VkDescriptorSetLayoutBinding-descriptorType-12200
 
 If `descriptorType` is
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, and
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html), and
 `descriptorCount` is not `0` and `pImmutableSamplers` is not
 `NULL`, either each element of `pImmutableSamplers` **must** be a
 `VkSampler` that enables [sampler Y′CBCR    conversion](../../../../spec/latest/chapters/samplers.html#samplers-YCbCr-conversion) or none of them enable sampler Y′CBCR conversion
@@ -127,7 +127,7 @@ If `descriptorType` is
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-descriptorType-12215) VUID-VkDescriptorSetLayoutBinding-descriptorType-12215
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_SAMPLER`, each
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html), each
 element of `pImmutableSamplers` **must** not be a `VkSampler`
 object that enables [sampler Y′CBCR    conversion](../../../../spec/latest/chapters/samplers.html#samplers-YCbCr-conversion)
 
@@ -136,20 +136,20 @@ object that enables [sampler Y′CBCR    conversion](../../../../spec/latest/cha
 
 If the [`inlineUniformBlock`](../../../../spec/latest/chapters/features.html#features-inlineUniformBlock) feature
 is not enabled, `descriptorType` **must** not be
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-descriptorType-02209) VUID-VkDescriptorSetLayoutBinding-descriptorType-02209
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html)
 then `descriptorCount` **must** be a multiple of `4`
 
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-descriptorType-08004) VUID-VkDescriptorSetLayoutBinding-descriptorType-08004
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html)
 and [VkDescriptorSetLayoutCreateInfo](VkDescriptorSetLayoutCreateInfo.html)::`flags` does not contain
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html)
 then `descriptorCount` **must** be less than or equal to
 `VkPhysicalDeviceInlineUniformBlockProperties`::`maxInlineUniformBlockSize`
 
@@ -157,21 +157,21 @@ then `descriptorCount` **must** be less than or equal to
 [](#VUID-VkDescriptorSetLayoutBinding-flags-08005) VUID-VkDescriptorSetLayoutBinding-flags-08005
 
 If [VkDescriptorSetLayoutCreateInfo](VkDescriptorSetLayoutCreateInfo.html)::`flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`,
-`descriptorType` **must** be `VK_DESCRIPTOR_TYPE_SAMPLER`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html),
+`descriptorType` **must** be [VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-flags-08006) VUID-VkDescriptorSetLayoutBinding-flags-08006
 
 If [VkDescriptorSetLayoutCreateInfo](VkDescriptorSetLayoutCreateInfo.html)::`flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html),
 `descriptorCount` **must** be less than or equal to `1`
 
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-flags-08007) VUID-VkDescriptorSetLayoutBinding-flags-08007
 
 If [VkDescriptorSetLayoutCreateInfo](VkDescriptorSetLayoutCreateInfo.html)::`flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html),
 and `descriptorCount` is equal to `1`, `pImmutableSamplers`
 **must** not be `NULL`
 
@@ -179,41 +179,41 @@ and `descriptorCount` is equal to `1`, `pImmutableSamplers`
 [](#VUID-VkDescriptorSetLayoutBinding-descriptorCount-09465) VUID-VkDescriptorSetLayoutBinding-descriptorCount-09465
 
 If `descriptorCount` is not `0`, `stageFlags` **must** be
-`VK_SHADER_STAGE_ALL` or a valid combination of other
+[VK_SHADER_STAGE_ALL](VkShaderStageFlagBits.html) or a valid combination of other
 [VkShaderStageFlagBits](VkShaderStageFlagBits.html) values
 
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-descriptorType-01510) VUID-VkDescriptorSetLayoutBinding-descriptorType-01510
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` and
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html) and
 `descriptorCount` is not `0`, then `stageFlags` **must** be `0` or
-`VK_SHADER_STAGE_FRAGMENT_BIT`
+[VK_SHADER_STAGE_FRAGMENT_BIT](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-pImmutableSamplers-04009) VUID-VkDescriptorSetLayoutBinding-pImmutableSamplers-04009
 
 The sampler objects indicated by `pImmutableSamplers` **must** not have
 a `borderColor` with one of the values
-`VK_BORDER_COLOR_FLOAT_CUSTOM_EXT` or
-`VK_BORDER_COLOR_INT_CUSTOM_EXT`
+[VK_BORDER_COLOR_FLOAT_CUSTOM_EXT](VkBorderColor.html) or
+[VK_BORDER_COLOR_INT_CUSTOM_EXT](VkBorderColor.html)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-descriptorType-04605) VUID-VkDescriptorSetLayoutBinding-descriptorType-04605
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, then
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html), then
 `pImmutableSamplers` **must** be `NULL`
 
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-flags-09466) VUID-VkDescriptorSetLayoutBinding-flags-09466
 
 If [VkDescriptorSetLayoutCreateInfo](VkDescriptorSetLayoutCreateInfo.html)::`flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV`, and
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV](VkDescriptorSetLayoutCreateFlagBits.html), and
 `descriptorCount` is not `0`, then `stageFlags` **must** be a valid
-combination of `VK_SHADER_STAGE_VERTEX_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`,
-`VK_SHADER_STAGE_GEOMETRY_BIT`, `VK_SHADER_STAGE_FRAGMENT_BIT`
-and `VK_SHADER_STAGE_COMPUTE_BIT` values
+combination of [VK_SHADER_STAGE_VERTEX_BIT](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_GEOMETRY_BIT](VkShaderStageFlagBits.html), [VK_SHADER_STAGE_FRAGMENT_BIT](VkShaderStageFlagBits.html)
+and [VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html) values
 
 Valid Usage (Implicit)
 

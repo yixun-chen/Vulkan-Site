@@ -150,7 +150,7 @@ These are available in the `limits` member of the
 * 
  `maxImageDimension1D` is the largest
 dimension (`width`) that is guaranteed to be supported for all
-images created with an `imageType` of `VK_IMAGE_TYPE_1D`.
+images created with an `imageType` of [VK_IMAGE_TYPE_1D](resources.html#VkImageType).
 Some combinations of image parameters (format, usage, etc.) **may** allow
 support for larger dimensions, which **can** be queried using
 [vkGetPhysicalDeviceImageFormatProperties](capabilities.html#vkGetPhysicalDeviceImageFormatProperties).
@@ -159,8 +159,8 @@ support for larger dimensions, which **can** be queried using
  `maxImageDimension2D` is the largest
 dimension (`width` or `height`) that is guaranteed to be
 supported for all images created with an `imageType` of
-`VK_IMAGE_TYPE_2D` and without
-`VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT` set in `flags`.
+[VK_IMAGE_TYPE_2D](resources.html#VkImageType) and without
+[VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) set in `flags`.
 Some combinations of image parameters (format, usage, etc.) **may** allow
 support for larger dimensions, which **can** be queried using
 [vkGetPhysicalDeviceImageFormatProperties](capabilities.html#vkGetPhysicalDeviceImageFormatProperties).
@@ -169,7 +169,7 @@ support for larger dimensions, which **can** be queried using
  `maxImageDimension3D` is the largest
 dimension (`width`, `height`, or `depth`) that is guaranteed
 to be supported for all images created with an `imageType` of
-`VK_IMAGE_TYPE_3D`.
+[VK_IMAGE_TYPE_3D](resources.html#VkImageType).
 Some combinations of image parameters (format, usage, etc.) **may** allow
 support for larger dimensions, which **can** be queried using
 [vkGetPhysicalDeviceImageFormatProperties](capabilities.html#vkGetPhysicalDeviceImageFormatProperties).
@@ -178,8 +178,8 @@ support for larger dimensions, which **can** be queried using
  `maxImageDimensionCube` is the
 largest dimension (`width` or `height`) that is guaranteed to be
 supported for all images created with an `imageType` of
-`VK_IMAGE_TYPE_2D` and with
-`VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT` set in `flags`.
+[VK_IMAGE_TYPE_2D](resources.html#VkImageType) and with
+[VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) set in `flags`.
 Some combinations of image parameters (format, usage, etc.) **may** allow
 support for larger dimensions, which **can** be queried using
 [vkGetPhysicalDeviceImageFormatProperties](capabilities.html#vkGetPhysicalDeviceImageFormatProperties).
@@ -192,24 +192,24 @@ number of layers (`arrayLayers`) for an image.
  `maxTexelBufferElements` is the
 maximum number of addressable texels for a buffer view created on a
 buffer which was created with the
-`VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT` or
-`VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT` usage flag set.
+[VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) or
+[VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set.
 
 * 
  `maxUniformBufferRange` is the
 maximum value that **can** be specified in the `range` member of a
 [VkDescriptorBufferInfo](descriptorsets.html#VkDescriptorBufferInfo) structure passed to
 [vkUpdateDescriptorSets](descriptorsets.html#vkUpdateDescriptorSets) for descriptors of type
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` or
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`.
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType).
 
 * 
  `maxStorageBufferRange` is the
 maximum value that **can** be specified in the `range` member of a
 [VkDescriptorBufferInfo](descriptorsets.html#VkDescriptorBufferInfo) structure passed to
 [vkUpdateDescriptorSets](descriptorsets.html#vkUpdateDescriptorSets) for descriptors of type
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`.
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType).
 If the [`shader64BitIndexing`](features.html#features-shader64BitIndexing)
 feature is enabled, this limit does not apply.
 
@@ -230,6 +230,13 @@ the maximum number of device memory allocations, as created by
  `maxSamplerAllocationCount` is
 the maximum number of sampler objects, as created by
 [vkCreateSampler](samplers.html#vkCreateSampler), which **can** simultaneously exist on a device.
+If the [`descriptorHeap`](features.html#features-descriptorHeap) feature is
+enabled and the application intends to use embedded samplers, the number
+advertised here is effectively reduced by the quotient of
+[`minSamplerHeapReservedRangeWithEmbedded`](#limits-minSamplerHeapReservedRangeWithEmbedded)
+divided by [`samplerDescriptorSize`](#limits-samplerDescriptorSize),
+to provide storage for embedded samplers when switching to heaps.
+If embedded samplers are not used, this can be ignored.
 
 * 
  `bufferImageGranularity` is the
@@ -258,19 +265,17 @@ in [    `extendedSparseBufferUsageFlags`](#limits-extendedSparseBufferUsageFlags
  `maxBoundDescriptorSets` is the
 maximum number of descriptor sets that **can** be simultaneously used by a
 pipeline.
-All `DescriptorSet` decorations in shader modules **must** have a value
-less than `maxBoundDescriptorSets`.
 See [Descriptor Sets](descriptorsets.html#descriptorsets-sets).
 
 * 
 
 `maxPerStageDescriptorSamplers` is the maximum number of samplers
 that **can** be accessible to a single shader stage in a pipeline layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_SAMPLER` or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` count against this
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_SAMPLER](descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](descriptorsets.html#VkDescriptorType) count against this
 limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 A descriptor is accessible to a shader stage when the `stageFlags`
 member of the `VkDescriptorSetLayoutBinding` structure has the bit
@@ -283,11 +288,11 @@ See [Sampler](descriptorsets.html#descriptorsets-sampler) and
 `maxPerStageDescriptorUniformBuffers` is the maximum number of
 uniform buffers that **can** be accessible to a single shader stage in a
 pipeline layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` or
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` count against this
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType) count against this
 limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 A descriptor is accessible to a shader stage when the `stageFlags`
 member of the `VkDescriptorSetLayoutBinding` structure has the bit
@@ -300,11 +305,11 @@ See [Uniform Buffer](descriptorsets.html#descriptorsets-uniformbuffer) and
 `maxPerStageDescriptorStorageBuffers` is the maximum number of
 storage buffers that **can** be accessible to a single shader stage in a
 pipeline layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` count against this
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType) count against this
 limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 A descriptor is accessible to a pipeline shader stage when the
 `stageFlags` member of the `VkDescriptorSetLayoutBinding`
@@ -318,11 +323,11 @@ See [Storage Buffer](descriptorsets.html#descriptorsets-storagebuffer) and
 sampled images that **can** be accessible to a single shader stage in a
 pipeline layout.
 Descriptors with a type of
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` count against this limit.
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](descriptorsets.html#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType) count against this limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 A descriptor is accessible to a pipeline shader stage when the
 `stageFlags` member of the `VkDescriptorSetLayoutBinding`
@@ -336,10 +341,10 @@ See [Combined Image Sampler](descriptorsets.html#descriptorsets-combinedimagesam
 `maxPerStageDescriptorStorageImages` is the maximum number of
 storage images that **can** be accessible to a single shader stage in a
 pipeline layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` count against this limit.
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](descriptorsets.html#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType) count against this limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 A descriptor is accessible to a pipeline shader stage when the
 `stageFlags` member of the `VkDescriptorSetLayoutBinding`
@@ -351,11 +356,11 @@ See [Storage Image](descriptorsets.html#descriptorsets-storageimage), and
 
 `maxPerStageDescriptorInputAttachments` is the maximum number of
 input attachments that **can** be accessible to a single shader stage in a
-pipeline layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`
+pipeline layout, as well as the maximum usable input attachment index.
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](descriptorsets.html#VkDescriptorType)
 count against this limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 A descriptor is accessible to a pipeline shader stage when the
 `stageFlags` member of the `VkDescriptorSetLayoutBinding`
@@ -363,23 +368,37 @@ structure has the bit for that shader stage set.
 These are only supported for the fragment stage.
 See [Input Attachment](descriptorsets.html#descriptorsets-inputattachment).
 
+|  | `maxPerStageDescriptorInputAttachments` was originally only intended to
+| --- | --- |
+limit the number of attachments per stage, not the number of available input
+indices across all shaders in a render pass.
+The input indices were allowed to be semi arbitrary for render pass objects,
+or fully arbitrary for dynamic rendering,
+however some implementations have fixed limits for them.
+Applications already exist that exceed this limit, and they will continue to
+work where they already did, but will fail to render on some platforms.
+For forward looking applications, this can be worked around by
+either making careful use of index remapping with
+[VkRenderingInputAttachmentIndexInfo](interfaces.html#VkRenderingInputAttachmentIndexInfo) for dynamic rendering, or
+splitting a subpass with too many input attachments into multiple subpasses. |
+
 * 
  `maxPerStageResources` is the
 maximum number of resources that **can** be accessible to a single shader
 stage in a pipeline layout.
 Descriptors with a type of
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`,
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`,
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`,
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`,
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`,
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`,
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`, or
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` count against this limit.
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](descriptorsets.html#VkDescriptorType) count against this limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 For the fragment shader stage the framebuffer color attachments also
 count against this limit.
@@ -388,11 +407,11 @@ count against this limit.
  `maxDescriptorSetSamplers` is
 the maximum number of samplers that **can** be included in a pipeline
 layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_SAMPLER` or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` count against this
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_SAMPLER](descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](descriptorsets.html#VkDescriptorType) count against this
 limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 See [Sampler](descriptorsets.html#descriptorsets-sampler) and
 [Combined Image Sampler](descriptorsets.html#descriptorsets-combinedimagesampler).
@@ -401,11 +420,11 @@ See [Sampler](descriptorsets.html#descriptorsets-sampler) and
 
 `maxDescriptorSetUniformBuffers` is the maximum number of uniform
 buffers that **can** be included in a pipeline layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` or
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` count against this
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType) count against this
 limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 See [Uniform Buffer](descriptorsets.html#descriptorsets-uniformbuffer) and
 [Dynamic Uniform Buffer](descriptorsets.html#descriptorsets-uniformbufferdynamic).
@@ -415,10 +434,10 @@ See [Uniform Buffer](descriptorsets.html#descriptorsets-uniformbuffer) and
 `maxDescriptorSetUniformBuffersDynamic` is the maximum number of
 dynamic uniform buffers that **can** be included in a pipeline layout.
 Descriptors with a type of
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` count against this
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType) count against this
 limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 See [Dynamic Uniform Buffer](descriptorsets.html#descriptorsets-uniformbufferdynamic).
 
@@ -426,11 +445,11 @@ See [Dynamic Uniform Buffer](descriptorsets.html#descriptorsets-uniformbufferdyn
 
 `maxDescriptorSetStorageBuffers` is the maximum number of storage
 buffers that **can** be included in a pipeline layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` count against this
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType) count against this
 limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 See [Storage Buffer](descriptorsets.html#descriptorsets-storagebuffer) and
 [Dynamic Storage Buffer](descriptorsets.html#descriptorsets-storagebufferdynamic).
@@ -440,10 +459,10 @@ See [Storage Buffer](descriptorsets.html#descriptorsets-storagebuffer) and
 `maxDescriptorSetStorageBuffersDynamic` is the maximum number of
 dynamic storage buffers that **can** be included in a pipeline layout.
 Descriptors with a type of
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` count against this
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType) count against this
 limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 See [Dynamic Storage Buffer](descriptorsets.html#descriptorsets-storagebufferdynamic).
 
@@ -452,11 +471,11 @@ See [Dynamic Storage Buffer](descriptorsets.html#descriptorsets-storagebufferdyn
 `maxDescriptorSetSampledImages` is the maximum number of sampled
 images that **can** be included in a pipeline layout.
 Descriptors with a type of
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` count against this limit.
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](descriptorsets.html#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType) count against this limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 See [Combined Image Sampler](descriptorsets.html#descriptorsets-combinedimagesampler),
 [Sampled Image](descriptorsets.html#descriptorsets-sampledimage), and
@@ -466,10 +485,10 @@ See [Combined Image Sampler](descriptorsets.html#descriptorsets-combinedimagesam
 
 `maxDescriptorSetStorageImages` is the maximum number of storage
 images that **can** be included in a pipeline layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` count against this limit.
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](descriptorsets.html#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType) count against this limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 See [Storage Image](descriptorsets.html#descriptorsets-storageimage), and
 [Storage Texel Buffer](descriptorsets.html#descriptorsets-storagetexelbuffer).
@@ -478,10 +497,10 @@ See [Storage Image](descriptorsets.html#descriptorsets-storageimage), and
 
 `maxDescriptorSetInputAttachments` is the maximum number of input
 attachments that **can** be included in a pipeline layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](descriptorsets.html#VkDescriptorType)
 count against this limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 See [Input Attachment](descriptorsets.html#descriptorsets-inputattachment).
 
@@ -803,8 +822,8 @@ value.
 `minUniformBufferOffsetAlignment` is the minimum **required**
 alignment, in bytes, for the `offset` member of the
 `VkDescriptorBufferInfo` structure for uniform buffers.
-When a descriptor of type `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` or
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` is updated, the
+When a descriptor of type [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType) is updated, the
 `offset` **must** be an integer multiple of this limit.
 Similarly, dynamic offsets for uniform buffers **must** be multiples of
 this limit.
@@ -815,8 +834,8 @@ The value **must** be a power of two.
 `minStorageBufferOffsetAlignment` is the minimum **required**
 alignment, in bytes, for the `offset` member of the
 `VkDescriptorBufferInfo` structure for storage buffers.
-When a descriptor of type `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` is updated, the
+When a descriptor of type [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType) is updated, the
 `offset` **must** be an integer multiple of this limit.
 Similarly, dynamic offsets for storage buffers **must** be multiples of
 this limit.
@@ -923,37 +942,37 @@ structure **must** be less than or equal to this limit.
 
 `sampledImageColorSampleCounts` is a bitmask1 of
 [VkSampleCountFlagBits](#VkSampleCountFlagBits) indicating the sample counts supported for
-all 2D images created with `VK_IMAGE_TILING_OPTIMAL`, the
-`VK_IMAGE_USAGE_SAMPLED_BIT` usage flag set, and a non-integer color
+all 2D images created with [VK_IMAGE_TILING_OPTIMAL](resources.html#VkImageTiling), the
+[VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits) usage flag set, and a non-integer color
 format.
 
 * 
 
 `sampledImageIntegerSampleCounts` is a bitmask1 of
 [VkSampleCountFlagBits](#VkSampleCountFlagBits) indicating the sample counts supported for
-all 2D images created with `VK_IMAGE_TILING_OPTIMAL`, the
-`VK_IMAGE_USAGE_SAMPLED_BIT` usage flag set, and an integer color
+all 2D images created with [VK_IMAGE_TILING_OPTIMAL](resources.html#VkImageTiling), the
+[VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits) usage flag set, and an integer color
 format.
 
 * 
 
 `sampledImageDepthSampleCounts` is a bitmask1 of
 [VkSampleCountFlagBits](#VkSampleCountFlagBits) indicating the sample counts supported for
-all 2D images created with `VK_IMAGE_TILING_OPTIMAL`, the
-`VK_IMAGE_USAGE_SAMPLED_BIT` usage flag set, and a depth format.
+all 2D images created with [VK_IMAGE_TILING_OPTIMAL](resources.html#VkImageTiling), the
+[VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits) usage flag set, and a depth format.
 
 * 
 
 `sampledImageStencilSampleCounts` is a bitmask1 of
 [VkSampleCountFlagBits](#VkSampleCountFlagBits) indicating the sample counts supported for
-all 2D images created with `VK_IMAGE_TILING_OPTIMAL`, the
-`VK_IMAGE_USAGE_SAMPLED_BIT` usage flag set, and a stencil format.
+all 2D images created with [VK_IMAGE_TILING_OPTIMAL](resources.html#VkImageTiling), the
+[VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits) usage flag set, and a stencil format.
 
 * 
  `storageImageSampleCounts` is a
 bitmask1 of [VkSampleCountFlagBits](#VkSampleCountFlagBits) indicating the sample counts
-supported for all 2D images created with `VK_IMAGE_TILING_OPTIMAL`,
-and the `VK_IMAGE_USAGE_STORAGE_BIT` usage flag set.
+supported for all 2D images created with [VK_IMAGE_TILING_OPTIMAL](resources.html#VkImageTiling),
+and the [VK_IMAGE_USAGE_STORAGE_BIT](resources.html#VkImageUsageFlagBits) usage flag set.
 
 * 
  `maxSampleMaskWords` is the maximum
@@ -963,8 +982,8 @@ number of array elements of a variable decorated with the
 * 
  `timestampComputeAndGraphics`
 specifies support for timestamps on all graphics and compute queues.
-If this limit is `VK_TRUE`, all queues that advertise the
-`VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT` in the
+If this limit is [VK_TRUE](fundamentals.html#VK_TRUE), all queues that advertise the
+[VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) in the
 `VkQueueFamilyProperties`::`queueFlags` support
 `VkQueueFamilyProperties`::`timestampValidBits` of at least 36.
 See [Timestamp Queries](queries.html#queries-timestamps).
@@ -1035,9 +1054,9 @@ supported line widths.
 * 
  `strictLines` specifies whether lines are
 rasterized according to the preferred method of rasterization.
-If set to `VK_FALSE`, lines **may** be rasterized under a relaxed set
+If set to [VK_FALSE](fundamentals.html#VK_FALSE), lines **may** be rasterized under a relaxed set
 of rules.
-If set to `VK_TRUE`, lines are rasterized as per the strict
+If set to [VK_TRUE](fundamentals.html#VK_TRUE), lines are rasterized as per the strict
 definition.
 See [Basic Line Segment Rasterization](primsrast.html#primsrast-lines-basic).
 
@@ -1045,9 +1064,9 @@ See [Basic Line Segment Rasterization](primsrast.html#primsrast-lines-basic).
  `standardSampleLocations`
 specifies whether rasterization uses the standard sample locations as
 documented in [Multisampling](primsrast.html#primsrast-multisampling).
-If set to `VK_TRUE`, the implementation uses the documented sample
+If set to [VK_TRUE](fundamentals.html#VK_TRUE), the implementation uses the documented sample
 locations.
-If set to `VK_FALSE`, the implementation **may** use different sample
+If set to [VK_FALSE](fundamentals.html#VK_FALSE), the implementation **may** use different sample
 locations.
 
 * 
@@ -1107,28 +1126,28 @@ typedef enum VkSampleCountFlagBits {
 } VkSampleCountFlagBits;
 
 * 
-`VK_SAMPLE_COUNT_1_BIT` specifies an image with one sample per
+[VK_SAMPLE_COUNT_1_BIT](#VkSampleCountFlagBits) specifies an image with one sample per
 pixel.
 
 * 
-`VK_SAMPLE_COUNT_2_BIT` specifies an image with 2 samples per pixel.
+[VK_SAMPLE_COUNT_2_BIT](#VkSampleCountFlagBits) specifies an image with 2 samples per pixel.
 
 * 
-`VK_SAMPLE_COUNT_4_BIT` specifies an image with 4 samples per pixel.
+[VK_SAMPLE_COUNT_4_BIT](#VkSampleCountFlagBits) specifies an image with 4 samples per pixel.
 
 * 
-`VK_SAMPLE_COUNT_8_BIT` specifies an image with 8 samples per pixel.
+[VK_SAMPLE_COUNT_8_BIT](#VkSampleCountFlagBits) specifies an image with 8 samples per pixel.
 
 * 
-`VK_SAMPLE_COUNT_16_BIT` specifies an image with 16 samples per
+[VK_SAMPLE_COUNT_16_BIT](#VkSampleCountFlagBits) specifies an image with 16 samples per
 pixel.
 
 * 
-`VK_SAMPLE_COUNT_32_BIT` specifies an image with 32 samples per
+[VK_SAMPLE_COUNT_32_BIT](#VkSampleCountFlagBits) specifies an image with 32 samples per
 pixel.
 
 * 
-`VK_SAMPLE_COUNT_64_BIT` specifies an image with 64 samples per
+[VK_SAMPLE_COUNT_64_BIT](#VkSampleCountFlagBits) specifies an image with 64 samples per
 pixel.
 
 // Provided by VK_VERSION_1_0
@@ -1161,7 +1180,7 @@ structure.
  `maxPushDescriptors` is
 the maximum number of descriptors that **can** be used in a descriptor set
 layout created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT` set.
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) set.
 
 If the `VkPhysicalDevicePushDescriptorProperties` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2) structure passed to
@@ -1173,7 +1192,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePushDescriptorProperties-sType-sType) VUID-VkPhysicalDevicePushDescriptorProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceMultiviewProperties` structure is defined as:
 
@@ -1217,7 +1236,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMultiviewProperties-sType-sType) VUID-VkPhysicalDeviceMultiviewProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceFloatControlsProperties` structure is defined as:
 
@@ -1397,7 +1416,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFloatControlsProperties-sType-sType) VUID-VkPhysicalDeviceFloatControlsProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES](fundamentals.html#VkStructureType)
 
 Values which **may** be returned in the `denormBehaviorIndependence` and
 `roundingModeIndependence` fields of
@@ -1421,16 +1440,16 @@ typedef enum VkShaderFloatControlsIndependence {
 typedef VkShaderFloatControlsIndependence VkShaderFloatControlsIndependenceKHR;
 
 * 
-`VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_32_BIT_ONLY` specifies that
+[VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_32_BIT_ONLY](#VkShaderFloatControlsIndependenceKHR) specifies that
 shader float controls for 32-bit floating-point **can** be set
 independently; other bit widths **must** be set identically to each other.
 
 * 
-`VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_ALL` specifies that shader
+[VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_ALL](#VkShaderFloatControlsIndependenceKHR) specifies that shader
 float controls for all bit widths **can** be set independently.
 
 * 
-`VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_NONE` specifies that shader
+[VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_NONE](#VkShaderFloatControlsIndependenceKHR) specifies that shader
 float controls for all bit widths **must** be set identically.
 
 The `VkPhysicalDeviceDiscardRectanglePropertiesEXT` structure is defined
@@ -1464,7 +1483,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDiscardRectanglePropertiesEXT-sType-sType) VUID-VkPhysicalDeviceDiscardRectanglePropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceSampleLocationsPropertiesEXT` structure is defined
 as:
@@ -1511,9 +1530,9 @@ is the number of bits of subpixel precision for sample locations.
  `variableSampleLocations`
 specifies whether the sample locations used by all pipelines that will
 be bound to a command buffer during a subpass **must** match.
-If set to `VK_TRUE`, the implementation supports variable sample
+If set to [VK_TRUE](fundamentals.html#VK_TRUE), the implementation supports variable sample
 locations in a subpass.
-If set to `VK_FALSE`, then the sample locations **must** stay constant
+If set to [VK_FALSE](fundamentals.html#VK_FALSE), then the sample locations **must** stay constant
 in each subpass.
 
 If the `VkPhysicalDeviceSampleLocationsPropertiesEXT` structure is included in the `pNext` chain of the
@@ -1526,7 +1545,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceSampleLocationsPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceSampleLocationsPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT` structure is
 defined as:
@@ -1558,7 +1577,7 @@ If the `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT` structure is includ
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](devsandqueues.html#VkDevice) with any features
 described by `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](fundamentals.html#VK_TRUE), to the `pNext`
 chain of [VkDeviceCreateInfo](devsandqueues.html#VkDeviceCreateInfo) when creating the [VkDevice](devsandqueues.html#VkDevice).
 
 Valid Usage (Implicit)
@@ -1566,7 +1585,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceExternalMemoryHostPropertiesEXT` structure is
 defined as:
@@ -1602,7 +1621,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExternalMemoryHostPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceExternalMemoryHostPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX` structure
 is defined as:
@@ -1623,7 +1642,7 @@ structure.
 
 * 
 
-`perViewPositionAllComponents` is `VK_TRUE` if the
+`perViewPositionAllComponents` is [VK_TRUE](fundamentals.html#VK_TRUE) if the
 implementation supports per-view position values that differ in
 components other than the X component.
 
@@ -1637,7 +1656,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX-sType-sType) VUID-VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDevicePointClippingProperties` structure is defined as:
 
@@ -1674,7 +1693,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePointClippingProperties-sType-sType) VUID-VkPhysicalDevicePointClippingProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceSubgroupProperties` structure is defined as:
 
@@ -1699,7 +1718,7 @@ structure.
  `subgroupSize` is the default
 number of invocations in each subgroup.
 `subgroupSize` is at least 1 if any of the physical device’s queues
-support `VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT`.
+support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits).
 `subgroupSize` is a power-of-two.
 
 * 
@@ -1707,9 +1726,9 @@ support `VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT`.
 `supportedStages` is a bitfield of [VkShaderStageFlagBits](pipelines.html#VkShaderStageFlagBits)
 describing the shader stages that [group    operations](shaders.html#shaders-group-operations) with [subgroup scope](shaders.html#shaders-scope-subgroup) are
 supported in.
-`supportedStages` will have the `VK_SHADER_STAGE_COMPUTE_BIT`
+`supportedStages` will have the [VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits)
 bit set if any of the physical device’s queues support
-`VK_QUEUE_COMPUTE_BIT`.
+[VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits).
 
 * 
 
@@ -1718,9 +1737,9 @@ bit set if any of the physical device’s queues support
 [group operations](shaders.html#shaders-group-operations) with
 [subgroup scope](shaders.html#shaders-scope-subgroup) supported on this device.
 `supportedOperations` will have the
-`VK_SUBGROUP_FEATURE_BASIC_BIT` bit set if any of the physical
-device’s queues support `VK_QUEUE_GRAPHICS_BIT` or
-`VK_QUEUE_COMPUTE_BIT`.
+[VK_SUBGROUP_FEATURE_BASIC_BIT](#VkSubgroupFeatureFlagBits) bit set if any of the physical
+device’s queues support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) or
+[VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits).
 
 * 
 
@@ -1733,17 +1752,17 @@ If the `VkPhysicalDeviceSubgroupProperties` structure is included in the `pNext`
 [vkGetPhysicalDeviceProperties2](devsandqueues.html#vkGetPhysicalDeviceProperties2), it is filled in with each
 corresponding implementation-dependent property.
 
-If `supportedOperations` includes [`VK_SUBGROUP_FEATURE_QUAD_BIT`](#features-subgroup-quad),
+If `supportedOperations` includes [](#features-subgroup-quad)[VK_SUBGROUP_FEATURE_QUAD_BIT](#VkSubgroupFeatureFlagBits),
 or the [`shaderSubgroupUniformControlFlow`](features.html#features-shaderSubgroupUniformControlFlow) feature is enabled,
 `subgroupSize` **must** be greater than or equal to 4.
 
 If the [`shaderQuadControl`](features.html#features-shaderQuadControl) feature is
-supported, `supportedOperations` **must** include [`VK_SUBGROUP_FEATURE_QUAD_BIT`](#features-subgroup-quad).
+supported, `supportedOperations` **must** include [](#features-subgroup-quad)[VK_SUBGROUP_FEATURE_QUAD_BIT](#VkSubgroupFeatureFlagBits).
 
 If [VK_KHR_shader_subgroup_rotate](../appendices/extensions.html#VK_KHR_shader_subgroup_rotate) is supported, and the implementation
 advertises support with a [VkExtensionProperties](extensions.html#VkExtensionProperties)::`specVersion`
 greater than or equal to 2, and the [`shaderSubgroupRotate`](features.html#features-shaderSubgroupRotate) feature is supported,
-`VK_SUBGROUP_FEATURE_ROTATE_BIT` **must** be returned in
+[VK_SUBGROUP_FEATURE_ROTATE_BIT](#VkSubgroupFeatureFlagBits) **must** be returned in
 [VkPhysicalDeviceVulkan11Properties](devsandqueues.html#VkPhysicalDeviceVulkan11Properties)::`subgroupSupportedOperations`
 and
 [VkPhysicalDeviceSubgroupProperties](#VkPhysicalDeviceSubgroupProperties)::`supportedOperations`.
@@ -1751,31 +1770,34 @@ If [VK_KHR_shader_subgroup_rotate](../appendices/extensions.html#VK_KHR_shader_s
 advertises support with a [VkExtensionProperties](extensions.html#VkExtensionProperties)::`specVersion`
 greater than or equal to 2, and the
 [`shaderSubgroupRotateClustered`](features.html#features-shaderSubgroupRotateClustered) feature is supported,
-`VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT` **must** be returned in
+[VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT](#VkSubgroupFeatureFlagBits) **must** be returned in
 [VkPhysicalDeviceVulkan11Properties](devsandqueues.html#VkPhysicalDeviceVulkan11Properties)::`subgroupSupportedOperations`
 and
 [VkPhysicalDeviceSubgroupProperties](#VkPhysicalDeviceSubgroupProperties)::`supportedOperations`.
 
-If Vulkan 1.4 is supported, `VK_SUBGROUP_FEATURE_ROTATE_BIT` and
-`VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT` **must** be returned in
+If Vulkan 1.4 is supported, [VK_SUBGROUP_FEATURE_ROTATE_BIT](#VkSubgroupFeatureFlagBits) and
+[VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT](#VkSubgroupFeatureFlagBits) **must** be returned in
 [VkPhysicalDeviceSubgroupProperties](#VkPhysicalDeviceSubgroupProperties)::`supportedOperations` and
 [VkPhysicalDeviceVulkan11Properties](devsandqueues.html#VkPhysicalDeviceVulkan11Properties)::`subgroupSupportedOperations`
 
-|  | `VK_SUBGROUP_FEATURE_ROTATE_BIT` and
+|  | [VK_SUBGROUP_FEATURE_ROTATE_BIT](#VkSubgroupFeatureFlagBits) and
 | --- | --- |
-`VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT` were added in version 2 of
+[VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT](#VkSubgroupFeatureFlagBits) were added in version 2 of
 the [VK_KHR_shader_subgroup_rotate](../appendices/extensions.html#VK_KHR_shader_subgroup_rotate) extension, after the initial
 release, so there are implementations that do not advertise these bits.
 Applications should use the [`shaderSubgroupRotate`](features.html#features-shaderSubgroupRotate) and [`shaderSubgroupRotateClustered`](features.html#features-shaderSubgroupRotateClustered) features to determine and enable
 support.
 These bits are advertised here for consistency and for future dependencies. |
 
+If the [`shaderSubgroupPartitioned`](features.html#features-shaderSubgroupPartitioned) feature is supported,
+`supportedOperations` **must** include [](#features-subgroup-partitioned)[VK_SUBGROUP_FEATURE_PARTITIONED_BIT_EXT](#VkSubgroupFeatureFlagBits).
+
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPhysicalDeviceSubgroupProperties-sType-sType) VUID-VkPhysicalDeviceSubgroupProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES](fundamentals.html#VkStructureType)
 
 Bits which **can** be set in
 [VkPhysicalDeviceSubgroupProperties](#VkPhysicalDeviceSubgroupProperties)::`supportedOperations`
@@ -1798,8 +1820,10 @@ typedef enum VkSubgroupFeatureFlagBits {
     VK_SUBGROUP_FEATURE_ROTATE_BIT = 0x00000200,
   // Provided by VK_VERSION_1_4
     VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT = 0x00000400,
+  // Provided by VK_EXT_shader_subgroup_partitioned
+    VK_SUBGROUP_FEATURE_PARTITIONED_BIT_EXT = 0x00000100,
   // Provided by VK_NV_shader_subgroup_partitioned
-    VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV = 0x00000100,
+    VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV = VK_SUBGROUP_FEATURE_PARTITIONED_BIT_EXT,
   // Provided by VK_KHR_shader_subgroup_rotate
     VK_SUBGROUP_FEATURE_ROTATE_BIT_KHR = VK_SUBGROUP_FEATURE_ROTATE_BIT,
   // Provided by VK_KHR_shader_subgroup_rotate
@@ -1807,61 +1831,61 @@ typedef enum VkSubgroupFeatureFlagBits {
 } VkSubgroupFeatureFlagBits;
 
 * 
- `VK_SUBGROUP_FEATURE_BASIC_BIT`
+ [VK_SUBGROUP_FEATURE_BASIC_BIT](#VkSubgroupFeatureFlagBits)
 specifies the device will accept SPIR-V shader modules containing the
 `GroupNonUniform` capability.
 
 * 
- `VK_SUBGROUP_FEATURE_VOTE_BIT` specifies
+ [VK_SUBGROUP_FEATURE_VOTE_BIT](#VkSubgroupFeatureFlagBits) specifies
 the device will accept SPIR-V shader modules containing the
 `GroupNonUniformVote` capability.
 
 * 
 
-`VK_SUBGROUP_FEATURE_ARITHMETIC_BIT` specifies the device will
+[VK_SUBGROUP_FEATURE_ARITHMETIC_BIT](#VkSubgroupFeatureFlagBits) specifies the device will
 accept SPIR-V shader modules containing the
 `GroupNonUniformArithmetic` capability.
 
 * 
- `VK_SUBGROUP_FEATURE_BALLOT_BIT`
+ [VK_SUBGROUP_FEATURE_BALLOT_BIT](#VkSubgroupFeatureFlagBits)
 specifies the device will accept SPIR-V shader modules containing the
 `GroupNonUniformBallot` capability.
 
 * 
- `VK_SUBGROUP_FEATURE_SHUFFLE_BIT`
+ [VK_SUBGROUP_FEATURE_SHUFFLE_BIT](#VkSubgroupFeatureFlagBits)
 specifies the device will accept SPIR-V shader modules containing the
 `GroupNonUniformShuffle` capability.
 
 * 
 
-`VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT` specifies the device will
+[VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT](#VkSubgroupFeatureFlagBits) specifies the device will
 accept SPIR-V shader modules containing the
 `GroupNonUniformShuffleRelative` capability.
 
 * 
- `VK_SUBGROUP_FEATURE_CLUSTERED_BIT`
+ [VK_SUBGROUP_FEATURE_CLUSTERED_BIT](#VkSubgroupFeatureFlagBits)
 specifies the device will accept SPIR-V shader modules containing the
 `GroupNonUniformClustered` capability.
 
 * 
- `VK_SUBGROUP_FEATURE_QUAD_BIT` specifies
+ [VK_SUBGROUP_FEATURE_QUAD_BIT](#VkSubgroupFeatureFlagBits) specifies
 the device will accept SPIR-V shader modules containing the
 `GroupNonUniformQuad` capability.
 
 * 
 
-`VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV` specifies the device will
+[VK_SUBGROUP_FEATURE_PARTITIONED_BIT_EXT](#VkSubgroupFeatureFlagBits) specifies the device will
 accept SPIR-V shader modules containing the
-`GroupNonUniformPartitionedNV` capability.
+`GroupNonUniformPartitionedEXT` capability.
 
 * 
- `VK_SUBGROUP_FEATURE_ROTATE_BIT`
+ [VK_SUBGROUP_FEATURE_ROTATE_BIT](#VkSubgroupFeatureFlagBits)
 specifies the device will accept SPIR-V shader modules containing the
 `GroupNonUniformRotateKHR` capability.
 
 * 
 
-`VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT` specifies the device will
+[VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT](#VkSubgroupFeatureFlagBits) specifies the device will
 accept SPIR-V shader modules that use the `ClusterSize` operand to
 `OpGroupNonUniformRotateKHR`.
 
@@ -1899,8 +1923,8 @@ structure.
  `minSubgroupSize` is the
 minimum subgroup size supported by this device.
 `minSubgroupSize` is at least one if any of the physical device’s
-queues support `VK_QUEUE_GRAPHICS_BIT` or
-`VK_QUEUE_COMPUTE_BIT`.
+queues support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) or
+[VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits).
 `minSubgroupSize` is a power-of-two.
 `minSubgroupSize` is less than or equal to `maxSubgroupSize`.
 `minSubgroupSize` is less than or equal to [    `subgroupSize`](devsandqueues.html#limits-subgroupSize).
@@ -1909,8 +1933,8 @@ queues support `VK_QUEUE_GRAPHICS_BIT` or
  `maxSubgroupSize` is the
 maximum subgroup size supported by this device.
 `maxSubgroupSize` is at least one if any of the physical device’s
-queues support `VK_QUEUE_GRAPHICS_BIT` or
-`VK_QUEUE_COMPUTE_BIT`.
+queues support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) or
+[VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits).
 `maxSubgroupSize` is a power-of-two.
 `maxSubgroupSize` is greater than or equal to `minSubgroupSize`.
 `maxSubgroupSize` is greater than or equal to [    `subgroupSize`](devsandqueues.html#limits-subgroupSize).
@@ -1931,7 +1955,7 @@ If the `VkPhysicalDeviceSubgroupSizeControlProperties` structure is included in 
 corresponding implementation-dependent property.
 
 If [VkPhysicalDeviceSubgroupProperties](#VkPhysicalDeviceSubgroupProperties)::`supportedOperations`
-includes [`VK_SUBGROUP_FEATURE_QUAD_BIT`](#features-subgroup-quad),
+includes [](#features-subgroup-quad)[VK_SUBGROUP_FEATURE_QUAD_BIT](#VkSubgroupFeatureFlagBits),
 `minSubgroupSize` **must** be greater than or equal to 4.
 
 Valid Usage (Implicit)
@@ -1939,7 +1963,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceSubgroupSizeControlProperties-sType-sType) VUID-VkPhysicalDeviceSubgroupSizeControlProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT` structure is
 defined as:
@@ -1978,25 +2002,25 @@ operations **can** vary per-attachment.
 
 `advancedBlendNonPremultipliedSrcColor` specifies whether the source
 color **can** be treated as non-premultiplied.
-If this is `VK_FALSE`, then
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then
 [VkPipelineColorBlendAdvancedStateCreateInfoEXT](framebuffer.html#VkPipelineColorBlendAdvancedStateCreateInfoEXT)::`srcPremultiplied`
-**must** be `VK_TRUE`.
+**must** be [VK_TRUE](fundamentals.html#VK_TRUE).
 
 * 
 
 `advancedBlendNonPremultipliedDstColor` specifies whether the
 destination color **can** be treated as non-premultiplied.
-If this is `VK_FALSE`, then
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then
 [VkPipelineColorBlendAdvancedStateCreateInfoEXT](framebuffer.html#VkPipelineColorBlendAdvancedStateCreateInfoEXT)::`dstPremultiplied`
-**must** be `VK_TRUE`.
+**must** be [VK_TRUE](fundamentals.html#VK_TRUE).
 
 * 
 
 `advancedBlendCorrelatedOverlap` specifies whether the overlap mode
 **can** be treated as correlated.
-If this is `VK_FALSE`, then
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then
 [VkPipelineColorBlendAdvancedStateCreateInfoEXT](framebuffer.html#VkPipelineColorBlendAdvancedStateCreateInfoEXT)::`blendOverlap`
-**must** be `VK_BLEND_OVERLAP_UNCORRELATED_EXT`.
+**must** be [VK_BLEND_OVERLAP_UNCORRELATED_EXT](framebuffer.html#VkBlendOverlapEXT).
 
 * 
  `advancedBlendAllOperations`
@@ -2013,7 +2037,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT` structure is
 defined as:
@@ -2047,7 +2071,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceVertexAttributeDivisorProperties` structure is
 defined as:
@@ -2094,7 +2118,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVertexAttributeDivisorProperties-sType-sType) VUID-VkPhysicalDeviceVertexAttributeDivisorProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceSamplerFilterMinmaxProperties` structure is defined
 as:
@@ -2134,60 +2158,60 @@ If the `VkPhysicalDeviceSamplerFilterMinmaxProperties` structure is included in 
 [vkGetPhysicalDeviceProperties2](devsandqueues.html#vkGetPhysicalDeviceProperties2), it is filled in with each
 corresponding implementation-dependent property.
 
-If `filterMinmaxSingleComponentFormats` is `VK_TRUE`, the following
+If `filterMinmaxSingleComponentFormats` is [VK_TRUE](fundamentals.html#VK_TRUE), the following
 formats **must** support the
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT` feature with
-`VK_IMAGE_TILING_OPTIMAL`, if they support
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT`:
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT](formats.html#VkFormatFeatureFlagBits) feature with
+[VK_IMAGE_TILING_OPTIMAL](resources.html#VkImageTiling), if they support
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](formats.html#VkFormatFeatureFlagBits):
 
 * 
-`VK_FORMAT_R8_UNORM`
+[VK_FORMAT_R8_UNORM](formats.html#VkFormat)
 
 * 
-`VK_FORMAT_R8_SNORM`
+[VK_FORMAT_R8_SNORM](formats.html#VkFormat)
 
 * 
-`VK_FORMAT_R16_UNORM`
+[VK_FORMAT_R16_UNORM](formats.html#VkFormat)
 
 * 
-`VK_FORMAT_R16_SNORM`
+[VK_FORMAT_R16_SNORM](formats.html#VkFormat)
 
 * 
-`VK_FORMAT_R16_SFLOAT`
+[VK_FORMAT_R16_SFLOAT](formats.html#VkFormat)
 
 * 
-`VK_FORMAT_R32_SFLOAT`
+[VK_FORMAT_R32_SFLOAT](formats.html#VkFormat)
 
 * 
-`VK_FORMAT_D16_UNORM`
+[VK_FORMAT_D16_UNORM](formats.html#VkFormat)
 
 * 
-`VK_FORMAT_X8_D24_UNORM_PACK32`
+[VK_FORMAT_X8_D24_UNORM_PACK32](formats.html#VkFormat)
 
 * 
-`VK_FORMAT_D32_SFLOAT`
+[VK_FORMAT_D32_SFLOAT](formats.html#VkFormat)
 
 * 
-`VK_FORMAT_D16_UNORM_S8_UINT`
+[VK_FORMAT_D16_UNORM_S8_UINT](formats.html#VkFormat)
 
 * 
-`VK_FORMAT_D24_UNORM_S8_UINT`
+[VK_FORMAT_D24_UNORM_S8_UINT](formats.html#VkFormat)
 
 * 
-`VK_FORMAT_D32_SFLOAT_S8_UINT`
+[VK_FORMAT_D32_SFLOAT_S8_UINT](formats.html#VkFormat)
 
 If the format is a depth/stencil format, this bit only specifies that the
 depth aspect (not the stencil aspect) of an image of this format supports
 min/max filtering, and that min/max filtering of the depth aspect is
 supported when depth compare is disabled in the sampler.
 
-If `filterMinmaxImageComponentMapping` is `VK_FALSE` the component
+If `filterMinmaxImageComponentMapping` is [VK_FALSE](fundamentals.html#VK_FALSE) the component
 mapping of the image view used with min/max filtering **must** have been
 created with the `r` component set to the
 [identity swizzle](resources.html#resources-image-views-identity-mappings).
 Only the `r` component of the sampled image value is defined and the
 other component values are **undefined**.
-If `filterMinmaxImageComponentMapping` is `VK_TRUE` this restriction
+If `filterMinmaxImageComponentMapping` is [VK_TRUE](fundamentals.html#VK_TRUE) this restriction
 does not apply and image component mapping works as normal.
 
 Valid Usage (Implicit)
@@ -2195,7 +2219,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceSamplerFilterMinmaxProperties-sType-sType) VUID-VkPhysicalDeviceSamplerFilterMinmaxProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceProtectedMemoryProperties` structure is defined as:
 
@@ -2219,10 +2243,10 @@ specifies how an implementation behaves when an application attempts to
 write to unprotected memory in a protected queue operation, read from
 protected memory in an unprotected queue operation, or perform a query
 in a protected queue operation.
-If this limit is `VK_TRUE`, such writes will be discarded or have
+If this limit is [VK_TRUE](fundamentals.html#VK_TRUE), such writes will be discarded or have
 **undefined** values written, reads and queries will return **undefined**
 values.
-If this limit is `VK_FALSE`, applications **must** not perform these
+If this limit is [VK_FALSE](fundamentals.html#VK_FALSE), applications **must** not perform these
 operations.
 See [Protected Memory Access Rules](memory.html#memory-protected-access-rules) for more information.
 
@@ -2236,7 +2260,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceProtectedMemoryProperties-sType-sType) VUID-VkPhysicalDeviceProtectedMemoryProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceMaintenance3Properties` structure is defined as:
 
@@ -2273,7 +2297,7 @@ limit is supported using [vkGetDescriptorSetLayoutSupport](descriptorsets.html#v
 `maxMemoryAllocationSize` is the maximum size of a memory allocation
 that **can** be created, even if there is more space available in the heap.
 If [VkMemoryAllocateInfo](memory.html#VkMemoryAllocateInfo)::`allocationSize` is larger the error
-`VK_ERROR_OUT_OF_DEVICE_MEMORY` **may** be returned.
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult) **may** be returned.
 
 If the `VkPhysicalDeviceMaintenance3Properties` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2) structure passed to
@@ -2285,7 +2309,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMaintenance3Properties-sType-sType) VUID-VkPhysicalDeviceMaintenance3Properties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceMaintenance4Properties` structure is defined as:
 
@@ -2321,7 +2345,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMaintenance4Properties-sType-sType) VUID-VkPhysicalDeviceMaintenance4Properties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceMaintenance5Properties` structure is defined as:
 
@@ -2363,13 +2387,13 @@ execution mode.
 
 * 
 `depthStencilSwizzleOneSupport` is a boolean indicating that
-depth/stencil texturing operations with `VK_COMPONENT_SWIZZLE_ONE`
+depth/stencil texturing operations with [VK_COMPONENT_SWIZZLE_ONE](resources.html#VkComponentSwizzle)
 have defined behavior.
 
 * 
 `polygonModePointSize` is a boolean value indicating whether the
 point size of the final rasterization of polygons with
-`VK_POLYGON_MODE_POINT` is controlled by `PointSize`.
+[VK_POLYGON_MODE_POINT](primsrast.html#VkPolygonMode) is controlled by `PointSize`.
 
 * 
 `nonStrictSinglePixelWideLinesUseParallelogram` is a boolean value
@@ -2391,7 +2415,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMaintenance5Properties-sType-sType) VUID-VkPhysicalDeviceMaintenance5Properties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceMaintenance6Properties` structure is defined as:
 
@@ -2418,7 +2442,7 @@ structure.
 * 
 `blockTexelViewCompatibleMultipleLayers` is a boolean value
 indicating that an implementation supports creating image views with
-`VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT` where the
+[VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) where the
 `layerCount` member of `subresourceRange` is greater than `1`.
 
 * 
@@ -2442,7 +2466,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMaintenance6Properties-sType-sType) VUID-VkPhysicalDeviceMaintenance6Properties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceMaintenance7PropertiesKHR` structure is defined as:
 
@@ -2472,10 +2496,10 @@ structure.
 `robustFragmentShadingRateAttachmentAccess` indicates whether the
 scaled size of a fragment shading rate attachment **can** be less than the
 size of the render area.
-If `robustFragmentShadingRateAttachmentAccess` is `VK_FALSE`,
+If `robustFragmentShadingRateAttachmentAccess` is [VK_FALSE](fundamentals.html#VK_FALSE),
 the size of the attachment multiplied by the texel size **must** be greater
 than or equal to the size of the render area.
-If it is `VK_TRUE` and the fragment shading rate attachment was
+If it is [VK_TRUE](fundamentals.html#VK_TRUE) and the fragment shading rate attachment was
 created with [VkImageSubresourceRange](resources.html#VkImageSubresourceRange)::`baseMipLevel` equal to
 0, the scaled size **can** be smaller than the render area, with missing
 shading rates defined by [out    of bounds behavior](shaders.html#shaders-execution-memory-access-bounds).
@@ -2485,9 +2509,9 @@ shading rates defined by [out    of bounds behavior](shaders.html#shaders-execut
 `separateDepthStencilAttachmentAccess` indicates support for writing
 to one aspect of a depth/stencil attachment without performing
 read-modify-write operations on the other aspect.
-If this property is `VK_TRUE`, writes to one aspect **must** not result
+If this property is [VK_TRUE](fundamentals.html#VK_TRUE), writes to one aspect **must** not result
 in read-modify-write operations on the other aspect.
-If `VK_FALSE`, writes to one aspect **may** result in writes to the
+If [VK_FALSE](fundamentals.html#VK_FALSE), writes to one aspect **may** result in writes to the
 other aspect as defined by [render pass load    operations](renderpass.html#renderpass-load-operations), [render pass store    operations](renderpass.html#renderpass-store-operations) and [render pass resolve    operations](renderpass.html#renderpass-resolve-operations).
 
 * 
@@ -2496,10 +2520,10 @@ other aspect as defined by [render pass load    operations](renderpass.html#rend
 count of dynamic uniform buffers that **can** be included in a pipeline
 layout.
 Descriptors with a type of
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` count against this
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType) count against this
 limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 See [Dynamic Uniform Buffer](descriptorsets.html#descriptorsets-uniformbufferdynamic).
 
@@ -2509,10 +2533,10 @@ See [Dynamic Uniform Buffer](descriptorsets.html#descriptorsets-uniformbufferdyn
 count of dynamic storage buffers that **can** be included in a pipeline
 layout.
 Descriptors with a type of
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` count against this
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType) count against this
 limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 See [Dynamic Storage Buffer](descriptorsets.html#descriptorsets-storagebufferdynamic).
 
@@ -2522,11 +2546,11 @@ See [Dynamic Storage Buffer](descriptorsets.html#descriptorsets-storagebufferdyn
 dynamic uniform buffers and storage buffers that **can** be included in a
 pipeline layout.
 Descriptors with a type of
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` count against this
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType) count against this
 limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 
 * 
@@ -2534,7 +2558,7 @@ count against this limit.
 `maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic` is
 similar to `maxDescriptorSetTotalUniformBuffersDynamic` but counts
 descriptors from descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -2542,7 +2566,7 @@ set.
 `maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic` is
 similar to `maxDescriptorSetTotalStorageBuffersDynamic` but counts
 descriptors from descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -2550,14 +2574,14 @@ set.
 `maxDescriptorSetUpdateAfterBindTotalBuffersDynamic` is similar to
 `maxDescriptorSetTotalBuffersDynamic` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 While an application **can** allocate dynamic storage buffer descriptors
 from a pool created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits),
 bindings for these descriptors **must** not be present in any descriptor
 set layout that includes bindings created with
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`.
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](descriptorsets.html#VkDescriptorBindingFlagBitsEXT).
 
 If the `VkPhysicalDeviceMaintenance7PropertiesKHR` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2) structure passed to
@@ -2569,7 +2593,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMaintenance7PropertiesKHR-sType-sType) VUID-VkPhysicalDeviceMaintenance7PropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceLayeredApiPropertiesListKHR` structure is defined
 as:
@@ -2605,8 +2629,8 @@ that are underneath the top-most Vulkan physical device (i.e. the one
 returned by [vkGetPhysicalDeviceProperties2](devsandqueues.html#vkGetPhysicalDeviceProperties2)) is returned in
 `layeredApiCount`.
 Otherwise, `layeredApiCount` **must** be set by the application to the
-number of elements in the `pLayeredApis` array, and on return the
-variable is overwritten with the number of values actually written to
+number of elements in the `pLayeredApis` array, and on return is
+overwritten with the number of values actually written to
 `pLayeredApis`.
 If the value of `layeredApiCount` is less than the number of layered
 implementations underneath the Vulkan physical device, at most
@@ -2631,7 +2655,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceLayeredApiPropertiesListKHR-sType-sType) VUID-VkPhysicalDeviceLayeredApiPropertiesListKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPhysicalDeviceLayeredApiPropertiesListKHR-pLayeredApis-parameter) VUID-VkPhysicalDeviceLayeredApiPropertiesListKHR-pLayeredApis-parameter
@@ -2670,11 +2694,11 @@ among devices available from the vendor.
 API implemented by the layered implementation.
 
 * 
-`deviceName` is an array of `VK_MAX_PHYSICAL_DEVICE_NAME_SIZE`
+`deviceName` is an array of [VK_MAX_PHYSICAL_DEVICE_NAME_SIZE](devsandqueues.html#VK_MAX_PHYSICAL_DEVICE_NAME_SIZE)
 `char` containing a null-terminated UTF-8 string which is the name of
 the device.
 
-If `layeredAPI` is `VK_PHYSICAL_DEVICE_LAYERED_API_VULKAN_KHR`,
+If `layeredAPI` is [VK_PHYSICAL_DEVICE_LAYERED_API_VULKAN_KHR](#VkPhysicalDeviceLayeredApiKHR),
 additional Vulkan-specific information can be queried by including the
 [VkPhysicalDeviceLayeredApiVulkanPropertiesKHR](#VkPhysicalDeviceLayeredApiVulkanPropertiesKHR) structure in the
 `pNext` chain.
@@ -2686,7 +2710,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceLayeredApiPropertiesKHR-sType-sType) VUID-VkPhysicalDeviceLayeredApiPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPhysicalDeviceLayeredApiPropertiesKHR-pNext-pNext) VUID-VkPhysicalDeviceLayeredApiPropertiesKHR-pNext-pNext
@@ -2712,23 +2736,23 @@ typedef enum VkPhysicalDeviceLayeredApiKHR {
 } VkPhysicalDeviceLayeredApiKHR;
 
 * 
-`VK_PHYSICAL_DEVICE_LAYERED_API_VULKAN_KHR` - the device implements
+[VK_PHYSICAL_DEVICE_LAYERED_API_VULKAN_KHR](#VkPhysicalDeviceLayeredApiKHR) - the device implements
 the Vulkan API.
 
 * 
-`VK_PHYSICAL_DEVICE_LAYERED_API_D3D12_KHR` - the device implements
+[VK_PHYSICAL_DEVICE_LAYERED_API_D3D12_KHR](#VkPhysicalDeviceLayeredApiKHR) - the device implements
 the D3D12 API.
 
 * 
-`VK_PHYSICAL_DEVICE_LAYERED_API_METAL_KHR` - the device implements
+[VK_PHYSICAL_DEVICE_LAYERED_API_METAL_KHR](#VkPhysicalDeviceLayeredApiKHR) - the device implements
 the Metal API.
 
 * 
-`VK_PHYSICAL_DEVICE_LAYERED_API_OPENGL_KHR` - the device implements
+[VK_PHYSICAL_DEVICE_LAYERED_API_OPENGL_KHR](#VkPhysicalDeviceLayeredApiKHR) - the device implements
 the OpenGL API.
 
 * 
-`VK_PHYSICAL_DEVICE_LAYERED_API_OPENGLES_KHR` - the device
+[VK_PHYSICAL_DEVICE_LAYERED_API_OPENGLES_KHR](#VkPhysicalDeviceLayeredApiKHR) - the device
 implements the OpenGL ES API.
 
 The `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR` structure is defined
@@ -2770,7 +2794,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceLayeredApiVulkanPropertiesKHR-sType-sType) VUID-VkPhysicalDeviceLayeredApiVulkanPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceMaintenance9PropertiesKHR` structure is defined as:
 
@@ -2818,7 +2842,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMaintenance9PropertiesKHR-sType-sType) VUID-VkPhysicalDeviceMaintenance9PropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 The possible values returned by the implementation when the vertex shader
 reads an unbound vertex attribute are:
@@ -2830,11 +2854,11 @@ typedef enum VkDefaultVertexAttributeValueKHR {
 } VkDefaultVertexAttributeValueKHR;
 
 * 
-`VK_DEFAULT_VERTEX_ATTRIBUTE_VALUE_ZERO_ZERO_ZERO_ZERO_KHR` - the
+[VK_DEFAULT_VERTEX_ATTRIBUTE_VALUE_ZERO_ZERO_ZERO_ZERO_KHR](#VkDefaultVertexAttributeValueKHR) - the
 value read for an unbound vertex attribute is (0,0,0,0).
 
 * 
-`VK_DEFAULT_VERTEX_ATTRIBUTE_VALUE_ZERO_ZERO_ZERO_ONE_KHR` - the
+[VK_DEFAULT_VERTEX_ATTRIBUTE_VALUE_ZERO_ZERO_ZERO_ONE_KHR](#VkDefaultVertexAttributeValueKHR) - the
 value read for an unbound vertex attribute is (0,0,0,1).
 
 The `VkPhysicalDeviceMaintenance10PropertiesKHR` structure is defined
@@ -2859,11 +2883,11 @@ structure.
 * 
  `rgba4OpaqueBlackSwizzled`
 indicates whether correct swizzling is applied to the opaque black
-border color when using either the `VK_FORMAT_B4G4R4A4_UNORM_PACK16`
-or `VK_FORMAT_R4G4B4A4_UNORM_PACK16` format.
-If it is `VK_TRUE`, the implementation will correctly produce an
+border color when using either the [VK_FORMAT_B4G4R4A4_UNORM_PACK16](formats.html#VkFormat)
+or [VK_FORMAT_R4G4B4A4_UNORM_PACK16](formats.html#VkFormat) format.
+If it is [VK_TRUE](fundamentals.html#VK_TRUE), the implementation will correctly produce an
 opaque black border color with these formats.
-If it is `VK_FALSE`, the implementation **may** swap the first channel
+If it is [VK_FALSE](fundamentals.html#VK_FALSE), the implementation **may** swap the first channel
 with the alpha channel for the border color when sampling.
 
 * 
@@ -2873,9 +2897,9 @@ resolving a multi-sampled sRGB format to single-sampled sRGB by a
 weighted average converts the samples to linear before averaging.
 This applies to both attachment resolves in a render pass and standalone
 resolve commands.
-If `VK_TRUE`, implementation always converts to linear before
+If [VK_TRUE](fundamentals.html#VK_TRUE), implementation always converts to linear before
 averaging unless overridden.
-If `VK_FALSE`, implementation never converts to linear before
+If [VK_FALSE](fundamentals.html#VK_FALSE), implementation never converts to linear before
 averaging unless overridden.
 
 * 
@@ -2886,7 +2910,7 @@ the implementation supports overriding the default behavior in
 render passes and [vkCmdResolveImage2](copies.html#vkCmdResolveImage2).
 
 Implementations supporting [`maintenance10`](features.html#features-maintenance10)
-**should** set `resolveSrgbFormatAppliesTransferFunction` to `VK_TRUE`.
+**should** set `resolveSrgbFormatAppliesTransferFunction` to [VK_TRUE](fundamentals.html#VK_TRUE).
 
 If the `VkPhysicalDeviceMaintenance10PropertiesKHR` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2) structure passed to
@@ -2898,7 +2922,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMaintenance10PropertiesKHR-sType-sType) VUID-VkPhysicalDeviceMaintenance10PropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceMeshShaderPropertiesNV` structure is defined as:
 
@@ -3023,7 +3047,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMeshShaderPropertiesNV-sType-sType) VUID-VkPhysicalDeviceMeshShaderPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceMeshShaderPropertiesEXT` structure is defined as:
 
@@ -3073,14 +3097,13 @@ structure.
 
 * 
  `maxTaskWorkGroupTotalCount`
-is the maximum number of total local workgroups that **can** be launched by
-a single mesh tasks drawing command.
-See [Programmable Mesh Shading](drawing.html#drawing-mesh-shading).
+is the maximum number of local workgroups that **can** be launched for a
+task shader by a [mesh tasks drawing command](drawing.html#drawing-mesh-shading).
 
 * 
  `maxTaskWorkGroupCount`[3] is the
-maximum number of local workgroups that **can** be launched by a single
-mesh tasks drawing command.
+maximum number of local workgroups that **can** be launched for a task
+shader in each dimension by a [mesh tasks drawing    command](drawing.html#drawing-mesh-shading).
 These three values represent the maximum number of local workgroups for
 the X, Y, and Z dimensions, respectively.
 The workgroup count parameters to the drawing commands **must** be less
@@ -3100,7 +3123,7 @@ or `LocalSizeId`
 
 * 
  `maxTaskWorkGroupSize`[3] is the
-    maximum size of a local task workgroup, per dimension.
+    maximum size of a local workgroup for a task shader in each dimension.
     These three values represent the maximum local workgroup size in the X,
     Y, and Z dimensions, respectively.
     The `x`, `y`, and `z` sizes, as specified by the
@@ -3131,13 +3154,15 @@ modules in the task shader stage.
 
 * 
  `maxMeshWorkGroupTotalCount`
-is the maximum number of local output tasks a single task shader
-workgroup can emit.
+is the maximum number of local workgroups that **can** be launched for a
+mesh shader, either directly by a [mesh tasks    drawing command](drawing.html#drawing-mesh-shading), or emitted by a single task shader workgroup.
 
 * 
  `maxMeshWorkGroupCount`[3] is the
-maximum number of local output tasks a single task shader workgroup can
-emit, per dimension.
+maximum number of local workgroups that **can** be launched for a mesh
+shader in each dimension, either directly by a
+[mesh tasks drawing command](drawing.html#drawing-mesh-shading), or emitted by a
+single task shader workgroup.
 These three values represent the maximum number of local output tasks
 for the X, Y, and Z dimensions, respectively.
 The workgroup count parameters to the `OpEmitMeshTasksEXT` **must** be
@@ -3157,7 +3182,7 @@ or `LocalSizeId`
 
 * 
  `maxMeshWorkGroupSize`[3] is the
-    maximum size of a local mesh workgroup, per dimension.
+    maximum size of a local workgroup for a mesh shader in each dimension.
     These three values represent the maximum local workgroup size in the X,
     Y, and Z dimensions, respectively.
     The `x`, `y`, and `z` sizes, as specified by the
@@ -3288,7 +3313,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMeshShaderPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceMeshShaderPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceDescriptorIndexingProperties` structure is defined
 as:
@@ -3338,7 +3363,7 @@ structure.
 `maxUpdateAfterBindDescriptorsInAllPools` is the maximum number of
 descriptors (summed over all descriptor types) that **can** be created
 across all pools that are created with the
-`VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT` bit set.
+[VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](descriptorsets.html#VkDescriptorPoolCreateFlagBits) bit set.
 Pool creation **may** fail when this limit is exceeded, or when the space
 this limit represents is unable to satisfy a pool creation due to
 fragmentation.
@@ -3348,7 +3373,7 @@ fragmentation.
 `shaderUniformBufferArrayNonUniformIndexingNative` is a boolean
 value indicating whether uniform buffer descriptors natively support
 non-uniform indexing.
-If this is `VK_FALSE`, then a single dynamic instance of an
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then a single dynamic instance of an
 instruction that non-uniformly indexes an array of uniform buffers **may**
 execute multiple times in order to access all the descriptors.
 
@@ -3357,7 +3382,7 @@ execute multiple times in order to access all the descriptors.
 `shaderSampledImageArrayNonUniformIndexingNative` is a boolean value
 indicating whether sampler and image descriptors natively support
 non-uniform indexing.
-If this is `VK_FALSE`, then a single dynamic instance of an
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then a single dynamic instance of an
 instruction that non-uniformly indexes an array of samplers or images
 **may** execute multiple times in order to access all the descriptors.
 
@@ -3366,7 +3391,7 @@ instruction that non-uniformly indexes an array of samplers or images
 `shaderStorageBufferArrayNonUniformIndexingNative` is a boolean
 value indicating whether storage buffer descriptors natively support
 non-uniform indexing.
-If this is `VK_FALSE`, then a single dynamic instance of an
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then a single dynamic instance of an
 instruction that non-uniformly indexes an array of storage buffers **may**
 execute multiple times in order to access all the descriptors.
 
@@ -3375,7 +3400,7 @@ execute multiple times in order to access all the descriptors.
 `shaderStorageImageArrayNonUniformIndexingNative` is a boolean value
 indicating whether storage image descriptors natively support
 non-uniform indexing.
-If this is `VK_FALSE`, then a single dynamic instance of an
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then a single dynamic instance of an
 instruction that non-uniformly indexes an array of storage images **may**
 execute multiple times in order to access all the descriptors.
 
@@ -3384,7 +3409,7 @@ execute multiple times in order to access all the descriptors.
 `shaderInputAttachmentArrayNonUniformIndexingNative` is a boolean
 value indicating whether input attachment descriptors natively support
 non-uniform indexing.
-If this is `VK_FALSE`, then a single dynamic instance of an
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then a single dynamic instance of an
 instruction that non-uniformly indexes an array of input attachments
 **may** execute multiple times in order to access all the descriptors.
 
@@ -3397,9 +3422,9 @@ be enabled on a device simultaneously with
 `descriptorBindingStorageBufferUpdateAfterBind`,
 `descriptorBindingUniformTexelBufferUpdateAfterBind`, and/or
 `descriptorBindingStorageTexelBufferUpdateAfterBind`.
-If this is `VK_FALSE`, then either `robustBufferAccess` **must** be
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then either `robustBufferAccess` **must** be
 disabled or all of these update-after-bind features **must** be disabled.
-Similarly, if this property is `VK_FALSE`, robustness **must** not be
+Similarly, if this property is [VK_FALSE](fundamentals.html#VK_FALSE), robustness **must** not be
 enabled through the [VkPipelineRobustnessCreateInfo](pipelines.html#VkPipelineRobustnessCreateInfo) mechanism.
 
 * 
@@ -3415,7 +3440,7 @@ See [Derivative Image    Operations](textures.html#textures-derivative-image-ope
 `maxPerStageDescriptorUpdateAfterBindSamplers` is similar to
 `maxPerStageDescriptorSamplers` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -3423,7 +3448,7 @@ set.
 `maxPerStageDescriptorUpdateAfterBindUniformBuffers` is similar to
 `maxPerStageDescriptorUniformBuffers` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -3431,7 +3456,7 @@ set.
 `maxPerStageDescriptorUpdateAfterBindStorageBuffers` is similar to
 `maxPerStageDescriptorStorageBuffers` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -3439,7 +3464,7 @@ set.
 `maxPerStageDescriptorUpdateAfterBindSampledImages` is similar to
 `maxPerStageDescriptorSampledImages` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -3447,7 +3472,7 @@ set.
 `maxPerStageDescriptorUpdateAfterBindStorageImages` is similar to
 `maxPerStageDescriptorStorageImages` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -3455,7 +3480,7 @@ set.
 `maxPerStageDescriptorUpdateAfterBindInputAttachments` is similar to
 `maxPerStageDescriptorInputAttachments` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -3463,7 +3488,7 @@ set.
 `maxPerStageUpdateAfterBindResources` is similar to
 `maxPerStageResources` but counts descriptors from descriptor sets
 created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -3471,7 +3496,7 @@ set.
 `maxDescriptorSetUpdateAfterBindSamplers` is similar to
 `maxDescriptorSetSamplers` but counts descriptors from descriptor
 sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -3479,7 +3504,7 @@ set.
 `maxDescriptorSetUpdateAfterBindUniformBuffers` is similar to
 `maxDescriptorSetUniformBuffers` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -3487,21 +3512,21 @@ set.
 `maxDescriptorSetUpdateAfterBindUniformBuffersDynamic` is similar to
 `maxDescriptorSetUniformBuffersDynamic` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 While an application **can** allocate dynamic uniform buffer descriptors
 from a pool created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits),
 bindings for these descriptors **must** not be present in any descriptor
 set layout that includes bindings created with
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`.
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](descriptorsets.html#VkDescriptorBindingFlagBitsEXT).
 
 * 
 
 `maxDescriptorSetUpdateAfterBindStorageBuffers` is similar to
 `maxDescriptorSetStorageBuffers` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -3509,21 +3534,21 @@ set.
 `maxDescriptorSetUpdateAfterBindStorageBuffersDynamic` is similar to
 `maxDescriptorSetStorageBuffersDynamic` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 While an application **can** allocate dynamic storage buffer descriptors
 from a pool created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits),
 bindings for these descriptors **must** not be present in any descriptor
 set layout that includes bindings created with
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`.
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](descriptorsets.html#VkDescriptorBindingFlagBitsEXT).
 
 * 
 
 `maxDescriptorSetUpdateAfterBindSampledImages` is similar to
 `maxDescriptorSetSampledImages` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -3531,7 +3556,7 @@ set.
 `maxDescriptorSetUpdateAfterBindStorageImages` is similar to
 `maxDescriptorSetStorageImages` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -3539,7 +3564,7 @@ set.
 `maxDescriptorSetUpdateAfterBindInputAttachments` is similar to
 `maxDescriptorSetInputAttachments` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 If the `VkPhysicalDeviceDescriptorIndexingProperties` structure is included in the `pNext` chain of the
@@ -3552,7 +3577,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDescriptorIndexingProperties-sType-sType) VUID-VkPhysicalDeviceDescriptorIndexingProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceInlineUniformBlockProperties` structure is defined
 as:
@@ -3590,9 +3615,9 @@ structure.
 inline uniform block bindings that **can** be accessible to a single shader
 stage in a pipeline layout.
 Descriptor bindings with a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` count against this limit.
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](descriptorsets.html#VkDescriptorType) count against this limit.
 Only descriptor bindings in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 
 * 
@@ -3600,7 +3625,7 @@ count against this limit.
 `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks`
 is similar to `maxPerStageDescriptorInlineUniformBlocks` but counts
 descriptor bindings from descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -3610,9 +3635,9 @@ inline uniform block bindings that **can** be included in descriptor
 bindings in a pipeline layout across all pipeline shader stages and
 descriptor set numbers.
 Descriptor bindings with a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` count against this limit.
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](descriptorsets.html#VkDescriptorType) count against this limit.
 Only descriptor bindings in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 
 * 
@@ -3620,7 +3645,7 @@ count against this limit.
 `maxDescriptorSetUpdateAfterBindInlineUniformBlocks`
 is similar to `maxDescriptorSetInlineUniformBlocks` but counts
 descriptor bindings from descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 If the `VkPhysicalDeviceInlineUniformBlockProperties` structure is included in the `pNext` chain of the
@@ -3633,7 +3658,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceInlineUniformBlockProperties-sType-sType) VUID-VkPhysicalDeviceInlineUniformBlockProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceConservativeRasterizationPropertiesEXT` structure
 is defined as:
@@ -3692,27 +3717,27 @@ representable non-zero value in the screen space pixel fixed-point grid.
 
 * 
  `primitiveUnderestimation` is
-`VK_TRUE` if the implementation supports the
-`VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT` conservative
+[VK_TRUE](fundamentals.html#VK_TRUE) if the implementation supports the
+[VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT](primsrast.html#VkConservativeRasterizationModeEXT) conservative
 rasterization mode in addition to
-`VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT`.
+[VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT](primsrast.html#VkConservativeRasterizationModeEXT).
 Otherwise the implementation only supports
-`VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT`.
+[VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT](primsrast.html#VkConservativeRasterizationModeEXT).
 
 * 
 
-`conservativePointAndLineRasterization` is `VK_TRUE` if the
+`conservativePointAndLineRasterization` is [VK_TRUE](fundamentals.html#VK_TRUE) if the
 implementation supports conservative rasterization of point and line
 primitives as well as triangle primitives.
 Otherwise the implementation only supports triangle primitives.
 
 * 
 
-`degenerateTrianglesRasterized` is `VK_FALSE` if the
+`degenerateTrianglesRasterized` is [VK_FALSE](fundamentals.html#VK_FALSE) if the
 implementation culls primitives generated from triangles that become
 zero area after they are quantized to the fixed-point rasterization
 pixel grid.
-`degenerateTrianglesRasterized` is `VK_TRUE` if these primitives
+`degenerateTrianglesRasterized` is [VK_TRUE](fundamentals.html#VK_TRUE) if these primitives
 are not culled and the provoking vertex attributes and depth value are
 used for the fragments.
 The primitive area calculation is done on the primitive generated from
@@ -3722,15 +3747,15 @@ backface culling if desired.
 
 * 
  `degenerateLinesRasterized` is
-`VK_FALSE` if the implementation culls lines that become zero length
+[VK_FALSE](fundamentals.html#VK_FALSE) if the implementation culls lines that become zero length
 after they are quantized to the fixed-point rasterization pixel grid.
-`degenerateLinesRasterized` is `VK_TRUE` if zero length lines
+`degenerateLinesRasterized` is [VK_TRUE](fundamentals.html#VK_TRUE) if zero length lines
 are not culled and the provoking vertex attributes and depth value are
 used for the fragments.
 
 * 
 
-`fullyCoveredFragmentShaderInputVariable` is `VK_TRUE` if the
+`fullyCoveredFragmentShaderInputVariable` is [VK_TRUE](fundamentals.html#VK_TRUE) if the
 implementation supports the SPIR-V builtin fragment shader input
 variable `FullyCoveredEXT` specifying that conservative rasterization
 is enabled and the fragment area is fully covered by the generating
@@ -3738,7 +3763,7 @@ primitive.
 
 * 
 
-`conservativeRasterizationPostDepthCoverage` is `VK_TRUE` if the
+`conservativeRasterizationPostDepthCoverage` is [VK_TRUE](fundamentals.html#VK_TRUE) if the
 implementation supports conservative rasterization with the
 `PostDepthCoverage` execution mode enabled.
 Otherwise the `PostDepthCoverage` execution mode **must** not be used
@@ -3754,7 +3779,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceConservativeRasterizationPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceConservativeRasterizationPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceFragmentDensityMapPropertiesEXT` structure is
 defined as:
@@ -3798,7 +3823,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFragmentDensityMapPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceFragmentDensityMapPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT` structure is
 defined as:
@@ -3829,9 +3854,9 @@ resampled to the fragment density of the render pass
 
 `subsampledCoarseReconstructionEarlyAccess` specifies if performing
 image data read with samplers created with `flags` containing
-`VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT` in
+[VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT](samplers.html#VkSamplerCreateFlagBits) in
 fragment shader will trigger additional reads during
-`VK_PIPELINE_STAGE_VERTEX_SHADER_BIT`
+[VK_PIPELINE_STAGE_VERTEX_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
  `maxSubsampledArrayLayers` is
@@ -3853,7 +3878,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFragmentDensityMap2PropertiesEXT-sType-sType) VUID-VkPhysicalDeviceFragmentDensityMap2PropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT` structure is
 defined as:
@@ -3891,7 +3916,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE` structure
 is defined as:
@@ -3925,7 +3950,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE-sType-sType) VUID-VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_PROPERTIES_VALVE`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_PROPERTIES_VALVE](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceTileMemoryHeapPropertiesQCOM` structure is defined
 as:
@@ -3964,7 +3989,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceTileMemoryHeapPropertiesQCOM-sType-sType) VUID-VkPhysicalDeviceTileMemoryHeapPropertiesQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_PROPERTIES_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_PROPERTIES_QCOM](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceShaderCorePropertiesAMD` structure is defined as:
 
@@ -4077,7 +4102,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderCorePropertiesAMD-sType-sType) VUID-VkPhysicalDeviceShaderCorePropertiesAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceShaderCoreProperties2AMD` structure is defined as:
 
@@ -4116,7 +4141,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderCoreProperties2AMD-sType-sType) VUID-VkPhysicalDeviceShaderCoreProperties2AMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_2_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_2_AMD](fundamentals.html#VkStructureType)
 
 Bits for this type **may** be defined by future extensions, or new versions of
 the `[VK_AMD_shader_core_properties2](../appendices/extensions.html#VK_AMD_shader_core_properties2)` extension.
@@ -4162,7 +4187,7 @@ structure.
 `supportedDepthResolveModes` is a bitmask of
 [VkResolveModeFlagBits](renderpass.html#VkResolveModeFlagBits) indicating the set of supported depth
 resolve modes.
-`VK_RESOLVE_MODE_SAMPLE_ZERO_BIT` **must** be included in the set but
+[VK_RESOLVE_MODE_SAMPLE_ZERO_BIT](renderpass.html#VkResolveModeFlagBitsKHR) **must** be included in the set but
 implementations **may** support additional modes.
 
 * 
@@ -4170,23 +4195,23 @@ implementations **may** support additional modes.
 `supportedStencilResolveModes` is a bitmask of
 [VkResolveModeFlagBits](renderpass.html#VkResolveModeFlagBits) indicating the set of supported stencil
 resolve modes.
-`VK_RESOLVE_MODE_SAMPLE_ZERO_BIT` **must** be included in the set but
+[VK_RESOLVE_MODE_SAMPLE_ZERO_BIT](renderpass.html#VkResolveModeFlagBitsKHR) **must** be included in the set but
 implementations **may** support additional modes.
-`VK_RESOLVE_MODE_AVERAGE_BIT` **must** not be included in the set.
+[VK_RESOLVE_MODE_AVERAGE_BIT](renderpass.html#VkResolveModeFlagBitsKHR) **must** not be included in the set.
 
 * 
 
-`independentResolveNone` is `VK_TRUE` if the implementation
+`independentResolveNone` is [VK_TRUE](fundamentals.html#VK_TRUE) if the implementation
 supports setting the depth and stencil resolve modes to different values
-when one of those modes is `VK_RESOLVE_MODE_NONE`.
+when one of those modes is [VK_RESOLVE_MODE_NONE](renderpass.html#VkResolveModeFlagBitsKHR).
 Otherwise the implementation only supports setting both modes to the
 same value.
 
 * 
  `independentResolve`
-is `VK_TRUE` if the implementation supports all combinations of the
+is [VK_TRUE](fundamentals.html#VK_TRUE) if the implementation supports all combinations of the
 supported depth and stencil resolve modes, including setting either
-depth or stencil resolve mode to `VK_RESOLVE_MODE_NONE`.
+depth or stencil resolve mode to [VK_RESOLVE_MODE_NONE](renderpass.html#VkResolveModeFlagBitsKHR).
 An implementation that supports `independentResolve` **must** also
 support `independentResolveNone`.
 
@@ -4200,7 +4225,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDepthStencilResolveProperties-sType-sType) VUID-VkPhysicalDeviceDepthStencilResolveProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDevicePerformanceQueryPropertiesKHR` structure is defined
 as:
@@ -4220,7 +4245,7 @@ typedef struct VkPhysicalDevicePerformanceQueryPropertiesKHR {
 structure.
 
 * 
-`allowCommandBufferQueryCopies` is `VK_TRUE` if the performance
+`allowCommandBufferQueryCopies` is [VK_TRUE](fundamentals.html#VK_TRUE) if the performance
 query pools are allowed to be used with [vkCmdCopyQueryPoolResults](queries.html#vkCmdCopyQueryPoolResults).
 
 If the `VkPhysicalDevicePerformanceQueryPropertiesKHR` structure is included in the `pNext` chain of the
@@ -4233,7 +4258,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePerformanceQueryPropertiesKHR-sType-sType) VUID-VkPhysicalDevicePerformanceQueryPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_QUERY_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_QUERY_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceShadingRateImagePropertiesNV` structure is defined
 as:
@@ -4285,7 +4310,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShadingRateImagePropertiesNV-sType-sType) VUID-VkPhysicalDeviceShadingRateImagePropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceMemoryDecompressionPropertiesEXT` structure is
 defined as:
@@ -4334,7 +4359,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMemoryDecompressionPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceMemoryDecompressionPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceTransformFeedbackPropertiesEXT` structure is
 defined as:
@@ -4401,25 +4426,25 @@ each capture of vertex data to the buffer.
 
 * 
  `transformFeedbackQueries` is
-`VK_TRUE` if the implementation supports the
-`VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT` query type.
-`transformFeedbackQueries` is `VK_FALSE` if queries of this type
+[VK_TRUE](fundamentals.html#VK_TRUE) if the implementation supports the
+[VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](queries.html#VkQueryType) query type.
+`transformFeedbackQueries` is [VK_FALSE](fundamentals.html#VK_FALSE) if queries of this type
 **cannot** be created.
 
 * 
 
-`transformFeedbackStreamsLinesTriangles` is `VK_TRUE` if the
+`transformFeedbackStreamsLinesTriangles` is [VK_TRUE](fundamentals.html#VK_TRUE) if the
 implementation supports the geometry shader `OpExecutionMode` of
 `OutputLineStrip` and `OutputTriangleStrip` in addition to
 `OutputPoints` when more than one vertex stream is output.
-If `transformFeedbackStreamsLinesTriangles` is `VK_FALSE` the
+If `transformFeedbackStreamsLinesTriangles` is [VK_FALSE](fundamentals.html#VK_FALSE) the
 implementation only supports an `OpExecutionMode` of
 `OutputPoints` when more than one vertex stream is output from the
 geometry shader.
 
 * 
 
-`transformFeedbackRasterizationStreamSelect` is `VK_TRUE` if the
+`transformFeedbackRasterizationStreamSelect` is [VK_TRUE](fundamentals.html#VK_TRUE) if the
 implementation supports the `GeometryStreams` SPIR-V capability and
 the application can use
 [VkPipelineRasterizationStateStreamCreateInfoEXT](primsrast.html#VkPipelineRasterizationStateStreamCreateInfoEXT) to modify which
@@ -4428,7 +4453,7 @@ Otherwise vertex stream `0` **must** always be used for rasterization.
 
 * 
  `transformFeedbackDraw` is
-`VK_TRUE` if the implementation supports the
+[VK_TRUE](fundamentals.html#VK_TRUE) if the implementation supports the
 [vkCmdDrawIndirectByteCountEXT](drawing.html#vkCmdDrawIndirectByteCountEXT) function otherwise the function
 **must** not be called.
 
@@ -4442,7 +4467,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceTransformFeedbackPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceTransformFeedbackPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceCopyMemoryIndirectPropertiesNV` structure is
 defined as:
@@ -4487,7 +4512,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR-sType-sType) VUID-VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceRayTracingPropertiesNV` structure is defined as:
 
@@ -4562,7 +4587,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceRayTracingPropertiesNV-sType-sType) VUID-VkPhysicalDeviceRayTracingPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceAccelerationStructurePropertiesKHR` structure is
 defined as:
@@ -4607,10 +4632,10 @@ acceleration structure.
 of acceleration structure bindings that **can** be accessible to a single
 shader stage in a pipeline layout.
 Descriptor bindings with a descriptor type of
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR` count against this
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](descriptorsets.html#VkDescriptorType) count against this
 limit.
 Only descriptor bindings in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 
 * 
@@ -4618,7 +4643,7 @@ count against this limit.
 `maxPerStageDescriptorUpdateAfterBindAccelerationStructures` is
 similar to `maxPerStageDescriptorAccelerationStructures` but counts
 descriptor bindings from descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -4628,10 +4653,10 @@ acceleration structure descriptors that **can** be included in descriptor
 bindings in a pipeline layout across all pipeline shader stages and
 descriptor set numbers.
 Descriptor bindings with a descriptor type of
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR` count against this
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](descriptorsets.html#VkDescriptorType) count against this
 limit.
 Only descriptor bindings in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 
 * 
@@ -4639,7 +4664,7 @@ count against this limit.
 `maxDescriptorSetUpdateAfterBindAccelerationStructures` is similar
 to `maxDescriptorSetAccelerationStructures` but counts descriptor
 bindings from descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -4669,7 +4694,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceAccelerationStructurePropertiesKHR-sType-sType) VUID-VkPhysicalDeviceAccelerationStructurePropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceRayTracingPipelinePropertiesKHR` structure is
 defined as:
@@ -4703,8 +4728,9 @@ structure.
 maximum number of levels of ray recursion allowed in a trace command.
 
 * 
-`maxShaderGroupStride` is the maximum stride in bytes allowed
-between shader groups in the shader binding table.
+ `maxShaderGroupStride` is the
+maximum stride in bytes allowed between shader groups in the shader
+binding table.
 
 * 
 `shaderGroupBaseAlignment` is the **required** alignment in bytes for
@@ -4741,7 +4767,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceRayTracingPipelinePropertiesKHR-sType-sType) VUID-VkPhysicalDeviceRayTracingPipelinePropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PIPELINE_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PIPELINE_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceCooperativeMatrixPropertiesNV` structure is defined
 as:
@@ -4766,8 +4792,8 @@ structure.
 [VkShaderStageFlagBits](pipelines.html#VkShaderStageFlagBits) describing the shader stages that
 cooperative matrix instructions are supported in.
 `cooperativeMatrixSupportedStages` will have the
-`VK_SHADER_STAGE_COMPUTE_BIT` bit set if any of the physical
-device’s queues support `VK_QUEUE_COMPUTE_BIT`.
+[VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits) bit set if any of the physical
+device’s queues support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits).
 
 If the `VkPhysicalDeviceCooperativeMatrixPropertiesNV` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2) structure passed to
@@ -4779,7 +4805,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceCooperativeMatrixPropertiesNV-sType-sType) VUID-VkPhysicalDeviceCooperativeMatrixPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceCooperativeMatrixPropertiesKHR` structure is
 defined as:
@@ -4804,11 +4830,11 @@ structure.
 [VkShaderStageFlagBits](pipelines.html#VkShaderStageFlagBits) describing the shader stages that
 cooperative matrix instructions are supported in.
 `cooperativeMatrixSupportedStages` will have the
-`VK_SHADER_STAGE_COMPUTE_BIT` bit set if any of the physical
-device’s queues support `VK_QUEUE_COMPUTE_BIT`.
+[VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits) bit set if any of the physical
+device’s queues support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits).
 
 `cooperativeMatrixSupportedStages` **must** not have any bits other than
-`VK_SHADER_STAGE_COMPUTE_BIT` set.
+[VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits) set.
 
 If the `VkPhysicalDeviceCooperativeMatrixPropertiesKHR` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2) structure passed to
@@ -4820,7 +4846,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceCooperativeMatrixPropertiesKHR-sType-sType) VUID-VkPhysicalDeviceCooperativeMatrixPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` structure is
 defined as:
@@ -4871,7 +4897,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceCooperativeMatrix2PropertiesNV-sType-sType) VUID-VkPhysicalDeviceCooperativeMatrix2PropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceCooperativeVectorPropertiesNV` structure is defined
 as:
@@ -4899,18 +4925,18 @@ structure.
 [VkShaderStageFlagBits](pipelines.html#VkShaderStageFlagBits) describing the shader stages that
 cooperative vector instructions are supported in.
 `cooperativeVectorSupportedStages` will have the
-`VK_SHADER_STAGE_COMPUTE_BIT` bit set if any of the physical
-device’s queues support `VK_QUEUE_COMPUTE_BIT`.
+[VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits) bit set if any of the physical
+device’s queues support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits).
 
 * 
 
-`cooperativeVectorTrainingFloat16Accumulation` is `VK_TRUE` if
+`cooperativeVectorTrainingFloat16Accumulation` is [VK_TRUE](fundamentals.html#VK_TRUE) if
 the implementation supports cooperative vector training functions
 accumulating 16-bit floating-point results.
 
 * 
 
-`cooperativeVectorTrainingFloat32Accumulation` is `VK_TRUE` if
+`cooperativeVectorTrainingFloat32Accumulation` is [VK_TRUE](fundamentals.html#VK_TRUE) if
 the implementation supports cooperative vector training functions
 accumulating 32-bit floating-point results.
 
@@ -4929,7 +4955,40 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceCooperativeVectorPropertiesNV-sType-sType) VUID-VkPhysicalDeviceCooperativeVectorPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_PROPERTIES_NV](fundamentals.html#VkStructureType)
+
+The `VkPhysicalDeviceShaderLongVectorPropertiesEXT` structure is defined
+as:
+
+// Provided by VK_EXT_shader_long_vector
+typedef struct VkPhysicalDeviceShaderLongVectorPropertiesEXT {
+    VkStructureType    sType;
+    void*              pNext;
+    uint32_t           maxVectorComponents;
+} VkPhysicalDeviceShaderLongVectorPropertiesEXT;
+
+* 
+`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
+
+* 
+`pNext` is `NULL` or a pointer to a structure extending this
+structure.
+
+* 
+ `maxVectorComponents` indicates the
+maximum number of components that **can** be in a vector type.
+
+If the `VkPhysicalDeviceShaderLongVectorPropertiesEXT` structure is included in the `pNext` chain of the
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2) structure passed to
+[vkGetPhysicalDeviceProperties2](devsandqueues.html#vkGetPhysicalDeviceProperties2), it is filled in with each
+corresponding implementation-dependent property.
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkPhysicalDeviceShaderLongVectorPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceShaderLongVectorPropertiesEXT-sType-sType
+
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceShaderSMBuiltinsPropertiesNV` structure is defined
 as:
@@ -4967,7 +5026,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderSMBuiltinsPropertiesNV-sType-sType) VUID-VkPhysicalDeviceShaderSMBuiltinsPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceTexelBufferAlignmentProperties` structure is
 defined as:
@@ -5022,9 +5081,9 @@ If the `VkPhysicalDeviceTexelBufferAlignmentProperties` structure is included in
 [vkGetPhysicalDeviceProperties2](devsandqueues.html#vkGetPhysicalDeviceProperties2), it is filled in with each
 corresponding implementation-dependent property.
 
-If the single texel alignment property is `VK_FALSE`, then the buffer
+If the single texel alignment property is [VK_FALSE](fundamentals.html#VK_FALSE), then the buffer
 view’s offset **must** be aligned to the corresponding byte alignment value.
-If the single texel alignment property is `VK_TRUE`, then the buffer
+If the single texel alignment property is [VK_TRUE](fundamentals.html#VK_TRUE), then the buffer
 view’s offset **must** be aligned to the lesser of the corresponding byte
 alignment value or the size of a single texel, based on
 [VkBufferViewCreateInfo](resources.html#VkBufferViewCreateInfo)::`format`.
@@ -5041,7 +5100,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceTexelBufferAlignmentProperties-sType-sType) VUID-VkPhysicalDeviceTexelBufferAlignmentProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceTimelineSemaphoreProperties` structure is defined
 as:
@@ -5080,7 +5139,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceTimelineSemaphoreProperties-sType-sType) VUID-VkPhysicalDeviceTimelineSemaphoreProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceLineRasterizationProperties` structure is defined
 as:
@@ -5123,7 +5182,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceLineRasterizationProperties-sType-sType) VUID-VkPhysicalDeviceLineRasterizationProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceRobustness2PropertiesKHR` structure is defined as:
 
@@ -5170,7 +5229,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceRobustness2PropertiesKHR-sType-sType) VUID-VkPhysicalDeviceRobustness2PropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV` structure is
 defined as:
@@ -5247,7 +5306,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV-sType-sType) VUID-VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT` structure is
 defined as:
@@ -5319,8 +5378,8 @@ modes.
 `supportedIndirectCommandsShaderStages` indicates the stages which
 **can** be used to generate indirect commands.
 Implementations are required to support, at minimum:
-`VK_SHADER_STAGE_VERTEX_BIT`, `VK_SHADER_STAGE_FRAGMENT_BIT`,
-`VK_SHADER_STAGE_COMPUTE_BIT`.
+[VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits), [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits).
 
 * 
 
@@ -5339,7 +5398,7 @@ binding shader stages using shader objects.
 `deviceGeneratedCommandsTransformFeedback` indicates whether the
 implementation supports interactions with
 `[VK_EXT_transform_feedback](../appendices/extensions.html#VK_EXT_transform_feedback)` for pipelines not created with
-`VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT`.
+[VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR).
 
 * 
 
@@ -5357,7 +5416,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDevicePortabilitySubsetPropertiesKHR` structure is
 defined as:
@@ -5394,7 +5453,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePortabilitySubsetPropertiesKHR-sType-sType) VUID-VkPhysicalDevicePortabilitySubsetPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PORTABILITY_SUBSET_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PORTABILITY_SUBSET_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV`
 structure is defined as:
@@ -5428,7 +5487,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV-sType-sType) VUID-VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` structure
 is defined as:
@@ -5485,7 +5544,7 @@ when building bottom level acceleration structures.
 * 
 
 `clusterTemplateBoundsByteAlignment` indicates the alignment of
-[VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV](accelstructures.html#VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV)::pname::instantiationBoundingBoxLimit.
+[VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV](accelstructures.html#VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV)::`instantiationBoundingBoxLimit`.
 
 * 
  `maxClusterGeometryIndex`
@@ -5502,7 +5561,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceClusterAccelerationStructurePropertiesNV-sType-sType) VUID-VkPhysicalDeviceClusterAccelerationStructurePropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_ACCELERATION_STRUCTURE_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_ACCELERATION_STRUCTURE_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` structure is
 defined as:
@@ -5575,11 +5634,11 @@ It **must** be 0 if the [    `attachmentFragmentShadingRate`](features.html#feat
 
     `primitiveFragmentShadingRateWithMultipleViewports` specifies
     whether the [primitive    fragment shading rate](primsrast.html#primsrast-fragment-shading-rate-primitive) **can** be used when multiple viewports are used.
-    If this value is `VK_FALSE`, only a single viewport **must** be used,
+    If this value is [VK_FALSE](fundamentals.html#VK_FALSE), only a single viewport **must** be used,
     and applications **must** not write to the
     `ViewportMaskNV` or
     `ViewportIndex` built-in when setting `PrimitiveShadingRateKHR`.
-    It **must** be `VK_FALSE` if
+    It **must** be [VK_FALSE](fundamentals.html#VK_FALSE) if
     the [    `shaderOutputViewportIndex`](features.html#features-shaderOutputViewportIndex) feature,
     the `[VK_EXT_shader_viewport_index_layer](../appendices/extensions.html#VK_EXT_shader_viewport_index_layer)` extension,
 or
@@ -5590,11 +5649,11 @@ or
 
     `layeredShadingRateAttachments` specifies whether a shading rate
     attachment image view **can** be created with multiple layers.
-    If this value is `VK_FALSE`, when creating an image view with a
+    If this value is [VK_FALSE](fundamentals.html#VK_FALSE), when creating an image view with a
     `usage` that includes
-    `VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`,
+    [VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](resources.html#VkImageUsageFlagBits),
     `layerCount` **must** be `1`.
-    It **must** be `VK_FALSE` if
+    It **must** be [VK_FALSE](fundamentals.html#VK_FALSE) if
     the [`multiview`](features.html#features-multiview) feature,
     the [    `shaderOutputViewportIndex`](features.html#features-shaderOutputViewportIndex) feature,
     the `[VK_EXT_shader_viewport_index_layer](../appendices/extensions.html#VK_EXT_shader_viewport_index_layer)` extension,
@@ -5606,9 +5665,9 @@ or
 
 `fragmentShadingRateNonTrivialCombinerOps` specifies whether
 [VkFragmentShadingRateCombinerOpKHR](primsrast.html#VkFragmentShadingRateCombinerOpKHR) enums other than
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR` or
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR` **can** be used.
-It **must** be `VK_FALSE` unless either the
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](primsrast.html#VkFragmentShadingRateCombinerOpKHR) or
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR](primsrast.html#VkFragmentShadingRateCombinerOpKHR) **can** be used.
+It **must** be [VK_FALSE](fundamentals.html#VK_FALSE) unless either the
 [    `primitiveFragmentShadingRate`](features.html#features-primitiveFragmentShadingRate) or
 [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) feature is supported.
 
@@ -5653,7 +5712,7 @@ This limit is purely informational, and is not validated.
 the implementation supports writing `FragDepth`
 or `FragStencilRefEXT`
 from a fragment shader for multi-pixel fragments.
-If this value is `VK_FALSE`, writing to those built-ins will clamp
+If this value is [VK_FALSE](fundamentals.html#VK_FALSE), writing to those built-ins will clamp
 the fragment shading rate to (1,1).
 
 * 
@@ -5662,7 +5721,7 @@ the fragment shading rate to (1,1).
 implementation supports setting valid bits of
 [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo)::`pSampleMask` to `0` for
 multi-pixel fragments.
-If this value is `VK_FALSE`, zeroing valid bits in the sample mask
+If this value is [VK_FALSE](fundamentals.html#VK_FALSE), zeroing valid bits in the sample mask
 will clamp the fragment shading rate to (1,1).
 
 * 
@@ -5670,25 +5729,25 @@ will clamp the fragment shading rate to (1,1).
 `fragmentShadingRateWithShaderSampleMask` specifies whether the
 implementation supports reading or writing `SampleMask` for
 multi-pixel fragments.
-If this value is `VK_FALSE`, using that built-in will clamp the
+If this value is [VK_FALSE](fundamentals.html#VK_FALSE), using that built-in will clamp the
 fragment shading rate to (1,1).
 
 * 
 
 `fragmentShadingRateWithConservativeRasterization`
 specifies whether [conservative    rasterization](primsrast.html#primsrast-conservativeraster) is supported for multi-pixel fragments.
-It **must** be `VK_FALSE` if `[VK_EXT_conservative_rasterization](../appendices/extensions.html#VK_EXT_conservative_rasterization)`
+It **must** be [VK_FALSE](fundamentals.html#VK_FALSE) if `[VK_EXT_conservative_rasterization](../appendices/extensions.html#VK_EXT_conservative_rasterization)`
 is not supported.
-If this value is `VK_FALSE`, using [    conservative rasterization](primsrast.html#primsrast-conservativeraster) will clamp the fragment shading rate to
+If this value is [VK_FALSE](fundamentals.html#VK_FALSE), using [    conservative rasterization](primsrast.html#primsrast-conservativeraster) will clamp the fragment shading rate to
 (1,1).
 
 * 
 
 `fragmentShadingRateWithFragmentShaderInterlock`
 specifies whether [fragment shader    interlock](fragops.html#fragops-shader-interlock) is supported for multi-pixel fragments.
-It **must** be `VK_FALSE` if `[VK_EXT_fragment_shader_interlock](../appendices/extensions.html#VK_EXT_fragment_shader_interlock)`
+It **must** be [VK_FALSE](fundamentals.html#VK_FALSE) if `[VK_EXT_fragment_shader_interlock](../appendices/extensions.html#VK_EXT_fragment_shader_interlock)`
 is not supported.
-If this value is `VK_FALSE`, using [    fragment shader interlock](fragops.html#fragops-shader-interlock) will clamp the fragment shading rate to
+If this value is [VK_FALSE](fundamentals.html#VK_FALSE), using [    fragment shader interlock](fragops.html#fragops-shader-interlock) will clamp the fragment shading rate to
 (1,1).
 
 * 
@@ -5696,22 +5755,22 @@ If this value is `VK_FALSE`, using [    fragment shader interlock](fragops.html#
 `fragmentShadingRateWithCustomSampleLocations`
 specifies whether [custom sample locations](primsrast.html#primsrast-samplelocations)
 are supported for multi-pixel fragments.
-It **must** be `VK_FALSE` if `[VK_EXT_sample_locations](../appendices/extensions.html#VK_EXT_sample_locations)` is not
+It **must** be [VK_FALSE](fundamentals.html#VK_FALSE) if `[VK_EXT_sample_locations](../appendices/extensions.html#VK_EXT_sample_locations)` is not
 supported.
-If this value is `VK_FALSE`, using [    custom sample locations](primsrast.html#primsrast-samplelocations) will clamp the fragment shading rate to
+If this value is [VK_FALSE](fundamentals.html#VK_FALSE), using [    custom sample locations](primsrast.html#primsrast-samplelocations) will clamp the fragment shading rate to
 (1,1).
 
 * 
 
 `fragmentShadingRateStrictMultiplyCombiner` specifies whether
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR` accurately performs a
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR](primsrast.html#VkFragmentShadingRateCombinerOpKHR) accurately performs a
 multiplication or not.
-Implementations where this value is `VK_FALSE` will instead combine
+Implementations where this value is [VK_FALSE](fundamentals.html#VK_FALSE) will instead combine
 rates with an addition.
-If `fragmentShadingRateNonTrivialCombinerOps` is `VK_FALSE`,
-implementations **must** report this as `VK_FALSE`.
-If `fragmentShadingRateNonTrivialCombinerOps` is `VK_TRUE`,
-implementations **should** report this as `VK_TRUE`.
+If `fragmentShadingRateNonTrivialCombinerOps` is [VK_FALSE](fundamentals.html#VK_FALSE),
+implementations **must** report this as [VK_FALSE](fundamentals.html#VK_FALSE).
+If `fragmentShadingRateNonTrivialCombinerOps` is [VK_TRUE](fundamentals.html#VK_TRUE),
+implementations **should** report this as [VK_TRUE](fundamentals.html#VK_TRUE).
 
 |  | Multiplication of the combiner rates using the fragment width/height in
 | --- | --- |
@@ -5739,7 +5798,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFragmentShadingRatePropertiesKHR-sType-sType) VUID-VkPhysicalDeviceFragmentShadingRatePropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV` structure is
 defined as:
@@ -5777,7 +5836,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV-sType-sType) VUID-VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_ENUMS_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_ENUMS_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceCustomBorderColorPropertiesEXT` structure is
 defined as:
@@ -5805,7 +5864,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceCustomBorderColorPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceCustomBorderColorPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceProvokingVertexPropertiesEXT` structure is defined
 as:
@@ -5847,7 +5906,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceProvokingVertexPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceProvokingVertexPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROVOKING_VERTEX_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROVOKING_VERTEX_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceDescriptorBufferPropertiesEXT` structure is defined
 as:
@@ -5902,14 +5961,14 @@ structure.
 
 `combinedImageSamplerDescriptorSingleArray` indicates that the
 implementation does not require an array of
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` descriptors to be
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](descriptorsets.html#VkDescriptorType) descriptors to be
 written into a descriptor buffer as an array of image descriptors,
 immediately followed by an array of sampler descriptors.
 
 * 
  `bufferlessPushDescriptors`
 indicates that the implementation does not require a buffer created with
-the `VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT`
+the [VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits)
 usage flag set to be bound when using push descriptors.
 
 * 
@@ -5918,7 +5977,7 @@ usage flag set to be bound when using push descriptors.
 implementation does not restrict when the [VkSampler](samplers.html#VkSampler) or
 [VkImageView](resources.html#VkImageView) objects used to retrieve descriptor data **can** be
 created in relation to command buffer submission.
-If this value is `VK_FALSE`, then the application **must** create any
+If this value is [VK_FALSE](fundamentals.html#VK_FALSE), then the application **must** create any
 [VkSampler](samplers.html#VkSampler) or [VkImageView](resources.html#VkImageView) objects whose descriptor data is
 accessed during the execution of a command buffer, before the
 [vkQueueSubmit](cmdbuffers.html#vkQueueSubmit)
@@ -5938,14 +5997,14 @@ indicates the maximum number of descriptor buffer bindings.
 
 `maxResourceDescriptorBufferBindings` indicates the maximum number
 of descriptor buffer bindings with
-`VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT` that **can** be
+[VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits) that **can** be
 used.
 
 * 
 
 `maxSamplerDescriptorBufferBindings` indicates the maximum number of
 descriptor buffer bindings with
-`VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT` that **can** be
+[VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits) that **can** be
 used.
 
 * 
@@ -5957,7 +6016,7 @@ of embedded immutable sampler sets that **can** be bound.
 
 `maxEmbeddedImmutableSamplers` indicates the maximum number of
 unique immutable samplers in descriptor set layouts created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits),
 and pipeline layouts created from them, which **can** simultaneously exist
 on a device.
 
@@ -5989,86 +6048,87 @@ maximum size in bytes of the opaque data used for capture and replay
 with acceleration structures.
 
 * 
- `samplerDescriptorSize` indicates
-the size in bytes of a `VK_DESCRIPTOR_TYPE_SAMPLER` descriptor.
+ `samplerDescriptorSize`
+indicates the size in bytes of a [VK_DESCRIPTOR_TYPE_SAMPLER](descriptorsets.html#VkDescriptorType)
+descriptor.
 
 * 
 
 `combinedImageSamplerDescriptorSize` indicates the size in bytes of
-a `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` descriptor.
+a [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](descriptorsets.html#VkDescriptorType) descriptor.
 
 * 
  `sampledImageDescriptorSize`
-indicates the size in bytes of a `VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`
+indicates the size in bytes of a [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](descriptorsets.html#VkDescriptorType)
 descriptor.
 
 * 
  `storageImageDescriptorSize`
-indicates the size in bytes of a `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`
+indicates the size in bytes of a [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](descriptorsets.html#VkDescriptorType)
 descriptor.
 
 * 
 
 `uniformTexelBufferDescriptorSize` indicates the size in bytes of a
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` descriptor if the
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType) descriptor if the
 [`robustBufferAccess`](features.html#features-robustBufferAccess) feature is not
 enabled.
 
 * 
 
 `robustUniformTexelBufferDescriptorSize` indicates the size in bytes
-of a `VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` descriptor if the
+of a [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType) descriptor if the
 [`robustBufferAccess`](features.html#features-robustBufferAccess) feature is
 enabled.
 
 * 
 
 `storageTexelBufferDescriptorSize` indicates the size in bytes of a
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` descriptor if the
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType) descriptor if the
 [`robustBufferAccess`](features.html#features-robustBufferAccess) feature is not
 enabled.
 
 * 
 
 `robustStorageTexelBufferDescriptorSize` indicates the size in bytes
-of a `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` descriptor if the
+of a [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType) descriptor if the
 [`robustBufferAccess`](features.html#features-robustBufferAccess) feature is
 enabled.
 
 * 
  `uniformBufferDescriptorSize`
-indicates the size in bytes of a `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`
+indicates the size in bytes of a [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](descriptorsets.html#VkDescriptorType)
 descriptor.
 
 * 
 
 `robustUniformBufferDescriptorSize` indicates the size in bytes of a
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` descriptor if the
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](descriptorsets.html#VkDescriptorType) descriptor if the
 [`robustBufferAccess`](features.html#features-robustBufferAccess) feature is
 enabled.
 
 * 
  `storageBufferDescriptorSize`
-indicates the size in bytes of a `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`
+indicates the size in bytes of a [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](descriptorsets.html#VkDescriptorType)
 descriptor.
 
 * 
 
 `robustStorageBufferDescriptorSize` indicates the size in bytes of a
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` descriptor if the
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](descriptorsets.html#VkDescriptorType) descriptor if the
 [`robustBufferAccess`](features.html#features-robustBufferAccess) feature is
 enabled.
 
 * 
 
 `inputAttachmentDescriptorSize` indicates the size in bytes of a
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` descriptor.
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](descriptorsets.html#VkDescriptorType) descriptor.
 
 * 
 
 `accelerationStructureDescriptorSize` indicates the size in bytes of
-a `VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR` or
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV` descriptor.
+a [VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](descriptorsets.html#VkDescriptorType) descriptor.
 
 * 
 
@@ -6086,25 +6146,25 @@ accessible to a shader.
 
 `samplerDescriptorBufferAddressSpaceSize` indicates the total size
 in bytes of the address space available for descriptor buffers created
-with the `VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT` usage
+with the [VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits) usage
 flag set.
 
 * 
 
 `resourceDescriptorBufferAddressSpaceSize` indicates the total size
 in bytes of the address space available for descriptor buffers created
-with the `VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT` usage
+with the [VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits) usage
 flag set.
 
 * 
 
 `descriptorBufferAddressSpaceSize` indicates the total size in bytes
 of the address space available for descriptor buffers created with both
-the `VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT` and
-`VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT` usage flags
+the [VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits) and
+[VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits) usage flags
 set.
 
-A descriptor binding with type `VK_DESCRIPTOR_TYPE_MUTABLE_EXT` has a
+A descriptor binding with type [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](descriptorsets.html#VkDescriptorType) has a
 descriptor size which is implied by the descriptor types included in the
 [VkMutableDescriptorTypeCreateInfoEXT](descriptorsets.html#VkMutableDescriptorTypeCreateInfoEXT)::`pDescriptorTypes` list.
 The descriptor size is equal to the maximum size of any descriptor type
@@ -6125,7 +6185,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDescriptorBufferPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceDescriptorBufferPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT` structure
 is defined as:
@@ -6147,9 +6207,9 @@ structure.
 * 
 
 `combinedImageSamplerDensityMapDescriptorSize` indicates the size in
-bytes of a `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` descriptor
+bytes of a [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](descriptorsets.html#VkDescriptorType) descriptor
 when creating the descriptor with
-`VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT` set.
+[VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](samplers.html#VkSamplerCreateFlagBits) set.
 
 If the `VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2) structure passed to
@@ -6161,7 +6221,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_DENSITY_MAP_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_DENSITY_MAP_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM` structure is
 defined as:
@@ -6193,7 +6253,7 @@ views.
 
 * 
 `tensorDescriptorSize` indicates the size in bytes of a
-`VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor.
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](descriptorsets.html#VkDescriptorType) descriptor.
 
 If the `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2) structure passed to
@@ -6205,7 +6265,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDescriptorBufferTensorPropertiesARM-sType-sType) VUID-VkPhysicalDeviceDescriptorBufferTensorPropertiesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_TENSOR_PROPERTIES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_TENSOR_PROPERTIES_ARM](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceHostImageCopyProperties` structure is defined as:
 
@@ -6253,14 +6313,14 @@ which supported image layouts for use with host copy operations to
 images are returned.
 
 * 
-`optimalTilingLayoutUUID` is an array of `VK_UUID_SIZE`
+`optimalTilingLayoutUUID` is an array of [VK_UUID_SIZE](devsandqueues.html#VK_UUID_SIZE)
 `uint8_t` values representing a universally unique identifier for the
 implementation’s swizzling layout of images created with
-`VK_IMAGE_TILING_OPTIMAL`.
+[VK_IMAGE_TILING_OPTIMAL](resources.html#VkImageTiling).
 
 * 
 `identicalMemoryTypeRequirements` indicates that specifying the
-`VK_IMAGE_USAGE_HOST_TRANSFER_BIT` flag in
+[VK_IMAGE_USAGE_HOST_TRANSFER_BIT](resources.html#VkImageUsageFlagBits) flag in
 [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`usage` does not affect the memory type
 requirements of the image.
 
@@ -6274,17 +6334,17 @@ are supported in [VkCopyMemoryToImageInfo](copies.html#VkCopyMemoryToImageInfo):
 [VkCopyImageToImageInfo](copies.html#VkCopyImageToImageInfo)::`dstImageLayout` is returned in
 `copyDstLayoutCount`.
 Otherwise, `copyDstLayoutCount` **must** be set by the application to the
-number of elements in the `pCopyDstLayouts` array, and on return the
-variable is overwritten with the number of values actually written to
+number of elements in the `pCopyDstLayouts` array, and on return is
+overwritten with the number of values actually written to
 `pCopyDstLayouts`.
 If the value of `copyDstLayoutCount` is less than the number of image
 layouts that are supported, at most `copyDstLayoutCount` values will be
 written to `pCopyDstLayouts`.
-The implementation **must** include the `VK_IMAGE_LAYOUT_GENERAL` image
+The implementation **must** include the [VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout) image
 layout in `pCopyDstLayouts`.
 If the [`unifiedImageLayouts`](features.html#features-unifiedImageLayouts) feature
 is supported, the implementation **must** include all the image layouts that
-are interchangeable with `VK_IMAGE_LAYOUT_GENERAL` in
+are interchangeable with [VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout) in
 `pCopyDstLayouts`.
 
 If `pCopySrcLayouts` is `NULL`, then the number of image layouts that
@@ -6292,21 +6352,21 @@ are supported in [VkCopyImageToMemoryInfo](copies.html#VkCopyImageToMemoryInfo):
 [VkCopyImageToImageInfo](copies.html#VkCopyImageToImageInfo)::`srcImageLayout` is returned in
 `copySrcLayoutCount`.
 Otherwise, `copySrcLayoutCount` **must** be set by the application to the
-number of elements in the `pCopySrcLayouts` array, and on return the
-variable is overwritten with the number of values actually written to
+number of elements in the `pCopySrcLayouts` array, and on return is
+overwritten with the number of values actually written to
 `pCopySrcLayouts`.
 If the value of `copySrcLayoutCount` is less than the number of image
 layouts that are supported, at most `copySrcLayoutCount` values will be
 written to `pCopySrcLayouts`.
-The implementation **must** include the `VK_IMAGE_LAYOUT_GENERAL` image
+The implementation **must** include the [VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout) image
 layout in `pCopySrcLayouts`.
 If the [`unifiedImageLayouts`](features.html#features-unifiedImageLayouts) feature
 is supported, the implementation **must** include all the image layouts that
-are interchangeable with `VK_IMAGE_LAYOUT_GENERAL` in
+are interchangeable with [VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout) in
 `pCopySrcLayouts`.
 
 The `optimalTilingLayoutUUID` value can be used to ensure compatible
-data layouts when using the `VK_HOST_IMAGE_COPY_MEMCPY_BIT` flag in
+data layouts when using the [VK_HOST_IMAGE_COPY_MEMCPY_BIT](copies.html#VkHostImageCopyFlagBitsEXT) flag in
 [vkCopyMemoryToImage](copies.html#vkCopyMemoryToImage) and [vkCopyImageToMemory](copies.html#vkCopyImageToMemory).
 
 Valid Usage (Implicit)
@@ -6314,7 +6374,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceHostImageCopyProperties-sType-sType) VUID-VkPhysicalDeviceHostImageCopyProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPhysicalDeviceHostImageCopyProperties-pCopySrcLayouts-parameter) VUID-VkPhysicalDeviceHostImageCopyProperties-pCopySrcLayouts-parameter
@@ -6362,7 +6422,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceSubpassShadingPropertiesHUAWEI-sType-sType) VUID-VkPhysicalDeviceSubpassShadingPropertiesHUAWEI-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBPASS_SHADING_PROPERTIES_HUAWEI`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBPASS_SHADING_PROPERTIES_HUAWEI](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceMultiDrawPropertiesEXT` structure is defined as:
 
@@ -6391,7 +6451,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMultiDrawPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceMultiDrawPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTI_DRAW_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTI_DRAW_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceNestedCommandBufferPropertiesEXT` structure is
 defined as:
@@ -6423,7 +6483,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceNestedCommandBufferPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceNestedCommandBufferPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT` structure is
 defined as:
@@ -6440,9 +6500,9 @@ typedef struct VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT {
 
 `graphicsPipelineLibraryFastLinking` indicates whether fast linking
 of graphics pipelines is supported.
-If it is `VK_TRUE`, creating a graphics pipeline entirely from
+If it is [VK_TRUE](fundamentals.html#VK_TRUE), creating a graphics pipeline entirely from
 pipeline libraries without
-`VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT` is comparable in
+[VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits) is comparable in
 cost to recording a command in a command buffer.
 
 * 
@@ -6451,9 +6511,9 @@ cost to recording a command in a command buffer.
 indicates whether `NoPerspective` and `Flat` interpolation
 decorations in the last vertex processing stage and the fragment shader
 are required to match when using graphics pipeline libraries.
-If it is `VK_TRUE`, the interpolation decorations do not need to
+If it is [VK_TRUE](fundamentals.html#VK_TRUE), the interpolation decorations do not need to
 match.
-If it is `VK_FALSE`, these decorations **must** either be present in
+If it is [VK_FALSE](fundamentals.html#VK_FALSE), these decorations **must** either be present in
 both stages or neither stage in order for a given interface variable to
 match.
 
@@ -6467,7 +6527,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR` structure
 is defined as:
@@ -6482,13 +6542,13 @@ typedef struct VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR {
 * 
  When the
 [provoking vertex mode](vertexpostproc.html#vertexpostproc-flatshading) is
-`VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT`, and the primitive order
+[VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT](vertexpostproc.html#VkProvokingVertexModeEXT), and the primitive order
 is odd in a triangle strip, the ordering of vertices is defined in
 [last vertex table](primsrast.html#primsrast-barycentric-order-table-last-vertex).
 `triStripVertexOrderIndependentOfProvokingVertex` equal to
-`VK_TRUE` indicates that the implementation ignores this and uses
+[VK_TRUE](fundamentals.html#VK_TRUE) indicates that the implementation ignores this and uses
 the vertex order defined by
-`VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT` instead.
+[VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT](vertexpostproc.html#VkProvokingVertexModeEXT) instead.
 
 If the `VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2) structure passed to
@@ -6500,7 +6560,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR-sType-sType) VUID-VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT` structure is
 defined as:
@@ -6518,7 +6578,7 @@ structure describe the following:
 * 
 
 `shaderModuleIdentifierAlgorithmUUID` is an array of
-`VK_UUID_SIZE` `uint8_t` values which uniquely represents the
+[VK_UUID_SIZE](devsandqueues.html#VK_UUID_SIZE) `uint8_t` values which uniquely represents the
 algorithm used to compute an identifier in
 [vkGetShaderModuleIdentifierEXT](shaders.html#vkGetShaderModuleIdentifierEXT) and
 [vkGetShaderModuleCreateInfoIdentifierEXT](shaders.html#vkGetShaderModuleCreateInfoIdentifierEXT).
@@ -6551,7 +6611,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MODULE_IDENTIFIER_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MODULE_IDENTIFIER_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDevicePipelineRobustnessProperties` structure is defined
 as:
@@ -6614,7 +6674,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePipelineRobustnessProperties-sType-sType) VUID-VkPhysicalDevicePipelineRobustnessProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT` structure is
 defined as:
@@ -6643,7 +6703,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExtendedDynamicState3PropertiesEXT-sType-sType) VUID-VkPhysicalDeviceExtendedDynamicState3PropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceOpticalFlowPropertiesNV` structure is defined as:
 
@@ -6733,7 +6793,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceOpticalFlowPropertiesNV-sType-sType) VUID-VkPhysicalDeviceOpticalFlowPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPTICAL_FLOW_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPTICAL_FLOW_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceOpacityMicromapPropertiesEXT` structure is defined
 as:
@@ -6756,12 +6816,12 @@ structure.
 * 
 `maxOpacity2StateSubdivisionLevel` is the maximum allowed
 `subdivisionLevel` when `format` is
-`VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT`
+[VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT](VK_EXT_opacity_micromap/micromaps.html#VkOpacityMicromapFormatEXT)
 
 * 
 `maxOpacity4StateSubdivisionLevel` is the maximum allowed
 `subdivisionLevel` when `format` is
-`VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT`
+[VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT](VK_EXT_opacity_micromap/micromaps.html#VkOpacityMicromapFormatEXT)
 
 If the `VkPhysicalDeviceOpacityMicromapPropertiesEXT` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2) structure passed to
@@ -6773,7 +6833,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceOpacityMicromapPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceOpacityMicromapPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceDisplacementMicromapPropertiesNV` structure is
 defined as:
@@ -6806,7 +6866,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDisplacementMicromapPropertiesNV-sType-sType) VUID-VkPhysicalDeviceDisplacementMicromapPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM` structure is
 defined as:
@@ -6852,7 +6912,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM-sType-sType) VUID-VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_PROPERTIES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_PROPERTIES_ARM](fundamentals.html#VkStructureType)
 
 Values which **may** be returned in the
 `rayTracingInvocationReorderReorderingHint` field of
@@ -6876,11 +6936,11 @@ typedef enum VkRayTracingInvocationReorderModeEXT {
 typedef VkRayTracingInvocationReorderModeEXT VkRayTracingInvocationReorderModeNV;
 
 * 
-`VK_RAY_TRACING_INVOCATION_REORDER_MODE_NONE_EXT` specifies that the
+[VK_RAY_TRACING_INVOCATION_REORDER_MODE_NONE_EXT](#VkRayTracingInvocationReorderModeNV) specifies that the
 implementation does not reorder at reorder calls.
 
 * 
-`VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_EXT` specifies that
+[VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_EXT](#VkRayTracingInvocationReorderModeNV) specifies that
 the implementation **may** reorder at reorder calls.
 
 The `VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT` structure
@@ -6911,7 +6971,7 @@ table record index allowed to be passed in to
 `OpHitObjectSetShaderBindingTableRecordIndexEXT`
 
 If `rayTracingInvocationReorderReorderingHint` is
-`VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_EXT` there **must** exist
+[VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_EXT](#VkRayTracingInvocationReorderModeNV) there **must** exist
 conditions under which the ordered set of invocations before a reorder
 instruction is different than the ordered set of invocations after the
 reorder instruction.
@@ -6951,7 +7011,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV` structure
 is defined as:
@@ -6989,7 +7049,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV-sType-sType) VUID-VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI` structure is
 defined as:
@@ -7053,7 +7113,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI-sType-sType) VUID-VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_CULLING_SHADER_PROPERTIES_HUAWEI`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_CULLING_SHADER_PROPERTIES_HUAWEI](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceShaderCorePropertiesARM` structure is defined as:
 
@@ -7099,7 +7159,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderCorePropertiesARM-sType-sType) VUID-VkPhysicalDeviceShaderCorePropertiesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_ARM](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceShaderObjectPropertiesEXT` structure is defined as:
 
@@ -7120,7 +7180,7 @@ structure.
 
 * 
  `shaderBinaryUUID` is an array of
-`VK_UUID_SIZE` `uint8_t` values representing a universally unique
+[VK_UUID_SIZE](devsandqueues.html#VK_UUID_SIZE) `uint8_t` values representing a universally unique
 identifier for one or more implementations whose shader binaries are
 guaranteed to be compatible with each other.
 
@@ -7142,7 +7202,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderObjectPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceShaderObjectPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` structure is defined
 as:
@@ -7226,7 +7286,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderEnqueuePropertiesAMDX-sType-sType) VUID-VkPhysicalDeviceShaderEnqueuePropertiesAMDX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_PROPERTIES_AMDX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_PROPERTIES_AMDX](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV` structure
 is defined as:
@@ -7280,7 +7340,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV-sType-sType) VUID-VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceCudaKernelLaunchPropertiesNV` structure is defined
 as:
@@ -7314,7 +7374,69 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceCudaKernelLaunchPropertiesNV-sType-sType) VUID-VkPhysicalDeviceCudaKernelLaunchPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV](fundamentals.html#VkStructureType)
+
+The `VkPhysicalDevicePushConstantBankPropertiesNV` structure is defined
+as:
+
+// Provided by VK_NV_push_constant_bank
+typedef struct VkPhysicalDevicePushConstantBankPropertiesNV {
+    VkStructureType    sType;
+    void*              pNext;
+    uint32_t           maxGraphicsPushConstantBanks;
+    uint32_t           maxComputePushConstantBanks;
+    uint32_t           maxGraphicsPushDataBanks;
+    uint32_t           maxComputePushDataBanks;
+} VkPhysicalDevicePushConstantBankPropertiesNV;
+
+This structure describes the following implementation-dependent limits:
+
+* 
+`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
+
+* 
+`pNext` is `NULL` or a pointer to a structure extending this
+structure.
+
+* 
+`maxGraphicsPushConstantBanks` indicates the maximum number of push
+constant banks supported for graphics pipelines when used with
+non-descriptor heap scenarios.
+
+* 
+`maxComputePushConstantBanks` indicates the maximum number of push
+constant banks supported for compute pipelines when used with
+non-descriptor heap scenarios.
+
+* 
+`maxGraphicsPushDataBanks` indicates the maximum number of push data
+banks supported for graphics pipelines when using descriptor heaps.
+
+* 
+`maxComputePushDataBanks` indicates the maximum number of push data
+banks supported for compute pipelines when using descriptor heaps.
+
+If the `VkPhysicalDevicePushConstantBankPropertiesNV` structure is included in the `pNext` chain of the
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2) structure passed to
+[vkGetPhysicalDeviceProperties2](devsandqueues.html#vkGetPhysicalDeviceProperties2), it is filled in with each
+corresponding implementation-dependent property.
+
+|  | The number of banks available for descriptor heap usage
+| --- | --- |
+(`maxGraphicsPushDataBanks` and `maxComputePushDataBanks`) is equal
+or greater than the number of banks available for non-descriptor heap usage
+(`maxGraphicsPushConstantBanks` and `maxComputePushConstantBanks`).
+
+For graphics shaders, both descriptor heap and non-descriptor heap limits
+are greater than 1.
+For compute shaders, the number of banks is equal to or greater than 1. |
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkPhysicalDevicePushConstantBankPropertiesNV-sType-sType) VUID-VkPhysicalDevicePushConstantBankPropertiesNV-sType-sType
+
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_CONSTANT_BANK_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID` structure
 is defined as:
@@ -7339,7 +7461,7 @@ structure.
 
 `nullColorAttachmentWithExternalFormatResolve` indicates that there
 **must** be no color attachment image when performing external format
-resolves if it is `VK_TRUE`.
+resolves if it is [VK_TRUE](fundamentals.html#VK_TRUE).
 
 * 
 
@@ -7349,7 +7471,7 @@ accesses to an external format image as a resolve attachment.
 This **must** be consistent between external format resolves and load
 operations from external format resolve attachments to color attachments
 when `nullColorAttachmentWithExternalFormatResolve` is
-`VK_TRUE`.
+[VK_TRUE](fundamentals.html#VK_TRUE).
 
 * 
 
@@ -7359,7 +7481,7 @@ accesses to an external format image as a resolve attachment.
 This **must** be consistent between external format resolves and load
 operations from external format resolve attachments to color attachments
 when `nullColorAttachmentWithExternalFormatResolve` is
-`VK_TRUE`.
+[VK_TRUE](fundamentals.html#VK_TRUE).
 
 If the `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2) structure passed to
@@ -7371,7 +7493,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExternalFormatResolvePropertiesANDROID-sType-sType) VUID-VkPhysicalDeviceExternalFormatResolvePropertiesANDROID-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_PROPERTIES_ANDROID`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_PROPERTIES_ANDROID](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDevicePipelineBinaryPropertiesKHR` structure is defined
 as:
@@ -7398,7 +7520,7 @@ structure.
  `pipelineBinaryInternalCache`
 specifies that the implementation maintains a pipeline cache internal to
 the implementation.
-If this is `VK_TRUE`, applications **can** create pipeline binaries
+If this is [VK_TRUE](fundamentals.html#VK_TRUE), applications **can** create pipeline binaries
 with only a pipeline create info, and in this case, an implementation
 **may** be able to create a pipeline binary directly without application
 needing to capture the binary itself.
@@ -7407,7 +7529,7 @@ needing to capture the binary itself.
 
 `pipelineBinaryInternalCacheControl` specifies whether the driver’s
 internal cache **can** be disabled.
-If this property is `VK_TRUE`
+If this property is [VK_TRUE](fundamentals.html#VK_TRUE)
 [VkDevicePipelineBinaryInternalCacheControlKHR](devsandqueues.html#VkDevicePipelineBinaryInternalCacheControlKHR)::`disableInternalCache`
 **can** be used to disable the driver’s internal cache, allowing an
 application to take full control of both memory and disk usage.
@@ -7459,7 +7581,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePipelineBinaryPropertiesKHR-sType-sType) VUID-VkPhysicalDevicePipelineBinaryPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_BINARY_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_BINARY_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceRenderPassStripedPropertiesARM` structure is
 defined as:
@@ -7501,7 +7623,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceRenderPassStripedPropertiesARM-sType-sType) VUID-VkPhysicalDeviceRenderPassStripedPropertiesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RENDER_PASS_STRIPED_PROPERTIES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RENDER_PASS_STRIPED_PROPERTIES_ARM](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR` structure is
 defined as:
@@ -7533,7 +7655,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR-sType-sType) VUID-VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT` structure is defined
 as:
@@ -7563,7 +7685,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMapMemoryPlacedPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceMapMemoryPlacedPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceImageAlignmentControlPropertiesMESA` structure is
 defined as:
@@ -7581,7 +7703,7 @@ structure describe the following:
 * 
  `supportedImageAlignmentMask`
 is a bitwise-or of all potentially supported image alignments for a
-given physical device when using `VK_IMAGE_TILING_OPTIMAL`.
+given physical device when using [VK_IMAGE_TILING_OPTIMAL](resources.html#VkImageTiling).
 If a given alignment is supported, the application **can** request an image
 to have that alignment.
 A given set of image creation parameters **may** support a subset of these
@@ -7601,7 +7723,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceImageAlignmentControlPropertiesMESA-sType-sType) VUID-VkPhysicalDeviceImageAlignmentControlPropertiesMESA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceTileShadingPropertiesQCOM` structure is defined as:
 
@@ -7654,7 +7776,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceTileShadingPropertiesQCOM-sType-sType) VUID-VkPhysicalDeviceTileShadingPropertiesQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_PROPERTIES_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_PROPERTIES_QCOM](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceTensorPropertiesARM` structure is defined as:
 
@@ -7728,7 +7850,7 @@ with `OpTensorReadARM` or written to a tensor with
 `maxDescriptorSetStorageTensors` is the maximum number of tensors
 that **can** be included in descriptor bindings in a pipeline layout across
 all pipeline shader stages and descriptor set numbers.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_TENSOR_ARM` count
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_TENSOR_ARM](descriptorsets.html#VkDescriptorType) count
 against this limit.
 
 * 
@@ -7736,7 +7858,7 @@ against this limit.
 `maxPerStageDescriptorSetStorageTensors` is the maximum number of
 tensors that **can** be accessible to a single shader stage in a pipeline
 layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_TENSOR_ARM` count
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_TENSOR_ARM](descriptorsets.html#VkDescriptorType) count
 against this limit.
 A descriptor is accessible to a pipeline shader stage when the
 `stageFlags` member of the [VkDescriptorSetLayoutBinding](descriptorsets.html#VkDescriptorSetLayoutBinding)
@@ -7747,7 +7869,7 @@ structure has the bit for that shader stage set.
 `maxDescriptorSetUpdateAfterBindStorageTensors` is similar to
 `maxDescriptorSetStorageTensors` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -7755,7 +7877,7 @@ set.
 `maxPerStageDescriptorUpdateAfterBindStorageTensors` is similar to
 `maxPerStageDescriptorSetStorageTensors` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -7763,7 +7885,7 @@ set.
 `shaderStorageTensorArrayNonUniformIndexingNative` is a boolean
 value indicating whether storage tensor descriptors natively support
 nonuniform indexing.
-If this is `VK_FALSE`, then a single dynamic instance of an
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then a single dynamic instance of an
 instruction that nonuniformly indexes an array of storage buffers may
 execute multiple times in order to access all the descriptors.
 
@@ -7772,8 +7894,8 @@ execute multiple times in order to access all the descriptors.
 is a bitfield of [VkShaderStageFlagBits](pipelines.html#VkShaderStageFlagBits) describing the shader
 stages that **can** access tensor resources.
 `shaderTensorSupportedStages` will have the
-`VK_SHADER_STAGE_COMPUTE_BIT` bit set if any of the physical
-device’s queues support `VK_QUEUE_COMPUTE_BIT`.
+[VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits) bit set if any of the physical
+device’s queues support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits).
 
 If the `VkPhysicalDeviceTensorPropertiesARM` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2) structure passed to
@@ -7785,7 +7907,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceTensorPropertiesARM-sType-sType) VUID-VkPhysicalDeviceTensorPropertiesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TENSOR_PROPERTIES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TENSOR_PROPERTIES_ARM](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDevicePerformanceCountersByRegionPropertiesARM` structure
 is defined as:
@@ -7835,7 +7957,215 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePerformanceCountersByRegionPropertiesARM-sType-sType) VUID-VkPhysicalDevicePerformanceCountersByRegionPropertiesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_COUNTERS_BY_REGION_PROPERTIES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_COUNTERS_BY_REGION_PROPERTIES_ARM](fundamentals.html#VkStructureType)
+
+The `VkPhysicalDeviceDescriptorHeapPropertiesEXT` structure is defined
+as:
+
+// Provided by VK_EXT_descriptor_heap
+typedef struct VkPhysicalDeviceDescriptorHeapPropertiesEXT {
+    VkStructureType    sType;
+    void*              pNext;
+    VkDeviceSize       samplerHeapAlignment;
+    VkDeviceSize       resourceHeapAlignment;
+    VkDeviceSize       maxSamplerHeapSize;
+    VkDeviceSize       maxResourceHeapSize;
+    VkDeviceSize       minSamplerHeapReservedRange;
+    VkDeviceSize       minSamplerHeapReservedRangeWithEmbedded;
+    VkDeviceSize       minResourceHeapReservedRange;
+    VkDeviceSize       samplerDescriptorSize;
+    VkDeviceSize       imageDescriptorSize;
+    VkDeviceSize       bufferDescriptorSize;
+    VkDeviceSize       samplerDescriptorAlignment;
+    VkDeviceSize       imageDescriptorAlignment;
+    VkDeviceSize       bufferDescriptorAlignment;
+    VkDeviceSize       maxPushDataSize;
+    size_t             imageCaptureReplayOpaqueDataSize;
+    uint32_t           maxDescriptorHeapEmbeddedSamplers;
+    uint32_t           samplerYcbcrConversionCount;
+    VkBool32           sparseDescriptorHeaps;
+    VkBool32           protectedDescriptorHeaps;
+} VkPhysicalDeviceDescriptorHeapPropertiesEXT;
+
+* 
+`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
+
+* 
+`pNext` is `NULL` or a pointer to a structure extending this
+structure.
+
+* 
+ `samplerHeapAlignment` specifies the
+required alignment of the `heapRange->address` member of
+[VkBindHeapInfoEXT](descriptorheaps.html#VkBindHeapInfoEXT) for binding sampler heaps.
+It must be a power-of-two value.
+
+* 
+ `resourceHeapAlignment` specifies
+the required alignment of the `heapRange->address` member of
+[VkBindHeapInfoEXT](descriptorheaps.html#VkBindHeapInfoEXT) for binding resource heaps.
+It must be a power-of-two value.
+
+* 
+ `maxSamplerHeapSize` describes maximum
+value of the `size` member of [VkDeviceAddressRangeEXT](fundamentals.html#VkDeviceAddressRangeEXT) for
+binding sampler heaps, including the reservation, when embedded samplers
+are used.
+
+* 
+ `maxResourceHeapSize` describes
+maximum value of the `size` member of [VkDeviceAddressRangeEXT](fundamentals.html#VkDeviceAddressRangeEXT)
+for binding resource heaps, including the reservation.
+
+* 
+ `minSamplerHeapReservedRange`
+specifies the minimum amount of data that the implementation needs to be
+reserved within the bound sampler heap range when embedded samplers are
+not used.
+
+* 
+
+`minSamplerHeapReservedRangeWithEmbedded` specifies the minimum
+amount of data that the implementation needs to be reserved within the
+bound sampler heap range when embedded samplers are used.
+
+* 
+
+`minResourceHeapReservedRange` specifies the minimum amount of data
+that the implementation needs to be reserved within the bound resource
+heap range.
+
+* 
+ `samplerDescriptorSize` specifies
+the size of sampler descriptors written by
+[vkWriteSamplerDescriptorsEXT](descriptorheaps.html#vkWriteSamplerDescriptorsEXT).
+It **must** be a power-of-two value.
+
+* 
+ `imageDescriptorSize` specifies the
+maximum size of image and texel buffer descriptors written by
+[vkWriteResourceDescriptorsEXT](descriptorheaps.html#vkWriteResourceDescriptorsEXT).
+It **must** be a power-of-two value.
+
+* 
+ `bufferDescriptorSize` specifies the
+maximum size of unformatted buffer descriptors
+or acceleration structures
+written by [vkWriteResourceDescriptorsEXT](descriptorheaps.html#vkWriteResourceDescriptorsEXT).
+It **must** be a power-of-two value.
+
+* 
+ `samplerDescriptorAlignment`
+specifies the required alignment of sampler descriptors within a sampler
+heap.
+It must be a power-of-two value, and less than or equal to
+`samplerDescriptorSize`.
+
+* 
+ `imageDescriptorAlignment`
+specifies the required alignment of image descriptors within a resource
+heap.
+It must be a power-of-two value, and less than or equal to
+`imageDescriptorSize`.
+
+* 
+ `bufferDescriptorAlignment`
+specifies the required alignment of buffer descriptors within a resource
+heap.
+It must be a power-of-two value, and less than or equal to
+`bufferDescriptorSize`.
+
+* 
+ `maxPushDataSize` specifies the maximum
+total size of all push data.
+
+* 
+
+`imageCaptureReplayOpaqueDataSize` specifies the size of the opaque
+capture/replay data for an image.
+
+* 
+
+`maxDescriptorHeapEmbeddedSamplers` specifies the maximum number of
+unique embedded samplers across all pipelines.
+
+* 
+ `samplerYcbcrConversionCount`
+specifies the number of sampler descriptors required for any sampler
+using YCBCR conversion.
+
+* 
+ `sparseDescriptorHeaps` specifies
+whether descriptor heaps can be backed by sparse memory or not.
+If this value is [VK_FALSE](fundamentals.html#VK_FALSE), buffers cannot be specified as both
+sparse and having descriptor heap usage.
+
+* 
+ `protectedDescriptorHeaps`
+specifies whether descriptor heaps can be used with protected
+submissions or not.
+If this value is `VK_FALSE`, buffers cannot be specified as both
+protected and having descriptor heap usage.
+
+If the `VkPhysicalDeviceDescriptorHeapPropertiesEXT` structure is included in the `pNext` chain of the
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2) structure passed to
+[vkGetPhysicalDeviceProperties2](devsandqueues.html#vkGetPhysicalDeviceProperties2), it is filled in with each
+corresponding implementation-dependent property.
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkPhysicalDeviceDescriptorHeapPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceDescriptorHeapPropertiesEXT-sType-sType
+
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_PROPERTIES_EXT](fundamentals.html#VkStructureType)
+
+The `VkPhysicalDeviceDescriptorHeapTensorPropertiesARM` structure is
+defined as:
+
+// Provided by VK_EXT_descriptor_heap with VK_ARM_tensors
+typedef struct VkPhysicalDeviceDescriptorHeapTensorPropertiesARM {
+    VkStructureType    sType;
+    void*              pNext;
+    VkDeviceSize       tensorDescriptorSize;
+    VkDeviceSize       tensorDescriptorAlignment;
+    size_t             tensorCaptureReplayOpaqueDataSize;
+} VkPhysicalDeviceDescriptorHeapTensorPropertiesARM;
+
+* 
+`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
+
+* 
+`pNext` is `NULL` or a pointer to a structure extending this
+structure.
+
+* 
+ `tensorDescriptorSize` specifies the
+maximum size of tensor descriptors written by
+[vkWriteResourceDescriptorsEXT](descriptorheaps.html#vkWriteResourceDescriptorsEXT).
+
+* 
+ `tensorDescriptorAlignment`
+specifies the required alignment of tensor descriptors within a resource
+heap.
+It must be a power-of-two value, and less than or equal to
+`tensorDescriptorSize`.
+
+* 
+
+`tensorCaptureReplayOpaqueDataSize` specifies the size of the opaque
+capture/replay data for an tensor.
+
+If the `VkPhysicalDeviceDescriptorHeapTensorPropertiesARM` structure is included in the `pNext` chain of the
+[VkPhysicalDeviceProperties2](devsandqueues.html#VkPhysicalDeviceProperties2) structure passed to
+[vkGetPhysicalDeviceProperties2](devsandqueues.html#vkGetPhysicalDeviceProperties2), it is filled in with each
+corresponding implementation-dependent property.
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkPhysicalDeviceDescriptorHeapTensorPropertiesARM-sType-sType) VUID-VkPhysicalDeviceDescriptorHeapTensorPropertiesARM-sType-sType
+
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_TENSOR_PROPERTIES_ARM](fundamentals.html#VkStructureType)
 
 The following table specifies the **required** minimum/maximum for all Vulkan
 graphics implementations.
@@ -8185,6 +8515,25 @@ whether or not the feature is enabled.
 | `uint32_t` | `maxShaderBindingTableRecordIndex` | `[VK_EXT_ray_tracing_invocation_reorder](../appendices/extensions.html#VK_EXT_ray_tracing_invocation_reorder)` |
 | `VkBool32` | `resolveSrgbFormatAppliesTransferFunction` | `[maintenance10`](features.html#features-maintenance10) |
 | `VkBool32` | `resolveSrgbFormatSupportsTransferFunctionControl` | `[maintenance10`](features.html#features-maintenance10) |
+| `VkDeviceSize` | `samplerHeapAlignment` | [`descriptorHeap`](features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `resourceHeapAlignment` | [`descriptorHeap`](features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `maxSamplerHeapSize` | [`descriptorHeap`](features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `maxResourceHeapSize` | [`descriptorHeap`](features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `minSamplerHeapReservedRange` | [`descriptorHeap`](features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `minSamplerHeapReservedRangeWithEmbedded` | [`descriptorHeap`](features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `minResourceHeapReservedRange` | [`descriptorHeap`](features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `samplerDescriptorSize` | [`descriptorHeap`](features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `imageDescriptorSize` | [`descriptorHeap`](features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `bufferDescriptorSize` | [`descriptorHeap`](features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `samplerDescriptorAlignment` | [`descriptorHeap`](features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `imageDescriptorAlignment` | [`descriptorHeap`](features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `bufferDescriptorAlignment` | [`descriptorHeap`](features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `maxPushDataSize` | [`descriptorHeap`](features.html#features-descriptorHeap) |
+| `size_t` | `imageCaptureReplayOpaqueDataSize` | [`descriptorHeap`](features.html#features-descriptorHeap) |
+| `uint32_t` | `maxDescriptorHeapEmbeddedSamplers` | [`descriptorHeap`](features.html#features-descriptorHeap) |
+| `uint32_t` | `samplerYcbcrConversionCount` | [`descriptorHeap`](features.html#features-descriptorHeap) |
+| `uint32_t` | `sparseDescriptorHeaps` | [`descriptorHeap`](features.html#features-descriptorHeap) |
+| `uint32_t` | `protectedDescriptorHeaps` | [`descriptorHeap`](features.html#features-descriptorHeap) |
 
 | Limit | Unsupported Limit | Supported Limit | Limit Type1 |
 | --- | --- | --- | --- |
@@ -8293,38 +8642,38 @@ whether or not the feature is enabled.
 | `subgroupSize` | - | 1/4 (Vulkan Core)
 
                                                    4 (Vulkan Roadmap 2022) | min |
-| `subgroupSupportedStages` | - | `VK_SHADER_STAGE_COMPUTE_BIT` (Vulkan Core)
+| `subgroupSupportedStages` | - | [VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits) (Vulkan Core)
 
-                                                   `VK_SHADER_STAGE_COMPUTE_BIT` \|
+                                                   [VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits) \|
 
-                                                   `VK_SHADER_STAGE_FRAGMENT_BIT` (Vulkan Roadmap 2022) | bitfield |
-| `subgroupSupportedOperations` | - | `VK_SUBGROUP_FEATURE_BASIC_BIT` (Vulkan Core)
+                                                   [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits) (Vulkan Roadmap 2022) | bitfield |
+| `subgroupSupportedOperations` | - | [VK_SUBGROUP_FEATURE_BASIC_BIT](#VkSubgroupFeatureFlagBits) (Vulkan Core)
 
-                                                   `VK_SUBGROUP_FEATURE_BASIC_BIT` \|
+                                                   [VK_SUBGROUP_FEATURE_BASIC_BIT](#VkSubgroupFeatureFlagBits) \|
 
-                                                   `VK_SUBGROUP_FEATURE_VOTE_BIT` \|
+                                                   [VK_SUBGROUP_FEATURE_VOTE_BIT](#VkSubgroupFeatureFlagBits) \|
 
-                                                   `VK_SUBGROUP_FEATURE_ARITHMETIC_BIT` \|
+                                                   [VK_SUBGROUP_FEATURE_ARITHMETIC_BIT](#VkSubgroupFeatureFlagBits) \|
 
-                                                   `VK_SUBGROUP_FEATURE_BALLOT_BIT` \|
+                                                   [VK_SUBGROUP_FEATURE_BALLOT_BIT](#VkSubgroupFeatureFlagBits) \|
 
-                                                   `VK_SUBGROUP_FEATURE_SHUFFLE_BIT` \|
+                                                   [VK_SUBGROUP_FEATURE_SHUFFLE_BIT](#VkSubgroupFeatureFlagBits) \|
 
-                                                   `VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT` \|
+                                                   [VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT](#VkSubgroupFeatureFlagBits) \|
 
-                                                   `VK_SUBGROUP_FEATURE_QUAD_BIT` (Vulkan Roadmap 2022) | bitfield |
+                                                   [VK_SUBGROUP_FEATURE_QUAD_BIT](#VkSubgroupFeatureFlagBits) (Vulkan Roadmap 2022) | bitfield |
 | `shaderSignedZeroInfNanPreserveFloat16` | - | - (Vulkan Core)
 
-                                                    `VK_TRUE` (Vulkan Roadmap 2022, Vulkan 1.4) | Boolean |
+                                                    [VK_TRUE](fundamentals.html#VK_TRUE) (Vulkan Roadmap 2022, Vulkan 1.4) | Boolean |
 | `shaderSignedZeroInfNanPreserveFloat32` | - | - (Vulkan Core)
 
-                                                    `VK_TRUE` (Vulkan Roadmap 2022, Vulkan 1.4) | Boolean |
-| `shaderRoundingModeRTEFloat16` | - | `VK_FALSE` (Vulkan Core)
+                                                    [VK_TRUE](fundamentals.html#VK_TRUE) (Vulkan Roadmap 2022, Vulkan 1.4) | Boolean |
+| `shaderRoundingModeRTEFloat16` | - | [VK_FALSE](fundamentals.html#VK_FALSE) (Vulkan Core)
 
-                                                    `VK_TRUE` (Vulkan Roadmap 2024) | Boolean |
-| `shaderRoundingModeRTEFloat32` | - | `VK_FALSE` (Vulkan Core)
+                                                    [VK_TRUE](fundamentals.html#VK_TRUE) (Vulkan Roadmap 2024) | Boolean |
+| `shaderRoundingModeRTEFloat32` | - | [VK_FALSE](fundamentals.html#VK_FALSE) (Vulkan Core)
 
-                                                    `VK_TRUE` (Vulkan Roadmap 2024) | Boolean |
+                                                    [VK_TRUE](fundamentals.html#VK_TRUE) (Vulkan Roadmap 2024) | Boolean |
 | `maxSubgroupSize` | - | - (Vulkan Core)
 
                                                    4 (Vulkan Roadmap 2022) | min |
@@ -8367,25 +8716,25 @@ whether or not the feature is enabled.
 
                                                    7680 (Vulkan 1.4) | min |
 | `maxFramebufferLayers` | - | 256 | min |
-| `framebufferColorSampleCounts` | - | (`VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT`) | min |
-| `framebufferIntegerColorSampleCounts` | - | (`VK_SAMPLE_COUNT_1_BIT`) | min |
-| `framebufferDepthSampleCounts` | - | (`VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT`) | min |
-| `framebufferStencilSampleCounts` | - | (`VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT`) | min |
-| `framebufferNoAttachmentsSampleCounts` | - | (`VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT`) | min |
+| `framebufferColorSampleCounts` | - | ([VK_SAMPLE_COUNT_1_BIT](#VkSampleCountFlagBits) \| [VK_SAMPLE_COUNT_4_BIT](#VkSampleCountFlagBits)) | min |
+| `framebufferIntegerColorSampleCounts` | - | ([VK_SAMPLE_COUNT_1_BIT](#VkSampleCountFlagBits)) | min |
+| `framebufferDepthSampleCounts` | - | ([VK_SAMPLE_COUNT_1_BIT](#VkSampleCountFlagBits) \| [VK_SAMPLE_COUNT_4_BIT](#VkSampleCountFlagBits)) | min |
+| `framebufferStencilSampleCounts` | - | ([VK_SAMPLE_COUNT_1_BIT](#VkSampleCountFlagBits) \| [VK_SAMPLE_COUNT_4_BIT](#VkSampleCountFlagBits)) | min |
+| `framebufferNoAttachmentsSampleCounts` | - | ([VK_SAMPLE_COUNT_1_BIT](#VkSampleCountFlagBits) \| [VK_SAMPLE_COUNT_4_BIT](#VkSampleCountFlagBits)) | min |
 | `maxColorAttachments` | - | 4 (Vulkan Core)
 
                                                    7 (Vulkan Roadmap 2022)
 
                                                    8 (Vulkan Roadmap 2024, Vulkan 1.4) | min |
-| `sampledImageColorSampleCounts` | - | (`VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT`) | min |
-| `sampledImageIntegerSampleCounts` | - | `VK_SAMPLE_COUNT_1_BIT` | min |
-| `sampledImageDepthSampleCounts` | - | (`VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT`) | min |
-| `sampledImageStencilSampleCounts` | - | (`VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT`) | min |
-| `storageImageSampleCounts` | `VK_SAMPLE_COUNT_1_BIT` | (`VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT`) | min |
+| `sampledImageColorSampleCounts` | - | ([VK_SAMPLE_COUNT_1_BIT](#VkSampleCountFlagBits) \| [VK_SAMPLE_COUNT_4_BIT](#VkSampleCountFlagBits)) | min |
+| `sampledImageIntegerSampleCounts` | - | [VK_SAMPLE_COUNT_1_BIT](#VkSampleCountFlagBits) | min |
+| `sampledImageDepthSampleCounts` | - | ([VK_SAMPLE_COUNT_1_BIT](#VkSampleCountFlagBits) \| [VK_SAMPLE_COUNT_4_BIT](#VkSampleCountFlagBits)) | min |
+| `sampledImageStencilSampleCounts` | - | ([VK_SAMPLE_COUNT_1_BIT](#VkSampleCountFlagBits) \| [VK_SAMPLE_COUNT_4_BIT](#VkSampleCountFlagBits)) | min |
+| `storageImageSampleCounts` | [VK_SAMPLE_COUNT_1_BIT](#VkSampleCountFlagBits) | ([VK_SAMPLE_COUNT_1_BIT](#VkSampleCountFlagBits) \| [VK_SAMPLE_COUNT_4_BIT](#VkSampleCountFlagBits)) | min |
 | `maxSampleMaskWords` | - | 1 | min |
 | `timestampComputeAndGraphics` | - | - (Vulkan Core)
 
-                                                   `VK_TRUE` (Vulkan Roadmap 2024, Vulkan 1.4) | Boolean |
+                                                   [VK_TRUE](fundamentals.html#VK_TRUE) (Vulkan Roadmap 2024, Vulkan 1.4) | Boolean |
 | `timestampPeriod` | - | - | duration |
 | `maxClipDistances` | 0 | 8 | min |
 | `maxCullDistances` | 0 | 8 | min |
@@ -8404,7 +8753,7 @@ whether or not the feature is enabled.
 | `strictLines` | - | - | implementation-dependent |
 | `standardSampleLocations` | - | - (Vulkan Core)
 
-                                                   `VK_TRUE` (Vulkan Roadmap 2022, Vulkan 1.4) | Boolean |
+                                                   [VK_TRUE](fundamentals.html#VK_TRUE) (Vulkan Roadmap 2022, Vulkan 1.4) | Boolean |
 | `optimalBufferCopyOffsetAlignment` | - | - | recommendation |
 | `optimalBufferCopyRowPitchAlignment` | - | - | recommendation |
 | `nonCoherentAtomSize` | - | 256 | max |
@@ -8412,40 +8761,40 @@ whether or not the feature is enabled.
 | `maxMultiviewViewCount` | - | 6 | min |
 | `maxMultiviewInstanceIndex` | - | 227-1 | min |
 | `maxDiscardRectangles` | 0 | 4 | min |
-| `sampleLocationSampleCounts` | - | `VK_SAMPLE_COUNT_4_BIT` | min |
+| `sampleLocationSampleCounts` | - | [VK_SAMPLE_COUNT_4_BIT](#VkSampleCountFlagBits) | min |
 | `maxSampleLocationGridSize` | - | (1,1) | min |
 | `sampleLocationCoordinateRange` | - | (0.0, 0.9375) | (max,min) |
 | `sampleLocationSubPixelBits` | - | 4 | min |
-| `variableSampleLocations` | - | `VK_FALSE` | implementation-dependent |
-| `nativeUnalignedPerformance` | - | `VK_FALSE` | implementation-dependent |
+| `variableSampleLocations` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `nativeUnalignedPerformance` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
 | `minImportedHostPointerAlignment` | - | 65536 | max |
 | `perViewPositionAllComponents` | - | - | implementation-dependent |
 | `filterMinmaxSingleComponentFormats` | - | - | implementation-dependent |
 | `filterMinmaxImageComponentMapping` | - | - | implementation-dependent |
 | `advancedBlendMaxColorAttachments` | - | 1 | min |
-| `advancedBlendIndependentBlend` | - | `VK_FALSE` | implementation-dependent |
-| `advancedBlendNonPremultipliedSrcColor` | - | `VK_FALSE` | implementation-dependent |
-| `advancedBlendNonPremultipliedDstColor` | - | `VK_FALSE` | implementation-dependent |
-| `advancedBlendCorrelatedOverlap` | - | `VK_FALSE` | implementation-dependent |
-| `advancedBlendAllOperations` | - | `VK_FALSE` | implementation-dependent |
+| `advancedBlendIndependentBlend` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `advancedBlendNonPremultipliedSrcColor` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `advancedBlendNonPremultipliedDstColor` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `advancedBlendCorrelatedOverlap` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `advancedBlendAllOperations` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
 | `maxPerSetDescriptors` | - | 1024 | min |
 | `maxMemoryAllocationSize` | - | 230 | min |
 | `maxBufferSize` | - | 230 | min |
 | `primitiveOverestimationSize` | - | 0.0 | min |
 | `maxExtraPrimitiveOverestimationSize` | - | 0.0 | min |
 | `extraPrimitiveOverestimationSizeGranularity` | - | 0.0 | min |
-| `primitiveUnderestimation` | - | `VK_FALSE` | implementation-dependent |
-| `conservativePointAndLineRasterization` | - | `VK_FALSE` | implementation-dependent |
-| `degenerateTrianglesRasterized` | - | `VK_FALSE` | implementation-dependent |
-| `degenerateLinesRasterized` | - | `VK_FALSE` | implementation-dependent |
-| `fullyCoveredFragmentShaderInputVariable` | - | `VK_FALSE` | implementation-dependent |
-| `conservativeRasterizationPostDepthCoverage` | - | `VK_FALSE` | implementation-dependent |
+| `primitiveUnderestimation` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `conservativePointAndLineRasterization` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `degenerateTrianglesRasterized` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `degenerateLinesRasterized` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `fullyCoveredFragmentShaderInputVariable` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `conservativeRasterizationPostDepthCoverage` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
 | `maxUpdateAfterBindDescriptorsInAllPools` | 0 | 500000 | min |
-| `shaderUniformBufferArrayNonUniformIndexingNative` | - | `VK_FALSE` | implementation-dependent |
-| `shaderSampledImageArrayNonUniformIndexingNative` | - | `VK_FALSE` | implementation-dependent |
-| `shaderStorageBufferArrayNonUniformIndexingNative` | - | `VK_FALSE` | implementation-dependent |
-| `shaderStorageImageArrayNonUniformIndexingNative` | - | `VK_FALSE` | implementation-dependent |
-| `shaderInputAttachmentArrayNonUniformIndexingNative` | - | `VK_FALSE` | implementation-dependent |
+| `shaderUniformBufferArrayNonUniformIndexingNative` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `shaderSampledImageArrayNonUniformIndexingNative` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `shaderStorageBufferArrayNonUniformIndexingNative` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `shaderStorageImageArrayNonUniformIndexingNative` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `shaderInputAttachmentArrayNonUniformIndexingNative` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
 | `maxPerStageDescriptorUpdateAfterBindSamplers` | 0 9 | 500000 9 | min |
 | `maxPerStageDescriptorUpdateAfterBindUniformBuffers` | 0 9 | 12 9 | min |
 | `maxPerStageDescriptorUpdateAfterBindStorageBuffers` | 0 9 | 500000 9 | min |
@@ -8520,15 +8869,15 @@ whether or not the feature is enabled.
 | `maxTransformFeedbackStreamDataSize` | - | 512 | min |
 | `maxTransformFeedbackBufferDataSize` | - | 512 | min |
 | `maxTransformFeedbackBufferDataStride` | - | 512 | min |
-| `transformFeedbackQueries` | - | `VK_FALSE` | implementation-dependent |
-| `transformFeedbackStreamsLinesTriangles` | - | `VK_FALSE` | implementation-dependent |
-| `transformFeedbackRasterizationStreamSelect` | - | `VK_FALSE` | implementation-dependent |
-| `transformFeedbackDraw` | - | `VK_FALSE` | implementation-dependent |
+| `transformFeedbackQueries` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `transformFeedbackStreamsLinesTriangles` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `transformFeedbackRasterizationStreamSelect` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `transformFeedbackDraw` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
 | `minFragmentDensityTexelSize` | - | (1,1) | min |
 | `maxFragmentDensityTexelSize` | - | (1,1) | min |
 | `fragmentDensityInvocations` | - | - | implementation-dependent |
-| `subsampledLoads` | `VK_TRUE` | `VK_FALSE` | implementation-dependent |
-| `subsampledCoarseReconstructionEarlyAccess` | `VK_FALSE` | `VK_FALSE` | implementation-dependent |
+| `subsampledLoads` | [VK_TRUE](fundamentals.html#VK_TRUE) | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `subsampledCoarseReconstructionEarlyAccess` | [VK_FALSE](fundamentals.html#VK_FALSE) | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
 | `maxSubsampledArrayLayers` | 2 | 2 | min |
 | `maxDescriptorSetSubsampledSamplers` | 1 | 1 | min |
 | `fragmentDensityOffsetGranularity` | - | (1024,1024) | max |
@@ -8577,8 +8926,8 @@ whether or not the feature is enabled.
 | `deviceGeneratedCommandsMultiDrawIndirectCount` | - | false | implementation-dependent |
 | `maxIndirectShaderObjectCount` | 0 | 212 | implementation-dependent |
 | `maxIndirectCommandsIndirectStride` | - | 2048 | min |
-| `supportedIndirectCommandsInputModes` | - | `VK_INDIRECT_COMMANDS_INPUT_MODE_VULKAN_INDEX_BUFFER_EXT` | min |
-| `supportedIndirectCommandsShaderStages` | - | (`VK_SHADER_STAGE_COMPUTE_BIT` \| `VK_SHADER_STAGE_VERTEX_BIT` \| `VK_SHADER_STAGE_FRAGMENT_BIT`) | min |
+| `supportedIndirectCommandsInputModes` | - | [VK_INDIRECT_COMMANDS_INPUT_MODE_VULKAN_INDEX_BUFFER_EXT](device_generated_commands/generatedcommands.html#VkIndirectCommandsInputModeFlagBitsEXT) | min |
+| `supportedIndirectCommandsShaderStages` | - | ([VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits) \| [VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits) \| [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits)) | min |
 | `supportedIndirectCommandsShaderStagesPipelineBinding` | - | 0 | min |
 | `supportedIndirectCommandsShaderStagesShaderBinding` | - | 0 | min |
 | `maxCustomBorderColorSamplers` | - | 32 | min |
@@ -8587,24 +8936,24 @@ whether or not the feature is enabled.
 | `minFragmentShadingRateAttachmentTexelSize` | (0,0) | (32,32) | max |
 | `maxFragmentShadingRateAttachmentTexelSize` | (0,0) | (8,8) | min |
 | `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` | 0 | 1 | min |
-| `primitiveFragmentShadingRateWithMultipleViewports` | `VK_FALSE` | `VK_FALSE` | implementation-dependent |
-| `layeredShadingRateAttachments` | `VK_FALSE` | `VK_FALSE` | implementation-dependent |
-| `fragmentShadingRateNonTrivialCombinerOps` | - | `VK_FALSE` | implementation-dependent |
+| `primitiveFragmentShadingRateWithMultipleViewports` | [VK_FALSE](fundamentals.html#VK_FALSE) | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `layeredShadingRateAttachments` | [VK_FALSE](fundamentals.html#VK_FALSE) | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `fragmentShadingRateNonTrivialCombinerOps` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
 | `maxFragmentSize` | - | (2,2) | min |
 | `maxFragmentSizeAspectRatio` | - | 2 | min |
 | `maxFragmentShadingRateCoverageSamples` | - | 16 | min |
-| `maxFragmentShadingRateRasterizationSamples` | - | `VK_SAMPLE_COUNT_4_BIT` | min |
-| `fragmentShadingRateWithShaderDepthStencilWrites` | - | `VK_FALSE` | implementation-dependent |
-| `fragmentShadingRateWithSampleMask` | - | `VK_FALSE` | implementation-dependent |
-| `fragmentShadingRateWithShaderSampleMask` | - | `VK_FALSE` | implementation-dependent |
-| `fragmentShadingRateWithConservativeRasterization` | - | `VK_FALSE` | implementation-dependent |
-| `fragmentShadingRateWithFragmentShaderInterlock` | - | `VK_FALSE` | implementation-dependent |
-| `fragmentShadingRateWithCustomSampleLocations` | - | `VK_FALSE` | implementation-dependent |
-| `fragmentShadingRateStrictMultiplyCombiner` | - | `VK_FALSE` | implementation-dependent |
-| `maxFragmentShadingRateInvocationCount` | - | `VK_SAMPLE_COUNT_4_BIT` | min |
-| `combinedImageSamplerDescriptorSingleArray` | - | `VK_FALSE` | implementation-dependent |
-| `bufferlessPushDescriptors` | - | `VK_FALSE` | implementation-dependent |
-| `allowSamplerImageViewPostSubmitCreation` | - | `VK_FALSE` | implementation-dependent |
+| `maxFragmentShadingRateRasterizationSamples` | - | [VK_SAMPLE_COUNT_4_BIT](#VkSampleCountFlagBits) | min |
+| `fragmentShadingRateWithShaderDepthStencilWrites` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `fragmentShadingRateWithSampleMask` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `fragmentShadingRateWithShaderSampleMask` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `fragmentShadingRateWithConservativeRasterization` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `fragmentShadingRateWithFragmentShaderInterlock` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `fragmentShadingRateWithCustomSampleLocations` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `fragmentShadingRateStrictMultiplyCombiner` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `maxFragmentShadingRateInvocationCount` | - | [VK_SAMPLE_COUNT_4_BIT](#VkSampleCountFlagBits) | min |
+| `combinedImageSamplerDescriptorSingleArray` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `bufferlessPushDescriptors` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `allowSamplerImageViewPostSubmitCreation` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
 | `descriptorBufferOffsetAlignment` | - | 256 | max |
 | `maxDescriptorBufferBindings` | - | 3 | min |
 | `maxResourceDescriptorBufferBindings` | - | 1 | min |
@@ -8639,9 +8988,9 @@ whether or not the feature is enabled.
 | `maxSubpassShadingWorkgroupSizeAspectRatio` | 0 | 1 | min |
 | `maxMultiDrawCount` | - | 1024 | min |
 | `maxCommandBufferNestingLevel` | - | 1 | min |
-| `graphicsPipelineLibraryFastLinking` | - | `VK_FALSE` | implementation-dependent |
-| `graphicsPipelineLibraryIndependentInterpolationDecoration` | - | `VK_FALSE` | implementation-dependent |
-| `triStripVertexOrderIndependentOfProvokingVertex` | - | `VK_FALSE` | implementation-dependent |
+| `graphicsPipelineLibraryFastLinking` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `graphicsPipelineLibraryIndependentInterpolationDecoration` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
+| `triStripVertexOrderIndependentOfProvokingVertex` | - | [VK_FALSE](fundamentals.html#VK_FALSE) | implementation-dependent |
 | `maxWeightFilterPhases` | - | 1024 | min |
 | `maxWeightFilterDimension` | - | (64,64) | min |
 | `maxBlockMatchRegion` | - | (64,64) | min |
@@ -8667,11 +9016,12 @@ whether or not the feature is enabled.
 | `maxRenderPassStripes` | - | 32 | min |
 | `minPlacedMemoryMapAlignment` | - | 65536 | max |
 | `supportedImageAlignmentMask` | - | 1 | min |
-| `separateDepthStencilAttachmentAccess` | `VK_FALSE` | - | implementation-dependent |
+| `separateDepthStencilAttachmentAccess` | [VK_FALSE](fundamentals.html#VK_FALSE) | - | implementation-dependent |
 | `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize` | - | subgroupSize × 2 | min |
 | `cooperativeMatrixFlexibleDimensionsMaxDimension` | - | 256 | min |
 | `cooperativeMatrixWorkgroupScopeReservedSharedMemory` | - | `maxComputeSharedMemorySize` / 2 | max |
 | `maxCooperativeVectorComponents` | - | 128 | min |
+| `maxVectorComponents` | - | 1024 | min |
 | `maxApronSize` | - | 1 | min |
 | `preferNonCoherent` | - | - | implementation-dependent |
 | `tileGranularity` | - | (16,16) | min |
@@ -8684,10 +9034,36 @@ whether or not the feature is enabled.
 | `maxPerStageDescriptorSetStorageTensors` | - | 16 | min |
 | `maxDescriptorSetUpdateAfterBindStorageTensors` | 0 | 500000 | min |
 | `maxPerStageDescriptorUpdateAfterBindStorageTensors` | 0 | 500000 | min |
-| `shaderTensorSupportedStages` | - | `VK_SHADER_STAGE_COMPUTE_BIT` | bitfield |
+| `shaderTensorSupportedStages` | - | [VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits) | bitfield |
 | `maxShaderBindingTableRecordIndex` | - | 228-1 | min |
 | `resolveSrgbFormatAppliesTransferFunction` | - | - | implementation-depdendent |
-| `resolveSrgbFormatSupportsTransferFunctionControl` | `VK_FALSE` | `VK_FALSE` | min |
+| `resolveSrgbFormatSupportsTransferFunctionControl` | [VK_FALSE](fundamentals.html#VK_FALSE) | [VK_FALSE](fundamentals.html#VK_FALSE) | min |
+| `samplerHeapAlignment` | - | 65536 | max |
+| `resourceHeapAlignment` | - | 65536 | max |
+| `maxSamplerHeapSize` | - | max(
+
+                                                    4000 × `samplerDescriptorSize`
+                                                    + `minSamplerHeapReservedRange`,
+
+                                                    2048 × `samplerDescriptorSize`
+                                                    + `minSamplerHeapReservedRangeWithEmbedded`) | min |
+| `maxResourceHeapSize` | - | (220 - 215) × max(`imageDescriptorSize`,
+                                                    `bufferDescriptorSize`)
+                                                    + `minResourceHeapReservedRange` | min |
+| `minSamplerHeapReservedRange` | - | 96 × `samplerDescriptorSize` | max |
+| `minSamplerHeapReservedRangeWithEmbedded` | - | 2048 × `samplerDescriptorSize` | max |
+| `minResourceHeapReservedRange` | - | 215 × max(`imageDescriptorSize`,
+                                                       `bufferDescriptorSize`) | max |
+| `samplerDescriptorSize` | - | 32 | max |
+| `imageDescriptorSize` | - | 64 | max |
+| `bufferDescriptorSize` | - | 128 | max |
+| `samplerDescriptorAlignment` | - | 32 | max |
+| `imageDescriptorAlignment` | - | 64 | max |
+| `bufferDescriptorAlignment` | - | 128 | max |
+| `maxPushDataSize` | - | 256 | min |
+| `maxDescriptorHeapEmbeddedSamplers` | - | 2032 | min |
+| `samplerYcbcrConversionCount` | - | 3 | max |
+| `imageCaptureReplayOpaqueDataSize` | - | - | implementation-dependent |
 
 1
 
@@ -8842,7 +9218,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMultisamplePropertiesEXT-sType-sType) VUID-VkMultisamplePropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MULTISAMPLE_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MULTISAMPLE_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMultisamplePropertiesEXT-pNext-pNext) VUID-VkMultisamplePropertiesEXT-pNext-pNext
@@ -8888,27 +9264,27 @@ profile **must** satisfy the following additional limit requirements:
 | `maxSamplerLodBias` | 14 | min |
 | `pointSizeGranularity` | 0.125 | max |
 | `lineWidthGranularity` | 0.5 | max |
-| `standardSampleLocations` | `VK_TRUE` | Boolean |
+| `standardSampleLocations` | [VK_TRUE](fundamentals.html#VK_TRUE) | Boolean |
 | `maxColorAttachments` | 7 | min |
 | `subgroupSize` | 4 | min |
-| `subgroupSupportedStages` | `VK_SHADER_STAGE_COMPUTE_BIT`
+| `subgroupSupportedStages` | [VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits)
 
-                                                `VK_SHADER_STAGE_FRAGMENT_BIT` | bitfield |
-| `subgroupSupportedOperations` | `VK_SUBGROUP_FEATURE_BASIC_BIT`
+                                                [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits) | bitfield |
+| `subgroupSupportedOperations` | [VK_SUBGROUP_FEATURE_BASIC_BIT](#VkSubgroupFeatureFlagBits)
 
-                                                `VK_SUBGROUP_FEATURE_VOTE_BIT`
+                                                [VK_SUBGROUP_FEATURE_VOTE_BIT](#VkSubgroupFeatureFlagBits)
 
-                                                `VK_SUBGROUP_FEATURE_ARITHMETIC_BIT`
+                                                [VK_SUBGROUP_FEATURE_ARITHMETIC_BIT](#VkSubgroupFeatureFlagBits)
 
-                                                `VK_SUBGROUP_FEATURE_BALLOT_BIT`
+                                                [VK_SUBGROUP_FEATURE_BALLOT_BIT](#VkSubgroupFeatureFlagBits)
 
-                                                `VK_SUBGROUP_FEATURE_SHUFFLE_BIT`
+                                                [VK_SUBGROUP_FEATURE_SHUFFLE_BIT](#VkSubgroupFeatureFlagBits)
 
-                                                `VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT`
+                                                [VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT](#VkSubgroupFeatureFlagBits)
 
-                                                `VK_SUBGROUP_FEATURE_QUAD_BIT` | bitfield |
-| `shaderSignedZeroInfNanPreserveFloat16` | `VK_TRUE` | Boolean |
-| `shaderSignedZeroInfNanPreserveFloat32` | `VK_TRUE` | Boolean |
+                                                [VK_SUBGROUP_FEATURE_QUAD_BIT](#VkSubgroupFeatureFlagBits) | bitfield |
+| `shaderSignedZeroInfNanPreserveFloat16` | [VK_TRUE](fundamentals.html#VK_TRUE) | Boolean |
+| `shaderSignedZeroInfNanPreserveFloat32` | [VK_TRUE](fundamentals.html#VK_TRUE) | Boolean |
 | `maxSubgroupSize` | 4 | min |
 | `maxPerStageDescriptorUpdateAfterBindInputAttachments` | 7 | min |
 
@@ -8917,8 +9293,8 @@ profile **must** satisfy the following additional limit requirements:
 
 | Limit | Supported Limit | Limit Type1 |
 | --- | --- | --- |
-| `shaderRoundingModeRTEFloat16` | `VK_TRUE` | Boolean |
-| `shaderRoundingModeRTEFloat32` | `VK_TRUE` | Boolean |
-| `timestampComputeAndGraphics` | `VK_TRUE` | Boolean |
+| `shaderRoundingModeRTEFloat16` | [VK_TRUE](fundamentals.html#VK_TRUE) | Boolean |
+| `shaderRoundingModeRTEFloat32` | [VK_TRUE](fundamentals.html#VK_TRUE) | Boolean |
+| `timestampComputeAndGraphics` | [VK_TRUE](fundamentals.html#VK_TRUE) | Boolean |
 | `maxColorAttachments` | 8 | min |
 | `maxBoundDescriptorSets` | 7 | min |

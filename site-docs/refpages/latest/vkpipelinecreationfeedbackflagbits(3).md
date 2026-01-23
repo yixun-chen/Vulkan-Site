@@ -39,17 +39,17 @@ typedef enum VkPipelineCreationFeedbackFlagBits {
 typedef VkPipelineCreationFeedbackFlagBits VkPipelineCreationFeedbackFlagBitsEXT;
 
 * 
-`VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT` specifies that the
+[VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT](#) specifies that the
 feedback information is valid.
 
 * 
-`VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT`
+[VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT](#)
 specifies that a readily usable pipeline or pipeline stage was found in
 the `pipelineCache` specified by the application in the pipeline
 creation command.
 
 An implementation **should** set the
-`VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT` bit
+[VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT](#) bit
 if it was able to avoid the large majority of pipeline or pipeline stage
 creation work by using the `pipelineCache` parameter of
 [vkCreateGraphicsPipelines](vkCreateGraphicsPipelines.html),
@@ -70,14 +70,14 @@ If an implementation uses an internal cache, it is discouraged from setting
 this bit as the feedback would be unactionable. |
 
 * 
-`VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT`
+[VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT](#)
 specifies that the base pipeline specified by the
 `basePipelineHandle` or `basePipelineIndex` member of the
 `Vk*PipelineCreateInfo` structure was used to accelerate the
 creation of the pipeline.
 
 An implementation **should** set the
-`VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT` bit if it
+[VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT](#) bit if it
 was able to avoid a significant amount of work by using the base pipeline.
 
 |  | While “significant amount of work” is subjective, implementations are

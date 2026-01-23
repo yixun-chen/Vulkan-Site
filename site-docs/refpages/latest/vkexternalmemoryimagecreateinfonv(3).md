@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalMemoryImageCreateInfoNV-sType-sType) VUID-VkExternalMemoryImageCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkExternalMemoryImageCreateInfoNV-handleTypes-parameter) VUID-VkExternalMemoryImageCreateInfoNV-handleTypes-parameter

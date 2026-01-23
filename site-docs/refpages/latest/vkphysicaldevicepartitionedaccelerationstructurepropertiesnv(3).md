@@ -51,7 +51,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV-sType-sType) VUID-VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_PROPERTIES_NV](VkStructureType.html)
 
 [VK_NV_partitioned_acceleration_structure](VK_NV_partitioned_acceleration_structure.html), [VkStructureType](VkStructureType.html)
 

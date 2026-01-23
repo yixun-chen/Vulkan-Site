@@ -29,12 +29,12 @@ typedef enum VkBlockMatchWindowCompareModeQCOM {
 } VkBlockMatchWindowCompareModeQCOM;
 
 * 
-`VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MIN_QCOM` specifies that
+[VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MIN_QCOM](#) specifies that
 windowed block match operations return the minimum error within the
 window.
 
 * 
-`VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_QCOM` specifies that
+[VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_QCOM](#) specifies that
 windowed block match operations return the maximum error within the
 window.
 

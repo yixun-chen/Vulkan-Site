@@ -36,7 +36,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCuModuleCreateInfoNVX-sType-sType) VUID-VkCuModuleCreateInfoNVX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CU_MODULE_CREATE_INFO_NVX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CU_MODULE_CREATE_INFO_NVX](VkStructureType.html)
 
 * 
 [](#VUID-VkCuModuleCreateInfoNVX-pNext-pNext) VUID-VkCuModuleCreateInfoNVX-pNext-pNext

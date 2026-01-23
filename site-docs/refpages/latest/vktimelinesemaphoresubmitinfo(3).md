@@ -20,7 +20,7 @@
 VkTimelineSemaphoreSubmitInfo - Structure specifying signal and wait values for timeline semaphores
 
 To specify the values to use when waiting for and signaling semaphores
-created with a [VkSemaphoreType](VkSemaphoreType.html) of `VK_SEMAPHORE_TYPE_TIMELINE`,
+created with a [VkSemaphoreType](VkSemaphoreType.html) of [VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html),
 add a [VkTimelineSemaphoreSubmitInfo](#) structure to the `pNext` chain
 of the [VkSubmitInfo](VkSubmitInfo.html) structure when using [vkQueueSubmit](vkQueueSubmit.html)
 or the [VkBindSparseInfo](VkBindSparseInfo.html) structure when using [vkQueueBindSparse](vkQueueBindSparse.html)
@@ -70,7 +70,7 @@ If the semaphore in [VkSubmitInfo](VkSubmitInfo.html)::`pWaitSemaphores` or
 [VkSubmitInfo](VkSubmitInfo.html)::`pSignalSemaphores` corresponding to an entry in
 `pWaitSemaphoreValues` or `pSignalSemaphoreValues` respectively was
 not created with a [VkSemaphoreType](VkSemaphoreType.html) of
-`VK_SEMAPHORE_TYPE_TIMELINE`, the implementation **must** ignore the value
+[VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html), the implementation **must** ignore the value
 in the `pWaitSemaphoreValues` or `pSignalSemaphoreValues` entry.
 
 Valid Usage (Implicit)
@@ -78,7 +78,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTimelineSemaphoreSubmitInfo-sType-sType) VUID-VkTimelineSemaphoreSubmitInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TIMELINE_SEMAPHORE_SUBMIT_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TIMELINE_SEMAPHORE_SUBMIT_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkTimelineSemaphoreSubmitInfo-pWaitSemaphoreValues-parameter) VUID-VkTimelineSemaphoreSubmitInfo-pWaitSemaphoreValues-parameter

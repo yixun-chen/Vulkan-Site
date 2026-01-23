@@ -18,7 +18,7 @@
 
 VkDataGraphPipelineSessionBindPointTypeARM - Enumeration describing the type of bind points of a data graph pipeline session
 
-Possible values of `VkDataGraphPipelineSessionBindPointTypeARM`,
+Possible values of [VkDataGraphPipelineSessionBindPointTypeARM](#),
 specifying the type of a bind point of a data graph pipeline session, are:
 
 // Provided by VK_ARM_data_graph
@@ -27,7 +27,7 @@ typedef enum VkDataGraphPipelineSessionBindPointTypeARM {
 } VkDataGraphPipelineSessionBindPointTypeARM;
 
 * 
-`VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TYPE_MEMORY_ARM`
+[VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TYPE_MEMORY_ARM](#)
 corresponds to a memory allocation.
 
 [VK_ARM_data_graph](VK_ARM_data_graph.html), [VkDataGraphPipelineSessionBindPointRequirementARM](VkDataGraphPipelineSessionBindPointRequirementARM.html)

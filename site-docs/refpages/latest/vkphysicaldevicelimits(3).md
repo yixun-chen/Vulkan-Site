@@ -139,7 +139,7 @@ These are available in the `limits` member of the
 * 
  `maxImageDimension1D` is the largest
 dimension (`width`) that is guaranteed to be supported for all
-images created with an `imageType` of `VK_IMAGE_TYPE_1D`.
+images created with an `imageType` of [VK_IMAGE_TYPE_1D](VkImageType.html).
 Some combinations of image parameters (format, usage, etc.) **may** allow
 support for larger dimensions, which **can** be queried using
 [vkGetPhysicalDeviceImageFormatProperties](vkGetPhysicalDeviceImageFormatProperties.html).
@@ -148,8 +148,8 @@ support for larger dimensions, which **can** be queried using
  `maxImageDimension2D` is the largest
 dimension (`width` or `height`) that is guaranteed to be
 supported for all images created with an `imageType` of
-`VK_IMAGE_TYPE_2D` and without
-`VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT` set in `flags`.
+[VK_IMAGE_TYPE_2D](VkImageType.html) and without
+[VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT](VkImageCreateFlagBits.html) set in `flags`.
 Some combinations of image parameters (format, usage, etc.) **may** allow
 support for larger dimensions, which **can** be queried using
 [vkGetPhysicalDeviceImageFormatProperties](vkGetPhysicalDeviceImageFormatProperties.html).
@@ -158,7 +158,7 @@ support for larger dimensions, which **can** be queried using
  `maxImageDimension3D` is the largest
 dimension (`width`, `height`, or `depth`) that is guaranteed
 to be supported for all images created with an `imageType` of
-`VK_IMAGE_TYPE_3D`.
+[VK_IMAGE_TYPE_3D](VkImageType.html).
 Some combinations of image parameters (format, usage, etc.) **may** allow
 support for larger dimensions, which **can** be queried using
 [vkGetPhysicalDeviceImageFormatProperties](vkGetPhysicalDeviceImageFormatProperties.html).
@@ -167,8 +167,8 @@ support for larger dimensions, which **can** be queried using
  `maxImageDimensionCube` is the
 largest dimension (`width` or `height`) that is guaranteed to be
 supported for all images created with an `imageType` of
-`VK_IMAGE_TYPE_2D` and with
-`VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT` set in `flags`.
+[VK_IMAGE_TYPE_2D](VkImageType.html) and with
+[VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT](VkImageCreateFlagBits.html) set in `flags`.
 Some combinations of image parameters (format, usage, etc.) **may** allow
 support for larger dimensions, which **can** be queried using
 [vkGetPhysicalDeviceImageFormatProperties](vkGetPhysicalDeviceImageFormatProperties.html).
@@ -181,24 +181,24 @@ number of layers (`arrayLayers`) for an image.
  `maxTexelBufferElements` is the
 maximum number of addressable texels for a buffer view created on a
 buffer which was created with the
-`VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT` or
-`VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT` usage flag set.
+[VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits.html) or
+[VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set.
 
 * 
  `maxUniformBufferRange` is the
 maximum value that **can** be specified in the `range` member of a
 [VkDescriptorBufferInfo](VkDescriptorBufferInfo.html) structure passed to
 [vkUpdateDescriptorSets](vkUpdateDescriptorSets.html) for descriptors of type
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` or
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`.
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html).
 
 * 
  `maxStorageBufferRange` is the
 maximum value that **can** be specified in the `range` member of a
 [VkDescriptorBufferInfo](VkDescriptorBufferInfo.html) structure passed to
 [vkUpdateDescriptorSets](vkUpdateDescriptorSets.html) for descriptors of type
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`.
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html).
 If the [`shader64BitIndexing`](../../../../spec/latest/chapters/features.html#features-shader64BitIndexing)
 feature is enabled, this limit does not apply.
 
@@ -219,6 +219,13 @@ the maximum number of device memory allocations, as created by
  `maxSamplerAllocationCount` is
 the maximum number of sampler objects, as created by
 [vkCreateSampler](vkCreateSampler.html), which **can** simultaneously exist on a device.
+If the [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) feature is
+enabled and the application intends to use embedded samplers, the number
+advertised here is effectively reduced by the quotient of
+[`minSamplerHeapReservedRangeWithEmbedded`](../../../../spec/latest/chapters/limits.html#limits-minSamplerHeapReservedRangeWithEmbedded)
+divided by [`samplerDescriptorSize`](../../../../spec/latest/chapters/limits.html#limits-samplerDescriptorSize),
+to provide storage for embedded samplers when switching to heaps.
+If embedded samplers are not used, this can be ignored.
 
 * 
  `bufferImageGranularity` is the
@@ -247,19 +254,17 @@ in [    `extendedSparseBufferUsageFlags`](../../../../spec/latest/chapters/limit
  `maxBoundDescriptorSets` is the
 maximum number of descriptor sets that **can** be simultaneously used by a
 pipeline.
-All `DescriptorSet` decorations in shader modules **must** have a value
-less than `maxBoundDescriptorSets`.
 See [Descriptor Sets](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-sets).
 
 * 
 
 `maxPerStageDescriptorSamplers` is the maximum number of samplers
 that **can** be accessible to a single shader stage in a pipeline layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_SAMPLER` or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` count against this
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) count against this
 limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 A descriptor is accessible to a shader stage when the `stageFlags`
 member of the `VkDescriptorSetLayoutBinding` structure has the bit
@@ -272,11 +277,11 @@ See [Sampler](../../../../spec/latest/chapters/descriptorsets.html#descriptorset
 `maxPerStageDescriptorUniformBuffers` is the maximum number of
 uniform buffers that **can** be accessible to a single shader stage in a
 pipeline layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` or
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` count against this
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) count against this
 limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 A descriptor is accessible to a shader stage when the `stageFlags`
 member of the `VkDescriptorSetLayoutBinding` structure has the bit
@@ -289,11 +294,11 @@ See [Uniform Buffer](../../../../spec/latest/chapters/descriptorsets.html#descri
 `maxPerStageDescriptorStorageBuffers` is the maximum number of
 storage buffers that **can** be accessible to a single shader stage in a
 pipeline layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` count against this
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html) count against this
 limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 A descriptor is accessible to a pipeline shader stage when the
 `stageFlags` member of the `VkDescriptorSetLayoutBinding`
@@ -307,11 +312,11 @@ See [Storage Buffer](../../../../spec/latest/chapters/descriptorsets.html#descri
 sampled images that **can** be accessible to a single shader stage in a
 pipeline layout.
 Descriptors with a type of
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` count against this limit.
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html), or
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html) count against this limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 A descriptor is accessible to a pipeline shader stage when the
 `stageFlags` member of the `VkDescriptorSetLayoutBinding`
@@ -325,10 +330,10 @@ See [Combined Image Sampler](../../../../spec/latest/chapters/descriptorsets.htm
 `maxPerStageDescriptorStorageImages` is the maximum number of
 storage images that **can** be accessible to a single shader stage in a
 pipeline layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` count against this limit.
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html), or
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html) count against this limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 A descriptor is accessible to a pipeline shader stage when the
 `stageFlags` member of the `VkDescriptorSetLayoutBinding`
@@ -340,11 +345,11 @@ See [Storage Image](../../../../spec/latest/chapters/descriptorsets.html#descrip
 
 `maxPerStageDescriptorInputAttachments` is the maximum number of
 input attachments that **can** be accessible to a single shader stage in a
-pipeline layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`
+pipeline layout, as well as the maximum usable input attachment index.
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html)
 count against this limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 A descriptor is accessible to a pipeline shader stage when the
 `stageFlags` member of the `VkDescriptorSetLayoutBinding`
@@ -352,23 +357,37 @@ structure has the bit for that shader stage set.
 These are only supported for the fragment stage.
 See [Input Attachment](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-inputattachment).
 
+|  | `maxPerStageDescriptorInputAttachments` was originally only intended to
+| --- | --- |
+limit the number of attachments per stage, not the number of available input
+indices across all shaders in a render pass.
+The input indices were allowed to be semi arbitrary for render pass objects,
+or fully arbitrary for dynamic rendering,
+however some implementations have fixed limits for them.
+Applications already exist that exceed this limit, and they will continue to
+work where they already did, but will fail to render on some platforms.
+For forward looking applications, this can be worked around by
+either making careful use of index remapping with
+[VkRenderingInputAttachmentIndexInfo](VkRenderingInputAttachmentIndexInfo.html) for dynamic rendering, or
+splitting a subpass with too many input attachments into multiple subpasses. |
+
 * 
  `maxPerStageResources` is the
 maximum number of resources that **can** be accessible to a single shader
 stage in a pipeline layout.
 Descriptors with a type of
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`,
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`,
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`,
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`,
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`,
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`,
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`, or
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` count against this limit.
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html), or
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html) count against this limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 For the fragment shader stage the framebuffer color attachments also
 count against this limit.
@@ -377,11 +396,11 @@ count against this limit.
  `maxDescriptorSetSamplers` is
 the maximum number of samplers that **can** be included in a pipeline
 layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_SAMPLER` or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` count against this
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) count against this
 limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 See [Sampler](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-sampler) and
 [Combined Image Sampler](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-combinedimagesampler).
@@ -390,11 +409,11 @@ See [Sampler](../../../../spec/latest/chapters/descriptorsets.html#descriptorset
 
 `maxDescriptorSetUniformBuffers` is the maximum number of uniform
 buffers that **can** be included in a pipeline layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` or
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` count against this
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) count against this
 limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 See [Uniform Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-uniformbuffer) and
 [Dynamic Uniform Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-uniformbufferdynamic).
@@ -404,10 +423,10 @@ See [Uniform Buffer](../../../../spec/latest/chapters/descriptorsets.html#descri
 `maxDescriptorSetUniformBuffersDynamic` is the maximum number of
 dynamic uniform buffers that **can** be included in a pipeline layout.
 Descriptors with a type of
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` count against this
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) count against this
 limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 See [Dynamic Uniform Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-uniformbufferdynamic).
 
@@ -415,11 +434,11 @@ See [Dynamic Uniform Buffer](../../../../spec/latest/chapters/descriptorsets.htm
 
 `maxDescriptorSetStorageBuffers` is the maximum number of storage
 buffers that **can** be included in a pipeline layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` count against this
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html) count against this
 limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 See [Storage Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagebuffer) and
 [Dynamic Storage Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagebufferdynamic).
@@ -429,10 +448,10 @@ See [Storage Buffer](../../../../spec/latest/chapters/descriptorsets.html#descri
 `maxDescriptorSetStorageBuffersDynamic` is the maximum number of
 dynamic storage buffers that **can** be included in a pipeline layout.
 Descriptors with a type of
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` count against this
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html) count against this
 limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 See [Dynamic Storage Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagebufferdynamic).
 
@@ -441,11 +460,11 @@ See [Dynamic Storage Buffer](../../../../spec/latest/chapters/descriptorsets.htm
 `maxDescriptorSetSampledImages` is the maximum number of sampled
 images that **can** be included in a pipeline layout.
 Descriptors with a type of
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` count against this limit.
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html), or
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html) count against this limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 See [Combined Image Sampler](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-combinedimagesampler),
 [Sampled Image](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-sampledimage), and
@@ -455,10 +474,10 @@ See [Combined Image Sampler](../../../../spec/latest/chapters/descriptorsets.htm
 
 `maxDescriptorSetStorageImages` is the maximum number of storage
 images that **can** be included in a pipeline layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` count against this limit.
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html), or
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html) count against this limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 See [Storage Image](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storageimage), and
 [Storage Texel Buffer](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storagetexelbuffer).
@@ -467,10 +486,10 @@ See [Storage Image](../../../../spec/latest/chapters/descriptorsets.html#descrip
 
 `maxDescriptorSetInputAttachments` is the maximum number of input
 attachments that **can** be included in a pipeline layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html)
 count against this limit.
 Only descriptors in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 See [Input Attachment](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-inputattachment).
 
@@ -792,8 +811,8 @@ value.
 `minUniformBufferOffsetAlignment` is the minimum **required**
 alignment, in bytes, for the `offset` member of the
 `VkDescriptorBufferInfo` structure for uniform buffers.
-When a descriptor of type `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` or
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` is updated, the
+When a descriptor of type [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) is updated, the
 `offset` **must** be an integer multiple of this limit.
 Similarly, dynamic offsets for uniform buffers **must** be multiples of
 this limit.
@@ -804,8 +823,8 @@ The value **must** be a power of two.
 `minStorageBufferOffsetAlignment` is the minimum **required**
 alignment, in bytes, for the `offset` member of the
 `VkDescriptorBufferInfo` structure for storage buffers.
-When a descriptor of type `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` is updated, the
+When a descriptor of type [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html) is updated, the
 `offset` **must** be an integer multiple of this limit.
 Similarly, dynamic offsets for storage buffers **must** be multiples of
 this limit.
@@ -912,37 +931,37 @@ structure **must** be less than or equal to this limit.
 
 `sampledImageColorSampleCounts` is a bitmask1 of
 [VkSampleCountFlagBits](VkSampleCountFlagBits.html) indicating the sample counts supported for
-all 2D images created with `VK_IMAGE_TILING_OPTIMAL`, the
-`VK_IMAGE_USAGE_SAMPLED_BIT` usage flag set, and a non-integer color
+all 2D images created with [VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html), the
+[VK_IMAGE_USAGE_SAMPLED_BIT](VkImageUsageFlagBits.html) usage flag set, and a non-integer color
 format.
 
 * 
 
 `sampledImageIntegerSampleCounts` is a bitmask1 of
 [VkSampleCountFlagBits](VkSampleCountFlagBits.html) indicating the sample counts supported for
-all 2D images created with `VK_IMAGE_TILING_OPTIMAL`, the
-`VK_IMAGE_USAGE_SAMPLED_BIT` usage flag set, and an integer color
+all 2D images created with [VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html), the
+[VK_IMAGE_USAGE_SAMPLED_BIT](VkImageUsageFlagBits.html) usage flag set, and an integer color
 format.
 
 * 
 
 `sampledImageDepthSampleCounts` is a bitmask1 of
 [VkSampleCountFlagBits](VkSampleCountFlagBits.html) indicating the sample counts supported for
-all 2D images created with `VK_IMAGE_TILING_OPTIMAL`, the
-`VK_IMAGE_USAGE_SAMPLED_BIT` usage flag set, and a depth format.
+all 2D images created with [VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html), the
+[VK_IMAGE_USAGE_SAMPLED_BIT](VkImageUsageFlagBits.html) usage flag set, and a depth format.
 
 * 
 
 `sampledImageStencilSampleCounts` is a bitmask1 of
 [VkSampleCountFlagBits](VkSampleCountFlagBits.html) indicating the sample counts supported for
-all 2D images created with `VK_IMAGE_TILING_OPTIMAL`, the
-`VK_IMAGE_USAGE_SAMPLED_BIT` usage flag set, and a stencil format.
+all 2D images created with [VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html), the
+[VK_IMAGE_USAGE_SAMPLED_BIT](VkImageUsageFlagBits.html) usage flag set, and a stencil format.
 
 * 
  `storageImageSampleCounts` is a
 bitmask1 of [VkSampleCountFlagBits](VkSampleCountFlagBits.html) indicating the sample counts
-supported for all 2D images created with `VK_IMAGE_TILING_OPTIMAL`,
-and the `VK_IMAGE_USAGE_STORAGE_BIT` usage flag set.
+supported for all 2D images created with [VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html),
+and the [VK_IMAGE_USAGE_STORAGE_BIT](VkImageUsageFlagBits.html) usage flag set.
 
 * 
  `maxSampleMaskWords` is the maximum
@@ -952,8 +971,8 @@ number of array elements of a variable decorated with the
 * 
  `timestampComputeAndGraphics`
 specifies support for timestamps on all graphics and compute queues.
-If this limit is `VK_TRUE`, all queues that advertise the
-`VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT` in the
+If this limit is [VK_TRUE](VK_TRUE.html), all queues that advertise the
+[VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) or [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html) in the
 `VkQueueFamilyProperties`::`queueFlags` support
 `VkQueueFamilyProperties`::`timestampValidBits` of at least 36.
 See [Timestamp Queries](../../../../spec/latest/chapters/queries.html#queries-timestamps).
@@ -1024,9 +1043,9 @@ supported line widths.
 * 
  `strictLines` specifies whether lines are
 rasterized according to the preferred method of rasterization.
-If set to `VK_FALSE`, lines **may** be rasterized under a relaxed set
+If set to [VK_FALSE](VK_FALSE.html), lines **may** be rasterized under a relaxed set
 of rules.
-If set to `VK_TRUE`, lines are rasterized as per the strict
+If set to [VK_TRUE](VK_TRUE.html), lines are rasterized as per the strict
 definition.
 See [Basic Line Segment Rasterization](../../../../spec/latest/chapters/primsrast.html#primsrast-lines-basic).
 
@@ -1034,9 +1053,9 @@ See [Basic Line Segment Rasterization](../../../../spec/latest/chapters/primsras
  `standardSampleLocations`
 specifies whether rasterization uses the standard sample locations as
 documented in [Multisampling](../../../../spec/latest/chapters/primsrast.html#primsrast-multisampling).
-If set to `VK_TRUE`, the implementation uses the documented sample
+If set to [VK_TRUE](VK_TRUE.html), the implementation uses the documented sample
 locations.
-If set to `VK_FALSE`, the implementation **may** use different sample
+If set to [VK_FALSE](VK_FALSE.html), the implementation **may** use different sample
 locations.
 
 * 

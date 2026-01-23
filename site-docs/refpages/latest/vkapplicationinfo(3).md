@@ -67,14 +67,14 @@ The variant version of the instance **must** match that requested in
 `apiVersion`.
 
 Vulkan 1.0 implementations were required to return
-`VK_ERROR_INCOMPATIBLE_DRIVER` if `apiVersion` was larger than 1.0.
+[VK_ERROR_INCOMPATIBLE_DRIVER](VkResult.html) if `apiVersion` was larger than 1.0.
 Implementations that support Vulkan 1.1 or later **must** not return
-`VK_ERROR_INCOMPATIBLE_DRIVER` for any value of `apiVersion`
+[VK_ERROR_INCOMPATIBLE_DRIVER](VkResult.html) for any value of `apiVersion`
 .
 
 |  | Because Vulkan 1.0 implementations **may** fail with
 | --- | --- |
-`VK_ERROR_INCOMPATIBLE_DRIVER`, applications **should** determine the
+[VK_ERROR_INCOMPATIBLE_DRIVER](VkResult.html), applications **should** determine the
 version of Vulkan available before calling [vkCreateInstance](vkCreateInstance.html).
 If the [vkGetInstanceProcAddr](vkGetInstanceProcAddr.html) returns `NULL` for
 [vkEnumerateInstanceVersion](vkEnumerateInstanceVersion.html), it is a Vulkan 1.0 implementation.
@@ -132,7 +132,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkApplicationInfo-sType-sType) VUID-VkApplicationInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_APPLICATION_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_APPLICATION_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkApplicationInfo-pNext-pNext) VUID-VkApplicationInfo-pNext-pNext

@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderUntypedPointersFeaturesKHR-sType-sType) VUID-VkPhysicalDeviceShaderUntypedPointersFeaturesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNTYPED_POINTERS_FEATURES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNTYPED_POINTERS_FEATURES_KHR](VkStructureType.html)
 
 [VK_KHR_shader_untyped_pointers](VK_KHR_shader_untyped_pointers.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

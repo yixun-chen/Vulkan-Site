@@ -48,7 +48,7 @@ If the `VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX` structure is included i
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -56,7 +56,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX-sType-sType) VUID-VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DENSE_GEOMETRY_FORMAT_FEATURES_AMDX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DENSE_GEOMETRY_FORMAT_FEATURES_AMDX](VkStructureType.html)
 
 [VK_AMDX_dense_geometry_format](VK_AMDX_dense_geometry_format.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

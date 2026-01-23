@@ -41,30 +41,30 @@ structure.
 * 
  `formatA4R4G4B4` indicates that the
 implementation **must** support using a [VkFormat](VkFormat.html) of
-`VK_FORMAT_A4R4G4B4_UNORM_PACK16_EXT` with at least the following
+[VK_FORMAT_A4R4G4B4_UNORM_PACK16_EXT](VkFormat.html) with at least the following
 [VkFormatFeatureFlagBits](VkFormatFeatureFlagBits.html):
 
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](VkFormatFeatureFlagBits.html)
 
 * 
-`VK_FORMAT_FEATURE_BLIT_SRC_BIT`
+[VK_FORMAT_FEATURE_BLIT_SRC_BIT](VkFormatFeatureFlagBits.html)
 
 * 
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](VkFormatFeatureFlagBits.html)
 
  `formatA4B4G4R4` indicates that the
 implementation **must** support using a [VkFormat](VkFormat.html) of
-`VK_FORMAT_A4B4G4R4_UNORM_PACK16_EXT` with at least the following
+[VK_FORMAT_A4B4G4R4_UNORM_PACK16_EXT](VkFormat.html) with at least the following
 [VkFormatFeatureFlagBits](VkFormatFeatureFlagBits.html):
 
 * 
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](VkFormatFeatureFlagBits.html)
 
 * 
-`VK_FORMAT_FEATURE_BLIT_SRC_BIT`
+[VK_FORMAT_FEATURE_BLIT_SRC_BIT](VkFormatFeatureFlagBits.html)
 
 * 
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](VkFormatFeatureFlagBits.html)
 
 If the `VkPhysicalDevice4444FormatsFeaturesEXT` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -72,7 +72,7 @@ If the `VkPhysicalDevice4444FormatsFeaturesEXT` structure is included in the `pN
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDevice4444FormatsFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -80,7 +80,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevice4444FormatsFeaturesEXT-sType-sType) VUID-VkPhysicalDevice4444FormatsFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_4444_FORMATS_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_4444_FORMATS_FEATURES_EXT](VkStructureType.html)
 
 |  | Although the formats defined by the `[VK_EXT_4444_formats](VK_EXT_4444_formats.html)` extension
 | --- | --- |

@@ -48,11 +48,11 @@ parameters object.
 
 * 
 The new video session creation flag
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR` for
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html) for
 video decode sessions.
 
 * 
-Required support for the [rate control     mode](../../../../spec/latest/chapters/videocoding.html#encode-rate-control-modes) `VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR` for the
+Required support for the [rate control     mode](../../../../spec/latest/chapters/videocoding.html#encode-rate-control-modes) [VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html) for the
 following video encode profiles:
 
 [H.264 encode profiles](../../../../spec/latest/chapters/videocoding.html#encode-h264-profile);
@@ -73,7 +73,7 @@ If the `VkPhysicalDeviceVideoMaintenance2FeaturesKHR` structure is included in t
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceVideoMaintenance2FeaturesKHR`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -81,7 +81,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVideoMaintenance2FeaturesKHR-sType-sType) VUID-VkPhysicalDeviceVideoMaintenance2FeaturesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_MAINTENANCE_2_FEATURES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_MAINTENANCE_2_FEATURES_KHR](VkStructureType.html)
 
 [VK_KHR_video_maintenance2](VK_KHR_video_maintenance2.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

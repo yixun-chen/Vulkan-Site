@@ -62,7 +62,7 @@ in `pipeline`
 [](#VUID-vkGetRayTracingShaderGroupStackSizeKHR-groupShader-03609) VUID-vkGetRayTracingShaderGroupStackSizeKHR-groupShader-03609
 
 The shader identified by `groupShader` in `group` **must** not be
-`VK_SHADER_UNUSED_KHR`
+[VK_SHADER_UNUSED_KHR](VK_SHADER_UNUSED_KHR.html)
 
 Valid Usage (Implicit)
 

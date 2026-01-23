@@ -61,7 +61,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFragmentDensityMapPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceFragmentDensityMapPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_fragment_density_map](VK_EXT_fragment_density_map.html), `VkBool32`, [VkExtent2D](VkExtent2D.html), [VkStructureType](VkStructureType.html)
 

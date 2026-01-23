@@ -27,7 +27,7 @@ typedef enum VkOpticalFlowExecuteFlagBitsNV {
 } VkOpticalFlowExecuteFlagBitsNV;
 
 * 
-`VK_OPTICAL_FLOW_EXECUTE_DISABLE_TEMPORAL_HINTS_BIT_NV` specifies
+[VK_OPTICAL_FLOW_EXECUTE_DISABLE_TEMPORAL_HINTS_BIT_NV](#) specifies
 that temporal hints from previously generated flow vectors are not used.
 If temporal hints are enabled, optical flow vectors from previous
 [vkCmdOpticalFlowExecuteNV](vkCmdOpticalFlowExecuteNV.html) call are automatically used as hints for

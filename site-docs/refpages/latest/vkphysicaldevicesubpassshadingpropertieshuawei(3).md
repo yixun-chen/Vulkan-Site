@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceSubpassShadingPropertiesHUAWEI-sType-sType) VUID-VkPhysicalDeviceSubpassShadingPropertiesHUAWEI-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBPASS_SHADING_PROPERTIES_HUAWEI`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBPASS_SHADING_PROPERTIES_HUAWEI](VkStructureType.html)
 
 [VK_HUAWEI_subpass_shading](VK_HUAWEI_subpass_shading.html), [VkStructureType](VkStructureType.html)
 

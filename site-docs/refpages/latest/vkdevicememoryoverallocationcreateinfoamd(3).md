@@ -24,7 +24,7 @@ reported by [VkPhysicalDeviceMemoryProperties](VkPhysicalDeviceMemoryProperties.
 [VkDeviceMemoryOverallocationCreateInfoAMD](#) structure to the `pNext`
 chain of the [VkDeviceCreateInfo](VkDeviceCreateInfo.html) structure.
 If this structure is not specified, it is as if the
-`VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD` value is used.
+[VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD](VkMemoryOverallocationBehaviorAMD.html) value is used.
 
 // Provided by VK_AMD_memory_overallocation_behavior
 typedef struct VkDeviceMemoryOverallocationCreateInfoAMD {
@@ -48,7 +48,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceMemoryOverallocationCreateInfoAMD-sType-sType) VUID-VkDeviceMemoryOverallocationCreateInfoAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceMemoryOverallocationCreateInfoAMD-overallocationBehavior-parameter) VUID-VkDeviceMemoryOverallocationCreateInfoAMD-overallocationBehavior-parameter

@@ -92,7 +92,7 @@ shader-based clamping approach.
 This extension exposes such hardware functionality.
 
 This extension extends [VkSamplerReductionMode](VkSamplerReductionMode.html), adding
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM` which
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](VkSamplerReductionMode.html) which
 enables the range clamp operation.
 
 * 
@@ -109,12 +109,12 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkSamplerReductionMode](VkSamplerReductionMode.html):
 
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM`
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](VkSamplerReductionMode.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUBIC_CLAMP_FEATURES_QCOM`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUBIC_CLAMP_FEATURES_QCOM](VkStructureType.html)
 
 * 
 Revision 1, 2023-08-02 (jleger)

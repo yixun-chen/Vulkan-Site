@@ -63,7 +63,7 @@ or [vkGetImageMemoryRequirements2](vkGetImageMemoryRequirements2.html) respectiv
 Constraints on the values returned for buffer resources are:
 
 * 
-`requiresDedicatedAllocation` **may** be `VK_TRUE` if the
+`requiresDedicatedAllocation` **may** be [VK_TRUE](VK_TRUE.html) if the
 `pNext` chain of [VkBufferCreateInfo](VkBufferCreateInfo.html) for the call to
 `vkCreateBuffer` used to create the buffer being queried included a
 [VkExternalMemoryBufferCreateInfo](VkExternalMemoryBufferCreateInfo.html) structure, and any of the handle
@@ -72,23 +72,23 @@ types specified in
 dedicated allocation, as reported by
 [vkGetPhysicalDeviceExternalBufferProperties](vkGetPhysicalDeviceExternalBufferProperties.html) in
 `VkExternalBufferProperties`::`externalMemoryProperties.externalMemoryFeatures`.
-Otherwise, `requiresDedicatedAllocation` will be `VK_FALSE`.
+Otherwise, `requiresDedicatedAllocation` will be [VK_FALSE](VK_FALSE.html).
 
 * 
 When the implementation sets `requiresDedicatedAllocation` to
-`VK_TRUE`, it **must** also set `prefersDedicatedAllocation` to
-`VK_TRUE`.
+[VK_TRUE](VK_TRUE.html), it **must** also set `prefersDedicatedAllocation` to
+[VK_TRUE](VK_TRUE.html).
 
 * 
-If `VK_BUFFER_CREATE_SPARSE_BINDING_BIT` was set in
+If [VK_BUFFER_CREATE_SPARSE_BINDING_BIT](VkBufferCreateFlagBits.html) was set in
 [VkBufferCreateInfo](VkBufferCreateInfo.html)::`flags` when `buffer` was created,
 then both `prefersDedicatedAllocation` and
-`requiresDedicatedAllocation` will be `VK_FALSE`.
+`requiresDedicatedAllocation` will be [VK_FALSE](VK_FALSE.html).
 
 Constraints on the values returned for image resources are:
 
 * 
-`requiresDedicatedAllocation` **may** be `VK_TRUE` if the
+`requiresDedicatedAllocation` **may** be [VK_TRUE](VK_TRUE.html) if the
 `pNext` chain of [VkImageCreateInfo](VkImageCreateInfo.html) for the call to
 [vkCreateImage](vkCreateImage.html) used to create the image being queried included a
 [VkExternalMemoryImageCreateInfo](VkExternalMemoryImageCreateInfo.html) structure, and any of the handle
@@ -99,24 +99,24 @@ dedicated allocation, as reported by
 `VkExternalImageFormatProperties`::`externalMemoryProperties.externalMemoryFeatures`.
 
 * 
-`requiresDedicatedAllocation` **may** be `VK_TRUE` if the image’s
-tiling is `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`.
+`requiresDedicatedAllocation` **may** be [VK_TRUE](VK_TRUE.html) if the image’s
+tiling is [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html).
 
 * 
 `requiresDedicatedAllocation` will
 otherwise
-be `VK_FALSE`
+be [VK_FALSE](VK_FALSE.html)
 
 * 
-If `VK_IMAGE_CREATE_SPARSE_BINDING_BIT` was set in
+If [VK_IMAGE_CREATE_SPARSE_BINDING_BIT](VkImageCreateFlagBits.html) was set in
 [VkImageCreateInfo](VkImageCreateInfo.html)::`flags` when `image` was created, then
 both `prefersDedicatedAllocation` and
-`requiresDedicatedAllocation` will be `VK_FALSE`.
+`requiresDedicatedAllocation` will be [VK_FALSE](VK_FALSE.html).
 
 Constraints on the values returned for tensor resources are:
 
 * 
-`requiresDedicatedAllocation` **may** be `VK_TRUE` if the
+`requiresDedicatedAllocation` **may** be [VK_TRUE](VK_TRUE.html) if the
 `pNext` chain of [VkTensorCreateInfoARM](VkTensorCreateInfoARM.html) for the call to
 `vkCreateTensorARM` used to create the tensor being queried included
 a [VkExternalMemoryTensorCreateInfoARM](VkExternalMemoryTensorCreateInfoARM.html) structure, and any of the
@@ -127,19 +127,19 @@ dedicated allocation, as reported by
 `VkExternalTensorPropertiesARM`::`externalMemoryProperties.externalMemoryFeatures`.
 
 * 
-`requiresDedicatedAllocation` will otherwise be `VK_FALSE`.
+`requiresDedicatedAllocation` will otherwise be [VK_FALSE](VK_FALSE.html).
 
 * 
 When the implementation sets `requiresDedicatedAllocation` to
-`VK_TRUE`, it **must** also set `prefersDedicatedAllocation` to
-`VK_TRUE`.
+[VK_TRUE](VK_TRUE.html), it **must** also set `prefersDedicatedAllocation` to
+[VK_TRUE](VK_TRUE.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkMemoryDedicatedRequirements-sType-sType) VUID-VkMemoryDedicatedRequirements-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS](VkStructureType.html)
 
 [VK_KHR_dedicated_allocation](VK_KHR_dedicated_allocation.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

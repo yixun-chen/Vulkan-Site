@@ -55,11 +55,11 @@ If any of the `initialLayout` or `finalLayout` member of the
 `VkAttachmentDescription` structures or the `layout` member of
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
-`pRenderPassBegin` is `VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`
+`pRenderPassBegin` is [VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](VkImageLayout.html)
 then the corresponding attachment image view of the framebuffer
 specified in the `framebuffer` member of `pRenderPassBegin`
 **must** have been created with the
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](VkImageUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdBeginRenderPass-initialLayout-01758) VUID-vkCmdBeginRenderPass-initialLayout-01758
@@ -69,13 +69,13 @@ If any of the `initialLayout` or `finalLayout` member of the
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
 `pRenderPassBegin` is
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL` then the
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html), or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html) then the
 corresponding attachment image view of the framebuffer specified in the
 `framebuffer` member of `pRenderPassBegin` **must** have been
-created with the `VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage
+created with the [VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](VkImageUsageFlagBits.html) usage
 flag set
 
 * 
@@ -86,13 +86,13 @@ If any of the `initialLayout` or `finalLayout` member of the
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
 `pRenderPassBegin` is
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL` then the corresponding
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](VkImageLayout.html), or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html) then the corresponding
 attachment image view of the framebuffer specified in the
 `framebuffer` member of `pRenderPassBegin` **must** have been
-created with the `VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage
+created with the [VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](VkImageUsageFlagBits.html) usage
 flag set
 
 * 
@@ -104,11 +104,11 @@ the `stencilLayout` member of the
 `VkAttachmentReferenceStencilLayout` structures specified when
 creating the render pass specified in the `renderPass` member of
 `pRenderPassBegin` is
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL` then the corresponding
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html) then the corresponding
 attachment image view of the framebuffer specified in the
 `framebuffer` member of `pRenderPassBegin` **must** have been
-created with the `VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage
+created with the [VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](VkImageUsageFlagBits.html) usage
 flag set
 
 * 
@@ -118,11 +118,11 @@ If any of the `initialLayout` or `finalLayout` member of the
 `VkAttachmentDescription` structures or the `layout` member of
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
-`pRenderPassBegin` is `VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`
+`pRenderPassBegin` is [VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](VkImageLayout.html)
 then the corresponding attachment image view of the framebuffer
 specified in the `framebuffer` member of `pRenderPassBegin`
-**must** have been created with the `VK_IMAGE_USAGE_SAMPLED_BIT` or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flags set
+**must** have been created with the [VK_IMAGE_USAGE_SAMPLED_BIT](VkImageUsageFlagBits.html) or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](VkImageUsageFlagBits.html) usage flags set
 
 * 
 [](#VUID-vkCmdBeginRenderPass-initialLayout-00898) VUID-vkCmdBeginRenderPass-initialLayout-00898
@@ -131,10 +131,10 @@ If any of the `initialLayout` or `finalLayout` member of the
 `VkAttachmentDescription` structures or the `layout` member of
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
-`pRenderPassBegin` is `VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL`
+`pRenderPassBegin` is [VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL](VkImageLayout.html)
 then the corresponding attachment image view of the framebuffer
 specified in the `framebuffer` member of `pRenderPassBegin`
-**must** have been created with the `VK_IMAGE_USAGE_TRANSFER_SRC_BIT`
+**must** have been created with the [VK_IMAGE_USAGE_TRANSFER_SRC_BIT](VkImageUsageFlagBits.html)
 usage flag set
 
 * 
@@ -144,10 +144,10 @@ If any of the `initialLayout` or `finalLayout` member of the
 `VkAttachmentDescription` structures or the `layout` member of
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
-`pRenderPassBegin` is `VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL`
+`pRenderPassBegin` is [VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](VkImageLayout.html)
 then the corresponding attachment image view of the framebuffer
 specified in the `framebuffer` member of `pRenderPassBegin`
-**must** have been created with the `VK_IMAGE_USAGE_TRANSFER_DST_BIT`
+**must** have been created with the [VK_IMAGE_USAGE_TRANSFER_DST_BIT](VkImageUsageFlagBits.html)
 usage flag set
 
 * 
@@ -156,7 +156,7 @@ usage flag set
 If the `initialLayout` member of any of the
 `VkAttachmentDescription` structures specified when creating the
 render pass specified in the `renderPass` member of
-`pRenderPassBegin` is not `VK_IMAGE_LAYOUT_UNDEFINED`, then each
+`pRenderPassBegin` is not [VK_IMAGE_LAYOUT_UNDEFINED](VkImageLayout.html), then each
 such `initialLayout` **must** be equal to the current layout of the
 corresponding attachment image subresource of the framebuffer specified
 in the `framebuffer` member of `pRenderPassBegin`
@@ -188,7 +188,7 @@ For any attachment in `framebuffer` that is used by `renderPass`
 and is bound to memory locations that are also bound to another
 attachment used by `renderPass`, and if at least one of those uses
 causes either attachment to be written to, both attachments **must** have
-had the `VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT` set
+had the [VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT](VkAttachmentDescriptionFlagBits.html) set
 
 * 
 [](#VUID-vkCmdBeginRenderPass-framebuffer-09045) VUID-vkCmdBeginRenderPass-framebuffer-09045
@@ -206,13 +206,13 @@ If any of the `initialLayout` or `finalLayout` member of the
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
 `pRenderPassBegin` is
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` then the
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](VkImageLayout.html) then the
 corresponding attachment image view of the framebuffer specified in the
 `framebuffer` member of `pRenderPassBegin` **must** have been
-created with either the `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flags set, and
-either the `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_SAMPLED_BIT` usage flags set
+created with either the [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](VkImageUsageFlagBits.html) or
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](VkImageUsageFlagBits.html) usage flags set, and
+either the [VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](VkImageUsageFlagBits.html) or
+[VK_IMAGE_USAGE_SAMPLED_BIT](VkImageUsageFlagBits.html) usage flags set
 
 * 
 [](#VUID-vkCmdBeginRenderPass-initialLayout-07001) VUID-vkCmdBeginRenderPass-initialLayout-07001
@@ -222,10 +222,10 @@ If any of the `initialLayout` or `finalLayout` member of the
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
 `pRenderPassBegin` is
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` then the
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](VkImageLayout.html) then the
 corresponding attachment image view of the framebuffer specified in the
 `framebuffer` member of `pRenderPassBegin` **must** have been
-created with the `VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT`
+created with the [VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](VkImageUsageFlagBits.html)
 usage flag set
 
 * 
@@ -235,19 +235,19 @@ If any of the `initialLayout` or `finalLayout` member of the
 `VkAttachmentDescription` structures or the `layout` member of
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
-`pRenderPassBegin` is `VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+`pRenderPassBegin` is [VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](VkImageLayout.html)
 then the corresponding attachment image view of the framebuffer
 specified in the `framebuffer` member of `pRenderPassBegin`
-**must** have been created with either the `VK_IMAGE_USAGE_STORAGE_BIT`
-usage flag set, or both the `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`
-and either of `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flags set
+**must** have been created with either the [VK_IMAGE_USAGE_STORAGE_BIT](VkImageUsageFlagBits.html)
+usage flag set, or both the [VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](VkImageUsageFlagBits.html)
+and either of [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](VkImageUsageFlagBits.html) or
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](VkImageUsageFlagBits.html) usage flags set
 
 * 
 [](#VUID-vkCmdBeginRenderPass-contents-09640) VUID-vkCmdBeginRenderPass-contents-09640
 
 If `contents` is
-`VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR`, then
+[VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR](VkSubpassContents.html), then
 at least one of the following features **must** be enabled:
 
 [`maintenance7`](../../../../spec/latest/chapters/features.html#features-maintenance7)
@@ -280,7 +280,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBeginRenderPass-commandBuffer-cmdpool) VUID-vkCmdBeginRenderPass-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBeginRenderPass-renderpass) VUID-vkCmdBeginRenderPass-renderpass

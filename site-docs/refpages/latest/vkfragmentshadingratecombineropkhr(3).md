@@ -19,7 +19,7 @@
 VkFragmentShadingRateCombinerOpKHR - Control how fragment shading rates are combined
 
 The equation used for each combiner operation is defined by
-`VkFragmentShadingRateCombinerOpKHR`:
+[VkFragmentShadingRateCombinerOpKHR](#):
 
 // Provided by VK_KHR_fragment_shading_rate
 typedef enum VkFragmentShadingRateCombinerOpKHR {
@@ -31,30 +31,30 @@ typedef enum VkFragmentShadingRateCombinerOpKHR {
 } VkFragmentShadingRateCombinerOpKHR;
 
 * 
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR` specifies a combiner
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](#) specifies a combiner
 operation of combine(Axy,Bxy) = Axy.
 
 * 
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR` specifies a
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR](#) specifies a
 combiner operation of combine(Axy,Bxy) = Bxy.
 
 * 
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR` specifies a combiner
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR](#) specifies a combiner
 operation of combine(Axy,Bxy) = min(Axy,Bxy).
 
 * 
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR` specifies a combiner
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR](#) specifies a combiner
 operation of combine(Axy,Bxy) = max(Axy,Bxy).
 
 * 
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR` specifies a combiner
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR](#) specifies a combiner
 operation of combine(Axy,Bxy) = Axy*Bxy.
 
 where combine(Axy,Bxy) is the combine operation, and Axy
 and Bxy are the inputs to the operation.
 
-If [`fragmentShadingRateStrictMultiplyCombiner`](../../../../spec/latest/chapters/limits.html#limits-fragmentShadingRateStrictMultiplyCombiner) is `VK_FALSE`, using
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR` with values of 1 for both
+If [`fragmentShadingRateStrictMultiplyCombiner`](../../../../spec/latest/chapters/limits.html#limits-fragmentShadingRateStrictMultiplyCombiner) is [VK_FALSE](VK_FALSE.html), using
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR](#) with values of 1 for both
 A and B in the same dimension results in the value 2 being produced for that
 dimension.
 See the definition of [`fragmentShadingRateStrictMultiplyCombiner`](../../../../spec/latest/chapters/limits.html#limits-fragmentShadingRateStrictMultiplyCombiner) for more information.

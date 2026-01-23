@@ -167,10 +167,10 @@ Extending [VkPipelineRasterizationStateCreateInfo](VkPipelineRasterizationStateC
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [FullyCoveredEXT](../../../../spec/latest/chapters/interfaces.html#interfaces-builtin-variables-fullycoveredext)

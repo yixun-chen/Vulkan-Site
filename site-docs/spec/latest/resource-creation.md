@@ -24,9 +24,15 @@
 - [Image_Mip_Level_Sizing](#resources-image-mip-level-sizing)
 - [Conventional Images](#_conventional_images)
 - [Corner-Sampled Images](#_corner_sampled_images)
+- [Image Capture Replay for Descriptor Heaps](#resources-images-heapcapturereplay)
+- [Image_Capture_Replay_for_Descriptor_Heaps](#resources-images-heapcapturereplay)
+- [Tensor Capture Replay for Descriptor Heaps](#resources-tensors-heapcapturereplay)
+- [Tensor_Capture_Replay_for_Descriptor_Heaps](#resources-tensors-heapcapturereplay)
 - [Image Layouts](#resources-image-layouts)
 - [Image Layout Matching Rules](#resources-image-layouts-matching-rule)
 - [Image_Layout_Matching_Rules](#resources-image-layouts-matching-rule)
+- [Image Layout Rules with External Memory](#resources-external-image-layout-rules)
+- [Image_Layout_Rules_with_External_Memory](#resources-external-image-layout-rules)
 - [Image Views](#resources-image-views)
 - [Image View Format Features](#resources-image-view-format-features)
 - [Image_View_Format_Features](#resources-image-view-format-features)
@@ -38,8 +44,6 @@
 - [Resource_Sharing_Mode](#resources-sharing)
 - [External Resource Sharing](#resources-external-sharing)
 - [External_Resource_Sharing](#resources-external-sharing)
-- [Open Harmony OS Platform Native Buffer Usage](#resources-OHOS-native-buffer)
-- [Open_Harmony_OS_Platform_Native_Buffer_Usage](#resources-OHOS-native-buffer)
 - [Memory Aliasing](#resources-memory-aliasing)
 - [Resource Memory Overlap](#resources-memory-overlap)
 - [Resource_Memory_Overlap](#resources-memory-overlap)
@@ -118,17 +122,17 @@ Valid Usage
 [](#VUID-vkCreateBuffer-device-09664) VUID-vkCreateBuffer-device-09664
 
     `device` **must** support at least one queue family with one of the
-    `VK_QUEUE_VIDEO_ENCODE_BIT_KHR`,
-    `VK_QUEUE_VIDEO_DECODE_BIT_KHR`,
-`VK_QUEUE_SPARSE_BINDING_BIT`,
-    `VK_QUEUE_TRANSFER_BIT`, `VK_QUEUE_COMPUTE_BIT`, or
-    `VK_QUEUE_GRAPHICS_BIT` capabilities
+    [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits),
+    [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits),
+[VK_QUEUE_SPARSE_BINDING_BIT](devsandqueues.html#VkQueueFlagBits),
+    [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or
+    [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) capabilities
 
 * 
 [](#VUID-vkCreateBuffer-flags-00911) VUID-vkCreateBuffer-flags-00911
 
 If the `flags` member of `pCreateInfo` includes
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT`,
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](#VkBufferCreateFlagBits),
 and the [    `extendedSparseAddressSpace`](features.html#features-extendedSparseAddressSpace) feature is not enabled,
 creating this `VkBuffer` **must** not cause the total required sparse
 memory for all currently valid sparse resources on the device to exceed
@@ -138,7 +142,7 @@ memory for all currently valid sparse resources on the device to exceed
 [](#VUID-vkCreateBuffer-flags-09383) VUID-vkCreateBuffer-flags-09383
 
 If the `flags` member of `pCreateInfo` includes
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT`, the
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](#VkBufferCreateFlagBits), the
 [    `extendedSparseAddressSpace`](features.html#features-extendedSparseAddressSpace) feature is enabled, and the
 `usage` member of `pCreateInfo` contains bits not in
 `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`::`extendedSparseBufferUsageFlags`,
@@ -156,7 +160,7 @@ to exceed `VkPhysicalDeviceLimits`::`sparseAddressSpaceSize`
 [](#VUID-vkCreateBuffer-flags-09384) VUID-vkCreateBuffer-flags-09384
 
 If the `flags` member of `pCreateInfo` includes
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT` and the
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](#VkBufferCreateFlagBits) and the
 [    `extendedSparseAddressSpace`](features.html#features-extendedSparseAddressSpace) feature is enabled, creating this
 `VkBuffer` **must** not cause the total required sparse memory for all
 currently valid sparse resources on the device to exceed
@@ -205,24 +209,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR`
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkBufferCreateInfo` structure is defined as:
 
@@ -268,11 +272,13 @@ mode of the buffer when it will be accessed by multiple queue families.
 `pQueueFamilyIndices` is a pointer to an array of queue families
 that will access this buffer.
 It is ignored if `sharingMode` is not
-`VK_SHARING_MODE_CONCURRENT`.
+[VK_SHARING_MODE_CONCURRENT](#VkSharingMode).
 
+`usage` defines the effective usage flags for the buffer.
 If the `pNext` chain includes a [VkBufferUsageFlags2CreateInfo](#VkBufferUsageFlags2CreateInfo)
 structure, [VkBufferUsageFlags2CreateInfo](#VkBufferUsageFlags2CreateInfo)::`usage` from that
-structure is used instead of `usage` from this structure.
+structure is used as the effective usage instead of `usage` from this
+structure.
 
 Valid Usage
 
@@ -299,20 +305,20 @@ If the `pNext` chain does not include a
 * 
 [](#VUID-VkBufferCreateInfo-sharingMode-00913) VUID-VkBufferCreateInfo-sharingMode-00913
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`,
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](#VkSharingMode),
 `pQueueFamilyIndices` **must** be a valid pointer to an array of
 `queueFamilyIndexCount` `uint32_t` values
 
 * 
 [](#VUID-VkBufferCreateInfo-sharingMode-00914) VUID-VkBufferCreateInfo-sharingMode-00914
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`,
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](#VkSharingMode),
 `queueFamilyIndexCount` **must** be greater than `1`
 
 * 
 [](#VUID-VkBufferCreateInfo-sharingMode-01419) VUID-VkBufferCreateInfo-sharingMode-01419
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`, each element
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](#VkSharingMode), each element
 of `pQueueFamilyIndices` **must** be unique and **must** be less than
 `pQueueFamilyPropertyCount` returned by
 either [vkGetPhysicalDeviceQueueFamilyProperties2](devsandqueues.html#vkGetPhysicalDeviceQueueFamilyProperties2) or
@@ -324,7 +330,7 @@ either [vkGetPhysicalDeviceQueueFamilyProperties2](devsandqueues.html#vkGetPhysi
 
 If the [`sparseBinding`](features.html#features-sparseBinding) feature is not
 enabled,
-`flags` **must** not contain `VK_BUFFER_CREATE_SPARSE_BINDING_BIT`
+`flags` **must** not contain [VK_BUFFER_CREATE_SPARSE_BINDING_BIT](#VkBufferCreateFlagBits)
 
 * 
 [](#VUID-VkBufferCreateInfo-flags-00916) VUID-VkBufferCreateInfo-flags-00916
@@ -332,21 +338,21 @@ enabled,
 If the [`sparseResidencyBuffer`](features.html#features-sparseResidencyBuffer)
 feature is not enabled,
 `flags` **must** not contain
-`VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](#VkBufferCreateFlagBits)
 
 * 
 [](#VUID-VkBufferCreateInfo-flags-00917) VUID-VkBufferCreateInfo-flags-00917
 
 If the [`sparseResidencyAliased`](features.html#features-sparseResidencyAliased)
 feature is not enabled,
-`flags` **must** not contain `VK_BUFFER_CREATE_SPARSE_ALIASED_BIT`
+`flags` **must** not contain [VK_BUFFER_CREATE_SPARSE_ALIASED_BIT](#VkBufferCreateFlagBits)
 
 * 
 [](#VUID-VkBufferCreateInfo-flags-00918) VUID-VkBufferCreateInfo-flags-00918
 
-If `flags` contains `VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT` or
-`VK_BUFFER_CREATE_SPARSE_ALIASED_BIT`, it **must** also contain
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT`
+If `flags` contains [VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](#VkBufferCreateFlagBits) or
+[VK_BUFFER_CREATE_SPARSE_ALIASED_BIT](#VkBufferCreateFlagBits), it **must** also contain
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](#VkBufferCreateFlagBits)
 
 * 
 [](#VUID-VkBufferCreateInfo-pNext-00920) VUID-VkBufferCreateInfo-pNext-00920
@@ -365,15 +371,15 @@ types specified in
 
 If the [`protectedMemory`](features.html#features-protectedMemory) feature is
 not enabled, `flags` **must** not contain
-`VK_BUFFER_CREATE_PROTECTED_BIT`
+[VK_BUFFER_CREATE_PROTECTED_BIT](#VkBufferCreateFlagBits)
 
 * 
 [](#VUID-VkBufferCreateInfo-None-01888) VUID-VkBufferCreateInfo-None-01888
 
-If any of the bits `VK_BUFFER_CREATE_SPARSE_BINDING_BIT`,
-`VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`, or
-`VK_BUFFER_CREATE_SPARSE_ALIASED_BIT` are set,
-`VK_BUFFER_CREATE_PROTECTED_BIT` **must** not also be set
+If any of the bits [VK_BUFFER_CREATE_SPARSE_BINDING_BIT](#VkBufferCreateFlagBits),
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](#VkBufferCreateFlagBits), or
+[VK_BUFFER_CREATE_SPARSE_ALIASED_BIT](#VkBufferCreateFlagBits) are set,
+[VK_BUFFER_CREATE_PROTECTED_BIT](#VkBufferCreateFlagBits) **must** not also be set
 
 * 
 [](#VUID-VkBufferCreateInfo-pNext-01571) VUID-VkBufferCreateInfo-pNext-01571
@@ -381,17 +387,17 @@ If any of the bits `VK_BUFFER_CREATE_SPARSE_BINDING_BIT`,
 If the `pNext` chain includes a
 [VkDedicatedAllocationBufferCreateInfoNV](#VkDedicatedAllocationBufferCreateInfoNV) structure, and the
 `dedicatedAllocation` member of the chained structure is
-`VK_TRUE`, then `flags` **must** not include
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT`,
-`VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`, or
-`VK_BUFFER_CREATE_SPARSE_ALIASED_BIT`
+[VK_TRUE](fundamentals.html#VK_TRUE), then `flags` **must** not include
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](#VkBufferCreateFlagBits),
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](#VkBufferCreateFlagBits), or
+[VK_BUFFER_CREATE_SPARSE_ALIASED_BIT](#VkBufferCreateFlagBits)
 
 * 
 [](#VUID-VkBufferCreateInfo-deviceAddress-02604) VUID-VkBufferCreateInfo-deviceAddress-02604
 
 If [VkBufferDeviceAddressCreateInfoEXT](#VkBufferDeviceAddressCreateInfoEXT)::`deviceAddress` is not
 zero, `flags` **must** include
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT`
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#VkBufferCreateFlagBits)
 
 * 
 [](#VUID-VkBufferCreateInfo-opaqueCaptureAddress-03337) VUID-VkBufferCreateInfo-opaqueCaptureAddress-03337
@@ -399,14 +405,14 @@ zero, `flags` **must** include
 If
 [VkBufferOpaqueCaptureAddressCreateInfo](#VkBufferOpaqueCaptureAddressCreateInfo)::`opaqueCaptureAddress`
 is not zero, `flags` **must** include
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT`
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#VkBufferCreateFlagBits)
 
 * 
 [](#VUID-VkBufferCreateInfo-flags-03338) VUID-VkBufferCreateInfo-flags-03338
 
     If `flags` includes
-    `VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT`, the
-    [    VkPhysicalDeviceBufferDeviceAddressFeaturesEXT:`bufferDeviceAddressCaptureReplay`](features.html#features-bufferDeviceAddressCaptureReplayEXT)
+    [VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#VkBufferCreateFlagBits), the
+    [](features.html#features-bufferDeviceAddressCaptureReplayEXT)[VkPhysicalDeviceBufferDeviceAddressFeaturesEXT](features.html#VkPhysicalDeviceBufferDeviceAddressFeaturesEXT)::`bufferDeviceAddressCaptureReplay`
     feature
 or the
     [    `bufferDeviceAddressCaptureReplay`](features.html#features-bufferDeviceAddressCaptureReplay) feature
@@ -415,10 +421,10 @@ or the
 * 
 [](#VUID-VkBufferCreateInfo-usage-04813) VUID-VkBufferCreateInfo-usage-04813
 
-If `usage` includes `VK_BUFFER_USAGE_VIDEO_DECODE_SRC_BIT_KHR`
-or `VK_BUFFER_USAGE_VIDEO_DECODE_DST_BIT_KHR`,
+If `usage` includes [VK_BUFFER_USAGE_VIDEO_DECODE_SRC_BIT_KHR](#VkBufferUsageFlagBits)
+or [VK_BUFFER_USAGE_VIDEO_DECODE_DST_BIT_KHR](#VkBufferUsageFlagBits),
 and `flags` does not include
-`VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR`,
+[VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](#VkBufferCreateFlagBits),
 then the `pNext` chain **must** include a
 [VkVideoProfileListInfoKHR](videocoding.html#VkVideoProfileListInfoKHR) structure with `profileCount`
 greater than `0` and `pProfiles` including at least one
@@ -428,10 +434,10 @@ member specifying a decode operation
 * 
 [](#VUID-VkBufferCreateInfo-usage-04814) VUID-VkBufferCreateInfo-usage-04814
 
-If `usage` includes `VK_BUFFER_USAGE_VIDEO_ENCODE_SRC_BIT_KHR`
-or `VK_BUFFER_USAGE_VIDEO_ENCODE_DST_BIT_KHR`,
+If `usage` includes [VK_BUFFER_USAGE_VIDEO_ENCODE_SRC_BIT_KHR](#VkBufferUsageFlagBits)
+or [VK_BUFFER_USAGE_VIDEO_ENCODE_DST_BIT_KHR](#VkBufferUsageFlagBits),
 and `flags` does not include
-`VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR`,
+[VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](#VkBufferCreateFlagBits),
 then the `pNext` chain **must** include a
 [VkVideoProfileListInfoKHR](videocoding.html#VkVideoProfileListInfoKHR) structure with `profileCount`
 greater than `0` and `pProfiles` including at least one
@@ -442,7 +448,7 @@ member specifying an encode operation
 [](#VUID-VkBufferCreateInfo-flags-08325) VUID-VkBufferCreateInfo-flags-08325
 
 If `flags` includes
-`VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR`, then
+[VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](#VkBufferCreateFlagBits), then
 [`videoMaintenance1`](features.html#features-videoMaintenance1) **must** be enabled
 
 * 
@@ -451,7 +457,7 @@ If `flags` includes
 If the `pNext` chain includes a [VkVideoProfileListInfoKHR](videocoding.html#VkVideoProfileListInfoKHR)
 structure and for any element of its `pProfiles` member
 `videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR`, then the
+[VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR](videocoding.html#VkVideoCodecOperationFlagBitsKHR), then the
 [`videoDecodeVP9`](features.html#features-videoDecodeVP9) feature **must** be
 enabled
 
@@ -461,7 +467,7 @@ enabled
 If the `pNext` chain includes a [VkVideoProfileListInfoKHR](videocoding.html#VkVideoProfileListInfoKHR)
 structure and for any element of its `pProfiles` member
 `videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR`, then the
+[VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](videocoding.html#VkVideoCodecOperationFlagBitsKHR), then the
 [`videoEncodeAV1`](features.html#features-videoEncodeAV1) feature **must** be
 enabled
 
@@ -483,7 +489,7 @@ feature **must** be enabled
 [](#VUID-VkBufferCreateInfo-usage-08097) VUID-VkBufferCreateInfo-usage-08097
 
 If `usage` includes
-`VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT`, creating this
+[VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT](#VkBufferUsageFlagBits), creating this
 `VkBuffer` **must** not cause the total required space for all
 currently valid buffers using this flag on the device to exceed
 [VkPhysicalDeviceDescriptorBufferPropertiesEXT](limits.html#VkPhysicalDeviceDescriptorBufferPropertiesEXT)::`samplerDescriptorBufferAddressSpaceSize`
@@ -494,7 +500,7 @@ or
 [](#VUID-VkBufferCreateInfo-usage-08098) VUID-VkBufferCreateInfo-usage-08098
 
 If `usage` includes
-`VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT`, creating this
+[VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](#VkBufferUsageFlagBits), creating this
 `VkBuffer` **must** not cause the total required space for all
 currently valid buffers using this flag on the device to exceed
 [VkPhysicalDeviceDescriptorBufferPropertiesEXT](limits.html#VkPhysicalDeviceDescriptorBufferPropertiesEXT)::`resourceDescriptorBufferAddressSpaceSize`
@@ -505,7 +511,7 @@ or
 [](#VUID-VkBufferCreateInfo-flags-08099) VUID-VkBufferCreateInfo-flags-08099
 
 If `flags` includes
-`VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`, the
+[VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#VkBufferCreateFlagBits), the
 [    `descriptorBufferCaptureReplay`](features.html#features-descriptorBufferCaptureReplay) feature **must** be enabled
 
 * 
@@ -514,136 +520,134 @@ If `flags` includes
 If the `pNext` chain includes a
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT) structure, `flags`
 **must** contain
-`VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`
+[VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#VkBufferCreateFlagBits)
 
 * 
 [](#VUID-VkBufferCreateInfo-usage-08101) VUID-VkBufferCreateInfo-usage-08101
 
 If `usage` includes
-`VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT`, the
+[VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT](#VkBufferUsageFlagBits), the
 [    `descriptorBufferPushDescriptors`](features.html#features-descriptorBufferPushDescriptors) feature **must** be enabled
 
 * 
 [](#VUID-VkBufferCreateInfo-usage-08102) VUID-VkBufferCreateInfo-usage-08102
 
 If `usage` includes
-`VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT](#VkBufferUsageFlagBits)
 [    `VkPhysicalDeviceDescriptorBufferPropertiesEXT`::`bufferlessPushDescriptors`](limits.html#limits-bufferlessPushDescriptors)
-**must** be `VK_FALSE`
+**must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkBufferCreateInfo-usage-08103) VUID-VkBufferCreateInfo-usage-08103
 
 If `usage` includes
-`VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT`,
+[VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT](#VkBufferUsageFlagBits),
 `usage` **must** contain at least one of
-`VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT` or
-`VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](#VkBufferUsageFlagBits) or
+[VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT](#VkBufferUsageFlagBits)
 
 * 
 [](#VUID-VkBufferCreateInfo-tileMemoryHeap-10762) VUID-VkBufferCreateInfo-tileMemoryHeap-10762
 
 If the [`tileMemoryHeap`](features.html#features-tileMemoryHeap) feature is not
 enabled, `usage` **must** not include
-`VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM`
+[VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM](#VkBufferUsageFlagBits)
 
 * 
 [](#VUID-VkBufferCreateInfo-usage-10763) VUID-VkBufferCreateInfo-usage-10763
 
-  If `usage` includes `VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM`, then
+  If `usage` includes [VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM](#VkBufferUsageFlagBits), then
 `flags` **must** not contain any of the following bits
 
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT`
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](#VkBufferCreateFlagBits)
 
 * 
-`VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](#VkBufferCreateFlagBits)
 
 * 
-`VK_BUFFER_CREATE_SPARSE_ALIASED_BIT`
+[VK_BUFFER_CREATE_SPARSE_ALIASED_BIT](#VkBufferCreateFlagBits)
 
 * 
-`VK_BUFFER_CREATE_PROTECTED_BIT`
+[VK_BUFFER_CREATE_PROTECTED_BIT](#VkBufferCreateFlagBits)
 
 * 
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT`
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#VkBufferCreateFlagBits)
 
 * 
-`VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`
+[VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#VkBufferCreateFlagBits)
 
 * 
-`VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR`
+[VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](#VkBufferCreateFlagBits)
 
 [](#VUID-VkBufferCreateInfo-usage-10764) VUID-VkBufferCreateInfo-usage-10764
 
-If `usage` includes `VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM`, then
+If `usage` includes [VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM](#VkBufferUsageFlagBits), then
 only the following `usages` may be set:
 
 * 
-`VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT`
+[VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits)
 
 * 
-`VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT`
+[VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits)
 
 * 
-`VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT`
+[VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](#VkBufferUsageFlagBits)
 
 * 
-`VK_BUFFER_USAGE_STORAGE_BUFFER_BIT`
+[VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](#VkBufferUsageFlagBits)
 
 * 
-`VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT`
+[VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](#VkBufferUsageFlagBits)
 
 * 
 and if
 [VkPhysicalDeviceTileMemoryHeapPropertiesQCOM](limits.html#VkPhysicalDeviceTileMemoryHeapPropertiesQCOM)::`tileBufferTransfers`
-is `VK_TRUE` then additionally
-`VK_BUFFER_USAGE_TRANSFER_SRC_BIT` or
-`VK_BUFFER_USAGE_TRANSFER_DST_BIT`
+is [VK_TRUE](fundamentals.html#VK_TRUE) then additionally
+[VK_BUFFER_USAGE_TRANSFER_SRC_BIT](#VkBufferUsageFlagBits) or
+[VK_BUFFER_USAGE_TRANSFER_DST_BIT](#VkBufferUsageFlagBits)
 
 [](#VUID-VkBufferCreateInfo-flags-09641) VUID-VkBufferCreateInfo-flags-09641
 
-If `flags` includes `VK_BUFFER_CREATE_PROTECTED_BIT`, then
-`usage` **must** not contain any of the following bits
+If `flags` includes [VK_BUFFER_CREATE_PROTECTED_BIT](#VkBufferCreateFlagBits), then the
+[effective usage](#resources-effective-buffer-usage) **must** not contain
+bits other than
 
 * 
-`VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_TRANSFER_SRC_BIT](#VkBufferUsageFlagBits)
 
 * 
-`VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_TRANSFER_DST_BIT](#VkBufferUsageFlagBits)
 
 * 
-`VK_BUFFER_USAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits)
 
 * 
-`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR`
+[VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits)
 
 * 
-`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR`
+[VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](#VkBufferUsageFlagBits)
 
 * 
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR`
+[VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](#VkBufferUsageFlagBits)
 
 * 
-`VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](#VkBufferUsageFlagBits)
 
 * 
-`VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_2_VIDEO_DECODE_SRC_BIT_KHR](#VkBufferUsageFlagBits2KHR)
 
 * 
-`VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_2_VIDEO_ENCODE_DST_BIT_KHR](#VkBufferUsageFlagBits2KHR)
 
 * 
-`VK_BUFFER_USAGE_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT`
-
-* 
-`VK_BUFFER_USAGE_MICROMAP_STORAGE_BIT_EXT`
+[VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkBufferUsageFlagBits2KHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkBufferCreateInfo-sType-sType) VUID-VkBufferCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBufferCreateInfo-pNext-pNext) VUID-VkBufferCreateInfo-pNext-pNext
@@ -703,7 +707,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferUsageFlags2CreateInfo-sType-sType) VUID-VkBufferUsageFlags2CreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBufferUsageFlags2CreateInfo-usage-parameter) VUID-VkBufferUsageFlags2CreateInfo-usage-parameter
@@ -736,6 +740,8 @@ static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_SHADER_DEVICE_ADDRESS_BIT 
 // Provided by VK_AMDX_shader_enqueue with VK_KHR_maintenance5 or VK_VERSION_1_4
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_EXECUTION_GRAPH_SCRATCH_BIT_AMDX = 0x02000000ULL;
 #endif
+// Provided by VK_EXT_descriptor_heap
+static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT = 0x10000000ULL;
 // Provided by VK_KHR_maintenance5
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_TRANSFER_SRC_BIT_KHR = 0x00000001ULL;
 // Provided by VK_KHR_maintenance5
@@ -806,53 +812,53 @@ static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT 
 typedef VkBufferUsageFlagBits2 VkBufferUsageFlagBits2KHR;
 
 * 
-`VK_BUFFER_USAGE_2_TRANSFER_SRC_BIT` specifies that the buffer **can**
+[VK_BUFFER_USAGE_2_TRANSFER_SRC_BIT](#VkBufferUsageFlagBits2KHR) specifies that the buffer **can**
 be used as the source of a *transfer command* (see the definition of
-[    `VK_PIPELINE_STAGE_TRANSFER_BIT`](synchronization.html#synchronization-pipeline-stages-transfer)).
+[](synchronization.html#synchronization-pipeline-stages-transfer)[VK_PIPELINE_STAGE_TRANSFER_BIT](synchronization.html#VkPipelineStageFlagBits)).
 
 * 
-`VK_BUFFER_USAGE_2_TRANSFER_DST_BIT` specifies that the buffer **can**
+[VK_BUFFER_USAGE_2_TRANSFER_DST_BIT](#VkBufferUsageFlagBits2KHR) specifies that the buffer **can**
 be used as the destination of a transfer command.
 
 * 
-`VK_BUFFER_USAGE_2_UNIFORM_TEXEL_BUFFER_BIT` specifies that the
+[VK_BUFFER_USAGE_2_UNIFORM_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits2KHR) specifies that the
 buffer **can** be used to create a `VkBufferView` suitable for
 occupying a `VkDescriptorSet` slot of type
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`.
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType).
 
 * 
-`VK_BUFFER_USAGE_2_STORAGE_TEXEL_BUFFER_BIT` specifies that the
+[VK_BUFFER_USAGE_2_STORAGE_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits2KHR) specifies that the
 buffer **can** be used to create a `VkBufferView` suitable for
 occupying a `VkDescriptorSet` slot of type
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`.
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType).
 
 * 
-`VK_BUFFER_USAGE_2_UNIFORM_BUFFER_BIT` specifies that the buffer
+[VK_BUFFER_USAGE_2_UNIFORM_BUFFER_BIT](#VkBufferUsageFlagBits2KHR) specifies that the buffer
 **can** be used in a `VkDescriptorBufferInfo` suitable for occupying a
 `VkDescriptorSet` slot either of type
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` or
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`.
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType).
 
 * 
-`VK_BUFFER_USAGE_2_STORAGE_BUFFER_BIT` specifies that the buffer
+[VK_BUFFER_USAGE_2_STORAGE_BUFFER_BIT](#VkBufferUsageFlagBits2KHR) specifies that the buffer
 **can** be used in a `VkDescriptorBufferInfo` suitable for occupying a
 `VkDescriptorSet` slot either of type
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`.
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType).
 
 * 
-`VK_BUFFER_USAGE_2_INDEX_BUFFER_BIT` specifies that the buffer is
+[VK_BUFFER_USAGE_2_INDEX_BUFFER_BIT](#VkBufferUsageFlagBits2KHR) specifies that the buffer is
     suitable for passing as the `buffer` parameter to
 [vkCmdBindIndexBuffer2](drawing.html#vkCmdBindIndexBuffer2) and
     [vkCmdBindIndexBuffer](drawing.html#vkCmdBindIndexBuffer).
 
 * 
-`VK_BUFFER_USAGE_2_VERTEX_BUFFER_BIT` specifies that the buffer is
+[VK_BUFFER_USAGE_2_VERTEX_BUFFER_BIT](#VkBufferUsageFlagBits2KHR) specifies that the buffer is
 suitable for passing as an element of the `pBuffers` array to
 [vkCmdBindVertexBuffers](fxvertex.html#vkCmdBindVertexBuffers).
 
 * 
-`VK_BUFFER_USAGE_2_INDIRECT_BUFFER_BIT` specifies that the buffer is
+[VK_BUFFER_USAGE_2_INDIRECT_BUFFER_BIT](#VkBufferUsageFlagBits2KHR) specifies that the buffer is
 suitable for passing as the `buffer` parameter to
 [vkCmdDrawIndirect](drawing.html#vkCmdDrawIndirect), [vkCmdDrawIndexedIndirect](drawing.html#vkCmdDrawIndexedIndirect),
 [vkCmdDrawMeshTasksIndirectNV](drawing.html#vkCmdDrawMeshTasksIndirectNV),
@@ -870,110 +876,114 @@ It is also suitable for passing as the underlying buffer of either the
 `VkGeneratedCommandsInfoEXT`.
 
 * 
-`VK_BUFFER_USAGE_2_CONDITIONAL_RENDERING_BIT_EXT` specifies that the
+[VK_BUFFER_USAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#VkBufferUsageFlagBits2KHR) specifies that the
 buffer is suitable for passing as the `buffer` parameter to
 [vkCmdBeginConditionalRenderingEXT](drawing.html#vkCmdBeginConditionalRenderingEXT).
 
 * 
-`VK_BUFFER_USAGE_2_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT` specifies that
+[VK_BUFFER_USAGE_2_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT](#VkBufferUsageFlagBits2KHR) specifies that
 the buffer is suitable for using for binding as a transform feedback
 buffer with [vkCmdBindTransformFeedbackBuffersEXT](vertexpostproc.html#vkCmdBindTransformFeedbackBuffersEXT).
 
 * 
-`VK_BUFFER_USAGE_2_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_2_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT](#VkBufferUsageFlagBits2KHR)
 specifies that the buffer is suitable for using as a counter buffer with
 [vkCmdBeginTransformFeedbackEXT](vertexpostproc.html#vkCmdBeginTransformFeedbackEXT) and
 [vkCmdEndTransformFeedbackEXT](vertexpostproc.html#vkCmdEndTransformFeedbackEXT).
 
 * 
-`VK_BUFFER_USAGE_2_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT` specifies that
+[VK_BUFFER_USAGE_2_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT](#VkBufferUsageFlagBits2KHR) specifies that
 the buffer is suitable to contain sampler and combined image sampler
 descriptors when bound as a descriptor buffer.
 Buffers containing combined image sampler descriptors **must** also specify
-`VK_BUFFER_USAGE_2_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT`.
+[VK_BUFFER_USAGE_2_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](#VkBufferUsageFlagBits2KHR).
 
 * 
-`VK_BUFFER_USAGE_2_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT` specifies
+[VK_BUFFER_USAGE_2_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](#VkBufferUsageFlagBits2KHR) specifies
 that the buffer is suitable to contain resource descriptors when bound
 as a descriptor buffer.
 
 * 
-`VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT](#VkBufferUsageFlagBits2KHR)
 specifies that the buffer, when bound, **can** be used by the
 implementation to support push descriptors when using descriptor
 buffers.
 
 * 
-`VK_BUFFER_USAGE_2_TILE_MEMORY_BIT_QCOM` specifies that the buffer
+[VK_BUFFER_USAGE_2_TILE_MEMORY_BIT_QCOM](#VkBufferUsageFlagBits2KHR) specifies that the buffer
 **can** be bound to `VkDeviceMemory` allocated from a
-[VkMemoryHeap](memory.html#VkMemoryHeap) with the `VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM`
+[VkMemoryHeap](memory.html#VkMemoryHeap) with the [VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits)
 property.
 
 * 
-`VK_BUFFER_USAGE_2_RAY_TRACING_BIT_NV` specifies that the buffer is
+[VK_BUFFER_USAGE_2_RAY_TRACING_BIT_NV](#VkBufferUsageFlagBits2KHR) specifies that the buffer is
 suitable for use in [vkCmdTraceRaysNV](raytracing.html#vkCmdTraceRaysNV).
 
 * 
-`VK_BUFFER_USAGE_2_SHADER_BINDING_TABLE_BIT_KHR` specifies that the
+[VK_BUFFER_USAGE_2_SHADER_BINDING_TABLE_BIT_KHR](#VkBufferUsageFlagBits2KHR) specifies that the
 buffer is suitable for use as a [Shader Binding    Table](raytracing.html#shader-binding-table).
 
 * 
-`VK_BUFFER_USAGE_2_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR`
+[VK_BUFFER_USAGE_2_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR](#VkBufferUsageFlagBits2KHR)
 specifies that the buffer is suitable for use as a read-only input to an
 [acceleration structure build](accelstructures.html#acceleration-structure-building).
 
 * 
-`VK_BUFFER_USAGE_2_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR` specifies
+[VK_BUFFER_USAGE_2_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR](#VkBufferUsageFlagBits2KHR) specifies
 that the buffer is suitable for storage space for a
 [VkAccelerationStructureKHR](#VkAccelerationStructureKHR).
 
 * 
-`VK_BUFFER_USAGE_2_SHADER_DEVICE_ADDRESS_BIT` specifies that the
+[VK_BUFFER_USAGE_2_SHADER_DEVICE_ADDRESS_BIT](#VkBufferUsageFlagBits2KHR) specifies that the
 buffer **can** be used to retrieve a buffer device address via
 [vkGetBufferDeviceAddress](#vkGetBufferDeviceAddress) and use that address to access the
 buffer’s memory from a shader.
 
 * 
-`VK_BUFFER_USAGE_2_VIDEO_DECODE_SRC_BIT_KHR` specifies that the
+[VK_BUFFER_USAGE_2_VIDEO_DECODE_SRC_BIT_KHR](#VkBufferUsageFlagBits2KHR) specifies that the
 buffer **can** be used as the source video bitstream buffer in a
 [video decode operation](videocoding.html#video-decode-operations).
 
 * 
-`VK_BUFFER_USAGE_2_VIDEO_DECODE_DST_BIT_KHR` is reserved for future
+[VK_BUFFER_USAGE_2_VIDEO_DECODE_DST_BIT_KHR](#VkBufferUsageFlagBits2KHR) is reserved for future
 use.
 
 * 
-`VK_BUFFER_USAGE_2_VIDEO_ENCODE_DST_BIT_KHR` specifies that the
+[VK_BUFFER_USAGE_2_VIDEO_ENCODE_DST_BIT_KHR](#VkBufferUsageFlagBits2KHR) specifies that the
 buffer **can** be used as the destination video bitstream buffer in a
 [video encode operation](videocoding.html#video-encode-operations).
 
 * 
-`VK_BUFFER_USAGE_2_VIDEO_ENCODE_SRC_BIT_KHR` is reserved for future
+[VK_BUFFER_USAGE_2_VIDEO_ENCODE_SRC_BIT_KHR](#VkBufferUsageFlagBits2KHR) is reserved for future
 use.
 
 * 
-`VK_BUFFER_USAGE_2_EXECUTION_GRAPH_SCRATCH_BIT_AMDX` specifies that
+[VK_BUFFER_USAGE_2_EXECUTION_GRAPH_SCRATCH_BIT_AMDX](#VkBufferUsageFlagBits2KHR) specifies that
 the buffer **can** be used for as scratch memory for
 [execution graph dispatch](executiongraphs.html#executiongraphs).
 
 * 
-`VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT` specifies that the
+[VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT](#VkBufferUsageFlagBits2KHR) specifies that the
 buffer **can** be used as a preprocess buffer for
 [Device-Generated Commands](device_generated_commands/generatedcommands.html#device-generated-commands).
 
 * 
-`VK_BUFFER_USAGE_2_COMPRESSED_DATA_DGF1_BIT_AMDX` specifies that the
+[VK_BUFFER_USAGE_2_COMPRESSED_DATA_DGF1_BIT_AMDX](#VkBufferUsageFlagBits2KHR) specifies that the
 buffer is suitable as storage space for [Dense    Geometry Format](VK_AMDX_dense_geometry_format/dense_geometry_format.html#dense-geometry-format) data.
 
 * 
-`VK_BUFFER_USAGE_2_DATA_GRAPH_FOREIGN_DESCRIPTOR_BIT_ARM` specifies
+[VK_BUFFER_USAGE_2_DATA_GRAPH_FOREIGN_DESCRIPTOR_BIT_ARM](#VkBufferUsageFlagBits2KHR) specifies
 that the buffer is suitable to contain resource descriptors when bound
 as a descriptor buffer in command buffers allocated from a command pool
 that **can** target foreign [data graph    processing engines](VK_ARM_data_graph/graphs.html#graphs-processing-engines).
 
 * 
-`VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` specifies that the
+[VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkBufferUsageFlagBits2KHR) specifies that the
 buffer **can** be used as a destination buffer in [    memory decompression](memory_decompression.html#memory-decompression).
+
+* 
+[VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkBufferUsageFlagBits2KHR) specifies that the
+buffer **can** be used as a [descriptor heap](descriptorheaps.html#descriptorheaps).
 
 // Provided by VK_VERSION_1_4
 typedef VkFlags64 VkBufferUsageFlags2;
@@ -1015,6 +1025,8 @@ typedef enum VkBufferUsageFlagBits {
   // Provided by VK_AMDX_shader_enqueue
     VK_BUFFER_USAGE_EXECUTION_GRAPH_SCRATCH_BIT_AMDX = 0x02000000,
 #endif
+  // Provided by VK_EXT_descriptor_heap
+    VK_BUFFER_USAGE_DESCRIPTOR_HEAP_BIT_EXT = 0x10000000,
   // Provided by VK_KHR_acceleration_structure
     VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR = 0x00080000,
   // Provided by VK_KHR_acceleration_structure
@@ -1046,53 +1058,53 @@ typedef enum VkBufferUsageFlagBits {
 } VkBufferUsageFlagBits;
 
 * 
-`VK_BUFFER_USAGE_TRANSFER_SRC_BIT` specifies that the buffer **can** be
+[VK_BUFFER_USAGE_TRANSFER_SRC_BIT](#VkBufferUsageFlagBits) specifies that the buffer **can** be
 used as the source of a *transfer command* (see the definition of
-[    `VK_PIPELINE_STAGE_TRANSFER_BIT`](synchronization.html#synchronization-pipeline-stages-transfer)).
+[](synchronization.html#synchronization-pipeline-stages-transfer)[VK_PIPELINE_STAGE_TRANSFER_BIT](synchronization.html#VkPipelineStageFlagBits)).
 
 * 
-`VK_BUFFER_USAGE_TRANSFER_DST_BIT` specifies that the buffer **can** be
+[VK_BUFFER_USAGE_TRANSFER_DST_BIT](#VkBufferUsageFlagBits) specifies that the buffer **can** be
 used as the destination of a transfer command.
 
 * 
-`VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT` specifies that the buffer
+[VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits) specifies that the buffer
 **can** be used to create a `VkBufferView` suitable for occupying a
 `VkDescriptorSet` slot of type
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`.
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType).
 
 * 
-`VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT` specifies that the buffer
+[VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits) specifies that the buffer
 **can** be used to create a `VkBufferView` suitable for occupying a
 `VkDescriptorSet` slot of type
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`.
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType).
 
 * 
-`VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT` specifies that the buffer **can**
+[VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](#VkBufferUsageFlagBits) specifies that the buffer **can**
 be used in a `VkDescriptorBufferInfo` suitable for occupying a
 `VkDescriptorSet` slot either of type
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` or
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`.
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType).
 
 * 
-`VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` specifies that the buffer **can**
+[VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](#VkBufferUsageFlagBits) specifies that the buffer **can**
 be used in a `VkDescriptorBufferInfo` suitable for occupying a
 `VkDescriptorSet` slot either of type
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`.
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType).
 
 * 
-`VK_BUFFER_USAGE_INDEX_BUFFER_BIT` specifies that the buffer is
+[VK_BUFFER_USAGE_INDEX_BUFFER_BIT](#VkBufferUsageFlagBits) specifies that the buffer is
     suitable for passing as the `buffer` parameter to
 [vkCmdBindIndexBuffer2](drawing.html#vkCmdBindIndexBuffer2) and
     [vkCmdBindIndexBuffer](drawing.html#vkCmdBindIndexBuffer).
 
 * 
-`VK_BUFFER_USAGE_VERTEX_BUFFER_BIT` specifies that the buffer is
+[VK_BUFFER_USAGE_VERTEX_BUFFER_BIT](#VkBufferUsageFlagBits) specifies that the buffer is
 suitable for passing as an element of the `pBuffers` array to
 [vkCmdBindVertexBuffers](fxvertex.html#vkCmdBindVertexBuffers).
 
 * 
-`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` specifies that the buffer is
+[VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](#VkBufferUsageFlagBits) specifies that the buffer is
 suitable for passing as the `buffer` parameter to
 [vkCmdDrawIndirect](drawing.html#vkCmdDrawIndirect), [vkCmdDrawIndexedIndirect](drawing.html#vkCmdDrawIndexedIndirect),
 [vkCmdDrawMeshTasksIndirectNV](drawing.html#vkCmdDrawMeshTasksIndirectNV),
@@ -1110,91 +1122,95 @@ It is also suitable for passing as the underlying buffer of either the
 `VkGeneratedCommandsInfoEXT`.
 
 * 
-`VK_BUFFER_USAGE_CONDITIONAL_RENDERING_BIT_EXT` specifies that the
+[VK_BUFFER_USAGE_CONDITIONAL_RENDERING_BIT_EXT](#VkBufferUsageFlagBits) specifies that the
 buffer is suitable for passing as the `buffer` parameter to
 [vkCmdBeginConditionalRenderingEXT](drawing.html#vkCmdBeginConditionalRenderingEXT).
 
 * 
-`VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT` specifies that
+[VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT](#VkBufferUsageFlagBits) specifies that
 the buffer is suitable for using for binding as a transform feedback
 buffer with [vkCmdBindTransformFeedbackBuffersEXT](vertexpostproc.html#vkCmdBindTransformFeedbackBuffersEXT).
 
 * 
-`VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT](#VkBufferUsageFlagBits)
 specifies that the buffer is suitable for using as a counter buffer with
 [vkCmdBeginTransformFeedbackEXT](vertexpostproc.html#vkCmdBeginTransformFeedbackEXT) and
 [vkCmdEndTransformFeedbackEXT](vertexpostproc.html#vkCmdEndTransformFeedbackEXT).
 
 * 
-`VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT` specifies that
+[VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT](#VkBufferUsageFlagBits) specifies that
 the buffer is suitable to contain sampler and combined image sampler
 descriptors when bound as a descriptor buffer.
 Buffers containing combined image sampler descriptors **must** also specify
-`VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT`.
+[VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](#VkBufferUsageFlagBits).
 
 * 
-`VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT` specifies that
+[VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](#VkBufferUsageFlagBits) specifies that
 the buffer is suitable to contain resource descriptors when bound as a
 descriptor buffer.
 
 * 
-`VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT](#VkBufferUsageFlagBits)
 specifies that the buffer, when bound, **can** be used by the
 implementation to support push descriptors when using descriptor
 buffers.
 
 * 
-`VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM` specifies that the buffer
+[VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM](#VkBufferUsageFlagBits) specifies that the buffer
 **can** be bound to `VkDeviceMemory` allocated from a
-[VkMemoryHeap](memory.html#VkMemoryHeap) with the `VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM`
+[VkMemoryHeap](memory.html#VkMemoryHeap) with the [VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits)
 property.
 
 * 
-`VK_BUFFER_USAGE_RAY_TRACING_BIT_NV` specifies that the buffer is
+[VK_BUFFER_USAGE_RAY_TRACING_BIT_NV](#VkBufferUsageFlagBits) specifies that the buffer is
 suitable for use in [vkCmdTraceRaysNV](raytracing.html#vkCmdTraceRaysNV).
 
 * 
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` specifies that the
+[VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR](#VkBufferUsageFlagBits) specifies that the
 buffer is suitable for use as a [Shader Binding    Table](raytracing.html#shader-binding-table).
 
 * 
-`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR`
+[VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR](#VkBufferUsageFlagBits)
 specifies that the buffer is suitable for use as a read-only input to an
 [acceleration structure build](accelstructures.html#acceleration-structure-building).
 
 * 
-`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR` specifies
+[VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR](#VkBufferUsageFlagBits) specifies
 that the buffer is suitable for storage space for a
 [VkAccelerationStructureKHR](#VkAccelerationStructureKHR).
 
 * 
-`VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT` specifies that the
+[VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](#VkBufferUsageFlagBits) specifies that the
 buffer **can** be used to retrieve a buffer device address via
 [vkGetBufferDeviceAddress](#vkGetBufferDeviceAddress) and use that address to access the
 buffer’s memory from a shader.
 
 * 
-`VK_BUFFER_USAGE_VIDEO_DECODE_SRC_BIT_KHR` specifies that the buffer
+[VK_BUFFER_USAGE_VIDEO_DECODE_SRC_BIT_KHR](#VkBufferUsageFlagBits) specifies that the buffer
 **can** be used as the source video bitstream buffer in a
 [video decode operation](videocoding.html#video-decode-operations).
 
 * 
-`VK_BUFFER_USAGE_VIDEO_DECODE_DST_BIT_KHR` is reserved for future
+[VK_BUFFER_USAGE_VIDEO_DECODE_DST_BIT_KHR](#VkBufferUsageFlagBits) is reserved for future
 use.
 
 * 
-`VK_BUFFER_USAGE_VIDEO_ENCODE_DST_BIT_KHR` specifies that the buffer
+[VK_BUFFER_USAGE_VIDEO_ENCODE_DST_BIT_KHR](#VkBufferUsageFlagBits) specifies that the buffer
 **can** be used as the destination video bitstream buffer in a
 [video encode operation](videocoding.html#video-encode-operations).
 
 * 
-`VK_BUFFER_USAGE_VIDEO_ENCODE_SRC_BIT_KHR` is reserved for future
+[VK_BUFFER_USAGE_VIDEO_ENCODE_SRC_BIT_KHR](#VkBufferUsageFlagBits) is reserved for future
 use.
 
 * 
-`VK_BUFFER_USAGE_EXECUTION_GRAPH_SCRATCH_BIT_AMDX` specifies that
+[VK_BUFFER_USAGE_EXECUTION_GRAPH_SCRATCH_BIT_AMDX](#VkBufferUsageFlagBits) specifies that
 the buffer **can** be used for as scratch memory for
 [execution graph dispatch](executiongraphs.html#executiongraphs).
+
+* 
+[VK_BUFFER_USAGE_DESCRIPTOR_HEAP_BIT_EXT](#VkBufferUsageFlagBits) specifies that the buffer
+**can** be used as a [descriptor heap](descriptorheaps.html#descriptorheaps).
 
 // Provided by VK_VERSION_1_0
 typedef VkFlags VkBufferUsageFlags;
@@ -1225,41 +1241,41 @@ typedef enum VkBufferCreateFlagBits {
 } VkBufferCreateFlagBits;
 
 * 
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT` specifies that the buffer will
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](#VkBufferCreateFlagBits) specifies that the buffer will
 be backed using sparse memory binding.
 
 * 
-`VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT` specifies that the buffer
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](#VkBufferCreateFlagBits) specifies that the buffer
 **can** be partially backed using sparse memory binding.
 Buffers created with this flag **must** also be created with the
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT` flag.
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](#VkBufferCreateFlagBits) flag.
 
 * 
-`VK_BUFFER_CREATE_SPARSE_ALIASED_BIT` specifies that the buffer will
+[VK_BUFFER_CREATE_SPARSE_ALIASED_BIT](#VkBufferCreateFlagBits) specifies that the buffer will
 be backed using sparse memory binding with memory ranges that might also
 simultaneously be backing another buffer (or another portion of the same
 buffer).
 Buffers created with this flag **must** also be created with the
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT` flag.
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](#VkBufferCreateFlagBits) flag.
 
 * 
-`VK_BUFFER_CREATE_PROTECTED_BIT` specifies that the buffer is a
+[VK_BUFFER_CREATE_PROTECTED_BIT](#VkBufferCreateFlagBits) specifies that the buffer is a
 protected buffer.
 
 * 
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` specifies that
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#VkBufferCreateFlagBits) specifies that
 the buffer’s address **can** be saved and reused on a subsequent run (e.g.
 for trace capture and replay), see
 [VkBufferOpaqueCaptureAddressCreateInfo](#VkBufferOpaqueCaptureAddressCreateInfo) for more detail.
 
 * 
-`VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`
+[VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#VkBufferCreateFlagBits)
 specifies that the buffer **can** be used with descriptor buffers when
 capturing and replaying (e.g. for trace capture and replay), see
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT) for more detail.
 
 * 
-`VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR` specifies that
+[VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](#VkBufferCreateFlagBits) specifies that
 the buffer **can** be used in [video coding operations](videocoding.html#video-coding)
 without having to specify at buffer creation time the set of video
 profiles the buffer will be used with.
@@ -1304,7 +1320,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDedicatedAllocationBufferCreateInfoNV-sType-sType) VUID-VkDedicatedAllocationBufferCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 To define a set of external memory handle types that **may** be used as backing
 store for a buffer, add a [VkExternalMemoryBufferCreateInfo](#VkExternalMemoryBufferCreateInfo) structure
@@ -1344,7 +1360,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalMemoryBufferCreateInfo-sType-sType) VUID-VkExternalMemoryBufferCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExternalMemoryBufferCreateInfo-handleTypes-parameter) VUID-VkExternalMemoryBufferCreateInfo-handleTypes-parameter
@@ -1389,13 +1405,13 @@ zero.
 
 Applications **should** avoid creating buffers with application-provided
 addresses and implementation-provided addresses in the same process, to
-reduce the likelihood of `VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS`
+reduce the likelihood of [VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS](fundamentals.html#VkResult)
 errors.
 
 |  | The expected usage for this is that a trace capture/replay tool will add the
 | --- | --- |
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` flag to all buffers
-that use `VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT`, and during capture
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#VkBufferCreateFlagBits) flag to all buffers
+that use [VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](#VkBufferUsageFlagBits), and during capture
 will save the queried opaque device addresses in the trace.
 During replay, the buffers will be created specifying the original address
 so any address values stored in the trace data will remain valid.
@@ -1404,7 +1420,7 @@ Implementations are expected to separate such buffers in the GPU address
 space so normal allocations will avoid using these addresses.
 Applications and tools should avoid mixing application-provided and
 implementation-provided addresses for buffers created with
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT`, to avoid address
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#VkBufferCreateFlagBits), to avoid address
 space allocation conflicts. |
 
 Valid Usage (Implicit)
@@ -1412,7 +1428,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferOpaqueCaptureAddressCreateInfo-sType-sType) VUID-VkBufferOpaqueCaptureAddressCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_OPAQUE_CAPTURE_ADDRESS_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_OPAQUE_CAPTURE_ADDRESS_CREATE_INFO](fundamentals.html#VkStructureType)
 
 To request a specific device address for a buffer, add a
 `VkBufferDeviceAddressCreateInfoEXT` structure to the `pNext` chain
@@ -1447,14 +1463,14 @@ If this structure is not present, it is as if `deviceAddress` is zero.
 
 Applications **should** avoid creating buffers with application-provided
 addresses and implementation-provided addresses in the same process, to
-reduce the likelihood of `VK_ERROR_INVALID_DEVICE_ADDRESS_EXT` errors.
+reduce the likelihood of [VK_ERROR_INVALID_DEVICE_ADDRESS_EXT](fundamentals.html#VkResult) errors.
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkBufferDeviceAddressCreateInfoEXT-sType-sType) VUID-VkBufferDeviceAddressCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBufferDeviceAddressCreateInfoEXT-deviceAddress-parameter) VUID-VkBufferDeviceAddressCreateInfoEXT-deviceAddress-parameter
@@ -1498,7 +1514,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferCollectionBufferCreateInfoFUCHSIA-sType-sType) VUID-VkBufferCollectionBufferCreateInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_COLLECTION_BUFFER_CREATE_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_COLLECTION_BUFFER_CREATE_INFO_FUCHSIA](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBufferCollectionBufferCreateInfoFUCHSIA-collection-parameter) VUID-VkBufferCollectionBufferCreateInfoFUCHSIA-collection-parameter
@@ -1578,10 +1594,10 @@ In order to create a valid buffer view, the buffer **must** have been created
 with at least one of the following usage flags:
 
 * 
-`VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT`
+[VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits)
 
 * 
-`VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT`
+[VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits)
 
 Buffer views are represented by `VkBufferView` handles:
 
@@ -1618,7 +1634,7 @@ Valid Usage
 [](#VUID-vkCreateBufferView-device-09665) VUID-vkCreateBufferView-device-09665
 
 `device` **must** support at least one queue family with one of the
-`VK_QUEUE_COMPUTE_BIT` or `VK_QUEUE_GRAPHICS_BIT` capabilities
+[VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) capabilities
 
 Valid Usage (Implicit)
 
@@ -1652,21 +1668,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkBufferViewCreateInfo` structure is defined as:
 
@@ -1705,9 +1721,9 @@ to this starting offset.
 
 * 
 `range` is a size in bytes of the buffer view.
-If `range` is equal to `VK_WHOLE_SIZE`, the range from
+If `range` is equal to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), the range from
 `offset` to the end of the buffer is used.
-If `VK_WHOLE_SIZE` is used and the remaining size of the buffer is
+If [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE) is used and the remaining size of the buffer is
 not a multiple of the [texel block size](formats.html#texel-block-size) of
 `format`, the nearest smaller multiple is used.
 
@@ -1731,19 +1747,19 @@ Valid Usage
 * 
 [](#VUID-VkBufferViewCreateInfo-range-00928) VUID-VkBufferViewCreateInfo-range-00928
 
-If `range` is not equal to `VK_WHOLE_SIZE`, `range` **must** be
+If `range` is not equal to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), `range` **must** be
 greater than `0`
 
 * 
 [](#VUID-VkBufferViewCreateInfo-range-00929) VUID-VkBufferViewCreateInfo-range-00929
 
-If `range` is not equal to `VK_WHOLE_SIZE`, `range` **must** be
+If `range` is not equal to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), `range` **must** be
 an integer multiple of the texel block size of `format`
 
 * 
 [](#VUID-VkBufferViewCreateInfo-range-00930) VUID-VkBufferViewCreateInfo-range-00930
 
-If `range` is not equal to `VK_WHOLE_SIZE`, the number of texel
+If `range` is not equal to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), the number of texel
 buffer elements given by (⌊`range` / (texel block
 size)⌋ × (texels per block)) where texel block size and
 texels per block are as defined in the [    Compatible Formats](formats.html#formats-compatibility) table for `format`, **must** be less than or equal
@@ -1752,14 +1768,14 @@ to `VkPhysicalDeviceLimits`::`maxTexelBufferElements`
 * 
 [](#VUID-VkBufferViewCreateInfo-offset-00931) VUID-VkBufferViewCreateInfo-offset-00931
 
-If `range` is not equal to `VK_WHOLE_SIZE`, the sum of
+If `range` is not equal to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), the sum of
 `offset` and `range` **must** be less than or equal to the size of
 `buffer`
 
 * 
 [](#VUID-VkBufferViewCreateInfo-range-04059) VUID-VkBufferViewCreateInfo-range-04059
 
-If `range` is equal to `VK_WHOLE_SIZE`, the number of texel
+If `range` is equal to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), the number of texel
 buffer elements given by (⌊(size - `offset`) / (texel
 block size)⌋ × (texels per block)) where size is the size
 of `buffer`, and texel block size and texels per block are as
@@ -1771,26 +1787,26 @@ defined in the [Compatible Formats](formats.html#formats-compatibility) table fo
 [](#VUID-VkBufferViewCreateInfo-buffer-00932) VUID-VkBufferViewCreateInfo-buffer-00932
 
 `buffer` **must** have been created with at least one of the
-`VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT` or
-`VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT` usage flags set
+[VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits) or
+[VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits) usage flags set
 
 * 
 [](#VUID-VkBufferViewCreateInfo-format-08778) VUID-VkBufferViewCreateInfo-format-08778
 
 If the [buffer view usage](#resources-buffer-views-usage) contains
-`VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT`, then
+[VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits), then
 [format features](#resources-buffer-view-format-features) of
 `format` **must** contain
-`VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT`
+[VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkBufferViewCreateInfo-format-08779) VUID-VkBufferViewCreateInfo-format-08779
 
 If the [buffer view usage](#resources-buffer-views-usage) contains
-`VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT`, then
+[VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits), then
 [format features](#resources-buffer-view-format-features) of
 `format` **must** contain
-`VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT`
+[VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkBufferViewCreateInfo-buffer-00935) VUID-VkBufferViewCreateInfo-buffer-00935
@@ -1811,12 +1827,12 @@ feature is not enabled,
 
 If the [`texelBufferAlignment`](features.html#features-texelBufferAlignment)
 feature is enabled and if `buffer` was created with the
-`VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT` usage flag set,
+[VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits) usage flag set,
 `offset` **must** be a multiple of the lesser of
 [VkPhysicalDeviceTexelBufferAlignmentProperties](limits.html#VkPhysicalDeviceTexelBufferAlignmentProperties)::`storageTexelBufferOffsetAlignmentBytes`
 or, if
 [VkPhysicalDeviceTexelBufferAlignmentProperties](limits.html#VkPhysicalDeviceTexelBufferAlignmentProperties)::`storageTexelBufferOffsetSingleTexelAlignment`
-is `VK_TRUE`, the size of a texel of the requested `format`.
+is [VK_TRUE](fundamentals.html#VK_TRUE), the size of a texel of the requested `format`.
 If the size of a texel is a multiple of three bytes, then the size of a
 single component of `format` is used instead
 
@@ -1825,12 +1841,12 @@ single component of `format` is used instead
 
 If the [`texelBufferAlignment`](features.html#features-texelBufferAlignment)
 feature is enabled and if `buffer` was created with the
-`VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT` usage flag set,
+[VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits) usage flag set,
 `offset` **must** be a multiple of the lesser of
 [VkPhysicalDeviceTexelBufferAlignmentProperties](limits.html#VkPhysicalDeviceTexelBufferAlignmentProperties)::`uniformTexelBufferOffsetAlignmentBytes`
 or, if
 [VkPhysicalDeviceTexelBufferAlignmentProperties](limits.html#VkPhysicalDeviceTexelBufferAlignmentProperties)::`uniformTexelBufferOffsetSingleTexelAlignment`
-is `VK_TRUE`, the size of a texel of the requested `format`.
+is [VK_TRUE](fundamentals.html#VK_TRUE), the size of a texel of the requested `format`.
 If the size of a texel is a multiple of three bytes, then the size of a
 single component of `format` is used instead
 
@@ -1840,15 +1856,15 @@ single component of `format` is used instead
 If the `pNext` chain includes a
 [VkExportMetalObjectCreateInfoEXT](memory.html#VkExportMetalObjectCreateInfoEXT) structure, its
 `exportObjectType` member **must** be
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT`
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT](memory.html#VkExportMetalObjectTypeFlagBitsEXT)
 
 * 
 [](#VUID-VkBufferViewCreateInfo-pNext-08780) VUID-VkBufferViewCreateInfo-pNext-08780
 
 If the `pNext` chain includes a [VkBufferUsageFlags2CreateInfo](#VkBufferUsageFlags2CreateInfo),
 its `usage` **must** not contain any other bit than
-`VK_BUFFER_USAGE_2_UNIFORM_TEXEL_BUFFER_BIT` or
-`VK_BUFFER_USAGE_2_STORAGE_TEXEL_BUFFER_BIT`
+[VK_BUFFER_USAGE_2_UNIFORM_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits2KHR) or
+[VK_BUFFER_USAGE_2_STORAGE_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferViewCreateInfo-pNext-08781) VUID-VkBufferViewCreateInfo-pNext-08781
@@ -1859,12 +1875,24 @@ its `usage` **must** be a subset of the
 [VkBufferUsageFlags2CreateInfo](#VkBufferUsageFlags2CreateInfo)::`usage` from
 [VkBufferCreateInfo](#VkBufferCreateInfo)::`pNext` when creating `buffer`
 
+* 
+[](#VUID-VkBufferViewCreateInfo-None-12278) VUID-VkBufferViewCreateInfo-None-12278
+
+    If
+Vulkan 1.3 is not supported and
+    the [`ycbcr2plane444Formats`](features.html#features-ycbcr2plane444Formats)
+    feature is not enabled, `format` **must** not be
+    [VK_FORMAT_G8_B8R8_2PLANE_444_UNORM](formats.html#VkFormat),
+    [VK_FORMAT_G10X6_B10X6R10X6_2PLANE_444_UNORM_3PACK16](formats.html#VkFormat),
+    [VK_FORMAT_G12X4_B12X4R12X4_2PLANE_444_UNORM_3PACK16](formats.html#VkFormat), or
+    [VK_FORMAT_G16_B16R16_2PLANE_444_UNORM](formats.html#VkFormat)
+
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkBufferViewCreateInfo-sType-sType) VUID-VkBufferViewCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBufferViewCreateInfo-pNext-pNext) VUID-VkBufferViewCreateInfo-pNext-pNext
@@ -2034,7 +2062,7 @@ Valid Usage
 [](#VUID-vkGetBufferDeviceAddress-bufferDeviceAddress-03324) VUID-vkGetBufferDeviceAddress-bufferDeviceAddress-03324
 
 The [`bufferDeviceAddress`](features.html#features-bufferDeviceAddress) feature
-or the [    `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`::`bufferDeviceAddress`](features.html#features-bufferDeviceAddressEXT)
+or the [](features.html#features-bufferDeviceAddressEXT)[VkPhysicalDeviceBufferDeviceAddressFeaturesEXT](features.html#VkPhysicalDeviceBufferDeviceAddressFeaturesEXT)::`bufferDeviceAddress`
 feature
 **must** be enabled, and at least one of the following conditions **must** be
 met
@@ -2047,15 +2075,15 @@ met
 
 * 
 `buffer` was created with the
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` flag and the
-[     `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`::`bufferDeviceAddress`](features.html#features-bufferDeviceAddressEXT)
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#VkBufferCreateFlagBits) flag and the
+[](features.html#features-bufferDeviceAddressEXT)[VkPhysicalDeviceBufferDeviceAddressFeaturesEXT](features.html#VkPhysicalDeviceBufferDeviceAddressFeaturesEXT)::`bufferDeviceAddress`
 feature is enabled on the device
 
 [](#VUID-vkGetBufferDeviceAddress-device-03325) VUID-vkGetBufferDeviceAddress-device-03325
 
 If `device` was created with multiple physical devices, then the
 [    `bufferDeviceAddressMultiDevice`](features.html#features-bufferDeviceAddressMultiDevice)
-or [    `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`::`bufferDeviceAddressMultiDevice`](features.html#features-bufferDeviceAddressMultiDeviceEXT)
+or [](features.html#features-bufferDeviceAddressMultiDeviceEXT)[VkPhysicalDeviceBufferDeviceAddressFeaturesEXT](features.html#VkPhysicalDeviceBufferDeviceAddressFeaturesEXT)::`bufferDeviceAddressMultiDevice`
 feature **must** be enabled
 
 Valid Usage (Implicit)
@@ -2103,14 +2131,14 @@ Valid Usage
 [](#VUID-VkBufferDeviceAddressInfo-buffer-02601) VUID-VkBufferDeviceAddressInfo-buffer-02601
 
 `buffer` **must** have been created with the
-`VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT` usage flag set
+[VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](#VkBufferUsageFlagBits) usage flag set
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkBufferDeviceAddressInfo-sType-sType) VUID-VkBufferDeviceAddressInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBufferDeviceAddressInfo-pNext-pNext) VUID-VkBufferDeviceAddressInfo-pNext-pNext
@@ -2161,7 +2189,7 @@ The [`bufferDeviceAddress`](features.html#features-bufferDeviceAddress) and
 [](#VUID-vkGetBufferOpaqueCaptureAddress-pInfo-10725) VUID-vkGetBufferOpaqueCaptureAddress-pInfo-10725
 
 `pInfo->buffer` **must** have been created with the
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` flag
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#VkBufferCreateFlagBits) flag
 
 * 
 [](#VUID-vkGetBufferOpaqueCaptureAddress-device-03327) VUID-vkGetBufferOpaqueCaptureAddress-device-03327
@@ -2264,18 +2292,18 @@ Valid Usage
 [](#VUID-vkCreateImage-device-09666) VUID-vkCreateImage-device-09666
 
     `device` **must** support at least one queue family with one of the
-    `VK_QUEUE_VIDEO_ENCODE_BIT_KHR`,
-    `VK_QUEUE_VIDEO_DECODE_BIT_KHR`,
-    `VK_QUEUE_OPTICAL_FLOW_BIT_NV`,
-`VK_QUEUE_SPARSE_BINDING_BIT`,
-    `VK_QUEUE_TRANSFER_BIT`, `VK_QUEUE_COMPUTE_BIT`, or
-    `VK_QUEUE_GRAPHICS_BIT` capabilities
+    [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits),
+    [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits),
+    [VK_QUEUE_OPTICAL_FLOW_BIT_NV](devsandqueues.html#VkQueueFlagBits),
+[VK_QUEUE_SPARSE_BINDING_BIT](devsandqueues.html#VkQueueFlagBits),
+    [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or
+    [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) capabilities
 
 * 
 [](#VUID-vkCreateImage-flags-00939) VUID-vkCreateImage-flags-00939
 
 If the `flags` member of `pCreateInfo` includes
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT`,
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#VkImageCreateFlagBits),
 and the [    `extendedSparseAddressSpace`](features.html#features-extendedSparseAddressSpace) feature is not enabled,
 creating this `VkImage` **must** not cause the total required sparse
 memory for all currently valid sparse resources on the device to exceed
@@ -2285,7 +2313,7 @@ memory for all currently valid sparse resources on the device to exceed
 [](#VUID-vkCreateImage-flags-09385) VUID-vkCreateImage-flags-09385
 
 If the `flags` member of `pCreateInfo` includes
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT`, the
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#VkImageCreateFlagBits), the
 [    `extendedSparseAddressSpace`](features.html#features-extendedSparseAddressSpace) feature is enabled, and the
 `usage` member of `pCreateInfo` contains bits not in
 `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`::`extendedSparseImageUsageFlags`,
@@ -2303,7 +2331,7 @@ to exceed `VkPhysicalDeviceLimits`::`sparseAddressSpaceSize`
 [](#VUID-vkCreateImage-flags-09386) VUID-vkCreateImage-flags-09386
 
 If the `flags` member of `pCreateInfo` includes
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT` and the
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#VkImageCreateFlagBits) and the
 [    `extendedSparseAddressSpace`](features.html#features-extendedSparseAddressSpace) feature is enabled, creating this
 `VkImage` **must** not cause the total required sparse memory for all
 currently valid sparse resources on the device to exceed
@@ -2350,27 +2378,27 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_COMPRESSION_EXHAUSTED_EXT`
+[VK_ERROR_COMPRESSION_EXHAUSTED_EXT](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR`
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkImageCreateInfo` structure is defined as:
 
@@ -2449,21 +2477,21 @@ mode of the image when it will be accessed by multiple queue families.
 `pQueueFamilyIndices` is a pointer to an array of queue families
 that will access this image.
 It is ignored if `sharingMode` is not
-`VK_SHARING_MODE_CONCURRENT`.
+[VK_SHARING_MODE_CONCURRENT](#VkSharingMode).
 
 * 
 `initialLayout` is a [VkImageLayout](#VkImageLayout) value specifying the
 initial [VkImageLayout](#VkImageLayout) of all image subresources of the image.
 See [Image Layouts](#resources-image-layouts).
 
-Images created with `tiling` equal to `VK_IMAGE_TILING_LINEAR` have
+Images created with `tiling` equal to [VK_IMAGE_TILING_LINEAR](#VkImageTiling) have
 further restrictions on their limits and capabilities compared to images
-created with `tiling` equal to `VK_IMAGE_TILING_OPTIMAL`.
-Creation of images with tiling `VK_IMAGE_TILING_LINEAR` **may** not be
+created with `tiling` equal to [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling).
+Creation of images with tiling [VK_IMAGE_TILING_LINEAR](#VkImageTiling) **may** not be
 supported unless other parameters meet all of the constraints:
 
 * 
-`imageType` is `VK_IMAGE_TYPE_2D`
+`imageType` is [VK_IMAGE_TYPE_2D](#VkImageType)
 
 * 
 `format` is not a depth/stencil format
@@ -2475,11 +2503,11 @@ supported unless other parameters meet all of the constraints:
 `arrayLayers` is 1
 
 * 
-`samples` is `VK_SAMPLE_COUNT_1_BIT`
+`samples` is [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
-`usage` only includes `VK_IMAGE_USAGE_TRANSFER_SRC_BIT` and/or
-`VK_IMAGE_USAGE_TRANSFER_DST_BIT`
+`usage` only includes [VK_IMAGE_USAGE_TRANSFER_SRC_BIT](#VkImageUsageFlagBits) and/or
+[VK_IMAGE_USAGE_TRANSFER_DST_BIT](#VkImageUsageFlagBits)
 
 Images created with one of the [formats that require a sampler Y′CBCR conversion](formats.html#formats-requiring-sampler-ycbcr-conversion), have further
 restrictions on their limits and capabilities compared to images created
@@ -2489,7 +2517,7 @@ Creation of images with a format requiring
 be supported unless other parameters meet all of the constraints:
 
 * 
-`imageType` is `VK_IMAGE_TYPE_2D`
+`imageType` is [VK_IMAGE_TYPE_2D](#VkImageType)
 
 * 
 `mipLevels` is 1
@@ -2503,20 +2531,20 @@ otherwise indicated by
 [vkGetPhysicalDeviceImageFormatProperties](capabilities.html#vkGetPhysicalDeviceImageFormatProperties)
 
 * 
-`samples` is `VK_SAMPLE_COUNT_1_BIT`
+`samples` is [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
-Images created with the `VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM` usage flag
+Images created with the [VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM](#VkImageUsageFlagBits) usage flag
 set have further restrictions on their limits and capabilities compared to
 images created without this flag.
 Creation of images with usage including
-`VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM` **may** not be supported unless
+[VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM](#VkImageUsageFlagBits) **may** not be supported unless
 parameters meet all of the constraints:
 
 * 
-`flags` is 0 or only includes `VK_IMAGE_CREATE_ALIAS_BIT`
+`flags` is 0 or only includes [VK_IMAGE_CREATE_ALIAS_BIT](#VkImageCreateFlagBits)
 
 * 
-`imageType` is `VK_IMAGE_TYPE_2D`
+`imageType` is [VK_IMAGE_TYPE_2D](#VkImageType)
 
 * 
 `mipLevels` is 1
@@ -2525,18 +2553,18 @@ parameters meet all of the constraints:
 `arrayLayers` is 1
 
 * 
-`samples` is `VK_SAMPLE_COUNT_1_BIT`
+`samples` is [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
-`tiling` is `VK_IMAGE_TILING_OPTIMAL`
+`tiling` is [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling)
 
 * 
-`usage` includes `VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM` and any
-valid combination of the following `VK_IMAGE_USAGE_SAMPLED_BIT`,
-`VK_IMAGE_USAGE_STORAGE_BIT`,
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT`,
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`,
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`
+`usage` includes [VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM](#VkImageUsageFlagBits) and any
+valid combination of the following [VK_IMAGE_USAGE_SAMPLED_BIT](#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_STORAGE_BIT](#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](#VkImageUsageFlagBits)
 
 Implementations **may** support additional limits and capabilities beyond those
 listed above.
@@ -2546,23 +2574,23 @@ To determine the set of valid `usage` bits for a given format, call
 
 If the size of the resultant image would exceed `maxResourceSize`, then
 [vkCreateImage](#vkCreateImage) **must** fail and return
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`.
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult).
 This failure **may** occur even when all image creation parameters satisfy
 their valid usage requirements.
 
-If the implementation reports `VK_TRUE` in
+If the implementation reports [VK_TRUE](fundamentals.html#VK_TRUE) in
 [VkPhysicalDeviceHostImageCopyProperties](limits.html#VkPhysicalDeviceHostImageCopyProperties)::`identicalMemoryTypeRequirements`,
-usage of `VK_IMAGE_USAGE_HOST_TRANSFER_BIT` **must** not affect the memory
+usage of [VK_IMAGE_USAGE_HOST_TRANSFER_BIT](#VkImageUsageFlagBits) **must** not affect the memory
 type requirements of the image as described in
 [Sparse Resource Memory Requirements](sparsemem.html#sparsememory-memory-requirements) and
 [Resource Memory Association](#resources-association).
 
-|  | For images created without the `VK_IMAGE_CREATE_EXTENDED_USAGE_BIT` flag
+|  | For images created without the [VK_IMAGE_CREATE_EXTENDED_USAGE_BIT](#VkImageCreateFlagBits) flag
 | --- | --- |
 set, a `usage` bit is valid if it is supported for the format the image
 is created with.
 
-For images created with `VK_IMAGE_CREATE_EXTENDED_USAGE_BIT` a
+For images created with [VK_IMAGE_CREATE_EXTENDED_USAGE_BIT](#VkImageCreateFlagBits) a
 `usage` bit is valid if it is supported for at least one of the formats
 a `VkImageView` created from the image **can** have (see
 [Image Views](#resources-image-views) for more detail). |
@@ -2586,7 +2614,7 @@ Let `uint64_t imageCreateDrmFormatModifiers[]` be the set of
 [Linux DRM format modifiers](../appendices/glossary.html#glossary-drm-format-modifier) that the
 resultant image **may** have.
 
-If `tiling` is not `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`,
+If `tiling` is not [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling),
 then `imageCreateDrmFormatModifiers` is empty.
 
 * 
@@ -2605,16 +2633,16 @@ Let `VkBool32 imageCreateMaybeLinear` indicate if the resultant image
 may be [linear](../appendices/glossary.html#glossary-linear-resource).
 
 * 
-If `tiling` is `VK_IMAGE_TILING_LINEAR`, then
-`imageCreateMaybeLinear` is `VK_TRUE`.
+If `tiling` is [VK_IMAGE_TILING_LINEAR](#VkImageTiling), then
+`imageCreateMaybeLinear` is [VK_TRUE](fundamentals.html#VK_TRUE).
 
 * 
-If `tiling` is `VK_IMAGE_TILING_OPTIMAL`, then
-`imageCreateMaybeLinear` is `VK_FALSE`.
+If `tiling` is [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling), then
+`imageCreateMaybeLinear` is [VK_FALSE](fundamentals.html#VK_FALSE).
 
 * 
-If `tiling` is `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then
-`imageCreateMaybeLinear` is `VK_TRUE` if and only if
+If `tiling` is [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling), then
+`imageCreateMaybeLinear` is [VK_TRUE](fundamentals.html#VK_TRUE) if and only if
 `imageCreateDrmFormatModifiers` contains
 `DRM_FORMAT_MOD_LINEAR`.
 
@@ -2622,14 +2650,14 @@ Let `VkFormatFeatureFlags imageCreateFormatFeatures` be the set of valid
 *format features* available during image creation.
 
 * 
-If `tiling` is `VK_IMAGE_TILING_LINEAR`, then
+If `tiling` is [VK_IMAGE_TILING_LINEAR](#VkImageTiling), then
 `imageCreateFormatFeatures` is the value of
 [VkFormatProperties](formats.html#VkFormatProperties)::`linearTilingFeatures` found by calling
 [vkGetPhysicalDeviceFormatProperties](formats.html#vkGetPhysicalDeviceFormatProperties) with parameter `format`
 equal to [VkImageCreateInfo](#VkImageCreateInfo)::`format`.
 
 * 
-If `tiling` is `VK_IMAGE_TILING_OPTIMAL`,
+If `tiling` is [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling),
 and if the `pNext` chain includes no
 [VkExternalFormatANDROID](#VkExternalFormatANDROID)
 or
@@ -2641,7 +2669,7 @@ then `imageCreateFormatFeatures` is the value of
 equal to [VkImageCreateInfo](#VkImageCreateInfo)::`format`.
 
 * 
-If `tiling` is `VK_IMAGE_TILING_OPTIMAL`, and if the
+If `tiling` is [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling), and if the
 `pNext` chain includes a [VkExternalFormatANDROID](#VkExternalFormatANDROID) structure
 with non-zero `externalFormat`, then
 `imageCreateFormatFeatures` is the value of
@@ -2650,7 +2678,7 @@ obtained by [vkGetAndroidHardwareBufferPropertiesANDROID](memory.html#vkGetAndro
 matching `externalFormat` value.
 
 * 
-If `tiling` is `VK_IMAGE_TILING_OPTIMAL`, and if the
+If `tiling` is [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling), and if the
 `pNext` chain includes a [VkExternalFormatQNX](#VkExternalFormatQNX) structure with
 non-zero `externalFormat`, then `imageCreateFormatFeatures` is
 the value of
@@ -2668,7 +2696,7 @@ parameter `collection` equal to
 [VkBufferCollectionImageCreateInfoFUCHSIA](#VkBufferCollectionImageCreateInfoFUCHSIA)::`collection`
 
 * 
-If `tiling` is `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then
+If `tiling` is [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling), then
 the value of `imageCreateFormatFeatures` is found by calling
 [vkGetPhysicalDeviceFormatProperties2](formats.html#vkGetPhysicalDeviceFormatProperties2) with
 [VkImageFormatProperties](capabilities.html#VkImageFormatProperties)::`format` equal to
@@ -2730,7 +2758,7 @@ If [VkImageCreateInfo](#VkImageCreateInfo)::`pNext` contains a
 the same [VkVideoProfileListInfoKHR](videocoding.html#VkVideoProfileListInfoKHR) structure on each call.
 
 * 
-If `tiling` is `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`,
+If `tiling` is [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling),
 then:
 
 [VkPhysicalDeviceImageFormatInfo2](capabilities.html#VkPhysicalDeviceImageFormatInfo2)::`pNext` **must** contain a
@@ -2739,12 +2767,12 @@ then:
 [VkImageCreateInfo](#VkImageCreateInfo)::`sharingMode`;
 
 * 
-if `sharingMode` is `VK_SHARING_MODE_CONCURRENT`, then
+if `sharingMode` is [VK_SHARING_MODE_CONCURRENT](#VkSharingMode), then
 `queueFamilyIndexCount` and `pQueueFamilyIndices` **must** be
 equal to those in [VkImageCreateInfo](#VkImageCreateInfo);
 
 * 
-if `flags` contains `VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT`,
+if `flags` contains [VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](#VkImageCreateFlagBits),
 then the [VkImageFormatListCreateInfo](#VkImageFormatListCreateInfo) structure included in the
 `pNext` chain of [VkPhysicalDeviceImageFormatInfo2](capabilities.html#VkPhysicalDeviceImageFormatInfo2) **must** be
 equivalent to the one included in the `pNext` chain of
@@ -2763,7 +2791,7 @@ setting
 [VkPhysicalDeviceImageDrmFormatModifierInfoEXT](capabilities.html#VkPhysicalDeviceImageDrmFormatModifierInfoEXT)::`drmFormatModifier`
 on each call.
 
-If `tiling` is not `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`,
+If `tiling` is not [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling),
 then [VkPhysicalDeviceImageFormatInfo2](capabilities.html#VkPhysicalDeviceImageFormatInfo2)::`pNext` **must** contain
 no [VkPhysicalDeviceImageDrmFormatModifierInfoEXT](capabilities.html#VkPhysicalDeviceImageDrmFormatModifierInfoEXT) structure.
 
@@ -2791,7 +2819,7 @@ Each component of `VkImageFormatProperties`::`maxExtent` is
 
 * 
 `VkImageFormatProperties`::`sampleCounts` contains exactly
-`VK_SAMPLE_COUNT_1_BIT`.
+[VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits).
 
 Let `uint32_t imageCreateMaxMipLevels` be
 the minimum value of [VkImageFormatProperties](capabilities.html#VkImageFormatProperties)::`maxMipLevels`
@@ -2842,7 +2870,7 @@ Let `VkBool32 supportedVideoFormat` indicate if the image parameters are
 supported by the specified video profiles.
 
 * 
-`supportedVideoFormat` is `VK_TRUE` if there exists an element in
+`supportedVideoFormat` is [VK_TRUE](fundamentals.html#VK_TRUE) if there exists an element in
 the `videoFormatProperties` list for which all of the following
 conditions are true:
 
@@ -2851,7 +2879,7 @@ conditions are true:
 
 * 
 [VkImageCreateInfo](#VkImageCreateInfo)::`flags` only contains
-`VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR` and/or
+[VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](#VkImageCreateFlagBits) and/or
 bits also set in
 [VkVideoFormatPropertiesKHR](videocoding.html#VkVideoFormatPropertiesKHR)::`imageCreateFlags`.
 
@@ -2867,9 +2895,9 @@ bits also set in
 [VkImageCreateInfo](#VkImageCreateInfo)::`usage` only contains bits also set in
 [VkVideoFormatPropertiesKHR](videocoding.html#VkVideoFormatPropertiesKHR)::`imageUsageFlags`, or
 [VkImageCreateInfo](#VkImageCreateInfo)::`flags` includes
-`VK_IMAGE_CREATE_EXTENDED_USAGE_BIT`.
+[VK_IMAGE_CREATE_EXTENDED_USAGE_BIT](#VkImageCreateFlagBits).
 
-Otherwise `supportedVideoFormat` is `VK_FALSE`.
+Otherwise `supportedVideoFormat` is [VK_FALSE](fundamentals.html#VK_FALSE).
 
 Valid Usage
 
@@ -2885,20 +2913,20 @@ Each of the following values (as described in
 * 
 [](#VUID-VkImageCreateInfo-sharingMode-00941) VUID-VkImageCreateInfo-sharingMode-00941
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`,
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](#VkSharingMode),
 `pQueueFamilyIndices` **must** be a valid pointer to an array of
 `queueFamilyIndexCount` `uint32_t` values
 
 * 
 [](#VUID-VkImageCreateInfo-sharingMode-00942) VUID-VkImageCreateInfo-sharingMode-00942
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`,
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](#VkSharingMode),
 `queueFamilyIndexCount` **must** be greater than `1`
 
 * 
 [](#VUID-VkImageCreateInfo-sharingMode-01420) VUID-VkImageCreateInfo-sharingMode-01420
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`, each element
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](#VkSharingMode), each element
 of `pQueueFamilyIndices` **must** be unique and **must** be less than
 `pQueueFamilyPropertyCount` returned by either
 [vkGetPhysicalDeviceQueueFamilyProperties](devsandqueues.html#vkGetPhysicalDeviceQueueFamilyProperties) or
@@ -2910,7 +2938,7 @@ of `pQueueFamilyIndices` **must** be unique and **must** be less than
 
 If the `pNext` chain includes a [VkExternalFormatANDROID](#VkExternalFormatANDROID)
 structure, and its `externalFormat` member is non-zero the
-`format` **must** be `VK_FORMAT_UNDEFINED`
+`format` **must** be [VK_FORMAT_UNDEFINED](formats.html#VkFormat)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-01975) VUID-VkImageCreateInfo-pNext-01975
@@ -2918,7 +2946,7 @@ structure, and its `externalFormat` member is non-zero the
 If the `pNext` chain does not include a
 [VkExternalFormatANDROID](#VkExternalFormatANDROID) structure, or does and its
 `externalFormat` member is `0`, the `format` **must** not be
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat)
 
 * 
 [](#VUID-VkImageCreateInfo-extent-00944) VUID-VkImageCreateInfo-extent-00944
@@ -2948,67 +2976,67 @@ If the `pNext` chain does not include a
 * 
 [](#VUID-VkImageCreateInfo-flags-00949) VUID-VkImageCreateInfo-flags-00949
 
-If `flags` contains `VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT`,
-`imageType` **must** be `VK_IMAGE_TYPE_2D`
+If `flags` contains [VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT](#VkImageCreateFlagBits),
+`imageType` **must** be [VK_IMAGE_TYPE_2D](#VkImageType)
 
 * 
 [](#VUID-VkImageCreateInfo-flags-08865) VUID-VkImageCreateInfo-flags-08865
 
-If `flags` contains `VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT`,
+If `flags` contains [VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT](#VkImageCreateFlagBits),
 `extent.width` and `extent.height` **must** be equal
 
 * 
 [](#VUID-VkImageCreateInfo-flags-08866) VUID-VkImageCreateInfo-flags-08866
 
-If `flags` contains `VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT`,
+If `flags` contains [VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT](#VkImageCreateFlagBits),
 `arrayLayers` **must** be greater than or equal to 6
 
 * 
 [](#VUID-VkImageCreateInfo-initialLayout-10765) VUID-VkImageCreateInfo-initialLayout-10765
 
 If the [    zeroInitializeDeviceMemory](features.html#features-zeroInitializeDeviceMemory) feature is not enabled, `initialLayout`
-**must** not be `VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`
+**must** not be [VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](#VkImageLayout)
 
 * 
 [](#VUID-VkImageCreateInfo-flags-02557) VUID-VkImageCreateInfo-flags-02557
 
 If `flags` contains
-`VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT`, `imageType` **must**
-be `VK_IMAGE_TYPE_2D`
+[VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT](#VkImageUsageFlagBits), `imageType` **must**
+be [VK_IMAGE_TYPE_2D](#VkImageType)
 
 * 
 [](#VUID-VkImageCreateInfo-flags-00950) VUID-VkImageCreateInfo-flags-00950
 
-If `flags` contains `VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT`,
-`imageType` **must** be `VK_IMAGE_TYPE_3D`
+If `flags` contains [VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](#VkImageCreateFlagBits),
+`imageType` **must** be [VK_IMAGE_TYPE_3D](#VkImageType)
 
 * 
 [](#VUID-VkImageCreateInfo-flags-09403) VUID-VkImageCreateInfo-flags-09403
 
-If `flags` contains `VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT`,
-`flags` **must** not include `VK_IMAGE_CREATE_SPARSE_ALIASED_BIT`,
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT`, or
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`
+If `flags` contains [VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](#VkImageCreateFlagBits),
+`flags` **must** not include [VK_IMAGE_CREATE_SPARSE_ALIASED_BIT](#VkImageCreateFlagBits),
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#VkImageCreateFlagBits), or
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-flags-07755) VUID-VkImageCreateInfo-flags-07755
 
 If `flags` contains
-`VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT`, `imageType` **must**
-be `VK_IMAGE_TYPE_3D`
+[VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT](#VkImageCreateFlagBits), `imageType` **must**
+be [VK_IMAGE_TYPE_3D](#VkImageType)
 
 * 
 [](#VUID-VkImageCreateInfo-imageType-10197) VUID-VkImageCreateInfo-imageType-10197
 
-    If `flags` contains `VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT`
+    If `flags` contains [VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT](#VkImageCreateFlagBits)
 and either the [`maintenance9`](features.html#features-maintenance9) feature is not
 enabled on the device or
 [`image2DViewOf3DSparse`](limits.html#limits-image2DViewOf3DSparse) is
-`VK_FALSE`
+[VK_FALSE](fundamentals.html#VK_FALSE)
     , `flags` **must** not include
-    `VK_IMAGE_CREATE_SPARSE_ALIASED_BIT`,
-    `VK_IMAGE_CREATE_SPARSE_BINDING_BIT`, or
-    `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`
+    [VK_IMAGE_CREATE_SPARSE_ALIASED_BIT](#VkImageCreateFlagBits),
+    [VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#VkImageCreateFlagBits), or
+    [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-extent-02252) VUID-VkImageCreateInfo-extent-02252
@@ -3034,13 +3062,13 @@ enabled on the device or
 * 
 [](#VUID-VkImageCreateInfo-imageType-00956) VUID-VkImageCreateInfo-imageType-00956
 
-If `imageType` is `VK_IMAGE_TYPE_1D`, both `extent.height`
+If `imageType` is [VK_IMAGE_TYPE_1D](#VkImageType), both `extent.height`
 and `extent.depth` **must** be `1`
 
 * 
 [](#VUID-VkImageCreateInfo-imageType-00957) VUID-VkImageCreateInfo-imageType-00957
 
-If `imageType` is `VK_IMAGE_TYPE_2D`, `extent.depth` **must**
+If `imageType` is [VK_IMAGE_TYPE_2D](#VkImageType), `extent.depth` **must**
 be `1`
 
 * 
@@ -3067,50 +3095,50 @@ the complete mipmap chain based on `extent.width`,
 * 
 [](#VUID-VkImageCreateInfo-imageType-00961) VUID-VkImageCreateInfo-imageType-00961
 
-If `imageType` is `VK_IMAGE_TYPE_3D`, `arrayLayers` **must** be
+If `imageType` is [VK_IMAGE_TYPE_3D](#VkImageType), `arrayLayers` **must** be
 `1`
 
 * 
 [](#VUID-VkImageCreateInfo-samples-02257) VUID-VkImageCreateInfo-samples-02257
 
-If `samples` is not `VK_SAMPLE_COUNT_1_BIT`, then
-`imageType` **must** be `VK_IMAGE_TYPE_2D`, `flags` **must** not
-contain `VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT`, `mipLevels` **must**
+If `samples` is not [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits), then
+`imageType` **must** be [VK_IMAGE_TYPE_2D](#VkImageType), `flags` **must** not
+contain [VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT](#VkImageCreateFlagBits), `mipLevels` **must**
 be equal to `1`, and `imageCreateMaybeLinear` (as defined in
 [Image Creation Limits](#resources-image-creation-limits)) **must** be
-`VK_FALSE`,
+[VK_FALSE](fundamentals.html#VK_FALSE),
 
 * 
 [](#VUID-VkImageCreateInfo-samples-02558) VUID-VkImageCreateInfo-samples-02558
 
-If `samples` is not `VK_SAMPLE_COUNT_1_BIT`, `usage` **must**
-not contain `VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT`
+If `samples` is not [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits), `usage` **must**
+not contain [VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT](#VkImageUsageFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-usage-00963) VUID-VkImageCreateInfo-usage-00963
 
-If `usage` includes `VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT`,
-then bits other than `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT`,
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`, and
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` **must** not be set
+If `usage` includes [VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](#VkImageUsageFlagBits),
+then bits other than [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](#VkImageUsageFlagBits), and
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](#VkImageUsageFlagBits) **must** not be set
 
 * 
 [](#VUID-VkImageCreateInfo-usage-00964) VUID-VkImageCreateInfo-usage-00964
 
-If `usage` includes `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT`,
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`,
-`VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT`, or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`, `extent.width` **must** be
+If `usage` includes [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](#VkImageUsageFlagBits), or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](#VkImageUsageFlagBits), `extent.width` **must** be
 less than or equal to
 `VkPhysicalDeviceLimits`::`maxFramebufferWidth`
 
 * 
 [](#VUID-VkImageCreateInfo-usage-00965) VUID-VkImageCreateInfo-usage-00965
 
-If `usage` includes `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT`,
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`,
-`VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT`, or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`, `extent.height` **must** be
+If `usage` includes [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](#VkImageUsageFlagBits), or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](#VkImageUsageFlagBits), `extent.height` **must** be
 less than or equal to
 `VkPhysicalDeviceLimits`::`maxFramebufferHeight`
 
@@ -3118,7 +3146,7 @@ less than or equal to
 [](#VUID-VkImageCreateInfo-fragmentDensityMapOffset-06514) VUID-VkImageCreateInfo-fragmentDensityMapOffset-06514
 
 If the [    `fragmentDensityMapOffset`](features.html#features-fragmentDensityMapOffset) feature is not enabled and `usage`
-includes `VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT`,
+includes [VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT](#VkImageUsageFlagBits),
 `extent.width` **must** be less than or equal to
   
 
@@ -3126,18 +3154,18 @@ includes `VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT`,
 [](#VUID-VkImageCreateInfo-fragmentDensityMapOffset-06515) VUID-VkImageCreateInfo-fragmentDensityMapOffset-06515
 
 If the [    `fragmentDensityMapOffset`](features.html#features-fragmentDensityMapOffset) feature is not enabled and `usage`
-includes `VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT`,
+includes [VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT](#VkImageUsageFlagBits),
 `extent.height` **must** be less than or equal to
   
 
 * 
 [](#VUID-VkImageCreateInfo-usage-00966) VUID-VkImageCreateInfo-usage-00966
 
-If `usage` includes `VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT`,
+If `usage` includes [VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](#VkImageUsageFlagBits),
 `usage` **must** also contain at least one of
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT`,
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`, or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](#VkImageUsageFlagBits), or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](#VkImageUsageFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-samples-02258) VUID-VkImageCreateInfo-samples-02258
@@ -3150,110 +3178,110 @@ set in `imageCreateSampleCounts` (as defined in
 [](#VUID-VkImageCreateInfo-usage-00968) VUID-VkImageCreateInfo-usage-00968
 
 If the [    `shaderStorageImageMultisample`](features.html#features-shaderStorageImageMultisample) feature is not enabled, and
-`usage` contains `VK_IMAGE_USAGE_STORAGE_BIT`, `samples`
-**must** be `VK_SAMPLE_COUNT_1_BIT`
+`usage` contains [VK_IMAGE_USAGE_STORAGE_BIT](#VkImageUsageFlagBits), `samples`
+**must** be [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-flags-00969) VUID-VkImageCreateInfo-flags-00969
 
 If the [`sparseBinding`](features.html#features-sparseBinding) feature is not
 enabled, `flags` **must** not contain
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT`
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-flags-01924) VUID-VkImageCreateInfo-flags-01924
 
 If the [`sparseResidencyAliased`](features.html#features-sparseResidencyAliased)
 feature is not enabled, `flags` **must** not contain
-`VK_IMAGE_CREATE_SPARSE_ALIASED_BIT`
+[VK_IMAGE_CREATE_SPARSE_ALIASED_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-tiling-04121) VUID-VkImageCreateInfo-tiling-04121
 
-If `tiling` is `VK_IMAGE_TILING_LINEAR`, `flags` **must** not
-contain `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`
+If `tiling` is [VK_IMAGE_TILING_LINEAR](#VkImageTiling), `flags` **must** not
+contain [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-imageType-00970) VUID-VkImageCreateInfo-imageType-00970
 
-If `imageType` is `VK_IMAGE_TYPE_1D`, `flags` **must** not
-contain `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`
+If `imageType` is [VK_IMAGE_TYPE_1D](#VkImageType), `flags` **must** not
+contain [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-imageType-00971) VUID-VkImageCreateInfo-imageType-00971
 
 If the [`sparseResidencyImage2D`](features.html#features-sparseResidencyImage2D)
-feature is not enabled, and `imageType` is `VK_IMAGE_TYPE_2D`,
-`flags` **must** not contain `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`
+feature is not enabled, and `imageType` is [VK_IMAGE_TYPE_2D](#VkImageType),
+`flags` **must** not contain [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-imageType-00972) VUID-VkImageCreateInfo-imageType-00972
 
 If the [`sparseResidencyImage3D`](features.html#features-sparseResidencyImage3D)
-feature is not enabled, and `imageType` is `VK_IMAGE_TYPE_3D`,
-`flags` **must** not contain `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`
+feature is not enabled, and `imageType` is [VK_IMAGE_TYPE_3D](#VkImageType),
+`flags` **must** not contain [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-imageType-00973) VUID-VkImageCreateInfo-imageType-00973
 
 If the [    `sparseResidency2Samples`](features.html#features-sparseResidency2Samples) feature is not enabled, `imageType`
-is `VK_IMAGE_TYPE_2D`, and `samples` is
-`VK_SAMPLE_COUNT_2_BIT`, `flags` **must** not contain
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`
+is [VK_IMAGE_TYPE_2D](#VkImageType), and `samples` is
+[VK_SAMPLE_COUNT_2_BIT](limits.html#VkSampleCountFlagBits), `flags` **must** not contain
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-imageType-00974) VUID-VkImageCreateInfo-imageType-00974
 
 If the [    `sparseResidency4Samples`](features.html#features-sparseResidency4Samples) feature is not enabled, `imageType`
-is `VK_IMAGE_TYPE_2D`, and `samples` is
-`VK_SAMPLE_COUNT_4_BIT`, `flags` **must** not contain
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`
+is [VK_IMAGE_TYPE_2D](#VkImageType), and `samples` is
+[VK_SAMPLE_COUNT_4_BIT](limits.html#VkSampleCountFlagBits), `flags` **must** not contain
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-imageType-00975) VUID-VkImageCreateInfo-imageType-00975
 
 If the [    `sparseResidency8Samples`](features.html#features-sparseResidency8Samples) feature is not enabled, `imageType`
-is `VK_IMAGE_TYPE_2D`, and `samples` is
-`VK_SAMPLE_COUNT_8_BIT`, `flags` **must** not contain
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`
+is [VK_IMAGE_TYPE_2D](#VkImageType), and `samples` is
+[VK_SAMPLE_COUNT_8_BIT](limits.html#VkSampleCountFlagBits), `flags` **must** not contain
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-imageType-00976) VUID-VkImageCreateInfo-imageType-00976
 
 If the [    `sparseResidency16Samples`](features.html#features-sparseResidency16Samples) feature is not enabled, `imageType`
-is `VK_IMAGE_TYPE_2D`, and `samples` is
-`VK_SAMPLE_COUNT_16_BIT`, `flags` **must** not contain
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`
+is [VK_IMAGE_TYPE_2D](#VkImageType), and `samples` is
+[VK_SAMPLE_COUNT_16_BIT](limits.html#VkSampleCountFlagBits), `flags` **must** not contain
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-flags-00987) VUID-VkImageCreateInfo-flags-00987
 
-If `flags` contains `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` or
-`VK_IMAGE_CREATE_SPARSE_ALIASED_BIT`, it **must** also contain
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT`
+If `flags` contains [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](#VkImageCreateFlagBits) or
+[VK_IMAGE_CREATE_SPARSE_ALIASED_BIT](#VkImageCreateFlagBits), it **must** also contain
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-None-01925) VUID-VkImageCreateInfo-None-01925
 
-If any of the bits `VK_IMAGE_CREATE_SPARSE_BINDING_BIT`,
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`, or
-`VK_IMAGE_CREATE_SPARSE_ALIASED_BIT` are set,
-`VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT` **must** not also be set
+If any of the bits [VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#VkImageCreateFlagBits),
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](#VkImageCreateFlagBits), or
+[VK_IMAGE_CREATE_SPARSE_ALIASED_BIT](#VkImageCreateFlagBits) are set,
+[VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](#VkImageUsageFlagBits) **must** not also be set
 
 * 
 [](#VUID-VkImageCreateInfo-flags-01890) VUID-VkImageCreateInfo-flags-01890
 
 If the [`protectedMemory`](features.html#features-protectedMemory) feature is
 not enabled, `flags` **must** not contain
-`VK_IMAGE_CREATE_PROTECTED_BIT`
+[VK_IMAGE_CREATE_PROTECTED_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-None-01891) VUID-VkImageCreateInfo-None-01891
 
-If any of the bits `VK_IMAGE_CREATE_SPARSE_BINDING_BIT`,
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`, or
-`VK_IMAGE_CREATE_SPARSE_ALIASED_BIT` are set,
-`VK_IMAGE_CREATE_PROTECTED_BIT` **must** not also be set
+If any of the bits [VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#VkImageCreateFlagBits),
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](#VkImageCreateFlagBits), or
+[VK_IMAGE_CREATE_SPARSE_ALIASED_BIT](#VkImageCreateFlagBits) are set,
+[VK_IMAGE_CREATE_PROTECTED_BIT](#VkImageCreateFlagBits) **must** not also be set
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-00988) VUID-VkImageCreateInfo-pNext-00988
@@ -3296,39 +3324,39 @@ in [VkExternalMemoryImageCreateInfoNV](#VkExternalMemoryImageCreateInfoNV)::`han
 If the logical device was created with
 [VkDeviceGroupDeviceCreateInfo](devsandqueues.html#VkDeviceGroupDeviceCreateInfo)::`physicalDeviceCount` equal to
 1, `flags` **must** not contain
-`VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT`
+[VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-flags-02259) VUID-VkImageCreateInfo-flags-02259
 
 If `flags` contains
-`VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT`, then
+[VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT](#VkImageCreateFlagBits), then
 `mipLevels` **must** be one, `arrayLayers` **must** be one,
-`imageType` **must** be `VK_IMAGE_TYPE_2D`, and
+`imageType` **must** be [VK_IMAGE_TYPE_2D](#VkImageType), and
 `imageCreateMaybeLinear` (as defined in
 [Image Creation Limits](#resources-image-creation-limits)) **must** be
-`VK_FALSE`
+[VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkImageCreateInfo-flags-01572) VUID-VkImageCreateInfo-flags-01572
 
 If `flags` contains
-`VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT`, then `format`
+[VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](#VkImageCreateFlagBits), then `format`
 **must** be a [compressed image format](../appendices/compressedtex.html#compressed_image_formats)
 
 * 
 [](#VUID-VkImageCreateInfo-flags-01573) VUID-VkImageCreateInfo-flags-01573
 
 If `flags` contains
-`VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT`, then `flags`
-**must** also contain `VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT`
+[VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](#VkImageCreateFlagBits), then `flags`
+**must** also contain [VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-initialLayout-00993) VUID-VkImageCreateInfo-initialLayout-00993
 
-    `initialLayout` **must** be `VK_IMAGE_LAYOUT_UNDEFINED` or
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT` or
-    `VK_IMAGE_LAYOUT_PREINITIALIZED`
+    `initialLayout` **must** be [VK_IMAGE_LAYOUT_UNDEFINED](#VkImageLayout) or
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](#VkImageLayout) or
+    [VK_IMAGE_LAYOUT_PREINITIALIZED](#VkImageLayout)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-01443) VUID-VkImageCreateInfo-pNext-01443
@@ -3337,7 +3365,7 @@ If the `pNext` chain includes a
 [VkExternalMemoryImageCreateInfo](#VkExternalMemoryImageCreateInfo) or
 `VkExternalMemoryImageCreateInfoNV` structure whose
 `handleTypes` member is not `0`, `initialLayout` **must** be
-`VK_IMAGE_LAYOUT_UNDEFINED`
+[VK_IMAGE_LAYOUT_UNDEFINED](#VkImageLayout)
 
 * 
 [](#VUID-VkImageCreateInfo-format-06410) VUID-VkImageCreateInfo-format-06410
@@ -3350,14 +3378,14 @@ If the image `format` is one of the
 
 If the image `format` is one of the
 [formats that require a    sampler Y′CBCR conversion](formats.html#formats-requiring-sampler-ycbcr-conversion), `samples` **must** be
-`VK_SAMPLE_COUNT_1_BIT`
+[VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-format-06412) VUID-VkImageCreateInfo-format-06412
 
 If the image `format` is one of the
 [formats that require a    sampler Y′CBCR conversion](formats.html#formats-requiring-sampler-ycbcr-conversion), `imageType` **must** be
-`VK_IMAGE_TYPE_2D`
+[VK_IMAGE_TYPE_2D](#VkImageType)
 
 * 
 [](#VUID-VkImageCreateInfo-imageCreateFormatFeatures-02260) VUID-VkImageCreateInfo-imageCreateFormatFeatures-02260
@@ -3365,15 +3393,15 @@ If the image `format` is one of the
 If `format` is a *multi-planar* format, and if
 `imageCreateFormatFeatures` (as defined in
 [Image Creation Limits](#resources-image-creation-limits)) does not
-contain `VK_FORMAT_FEATURE_DISJOINT_BIT`, then `flags` **must** not
-contain `VK_IMAGE_CREATE_DISJOINT_BIT`
+contain [VK_FORMAT_FEATURE_DISJOINT_BIT](formats.html#VkFormatFeatureFlagBits), then `flags` **must** not
+contain [VK_IMAGE_CREATE_DISJOINT_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-format-01577) VUID-VkImageCreateInfo-format-01577
 
 If `format` is not a *multi-planar* format, and `flags` does not
-include `VK_IMAGE_CREATE_ALIAS_BIT`, `flags` **must** not contain
-`VK_IMAGE_CREATE_DISJOINT_BIT`
+include [VK_IMAGE_CREATE_ALIAS_BIT](#VkImageCreateFlagBits), `flags` **must** not contain
+[VK_IMAGE_CREATE_DISJOINT_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-format-04712) VUID-VkImageCreateInfo-format-04712
@@ -3402,7 +3430,7 @@ If `format` is one of the `VK_FORMAT_PVRTC1_*_IMG` formats,
 * 
 [](#VUID-VkImageCreateInfo-tiling-02261) VUID-VkImageCreateInfo-tiling-02261
 
-If `tiling` is `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then
+If `tiling` is [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling), then
 the `pNext` chain **must** include exactly one of
 [VkImageDrmFormatModifierListCreateInfoEXT](#VkImageDrmFormatModifierListCreateInfoEXT) or
 [VkImageDrmFormatModifierExplicitCreateInfoEXT](#VkImageDrmFormatModifierExplicitCreateInfoEXT) structures
@@ -3413,13 +3441,13 @@ the `pNext` chain **must** include exactly one of
 If the `pNext` chain includes a
 [VkImageDrmFormatModifierListCreateInfoEXT](#VkImageDrmFormatModifierListCreateInfoEXT) or
 [VkImageDrmFormatModifierExplicitCreateInfoEXT](#VkImageDrmFormatModifierExplicitCreateInfoEXT) structure, then
-`tiling` **must** be `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`
+`tiling` **must** be [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling)
 
 * 
 [](#VUID-VkImageCreateInfo-tiling-02353) VUID-VkImageCreateInfo-tiling-02353
 
-If `tiling` is `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT` and
-`flags` contains `VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT`, then the
+If `tiling` is [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling) and
+`flags` contains [VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](#VkImageCreateFlagBits), then the
 `pNext` chain **must** include a [VkImageFormatListCreateInfo](#VkImageFormatListCreateInfo)
 structure with non-zero `viewFormatCount`
 
@@ -3427,7 +3455,7 @@ structure with non-zero `viewFormatCount`
 [](#VUID-VkImageCreateInfo-flags-01533) VUID-VkImageCreateInfo-flags-01533
 
 If `flags` contains
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT`
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](#VkImageCreateFlagBits)
 `format` **must** be a depth or depth/stencil format
 
 * 
@@ -3436,8 +3464,8 @@ If `flags` contains
 If the `pNext` chain includes a
 [VkExternalMemoryImageCreateInfo](#VkExternalMemoryImageCreateInfo) structure whose `handleTypes`
 member includes
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`,
-`imageType` **must** be `VK_IMAGE_TYPE_2D`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
+`imageType` **must** be [VK_IMAGE_TYPE_2D](#VkImageType)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-02394) VUID-VkImageCreateInfo-pNext-02394
@@ -3445,7 +3473,7 @@ member includes
 If the `pNext` chain includes a
 [VkExternalMemoryImageCreateInfo](#VkExternalMemoryImageCreateInfo) structure whose `handleTypes`
 member includes
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
 `mipLevels` **must** either be `1` or equal to the number of levels in
 the complete mipmap chain based on `extent.width`,
 `extent.height`, and `extent.depth`
@@ -3455,7 +3483,7 @@ the complete mipmap chain based on `extent.width`,
 
 If the `pNext` chain includes a [VkExternalFormatANDROID](#VkExternalFormatANDROID)
 structure whose `externalFormat` member is not `0`, `flags`
-**must** not include `VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT`
+**must** not include [VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-02397) VUID-VkImageCreateInfo-pNext-02397
@@ -3463,9 +3491,9 @@ structure whose `externalFormat` member is not `0`, `flags`
 If the `pNext` chain includes a [VkExternalFormatANDROID](#VkExternalFormatANDROID)
 structure whose `externalFormat` member is not `0`, `usage`
 **must** not include any usages except
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`,
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT`, or
-`VK_IMAGE_USAGE_SAMPLED_BIT`
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](#VkImageUsageFlagBits), or
+[VK_IMAGE_USAGE_SAMPLED_BIT](#VkImageUsageFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-09457) VUID-VkImageCreateInfo-pNext-09457
@@ -3474,15 +3502,15 @@ If the `pNext` chain includes a [VkExternalFormatANDROID](#VkExternalFormatANDRO
 structure whose `externalFormat` member is not `0`, and
 [`externalFormatResolve`](features.html#features-externalFormatResolve) feature
 is not enabled, `usage` **must** not include
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT`
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](#VkImageUsageFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-02398) VUID-VkImageCreateInfo-pNext-02398
 
 If the `pNext` chain includes a [VkExternalFormatANDROID](#VkExternalFormatANDROID)
 structure whose `externalFormat` member is not `0`, `tiling`
-**must** be `VK_IMAGE_TILING_OPTIMAL`
+**must** be [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-08951) VUID-VkImageCreateInfo-pNext-08951
@@ -3490,8 +3518,8 @@ structure whose `externalFormat` member is not `0`, `tiling`
 If the `pNext` chain includes a
 [VkExternalMemoryImageCreateInfo](#VkExternalMemoryImageCreateInfo) structure whose `handleTypes`
 member includes
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX`,
-`imageType` **must** be `VK_IMAGE_TYPE_2D`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
+`imageType` **must** be [VK_IMAGE_TYPE_2D](#VkImageType)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-08952) VUID-VkImageCreateInfo-pNext-08952
@@ -3499,7 +3527,7 @@ member includes
 If the `pNext` chain includes a
 [VkExternalMemoryImageCreateInfo](#VkExternalMemoryImageCreateInfo) structure whose `handleTypes`
 member includes
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
 `mipLevels` **must** either be `1` or equal to the number of levels in
 the complete mipmap chain based on `extent.width`,
 `extent.height`, and `extent.depth`
@@ -3509,57 +3537,57 @@ the complete mipmap chain based on `extent.width`,
 
 If the `pNext` chain includes a [VkExternalFormatQNX](#VkExternalFormatQNX) structure
 whose `externalFormat` member is not `0`, `flags` **must** not
-include `VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT`
+include [VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-08954) VUID-VkImageCreateInfo-pNext-08954
 
 If the `pNext` chain includes a [VkExternalFormatQNX](#VkExternalFormatQNX) structure
 whose `externalFormat` member is not `0`, `usage` **must** not
-include any usages except `VK_IMAGE_USAGE_SAMPLED_BIT`
+include any usages except [VK_IMAGE_USAGE_SAMPLED_BIT](#VkImageUsageFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-08955) VUID-VkImageCreateInfo-pNext-08955
 
 If the `pNext` chain includes a [VkExternalFormatQNX](#VkExternalFormatQNX) structure
 whose `externalFormat` member is not `0`, `tiling` **must** be
-`VK_IMAGE_TILING_OPTIMAL`
+[VK_IMAGE_TILING_OPTIMAL](#VkImageTiling)
 
 * 
 [](#VUID-VkImageCreateInfo-format-02795) VUID-VkImageCreateInfo-format-02795
 
 If `format` is a depth-stencil format, `usage` includes
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`, and the `pNext`
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](#VkImageUsageFlagBits), and the `pNext`
 chain includes a [VkImageStencilUsageCreateInfo](#VkImageStencilUsageCreateInfo) structure, then its
 [VkImageStencilUsageCreateInfo](#VkImageStencilUsageCreateInfo)::`stencilUsage` member **must**
-also include `VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`
+also include [VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](#VkImageUsageFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-format-02796) VUID-VkImageCreateInfo-format-02796
 
 If `format` is a depth-stencil format, `usage` does not include
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`, and the `pNext`
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](#VkImageUsageFlagBits), and the `pNext`
 chain includes a [VkImageStencilUsageCreateInfo](#VkImageStencilUsageCreateInfo) structure, then its
 [VkImageStencilUsageCreateInfo](#VkImageStencilUsageCreateInfo)::`stencilUsage` member **must**
-also not include `VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`
+also not include [VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](#VkImageUsageFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-format-02797) VUID-VkImageCreateInfo-format-02797
 
 If `format` is a depth-stencil format, `usage` includes
-`VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT`, and the `pNext` chain
+[VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](#VkImageUsageFlagBits), and the `pNext` chain
 includes a [VkImageStencilUsageCreateInfo](#VkImageStencilUsageCreateInfo) structure, then its
 [VkImageStencilUsageCreateInfo](#VkImageStencilUsageCreateInfo)::`stencilUsage` member **must**
-also include `VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT`
+also include [VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](#VkImageUsageFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-format-02798) VUID-VkImageCreateInfo-format-02798
 
 If `format` is a depth-stencil format, `usage` does not include
-`VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT`, and the `pNext` chain
+[VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](#VkImageUsageFlagBits), and the `pNext` chain
 includes a [VkImageStencilUsageCreateInfo](#VkImageStencilUsageCreateInfo) structure, then its
 [VkImageStencilUsageCreateInfo](#VkImageStencilUsageCreateInfo)::`stencilUsage` member **must**
-also not include `VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT`
+also not include [VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](#VkImageUsageFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-Format-02536) VUID-VkImageCreateInfo-Format-02536
@@ -3567,7 +3595,7 @@ also not include `VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT`
 If `Format` is a depth-stencil format and the `pNext` chain
 includes a [VkImageStencilUsageCreateInfo](#VkImageStencilUsageCreateInfo) structure with its
 `stencilUsage` member including
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`, `extent.width` **must** be
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](#VkImageUsageFlagBits), `extent.width` **must** be
 less than or equal to
 `VkPhysicalDeviceLimits`::`maxFramebufferWidth`
 
@@ -3577,7 +3605,7 @@ less than or equal to
 If `format` is a depth-stencil format and the `pNext` chain
 includes a [VkImageStencilUsageCreateInfo](#VkImageStencilUsageCreateInfo) structure with its
 `stencilUsage` member including
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`, `extent.height` **must** be
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](#VkImageUsageFlagBits), `extent.height` **must** be
 less than or equal to
 `VkPhysicalDeviceLimits`::`maxFramebufferHeight`
 
@@ -3587,103 +3615,103 @@ less than or equal to
 If the [    `shaderStorageImageMultisample`](features.html#features-shaderStorageImageMultisample) feature is not enabled,
 `format` is a depth-stencil format and the `pNext` chain
 includes a [VkImageStencilUsageCreateInfo](#VkImageStencilUsageCreateInfo) structure with its
-`stencilUsage` including `VK_IMAGE_USAGE_STORAGE_BIT`,
-`samples` **must** be `VK_SAMPLE_COUNT_1_BIT`
+`stencilUsage` including [VK_IMAGE_USAGE_STORAGE_BIT](#VkImageUsageFlagBits),
+`samples` **must** be [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-flags-02050) VUID-VkImageCreateInfo-flags-02050
 
-If `flags` contains `VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV`,
-`imageType` **must** be `VK_IMAGE_TYPE_2D` or
-`VK_IMAGE_TYPE_3D`
+If `flags` contains [VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV](#VkImageCreateFlagBits),
+`imageType` **must** be [VK_IMAGE_TYPE_2D](#VkImageType) or
+[VK_IMAGE_TYPE_3D](#VkImageType)
 
 * 
 [](#VUID-VkImageCreateInfo-flags-02051) VUID-VkImageCreateInfo-flags-02051
 
-If `flags` contains `VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV`, it
-**must** not contain `VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT` and the
+If `flags` contains [VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV](#VkImageCreateFlagBits), it
+**must** not contain [VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT](#VkImageCreateFlagBits) and the
 `format` **must** not be a depth/stencil format
 
 * 
 [](#VUID-VkImageCreateInfo-flags-02052) VUID-VkImageCreateInfo-flags-02052
 
-If `flags` contains `VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV` and
-`imageType` is `VK_IMAGE_TYPE_2D`, `extent.width` and
+If `flags` contains [VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV](#VkImageCreateFlagBits) and
+`imageType` is [VK_IMAGE_TYPE_2D](#VkImageType), `extent.width` and
 `extent.height` **must** be greater than `1`
 
 * 
 [](#VUID-VkImageCreateInfo-flags-02053) VUID-VkImageCreateInfo-flags-02053
 
-If `flags` contains `VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV` and
-`imageType` is `VK_IMAGE_TYPE_3D`, `extent.width`,
+If `flags` contains [VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV](#VkImageCreateFlagBits) and
+`imageType` is [VK_IMAGE_TYPE_3D](#VkImageType), `extent.width`,
 `extent.height`, and `extent.depth` **must** be greater than `1`
 
 * 
 [](#VUID-VkImageCreateInfo-imageType-02082) VUID-VkImageCreateInfo-imageType-02082
 
 If `usage` includes
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`,
-`imageType` **must** be `VK_IMAGE_TYPE_2D`
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkImageUsageFlagBits),
+`imageType` **must** be [VK_IMAGE_TYPE_2D](#VkImageType)
 
 * 
 [](#VUID-VkImageCreateInfo-samples-02083) VUID-VkImageCreateInfo-samples-02083
 
 If `usage` includes
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`,
-`samples` **must** be `VK_SAMPLE_COUNT_1_BIT`
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkImageUsageFlagBits),
+`samples` **must** be [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-shadingRateImage-07727) VUID-VkImageCreateInfo-shadingRateImage-07727
 
 If the [`shadingRateImage`](features.html#features-shadingRateImage) feature is
 enabled and `usage` includes
-`VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV`, `tiling` **must** be
-`VK_IMAGE_TILING_OPTIMAL`
+[VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV](#VkImageUsageFlagBits), `tiling` **must** be
+[VK_IMAGE_TILING_OPTIMAL](#VkImageTiling)
 
 * 
 [](#VUID-VkImageCreateInfo-flags-02565) VUID-VkImageCreateInfo-flags-02565
 
-If `flags` contains `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`,
-`tiling` **must** be `VK_IMAGE_TILING_OPTIMAL`
+If `flags` contains [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](#VkImageCreateFlagBits),
+`tiling` **must** be [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling)
 
 * 
 [](#VUID-VkImageCreateInfo-flags-02566) VUID-VkImageCreateInfo-flags-02566
 
-If `flags` contains `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`,
-`imageType` **must** be `VK_IMAGE_TYPE_2D`
+If `flags` contains [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](#VkImageCreateFlagBits),
+`imageType` **must** be [VK_IMAGE_TYPE_2D](#VkImageType)
 
 * 
 [](#VUID-VkImageCreateInfo-flags-02567) VUID-VkImageCreateInfo-flags-02567
 
-If `flags` contains `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`,
-`flags` **must** not contain `VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT`
+If `flags` contains [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](#VkImageCreateFlagBits),
+`flags` **must** not contain [VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-flags-02568) VUID-VkImageCreateInfo-flags-02568
 
-If `flags` contains `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`,
+If `flags` contains [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](#VkImageCreateFlagBits),
 `mipLevels` **must** be `1`
 
 * 
 [](#VUID-VkImageCreateInfo-usage-04992) VUID-VkImageCreateInfo-usage-04992
 
-If `usage` includes `VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI`,
-`tiling` **must** be `VK_IMAGE_TILING_LINEAR`
+If `usage` includes [VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI](#VkImageUsageFlagBits),
+`tiling` **must** be [VK_IMAGE_TILING_LINEAR](#VkImageTiling)
 
 * 
 [](#VUID-VkImageCreateInfo-imageView2DOn3DImage-04459) VUID-VkImageCreateInfo-imageView2DOn3DImage-04459
 
 If the `[VK_KHR_portability_subset](../appendices/extensions.html#VK_KHR_portability_subset)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR)::`imageView2DOn3DImage`
-is `VK_FALSE`, `flags` **must** not contain
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT`
+is [VK_FALSE](fundamentals.html#VK_FALSE), `flags` **must** not contain
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-multisampleArrayImage-04460) VUID-VkImageCreateInfo-multisampleArrayImage-04460
 
 If the `[VK_KHR_portability_subset](../appendices/extensions.html#VK_KHR_portability_subset)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR)::`multisampleArrayImage`
-is `VK_FALSE`, and `samples` is not `VK_SAMPLE_COUNT_1_BIT`,
+is [VK_FALSE](fundamentals.html#VK_FALSE), and `samples` is not [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits),
 then `arrayLayers` **must** be `1`
 
 * 
@@ -3696,7 +3724,7 @@ then each format in
 [VkImageFormatListCreateInfo](#VkImageFormatListCreateInfo)::`pViewFormats` **must** either be
 compatible with the `format` as described in the
 [compatibility table](formats.html#formats-compatibility) or, if `flags`
-contains `VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT`, be an
+contains [VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](#VkImageCreateFlagBits), be an
 uncompressed format that is [    size-compatible](formats.html#formats-size-compatibility) with `format`
 
 * 
@@ -3704,16 +3732,16 @@ uncompressed format that is [    size-compatible](formats.html#formats-size-comp
 
 If a [VkImageFormatListCreateInfo](#VkImageFormatListCreateInfo) structure was included in the
 `pNext` chain and `format` is a [    multi-planar format](formats.html#formats-multiplanar) and `flags` contains
-`VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT` and
+[VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](#VkImageCreateFlagBits) and
 [VkImageFormatListCreateInfo](#VkImageFormatListCreateInfo)::`viewFormatCount` is not zero,
 then each format in
 [VkImageFormatListCreateInfo](#VkImageFormatListCreateInfo)::`pViewFormats` **must** be
-compatible with the `VkFormat` for the plane of the image format
+compatible with the [VkFormat](formats.html#VkFormat) for the plane of the image format
 
 * 
 [](#VUID-VkImageCreateInfo-flags-04738) VUID-VkImageCreateInfo-flags-04738
 
-If `flags` does not contain `VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT`
+If `flags` does not contain [VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](#VkImageCreateFlagBits)
 and the `pNext` chain includes a [VkImageFormatListCreateInfo](#VkImageFormatListCreateInfo)
 structure, then [VkImageFormatListCreateInfo](#VkImageFormatListCreateInfo)::`viewFormatCount`
 **must** be `0` or `1`
@@ -3721,11 +3749,11 @@ structure, then [VkImageFormatListCreateInfo](#VkImageFormatListCreateInfo)::`vi
 * 
 [](#VUID-VkImageCreateInfo-usage-04815) VUID-VkImageCreateInfo-usage-04815
 
-If `usage` includes `VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR`,
-`VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR`, or
-`VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR`,
+If `usage` includes [VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR](#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](#VkImageUsageFlagBits), or
+[VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](#VkImageUsageFlagBits),
 and `flags` does not include
-`VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR`,
+[VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](#VkImageCreateFlagBits),
 then the `pNext` chain **must** include a
 [VkVideoProfileListInfoKHR](videocoding.html#VkVideoProfileListInfoKHR) structure with `profileCount`
 greater than `0` and `pProfiles` including at least one
@@ -3735,11 +3763,11 @@ member specifying a decode operation
 * 
 [](#VUID-VkImageCreateInfo-usage-04816) VUID-VkImageCreateInfo-usage-04816
 
-If `usage` includes `VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR`,
-`VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR`, or
-`VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR`,
+If `usage` includes [VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR](#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR](#VkImageUsageFlagBits), or
+[VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR](#VkImageUsageFlagBits),
 and `flags` does not include
-`VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR`,
+[VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](#VkImageCreateFlagBits),
 then the `pNext` chain **must** include a
 [VkVideoProfileListInfoKHR](videocoding.html#VkVideoProfileListInfoKHR) structure with `profileCount`
 greater than `0` and `pProfiles` including at least one
@@ -3750,34 +3778,34 @@ member specifying an encode operation
 [](#VUID-VkImageCreateInfo-flags-08328) VUID-VkImageCreateInfo-flags-08328
 
 If `flags` includes
-`VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR`, then
+[VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](#VkImageCreateFlagBits), then
 [`videoMaintenance1`](features.html#features-videoMaintenance1) **must** be enabled
 
 * 
 [](#VUID-VkImageCreateInfo-flags-08329) VUID-VkImageCreateInfo-flags-08329
 
 If `flags` includes
-`VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR` and `usage`
-does not include `VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR`, then
+[VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](#VkImageCreateFlagBits) and `usage`
+does not include [VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](#VkImageUsageFlagBits), then
 `usage` **must** not include
-`VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR`
+[VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](#VkImageUsageFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-flags-08331) VUID-VkImageCreateInfo-flags-08331
 
 If `flags` includes
-`VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR`, then
+[VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](#VkImageCreateFlagBits), then
 `usage` **must** not include
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR`,
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR`, or
-`VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR`
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](#VkImageUsageFlagBits), or
+[VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR](#VkImageUsageFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-06811) VUID-VkImageCreateInfo-pNext-06811
 
 If the `pNext` chain includes a [VkVideoProfileListInfoKHR](videocoding.html#VkVideoProfileListInfoKHR)
 structure with `profileCount` greater than `0`, then
-`supportedVideoFormat` **must** be `VK_TRUE`
+`supportedVideoFormat` **must** be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-10784) VUID-VkImageCreateInfo-pNext-10784
@@ -3785,7 +3813,7 @@ structure with `profileCount` greater than `0`, then
 If the `pNext` chain includes a [VkVideoProfileListInfoKHR](videocoding.html#VkVideoProfileListInfoKHR)
 structure and for any element of its `pProfiles` member
 `videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR`, then the
+[VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR](videocoding.html#VkVideoCodecOperationFlagBitsKHR), then the
 [`videoDecodeVP9`](features.html#features-videoDecodeVP9) feature **must** be
 enabled
 
@@ -3795,7 +3823,7 @@ enabled
 If the `pNext` chain includes a [VkVideoProfileListInfoKHR](videocoding.html#VkVideoProfileListInfoKHR)
 structure and for any element of its `pProfiles` member
 `videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR`, then the
+[VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](videocoding.html#VkVideoCodecOperationFlagBitsKHR), then the
 [`videoEncodeAV1`](features.html#features-videoEncodeAV1) feature **must** be
 enabled
 
@@ -3811,32 +3839,32 @@ feature **must** be enabled
 [](#VUID-VkImageCreateInfo-usage-10251) VUID-VkImageCreateInfo-usage-10251
 
 If `usage` includes
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR` or
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR`, then the
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](#VkImageUsageFlagBits), then the
 [    `videoEncodeQuantizationMap`](features.html#features-videoEncodeQuantizationMap) feature **must** be enabled
 
 * 
 [](#VUID-VkImageCreateInfo-usage-10252) VUID-VkImageCreateInfo-usage-10252
 
 If `usage` includes
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR` or
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR`, `imageType`
-**must** be `VK_IMAGE_TYPE_2D`
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](#VkImageUsageFlagBits), `imageType`
+**must** be [VK_IMAGE_TYPE_2D](#VkImageType)
 
 * 
 [](#VUID-VkImageCreateInfo-usage-10253) VUID-VkImageCreateInfo-usage-10253
 
 If `usage` includes
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR` or
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR`, `samples`
-**must** be `VK_SAMPLE_COUNT_1_BIT`
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](#VkImageUsageFlagBits), `samples`
+**must** be [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-usage-10254) VUID-VkImageCreateInfo-usage-10254
 
 If `usage` includes
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR` or
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR`, then the
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](#VkImageUsageFlagBits), then the
 `pNext` chain **must** include a [VkVideoProfileListInfoKHR](videocoding.html#VkVideoProfileListInfoKHR)
 structure with `profileCount` equal to `1` and `pProfiles`
 pointing to a [VkVideoProfileInfoKHR](videocoding.html#VkVideoProfileInfoKHR) structure with a
@@ -3846,9 +3874,9 @@ pointing to a [VkVideoProfileInfoKHR](videocoding.html#VkVideoProfileInfoKHR) st
 [](#VUID-VkImageCreateInfo-usage-10255) VUID-VkImageCreateInfo-usage-10255
 
 If `usage` includes
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR`, then
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](#VkImageUsageFlagBits), then
 [VkVideoEncodeCapabilitiesKHR](videocoding.html#VkVideoEncodeCapabilitiesKHR)::`flags` **must** include
-`VK_VIDEO_ENCODE_CAPABILITY_QUANTIZATION_DELTA_MAP_BIT_KHR`, as
+[VK_VIDEO_ENCODE_CAPABILITY_QUANTIZATION_DELTA_MAP_BIT_KHR](videocoding.html#VkVideoEncodeCapabilityFlagBitsKHR), as
 returned by [vkGetPhysicalDeviceVideoCapabilitiesKHR](videocoding.html#vkGetPhysicalDeviceVideoCapabilitiesKHR) for the video
 profile specified in the `pProfiles` member of the
 [VkVideoProfileListInfoKHR](videocoding.html#VkVideoProfileListInfoKHR) structure included in the `pNext`
@@ -3858,9 +3886,9 @@ chain
 [](#VUID-VkImageCreateInfo-usage-10256) VUID-VkImageCreateInfo-usage-10256
 
 If `usage` includes
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR`, then
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](#VkImageUsageFlagBits), then
 [VkVideoEncodeCapabilitiesKHR](videocoding.html#VkVideoEncodeCapabilitiesKHR)::`flags` **must** include
-`VK_VIDEO_ENCODE_CAPABILITY_EMPHASIS_MAP_BIT_KHR`, as returned by
+[VK_VIDEO_ENCODE_CAPABILITY_EMPHASIS_MAP_BIT_KHR](videocoding.html#VkVideoEncodeCapabilityFlagBitsKHR), as returned by
 [vkGetPhysicalDeviceVideoCapabilitiesKHR](videocoding.html#vkGetPhysicalDeviceVideoCapabilitiesKHR) for the video profile
 specified in the `pProfiles` member of the
 [VkVideoProfileListInfoKHR](videocoding.html#VkVideoProfileListInfoKHR) structure included in the `pNext`
@@ -3870,8 +3898,8 @@ chain
 [](#VUID-VkImageCreateInfo-usage-10257) VUID-VkImageCreateInfo-usage-10257
 
 If `usage` includes
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR` or
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR`,
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](#VkImageUsageFlagBits),
 `extent.width` **must** be less than or equal to
 [VkVideoEncodeQuantizationMapCapabilitiesKHR](videocoding.html#VkVideoEncodeQuantizationMapCapabilitiesKHR)::`maxQuantizationMapExtent.width`,
 as returned by [vkGetPhysicalDeviceVideoCapabilitiesKHR](videocoding.html#vkGetPhysicalDeviceVideoCapabilitiesKHR) for the
@@ -3883,8 +3911,8 @@ chain
 [](#VUID-VkImageCreateInfo-usage-10258) VUID-VkImageCreateInfo-usage-10258
 
 If `usage` includes
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR` or
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR`,
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](#VkImageUsageFlagBits),
 `extent.height` **must** be less than or equal to
 [VkVideoEncodeQuantizationMapCapabilitiesKHR](videocoding.html#VkVideoEncodeQuantizationMapCapabilitiesKHR)::`maxQuantizationMapExtent.height`,
 as returned by [vkGetPhysicalDeviceVideoCapabilitiesKHR](videocoding.html#vkGetPhysicalDeviceVideoCapabilitiesKHR) for the
@@ -3905,21 +3933,21 @@ chained to `pNext`
 
 If the [    `multisampledRenderToSingleSampled`](features.html#features-multisampledRenderToSingleSampled) feature is not enabled,
 `flags` **must** not contain
-`VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT`
+[VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-flags-06883) VUID-VkImageCreateInfo-flags-06883
 
 If `flags` contains
-`VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT`,
-`samples` **must** be `VK_SAMPLE_COUNT_1_BIT`
+[VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT](#VkImageCreateFlagBits),
+`samples` **must** be [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-06743) VUID-VkImageCreateInfo-pNext-06743
 
 If the `pNext` chain includes a [VkImageCompressionControlEXT](#VkImageCompressionControlEXT)
 structure, `format` is a [multi-planar    format](formats.html#formats-multiplanar), and [VkImageCompressionControlEXT](#VkImageCompressionControlEXT)::`flags` includes
-`VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT`, then
+[VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT](#VkImageCompressionFlagBitsEXT), then
 [VkImageCompressionControlEXT](#VkImageCompressionControlEXT)::`compressionControlPlaneCount`
 **must** be equal to the number of planes in `format`
 
@@ -3928,7 +3956,7 @@ structure, `format` is a [multi-planar    format](formats.html#formats-multiplan
 
 If the `pNext` chain includes a [VkImageCompressionControlEXT](#VkImageCompressionControlEXT)
 structure, `format` is not a [multi-planar    format](formats.html#formats-multiplanar), and [VkImageCompressionControlEXT](#VkImageCompressionControlEXT)::`flags` includes
-`VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT`, then
+[VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT](#VkImageCompressionFlagBitsEXT), then
 [VkImageCompressionControlEXT](#VkImageCompressionControlEXT)::`compressionControlPlaneCount`
 **must** be 1
 
@@ -3942,9 +3970,12 @@ structure, it **must** not contain a
 * 
 [](#VUID-VkImageCreateInfo-flags-08104) VUID-VkImageCreateInfo-flags-08104
 
-If `flags` includes
-`VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`, the
-[    `descriptorBufferCaptureReplay`](features.html#features-descriptorBufferCaptureReplay) feature **must** be enabled
+    If `flags` includes
+    [VK_IMAGE_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_EXT](#VkImageCreateFlagBits), the
+    [    `descriptorBufferCaptureReplay`](features.html#features-descriptorBufferCaptureReplay)
+or
+    [    `descriptorHeapCaptureReplay`](features.html#features-descriptorHeapCaptureReplay)
+ feature **must** be enabled
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-08105) VUID-VkImageCreateInfo-pNext-08105
@@ -3952,7 +3983,7 @@ If `flags` includes
 If the `pNext` chain includes a
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT) structure, `flags`
 **must** contain
-`VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`
+[VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-06783) VUID-VkImageCreateInfo-pNext-06783
@@ -3960,16 +3991,16 @@ If the `pNext` chain includes a
 If the `pNext` chain includes a
 [VkExportMetalObjectCreateInfoEXT](memory.html#VkExportMetalObjectCreateInfoEXT) structure, its
 `exportObjectType` member **must** be either
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT` or
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT`
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT](memory.html#VkExportMetalObjectTypeFlagBitsEXT) or
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT](memory.html#VkExportMetalObjectTypeFlagBitsEXT)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-06784) VUID-VkImageCreateInfo-pNext-06784
 
 If the `pNext` chain includes a [VkImportMetalTextureInfoEXT](memory.html#VkImportMetalTextureInfoEXT)
 structure its `plane` member **must** be
-`VK_IMAGE_ASPECT_PLANE_0_BIT`, `VK_IMAGE_ASPECT_PLANE_1_BIT`, or
-`VK_IMAGE_ASPECT_PLANE_2_BIT`
+[VK_IMAGE_ASPECT_PLANE_0_BIT](#VkImageAspectFlagBits), [VK_IMAGE_ASPECT_PLANE_1_BIT](#VkImageAspectFlagBits), or
+[VK_IMAGE_ASPECT_PLANE_2_BIT](#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-06785) VUID-VkImageCreateInfo-pNext-06785
@@ -3977,7 +4008,7 @@ structure its `plane` member **must** be
 If the `pNext` chain includes a [VkImportMetalTextureInfoEXT](memory.html#VkImportMetalTextureInfoEXT)
 structure and the image does not have a [    multi-planar format](formats.html#formats-multiplanar), then
 [VkImportMetalTextureInfoEXT](memory.html#VkImportMetalTextureInfoEXT)::`plane` **must** be
-`VK_IMAGE_ASPECT_PLANE_0_BIT`
+[VK_IMAGE_ASPECT_PLANE_0_BIT](#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-06786) VUID-VkImageCreateInfo-pNext-06786
@@ -3985,20 +4016,20 @@ structure and the image does not have a [    multi-planar format](formats.html#f
 If the `pNext` chain includes a [VkImportMetalTextureInfoEXT](memory.html#VkImportMetalTextureInfoEXT)
 structure and the image has a [multi-planar    format](formats.html#formats-multiplanar) with only two planes, then
 [VkImportMetalTextureInfoEXT](memory.html#VkImportMetalTextureInfoEXT)::`plane` **must** not be
-`VK_IMAGE_ASPECT_PLANE_2_BIT`
+[VK_IMAGE_ASPECT_PLANE_2_BIT](#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-imageCreateFormatFeatures-09048) VUID-VkImageCreateInfo-imageCreateFormatFeatures-09048
 
 If `imageCreateFormatFeatures` (as defined in
 [Image Creation Limits](#resources-image-creation-limits)) does not
-contain `VK_FORMAT_FEATURE_2_HOST_IMAGE_TRANSFER_BIT`, then
-`usage` **must** not contain `VK_IMAGE_USAGE_HOST_TRANSFER_BIT`
+contain [VK_FORMAT_FEATURE_2_HOST_IMAGE_TRANSFER_BIT](formats.html#VkFormatFeatureFlagBits2KHR), then
+`usage` **must** not contain [VK_IMAGE_USAGE_HOST_TRANSFER_BIT](#VkImageUsageFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-usage-10245) VUID-VkImageCreateInfo-usage-10245
 
-If `usage` includes `VK_IMAGE_USAGE_HOST_TRANSFER_BIT`, then the
+If `usage` includes [VK_IMAGE_USAGE_HOST_TRANSFER_BIT](#VkImageUsageFlagBits), then the
 [`hostImageCopy`](features.html#features-hostImageCopy) feature **must** be enabled
 
 * 
@@ -4006,14 +4037,14 @@ If `usage` includes `VK_IMAGE_USAGE_HOST_TRANSFER_BIT`, then the
 
 If the [`tileMemoryHeap`](features.html#features-tileMemoryHeap) feature is not
 enabled, `usage` **must** not include
-`VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM`
+[VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM](#VkImageUsageFlagBits)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-09653) VUID-VkImageCreateInfo-pNext-09653
 
 If the `pNext` chain contains a
 [VkImageAlignmentControlCreateInfoMESA](#VkImageAlignmentControlCreateInfoMESA) structure, `tiling`
-**must** be `VK_IMAGE_TILING_OPTIMAL`
+**must** be [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-09654) VUID-VkImageCreateInfo-pNext-09654
@@ -4026,20 +4057,48 @@ contain a [VkExternalMemoryImageCreateInfo](#VkExternalMemoryImageCreateInfo) st
 [](#VUID-VkImageCreateInfo-tiling-09711) VUID-VkImageCreateInfo-tiling-09711
 
 If `tiling` is VK_IMAGE_TILING_LINEAR then
-`VK_IMAGE_USAGE_TENSOR_ALIASING_BIT_ARM` **must** not be set in
-`usage`.
+[VK_IMAGE_USAGE_TENSOR_ALIASING_BIT_ARM](#VkImageUsageFlagBits) **must** not be set in
+`usage`
+
+* 
+[](#VUID-VkImageCreateInfo-None-12279) VUID-VkImageCreateInfo-None-12279
+
+    If
+Vulkan 1.3 is not supported and
+    the [`ycbcr2plane444Formats`](features.html#features-ycbcr2plane444Formats)
+    feature is not enabled, `format` **must** not be
+    [VK_FORMAT_G8_B8R8_2PLANE_444_UNORM](formats.html#VkFormat),
+    [VK_FORMAT_G10X6_B10X6R10X6_2PLANE_444_UNORM_3PACK16](formats.html#VkFormat),
+    [VK_FORMAT_G12X4_B12X4R12X4_2PLANE_444_UNORM_3PACK16](formats.html#VkFormat), or
+    [VK_FORMAT_G16_B16R16_2PLANE_444_UNORM](formats.html#VkFormat)
+
+* 
+[](#VUID-VkImageCreateInfo-flags-11281) VUID-VkImageCreateInfo-flags-11281
+
+If [VkOpaqueCaptureDataCreateInfoEXT](#VkOpaqueCaptureDataCreateInfoEXT)::pData is not `NULL`,
+`flags` **must** contain
+[VK_IMAGE_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_EXT](#VkImageCreateFlagBits)
+
+* 
+[](#VUID-VkImageCreateInfo-pData-11286) VUID-VkImageCreateInfo-pData-11286
+
+If `flags` contains
+[VK_IMAGE_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_EXT](#VkImageCreateFlagBits), and
+[VkOpaqueCaptureDataCreateInfoEXT](#VkOpaqueCaptureDataCreateInfoEXT)::`pData` is not `NULL`,
+[VkOpaqueCaptureDataCreateInfoEXT](#VkOpaqueCaptureDataCreateInfoEXT)::`pData->size` **must** be equal
+to [    `imageCaptureReplayOpaqueDataSize`](limits.html#limits-imageCaptureReplayOpaqueDataSize)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkImageCreateInfo-sType-sType) VUID-VkImageCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageCreateInfo-pNext-pNext) VUID-VkImageCreateInfo-pNext-pNext
 
- Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkBufferCollectionImageCreateInfoFUCHSIA](#VkBufferCollectionImageCreateInfoFUCHSIA), [VkDedicatedAllocationImageCreateInfoNV](#VkDedicatedAllocationImageCreateInfoNV), [VkExportMetalObjectCreateInfoEXT](memory.html#VkExportMetalObjectCreateInfoEXT), [VkExternalFormatANDROID](#VkExternalFormatANDROID), [VkExternalFormatOHOS](#VkExternalFormatOHOS), [VkExternalFormatQNX](#VkExternalFormatQNX), [VkExternalMemoryImageCreateInfo](#VkExternalMemoryImageCreateInfo), [VkExternalMemoryImageCreateInfoNV](#VkExternalMemoryImageCreateInfoNV), [VkImageAlignmentControlCreateInfoMESA](#VkImageAlignmentControlCreateInfoMESA), [VkImageCompressionControlEXT](#VkImageCompressionControlEXT), [VkImageDrmFormatModifierExplicitCreateInfoEXT](#VkImageDrmFormatModifierExplicitCreateInfoEXT), [VkImageDrmFormatModifierListCreateInfoEXT](#VkImageDrmFormatModifierListCreateInfoEXT), [VkImageFormatListCreateInfo](#VkImageFormatListCreateInfo), [VkImageStencilUsageCreateInfo](#VkImageStencilUsageCreateInfo), [VkImageSwapchainCreateInfoKHR](#VkImageSwapchainCreateInfoKHR), [VkImportMetalIOSurfaceInfoEXT](memory.html#VkImportMetalIOSurfaceInfoEXT), [VkImportMetalTextureInfoEXT](memory.html#VkImportMetalTextureInfoEXT), [VkNativeBufferOHOS](#VkNativeBufferOHOS), [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT), [VkOpticalFlowImageFormatInfoNV](VK_NV_optical_flow/optical_flow.html#VkOpticalFlowImageFormatInfoNV), [VkSwapchainImageCreateInfoOHOS](#VkSwapchainImageCreateInfoOHOS), or [VkVideoProfileListInfoKHR](videocoding.html#VkVideoProfileListInfoKHR)
+ Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkBufferCollectionImageCreateInfoFUCHSIA](#VkBufferCollectionImageCreateInfoFUCHSIA), [VkDedicatedAllocationImageCreateInfoNV](#VkDedicatedAllocationImageCreateInfoNV), [VkExportMetalObjectCreateInfoEXT](memory.html#VkExportMetalObjectCreateInfoEXT), [VkExternalFormatANDROID](#VkExternalFormatANDROID), [VkExternalFormatOHOS](#VkExternalFormatOHOS), [VkExternalFormatQNX](#VkExternalFormatQNX), [VkExternalMemoryImageCreateInfo](#VkExternalMemoryImageCreateInfo), [VkExternalMemoryImageCreateInfoNV](#VkExternalMemoryImageCreateInfoNV), [VkImageAlignmentControlCreateInfoMESA](#VkImageAlignmentControlCreateInfoMESA), [VkImageCompressionControlEXT](#VkImageCompressionControlEXT), [VkImageDrmFormatModifierExplicitCreateInfoEXT](#VkImageDrmFormatModifierExplicitCreateInfoEXT), [VkImageDrmFormatModifierListCreateInfoEXT](#VkImageDrmFormatModifierListCreateInfoEXT), [VkImageFormatListCreateInfo](#VkImageFormatListCreateInfo), [VkImageStencilUsageCreateInfo](#VkImageStencilUsageCreateInfo), [VkImageSwapchainCreateInfoKHR](#VkImageSwapchainCreateInfoKHR), [VkImportMetalIOSurfaceInfoEXT](memory.html#VkImportMetalIOSurfaceInfoEXT), [VkImportMetalTextureInfoEXT](memory.html#VkImportMetalTextureInfoEXT), [VkOpaqueCaptureDataCreateInfoEXT](#VkOpaqueCaptureDataCreateInfoEXT), [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT), [VkOpticalFlowImageFormatInfoNV](VK_NV_optical_flow/optical_flow.html#VkOpticalFlowImageFormatInfoNV), or [VkVideoProfileListInfoKHR](videocoding.html#VkVideoProfileListInfoKHR)
 
 * 
 [](#VUID-VkImageCreateInfo-sType-unique) VUID-VkImageCreateInfo-sType-unique
@@ -4128,7 +4187,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferCollectionImageCreateInfoFUCHSIA-sType-sType) VUID-VkBufferCollectionImageCreateInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_COLLECTION_IMAGE_CREATE_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_COLLECTION_IMAGE_CREATE_INFO_FUCHSIA](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBufferCollectionImageCreateInfoFUCHSIA-collection-parameter) VUID-VkBufferCollectionImageCreateInfoFUCHSIA-collection-parameter
@@ -4190,16 +4249,16 @@ Valid Usage
 [](#VUID-VkImageStencilUsageCreateInfo-stencilUsage-02539) VUID-VkImageStencilUsageCreateInfo-stencilUsage-02539
 
 If `stencilUsage` includes
-`VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT`, it **must** not include bits
-other than `VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`
+[VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](#VkImageUsageFlagBits), it **must** not include bits
+other than [VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](#VkImageUsageFlagBits)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkImageStencilUsageCreateInfo-sType-sType) VUID-VkImageStencilUsageCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageStencilUsageCreateInfo-stencilUsage-parameter) VUID-VkImageStencilUsageCreateInfo-stencilUsage-parameter
@@ -4245,18 +4304,18 @@ Valid Usage
 * 
 [](#VUID-VkDedicatedAllocationImageCreateInfoNV-dedicatedAllocation-00994) VUID-VkDedicatedAllocationImageCreateInfoNV-dedicatedAllocation-00994
 
-If `dedicatedAllocation` is `VK_TRUE`,
+If `dedicatedAllocation` is [VK_TRUE](fundamentals.html#VK_TRUE),
 [VkImageCreateInfo](#VkImageCreateInfo)::`flags` **must** not include
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT`,
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`, or
-`VK_IMAGE_CREATE_SPARSE_ALIASED_BIT`
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#VkImageCreateFlagBits),
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](#VkImageCreateFlagBits), or
+[VK_IMAGE_CREATE_SPARSE_ALIASED_BIT](#VkImageCreateFlagBits)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDedicatedAllocationImageCreateInfoNV-sType-sType) VUID-VkDedicatedAllocationImageCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 To define a set of external memory handle types that **may** be used as backing
 store for an image, add a [VkExternalMemoryImageCreateInfo](#VkExternalMemoryImageCreateInfo) structure to
@@ -4296,7 +4355,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalMemoryImageCreateInfo-sType-sType) VUID-VkExternalMemoryImageCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExternalMemoryImageCreateInfo-handleTypes-parameter) VUID-VkExternalMemoryImageCreateInfo-handleTypes-parameter
@@ -4323,7 +4382,7 @@ structure.
 `externalFormat` is an implementation-defined identifier for the
 external format.
 
-To obtain additional format that are not provided by `VkFormat` for an
+To obtain additional format that are not provided by [VkFormat](formats.html#VkFormat) for an
 Open Harmony OS hardware buffer, this structure should be included in the
 pNext chain of another structure.
 The return value of `externalFormat` indicates whether an additional
@@ -4337,7 +4396,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalFormatOHOS-sType-sType) VUID-VkExternalFormatOHOS-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_OHOS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_OHOS](fundamentals.html#VkStructureType)
 
 To import memory created outside of the current Vulkan instance from an Open
 Harmony OS native buffer, add a `VkImportNativeBufferInfoOHOS` structure
@@ -4371,7 +4430,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportNativeBufferInfoOHOS-sType-sType) VUID-VkImportNativeBufferInfoOHOS-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_NATIVE_BUFFER_INFO_OHOS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_NATIVE_BUFFER_INFO_OHOS](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImportNativeBufferInfoOHOS-buffer-parameter) VUID-VkImportNativeBufferInfoOHOS-buffer-parameter
@@ -4416,7 +4475,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkNativeBufferUsageOHOS-sType-sType) VUID-VkNativeBufferUsageOHOS-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_NATIVE_BUFFER_USAGE_OHOS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_NATIVE_BUFFER_USAGE_OHOS](fundamentals.html#VkStructureType)
 
 To determine the memory parameters to use when importing an Open Harmony OS
 native buffer:
@@ -4460,21 +4519,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To obtain an OH_NativeBuffer object, call:
 
@@ -4516,18 +4575,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkNativeBufferPropertiesOHOS` structure is defined as:
 
@@ -4559,7 +4618,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkNativeBufferPropertiesOHOS-sType-sType) VUID-VkNativeBufferPropertiesOHOS-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_NATIVE_BUFFER_PROPERTIES_OHOS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_NATIVE_BUFFER_PROPERTIES_OHOS](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkNativeBufferPropertiesOHOS-pNext-pNext) VUID-VkNativeBufferPropertiesOHOS-pNext-pNext
@@ -4600,7 +4659,7 @@ structure.
 
 * 
 `format` is the Vulkan format corresponding to the Open Harmony OS
-native buffer’s format, or `VK_FORMAT_UNDEFINED` if there is not an
+native buffer’s format, or [VK_FORMAT_UNDEFINED](formats.html#VkFormat) if there is not an
 equivalent Vulkan format.
 
 * 
@@ -4632,7 +4691,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkNativeBufferFormatPropertiesOHOS-sType-sType) VUID-VkNativeBufferFormatPropertiesOHOS-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_NATIVE_BUFFER_FORMAT_PROPERTIES_OHOS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_NATIVE_BUFFER_FORMAT_PROPERTIES_OHOS](fundamentals.html#VkStructureType)
 
 The `VkMemoryGetNativeBufferInfoOHOS` structure is defined as:
 
@@ -4659,7 +4718,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryGetNativeBufferInfoOHOS-sType-sType) VUID-VkMemoryGetNativeBufferInfoOHOS-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_GET_NATIVE_BUFFER_INFO_OHOS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_GET_NATIVE_BUFFER_INFO_OHOS](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryGetNativeBufferInfoOHOS-pNext-pNext) VUID-VkMemoryGetNativeBufferInfoOHOS-pNext-pNext
@@ -4701,7 +4760,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalMemoryImageCreateInfoNV-sType-sType) VUID-VkExternalMemoryImageCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExternalMemoryImageCreateInfoNV-handleTypes-parameter) VUID-VkExternalMemoryImageCreateInfoNV-handleTypes-parameter
@@ -4729,7 +4788,7 @@ structure.
 external format
 
 When included in the `pNext` chain of another structure, it indicates
-[additional format information](memory.html#memory-external-android-hardware-buffer-external-formats) beyond what is provided by `VkFormat` values for an
+[additional format information](memory.html#memory-external-android-hardware-buffer-external-formats) beyond what is provided by [VkFormat](formats.html#VkFormat) values for an
 Android hardware buffer.
 If `externalFormat` is zero, it indicates that no external format is
 used, and implementations should rely only on other format information.
@@ -4751,7 +4810,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalFormatANDROID-sType-sType) VUID-VkExternalFormatANDROID-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID](fundamentals.html#VkStructureType)
 
 To create an image with an
 [QNX Screen external format](memory.html#memory-external-screen-buffer-external-formats), add a `VkExternalFormatQNX` structure in the `pNext` chain
@@ -4794,7 +4853,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalFormatQNX-sType-sType) VUID-VkExternalFormatQNX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_QNX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_QNX](fundamentals.html#VkStructureType)
 
 If the `pNext` chain of [VkImageCreateInfo](#VkImageCreateInfo) includes a
 `VkImageSwapchainCreateInfoKHR` structure, then that structure includes
@@ -4836,7 +4895,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageSwapchainCreateInfoKHR-sType-sType) VUID-VkImageSwapchainCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageSwapchainCreateInfoKHR-swapchain-parameter) VUID-VkImageSwapchainCreateInfoKHR-swapchain-parameter
@@ -4887,14 +4946,14 @@ Valid Usage
 [](#VUID-VkImageFormatListCreateInfo-viewFormatCount-09540) VUID-VkImageFormatListCreateInfo-viewFormatCount-09540
 
 If `viewFormatCount` is not 0, each element of `pViewFormats`
-**must** not be `VK_FORMAT_UNDEFINED`
+**must** not be [VK_FORMAT_UNDEFINED](formats.html#VkFormat)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkImageFormatListCreateInfo-sType-sType) VUID-VkImageFormatListCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageFormatListCreateInfo-pViewFormats-parameter) VUID-VkImageFormatListCreateInfo-pViewFormats-parameter
@@ -4946,7 +5005,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageDrmFormatModifierListCreateInfoEXT-sType-sType) VUID-VkImageDrmFormatModifierListCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageDrmFormatModifierListCreateInfoEXT-pDrmFormatModifiers-parameter) VUID-VkImageDrmFormatModifierListCreateInfoEXT-pDrmFormatModifiers-parameter
@@ -5013,7 +5072,7 @@ chain, produce a valid image.
 (This validation is necessarily implementation-dependent and outside the
 scope of Vulkan, and therefore not described by valid usage requirements).
 If this validation fails, then [vkCreateImage](#vkCreateImage) returns
-`VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT`.
+[VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT](fundamentals.html#VkResult).
 
 Valid Usage
 
@@ -5056,7 +5115,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageDrmFormatModifierExplicitCreateInfoEXT-sType-sType) VUID-VkImageDrmFormatModifierExplicitCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageDrmFormatModifierExplicitCreateInfoEXT-pPlaneLayouts-parameter) VUID-VkImageDrmFormatModifierExplicitCreateInfoEXT-pPlaneLayouts-parameter
@@ -5103,7 +5162,7 @@ describing compression controls for the image.
 [VkImageCompressionFixedRateFlagsEXT](#VkImageCompressionFixedRateFlagsEXT) bitfields describing allowed
 fixed-rate compression rates of each image plane.
 It is ignored if `flags` does not include
-`VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT`.
+[VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT](#VkImageCompressionFlagBitsEXT).
 
 If enabled, fixed-rate compression is done in an implementation-defined
 manner and **may** be applied at block granularity.
@@ -5115,16 +5174,16 @@ Valid Usage
 * 
 [](#VUID-VkImageCompressionControlEXT-flags-06747) VUID-VkImageCompressionControlEXT-flags-06747
 
-`flags` **must** be one of `VK_IMAGE_COMPRESSION_DEFAULT_EXT`,
-`VK_IMAGE_COMPRESSION_FIXED_RATE_DEFAULT_EXT`,
-`VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT`, or
-`VK_IMAGE_COMPRESSION_DISABLED_EXT`
+`flags` **must** be one of [VK_IMAGE_COMPRESSION_DEFAULT_EXT](#VkImageCompressionFlagBitsEXT),
+[VK_IMAGE_COMPRESSION_FIXED_RATE_DEFAULT_EXT](#VkImageCompressionFlagBitsEXT),
+[VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT](#VkImageCompressionFlagBitsEXT), or
+[VK_IMAGE_COMPRESSION_DISABLED_EXT](#VkImageCompressionFlagBitsEXT)
 
 * 
 [](#VUID-VkImageCompressionControlEXT-flags-06748) VUID-VkImageCompressionControlEXT-flags-06748
 
 If `flags` includes
-`VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT`,
+[VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT](#VkImageCompressionFlagBitsEXT),
 `pFixedRateFlags` **must** not be `NULL`
 
 Valid Usage (Implicit)
@@ -5132,7 +5191,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageCompressionControlEXT-sType-sType) VUID-VkImageCompressionControlEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_CONTROL_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_CONTROL_EXT](fundamentals.html#VkStructureType)
 
 |  | Some combinations of compression properties may not be supported.
 | --- | --- |
@@ -5152,32 +5211,32 @@ typedef enum VkImageCompressionFlagBitsEXT {
 } VkImageCompressionFlagBitsEXT;
 
 * 
-`VK_IMAGE_COMPRESSION_DEFAULT_EXT` specifies that the default image
+[VK_IMAGE_COMPRESSION_DEFAULT_EXT](#VkImageCompressionFlagBitsEXT) specifies that the default image
 compression setting is used.
 Implementations **must** not apply fixed-rate compression.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_DEFAULT_EXT` specifies that the
+[VK_IMAGE_COMPRESSION_FIXED_RATE_DEFAULT_EXT](#VkImageCompressionFlagBitsEXT) specifies that the
 implementation **may** choose any supported fixed-rate compression setting
 in an implementation-defined manner based on the properties of the
 image.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT](#VkImageCompressionFlagBitsEXT) specifies that
 fixed-rate compression **may** be used and that the allowed compression
 rates are specified by
 [VkImageCompressionControlEXT](#VkImageCompressionControlEXT)::`pFixedRateFlags`.
 
 * 
-`VK_IMAGE_COMPRESSION_DISABLED_EXT` specifies that all lossless and
+[VK_IMAGE_COMPRESSION_DISABLED_EXT](#VkImageCompressionFlagBitsEXT) specifies that all lossless and
 fixed-rate compression **should** be disabled.
 
 If [VkImageCompressionControlEXT](#VkImageCompressionControlEXT)::`flags` is
-`VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT`, then the `i`th
+[VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT](#VkImageCompressionFlagBitsEXT), then the `i`th
 member of the `pFixedRateFlags` array specifies the allowed compression
 rates for the image’s `i`th plane.
 
-|  | If `VK_IMAGE_COMPRESSION_DISABLED_EXT` is included in
+|  | If [VK_IMAGE_COMPRESSION_DISABLED_EXT](#VkImageCompressionFlagBitsEXT) is included in
 | --- | --- |
 [VkImageCompressionControlEXT](#VkImageCompressionControlEXT)::`flags`, both lossless and
 fixed-rate compression will be disabled.
@@ -5230,66 +5289,66 @@ typedef enum VkImageCompressionFixedRateFlagBitsEXT {
 } VkImageCompressionFixedRateFlagBitsEXT;
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_NONE_EXT` specifies that fixed-rate
+[VK_IMAGE_COMPRESSION_FIXED_RATE_NONE_EXT](#VkImageCompressionFixedRateFlagBitsEXT) specifies that fixed-rate
 compression **must** not be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_1BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_1BPC_BIT_EXT](#VkImageCompressionFixedRateFlagBitsEXT) specifies that
 fixed-rate compression with a bitrate of [1,2) bits per component
 **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_2BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_2BPC_BIT_EXT](#VkImageCompressionFixedRateFlagBitsEXT) specifies that
 fixed-rate compression with a bitrate of [2,3) bits per component
 **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_3BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_3BPC_BIT_EXT](#VkImageCompressionFixedRateFlagBitsEXT) specifies that
 fixed-rate compression with a bitrate of [3,4) bits per component
 **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_4BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_4BPC_BIT_EXT](#VkImageCompressionFixedRateFlagBitsEXT) specifies that
 fixed-rate compression with a bitrate of [4,5) bits per component
 **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_5BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_5BPC_BIT_EXT](#VkImageCompressionFixedRateFlagBitsEXT) specifies that
 fixed-rate compression with a bitrate of [5,6) bits per component
 **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_6BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_6BPC_BIT_EXT](#VkImageCompressionFixedRateFlagBitsEXT) specifies that
 fixed-rate compression with a bitrate of [6,7) bits per component
 **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_7BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_7BPC_BIT_EXT](#VkImageCompressionFixedRateFlagBitsEXT) specifies that
 fixed-rate compression with a bitrate of [7,8) bits per component
 **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_8BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_8BPC_BIT_EXT](#VkImageCompressionFixedRateFlagBitsEXT) specifies that
 fixed-rate compression with a bitrate of [8,9) bits per component
 **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_9BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_9BPC_BIT_EXT](#VkImageCompressionFixedRateFlagBitsEXT) specifies that
 fixed-rate compression with a bitrate of [9,10) bits per component
 **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_10BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_10BPC_BIT_EXT](#VkImageCompressionFixedRateFlagBitsEXT) specifies that
 fixed-rate compression with a bitrate of [10,11) bits per
 component **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_11BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_11BPC_BIT_EXT](#VkImageCompressionFixedRateFlagBitsEXT) specifies that
 fixed-rate compression with a bitrate of [11,12) bits per
 component **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_12BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_12BPC_BIT_EXT](#VkImageCompressionFixedRateFlagBitsEXT) specifies that
 fixed-rate compression with a bitrate of at least 12 bits per component
 **may** be used.
 
@@ -5297,12 +5356,12 @@ If the format has a different bit rate for different components,
 [VkImageCompressionControlEXT](#VkImageCompressionControlEXT)::`pFixedRateFlags` describes the rate
 of the component with the largest number of bits assigned to it, scaled pro
 rata.
-For example, to request that a `VK_FORMAT_A2R10G10B10_UNORM_PACK32`
+For example, to request that a [VK_FORMAT_A2R10G10B10_UNORM_PACK32](formats.html#VkFormat)
 format be stored at a rate of 8 bits per pixel, use
-`VK_IMAGE_COMPRESSION_FIXED_RATE_2BPC_BIT_EXT` (10 bits for the largest
+[VK_IMAGE_COMPRESSION_FIXED_RATE_2BPC_BIT_EXT](#VkImageCompressionFixedRateFlagBitsEXT) (10 bits for the largest
 component, stored at quarter the original size, 2.5 bits, rounded down).
 
-If `flags` includes `VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT`,
+If `flags` includes [VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT](#VkImageCompressionFlagBitsEXT),
 and multiple bits are set in
 [VkImageCompressionControlEXT](#VkImageCompressionControlEXT)::`pFixedRateFlags` for a plane,
 implementations **should** apply the lowest allowed bitrate that is supported.
@@ -5311,12 +5370,12 @@ implementations **should** apply the lowest allowed bitrate that is supported.
 | --- | --- |
 compression rate describes the same degree of compression applied to formats
 that differ only in the number of components.
-For example, `VK_FORMAT_R8G8_UNORM` compressed to half its original size
+For example, [VK_FORMAT_R8G8_UNORM](formats.html#VkFormat) compressed to half its original size
 is a rate of 4 bits per component, 8 bits per pixel.
-`VK_FORMAT_R8G8B8A8_UNORM` compressed to half *its* original size is 4
+[VK_FORMAT_R8G8B8A8_UNORM](formats.html#VkFormat) compressed to half *its* original size is 4
 bits per component, 16 bits per pixel.
 Both of these cases can be requested with
-`VK_IMAGE_COMPRESSION_FIXED_RATE_4BPC_BIT_EXT`. |
+[VK_IMAGE_COMPRESSION_FIXED_RATE_4BPC_BIT_EXT](#VkImageCompressionFixedRateFlagBitsEXT). |
 
 To query the compression properties of an image, add a
 [VkImageCompressionPropertiesEXT](#VkImageCompressionPropertiesEXT) structure to the `pNext` chain of
@@ -5356,10 +5415,10 @@ structure.
 * 
 `imageCompressionFlags` returns a value describing the compression
 controls that apply to the image.
-The value will be either `VK_IMAGE_COMPRESSION_DEFAULT_EXT` to
+The value will be either [VK_IMAGE_COMPRESSION_DEFAULT_EXT](#VkImageCompressionFlagBitsEXT) to
 indicate no fixed-rate compression,
-`VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT` to indicate
-fixed-rate compression, or `VK_IMAGE_COMPRESSION_DISABLED_EXT` to
+[VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT](#VkImageCompressionFlagBitsEXT) to indicate
+fixed-rate compression, or [VK_IMAGE_COMPRESSION_DISABLED_EXT](#VkImageCompressionFlagBitsEXT) to
 indicate no compression.
 
 * 
@@ -5372,7 +5431,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageCompressionPropertiesEXT-sType-sType) VUID-VkImageCompressionPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 If the `pNext` list of [VkImageCreateInfo](#VkImageCreateInfo) includes a
 `VkImageAlignmentControlCreateInfoMESA` structure, then that structure
@@ -5414,7 +5473,7 @@ which does not compromise compression.
 If the [`imageCompressionControl`](features.html#features-imageCompressionControl)
 feature is enabled, the application **can** chain a
 [VkImageCompressionControlEXT](#VkImageCompressionControlEXT) with
-`VK_IMAGE_COMPRESSION_DISABLED_EXT`.
+[VK_IMAGE_COMPRESSION_DISABLED_EXT](#VkImageCompressionFlagBitsEXT).
 In this case, image compression considerations **should** not apply when
 implementation decides alignment.
 
@@ -5445,7 +5504,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageAlignmentControlCreateInfoMESA-sType-sType) VUID-VkImageAlignmentControlCreateInfoMESA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA](fundamentals.html#VkStructureType)
 
 Bits which **can** be set in
 
@@ -5511,62 +5570,62 @@ typedef enum VkImageUsageFlagBits {
 } VkImageUsageFlagBits;
 
 * 
-`VK_IMAGE_USAGE_TRANSFER_SRC_BIT` specifies that the image **can** be
+[VK_IMAGE_USAGE_TRANSFER_SRC_BIT](#VkImageUsageFlagBits) specifies that the image **can** be
 used as the source of a transfer command.
 
 * 
-`VK_IMAGE_USAGE_TRANSFER_DST_BIT` specifies that the image **can** be
+[VK_IMAGE_USAGE_TRANSFER_DST_BIT](#VkImageUsageFlagBits) specifies that the image **can** be
 used as the destination of a transfer command.
 
 * 
-`VK_IMAGE_USAGE_SAMPLED_BIT` specifies that the image **can** be used
+[VK_IMAGE_USAGE_SAMPLED_BIT](#VkImageUsageFlagBits) specifies that the image **can** be used
 to create a `VkImageView` suitable for occupying a
 `VkDescriptorSet` slot either of type
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE` or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, and be sampled by a
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](descriptorsets.html#VkDescriptorType), and be sampled by a
 shader.
 
 * 
-`VK_IMAGE_USAGE_STORAGE_BIT` specifies that the image **can** be used
+[VK_IMAGE_USAGE_STORAGE_BIT](#VkImageUsageFlagBits) specifies that the image **can** be used
 to create a `VkImageView` suitable for occupying a
 `VkDescriptorSet` slot of type
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`.
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](descriptorsets.html#VkDescriptorType).
 
 * 
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` specifies that the image **can**
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](#VkImageUsageFlagBits) specifies that the image **can**
 be used to create a `VkImageView` suitable for use as a color or
 resolve attachment in a `VkFramebuffer`.
 
 * 
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` specifies that the
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](#VkImageUsageFlagBits) specifies that the
 image **can** be used to create a `VkImageView` suitable for use as a
 depth/stencil
 or depth/stencil resolve
 attachment in a `VkFramebuffer`.
 
 * 
-`VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT` specifies that
+[VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](#VkImageUsageFlagBits) specifies that
 implementations **may** support using [memory allocations](memory.html#memory) with
-the `VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT` to back an image with
+the [VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT](memory.html#VkMemoryPropertyFlagBits) to back an image with
 this usage.
 This bit **can** be set for any image that **can** be used to create a
 `VkImageView` suitable for use as a color, resolve, depth/stencil,
 or input attachment.
 
 * 
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` specifies that the image **can**
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](#VkImageUsageFlagBits) specifies that the image **can**
 be used to create a `VkImageView` suitable for occupying
 `VkDescriptorSet` slot of type
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`; be read from a shader as an
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](descriptorsets.html#VkDescriptorType); be read from a shader as an
 input attachment; and be used as an input attachment in a framebuffer.
 
 * 
-`VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT` specifies that the
+[VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT](#VkImageUsageFlagBits) specifies that the
 image **can** be used to create a `VkImageView` suitable for use as a
 [fragment density map image](fragmentdensitymapops.html#fragmentdensitymapops).
 
 * 
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR` specifies
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkImageUsageFlagBits) specifies
     that the image **can** be used to create a `VkImageView` suitable for
     use as a
     [fragment shading rate    attachment](primsrast.html#primsrast-fragment-shading-rate-attachment)
@@ -5574,65 +5633,65 @@ or
     [shading rate image](primsrast.html#primsrast-shading-rate-image)
 
 * 
-`VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR` specifies that the image
+[VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](#VkImageUsageFlagBits) specifies that the image
 **can** be used as a [decode output picture](videocoding.html#decode-output-picture) in a
 [video decode operation](videocoding.html#video-decode-operations).
 
 * 
-`VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR` is reserved for future
+[VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR](#VkImageUsageFlagBits) is reserved for future
 use.
 
 * 
-`VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR` specifies that the image
+[VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](#VkImageUsageFlagBits) specifies that the image
 **can** be used as an output [reconstructed    picture](videocoding.html#reconstructed-picture) or an input [reference picture](videocoding.html#reference-picture) in a
 [video decode operation](videocoding.html#video-decode-operations).
 
 * 
-`VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR` is reserved for future
+[VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR](#VkImageUsageFlagBits) is reserved for future
 use.
 
 * 
-`VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR` specifies that the image
+[VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR](#VkImageUsageFlagBits) specifies that the image
 **can** be used as an [encode input picture](videocoding.html#encode-input-picture) in a
 [video encode operation](videocoding.html#video-encode-operations).
 
 * 
-`VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR` specifies that the image
+[VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR](#VkImageUsageFlagBits) specifies that the image
 **can** be used as an output [reconstructed    picture](videocoding.html#reconstructed-picture) or an input [reference picture](videocoding.html#reference-picture) in a
 [video encode operation](videocoding.html#video-encode-operations).
 
 * 
-`VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT` specifies that the
+[VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](#VkImageUsageFlagBits) specifies that the
 image **can** be used as a color or depth/stencil attachment with
 [feedback loop enabled](renderpass.html#renderpass-feedbackloop).
 
 * 
-`VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM` specifies that the image **can**
+[VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM](#VkImageUsageFlagBits) specifies that the image **can**
 be bound to `VkDeviceMemory` allocated from a [VkMemoryHeap](memory.html#VkMemoryHeap)
-with the `VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property.
+with the [VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property.
 
 * 
-`VK_IMAGE_USAGE_HOST_TRANSFER_BIT` specifies that the image **can** be
+[VK_IMAGE_USAGE_HOST_TRANSFER_BIT](#VkImageUsageFlagBits) specifies that the image **can** be
 used with host copy commands and host layout transitions.
 
 * 
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR`
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](#VkImageUsageFlagBits)
 specifies that the image **can** be used as a
 [quantization delta map](videocoding.html#encode-quantization-delta-map) in a
 [video encode operation](videocoding.html#video-encode-operations).
 
 * 
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR` specifies that
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](#VkImageUsageFlagBits) specifies that
 the image **can** be used as an [emphasis map](videocoding.html#encode-emphasis-map) in a
 [video encode operation](videocoding.html#video-encode-operations).
 
 * 
-`VK_IMAGE_USAGE_HOST_TRANSFER_BIT_EXT` specifies that the image **can**
+[VK_IMAGE_USAGE_HOST_TRANSFER_BIT_EXT](#VkImageUsageFlagBits) specifies that the image **can**
 be used with host copy commands and host layout transitions.
 
 * 
-`VK_IMAGE_USAGE_TENSOR_ALIASING_BIT_ARM` specifies that the image
-**can** be transitioned to the `VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM`
+[VK_IMAGE_USAGE_TENSOR_ALIASING_BIT_ARM](#VkImageUsageFlagBits) specifies that the image
+**can** be transitioned to the [VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM](#VkImageLayout)
 layout.
 See [Memory Aliasing](#resources-memory-aliasing) for a complete set of rules for
 tensor/image aliasing.
@@ -5642,57 +5701,6 @@ typedef VkFlags VkImageUsageFlags;
 
 `VkImageUsageFlags` is a bitmask type for setting a mask of zero or more
 [VkImageUsageFlagBits](#VkImageUsageFlagBits).
-
-When creating a `VkImageView` one of the following
-[VkImageUsageFlagBits](#VkImageUsageFlagBits) **must** be set:
-
-* 
-`VK_IMAGE_USAGE_SAMPLED_BIT`
-
-* 
-`VK_IMAGE_USAGE_STORAGE_BIT`
-
-* 
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT`
-
-* 
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`
-
-* 
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`
-
-* 
-`VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT`
-
-* 
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
-
-* 
-`VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT`
-
-* 
-`VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR`
-
-* 
-`VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR`
-
-* 
-`VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR`
-
-* 
-`VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR`
-
-* 
-`VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM`
-
-* 
-`VK_IMAGE_USAGE_SAMPLE_BLOCK_MATCH_BIT_QCOM`
-
-* 
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR`
-
-* 
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR`
 
 Bits which **can** be set in [VkImageCreateInfo](#VkImageCreateInfo)::`flags`, specifying
 additional parameters of an image, are:
@@ -5720,12 +5728,12 @@ typedef enum VkImageCreateFlagBits {
     VK_IMAGE_CREATE_DISJOINT_BIT = 0x00000200,
   // Provided by VK_NV_corner_sampled_image
     VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV = 0x00002000,
+  // Provided by VK_EXT_descriptor_heap
+    VK_IMAGE_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_EXT = 0x00010000,
   // Provided by VK_EXT_sample_locations
     VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT = 0x00001000,
   // Provided by VK_EXT_fragment_density_map
     VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT = 0x00004000,
-  // Provided by VK_EXT_descriptor_buffer
-    VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT = 0x00010000,
   // Provided by VK_EXT_multisampled_render_to_single_sampled
     VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT = 0x00040000,
   // Provided by VK_EXT_image_2d_view_of_3d
@@ -5746,57 +5754,59 @@ typedef enum VkImageCreateFlagBits {
     VK_IMAGE_CREATE_DISJOINT_BIT_KHR = VK_IMAGE_CREATE_DISJOINT_BIT,
   // Provided by VK_KHR_bind_memory2
     VK_IMAGE_CREATE_ALIAS_BIT_KHR = VK_IMAGE_CREATE_ALIAS_BIT,
+  // Provided by VK_EXT_descriptor_buffer
+    VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT = VK_IMAGE_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_EXT,
   // Provided by VK_QCOM_fragment_density_map_offset
     VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_QCOM = VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT,
 } VkImageCreateFlagBits;
 
 * 
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT` specifies that the image will
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#VkImageCreateFlagBits) specifies that the image will
 be backed using sparse memory binding.
 
 * 
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` specifies that the image **can**
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](#VkImageCreateFlagBits) specifies that the image **can**
 be partially backed using sparse memory binding.
 Images created with this flag **must** also be created with the
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT` flag.
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#VkImageCreateFlagBits) flag.
 
 * 
-`VK_IMAGE_CREATE_SPARSE_ALIASED_BIT` specifies that the image will
+[VK_IMAGE_CREATE_SPARSE_ALIASED_BIT](#VkImageCreateFlagBits) specifies that the image will
 be backed using sparse memory binding with memory ranges that might also
 simultaneously be backing another image (or another portion of the same
 image).
 Images created with this flag **must** also be created with the
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT` flag.
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#VkImageCreateFlagBits) flag.
 
 * 
-`VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT` specifies that the image **can**
+[VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](#VkImageCreateFlagBits) specifies that the image **can**
 be used to create a `VkImageView` with a different format from the
 image.
 For [multi-planar formats](formats.html#formats-multiplanar),
-`VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT` specifies that a
+[VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](#VkImageCreateFlagBits) specifies that a
 `VkImageView` can be created of a *plane* of the image.
 
 * 
-`VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT` specifies that the image **can**
+[VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT](#VkImageCreateFlagBits) specifies that the image **can**
 be used to create a `VkImageView` of type
-`VK_IMAGE_VIEW_TYPE_CUBE` or `VK_IMAGE_VIEW_TYPE_CUBE_ARRAY`.
+[VK_IMAGE_VIEW_TYPE_CUBE](#VkImageViewType) or [VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](#VkImageViewType).
 
 * 
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` specifies that the image
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](#VkImageCreateFlagBits) specifies that the image
 **can** be used to create a `VkImageView` of type
-`VK_IMAGE_VIEW_TYPE_2D` or `VK_IMAGE_VIEW_TYPE_2D_ARRAY`.
+[VK_IMAGE_VIEW_TYPE_2D](#VkImageViewType) or [VK_IMAGE_VIEW_TYPE_2D_ARRAY](#VkImageViewType).
 
 * 
-`VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT` specifies that the
+[VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT](#VkImageCreateFlagBits) specifies that the
 image **can** be used to create a `VkImageView` of type
-`VK_IMAGE_VIEW_TYPE_2D`.
+[VK_IMAGE_VIEW_TYPE_2D](#VkImageViewType).
 
 * 
-`VK_IMAGE_CREATE_PROTECTED_BIT` specifies that the image is a
+[VK_IMAGE_CREATE_PROTECTED_BIT](#VkImageCreateFlagBits) specifies that the image is a
 protected image.
 
 * 
-`VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT` specifies that the
+[VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT](#VkImageCreateFlagBits) specifies that the
 image **can** be used with a non-zero value of the
 `splitInstanceBindRegionCount` member of a
 [VkBindImageMemoryDeviceGroupInfo](#VkBindImageMemoryDeviceGroupInfo) structure passed into
@@ -5805,26 +5815,26 @@ This flag also has the effect of making the image use the standard
 sparse image block dimensions.
 
 * 
-`VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT` specifies that the
+[VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](#VkImageCreateFlagBits) specifies that the
 image having a compressed format **can** be used to create a
 `VkImageView` with an uncompressed format where each texel in the
 image view corresponds to a compressed texel block of the image.
 
 * 
-`VK_IMAGE_CREATE_EXTENDED_USAGE_BIT` specifies that the image **can**
+[VK_IMAGE_CREATE_EXTENDED_USAGE_BIT](#VkImageCreateFlagBits) specifies that the image **can**
 be created with usage flags that are not supported for the format the
 image is created with but are supported for at least one format a
 `VkImageView` created from the image **can** have.
 
 * 
-`VK_IMAGE_CREATE_DISJOINT_BIT` specifies that an image with a
+[VK_IMAGE_CREATE_DISJOINT_BIT](#VkImageCreateFlagBits) specifies that an image with a
 [multi-planar format](formats.html#formats-multiplanar) **must** have each plane
 separately bound to memory, rather than having a single memory binding
 for the whole image; the presence of this bit distinguishes a *disjoint
 image* from an image without this bit set.
 
 * 
-`VK_IMAGE_CREATE_ALIAS_BIT` specifies that two images created with
+[VK_IMAGE_CREATE_ALIAS_BIT](#VkImageCreateFlagBits) specifies that two images created with
     the same creation parameters and aliased to the same memory **can**
     interpret the contents of the memory consistently with each other,
     subject to the rules described in the [Memory    Aliasing](#resources-memory-aliasing) section.
@@ -5838,27 +5848,28 @@ image* from an image without this bit set.
 or
 [VkExternalMemoryImageCreateInfoNV](#VkExternalMemoryImageCreateInfoNV)
     structure whose `handleTypes` member is not `0`, it is as if
-    `VK_IMAGE_CREATE_ALIAS_BIT` is set.
+    [VK_IMAGE_CREATE_ALIAS_BIT](#VkImageCreateFlagBits) is set.
 
 * 
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT`
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](#VkImageCreateFlagBits)
 specifies that an image with a depth or depth/stencil format **can** be
 used with custom sample locations when used as a depth/stencil
 attachment.
 
 * 
-`VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV` specifies that the image is
+[VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV](#VkImageCreateFlagBits) specifies that the image is
 a [corner-sampled image](#resources-images-corner-sampled).
 
 * 
-`VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT` specifies that an image **can** be
+[VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](#VkImageCreateFlagBits) specifies that an image **can** be
 in a subsampled format which **may** be more optimal when written as an
 attachment by a render pass that has a fragment density map attachment.
 Accessing a subsampled image has additional considerations:
 
 Image data read as an image sampler will have **undefined** values if the
 sampler was not created with `flags` containing
-`VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT` or was not sampled through
+[VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](samplers.html#VkSamplerCreateFlagBits) or was not sampled through
+a combined [embedded sampler and     image mapping](descriptorheaps.html#VkDescriptorSetAndBindingMappingEXT) if using descriptor heaps, or
 the use of a combined image sampler with an immutable sampler in
 `VkDescriptorSetLayoutBinding`.
 
@@ -5870,40 +5881,40 @@ the same render pass.
 * 
 Image data read as an image sampler in the fragment shader will be
 additionally be read by the device during
-`VK_PIPELINE_STAGE_VERTEX_SHADER_BIT` if
+[VK_PIPELINE_STAGE_VERTEX_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits) if
 [     `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`::`subsampledCoarseReconstructionEarlyAccess`](limits.html#limits-subsampledCoarseReconstructionEarlyAccess)
-is `VK_TRUE` and the sampler was created with `flags`
+is [VK_TRUE](fundamentals.html#VK_TRUE) and the sampler was created with `flags`
 containing
-`VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT`.
+[VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT](samplers.html#VkSamplerCreateFlagBits).
 
 * 
 Image data read with load operations are resampled to the fragment
 density of the render pass if [     `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`::`subsampledLoads`](limits.html#limits-subsampledLoads)
-is `VK_TRUE`.
+is [VK_TRUE](fundamentals.html#VK_TRUE).
 Otherwise, values of image data are **undefined**.
 
 * 
 Image contents outside of the render area take on **undefined** values if
 the image is stored as a render pass attachment.
 
-`VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT` specifies that
+[VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT](#VkImageCreateFlagBits) specifies that
 an image **can** be used in a render pass with non-zero
 [fragment density map offsets](renderpass.html#renderpass-fragmentdensitymapoffsets).
 In a render pass with non-zero offsets, fragment density map
 attachments, input attachments, color attachments, depth/stencil
 attachment, resolve attachments, and preserve attachments **must** be
-created with `VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT`.
+created with [VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT](#VkImageCreateFlagBits).
 
-`VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` specifies
+[VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#VkImageCreateFlagBits) specifies
 that the image **can** be used with descriptor buffers when capturing and
 replaying (e.g. for trace capture and replay), see
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT) for more detail.
 
-`VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT`
+[VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT](#VkImageCreateFlagBits)
 specifies that an image **can** be used with
 [multisampled rendering as a    single-sampled framebuffer attachment](renderpass.html#multisampled-render-to-single-sampled)
 
-`VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR` specifies that
+[VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](#VkImageCreateFlagBits) specifies that
 the image **can** be used in [video coding operations](videocoding.html#video-coding)
 without having to specify at image creation time the set of video
 profiles the image will be used with, except for images used only as
@@ -5924,12 +5935,12 @@ video profile used to produce them.
 profile used to consume them.
 
 This includes images created with both
-`VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR` and
-`VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR`, which is necessary to use the
+[VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](#VkImageUsageFlagBits) and
+[VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](#VkImageUsageFlagBits), which is necessary to use the
 same video picture as the [reconstructed picture](videocoding.html#reconstructed-picture)
 and [decode output picture](videocoding.html#decode-output-picture) in a video decode
 operation on implementations supporting
-`VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR`.
+[VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR](videocoding.html#VkVideoDecodeCapabilityFlagBitsKHR).
 
 However, images with only DPB usage remain tied to the video profiles the
 image was created with, as the data layout of such DPB-only images **may** be
@@ -5962,13 +5973,13 @@ typedef enum VkImageType {
 } VkImageType;
 
 * 
-`VK_IMAGE_TYPE_1D` specifies a one-dimensional image.
+[VK_IMAGE_TYPE_1D](#VkImageType) specifies a one-dimensional image.
 
 * 
-`VK_IMAGE_TYPE_2D` specifies a two-dimensional image.
+[VK_IMAGE_TYPE_2D](#VkImageType) specifies a two-dimensional image.
 
 * 
-`VK_IMAGE_TYPE_3D` specifies a three-dimensional image.
+[VK_IMAGE_TYPE_3D](#VkImageType) specifies a three-dimensional image.
 
 Possible values of [VkImageCreateInfo](#VkImageCreateInfo)::`tiling`, specifying the
 tiling arrangement of texel blocks in an image, are:
@@ -5982,17 +5993,17 @@ typedef enum VkImageTiling {
 } VkImageTiling;
 
 * 
-`VK_IMAGE_TILING_OPTIMAL` specifies optimal tiling (texels are laid
+[VK_IMAGE_TILING_OPTIMAL](#VkImageTiling) specifies optimal tiling (texels are laid
 out in an implementation-dependent arrangement, for more efficient
 memory access).
 
 * 
-`VK_IMAGE_TILING_LINEAR` specifies linear tiling (texels are laid
+[VK_IMAGE_TILING_LINEAR](#VkImageTiling) specifies linear tiling (texels are laid
 out in memory in row-major order, possibly with some padding on each
 row).
 
 * 
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT` specifies that the image’s
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling) specifies that the image’s
 tiling is defined by a [Linux DRM format    modifier](../appendices/glossary.html#glossary-drm-format-modifier).
 The modifier is specified at image creation with
 [VkImageDrmFormatModifierListCreateInfoEXT](#VkImageDrmFormatModifierListCreateInfoEXT) or
@@ -6026,14 +6037,14 @@ If the image is [linear](../appendices/glossary.html#glossary-linear-resource), 
 returned layout is valid for [host access](memory.html#memory-device-hostaccess).
 
 If the image’s
-tiling is `VK_IMAGE_TILING_LINEAR` and its
+tiling is [VK_IMAGE_TILING_LINEAR](#VkImageTiling) and its
 format is a [multi-planar format](formats.html#formats-multiplanar), then
 `vkGetImageSubresourceLayout` describes one
 *format plane*
 of the image.
-If the image’s tiling is `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then
+If the image’s tiling is [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling), then
 `vkGetImageSubresourceLayout` describes one *memory plane* of the image.
-If the image’s tiling is `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT` and
+If the image’s tiling is [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling) and
 the image is [non-linear](../appendices/glossary.html#glossary-linear-resource), then the returned
 layout has an implementation-dependent meaning; the vendor of the image’s
 [DRM format modifier](../appendices/glossary.html#glossary-drm-format-modifier) **may** provide
@@ -6052,8 +6063,8 @@ Valid Usage
 [](#VUID-vkGetImageSubresourceLayout-image-07790) VUID-vkGetImageSubresourceLayout-image-07790
 
 `image` **must** have been created with `tiling` equal to
-`VK_IMAGE_TILING_LINEAR` or
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`
+[VK_IMAGE_TILING_LINEAR](#VkImageTiling) or
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling)
 
 * 
 [](#VUID-vkGetImageSubresourceLayout-aspectMask-00997) VUID-vkGetImageSubresourceLayout-aspectMask-00997
@@ -6079,37 +6090,37 @@ The `arrayLayer` member of `pSubresource` **must** be less than the
 If `format` of the `image` is a color format
 that is not a [multi-planar format](formats.html#formats-multiplanar),
 and `tiling` of the `image` is
-`VK_IMAGE_TILING_LINEAR` or `VK_IMAGE_TILING_OPTIMAL`, the
+[VK_IMAGE_TILING_LINEAR](#VkImageTiling) or [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling), the
 `aspectMask` member of `pSubresource` **must** be
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](#VkImageAspectFlagBits)
 
 * 
 [](#VUID-vkGetImageSubresourceLayout-format-04462) VUID-vkGetImageSubresourceLayout-format-04462
 
 If `format` of the `image` has a depth component, the
 `aspectMask` member of `pSubresource` **must** contain
-`VK_IMAGE_ASPECT_DEPTH_BIT`
+[VK_IMAGE_ASPECT_DEPTH_BIT](#VkImageAspectFlagBits)
 
 * 
 [](#VUID-vkGetImageSubresourceLayout-format-04463) VUID-vkGetImageSubresourceLayout-format-04463
 
 If `format` of the `image` has a stencil component, the
 `aspectMask` member of `pSubresource` **must** contain
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+[VK_IMAGE_ASPECT_STENCIL_BIT](#VkImageAspectFlagBits)
 
 * 
 [](#VUID-vkGetImageSubresourceLayout-format-04464) VUID-vkGetImageSubresourceLayout-format-04464
 
 If `format` of the `image` does not contain a stencil or
 depth component, the `aspectMask` member of `pSubresource` **must**
-not contain `VK_IMAGE_ASPECT_DEPTH_BIT` or
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+not contain [VK_IMAGE_ASPECT_DEPTH_BIT](#VkImageAspectFlagBits) or
+[VK_IMAGE_ASPECT_STENCIL_BIT](#VkImageAspectFlagBits)
 
 * 
 [](#VUID-vkGetImageSubresourceLayout-tiling-08717) VUID-vkGetImageSubresourceLayout-tiling-08717
 
 If the `tiling` of the `image` is
-`VK_IMAGE_TILING_LINEAR` and has a [    multi-planar format](formats.html#formats-multiplanar), then the `aspectMask` member of
+[VK_IMAGE_TILING_LINEAR](#VkImageTiling) and has a [    multi-planar format](formats.html#formats-multiplanar), then the `aspectMask` member of
 `pSubresource` **must** be a single valid
 [multi-planar aspect mask](formats.html#formats-multiplanar-image-aspect) bit
 
@@ -6117,14 +6128,14 @@ If the `tiling` of the `image` is
 [](#VUID-vkGetImageSubresourceLayout-image-09432) VUID-vkGetImageSubresourceLayout-image-09432
 
 If `image` was created with the
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 external memory handle type, then `image` **must** be bound to memory
 
 * 
 [](#VUID-vkGetImageSubresourceLayout-tiling-09433) VUID-vkGetImageSubresourceLayout-tiling-09433
 
 If the `tiling` of the `image` is
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then the `aspectMask`
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling), then the `aspectMask`
 member of `pSubresource` **must** be
 `VK_IMAGE_ASPECT_MEMORY_PLANE*_i_*BIT_EXT` and the index *i* **must**
 be less than the
@@ -6258,14 +6269,14 @@ as arrays.
 If the image has a
 *single-plane*
 color format
-and its tiling is `VK_IMAGE_TILING_LINEAR`
+and its tiling is [VK_IMAGE_TILING_LINEAR](#VkImageTiling)
 , then the `aspectMask` member of `VkImageSubresource` **must** be
-`VK_IMAGE_ASPECT_COLOR_BIT`.
+[VK_IMAGE_ASPECT_COLOR_BIT](#VkImageAspectFlagBits).
 
 If the image has a depth/stencil format
-and its tiling is `VK_IMAGE_TILING_LINEAR`
-, then `aspectMask` **must** be either `VK_IMAGE_ASPECT_DEPTH_BIT` or
-`VK_IMAGE_ASPECT_STENCIL_BIT`.
+and its tiling is [VK_IMAGE_TILING_LINEAR](#VkImageTiling)
+, then `aspectMask` **must** be either [VK_IMAGE_ASPECT_DEPTH_BIT](#VkImageAspectFlagBits) or
+[VK_IMAGE_ASPECT_STENCIL_BIT](#VkImageAspectFlagBits).
 On implementations that store depth and stencil aspects separately, querying
 each of these image subresource layouts will return a different `offset`
 and `size` representing the region of memory used for that aspect.
@@ -6274,10 +6285,10 @@ same `offset` and `size` are returned and represent the interleaved
 memory allocation.
 
 If the image has a [multi-planar format](formats.html#formats-multiplanar)
-and its tiling is `VK_IMAGE_TILING_LINEAR`
+and its tiling is [VK_IMAGE_TILING_LINEAR](#VkImageTiling)
 , then the `aspectMask` member of `VkImageSubresource` **must** be
-`VK_IMAGE_ASPECT_PLANE_0_BIT`, `VK_IMAGE_ASPECT_PLANE_1_BIT`, or
-(for 3-plane formats only) `VK_IMAGE_ASPECT_PLANE_2_BIT`.
+[VK_IMAGE_ASPECT_PLANE_0_BIT](#VkImageAspectFlagBits), [VK_IMAGE_ASPECT_PLANE_1_BIT](#VkImageAspectFlagBits), or
+(for 3-plane formats only) [VK_IMAGE_ASPECT_PLANE_2_BIT](#VkImageAspectFlagBits).
 Querying each of these image subresource layouts will return a different
 `offset` and `size` representing the region of memory used for that
 plane.
@@ -6286,7 +6297,7 @@ address of the plane.
 If the image is *non-disjoint*, then the `offset` is relative to the
 base address of the image.
 
-If the image’s tiling is `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then
+If the image’s tiling is [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling), then
 the `aspectMask` member of `VkImageSubresource` **must** be one of
 `VK_IMAGE_ASPECT_MEMORY_PLANE*_i_*BIT_EXT`, where the maximum allowed
 plane index *i* is defined by the
@@ -6348,13 +6359,13 @@ inputs via chained input structures, and to return extended information via
 chained output structures.
 
 It is legal to call `vkGetImageSubresourceLayout2` with an `image`
-created with `tiling` equal to `VK_IMAGE_TILING_OPTIMAL`, but the
+created with `tiling` equal to [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling), but the
 members of [VkSubresourceLayout2](#VkSubresourceLayout2)::`subresourceLayout` will have
 **undefined** values in this case.
 
 |  | Structures chained from [VkImageSubresource2](#VkImageSubresource2)::`pNext` will also be
 | --- | --- |
-updated when `tiling` is equal to `VK_IMAGE_TILING_OPTIMAL`. |
+updated when `tiling` is equal to [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling). |
 
 Valid Usage
 
@@ -6382,37 +6393,37 @@ The `arrayLayer` member of `pSubresource` **must** be less than the
 If `format` of the `image` is a color format
 that is not a [multi-planar format](formats.html#formats-multiplanar),
 and `tiling` of the `image` is
-`VK_IMAGE_TILING_LINEAR` or `VK_IMAGE_TILING_OPTIMAL`, the
+[VK_IMAGE_TILING_LINEAR](#VkImageTiling) or [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling), the
 `aspectMask` member of `pSubresource` **must** be
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](#VkImageAspectFlagBits)
 
 * 
 [](#VUID-vkGetImageSubresourceLayout2-format-04462) VUID-vkGetImageSubresourceLayout2-format-04462
 
 If `format` of the `image` has a depth component, the
 `aspectMask` member of `pSubresource` **must** contain
-`VK_IMAGE_ASPECT_DEPTH_BIT`
+[VK_IMAGE_ASPECT_DEPTH_BIT](#VkImageAspectFlagBits)
 
 * 
 [](#VUID-vkGetImageSubresourceLayout2-format-04463) VUID-vkGetImageSubresourceLayout2-format-04463
 
 If `format` of the `image` has a stencil component, the
 `aspectMask` member of `pSubresource` **must** contain
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+[VK_IMAGE_ASPECT_STENCIL_BIT](#VkImageAspectFlagBits)
 
 * 
 [](#VUID-vkGetImageSubresourceLayout2-format-04464) VUID-vkGetImageSubresourceLayout2-format-04464
 
 If `format` of the `image` does not contain a stencil or
 depth component, the `aspectMask` member of `pSubresource` **must**
-not contain `VK_IMAGE_ASPECT_DEPTH_BIT` or
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+not contain [VK_IMAGE_ASPECT_DEPTH_BIT](#VkImageAspectFlagBits) or
+[VK_IMAGE_ASPECT_STENCIL_BIT](#VkImageAspectFlagBits)
 
 * 
 [](#VUID-vkGetImageSubresourceLayout2-tiling-08717) VUID-vkGetImageSubresourceLayout2-tiling-08717
 
 If the `tiling` of the `image` is
-`VK_IMAGE_TILING_LINEAR` and has a [    multi-planar format](formats.html#formats-multiplanar), then the `aspectMask` member of
+[VK_IMAGE_TILING_LINEAR](#VkImageTiling) and has a [    multi-planar format](formats.html#formats-multiplanar), then the `aspectMask` member of
 `pSubresource` **must** be a single valid
 [multi-planar aspect mask](formats.html#formats-multiplanar-image-aspect) bit
 
@@ -6420,14 +6431,14 @@ If the `tiling` of the `image` is
 [](#VUID-vkGetImageSubresourceLayout2-image-09434) VUID-vkGetImageSubresourceLayout2-image-09434
 
 If `image` was created with the
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 external memory handle type, then `image` **must** be bound to memory
 
 * 
 [](#VUID-vkGetImageSubresourceLayout2-tiling-09435) VUID-vkGetImageSubresourceLayout2-tiling-09435
 
 If the `tiling` of the `image` is
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then the `aspectMask`
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling), then the `aspectMask`
 member of `pSubresource` **must** be
 `VK_IMAGE_ASPECT_MEMORY_PLANE*_i_*BIT_EXT` and the index *i* **must**
 be less than the
@@ -6494,7 +6505,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageSubresource2-sType-sType) VUID-VkImageSubresource2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_SUBRESOURCE_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_SUBRESOURCE_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageSubresource2-pNext-pNext) VUID-VkImageSubresource2-pNext-pNext
@@ -6539,7 +6550,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSubresourceLayout2-sType-sType) VUID-VkSubresourceLayout2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SUBRESOURCE_LAYOUT_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SUBRESOURCE_LAYOUT_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSubresourceLayout2-pNext-pNext) VUID-VkSubresourceLayout2-pNext-pNext
@@ -6553,7 +6564,7 @@ Valid Usage (Implicit)
 
 To query the memory size needed to copy to or from an image using
 [vkCopyMemoryToImage](copies.html#vkCopyMemoryToImage) or [vkCopyImageToMemory](copies.html#vkCopyImageToMemory) when the
-`VK_HOST_IMAGE_COPY_MEMCPY_BIT` flag is specified, add a
+[VK_HOST_IMAGE_COPY_MEMCPY_BIT](copies.html#VkHostImageCopyFlagBitsEXT) flag is specified, add a
 [VkSubresourceHostMemcpySize](#VkSubresourceHostMemcpySize) structure to the `pNext` chain of the
 [VkSubresourceLayout2](#VkSubresourceLayout2) structure in a call to
 [vkGetImageSubresourceLayout2](#vkGetImageSubresourceLayout2).
@@ -6586,7 +6597,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSubresourceHostMemcpySize-sType-sType) VUID-VkSubresourceHostMemcpySize-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SUBRESOURCE_HOST_MEMCPY_SIZE`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SUBRESOURCE_HOST_MEMCPY_SIZE](fundamentals.html#VkStructureType)
 
 To query the memory layout of an image subresource, without an image object,
 call:
@@ -6692,37 +6703,37 @@ The `arrayLayer` member of `pSubresource` **must** be less than the
 If `format` of the `image` is a color format
 that is not a [multi-planar format](formats.html#formats-multiplanar),
 and `tiling` of the `pCreateInfo` is
-`VK_IMAGE_TILING_LINEAR` or `VK_IMAGE_TILING_OPTIMAL`, the
+[VK_IMAGE_TILING_LINEAR](#VkImageTiling) or [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling), the
 `aspectMask` member of `pSubresource` **must** be
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkDeviceImageSubresourceInfo-format-04462) VUID-VkDeviceImageSubresourceInfo-format-04462
 
 If `format` of the `pCreateInfo` has a depth component, the
 `aspectMask` member of `pSubresource` **must** contain
-`VK_IMAGE_ASPECT_DEPTH_BIT`
+[VK_IMAGE_ASPECT_DEPTH_BIT](#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkDeviceImageSubresourceInfo-format-04463) VUID-VkDeviceImageSubresourceInfo-format-04463
 
 If `format` of the `pCreateInfo` has a stencil component, the
 `aspectMask` member of `pSubresource` **must** contain
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+[VK_IMAGE_ASPECT_STENCIL_BIT](#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkDeviceImageSubresourceInfo-format-04464) VUID-VkDeviceImageSubresourceInfo-format-04464
 
 If `format` of the `pCreateInfo` does not contain a stencil or
 depth component, the `aspectMask` member of `pSubresource` **must**
-not contain `VK_IMAGE_ASPECT_DEPTH_BIT` or
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+not contain [VK_IMAGE_ASPECT_DEPTH_BIT](#VkImageAspectFlagBits) or
+[VK_IMAGE_ASPECT_STENCIL_BIT](#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkDeviceImageSubresourceInfo-tiling-08717) VUID-VkDeviceImageSubresourceInfo-tiling-08717
 
 If the `tiling` of the `pCreateInfo` is
-`VK_IMAGE_TILING_LINEAR` and has a [    multi-planar format](formats.html#formats-multiplanar), then the `aspectMask` member of
+[VK_IMAGE_TILING_LINEAR](#VkImageTiling) and has a [    multi-planar format](formats.html#formats-multiplanar), then the `aspectMask` member of
 `pSubresource` **must** be a single valid
 [multi-planar aspect mask](formats.html#formats-multiplanar-image-aspect) bit
 
@@ -6731,7 +6742,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceImageSubresourceInfo-sType-sType) VUID-VkDeviceImageSubresourceInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_IMAGE_SUBRESOURCE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_IMAGE_SUBRESOURCE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceImageSubresourceInfo-pNext-pNext) VUID-VkDeviceImageSubresourceInfo-pNext-pNext
@@ -6748,7 +6759,7 @@ Valid Usage (Implicit)
 
  `pSubresource` **must** be a valid pointer to a valid [VkImageSubresource2](#VkImageSubresource2) structure
 
-If an image was created with `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`,
+If an image was created with [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling),
 then the image has a [Linux DRM format modifier](../appendices/glossary.html#glossary-drm-format-modifier).
 To query the *modifier*, call:
 
@@ -6774,7 +6785,7 @@ Valid Usage
 * 
 [](#VUID-vkGetImageDrmFormatModifierPropertiesEXT-image-02272) VUID-vkGetImageDrmFormatModifierPropertiesEXT-image-02272
 
-`image` **must** have been created with [    `tiling`](#VkImageCreateInfo) equal to `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`
+`image` **must** have been created with [    `tiling`](#VkImageCreateInfo) equal to [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling)
 
 Valid Usage (Implicit)
 
@@ -6803,18 +6814,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The [VkImageDrmFormatModifierPropertiesEXT](#VkImageDrmFormatModifierPropertiesEXT) structure is defined as:
 
@@ -6852,7 +6863,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageDrmFormatModifierPropertiesEXT-sType-sType) VUID-VkImageDrmFormatModifierPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageDrmFormatModifierPropertiesEXT-pNext-pNext) VUID-VkImageDrmFormatModifierPropertiesEXT-pNext-pNext
@@ -6935,14 +6946,14 @@ defined below.
 Such constraints are documented in the affected valid usage statement.
 
 * 
-If the image was created with `VK_IMAGE_TILING_LINEAR`, then its set
+If the image was created with [VK_IMAGE_TILING_LINEAR](#VkImageTiling), then its set
 of *format features* is the value of
 [VkFormatProperties](formats.html#VkFormatProperties)::`linearTilingFeatures` found by calling
 [vkGetPhysicalDeviceFormatProperties](formats.html#vkGetPhysicalDeviceFormatProperties) on the same `format` as
 [VkImageCreateInfo](#VkImageCreateInfo)::`format`.
 
 * 
-If the image was created with `VK_IMAGE_TILING_OPTIMAL`,
+If the image was created with [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling),
 but without an
 [Android    hardware buffer external format](memory.html#memory-external-android-hardware-buffer-external-formats),
 or a
@@ -6973,7 +6984,7 @@ bound.
 
 * 
 If the image was created with
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then:
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling), then:
 
 The image’s DRM format modifier is the value of
 [VkImageDrmFormatModifierPropertiesEXT](#VkImageDrmFormatModifierPropertiesEXT)::`drmFormatModifier`
@@ -7027,7 +7038,7 @@ See [Image Mip Level Sizing](#resources-image-mip-level-sizing).
 
 Corner-sampling is only supported for 2D and 3D images.
 When sampling a corner-sampled image, the sampler addressing mode **must** be
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE`.
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](samplers.html#VkSamplerAddressMode).
 Corner-sampled images are not supported as cube maps or depth/stencil
 images.
 
@@ -7097,6 +7108,269 @@ The number of levels in a complete mipmap chain is:
 where `width`0, `height`0, and `depth`0
 are the dimensions of the largest (most detailed) mip level, `0`.
 
+To allow for a replay tool to capture and replay image descriptors used with
+[descriptor heaps](descriptorheaps.html#descriptorheaps), opaque data **must** be captured during
+the initial recording and provided when recreating the image during replay,
+using the following functions:
+
+To get the opaque capture descriptor data for images, call:
+
+// Provided by VK_EXT_descriptor_heap
+VkResult vkGetImageOpaqueCaptureDataEXT(
+    VkDevice                                    device,
+    uint32_t                                    imageCount,
+    const VkImage*                              pImages,
+    VkHostAddressRangeEXT*                      pDatas);
+
+* 
+`device` is the logical device that gets the data.
+
+* 
+`imageCount` is the number of images to retrieve data from.
+
+* 
+`pImages` is a pointer to an array of [VkImage](#VkImage) objects to
+retrieve the opaque capture data from.
+
+* 
+`pDatas` is a pointer to an array of [VkHostAddressRangeEXT](fundamentals.html#VkHostAddressRangeEXT)
+structures defining the host address ranges where each image’s opaque
+capture data will be written.
+
+Valid Usage
+
+* 
+[](#VUID-vkGetImageOpaqueCaptureDataEXT-descriptorHeapCaptureReplay-11282) VUID-vkGetImageOpaqueCaptureDataEXT-descriptorHeapCaptureReplay-11282
+
+The [    `descriptorHeapCaptureReplay`](features.html#features-descriptorHeapCaptureReplay) feature **must** be enabled
+
+* 
+[](#VUID-vkGetImageOpaqueCaptureDataEXT-size-11283) VUID-vkGetImageOpaqueCaptureDataEXT-size-11283
+
+The `size` member of each element of `pDatas` **must** be equal to
+[    `imageCaptureReplayOpaqueDataSize`](limits.html#limits-imageCaptureReplayOpaqueDataSize)
+
+* 
+[](#VUID-vkGetImageOpaqueCaptureDataEXT-device-11284) VUID-vkGetImageOpaqueCaptureDataEXT-device-11284
+
+If `device` was created with multiple physical devices, then the
+[    `bufferDeviceAddressMultiDevice`](features.html#features-bufferDeviceAddressMultiDevice) feature **must** be enabled
+
+* 
+[](#VUID-vkGetImageOpaqueCaptureDataEXT-pImages-11285) VUID-vkGetImageOpaqueCaptureDataEXT-pImages-11285
+
+Each element of `pImages` **must** have been created with
+[VK_IMAGE_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_EXT](#VkImageCreateFlagBits) set in
+[VkImageCreateInfo](#VkImageCreateInfo)::`flags`
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-vkGetImageOpaqueCaptureDataEXT-device-parameter) VUID-vkGetImageOpaqueCaptureDataEXT-device-parameter
+
+ `device` **must** be a valid [VkDevice](devsandqueues.html#VkDevice) handle
+
+* 
+[](#VUID-vkGetImageOpaqueCaptureDataEXT-pImages-parameter) VUID-vkGetImageOpaqueCaptureDataEXT-pImages-parameter
+
+ `pImages` **must** be a valid pointer to an array of `imageCount` valid [VkImage](#VkImage) handles
+
+* 
+[](#VUID-vkGetImageOpaqueCaptureDataEXT-pDatas-parameter) VUID-vkGetImageOpaqueCaptureDataEXT-pDatas-parameter
+
+ `pDatas` **must** be a valid pointer to an array of `imageCount` [VkHostAddressRangeEXT](fundamentals.html#VkHostAddressRangeEXT) structures
+
+* 
+[](#VUID-vkGetImageOpaqueCaptureDataEXT-imageCount-arraylength) VUID-vkGetImageOpaqueCaptureDataEXT-imageCount-arraylength
+
+ `imageCount` **must** be greater than `0`
+
+* 
+[](#VUID-vkGetImageOpaqueCaptureDataEXT-pImages-parent) VUID-vkGetImageOpaqueCaptureDataEXT-pImages-parent
+
+ Each element of `pImages` **must** have been created, allocated, or retrieved from `device`
+
+Return Codes
+
+[Success](fundamentals.html#fundamentals-successcodes)
+
+* 
+[VK_SUCCESS](fundamentals.html#VkResult)
+
+[Failure](fundamentals.html#fundamentals-errorcodes)
+
+* 
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
+
+The `VkOpaqueCaptureDataCreateInfoEXT` structure is defined as:
+
+// Provided by VK_EXT_descriptor_heap
+typedef struct VkOpaqueCaptureDataCreateInfoEXT {
+    VkStructureType                      sType;
+    const void*                          pNext;
+    const VkHostAddressRangeConstEXT*    pData;
+} VkOpaqueCaptureDataCreateInfoEXT;
+
+* 
+`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
+
+* 
+`pNext` is `NULL` or a pointer to a structure extending this
+structure.
+
+* 
+`pData` is a pointer to the range of host memory containing opaque
+data previously captured via [vkGetImageOpaqueCaptureDataEXT](#vkGetImageOpaqueCaptureDataEXT).
+
+When an image is created with
+[VK_IMAGE_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_EXT](#VkImageCreateFlagBits) set in
+[VkImageCreateInfo](#VkImageCreateInfo)::`flags`, if the `pNext` chain of
+[VkImageCreateInfo](#VkImageCreateInfo) includes this structure, and `pData` is not
+`NULL`, the implementation will attempt to recreate the image such that
+descriptors written with [vkWriteResourceDescriptorsEXT](descriptorheaps.html#vkWriteResourceDescriptorsEXT) will be
+reproduced with the same bit pattern as during capture if possible.
+If the implementation is unable to recreate the image based on this data,
+image creation will fail and return
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS](fundamentals.html#VkResult).
+
+When a tensor is created with
+[VK_TENSOR_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_ARM](#VkTensorCreateFlagBitsARM) set in
+[VkTensorCreateInfoARM](#VkTensorCreateInfoARM)::`flags`, if the `pNext` chain of
+[VkTensorCreateInfoARM](#VkTensorCreateInfoARM) includes this structure, and `pData` is not
+`NULL`, the implementation will attempt to recreate the tensor such that
+descriptors written with [vkWriteResourceDescriptorsEXT](descriptorheaps.html#vkWriteResourceDescriptorsEXT) will be
+reproduced with the same bit pattern as during capture if possible.
+If the implementation is unable to recreate the tensor based on this data,
+tensor creation will fail and return
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS](fundamentals.html#VkResult).
+
+If this structure is not present, it is equivalent to setting `pData` to
+`NULL`.
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkOpaqueCaptureDataCreateInfoEXT-sType-sType) VUID-VkOpaqueCaptureDataCreateInfoEXT-sType-sType
+
+ `sType` **must** be [VK_STRUCTURE_TYPE_OPAQUE_CAPTURE_DATA_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
+
+* 
+[](#VUID-VkOpaqueCaptureDataCreateInfoEXT-pData-parameter) VUID-VkOpaqueCaptureDataCreateInfoEXT-pData-parameter
+
+ If `pData` is not `NULL`, `pData` **must** be a valid pointer to a valid [VkHostAddressRangeConstEXT](fundamentals.html#VkHostAddressRangeConstEXT) structure
+
+To allow for a replay tool to capture and replay tensor descriptors used
+with [descriptor heaps](descriptorheaps.html#descriptorheaps), opaque data **must** be captured
+during the initial recording and provided when recreating the tensor during
+replay, using the following functions:
+
+To get the opaque capture descriptor data for tensors, call:
+
+// Provided by VK_EXT_descriptor_heap with VK_ARM_tensors
+VkResult vkGetTensorOpaqueCaptureDataARM(
+    VkDevice                                    device,
+    uint32_t                                    tensorCount,
+    const VkTensorARM*                          pTensors,
+    VkHostAddressRangeEXT*                      pDatas);
+
+* 
+`device` is the logical device that gets the data.
+
+* 
+`tensorCount` is the number of tensors to retrieve data from.
+
+* 
+`pTensors` is a pointer to an array of [VkTensorARM](#VkTensorARM) objects to
+retrieve the opaque capture data from.
+
+* 
+`pDatas` is a pointer to an array of [VkHostAddressRangeEXT](fundamentals.html#VkHostAddressRangeEXT)
+structures defining the host address ranges where each tensor’s opaque
+capture data will be written.
+
+Valid Usage
+
+* 
+[](#VUID-vkGetTensorOpaqueCaptureDataARM-descriptorHeapCaptureReplay-11391) VUID-vkGetTensorOpaqueCaptureDataARM-descriptorHeapCaptureReplay-11391
+
+The [    `descriptorHeapCaptureReplay`](features.html#features-descriptorHeapCaptureReplay) feature **must** be enabled
+
+* 
+[](#VUID-vkGetTensorOpaqueCaptureDataARM-size-11392) VUID-vkGetTensorOpaqueCaptureDataARM-size-11392
+
+The `size` member of each element of `pDatas` **must** be equal to
+[    `tensorCaptureReplayOpaqueDataSize`](limits.html#limits-tensorCaptureReplayOpaqueDataSize)
+
+* 
+[](#VUID-vkGetTensorOpaqueCaptureDataARM-device-11393) VUID-vkGetTensorOpaqueCaptureDataARM-device-11393
+
+If `device` was created with multiple physical devices, then the
+[    `bufferDeviceAddressMultiDevice`](features.html#features-bufferDeviceAddressMultiDevice) feature **must** be enabled
+
+* 
+[](#VUID-vkGetTensorOpaqueCaptureDataARM-pTensors-11394) VUID-vkGetTensorOpaqueCaptureDataARM-pTensors-11394
+
+Each element of `pTensors` **must** have been created with
+[VK_TENSOR_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_ARM](#VkTensorCreateFlagBitsARM) set in
+[VkTensorCreateInfoARM](#VkTensorCreateInfoARM)::`flags`
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-vkGetTensorOpaqueCaptureDataARM-device-parameter) VUID-vkGetTensorOpaqueCaptureDataARM-device-parameter
+
+ `device` **must** be a valid [VkDevice](devsandqueues.html#VkDevice) handle
+
+* 
+[](#VUID-vkGetTensorOpaqueCaptureDataARM-pTensors-parameter) VUID-vkGetTensorOpaqueCaptureDataARM-pTensors-parameter
+
+ `pTensors` **must** be a valid pointer to an array of `tensorCount` valid [VkTensorARM](#VkTensorARM) handles
+
+* 
+[](#VUID-vkGetTensorOpaqueCaptureDataARM-pDatas-parameter) VUID-vkGetTensorOpaqueCaptureDataARM-pDatas-parameter
+
+ `pDatas` **must** be a valid pointer to an array of `tensorCount` [VkHostAddressRangeEXT](fundamentals.html#VkHostAddressRangeEXT) structures
+
+* 
+[](#VUID-vkGetTensorOpaqueCaptureDataARM-tensorCount-arraylength) VUID-vkGetTensorOpaqueCaptureDataARM-tensorCount-arraylength
+
+ `tensorCount` **must** be greater than `0`
+
+* 
+[](#VUID-vkGetTensorOpaqueCaptureDataARM-pTensors-parent) VUID-vkGetTensorOpaqueCaptureDataARM-pTensors-parent
+
+ Each element of `pTensors` **must** have been created, allocated, or retrieved from `device`
+
+Return Codes
+
+[Success](fundamentals.html#fundamentals-successcodes)
+
+* 
+[VK_SUCCESS](fundamentals.html#VkResult)
+
+[Failure](fundamentals.html#fundamentals-errorcodes)
+
+* 
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
+
 Images are stored in implementation-dependent opaque layouts in memory.
 Each layout has limitations on what kinds of operations are supported for
 image subresources using the layout.
@@ -7123,7 +7397,7 @@ subresources must be in a valid image layout.
 | --- | --- |
 memory.
 For example, an image with a layout of
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL` **may** provide optimal
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](#VkImageLayout) **may** provide optimal
 performance for use as a color attachment, but be unsupported for use in
 transfer commands.
 Applications **can** transition an image subresource from one layout to another
@@ -7136,17 +7410,17 @@ implementations. |
 Upon creation, all image subresources of an image are initially in the same
 layout, where that layout is selected by the
 `VkImageCreateInfo`::`initialLayout` member.
-The `initialLayout` **must** be either `VK_IMAGE_LAYOUT_UNDEFINED` or
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT` or
-`VK_IMAGE_LAYOUT_PREINITIALIZED`.
-If it is `VK_IMAGE_LAYOUT_PREINITIALIZED`, then the image data **can** be
+The `initialLayout` **must** be either [VK_IMAGE_LAYOUT_UNDEFINED](#VkImageLayout) or
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](#VkImageLayout) or
+[VK_IMAGE_LAYOUT_PREINITIALIZED](#VkImageLayout).
+If it is [VK_IMAGE_LAYOUT_PREINITIALIZED](#VkImageLayout), then the image data **can** be
 preinitialized by the host while using this layout, and the transition away
 from this layout will preserve that data.
-If it is `VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`, then the image data is
+If it is [VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](#VkImageLayout), then the image data is
 interpreted to be zeroed.
 If the memory bound to this image is not fully zeroed when the image is
 transitioned to a different layout, the results are **undefined**.
-If it is `VK_IMAGE_LAYOUT_UNDEFINED`, then the contents of the data are
+If it is [VK_IMAGE_LAYOUT_UNDEFINED](#VkImageLayout), then the contents of the data are
 considered to be **undefined**, and the transition away from this layout is not
 guaranteed to preserve that data.
 For either of these initial layouts, any image subresources **must** be
@@ -7157,13 +7431,13 @@ Host access to image memory is only well-defined for
 those images which are currently in any of the following layouts:
 
 * 
-`VK_IMAGE_LAYOUT_PREINITIALIZED`
+[VK_IMAGE_LAYOUT_PREINITIALIZED](#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_GENERAL`
+[VK_IMAGE_LAYOUT_GENERAL](#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](#VkImageLayout)
 
 Calling [vkGetImageSubresourceLayout](#vkGetImageSubresourceLayout) for a linear image returns a
 subresource layout mapping that is valid for either of those image layouts.
@@ -7252,7 +7526,7 @@ typedef enum VkImageLayout {
 The type(s) of device access supported by each layout are:
 
 * 
-`VK_IMAGE_LAYOUT_UNDEFINED` specifies that the layout is unknown.
+[VK_IMAGE_LAYOUT_UNDEFINED](#VkImageLayout) specifies that the layout is unknown.
 Image memory **cannot** be transitioned into this layout.
 This layout **can** be used as the `initialLayout` member of
 [VkImageCreateInfo](#VkImageCreateInfo).
@@ -7261,7 +7535,7 @@ layout transition, but doing so will cause the contents of the image’s
 memory to be **undefined**.
 
 * 
-`VK_IMAGE_LAYOUT_PREINITIALIZED` specifies that an image’s memory is
+[VK_IMAGE_LAYOUT_PREINITIALIZED](#VkImageLayout) specifies that an image’s memory is
 in a defined layout and **can** be populated by data, but that it has not
 yet been initialized by the driver.
 Image memory **cannot** be transitioned into this layout.
@@ -7271,16 +7545,16 @@ This layout is intended to be used as the initial layout for an image
 whose contents are written by the host, and hence the data **can** be
 written to memory immediately, without first executing a layout
 transition.
-Currently, `VK_IMAGE_LAYOUT_PREINITIALIZED` is only useful with
+Currently, [VK_IMAGE_LAYOUT_PREINITIALIZED](#VkImageLayout) is only useful with
 [linear](../appendices/glossary.html#glossary-linear-resource) images because there is not a
-standard layout defined for `VK_IMAGE_TILING_OPTIMAL` images.
+standard layout defined for [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling) images.
 
 * 
-`VK_IMAGE_LAYOUT_GENERAL` supports all types of device access,
+[VK_IMAGE_LAYOUT_GENERAL](#VkImageLayout) supports all types of device access,
 unless specified otherwise.
 
 * 
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT` specifies that an image’s
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](#VkImageLayout) specifies that an image’s
 memory is in a defined layout and is zeroed, but that it has not yet
 been initialized by the driver.
 Image memory **cannot** be transitioned into this layout.
@@ -7289,196 +7563,196 @@ This layout **can** be used as the `initialLayout` member of
 This layout is intended to be used as the initial layout for an image
 whose contents are already zeroed, either from being explicitly set to
 zero by an application or from being allocated with
-`VK_MEMORY_ALLOCATE_ZERO_INITIALIZE_BIT_EXT`.
+[VK_MEMORY_ALLOCATE_ZERO_INITIALIZE_BIT_EXT](memory.html#VkMemoryAllocateFlagBitsKHR).
 
 * 
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL` specifies a layout that **must**
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL](#VkImageLayout) specifies a layout that **must**
 only be used with attachment accesses in the graphics pipeline.
 
 * 
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL` specifies a layout allowing read
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL](#VkImageLayout) specifies a layout allowing read
 only access as an attachment, or in shaders as a sampled image, combined
 image/sampler, or input attachment.
 
 * 
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL` **must** only be used as a
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](#VkImageLayout) **must** only be used as a
 color or resolve attachment in a `VkFramebuffer`.
 This layout is valid only for image subresources of images created with
-the `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` usage flag set.
+the [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](#VkImageUsageFlagBits) usage flag set.
 
 * 
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` specifies a
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](#VkImageLayout) specifies a
 layout for both the depth and stencil aspects of a depth/stencil format
 image allowing read and write access as a depth/stencil attachment.
-It is equivalent to `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` and
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`.
+It is equivalent to [VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](#VkImageLayout) and
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](#VkImageLayout).
 
 * 
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL` specifies a layout
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](#VkImageLayout) specifies a layout
 for both the depth and stencil aspects of a depth/stencil format image
 allowing read only access as a depth/stencil attachment or in shaders as
 a sampled image, combined image/sampler, or input attachment.
-It is equivalent to `VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL` and
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`.
+It is equivalent to [VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](#VkImageLayout) and
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](#VkImageLayout).
 
 * 
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](#VkImageLayout)
 specifies a layout for depth/stencil format images allowing read and
 write access to the stencil aspect as a stencil attachment, and read
 only access to the depth aspect as a depth attachment or in shaders as a
 sampled image, combined image/sampler, or input attachment.
-It is equivalent to `VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL` and
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`.
+It is equivalent to [VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](#VkImageLayout) and
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](#VkImageLayout).
 
 * 
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](#VkImageLayout)
 specifies a layout for depth/stencil format images allowing read and
 write access to the depth aspect as a depth attachment, and read only
 access to the stencil aspect as a stencil attachment or in shaders as a
 sampled image, combined image/sampler, or input attachment.
-It is equivalent to `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` and
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`.
+It is equivalent to [VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](#VkImageLayout) and
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](#VkImageLayout).
 
 * 
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` specifies a layout for
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](#VkImageLayout) specifies a layout for
 the depth aspect of a depth/stencil format image allowing read and write
 access as a depth attachment.
 
 * 
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL` specifies a layout for the
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](#VkImageLayout) specifies a layout for the
 depth aspect of a depth/stencil format image allowing read-only access
 as a depth attachment or in shaders as a sampled image, combined
 image/sampler, or input attachment.
 
 * 
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` specifies a layout for
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](#VkImageLayout) specifies a layout for
 the stencil aspect of a depth/stencil format image allowing read and
 write access as a stencil attachment.
 
 * 
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL` specifies a layout for
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](#VkImageLayout) specifies a layout for
 the stencil aspect of a depth/stencil format image allowing read-only
 access as a stencil attachment or in shaders as a sampled image,
 combined image/sampler, or input attachment.
 
 * 
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL` specifies a layout
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](#VkImageLayout) specifies a layout
 allowing read-only access in a shader as a sampled image, combined
 image/sampler, or input attachment.
 This layout is valid only for image subresources of images created with
-the `VK_IMAGE_USAGE_SAMPLED_BIT` or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage bits enabled.
+the [VK_IMAGE_USAGE_SAMPLED_BIT](#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](#VkImageUsageFlagBits) usage bits enabled.
 
 * 
-`VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL` **must** only be used as a
+[VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL](#VkImageLayout) **must** only be used as a
 source image of a transfer command (see the definition of
-[    `VK_PIPELINE_STAGE_TRANSFER_BIT`](synchronization.html#synchronization-pipeline-stages-transfer)).
+[](synchronization.html#synchronization-pipeline-stages-transfer)[VK_PIPELINE_STAGE_TRANSFER_BIT](synchronization.html#VkPipelineStageFlagBits)).
 This layout is valid only for image subresources of images created with
-the `VK_IMAGE_USAGE_TRANSFER_SRC_BIT` usage flag set.
+the [VK_IMAGE_USAGE_TRANSFER_SRC_BIT](#VkImageUsageFlagBits) usage flag set.
 
 * 
-`VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL` **must** only be used as a
+[VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](#VkImageLayout) **must** only be used as a
 destination image of a transfer command.
 This layout is valid only for image subresources of images created with
-the `VK_IMAGE_USAGE_TRANSFER_DST_BIT` usage flag set.
+the [VK_IMAGE_USAGE_TRANSFER_DST_BIT](#VkImageUsageFlagBits) usage flag set.
 
 * 
-`VK_IMAGE_LAYOUT_PRESENT_SRC_KHR` **must** only be used for presenting
+[VK_IMAGE_LAYOUT_PRESENT_SRC_KHR](#VkImageLayout) **must** only be used for presenting
 a presentable image for display.
 
 * 
-`VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR` is valid only for shared
+[VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](#VkImageLayout) is valid only for shared
 presentable images, and **must** be used for any usage the image supports.
 
 * 
-`VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR` **must**
+[VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR](#VkImageLayout) **must**
     only be used as a
     [fragment shading rate    attachment](primsrast.html#primsrast-fragment-shading-rate-attachment)
 or
     [shading rate image](primsrast.html#primsrast-shading-rate-image).
     This layout is valid only for image subresources of images created with
-    the `VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR` usage
+    the [VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkImageUsageFlagBits) usage
     flag set.
 
 * 
-`VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT` **must** only be
+[VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT](#VkImageLayout) **must** only be
 used as a fragment density map attachment in a `VkRenderPass`.
 This layout is valid only for image subresources of images created with
-the `VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT` usage flag set.
+the [VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT](#VkImageUsageFlagBits) usage flag set.
 
 * 
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR` **must** only be used as a
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR](#VkImageLayout) **must** only be used as a
 [decode output picture](videocoding.html#decode-output-picture) in a
 [video decode operation](videocoding.html#video-decode-operations).
 This layout is valid only for image subresources of images created with
-the `VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR` usage flag set.
+the [VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](#VkImageUsageFlagBits) usage flag set.
 
 * 
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_SRC_KHR` is reserved for future use.
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_SRC_KHR](#VkImageLayout) is reserved for future use.
 
 * 
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR` **must** only be used as an
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR](#VkImageLayout) **must** only be used as an
 output [reconstructed picture](videocoding.html#reconstructed-picture) or an input
 [reference picture](videocoding.html#reference-picture) in a [    video decode operation](videocoding.html#video-decode-operations).
 This layout is valid only for image subresources of images created with
-the `VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR` usage flag set.
+the [VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](#VkImageUsageFlagBits) usage flag set.
 
 * 
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_DST_KHR` is reserved for future use.
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_DST_KHR](#VkImageLayout) is reserved for future use.
 
 * 
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR` **must** only be used as an
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR](#VkImageLayout) **must** only be used as an
 [encode input picture](videocoding.html#encode-input-picture) in a
 [video encode operation](videocoding.html#video-encode-operations).
 This layout is valid only for image subresources of images created with
-the `VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR` usage flag set.
+the [VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR](#VkImageUsageFlagBits) usage flag set.
 
 * 
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR` **must** only be used as an
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR](#VkImageLayout) **must** only be used as an
 output [reconstructed picture](videocoding.html#reconstructed-picture) or an input
 [reference picture](videocoding.html#reference-picture) in a [    video encode operation](videocoding.html#video-encode-operations).
 This layout is valid only for image subresources of images created with
-the `VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR` usage flag set.
+the [VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR](#VkImageUsageFlagBits) usage flag set.
 
 * 
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` **must** only be
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](#VkImageLayout) **must** only be
 used as either a color attachment or depth/stencil attachment and/or
 read-only access in a shader as a sampled image, combined image/sampler,
 or input attachment.
 This layout is valid only for image subresources of images created with
-the `VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT` usage flag
-set, and either the `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flags set, and
-either the `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_SAMPLED_BIT` usage flags set
+the [VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](#VkImageUsageFlagBits) usage flag
+set, and either the [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](#VkImageUsageFlagBits) usage flags set, and
+either the [VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_SAMPLED_BIT](#VkImageUsageFlagBits) usage flags set
 
 * 
-`VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ` **must** only be used as either
+[VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](#VkImageLayout) **must** only be used as either
 a storage image, or a color or depth/stencil attachment and an input
 attachment.
 This layout is valid only for image subresources of images created with
-either the `VK_IMAGE_USAGE_STORAGE_BIT` usage flag set, or both the
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` and either of the
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flags set.
+either the [VK_IMAGE_USAGE_STORAGE_BIT](#VkImageUsageFlagBits) usage flag set, or both the
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](#VkImageUsageFlagBits) and either of the
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](#VkImageUsageFlagBits) usage flags set.
 
 * 
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR` **must** only be
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR](#VkImageLayout) **must** only be
 used as a [quantization map](videocoding.html#encode-quantization-map) in a
 [video encode operation](videocoding.html#video-encode-operations).
 This layout is valid only for image subresources of images created with
-the `VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR` or
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR` usage flags set.
+the [VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](#VkImageUsageFlagBits) usage flags set.
 
 * 
-`VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM` specifies the layout that an
-image created with `VK_IMAGE_TILING_OPTIMAL` **must** be in for it and
+[VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM](#VkImageLayout) specifies the layout that an
+image created with [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling) **must** be in for it and
 a tensor bound to the same aliased range of memory to consistently
 interpret the data in memory.
 See [Memory Aliasing](#resources-memory-aliasing) for a complete set of rules for
 tensor/image aliasing.
 This layout is valid only for image subresources of images created with
-the `VK_IMAGE_USAGE_TENSOR_ALIASING_BIT_ARM` usage flag set.
+the [VK_IMAGE_USAGE_TENSOR_ALIASING_BIT_ARM](#VkImageUsageFlagBits) usage flag set.
 
 The layout of each image subresource is not a state of the image subresource
 itself, but is rather a property of how the data in memory is organized, and
@@ -7494,50 +7768,50 @@ For use in a descriptor set, this is a member in the
 `VkDescriptorImageInfo` structure (see [Descriptor Set Updates](descriptorsets.html#descriptorsets-updates)).
 
 If the [`unifiedImageLayouts`](features.html#features-unifiedImageLayouts) feature
-is enabled, the `VK_IMAGE_LAYOUT_GENERAL` image layout **may** be used in
+is enabled, the [VK_IMAGE_LAYOUT_GENERAL](#VkImageLayout) image layout **may** be used in
 place of the other layouts where allowed with no loss of performance.
 
-|  | `VK_IMAGE_LAYOUT_GENERAL` can be a useful catch-all image layout, but
+|  | [VK_IMAGE_LAYOUT_GENERAL](#VkImageLayout) can be a useful catch-all image layout, but
 | --- | --- |
 there are situations where a dedicated image layout must be used instead.
 Some examples include:
 
 * 
-`VK_IMAGE_LAYOUT_PRESENT_SRC_KHR`
+[VK_IMAGE_LAYOUT_PRESENT_SRC_KHR](#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`
+[VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_SRC_KHR`,
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR`, and
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_SRC_KHR](#VkImageLayout),
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR](#VkImageLayout), and
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR](#VkImageLayout)
 without the
 [`unifiedImageLayoutsVideo`](features.html#features-unifiedImageLayoutsVideo)
 feature
 
 * 
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR`,
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_DST_KHR`, and
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR](#VkImageLayout),
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_DST_KHR](#VkImageLayout), and
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR](#VkImageLayout)
 without the
 [`unifiedImageLayoutsVideo`](features.html#features-unifiedImageLayoutsVideo)
 feature
 
 * 
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR](#VkImageLayout)
 without the
 [`unifiedImageLayoutsVideo`](features.html#features-unifiedImageLayoutsVideo)
 feature |
 
-|  | While `VK_IMAGE_LAYOUT_GENERAL` suggests that all types of device access
+|  | While [VK_IMAGE_LAYOUT_GENERAL](#VkImageLayout) suggests that all types of device access
 | --- | --- |
 is possible, it does not mean that all patterns of memory accesses are safe
 in all situations.
 [Common Render Pass Data Races](renderpass.html#common-render-pass-data-races) outlines
 some situations where data races are unavoidable.
 For example, when a subresource is used as both an attachment and a sampled
-image (i.e., not an input attachment), [enabling feedback loop](renderpass.html#renderpass-feedbackloop) adds extra guarantees which `VK_IMAGE_LAYOUT_GENERAL`
+image (i.e., not an input attachment), [enabling feedback loop](renderpass.html#renderpass-feedbackloop) adds extra guarantees which [VK_IMAGE_LAYOUT_GENERAL](#VkImageLayout)
 alone does not. |
 
 At the time that any command buffer command accessing an image executes on
@@ -7551,34 +7825,34 @@ the following relaxed matching rules apply:
 * 
 Descriptors referring just to the depth aspect of a depth/stencil image
 only need to match in the image layout of the depth aspect, thus
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL` and
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL` are
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](#VkImageLayout) and
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](#VkImageLayout) are
 considered to match.
 
 * 
 Descriptors referring just to the stencil aspect of a depth/stencil
 image only need to match in the image layout of the stencil aspect, thus
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL` and
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL` are
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](#VkImageLayout) and
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](#VkImageLayout) are
 considered to match.
 
 When performing a layout transition on an image subresource, the old layout
 value **must** either equal the current layout of the image subresource (at the
-time the transition executes), or else be `VK_IMAGE_LAYOUT_UNDEFINED`
+time the transition executes), or else be [VK_IMAGE_LAYOUT_UNDEFINED](#VkImageLayout)
 (implying that the contents of the image subresource need not be preserved).
 The new layout used in a transition **must** not be any of:
 
 * 
-`VK_IMAGE_LAYOUT_UNDEFINED`
+[VK_IMAGE_LAYOUT_UNDEFINED](#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_PREINITIALIZED`
+[VK_IMAGE_LAYOUT_PREINITIALIZED](#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](#VkImageLayout)
 
 The image layout of each image subresource of a depth/stencil image created
-with `VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT` is
+with [VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](#VkImageCreateFlagBits) is
 dependent on the last sample locations used to render to the image
 subresource as a depth/stencil attachment, thus applications **must** provide
 the same sample locations that were last used to render to the given image
@@ -7588,17 +7862,30 @@ otherwise the contents of the depth aspect of the image subresource become
 
 In addition, depth reads from a depth/stencil attachment referring to an
 image subresource range of a depth/stencil image created with
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT` using
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](#VkImageCreateFlagBits) using
 different sample locations than what have been last used to perform depth
 writes to the image subresources of the same image subresource range return
 **undefined** values.
 
 Similarly, depth writes to a depth/stencil attachment referring to an image
 subresource range of a depth/stencil image created with
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT` using
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](#VkImageCreateFlagBits) using
 different sample locations than what have been last used to perform depth
 writes to the image subresources of the same image subresource range make
 the contents of the depth aspect of those image subresources **undefined**.
+
+When images created with external memory handle types listed in the
+[external image implied layouts table](#resources-external-image-layouts)
+are accessed outside of Vulkan, they **must** be in the layout specified in the
+table, and **can** be assumed to be in that layout when they are accessed in
+Vulkan after external access.
+
+| External Memory Handle Type | Implied Layout When Accessed Externally |
+| --- | --- |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) | [VK_IMAGE_LAYOUT_GENERAL](#VkImageLayout) |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) | [VK_IMAGE_LAYOUT_GENERAL](#VkImageLayout) |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_BIT_NV](memory.html#VkExternalMemoryHandleTypeFlagBitsNV) | [VK_IMAGE_LAYOUT_GENERAL](#VkImageLayout) |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_KMT_BIT_NV](memory.html#VkExternalMemoryHandleTypeFlagBitsNV) | [VK_IMAGE_LAYOUT_GENERAL](#VkImageLayout) |
 
 Image objects are not directly accessed by pipeline shaders for reading or
 writing image data.
@@ -7612,13 +7899,13 @@ Image views are represented by `VkImageView` handles:
 // Provided by VK_VERSION_1_0
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(VkImageView)
 
-`VK_REMAINING_ARRAY_LAYERS` is a special constant value used for image
+[VK_REMAINING_ARRAY_LAYERS](#VK_REMAINING_ARRAY_LAYERS) is a special constant value used for image
 views to indicate that all remaining array layers in an image after the base
 layer should be included in the view.
 
 #define VK_REMAINING_ARRAY_LAYERS         (~0U)
 
-`VK_REMAINING_MIP_LEVELS` is a special constant value used for image
+[VK_REMAINING_MIP_LEVELS](#VK_REMAINING_MIP_LEVELS) is a special constant value used for image
 views to indicate that all remaining mipmap levels in an image after the
 base level should be included in the view.
 
@@ -7667,9 +7954,9 @@ Valid Usage
 [](#VUID-vkCreateImageView-device-09667) VUID-vkCreateImageView-device-09667
 
 `device` **must** support at least one queue family with one of the
-`VK_QUEUE_VIDEO_ENCODE_BIT_KHR`,
-`VK_QUEUE_VIDEO_DECODE_BIT_KHR`,
-`VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` capabilities
+[VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits),
+[VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits),
+[VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) capabilities
 
 * 
 [](#VUID-vkCreateImageView-image-09179) VUID-vkCreateImageView-image-09179
@@ -7709,24 +7996,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR`
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkImageViewCreateInfo` structure is defined as:
 
@@ -7788,12 +8075,12 @@ chain of [VkImageCreateInfo](#VkImageCreateInfo), the usage is calculated based 
 `subresource.aspectMask` provided:
 
 * 
-If `aspectMask` includes only `VK_IMAGE_ASPECT_STENCIL_BIT`, the
+If `aspectMask` includes only [VK_IMAGE_ASPECT_STENCIL_BIT](#VkImageAspectFlagBits), the
 implicit `usage` is equal to
 [VkImageStencilUsageCreateInfo](#VkImageStencilUsageCreateInfo)::`stencilUsage`.
 
 * 
-If `aspectMask` includes only `VK_IMAGE_ASPECT_DEPTH_BIT`, the
+If `aspectMask` includes only [VK_IMAGE_ASPECT_DEPTH_BIT](#VkImageAspectFlagBits), the
 implicit `usage` is equal to [VkImageCreateInfo](#VkImageCreateInfo)::`usage`.
 
 * 
@@ -7805,12 +8092,12 @@ If both aspects are included in `aspectMask`, the implicit
 If `image` is a 3D image, its Z range **can** be restricted to a subset by
 adding a [VkImageViewSlicedCreateInfoEXT](#VkImageViewSlicedCreateInfoEXT) to the `pNext` chain.
 
-If `image` was created with the `VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT`
+If `image` was created with the [VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](#VkImageCreateFlagBits)
 flag,
 and if the `format` of the image is not [multi-planar](formats.html#formats-multiplanar)
 `format` **can** be different from the image’s format, but if
 `image` was created without the
-`VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT` flag and
+[VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](#VkImageCreateFlagBits) flag and
 they are not equal they **must** be *compatible*.
 Image format compatibility is defined in the
 [Format Compatibility Classes](formats.html#formats-compatibility-classes) section.
@@ -7819,9 +8106,9 @@ coordinates and memory locations irrespective of the `format`, with only
 the interpretation of the bit pattern changing.
 
 If `image` was created with a [multi-planar format](formats.html#formats-multiplanar), and the image view’s `aspectMask` is one of
-`VK_IMAGE_ASPECT_PLANE_0_BIT`, `VK_IMAGE_ASPECT_PLANE_1_BIT` or
-`VK_IMAGE_ASPECT_PLANE_2_BIT`, the view’s aspect mask is considered to
-be equivalent to `VK_IMAGE_ASPECT_COLOR_BIT` when used as a framebuffer
+[VK_IMAGE_ASPECT_PLANE_0_BIT](#VkImageAspectFlagBits), [VK_IMAGE_ASPECT_PLANE_1_BIT](#VkImageAspectFlagBits) or
+[VK_IMAGE_ASPECT_PLANE_2_BIT](#VkImageAspectFlagBits), the view’s aspect mask is considered to
+be equivalent to [VK_IMAGE_ASPECT_COLOR_BIT](#VkImageAspectFlagBits) when used as a framebuffer
 attachment.
 
 |  | Values intended to be used with one view format **may** not be exactly
@@ -7835,7 +8122,7 @@ pattern exactly equal to -2b **may** be changed to -2b +  1
 as described in [Conversion from Normalized Fixed-Point to Floating-Point](fundamentals.html#fundamentals-fixedfpconv). |
 
 If `image` was created with the
-`VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT` flag, `format`
+[VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](#VkImageCreateFlagBits) flag, `format`
 **must** be *compatible* with the image’s format as described above; or **must**
 be an uncompressed format, in which case it **must** be
 [*size-compatible*](formats.html#formats-size-compatibility) with the image’s format.
@@ -7864,18 +8151,18 @@ Conversely, if a [VkSamplerYcbcrConversion](samplers.html#VkSamplerYcbcrConversi
 the image.
 
 If the image has a [multi-planar format](formats.html#formats-multiplanar),
-`subresourceRange.aspectMask` is `VK_IMAGE_ASPECT_COLOR_BIT`, and
-`usage` includes `VK_IMAGE_USAGE_SAMPLED_BIT`, then the `format`
+`subresourceRange.aspectMask` is [VK_IMAGE_ASPECT_COLOR_BIT](#VkImageAspectFlagBits), and
+`usage` includes [VK_IMAGE_USAGE_SAMPLED_BIT](#VkImageUsageFlagBits), then the `format`
 **must** be identical to the image `format` and the sampler to be used with
 the image view **must** enable [sampler Y′CBCR conversion](samplers.html#samplers-YCbCr-conversion).
 
 When such an image is used in a [video coding](videocoding.html#video-coding) operation, the
 [sampler Y′CBCR conversion](samplers.html#samplers-YCbCr-conversion) has no effect.
 
-If `image` was created with the `VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT`
+If `image` was created with the [VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](#VkImageCreateFlagBits)
 and the image has a [multi-planar format](formats.html#formats-multiplanar), and if
-`subresourceRange.aspectMask` is `VK_IMAGE_ASPECT_PLANE_0_BIT`,
-`VK_IMAGE_ASPECT_PLANE_1_BIT`, or `VK_IMAGE_ASPECT_PLANE_2_BIT`,
+`subresourceRange.aspectMask` is [VK_IMAGE_ASPECT_PLANE_0_BIT](#VkImageAspectFlagBits),
+[VK_IMAGE_ASPECT_PLANE_1_BIT](#VkImageAspectFlagBits), or [VK_IMAGE_ASPECT_PLANE_2_BIT](#VkImageAspectFlagBits),
 `format` **must** be [compatible](formats.html#formats-compatible-planes) with the
 corresponding plane of the image, and the sampler to be used with the image
 view **must** not enable [sampler Y′CBCR conversion](samplers.html#samplers-YCbCr-conversion).
@@ -7897,15 +8184,15 @@ reconstruction operations operate on the same (*uplane*, *vplane*) or
 
 | Image View Type | Compatible Image Types |
 | --- | --- |
-| `VK_IMAGE_VIEW_TYPE_1D` | `VK_IMAGE_TYPE_1D` |
-| `VK_IMAGE_VIEW_TYPE_1D_ARRAY` | `VK_IMAGE_TYPE_1D` |
-| `VK_IMAGE_VIEW_TYPE_2D` | `VK_IMAGE_TYPE_2D`
-, `VK_IMAGE_TYPE_3D` |
-| `VK_IMAGE_VIEW_TYPE_2D_ARRAY` | `VK_IMAGE_TYPE_2D`
-, `VK_IMAGE_TYPE_3D` |
-| `VK_IMAGE_VIEW_TYPE_CUBE` | `VK_IMAGE_TYPE_2D` |
-| `VK_IMAGE_VIEW_TYPE_CUBE_ARRAY` | `VK_IMAGE_TYPE_2D` |
-| `VK_IMAGE_VIEW_TYPE_3D` | `VK_IMAGE_TYPE_3D` |
+| [VK_IMAGE_VIEW_TYPE_1D](#VkImageViewType) | [VK_IMAGE_TYPE_1D](#VkImageType) |
+| [VK_IMAGE_VIEW_TYPE_1D_ARRAY](#VkImageViewType) | [VK_IMAGE_TYPE_1D](#VkImageType) |
+| [VK_IMAGE_VIEW_TYPE_2D](#VkImageViewType) | [VK_IMAGE_TYPE_2D](#VkImageType)
+, [VK_IMAGE_TYPE_3D](#VkImageType) |
+| [VK_IMAGE_VIEW_TYPE_2D_ARRAY](#VkImageViewType) | [VK_IMAGE_TYPE_2D](#VkImageType)
+, [VK_IMAGE_TYPE_3D](#VkImageType) |
+| [VK_IMAGE_VIEW_TYPE_CUBE](#VkImageViewType) | [VK_IMAGE_TYPE_2D](#VkImageType) |
+| [VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](#VkImageViewType) | [VK_IMAGE_TYPE_2D](#VkImageType) |
+| [VK_IMAGE_VIEW_TYPE_3D](#VkImageViewType) | [VK_IMAGE_TYPE_3D](#VkImageType) |
 
 Valid Usage
 
@@ -7913,164 +8200,198 @@ Valid Usage
 [](#VUID-VkImageViewCreateInfo-image-01003) VUID-VkImageViewCreateInfo-image-01003
 
 If `image` was not created with
-`VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT` then `viewType` **must** not
-be `VK_IMAGE_VIEW_TYPE_CUBE` or `VK_IMAGE_VIEW_TYPE_CUBE_ARRAY`
+[VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT](#VkImageCreateFlagBits) then `viewType` **must** not
+be [VK_IMAGE_VIEW_TYPE_CUBE](#VkImageViewType) or [VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](#VkImageViewType)
 
 * 
 [](#VUID-VkImageViewCreateInfo-viewType-01004) VUID-VkImageViewCreateInfo-viewType-01004
 
 If the [`imageCubeArray`](features.html#features-imageCubeArray) feature is not
-enabled, `viewType` **must** not be `VK_IMAGE_VIEW_TYPE_CUBE_ARRAY`
+enabled, `viewType` **must** not be [VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](#VkImageViewType)
 
 * 
 [](#VUID-VkImageViewCreateInfo-image-06723) VUID-VkImageViewCreateInfo-image-06723
 
-If `image` was created with `VK_IMAGE_TYPE_3D` but without
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set then `viewType`
-**must** not be `VK_IMAGE_VIEW_TYPE_2D_ARRAY`
+If `image` was created with [VK_IMAGE_TYPE_3D](#VkImageType) but without
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](#VkImageCreateFlagBits) set then `viewType`
+**must** not be [VK_IMAGE_VIEW_TYPE_2D_ARRAY](#VkImageViewType)
 
 * 
 [](#VUID-VkImageViewCreateInfo-image-06728) VUID-VkImageViewCreateInfo-image-06728
 
-If `image` was created with `VK_IMAGE_TYPE_3D` but without
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` or
-`VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT` set, then
-`viewType` **must** not be `VK_IMAGE_VIEW_TYPE_2D`
+If `image` was created with [VK_IMAGE_TYPE_3D](#VkImageType) but without
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](#VkImageCreateFlagBits) or
+[VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT](#VkImageCreateFlagBits) set, then
+`viewType` **must** not be [VK_IMAGE_VIEW_TYPE_2D](#VkImageViewType)
 
 * 
 [](#VUID-VkImageViewCreateInfo-image-04970) VUID-VkImageViewCreateInfo-image-04970
 
-If `image` was created with `VK_IMAGE_TYPE_3D` and
-`viewType` is `VK_IMAGE_VIEW_TYPE_2D` or
-`VK_IMAGE_VIEW_TYPE_2D_ARRAY` then `subresourceRange.levelCount`
+If `image` was created with [VK_IMAGE_TYPE_3D](#VkImageType) and
+`viewType` is [VK_IMAGE_VIEW_TYPE_2D](#VkImageViewType) or
+[VK_IMAGE_VIEW_TYPE_2D_ARRAY](#VkImageViewType) then `subresourceRange.levelCount`
 **must** be 1
 
 * 
 [](#VUID-VkImageViewCreateInfo-image-04972) VUID-VkImageViewCreateInfo-image-04972
 
 If `image` was created with a `samples` value not equal to
-`VK_SAMPLE_COUNT_1_BIT` then `viewType` **must** be either
-`VK_IMAGE_VIEW_TYPE_2D` or `VK_IMAGE_VIEW_TYPE_2D_ARRAY`
+[VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits) then `viewType` **must** be either
+[VK_IMAGE_VIEW_TYPE_2D](#VkImageViewType) or [VK_IMAGE_VIEW_TYPE_2D_ARRAY](#VkImageViewType)
 
 * 
 [](#VUID-VkImageViewCreateInfo-image-04441) VUID-VkImageViewCreateInfo-image-04441
 
 `image` **must** have been created with a `usage` value containing
-at least one of the usages defined in the [    valid image usage](#valid-imageview-imageusage) list for image views
+at least one of the following:
+
+[VK_IMAGE_USAGE_SAMPLED_BIT](#VkImageUsageFlagBits)
 
 * 
+[VK_IMAGE_USAGE_STORAGE_BIT](#VkImageUsageFlagBits)
+
+* 
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](#VkImageUsageFlagBits)
+
+* 
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](#VkImageUsageFlagBits)
+
+* 
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](#VkImageUsageFlagBits)
+
+* 
+[VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](#VkImageUsageFlagBits)
+
+* 
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkImageUsageFlagBits)
+
+* 
+[VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT](#VkImageUsageFlagBits)
+
+* 
+[VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](#VkImageUsageFlagBits)
+
+* 
+[VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](#VkImageUsageFlagBits)
+
+* 
+[VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR](#VkImageUsageFlagBits)
+
+* 
+[VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR](#VkImageUsageFlagBits)
+
+* 
+[VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM](#VkImageUsageFlagBits)
+
+* 
+[VK_IMAGE_USAGE_SAMPLE_BLOCK_MATCH_BIT_QCOM](#VkImageUsageFlagBits)
+
+* 
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](#VkImageUsageFlagBits)
+
+* 
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](#VkImageUsageFlagBits)
+
 [](#VUID-VkImageViewCreateInfo-None-02273) VUID-VkImageViewCreateInfo-None-02273
 
 The [format features](#resources-image-view-format-features) of the
 resultant image view **must** contain at least one bit
 
-* 
 [](#VUID-VkImageViewCreateInfo-usage-02274) VUID-VkImageViewCreateInfo-usage-02274
 
-If `usage` contains `VK_IMAGE_USAGE_SAMPLED_BIT`, then the
+If `usage` contains [VK_IMAGE_USAGE_SAMPLED_BIT](#VkImageUsageFlagBits), then the
 [format features](#resources-image-view-format-features) of the
 resultant image view **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](formats.html#VkFormatFeatureFlagBits)
 
-* 
 [](#VUID-VkImageViewCreateInfo-usage-02275) VUID-VkImageViewCreateInfo-usage-02275
 
-If `usage` contains `VK_IMAGE_USAGE_STORAGE_BIT`, then the image
+If `usage` contains [VK_IMAGE_USAGE_STORAGE_BIT](#VkImageUsageFlagBits), then the image
 view’s [format features](#resources-image-view-format-features) **must**
-contain `VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT`
+contain [VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT](formats.html#VkFormatFeatureFlagBits)
 
-* 
 [](#VUID-VkImageViewCreateInfo-usage-08931) VUID-VkImageViewCreateInfo-usage-08931
 
-If `usage` contains `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT`, then
-the image view’s [format    features](#resources-image-view-format-features) **must** contain `VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT` or
-`VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV`
+If `usage` contains [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](#VkImageUsageFlagBits), then
+the image view’s [format    features](#resources-image-view-format-features) **must** contain [VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits) or
+[VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](formats.html#VkFormatFeatureFlagBits2KHR)
 
-* 
 [](#VUID-VkImageViewCreateInfo-usage-02277) VUID-VkImageViewCreateInfo-usage-02277
 
 If `usage` contains
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`, then the image view’s
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](#VkImageUsageFlagBits), then the image view’s
 [format features](#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
 
-* 
 [](#VUID-VkImageViewCreateInfo-image-08333) VUID-VkImageViewCreateInfo-image-08333
 
-If `usage` contains `VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR`,
+If `usage` contains [VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](#VkImageUsageFlagBits),
 then the image view’s [format    features](#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_VIDEO_DECODE_OUTPUT_BIT_KHR`
+[VK_FORMAT_FEATURE_VIDEO_DECODE_OUTPUT_BIT_KHR](formats.html#VkFormatFeatureFlagBits)
 
-* 
 [](#VUID-VkImageViewCreateInfo-image-08334) VUID-VkImageViewCreateInfo-image-08334
 
-If `usage` contains `VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR`,
+If `usage` contains [VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](#VkImageUsageFlagBits),
 then the image view’s [format    features](#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_VIDEO_DECODE_DPB_BIT_KHR`
+[VK_FORMAT_FEATURE_VIDEO_DECODE_DPB_BIT_KHR](formats.html#VkFormatFeatureFlagBits)
 
-* 
 [](#VUID-VkImageViewCreateInfo-image-08335) VUID-VkImageViewCreateInfo-image-08335
 
 `usage` **must** not include
-`VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR`
+[VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR](#VkImageUsageFlagBits)
 
-* 
 [](#VUID-VkImageViewCreateInfo-image-08336) VUID-VkImageViewCreateInfo-image-08336
 
-If `usage` contains `VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR`,
+If `usage` contains [VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR](#VkImageUsageFlagBits),
 then the image view’s [format    features](#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_VIDEO_ENCODE_INPUT_BIT_KHR`
+[VK_FORMAT_FEATURE_VIDEO_ENCODE_INPUT_BIT_KHR](formats.html#VkFormatFeatureFlagBits)
 
-* 
 [](#VUID-VkImageViewCreateInfo-image-08337) VUID-VkImageViewCreateInfo-image-08337
 
-If `usage` contains `VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR`,
+If `usage` contains [VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR](#VkImageUsageFlagBits),
 then the image view’s [format    features](#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_VIDEO_ENCODE_DPB_BIT_KHR`
+[VK_FORMAT_FEATURE_VIDEO_ENCODE_DPB_BIT_KHR](formats.html#VkFormatFeatureFlagBits)
 
-* 
 [](#VUID-VkImageViewCreateInfo-image-08338) VUID-VkImageViewCreateInfo-image-08338
 
 `usage` **must** not include
-`VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR`
+[VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR](#VkImageUsageFlagBits)
 
-* 
 [](#VUID-VkImageViewCreateInfo-usage-10259) VUID-VkImageViewCreateInfo-usage-10259
 
 If `usage` contains
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR`, then
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](#VkImageUsageFlagBits), then
 the image view’s [format    features](#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR`
+[VK_FORMAT_FEATURE_2_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](formats.html#VkFormatFeatureFlagBits2KHR)
 
-* 
 [](#VUID-VkImageViewCreateInfo-usage-10260) VUID-VkImageViewCreateInfo-usage-10260
 
 If `usage` contains
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR`, then the image
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](#VkImageUsageFlagBits), then the image
 view’s [format features](#resources-image-view-format-features) **must**
-contain `VK_FORMAT_FEATURE_2_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR`
+contain [VK_FORMAT_FEATURE_2_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](formats.html#VkFormatFeatureFlagBits2KHR)
 
-* 
 [](#VUID-VkImageViewCreateInfo-usage-08932) VUID-VkImageViewCreateInfo-usage-08932
 
-If `usage` contains `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`,
+If `usage` contains [VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](#VkImageUsageFlagBits),
 and any of the following is true:
 
+* 
 the [`externalFormatResolve`](features.html#features-externalFormatResolve)
 feature is not enabled
 
 * 
 the [     `nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) property is
-`VK_FALSE`
+[VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 `image` was created with an
 [VkExternalFormatANDROID](#VkExternalFormatANDROID)::`externalFormat` value of 0
 
 then the image view’s [format features](#resources-image-view-format-features) **must** contain at least one of
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT` or
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
-    or `VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV`
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits) or
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
+    or [VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](formats.html#VkFormatFeatureFlagBits2KHR)
 
 [](#VUID-VkImageViewCreateInfo-subresourceRange-01478) VUID-VkImageViewCreateInfo-subresourceRange-01478
 
@@ -8081,7 +8402,7 @@ was created
 [](#VUID-VkImageViewCreateInfo-subresourceRange-01718) VUID-VkImageViewCreateInfo-subresourceRange-01718
 
 If `subresourceRange.levelCount` is not
-`VK_REMAINING_MIP_LEVELS`, `subresourceRange.baseMipLevel`
+[VK_REMAINING_MIP_LEVELS](#VK_REMAINING_MIP_LEVELS), `subresourceRange.baseMipLevel`
 +  `subresourceRange.levelCount` **must** be less than or equal to
 the `mipLevels` specified in [VkImageCreateInfo](#VkImageCreateInfo) when
 `image` was created
@@ -8089,15 +8410,15 @@ the `mipLevels` specified in [VkImageCreateInfo](#VkImageCreateInfo) when
 [](#VUID-VkImageViewCreateInfo-image-02571) VUID-VkImageViewCreateInfo-image-02571
 
 If `image` was created with the
-`VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT` usage flag set,
+[VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT](#VkImageUsageFlagBits) usage flag set,
 `subresourceRange.levelCount` **must** be `1`
 
 [](#VUID-VkImageViewCreateInfo-image-06724) VUID-VkImageViewCreateInfo-image-06724
 
 If `image` is not a 3D image created with
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` or
-`VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT` set, or `viewType`
-is not `VK_IMAGE_VIEW_TYPE_2D` or `VK_IMAGE_VIEW_TYPE_2D_ARRAY`,
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](#VkImageCreateFlagBits) or
+[VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT](#VkImageCreateFlagBits) set, or `viewType`
+is not [VK_IMAGE_VIEW_TYPE_2D](#VkImageViewType) or [VK_IMAGE_VIEW_TYPE_2D_ARRAY](#VkImageViewType),
 `subresourceRange.baseArrayLayer` **must** be less than the
 `arrayLayers` specified in [VkImageCreateInfo](#VkImageCreateInfo) when `image`
 was created
@@ -8105,10 +8426,10 @@ was created
 [](#VUID-VkImageViewCreateInfo-subresourceRange-06725) VUID-VkImageViewCreateInfo-subresourceRange-06725
 
 If `subresourceRange.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`, `image` is not a 3D image created
-with `VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` or
-`VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT` set, or `viewType`
-is not `VK_IMAGE_VIEW_TYPE_2D` or `VK_IMAGE_VIEW_TYPE_2D_ARRAY`,
+[VK_REMAINING_ARRAY_LAYERS](#VK_REMAINING_ARRAY_LAYERS), `image` is not a 3D image created
+with [VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](#VkImageCreateFlagBits) or
+[VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT](#VkImageCreateFlagBits) set, or `viewType`
+is not [VK_IMAGE_VIEW_TYPE_2D](#VkImageViewType) or [VK_IMAGE_VIEW_TYPE_2D_ARRAY](#VkImageViewType),
 `subresourceRange.layerCount` **must** be non-zero and
 `subresourceRange.baseArrayLayer` + 
 `subresourceRange.layerCount` **must** be less than or equal to the
@@ -8118,8 +8439,8 @@ was created
 [](#VUID-VkImageViewCreateInfo-image-02724) VUID-VkImageViewCreateInfo-image-02724
 
 If `image` is a 3D image created with
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set, and `viewType` is
-`VK_IMAGE_VIEW_TYPE_2D` or `VK_IMAGE_VIEW_TYPE_2D_ARRAY`,
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](#VkImageCreateFlagBits) set, and `viewType` is
+[VK_IMAGE_VIEW_TYPE_2D](#VkImageViewType) or [VK_IMAGE_VIEW_TYPE_2D_ARRAY](#VkImageViewType),
 `subresourceRange.baseArrayLayer` **must** be less than the depth
 computed from `baseMipLevel` and `extent.depth` specified in
 [VkImageCreateInfo](#VkImageCreateInfo) when `image` was created, according to the
@@ -8128,9 +8449,9 @@ formula defined in [Image Mip Level    Sizing](#resources-image-mip-level-sizing
 [](#VUID-VkImageViewCreateInfo-subresourceRange-02725) VUID-VkImageViewCreateInfo-subresourceRange-02725
 
 If `subresourceRange.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`, `image` is a 3D image created with
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set, and `viewType` is
-`VK_IMAGE_VIEW_TYPE_2D` or `VK_IMAGE_VIEW_TYPE_2D_ARRAY`,
+[VK_REMAINING_ARRAY_LAYERS](#VK_REMAINING_ARRAY_LAYERS), `image` is a 3D image created with
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](#VkImageCreateFlagBits) set, and `viewType` is
+[VK_IMAGE_VIEW_TYPE_2D](#VkImageViewType) or [VK_IMAGE_VIEW_TYPE_2D_ARRAY](#VkImageViewType),
 `subresourceRange.layerCount` **must** be non-zero and
 `subresourceRange.baseArrayLayer` + 
 `subresourceRange.layerCount` **must** be less than or equal to the
@@ -8141,8 +8462,8 @@ the formula defined in [Image Mip    Level Sizing](#resources-image-mip-level-si
 [](#VUID-VkImageViewCreateInfo-image-01761) VUID-VkImageViewCreateInfo-image-01761
 
 If `image` was created with the
-`VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT` flag,
-but without the `VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT`
+[VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](#VkImageCreateFlagBits) flag,
+but without the [VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](#VkImageCreateFlagBits)
 flag,
 and if the `format` of the `image` is not a
 [multi-planar format](formats.html#formats-multiplanar),
@@ -8152,7 +8473,7 @@ and if the `format` of the `image` is not a
 [](#VUID-VkImageViewCreateInfo-image-01583) VUID-VkImageViewCreateInfo-image-01583
 
 If `image` was created with the
-`VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT` flag, `format`
+[VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](#VkImageCreateFlagBits) flag, `format`
 **must** be compatible with, or **must** be an uncompressed format that is
 [size-compatible](formats.html#formats-size-compatibility) with, the `format`
 used to create `image`
@@ -8160,17 +8481,17 @@ used to create `image`
 [](#VUID-VkImageViewCreateInfo-image-07072) VUID-VkImageViewCreateInfo-image-07072
 
 If `image` was created with the
-`VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT` flag and
+[VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](#VkImageCreateFlagBits) flag and
 `format` is a non-compressed format, the `levelCount` member of
 `subresourceRange` **must** be `1`
 
 [](#VUID-VkImageViewCreateInfo-image-09487) VUID-VkImageViewCreateInfo-image-09487
 
 If `image` was created with the
-`VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT` flag,
+[VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](#VkImageCreateFlagBits) flag,
 the
 `VkPhysicalDeviceMaintenance6Properties`::`blockTexelViewCompatibleMultipleLayers`
-property is not `VK_TRUE`,
+property is not [VK_TRUE](fundamentals.html#VK_TRUE),
 and `format` is a non-compressed format, then the `layerCount`
 member of `subresourceRange` **must** be `1`
 
@@ -8186,7 +8507,7 @@ then `format` **must** be one of the formats in
 [](#VUID-VkImageViewCreateInfo-image-01586) VUID-VkImageViewCreateInfo-image-01586
 
 If `image` was created with the
-`VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT` flag, if the `format` of
+[VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](#VkImageCreateFlagBits) flag, if the `format` of
 the `image` is a [multi-planar format](formats.html#formats-multiplanar), and
 if `subresourceRange.aspectMask` is one of the
 [multi-planar aspect mask](formats.html#formats-multiplanar-image-aspect) bits, then
@@ -8203,16 +8524,16 @@ of the `image` `format` indicated by
 [](#VUID-VkImageViewCreateInfo-image-01762) VUID-VkImageViewCreateInfo-image-01762
 
 If `image` was not created with the
-`VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT` flag,
+[VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](#VkImageCreateFlagBits) flag,
 or if the `format` of the `image` is a [    multi-planar format](formats.html#formats-multiplanar) and if `subresourceRange.aspectMask` is
-`VK_IMAGE_ASPECT_COLOR_BIT`,
+[VK_IMAGE_ASPECT_COLOR_BIT](#VkImageAspectFlagBits),
 `format` **must** be identical to the `format` used to create
 `image`
 
 [](#VUID-VkImageViewCreateInfo-format-06415) VUID-VkImageViewCreateInfo-format-06415
 
 If the image view [    requires a sampler Y′CBCR conversion](#image-views-requiring-sampler-ycbcr-conversion) and `usage` contains
-`VK_IMAGE_USAGE_SAMPLED_BIT`, then the `pNext` chain **must**
+[VK_IMAGE_USAGE_SAMPLED_BIT](#VkImageUsageFlagBits), then the `pNext` chain **must**
 include a [VkSamplerYcbcrConversionInfo](samplers.html#VkSamplerYcbcrConversionInfo) structure with a conversion
 value other than [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
@@ -8255,7 +8576,7 @@ in the [view type compatibility    table](#resources-image-views-compatibility)
 [](#VUID-VkImageViewCreateInfo-image-02399) VUID-VkImageViewCreateInfo-image-02399
 
 If `image` has an
-[Android    external format](memory.html#memory-external-android-hardware-buffer-external-formats), `format` **must** be `VK_FORMAT_UNDEFINED`
+[Android    external format](memory.html#memory-external-android-hardware-buffer-external-formats), `format` **must** be [VK_FORMAT_UNDEFINED](formats.html#VkFormat)
 
 [](#VUID-VkImageViewCreateInfo-image-02400) VUID-VkImageViewCreateInfo-image-02400
 
@@ -8273,7 +8594,7 @@ If `image` has an
 [](#VUID-VkImageViewCreateInfo-image-08957) VUID-VkImageViewCreateInfo-image-08957
 
 If `image` has an
-[QNX Screen external    format](memory.html#memory-external-screen-buffer-external-formats), `format` **must** be `VK_FORMAT_UNDEFINED`
+[QNX Screen external    format](memory.html#memory-external-screen-buffer-external-formats), `format` **must** be [VK_FORMAT_UNDEFINED](formats.html#VkFormat)
 
 [](#VUID-VkImageViewCreateInfo-image-08958) VUID-VkImageViewCreateInfo-image-08958
 
@@ -8291,58 +8612,58 @@ If `image` has an
 [](#VUID-VkImageViewCreateInfo-image-02086) VUID-VkImageViewCreateInfo-image-02086
 
 If `image` was created with the
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR` usage flag
-set, `viewType` **must** be `VK_IMAGE_VIEW_TYPE_2D` or
-`VK_IMAGE_VIEW_TYPE_2D_ARRAY`
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkImageUsageFlagBits) usage flag
+set, `viewType` **must** be [VK_IMAGE_VIEW_TYPE_2D](#VkImageViewType) or
+[VK_IMAGE_VIEW_TYPE_2D_ARRAY](#VkImageViewType)
 
 [](#VUID-VkImageViewCreateInfo-image-02087) VUID-VkImageViewCreateInfo-image-02087
 
 If the [`shadingRateImage`](features.html#features-shadingRateImage) feature is
 enabled, and `image` was created with the
-`VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV` usage flag set,
-`format` **must** be `VK_FORMAT_R8_UINT`
+[VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV](#VkImageUsageFlagBits) usage flag set,
+`format` **must** be [VK_FORMAT_R8_UINT](formats.html#VkFormat)
 
 [](#VUID-VkImageViewCreateInfo-usage-04550) VUID-VkImageViewCreateInfo-usage-04550
 
 If the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) feature is enabled, and the
 `usage` for the image view includes
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`, then the
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkImageUsageFlagBits), then the
 image view’s [format features](#resources-image-view-format-features)
 **must** contain
-`VK_FORMAT_FEATURE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_FORMAT_FEATURE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](formats.html#VkFormatFeatureFlagBits)
 
 [](#VUID-VkImageViewCreateInfo-usage-04551) VUID-VkImageViewCreateInfo-usage-04551
 
 If the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) feature is enabled, the
 `usage` for the image view includes
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`, and
-[    `layeredShadingRateAttachments`](limits.html#limits-layeredShadingRateAttachments) is `VK_FALSE`,
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkImageUsageFlagBits), and
+[    `layeredShadingRateAttachments`](limits.html#limits-layeredShadingRateAttachments) is [VK_FALSE](fundamentals.html#VK_FALSE),
 `subresourceRange.layerCount` **must** be `1`
 
 [](#VUID-VkImageViewCreateInfo-flags-02572) VUID-VkImageViewCreateInfo-flags-02572
 
 If the [    `fragmentDensityMapDynamic`](features.html#features-fragmentDensityMapDynamic) feature is not enabled, `flags`
 **must** not contain
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT`
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT](#VkImageViewCreateFlagBits)
 
 [](#VUID-VkImageViewCreateInfo-flags-03567) VUID-VkImageViewCreateInfo-flags-03567
 
 If the [    `fragmentDensityMapDeferred`](features.html#features-fragmentDensityMapDeferred) feature is not enabled, `flags`
 **must** not contain
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT`
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT](#VkImageViewCreateFlagBits)
 
 [](#VUID-VkImageViewCreateInfo-flags-03568) VUID-VkImageViewCreateInfo-flags-03568
 
 If `flags` contains
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT`,
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT](#VkImageViewCreateFlagBits),
 `flags` **must** not contain
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT`
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT](#VkImageViewCreateFlagBits)
 
 [](#VUID-VkImageViewCreateInfo-image-03569) VUID-VkImageViewCreateInfo-image-03569
 
 If `image` was created with `flags` containing
-`VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT` and the
-`VK_IMAGE_USAGE_SAMPLED_BIT` usage flag set,
+[VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](#VkImageCreateFlagBits) and the
+[VK_IMAGE_USAGE_SAMPLED_BIT](#VkImageUsageFlagBits) usage flag set,
 `subresourceRange.layerCount` **must** be less than or equal to
 [    `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`::`maxSubsampledArrayLayers`](limits.html#limits-maxSubsampledArrayLayers)
 
@@ -8350,20 +8671,20 @@ If `image` was created with `flags` containing
 
 If the [`invocationMask`](features.html#features-invocationMask) feature is
 enabled, and `image` was created with the
-`VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI` usage flag set,
-`format` **must** be `VK_FORMAT_R8_UINT`
+[VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI](#VkImageUsageFlagBits) usage flag set,
+`format` **must** be [VK_FORMAT_R8_UINT](formats.html#VkFormat)
 
 [](#VUID-VkImageViewCreateInfo-flags-04116) VUID-VkImageViewCreateInfo-flags-04116
 
 If `flags` does not contain
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT`, and
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT](#VkImageViewCreateFlagBits), and
 `image` was created with the
-`VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT` usage flag set, its
+[VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT](#VkImageUsageFlagBits) usage flag set, its
 `flags` **must** not contain any of
-`VK_IMAGE_CREATE_PROTECTED_BIT`,
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT`,
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`, or
-`VK_IMAGE_CREATE_SPARSE_ALIASED_BIT`
+[VK_IMAGE_CREATE_PROTECTED_BIT](#VkImageCreateFlagBits),
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#VkImageCreateFlagBits),
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](#VkImageCreateFlagBits), or
+[VK_IMAGE_CREATE_SPARSE_ALIASED_BIT](#VkImageCreateFlagBits)
 
 [](#VUID-VkImageViewCreateInfo-pNext-02662) VUID-VkImageViewCreateInfo-pNext-02662
 
@@ -8381,7 +8702,7 @@ structure, `image` was created with a
 [VkImageStencilUsageCreateInfo](#VkImageStencilUsageCreateInfo) structure included in the
 `pNext` chain of [VkImageCreateInfo](#VkImageCreateInfo), and
 `subresourceRange.aspectMask` includes
-`VK_IMAGE_ASPECT_STENCIL_BIT`, the `usage` member of the
+[VK_IMAGE_ASPECT_STENCIL_BIT](#VkImageAspectFlagBits), the `usage` member of the
 [VkImageViewUsageCreateInfo](#VkImageViewUsageCreateInfo) structure **must** not include any bits
 that were not set in the `usage` member of the
 [VkImageStencilUsageCreateInfo](#VkImageStencilUsageCreateInfo) structure used to create `image`
@@ -8393,97 +8714,97 @@ structure, `image` was created with a
 [VkImageStencilUsageCreateInfo](#VkImageStencilUsageCreateInfo) structure included in the
 `pNext` chain of [VkImageCreateInfo](#VkImageCreateInfo), and
 `subresourceRange.aspectMask` includes bits other than
-`VK_IMAGE_ASPECT_STENCIL_BIT`, the `usage` member of the
+[VK_IMAGE_ASPECT_STENCIL_BIT](#VkImageAspectFlagBits), the `usage` member of the
 [VkImageViewUsageCreateInfo](#VkImageViewUsageCreateInfo) structure **must** not include any bits
 that were not set in the `usage` member of the
 [VkImageCreateInfo](#VkImageCreateInfo) structure used to create `image`
 
 [](#VUID-VkImageViewCreateInfo-imageViewType-04973) VUID-VkImageViewCreateInfo-imageViewType-04973
 
-If `viewType` is `VK_IMAGE_VIEW_TYPE_1D`,
-`VK_IMAGE_VIEW_TYPE_2D`, or `VK_IMAGE_VIEW_TYPE_3D`; and
+If `viewType` is [VK_IMAGE_VIEW_TYPE_1D](#VkImageViewType),
+[VK_IMAGE_VIEW_TYPE_2D](#VkImageViewType), or [VK_IMAGE_VIEW_TYPE_3D](#VkImageViewType); and
 `subresourceRange.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`, then `subresourceRange.layerCount`
+[VK_REMAINING_ARRAY_LAYERS](#VK_REMAINING_ARRAY_LAYERS), then `subresourceRange.layerCount`
 **must** be 1
 
 [](#VUID-VkImageViewCreateInfo-imageViewType-04974) VUID-VkImageViewCreateInfo-imageViewType-04974
 
-If `viewType` is `VK_IMAGE_VIEW_TYPE_1D`,
-`VK_IMAGE_VIEW_TYPE_2D`, or `VK_IMAGE_VIEW_TYPE_3D`; and
-`subresourceRange.layerCount` is `VK_REMAINING_ARRAY_LAYERS`,
+If `viewType` is [VK_IMAGE_VIEW_TYPE_1D](#VkImageViewType),
+[VK_IMAGE_VIEW_TYPE_2D](#VkImageViewType), or [VK_IMAGE_VIEW_TYPE_3D](#VkImageViewType); and
+`subresourceRange.layerCount` is [VK_REMAINING_ARRAY_LAYERS](#VK_REMAINING_ARRAY_LAYERS),
 then the remaining number of layers **must** be 1
 
 [](#VUID-VkImageViewCreateInfo-viewType-02960) VUID-VkImageViewCreateInfo-viewType-02960
 
-If `viewType` is `VK_IMAGE_VIEW_TYPE_CUBE` and
+If `viewType` is [VK_IMAGE_VIEW_TYPE_CUBE](#VkImageViewType) and
 `subresourceRange.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`, `subresourceRange.layerCount` **must**
+[VK_REMAINING_ARRAY_LAYERS](#VK_REMAINING_ARRAY_LAYERS), `subresourceRange.layerCount` **must**
 be `6`
 
 [](#VUID-VkImageViewCreateInfo-viewType-02961) VUID-VkImageViewCreateInfo-viewType-02961
 
-If `viewType` is `VK_IMAGE_VIEW_TYPE_CUBE_ARRAY` and
+If `viewType` is [VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](#VkImageViewType) and
 `subresourceRange.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`, `subresourceRange.layerCount` **must**
+[VK_REMAINING_ARRAY_LAYERS](#VK_REMAINING_ARRAY_LAYERS), `subresourceRange.layerCount` **must**
 be a multiple of `6`
 
 [](#VUID-VkImageViewCreateInfo-viewType-02962) VUID-VkImageViewCreateInfo-viewType-02962
 
-If `viewType` is `VK_IMAGE_VIEW_TYPE_CUBE` and
-`subresourceRange.layerCount` is `VK_REMAINING_ARRAY_LAYERS`,
+If `viewType` is [VK_IMAGE_VIEW_TYPE_CUBE](#VkImageViewType) and
+`subresourceRange.layerCount` is [VK_REMAINING_ARRAY_LAYERS](#VK_REMAINING_ARRAY_LAYERS),
 the remaining number of layers **must** be `6`
 
 [](#VUID-VkImageViewCreateInfo-viewType-02963) VUID-VkImageViewCreateInfo-viewType-02963
 
-If `viewType` is `VK_IMAGE_VIEW_TYPE_CUBE_ARRAY` and
-`subresourceRange.layerCount` is `VK_REMAINING_ARRAY_LAYERS`,
+If `viewType` is [VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](#VkImageViewType) and
+`subresourceRange.layerCount` is [VK_REMAINING_ARRAY_LAYERS](#VK_REMAINING_ARRAY_LAYERS),
 the remaining number of layers **must** be a multiple of `6`
 
 [](#VUID-VkImageViewCreateInfo-imageViewFormatSwizzle-04465) VUID-VkImageViewCreateInfo-imageViewFormatSwizzle-04465
 
 If the `[VK_KHR_portability_subset](../appendices/extensions.html#VK_KHR_portability_subset)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR)::`imageViewFormatSwizzle`
-is `VK_FALSE`, all elements of `components` **must** have the
+is [VK_FALSE](fundamentals.html#VK_FALSE), all elements of `components` **must** have the
 [identity swizzle](#resources-image-views-identity-mappings)
 
 [](#VUID-VkImageViewCreateInfo-imageViewFormatReinterpretation-04466) VUID-VkImageViewCreateInfo-imageViewFormatReinterpretation-04466
 
 If the `[VK_KHR_portability_subset](../appendices/extensions.html#VK_KHR_portability_subset)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR)::`imageViewFormatReinterpretation`
-is `VK_FALSE`, the [VkFormat](formats.html#VkFormat) in `format` **must** not contain
+is [VK_FALSE](fundamentals.html#VK_FALSE), the [VkFormat](formats.html#VkFormat) in `format` **must** not contain
 a different number of components, or a different number of bits in each
 component, than the format of the `VkImage` in `image`
 
 [](#VUID-VkImageViewCreateInfo-image-04817) VUID-VkImageViewCreateInfo-image-04817
 
 If `image` was created with the
-`VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR` usage flag set,
-`VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR`, or
-`VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR`, then the `viewType`
-**must** be `VK_IMAGE_VIEW_TYPE_2D` or
-`VK_IMAGE_VIEW_TYPE_2D_ARRAY`
+[VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](#VkImageUsageFlagBits) usage flag set,
+[VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR](#VkImageUsageFlagBits), or
+[VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](#VkImageUsageFlagBits), then the `viewType`
+**must** be [VK_IMAGE_VIEW_TYPE_2D](#VkImageViewType) or
+[VK_IMAGE_VIEW_TYPE_2D_ARRAY](#VkImageViewType)
 
 [](#VUID-VkImageViewCreateInfo-image-04818) VUID-VkImageViewCreateInfo-image-04818
 
 If `image` was created with the
-`VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR` usage flag set,
-`VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR`, or
-`VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR`, then the `viewType`
-**must** be `VK_IMAGE_VIEW_TYPE_2D` or
-`VK_IMAGE_VIEW_TYPE_2D_ARRAY`
+[VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR](#VkImageUsageFlagBits) usage flag set,
+[VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR](#VkImageUsageFlagBits), or
+[VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR](#VkImageUsageFlagBits), then the `viewType`
+**must** be [VK_IMAGE_VIEW_TYPE_2D](#VkImageViewType) or
+[VK_IMAGE_VIEW_TYPE_2D_ARRAY](#VkImageViewType)
 
 [](#VUID-VkImageViewCreateInfo-image-10261) VUID-VkImageViewCreateInfo-image-10261
 
 If `image` was created with the
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR` or
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR` usage flags set,
-then `viewType` **must** be `VK_IMAGE_VIEW_TYPE_2D` or
-`VK_IMAGE_VIEW_TYPE_2D_ARRAY`
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](#VkImageUsageFlagBits) usage flags set,
+then `viewType` **must** be [VK_IMAGE_VIEW_TYPE_2D](#VkImageViewType) or
+[VK_IMAGE_VIEW_TYPE_2D_ARRAY](#VkImageViewType)
 
 [](#VUID-VkImageViewCreateInfo-flags-08106) VUID-VkImageViewCreateInfo-flags-08106
 
 If `flags` includes
-`VK_IMAGE_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`, the
+[VK_IMAGE_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#VkImageViewCreateFlagBits), the
 [    `descriptorBufferCaptureReplay`](features.html#features-descriptorBufferCaptureReplay) feature **must** be enabled
 
 [](#VUID-VkImageViewCreateInfo-pNext-08107) VUID-VkImageViewCreateInfo-pNext-08107
@@ -8491,14 +8812,14 @@ If `flags` includes
 If the `pNext` chain includes a
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT) structure, `flags`
 **must** contain
-`VK_IMAGE_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`
+[VK_IMAGE_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#VkImageViewCreateFlagBits)
 
 [](#VUID-VkImageViewCreateInfo-pNext-06787) VUID-VkImageViewCreateInfo-pNext-06787
 
 If the `pNext` chain includes a
 [VkExportMetalObjectCreateInfoEXT](memory.html#VkExportMetalObjectCreateInfoEXT) structure, its
 `exportObjectType` member **must** be
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT`
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT](memory.html#VkExportMetalObjectTypeFlagBitsEXT)
 
 [](#VUID-VkImageViewCreateInfo-pNext-06944) VUID-VkImageViewCreateInfo-pNext-06944
 
@@ -8512,13 +8833,13 @@ If the `pNext` chain includes
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](#VkImageViewSampleWeightCreateInfoQCOM) structure, then `image`
 **must** have been created with the
-`VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM` usage flag set
+[VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM](#VkImageUsageFlagBits) usage flag set
 
 [](#VUID-VkImageViewCreateInfo-pNext-06946) VUID-VkImageViewCreateInfo-pNext-06946
 
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](#VkImageViewSampleWeightCreateInfoQCOM) structure, then
-`components` **must** be `VK_COMPONENT_SWIZZLE_IDENTITY` for all
+`components` **must** be [VK_COMPONENT_SWIZZLE_IDENTITY](#VkComponentSwizzle) for all
 components
 
 [](#VUID-VkImageViewCreateInfo-pNext-06947) VUID-VkImageViewCreateInfo-pNext-06947
@@ -8526,7 +8847,7 @@ components
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](#VkImageViewSampleWeightCreateInfoQCOM) structure, then
 `subresourceRange.aspectMask` **must** be
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](#VkImageAspectFlagBits)
 
 [](#VUID-VkImageViewCreateInfo-pNext-06948) VUID-VkImageViewCreateInfo-pNext-06948
 
@@ -8538,28 +8859,28 @@ If the `pNext` chain includes
 
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](#VkImageViewSampleWeightCreateInfoQCOM) structure, then
-`viewType` **must** be `VK_IMAGE_VIEW_TYPE_1D_ARRAY` or
-`VK_IMAGE_VIEW_TYPE_2D_ARRAY`
+`viewType` **must** be [VK_IMAGE_VIEW_TYPE_1D_ARRAY](#VkImageViewType) or
+[VK_IMAGE_VIEW_TYPE_2D_ARRAY](#VkImageViewType)
 
 [](#VUID-VkImageViewCreateInfo-pNext-06950) VUID-VkImageViewCreateInfo-pNext-06950
 
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](#VkImageViewSampleWeightCreateInfoQCOM) structure and if
-`viewType` is `VK_IMAGE_VIEW_TYPE_1D_ARRAY`, then `image`
-**must** have been created with `imageType` `VK_IMAGE_TYPE_1D`
+`viewType` is [VK_IMAGE_VIEW_TYPE_1D_ARRAY](#VkImageViewType), then `image`
+**must** have been created with `imageType` [VK_IMAGE_TYPE_1D](#VkImageType)
 
 [](#VUID-VkImageViewCreateInfo-pNext-06951) VUID-VkImageViewCreateInfo-pNext-06951
 
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](#VkImageViewSampleWeightCreateInfoQCOM) structure and `viewType`
-is `VK_IMAGE_VIEW_TYPE_1D_ARRAY`, then
+is [VK_IMAGE_VIEW_TYPE_1D_ARRAY](#VkImageViewType), then
 `subresourceRange.layerCount` **must** be equal to `2`
 
 [](#VUID-VkImageViewCreateInfo-pNext-06952) VUID-VkImageViewCreateInfo-pNext-06952
 
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](#VkImageViewSampleWeightCreateInfoQCOM) structure and `viewType`
-is `VK_IMAGE_VIEW_TYPE_1D_ARRAY`, then `image` **must** have been
+is [VK_IMAGE_VIEW_TYPE_1D_ARRAY](#VkImageViewType), then `image` **must** have been
 created with `width` equal to or greater than \((numPhases
 \times \mathbin{max}\left(
 \mathbin{align}\left(filterSize.width,4\right),
@@ -8569,14 +8890,14 @@ filterSize.height\right))\)
 
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](#VkImageViewSampleWeightCreateInfoQCOM) structure and if
-`viewType` is `VK_IMAGE_VIEW_TYPE_2D_ARRAY`, then `image`
-**must** have been created with `imageType` `VK_IMAGE_TYPE_2D`
+`viewType` is [VK_IMAGE_VIEW_TYPE_2D_ARRAY](#VkImageViewType), then `image`
+**must** have been created with `imageType` [VK_IMAGE_TYPE_2D](#VkImageType)
 
 [](#VUID-VkImageViewCreateInfo-pNext-06954) VUID-VkImageViewCreateInfo-pNext-06954
 
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](#VkImageViewSampleWeightCreateInfoQCOM) structure and `viewType`
-is `VK_IMAGE_VIEW_TYPE_2D_ARRAY`, then
+is [VK_IMAGE_VIEW_TYPE_2D_ARRAY](#VkImageViewType), then
 `subresourceRange.layerCount` **must** be equal or greater than
 numPhases
 
@@ -8584,14 +8905,14 @@ numPhases
 
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](#VkImageViewSampleWeightCreateInfoQCOM) structure and `viewType`
-is `VK_IMAGE_VIEW_TYPE_2D_ARRAY`, then `image` **must** have been
+is [VK_IMAGE_VIEW_TYPE_2D_ARRAY](#VkImageViewType), then `image` **must** have been
 created with `width` equal to or greater than `filterSize.width`
 
 [](#VUID-VkImageViewCreateInfo-pNext-06956) VUID-VkImageViewCreateInfo-pNext-06956
 
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](#VkImageViewSampleWeightCreateInfoQCOM) structure and `viewType`
-is `VK_IMAGE_VIEW_TYPE_2D_ARRAY`, then `image` **must** have been
+is [VK_IMAGE_VIEW_TYPE_2D_ARRAY](#VkImageViewType), then `image` **must** have been
 created with `height` equal to or greater than
 `filterSize.height`
 
@@ -8607,12 +8928,23 @@ If the `pNext` chain includes
 `subresourceRange.aspectMask` **must** be valid for the `format`
 the `image` was created with
 
+[](#VUID-VkImageViewCreateInfo-None-12280) VUID-VkImageViewCreateInfo-None-12280
+
+    If
+Vulkan 1.3 is not supported and
+    the [`ycbcr2plane444Formats`](features.html#features-ycbcr2plane444Formats)
+    feature is not enabled, `format` **must** not be
+    [VK_FORMAT_G8_B8R8_2PLANE_444_UNORM](formats.html#VkFormat),
+    [VK_FORMAT_G10X6_B10X6R10X6_2PLANE_444_UNORM_3PACK16](formats.html#VkFormat),
+    [VK_FORMAT_G12X4_B12X4R12X4_2PLANE_444_UNORM_3PACK16](formats.html#VkFormat), or
+    [VK_FORMAT_G16_B16R16_2PLANE_444_UNORM](formats.html#VkFormat)
+
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkImageViewCreateInfo-sType-sType) VUID-VkImageViewCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageViewCreateInfo-pNext-pNext) VUID-VkImageViewCreateInfo-pNext-pNext
@@ -8668,18 +9000,18 @@ typedef enum VkImageViewCreateFlagBits {
 } VkImageViewCreateFlagBits;
 
 * 
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT`
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT](#VkImageViewCreateFlagBits)
 specifies that the fragment density map will be read by device during
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT`
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT](#VkImageViewCreateFlagBits)
 specifies that the fragment density map will be read by the host during
 [vkEndCommandBuffer](cmdbuffers.html#vkEndCommandBuffer) for the primary command buffer that the render
 pass is recorded into
 
 * 
-`VK_IMAGE_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`
+[VK_IMAGE_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#VkImageViewCreateFlagBits)
 specifies that the image view **can** be used with descriptor buffers when
 capturing and replaying (e.g. for trace capture and replay), see
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT) for more detail.
@@ -8729,7 +9061,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageViewUsageCreateInfo-sType-sType) VUID-VkImageViewUsageCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageViewUsageCreateInfo-usage-parameter) VUID-VkImageViewUsageCreateInfo-usage-parameter
@@ -8788,11 +9120,11 @@ specified in [Image Mip Level Sizing](#resources-image-mip-level-sizing).
 
 Shader access to this image view is only affected by
 `VkImageViewSlicedCreateInfoEXT` if it uses a descriptor of type
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`.
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](descriptorsets.html#VkDescriptorType).
 For access using any other descriptor type, the contents of
 `VkImageViewSlicedCreateInfoEXT` are ignored; instead, `sliceOffset`
 is treated as being equal to 0, and `sliceCount` is treated as being
-equal to `VK_REMAINING_3D_SLICES_EXT`.
+equal to [VK_REMAINING_3D_SLICES_EXT](#VK_REMAINING_3D_SLICES_EXT).
 
 Valid Usage
 
@@ -8805,7 +9137,7 @@ specified in [Image Mip Level Sizing](#resources-image-mip-level-sizing)
 * 
 [](#VUID-VkImageViewSlicedCreateInfoEXT-sliceCount-07868) VUID-VkImageViewSlicedCreateInfoEXT-sliceCount-07868
 
-If `sliceCount` is not `VK_REMAINING_3D_SLICES_EXT`, it **must** be
+If `sliceCount` is not [VK_REMAINING_3D_SLICES_EXT](#VK_REMAINING_3D_SLICES_EXT), it **must** be
 non-zero and `sliceOffset` +  `sliceCount` **must** be
 less than or equal to the effective view depth as specified in
 [Image Mip Level Sizing](#resources-image-mip-level-sizing)
@@ -8814,12 +9146,12 @@ less than or equal to the effective view depth as specified in
 [](#VUID-VkImageViewSlicedCreateInfoEXT-image-07869) VUID-VkImageViewSlicedCreateInfoEXT-image-07869
 
 `image` **must** have been created with `imageType` equal to
-`VK_IMAGE_TYPE_3D`
+[VK_IMAGE_TYPE_3D](#VkImageType)
 
 * 
 [](#VUID-VkImageViewSlicedCreateInfoEXT-viewType-07909) VUID-VkImageViewSlicedCreateInfoEXT-viewType-07909
 
-`viewType` **must** be `VK_IMAGE_VIEW_TYPE_3D`
+`viewType` **must** be [VK_IMAGE_VIEW_TYPE_3D](#VkImageViewType)
 
 * 
 [](#VUID-VkImageViewSlicedCreateInfoEXT-None-07870) VUID-VkImageViewSlicedCreateInfoEXT-None-07870
@@ -8837,9 +9169,9 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageViewSlicedCreateInfoEXT-sType-sType) VUID-VkImageViewSlicedCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_VIEW_SLICED_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_SLICED_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
-`VK_REMAINING_3D_SLICES_EXT` is a special constant value used for
+[VK_REMAINING_3D_SLICES_EXT](#VK_REMAINING_3D_SLICES_EXT) is a special constant value used for
 [VkImageViewSlicedCreateInfoEXT](#VkImageViewSlicedCreateInfoEXT)::`sliceCount` to indicate that all
 remaining 3D slices in an image after the first slice offset specified
 should be included in the view.
@@ -8879,8 +9211,8 @@ The number of mipmap levels and array layers **must** be a subset of the image
 subresources in the image.
 If an application wants to use all mip levels or layers in an image after
 the `baseMipLevel` or `baseArrayLayer`, it **can** set `levelCount`
-and `layerCount` to the special values `VK_REMAINING_MIP_LEVELS` and
-`VK_REMAINING_ARRAY_LAYERS` without knowing the exact number of mip
+and `layerCount` to the special values [VK_REMAINING_MIP_LEVELS](#VK_REMAINING_MIP_LEVELS) and
+[VK_REMAINING_ARRAY_LAYERS](#VK_REMAINING_ARRAY_LAYERS) without knowing the exact number of mip
 levels or layers.
 
 For cube and cube array image views, the layers of the image view starting
@@ -8891,22 +9223,22 @@ number of cube maps in a cube map array view is *`layerCount` / 6*, and
 image array layer (`baseArrayLayer` +  i) is face index
 (i mod 6) of cube *i / 6*.
 If the number of layers in the view, whether set explicitly in
-`layerCount` or implied by `VK_REMAINING_ARRAY_LAYERS`, is not a
+`layerCount` or implied by [VK_REMAINING_ARRAY_LAYERS](#VK_REMAINING_ARRAY_LAYERS), is not a
 multiple of 6, the last cube map in the array **must** not be accessed.
 
-`aspectMask` **must** be only `VK_IMAGE_ASPECT_COLOR_BIT`,
-`VK_IMAGE_ASPECT_DEPTH_BIT` or `VK_IMAGE_ASPECT_STENCIL_BIT` if
+`aspectMask` **must** be only [VK_IMAGE_ASPECT_COLOR_BIT](#VkImageAspectFlagBits),
+[VK_IMAGE_ASPECT_DEPTH_BIT](#VkImageAspectFlagBits) or [VK_IMAGE_ASPECT_STENCIL_BIT](#VkImageAspectFlagBits) if
 `format` is a color, depth-only or stencil-only format,
 respectively, except if `format` is a [multi-planar format](formats.html#formats-multiplanar).
 If using a depth/stencil format with both depth and stencil components,
 `aspectMask` **must** include at least one of
-`VK_IMAGE_ASPECT_DEPTH_BIT` and `VK_IMAGE_ASPECT_STENCIL_BIT`, and
+[VK_IMAGE_ASPECT_DEPTH_BIT](#VkImageAspectFlagBits) and [VK_IMAGE_ASPECT_STENCIL_BIT](#VkImageAspectFlagBits), and
 **can** include both.
 
 When the `VkImageSubresourceRange` structure is used to select a subset
 of the slices of a 3D image’s mip level in order to create a 2D or 2D array
 image view of a 3D image created with
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT`, `baseArrayLayer` and
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](#VkImageCreateFlagBits), `baseArrayLayer` and
 `layerCount` specify the first slice index and the number of slices to
 include in the created image view.
 Such an image view **can** be used as a framebuffer attachment that refers only
@@ -8928,35 +9260,35 @@ stencil image subresources are used.
 
 When creating a `VkImageView`, if [sampler Y′CBCR conversion](samplers.html#samplers-YCbCr-conversion) is enabled in the sampler, the `aspectMask` of a
 `subresourceRange` used by the `VkImageView` **must** be
-`VK_IMAGE_ASPECT_COLOR_BIT`.
+[VK_IMAGE_ASPECT_COLOR_BIT](#VkImageAspectFlagBits).
 
 When creating a `VkImageView`, if sampler Y′CBCR conversion is not
 enabled in the sampler and the image `format` is [multi-planar format](formats.html#formats-multiplanar), the image **must** have been created with
-`VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT`, and the `aspectMask` of the
+[VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](#VkImageCreateFlagBits), and the `aspectMask` of the
 `VkImageView`’s `subresourceRange` **must** be
-`VK_IMAGE_ASPECT_PLANE_0_BIT`, `VK_IMAGE_ASPECT_PLANE_1_BIT` or
-`VK_IMAGE_ASPECT_PLANE_2_BIT`.
+[VK_IMAGE_ASPECT_PLANE_0_BIT](#VkImageAspectFlagBits), [VK_IMAGE_ASPECT_PLANE_1_BIT](#VkImageAspectFlagBits) or
+[VK_IMAGE_ASPECT_PLANE_2_BIT](#VkImageAspectFlagBits).
 
 Valid Usage
 
 * 
 [](#VUID-VkImageSubresourceRange-levelCount-01720) VUID-VkImageSubresourceRange-levelCount-01720
 
-If `levelCount` is not `VK_REMAINING_MIP_LEVELS`, it **must** be
+If `levelCount` is not [VK_REMAINING_MIP_LEVELS](#VK_REMAINING_MIP_LEVELS), it **must** be
 greater than `0`
 
 * 
 [](#VUID-VkImageSubresourceRange-layerCount-01721) VUID-VkImageSubresourceRange-layerCount-01721
 
-If `layerCount` is not `VK_REMAINING_ARRAY_LAYERS`, it **must** be
+If `layerCount` is not [VK_REMAINING_ARRAY_LAYERS](#VK_REMAINING_ARRAY_LAYERS), it **must** be
 greater than `0`
 
 * 
 [](#VUID-VkImageSubresourceRange-aspectMask-01670) VUID-VkImageSubresourceRange-aspectMask-01670
 
-If `aspectMask` includes `VK_IMAGE_ASPECT_COLOR_BIT`, then it
-**must** not include any of `VK_IMAGE_ASPECT_PLANE_0_BIT`,
-`VK_IMAGE_ASPECT_PLANE_1_BIT`, or `VK_IMAGE_ASPECT_PLANE_2_BIT`
+If `aspectMask` includes [VK_IMAGE_ASPECT_COLOR_BIT](#VkImageAspectFlagBits), then it
+**must** not include any of [VK_IMAGE_ASPECT_PLANE_0_BIT](#VkImageAspectFlagBits),
+[VK_IMAGE_ASPECT_PLANE_1_BIT](#VkImageAspectFlagBits), or [VK_IMAGE_ASPECT_PLANE_2_BIT](#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkImageSubresourceRange-aspectMask-02278) VUID-VkImageSubresourceRange-aspectMask-02278
@@ -9012,45 +9344,45 @@ typedef enum VkImageAspectFlagBits {
 } VkImageAspectFlagBits;
 
 * 
-`VK_IMAGE_ASPECT_NONE` specifies no image aspect, or the image
+[VK_IMAGE_ASPECT_NONE](#VkImageAspectFlagBits) specifies no image aspect, or the image
 aspect is not applicable.
 
 * 
-`VK_IMAGE_ASPECT_COLOR_BIT` specifies the color aspect.
+[VK_IMAGE_ASPECT_COLOR_BIT](#VkImageAspectFlagBits) specifies the color aspect.
 
 * 
-`VK_IMAGE_ASPECT_DEPTH_BIT` specifies the depth aspect.
+[VK_IMAGE_ASPECT_DEPTH_BIT](#VkImageAspectFlagBits) specifies the depth aspect.
 
 * 
-`VK_IMAGE_ASPECT_STENCIL_BIT` specifies the stencil aspect.
+[VK_IMAGE_ASPECT_STENCIL_BIT](#VkImageAspectFlagBits) specifies the stencil aspect.
 
 * 
-`VK_IMAGE_ASPECT_METADATA_BIT` specifies the metadata aspect used
+[VK_IMAGE_ASPECT_METADATA_BIT](#VkImageAspectFlagBits) specifies the metadata aspect used
 for [sparse resource](sparsemem.html#sparsememory) operations.
 
 * 
-`VK_IMAGE_ASPECT_PLANE_0_BIT` specifies plane 0 of a *multi-planar*
+[VK_IMAGE_ASPECT_PLANE_0_BIT](#VkImageAspectFlagBits) specifies plane 0 of a *multi-planar*
 image format.
 
 * 
-`VK_IMAGE_ASPECT_PLANE_1_BIT` specifies plane 1 of a *multi-planar*
+[VK_IMAGE_ASPECT_PLANE_1_BIT](#VkImageAspectFlagBits) specifies plane 1 of a *multi-planar*
 image format.
 
 * 
-`VK_IMAGE_ASPECT_PLANE_2_BIT` specifies plane 2 of a *multi-planar*
+[VK_IMAGE_ASPECT_PLANE_2_BIT](#VkImageAspectFlagBits) specifies plane 2 of a *multi-planar*
 image format.
 
 * 
-`VK_IMAGE_ASPECT_MEMORY_PLANE_0_BIT_EXT` specifies *memory plane* 0.
+[VK_IMAGE_ASPECT_MEMORY_PLANE_0_BIT_EXT](#VkImageAspectFlagBits) specifies *memory plane* 0.
 
 * 
-`VK_IMAGE_ASPECT_MEMORY_PLANE_1_BIT_EXT` specifies *memory plane* 1.
+[VK_IMAGE_ASPECT_MEMORY_PLANE_1_BIT_EXT](#VkImageAspectFlagBits) specifies *memory plane* 1.
 
 * 
-`VK_IMAGE_ASPECT_MEMORY_PLANE_2_BIT_EXT` specifies *memory plane* 2.
+[VK_IMAGE_ASPECT_MEMORY_PLANE_2_BIT_EXT](#VkImageAspectFlagBits) specifies *memory plane* 2.
 
 * 
-`VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT` specifies *memory plane* 3.
+[VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT](#VkImageAspectFlagBits) specifies *memory plane* 3.
 
 // Provided by VK_VERSION_1_0
 typedef VkFlags VkImageAspectFlags;
@@ -9121,34 +9453,34 @@ typedef enum VkComponentSwizzle {
 } VkComponentSwizzle;
 
 * 
-`VK_COMPONENT_SWIZZLE_IDENTITY` specifies that the component is set
+[VK_COMPONENT_SWIZZLE_IDENTITY](#VkComponentSwizzle) specifies that the component is set
 to the identity swizzle.
 
 * 
-`VK_COMPONENT_SWIZZLE_ZERO` specifies that the component is set to
+[VK_COMPONENT_SWIZZLE_ZERO](#VkComponentSwizzle) specifies that the component is set to
 zero.
 
 * 
-`VK_COMPONENT_SWIZZLE_ONE` specifies that the component is set to
+[VK_COMPONENT_SWIZZLE_ONE](#VkComponentSwizzle) specifies that the component is set to
 either 1 or 1.0, depending on whether the type of the image view format
 is integer or floating-point respectively, as determined by the
 [Format Definition](formats.html#formats-definition) section for each
 [VkFormat](formats.html#VkFormat).
 
 * 
-`VK_COMPONENT_SWIZZLE_R` specifies that the component is set to the
+[VK_COMPONENT_SWIZZLE_R](#VkComponentSwizzle) specifies that the component is set to the
 value of the R component of the image.
 
 * 
-`VK_COMPONENT_SWIZZLE_G` specifies that the component is set to the
+[VK_COMPONENT_SWIZZLE_G](#VkComponentSwizzle) specifies that the component is set to the
 value of the G component of the image.
 
 * 
-`VK_COMPONENT_SWIZZLE_B` specifies that the component is set to the
+[VK_COMPONENT_SWIZZLE_B](#VkComponentSwizzle) specifies that the component is set to the
 value of the B component of the image.
 
 * 
-`VK_COMPONENT_SWIZZLE_A` specifies that the component is set to the
+[VK_COMPONENT_SWIZZLE_A](#VkComponentSwizzle) specifies that the component is set to the
 value of the A component of the image.
 
 Setting the identity swizzle on a component is equivalent to setting the
@@ -9157,10 +9489,10 @@ That is:
 
 | Component | Identity Mapping |
 | --- | --- |
-| `components.r` | `VK_COMPONENT_SWIZZLE_R` |
-| `components.g` | `VK_COMPONENT_SWIZZLE_G` |
-| `components.b` | `VK_COMPONENT_SWIZZLE_B` |
-| `components.a` | `VK_COMPONENT_SWIZZLE_A` |
+| `components.r` | [VK_COMPONENT_SWIZZLE_R](#VkComponentSwizzle) |
+| `components.g` | [VK_COMPONENT_SWIZZLE_G](#VkComponentSwizzle) |
+| `components.b` | [VK_COMPONENT_SWIZZLE_B](#VkComponentSwizzle) |
+| `components.a` | [VK_COMPONENT_SWIZZLE_A](#VkComponentSwizzle) |
 
 If the `pNext` chain includes a `VkImageViewASTCDecodeModeEXT`
 structure, then that structure includes a parameter specifying the decode
@@ -9191,20 +9523,20 @@ Valid Usage
 * 
 [](#VUID-VkImageViewASTCDecodeModeEXT-decodeMode-02230) VUID-VkImageViewASTCDecodeModeEXT-decodeMode-02230
 
-`decodeMode` **must** be one of `VK_FORMAT_R16G16B16A16_SFLOAT`,
-`VK_FORMAT_R8G8B8A8_UNORM`, or
-`VK_FORMAT_E5B9G9R9_UFLOAT_PACK32`
+`decodeMode` **must** be one of [VK_FORMAT_R16G16B16A16_SFLOAT](formats.html#VkFormat),
+[VK_FORMAT_R8G8B8A8_UNORM](formats.html#VkFormat), or
+[VK_FORMAT_E5B9G9R9_UFLOAT_PACK32](formats.html#VkFormat)
 
 * 
 [](#VUID-VkImageViewASTCDecodeModeEXT-decodeMode-02231) VUID-VkImageViewASTCDecodeModeEXT-decodeMode-02231
 
 If the [    `decodeModeSharedExponent`](features.html#features-astc-decodeModeSharedExponent) feature is not enabled,
-`decodeMode` **must** not be `VK_FORMAT_E5B9G9R9_UFLOAT_PACK32`
+`decodeMode` **must** not be [VK_FORMAT_E5B9G9R9_UFLOAT_PACK32](formats.html#VkFormat)
 
 * 
 [](#VUID-VkImageViewASTCDecodeModeEXT-decodeMode-02232) VUID-VkImageViewASTCDecodeModeEXT-decodeMode-02232
 
-If `decodeMode` is `VK_FORMAT_R8G8B8A8_UNORM` the image view
+If `decodeMode` is [VK_FORMAT_R8G8B8A8_UNORM](formats.html#VkFormat) the image view
 **must** not include blocks using any of the ASTC HDR modes
 
 * 
@@ -9220,7 +9552,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageViewASTCDecodeModeEXT-sType-sType) VUID-VkImageViewASTCDecodeModeEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_VIEW_ASTC_DECODE_MODE_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_ASTC_DECODE_MODE_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageViewASTCDecodeModeEXT-decodeMode-parameter) VUID-VkImageViewASTCDecodeModeEXT-decodeMode-parameter
@@ -9309,7 +9641,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageViewSampleWeightCreateInfoQCOM-sType-sType) VUID-VkImageViewSampleWeightCreateInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_VIEW_SAMPLE_WEIGHT_CREATE_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_SAMPLE_WEIGHT_CREATE_INFO_QCOM](fundamentals.html#VkStructureType)
 
 To destroy an image view, call:
 
@@ -9460,37 +9792,37 @@ Valid Usage
 * 
 [](#VUID-VkImageViewHandleInfoNVX-descriptorType-02654) VUID-VkImageViewHandleInfoNVX-descriptorType-02654
 
-`descriptorType` **must** be `VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`
+`descriptorType` **must** be [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](descriptorsets.html#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](descriptorsets.html#VkDescriptorType)
 
 * 
 [](#VUID-VkImageViewHandleInfoNVX-sampler-02655) VUID-VkImageViewHandleInfoNVX-sampler-02655
 
 `sampler` **must** be a valid [VkSampler](samplers.html#VkSampler) if `descriptorType`
-is `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`
+is [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](descriptorsets.html#VkDescriptorType)
 
 * 
 [](#VUID-VkImageViewHandleInfoNVX-imageView-02656) VUID-VkImageViewHandleInfoNVX-imageView-02656
 
-If descriptorType is `VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE` or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, the image that
+If descriptorType is [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](descriptorsets.html#VkDescriptorType), the image that
 `imageView` was created from **must** have been created with the
-`VK_IMAGE_USAGE_SAMPLED_BIT` usage flag set
+[VK_IMAGE_USAGE_SAMPLED_BIT](#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkImageViewHandleInfoNVX-imageView-02657) VUID-VkImageViewHandleInfoNVX-imageView-02657
 
-If descriptorType is `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, the image
+If descriptorType is [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](descriptorsets.html#VkDescriptorType), the image
 that `imageView` was created from **must** have been created with the
-`VK_IMAGE_USAGE_STORAGE_BIT` usage flag set
+[VK_IMAGE_USAGE_STORAGE_BIT](#VkImageUsageFlagBits) usage flag set
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkImageViewHandleInfoNVX-sType-sType) VUID-VkImageViewHandleInfoNVX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageViewHandleInfoNVX-pNext-pNext) VUID-VkImageViewHandleInfoNVX-pNext-pNext
@@ -9562,18 +9894,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkImageViewAddressPropertiesNVX` structure is defined as:
 
@@ -9603,12 +9935,42 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageViewAddressPropertiesNVX-sType-sType) VUID-VkImageViewAddressPropertiesNVX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_VIEW_ADDRESS_PROPERTIES_NVX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_ADDRESS_PROPERTIES_NVX](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageViewAddressPropertiesNVX-pNext-pNext) VUID-VkImageViewAddressPropertiesNVX-pNext-pNext
 
  `pNext` **must** be `NULL`
+
+To get the handle for a combined image sampler, call:
+
+// Provided by VK_NVX_image_view_handle
+uint64_t vkGetDeviceCombinedImageSamplerIndexNVX(
+    VkDevice                                    device,
+    uint64_t                                    imageViewIndex,
+    uint64_t                                    samplerIndex);
+
+* 
+`device` is the logical device that will use the result handle.
+
+* 
+`imageViewIndex` is the index within the resource heap.
+
+* 
+`samplerIndex` is the index within the sampler heap.
+
+Shaders take `imageViewIndex` and `samplerIndex`, and multiply it by
+[VkPhysicalDeviceDescriptorHeapPropertiesEXT](limits.html#VkPhysicalDeviceDescriptorHeapPropertiesEXT)::`imageDescriptorSize`
+and
+[VkPhysicalDeviceDescriptorHeapPropertiesEXT](limits.html#VkPhysicalDeviceDescriptorHeapPropertiesEXT)::`samplerDescriptorSize`
+respectively to obtain the descriptor offset in bytes.
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-vkGetDeviceCombinedImageSamplerIndexNVX-device-parameter) VUID-vkGetDeviceCombinedImageSamplerIndexNVX-device-parameter
+
+ `device` **must** be a valid [VkDevice](devsandqueues.html#VkDevice) handle
 
 Valid uses of a [VkImageView](#VkImageView) **may** depend on the image view’s *format
 features*, defined below.
@@ -9617,7 +9979,7 @@ Such constraints are documented in the affected valid usage statement.
 * 
 If Vulkan 1.3 is supported or the `[VK_KHR_format_feature_flags2](../appendices/extensions.html#VK_KHR_format_feature_flags2)`
 extension is supported, and [VkImageViewCreateInfo](#VkImageViewCreateInfo)::`image` was
-created with `VK_IMAGE_TILING_LINEAR`, then the image view’s set of
+created with [VK_IMAGE_TILING_LINEAR](#VkImageTiling), then the image view’s set of
 *format features* is the value of
 [VkFormatProperties3](formats.html#VkFormatProperties3)::`linearTilingFeatures` found by calling
 [vkGetPhysicalDeviceFormatProperties2](formats.html#vkGetPhysicalDeviceFormatProperties2) on the same `format` as
@@ -9627,28 +9989,28 @@ created with `VK_IMAGE_TILING_LINEAR`, then the image view’s set of
 If Vulkan 1.3 is not supported and the
 `[VK_KHR_format_feature_flags2](../appendices/extensions.html#VK_KHR_format_feature_flags2)` extension is not supported, and
 [VkImageViewCreateInfo](#VkImageViewCreateInfo)::`image` was created with
-`VK_IMAGE_TILING_LINEAR`, then the image view’s set of *format
+[VK_IMAGE_TILING_LINEAR](#VkImageTiling), then the image view’s set of *format
 features* is the union of the value of
 [VkFormatProperties](formats.html#VkFormatProperties)::`linearTilingFeatures` found by calling
 [vkGetPhysicalDeviceFormatProperties](formats.html#vkGetPhysicalDeviceFormatProperties) on the same `format` as
 [VkImageViewCreateInfo](#VkImageViewCreateInfo)::`format`, with:
 
-`VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT` if the
+[VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT](formats.html#VkFormatFeatureFlagBits2KHR) if the
 format is a depth/stencil format and the image view features also
-contain `VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_BIT`.
+contain [VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_BIT](formats.html#VkFormatFeatureFlagBits2KHR).
 
 * 
-`VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT` if the format
+[VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR) if the format
 is one of the [extended storage     formats](formats.html#formats-without-shader-storage-format) and the [     `shaderStorageImageReadWithoutFormat`](features.html#features-shaderStorageImageReadWithoutFormat) feature is enabled.
 
 * 
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT` if the
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR) if the
 format is one of the [extended     storage formats](formats.html#formats-without-shader-storage-format) and the
 [     `shaderStorageImageWriteWithoutFormat`](features.html#features-shaderStorageImageWriteWithoutFormat) feature is enabled.
 
 If Vulkan 1.3 is supported or the `[VK_KHR_format_feature_flags2](../appendices/extensions.html#VK_KHR_format_feature_flags2)`
 extension is supported, and [VkImageViewCreateInfo](#VkImageViewCreateInfo)::`image` was
-created with `VK_IMAGE_TILING_OPTIMAL`,
+created with [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling),
 but without an
 [Android    hardware buffer external format](memory.html#memory-external-android-hardware-buffer-external-formats),
 or a [QNX Screen buffer    external format](memory.html#memory-external-screen-buffer-external-formats),
@@ -9662,7 +10024,7 @@ as [VkImageViewCreateInfo](#VkImageViewCreateInfo)::`format`.
 If Vulkan 1.3 is not supported and the
 `[VK_KHR_format_feature_flags2](../appendices/extensions.html#VK_KHR_format_feature_flags2)` extension is not supported, and
 [VkImageViewCreateInfo](#VkImageViewCreateInfo)::`image` was created with
-`VK_IMAGE_TILING_OPTIMAL`,
+[VK_IMAGE_TILING_OPTIMAL](#VkImageTiling),
 but without an
 [Android    hardware buffer external format](memory.html#memory-external-android-hardware-buffer-external-formats),
 or a [QNX Screen buffer    external format](memory.html#memory-external-screen-buffer-external-formats),
@@ -9672,16 +10034,16 @@ calling [vkGetPhysicalDeviceFormatProperties](formats.html#vkGetPhysicalDeviceFo
 `format` as [VkImageViewCreateInfo](#VkImageViewCreateInfo)::`format`, with:
 
 * 
-`VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT` if the
+[VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT](formats.html#VkFormatFeatureFlagBits2KHR) if the
 format is a depth/stencil format and the image view features also
-contain `VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_BIT`.
+contain [VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_BIT](formats.html#VkFormatFeatureFlagBits2KHR).
 
 * 
-`VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT` if the format
+[VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR) if the format
 is one of the [extended storage     formats](formats.html#formats-without-shader-storage-format) and the [     `shaderStorageImageReadWithoutFormat`](features.html#features-shaderStorageImageReadWithoutFormat) feature is enabled.
 
 * 
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT` if the
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR) if the
 format is one of the [extended     storage formats](formats.html#formats-without-shader-storage-format) and the
 [     `shaderStorageImageWriteWithoutFormat`](features.html#features-shaderStorageImageWriteWithoutFormat) feature is enabled.
 
@@ -9712,7 +10074,7 @@ collection passed as
 the image was created.
 
 If [VkImageViewCreateInfo](#VkImageViewCreateInfo)::`image` was created with
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then:
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling), then:
 
 * 
 The image’s DRM format modifier is the value of
@@ -9793,7 +10155,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageViewMinLodCreateInfoEXT-sType-sType) VUID-VkImageViewMinLodCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_VIEW_MIN_LOD_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_MIN_LOD_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 Acceleration structures are opaque data structures that are built by the
 implementation to more efficiently perform spatial queries on the provided
@@ -9865,10 +10227,10 @@ structure copy commands.
 During capture the tool will use
 [vkCopyAccelerationStructureToMemoryKHR](accelstructures.html#vkCopyAccelerationStructureToMemoryKHR) or
 [vkCmdCopyAccelerationStructureToMemoryKHR](accelstructures.html#vkCmdCopyAccelerationStructureToMemoryKHR) with a `mode` of
-`VK_COPY_ACCELERATION_STRUCTURE_MODE_SERIALIZE_KHR`, and
+[VK_COPY_ACCELERATION_STRUCTURE_MODE_SERIALIZE_KHR](accelstructures.html#VkCopyAccelerationStructureModeNV), and
 [vkCopyMemoryToAccelerationStructureKHR](accelstructures.html#vkCopyMemoryToAccelerationStructureKHR) or
 [vkCmdCopyMemoryToAccelerationStructureKHR](accelstructures.html#vkCmdCopyMemoryToAccelerationStructureKHR) with a `mode` of
-`VK_COPY_ACCELERATION_STRUCTURE_MODE_DESERIALIZE_KHR` during replay. |
+[VK_COPY_ACCELERATION_STRUCTURE_MODE_DESERIALIZE_KHR](accelstructures.html#VkCopyAccelerationStructureModeNV) during replay. |
 
 |  | Memory does not need to be bound to the underlying buffer when
 | --- | --- |
@@ -9936,21 +10298,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR`
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkAccelerationStructureCreateInfoKHR` structure is defined as:
 
@@ -10004,16 +10366,16 @@ If `deviceAddress` is zero, no specific address is requested.
 Applications **should** avoid creating acceleration structures with
 application-provided addresses and implementation-provided addresses in the
 same process, to reduce the likelihood of
-`VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR` errors.
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR](fundamentals.html#VkResult) errors.
 
 |  | The expected usage for this is that a trace capture/replay tool will add the
 | --- | --- |
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` flag to all buffers
-that use `VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT`, and will add
-`VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT` to all buffers used as
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#VkBufferCreateFlagBits) flag to all buffers
+that use [VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](#VkBufferUsageFlagBits), and will add
+[VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](#VkBufferUsageFlagBits) to all buffers used as
 storage for an acceleration structure where `deviceAddress` is not zero.
 This also means that the tool will need to add
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT` to memory allocations to allow
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) to memory allocations to allow
 the flag to be set where the application may not have otherwise required it.
 During capture the tool will save the queried opaque device addresses in the
 trace.
@@ -10024,21 +10386,21 @@ Implementations are expected to separate such buffers in the GPU address
 space so normal allocations will avoid using these addresses.
 Applications and tools should avoid mixing application-provided and
 implementation-provided addresses for buffers created with
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT`, to avoid address
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#VkBufferCreateFlagBits), to avoid address
 space allocation conflicts. |
 
 Applications **should** create an acceleration structure with a specific
 [VkAccelerationStructureTypeKHR](#VkAccelerationStructureTypeKHR) other than
-`VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR`.
+[VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](#VkAccelerationStructureTypeNV).
 
-|  | `VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR` is intended to be used by
+|  | [VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](#VkAccelerationStructureTypeNV) is intended to be used by
 | --- | --- |
 API translation layers.
 This can be used at acceleration structure creation time in cases where the
 actual acceleration structure type (top or bottom) is not yet known.
 The actual acceleration structure type must be specified as
-`VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR` or
-`VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR` when the build is
+[VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR](#VkAccelerationStructureTypeNV) or
+[VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR](#VkAccelerationStructureTypeNV) when the build is
 performed. |
 
 If the acceleration structure will be the target of a build operation, the
@@ -10050,8 +10412,8 @@ copy, [vkCmdWriteAccelerationStructuresPropertiesKHR](accelstructures.html#vkCmd
 compacted size required.
 
 If the acceleration structure will be the target of a build operation with
-`VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV` it **must** include
-`VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV` in `createFlags`
+[VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV](#VkBuildAccelerationStructureFlagBitsNV) it **must** include
+[VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV](#VkAccelerationStructureCreateFlagBitsKHR) in `createFlags`
 and include [VkAccelerationStructureMotionInfoNV](#VkAccelerationStructureMotionInfoNV) as an extension
 structure in `pNext` with the number of instances as metadata for the
 object.
@@ -10062,7 +10424,7 @@ Valid Usage
 [](#VUID-VkAccelerationStructureCreateInfoKHR-deviceAddress-03612) VUID-VkAccelerationStructureCreateInfoKHR-deviceAddress-03612
 
 If `deviceAddress` is not zero, `createFlags` **must** include
-`VK_ACCELERATION_STRUCTURE_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR`
+[VK_ACCELERATION_STRUCTURE_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR](#VkAccelerationStructureCreateFlagBitsKHR)
 
 * 
 [](#VUID-VkAccelerationStructureCreateInfoKHR-deviceAddress-09488) VUID-VkAccelerationStructureCreateInfoKHR-deviceAddress-09488
@@ -10093,22 +10455,22 @@ which `deviceAddress` was retrieved
 [](#VUID-VkAccelerationStructureCreateInfoKHR-createFlags-03613) VUID-VkAccelerationStructureCreateInfoKHR-createFlags-03613
 
 If `createFlags` includes
-`VK_ACCELERATION_STRUCTURE_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR`,
+[VK_ACCELERATION_STRUCTURE_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR](#VkAccelerationStructureCreateFlagBitsKHR),
 [VkPhysicalDeviceAccelerationStructureFeaturesKHR](features.html#VkPhysicalDeviceAccelerationStructureFeaturesKHR)::`accelerationStructureCaptureReplay`
-**must** be `VK_TRUE`
+**must** be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkAccelerationStructureCreateInfoKHR-buffer-03614) VUID-VkAccelerationStructureCreateInfoKHR-buffer-03614
 
 `buffer` **must** have been created with the
-`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR` usage flag
+[VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR](#VkBufferUsageFlagBits) usage flag
 set
 
 * 
 [](#VUID-VkAccelerationStructureCreateInfoKHR-buffer-03615) VUID-VkAccelerationStructureCreateInfoKHR-buffer-03615
 
 `buffer` **must** not have been created with
-`VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](#VkBufferCreateFlagBits)
 
 * 
 [](#VUID-VkAccelerationStructureCreateInfoKHR-offset-03616) VUID-VkAccelerationStructureCreateInfoKHR-offset-03616
@@ -10124,9 +10486,9 @@ the size of `buffer`
 * 
 [](#VUID-VkAccelerationStructureCreateInfoKHR-createFlags-04954) VUID-VkAccelerationStructureCreateInfoKHR-createFlags-04954
 
-If `VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV` is set in
+If [VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV](#VkAccelerationStructureCreateFlagBitsKHR) is set in
 `createFlags` and `type` is
-`VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR`, one member of the
+[VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR](#VkAccelerationStructureTypeNV), one member of the
 `pNext` chain **must** be a pointer to a valid instance of
 [VkAccelerationStructureMotionInfoNV](#VkAccelerationStructureMotionInfoNV)
 
@@ -10136,13 +10498,13 @@ If `VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV` is set in
 If any geometry includes
 `VkAccelerationStructureGeometryMotionTrianglesDataNV` then
 `createFlags` **must** contain
-`VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV`
+[VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV](#VkAccelerationStructureCreateFlagBitsKHR)
 
 * 
 [](#VUID-VkAccelerationStructureCreateInfoKHR-createFlags-08108) VUID-VkAccelerationStructureCreateInfoKHR-createFlags-08108
 
 If `createFlags` includes
-`VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`,
+[VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#VkAccelerationStructureCreateFlagBitsKHR),
 the [    `descriptorBufferCaptureReplay`](features.html#features-descriptorBufferCaptureReplay) feature **must** be enabled
 
 * 
@@ -10151,14 +10513,14 @@ the [    `descriptorBufferCaptureReplay`](features.html#features-descriptorBuffe
 If the `pNext` chain includes a
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT) structure,
 `createFlags` **must** contain
-`VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`
+[VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#VkAccelerationStructureCreateFlagBitsKHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkAccelerationStructureCreateInfoKHR-sType-sType) VUID-VkAccelerationStructureCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkAccelerationStructureCreateInfoKHR-pNext-pNext) VUID-VkAccelerationStructureCreateInfoKHR-pNext-pNext
@@ -10219,7 +10581,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureMotionInfoNV-sType-sType) VUID-VkAccelerationStructureMotionInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MOTION_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MOTION_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkAccelerationStructureMotionInfoNV-flags-zerobitmask) VUID-VkAccelerationStructureMotionInfoNV-flags-zerobitmask
@@ -10283,13 +10645,13 @@ following properties:
 
 * 
 The build command is a host build command, and `buildType` is
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_KHR` or
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR`
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_KHR](#VkAccelerationStructureBuildTypeKHR) or
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR](#VkAccelerationStructureBuildTypeKHR)
 
 * 
 The build command is a device build command, and `buildType` is
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_DEVICE_KHR` or
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR`
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_DEVICE_KHR](#VkAccelerationStructureBuildTypeKHR) or
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR](#VkAccelerationStructureBuildTypeKHR)
 
 * 
 For [VkAccelerationStructureBuildGeometryInfoKHR](accelstructures.html#VkAccelerationStructureBuildGeometryInfoKHR):
@@ -10314,21 +10676,21 @@ member of the same element in `pBuildInfo`.
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_TRIANGLES_KHR`, the `vertexFormat` and
+[VK_GEOMETRY_TYPE_TRIANGLES_KHR](#VkGeometryTypeNV), the `vertexFormat` and
 `indexType` members of `geometry.triangles` are equal to the
 corresponding members of the same element in `pBuildInfo`.
 
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_TRIANGLES_KHR`, the `maxVertex` member of
+[VK_GEOMETRY_TYPE_TRIANGLES_KHR](#VkGeometryTypeNV), the `maxVertex` member of
 `geometry.triangles` is less than or equal to the corresponding
 member of the same element in `pBuildInfo`.
 
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_TRIANGLES_KHR`, if the applicable address in the
+[VK_GEOMETRY_TYPE_TRIANGLES_KHR](#VkGeometryTypeNV), if the applicable address in the
 `transformData` member of `geometry.triangles` is not `NULL`,
 the corresponding `transformData.hostAddress` parameter in
 `pBuildInfo` is not `NULL`.
@@ -10336,7 +10698,7 @@ the corresponding `transformData.hostAddress` parameter in
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`, the
+[VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](#VkGeometryTypeNV), the
 `numTriangles` member of the
 [VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX](accelstructures.html#VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX)
 structure in the `pNext` chain is less than or equal to the
@@ -10345,7 +10707,7 @@ corresponding member of the same element in `pBuildInfo`
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`, the
+[VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](#VkGeometryTypeNV), the
 `numVertices` member of the
 [VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX](accelstructures.html#VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX)
 structure in the `pNext` chain is less than or equal to the
@@ -10354,7 +10716,7 @@ corresponding member of the same element in `pBuildInfo`
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`, the
+[VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](#VkGeometryTypeNV), the
 `maxPrimitiveIndex` member of the
 [VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX](accelstructures.html#VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX)
 structure in the `pNext` chain is less than or equal to the
@@ -10363,7 +10725,7 @@ corresponding member of the same element in `pBuildInfo`
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`, the
+[VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](#VkGeometryTypeNV), the
 `maxGeometryIndex` member of the
 [VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX](accelstructures.html#VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX)
 structure in the `pNext` chain is less than or equal to the
@@ -10372,7 +10734,7 @@ corresponding member of the same element in `pBuildInfo`
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`, the
+[VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](#VkGeometryTypeNV), the
 `format` member of the
 [VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX](accelstructures.html#VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX)
 structure in the `pNext` chain is equal to the corresponding member
@@ -10388,7 +10750,7 @@ corresponding element of `pMaxPrimitiveCounts`.
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_TRIANGLES_KHR`, if the `pNext` chain contains
+[VK_GEOMETRY_TYPE_TRIANGLES_KHR](#VkGeometryTypeNV), if the `pNext` chain contains
 [VkAccelerationStructureTrianglesOpacityMicromapEXT](accelstructures.html#VkAccelerationStructureTrianglesOpacityMicromapEXT) the
 corresponding member of `pBuildInfo` also contains
 [VkAccelerationStructureTrianglesOpacityMicromapEXT](accelstructures.html#VkAccelerationStructureTrianglesOpacityMicromapEXT) and with an
@@ -10397,7 +10759,7 @@ equivalent `micromap`.
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_TRIANGLES_KHR`, if the `pNext` chain contains
+[VK_GEOMETRY_TYPE_TRIANGLES_KHR](#VkGeometryTypeNV), if the `pNext` chain contains
 [VkAccelerationStructureTrianglesDisplacementMicromapNV](accelstructures.html#VkAccelerationStructureTrianglesDisplacementMicromapNV) the
 corresponding member of `pBuildInfo` also contains
 [VkAccelerationStructureTrianglesDisplacementMicromapNV](accelstructures.html#VkAccelerationStructureTrianglesDisplacementMicromapNV) and with
@@ -10411,10 +10773,10 @@ Its `primitiveCount` member is less than or equal to the
 corresponding element of `pMaxPrimitiveCounts`.
 
 Similarly, the `updateScratchSize` value will support any build command
-specifying the `VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`
+specifying the [VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](accelstructures.html#VkBuildAccelerationStructureModeKHR)
 `mode` under the above conditions, and the `buildScratchSize` value
 will support any build command specifying the
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR` `mode` under the
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR](accelstructures.html#VkBuildAccelerationStructureModeKHR) `mode` under the
 above conditions.
 
 Valid Usage
@@ -10442,7 +10804,7 @@ If `pBuildInfo->geometryCount` is not `0`, `pMaxPrimitiveCounts`
 [](#VUID-vkGetAccelerationStructureBuildSizesKHR-pBuildInfo-03785) VUID-vkGetAccelerationStructureBuildSizesKHR-pBuildInfo-03785
 
 If `pBuildInfo->pGeometries` or `pBuildInfo->ppGeometries` has a
-`geometryType` of `VK_GEOMETRY_TYPE_INSTANCES_KHR`, each
+`geometryType` of [VK_GEOMETRY_TYPE_INSTANCES_KHR](#VkGeometryTypeNV), each
 `pMaxPrimitiveCounts`[i] **must** be less than or equal to
 [VkPhysicalDeviceAccelerationStructurePropertiesKHR](limits.html#VkPhysicalDeviceAccelerationStructurePropertiesKHR)::`maxInstanceCount`
 
@@ -10510,7 +10872,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureBuildSizesInfoKHR-sType-sType) VUID-VkAccelerationStructureBuildSizesInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_SIZES_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_SIZES_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkAccelerationStructureBuildSizesInfoKHR-pNext-pNext) VUID-VkAccelerationStructureBuildSizesInfoKHR-pNext-pNext
@@ -10594,18 +10956,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkAccelerationStructureCreateInfoNV` structure is defined as:
 
@@ -10646,7 +11008,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureCreateInfoNV-sType-sType) VUID-VkAccelerationStructureCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkAccelerationStructureCreateInfoNV-pNext-pNext) VUID-VkAccelerationStructureCreateInfoNV-pNext-pNext
@@ -10734,54 +11096,54 @@ equal to
 * 
 [](#VUID-VkAccelerationStructureInfoNV-type-02425) VUID-VkAccelerationStructureInfoNV-type-02425
 
-If `type` is `VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NV` then
+If `type` is [VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NV](#VkAccelerationStructureTypeNV) then
 `geometryCount` **must** be `0`
 
 * 
 [](#VUID-VkAccelerationStructureInfoNV-type-02426) VUID-VkAccelerationStructureInfoNV-type-02426
 
-If `type` is `VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV`
+If `type` is [VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV](#VkAccelerationStructureTypeNV)
 then `instanceCount` **must** be `0`
 
 * 
 [](#VUID-VkAccelerationStructureInfoNV-type-02786) VUID-VkAccelerationStructureInfoNV-type-02786
 
-If `type` is `VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV`
+If `type` is [VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV](#VkAccelerationStructureTypeNV)
 then the `geometryType` member of each geometry in `pGeometries`
 **must** be the same
 
 * 
 [](#VUID-VkAccelerationStructureInfoNV-type-04623) VUID-VkAccelerationStructureInfoNV-type-04623
 
-`type` **must** not be `VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR`
+`type` **must** not be [VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](#VkAccelerationStructureTypeNV)
 
 * 
 [](#VUID-VkAccelerationStructureInfoNV-flags-02592) VUID-VkAccelerationStructureInfoNV-flags-02592
 
 If `flags` has the
-`VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_NV` bit set,
+[VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_NV](#VkBuildAccelerationStructureFlagBitsNV) bit set,
 then it **must** not have the
-`VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_NV` bit set
+[VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_NV](#VkBuildAccelerationStructureFlagBitsNV) bit set
 
 * 
 [](#VUID-VkAccelerationStructureInfoNV-scratch-02781) VUID-VkAccelerationStructureInfoNV-scratch-02781
 
 `scratch` **must** have been created with the
-`VK_BUFFER_USAGE_RAY_TRACING_BIT_NV` usage flag set
+[VK_BUFFER_USAGE_RAY_TRACING_BIT_NV](#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkAccelerationStructureInfoNV-instanceData-02782) VUID-VkAccelerationStructureInfoNV-instanceData-02782
 
 If `instanceData` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `instanceData`
 **must** have been created with the
-`VK_BUFFER_USAGE_RAY_TRACING_BIT_NV` usage flag set
+[VK_BUFFER_USAGE_RAY_TRACING_BIT_NV](#VkBufferUsageFlagBits) usage flag set
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkAccelerationStructureInfoNV-sType-sType) VUID-VkAccelerationStructureInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkAccelerationStructureInfoNV-pNext-pNext) VUID-VkAccelerationStructureInfoNV-pNext-pNext
@@ -10825,17 +11187,17 @@ typedef enum VkAccelerationStructureTypeKHR {
 typedef VkAccelerationStructureTypeKHR VkAccelerationStructureTypeNV;
 
 * 
-`VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR` is a top-level
+[VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR](#VkAccelerationStructureTypeNV) is a top-level
 acceleration structure containing instance data referring to
 bottom-level acceleration structures.
 
 * 
-`VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR` is a bottom-level
+[VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR](#VkAccelerationStructureTypeNV) is a bottom-level
 acceleration structure containing the AABBs or geometry to be
 intersected.
 
 * 
-`VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR` is an acceleration
+[VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](#VkAccelerationStructureTypeNV) is an acceleration
 structure whose type is determined at build time used for special
 circumstances.
 In these cases, the acceleration structure type is not known at creation
@@ -10855,19 +11217,19 @@ typedef enum VkAccelerationStructureCreateFlagBitsKHR {
 } VkAccelerationStructureCreateFlagBitsKHR;
 
 * 
-`VK_ACCELERATION_STRUCTURE_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR`
+[VK_ACCELERATION_STRUCTURE_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR](#VkAccelerationStructureCreateFlagBitsKHR)
 specifies that the acceleration structure’s address **can** be saved and
 reused on a subsequent run.
 
 * 
-`VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`
+[VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#VkAccelerationStructureCreateFlagBitsKHR)
 specifies that the acceleration structure **can** be used with descriptor
 buffers when capturing and replaying (e.g. for trace capture and
 replay), see [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT) for more
 detail.
 
 * 
-`VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV` specifies that the
+[VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV](#VkAccelerationStructureCreateFlagBitsKHR) specifies that the
 acceleration structure will be used with motion information, see
 [VkAccelerationStructureMotionInfoNV](#VkAccelerationStructureMotionInfoNV) for more detail.
 
@@ -10940,12 +11302,12 @@ typedef enum VkBuildAccelerationStructureFlagBitsKHR {
 typedef VkBuildAccelerationStructureFlagBitsKHR VkBuildAccelerationStructureFlagBitsNV;
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_KHR` specifies
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_KHR](#VkBuildAccelerationStructureFlagBitsNV) specifies
     that the specified acceleration structure **can** be updated with
-    a `mode` of `VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR` in
+    a `mode` of [VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](accelstructures.html#VkBuildAccelerationStructureModeKHR) in
     [VkAccelerationStructureBuildGeometryInfoKHR](accelstructures.html#VkAccelerationStructureBuildGeometryInfoKHR)
 or
-    an `update` of `VK_TRUE` in
+    an `update` of [VK_TRUE](fundamentals.html#VK_TRUE) in
     [vkCmdBuildAccelerationStructureNV](accelstructures.html#vkCmdBuildAccelerationStructureNV)
     .
     For sphere and LSS primitives, only positions and radii may be updated,
@@ -10953,77 +11315,77 @@ or
     initial build.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR` specifies
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR](#VkBuildAccelerationStructureFlagBitsNV) specifies
 that the specified acceleration structure **can** act as the source for a
 copy acceleration structure command with `mode` of
-`VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR` to produce a
+[VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR](accelstructures.html#VkCopyAccelerationStructureModeNV) to produce a
 compacted acceleration structure.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_KHR`
+[VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_KHR](#VkBuildAccelerationStructureFlagBitsNV)
 specifies that the given acceleration structure build **should** prioritize
 trace performance over build time.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_KHR`
+[VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_KHR](#VkBuildAccelerationStructureFlagBitsNV)
 specifies that the given acceleration structure build **should** prioritize
 build time over trace performance.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_KHR` specifies that
+[VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_KHR](#VkBuildAccelerationStructureFlagBitsNV) specifies that
 this acceleration structure **should** minimize the size of the scratch
 memory and the final result acceleration structure, potentially at the
 expense of build time or trace performance.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_UPDATE_BIT_EXT`
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_UPDATE_BIT_EXT](#VkBuildAccelerationStructureFlagBitsNV)
 specifies that the opacity micromaps associated with the specified
 acceleration structure **may** change with an acceleration structure
 update.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_DATA_UPDATE_BIT_EXT`
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_DATA_UPDATE_BIT_EXT](#VkBuildAccelerationStructureFlagBitsNV)
 specifies that the data of the opacity micromaps associated with the
 specified acceleration structure **may** change with an acceleration
 structure update.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISABLE_OPACITY_MICROMAPS_BIT_EXT`
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISABLE_OPACITY_MICROMAPS_BIT_EXT](#VkBuildAccelerationStructureFlagBitsNV)
 specifies that the specified acceleration structure **may** be referenced
 in an instance with
-`VK_GEOMETRY_INSTANCE_DISABLE_OPACITY_MICROMAPS_BIT_EXT` set.
+[VK_GEOMETRY_INSTANCE_DISABLE_OPACITY_MICROMAPS_BIT_EXT](accelstructures.html#VkGeometryInstanceFlagBitsNV) set.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_CLUSTER_OPACITY_MICROMAPS_BIT_NV`
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_CLUSTER_OPACITY_MICROMAPS_BIT_NV](#VkBuildAccelerationStructureFlagBitsNV)
 specifies that opacity micromaps **may** be associated with the given
 cluster acceleration structure.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR`
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR](#VkBuildAccelerationStructureFlagBitsNV)
 specifies that the specified acceleration structure **can** be used when
 fetching the
 vertex and radius positions of a hit LSS or sphere primitive, or
 vertex positions of a hit triangle.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISPLACEMENT_MICROMAP_UPDATE_BIT_NV`
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISPLACEMENT_MICROMAP_UPDATE_BIT_NV](#VkBuildAccelerationStructureFlagBitsNV)
 specifies that the displacement micromaps associated with the specified
 acceleration structure **may** change with an acceleration structure
 update.
 
-|  | `VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_KHR` and
+|  | [VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_KHR](#VkBuildAccelerationStructureFlagBitsNV) and
 | --- | --- |
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR` **may** take
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR](#VkBuildAccelerationStructureFlagBitsNV) **may** take
 more time and memory than a normal build, and so **should** only be used when
 those features are needed. |
 
-|  | `VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_KHR` and
+|  | [VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_KHR](#VkBuildAccelerationStructureFlagBitsNV) and
 | --- | --- |
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR` are allowed
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR](#VkBuildAccelerationStructureFlagBitsNV) are allowed
 to be used together.
 In that case, the result of the compaction copy is used as the source of a
 build with `mode` of
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR` to perform the
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](accelstructures.html#VkBuildAccelerationStructureModeKHR) to perform the
 compacted update. |
 
 // Provided by VK_KHR_acceleration_structure
@@ -11072,15 +11434,15 @@ Valid Usage
 * 
 [](#VUID-VkGeometryNV-geometryType-03503) VUID-VkGeometryNV-geometryType-03503
 
-`geometryType` **must** be `VK_GEOMETRY_TYPE_TRIANGLES_NV` or
-`VK_GEOMETRY_TYPE_AABBS_NV`
+`geometryType` **must** be [VK_GEOMETRY_TYPE_TRIANGLES_NV](#VkGeometryTypeNV) or
+[VK_GEOMETRY_TYPE_AABBS_NV](#VkGeometryTypeNV)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkGeometryNV-sType-sType) VUID-VkGeometryNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GEOMETRY_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GEOMETRY_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkGeometryNV-pNext-pNext) VUID-VkGeometryNV-pNext-pNext
@@ -11128,27 +11490,27 @@ typedef enum VkGeometryTypeKHR {
 typedef VkGeometryTypeKHR VkGeometryTypeNV;
 
 * 
-`VK_GEOMETRY_TYPE_TRIANGLES_KHR` specifies a geometry type
+[VK_GEOMETRY_TYPE_TRIANGLES_KHR](#VkGeometryTypeNV) specifies a geometry type
 consisting of [triangles](accelstructures.html#ray-tracing-triangle-primitive).
 
 * 
-`VK_GEOMETRY_TYPE_AABBS_KHR` specifies a geometry type consisting of
+[VK_GEOMETRY_TYPE_AABBS_KHR](#VkGeometryTypeNV) specifies a geometry type consisting of
 [axis-aligned bounding boxes](accelstructures.html#aabb-primitive).
 
 * 
-`VK_GEOMETRY_TYPE_INSTANCES_KHR` specifies a geometry type
+[VK_GEOMETRY_TYPE_INSTANCES_KHR](#VkGeometryTypeNV) specifies a geometry type
 consisting of acceleration structure instances.
 
 * 
-`VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX` specifies a
+[VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](#VkGeometryTypeNV) specifies a
 geometry type consisting of triangles from compressed data.
 
 * 
-`VK_GEOMETRY_TYPE_SPHERES_NV` specifies a geometry type consisting
+[VK_GEOMETRY_TYPE_SPHERES_NV](#VkGeometryTypeNV) specifies a geometry type consisting
 of [spheres](accelstructures.html#sphere-primitive).
 
 * 
-`VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV` specifies a geometry type
+[VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV](#VkGeometryTypeNV) specifies a geometry type
 consisting of [linear swept spheres](accelstructures.html#linear-swept-sphere-primitive).
 
 Bits specifying additional parameters for geometries in acceleration
@@ -11169,11 +11531,11 @@ typedef enum VkGeometryFlagBitsKHR {
 typedef VkGeometryFlagBitsKHR VkGeometryFlagBitsNV;
 
 * 
-`VK_GEOMETRY_OPAQUE_BIT_KHR` specifies that this geometry does not
+[VK_GEOMETRY_OPAQUE_BIT_KHR](#VkGeometryFlagBitsNV) specifies that this geometry does not
 invoke the any-hit shaders even if present in a hit group.
 
 * 
-`VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_KHR` specifies that
+[VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_KHR](#VkGeometryFlagBitsNV) specifies that
 the implementation **must** only call the any-hit shader a single time for
 each primitive in this geometry.
 If this bit is absent an implementation **may** invoke the any-hit shader
@@ -11201,12 +11563,12 @@ typedef struct VkGeometryDataNV {
 * 
 `triangles` contains triangle data if
 [VkGeometryNV](#VkGeometryNV)::`geometryType` is
-`VK_GEOMETRY_TYPE_TRIANGLES_NV`.
+[VK_GEOMETRY_TYPE_TRIANGLES_NV](#VkGeometryTypeNV).
 
 * 
 `aabbs` contains axis-aligned bounding box data if
 [VkGeometryNV](#VkGeometryNV)::`geometryType` is
-`VK_GEOMETRY_TYPE_AABBS_NV`.
+[VK_GEOMETRY_TYPE_AABBS_NV](#VkGeometryTypeNV).
 
 Valid Usage (Implicit)
 
@@ -11287,7 +11649,7 @@ applied to this geometry.
 `transformOffset` is the offset in bytes in `transformData` of
 the transform information described above.
 
-If `indexType` is `VK_INDEX_TYPE_NONE_NV`, then this structure
+If `indexType` is [VK_INDEX_TYPE_NONE_NV](drawing.html#VkIndexType), then this structure
 describes a set of triangles determined by `vertexCount`.
 Otherwise, this structure describes a set of indexed triangles determined by
 `indexCount`.
@@ -11308,10 +11670,10 @@ Valid Usage
 * 
 [](#VUID-VkGeometryTrianglesNV-vertexFormat-02430) VUID-VkGeometryTrianglesNV-vertexFormat-02430
 
-`vertexFormat` **must** be one of `VK_FORMAT_R32G32B32_SFLOAT`,
-`VK_FORMAT_R32G32_SFLOAT`, `VK_FORMAT_R16G16B16_SFLOAT`,
-`VK_FORMAT_R16G16_SFLOAT`, `VK_FORMAT_R16G16_SNORM`, or
-`VK_FORMAT_R16G16B16_SNORM`
+`vertexFormat` **must** be one of [VK_FORMAT_R32G32B32_SFLOAT](formats.html#VkFormat),
+[VK_FORMAT_R32G32_SFLOAT](formats.html#VkFormat), [VK_FORMAT_R16G16B16_SFLOAT](formats.html#VkFormat),
+[VK_FORMAT_R16G16_SFLOAT](formats.html#VkFormat), [VK_FORMAT_R16G16_SNORM](formats.html#VkFormat), or
+[VK_FORMAT_R16G16B16_SNORM](formats.html#VkFormat)
 
 * 
 [](#VUID-VkGeometryTrianglesNV-vertexStride-03818) VUID-VkGeometryTrianglesNV-vertexStride-03818
@@ -11332,26 +11694,26 @@ Valid Usage
 * 
 [](#VUID-VkGeometryTrianglesNV-indexType-02433) VUID-VkGeometryTrianglesNV-indexType-02433
 
-`indexType` **must** be `VK_INDEX_TYPE_UINT16`,
-`VK_INDEX_TYPE_UINT32`, or `VK_INDEX_TYPE_NONE_NV`
+`indexType` **must** be [VK_INDEX_TYPE_UINT16](drawing.html#VkIndexType),
+[VK_INDEX_TYPE_UINT32](drawing.html#VkIndexType), or [VK_INDEX_TYPE_NONE_NV](drawing.html#VkIndexType)
 
 * 
 [](#VUID-VkGeometryTrianglesNV-indexData-02434) VUID-VkGeometryTrianglesNV-indexData-02434
 
 `indexData` **must** be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) if `indexType` is
-`VK_INDEX_TYPE_NONE_NV`
+[VK_INDEX_TYPE_NONE_NV](drawing.html#VkIndexType)
 
 * 
 [](#VUID-VkGeometryTrianglesNV-indexData-02435) VUID-VkGeometryTrianglesNV-indexData-02435
 
 `indexData` **must** be a valid `VkBuffer` handle if
-`indexType` is not `VK_INDEX_TYPE_NONE_NV`
+`indexType` is not [VK_INDEX_TYPE_NONE_NV](drawing.html#VkIndexType)
 
 * 
 [](#VUID-VkGeometryTrianglesNV-indexCount-02436) VUID-VkGeometryTrianglesNV-indexCount-02436
 
 `indexCount` **must** be `0` if `indexType` is
-`VK_INDEX_TYPE_NONE_NV`
+[VK_INDEX_TYPE_NONE_NV](drawing.html#VkIndexType)
 
 * 
 [](#VUID-VkGeometryTrianglesNV-transformOffset-02437) VUID-VkGeometryTrianglesNV-transformOffset-02437
@@ -11368,7 +11730,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGeometryTrianglesNV-sType-sType) VUID-VkGeometryTrianglesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GEOMETRY_TRIANGLES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GEOMETRY_TRIANGLES_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkGeometryTrianglesNV-pNext-pNext) VUID-VkGeometryTrianglesNV-pNext-pNext
@@ -11462,7 +11824,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGeometryAABBNV-sType-sType) VUID-VkGeometryAABBNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GEOMETRY_AABB_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GEOMETRY_AABB_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkGeometryAABBNV-pNext-pNext) VUID-VkGeometryAABBNV-pNext-pNext
@@ -11619,9 +11981,9 @@ An acceleration structure has memory requirements for the structure object
 itself, scratch space for the build, and scratch space for the update.
 
 Scratch space is allocated as a `VkBuffer`, so for
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV`
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV](#VkAccelerationStructureMemoryRequirementsTypeNV)
 and
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV`
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV](#VkAccelerationStructureMemoryRequirementsTypeNV)
 the `pMemoryRequirements->alignment` and
 `pMemoryRequirements->memoryTypeBits` values returned by this call **must**
 be filled with zero, and **should** be ignored by the application.
@@ -11685,12 +12047,12 @@ structure.
 
 * 
 `type` selects the type of memory requirement being queried.
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV`
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV](#VkAccelerationStructureMemoryRequirementsTypeNV)
 returns the memory requirements for the object itself.
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV`
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV](#VkAccelerationStructureMemoryRequirementsTypeNV)
 returns the memory requirements for the scratch memory when doing a
 build.
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV`
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV](#VkAccelerationStructureMemoryRequirementsTypeNV)
 returns the memory requirements for the scratch memory when doing an
 update.
 
@@ -11703,7 +12065,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureMemoryRequirementsInfoNV-sType-sType) VUID-VkAccelerationStructureMemoryRequirementsInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkAccelerationStructureMemoryRequirementsInfoNV-pNext-pNext) VUID-VkAccelerationStructureMemoryRequirementsInfoNV-pNext-pNext
@@ -11731,17 +12093,17 @@ typedef enum VkAccelerationStructureMemoryRequirementsTypeNV {
 } VkAccelerationStructureMemoryRequirementsTypeNV;
 
 * 
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV`
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV](#VkAccelerationStructureMemoryRequirementsTypeNV)
 requests the memory requirement for the `VkAccelerationStructureNV`
 backing store.
 
 * 
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV`
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV](#VkAccelerationStructureMemoryRequirementsTypeNV)
 requests the memory requirement for scratch space during the initial
 build.
 
 * 
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV`
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV](#VkAccelerationStructureMemoryRequirementsTypeNV)
 requests the memory requirement for scratch space during an update.
 
 Possible values of `buildType` in
@@ -11755,15 +12117,15 @@ typedef enum VkAccelerationStructureBuildTypeKHR {
 } VkAccelerationStructureBuildTypeKHR;
 
 * 
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_KHR` requests the memory
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_KHR](#VkAccelerationStructureBuildTypeKHR) requests the memory
 requirement for operations performed by the host.
 
 * 
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_DEVICE_KHR` requests the
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_DEVICE_KHR](#VkAccelerationStructureBuildTypeKHR) requests the
 memory requirement for operations performed by the device.
 
 * 
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR` requests
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR](#VkAccelerationStructureBuildTypeKHR) requests
 the memory requirement for operations performed by either the host, or
 the device.
 
@@ -11809,21 +12171,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkBindAccelerationStructureMemoryInfoNV` structure is defined as:
 
@@ -11889,7 +12251,7 @@ allowed in the `memoryTypeBits` member of the
 [VkMemoryRequirements](#VkMemoryRequirements) structure returned from a call to
 [vkGetAccelerationStructureMemoryRequirementsNV](#vkGetAccelerationStructureMemoryRequirementsNV) with
 `accelerationStructure` and `type` of
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV`
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV](#VkAccelerationStructureMemoryRequirementsTypeNV)
 
 * 
 [](#VUID-VkBindAccelerationStructureMemoryInfoNV-memoryOffset-03623) VUID-VkBindAccelerationStructureMemoryInfoNV-memoryOffset-03623
@@ -11898,7 +12260,7 @@ allowed in the `memoryTypeBits` member of the
 member of the [VkMemoryRequirements](#VkMemoryRequirements) structure returned from a call
 to [vkGetAccelerationStructureMemoryRequirementsNV](#vkGetAccelerationStructureMemoryRequirementsNV) with
 `accelerationStructure` and `type` of
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV`
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV](#VkAccelerationStructureMemoryRequirementsTypeNV)
 
 * 
 [](#VUID-VkBindAccelerationStructureMemoryInfoNV-size-03624) VUID-VkBindAccelerationStructureMemoryInfoNV-size-03624
@@ -11907,7 +12269,7 @@ The `size` member of the `VkMemoryRequirements` structure
 returned from a call to
 [vkGetAccelerationStructureMemoryRequirementsNV](#vkGetAccelerationStructureMemoryRequirementsNV) with
 `accelerationStructure` and `type` of
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV` **must**
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV](#VkAccelerationStructureMemoryRequirementsTypeNV) **must**
 be less than or equal to the size of `memory` minus
 `memoryOffset`
 
@@ -11916,7 +12278,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindAccelerationStructureMemoryInfoNV-sType-sType) VUID-VkBindAccelerationStructureMemoryInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_ACCELERATION_STRUCTURE_MEMORY_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_ACCELERATION_STRUCTURE_MEMORY_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBindAccelerationStructureMemoryInfoNV-pNext-pNext) VUID-VkBindAccelerationStructureMemoryInfoNV-pNext-pNext
@@ -12017,21 +12379,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To query the 64-bit device address for an acceleration structure, call:
 
@@ -12060,9 +12422,9 @@ If the acceleration structure was created with a non-zero value of
 value will be the same address.
 
 If the acceleration structure was created with a `type` of
-`VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR`, the returned address **must**
+[VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](#VkAccelerationStructureTypeNV), the returned address **must**
 be consistent with the relative offset to other acceleration structures with
-`type` `VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR` allocated with
+`type` [VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](#VkAccelerationStructureTypeNV) allocated with
 the same [VkBuffer](#VkBuffer).
 That is, the difference in returned addresses between the two **must** be the
 same as the difference in offsets provided at acceleration structure
@@ -12074,7 +12436,7 @@ The returned address **must** be aligned to 256 bytes.
 | --- | --- |
 device address corresponding to the acceleration structure’s start offset in
 its storage buffer for acceleration structure types other than
-`VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR`. |
+[VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](#VkAccelerationStructureTypeNV). |
 
 Valid Usage
 
@@ -12102,7 +12464,7 @@ single `VkDeviceMemory` object
 
 The buffer on which `pInfo->accelerationStructure` was placed **must**
 have been created with the
-`VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT` usage flag set
+[VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](#VkBufferUsageFlagBits) usage flag set
 
 Valid Usage (Implicit)
 
@@ -12142,7 +12504,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureDeviceAddressInfoKHR-sType-sType) VUID-VkAccelerationStructureDeviceAddressInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_DEVICE_ADDRESS_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_DEVICE_ADDRESS_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkAccelerationStructureDeviceAddressInfoKHR-pNext-pNext) VUID-VkAccelerationStructureDeviceAddressInfoKHR-pNext-pNext
@@ -12203,9 +12565,9 @@ build or micromap copy commands such as [vkCmdBuildMicromapsEXT](VK_EXT_opacity_
 and later deserialize the micromap data using micromap copy commands.
 During capture the tool will use [vkCopyMicromapToMemoryEXT](VK_EXT_opacity_micromap/micromaps.html#vkCopyMicromapToMemoryEXT) or
 [vkCmdCopyMicromapToMemoryEXT](VK_EXT_opacity_micromap/micromaps.html#vkCmdCopyMicromapToMemoryEXT) with a `mode` of
-`VK_COPY_MICROMAP_MODE_SERIALIZE_EXT`, and
+[VK_COPY_MICROMAP_MODE_SERIALIZE_EXT](VK_EXT_opacity_micromap/micromaps.html#VkCopyMicromapModeEXT), and
 [vkCopyMemoryToMicromapEXT](VK_EXT_opacity_micromap/micromaps.html#vkCopyMemoryToMicromapEXT) or [vkCmdCopyMemoryToMicromapEXT](VK_EXT_opacity_micromap/micromaps.html#vkCmdCopyMemoryToMicromapEXT) with a
-`mode` of `VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT` during replay. |
+`mode` of [VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT](VK_EXT_opacity_micromap/micromaps.html#VkCopyMicromapModeEXT) during replay. |
 
 The input buffers passed to micromap build commands will be referenced by
 the implementation for the duration of the command.
@@ -12267,21 +12629,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR`
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkMicromapCreateInfoEXT` structure is defined as:
 
@@ -12336,17 +12698,17 @@ at the same `offset`.
 
 Applications **should** avoid creating micromaps with application-provided
 addresses and implementation-provided addresses in the same process, to
-reduce the likelihood of `VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR`
+reduce the likelihood of [VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR](fundamentals.html#VkResult)
 errors.
 
 |  | The expected usage for this is that a trace capture/replay tool will add the
 | --- | --- |
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` flag to all buffers
-that use `VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT`, and will add
-`VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT` to all buffers used as
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#VkBufferCreateFlagBits) flag to all buffers
+that use [VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](#VkBufferUsageFlagBits), and will add
+[VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](#VkBufferUsageFlagBits) to all buffers used as
 storage for a micromap where `deviceAddress` is not zero.
 This also means that the tool will need to add
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT` to memory allocations to allow
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) to memory allocations to allow
 the flag to be set where the application may not have otherwise required it.
 During capture the tool will save the queried opaque device addresses in the
 trace.
@@ -12357,7 +12719,7 @@ Implementations are expected to separate such buffers in the GPU address
 space so normal allocations will avoid using these addresses.
 Applications and tools should avoid mixing application-provided and
 implementation-provided addresses for buffers created with
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT`, to avoid address
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#VkBufferCreateFlagBits), to avoid address
 space allocation conflicts. |
 
 If the micromap will be the target of a build operation, the required size
@@ -12369,27 +12731,27 @@ Valid Usage
 [](#VUID-VkMicromapCreateInfoEXT-deviceAddress-07433) VUID-VkMicromapCreateInfoEXT-deviceAddress-07433
 
 If `deviceAddress` is not zero, `createFlags` **must** include
-`VK_MICROMAP_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT`
+[VK_MICROMAP_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT](#VkMicromapCreateFlagBitsEXT)
 
 * 
 [](#VUID-VkMicromapCreateInfoEXT-createFlags-07434) VUID-VkMicromapCreateInfoEXT-createFlags-07434
 
 If `createFlags` includes
-`VK_MICROMAP_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT`,
+[VK_MICROMAP_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT](#VkMicromapCreateFlagBitsEXT),
 [VkPhysicalDeviceOpacityMicromapFeaturesEXT](features.html#VkPhysicalDeviceOpacityMicromapFeaturesEXT)::`micromapCaptureReplay`
-**must** be `VK_TRUE`
+**must** be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkMicromapCreateInfoEXT-buffer-07435) VUID-VkMicromapCreateInfoEXT-buffer-07435
 
 `buffer` **must** have been created with the
-`VK_BUFFER_USAGE_MICROMAP_STORAGE_BIT_EXT` usage flag set
+[VK_BUFFER_USAGE_MICROMAP_STORAGE_BIT_EXT](#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkMicromapCreateInfoEXT-buffer-07436) VUID-VkMicromapCreateInfoEXT-buffer-07436
 
 `buffer` **must** not have been created with
-`VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](#VkBufferCreateFlagBits)
 
 * 
 [](#VUID-VkMicromapCreateInfoEXT-offset-07437) VUID-VkMicromapCreateInfoEXT-offset-07437
@@ -12407,7 +12769,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMicromapCreateInfoEXT-sType-sType) VUID-VkMicromapCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MICROMAP_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MICROMAP_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMicromapCreateInfoEXT-pNext-pNext) VUID-VkMicromapCreateInfoEXT-pNext-pNext
@@ -12472,13 +12834,13 @@ the following properties:
 
 * 
 The build command is a host build command, and `buildType` is
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_KHR` or
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR`
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_KHR](#VkAccelerationStructureBuildTypeKHR) or
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR](#VkAccelerationStructureBuildTypeKHR)
 
 * 
 The build command is a device build command, and `buildType` is
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_DEVICE_KHR` or
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR`
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_DEVICE_KHR](#VkAccelerationStructureBuildTypeKHR) or
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR](#VkAccelerationStructureBuildTypeKHR)
 
 * 
 For [VkMicromapBuildInfoEXT](VK_EXT_opacity_micromap/micromaps.html#VkMicromapBuildInfoEXT):
@@ -12492,7 +12854,7 @@ The sum of usage information in either `pUsageCounts` or
 `pBuildInfo->pUsageCounts` or `pBuildInfo->ppUsageCounts`.
 
 Similarly, the `buildScratchSize` value will support any build command
-specifying the `VK_BUILD_MICROMAP_MODE_BUILD_EXT` `mode` under the
+specifying the [VK_BUILD_MICROMAP_MODE_BUILD_EXT](VK_EXT_opacity_micromap/micromaps.html#VkBuildMicromapModeEXT) `mode` under the
 above conditions.
 
 Valid Usage
@@ -12579,7 +12941,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMicromapBuildSizesInfoEXT-sType-sType) VUID-VkMicromapBuildSizesInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MICROMAP_BUILD_SIZES_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MICROMAP_BUILD_SIZES_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMicromapBuildSizesInfoEXT-pNext-pNext) VUID-VkMicromapBuildSizesInfoEXT-pNext-pNext
@@ -12599,11 +12961,11 @@ typedef enum VkMicromapTypeEXT {
 } VkMicromapTypeEXT;
 
 * 
-`VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT` is a micromap containing
+[VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT](#VkMicromapTypeEXT) is a micromap containing
 data to control the opacity of a triangle.
 
 * 
-`VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV` is a micromap containing
+[VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV](#VkMicromapTypeEXT) is a micromap containing
 data to control the displacement of subtriangles within a triangle.
 
 Bits which **can** be set in [VkMicromapCreateInfoEXT](#VkMicromapCreateInfoEXT)::`createFlags`,
@@ -12615,7 +12977,7 @@ typedef enum VkMicromapCreateFlagBitsEXT {
 } VkMicromapCreateFlagBitsEXT;
 
 * 
-`VK_MICROMAP_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT` specifies
+[VK_MICROMAP_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT](#VkMicromapCreateFlagBitsEXT) specifies
 that the micromap’s address **can** be saved and reused on a subsequent
 run.
 
@@ -12636,12 +12998,12 @@ typedef enum VkBuildMicromapFlagBitsEXT {
 } VkBuildMicromapFlagBitsEXT;
 
 * 
-`VK_BUILD_MICROMAP_PREFER_FAST_TRACE_BIT_EXT` specifies that the
+[VK_BUILD_MICROMAP_PREFER_FAST_TRACE_BIT_EXT](#VkBuildMicromapFlagBitsEXT) specifies that the
 given micromap build **should** prioritize trace performance over build
 time.
 
 * 
-`VK_BUILD_MICROMAP_PREFER_FAST_BUILD_BIT_EXT` specifies that the
+[VK_BUILD_MICROMAP_PREFER_FAST_BUILD_BIT_EXT](#VkBuildMicromapFlagBitsEXT) specifies that the
 given micromap build **should** prioritize build time over trace
 performance.
 
@@ -12809,7 +13171,7 @@ Valid Usage (Implicit)
  `buffer` **must** have been created, allocated, or retrieved from `device`
 
 To determine the memory requirements for an image resource which is not
-created with the `VK_IMAGE_CREATE_DISJOINT_BIT` flag set, call:
+created with the [VK_IMAGE_CREATE_DISJOINT_BIT](#VkImageCreateFlagBits) flag set, call:
 
 // Provided by VK_VERSION_1_0
 void vkGetImageMemoryRequirements(
@@ -12834,20 +13196,20 @@ Valid Usage
 [](#VUID-vkGetImageMemoryRequirements-image-01588) VUID-vkGetImageMemoryRequirements-image-01588
 
 `image` **must** not have been created with the
-`VK_IMAGE_CREATE_DISJOINT_BIT` flag set
+[VK_IMAGE_CREATE_DISJOINT_BIT](#VkImageCreateFlagBits) flag set
 
 * 
 [](#VUID-vkGetImageMemoryRequirements-image-04004) VUID-vkGetImageMemoryRequirements-image-04004
 
 If `image` was created with the
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 external memory handle type, then `image` **must** be bound to memory
 
 * 
 [](#VUID-vkGetImageMemoryRequirements-image-08960) VUID-vkGetImageMemoryRequirements-image-08960
 
 If `image` was created with the
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX` external
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) external
 memory handle type, then `image` **must** be bound to memory
 
 Valid Usage (Implicit)
@@ -12934,7 +13296,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTensorMemoryRequirementsInfoARM-sType-sType) VUID-VkTensorMemoryRequirementsInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TENSOR_MEMORY_REQUIREMENTS_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TENSOR_MEMORY_REQUIREMENTS_INFO_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkTensorMemoryRequirementsInfoARM-pNext-pNext) VUID-VkTensorMemoryRequirementsInfoARM-pNext-pNext
@@ -13018,7 +13380,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceTensorMemoryRequirementsARM-sType-sType) VUID-VkDeviceTensorMemoryRequirementsARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_TENSOR_MEMORY_REQUIREMENTS_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_TENSOR_MEMORY_REQUIREMENTS_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceTensorMemoryRequirementsARM-pNext-pNext) VUID-VkDeviceTensorMemoryRequirementsARM-pNext-pNext
@@ -13082,16 +13444,16 @@ resource being queried was created with any of the following external memory
 handle types:
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 The implementation guarantees certain properties about the memory
 requirements returned by
@@ -13107,16 +13469,16 @@ The `memoryTypeBits` member always contains at least one bit set.
 
 * 
 If `buffer` is a `VkBuffer` not created with the
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT` or
-`VK_BUFFER_CREATE_PROTECTED_BIT` bits set, or if `image` is a
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](#VkBufferCreateFlagBits) or
+[VK_BUFFER_CREATE_PROTECTED_BIT](#VkBufferCreateFlagBits) bits set, or if `image` is a
 [linear](../appendices/glossary.html#glossary-linear-resource) image that was not created with the
-`VK_IMAGE_CREATE_PROTECTED_BIT` bit set,
+[VK_IMAGE_CREATE_PROTECTED_BIT](#VkImageCreateFlagBits) bit set,
 or if `tensor` is a `VkTensorARM` not created with the
-`VK_TENSOR_CREATE_PROTECTED_BIT_ARM`,
+[VK_TENSOR_CREATE_PROTECTED_BIT_ARM](#VkTensorCreateFlagBitsARM),
 then the `memoryTypeBits` member always contains at least one bit
 set corresponding to a `VkMemoryType` with a `propertyFlags`
-that has both the `VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` bit and the
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` bit set.
+that has both the [VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](memory.html#VkMemoryPropertyFlagBits) bit and the
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](memory.html#VkMemoryPropertyFlagBits) bit set.
 In other words, mappable coherent memory **can** always be attached to
 these objects.
 
@@ -13130,7 +13492,7 @@ or `tensor` was created with
 the
 `memoryTypeBits` member always contains at least one bit set
 corresponding to a `VkMemoryType` with a `propertyFlags` that
-has the `VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` bit set.
+has the [VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](memory.html#VkMemoryPropertyFlagBits) bit set.
 
 * 
 The `memoryTypeBits` member is identical for all `VkBuffer`
@@ -13169,72 +13531,72 @@ in the [VkImageCreateInfo](#VkImageCreateInfo) structure passed to [vkCreateImag
 The `alignment` member satisfies the buffer descriptor offset
 alignment requirements associated with the `VkBuffer`’s `usage`:
 
-If `usage` included `VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT`
-or `VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT`, `alignment`
+If `usage` included [VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits)
+or [VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](#VkBufferUsageFlagBits), `alignment`
 **must** be an integer multiple of
 `VkPhysicalDeviceLimits`::`minTexelBufferOffsetAlignment`.
 
 * 
-If `usage` included `VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT`,
+If `usage` included [VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](#VkBufferUsageFlagBits),
 `alignment` **must** be an integer multiple of
 `VkPhysicalDeviceLimits`::`minUniformBufferOffsetAlignment`.
 
 * 
-If `usage` included `VK_BUFFER_USAGE_STORAGE_BUFFER_BIT`,
+If `usage` included [VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](#VkBufferUsageFlagBits),
 `alignment` **must** be an integer multiple of
 `VkPhysicalDeviceLimits`::`minStorageBufferOffsetAlignment`.
 
 For images created with a color format, the `memoryTypeBits` member
 is identical for all `VkImage` objects created with the same
 combination of values for the `tiling` member, the
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT` bit
-and `VK_IMAGE_CREATE_PROTECTED_BIT` bit
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#VkImageCreateFlagBits) bit
+and [VK_IMAGE_CREATE_PROTECTED_BIT](#VkImageCreateFlagBits) bit
 of the `flags` member,
-the `VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT` bit of the
+the [VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT](#VkImageCreateFlagBits) bit of the
 `flags` member,
-the `VK_IMAGE_USAGE_HOST_TRANSFER_BIT` bit of the `usage` member
+the [VK_IMAGE_USAGE_HOST_TRANSFER_BIT](#VkImageUsageFlagBits) bit of the `usage` member
 if the
 [VkPhysicalDeviceHostImageCopyProperties](limits.html#VkPhysicalDeviceHostImageCopyProperties)::`identicalMemoryTypeRequirements`
-property is `VK_FALSE`,
+property is [VK_FALSE](fundamentals.html#VK_FALSE),
 `handleTypes` member of [VkExternalMemoryImageCreateInfo](#VkExternalMemoryImageCreateInfo),
-and the `VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT` of the `usage`
+and the [VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](#VkImageUsageFlagBits) of the `usage`
 member in the [VkImageCreateInfo](#VkImageCreateInfo) structure passed to
 [vkCreateImage](#vkCreateImage).
 
 For images created with a depth/stencil format, the `memoryTypeBits`
 member is identical for all `VkImage` objects created with the same
 combination of values for the `format` member, the `tiling`
-member, the `VK_IMAGE_CREATE_SPARSE_BINDING_BIT` bit
-and `VK_IMAGE_CREATE_PROTECTED_BIT` bit
+member, the [VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#VkImageCreateFlagBits) bit
+and [VK_IMAGE_CREATE_PROTECTED_BIT](#VkImageCreateFlagBits) bit
 of the `flags` member,
-the `VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT` bit of the
+the [VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT](#VkImageCreateFlagBits) bit of the
 `flags` member,
-the `VK_IMAGE_USAGE_HOST_TRANSFER_BIT` bit of the `usage` member
+the [VK_IMAGE_USAGE_HOST_TRANSFER_BIT](#VkImageUsageFlagBits) bit of the `usage` member
 if the
 [VkPhysicalDeviceHostImageCopyProperties](limits.html#VkPhysicalDeviceHostImageCopyProperties)::`identicalMemoryTypeRequirements`
-property is `VK_FALSE`,
+property is [VK_FALSE](fundamentals.html#VK_FALSE),
 `handleTypes` member of [VkExternalMemoryImageCreateInfo](#VkExternalMemoryImageCreateInfo),
-and the `VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT` of the `usage`
+and the [VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](#VkImageUsageFlagBits) of the `usage`
 member in the [VkImageCreateInfo](#VkImageCreateInfo) structure passed to
 [vkCreateImage](#vkCreateImage).
 
 If the memory requirements are for a `VkImage`, the
 `memoryTypeBits` member **must** not refer to a `VkMemoryType` with
 a `propertyFlags` that has the
-`VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT` bit set if the `image`
-did not have `VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT` bit set in
+[VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT](memory.html#VkMemoryPropertyFlagBits) bit set if the `image`
+did not have [VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](#VkImageUsageFlagBits) bit set in
 the `usage` member of the [VkImageCreateInfo](#VkImageCreateInfo) structure passed
 to [vkCreateImage](#vkCreateImage).
 
 If the memory requirements are for a `VkBuffer`, the
 `memoryTypeBits` member **must** not refer to a `VkMemoryType` with
 a `propertyFlags` that has the
-`VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT` bit set.
+[VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT](memory.html#VkMemoryPropertyFlagBits) bit set.
 
 If the memory requirements are for a `VkTensorARM`, the
 `memoryTypeBits` member **must** not refer to a `VkMemoryType` with
 a `propertyFlags` that has the
-`VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT` bit set.
+[VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT](memory.html#VkMemoryPropertyFlagBits) bit set.
 
 |  | The implication of this requirement is that lazily allocated memory is
 | --- | --- |
@@ -13256,7 +13618,7 @@ created with the same combination of creation parameters specified in
 | --- | --- |
 memory identically with each other.
 That additional guarantee, however, **can** be explicitly requested using
-`VK_IMAGE_CREATE_ALIAS_BIT`. |
+[VK_IMAGE_CREATE_ALIAS_BIT](#VkImageCreateFlagBits). |
 
 If the [`maintenance4`](features.html#features-maintenance4) feature is enabled,
 these additional guarantees apply:
@@ -13420,7 +13782,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferMemoryRequirementsInfo2-sType-sType) VUID-VkBufferMemoryRequirementsInfo2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_MEMORY_REQUIREMENTS_INFO_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_MEMORY_REQUIREMENTS_INFO_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBufferMemoryRequirementsInfo2-pNext-pNext) VUID-VkBufferMemoryRequirementsInfo2-pNext-pNext
@@ -13461,7 +13823,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceBufferMemoryRequirements-sType-sType) VUID-VkDeviceBufferMemoryRequirements-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_BUFFER_MEMORY_REQUIREMENTS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_BUFFER_MEMORY_REQUIREMENTS](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceBufferMemoryRequirements-pNext-pNext) VUID-VkDeviceBufferMemoryRequirements-pNext-pNext
@@ -13593,15 +13955,15 @@ Valid Usage
 [](#VUID-VkImageMemoryRequirementsInfo2-image-01589) VUID-VkImageMemoryRequirementsInfo2-image-01589
 
 If `image` was created with a *multi-planar* format and the
-`VK_IMAGE_CREATE_DISJOINT_BIT` flag, there **must** be a
+[VK_IMAGE_CREATE_DISJOINT_BIT](#VkImageCreateFlagBits) flag, there **must** be a
 [VkImagePlaneMemoryRequirementsInfo](#VkImagePlaneMemoryRequirementsInfo) included in the `pNext`
 chain of the [VkImageMemoryRequirementsInfo2](#VkImageMemoryRequirementsInfo2) structure
 
 * 
 [](#VUID-VkImageMemoryRequirementsInfo2-image-02279) VUID-VkImageMemoryRequirementsInfo2-image-02279
 
-If `image` was created with `VK_IMAGE_CREATE_DISJOINT_BIT` and
-with `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then there **must** be
+If `image` was created with [VK_IMAGE_CREATE_DISJOINT_BIT](#VkImageCreateFlagBits) and
+with [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling), then there **must** be
 a [VkImagePlaneMemoryRequirementsInfo](#VkImagePlaneMemoryRequirementsInfo) included in the `pNext`
 chain of the [VkImageMemoryRequirementsInfo2](#VkImageMemoryRequirementsInfo2) structure
 
@@ -13609,7 +13971,7 @@ chain of the [VkImageMemoryRequirementsInfo2](#VkImageMemoryRequirementsInfo2) s
 [](#VUID-VkImageMemoryRequirementsInfo2-image-01590) VUID-VkImageMemoryRequirementsInfo2-image-01590
 
 If `image` was not created with the
-`VK_IMAGE_CREATE_DISJOINT_BIT` flag, there **must** not be a
+[VK_IMAGE_CREATE_DISJOINT_BIT](#VkImageCreateFlagBits) flag, there **must** not be a
 [VkImagePlaneMemoryRequirementsInfo](#VkImagePlaneMemoryRequirementsInfo) included in the `pNext`
 chain of the [VkImageMemoryRequirementsInfo2](#VkImageMemoryRequirementsInfo2) structure
 
@@ -13617,7 +13979,7 @@ chain of the [VkImageMemoryRequirementsInfo2](#VkImageMemoryRequirementsInfo2) s
 [](#VUID-VkImageMemoryRequirementsInfo2-image-02280) VUID-VkImageMemoryRequirementsInfo2-image-02280
 
 If `image` was created with a single-plane format and with any
-`tiling` other than `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`,
+`tiling` other than [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling),
 then there **must** not be a [VkImagePlaneMemoryRequirementsInfo](#VkImagePlaneMemoryRequirementsInfo)
 included in the `pNext` chain of the
 [VkImageMemoryRequirementsInfo2](#VkImageMemoryRequirementsInfo2) structure
@@ -13626,14 +13988,14 @@ included in the `pNext` chain of the
 [](#VUID-VkImageMemoryRequirementsInfo2-image-01897) VUID-VkImageMemoryRequirementsInfo2-image-01897
 
 If `image` was created with the
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 external memory handle type, then `image` **must** be bound to memory
 
 * 
 [](#VUID-VkImageMemoryRequirementsInfo2-image-08961) VUID-VkImageMemoryRequirementsInfo2-image-08961
 
 If `image` was created with the
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX` external
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) external
 memory handle type, then `image` **must** be bound to memory
 
 Valid Usage (Implicit)
@@ -13641,7 +14003,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageMemoryRequirementsInfo2-sType-sType) VUID-VkImageMemoryRequirementsInfo2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_MEMORY_REQUIREMENTS_INFO_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_MEMORY_REQUIREMENTS_INFO_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageMemoryRequirementsInfo2-pNext-pNext) VUID-VkImageMemoryRequirementsInfo2-pNext-pNext
@@ -13688,8 +14050,8 @@ containing parameters affecting creation of the image to query.
 aspect corresponding to the image plane to query.
 This parameter is ignored unless
 `pCreateInfo->tiling` is
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, or
-`pCreateInfo->flags` has `VK_IMAGE_CREATE_DISJOINT_BIT` set.
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling), or
+`pCreateInfo->flags` has [VK_IMAGE_CREATE_DISJOINT_BIT](#VkImageCreateFlagBits) set.
 
 Valid Usage
 
@@ -13725,22 +14087,22 @@ with non-zero `externalFormat`
 [](#VUID-VkDeviceImageMemoryRequirements-pCreateInfo-06417) VUID-VkDeviceImageMemoryRequirements-pCreateInfo-06417
 
 If `pCreateInfo->format` specifies a *multi-planar* format and
-`pCreateInfo->flags` has `VK_IMAGE_CREATE_DISJOINT_BIT` set then
-`planeAspect` **must** not be `VK_IMAGE_ASPECT_NONE_KHR`
+`pCreateInfo->flags` has [VK_IMAGE_CREATE_DISJOINT_BIT](#VkImageCreateFlagBits) set then
+`planeAspect` **must** not be [VK_IMAGE_ASPECT_NONE_KHR](#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkDeviceImageMemoryRequirements-pCreateInfo-06419) VUID-VkDeviceImageMemoryRequirements-pCreateInfo-06419
 
-If `pCreateInfo->flags` has `VK_IMAGE_CREATE_DISJOINT_BIT` set
-and if the `pCreateInfo->tiling` is `VK_IMAGE_TILING_LINEAR` or
-`VK_IMAGE_TILING_OPTIMAL`, then `planeAspect` **must** be a single
+If `pCreateInfo->flags` has [VK_IMAGE_CREATE_DISJOINT_BIT](#VkImageCreateFlagBits) set
+and if the `pCreateInfo->tiling` is [VK_IMAGE_TILING_LINEAR](#VkImageTiling) or
+[VK_IMAGE_TILING_OPTIMAL](#VkImageTiling), then `planeAspect` **must** be a single
 valid [multi-planar aspect mask](formats.html#formats-multiplanar-image-aspect) bit
 
 * 
 [](#VUID-VkDeviceImageMemoryRequirements-pCreateInfo-06420) VUID-VkDeviceImageMemoryRequirements-pCreateInfo-06420
 
 If `pCreateInfo->tiling` is
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then `planeAspect`
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling), then `planeAspect`
 **must** be a single valid *memory plane* for the image (that is,
 `aspectMask` **must** specify a plane index that is less than the
 [VkDrmFormatModifierPropertiesEXT](formats.html#VkDrmFormatModifierPropertiesEXT)::`drmFormatModifierPlaneCount`
@@ -13752,7 +14114,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceImageMemoryRequirements-sType-sType) VUID-VkDeviceImageMemoryRequirements-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_IMAGE_MEMORY_REQUIREMENTS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_IMAGE_MEMORY_REQUIREMENTS](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceImageMemoryRequirements-pNext-pNext) VUID-VkDeviceImageMemoryRequirements-pNext-pNext
@@ -13802,15 +14164,15 @@ Valid Usage
 * 
 [](#VUID-VkImagePlaneMemoryRequirementsInfo-planeAspect-02281) VUID-VkImagePlaneMemoryRequirementsInfo-planeAspect-02281
 
-If the image’s `tiling` is `VK_IMAGE_TILING_LINEAR` or
-`VK_IMAGE_TILING_OPTIMAL`, then `planeAspect` **must** be a single
+If the image’s `tiling` is [VK_IMAGE_TILING_LINEAR](#VkImageTiling) or
+[VK_IMAGE_TILING_OPTIMAL](#VkImageTiling), then `planeAspect` **must** be a single
 valid [multi-planar aspect mask](formats.html#formats-multiplanar-image-aspect) bit
 
 * 
 [](#VUID-VkImagePlaneMemoryRequirementsInfo-planeAspect-02282) VUID-VkImagePlaneMemoryRequirementsInfo-planeAspect-02282
 
 If the image’s `tiling` is
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then `planeAspect`
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling), then `planeAspect`
 **must** be a single valid *memory plane* for the image (that is,
 `aspectMask` **must** specify a plane index that is less than the
 [VkDrmFormatModifierPropertiesEXT](formats.html#VkDrmFormatModifierPropertiesEXT)::`drmFormatModifierPlaneCount`
@@ -13822,7 +14184,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImagePlaneMemoryRequirementsInfo-sType-sType) VUID-VkImagePlaneMemoryRequirementsInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImagePlaneMemoryRequirementsInfo-planeAspect-parameter) VUID-VkImagePlaneMemoryRequirementsInfo-planeAspect-parameter
@@ -13862,7 +14224,7 @@ tile memory allocation required for the resource.
 The `size` and `alignment` **must** be used when the resource is bound
 to a [VkDeviceMemory](memory.html#VkDeviceMemory) object that was allocated from a
 [VkMemoryType](memory.html#VkMemoryType) that has a `heapIndex` that corresponds to a
-[VkMemoryHeap](memory.html#VkMemoryHeap) with the `VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM`
+[VkMemoryHeap](memory.html#VkMemoryHeap) with the [VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits)
 property.
 
 If the resource cannot be bound to tile memory, then `size` and
@@ -13873,7 +14235,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTileMemoryRequirementsQCOM-sType-sType) VUID-VkTileMemoryRequirementsQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TILE_MEMORY_REQUIREMENTS_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TILE_MEMORY_REQUIREMENTS_QCOM](fundamentals.html#VkStructureType)
 
 The `VkMemoryRequirements2` structure is defined as:
 
@@ -13904,7 +14266,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryRequirements2-sType-sType) VUID-VkMemoryRequirements2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryRequirements2-pNext-pNext) VUID-VkMemoryRequirements2-pNext-pNext
@@ -13960,7 +14322,7 @@ or [vkGetImageMemoryRequirements2](#vkGetImageMemoryRequirements2) respectively.
 Constraints on the values returned for buffer resources are:
 
 * 
-`requiresDedicatedAllocation` **may** be `VK_TRUE` if the
+`requiresDedicatedAllocation` **may** be [VK_TRUE](fundamentals.html#VK_TRUE) if the
 `pNext` chain of [VkBufferCreateInfo](#VkBufferCreateInfo) for the call to
 `vkCreateBuffer` used to create the buffer being queried included a
 [VkExternalMemoryBufferCreateInfo](#VkExternalMemoryBufferCreateInfo) structure, and any of the handle
@@ -13969,23 +14331,23 @@ types specified in
 dedicated allocation, as reported by
 [vkGetPhysicalDeviceExternalBufferProperties](capabilities.html#vkGetPhysicalDeviceExternalBufferProperties) in
 `VkExternalBufferProperties`::`externalMemoryProperties.externalMemoryFeatures`.
-Otherwise, `requiresDedicatedAllocation` will be `VK_FALSE`.
+Otherwise, `requiresDedicatedAllocation` will be [VK_FALSE](fundamentals.html#VK_FALSE).
 
 * 
 When the implementation sets `requiresDedicatedAllocation` to
-`VK_TRUE`, it **must** also set `prefersDedicatedAllocation` to
-`VK_TRUE`.
+[VK_TRUE](fundamentals.html#VK_TRUE), it **must** also set `prefersDedicatedAllocation` to
+[VK_TRUE](fundamentals.html#VK_TRUE).
 
 * 
-If `VK_BUFFER_CREATE_SPARSE_BINDING_BIT` was set in
+If [VK_BUFFER_CREATE_SPARSE_BINDING_BIT](#VkBufferCreateFlagBits) was set in
 [VkBufferCreateInfo](#VkBufferCreateInfo)::`flags` when `buffer` was created,
 then both `prefersDedicatedAllocation` and
-`requiresDedicatedAllocation` will be `VK_FALSE`.
+`requiresDedicatedAllocation` will be [VK_FALSE](fundamentals.html#VK_FALSE).
 
 Constraints on the values returned for image resources are:
 
 * 
-`requiresDedicatedAllocation` **may** be `VK_TRUE` if the
+`requiresDedicatedAllocation` **may** be [VK_TRUE](fundamentals.html#VK_TRUE) if the
 `pNext` chain of [VkImageCreateInfo](#VkImageCreateInfo) for the call to
 [vkCreateImage](#vkCreateImage) used to create the image being queried included a
 [VkExternalMemoryImageCreateInfo](#VkExternalMemoryImageCreateInfo) structure, and any of the handle
@@ -13996,24 +14358,24 @@ dedicated allocation, as reported by
 `VkExternalImageFormatProperties`::`externalMemoryProperties.externalMemoryFeatures`.
 
 * 
-`requiresDedicatedAllocation` **may** be `VK_TRUE` if the image’s
-tiling is `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`.
+`requiresDedicatedAllocation` **may** be [VK_TRUE](fundamentals.html#VK_TRUE) if the image’s
+tiling is [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling).
 
 * 
 `requiresDedicatedAllocation` will
 otherwise
-be `VK_FALSE`
+be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
-If `VK_IMAGE_CREATE_SPARSE_BINDING_BIT` was set in
+If [VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#VkImageCreateFlagBits) was set in
 [VkImageCreateInfo](#VkImageCreateInfo)::`flags` when `image` was created, then
 both `prefersDedicatedAllocation` and
-`requiresDedicatedAllocation` will be `VK_FALSE`.
+`requiresDedicatedAllocation` will be [VK_FALSE](fundamentals.html#VK_FALSE).
 
 Constraints on the values returned for tensor resources are:
 
 * 
-`requiresDedicatedAllocation` **may** be `VK_TRUE` if the
+`requiresDedicatedAllocation` **may** be [VK_TRUE](fundamentals.html#VK_TRUE) if the
 `pNext` chain of [VkTensorCreateInfoARM](#VkTensorCreateInfoARM) for the call to
 `vkCreateTensorARM` used to create the tensor being queried included
 a [VkExternalMemoryTensorCreateInfoARM](#VkExternalMemoryTensorCreateInfoARM) structure, and any of the
@@ -14024,19 +14386,19 @@ dedicated allocation, as reported by
 `VkExternalTensorPropertiesARM`::`externalMemoryProperties.externalMemoryFeatures`.
 
 * 
-`requiresDedicatedAllocation` will otherwise be `VK_FALSE`.
+`requiresDedicatedAllocation` will otherwise be [VK_FALSE](fundamentals.html#VK_FALSE).
 
 * 
 When the implementation sets `requiresDedicatedAllocation` to
-`VK_TRUE`, it **must** also set `prefersDedicatedAllocation` to
-`VK_TRUE`.
+[VK_TRUE](fundamentals.html#VK_TRUE), it **must** also set `prefersDedicatedAllocation` to
+[VK_TRUE](fundamentals.html#VK_TRUE).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkMemoryDedicatedRequirements-sType-sType) VUID-VkMemoryDedicatedRequirements-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS](fundamentals.html#VkStructureType)
 
 To attach memory to a buffer object, call:
 
@@ -14097,7 +14459,7 @@ allowed in the `memoryTypeBits` member of the
 [](#VUID-vkBindBufferMemory-None-10739) VUID-vkBindBufferMemory-None-10739
 
 If `memory` was not allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set,
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property set,
 `memoryOffset` **must** be an integer multiple of the `alignment`
 member of the `VkMemoryRequirements` structure returned from a call
 to `vkGetBufferMemoryRequirements` with `buffer`
@@ -14106,7 +14468,7 @@ to `vkGetBufferMemoryRequirements` with `buffer`
 [](#VUID-vkBindBufferMemory-memory-10740) VUID-vkBindBufferMemory-memory-10740
 
 If `memory` was allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set,
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property set,
 `memoryOffset` **must** be an integer multiple of the `alignment`
 member of the `VkTileMemoryRequirementsQCOM` structure returned from
 a call to `vkGetBufferMemoryRequirements` with `buffer`
@@ -14115,7 +14477,7 @@ a call to `vkGetBufferMemoryRequirements` with `buffer`
 [](#VUID-vkBindBufferMemory-None-10741) VUID-vkBindBufferMemory-None-10741
 
 If `memory` was not allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set,
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property set,
 `size` member of the `VkMemoryRequirements` structure returned
 from a call to `vkGetBufferMemoryRequirements` with `buffer`
 **must** be less than or equal to the size of `memory` minus
@@ -14125,7 +14487,7 @@ from a call to `vkGetBufferMemoryRequirements` with `buffer`
 [](#VUID-vkBindBufferMemory-memory-10742) VUID-vkBindBufferMemory-memory-10742
 
 If `memory` was allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set, `size`
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property set, `size`
 member of the `VkTileMemoryRequirementsQCOM` structure returned from
 a call to `vkGetBufferMemoryRequirements` with `buffer` **must** be
 less than or equal to the size of `memory` minus `memoryOffset`
@@ -14162,24 +14524,24 @@ its `pNext` chain, [VkMemoryDedicatedAllocateInfo](memory.html#VkMemoryDedicated
 [](#VUID-vkBindBufferMemory-None-01898) VUID-vkBindBufferMemory-None-01898
 
 If `buffer` was created with the
-`VK_BUFFER_CREATE_PROTECTED_BIT` bit set, the buffer **must** be bound
+[VK_BUFFER_CREATE_PROTECTED_BIT](#VkBufferCreateFlagBits) bit set, the buffer **must** be bound
 to a memory object allocated with a memory type that reports
-`VK_MEMORY_PROPERTY_PROTECTED_BIT`
+[VK_MEMORY_PROPERTY_PROTECTED_BIT](memory.html#VkMemoryPropertyFlagBits)
 
 * 
 [](#VUID-vkBindBufferMemory-None-01899) VUID-vkBindBufferMemory-None-01899
 
 If `buffer` was created with the
-`VK_BUFFER_CREATE_PROTECTED_BIT` bit not set, the buffer **must** not
+[VK_BUFFER_CREATE_PROTECTED_BIT](#VkBufferCreateFlagBits) bit not set, the buffer **must** not
 be bound to a memory object allocated with a memory type that reports
-`VK_MEMORY_PROPERTY_PROTECTED_BIT`
+[VK_MEMORY_PROPERTY_PROTECTED_BIT](memory.html#VkMemoryPropertyFlagBits)
 
 * 
 [](#VUID-vkBindBufferMemory-buffer-01038) VUID-vkBindBufferMemory-buffer-01038
 
 If `buffer` was created with
 [VkDedicatedAllocationBufferCreateInfoNV](#VkDedicatedAllocationBufferCreateInfoNV)::`dedicatedAllocation`
-equal to `VK_TRUE`, `memory` **must** have been allocated with
+equal to [VK_TRUE](fundamentals.html#VK_TRUE), `memory` **must** have been allocated with
 [VkDedicatedAllocationMemoryAllocateInfoNV](memory.html#VkDedicatedAllocationMemoryAllocateInfoNV)::`buffer` equal to a
 buffer handle created with identical creation parameters to `buffer`
 and `memoryOffset` **must** be zero
@@ -14194,7 +14556,7 @@ and `memoryOffset` **must** be zero
 and
     `buffer` was not created with
     [VkDedicatedAllocationBufferCreateInfoNV](#VkDedicatedAllocationBufferCreateInfoNV)::`dedicatedAllocation`
-    equal to `VK_TRUE`, `memory` **must** not have been allocated
+    equal to [VK_TRUE](fundamentals.html#VK_TRUE), `memory` **must** not have been allocated
     dedicated for a specific buffer or image
 
 * 
@@ -14222,7 +14584,7 @@ in [VkExternalMemoryBufferCreateInfo](#VkExternalMemoryBufferCreateInfo)::`handl
 If `memory` was allocated with the
 [VkImportAndroidHardwareBufferInfoANDROID](memory.html#VkImportAndroidHardwareBufferInfoANDROID) memory import operation
 with a non-`NULL` `buffer` value,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 **must** also have been set in
 [VkExternalMemoryBufferCreateInfo](#VkExternalMemoryBufferCreateInfo)::`handleTypes` when
 `buffer` was created
@@ -14233,9 +14595,9 @@ with a non-`NULL` `buffer` value,
 If the
 [VkPhysicalDeviceBufferDeviceAddressFeatures](features.html#VkPhysicalDeviceBufferDeviceAddressFeatures)::`bufferDeviceAddress`
 feature is enabled and `buffer` was created with the
-`VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT` usage flag set,
+[VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](#VkBufferUsageFlagBits) usage flag set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) bit set
 
 * 
 [](#VUID-vkBindBufferMemory-bufferDeviceAddressCaptureReplay-09200) VUID-vkBindBufferMemory-bufferDeviceAddressCaptureReplay-09200
@@ -14243,9 +14605,9 @@ feature is enabled and `buffer` was created with the
 If the
 [VkPhysicalDeviceBufferDeviceAddressFeatures](features.html#VkPhysicalDeviceBufferDeviceAddressFeatures)::`bufferDeviceAddressCaptureReplay`
 feature is enabled and `buffer` was created with the
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` bit set,
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#VkBufferCreateFlagBits) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) bit set
 
 * 
 [](#VUID-vkBindBufferMemory-buffer-06408) VUID-vkBindBufferMemory-buffer-06408
@@ -14260,17 +14622,26 @@ with a [VkImportMemoryBufferCollectionFUCHSIA](#VkImportMemoryBufferCollectionFU
 [](#VUID-vkBindBufferMemory-descriptorBufferCaptureReplay-08112) VUID-vkBindBufferMemory-descriptorBufferCaptureReplay-08112
 
 If the `buffer` was created with the
-`VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` bit set,
+[VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#VkBufferCreateFlagBits) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) bit set
 
 * 
 [](#VUID-vkBindBufferMemory-buffer-09201) VUID-vkBindBufferMemory-buffer-09201
 
 If the `buffer` was created with the
-`VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` bit set,
+[VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#VkBufferCreateFlagBits) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) bit set
+
+* 
+[](#VUID-vkBindBufferMemory-buffer-11408) VUID-vkBindBufferMemory-buffer-11408
+
+If the `buffer` was created with the
+[VK_BUFFER_USAGE_DESCRIPTOR_HEAP_BIT_EXT](#VkBufferUsageFlagBits) or
+[VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkBufferUsageFlagBits2KHR) bit set, `memory`
+**must** have been allocated with the
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) bit set
 
 Valid Usage (Implicit)
 
@@ -14309,24 +14680,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR`
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To attach memory to buffer objects for one or more buffers at a time, call:
 
@@ -14364,7 +14735,7 @@ failure.
 
 If any of the memory binding operations described by `pBindInfos` fail,
 the [VkResult](fundamentals.html#VkResult) returned by this command **must** be the return value of any
-one of the memory binding operations which did not return `VK_SUCCESS`.
+one of the memory binding operations which did not return [VK_SUCCESS](fundamentals.html#VkResult).
 
 |  | If the `vkBindBufferMemory2` command failed,
 | --- | --- |
@@ -14397,24 +14768,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR`
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 `VkBindBufferMemoryInfo` contains members corresponding to the
 parameters of [vkBindBufferMemory](#vkBindBufferMemory).
@@ -14485,7 +14856,7 @@ allowed in the `memoryTypeBits` member of the
 [](#VUID-VkBindBufferMemoryInfo-None-10739) VUID-VkBindBufferMemoryInfo-None-10739
 
 If `memory` was not allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set,
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property set,
 `memoryOffset` **must** be an integer multiple of the `alignment`
 member of the `VkMemoryRequirements` structure returned from a call
 to `vkGetBufferMemoryRequirements` with `buffer`
@@ -14494,7 +14865,7 @@ to `vkGetBufferMemoryRequirements` with `buffer`
 [](#VUID-VkBindBufferMemoryInfo-memory-10740) VUID-VkBindBufferMemoryInfo-memory-10740
 
 If `memory` was allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set,
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property set,
 `memoryOffset` **must** be an integer multiple of the `alignment`
 member of the `VkTileMemoryRequirementsQCOM` structure returned from
 a call to `vkGetBufferMemoryRequirements` with `buffer`
@@ -14503,7 +14874,7 @@ a call to `vkGetBufferMemoryRequirements` with `buffer`
 [](#VUID-VkBindBufferMemoryInfo-None-10741) VUID-VkBindBufferMemoryInfo-None-10741
 
 If `memory` was not allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set,
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property set,
 `size` member of the `VkMemoryRequirements` structure returned
 from a call to `vkGetBufferMemoryRequirements` with `buffer`
 **must** be less than or equal to the size of `memory` minus
@@ -14513,7 +14884,7 @@ from a call to `vkGetBufferMemoryRequirements` with `buffer`
 [](#VUID-VkBindBufferMemoryInfo-memory-10742) VUID-VkBindBufferMemoryInfo-memory-10742
 
 If `memory` was allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set, `size`
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property set, `size`
 member of the `VkTileMemoryRequirementsQCOM` structure returned from
 a call to `vkGetBufferMemoryRequirements` with `buffer` **must** be
 less than or equal to the size of `memory` minus `memoryOffset`
@@ -14550,24 +14921,24 @@ its `pNext` chain, [VkMemoryDedicatedAllocateInfo](memory.html#VkMemoryDedicated
 [](#VUID-VkBindBufferMemoryInfo-None-01898) VUID-VkBindBufferMemoryInfo-None-01898
 
 If `buffer` was created with the
-`VK_BUFFER_CREATE_PROTECTED_BIT` bit set, the buffer **must** be bound
+[VK_BUFFER_CREATE_PROTECTED_BIT](#VkBufferCreateFlagBits) bit set, the buffer **must** be bound
 to a memory object allocated with a memory type that reports
-`VK_MEMORY_PROPERTY_PROTECTED_BIT`
+[VK_MEMORY_PROPERTY_PROTECTED_BIT](memory.html#VkMemoryPropertyFlagBits)
 
 * 
 [](#VUID-VkBindBufferMemoryInfo-None-01899) VUID-VkBindBufferMemoryInfo-None-01899
 
 If `buffer` was created with the
-`VK_BUFFER_CREATE_PROTECTED_BIT` bit not set, the buffer **must** not
+[VK_BUFFER_CREATE_PROTECTED_BIT](#VkBufferCreateFlagBits) bit not set, the buffer **must** not
 be bound to a memory object allocated with a memory type that reports
-`VK_MEMORY_PROPERTY_PROTECTED_BIT`
+[VK_MEMORY_PROPERTY_PROTECTED_BIT](memory.html#VkMemoryPropertyFlagBits)
 
 * 
 [](#VUID-VkBindBufferMemoryInfo-buffer-01038) VUID-VkBindBufferMemoryInfo-buffer-01038
 
 If `buffer` was created with
 [VkDedicatedAllocationBufferCreateInfoNV](#VkDedicatedAllocationBufferCreateInfoNV)::`dedicatedAllocation`
-equal to `VK_TRUE`, `memory` **must** have been allocated with
+equal to [VK_TRUE](fundamentals.html#VK_TRUE), `memory` **must** have been allocated with
 [VkDedicatedAllocationMemoryAllocateInfoNV](memory.html#VkDedicatedAllocationMemoryAllocateInfoNV)::`buffer` equal to a
 buffer handle created with identical creation parameters to `buffer`
 and `memoryOffset` **must** be zero
@@ -14582,7 +14953,7 @@ and `memoryOffset` **must** be zero
 and
     `buffer` was not created with
     [VkDedicatedAllocationBufferCreateInfoNV](#VkDedicatedAllocationBufferCreateInfoNV)::`dedicatedAllocation`
-    equal to `VK_TRUE`, `memory` **must** not have been allocated
+    equal to [VK_TRUE](fundamentals.html#VK_TRUE), `memory` **must** not have been allocated
     dedicated for a specific buffer or image
 
 * 
@@ -14610,7 +14981,7 @@ in [VkExternalMemoryBufferCreateInfo](#VkExternalMemoryBufferCreateInfo)::`handl
 If `memory` was allocated with the
 [VkImportAndroidHardwareBufferInfoANDROID](memory.html#VkImportAndroidHardwareBufferInfoANDROID) memory import operation
 with a non-`NULL` `buffer` value,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 **must** also have been set in
 [VkExternalMemoryBufferCreateInfo](#VkExternalMemoryBufferCreateInfo)::`handleTypes` when
 `buffer` was created
@@ -14621,9 +14992,9 @@ with a non-`NULL` `buffer` value,
 If the
 [VkPhysicalDeviceBufferDeviceAddressFeatures](features.html#VkPhysicalDeviceBufferDeviceAddressFeatures)::`bufferDeviceAddress`
 feature is enabled and `buffer` was created with the
-`VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT` usage flag set,
+[VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](#VkBufferUsageFlagBits) usage flag set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) bit set
 
 * 
 [](#VUID-VkBindBufferMemoryInfo-bufferDeviceAddressCaptureReplay-09200) VUID-VkBindBufferMemoryInfo-bufferDeviceAddressCaptureReplay-09200
@@ -14631,9 +15002,9 @@ feature is enabled and `buffer` was created with the
 If the
 [VkPhysicalDeviceBufferDeviceAddressFeatures](features.html#VkPhysicalDeviceBufferDeviceAddressFeatures)::`bufferDeviceAddressCaptureReplay`
 feature is enabled and `buffer` was created with the
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` bit set,
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#VkBufferCreateFlagBits) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) bit set
 
 * 
 [](#VUID-VkBindBufferMemoryInfo-buffer-06408) VUID-VkBindBufferMemoryInfo-buffer-06408
@@ -14648,17 +15019,26 @@ with a [VkImportMemoryBufferCollectionFUCHSIA](#VkImportMemoryBufferCollectionFU
 [](#VUID-VkBindBufferMemoryInfo-descriptorBufferCaptureReplay-08112) VUID-VkBindBufferMemoryInfo-descriptorBufferCaptureReplay-08112
 
 If the `buffer` was created with the
-`VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` bit set,
+[VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#VkBufferCreateFlagBits) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) bit set
 
 * 
 [](#VUID-VkBindBufferMemoryInfo-buffer-09201) VUID-VkBindBufferMemoryInfo-buffer-09201
 
 If the `buffer` was created with the
-`VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` bit set,
+[VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#VkBufferCreateFlagBits) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) bit set
+
+* 
+[](#VUID-VkBindBufferMemoryInfo-buffer-11408) VUID-VkBindBufferMemoryInfo-buffer-11408
+
+If the `buffer` was created with the
+[VK_BUFFER_USAGE_DESCRIPTOR_HEAP_BIT_EXT](#VkBufferUsageFlagBits) or
+[VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkBufferUsageFlagBits2KHR) bit set, `memory`
+**must** have been allocated with the
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) bit set
 
 * 
 [](#VUID-VkBindBufferMemoryInfo-pNext-01605) VUID-VkBindBufferMemoryInfo-pNext-01605
@@ -14674,7 +15054,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindBufferMemoryInfo-sType-sType) VUID-VkBindBufferMemoryInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBindBufferMemoryInfo-pNext-pNext) VUID-VkBindBufferMemoryInfo-pNext-pNext
@@ -14744,14 +15124,14 @@ the buffer is attached to the instance of `memory` on the physical
 device with device index `pDeviceIndices`[i].
 
 If `deviceIndexCount` is zero and `memory` comes from a memory heap
-with the `VK_MEMORY_HEAP_MULTI_INSTANCE_BIT` bit set, then it is as if
+with the [VK_MEMORY_HEAP_MULTI_INSTANCE_BIT](memory.html#VkMemoryHeapFlagBits) bit set, then it is as if
 `pDeviceIndices` contains consecutive indices from zero to the number of
 physical devices in the logical device, minus one.
 In other words, by default each physical device attaches to its own instance
 of `memory`.
 
 If `deviceIndexCount` is zero and `memory` comes from a memory heap
-without the `VK_MEMORY_HEAP_MULTI_INSTANCE_BIT` bit set, then it is as
+without the [VK_MEMORY_HEAP_MULTI_INSTANCE_BIT](memory.html#VkMemoryHeapFlagBits) bit set, then it is as
 if `pDeviceIndices` contains an array of zeros.
 In other words, by default each physical device attaches to instance zero.
 
@@ -14773,7 +15153,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindBufferMemoryDeviceGroupInfo-sType-sType) VUID-VkBindBufferMemoryDeviceGroupInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBindBufferMemoryDeviceGroupInfo-pDeviceIndices-parameter) VUID-VkBindBufferMemoryDeviceGroupInfo-pDeviceIndices-parameter
@@ -14801,7 +15181,7 @@ typedef VkBindMemoryStatus VkBindMemoryStatusKHR;
 structure.
 
 * 
-`pResult` is a pointer to a `VkResult` value.
+`pResult` is a pointer to a [VkResult](fundamentals.html#VkResult) value.
 
 If the `pNext` chain of [VkBindBufferMemoryInfo](#VkBindBufferMemoryInfo) or
 [VkBindImageMemoryInfo](#VkBindImageMemoryInfo) includes a `VkBindMemoryStatus` structure,
@@ -14813,7 +15193,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindMemoryStatus-sType-sType) VUID-VkBindMemoryStatus-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_MEMORY_STATUS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_MEMORY_STATUS](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBindMemoryStatus-pResult-parameter) VUID-VkBindMemoryStatus-pResult-parameter
@@ -14821,7 +15201,7 @@ Valid Usage (Implicit)
  `pResult` **must** be a valid pointer to a [VkResult](fundamentals.html#VkResult) value
 
 To attach memory to a `VkImage` object created without the
-`VK_IMAGE_CREATE_DISJOINT_BIT` set, call:
+[VK_IMAGE_CREATE_DISJOINT_BIT](#VkImageCreateFlagBits) set, call:
 
 // Provided by VK_VERSION_1_0
 VkResult vkBindImageMemory(
@@ -14918,23 +15298,23 @@ its `pNext` chain, [VkMemoryDedicatedAllocateInfo](memory.html#VkMemoryDedicated
 * 
 [](#VUID-vkBindImageMemory-None-01901) VUID-vkBindImageMemory-None-01901
 
-If image was created with the `VK_IMAGE_CREATE_PROTECTED_BIT` bit
+If image was created with the [VK_IMAGE_CREATE_PROTECTED_BIT](#VkImageCreateFlagBits) bit
 set, the image **must** be bound to a memory object allocated with a memory
-type that reports `VK_MEMORY_PROPERTY_PROTECTED_BIT`
+type that reports [VK_MEMORY_PROPERTY_PROTECTED_BIT](memory.html#VkMemoryPropertyFlagBits)
 
 * 
 [](#VUID-vkBindImageMemory-None-01902) VUID-vkBindImageMemory-None-01902
 
-If image was created with the `VK_IMAGE_CREATE_PROTECTED_BIT` bit
+If image was created with the [VK_IMAGE_CREATE_PROTECTED_BIT](#VkImageCreateFlagBits) bit
 not set, the image **must** not be bound to a memory object created with a
-memory type that reports `VK_MEMORY_PROPERTY_PROTECTED_BIT`
+memory type that reports [VK_MEMORY_PROPERTY_PROTECTED_BIT](memory.html#VkMemoryPropertyFlagBits)
 
 * 
 [](#VUID-vkBindImageMemory-image-01050) VUID-vkBindImageMemory-image-01050
 
 If `image` was created with
 [VkDedicatedAllocationImageCreateInfoNV](#VkDedicatedAllocationImageCreateInfoNV)::`dedicatedAllocation`
-equal to `VK_TRUE`, `memory` **must** have been created with
+equal to [VK_TRUE](fundamentals.html#VK_TRUE), `memory` **must** have been created with
 [VkDedicatedAllocationMemoryAllocateInfoNV](memory.html#VkDedicatedAllocationMemoryAllocateInfoNV)::`image` equal to an
 image handle created with identical creation parameters to `image`
 and `memoryOffset` **must** be zero
@@ -14949,7 +15329,7 @@ and `memoryOffset` **must** be zero
 and
     `image` was not created with
     [VkDedicatedAllocationImageCreateInfoNV](#VkDedicatedAllocationImageCreateInfoNV)::`dedicatedAllocation`
-    equal to `VK_TRUE`, `memory` **must** not have been allocated
+    equal to [VK_TRUE](fundamentals.html#VK_TRUE), `memory` **must** not have been allocated
     dedicated for a specific buffer or image
 
 * 
@@ -14977,32 +15357,32 @@ in [VkExternalMemoryImageCreateInfo](#VkExternalMemoryImageCreateInfo)::`handleT
 If `memory` was created with the
 [VkImportAndroidHardwareBufferInfoANDROID](memory.html#VkImportAndroidHardwareBufferInfoANDROID) memory import operation
 with a non-`NULL` `buffer` value,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 **must** also have been set in
 [VkExternalMemoryImageCreateInfo](#VkExternalMemoryImageCreateInfo)::`handleTypes` when
 `image` was created
 
 * 
-[](#VUID-vkBindImageMemory-descriptorBufferCaptureReplay-08113) VUID-vkBindImageMemory-descriptorBufferCaptureReplay-08113
+[](#VUID-vkBindImageMemory-image-08113) VUID-vkBindImageMemory-image-08113
 
 If the `image` was created with the
-`VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` bit set,
+[VK_IMAGE_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_EXT](#VkImageCreateFlagBits) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) bit set
 
 * 
 [](#VUID-vkBindImageMemory-image-09202) VUID-vkBindImageMemory-image-09202
 
 If the `image` was created with the
-`VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` bit set,
+[VK_IMAGE_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_EXT](#VkImageCreateFlagBits) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) bit set
 
 * 
 [](#VUID-vkBindImageMemory-image-01608) VUID-vkBindImageMemory-image-01608
 
 `image` **must** not have been created with the
-`VK_IMAGE_CREATE_DISJOINT_BIT` set
+[VK_IMAGE_CREATE_DISJOINT_BIT](#VkImageCreateFlagBits) set
 
 * 
 [](#VUID-vkBindImageMemory-memory-01047) VUID-vkBindImageMemory-memory-01047
@@ -15016,7 +15396,7 @@ allowed in the `memoryTypeBits` member of the
 [](#VUID-vkBindImageMemory-None-10735) VUID-vkBindImageMemory-None-10735
 
 If `memory` was not allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set,
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property set,
 `memoryOffset` **must** be an integer multiple of the `alignment`
 member of the `VkMemoryRequirements` structure returned from a call
 to [vkGetImageMemoryRequirements](#vkGetImageMemoryRequirements) with `image`
@@ -15025,16 +15405,16 @@ to [vkGetImageMemoryRequirements](#vkGetImageMemoryRequirements) with `image`
 [](#VUID-vkBindImageMemory-memory-10736) VUID-vkBindImageMemory-memory-10736
 
 If `memory` was allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set,
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property set,
 `memoryOffset` **must** be an integer multiple of the `alignment`
 member of the `VkTileMemoryRequirementsQCOM` structure returned from
-a call to `vkGetImageMemoryRequirements` with `image`
+a call to `vkGetImageMemoryRequirements2` with `image`
 
 * 
 [](#VUID-vkBindImageMemory-None-10737) VUID-vkBindImageMemory-None-10737
 
 If `memory` was not allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set,
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property set,
 `size` member of the `VkMemoryRequirements` structure returned
 from a call to `vkGetImageMemoryRequirements` with `image` **must**
 be less than or equal to the size of `memory` minus
@@ -15044,9 +15424,9 @@ be less than or equal to the size of `memory` minus
 [](#VUID-vkBindImageMemory-memory-10738) VUID-vkBindImageMemory-memory-10738
 
 If `memory` was allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set, `size`
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property set, `size`
 member of the `VkTileMemoryRequirementsQCOM` structure returned from
-a call to `vkGetImageMemoryRequirements` with `image` **must** be
+a call to `vkGetImageMemoryRequirements2` with `image` **must** be
 less than or equal to the size of `memory` minus `memoryOffset`
 
 * 
@@ -15095,21 +15475,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To attach memory to image objects for one or more images at a time, call:
 
@@ -15146,7 +15526,7 @@ failure.
 
 If any of the memory binding operations described by `pBindInfos` fail,
 the [VkResult](fundamentals.html#VkResult) returned by this command **must** be the return value of any
-one of the memory binding operations which did not return `VK_SUCCESS`.
+one of the memory binding operations which did not return [VK_SUCCESS](fundamentals.html#VkResult).
 
 |  | If the `vkBindImageMemory2` command failed,
 | --- | --- |
@@ -15163,7 +15543,7 @@ Valid Usage
 [](#VUID-vkBindImageMemory2-pBindInfos-02858) VUID-vkBindImageMemory2-pBindInfos-02858
 
 If any [VkBindImageMemoryInfo](#VkBindImageMemoryInfo)::`image` was created with
-`VK_IMAGE_CREATE_DISJOINT_BIT` then all planes of
+[VK_IMAGE_CREATE_DISJOINT_BIT](#VkImageCreateFlagBits) then all planes of
 [VkBindImageMemoryInfo](#VkBindImageMemoryInfo)::`image` **must** be bound individually in
 separate `pBindInfos`
 
@@ -15195,21 +15575,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 `VkBindImageMemoryInfo` contains members corresponding to the parameters
 of [vkBindImageMemory](#vkBindImageMemory).
@@ -15318,23 +15698,23 @@ its `pNext` chain, [VkMemoryDedicatedAllocateInfo](memory.html#VkMemoryDedicated
 * 
 [](#VUID-VkBindImageMemoryInfo-None-01901) VUID-VkBindImageMemoryInfo-None-01901
 
-If image was created with the `VK_IMAGE_CREATE_PROTECTED_BIT` bit
+If image was created with the [VK_IMAGE_CREATE_PROTECTED_BIT](#VkImageCreateFlagBits) bit
 set, the image **must** be bound to a memory object allocated with a memory
-type that reports `VK_MEMORY_PROPERTY_PROTECTED_BIT`
+type that reports [VK_MEMORY_PROPERTY_PROTECTED_BIT](memory.html#VkMemoryPropertyFlagBits)
 
 * 
 [](#VUID-VkBindImageMemoryInfo-None-01902) VUID-VkBindImageMemoryInfo-None-01902
 
-If image was created with the `VK_IMAGE_CREATE_PROTECTED_BIT` bit
+If image was created with the [VK_IMAGE_CREATE_PROTECTED_BIT](#VkImageCreateFlagBits) bit
 not set, the image **must** not be bound to a memory object created with a
-memory type that reports `VK_MEMORY_PROPERTY_PROTECTED_BIT`
+memory type that reports [VK_MEMORY_PROPERTY_PROTECTED_BIT](memory.html#VkMemoryPropertyFlagBits)
 
 * 
 [](#VUID-VkBindImageMemoryInfo-image-01050) VUID-VkBindImageMemoryInfo-image-01050
 
 If `image` was created with
 [VkDedicatedAllocationImageCreateInfoNV](#VkDedicatedAllocationImageCreateInfoNV)::`dedicatedAllocation`
-equal to `VK_TRUE`, `memory` **must** have been created with
+equal to [VK_TRUE](fundamentals.html#VK_TRUE), `memory` **must** have been created with
 [VkDedicatedAllocationMemoryAllocateInfoNV](memory.html#VkDedicatedAllocationMemoryAllocateInfoNV)::`image` equal to an
 image handle created with identical creation parameters to `image`
 and `memoryOffset` **must** be zero
@@ -15349,7 +15729,7 @@ and `memoryOffset` **must** be zero
 and
     `image` was not created with
     [VkDedicatedAllocationImageCreateInfoNV](#VkDedicatedAllocationImageCreateInfoNV)::`dedicatedAllocation`
-    equal to `VK_TRUE`, `memory` **must** not have been allocated
+    equal to [VK_TRUE](fundamentals.html#VK_TRUE), `memory` **must** not have been allocated
     dedicated for a specific buffer or image
 
 * 
@@ -15377,67 +15757,96 @@ in [VkExternalMemoryImageCreateInfo](#VkExternalMemoryImageCreateInfo)::`handleT
 If `memory` was created with the
 [VkImportAndroidHardwareBufferInfoANDROID](memory.html#VkImportAndroidHardwareBufferInfoANDROID) memory import operation
 with a non-`NULL` `buffer` value,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 **must** also have been set in
 [VkExternalMemoryImageCreateInfo](#VkExternalMemoryImageCreateInfo)::`handleTypes` when
 `image` was created
 
 * 
-[](#VUID-VkBindImageMemoryInfo-descriptorBufferCaptureReplay-08113) VUID-VkBindImageMemoryInfo-descriptorBufferCaptureReplay-08113
+[](#VUID-VkBindImageMemoryInfo-image-08113) VUID-VkBindImageMemoryInfo-image-08113
 
 If the `image` was created with the
-`VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` bit set,
+[VK_IMAGE_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_EXT](#VkImageCreateFlagBits) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) bit set
 
 * 
 [](#VUID-VkBindImageMemoryInfo-image-09202) VUID-VkBindImageMemoryInfo-image-09202
 
 If the `image` was created with the
-`VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` bit set,
+[VK_IMAGE_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_EXT](#VkImageCreateFlagBits) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) bit set
 
 * 
 [](#VUID-VkBindImageMemoryInfo-pNext-01615) VUID-VkBindImageMemoryInfo-pNext-01615
 
 If the `pNext` chain does not include a
-[VkBindImagePlaneMemoryInfo](#VkBindImagePlaneMemoryInfo) structure, `memory` **must** have been
-allocated using one of the memory types allowed in the
-`memoryTypeBits` member of the [VkMemoryRequirements](#VkMemoryRequirements) structure
-returned from a call to [vkGetImageMemoryRequirements2](#vkGetImageMemoryRequirements2) with
-`image`
+[VkBindImagePlaneMemoryInfo](#VkBindImagePlaneMemoryInfo) structure,
+and `memory` was not allocated from a memory heap with the
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property set,
+then `memory` **must** have been allocated using one of the memory
+types allowed in the `memoryTypeBits` member of the
+[VkMemoryRequirements](#VkMemoryRequirements) structure returned from a call to
+[vkGetImageMemoryRequirements2](#vkGetImageMemoryRequirements2) with `image`
 
 * 
 [](#VUID-VkBindImageMemoryInfo-pNext-01616) VUID-VkBindImageMemoryInfo-pNext-01616
 
 If the `pNext` chain does not include a
-[VkBindImagePlaneMemoryInfo](#VkBindImagePlaneMemoryInfo) structure, `memoryOffset` **must** be
-an integer multiple of the `alignment` member of the
-[VkMemoryRequirements](#VkMemoryRequirements) structure returned from a call to
-[vkGetImageMemoryRequirements2](#vkGetImageMemoryRequirements2) with `image`
+[VkBindImagePlaneMemoryInfo](#VkBindImagePlaneMemoryInfo) structure,
+and `memory` was not allocated from a memory heap with the
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property set,
+then `memoryOffset` **must** be an integer multiple of the
+`alignment` member of the [VkMemoryRequirements](#VkMemoryRequirements) structure
+returned from a call to [vkGetImageMemoryRequirements2](#vkGetImageMemoryRequirements2) with
+`image`
 
 * 
 [](#VUID-VkBindImageMemoryInfo-pNext-01617) VUID-VkBindImageMemoryInfo-pNext-01617
 
 If the `pNext` chain does not include a
-[VkBindImagePlaneMemoryInfo](#VkBindImagePlaneMemoryInfo) structure, the difference of the size
-of `memory` and `memoryOffset` **must** be greater than or equal to
-the `size` member of the [VkMemoryRequirements](#VkMemoryRequirements) structure
-returned from a call to [vkGetImageMemoryRequirements2](#vkGetImageMemoryRequirements2) with the
-same `image`
+[VkBindImagePlaneMemoryInfo](#VkBindImagePlaneMemoryInfo) structure,
+and `memory` was not allocated from a memory heap with the
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property set,
+then the difference of the size of `memory` and `memoryOffset`
+**must** be greater than or equal to the `size` member of the
+[VkMemoryRequirements](#VkMemoryRequirements) structure returned from a call to
+[vkGetImageMemoryRequirements2](#vkGetImageMemoryRequirements2) with the same `image`
+
+* 
+[](#VUID-VkBindImageMemoryInfo-pNext-12329) VUID-VkBindImageMemoryInfo-pNext-12329
+
+If the `pNext` chain does not include a
+[VkBindImagePlaneMemoryInfo](#VkBindImagePlaneMemoryInfo) structure, and `memory` was
+allocated from a memory heap with the
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property set, then
+`memoryOffset` **must** be an integer multiple of the `alignment`
+member of the `VkTileMemoryRequirementsQCOM` structure returned from
+a call to `vkGetImageMemoryRequirements2` with `image`
+
+* 
+[](#VUID-VkBindImageMemoryInfo-pNext-12330) VUID-VkBindImageMemoryInfo-pNext-12330
+
+If the `pNext` chain does not include a
+[VkBindImagePlaneMemoryInfo](#VkBindImagePlaneMemoryInfo) structure, and `memory` was
+allocated from a memory heap with the
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property set, then `size`
+member of the `VkTileMemoryRequirementsQCOM` structure returned from
+a call to `vkGetImageMemoryRequirements2` with `image` **must** be
+less than or equal to the size of `memory` minus `memoryOffset`
 
 * 
 [](#VUID-VkBindImageMemoryInfo-pNext-01618) VUID-VkBindImageMemoryInfo-pNext-01618
 
 If the `pNext` chain includes a [VkBindImagePlaneMemoryInfo](#VkBindImagePlaneMemoryInfo)
 structure, `image` **must** have been created with the
-`VK_IMAGE_CREATE_DISJOINT_BIT` bit set
+[VK_IMAGE_CREATE_DISJOINT_BIT](#VkImageCreateFlagBits) bit set
 
 * 
 [](#VUID-VkBindImageMemoryInfo-image-07736) VUID-VkBindImageMemoryInfo-image-07736
 
-If `image` was created with the `VK_IMAGE_CREATE_DISJOINT_BIT`
+If `image` was created with the [VK_IMAGE_CREATE_DISJOINT_BIT](#VkImageCreateFlagBits)
 bit set, then the `pNext` chain **must** include a
 [VkBindImagePlaneMemoryInfo](#VkBindImagePlaneMemoryInfo) structure
 
@@ -15493,7 +15902,7 @@ If the `pNext` chain includes a
 [VkBindImageMemoryDeviceGroupInfo](#VkBindImageMemoryDeviceGroupInfo) structure, and
 [VkBindImageMemoryDeviceGroupInfo](#VkBindImageMemoryDeviceGroupInfo)::`splitInstanceBindRegionCount`
 is not zero, then `image` **must** have been created with the
-`VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT` bit set
+[VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT](#VkImageCreateFlagBits) bit set
 
 * 
 [](#VUID-VkBindImageMemoryInfo-pNext-01628) VUID-VkBindImageMemoryInfo-pNext-01628
@@ -15541,12 +15950,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindImageMemoryInfo-sType-sType) VUID-VkBindImageMemoryInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBindImageMemoryInfo-pNext-pNext) VUID-VkBindImageMemoryInfo-pNext-pNext
 
- Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkBindImageMemoryDeviceGroupInfo](#VkBindImageMemoryDeviceGroupInfo), [VkBindImageMemorySwapchainInfoKHR](#VkBindImageMemorySwapchainInfoKHR), [VkBindImagePlaneMemoryInfo](#VkBindImagePlaneMemoryInfo), [VkBindMemoryStatus](#VkBindMemoryStatus), or [VkNativeBufferOHOS](#VkNativeBufferOHOS)
+ Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkBindImageMemoryDeviceGroupInfo](#VkBindImageMemoryDeviceGroupInfo), [VkBindImageMemorySwapchainInfoKHR](#VkBindImageMemorySwapchainInfoKHR), [VkBindImagePlaneMemoryInfo](#VkBindImagePlaneMemoryInfo), or [VkBindMemoryStatus](#VkBindMemoryStatus)
 
 * 
 [](#VUID-VkBindImageMemoryInfo-sType-unique) VUID-VkBindImageMemoryInfo-sType-unique
@@ -15632,7 +16041,7 @@ block at (0,0) corresponds to memory starting at `memoryOffset`.
 
 If `splitInstanceBindRegionCount` and `deviceIndexCount` are zero
 and the memory comes from a memory heap with the
-`VK_MEMORY_HEAP_MULTI_INSTANCE_BIT` bit set, then it is as if
+[VK_MEMORY_HEAP_MULTI_INSTANCE_BIT](memory.html#VkMemoryHeapFlagBits) bit set, then it is as if
 `pDeviceIndices` contains consecutive indices from zero to the number of
 physical devices in the logical device, minus one.
 In other words, by default each physical device attaches to its own instance
@@ -15640,7 +16049,7 @@ of the memory.
 
 If `splitInstanceBindRegionCount` and `deviceIndexCount` are zero
 and the memory comes from a memory heap without the
-`VK_MEMORY_HEAP_MULTI_INSTANCE_BIT` bit set, then it is as if
+[VK_MEMORY_HEAP_MULTI_INSTANCE_BIT](memory.html#VkMemoryHeapFlagBits) bit set, then it is as if
 `pDeviceIndices` contains an array of zeros.
 In other words, by default each physical device attaches to instance zero.
 
@@ -15716,7 +16125,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindImageMemoryDeviceGroupInfo-sType-sType) VUID-VkBindImageMemoryDeviceGroupInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBindImageMemoryDeviceGroupInfo-pDeviceIndices-parameter) VUID-VkBindImageMemoryDeviceGroupInfo-pDeviceIndices-parameter
@@ -15776,7 +16185,7 @@ Valid Usage
 [](#VUID-VkBindImageMemorySwapchainInfoKHR-swapchain-07756) VUID-VkBindImageMemorySwapchainInfoKHR-swapchain-07756
 
 If the `swapchain` has been created with
-`VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR`,
+[VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR](VK_KHR_surface/wsi.html#VkSwapchainCreateFlagBitsKHR),
 `imageIndex` **must** be one that has previously been returned by
 [vkAcquireNextImageKHR](VK_KHR_surface/wsi.html#vkAcquireNextImageKHR) or [vkAcquireNextImage2KHR](VK_KHR_surface/wsi.html#vkAcquireNextImage2KHR)
 
@@ -15785,7 +16194,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindImageMemorySwapchainInfoKHR-sType-sType) VUID-VkBindImageMemorySwapchainInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBindImageMemorySwapchainInfoKHR-swapchain-parameter) VUID-VkBindImageMemorySwapchainInfoKHR-swapchain-parameter
@@ -15822,7 +16231,7 @@ typedef VkBindImagePlaneMemoryInfo VkBindImagePlaneMemoryInfoKHR;
 structure.
 
 * 
-`planeAspect` is a `VkImageAspectFlagBits` value specifying the
+`planeAspect` is a [VkImageAspectFlagBits](#VkImageAspectFlagBits) value specifying the
 aspect of the disjoint image plane to bind.
 
 Valid Usage
@@ -15830,15 +16239,15 @@ Valid Usage
 * 
 [](#VUID-VkBindImagePlaneMemoryInfo-planeAspect-02283) VUID-VkBindImagePlaneMemoryInfo-planeAspect-02283
 
-If the image’s `tiling` is `VK_IMAGE_TILING_LINEAR` or
-`VK_IMAGE_TILING_OPTIMAL`, then `planeAspect` **must** be a single
+If the image’s `tiling` is [VK_IMAGE_TILING_LINEAR](#VkImageTiling) or
+[VK_IMAGE_TILING_OPTIMAL](#VkImageTiling), then `planeAspect` **must** be a single
 valid [multi-planar aspect mask](formats.html#formats-multiplanar-image-aspect) bit
 
 * 
 [](#VUID-VkBindImagePlaneMemoryInfo-planeAspect-02284) VUID-VkBindImagePlaneMemoryInfo-planeAspect-02284
 
 If the image’s `tiling` is
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then `planeAspect`
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling), then `planeAspect`
 **must** be a single valid *memory plane* for the image (that is,
 `aspectMask` **must** specify a plane index that is less than the
 [VkDrmFormatModifierPropertiesEXT](formats.html#VkDrmFormatModifierPropertiesEXT)::`drmFormatModifierPlaneCount`
@@ -15850,7 +16259,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindImagePlaneMemoryInfo-sType-sType) VUID-VkBindImagePlaneMemoryInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBindImagePlaneMemoryInfo-planeAspect-parameter) VUID-VkBindImagePlaneMemoryInfo-planeAspect-parameter
@@ -15900,21 +16309,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkBindTensorMemoryInfoARM` structure is defined as:
 
@@ -16029,7 +16438,7 @@ in [VkExternalMemoryTensorCreateInfoARM](#VkExternalMemoryTensorCreateInfoARM)::
 If `memory` was allocated with the
 [VkImportAndroidHardwareBufferInfoANDROID](memory.html#VkImportAndroidHardwareBufferInfoANDROID) memory import operation
 with a non-`NULL` `buffer` value,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 **must** also have been set in
 [VkExternalMemoryTensorCreateInfoARM](#VkExternalMemoryTensorCreateInfoARM)::`handleTypes` when
 `tensor` was created
@@ -16038,40 +16447,56 @@ with a non-`NULL` `buffer` value,
 [](#VUID-VkBindTensorMemoryInfoARM-tensor-09718) VUID-VkBindTensorMemoryInfoARM-tensor-09718
 
 If `tensor` was created with the
-`VK_TENSOR_CREATE_PROTECTED_BIT_ARM` bit set, the tensor **must** be
+[VK_TENSOR_CREATE_PROTECTED_BIT_ARM](#VkTensorCreateFlagBitsARM) bit set, the tensor **must** be
 bound to a memory object allocated with a memory type that reports
-`VK_MEMORY_PROPERTY_PROTECTED_BIT`
+[VK_MEMORY_PROPERTY_PROTECTED_BIT](memory.html#VkMemoryPropertyFlagBits)
 
 * 
 [](#VUID-VkBindTensorMemoryInfoARM-tensor-09719) VUID-VkBindTensorMemoryInfoARM-tensor-09719
 
 If `tensor` was created with the
-`VK_TENSOR_CREATE_PROTECTED_BIT_ARM` bit not set, the tensor **must**
+[VK_TENSOR_CREATE_PROTECTED_BIT_ARM](#VkTensorCreateFlagBitsARM) bit not set, the tensor **must**
 not be bound to a memory object allocated with a memory type that
-reports `VK_MEMORY_PROPERTY_PROTECTED_BIT`
+reports [VK_MEMORY_PROPERTY_PROTECTED_BIT](memory.html#VkMemoryPropertyFlagBits)
 
 * 
 [](#VUID-VkBindTensorMemoryInfoARM-tensor-09943) VUID-VkBindTensorMemoryInfoARM-tensor-09943
 
 If `tensor` was created with the
-`VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM` bit set,
+[VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM](#VkTensorCreateFlagBitsARM) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) bit set
 
 * 
 [](#VUID-VkBindTensorMemoryInfoARM-tensor-09944) VUID-VkBindTensorMemoryInfoARM-tensor-09944
 
 If `tensor` was created with the
-`VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM` bit set,
+[VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM](#VkTensorCreateFlagBitsARM) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) bit set
+
+* 
+[](#VUID-VkBindTensorMemoryInfoARM-tensor-11406) VUID-VkBindTensorMemoryInfoARM-tensor-11406
+
+If `tensor` was created with the
+[VK_TENSOR_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_ARM](#VkTensorCreateFlagBitsARM) bit set,
+`memory` **must** have been allocated with the
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) bit set
+
+* 
+[](#VUID-VkBindTensorMemoryInfoARM-tensor-11407) VUID-VkBindTensorMemoryInfoARM-tensor-11407
+
+If `tensor` was created with the
+[VK_TENSOR_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_ARM](#VkTensorCreateFlagBitsARM) bit set,
+`memory` **must** have been allocated with the
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) bit set
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkBindTensorMemoryInfoARM-sType-sType) VUID-VkBindTensorMemoryInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_TENSOR_MEMORY_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_TENSOR_MEMORY_INFO_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBindTensorMemoryInfoARM-pNext-pNext) VUID-VkBindTensorMemoryInfoARM-pNext-pNext
@@ -16159,30 +16584,30 @@ typedef enum VkSharingMode {
 } VkSharingMode;
 
 * 
-`VK_SHARING_MODE_EXCLUSIVE` specifies that access to any range or
+[VK_SHARING_MODE_EXCLUSIVE](#VkSharingMode) specifies that access to any range or
 image subresource of the object will be exclusive to a single queue
 family at a time.
 
 * 
-`VK_SHARING_MODE_CONCURRENT` specifies that concurrent access to any
+[VK_SHARING_MODE_CONCURRENT](#VkSharingMode) specifies that concurrent access to any
 range or image subresource of the object from multiple queue families is
 supported.
 
-|  | `VK_SHARING_MODE_CONCURRENT` **may** result in lower performance access to
+|  | [VK_SHARING_MODE_CONCURRENT](#VkSharingMode) **may** result in lower performance access to
 | --- | --- |
-the buffer or image than `VK_SHARING_MODE_EXCLUSIVE`. |
+the buffer or image than [VK_SHARING_MODE_EXCLUSIVE](#VkSharingMode). |
 
 Ranges of buffers and image subresources of image objects created using
-`VK_SHARING_MODE_EXCLUSIVE` **must** only be accessed by queues in the
+[VK_SHARING_MODE_EXCLUSIVE](#VkSharingMode) **must** only be accessed by queues in the
 queue family that has *ownership* of the resource.
 Upon creation, such resources are not owned by any queue family; ownership
 is implicitly acquired upon first use within a queue.
-Once a resource using `VK_SHARING_MODE_EXCLUSIVE` is owned by some queue
+Once a resource using [VK_SHARING_MODE_EXCLUSIVE](#VkSharingMode) is owned by some queue
 family,
 unless the [`maintenance9`](features.html#features-maintenance9) feature is enabled,
 the application **must** perform a [queue family ownership transfer](synchronization.html#synchronization-queue-transfers) if it wishes to make the memory contents of a
 range or image subresource accessible to a different queue family.
-`VK_SHARING_MODE_EXCLUSIVE` resources that are already owned by a queue
+[VK_SHARING_MODE_EXCLUSIVE](#VkSharingMode) resources that are already owned by a queue
 family **may** be acquired by a different queue family without a queue family
 ownership transfer, but
 unless the [`maintenance9`](features.html#features-maintenance9) feature is enabled,
@@ -16190,11 +16615,11 @@ their contents become **undefined**.
 
 If the [`maintenance9`](features.html#features-maintenance9) feature is enabled, the
 contents of buffer resources, and of linear image resources (i.e., those
-created with `tiling` set to `VK_IMAGE_TILING_LINEAR`) are always
+created with `tiling` set to [VK_IMAGE_TILING_LINEAR](#VkImageTiling)) are always
 preserved when they are implicitly acquired by a different queue family on
 the same logical device (i.e., neither queue family is
-`VK_QUEUE_FAMILY_FOREIGN_EXT` or
-`VK_QUEUE_FAMILY_EXTERNAL`).
+[VK_QUEUE_FAMILY_FOREIGN_EXT](synchronization.html#VK_QUEUE_FAMILY_FOREIGN_EXT) or
+[VK_QUEUE_FAMILY_EXTERNAL](synchronization.html#VK_QUEUE_FAMILY_EXTERNAL)).
 This means that whenever the [`maintenance9`](features.html#features-maintenance9)
 feature is enabled, explicit queue family ownership transfers of buffer and
 linear image resources between different queue families on the same logical
@@ -16202,33 +16627,33 @@ device are **optional**.
 
 Additionally, if the [`maintenance9`](features.html#features-maintenance9) feature
 is enabled, the contents of some optimal image resources (i.e., those
-created with `VK_IMAGE_TILING_OPTIMAL`) are always preserved when they
+created with [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling)) are always preserved when they
 are implicitly acquired by a different queue family on the same logical
 device (i.e., neither queue family is
-`VK_QUEUE_FAMILY_FOREIGN_EXT` or
-`VK_QUEUE_FAMILY_EXTERNAL`).
+[VK_QUEUE_FAMILY_FOREIGN_EXT](synchronization.html#VK_QUEUE_FAMILY_FOREIGN_EXT) or
+[VK_QUEUE_FAMILY_EXTERNAL](synchronization.html#VK_QUEUE_FAMILY_EXTERNAL)).
 This applies only to optimal images that are being implicitly acquired by a
 queue family whose index bit is set in the current queue family’s
 [VkQueueFamilyOwnershipTransferPropertiesKHR](devsandqueues.html#VkQueueFamilyOwnershipTransferPropertiesKHR)::`optimalImageTransferToQueueFamilies`,
 and that were created without any of the following bits set in `usage`:
 
 * 
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT`
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](#VkImageUsageFlagBits)
 
 * 
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](#VkImageUsageFlagBits)
 
 * 
-`VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT`
+[VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](#VkImageUsageFlagBits)
 
 * 
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](#VkImageUsageFlagBits)
 
 * 
-`VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT`
+[VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](#VkImageUsageFlagBits)
 
 * 
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkImageUsageFlagBits)
 
 This means that whenever the [`maintenance9`](features.html#features-maintenance9)
 feature is enabled, explicit queue family ownership transfers of such image
@@ -16250,17 +16675,17 @@ compatibility and is not recommended for new applications. |
 [layout transition](#resources-image-layouts) from these layouts:
 
 * 
-`VK_IMAGE_LAYOUT_UNDEFINED`
+[VK_IMAGE_LAYOUT_UNDEFINED](#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_PREINITIALIZED`
+[VK_IMAGE_LAYOUT_PREINITIALIZED](#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT` |
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](#VkImageLayout) |
 
 A queue family **can** take ownership of an
 image subresource, tensor subresource,
-or buffer range of a resource created with `VK_SHARING_MODE_EXCLUSIVE`,
+or buffer range of a resource created with [VK_SHARING_MODE_EXCLUSIVE](#VkSharingMode),
 without an ownership transfer, in the same way as for a resource that was
 just created; however, taking ownership in this way has the effect that the
 contents of the image subresource or buffer range are **undefined**.
@@ -16268,7 +16693,7 @@ contents of the image subresource or buffer range are **undefined**.
 Ranges of
 buffers, tensor subresources of tensor objects,
 and image subresources of image objects created using
-`VK_SHARING_MODE_CONCURRENT` **must** only be accessed by queues from the
+[VK_SHARING_MODE_CONCURRENT](#VkSharingMode) **must** only be accessed by queues from the
 queue families specified through the `queueFamilyIndexCount` and
 `pQueueFamilyIndices` members of the corresponding create info
 structures.
@@ -16277,12 +16702,12 @@ Resources **should** only be accessed in the Vulkan instance that has exclusive
 ownership of their underlying memory.
 Only one Vulkan instance has exclusive ownership of a resource’s underlying
 memory at a given time, regardless of whether the resource was created using
-`VK_SHARING_MODE_EXCLUSIVE` or `VK_SHARING_MODE_CONCURRENT`.
+[VK_SHARING_MODE_EXCLUSIVE](#VkSharingMode) or [VK_SHARING_MODE_CONCURRENT](#VkSharingMode).
 Applications can transfer ownership of a resource’s underlying memory only
 if the memory has been imported from or exported to another instance or
 external API using external memory handles.
 The semantics for transferring ownership outside of the instance are similar
-to those used for transferring ownership of `VK_SHARING_MODE_EXCLUSIVE`
+to those used for transferring ownership of [VK_SHARING_MODE_EXCLUSIVE](#VkSharingMode)
 resources between queues, and is also accomplished using
 [VkBufferMemoryBarrier](synchronization.html#VkBufferMemoryBarrier) or [VkImageMemoryBarrier](synchronization.html#VkImageMemoryBarrier) operations.
 To make the contents of the underlying memory accessible in the destination
@@ -16299,8 +16724,8 @@ not specified explicitly when releasing ownership, nor is the source
 instance or API specified when acquiring ownership.
 Instead, the image or memory barrier’s `dstQueueFamilyIndex` or
 `srcQueueFamilyIndex` parameters are set to the reserved queue family
-index `VK_QUEUE_FAMILY_EXTERNAL`
-or `VK_QUEUE_FAMILY_FOREIGN_EXT`
+index [VK_QUEUE_FAMILY_EXTERNAL](synchronization.html#VK_QUEUE_FAMILY_EXTERNAL)
+or [VK_QUEUE_FAMILY_FOREIGN_EXT](synchronization.html#VK_QUEUE_FAMILY_FOREIGN_EXT)
 to represent the external destination or source respectively.
 
 Binding a resource to a memory object shared between multiple Vulkan
@@ -16313,7 +16738,7 @@ However, taking ownership in this way has the effect that the contents of
 the underlying memory are **undefined**.
 
 Accessing a resource backed by memory that is owned by a particular instance
-or API has the same semantics as accessing a `VK_SHARING_MODE_EXCLUSIVE`
+or API has the same semantics as accessing a [VK_SHARING_MODE_EXCLUSIVE](#VkSharingMode)
 resource, with one exception: Implementations **must** ensure layout
 transitions performed on one member of a set of identical subresources of
 identical images that alias the same range of an underlying memory object
@@ -16328,7 +16753,7 @@ provided both images are bound to the same region of external memory.
 Applications **may** also add resources to such a set after the content of the
 existing set members has been defined without making the content **undefined**
 by creating a new image with the initial layout
-`VK_IMAGE_LAYOUT_UNDEFINED` and binding it to the same region of
+[VK_IMAGE_LAYOUT_UNDEFINED](#VkImageLayout) and binding it to the same region of
 external memory as the existing images.
 
 |  | Because layout transitions apply to all identical images aliasing the same
@@ -16343,367 +16768,12 @@ initial layout of the image.
 The **undefined** layout specified when creating it is a placeholder to
 simplify valid usage requirements. |
 
-To obtain the Gralloc usage flag of a swapchain, call:
-
-// Provided by VK_OHOS_native_buffer
-VkResult vkGetSwapchainGrallocUsageOHOS(
-    VkDevice                                    device,
-    VkFormat                                    format,
-    VkImageUsageFlags                           imageUsage,
-    uint64_t*                                   grallocUsage);
-
-* 
-`device` is a valid `VkDevice` object used to create the
-swapchain image.
-
-* 
-`format` is a [VkFormat](formats.html#VkFormat) value specifying the format of the
-given image.
-
-* 
-`grallocUsage` is a bitmask for setting a mask of zero or more
-`OH_NativeBuffer_Usage`, which is defined in the C APIs references
-documentation of Open Harmony OS Graphics Module.
-
-Valid Usage (Implicit)
-
-* 
-[](#VUID-vkGetSwapchainGrallocUsageOHOS-device-parameter) VUID-vkGetSwapchainGrallocUsageOHOS-device-parameter
-
- `device` **must** be a valid [VkDevice](devsandqueues.html#VkDevice) handle
-
-* 
-[](#VUID-vkGetSwapchainGrallocUsageOHOS-format-parameter) VUID-vkGetSwapchainGrallocUsageOHOS-format-parameter
-
- `format` **must** be a valid [VkFormat](formats.html#VkFormat) value
-
-* 
-[](#VUID-vkGetSwapchainGrallocUsageOHOS-imageUsage-parameter) VUID-vkGetSwapchainGrallocUsageOHOS-imageUsage-parameter
-
- `imageUsage` **must** be a valid combination of [VkImageUsageFlagBits](#VkImageUsageFlagBits) values
-
-* 
-[](#VUID-vkGetSwapchainGrallocUsageOHOS-imageUsage-requiredbitmask) VUID-vkGetSwapchainGrallocUsageOHOS-imageUsage-requiredbitmask
-
- `imageUsage` **must** not be `0`
-
-* 
-[](#VUID-vkGetSwapchainGrallocUsageOHOS-grallocUsage-parameter) VUID-vkGetSwapchainGrallocUsageOHOS-grallocUsage-parameter
-
- `grallocUsage` **must** be a valid pointer to a `uint64_t` value
-
-Return Codes
-
-[Success](fundamentals.html#fundamentals-successcodes)
-
-* 
-`VK_SUCCESS`
-
-[Failure](fundamentals.html#fundamentals-errorcodes)
-
-* 
-`VK_ERROR_INITIALIZATION_FAILED`
-
-* 
-`VK_ERROR_UNKNOWN`
-
-* 
-`VK_ERROR_VALIDATION_FAILED`
-
-To obtain the ownership of a swapchain image, call:
-
-// Provided by VK_OHOS_native_buffer
-VkResult vkAcquireImageOHOS(
-    VkDevice                                    device,
-    VkImage                                     image,
-    int32_t                                     nativeFenceFd,
-    VkSemaphore                                 semaphore,
-    VkFence                                     fence);
-
-* 
-`device` is a valid `VkDevice` object used to create the
-swapchain image.
-
-* 
-`image` is the target image.
-
-* 
-`nativeFenceFd` is a file descriptor of the native fence.
-
-* 
-`semaphore` is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) or a [VkSemaphore](synchronization.html#VkSemaphore) that will
-be signaled when the nativeFenceFd is signaled.
-
-* 
-`fence` is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) or [VkFence](synchronization.html#VkFence) that will be
-signaled when the nativeFenceFd is signaled.
-
-Valid Usage (Implicit)
-
-* 
-[](#VUID-vkAcquireImageOHOS-device-parameter) VUID-vkAcquireImageOHOS-device-parameter
-
- `device` **must** be a valid [VkDevice](devsandqueues.html#VkDevice) handle
-
-* 
-[](#VUID-vkAcquireImageOHOS-image-parameter) VUID-vkAcquireImageOHOS-image-parameter
-
- `image` **must** be a valid [VkImage](#VkImage) handle
-
-* 
-[](#VUID-vkAcquireImageOHOS-semaphore-parameter) VUID-vkAcquireImageOHOS-semaphore-parameter
-
- If `semaphore` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `semaphore` **must** be a valid [VkSemaphore](synchronization.html#VkSemaphore) handle
-
-* 
-[](#VUID-vkAcquireImageOHOS-fence-parameter) VUID-vkAcquireImageOHOS-fence-parameter
-
- If `fence` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `fence` **must** be a valid [VkFence](synchronization.html#VkFence) handle
-
-* 
-[](#VUID-vkAcquireImageOHOS-image-parent) VUID-vkAcquireImageOHOS-image-parent
-
- `image` **must** have been created, allocated, or retrieved from `device`
-
-* 
-[](#VUID-vkAcquireImageOHOS-semaphore-parent) VUID-vkAcquireImageOHOS-semaphore-parent
-
- If `semaphore` is a valid handle, it **must** have been created, allocated, or retrieved from `device`
-
-* 
-[](#VUID-vkAcquireImageOHOS-fence-parent) VUID-vkAcquireImageOHOS-fence-parent
-
- If `fence` is a valid handle, it **must** have been created, allocated, or retrieved from `device`
-
-Return Codes
-
-[Success](fundamentals.html#fundamentals-successcodes)
-
-* 
-`VK_SUCCESS`
-
-[Failure](fundamentals.html#fundamentals-errorcodes)
-
-* 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
-
-* 
-`VK_ERROR_UNKNOWN`
-
-* 
-`VK_ERROR_VALIDATION_FAILED`
-
-To obtain the ownership of a swapchain image, call:
-
-// Provided by VK_OHOS_native_buffer
-VkResult vkQueueSignalReleaseImageOHOS(
-    VkQueue                                     queue,
-    uint32_t                                    waitSemaphoreCount,
-    const VkSemaphore*                          pWaitSemaphores,
-    VkImage                                     image,
-    int32_t*                                    pNativeFenceFd);
-
-* 
-`queue` is a handle of `VkQueue`.
-
-* 
-`waitSemaphoreCount` is the number of semaphores to wait on.
-
-* 
-`pWaitSemaphores` is a pointer to an array of [VkSemaphore](synchronization.html#VkSemaphore)
-handles upon which to wait before signaling the native fence.
-
-* 
-`images` is a handle of the [VkImage](#VkImage) to be released.
-
-* 
-`pNativeFenceFd` is a pointer to either a negative value or the file
-descriptor of a native fence.
-A negative value indicates that the processing workflow has been
-completed, and the calling party is not required to perform additional
-waiting before subsequent processes.
-Otherwise, a native fence will be created and be signaled when the image
-is ready for release.
-
-Valid Usage (Implicit)
-
-* 
-[](#VUID-vkQueueSignalReleaseImageOHOS-queue-parameter) VUID-vkQueueSignalReleaseImageOHOS-queue-parameter
-
- `queue` **must** be a valid [VkQueue](devsandqueues.html#VkQueue) handle
-
-* 
-[](#VUID-vkQueueSignalReleaseImageOHOS-pWaitSemaphores-parameter) VUID-vkQueueSignalReleaseImageOHOS-pWaitSemaphores-parameter
-
- `pWaitSemaphores` **must** be a valid pointer to an array of `waitSemaphoreCount` valid [VkSemaphore](synchronization.html#VkSemaphore) handles
-
-* 
-[](#VUID-vkQueueSignalReleaseImageOHOS-image-parameter) VUID-vkQueueSignalReleaseImageOHOS-image-parameter
-
- `image` **must** be a valid [VkImage](#VkImage) handle
-
-* 
-[](#VUID-vkQueueSignalReleaseImageOHOS-pNativeFenceFd-parameter) VUID-vkQueueSignalReleaseImageOHOS-pNativeFenceFd-parameter
-
- `pNativeFenceFd` **must** be a valid pointer to an `int32_t` value
-
-* 
-[](#VUID-vkQueueSignalReleaseImageOHOS-waitSemaphoreCount-arraylength) VUID-vkQueueSignalReleaseImageOHOS-waitSemaphoreCount-arraylength
-
- `waitSemaphoreCount` **must** be greater than `0`
-
-* 
-[](#VUID-vkQueueSignalReleaseImageOHOS-commonparent) VUID-vkQueueSignalReleaseImageOHOS-commonparent
-
- Each of `image`, `queue`, and the elements of `pWaitSemaphores` **must** have been created, allocated, or retrieved from the same [VkDevice](devsandqueues.html#VkDevice)
-
-Command Properties
-| [Command Buffer Levels](cmdbuffers.html#VkCommandBufferLevel) | [Render Pass Scope](renderpass.html#vkCmdBeginRenderPass) | [Video Coding Scope](videocoding.html#vkCmdBeginVideoCodingKHR) | [Supported Queue Types](devsandqueues.html#VkQueueFlagBits) | [Command Type](fundamentals.html#fundamentals-queueoperation-command-types) |
-| --- | --- | --- | --- | --- |
-| - | - | - | Any | - |
-
-Return Codes
-
-[Success](fundamentals.html#fundamentals-successcodes)
-
-* 
-`VK_SUCCESS`
-
-[Failure](fundamentals.html#fundamentals-errorcodes)
-
-* 
-`VK_ERROR_INITIALIZATION_FAILED`
-
-* 
-`VK_ERROR_UNKNOWN`
-
-* 
-`VK_ERROR_VALIDATION_FAILED`
-
-The `VkNativeBufferOHOS` structure is defined as:
-
-// Provided by VK_OHOS_native_buffer
-typedef struct VkNativeBufferOHOS {
-    VkStructureType           sType;
-    const void*               pNext;
-    struct OHBufferHandle*    handle;
-} VkNativeBufferOHOS;
-
-* 
-`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
-
-* 
-`pNext` is `NULL` or a pointer to a structure extending this
-structure.
-
-* 
-`handle` is a pointer to an `OHBufferHandle` object.
-
-`OHBufferHandle` is exposed by the Open Harmony OS NDK.
-
-Valid Usage (Implicit)
-
-* 
-[](#VUID-VkNativeBufferOHOS-sType-sType) VUID-VkNativeBufferOHOS-sType-sType
-
- `sType` **must** be `VK_STRUCTURE_TYPE_NATIVE_BUFFER_OHOS`
-
-* 
-[](#VUID-VkNativeBufferOHOS-handle-parameter) VUID-VkNativeBufferOHOS-handle-parameter
-
- `handle` **must** be a valid pointer to an `OHBufferHandle` value
-
-The `VkSwapchainImageCreateInfoOHOS` structure is defined as:
-
-// Provided by VK_OHOS_native_buffer
-typedef struct VkSwapchainImageCreateInfoOHOS {
-    VkStructureType                   sType;
-    const void*                       pNext;
-    VkSwapchainImageUsageFlagsOHOS    usage;
-} VkSwapchainImageCreateInfoOHOS;
-
-* 
-`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
-
-* 
-`pNext` is `NULL` or a pointer to a structure extending this
-structure.
-
-* 
-`usage` is a bitmask of [VkSwapchainImageUsageFlagBitsOHOS](#VkSwapchainImageUsageFlagBitsOHOS)
-specifying the usage of swapchain image.
-
-Valid Usage (Implicit)
-
-* 
-[](#VUID-VkSwapchainImageCreateInfoOHOS-sType-sType) VUID-VkSwapchainImageCreateInfoOHOS-sType-sType
-
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_IMAGE_CREATE_INFO_OHOS`
-
-* 
-[](#VUID-VkSwapchainImageCreateInfoOHOS-usage-parameter) VUID-VkSwapchainImageCreateInfoOHOS-usage-parameter
-
- `usage` **must** be a valid combination of [VkSwapchainImageUsageFlagBitsOHOS](#VkSwapchainImageUsageFlagBitsOHOS) values
-
-* 
-[](#VUID-VkSwapchainImageCreateInfoOHOS-usage-requiredbitmask) VUID-VkSwapchainImageCreateInfoOHOS-usage-requiredbitmask
-
- `usage` **must** not be `0`
-
-The `VkPhysicalDevicePresentationPropertiesOHOS` structure is defined
-as:
-
-// Provided by VK_OHOS_native_buffer
-typedef struct VkPhysicalDevicePresentationPropertiesOHOS {
-    VkStructureType    sType;
-    void*              pNext;
-    VkBool32           sharedImage;
-} VkPhysicalDevicePresentationPropertiesOHOS;
-
-* 
-`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
-
-* 
-`pNext` is `NULL` or a pointer to a structure extending this
-structure.
-
-* 
-`sharedImage` will be set to `VK_TRUE` if the driver can share
-the ownership of a image with the display system.
-
-Valid Usage (Implicit)
-
-* 
-[](#VUID-VkPhysicalDevicePresentationPropertiesOHOS-sType-sType) VUID-VkPhysicalDevicePresentationPropertiesOHOS-sType-sType
-
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENTATION_PROPERTIES_OHOS`
-
-Bits which **can** be set in [VkSwapchainImageCreateInfoOHOS](#VkSwapchainImageCreateInfoOHOS)::`usage`
-specifying the usage of swapchain image on Open Harmony OS platform are:
-
-// Provided by VK_OHOS_native_buffer
-typedef enum VkSwapchainImageUsageFlagBitsOHOS {
-    VK_SWAPCHAIN_IMAGE_USAGE_SHARED_BIT_OHOS = 0x00000001,
-} VkSwapchainImageUsageFlagBitsOHOS;
-
-* 
-`VK_SWAPCHAIN_IMAGE_USAGE_SHARED_BIT_OHOS` specifies that
-[VkSwapchainImageCreateInfoOHOS](#VkSwapchainImageCreateInfoOHOS) is used for creating a swapchain
-image whose internal native buffer can be shared for access by other
-applications.
-
-// Provided by VK_OHOS_native_buffer
-typedef VkFlags VkSwapchainImageUsageFlagsOHOS;
-
-`VkSwapchainImageUsageFlagsOHOS` is a bitmask type for setting a mask of
-zero or more [VkSwapchainImageUsageFlagBitsOHOS](#VkSwapchainImageUsageFlagBitsOHOS).
-
-// Provided by VK_OHOS_native_buffer
-struct OHBufferHandle;
-
-The `OHBufferHandle` type is used for obtaining and transferring
-information of buffer on Open Harmony OS platform.
-It is defined in Open Harmony OS NDK headers.
+When sharing resources with other APIs, it is generally left to those APIs
+to define how they interact with the Vulkan concepts of image layouts and
+fine-grained synchronization.
+However, some external memory handle types require use of specific image
+layouts when transitioning to or from external usage, as defined in the
+[external image implied layouts table](#resources-external-image-layouts).
 
 A range of a `VkDeviceMemory` allocation is *aliased* if it is bound to
 multiple resources simultaneously, as described below, via
@@ -16737,12 +16807,12 @@ of an application, if some large resources are used for disjoint periods of
 time. |
 
 When a [non-linear](../appendices/glossary.html#glossary-linear-resource),
-non-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` image is bound to an aliased
+non-[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](#VkImageCreateFlagBits) image is bound to an aliased
 range, all image subresources of the image *overlap* the range.
 When a linear image is bound to an aliased range, the image subresources
 that (according to the image’s advertised layout) include bytes from the
 aliased range overlap the range.
-When a `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` image has sparse image
+When a [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](#VkImageCreateFlagBits) image has sparse image
 blocks bound to an aliased range, only image subresources including those
 sparse image blocks overlap the range, and when the memory bound to the
 image’s mip tail overlaps an aliased range all image subresources in the mip
@@ -16754,13 +16824,13 @@ and linear image subresources are considered *host-accessible subresources*
 when they are in any of these layouts:
 
 * 
-`VK_IMAGE_LAYOUT_PREINITIALIZED`
+[VK_IMAGE_LAYOUT_PREINITIALIZED](#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_GENERAL`
+[VK_IMAGE_LAYOUT_GENERAL](#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](#VkImageLayout)
 
 That is, the host has a well-defined addressing scheme to interpret the
 contents, and thus the layout of the data in memory **can** be consistently
@@ -16822,7 +16892,7 @@ structures **may** continue being used to refer to that acceleration structure
 for operations acting on acceleration structures.
 
 If two aliases are both images that were created with identical creation
-parameters, both were created with the `VK_IMAGE_CREATE_ALIAS_BIT` flag
+parameters, both were created with the [VK_IMAGE_CREATE_ALIAS_BIT](#VkImageCreateFlagBits) flag
 set, and both are bound identically to memory
 except for [VkBindImageMemoryDeviceGroupInfo](#VkBindImageMemoryDeviceGroupInfo)::`pDeviceIndices` and
 [VkBindImageMemoryDeviceGroupInfo](#VkBindImageMemoryDeviceGroupInfo)::`pSplitInstanceBindRegions`,
@@ -16835,7 +16905,7 @@ contents of the memory in consistent ways under the same conditions, but
 with the following modifications:
 
 * 
-Both **must** have been created with the `VK_IMAGE_CREATE_DISJOINT_BIT`
+Both **must** have been created with the [VK_IMAGE_CREATE_DISJOINT_BIT](#VkImageCreateFlagBits)
 flag.
 
 * 
@@ -16857,7 +16927,7 @@ from the multi-planar image’s dimensions in the manner listed for
 
 * 
 If either image’s `tiling` is
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then both images **must** be
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#VkImageTiling), then both images **must** be
 [linear](../appendices/glossary.html#glossary-linear-resource).
 
 * 
@@ -16873,8 +16943,8 @@ subresource interpret the contents of the memory in consistent ways if and
 only if:
 
 * 
-The image was created with `VK_IMAGE_TILING_LINEAR` and the tensor
-was created with `VK_TENSOR_TILING_LINEAR_ARM`.
+The image was created with [VK_IMAGE_TILING_LINEAR](#VkImageTiling) and the tensor
+was created with [VK_TENSOR_TILING_LINEAR_ARM](#VkTensorTilingARM).
 The strides for the image subresource, as reported by
 [vkGetImageSubresourceLayout](#vkGetImageSubresourceLayout), are compatible with strides passed
 when creating the tensor, i.e.
@@ -16886,11 +16956,11 @@ must be equal to [VkSubresourceLayout](#VkSubresourceLayout)::`depthPitch` if
 [VkTensorDescriptionARM](#VkTensorDescriptionARM)::`dimensionCount` is greater than 3.
 
 * 
-The image was created with `VK_IMAGE_TILING_OPTIMAL` and the tensor
-was created with `VK_TENSOR_TILING_OPTIMAL_ARM`.
+The image was created with [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling) and the tensor
+was created with [VK_TENSOR_TILING_OPTIMAL_ARM](#VkTensorTilingARM).
 The image was created with the
-`VK_IMAGE_USAGE_TENSOR_ALIASING_BIT_ARM` usage flag set and the
-tensor was created with `VK_TENSOR_USAGE_IMAGE_ALIASING_BIT_ARM`.
+[VK_IMAGE_USAGE_TENSOR_ALIASING_BIT_ARM](#VkImageUsageFlagBits) usage flag set and the
+tensor was created with [VK_TENSOR_USAGE_IMAGE_ALIASING_BIT_ARM](#VkTensorUsageFlagBitsARM).
 
 * 
 The format of the tensor must be compatible with that of the individual
@@ -16915,14 +16985,14 @@ dimensions of the image plus 1) must be 1.
 
 * 
 The image subresource is in the
-`VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM` layout if the image was
-created with `VK_IMAGE_TILING_OPTIMAL`.
+[VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM](#VkImageLayout) layout if the image was
+created with [VK_IMAGE_TILING_OPTIMAL](#VkImageTiling).
 The image **must** be transitioned to
-`VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM` prior to any reads via the
+[VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM](#VkImageLayout) prior to any reads via the
 tensor resource for those reads to return data consistent with that
 provided to the image writes.
 The image **must** be transitioned to
-`VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM` prior to any writes performed
+[VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM](#VkImageLayout) prior to any writes performed
 via the tensor resource for reads performed via the image resource to
 return data consistent with that provided to the tensor writes.
 
@@ -16943,9 +17013,9 @@ become **undefined**.
 
 If any image subresources are made **undefined** due to writes to an alias,
 then each of those image subresources **must** have its layout transitioned
-from `VK_IMAGE_LAYOUT_UNDEFINED` to a valid layout before it is used,
-from `VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT` if it is zeroed,
-or from `VK_IMAGE_LAYOUT_PREINITIALIZED` if the memory has been written
+from [VK_IMAGE_LAYOUT_UNDEFINED](#VkImageLayout) to a valid layout before it is used,
+from [VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](#VkImageLayout) if it is zeroed,
+or from [VK_IMAGE_LAYOUT_PREINITIALIZED](#VkImageLayout) if the memory has been written
 by the host.
 If any sparse blocks of a sparse image have been made **undefined**, then only
 the image subresources containing them **must** be transitioned.
@@ -16958,7 +17028,7 @@ contain the entire range and/or set of image subresources that overlap.
 
 If two aliasing image views are used in the same framebuffer, then the
 render pass **must** declare the attachments using the
-[`VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT`](renderpass.html#renderpass-aliasing), and
+[](renderpass.html#renderpass-aliasing)[VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT](renderpass.html#VkAttachmentDescriptionFlagBits), and
 follow the other rules listed in that section.
 
 |  | Memory recycled via an application suballocator (i.e. without freeing and
@@ -17104,24 +17174,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Host Access
 
@@ -17164,7 +17234,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferCollectionCreateInfoFUCHSIA-sType-sType) VUID-VkBufferCollectionCreateInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_COLLECTION_CREATE_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_COLLECTION_CREATE_INFO_FUCHSIA](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBufferCollectionCreateInfoFUCHSIA-pNext-pNext) VUID-VkBufferCollectionCreateInfoFUCHSIA-pNext-pNext
@@ -17198,13 +17268,13 @@ VkResult vkSetBufferCollectionImageConstraintsFUCHSIA(
 `pImageConstraintsInfo->formatConstraintsCount` is larger than the
 implementation-defined limit.
 If that occurs, [vkSetBufferCollectionImageConstraintsFUCHSIA](#vkSetBufferCollectionImageConstraintsFUCHSIA) will
-return `VK_ERROR_INITIALIZATION_FAILED`.
+return [VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult).
 
 `vkSetBufferCollectionImageConstraintsFUCHSIA` **may** fail if the
 implementation does not support any of the formats described by the
 `pImageConstraintsInfo` structure.
 If that occurs, [vkSetBufferCollectionImageConstraintsFUCHSIA](#vkSetBufferCollectionImageConstraintsFUCHSIA) will
-return `VK_ERROR_FORMAT_NOT_SUPPORTED`.
+return [VK_ERROR_FORMAT_NOT_SUPPORTED](fundamentals.html#VkResult).
 
 Valid Usage
 
@@ -17242,24 +17312,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_FORMAT_NOT_SUPPORTED`
+[VK_ERROR_FORMAT_NOT_SUPPORTED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkImageConstraintsInfoFUCHSIA` structure is defined as:
 
@@ -17314,58 +17384,58 @@ in its
 [](#VUID-VkImageConstraintsInfoFUCHSIA-pFormatConstraints-06396) VUID-VkImageConstraintsInfoFUCHSIA-pFormatConstraints-06396
 
 If `pFormatConstraints->imageCreateInfo→usage` contains
-`VK_IMAGE_USAGE_SAMPLED_BIT`, then
+[VK_IMAGE_USAGE_SAMPLED_BIT](#VkImageUsageFlagBits), then
 `pFormatConstraints->requiredFormatFeatures` **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkImageConstraintsInfoFUCHSIA-pFormatConstraints-06397) VUID-VkImageConstraintsInfoFUCHSIA-pFormatConstraints-06397
 
 If `pFormatConstraints->imageCreateInfo→usage` contains
-`VK_IMAGE_USAGE_STORAGE_BIT`, then
+[VK_IMAGE_USAGE_STORAGE_BIT](#VkImageUsageFlagBits), then
 `pFormatConstraints->requiredFormatFeatures` **must** contain
-`VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT`
+[VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkImageConstraintsInfoFUCHSIA-pFormatConstraints-06398) VUID-VkImageConstraintsInfoFUCHSIA-pFormatConstraints-06398
 
 If `pFormatConstraints->imageCreateInfo→usage` contains
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT`, then
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](#VkImageUsageFlagBits), then
 `pFormatConstraints->requiredFormatFeatures` **must** contain
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkImageConstraintsInfoFUCHSIA-pFormatConstraints-06399) VUID-VkImageConstraintsInfoFUCHSIA-pFormatConstraints-06399
 
 If `pFormatConstraints->imageCreateInfo→usage` contains
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`, then
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](#VkImageUsageFlagBits), then
 `pFormatConstraints->requiredFormatFeatures` **must** contain
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkImageConstraintsInfoFUCHSIA-pFormatConstraints-06400) VUID-VkImageConstraintsInfoFUCHSIA-pFormatConstraints-06400
 
 If `pFormatConstraints->imageCreateInfo→usage` contains
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`, then
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](#VkImageUsageFlagBits), then
 `pFormatConstraints->requiredFormatFeatures` **must** contain at least
-one of `VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT` or
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+one of [VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits) or
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkImageConstraintsInfoFUCHSIA-attachmentFragmentShadingRate-06401) VUID-VkImageConstraintsInfoFUCHSIA-attachmentFragmentShadingRate-06401
 
 If the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) feature is enabled, and
 `pFormatConstraints->imageCreateInfo→usage` contains
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`, then
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkImageUsageFlagBits), then
 `pFormatConstraints->requiredFormatFeatures` **must** contain
-`VK_FORMAT_FEATURE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_FORMAT_FEATURE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](formats.html#VkFormatFeatureFlagBits)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkImageConstraintsInfoFUCHSIA-sType-sType) VUID-VkImageConstraintsInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_CONSTRAINTS_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_CONSTRAINTS_INFO_FUCHSIA](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageConstraintsInfoFUCHSIA-pNext-pNext) VUID-VkImageConstraintsInfoFUCHSIA-pNext-pNext
@@ -17414,21 +17484,21 @@ General hints about the type of memory that should be allocated by Sysmem
 based on the expected usage of the images in the buffer collection include:
 
 * 
-`VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_RARELY_FUCHSIA`
+[VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_RARELY_FUCHSIA](#VkImageConstraintsInfoFlagBitsFUCHSIA)
 
 * 
-`VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_OFTEN_FUCHSIA`
+[VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_OFTEN_FUCHSIA](#VkImageConstraintsInfoFlagBitsFUCHSIA)
 
 * 
-`VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_RARELY_FUCHSIA`
+[VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_RARELY_FUCHSIA](#VkImageConstraintsInfoFlagBitsFUCHSIA)
 
 * 
-`VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_OFTEN_FUCHSIA`
+[VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_OFTEN_FUCHSIA](#VkImageConstraintsInfoFlagBitsFUCHSIA)
 
 For protected memory:
 
 * 
-`VK_IMAGE_CONSTRAINTS_INFO_PROTECTED_OPTIONAL_FUCHSIA` specifies
+[VK_IMAGE_CONSTRAINTS_INFO_PROTECTED_OPTIONAL_FUCHSIA](#VkImageConstraintsInfoFlagBitsFUCHSIA) specifies
 that protected memory is optional for the buffer collection.
 
 Note that if all participants in the buffer collection (Vulkan or otherwise)
@@ -17463,7 +17533,7 @@ structure
 
 * 
 `requiredFormatFeatures` is a bitmask of
-`VkFormatFeatureFlagBits` specifying required features of the
+[VkFormatFeatureFlagBits](formats.html#VkFormatFeatureFlagBits) specifying required features of the
 buffers in the buffer collection
 
 * 
@@ -17485,7 +17555,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageFormatConstraintsInfoFUCHSIA-sType-sType) VUID-VkImageFormatConstraintsInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_FORMAT_CONSTRAINTS_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_FORMAT_CONSTRAINTS_INFO_FUCHSIA](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageFormatConstraintsInfoFUCHSIA-pNext-pNext) VUID-VkImageFormatConstraintsInfoFUCHSIA-pNext-pNext
@@ -17590,7 +17660,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferCollectionConstraintsInfoFUCHSIA-sType-sType) VUID-VkBufferCollectionConstraintsInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_COLLECTION_CONSTRAINTS_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_COLLECTION_CONSTRAINTS_INFO_FUCHSIA](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBufferCollectionConstraintsInfoFUCHSIA-pNext-pNext) VUID-VkBufferCollectionConstraintsInfoFUCHSIA-pNext-pNext
@@ -17629,7 +17699,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSysmemColorSpaceFUCHSIA-sType-sType) VUID-VkSysmemColorSpaceFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SYSMEM_COLOR_SPACE_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SYSMEM_COLOR_SPACE_FUCHSIA](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSysmemColorSpaceFUCHSIA-pNext-pNext) VUID-VkSysmemColorSpaceFUCHSIA-pNext-pNext
@@ -17658,7 +17728,7 @@ VkResult vkSetBufferCollectionBufferConstraintsFUCHSIA(
 implementation does not support the constraints specified in the
 `bufferCollectionConstraints` structure.
 If that occurs, [vkSetBufferCollectionBufferConstraintsFUCHSIA](#vkSetBufferCollectionBufferConstraintsFUCHSIA) will
-return `VK_ERROR_FORMAT_NOT_SUPPORTED`.
+return [VK_ERROR_FORMAT_NOT_SUPPORTED](fundamentals.html#VkResult).
 
 Valid Usage
 
@@ -17696,24 +17766,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_FORMAT_NOT_SUPPORTED`
+[VK_ERROR_FORMAT_NOT_SUPPORTED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkBufferConstraintsInfoFUCHSIA` structure is defined as:
 
@@ -17739,7 +17809,7 @@ describing the buffer attributes for the buffer collection
 
 * 
 `requiredFormatFeatures` is a bitmask of
-`VkFormatFeatureFlagBits` required features of the buffers in the
+[VkFormatFeatureFlagBits](formats.html#VkFormatFeatureFlagBits) required features of the buffers in the
 buffer collection
 
 * 
@@ -17752,7 +17822,7 @@ Valid Usage
 [](#VUID-VkBufferConstraintsInfoFUCHSIA-requiredFormatFeatures-06404) VUID-VkBufferConstraintsInfoFUCHSIA-requiredFormatFeatures-06404
 
 The `requiredFormatFeatures` bitmask of
-`VkFormatFeatureFlagBits` **must** be chosen from among the buffer
+[VkFormatFeatureFlagBits](formats.html#VkFormatFeatureFlagBits) **must** be chosen from among the buffer
 compatible format features listed in
 [buffer compatible format features](formats.html#buffer-compatible-format-features)
 
@@ -17761,7 +17831,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferConstraintsInfoFUCHSIA-sType-sType) VUID-VkBufferConstraintsInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_CONSTRAINTS_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_CONSTRAINTS_INFO_FUCHSIA](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBufferConstraintsInfoFUCHSIA-pNext-pNext) VUID-VkBufferConstraintsInfoFUCHSIA-pNext-pNext
@@ -17826,7 +17896,7 @@ therefore always be zero.
 to resolve the constraints of all of the participants in the buffer
 collection.
 If that occurs, `vkGetBufferCollectionPropertiesFUCHSIA` will return
-`VK_ERROR_INITIALIZATION_FAILED`.
+[VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult).
 
 Valid Usage
 
@@ -17865,21 +17935,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkBufferCollectionPropertiesFUCHSIA` structure is defined as:
 
@@ -17974,7 +18044,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferCollectionPropertiesFUCHSIA-sType-sType) VUID-VkBufferCollectionPropertiesFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_COLLECTION_PROPERTIES_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_COLLECTION_PROPERTIES_FUCHSIA](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBufferCollectionPropertiesFUCHSIA-pNext-pNext) VUID-VkBufferCollectionPropertiesFUCHSIA-pNext-pNext
@@ -18022,7 +18092,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMemoryBufferCollectionFUCHSIA-sType-sType) VUID-VkImportMemoryBufferCollectionFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_MEMORY_BUFFER_COLLECTION_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_MEMORY_BUFFER_COLLECTION_FUCHSIA](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImportMemoryBufferCollectionFUCHSIA-collection-parameter) VUID-VkImportMemoryBufferCollectionFUCHSIA-collection-parameter
@@ -18095,7 +18165,7 @@ directly specifying them as parameters to certain commands.
 
 Tensors are represented by `VkTensorARM` handles:
 
-// Provided by VK_ARM_tensors
+// Provided by VK_EXT_descriptor_heap, VK_ARM_tensors
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(VkTensorARM)
 
 To create tensors, call:
@@ -18161,21 +18231,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The [VkTensorCreateInfoARM](#VkTensorCreateInfoARM) structure is defined as:
 
@@ -18216,7 +18286,7 @@ mode of the tensor when it will be accessed by multiple queue families.
 * 
 `pQueueFamilyIndices` is a list of queue families that will access
 this tensor (ignored if `sharingMode` is not
-`VK_SHARING_MODE_CONCURRENT`).
+[VK_SHARING_MODE_CONCURRENT](#VkSharingMode)).
 
 To determine the set of valid `usage` bits for a given tensor format,
 call [vkGetPhysicalDeviceFormatProperties2](formats.html#vkGetPhysicalDeviceFormatProperties2) with
@@ -18243,7 +18313,7 @@ Valid Usage
 * 
 [](#VUID-VkTensorCreateInfoARM-pDescription-09720) VUID-VkTensorCreateInfoARM-pDescription-09720
 
-If `pDescription->tiling` is `VK_TENSOR_TILING_OPTIMAL_ARM`,
+If `pDescription->tiling` is [VK_TENSOR_TILING_OPTIMAL_ARM](#VkTensorTilingARM),
 `pDescription->pStrides` **must** be `NULL`
 
 * 
@@ -18256,20 +18326,20 @@ If `pDescription->tiling` is `VK_TENSOR_TILING_OPTIMAL_ARM`,
 * 
 [](#VUID-VkTensorCreateInfoARM-sharingMode-09722) VUID-VkTensorCreateInfoARM-sharingMode-09722
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`,
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](#VkSharingMode),
 `pQueueFamilyIndices` **must** be a valid pointer to an array of
 `queueFamilyIndexCount` `uint32_t` values
 
 * 
 [](#VUID-VkTensorCreateInfoARM-sharingMode-09723) VUID-VkTensorCreateInfoARM-sharingMode-09723
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`,
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](#VkSharingMode),
 `queueFamilyIndexCount` **must** be greater than `1`
 
 * 
 [](#VUID-VkTensorCreateInfoARM-sharingMode-09725) VUID-VkTensorCreateInfoARM-sharingMode-09725
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`, each element
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](#VkSharingMode), each element
 of `pQueueFamilyIndices` **must** be unique and **must** be less than
 `pQueueFamilyPropertyCount` returned by either
 [vkGetPhysicalDeviceQueueFamilyProperties](devsandqueues.html#vkGetPhysicalDeviceQueueFamilyProperties) or
@@ -18292,7 +18362,7 @@ types specified in
 [](#VUID-VkTensorCreateInfoARM-flags-09726) VUID-VkTensorCreateInfoARM-flags-09726
 
 If `flags` includes
-`VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM`, the
+[VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM](#VkTensorCreateFlagBitsARM), the
 [`descriptorBufferCaptureReplay`](features.html#features-descriptorBufferCaptureReplay)
 feature **must** be enabled
 
@@ -18302,7 +18372,7 @@ feature **must** be enabled
 If the `pNext` chain includes a
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT) structure, `flags`
 **must** contain
-`VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM`
+[VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM](#VkTensorCreateFlagBitsARM)
 
 * 
 [](#VUID-VkTensorCreateInfoARM-pDescription-09728) VUID-VkTensorCreateInfoARM-pDescription-09728
@@ -18314,28 +18384,41 @@ contain the format feature flags required by the `usage` flags for
 `pDescription->format` as indicated in the
 [Format Feature Dependent Usage Flags](formats.html#format-feature-dependent-usage-flags) section
 
-`VK_TENSOR_USAGE_SHADER_BIT_ARM`
+[VK_TENSOR_USAGE_SHADER_BIT_ARM](#VkTensorUsageFlagBitsARM)
 
 * 
-`VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM`
+[VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM](#VkTensorUsageFlagBitsARM)
 
 [](#VUID-VkTensorCreateInfoARM-protectedMemory-09729) VUID-VkTensorCreateInfoARM-protectedMemory-09729
 
 If the [`protectedMemory`](features.html#features-protectedMemory) feature is not
 enabled, `flags` **must** not contain
-`VK_TENSOR_CREATE_PROTECTED_BIT_ARM`
+[VK_TENSOR_CREATE_PROTECTED_BIT_ARM](#VkTensorCreateFlagBitsARM)
+
+[](#VUID-VkTensorCreateInfoARM-flags-11395) VUID-VkTensorCreateInfoARM-flags-11395
+
+If [VkOpaqueCaptureDataCreateInfoEXT](#VkOpaqueCaptureDataCreateInfoEXT)::pData is not `NULL`,
+`flags` **must** contain
+[VK_TENSOR_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_ARM](#VkTensorCreateFlagBitsARM)
+
+[](#VUID-VkTensorCreateInfoARM-flags-11396) VUID-VkTensorCreateInfoARM-flags-11396
+
+If `flags` contains
+[VK_TENSOR_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_ARM](#VkTensorCreateFlagBitsARM),
+[VkOpaqueCaptureDataCreateInfoEXT](#VkOpaqueCaptureDataCreateInfoEXT)::`pData->size` **must** be equal
+to [    `imageCaptureReplayOpaqueDataSize`](limits.html#limits-imageCaptureReplayOpaqueDataSize)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkTensorCreateInfoARM-sType-sType) VUID-VkTensorCreateInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TENSOR_CREATE_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TENSOR_CREATE_INFO_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkTensorCreateInfoARM-pNext-pNext) VUID-VkTensorCreateInfoARM-pNext-pNext
 
- Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkExternalMemoryTensorCreateInfoARM](#VkExternalMemoryTensorCreateInfoARM) or [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT)
+ Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkExternalMemoryTensorCreateInfoARM](#VkExternalMemoryTensorCreateInfoARM), [VkOpaqueCaptureDataCreateInfoEXT](#VkOpaqueCaptureDataCreateInfoEXT), or [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT)
 
 * 
 [](#VUID-VkTensorCreateInfoARM-sType-unique) VUID-VkTensorCreateInfoARM-sType-unique
@@ -18365,20 +18448,22 @@ specifying additional parameters of a tensor, are:
 typedef VkFlags64 VkTensorCreateFlagBitsARM;
 static const VkTensorCreateFlagBitsARM VK_TENSOR_CREATE_MUTABLE_FORMAT_BIT_ARM = 0x00000001ULL;
 static const VkTensorCreateFlagBitsARM VK_TENSOR_CREATE_PROTECTED_BIT_ARM = 0x00000002ULL;
+// Provided by VK_EXT_descriptor_heap with VK_ARM_tensors
+static const VkTensorCreateFlagBitsARM VK_TENSOR_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_ARM = 0x00000008ULL;
 // Provided by VK_EXT_descriptor_buffer with VK_ARM_tensors
 static const VkTensorCreateFlagBitsARM VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM = 0x00000004ULL;
 
 * 
-`VK_TENSOR_CREATE_MUTABLE_FORMAT_BIT_ARM` specifies that the tensor
+[VK_TENSOR_CREATE_MUTABLE_FORMAT_BIT_ARM](#VkTensorCreateFlagBitsARM) specifies that the tensor
 **can** be used to create a `VkTensorViewARM` with a different format
 from the tensor.
 
 * 
-`VK_TENSOR_CREATE_PROTECTED_BIT_ARM` specifies that the tensor is a
+[VK_TENSOR_CREATE_PROTECTED_BIT_ARM](#VkTensorCreateFlagBitsARM) specifies that the tensor is a
 protected tensor.
 
 * 
-`VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM`
+[VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM](#VkTensorCreateFlagBitsARM)
 specifies that the tensor **can** be used with descriptor buffers when
 capturing and replaying (e.g. for trace capture and replay), see
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT) for more detail.
@@ -18425,7 +18510,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalMemoryTensorCreateInfoARM-sType-sType) VUID-VkExternalMemoryTensorCreateInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_TENSOR_CREATE_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_TENSOR_CREATE_INFO_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExternalMemoryTensorCreateInfoARM-handleTypes-parameter) VUID-VkExternalMemoryTensorCreateInfoARM-handleTypes-parameter
@@ -18543,9 +18628,9 @@ each dimension.
 `usage` is a bitmask of [VkTensorUsageFlagBitsARM](#VkTensorUsageFlagBitsARM) specifying
 the usage of the tensor.
 
-When describing a tensor created with `VK_TENSOR_TILING_OPTIMAL_ARM`,
+When describing a tensor created with [VK_TENSOR_TILING_OPTIMAL_ARM](#VkTensorTilingARM),
 `pStrides` must be equal to `NULL`.
-When describing a tensor created with `VK_TENSOR_TILING_LINEAR_ARM`,
+When describing a tensor created with [VK_TENSOR_TILING_LINEAR_ARM](#VkTensorTilingARM),
 `pStrides` is either an array of size `dimensionCount` or `NULL`.
 
 The formats that **must** be supported for `format` are documented in
@@ -18564,7 +18649,7 @@ element and for each dimension `n` greater than 0 and less than
 If the [tensorNonPacked](features.html#features-tensorNonPacked) feature is not enabled,
 the tensor **must** be a packed tensor.
 
-When a tensor is created with `VK_TENSOR_TILING_LINEAR_ARM` and
+When a tensor is created with [VK_TENSOR_TILING_LINEAR_ARM](#VkTensorTilingARM) and
 `pStrides` equal to `NULL` the tensor strides are calculated by the
 vulkan implementation such that the resulting tensor is a packed tensor.
 
@@ -18599,7 +18684,7 @@ For each i where i ≤ dimensionCount-1,
 * 
 [](#VUID-VkTensorDescriptionARM-format-09735) VUID-VkTensorDescriptionARM-format-09735
 
-`format` **must** not be `VK_FORMAT_UNDEFINED` and **must** be a
+`format` **must** not be [VK_FORMAT_UNDEFINED](formats.html#VkFormat) and **must** be a
 one-component [VkFormat](formats.html#VkFormat)
 
 * 
@@ -18645,8 +18730,8 @@ a packed tensor
 * 
 [](#VUID-VkTensorDescriptionARM-tiling-09741) VUID-VkTensorDescriptionARM-tiling-09741
 
-If `tiling` is `VK_TENSOR_TILING_OPTIMAL_ARM` and `usage` is
-`VK_TENSOR_USAGE_IMAGE_ALIASING_BIT_ARM` then the size of the tensor
+If `tiling` is [VK_TENSOR_TILING_OPTIMAL_ARM](#VkTensorTilingARM) and `usage` is
+[VK_TENSOR_USAGE_IMAGE_ALIASING_BIT_ARM](#VkTensorUsageFlagBitsARM) then the size of the tensor
 along its innermost dimension, i.e.
 `pDimensions`[`dimensionCount` - 1], **must** be less than or
 equal to `4`
@@ -18654,8 +18739,8 @@ equal to `4`
 * 
 [](#VUID-VkTensorDescriptionARM-tiling-09742) VUID-VkTensorDescriptionARM-tiling-09742
 
-If `tiling` is `VK_TENSOR_TILING_LINEAR_ARM` then
-`VK_TENSOR_USAGE_IMAGE_ALIASING_BIT_ARM` **must** not be set in
+If `tiling` is [VK_TENSOR_TILING_LINEAR_ARM](#VkTensorTilingARM) then
+[VK_TENSOR_USAGE_IMAGE_ALIASING_BIT_ARM](#VkTensorUsageFlagBitsARM) **must** not be set in
 `usage`
 
 Valid Usage (Implicit)
@@ -18663,7 +18748,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTensorDescriptionARM-sType-sType) VUID-VkTensorDescriptionARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TENSOR_DESCRIPTION_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TENSOR_DESCRIPTION_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkTensorDescriptionARM-tiling-parameter) VUID-VkTensorDescriptionARM-tiling-parameter
@@ -18714,32 +18799,32 @@ static const VkTensorUsageFlagBitsARM VK_TENSOR_USAGE_IMAGE_ALIASING_BIT_ARM = 0
 static const VkTensorUsageFlagBitsARM VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM = 0x00000020ULL;
 
 * 
-`VK_TENSOR_USAGE_SHADER_BIT_ARM` specifies that the tensor **can** be
+[VK_TENSOR_USAGE_SHADER_BIT_ARM](#VkTensorUsageFlagBitsARM) specifies that the tensor **can** be
 used to create a `VkTensorViewARM` suitable for occupying a
-`VkDescriptorSet` slot of type `VK_DESCRIPTOR_TYPE_TENSOR_ARM`
+`VkDescriptorSet` slot of type [VK_DESCRIPTOR_TYPE_TENSOR_ARM](descriptorsets.html#VkDescriptorType)
 accessed by shader stages.
 
 * 
-`VK_TENSOR_USAGE_TRANSFER_SRC_BIT_ARM` specifies that the tensor
+[VK_TENSOR_USAGE_TRANSFER_SRC_BIT_ARM](#VkTensorUsageFlagBitsARM) specifies that the tensor
 **can** be used as the source of a *transfer command* (see the definition
 of
-[`VK_PIPELINE_STAGE_TRANSFER_BIT`](synchronization.html#synchronization-pipeline-stages-transfer)).
+[](synchronization.html#synchronization-pipeline-stages-transfer)[VK_PIPELINE_STAGE_TRANSFER_BIT](synchronization.html#VkPipelineStageFlagBits)).
 
 * 
-`VK_TENSOR_USAGE_TRANSFER_DST_BIT_ARM` specifies that the tensor
+[VK_TENSOR_USAGE_TRANSFER_DST_BIT_ARM](#VkTensorUsageFlagBitsARM) specifies that the tensor
 **can** be used as the destination of a transfer command.
 
 * 
-`VK_TENSOR_USAGE_IMAGE_ALIASING_BIT_ARM` specifies that the tensor
+[VK_TENSOR_USAGE_IMAGE_ALIASING_BIT_ARM](#VkTensorUsageFlagBitsARM) specifies that the tensor
 **can** be bound to a range of memory aliased with an image created with
-`VK_IMAGE_TILING_OPTIMAL`.
+[VK_IMAGE_TILING_OPTIMAL](#VkImageTiling).
 See [Memory Aliasing](#resources-memory-aliasing) for a complete set of rules for
 tensor/image aliasing.
 
 * 
-`VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM` specifies that the tensor **can**
+[VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM](#VkTensorUsageFlagBitsARM) specifies that the tensor **can**
 be used to create a `VkTensorViewARM` suitable for occupying a
-`VkDescriptorSet` slot of type `VK_DESCRIPTOR_TYPE_TENSOR_ARM`
+`VkDescriptorSet` slot of type [VK_DESCRIPTOR_TYPE_TENSOR_ARM](descriptorsets.html#VkDescriptorType)
 accessed by [data graph pipelines](VK_ARM_data_graph/graphs.html#graphs-pipelines).
 
 // Provided by VK_ARM_tensors
@@ -18758,12 +18843,12 @@ typedef enum VkTensorTilingARM {
 } VkTensorTilingARM;
 
 * 
-`VK_TENSOR_TILING_OPTIMAL_ARM` specifies optimal tiling (elements
+[VK_TENSOR_TILING_OPTIMAL_ARM](#VkTensorTilingARM) specifies optimal tiling (elements
 are laid out in an implementation-dependent arrangement, for more
 efficient memory access).
 
 * 
-`VK_TENSOR_TILING_LINEAR_ARM` specifies linear tiling (elements are
+[VK_TENSOR_TILING_LINEAR_ARM](#VkTensorTilingARM) specifies linear tiling (elements are
 laid out linearly and the offset between each element is determined by
 the [strides](#resources-tensor-description-strides) of the tensor).
 
@@ -18841,25 +18926,25 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkTensorViewCreateInfoARM` structure is defined as:
 
-// Provided by VK_ARM_tensors
+// Provided by VK_EXT_descriptor_heap, VK_ARM_tensors
 typedef struct VkTensorViewCreateInfoARM {
     VkStructureType               sType;
     const void*                   pNext;
@@ -18886,7 +18971,7 @@ structure.
 interpret elements in the tensor.
 
 If `tensor` was created with the
-`VK_TENSOR_CREATE_MUTABLE_FORMAT_BIT_ARM` flag, `format` **can** be
+[VK_TENSOR_CREATE_MUTABLE_FORMAT_BIT_ARM](#VkTensorCreateFlagBitsARM) flag, `format` **can** be
 different from the tensor’s format, but if they are not equal they **must** be
 *compatible*.
 Tensor format compatibility is defined in the
@@ -18911,14 +18996,14 @@ Valid Usage
 [](#VUID-VkTensorViewCreateInfoARM-tensor-09743) VUID-VkTensorViewCreateInfoARM-tensor-09743
 
 If `tensor` was not created with
-`VK_TENSOR_CREATE_MUTABLE_FORMAT_BIT_ARM` flag, `format` **must**
+[VK_TENSOR_CREATE_MUTABLE_FORMAT_BIT_ARM](#VkTensorCreateFlagBitsARM) flag, `format` **must**
 be identical to the `format` used to create `tensor`
 
 * 
 [](#VUID-VkTensorViewCreateInfoARM-tensor-09744) VUID-VkTensorViewCreateInfoARM-tensor-09744
 
 If `tensor` was created with
-`VK_TENSOR_CREATE_MUTABLE_FORMAT_BIT_ARM` flag, `format` **must**
+[VK_TENSOR_CREATE_MUTABLE_FORMAT_BIT_ARM](#VkTensorCreateFlagBitsARM) flag, `format` **must**
 be compatible with the `format` used to create `tensor`, as
 defined in [Format Compatibility    Classes](formats.html#formats-compatibility-classes)
 
@@ -18926,7 +19011,7 @@ defined in [Format Compatibility    Classes](formats.html#formats-compatibility-
 [](#VUID-VkTensorViewCreateInfoARM-flags-09745) VUID-VkTensorViewCreateInfoARM-flags-09745
 
 If `flags` includes
-`VK_TENSOR_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM`,
+[VK_TENSOR_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM](#VkTensorViewCreateFlagBitsARM),
 the
 [`descriptorBufferCaptureReplay`](features.html#features-descriptorBufferCaptureReplay)
 feature **must** be enabled
@@ -18937,7 +19022,7 @@ feature **must** be enabled
 If the `pNext` chain includes a
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT) structure, `flags`
 **must** contain
-`VK_TENSOR_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM`
+[VK_TENSOR_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM](#VkTensorViewCreateFlagBitsARM)
 
 * 
 [](#VUID-VkTensorViewCreateInfoARM-usage-09747) VUID-VkTensorViewCreateInfoARM-usage-09747
@@ -18945,10 +19030,10 @@ If the `pNext` chain includes a
 The `usage` flags of `tensor` **must** have at least one of the
 following bits set:
 
-`VK_TENSOR_USAGE_SHADER_BIT_ARM`
+[VK_TENSOR_USAGE_SHADER_BIT_ARM](#VkTensorUsageFlagBitsARM)
 
 * 
-`VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM`
+[VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM](#VkTensorUsageFlagBitsARM)
 
 [](#VUID-VkTensorViewCreateInfoARM-usage-09748) VUID-VkTensorViewCreateInfoARM-usage-09748
 
@@ -18966,7 +19051,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTensorViewCreateInfoARM-sType-sType) VUID-VkTensorViewCreateInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TENSOR_VIEW_CREATE_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TENSOR_VIEW_CREATE_INFO_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkTensorViewCreateInfoARM-pNext-pNext) VUID-VkTensorViewCreateInfoARM-pNext-pNext
@@ -19003,12 +19088,12 @@ typedef VkFlags64 VkTensorViewCreateFlagBitsARM;
 static const VkTensorViewCreateFlagBitsARM VK_TENSOR_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM = 0x00000001ULL;
 
 * 
-`VK_TENSOR_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM`
+[VK_TENSOR_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM](#VkTensorViewCreateFlagBitsARM)
 specifies that the tensor view **can** be used with descriptor buffers when
 capturing and replaying (e.g. for trace capture and replay), see
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT) for more detail.
 
-// Provided by VK_ARM_tensors
+// Provided by VK_EXT_descriptor_heap, VK_ARM_tensors
 typedef VkFlags64 VkTensorViewCreateFlagsARM;
 
 `VkTensorViewCreateFlagsARM` is a bitmask type for setting a mask of
@@ -19084,7 +19169,7 @@ view’s format features, defined below.
 Such constraints are documented in the affected valid usage statement.
 
 * 
-If the view’s tensor was created with `VK_TENSOR_TILING_LINEAR_ARM`,
+If the view’s tensor was created with [VK_TENSOR_TILING_LINEAR_ARM](#VkTensorTilingARM),
 then the tensor view’s set of *format features* is the value of
 [VkTensorFormatPropertiesARM](formats.html#VkTensorFormatPropertiesARM)::`linearTilingTensorFeatures`
 found by calling [vkGetPhysicalDeviceFormatProperties2](formats.html#vkGetPhysicalDeviceFormatProperties2) on the same
@@ -19092,7 +19177,7 @@ found by calling [vkGetPhysicalDeviceFormatProperties2](formats.html#vkGetPhysic
 
 * 
 If the view’s tensor was created with
-`VK_TENSOR_TILING_OPTIMAL_ARM`, then the tensor view’s set of
+[VK_TENSOR_TILING_OPTIMAL_ARM](#VkTensorTilingARM), then the tensor view’s set of
 *format features* is the value of
 [VkTensorFormatPropertiesARM](formats.html#VkTensorFormatPropertiesARM)::`optimalTilingTensorFeatures`
 found by calling [vkGetPhysicalDeviceFormatProperties2](formats.html#vkGetPhysicalDeviceFormatProperties2) on the same

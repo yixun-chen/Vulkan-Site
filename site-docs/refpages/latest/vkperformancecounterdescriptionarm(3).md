@@ -40,7 +40,7 @@ structure.
 `flags` is reserved for future use.
 
 * 
-`name` is an array of size `VK_MAX_DESCRIPTION_SIZE`, containing
+`name` is an array of size [VK_MAX_DESCRIPTION_SIZE](VK_MAX_DESCRIPTION_SIZE.html), containing
 a null-terminated UTF-8 string specifying the name of the counter.
 
 Valid Usage (Implicit)
@@ -48,7 +48,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPerformanceCounterDescriptionARM-sType-sType) VUID-VkPerformanceCounterDescriptionARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_DESCRIPTION_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_DESCRIPTION_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkPerformanceCounterDescriptionARM-pNext-pNext) VUID-VkPerformanceCounterDescriptionARM-pNext-pNext

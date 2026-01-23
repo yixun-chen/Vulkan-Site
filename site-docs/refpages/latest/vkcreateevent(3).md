@@ -51,16 +51,16 @@ Valid Usage
 [](#VUID-vkCreateEvent-device-09672) VUID-vkCreateEvent-device-09672
 
 `device` **must** support at least one queue family with one of the
-`VK_QUEUE_VIDEO_ENCODE_BIT_KHR`,
-`VK_QUEUE_VIDEO_DECODE_BIT_KHR`,
-`VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` capabilities
+[VK_QUEUE_VIDEO_ENCODE_BIT_KHR](VkQueueFlagBits.html),
+[VK_QUEUE_VIDEO_DECODE_BIT_KHR](VkQueueFlagBits.html),
+[VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) capabilities
 
 * 
 [](#VUID-vkCreateEvent-events-04468) VUID-vkCreateEvent-events-04468
 
 If the `[VK_KHR_portability_subset](VK_KHR_portability_subset.html)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](VkPhysicalDevicePortabilitySubsetFeaturesKHR.html)::`events` is
-`VK_FALSE`, then the implementation does not support
+[VK_FALSE](VK_FALSE.html), then the implementation does not support
 [events](../../../../spec/latest/chapters/synchronization.html#synchronization-events), and [vkCreateEvent](#) **must** not be
 used
 
@@ -96,21 +96,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkAllocationCallbacks](VkAllocationCallbacks.html), [VkDevice](VkDevice.html), [VkEvent](VkEvent.html), [VkEventCreateInfo](VkEventCreateInfo.html)
 

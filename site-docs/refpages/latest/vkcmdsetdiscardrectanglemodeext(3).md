@@ -38,7 +38,7 @@ discard rectangles, either inclusive or exclusive.
 This command sets the discard rectangle mode for subsequent drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT` set in
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineDiscardRectangleStateCreateInfoEXT](VkPipelineDiscardRectangleStateCreateInfoEXT.html)::`discardRectangleMode`
@@ -73,7 +73,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDiscardRectangleModeEXT-commandBuffer-cmdpool) VUID-vkCmdSetDiscardRectangleModeEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetDiscardRectangleModeEXT-videocoding) VUID-vkCmdSetDiscardRectangleModeEXT-videocoding

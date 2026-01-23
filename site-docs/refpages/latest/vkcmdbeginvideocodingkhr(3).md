@@ -94,14 +94,14 @@ Depending on the picture layout used by the [H.264 decode profile](../../../../s
 
 * 
 If the picture layout is
-`VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_INTERLEAVED_LINES_BIT_KHR`,
+[VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_INTERLEAVED_LINES_BIT_KHR](VkVideoDecodeH264PictureLayoutFlagBitsKHR.html),
 then the top and bottom field pictures are physically co-located in the
 same video picture resource with even scanlines corresponding to the top
 field and odd scanlines corresponding to the bottom field, respectively.
 
 * 
 If the picture layout is
-`VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES_BIT_KHR`,
+[VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES_BIT_KHR](VkVideoDecodeH264PictureLayoutFlagBitsKHR.html),
 then the top and bottom field pictures are stored in separate video
 picture resources (in separate subregions of the same image layer, in
 separate layers of the same image, or in entirely separate images),
@@ -130,7 +130,7 @@ of `pBeginInfo`.
 If no [VkVideoEncodeRateControlInfoKHR](VkVideoEncodeRateControlInfoKHR.html) is included, then the presence
 of an empty [VkVideoEncodeRateControlInfoKHR](VkVideoEncodeRateControlInfoKHR.html) structure is implied which
 indicates that the current [rate control mode](../../../../spec/latest/chapters/videocoding.html#encode-rate-control-modes)
-is `VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR`.
+is [VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html).
 The specified state **must** [match](../../../../spec/latest/chapters/videocoding.html#encode-rate-control-state-matching) the
 effective rate control state configured for the video session at the time
 the recorded command is executed on the device.
@@ -167,7 +167,7 @@ There **must** be no [active](../../../../spec/latest/chapters/queries.html#quer
 If `commandBuffer` is an unprotected command buffer and
 [`protectedNoFault`](../../../../spec/latest/chapters/devsandqueues.html#limits-protectedNoFault) is not supported,
 then `pBeginInfo->videoSession` **must** not have been created with
-`VK_VIDEO_SESSION_CREATE_PROTECTED_CONTENT_BIT_KHR`
+[VK_VIDEO_SESSION_CREATE_PROTECTED_CONTENT_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html)
 
 * 
 [](#VUID-vkCmdBeginVideoCodingKHR-commandBuffer-07234) VUID-vkCmdBeginVideoCodingKHR-commandBuffer-07234
@@ -175,7 +175,7 @@ then `pBeginInfo->videoSession` **must** not have been created with
 If `commandBuffer` is a protected command buffer and
 [`protectedNoFault`](../../../../spec/latest/chapters/devsandqueues.html#limits-protectedNoFault) is not supported,
 then `pBeginInfo->videoSession` **must** have been created with
-`VK_VIDEO_SESSION_CREATE_PROTECTED_CONTENT_BIT_KHR`
+[VK_VIDEO_SESSION_CREATE_PROTECTED_CONTENT_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html)
 
 * 
 [](#VUID-vkCmdBeginVideoCodingKHR-commandBuffer-07235) VUID-vkCmdBeginVideoCodingKHR-commandBuffer-07235
@@ -225,7 +225,7 @@ operation and the `pNext` chain of `pBeginInfo` does not include
 an instance of the [VkVideoEncodeRateControlInfoKHR](VkVideoEncodeRateControlInfoKHR.html) structure, then
 the [rate control mode](../../../../spec/latest/chapters/videocoding.html#encode-rate-control-modes) configured for
 `pBeginInfo->videoSession` at the time the command is executed on
-the device **must** be `VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR`
+the device **must** be [VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html)
 
 * 
 [](#VUID-vkCmdBeginVideoCodingKHR-pBeginInfo-08254) VUID-vkCmdBeginVideoCodingKHR-pBeginInfo-08254
@@ -241,49 +241,49 @@ command is executed on the device
 [](#VUID-vkCmdBeginVideoCodingKHR-pBeginInfo-08255) VUID-vkCmdBeginVideoCodingKHR-pBeginInfo-08255
 
 If `pBeginInfo->videoSession` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR`, the
+operation [VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), the
 current [rate control mode](../../../../spec/latest/chapters/videocoding.html#encode-rate-control-modes) is not
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR` or
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR`, and
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html) or
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html), and
 [VkVideoEncodeH264CapabilitiesKHR](VkVideoEncodeH264CapabilitiesKHR.html)::`requiresGopRemainingFrames`
-is `VK_TRUE`, as returned by
+is [VK_TRUE](VK_TRUE.html), as returned by
 [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the video profile the
 `pBeginInfo->videoSession` was created with, then the `pNext`
 chain of `pBeginInfo` **must** include an instance of the
 [VkVideoEncodeH264GopRemainingFrameInfoKHR](VkVideoEncodeH264GopRemainingFrameInfoKHR.html) with its
-`useGopRemainingFrames` member set to `VK_TRUE`
+`useGopRemainingFrames` member set to [VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-vkCmdBeginVideoCodingKHR-pBeginInfo-08256) VUID-vkCmdBeginVideoCodingKHR-pBeginInfo-08256
 
 If `pBeginInfo->videoSession` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR`, the
+operation [VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), the
 current [rate control mode](../../../../spec/latest/chapters/videocoding.html#encode-rate-control-modes) is not
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR` or
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR`, and
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html) or
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html), and
 [VkVideoEncodeH265CapabilitiesKHR](VkVideoEncodeH265CapabilitiesKHR.html)::`requiresGopRemainingFrames`
-is `VK_TRUE`, as returned by
+is [VK_TRUE](VK_TRUE.html), as returned by
 [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the video profile the
 `pBeginInfo->videoSession` was created with, then the `pNext`
 chain of `pBeginInfo` **must** include an instance of the
 [VkVideoEncodeH265GopRemainingFrameInfoKHR](VkVideoEncodeH265GopRemainingFrameInfoKHR.html) with its
-`useGopRemainingFrames` member set to `VK_TRUE`
+`useGopRemainingFrames` member set to [VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-vkCmdBeginVideoCodingKHR-pBeginInfo-10282) VUID-vkCmdBeginVideoCodingKHR-pBeginInfo-10282
 
 If `pBeginInfo->videoSession` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR`, the current
+operation [VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), the current
 [rate control mode](../../../../spec/latest/chapters/videocoding.html#encode-rate-control-modes) is not
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR` or
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR`, and
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html) or
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html), and
 [VkVideoEncodeAV1CapabilitiesKHR](VkVideoEncodeAV1CapabilitiesKHR.html)::`requiresGopRemainingFrames`
-is `VK_TRUE`, as returned by
+is [VK_TRUE](VK_TRUE.html), as returned by
 [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the video profile the
 `pBeginInfo->videoSession` was created with, then the `pNext`
 chain of `pBeginInfo` **must** include an instance of the
 [VkVideoEncodeAV1GopRemainingFrameInfoKHR](VkVideoEncodeAV1GopRemainingFrameInfoKHR.html) with its
-`useGopRemainingFrames` member set to `VK_TRUE`
+`useGopRemainingFrames` member set to [VK_TRUE](VK_TRUE.html)
 
 Valid Usage (Implicit)
 
@@ -305,7 +305,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBeginVideoCodingKHR-commandBuffer-cmdpool) VUID-vkCmdBeginVideoCodingKHR-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_VIDEO_DECODE_BIT_KHR](VkQueueFlagBits.html), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBeginVideoCodingKHR-renderpass) VUID-vkCmdBeginVideoCodingKHR-renderpass

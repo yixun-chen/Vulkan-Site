@@ -99,21 +99,21 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkFormat](VkFormat.html):
 
-`VK_FORMAT_G10X6_B10X6R10X6_2PLANE_444_UNORM_3PACK16_EXT`
+[VK_FORMAT_G10X6_B10X6R10X6_2PLANE_444_UNORM_3PACK16_EXT](VkFormat.html)
 
 * 
-`VK_FORMAT_G12X4_B12X4R12X4_2PLANE_444_UNORM_3PACK16_EXT`
+[VK_FORMAT_G12X4_B12X4R12X4_2PLANE_444_UNORM_3PACK16_EXT](VkFormat.html)
 
 * 
-`VK_FORMAT_G16_B16R16_2PLANE_444_UNORM_EXT`
+[VK_FORMAT_G16_B16R16_2PLANE_444_UNORM_EXT](VkFormat.html)
 
 * 
-`VK_FORMAT_G8_B8R8_2PLANE_444_UNORM_EXT`
+[VK_FORMAT_G8_B8R8_2PLANE_444_UNORM_EXT](VkFormat.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_2_PLANE_444_FORMATS_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_2_PLANE_444_FORMATS_FEATURES_EXT](VkStructureType.html)
 
 The format enumerants introduced by the extension are included in core
 Vulkan 1.3, with the EXT suffix omitted.

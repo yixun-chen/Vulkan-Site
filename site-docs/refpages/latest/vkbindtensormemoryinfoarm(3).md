@@ -132,7 +132,7 @@ in [VkExternalMemoryTensorCreateInfoARM](VkExternalMemoryTensorCreateInfoARM.htm
 If `memory` was allocated with the
 [VkImportAndroidHardwareBufferInfoANDROID](VkImportAndroidHardwareBufferInfoANDROID.html) memory import operation
 with a non-`NULL` `buffer` value,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](VkExternalMemoryHandleTypeFlagBits.html)
 **must** also have been set in
 [VkExternalMemoryTensorCreateInfoARM](VkExternalMemoryTensorCreateInfoARM.html)::`handleTypes` when
 `tensor` was created
@@ -141,40 +141,56 @@ with a non-`NULL` `buffer` value,
 [](#VUID-VkBindTensorMemoryInfoARM-tensor-09718) VUID-VkBindTensorMemoryInfoARM-tensor-09718
 
 If `tensor` was created with the
-`VK_TENSOR_CREATE_PROTECTED_BIT_ARM` bit set, the tensor **must** be
+[VK_TENSOR_CREATE_PROTECTED_BIT_ARM](VkTensorCreateFlagBitsARM.html) bit set, the tensor **must** be
 bound to a memory object allocated with a memory type that reports
-`VK_MEMORY_PROPERTY_PROTECTED_BIT`
+[VK_MEMORY_PROPERTY_PROTECTED_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
 [](#VUID-VkBindTensorMemoryInfoARM-tensor-09719) VUID-VkBindTensorMemoryInfoARM-tensor-09719
 
 If `tensor` was created with the
-`VK_TENSOR_CREATE_PROTECTED_BIT_ARM` bit not set, the tensor **must**
+[VK_TENSOR_CREATE_PROTECTED_BIT_ARM](VkTensorCreateFlagBitsARM.html) bit not set, the tensor **must**
 not be bound to a memory object allocated with a memory type that
-reports `VK_MEMORY_PROPERTY_PROTECTED_BIT`
+reports [VK_MEMORY_PROPERTY_PROTECTED_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
 [](#VUID-VkBindTensorMemoryInfoARM-tensor-09943) VUID-VkBindTensorMemoryInfoARM-tensor-09943
 
 If `tensor` was created with the
-`VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM` bit set,
+[VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM](VkTensorCreateFlagBitsARM.html) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](VkMemoryAllocateFlagBits.html) bit set
 
 * 
 [](#VUID-VkBindTensorMemoryInfoARM-tensor-09944) VUID-VkBindTensorMemoryInfoARM-tensor-09944
 
 If `tensor` was created with the
-`VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM` bit set,
+[VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM](VkTensorCreateFlagBitsARM.html) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkMemoryAllocateFlagBits.html) bit set
+
+* 
+[](#VUID-VkBindTensorMemoryInfoARM-tensor-11406) VUID-VkBindTensorMemoryInfoARM-tensor-11406
+
+If `tensor` was created with the
+[VK_TENSOR_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_ARM](VkTensorCreateFlagBitsARM.html) bit set,
+`memory` **must** have been allocated with the
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](VkMemoryAllocateFlagBits.html) bit set
+
+* 
+[](#VUID-VkBindTensorMemoryInfoARM-tensor-11407) VUID-VkBindTensorMemoryInfoARM-tensor-11407
+
+If `tensor` was created with the
+[VK_TENSOR_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_ARM](VkTensorCreateFlagBitsARM.html) bit set,
+`memory` **must** have been allocated with the
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkMemoryAllocateFlagBits.html) bit set
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkBindTensorMemoryInfoARM-sType-sType) VUID-VkBindTensorMemoryInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_TENSOR_MEMORY_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_TENSOR_MEMORY_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkBindTensorMemoryInfoARM-pNext-pNext) VUID-VkBindTensorMemoryInfoARM-pNext-pNext

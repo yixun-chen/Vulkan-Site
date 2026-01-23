@@ -78,7 +78,7 @@ Graeme Leese, Broadcom
 Spencer Fricke, Samsung
 
 This extension enables the
-`VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16` format to be used without
+[VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16](VkFormat.html) format to be used without
 a [sampler Y′CBCR conversion](../../../../spec/latest/chapters/samplers.html#samplers-YCbCr-conversion) enabled.
 
 * 
@@ -95,19 +95,19 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RGBA10X6_FORMATS_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RGBA10X6_FORMATS_FEATURES_EXT](VkStructureType.html)
 
 1) Should we reuse the existing format enumeration or introduce a new one?
 
 **RESOLVED**: We reuse an existing format enumeration,
-`VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16`, that was previously
+[VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16](VkFormat.html), that was previously
 exclusively used for YCbCr and therefore had a set of limitations related to
 that usage.
 The alternative was to introduce a new format token with exactly the same
 bit representation as the existing token, but without the limitations.
 
 2) Should we only introduce
-`VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16` or also 1-3 component
+[VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16](VkFormat.html) or also 1-3 component
 variations?
 
 **RESOLVED**: Only the 4-component format is introduced because the 1- and 2-

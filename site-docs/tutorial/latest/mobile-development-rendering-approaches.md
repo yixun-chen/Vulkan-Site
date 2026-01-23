@@ -381,4 +381,4 @@ Regardless of the rendering architecture, these practices will help optimize per
 
 In the next section, we’ll explore Vulkan extensions that can help you optimize performance on mobile devices, particularly those that leverage the tile-based architecture.
 
-[Previous: Performance Optimizations](03_performance_optimizations.adoc) | [Next: Vulkan Extensions for Mobile](05_vulkan_extensions.adoc)
+[Previous: Performance Optimizations](03_performance_optimizations.html) | [Next: Vulkan Extensions for Mobile](05_vulkan_extensions.html)

@@ -63,7 +63,7 @@ Valid Usage
 
 `pGeneratedCommandsInfo`’s `indirectCommandsLayout` **must** have
 been created with the
-`VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_EXT` bit
+[VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_EXT](VkIndirectCommandsLayoutUsageFlagBitsEXT.html) bit
 set
 
 * 
@@ -71,7 +71,7 @@ set
 
 If the token sequence of the passed
 [VkGeneratedCommandsInfoEXT](VkGeneratedCommandsInfoEXT.html)::`indirectCommandsLayout` contains
-a `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT` token, the
+a [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](VkIndirectCommandsTokenTypeEXT.html) token, the
 initial shader state of
 [VkGeneratedCommandsInfoEXT](VkGeneratedCommandsInfoEXT.html)::`indirectExecutionSet` **must** be
 bound on `stateCommandBuffer`
@@ -118,7 +118,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdPreprocessGeneratedCommandsEXT-commandBuffer-cmdpool) VUID-vkCmdPreprocessGeneratedCommandsEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdPreprocessGeneratedCommandsEXT-renderpass) VUID-vkCmdPreprocessGeneratedCommandsEXT-renderpass

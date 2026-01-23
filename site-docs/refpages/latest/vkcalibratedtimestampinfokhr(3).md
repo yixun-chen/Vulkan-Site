@@ -54,16 +54,16 @@ returned by [vkGetPhysicalDeviceCalibrateableTimeDomainsKHR](vkGetPhysicalDevice
 * 
 [](#VUID-VkCalibratedTimestampInfoKHR-timeDomain-12227) VUID-VkCalibratedTimestampInfoKHR-timeDomain-12227
 
-If `timeDomain` is `VK_TIME_DOMAIN_SWAPCHAIN_LOCAL_EXT` or
-`VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT`, the `pNext` chain
-**must** include a [VkSwapchainCalibratedTimestampInfoEXT](VkSwapchainCalibratedTimestampInfoEXT.html) structure.
+If `timeDomain` is [VK_TIME_DOMAIN_SWAPCHAIN_LOCAL_EXT](VkTimeDomainKHR.html) or
+[VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT](VkTimeDomainKHR.html), the `pNext` chain
+**must** include a [VkSwapchainCalibratedTimestampInfoEXT](VkSwapchainCalibratedTimestampInfoEXT.html) structure
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkCalibratedTimestampInfoKHR-sType-sType) VUID-VkCalibratedTimestampInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkCalibratedTimestampInfoKHR-pNext-pNext) VUID-VkCalibratedTimestampInfoKHR-pNext-pNext

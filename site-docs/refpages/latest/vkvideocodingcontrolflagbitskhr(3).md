@@ -31,17 +31,17 @@ typedef enum VkVideoCodingControlFlagBitsKHR {
 } VkVideoCodingControlFlagBitsKHR;
 
 * 
-`VK_VIDEO_CODING_CONTROL_RESET_BIT_KHR` specifies a request for the
+[VK_VIDEO_CODING_CONTROL_RESET_BIT_KHR](#) specifies a request for the
 bound video session to be reset before other coding control parameters
 are applied.
 
 * 
-`VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR` specifies that
+[VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR](#) specifies that
 the coding control parameters include video encode rate control
 parameters (see [VkVideoEncodeRateControlInfoKHR](VkVideoEncodeRateControlInfoKHR.html)).
 
 * 
-`VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR` specifies
+[VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR](#) specifies
 that the coding control parameters include video encode quality level
 parameters (see [VkVideoEncodeQualityLevelInfoKHR](VkVideoEncodeQualityLevelInfoKHR.html)).
 

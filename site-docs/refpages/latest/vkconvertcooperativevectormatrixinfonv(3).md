@@ -98,15 +98,15 @@ When called from [vkConvertCooperativeVectorMatrixNV](vkConvertCooperativeVector
 `hostAddress` members of `srcData` and `dstData` are used.
 
 For each of the source and destination matrix, if the layout is not either
-`VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_ROW_MAJOR_NV` or
-`VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_COLUMN_MAJOR_NV`, then the
+[VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_ROW_MAJOR_NV](VkCooperativeVectorMatrixLayoutNV.html) or
+[VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_COLUMN_MAJOR_NV](VkCooperativeVectorMatrixLayoutNV.html), then the
 corresponding stride parameter is ignored.
 
 The size of the destination is only a function of the destination layout
 information, and does not depend on the source layout information.
 
 Conversion **can** be used to convert between
-`VK_COMPONENT_TYPE_FLOAT32_KHR` or `VK_COMPONENT_TYPE_FLOAT16_KHR`
+[VK_COMPONENT_TYPE_FLOAT32_KHR](VkComponentTypeKHR.html) or [VK_COMPONENT_TYPE_FLOAT16_KHR](VkComponentTypeKHR.html)
 and any supported lower-precision floating-point type.
 In this case, the conversion uses round-to-nearest-even rounding.
 
@@ -132,7 +132,7 @@ element size
 If `srcComponentType` is not a supported
 [VkCooperativeVectorPropertiesNV](VkCooperativeVectorPropertiesNV.html)::`matrixInterpretation` value
 as reported by [vkGetPhysicalDeviceCooperativeVectorPropertiesNV](vkGetPhysicalDeviceCooperativeVectorPropertiesNV.html),
-then `srcComponentType` **must** be `VK_COMPONENT_TYPE_FLOAT32_KHR`
+then `srcComponentType` **must** be [VK_COMPONENT_TYPE_FLOAT32_KHR](VkComponentTypeKHR.html)
 
 * 
 [](#VUID-VkConvertCooperativeVectorMatrixInfoNV-dstComponentType-10080) VUID-VkConvertCooperativeVectorMatrixInfoNV-dstComponentType-10080
@@ -140,30 +140,30 @@ then `srcComponentType` **must** be `VK_COMPONENT_TYPE_FLOAT32_KHR`
 If `dstComponentType` is not a supported
 [VkCooperativeVectorPropertiesNV](VkCooperativeVectorPropertiesNV.html)::`matrixInterpretation` value
 as reported by [vkGetPhysicalDeviceCooperativeVectorPropertiesNV](vkGetPhysicalDeviceCooperativeVectorPropertiesNV.html),
-then `dstComponentType` **must** be `VK_COMPONENT_TYPE_FLOAT32_KHR`
+then `dstComponentType` **must** be [VK_COMPONENT_TYPE_FLOAT32_KHR](VkComponentTypeKHR.html)
 
 * 
 [](#VUID-VkConvertCooperativeVectorMatrixInfoNV-srcComponentType-10081) VUID-VkConvertCooperativeVectorMatrixInfoNV-srcComponentType-10081
 
 If `srcComponentType` and `dstComponentType` are not equal, then
-one **must** be `VK_COMPONENT_TYPE_FLOAT32_KHR` or
-`VK_COMPONENT_TYPE_FLOAT16_KHR` and the other **must** be a
+one **must** be [VK_COMPONENT_TYPE_FLOAT32_KHR](VkComponentTypeKHR.html) or
+[VK_COMPONENT_TYPE_FLOAT16_KHR](VkComponentTypeKHR.html) and the other **must** be a
 lower-precision floating-point type
 
 * 
 [](#VUID-VkConvertCooperativeVectorMatrixInfoNV-dstComponentType-10082) VUID-VkConvertCooperativeVectorMatrixInfoNV-dstComponentType-10082
 
-If `dstComponentType` is `VK_COMPONENT_TYPE_FLOAT_E4M3_NV` or
-`VK_COMPONENT_TYPE_FLOAT_E5M2_NV`, then `dstLayout` **must** be
-`VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_INFERENCING_OPTIMAL_NV` or
-`VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_TRAINING_OPTIMAL_NV`
+If `dstComponentType` is [VK_COMPONENT_TYPE_FLOAT_E4M3_NV](VkComponentTypeKHR.html) or
+[VK_COMPONENT_TYPE_FLOAT_E5M2_NV](VkComponentTypeKHR.html), then `dstLayout` **must** be
+[VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_INFERENCING_OPTIMAL_NV](VkCooperativeVectorMatrixLayoutNV.html) or
+[VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_TRAINING_OPTIMAL_NV](VkCooperativeVectorMatrixLayoutNV.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkConvertCooperativeVectorMatrixInfoNV-sType-sType) VUID-VkConvertCooperativeVectorMatrixInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CONVERT_COOPERATIVE_VECTOR_MATRIX_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CONVERT_COOPERATIVE_VECTOR_MATRIX_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkConvertCooperativeVectorMatrixInfoNV-pNext-pNext) VUID-VkConvertCooperativeVectorMatrixInfoNV-pNext-pNext

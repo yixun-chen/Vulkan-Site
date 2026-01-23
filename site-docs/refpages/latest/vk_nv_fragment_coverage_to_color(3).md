@@ -66,7 +66,7 @@ Jeff Bolz, NVIDIA
 This extension allows the fragment coverage value, represented as an integer
 bitmask, to be substituted for a color output being written to a
 single-component color attachment with integer components (e.g.
-`VK_FORMAT_R8_UINT`).
+[VK_FORMAT_R8_UINT](VkFormat.html)).
 The functionality provided by this extension is different from simply
 writing the `SampleMask` fragment shader output, in that the coverage
 value written to the framebuffer is taken after stencil test and depth test,
@@ -93,7 +93,7 @@ Extending [VkPipelineMultisampleStateCreateInfo](VkPipelineMultisampleStateCreat
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV`
+[VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV](VkStructureType.html)
 
 * 
 Revision 1, 2017-05-21 (Jeff Bolz)

@@ -33,10 +33,10 @@ VkResult vkGetDeferredOperationResultKHR(
 `operation` is the operation whose deferred result is being queried.
 
 If no command has been deferred on `operation`,
-`vkGetDeferredOperationResultKHR` returns `VK_SUCCESS`.
+`vkGetDeferredOperationResultKHR` returns [VK_SUCCESS](VkResult.html).
 
 If the deferred operation is pending, `vkGetDeferredOperationResultKHR`
-returns `VK_NOT_READY`.
+returns [VK_NOT_READY](VkResult.html).
 
 If the deferred operation is complete, it returns the appropriate return
 value from the original command.
@@ -65,18 +65,18 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_NOT_READY`
+[VK_NOT_READY](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_deferred_host_operations](VK_KHR_deferred_host_operations.html), [VkDeferredOperationKHR](VkDeferredOperationKHR.html), [VkDevice](VkDevice.html)
 

@@ -47,7 +47,7 @@ structure.
 
 * 
  `indexTypeUint8`
-    indicates that `VK_INDEX_TYPE_UINT8` can be used with
+    indicates that [VK_INDEX_TYPE_UINT8](VkIndexType.html) can be used with
 [vkCmdBindIndexBuffer2](vkCmdBindIndexBuffer2.html) and
     [vkCmdBindIndexBuffer](vkCmdBindIndexBuffer.html).
 
@@ -57,7 +57,7 @@ If the `VkPhysicalDeviceIndexTypeUint8Features` structure is included in the `pN
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceIndexTypeUint8Features`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -65,7 +65,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceIndexTypeUint8Features-sType-sType) VUID-VkPhysicalDeviceIndexTypeUint8Features-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES](VkStructureType.html)
 
 [VK_EXT_index_type_uint8](VK_EXT_index_type_uint8.html), [VK_KHR_index_type_uint8](VK_KHR_index_type_uint8.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

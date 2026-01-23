@@ -29,13 +29,13 @@ typedef enum VkVideoEncodeAV1PredictionModeKHR {
 } VkVideoEncodeAV1PredictionModeKHR;
 
 * 
-`VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_INTRA_ONLY_KHR` specifies the
+[VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_INTRA_ONLY_KHR](#) specifies the
 use of *intra-only prediction mode*, used when encoding AV1 frames of
 type `STD_VIDEO_AV1_FRAME_TYPE_KEY` or
 `STD_VIDEO_AV1_FRAME_TYPE_INTRA_ONLY`.
 
 * 
-`VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_SINGLE_REFERENCE_KHR` specifies
+[VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_SINGLE_REFERENCE_KHR](#) specifies
 the use of *single reference prediction mode*, used when encoding AV1
 frames of type `STD_VIDEO_AV1_FRAME_TYPE_INTER` or
 `STD_VIDEO_AV1_FRAME_TYPE_SWITCH` with `reference_select`, as
@@ -48,7 +48,7 @@ that is supported by the implementation, as reported in
 [VkVideoEncodeAV1CapabilitiesKHR](VkVideoEncodeAV1CapabilitiesKHR.html)::`singleReferenceNameMask`.
 
 * 
-`VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_UNIDIRECTIONAL_COMPOUND_KHR`
+[VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_UNIDIRECTIONAL_COMPOUND_KHR](#)
 specifies the use of *unidirectional compound prediction mode*, used
 when encoding AV1 frames of type `STD_VIDEO_AV1_FRAME_TYPE_INTER` or
 `STD_VIDEO_AV1_FRAME_TYPE_SWITCH` with `reference_select`, as
@@ -75,7 +75,7 @@ reference names, as defined in section 5.11.25 of the [AV1    Specification](../
 * 
 `BWDREF_FRAME` and `ALTREF_FRAME`.
 
-`VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_BIDIRECTIONAL_COMPOUND_KHR`
+[VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_BIDIRECTIONAL_COMPOUND_KHR](#)
 specifies the use of *bidirectional compound prediction mode*, used when
 encoding AV1 frames of type `STD_VIDEO_AV1_FRAME_TYPE_INTER` or
 `STD_VIDEO_AV1_FRAME_TYPE_SWITCH` with `reference_select`, as

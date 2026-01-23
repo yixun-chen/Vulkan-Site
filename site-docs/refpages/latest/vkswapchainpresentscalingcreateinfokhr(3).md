@@ -24,10 +24,10 @@ than those of the target surface, different behavior is possible on
 different platforms per their respective specifications:
 
 * 
-Presentation fails and `VK_ERROR_OUT_OF_DATE_KHR` is returned
+Presentation fails and [VK_ERROR_OUT_OF_DATE_KHR](VkResult.html) is returned
 
 * 
-Scaling is done and `VK_SUCCESS` or `VK_SUBOPTIMAL_KHR` is
+Scaling is done and [VK_SUCCESS](VkResult.html) or [VK_SUBOPTIMAL_KHR](VkResult.html) is
 returned
 
 * 
@@ -183,7 +183,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSwapchainPresentScalingCreateInfoKHR-sType-sType) VUID-VkSwapchainPresentScalingCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_SCALING_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_SCALING_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkSwapchainPresentScalingCreateInfoKHR-scalingBehavior-parameter) VUID-VkSwapchainPresentScalingCreateInfoKHR-scalingBehavior-parameter

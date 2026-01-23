@@ -59,7 +59,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryBarrier-sType-sType) VUID-VkMemoryBarrier-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_BARRIER`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_BARRIER](VkStructureType.html)
 
 * 
 [](#VUID-VkMemoryBarrier-pNext-pNext) VUID-VkMemoryBarrier-pNext-pNext

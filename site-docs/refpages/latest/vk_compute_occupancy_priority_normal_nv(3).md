@@ -17,7 +17,7 @@
 
 VK_COMPUTE_OCCUPANCY_PRIORITY_NORMAL_NV - Normal occupancy priority constant
 
-`VK_COMPUTE_OCCUPANCY_PRIORITY_NORMAL_NV` is a constant value that can
+[VK_COMPUTE_OCCUPANCY_PRIORITY_NORMAL_NV](#) is a constant value that can
 be used for
 [VkComputeOccupancyPriorityParametersNV](VkComputeOccupancyPriorityParametersNV.html)::`occupancyPriority` to
 specify a normal priority level.

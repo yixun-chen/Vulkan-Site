@@ -48,15 +48,15 @@ Valid Usage
 [](#VUID-VkImageMemoryRequirementsInfo2-image-01589) VUID-VkImageMemoryRequirementsInfo2-image-01589
 
 If `image` was created with a *multi-planar* format and the
-`VK_IMAGE_CREATE_DISJOINT_BIT` flag, there **must** be a
+[VK_IMAGE_CREATE_DISJOINT_BIT](VkImageCreateFlagBits.html) flag, there **must** be a
 [VkImagePlaneMemoryRequirementsInfo](VkImagePlaneMemoryRequirementsInfo.html) included in the `pNext`
 chain of the [VkImageMemoryRequirementsInfo2](#) structure
 
 * 
 [](#VUID-VkImageMemoryRequirementsInfo2-image-02279) VUID-VkImageMemoryRequirementsInfo2-image-02279
 
-If `image` was created with `VK_IMAGE_CREATE_DISJOINT_BIT` and
-with `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then there **must** be
+If `image` was created with [VK_IMAGE_CREATE_DISJOINT_BIT](VkImageCreateFlagBits.html) and
+with [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html), then there **must** be
 a [VkImagePlaneMemoryRequirementsInfo](VkImagePlaneMemoryRequirementsInfo.html) included in the `pNext`
 chain of the [VkImageMemoryRequirementsInfo2](#) structure
 
@@ -64,7 +64,7 @@ chain of the [VkImageMemoryRequirementsInfo2](#) structure
 [](#VUID-VkImageMemoryRequirementsInfo2-image-01590) VUID-VkImageMemoryRequirementsInfo2-image-01590
 
 If `image` was not created with the
-`VK_IMAGE_CREATE_DISJOINT_BIT` flag, there **must** not be a
+[VK_IMAGE_CREATE_DISJOINT_BIT](VkImageCreateFlagBits.html) flag, there **must** not be a
 [VkImagePlaneMemoryRequirementsInfo](VkImagePlaneMemoryRequirementsInfo.html) included in the `pNext`
 chain of the [VkImageMemoryRequirementsInfo2](#) structure
 
@@ -72,7 +72,7 @@ chain of the [VkImageMemoryRequirementsInfo2](#) structure
 [](#VUID-VkImageMemoryRequirementsInfo2-image-02280) VUID-VkImageMemoryRequirementsInfo2-image-02280
 
 If `image` was created with a single-plane format and with any
-`tiling` other than `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`,
+`tiling` other than [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html),
 then there **must** not be a [VkImagePlaneMemoryRequirementsInfo](VkImagePlaneMemoryRequirementsInfo.html)
 included in the `pNext` chain of the
 [VkImageMemoryRequirementsInfo2](#) structure
@@ -81,14 +81,14 @@ included in the `pNext` chain of the
 [](#VUID-VkImageMemoryRequirementsInfo2-image-01897) VUID-VkImageMemoryRequirementsInfo2-image-01897
 
 If `image` was created with the
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](VkExternalMemoryHandleTypeFlagBits.html)
 external memory handle type, then `image` **must** be bound to memory
 
 * 
 [](#VUID-VkImageMemoryRequirementsInfo2-image-08961) VUID-VkImageMemoryRequirementsInfo2-image-08961
 
 If `image` was created with the
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX` external
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](VkExternalMemoryHandleTypeFlagBits.html) external
 memory handle type, then `image` **must** be bound to memory
 
 Valid Usage (Implicit)
@@ -96,7 +96,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageMemoryRequirementsInfo2-sType-sType) VUID-VkImageMemoryRequirementsInfo2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_MEMORY_REQUIREMENTS_INFO_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_MEMORY_REQUIREMENTS_INFO_2](VkStructureType.html)
 
 * 
 [](#VUID-VkImageMemoryRequirementsInfo2-pNext-pNext) VUID-VkImageMemoryRequirementsInfo2-pNext-pNext

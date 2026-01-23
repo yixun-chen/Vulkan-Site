@@ -39,7 +39,7 @@ structure.
 * 
 `constantQp` is the QP to use for the slice if the current
 [rate control mode](../../../../spec/latest/chapters/videocoding.html#encode-rate-control-modes) configured for the video
-session is `VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR`.
+session is [VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html).
 
 * 
 `pStdSliceHeader` is a pointer to a
@@ -75,7 +75,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeH264NaluSliceInfoKHR-sType-sType) VUID-VkVideoEncodeH264NaluSliceInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_NALU_SLICE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_NALU_SLICE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoEncodeH264NaluSliceInfoKHR-pNext-pNext) VUID-VkVideoEncodeH264NaluSliceInfoKHR-pNext-pNext

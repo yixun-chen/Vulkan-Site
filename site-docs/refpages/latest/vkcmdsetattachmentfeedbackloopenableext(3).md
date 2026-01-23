@@ -52,15 +52,15 @@ The [    `attachmentFeedbackLoopDynamicState`](../../../../spec/latest/chapters/
 * 
 [](#VUID-vkCmdSetAttachmentFeedbackLoopEnableEXT-aspectMask-08863) VUID-vkCmdSetAttachmentFeedbackLoopEnableEXT-aspectMask-08863
 
-`aspectMask` **must** only include `VK_IMAGE_ASPECT_NONE`,
-`VK_IMAGE_ASPECT_COLOR_BIT`, `VK_IMAGE_ASPECT_DEPTH_BIT`, and
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+`aspectMask` **must** only include [VK_IMAGE_ASPECT_NONE](VkImageAspectFlagBits.html),
+[VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html), [VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html), and
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-vkCmdSetAttachmentFeedbackLoopEnableEXT-attachmentFeedbackLoopLayout-08864) VUID-vkCmdSetAttachmentFeedbackLoopEnableEXT-attachmentFeedbackLoopLayout-08864
 
 If the [    `attachmentFeedbackLoopLayout`](../../../../spec/latest/chapters/features.html#features-attachmentFeedbackLoopLayout) feature is not enabled,
-`aspectMask` **must** be `VK_IMAGE_ASPECT_NONE`
+`aspectMask` **must** be [VK_IMAGE_ASPECT_NONE](VkImageAspectFlagBits.html)
 
 Valid Usage (Implicit)
 
@@ -82,7 +82,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetAttachmentFeedbackLoopEnableEXT-commandBuffer-cmdpool) VUID-vkCmdSetAttachmentFeedbackLoopEnableEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetAttachmentFeedbackLoopEnableEXT-videocoding) VUID-vkCmdSetAttachmentFeedbackLoopEnableEXT-videocoding

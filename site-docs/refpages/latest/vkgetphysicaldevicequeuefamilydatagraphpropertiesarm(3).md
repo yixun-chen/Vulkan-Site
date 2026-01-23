@@ -53,14 +53,14 @@ overwritten with the number of structures actually written to
 `pQueueFamilyDataGraphProperties`.
 If `pQueueFamilyDataGraphPropertyCount` is less than the number of
 properties available, at most `pQueueFamilyDataGraphPropertyCount`
-structures will be written, and `VK_INCOMPLETE` will be returned instead
-of `VK_SUCCESS`, to indicate that not all the available properties were
+structures will be written, and [VK_INCOMPLETE](VkResult.html) will be returned instead
+of [VK_SUCCESS](VkResult.html), to indicate that not all the available properties were
 returned.
 
 If the [dataGraphModel](../../../../spec/latest/chapters/features.html#features-dataGraphModelQCOM) feature is supported,
 the implementation **must** return at least one property with engine type
-`VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_NEURAL_QCOM` or
-`VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_COMPUTE_QCOM`.
+[VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_NEURAL_QCOM](VkPhysicalDeviceDataGraphProcessingEngineTypeARM.html) or
+[VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_COMPUTE_QCOM](VkPhysicalDeviceDataGraphProcessingEngineTypeARM.html).
 
 Valid Usage (Implicit)
 
@@ -84,24 +84,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_ARM_data_graph](VK_ARM_data_graph.html), [VkPhysicalDevice](VkPhysicalDevice.html), [VkQueueFamilyDataGraphPropertiesARM](VkQueueFamilyDataGraphPropertiesARM.html)
 

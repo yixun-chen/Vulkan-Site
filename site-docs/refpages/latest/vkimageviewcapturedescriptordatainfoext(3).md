@@ -46,7 +46,7 @@ Valid Usage
 [](#VUID-VkImageViewCaptureDescriptorDataInfoEXT-imageView-08083) VUID-VkImageViewCaptureDescriptorDataInfoEXT-imageView-08083
 
 `imageView` **must** have been created with
-`VK_IMAGE_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` set
+[VK_IMAGE_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](VkImageViewCreateFlagBits.html) set
 in [VkImageViewCreateInfo](VkImageViewCreateInfo.html)::`flags`
 
 Valid Usage (Implicit)
@@ -54,7 +54,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageViewCaptureDescriptorDataInfoEXT-sType-sType) VUID-VkImageViewCaptureDescriptorDataInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_VIEW_CAPTURE_DESCRIPTOR_DATA_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_CAPTURE_DESCRIPTOR_DATA_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkImageViewCaptureDescriptorDataInfoEXT-pNext-pNext) VUID-VkImageViewCaptureDescriptorDataInfoEXT-pNext-pNext

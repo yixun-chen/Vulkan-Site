@@ -43,7 +43,7 @@ describing the buffer attributes for the buffer collection
 
 * 
 `requiredFormatFeatures` is a bitmask of
-`VkFormatFeatureFlagBits` required features of the buffers in the
+[VkFormatFeatureFlagBits](VkFormatFeatureFlagBits.html) required features of the buffers in the
 buffer collection
 
 * 
@@ -56,7 +56,7 @@ Valid Usage
 [](#VUID-VkBufferConstraintsInfoFUCHSIA-requiredFormatFeatures-06404) VUID-VkBufferConstraintsInfoFUCHSIA-requiredFormatFeatures-06404
 
 The `requiredFormatFeatures` bitmask of
-`VkFormatFeatureFlagBits` **must** be chosen from among the buffer
+[VkFormatFeatureFlagBits](VkFormatFeatureFlagBits.html) **must** be chosen from among the buffer
 compatible format features listed in
 [buffer compatible format features](../../../../spec/latest/chapters/formats.html#buffer-compatible-format-features)
 
@@ -65,7 +65,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferConstraintsInfoFUCHSIA-sType-sType) VUID-VkBufferConstraintsInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_CONSTRAINTS_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_CONSTRAINTS_INFO_FUCHSIA](VkStructureType.html)
 
 * 
 [](#VUID-VkBufferConstraintsInfoFUCHSIA-pNext-pNext) VUID-VkBufferConstraintsInfoFUCHSIA-pNext-pNext

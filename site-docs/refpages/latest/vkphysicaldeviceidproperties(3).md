@@ -44,16 +44,16 @@ typedef VkPhysicalDeviceIDProperties VkPhysicalDeviceIDPropertiesKHR;
 structure.
 
 * 
-`deviceUUID` is an array of `VK_UUID_SIZE` `uint8_t` values
+`deviceUUID` is an array of [VK_UUID_SIZE](VK_UUID_SIZE.html) `uint8_t` values
 representing a universally unique identifier for the device.
 
 * 
-`driverUUID` is an array of `VK_UUID_SIZE` `uint8_t` values
+`driverUUID` is an array of [VK_UUID_SIZE](VK_UUID_SIZE.html) `uint8_t` values
 representing a universally unique identifier for the driver build in use
 by the device.
 
 * 
-`deviceLUID` is an array of `VK_LUID_SIZE` `uint8_t` values
+`deviceLUID` is an array of [VK_LUID_SIZE](VK_LUID_SIZE.html) `uint8_t` values
 representing a locally unique identifier for the device.
 
 * 
@@ -61,9 +61,9 @@ representing a locally unique identifier for the device.
 within a linked device adapter corresponding to the device.
 
 * 
-`deviceLUIDValid` is a boolean value that will be `VK_TRUE` if
+`deviceLUIDValid` is a boolean value that will be [VK_TRUE](VK_TRUE.html) if
 `deviceLUID` contains a valid LUID and `deviceNodeMask` contains
-a valid node mask, and `VK_FALSE` if they do not.
+a valid node mask, and [VK_FALSE](VK_FALSE.html) if they do not.
 
 If the `VkPhysicalDeviceIDProperties` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html) structure passed to
@@ -92,13 +92,13 @@ particular object type:
 * 
 [External fence handle types    compatibility](../../../../spec/latest/chapters/capabilities.html#external-fence-handle-types-compatibility)
 
-If `deviceLUIDValid` is `VK_FALSE`, the values of `deviceLUID`
+If `deviceLUIDValid` is [VK_FALSE](VK_FALSE.html), the values of `deviceLUID`
 and `deviceNodeMask` are **undefined**.
-If `deviceLUIDValid` is `VK_TRUE` and Vulkan is running on the
+If `deviceLUIDValid` is [VK_TRUE](VK_TRUE.html) and Vulkan is running on the
 Windows operating system, the contents of `deviceLUID` **can** be cast to
 an `LUID` object and **must** be equal to the locally unique identifier of a
 `IDXGIAdapter1` object that corresponds to `physicalDevice`.
-If `deviceLUIDValid` is `VK_TRUE`, `deviceNodeMask` **must**
+If `deviceLUIDValid` is [VK_TRUE](VK_TRUE.html), `deviceNodeMask` **must**
 contain exactly one bit.
 If Vulkan is running on an operating system that supports the Direct3D 12
 API and `physicalDevice` corresponds to an individual device in a linked
@@ -162,7 +162,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceIDProperties-sType-sType) VUID-VkPhysicalDeviceIDProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES](VkStructureType.html)
 
 [VK_KHR_external_fence_capabilities](VK_KHR_external_fence_capabilities.html), [VK_KHR_external_memory_capabilities](VK_KHR_external_memory_capabilities.html), [VK_KHR_external_semaphore_capabilities](VK_KHR_external_semaphore_capabilities.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

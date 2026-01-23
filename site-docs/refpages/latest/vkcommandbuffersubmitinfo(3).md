@@ -56,7 +56,7 @@ Valid Usage
 [](#VUID-VkCommandBufferSubmitInfo-commandBuffer-03890) VUID-VkCommandBufferSubmitInfo-commandBuffer-03890
 
 `commandBuffer` **must** not have been allocated with
-`VK_COMMAND_BUFFER_LEVEL_SECONDARY`
+[VK_COMMAND_BUFFER_LEVEL_SECONDARY](VkCommandBufferLevel.html)
 
 * 
 [](#VUID-VkCommandBufferSubmitInfo-deviceMask-03891) VUID-VkCommandBufferSubmitInfo-deviceMask-03891
@@ -68,7 +68,7 @@ If `deviceMask` is not `0`, it **must** be a valid device mask
 
 If any render pass instance in `commandBuffer` was recorded with a
 [VkRenderPassStripeBeginInfoARM](VkRenderPassStripeBeginInfoARM.html) structure in its pNext chain and
-did not specify the `VK_RENDERING_RESUMING_BIT` flag, a
+did not specify the [VK_RENDERING_RESUMING_BIT](VkRenderingFlagBits.html) flag, a
 [VkRenderPassStripeSubmitInfoARM](VkRenderPassStripeSubmitInfoARM.html) **must** be included in the
 `pNext` chain
 
@@ -81,14 +81,14 @@ If a [VkRenderPassStripeSubmitInfoARM](VkRenderPassStripeSubmitInfoARM.html) is 
 **must** be equal to the sum of the
 [VkRenderPassStripeBeginInfoARM](VkRenderPassStripeBeginInfoARM.html)::`stripeInfoCount` parameters
 provided to render pass instances recorded in `commandBuffer` that
-did not specify the `VK_RENDERING_RESUMING_BIT` flag
+did not specify the [VK_RENDERING_RESUMING_BIT](VkRenderingFlagBits.html) flag
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkCommandBufferSubmitInfo-sType-sType) VUID-VkCommandBufferSubmitInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMMAND_BUFFER_SUBMIT_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_BUFFER_SUBMIT_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkCommandBufferSubmitInfo-pNext-pNext) VUID-VkCommandBufferSubmitInfo-pNext-pNext

@@ -105,7 +105,7 @@ Allow `vkCmdSetEvent2` to not provide a dependency, providing
 
 * 
 Add a
-[VkQueryPoolCreateFlagBits](VkQueryPoolCreateFlagBits.html)::`VK_QUERY_POOL_CREATE_RESET_BIT_KHR`
+[VkQueryPoolCreateFlagBits](VkQueryPoolCreateFlagBits.html)::[VK_QUERY_POOL_CREATE_RESET_BIT_KHR](VkQueryPoolCreateFlagBits.html)
 flag to create a query pool with all queries initialized to the reset
 state.
 
@@ -158,23 +158,23 @@ Extending [VkQueueFamilyProperties2](VkQueueFamilyProperties2.html):
 * 
 Extending [VkDependencyFlagBits](VkDependencyFlagBits.html):
 
-`VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR`
+[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](VkDependencyFlagBits.html)
 
 Extending [VkQueryPoolCreateFlagBits](VkQueryPoolCreateFlagBits.html):
 
 * 
-`VK_QUERY_POOL_CREATE_RESET_BIT_KHR`
+[VK_QUERY_POOL_CREATE_RESET_BIT_KHR](VkQueryPoolCreateFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_FEATURES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_PROPERTIES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_PROPERTIES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_QUEUE_FAMILY_OWNERSHIP_TRANSFER_PROPERTIES_KHR`
+[VK_STRUCTURE_TYPE_QUEUE_FAMILY_OWNERSHIP_TRANSFER_PROPERTIES_KHR](VkStructureType.html)
 
 None.
 

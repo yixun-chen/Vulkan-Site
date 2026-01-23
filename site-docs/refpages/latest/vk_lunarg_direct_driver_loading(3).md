@@ -102,10 +102,10 @@ Extending [VkInstanceCreateInfo](VkInstanceCreateInfo.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_INFO_LUNARG`
+[VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_INFO_LUNARG](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_LIST_LUNARG`
+[VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_LIST_LUNARG](VkStructureType.html)
 
 * 
 Revision 1, 2022-11-29 (Charles Giessen)

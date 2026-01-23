@@ -72,29 +72,29 @@ retrieved from a previous call to `vkGetPipelineCacheData`
 
 If the [    `pipelineCreationCacheControl`](../../../../spec/latest/chapters/features.html#features-pipelineCreationCacheControl) feature is not enabled, `flags`
 **must** not include
-`VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT`
+[VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT](VkPipelineCacheCreateFlagBits.html)
 
 * 
 [](#VUID-VkPipelineCacheCreateInfo-maintenance8-10200) VUID-VkPipelineCacheCreateInfo-maintenance8-10200
 
 If the [`maintenance8`](../../../../spec/latest/chapters/features.html#features-maintenance8) feature is not
 enabled, `flags` **must** not include
-`VK_PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_BIT_KHR`
+[VK_PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_BIT_KHR](VkPipelineCacheCreateFlagBits.html)
 
 * 
 [](#VUID-VkPipelineCacheCreateInfo-flags-10201) VUID-VkPipelineCacheCreateInfo-flags-10201
 
 If `flags` includes
-`VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT`, it **must** not
+[VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT](VkPipelineCacheCreateFlagBits.html), it **must** not
 include
-`VK_PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_BIT_KHR`
+[VK_PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_BIT_KHR](VkPipelineCacheCreateFlagBits.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineCacheCreateInfo-sType-sType) VUID-VkPipelineCacheCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineCacheCreateInfo-pNext-pNext) VUID-VkPipelineCacheCreateInfo-pNext-pNext

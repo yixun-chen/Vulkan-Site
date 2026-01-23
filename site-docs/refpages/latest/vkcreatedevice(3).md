@@ -50,9 +50,9 @@ containing information about how to create the device.
 `ppEnabledExtensionNames` and `pEnabledFeatures` members of
 `pCreateInfo`, respectively, are supported by the implementation.
 If any requested extension is not supported, `vkCreateDevice` **must**
-return `VK_ERROR_EXTENSION_NOT_PRESENT`.
+return [VK_ERROR_EXTENSION_NOT_PRESENT](VkResult.html).
 If any requested feature is not supported, `vkCreateDevice` **must** return
-`VK_ERROR_FEATURE_NOT_PRESENT`.
+[VK_ERROR_FEATURE_NOT_PRESENT](VkResult.html).
 Support for extensions **can** be checked before creating a device by querying
 [vkEnumerateDeviceExtensionProperties](vkEnumerateDeviceExtensionProperties.html).
 Support for features **can** similarly be checked by querying
@@ -65,7 +65,7 @@ Multiple logical devices **can** be created from the same physical device.
 Logical device creation **may** fail due to lack of device-specific resources
 (in addition to other errors).
 If that occurs, `vkCreateDevice` will return
-`VK_ERROR_TOO_MANY_OBJECTS`.
+[VK_ERROR_TOO_MANY_OBJECTS](VkResult.html).
 
 Valid Usage
 
@@ -74,7 +74,7 @@ Valid Usage
 
 All [required device    extensions](../../../../spec/latest/chapters/extensions.html#extendingvulkan-extensions-extensiondependencies) for each extension in the
 [VkDeviceCreateInfo](VkDeviceCreateInfo.html)::`ppEnabledExtensionNames` list **must** also
-be present in that list.
+be present in that list
 
 Valid Usage (Implicit)
 
@@ -103,36 +103,36 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](VkResult.html)
 
 * 
-`VK_ERROR_EXTENSION_NOT_PRESENT`
+[VK_ERROR_EXTENSION_NOT_PRESENT](VkResult.html)
 
 * 
-`VK_ERROR_FEATURE_NOT_PRESENT`
+[VK_ERROR_FEATURE_NOT_PRESENT](VkResult.html)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkAllocationCallbacks](VkAllocationCallbacks.html), [VkDevice](VkDevice.html), [VkDeviceCreateInfo](VkDeviceCreateInfo.html), [VkPhysicalDevice](VkPhysicalDevice.html)
 

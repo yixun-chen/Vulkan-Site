@@ -45,18 +45,18 @@ structure.
 [VkShaderStageFlagBits](VkShaderStageFlagBits.html) describing the shader stages that
 cooperative vector instructions are supported in.
 `cooperativeVectorSupportedStages` will have the
-`VK_SHADER_STAGE_COMPUTE_BIT` bit set if any of the physical
-device’s queues support `VK_QUEUE_COMPUTE_BIT`.
+[VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html) bit set if any of the physical
+device’s queues support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html).
 
 * 
 
-`cooperativeVectorTrainingFloat16Accumulation` is `VK_TRUE` if
+`cooperativeVectorTrainingFloat16Accumulation` is [VK_TRUE](VK_TRUE.html) if
 the implementation supports cooperative vector training functions
 accumulating 16-bit floating-point results.
 
 * 
 
-`cooperativeVectorTrainingFloat32Accumulation` is `VK_TRUE` if
+`cooperativeVectorTrainingFloat32Accumulation` is [VK_TRUE](VK_TRUE.html) if
 the implementation supports cooperative vector training functions
 accumulating 32-bit floating-point results.
 
@@ -75,7 +75,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceCooperativeVectorPropertiesNV-sType-sType) VUID-VkPhysicalDeviceCooperativeVectorPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_PROPERTIES_NV](VkStructureType.html)
 
 [VK_NV_cooperative_vector](VK_NV_cooperative_vector.html), `VkBool32`, [VkShaderStageFlags](VkShaderStageFlags.html), [VkStructureType](VkStructureType.html)
 

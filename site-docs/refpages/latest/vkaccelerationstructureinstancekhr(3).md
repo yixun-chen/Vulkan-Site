@@ -72,7 +72,8 @@ a device address containing the value obtained from
 [vkGetAccelerationStructureDeviceAddressKHR](vkGetAccelerationStructureDeviceAddressKHR.html)
 or
 [vkGetAccelerationStructureHandleNV](vkGetAccelerationStructureHandleNV.html)
-     (used by device operations which reference acceleration structures)
+     for a bottom level acceleration structure (used by device operations
+     which reference acceleration structures)
 or,
 
 * 

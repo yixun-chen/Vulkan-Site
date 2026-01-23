@@ -48,7 +48,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureMotionInfoNV-sType-sType) VUID-VkAccelerationStructureMotionInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MOTION_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MOTION_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkAccelerationStructureMotionInfoNV-flags-zerobitmask) VUID-VkAccelerationStructureMotionInfoNV-flags-zerobitmask

@@ -46,18 +46,18 @@ given the build parameters.
 The size requirements for a scratch buffer **may** be zero.
 
 If [VkClusterAccelerationStructureInputInfoNV](VkClusterAccelerationStructureInputInfoNV.html)::`opMode` is
-`VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_IMPLICIT_DESTINATIONS_NV`,
+[VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_IMPLICIT_DESTINATIONS_NV](VkClusterAccelerationStructureOpModeNV.html),
 acceleration structure and scratch memory sizes are returned for all
 [VkClusterAccelerationStructureInputInfoNV](VkClusterAccelerationStructureInputInfoNV.html)::`maxAccelerationStructureCount`
 acceleration structures.
 If [VkClusterAccelerationStructureInputInfoNV](VkClusterAccelerationStructureInputInfoNV.html)::`opMode` is
-`VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_EXPLICIT_DESTINATIONS_NV`,
+[VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_EXPLICIT_DESTINATIONS_NV](VkClusterAccelerationStructureOpModeNV.html),
 scratch memory size for all
 [VkClusterAccelerationStructureInputInfoNV](VkClusterAccelerationStructureInputInfoNV.html)::`maxAccelerationStructureCount`
 acceleration structures and the acceleration structure memory size for a
 single acceleration structure is returned.
 If [VkClusterAccelerationStructureInputInfoNV](VkClusterAccelerationStructureInputInfoNV.html)::`opMode` is
-`VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_COMPUTE_SIZES_NV`, only
+[VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_COMPUTE_SIZES_NV](VkClusterAccelerationStructureOpModeNV.html), only
 scratch memory size is returned for the requested acceleration structures.
 
 Valid Usage

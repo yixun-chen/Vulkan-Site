@@ -28,11 +28,11 @@ typedef enum VkVertexInputRate {
 } VkVertexInputRate;
 
 * 
-`VK_VERTEX_INPUT_RATE_VERTEX` specifies that vertex attribute
+[VK_VERTEX_INPUT_RATE_VERTEX](#) specifies that vertex attribute
 addressing is a function of the vertex index.
 
 * 
-`VK_VERTEX_INPUT_RATE_INSTANCE` specifies that vertex attribute
+[VK_VERTEX_INPUT_RATE_INSTANCE](#) specifies that vertex attribute
 addressing is a function of the instance index.
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkVertexInputBindingDescription](VkVertexInputBindingDescription.html), [VkVertexInputBindingDescription2EXT](VkVertexInputBindingDescription2EXT.html)

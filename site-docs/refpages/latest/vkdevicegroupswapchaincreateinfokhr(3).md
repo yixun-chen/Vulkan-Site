@@ -44,14 +44,14 @@ structure.
 `modes` is a bitfield of modes that the swapchain **can** be used with.
 
 If this structure is not present, `modes` is considered to be
-`VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR`.
+[VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR](VkDeviceGroupPresentModeFlagBitsKHR.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDeviceGroupSwapchainCreateInfoKHR-sType-sType) VUID-VkDeviceGroupSwapchainCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceGroupSwapchainCreateInfoKHR-modes-parameter) VUID-VkDeviceGroupSwapchainCreateInfoKHR-modes-parameter

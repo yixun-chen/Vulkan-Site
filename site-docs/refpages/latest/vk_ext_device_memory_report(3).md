@@ -124,13 +124,13 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_DEVICE_MEMORY_REPORT_CALLBACK_DATA_EXT`
+[VK_STRUCTURE_TYPE_DEVICE_MEMORY_REPORT_CALLBACK_DATA_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_MEMORY_REPORT_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_MEMORY_REPORT_FEATURES_EXT](VkStructureType.html)
 
 1) Should this be better expressed as an extension to VK_EXT_debug_utils and
 its general-purpose messenger construct?
@@ -223,7 +223,7 @@ of this whole structure does not work either.
 Take the shader heap as an example.
 Some implementations will let multiple [VkPipeline](VkPipeline.html) objects share the
 same shader heap.
-We are not asking the implementation to report `VK_OBJECT_TYPE_PIPELINE`
+We are not asking the implementation to report [VK_OBJECT_TYPE_PIPELINE](VkObjectType.html)
 along with a [VK_NULL_HANDLE](VK_NULL_HANDLE.html) for this bulk allocation.
 Instead, this bulk allocation is considered as a layer below what this
 extension is interested in.
@@ -251,7 +251,7 @@ This fits in well with the callback infrastructure added in this extension,
 and implementation touches the same code and has the same overheads as the
 rest of the extension.
 It could help debugging things like getting a
-`VK_ERROR_OUT_OF_HOST_MEMORY` error when ending a command buffer.
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html) error when ending a command buffer.
 Right now the allocation failure could have happened anywhere during
 recording, and a callback would be really useful to understand where and
 why.

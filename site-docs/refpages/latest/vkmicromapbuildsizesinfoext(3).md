@@ -62,7 +62,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMicromapBuildSizesInfoEXT-sType-sType) VUID-VkMicromapBuildSizesInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MICROMAP_BUILD_SIZES_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MICROMAP_BUILD_SIZES_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkMicromapBuildSizesInfoEXT-pNext-pNext) VUID-VkMicromapBuildSizesInfoEXT-pNext-pNext

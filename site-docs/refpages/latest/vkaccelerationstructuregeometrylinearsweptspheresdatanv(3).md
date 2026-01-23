@@ -77,7 +77,7 @@ radius data value.
 * 
 `indexData` is a device or host address of memory containing index
 data for vertex and radius buffers for this geometry.
-When `indexType` is `VK_INDEX_TYPE_NONE_KHR` it **must** be `NULL`.
+When `indexType` is [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html) it **must** be `NULL`.
 
 * 
 `indexStride` is the stride in bytes between each index element.
@@ -92,7 +92,7 @@ specifying the endcaps mode for LSS primitives.
 
 If an index buffer is not specified in `indexData`, LSS primitives are
 rendered individually using subsequent pairs of vertices similar to
-`VK_PRIMITIVE_TOPOLOGY_LINE_LIST`.
+[VK_PRIMITIVE_TOPOLOGY_LINE_LIST](VkPrimitiveTopology.html).
 
 Valid Usage
 
@@ -123,13 +123,13 @@ format is not a [packed format](../../../../spec/latest/chapters/formats.html#fo
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-buffer-view-format-features) of
 `vertexFormat` **must** contain
-`VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR`
+[VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR](VkFormatFeatureFlagBits.html)
 
 [](#VUID-VkAccelerationStructureGeometryLinearSweptSpheresDataNV-radiusFormat-10424) VUID-VkAccelerationStructureGeometryLinearSweptSpheresDataNV-radiusFormat-10424
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-buffer-view-format-features) of
 `radiusFormat` **must** contain
-`VK_FORMAT_FEATURE_2_ACCELERATION_STRUCTURE_RADIUS_BUFFER_BIT_NV`
+[VK_FORMAT_FEATURE_2_ACCELERATION_STRUCTURE_RADIUS_BUFFER_BIT_NV](VkFormatFeatureFlagBits2.html)
 
 [](#VUID-VkAccelerationStructureGeometryLinearSweptSpheresDataNV-radiusData-10426) VUID-VkAccelerationStructureGeometryLinearSweptSpheresDataNV-radiusData-10426
 
@@ -139,20 +139,20 @@ to `0`
 [](#VUID-VkAccelerationStructureGeometryLinearSweptSpheresDataNV-indexingMode-10427) VUID-VkAccelerationStructureGeometryLinearSweptSpheresDataNV-indexingMode-10427
 
 If `indexingMode` is
-`VK_RAY_TRACING_LSS_INDEXING_MODE_SUCCESSIVE_NV`, `indexData`
+[VK_RAY_TRACING_LSS_INDEXING_MODE_SUCCESSIVE_NV](VkRayTracingLssIndexingModeNV.html), `indexData`
 **must** not be `NULL`
 
 [](#VUID-VkAccelerationStructureGeometryLinearSweptSpheresDataNV-indexData-10428) VUID-VkAccelerationStructureGeometryLinearSweptSpheresDataNV-indexData-10428
 
-`indexType` **must** be `VK_INDEX_TYPE_UINT16`,
-`VK_INDEX_TYPE_UINT32`, or `VK_INDEX_TYPE_NONE_KHR`
+`indexType` **must** be [VK_INDEX_TYPE_UINT16](VkIndexType.html),
+[VK_INDEX_TYPE_UINT32](VkIndexType.html), or [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkAccelerationStructureGeometryLinearSweptSpheresDataNV-sType-sType) VUID-VkAccelerationStructureGeometryLinearSweptSpheresDataNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_LINEAR_SWEPT_SPHERES_DATA_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_LINEAR_SWEPT_SPHERES_DATA_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkAccelerationStructureGeometryLinearSweptSpheresDataNV-vertexFormat-parameter) VUID-VkAccelerationStructureGeometryLinearSweptSpheresDataNV-vertexFormat-parameter

@@ -52,7 +52,7 @@ If the `VkPhysicalDeviceMemoryDecompressionFeaturesEXT` structure is included in
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceMemoryDecompressionFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -60,7 +60,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMemoryDecompressionFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceMemoryDecompressionFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_memory_decompression](VK_EXT_memory_decompression.html), [VK_NV_memory_decompression](VK_NV_memory_decompression.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -67,7 +67,7 @@ the handle type.
 For handles of the following types:
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT](VkExternalMemoryHandleTypeFlagBits.html)
 
 The implementation **must** ensure the access rights allow read and write
 access to the memory.
@@ -82,7 +82,7 @@ Valid Usage
 [](#VUID-VkExportMemoryWin32HandleInfoKHR-handleTypes-00657) VUID-VkExportMemoryWin32HandleInfoKHR-handleTypes-00657
 
 If [VkExportMemoryAllocateInfo](VkExportMemoryAllocateInfo.html)::`handleTypes` does not include
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT`, a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT](VkExternalMemoryHandleTypeFlagBits.html), a
 `VkExportMemoryWin32HandleInfoKHR` structure **must** not be included
 in the `pNext` chain of [VkMemoryAllocateInfo](VkMemoryAllocateInfo.html)
 
@@ -91,7 +91,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMemoryWin32HandleInfoKHR-sType-sType) VUID-VkExportMemoryWin32HandleInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkExportMemoryWin32HandleInfoKHR-pAttributes-parameter) VUID-VkExportMemoryWin32HandleInfoKHR-pAttributes-parameter

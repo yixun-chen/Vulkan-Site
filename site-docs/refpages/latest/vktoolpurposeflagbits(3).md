@@ -50,30 +50,30 @@ typedef enum VkToolPurposeFlagBits {
 typedef VkToolPurposeFlagBits VkToolPurposeFlagBitsEXT;
 
 * 
-`VK_TOOL_PURPOSE_VALIDATION_BIT` specifies that the tool provides
+[VK_TOOL_PURPOSE_VALIDATION_BIT](#) specifies that the tool provides
 validation of API usage.
 
 * 
-`VK_TOOL_PURPOSE_PROFILING_BIT` specifies that the tool provides
+[VK_TOOL_PURPOSE_PROFILING_BIT](#) specifies that the tool provides
 profiling of API usage.
 
 * 
-`VK_TOOL_PURPOSE_TRACING_BIT` specifies that the tool is capturing
+[VK_TOOL_PURPOSE_TRACING_BIT](#) specifies that the tool is capturing
 data about the application’s API usage, including anything from simple
 logging to capturing data for later replay.
 
 * 
-`VK_TOOL_PURPOSE_ADDITIONAL_FEATURES_BIT` specifies that the tool
+[VK_TOOL_PURPOSE_ADDITIONAL_FEATURES_BIT](#) specifies that the tool
 provides additional API features/extensions on top of the underlying
 implementation.
 
 * 
-`VK_TOOL_PURPOSE_MODIFYING_FEATURES_BIT` specifies that the tool
+[VK_TOOL_PURPOSE_MODIFYING_FEATURES_BIT](#) specifies that the tool
 modifies the API features/limits/extensions presented to the
 application.
 
 * 
-`VK_TOOL_PURPOSE_DEBUG_REPORTING_BIT_EXT` specifies that the tool
+[VK_TOOL_PURPOSE_DEBUG_REPORTING_BIT_EXT](#) specifies that the tool
 reports additional information to the application via callbacks
 specified by
 [vkCreateDebugReportCallbackEXT](vkCreateDebugReportCallbackEXT.html)
@@ -81,7 +81,7 @@ or
 [vkCreateDebugUtilsMessengerEXT](vkCreateDebugUtilsMessengerEXT.html)
 
 * 
-`VK_TOOL_PURPOSE_DEBUG_MARKERS_BIT_EXT` specifies that the tool
+[VK_TOOL_PURPOSE_DEBUG_MARKERS_BIT_EXT](#) specifies that the tool
 consumes
 [debug markers](../../../../spec/latest/chapters/debugging.html#debugging-debug-markers)
 or

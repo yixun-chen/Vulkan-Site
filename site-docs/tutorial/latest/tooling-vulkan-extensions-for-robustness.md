@@ -320,4 +320,4 @@ Vulkan robustness extensions, particularly VK_EXT_robustness2, provide valuable 
 
 In the next and final section, we’ll summarize what we’ve learned about tooling for Vulkan applications and discuss how to apply these techniques in your own projects.
 
-[Previous: Crash Handling and Minidumps](04_crash_minidump.adoc) | [Next: Packaging and Distribution](06_packaging_and_distribution.adoc)
+[Previous: Crash Handling and Minidumps](04_crash_minidump.html) | [Next: Packaging and Distribution](06_packaging_and_distribution.html)

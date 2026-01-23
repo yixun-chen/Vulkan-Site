@@ -189,7 +189,7 @@ The image itself is not accessed.
 sample operation.
 The actual operation is not performed.
 
-`OpImageWeightedSampleQCOM` reads a 2D neighborhood of texels and
+`OpImageSampleWeightedQCOM` reads a 2D neighborhood of texels and
 computes a weighted average using weight values from a separate weight
 texture.
 
@@ -341,12 +341,12 @@ present, or is set to 0 otherwise.
 
 If an accessed image was created from a view using
 [VkImageViewSlicedCreateInfoEXT](resources.html#VkImageViewSlicedCreateInfoEXT) and accessed through a
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE` descriptor, then the value of k
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](descriptorsets.html#VkDescriptorType) descriptor, then the value of k
 is incremented by [VkImageViewSlicedCreateInfoEXT](resources.html#VkImageViewSlicedCreateInfoEXT)::`sliceOffset`,
 giving k ← sliceOffset +  k.
 The image’s accessible range in the third dimension is k .
 If [VkImageViewSlicedCreateInfoEXT](resources.html#VkImageViewSlicedCreateInfoEXT)::`sliceCount` is
-`VK_REMAINING_3D_SLICES_EXT`, the range is inherited from the image’s
+[VK_REMAINING_3D_SLICES_EXT](resources.html#VK_REMAINING_3D_SLICES_EXT), the range is inherited from the image’s
 depth extent as specified by [Image Mip Level Sizing](resources.html#resources-image-mip-level-sizing).
 
 For all coordinate types, unused coordinates are assigned a value of zero.
@@ -506,8 +506,8 @@ component of a depth/stencil format.
 
 * 
 The sampler `borderColor` is one of the opaque black colors
-(`VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK` or
-`VK_BORDER_COLOR_INT_OPAQUE_BLACK`) and the image view
+([VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK](samplers.html#VkBorderColor) or
+[VK_BORDER_COLOR_INT_OPAQUE_BLACK](samplers.html#VkBorderColor)) and the image view
 [VkComponentSwizzle](resources.html#VkComponentSwizzle) for any of the [VkComponentMapping](resources.html#VkComponentMapping)
 components is not the [identity    swizzle](resources.html#resources-image-views-identity-mappings), and
 [VkPhysicalDeviceBorderColorSwizzleFeaturesEXT](features.html#VkPhysicalDeviceBorderColorSwizzleFeaturesEXT)::`borderColorSwizzleFromImage`
@@ -527,16 +527,16 @@ specified, does not match the sRGB encoding of the image view.
 
 * 
 The sampler `borderColor` is a custom color
-(`VK_BORDER_COLOR_FLOAT_CUSTOM_EXT` or
-`VK_BORDER_COLOR_INT_CUSTOM_EXT`) and the supplied
+([VK_BORDER_COLOR_FLOAT_CUSTOM_EXT](samplers.html#VkBorderColor) or
+[VK_BORDER_COLOR_INT_CUSTOM_EXT](samplers.html#VkBorderColor)) and the supplied
 [VkSamplerCustomBorderColorCreateInfoEXT](samplers.html#VkSamplerCustomBorderColorCreateInfoEXT)::`customBorderColor`
 is outside the bounds of the values representable in the image view’s
 `format`.
 
 * 
 The sampler `borderColor` is a custom color
-(`VK_BORDER_COLOR_FLOAT_CUSTOM_EXT` or
-`VK_BORDER_COLOR_INT_CUSTOM_EXT`) and the image view
+([VK_BORDER_COLOR_FLOAT_CUSTOM_EXT](samplers.html#VkBorderColor) or
+[VK_BORDER_COLOR_INT_CUSTOM_EXT](samplers.html#VkBorderColor)) and the image view
 [VkComponentSwizzle](resources.html#VkComponentSwizzle) for any of the [VkComponentMapping](resources.html#VkComponentMapping)
 components is not the [identity    swizzle](resources.html#resources-image-views-identity-mappings), and
 [VkPhysicalDeviceBorderColorSwizzleFeaturesEXT](features.html#VkPhysicalDeviceBorderColorSwizzleFeaturesEXT)::`borderColorSwizzleFromImage`
@@ -554,57 +554,57 @@ The SPIR-V Image Format is not [compatible](../appendices/spirvenv.html#spirvenv
 with the image view’s `format`.
 
 * 
-The sampler `unnormalizedCoordinates` is `VK_TRUE` and any of
+The sampler `unnormalizedCoordinates` is [VK_TRUE](fundamentals.html#VK_TRUE) and any of
 the [limitations of unnormalized    coordinates](samplers.html#samplers-unnormalizedCoordinates) are violated.
 
 * 
 The sampler was created with `flags` containing
-`VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT` and the image was not created
-with `flags` containing `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`.
+[VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](samplers.html#VkSamplerCreateFlagBits) and the image was not created
+with `flags` containing [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](resources.html#VkImageCreateFlagBits).
 
 * 
 The sampler was not created with `flags` containing
-`VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT` and the image was created
-with `flags` containing `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`.
+[VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](samplers.html#VkSamplerCreateFlagBits) and the image was created
+with `flags` containing [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](resources.html#VkImageCreateFlagBits).
 
 * 
 The sampler was created with `flags` containing
-`VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT` and is used with a function
+[VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](samplers.html#VkSamplerCreateFlagBits) and is used with a function
 that is not `OpImageSampleImplicitLod` or
 `OpImageSampleExplicitLod`, or is used with operands `Offset` or
 `ConstOffsets`.
 
 * 
 The SPIR-V instruction is one of the `OpImage*Dref*` instructions and
-the sampler `compareEnable` is `VK_FALSE`
+the sampler `compareEnable` is [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 The SPIR-V instruction is not one of the `OpImage*Dref*` instructions
-and the sampler `compareEnable` is `VK_TRUE`
+and the sampler `compareEnable` is [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 The SPIR-V instruction is one of the `OpImage*Dref*` instructions,
 the image view `format` is one of the depth/stencil formats, and the
-image view aspect is not `VK_IMAGE_ASPECT_DEPTH_BIT`.
+image view aspect is not [VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits).
 
 * 
 The SPIR-V instruction’s image variable’s properties are not compatible
 with the image view:
 
 If the image view’s `viewType` is one of
-`VK_IMAGE_VIEW_TYPE_1D_ARRAY`, `VK_IMAGE_VIEW_TYPE_2D_ARRAY`,
-or `VK_IMAGE_VIEW_TYPE_CUBE_ARRAY` then the instruction **must** have
+[VK_IMAGE_VIEW_TYPE_1D_ARRAY](resources.html#VkImageViewType), [VK_IMAGE_VIEW_TYPE_2D_ARRAY](resources.html#VkImageViewType),
+or [VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](resources.html#VkImageViewType) then the instruction **must** have
 `Arrayed` = 1.
 Otherwise the instruction **must** have `Arrayed` = 0.
 
 * 
 If the image was created with [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`samples`
-equal to `VK_SAMPLE_COUNT_1_BIT`, the instruction **must** have
+equal to [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits), the instruction **must** have
 `MS` = 0.
 
 * 
 If the image was created with [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`samples`
-not equal to `VK_SAMPLE_COUNT_1_BIT`, the instruction **must** have
+not equal to [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits), the instruction **must** have
 `MS` = 1.
 
 * 
@@ -615,26 +615,26 @@ the [SPIR-V Type](../appendices/spirvenv.html#spirv-type).
 If the [signedness of any read or sample     operation](../appendices/spirvenv.html#spirvenv-image-signedness) does not match the signedness of the image’s format.
 
 If the image was created with [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`flags`
-containing `VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV`, the sampler
+containing [VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV](resources.html#VkImageCreateFlagBits), the sampler
 addressing modes **must** only use a [VkSamplerAddressMode](samplers.html#VkSamplerAddressMode) of
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE`.
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](samplers.html#VkSamplerAddressMode).
 
 The SPIR-V instruction is `OpImageSampleFootprintNV` with `Dim` =
 2D and `addressModeU` or `addressModeV` in the sampler is not
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE`.
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](samplers.html#VkSamplerAddressMode).
 
 The SPIR-V instruction is `OpImageSampleFootprintNV` with `Dim` =
 3D and `addressModeU`, `addressModeV`, or `addressModeW` in
-the sampler is not `VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE`.
+the sampler is not [VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](samplers.html#VkSamplerAddressMode).
 
 The sampler was created with a specified
 [VkSamplerCustomBorderColorCreateInfoEXT](samplers.html#VkSamplerCustomBorderColorCreateInfoEXT)::`format` which does
 not match the [VkFormat](formats.html#VkFormat) of the image view(s) it is sampling.
 
 The sampler is sampling an image view of
-`VK_FORMAT_B4G4R4A4_UNORM_PACK16`,
-`VK_FORMAT_B5G6R5_UNORM_PACK16`, or
-`VK_FORMAT_B5G5R5A1_UNORM_PACK16` format without a specified
+[VK_FORMAT_B4G4R4A4_UNORM_PACK16](formats.html#VkFormat),
+[VK_FORMAT_B5G6R5_UNORM_PACK16](formats.html#VkFormat), or
+[VK_FORMAT_B5G5R5A1_UNORM_PACK16](formats.html#VkFormat) format without a specified
 [VkSamplerCustomBorderColorCreateInfoEXT](samplers.html#VkSamplerCustomBorderColorCreateInfoEXT)::`format`.
 
 If the underlying `VkImage` format has an X component in its format
@@ -645,15 +645,15 @@ description, **undefined** values are read from those bits.
 bits will be unused by format conversion and this will have no effect.
 However, if the `VkImageView` format is different, then some bits of the
 result may be **undefined**.
-For example, when a `VK_FORMAT_R10X6_UNORM_PACK16` `VkImage` is
-sampled via a `VK_FORMAT_R16_UNORM` `VkImageView`, the low 6 bits of
+For example, when a [VK_FORMAT_R10X6_UNORM_PACK16](formats.html#VkFormat) `VkImage` is
+sampled via a [VK_FORMAT_R16_UNORM](formats.html#VkFormat) `VkImageView`, the low 6 bits of
 the value before format conversion are **undefined** and format conversion may
 return a range of different values. |
 
 |  | Some implementations will return **undefined** values in the case where a
 | --- | --- |
 sampler uses a [VkSamplerAddressMode](samplers.html#VkSamplerAddressMode) of
-`VK_SAMPLER_ADDRESS_MODE_MIRRORED_REPEAT`, the sampler is used with
+[VK_SAMPLER_ADDRESS_MODE_MIRRORED_REPEAT](samplers.html#VkSamplerAddressMode), the sampler is used with
 operands `Offset`, `ConstOffset`, or `ConstOffsets`, and the value
 of the offset is larger than or equal to the corresponding width, height, or
 depth of any accessed image level.
@@ -694,10 +694,10 @@ When sampling a cube map, if the image coordinates are out of bounds of the
 [selected cube map face](#textures-cubemap-face-selection), the following
 steps are performed.
 
-|  | This does not occur when using `VK_FILTER_NEAREST` filtering within a
+|  | This does not occur when using [VK_FILTER_NEAREST](samplers.html#VkFilter) filtering within a
 | --- | --- |
-mip level, since `VK_FILTER_NEAREST` is treated as using
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE`. |
+mip level, since [VK_FILTER_NEAREST](samplers.html#VkFilter) is treated as using
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](samplers.html#VkSamplerAddressMode). |
 
 * 
 Cube Map Edge Texel
@@ -729,14 +729,14 @@ The border color is:
 
 | Sampler `borderColor` | Corresponding Border Color |
 | --- | --- |
-| `VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK` | [Br, Bg, Bb, Ba] = [0.0, 0.0, 0.0, 0.0] |
-| `VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK` | [Br, Bg, Bb, Ba] = [0.0, 0.0, 0.0, 1.0] |
-| `VK_BORDER_COLOR_FLOAT_OPAQUE_WHITE` | [Br, Bg, Bb, Ba] = [1.0, 1.0, 1.0, 1.0] |
-| `VK_BORDER_COLOR_INT_TRANSPARENT_BLACK` | [Br, Bg, Bb, Ba] = [0, 0, 0, 0] |
-| `VK_BORDER_COLOR_INT_OPAQUE_BLACK` | [Br, Bg, Bb, Ba] = [0, 0, 0, 1] |
-| `VK_BORDER_COLOR_INT_OPAQUE_WHITE` | [Br, Bg, Bb, Ba] = [1, 1, 1, 1] |
-| `VK_BORDER_COLOR_FLOAT_CUSTOM_EXT` | [Br, Bg, Bb, Ba] = [Ur, Ug, Ub, Ua] |
-| `VK_BORDER_COLOR_INT_CUSTOM_EXT` | [Br, Bg, Bb, Ba] = [Ur, Ug, Ub, Ua] |
+| [VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK](samplers.html#VkBorderColor) | [Br, Bg, Bb, Ba] = [0.0, 0.0, 0.0, 0.0] |
+| [VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK](samplers.html#VkBorderColor) | [Br, Bg, Bb, Ba] = [0.0, 0.0, 0.0, 1.0] |
+| [VK_BORDER_COLOR_FLOAT_OPAQUE_WHITE](samplers.html#VkBorderColor) | [Br, Bg, Bb, Ba] = [1.0, 1.0, 1.0, 1.0] |
+| [VK_BORDER_COLOR_INT_TRANSPARENT_BLACK](samplers.html#VkBorderColor) | [Br, Bg, Bb, Ba] = [0, 0, 0, 0] |
+| [VK_BORDER_COLOR_INT_OPAQUE_BLACK](samplers.html#VkBorderColor) | [Br, Bg, Bb, Ba] = [0, 0, 0, 1] |
+| [VK_BORDER_COLOR_INT_OPAQUE_WHITE](samplers.html#VkBorderColor) | [Br, Bg, Bb, Ba] = [1, 1, 1, 1] |
+| [VK_BORDER_COLOR_FLOAT_CUSTOM_EXT](samplers.html#VkBorderColor) | [Br, Bg, Bb, Ba] = [Ur, Ug, Ub, Ua] |
+| [VK_BORDER_COLOR_INT_CUSTOM_EXT](samplers.html#VkBorderColor) | [Br, Bg, Bb, Ba] = [Ur, Ug, Ub, Ua] |
 
 The custom border color (U) **may** be rounded by implementations prior
 to texel replacement, but the error introduced by such a rounding **must** not
@@ -747,7 +747,7 @@ exceed one ULP of the image’s `format`.
 `VK_BORDER_COLOR_*_OPAQUE_BLACK`, and
 `VK_BORDER_COLOR_*_OPAQUE_WHITE` are meant to describe which components
 are zeros and ones in the vocabulary of compositing, and are not meant to
-imply that the numerical value of `VK_BORDER_COLOR_INT_OPAQUE_WHITE` is
+imply that the numerical value of [VK_BORDER_COLOR_INT_OPAQUE_WHITE](samplers.html#VkBorderColor) is
 a saturating value for integers. |
 
 This is substituted for the texel value by replacing the number of
@@ -765,18 +765,18 @@ components in the image format
 
 † S = Bg **may** be substituted as the replacement method by the
 implementation when [VkSamplerCreateInfo](samplers.html#VkSamplerCreateInfo)::`borderColor` is
-`VK_BORDER_COLOR_INT_CUSTOM_EXT` and
+[VK_BORDER_COLOR_INT_CUSTOM_EXT](samplers.html#VkBorderColor) and
 [VkSamplerCustomBorderColorCreateInfoEXT](samplers.html#VkSamplerCustomBorderColorCreateInfoEXT)::`format` is
-`VK_FORMAT_UNDEFINED`.
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat).
 Implementations **should** use S = Br as the replacement method.
 
 If [`rgba4OpaqueBlackSwizzled`](limits.html#limits-rgba4OpaqueBlackSwizzled) is
-`VK_FALSE`, the implementation
+[VK_FALSE](fundamentals.html#VK_FALSE), the implementation
 **may** swap the blue and alpha channels when sampling non-custom border colors
-with the `VK_FORMAT_B4G4R4A4_UNORM_PACK16` format, or the red and alpha
-channels with the `VK_FORMAT_R4G4B4A4_UNORM_PACK16` format.
+with the [VK_FORMAT_B4G4R4A4_UNORM_PACK16](formats.html#VkFormat) format, or the red and alpha
+channels with the [VK_FORMAT_R4G4B4A4_UNORM_PACK16](formats.html#VkFormat) format.
 
-|  | As `VK_FORMAT_B4G4R4A4_UNORM_PACK16` is required by Vulkan, support must
+|  | As [VK_FORMAT_B4G4R4A4_UNORM_PACK16](formats.html#VkFormat) is required by Vulkan, support must
 | --- | --- |
 be advertised for this format.
 Some Vulkan implementations on Apple hardware implement these formats
@@ -817,8 +817,8 @@ respectively, in that operation.
 If the image being sampled has an unsigned normalized fixed-point format,
 then Dref is clamped to [0,1] before the compare operation.
 
-If the value of `magFilter` is `VK_FILTER_LINEAR`, or the value of
-`minFilter` is `VK_FILTER_LINEAR`, then D may be computed in
+If the value of `magFilter` is [VK_FILTER_LINEAR](samplers.html#VkFilter), or the value of
+`minFilter` is [VK_FILTER_LINEAR](samplers.html#VkFilter), then D may be computed in
 an implementation-dependent manner which differs from the normal rules of
 linear filtering.
 The resulting value **must** be in the range [0,1] and should be
@@ -859,9 +859,9 @@ and the [VkComponentSwizzle](resources.html#VkComponentSwizzle) is not the
 components, the value of the texel after swizzle is **undefined**.
 
 If the image view has a depth/stencil format and the
-[VkComponentSwizzle](resources.html#VkComponentSwizzle) is `VK_COMPONENT_SWIZZLE_ONE`, and
+[VkComponentSwizzle](resources.html#VkComponentSwizzle) is [VK_COMPONENT_SWIZZLE_ONE](resources.html#VkComponentSwizzle), and
 `VkPhysicalDeviceMaintenance5Properties`::`depthStencilSwizzleOneSupport`
-is not `VK_TRUE`, the value of the texel after swizzle is **undefined**.
+is not [VK_TRUE](fundamentals.html#VK_TRUE), the value of the texel after swizzle is **undefined**.
 
 `OpImageSparse*` instructions return a structure which includes a
 *residency code* indicating whether any texels accessed by the instruction
@@ -871,13 +871,13 @@ instruction which converts the residency code to a boolean value.
 
 If
 [VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM](samplers.html#VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM)::`enableYDegamma`
-is equal to `VK_TRUE`, then sRGB to linear conversion is applied to the
+is equal to [VK_TRUE](fundamentals.html#VK_TRUE), then sRGB to linear conversion is applied to the
 G component of the sampled values as described in the “sRGB EOTF” section
 of the [Khronos Data Format Specification](introduction.html#data-format).
 
 If
 [VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM](samplers.html#VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM)::`enableCbCrDegamma`
-is equal to `VK_TRUE`, then sRGB to linear conversion is applied to the
+is equal to [VK_TRUE](fundamentals.html#VK_TRUE), then sRGB to linear conversion is applied to the
 R and B components of the sampled values as described in the “sRGB EOTF”
 section of the [Khronos Data Format Specification](introduction.html#data-format).
 
@@ -967,16 +967,16 @@ Figure 9. 420 downsampling, xChromaOffset=MIDPOINT, yChromaOffset=MIDPOINT
 Reconstruction is implemented in one of two ways:
 
 If the format of the image that is to be sampled sets
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT`,
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT](formats.html#VkFormatFeatureFlagBits),
 or the [VkSamplerYcbcrConversionCreateInfo](samplers.html#VkSamplerYcbcrConversionCreateInfo)’s
-`forceExplicitReconstruction` is `VK_TRUE`, reconstruction is
+`forceExplicitReconstruction` is [VK_TRUE](fundamentals.html#VK_TRUE), reconstruction is
 performed as an explicit step independent of filtering, described in the
 [Explicit Reconstruction](#textures-explicit-reconstruction) section.
 
 If the format of the image that is to be sampled does not set
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT](formats.html#VkFormatFeatureFlagBits)
 and if the [VkSamplerYcbcrConversionCreateInfo](samplers.html#VkSamplerYcbcrConversionCreateInfo)’s
-`forceExplicitReconstruction` is `VK_FALSE`, reconstruction is
+`forceExplicitReconstruction` is [VK_FALSE](fundamentals.html#VK_FALSE), reconstruction is
 performed as an implicit part of filtering prior to color model conversion,
 with no separate post-conversion texel filtering step, as described in the
 [Implicit Reconstruction](#textures-implicit-reconstruction) section.
@@ -984,7 +984,7 @@ with no separate post-conversion texel filtering step, as described in the
 * 
 If the `chromaFilter` member of the
 [VkSamplerYcbcrConversionCreateInfo](samplers.html#VkSamplerYcbcrConversionCreateInfo) structure is
-`VK_FILTER_NEAREST`:
+[VK_FILTER_NEAREST](samplers.html#VkFilter):
 
 If the format’s R and B components are reduced in resolution in just
 width by a factor of two relative to the G component (i.e. this is a
@@ -1009,25 +1009,25 @@ reconstructed as follows:
 
 |  | `xChromaOffset` and `yChromaOffset` have no effect if
 | --- | --- |
-`chromaFilter` is `VK_FILTER_NEAREST` for explicit reconstruction. |
+`chromaFilter` is [VK_FILTER_NEAREST](samplers.html#VkFilter) for explicit reconstruction. |
 
 If the `chromaFilter` member of the
 [VkSamplerYcbcrConversionCreateInfo](samplers.html#VkSamplerYcbcrConversionCreateInfo) structure is
-`VK_FILTER_LINEAR`:
+[VK_FILTER_LINEAR](samplers.html#VkFilter):
 
 * 
 If the format’s R and B components are reduced in resolution in just
 width by a factor of two relative to the G component (i.e. this is a
 “`_422`” format):
 
-If `xChromaOffset` is `VK_CHROMA_LOCATION_COSITED_EVEN`:
+If `xChromaOffset` is [VK_CHROMA_LOCATION_COSITED_EVEN](samplers.html#VkChromaLocationKHR):
 
   
 
   
 
 * 
-If `xChromaOffset` is `VK_CHROMA_LOCATION_MIDPOINT`:
+If `xChromaOffset` is [VK_CHROMA_LOCATION_MIDPOINT](samplers.html#VkChromaLocationKHR):
 
   
 
@@ -1052,16 +1052,16 @@ concisely as follows:
 in [Texel Filtering](#textures-texel-filtering), thus requiring four
 full-color samples for the filtering operation, and where the reconstruction
 of these samples uses bilinear interpolation in the chroma components due to
-`chromaFilter`=`VK_FILTER_LINEAR`, up to nine chroma samples may be
+`chromaFilter`=[VK_FILTER_LINEAR](samplers.html#VkFilter), up to nine chroma samples may be
 required, depending on the sample location. |
 
 Implicit reconstruction takes place by the samples being interpolated, as
 required by the filter settings of the sampler, except that
 `chromaFilter` takes precedence for the chroma samples.
 
-If `chromaFilter` is `VK_FILTER_NEAREST`, an implementation **may**
+If `chromaFilter` is [VK_FILTER_NEAREST](samplers.html#VkFilter), an implementation **may**
 behave as if `xChromaOffset` and `yChromaOffset` were both
-`VK_CHROMA_LOCATION_MIDPOINT`, irrespective of the values set.
+[VK_CHROMA_LOCATION_MIDPOINT](samplers.html#VkChromaLocationKHR), irrespective of the values set.
 
 |  | This will not have any visible effect if the locations of the luma samples
 | --- | --- |
@@ -1100,7 +1100,7 @@ This is applied in the same way as the component swizzle usually performed
 during sampling.
 
 Sampler Y′CBCR range expansion is not applied if `ycbcrModel` is
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY`.
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY](samplers.html#VkSamplerYcbcrModelConversionKHR).
 
 For other values of `ycbcrModel`, range expansion applies independently
 to each component of the sampled data.
@@ -1113,7 +1113,7 @@ The range expansion to be applied is defined by the `ycbcrRange` member
 of the [VkSamplerYcbcrConversionCreateInfo](samplers.html#VkSamplerYcbcrConversionCreateInfo) structure:
 
 * 
-If `ycbcrRange` is `VK_SAMPLER_YCBCR_RANGE_ITU_FULL`, the
+If `ycbcrRange` is [VK_SAMPLER_YCBCR_RANGE_ITU_FULL](samplers.html#VkSamplerYcbcrRangeKHR), the
 following transformations are applied:
 
   
@@ -1129,7 +1129,7 @@ these equations are derived, the formulae used by Vulkan **may** also be
 updated to maintain parity. |
 
 * 
-If `ycbcrRange` is `VK_SAMPLER_YCBCR_RANGE_ITU_NARROW`, the
+If `ycbcrRange` is [VK_SAMPLER_YCBCR_RANGE_ITU_NARROW](samplers.html#VkSamplerYcbcrRangeKHR), the
 following transformations are applied:
 
   
@@ -1153,13 +1153,13 @@ fall in the range [-0.5,0.5].
 The range-expanded values are converted between color models, according to
 the color model conversion specified in the `ycbcrModel` member:
 
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY`
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY](samplers.html#VkSamplerYcbcrModelConversionKHR)
 
 The color components are not modified by the color model conversion
 since they are assumed already to represent the desired color model in
 which the shader is operating; Y′CBCR range expansion is also ignored.
 
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY`
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY](samplers.html#VkSamplerYcbcrModelConversionKHR)
 
 The color components are not modified by the color model conversion and
 are assumed to be treated as though in Y′CBCR form both in memory and
@@ -1167,19 +1167,19 @@ in the shader; Y′CBCR range expansion is applied to the components as
 for other Y′CBCR models, with the vector (CR,Y′,CB,A)
 provided to the shader.
 
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_709`
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_709](samplers.html#VkSamplerYcbcrModelConversionKHR)
 
 The color components are transformed from a Y′CBCR representation to an
 R′G′B′ representation as described in the “BT.709 Y′CBCR
 conversion” section of the [Khronos Data Format    Specification](introduction.html#data-format).
 
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_601`
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_601](samplers.html#VkSamplerYcbcrModelConversionKHR)
 
 The color components are transformed from a Y′CBCR representation to an
 R′G′B′ representation as described in the “BT.601 Y′CBCR
 conversion” section of the [Khronos Data Format    Specification](introduction.html#data-format).
 
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_2020`
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_2020](samplers.html#VkSamplerYcbcrModelConversionKHR)
 
 The color components are transformed from a Y′CBCR representation to an
 R′G′B′ representation as described in the “BT.2020 Y′CBCR
@@ -1208,7 +1208,7 @@ follows:
 Calculate the [unnormalized texel    coordinates](#textures-normalized-to-unnormalized) corresponding to the desired sample position.
 
 * 
-For a `minFilter` or `magFilter` of `VK_FILTER_NEAREST`:
+For a `minFilter` or `magFilter` of [VK_FILTER_NEAREST](samplers.html#VkFilter):
 
 Calculate (*i*,*j*) for the sample location as described under the
 “nearest filtering” formulae in [(u,v,w,a) to (i,j,k,l,n) Transformation and Array Layer Selection](#textures-unnormalized-to-integer)
@@ -1222,7 +1222,7 @@ Sample using [sampler Y′CBCR conversion](samplers.html#samplers-YCbCr-conversi
 at this location.
 
 * 
-For a `minFilter` or `magFilter` of `VK_FILTER_LINEAR`:
+For a `minFilter` or `magFilter` of [VK_FILTER_LINEAR](samplers.html#VkFilter):
 
 Calculate (*i[0,1]*,*j[0,1]*) for the sample location as described
 under the “linear filtering” formulae in
@@ -1248,14 +1248,14 @@ Interpolate the linear ARGB values using the α and
 [Texel Filtering](#textures-texel-filtering).
 
 The additional calculations and, especially, additional number of sampling
-operations in the `VK_FILTER_LINEAR` case can be expected to have a
+operations in the [VK_FILTER_LINEAR](samplers.html#VkFilter) case can be expected to have a
 performance impact compared with using the outputs directly.
 Since the variations from “correct” results are subtle for most content,
 the application author should determine whether a more costly implementation
 is strictly necessary.
 
 If `chromaFilter`, and `minFilter` or `magFilter` are both
-`VK_FILTER_NEAREST`, these operations are redundant and sampling using
+[VK_FILTER_NEAREST](samplers.html#VkFilter), these operations are redundant and sampling using
 [sampler Y′CBCR conversion](samplers.html#samplers-YCbCr-conversion) at the desired
 sample coordinates will produce the “correct” results without further
 processing. |
@@ -1471,7 +1471,7 @@ However, anytime the footprint is small in texel space the implementation
 **may** use a smaller value of η, even when ρmin is zero
 or close to zero.
 If either [VkPhysicalDeviceFeatures](features.html#VkPhysicalDeviceFeatures)::`samplerAnisotropy` or
-[VkSamplerCreateInfo](samplers.html#VkSamplerCreateInfo)::`anisotropyEnable` are `VK_FALSE`,
+[VkSamplerCreateInfo](samplers.html#VkSamplerCreateInfo)::`anisotropyEnable` are [VK_FALSE](fundamentals.html#VK_FALSE),
 maxAniso is set to 1.
 
 If η = 1, sampling is isotropic.
@@ -1530,10 +1530,10 @@ and:
 
 minLodimageView **must** be less or equal to levelbase + q.
 
-If the sampler’s `mipmapMode` is `VK_SAMPLER_MIPMAP_MODE_NEAREST`,
+If the sampler’s `mipmapMode` is [VK_SAMPLER_MIPMAP_MODE_NEAREST](samplers.html#VkSamplerMipmapMode),
 then the level selected is d = dl.
 
-If the sampler’s `mipmapMode` is `VK_SAMPLER_MIPMAP_MODE_LINEAR`,
+If the sampler’s `mipmapMode` is [VK_SAMPLER_MIPMAP_MODE_LINEAR](samplers.html#VkSamplerMipmapMode),
 two neighboring levels are selected:
 
   
@@ -1597,7 +1597,7 @@ subresource range, and where:
 
 The sample index n is assigned the value 0.
 
-Nearest filtering (`VK_FILTER_NEAREST`) computes the integer texel
+Nearest filtering ([VK_FILTER_NEAREST](samplers.html#VkFilter)) computes the integer texel
 coordinates that the unnormalized coordinates lie within:
 
   
@@ -1614,7 +1614,7 @@ shift = 0.5
 
 for corner-sampled images.
 
-Linear filtering (`VK_FILTER_LINEAR`) computes a set of neighboring
+Linear filtering ([VK_FILTER_LINEAR](samplers.html#VkFilter)) computes a set of neighboring
 coordinates which bound the unnormalized coordinates.
 The integer texel coordinates are combinations of i0 or i1,
 j0 or j1, k0 or k1, as well as weights
@@ -1646,7 +1646,7 @@ and where:
 where the number of fraction bits retained is specified by
 `VkPhysicalDeviceLimits`::`subTexelPrecisionBits`.
 
-Cubic filtering (`VK_FILTER_CUBIC_EXT`) computes a set of neighboring
+Cubic filtering ([VK_FILTER_CUBIC_EXT](samplers.html#VkFilter)) computes a set of neighboring
 coordinates which bound the unnormalized coordinates.
 The integer texel coordinates are combinations of i0, i1,
 i2 or i3, j0, j1, j2 or j3,
@@ -1689,11 +1689,11 @@ feature is enabled, otherwise are
 **undefined**, and any writes (if supported) are discarded.
 
 If the used sampler was created without
-`VK_SAMPLER_CREATE_NON_SEAMLESS_CUBE_MAP_BIT_EXT`,
+[VK_SAMPLER_CREATE_NON_SEAMLESS_CUBE_MAP_BIT_EXT](samplers.html#VkSamplerCreateFlagBits),
 `Cube` images ignore the wrap modes specified in the sampler.
-Instead, if `VK_FILTER_NEAREST` is used within a mip level then
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE` is used, and if
-`VK_FILTER_LINEAR` is used within a mip level then sampling at the edges
+Instead, if [VK_FILTER_NEAREST](samplers.html#VkFilter) is used within a mip level then
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](samplers.html#VkSamplerAddressMode) is used, and if
+[VK_FILTER_LINEAR](samplers.html#VkFilter) is used within a mip level then sampling at the edges
 is performed as described earlier in the [Cube map edge handling](#textures-cubemapedge) section.
 
 The first integer texel coordinate i is transformed based on the
@@ -1715,7 +1715,7 @@ parameters of the sampler, respectively.
 
 SPIR-V instructions with `Gather` in the name return a vector derived
 from 4 texels in the base level of the image view.
-The rules for the `VK_FILTER_LINEAR` minification filter are applied to
+The rules for the [VK_FILTER_LINEAR](samplers.html#VkFilter) minification filter are applied to
 identify the four selected texels.
 Each texel is then converted to an RGBA value according to
 [component substitution](images.html#images-component-substitution) and then
@@ -1762,7 +1762,7 @@ If λ is greater than zero, the texture is said to be
 *minified*, and the filter mode within a mip level is selected by the
 `minFilter` in the sampler.
 
-Within a mip level, `VK_FILTER_NEAREST` filtering selects a single value
+Within a mip level, [VK_FILTER_NEAREST](samplers.html#VkFilter) filtering selects a single value
 using the (i, j, k) texel coordinates, with all texels taken from
 layer l.
 
@@ -1770,7 +1770,7 @@ layer l.
 
   
 
-Within a mip level, `VK_FILTER_LINEAR` filtering combines 8 (for 3D), 4
+Within a mip level, [VK_FILTER_LINEAR](samplers.html#VkFilter) filtering combines 8 (for 3D), 4
 (for 2D or Cube), or 2 (for 1D) texel values, together with their linear
 weights.
 The linear weights are derived from the fractions computed earlier:
@@ -1787,20 +1787,20 @@ the process by which multiple texels, together with their weights, are
 combined to produce a filtered texture value.
 
 When the `reductionMode` is set (explicitly or implicitly) to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`, a weighted average is
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](samplers.html#VkSamplerReductionModeEXT), a weighted average is
 computed:
 
   
 
   
 
-However, if the reduction mode is `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX`, the process operates on the above set
+However, if the reduction mode is [VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT), the process operates on the above set
 of multiple texels, together with their weights, computing a component-wise
 minimum or maximum, respectively, of the components of the set of texels
 with non-zero weights.
 
-Within a mip level, `VK_FILTER_CUBIC_EXT`, filtering computes a weighted
+Within a mip level, [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter), filtering computes a weighted
 average of
 64 (for 3D),
 16 (for 2D), or 4 (for 1D) texel values, together with their
@@ -1808,7 +1808,7 @@ Catmull-Rom, Zero Tangent Cardinal, B-Spline, or Mitchell-Netravali weights
 as specified by [VkSamplerCubicWeightsCreateInfoQCOM](samplers.html#VkSamplerCubicWeightsCreateInfoQCOM).
 
 Catmull-Rom weights
-specified by `VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM`
+specified by [VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM](samplers.html#VkCubicFilterWeightsQCOM)
 are derived from the fractions computed earlier.
 
   
@@ -1816,14 +1816,14 @@ are derived from the fractions computed earlier.
   
 
 Zero Tangent Cardinal weights specified by
-`VK_CUBIC_FILTER_WEIGHTS_ZERO_TANGENT_CARDINAL_QCOM` are derived from
+[VK_CUBIC_FILTER_WEIGHTS_ZERO_TANGENT_CARDINAL_QCOM](samplers.html#VkCubicFilterWeightsQCOM) are derived from
 the fractions computed earlier.
 
   
 
   
 
-B-Spline weights specified by `VK_CUBIC_FILTER_WEIGHTS_B_SPLINE_QCOM`
+B-Spline weights specified by [VK_CUBIC_FILTER_WEIGHTS_B_SPLINE_QCOM](samplers.html#VkCubicFilterWeightsQCOM)
 are derived from the fractions computed earlier.
 
   
@@ -1831,7 +1831,7 @@ are derived from the fractions computed earlier.
   
 
 Mitchell-Netravali weights specified by
-`VK_CUBIC_FILTER_WEIGHTS_MITCHELL_NETRAVALI_QCOM` are derived from the
+[VK_CUBIC_FILTER_WEIGHTS_MITCHELL_NETRAVALI_QCOM](samplers.html#VkCubicFilterWeightsQCOM) are derived from the
 fractions computed earlier.
 
   
@@ -1846,31 +1846,31 @@ the process by which multiple texels, together with their weights, are
 combined to produce a filtered texture value.
 
 When the `reductionMode` is set (explicitly or implicitly) to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`
-or `VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM`
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](samplers.html#VkSamplerReductionModeEXT)
+or [VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](samplers.html#VkSamplerReductionModeEXT)
 , a weighted average is computed:
 
   
 
   
 
-However, if the reduction mode is `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX`, the process operates on the above set
+However, if the reduction mode is [VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT), the process operates on the above set
 of multiple texels, together with their weights, computing a component-wise
 minimum or maximum, respectively, of the components of the set of texels
 with non-zero weights.
 
 When `reductionMode` is
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM`, the
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](samplers.html#VkSamplerReductionModeEXT), the
 weighted average is clamped to be within the component-wise minimum and
 maximum of the set of texels with non-zero weights.
 
-`VK_SAMPLER_MIPMAP_MODE_NEAREST` filtering returns the value of a single
+[VK_SAMPLER_MIPMAP_MODE_NEAREST](samplers.html#VkSamplerMipmapMode) filtering returns the value of a single
 mipmap level,
 
 τ = τ[d].
 
-`VK_SAMPLER_MIPMAP_MODE_LINEAR` filtering combines the values of
+[VK_SAMPLER_MIPMAP_MODE_LINEAR](samplers.html#VkSamplerMipmapMode) filtering combines the values of
 multiple mipmap levels (τ[hi] and τ[lo]), together with their linear
 weights.
 
@@ -1888,15 +1888,15 @@ the process by which multiple texels, together with their weights, are
 combined to produce a filtered texture value.
 
 When the `reductionMode` is set (explicitly or implicitly) to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`, a weighted average is
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](samplers.html#VkSamplerReductionModeEXT), a weighted average is
 computed:
 
   
 
   
 
-However, if the reduction mode is `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX`, the process operates on the above
+However, if the reduction mode is [VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT), the process operates on the above
 values, together with their weights, computing a component-wise minimum or
 maximum, respectively, of the components of the values with non-zero
 weights.
@@ -1917,7 +1917,7 @@ of the sampler.
 |  | For historical reasons, vendor implementations of anisotropic filtering
 | --- | --- |
 interpret these sampler parameters in different ways, particularly in corner
-cases such as `magFilter`, `minFilter` of `VK_FILTER_NEAREST` or
+cases such as `magFilter`, `minFilter` of [VK_FILTER_NEAREST](samplers.html#VkFilter) or
 `maxAnisotropy` equal to 1.0.
 Applications should not expect consistent behavior in such cases, and should
 use anisotropic filtering only with parameters which are expected to give a
@@ -1926,8 +1926,8 @@ quality improvement relative to `LINEAR` filtering.
 The following describes one particular approach to implementing anisotropic
 filtering for the 2D Image case; implementations **may** choose other methods:
 
-Given a `magFilter`, `minFilter` of `VK_FILTER_LINEAR` and a
-`mipmapMode` of `VK_SAMPLER_MIPMAP_MODE_NEAREST`:
+Given a `magFilter`, `minFilter` of [VK_FILTER_LINEAR](samplers.html#VkFilter) and a
+`mipmapMode` of [VK_SAMPLER_MIPMAP_MODE_NEAREST](samplers.html#VkSamplerMipmapMode):
 
 Instead of a single isotropic sample, N isotropic samples are sampled within
 the image footprint of the image level d to approximate an anisotropic
@@ -1940,10 +1940,10 @@ The sum τ2Daniso is defined using the single isotropic
   
 
 When [VkSamplerReductionModeCreateInfo](samplers.html#VkSamplerReductionModeCreateInfo)::`reductionMode` is
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`, the above summation is
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](samplers.html#VkSamplerReductionModeEXT), the above summation is
 used.
-However, if the reduction mode is `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX`, the process operates on the above
+However, if the reduction mode is [VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT), the process operates on the above
 values, together with their weights, computing a component-wise minimum or
 maximum, respectively, of the components of the values with non-zero
 weights. |
@@ -1980,7 +1980,7 @@ texels whose size is given by the following table:
 
 The `Coarse` input is used to select between the two mip levels that **may**
 be accessed during texel filtering when using a `mipmapMode` of
-`VK_SAMPLER_MIPMAP_MODE_LINEAR`.
+[VK_SAMPLER_MIPMAP_MODE_LINEAR](samplers.html#VkSamplerMipmapMode).
 When filtering between two mip levels, a `Coarse` value of `true`
 requests the footprint in the lower-resolution mip level (higher level
 number), while `false` requests the footprint in the higher-resolution
@@ -2123,9 +2123,9 @@ granularity as-is and return a granularity value of zero.
 `OpImageSampleFootprintNV` supports only two- and three-dimensional image
 accesses (`Dim2D` and `Dim3D`), and the footprint returned is
 **undefined** if a sampler uses an addressing mode other than
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE`.
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](samplers.html#VkSamplerAddressMode).
 
-The SPIR-V instruction `OpImageWeightedSampleQCOM` specifies a texture
+The SPIR-V instruction `OpImageSampleWeightedQCOM` specifies a texture
 sampling operation involving two images: the *sampled image* and the *weight
 image*.
 It is similar to bilinear filtering except more than 2x2 texels may
@@ -2133,16 +2133,16 @@ participate in the filter and the filter weights are application-specified
 rather than computed by fixed-function hardware.
 The weight image view defines a 2D kernel weights used during sampling.
 
-The `OpImageWeightedSampleQCOM` support normalized or unnormalized texel
+The `OpImageSampleWeightedQCOM` support normalized or unnormalized texel
 coordinates.
 In addition to the inputs that would be accepted by an equivalent
-`OpImageSample*` instruction, `OpImageWeightedSampleQCOM` accepts a
+`OpImageSample*` instruction, `OpImageSampleWeightedQCOM` accepts a
 `weight` input that specifies the view of a sample weight image
 
 The input `weight` **must** be a view of a 2D or 1D image with
 `miplevels` equal to `1`, `samples` equal to
-`VK_SAMPLE_COUNT_1_BIT`, created with an identity swizzle, and created
-with the `VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM` usage flag set.
+[VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits), created with an identity swizzle, and created
+with the [VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM](resources.html#VkImageUsageFlagBits) usage flag set.
 The [VkImageViewSampleWeightCreateInfoQCOM](resources.html#VkImageViewSampleWeightCreateInfoQCOM) specifies additional
 parameters of the view: `filterCenter`, `filterSize`, and
 `numPhases`.
@@ -2270,10 +2270,10 @@ phaseCounthoriz, **must** be less than or equal to
 [VkPhysicalDeviceImageProcessingPropertiesQCOM](devsandqueues.html#VkPhysicalDeviceImageProcessingPropertiesQCOM)::`maxWeightFilterPhases`.
 
 Weight sampling requires `VkSamplerCreateInfo` `addressModeU` and
-`addressModeV` **must** be `VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE` or
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER`.
-If `VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER` is used, then the border
-color **must** be `VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK`.
+`addressModeV` **must** be [VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](samplers.html#VkSamplerAddressMode) or
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER](samplers.html#VkSamplerAddressMode).
+If [VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER](samplers.html#VkSamplerAddressMode) is used, then the border
+color **must** be [VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK](samplers.html#VkBorderColor).
 
 The 2D unnormalized texel coordinates    are transformed by
    to specify coordinates   .
@@ -2356,14 +2356,14 @@ produce a filtered value.
   
 
 When [VkSamplerReductionModeCreateInfo](samplers.html#VkSamplerReductionModeCreateInfo)::`reductionMode` is
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`, the above summation is
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](samplers.html#VkSamplerReductionModeEXT), the above summation is
 used.
-However, if the reduction mode is `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX`, the process operates on the above
+However, if the reduction mode is [VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT), the process operates on the above
 values, computing a component-wise minimum or maximum of the texels with
 non-zero weights.
-If the reduction mode is `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX`, each    weight
+If the reduction mode is [VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT), each    weight
 **must** be equal to 0.0 or 1.0, otherwise the **undefined** values are returned.
 
 Finally, the operations described in [Component Substitution](images.html#images-component-substitution) and
@@ -2399,13 +2399,13 @@ window whose dimensions are specified in the sampler.
 
 For `opImageBlockMatchSAD` and `opImageBlockMatchSSD`, the input
 `sampler` **must** be created with `addressModeU` and `addressModeV`,
-equal to `VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE`, or
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER` with
-`VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK`.
+equal to [VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](samplers.html#VkSamplerAddressMode), or
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER](samplers.html#VkSamplerAddressMode) with
+[VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK](samplers.html#VkBorderColor).
 The input `sampler` **must** be created with `unnormalizedCoordinates`
-equal to `VK_TRUE`.
+equal to [VK_TRUE](fundamentals.html#VK_TRUE).
 The input `sampler` **must** be created with `components` equal to
-`VK_COMPONENT_SWIZZLE_IDENTITY`.
+[VK_COMPONENT_SWIZZLE_IDENTITY](resources.html#VkComponentSwizzle).
 
 For `opImageBlockMatchWindowSAD` and `opImageBlockMatchWindowSSD`
 instructions, the `target` sampler **must** have been created with
@@ -2415,8 +2415,8 @@ For `opImageBlockMatchWindowSAD`, `opImageBlockMatchWindowSSD`,
 `opImageBlockMatchGatherSAD`, or
 `opImageBlockMatchGatherSSDinstructions`, the input `sampler` **must** be
 created with `addressModeU` and `addressModeV`, equal to
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER` with
-`VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK`.
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER](samplers.html#VkSamplerAddressMode) with
+[VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK](samplers.html#VkBorderColor).
 
 Other sampler states are ignored.
 
@@ -2483,10 +2483,10 @@ The `opImageBlockMatchSSD` computes the sum of the squared differences.
   
 
 When [VkSamplerReductionModeCreateInfo](samplers.html#VkSamplerReductionModeCreateInfo)::`reductionMode` is
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`, the above summation is
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](samplers.html#VkSamplerReductionModeEXT), the above summation is
 used.
-However, if the reduction mode is `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX`, the process operates on the above
+However, if the reduction mode is [VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT), the process operates on the above
 values, computing a component-wise minimum or maximum of
   , respectively.
 For   , the minimum or maximum difference is computed
@@ -2614,9 +2614,9 @@ not be greater than
 [VkPhysicalDeviceImageProcessingPropertiesQCOM](devsandqueues.html#VkPhysicalDeviceImageProcessingPropertiesQCOM).`maxBoxFilterBlockSize`.
 
 The input `sampler` **must** be created with `addressModeU` and
-`addressModeV`, equal to `VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE`, or
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER` with
-`VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK`.
+`addressModeV`, equal to [VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](samplers.html#VkSamplerAddressMode), or
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER](samplers.html#VkSamplerAddressMode) with
+[VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK](samplers.html#VkBorderColor).
 
 The 2D unnormalized texel coordinates    are transformed by
    to specify integer texel coordinates \((i_{0},
@@ -2682,10 +2682,10 @@ weights, are combined to produce a box filtered value.
   
 
 When [VkSamplerReductionModeCreateInfo](samplers.html#VkSamplerReductionModeCreateInfo)::`reductionMode` is
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`, the above summation is
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](samplers.html#VkSamplerReductionModeEXT), the above summation is
 used.
-However, if the reduction mode is `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX`, the process operates on the above
+However, if the reduction mode is [VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT), the process operates on the above
 values, computing a component-wise minimum or maximum of the texels.
 
 Each step described in this chapter is performed by a subset of the image

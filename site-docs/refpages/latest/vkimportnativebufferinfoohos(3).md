@@ -51,7 +51,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportNativeBufferInfoOHOS-sType-sType) VUID-VkImportNativeBufferInfoOHOS-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_NATIVE_BUFFER_INFO_OHOS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_NATIVE_BUFFER_INFO_OHOS](VkStructureType.html)
 
 * 
 [](#VUID-VkImportNativeBufferInfoOHOS-buffer-parameter) VUID-VkImportNativeBufferInfoOHOS-buffer-parameter

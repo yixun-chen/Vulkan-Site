@@ -45,7 +45,7 @@ identifying the type of cluster acceleration structure.
 * 
 `noMoveOverlap` specifies if the source and destination cluster
 acceleration structures overlap in memory for the move operation.
-If set to `VK_TRUE`, the source cluster acceleration structure
+If set to [VK_TRUE](VK_TRUE.html), the source cluster acceleration structure
 remains valid after the move and move operation acts like a copy.
 
 * 
@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkClusterAccelerationStructureMoveObjectsInputNV-sType-sType) VUID-VkClusterAccelerationStructureMoveObjectsInputNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_MOVE_OBJECTS_INPUT_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_MOVE_OBJECTS_INPUT_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkClusterAccelerationStructureMoveObjectsInputNV-pNext-pNext) VUID-VkClusterAccelerationStructureMoveObjectsInputNV-pNext-pNext

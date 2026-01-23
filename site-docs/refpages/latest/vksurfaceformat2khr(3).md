@@ -59,7 +59,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSurfaceFormat2KHR-sType-sType) VUID-VkSurfaceFormat2KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkSurfaceFormat2KHR-pNext-pNext) VUID-VkSurfaceFormat2KHR-pNext-pNext

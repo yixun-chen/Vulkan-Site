@@ -64,7 +64,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeH265SessionParametersFeedbackInfoKHR-sType-sType) VUID-VkVideoEncodeH265SessionParametersFeedbackInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_FEEDBACK_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_FEEDBACK_INFO_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_h265](VK_KHR_video_encode_h265.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

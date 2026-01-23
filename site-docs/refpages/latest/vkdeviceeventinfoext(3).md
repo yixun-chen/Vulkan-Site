@@ -44,7 +44,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceEventInfoEXT-sType-sType) VUID-VkDeviceEventInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_EVENT_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_EVENT_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceEventInfoEXT-pNext-pNext) VUID-VkDeviceEventInfoEXT-pNext-pNext

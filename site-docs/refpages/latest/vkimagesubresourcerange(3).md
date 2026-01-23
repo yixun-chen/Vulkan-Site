@@ -52,8 +52,8 @@ The number of mipmap levels and array layers **must** be a subset of the image
 subresources in the image.
 If an application wants to use all mip levels or layers in an image after
 the `baseMipLevel` or `baseArrayLayer`, it **can** set `levelCount`
-and `layerCount` to the special values `VK_REMAINING_MIP_LEVELS` and
-`VK_REMAINING_ARRAY_LAYERS` without knowing the exact number of mip
+and `layerCount` to the special values [VK_REMAINING_MIP_LEVELS](VK_REMAINING_MIP_LEVELS.html) and
+[VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html) without knowing the exact number of mip
 levels or layers.
 
 For cube and cube array image views, the layers of the image view starting
@@ -64,22 +64,22 @@ number of cube maps in a cube map array view is *`layerCount` / 6*, and
 image array layer (`baseArrayLayer` +  i) is face index
 (i mod 6) of cube *i / 6*.
 If the number of layers in the view, whether set explicitly in
-`layerCount` or implied by `VK_REMAINING_ARRAY_LAYERS`, is not a
+`layerCount` or implied by [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), is not a
 multiple of 6, the last cube map in the array **must** not be accessed.
 
-`aspectMask` **must** be only `VK_IMAGE_ASPECT_COLOR_BIT`,
-`VK_IMAGE_ASPECT_DEPTH_BIT` or `VK_IMAGE_ASPECT_STENCIL_BIT` if
+`aspectMask` **must** be only [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html),
+[VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) or [VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html) if
 `format` is a color, depth-only or stencil-only format,
 respectively, except if `format` is a [multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar).
 If using a depth/stencil format with both depth and stencil components,
 `aspectMask` **must** include at least one of
-`VK_IMAGE_ASPECT_DEPTH_BIT` and `VK_IMAGE_ASPECT_STENCIL_BIT`, and
+[VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) and [VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html), and
 **can** include both.
 
 When the `VkImageSubresourceRange` structure is used to select a subset
 of the slices of a 3D image’s mip level in order to create a 2D or 2D array
 image view of a 3D image created with
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT`, `baseArrayLayer` and
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](VkImageCreateFlagBits.html), `baseArrayLayer` and
 `layerCount` specify the first slice index and the number of slices to
 include in the created image view.
 Such an image view **can** be used as a framebuffer attachment that refers only
@@ -101,35 +101,35 @@ stencil image subresources are used.
 
 When creating a `VkImageView`, if [sampler Y′CBCR conversion](../../../../spec/latest/chapters/samplers.html#samplers-YCbCr-conversion) is enabled in the sampler, the `aspectMask` of a
 `subresourceRange` used by the `VkImageView` **must** be
-`VK_IMAGE_ASPECT_COLOR_BIT`.
+[VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html).
 
 When creating a `VkImageView`, if sampler Y′CBCR conversion is not
 enabled in the sampler and the image `format` is [multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar), the image **must** have been created with
-`VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT`, and the `aspectMask` of the
+[VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](VkImageCreateFlagBits.html), and the `aspectMask` of the
 `VkImageView`’s `subresourceRange` **must** be
-`VK_IMAGE_ASPECT_PLANE_0_BIT`, `VK_IMAGE_ASPECT_PLANE_1_BIT` or
-`VK_IMAGE_ASPECT_PLANE_2_BIT`.
+[VK_IMAGE_ASPECT_PLANE_0_BIT](VkImageAspectFlagBits.html), [VK_IMAGE_ASPECT_PLANE_1_BIT](VkImageAspectFlagBits.html) or
+[VK_IMAGE_ASPECT_PLANE_2_BIT](VkImageAspectFlagBits.html).
 
 Valid Usage
 
 * 
 [](#VUID-VkImageSubresourceRange-levelCount-01720) VUID-VkImageSubresourceRange-levelCount-01720
 
-If `levelCount` is not `VK_REMAINING_MIP_LEVELS`, it **must** be
+If `levelCount` is not [VK_REMAINING_MIP_LEVELS](VK_REMAINING_MIP_LEVELS.html), it **must** be
 greater than `0`
 
 * 
 [](#VUID-VkImageSubresourceRange-layerCount-01721) VUID-VkImageSubresourceRange-layerCount-01721
 
-If `layerCount` is not `VK_REMAINING_ARRAY_LAYERS`, it **must** be
+If `layerCount` is not [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), it **must** be
 greater than `0`
 
 * 
 [](#VUID-VkImageSubresourceRange-aspectMask-01670) VUID-VkImageSubresourceRange-aspectMask-01670
 
-If `aspectMask` includes `VK_IMAGE_ASPECT_COLOR_BIT`, then it
-**must** not include any of `VK_IMAGE_ASPECT_PLANE_0_BIT`,
-`VK_IMAGE_ASPECT_PLANE_1_BIT`, or `VK_IMAGE_ASPECT_PLANE_2_BIT`
+If `aspectMask` includes [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html), then it
+**must** not include any of [VK_IMAGE_ASPECT_PLANE_0_BIT](VkImageAspectFlagBits.html),
+[VK_IMAGE_ASPECT_PLANE_1_BIT](VkImageAspectFlagBits.html), or [VK_IMAGE_ASPECT_PLANE_2_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkImageSubresourceRange-aspectMask-02278) VUID-VkImageSubresourceRange-aspectMask-02278

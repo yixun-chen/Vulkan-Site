@@ -37,12 +37,12 @@ typedef enum VkVideoSessionCreateFlagBitsKHR {
 } VkVideoSessionCreateFlagBitsKHR;
 
 * 
-`VK_VIDEO_SESSION_CREATE_PROTECTED_CONTENT_BIT_KHR` specifies that
+[VK_VIDEO_SESSION_CREATE_PROTECTED_CONTENT_BIT_KHR](#) specifies that
 the video session uses protected video content.
 
 * 
 
-`VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_PARAMETER_OPTIMIZATIONS_BIT_KHR`
+[VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_PARAMETER_OPTIMIZATIONS_BIT_KHR](#)
 specifies that the implementation is allowed to
 [override](../../../../spec/latest/chapters/videocoding.html#encode-overrides) video session parameters and other
 codec-specific encoding parameters to optimize video encode operations
@@ -52,7 +52,7 @@ based on the use case information specified in the
 
 |  | Not specifying
 | --- | --- |
-`VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_PARAMETER_OPTIMIZATIONS_BIT_KHR`
+[VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_PARAMETER_OPTIMIZATIONS_BIT_KHR](#)
 does not guarantee that the implementation will not do any codec-specific
 parameter overrides, as certain overrides are necessary for the correct
 operation of the video encoder implementation due to limitations to the
@@ -61,22 +61,22 @@ This flag, however, enables the implementation to apply further optimizing
 overrides. |
 
 * 
-`VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR` specifies that
+[VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR](#) specifies that
 queries within video coding scopes using the created video session are
 [executed inline](../../../../spec/latest/chapters/videocoding.html#video-inline-queries) with video coding operations.
 
 * 
-`VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR`
+[VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](#)
 specifies that the video session **can** be used to encode pictures with
 [quantization delta maps](../../../../spec/latest/chapters/videocoding.html#encode-quantization-delta-map).
 
 * 
-`VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP_BIT_KHR`
+[VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP_BIT_KHR](#)
 specifies that the video session **can** be used to encode pictures with
 [emphasis maps](../../../../spec/latest/chapters/videocoding.html#encode-emphasis-map).
 
 * 
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR`
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](#)
 specifies that the application **can** specify video session parameters
 inline with video decode operations instead of sourcing them from the
 bound [video session parameters](../../../../spec/latest/chapters/videocoding.html#video-session-parameters) object.

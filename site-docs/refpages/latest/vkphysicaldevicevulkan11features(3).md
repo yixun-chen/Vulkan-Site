@@ -145,7 +145,7 @@ supported.
 
 `samplerYcbcrConversion` specifies whether the implementation
 supports [sampler Y′CBCR conversion](../../../../spec/latest/chapters/samplers.html#samplers-YCbCr-conversion).
-If `samplerYcbcrConversion` is `VK_FALSE`, sampler Y′CBCR
+If `samplerYcbcrConversion` is [VK_FALSE](VK_FALSE.html), sampler Y′CBCR
 conversion is not supported, and samplers using sampler Y′CBCR
 conversion **must** not be used.
 
@@ -163,7 +163,7 @@ If the `VkPhysicalDeviceVulkan11Features` structure is included in the `pNext` c
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceVulkan11Features`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -171,7 +171,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVulkan11Features-sType-sType) VUID-VkPhysicalDeviceVulkan11Features-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_FEATURES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_FEATURES](VkStructureType.html)
 
 [VK_VERSION_1_2](VK_VERSION_1_2.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -57,7 +57,7 @@ Update the UBO each frame from the camera (view/proj) and model transform
 * 
 Bind the descriptor set and draw using the updated matrices
 
-|  | See [Camera transformation matricies](04_transformation_matrices.adoc) and [Camera implementation](04_camera_implementation.adoc) for a refresher on Matrix math. |
+|  | See [Transformation matrices](03_transformation_matrices.html) and [Camera implementation](04_camera_implementation.html) for a refresher on matrix math. |
 | --- | --- |
 
 First, we need to define our uniform buffer structure:
@@ -133,6 +133,11 @@ void createDescriptorSets() {
     };
 
     descriptorSets = device.allocateDescriptorSets(allocInfo);
+
+    vk::DescriptorBufferInfo bufferInfo{
+        .offset = 0,
+        .range = sizeof(UniformBufferObject)
+    };
 
     for (size_t i = 0; i 
 
@@ -243,4 +248,4 @@ With these components in place, we now have a fully functional camera system int
 
 In the next section, we’ll wrap up with a conclusion and discuss potential improvements to our camera system.
 
-[Next: Conclusion](06_conclusion.adoc)
+[Previous: Camera Implementation](04_camera_implementation.html) | [Next: Conclusion](06_conclusion.html)

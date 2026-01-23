@@ -39,9 +39,9 @@ structure.
 `pVersionData` is a pointer to the version header of a micromap as
 defined in [vkCmdCopyMicromapToMemoryEXT](vkCmdCopyMicromapToMemoryEXT.html)
 
-|  | `pVersionData` is a *pointer* to an array of 2×`VK_UUID_SIZE`
+|  | `pVersionData` is a *pointer* to an array of 2×[VK_UUID_SIZE](VK_UUID_SIZE.html)
 | --- | --- |
-`uint8_t` values instead of two `VK_UUID_SIZE` arrays as the expected
+`uint8_t` values instead of two [VK_UUID_SIZE](VK_UUID_SIZE.html) arrays as the expected
 use case for this member is to be pointed at the header of a previously
 serialized micromap (via [vkCmdCopyMicromapToMemoryEXT](vkCmdCopyMicromapToMemoryEXT.html) or
 [vkCopyMicromapToMemoryEXT](vkCopyMicromapToMemoryEXT.html)) that is loaded in memory.
@@ -52,7 +52,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMicromapVersionInfoEXT-sType-sType) VUID-VkMicromapVersionInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MICROMAP_VERSION_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MICROMAP_VERSION_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkMicromapVersionInfoEXT-pNext-pNext) VUID-VkMicromapVersionInfoEXT-pNext-pNext

@@ -39,7 +39,7 @@ structure.
 * 
 `useMaxLevel` indicates whether the value of `maxLevel` should
 be used by the implementation.
-When it is set to `VK_FALSE`, the implementation ignores the value
+When it is set to [VK_FALSE](VK_FALSE.html), the implementation ignores the value
 of `maxLevel` and uses the value of
 [VkVideoEncodeAV1CapabilitiesKHR](VkVideoEncodeAV1CapabilitiesKHR.html)::`maxLevel`, as reported by
 [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the video profile.
@@ -54,7 +54,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeAV1SessionCreateInfoKHR-sType-sType) VUID-VkVideoEncodeAV1SessionCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_SESSION_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_SESSION_CREATE_INFO_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_av1](VK_KHR_video_encode_av1.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -32,17 +32,17 @@ typedef enum VkVideoEncodeFlagBitsKHR {
 } VkVideoEncodeFlagBitsKHR;
 
 * 
-`VK_VIDEO_ENCODE_WITH_QUANTIZATION_DELTA_MAP_BIT_KHR` specifies the
+[VK_VIDEO_ENCODE_WITH_QUANTIZATION_DELTA_MAP_BIT_KHR](#) specifies the
 use of a [quantization delta map](../../../../spec/latest/chapters/videocoding.html#encode-quantization-delta-map) in the
 issued [video encode operations](../../../../spec/latest/chapters/videocoding.html#video-encode-operations).
 
 * 
-`VK_VIDEO_ENCODE_WITH_EMPHASIS_MAP_BIT_KHR` specifies the use of an
+[VK_VIDEO_ENCODE_WITH_EMPHASIS_MAP_BIT_KHR](#) specifies the use of an
 [emphasis map](../../../../spec/latest/chapters/videocoding.html#encode-emphasis-map) in the issued
 [video encode operations](../../../../spec/latest/chapters/videocoding.html#video-encode-operations).
 
 * 
-`VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR` enables
+[VK_VIDEO_ENCODE_INTRA_REFRESH_BIT_KHR](#) enables
 [intra refresh](../../../../spec/latest/chapters/videocoding.html#encode-intra-refresh) for the encoded picture.
 
 [VK_KHR_video_encode_quantization_map](VK_KHR_video_encode_quantization_map.html), [VkVideoEncodeFlagsKHR](VkVideoEncodeFlagsKHR.html)

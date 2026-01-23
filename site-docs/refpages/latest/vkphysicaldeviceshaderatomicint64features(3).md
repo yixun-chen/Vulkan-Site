@@ -60,7 +60,7 @@ If the `VkPhysicalDeviceShaderAtomicInt64Features` structure is included in the 
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceShaderAtomicInt64Features`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -68,7 +68,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderAtomicInt64Features-sType-sType) VUID-VkPhysicalDeviceShaderAtomicInt64Features-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES](VkStructureType.html)
 
 [VK_KHR_shader_atomic_int64](VK_KHR_shader_atomic_int64.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

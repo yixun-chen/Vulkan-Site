@@ -32,20 +32,20 @@ typedef enum VkOpticalFlowSessionCreateFlagBitsNV {
 } VkOpticalFlowSessionCreateFlagBitsNV;
 
 * 
-`VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_HINT_BIT_NV` specifies that a
+[VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_HINT_BIT_NV](#) specifies that a
 [VkImageView](VkImageView.html) with external flow vectors will be used as hints in
 performing the motion search and **must** be bound to
-`VK_OPTICAL_FLOW_SESSION_BINDING_POINT_HINT_NV`.
+[VK_OPTICAL_FLOW_SESSION_BINDING_POINT_HINT_NV](VkOpticalFlowSessionBindingPointNV.html).
 
 * 
-`VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_COST_BIT_NV` specifies that
+[VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_COST_BIT_NV](#) specifies that
 the cost for the forward flow is generated in a [VkImageView](VkImageView.html) which
-**must** be bound to `VK_OPTICAL_FLOW_SESSION_BINDING_POINT_COST_NV`.
+**must** be bound to [VK_OPTICAL_FLOW_SESSION_BINDING_POINT_COST_NV](VkOpticalFlowSessionBindingPointNV.html).
 Additionally, if
-`VK_OPTICAL_FLOW_SESSION_CREATE_BOTH_DIRECTIONS_BIT_NV` is also set,
+[VK_OPTICAL_FLOW_SESSION_CREATE_BOTH_DIRECTIONS_BIT_NV](#) is also set,
 the cost for backward flow is generated in a [VkImageView](VkImageView.html) which
 **must** be bound to
-`VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_COST_NV`.
+[VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_COST_NV](VkOpticalFlowSessionBindingPointNV.html).
 The cost is the confidence level of the flow vector for each grid in the
 frame.
 The Cost implies how (in)accurate the flow vector is.
@@ -53,18 +53,18 @@ Higher cost value implies the flow vector to be less accurate and
 vice-versa.
 
 * 
-`VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_GLOBAL_FLOW_BIT_NV` specifies
+[VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_GLOBAL_FLOW_BIT_NV](#) specifies
 that a global flow vector is estimated from forward flow in a single
 pixel [VkImageView](VkImageView.html) which **must** be bound to
-`VK_OPTICAL_FLOW_SESSION_BINDING_POINT_GLOBAL_FLOW_NV`.
+[VK_OPTICAL_FLOW_SESSION_BINDING_POINT_GLOBAL_FLOW_NV](VkOpticalFlowSessionBindingPointNV.html).
 
 * 
-`VK_OPTICAL_FLOW_SESSION_CREATE_ALLOW_REGIONS_BIT_NV` specifies that
+[VK_OPTICAL_FLOW_SESSION_CREATE_ALLOW_REGIONS_BIT_NV](#) specifies that
 regions of interest **can** be specified in
 [VkOpticalFlowExecuteInfoNV](VkOpticalFlowExecuteInfoNV.html).
 
 * 
-`VK_OPTICAL_FLOW_SESSION_CREATE_BOTH_DIRECTIONS_BIT_NV` specifies
+[VK_OPTICAL_FLOW_SESSION_CREATE_BOTH_DIRECTIONS_BIT_NV](#) specifies
 that backward flow is generated in addition to forward flow which is
 always generated.
 

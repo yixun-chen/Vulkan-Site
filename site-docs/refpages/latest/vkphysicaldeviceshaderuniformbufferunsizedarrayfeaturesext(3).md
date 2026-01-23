@@ -50,7 +50,7 @@ If the `VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT` structure is
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_shader_uniform_buffer_unsized_array](VK_EXT_shader_uniform_buffer_unsized_array.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -51,11 +51,11 @@ among devices available from the vendor.
 API implemented by the layered implementation.
 
 * 
-`deviceName` is an array of `VK_MAX_PHYSICAL_DEVICE_NAME_SIZE`
+`deviceName` is an array of [VK_MAX_PHYSICAL_DEVICE_NAME_SIZE](VK_MAX_PHYSICAL_DEVICE_NAME_SIZE.html)
 `char` containing a null-terminated UTF-8 string which is the name of
 the device.
 
-If `layeredAPI` is `VK_PHYSICAL_DEVICE_LAYERED_API_VULKAN_KHR`,
+If `layeredAPI` is [VK_PHYSICAL_DEVICE_LAYERED_API_VULKAN_KHR](VkPhysicalDeviceLayeredApiKHR.html),
 additional Vulkan-specific information can be queried by including the
 [VkPhysicalDeviceLayeredApiVulkanPropertiesKHR](VkPhysicalDeviceLayeredApiVulkanPropertiesKHR.html) structure in the
 `pNext` chain.
@@ -67,7 +67,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceLayeredApiPropertiesKHR-sType-sType) VUID-VkPhysicalDeviceLayeredApiPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPhysicalDeviceLayeredApiPropertiesKHR-pNext-pNext) VUID-VkPhysicalDeviceLayeredApiPropertiesKHR-pNext-pNext

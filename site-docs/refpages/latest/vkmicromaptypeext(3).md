@@ -31,11 +31,11 @@ typedef enum VkMicromapTypeEXT {
 } VkMicromapTypeEXT;
 
 * 
-`VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT` is a micromap containing
+[VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT](#) is a micromap containing
 data to control the opacity of a triangle.
 
 * 
-`VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV` is a micromap containing
+[VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV](#) is a micromap containing
 data to control the displacement of subtriangles within a triangle.
 
 [VK_EXT_opacity_micromap](VK_EXT_opacity_micromap.html), [VkMicromapBuildInfoEXT](VkMicromapBuildInfoEXT.html), [VkMicromapCreateInfoEXT](VkMicromapCreateInfoEXT.html)

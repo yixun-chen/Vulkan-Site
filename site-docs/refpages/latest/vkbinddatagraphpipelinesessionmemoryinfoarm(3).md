@@ -74,7 +74,7 @@ Valid Usage
 `bindPoint` **must** have been returned as part of a
 [VkDataGraphPipelineSessionBindPointRequirementARM](VkDataGraphPipelineSessionBindPointRequirementARM.html) whose
 `bindPointType` member is
-`VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TYPE_MEMORY_ARM` by a
+[VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TYPE_MEMORY_ARM](VkDataGraphPipelineSessionBindPointTypeARM.html) by a
 prior call to [vkGetDataGraphPipelineSessionMemoryRequirementsARM](vkGetDataGraphPipelineSessionMemoryRequirementsARM.html)
 for `session`
 
@@ -113,17 +113,17 @@ minus `memoryOffset`
 [](#VUID-VkBindDataGraphPipelineSessionMemoryInfoARM-session-09791) VUID-VkBindDataGraphPipelineSessionMemoryInfoARM-session-09791
 
 If `session` was created with the
-`VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_PROTECTED_BIT_ARM` bit set,
+[VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_PROTECTED_BIT_ARM](VkDataGraphPipelineSessionCreateFlagBitsARM.html) bit set,
 the session **must** be bound to a memory object allocated with a memory
-type that reports `VK_MEMORY_PROPERTY_PROTECTED_BIT`
+type that reports [VK_MEMORY_PROPERTY_PROTECTED_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
 [](#VUID-VkBindDataGraphPipelineSessionMemoryInfoARM-session-09792) VUID-VkBindDataGraphPipelineSessionMemoryInfoARM-session-09792
 
 If `session` was created with the
-`VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_PROTECTED_BIT_ARM` bit not
+[VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_PROTECTED_BIT_ARM](VkDataGraphPipelineSessionCreateFlagBitsARM.html) bit not
 set, the session **must** not be bound to a memory object allocated with a
-memory type that reports `VK_MEMORY_PROPERTY_PROTECTED_BIT`
+memory type that reports [VK_MEMORY_PROPERTY_PROTECTED_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
 [](#VUID-VkBindDataGraphPipelineSessionMemoryInfoARM-objectIndex-09805) VUID-VkBindDataGraphPipelineSessionMemoryInfoARM-objectIndex-09805
@@ -137,7 +137,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindDataGraphPipelineSessionMemoryInfoARM-sType-sType) VUID-VkBindDataGraphPipelineSessionMemoryInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_DATA_GRAPH_PIPELINE_SESSION_MEMORY_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_DATA_GRAPH_PIPELINE_SESSION_MEMORY_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkBindDataGraphPipelineSessionMemoryInfoARM-pNext-pNext) VUID-VkBindDataGraphPipelineSessionMemoryInfoARM-pNext-pNext

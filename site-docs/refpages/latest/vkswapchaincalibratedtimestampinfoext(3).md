@@ -44,7 +44,7 @@ timestamp from.
 * 
 `presentStage` is zero or a [VkPresentStageFlagsEXT](VkPresentStageFlagsEXT.html) value used
 to identify a single present stage when calibrating a timestamp in the
-`VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT` time domain.
+[VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT](VkTimeDomainKHR.html) time domain.
 
 * 
 `timeDomainId` is the id for the opaque time domain being
@@ -62,7 +62,7 @@ Valid Usage
 
 If the `timeDomain` member of the [VkCalibratedTimestampInfoKHR](VkCalibratedTimestampInfoKHR.html)
 structure in this structure’s `pNext` chain is
-`VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT`, `presentStage` **must**
+[VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT](VkTimeDomainKHR.html), `presentStage` **must**
 specify one and only one present stage
 
 Valid Usage (Implicit)
@@ -70,7 +70,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSwapchainCalibratedTimestampInfoEXT-sType-sType) VUID-VkSwapchainCalibratedTimestampInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_CALIBRATED_TIMESTAMP_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_CALIBRATED_TIMESTAMP_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkSwapchainCalibratedTimestampInfoEXT-swapchain-parameter) VUID-VkSwapchainCalibratedTimestampInfoEXT-swapchain-parameter

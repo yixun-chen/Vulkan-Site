@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkHdrVividDynamicMetadataHUAWEI-sType-sType) VUID-VkHdrVividDynamicMetadataHUAWEI-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_HDR_VIVID_DYNAMIC_METADATA_HUAWEI`
+ `sType` **must** be [VK_STRUCTURE_TYPE_HDR_VIVID_DYNAMIC_METADATA_HUAWEI](VkStructureType.html)
 
 * 
 [](#VUID-VkHdrVividDynamicMetadataHUAWEI-pDynamicMetadata-parameter) VUID-VkHdrVividDynamicMetadataHUAWEI-pDynamicMetadata-parameter

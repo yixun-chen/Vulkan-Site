@@ -29,15 +29,15 @@ typedef enum VkAccelerationStructureBuildTypeKHR {
 } VkAccelerationStructureBuildTypeKHR;
 
 * 
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_KHR` requests the memory
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_KHR](#) requests the memory
 requirement for operations performed by the host.
 
 * 
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_DEVICE_KHR` requests the
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_DEVICE_KHR](#) requests the
 memory requirement for operations performed by the device.
 
 * 
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR` requests
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR](#) requests
 the memory requirement for operations performed by either the host, or
 the device.
 

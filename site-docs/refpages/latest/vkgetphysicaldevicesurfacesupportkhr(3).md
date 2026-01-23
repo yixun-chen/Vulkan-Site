@@ -40,7 +40,7 @@ VkResult vkGetPhysicalDeviceSurfaceSupportKHR(
 
 * 
 `pSupported` is a pointer to a `VkBool32`.
-`VK_TRUE` indicates support, and `VK_FALSE` indicates no
+[VK_TRUE](VK_TRUE.html) indicates support, and [VK_FALSE](VK_FALSE.html) indicates no
 support.
 
 Valid Usage
@@ -80,24 +80,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_surface](VK_KHR_surface.html), `VkBool32`, [VkPhysicalDevice](VkPhysicalDevice.html), [VkSurfaceKHR](VkSurfaceKHR.html)
 

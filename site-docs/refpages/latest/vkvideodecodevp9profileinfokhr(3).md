@@ -21,7 +21,7 @@ VkVideoDecodeVP9ProfileInfoKHR - Structure specifying VP9 decode profile
 
 A video profile supporting VP9 video decode operations is specified by
 setting [VkVideoProfileInfoKHR](VkVideoProfileInfoKHR.html)::`videoCodecOperation` to
-`VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR` and adding a
+[VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and adding a
 `VkVideoDecodeVP9ProfileInfoKHR` structure to the
 [VkVideoProfileInfoKHR](VkVideoProfileInfoKHR.html)::`pNext` chain.
 
@@ -50,7 +50,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoDecodeVP9ProfileInfoKHR-sType-sType) VUID-VkVideoDecodeVP9ProfileInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_DECODE_VP9_PROFILE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_VP9_PROFILE_INFO_KHR](VkStructureType.html)
 
 [VK_KHR_video_decode_vp9](VK_KHR_video_decode_vp9.html), [VkStructureType](VkStructureType.html)
 

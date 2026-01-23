@@ -110,7 +110,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDependencyInfo-sType-sType) VUID-VkDependencyInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEPENDENCY_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEPENDENCY_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkDependencyInfo-pNext-pNext) VUID-VkDependencyInfo-pNext-pNext

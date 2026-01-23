@@ -40,18 +40,18 @@ typedef enum VkIndexType {
 } VkIndexType;
 
 * 
-`VK_INDEX_TYPE_UINT16` specifies that indices are 16-bit unsigned
+[VK_INDEX_TYPE_UINT16](#) specifies that indices are 16-bit unsigned
 integer values.
 
 * 
-`VK_INDEX_TYPE_UINT32` specifies that indices are 32-bit unsigned
+[VK_INDEX_TYPE_UINT32](#) specifies that indices are 32-bit unsigned
 integer values.
 
 * 
-`VK_INDEX_TYPE_NONE_KHR` specifies that no indices are provided.
+[VK_INDEX_TYPE_NONE_KHR](#) specifies that no indices are provided.
 
 * 
-`VK_INDEX_TYPE_UINT8` specifies that indices are 8-bit unsigned
+[VK_INDEX_TYPE_UINT8](#) specifies that indices are 8-bit unsigned
 integer values.
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkAccelerationStructureGeometryLinearSweptSpheresDataNV](VkAccelerationStructureGeometryLinearSweptSpheresDataNV.html), [VkAccelerationStructureGeometrySpheresDataNV](VkAccelerationStructureGeometrySpheresDataNV.html), [VkAccelerationStructureGeometryTrianglesDataKHR](VkAccelerationStructureGeometryTrianglesDataKHR.html), [VkAccelerationStructureTrianglesDisplacementMicromapNV](VkAccelerationStructureTrianglesDisplacementMicromapNV.html), [VkAccelerationStructureTrianglesOpacityMicromapEXT](VkAccelerationStructureTrianglesOpacityMicromapEXT.html), [VkBindIndexBufferIndirectCommandEXT](VkBindIndexBufferIndirectCommandEXT.html), [VkBindIndexBufferIndirectCommandNV](VkBindIndexBufferIndirectCommandNV.html), [VkGeometryTrianglesNV](VkGeometryTrianglesNV.html), [VkIndirectCommandsLayoutTokenNV](VkIndirectCommandsLayoutTokenNV.html), [vkCmdBindIndexBuffer](vkCmdBindIndexBuffer.html), [vkCmdBindIndexBuffer2](vkCmdBindIndexBuffer2.html), [vkCmdBindIndexBuffer2](vkCmdBindIndexBuffer2.html)

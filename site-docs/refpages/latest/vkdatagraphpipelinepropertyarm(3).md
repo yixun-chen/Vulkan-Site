@@ -29,7 +29,7 @@ typedef enum VkDataGraphPipelinePropertyARM {
 } VkDataGraphPipelinePropertyARM;
 
 * 
-`VK_DATA_GRAPH_PIPELINE_PROPERTY_CREATION_LOG_ARM` corresponds to a
+[VK_DATA_GRAPH_PIPELINE_PROPERTY_CREATION_LOG_ARM](#) corresponds to a
 human-readable log produced during the creation of a data graph
 pipeline.
 It **may** contain information about errors encountered during the creation
@@ -37,7 +37,7 @@ or other information generally useful for debugging.
 This property **can** be queried for any data graph pipeline.
 
 * 
-`VK_DATA_GRAPH_PIPELINE_PROPERTY_IDENTIFIER_ARM` corresponds to an
+[VK_DATA_GRAPH_PIPELINE_PROPERTY_IDENTIFIER_ARM](#) corresponds to an
 opaque identifier for the data graph pipeline.
 It **can** be used to create a graph pipeline from a pipeline cache without
 the need to provide any creation data beyond the identifier, using a

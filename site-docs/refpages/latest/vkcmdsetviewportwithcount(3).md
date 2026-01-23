@@ -49,7 +49,7 @@ This command sets the viewport count and viewports state for subsequent
 drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` set in
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the corresponding
 [VkPipelineViewportStateCreateInfo](VkPipelineViewportStateCreateInfo.html)::`viewportCount` and
@@ -109,7 +109,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetViewportWithCount-commandBuffer-cmdpool) VUID-vkCmdSetViewportWithCount-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetViewportWithCount-videocoding) VUID-vkCmdSetViewportWithCount-videocoding

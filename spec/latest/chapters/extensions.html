@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:spec" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -174,6 +174,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="descriptorsets.html">Resource Descriptors</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="descriptorheaps.html">Descriptor Heaps</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="interfaces.html">Shader Interfaces</a>
@@ -935,7 +938,7 @@ return the variable is overwritten with the number of structures actually
 written to <code>pProperties</code>.
 If <code>pPropertyCount</code> is less than the number of layer properties
 available, at most <code>pPropertyCount</code> structures will be written, and
-<code>VK_INCOMPLETE</code> will be returned instead of <code>VK_SUCCESS</code>, to
+<a href="fundamentals.html#VkResult" class="xref page">VK_INCOMPLETE</a> will be returned instead of <a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a>, to
 indicate that not all the available properties were returned.</p>
 </div>
 <div class="paragraph">
@@ -975,10 +978,10 @@ some of them become unavailable for future instances.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_INCOMPLETE</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_INCOMPLETE</a></p>
 </li>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a></p>
 </li>
 </ul>
 </div>
@@ -988,16 +991,16 @@ some of them become unavailable for future instances.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_DEVICE_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_HOST_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_UNKNOWN</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_UNKNOWN</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_VALIDATION_FAILED</a></p>
 </li>
 </ul>
 </div>
@@ -1027,7 +1030,7 @@ typedef struct VkLayerProperties {
 <div class="ulist">
 <ul>
 <li>
-<p><code>layerName</code> is an array of <code>VK_MAX_EXTENSION_NAME_SIZE</code>
+<p><code>layerName</code> is an array of <a href="#VK_MAX_EXTENSION_NAME_SIZE">VK_MAX_EXTENSION_NAME_SIZE</a>
 <code>char</code> containing a null-terminated UTF-8 string which is the name of
 the layer.
 Use this name in the <code>ppEnabledLayerNames</code> array passed in the
@@ -1043,7 +1046,7 @@ encoded as described in <a href="#extendingvulkan-coreversions-versionnumbers">V
 It is an integer, increasing with backward compatible changes.</p>
 </li>
 <li>
-<p><code>description</code> is an array of <code>VK_MAX_DESCRIPTION_SIZE</code> <code>char</code>
+<p><code>description</code> is an array of <a href="#VK_MAX_DESCRIPTION_SIZE">VK_MAX_DESCRIPTION_SIZE</a> <code>char</code>
 containing a null-terminated UTF-8 string which provides additional
 details that <strong>can</strong> be used by the application to identify the layer.</p>
 </li>
@@ -1054,7 +1057,7 @@ details that <strong>can</strong> be used by the application to identify the lay
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p><code>VK_MAX_EXTENSION_NAME_SIZE</code> is the length in <code>char</code> values of an
+<p><a href="#VK_MAX_EXTENSION_NAME_SIZE">VK_MAX_EXTENSION_NAME_SIZE</a> is the length in <code>char</code> values of an
 array containing a layer or extension name string, as returned in
 <a href="#VkLayerProperties">VkLayerProperties</a>::<code>layerName</code>,
 <a href="#VkExtensionProperties">VkExtensionProperties</a>::<code>extensionName</code>, and other queries.</p>
@@ -1069,7 +1072,7 @@ array containing a layer or extension name string, as returned in
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p><code>VK_MAX_DESCRIPTION_SIZE</code> is the length in <code>char</code> values of an array
+<p><a href="#VK_MAX_DESCRIPTION_SIZE">VK_MAX_DESCRIPTION_SIZE</a> is the length in <code>char</code> values of an array
 containing a string with additional descriptive information about a query,
 as returned in <a href="#VkLayerProperties">VkLayerProperties</a>::<code>description</code> and other queries.</p>
 </div>
@@ -1150,7 +1153,7 @@ return the variable is overwritten with the number of structures actually
 written to <code>pProperties</code>.
 If <code>pPropertyCount</code> is less than the number of layer properties
 available, at most <code>pPropertyCount</code> structures will be written, and
-<code>VK_INCOMPLETE</code> will be returned instead of <code>VK_SUCCESS</code>, to
+<a href="fundamentals.html#VkResult" class="xref page">VK_INCOMPLETE</a> will be returned instead of <a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a>, to
 indicate that not all the available properties were returned.</p>
 </div>
 <div class="paragraph">
@@ -1209,10 +1212,10 @@ underlying Vulkan driver.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_INCOMPLETE</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_INCOMPLETE</a></p>
 </li>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a></p>
 </li>
 </ul>
 </div>
@@ -1222,16 +1225,16 @@ underlying Vulkan driver.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_DEVICE_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_HOST_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_UNKNOWN</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_UNKNOWN</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_VALIDATION_FAILED</a></p>
 </li>
 </ul>
 </div>
@@ -1370,7 +1373,7 @@ return the variable is overwritten with the number of structures actually
 written to <code>pProperties</code>.
 If <code>pPropertyCount</code> is less than the number of extension properties
 available, at most <code>pPropertyCount</code> structures will be written, and
-<code>VK_INCOMPLETE</code> will be returned instead of <code>VK_SUCCESS</code>, to
+<a href="fundamentals.html#VkResult" class="xref page">VK_INCOMPLETE</a> will be returned instead of <a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a>, to
 indicate that not all the available properties were returned.</p>
 </div>
 <div class="paragraph">
@@ -1418,10 +1421,10 @@ be enabled against the advertised version.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_INCOMPLETE</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_INCOMPLETE</a></p>
 </li>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a></p>
 </li>
 </ul>
 </div>
@@ -1431,19 +1434,19 @@ be enabled against the advertised version.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_LAYER_NOT_PRESENT</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_LAYER_NOT_PRESENT</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_DEVICE_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_HOST_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_UNKNOWN</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_UNKNOWN</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_VALIDATION_FAILED</a></p>
 </li>
 </ul>
 </div>
@@ -1518,6 +1521,11 @@ be enabled against the advertised version.</p>
 <p>If the <code><a href="../appendices/extensions.html#VK_KHR_ray_tracing_pipeline" class="xref page">VK_KHR_ray_tracing_pipeline</a></code> extension is advertised as
 supported by this query, the <code><a href="../appendices/extensions.html#VK_KHR_pipeline_library" class="xref page">VK_KHR_pipeline_library</a></code> extension
 <strong>must</strong> also be supported.</p>
+</div>
+<div class="paragraph">
+<p>If the <code><a href="../appendices/extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a></code> extension is advertised as supported
+by this query, the <code><a href="../appendices/extensions.html#VK_KHR_shader_untyped_pointers" class="xref page">VK_KHR_shader_untyped_pointers</a></code> extension <strong>must</strong>
+also be supported.</p>
 </div>
 <div class="paragraph">
 <p>Implementations claiming support for the <a href="../appendices/roadmap.html#roadmap-2022" class="xref page">Roadmap 2022</a>
@@ -1627,10 +1635,10 @@ underlying Vulkan driver.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_INCOMPLETE</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_INCOMPLETE</a></p>
 </li>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a></p>
 </li>
 </ul>
 </div>
@@ -1640,19 +1648,19 @@ underlying Vulkan driver.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_LAYER_NOT_PRESENT</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_LAYER_NOT_PRESENT</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_DEVICE_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_HOST_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_UNKNOWN</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_UNKNOWN</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_VALIDATION_FAILED</a></p>
 </li>
 </ul>
 </div>
@@ -1680,7 +1688,7 @@ typedef struct VkExtensionProperties {
 <div class="ulist">
 <ul>
 <li>
-<p><code>extensionName</code> is an array of <code>VK_MAX_EXTENSION_NAME_SIZE</code>
+<p><code>extensionName</code> is an array of <a href="#VK_MAX_EXTENSION_NAME_SIZE">VK_MAX_EXTENSION_NAME_SIZE</a>
 <code>char</code> containing a null-terminated UTF-8 string which is the name of
 the extension.</p>
 </li>
@@ -1980,10 +1988,10 @@ exist in the extension will <strong>not</strong> be promoted.</p>
 <div class="paragraph">
 <p>As a hypothetical example, if the <code><a href="../appendices/extensions.html#VK_KHR_surface" class="xref page">VK_KHR_surface</a></code> extension were
 promoted to part of a future core version, the
-<code>VK_COLOR_SPACE_SRGB_NONLINEAR_KHR</code> token defined by that extension
+<a href="VK_KHR_surface/wsi.html#VkColorSpaceKHR" class="xref page">VK_COLOR_SPACE_SRGB_NONLINEAR_KHR</a> token defined by that extension
 would be promoted to <code>VK_COLOR_SPACE_SRGB_NONLINEAR</code>.
 However, the <code>VK_COLORSPACE_SRGB_NONLINEAR_KHR</code> token aliases
-<code>VK_COLOR_SPACE_SRGB_NONLINEAR_KHR</code>.
+<a href="VK_KHR_surface/wsi.html#VkColorSpaceKHR" class="xref page">VK_COLOR_SPACE_SRGB_NONLINEAR_KHR</a>.
 The <code>VK_COLORSPACE_SRGB_NONLINEAR_KHR</code> would not be promoted, because it
 is a backwards compatibility alias that exists only due to a naming mistake
 when the extension was initially published.</p>

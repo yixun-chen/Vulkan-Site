@@ -83,14 +83,14 @@ value
 value
 
 If the parameters define an import operation and the external handle type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT`, or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT](VkExternalMemoryHandleTypeFlagBits.html),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT](VkExternalMemoryHandleTypeFlagBits.html), or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT](VkExternalMemoryHandleTypeFlagBits.html),
 `allocationSize` is ignored.
 The implementation **must** query the size of these allocations from the OS.
 
 If the parameters define an import operation and the external handle type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html),
 `allocationSize` is ignored.
 The implementation **must** query the size of these allocations from the OS.
 
@@ -132,9 +132,9 @@ or corruption of other resources when used as allowed according to its
 allocation parameters.
 If the external handle provided does not meet these requirements, the
 implementation **must** fail the memory import operation with the error code
-`VK_ERROR_INVALID_EXTERNAL_HANDLE`.
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](VkResult.html).
 If the parameters define an export operation and the external handle type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](VkExternalMemoryHandleTypeFlagBits.html),
 implementations **should** not strictly follow `memoryTypeIndex`.
 Instead, they **should** modify the allocation internally to use the required
 memory type for the application’s given usage.
@@ -160,7 +160,7 @@ The parameters **must** not define more than one
 
 If the parameters define an export operation
 and the handle type is not
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](VkExternalMemoryHandleTypeFlagBits.html)
 , `allocationSize` **must** be greater than `0`
 
 * 
@@ -287,7 +287,7 @@ If the `pNext` chain includes a
 
 If the parameters define an import operation, the external handle
 specified was created by the Vulkan API, and the external handle type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT`, then the values of
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT](VkExternalMemoryHandleTypeFlagBits.html), then the values of
 `allocationSize` and `memoryTypeIndex` **must** match those
 specified when the payload being imported was created
 
@@ -321,8 +321,8 @@ the value of `memoryTypeIndex` **must** be one of those returned by
 
 If the parameters define an import operation, the external handle was
 created by the Vulkan API, and the external handle type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT`, then the
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT](VkExternalMemoryHandleTypeFlagBits.html) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](VkExternalMemoryHandleTypeFlagBits.html), then the
 values of `allocationSize` and `memoryTypeIndex` **must** match
 those specified when the payload being imported was created
 
@@ -330,7 +330,7 @@ those specified when the payload being imported was created
 [](#VUID-VkMemoryAllocateInfo-allocationSize-00647) VUID-VkMemoryAllocateInfo-allocationSize-00647
 
 If the parameters define an import operation and the external handle
-type is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT`,
+type is [VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT](VkExternalMemoryHandleTypeFlagBits.html),
 `allocationSize` **must** match the size specified when creating the
 Direct3D 12 heap from which the payload was extracted
 
@@ -348,7 +348,7 @@ a POSIX file descriptor created outside of the Vulkan API, the value of
 If the [`protectedMemory`](../../../../spec/latest/chapters/features.html#features-protectedMemory) feature is
 not enabled, the `VkMemoryAllocateInfo`::`memoryTypeIndex` **must**
 not indicate a memory type that reports
-`VK_MEMORY_PROPERTY_PROTECTED_BIT`
+[VK_MEMORY_PROPERTY_PROTECTED_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
 [](#VUID-VkMemoryAllocateInfo-memoryTypeIndex-01744) VUID-VkMemoryAllocateInfo-memoryTypeIndex-01744
@@ -387,7 +387,7 @@ a host pointer, the `pNext` chain **must** not include a
 
 If the parameters define an import operation and the external handle
 type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](VkExternalMemoryHandleTypeFlagBits.html),
 `allocationSize` **must** be the size returned by
 [vkGetAndroidHardwareBufferPropertiesANDROID](vkGetAndroidHardwareBufferPropertiesANDROID.html) for the Android
 hardware buffer
@@ -397,7 +397,7 @@ hardware buffer
 
 If the parameters define an import operation and the external handle
 type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](VkExternalMemoryHandleTypeFlagBits.html),
 and the `pNext` chain does not include a
 [VkMemoryDedicatedAllocateInfo](VkMemoryDedicatedAllocateInfo.html) structure or
 [VkMemoryDedicatedAllocateInfo](VkMemoryDedicatedAllocateInfo.html)::`image` is
@@ -412,7 +412,7 @@ and the `pNext` chain does not include a
 
 If the parameters define an import operation and the external handle
 type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](VkExternalMemoryHandleTypeFlagBits.html),
 `memoryTypeIndex` **must** be one of those returned by
 [vkGetAndroidHardwareBufferPropertiesANDROID](vkGetAndroidHardwareBufferPropertiesANDROID.html) for the Android
 hardware buffer
@@ -422,7 +422,7 @@ hardware buffer
 
 If the parameters do not define an import operation, and the `pNext`
 chain includes a `VkExportMemoryAllocateInfo` structure with
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](VkExternalMemoryHandleTypeFlagBits.html)
 included in its `handleTypes` member, and the `pNext` chain
 includes a [VkMemoryDedicatedAllocateInfo](VkMemoryDedicatedAllocateInfo.html) structure with
 `image` not equal to [VK_NULL_HANDLE](VK_NULL_HANDLE.html), then `allocationSize`
@@ -432,7 +432,7 @@ includes a [VkMemoryDedicatedAllocateInfo](VkMemoryDedicatedAllocateInfo.html) s
 [](#VUID-VkMemoryAllocateInfo-pNext-07900) VUID-VkMemoryAllocateInfo-pNext-07900
 
 If the parameters define an export operation, the handle type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](VkExternalMemoryHandleTypeFlagBits.html),
 and the `pNext` does not include a
 [VkMemoryDedicatedAllocateInfo](VkMemoryDedicatedAllocateInfo.html) structure, `allocationSize`
 **must** be greater than `0`
@@ -441,7 +441,7 @@ and the `pNext` does not include a
 [](#VUID-VkMemoryAllocateInfo-pNext-07901) VUID-VkMemoryAllocateInfo-pNext-07901
 
 If the parameters define an export operation, the handle type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](VkExternalMemoryHandleTypeFlagBits.html),
 and the `pNext` chain includes a [VkMemoryDedicatedAllocateInfo](VkMemoryDedicatedAllocateInfo.html)
 structure with `buffer` set to a valid [VkBuffer](VkBuffer.html) object,
 `allocationSize` **must** be greater than `0`
@@ -465,7 +465,7 @@ If the parameters define an import operation, the external handle is an
 Android hardware buffer, and the `pNext` chain includes a
 [VkMemoryDedicatedAllocateInfo](VkMemoryDedicatedAllocateInfo.html) with `image` that is not
 [VK_NULL_HANDLE](VK_NULL_HANDLE.html), the format of `image` **must** be
-`VK_FORMAT_UNDEFINED` or the format returned by
+[VK_FORMAT_UNDEFINED](VkFormat.html) or the format returned by
 [vkGetAndroidHardwareBufferPropertiesANDROID](vkGetAndroidHardwareBufferPropertiesANDROID.html) in
 [VkAndroidHardwareBufferFormatPropertiesANDROID](VkAndroidHardwareBufferFormatPropertiesANDROID.html)::`format` for
 the Android hardware buffer
@@ -518,7 +518,7 @@ Android hardware buffer’s `AHardwareBuffer_Desc`::`usage`
 [](#VUID-VkMemoryAllocateInfo-screenBufferImport-08941) VUID-VkMemoryAllocateInfo-screenBufferImport-08941
 
 If the parameters define an import operation and the external handle
-type is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX`,
+type is [VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](VkExternalMemoryHandleTypeFlagBits.html),
 [VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX](VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.html)::`screenBufferImport`
 **must** be enabled
 
@@ -526,7 +526,7 @@ type is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX`,
 [](#VUID-VkMemoryAllocateInfo-allocationSize-08942) VUID-VkMemoryAllocateInfo-allocationSize-08942
 
 If the parameters define an import operation and the external handle
-type is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX`,
+type is [VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](VkExternalMemoryHandleTypeFlagBits.html),
 `allocationSize` **must** be the size returned by
 [vkGetScreenBufferPropertiesQNX](vkGetScreenBufferPropertiesQNX.html) for the QNX Screen buffer
 
@@ -534,7 +534,7 @@ type is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX`,
 [](#VUID-VkMemoryAllocateInfo-memoryTypeIndex-08943) VUID-VkMemoryAllocateInfo-memoryTypeIndex-08943
 
 If the parameters define an import operation and the external handle
-type is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX`,
+type is [VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](VkExternalMemoryHandleTypeFlagBits.html),
 `memoryTypeIndex` **must** be one of those returned by
 [vkGetScreenBufferPropertiesQNX](vkGetScreenBufferPropertiesQNX.html) for the QNX Screen buffer
 
@@ -554,7 +554,7 @@ If the parameters define an import operation, the external handle is an
 QNX Screen buffer, and the `pNext` chain includes a
 [VkMemoryDedicatedAllocateInfo](VkMemoryDedicatedAllocateInfo.html) with `image` that is not
 [VK_NULL_HANDLE](VK_NULL_HANDLE.html), the format of `image` **must** be
-`VK_FORMAT_UNDEFINED` or the format returned by
+[VK_FORMAT_UNDEFINED](VkFormat.html) or the format returned by
 [vkGetScreenBufferPropertiesQNX](vkGetScreenBufferPropertiesQNX.html) in
 [VkScreenBufferFormatPropertiesQNX](VkScreenBufferFormatPropertiesQNX.html)::`format` for the QNX Screen
 buffer
@@ -573,7 +573,7 @@ identical
 [](#VUID-VkMemoryAllocateInfo-pNext-10395) VUID-VkMemoryAllocateInfo-pNext-10395
 
 If the parameters define an import operation and the external handle is
-a `VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT`, then
+a [VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html), then
 `pNext` **must** include a [VkMemoryDedicatedAllocateInfo](VkMemoryDedicatedAllocateInfo.html) with
 `image` that is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
@@ -601,20 +601,20 @@ not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `allocationSize` **must** be `0`
 If
 [VkMemoryOpaqueCaptureAddressAllocateInfo](VkMemoryOpaqueCaptureAddressAllocateInfo.html)::`opaqueCaptureAddress`
 is not zero, `VkMemoryAllocateFlagsInfo`::`flags` **must** include
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT`
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkMemoryAllocateFlagBits.html)
 
 * 
 [](#VUID-VkMemoryAllocateInfo-flags-03330) VUID-VkMemoryAllocateInfo-flags-03330
 
 If `VkMemoryAllocateFlagsInfo`::`flags` includes
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT`, the
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkMemoryAllocateFlagBits.html), the
 [    `bufferDeviceAddressCaptureReplay`](../../../../spec/latest/chapters/features.html#features-bufferDeviceAddressCaptureReplay) feature **must** be enabled
 
 * 
 [](#VUID-VkMemoryAllocateInfo-flags-03331) VUID-VkMemoryAllocateInfo-flags-03331
 
 If `VkMemoryAllocateFlagsInfo`::`flags` includes
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT`, the
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](VkMemoryAllocateFlagBits.html), the
 [`bufferDeviceAddress`](../../../../spec/latest/chapters/features.html#features-bufferDeviceAddress) feature
 **must** be enabled
 
@@ -637,7 +637,7 @@ If the parameters define an import operation,
 [](#VUID-VkMemoryAllocateInfo-None-04749) VUID-VkMemoryAllocateInfo-None-04749
 
 If the parameters define an import operation and the external handle
-type is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA`, the
+type is [VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA](VkExternalMemoryHandleTypeFlagBits.html), the
 value of `memoryTypeIndex` **must** be an index identifying a memory
 type from the `memoryTypeBits` field of the
 [VkMemoryZirconHandlePropertiesFUCHSIA](VkMemoryZirconHandlePropertiesFUCHSIA.html) structure populated by a
@@ -647,14 +647,14 @@ call to [vkGetMemoryZirconHandlePropertiesFUCHSIA](vkGetMemoryZirconHandleProper
 [](#VUID-VkMemoryAllocateInfo-allocationSize-07902) VUID-VkMemoryAllocateInfo-allocationSize-07902
 
 If the parameters define an import operation and the external handle
-type is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA`, the
+type is [VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA](VkExternalMemoryHandleTypeFlagBits.html), the
 value of `allocationSize` **must** be greater than `0`
 
 * 
 [](#VUID-VkMemoryAllocateInfo-allocationSize-07903) VUID-VkMemoryAllocateInfo-allocationSize-07903
 
 If the parameters define an import operation and the external handle
-type is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA`, the
+type is [VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA](VkExternalMemoryHandleTypeFlagBits.html), the
 value of `allocationSize` **must** be less than or equal to the size of
 the VMO as determined by `zx_vmo_get_size`(`handle`) where
 `handle` is the VMO handle to the imported external memory
@@ -665,14 +665,14 @@ the VMO as determined by `zx_vmo_get_size`(`handle`) where
 If the `pNext` chain includes a
 [VkExportMetalObjectCreateInfoEXT](VkExportMetalObjectCreateInfoEXT.html) structure, its
 `exportObjectType` member **must** be
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT`
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT](VkExportMetalObjectTypeFlagBitsEXT.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkMemoryAllocateInfo-sType-sType) VUID-VkMemoryAllocateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkMemoryAllocateInfo-pNext-pNext) VUID-VkMemoryAllocateInfo-pNext-pNext

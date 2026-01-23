@@ -51,7 +51,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeQuantizationMapCapabilitiesKHR-sType-sType) VUID-VkVideoEncodeQuantizationMapCapabilitiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUANTIZATION_MAP_CAPABILITIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUANTIZATION_MAP_CAPABILITIES_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_quantization_map](VK_KHR_video_encode_quantization_map.html), [VkExtent2D](VkExtent2D.html), [VkStructureType](VkStructureType.html)
 

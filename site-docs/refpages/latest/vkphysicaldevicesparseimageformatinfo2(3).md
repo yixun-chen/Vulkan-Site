@@ -74,7 +74,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceSparseImageFormatInfo2-sType-sType) VUID-VkPhysicalDeviceSparseImageFormatInfo2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SPARSE_IMAGE_FORMAT_INFO_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SPARSE_IMAGE_FORMAT_INFO_2](VkStructureType.html)
 
 * 
 [](#VUID-VkPhysicalDeviceSparseImageFormatInfo2-pNext-pNext) VUID-VkPhysicalDeviceSparseImageFormatInfo2-pNext-pNext

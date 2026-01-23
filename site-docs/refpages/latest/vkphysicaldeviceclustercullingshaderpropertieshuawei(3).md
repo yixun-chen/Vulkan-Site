@@ -81,7 +81,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI-sType-sType) VUID-VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_CULLING_SHADER_PROPERTIES_HUAWEI`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_CULLING_SHADER_PROPERTIES_HUAWEI](VkStructureType.html)
 
 [VK_HUAWEI_cluster_culling_shader](VK_HUAWEI_cluster_culling_shader.html), `VkDeviceSize`, [VkStructureType](VkStructureType.html)
 

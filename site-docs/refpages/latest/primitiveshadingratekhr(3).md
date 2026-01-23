@@ -109,6 +109,12 @@ If `PrimitiveShadingRateKHR` decorates a member of a structure, the
 variable declaration of the containing `Block` type **must** have an
 array size that matches the value specified by `OutputPrimitivesEXT`
 
+* 
+[](#VUID-PrimitiveShadingRateKHR-PrimitiveShadingRateKHR-12275) VUID-PrimitiveShadingRateKHR-PrimitiveShadingRateKHR-12275
+
+If `PrimitiveShadingRateKHR` is declared in the `MeshEXT`
+`Execution` `Model`, the [    primitiveFragmentShadingRateMeshShader](../../../../spec/latest/chapters/features.html#features-primitiveFragmentShadingRateMeshShader) feature **must** be enabled
+
 No cross-references are available
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/index.html) (NOTE: cannot determine Specification page containing this refpage).

@@ -59,7 +59,7 @@ attachments.
 value defining the sample count of a depth/stencil attachment.
 
 If [VkCommandBufferInheritanceInfo](VkCommandBufferInheritanceInfo.html)::`renderPass` is
-[VK_NULL_HANDLE](VK_NULL_HANDLE.html), `VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`
+[VK_NULL_HANDLE](VK_NULL_HANDLE.html), [VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](VkCommandBufferUsageFlagBits.html)
 is specified in [VkCommandBufferBeginInfo](VkCommandBufferBeginInfo.html)::`flags`, and the
 `pNext` chain of [VkCommandBufferInheritanceInfo](VkCommandBufferInheritanceInfo.html) includes
 `VkAttachmentSampleCountInfoAMD`, then this structure defines the sample
@@ -69,7 +69,7 @@ If `VkAttachmentSampleCountInfoAMD` is not included, the value of
 used as the sample count for each attachment.
 If [VkCommandBufferInheritanceInfo](VkCommandBufferInheritanceInfo.html)::`renderPass` is not
 [VK_NULL_HANDLE](VK_NULL_HANDLE.html), or
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT` is not specified in
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](VkCommandBufferUsageFlagBits.html) is not specified in
 [VkCommandBufferBeginInfo](VkCommandBufferBeginInfo.html)::`flags`, parameters of this structure
 are ignored.
 
@@ -91,7 +91,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAttachmentSampleCountInfoAMD-sType-sType) VUID-VkAttachmentSampleCountInfoAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_AMD](VkStructureType.html)
 
 [VK_AMD_mixed_attachment_samples](VK_AMD_mixed_attachment_samples.html), [VK_KHR_dynamic_rendering](VK_KHR_dynamic_rendering.html), [VK_NV_framebuffer_mixed_samples](VK_NV_framebuffer_mixed_samples.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), [VkSampleCountFlagBits](VkSampleCountFlagBits.html), [VkStructureType](VkStructureType.html)
 

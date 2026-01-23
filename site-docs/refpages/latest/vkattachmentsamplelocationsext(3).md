@@ -42,7 +42,7 @@ subpass using it.
 
 If the image referenced by the framebuffer attachment at index
 `attachmentIndex` was not created with
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT` then the
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](VkImageCreateFlagBits.html) then the
 values specified in `sampleLocationsInfo` are ignored.
 
 Valid Usage

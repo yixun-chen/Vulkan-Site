@@ -38,6 +38,8 @@ static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_PROTECTED_ACCESS_ONL
 // Provided by VK_AMDX_shader_enqueue with VK_KHR_maintenance5 or VK_VERSION_1_4
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX = 0x100000000ULL;
 #endif
+// Provided by VK_EXT_descriptor_heap
+static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT = 0x1000000000ULL;
 // Provided by VK_KHR_ray_tracing_pipeline
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_BUILT_IN_PRIMITIVES_BIT_KHR = 0x00001000ULL;
 // Provided by VK_NV_ray_tracing_linear_swept_spheres
@@ -122,38 +124,38 @@ static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_
 typedef VkPipelineCreateFlagBits2 VkPipelineCreateFlagBits2KHR;
 
 * 
-`VK_PIPELINE_CREATE_2_DISABLE_OPTIMIZATION_BIT` specifies that the
+[VK_PIPELINE_CREATE_2_DISABLE_OPTIMIZATION_BIT](#) specifies that the
 created pipeline will not be optimized.
 Using this flag **may** reduce the time taken to create the pipeline.
 
 * 
-`VK_PIPELINE_CREATE_2_ALLOW_DERIVATIVES_BIT` specifies that the
+[VK_PIPELINE_CREATE_2_ALLOW_DERIVATIVES_BIT](#) specifies that the
 pipeline to be created is allowed to be the parent of a pipeline that
 will be created in a subsequent pipeline creation call.
 
 * 
-`VK_PIPELINE_CREATE_2_DERIVATIVE_BIT` specifies that the pipeline to
+[VK_PIPELINE_CREATE_2_DERIVATIVE_BIT](#) specifies that the pipeline to
 be created will be a child of a previously created parent pipeline.
 
 * 
-`VK_PIPELINE_CREATE_2_VIEW_INDEX_FROM_DEVICE_INDEX_BIT` specifies
+[VK_PIPELINE_CREATE_2_VIEW_INDEX_FROM_DEVICE_INDEX_BIT](#) specifies
 that any shader input variables decorated as `ViewIndex` will be
 assigned values as if they were decorated as `DeviceIndex`.
 
 * 
-`VK_PIPELINE_CREATE_2_DISPATCH_BASE_BIT` specifies that a compute
+[VK_PIPELINE_CREATE_2_DISPATCH_BASE_BIT](#) specifies that a compute
 pipeline **can** be used with [vkCmdDispatchBase](vkCmdDispatchBase.html) with a non-zero base
 workgroup.
 
 * 
-`VK_PIPELINE_CREATE_2_DEFER_COMPILE_BIT_NV` specifies that a
+[VK_PIPELINE_CREATE_2_DEFER_COMPILE_BIT_NV](#) specifies that a
 pipeline is created with all shaders in the deferred state.
 Before using the pipeline the application **must** call
 [vkCompileDeferredNV](vkCompileDeferredNV.html) exactly once on each shader in the pipeline
 before using the pipeline.
 
 * 
-`VK_PIPELINE_CREATE_2_CAPTURE_STATISTICS_BIT_KHR` specifies that the
+[VK_PIPELINE_CREATE_2_CAPTURE_STATISTICS_BIT_KHR](#) specifies that the
 shader compiler should capture statistics for the pipeline executables
 produced by the compile process which **can** later be retrieved by calling
 [vkGetPipelineExecutableStatisticsKHR](vkGetPipelineExecutableStatisticsKHR.html).
@@ -161,7 +163,7 @@ Enabling this flag **must** not affect the final compiled pipeline but **may**
 disable pipeline caching or otherwise affect pipeline creation time.
 
 * 
-`VK_PIPELINE_CREATE_2_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR`
+[VK_PIPELINE_CREATE_2_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR](#)
 specifies that the shader compiler should capture the internal
 representations of pipeline executables produced by the compile process
 which **can** later be retrieved by calling
@@ -175,7 +177,7 @@ Applications **should** retrieve IR from each library, and any linked
 pipelines, separately.
 
 * 
-`VK_PIPELINE_CREATE_2_LIBRARY_BIT_KHR` specifies that the pipeline
+[VK_PIPELINE_CREATE_2_LIBRARY_BIT_KHR](#) specifies that the pipeline
     **cannot** be used directly, and instead defines a *pipeline library* that
     **can** be combined with other pipelines using the
     [VkPipelineLibraryCreateInfoKHR](VkPipelineLibraryCreateInfoKHR.html) structure.
@@ -186,184 +188,189 @@ graphics
     pipelines.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR](#)
 specifies that an any-hit shader will always be present when an any-hit
 shader would be executed.
 A NULL any-hit shader is an any-hit shader which is effectively
-`VK_SHADER_UNUSED_KHR`, such as from a shader group consisting
+[VK_SHADER_UNUSED_KHR](VK_SHADER_UNUSED_KHR.html), such as from a shader group consisting
 entirely of zeros.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR](#)
 specifies that a closest hit shader will always be present when a
 closest hit shader would be executed.
 A NULL closest hit shader is a closest hit shader which is effectively
-`VK_SHADER_UNUSED_KHR`, such as from a shader group consisting
+[VK_SHADER_UNUSED_KHR](VK_SHADER_UNUSED_KHR.html), such as from a shader group consisting
 entirely of zeros.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR](#)
 specifies that a miss shader will always be present when a miss shader
 would be executed.
 A NULL miss shader is a miss shader which is effectively
-`VK_SHADER_UNUSED_KHR`, such as from a shader group consisting
+[VK_SHADER_UNUSED_KHR](VK_SHADER_UNUSED_KHR.html), such as from a shader group consisting
 entirely of zeros.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR](#)
 specifies that an intersection shader will always be present when an
 intersection shader would be executed.
 A NULL intersection shader is an intersection shader which is
-effectively `VK_SHADER_UNUSED_KHR`, such as from a shader group
+effectively [VK_SHADER_UNUSED_KHR](VK_SHADER_UNUSED_KHR.html), such as from a shader group
 consisting entirely of zeros.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR` specifies
+[VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR](#) specifies
 that all built-in primitives
 including triangles, spheres and LSS primitives
 will be skipped during traversal using [    pipeline trace ray](../../../../spec/latest/appendices/glossary.html#glossary-pipeline-trace-ray) instructions.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_BUILT_IN_PRIMITIVES_BIT_KHR`
+[VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_BUILT_IN_PRIMITIVES_BIT_KHR](#)
 is an alias for
-`VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR`.
+[VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR](#).
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_AABBS_BIT_KHR` specifies that
+[VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_AABBS_BIT_KHR](#) specifies that
 AABB primitives will be skipped during traversal using
 [pipeline trace ray](../../../../spec/latest/appendices/glossary.html#glossary-pipeline-trace-ray) instructions.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR`
+[VK_PIPELINE_CREATE_2_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR](#)
 specifies that the shader group handles **can** be saved and reused on a
 subsequent run (e.g. for trace capture and replay).
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_ALLOW_SPHERES_AND_LINEAR_SWEPT_SPHERES_BIT_NV`
+[VK_PIPELINE_CREATE_2_RAY_TRACING_ALLOW_SPHERES_AND_LINEAR_SWEPT_SPHERES_BIT_NV](#)
 specifies that the pipeline is allowed to use spheres or linear swept
 spheres as a geometry type in the acceleration structures.
 Using this flag **may** affect performance.
 
 * 
-`VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_NV` specifies that the
+[VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_NV](#) specifies that the
 pipeline can be used in combination with [Device-Generated Commands](../../../../spec/latest/chapters/device_generated_commands/generatedcommands.html#device-generated-commands).
 
 * 
-`VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT` specifies that the
+[VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT](#) specifies that the
 pipeline **can** be used in a `VkIndirectExecutionSetEXT`.
 
 * 
-`VK_PIPELINE_CREATE_2_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT`
+[VK_PIPELINE_CREATE_2_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](#)
 specifies that pipeline creation will fail if a compile is required for
 creation of a valid [VkPipeline](VkPipeline.html) object;
-`VK_PIPELINE_COMPILE_REQUIRED` will be returned by pipeline
+[VK_PIPELINE_COMPILE_REQUIRED](VkResult.html) will be returned by pipeline
 creation, and the [VkPipeline](VkPipeline.html) will be [VK_NULL_HANDLE](VK_NULL_HANDLE.html).
 
 * 
 When creating multiple pipelines,
-`VK_PIPELINE_CREATE_2_EARLY_RETURN_ON_FAILURE_BIT` specifies that
+[VK_PIPELINE_CREATE_2_EARLY_RETURN_ON_FAILURE_BIT](#) specifies that
 control will be returned to the application if any individual pipeline
-returns a result which is not `VK_SUCCESS` rather than continuing to
+returns a result which is not [VK_SUCCESS](VkResult.html) rather than continuing to
 create additional pipelines.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_ALLOW_MOTION_BIT_NV` specifies
+[VK_PIPELINE_CREATE_2_RAY_TRACING_ALLOW_MOTION_BIT_NV](#) specifies
 that the pipeline is allowed to use `OpTraceRayMotionNV`.
 
 * 
-`VK_PIPELINE_CREATE_2_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_CREATE_2_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#)
 specifies that the pipeline will be used with a fragment shading rate
 attachment.
 
 * 
-`VK_PIPELINE_CREATE_2_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT`
+[VK_PIPELINE_CREATE_2_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT](#)
 specifies that the pipeline will be used with a fragment density map
 attachment.
 
 * 
-`VK_PIPELINE_CREATE_2_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE`
+[VK_PIPELINE_CREATE_2_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](#)
 specifies that the pipeline **can** be used with layered fragment density
 maps.
 
 * 
-`VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT` specifies that
+[VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT](#) specifies that
 pipeline libraries being linked into this library **should** have link time
 optimizations applied.
 If this bit is omitted, implementations **should** instead perform linking
 as rapidly as possible.
 
 * 
-`VK_PIPELINE_CREATE_2_RETAIN_LINK_TIME_OPTIMIZATION_INFO_BIT_EXT`
+[VK_PIPELINE_CREATE_2_RETAIN_LINK_TIME_OPTIMIZATION_INFO_BIT_EXT](#)
 specifies that pipeline libraries should retain any information
 necessary to later perform an optimal link with
-`VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT`.
+[VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT](#).
 
 * 
-`VK_PIPELINE_CREATE_2_DESCRIPTOR_BUFFER_BIT_EXT` specifies that a
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_BUFFER_BIT_EXT](#) specifies that a
 pipeline will be used with [descriptor buffers](../../../../spec/latest/chapters/descriptorsets.html#descriptorbuffers),
 rather than [descriptor sets](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets).
 
 * 
-`VK_PIPELINE_CREATE_2_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT`
+[VK_PIPELINE_CREATE_2_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](#)
 specifies that the pipeline **may** be used with an attachment
 [feedback loop](../../../../spec/latest/chapters/renderpass.html#renderpass-feedbackloop) including color attachments.
 
 * 
-`VK_PIPELINE_CREATE_2_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT`
+[VK_PIPELINE_CREATE_2_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](#)
 specifies that the pipeline **may** be used with an attachment
 [feedback loop](../../../../spec/latest/chapters/renderpass.html#renderpass-feedbackloop) including depth-stencil
 attachments.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT`
+[VK_PIPELINE_CREATE_2_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT](#)
 specifies that the ray tracing pipeline **can** be used with acceleration
 structures which reference an opacity micromap array.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV`
+[VK_PIPELINE_CREATE_2_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV](#)
 specifies that the ray tracing pipeline **can** be used with acceleration
 structures which reference a displacement micromap array.
 
 * 
-`VK_PIPELINE_CREATE_2_NO_PROTECTED_ACCESS_BIT` specifies that the
+[VK_PIPELINE_CREATE_2_NO_PROTECTED_ACCESS_BIT](#) specifies that the
 pipeline **must** not be bound to a protected command buffer.
 
 * 
-`VK_PIPELINE_CREATE_2_PROTECTED_ACCESS_ONLY_BIT` specifies that the
+[VK_PIPELINE_CREATE_2_PROTECTED_ACCESS_ONLY_BIT](#) specifies that the
 pipeline **must** not be bound to an unprotected command buffer.
 
 * 
-`VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR` specifies that
+[VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](#) specifies that
 `VkPipelineBinaryKHR` objects **can** be created from the pipeline.
-If `VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR` is used,
+If [VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](#) is used,
 implementations **should** not store pipeline data to an internal cache, if
 such a cache exists as stated by
 [`pipelineBinaryInternalCache`](../../../../spec/latest/chapters/limits.html#limits-pipelineBinaryInternalCache).
 If
 [`pipelineBinaryPrefersInternalCache`](../../../../spec/latest/chapters/limits.html#limits-pipelineBinaryPrefersInternalCache)
-is `VK_TRUE`, applications **should** not use
-`VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR`.
+is [VK_TRUE](VK_TRUE.html), applications **should** not use
+[VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](#).
 
 * 
-`VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT` specifies
+[VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT](#) specifies
 that the pipeline will be used in a render pass that is begun with
-`VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT`.
+[VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT](VkRenderingFlagBits.html).
 
 * 
-`VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX` specifies that the
+[VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX](#) specifies that the
 pipeline will be used in an [execution graph](../../../../spec/latest/chapters/executiongraphs.html#executiongraphs)
 
 * 
-`VK_PIPELINE_CREATE_2_DISALLOW_OPACITY_MICROMAP_BIT_ARM` specifies
+[VK_PIPELINE_CREATE_2_DISALLOW_OPACITY_MICROMAP_BIT_ARM](#) specifies
 that the pipeline **must** not be used with acceleration structures which
 reference an opacity micromap array.
 
 * 
-`VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT` specifies that the
+[VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT](#) specifies that the
 pipeline enables [64-bit indexing](../../../../spec/latest/appendices/spirvenv.html#spirvenv-64bindexing).
 
-It is valid to set both `VK_PIPELINE_CREATE_2_ALLOW_DERIVATIVES_BIT` and
-`VK_PIPELINE_CREATE_2_DERIVATIVE_BIT`.
+* 
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#) specifies that the
+pipeline will use descriptor heap mappings instead of descriptor set
+layouts.
+
+It is valid to set both [VK_PIPELINE_CREATE_2_ALLOW_DERIVATIVES_BIT](#) and
+[VK_PIPELINE_CREATE_2_DERIVATIVE_BIT](#).
 This allows a pipeline to be both a parent and possibly a child in a
 pipeline hierarchy.
 See [Pipeline Derivatives](../../../../spec/latest/chapters/pipelines.html#pipelines-pipeline-derivatives) for more
@@ -373,10 +380,10 @@ When an implementation is looking up a pipeline in a
 [pipeline cache](../../../../spec/latest/chapters/pipelines.html#pipelines-cache), if that pipeline is being created using
 linked libraries, implementations **should** always return an equivalent
 pipeline created with
-`VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT` if available,
+[VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT](#) if available,
 whether or not that bit was specified.
 
-|  | Using `VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT` (or not)
+|  | Using [VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT](#) (or not)
 | --- | --- |
 when linking pipeline libraries is intended as a performance tradeoff
 between host and device.

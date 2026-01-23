@@ -138,8 +138,8 @@ Allow implementations to express support for doing just transfers and
 clears of image formats that they otherwise support no other format
 features for.
 This is done by adding new format feature flags
-`VK_FORMAT_FEATURE_TRANSFER_SRC_BIT_KHR` and
-`VK_FORMAT_FEATURE_TRANSFER_DST_BIT_KHR`.
+[VK_FORMAT_FEATURE_TRANSFER_SRC_BIT_KHR](VkFormatFeatureFlagBits.html) and
+[VK_FORMAT_FEATURE_TRANSFER_DST_BIT_KHR](VkFormatFeatureFlagBits.html).
 
 * 
 Support [vkCmdFillBuffer](vkCmdFillBuffer.html) on transfer-only queues.
@@ -155,7 +155,7 @@ functions and the [vkAllocateDescriptorSets](vkAllocateDescriptorSets.html) and
 [vkAllocateCommandBuffers](vkAllocateCommandBuffers.html) functions.
 
 * 
-Add new `VK_ERROR_OUT_OF_POOL_MEMORY_KHR` error so implementations
+Add new [VK_ERROR_OUT_OF_POOL_MEMORY_KHR](VkResult.html) error so implementations
 can give a more precise reason for [vkAllocateDescriptorSets](vkAllocateDescriptorSets.html)
 failures.
 
@@ -190,20 +190,20 @@ the core functionality.
 * 
 Extending [VkFormatFeatureFlagBits](VkFormatFeatureFlagBits.html):
 
-`VK_FORMAT_FEATURE_TRANSFER_DST_BIT_KHR`
+[VK_FORMAT_FEATURE_TRANSFER_DST_BIT_KHR](VkFormatFeatureFlagBits.html)
 
 * 
-`VK_FORMAT_FEATURE_TRANSFER_SRC_BIT_KHR`
+[VK_FORMAT_FEATURE_TRANSFER_SRC_BIT_KHR](VkFormatFeatureFlagBits.html)
 
 Extending [VkImageCreateFlagBits](VkImageCreateFlagBits.html):
 
 * 
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT_KHR`
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT_KHR](VkImageCreateFlagBits.html)
 
 Extending [VkResult](VkResult.html):
 
 * 
-`VK_ERROR_OUT_OF_POOL_MEMORY_KHR`
+[VK_ERROR_OUT_OF_POOL_MEMORY_KHR](VkResult.html)
 
 Are viewports with zero height allowed?
 

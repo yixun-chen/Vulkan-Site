@@ -38,6 +38,6 @@ Audio systems
 
 The code for this chapter can be found in the `simple_engine/20_loading_models.cpp` file.
 
-[C++ code](../../attachments/simple_engine/20_loading_models.cpp)
+[C++ code](../../_attachments/simple_engine/20_loading_models.cpp)
 
-[Previous: Updating Animations](08_animations.adoc) | [Next: Subsystems](../Subsystems/01_introduction.adoc) | [Back to Building a Simple Engine](../index.html)
+[Previous: Updating Animations](08_animations.html) | [Next: Subsystems](../Subsystems/01_introduction.html) | [Back to Building a Simple Engine](../../00_Introduction.html)

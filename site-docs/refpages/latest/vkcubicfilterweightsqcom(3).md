@@ -31,18 +31,18 @@ typedef enum VkCubicFilterWeightsQCOM {
 } VkCubicFilterWeightsQCOM;
 
 * 
-`VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM` specifies Catmull-Rom
+[VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM](#) specifies Catmull-Rom
 weights.
 
 * 
-`VK_CUBIC_FILTER_WEIGHTS_ZERO_TANGENT_CARDINAL_QCOM` specifies Zero
+[VK_CUBIC_FILTER_WEIGHTS_ZERO_TANGENT_CARDINAL_QCOM](#) specifies Zero
 Tangent Cardinal weights.
 
 * 
-`VK_CUBIC_FILTER_WEIGHTS_B_SPLINE_QCOM` specifies B-Spline weights.
+[VK_CUBIC_FILTER_WEIGHTS_B_SPLINE_QCOM](#) specifies B-Spline weights.
 
 * 
-`VK_CUBIC_FILTER_WEIGHTS_MITCHELL_NETRAVALI_QCOM` specifies
+[VK_CUBIC_FILTER_WEIGHTS_MITCHELL_NETRAVALI_QCOM](#) specifies
 Mitchell-Netravali weights.
 
 [VK_QCOM_filter_cubic_weights](VK_QCOM_filter_cubic_weights.html), [VkBlitImageCubicWeightsInfoQCOM](VkBlitImageCubicWeightsInfoQCOM.html), [VkSamplerCubicWeightsCreateInfoQCOM](VkSamplerCubicWeightsCreateInfoQCOM.html)

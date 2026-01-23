@@ -27,7 +27,7 @@ typedef enum VkDeviceEventTypeEXT {
 } VkDeviceEventTypeEXT;
 
 * 
-`VK_DEVICE_EVENT_TYPE_DISPLAY_HOTPLUG_EXT` specifies that the fence
+[VK_DEVICE_EVENT_TYPE_DISPLAY_HOTPLUG_EXT](#) specifies that the fence
 is signaled when a display is plugged into or unplugged from the
 specified device.
 Applications **can** use this notification to determine when they need to

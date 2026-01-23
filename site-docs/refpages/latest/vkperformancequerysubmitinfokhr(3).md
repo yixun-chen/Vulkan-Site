@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPerformanceQuerySubmitInfoKHR-sType-sType) VUID-VkPerformanceQuerySubmitInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PERFORMANCE_QUERY_SUBMIT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_QUERY_SUBMIT_INFO_KHR](VkStructureType.html)
 
 [VK_KHR_performance_query](VK_KHR_performance_query.html), [VkStructureType](VkStructureType.html)
 

@@ -92,7 +92,7 @@ not use it.
 * 
 Extending [VkResult](VkResult.html):
 
-`VK_ERROR_INVALID_SHADER_NV`
+[VK_ERROR_INVALID_SHADER_NV](VkResult.html)
 
 **Example 1**
 

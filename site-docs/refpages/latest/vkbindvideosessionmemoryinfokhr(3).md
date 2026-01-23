@@ -71,7 +71,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindVideoSessionMemoryInfoKHR-sType-sType) VUID-VkBindVideoSessionMemoryInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_VIDEO_SESSION_MEMORY_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_VIDEO_SESSION_MEMORY_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkBindVideoSessionMemoryInfoKHR-pNext-pNext) VUID-VkBindVideoSessionMemoryInfoKHR-pNext-pNext

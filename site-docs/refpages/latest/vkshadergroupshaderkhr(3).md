@@ -30,22 +30,22 @@ typedef enum VkShaderGroupShaderKHR {
 } VkShaderGroupShaderKHR;
 
 * 
-`VK_SHADER_GROUP_SHADER_GENERAL_KHR` uses the shader specified in
+[VK_SHADER_GROUP_SHADER_GENERAL_KHR](#) uses the shader specified in
 the group with
 [VkRayTracingShaderGroupCreateInfoKHR](VkRayTracingShaderGroupCreateInfoKHR.html)::`generalShader`
 
 * 
-`VK_SHADER_GROUP_SHADER_CLOSEST_HIT_KHR` uses the shader specified
+[VK_SHADER_GROUP_SHADER_CLOSEST_HIT_KHR](#) uses the shader specified
 in the group with
 [VkRayTracingShaderGroupCreateInfoKHR](VkRayTracingShaderGroupCreateInfoKHR.html)::`closestHitShader`
 
 * 
-`VK_SHADER_GROUP_SHADER_ANY_HIT_KHR` uses the shader specified in
+[VK_SHADER_GROUP_SHADER_ANY_HIT_KHR](#) uses the shader specified in
 the group with
 [VkRayTracingShaderGroupCreateInfoKHR](VkRayTracingShaderGroupCreateInfoKHR.html)::`anyHitShader`
 
 * 
-`VK_SHADER_GROUP_SHADER_INTERSECTION_KHR` uses the shader specified
+[VK_SHADER_GROUP_SHADER_INTERSECTION_KHR](#) uses the shader specified
 in the group with
 [VkRayTracingShaderGroupCreateInfoKHR](VkRayTracingShaderGroupCreateInfoKHR.html)::`intersectionShader`
 

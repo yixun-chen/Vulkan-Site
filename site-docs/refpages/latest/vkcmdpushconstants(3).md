@@ -79,6 +79,22 @@ created on are ignored. |
 Valid Usage
 
 * 
+[](#VUID-vkCmdPushConstants-commandBuffer-11295) VUID-vkCmdPushConstants-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdPushConstants-commandBuffer-11296) VUID-vkCmdPushConstants-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pResourceHeapBindInfo`
+equal to `NULL`
+
+* 
 [](#VUID-vkCmdPushConstants-offset-01795) VUID-vkCmdPushConstants-offset-01795
 
 For each byte in the range specified by `offset` and `size` and
@@ -151,7 +167,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdPushConstants-commandBuffer-cmdpool) VUID-vkCmdPushConstants-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdPushConstants-videocoding) VUID-vkCmdPushConstants-videocoding

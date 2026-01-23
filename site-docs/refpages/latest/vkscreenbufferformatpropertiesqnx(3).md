@@ -49,7 +49,7 @@ structure.
 
 * 
 `format` is the Vulkan format corresponding to the Screen buffer’s
-format or `VK_FORMAT_UNDEFINED` if there is not an equivalent Vulkan
+format or [VK_FORMAT_UNDEFINED](VkFormat.html) if there is not an equivalent Vulkan
 format.
 
 * 
@@ -88,19 +88,19 @@ when used with an image bound to memory imported from `buffer`.
 If the QNX Screen buffer has one of the formats listed in the
 [QNX Screen Format Equivalence table](../../../../spec/latest/chapters/memory.html#memory-external-qnx-screen-buffer-formats), then `format` **must** have the equivalent Vulkan format listed in
 the table.
-Otherwise, `format` **may** be `VK_FORMAT_UNDEFINED`, indicating the
+Otherwise, `format` **may** be [VK_FORMAT_UNDEFINED](VkFormat.html), indicating the
 QNX Screen buffer **can** only be used with an external format.
 The `formatFeatures` member **must** include
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT` and **should** include
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT` and
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT`.
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](VkFormatFeatureFlagBits.html) and **should** include
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](VkFormatFeatureFlagBits.html) and
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT](VkFormatFeatureFlagBits.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkScreenBufferFormatPropertiesQNX-sType-sType) VUID-VkScreenBufferFormatPropertiesQNX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SCREEN_BUFFER_FORMAT_PROPERTIES_QNX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SCREEN_BUFFER_FORMAT_PROPERTIES_QNX](VkStructureType.html)
 
 [VK_QNX_external_memory_screen_buffer](VK_QNX_external_memory_screen_buffer.html), [VkChromaLocation](VkChromaLocation.html), [VkComponentMapping](VkComponentMapping.html), [VkFormat](VkFormat.html), [VkFormatFeatureFlags](VkFormatFeatureFlags.html), [VkSamplerYcbcrModelConversion](VkSamplerYcbcrModelConversion.html), [VkSamplerYcbcrRange](VkSamplerYcbcrRange.html), [VkStructureType](VkStructureType.html)
 

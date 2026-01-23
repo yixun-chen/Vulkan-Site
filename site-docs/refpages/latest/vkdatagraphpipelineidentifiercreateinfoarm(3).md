@@ -48,14 +48,14 @@ that describe the pipeline being created.
 The `pIdentifier` **can** be retrieved from the device by calling
 [vkGetDataGraphPipelinePropertiesARM](vkGetDataGraphPipelinePropertiesARM.html) and searching the results for a
 [VkDataGraphPipelinePropertyQueryResultARM](VkDataGraphPipelinePropertyQueryResultARM.html) structure with
-`property` set to `VK_DATA_GRAPH_PIPELINE_PROPERTY_IDENTIFIER_ARM`.
+`property` set to [VK_DATA_GRAPH_PIPELINE_PROPERTY_IDENTIFIER_ARM](VkDataGraphPipelinePropertyARM.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDataGraphPipelineIdentifierCreateInfoARM-sType-sType) VUID-VkDataGraphPipelineIdentifierCreateInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_IDENTIFIER_CREATE_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_IDENTIFIER_CREATE_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkDataGraphPipelineIdentifierCreateInfoARM-pIdentifier-parameter) VUID-VkDataGraphPipelineIdentifierCreateInfoARM-pIdentifier-parameter

@@ -67,7 +67,7 @@ Valid Usage
 [](#VUID-VkBindImageMemorySwapchainInfoKHR-swapchain-07756) VUID-VkBindImageMemorySwapchainInfoKHR-swapchain-07756
 
 If the `swapchain` has been created with
-`VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR`,
+[VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html),
 `imageIndex` **must** be one that has previously been returned by
 [vkAcquireNextImageKHR](vkAcquireNextImageKHR.html) or [vkAcquireNextImage2KHR](vkAcquireNextImage2KHR.html)
 
@@ -76,7 +76,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindImageMemorySwapchainInfoKHR-sType-sType) VUID-VkBindImageMemorySwapchainInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkBindImageMemorySwapchainInfoKHR-swapchain-parameter) VUID-VkBindImageMemorySwapchainInfoKHR-swapchain-parameter

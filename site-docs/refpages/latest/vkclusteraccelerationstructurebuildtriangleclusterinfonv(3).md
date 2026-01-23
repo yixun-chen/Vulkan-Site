@@ -219,7 +219,7 @@ The maximum geometry index after using the values in
 
 If `opacityMicromapArray` is not `0`, then the cluster acceleration
 structure **must** have been built with
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_CLUSTER_OPACITY_MICROMAPS_BIT_NV`
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_CLUSTER_OPACITY_MICROMAPS_BIT_NV](VkBuildAccelerationStructureFlagBitsKHR.html)
 flag set in [VkClusterAccelerationStructureInputInfoNV](VkClusterAccelerationStructureInputInfoNV.html)::`flags`
 
 Valid Usage (Implicit)

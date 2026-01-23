@@ -60,26 +60,26 @@ Valid Usage
 * 
 [](#VUID-VkCopyMemoryIndirectInfoKHR-srcCopyFlags-10938) VUID-VkCopyMemoryIndirectInfoKHR-srcCopyFlags-10938
 
-If `srcCopyFlags` contains `VK_ADDRESS_COPY_SPARSE_BIT_KHR`, the
+If `srcCopyFlags` contains [VK_ADDRESS_COPY_SPARSE_BIT_KHR](VkAddressCopyFlagBitsKHR.html), the
 source memory regions accessed **must** be [bound to    memory](../../../../spec/latest/chapters/sparsemem.html#sparsememory)
 
 * 
 [](#VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-10939) VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-10939
 
-If `dstCopyFlags` contains `VK_ADDRESS_COPY_SPARSE_BIT_KHR`, the
+If `dstCopyFlags` contains [VK_ADDRESS_COPY_SPARSE_BIT_KHR](VkAddressCopyFlagBitsKHR.html), the
 destination memory regions accessed **must** be [bound to    memory](../../../../spec/latest/chapters/sparsemem.html#sparsememory)
 
 * 
 [](#VUID-VkCopyMemoryIndirectInfoKHR-srcCopyFlags-10940) VUID-VkCopyMemoryIndirectInfoKHR-srcCopyFlags-10940
 
 `srcCopyFlags` **must** not contain
-`VK_ADDRESS_COPY_PROTECTED_BIT_KHR`
+[VK_ADDRESS_COPY_PROTECTED_BIT_KHR](VkAddressCopyFlagBitsKHR.html)
 
 * 
 [](#VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-10941) VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-10941
 
 `dstCopyFlags` **must** not contain
-`VK_ADDRESS_COPY_PROTECTED_BIT_KHR`
+[VK_ADDRESS_COPY_PROTECTED_BIT_KHR](VkAddressCopyFlagBitsKHR.html)
 
 * 
 [](#VUID-VkCopyMemoryIndirectInfoKHR-copyAddressRange-10942) VUID-VkCopyMemoryIndirectInfoKHR-copyAddressRange-10942
@@ -110,14 +110,14 @@ destination memory regions
 
 `copyAddressRange` **must** be a device address range allocated to the
 application from a buffer created with the
-`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkCopyMemoryIndirectInfoKHR-sType-sType) VUID-VkCopyMemoryIndirectInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COPY_MEMORY_INDIRECT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COPY_MEMORY_INDIRECT_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkCopyMemoryIndirectInfoKHR-pNext-pNext) VUID-VkCopyMemoryIndirectInfoKHR-pNext-pNext

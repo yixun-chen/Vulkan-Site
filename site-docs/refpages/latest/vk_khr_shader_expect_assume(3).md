@@ -113,7 +113,7 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_EXPECT_ASSUME_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_EXPECT_ASSUME_FEATURES_KHR](VkStructureType.html)
 
 * 
 [ExpectAssumeKHR](../../../../spec/latest/appendices/spirvenv.html#spirvenv-capabilities-table-ExpectAssumeKHR)

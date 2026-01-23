@@ -112,24 +112,23 @@ member set to the same value
 * 
 [](#VUID-VkDataGraphPipelineConstantARM-id-09850) VUID-VkDataGraphPipelineConstantARM-id-09850
 
-If `id` corresponds to a graph constant of tensor type, then a
-[VkTensorDescriptionARM](VkTensorDescriptionARM.html) structure whose `usage` member contains
-`VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM` **must** be included in the
-`pNext` chain
+If the `pNext` chain of this structure includes a
+[VkTensorDescriptionARM](VkTensorDescriptionARM.html) structure, then its `usage` member
+**must** contain [VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM](VkTensorUsageFlagBitsARM.html)
 
 * 
 [](#VUID-VkDataGraphPipelineConstantARM-pNext-09917) VUID-VkDataGraphPipelineConstantARM-pNext-09917
 
 If the `pNext` chain of this structure includes a
 [VkTensorDescriptionARM](VkTensorDescriptionARM.html) structure, then its `tiling` member
-**must** be `VK_TENSOR_TILING_LINEAR_ARM`
+**must** be [VK_TENSOR_TILING_LINEAR_ARM](VkTensorTilingARM.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDataGraphPipelineConstantARM-sType-sType) VUID-VkDataGraphPipelineConstantARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkDataGraphPipelineConstantARM-pNext-pNext) VUID-VkDataGraphPipelineConstantARM-pNext-pNext

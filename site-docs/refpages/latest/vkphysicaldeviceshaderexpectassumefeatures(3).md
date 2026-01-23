@@ -51,7 +51,7 @@ If the `VkPhysicalDeviceShaderExpectAssumeFeatures` structure is included in the
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceShaderExpectAssumeFeatures`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -59,7 +59,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderExpectAssumeFeatures-sType-sType) VUID-VkPhysicalDeviceShaderExpectAssumeFeatures-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_EXPECT_ASSUME_FEATURES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_EXPECT_ASSUME_FEATURES](VkStructureType.html)
 
 [VK_KHR_shader_expect_assume](VK_KHR_shader_expect_assume.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

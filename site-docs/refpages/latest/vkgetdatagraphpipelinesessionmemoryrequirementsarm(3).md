@@ -56,9 +56,10 @@ The `session` member of `pInfo` **must** have been created with
 The `bindPoint` member of `pInfo` **must** have been returned as
 part of a [VkDataGraphPipelineSessionBindPointRequirementARM](VkDataGraphPipelineSessionBindPointRequirementARM.html) whose
 `bindPointType` member is
-`VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TYPE_MEMORY_ARM` by a
-prior call to [vkGetDataGraphPipelineSessionMemoryRequirementsARM](#)
-for the `session` member of `pInfo`
+[VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TYPE_MEMORY_ARM](VkDataGraphPipelineSessionBindPointTypeARM.html) by a
+prior call to
+[vkGetDataGraphPipelineSessionBindPointRequirementsARM](vkGetDataGraphPipelineSessionBindPointRequirementsARM.html) for the
+`session` member of `pInfo`
 
 Valid Usage (Implicit)
 

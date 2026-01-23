@@ -57,20 +57,20 @@ Valid Usage
 [](#VUID-VkColorBlendAdvancedEXT-srcPremultiplied-07505) VUID-VkColorBlendAdvancedEXT-srcPremultiplied-07505
 
 If the [non-premultiplied    source color](../../../../spec/latest/chapters/limits.html#limits-advancedBlendNonPremultipliedSrcColor) property is not supported, `srcPremultiplied` **must**
-be `VK_TRUE`
+be [VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-VkColorBlendAdvancedEXT-dstPremultiplied-07506) VUID-VkColorBlendAdvancedEXT-dstPremultiplied-07506
 
 If the [non-premultiplied    destination color](../../../../spec/latest/chapters/limits.html#limits-advancedBlendNonPremultipliedDstColor) property is not supported, `dstPremultiplied`
-**must** be `VK_TRUE`
+**must** be [VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-VkColorBlendAdvancedEXT-blendOverlap-07507) VUID-VkColorBlendAdvancedEXT-blendOverlap-07507
 
 If the [correlated overlap](../../../../spec/latest/chapters/limits.html#limits-advancedBlendCorrelatedOverlap)
 property is not supported, `blendOverlap` **must** be
-`VK_BLEND_OVERLAP_UNCORRELATED_EXT`
+[VK_BLEND_OVERLAP_UNCORRELATED_EXT](VkBlendOverlapEXT.html)
 
 Valid Usage (Implicit)
 

@@ -129,18 +129,18 @@ Extending [VkSurfaceCapabilities2KHR](VkSurfaceCapabilities2KHR.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_WAIT_2_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_WAIT_2_FEATURES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PRESENT_WAIT_2_INFO_KHR`
+[VK_STRUCTURE_TYPE_PRESENT_WAIT_2_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_WAIT_2_KHR`
+[VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_WAIT_2_KHR](VkStructureType.html)
 
 Extending [VkSwapchainCreateFlagBitsKHR](VkSwapchainCreateFlagBitsKHR.html):
 
 * 
-`VK_SWAPCHAIN_CREATE_PRESENT_WAIT_2_BIT_KHR`
+[VK_SWAPCHAIN_CREATE_PRESENT_WAIT_2_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html)
 
 1) When does the wait finish?
 
@@ -214,7 +214,7 @@ track all outstanding presentId values.
 
 **OPTION D**: The order of completion between outstanding
 `vkWaitForPresent2KHR` calls is always undefined.
-However, a `VK_SUCCESS` return value in
+However, a [VK_SUCCESS](VkResult.html) return value in
 [VkPresentWait2InfoKHR](VkPresentWait2InfoKHR.html)::`presentId` implies that future calls to
 `vkWaitForPresent2KHR` where
 [VkPresentWait2InfoKHR](VkPresentWait2InfoKHR.html)::`presentId` is less than or equal to N will

@@ -29,15 +29,15 @@ typedef enum VkVideoComponentBitDepthFlagBitsKHR {
 } VkVideoComponentBitDepthFlagBitsKHR;
 
 * 
-`VK_VIDEO_COMPONENT_BIT_DEPTH_8_BIT_KHR` specifies a component bit
+[VK_VIDEO_COMPONENT_BIT_DEPTH_8_BIT_KHR](#) specifies a component bit
 depth of 8 bits.
 
 * 
-`VK_VIDEO_COMPONENT_BIT_DEPTH_10_BIT_KHR` specifies a component bit
+[VK_VIDEO_COMPONENT_BIT_DEPTH_10_BIT_KHR](#) specifies a component bit
 depth of 10 bits.
 
 * 
-`VK_VIDEO_COMPONENT_BIT_DEPTH_12_BIT_KHR` specifies a component bit
+[VK_VIDEO_COMPONENT_BIT_DEPTH_12_BIT_KHR](#) specifies a component bit
 depth of 12 bits.
 
 [VK_KHR_video_queue](VK_KHR_video_queue.html), [VkVideoComponentBitDepthFlagsKHR](VkVideoComponentBitDepthFlagsKHR.html)

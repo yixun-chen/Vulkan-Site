@@ -220,7 +220,7 @@ Extending [VkInstanceCreateInfo](VkInstanceCreateInfo.html):
 
 [VkDebugUtilsMessengerCreateInfoEXT](VkDebugUtilsMessengerCreateInfoEXT.html)
 
-Extending [VkPipelineShaderStageCreateInfo](VkPipelineShaderStageCreateInfo.html):
+Extending [VkPipelineShaderStageCreateInfo](VkPipelineShaderStageCreateInfo.html), [VkResourceDescriptorInfoEXT](VkResourceDescriptorInfoEXT.html), [VkSamplerCreateInfo](VkSamplerCreateInfo.html):
 
 * 
 [VkDebugUtilsObjectNameInfoEXT](VkDebugUtilsObjectNameInfoEXT.html)
@@ -255,24 +255,24 @@ Extending [VkPipelineShaderStageCreateInfo](VkPipelineShaderStageCreateInfo.html
 * 
 Extending [VkObjectType](VkObjectType.html):
 
-`VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT`
+[VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT](VkObjectType.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT`
+[VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT`
+[VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT`
+[VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_TAG_INFO_EXT`
+[VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_TAG_INFO_EXT](VkStructureType.html)
 
 **Example 1**
 

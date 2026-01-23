@@ -52,7 +52,7 @@ If the `VkPhysicalDevicePerformanceCountersByRegionFeaturesARM` structure is inc
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDevicePerformanceCountersByRegionFeaturesARM`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -60,7 +60,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePerformanceCountersByRegionFeaturesARM-sType-sType) VUID-VkPhysicalDevicePerformanceCountersByRegionFeaturesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_COUNTERS_BY_REGION_FEATURES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_COUNTERS_BY_REGION_FEATURES_ARM](VkStructureType.html)
 
 [VK_ARM_performance_counters_by_region](VK_ARM_performance_counters_by_region.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

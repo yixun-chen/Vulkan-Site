@@ -47,7 +47,7 @@ structure
 
 * 
 `requiredFormatFeatures` is a bitmask of
-`VkFormatFeatureFlagBits` specifying required features of the
+[VkFormatFeatureFlagBits](VkFormatFeatureFlagBits.html) specifying required features of the
 buffers in the buffer collection
 
 * 
@@ -69,7 +69,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageFormatConstraintsInfoFUCHSIA-sType-sType) VUID-VkImageFormatConstraintsInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_FORMAT_CONSTRAINTS_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_FORMAT_CONSTRAINTS_INFO_FUCHSIA](VkStructureType.html)
 
 * 
 [](#VUID-VkImageFormatConstraintsInfoFUCHSIA-pNext-pNext) VUID-VkImageFormatConstraintsInfoFUCHSIA-pNext-pNext

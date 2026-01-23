@@ -116,24 +116,24 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_DITHERING_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_DITHERING_FEATURES_EXT](VkStructureType.html)
 
 Extending [VkSubpassDescriptionFlagBits](VkSubpassDescriptionFlagBits.html):
 
 * 
-`VK_SUBPASS_DESCRIPTION_ENABLE_LEGACY_DITHERING_BIT_EXT`
+[VK_SUBPASS_DESCRIPTION_ENABLE_LEGACY_DITHERING_BIT_EXT](VkSubpassDescriptionFlagBits.html)
 
 If [VK_KHR_dynamic_rendering](VK_KHR_dynamic_rendering.html) or [Vulkan Version 1.3](../../../../spec/latest/appendices/versions.html#versions-1.3) and [VK_KHR_maintenance5](VK_KHR_maintenance5.html) or [Vulkan Version 1.4](../../../../spec/latest/appendices/versions.html#versions-1.4) is supported:
 
 * 
 Extending [VkPipelineCreateFlagBits2](VkPipelineCreateFlagBits2.html):
 
-`VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT`
+[VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT](VkPipelineCreateFlagBits2.html)
 
 Extending [VkRenderingFlagBits](VkRenderingFlagBits.html):
 
 * 
-`VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT`
+[VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT](VkRenderingFlagBits.html)
 
 * 
 Revision 1, 2022-03-31 (Shahbaz Youssefi)

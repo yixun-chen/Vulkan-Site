@@ -81,9 +81,9 @@ Valid Usage
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_SAMPLER` and
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` accessible to any given
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html) and
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) accessible to any given
 shader stage across all elements of `pSetLayouts` **must** be less than
 or equal to
 `VkPhysicalDeviceLimits`::`maxPerStageDescriptorSamplers`
@@ -93,9 +93,9 @@ or equal to
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`
-and `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` accessible to any
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html)
+and [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) accessible to any
 given shader stage across all elements of `pSetLayouts` **must** be
 less than or equal to
 `VkPhysicalDeviceLimits`::`maxPerStageDescriptorUniformBuffers`
@@ -105,9 +105,9 @@ less than or equal to
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`
-and `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` accessible to any
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html)
+and [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html) accessible to any
 given shader stage across all elements of `pSetLayouts` **must** be
 less than or equal to
 `VkPhysicalDeviceLimits`::`maxPerStageDescriptorStorageBuffers`
@@ -117,13 +117,13 @@ less than or equal to
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM`,
-`VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM`,
-and `VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`, accessible to any
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](VkDescriptorType.html),
+and [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html), accessible to any
 given shader stage across all elements of `pSetLayouts` **must** be
 less than or equal to
 `VkPhysicalDeviceLimits`::`maxPerStageDescriptorSampledImages`
@@ -133,9 +133,9 @@ less than or equal to
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`,
-and `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` accessible to any
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html),
+and [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html) accessible to any
 given shader stage across all elements of `pSetLayouts` **must** be
 less than or equal to
 `VkPhysicalDeviceLimits`::`maxPerStageDescriptorStorageImages`
@@ -145,8 +145,8 @@ less than or equal to
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html)
 accessible to any given shader stage across all elements of
 `pSetLayouts` **must** be less than or equal to
 `VkPhysicalDeviceLimits`::`maxPerStageDescriptorInputAttachments`
@@ -156,10 +156,10 @@ accessible to any given shader stage across all elements of
 
 The total number of bindings in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 and
 with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` accessible to any given
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) accessible to any given
 shader stage across all elements of `pSetLayouts`, **must** be less
 than or equal to
 `VkPhysicalDeviceInlineUniformBlockProperties`::`maxPerStageDescriptorInlineUniformBlocks`
@@ -170,8 +170,8 @@ than or equal to
 If the
 [`descriptorBindingSampledImageUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingSampledImageUpdateAfterBind)
 feature is supported on the device, the total number of descriptors with
-a `descriptorType` of `VK_DESCRIPTOR_TYPE_SAMPLER` and
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` accessible to any given
+a `descriptorType` of [VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html) and
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) accessible to any given
 shader stage across all elements of `pSetLayouts` **must** be less than
 or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxPerStageDescriptorUpdateAfterBindSamplers`
@@ -182,8 +182,8 @@ or equal to
 If the
 [`descriptorBindingUniformBufferUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingUniformBufferUpdateAfterBind)
 feature is supported on the device, the total number of descriptors with
-a `descriptorType` of `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` and
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` accessible to any given
+a `descriptorType` of [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html) and
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) accessible to any given
 shader stage across all elements of `pSetLayouts` **must** be less than
 or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxPerStageDescriptorUpdateAfterBindUniformBuffers`
@@ -194,8 +194,8 @@ or equal to
 If the
 [`descriptorBindingStorageBufferUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingStorageBufferUpdateAfterBind)
 feature is supported on the device, the total number of descriptors with
-a `descriptorType` of `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` and
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` accessible to any given
+a `descriptorType` of [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html) and
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html) accessible to any given
 shader stage across all elements of `pSetLayouts` **must** be less than
 or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxPerStageDescriptorUpdateAfterBindStorageBuffers`
@@ -207,9 +207,9 @@ If the
 [`descriptorBindingSampledImageUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingSampledImageUpdateAfterBind)
 feature is supported on the device, the total number of descriptors with
 a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, and
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` accessible to any given
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html), and
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html) accessible to any given
 shader stage across all elements of `pSetLayouts` **must** be less than
 or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxPerStageDescriptorUpdateAfterBindSampledImages`
@@ -220,8 +220,8 @@ or equal to
 If the
 [`descriptorBindingStorageImageUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingStorageImageUpdateAfterBind)
 feature is supported on the device, the total number of descriptors with
-a `descriptorType` of `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, and
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` accessible to any given
+a `descriptorType` of [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html), and
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html) accessible to any given
 shader stage across all elements of `pSetLayouts` **must** be less than
 or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxPerStageDescriptorUpdateAfterBindStorageImages`
@@ -230,9 +230,9 @@ or equal to
 [](#VUID-VkPipelineLayoutCreateInfo-descriptorType-03027) VUID-VkPipelineLayoutCreateInfo-descriptorType-03027
 
 If any element of `pSetLayouts` is created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set, the total number of descriptors with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` accessible to any given shader
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html) accessible to any given shader
 stage across all elements of `pSetLayouts` **must** be less than or
 equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxPerStageDescriptorUpdateAfterBindInputAttachments`
@@ -243,7 +243,7 @@ equal to
 If the
 [`descriptorBindingInlineUniformBlockUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingInlineUniformBlockUpdateAfterBind)
 feature is supported on the device, the total number of bindings with a
-`descriptorType` of `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+`descriptorType` of [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html)
 accessible to any given shader stage across all elements of
 `pSetLayouts` **must** be less than or equal to
 `VkPhysicalDeviceInlineUniformBlockProperties`::`maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks`
@@ -253,9 +253,9 @@ accessible to any given shader stage across all elements of
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_SAMPLER` and
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` accessible across all
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html) and
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetSamplers`
@@ -265,8 +265,8 @@ than or equal to
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html)
 accessible across all shader stages and across all elements of
 `pSetLayouts` **must** be less than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetUniformBuffers`
@@ -278,9 +278,9 @@ If the [`maintenance7`](../../../../spec/latest/chapters/features.html#features-
 enabled, the
 total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` accessible across all
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetUniformBuffersDynamic`
@@ -291,9 +291,9 @@ than or equal to
 If the [`maintenance7`](../../../../spec/latest/chapters/features.html#features-maintenance7) feature is enabled,
 the total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` accessible across all
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to [    `VkPhysicalDeviceMaintenance7PropertiesKHR`::`maxDescriptorSetTotalUniformBuffersDynamic`](../../../../spec/latest/chapters/limits.html#limits-maxDescriptorSetTotalUniformBuffersDynamic)
 
@@ -302,8 +302,8 @@ than or equal to [    `VkPhysicalDeviceMaintenance7PropertiesKHR`::`maxDescripto
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html)
 accessible across all shader stages and across all elements of
 `pSetLayouts` **must** be less than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetStorageBuffers`
@@ -315,9 +315,9 @@ If the [`maintenance7`](../../../../spec/latest/chapters/features.html#features-
 enabled, the
 total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` accessible across all
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetStorageBuffersDynamic`
@@ -328,9 +328,9 @@ than or equal to
 If the [`maintenance7`](../../../../spec/latest/chapters/features.html#features-maintenance7) feature is enabled,
 the total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` accessible across all
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to [    `VkPhysicalDeviceMaintenance7PropertiesKHR`::`maxDescriptorSetTotalStorageBuffersDynamic`](../../../../spec/latest/chapters/limits.html#limits-maxDescriptorSetTotalStorageBuffersDynamic)
 
@@ -339,10 +339,10 @@ than or equal to [    `VkPhysicalDeviceMaintenance7PropertiesKHR`::`maxDescripto
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` accessible across all
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to [    `VkPhysicalDeviceMaintenance7PropertiesKHR`::`maxDescriptorSetTotalBuffersDynamic`](../../../../spec/latest/chapters/limits.html#limits-maxDescriptorSetTotalBuffersDynamic)
 
@@ -354,8 +354,8 @@ If either the
 or
 [`descriptorBindingUniformBufferUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingUniformBufferUpdateAfterBind)
 feature is supported on the device, the total number of descriptors of
-the type `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` accessible across all
+the type [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 [    `VkPhysicalDeviceMaintenance7PropertiesKHR`::`maxDescriptorSetUpdateAfterBindTotalBuffersDynamic`](../../../../spec/latest/chapters/limits.html#limits-maxDescriptorSetUpdateAfterBindTotalBuffersDynamic)
@@ -365,11 +365,11 @@ than or equal to
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, and
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` accessible across all
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html), and
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetSampledImages`
@@ -379,9 +379,9 @@ than or equal to
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`,
-and `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` accessible across all
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html),
+and [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetStorageImages`
@@ -391,8 +391,8 @@ than or equal to
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html)
 accessible across all shader stages and across all elements of
 `pSetLayouts` **must** be less than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetInputAttachments`
@@ -402,9 +402,9 @@ accessible across all shader stages and across all elements of
 
 The total number of bindings in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` accessible across all
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceInlineUniformBlockProperties`::`maxDescriptorSetInlineUniformBlocks`
@@ -415,8 +415,8 @@ than or equal to
 If the
 [`descriptorBindingSampledImageUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingSampledImageUpdateAfterBind)
 feature is supported on the device, the total number of descriptors of
-the type `VK_DESCRIPTOR_TYPE_SAMPLER` and
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` accessible across all
+the type [VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html) and
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxDescriptorSetUpdateAfterBindSamplers`
@@ -427,7 +427,7 @@ than or equal to
 If the
 [`descriptorBindingUniformBufferUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingUniformBufferUpdateAfterBind)
 feature is supported on the device, the total number of descriptors of
-the type `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` accessible across all
+the type [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxDescriptorSetUpdateAfterBindUniformBuffers`
@@ -441,7 +441,7 @@ feature is supported on the device,
 and if the [`maintenance7`](../../../../spec/latest/chapters/features.html#features-maintenance7) feature is not
 enabled,
 the total number of descriptors of the type
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` accessible across all
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetUpdateAfterBindUniformBuffersDynamic`
@@ -452,7 +452,7 @@ than or equal to
 If the
 [`descriptorBindingUniformBufferUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingUniformBufferUpdateAfterBind)
 feature is supported on the device, and the [    `maintenance7`](../../../../spec/latest/chapters/features.html#features-maintenance7) feature is enabled, the total number of descriptors
-of the type `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` accessible
+of the type [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) accessible
 across all shader stages and across all elements of `pSetLayouts`
 **must** be less than or equal to
 [    `VkPhysicalDeviceMaintenance7PropertiesKHR`::`maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic`](../../../../spec/latest/chapters/limits.html#limits-maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic)
@@ -463,7 +463,7 @@ across all shader stages and across all elements of `pSetLayouts`
 If the
 [`descriptorBindingStorageBufferUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingStorageBufferUpdateAfterBind)
 feature is supported on the device, the total number of descriptors of
-the type `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` accessible across all
+the type [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxDescriptorSetUpdateAfterBindStorageBuffers`
@@ -477,7 +477,7 @@ feature is supported on the device,
 and if the [`maintenance7`](../../../../spec/latest/chapters/features.html#features-maintenance7) feature is not
 enabled,
 the total number of descriptors of the type
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` accessible across all
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetUpdateAfterBindStorageBuffersDynamic`
@@ -488,7 +488,7 @@ than or equal to
 If the
 [`descriptorBindingStorageBufferUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingStorageBufferUpdateAfterBind)
 feature is supported on the device, and if the [    `maintenance7`](../../../../spec/latest/chapters/features.html#features-maintenance7) feature is enabled, the total number of descriptors
-of the type `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` accessible
+of the type [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html) accessible
 across all shader stages and across all elements of `pSetLayouts`
 **must** be less than or equal to
 [    `VkPhysicalDeviceMaintenance7PropertiesKHR`::`maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic`](../../../../spec/latest/chapters/limits.html#limits-maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic)
@@ -499,9 +499,9 @@ across all shader stages and across all elements of `pSetLayouts`
 If the
 [`descriptorBindingSampledImageUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingSampledImageUpdateAfterBind)
 feature is supported on the device, the total number of descriptors of
-the type `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, and
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` accessible across all
+the type [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html), and
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxDescriptorSetUpdateAfterBindSampledImages`
@@ -512,8 +512,8 @@ than or equal to
 If the
 [`descriptorBindingStorageImageUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingStorageImageUpdateAfterBind)
 feature is supported on the device, the total number of descriptors of
-the type `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, and
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` accessible across all
+the type [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html), and
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxDescriptorSetUpdateAfterBindStorageImages`
@@ -522,9 +522,9 @@ than or equal to
 [](#VUID-VkPipelineLayoutCreateInfo-pSetLayouts-03043) VUID-VkPipelineLayoutCreateInfo-pSetLayouts-03043
 
 If any element of `pSetLayouts` is created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set, the total number of descriptors of the type
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` accessible across all shader
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html) accessible across all shader
 stages and across all elements of `pSetLayouts` **must** be less than
 or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxDescriptorSetUpdateAfterBindInputAttachments`
@@ -535,7 +535,7 @@ or equal to
 If the
 [`descriptorBindingInlineUniformBlockUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingInlineUniformBlockUpdateAfterBind)
 feature is supported on the device, the total number of bindings with a
-`descriptorType` of `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+`descriptorType` of [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html)
 accessible across all shader stages and across all elements of
 `pSetLayouts` **must** be less than or equal to
 `VkPhysicalDeviceInlineUniformBlockProperties`::`maxDescriptorSetUpdateAfterBindInlineUniformBlocks`
@@ -544,7 +544,7 @@ accessible across all shader stages and across all elements of
 [](#VUID-VkPipelineLayoutCreateInfo-descriptorType-06531) VUID-VkPipelineLayoutCreateInfo-descriptorType-06531
 
 The total number of descriptors with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` accessible across all
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceVulkan13Properties`::`maxInlineUniformTotalSize`
@@ -560,15 +560,15 @@ stage in `stageFlags`
 
 `pSetLayouts` **must** not contain more than one descriptor set layout
 that was created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT` set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](VkDescriptorSetLayoutCreateFlagBits.html) set
 
 * 
 [](#VUID-VkPipelineLayoutCreateInfo-descriptorType-03571) VUID-VkPipelineLayoutCreateInfo-descriptorType-03571
 
 The total number of bindings in descriptor set layouts created without
-the `VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+the [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR` accessible to any
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](VkDescriptorType.html) accessible to any
 given shader stage across all elements of `pSetLayouts` **must** be
 less than or equal to
 [VkPhysicalDeviceAccelerationStructurePropertiesKHR](VkPhysicalDeviceAccelerationStructurePropertiesKHR.html)::`maxPerStageDescriptorAccelerationStructures`
@@ -577,7 +577,7 @@ less than or equal to
 [](#VUID-VkPipelineLayoutCreateInfo-descriptorType-03572) VUID-VkPipelineLayoutCreateInfo-descriptorType-03572
 
 The total number of bindings with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR` accessible to any
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](VkDescriptorType.html) accessible to any
 given shader stage across all elements of `pSetLayouts` **must** be
 less than or equal to
 [VkPhysicalDeviceAccelerationStructurePropertiesKHR](VkPhysicalDeviceAccelerationStructurePropertiesKHR.html)::`maxPerStageDescriptorUpdateAfterBindAccelerationStructures`
@@ -586,9 +586,9 @@ less than or equal to
 [](#VUID-VkPipelineLayoutCreateInfo-descriptorType-03573) VUID-VkPipelineLayoutCreateInfo-descriptorType-03573
 
 The total number of bindings in descriptor set layouts created without
-the `VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+the [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR` accessible across
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](VkDescriptorType.html) accessible across
 all shader stages and across all elements of `pSetLayouts` **must** be
 less than or equal to
 [VkPhysicalDeviceAccelerationStructurePropertiesKHR](VkPhysicalDeviceAccelerationStructurePropertiesKHR.html)::`maxDescriptorSetAccelerationStructures`
@@ -597,7 +597,7 @@ less than or equal to
 [](#VUID-VkPipelineLayoutCreateInfo-descriptorType-03574) VUID-VkPipelineLayoutCreateInfo-descriptorType-03574
 
 The total number of bindings with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR` accessible across
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](VkDescriptorType.html) accessible across
 all shader stages and across all elements of `pSetLayouts` **must** be
 less than or equal to
 [VkPhysicalDeviceAccelerationStructurePropertiesKHR](VkPhysicalDeviceAccelerationStructurePropertiesKHR.html)::`maxDescriptorSetUpdateAfterBindAccelerationStructures`
@@ -606,7 +606,7 @@ less than or equal to
 [](#VUID-VkPipelineLayoutCreateInfo-descriptorType-02381) VUID-VkPipelineLayoutCreateInfo-descriptorType-02381
 
 The total number of bindings with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV` accessible across all
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](VkDescriptorType.html) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 [VkPhysicalDeviceRayTracingPropertiesNV](VkPhysicalDeviceRayTracingPropertiesNV.html)::`maxDescriptorSetAccelerationStructures`
@@ -615,8 +615,8 @@ than or equal to
 [](#VUID-VkPipelineLayoutCreateInfo-pImmutableSamplers-03566) VUID-VkPipelineLayoutCreateInfo-pImmutableSamplers-03566
 
 The total number of `pImmutableSamplers` created with `flags`
-containing `VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT` or
-`VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT` across
+containing [VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](VkSamplerCreateFlagBits.html) or
+[VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT](VkSamplerCreateFlagBits.html) across
 all shader stages and across all elements of `pSetLayouts` **must** be
 less than or equal to [    `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`::`maxDescriptorSetSubsampledSamplers`](../../../../spec/latest/chapters/limits.html#limits-maxDescriptorSetSubsampledSamplers)
 
@@ -624,7 +624,7 @@ less than or equal to [    `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`::`
 [](#VUID-VkPipelineLayoutCreateInfo-pSetLayouts-04606) VUID-VkPipelineLayoutCreateInfo-pSetLayouts-04606
 
 Any element of `pSetLayouts` **must** not have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 
 * 
 [](#VUID-VkPipelineLayoutCreateInfo-graphicsPipelineLibrary-06753) VUID-VkPipelineLayoutCreateInfo-graphicsPipelineLibrary-06753
@@ -636,17 +636,17 @@ of `pSetLayouts` **must** be valid [VkDescriptorSetLayout](VkDescriptorSetLayout
 [](#VUID-VkPipelineLayoutCreateInfo-pSetLayouts-08008) VUID-VkPipelineLayoutCreateInfo-pSetLayouts-08008
 
 If any element of `pSetLayouts` was created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT` bit set,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html) bit set,
 all elements of `pSetLayouts` **must** have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 
 * 
 [](#VUID-VkPipelineLayoutCreateInfo-pSetLayouts-09698) VUID-VkPipelineLayoutCreateInfo-pSetLayouts-09698
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_TENSOR_ARM`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html)
 accessible to any given shader stage across all elements of
 `pSetLayouts` **must** be less than or equal to
 [VkPhysicalDeviceTensorPropertiesARM](VkPhysicalDeviceTensorPropertiesARM.html)::`maxPerStageDescriptorSetStorageTensors`
@@ -656,8 +656,8 @@ accessible to any given shader stage across all elements of
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_TENSOR_ARM`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html)
 accessible across all shader stages and across all elements of
 `pSetLayouts` **must** be less than or equal to
 [VkPhysicalDeviceTensorPropertiesARM](VkPhysicalDeviceTensorPropertiesARM.html)::`maxDescriptorSetStorageTensors`
@@ -666,7 +666,7 @@ accessible across all shader stages and across all elements of
 [](#VUID-VkPipelineLayoutCreateInfo-pSetLayouts-09878) VUID-VkPipelineLayoutCreateInfo-pSetLayouts-09878
 
 The total number of descriptors of the type
-`VK_DESCRIPTOR_TYPE_TENSOR_ARM` accessible across all shader stages
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html) accessible across all shader stages
 and across all elements of `pSetLayouts` **must** be less than or equal
 to
 [VkPhysicalDeviceTensorPropertiesARM](VkPhysicalDeviceTensorPropertiesARM.html)::`maxDescriptorSetUpdateAfterBindStorageTensors`
@@ -675,7 +675,7 @@ to
 [](#VUID-VkPipelineLayoutCreateInfo-descriptorType-09879) VUID-VkPipelineLayoutCreateInfo-descriptorType-09879
 
 The total number of descriptors with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_TENSOR_ARM` accessible to any given shader stage
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html) accessible to any given shader stage
 across all elements of `pSetLayouts` **must** be less than or equal to
 `VkPhysicalDeviceTensorPropertiesARM`::`maxPerStageDescriptorUpdateAfterBindStorageTensors`
 
@@ -684,7 +684,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineLayoutCreateInfo-sType-sType) VUID-VkPipelineLayoutCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineLayoutCreateInfo-flags-parameter) VUID-VkPipelineLayoutCreateInfo-flags-parameter

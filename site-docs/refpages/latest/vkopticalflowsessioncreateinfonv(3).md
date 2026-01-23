@@ -112,22 +112,22 @@ than or equal to
 
 `imageFormat` **must** be one of the formats returned by
 [vkGetPhysicalDeviceOpticalFlowImageFormatsNV](vkGetPhysicalDeviceOpticalFlowImageFormatsNV.html) for
-`VK_OPTICAL_FLOW_USAGE_INPUT_BIT_NV`
+[VK_OPTICAL_FLOW_USAGE_INPUT_BIT_NV](VkOpticalFlowUsageFlagBitsNV.html)
 
 * 
 [](#VUID-VkOpticalFlowSessionCreateInfoNV-flowVectorFormat-07584) VUID-VkOpticalFlowSessionCreateInfoNV-flowVectorFormat-07584
 
 `flowVectorFormat` **must** be one of the formats returned by
 [vkGetPhysicalDeviceOpticalFlowImageFormatsNV](vkGetPhysicalDeviceOpticalFlowImageFormatsNV.html) for
-`VK_OPTICAL_FLOW_USAGE_OUTPUT_BIT_NV`
+[VK_OPTICAL_FLOW_USAGE_OUTPUT_BIT_NV](VkOpticalFlowUsageFlagBitsNV.html)
 
 * 
 [](#VUID-VkOpticalFlowSessionCreateInfoNV-costFormat-07585) VUID-VkOpticalFlowSessionCreateInfoNV-costFormat-07585
 
 `costFormat` **must** be one of the formats returned by
 [vkGetPhysicalDeviceOpticalFlowImageFormatsNV](vkGetPhysicalDeviceOpticalFlowImageFormatsNV.html) for
-`VK_OPTICAL_FLOW_USAGE_COST_BIT_NV` if
-`VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_COST_BIT_NV` is set in
+[VK_OPTICAL_FLOW_USAGE_COST_BIT_NV](VkOpticalFlowUsageFlagBitsNV.html) if
+[VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_COST_BIT_NV](VkOpticalFlowSessionCreateFlagBitsNV.html) is set in
 `flags`
 
 * 
@@ -141,37 +141,37 @@ than or equal to
 
 `hintGridSize` **must** be exactly one of the bits reported in
 `VkPhysicalDeviceOpticalFlowPropertiesNV`::`supportedHintGridSizes`
-if `VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_HINT_BIT_NV` is set in
+if [VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_HINT_BIT_NV](VkOpticalFlowSessionCreateFlagBitsNV.html) is set in
 `flags`
 
 * 
 [](#VUID-VkOpticalFlowSessionCreateInfoNV-flags-07588) VUID-VkOpticalFlowSessionCreateInfoNV-flags-07588
 
-`VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_HINT_BIT_NV` **must** not be set
+[VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_HINT_BIT_NV](VkOpticalFlowSessionCreateFlagBitsNV.html) **must** not be set
 in `flags` if
 `VkPhysicalDeviceOpticalFlowPropertiesNV`::`hintSupported` is
-`VK_FALSE`
+[VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-VkOpticalFlowSessionCreateInfoNV-flags-07589) VUID-VkOpticalFlowSessionCreateInfoNV-flags-07589
 
-`VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_COST_BIT_NV` **must** not be set
+[VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_COST_BIT_NV](VkOpticalFlowSessionCreateFlagBitsNV.html) **must** not be set
 in `flags` if
 `VkPhysicalDeviceOpticalFlowPropertiesNV`::`costSupported` is
-`VK_FALSE`
+[VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-VkOpticalFlowSessionCreateInfoNV-flags-07590) VUID-VkOpticalFlowSessionCreateInfoNV-flags-07590
 
-`VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_GLOBAL_FLOW_BIT_NV` **must** not
+[VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_GLOBAL_FLOW_BIT_NV](VkOpticalFlowSessionCreateFlagBitsNV.html) **must** not
 be set in `flags` if
 `VkPhysicalDeviceOpticalFlowPropertiesNV`::`globalFlowSupported`
-is `VK_FALSE`
+is [VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-VkOpticalFlowSessionCreateInfoNV-flags-07591) VUID-VkOpticalFlowSessionCreateInfoNV-flags-07591
 
-`VK_OPTICAL_FLOW_SESSION_CREATE_ALLOW_REGIONS_BIT_NV` **must** not be
+[VK_OPTICAL_FLOW_SESSION_CREATE_ALLOW_REGIONS_BIT_NV](VkOpticalFlowSessionCreateFlagBitsNV.html) **must** not be
 set in `flags` if
 `VkPhysicalDeviceOpticalFlowPropertiesNV`::`maxNumRegionsOfInterest`
 is 0
@@ -179,17 +179,17 @@ is 0
 * 
 [](#VUID-VkOpticalFlowSessionCreateInfoNV-flags-07592) VUID-VkOpticalFlowSessionCreateInfoNV-flags-07592
 
-`VK_OPTICAL_FLOW_SESSION_CREATE_BOTH_DIRECTIONS_BIT_NV` **must** not be
+[VK_OPTICAL_FLOW_SESSION_CREATE_BOTH_DIRECTIONS_BIT_NV](VkOpticalFlowSessionCreateFlagBitsNV.html) **must** not be
 set in `flags` if
 `VkPhysicalDeviceOpticalFlowPropertiesNV`::`bidirectionalFlowSupported`
-is `VK_FALSE`
+is [VK_FALSE](VK_FALSE.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkOpticalFlowSessionCreateInfoNV-sType-sType) VUID-VkOpticalFlowSessionCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_OPTICAL_FLOW_SESSION_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_OPTICAL_FLOW_SESSION_CREATE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkOpticalFlowSessionCreateInfoNV-pNext-pNext) VUID-VkOpticalFlowSessionCreateInfoNV-pNext-pNext

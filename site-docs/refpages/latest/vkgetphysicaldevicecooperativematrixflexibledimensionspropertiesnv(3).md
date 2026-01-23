@@ -47,8 +47,8 @@ return the variable is overwritten with the number of structures actually
 written to `pProperties`.
 If `pPropertyCount` is less than the number flexible dimensions
 properties available, at most `pPropertyCount` structures will be
-written, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available flexible dimensions
+written, and [VK_INCOMPLETE](VkResult.html) will be returned instead of
+[VK_SUCCESS](VkResult.html), to indicate that not all the available flexible dimensions
 properties were returned.
 
 If the
@@ -78,24 +78,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_NV_cooperative_matrix2](VK_NV_cooperative_matrix2.html), [VkCooperativeMatrixFlexibleDimensionsPropertiesNV](VkCooperativeMatrixFlexibleDimensionsPropertiesNV.html), [VkPhysicalDevice](VkPhysicalDevice.html)
 

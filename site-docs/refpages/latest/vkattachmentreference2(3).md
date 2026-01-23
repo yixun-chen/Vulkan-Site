@@ -48,7 +48,7 @@ structure.
 `attachment` is either an integer value identifying an attachment at
 the corresponding index in
 [VkRenderPassCreateInfo2](VkRenderPassCreateInfo2.html)::`pAttachments`, or
-`VK_ATTACHMENT_UNUSED` to signify that this attachment is not used.
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html) to signify that this attachment is not used.
 
 * 
 `layout` is a [VkImageLayout](VkImageLayout.html) value specifying the layout the
@@ -79,49 +79,49 @@ Valid Usage
 * 
 [](#VUID-VkAttachmentReference2-layout-03077) VUID-VkAttachmentReference2-layout-03077
 
-    If `attachment` is not `VK_ATTACHMENT_UNUSED`, `layout`
-    **must** not be `VK_IMAGE_LAYOUT_UNDEFINED`,
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`,
-    `VK_IMAGE_LAYOUT_PREINITIALIZED`, or
-    `VK_IMAGE_LAYOUT_PRESENT_SRC_KHR`
+    If `attachment` is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html), `layout`
+    **must** not be [VK_IMAGE_LAYOUT_UNDEFINED](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](VkImageLayout.html),
+    [VK_IMAGE_LAYOUT_PREINITIALIZED](VkImageLayout.html), or
+    [VK_IMAGE_LAYOUT_PRESENT_SRC_KHR](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentReference2-separateDepthStencilLayouts-03313) VUID-VkAttachmentReference2-separateDepthStencilLayouts-03313
 
 If the [    `separateDepthStencilLayouts`](../../../../spec/latest/chapters/features.html#features-separateDepthStencilLayouts) feature is not enabled, and
-`attachment` is not `VK_ATTACHMENT_UNUSED`, `layout` **must**
-not be `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`,
+`attachment` is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html), `layout` **must**
+not be [VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html),
 
 * 
 [](#VUID-VkAttachmentReference2-synchronization2-06910) VUID-VkAttachmentReference2-synchronization2-06910
 
 If the [`synchronization2`](../../../../spec/latest/chapters/features.html#features-synchronization2) feature is
 not enabled, `layout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR` or
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentReference2-attachmentFeedbackLoopLayout-07311) VUID-VkAttachmentReference2-attachmentFeedbackLoopLayout-07311
 
 If the [    `attachmentFeedbackLoopLayout`](../../../../spec/latest/chapters/features.html#features-attachmentFeedbackLoopLayout) feature is not enabled,
 `layout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT`
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentReference2-dynamicRenderingLocalRead-09546) VUID-VkAttachmentReference2-dynamicRenderingLocalRead-09546
 
 If the [    `dynamicRenderingLocalRead`](../../../../spec/latest/chapters/features.html#features-dynamicRenderingLocalRead) feature is not enabled, `layout`
-**must** not be `VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+**must** not be [VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](VkImageLayout.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkAttachmentReference2-sType-sType) VUID-VkAttachmentReference2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_2](VkStructureType.html)
 
 * 
 [](#VUID-VkAttachmentReference2-pNext-pNext) VUID-VkAttachmentReference2-pNext-pNext

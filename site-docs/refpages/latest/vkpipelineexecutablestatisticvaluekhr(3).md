@@ -31,23 +31,23 @@ typedef union VkPipelineExecutableStatisticValueKHR {
 
 * 
 `b32` is the 32-bit boolean value if the
-`VkPipelineExecutableStatisticFormatKHR` is
-`VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_BOOL32_KHR`.
+[VkPipelineExecutableStatisticFormatKHR](VkPipelineExecutableStatisticFormatKHR.html) is
+[VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_BOOL32_KHR](VkPipelineExecutableStatisticFormatKHR.html).
 
 * 
 `i64` is the signed 64-bit integer value if the
-`VkPipelineExecutableStatisticFormatKHR` is
-`VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_INT64_KHR`.
+[VkPipelineExecutableStatisticFormatKHR](VkPipelineExecutableStatisticFormatKHR.html) is
+[VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_INT64_KHR](VkPipelineExecutableStatisticFormatKHR.html).
 
 * 
 `u64` is the unsigned 64-bit integer value if the
-`VkPipelineExecutableStatisticFormatKHR` is
-`VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_UINT64_KHR`.
+[VkPipelineExecutableStatisticFormatKHR](VkPipelineExecutableStatisticFormatKHR.html) is
+[VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_UINT64_KHR](VkPipelineExecutableStatisticFormatKHR.html).
 
 * 
 `f64` is the 64-bit floating-point value if the
-`VkPipelineExecutableStatisticFormatKHR` is
-`VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_FLOAT64_KHR`.
+[VkPipelineExecutableStatisticFormatKHR](VkPipelineExecutableStatisticFormatKHR.html) is
+[VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_FLOAT64_KHR](VkPipelineExecutableStatisticFormatKHR.html).
 
 [VK_KHR_pipeline_executable_properties](VK_KHR_pipeline_executable_properties.html), `VkBool32`, [VkPipelineExecutableStatisticKHR](VkPipelineExecutableStatisticKHR.html)
 

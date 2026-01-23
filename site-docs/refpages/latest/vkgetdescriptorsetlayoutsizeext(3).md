@@ -46,11 +46,11 @@ layout’s offsets as obtained by
 [vkGetDescriptorSetLayoutBindingOffsetEXT](vkGetDescriptorSetLayoutBindingOffsetEXT.html).
 
 If any `binding` in `layout` is
-`VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT`, the returned size
+[VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](VkDescriptorBindingFlagBits.html), the returned size
 includes space for the maximum `descriptorCount` descriptors as declared
 for that `binding`.
 To compute the required size of a descriptor set with a
-`VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT`:
+[VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](VkDescriptorBindingFlagBits.html):
 
 size = offset + descriptorSize ×
 variableDescriptorCount
@@ -61,14 +61,14 @@ the size of the relevant descriptor as obtained from
 [VkPhysicalDeviceDescriptorBufferPropertiesEXT](VkPhysicalDeviceDescriptorBufferPropertiesEXT.html), and
 variableDescriptorCount is the equivalent of
 [VkDescriptorSetVariableDescriptorCountAllocateInfo](VkDescriptorSetVariableDescriptorCountAllocateInfo.html)::`pDescriptorCounts`.
-For `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`,
+For [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html),
 variableDescriptorCount is the size in bytes for the inline uniform
 block, and descriptorSize is 1.
 
 If
 [VkPhysicalDeviceDescriptorBufferPropertiesEXT](VkPhysicalDeviceDescriptorBufferPropertiesEXT.html)::`combinedImageSamplerDescriptorSingleArray`
-is `VK_FALSE` and the variable descriptor type is
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
+is [VK_FALSE](VK_FALSE.html) and the variable descriptor type is
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html),
 variableDescriptorCount is always considered to be the upper bound.
 
 Valid Usage
@@ -83,19 +83,19 @@ be enabled
 [](#VUID-vkGetDescriptorSetLayoutSizeEXT-layout-08012) VUID-vkGetDescriptorSetLayoutSizeEXT-layout-08012
 
 `layout` **must** have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT` flag set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html) flag set
 
 * 
 [](#VUID-vkGetDescriptorSetLayoutSizeEXT-layout-11811) VUID-vkGetDescriptorSetLayoutSizeEXT-layout-11811
 
 `layout` **must** have not been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT` flag set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](VkDescriptorSetLayoutCreateFlagBits.html) flag set
 
 * 
 [](#VUID-vkGetDescriptorSetLayoutSizeEXT-layout-11812) VUID-vkGetDescriptorSetLayoutSizeEXT-layout-11812
 
 `layout` **must** have not been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html)
 flag set
 
 Valid Usage (Implicit)

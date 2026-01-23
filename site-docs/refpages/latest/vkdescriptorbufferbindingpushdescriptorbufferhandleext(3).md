@@ -20,7 +20,7 @@
 VkDescriptorBufferBindingPushDescriptorBufferHandleEXT - Structure specifying push descriptor buffer binding information
 
 When the [`VkPhysicalDeviceDescriptorBufferPropertiesEXT`::`bufferlessPushDescriptors`](../../../../spec/latest/chapters/limits.html#limits-bufferlessPushDescriptors)
-property is `VK_FALSE`, the `VkBuffer` handle of the buffer for push
+property is [VK_FALSE](VK_FALSE.html), the `VkBuffer` handle of the buffer for push
 descriptors is passed in a
 `VkDescriptorBufferBindingPushDescriptorBufferHandleEXT` structure:
 
@@ -48,14 +48,14 @@ Valid Usage
 [](#VUID-VkDescriptorBufferBindingPushDescriptorBufferHandleEXT-bufferlessPushDescriptors-08059) VUID-VkDescriptorBufferBindingPushDescriptorBufferHandleEXT-bufferlessPushDescriptors-08059
 
 [    `VkPhysicalDeviceDescriptorBufferPropertiesEXT`::`bufferlessPushDescriptors`](../../../../spec/latest/chapters/limits.html#limits-bufferlessPushDescriptors)
-**must** be `VK_FALSE`
+**must** be [VK_FALSE](VK_FALSE.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDescriptorBufferBindingPushDescriptorBufferHandleEXT-sType-sType) VUID-VkDescriptorBufferBindingPushDescriptorBufferHandleEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_BUFFER_BINDING_PUSH_DESCRIPTOR_BUFFER_HANDLE_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_BUFFER_BINDING_PUSH_DESCRIPTOR_BUFFER_HANDLE_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDescriptorBufferBindingPushDescriptorBufferHandleEXT-buffer-parameter) VUID-VkDescriptorBufferBindingPushDescriptorBufferHandleEXT-buffer-parameter

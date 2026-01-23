@@ -95,7 +95,7 @@ This extension is implemented in the loader.
 * 
 Extending [VkInstanceCreateFlagBits](VkInstanceCreateFlagBits.html):
 
-`VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR`
+[VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR](VkInstanceCreateFlagBits.html)
 
 * 
 Revision 1, 2021-06-02 (Lenny Komow)

@@ -44,12 +44,12 @@ typedef enum VkImageCreateFlagBits {
     VK_IMAGE_CREATE_DISJOINT_BIT = 0x00000200,
   // Provided by VK_NV_corner_sampled_image
     VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV = 0x00002000,
+  // Provided by VK_EXT_descriptor_heap
+    VK_IMAGE_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_EXT = 0x00010000,
   // Provided by VK_EXT_sample_locations
     VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT = 0x00001000,
   // Provided by VK_EXT_fragment_density_map
     VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT = 0x00004000,
-  // Provided by VK_EXT_descriptor_buffer
-    VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT = 0x00010000,
   // Provided by VK_EXT_multisampled_render_to_single_sampled
     VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT = 0x00040000,
   // Provided by VK_EXT_image_2d_view_of_3d
@@ -70,57 +70,59 @@ typedef enum VkImageCreateFlagBits {
     VK_IMAGE_CREATE_DISJOINT_BIT_KHR = VK_IMAGE_CREATE_DISJOINT_BIT,
   // Provided by VK_KHR_bind_memory2
     VK_IMAGE_CREATE_ALIAS_BIT_KHR = VK_IMAGE_CREATE_ALIAS_BIT,
+  // Provided by VK_EXT_descriptor_buffer
+    VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT = VK_IMAGE_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_EXT,
   // Provided by VK_QCOM_fragment_density_map_offset
     VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_QCOM = VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT,
 } VkImageCreateFlagBits;
 
 * 
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT` specifies that the image will
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#) specifies that the image will
 be backed using sparse memory binding.
 
 * 
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` specifies that the image **can**
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](#) specifies that the image **can**
 be partially backed using sparse memory binding.
 Images created with this flag **must** also be created with the
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT` flag.
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#) flag.
 
 * 
-`VK_IMAGE_CREATE_SPARSE_ALIASED_BIT` specifies that the image will
+[VK_IMAGE_CREATE_SPARSE_ALIASED_BIT](#) specifies that the image will
 be backed using sparse memory binding with memory ranges that might also
 simultaneously be backing another image (or another portion of the same
 image).
 Images created with this flag **must** also be created with the
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT` flag.
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](#) flag.
 
 * 
-`VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT` specifies that the image **can**
+[VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](#) specifies that the image **can**
 be used to create a `VkImageView` with a different format from the
 image.
 For [multi-planar formats](../../../../spec/latest/chapters/formats.html#formats-multiplanar),
-`VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT` specifies that a
+[VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](#) specifies that a
 `VkImageView` can be created of a *plane* of the image.
 
 * 
-`VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT` specifies that the image **can**
+[VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT](#) specifies that the image **can**
 be used to create a `VkImageView` of type
-`VK_IMAGE_VIEW_TYPE_CUBE` or `VK_IMAGE_VIEW_TYPE_CUBE_ARRAY`.
+[VK_IMAGE_VIEW_TYPE_CUBE](VkImageViewType.html) or [VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](VkImageViewType.html).
 
 * 
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` specifies that the image
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](#) specifies that the image
 **can** be used to create a `VkImageView` of type
-`VK_IMAGE_VIEW_TYPE_2D` or `VK_IMAGE_VIEW_TYPE_2D_ARRAY`.
+[VK_IMAGE_VIEW_TYPE_2D](VkImageViewType.html) or [VK_IMAGE_VIEW_TYPE_2D_ARRAY](VkImageViewType.html).
 
 * 
-`VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT` specifies that the
+[VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT](#) specifies that the
 image **can** be used to create a `VkImageView` of type
-`VK_IMAGE_VIEW_TYPE_2D`.
+[VK_IMAGE_VIEW_TYPE_2D](VkImageViewType.html).
 
 * 
-`VK_IMAGE_CREATE_PROTECTED_BIT` specifies that the image is a
+[VK_IMAGE_CREATE_PROTECTED_BIT](#) specifies that the image is a
 protected image.
 
 * 
-`VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT` specifies that the
+[VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT](#) specifies that the
 image **can** be used with a non-zero value of the
 `splitInstanceBindRegionCount` member of a
 [VkBindImageMemoryDeviceGroupInfo](VkBindImageMemoryDeviceGroupInfo.html) structure passed into
@@ -129,26 +131,26 @@ This flag also has the effect of making the image use the standard
 sparse image block dimensions.
 
 * 
-`VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT` specifies that the
+[VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](#) specifies that the
 image having a compressed format **can** be used to create a
 `VkImageView` with an uncompressed format where each texel in the
 image view corresponds to a compressed texel block of the image.
 
 * 
-`VK_IMAGE_CREATE_EXTENDED_USAGE_BIT` specifies that the image **can**
+[VK_IMAGE_CREATE_EXTENDED_USAGE_BIT](#) specifies that the image **can**
 be created with usage flags that are not supported for the format the
 image is created with but are supported for at least one format a
 `VkImageView` created from the image **can** have.
 
 * 
-`VK_IMAGE_CREATE_DISJOINT_BIT` specifies that an image with a
+[VK_IMAGE_CREATE_DISJOINT_BIT](#) specifies that an image with a
 [multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar) **must** have each plane
 separately bound to memory, rather than having a single memory binding
 for the whole image; the presence of this bit distinguishes a *disjoint
 image* from an image without this bit set.
 
 * 
-`VK_IMAGE_CREATE_ALIAS_BIT` specifies that two images created with
+[VK_IMAGE_CREATE_ALIAS_BIT](#) specifies that two images created with
     the same creation parameters and aliased to the same memory **can**
     interpret the contents of the memory consistently with each other,
     subject to the rules described in the [Memory    Aliasing](../../../../spec/latest/chapters/resources.html#resources-memory-aliasing) section.
@@ -162,27 +164,28 @@ image* from an image without this bit set.
 or
 [VkExternalMemoryImageCreateInfoNV](VkExternalMemoryImageCreateInfoNV.html)
     structure whose `handleTypes` member is not `0`, it is as if
-    `VK_IMAGE_CREATE_ALIAS_BIT` is set.
+    [VK_IMAGE_CREATE_ALIAS_BIT](#) is set.
 
 * 
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT`
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](#)
 specifies that an image with a depth or depth/stencil format **can** be
 used with custom sample locations when used as a depth/stencil
 attachment.
 
 * 
-`VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV` specifies that the image is
+[VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV](#) specifies that the image is
 a [corner-sampled image](../../../../spec/latest/chapters/resources.html#resources-images-corner-sampled).
 
 * 
-`VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT` specifies that an image **can** be
+[VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](#) specifies that an image **can** be
 in a subsampled format which **may** be more optimal when written as an
 attachment by a render pass that has a fragment density map attachment.
 Accessing a subsampled image has additional considerations:
 
 Image data read as an image sampler will have **undefined** values if the
 sampler was not created with `flags` containing
-`VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT` or was not sampled through
+[VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](VkSamplerCreateFlagBits.html) or was not sampled through
+a combined [embedded sampler and     image mapping](../../../../spec/latest/chapters/descriptorheaps.html#VkDescriptorSetAndBindingMappingEXT) if using descriptor heaps, or
 the use of a combined image sampler with an immutable sampler in
 `VkDescriptorSetLayoutBinding`.
 
@@ -194,40 +197,40 @@ the same render pass.
 * 
 Image data read as an image sampler in the fragment shader will be
 additionally be read by the device during
-`VK_PIPELINE_STAGE_VERTEX_SHADER_BIT` if
+[VK_PIPELINE_STAGE_VERTEX_SHADER_BIT](VkPipelineStageFlagBits.html) if
 [     `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`::`subsampledCoarseReconstructionEarlyAccess`](../../../../spec/latest/chapters/limits.html#limits-subsampledCoarseReconstructionEarlyAccess)
-is `VK_TRUE` and the sampler was created with `flags`
+is [VK_TRUE](VK_TRUE.html) and the sampler was created with `flags`
 containing
-`VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT`.
+[VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT](VkSamplerCreateFlagBits.html).
 
 * 
 Image data read with load operations are resampled to the fragment
 density of the render pass if [     `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`::`subsampledLoads`](../../../../spec/latest/chapters/limits.html#limits-subsampledLoads)
-is `VK_TRUE`.
+is [VK_TRUE](VK_TRUE.html).
 Otherwise, values of image data are **undefined**.
 
 * 
 Image contents outside of the render area take on **undefined** values if
 the image is stored as a render pass attachment.
 
-`VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT` specifies that
+[VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT](#) specifies that
 an image **can** be used in a render pass with non-zero
 [fragment density map offsets](../../../../spec/latest/chapters/renderpass.html#renderpass-fragmentdensitymapoffsets).
 In a render pass with non-zero offsets, fragment density map
 attachments, input attachments, color attachments, depth/stencil
 attachment, resolve attachments, and preserve attachments **must** be
-created with `VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT`.
+created with [VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT](#).
 
-`VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` specifies
+[VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#) specifies
 that the image **can** be used with descriptor buffers when capturing and
 replaying (e.g. for trace capture and replay), see
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](VkOpaqueCaptureDescriptorDataCreateInfoEXT.html) for more detail.
 
-`VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT`
+[VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT](#)
 specifies that an image **can** be used with
 [multisampled rendering as a    single-sampled framebuffer attachment](../../../../spec/latest/chapters/renderpass.html#multisampled-render-to-single-sampled)
 
-`VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR` specifies that
+[VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](#) specifies that
 the image **can** be used in [video coding operations](../../../../spec/latest/chapters/videocoding.html#video-coding)
 without having to specify at image creation time the set of video
 profiles the image will be used with, except for images used only as
@@ -248,12 +251,12 @@ video profile used to produce them.
 profile used to consume them.
 
 This includes images created with both
-`VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR` and
-`VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR`, which is necessary to use the
+[VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](VkImageUsageFlagBits.html) and
+[VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](VkImageUsageFlagBits.html), which is necessary to use the
 same video picture as the [reconstructed picture](../../../../spec/latest/chapters/videocoding.html#reconstructed-picture)
 and [decode output picture](../../../../spec/latest/chapters/videocoding.html#decode-output-picture) in a video decode
 operation on implementations supporting
-`VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR`.
+[VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR](VkVideoDecodeCapabilityFlagBitsKHR.html).
 
 However, images with only DPB usage remain tied to the video profiles the
 image was created with, as the data layout of such DPB-only images **may** be

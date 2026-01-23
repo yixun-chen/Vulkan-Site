@@ -27,7 +27,7 @@ typedef enum VkEventCreateFlagBits {
 } VkEventCreateFlagBits;
 
 * 
-`VK_EVENT_CREATE_DEVICE_ONLY_BIT` specifies that host event commands
+[VK_EVENT_CREATE_DEVICE_ONLY_BIT](#) specifies that host event commands
 will not be used with this event.
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkEventCreateFlags](VkEventCreateFlags.html)

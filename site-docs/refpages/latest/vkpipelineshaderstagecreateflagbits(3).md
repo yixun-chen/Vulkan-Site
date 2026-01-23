@@ -35,21 +35,21 @@ typedef enum VkPipelineShaderStageCreateFlagBits {
 } VkPipelineShaderStageCreateFlagBits;
 
 * 
-`VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT`
+[VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT](#)
 specifies that the
 [`SubgroupSize`](../../../../spec/latest/chapters/interfaces.html#interfaces-builtin-variables-sgs) **may** vary in the
 shader stage.
 
 * 
-`VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT`
+[VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT](#)
     specifies that the subgroup sizes **must** be launched with all invocations
     active in the
 task, mesh, or
     compute stage.
 
-|  | If `VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT`
+|  | If [VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT](#)
 | --- | --- |
-and `VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT` are
+and [VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT](#) are
 specified and [`minSubgroupSize`](../../../../spec/latest/chapters/devsandqueues.html#limits-minSubgroupSize) does not
 equal [`maxSubgroupSize`](../../../../spec/latest/chapters/devsandqueues.html#limits-maxSubgroupSize) and no
 [required subgroup size](../../../../spec/latest/chapters/pipelines.html#pipelines-required-subgroup-size) is specified,

@@ -95,7 +95,7 @@ by `descriptorUpdateTemplate` when it was created with
 
 `descriptorUpdateTemplate` **must** have been created with a
 `templateType` of
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS`
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](VkDescriptorUpdateTemplateType.html)
 
 * 
 [](#VUID-VkPushDescriptorSetWithTemplateInfo-set-07995) VUID-VkPushDescriptorSetWithTemplateInfo-set-07995
@@ -121,7 +121,7 @@ by `descriptorUpdateTemplate` when it was created with
 
 `set` **must** be the unique set number in the pipeline layout that
 uses a descriptor set layout that was created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](VkDescriptorSetLayoutCreateFlagBits.html)
 
 * 
 [](#VUID-VkPushDescriptorSetWithTemplateInfo-None-09495) VUID-VkPushDescriptorSetWithTemplateInfo-None-09495
@@ -147,7 +147,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPushDescriptorSetWithTemplateInfo-sType-sType) VUID-VkPushDescriptorSetWithTemplateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_WITH_TEMPLATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_WITH_TEMPLATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPushDescriptorSetWithTemplateInfo-pNext-pNext) VUID-VkPushDescriptorSetWithTemplateInfo-pNext-pNext

@@ -44,7 +44,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVideoFormatInfoKHR-sType-sType) VUID-VkPhysicalDeviceVideoFormatInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_FORMAT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_FORMAT_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPhysicalDeviceVideoFormatInfoKHR-pNext-pNext) VUID-VkPhysicalDeviceVideoFormatInfoKHR-pNext-pNext

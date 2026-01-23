@@ -67,7 +67,7 @@ Valid Usage
 
 All swapchains in [VkPresentInfoKHR](VkPresentInfoKHR.html)::`pSwapchains` **must** have
 been created with the [VkSwapchainCreateInfoKHR](VkSwapchainCreateInfoKHR.html)::`flags` field
-containing `VK_SWAPCHAIN_CREATE_PRESENT_TIMING_BIT_EXT`
+containing [VK_SWAPCHAIN_CREATE_PRESENT_TIMING_BIT_EXT](VkSwapchainCreateFlagBitsKHR.html)
 
 * 
 [](#VUID-VkPresentTimingsInfoEXT-pSwapchains-12235) VUID-VkPresentTimingsInfoEXT-pSwapchains-12235
@@ -75,15 +75,15 @@ containing `VK_SWAPCHAIN_CREATE_PRESENT_TIMING_BIT_EXT`
 For each member of `VkPresentInfoKHR`::`pSwapchains`, if the
 associated [VkPresentTimingInfoEXT](VkPresentTimingInfoEXT.html)::`targetTime` is not zero,
 the swapchain’s current present mode **must** be
-`VK_PRESENT_MODE_FIFO_LATEST_READY_KHR`,
-`VK_PRESENT_MODE_FIFO_KHR` or `VK_PRESENT_MODE_FIFO_RELAXED_KHR`
+[VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](VkPresentModeKHR.html),
+[VK_PRESENT_MODE_FIFO_KHR](VkPresentModeKHR.html) or [VK_PRESENT_MODE_FIFO_RELAXED_KHR](VkPresentModeKHR.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPresentTimingsInfoEXT-sType-sType) VUID-VkPresentTimingsInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_TIMINGS_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_TIMINGS_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkPresentTimingsInfoEXT-pTimingInfos-parameter) VUID-VkPresentTimingsInfoEXT-pTimingInfos-parameter

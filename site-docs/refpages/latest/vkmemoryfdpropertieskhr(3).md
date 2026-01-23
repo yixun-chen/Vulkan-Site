@@ -44,7 +44,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryFdPropertiesKHR-sType-sType) VUID-VkMemoryFdPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_FD_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_FD_PROPERTIES_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkMemoryFdPropertiesKHR-pNext-pNext) VUID-VkMemoryFdPropertiesKHR-pNext-pNext

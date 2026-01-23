@@ -107,7 +107,7 @@ order defined as follows:
 * 
 If neither [geometry](geometry.html#geometry) or [tessellation    shading](tessellation.html#tessellation) is active, vertices within a primitive are appended according
 to the winding order described by the [    primitive topology](drawing.html#drawing-primitive-topologies) defined by the
-[VkPipelineInputAssemblyStateCreateInfo](drawing.html#VkPipelineInputAssemblyStateCreateInfo):`topology` used to
+[VkPipelineInputAssemblyStateCreateInfo](drawing.html#VkPipelineInputAssemblyStateCreateInfo)::`topology` used to
 execute the [drawing command](drawing.html#drawing).
 
 * 
@@ -132,17 +132,17 @@ each primitive:
 * 
 When the
 [pipeline’s    provoking vertex mode](#VkPipelineRasterizationProvokingVertexStateCreateInfoEXT) is
-`VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT`, the primitive’s
+[VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT](#VkProvokingVertexModeEXT), the primitive’s
 provoking vertex **must** be the first vertex written.
 
 * 
 When the
 [pipeline’s    provoking vertex mode](#VkPipelineRasterizationProvokingVertexStateCreateInfoEXT) is
-`VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT`, the primitive’s
+[VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT](#VkProvokingVertexModeEXT), the primitive’s
 provoking vertex **must** be the last vertex written.
 
 If [`transformFeedbackPreservesTriangleFanProvokingVertex`](limits.html#limits-transformFeedbackPreservesTriangleFanProvokingVertex) is
-`VK_FALSE`, neither [geometry](geometry.html#geometry) nor [tessellation](tessellation.html#tessellation) shading is active, and the [primitive topology](drawing.html#drawing-primitive-topologies) is `VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN`, then the
+[VK_FALSE](fundamentals.html#VK_FALSE), neither [geometry](geometry.html#geometry) nor [tessellation](tessellation.html#tessellation) shading is active, and the [primitive topology](drawing.html#drawing-primitive-topologies) is [VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN](drawing.html#VkPrimitiveTopology), then the
 first vertex written from each primitive is implementation-defined even when
 the [`transformFeedbackPreservesProvokingVertex`](features.html#features-transformFeedbackPreservesProvokingVertex) feature is enabled.
 
@@ -161,7 +161,7 @@ For matrix types, outputs are written as an array of column vectors.
 If any component of an output with an assigned transform feedback offset was
 not written to by its shader, the value recorded for that component is
 **undefined**, and the primitives needed and primitives written counts in the
-corresponding `VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT` query will
+corresponding [VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](queries.html#VkQueryType) query will
 increment as normal.
 All components of an output variable **must** be written at an offset aligned
 to the size of the component.
@@ -195,7 +195,7 @@ than the size of all of the vertex data for that primitive based on the
 `XfbStride` for that `XfbBuffer` then no vertex data of that primitive
 is recorded in any transform feedback buffer, and the value for the number
 of primitives written in the corresponding
-`VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT` query for all transform
+[VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](queries.html#VkQueryType) query for all transform
 feedback buffers is no longer incremented.
 
 Any outputs made to a `XfbBuffer` that is not bound to a transform
@@ -236,7 +236,7 @@ state is updated by the command.
 buffer sizes, specifying the maximum number of bytes to capture to the
 corresponding transform feedback buffer.
 If `pSizes` is `NULL`, it is equivalent to setting a `pSizes`
-array where every element is `VK_WHOLE_SIZE`.
+array where every element is [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE).
 
 The values taken from elements i of `pBuffers`, `pOffsets` and
 `pSizes` replace the current state for the transform feedback binding
@@ -245,7 +245,7 @@ The values taken from elements i of `pBuffers`, `pOffsets` and
 The transform feedback binding is updated to start at the offset indicated
 by `pOffsets`[i] from the start of the buffer `pBuffers`[i].
 
-When an element of `pSizes`[i] is `VK_WHOLE_SIZE`, or `pSizes`
+When an element of `pSizes`[i] is [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), or `pSizes`
 is `NULL`, the effective range is calculated by taking the size of
 `pBuffers`[i] minus `pOffsets`[i].
 Otherwise, the effective range is equal to the element in `pSizes`[i].
@@ -286,7 +286,7 @@ All elements of `pOffsets` **must** be a multiple of 4
 [](#VUID-vkCmdBindTransformFeedbackBuffersEXT-pBuffers-02360) VUID-vkCmdBindTransformFeedbackBuffersEXT-pBuffers-02360
 
 All elements of `pBuffers` **must** have been created with the
-`VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT` usage flag set
+[VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdBindTransformFeedbackBuffersEXT-pOffsets-02363) VUID-vkCmdBindTransformFeedbackBuffersEXT-pOffsets-02363
@@ -333,7 +333,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindTransformFeedbackBuffersEXT-commandBuffer-cmdpool) VUID-vkCmdBindTransformFeedbackBuffersEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBindTransformFeedbackBuffersEXT-videocoding) VUID-vkCmdBindTransformFeedbackBuffersEXT-videocoding
@@ -405,10 +405,10 @@ feedback from the previous location.
 In that case, a pipeline barrier is required between the calls to
 `vkCmdEndTransformFeedbackEXT` and
 `vkCmdBeginTransformFeedbackEXT`, with
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT` as the source and
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](synchronization.html#VkPipelineStageFlagBits) as the source and
 destination stages,
-`VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT` as the source
-access and `VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT` as
+[VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT](synchronization.html#VkAccessFlagBits) as the source
+access and [VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT](synchronization.html#VkAccessFlagBits) as
 the destination access.
 If `pCounterBuffers` is `NULL`, then transform feedback will start
 capturing vertex data to byte offset zero in all bound transform
@@ -485,7 +485,7 @@ If `pCounterBuffer` is `NULL`, then `pCounterBufferOffsets`
 
 For each buffer handle in the `pCounterBuffers` array that is not
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) it **must** have been created with the
-`VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT` usage
+[VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits) usage
 flag set
 
 * 
@@ -501,7 +501,7 @@ by [vkCmdBindTransformFeedbackBuffersEXT](#vkCmdBindTransformFeedbackBuffersEXT)
 If the [`shaderObject`](features.html#features-shaderObject) feature is not
 enabled, a
 valid graphics pipeline **must** be bound to
-`VK_PIPELINE_BIND_POINT_GRAPHICS`
+[VK_PIPELINE_BIND_POINT_GRAPHICS](pipelines.html#VkPipelineBindPoint)
 
 * 
 [](#VUID-vkCmdBeginTransformFeedbackEXT-None-04128) VUID-vkCmdBeginTransformFeedbackEXT-None-04128
@@ -543,7 +543,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBeginTransformFeedbackEXT-commandBuffer-cmdpool) VUID-vkCmdBeginTransformFeedbackEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBeginTransformFeedbackEXT-renderpass) VUID-vkCmdBeginTransformFeedbackEXT-renderpass
@@ -678,7 +678,7 @@ If `pCounterBuffer` is `NULL`, then `pCounterBufferOffsets`
 
 For each buffer handle in the `pCounterBuffers` array that is not
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) it **must** have been created with the
-`VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT` usage
+[VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits) usage
 flag set
 
 * 
@@ -708,7 +708,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdEndTransformFeedbackEXT-commandBuffer-cmdpool) VUID-vkCmdEndTransformFeedbackEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdEndTransformFeedbackEXT-renderpass) VUID-vkCmdEndTransformFeedbackEXT-renderpass
@@ -789,7 +789,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineViewportSwizzleStateCreateInfoNV-sType-sType) VUID-VkPipelineViewportSwizzleStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineViewportSwizzleStateCreateInfoNV-flags-zerobitmask) VUID-VkPipelineViewportSwizzleStateCreateInfoNV-flags-zerobitmask
@@ -846,7 +846,7 @@ updated by the command.
 This command sets the viewport swizzle state for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV` set in
+[VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineViewportSwizzleStateCreateInfoNV](#VkPipelineViewportSwizzleStateCreateInfoNV)::`viewportCount`, and
@@ -886,7 +886,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetViewportSwizzleNV-commandBuffer-cmdpool) VUID-vkCmdSetViewportSwizzleNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetViewportSwizzleNV-videocoding) VUID-vkCmdSetViewportSwizzleNV-videocoding
@@ -937,10 +937,10 @@ Similar selections are performed for the `y`, `z`, and `w`
 coordinates.
 This swizzling is applied before clipping and perspective divide.
 If the swizzle for an active viewport index is not specified, the swizzle
-for `x` is `VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_X_NV`, `y`
-is `VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_Y_NV`, `z` is
-`VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_Z_NV` and `w` is
-`VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_W_NV`.
+for `x` is [VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_X_NV](#VkViewportCoordinateSwizzleNV), `y`
+is [VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_Y_NV](#VkViewportCoordinateSwizzleNV), `z` is
+[VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_Z_NV](#VkViewportCoordinateSwizzleNV) and `w` is
+[VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_W_NV](#VkViewportCoordinateSwizzleNV).
 
 Viewport swizzle parameters are specified by setting the `pNext` pointer
 of `VkGraphicsPipelineCreateInfo` to point to a
@@ -1026,7 +1026,7 @@ If neither
 [mesh](VK_NV_mesh_shader/mesh.html#mesh),
 [geometry](geometry.html#geometry) nor [tessellation shading](tessellation.html#tessellation) is active,
 the provoking vertex is determined by the [primitive topology](drawing.html#drawing-primitive-topologies) defined by
-[VkPipelineInputAssemblyStateCreateInfo](drawing.html#VkPipelineInputAssemblyStateCreateInfo):`topology` used to execute
+[VkPipelineInputAssemblyStateCreateInfo](drawing.html#VkPipelineInputAssemblyStateCreateInfo)::`topology` used to execute
 the [drawing command](drawing.html#drawing).
 
 If a shader using `MeshNV` `Execution` `Model` is active, the provoking
@@ -1074,9 +1074,9 @@ structure.
 selecting the provoking vertex mode.
 
 If this structure is not provided when creating the pipeline, the pipeline
-will use the `VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT` mode.
+will use the [VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT](#VkProvokingVertexModeEXT) mode.
 
-If the [`provokingVertexModePerPipeline`](limits.html#limits-provokingVertexModePerPipeline) limit is `VK_FALSE`, then all
+If the [`provokingVertexModePerPipeline`](limits.html#limits-provokingVertexModePerPipeline) limit is [VK_FALSE](fundamentals.html#VK_FALSE), then all
 pipelines bound within a render pass instance **must** have the same
 `provokingVertexMode`.
 
@@ -1086,7 +1086,7 @@ Valid Usage
 [](#VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-provokingVertexMode-04883) VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-provokingVertexMode-04883
 
 If `provokingVertexMode` is
-`VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT`, then the
+[VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT](#VkProvokingVertexModeEXT), then the
 [`provokingVertexLast`](features.html#features-provokingVertexLast) feature
 **must** be enabled
 
@@ -1095,7 +1095,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-sType-sType) VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-provokingVertexMode-parameter) VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-provokingVertexMode-parameter
@@ -1113,12 +1113,12 @@ typedef enum VkProvokingVertexModeEXT {
 } VkProvokingVertexModeEXT;
 
 * 
-`VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT` specifies that the
+[VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT](#VkProvokingVertexModeEXT) specifies that the
 provoking vertex is the first non-adjacency vertex in the list of
 vertices used by a primitive.
 
 * 
-`VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT` specifies that the
+[VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT](#VkProvokingVertexModeEXT) specifies that the
 provoking vertex is the last non-adjacency vertex in the list of
 vertices used by a primitive.
 
@@ -1144,7 +1144,7 @@ This command sets the `provokingVertexMode` state for subsequent drawing
 commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_PROVOKING_VERTEX_MODE_EXT` set in
+[VK_DYNAMIC_STATE_PROVOKING_VERTEX_MODE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationProvokingVertexStateCreateInfoEXT](#VkPipelineRasterizationProvokingVertexStateCreateInfoEXT)::`provokingVertexMode`
@@ -1166,7 +1166,7 @@ The [`shaderObject`](features.html#features-shaderObject) feature is enabled
 [](#VUID-vkCmdSetProvokingVertexModeEXT-provokingVertexMode-07447) VUID-vkCmdSetProvokingVertexModeEXT-provokingVertexMode-07447
 
 If `provokingVertexMode` is
-`VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT`, then the
+[VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT](#VkProvokingVertexModeEXT), then the
 [`provokingVertexLast`](features.html#features-provokingVertexLast) feature
 **must** be enabled
 
@@ -1190,7 +1190,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetProvokingVertexModeEXT-commandBuffer-cmdpool) VUID-vkCmdSetProvokingVertexModeEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetProvokingVertexModeEXT-videocoding) VUID-vkCmdSetProvokingVertexModeEXT-videocoding
@@ -1227,7 +1227,7 @@ In clip coordinates, the *view volume* is defined by:
 where
 if
 [VkPipelineViewportDepthClipControlCreateInfoEXT](#VkPipelineViewportDepthClipControlCreateInfoEXT)::`negativeOneToOne`
-is `VK_TRUE` zm is equal to -wc otherwise
+is [VK_TRUE](fundamentals.html#VK_TRUE) zm is equal to -wc otherwise
 zm is equal to zero.
 
 This view volume **can** be further restricted by as many as
@@ -1273,11 +1273,11 @@ of the entry point of the final shader stage before clipping.
 If [VkPipelineRasterizationDepthClipStateCreateInfoEXT](primsrast.html#VkPipelineRasterizationDepthClipStateCreateInfoEXT) is present in
 the graphics pipeline state then depth clipping is disabled if
 [VkPipelineRasterizationDepthClipStateCreateInfoEXT](primsrast.html#VkPipelineRasterizationDepthClipStateCreateInfoEXT)::`depthClipEnable`
-is `VK_FALSE`.
+is [VK_FALSE](fundamentals.html#VK_FALSE).
 Otherwise, if [VkPipelineRasterizationDepthClipStateCreateInfoEXT](primsrast.html#VkPipelineRasterizationDepthClipStateCreateInfoEXT) is
 not present, depth clipping is disabled when
 [VkPipelineRasterizationStateCreateInfo](primsrast.html#VkPipelineRasterizationStateCreateInfo)::`depthClampEnable` is
-`VK_TRUE`.
+[VK_TRUE](fundamentals.html#VK_TRUE).
 
 To [dynamically set](pipelines.html#pipelines-dynamic-state) enable or disable depth
 clamping, call:
@@ -1298,14 +1298,14 @@ This command sets whether depth clamping is enabled or disabled for
 subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT` set in
+[VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationStateCreateInfo](primsrast.html#VkPipelineRasterizationStateCreateInfo)::`depthClampEnable` value
 used to create the currently active pipeline.
 
 If the depth clamping state is changed dynamically, and the pipeline was not
-created with `VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT` enabled, then
+created with [VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT](pipelines.html#VkDynamicState) enabled, then
 depth clipping is enabled when depth clamping is disabled and vice versa.
 
 Valid Usage
@@ -1324,7 +1324,7 @@ The [`shaderObject`](features.html#features-shaderObject) feature is enabled
 [](#VUID-vkCmdSetDepthClampEnableEXT-depthClamp-07449) VUID-vkCmdSetDepthClampEnableEXT-depthClamp-07449
 
 If the [`depthClamp`](features.html#features-depthClamp) feature is not enabled,
-`depthClampEnable` **must** be `VK_FALSE`
+`depthClampEnable` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 Valid Usage (Implicit)
 
@@ -1341,7 +1341,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDepthClampEnableEXT-commandBuffer-cmdpool) VUID-vkCmdSetDepthClampEnableEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetDepthClampEnableEXT-videocoding) VUID-vkCmdSetDepthClampEnableEXT-videocoding
@@ -1386,7 +1386,7 @@ This command sets whether depth clipping is enabled or disabled for
 subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT` set in
+[VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationDepthClipStateCreateInfoEXT](primsrast.html#VkPipelineRasterizationDepthClipStateCreateInfoEXT)::`depthClipEnable`
@@ -1427,7 +1427,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDepthClipEnableEXT-commandBuffer-cmdpool) VUID-vkCmdSetDepthClipEnableEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetDepthClipEnableEXT-videocoding) VUID-vkCmdSetDepthClipEnableEXT-videocoding
@@ -1484,12 +1484,12 @@ typedef enum VkPointClippingBehavior {
 typedef VkPointClippingBehavior VkPointClippingBehaviorKHR;
 
 * 
-`VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES` specifies that the
+[VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES](#VkPointClippingBehaviorKHR) specifies that the
 primitive is discarded if the vertex lies outside any clip plane,
 including the planes bounding the view volume.
 
 * 
-`VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY` specifies that
+[VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY](#VkPointClippingBehaviorKHR) specifies that
 the primitive is discarded only if the vertex lies outside any user clip
 plane.
 
@@ -1560,14 +1560,14 @@ Valid Usage
 [](#VUID-VkPipelineViewportDepthClipControlCreateInfoEXT-negativeOneToOne-06470) VUID-VkPipelineViewportDepthClipControlCreateInfoEXT-negativeOneToOne-06470
 
 If the [`depthClipControl`](features.html#features-depthClipControl) feature is
-not enabled, `negativeOneToOne` **must** be `VK_FALSE`
+not enabled, `negativeOneToOne` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineViewportDepthClipControlCreateInfoEXT-sType-sType) VUID-VkPipelineViewportDepthClipControlCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 To [dynamically set](pipelines.html#pipelines-dynamic-state) `negativeOneToOne`,
 call:
@@ -1588,7 +1588,7 @@ This command sets the `negativeOneToOne` state for subsequent drawing
 commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_DEPTH_CLIP_NEGATIVE_ONE_TO_ONE_EXT` set in
+[VK_DYNAMIC_STATE_DEPTH_CLIP_NEGATIVE_ONE_TO_ONE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineViewportDepthClipControlCreateInfoEXT](#VkPipelineViewportDepthClipControlCreateInfoEXT)::`negativeOneToOne`
@@ -1627,7 +1627,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDepthClipNegativeOneToOneEXT-commandBuffer-cmdpool) VUID-vkCmdSetDepthClipNegativeOneToOneEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetDepthClipNegativeOneToOneEXT-videocoding) VUID-vkCmdSetDepthClipNegativeOneToOneEXT-videocoding
@@ -1741,7 +1741,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineViewportWScalingStateCreateInfoNV-sType-sType) VUID-VkPipelineViewportWScalingStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineViewportWScalingStateCreateInfoNV-viewportCount-arraylength) VUID-VkPipelineViewportWScalingStateCreateInfoNV-viewportCount-arraylength
@@ -1773,7 +1773,7 @@ This command sets the `viewportWScalingEnable` state for subsequent
 drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_ENABLE_NV` set in
+[VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_ENABLE_NV](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineViewportWScalingStateCreateInfoNV](#VkPipelineViewportWScalingStateCreateInfoNV)::`viewportWScalingEnable`
@@ -1807,7 +1807,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetViewportWScalingEnableNV-commandBuffer-cmdpool) VUID-vkCmdSetViewportWScalingEnableNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetViewportWScalingEnableNV-videocoding) VUID-vkCmdSetViewportWScalingEnableNV-videocoding
@@ -1867,7 +1867,7 @@ The viewport parameters taken from element i of
 This command sets the viewport **W** scaling for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV` set in
+[VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineViewportWScalingStateCreateInfoNV](#VkPipelineViewportWScalingStateCreateInfoNV)::`pViewportWScalings`
@@ -1901,7 +1901,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetViewportWScalingNV-commandBuffer-cmdpool) VUID-vkCmdSetViewportWScalingNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetViewportWScalingNV-videocoding) VUID-vkCmdSetViewportWScalingNV-videocoding
@@ -1985,19 +1985,19 @@ where
 
 * 
 *θ* is 0 degrees for
-`VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR`
+[VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR)
 
 * 
 *θ* is 90 degrees for
-`VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR`
+[VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR](VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR)
 
 * 
 *θ* is 180 degrees for
-`VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR`
+[VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR](VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR)
 
 * 
 *θ* is 270 degrees for
-`VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR`
+[VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR](VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR)
 
 The transformed vertex’s normalized device coordinates are
 
@@ -2176,7 +2176,7 @@ If `scissorCount` and `viewportCount` are both not dynamic, then
 [](#VUID-VkPipelineViewportStateCreateInfo-viewportCount-04135) VUID-VkPipelineViewportStateCreateInfo-viewportCount-04135
 
 If the graphics pipeline is being created with
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` set then `viewportCount`
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](pipelines.html#VkDynamicState) set then `viewportCount`
 **must** be `0`, otherwise
 `viewportCount` **must** be greater than `0`
 
@@ -2184,7 +2184,7 @@ If the graphics pipeline is being created with
 [](#VUID-VkPipelineViewportStateCreateInfo-scissorCount-04136) VUID-VkPipelineViewportStateCreateInfo-scissorCount-04136
 
 If the graphics pipeline is being created with
-`VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT` set then `scissorCount`
+[VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](pipelines.html#VkDynamicState) set then `scissorCount`
 **must** be `0`, otherwise
 `scissorCount` **must** be greater than `0`
 
@@ -2193,7 +2193,7 @@ If the graphics pipeline is being created with
 
 If the `viewportWScalingEnable` member of a
 [VkPipelineViewportWScalingStateCreateInfoNV](#VkPipelineViewportWScalingStateCreateInfoNV) structure included in
-the `pNext` chain is `VK_TRUE`, the `viewportCount` member
+the `pNext` chain is [VK_TRUE](fundamentals.html#VK_TRUE), the `viewportCount` member
 of the [VkPipelineViewportWScalingStateCreateInfoNV](#VkPipelineViewportWScalingStateCreateInfoNV) structure **must**
 be greater than or equal to
 [VkPipelineViewportStateCreateInfo](#VkPipelineViewportStateCreateInfo)::`viewportCount`
@@ -2203,7 +2203,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineViewportStateCreateInfo-sType-sType) VUID-VkPipelineViewportStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineViewportStateCreateInfo-pNext-pNext) VUID-VkPipelineViewportStateCreateInfo-pNext-pNext
@@ -2250,7 +2250,7 @@ This command sets the viewport count and viewports state for subsequent
 drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` set in
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the corresponding
 [VkPipelineViewportStateCreateInfo](#VkPipelineViewportStateCreateInfo)::`viewportCount` and
@@ -2310,7 +2310,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetViewportWithCount-commandBuffer-cmdpool) VUID-vkCmdSetViewportWithCount-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetViewportWithCount-videocoding) VUID-vkCmdSetViewportWithCount-videocoding
@@ -2371,7 +2371,7 @@ This command sets the scissor count and scissor rectangular bounds state for
 subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT` set in
+[VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the corresponding
 [VkPipelineViewportStateCreateInfo](#VkPipelineViewportStateCreateInfo)::`scissorCount` and
@@ -2448,7 +2448,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetScissorWithCount-commandBuffer-cmdpool) VUID-vkCmdSetScissorWithCount-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetScissorWithCount-videocoding) VUID-vkCmdSetScissorWithCount-videocoding
@@ -2505,7 +2505,7 @@ If the last [pre-rasterization shader stage](pipelines.html#pipelines-graphics-s
 transformation.
 
 A single vertex **can** be used in more than one individual primitive, in
-primitives such as `VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP`.
+primitives such as [VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP](drawing.html#VkPrimitiveTopology).
 In this case, the viewport transformation is applied separately for each
 primitive.
 
@@ -2538,7 +2538,7 @@ specifying viewport parameters.
 This command sets the viewport transformation parameters state for
 subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
-when the graphics pipeline is created with `VK_DYNAMIC_STATE_VIEWPORT`
+when the graphics pipeline is created with [VK_DYNAMIC_STATE_VIEWPORT](pipelines.html#VkDynamicState)
 set in [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 `VkPipelineViewportStateCreateInfo`::`pViewports` values used to
@@ -2595,7 +2595,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetViewport-commandBuffer-cmdpool) VUID-vkCmdSetViewport-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetViewport-videocoding) VUID-vkCmdSetViewport-videocoding
@@ -2674,7 +2674,7 @@ oy = `y` +  `height` / 2
 oz = `minDepth`
 (or (`maxDepth` + `minDepth`) / 2 if
 [VkPipelineViewportDepthClipControlCreateInfoEXT](#VkPipelineViewportDepthClipControlCreateInfoEXT)::`negativeOneToOne`
-is `VK_TRUE`)
+is [VK_TRUE](fundamentals.html#VK_TRUE))
 
 px = `width`
 
@@ -2683,7 +2683,7 @@ py = `height`
 pz = `maxDepth` - `minDepth`
 (or (`maxDepth` - `minDepth`) / 2 if
 [VkPipelineViewportDepthClipControlCreateInfoEXT](#VkPipelineViewportDepthClipControlCreateInfoEXT)::`negativeOneToOne`
-is `VK_TRUE`)
+is [VK_TRUE](fundamentals.html#VK_TRUE))
 
 If a render pass transform is enabled, the values (px,py) and
 (ox, oy) defining the viewport are transformed as described in

@@ -51,7 +51,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDevicePrivateDataCreateInfo-sType-sType) VUID-VkDevicePrivateDataCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_PRIVATE_DATA_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_PRIVATE_DATA_CREATE_INFO](VkStructureType.html)
 
 [VK_EXT_private_data](VK_EXT_private_data.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), [VkStructureType](VkStructureType.html)
 

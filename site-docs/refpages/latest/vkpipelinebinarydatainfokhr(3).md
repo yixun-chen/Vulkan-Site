@@ -43,7 +43,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineBinaryDataInfoKHR-sType-sType) VUID-VkPipelineBinaryDataInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_BINARY_DATA_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_BINARY_DATA_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineBinaryDataInfoKHR-pNext-pNext) VUID-VkPipelineBinaryDataInfoKHR-pNext-pNext

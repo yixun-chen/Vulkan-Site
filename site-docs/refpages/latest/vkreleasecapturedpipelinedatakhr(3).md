@@ -20,7 +20,7 @@
 vkReleaseCapturedPipelineDataKHR - Release captured pipeline binary data
 
 To release pipeline resources captured with
-`VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR`, call:
+[VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](VkPipelineCreateFlagBits2.html), call:
 
 // Provided by VK_KHR_pipeline_binary
 VkResult vkReleaseCapturedPipelineDataKHR(
@@ -40,14 +40,14 @@ structure which describes the pipeline to release the data from.
 [Memory Allocation](../../../../spec/latest/chapters/memory.html#memory-allocation) chapter.
 
 The implementation **may** free any resources captured as a result of creating
-the pipeline with `VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR` and put
+the pipeline with [VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](VkPipelineCreateFlagBits2.html) and put
 the pipeline into a state as if
-`VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR` had not been provided at
+[VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](VkPipelineCreateFlagBits2.html) had not been provided at
 pipeline creation time.
 
 |  | Any resources captured as a result of creating the pipeline with
 | --- | --- |
-`VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR` are implicitly freed by
+[VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](VkPipelineCreateFlagBits2.html) are implicitly freed by
 [vkDestroyPipeline](vkDestroyPipeline.html). |
 
 Valid Usage
@@ -87,15 +87,15 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_pipeline_binary](VK_KHR_pipeline_binary.html), [VkAllocationCallbacks](VkAllocationCallbacks.html), [VkDevice](VkDevice.html), [VkReleaseCapturedPipelineDataInfoKHR](VkReleaseCapturedPipelineDataInfoKHR.html)
 

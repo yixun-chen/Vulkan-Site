@@ -32,28 +32,28 @@ typedef enum VkVideoEncodeH265RateControlFlagBitsKHR {
 } VkVideoEncodeH265RateControlFlagBitsKHR;
 
 * 
-`VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_KHR`
+[VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_KHR](#)
 specifies that rate control **should** attempt to produce an HRD compliant
 bitstream, as defined in annex C of the [ITU-T H.265    Specification](../../../../spec/latest/chapters/introduction.html#itu-t-h265).
 
 * 
-`VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP_BIT_KHR` specifies
+[VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP_BIT_KHR](#) specifies
 that the application intends to use a [regular    GOP structure](../../../../spec/latest/chapters/videocoding.html#encode-h265-regular-gop) according to the parameters specified in the
 `gopFrameCount`, `idrPeriod`, and `consecutiveBFrameCount`
 members of the [VkVideoEncodeH265RateControlInfoKHR](VkVideoEncodeH265RateControlInfoKHR.html) structure.
 
 * 
-`VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR`
+[VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR](#)
 specifies that the application intends to follow a
 [flat reference pattern](../../../../spec/latest/chapters/videocoding.html#encode-h265-ref-pattern-flat) in the GOP.
 
 * 
-`VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR`
+[VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR](#)
 specifies that the application intends to follow a
 [dyadic reference pattern](../../../../spec/latest/chapters/videocoding.html#encode-h265-ref-pattern-dyadic) in the GOP.
 
 * 
-`VK_VIDEO_ENCODE_H265_RATE_CONTROL_TEMPORAL_SUB_LAYER_PATTERN_DYADIC_BIT_KHR`
+[VK_VIDEO_ENCODE_H265_RATE_CONTROL_TEMPORAL_SUB_LAYER_PATTERN_DYADIC_BIT_KHR](#)
 specifies that the application intends to follow a
 [dyadic temporal sub-layer pattern](../../../../spec/latest/chapters/videocoding.html#encode-h265-layer-pattern-dyadic).
 

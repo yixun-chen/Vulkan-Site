@@ -196,42 +196,42 @@ Extending [VkPipelineRasterizationStateCreateInfo](VkPipelineRasterizationStateC
 * 
 Extending [VkAccessFlagBits](VkAccessFlagBits.html):
 
-`VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT`
+[VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT](VkAccessFlagBits.html)
 
 * 
-`VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT`
+[VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT](VkAccessFlagBits.html)
 
 * 
-`VK_ACCESS_TRANSFORM_FEEDBACK_WRITE_BIT_EXT`
+[VK_ACCESS_TRANSFORM_FEEDBACK_WRITE_BIT_EXT](VkAccessFlagBits.html)
 
 Extending [VkBufferUsageFlagBits](VkBufferUsageFlagBits.html):
 
 * 
-`VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT](VkBufferUsageFlagBits.html)
 
 * 
-`VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT](VkBufferUsageFlagBits.html)
 
 Extending [VkPipelineStageFlagBits](VkPipelineStageFlagBits.html):
 
 * 
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](VkPipelineStageFlagBits.html)
 
 Extending [VkQueryType](VkQueryType.html):
 
 * 
-`VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT`
+[VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](VkQueryType.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT](VkStructureType.html)
 
 1) Should we include pause/resume functionality?
 
@@ -245,10 +245,10 @@ Then to resume use `vkCmdBeginTransformFeedbackEXT` with the previous
 `pCounterBuffers` and `pCounterBufferOffsets` values.
 Between the pause and resume there needs to be a memory barrier for the
 counter buffers with a source access of
-`VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT` at pipeline stage
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT` to a destination access
-of `VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT` at pipeline stage
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`.
+[VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT](VkAccessFlagBits.html) at pipeline stage
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](VkPipelineStageFlagBits.html) to a destination access
+of [VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT](VkAccessFlagBits.html) at pipeline stage
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](VkPipelineStageFlagBits.html).
 
 2) How does this interact with multiview?
 
@@ -258,7 +258,7 @@ multiview enabled.
 3) How should queries be done?
 
 **RESOLVED**: There is a new query type
-`VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT`.
+[VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](VkQueryType.html).
 A query pool created with this type will capture 2 integers -
 numPrimitivesWritten and numPrimitivesNeeded - for the specified vertex
 stream output from the last

@@ -54,45 +54,45 @@ typedef enum VkImageAspectFlagBits {
 } VkImageAspectFlagBits;
 
 * 
-`VK_IMAGE_ASPECT_NONE` specifies no image aspect, or the image
+[VK_IMAGE_ASPECT_NONE](#) specifies no image aspect, or the image
 aspect is not applicable.
 
 * 
-`VK_IMAGE_ASPECT_COLOR_BIT` specifies the color aspect.
+[VK_IMAGE_ASPECT_COLOR_BIT](#) specifies the color aspect.
 
 * 
-`VK_IMAGE_ASPECT_DEPTH_BIT` specifies the depth aspect.
+[VK_IMAGE_ASPECT_DEPTH_BIT](#) specifies the depth aspect.
 
 * 
-`VK_IMAGE_ASPECT_STENCIL_BIT` specifies the stencil aspect.
+[VK_IMAGE_ASPECT_STENCIL_BIT](#) specifies the stencil aspect.
 
 * 
-`VK_IMAGE_ASPECT_METADATA_BIT` specifies the metadata aspect used
+[VK_IMAGE_ASPECT_METADATA_BIT](#) specifies the metadata aspect used
 for [sparse resource](../../../../spec/latest/chapters/sparsemem.html#sparsememory) operations.
 
 * 
-`VK_IMAGE_ASPECT_PLANE_0_BIT` specifies plane 0 of a *multi-planar*
+[VK_IMAGE_ASPECT_PLANE_0_BIT](#) specifies plane 0 of a *multi-planar*
 image format.
 
 * 
-`VK_IMAGE_ASPECT_PLANE_1_BIT` specifies plane 1 of a *multi-planar*
+[VK_IMAGE_ASPECT_PLANE_1_BIT](#) specifies plane 1 of a *multi-planar*
 image format.
 
 * 
-`VK_IMAGE_ASPECT_PLANE_2_BIT` specifies plane 2 of a *multi-planar*
+[VK_IMAGE_ASPECT_PLANE_2_BIT](#) specifies plane 2 of a *multi-planar*
 image format.
 
 * 
-`VK_IMAGE_ASPECT_MEMORY_PLANE_0_BIT_EXT` specifies *memory plane* 0.
+[VK_IMAGE_ASPECT_MEMORY_PLANE_0_BIT_EXT](#) specifies *memory plane* 0.
 
 * 
-`VK_IMAGE_ASPECT_MEMORY_PLANE_1_BIT_EXT` specifies *memory plane* 1.
+[VK_IMAGE_ASPECT_MEMORY_PLANE_1_BIT_EXT](#) specifies *memory plane* 1.
 
 * 
-`VK_IMAGE_ASPECT_MEMORY_PLANE_2_BIT_EXT` specifies *memory plane* 2.
+[VK_IMAGE_ASPECT_MEMORY_PLANE_2_BIT_EXT](#) specifies *memory plane* 2.
 
 * 
-`VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT` specifies *memory plane* 3.
+[VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT](#) specifies *memory plane* 3.
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkBindImagePlaneMemoryInfo](VkBindImagePlaneMemoryInfo.html), [VkDeviceImageMemoryRequirements](VkDeviceImageMemoryRequirements.html), [VkExportMetalTextureInfoEXT](VkExportMetalTextureInfoEXT.html), [VkImageAspectFlags](VkImageAspectFlags.html), [VkImagePlaneMemoryRequirementsInfo](VkImagePlaneMemoryRequirementsInfo.html), [VkImportMetalTextureInfoEXT](VkImportMetalTextureInfoEXT.html)
 

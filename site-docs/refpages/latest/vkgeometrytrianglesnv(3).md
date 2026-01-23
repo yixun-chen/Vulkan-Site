@@ -86,7 +86,7 @@ applied to this geometry.
 `transformOffset` is the offset in bytes in `transformData` of
 the transform information described above.
 
-If `indexType` is `VK_INDEX_TYPE_NONE_NV`, then this structure
+If `indexType` is [VK_INDEX_TYPE_NONE_NV](VkIndexType.html), then this structure
 describes a set of triangles determined by `vertexCount`.
 Otherwise, this structure describes a set of indexed triangles determined by
 `indexCount`.
@@ -107,10 +107,10 @@ Valid Usage
 * 
 [](#VUID-VkGeometryTrianglesNV-vertexFormat-02430) VUID-VkGeometryTrianglesNV-vertexFormat-02430
 
-`vertexFormat` **must** be one of `VK_FORMAT_R32G32B32_SFLOAT`,
-`VK_FORMAT_R32G32_SFLOAT`, `VK_FORMAT_R16G16B16_SFLOAT`,
-`VK_FORMAT_R16G16_SFLOAT`, `VK_FORMAT_R16G16_SNORM`, or
-`VK_FORMAT_R16G16B16_SNORM`
+`vertexFormat` **must** be one of [VK_FORMAT_R32G32B32_SFLOAT](VkFormat.html),
+[VK_FORMAT_R32G32_SFLOAT](VkFormat.html), [VK_FORMAT_R16G16B16_SFLOAT](VkFormat.html),
+[VK_FORMAT_R16G16_SFLOAT](VkFormat.html), [VK_FORMAT_R16G16_SNORM](VkFormat.html), or
+[VK_FORMAT_R16G16B16_SNORM](VkFormat.html)
 
 * 
 [](#VUID-VkGeometryTrianglesNV-vertexStride-03818) VUID-VkGeometryTrianglesNV-vertexStride-03818
@@ -131,26 +131,26 @@ Valid Usage
 * 
 [](#VUID-VkGeometryTrianglesNV-indexType-02433) VUID-VkGeometryTrianglesNV-indexType-02433
 
-`indexType` **must** be `VK_INDEX_TYPE_UINT16`,
-`VK_INDEX_TYPE_UINT32`, or `VK_INDEX_TYPE_NONE_NV`
+`indexType` **must** be [VK_INDEX_TYPE_UINT16](VkIndexType.html),
+[VK_INDEX_TYPE_UINT32](VkIndexType.html), or [VK_INDEX_TYPE_NONE_NV](VkIndexType.html)
 
 * 
 [](#VUID-VkGeometryTrianglesNV-indexData-02434) VUID-VkGeometryTrianglesNV-indexData-02434
 
 `indexData` **must** be [VK_NULL_HANDLE](VK_NULL_HANDLE.html) if `indexType` is
-`VK_INDEX_TYPE_NONE_NV`
+[VK_INDEX_TYPE_NONE_NV](VkIndexType.html)
 
 * 
 [](#VUID-VkGeometryTrianglesNV-indexData-02435) VUID-VkGeometryTrianglesNV-indexData-02435
 
 `indexData` **must** be a valid `VkBuffer` handle if
-`indexType` is not `VK_INDEX_TYPE_NONE_NV`
+`indexType` is not [VK_INDEX_TYPE_NONE_NV](VkIndexType.html)
 
 * 
 [](#VUID-VkGeometryTrianglesNV-indexCount-02436) VUID-VkGeometryTrianglesNV-indexCount-02436
 
 `indexCount` **must** be `0` if `indexType` is
-`VK_INDEX_TYPE_NONE_NV`
+[VK_INDEX_TYPE_NONE_NV](VkIndexType.html)
 
 * 
 [](#VUID-VkGeometryTrianglesNV-transformOffset-02437) VUID-VkGeometryTrianglesNV-transformOffset-02437
@@ -167,7 +167,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGeometryTrianglesNV-sType-sType) VUID-VkGeometryTrianglesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GEOMETRY_TRIANGLES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GEOMETRY_TRIANGLES_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkGeometryTrianglesNV-pNext-pNext) VUID-VkGeometryTrianglesNV-pNext-pNext

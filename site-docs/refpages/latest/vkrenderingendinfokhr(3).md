@@ -43,7 +43,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderingEndInfoKHR-sType-sType) VUID-VkRenderingEndInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDERING_END_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDERING_END_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderingEndInfoKHR-pNext-pNext) VUID-VkRenderingEndInfoKHR-pNext-pNext

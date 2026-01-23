@@ -29,7 +29,7 @@ typedef enum VkMemoryMapFlagBits {
 } VkMemoryMapFlagBits;
 
 * 
-`VK_MEMORY_MAP_PLACED_BIT_EXT` requests that the implementation
+[VK_MEMORY_MAP_PLACED_BIT_EXT](#) requests that the implementation
 place the memory map at the virtual address specified by the application
 via [VkMemoryMapPlacedInfoEXT](VkMemoryMapPlacedInfoEXT.html)::`pPlacedAddress`, replacing any
 existing mapping at that address.

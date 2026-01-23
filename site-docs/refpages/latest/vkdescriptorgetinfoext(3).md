@@ -49,35 +49,35 @@ Valid Usage
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-08018) VUID-VkDescriptorGetInfoEXT-type-08018
 
-`type` **must** not be `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`,
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` or
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+`type` **must** not be [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html)
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-08019) VUID-VkDescriptorGetInfoEXT-type-08019
 
-If `type` is `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, the
+If `type` is [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html), the
 `pCombinedImageSampler->sampler` member of `data` **must** be a
 [VkSampler](VkSampler.html) created on `device`
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-08020) VUID-VkDescriptorGetInfoEXT-type-08020
 
-If `type` is `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, the
+If `type` is [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html), the
 `pCombinedImageSampler->imageView` member of `data` **must** be a
 [VkImageView](VkImageView.html) created on `device`, or [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-08021) VUID-VkDescriptorGetInfoEXT-type-08021
 
-If `type` is `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`, the
+If `type` is [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html), the
 `pInputAttachmentImage->imageView` member of `data` **must** be a
 [VkImageView](VkImageView.html) created on `device`
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-08022) VUID-VkDescriptorGetInfoEXT-type-08022
 
-If `type` is `VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, and if
+If `type` is [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html), and if
 `pSampledImage` is not `NULL`, the `pSampledImage->imageView`
 member of `data` **must** be a [VkImageView](VkImageView.html) created on
 `device`, or [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
@@ -85,49 +85,15 @@ member of `data` **must** be a [VkImageView](VkImageView.html) created on
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-08023) VUID-VkDescriptorGetInfoEXT-type-08023
 
-If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, and if
+If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html), and if
 `pStorageImage` is not `NULL`, the `pStorageImage->imageView`
 member of `data` **must** be a [VkImageView](VkImageView.html) created on
 `device`, or [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
 * 
-[](#VUID-VkDescriptorGetInfoEXT-type-08024) VUID-VkDescriptorGetInfoEXT-type-08024
-
-If `type` is `VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`,
-`pUniformTexelBuffer` is not `NULL` and
-`pUniformTexelBuffer->address` is not zero,
-`pUniformTexelBuffer->address` **must** be an address within a
-[VkBuffer](VkBuffer.html) created on `device`
-
-* 
-[](#VUID-VkDescriptorGetInfoEXT-type-08025) VUID-VkDescriptorGetInfoEXT-type-08025
-
-If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`,
-`pStorageTexelBuffer` is not `NULL` and
-`pStorageTexelBuffer->address` is not zero,
-`pStorageTexelBuffer->address` **must** be an address within a
-[VkBuffer](VkBuffer.html) created on `device`
-
-* 
-[](#VUID-VkDescriptorGetInfoEXT-type-08026) VUID-VkDescriptorGetInfoEXT-type-08026
-
-If `type` is `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`,
-`pUniformBuffer` is not `NULL` and `pUniformBuffer->address` is
-not zero, `pUniformBuffer->address` **must** be an address within a
-[VkBuffer](VkBuffer.html) created on `device`
-
-* 
-[](#VUID-VkDescriptorGetInfoEXT-type-08027) VUID-VkDescriptorGetInfoEXT-type-08027
-
-If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`,
-`pStorageBuffer` is not `NULL` and `pStorageBuffer->address` is
-not zero, `pStorageBuffer->address` **must** be an address within a
-[VkBuffer](VkBuffer.html) created on `device`
-
-* 
 [](#VUID-VkDescriptorGetInfoEXT-type-09427) VUID-VkDescriptorGetInfoEXT-type-09427
 
-If `type` is `VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`,
+If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html),
 `pUniformBuffer` is not `NULL` , the number of texel buffer elements
 given by (⌊`pUniformBuffer->range` / (texel block
 size)⌋ × (texels per block)) where texel block size and
@@ -138,7 +104,7 @@ less than or equal to
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-09428) VUID-VkDescriptorGetInfoEXT-type-09428
 
-If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`,
+If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html),
 `pStorageBuffer` is not `NULL` , the number of texel buffer elements
 given by (⌊`pStorageBuffer->range` / (texel block
 size)⌋ × (texels per block)) where texel block size and
@@ -149,7 +115,7 @@ less than or equal to
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-08028) VUID-VkDescriptorGetInfoEXT-type-08028
 
-If `type` is `VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR` and
+If `type` is [VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](VkDescriptorType.html) and
 `accelerationStructure` is not `0`, `accelerationStructure`
 **must** contain the address of a [VkAccelerationStructureKHR](VkAccelerationStructureKHR.html) created
 on `device`
@@ -157,7 +123,7 @@ on `device`
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-08029) VUID-VkDescriptorGetInfoEXT-type-08029
 
-If `type` is `VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV` and
+If `type` is [VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](VkDescriptorType.html) and
 `accelerationStructure` is not `0`, `accelerationStructure`
 **must** contain the handle of a [VkAccelerationStructureNV](VkAccelerationStructureNV.html) created on
 `device`, returned by [vkGetAccelerationStructureHandleNV](vkGetAccelerationStructureHandleNV.html)
@@ -165,87 +131,153 @@ If `type` is `VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV` and
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-09701) VUID-VkDescriptorGetInfoEXT-type-09701
 
-If `type` is `VK_DESCRIPTOR_TYPE_TENSOR_ARM`, a
+If `type` is [VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html), a
 [VkDescriptorGetTensorInfoARM](VkDescriptorGetTensorInfoARM.html) structure **must** be included in the
 `pNext` chain and `data` is ignored
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-12216) VUID-VkDescriptorGetInfoEXT-type-12216
 
-If `type` is `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` and
+If `type` is [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) and
 `pCombinedImageSampler->imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), the
 `pCombinedImageSampler->imageView` member of `data` **must** have
-been created with `VK_IMAGE_USAGE_SAMPLED_BIT` set
+been created with [VK_IMAGE_USAGE_SAMPLED_BIT](VkImageUsageFlagBits.html) set
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-12217) VUID-VkDescriptorGetInfoEXT-type-12217
 
-If `type` is `VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
+If `type` is [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html),
 `pSampledImage` is not `NULL`, and `pSampledImage->imageView` is
 not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), the `pSampledImage->imageView` member of
-`data` **must** have been created with `VK_IMAGE_USAGE_SAMPLED_BIT`
+`data` **must** have been created with [VK_IMAGE_USAGE_SAMPLED_BIT](VkImageUsageFlagBits.html)
 set
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-12218) VUID-VkDescriptorGetInfoEXT-type-12218
 
-If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`,
+If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html),
 `pStorageImage` is not `NULL`, and `pStorageImage->imageView` is
 not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), the `pStorageImage->imageView` member of
-`data` **must** have been created with `VK_IMAGE_USAGE_STORAGE_BIT`
+`data` **must** have been created with [VK_IMAGE_USAGE_STORAGE_BIT](VkImageUsageFlagBits.html)
 set
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-12219) VUID-VkDescriptorGetInfoEXT-type-12219
 
-If `type` is `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`, the
+If `type` is [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html), the
 `pInputAttachmentImage->imageView` member of `data` **must** have
-been created with `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` set
+been created with [VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](VkImageUsageFlagBits.html) set
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-12220) VUID-VkDescriptorGetInfoEXT-type-12220
 
-If `type` is `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`,
+If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html),
 `pUniformBuffer` is not `NULL` and `pUniformBuffer->address` is
 not zero, `pUniformBuffer->address` **must** be a device address
 allocated to the application from a buffer created with the
-`VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-12221) VUID-VkDescriptorGetInfoEXT-type-12221
 
-If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`,
+If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html),
 `pStorageBuffer` is not `NULL` and `pStorageBuffer->address` is
 not zero, `pStorageBuffer->address` **must** be a device address
 allocated to the application from a buffer created with the
-`VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-12222) VUID-VkDescriptorGetInfoEXT-type-12222
 
-If `type` is `VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`,
+If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html),
 `pUniformTexelBuffer` is not `NULL` and
 `pUniformTexelBuffer->address` is not zero,
 `pUniformTexelBuffer->address` **must** be a device address allocated
 to the application from a buffer created with the
-`VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-12223) VUID-VkDescriptorGetInfoEXT-type-12223
 
-If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`,
+If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html),
 `pStorageTexelBuffer` is not `NULL` and
 `pStorageTexelBuffer->address` is not zero,
 `pStorageTexelBuffer->address` **must** be a device address allocated
 to the application from a buffer created with the
-`VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set
+
+* 
+[](#VUID-VkDescriptorGetInfoEXT-type-12265) VUID-VkDescriptorGetInfoEXT-type-12265
+
+If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html) and
+`pUniformBuffer` is not `NULL`, `pUniformBuffer->address` **must**
+be aligned to
+`VkPhysicalDeviceLimits`::`minUniformBufferOffsetAlignment`
+
+* 
+[](#VUID-VkDescriptorGetInfoEXT-type-12266) VUID-VkDescriptorGetInfoEXT-type-12266
+
+If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html) and
+`pStorageBuffer` is not `NULL`, `pStorageBuffer->address` **must**
+be aligned to
+`VkPhysicalDeviceLimits`::`minStorageBufferOffsetAlignment`
+
+* 
+[](#VUID-VkDescriptorGetInfoEXT-type-12267) VUID-VkDescriptorGetInfoEXT-type-12267
+
+If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html),
+the [`texelBufferAlignment`](../../../../spec/latest/chapters/features.html#features-texelBufferAlignment)
+feature is not enabled,
+and `pUniformTexelBuffer` is not `NULL`,
+`pUniformTexelBuffer->address` **must** be aligned to
+`VkPhysicalDeviceLimits`::`minTexelBufferOffsetAlignment`
+
+* 
+[](#VUID-VkDescriptorGetInfoEXT-type-12268) VUID-VkDescriptorGetInfoEXT-type-12268
+
+If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html),
+the [`texelBufferAlignment`](../../../../spec/latest/chapters/features.html#features-texelBufferAlignment)
+feature is not enabled,
+and `pStorageTexelBuffer` is not `NULL`,
+`pStorageTexelBuffer->address` **must** be aligned to
+`VkPhysicalDeviceLimits`::`minTexelBufferOffsetAlignment`
+
+* 
+[](#VUID-VkDescriptorGetInfoEXT-type-12269) VUID-VkDescriptorGetInfoEXT-type-12269
+
+If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html), the
+[`texelBufferAlignment`](../../../../spec/latest/chapters/features.html#features-texelBufferAlignment) feature is
+enabled, and `pUniformTexelBuffer` is not `NULL`,
+`pUniformTexelBuffer->address` **must** be a multiple of the lesser of
+[VkPhysicalDeviceTexelBufferAlignmentProperties](VkPhysicalDeviceTexelBufferAlignmentProperties.html)::`uniformTexelBufferOffsetAlignmentBytes`
+or, if
+[VkPhysicalDeviceTexelBufferAlignmentProperties](VkPhysicalDeviceTexelBufferAlignmentProperties.html)::`uniformTexelBufferOffsetSingleTexelAlignment`
+is [VK_TRUE](VK_TRUE.html), the size of a texel of the requested
+`pUniformTexelBuffer->format`.
+If the size of a texel is a multiple of three bytes, then the size of a
+single component of `format` is used instead
+
+* 
+[](#VUID-VkDescriptorGetInfoEXT-type-12270) VUID-VkDescriptorGetInfoEXT-type-12270
+
+If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html), the
+[`texelBufferAlignment`](../../../../spec/latest/chapters/features.html#features-texelBufferAlignment) feature is
+enabled, and `pStorageTexelBuffer` is not `NULL`,
+`pStorageTexelBuffer->address` **must** be a multiple of the lesser of
+[VkPhysicalDeviceTexelBufferAlignmentProperties](VkPhysicalDeviceTexelBufferAlignmentProperties.html)::`storageTexelBufferOffsetAlignmentBytes`
+or, if
+[VkPhysicalDeviceTexelBufferAlignmentProperties](VkPhysicalDeviceTexelBufferAlignmentProperties.html)::`storageTexelBufferOffsetSingleTexelAlignment`
+is [VK_TRUE](VK_TRUE.html), the size of a texel of the requested
+`pStorageTexelBuffer->format`.
+If the size of a texel is a multiple of three bytes, then the size of a
+single component of `format` is used instead
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-sType-sType) VUID-VkDescriptorGetInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_GET_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_GET_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pNext-pNext) VUID-VkDescriptorGetInfoEXT-pNext-pNext
@@ -265,52 +297,52 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pSampler-parameter) VUID-VkDescriptorGetInfoEXT-pSampler-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_SAMPLER`, the `pSampler` member of `data` **must** be a valid pointer to a valid [VkSampler](VkSampler.html) handle
+ If `type` is [VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html), the `pSampler` member of `data` **must** be a valid pointer to a valid [VkSampler](VkSampler.html) handle
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pCombinedImageSampler-parameter) VUID-VkDescriptorGetInfoEXT-pCombinedImageSampler-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, the `pCombinedImageSampler` member of `data` **must** be a valid pointer to a valid [VkDescriptorImageInfo](VkDescriptorImageInfo.html) structure
+ If `type` is [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html), the `pCombinedImageSampler` member of `data` **must** be a valid pointer to a valid [VkDescriptorImageInfo](VkDescriptorImageInfo.html) structure
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pInputAttachmentImage-parameter) VUID-VkDescriptorGetInfoEXT-pInputAttachmentImage-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`, the `pInputAttachmentImage` member of `data` **must** be a valid pointer to a valid [VkDescriptorImageInfo](VkDescriptorImageInfo.html) structure
+ If `type` is [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html), the `pInputAttachmentImage` member of `data` **must** be a valid pointer to a valid [VkDescriptorImageInfo](VkDescriptorImageInfo.html) structure
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pSampledImage-parameter) VUID-VkDescriptorGetInfoEXT-pSampledImage-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, and if `pSampledImage` is not `NULL`, the `pSampledImage` member of `data` **must** be a valid pointer to a valid [VkDescriptorImageInfo](VkDescriptorImageInfo.html) structure
+ If `type` is [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html), and if `pSampledImage` is not `NULL`, the `pSampledImage` member of `data` **must** be a valid pointer to a valid [VkDescriptorImageInfo](VkDescriptorImageInfo.html) structure
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pStorageImage-parameter) VUID-VkDescriptorGetInfoEXT-pStorageImage-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, and if `pStorageImage` is not `NULL`, the `pStorageImage` member of `data` **must** be a valid pointer to a valid [VkDescriptorImageInfo](VkDescriptorImageInfo.html) structure
+ If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html), and if `pStorageImage` is not `NULL`, the `pStorageImage` member of `data` **must** be a valid pointer to a valid [VkDescriptorImageInfo](VkDescriptorImageInfo.html) structure
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pUniformTexelBuffer-parameter) VUID-VkDescriptorGetInfoEXT-pUniformTexelBuffer-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`, and if `pUniformTexelBuffer` is not `NULL`, the `pUniformTexelBuffer` member of `data` **must** be a valid pointer to a valid [VkDescriptorAddressInfoEXT](VkDescriptorAddressInfoEXT.html) structure
+ If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html), and if `pUniformTexelBuffer` is not `NULL`, the `pUniformTexelBuffer` member of `data` **must** be a valid pointer to a valid [VkDescriptorAddressInfoEXT](VkDescriptorAddressInfoEXT.html) structure
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pStorageTexelBuffer-parameter) VUID-VkDescriptorGetInfoEXT-pStorageTexelBuffer-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`, and if `pStorageTexelBuffer` is not `NULL`, the `pStorageTexelBuffer` member of `data` **must** be a valid pointer to a valid [VkDescriptorAddressInfoEXT](VkDescriptorAddressInfoEXT.html) structure
+ If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html), and if `pStorageTexelBuffer` is not `NULL`, the `pStorageTexelBuffer` member of `data` **must** be a valid pointer to a valid [VkDescriptorAddressInfoEXT](VkDescriptorAddressInfoEXT.html) structure
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pUniformBuffer-parameter) VUID-VkDescriptorGetInfoEXT-pUniformBuffer-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`, and if `pUniformBuffer` is not `NULL`, the `pUniformBuffer` member of `data` **must** be a valid pointer to a valid [VkDescriptorAddressInfoEXT](VkDescriptorAddressInfoEXT.html) structure
+ If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html), and if `pUniformBuffer` is not `NULL`, the `pUniformBuffer` member of `data` **must** be a valid pointer to a valid [VkDescriptorAddressInfoEXT](VkDescriptorAddressInfoEXT.html) structure
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pStorageBuffer-parameter) VUID-VkDescriptorGetInfoEXT-pStorageBuffer-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`, and if `pStorageBuffer` is not `NULL`, the `pStorageBuffer` member of `data` **must** be a valid pointer to a valid [VkDescriptorAddressInfoEXT](VkDescriptorAddressInfoEXT.html) structure
+ If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html), and if `pStorageBuffer` is not `NULL`, the `pStorageBuffer` member of `data` **must** be a valid pointer to a valid [VkDescriptorAddressInfoEXT](VkDescriptorAddressInfoEXT.html) structure
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-accelerationStructure-parameter) VUID-VkDescriptorGetInfoEXT-accelerationStructure-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR` or `VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV`, the `accelerationStructure` member of `data` **must** be a valid `VkDeviceAddress` value
+ If `type` is [VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](VkDescriptorType.html) or [VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](VkDescriptorType.html), the `accelerationStructure` member of `data` **must** be a valid `VkDeviceAddress` value
 
 [VK_EXT_descriptor_buffer](VK_EXT_descriptor_buffer.html), [VkDescriptorDataEXT](VkDescriptorDataEXT.html), [VkDescriptorType](VkDescriptorType.html), [VkStructureType](VkStructureType.html), [vkGetDescriptorEXT](vkGetDescriptorEXT.html)
 

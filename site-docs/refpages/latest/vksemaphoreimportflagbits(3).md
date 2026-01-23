@@ -45,7 +45,7 @@ typedef VkSemaphoreImportFlagBits VkSemaphoreImportFlagBitsKHR;
 These bits have the following meanings:
 
 * 
-`VK_SEMAPHORE_IMPORT_TEMPORARY_BIT` specifies that the semaphore
+[VK_SEMAPHORE_IMPORT_TEMPORARY_BIT](#) specifies that the semaphore
 payload will be imported only temporarily, as described in
 [Importing Semaphore Payloads](../../../../spec/latest/chapters/synchronization.html#synchronization-semaphores-importing),
 regardless of the permanence of `handleType`.

@@ -54,7 +54,7 @@ period.
 `swapchain` to be increased in value so that it is at least equal to
 `presentId`.
 
-For `VK_PRESENT_MODE_MAILBOX_KHR` (or other present mode where images
+For [VK_PRESENT_MODE_MAILBOX_KHR](VkPresentModeKHR.html) (or other present mode where images
 may be replaced in the presentation queue) any wait of this type associated
 with such an image **must** be signaled no later than a wait associated with
 the replacing image would be signaled.
@@ -73,9 +73,9 @@ The call to `vkWaitForPresentKHR` will block until either the presentId
 associated with `swapchain` is greater than or equal to `presentId`,
 or `timeout` nanoseconds passes.
 When the swapchain becomes OUT_OF_DATE, the call will either return
-`VK_SUCCESS` (if the image was delivered to the presentation engine and
+[VK_SUCCESS](VkResult.html) (if the image was delivered to the presentation engine and
 may have been presented to the user) or will return early with status
-`VK_ERROR_OUT_OF_DATE_KHR` (if the image could not be presented to the
+[VK_ERROR_OUT_OF_DATE_KHR](VkResult.html) (if the image could not be presented to the
 user).
 
 As an exception to the normal rules for objects which are externally
@@ -124,39 +124,39 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUBOPTIMAL_KHR`
+[VK_SUBOPTIMAL_KHR](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 * 
-`VK_TIMEOUT`
+[VK_TIMEOUT](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](VkResult.html)
 
 * 
-`VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT`
+[VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DATE_KHR`
+[VK_ERROR_OUT_OF_DATE_KHR](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_present_wait](VK_KHR_present_wait.html), [VkDevice](VkDevice.html), [VkSwapchainKHR](VkSwapchainKHR.html)
 

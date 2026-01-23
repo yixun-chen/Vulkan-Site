@@ -51,7 +51,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoDecodeAV1InlineSessionParametersInfoKHR-sType-sType) VUID-VkVideoDecodeAV1InlineSessionParametersInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_INLINE_SESSION_PARAMETERS_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_INLINE_SESSION_PARAMETERS_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoDecodeAV1InlineSessionParametersInfoKHR-pStdSequenceHeader-parameter) VUID-VkVideoDecodeAV1InlineSessionParametersInfoKHR-pStdSequenceHeader-parameter

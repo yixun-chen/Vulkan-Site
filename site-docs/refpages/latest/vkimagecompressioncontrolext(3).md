@@ -54,7 +54,7 @@ describing compression controls for the image.
 [VkImageCompressionFixedRateFlagsEXT](VkImageCompressionFixedRateFlagsEXT.html) bitfields describing allowed
 fixed-rate compression rates of each image plane.
 It is ignored if `flags` does not include
-`VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT`.
+[VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT](VkImageCompressionFlagBitsEXT.html).
 
 If enabled, fixed-rate compression is done in an implementation-defined
 manner and **may** be applied at block granularity.
@@ -66,16 +66,16 @@ Valid Usage
 * 
 [](#VUID-VkImageCompressionControlEXT-flags-06747) VUID-VkImageCompressionControlEXT-flags-06747
 
-`flags` **must** be one of `VK_IMAGE_COMPRESSION_DEFAULT_EXT`,
-`VK_IMAGE_COMPRESSION_FIXED_RATE_DEFAULT_EXT`,
-`VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT`, or
-`VK_IMAGE_COMPRESSION_DISABLED_EXT`
+`flags` **must** be one of [VK_IMAGE_COMPRESSION_DEFAULT_EXT](VkImageCompressionFlagBitsEXT.html),
+[VK_IMAGE_COMPRESSION_FIXED_RATE_DEFAULT_EXT](VkImageCompressionFlagBitsEXT.html),
+[VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT](VkImageCompressionFlagBitsEXT.html), or
+[VK_IMAGE_COMPRESSION_DISABLED_EXT](VkImageCompressionFlagBitsEXT.html)
 
 * 
 [](#VUID-VkImageCompressionControlEXT-flags-06748) VUID-VkImageCompressionControlEXT-flags-06748
 
 If `flags` includes
-`VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT`,
+[VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT](VkImageCompressionFlagBitsEXT.html),
 `pFixedRateFlags` **must** not be `NULL`
 
 Valid Usage (Implicit)
@@ -83,7 +83,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageCompressionControlEXT-sType-sType) VUID-VkImageCompressionControlEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_CONTROL_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_CONTROL_EXT](VkStructureType.html)
 
 |  | Some combinations of compression properties may not be supported.
 | --- | --- |

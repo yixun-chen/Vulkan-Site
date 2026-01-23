@@ -61,7 +61,7 @@ If the `VkPhysicalDeviceImageProcessingFeaturesQCOM` structure is included in th
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceImageProcessingFeaturesQCOM`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -69,7 +69,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceImageProcessingFeaturesQCOM-sType-sType) VUID-VkPhysicalDeviceImageProcessingFeaturesQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_FEATURES_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_FEATURES_QCOM](VkStructureType.html)
 
 [VK_QCOM_image_processing](VK_QCOM_image_processing.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

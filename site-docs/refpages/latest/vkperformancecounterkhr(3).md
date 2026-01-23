@@ -51,7 +51,7 @@ that the counter belongs to.
 storage type that the counter’s data uses.
 
 * 
-`uuid` is an array of size `VK_UUID_SIZE`, containing 8-bit
+`uuid` is an array of size [VK_UUID_SIZE](VK_UUID_SIZE.html), containing 8-bit
 values that represent a universally unique identifier for the counter of
 the physical device.
 
@@ -60,7 +60,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPerformanceCounterKHR-sType-sType) VUID-VkPerformanceCounterKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPerformanceCounterKHR-pNext-pNext) VUID-VkPerformanceCounterKHR-pNext-pNext

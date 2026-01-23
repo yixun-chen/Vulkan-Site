@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:spec" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -174,6 +174,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="descriptorsets.html">Resource Descriptors</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="descriptorheaps.html">Descriptor Heaps</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="interfaces.html">Shader Interfaces</a>
@@ -758,7 +761,7 @@ operations.</p>
 trace instruction, and the intersection is with a triangle primitive, the
 intersection is dropped, and no further processing of this intersection
 occurs.
-If <code>VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR</code> was included
+If <a href="pipelines.html#VkPipelineCreateFlagBits" class="xref page">VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR</a> was included
 in the pipeline, traversal with <a href="../appendices/glossary.html#glossary-pipeline-trace-ray" class="xref page">pipeline trace ray</a> instructions will all behave as if <code>SkipTrianglesKHR</code> was
 included in their <code>Ray Flags</code> operand.</p>
 </div>
@@ -767,7 +770,7 @@ included in their <code>Ray Flags</code> operand.</p>
 trace instruction, and the intersection is with an AABB primitive, the
 intersection is dropped, and no further processing of this intersection
 occurs.
-If <code>VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR</code> was included in
+If <a href="pipelines.html#VkPipelineCreateFlagBits" class="xref page">VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR</a> was included in
 the pipeline, traversal with <a href="../appendices/glossary.html#glossary-pipeline-trace-ray" class="xref page">pipeline trace ray</a> instructions will all behave as if <code>SkipAABBsKHR</code> was included in
 their <code>Ray Flags</code> operand.</p>
 </div>
@@ -822,7 +825,7 @@ is <span class="eq">(i +  1) mod n</span>.</p>
 <div class="paragraph">
 <p>By default, if <span class="eq">a</span> is negative then the intersection is with the front
 face of the triangle, otherwise it is with the back face.
-If <code>VK_GEOMETRY_INSTANCE_TRIANGLE_FLIP_FACING_BIT_KHR</code> is included in
+If <a href="accelstructures.html#VkGeometryInstanceFlagBitsNV" class="xref page">VK_GEOMETRY_INSTANCE_TRIANGLE_FLIP_FACING_BIT_KHR</a> is included in
 <a href="accelstructures.html#VkAccelerationStructureInstanceKHR" class="xref page">VkAccelerationStructureInstanceKHR</a>::<code>flags</code> for the instance
 containing the intersected triangle, this determination is reversed.
 Additionally, if <span class="eq">a</span> is 0, the intersection candidate is treated as not
@@ -839,9 +842,9 @@ intersecting with any face, irrespective of the sign.</p>
 <p>In a left-handed coordinate system, an intersection will be with the front
 face of a triangle if the vertices of the triangle, as defined in index
 order, appear from the ray&#8217;s perspective in a clockwise rotation order.
-<code>VK_GEOMETRY_INSTANCE_TRIANGLE_FLIP_FACING_BIT_KHR</code> was previously
+<a href="accelstructures.html#VkGeometryInstanceFlagBitsNV" class="xref page">VK_GEOMETRY_INSTANCE_TRIANGLE_FLIP_FACING_BIT_KHR</a> was previously
 annotated as
-<code>VK_GEOMETRY_INSTANCE_TRIANGLE_FRONT_COUNTERCLOCKWISE_BIT_KHR</code> because
+<a href="accelstructures.html#VkGeometryInstanceFlagBitsNV" class="xref page">VK_GEOMETRY_INSTANCE_TRIANGLE_FRONT_COUNTERCLOCKWISE_BIT_KHR</a> because
 of this.</p>
 </div>
 </td>
@@ -876,7 +879,7 @@ and no further processing of this intersection occurs.</p>
 </div>
 <div class="paragraph">
 <p>This culling is disabled if
-<code>VK_GEOMETRY_INSTANCE_TRIANGLE_FACING_CULL_DISABLE_BIT_KHR</code> was included
+<a href="accelstructures.html#VkGeometryInstanceFlagBitsNV" class="xref page">VK_GEOMETRY_INSTANCE_TRIANGLE_FACING_CULL_DISABLE_BIT_KHR</a> was included
 in <a href="accelstructures.html#VkAccelerationStructureInstanceKHR" class="xref page">VkAccelerationStructureInstanceKHR</a>::<code>flags</code> for the instance
 which the intersected geometry belongs to.</p>
 </div>
@@ -902,7 +905,7 @@ Intersection candidates <strong>can</strong> also be culled based on their opaci
 <div class="paragraph">
 <div class="title">Determination</div>
 <p>Each individual intersection candidate is initially determined as opaque if
-<code>VK_GEOMETRY_OPAQUE_BIT_KHR</code> was included in the
+<a href="resources.html#VkGeometryFlagBitsNV" class="xref page">VK_GEOMETRY_OPAQUE_BIT_KHR</a> was included in the
 <a href="resources.html#VkGeometryNV" class="xref page">VkGeometryNV</a>::<code>flags</code>
 or
 <a href="accelstructures.html#VkAccelerationStructureGeometryKHR" class="xref page">VkAccelerationStructureGeometryKHR</a>::<code>flags</code>
@@ -920,10 +923,10 @@ opacity matching the AABB candidate that it was generated from.</p>
 </div>
 <div class="paragraph">
 <p>However, this opacity can be overridden when it is built into an instance.
-Setting <code>VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_KHR</code> in
+Setting <a href="accelstructures.html#VkGeometryInstanceFlagBitsNV" class="xref page">VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_KHR</a> in
 <a href="accelstructures.html#VkAccelerationStructureInstanceKHR" class="xref page">VkAccelerationStructureInstanceKHR</a>::<code>flags</code> will force all
 geometries in the instance to be considered opaque.
-Similarly, setting <code>VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_KHR</code> will
+Similarly, setting <a href="accelstructures.html#VkGeometryInstanceFlagBitsNV" class="xref page">VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_KHR</a> will
 force all geometries in the instance to be considered non-opaque.</p>
 </div>
 <div class="paragraph">
@@ -960,16 +963,16 @@ is dropped, and no further processing occurs.</p>
 <div class="sect2">
 <h3 id="ray-opacity-micromap"><a class="anchor" href="#ray-opacity-micromap"></a>Ray Opacity Micromap</h3>
 <div class="paragraph">
-<p>A <code>VK_GEOMETRY_TYPE_TRIANGLES_KHR</code>
-or <code>VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX</code>
+<p>A <a href="resources.html#VkGeometryTypeNV" class="xref page">VK_GEOMETRY_TYPE_TRIANGLES_KHR</a>
+or <a href="resources.html#VkGeometryTypeNV" class="xref page">VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX</a>
 geometry in the acceleration structure <strong>may</strong> have an opacity micromap
 associated with it to give finer-grained opacity information.</p>
 </div>
 <div class="paragraph">
 <p>If the intersection candidate is with a geometry with an associated opacity
-micromap and <code>VK_GEOMETRY_INSTANCE_DISABLE_OPACITY_MICROMAPS_BIT_EXT</code> is
+micromap and <a href="accelstructures.html#VkGeometryInstanceFlagBitsNV" class="xref page">VK_GEOMETRY_INSTANCE_DISABLE_OPACITY_MICROMAPS_BIT_EXT</a> is
 not set in its instance then the micromap is used to determine geometry
-opacity instead of the <code>VK_GEOMETRY_OPAQUE_BIT_KHR</code> flag in the
+opacity instead of the <a href="resources.html#VkGeometryFlagBitsNV" class="xref page">VK_GEOMETRY_OPAQUE_BIT_KHR</a> flag in the
 geometry.</p>
 </div>
 <div class="paragraph">
@@ -1011,7 +1014,7 @@ bit-parallel conversion between barycentric address and index values.</p>
 <p>The result of the opacity micromap lookup and operations is to treat the
 intersection as opaque, non-opaque, or ignored.
 The interpretation of the values depends on
-<code>VK_GEOMETRY_INSTANCE_FORCE_OPACITY_MICROMAP_2_STATE_BIT_EXT</code> in the
+<a href="accelstructures.html#VkGeometryInstanceFlagBitsNV" class="xref page">VK_GEOMETRY_INSTANCE_FORCE_OPACITY_MICROMAP_2_STATE_BIT_EXT</a> in the
 instance of the candidate intersection or <code>ForceOpacityMicromap2StateEXT</code>
 ray flags on the ray.
 If either is set, the opacity micromap information is interpreted in 2 state
@@ -1021,12 +1024,12 @@ as ignored, no further processing of that candidate is done.</p>
 </div>
 <div class="paragraph">
 <p>If the associated opacity micromap has format
-<code>VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT</code>, each element of the micromap
+<a href="VK_EXT_opacity_micromap/micromaps.html#VkOpacityMicromapFormatEXT" class="xref page">VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT</a>, each element of the micromap
 is represented by a single bit at the index derived above.</p>
 </div>
 <div class="paragraph">
 <p>If the associated opacity micromap has format
-<code>VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT</code>, each element is represented by
+<a href="VK_EXT_opacity_micromap/micromaps.html#VkOpacityMicromapFormatEXT" class="xref page">VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT</a>, each element is represented by
 a two bit value at the index derived above.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -1050,56 +1053,56 @@ a two bit value at the index derived above.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_TRANSPARENT_EXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="accelstructures.html#VkOpacityMicromapSpecialIndexEXT" class="xref page">VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_TRANSPARENT_EXT</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ignored</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_TRANSPARENT_EXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="accelstructures.html#VkOpacityMicromapSpecialIndexEXT" class="xref page">VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_TRANSPARENT_EXT</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ignored</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_OPAQUE_EXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="accelstructures.html#VkOpacityMicromapSpecialIndexEXT" class="xref page">VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_OPAQUE_EXT</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Opaque</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_OPAQUE_EXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="accelstructures.html#VkOpacityMicromapSpecialIndexEXT" class="xref page">VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_OPAQUE_EXT</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Opaque</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_TRANSPARENT_EXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="accelstructures.html#VkOpacityMicromapSpecialIndexEXT" class="xref page">VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_TRANSPARENT_EXT</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ignored</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_TRANSPARENT_EXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="accelstructures.html#VkOpacityMicromapSpecialIndexEXT" class="xref page">VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_TRANSPARENT_EXT</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Non-opaque</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_OPAQUE_EXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="accelstructures.html#VkOpacityMicromapSpecialIndexEXT" class="xref page">VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_OPAQUE_EXT</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Opaque</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_OPAQUE_EXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="accelstructures.html#VkOpacityMicromapSpecialIndexEXT" class="xref page">VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_OPAQUE_EXT</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Non-opaque</p></td>
 </tr>
@@ -1142,7 +1145,7 @@ intersected geometry.
 If this shader calls <code>OpReportIntersectionKHR</code>, a new intersection
 candidate is generated as described
 <a href="#aabb-intersection-candidate-generation">below</a>.
-If the intersection shader is <code>VK_SHADER_UNUSED_KHR</code> (which is only
+If the intersection shader is <a href="pipelines.html#VK_SHADER_UNUSED_KHR" class="xref page">VK_SHADER_UNUSED_KHR</a> (which is only
 allowed for a zero shader group) then no further processing of the
 intersection candidate occurs.</p>
 </div>
@@ -1195,7 +1198,7 @@ the <a href="raytracing.html#shader-binding-table" class="xref page">Shader Bind
 If this shader calls <code>OpIgnoreIntersectionKHR</code>, the candidate is dropped
 and no further processing of the candidate occurs.
 If the <a href="shaders.html#shaders-any-hit" class="xref page">any-hit shader</a> identified is
-<code>VK_SHADER_UNUSED_KHR</code>, the candidate is immediately confirmed as a
+<a href="pipelines.html#VK_SHADER_UNUSED_KHR" class="xref page">VK_SHADER_UNUSED_KHR</a>, the candidate is immediately confirmed as a
 valid hit and passes to the next stage of processing.</p>
 </div>
 <div class="paragraph">
@@ -1215,7 +1218,7 @@ candidate is dropped and no further processing of the candidate occurs.</p>
 </div>
 <div class="paragraph">
 <p>This operation <strong>may</strong> be executed multiple times for the same intersection
-candidate unless <code>VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_KHR</code>
+candidate unless <a href="resources.html#VkGeometryFlagBitsNV" class="xref page">VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_KHR</a>
 was specified for the intersected geometry.</p>
 </div>
 </div>
@@ -1278,7 +1281,7 @@ Control returns to the shader that executed the
 <a href="../appendices/glossary.html#glossary-pipeline-trace-ray" class="xref page">pipeline trace ray</a> instruction once this
 shader returns.
 This shader is skipped if either the ray flags included
-<code>SkipClosestHitShaderKHR</code>, or if the <a href="shaders.html#shaders-closest-hit" class="xref page">closest hit shader</a> identified is <code>VK_SHADER_UNUSED_KHR</code>.</p>
+<code>SkipClosestHitShaderKHR</code>, or if the <a href="shaders.html#shaders-closest-hit" class="xref page">closest hit shader</a> identified is <a href="pipelines.html#VK_SHADER_UNUSED_KHR" class="xref page">VK_SHADER_UNUSED_KHR</a>.</p>
 </div>
 <div class="paragraph">
 <p>For rays traced with a <a href="../appendices/glossary.html#glossary-pipeline-trace-ray" class="xref page">pipeline trace ray</a>
@@ -1287,7 +1290,7 @@ invoked.
 Control returns to the shader that executed the pipeline trace ray
 instruction once this shader returns.
 This shader is skipped if the miss shader identified is
-<code>VK_SHADER_UNUSED_KHR</code>.</p>
+<a href="pipelines.html#VK_SHADER_UNUSED_KHR" class="xref page">VK_SHADER_UNUSED_KHR</a>.</p>
 </div>
 <div class="paragraph">
 <p>If the ray was traced with <code>OpRayQueryProceedKHR</code>, control is returned to

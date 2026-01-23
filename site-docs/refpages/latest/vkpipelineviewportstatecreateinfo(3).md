@@ -116,7 +116,7 @@ If `scissorCount` and `viewportCount` are both not dynamic, then
 [](#VUID-VkPipelineViewportStateCreateInfo-viewportCount-04135) VUID-VkPipelineViewportStateCreateInfo-viewportCount-04135
 
 If the graphics pipeline is being created with
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` set then `viewportCount`
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](VkDynamicState.html) set then `viewportCount`
 **must** be `0`, otherwise
 `viewportCount` **must** be greater than `0`
 
@@ -124,7 +124,7 @@ If the graphics pipeline is being created with
 [](#VUID-VkPipelineViewportStateCreateInfo-scissorCount-04136) VUID-VkPipelineViewportStateCreateInfo-scissorCount-04136
 
 If the graphics pipeline is being created with
-`VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT` set then `scissorCount`
+[VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](VkDynamicState.html) set then `scissorCount`
 **must** be `0`, otherwise
 `scissorCount` **must** be greater than `0`
 
@@ -133,7 +133,7 @@ If the graphics pipeline is being created with
 
 If the `viewportWScalingEnable` member of a
 [VkPipelineViewportWScalingStateCreateInfoNV](VkPipelineViewportWScalingStateCreateInfoNV.html) structure included in
-the `pNext` chain is `VK_TRUE`, the `viewportCount` member
+the `pNext` chain is [VK_TRUE](VK_TRUE.html), the `viewportCount` member
 of the [VkPipelineViewportWScalingStateCreateInfoNV](VkPipelineViewportWScalingStateCreateInfoNV.html) structure **must**
 be greater than or equal to
 [VkPipelineViewportStateCreateInfo](#)::`viewportCount`
@@ -143,7 +143,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineViewportStateCreateInfo-sType-sType) VUID-VkPipelineViewportStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineViewportStateCreateInfo-pNext-pNext) VUID-VkPipelineViewportStateCreateInfo-pNext-pNext

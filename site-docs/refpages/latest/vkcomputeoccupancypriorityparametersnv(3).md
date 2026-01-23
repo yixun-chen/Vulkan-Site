@@ -57,12 +57,12 @@ the implementation.
 Valid Usage
 
 * 
-[](#VUID-VkComputeOccupancyPriorityParametersNV-occupancyPriority-11919) VUID-VkComputeOccupancyPriorityParametersNV-occupancyPriority-11919
+[](#VUID-VkComputeOccupancyPriorityParametersNV-occupancyPriority-12298) VUID-VkComputeOccupancyPriorityParametersNV-occupancyPriority-12298
 
 `occupancyPriority` **must** be between `0` and `1`, inclusive
 
 * 
-[](#VUID-VkComputeOccupancyPriorityParametersNV-occupancyThrottling-11920) VUID-VkComputeOccupancyPriorityParametersNV-occupancyThrottling-11920
+[](#VUID-VkComputeOccupancyPriorityParametersNV-occupancyThrottling-12299) VUID-VkComputeOccupancyPriorityParametersNV-occupancyThrottling-12299
 
 `occupancyThrottling` **must** be between `0` and `1`, inclusive
 
@@ -71,7 +71,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkComputeOccupancyPriorityParametersNV-sType-sType) VUID-VkComputeOccupancyPriorityParametersNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMPUTE_OCCUPANCY_PRIORITY_PARAMETERS_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMPUTE_OCCUPANCY_PRIORITY_PARAMETERS_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkComputeOccupancyPriorityParametersNV-pNext-pNext) VUID-VkComputeOccupancyPriorityParametersNV-pNext-pNext

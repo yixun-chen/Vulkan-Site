@@ -52,8 +52,8 @@ slope in depth bias calculations.
 If `pNext` does not contain a [VkDepthBiasRepresentationInfoEXT](VkDepthBiasRepresentationInfoEXT.html)
 structure, then this command is equivalent to including a
 [VkDepthBiasRepresentationInfoEXT](VkDepthBiasRepresentationInfoEXT.html) with `depthBiasExact` set to
-`VK_FALSE` and `depthBiasRepresentation` set to
-`VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORMAT_EXT`.
+[VK_FALSE](VK_FALSE.html) and `depthBiasRepresentation` set to
+[VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORMAT_EXT](VkDepthBiasRepresentationEXT.html).
 
 Valid Usage
 
@@ -68,7 +68,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDepthBiasInfoEXT-sType-sType) VUID-VkDepthBiasInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEPTH_BIAS_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEPTH_BIAS_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDepthBiasInfoEXT-pNext-pNext) VUID-VkDepthBiasInfoEXT-pNext-pNext

@@ -56,32 +56,32 @@ Valid Usage
 [](#VUID-VkResolveImageModeInfoKHR-flags-10995) VUID-VkResolveImageModeInfoKHR-flags-10995
 
 If `flags` includes
-`VK_RESOLVE_IMAGE_SKIP_TRANSFER_FUNCTION_BIT_KHR`, `flags` **must**
-not include `VK_RESOLVE_IMAGE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`
+[VK_RESOLVE_IMAGE_SKIP_TRANSFER_FUNCTION_BIT_KHR](VkResolveImageFlagBitsKHR.html), `flags` **must**
+not include [VK_RESOLVE_IMAGE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](VkResolveImageFlagBitsKHR.html)
 
 * 
 [](#VUID-VkResolveImageModeInfoKHR-flags-10996) VUID-VkResolveImageModeInfoKHR-flags-10996
 
 If `flags` includes
-`VK_RESOLVE_IMAGE_SKIP_TRANSFER_FUNCTION_BIT_KHR` or
-`VK_RESOLVE_IMAGE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`,
+[VK_RESOLVE_IMAGE_SKIP_TRANSFER_FUNCTION_BIT_KHR](VkResolveImageFlagBitsKHR.html) or
+[VK_RESOLVE_IMAGE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](VkResolveImageFlagBitsKHR.html),
 [`resolveSrgbFormatSupportsTransferFunctionControl`](../../../../spec/latest/chapters/limits.html#limits-resolveSrgbFormatSupportsTransferFunctionControl)
-**must** be `VK_TRUE`
+**must** be [VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-VkResolveImageModeInfoKHR-flags-10997) VUID-VkResolveImageModeInfoKHR-flags-10997
 
 If `flags` includes
-`VK_RESOLVE_IMAGE_SKIP_TRANSFER_FUNCTION_BIT_KHR` or
-`VK_RESOLVE_IMAGE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`,
-`resolveMode` **must** be equal to `VK_RESOLVE_MODE_AVERAGE_BIT`
+[VK_RESOLVE_IMAGE_SKIP_TRANSFER_FUNCTION_BIT_KHR](VkResolveImageFlagBitsKHR.html) or
+[VK_RESOLVE_IMAGE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](VkResolveImageFlagBitsKHR.html),
+`resolveMode` **must** be equal to [VK_RESOLVE_MODE_AVERAGE_BIT](VkResolveModeFlagBits.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkResolveImageModeInfoKHR-sType-sType) VUID-VkResolveImageModeInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RESOLVE_IMAGE_MODE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RESOLVE_IMAGE_MODE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkResolveImageModeInfoKHR-flags-parameter) VUID-VkResolveImageModeInfoKHR-flags-parameter

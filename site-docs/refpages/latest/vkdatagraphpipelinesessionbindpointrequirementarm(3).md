@@ -22,7 +22,7 @@ VkDataGraphPipelineSessionBindPointRequirementARM - Structure specifying the req
 // Provided by VK_ARM_data_graph
 typedef struct VkDataGraphPipelineSessionBindPointRequirementARM {
     VkStructureType                               sType;
-    const void*                                   pNext;
+    void*                                         pNext;
     VkDataGraphPipelineSessionBindPointARM        bindPoint;
     VkDataGraphPipelineSessionBindPointTypeARM    bindPointType;
     uint32_t                                      numObjects;
@@ -51,29 +51,19 @@ Implementations **must** always return 1 for `numObjects` if
 `bindPoint` is one of the following bind points:
 
 * 
-`VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TRANSIENT_ARM`
+[VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TRANSIENT_ARM](VkDataGraphPipelineSessionBindPointARM.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDataGraphPipelineSessionBindPointRequirementARM-sType-sType) VUID-VkDataGraphPipelineSessionBindPointRequirementARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_REQUIREMENT_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_REQUIREMENT_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkDataGraphPipelineSessionBindPointRequirementARM-pNext-pNext) VUID-VkDataGraphPipelineSessionBindPointRequirementARM-pNext-pNext
 
  `pNext` **must** be `NULL`
-
-* 
-[](#VUID-VkDataGraphPipelineSessionBindPointRequirementARM-bindPoint-parameter) VUID-VkDataGraphPipelineSessionBindPointRequirementARM-bindPoint-parameter
-
- `bindPoint` **must** be a valid [VkDataGraphPipelineSessionBindPointARM](VkDataGraphPipelineSessionBindPointARM.html) value
-
-* 
-[](#VUID-VkDataGraphPipelineSessionBindPointRequirementARM-bindPointType-parameter) VUID-VkDataGraphPipelineSessionBindPointRequirementARM-bindPointType-parameter
-
- `bindPointType` **must** be a valid [VkDataGraphPipelineSessionBindPointTypeARM](VkDataGraphPipelineSessionBindPointTypeARM.html) value
 
 [VK_ARM_data_graph](VK_ARM_data_graph.html), [VkDataGraphPipelineSessionBindPointARM](VkDataGraphPipelineSessionBindPointARM.html), [VkDataGraphPipelineSessionBindPointTypeARM](VkDataGraphPipelineSessionBindPointTypeARM.html), [VkStructureType](VkStructureType.html), [vkGetDataGraphPipelineSessionBindPointRequirementsARM](vkGetDataGraphPipelineSessionBindPointRequirementsARM.html)
 

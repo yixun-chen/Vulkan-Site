@@ -52,7 +52,7 @@ being reset.
 This command sets the status of query indices [`firstQuery`,
 `firstQuery` +  `queryCount` - 1] to unavailable.
 
-If `queryPool` is `VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR` this command
+If `queryPool` is [VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](VkQueryType.html) this command
 sets the status of query indices [`firstQuery`, `firstQuery`
 +  `queryCount` - 1] to unavailable for each pass.
 

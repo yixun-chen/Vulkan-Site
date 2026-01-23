@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkNativeBufferUsageOHOS-sType-sType) VUID-VkNativeBufferUsageOHOS-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_NATIVE_BUFFER_USAGE_OHOS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_NATIVE_BUFFER_USAGE_OHOS](VkStructureType.html)
 
 [VK_OHOS_external_memory](VK_OHOS_external_memory.html), [VkStructureType](VkStructureType.html)
 

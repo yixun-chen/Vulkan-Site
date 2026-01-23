@@ -32,22 +32,22 @@ typedef enum VkColorComponentFlagBits {
 } VkColorComponentFlagBits;
 
 * 
-`VK_COLOR_COMPONENT_R_BIT` specifies that the R value is
+[VK_COLOR_COMPONENT_R_BIT](#) specifies that the R value is
 written to the color attachment for the appropriate sample.
 Otherwise, the value in memory is unmodified.
 
 * 
-`VK_COLOR_COMPONENT_G_BIT` specifies that the G value is
+[VK_COLOR_COMPONENT_G_BIT](#) specifies that the G value is
 written to the color attachment for the appropriate sample.
 Otherwise, the value in memory is unmodified.
 
 * 
-`VK_COLOR_COMPONENT_B_BIT` specifies that the B value is
+[VK_COLOR_COMPONENT_B_BIT](#) specifies that the B value is
 written to the color attachment for the appropriate sample.
 Otherwise, the value in memory is unmodified.
 
 * 
-`VK_COLOR_COMPONENT_A_BIT` specifies that the A value is
+[VK_COLOR_COMPONENT_A_BIT](#) specifies that the A value is
 written to the color attachment for the appropriate sample.
 Otherwise, the value in memory is unmodified.
 

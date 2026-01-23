@@ -77,21 +77,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 To destroy a previously created external compute queue call:
 
@@ -208,7 +208,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalComputeQueueDeviceCreateInfoNV-sType-sType) VUID-VkExternalComputeQueueDeviceCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_DEVICE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_DEVICE_CREATE_INFO_NV](../fundamentals.html#VkStructureType)
 
 The `VkExternalComputeQueueCreateInfoNV` structure is defined as:
 
@@ -239,7 +239,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalComputeQueueCreateInfoNV-sType-sType) VUID-VkExternalComputeQueueCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_CREATE_INFO_NV](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExternalComputeQueueCreateInfoNV-pNext-pNext) VUID-VkExternalComputeQueueCreateInfoNV-pNext-pNext
@@ -277,7 +277,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalComputeQueueDataParamsNV-sType-sType) VUID-VkExternalComputeQueueDataParamsNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_DATA_PARAMS_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_DATA_PARAMS_NV](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExternalComputeQueueDataParamsNV-pNext-pNext) VUID-VkExternalComputeQueueDataParamsNV-pNext-pNext
@@ -315,4 +315,4 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExternalComputeQueuePropertiesNV-sType-sType) VUID-VkPhysicalDeviceExternalComputeQueuePropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_COMPUTE_QUEUE_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_COMPUTE_QUEUE_PROPERTIES_NV](../fundamentals.html#VkStructureType)

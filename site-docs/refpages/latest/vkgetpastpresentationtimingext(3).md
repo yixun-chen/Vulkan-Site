@@ -49,21 +49,21 @@ the [VkPastPresentationTimingPropertiesEXT](VkPastPresentationTimingPropertiesEX
 If upon return the value of
 `VkPastPresentationTimingPropertiesEXT`::`presentationTimingCount`
 is less than the number of available timing records for the given
-`VkPastPresentationTimingInfoEXT`::`swapchain`, `VK_INCOMPLETE`
-is returned instead of `VK_SUCCESS` to indicate that not all the
+`VkPastPresentationTimingInfoEXT`::`swapchain`, [VK_INCOMPLETE](VkResult.html)
+is returned instead of [VK_SUCCESS](VkResult.html) to indicate that not all the
 available values were returned.
 
 Upon return, zero or more slots of the `swapchain` internal timing
 results queue, equal to the number of entries written to
 `VkPastPresentationTimingPropertiesEXT`::`pPresentationTimings` for
-which `reportComplete` is `VK_TRUE`, are made available for future
+which `reportComplete` is [VK_TRUE](VK_TRUE.html), are made available for future
 `vkQueuePresentKHR` calls.
 Elements of `pPresentationTimings` are arranged in ascending order of
 present ids.
 
 Timing information **may** become available out of order with regards to their
 associated [vkQueuePresentKHR](vkQueuePresentKHR.html) order.
-`VK_PAST_PRESENTATION_TIMING_ALLOW_OUT_OF_ORDER_RESULTS_BIT_EXT` **can** be
+[VK_PAST_PRESENTATION_TIMING_ALLOW_OUT_OF_ORDER_RESULTS_BIT_EXT](VkPastPresentationTimingFlagBitsEXT.html) **can** be
 set in `VkPastPresentationTimingInfoEXT`::`flags` to allow
 `vkGetPastPresentationTimingEXT` to return results in that same order.
 Otherwise, results are returned in the order of their associated
@@ -87,7 +87,7 @@ Valid Usage
 * 
 [](#VUID-vkGetPastPresentationTimingEXT-flags-12230) VUID-vkGetPastPresentationTimingEXT-flags-12230
 
-If `VK_PAST_PRESENTATION_TIMING_ALLOW_OUT_OF_ORDER_RESULTS_BIT_EXT`
+If [VK_PAST_PRESENTATION_TIMING_ALLOW_OUT_OF_ORDER_RESULTS_BIT_EXT](VkPastPresentationTimingFlagBitsEXT.html)
 is set in `VkPastPresentationTimingInfoEXT`::`flags`, the
 `presentStageCount` value of each element of
 `VkPastPresentationTimingPropertiesEXT`::`pPresentationTimings`
@@ -100,7 +100,7 @@ returned yet by a previous call
 * 
 [](#VUID-vkGetPastPresentationTimingEXT-flags-12231) VUID-vkGetPastPresentationTimingEXT-flags-12231
 
-If `VK_PAST_PRESENTATION_TIMING_ALLOW_OUT_OF_ORDER_RESULTS_BIT_EXT`
+If [VK_PAST_PRESENTATION_TIMING_ALLOW_OUT_OF_ORDER_RESULTS_BIT_EXT](VkPastPresentationTimingFlagBitsEXT.html)
 is not set in `VkPastPresentationTimingInfoEXT`::`flags`, the
 `presentStageCount` value of each element of
 `VkPastPresentationTimingPropertiesEXT`::`pPresentationTimings`
@@ -132,27 +132,27 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DATE_KHR`
+[VK_ERROR_OUT_OF_DATE_KHR](VkResult.html)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_EXT_present_timing](VK_EXT_present_timing.html), [VkDevice](VkDevice.html), [VkPastPresentationTimingInfoEXT](VkPastPresentationTimingInfoEXT.html), [VkPastPresentationTimingPropertiesEXT](VkPastPresentationTimingPropertiesEXT.html)
 

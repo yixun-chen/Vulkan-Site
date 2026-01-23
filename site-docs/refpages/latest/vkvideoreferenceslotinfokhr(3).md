@@ -51,7 +51,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoReferenceSlotInfoKHR-sType-sType) VUID-VkVideoReferenceSlotInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_REFERENCE_SLOT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_REFERENCE_SLOT_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoReferenceSlotInfoKHR-pNext-pNext) VUID-VkVideoReferenceSlotInfoKHR-pNext-pNext

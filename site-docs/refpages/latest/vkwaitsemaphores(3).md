@@ -20,7 +20,7 @@
 vkWaitSemaphores - Wait for timeline semaphores on the host
 
 To wait for a set of semaphores created with a [VkSemaphoreType](VkSemaphoreType.html) of
-`VK_SEMAPHORE_TYPE_TIMELINE` to reach particular counter values on the
+[VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html) to reach particular counter values on the
 host, call:
 
 // Provided by VK_VERSION_1_2
@@ -58,17 +58,17 @@ is satisfied or the `timeout` has expired, whichever is sooner.
 
 If `timeout` is zero, then `vkWaitSemaphores` does not wait, but
 simply returns information about the current state of the semaphores.
-`VK_TIMEOUT` will be returned in this case if the condition is not
+[VK_TIMEOUT](VkResult.html) will be returned in this case if the condition is not
 satisfied, even though no actual wait was performed.
 
 If the condition is satisfied before the `timeout` has expired,
-`vkWaitSemaphores` returns `VK_SUCCESS`.
-Otherwise, `vkWaitSemaphores` returns `VK_TIMEOUT` after the
+`vkWaitSemaphores` returns [VK_SUCCESS](VkResult.html).
+Otherwise, `vkWaitSemaphores` returns [VK_TIMEOUT](VkResult.html) after the
 `timeout` has expired.
 
 If device loss occurs (see [Lost Device](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-lost-device)) before
 the timeout has expired, `vkWaitSemaphores` **must** return in finite time
-with either `VK_SUCCESS` or `VK_ERROR_DEVICE_LOST`.
+with either [VK_SUCCESS](VkResult.html) or [VK_ERROR_DEVICE_LOST](VkResult.html).
 
 Valid Usage (Implicit)
 
@@ -87,27 +87,27 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 * 
-`VK_TIMEOUT`
+[VK_TIMEOUT](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_timeline_semaphore](VK_KHR_timeline_semaphore.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), [VkDevice](VkDevice.html), [VkSemaphoreWaitInfo](VkSemaphoreWaitInfo.html)
 

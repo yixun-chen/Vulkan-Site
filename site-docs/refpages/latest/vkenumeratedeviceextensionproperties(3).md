@@ -59,6 +59,10 @@ If the `[VK_KHR_ray_tracing_pipeline](VK_KHR_ray_tracing_pipeline.html)` extensi
 supported by this query, the `[VK_KHR_pipeline_library](VK_KHR_pipeline_library.html)` extension
 **must** also be supported.
 
+If the `[VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html)` extension is advertised as supported
+by this query, the `[VK_KHR_shader_untyped_pointers](VK_KHR_shader_untyped_pointers.html)` extension **must**
+also be supported.
+
 Implementations claiming support for the [Roadmap 2022](../../../../spec/latest/appendices/roadmap.html#roadmap-2022)
 profile **must** advertise the `[VK_KHR_global_priority](VK_KHR_global_priority.html)` extension in
 `pProperties`.
@@ -142,27 +146,27 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_LAYER_NOT_PRESENT`
+[VK_ERROR_LAYER_NOT_PRESENT](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkExtensionProperties](VkExtensionProperties.html), [VkPhysicalDevice](VkPhysicalDevice.html)
 

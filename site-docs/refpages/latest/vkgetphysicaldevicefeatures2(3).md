@@ -44,8 +44,8 @@ Each structure in `pFeatures` and its `pNext` chain contains members
 corresponding to fine-grained features.
 Each structure in `pFeatures` and its `pNext` chain contains
 `VkBool32` members corresponding to fine-grained features.
-Each such member is returned with a `VK_TRUE` value indicating that
-feature is supported on this physical device, or a `VK_FALSE` value
+Each such member is returned with a [VK_TRUE](VK_TRUE.html) value indicating that
+feature is supported on this physical device, or a [VK_FALSE](VK_FALSE.html) value
 indicating it is unsupported.
 
 Valid Usage (Implicit)

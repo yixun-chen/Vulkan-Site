@@ -128,18 +128,18 @@ Extending [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html):
 * 
 Extending [VkShaderFloatControlsIndependence](VkShaderFloatControlsIndependence.html):
 
-`VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_32_BIT_ONLY_KHR`
+[VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_32_BIT_ONLY_KHR](VkShaderFloatControlsIndependence.html)
 
 * 
-`VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_ALL_KHR`
+[VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_ALL_KHR](VkShaderFloatControlsIndependence.html)
 
 * 
-`VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_NONE_KHR`
+[VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_NONE_KHR](VkShaderFloatControlsIndependence.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR](VkStructureType.html)
 
 * 
 [`DenormPreserve`](../../../../spec/latest/appendices/spirvenv.html#spirvenv-capabilities-table-DenormPreserve)
@@ -206,7 +206,7 @@ booleans named “separateDenormSettings” and
 “they can all be set independently, or not”.
 However the spec language as written indicated that the 32-bit value could
 always be set independently, and only the 16- and 64-bit controls needed to
-be the same if these values were `VK_FALSE`.
+be the same if these values were [VK_FALSE](VK_FALSE.html).
 
 As a result of this slight disparity, and lack of test coverage for this
 facet of the extension, we ended up with two different behaviors in the

@@ -113,15 +113,15 @@ Extending [VkPipelineColorBlendStateCreateInfo](VkPipelineColorBlendStateCreateI
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT`
+[VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT](VkDynamicState.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COLOR_WRITE_ENABLE_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COLOR_WRITE_ENABLE_FEATURES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_COLOR_WRITE_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_PIPELINE_COLOR_WRITE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2020-01-25 (Sharif Elcott)

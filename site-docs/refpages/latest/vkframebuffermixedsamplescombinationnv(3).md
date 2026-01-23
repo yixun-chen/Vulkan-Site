@@ -62,7 +62,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFramebufferMixedSamplesCombinationNV-sType-sType) VUID-VkFramebufferMixedSamplesCombinationNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FRAMEBUFFER_MIXED_SAMPLES_COMBINATION_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FRAMEBUFFER_MIXED_SAMPLES_COMBINATION_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkFramebufferMixedSamplesCombinationNV-pNext-pNext) VUID-VkFramebufferMixedSamplesCombinationNV-pNext-pNext

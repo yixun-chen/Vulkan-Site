@@ -61,33 +61,33 @@ structure.
 
 * 
 `simStartTimeUs` is the timestamp written when
-`vkSetLatencyMarkerNV` is called with the `VkLatencyMarkerNV`
-enum `VK_LATENCY_MARKER_SIMULATION_START_NV`.
+`vkSetLatencyMarkerNV` is called with the [VkLatencyMarkerNV](VkLatencyMarkerNV.html)
+enum [VK_LATENCY_MARKER_SIMULATION_START_NV](VkLatencyMarkerNV.html).
 
 * 
 `simEndTimeUs` is the timestamp written when
-`vkSetLatencyMarkerNV` is called with the `VkLatencyMarkerNV`
-enum `VK_LATENCY_MARKER_SIMULATION_END_NV`
+`vkSetLatencyMarkerNV` is called with the [VkLatencyMarkerNV](VkLatencyMarkerNV.html)
+enum [VK_LATENCY_MARKER_SIMULATION_END_NV](VkLatencyMarkerNV.html)
 
 * 
 `renderStartTimeUs` is the timestamp written when
-`vkSetLatencyMarkerNV` is called with the `VkLatencyMarkerNV`
-enum `VK_LATENCY_MARKER_RENDERSUBMIT_START_NV`.
+`vkSetLatencyMarkerNV` is called with the [VkLatencyMarkerNV](VkLatencyMarkerNV.html)
+enum [VK_LATENCY_MARKER_RENDERSUBMIT_START_NV](VkLatencyMarkerNV.html).
 
 * 
 `renderEndTimeUs` is the timestamp written when
-`vkSetLatencyMarkerNV` is called with the `VkLatencyMarkerNV`
-enum `VK_LATENCY_MARKER_RENDERSUBMIT_END_NV`.
+`vkSetLatencyMarkerNV` is called with the [VkLatencyMarkerNV](VkLatencyMarkerNV.html)
+enum [VK_LATENCY_MARKER_RENDERSUBMIT_END_NV](VkLatencyMarkerNV.html).
 
 * 
 `presentStartTimeUs` is the timestamp written when
-`vkSetLatencyMarkerNV` is called with the `VkLatencyMarkerNV`
-enum `VK_LATENCY_MARKER_PRESENT_START_NV`.
+`vkSetLatencyMarkerNV` is called with the [VkLatencyMarkerNV](VkLatencyMarkerNV.html)
+enum [VK_LATENCY_MARKER_PRESENT_START_NV](VkLatencyMarkerNV.html).
 
 * 
 `presentEndTimeUs` is the timestamp written when
-`vkSetLatencyMarkerNV` is called with the `VkLatencyMarkerNV`
-enum `VK_LATENCY_MARKER_PRESENT_END_NV`.
+`vkSetLatencyMarkerNV` is called with the [VkLatencyMarkerNV](VkLatencyMarkerNV.html)
+enum [VK_LATENCY_MARKER_PRESENT_END_NV](VkLatencyMarkerNV.html).
 
 * 
 `driverStartTimeUs` is the timestamp written when the first
@@ -118,7 +118,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkLatencyTimingsFrameReportNV-sType-sType) VUID-VkLatencyTimingsFrameReportNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_LATENCY_TIMINGS_FRAME_REPORT_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_LATENCY_TIMINGS_FRAME_REPORT_NV](VkStructureType.html)
 
 [VK_NV_low_latency2](VK_NV_low_latency2.html), [VkGetLatencyMarkerInfoNV](VkGetLatencyMarkerInfoNV.html), [VkStructureType](VkStructureType.html)
 

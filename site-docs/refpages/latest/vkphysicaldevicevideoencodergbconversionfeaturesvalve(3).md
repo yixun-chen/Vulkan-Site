@@ -48,7 +48,7 @@ If the `VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE` structure is incl
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -56,7 +56,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE-sType-sType) VUID-VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_RGB_CONVERSION_FEATURES_VALVE`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_RGB_CONVERSION_FEATURES_VALVE](VkStructureType.html)
 
 [VK_VALVE_video_encode_rgb_conversion](VK_VALVE_video_encode_rgb_conversion.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

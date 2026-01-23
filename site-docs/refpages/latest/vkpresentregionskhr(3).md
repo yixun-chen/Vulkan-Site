@@ -74,7 +74,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPresentRegionsKHR-sType-sType) VUID-VkPresentRegionsKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPresentRegionsKHR-pRegions-parameter) VUID-VkPresentRegionsKHR-pRegions-parameter

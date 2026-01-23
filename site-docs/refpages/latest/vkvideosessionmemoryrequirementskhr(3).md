@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoSessionMemoryRequirementsKHR-sType-sType) VUID-VkVideoSessionMemoryRequirementsKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_SESSION_MEMORY_REQUIREMENTS_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_SESSION_MEMORY_REQUIREMENTS_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoSessionMemoryRequirementsKHR-pNext-pNext) VUID-VkVideoSessionMemoryRequirementsKHR-pNext-pNext

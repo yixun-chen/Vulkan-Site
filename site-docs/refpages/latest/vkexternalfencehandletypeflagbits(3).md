@@ -52,7 +52,7 @@ typedef enum VkExternalFenceHandleTypeFlagBits {
 typedef VkExternalFenceHandleTypeFlagBits VkExternalFenceHandleTypeFlagBitsKHR;
 
 * 
-`VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT` specifies a POSIX file
+[VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT](#) specifies a POSIX file
 descriptor handle that has only limited valid usage outside of Vulkan
 and other compatible APIs.
 It **must** be compatible with the POSIX system calls `dup`, `dup2`,
@@ -63,7 +63,7 @@ It owns a reference to the underlying synchronization primitive
 represented by its Vulkan fence object.
 
 * 
-`VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT` specifies an NT
+[VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT](#) specifies an NT
 handle that has only limited valid usage outside of Vulkan and other
 compatible APIs.
 It **must** be compatible with the functions `DuplicateHandle`,
@@ -73,7 +73,7 @@ It owns a reference to the underlying synchronization primitive
 represented by its Vulkan fence object.
 
 * 
-`VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT` specifies a
+[VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](#) specifies a
 global share handle that has only limited valid usage outside of Vulkan
 and other compatible APIs.
 It is not compatible with any native APIs.
@@ -82,7 +82,7 @@ represented by its Vulkan fence object, and will therefore become
 invalid when all Vulkan fence objects associated with it are destroyed.
 
 * 
-`VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT` specifies a POSIX file
+[VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT](#) specifies a POSIX file
 descriptor handle to a Linux Sync File or Android Fence.
 It can be used with any native API accepting a valid sync file or fence
 as input.
@@ -98,10 +98,10 @@ following table:
 
 | Handle type | `VkPhysicalDeviceIDProperties`::`driverUUID` | `VkPhysicalDeviceIDProperties`::`deviceUUID` |
 | --- | --- | --- |
-| `VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT` | Must match | Must match |
-| `VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT` | Must match | Must match |
-| `VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT` | Must match | Must match |
-| `VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT` | No restriction | No restriction |
+| [VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT](#) | Must match | Must match |
+| [VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT](#) | Must match | Must match |
+| [VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](#) | Must match | Must match |
+| [VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT](#) | No restriction | No restriction |
 
 [VK_KHR_external_fence_capabilities](VK_KHR_external_fence_capabilities.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkExternalFenceHandleTypeFlags](VkExternalFenceHandleTypeFlags.html), [VkFenceGetFdInfoKHR](VkFenceGetFdInfoKHR.html), [VkFenceGetWin32HandleInfoKHR](VkFenceGetWin32HandleInfoKHR.html), [VkImportFenceFdInfoKHR](VkImportFenceFdInfoKHR.html), [VkImportFenceWin32HandleInfoKHR](VkImportFenceWin32HandleInfoKHR.html), [VkPhysicalDeviceExternalFenceInfo](VkPhysicalDeviceExternalFenceInfo.html)
 

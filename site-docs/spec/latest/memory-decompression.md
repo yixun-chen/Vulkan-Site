@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdDecompressMemoryEXT-commandBuffer-cmdpool) VUID-vkCmdDecompressMemoryEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdDecompressMemoryEXT-renderpass) VUID-vkCmdDecompressMemoryEXT-renderpass
@@ -143,7 +143,7 @@ The `decompressionMethod` **must** have a single bit set
 [](#VUID-VkDecompressMemoryInfoEXT-decompressionMethod-11762) VUID-VkDecompressMemoryInfoEXT-decompressionMethod-11762
 
 If `decompressionMethod` is
-`VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_EXT`, then for each
+[VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_EXT](#VkMemoryDecompressionMethodFlagBitsNV), then for each
 element of `pRegions`, `decompressedSize` **must** be less than or
 equal to 65536 bytes
 
@@ -158,7 +158,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDecompressMemoryInfoEXT-sType-sType) VUID-VkDecompressMemoryInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DECOMPRESS_MEMORY_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DECOMPRESS_MEMORY_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDecompressMemoryInfoEXT-pNext-pNext) VUID-VkDecompressMemoryInfoEXT-pNext-pNext
@@ -210,11 +210,11 @@ be written.
 
 Accesses to compressed and decompressed data specified in `srcAddress`
 and `dstAddress` **must** be [synchronized](synchronization.html#synchronization-dependencies)
-with the `VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT`
+with the [VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](synchronization.html#VkPipelineStageFlagBits2KHR)
 [pipeline stage](synchronization.html#synchronization-pipeline-stages) with
 [access type](synchronization.html#synchronization-access-types) of
-`VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT` or
-`VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT`.
+[VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT](synchronization.html#VkAccessFlagBits2KHR) or
+[VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT](synchronization.html#VkAccessFlagBits2KHR).
 
 Valid Usage
 
@@ -272,14 +272,14 @@ The memory range defined by `srcAddress` and `compressedSize`
 
 `srcAddress` **must** be a device address allocated to the application
 from a buffer created with the
-`VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` usage flag set
+[VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](resources.html#VkBufferUsageFlagBits2KHR) usage flag set
 
 * 
 [](#VUID-VkDecompressMemoryRegionEXT-dstAddress-11765) VUID-VkDecompressMemoryRegionEXT-dstAddress-11765
 
 `dstAddress` **must** be a device address allocated to the application
 from a buffer created with the
-`VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` usage flag set
+[VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](resources.html#VkBufferUsageFlagBits2KHR) usage flag set
 
 Valid Usage (Implicit)
 
@@ -348,7 +348,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdDecompressMemoryNV-commandBuffer-cmdpool) VUID-vkCmdDecompressMemoryNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdDecompressMemoryNV-renderpass) VUID-vkCmdDecompressMemoryNV-renderpass
@@ -480,7 +480,7 @@ The memory range defined by `srcAddress` and `compressedSize`
 [](#VUID-VkDecompressMemoryRegionNV-decompressionMethod-09395) VUID-VkDecompressMemoryRegionNV-decompressionMethod-09395
 
 If `decompressionMethod` is
-`VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_EXT`, then
+[VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_EXT](#VkMemoryDecompressionMethodFlagBitsNV), then
 `decompressedSize` **must** be less than or equal to 65536 bytes
 
 * 
@@ -547,7 +547,7 @@ The [`memoryDecompression`](features.html#features-memoryDecompression) feature
 
 `indirectCommandsAddress` **must** be a device address allocated to the
 application from a buffer created with the
-`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsAddress-07695) VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsAddress-07695
@@ -559,7 +559,7 @@ application from a buffer created with the
 
 `indirectCommandsCountAddress` **must** be a device address allocated
 to the application from a buffer created with the
-`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsCountAddress-07698) VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsCountAddress-07698
@@ -602,7 +602,7 @@ equal to sizeof([VkDecompressMemoryRegionEXT](#VkDecompressMemoryRegionEXT))
 [](#VUID-vkCmdDecompressMemoryIndirectCountEXT-decompressionMethod-11769) VUID-vkCmdDecompressMemoryIndirectCountEXT-decompressionMethod-11769
 
 If `decompressionMethod` is
-`VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_EXT`, then all
+[VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_EXT](#VkMemoryDecompressionMethodFlagBitsNV), then all
 values in [VkDecompressMemoryRegionEXT](#VkDecompressMemoryRegionEXT)::`decompressedSize`
 **must** be less than or equal to 65536 bytes
 
@@ -647,7 +647,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountEXT-commandBuffer-cmdpool) VUID-vkCmdDecompressMemoryIndirectCountEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountEXT-renderpass) VUID-vkCmdDecompressMemoryIndirectCountEXT-renderpass
@@ -729,7 +729,7 @@ The [`memoryDecompression`](features.html#features-memoryDecompression) feature
 
 `indirectCommandsAddress` **must** be a device address allocated to the
 application from a buffer created with the
-`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountNV-indirectCommandsAddress-07695) VUID-vkCmdDecompressMemoryIndirectCountNV-indirectCommandsAddress-07695
@@ -741,7 +741,7 @@ application from a buffer created with the
 
 `indirectCommandsCountAddress` **must** be a device address allocated
 to the application from a buffer created with the
-`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountNV-indirectCommandsCountAddress-07698) VUID-vkCmdDecompressMemoryIndirectCountNV-indirectCommandsCountAddress-07698
@@ -794,7 +794,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountNV-commandBuffer-cmdpool) VUID-vkCmdDecompressMemoryIndirectCountNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountNV-renderpass) VUID-vkCmdDecompressMemoryIndirectCountNV-renderpass
@@ -850,7 +850,7 @@ static const VkMemoryDecompressionMethodFlagBitsEXT VK_MEMORY_DECOMPRESSION_METH
 typedef VkMemoryDecompressionMethodFlagBitsEXT VkMemoryDecompressionMethodFlagBitsNV;
 
 * 
-`VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_EXT` specifies that
+[VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_EXT](#VkMemoryDecompressionMethodFlagBitsNV) specifies that
 the GDeflate 1.0 algorithm is used to decompress data.
 
 // Provided by VK_EXT_memory_decompression

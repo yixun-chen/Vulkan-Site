@@ -58,7 +58,7 @@ Valid Usage
 [](#VUID-vkGetMemoryFdPropertiesKHR-handleType-00674) VUID-vkGetMemoryFdPropertiesKHR-handleType-00674
 
 `handleType` **must** not be
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT](VkExternalMemoryHandleTypeFlagBits.html)
 
 Valid Usage (Implicit)
 
@@ -82,21 +82,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_external_memory_fd](VK_KHR_external_memory_fd.html), [VkDevice](VkDevice.html), [VkExternalMemoryHandleTypeFlagBits](VkExternalMemoryHandleTypeFlagBits.html), [VkMemoryFdPropertiesKHR](VkMemoryFdPropertiesKHR.html)
 

@@ -58,14 +58,14 @@ If `handleType` is not compatible with the `format`, `type`,
 `tiling`, `usage`, and `flags` specified in
 [VkPhysicalDeviceImageFormatInfo2](VkPhysicalDeviceImageFormatInfo2.html), then
 [vkGetPhysicalDeviceImageFormatProperties2](vkGetPhysicalDeviceImageFormatProperties2.html) returns
-`VK_ERROR_FORMAT_NOT_SUPPORTED`.
+[VK_ERROR_FORMAT_NOT_SUPPORTED](VkResult.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPhysicalDeviceExternalImageFormatInfo-sType-sType) VUID-VkPhysicalDeviceExternalImageFormatInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPhysicalDeviceExternalImageFormatInfo-handleType-parameter) VUID-VkPhysicalDeviceExternalImageFormatInfo-handleType-parameter

@@ -64,7 +64,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVertexAttributeDivisorProperties-sType-sType) VUID-VkPhysicalDeviceVertexAttributeDivisorProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES](VkStructureType.html)
 
 [VK_KHR_vertex_attribute_divisor](VK_KHR_vertex_attribute_divisor.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -62,15 +62,15 @@ The values returned in this structure are only defined if the allowed image
 usage flags returned in
 [VkVideoFormatPropertiesKHR](VkVideoFormatPropertiesKHR.html)::`imageUsageFlags` for this video
 format include
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR` or
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR`.
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](VkImageUsageFlagBits.html) or
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](VkImageUsageFlagBits.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkVideoFormatH265QuantizationMapPropertiesKHR-sType-sType) VUID-VkVideoFormatH265QuantizationMapPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_FORMAT_H265_QUANTIZATION_MAP_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_FORMAT_H265_QUANTIZATION_MAP_PROPERTIES_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_h265](VK_KHR_video_encode_h265.html), [VK_KHR_video_encode_quantization_map](VK_KHR_video_encode_quantization_map.html), [VkStructureType](VkStructureType.html), [VkVideoEncodeH265CtbSizeFlagsKHR](VkVideoEncodeH265CtbSizeFlagsKHR.html)
 

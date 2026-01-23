@@ -48,7 +48,8 @@ acquired.
 no image is available.
 
 * 
-`semaphore` is [VK_NULL_HANDLE](VK_NULL_HANDLE.html) or a semaphore to signal.
+`semaphore` is [VK_NULL_HANDLE](VK_NULL_HANDLE.html) or a semaphore that defines a
+[semaphore signal operation](../../../../spec/latest/chapters/synchronization.html#synchronization-semaphores-signaling).
 
 * 
 `fence` is [VK_NULL_HANDLE](VK_NULL_HANDLE.html) or a fence to signal.
@@ -122,14 +123,14 @@ execution on that queue
 [](#VUID-VkAcquireNextImageInfoKHR-semaphore-03266) VUID-VkAcquireNextImageInfoKHR-semaphore-03266
 
 `semaphore` **must** have a [VkSemaphoreType](VkSemaphoreType.html) of
-`VK_SEMAPHORE_TYPE_BINARY`
+[VK_SEMAPHORE_TYPE_BINARY](VkSemaphoreType.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkAcquireNextImageInfoKHR-sType-sType) VUID-VkAcquireNextImageInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkAcquireNextImageInfoKHR-pNext-pNext) VUID-VkAcquireNextImageInfoKHR-pNext-pNext

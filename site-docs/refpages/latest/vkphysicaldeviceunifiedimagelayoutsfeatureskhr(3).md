@@ -41,35 +41,35 @@ structure.
 
 * 
  `unifiedImageLayouts` specifies
-whether usage of `VK_IMAGE_LAYOUT_GENERAL`, where valid, incurs no
+whether usage of [VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html), where valid, incurs no
 loss in efficiency.
 Additionally, it indicates whether it **can** be used in place of
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT`.
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](VkImageLayout.html).
 
 * 
  `unifiedImageLayoutsVideo`
-specifies whether `VK_IMAGE_LAYOUT_GENERAL` can be used in place of
+specifies whether [VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html) can be used in place of
 any of the following image layouts with no loss in efficiency.
 
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR](VkImageLayout.html)
 
 * 
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_SRC_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_SRC_KHR](VkImageLayout.html)
 
 * 
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR](VkImageLayout.html)
 
 * 
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_DST_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_DST_KHR](VkImageLayout.html)
 
 * 
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR](VkImageLayout.html)
 
 * 
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR](VkImageLayout.html)
 
 * 
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR](VkImageLayout.html)
 
 If the `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -77,7 +77,7 @@ If the `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR` structure is included in
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -85,7 +85,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR-sType-sType) VUID-VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_UNIFIED_IMAGE_LAYOUTS_FEATURES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_UNIFIED_IMAGE_LAYOUTS_FEATURES_KHR](VkStructureType.html)
 
 [VK_KHR_unified_image_layouts](VK_KHR_unified_image_layouts.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

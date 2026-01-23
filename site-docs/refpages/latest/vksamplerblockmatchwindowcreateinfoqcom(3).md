@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSamplerBlockMatchWindowCreateInfoQCOM-sType-sType) VUID-VkSamplerBlockMatchWindowCreateInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_BLOCK_MATCH_WINDOW_CREATE_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_BLOCK_MATCH_WINDOW_CREATE_INFO_QCOM](VkStructureType.html)
 
 * 
 [](#VUID-VkSamplerBlockMatchWindowCreateInfoQCOM-windowCompareMode-parameter) VUID-VkSamplerBlockMatchWindowCreateInfoQCOM-windowCompareMode-parameter

@@ -71,7 +71,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV-sType-sType) VUID-VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV](VkStructureType.html)
 
 [VK_NV_extended_sparse_address_space](VK_NV_extended_sparse_address_space.html), [VkBufferUsageFlags](VkBufferUsageFlags.html), `VkDeviceSize`, [VkImageUsageFlags](VkImageUsageFlags.html), [VkStructureType](VkStructureType.html)
 

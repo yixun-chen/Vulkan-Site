@@ -128,7 +128,7 @@ Extending [VkBufferImageCopy2](VkBufferImageCopy2.html), [VkImageBlit2](VkImageB
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_COPY_COMMAND_TRANSFORM_INFO_QCOM`
+[VK_STRUCTURE_TYPE_COPY_COMMAND_TRANSFORM_INFO_QCOM](VkStructureType.html)
 
 * 
 Revision 1, 2020-09-19 (Jeff Leger)

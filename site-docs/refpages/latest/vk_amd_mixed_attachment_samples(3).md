@@ -106,7 +106,7 @@ If [Vulkan Version 1.3](../../../../spec/latest/appendices/versions.html#version
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_AMD`
+[VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_AMD](VkStructureType.html)
 
 None.
 

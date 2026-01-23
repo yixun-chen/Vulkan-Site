@@ -28,11 +28,11 @@ typedef enum VkAntiLagStageAMD {
 } VkAntiLagStageAMD;
 
 * 
-`VK_ANTI_LAG_STAGE_INPUT_AMD` specifies the stage before processing
+[VK_ANTI_LAG_STAGE_INPUT_AMD](#) specifies the stage before processing
 input.
 
 * 
-`VK_ANTI_LAG_STAGE_PRESENT_AMD` specifies the stage before
+[VK_ANTI_LAG_STAGE_PRESENT_AMD](#) specifies the stage before
 [vkQueuePresentKHR](vkQueuePresentKHR.html).
 
 [VK_AMD_anti_lag](VK_AMD_anti_lag.html), [VkAntiLagPresentationInfoAMD](VkAntiLagPresentationInfoAMD.html)

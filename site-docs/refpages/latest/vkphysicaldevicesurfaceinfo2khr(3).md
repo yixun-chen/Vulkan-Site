@@ -64,7 +64,7 @@ Valid Usage
 If the `pNext` chain includes a
 [VkSurfaceFullScreenExclusiveInfoEXT](VkSurfaceFullScreenExclusiveInfoEXT.html) structure with its
 `fullScreenExclusive` member set to
-`VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT`, and
+[VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT](VkFullScreenExclusiveEXT.html), and
 `surface` was created using [vkCreateWin32SurfaceKHR](vkCreateWin32SurfaceKHR.html), a
 [VkSurfaceFullScreenExclusiveWin32InfoEXT](VkSurfaceFullScreenExclusiveWin32InfoEXT.html) structure **must** be
 included in the `pNext` chain
@@ -81,7 +81,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceSurfaceInfo2KHR-sType-sType) VUID-VkPhysicalDeviceSurfaceInfo2KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPhysicalDeviceSurfaceInfo2KHR-pNext-pNext) VUID-VkPhysicalDeviceSurfaceInfo2KHR-pNext-pNext

@@ -24,7 +24,7 @@ decoration will make that variable contain the index of the invocation
 within the subgroup.
 This variable is in range [0,`SubgroupSize`-1].
 
-If `VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT` is
+If [VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT](VkPipelineShaderStageCreateFlagBits.html) is
 specified,
 or if `module` declares SPIR-V version 1.6 or higher, and the local
 workgroup size in the X dimension of the `stage` is a multiple of
@@ -50,9 +50,9 @@ If full subgroups are not enabled, some subgroups may be dispatched with
 inactive invocations that do not correspond to a local workgroup invocation,
 making the value of index unreliable. |
 
-|  | `VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT`
+|  | [VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT](VkPipelineShaderStageCreateFlagBits.html)
 | --- | --- |
-and `VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT` are
+and [VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT](VkShaderCreateFlagBitsEXT.html) are
 effectively deprecated when compiling SPIR-V 1.6 shaders, as this behavior
 is the default for Vulkan with SPIR-V 1.6.
 This is more aligned with developer expectations, and avoids applications

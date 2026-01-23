@@ -103,17 +103,17 @@ that all pixels in the presentable images have an alpha value of 1.0.
 representing the ways the application **can** use the presentable images of
 a swapchain created
 with [VkPresentModeKHR](VkPresentModeKHR.html) set to
-`VK_PRESENT_MODE_FIFO_LATEST_READY_KHR`,
-`VK_PRESENT_MODE_IMMEDIATE_KHR`, `VK_PRESENT_MODE_MAILBOX_KHR`,
-`VK_PRESENT_MODE_FIFO_KHR` or `VK_PRESENT_MODE_FIFO_RELAXED_KHR`
+[VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](VkPresentModeKHR.html),
+[VK_PRESENT_MODE_IMMEDIATE_KHR](VkPresentModeKHR.html), [VK_PRESENT_MODE_MAILBOX_KHR](VkPresentModeKHR.html),
+[VK_PRESENT_MODE_FIFO_KHR](VkPresentModeKHR.html) or [VK_PRESENT_MODE_FIFO_RELAXED_KHR](VkPresentModeKHR.html)
 for the surface on the specified device.
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` **must** be included in the set.
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](VkImageUsageFlagBits.html) **must** be included in the set.
 Implementations **may** support additional usages.
 
 |  | Supported usage flags of a presentable image when using
 | --- | --- |
-`VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR` or
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR` presentation mode are
+[VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](VkPresentModeKHR.html) or
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](VkPresentModeKHR.html) presentation mode are
 provided by
 [VkSharedPresentSurfaceCapabilitiesKHR](VkSharedPresentSurfaceCapabilitiesKHR.html)::`sharedPresentSupportedUsageFlags`. |
 

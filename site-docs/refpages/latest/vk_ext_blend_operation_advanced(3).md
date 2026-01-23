@@ -77,25 +77,25 @@ hardware support and the enabled features:
 * 
 If
 [VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT](VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.html)::`advancedBlendCoherentOperations`
-is `VK_FALSE`, the new blending operations are supported, but a
+is [VK_FALSE](VK_FALSE.html), the new blending operations are supported, but a
 memory dependency **must** separate each advanced blend operation on a
 given sample.
-`VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT` is used to
+[VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT](VkAccessFlagBits.html) is used to
 synchronize reads using advanced blend operations.
 
 * 
 If
 [VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT](VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.html)::`advancedBlendCoherentOperations`
-is `VK_TRUE`, advanced blend operations obey primitive order just
+is [VK_TRUE](VK_TRUE.html), advanced blend operations obey primitive order just
 like basic blend operations.
 
 In unextended Vulkan, the set of blending operations is limited, and **can** be
 expressed very simply.
-The `VK_BLEND_OP_MIN` and `VK_BLEND_OP_MAX` blend operations simply
+The [VK_BLEND_OP_MIN](VkBlendOp.html) and [VK_BLEND_OP_MAX](VkBlendOp.html) blend operations simply
 compute component-wise minimums or maximums of source and destination color
 components.
-The `VK_BLEND_OP_ADD`, `VK_BLEND_OP_SUBTRACT`, and
-`VK_BLEND_OP_REVERSE_SUBTRACT` modes multiply the source and destination
+The [VK_BLEND_OP_ADD](VkBlendOp.html), [VK_BLEND_OP_SUBTRACT](VkBlendOp.html), and
+[VK_BLEND_OP_REVERSE_SUBTRACT](VkBlendOp.html) modes multiply the source and destination
 colors by source and destination factors and either add the two products
 together or subtract one from the other.
 This limited set of operations supports many common blending operations but
@@ -103,7 +103,7 @@ precludes the use of more sophisticated transparency and blending operations
 commonly available in many dedicated imaging APIs.
 
 This extension provides a number of new “advanced” blending operations.
-Unlike traditional blending operations using `VK_BLEND_OP_ADD`, these
+Unlike traditional blending operations using [VK_BLEND_OP_ADD](VkBlendOp.html), these
 blending equations do not use source and destination factors specified by
 [VkBlendFactor](VkBlendFactor.html).
 Instead, each blend operation specifies a complete equation based on the
@@ -131,13 +131,13 @@ The blend parameter
 [VkPipelineColorBlendAdvancedStateCreateInfoEXT](VkPipelineColorBlendAdvancedStateCreateInfoEXT.html)::`blendOverlap`
 **can** be used to specify a correlation between source and destination pixel
 coverage.
-If set to `VK_BLEND_OVERLAP_CONJOINT_EXT`, the source and destination
+If set to [VK_BLEND_OVERLAP_CONJOINT_EXT](VkBlendOverlapEXT.html), the source and destination
 are considered to have maximal overlap, as would be the case if drawing two
 objects on top of each other.
-If set to `VK_BLEND_OVERLAP_DISJOINT_EXT`, the source and destination
+If set to [VK_BLEND_OVERLAP_DISJOINT_EXT](VkBlendOverlapEXT.html), the source and destination
 are considered to have minimal overlap, as would be the case when rendering
 a complex polygon tessellated into individual non-intersecting triangles.
-If set to `VK_BLEND_OVERLAP_UNCORRELATED_EXT`, the source and
+If set to [VK_BLEND_OVERLAP_UNCORRELATED_EXT](VkBlendOverlapEXT.html), the source and
 destination coverage are assumed to have no spatial correlation within the
 pixel.
 
@@ -180,158 +180,158 @@ Extending [VkPipelineColorBlendStateCreateInfo](VkPipelineColorBlendStateCreateI
 * 
 Extending [VkAccessFlagBits](VkAccessFlagBits.html):
 
-`VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT`
+[VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT](VkAccessFlagBits.html)
 
 Extending [VkBlendOp](VkBlendOp.html):
 
 * 
-`VK_BLEND_OP_BLUE_EXT`
+[VK_BLEND_OP_BLUE_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_COLORBURN_EXT`
+[VK_BLEND_OP_COLORBURN_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_COLORDODGE_EXT`
+[VK_BLEND_OP_COLORDODGE_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_CONTRAST_EXT`
+[VK_BLEND_OP_CONTRAST_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_DARKEN_EXT`
+[VK_BLEND_OP_DARKEN_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_DIFFERENCE_EXT`
+[VK_BLEND_OP_DIFFERENCE_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_DST_ATOP_EXT`
+[VK_BLEND_OP_DST_ATOP_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_DST_EXT`
+[VK_BLEND_OP_DST_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_DST_IN_EXT`
+[VK_BLEND_OP_DST_IN_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_DST_OUT_EXT`
+[VK_BLEND_OP_DST_OUT_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_DST_OVER_EXT`
+[VK_BLEND_OP_DST_OVER_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_EXCLUSION_EXT`
+[VK_BLEND_OP_EXCLUSION_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_GREEN_EXT`
+[VK_BLEND_OP_GREEN_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_HARDLIGHT_EXT`
+[VK_BLEND_OP_HARDLIGHT_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_HARDMIX_EXT`
+[VK_BLEND_OP_HARDMIX_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_HSL_COLOR_EXT`
+[VK_BLEND_OP_HSL_COLOR_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_HSL_HUE_EXT`
+[VK_BLEND_OP_HSL_HUE_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_HSL_LUMINOSITY_EXT`
+[VK_BLEND_OP_HSL_LUMINOSITY_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_HSL_SATURATION_EXT`
+[VK_BLEND_OP_HSL_SATURATION_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_INVERT_EXT`
+[VK_BLEND_OP_INVERT_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_INVERT_OVG_EXT`
+[VK_BLEND_OP_INVERT_OVG_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_INVERT_RGB_EXT`
+[VK_BLEND_OP_INVERT_RGB_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_LIGHTEN_EXT`
+[VK_BLEND_OP_LIGHTEN_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_LINEARBURN_EXT`
+[VK_BLEND_OP_LINEARBURN_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_LINEARDODGE_EXT`
+[VK_BLEND_OP_LINEARDODGE_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_LINEARLIGHT_EXT`
+[VK_BLEND_OP_LINEARLIGHT_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_MINUS_CLAMPED_EXT`
+[VK_BLEND_OP_MINUS_CLAMPED_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_MINUS_EXT`
+[VK_BLEND_OP_MINUS_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_MULTIPLY_EXT`
+[VK_BLEND_OP_MULTIPLY_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_OVERLAY_EXT`
+[VK_BLEND_OP_OVERLAY_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_PINLIGHT_EXT`
+[VK_BLEND_OP_PINLIGHT_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_PLUS_CLAMPED_ALPHA_EXT`
+[VK_BLEND_OP_PLUS_CLAMPED_ALPHA_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_PLUS_CLAMPED_EXT`
+[VK_BLEND_OP_PLUS_CLAMPED_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_PLUS_DARKER_EXT`
+[VK_BLEND_OP_PLUS_DARKER_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_PLUS_EXT`
+[VK_BLEND_OP_PLUS_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_RED_EXT`
+[VK_BLEND_OP_RED_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_SCREEN_EXT`
+[VK_BLEND_OP_SCREEN_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_SOFTLIGHT_EXT`
+[VK_BLEND_OP_SOFTLIGHT_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_SRC_ATOP_EXT`
+[VK_BLEND_OP_SRC_ATOP_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_SRC_EXT`
+[VK_BLEND_OP_SRC_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_SRC_IN_EXT`
+[VK_BLEND_OP_SRC_IN_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_SRC_OUT_EXT`
+[VK_BLEND_OP_SRC_OUT_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_SRC_OVER_EXT`
+[VK_BLEND_OP_SRC_OVER_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_VIVIDLIGHT_EXT`
+[VK_BLEND_OP_VIVIDLIGHT_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_XOR_EXT`
+[VK_BLEND_OP_XOR_EXT](VkBlendOp.html)
 
 * 
-`VK_BLEND_OP_ZERO_EXT`
+[VK_BLEND_OP_ZERO_EXT](VkBlendOp.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_FEATURES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT](VkStructureType.html)
 
 None.
 

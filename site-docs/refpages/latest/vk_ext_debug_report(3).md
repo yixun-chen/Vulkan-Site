@@ -147,30 +147,30 @@ Extending [VkInstanceCreateInfo](VkInstanceCreateInfo.html):
 * 
 Extending [VkObjectType](VkObjectType.html):
 
-`VK_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT`
+[VK_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT](VkObjectType.html)
 
 Extending [VkResult](VkResult.html):
 
 * 
-`VK_ERROR_VALIDATION_FAILED_EXT`
+[VK_ERROR_VALIDATION_FAILED_EXT](VkResult.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT](VkStructureType.html)
 
 If [Vulkan Version 1.1](../../../../spec/latest/appendices/versions.html#versions-1.1) is supported:
 
 * 
 Extending [VkDebugReportObjectTypeEXT](VkDebugReportObjectTypeEXT.html):
 
-`VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_EXT`
+[VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_EXT](VkDebugReportObjectTypeEXT.html)
 
 * 
-`VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_EXT`
+[VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_EXT](VkDebugReportObjectTypeEXT.html)
 
 `VK_EXT_debug_report` allows an application to register multiple callbacks
 with the validation layers.
@@ -233,17 +233,17 @@ happens and the third will log warnings to stdout.
 
 |  | In the initial release of the `VK_EXT_debug_report` extension, the token
 | --- | --- |
-`VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT` was used.
+[VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT](VkStructureType.html) was used.
 Starting in version 2 of the extension branch,
-`VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT` is used
+[VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT](VkStructureType.html) is used
 instead for consistency with Vulkan naming rules.
 The older enum is still available for backwards compatibility. |
 
 |  | In the initial release of the `VK_EXT_debug_report` extension, the token
 | --- | --- |
-`VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_EXT` was used.
+[VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_EXT](VkDebugReportObjectTypeEXT.html) was used.
 Starting in version 8 of the extension branch,
-`VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT` is used
+[VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT](VkDebugReportObjectTypeEXT.html) is used
 instead for consistency with Vulkan naming rules.
 The older enum is still available for backwards compatibility. |
 
@@ -279,10 +279,10 @@ create-time to be non-zero.
 One can imagine that apps may prefer it as it allows them to set the mask as
 desired - including nothing - at runtime without having to check.
 
-3) What is the difference between `VK_DEBUG_REPORT_DEBUG_BIT_EXT` and
-`VK_DEBUG_REPORT_INFORMATION_BIT_EXT`?
+3) What is the difference between [VK_DEBUG_REPORT_DEBUG_BIT_EXT](VkDebugReportFlagBitsEXT.html) and
+[VK_DEBUG_REPORT_INFORMATION_BIT_EXT](VkDebugReportFlagBitsEXT.html)?
 
-**RESOLVED**: `VK_DEBUG_REPORT_DEBUG_BIT_EXT` specifies information that
+**RESOLVED**: [VK_DEBUG_REPORT_DEBUG_BIT_EXT](VkDebugReportFlagBitsEXT.html) specifies information that
 could be useful debugging the Vulkan implementation itself.
 
 4) How do you compare handles returned by the debug_report callback to the

@@ -162,79 +162,79 @@ Extending [VkVideoProfileInfoKHR](VkVideoProfileInfoKHR.html), [VkQueryPoolCreat
 * 
 Extending [VkAccessFlagBits2](VkAccessFlagBits2.html):
 
-`VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR`
+[VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR](VkAccessFlagBits2.html)
 
 Extending [VkBufferUsageFlagBits](VkBufferUsageFlagBits.html):
 
 * 
-`VK_BUFFER_USAGE_VIDEO_DECODE_DST_BIT_KHR`
+[VK_BUFFER_USAGE_VIDEO_DECODE_DST_BIT_KHR](VkBufferUsageFlagBits.html)
 
 * 
-`VK_BUFFER_USAGE_VIDEO_DECODE_SRC_BIT_KHR`
+[VK_BUFFER_USAGE_VIDEO_DECODE_SRC_BIT_KHR](VkBufferUsageFlagBits.html)
 
 Extending [VkFormatFeatureFlagBits](VkFormatFeatureFlagBits.html):
 
 * 
-`VK_FORMAT_FEATURE_VIDEO_DECODE_DPB_BIT_KHR`
+[VK_FORMAT_FEATURE_VIDEO_DECODE_DPB_BIT_KHR](VkFormatFeatureFlagBits.html)
 
 * 
-`VK_FORMAT_FEATURE_VIDEO_DECODE_OUTPUT_BIT_KHR`
+[VK_FORMAT_FEATURE_VIDEO_DECODE_OUTPUT_BIT_KHR](VkFormatFeatureFlagBits.html)
 
 Extending [VkImageLayout](VkImageLayout.html):
 
 * 
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR](VkImageLayout.html)
 
 * 
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR](VkImageLayout.html)
 
 * 
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_SRC_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_SRC_KHR](VkImageLayout.html)
 
 Extending [VkImageUsageFlagBits](VkImageUsageFlagBits.html):
 
 * 
-`VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR`
+[VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](VkImageUsageFlagBits.html)
 
 * 
-`VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR`
+[VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](VkImageUsageFlagBits.html)
 
 * 
-`VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR`
+[VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR](VkImageUsageFlagBits.html)
 
 Extending [VkPipelineStageFlagBits2](VkPipelineStageFlagBits2.html):
 
 * 
-`VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR`
+[VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 Extending [VkQueueFlagBits](VkQueueFlagBits.html):
 
 * 
-`VK_QUEUE_VIDEO_DECODE_BIT_KHR`
+[VK_QUEUE_VIDEO_DECODE_BIT_KHR](VkQueueFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_VIDEO_DECODE_CAPABILITIES_KHR`
+[VK_STRUCTURE_TYPE_VIDEO_DECODE_CAPABILITIES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_VIDEO_DECODE_INFO_KHR`
+[VK_STRUCTURE_TYPE_VIDEO_DECODE_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_VIDEO_DECODE_USAGE_INFO_KHR`
+[VK_STRUCTURE_TYPE_VIDEO_DECODE_USAGE_INFO_KHR](VkStructureType.html)
 
 If [VK_KHR_format_feature_flags2](VK_KHR_format_feature_flags2.html) or [Vulkan Version 1.3](../../../../spec/latest/appendices/versions.html#versions-1.3) is supported:
 
 * 
 Extending [VkFormatFeatureFlagBits2](VkFormatFeatureFlagBits2.html):
 
-`VK_FORMAT_FEATURE_2_VIDEO_DECODE_DPB_BIT_KHR`
+[VK_FORMAT_FEATURE_2_VIDEO_DECODE_DPB_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_VIDEO_DECODE_OUTPUT_BIT_KHR`
+[VK_FORMAT_FEATURE_2_VIDEO_DECODE_OUTPUT_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
 Revision 1, 2018-6-11 (Peter Fang)

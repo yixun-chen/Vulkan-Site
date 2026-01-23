@@ -44,15 +44,15 @@ structure.
 `supported` specifies whether the descriptor set layout **can** be
 created.
 
-`supported` will be `VK_TRUE` if the descriptor set **can** be created,
-or else `VK_FALSE`.
+`supported` will be [VK_TRUE](VK_TRUE.html) if the descriptor set **can** be created,
+or else [VK_FALSE](VK_FALSE.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDescriptorSetLayoutSupport-sType-sType) VUID-VkDescriptorSetLayoutSupport-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT](VkStructureType.html)
 
 * 
 [](#VUID-VkDescriptorSetLayoutSupport-pNext-pNext) VUID-VkDescriptorSetLayoutSupport-pNext-pNext

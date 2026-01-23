@@ -130,27 +130,27 @@ below:
 
 | [VkBlendOp](#) | RGB Components | Alpha Component |
 | --- | --- | --- |
-| `VK_BLEND_OP_ADD` | R = Rs0 × Sr +  Rd × Dr
+| [VK_BLEND_OP_ADD](#) | R = Rs0 × Sr +  Rd × Dr
 
   G = Gs0 × Sg +  Gd × Dg
 
   B = Bs0 × Sb +  Bd × Db | A = As0 × Sa +  Ad × Da |
-| `VK_BLEND_OP_SUBTRACT` | R = Rs0 × Sr - Rd × Dr
+| [VK_BLEND_OP_SUBTRACT](#) | R = Rs0 × Sr - Rd × Dr
 
   G = Gs0 × Sg - Gd × Dg
 
   B = Bs0 × Sb - Bd × Db | A = As0 × Sa - Ad × Da |
-| `VK_BLEND_OP_REVERSE_SUBTRACT` | R = Rd × Dr - Rs0 × Sr
+| [VK_BLEND_OP_REVERSE_SUBTRACT](#) | R = Rd × Dr - Rs0 × Sr
 
   G = Gd × Dg - Gs0 × Sg
 
   B = Bd × Db - Bs0 × Sb | A = Ad × Da - As0 × Sa |
-| `VK_BLEND_OP_MIN` | R = min(Rs0,Rd)
+| [VK_BLEND_OP_MIN](#) | R = min(Rs0,Rd)
 
   G = min(Gs0,Gd)
 
   B = min(Bs0,Bd) | A = min(As0,Ad) |
-| `VK_BLEND_OP_MAX` | R = max(Rs0,Rd)
+| [VK_BLEND_OP_MAX](#) | R = max(Rs0,Rd)
 
   G = max(Gs0,Gd)
 

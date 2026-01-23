@@ -133,21 +133,21 @@ by another extension which depends on
 * 
 Extending [VkObjectType](VkObjectType.html):
 
-`VK_OBJECT_TYPE_DEFERRED_OPERATION_KHR`
+[VK_OBJECT_TYPE_DEFERRED_OPERATION_KHR](VkObjectType.html)
 
 Extending [VkResult](VkResult.html):
 
 * 
-`VK_OPERATION_DEFERRED_KHR`
+[VK_OPERATION_DEFERRED_KHR](VkResult.html)
 
 * 
-`VK_OPERATION_NOT_DEFERRED_KHR`
+[VK_OPERATION_NOT_DEFERRED_KHR](VkResult.html)
 
 * 
-`VK_THREAD_DONE_KHR`
+[VK_THREAD_DONE_KHR](VkResult.html)
 
 * 
-`VK_THREAD_IDLE_KHR`
+[VK_THREAD_IDLE_KHR](VkResult.html)
 
 The following examples will illustrate the concept of deferrable operations
 using a hypothetical example.

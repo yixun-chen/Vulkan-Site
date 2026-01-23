@@ -69,18 +69,18 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_NV_external_memory_rdma](VK_NV_external_memory_rdma.html), [VkDevice](VkDevice.html), [VkMemoryGetRemoteAddressInfoNV](VkMemoryGetRemoteAddressInfoNV.html), `VkRemoteAddressNV`
 

@@ -45,8 +45,6 @@ In this section, we’ll explore various lighting models used in computer graphi
 
 In this chapter, we’ll introduce Physically Based Rendering (PBR) and other lighting models. The concepts we cover here will be applied in later chapters, such as the Loading_Models chapter where we’ll use glTF, which uses PBR with the metallic-roughness workflow for its material system. By understanding the theory behind different lighting models, including PBR, we can better leverage the material properties provided by glTF models and extend our rendering capabilities.
 
-Throughout our engine implementation, we’ll be using vk::raii dynamic rendering and C20 modules. The vk::raii namespace provides Resource Acquisition Is Initialization (RAII) wrappers for Vulkan objects, which helps with resource management and makes the code cleaner. Dynamic rendering simplifies the rendering process by eliminating the need for explicit render passes and framebuffers. C20 modules improve code organization, compilation times, and encapsulation compared to traditional header files.
-
 Before diving into specific lighting models, it’s important to understand how light interacts with surfaces in the real world:
 
 * 
@@ -86,18 +84,18 @@ The simplest lighting model, where each polygon is assigned a single color based
 * 
 **When to use**: For very low-power devices or stylized rendering
 
-An improvement over flat shading, where lighting is calculated at the vertices and then interpolated across the polygon.
+An improvement over flat shading, where lighting is **calculated once per vertex** and then interpolated across the polygon. This per-vertex approach is significantly faster than per-pixel calculations, but means specular highlights that should appear in the middle of a polygon can be missed entirely since they’re not present at any vertex.
 
 * 
 **Advantages**: Smoother appearance than flat shading, still relatively fast
 
 * 
-**Disadvantages**: Cannot accurately represent specular highlights
+**Disadvantages**: Cannot accurately represent specular highlights due to vertex-level calculation
 
 * 
 **When to use**: For low-power devices where Phong shading is too expensive
 
-One of the most widely used traditional lighting models, developed by Bui Tuong Phong in 1975. It calculates lighting using three components:
+One of the most widely used traditional lighting models, developed by Bui Tuong Phong in 1975. When used with **per-pixel shading** (Phong Shading), normals are interpolated across the polygon and lighting is calculated for every pixel, providing much more accurate specular highlights than Gouraud’s per-vertex approach. The model calculates lighting using three components:
 
 * 
 **Ambient**: A constant light level to simulate indirect lighting
@@ -108,8 +106,10 @@ One of the most widely used traditional lighting models, developed by Bui Tuong 
 * 
 **Specular**: Shiny highlights (using a power function of the reflection vector and view vector)
 
+Characteristics:
+
 * 
-**Advantages**: Reasonably realistic for many materials, intuitive parameters
+**Advantages**: Reasonably realistic for many materials, intuitive parameters, accurate specular highlights with per-pixel shading
 
 * 
 **Disadvantages**: Not physically accurate, can look artificial under certain lighting conditions
@@ -186,6 +186,8 @@ Considerations for using PBR:
 **When to use**: For modern games and applications where realism is important
 
 For comprehensive information on PBR, see the [Physically Based Rendering book](https://www.pbr-book.org/).
+
+![PBR materials with ray-traced shadows - demonstrating metallic surfaces](../../_images/images/PBR_ray_shadows.png)
 
 The glTF format uses PBR with the metallic-roughness workflow, which defines materials using these primary parameters:
 
@@ -270,4 +272,4 @@ To deepen your understanding of lighting models, here are some valuable resource
 
 In the next section, we’ll explore how to use push constants to efficiently pass material properties to our shaders.
 
-[Previous: Introduction](01_introduction.adoc) | [Next: Push Constants](03_push_constants.adoc)
+[Previous: Introduction](01_introduction.html) | [Next: Push Constants](03_push_constants.html)

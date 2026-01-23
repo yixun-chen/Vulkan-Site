@@ -55,7 +55,7 @@ to create the set
 [](#VUID-VkWriteIndirectExecutionSetPipelineEXT-pipeline-11027) VUID-VkWriteIndirectExecutionSetPipelineEXT-pipeline-11027
 
 `pipeline` **must** have been created with
-`VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT`
+[VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT](VkPipelineCreateFlagBits2.html)
 
 * 
 [](#VUID-VkWriteIndirectExecutionSetPipelineEXT-index-11029) VUID-VkWriteIndirectExecutionSetPipelineEXT-index-11029
@@ -73,7 +73,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkWriteIndirectExecutionSetPipelineEXT-sType-sType) VUID-VkWriteIndirectExecutionSetPipelineEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_PIPELINE_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_PIPELINE_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkWriteIndirectExecutionSetPipelineEXT-pipeline-parameter) VUID-VkWriteIndirectExecutionSetPipelineEXT-pipeline-parameter

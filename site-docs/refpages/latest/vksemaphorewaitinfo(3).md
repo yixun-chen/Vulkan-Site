@@ -64,14 +64,14 @@ Valid Usage
 
 All of the elements of `pSemaphores` **must** reference a semaphore
 that was created with a [VkSemaphoreType](VkSemaphoreType.html) of
-`VK_SEMAPHORE_TYPE_TIMELINE`
+[VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSemaphoreWaitInfo-sType-sType) VUID-VkSemaphoreWaitInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SEMAPHORE_WAIT_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SEMAPHORE_WAIT_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkSemaphoreWaitInfo-pNext-pNext) VUID-VkSemaphoreWaitInfo-pNext-pNext

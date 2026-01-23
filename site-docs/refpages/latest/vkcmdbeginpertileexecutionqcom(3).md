@@ -77,7 +77,7 @@ recorded
 
 * 
 Access of an attachment with layout
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` as provided
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](VkImageLayout.html) as provided
 by `[VK_EXT_attachment_feedback_loop_layout](VK_EXT_attachment_feedback_loop_layout.html)` is disallowed
 
 * 
@@ -129,7 +129,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBeginPerTileExecutionQCOM-commandBuffer-cmdpool) VUID-vkCmdBeginPerTileExecutionQCOM-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBeginPerTileExecutionQCOM-renderpass) VUID-vkCmdBeginPerTileExecutionQCOM-renderpass

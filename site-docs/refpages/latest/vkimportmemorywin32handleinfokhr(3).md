@@ -100,10 +100,10 @@ global share handle
 [](#VUID-VkImportMemoryWin32HandleInfoKHR-handleType-01439) VUID-VkImportMemoryWin32HandleInfoKHR-handleType-01439
 
 If `handleType` is not
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT`, or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT`, `name`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT](VkExternalMemoryHandleTypeFlagBits.html),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT](VkExternalMemoryHandleTypeFlagBits.html),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT](VkExternalMemoryHandleTypeFlagBits.html), or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT](VkExternalMemoryHandleTypeFlagBits.html), `name`
 **must** be `NULL`
 
 * 
@@ -143,7 +143,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMemoryWin32HandleInfoKHR-sType-sType) VUID-VkImportMemoryWin32HandleInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkImportMemoryWin32HandleInfoKHR-handleType-parameter) VUID-VkImportMemoryWin32HandleInfoKHR-handleType-parameter

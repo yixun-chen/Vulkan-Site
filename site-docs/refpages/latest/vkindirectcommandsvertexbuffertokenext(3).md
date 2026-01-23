@@ -21,7 +21,7 @@ VkIndirectCommandsVertexBufferTokenEXT - Structure specifying layout token info 
 
 The `VkIndirectCommandsVertexBufferTokenEXT` structure specifies the
 layout token info for the
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT` token.
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT](VkIndirectCommandsTokenTypeEXT.html) token.
 
 // Provided by VK_EXT_device_generated_commands
 typedef struct VkIndirectCommandsVertexBufferTokenEXT {

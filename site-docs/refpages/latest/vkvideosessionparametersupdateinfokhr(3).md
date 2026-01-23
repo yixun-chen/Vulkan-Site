@@ -43,7 +43,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoSessionParametersUpdateInfoKHR-sType-sType) VUID-VkVideoSessionParametersUpdateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_SESSION_PARAMETERS_UPDATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_SESSION_PARAMETERS_UPDATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoSessionParametersUpdateInfoKHR-pNext-pNext) VUID-VkVideoSessionParametersUpdateInfoKHR-pNext-pNext

@@ -50,7 +50,7 @@ If the `VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT` structure is inclu
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_vertex_attribute_robustness](VK_EXT_vertex_attribute_robustness.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

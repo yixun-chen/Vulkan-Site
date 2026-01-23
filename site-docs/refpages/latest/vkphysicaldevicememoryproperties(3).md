@@ -34,7 +34,7 @@ typedef struct VkPhysicalDeviceMemoryProperties {
 `memoryTypes` array.
 
 * 
-`memoryTypes` is an array of `VK_MAX_MEMORY_TYPES`
+`memoryTypes` is an array of [VK_MAX_MEMORY_TYPES](VK_MAX_MEMORY_TYPES.html)
 [VkMemoryType](VkMemoryType.html) structures describing the *memory types* that **can** be
 used to access memory allocated from the heaps specified by
 `memoryHeaps`.
@@ -44,7 +44,7 @@ used to access memory allocated from the heaps specified by
 `memoryHeaps` array.
 
 * 
-`memoryHeaps` is an array of `VK_MAX_MEMORY_HEAPS`
+`memoryHeaps` is an array of [VK_MAX_MEMORY_HEAPS](VK_MAX_MEMORY_HEAPS.html)
 [VkMemoryHeap](VkMemoryHeap.html) structures describing the *memory heaps* from which
 memory **can** be allocated.
 
@@ -62,27 +62,27 @@ memory resources while allowing the memory to be used with a variety of
 different properties.
 
 The number of memory heaps is given by `memoryHeapCount` and is less
-than or equal to `VK_MAX_MEMORY_HEAPS`.
+than or equal to [VK_MAX_MEMORY_HEAPS](VK_MAX_MEMORY_HEAPS.html).
 Each heap is described by an element of the `memoryHeaps` array as a
 [VkMemoryHeap](VkMemoryHeap.html) structure.
 The number of memory types available across all memory heaps is given by
 `memoryTypeCount` and is less than or equal to
-`VK_MAX_MEMORY_TYPES`.
+[VK_MAX_MEMORY_TYPES](VK_MAX_MEMORY_TYPES.html).
 Each memory type is described by an element of the `memoryTypes` array
 as a [VkMemoryType](VkMemoryType.html) structure.
 
-At least one heap **must** include `VK_MEMORY_HEAP_DEVICE_LOCAL_BIT` in
+At least one heap **must** include [VK_MEMORY_HEAP_DEVICE_LOCAL_BIT](VkMemoryHeapFlagBits.html) in
 [VkMemoryHeap](VkMemoryHeap.html)::`flags`.
 If there are multiple heaps that all have similar performance
 characteristics, they **may** all include
-`VK_MEMORY_HEAP_DEVICE_LOCAL_BIT`.
+[VK_MEMORY_HEAP_DEVICE_LOCAL_BIT](VkMemoryHeapFlagBits.html).
 In a unified memory architecture (UMA) system there is often only a single
 memory heap which is considered to be equally “local” to the host and to
 the device, and such an implementation **must** advertise the heap as
 device-local.
 
 Memory contents within a tile memory heap, denoted by
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM`, are only visible across the
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html), are only visible across the
 command buffers executed in a single command buffer submission batch within
 a [vkQueueSubmit](vkQueueSubmit.html) or [vkQueueSubmit2](vkQueueSubmit2.html) call.
 If the
@@ -116,167 +116,167 @@ have its `propertyFlags` set to one of the following values:
 0
 
 * 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](VkMemoryPropertyFlagBits.html) |
 
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT`
-
-* 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT`
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](VkMemoryPropertyFlagBits.html) |
 
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT`
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT`
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT`
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](VkMemoryPropertyFlagBits.html) |
 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](VkMemoryPropertyFlagBits.html) |
 
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT`
-
-* 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT`
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](VkMemoryPropertyFlagBits.html) |
 
-`VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT`
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](VkMemoryPropertyFlagBits.html) |
 
-* 
-`VK_MEMORY_PROPERTY_PROTECTED_BIT`
-
-* 
-`VK_MEMORY_PROPERTY_PROTECTED_BIT` |
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT`
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](VkMemoryPropertyFlagBits.html) |
 
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` |
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](VkMemoryPropertyFlagBits.html) |
 
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD`
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](VkMemoryPropertyFlagBits.html) |
 
-* 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` |
-
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD`
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](VkMemoryPropertyFlagBits.html) |
 
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD`
-
-* 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` |
-
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD`
+[VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` |
-
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD`
+[VK_MEMORY_PROPERTY_PROTECTED_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` |
-
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD` |
-
-`VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD`
+[VK_MEMORY_PROPERTY_PROTECTED_BIT](VkMemoryPropertyFlagBits.html) |
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](VkMemoryPropertyFlagBits.html) |
 
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT` |
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](VkMemoryPropertyFlagBits.html) |
 
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` |
-
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD` |
-
-`VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD`
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](VkMemoryPropertyFlagBits.html)
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](VkMemoryPropertyFlagBits.html) |
 
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD` |
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](VkMemoryPropertyFlagBits.html) |
 
-`VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD`
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](VkMemoryPropertyFlagBits.html) |
 
-* 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` |
-
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD` |
-
-`VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD`
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](VkMemoryPropertyFlagBits.html)
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](VkMemoryPropertyFlagBits.html) |
 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` |
-
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD` |
-
-`VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD`
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](VkMemoryPropertyFlagBits.html)
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](VkMemoryPropertyFlagBits.html) |
 
-`VK_MEMORY_PROPERTY_RDMA_CAPABLE_BIT_NV`
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](VkMemoryPropertyFlagBits.html)
+
+* 
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](VkMemoryPropertyFlagBits.html)
+
+* 
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD](VkMemoryPropertyFlagBits.html)
+
+* 
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD](VkMemoryPropertyFlagBits.html)
+
+* 
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD](VkMemoryPropertyFlagBits.html)
+
+* 
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD](VkMemoryPropertyFlagBits.html)
+
+* 
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD](VkMemoryPropertyFlagBits.html)
+
+* 
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](VkMemoryPropertyFlagBits.html) |
+
+[VK_MEMORY_PROPERTY_RDMA_CAPABLE_BIT_NV](VkMemoryPropertyFlagBits.html)
 
 There **must** be at least one memory type with both the
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` and
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` bits set in its
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](VkMemoryPropertyFlagBits.html) and
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](VkMemoryPropertyFlagBits.html) bits set in its
 `propertyFlags`.
 There **must** be at least one memory type with the
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` bit set in its
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](VkMemoryPropertyFlagBits.html) bit set in its
 `propertyFlags`.
 If the [`deviceCoherentMemory`](../../../../spec/latest/chapters/features.html#features-deviceCoherentMemory) feature
 is enabled, there **must** be at least one memory type with the
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD` bit set in its
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](VkMemoryPropertyFlagBits.html) bit set in its
 `propertyFlags`.
 
 For each pair of elements **X** and **Y** returned in `memoryTypes`, **X**
@@ -295,8 +295,8 @@ implementation-specific manner)
 
 * 
 the `propertyFlags` members of **Y** includes
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD` or
-`VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD` and **X** does not
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](VkMemoryPropertyFlagBits.html) or
+[VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD](VkMemoryPropertyFlagBits.html) and **X** does not
 
 |  | There is no ordering requirement between **X** and **Y** elements for the case
 | --- | --- |
@@ -304,9 +304,9 @@ their `propertyFlags` members are not in a subset relation.
 That potentially allows more than one possible way to order the same set of
 memory types.
 Notice that the [list of all allowed memory property flag combinations](../../../../spec/latest/chapters/memory.html#memory-device-bitmask-list) is written in a valid order.
-But if instead `VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` was before
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` \|
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT`, the list would still be in a
+But if instead [VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](VkMemoryPropertyFlagBits.html) was before
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](VkMemoryPropertyFlagBits.html) \|
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](VkMemoryPropertyFlagBits.html), the list would still be in a
 valid order.
 
 There may be a performance penalty for using device coherent or uncached

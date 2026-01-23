@@ -41,7 +41,7 @@ Valid Usage
 
 If the `pNext` chain includes a [VkExportMetalDeviceInfoEXT](VkExportMetalDeviceInfoEXT.html)
 structure, the [VkInstance](VkInstance.html) **must** have been created with
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT` in the
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT](VkExportMetalObjectTypeFlagBitsEXT.html) in the
 `exportObjectType` member of a
 [VkExportMetalObjectCreateInfoEXT](VkExportMetalObjectCreateInfoEXT.html) structure in the `pNext`
 chain of the [VkInstanceCreateInfo](VkInstanceCreateInfo.html) structure in the
@@ -53,7 +53,7 @@ chain of the [VkInstanceCreateInfo](VkInstanceCreateInfo.html) structure in the
 If the `pNext` chain includes a
 [VkExportMetalCommandQueueInfoEXT](VkExportMetalCommandQueueInfoEXT.html) structure, the [VkInstance](VkInstance.html)
 **must** have been created with
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT` in the
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT](VkExportMetalObjectTypeFlagBitsEXT.html) in the
 `exportObjectType` member of a
 [VkExportMetalObjectCreateInfoEXT](VkExportMetalObjectCreateInfoEXT.html) structure in the `pNext`
 chain of the [VkInstanceCreateInfo](VkInstanceCreateInfo.html) structure in the
@@ -65,7 +65,7 @@ chain of the [VkInstanceCreateInfo](VkInstanceCreateInfo.html) structure in the
 If the `pNext` chain includes a [VkExportMetalBufferInfoEXT](VkExportMetalBufferInfoEXT.html)
 structure, the [VkDeviceMemory](VkDeviceMemory.html) in its `memory` member **must**
 have been allocated with
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT` in the
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT](VkExportMetalObjectTypeFlagBitsEXT.html) in the
 `exportObjectType` member of a
 [VkExportMetalObjectCreateInfoEXT](VkExportMetalObjectCreateInfoEXT.html) structure in the `pNext`
 chain of the [VkMemoryAllocateInfo](VkMemoryAllocateInfo.html) structure in the
@@ -84,7 +84,7 @@ structure, exactly one of its `image`, `imageView`, or
 If the `pNext` chain includes a [VkExportMetalTextureInfoEXT](VkExportMetalTextureInfoEXT.html)
 structure, and its `image` member is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), the
 [VkImage](VkImage.html) in its `image` member **must** have been created with
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT` in the
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT](VkExportMetalObjectTypeFlagBitsEXT.html) in the
 `exportObjectType` member of a
 [VkExportMetalObjectCreateInfoEXT](VkExportMetalObjectCreateInfoEXT.html) structure in the `pNext`
 chain of the [VkImageCreateInfo](VkImageCreateInfo.html) structure in the
@@ -96,7 +96,7 @@ chain of the [VkImageCreateInfo](VkImageCreateInfo.html) structure in the
 If the `pNext` chain includes a [VkExportMetalTextureInfoEXT](VkExportMetalTextureInfoEXT.html)
 structure, and its `imageView` member is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 the [VkImageView](VkImageView.html) in its `imageView` member **must** have been
-created with `VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT` in
+created with [VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT](VkExportMetalObjectTypeFlagBitsEXT.html) in
 the `exportObjectType` member of a
 [VkExportMetalObjectCreateInfoEXT](VkExportMetalObjectCreateInfoEXT.html) structure in the `pNext`
 chain of the [VkImageViewCreateInfo](VkImageViewCreateInfo.html) structure in the
@@ -108,7 +108,7 @@ chain of the [VkImageViewCreateInfo](VkImageViewCreateInfo.html) structure in th
 If the `pNext` chain includes a [VkExportMetalTextureInfoEXT](VkExportMetalTextureInfoEXT.html)
 structure, and its `bufferView` member is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 the [VkBufferView](VkBufferView.html) in its `bufferView` member **must** have been
-created with `VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT` in
+created with [VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT](VkExportMetalObjectTypeFlagBitsEXT.html) in
 the `exportObjectType` member of a
 [VkExportMetalObjectCreateInfoEXT](VkExportMetalObjectCreateInfoEXT.html) structure in the `pNext`
 chain of the [VkBufferViewCreateInfo](VkBufferViewCreateInfo.html) structure in the
@@ -120,8 +120,8 @@ chain of the [VkBufferViewCreateInfo](VkBufferViewCreateInfo.html) structure in 
 If the `pNext` chain includes a [VkExportMetalTextureInfoEXT](VkExportMetalTextureInfoEXT.html)
 structure, and if either its `image` or `imageView` member is
 not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), then `plane` **must** be
-`VK_IMAGE_ASPECT_PLANE_0_BIT`, `VK_IMAGE_ASPECT_PLANE_1_BIT`, or
-`VK_IMAGE_ASPECT_PLANE_2_BIT`
+[VK_IMAGE_ASPECT_PLANE_0_BIT](VkImageAspectFlagBits.html), [VK_IMAGE_ASPECT_PLANE_1_BIT](VkImageAspectFlagBits.html), or
+[VK_IMAGE_ASPECT_PLANE_2_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkExportMetalObjectsInfoEXT-pNext-06799) VUID-VkExportMetalObjectsInfoEXT-pNext-06799
@@ -129,7 +129,7 @@ not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), then `plane` **must** be
 If the `pNext` chain includes a [VkExportMetalTextureInfoEXT](VkExportMetalTextureInfoEXT.html)
 structure, and if the [VkImage](VkImage.html) in its `image` member does not
 have a [multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar), then its
-`plane` member **must** be `VK_IMAGE_ASPECT_PLANE_0_BIT`
+`plane` member **must** be [VK_IMAGE_ASPECT_PLANE_0_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkExportMetalObjectsInfoEXT-pNext-06800) VUID-VkExportMetalObjectsInfoEXT-pNext-06800
@@ -137,7 +137,7 @@ have a [multi-planar format](../../../../spec/latest/chapters/formats.html#forma
 If the `pNext` chain includes a [VkExportMetalTextureInfoEXT](VkExportMetalTextureInfoEXT.html)
 structure, and if the [VkImage](VkImage.html) in its `image` member has a
 [multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar) with only two planes, then
-its `plane` member **must** not be `VK_IMAGE_ASPECT_PLANE_2_BIT`
+its `plane` member **must** not be [VK_IMAGE_ASPECT_PLANE_2_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkExportMetalObjectsInfoEXT-pNext-06801) VUID-VkExportMetalObjectsInfoEXT-pNext-06801
@@ -145,7 +145,7 @@ its `plane` member **must** not be `VK_IMAGE_ASPECT_PLANE_2_BIT`
 If the `pNext` chain includes a [VkExportMetalTextureInfoEXT](VkExportMetalTextureInfoEXT.html)
 structure, and if the [VkImageView](VkImageView.html) in its `imageView` member
 does not have a [multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar), then its
-`plane` member **must** be `VK_IMAGE_ASPECT_PLANE_0_BIT`
+`plane` member **must** be [VK_IMAGE_ASPECT_PLANE_0_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkExportMetalObjectsInfoEXT-pNext-06802) VUID-VkExportMetalObjectsInfoEXT-pNext-06802
@@ -154,14 +154,14 @@ If the `pNext` chain includes a [VkExportMetalTextureInfoEXT](VkExportMetalTextu
 structure, and if the [VkImageView](VkImageView.html) in its `imageView` member
 has a [multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar) with only two planes,
 then its `plane` member **must** not be
-`VK_IMAGE_ASPECT_PLANE_2_BIT`
+[VK_IMAGE_ASPECT_PLANE_2_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkExportMetalObjectsInfoEXT-pNext-06803) VUID-VkExportMetalObjectsInfoEXT-pNext-06803
 
 If the `pNext` chain includes a [VkExportMetalIOSurfaceInfoEXT](VkExportMetalIOSurfaceInfoEXT.html)
 structure, the [VkImage](VkImage.html) in its `image` member **must** have been
-created with `VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT`
+created with [VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT](VkExportMetalObjectTypeFlagBitsEXT.html)
 in the `exportObjectType` member of a
 [VkExportMetalObjectCreateInfoEXT](VkExportMetalObjectCreateInfoEXT.html) structure in the `pNext`
 chain of the [VkImageCreateInfo](VkImageCreateInfo.html) structure in the
@@ -181,7 +181,7 @@ If the `pNext` chain includes a
 [VkExportMetalSharedEventInfoEXT](VkExportMetalSharedEventInfoEXT.html) structure, and its `semaphore`
 member is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), the [VkSemaphore](VkSemaphore.html) in its
 `semaphore` member **must** have been created with
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT` in the
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT](VkExportMetalObjectTypeFlagBitsEXT.html) in the
 `exportObjectType` member of a
 [VkExportMetalObjectCreateInfoEXT](VkExportMetalObjectCreateInfoEXT.html) structure in the `pNext`
 chain of the [VkSemaphoreCreateInfo](VkSemaphoreCreateInfo.html) structure in the
@@ -194,7 +194,7 @@ If the `pNext` chain includes a
 [VkExportMetalSharedEventInfoEXT](VkExportMetalSharedEventInfoEXT.html) structure, and its `event`
 member is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), the [VkEvent](VkEvent.html) in its `event`
 member **must** have been created with
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT` in the
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT](VkExportMetalObjectTypeFlagBitsEXT.html) in the
 `exportObjectType` member of a
 [VkExportMetalObjectCreateInfoEXT](VkExportMetalObjectCreateInfoEXT.html) structure in the `pNext`
 chain of the [VkEventCreateInfo](VkEventCreateInfo.html) structure in the
@@ -205,7 +205,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMetalObjectsInfoEXT-sType-sType) VUID-VkExportMetalObjectsInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECTS_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECTS_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkExportMetalObjectsInfoEXT-pNext-pNext) VUID-VkExportMetalObjectsInfoEXT-pNext-pNext

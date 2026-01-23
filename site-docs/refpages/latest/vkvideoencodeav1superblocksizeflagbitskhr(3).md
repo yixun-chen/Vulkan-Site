@@ -29,11 +29,11 @@ typedef enum VkVideoEncodeAV1SuperblockSizeFlagBitsKHR {
 } VkVideoEncodeAV1SuperblockSizeFlagBitsKHR;
 
 * 
-`VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_64_BIT_KHR` specifies that a
+[VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_64_BIT_KHR](#) specifies that a
 superblock size of 64x64 is supported.
 
 * 
-`VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_128_BIT_KHR` specifies that a
+[VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_128_BIT_KHR](#) specifies that a
 superblock size of 128x128 is supported.
 
 [VK_KHR_video_encode_av1](VK_KHR_video_encode_av1.html), [VkVideoEncodeAV1SuperblockSizeFlagsKHR](VkVideoEncodeAV1SuperblockSizeFlagsKHR.html)

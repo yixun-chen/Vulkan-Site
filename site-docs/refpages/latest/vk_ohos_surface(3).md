@@ -110,7 +110,7 @@ compositor, video encoders, and application-specific compositors.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS`
+[VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS](VkStructureType.html)
 
 * 
 Revision 1, 2025-05-19 (Weilan Chen)

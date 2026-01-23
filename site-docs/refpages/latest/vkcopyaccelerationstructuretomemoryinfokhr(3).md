@@ -61,20 +61,20 @@ The memory pointed to by `dst` **must** be at least as large as the
 serialization size of `src`, as reported by
 [vkWriteAccelerationStructuresPropertiesKHR](vkWriteAccelerationStructuresPropertiesKHR.html) or
 [vkCmdWriteAccelerationStructuresPropertiesKHR](vkCmdWriteAccelerationStructuresPropertiesKHR.html) with a query type of
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR](VkQueryType.html)
 
 * 
 [](#VUID-VkCopyAccelerationStructureToMemoryInfoKHR-mode-03412) VUID-VkCopyAccelerationStructureToMemoryInfoKHR-mode-03412
 
 `mode` **must** be
-`VK_COPY_ACCELERATION_STRUCTURE_MODE_SERIALIZE_KHR`
+[VK_COPY_ACCELERATION_STRUCTURE_MODE_SERIALIZE_KHR](VkCopyAccelerationStructureModeKHR.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkCopyAccelerationStructureToMemoryInfoKHR-sType-sType) VUID-VkCopyAccelerationStructureToMemoryInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COPY_ACCELERATION_STRUCTURE_TO_MEMORY_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COPY_ACCELERATION_STRUCTURE_TO_MEMORY_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkCopyAccelerationStructureToMemoryInfoKHR-pNext-pNext) VUID-VkCopyAccelerationStructureToMemoryInfoKHR-pNext-pNext

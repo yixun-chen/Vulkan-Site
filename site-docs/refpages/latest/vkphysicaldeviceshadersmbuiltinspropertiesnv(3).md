@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderSMBuiltinsPropertiesNV-sType-sType) VUID-VkPhysicalDeviceShaderSMBuiltinsPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_PROPERTIES_NV](VkStructureType.html)
 
 [VK_NV_shader_sm_builtins](VK_NV_shader_sm_builtins.html), [VkStructureType](VkStructureType.html)
 

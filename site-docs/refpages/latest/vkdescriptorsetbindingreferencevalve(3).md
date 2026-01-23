@@ -36,7 +36,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDescriptorSetBindingReferenceVALVE-sType-sType) VUID-VkDescriptorSetBindingReferenceVALVE-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_SET_BINDING_REFERENCE_VALVE`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_SET_BINDING_REFERENCE_VALVE](VkStructureType.html)
 
 * 
 [](#VUID-VkDescriptorSetBindingReferenceVALVE-pNext-pNext) VUID-VkDescriptorSetBindingReferenceVALVE-pNext-pNext

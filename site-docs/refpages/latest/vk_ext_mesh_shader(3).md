@@ -229,56 +229,56 @@ Extending [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html):
 * 
 Extending [VkPipelineStageFlagBits](VkPipelineStageFlagBits.html):
 
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](VkPipelineStageFlagBits.html)
 
 Extending [VkQueryPipelineStatisticFlagBits](VkQueryPipelineStatisticFlagBits.html):
 
 * 
-`VK_QUERY_PIPELINE_STATISTIC_MESH_SHADER_INVOCATIONS_BIT_EXT`
+[VK_QUERY_PIPELINE_STATISTIC_MESH_SHADER_INVOCATIONS_BIT_EXT](VkQueryPipelineStatisticFlagBits.html)
 
 * 
-`VK_QUERY_PIPELINE_STATISTIC_TASK_SHADER_INVOCATIONS_BIT_EXT`
+[VK_QUERY_PIPELINE_STATISTIC_TASK_SHADER_INVOCATIONS_BIT_EXT](VkQueryPipelineStatisticFlagBits.html)
 
 Extending [VkQueryType](VkQueryType.html):
 
 * 
-`VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT`
+[VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT](VkQueryType.html)
 
 Extending [VkShaderStageFlagBits](VkShaderStageFlagBits.html):
 
 * 
-`VK_SHADER_STAGE_MESH_BIT_EXT`
+[VK_SHADER_STAGE_MESH_BIT_EXT](VkShaderStageFlagBits.html)
 
 * 
-`VK_SHADER_STAGE_TASK_BIT_EXT`
+[VK_SHADER_STAGE_TASK_BIT_EXT](VkShaderStageFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_EXT](VkStructureType.html)
 
 If [VK_EXT_device_generated_commands](VK_EXT_device_generated_commands.html) is supported:
 
 * 
 Extending [VkIndirectCommandsTokenTypeEXT](VkIndirectCommandsTokenTypeEXT.html):
 
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT](VkIndirectCommandsTokenTypeEXT.html)
 
 * 
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT](VkIndirectCommandsTokenTypeEXT.html)
 
 If [VK_NV_device_generated_commands](VK_NV_device_generated_commands.html) is supported:
 
 * 
 Extending [VkIndirectCommandsTokenTypeNV](VkIndirectCommandsTokenTypeNV.html):
 
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV](VkIndirectCommandsTokenTypeNV.html)
 
 * 
 [CullPrimitiveEXT](../../../../spec/latest/chapters/interfaces.html#interfaces-builtin-variables-cullprimitive)

@@ -58,7 +58,7 @@ indices.
 
 `size` specifies the bound size of the index buffer starting from
 `offset`.
-If `size` is `VK_WHOLE_SIZE` then the bound size is from
+If `size` is [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html) then the bound size is from
 `offset` to the end of the `buffer`.
 
 If the [`maintenance6`](../../../../spec/latest/chapters/features.html#features-maintenance6) feature is enabled,
@@ -84,7 +84,7 @@ multiple of the size of the type indicated by `indexType`
 [](#VUID-vkCmdBindIndexBuffer2-buffer-08784) VUID-vkCmdBindIndexBuffer2-buffer-08784
 
 `buffer` **must** have been created with the
-`VK_BUFFER_USAGE_INDEX_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_INDEX_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdBindIndexBuffer2-buffer-08785) VUID-vkCmdBindIndexBuffer2-buffer-08785
@@ -95,12 +95,12 @@ contiguously to a single `VkDeviceMemory` object
 * 
 [](#VUID-vkCmdBindIndexBuffer2-indexType-08786) VUID-vkCmdBindIndexBuffer2-indexType-08786
 
-`indexType` **must** not be `VK_INDEX_TYPE_NONE_KHR`
+`indexType` **must** not be [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html)
 
 * 
 [](#VUID-vkCmdBindIndexBuffer2-indexType-08787) VUID-vkCmdBindIndexBuffer2-indexType-08787
 
-If `indexType` is `VK_INDEX_TYPE_UINT8`, the
+If `indexType` is [VK_INDEX_TYPE_UINT8](VkIndexType.html), the
 [`indexTypeUint8`](../../../../spec/latest/chapters/features.html#features-indexTypeUint8) feature **must** be
 enabled
 
@@ -119,13 +119,13 @@ If `buffer` is [VK_NULL_HANDLE](VK_NULL_HANDLE.html), offset **must** be zero
 * 
 [](#VUID-vkCmdBindIndexBuffer2-size-08767) VUID-vkCmdBindIndexBuffer2-size-08767
 
-If `size` is not `VK_WHOLE_SIZE`, `size` **must** be a multiple
+If `size` is not [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), `size` **must** be a multiple
 of the size of the type indicated by `indexType`
 
 * 
 [](#VUID-vkCmdBindIndexBuffer2-size-08768) VUID-vkCmdBindIndexBuffer2-size-08768
 
-If `size` is not `VK_WHOLE_SIZE`, the sum of `offset` and
+If `size` is not [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), the sum of `offset` and
 `size` **must** be less than or equal to the size of `buffer`
 
 Valid Usage (Implicit)
@@ -153,7 +153,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindIndexBuffer2-commandBuffer-cmdpool) VUID-vkCmdBindIndexBuffer2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBindIndexBuffer2-videocoding) VUID-vkCmdBindIndexBuffer2-videocoding

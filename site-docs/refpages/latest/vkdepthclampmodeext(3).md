@@ -29,7 +29,7 @@ typedef enum VkDepthClampModeEXT {
 } VkDepthClampModeEXT;
 
 * 
-`VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT` specifies that the depth
+[VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT](#) specifies that the depth
 clamp range follows the viewport depth range.
 The depth clamp range of each viewport will implicitly be set to
 zmin = min(n,f) and zmax = max(n,f), where n and
@@ -37,7 +37,7 @@ f are the `minDepth` and `maxDepth` depth range values of
 the viewport.
 
 * 
-`VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT` specifies that a single
+[VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT](#) specifies that a single
 user-defined depth clamp range will be used for all viewports.
 The user-defined depth clamp range is defined by the `minDepthClamp`
 and `maxDepthClamp` members of [VkDepthClampRangeEXT](VkDepthClampRangeEXT.html).

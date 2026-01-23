@@ -29,17 +29,17 @@ typedef enum VkSparseImageFormatFlagBits {
 } VkSparseImageFormatFlagBits;
 
 * 
-`VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT` specifies that the image
+[VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT](#) specifies that the image
 uses a single mip tail region for all array layers.
 
 * 
-`VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT` specifies that the
+[VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT](#) specifies that the
 first mip level whose dimensions are not integer multiples of the
 corresponding dimensions of the sparse image block begins the mip tail
 region.
 
 * 
-`VK_SPARSE_IMAGE_FORMAT_NONSTANDARD_BLOCK_SIZE_BIT` specifies that
+[VK_SPARSE_IMAGE_FORMAT_NONSTANDARD_BLOCK_SIZE_BIT](#) specifies that
 the image uses non-standard sparse image block dimensions, and the
 `imageGranularity` values do not match the standard sparse image
 block dimensions for the given format.

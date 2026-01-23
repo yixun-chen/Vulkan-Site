@@ -61,7 +61,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMultiviewProperties-sType-sType) VUID-VkPhysicalDeviceMultiviewProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES](VkStructureType.html)
 
 [VK_KHR_multiview](VK_KHR_multiview.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkStructureType](VkStructureType.html)
 

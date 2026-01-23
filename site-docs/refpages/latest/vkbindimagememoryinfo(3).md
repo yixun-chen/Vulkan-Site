@@ -126,23 +126,23 @@ its `pNext` chain, [VkMemoryDedicatedAllocateInfo](VkMemoryDedicatedAllocateInfo
 * 
 [](#VUID-VkBindImageMemoryInfo-None-01901) VUID-VkBindImageMemoryInfo-None-01901
 
-If image was created with the `VK_IMAGE_CREATE_PROTECTED_BIT` bit
+If image was created with the [VK_IMAGE_CREATE_PROTECTED_BIT](VkImageCreateFlagBits.html) bit
 set, the image **must** be bound to a memory object allocated with a memory
-type that reports `VK_MEMORY_PROPERTY_PROTECTED_BIT`
+type that reports [VK_MEMORY_PROPERTY_PROTECTED_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
 [](#VUID-VkBindImageMemoryInfo-None-01902) VUID-VkBindImageMemoryInfo-None-01902
 
-If image was created with the `VK_IMAGE_CREATE_PROTECTED_BIT` bit
+If image was created with the [VK_IMAGE_CREATE_PROTECTED_BIT](VkImageCreateFlagBits.html) bit
 not set, the image **must** not be bound to a memory object created with a
-memory type that reports `VK_MEMORY_PROPERTY_PROTECTED_BIT`
+memory type that reports [VK_MEMORY_PROPERTY_PROTECTED_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
 [](#VUID-VkBindImageMemoryInfo-image-01050) VUID-VkBindImageMemoryInfo-image-01050
 
 If `image` was created with
 [VkDedicatedAllocationImageCreateInfoNV](VkDedicatedAllocationImageCreateInfoNV.html)::`dedicatedAllocation`
-equal to `VK_TRUE`, `memory` **must** have been created with
+equal to [VK_TRUE](VK_TRUE.html), `memory` **must** have been created with
 [VkDedicatedAllocationMemoryAllocateInfoNV](VkDedicatedAllocationMemoryAllocateInfoNV.html)::`image` equal to an
 image handle created with identical creation parameters to `image`
 and `memoryOffset` **must** be zero
@@ -157,7 +157,7 @@ and `memoryOffset` **must** be zero
 and
     `image` was not created with
     [VkDedicatedAllocationImageCreateInfoNV](VkDedicatedAllocationImageCreateInfoNV.html)::`dedicatedAllocation`
-    equal to `VK_TRUE`, `memory` **must** not have been allocated
+    equal to [VK_TRUE](VK_TRUE.html), `memory` **must** not have been allocated
     dedicated for a specific buffer or image
 
 * 
@@ -185,67 +185,96 @@ in [VkExternalMemoryImageCreateInfo](VkExternalMemoryImageCreateInfo.html)::`han
 If `memory` was created with the
 [VkImportAndroidHardwareBufferInfoANDROID](VkImportAndroidHardwareBufferInfoANDROID.html) memory import operation
 with a non-`NULL` `buffer` value,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](VkExternalMemoryHandleTypeFlagBits.html)
 **must** also have been set in
 [VkExternalMemoryImageCreateInfo](VkExternalMemoryImageCreateInfo.html)::`handleTypes` when
 `image` was created
 
 * 
-[](#VUID-VkBindImageMemoryInfo-descriptorBufferCaptureReplay-08113) VUID-VkBindImageMemoryInfo-descriptorBufferCaptureReplay-08113
+[](#VUID-VkBindImageMemoryInfo-image-08113) VUID-VkBindImageMemoryInfo-image-08113
 
 If the `image` was created with the
-`VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` bit set,
+[VK_IMAGE_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_EXT](VkImageCreateFlagBits.html) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](VkMemoryAllocateFlagBits.html) bit set
 
 * 
 [](#VUID-VkBindImageMemoryInfo-image-09202) VUID-VkBindImageMemoryInfo-image-09202
 
 If the `image` was created with the
-`VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` bit set,
+[VK_IMAGE_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_EXT](VkImageCreateFlagBits.html) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkMemoryAllocateFlagBits.html) bit set
 
 * 
 [](#VUID-VkBindImageMemoryInfo-pNext-01615) VUID-VkBindImageMemoryInfo-pNext-01615
 
 If the `pNext` chain does not include a
-[VkBindImagePlaneMemoryInfo](VkBindImagePlaneMemoryInfo.html) structure, `memory` **must** have been
-allocated using one of the memory types allowed in the
-`memoryTypeBits` member of the [VkMemoryRequirements](VkMemoryRequirements.html) structure
-returned from a call to [vkGetImageMemoryRequirements2](vkGetImageMemoryRequirements2.html) with
-`image`
+[VkBindImagePlaneMemoryInfo](VkBindImagePlaneMemoryInfo.html) structure,
+and `memory` was not allocated from a memory heap with the
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property set,
+then `memory` **must** have been allocated using one of the memory
+types allowed in the `memoryTypeBits` member of the
+[VkMemoryRequirements](VkMemoryRequirements.html) structure returned from a call to
+[vkGetImageMemoryRequirements2](vkGetImageMemoryRequirements2.html) with `image`
 
 * 
 [](#VUID-VkBindImageMemoryInfo-pNext-01616) VUID-VkBindImageMemoryInfo-pNext-01616
 
 If the `pNext` chain does not include a
-[VkBindImagePlaneMemoryInfo](VkBindImagePlaneMemoryInfo.html) structure, `memoryOffset` **must** be
-an integer multiple of the `alignment` member of the
-[VkMemoryRequirements](VkMemoryRequirements.html) structure returned from a call to
-[vkGetImageMemoryRequirements2](vkGetImageMemoryRequirements2.html) with `image`
+[VkBindImagePlaneMemoryInfo](VkBindImagePlaneMemoryInfo.html) structure,
+and `memory` was not allocated from a memory heap with the
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property set,
+then `memoryOffset` **must** be an integer multiple of the
+`alignment` member of the [VkMemoryRequirements](VkMemoryRequirements.html) structure
+returned from a call to [vkGetImageMemoryRequirements2](vkGetImageMemoryRequirements2.html) with
+`image`
 
 * 
 [](#VUID-VkBindImageMemoryInfo-pNext-01617) VUID-VkBindImageMemoryInfo-pNext-01617
 
 If the `pNext` chain does not include a
-[VkBindImagePlaneMemoryInfo](VkBindImagePlaneMemoryInfo.html) structure, the difference of the size
-of `memory` and `memoryOffset` **must** be greater than or equal to
-the `size` member of the [VkMemoryRequirements](VkMemoryRequirements.html) structure
-returned from a call to [vkGetImageMemoryRequirements2](vkGetImageMemoryRequirements2.html) with the
-same `image`
+[VkBindImagePlaneMemoryInfo](VkBindImagePlaneMemoryInfo.html) structure,
+and `memory` was not allocated from a memory heap with the
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property set,
+then the difference of the size of `memory` and `memoryOffset`
+**must** be greater than or equal to the `size` member of the
+[VkMemoryRequirements](VkMemoryRequirements.html) structure returned from a call to
+[vkGetImageMemoryRequirements2](vkGetImageMemoryRequirements2.html) with the same `image`
+
+* 
+[](#VUID-VkBindImageMemoryInfo-pNext-12329) VUID-VkBindImageMemoryInfo-pNext-12329
+
+If the `pNext` chain does not include a
+[VkBindImagePlaneMemoryInfo](VkBindImagePlaneMemoryInfo.html) structure, and `memory` was
+allocated from a memory heap with the
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property set, then
+`memoryOffset` **must** be an integer multiple of the `alignment`
+member of the `VkTileMemoryRequirementsQCOM` structure returned from
+a call to `vkGetImageMemoryRequirements2` with `image`
+
+* 
+[](#VUID-VkBindImageMemoryInfo-pNext-12330) VUID-VkBindImageMemoryInfo-pNext-12330
+
+If the `pNext` chain does not include a
+[VkBindImagePlaneMemoryInfo](VkBindImagePlaneMemoryInfo.html) structure, and `memory` was
+allocated from a memory heap with the
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property set, then `size`
+member of the `VkTileMemoryRequirementsQCOM` structure returned from
+a call to `vkGetImageMemoryRequirements2` with `image` **must** be
+less than or equal to the size of `memory` minus `memoryOffset`
 
 * 
 [](#VUID-VkBindImageMemoryInfo-pNext-01618) VUID-VkBindImageMemoryInfo-pNext-01618
 
 If the `pNext` chain includes a [VkBindImagePlaneMemoryInfo](VkBindImagePlaneMemoryInfo.html)
 structure, `image` **must** have been created with the
-`VK_IMAGE_CREATE_DISJOINT_BIT` bit set
+[VK_IMAGE_CREATE_DISJOINT_BIT](VkImageCreateFlagBits.html) bit set
 
 * 
 [](#VUID-VkBindImageMemoryInfo-image-07736) VUID-VkBindImageMemoryInfo-image-07736
 
-If `image` was created with the `VK_IMAGE_CREATE_DISJOINT_BIT`
+If `image` was created with the [VK_IMAGE_CREATE_DISJOINT_BIT](VkImageCreateFlagBits.html)
 bit set, then the `pNext` chain **must** include a
 [VkBindImagePlaneMemoryInfo](VkBindImagePlaneMemoryInfo.html) structure
 
@@ -301,7 +330,7 @@ If the `pNext` chain includes a
 [VkBindImageMemoryDeviceGroupInfo](VkBindImageMemoryDeviceGroupInfo.html) structure, and
 [VkBindImageMemoryDeviceGroupInfo](VkBindImageMemoryDeviceGroupInfo.html)::`splitInstanceBindRegionCount`
 is not zero, then `image` **must** have been created with the
-`VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT` bit set
+[VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT](VkImageCreateFlagBits.html) bit set
 
 * 
 [](#VUID-VkBindImageMemoryInfo-pNext-01628) VUID-VkBindImageMemoryInfo-pNext-01628
@@ -349,12 +378,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindImageMemoryInfo-sType-sType) VUID-VkBindImageMemoryInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkBindImageMemoryInfo-pNext-pNext) VUID-VkBindImageMemoryInfo-pNext-pNext
 
- Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkBindImageMemoryDeviceGroupInfo](VkBindImageMemoryDeviceGroupInfo.html), [VkBindImageMemorySwapchainInfoKHR](VkBindImageMemorySwapchainInfoKHR.html), [VkBindImagePlaneMemoryInfo](VkBindImagePlaneMemoryInfo.html), [VkBindMemoryStatus](VkBindMemoryStatus.html), or [VkNativeBufferOHOS](VkNativeBufferOHOS.html)
+ Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkBindImageMemoryDeviceGroupInfo](VkBindImageMemoryDeviceGroupInfo.html), [VkBindImageMemorySwapchainInfoKHR](VkBindImageMemorySwapchainInfoKHR.html), [VkBindImagePlaneMemoryInfo](VkBindImagePlaneMemoryInfo.html), or [VkBindMemoryStatus](VkBindMemoryStatus.html)
 
 * 
 [](#VUID-VkBindImageMemoryInfo-sType-unique) VUID-VkBindImageMemoryInfo-sType-unique

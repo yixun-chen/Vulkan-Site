@@ -39,8 +39,10 @@ typedef enum VkSubgroupFeatureFlagBits {
     VK_SUBGROUP_FEATURE_ROTATE_BIT = 0x00000200,
   // Provided by VK_VERSION_1_4
     VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT = 0x00000400,
+  // Provided by VK_EXT_shader_subgroup_partitioned
+    VK_SUBGROUP_FEATURE_PARTITIONED_BIT_EXT = 0x00000100,
   // Provided by VK_NV_shader_subgroup_partitioned
-    VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV = 0x00000100,
+    VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV = VK_SUBGROUP_FEATURE_PARTITIONED_BIT_EXT,
   // Provided by VK_KHR_shader_subgroup_rotate
     VK_SUBGROUP_FEATURE_ROTATE_BIT_KHR = VK_SUBGROUP_FEATURE_ROTATE_BIT,
   // Provided by VK_KHR_shader_subgroup_rotate
@@ -48,61 +50,61 @@ typedef enum VkSubgroupFeatureFlagBits {
 } VkSubgroupFeatureFlagBits;
 
 * 
- `VK_SUBGROUP_FEATURE_BASIC_BIT`
+ [VK_SUBGROUP_FEATURE_BASIC_BIT](#)
 specifies the device will accept SPIR-V shader modules containing the
 `GroupNonUniform` capability.
 
 * 
- `VK_SUBGROUP_FEATURE_VOTE_BIT` specifies
+ [VK_SUBGROUP_FEATURE_VOTE_BIT](#) specifies
 the device will accept SPIR-V shader modules containing the
 `GroupNonUniformVote` capability.
 
 * 
 
-`VK_SUBGROUP_FEATURE_ARITHMETIC_BIT` specifies the device will
+[VK_SUBGROUP_FEATURE_ARITHMETIC_BIT](#) specifies the device will
 accept SPIR-V shader modules containing the
 `GroupNonUniformArithmetic` capability.
 
 * 
- `VK_SUBGROUP_FEATURE_BALLOT_BIT`
+ [VK_SUBGROUP_FEATURE_BALLOT_BIT](#)
 specifies the device will accept SPIR-V shader modules containing the
 `GroupNonUniformBallot` capability.
 
 * 
- `VK_SUBGROUP_FEATURE_SHUFFLE_BIT`
+ [VK_SUBGROUP_FEATURE_SHUFFLE_BIT](#)
 specifies the device will accept SPIR-V shader modules containing the
 `GroupNonUniformShuffle` capability.
 
 * 
 
-`VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT` specifies the device will
+[VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT](#) specifies the device will
 accept SPIR-V shader modules containing the
 `GroupNonUniformShuffleRelative` capability.
 
 * 
- `VK_SUBGROUP_FEATURE_CLUSTERED_BIT`
+ [VK_SUBGROUP_FEATURE_CLUSTERED_BIT](#)
 specifies the device will accept SPIR-V shader modules containing the
 `GroupNonUniformClustered` capability.
 
 * 
- `VK_SUBGROUP_FEATURE_QUAD_BIT` specifies
+ [VK_SUBGROUP_FEATURE_QUAD_BIT](#) specifies
 the device will accept SPIR-V shader modules containing the
 `GroupNonUniformQuad` capability.
 
 * 
 
-`VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV` specifies the device will
+[VK_SUBGROUP_FEATURE_PARTITIONED_BIT_EXT](#) specifies the device will
 accept SPIR-V shader modules containing the
-`GroupNonUniformPartitionedNV` capability.
+`GroupNonUniformPartitionedEXT` capability.
 
 * 
- `VK_SUBGROUP_FEATURE_ROTATE_BIT`
+ [VK_SUBGROUP_FEATURE_ROTATE_BIT](#)
 specifies the device will accept SPIR-V shader modules containing the
 `GroupNonUniformRotateKHR` capability.
 
 * 
 
-`VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT` specifies the device will
+[VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT](#) specifies the device will
 accept SPIR-V shader modules that use the `ClusterSize` operand to
 `OpGroupNonUniformRotateKHR`.
 

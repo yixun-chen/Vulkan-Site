@@ -49,7 +49,7 @@ If the `VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV` structure is incl
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV-sType-sType) VUID-VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV](VkStructureType.html)
 
 [VK_NV_ray_tracing_invocation_reorder](VK_NV_ray_tracing_invocation_reorder.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

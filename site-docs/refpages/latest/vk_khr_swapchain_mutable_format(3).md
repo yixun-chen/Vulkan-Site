@@ -111,7 +111,7 @@ swapchain.
 * 
 Extending [VkSwapchainCreateFlagBitsKHR](VkSwapchainCreateFlagBitsKHR.html):
 
-`VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR`
+[VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html)
 
 1) Are there any new capabilities needed?
 
@@ -123,10 +123,10 @@ swapchain image format mutability.
 
 **RESOLVED**: No.
 This extension requires `VK_KHR_maintenance2` and presentable images of
-swapchains created with `VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR` are
+swapchains created with [VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html) are
 created internally in a way equivalent to specifying both
-`VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT` and
-`VK_IMAGE_CREATE_EXTENDED_USAGE_BIT_KHR`.
+[VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](VkImageCreateFlagBits.html) and
+[VK_IMAGE_CREATE_EXTENDED_USAGE_BIT_KHR](VkImageCreateFlagBits.html).
 
 3) Do we need a separate structure to allow specifying an image format list
 for swapchains?
@@ -136,7 +136,7 @@ We simply use the same [VkImageFormatListCreateInfoKHR](VkImageFormatListCreateI
 introduced by `VK_KHR_image_format_list`.
 The structure is required to be included in the `pNext` chain of
 [VkSwapchainCreateInfoKHR](VkSwapchainCreateInfoKHR.html) for swapchains created with
-`VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR`.
+[VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html).
 
 * 
 Revision 1, 2018-03-28 (Daniel Rakos)

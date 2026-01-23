@@ -238,7 +238,7 @@ descriptions as part of graphics pipeline creation by setting the
 [VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo)::`pVertexInputState` pointer to a
 [VkPipelineVertexInputStateCreateInfo](#VkPipelineVertexInputStateCreateInfo) structure.
 Alternatively, if the graphics pipeline is created with the
-`VK_DYNAMIC_STATE_VERTEX_INPUT_EXT` dynamic state enabled, then the
+[VK_DYNAMIC_STATE_VERTEX_INPUT_EXT](pipelines.html#VkDynamicState) dynamic state enabled, then the
 vertex input attribute and vertex input binding descriptions are specified
 dynamically with [vkCmdSetVertexInputEXT](#vkCmdSetVertexInputEXT), and the
 [VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo)::`pVertexInputState` pointer is
@@ -322,7 +322,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineVertexInputStateCreateInfo-sType-sType) VUID-VkPipelineVertexInputStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineVertexInputStateCreateInfo-pNext-pNext) VUID-VkPipelineVertexInputStateCreateInfo-pNext-pNext
@@ -415,11 +415,11 @@ typedef enum VkVertexInputRate {
 } VkVertexInputRate;
 
 * 
-`VK_VERTEX_INPUT_RATE_VERTEX` specifies that vertex attribute
+[VK_VERTEX_INPUT_RATE_VERTEX](#VkVertexInputRate) specifies that vertex attribute
 addressing is a function of the vertex index.
 
 * 
-`VK_VERTEX_INPUT_RATE_INSTANCE` specifies that vertex attribute
+[VK_VERTEX_INPUT_RATE_INSTANCE](#VkVertexInputRate) specifies that vertex attribute
 addressing is a function of the instance index.
 
 Each vertex input attribute is specified by the
@@ -471,14 +471,14 @@ Valid Usage
 [](#VUID-VkVertexInputAttributeDescription-format-00623) VUID-VkVertexInputAttributeDescription-format-00623
 
 The [format features](resources.html#resources-buffer-view-format-features) of
-`format` **must** contain `VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT`
+`format` **must** contain [VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkVertexInputAttributeDescription-vertexAttributeAccessBeyondStride-04457) VUID-VkVertexInputAttributeDescription-vertexAttributeAccessBeyondStride-04457
 
 If the `[VK_KHR_portability_subset](../appendices/extensions.html#VK_KHR_portability_subset)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR)::`vertexAttributeAccessBeyondStride`
-is `VK_FALSE`, the sum of `offset` plus the size of the vertex
+is [VK_FALSE](fundamentals.html#VK_FALSE), the sum of `offset` plus the size of the vertex
 attribute data described by `format` **must** not be greater than
 `stride` in the [VkVertexInputBindingDescription](#VkVertexInputBindingDescription) referenced in
 `binding`
@@ -525,7 +525,7 @@ This command sets the vertex input attribute and vertex input binding
 descriptions state for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_VERTEX_INPUT_EXT` set in
+[VK_DYNAMIC_STATE_VERTEX_INPUT_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo)::`pVertexInputState` values used to
@@ -535,7 +535,7 @@ If
 drawing using [shader objects](shaders.html#shaders-objects),
 or if
 the bound pipeline state object was also created with the
-`VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE` dynamic state enabled,
+[VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE](pipelines.html#VkDynamicState) dynamic state enabled,
 then [vkCmdBindVertexBuffers2](#vkCmdBindVertexBuffers2) can be used instead of
 `vkCmdSetVertexInputEXT` to dynamically set the stride.
 
@@ -608,7 +608,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetVertexInputEXT-commandBuffer-cmdpool) VUID-vkCmdSetVertexInputEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetVertexInputEXT-videocoding) VUID-vkCmdSetVertexInputEXT-videocoding
@@ -718,14 +718,14 @@ inclusive
 [](#VUID-VkVertexInputBindingDescription2EXT-divisor-06227) VUID-VkVertexInputBindingDescription2EXT-divisor-06227
 
 If `divisor` is not `1` then `inputRate` **must** be of type
-`VK_VERTEX_INPUT_RATE_INSTANCE`
+[VK_VERTEX_INPUT_RATE_INSTANCE](#VkVertexInputRate)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkVertexInputBindingDescription2EXT-sType-sType) VUID-VkVertexInputBindingDescription2EXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VERTEX_INPUT_BINDING_DESCRIPTION_2_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VERTEX_INPUT_BINDING_DESCRIPTION_2_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkVertexInputBindingDescription2EXT-inputRate-parameter) VUID-VkVertexInputBindingDescription2EXT-inputRate-parameter
@@ -789,14 +789,14 @@ Valid Usage
 [](#VUID-VkVertexInputAttributeDescription2EXT-format-04805) VUID-VkVertexInputAttributeDescription2EXT-format-04805
 
 The [format features](resources.html#resources-buffer-view-format-features) of
-`format` **must** contain `VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT`
+`format` **must** contain [VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkVertexInputAttributeDescription2EXT-vertexAttributeAccessBeyondStride-04806) VUID-VkVertexInputAttributeDescription2EXT-vertexAttributeAccessBeyondStride-04806
 
 If the `[VK_KHR_portability_subset](../appendices/extensions.html#VK_KHR_portability_subset)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR)::`vertexAttributeAccessBeyondStride`
-is `VK_FALSE`, the sum of `offset` plus the size of the vertex
+is [VK_FALSE](fundamentals.html#VK_FALSE), the sum of `offset` plus the size of the vertex
 attribute data described by `format` **must** not be greater than
 `stride` in the [VkVertexInputBindingDescription2EXT](#VkVertexInputBindingDescription2EXT) referenced
 in `binding`
@@ -806,7 +806,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVertexInputAttributeDescription2EXT-sType-sType) VUID-VkVertexInputAttributeDescription2EXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VERTEX_INPUT_ATTRIBUTE_DESCRIPTION_2_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VERTEX_INPUT_ATTRIBUTE_DESCRIPTION_2_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkVertexInputAttributeDescription2EXT-format-parameter) VUID-VkVertexInputAttributeDescription2EXT-format-parameter
@@ -883,7 +883,7 @@ corresponding element in `pBuffers`
 [](#VUID-vkCmdBindVertexBuffers-pBuffers-00627) VUID-vkCmdBindVertexBuffers-pBuffers-00627
 
 All elements of `pBuffers` **must** have been created with the
-`VK_BUFFER_USAGE_VERTEX_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_VERTEX_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdBindVertexBuffers-pBuffers-00628) VUID-vkCmdBindVertexBuffers-pBuffers-00628
@@ -929,7 +929,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindVertexBuffers-commandBuffer-cmdpool) VUID-vkCmdBindVertexBuffers-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBindVertexBuffers-videocoding) VUID-vkCmdBindVertexBuffers-videocoding
@@ -1023,7 +1023,7 @@ The vertex input binding is updated to start at the offset indicated by
 If `pSizes` is not `NULL` then `pSizes`[i] specifies the bound size
 of the vertex buffer starting from the corresponding elements of
 `pBuffers`[i] plus `pOffsets`[i].
-If `pSizes`[i] is `VK_WHOLE_SIZE` then the bound size is from
+If `pSizes`[i] is [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE) then the bound size is from
 `pBuffers`[i] plus `pOffsets`[i] to the end of the buffer
 `pBuffers`[i].
 All vertex input attributes that use each of these bindings will use these
@@ -1042,7 +1042,7 @@ strides between consecutive elements within buffer `pBuffers`[i] to the
 corresponding `pStrides`[i] value
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE` set in
+[VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, strides are specified by the
 [VkVertexInputBindingDescription](#VkVertexInputBindingDescription)::`stride` values used to create
@@ -1052,7 +1052,7 @@ If
 drawing using [shader objects](shaders.html#shaders-objects)
 or if
 the bound pipeline state object was also created with the
-`VK_DYNAMIC_STATE_VERTEX_INPUT_EXT` dynamic state enabled
+[VK_DYNAMIC_STATE_VERTEX_INPUT_EXT](pipelines.html#VkDynamicState) dynamic state enabled
 then [vkCmdSetVertexInputEXT](#vkCmdSetVertexInputEXT) **can** be used instead of
 `vkCmdBindVertexBuffers2` to set the stride.
 
@@ -1099,14 +1099,14 @@ less than the size of the corresponding element in `pBuffers`
 
 If `pSizes` is not `NULL`, all elements of `pOffsets` plus
 `pSizes`
-, where `pSizes` is not `VK_WHOLE_SIZE`,
+, where `pSizes` is not [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE),
 **must** be less than or equal to the size of the corresponding element in
 `pBuffers`
 
 [](#VUID-vkCmdBindVertexBuffers2-pBuffers-03359) VUID-vkCmdBindVertexBuffers2-pBuffers-03359
 
 All elements of `pBuffers` **must** have been created with the
-`VK_BUFFER_USAGE_VERTEX_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_VERTEX_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
 
 [](#VUID-vkCmdBindVertexBuffers2-pBuffers-03360) VUID-vkCmdBindVertexBuffers2-pBuffers-03360
 
@@ -1174,7 +1174,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindVertexBuffers2-commandBuffer-cmdpool) VUID-vkCmdBindVertexBuffers2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBindVertexBuffers2-videocoding) VUID-vkCmdBindVertexBuffers2-videocoding
@@ -1256,7 +1256,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineVertexInputDivisorStateCreateInfo-sType-sType) VUID-VkPipelineVertexInputDivisorStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineVertexInputDivisorStateCreateInfo-pVertexBindingDivisors-parameter) VUID-VkPipelineVertexInputDivisorStateCreateInfo-pVertexBindingDivisors-parameter
@@ -1336,7 +1336,7 @@ inclusive
 [](#VUID-VkVertexInputBindingDivisorDescription-inputRate-01871) VUID-VkVertexInputBindingDivisorDescription-inputRate-01871
 
 [VkVertexInputBindingDescription](#VkVertexInputBindingDescription)::`inputRate` **must** be of type
-`VK_VERTEX_INPUT_RATE_INSTANCE` for this `binding`
+[VK_VERTEX_INPUT_RATE_INSTANCE](#VkVertexInputRate) for this `binding`
 
 The address of each attribute for each `vertexIndex` and
 `instanceIndex` is calculated as follows:
@@ -1441,4 +1441,4 @@ enabled, the implementation **should** convert values from nonlinear to linear.
 Implementations
 which do not support [`maintenance10`](features.html#features-maintenance10), and
 which do not convert nonlinear to linear for sRGB formats **should** not expose
-`VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT` for such formats.
+[VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT](formats.html#VkFormatFeatureFlagBits) for such formats.

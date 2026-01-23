@@ -124,7 +124,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeH264DpbSlotInfoKHR-sType-sType) VUID-VkVideoEncodeH264DpbSlotInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_DPB_SLOT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_DPB_SLOT_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoEncodeH264DpbSlotInfoKHR-pStdReferenceInfo-parameter) VUID-VkVideoEncodeH264DpbSlotInfoKHR-pStdReferenceInfo-parameter

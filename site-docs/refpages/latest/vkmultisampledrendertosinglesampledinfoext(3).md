@@ -58,7 +58,7 @@ Valid Usage
 [](#VUID-VkMultisampledRenderToSingleSampledInfoEXT-rasterizationSamples-06878) VUID-VkMultisampledRenderToSingleSampledInfoEXT-rasterizationSamples-06878
 
 The value of `rasterizationSamples` **must** not be
-`VK_SAMPLE_COUNT_1_BIT`
+[VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html)
 
 * 
 [](#VUID-VkMultisampledRenderToSingleSampledInfoEXT-pNext-06880) VUID-VkMultisampledRenderToSingleSampledInfoEXT-pNext-06880
@@ -76,7 +76,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMultisampledRenderToSingleSampledInfoEXT-sType-sType) VUID-VkMultisampledRenderToSingleSampledInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkMultisampledRenderToSingleSampledInfoEXT-rasterizationSamples-parameter) VUID-VkMultisampledRenderToSingleSampledInfoEXT-rasterizationSamples-parameter

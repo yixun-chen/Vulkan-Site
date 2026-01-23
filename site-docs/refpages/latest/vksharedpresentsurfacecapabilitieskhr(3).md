@@ -40,10 +40,10 @@ structure.
 [VkImageUsageFlagBits](VkImageUsageFlagBits.html) representing the ways the application **can**
 use the shared presentable image from a swapchain created with
 [VkPresentModeKHR](VkPresentModeKHR.html) set to
-`VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR` or
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR` for the surface on
+[VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](VkPresentModeKHR.html) or
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](VkPresentModeKHR.html) for the surface on
 the specified device.
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` **must** be included in the set
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](VkImageUsageFlagBits.html) **must** be included in the set
 but implementations **may** support additional usages.
 
 Valid Usage (Implicit)
@@ -51,7 +51,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSharedPresentSurfaceCapabilitiesKHR-sType-sType) VUID-VkSharedPresentSurfaceCapabilitiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR](VkStructureType.html)
 
 [VK_KHR_shared_presentable_image](VK_KHR_shared_presentable_image.html), [VkImageUsageFlags](VkImageUsageFlags.html), [VkStructureType](VkStructureType.html)
 

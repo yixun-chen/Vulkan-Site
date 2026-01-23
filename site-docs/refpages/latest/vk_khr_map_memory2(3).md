@@ -118,10 +118,10 @@ used to pass extension-specific information.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_MEMORY_MAP_INFO_KHR`
+[VK_STRUCTURE_TYPE_MEMORY_MAP_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO_KHR`
+[VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO_KHR](VkStructureType.html)
 
 Functionality in this extension is included in core Vulkan 1.4 with the KHR
 suffix omitted.

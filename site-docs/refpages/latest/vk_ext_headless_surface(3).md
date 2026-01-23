@@ -106,7 +106,7 @@ inconvenient to use for general Vulkan application development.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_HEADLESS_SURFACE_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_HEADLESS_SURFACE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2019-03-21 (Ray Smith)

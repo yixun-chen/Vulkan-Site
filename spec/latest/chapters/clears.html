@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:spec" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -174,6 +174,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="descriptorsets.html">Resource Descriptors</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="descriptorheaps.html">Descriptor Heaps</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="interfaces.html">Shader Interfaces</a>
@@ -455,9 +458,9 @@ recorded.</p>
 <li>
 <p><code>imageLayout</code> specifies the current layout of the image subresource
 ranges to be cleared, and <strong>must</strong> be
-<code>VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR</code>,
-<code>VK_IMAGE_LAYOUT_GENERAL</code> or
-<code>VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL</code>.</p>
+<a href="resources.html#VkImageLayout" class="xref page">VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR</a>,
+<a href="resources.html#VkImageLayout" class="xref page">VK_IMAGE_LAYOUT_GENERAL</a> or
+<a href="resources.html#VkImageLayout" class="xref page">VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL</a>.</p>
 </li>
 <li>
 <p><code>pColor</code> is a pointer to a <a href="#VkClearColorValue">VkClearColorValue</a> structure
@@ -488,13 +491,13 @@ aspects to be cleared, as described in <a href="resources.html#resources-image-v
 <p><a id="VUID-vkCmdClearColorImage-image-01993" href="#VUID-vkCmdClearColorImage-image-01993"></a> <span class="vuid">VUID-vkCmdClearColorImage-image-01993</span><br>
 
 The <a href="resources.html#resources-image-format-features" class="xref page">format features</a> of <code>image</code>
-<strong>must</strong> contain <code>VK_FORMAT_FEATURE_TRANSFER_DST_BIT</code></p>
+<strong>must</strong> contain <a href="formats.html#VkFormatFeatureFlagBits" class="xref page">VK_FORMAT_FEATURE_TRANSFER_DST_BIT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearColorImage-image-00002" href="#VUID-vkCmdClearColorImage-image-00002"></a> <span class="vuid">VUID-vkCmdClearColorImage-image-00002</span><br>
 
 <code>image</code> <strong>must</strong> have been created with the
-<code>VK_IMAGE_USAGE_TRANSFER_DST_BIT</code> usage flag set</p>
+<a href="resources.html#VkImageUsageFlagBits" class="xref page">VK_IMAGE_USAGE_TRANSFER_DST_BIT</a> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearColorImage-image-01545" href="#VUID-vkCmdClearColorImage-image-01545"></a> <span class="vuid">VUID-vkCmdClearColorImage-image-01545</span><br>
@@ -519,16 +522,16 @@ command is executed on a <code>VkDevice</code></p>
 <p><a id="VUID-vkCmdClearColorImage-imageLayout-01394" href="#VUID-vkCmdClearColorImage-imageLayout-01394"></a> <span class="vuid">VUID-vkCmdClearColorImage-imageLayout-01394</span><br>
 
 <code>imageLayout</code> <strong>must</strong> be
-<code>VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR</code>,
-<code>VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL</code> or
-<code>VK_IMAGE_LAYOUT_GENERAL</code></p>
+<a href="resources.html#VkImageLayout" class="xref page">VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR</a>,
+<a href="resources.html#VkImageLayout" class="xref page">VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL</a> or
+<a href="resources.html#VkImageLayout" class="xref page">VK_IMAGE_LAYOUT_GENERAL</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearColorImage-aspectMask-02498" href="#VUID-vkCmdClearColorImage-aspectMask-02498"></a> <span class="vuid">VUID-vkCmdClearColorImage-aspectMask-02498</span><br>
 
 The <a href="resources.html#VkImageSubresourceRange" class="xref page">VkImageSubresourceRange</a>::<code>aspectMask</code> members of the
 elements of the <code>pRanges</code> array <strong>must</strong> each only include
-<code>VK_IMAGE_ASPECT_COLOR_BIT</code></p>
+<a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_COLOR_BIT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearColorImage-baseMipLevel-01470" href="#VUID-vkCmdClearColorImage-baseMipLevel-01470"></a> <span class="vuid">VUID-vkCmdClearColorImage-baseMipLevel-01470</span><br>
@@ -542,7 +545,7 @@ was created</p>
 <p><a id="VUID-vkCmdClearColorImage-pRanges-01692" href="#VUID-vkCmdClearColorImage-pRanges-01692"></a> <span class="vuid">VUID-vkCmdClearColorImage-pRanges-01692</span><br>
 
 For each <a href="resources.html#VkImageSubresourceRange" class="xref page">VkImageSubresourceRange</a> element of <code>pRanges</code>, if the
-<code>levelCount</code> member is not <code>VK_REMAINING_MIP_LEVELS</code>, then
+<code>levelCount</code> member is not <a href="resources.html#VK_REMAINING_MIP_LEVELS" class="xref page">VK_REMAINING_MIP_LEVELS</a>, then
 <span class="eq"><code>baseMipLevel</code> +  <code>levelCount</code></span> <strong>must</strong> be less than or
 equal to the <code>mipLevels</code> specified in <a href="resources.html#VkImageCreateInfo" class="xref page">VkImageCreateInfo</a> when
 <code>image</code> was created</p>
@@ -559,7 +562,7 @@ was created</p>
 <p><a id="VUID-vkCmdClearColorImage-pRanges-01693" href="#VUID-vkCmdClearColorImage-pRanges-01693"></a> <span class="vuid">VUID-vkCmdClearColorImage-pRanges-01693</span><br>
 
 For each <a href="resources.html#VkImageSubresourceRange" class="xref page">VkImageSubresourceRange</a> element of <code>pRanges</code>, if the
-<code>layerCount</code> member is not <code>VK_REMAINING_ARRAY_LAYERS</code>, then
+<code>layerCount</code> member is not <a href="resources.html#VK_REMAINING_ARRAY_LAYERS" class="xref page">VK_REMAINING_ARRAY_LAYERS</a>, then
 <span class="eq"><code>baseArrayLayer</code> +  <code>layerCount</code></span> <strong>must</strong> be less than or
 equal to the <code>arrayLayers</code> specified in <a href="resources.html#VkImageCreateInfo" class="xref page">VkImageCreateInfo</a> when
 <code>image</code> was created</p>
@@ -625,7 +628,7 @@ have a 64-bit component width</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearColorImage-commandBuffer-cmdpool" href="#VUID-vkCmdClearColorImage-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdClearColorImage-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, or <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_COMPUTE_BIT</a>, or <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearColorImage-renderpass" href="#VUID-vkCmdClearColorImage-renderpass"></a> <span class="vuid">VUID-vkCmdClearColorImage-renderpass</span><br>
@@ -738,8 +741,8 @@ recorded.</p>
 </li>
 <li>
 <p><code>imageLayout</code> specifies the current layout of the image subresource
-ranges to be cleared, and <strong>must</strong> be <code>VK_IMAGE_LAYOUT_GENERAL</code> or
-<code>VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL</code>.</p>
+ranges to be cleared, and <strong>must</strong> be <a href="resources.html#VkImageLayout" class="xref page">VK_IMAGE_LAYOUT_GENERAL</a> or
+<a href="resources.html#VkImageLayout" class="xref page">VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL</a>.</p>
 </li>
 <li>
 <p><code>pDepthStencil</code> is a pointer to a <a href="#VkClearDepthStencilValue">VkClearDepthStencilValue</a>
@@ -766,33 +769,33 @@ aspects to be cleared, as described in <a href="resources.html#resources-image-v
 <p><a id="VUID-vkCmdClearDepthStencilImage-image-01994" href="#VUID-vkCmdClearDepthStencilImage-image-01994"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-image-01994</span><br>
 
 The <a href="resources.html#resources-image-format-features" class="xref page">format features</a> of <code>image</code>
-<strong>must</strong> contain <code>VK_FORMAT_FEATURE_TRANSFER_DST_BIT</code></p>
+<strong>must</strong> contain <a href="formats.html#VkFormatFeatureFlagBits" class="xref page">VK_FORMAT_FEATURE_TRANSFER_DST_BIT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearDepthStencilImage-pRanges-02658" href="#VUID-vkCmdClearDepthStencilImage-pRanges-02658"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-pRanges-02658</span><br>
 
 If the <code>aspect</code> member of any element of <code>pRanges</code> includes
-<code>VK_IMAGE_ASPECT_STENCIL_BIT</code>, and <code>image</code> was created with
+<a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_STENCIL_BIT</a>, and <code>image</code> was created with
 <a href="resources.html#VkImageStencilUsageCreateInfo" class="xref page">separate stencil usage</a>, it must have
-been created with the <code>VK_IMAGE_USAGE_TRANSFER_DST_BIT</code> usage flag
+been created with the <a href="resources.html#VkImageUsageFlagBits" class="xref page">VK_IMAGE_USAGE_TRANSFER_DST_BIT</a> usage flag
 set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearDepthStencilImage-pRanges-02659" href="#VUID-vkCmdClearDepthStencilImage-pRanges-02659"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-pRanges-02659</span><br>
 
 If the <code>aspect</code> member of any element of <code>pRanges</code> includes
-<code>VK_IMAGE_ASPECT_STENCIL_BIT</code>,
+<a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_STENCIL_BIT</a>,
 and <code>image</code> was not created with
 <a href="resources.html#VkImageStencilUsageCreateInfo" class="xref page">separate stencil usage</a>,
-the <code>VK_IMAGE_USAGE_TRANSFER_DST_BIT</code> usage flag <strong>must</strong> have been set
+the <a href="resources.html#VkImageUsageFlagBits" class="xref page">VK_IMAGE_USAGE_TRANSFER_DST_BIT</a> usage flag <strong>must</strong> have been set
 in the <a href="resources.html#VkImageCreateInfo" class="xref page">VkImageCreateInfo</a>::<code>usage</code> used to create <code>image</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearDepthStencilImage-pRanges-02660" href="#VUID-vkCmdClearDepthStencilImage-pRanges-02660"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-pRanges-02660</span><br>
 
 If the <code>aspect</code> member of any element of <code>pRanges</code> includes
-<code>VK_IMAGE_ASPECT_DEPTH_BIT</code>, <code>image</code> <strong>must</strong> have been created
-with the <code>VK_IMAGE_USAGE_TRANSFER_DST_BIT</code> usage flag set</p>
+<a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_DEPTH_BIT</a>, <code>image</code> <strong>must</strong> have been created
+with the <a href="resources.html#VkImageUsageFlagBits" class="xref page">VK_IMAGE_USAGE_TRANSFER_DST_BIT</a> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearDepthStencilImage-image-00010" href="#VUID-vkCmdClearDepthStencilImage-image-00010"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-image-00010</span><br>
@@ -811,15 +814,15 @@ command is executed on a <code>VkDevice</code></p>
 <p><a id="VUID-vkCmdClearDepthStencilImage-imageLayout-00012" href="#VUID-vkCmdClearDepthStencilImage-imageLayout-00012"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-imageLayout-00012</span><br>
 
 <code>imageLayout</code> <strong>must</strong> be either of
-<code>VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL</code> or
-<code>VK_IMAGE_LAYOUT_GENERAL</code></p>
+<a href="resources.html#VkImageLayout" class="xref page">VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL</a> or
+<a href="resources.html#VkImageLayout" class="xref page">VK_IMAGE_LAYOUT_GENERAL</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearDepthStencilImage-aspectMask-02824" href="#VUID-vkCmdClearDepthStencilImage-aspectMask-02824"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-aspectMask-02824</span><br>
 
 The <a href="resources.html#VkImageSubresourceRange" class="xref page">VkImageSubresourceRange</a>::<code>aspectMask</code> member of each
 element of the <code>pRanges</code> array <strong>must</strong> not include bits other than
-<code>VK_IMAGE_ASPECT_DEPTH_BIT</code> or <code>VK_IMAGE_ASPECT_STENCIL_BIT</code></p>
+<a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_DEPTH_BIT</a> or <a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_STENCIL_BIT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearDepthStencilImage-image-02825" href="#VUID-vkCmdClearDepthStencilImage-image-02825"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-image-02825</span><br>
@@ -827,7 +830,7 @@ element of the <code>pRanges</code> array <strong>must</strong> not include bits
 If the <code>image</code>&#8217;s format does not have a stencil component, then the
 <a href="resources.html#VkImageSubresourceRange" class="xref page">VkImageSubresourceRange</a>::<code>aspectMask</code> member of each element
 of the <code>pRanges</code> array <strong>must</strong> not include the
-<code>VK_IMAGE_ASPECT_STENCIL_BIT</code> bit</p>
+<a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_STENCIL_BIT</a> bit</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearDepthStencilImage-image-02826" href="#VUID-vkCmdClearDepthStencilImage-image-02826"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-image-02826</span><br>
@@ -835,7 +838,7 @@ of the <code>pRanges</code> array <strong>must</strong> not include the
 If the <code>image</code>&#8217;s format does not have a depth component, then the
 <a href="resources.html#VkImageSubresourceRange" class="xref page">VkImageSubresourceRange</a>::<code>aspectMask</code> member of each element
 of the <code>pRanges</code> array <strong>must</strong> not include the
-<code>VK_IMAGE_ASPECT_DEPTH_BIT</code> bit</p>
+<a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_DEPTH_BIT</a> bit</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearDepthStencilImage-baseMipLevel-01474" href="#VUID-vkCmdClearDepthStencilImage-baseMipLevel-01474"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-baseMipLevel-01474</span><br>
@@ -849,7 +852,7 @@ was created</p>
 <p><a id="VUID-vkCmdClearDepthStencilImage-pRanges-01694" href="#VUID-vkCmdClearDepthStencilImage-pRanges-01694"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-pRanges-01694</span><br>
 
 For each <a href="resources.html#VkImageSubresourceRange" class="xref page">VkImageSubresourceRange</a> element of <code>pRanges</code>, if the
-<code>levelCount</code> member is not <code>VK_REMAINING_MIP_LEVELS</code>, then
+<code>levelCount</code> member is not <a href="resources.html#VK_REMAINING_MIP_LEVELS" class="xref page">VK_REMAINING_MIP_LEVELS</a>, then
 <span class="eq"><code>baseMipLevel</code> +  <code>levelCount</code></span> <strong>must</strong> be less than or
 equal to the <code>mipLevels</code> specified in <a href="resources.html#VkImageCreateInfo" class="xref page">VkImageCreateInfo</a> when
 <code>image</code> was created</p>
@@ -866,7 +869,7 @@ was created</p>
 <p><a id="VUID-vkCmdClearDepthStencilImage-pRanges-01695" href="#VUID-vkCmdClearDepthStencilImage-pRanges-01695"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-pRanges-01695</span><br>
 
 For each <a href="resources.html#VkImageSubresourceRange" class="xref page">VkImageSubresourceRange</a> element of <code>pRanges</code>, if the
-<code>layerCount</code> member is not <code>VK_REMAINING_ARRAY_LAYERS</code>, then
+<code>layerCount</code> member is not <a href="resources.html#VK_REMAINING_ARRAY_LAYERS" class="xref page">VK_REMAINING_ARRAY_LAYERS</a>, then
 <span class="eq"><code>baseArrayLayer</code> +  <code>layerCount</code></span> <strong>must</strong> be less than or
 equal to the <code>arrayLayers</code> specified in <a href="resources.html#VkImageCreateInfo" class="xref page">VkImageCreateInfo</a> when
 <code>image</code> was created</p>
@@ -925,7 +928,7 @@ If <code>commandBuffer</code> is a protected command buffer and
 </li>
 <li>
 <p><a id="VUID-vkCmdClearDepthStencilImage-commandBuffer-cmdpool" href="#VUID-vkCmdClearDepthStencilImage-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearDepthStencilImage-renderpass" href="#VUID-vkCmdClearDepthStencilImage-renderpass"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-renderpass</span><br>
@@ -1072,11 +1075,11 @@ Clears <strong>may</strong> have a different set of supported fragment areas tha
 transfer command.
 It performs its operations in <a href="primsrast.html#primsrast-order" class="xref page">rasterization order</a>.
 For color attachments, the operations are executed as color attachment
-writes, by the <code>VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT</code> stage.
+writes, by the <a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT</a> stage.
 For depth/stencil attachments, the operations are executed as
 <a href="fragops.html#fragops-depth" class="xref page">depth writes</a> and <a href="fragops.html#fragops-stencil" class="xref page">stencil writes</a> by
-the <code>VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT</code> and
-<code>VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT</code> stages.</p>
+the <a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT</a> and
+<a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT</a> stages.</p>
 </div>
 <div class="paragraph">
 <p><code>vkCmdClearAttachments</code> is not affected by the bound pipeline state.</p>
@@ -1090,7 +1093,7 @@ the <code>VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT</code> and
 <td class="content">
 <div class="paragraph">
 <p>It is generally preferable to clear attachments by using the
-<code>VK_ATTACHMENT_LOAD_OP_CLEAR</code> load operation at the start of rendering,
+<a href="renderpass.html#VkAttachmentLoadOp" class="xref page">VK_ATTACHMENT_LOAD_OP_CLEAR</a> load operation at the start of rendering,
 as it is more efficient on some implementations.</p>
 </div>
 </td>
@@ -1103,10 +1106,10 @@ view, the clear has no effect on that aspect.</p>
 </div>
 <div class="paragraph">
 <p>If an attachment being cleared refers to an image view created with an
-<code>aspectMask</code> equal to one of <code>VK_IMAGE_ASPECT_PLANE_0_BIT</code>,
-<code>VK_IMAGE_ASPECT_PLANE_1_BIT</code> or <code>VK_IMAGE_ASPECT_PLANE_2_BIT</code>, it
-is considered to be <code>VK_IMAGE_ASPECT_COLOR_BIT</code> for purposes of this
-command, and <strong>must</strong> be cleared with the <code>VK_IMAGE_ASPECT_COLOR_BIT</code>
+<code>aspectMask</code> equal to one of <a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_PLANE_0_BIT</a>,
+<a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_PLANE_1_BIT</a> or <a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_PLANE_2_BIT</a>, it
+is considered to be <a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_COLOR_BIT</a> for purposes of this
+command, and <strong>must</strong> be cleared with the <a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_COLOR_BIT</a>
 aspect as specified by <a href="resources.html#image-views-plane-promotion" class="xref page">image view creation</a>.</p>
 </div>
 <div class="sidebarblock">
@@ -1120,8 +1123,8 @@ aspect as specified by <a href="resources.html#image-views-plane-promotion" clas
 If
 the current render pass instance does not use dynamic rendering, and
 the <code>aspectMask</code> member of any element of <code>pAttachments</code>
-contains <code>VK_IMAGE_ASPECT_DEPTH_BIT</code>, the current subpass instance&#8217;s
-depth-stencil attachment <strong>must</strong> be either <code>VK_ATTACHMENT_UNUSED</code> or
+contains <a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_DEPTH_BIT</a>, the current subpass instance&#8217;s
+depth-stencil attachment <strong>must</strong> be either <a href="renderpass.html#VK_ATTACHMENT_UNUSED" class="xref page">VK_ATTACHMENT_UNUSED</a> or
 the attachment <code>format</code> <strong>must</strong> contain a depth component</p>
 </li>
 <li>
@@ -1130,16 +1133,16 @@ the attachment <code>format</code> <strong>must</strong> contain a depth compone
 If
 the current render pass instance does not use dynamic rendering, and
 the <code>aspectMask</code> member of any element of <code>pAttachments</code>
-contains <code>VK_IMAGE_ASPECT_STENCIL_BIT</code>, the current subpass
+contains <a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_STENCIL_BIT</a>, the current subpass
 instance&#8217;s depth-stencil attachment <strong>must</strong> be either
-<code>VK_ATTACHMENT_UNUSED</code> or the attachment <code>format</code> <strong>must</strong> contain
+<a href="renderpass.html#VK_ATTACHMENT_UNUSED" class="xref page">VK_ATTACHMENT_UNUSED</a> or the attachment <code>format</code> <strong>must</strong> contain
 a stencil component</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearAttachments-aspectMask-07271" href="#VUID-vkCmdClearAttachments-aspectMask-07271"></a> <span class="vuid">VUID-vkCmdClearAttachments-aspectMask-07271</span><br>
 
 If the <code>aspectMask</code> member of any element of <code>pAttachments</code>
-contains <code>VK_IMAGE_ASPECT_COLOR_BIT</code>, the <code>colorAttachment</code>
+contains <a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_COLOR_BIT</a>, the <code>colorAttachment</code>
 <strong>must</strong> be a valid color attachment index in the current render pass
 instance</p>
 </li>
@@ -1201,7 +1204,7 @@ If the render pass instance this is recorded in uses multiview, then
 
 The <code>colorAttachment</code> member of each element of <code>pAttachments</code>
 <strong>must</strong> not identify a color attachment that is currently mapped to
-<code>VK_ATTACHMENT_UNUSED</code> in <code>commandBuffer</code> via
+<a href="renderpass.html#VK_ATTACHMENT_UNUSED" class="xref page">VK_ATTACHMENT_UNUSED</a> in <code>commandBuffer</code> via
 <a href="interfaces.html#VkRenderingAttachmentLocationInfo" class="xref page">VkRenderingAttachmentLocationInfo</a></p>
 </li>
 <li>
@@ -1251,7 +1254,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearAttachments-commandBuffer-cmdpool" href="#VUID-vkCmdClearAttachments-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdClearAttachments-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearAttachments-renderpass" href="#VUID-vkCmdClearAttachments-renderpass"></a> <span class="vuid">VUID-vkCmdClearAttachments-renderpass</span><br>
@@ -1393,7 +1396,7 @@ aspects of the attachment to be cleared.</p>
 </li>
 <li>
 <p><code>colorAttachment</code> is only meaningful if
-<code>VK_IMAGE_ASPECT_COLOR_BIT</code> is set in <code>aspectMask</code>, in which
+<a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_COLOR_BIT</a> is set in <code>aspectMask</code>, in which
 case it is an index into the bound color attachments.</p>
 </li>
 <li>
@@ -1410,14 +1413,14 @@ attachment to, as described in <a href="#clears-values">Clear Values</a> below.<
 <li>
 <p><a id="VUID-VkClearAttachment-aspectMask-00019" href="#VUID-VkClearAttachment-aspectMask-00019"></a> <span class="vuid">VUID-VkClearAttachment-aspectMask-00019</span><br>
 
-If <code>aspectMask</code> includes <code>VK_IMAGE_ASPECT_COLOR_BIT</code>, it <strong>must</strong>
-not include <code>VK_IMAGE_ASPECT_DEPTH_BIT</code> or
-<code>VK_IMAGE_ASPECT_STENCIL_BIT</code></p>
+If <code>aspectMask</code> includes <a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_COLOR_BIT</a>, it <strong>must</strong>
+not include <a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_DEPTH_BIT</a> or
+<a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_STENCIL_BIT</a></p>
 </li>
 <li>
 <p><a id="VUID-VkClearAttachment-aspectMask-00020" href="#VUID-VkClearAttachment-aspectMask-00020"></a> <span class="vuid">VUID-VkClearAttachment-aspectMask-00020</span><br>
 
-<code>aspectMask</code> <strong>must</strong> not include <code>VK_IMAGE_ASPECT_METADATA_BIT</code></p>
+<code>aspectMask</code> <strong>must</strong> not include <a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_METADATA_BIT</a></p>
 </li>
 <li>
 <p><a id="VUID-VkClearAttachment-aspectMask-02246" href="#VUID-VkClearAttachment-aspectMask-02246"></a> <span class="vuid">VUID-VkClearAttachment-aspectMask-02246</span><br>
@@ -1637,9 +1640,9 @@ filling, and <strong>must</strong> be a multiple of 4.</p>
 </li>
 <li>
 <p><code>size</code> is the number of bytes to fill, and <strong>must</strong> be either a
-multiple of 4, or <code>VK_WHOLE_SIZE</code> to fill the range from
+multiple of 4, or <a href="synchronization.html#VK_WHOLE_SIZE" class="xref page">VK_WHOLE_SIZE</a> to fill the range from
 <code>offset</code> to the end of the buffer.
-If <code>VK_WHOLE_SIZE</code> is used and the remaining size of the buffer is
+If <a href="synchronization.html#VK_WHOLE_SIZE" class="xref page">VK_WHOLE_SIZE</a> is used and the remaining size of the buffer is
 not a multiple of 4, then the nearest smaller multiple is used.</p>
 </li>
 <li>
@@ -1653,7 +1656,7 @@ The data word is written to memory according to the host endianness.</p>
 <p><code>vkCmdFillBuffer</code> is treated as a &#8220;transfer&#8221; operation for the
 purposes of synchronization barriers.
 It is only compatible with buffers created with the
-<code>VK_BUFFER_USAGE_TRANSFER_DST_BIT</code> usage flag set.</p>
+<a href="resources.html#VkBufferUsageFlagBits" class="xref page">VK_BUFFER_USAGE_TRANSFER_DST_BIT</a> usage flag set.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1673,26 +1676,26 @@ It is only compatible with buffers created with the
 <li>
 <p><a id="VUID-vkCmdFillBuffer-size-00026" href="#VUID-vkCmdFillBuffer-size-00026"></a> <span class="vuid">VUID-vkCmdFillBuffer-size-00026</span><br>
 
-If <code>size</code> is not equal to <code>VK_WHOLE_SIZE</code>, <code>size</code> <strong>must</strong> be
+If <code>size</code> is not equal to <a href="synchronization.html#VK_WHOLE_SIZE" class="xref page">VK_WHOLE_SIZE</a>, <code>size</code> <strong>must</strong> be
 greater than <code>0</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdFillBuffer-size-00027" href="#VUID-vkCmdFillBuffer-size-00027"></a> <span class="vuid">VUID-vkCmdFillBuffer-size-00027</span><br>
 
-If <code>size</code> is not equal to <code>VK_WHOLE_SIZE</code>, <code>size</code> <strong>must</strong> be
+If <code>size</code> is not equal to <a href="synchronization.html#VK_WHOLE_SIZE" class="xref page">VK_WHOLE_SIZE</a>, <code>size</code> <strong>must</strong> be
 less than or equal to the size of <code>dstBuffer</code> minus <code>dstOffset</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdFillBuffer-size-00028" href="#VUID-vkCmdFillBuffer-size-00028"></a> <span class="vuid">VUID-vkCmdFillBuffer-size-00028</span><br>
 
-If <code>size</code> is not equal to <code>VK_WHOLE_SIZE</code>, <code>size</code> <strong>must</strong> be a
+If <code>size</code> is not equal to <a href="synchronization.html#VK_WHOLE_SIZE" class="xref page">VK_WHOLE_SIZE</a>, <code>size</code> <strong>must</strong> be a
 multiple of <code>4</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdFillBuffer-dstBuffer-00029" href="#VUID-vkCmdFillBuffer-dstBuffer-00029"></a> <span class="vuid">VUID-vkCmdFillBuffer-dstBuffer-00029</span><br>
 
 <code>dstBuffer</code> <strong>must</strong> have been created with the
-<code>VK_BUFFER_USAGE_TRANSFER_DST_BIT</code> usage flag set</p>
+<a href="resources.html#VkBufferUsageFlagBits" class="xref page">VK_BUFFER_USAGE_TRANSFER_DST_BIT</a> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdFillBuffer-apiVersion-07894" href="#VUID-vkCmdFillBuffer-apiVersion-07894"></a> <span class="vuid">VUID-vkCmdFillBuffer-apiVersion-07894</span><br>
@@ -1746,7 +1749,7 @@ If <code>commandBuffer</code> is a protected command buffer and
 </li>
 <li>
 <p><a id="VUID-vkCmdFillBuffer-commandBuffer-cmdpool" href="#VUID-vkCmdFillBuffer-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdFillBuffer-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, <code>VK_QUEUE_GRAPHICS_BIT</code>, or <code>VK_QUEUE_TRANSFER_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_COMPUTE_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a>, or <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_TRANSFER_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdFillBuffer-renderpass" href="#VUID-vkCmdFillBuffer-renderpass"></a> <span class="vuid">VUID-vkCmdFillBuffer-renderpass</span><br>
@@ -1910,7 +1913,7 @@ command is called.</p>
 <p><code>vkCmdUpdateBuffer</code> is only allowed outside of a render pass.
 This command is treated as a &#8220;transfer&#8221; operation for the purposes of
 synchronization barriers.
-The <code>VK_BUFFER_USAGE_TRANSFER_DST_BIT</code> <strong>must</strong> be specified in <code>usage</code>
+The <a href="resources.html#VkBufferUsageFlagBits" class="xref page">VK_BUFFER_USAGE_TRANSFER_DST_BIT</a> <strong>must</strong> be specified in <code>usage</code>
 of <a href="resources.html#VkBufferCreateInfo" class="xref page">VkBufferCreateInfo</a> in order for the buffer to be compatible with
 <code>vkCmdUpdateBuffer</code>.</p>
 </div>
@@ -1934,7 +1937,7 @@ of <a href="resources.html#VkBufferCreateInfo" class="xref page">VkBufferCreateI
 <p><a id="VUID-vkCmdUpdateBuffer-dstBuffer-00034" href="#VUID-vkCmdUpdateBuffer-dstBuffer-00034"></a> <span class="vuid">VUID-vkCmdUpdateBuffer-dstBuffer-00034</span><br>
 
 <code>dstBuffer</code> <strong>must</strong> have been created with the
-<code>VK_BUFFER_USAGE_TRANSFER_DST_BIT</code> usage flag set</p>
+<a href="resources.html#VkBufferUsageFlagBits" class="xref page">VK_BUFFER_USAGE_TRANSFER_DST_BIT</a> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdUpdateBuffer-dstBuffer-00035" href="#VUID-vkCmdUpdateBuffer-dstBuffer-00035"></a> <span class="vuid">VUID-vkCmdUpdateBuffer-dstBuffer-00035</span><br>
@@ -1998,7 +2001,7 @@ If <code>commandBuffer</code> is a protected command buffer and
 </li>
 <li>
 <p><a id="VUID-vkCmdUpdateBuffer-commandBuffer-cmdpool" href="#VUID-vkCmdUpdateBuffer-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdUpdateBuffer-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, <code>VK_QUEUE_GRAPHICS_BIT</code>, or <code>VK_QUEUE_TRANSFER_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_COMPUTE_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a>, or <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_TRANSFER_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdUpdateBuffer-renderpass" href="#VUID-vkCmdUpdateBuffer-renderpass"></a> <span class="vuid">VUID-vkCmdUpdateBuffer-renderpass</span><br>

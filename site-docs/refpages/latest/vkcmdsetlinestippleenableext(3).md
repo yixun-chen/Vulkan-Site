@@ -38,7 +38,7 @@ This command sets the `stippledLineEnable` state for subsequent drawing
 commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT` set in
+[VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationLineStateCreateInfo](VkPipelineRasterizationLineStateCreateInfo.html)::`stippledLineEnable`
@@ -72,7 +72,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetLineStippleEnableEXT-commandBuffer-cmdpool) VUID-vkCmdSetLineStippleEnableEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetLineStippleEnableEXT-videocoding) VUID-vkCmdSetLineStippleEnableEXT-videocoding

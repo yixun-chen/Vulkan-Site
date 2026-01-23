@@ -40,23 +40,23 @@ relative to this starting offset.
 
 * 
 `range` is the size in bytes that is used for this descriptor
-update, or `VK_WHOLE_SIZE` to use the range from `offset` to the
+update, or [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html) to use the range from `offset` to the
 end of the buffer.
 
-|  | When setting `range` to `VK_WHOLE_SIZE`, the
+|  | When setting `range` to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), the
 | --- | --- |
 [effective range](../../../../spec/latest/chapters/descriptorsets.html#buffer-info-effective-range) **must** not be larger than
 the maximum range for the descriptor type ([`maxUniformBufferRange`](../../../../spec/latest/chapters/limits.html#limits-maxUniformBufferRange) or [`maxStorageBufferRange`](../../../../spec/latest/chapters/limits.html#limits-maxStorageBufferRange)).
-This means that `VK_WHOLE_SIZE` is not typically useful in the common
+This means that [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html) is not typically useful in the common
 case where uniform buffer descriptors are suballocated from a buffer that is
 much larger than `maxUniformBufferRange`. |
 
-For `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` and
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` descriptor types,
+For [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) and
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html) descriptor types,
 `offset` is the base offset from which the dynamic offset is applied and
 `range` is the static size used for all dynamic offsets.
 
-When `range` is `VK_WHOLE_SIZE` the effective range is calculated at
+When `range` is [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html) the effective range is calculated at
 [vkUpdateDescriptorSets](vkUpdateDescriptorSets.html) is by taking the size of `buffer` minus the
 `offset`.
 
@@ -70,13 +70,13 @@ Valid Usage
 * 
 [](#VUID-VkDescriptorBufferInfo-range-00341) VUID-VkDescriptorBufferInfo-range-00341
 
-If `range` is not equal to `VK_WHOLE_SIZE`, `range` **must** be
+If `range` is not equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), `range` **must** be
 greater than `0`
 
 * 
 [](#VUID-VkDescriptorBufferInfo-range-00342) VUID-VkDescriptorBufferInfo-range-00342
 
-If `range` is not equal to `VK_WHOLE_SIZE`, `range` **must** be
+If `range` is not equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), `range` **must** be
 less than or equal to the size of `buffer` minus `offset`
 
 * 
@@ -89,7 +89,7 @@ enabled, `buffer` **must** not be [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 [](#VUID-VkDescriptorBufferInfo-buffer-02999) VUID-VkDescriptorBufferInfo-buffer-02999
 
 If `buffer` is [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `offset` **must** be zero and
-`range` **must** be `VK_WHOLE_SIZE`
+`range` **must** be [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html)
 
 Valid Usage (Implicit)
 

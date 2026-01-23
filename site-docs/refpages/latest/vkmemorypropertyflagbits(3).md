@@ -39,66 +39,66 @@ typedef enum VkMemoryPropertyFlagBits {
 } VkMemoryPropertyFlagBits;
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` bit specifies that memory
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](#) bit specifies that memory
 allocated with this type is the most efficient for device access.
 This property will be set if and only if the memory type belongs to a
-heap with the `VK_MEMORY_HEAP_DEVICE_LOCAL_BIT` set.
+heap with the [VK_MEMORY_HEAP_DEVICE_LOCAL_BIT](VkMemoryHeapFlagBits.html) set.
 
 * 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` bit specifies that memory
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#) bit specifies that memory
 allocated with this type **can** be mapped for host access using
 [vkMapMemory](vkMapMemory.html).
 
 * 
- `VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` bit
+ [VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#) bit
 specifies that the host cache management commands
 [vkFlushMappedMemoryRanges](vkFlushMappedMemoryRanges.html) and [vkInvalidateMappedMemoryRanges](vkInvalidateMappedMemoryRanges.html)
 are not needed to manage
 [availability and    visibility](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-available-and-visible) on the host.
 
 * 
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT` bit specifies that memory
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](#) bit specifies that memory
 allocated with this type is cached on the host.
 Host memory accesses to uncached memory are slower than to cached
 memory, however uncached memory is always host coherent.
 
 * 
-`VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT` bit specifies that the
+[VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT](#) bit specifies that the
 memory type only allows device access to the memory.
 Memory types **must** not have both
-`VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT` and
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` set.
+[VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT](#) and
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#) set.
 Additionally, the object’s backing memory **may** be provided by the
 implementation lazily as specified in [    Lazily Allocated Memory](../../../../spec/latest/chapters/memory.html#memory-device-lazy_allocation).
 
 * 
-`VK_MEMORY_PROPERTY_PROTECTED_BIT` bit specifies that the memory
+[VK_MEMORY_PROPERTY_PROTECTED_BIT](#) bit specifies that the memory
 type only allows device access to the memory, and allows protected queue
 operations to access the memory.
-Memory types **must** not have `VK_MEMORY_PROPERTY_PROTECTED_BIT` set
-and any of `VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` set, or
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` set, or
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT` set.
+Memory types **must** not have [VK_MEMORY_PROPERTY_PROTECTED_BIT](#) set
+and any of [VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#) set, or
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#) set, or
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](#) set.
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD` bit specifies that
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](#) bit specifies that
 device accesses to allocations of this memory type are automatically
 made [available and    visible](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-available-and-visible) on the device.
-If paired with `VK_MEMORY_PROPERTY_HOST_COHERENT_BIT`,
+If paired with [VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#),
 [memory domain    operations](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-available-and-visible) are also performed automatically between host and device.
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD` bit specifies that
+[VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD](#) bit specifies that
 memory allocated with this type is not cached on the device.
 Uncached device memory is always device coherent.
 
 * 
-`VK_MEMORY_PROPERTY_RDMA_CAPABLE_BIT_NV` bit specifies that external
+[VK_MEMORY_PROPERTY_RDMA_CAPABLE_BIT_NV](#) bit specifies that external
 devices can access this memory directly.
 
 For any memory allocated with both the
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` and the
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD`, host or device accesses
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#) and the
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](#), host or device accesses
 also perform automatic memory domain transfer operations, such that writes
 are always automatically available and visible to both host and device
 memory domains.

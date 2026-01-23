@@ -64,7 +64,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM-sType-sType) VUID-VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_TENSOR_SEMI_STRUCTURED_SPARSITY_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_TENSOR_SEMI_STRUCTURED_SPARSITY_INFO_ARM](VkStructureType.html)
 
 [VK_ARM_data_graph](VK_ARM_data_graph.html), [VK_ARM_tensors](VK_ARM_tensors.html), [VkStructureType](VkStructureType.html)
 

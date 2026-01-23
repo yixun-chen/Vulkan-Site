@@ -45,7 +45,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalTensorPropertiesARM-sType-sType) VUID-VkExternalTensorPropertiesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_TENSOR_PROPERTIES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_TENSOR_PROPERTIES_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkExternalTensorPropertiesARM-pNext-pNext) VUID-VkExternalTensorPropertiesARM-pNext-pNext

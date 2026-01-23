@@ -59,7 +59,7 @@ e.g. for trace capture and replay.
 `rayTracingPipelineShaderGroupHandleCaptureReplayMixed` indicates
 whether the implementation supports reuse of shader group handles being
 arbitrarily mixed with creation of non-reused shader group handles.
-If this is `VK_FALSE`, all reused shader group handles **must** be
+If this is [VK_FALSE](VK_FALSE.html), all reused shader group handles **must** be
 specified before any non-reused handles **may** be created.
 
 * 
@@ -79,7 +79,7 @@ If the `VkPhysicalDeviceRayTracingPipelineFeaturesKHR` structure is included in 
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceRayTracingPipelineFeaturesKHR`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage
@@ -88,15 +88,15 @@ Valid Usage
 [](#VUID-VkPhysicalDeviceRayTracingPipelineFeaturesKHR-rayTracingPipelineShaderGroupHandleCaptureReplayMixed-03575) VUID-VkPhysicalDeviceRayTracingPipelineFeaturesKHR-rayTracingPipelineShaderGroupHandleCaptureReplayMixed-03575
 
 If `rayTracingPipelineShaderGroupHandleCaptureReplayMixed` is
-`VK_TRUE`, `rayTracingPipelineShaderGroupHandleCaptureReplay`
-**must** also be `VK_TRUE`
+[VK_TRUE](VK_TRUE.html), `rayTracingPipelineShaderGroupHandleCaptureReplay`
+**must** also be [VK_TRUE](VK_TRUE.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPhysicalDeviceRayTracingPipelineFeaturesKHR-sType-sType) VUID-VkPhysicalDeviceRayTracingPipelineFeaturesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PIPELINE_FEATURES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PIPELINE_FEATURES_KHR](VkStructureType.html)
 
 [VK_KHR_ray_tracing_pipeline](VK_KHR_ray_tracing_pipeline.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

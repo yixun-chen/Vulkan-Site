@@ -84,8 +84,8 @@ more detail below.
 flags for [video encode feedback    queries](../../../../spec/latest/chapters/queries.html#queries-video-encode-feedback).
 
 Implementations **must** include support for at least
-`VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR` and
-`VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR` in
+[VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR](VkVideoEncodeFeedbackFlagBitsKHR.html) and
+[VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR](VkVideoEncodeFeedbackFlagBitsKHR.html) in
 `supportedEncodeFeedbackFlags`.
 
 `encodeInputPictureGranularity` provides information about the way
@@ -137,7 +137,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeCapabilitiesKHR-sType-sType) VUID-VkVideoEncodeCapabilitiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_CAPABILITIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_CAPABILITIES_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_queue](VK_KHR_video_encode_queue.html), [VkExtent2D](VkExtent2D.html), [VkStructureType](VkStructureType.html), [VkVideoEncodeCapabilityFlagsKHR](VkVideoEncodeCapabilityFlagsKHR.html), [VkVideoEncodeFeedbackFlagsKHR](VkVideoEncodeFeedbackFlagsKHR.html), [VkVideoEncodeRateControlModeFlagsKHR](VkVideoEncodeRateControlModeFlagsKHR.html)
 

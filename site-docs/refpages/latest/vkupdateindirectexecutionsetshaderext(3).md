@@ -50,7 +50,7 @@ Valid Usage
 [](#VUID-vkUpdateIndirectExecutionSetShaderEXT-indirectExecutionSet-11041) VUID-vkUpdateIndirectExecutionSetShaderEXT-indirectExecutionSet-11041
 
 `indirectExecutionSet` **must** have been created with type
-`VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT`
+[VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT](VkIndirectExecutionSetInfoTypeEXT.html)
 
 * 
 [](#VUID-vkUpdateIndirectExecutionSetShaderEXT-pExecutionSetWrites-11043) VUID-vkUpdateIndirectExecutionSetShaderEXT-pExecutionSetWrites-11043
@@ -65,11 +65,29 @@ Each member of the Indirect Execution Set referenced by the update
 command **must** not be in use by the device
 
 * 
+[](#VUID-vkUpdateIndirectExecutionSetShaderEXT-pInitialShaders-11326) VUID-vkUpdateIndirectExecutionSetShaderEXT-pInitialShaders-11326
+
+If the shaders in `pInitialShaders` were created without
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](VkShaderCreateFlagBitsEXT.html), each shader in
+`pExecutionSetWrites` **must** also have been created without
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](VkShaderCreateFlagBitsEXT.html)
+
+* 
+[](#VUID-vkUpdateIndirectExecutionSetShaderEXT-pInitialShaders-11327) VUID-vkUpdateIndirectExecutionSetShaderEXT-pInitialShaders-11327
+
+If the shaders in `pInitialShaders` were created with
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](VkShaderCreateFlagBitsEXT.html), each pipeline in
+`pExecutionSetWrites` **must** also have been created with
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](VkShaderCreateFlagBitsEXT.html)
+
+* 
 [](#VUID-vkUpdateIndirectExecutionSetShaderEXT-pExecutionSetWrites-11140) VUID-vkUpdateIndirectExecutionSetShaderEXT-pExecutionSetWrites-11140
 
-The descriptor layout of each shader in `pExecutionSetWrites` **must**
-be [compatible](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility) with the initial layout
-info used to create the Indirect Execution Set
+If the shaders in `pInitialShaders` were created without
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](VkShaderCreateFlagBitsEXT.html), the
+descriptor layout of each shader in `pExecutionSetWrites` **must** be
+[compatible](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility) with the initial layout info
+used to create the Indirect Execution Set
 
 * 
 [](#VUID-vkUpdateIndirectExecutionSetShaderEXT-None-11148) VUID-vkUpdateIndirectExecutionSetShaderEXT-None-11148

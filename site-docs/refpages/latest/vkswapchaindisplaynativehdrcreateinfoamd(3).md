@@ -46,21 +46,21 @@ the swapchain.
 
 If the `pNext` chain of [VkSwapchainCreateInfoKHR](VkSwapchainCreateInfoKHR.html) does not include
 this structure, the default value for `localDimmingEnable` is
-`VK_TRUE`, meaning local dimming is initially enabled for the swapchain.
+[VK_TRUE](VK_TRUE.html), meaning local dimming is initially enabled for the swapchain.
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSwapchainDisplayNativeHdrCreateInfoAMD-sType-sType) VUID-VkSwapchainDisplayNativeHdrCreateInfoAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD](VkStructureType.html)
 
 Valid Usage
 
 * 
 [](#VUID-VkSwapchainDisplayNativeHdrCreateInfoAMD-localDimmingEnable-04449) VUID-VkSwapchainDisplayNativeHdrCreateInfoAMD-localDimmingEnable-04449
 
-It is only valid to set `localDimmingEnable` to `VK_TRUE` if
+It is only valid to set `localDimmingEnable` to [VK_TRUE](VK_TRUE.html) if
 [VkDisplayNativeHdrSurfaceCapabilitiesAMD](VkDisplayNativeHdrSurfaceCapabilitiesAMD.html)::`localDimmingSupport`
 is supported
 

@@ -54,18 +54,18 @@ and on return the variable is overwritten with the number of structures
 actually written to `pSurfaceFormats`.
 If the value of `pSurfaceFormatCount` is less than the number of format
 pairs supported, at most `pSurfaceFormatCount` structures will be
-written, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available format pairs were
+written, and [VK_INCOMPLETE](VkResult.html) will be returned instead of
+[VK_SUCCESS](VkResult.html), to indicate that not all the available format pairs were
 returned.
 
 The number of format pairs supported **must** be greater than or equal to 1.
 `pSurfaceFormats` **must** not contain an entry whose value for
-`format` is `VK_FORMAT_UNDEFINED`.
+`format` is [VK_FORMAT_UNDEFINED](VkFormat.html).
 
 If `pSurfaceFormats` includes an entry whose value for `colorSpace`
-is `VK_COLOR_SPACE_SRGB_NONLINEAR_KHR` and whose value for `format`
+is [VK_COLOR_SPACE_SRGB_NONLINEAR_KHR](VkColorSpaceKHR.html) and whose value for `format`
 is a UNORM (or SRGB) format and the corresponding SRGB (or UNORM) format is
-a color renderable format for `VK_IMAGE_TILING_OPTIMAL`, then
+a color renderable format for [VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html), then
 `pSurfaceFormats` **must** also contain an entry with the same value for
 `colorSpace` and `format` equal to the corresponding SRGB (or UNORM)
 format.
@@ -123,27 +123,27 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_surface](VK_KHR_surface.html), [VkPhysicalDevice](VkPhysicalDevice.html), [VkSurfaceFormatKHR](VkSurfaceFormatKHR.html), [VkSurfaceKHR](VkSurfaceKHR.html)
 

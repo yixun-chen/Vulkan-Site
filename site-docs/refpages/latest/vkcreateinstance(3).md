@@ -40,11 +40,11 @@ controlling creation of the instance.
 instance is returned.
 
 `vkCreateInstance` verifies that the requested layers exist.
-If not, `vkCreateInstance` will return `VK_ERROR_LAYER_NOT_PRESENT`.
+If not, `vkCreateInstance` will return [VK_ERROR_LAYER_NOT_PRESENT](VkResult.html).
 Next `vkCreateInstance` verifies that the requested extensions are
 supported (e.g. in the implementation or in any enabled instance layer) and
 if any requested extension is not supported, `vkCreateInstance` **must**
-return `VK_ERROR_EXTENSION_NOT_PRESENT`.
+return [VK_ERROR_EXTENSION_NOT_PRESENT](VkResult.html).
 After verifying and enabling the instance layers and extensions the
 `VkInstance` object is created and returned to the application.
 If a requested extension is only supported by a layer, both the layer and
@@ -82,33 +82,33 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_EXTENSION_NOT_PRESENT`
+[VK_ERROR_EXTENSION_NOT_PRESENT](VkResult.html)
 
 * 
-`VK_ERROR_INCOMPATIBLE_DRIVER`
+[VK_ERROR_INCOMPATIBLE_DRIVER](VkResult.html)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](VkResult.html)
 
 * 
-`VK_ERROR_LAYER_NOT_PRESENT`
+[VK_ERROR_LAYER_NOT_PRESENT](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkAllocationCallbacks](VkAllocationCallbacks.html), [VkInstance](VkInstance.html), [VkInstanceCreateInfo](VkInstanceCreateInfo.html)
 

@@ -36,7 +36,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAmigoProfilingSubmitInfoSEC-sType-sType) VUID-VkAmigoProfilingSubmitInfoSEC-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_AMIGO_PROFILING_SUBMIT_INFO_SEC`
+ `sType` **must** be [VK_STRUCTURE_TYPE_AMIGO_PROFILING_SUBMIT_INFO_SEC](VkStructureType.html)
 
 [VK_SEC_amigo_profiling](VK_SEC_amigo_profiling.html), [VkStructureType](VkStructureType.html)
 

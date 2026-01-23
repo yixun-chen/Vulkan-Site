@@ -44,7 +44,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFenceCreateInfo-sType-sType) VUID-VkFenceCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FENCE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FENCE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkFenceCreateInfo-pNext-pNext) VUID-VkFenceCreateInfo-pNext-pNext

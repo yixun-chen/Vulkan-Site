@@ -20,7 +20,7 @@
 VkSparseBufferMemoryBindInfo - Structure specifying a sparse buffer memory bind operation
 
 Memory is bound to `VkBuffer` objects created with the
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT` flag using the following
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](VkBufferCreateFlagBits.html) flag using the following
 structure:
 
 // Provided by VK_VERSION_1_0

@@ -48,7 +48,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeIntraRefreshInfoKHR-sType-sType) VUID-VkVideoEncodeIntraRefreshInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_INTRA_REFRESH_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_INTRA_REFRESH_INFO_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_intra_refresh](VK_KHR_video_encode_intra_refresh.html), [VkStructureType](VkStructureType.html)
 

@@ -39,7 +39,7 @@ This command sets the `shadingRateImageEnable` state for subsequent
 drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_SHADING_RATE_IMAGE_ENABLE_NV` set in
+[VK_DYNAMIC_STATE_SHADING_RATE_IMAGE_ENABLE_NV](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineViewportShadingRateImageStateCreateInfoNV](VkPipelineViewportShadingRateImageStateCreateInfoNV.html)::`shadingRateImageEnable`
@@ -73,7 +73,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetShadingRateImageEnableNV-commandBuffer-cmdpool) VUID-vkCmdSetShadingRateImageEnableNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetShadingRateImageEnableNV-videocoding) VUID-vkCmdSetShadingRateImageEnableNV-videocoding

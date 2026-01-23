@@ -20,7 +20,7 @@
 vkSignalSemaphore - Signal a timeline semaphore on the host
 
 To signal a semaphore created with a [VkSemaphoreType](VkSemaphoreType.html) of
-`VK_SEMAPHORE_TYPE_TIMELINE` with a particular counter value, on the
+[VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html) with a particular counter value, on the
 host, call:
 
 // Provided by VK_VERSION_1_2
@@ -67,21 +67,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_timeline_semaphore](VK_KHR_timeline_semaphore.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), [VkDevice](VkDevice.html), [VkSemaphoreSignalInfo](VkSemaphoreSignalInfo.html)
 

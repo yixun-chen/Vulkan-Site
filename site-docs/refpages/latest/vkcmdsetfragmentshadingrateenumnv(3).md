@@ -50,7 +50,7 @@ This command sets the pipeline fragment shading rate and combiner operation
 for subsequent drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` set in
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineFragmentShadingRateEnumStateCreateInfoNV](VkPipelineFragmentShadingRateEnumStateCreateInfoNV.html) values used to
@@ -69,24 +69,24 @@ Valid Usage
 
 If the [    `pipelineFragmentShadingRate`](../../../../spec/latest/chapters/features.html#features-pipelineFragmentShadingRate) feature is not enabled,
 `shadingRate` **must** be
-`VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV`
+[VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV](VkFragmentShadingRateNV.html)
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateEnumNV-supersampleFragmentShadingRates-04577) VUID-vkCmdSetFragmentShadingRateEnumNV-supersampleFragmentShadingRates-04577
 
 If the [    `supersampleFragmentShadingRates`](../../../../spec/latest/chapters/features.html#features-supersampleFragmentShadingRates) feature is not enabled,
 `shadingRate` **must** not be
-`VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV`,
-`VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV`,
-`VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV`, or
-`VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV`
+[VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV](VkFragmentShadingRateNV.html),
+[VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV](VkFragmentShadingRateNV.html),
+[VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV](VkFragmentShadingRateNV.html), or
+[VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV](VkFragmentShadingRateNV.html)
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateEnumNV-noInvocationFragmentShadingRates-04578) VUID-vkCmdSetFragmentShadingRateEnumNV-noInvocationFragmentShadingRates-04578
 
 If the [    `noInvocationFragmentShadingRates`](../../../../spec/latest/chapters/features.html#features-noInvocationFragmentShadingRates) feature is not enabled,
 `shadingRate` **must** not be
-`VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV`
+[VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV](VkFragmentShadingRateNV.html)
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateEnumNV-fragmentShadingRateEnums-04579) VUID-vkCmdSetFragmentShadingRateEnumNV-fragmentShadingRateEnums-04579
@@ -105,22 +105,22 @@ One of the [    `pipelineFragmentShadingRate`](../../../../spec/latest/chapters/
 
 If the [    `primitiveFragmentShadingRate`](../../../../spec/latest/chapters/features.html#features-primitiveFragmentShadingRate) feature is not enabled,
 `combinerOps`[0] **must** be
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR`
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](VkFragmentShadingRateCombinerOpKHR.html)
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateEnumNV-attachmentFragmentShadingRate-04582) VUID-vkCmdSetFragmentShadingRateEnumNV-attachmentFragmentShadingRate-04582
 
 If the [    `attachmentFragmentShadingRate`](../../../../spec/latest/chapters/features.html#features-attachmentFragmentShadingRate) feature is not enabled,
 `combinerOps`[1] **must** be
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR`
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](VkFragmentShadingRateCombinerOpKHR.html)
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateEnumNV-fragmentSizeNonTrivialCombinerOps-04583) VUID-vkCmdSetFragmentShadingRateEnumNV-fragmentSizeNonTrivialCombinerOps-04583
 
 If the [    `fragmentSizeNonTrivialCombinerOps`](../../../../spec/latest/chapters/limits.html#limits-fragmentShadingRateNonTrivialCombinerOps) limit is not supported,
 elements of `combinerOps` **must** be either
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR` or
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR`
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](VkFragmentShadingRateCombinerOpKHR.html) or
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR](VkFragmentShadingRateCombinerOpKHR.html)
 
 Valid Usage (Implicit)
 
@@ -147,7 +147,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetFragmentShadingRateEnumNV-commandBuffer-cmdpool) VUID-vkCmdSetFragmentShadingRateEnumNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateEnumNV-videocoding) VUID-vkCmdSetFragmentShadingRateEnumNV-videocoding

@@ -40,7 +40,7 @@ This value is intended to be used to better schedule work onto available
 threads.
 Applications **can** join any number of threads to the deferred operation and
 expect it to eventually complete, though excessive joins **may** return
-`VK_THREAD_DONE_KHR` immediately, performing no useful work.
+[VK_THREAD_DONE_KHR](VkResult.html) immediately, performing no useful work.
 
 If `operation` is complete,
 `vkGetDeferredOperationMaxConcurrencyKHR` returns zero.
@@ -65,7 +65,7 @@ than oversubscribing the machine.
 | --- | --- |
 after deferral, and schedule no more than the specified number of threads to
 join the operation.
-Each time a joined thread receives `VK_THREAD_IDLE_KHR`, the application
+Each time a joined thread receives [VK_THREAD_IDLE_KHR](VkResult.html), the application
 should schedule an additional join at some point in the future, but is not
 required to do so. |
 

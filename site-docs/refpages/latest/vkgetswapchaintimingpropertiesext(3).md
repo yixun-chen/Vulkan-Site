@@ -47,7 +47,7 @@ VkResult vkGetSwapchainTimingPropertiesEXT(
 64-bit unsigned integer set by the implementation to the current value
 of the swapchain’s internal timing properties counter.
 
-If `vkGetSwapchainTimingPropertiesEXT` returns `VK_NOT_READY`, the
+If `vkGetSwapchainTimingPropertiesEXT` returns [VK_NOT_READY](VkResult.html), the
 implementation was not able to determine the current refresh cycle duration.
 Some platforms **may** not provide timing properties until after at least one
 image has been presented to the `swapchain`.
@@ -92,27 +92,27 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_NOT_READY`
+[VK_NOT_READY](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_EXT_present_timing](VK_EXT_present_timing.html), [VkDevice](VkDevice.html), [VkSwapchainKHR](VkSwapchainKHR.html), [VkSwapchainTimingPropertiesEXT](VkSwapchainTimingPropertiesEXT.html)
 

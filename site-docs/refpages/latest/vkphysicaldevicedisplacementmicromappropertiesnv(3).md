@@ -50,7 +50,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDisplacementMicromapPropertiesNV-sType-sType) VUID-VkPhysicalDeviceDisplacementMicromapPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_PROPERTIES_NV](VkStructureType.html)
 
 [VK_NV_displacement_micromap](VK_NV_displacement_micromap.html), [VkStructureType](VkStructureType.html)
 

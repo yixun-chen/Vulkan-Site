@@ -56,25 +56,25 @@ operations **can** vary per-attachment.
 
 `advancedBlendNonPremultipliedSrcColor` specifies whether the source
 color **can** be treated as non-premultiplied.
-If this is `VK_FALSE`, then
+If this is [VK_FALSE](VK_FALSE.html), then
 [VkPipelineColorBlendAdvancedStateCreateInfoEXT](VkPipelineColorBlendAdvancedStateCreateInfoEXT.html)::`srcPremultiplied`
-**must** be `VK_TRUE`.
+**must** be [VK_TRUE](VK_TRUE.html).
 
 * 
 
 `advancedBlendNonPremultipliedDstColor` specifies whether the
 destination color **can** be treated as non-premultiplied.
-If this is `VK_FALSE`, then
+If this is [VK_FALSE](VK_FALSE.html), then
 [VkPipelineColorBlendAdvancedStateCreateInfoEXT](VkPipelineColorBlendAdvancedStateCreateInfoEXT.html)::`dstPremultiplied`
-**must** be `VK_TRUE`.
+**must** be [VK_TRUE](VK_TRUE.html).
 
 * 
 
 `advancedBlendCorrelatedOverlap` specifies whether the overlap mode
 **can** be treated as correlated.
-If this is `VK_FALSE`, then
+If this is [VK_FALSE](VK_FALSE.html), then
 [VkPipelineColorBlendAdvancedStateCreateInfoEXT](VkPipelineColorBlendAdvancedStateCreateInfoEXT.html)::`blendOverlap`
-**must** be `VK_BLEND_OVERLAP_UNCORRELATED_EXT`.
+**must** be [VK_BLEND_OVERLAP_UNCORRELATED_EXT](VkBlendOverlapEXT.html).
 
 * 
  `advancedBlendAllOperations`
@@ -91,7 +91,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_blend_operation_advanced](VK_EXT_blend_operation_advanced.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

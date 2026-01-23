@@ -76,7 +76,7 @@ Jon Leech, Khronos
 
 `VK_KHR_sampler_mirror_clamp_to_edge` extends the set of sampler address
 modes to include an additional mode
-(`VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE`) that effectively uses a
+([VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE](VkSamplerAddressMode.html)) that effectively uses a
 texture map twice as large as the original image in which the additional
 half of the new image is a mirror image of the original image.
 
@@ -88,9 +88,9 @@ and r directions.
 All functionality in this extension is included in core Vulkan 1.2.
 However, if Vulkan 1.2 is supported and this extension is not, the
 [VkSamplerAddressMode](VkSamplerAddressMode.html)
-`VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE` is optional.
+[VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE](VkSamplerAddressMode.html) is optional.
 Since the original extension did not use an author suffix on the enum
-`VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE`, it is used by both core
+[VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE](VkSamplerAddressMode.html), it is used by both core
 and extension implementations.
 
 * 
@@ -102,10 +102,10 @@ and extension implementations.
 * 
 Extending [VkSamplerAddressMode](VkSamplerAddressMode.html):
 
-`VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE`
+[VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE](VkSamplerAddressMode.html)
 
 * 
-`VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE_KHR`
+[VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE_KHR](VkSamplerAddressMode.html)
 
 Creating a sampler with the new address mode in each dimension
 
@@ -126,7 +126,7 @@ Creating a sampler with the new address mode in each dimension
         &sampler);
 
 1) Why are both KHR and core versions of the
-`VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE` token present?
+[VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE](VkSamplerAddressMode.html) token present?
 
 **RESOLVED**: This functionality was intended to be required in Vulkan 1.0.
 We realized shortly before public release that not all implementations could

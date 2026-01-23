@@ -32,23 +32,23 @@ typedef enum VkPhysicalDeviceLayeredApiKHR {
 } VkPhysicalDeviceLayeredApiKHR;
 
 * 
-`VK_PHYSICAL_DEVICE_LAYERED_API_VULKAN_KHR` - the device implements
+[VK_PHYSICAL_DEVICE_LAYERED_API_VULKAN_KHR](#) - the device implements
 the Vulkan API.
 
 * 
-`VK_PHYSICAL_DEVICE_LAYERED_API_D3D12_KHR` - the device implements
+[VK_PHYSICAL_DEVICE_LAYERED_API_D3D12_KHR](#) - the device implements
 the D3D12 API.
 
 * 
-`VK_PHYSICAL_DEVICE_LAYERED_API_METAL_KHR` - the device implements
+[VK_PHYSICAL_DEVICE_LAYERED_API_METAL_KHR](#) - the device implements
 the Metal API.
 
 * 
-`VK_PHYSICAL_DEVICE_LAYERED_API_OPENGL_KHR` - the device implements
+[VK_PHYSICAL_DEVICE_LAYERED_API_OPENGL_KHR](#) - the device implements
 the OpenGL API.
 
 * 
-`VK_PHYSICAL_DEVICE_LAYERED_API_OPENGLES_KHR` - the device
+[VK_PHYSICAL_DEVICE_LAYERED_API_OPENGLES_KHR](#) - the device
 implements the OpenGL ES API.
 
 [VK_KHR_maintenance7](VK_KHR_maintenance7.html), [VkPhysicalDeviceLayeredApiPropertiesKHR](VkPhysicalDeviceLayeredApiPropertiesKHR.html)

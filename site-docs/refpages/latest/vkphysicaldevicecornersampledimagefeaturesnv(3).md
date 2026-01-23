@@ -42,7 +42,7 @@ structure.
  `cornerSampledImage` specifies
 whether images can be created with a
 [VkImageCreateInfo](VkImageCreateInfo.html)::`flags` containing
-`VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV`.
+[VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV](VkImageCreateFlagBits.html).
 See [Corner-Sampled Images](../../../../spec/latest/chapters/resources.html#resources-images-corner-sampled).
 
 If the `VkPhysicalDeviceCornerSampledImageFeaturesNV` structure is included in the `pNext` chain of the
@@ -51,7 +51,7 @@ If the `VkPhysicalDeviceCornerSampledImageFeaturesNV` structure is included in t
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceCornerSampledImageFeaturesNV`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -59,7 +59,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceCornerSampledImageFeaturesNV-sType-sType) VUID-VkPhysicalDeviceCornerSampledImageFeaturesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV](VkStructureType.html)
 
 [VK_NV_corner_sampled_image](VK_NV_corner_sampled_image.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -33,12 +33,12 @@ typedef enum VkSemaphoreWaitFlagBits {
 typedef VkSemaphoreWaitFlagBits VkSemaphoreWaitFlagBitsKHR;
 
 * 
-`VK_SEMAPHORE_WAIT_ANY_BIT` specifies that the semaphore wait
+[VK_SEMAPHORE_WAIT_ANY_BIT](#) specifies that the semaphore wait
 condition is that at least one of the semaphores in
 `VkSemaphoreWaitInfo`::`pSemaphores` has reached the value
 specified by the corresponding element of
 `VkSemaphoreWaitInfo`::`pValues`.
-If `VK_SEMAPHORE_WAIT_ANY_BIT` is not set, the semaphore wait
+If [VK_SEMAPHORE_WAIT_ANY_BIT](#) is not set, the semaphore wait
 condition is that all of the semaphores in
 `VkSemaphoreWaitInfo`::`pSemaphores` have reached the value
 specified by the corresponding element of

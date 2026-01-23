@@ -39,7 +39,7 @@ structure.
 `externalFormat` is an implementation-defined identifier for the
 external format.
 
-To obtain additional format that are not provided by `VkFormat` for an
+To obtain additional format that are not provided by [VkFormat](VkFormat.html) for an
 Open Harmony OS hardware buffer, this structure should be included in the
 pNext chain of another structure.
 The return value of `externalFormat` indicates whether an additional
@@ -53,7 +53,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalFormatOHOS-sType-sType) VUID-VkExternalFormatOHOS-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_OHOS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_OHOS](VkStructureType.html)
 
 [VK_OHOS_external_memory](VK_OHOS_external_memory.html), [VkStructureType](VkStructureType.html)
 

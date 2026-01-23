@@ -110,7 +110,7 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL](VkStructureType.html)
 
 * 
 [    `IntegerFunctions2INTEL`](../../../../spec/latest/appendices/spirvenv.html#spirvenv-capabilities-table-IntegerFunctions2INTEL)

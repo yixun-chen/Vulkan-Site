@@ -79,8 +79,8 @@ the same underlying physical device as `device`
 [](#VUID-VkImportMemoryFdInfoKHR-handleType-00669) VUID-VkImportMemoryFdInfoKHR-handleType-00669
 
 If `handleType` is not `0`, it **must** be
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT](VkExternalMemoryHandleTypeFlagBits.html) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html)
 
 * 
 [](#VUID-VkImportMemoryFdInfoKHR-handleType-00670) VUID-VkImportMemoryFdInfoKHR-handleType-00670
@@ -107,7 +107,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMemoryFdInfoKHR-sType-sType) VUID-VkImportMemoryFdInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkImportMemoryFdInfoKHR-handleType-parameter) VUID-VkImportMemoryFdInfoKHR-handleType-parameter

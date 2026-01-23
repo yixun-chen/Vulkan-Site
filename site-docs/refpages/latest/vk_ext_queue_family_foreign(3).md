@@ -85,29 +85,29 @@ Daniel Rakos, AMD
 Ray Smith, ARM
 
 This extension defines a special queue family,
-`VK_QUEUE_FAMILY_FOREIGN_EXT`, which can be used to transfer ownership
+[VK_QUEUE_FAMILY_FOREIGN_EXT](VK_QUEUE_FAMILY_FOREIGN_EXT.html), which can be used to transfer ownership
 of resources backed by external memory to foreign, external queues.
-This is similar to `VK_QUEUE_FAMILY_EXTERNAL_KHR`, defined in
+This is similar to [VK_QUEUE_FAMILY_EXTERNAL_KHR](VK_QUEUE_FAMILY_EXTERNAL.html), defined in
 `[VK_KHR_external_memory](VK_KHR_external_memory.html)`.
 The key differences between the two are:
 
 * 
-The queues represented by `VK_QUEUE_FAMILY_EXTERNAL_KHR` must share
+The queues represented by [VK_QUEUE_FAMILY_EXTERNAL_KHR](VK_QUEUE_FAMILY_EXTERNAL.html) must share
 the same physical device and the same driver version as the current
 [VkInstance](VkInstance.html).
-`VK_QUEUE_FAMILY_FOREIGN_EXT` has no such restrictions.
+[VK_QUEUE_FAMILY_FOREIGN_EXT](VK_QUEUE_FAMILY_FOREIGN_EXT.html) has no such restrictions.
 It can represent devices and drivers from other vendors, and can even
 represent non-Vulkan-capable devices.
 
 * 
 All resources backed by external memory support
-`VK_QUEUE_FAMILY_EXTERNAL_KHR`.
-Support for `VK_QUEUE_FAMILY_FOREIGN_EXT` is more restrictive.
+[VK_QUEUE_FAMILY_EXTERNAL_KHR](VK_QUEUE_FAMILY_EXTERNAL.html).
+Support for [VK_QUEUE_FAMILY_FOREIGN_EXT](VK_QUEUE_FAMILY_FOREIGN_EXT.html) is more restrictive.
 
 * 
 Applications should expect transitions to/from
-`VK_QUEUE_FAMILY_FOREIGN_EXT` to be more expensive than transitions
-to/from `VK_QUEUE_FAMILY_EXTERNAL_KHR`.
+[VK_QUEUE_FAMILY_FOREIGN_EXT](VK_QUEUE_FAMILY_FOREIGN_EXT.html) to be more expensive than transitions
+to/from [VK_QUEUE_FAMILY_EXTERNAL_KHR](VK_QUEUE_FAMILY_EXTERNAL.html).
 
 * 
 `VK_EXT_QUEUE_FAMILY_FOREIGN_EXTENSION_NAME`
@@ -116,7 +116,7 @@ to/from `VK_QUEUE_FAMILY_EXTERNAL_KHR`.
 `VK_EXT_QUEUE_FAMILY_FOREIGN_SPEC_VERSION`
 
 * 
-`VK_QUEUE_FAMILY_FOREIGN_EXT`
+[VK_QUEUE_FAMILY_FOREIGN_EXT](VK_QUEUE_FAMILY_FOREIGN_EXT.html)
 
 * 
 Revision 1, 2017-11-01 (Lina Versace)

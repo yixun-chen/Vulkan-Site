@@ -30,10 +30,10 @@
 
 Mobile devices have significantly different hardware constraints compared to desktop systems. In this section, we’ll explore key performance optimizations that are essential for achieving good performance on mobile platforms.
 
-|  | This chapter covers general mobile performance. For practices that arise specifically because the GPU is tile-based (TBR), see [Rendering Approaches: Tile-Based Rendering](04_rendering_approaches.adoc). |
+|  | This chapter covers general mobile performance. For practices that arise specifically because the GPU is tile-based (TBR), see [Rendering Approaches: Tile-Based Rendering](04_rendering_approaches.html). |
 | --- | --- |
 
-|  | We focus on mobile‑specific decisions here. For general Vulkan image creation, staging uploads, and descriptor setup, refer back to earlier chapters in the engine series—[Resource Management](../Engine_Architecture/04_resource_management.adoc), [Rendering Pipeline](../Engine_Architecture/05_rendering_pipeline.adoc)—or the Vulkan Guide ([https://docs.vulkan.org/guide/latest/](https://docs.vulkan.org/guide/latest/)). |
+|  | We focus on mobile‑specific decisions here. For general Vulkan image creation, staging uploads, and descriptor setup, refer back to earlier chapters in the engine series—[Resource Management](../Engine_Architecture/04_resource_management.html), [Rendering Pipeline](../Engine_Architecture/05_rendering_pipeline.html)—or the Vulkan Guide ([https://docs.vulkan.org/guide/latest/](https://docs.vulkan.org/guide/latest/)). |
 | --- | --- |
 
 Textures are often the largest consumers of memory in a graphics application. Optimizing them is crucial for performance on both mobile and desktop.
@@ -158,7 +158,7 @@ struct OptimizedVertex {
     uint8_t color[4];     // 4 bytes
 };
 
-|  | If you are targeting tile-based GPUs (TBR), bandwidth can be heavily impacted by attachment load/store behavior and tile flushes. See [Rendering Approaches](04_rendering_approaches.adoc) — sections “Attachment Load/Store Operations on Tilers” and “Pipelining on Tilers: Subpass Dependencies and BY_REGION” for concrete guidance. |
+|  | If you are targeting tile-based GPUs (TBR), bandwidth can be heavily impacted by attachment load/store behavior and tile flushes. See [Rendering Approaches](04_rendering_approaches.html) — sections “Attachment Load/Store Operations on Tilers” and “Pipelining on Tilers: Subpass Dependencies and BY_REGION” for concrete guidance. |
 | --- | --- |
 
 Mobile GPUs are particularly sensitive to draw call overhead:
@@ -169,7 +169,7 @@ Mobile GPUs are particularly sensitive to draw call overhead:
 
 **Level of Detail (LOD)**: Implement LOD systems to reduce geometry complexity for distant objects.
 
-|  | On tile-based GPUs, reducing CPU overhead is important, but keeping work and data on-chip via proper pipelining and subpasses often yields larger gains. See [Rendering Approaches](04_rendering_approaches.adoc) — “Pipelining on Tilers: Subpass Dependencies and BY_REGION” for barrier/subpass patterns, and “Attachment Load/Store Operations on Tilers” for loadOp/storeOp guidance that avoids external memory traffic. |
+|  | On tile-based GPUs, reducing CPU overhead is important, but keeping work and data on-chip via proper pipelining and subpasses often yields larger gains. See [Rendering Approaches](04_rendering_approaches.html) — “Pipelining on Tilers: Subpass Dependencies and BY_REGION” for barrier/subpass patterns, and “Attachment Load/Store Operations on Tilers” for loadOp/storeOp guidance that avoids external memory traffic. |
 | --- | --- |
 
 Different mobile GPU vendors have specific architectures that may benefit from targeted optimizations.
@@ -219,4 +219,4 @@ that can help identify bottlenecks specific to their hardware.
 
 In the next section, we’ll explore different rendering approaches for mobile GPUs, focusing on the differences between Tile-Based Rendering (TBR) and Immediate Mode Rendering (IMR).
 
-[Previous: Platform Considerations](02_platform_considerations.adoc) | [Next: Rendering Approaches](04_rendering_approaches.adoc)
+[Previous: Platform Considerations](02_platform_considerations.html) | [Next: Rendering Approaches](04_rendering_approaches.html)

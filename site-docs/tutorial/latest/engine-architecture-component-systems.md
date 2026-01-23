@@ -534,4 +534,4 @@ Can be optimized for performance
 
 In the next section, we’ll explore resource management systems, which are crucial for efficiently handling assets in your engine.
 
-[Previous: Architectural Patterns](02_architectural_patterns.adoc) | [Next: Resource Management](04_resource_management.adoc)
+[Previous: Architectural Patterns](02_architectural_patterns.html) | [Next: Resource Management](04_resource_management.html)

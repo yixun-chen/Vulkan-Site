@@ -34,15 +34,15 @@ typedef enum VkClusterAccelerationStructureIndexFormatFlagBitsNV {
 } VkClusterAccelerationStructureIndexFormatFlagBitsNV;
 
 * 
-`VK_CLUSTER_ACCELERATION_STRUCTURE_INDEX_FORMAT_8BIT_NV` specifies
+[VK_CLUSTER_ACCELERATION_STRUCTURE_INDEX_FORMAT_8BIT_NV](#) specifies
 that 8-bit indices will be used.
 
 * 
-`VK_CLUSTER_ACCELERATION_STRUCTURE_INDEX_FORMAT_16BIT_NV` specifies
+[VK_CLUSTER_ACCELERATION_STRUCTURE_INDEX_FORMAT_16BIT_NV](#) specifies
 that 16-bit indices will be used.
 
 * 
-`VK_CLUSTER_ACCELERATION_STRUCTURE_INDEX_FORMAT_32BIT_NV` specifies
+[VK_CLUSTER_ACCELERATION_STRUCTURE_INDEX_FORMAT_32BIT_NV](#) specifies
 that 32-bit indices will be used.
 
 [VK_NV_cluster_acceleration_structure](VK_NV_cluster_acceleration_structure.html), [VkClusterAccelerationStructureIndexFormatFlagsNV](VkClusterAccelerationStructureIndexFormatFlagsNV.html)

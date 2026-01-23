@@ -58,14 +58,14 @@ Valid Usage
 
 If the [`protectedMemory`](../../../../spec/latest/chapters/features.html#features-protectedMemory) feature is not
 enabled, `flags` **must** not contain
-`VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_PROTECTED_BIT_ARM`
+[VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_PROTECTED_BIT_ARM](VkDataGraphPipelineSessionCreateFlagBitsARM.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDataGraphPipelineSessionCreateInfoARM-sType-sType) VUID-VkDataGraphPipelineSessionCreateInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_CREATE_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_CREATE_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkDataGraphPipelineSessionCreateInfoARM-pNext-pNext) VUID-VkDataGraphPipelineSessionCreateInfoARM-pNext-pNext

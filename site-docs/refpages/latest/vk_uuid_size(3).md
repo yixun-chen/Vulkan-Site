@@ -17,7 +17,7 @@
 
 VK_UUID_SIZE - Length of a universally unique device or driver build identifier
 
-`VK_UUID_SIZE` is the length in `uint8_t` values of an array
+[VK_UUID_SIZE](#) is the length in `uint8_t` values of an array
 containing a universally unique device or driver build identifier, as
 returned in [VkPhysicalDeviceIDProperties](VkPhysicalDeviceIDProperties.html)::`deviceUUID` and
 [VkPhysicalDeviceIDProperties](VkPhysicalDeviceIDProperties.html)::`driverUUID`.

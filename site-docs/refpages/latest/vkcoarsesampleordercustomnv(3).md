@@ -48,7 +48,7 @@ the custom ordering.
 each sample in the custom ordering.
 
 The `VkCoarseSampleOrderCustomNV` structure is used with a coverage
-sample ordering type of `VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV` to
+sample ordering type of [VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV](VkCoarseSampleOrderTypeNV.html) to
 specify the order of coverage samples for one combination of fragment width,
 fragment height, and coverage sample count.
 

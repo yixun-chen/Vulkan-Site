@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDedicatedAllocationBufferCreateInfoNV-sType-sType) VUID-VkDedicatedAllocationBufferCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV](VkStructureType.html)
 
 [VK_NV_dedicated_allocation](VK_NV_dedicated_allocation.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

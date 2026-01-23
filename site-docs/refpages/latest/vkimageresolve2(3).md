@@ -65,21 +65,21 @@ Valid Usage
 
 The `aspectMask` member of `srcSubresource` and
 `dstSubresource` **must** only contain
-`VK_IMAGE_ASPECT_DEPTH_BIT`, `VK_IMAGE_ASPECT_STENCIL_BIT`, or
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html), [VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html), or
+[VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkImageResolve2-maintenance10-10994) VUID-VkImageResolve2-maintenance10-10994
 
 If [`maintenance10`](../../../../spec/latest/chapters/features.html#features-maintenance10) feature is not
 enabled, `srcSubresource` and `dstSubresource` **must** not contain
-`VK_IMAGE_ASPECT_DEPTH_BIT` or `VK_IMAGE_ASPECT_STENCIL_BIT`
+[VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) or [VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkImageResolve2-layerCount-08803) VUID-VkImageResolve2-layerCount-08803
 
 If neither of the `layerCount` members of `srcSubresource` or
-`dstSubresource` are `VK_REMAINING_ARRAY_LAYERS`, the
+`dstSubresource` are [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), the
 `layerCount` member of `srcSubresource` and `dstSubresource`
 **must** match
 
@@ -87,8 +87,8 @@ If neither of the `layerCount` members of `srcSubresource` or
 [](#VUID-VkImageResolve2-layerCount-08804) VUID-VkImageResolve2-layerCount-08804
 
 If one of the `layerCount` members of `srcSubresource` or
-`dstSubresource` is `VK_REMAINING_ARRAY_LAYERS`, the other
-member **must** be either `VK_REMAINING_ARRAY_LAYERS` or equal to the
+`dstSubresource` is [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), the other
+member **must** be either [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html) or equal to the
 `arrayLayers` member of the [VkImageCreateInfo](VkImageCreateInfo.html) used to create
 the image minus `baseArrayLayer`
 
@@ -97,7 +97,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageResolve2-sType-sType) VUID-VkImageResolve2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_RESOLVE_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_RESOLVE_2](VkStructureType.html)
 
 * 
 [](#VUID-VkImageResolve2-pNext-pNext) VUID-VkImageResolve2-pNext-pNext

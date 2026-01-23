@@ -34,13 +34,13 @@ recorded.
 `pInfo` is a pointer to a [VkCopyMemoryToMicromapInfoEXT](VkCopyMemoryToMicromapInfoEXT.html)
 structure defining the copy operation.
 
-Accesses to `pInfo->dst` **must** be [synchronized](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies) with the `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+Accesses to `pInfo->dst` **must** be [synchronized](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies) with the [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](VkPipelineStageFlagBits2.html)
 [pipeline stage](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages) and an
 [access type](../../../../spec/latest/chapters/synchronization.html#synchronization-access-types) of
-`VK_ACCESS_2_MICROMAP_READ_BIT_EXT`.
+[VK_ACCESS_2_MICROMAP_READ_BIT_EXT](VkAccessFlagBits2.html).
 Accesses to the buffer indicated by `pInfo->src.deviceAddress` **must** be
-synchronized with the `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
-pipeline stage and an access type of `VK_ACCESS_TRANSFER_READ_BIT`.
+synchronized with the [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](VkPipelineStageFlagBits2.html)
+pipeline stage and an access type of [VK_ACCESS_TRANSFER_READ_BIT](VkAccessFlagBits.html).
 
 This command can accept micromaps produced by either
 [vkCmdCopyMicromapToMemoryEXT](vkCmdCopyMicromapToMemoryEXT.html) or [vkCopyMicromapToMemoryEXT](vkCopyMicromapToMemoryEXT.html).
@@ -90,7 +90,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdCopyMemoryToMicromapEXT-commandBuffer-cmdpool) VUID-vkCmdCopyMemoryToMicromapEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdCopyMemoryToMicromapEXT-renderpass) VUID-vkCmdCopyMemoryToMicromapEXT-renderpass

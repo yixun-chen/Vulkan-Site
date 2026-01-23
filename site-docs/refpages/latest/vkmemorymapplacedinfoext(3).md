@@ -19,7 +19,7 @@
 
 VkMemoryMapPlacedInfoEXT - Structure containing memory map placement parameters
 
-If `VK_MEMORY_MAP_PLACED_BIT_EXT` is set in
+If [VK_MEMORY_MAP_PLACED_BIT_EXT](VkMemoryMapFlagBits.html) is set in
 `VkMemoryMapInfo`::`flags` and the `pNext` chain of
 [VkMemoryMapInfo](VkMemoryMapInfo.html) includes a `VkMemoryMapPlacedInfoEXT` structure,
 then that structure specifies the placement address of the memory map.
@@ -31,10 +31,10 @@ Instead, the application **must** ensure no other Vulkan memory objects are
 mapped anywhere in the specified virtual address range.
 If successful, `ppData` will be set to the same value as
 `VkMemoryMapPlacedInfoEXT`::`pPlacedAddress` and `vkMapMemory2`
-will return `VK_SUCCESS`.
+will return [VK_SUCCESS](VkResult.html).
 If it cannot place the map at the requested address for any reason, the
 memory object is left unmapped and `vkMapMemory2` will return
-`VK_ERROR_MEMORY_MAP_FAILED`.
+[VK_ERROR_MEMORY_MAP_FAILED](VkResult.html).
 
 The `VkMemoryMapPlacedInfoEXT` structure is defined as:
 
@@ -56,16 +56,9 @@ structure.
 `pPlacedAddress` is the virtual address at which to place the
 address.
 If `VkMemoryMapInfo`::`flags` does not contain
-`VK_MEMORY_MAP_PLACED_BIT_EXT`, this value is ignored.
+[VK_MEMORY_MAP_PLACED_BIT_EXT](VkMemoryMapFlagBits.html), this value is ignored.
 
 Valid Usage
-
-* 
-[](#VUID-VkMemoryMapPlacedInfoEXT-flags-09576) VUID-VkMemoryMapPlacedInfoEXT-flags-09576
-
-If `VkMemoryMapInfo`::`flags` contains
-`VK_MEMORY_MAP_PLACED_BIT_EXT`, `pPlacedAddress` **must** not be
-`NULL`
 
 * 
 [](#VUID-VkMemoryMapPlacedInfoEXT-pPlacedAddress-09577) VUID-VkMemoryMapPlacedInfoEXT-pPlacedAddress-09577
@@ -85,7 +78,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryMapPlacedInfoEXT-sType-sType) VUID-VkMemoryMapPlacedInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_MAP_PLACED_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_MAP_PLACED_INFO_EXT](VkStructureType.html)
 
 [VK_EXT_map_memory_placed](VK_EXT_map_memory_placed.html), [VkStructureType](VkStructureType.html)
 

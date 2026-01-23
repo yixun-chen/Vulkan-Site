@@ -28,11 +28,11 @@ typedef enum VkCommandBufferLevel {
 } VkCommandBufferLevel;
 
 * 
-`VK_COMMAND_BUFFER_LEVEL_PRIMARY` specifies a primary command
+[VK_COMMAND_BUFFER_LEVEL_PRIMARY](#) specifies a primary command
 buffer.
 
 * 
-`VK_COMMAND_BUFFER_LEVEL_SECONDARY` specifies a secondary command
+[VK_COMMAND_BUFFER_LEVEL_SECONDARY](#) specifies a secondary command
 buffer.
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkCommandBufferAllocateInfo](VkCommandBufferAllocateInfo.html)

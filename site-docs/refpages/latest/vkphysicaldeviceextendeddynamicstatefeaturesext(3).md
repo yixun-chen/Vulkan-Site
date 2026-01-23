@@ -42,40 +42,40 @@ structure.
  `extendedDynamicState` indicates
 that the implementation supports the following dynamic states:
 
-`VK_DYNAMIC_STATE_CULL_MODE`
+[VK_DYNAMIC_STATE_CULL_MODE](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_FRONT_FACE`
+[VK_DYNAMIC_STATE_FRONT_FACE](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY`
+[VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT`
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT`
+[VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE`
+[VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE`
+[VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE`
+[VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_DEPTH_COMPARE_OP`
+[VK_DYNAMIC_STATE_DEPTH_COMPARE_OP](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE`
+[VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE`
+[VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_STENCIL_OP`
+[VK_DYNAMIC_STATE_STENCIL_OP](VkDynamicState.html)
 
 If the `VkPhysicalDeviceExtendedDynamicStateFeaturesEXT` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -83,7 +83,7 @@ If the `VkPhysicalDeviceExtendedDynamicStateFeaturesEXT` structure is included i
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceExtendedDynamicStateFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -91,7 +91,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExtendedDynamicStateFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceExtendedDynamicStateFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_extended_dynamic_state](VK_EXT_extended_dynamic_state.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -105,15 +105,15 @@ Extending [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html):
 * 
 Extending [VkImageViewCreateFlagBits](VkImageViewCreateFlagBits.html):
 
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT`
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT](VkImageViewCreateFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_FEATURES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_PROPERTIES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_PROPERTIES_EXT](VkStructureType.html)
 
 Some implementations may not support subsampled samplers if certain
 implementation limits are not observed by the app.
@@ -123,14 +123,14 @@ subsampling.
 
 By default, the fragment density map is locked by the host for reading
 between [vkCmdBeginRenderPass](vkCmdBeginRenderPass.html) during recording and
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT` during draw
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](VkPipelineStageFlagBits.html) during draw
 execution.
 
 This can introduce large latency for certain use cases between recording the
 frame and displaying the frame.
 Apps may wish to modify the fragment density map just before draw execution.
 
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT` is intended
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT](VkImageViewCreateFlagBits.html) is intended
 to help address this for implementations that do not support the
 [`fragmentDensityMapDynamic`](../../../../spec/latest/chapters/features.html#features-fragmentDensityMapDynamic)
 feature by deferring the start of the locked range to

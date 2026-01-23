@@ -50,7 +50,7 @@ Valid Usage
 [](#VUID-VkImportMemoryZirconHandleInfoFUCHSIA-handleType-04771) VUID-VkImportMemoryZirconHandleInfoFUCHSIA-handleType-04771
 
 `handleType` **must** be
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA](VkExternalMemoryHandleTypeFlagBits.html)
 
 * 
 [](#VUID-VkImportMemoryZirconHandleInfoFUCHSIA-handle-04772) VUID-VkImportMemoryZirconHandleInfoFUCHSIA-handle-04772
@@ -62,7 +62,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMemoryZirconHandleInfoFUCHSIA-sType-sType) VUID-VkImportMemoryZirconHandleInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA](VkStructureType.html)
 
 * 
 [](#VUID-VkImportMemoryZirconHandleInfoFUCHSIA-handleType-parameter) VUID-VkImportMemoryZirconHandleInfoFUCHSIA-handleType-parameter

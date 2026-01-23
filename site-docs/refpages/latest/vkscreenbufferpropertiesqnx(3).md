@@ -48,7 +48,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkScreenBufferPropertiesQNX-sType-sType) VUID-VkScreenBufferPropertiesQNX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SCREEN_BUFFER_PROPERTIES_QNX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SCREEN_BUFFER_PROPERTIES_QNX](VkStructureType.html)
 
 * 
 [](#VUID-VkScreenBufferPropertiesQNX-pNext-pNext) VUID-VkScreenBufferPropertiesQNX-pNext-pNext

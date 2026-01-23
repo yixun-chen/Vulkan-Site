@@ -123,7 +123,7 @@ parameters objects.
 
 * 
 Require support for
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR` in all
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html) in all
 applicable video encode profiles.
 
 * 
@@ -165,35 +165,35 @@ Extending [VkVideoDecodeInfoKHR](VkVideoDecodeInfoKHR.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_MAINTENANCE_2_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_MAINTENANCE_2_FEATURES_KHR](VkStructureType.html)
 
 If [VK_KHR_video_decode_av1](VK_KHR_video_decode_av1.html) is supported:
 
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_INLINE_SESSION_PARAMETERS_INFO_KHR`
+[VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_INLINE_SESSION_PARAMETERS_INFO_KHR](VkStructureType.html)
 
 If [VK_KHR_video_decode_h264](VK_KHR_video_decode_h264.html) is supported:
 
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_INLINE_SESSION_PARAMETERS_INFO_KHR`
+[VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_INLINE_SESSION_PARAMETERS_INFO_KHR](VkStructureType.html)
 
 If [VK_KHR_video_decode_h265](VK_KHR_video_decode_h265.html) is supported:
 
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_INLINE_SESSION_PARAMETERS_INFO_KHR`
+[VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_INLINE_SESSION_PARAMETERS_INFO_KHR](VkStructureType.html)
 
 If [VK_KHR_video_decode_queue](VK_KHR_video_decode_queue.html) is supported:
 
 * 
 Extending [VkVideoSessionCreateFlagBitsKHR](VkVideoSessionCreateFlagBitsKHR.html):
 
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR`
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html)
 
 * 
 Revision 1, 2024-10-14 (Daniel Rakos)

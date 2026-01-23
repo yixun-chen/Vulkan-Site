@@ -63,7 +63,7 @@ operation.
 * 
 `globalAlpha` is the global alpha value.
 This value is ignored if `alphaMode` is not
-`VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR`.
+[VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR](VkDisplayPlaneAlphaFlagBitsKHR.html).
 
 * 
 `alphaMode` is a [VkDisplayPlaneAlphaFlagBitsKHR](VkDisplayPlaneAlphaFlagBitsKHR.html) value
@@ -96,7 +96,7 @@ supported by the device as determined by calling
 If the `planeReorderPossible` member of the
 `VkDisplayPropertiesKHR` structure returned by
 `vkGetPhysicalDeviceDisplayPropertiesKHR` for the display
-corresponding to `displayMode` is `VK_TRUE` then
+corresponding to `displayMode` is [VK_TRUE](VK_TRUE.html) then
 `planeStackIndex` **must** be less than the number of display planes
 supported by the device as determined by calling
 `vkGetPhysicalDeviceDisplayPlanePropertiesKHR`; otherwise
@@ -108,7 +108,7 @@ corresponding to `displayMode`
 * 
 [](#VUID-VkDisplaySurfaceCreateInfoKHR-alphaMode-01254) VUID-VkDisplaySurfaceCreateInfoKHR-alphaMode-01254
 
-If `alphaMode` is `VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR` then
+If `alphaMode` is [VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR](VkDisplayPlaneAlphaFlagBitsKHR.html) then
 `globalAlpha` **must** be between `0` and `1`, inclusive
 
 * 
@@ -138,19 +138,19 @@ less than or equal to
 If the `pNext` chain includes a
 [VkDisplaySurfaceStereoCreateInfoNV](VkDisplaySurfaceStereoCreateInfoNV.html) structure whose
 `stereoType` member is
-`VK_DISPLAY_SURFACE_STEREO_TYPE_HDMI_3D_NV`, then the
+[VK_DISPLAY_SURFACE_STEREO_TYPE_HDMI_3D_NV](VkDisplaySurfaceStereoTypeNV.html), then the
 `hdmi3DSupported` member of the
 [VkDisplayModeStereoPropertiesNV](VkDisplayModeStereoPropertiesNV.html) structure in the `pNext` chain
 of the `VkDisplayModeProperties2KHR` structure returned by
 [vkGetDisplayModeProperties2KHR](vkGetDisplayModeProperties2KHR.html) for the display mode corresponding
-to `displayMode` **must** be `VK_TRUE`
+to `displayMode` **must** be [VK_TRUE](VK_TRUE.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDisplaySurfaceCreateInfoKHR-sType-sType) VUID-VkDisplaySurfaceCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkDisplaySurfaceCreateInfoKHR-pNext-pNext) VUID-VkDisplaySurfaceCreateInfoKHR-pNext-pNext

@@ -29,12 +29,12 @@ typedef enum VkIndirectCommandsInputModeFlagBitsEXT {
 } VkIndirectCommandsInputModeFlagBitsEXT;
 
 * 
-`VK_INDIRECT_COMMANDS_INPUT_MODE_VULKAN_INDEX_BUFFER_EXT` specifies
+[VK_INDIRECT_COMMANDS_INPUT_MODE_VULKAN_INDEX_BUFFER_EXT](#) specifies
 that the indirect buffer contains
 [VkBindIndexBufferIndirectCommandEXT](VkBindIndexBufferIndirectCommandEXT.html).
 
 * 
-`VK_INDIRECT_COMMANDS_INPUT_MODE_DXGI_INDEX_BUFFER_EXT` specifies
+[VK_INDIRECT_COMMANDS_INPUT_MODE_DXGI_INDEX_BUFFER_EXT](#) specifies
 that the indirect buffer contains `D3D12_INDEX_BUFFER_VIEW`.
 
 [VK_EXT_device_generated_commands](VK_EXT_device_generated_commands.html), [VkIndirectCommandsIndexBufferTokenEXT](VkIndirectCommandsIndexBufferTokenEXT.html), [VkIndirectCommandsInputModeFlagsEXT](VkIndirectCommandsInputModeFlagsEXT.html)

@@ -50,7 +50,7 @@ If the `VkPhysicalDeviceDescriptorBufferTensorFeaturesARM` structure is included
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceDescriptorBufferTensorFeaturesARM`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDescriptorBufferTensorFeaturesARM-sType-sType) VUID-VkPhysicalDeviceDescriptorBufferTensorFeaturesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_TENSOR_FEATURES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_TENSOR_FEATURES_ARM](VkStructureType.html)
 
 [VK_ARM_tensors](VK_ARM_tensors.html), [VK_EXT_descriptor_buffer](VK_EXT_descriptor_buffer.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

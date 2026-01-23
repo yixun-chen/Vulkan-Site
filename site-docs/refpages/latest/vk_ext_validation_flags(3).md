@@ -111,7 +111,7 @@ Extending [VkInstanceCreateInfo](VkInstanceCreateInfo.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT`
+[VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT](VkStructureType.html)
 
 * 
 Revision 3, 2023-09-25 (Christophe Riccio)

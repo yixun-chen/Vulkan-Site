@@ -44,7 +44,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDisplayPowerInfoEXT-sType-sType) VUID-VkDisplayPowerInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_POWER_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_POWER_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDisplayPowerInfoEXT-pNext-pNext) VUID-VkDisplayPowerInfoEXT-pNext-pNext

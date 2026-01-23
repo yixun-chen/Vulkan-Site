@@ -29,19 +29,19 @@ typedef enum VkIndirectCommandsLayoutUsageFlagBitsEXT {
 } VkIndirectCommandsLayoutUsageFlagBitsEXT;
 
 * 
-`VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_EXT`
+[VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_EXT](#)
 specifies that the layout is always used with the manual preprocessing
 step through calling [vkCmdPreprocessGeneratedCommandsEXT](vkCmdPreprocessGeneratedCommandsEXT.html) and
 executed by [vkCmdExecuteGeneratedCommandsEXT](vkCmdExecuteGeneratedCommandsEXT.html) with
-`isPreprocessed` set to `VK_TRUE`.
+`isPreprocessed` set to [VK_TRUE](VK_TRUE.html).
 
 * 
-`VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_EXT`
+[VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_EXT](#)
 specifies that the processing of sequences will happen at an
 implementation-dependent order, which is not guaranteed to be
 deterministic using the same input data.
 This flag is ignored when the `shaderStages` is
-`VK_SHADER_STAGE_COMPUTE_BIT` as it is implied that the dispatch
+[VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html) as it is implied that the dispatch
 sequence is always unordered.
 
 [VK_EXT_device_generated_commands](VK_EXT_device_generated_commands.html), [VkIndirectCommandsLayoutUsageFlagsEXT](VkIndirectCommandsLayoutUsageFlagsEXT.html)

@@ -28,11 +28,11 @@ typedef enum VkDirectDriverLoadingModeLUNARG {
 } VkDirectDriverLoadingModeLUNARG;
 
 * 
-`VK_DIRECT_DRIVER_LOADING_MODE_EXCLUSIVE_LUNARG` specifies that the
+[VK_DIRECT_DRIVER_LOADING_MODE_EXCLUSIVE_LUNARG](#) specifies that the
 provided drivers are used instead of the system-loaded drivers.
 
 * 
-`VK_DIRECT_DRIVER_LOADING_MODE_INCLUSIVE_LUNARG` specifies that the
+[VK_DIRECT_DRIVER_LOADING_MODE_INCLUSIVE_LUNARG](#) specifies that the
 provided drivers are used in addition to the system-loaded drivers.
 
 [VK_LUNARG_direct_driver_loading](VK_LUNARG_direct_driver_loading.html), [VkDirectDriverLoadingListLUNARG](VkDirectDriverLoadingListLUNARG.html)

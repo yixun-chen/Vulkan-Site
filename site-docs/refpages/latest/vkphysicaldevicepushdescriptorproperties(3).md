@@ -43,7 +43,7 @@ structure.
  `maxPushDescriptors` is
 the maximum number of descriptors that **can** be used in a descriptor set
 layout created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT` set.
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](VkDescriptorSetLayoutCreateFlagBits.html) set.
 
 If the `VkPhysicalDevicePushDescriptorProperties` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html) structure passed to
@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePushDescriptorProperties-sType-sType) VUID-VkPhysicalDevicePushDescriptorProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES](VkStructureType.html)
 
 [VK_KHR_push_descriptor](VK_KHR_push_descriptor.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), [VkStructureType](VkStructureType.html)
 

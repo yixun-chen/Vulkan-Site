@@ -209,24 +209,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_NATIVE_WINDOW_IN_USE_KHR`
+[VK_ERROR_NATIVE_WINDOW_IN_USE_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkAndroidSurfaceCreateInfoKHR` structure is defined as:
 
@@ -264,7 +264,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAndroidSurfaceCreateInfoKHR-sType-sType) VUID-VkAndroidSurfaceCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkAndroidSurfaceCreateInfoKHR-pNext-pNext) VUID-VkAndroidSurfaceCreateInfoKHR-pNext-pNext
@@ -343,21 +343,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkWaylandSurfaceCreateInfoKHR` structure is defined as:
 
@@ -401,7 +401,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkWaylandSurfaceCreateInfoKHR-sType-sType) VUID-VkWaylandSurfaceCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkWaylandSurfaceCreateInfoKHR-pNext-pNext) VUID-VkWaylandSurfaceCreateInfoKHR-pNext-pNext
@@ -422,7 +422,7 @@ size of the window, after the first image is presented.
 supported surface size.
 Any calls to [vkGetPhysicalDeviceSurfacePresentModesKHR](#vkGetPhysicalDeviceSurfacePresentModesKHR) on a surface
 created with `vkCreateWaylandSurfaceKHR` are **required** to return
-`VK_PRESENT_MODE_MAILBOX_KHR` as one of the valid present modes.
+[VK_PRESENT_MODE_MAILBOX_KHR](#VkPresentModeKHR) as one of the valid present modes.
 
 Some Vulkan functions **may** send protocol over the specified `wl_display`
 connection when using a swapchain or presentable images created from a
@@ -452,7 +452,7 @@ prior to calling [vkQueuePresentKHR](#vkQueuePresentKHR).
 
 The implementation **must** ensure that no `wp_color_management_surface_v1`
 object exists for a surface, which has no swapchains, or only swapchains
-with a `imageColorSpace` of `VK_COLOR_SPACE_PASS_THROUGH_EXT`
+with a `imageColorSpace` of [VK_COLOR_SPACE_PASS_THROUGH_EXT](#VkColorSpaceKHR)
 associated with it.
 
 // Provided by VK_KHR_wayland_surface
@@ -514,21 +514,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 Some Vulkan functions **may** call the `SendMessage` system API when
 interacting with a `VkSurfaceKHR` through a `VkSwapchainKHR`.
@@ -611,7 +611,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkWin32SurfaceCreateInfoKHR-sType-sType) VUID-VkWin32SurfaceCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkWin32SurfaceCreateInfoKHR-pNext-pNext) VUID-VkWin32SurfaceCreateInfoKHR-pNext-pNext
@@ -701,21 +701,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkXcbSurfaceCreateInfoKHR` structure is defined as:
 
@@ -763,7 +763,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkXcbSurfaceCreateInfoKHR-sType-sType) VUID-VkXcbSurfaceCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkXcbSurfaceCreateInfoKHR-pNext-pNext) VUID-VkXcbSurfaceCreateInfoKHR-pNext-pNext
@@ -868,21 +868,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkXlibSurfaceCreateInfoKHR` structure is defined as:
 
@@ -929,7 +929,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkXlibSurfaceCreateInfoKHR-sType-sType) VUID-VkXlibSurfaceCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkXlibSurfaceCreateInfoKHR-pNext-pNext) VUID-VkXlibSurfaceCreateInfoKHR-pNext-pNext
@@ -1037,21 +1037,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkDirectFBSurfaceCreateInfoEXT` structure is defined as:
 
@@ -1097,7 +1097,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDirectFBSurfaceCreateInfoEXT-sType-sType) VUID-VkDirectFBSurfaceCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DIRECTFB_SURFACE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DIRECTFB_SURFACE_CREATE_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDirectFBSurfaceCreateInfoEXT-pNext-pNext) VUID-VkDirectFBSurfaceCreateInfoEXT-pNext-pNext
@@ -1171,21 +1171,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkImagePipeSurfaceCreateInfoFUCHSIA` structure is defined as:
 
@@ -1223,7 +1223,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImagePipeSurfaceCreateInfoFUCHSIA-sType-sType) VUID-VkImagePipeSurfaceCreateInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGEPIPE_SURFACE_CREATE_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGEPIPE_SURFACE_CREATE_INFO_FUCHSIA](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImagePipeSurfaceCreateInfoFUCHSIA-pNext-pNext) VUID-VkImagePipeSurfaceCreateInfoFUCHSIA-pNext-pNext
@@ -1299,24 +1299,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_NATIVE_WINDOW_IN_USE_KHR`
+[VK_ERROR_NATIVE_WINDOW_IN_USE_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkStreamDescriptorSurfaceCreateInfoGGP` structure is defined as:
 
@@ -1354,7 +1354,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkStreamDescriptorSurfaceCreateInfoGGP-sType-sType) VUID-VkStreamDescriptorSurfaceCreateInfoGGP-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP`
+ `sType` **must** be [VK_STRUCTURE_TYPE_STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkStreamDescriptorSurfaceCreateInfoGGP-pNext-pNext) VUID-VkStreamDescriptorSurfaceCreateInfoGGP-pNext-pNext
@@ -1377,8 +1377,8 @@ Using the surface’s `currentExtent` will offer the best performance and
 quality.
 When a swapchain’s `imageExtent` does not match the surface’s
 `currentExtent`, the presentable images are scaled to the surface’s
-dimensions during presentation if possible and `VK_SUBOPTIMAL_KHR` is
-returned, otherwise presentation fails with `VK_ERROR_OUT_OF_DATE_KHR`.
+dimensions during presentation if possible and [VK_SUBOPTIMAL_KHR](../fundamentals.html#VkResult) is
+returned, otherwise presentation fails with [VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult).
 
 // Provided by VK_GGP_stream_descriptor_surface
 typedef VkFlags VkStreamDescriptorSurfaceCreateFlagsGGP;
@@ -1445,24 +1445,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_NATIVE_WINDOW_IN_USE_KHR`
+[VK_ERROR_NATIVE_WINDOW_IN_USE_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The [VkIOSSurfaceCreateInfoMVK](#VkIOSSurfaceCreateInfoMVK) structure is defined as:
 
@@ -1508,7 +1508,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkIOSSurfaceCreateInfoMVK-sType-sType) VUID-VkIOSSurfaceCreateInfoMVK-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IOS_SURFACE_CREATE_INFO_MVK`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IOS_SURFACE_CREATE_INFO_MVK](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkIOSSurfaceCreateInfoMVK-pNext-pNext) VUID-VkIOSSurfaceCreateInfoMVK-pNext-pNext
@@ -1585,24 +1585,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_NATIVE_WINDOW_IN_USE_KHR`
+[VK_ERROR_NATIVE_WINDOW_IN_USE_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The [VkMacOSSurfaceCreateInfoMVK](#VkMacOSSurfaceCreateInfoMVK) structure is defined as:
 
@@ -1649,7 +1649,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMacOSSurfaceCreateInfoMVK-sType-sType) VUID-VkMacOSSurfaceCreateInfoMVK-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMacOSSurfaceCreateInfoMVK-pNext-pNext) VUID-VkMacOSSurfaceCreateInfoMVK-pNext-pNext
@@ -1738,24 +1738,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_NATIVE_WINDOW_IN_USE_KHR`
+[VK_ERROR_NATIVE_WINDOW_IN_USE_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkViSurfaceCreateInfoNN` structure is defined as:
 
@@ -1793,7 +1793,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkViSurfaceCreateInfoNN-sType-sType) VUID-VkViSurfaceCreateInfoNN-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VI_SURFACE_CREATE_INFO_NN`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VI_SURFACE_CREATE_INFO_NN](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkViSurfaceCreateInfoNN-pNext-pNext) VUID-VkViSurfaceCreateInfoNN-pNext-pNext
@@ -1864,24 +1864,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_NATIVE_WINDOW_IN_USE_KHR`
+[VK_ERROR_NATIVE_WINDOW_IN_USE_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The [VkMetalSurfaceCreateInfoEXT](#VkMetalSurfaceCreateInfoEXT) structure is defined as:
 
@@ -1912,7 +1912,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMetalSurfaceCreateInfoEXT-sType-sType) VUID-VkMetalSurfaceCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_METAL_SURFACE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_METAL_SURFACE_CREATE_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMetalSurfaceCreateInfoEXT-pNext-pNext) VUID-VkMetalSurfaceCreateInfoEXT-pNext-pNext
@@ -1996,21 +1996,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkScreenSurfaceCreateInfoQNX` structure is defined as:
 
@@ -2056,7 +2056,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkScreenSurfaceCreateInfoQNX-sType-sType) VUID-VkScreenSurfaceCreateInfoQNX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SCREEN_SURFACE_CREATE_INFO_QNX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SCREEN_SURFACE_CREATE_INFO_QNX](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkScreenSurfaceCreateInfoQNX-pNext-pNext) VUID-VkScreenSurfaceCreateInfoQNX-pNext-pNext
@@ -2127,21 +2127,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkSurfaceCreateInfoOHOS` structure is defined as:
 
@@ -2172,7 +2172,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSurfaceCreateInfoOHOS-sType-sType) VUID-VkSurfaceCreateInfoOHOS-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSurfaceCreateInfoOHOS-pNext-pNext) VUID-VkSurfaceCreateInfoOHOS-pNext-pNext
@@ -2201,7 +2201,7 @@ currently reserved for future use.
 Once created, `VkSurfaceKHR` objects **can** be used in this and other
 extensions, in particular the `[VK_KHR_swapchain](../../appendices/extensions.html#VK_KHR_swapchain)` extension.
 
-Several WSI functions return `VK_ERROR_SURFACE_LOST_KHR` if the surface
+Several WSI functions return [VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult) if the surface
 becomes no longer available.
 After such an error, the surface (and any child swapchain, if one exists)
 **should** be destroyed, as there is no way to restore them to a not-lost
@@ -2325,8 +2325,8 @@ return the variable is overwritten with the number of structures actually
 written to `pProperties`.
 If the value of `pPropertyCount` is less than the number of display
 devices for `physicalDevice`, at most `pPropertyCount` structures
-will be written, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available properties were
+will be written, and [VK_INCOMPLETE](../fundamentals.html#VkResult) will be returned instead of
+[VK_SUCCESS](../fundamentals.html#VkResult), to indicate that not all the available properties were
 returned.
 
 Valid Usage (Implicit)
@@ -2351,24 +2351,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkDisplayPropertiesKHR` structure is defined as:
 
@@ -2416,7 +2416,7 @@ supported by this display.
 * 
 `planeReorderPossible` tells whether the planes on this display **can**
 have their z order changed.
-If this is `VK_TRUE`, the application **can** re-arrange the planes on
+If this is [VK_TRUE](../fundamentals.html#VK_TRUE), the application **can** re-arrange the planes on
 this display in any order relative to each other.
 
 * 
@@ -2475,24 +2475,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkDisplayProperties2KHR` structure is defined as:
 
@@ -2518,7 +2518,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDisplayProperties2KHR-sType-sType) VUID-VkDisplayProperties2KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_PROPERTIES_2_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_PROPERTIES_2_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDisplayProperties2KHR-pNext-pNext) VUID-VkDisplayProperties2KHR-pNext-pNext
@@ -2560,7 +2560,7 @@ During such periods, operations which require access to the display **must**
 fail with an appropriate error code.
 If the X11 server associated with `dpy` does not own `display`, or
 if permission to access it has already been acquired by another entity, the
-call **must** return the error code `VK_ERROR_INITIALIZATION_FAILED`.
+call **must** return the error code [VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult).
 
 |  | One example of when an X11 server loses access to a display is when it loses
 | --- | --- |
@@ -2593,21 +2593,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 When acquiring displays from an X11 server, an application may also wish to
 enumerate and identify them using a native handle rather than a
@@ -2662,18 +2662,18 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 To acquire permission to directly access a display in Vulkan on Windows 10,
 call:
@@ -2698,7 +2698,7 @@ If this has happened, operations which require access to the display **must**
 fail with an appropriate error code.
 If permission to access `display` has already been acquired by another
 entity, the call **must** return the error code
-`VK_ERROR_INITIALIZATION_FAILED`.
+[VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult).
 
 |  | The Vulkan instance acquires control of a
 | --- | --- |
@@ -2742,24 +2742,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 When acquiring displays on Windows 10, an application may also wish to
 enumerate and identify them using a native handle rather than a
@@ -2816,24 +2816,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 To acquire permission to directly a display in Vulkan from the Direct
 Rendering Manager (DRM) interface, call:
@@ -2858,10 +2858,10 @@ instance associated with the provided `physicalDevice` until the display
 is either released or the connector is unplugged.
 The provided `drmFd` **must** correspond to the one owned by the
 `physicalDevice`.
-If not, the error code `VK_ERROR_UNKNOWN` **must** be returned.
+If not, the error code [VK_ERROR_UNKNOWN](../fundamentals.html#VkResult) **must** be returned.
 The DRM FD must have DRM mast⁠er permissions.
 If any error is encountered during the acquisition of the display, the call
-**must** return the error code `VK_ERROR_INITIALIZATION_FAILED`.
+**must** return the error code [VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult).
 
 The provided DRM fd should not be closed before the display is released,
 attempting to do it may result in **undefined** behavior.
@@ -2888,18 +2888,18 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 Before acquiring a display from the DRM interface, the caller may want to
 select a specific `VkDisplayKHR` handle by identifying it using a
@@ -2931,14 +2931,14 @@ the `physicalDevice`, the returning `display` **must** be
 [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE).
 The provided `drmFd` **must** correspond to the one owned by the
 `physicalDevice`.
-If not, the error code `VK_ERROR_UNKNOWN` **must** be returned.
+If not, the error code [VK_ERROR_UNKNOWN](../fundamentals.html#VkResult) **must** be returned.
 Mast⁠er permissions are not required, because the file descriptor is just
 used for information gathering purposes.
 The given `connectorId` **must** be a resource owned by the provided
 `drmFd`.
-If not, the error code `VK_ERROR_UNKNOWN` **must** be returned.
+If not, the error code [VK_ERROR_UNKNOWN](../fundamentals.html#VkResult) **must** be returned.
 If any error is encountered during the identification of the display, the
-call **must** return the error code `VK_ERROR_INITIALIZATION_FAILED`.
+call **must** return the error code [VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult).
 
 Valid Usage (Implicit)
 
@@ -2957,21 +2957,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 To release a previously acquired display, call:
 
@@ -3008,15 +3008,15 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 Images are presented to individual planes on a display.
 Devices **must** support at least one plane on each display.
@@ -3076,24 +3076,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkDisplayPlanePropertiesKHR` structure is defined as:
 
@@ -3160,24 +3160,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkDisplayPlaneProperties2KHR` structure is defined as:
 
@@ -3204,7 +3204,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDisplayPlaneProperties2KHR-sType-sType) VUID-VkDisplayPlaneProperties2KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_PLANE_PROPERTIES_2_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_PLANE_PROPERTIES_2_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDisplayPlaneProperties2KHR-pNext-pNext) VUID-VkDisplayPlaneProperties2KHR-pNext-pNext
@@ -3244,8 +3244,8 @@ return the variable is overwritten with the number of handles actually
 written to `pDisplays`.
 If the value of `pDisplayCount` is less than the number of usable
 display-plane pairs for `physicalDevice`, at most `pDisplayCount`
-handles will be written, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available pairs were
+handles will be written, and [VK_INCOMPLETE](../fundamentals.html#VkResult) will be returned instead of
+[VK_SUCCESS](../fundamentals.html#VkResult), to indicate that not all the available pairs were
 returned.
 
 Valid Usage
@@ -3279,24 +3279,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 Additional properties of displays are queried using specialized query
 functions.
@@ -3340,8 +3340,8 @@ return the variable is overwritten with the number of structures actually
 written to `pProperties`.
 If the value of `pPropertyCount` is less than the number of display
 modes for `physicalDevice`, at most `pPropertyCount` structures will
-be written, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available display modes were
+be written, and [VK_INCOMPLETE](../fundamentals.html#VkResult) will be returned instead of
+[VK_SUCCESS](../fundamentals.html#VkResult), to indicate that not all the available display modes were
 returned.
 
 Valid Usage (Implicit)
@@ -3376,24 +3376,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkDisplayModePropertiesKHR` structure is defined as:
 
@@ -3478,24 +3478,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkDisplayModeProperties2KHR` structure is defined as:
 
@@ -3522,7 +3522,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDisplayModeProperties2KHR-sType-sType) VUID-VkDisplayModeProperties2KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_MODE_PROPERTIES_2_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_MODE_PROPERTIES_2_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDisplayModeProperties2KHR-pNext-pNext) VUID-VkDisplayModeProperties2KHR-pNext-pNext
@@ -3588,14 +3588,14 @@ structure.
 * 
 `hdmi3DSupported` indicates whether this display mode can be used
 for a display surface configured for
-`VK_DISPLAY_SURFACE_STEREO_TYPE_HDMI_3D_NV`.
+[VK_DISPLAY_SURFACE_STEREO_TYPE_HDMI_3D_NV](#VkDisplaySurfaceStereoTypeNV).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDisplayModeStereoPropertiesNV-sType-sType) VUID-VkDisplayModeStereoPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_MODE_STEREO_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_MODE_STEREO_PROPERTIES_NV](../fundamentals.html#VkStructureType)
 
 Additional modes **may** also be created by calling:
 
@@ -3669,24 +3669,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkDisplayModeCreateInfoKHR` structure is defined as:
 
@@ -3712,14 +3712,14 @@ structure.
 `parameters` is a [VkDisplayModeParametersKHR](#VkDisplayModeParametersKHR) structure
 describing the display parameters to use in creating the new mode.
 If the parameters are not compatible with the specified display, the
-implementation **must** return `VK_ERROR_INITIALIZATION_FAILED`.
+implementation **must** return [VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDisplayModeCreateInfoKHR-sType-sType) VUID-VkDisplayModeCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDisplayModeCreateInfoKHR-pNext-pNext) VUID-VkDisplayModeCreateInfoKHR-pNext-pNext
@@ -3801,21 +3801,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkDisplayPlaneCapabilitiesKHR` structure is defined as:
 
@@ -3945,21 +3945,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkDisplayPlaneInfo2KHR` structure is defined as:
 
@@ -3998,7 +3998,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDisplayPlaneInfo2KHR-sType-sType) VUID-VkDisplayPlaneInfo2KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_PLANE_INFO_2_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_PLANE_INFO_2_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDisplayPlaneInfo2KHR-pNext-pNext) VUID-VkDisplayPlaneInfo2KHR-pNext-pNext
@@ -4039,7 +4039,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDisplayPlaneCapabilities2KHR-sType-sType) VUID-VkDisplayPlaneCapabilities2KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_PLANE_CAPABILITIES_2_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_PLANE_CAPABILITIES_2_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDisplayPlaneCapabilities2KHR-pNext-pNext) VUID-VkDisplayPlaneCapabilities2KHR-pNext-pNext
@@ -4091,18 +4091,18 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkDisplayPowerInfoEXT` structure is defined as:
 
@@ -4129,7 +4129,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDisplayPowerInfoEXT-sType-sType) VUID-VkDisplayPowerInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_POWER_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_POWER_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDisplayPowerInfoEXT-pNext-pNext) VUID-VkDisplayPowerInfoEXT-pNext-pNext
@@ -4152,18 +4152,18 @@ typedef enum VkDisplayPowerStateEXT {
 } VkDisplayPowerStateEXT;
 
 * 
-`VK_DISPLAY_POWER_STATE_OFF_EXT` specifies that the display is
+[VK_DISPLAY_POWER_STATE_OFF_EXT](#VkDisplayPowerStateEXT) specifies that the display is
 powered down.
 
 * 
-`VK_DISPLAY_POWER_STATE_SUSPEND_EXT` specifies that the display is
+[VK_DISPLAY_POWER_STATE_SUSPEND_EXT](#VkDisplayPowerStateEXT) specifies that the display is
 put into a low power mode, from which it **may** be able to transition back
-to `VK_DISPLAY_POWER_STATE_ON_EXT` more quickly than if it were in
-`VK_DISPLAY_POWER_STATE_OFF_EXT`.
-This state **may** be the same as `VK_DISPLAY_POWER_STATE_OFF_EXT`.
+to [VK_DISPLAY_POWER_STATE_ON_EXT](#VkDisplayPowerStateEXT) more quickly than if it were in
+[VK_DISPLAY_POWER_STATE_OFF_EXT](#VkDisplayPowerStateEXT).
+This state **may** be the same as [VK_DISPLAY_POWER_STATE_OFF_EXT](#VkDisplayPowerStateEXT).
 
 * 
-`VK_DISPLAY_POWER_STATE_ON_EXT` specifies that the display is
+[VK_DISPLAY_POWER_STATE_ON_EXT](#VkDisplayPowerStateEXT) specifies that the display is
 powered on.
 
 A complete display configuration includes a mode, one or more display planes
@@ -4225,21 +4225,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkDisplaySurfaceCreateInfoKHR` structure is defined as:
 
@@ -4285,7 +4285,7 @@ operation.
 * 
 `globalAlpha` is the global alpha value.
 This value is ignored if `alphaMode` is not
-`VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR`.
+[VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR](#VkDisplayPlaneAlphaFlagBitsKHR).
 
 * 
 `alphaMode` is a [VkDisplayPlaneAlphaFlagBitsKHR](#VkDisplayPlaneAlphaFlagBitsKHR) value
@@ -4318,7 +4318,7 @@ supported by the device as determined by calling
 If the `planeReorderPossible` member of the
 `VkDisplayPropertiesKHR` structure returned by
 `vkGetPhysicalDeviceDisplayPropertiesKHR` for the display
-corresponding to `displayMode` is `VK_TRUE` then
+corresponding to `displayMode` is [VK_TRUE](../fundamentals.html#VK_TRUE) then
 `planeStackIndex` **must** be less than the number of display planes
 supported by the device as determined by calling
 `vkGetPhysicalDeviceDisplayPlanePropertiesKHR`; otherwise
@@ -4330,7 +4330,7 @@ corresponding to `displayMode`
 * 
 [](#VUID-VkDisplaySurfaceCreateInfoKHR-alphaMode-01254) VUID-VkDisplaySurfaceCreateInfoKHR-alphaMode-01254
 
-If `alphaMode` is `VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR` then
+If `alphaMode` is [VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR](#VkDisplayPlaneAlphaFlagBitsKHR) then
 `globalAlpha` **must** be between `0` and `1`, inclusive
 
 * 
@@ -4360,19 +4360,19 @@ less than or equal to
 If the `pNext` chain includes a
 [VkDisplaySurfaceStereoCreateInfoNV](#VkDisplaySurfaceStereoCreateInfoNV) structure whose
 `stereoType` member is
-`VK_DISPLAY_SURFACE_STEREO_TYPE_HDMI_3D_NV`, then the
+[VK_DISPLAY_SURFACE_STEREO_TYPE_HDMI_3D_NV](#VkDisplaySurfaceStereoTypeNV), then the
 `hdmi3DSupported` member of the
 [VkDisplayModeStereoPropertiesNV](#VkDisplayModeStereoPropertiesNV) structure in the `pNext` chain
 of the `VkDisplayModeProperties2KHR` structure returned by
 [vkGetDisplayModeProperties2KHR](#vkGetDisplayModeProperties2KHR) for the display mode corresponding
-to `displayMode` **must** be `VK_TRUE`
+to `displayMode` **must** be [VK_TRUE](../fundamentals.html#VK_TRUE)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDisplaySurfaceCreateInfoKHR-sType-sType) VUID-VkDisplaySurfaceCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDisplaySurfaceCreateInfoKHR-pNext-pNext) VUID-VkDisplaySurfaceCreateInfoKHR-pNext-pNext
@@ -4423,16 +4423,16 @@ typedef enum VkDisplayPlaneAlphaFlagBitsKHR {
 } VkDisplayPlaneAlphaFlagBitsKHR;
 
 * 
-`VK_DISPLAY_PLANE_ALPHA_OPAQUE_BIT_KHR` specifies that the source
+[VK_DISPLAY_PLANE_ALPHA_OPAQUE_BIT_KHR](#VkDisplayPlaneAlphaFlagBitsKHR) specifies that the source
 image will be treated as opaque.
 
 * 
-`VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR` specifies that a global
+[VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR](#VkDisplayPlaneAlphaFlagBitsKHR) specifies that a global
 alpha value **must** be specified that will be applied to all pixels in the
 source image.
 
 * 
-`VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR` specifies that the alpha
+[VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR](#VkDisplayPlaneAlphaFlagBitsKHR) specifies that the alpha
 value will be determined by the alpha component of the source image’s
 pixels.
 If the source format contains no alpha values, no blending will be
@@ -4441,8 +4441,8 @@ The source alpha values are not premultiplied into the source image’s
 other color components.
 
 * 
-`VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_PREMULTIPLIED_BIT_KHR` is
-equivalent to `VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR`, except the
+[VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_PREMULTIPLIED_BIT_KHR](#VkDisplayPlaneAlphaFlagBitsKHR) is
+equivalent to [VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR](#VkDisplayPlaneAlphaFlagBitsKHR), except the
 source alpha values are assumed to be premultiplied into the source
 image’s other color components.
 
@@ -4478,7 +4478,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDisplaySurfaceStereoCreateInfoNV-sType-sType) VUID-VkDisplaySurfaceStereoCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDisplaySurfaceStereoCreateInfoNV-stereoType-parameter) VUID-VkDisplaySurfaceStereoCreateInfoNV-stereoType-parameter
@@ -4498,25 +4498,25 @@ typedef enum VkDisplaySurfaceStereoTypeNV {
 } VkDisplaySurfaceStereoTypeNV;
 
 * 
-`VK_DISPLAY_SURFACE_STEREO_TYPE_NONE_NV` specifies no configuration
+[VK_DISPLAY_SURFACE_STEREO_TYPE_NONE_NV](#VkDisplaySurfaceStereoTypeNV) specifies no configuration
 for stereo presentation.
 This is the default behavior if [VkDisplaySurfaceStereoCreateInfoNV](#VkDisplaySurfaceStereoCreateInfoNV)
 is not provided.
 
 * 
-`VK_DISPLAY_SURFACE_STEREO_TYPE_ONBOARD_DIN_NV` specifies
+[VK_DISPLAY_SURFACE_STEREO_TYPE_ONBOARD_DIN_NV](#VkDisplaySurfaceStereoTypeNV) specifies
 configuration for glasses that connect via a DIN connector on the back
 of the graphics card.
 
 * 
-`VK_DISPLAY_SURFACE_STEREO_TYPE_HDMI_3D_NV` specifies configuration
+[VK_DISPLAY_SURFACE_STEREO_TYPE_HDMI_3D_NV](#VkDisplaySurfaceStereoTypeNV) specifies configuration
 for HDMI 3D compatible display devices with their own stereo emitters.
 This is also known as HDMI Frame Packed Stereo, where the left and right
 eye images are stacked into a single frame with a doubled pixel clock
 and refresh rate.
 
 * 
-`VK_DISPLAY_SURFACE_STEREO_TYPE_INBAND_DISPLAYPORT_NV` specifies
+[VK_DISPLAY_SURFACE_STEREO_TYPE_INBAND_DISPLAYPORT_NV](#VkDisplaySurfaceStereoTypeNV) specifies
 configuration for DisplayPort display devices with in-band stereo
 signaling and emitters.
 
@@ -4588,21 +4588,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkHeadlessSurfaceCreateInfoEXT` structure is defined as:
 
@@ -4628,7 +4628,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkHeadlessSurfaceCreateInfoEXT-sType-sType) VUID-VkHeadlessSurfaceCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_HEADLESS_SURFACE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_HEADLESS_SURFACE_CREATE_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkHeadlessSurfaceCreateInfoEXT-pNext-pNext) VUID-VkHeadlessSurfaceCreateInfoEXT-pNext-pNext
@@ -4681,7 +4681,7 @@ VkResult vkGetPhysicalDeviceSurfaceSupportKHR(
 
 * 
 `pSupported` is a pointer to a `VkBool32`.
-`VK_TRUE` indicates support, and `VK_FALSE` indicates no
+[VK_TRUE](../fundamentals.html#VK_TRUE) indicates support, and [VK_FALSE](../fundamentals.html#VK_FALSE) indicates no
 support.
 
 Valid Usage
@@ -4721,24 +4721,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 On Android, all physical devices and queue families **must** be capable of
 presentation with any native window.
@@ -4964,7 +4964,7 @@ presentation with any ImagePipe.
 As a result there is no Fuchsia-specific query for these capabilities.
 
 On Google Games Platform, all physical devices and queue families with the
-`VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT` capabilities **must**
+[VK_QUEUE_GRAPHICS_BIT](../devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_COMPUTE_BIT](../devsandqueues.html#VkQueueFlagBits) capabilities **must**
 be capable of presentation with any Google Games Platform stream descriptor.
 As a result, there is no query specific to Google Games Platform for these
 capabilities.
@@ -5100,24 +5100,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkSurfaceCapabilitiesKHR` structure is defined as:
 
@@ -5203,17 +5203,17 @@ that all pixels in the presentable images have an alpha value of 1.0.
 representing the ways the application **can** use the presentable images of
 a swapchain created
 with [VkPresentModeKHR](#VkPresentModeKHR) set to
-`VK_PRESENT_MODE_FIFO_LATEST_READY_KHR`,
-`VK_PRESENT_MODE_IMMEDIATE_KHR`, `VK_PRESENT_MODE_MAILBOX_KHR`,
-`VK_PRESENT_MODE_FIFO_KHR` or `VK_PRESENT_MODE_FIFO_RELAXED_KHR`
+[VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](#VkPresentModeKHR),
+[VK_PRESENT_MODE_IMMEDIATE_KHR](#VkPresentModeKHR), [VK_PRESENT_MODE_MAILBOX_KHR](#VkPresentModeKHR),
+[VK_PRESENT_MODE_FIFO_KHR](#VkPresentModeKHR) or [VK_PRESENT_MODE_FIFO_RELAXED_KHR](#VkPresentModeKHR)
 for the surface on the specified device.
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` **must** be included in the set.
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](../resources.html#VkImageUsageFlagBits) **must** be included in the set.
 Implementations **may** support additional usages.
 
 |  | Supported usage flags of a presentable image when using
 | --- | --- |
-`VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR` or
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR` presentation mode are
+[VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](#VkPresentModeKHR) or
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](#VkPresentModeKHR) presentation mode are
 provided by
 [VkSharedPresentSurfaceCapabilitiesKHR](#VkSharedPresentSurfaceCapabilitiesKHR)::`sharedPresentSupportedUsageFlags`. |
 
@@ -5327,24 +5327,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkPhysicalDeviceSurfaceInfo2KHR` structure is defined as:
 
@@ -5391,7 +5391,7 @@ Valid Usage
 If the `pNext` chain includes a
 [VkSurfaceFullScreenExclusiveInfoEXT](#VkSurfaceFullScreenExclusiveInfoEXT) structure with its
 `fullScreenExclusive` member set to
-`VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT`, and
+[VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT](#VkFullScreenExclusiveEXT), and
 `surface` was created using [vkCreateWin32SurfaceKHR](#vkCreateWin32SurfaceKHR), a
 [VkSurfaceFullScreenExclusiveWin32InfoEXT](#VkSurfaceFullScreenExclusiveWin32InfoEXT) structure **must** be
 included in the `pNext` chain
@@ -5408,7 +5408,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceSurfaceInfo2KHR-sType-sType) VUID-VkPhysicalDeviceSurfaceInfo2KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPhysicalDeviceSurfaceInfo2KHR-pNext-pNext) VUID-VkPhysicalDeviceSurfaceInfo2KHR-pNext-pNext
@@ -5445,14 +5445,14 @@ structure.
 specifying the preferred full-screen transition behavior.
 
 If this structure is not present, `fullScreenExclusive` is considered to
-be `VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT`.
+be [VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT](#VkFullScreenExclusiveEXT).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSurfaceFullScreenExclusiveInfoEXT-sType-sType) VUID-VkSurfaceFullScreenExclusiveInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSurfaceFullScreenExclusiveInfoEXT-fullScreenExclusive-parameter) VUID-VkSurfaceFullScreenExclusiveInfoEXT-fullScreenExclusive-parameter
@@ -5471,12 +5471,12 @@ typedef enum VkFullScreenExclusiveEXT {
 } VkFullScreenExclusiveEXT;
 
 * 
-`VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT` specifies that the
+[VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT](#VkFullScreenExclusiveEXT) specifies that the
 implementation **should** determine the appropriate full-screen method by
 whatever means it deems appropriate.
 
 * 
-`VK_FULL_SCREEN_EXCLUSIVE_ALLOWED_EXT` specifies that the
+[VK_FULL_SCREEN_EXCLUSIVE_ALLOWED_EXT](#VkFullScreenExclusiveEXT) specifies that the
 implementation **may** use full-screen exclusive mechanisms when available.
 Such mechanisms **may** result in better performance and/or the
 availability of different presentation capabilities, but **may** require a
@@ -5484,12 +5484,12 @@ more disruptive transition during swapchain initialization, first
 presentation and/or destruction.
 
 * 
-`VK_FULL_SCREEN_EXCLUSIVE_DISALLOWED_EXT` specifies that the
+[VK_FULL_SCREEN_EXCLUSIVE_DISALLOWED_EXT](#VkFullScreenExclusiveEXT) specifies that the
 implementation **should** avoid using full-screen mechanisms which rely on
 disruptive transitions.
 
 * 
-`VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT` specifies that
+[VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT](#VkFullScreenExclusiveEXT) specifies that
 the application will manage full-screen exclusive mode by using the
 [vkAcquireFullScreenExclusiveModeEXT](#vkAcquireFullScreenExclusiveModeEXT) and
 [vkReleaseFullScreenExclusiveModeEXT](#vkReleaseFullScreenExclusiveModeEXT) commands.
@@ -5517,7 +5517,7 @@ to create the surface with.
 |  | If `hmonitor` is invalidated (e.g. the monitor is unplugged) during the
 | --- | --- |
 lifetime of a swapchain created with this structure, operations on that
-swapchain will return `VK_ERROR_OUT_OF_DATE_KHR`. |
+swapchain will return [VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult). |
 
 |  | It is the responsibility of the application to change the display settings
 | --- | --- |
@@ -5537,7 +5537,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSurfaceFullScreenExclusiveWin32InfoEXT-sType-sType) VUID-VkSurfaceFullScreenExclusiveWin32InfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT](../fundamentals.html#VkStructureType)
 
 The `VkSurfaceCapabilities2KHR` structure is defined as:
 
@@ -5574,14 +5574,14 @@ not reflect that of any surface and will instead be as such:
 
 * 
 `currentTransform` will be
-`VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR`
+[VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR](#VkSurfaceTransformFlagBitsKHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSurfaceCapabilities2KHR-sType-sType) VUID-VkSurfaceCapabilities2KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSurfaceCapabilities2KHR-pNext-pNext) VUID-VkSurfaceCapabilities2KHR-pNext-pNext
@@ -5618,8 +5618,8 @@ structure.
 `supportsProtected` specifies whether a protected swapchain created
 from [VkPhysicalDeviceSurfaceInfo2KHR](#VkPhysicalDeviceSurfaceInfo2KHR)::`surface` for a
 particular windowing system **can** be displayed on screen or not.
-If `supportsProtected` is `VK_TRUE`, then creation of swapchains
-with the `VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR` flag set **must** be
+If `supportsProtected` is [VK_TRUE](../fundamentals.html#VK_TRUE), then creation of swapchains
+with the [VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR](#VkSwapchainCreateFlagBitsKHR) flag set **must** be
 supported for `surface`.
 
 If the `[VK_GOOGLE_surfaceless_query](../../appendices/extensions.html#VK_GOOGLE_surfaceless_query)` extension is enabled, the value
@@ -5637,7 +5637,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSurfaceProtectedCapabilitiesKHR-sType-sType) VUID-VkSurfaceProtectedCapabilitiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_PROTECTED_CAPABILITIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_PROTECTED_CAPABILITIES_KHR](../fundamentals.html#VkStructureType)
 
 The `VkSurfacePresentScalingCapabilitiesKHR` structure is defined as:
 
@@ -5717,7 +5717,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSurfacePresentScalingCapabilitiesKHR-sType-sType) VUID-VkSurfacePresentScalingCapabilitiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_PRESENT_SCALING_CAPABILITIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_PRESENT_SCALING_CAPABILITIES_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSurfacePresentScalingCapabilitiesKHR-supportedPresentScaling-parameter) VUID-VkSurfacePresentScalingCapabilitiesKHR-supportedPresentScaling-parameter
@@ -5753,14 +5753,14 @@ typedef enum VkPresentScalingFlagBitsKHR {
 typedef VkPresentScalingFlagBitsKHR VkPresentScalingFlagBitsEXT;
 
 * 
-`VK_PRESENT_SCALING_ONE_TO_ONE_BIT_KHR` specifies that no scaling
+[VK_PRESENT_SCALING_ONE_TO_ONE_BIT_KHR](#VkPresentScalingFlagBitsEXT) specifies that no scaling
 occurs, and pixels in the swapchain image are mapped to one and only one
 pixel in the surface.
 The mapping between pixels is defined by the chosen presentation
 gravity.
 
 * 
-`VK_PRESENT_SCALING_ASPECT_RATIO_STRETCH_BIT_KHR` specifies that the
+[VK_PRESENT_SCALING_ASPECT_RATIO_STRETCH_BIT_KHR](#VkPresentScalingFlagBitsEXT) specifies that the
 swapchain image will be minified or magnified such that at least one of
 the resulting width or height is equal to the corresponding surface
 dimension, and the other resulting dimension is less than or equal to
@@ -5768,7 +5768,7 @@ the corresponding surface dimension, with the aspect ratio of the
 resulting image being identical to that of the original swapchain image.
 
 * 
-`VK_PRESENT_SCALING_STRETCH_BIT_KHR` specifies that the swapchain
+[VK_PRESENT_SCALING_STRETCH_BIT_KHR](#VkPresentScalingFlagBitsEXT) specifies that the swapchain
 image will be minified or magnified such that the resulting image
 dimensions are equal to those of the surface.
 
@@ -5802,19 +5802,19 @@ typedef enum VkPresentGravityFlagBitsKHR {
 typedef VkPresentGravityFlagBitsKHR VkPresentGravityFlagBitsEXT;
 
 * 
-`VK_PRESENT_GRAVITY_MIN_BIT_KHR` means that the pixels will
+[VK_PRESENT_GRAVITY_MIN_BIT_KHR](#VkPresentGravityFlagBitsEXT) means that the pixels will
 gravitate towards the top or left side of the surface.
 
 * 
-`VK_PRESENT_GRAVITY_MAX_BIT_KHR` means that the pixels will
+[VK_PRESENT_GRAVITY_MAX_BIT_KHR](#VkPresentGravityFlagBitsEXT) means that the pixels will
 gravitate towards the bottom or right side of the surface.
 
 * 
-`VK_PRESENT_GRAVITY_CENTERED_BIT_KHR` means that the pixels will be
+[VK_PRESENT_GRAVITY_CENTERED_BIT_KHR](#VkPresentGravityFlagBitsEXT) means that the pixels will be
 centered in the surface.
 
 If the value in [VkSurfaceCapabilitiesKHR](#VkSurfaceCapabilitiesKHR)::`currentTransform` is
-not `VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR`, it is
+not [VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](#VkSurfaceTransformFlagBitsKHR), it is
 implementation-defined whether the gravity configuration applies to the
 presented image before or after transformation.
 
@@ -5858,8 +5858,8 @@ returned in [VkSurfaceCapabilitiesKHR](#VkSurfaceCapabilitiesKHR)::`minImageCoun
 [VkSurfacePresentScalingCapabilitiesKHR](#VkSurfacePresentScalingCapabilitiesKHR)::`minScaledImageExtent`,
 and [VkSurfacePresentScalingCapabilitiesKHR](#VkSurfacePresentScalingCapabilitiesKHR)::`maxScaledImageExtent`
 are valid only for the specified `presentMode`.
-If `presentMode` is `VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR` or
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`, the per-present mode
+If `presentMode` is [VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](#VkPresentModeKHR) or
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](#VkPresentModeKHR), the per-present mode
 image counts **must** both be one.
 The per-present mode image counts **may** be less-than or greater-than the
 image counts returned when `VkSurfacePresentModeKHR` is not provided.
@@ -5898,7 +5898,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSurfacePresentModeKHR-sType-sType) VUID-VkSurfacePresentModeKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSurfacePresentModeKHR-presentMode-parameter) VUID-VkSurfacePresentModeKHR-presentMode-parameter
@@ -5938,10 +5938,10 @@ returned.
 If `pPresentModes` is `NULL`, then the number of present modes that are
 compatible with the one specified in [VkSurfacePresentModeKHR](#VkSurfacePresentModeKHR) is
 returned in `presentModeCount`.
-Otherwise, `presentModeCount` **must** point to a variable set by the
-application to the number of elements in the `pPresentModes` array, and
-on return the variable is overwritten with the number of values actually
-written to `pPresentModes`.
+Otherwise, `presentModeCount` **must** be set by the application to the
+number of elements in the `pPresentModes` array, and on return is
+overwritten with the number of values actually written to
+`pPresentModes`.
 If the value of `presentModeCount` is less than the number of compatible
 present modes that are supported, at most `presentModeCount` values will
 be written to `pPresentModes`.
@@ -5962,7 +5962,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSurfacePresentModeCompatibilityKHR-sType-sType) VUID-VkSurfacePresentModeCompatibilityKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_COMPATIBILITY_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_COMPATIBILITY_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSurfacePresentModeCompatibilityKHR-pPresentModes-parameter) VUID-VkSurfacePresentModeCompatibilityKHR-pPresentModes-parameter
@@ -5990,10 +5990,10 @@ structure.
 [VkImageUsageFlagBits](../resources.html#VkImageUsageFlagBits) representing the ways the application **can**
 use the shared presentable image from a swapchain created with
 [VkPresentModeKHR](#VkPresentModeKHR) set to
-`VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR` or
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR` for the surface on
+[VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](#VkPresentModeKHR) or
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](#VkPresentModeKHR) for the surface on
 the specified device.
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` **must** be included in the set
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](../resources.html#VkImageUsageFlagBits) **must** be included in the set
 but implementations **may** support additional usages.
 
 Valid Usage (Implicit)
@@ -6001,7 +6001,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSharedPresentSurfaceCapabilitiesKHR-sType-sType) VUID-VkSharedPresentSurfaceCapabilitiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR](../fundamentals.html#VkStructureType)
 
 The `VkDisplayNativeHdrSurfaceCapabilitiesAMD` structure is defined as:
 
@@ -6022,7 +6022,7 @@ structure.
 * 
 `localDimmingSupport` specifies whether the surface supports local
 dimming.
-If this is `VK_TRUE`, [VkSwapchainDisplayNativeHdrCreateInfoAMD](#VkSwapchainDisplayNativeHdrCreateInfoAMD)
+If this is [VK_TRUE](../fundamentals.html#VK_TRUE), [VkSwapchainDisplayNativeHdrCreateInfoAMD](#VkSwapchainDisplayNativeHdrCreateInfoAMD)
 **can** be used to explicitly enable or disable local dimming for the
 surface.
 Local dimming may also be overridden by [vkSetLocalDimmingAMD](#vkSetLocalDimmingAMD)
@@ -6033,7 +6033,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDisplayNativeHdrSurfaceCapabilitiesAMD-sType-sType) VUID-VkDisplayNativeHdrSurfaceCapabilitiesAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_NATIVE_HDR_SURFACE_CAPABILITIES_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_NATIVE_HDR_SURFACE_CAPABILITIES_AMD](../fundamentals.html#VkStructureType)
 
 The `VkSurfaceCapabilitiesFullScreenExclusiveEXT` structure is defined
 as:
@@ -6059,19 +6059,19 @@ surface is able to make use of exclusive full-screen access.
 This structure **can** be included in the `pNext` chain of
 [VkSurfaceCapabilities2KHR](#VkSurfaceCapabilities2KHR) to determine support for exclusive
 full-screen access.
-If `fullScreenExclusiveSupported` is `VK_FALSE`, it indicates that
+If `fullScreenExclusiveSupported` is [VK_FALSE](../fundamentals.html#VK_FALSE), it indicates that
 exclusive full-screen access is not obtainable for this surface.
 
 Applications **must** not attempt to create swapchains with
-`VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT` set if
-`fullScreenExclusiveSupported` is `VK_FALSE`.
+[VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT](#VkFullScreenExclusiveEXT) set if
+`fullScreenExclusiveSupported` is [VK_FALSE](../fundamentals.html#VK_FALSE).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSurfaceCapabilitiesFullScreenExclusiveEXT-sType-sType) VUID-VkSurfaceCapabilitiesFullScreenExclusiveEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_FULL_SCREEN_EXCLUSIVE_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_FULL_SCREEN_EXCLUSIVE_EXT](../fundamentals.html#VkStructureType)
 
 The `VkSurfaceCapabilitiesPresentBarrierNV` structure is defined as:
 
@@ -6096,7 +6096,7 @@ surface is able to make use of the present barrier feature.
 This structure **can** be included in the `pNext` chain of
 [VkSurfaceCapabilities2KHR](#VkSurfaceCapabilities2KHR) to determine support for present barrier
 access.
-If `presentBarrierSupported` is `VK_FALSE`, it indicates that the
+If `presentBarrierSupported` is [VK_FALSE](../fundamentals.html#VK_FALSE), it indicates that the
 present barrier feature is not obtainable for this surface.
 
 Valid Usage (Implicit)
@@ -6104,7 +6104,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSurfaceCapabilitiesPresentBarrierNV-sType-sType) VUID-VkSurfaceCapabilitiesPresentBarrierNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_BARRIER_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_BARRIER_NV](../fundamentals.html#VkStructureType)
 
 The `VkSurfaceCapabilitiesPresentId2KHR` structure is defined as:
 
@@ -6128,19 +6128,19 @@ able to support the present-ID extension
 
 This structure **can** be included in the `pNext` chain of
 [VkSurfaceCapabilities2KHR](#VkSurfaceCapabilities2KHR) to determine support for present-wait.
-If `presentId2Supported` is `VK_FALSE`, it indicates that attaching
+If `presentId2Supported` is [VK_FALSE](../fundamentals.html#VK_FALSE), it indicates that attaching
 an ID to presentation requests is not possible for this surface.
 
 Applications **must** not attempt to include [VkPresentId2KHR](#VkPresentId2KHR) in the
 `pNext` chain of a [VkPresentInfoKHR](#VkPresentInfoKHR) if `presentId2Supported`
-is `VK_FALSE`.
+is [VK_FALSE](../fundamentals.html#VK_FALSE).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSurfaceCapabilitiesPresentId2KHR-sType-sType) VUID-VkSurfaceCapabilitiesPresentId2KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_ID_2_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_ID_2_KHR](../fundamentals.html#VkStructureType)
 
 The `VkSurfaceCapabilitiesPresentWait2KHR` structure is defined as:
 
@@ -6164,18 +6164,18 @@ is able to support the present-wait extension
 
 This structure **can** be included in the `pNext` chain of
 [VkSurfaceCapabilities2KHR](#VkSurfaceCapabilities2KHR) to determine support for present-wait.
-If `presentWait2Supported` is `VK_FALSE`, it indicates that waiting
+If `presentWait2Supported` is [VK_FALSE](../fundamentals.html#VK_FALSE), it indicates that waiting
 for presentation is not possible for this surface.
 
 Applications **must** not attempt to call [vkWaitForPresent2KHR](#vkWaitForPresent2KHR) on a
-swapchain if `presentWait2Supported` is `VK_FALSE`.
+swapchain if `presentWait2Supported` is [VK_FALSE](../fundamentals.html#VK_FALSE).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSurfaceCapabilitiesPresentWait2KHR-sType-sType) VUID-VkSurfaceCapabilitiesPresentWait2KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_WAIT_2_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_WAIT_2_KHR](../fundamentals.html#VkStructureType)
 
 The `VkPresentTimingSurfaceCapabilitiesEXT` structure is defined as:
 
@@ -6223,17 +6223,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPresentTimingSurfaceCapabilitiesEXT-sType-sType) VUID-VkPresentTimingSurfaceCapabilitiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_TIMING_SURFACE_CAPABILITIES_EXT`
-
-* 
-[](#VUID-VkPresentTimingSurfaceCapabilitiesEXT-presentStageQueries-parameter) VUID-VkPresentTimingSurfaceCapabilitiesEXT-presentStageQueries-parameter
-
- `presentStageQueries` **must** be a valid combination of [VkPresentStageFlagBitsEXT](#VkPresentStageFlagBitsEXT) values
-
-* 
-[](#VUID-VkPresentTimingSurfaceCapabilitiesEXT-presentStageQueries-requiredbitmask) VUID-VkPresentTimingSurfaceCapabilitiesEXT-presentStageQueries-requiredbitmask
-
- `presentStageQueries` **must** not be `0`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_TIMING_SURFACE_CAPABILITIES_EXT](../fundamentals.html#VkStructureType)
 
 To query the basic capabilities of a surface, needed in order to create a
 swapchain, call:
@@ -6298,24 +6288,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkSurfaceCapabilities2EXT` structure is defined as:
 
@@ -6411,11 +6401,11 @@ that all pixels in the presentable images have an alpha value of 1.0.
 representing the ways the application **can** use the presentable images of
 a swapchain created
 with [VkPresentModeKHR](#VkPresentModeKHR) set to
-`VK_PRESENT_MODE_FIFO_LATEST_READY_KHR`,
-`VK_PRESENT_MODE_IMMEDIATE_KHR`, `VK_PRESENT_MODE_MAILBOX_KHR`,
-`VK_PRESENT_MODE_FIFO_KHR` or `VK_PRESENT_MODE_FIFO_RELAXED_KHR`
+[VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](#VkPresentModeKHR),
+[VK_PRESENT_MODE_IMMEDIATE_KHR](#VkPresentModeKHR), [VK_PRESENT_MODE_MAILBOX_KHR](#VkPresentModeKHR),
+[VK_PRESENT_MODE_FIFO_KHR](#VkPresentModeKHR) or [VK_PRESENT_MODE_FIFO_RELAXED_KHR](#VkPresentModeKHR)
 for the surface on the specified device.
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` **must** be included in the set.
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](../resources.html#VkImageUsageFlagBits) **must** be included in the set.
 Implementations **may** support additional usages.
 
 * 
@@ -6429,7 +6419,7 @@ Valid Usage
 [](#VUID-VkSurfaceCapabilities2EXT-supportedSurfaceCounters-01246) VUID-VkSurfaceCapabilities2EXT-supportedSurfaceCounters-01246
 
 `supportedSurfaceCounters` **must** not include
-`VK_SURFACE_COUNTER_VBLANK_BIT_EXT` unless the surface queried is a
+[VK_SURFACE_COUNTER_VBLANK_BIT_EXT](#VkSurfaceCounterFlagBitsEXT) unless the surface queried is a
 [display surface](#wsi-display-surfaces)
 
 Valid Usage (Implicit)
@@ -6437,7 +6427,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSurfaceCapabilities2EXT-sType-sType) VUID-VkSurfaceCapabilities2EXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSurfaceCapabilities2EXT-pNext-pNext) VUID-VkSurfaceCapabilities2EXT-pNext-pNext
@@ -6456,7 +6446,7 @@ typedef enum VkSurfaceCounterFlagBitsEXT {
 } VkSurfaceCounterFlagBitsEXT;
 
 * 
-`VK_SURFACE_COUNTER_VBLANK_BIT_EXT` specifies a counter incrementing
+[VK_SURFACE_COUNTER_VBLANK_BIT_EXT](#VkSurfaceCounterFlagBitsEXT) specifies a counter incrementing
 once every time a vertical blanking period occurs on the display
 associated with the surface.
 
@@ -6488,42 +6478,42 @@ typedef enum VkSurfaceTransformFlagBitsKHR {
 } VkSurfaceTransformFlagBitsKHR;
 
 * 
-`VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR` specifies that image content
+[VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](#VkSurfaceTransformFlagBitsKHR) specifies that image content
 is presented without being transformed.
 
 * 
-`VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR` specifies that image
+[VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR](#VkSurfaceTransformFlagBitsKHR) specifies that image
 content is rotated 90 degrees clockwise.
 
 * 
-`VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR` specifies that image
+[VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR](#VkSurfaceTransformFlagBitsKHR) specifies that image
 content is rotated 180 degrees clockwise.
 
 * 
-`VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR` specifies that image
+[VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR](#VkSurfaceTransformFlagBitsKHR) specifies that image
 content is rotated 270 degrees clockwise.
 
 * 
-`VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR` specifies that
+[VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR](#VkSurfaceTransformFlagBitsKHR) specifies that
 image content is mirrored horizontally.
 
 * 
-`VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR` specifies
+[VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR](#VkSurfaceTransformFlagBitsKHR) specifies
 that image content is mirrored horizontally, then rotated 90 degrees
 clockwise.
 
 * 
-`VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR`
+[VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR](#VkSurfaceTransformFlagBitsKHR)
 specifies that image content is mirrored horizontally, then rotated 180
 degrees clockwise.
 
 * 
-`VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR`
+[VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR](#VkSurfaceTransformFlagBitsKHR)
 specifies that image content is mirrored horizontally, then rotated 270
 degrees clockwise.
 
 * 
-`VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR` specifies that the
+[VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR](#VkSurfaceTransformFlagBitsKHR) specifies that the
 presentation transform is not specified, and is instead determined by
 platform-specific considerations and mechanisms outside Vulkan.
 
@@ -6547,18 +6537,18 @@ typedef enum VkCompositeAlphaFlagBitsKHR {
 These values are described as follows:
 
 * 
-`VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR`: The alpha component, if it
+[VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR](#VkCompositeAlphaFlagBitsKHR): The alpha component, if it
 exists, of the images is ignored in the compositing process.
 Instead, the image is treated as if it has a constant alpha of 1.0.
 
 * 
-`VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR`: The alpha component, if
+[VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR](#VkCompositeAlphaFlagBitsKHR): The alpha component, if
 it exists, of the images is respected in the compositing process.
 The non-alpha components of the image are expected to already be
 multiplied by the alpha component by the application.
 
 * 
-`VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR`: The alpha component,
+[VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR](#VkCompositeAlphaFlagBitsKHR): The alpha component,
 if it exists, of the images is respected in the compositing process.
 The non-alpha components of the image are not expected to already be
 multiplied by the alpha component by the application; instead, the
@@ -6566,7 +6556,7 @@ compositor will multiply the non-alpha components of the image by the
 alpha component during compositing.
 
 * 
-`VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR`: The way in which the
+[VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR](#VkCompositeAlphaFlagBitsKHR): The way in which the
 presentation engine treats the alpha component in the images is unknown
 to the Vulkan API.
 Instead, the application is responsible for setting the composite alpha
@@ -6615,18 +6605,18 @@ and on return the variable is overwritten with the number of structures
 actually written to `pSurfaceFormats`.
 If the value of `pSurfaceFormatCount` is less than the number of format
 pairs supported, at most `pSurfaceFormatCount` structures will be
-written, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available format pairs were
+written, and [VK_INCOMPLETE](../fundamentals.html#VkResult) will be returned instead of
+[VK_SUCCESS](../fundamentals.html#VkResult), to indicate that not all the available format pairs were
 returned.
 
 The number of format pairs supported **must** be greater than or equal to 1.
 `pSurfaceFormats` **must** not contain an entry whose value for
-`format` is `VK_FORMAT_UNDEFINED`.
+`format` is [VK_FORMAT_UNDEFINED](../formats.html#VkFormat).
 
 If `pSurfaceFormats` includes an entry whose value for `colorSpace`
-is `VK_COLOR_SPACE_SRGB_NONLINEAR_KHR` and whose value for `format`
+is [VK_COLOR_SPACE_SRGB_NONLINEAR_KHR](#VkColorSpaceKHR) and whose value for `format`
 is a UNORM (or SRGB) format and the corresponding SRGB (or UNORM) format is
-a color renderable format for `VK_IMAGE_TILING_OPTIMAL`, then
+a color renderable format for [VK_IMAGE_TILING_OPTIMAL](../resources.html#VkImageTiling), then
 `pSurfaceFormats` **must** also contain an entry with the same value for
 `colorSpace` and `format` equal to the corresponding SRGB (or UNORM)
 format.
@@ -6684,27 +6674,27 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkSurfaceFormatKHR` structure is defined as:
 
@@ -6763,8 +6753,8 @@ and on return the variable is overwritten with the number of structures
 actually written to `pSurfaceFormats`.
 If the value of `pSurfaceFormatCount` is less than the number of format
 tuples supported, at most `pSurfaceFormatCount` structures will be
-written, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available values were
+written, and [VK_INCOMPLETE](../fundamentals.html#VkResult) will be returned instead of
+[VK_SUCCESS](../fundamentals.html#VkResult), to indicate that not all the available values were
 returned.
 
 Valid Usage
@@ -6810,27 +6800,27 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkSurfaceFormat2KHR` structure is defined as:
 
@@ -6872,7 +6862,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSurfaceFormat2KHR-sType-sType) VUID-VkSurfaceFormat2KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSurfaceFormat2KHR-pNext-pNext) VUID-VkSurfaceFormat2KHR-pNext-pNext
@@ -6937,76 +6927,76 @@ typedef enum VkColorSpaceKHR {
 } VkColorSpaceKHR;
 
 * 
-`VK_COLOR_SPACE_SRGB_NONLINEAR_KHR` specifies support for the images
+[VK_COLOR_SPACE_SRGB_NONLINEAR_KHR](#VkColorSpaceKHR) specifies support for the images
 in sRGB color space, encoded according to the sRGB specification.
 
 * 
-`VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT` specifies support for the
+[VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT](#VkColorSpaceKHR) specifies support for the
 images in Display-P3 color space, encoded using a Display-P3 transfer
 function.
 
 * 
-`VK_COLOR_SPACE_EXTENDED_SRGB_LINEAR_EXT` specifies support for the
+[VK_COLOR_SPACE_EXTENDED_SRGB_LINEAR_EXT](#VkColorSpaceKHR) specifies support for the
 images in extended sRGB color space, encoded using a linear transfer
 function.
 
 * 
-`VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT` specifies support for
+[VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT](#VkColorSpaceKHR) specifies support for
 the images in extended sRGB color space, encoded according to the scRGB
 specification.
 
 * 
-`VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT` specifies support for the
+[VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT](#VkColorSpaceKHR) specifies support for the
 images in Display-P3 color space, encoded using a linear transfer
 function.
 
 * 
-`VK_COLOR_SPACE_DCI_P3_NONLINEAR_EXT` specifies support for the
+[VK_COLOR_SPACE_DCI_P3_NONLINEAR_EXT](#VkColorSpaceKHR) specifies support for the
 images in DCI-P3 color space, encoded according to the DCI-P3
 specification.
 Note that values in such an image are interpreted as XYZ encoded color
 data by the presentation engine.
 
 * 
-`VK_COLOR_SPACE_BT709_LINEAR_EXT` specifies support for the images
+[VK_COLOR_SPACE_BT709_LINEAR_EXT](#VkColorSpaceKHR) specifies support for the images
 in BT709 color space, encoded using a linear transfer function.
 
 * 
-`VK_COLOR_SPACE_BT709_NONLINEAR_EXT` specifies support for the
+[VK_COLOR_SPACE_BT709_NONLINEAR_EXT](#VkColorSpaceKHR) specifies support for the
 images in BT709 color space, encoded according to the BT709
 specification.
 
 * 
-`VK_COLOR_SPACE_BT2020_LINEAR_EXT` specifies support for the images
+[VK_COLOR_SPACE_BT2020_LINEAR_EXT](#VkColorSpaceKHR) specifies support for the images
 in BT2020 color space, encoded using a linear transfer function.
 
 * 
-`VK_COLOR_SPACE_HDR10_ST2084_EXT` specifies support for the images
+[VK_COLOR_SPACE_HDR10_ST2084_EXT](#VkColorSpaceKHR) specifies support for the images
 in HDR10 (BT2020) color space, encoded according to SMPTE ST2084
 Perceptual Quantizer (PQ) specification.
 
 * 
-`VK_COLOR_SPACE_HDR10_HLG_EXT` specifies support for the images in
+[VK_COLOR_SPACE_HDR10_HLG_EXT](#VkColorSpaceKHR) specifies support for the images in
 HDR10 (BT2020) color space, encoded according to the Hybrid Log Gamma
 (HLG) specification.
 
 * 
-`VK_COLOR_SPACE_ADOBERGB_LINEAR_EXT` specifies support for images in
+[VK_COLOR_SPACE_ADOBERGB_LINEAR_EXT](#VkColorSpaceKHR) specifies support for images in
 Adobe RGB color space, encoded using a linear transfer function.
 
 * 
-`VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT` specifies support for the
+[VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT](#VkColorSpaceKHR) specifies support for the
 images in Adobe RGB color space, encoded according to the Adobe RGB
 specification (approximately Gamma 2.2).
 
 * 
-`VK_COLOR_SPACE_PASS_THROUGH_EXT` specifies that color components
+[VK_COLOR_SPACE_PASS_THROUGH_EXT](#VkColorSpaceKHR) specifies that color components
 are used “as is”.
 This is intended to allow applications to supply data for color spaces
 not described here.
 
 * 
-`VK_COLOR_SPACE_DISPLAY_NATIVE_AMD` specifies support for the
+[VK_COLOR_SPACE_DISPLAY_NATIVE_AMD](#VkColorSpaceKHR) specifies support for the
 display’s native color space.
 This matches the color space expectations of AMD’s FreeSync2 standard,
 for displays supporting it.
@@ -7017,20 +7007,20 @@ for displays supporting it.
 `VK_COLORSPACE_SRGB_NONLINEAR_KHR` was used.
 Starting in the 2016-05-13 updates to the extension branches, matching
 release 1.0.13 of the core API specification,
-`VK_COLOR_SPACE_SRGB_NONLINEAR_KHR` is used instead for consistency with
+[VK_COLOR_SPACE_SRGB_NONLINEAR_KHR](#VkColorSpaceKHR) is used instead for consistency with
 Vulkan naming rules.
 The older enum is still available for backwards compatibility. |
 
 |  | In older versions of this extension
 | --- | --- |
-`VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT` was misnamed
+[VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT](#VkColorSpaceKHR) was misnamed
 `VK_COLOR_SPACE_DCI_P3_LINEAR_EXT`.
 This has been updated to indicate that it uses RGB color encoding, not XYZ.
 The old name is legacy but is maintained for backwards compatibility. |
 
 |  | In older versions of the `[VK_EXT_swapchain_colorspace](../../appendices/extensions.html#VK_EXT_swapchain_colorspace)` extension,
 | --- | --- |
-`VK_COLOR_SPACE_DOLBYVISION_EXT` was exposed.
+[VK_COLOR_SPACE_DOLBYVISION_EXT](#VkColorSpaceKHR) was exposed.
 The intent was to indicate the presentation engine shall decode an image
 using the SMPTE ST 2084 Perceptual Quantizer (PQ) EOTF, and then apply a
 proprietary OOTF to process the image.
@@ -7041,9 +7031,9 @@ This enum is legacy but is maintained for backwards compatibility. |
 
 |  | For a traditional “Linear” or non-gamma transfer function color space use
 | --- | --- |
-`VK_COLOR_SPACE_PASS_THROUGH_EXT`. |
+[VK_COLOR_SPACE_PASS_THROUGH_EXT](#VkColorSpaceKHR). |
 
-|  | On Wayland, `VK_COLOR_SPACE_PASS_THROUGH_EXT` can be used to disable
+|  | On Wayland, [VK_COLOR_SPACE_PASS_THROUGH_EXT](#VkColorSpaceKHR) can be used to disable
 | --- | --- |
 color management by the WSI on a surface, which makes it possible for the
 application to create a `wp_color_management_surface_v1` object without
@@ -7127,16 +7117,16 @@ on return the variable is overwritten with the number of values actually
 written to `pPresentModes`.
 If the value of `pPresentModeCount` is less than the number of
 presentation modes supported, at most `pPresentModeCount` values will be
-written, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available modes were
+written, and [VK_INCOMPLETE](../fundamentals.html#VkResult) will be returned instead of
+[VK_SUCCESS](../fundamentals.html#VkResult), to indicate that not all the available modes were
 returned.
 
 If the `[VK_GOOGLE_surfaceless_query](../../appendices/extensions.html#VK_GOOGLE_surfaceless_query)` extension is enabled and
 `surface` is [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), the values returned in
 `pPresentModes` will only indicate support for
-`VK_PRESENT_MODE_FIFO_KHR`,
-`VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR`, and
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`.
+[VK_PRESENT_MODE_FIFO_KHR](#VkPresentModeKHR),
+[VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](#VkPresentModeKHR), and
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](#VkPresentModeKHR).
 To query support for any other present mode, a valid handle **must** be
 provided in `surface`.
 
@@ -7188,27 +7178,27 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 To query the supported presentation modes for a surface combined with select
 other fixed swapchain creation parameters, call:
@@ -7287,27 +7277,27 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 Possible values of elements of the
 [vkGetPhysicalDeviceSurfacePresentModesKHR](#vkGetPhysicalDeviceSurfacePresentModesKHR)::`pPresentModes` array,
@@ -7330,14 +7320,14 @@ typedef enum VkPresentModeKHR {
 } VkPresentModeKHR;
 
 * 
-`VK_PRESENT_MODE_IMMEDIATE_KHR` specifies that the presentation
+[VK_PRESENT_MODE_IMMEDIATE_KHR](#VkPresentModeKHR) specifies that the presentation
 engine does not wait for a vertical blanking period to update the
 current image, meaning this mode **may** result in visible tearing.
 No internal queuing of presentation requests is needed, as the requests
 are applied immediately.
 
 * 
-`VK_PRESENT_MODE_MAILBOX_KHR` specifies that the presentation engine
+[VK_PRESENT_MODE_MAILBOX_KHR](#VkPresentModeKHR) specifies that the presentation engine
 waits for the next vertical blanking period to update the current image.
 Tearing **cannot** be observed.
 An internal single-entry queue is used to hold pending presentation
@@ -7349,7 +7339,7 @@ One request is removed from the queue and processed during each vertical
 blanking period in which the queue is non-empty.
 
 * 
-`VK_PRESENT_MODE_FIFO_KHR` specifies that the presentation engine
+[VK_PRESENT_MODE_FIFO_KHR](#VkPresentModeKHR) specifies that the presentation engine
 waits for the next vertical blanking period to update the current image.
 Tearing **cannot** be observed.
 An internal queue is used to hold pending presentation requests.
@@ -7360,7 +7350,7 @@ This is the only value of `presentMode` that is **required** to be
 supported.
 
 * 
-`VK_PRESENT_MODE_FIFO_RELAXED_KHR` specifies that the presentation
+[VK_PRESENT_MODE_FIFO_RELAXED_KHR](#VkPresentModeKHR) specifies that the presentation
 engine generally waits for the next vertical blanking period to update
 the current image.
 If a vertical blanking period has already passed since the last update
@@ -7377,7 +7367,7 @@ removed from the beginning of the queue and processed during or after
 each vertical blanking period in which the queue is non-empty.
 
 * 
-`VK_PRESENT_MODE_FIFO_LATEST_READY_KHR` specifies that the
+[VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](#VkPresentModeKHR) specifies that the
     presentation engine waits for the next vertical blanking period to
     update the current image.
     Tearing **cannot** be observed.
@@ -7399,7 +7389,7 @@ or
     The other dequeued requests are dropped.
 
 * 
-`VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR` specifies that the
+[VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](#VkPresentModeKHR) specifies that the
 presentation engine and application have concurrent access to a single
 image, which is referred to as a *shared presentable image*.
 The presentation engine is only required to update the current image
@@ -7410,7 +7400,7 @@ However, the presentation engine **may** update the current image at any
 point, meaning this mode **may** result in visible tearing.
 
 * 
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR` specifies that the
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](#VkPresentModeKHR) specifies that the
 presentation engine and application have concurrent access to a single
 image, which is referred to as a *shared presentable image*.
 The presentation engine periodically updates the current image on its
@@ -7430,23 +7420,23 @@ mode, and can be determined as per the table below:
 
 | Presentation mode | Image usage flags |
 | --- | --- |
-| `VK_PRESENT_MODE_IMMEDIATE_KHR` | [VkSurfaceCapabilitiesKHR](#VkSurfaceCapabilitiesKHR)::`supportedUsageFlags` |
-| `VK_PRESENT_MODE_MAILBOX_KHR` | [VkSurfaceCapabilitiesKHR](#VkSurfaceCapabilitiesKHR)::`supportedUsageFlags` |
-| `VK_PRESENT_MODE_FIFO_KHR` | [VkSurfaceCapabilitiesKHR](#VkSurfaceCapabilitiesKHR)::`supportedUsageFlags` |
-| `VK_PRESENT_MODE_FIFO_RELAXED_KHR` | [VkSurfaceCapabilitiesKHR](#VkSurfaceCapabilitiesKHR)::`supportedUsageFlags` |
-| `VK_PRESENT_MODE_FIFO_LATEST_READY_KHR` | [VkSurfaceCapabilitiesKHR](#VkSurfaceCapabilitiesKHR)::`supportedUsageFlags` |
-| `VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR` | [VkSharedPresentSurfaceCapabilitiesKHR](#VkSharedPresentSurfaceCapabilitiesKHR)::`sharedPresentSupportedUsageFlags` |
-| `VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR` | [VkSharedPresentSurfaceCapabilitiesKHR](#VkSharedPresentSurfaceCapabilitiesKHR)::`sharedPresentSupportedUsageFlags` |
+| [VK_PRESENT_MODE_IMMEDIATE_KHR](#VkPresentModeKHR) | [VkSurfaceCapabilitiesKHR](#VkSurfaceCapabilitiesKHR)::`supportedUsageFlags` |
+| [VK_PRESENT_MODE_MAILBOX_KHR](#VkPresentModeKHR) | [VkSurfaceCapabilitiesKHR](#VkSurfaceCapabilitiesKHR)::`supportedUsageFlags` |
+| [VK_PRESENT_MODE_FIFO_KHR](#VkPresentModeKHR) | [VkSurfaceCapabilitiesKHR](#VkSurfaceCapabilitiesKHR)::`supportedUsageFlags` |
+| [VK_PRESENT_MODE_FIFO_RELAXED_KHR](#VkPresentModeKHR) | [VkSurfaceCapabilitiesKHR](#VkSurfaceCapabilitiesKHR)::`supportedUsageFlags` |
+| [VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](#VkPresentModeKHR) | [VkSurfaceCapabilitiesKHR](#VkSurfaceCapabilitiesKHR)::`supportedUsageFlags` |
+| [VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](#VkPresentModeKHR) | [VkSharedPresentSurfaceCapabilitiesKHR](#VkSharedPresentSurfaceCapabilitiesKHR)::`sharedPresentSupportedUsageFlags` |
+| [VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](#VkPresentModeKHR) | [VkSharedPresentSurfaceCapabilitiesKHR](#VkSharedPresentSurfaceCapabilitiesKHR)::`sharedPresentSupportedUsageFlags` |
 
-|  | For reference, the mode indicated by `VK_PRESENT_MODE_FIFO_KHR` is
+|  | For reference, the mode indicated by [VK_PRESENT_MODE_FIFO_KHR](#VkPresentModeKHR) is
 | --- | --- |
 equivalent to the behavior of {wgl\|glX\|egl}SwapBuffers with a swap interval
-of 1, while the mode indicated by `VK_PRESENT_MODE_FIFO_RELAXED_KHR` is
+of 1, while the mode indicated by [VK_PRESENT_MODE_FIFO_RELAXED_KHR](#VkPresentModeKHR) is
 equivalent to the behavior of {wgl\|glX}SwapBuffers with a swap interval of
 -1 (from the {WGL\|GLX}_EXT_swap_control_tear extensions). |
 
 Swapchains created with `fullScreenExclusive` set to
-`VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT` **must** acquire and
+[VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT](#VkFullScreenExclusiveEXT) **must** acquire and
 release exclusive full-screen access explicitly, using the following
 commands.
 
@@ -7477,27 +7467,27 @@ Valid Usage
 `swapchain` **must** be a swapchain created with a
 [VkSurfaceFullScreenExclusiveInfoEXT](#VkSurfaceFullScreenExclusiveInfoEXT) structure, with
 `fullScreenExclusive` set to
-`VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT`
+[VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT](#VkFullScreenExclusiveEXT)
 
 * 
 [](#VUID-vkAcquireFullScreenExclusiveModeEXT-swapchain-02676) VUID-vkAcquireFullScreenExclusiveModeEXT-swapchain-02676
 
 `swapchain` **must** not currently have exclusive full-screen access
 
-A return value of `VK_SUCCESS` indicates that the `swapchain`
+A return value of [VK_SUCCESS](../fundamentals.html#VkResult) indicates that the `swapchain`
 successfully acquired exclusive full-screen access.
 The swapchain will retain this exclusivity until either the application
 releases exclusive full-screen access with
 [vkReleaseFullScreenExclusiveModeEXT](#vkReleaseFullScreenExclusiveModeEXT), destroys the swapchain, or if any
 of the swapchain commands return
-`VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT` indicating that the mode
+[VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT](../fundamentals.html#VkResult) indicating that the mode
 was lost because of platform-specific changes.
 
 If the swapchain was unable to acquire exclusive full-screen access to the
-display then `VK_ERROR_INITIALIZATION_FAILED` is returned.
+display then [VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult) is returned.
 An application **can** attempt to acquire exclusive full-screen access again
 for the same swapchain even if this command fails, or if
-`VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT` has been returned by a
+[VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT](../fundamentals.html#VkResult) has been returned by a
 swapchain command.
 
 Valid Usage (Implicit)
@@ -7522,27 +7512,27 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 To release exclusive full-screen access from a swapchain, call:
 
@@ -7577,7 +7567,7 @@ Valid Usage
 `swapchain` **must** be a swapchain created with a
 [VkSurfaceFullScreenExclusiveInfoEXT](#VkSurfaceFullScreenExclusiveInfoEXT) structure, with
 `fullScreenExclusive` set to
-`VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT`
+[VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT](#VkFullScreenExclusiveEXT)
 
 Valid Usage (Implicit)
 
@@ -7601,24 +7591,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 A logical device that represents multiple physical devices **may** support
 presenting from images on more than one physical device, or combining images
@@ -7656,21 +7646,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkDeviceGroupPresentCapabilitiesKHR` structure is defined as:
 
@@ -7690,7 +7680,7 @@ typedef struct VkDeviceGroupPresentCapabilitiesKHR {
 structure.
 
 * 
-`presentMask` is an array of `VK_MAX_DEVICE_GROUP_SIZE`
+`presentMask` is an array of [VK_MAX_DEVICE_GROUP_SIZE](../devsandqueues.html#VK_MAX_DEVICE_GROUP_SIZE)
 `uint32_t` masks, where the mask at element i is non-zero if
 physical device i has a presentation engine, and where bit j
 is set in element i if physical device i **can** present
@@ -7701,20 +7691,20 @@ If element i is non-zero, then bit i **must** be set.
 `modes` is a bitmask of [VkDeviceGroupPresentModeFlagBitsKHR](#VkDeviceGroupPresentModeFlagBitsKHR)
 indicating which device group presentation modes are supported.
 
-`modes` always has `VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR` set.
+`modes` always has [VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR](#VkDeviceGroupPresentModeFlagBitsKHR) set.
 
 The present mode flags are also used when presenting an image, in
 [VkDeviceGroupPresentInfoKHR](#VkDeviceGroupPresentInfoKHR)::`mode`.
 
 If a device group only includes a single physical device, then `modes`
-**must** equal `VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR`.
+**must** equal [VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR](#VkDeviceGroupPresentModeFlagBitsKHR).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDeviceGroupPresentCapabilitiesKHR-sType-sType) VUID-VkDeviceGroupPresentCapabilitiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceGroupPresentCapabilitiesKHR-pNext-pNext) VUID-VkDeviceGroupPresentCapabilitiesKHR-pNext-pNext
@@ -7734,22 +7724,22 @@ typedef enum VkDeviceGroupPresentModeFlagBitsKHR {
 } VkDeviceGroupPresentModeFlagBitsKHR;
 
 * 
-`VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR` specifies that any
+[VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR](#VkDeviceGroupPresentModeFlagBitsKHR) specifies that any
 physical device with a presentation engine **can** present its own
 swapchain images.
 
 * 
-`VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR` specifies that any
+[VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR](#VkDeviceGroupPresentModeFlagBitsKHR) specifies that any
 physical device with a presentation engine **can** present swapchain images
 from any physical device in its `presentMask`.
 
 * 
-`VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR` specifies that any
+[VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR](#VkDeviceGroupPresentModeFlagBitsKHR) specifies that any
 physical device with a presentation engine **can** present the sum of
 swapchain images from any physical devices in its `presentMask`.
 
 * 
-`VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR` specifies
+[VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR](#VkDeviceGroupPresentModeFlagBitsKHR) specifies
 that multiple physical devices with a presentation engine **can** each
 present their own swapchain images.
 
@@ -7828,24 +7818,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 To query the supported device group presentation modes for a surface
 combined with select other fixed swapchain creation parameters, call:
@@ -7906,26 +7896,26 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
-When using `VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR`,
+When using [VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR](#VkDeviceGroupPresentModeFlagBitsKHR),
 the application **may** need to know which regions of the surface are used when
 presenting locally on each physical device.
 Presentation of swapchain images to this surface need only have valid
@@ -7962,8 +7952,8 @@ to the number of elements in the `pRects` array, and on return the
 variable is overwritten with the number of structures actually written to
 `pRects`.
 If the value of `pRectCount` is less than the number of rectangles, at
-most `pRectCount` structures will be written, and `VK_INCOMPLETE`
-will be returned instead of `VK_SUCCESS`, to indicate that not all the
+most `pRectCount` structures will be written, and [VK_INCOMPLETE](../fundamentals.html#VkResult)
+will be returned instead of [VK_SUCCESS](../fundamentals.html#VkResult), to indicate that not all the
 available rectangles were returned.
 
 The values returned by this command are not invariant, and **may** change in
@@ -8017,27 +8007,27 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 Traditional game and real-time-animation applications frequently use
-`VK_PRESENT_MODE_FIFO_KHR` so that presentable images are updated during
+[VK_PRESENT_MODE_FIFO_KHR](#VkPresentModeKHR) so that presentable images are updated during
 the vertical blanking period of a given refresh cycle (RC) of the
 presentation engine’s display.
 On fixed refresh rate displays, this avoids the visual anomaly known as
@@ -8092,7 +8082,7 @@ queue.
 If this function is called multiple times, the internal queue is reallocated
 to fit the new `size`.
 If the new `size` is less than the current number of outstanding
-results, `VK_NOT_READY` is returned and no allocation is performed.
+results, [VK_NOT_READY](../fundamentals.html#VkResult) is returned and no allocation is performed.
 
 Valid Usage
 
@@ -8101,7 +8091,7 @@ Valid Usage
 
 `swapchain` **must** have been created with
 `VkSwapchainCreateInfoKHR`::`flags` containing
-`VK_SWAPCHAIN_CREATE_PRESENT_TIMING_BIT_EXT`
+[VK_SWAPCHAIN_CREATE_PRESENT_TIMING_BIT_EXT](#VkSwapchainCreateFlagBitsKHR)
 
 Valid Usage (Implicit)
 
@@ -8130,24 +8120,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_NOT_READY`
+[VK_NOT_READY](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The implementation maintains an internal monotonically increasing counter
 which updates when the presentation engine’s timing properties are modified.
@@ -8177,7 +8167,7 @@ VkResult vkGetSwapchainTimingPropertiesEXT(
 64-bit unsigned integer set by the implementation to the current value
 of the swapchain’s internal timing properties counter.
 
-If `vkGetSwapchainTimingPropertiesEXT` returns `VK_NOT_READY`, the
+If `vkGetSwapchainTimingPropertiesEXT` returns [VK_NOT_READY](../fundamentals.html#VkResult), the
 implementation was not able to determine the current refresh cycle duration.
 Some platforms **may** not provide timing properties until after at least one
 image has been presented to the `swapchain`.
@@ -8222,27 +8212,27 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_NOT_READY`
+[VK_NOT_READY](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkSwapchainTimingPropertiesEXT` structure is defined as:
 
@@ -8292,7 +8282,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSwapchainTimingPropertiesEXT-sType-sType) VUID-VkSwapchainTimingPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_TIMING_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_TIMING_PROPERTIES_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSwapchainTimingPropertiesEXT-pNext-pNext) VUID-VkSwapchainTimingPropertiesEXT-pNext-pNext
@@ -8385,7 +8375,7 @@ swapchain’s internal time domain properties counter.
 If upon return
 [VkSwapchainTimeDomainPropertiesEXT](#VkSwapchainTimeDomainPropertiesEXT)::`timeDomainCount` is smaller
 than the number of time domains supported for the given `swapchain`,
-`VK_INCOMPLETE` will be returned instead of `VK_SUCCESS` to indicate
+[VK_INCOMPLETE](../fundamentals.html#VkResult) will be returned instead of [VK_SUCCESS](../fundamentals.html#VkResult) to indicate
 that not all the available values were returned.
 
 Valid Usage (Implicit)
@@ -8425,27 +8415,27 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkSwapchainTimeDomainPropertiesEXT` structure is defined as:
 
@@ -8482,9 +8472,8 @@ When calling [vkGetSwapchainTimeDomainPropertiesEXT](#vkGetSwapchainTimeDomainPr
 number of time domains supported for the given `swapchain` is returned
 in `timeDomainCount`.
 Otherwise, `timeDomainCount` **must** specify the number of elements in the
-`pTimeDomains`, `pTimeDomainIds`, or both arrays, and on return the
-variable is overwritten with the number of values actually written to either
-array.
+`pTimeDomains`, `pTimeDomainIds`, or both arrays, and on return is
+overwritten with the number of values actually written to either array.
 
 |  | Due to the dynamic nature of their underlying `VkSurfaceKHR` properties,
 | --- | --- |
@@ -8499,27 +8488,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSwapchainTimeDomainPropertiesEXT-sType-sType) VUID-VkSwapchainTimeDomainPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_TIME_DOMAIN_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_TIME_DOMAIN_PROPERTIES_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSwapchainTimeDomainPropertiesEXT-pNext-pNext) VUID-VkSwapchainTimeDomainPropertiesEXT-pNext-pNext
 
  `pNext` **must** be `NULL`
-
-* 
-[](#VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomains-parameter) VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomains-parameter
-
- If `pTimeDomains` is not `NULL`, `pTimeDomains` **must** be a valid pointer to an array of `timeDomainCount` [VkTimeDomainKHR](../synchronization.html#VkTimeDomainKHR) values
-
-* 
-[](#VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomainIds-parameter) VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomainIds-parameter
-
- If `pTimeDomainIds` is not `NULL`, `pTimeDomainIds` **must** be a valid pointer to an array of `timeDomainCount` `uint64_t` values
-
-* 
-[](#VUID-VkSwapchainTimeDomainPropertiesEXT-timeDomainCount-arraylength) VUID-VkSwapchainTimeDomainPropertiesEXT-timeDomainCount-arraylength
-
- `timeDomainCount` **must** be greater than `0`
 
 Because of the asynchronous nature of the presentation engine, the timing
 information for a given [vkQueuePresentKHR](#vkQueuePresentKHR) command **may** only becomes
@@ -8551,21 +8525,21 @@ the [VkPastPresentationTimingPropertiesEXT](#VkPastPresentationTimingPropertiesE
 If upon return the value of
 `VkPastPresentationTimingPropertiesEXT`::`presentationTimingCount`
 is less than the number of available timing records for the given
-`VkPastPresentationTimingInfoEXT`::`swapchain`, `VK_INCOMPLETE`
-is returned instead of `VK_SUCCESS` to indicate that not all the
+`VkPastPresentationTimingInfoEXT`::`swapchain`, [VK_INCOMPLETE](../fundamentals.html#VkResult)
+is returned instead of [VK_SUCCESS](../fundamentals.html#VkResult) to indicate that not all the
 available values were returned.
 
 Upon return, zero or more slots of the `swapchain` internal timing
 results queue, equal to the number of entries written to
 `VkPastPresentationTimingPropertiesEXT`::`pPresentationTimings` for
-which `reportComplete` is `VK_TRUE`, are made available for future
+which `reportComplete` is [VK_TRUE](../fundamentals.html#VK_TRUE), are made available for future
 `vkQueuePresentKHR` calls.
 Elements of `pPresentationTimings` are arranged in ascending order of
 present ids.
 
 Timing information **may** become available out of order with regards to their
 associated [vkQueuePresentKHR](#vkQueuePresentKHR) order.
-`VK_PAST_PRESENTATION_TIMING_ALLOW_OUT_OF_ORDER_RESULTS_BIT_EXT` **can** be
+[VK_PAST_PRESENTATION_TIMING_ALLOW_OUT_OF_ORDER_RESULTS_BIT_EXT](#VkPastPresentationTimingFlagBitsEXT) **can** be
 set in `VkPastPresentationTimingInfoEXT`::`flags` to allow
 `vkGetPastPresentationTimingEXT` to return results in that same order.
 Otherwise, results are returned in the order of their associated
@@ -8589,7 +8563,7 @@ Valid Usage
 * 
 [](#VUID-vkGetPastPresentationTimingEXT-flags-12230) VUID-vkGetPastPresentationTimingEXT-flags-12230
 
-If `VK_PAST_PRESENTATION_TIMING_ALLOW_OUT_OF_ORDER_RESULTS_BIT_EXT`
+If [VK_PAST_PRESENTATION_TIMING_ALLOW_OUT_OF_ORDER_RESULTS_BIT_EXT](#VkPastPresentationTimingFlagBitsEXT)
 is set in `VkPastPresentationTimingInfoEXT`::`flags`, the
 `presentStageCount` value of each element of
 `VkPastPresentationTimingPropertiesEXT`::`pPresentationTimings`
@@ -8602,7 +8576,7 @@ returned yet by a previous call
 * 
 [](#VUID-vkGetPastPresentationTimingEXT-flags-12231) VUID-vkGetPastPresentationTimingEXT-flags-12231
 
-If `VK_PAST_PRESENTATION_TIMING_ALLOW_OUT_OF_ORDER_RESULTS_BIT_EXT`
+If [VK_PAST_PRESENTATION_TIMING_ALLOW_OUT_OF_ORDER_RESULTS_BIT_EXT](#VkPastPresentationTimingFlagBitsEXT)
 is not set in `VkPastPresentationTimingInfoEXT`::`flags`, the
 `presentStageCount` value of each element of
 `VkPastPresentationTimingPropertiesEXT`::`pPresentationTimings`
@@ -8634,27 +8608,27 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DATE_KHR`
+[VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkPastPresentationTimingInfoEXT` structure is defined as:
 
@@ -8686,7 +8660,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPastPresentationTimingInfoEXT-sType-sType) VUID-VkPastPresentationTimingInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPastPresentationTimingInfoEXT-pNext-pNext) VUID-VkPastPresentationTimingInfoEXT-pNext-pNext
@@ -8725,13 +8699,13 @@ typedef enum VkPastPresentationTimingFlagBitsEXT {
 } VkPastPresentationTimingFlagBitsEXT;
 
 * 
-`VK_PAST_PRESENTATION_TIMING_ALLOW_PARTIAL_RESULTS_BIT_EXT`
+[VK_PAST_PRESENTATION_TIMING_ALLOW_PARTIAL_RESULTS_BIT_EXT](#VkPastPresentationTimingFlagBitsEXT)
 specifies that [vkGetPastPresentationTimingEXT](#vkGetPastPresentationTimingEXT) **may** return partial
 results for presentation requests that have not completed all requested
 present stages.
 
 * 
-`VK_PAST_PRESENTATION_TIMING_ALLOW_OUT_OF_ORDER_RESULTS_BIT_EXT`
+[VK_PAST_PRESENTATION_TIMING_ALLOW_OUT_OF_ORDER_RESULTS_BIT_EXT](#VkPastPresentationTimingFlagBitsEXT)
 specifies that [vkGetPastPresentationTimingEXT](#vkGetPastPresentationTimingEXT) **may** return results
 out of order with respect to the presentation order.
 
@@ -8778,11 +8752,11 @@ When calling [vkGetPastPresentationTimingEXT](#vkGetPastPresentationTimingEXT), 
 records for the given `swapchain` is returned in
 `presentationTimingCount`.
 Otherwise, `presentationTimingCount` **must** specify the number of
-elements in the `pPresentationTimings` array, and on return the variable
-is overwritten with the number of structures actually written to
+elements in the `pPresentationTimings` array, and on return is
+overwritten with the number of structures actually written to
 `pPresentationTimings`.
 
-if `VK_PAST_PRESENTATION_TIMING_ALLOW_PARTIAL_RESULTS_BIT_EXT` is
+if [VK_PAST_PRESENTATION_TIMING_ALLOW_PARTIAL_RESULTS_BIT_EXT](#VkPastPresentationTimingFlagBitsEXT) is
 specified in [VkPastPresentationTimingInfoEXT](#VkPastPresentationTimingInfoEXT)::`flags`,
 `vkGetPastPresentationTimingEXT` **may** return incomplete results,
 containing only information for a subset of the requested present stages.
@@ -8800,22 +8774,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPastPresentationTimingPropertiesEXT-sType-sType) VUID-VkPastPresentationTimingPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_PROPERTIES_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPastPresentationTimingPropertiesEXT-pNext-pNext) VUID-VkPastPresentationTimingPropertiesEXT-pNext-pNext
 
  `pNext` **must** be `NULL`
-
-* 
-[](#VUID-VkPastPresentationTimingPropertiesEXT-pPresentationTimings-parameter) VUID-VkPastPresentationTimingPropertiesEXT-pPresentationTimings-parameter
-
- `pPresentationTimings` **must** be a valid pointer to an array of `presentationTimingCount` [VkPastPresentationTimingEXT](#VkPastPresentationTimingEXT) structures
-
-* 
-[](#VUID-VkPastPresentationTimingPropertiesEXT-presentationTimingCount-arraylength) VUID-VkPastPresentationTimingPropertiesEXT-presentationTimingCount-arraylength
-
- `presentationTimingCount` **must** be greater than `0`
 
 |  | The presentation engine **may** change the timing properties of the
 | --- | --- |
@@ -8884,13 +8848,13 @@ report times in `pPresentStages`.
 `timeDomainId` is the id associated with `timeDomain`.
 
 * 
-`reportComplete` is `VK_TRUE` if the presentation engine has
+`reportComplete` is [VK_TRUE](../fundamentals.html#VK_TRUE) if the presentation engine has
 reported all the requested results in `pPresentStages`.
 
 When calling [vkGetPastPresentationTimingEXT](#vkGetPastPresentationTimingEXT), the implementation sets
 `presentStageCount` to the number of present stages it has written
 results for.
-If `VK_PAST_PRESENTATION_TIMING_ALLOW_PARTIAL_RESULTS_BIT_EXT` was
+If [VK_PAST_PRESENTATION_TIMING_ALLOW_PARTIAL_RESULTS_BIT_EXT](#VkPastPresentationTimingFlagBitsEXT) was
 specified in [VkPastPresentationTimingInfoEXT](#VkPastPresentationTimingInfoEXT)::`flags`, the
 implementation **may** return an incomplete report containing fewer present
 stage results than were queried by the associated presentation request.
@@ -8920,27 +8884,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPastPresentationTimingEXT-sType-sType) VUID-VkPastPresentationTimingEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPastPresentationTimingEXT-pNext-pNext) VUID-VkPastPresentationTimingEXT-pNext-pNext
 
  `pNext` **must** be `NULL`
-
-* 
-[](#VUID-VkPastPresentationTimingEXT-pPresentStages-parameter) VUID-VkPastPresentationTimingEXT-pPresentStages-parameter
-
- `pPresentStages` **must** be a valid pointer to an array of `presentStageCount` [VkPresentStageTimeEXT](#VkPresentStageTimeEXT) structures
-
-* 
-[](#VUID-VkPastPresentationTimingEXT-timeDomain-parameter) VUID-VkPastPresentationTimingEXT-timeDomain-parameter
-
- `timeDomain` **must** be a valid [VkTimeDomainKHR](../synchronization.html#VkTimeDomainKHR) value
-
-* 
-[](#VUID-VkPastPresentationTimingEXT-presentStageCount-arraylength) VUID-VkPastPresentationTimingEXT-presentStageCount-arraylength
-
- `presentStageCount` **must** be greater than `0`
 
 The `VkPresentStageTimeEXT` structure is defined as:
 
@@ -8956,18 +8905,6 @@ stage.
 
 * 
 `time` is a time in nanoseconds associated with the `stage`.
-
-Valid Usage (Implicit)
-
-* 
-[](#VUID-VkPresentStageTimeEXT-stage-parameter) VUID-VkPresentStageTimeEXT-stage-parameter
-
- `stage` **must** be a valid combination of [VkPresentStageFlagBitsEXT](#VkPresentStageFlagBitsEXT) values
-
-* 
-[](#VUID-VkPresentStageTimeEXT-stage-requiredbitmask) VUID-VkPresentStageTimeEXT-stage-requiredbitmask
-
- `stage` **must** not be `0`
 
 To query the duration of a refresh cycle (RC) for the presentation engine’s
 display, call:
@@ -9020,24 +8957,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkRefreshCycleDurationGOOGLE` structure is defined as:
 
@@ -9095,8 +9032,8 @@ and on return the variable is overwritten with the number of structures
 actually written to `pPresentationTimings`.
 If the value of `pPresentationTimingCount` is less than the number of
 newly-available timing records, at most `pPresentationTimingCount`
-structures will be written, and `VK_INCOMPLETE` will be returned instead
-of `VK_SUCCESS`, to indicate that not all the available timing records
+structures will be written, and [VK_INCOMPLETE](../fundamentals.html#VkResult) will be returned instead
+of [VK_SUCCESS](../fundamentals.html#VkResult), to indicate that not all the available timing records
 were returned.
 
 Valid Usage (Implicit)
@@ -9136,30 +9073,30 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DATE_KHR`
+[VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkPastPresentationTimingGOOGLE` structure is defined as:
 
@@ -9227,7 +9164,7 @@ An application that desires its target IPD to always be the same as
 satisfactory.
 
 The full `[VK_GOOGLE_display_timing](../../appendices/extensions.html#VK_GOOGLE_display_timing)` extension semantics are described
-for swapchains created with `VK_PRESENT_MODE_FIFO_KHR`.
+for swapchains created with [VK_PRESENT_MODE_FIFO_KHR](#VkPresentModeKHR).
 For example, non-zero values of
 `VkPresentTimeGOOGLE`::`desiredPresentTime` **must** be honored, and
 `vkGetPastPresentationTimingGOOGLE` **should** return a
@@ -9236,7 +9173,7 @@ images presented with `vkQueuePresentKHR`.
 The semantics for other present modes are as follows:
 
 * 
-`VK_PRESENT_MODE_IMMEDIATE_KHR`.
+[VK_PRESENT_MODE_IMMEDIATE_KHR](#VkPresentModeKHR).
 The presentation engine **may** ignore non-zero values of
 `VkPresentTimeGOOGLE`::`desiredPresentTime` in favor of
 presenting immediately.
@@ -9247,7 +9184,7 @@ the same as
 **should** be when the presentation engine displayed the image.
 
 * 
-`VK_PRESENT_MODE_MAILBOX_KHR`.
+[VK_PRESENT_MODE_MAILBOX_KHR](#VkPresentModeKHR).
 The intention of using this present mode with this extension is to
 handle cases where an image is presented late, and the next image is
 presented soon enough to replace it at the next vertical blanking
@@ -9272,15 +9209,15 @@ If the application continues to do that, the presentation engine **may**
 not display new images.
 
 * 
-`VK_PRESENT_MODE_FIFO_RELAXED_KHR`.
+[VK_PRESENT_MODE_FIFO_RELAXED_KHR](#VkPresentModeKHR).
 For images that are presented in time to be displayed at the next
 vertical blanking period, the semantics are identical as for
-`VK_PRESENT_MODE_FIFO_KHR`.
+[VK_PRESENT_MODE_FIFO_KHR](#VkPresentModeKHR).
 For images that are presented late, and are displayed after the start of
 the vertical blanking period (i.e. with tearing), the values of
 `VkPastPresentationTimingGOOGLE` **may** be treated as if the image was
 displayed at the start of the vertical blanking period, or **may** be
-treated the same as for `VK_PRESENT_MODE_IMMEDIATE_KHR`.
+treated the same as for [VK_PRESENT_MODE_IMMEDIATE_KHR](#VkPresentModeKHR).
 
 Applications wanting to control the pacing of the application by monitoring
 when presentation processes have completed to limit the number of
@@ -9338,7 +9275,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPresentWait2InfoKHR-sType-sType) VUID-VkPresentWait2InfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_WAIT_2_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_WAIT_2_INFO_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPresentWait2InfoKHR-pNext-pNext) VUID-VkPresentWait2InfoKHR-pNext-pNext
@@ -9411,15 +9348,15 @@ rather than in its main loop. |
 How this all works is described below.
 
 If a swapchain is created with `presentMode` set to either
-`VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR` or
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`, a single presentable
+[VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](#VkPresentModeKHR) or
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](#VkPresentModeKHR), a single presentable
 image **can** be acquired, referred to as a shared presentable image.
 A shared presentable image **may** be concurrently accessed by the application
 and the presentation engine, without transitioning the image’s layout after
 it is initially presented.
 
 * 
-With `VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR`, the presentation
+With [VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](#VkPresentModeKHR), the presentation
 engine is only required to update to the latest contents of a shared
 presentable image after a present.
 The application **must** call `vkQueuePresentKHR` to guarantee an
@@ -9427,7 +9364,7 @@ update.
 However, the presentation engine **may** update from it at any time.
 
 * 
-With `VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`, the
+With [VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](#VkPresentModeKHR), the
 presentation engine will automatically present the latest contents of a
 shared presentable image during every refresh cycle.
 The application is only required to make one initial call to
@@ -9492,63 +9429,63 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUBOPTIMAL_KHR`
+[VK_SUBOPTIMAL_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT`
+[VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DATE_KHR`
+[VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The possible return values for `vkGetSwapchainStatusKHR` **should** be
 interpreted as follows:
 
 * 
-`VK_SUCCESS` specifies the presentation engine is presenting the
+[VK_SUCCESS](../fundamentals.html#VkResult) specifies the presentation engine is presenting the
 contents of the shared presentable image, as per the swapchain’s
 [VkPresentModeKHR](#VkPresentModeKHR).
 
 * 
-`VK_SUBOPTIMAL_KHR` the swapchain no longer matches the surface
+[VK_SUBOPTIMAL_KHR](../fundamentals.html#VkResult) the swapchain no longer matches the surface
 properties exactly, but the presentation engine is presenting the
 contents of the shared presentable image, as per the swapchain’s
 [VkPresentModeKHR](#VkPresentModeKHR).
 
 * 
-`VK_ERROR_OUT_OF_DATE_KHR` the surface has changed in such a way
+[VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult) the surface has changed in such a way
 that it is no longer compatible with the swapchain.
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR` the surface is no longer available.
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult) the surface is no longer available.
 
 |  | The swapchain state **may** be cached by implementations, so applications
 | --- | --- |
 **should** regularly call `vkGetSwapchainStatusKHR` when using a swapchain
 with [VkPresentModeKHR](#VkPresentModeKHR) equal to
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`. |
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](#VkPresentModeKHR). |
 
 To create a swapchain, call:
 
@@ -9586,33 +9523,33 @@ the following [VkImageCreateInfo](../resources.html#VkImageCreateInfo) parameter
 
 | `VkImageCreateInfo` Field | Value |
 | --- | --- |
-| `flags` | `VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT` is set if
-`VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR` is set
-`VK_IMAGE_CREATE_PROTECTED_BIT` is set if
-`VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR` is set
-`VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT` and
-`VK_IMAGE_CREATE_EXTENDED_USAGE_BIT_KHR` are both set if
-`VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR` is set
+| `flags` | [VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT](../resources.html#VkImageCreateFlagBits) is set if
+[VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR](#VkSwapchainCreateFlagBitsKHR) is set
+[VK_IMAGE_CREATE_PROTECTED_BIT](../resources.html#VkImageCreateFlagBits) is set if
+[VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR](#VkSwapchainCreateFlagBitsKHR) is set
+[VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](../resources.html#VkImageCreateFlagBits) and
+[VK_IMAGE_CREATE_EXTENDED_USAGE_BIT_KHR](../resources.html#VkImageCreateFlagBits) are both set if
+[VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR](#VkSwapchainCreateFlagBitsKHR) is set
 all other bits are unset |
-| `imageType` | `VK_IMAGE_TYPE_2D` |
+| `imageType` | [VK_IMAGE_TYPE_2D](../resources.html#VkImageType) |
 | `format` | `pCreateInfo->imageFormat` |
 | `extent` | {`pCreateInfo->imageExtent.width`, `pCreateInfo->imageExtent.height`, `1`} |
 | `mipLevels` | 1 |
 | `arrayLayers` | `pCreateInfo->imageArrayLayers` |
-| `samples` | `VK_SAMPLE_COUNT_1_BIT` |
-| `tiling` | `VK_IMAGE_TILING_OPTIMAL` |
+| `samples` | [VK_SAMPLE_COUNT_1_BIT](../limits.html#VkSampleCountFlagBits) |
+| `tiling` | [VK_IMAGE_TILING_OPTIMAL](../resources.html#VkImageTiling) |
 | `usage` | `pCreateInfo->imageUsage` |
 | `sharingMode` | `pCreateInfo->imageSharingMode` |
 | `queueFamilyIndexCount` | `pCreateInfo->queueFamilyIndexCount` |
 | `pQueueFamilyIndices` | `pCreateInfo->pQueueFamilyIndices` |
-| `initialLayout` | `VK_IMAGE_LAYOUT_UNDEFINED` |
+| `initialLayout` | [VK_IMAGE_LAYOUT_UNDEFINED](../resources.html#VkImageLayout) |
 
 The `pCreateInfo->surface` **must** not be destroyed until after the
 swapchain is destroyed.
 
 If `oldSwapchain` is [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), and
 the native window referred to by `pCreateInfo->surface` is already
-associated with a Vulkan swapchain, `VK_ERROR_NATIVE_WINDOW_IN_USE_KHR`
+associated with a Vulkan swapchain, [VK_ERROR_NATIVE_WINDOW_IN_USE_KHR](../fundamentals.html#VkResult)
 **must** be returned.
 
 If `oldSwapchain` is a valid swapchain and there are outstanding calls
@@ -9621,13 +9558,13 @@ until those calls complete.
 
 If the native window referred to by `pCreateInfo->surface` is already
 associated with a non-Vulkan graphics API surface,
-`VK_ERROR_NATIVE_WINDOW_IN_USE_KHR` **must** be returned.
+[VK_ERROR_NATIVE_WINDOW_IN_USE_KHR](../fundamentals.html#VkResult) **must** be returned.
 
 The native window referred to by `pCreateInfo->surface` **must** not become
 associated with a non-Vulkan graphics API surface before all associated
 Vulkan swapchains have been destroyed.
 
-`vkCreateSwapchainKHR` will return `VK_ERROR_DEVICE_LOST` if the
+`vkCreateSwapchainKHR` will return [VK_ERROR_DEVICE_LOST](../fundamentals.html#VkResult) if the
 logical device was lost.
 The `VkSwapchainKHR` is a child of the `device`, and **must** be
 destroyed before the `device`.
@@ -9653,7 +9590,7 @@ In some cases, swapchain creation **may** fail if exclusive full-screen mode is
 requested for application control, but for some implementation-specific
 reason exclusive full-screen access is unavailable for the particular
 combination of parameters provided.
-If this occurs, `VK_ERROR_INITIALIZATION_FAILED` will be returned.
+If this occurs, [VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult) will be returned.
 
 |  | In particular, it will fail if the `imageExtent` member of
 | --- | --- |
@@ -9670,7 +9607,7 @@ Swapchain creation **may** fail if the state of the current system restricts
 the usage of the present barrier feature
 [VkSurfaceCapabilitiesPresentBarrierNV](#VkSurfaceCapabilitiesPresentBarrierNV), or a swapchain itself does not
 satisfy all the required conditions.
-In this scenario `VK_ERROR_INITIALIZATION_FAILED` is returned.
+In this scenario [VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult) is returned.
 
 When the [VkSurfaceKHR](#VkSurfaceKHR) in [VkSwapchainCreateInfoKHR](#VkSwapchainCreateInfoKHR) is a display
 surface, then the [VkDisplayModeKHR](#VkDisplayModeKHR) in display surface’s
@@ -9678,7 +9615,7 @@ surface, then the [VkDisplayModeKHR](#VkDisplayModeKHR) in display surface’s
 [VkDisplayKHR](#VkDisplayKHR).
 Swapchain creation **may** fail if that [VkDisplayKHR](#VkDisplayKHR) is not acquired by
 the application.
-In this scenario `VK_ERROR_INITIALIZATION_FAILED` is returned.
+In this scenario [VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult) is returned.
 
 Valid Usage (Implicit)
 
@@ -9712,36 +9649,36 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_COMPRESSION_EXHAUSTED_EXT`
+[VK_ERROR_COMPRESSION_EXHAUSTED_EXT](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_NATIVE_WINDOW_IN_USE_KHR`
+[VK_ERROR_NATIVE_WINDOW_IN_USE_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkSwapchainCreateInfoKHR` structure is defined as:
 
@@ -9829,12 +9766,12 @@ swapchain.
 * 
 `queueFamilyIndexCount` is the number of queue families having
 access to the image(s) of the swapchain when `imageSharingMode` is
-`VK_SHARING_MODE_CONCURRENT`.
+[VK_SHARING_MODE_CONCURRENT](../resources.html#VkSharingMode).
 
 * 
 `pQueueFamilyIndices` is a pointer to an array of queue family
 indices having access to the images(s) of the swapchain when
-`imageSharingMode` is `VK_SHARING_MODE_CONCURRENT`.
+`imageSharingMode` is [VK_SHARING_MODE_CONCURRENT](../resources.html#VkSharingMode).
 
 * 
 `preTransform` is a [VkSurfaceTransformFlagBitsKHR](#VkSurfaceTransformFlagBitsKHR) value
@@ -9859,7 +9796,7 @@ be processed and queued internally.
 discard rendering operations that affect regions of the surface that are
 not visible.
 
-If `clipped` is `VK_TRUE`, the presentable images associated
+If `clipped` is [VK_TRUE](../fundamentals.html#VK_TRUE), the presentable images associated
 with the swapchain **may** not own all of their pixels.
 Pixels in the presentable images that correspond to regions of the
 target surface obscured by another window on the desktop, or subject to
@@ -9867,15 +9804,15 @@ some other clipping mechanism will have **undefined** content when read
 back.
 Fragment shaders **may** not execute for these pixels, and thus any side
 effects they would have had will not occur.
-Setting `VK_TRUE` does not guarantee any clipping will occur, but
+Setting [VK_TRUE](../fundamentals.html#VK_TRUE) does not guarantee any clipping will occur, but
 allows more efficient presentation methods to be used on some
 platforms.
 
 * 
-If `clipped` is `VK_FALSE`, presentable images associated with
+If `clipped` is [VK_FALSE](../fundamentals.html#VK_FALSE), presentable images associated with
 the swapchain will own all of the pixels they contain.
 
-|  | Applications **should** set this value to `VK_TRUE` if they do not expect
+|  | Applications **should** set this value to [VK_TRUE](../fundamentals.html#VK_TRUE) if they do not expect
 | --- | --- |
 to read back the content of presentable images before presenting them or
 after reacquiring them, and if their fragment shaders do not have any side
@@ -9911,12 +9848,12 @@ After `oldSwapchain` is retired, the application **can** pass to
 E.g., an application may present an image from the old swapchain before an
 image from the new swapchain is ready to be presented.
 As usual, [vkQueuePresentKHR](#vkQueuePresentKHR) **may** fail if `oldSwapchain` has
-entered a state that causes `VK_ERROR_OUT_OF_DATE_KHR` to be returned.
+entered a state that causes [VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult) to be returned.
 
 The application **can** continue to use a shared presentable image obtained
 from `oldSwapchain` until a presentable image is acquired from the new
 swapchain, as long as it has not entered a state that causes it to return
-`VK_ERROR_OUT_OF_DATE_KHR`. |
+[VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult). |
 
 Valid Usage
 
@@ -9945,8 +9882,8 @@ feature is not enabled, then the `pNext` chain **must** not include a
 [](#VUID-VkSwapchainCreateInfoKHR-presentMode-02839) VUID-VkSwapchainCreateInfoKHR-presentMode-02839
 
 If `presentMode` is not
-`VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR` nor
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`, then
+[VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](#VkPresentModeKHR) nor
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](#VkPresentModeKHR), then
 `minImageCount` **must** be greater than or equal to the value returned
 in the `minImageCount` member of the `VkSurfaceCapabilitiesKHR`
 structure returned by [vkGetPhysicalDeviceSurfaceCapabilitiesKHR](#vkGetPhysicalDeviceSurfaceCapabilitiesKHR)
@@ -9956,8 +9893,8 @@ for the surface
 [](#VUID-VkSwapchainCreateInfoKHR-minImageCount-01383) VUID-VkSwapchainCreateInfoKHR-minImageCount-01383
 
 `minImageCount` **must** be `1` if `presentMode` is either
-`VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR` or
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`
+[VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](#VkPresentModeKHR) or
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](#VkPresentModeKHR)
 
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-imageFormat-01273) VUID-VkSwapchainCreateInfoKHR-imageFormat-01273
@@ -9998,7 +9935,7 @@ surface and `presentMode`
 
 If the [`swapchainMaintenance1`](../features.html#features-swapchainMaintenance1)
 feature is not enabled, then `flags` **must** not include
-`VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR`
+[VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR](#VkSwapchainCreateFlagBitsKHR)
 
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-imageExtent-01689) VUID-VkSwapchainCreateInfoKHR-imageExtent-01689
@@ -10018,10 +9955,10 @@ to the `maxImageArrayLayers` member of the
 [](#VUID-VkSwapchainCreateInfoKHR-presentMode-01427) VUID-VkSwapchainCreateInfoKHR-presentMode-01427
 
 If `presentMode` is
-`VK_PRESENT_MODE_FIFO_LATEST_READY_KHR`,
-`VK_PRESENT_MODE_IMMEDIATE_KHR`, `VK_PRESENT_MODE_MAILBOX_KHR`,
-`VK_PRESENT_MODE_FIFO_KHR` or
-`VK_PRESENT_MODE_FIFO_RELAXED_KHR`, `imageUsage` **must** be a
+[VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](#VkPresentModeKHR),
+[VK_PRESENT_MODE_IMMEDIATE_KHR](#VkPresentModeKHR), [VK_PRESENT_MODE_MAILBOX_KHR](#VkPresentModeKHR),
+[VK_PRESENT_MODE_FIFO_KHR](#VkPresentModeKHR) or
+[VK_PRESENT_MODE_FIFO_RELAXED_KHR](#VkPresentModeKHR), `imageUsage` **must** be a
 subset of the supported usage flags present in the
 `supportedUsageFlags` member of the [VkSurfaceCapabilitiesKHR](#VkSurfaceCapabilitiesKHR)
 structure returned by [vkGetPhysicalDeviceSurfaceCapabilitiesKHR](#vkGetPhysicalDeviceSurfaceCapabilitiesKHR)
@@ -10030,8 +9967,8 @@ for `surface`
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-imageUsage-01384) VUID-VkSwapchainCreateInfoKHR-imageUsage-01384
 
-If `presentMode` is `VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR`
-or `VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`, `imageUsage`
+If `presentMode` is [VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](#VkPresentModeKHR)
+or [VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](#VkPresentModeKHR), `imageUsage`
 **must** be a subset of the supported usage flags present in the
 `sharedPresentSupportedUsageFlags` member of the
 [VkSharedPresentSurfaceCapabilitiesKHR](#VkSharedPresentSurfaceCapabilitiesKHR) structure returned by
@@ -10040,20 +9977,20 @@ or `VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`, `imageUsage`
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-imageSharingMode-01277) VUID-VkSwapchainCreateInfoKHR-imageSharingMode-01277
 
-If `imageSharingMode` is `VK_SHARING_MODE_CONCURRENT`,
+If `imageSharingMode` is [VK_SHARING_MODE_CONCURRENT](../resources.html#VkSharingMode),
 `pQueueFamilyIndices` **must** be a valid pointer to an array of
 `queueFamilyIndexCount` `uint32_t` values
 
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-imageSharingMode-01278) VUID-VkSwapchainCreateInfoKHR-imageSharingMode-01278
 
-If `imageSharingMode` is `VK_SHARING_MODE_CONCURRENT`,
+If `imageSharingMode` is [VK_SHARING_MODE_CONCURRENT](../resources.html#VkSharingMode),
 `queueFamilyIndexCount` **must** be greater than `1`
 
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-imageSharingMode-01428) VUID-VkSwapchainCreateInfoKHR-imageSharingMode-01428
 
-If `imageSharingMode` is `VK_SHARING_MODE_CONCURRENT`, each
+If `imageSharingMode` is [VK_SHARING_MODE_CONCURRENT](../resources.html#VkSharingMode), each
 element of `pQueueFamilyIndices` **must** be unique and **must** be less
 than `pQueueFamilyPropertyCount` returned by either
 [vkGetPhysicalDeviceQueueFamilyProperties](../devsandqueues.html#vkGetPhysicalDeviceQueueFamilyProperties)
@@ -10088,7 +10025,7 @@ surface
 
 If the [    `presentModeFifoLatestReady`](../features.html#features-presentModeFifoLatestReady) feature is not enabled,
 `presentMode` **must** not be
-`VK_PRESENT_MODE_FIFO_LATEST_READY_KHR`
+[VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](#VkPresentModeKHR)
 
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-physicalDeviceCount-01429) VUID-VkSwapchainCreateInfoKHR-physicalDeviceCount-01429
@@ -10097,7 +10034,7 @@ If the logical device was created with
 [VkDeviceGroupDeviceCreateInfo](../devsandqueues.html#VkDeviceGroupDeviceCreateInfo)::`physicalDeviceCount` equal to
 1,
 `flags` **must** not contain
-`VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR`
+[VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR](#VkSwapchainCreateFlagBitsKHR)
 
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-oldSwapchain-01933) VUID-VkSwapchainCreateInfoKHR-oldSwapchain-01933
@@ -10115,7 +10052,7 @@ The [implied image creation    parameters](#swapchain-wsi-image-create-info) of 
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-flags-03168) VUID-VkSwapchainCreateInfoKHR-flags-03168
 
-If `flags` contains `VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR`
+If `flags` contains [VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR](#VkSwapchainCreateFlagBitsKHR)
 then the `pNext` chain **must** include a
 [VkImageFormatListCreateInfo](../resources.html#VkImageFormatListCreateInfo) structure with a `viewFormatCount`
 greater than zero and `pViewFormats` **must** have an element equal to
@@ -10136,7 +10073,7 @@ compatible with the `format` as described in the
 [](#VUID-VkSwapchainCreateInfoKHR-flags-04100) VUID-VkSwapchainCreateInfoKHR-flags-04100
 
 If `flags` does not contain
-`VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR` and the `pNext`
+[VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR](#VkSwapchainCreateFlagBitsKHR) and the `pNext`
 chain include a [VkImageFormatListCreateInfo](../resources.html#VkImageFormatListCreateInfo) structure then
 [VkImageFormatListCreateInfo](../resources.html#VkImageFormatListCreateInfo)::`viewFormatCount` **must** be `0` or
 `1`
@@ -10144,9 +10081,9 @@ chain include a [VkImageFormatListCreateInfo](../resources.html#VkImageFormatLis
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-flags-03187) VUID-VkSwapchainCreateInfoKHR-flags-03187
 
-If `flags` contains `VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR`,
+If `flags` contains [VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR](#VkSwapchainCreateFlagBitsKHR),
 then `VkSurfaceProtectedCapabilitiesKHR`::`supportsProtected`
-**must** be `VK_TRUE` in the [VkSurfaceProtectedCapabilitiesKHR](#VkSurfaceProtectedCapabilitiesKHR)
+**must** be [VK_TRUE](../fundamentals.html#VK_TRUE) in the [VkSurfaceProtectedCapabilitiesKHR](#VkSurfaceProtectedCapabilitiesKHR)
 structure returned by [vkGetPhysicalDeviceSurfaceCapabilities2KHR](#vkGetPhysicalDeviceSurfaceCapabilities2KHR)
 for `surface`
 
@@ -10156,7 +10093,7 @@ for `surface`
 If the `pNext` chain includes a
 [VkSurfaceFullScreenExclusiveInfoEXT](#VkSurfaceFullScreenExclusiveInfoEXT) structure with its
 `fullScreenExclusive` member set to
-`VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT`, and
+[VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT](#VkFullScreenExclusiveEXT), and
 `surface` was created using [vkCreateWin32SurfaceKHR](#vkCreateWin32SurfaceKHR), a
 [VkSurfaceFullScreenExclusiveWin32InfoEXT](#VkSurfaceFullScreenExclusiveWin32InfoEXT) structure **must** be
 included in the `pNext` chain
@@ -10175,14 +10112,14 @@ If none of the [`presentTiming`](../features.html#features-presentTiming),
 [`presentAtAbsoluteTime`](../features.html#features-presentAtAbsoluteTime), or
 [`presentAtRelativeTime`](../features.html#features-presentAtRelativeTime) features
 are enabled, `flags` **must** not contain
-`VK_SWAPCHAIN_CREATE_PRESENT_TIMING_BIT_EXT`
+[VK_SWAPCHAIN_CREATE_PRESENT_TIMING_BIT_EXT](#VkSwapchainCreateFlagBitsKHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-sType-sType) VUID-VkSwapchainCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-pNext-pNext) VUID-VkSwapchainCreateInfoKHR-pNext-pNext
@@ -10286,17 +10223,17 @@ typedef enum VkSwapchainCreateFlagBitsKHR {
 } VkSwapchainCreateFlagBitsKHR;
 
 * 
-`VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR` specifies
+[VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR](#VkSwapchainCreateFlagBitsKHR) specifies
 that images created from the swapchain (i.e. with the `swapchain`
 member of [VkImageSwapchainCreateInfoKHR](../resources.html#VkImageSwapchainCreateInfoKHR) set to this swapchain’s
-handle) **must** use `VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT`.
+handle) **must** use [VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT](../resources.html#VkImageCreateFlagBits).
 
 * 
-`VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR` specifies that images
+[VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR](#VkSwapchainCreateFlagBitsKHR) specifies that images
 created from the swapchain are protected images.
 
 * 
-`VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR` specifies that the
+[VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR](#VkSwapchainCreateFlagBitsKHR) specifies that the
 images of the swapchain **can** be used to create a `VkImageView` with
 a different format than what the swapchain was created with.
 The list of allowed image view formats is specified by adding a
@@ -10308,7 +10245,7 @@ created with but are supported for at least one of the allowed image
 view formats.
 
 * 
-`VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR` specifies
+[VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR](#VkSwapchainCreateFlagBitsKHR) specifies
     that the implementation **may** defer allocation of memory associated with
     each swapchain image until its index is to be returned from
     [vkAcquireNextImageKHR](#vkAcquireNextImageKHR)
@@ -10316,20 +10253,20 @@ or [vkAcquireNextImage2KHR](#vkAcquireNextImage2KHR)
     for the first time.
 
 * 
-`VK_SWAPCHAIN_CREATE_PRESENT_ID_2_BIT_KHR` specifies that
+[VK_SWAPCHAIN_CREATE_PRESENT_ID_2_BIT_KHR](#VkSwapchainCreateFlagBitsKHR) specifies that
 applications **can** include the `VkPresentId2KHR` structure in the
 `pNext` chain of the [VkPresentInfoKHR](#VkPresentInfoKHR) structure to associate
 an identifier with each presentation request.
 
 * 
-`VK_SWAPCHAIN_CREATE_PRESENT_WAIT_2_BIT_KHR` specifies that
+[VK_SWAPCHAIN_CREATE_PRESENT_WAIT_2_BIT_KHR](#VkSwapchainCreateFlagBitsKHR) specifies that
 applications **can** use `vkWaitForPresent2KHR` to wait for the
 presentation engine to have begun presentation of the presentation
 request associated with [VkPresentWait2InfoKHR](#VkPresentWait2InfoKHR)::`presentId` on
 `swapchain`.
 
 * 
-`VK_SWAPCHAIN_CREATE_PRESENT_TIMING_BIT_EXT` specifies that features
+[VK_SWAPCHAIN_CREATE_PRESENT_TIMING_BIT_EXT](#VkSwapchainCreateFlagBitsKHR) specifies that features
 supported by the swapchain device in
 [VkPhysicalDevicePresentTimingFeaturesEXT](../features.html#VkPhysicalDevicePresentTimingFeaturesEXT) **can** be used to collect
 timing information or schedule presentation requests at specific times.
@@ -10365,14 +10302,14 @@ structure.
 `modes` is a bitfield of modes that the swapchain **can** be used with.
 
 If this structure is not present, `modes` is considered to be
-`VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR`.
+[VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR](#VkDeviceGroupPresentModeFlagBitsKHR).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDeviceGroupSwapchainCreateInfoKHR-sType-sType) VUID-VkDeviceGroupSwapchainCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceGroupSwapchainCreateInfoKHR-modes-parameter) VUID-VkDeviceGroupSwapchainCreateInfoKHR-modes-parameter
@@ -10411,21 +10348,21 @@ the swapchain.
 
 If the `pNext` chain of [VkSwapchainCreateInfoKHR](#VkSwapchainCreateInfoKHR) does not include
 this structure, the default value for `localDimmingEnable` is
-`VK_TRUE`, meaning local dimming is initially enabled for the swapchain.
+[VK_TRUE](../fundamentals.html#VK_TRUE), meaning local dimming is initially enabled for the swapchain.
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSwapchainDisplayNativeHdrCreateInfoAMD-sType-sType) VUID-VkSwapchainDisplayNativeHdrCreateInfoAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD](../fundamentals.html#VkStructureType)
 
 Valid Usage
 
 * 
 [](#VUID-VkSwapchainDisplayNativeHdrCreateInfoAMD-localDimmingEnable-04449) VUID-VkSwapchainDisplayNativeHdrCreateInfoAMD-localDimmingEnable-04449
 
-It is only valid to set `localDimmingEnable` to `VK_TRUE` if
+It is only valid to set `localDimmingEnable` to [VK_TRUE](../fundamentals.html#VK_TRUE) if
 [VkDisplayNativeHdrSurfaceCapabilitiesAMD](#VkDisplayNativeHdrSurfaceCapabilitiesAMD)::`localDimmingSupport`
 is supported
 
@@ -10477,7 +10414,7 @@ If the `pNext` chain of [VkSwapchainCreateInfoKHR](#VkSwapchainCreateInfoKHR) in
 [VkSurfaceFullScreenExclusiveInfoEXT](#VkSurfaceFullScreenExclusiveInfoEXT) structure, then that structure
 specifies the application’s preferred full-screen presentation behavior.
 If this structure is not present, `fullScreenExclusive` is considered to
-be `VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT`.
+be [VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT](#VkFullScreenExclusiveEXT).
 
 To enable surface counters when creating a swapchain, add a
 `VkSwapchainCounterCreateInfoEXT` structure to the `pNext` chain of
@@ -10516,7 +10453,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSwapchainCounterCreateInfoEXT-sType-sType) VUID-VkSwapchainCounterCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSwapchainCounterCreateInfoEXT-surfaceCounters-parameter) VUID-VkSwapchainCounterCreateInfoEXT-surfaceCounters-parameter
@@ -10548,7 +10485,7 @@ the counter to query.
 `pCounterValue` will return the current value of the counter.
 
 If a counter is not available because the swapchain is out of date, the
-implementation **may** return `VK_ERROR_OUT_OF_DATE_KHR`.
+implementation **may** return [VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult).
 
 Valid Usage
 
@@ -10590,24 +10527,24 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DATE_KHR`
+[VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 To specify compression properties for the swapchain images in this
 swapchain, add a [VkImageCompressionControlEXT](../resources.html#VkImageCompressionControlEXT) structure to the
@@ -10662,7 +10599,7 @@ the surface
 [](#VUID-VkSwapchainPresentModesCreateInfoKHR-presentModeFifoLatestReady-10160) VUID-VkSwapchainPresentModesCreateInfoKHR-presentModeFifoLatestReady-10160
 
 If the [    `presentModeFifoLatestReady`](../features.html#features-presentModeFifoLatestReady) feature is not enabled, pPresentModes
-**must** not contain `VK_PRESENT_MODE_FIFO_LATEST_READY_KHR`
+**must** not contain [VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](#VkPresentModeKHR)
 
 * 
 [](#VUID-VkSwapchainPresentModesCreateInfoKHR-pPresentModes-07763) VUID-VkSwapchainPresentModesCreateInfoKHR-pPresentModes-07763
@@ -10684,7 +10621,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSwapchainPresentModesCreateInfoKHR-sType-sType) VUID-VkSwapchainPresentModesCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_MODES_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_MODES_CREATE_INFO_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSwapchainPresentModesCreateInfoKHR-pPresentModes-parameter) VUID-VkSwapchainPresentModesCreateInfoKHR-pPresentModes-parameter
@@ -10701,10 +10638,10 @@ than those of the target surface, different behavior is possible on
 different platforms per their respective specifications:
 
 * 
-Presentation fails and `VK_ERROR_OUT_OF_DATE_KHR` is returned
+Presentation fails and [VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult) is returned
 
 * 
-Scaling is done and `VK_SUCCESS` or `VK_SUBOPTIMAL_KHR` is
+Scaling is done and [VK_SUCCESS](../fundamentals.html#VkResult) or [VK_SUBOPTIMAL_KHR](../fundamentals.html#VkResult) is
 returned
 
 * 
@@ -10860,7 +10797,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSwapchainPresentScalingCreateInfoKHR-sType-sType) VUID-VkSwapchainPresentScalingCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_SCALING_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_SCALING_CREATE_INFO_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSwapchainPresentScalingCreateInfoKHR-scalingBehavior-parameter) VUID-VkSwapchainPresentScalingCreateInfoKHR-scalingBehavior-parameter
@@ -11006,7 +10943,7 @@ presentable images **must** match between all the swapchains.
 If the displays used by any of the swapchains do not use the same
 presentable image layout or are incompatible in a way that prevents sharing
 images, swapchain creation will fail with the result code
-`VK_ERROR_INCOMPATIBLE_DISPLAY_KHR`.
+[VK_ERROR_INCOMPATIBLE_DISPLAY_KHR](../fundamentals.html#VkResult).
 If any error occurs, no swapchains will be created.
 Images presented to multiple swapchains **must** be re-acquired from all of
 them before being modified.
@@ -11050,30 +10987,30 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_INCOMPATIBLE_DISPLAY_KHR`
+[VK_ERROR_INCOMPATIBLE_DISPLAY_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 To obtain the array of presentable images associated with a swapchain, call:
 
@@ -11106,8 +11043,8 @@ and on return the variable is overwritten with the number of structures
 actually written to `pSwapchainImages`.
 If the value of `pSwapchainImageCount` is less than the number of
 presentable images for `swapchain`, at most `pSwapchainImageCount`
-structures will be written, and `VK_INCOMPLETE` will be returned instead
-of `VK_SUCCESS`, to indicate that not all the available presentable
+structures will be written, and [VK_INCOMPLETE](../fundamentals.html#VkResult) will be returned instead
+of [VK_SUCCESS](../fundamentals.html#VkResult), to indicate that not all the available presentable
 images were returned.
 
 Valid Usage (Implicit)
@@ -11142,31 +11079,31 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 |  | By knowing all presentable images used in the swapchain, the application can
 | --- | --- |
 create command buffers that reference these images prior to entering its
 main rendering loop.
 However, command buffers are not allowed to reference presentable images
-created with `VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR`
+created with [VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR](#VkSwapchainCreateFlagBitsKHR)
 until their indices have been returned from [vkAcquireNextImageKHR](#vkAcquireNextImageKHR) at
 least once. |
 
@@ -11174,9 +11111,9 @@ Images returned by [vkGetSwapchainImagesKHR](#vkGetSwapchainImagesKHR) are fully
 before they are passed to the application, as if they are each bound
 completely and contiguously to a single `VkDeviceMemory` object
 , unless the swapchain is created with the
-`VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR` flag
+[VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR](#VkSwapchainCreateFlagBitsKHR) flag
 .
-All presentable images are initially in the `VK_IMAGE_LAYOUT_UNDEFINED`
+All presentable images are initially in the [VK_IMAGE_LAYOUT_UNDEFINED](../resources.html#VkImageLayout)
 layout, thus before using presentable images, the application **must**
 transition them to a valid layout for the intended use.
 
@@ -11219,7 +11156,8 @@ being acquired.
 no image is available.
 
 * 
-`semaphore` is [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE) or a semaphore to signal.
+`semaphore` is [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE) or a semaphore defining a
+[semaphore signal operation](../synchronization.html#synchronization-semaphores-signaling).
 
 * 
 `fence` is [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE) or a fence to signal.
@@ -11230,10 +11168,15 @@ the next image to use (i.e. an index into the array of images returned
 by `vkGetSwapchainImagesKHR`) is returned.
 
 If the `swapchain` has been created with the
-`VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR` flag, the image
+[VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR](#VkSwapchainCreateFlagBitsKHR) flag, the image
 whose index is returned in `pImageIndex` will be fully backed by memory
 before this call returns to the application, as if it is bound completely
 and contiguously to a single `VkDeviceMemory` object.
+
+If `semaphore` defines a
+[semaphore signal operation](../synchronization.html#synchronization-semaphores-signaling), its
+first [synchronization scope](../synchronization.html#synchronization-dependencies-scopes)
+includes acquisition of the image.
 
 Valid Usage
 
@@ -11283,7 +11226,7 @@ member of `pAcquireInfo`, `timeout` **must** not be `UINT64_MAX`
 [](#VUID-vkAcquireNextImageKHR-semaphore-03265) VUID-vkAcquireNextImageKHR-semaphore-03265
 
 `semaphore` **must** have a [VkSemaphoreType](../synchronization.html#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_BINARY`
+[VK_SEMAPHORE_TYPE_BINARY](../synchronization.html#VkSemaphoreTypeKHR)
 
 Valid Usage (Implicit)
 
@@ -11343,46 +11286,46 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_NOT_READY`
+[VK_NOT_READY](../fundamentals.html#VkResult)
 
 * 
-`VK_SUBOPTIMAL_KHR`
+[VK_SUBOPTIMAL_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 * 
-`VK_TIMEOUT`
+[VK_TIMEOUT](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT`
+[VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DATE_KHR`
+[VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 If an image is acquired successfully, `vkAcquireNextImageKHR` **must**
-either return `VK_SUCCESS` or `VK_SUBOPTIMAL_KHR`.
-The implementation **may** return `VK_SUBOPTIMAL_KHR` if the swapchain no
+either return [VK_SUCCESS](../fundamentals.html#VkResult) or [VK_SUBOPTIMAL_KHR](../fundamentals.html#VkResult).
+The implementation **may** return [VK_SUBOPTIMAL_KHR](../fundamentals.html#VkResult) if the swapchain no
 longer matches the surface properties exactly, but **can** still be used for
 presentation.
 
@@ -11404,10 +11347,10 @@ be different than the order the images were presented.
 
 If `timeout` is zero, then `vkAcquireNextImageKHR` does not wait,
 and will either successfully acquire an image, or fail and return
-`VK_NOT_READY` if no image is available.
+[VK_NOT_READY](../fundamentals.html#VkResult) if no image is available.
 
 If the specified timeout period expires before an image is acquired,
-`vkAcquireNextImageKHR` returns `VK_TIMEOUT`.
+`vkAcquireNextImageKHR` returns [VK_TIMEOUT](../fundamentals.html#VkResult).
 If `timeout` is `UINT64_MAX`, the timeout period is treated as
 infinite, and `vkAcquireNextImageKHR` will block until an image is
 acquired or an error occurs.
@@ -11428,7 +11371,7 @@ that the application has currently acquired is greater than S-M.
 If `vkAcquireNextImageKHR` is called when the number of images that the
 application has currently acquired is less than or equal to S-M,
 `vkAcquireNextImageKHR` **must** return in finite time with an allowed
-`VkResult` code.
+[VkResult](../fundamentals.html#VkResult) code.
 
 |  | Returning a result in finite time guarantees that the implementation cannot
 | --- | --- |
@@ -11441,14 +11384,14 @@ are currently being presented, and there are not any vacant images left to
 be acquired. |
 
 If the swapchain images no longer match native surface properties, either
-`VK_SUBOPTIMAL_KHR` or `VK_ERROR_OUT_OF_DATE_KHR` **must** be returned.
-If `VK_ERROR_OUT_OF_DATE_KHR` is returned, no image is acquired and
+[VK_SUBOPTIMAL_KHR](../fundamentals.html#VkResult) or [VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult) **must** be returned.
+If [VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult) is returned, no image is acquired and
 attempts to present previously acquired images to the swapchain will also
-fail with `VK_ERROR_OUT_OF_DATE_KHR`.
+fail with [VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult).
 Applications need to create a new swapchain for the surface to continue
-presenting if `VK_ERROR_OUT_OF_DATE_KHR` is returned.
+presenting if [VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult) is returned.
 
-|  | `VK_SUBOPTIMAL_KHR` **may** happen, for example, if the platform surface
+|  | [VK_SUBOPTIMAL_KHR](../fundamentals.html#VkResult) **may** happen, for example, if the platform surface
 | --- | --- |
 has been resized but the platform is able to scale the presented images to
 the new size to produce valid surface updates.
@@ -11459,7 +11402,7 @@ match the platform surface properties. |
 If device loss occurs (see [Lost Device](../devsandqueues.html#devsandqueues-lost-device)) before
 the timeout has expired, `vkAcquireNextImageKHR` **must** return in finite
 time with either one of the allowed success codes, or
-`VK_ERROR_DEVICE_LOST`.
+[VK_ERROR_DEVICE_LOST](../fundamentals.html#VkResult).
 
 If `semaphore` is not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), the semaphore **must** be
 unsignaled, with no signal or wait operations pending.
@@ -11505,7 +11448,7 @@ data will be unmodified compared to when it was presented.
 
 |  | Exclusive ownership of presentable images corresponding to a swapchain
 | --- | --- |
-created with `VK_SHARING_MODE_EXCLUSIVE` as defined in
+created with [VK_SHARING_MODE_EXCLUSIVE](../resources.html#VkSharingMode) as defined in
 [Resource Sharing](../resources.html#resources-sharing) is not altered by a call to
 `vkAcquireNextImageKHR`.
 That means upon the first acquisition from such a swapchain presentable
@@ -11517,23 +11460,23 @@ The possible return values for `vkAcquireNextImageKHR` depend on the
 `timeout` provided:
 
 * 
-`VK_SUCCESS` is returned if an image became available.
+[VK_SUCCESS](../fundamentals.html#VkResult) is returned if an image became available.
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR` is returned if the surface becomes no
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult) is returned if the surface becomes no
 longer available.
 
 * 
-`VK_NOT_READY` is returned if `timeout` is zero and no image was
+[VK_NOT_READY](../fundamentals.html#VkResult) is returned if `timeout` is zero and no image was
 available.
 
 * 
-`VK_TIMEOUT` is returned if `timeout` is greater than zero and
+[VK_TIMEOUT](../fundamentals.html#VkResult) is returned if `timeout` is greater than zero and
 less than `UINT64_MAX`, and no image became available within the time
 allowed.
 
 * 
-`VK_SUBOPTIMAL_KHR` **may** be returned if an image became available,
+[VK_SUBOPTIMAL_KHR](../fundamentals.html#VkResult) **may** be returned if an image became available,
 and the swapchain no longer matches the surface properties exactly, but
 **can** still be used to present to the surface successfully.
 
@@ -11546,7 +11489,7 @@ the current swapchain indefinitely or temporarily in this state, or to
 re-create the swapchain to better match the platform surface properties. |
 
 * 
-`VK_ERROR_OUT_OF_DATE_KHR` is returned if the surface has changed in
+[VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult) is returned if the surface has changed in
 such a way that it is no longer compatible with the swapchain, and
 further presentation requests using the swapchain will fail.
 Applications **must** query the new surface properties and recreate their
@@ -11566,7 +11509,7 @@ implementation-defined.
 It is the application’s responsibility to detect surface size changes and
 react appropriately.
 If presentation fails because of a mismatch in the surface and presented
-image sizes, a `VK_ERROR_OUT_OF_DATE_KHR` error will be returned.
+image sizes, a [VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult) error will be returned.
 
 |  | For example, consider a 4x3 window/surface that gets resized to be 3x4
 | --- | --- |
@@ -11599,7 +11542,7 @@ structure containing parameters of the acquire.
 index of the next image to use.
 
 If the `swapchain` has been created with the
-`VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR` flag, the image
+[VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR](#VkSwapchainCreateFlagBitsKHR) flag, the image
 whose index is returned in `pImageIndex` will be fully backed by memory
 before this call returns to the application.
 
@@ -11634,42 +11577,42 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_NOT_READY`
+[VK_NOT_READY](../fundamentals.html#VkResult)
 
 * 
-`VK_SUBOPTIMAL_KHR`
+[VK_SUBOPTIMAL_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 * 
-`VK_TIMEOUT`
+[VK_TIMEOUT](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT`
+[VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DATE_KHR`
+[VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkAcquireNextImageInfoKHR` structure is defined as:
 
@@ -11700,7 +11643,8 @@ acquired.
 no image is available.
 
 * 
-`semaphore` is [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE) or a semaphore to signal.
+`semaphore` is [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE) or a semaphore that defines a
+[semaphore signal operation](../synchronization.html#synchronization-semaphores-signaling).
 
 * 
 `fence` is [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE) or a fence to signal.
@@ -11774,14 +11718,14 @@ execution on that queue
 [](#VUID-VkAcquireNextImageInfoKHR-semaphore-03266) VUID-VkAcquireNextImageInfoKHR-semaphore-03266
 
 `semaphore` **must** have a [VkSemaphoreType](../synchronization.html#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_BINARY`
+[VK_SEMAPHORE_TYPE_BINARY](../synchronization.html#VkSemaphoreTypeKHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkAcquireNextImageInfoKHR-sType-sType) VUID-VkAcquireNextImageInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkAcquireNextImageInfoKHR-pNext-pNext) VUID-VkAcquireNextImageInfoKHR-pNext-pNext
@@ -11846,48 +11790,48 @@ specified in the Vulkan specification; it depends on the platform.
 For most platforms the origin is by default upper-left, meaning the pixel of
 the presented [VkImage](../resources.html#VkImage) at coordinates (0,0) would appear at the
 upper left pixel of the platform surface (assuming
-`VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR`, and the display standing the
+[VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](#VkSurfaceTransformFlagBitsKHR), and the display standing the
 right way up). |
 
-The result codes `VK_ERROR_OUT_OF_DATE_KHR` and `VK_SUBOPTIMAL_KHR`
+The result codes [VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult) and [VK_SUBOPTIMAL_KHR](../fundamentals.html#VkResult)
 have the same meaning when returned by `vkQueuePresentKHR` as they do
 when returned by `vkAcquireNextImageKHR`.
 If any `swapchain` member of `pPresentInfo` was created with
-`VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT`,
-`VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT` will be returned if that
+[VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT](#VkFullScreenExclusiveEXT),
+[VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT](../fundamentals.html#VkResult) will be returned if that
 swapchain does not have exclusive full-screen access, possibly for
 implementation-specific reasons outside of the application’s control.
 If multiple swapchains are presented, the result code is determined by
 applying the following rules in order:
 
 * 
-If the device is lost, `VK_ERROR_DEVICE_LOST` is returned.
+If the device is lost, [VK_ERROR_DEVICE_LOST](../fundamentals.html#VkResult) is returned.
 
 * 
 If any of the target surfaces are no longer available the error
-`VK_ERROR_SURFACE_LOST_KHR` is returned.
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult) is returned.
 
 * 
 If any of the presents would have a result of
-`VK_ERROR_OUT_OF_DATE_KHR` if issued separately then
-`VK_ERROR_OUT_OF_DATE_KHR` is returned.
+[VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult) if issued separately then
+[VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult) is returned.
 
 * 
 If any of the presents would have a result of
-`VK_ERROR_PRESENT_TIMING_QUEUE_FULL_EXT` if issued separately then
-`VK_ERROR_PRESENT_TIMING_QUEUE_FULL_EXT` is returned.
+[VK_ERROR_PRESENT_TIMING_QUEUE_FULL_EXT](../fundamentals.html#VkResult) if issued separately then
+[VK_ERROR_PRESENT_TIMING_QUEUE_FULL_EXT](../fundamentals.html#VkResult) is returned.
 
 * 
 If any of the presents would have a result of
-`VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT` if issued separately
-then `VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT` is returned.
+[VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT](../fundamentals.html#VkResult) if issued separately
+then [VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT](../fundamentals.html#VkResult) is returned.
 
 * 
-If any of the presents would have a result of `VK_SUBOPTIMAL_KHR` if
-issued separately then `VK_SUBOPTIMAL_KHR` is returned.
+If any of the presents would have a result of [VK_SUBOPTIMAL_KHR](../fundamentals.html#VkResult) if
+issued separately then [VK_SUBOPTIMAL_KHR](../fundamentals.html#VkResult) is returned.
 
 * 
-Otherwise `VK_SUCCESS` is returned.
+Otherwise [VK_SUCCESS](../fundamentals.html#VkResult) is returned.
 
 Any writes to memory backing the images referenced by the
 `pImageIndices` and `pSwapchains` members of `pPresentInfo`,
@@ -11895,13 +11839,13 @@ that are available before [vkQueuePresentKHR](#vkQueuePresentKHR) is executed, a
 automatically made visible to the read access performed by the presentation
 engine.
 This automatic visibility operation for an image happens-after the semaphore
-signal operation, and happens-before the presentation engine accesses the
+wait operation, and happens-before the presentation engine accesses the
 image.
 
 Presentation is a read-only operation that will not affect the content of
 the presentable images.
 Upon reacquiring the image and transitioning it away from the
-`VK_IMAGE_LAYOUT_PRESENT_SRC_KHR` layout, the contents will be the same
+[VK_IMAGE_LAYOUT_PRESENT_SRC_KHR](../resources.html#VkImageLayout) layout, the contents will be the same
 as they were prior to transitioning the image to the present source layout
 and presenting it.
 However, if a mechanism other than Vulkan is used to modify the platform
@@ -11934,23 +11878,22 @@ However, the scope of this set of queue operations does not include the
 actual processing of the image by the presentation engine.
 
 If `vkQueuePresentKHR` fails to enqueue the corresponding set of queue
-operations, it **may** return `VK_ERROR_OUT_OF_HOST_MEMORY` or
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`.
+operations, it **may** return [VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult) or
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult).
 If it does, the implementation **must** ensure that the state and contents of
 any resources or synchronization primitives referenced is unaffected by the
 call or its failure.
 
 If `vkQueuePresentKHR` fails in such a way that the implementation is
 unable to make that guarantee, the implementation **must** return
-`VK_ERROR_DEVICE_LOST`.
+[VK_ERROR_DEVICE_LOST](../fundamentals.html#VkResult).
 
 However, if the presentation request is rejected by the presentation engine
-with an error `VK_ERROR_OUT_OF_DATE_KHR`,
-`VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT`,
-or `VK_ERROR_SURFACE_LOST_KHR`, the set of queue operations are still
-considered to be enqueued and thus any semaphore wait operation specified in
-[VkPresentInfoKHR](#VkPresentInfoKHR) will execute when the corresponding queue operation
-is complete.
+with an error [VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult),
+[VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT](../fundamentals.html#VkResult),
+or [VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult), the set of queue operations are still
+considered to be enqueued and thus any [semaphore wait operation](../synchronization.html#synchronization-semaphores-waiting) specified in [VkPresentInfoKHR](#VkPresentInfoKHR) will execute
+when the corresponding queue operation is complete.
 
 `vkQueuePresentKHR` releases the acquisition of the images referenced by
 `imageIndices`.
@@ -11964,7 +11907,7 @@ using `vkAcquireNextImageKHR`.
 |  | The application **can** continue to present any acquired images from a retired
 | --- | --- |
 swapchain as long as the swapchain has not entered a state that causes
-[vkQueuePresentKHR](#vkQueuePresentKHR) to return `VK_ERROR_OUT_OF_DATE_KHR`. |
+[vkQueuePresentKHR](#vkQueuePresentKHR) to return [VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult). |
 
 Valid Usage
 
@@ -12003,7 +11946,7 @@ queues waiting on the same semaphore
 
 All elements of the `pWaitSemaphores` member of `pPresentInfo`
 **must** be created with a [VkSemaphoreType](../synchronization.html#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_BINARY`
+[VK_SEMAPHORE_TYPE_BINARY](../synchronization.html#VkSemaphoreTypeKHR)
 
 * 
 [](#VUID-vkQueuePresentKHR-pWaitSemaphores-03268) VUID-vkQueuePresentKHR-pWaitSemaphores-03268
@@ -12029,6 +11972,8 @@ Host Synchronization
 
 * 
 Host access to `queue` **must** be externally synchronized
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](../devsandqueues.html#VkDeviceQueueCreateFlagBits)
 
 Command Properties
 | [Command Buffer Levels](../cmdbuffers.html#VkCommandBufferLevel) | [Render Pass Scope](../renderpass.html#vkCmdBeginRenderPass) | [Video Coding Scope](../videocoding.html#vkCmdBeginVideoCodingKHR) | [Supported Queue Types](../devsandqueues.html#VkQueueFlagBits) | [Command Type](../fundamentals.html#fundamentals-queueoperation-command-types) |
@@ -12040,39 +11985,39 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUBOPTIMAL_KHR`
+[VK_SUBOPTIMAL_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT`
+[VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DATE_KHR`
+[VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_PRESENT_TIMING_QUEUE_FULL_EXT`
+[VK_ERROR_PRESENT_TIMING_QUEUE_FULL_EXT](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkPresentInfoKHR` structure is defined as:
 
@@ -12130,9 +12075,9 @@ If non-`NULL`, each entry in `pResults` will be set to the
 index in `pSwapchains`.
 
 Before an application **can** present an image, the image’s layout **must** be
-transitioned to the `VK_IMAGE_LAYOUT_PRESENT_SRC_KHR`
+transitioned to the [VK_IMAGE_LAYOUT_PRESENT_SRC_KHR](../resources.html#VkImageLayout)
 layout, or for a shared presentable image the
-`VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR` layout.
+[VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](../resources.html#VkImageLayout) layout.
 
 |  | When transitioning the image to the appropriate layout, there is no need to
 | --- | --- |
@@ -12140,7 +12085,12 @@ delay subsequent processing, or perform any visibility operations (as
 [vkQueuePresentKHR](#vkQueuePresentKHR) performs automatic visibility operations).
 To achieve this, the `dstAccessMask` member of the
 [VkImageMemoryBarrier](../synchronization.html#VkImageMemoryBarrier) **should** be `0`, and the `dstStageMask`
-parameter **should** be `VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT`. |
+parameter **should** be [VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT](../synchronization.html#VkPipelineStageFlagBits). |
+
+The second [synchronization scope](../synchronization.html#synchronization-dependencies-scopes) of
+each [semaphore wait operation](../synchronization.html#synchronization-semaphores-waiting) defined
+by this structure includes presentation of each image indicated by
+`pSwapchains` and `pImageIndices`.
 
 Valid Usage
 
@@ -12155,8 +12105,8 @@ Elements of `pSwapchain` **must** be unique
 Each element of `pImageIndices` **must** be the index of a presentable
 image acquired from the swapchain specified by the corresponding element
 of the `pSwapchains` array, and the presented image subresource
-**must** be in the `VK_IMAGE_LAYOUT_PRESENT_SRC_KHR`
-or `VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`
+**must** be in the [VK_IMAGE_LAYOUT_PRESENT_SRC_KHR](../resources.html#VkImageLayout)
+or [VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](../resources.html#VkImageLayout)
 layout at the time the operation is executed on a `VkDevice`
 
 * 
@@ -12185,7 +12135,7 @@ array **must** be created with [VkSwapchainPresentModesCreateInfoKHR](#VkSwapcha
 
 If the `pNext` chain of this structure includes a
 [VkFrameBoundaryTensorsARM](../debugging.html#VkFrameBoundaryTensorsARM) structure then it **must** also include a
-[VkFrameBoundaryEXT](../debugging.html#VkFrameBoundaryEXT) structure.
+[VkFrameBoundaryEXT](../debugging.html#VkFrameBoundaryEXT) structure
 
 * 
 [](#VUID-VkPresentInfoKHR-pNext-10821) VUID-VkPresentInfoKHR-pNext-10821
@@ -12198,7 +12148,7 @@ enabled, each `presentIds` entry in that structure **must** be zero
 [](#VUID-VkPresentInfoKHR-presentId2Supported-10822) VUID-VkPresentInfoKHR-presentId2Supported-10822
 
 If a [VkPresentId2KHR](#VkPresentId2KHR) structure is included and contains non-zero
-presentIds, `presentId2Supported` **must** be `VK_TRUE` in the
+presentIds, `presentId2Supported` **must** be [VK_TRUE](../fundamentals.html#VK_TRUE) in the
 [VkSurfaceCapabilitiesPresentId2KHR](#VkSurfaceCapabilitiesPresentId2KHR) structure returned by
 [vkGetPhysicalDeviceSurfaceCapabilities2KHR](#vkGetPhysicalDeviceSurfaceCapabilities2KHR) for the `surface`
 
@@ -12207,7 +12157,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPresentInfoKHR-sType-sType) VUID-VkPresentInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_INFO_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPresentInfoKHR-pNext-pNext) VUID-VkPresentInfoKHR-pNext-pNext
@@ -12312,7 +12262,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPresentRegionsKHR-sType-sType) VUID-VkPresentRegionsKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPresentRegionsKHR-pRegions-parameter) VUID-VkPresentRegionsKHR-pRegions-parameter
@@ -12446,7 +12396,7 @@ visible region, pixels mapping only to those portions of the rectangle
 will be discarded.
 
 * 
-`persistent`: If this is `VK_TRUE`, the display engine will
+`persistent`: If this is [VK_TRUE](../fundamentals.html#VK_TRUE), the display engine will
 enable buffered mode on displays that support it.
 This allows the display engine to stop sending content to the display
 until a new image is presented.
@@ -12480,15 +12430,15 @@ presented uses
 If the `persistentContent` member of the
 `VkDisplayPropertiesKHR` structure returned by
 `vkGetPhysicalDeviceDisplayPropertiesKHR` for the display the
-present operation targets is `VK_FALSE`, then `persistent` **must**
-be `VK_FALSE`
+present operation targets is [VK_FALSE](../fundamentals.html#VK_FALSE), then `persistent` **must**
+be [VK_FALSE](../fundamentals.html#VK_FALSE)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDisplayPresentInfoKHR-sType-sType) VUID-VkDisplayPresentInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR](../fundamentals.html#VkStructureType)
 
 If the `pNext` chain of [VkPresentInfoKHR](#VkPresentInfoKHR) includes a
 `VkDeviceGroupPresentInfoKHR` structure, then that structure includes an
@@ -12525,21 +12475,21 @@ each element of [VkPresentInfoKHR](#VkPresentInfoKHR)::`pSwapchains`.
 specifying the device group present mode that will be used for this
 present.
 
-If `mode` is `VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR`, then each
+If `mode` is [VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR](#VkDeviceGroupPresentModeFlagBitsKHR), then each
 element of `pDeviceMasks` selects which instance of the swapchain image
 is presented.
 Each element of `pDeviceMasks` **must** have exactly one bit set, and the
 corresponding physical device **must** have a presentation engine as reported
 by [VkDeviceGroupPresentCapabilitiesKHR](#VkDeviceGroupPresentCapabilitiesKHR).
 
-If `mode` is `VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR`, then
+If `mode` is [VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR](#VkDeviceGroupPresentModeFlagBitsKHR), then
 each element of `pDeviceMasks` selects which instance of the swapchain
 image is presented.
 Each element of `pDeviceMasks` **must** have exactly one bit set, and some
 physical device in the logical device **must** include that bit in its
 [VkDeviceGroupPresentCapabilitiesKHR](#VkDeviceGroupPresentCapabilitiesKHR)::`presentMask`.
 
-If `mode` is `VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR`, then each
+If `mode` is [VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR](#VkDeviceGroupPresentModeFlagBitsKHR), then each
 element of `pDeviceMasks` selects which instances of the swapchain image
 are component-wise summed and the sum of those images is presented.
 If the sum in any component is outside the representable range, the value of
@@ -12549,7 +12499,7 @@ are set in one of the elements of
 [VkDeviceGroupPresentCapabilitiesKHR](#VkDeviceGroupPresentCapabilitiesKHR)::`presentMask`.
 
 If `mode` is
-`VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR`, then each
+[VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR](#VkDeviceGroupPresentModeFlagBitsKHR), then each
 element of `pDeviceMasks` selects which instance(s) of the swapchain
 images are presented.
 For each bit set in each element of `pDeviceMasks`, the corresponding
@@ -12559,7 +12509,7 @@ physical device **must** have a presentation engine as reported by
 If `VkDeviceGroupPresentInfoKHR` is not provided or `swapchainCount`
 is zero then the masks are considered to be `1`.
 If `VkDeviceGroupPresentInfoKHR` is not provided, `mode` is
-considered to be `VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR`.
+considered to be [VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR](#VkDeviceGroupPresentModeFlagBitsKHR).
 
 Valid Usage
 
@@ -12572,7 +12522,7 @@ Valid Usage
 * 
 [](#VUID-VkDeviceGroupPresentInfoKHR-mode-01298) VUID-VkDeviceGroupPresentInfoKHR-mode-01298
 
-If `mode` is `VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR`, then
+If `mode` is [VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR](#VkDeviceGroupPresentModeFlagBitsKHR), then
 each element of `pDeviceMasks` **must** have exactly one bit set, and
 the corresponding element of
 [VkDeviceGroupPresentCapabilitiesKHR](#VkDeviceGroupPresentCapabilitiesKHR)::`presentMask` **must** be
@@ -12581,7 +12531,7 @@ non-zero
 * 
 [](#VUID-VkDeviceGroupPresentInfoKHR-mode-01299) VUID-VkDeviceGroupPresentInfoKHR-mode-01299
 
-If `mode` is `VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR`, then
+If `mode` is [VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR](#VkDeviceGroupPresentModeFlagBitsKHR), then
 each element of `pDeviceMasks` **must** have exactly one bit set, and
 some physical device in the logical device **must** include that bit in its
 [VkDeviceGroupPresentCapabilitiesKHR](#VkDeviceGroupPresentCapabilitiesKHR)::`presentMask`
@@ -12589,7 +12539,7 @@ some physical device in the logical device **must** include that bit in its
 * 
 [](#VUID-VkDeviceGroupPresentInfoKHR-mode-01300) VUID-VkDeviceGroupPresentInfoKHR-mode-01300
 
-If `mode` is `VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR`, then
+If `mode` is [VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR](#VkDeviceGroupPresentModeFlagBitsKHR), then
 each element of `pDeviceMasks` **must** have a value for which all set
 bits are set in one of the elements of
 [VkDeviceGroupPresentCapabilitiesKHR](#VkDeviceGroupPresentCapabilitiesKHR)::`presentMask`
@@ -12598,7 +12548,7 @@ bits are set in one of the elements of
 [](#VUID-VkDeviceGroupPresentInfoKHR-mode-01301) VUID-VkDeviceGroupPresentInfoKHR-mode-01301
 
 If `mode` is
-`VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR`, then for
+[VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR](#VkDeviceGroupPresentModeFlagBitsKHR), then for
 each bit set in each element of `pDeviceMasks`, the corresponding
 element of [VkDeviceGroupPresentCapabilitiesKHR](#VkDeviceGroupPresentCapabilitiesKHR)::`presentMask`
 **must** be non-zero
@@ -12621,7 +12571,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceGroupPresentInfoKHR-sType-sType) VUID-VkDeviceGroupPresentInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceGroupPresentInfoKHR-pDeviceMasks-parameter) VUID-VkDeviceGroupPresentInfoKHR-pDeviceMasks-parameter
@@ -12681,7 +12631,7 @@ Valid Usage
 
 All swapchains in [VkPresentInfoKHR](#VkPresentInfoKHR)::`pSwapchains` **must** have
 been created with the [VkSwapchainCreateInfoKHR](#VkSwapchainCreateInfoKHR)::`flags` field
-containing `VK_SWAPCHAIN_CREATE_PRESENT_TIMING_BIT_EXT`
+containing [VK_SWAPCHAIN_CREATE_PRESENT_TIMING_BIT_EXT](#VkSwapchainCreateFlagBitsKHR)
 
 * 
 [](#VUID-VkPresentTimingsInfoEXT-pSwapchains-12235) VUID-VkPresentTimingsInfoEXT-pSwapchains-12235
@@ -12689,15 +12639,15 @@ containing `VK_SWAPCHAIN_CREATE_PRESENT_TIMING_BIT_EXT`
 For each member of `VkPresentInfoKHR`::`pSwapchains`, if the
 associated [VkPresentTimingInfoEXT](#VkPresentTimingInfoEXT)::`targetTime` is not zero,
 the swapchain’s current present mode **must** be
-`VK_PRESENT_MODE_FIFO_LATEST_READY_KHR`,
-`VK_PRESENT_MODE_FIFO_KHR` or `VK_PRESENT_MODE_FIFO_RELAXED_KHR`
+[VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](#VkPresentModeKHR),
+[VK_PRESENT_MODE_FIFO_KHR](#VkPresentModeKHR) or [VK_PRESENT_MODE_FIFO_RELAXED_KHR](#VkPresentModeKHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPresentTimingsInfoEXT-sType-sType) VUID-VkPresentTimingsInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_TIMINGS_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_TIMINGS_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPresentTimingsInfoEXT-pTimingInfos-parameter) VUID-VkPresentTimingsInfoEXT-pTimingInfos-parameter
@@ -12754,15 +12704,15 @@ timing information for.
 interpret `targetTime`.
 
 If `targetTime` is not zero, the implementation attempts to align the
-`VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_VISIBLE_BIT_EXT` present stage of
+[VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_VISIBLE_BIT_EXT](#VkPresentStageFlagBitsEXT) present stage of
 that presentation request with the time specified in `targetTime`
 according to the time domain used.
-If `VK_PRESENT_TIMING_INFO_PRESENT_AT_NEAREST_REFRESH_CYCLE_BIT_EXT` is
+If [VK_PRESENT_TIMING_INFO_PRESENT_AT_NEAREST_REFRESH_CYCLE_BIT_EXT](#VkPresentTimingInfoFlagBitsEXT) is
 not set in `flags`, it indicates that the application would strictly
 prefer the image to not be visible before `targetTime` has lapsed.
 
 If `targetTime` is not zero and `timeDomainId` is associated with a
-`VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT` time domain,
+[VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT](../synchronization.html#VkTimeDomainEXT) time domain,
 `targetTimeDomainPresentStage` is used to specify which present stage’s
 time domain `targetTime` is specified for.
 Otherwise, `targetTimeDomainPresentStage` is ignored.
@@ -12777,7 +12727,7 @@ improved animation quality.
 As such, the [`presentAtAbsoluteTime`](../features.html#features-presentAtAbsoluteTime)
 and [`presentAtRelativeTime`](../features.html#features-presentAtRelativeTime) features
 do not provide a strict guarantee regarding the completion of the
-`VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_VISIBLE_BIT_EXT` present stage
+[VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_VISIBLE_BIT_EXT](#VkPresentStageFlagBitsEXT) present stage
 relative to the `targetTime`, and implementations **must** strive to make
 it as consistent and accurate as possible. |
 
@@ -12788,7 +12738,7 @@ their calculations for their next target time on the feedback from
 errors or potential clock drift.
 It is recommended that when targeting the time of a vertical blanking
 period, applications set
-`VK_PRESENT_TIMING_INFO_PRESENT_AT_NEAREST_REFRESH_CYCLE_BIT_EXT` to
+[VK_PRESENT_TIMING_INFO_PRESENT_AT_NEAREST_REFRESH_CYCLE_BIT_EXT](#VkPresentTimingInfoFlagBitsEXT) to
 allow the implementation to compensate for small precision errors that may
 cause an image to be displayed one refresh cycle later than intended. |
 
@@ -12798,23 +12748,29 @@ Valid Usage
 [](#VUID-VkPresentTimingInfoEXT-targetTime-12236) VUID-VkPresentTimingInfoEXT-targetTime-12236
 
 If `targetTime` is not zero and `flags` does not contain
-`VK_PRESENT_TIMING_INFO_PRESENT_AT_RELATIVE_TIME_BIT_EXT`, the
+[VK_PRESENT_TIMING_INFO_PRESENT_AT_RELATIVE_TIME_BIT_EXT](#VkPresentTimingInfoFlagBitsEXT), the
 [`presentAtAbsoluteTime`](../features.html#features-presentAtAbsoluteTime) feature
-**must** be enabled
+**must** be enabled and the `presentAtAbsoluteTimeSupported` member of
+the `VkPresentTimingSurfaceCapabilitiesEXT` returned by
+`vkGetPhysicalDeviceSurfaceCapabilities2KHR` for the surface
+associated with the swapchain **must** be [VK_TRUE](../fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkPresentTimingInfoEXT-targetTime-12237) VUID-VkPresentTimingInfoEXT-targetTime-12237
 
 If `targetTime` is not zero and `flags` contains
-`VK_PRESENT_TIMING_INFO_PRESENT_AT_RELATIVE_TIME_BIT_EXT`, the
+[VK_PRESENT_TIMING_INFO_PRESENT_AT_RELATIVE_TIME_BIT_EXT](#VkPresentTimingInfoFlagBitsEXT), the
 [`presentAtRelativeTime`](../features.html#features-presentAtRelativeTime) feature
-**must** be enabled
+**must** be enabled and the `presentAtRelativeTimeSupported` member of
+the `VkPresentTimingSurfaceCapabilitiesEXT` returned by
+`vkGetPhysicalDeviceSurfaceCapabilities2KHR` for the surface
+associated with the swapchain **must** be [VK_TRUE](../fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkPresentTimingInfoEXT-timeDomainId-12238) VUID-VkPresentTimingInfoEXT-timeDomainId-12238
 
 If `timeDomainId` is associated with a
-`VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT` time domain, and
+[VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT](../synchronization.html#VkTimeDomainEXT) time domain, and
 `targetTime` is not zero, `targetTimeDomainPresentStage` **must**
 be a single `VkPresentStageFlagsEXT` value
 
@@ -12823,7 +12779,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPresentTimingInfoEXT-sType-sType) VUID-VkPresentTimingInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_TIMING_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_TIMING_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPresentTimingInfoEXT-pNext-pNext) VUID-VkPresentTimingInfoEXT-pNext-pNext
@@ -12855,15 +12811,15 @@ typedef enum VkPresentTimingInfoFlagBitsEXT {
 } VkPresentTimingInfoFlagBitsEXT;
 
 * 
-`VK_PRESENT_TIMING_INFO_PRESENT_AT_RELATIVE_TIME_BIT_EXT` specifies
+[VK_PRESENT_TIMING_INFO_PRESENT_AT_RELATIVE_TIME_BIT_EXT](#VkPresentTimingInfoFlagBitsEXT) specifies
 that `VkPresentTimingInfoEXT`::`targetTime` is to be interpreted
 as a relative time from the previous presentation’s
-`VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_VISIBLE_BIT_EXT` stage.
+[VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_VISIBLE_BIT_EXT](#VkPresentStageFlagBitsEXT) stage.
 If the `swapchain` has never been used to present an image, the
 provided `targetTime` is ignored.
 
 * 
-`VK_PRESENT_TIMING_INFO_PRESENT_AT_NEAREST_REFRESH_CYCLE_BIT_EXT`
+[VK_PRESENT_TIMING_INFO_PRESENT_AT_NEAREST_REFRESH_CYCLE_BIT_EXT](#VkPresentTimingInfoFlagBitsEXT)
 specifies that the application would prefer the image to be presented
 earlier than the time specified in
 `VkPresentTimingInfoEXT`::`targetTime` if that time falls within
@@ -12889,29 +12845,29 @@ typedef enum VkPresentStageFlagBitsEXT {
 } VkPresentStageFlagBitsEXT;
 
 * 
-`VK_PRESENT_STAGE_QUEUE_OPERATIONS_END_BIT_EXT` marks the end of the
+[VK_PRESENT_STAGE_QUEUE_OPERATIONS_END_BIT_EXT](#VkPresentStageFlagBitsEXT) marks the end of the
 set of queue operations enqueued by [vkQueuePresentKHR](#vkQueuePresentKHR) on the
 provided `VkQueue` for a presentation request.
 
 * 
-`VK_PRESENT_STAGE_REQUEST_DEQUEUED_BIT_EXT` is the stage after which
+[VK_PRESENT_STAGE_REQUEST_DEQUEUED_BIT_EXT](#VkPresentStageFlagBitsEXT) is the stage after which
 the presentation request has been dequeued from the swapchain’s internal
 presentation request queue, if any, as specified by the present mode
 associated with that request.
 
 * 
-`VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_OUT_BIT_EXT` is the stage after
+[VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_OUT_BIT_EXT](#VkPresentStageFlagBitsEXT) is the stage after
 which data for the first pixel of the presentation request associated
 with the image has left the presentation engine for a display hardware.
 
 * 
-`VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_VISIBLE_BIT_EXT` is the stage
+[VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_VISIBLE_BIT_EXT](#VkPresentStageFlagBitsEXT) is the stage
 after which a display hardware has made the first pixel visible for the
 presentation request associated with the image to be presented.
 
 |  | The set of queue operations delimited by
 | --- | --- |
-`VK_PRESENT_STAGE_QUEUE_OPERATIONS_END_BIT_EXT` includes the wait for
+[VK_PRESENT_STAGE_QUEUE_OPERATIONS_END_BIT_EXT](#VkPresentStageFlagBitsEXT) includes the wait for
 the semaphores specified in [VkPresentInfoKHR](#VkPresentInfoKHR)::`pWaitSemaphores`,
 if any, and any work implicitly enqueued by the implementation. |
 
@@ -12977,7 +12933,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPresentTimesInfoGOOGLE-sType-sType) VUID-VkPresentTimesInfoGOOGLE-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPresentTimesInfoGOOGLE-pTimes-parameter) VUID-VkPresentTimesInfoGOOGLE-pTimes-parameter
@@ -13093,7 +13049,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPresentIdKHR-sType-sType) VUID-VkPresentIdKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_ID_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_ID_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPresentIdKHR-pPresentIds-parameter) VUID-VkPresentIdKHR-pPresentIds-parameter
@@ -13140,7 +13096,7 @@ period.
 `swapchain` to be increased in value so that it is at least equal to
 `presentId`.
 
-For `VK_PRESENT_MODE_MAILBOX_KHR` (or other present mode where images
+For [VK_PRESENT_MODE_MAILBOX_KHR](#VkPresentModeKHR) (or other present mode where images
 may be replaced in the presentation queue) any wait of this type associated
 with such an image **must** be signaled no later than a wait associated with
 the replacing image would be signaled.
@@ -13159,9 +13115,9 @@ The call to `vkWaitForPresentKHR` will block until either the presentId
 associated with `swapchain` is greater than or equal to `presentId`,
 or `timeout` nanoseconds passes.
 When the swapchain becomes OUT_OF_DATE, the call will either return
-`VK_SUCCESS` (if the image was delivered to the presentation engine and
+[VK_SUCCESS](../fundamentals.html#VkResult) (if the image was delivered to the presentation engine and
 may have been presented to the user) or will return early with status
-`VK_ERROR_OUT_OF_DATE_KHR` (if the image could not be presented to the
+[VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult) (if the image could not be presented to the
 user).
 
 As an exception to the normal rules for objects which are externally
@@ -13210,39 +13166,39 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUBOPTIMAL_KHR`
+[VK_SUBOPTIMAL_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 * 
-`VK_TIMEOUT`
+[VK_TIMEOUT](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT`
+[VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DATE_KHR`
+[VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkPresentId2KHR` structure is defined as:
 
@@ -13324,15 +13280,15 @@ Each `presentIds` entry **must** be greater than any previous
 [](#VUID-VkPresentId2KHR-None-10820) VUID-VkPresentId2KHR-None-10820
 
 The swapchain must have been created with
-`VK_SWAPCHAIN_CREATE_PRESENT_ID_2_BIT_KHR` bit set in the
-`VkSwapchainCreateFlagBitsKHR` field
+[VK_SWAPCHAIN_CREATE_PRESENT_ID_2_BIT_KHR](#VkSwapchainCreateFlagBitsKHR) bit set in the
+[VkSwapchainCreateFlagBitsKHR](#VkSwapchainCreateFlagBitsKHR) field
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPresentId2KHR-sType-sType) VUID-VkPresentId2KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_ID_2_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_ID_2_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPresentId2KHR-pPresentIds-parameter) VUID-VkPresentId2KHR-pPresentIds-parameter
@@ -13381,10 +13337,10 @@ The timing relationship between the presentation of the image to the user
 and the wait request completing is implementation-dependent due to
 variations in window system implementations.
 
-If the `swapchain` becomes `VK_ERROR_OUT_OF_DATE_KHR` either before
-or during this call, the call **may** either return `VK_SUCCESS` (if the
+If the `swapchain` becomes [VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult) either before
+or during this call, the call **may** either return [VK_SUCCESS](../fundamentals.html#VkResult) (if the
 image was delivered to the presentation engine and **may** have been presented
-to the user) or return early with status `VK_ERROR_OUT_OF_DATE_KHR` (if
+to the user) or return early with status [VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult) (if
 the image could not be presented to the user).
 
 As an exception to the normal rules for objects which are externally
@@ -13412,8 +13368,8 @@ be present for the underlying surface
 [](#VUID-vkWaitForPresent2KHR-None-10816) VUID-vkWaitForPresent2KHR-None-10816
 
 The swapchain must have been created with
-`VK_SWAPCHAIN_CREATE_PRESENT_WAIT_2_BIT_KHR` bit set in the
-`VkSwapchainCreateFlagBitsKHR` field
+[VK_SWAPCHAIN_CREATE_PRESENT_WAIT_2_BIT_KHR](#VkSwapchainCreateFlagBitsKHR) bit set in the
+[VkSwapchainCreateFlagBitsKHR](#VkSwapchainCreateFlagBitsKHR) field
 
 * 
 [](#VUID-vkWaitForPresent2KHR-presentId-10817) VUID-vkWaitForPresent2KHR-presentId-10817
@@ -13454,39 +13410,39 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUBOPTIMAL_KHR`
+[VK_SUBOPTIMAL_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 * 
-`VK_TIMEOUT`
+[VK_TIMEOUT](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT`
+[VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DATE_KHR`
+[VK_ERROR_OUT_OF_DATE_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 When the `[VK_GGP_frame_token](../../appendices/extensions.html#VK_GGP_frame_token)` extension is enabled, a Google Games
 Platform frame token **can** be specified when presenting an image to a
@@ -13524,7 +13480,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPresentFrameTokenGGP-sType-sType) VUID-VkPresentFrameTokenGGP-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP](../fundamentals.html#VkStructureType)
 
 The `VkSwapchainPresentModeInfoKHR` structure is defined as:
 
@@ -13570,51 +13526,51 @@ The behavior during the transition between the two modes is defined as
 follows.
 
 * 
-Transition from `VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR` to
-`VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR`: the presentation engine
+Transition from [VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](#VkPresentModeKHR) to
+[VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](#VkPresentModeKHR): the presentation engine
 updates the shared presentable image according to the behavior of
-`VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR`.
+[VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](#VkPresentModeKHR).
 
 * 
-Transition from `VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR` to
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`: the presentation
+Transition from [VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](#VkPresentModeKHR) to
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](#VkPresentModeKHR): the presentation
 engine **may** update the shared presentable image or defer that to its
 regular refresh cycle, according to the behavior of
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`.
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](#VkPresentModeKHR).
 
 * 
-Transition between `VK_PRESENT_MODE_FIFO_KHR` and
-`VK_PRESENT_MODE_FIFO_RELAXED_KHR`: Images continue to be appended
+Transition between [VK_PRESENT_MODE_FIFO_KHR](#VkPresentModeKHR) and
+[VK_PRESENT_MODE_FIFO_RELAXED_KHR](#VkPresentModeKHR): Images continue to be appended
 to the same FIFO queue, and the behavior with respect to waiting for
 vertical blanking period will follow the new mode for current and
 subsequent images.
 
 * 
-Transition from `VK_PRESENT_MODE_IMMEDIATE_KHR` to
-`VK_PRESENT_MODE_FIFO_KHR` or `VK_PRESENT_MODE_FIFO_RELAXED_KHR`
-or `VK_PRESENT_MODE_FIFO_LATEST_READY_KHR`
+Transition from [VK_PRESENT_MODE_IMMEDIATE_KHR](#VkPresentModeKHR) to
+[VK_PRESENT_MODE_FIFO_KHR](#VkPresentModeKHR) or [VK_PRESENT_MODE_FIFO_RELAXED_KHR](#VkPresentModeKHR)
+or [VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](#VkPresentModeKHR)
 : As all prior present requests in the
-`VK_PRESENT_MODE_IMMEDIATE_KHR` mode are applied immediately, there
+[VK_PRESENT_MODE_IMMEDIATE_KHR](#VkPresentModeKHR) mode are applied immediately, there
 are no outstanding present operations in this mode, and current and
 subsequent images are appended to the FIFO queue and presented according
 to the new mode.
 
 * 
-Transition from `VK_PRESENT_MODE_MAILBOX_KHR` to
-`VK_PRESENT_MODE_FIFO_KHR` or `VK_PRESENT_MODE_FIFO_RELAXED_KHR`
-or `VK_PRESENT_MODE_FIFO_LATEST_READY_KHR`
+Transition from [VK_PRESENT_MODE_MAILBOX_KHR](#VkPresentModeKHR) to
+[VK_PRESENT_MODE_FIFO_KHR](#VkPresentModeKHR) or [VK_PRESENT_MODE_FIFO_RELAXED_KHR](#VkPresentModeKHR)
+or [VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](#VkPresentModeKHR)
 : Presentation in FIFO modes require waiting for the next vertical
-blanking period, with `VK_PRESENT_MODE_MAILBOX_KHR` allowing the
+blanking period, with [VK_PRESENT_MODE_MAILBOX_KHR](#VkPresentModeKHR) allowing the
 pending present operation to be replaced by a new one.
 In this case, the current present operation will replace the pending
 present operation and is applied according to the new mode.
 
 * 
-Transition from `VK_PRESENT_MODE_FIFO_KHR` or
-`VK_PRESENT_MODE_FIFO_RELAXED_KHR`
-or `VK_PRESENT_MODE_FIFO_LATEST_READY_KHR`
-to `VK_PRESENT_MODE_IMMEDIATE_KHR` or
-`VK_PRESENT_MODE_MAILBOX_KHR`: If the FIFO queue is empty,
+Transition from [VK_PRESENT_MODE_FIFO_KHR](#VkPresentModeKHR) or
+[VK_PRESENT_MODE_FIFO_RELAXED_KHR](#VkPresentModeKHR)
+or [VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](#VkPresentModeKHR)
+to [VK_PRESENT_MODE_IMMEDIATE_KHR](#VkPresentModeKHR) or
+[VK_PRESENT_MODE_MAILBOX_KHR](#VkPresentModeKHR): If the FIFO queue is empty,
 presentation is done according to the behavior of the new mode.
 If there are present operations in the FIFO queue, once the last present
 operation is performed based on the respective vertical blanking period,
@@ -13622,9 +13578,9 @@ the current and subsequent updates are applied according to the new
 mode.
 
 * 
-Transition between `VK_PRESENT_MODE_FIFO_KHR` or
-`VK_PRESENT_MODE_FIFO_RELAXED_KHR`, and
-`VK_PRESENT_MODE_FIFO_LATEST_READY_KHR`: Images continue to be
+Transition between [VK_PRESENT_MODE_FIFO_KHR](#VkPresentModeKHR) or
+[VK_PRESENT_MODE_FIFO_RELAXED_KHR](#VkPresentModeKHR), and
+[VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](#VkPresentModeKHR): Images continue to be
 appended to the same FIFO queue, and the behavior with respect to
 waiting for vertical blanking period and dequeuing requests will follow
 the new mode for current and subsequent images.
@@ -13653,7 +13609,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSwapchainPresentModeInfoKHR-sType-sType) VUID-VkSwapchainPresentModeInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_MODE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_MODE_INFO_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSwapchainPresentModeInfoKHR-pPresentModes-parameter) VUID-VkSwapchainPresentModeInfoKHR-pPresentModes-parameter
@@ -13760,7 +13716,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSwapchainPresentFenceInfoKHR-sType-sType) VUID-VkSwapchainPresentFenceInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_FENCE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_FENCE_INFO_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSwapchainPresentFenceInfoKHR-pFences-parameter) VUID-VkSwapchainPresentFenceInfoKHR-pFences-parameter
@@ -13835,18 +13791,18 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkReleaseSwapchainImagesInfoKHR` structure is defined as:
 
@@ -13900,7 +13856,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkReleaseSwapchainImagesInfoKHR-sType-sType) VUID-VkReleaseSwapchainImagesInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RELEASE_SWAPCHAIN_IMAGES_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RELEASE_SWAPCHAIN_IMAGES_INFO_KHR](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkReleaseSwapchainImagesInfoKHR-pNext-pNext) VUID-VkReleaseSwapchainImagesInfoKHR-pNext-pNext
@@ -14056,7 +14012,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkHdrMetadataEXT-sType-sType) VUID-VkHdrMetadataEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_HDR_METADATA_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_HDR_METADATA_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkHdrMetadataEXT-pNext-pNext) VUID-VkHdrMetadataEXT-pNext-pNext
@@ -14106,7 +14062,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkHdrVividDynamicMetadataHUAWEI-sType-sType) VUID-VkHdrVividDynamicMetadataHUAWEI-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_HDR_VIVID_DYNAMIC_METADATA_HUAWEI`
+ `sType` **must** be [VK_STRUCTURE_TYPE_HDR_VIVID_DYNAMIC_METADATA_HUAWEI](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkHdrVividDynamicMetadataHUAWEI-pDynamicMetadata-parameter) VUID-VkHdrVividDynamicMetadataHUAWEI-pDynamicMetadata-parameter
@@ -14227,7 +14183,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAntiLagDataAMD-sType-sType) VUID-VkAntiLagDataAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkAntiLagDataAMD-mode-parameter) VUID-VkAntiLagDataAMD-mode-parameter
@@ -14250,14 +14206,14 @@ typedef enum VkAntiLagModeAMD {
 } VkAntiLagModeAMD;
 
 * 
-`VK_ANTI_LAG_MODE_DRIVER_CONTROL_AMD` specifies that anti-lag will
+[VK_ANTI_LAG_MODE_DRIVER_CONTROL_AMD](#VkAntiLagModeAMD) specifies that anti-lag will
 be enabled or disabled depending on driver settings.
 
 * 
-`VK_ANTI_LAG_MODE_ON_AMD` specifies that anti-lag will be enabled.
+[VK_ANTI_LAG_MODE_ON_AMD](#VkAntiLagModeAMD) specifies that anti-lag will be enabled.
 
 * 
-`VK_ANTI_LAG_MODE_OFF_AMD` specifies that anti-lag will be disabled.
+[VK_ANTI_LAG_MODE_OFF_AMD](#VkAntiLagModeAMD) specifies that anti-lag will be disabled.
 
 The `VkAntiLagPresentationInfoAMD` structure is defined as:
 
@@ -14282,10 +14238,10 @@ application stage.
 
 * 
 `frameIndex` is set just before the application processes input data
-(`VK_ANTI_LAG_STAGE_INPUT_AMD`).
+([VK_ANTI_LAG_STAGE_INPUT_AMD](#VkAntiLagStageAMD)).
 The same `frameIndex` value **should** be set before the frame with
 current input data will be presented by [vkQueuePresentKHR](#vkQueuePresentKHR)
-(`VK_ANTI_LAG_STAGE_PRESENT_AMD`).
+([VK_ANTI_LAG_STAGE_PRESENT_AMD](#VkAntiLagStageAMD)).
 This **should** be done for each frame.
 
 This structure specifies information about the presentation stage for which
@@ -14296,7 +14252,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAntiLagPresentationInfoAMD-sType-sType) VUID-VkAntiLagPresentationInfoAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkAntiLagPresentationInfoAMD-stage-parameter) VUID-VkAntiLagPresentationInfoAMD-stage-parameter
@@ -14313,11 +14269,11 @@ typedef enum VkAntiLagStageAMD {
 } VkAntiLagStageAMD;
 
 * 
-`VK_ANTI_LAG_STAGE_INPUT_AMD` specifies the stage before processing
+[VK_ANTI_LAG_STAGE_INPUT_AMD](#VkAntiLagStageAMD) specifies the stage before processing
 input.
 
 * 
-`VK_ANTI_LAG_STAGE_PRESENT_AMD` specifies the stage before
+[VK_ANTI_LAG_STAGE_PRESENT_AMD](#VkAntiLagStageAMD) specifies the stage before
 [vkQueuePresentKHR](#vkQueuePresentKHR).
 
 To enable or disable low latency mode on a swapchain, call:
@@ -14378,18 +14334,18 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkLatencySleepModeInfoNV` structure is defined as:
 
@@ -14423,7 +14379,7 @@ increased power consumption.
 [vkQueuePresentKHR](#vkQueuePresentKHR) calls for a given swapchain that
 [vkLatencySleepNV](#vkLatencySleepNV) will enforce.
 
-If `lowLatencyMode` is `VK_FALSE`, `lowLatencyBoost` will still
+If `lowLatencyMode` is [VK_FALSE](../fundamentals.html#VK_FALSE), `lowLatencyBoost` will still
 hint to the GPU to increase its power state and `vkLatencySleepNV` will
 still enforce `minimumIntervalUs` between `vkQueuePresentKHR` calls.
 
@@ -14432,7 +14388,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkLatencySleepModeInfoNV-sType-sType) VUID-VkLatencySleepModeInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_LATENCY_SLEEP_MODE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_LATENCY_SLEEP_MODE_INFO_NV](../fundamentals.html#VkStructureType)
 
 To provide the synchronization primitive used to delay host CPU work for
 lower latency rendering, call:
@@ -14490,15 +14446,15 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkLatencySleepInfoNV` structure is defined as:
 
@@ -14537,7 +14493,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkLatencySleepInfoNV-sType-sType) VUID-VkLatencySleepInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_LATENCY_SLEEP_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_LATENCY_SLEEP_INFO_NV](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkLatencySleepInfoNV-signalSemaphore-parameter) VUID-VkLatencySleepInfoNV-signalSemaphore-parameter
@@ -14631,7 +14587,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSetLatencyMarkerInfoNV-sType-sType) VUID-VkSetLatencyMarkerInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SET_LATENCY_MARKER_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SET_LATENCY_MARKER_INFO_NV](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSetLatencyMarkerInfoNV-marker-parameter) VUID-VkSetLatencyMarkerInfoNV-marker-parameter
@@ -14660,40 +14616,40 @@ The members of the [VkLatencyMarkerNV](#VkLatencyMarkerNV) are used as arguments
 [vkSetLatencyMarkerNV](#vkSetLatencyMarkerNV) in the use cases described below:
 
 * 
-`VK_LATENCY_MARKER_SIMULATION_START_NV` **should** be called at the
+[VK_LATENCY_MARKER_SIMULATION_START_NV](#VkLatencyMarkerNV) **should** be called at the
 start of the simulation execution each frame, but after the call to
 `vkLatencySleepNV`.
 
 * 
-`VK_LATENCY_MARKER_SIMULATION_END_NV` **should** be called at the end
+[VK_LATENCY_MARKER_SIMULATION_END_NV](#VkLatencyMarkerNV) **should** be called at the end
 of the simulation execution each frame.
 
 * 
-`VK_LATENCY_MARKER_RENDERSUBMIT_START_NV` **should** be called at the
+[VK_LATENCY_MARKER_RENDERSUBMIT_START_NV](#VkLatencyMarkerNV) **should** be called at the
 beginning of the render submission execution each frame.
 This **should** be wherever Vulkan API calls are made and **must** not span
 into asynchronous rendering.
 
 * 
-`VK_LATENCY_MARKER_RENDERSUBMIT_END_NV` **should** be called at the end
+[VK_LATENCY_MARKER_RENDERSUBMIT_END_NV](#VkLatencyMarkerNV) **should** be called at the end
 of the render submission execution each frame.
 
 * 
-`VK_LATENCY_MARKER_PRESENT_START_NV` **should** be called just before
+[VK_LATENCY_MARKER_PRESENT_START_NV](#VkLatencyMarkerNV) **should** be called just before
 `vkQueuePresentKHR`.
 
 * 
-`VK_LATENCY_MARKER_PRESENT_END_NV` **should** be called when
+[VK_LATENCY_MARKER_PRESENT_END_NV](#VkLatencyMarkerNV) **should** be called when
 `vkQueuePresentKHR` returns.
 
 * 
-`VK_LATENCY_MARKER_INPUT_SAMPLE_NV` **should** be called just before
+[VK_LATENCY_MARKER_INPUT_SAMPLE_NV](#VkLatencyMarkerNV) **should** be called just before
 the application gathers input data.
 
 * 
-`VK_LATENCY_MARKER_TRIGGER_FLASH_NV` **should** be called anywhere
-between `VK_LATENCY_MARKER_SIMULATION_START_NV` and
-`VK_LATENCY_MARKER_SIMULATION_END_NV` whenever a left mouse click
+[VK_LATENCY_MARKER_TRIGGER_FLASH_NV](#VkLatencyMarkerNV) **should** be called anywhere
+between [VK_LATENCY_MARKER_SIMULATION_START_NV](#VkLatencyMarkerNV) and
+[VK_LATENCY_MARKER_SIMULATION_END_NV](#VkLatencyMarkerNV) whenever a left mouse click
 occurs.
 
 To get an array containing the newest collected latency data, call:
@@ -14770,8 +14726,8 @@ of latency data available or queried, as described below.
 If `pTimings` is `NULL` then the maximum number of queryable frame data
 is returned in `timingCount`.
 Otherwise, `timingCount` **must** be set by the application to the number
-of elements in the `pTimings` array, and on return the variable is
-overwritten with the number of values actually written to `pTimings`.
+of elements in the `pTimings` array, and on return is overwritten with
+the number of values actually written to `pTimings`.
 The elements of `pTimings` are arranged in the order they were requested
 in, with the oldest data in the first entry.
 
@@ -14780,7 +14736,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGetLatencyMarkerInfoNV-sType-sType) VUID-VkGetLatencyMarkerInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GET_LATENCY_MARKER_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GET_LATENCY_MARKER_INFO_NV](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkGetLatencyMarkerInfoNV-pTimings-parameter) VUID-VkGetLatencyMarkerInfoNV-pTimings-parameter
@@ -14829,33 +14785,33 @@ structure.
 
 * 
 `simStartTimeUs` is the timestamp written when
-`vkSetLatencyMarkerNV` is called with the `VkLatencyMarkerNV`
-enum `VK_LATENCY_MARKER_SIMULATION_START_NV`.
+`vkSetLatencyMarkerNV` is called with the [VkLatencyMarkerNV](#VkLatencyMarkerNV)
+enum [VK_LATENCY_MARKER_SIMULATION_START_NV](#VkLatencyMarkerNV).
 
 * 
 `simEndTimeUs` is the timestamp written when
-`vkSetLatencyMarkerNV` is called with the `VkLatencyMarkerNV`
-enum `VK_LATENCY_MARKER_SIMULATION_END_NV`
+`vkSetLatencyMarkerNV` is called with the [VkLatencyMarkerNV](#VkLatencyMarkerNV)
+enum [VK_LATENCY_MARKER_SIMULATION_END_NV](#VkLatencyMarkerNV)
 
 * 
 `renderStartTimeUs` is the timestamp written when
-`vkSetLatencyMarkerNV` is called with the `VkLatencyMarkerNV`
-enum `VK_LATENCY_MARKER_RENDERSUBMIT_START_NV`.
+`vkSetLatencyMarkerNV` is called with the [VkLatencyMarkerNV](#VkLatencyMarkerNV)
+enum [VK_LATENCY_MARKER_RENDERSUBMIT_START_NV](#VkLatencyMarkerNV).
 
 * 
 `renderEndTimeUs` is the timestamp written when
-`vkSetLatencyMarkerNV` is called with the `VkLatencyMarkerNV`
-enum `VK_LATENCY_MARKER_RENDERSUBMIT_END_NV`.
+`vkSetLatencyMarkerNV` is called with the [VkLatencyMarkerNV](#VkLatencyMarkerNV)
+enum [VK_LATENCY_MARKER_RENDERSUBMIT_END_NV](#VkLatencyMarkerNV).
 
 * 
 `presentStartTimeUs` is the timestamp written when
-`vkSetLatencyMarkerNV` is called with the `VkLatencyMarkerNV`
-enum `VK_LATENCY_MARKER_PRESENT_START_NV`.
+`vkSetLatencyMarkerNV` is called with the [VkLatencyMarkerNV](#VkLatencyMarkerNV)
+enum [VK_LATENCY_MARKER_PRESENT_START_NV](#VkLatencyMarkerNV).
 
 * 
 `presentEndTimeUs` is the timestamp written when
-`vkSetLatencyMarkerNV` is called with the `VkLatencyMarkerNV`
-enum `VK_LATENCY_MARKER_PRESENT_END_NV`.
+`vkSetLatencyMarkerNV` is called with the [VkLatencyMarkerNV](#VkLatencyMarkerNV)
+enum [VK_LATENCY_MARKER_PRESENT_END_NV](#VkLatencyMarkerNV).
 
 * 
 `driverStartTimeUs` is the timestamp written when the first
@@ -14886,7 +14842,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkLatencyTimingsFrameReportNV-sType-sType) VUID-VkLatencyTimingsFrameReportNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_LATENCY_TIMINGS_FRAME_REPORT_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_LATENCY_TIMINGS_FRAME_REPORT_NV](../fundamentals.html#VkStructureType)
 
 The [VkLatencySubmissionPresentIdNV](#VkLatencySubmissionPresentIdNV) structure is defined as:
 
@@ -14921,7 +14877,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkLatencySubmissionPresentIdNV-sType-sType) VUID-VkLatencySubmissionPresentIdNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_LATENCY_SUBMISSION_PRESENT_ID_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_LATENCY_SUBMISSION_PRESENT_ID_NV](../fundamentals.html#VkStructureType)
 
 To mark a queue as *out of band*, so that all `vkQueueSubmit` calls on
 the queue are ignored for latency evaluation, call:
@@ -14980,7 +14936,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkOutOfBandQueueTypeInfoNV-sType-sType) VUID-VkOutOfBandQueueTypeInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_OUT_OF_BAND_QUEUE_TYPE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_OUT_OF_BAND_QUEUE_TYPE_INFO_NV](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkOutOfBandQueueTypeInfoNV-queueType-parameter) VUID-VkOutOfBandQueueTypeInfoNV-queueType-parameter
@@ -14999,11 +14955,11 @@ The members of the [VkOutOfBandQueueTypeNV](#VkOutOfBandQueueTypeNV) are used to
 queue type in [VkOutOfBandQueueTypeInfoNV](#VkOutOfBandQueueTypeInfoNV) as described below:
 
 * 
-`VK_OUT_OF_BAND_QUEUE_TYPE_RENDER_NV` specifies that work will be
+[VK_OUT_OF_BAND_QUEUE_TYPE_RENDER_NV](#VkOutOfBandQueueTypeNV) specifies that work will be
 submitted to this queue.
 
 * 
-`VK_OUT_OF_BAND_QUEUE_TYPE_PRESENT_NV` specifies that this queue
+[VK_OUT_OF_BAND_QUEUE_TYPE_PRESENT_NV](#VkOutOfBandQueueTypeNV) specifies that this queue
 will be presented from.
 
 To allow low latency mode to be used by a swapchain, add a
@@ -15027,15 +14983,15 @@ typedef struct VkSwapchainLatencyCreateInfoNV {
 structure.
 
 * 
-`latencyModeEnable` is `VK_TRUE` if the created swapchain will
-utilize low latency mode, `VK_FALSE` otherwise.
+`latencyModeEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE) if the created swapchain will
+utilize low latency mode, [VK_FALSE](../fundamentals.html#VK_FALSE) otherwise.
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSwapchainLatencyCreateInfoNV-sType-sType) VUID-VkSwapchainLatencyCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_LATENCY_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_LATENCY_CREATE_INFO_NV](../fundamentals.html#VkStructureType)
 
 The `VkLatencySurfaceCapabilitiesNV` structure is defined as:
 
@@ -15064,8 +15020,8 @@ low latency mode with `presentModeCount` entries.
 If `pPresentModes` is `NULL`, then the number of present modes that are
 optimized for use with low latency mode returned in `presentModeCount`.
 Otherwise, `presentModeCount` **must** be set by the application to the
-number of elements in the `pPresentModes` array, and on return the
-variable is overwritten with the number of values actually written to
+number of elements in the `pPresentModes` array, and on return is
+overwritten with the number of values actually written to
 `pPresentModes`.
 If the value of `presentModeCount` is less than the number of optimized
 present modes, at most `presentModeCount` values will be written to
@@ -15076,7 +15032,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkLatencySurfaceCapabilitiesNV-sType-sType) VUID-VkLatencySurfaceCapabilitiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_LATENCY_SURFACE_CAPABILITIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_LATENCY_SURFACE_CAPABILITIES_NV](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkLatencySurfaceCapabilitiesNV-pPresentModes-parameter) VUID-VkLatencySurfaceCapabilitiesNV-pPresentModes-parameter
@@ -15141,7 +15097,7 @@ using the *present barrier*.
 
 If the `pNext` chain of [VkSwapchainCreateInfoKHR](#VkSwapchainCreateInfoKHR) does not include
 this structure, the default value for `presentBarrierEnable` is
-`VK_FALSE`, meaning the swapchain does not request to use the present
+[VK_FALSE](../fundamentals.html#VK_FALSE), meaning the swapchain does not request to use the present
 barrier.
 Additionally, when recreating a swapchain that was using the present
 barrier, and the `pNext` chain of [VkSwapchainCreateInfoKHR](#VkSwapchainCreateInfoKHR) does
@@ -15153,7 +15109,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSwapchainPresentBarrierCreateInfoNV-sType-sType) VUID-VkSwapchainPresentBarrierCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_BARRIER_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_BARRIER_CREATE_INFO_NV](../fundamentals.html#VkStructureType)
 
 Present Metering evenly paces out the next `numFramesPerBatch`
 [vkQueuePresentKHR](#vkQueuePresentKHR) presents.
@@ -15201,4 +15157,4 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSetPresentConfigNV-sType-sType) VUID-VkSetPresentConfigNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SET_PRESENT_CONFIG_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SET_PRESENT_CONFIG_NV](../fundamentals.html#VkStructureType)

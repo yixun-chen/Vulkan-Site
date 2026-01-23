@@ -118,7 +118,7 @@ color encoding.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_HDR_METADATA_EXT`
+[VK_STRUCTURE_TYPE_HDR_METADATA_EXT](VkStructureType.html)
 
 1) Do we need a query function for the currently specified metadata?
 

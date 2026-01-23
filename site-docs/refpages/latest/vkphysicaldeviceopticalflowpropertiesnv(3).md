@@ -107,7 +107,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceOpticalFlowPropertiesNV-sType-sType) VUID-VkPhysicalDeviceOpticalFlowPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPTICAL_FLOW_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPTICAL_FLOW_PROPERTIES_NV](VkStructureType.html)
 
 [VK_NV_optical_flow](VK_NV_optical_flow.html), `VkBool32`, [VkOpticalFlowGridSizeFlagsNV](VkOpticalFlowGridSizeFlagsNV.html), [VkStructureType](VkStructureType.html)
 

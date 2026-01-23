@@ -46,7 +46,7 @@ structure.
 
 * 
 `referenceNameSlotIndices` is an array of three
-(`VK_MAX_VIDEO_VP9_REFERENCES_PER_FRAME_KHR`, which is equal to the
+([VK_MAX_VIDEO_VP9_REFERENCES_PER_FRAME_KHR](VK_MAX_VIDEO_VP9_REFERENCES_PER_FRAME_KHR.html), which is equal to the
 Video Std definition `STD_VIDEO_VP9_REFS_PER_FRAME`) signed integer
 values specifying the index of the [DPB slot](../../../../spec/latest/chapters/videocoding.html#dpb-slot) or a negative
 integer value for each [VP9 reference name](../../../../spec/latest/chapters/videocoding.html#decode-vp9-reference-names)
@@ -178,7 +178,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoDecodeVP9PictureInfoKHR-sType-sType) VUID-VkVideoDecodeVP9PictureInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_DECODE_VP9_PICTURE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_VP9_PICTURE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoDecodeVP9PictureInfoKHR-pStdPictureInfo-parameter) VUID-VkVideoDecodeVP9PictureInfoKHR-pStdPictureInfo-parameter

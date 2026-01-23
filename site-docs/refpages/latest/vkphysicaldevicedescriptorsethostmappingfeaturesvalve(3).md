@@ -35,7 +35,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE-sType-sType) VUID-VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_SET_HOST_MAPPING_FEATURES_VALVE`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_SET_HOST_MAPPING_FEATURES_VALVE](VkStructureType.html)
 
 [VK_VALVE_descriptor_set_host_mapping](VK_VALVE_descriptor_set_host_mapping.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

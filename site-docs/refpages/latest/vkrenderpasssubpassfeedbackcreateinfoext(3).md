@@ -51,7 +51,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassSubpassFeedbackCreateInfoEXT-sType-sType) VUID-VkRenderPassSubpassFeedbackCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_SUBPASS_FEEDBACK_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_SUBPASS_FEEDBACK_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderPassSubpassFeedbackCreateInfoEXT-pSubpassFeedback-parameter) VUID-VkRenderPassSubpassFeedbackCreateInfoEXT-pSubpassFeedback-parameter

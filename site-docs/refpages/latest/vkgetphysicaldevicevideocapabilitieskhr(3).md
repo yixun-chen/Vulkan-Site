@@ -40,7 +40,7 @@ structure.
 structure in which the capabilities are returned.
 
 If the [video profile](../../../../spec/latest/chapters/videocoding.html#video-profiles) described by `pVideoProfile` is
-supported by the implementation, then this command returns `VK_SUCCESS`
+supported by the implementation, then this command returns [VK_SUCCESS](VkResult.html)
 and `pCapabilities` is filled with the capabilities supported with the
 specified video profile.
 Otherwise, one of the [video-profile-specific error codes](../../../../spec/latest/chapters/videocoding.html#video-profile-error-codes) are returned.
@@ -58,7 +58,7 @@ include a [VkVideoDecodeCapabilitiesKHR](VkVideoDecodeCapabilitiesKHR.html) stru
 [](#VUID-vkGetPhysicalDeviceVideoCapabilitiesKHR-pVideoProfile-07184) VUID-vkGetPhysicalDeviceVideoCapabilitiesKHR-pVideoProfile-07184
 
 If `pVideoProfile->videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain of `pCapabilities` **must** include a
 [VkVideoDecodeH264CapabilitiesKHR](VkVideoDecodeH264CapabilitiesKHR.html) structure
 
@@ -66,7 +66,7 @@ chain of `pCapabilities` **must** include a
 [](#VUID-vkGetPhysicalDeviceVideoCapabilitiesKHR-pVideoProfile-07185) VUID-vkGetPhysicalDeviceVideoCapabilitiesKHR-pVideoProfile-07185
 
 If `pVideoProfile->videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain of `pCapabilities` **must** include a
 [VkVideoDecodeH265CapabilitiesKHR](VkVideoDecodeH265CapabilitiesKHR.html) structure
 
@@ -74,7 +74,7 @@ chain of `pCapabilities` **must** include a
 [](#VUID-vkGetPhysicalDeviceVideoCapabilitiesKHR-pVideoProfile-10792) VUID-vkGetPhysicalDeviceVideoCapabilitiesKHR-pVideoProfile-10792
 
 If `pVideoProfile->videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain of `pCapabilities` **must** include a
 [VkVideoDecodeVP9CapabilitiesKHR](VkVideoDecodeVP9CapabilitiesKHR.html) structure
 
@@ -82,7 +82,7 @@ chain of `pCapabilities` **must** include a
 [](#VUID-vkGetPhysicalDeviceVideoCapabilitiesKHR-pVideoProfile-09257) VUID-vkGetPhysicalDeviceVideoCapabilitiesKHR-pVideoProfile-09257
 
 If `pVideoProfile->videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain of `pCapabilities` **must** include a
 [VkVideoDecodeAV1CapabilitiesKHR](VkVideoDecodeAV1CapabilitiesKHR.html) structure
 
@@ -97,7 +97,7 @@ include a [VkVideoEncodeCapabilitiesKHR](VkVideoEncodeCapabilitiesKHR.html) stru
 [](#VUID-vkGetPhysicalDeviceVideoCapabilitiesKHR-pVideoProfile-07187) VUID-vkGetPhysicalDeviceVideoCapabilitiesKHR-pVideoProfile-07187
 
 If `pVideoProfile->videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain of `pCapabilities` **must** include a
 [VkVideoEncodeH264CapabilitiesKHR](VkVideoEncodeH264CapabilitiesKHR.html) structure
 
@@ -105,7 +105,7 @@ chain of `pCapabilities` **must** include a
 [](#VUID-vkGetPhysicalDeviceVideoCapabilitiesKHR-pVideoProfile-07188) VUID-vkGetPhysicalDeviceVideoCapabilitiesKHR-pVideoProfile-07188
 
 If `pVideoProfile->videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain of `pCapabilities` **must** include a
 [VkVideoEncodeH265CapabilitiesKHR](VkVideoEncodeH265CapabilitiesKHR.html) structure
 
@@ -113,7 +113,7 @@ chain of `pCapabilities` **must** include a
 [](#VUID-vkGetPhysicalDeviceVideoCapabilitiesKHR-pVideoProfile-10263) VUID-vkGetPhysicalDeviceVideoCapabilitiesKHR-pVideoProfile-10263
 
 If `pVideoProfile->videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain of `pCapabilities` **must** include a
 [VkVideoEncodeAV1CapabilitiesKHR](VkVideoEncodeAV1CapabilitiesKHR.html) structure
 
@@ -147,33 +147,33 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 * 
-`VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR](VkResult.html)
 
 * 
-`VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR](VkResult.html)
 
 * 
-`VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR](VkResult.html)
 
 * 
-`VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR](VkResult.html)
 
 [VK_KHR_video_queue](VK_KHR_video_queue.html), [VkPhysicalDevice](VkPhysicalDevice.html), [VkVideoCapabilitiesKHR](VkVideoCapabilitiesKHR.html), [VkVideoProfileInfoKHR](VkVideoProfileInfoKHR.html)
 

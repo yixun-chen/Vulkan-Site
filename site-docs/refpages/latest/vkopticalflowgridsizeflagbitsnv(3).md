@@ -40,19 +40,19 @@ typedef enum VkOpticalFlowGridSizeFlagBitsNV {
 } VkOpticalFlowGridSizeFlagBitsNV;
 
 * 
-`VK_OPTICAL_FLOW_GRID_SIZE_1X1_BIT_NV` specifies that grid is 1x1
+[VK_OPTICAL_FLOW_GRID_SIZE_1X1_BIT_NV](#) specifies that grid is 1x1
 pixel.
 
 * 
-`VK_OPTICAL_FLOW_GRID_SIZE_2X2_BIT_NV` specifies that grid is 2x2
+[VK_OPTICAL_FLOW_GRID_SIZE_2X2_BIT_NV](#) specifies that grid is 2x2
 pixel.
 
 * 
-`VK_OPTICAL_FLOW_GRID_SIZE_4X4_BIT_NV` specifies that grid is 4x4
+[VK_OPTICAL_FLOW_GRID_SIZE_4X4_BIT_NV](#) specifies that grid is 4x4
 pixel.
 
 * 
-`VK_OPTICAL_FLOW_GRID_SIZE_8X8_BIT_NV` specifies that grid is 8x8
+[VK_OPTICAL_FLOW_GRID_SIZE_8X8_BIT_NV](#) specifies that grid is 8x8
 pixel.
 
 [VK_NV_optical_flow](VK_NV_optical_flow.html), [VkOpticalFlowGridSizeFlagsNV](VkOpticalFlowGridSizeFlagsNV.html)

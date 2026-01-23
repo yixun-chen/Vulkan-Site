@@ -118,7 +118,7 @@ If `pCounterBuffer` is `NULL`, then `pCounterBufferOffsets`
 
 For each buffer handle in the `pCounterBuffers` array that is not
 [VK_NULL_HANDLE](VK_NULL_HANDLE.html) it **must** have been created with the
-`VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT` usage
+[VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT](VkBufferUsageFlagBits.html) usage
 flag set
 
 * 
@@ -148,7 +148,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdEndTransformFeedbackEXT-commandBuffer-cmdpool) VUID-vkCmdEndTransformFeedbackEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdEndTransformFeedbackEXT-renderpass) VUID-vkCmdEndTransformFeedbackEXT-renderpass

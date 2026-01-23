@@ -48,7 +48,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceBufferMemoryRequirements-sType-sType) VUID-VkDeviceBufferMemoryRequirements-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_BUFFER_MEMORY_REQUIREMENTS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_BUFFER_MEMORY_REQUIREMENTS](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceBufferMemoryRequirements-pNext-pNext) VUID-VkDeviceBufferMemoryRequirements-pNext-pNext

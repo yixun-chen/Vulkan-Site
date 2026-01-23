@@ -52,25 +52,18 @@ or `0` otherwise.
 Valid Usage
 
 * 
-[](#VUID-VkDataGraphPipelineResourceInfoARM-arrayElement-09779) VUID-VkDataGraphPipelineResourceInfoARM-arrayElement-09779
-
-`arrayElement` **must** be `0`
-
-* 
 [](#VUID-VkDataGraphPipelineResourceInfoARM-descriptorSet-09851) VUID-VkDataGraphPipelineResourceInfoARM-descriptorSet-09851
 
-If `descriptorSet` and `binding` identify a tensor resource or
-an array of tensor resources, then a [VkTensorDescriptionARM](VkTensorDescriptionARM.html)
-structure whose `usage` contains
-`VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM` **must** be included in the
-`pNext` chain
+If the `pNext` chain of this structure includes a
+[VkTensorDescriptionARM](VkTensorDescriptionARM.html) structure, then its `usage` **must**
+contain [VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM](VkTensorUsageFlagBitsARM.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDataGraphPipelineResourceInfoARM-sType-sType) VUID-VkDataGraphPipelineResourceInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkDataGraphPipelineResourceInfoARM-pNext-pNext) VUID-VkDataGraphPipelineResourceInfoARM-pNext-pNext

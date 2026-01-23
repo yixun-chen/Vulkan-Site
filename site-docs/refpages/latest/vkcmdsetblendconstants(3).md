@@ -39,7 +39,7 @@ blend constant color used in blending, depending on the
 
 This command sets blend constants for subsequent drawing commands when
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
-the graphics pipeline is created with `VK_DYNAMIC_STATE_BLEND_CONSTANTS`
+the graphics pipeline is created with [VK_DYNAMIC_STATE_BLEND_CONSTANTS](VkDynamicState.html)
 set in [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineColorBlendStateCreateInfo](VkPipelineColorBlendStateCreateInfo.html)::`blendConstants` values used
@@ -60,7 +60,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetBlendConstants-commandBuffer-cmdpool) VUID-vkCmdSetBlendConstants-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetBlendConstants-videocoding) VUID-vkCmdSetBlendConstants-videocoding

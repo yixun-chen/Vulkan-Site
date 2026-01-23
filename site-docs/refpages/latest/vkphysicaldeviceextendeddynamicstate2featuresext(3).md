@@ -44,25 +44,25 @@ structure.
  `extendedDynamicState2` indicates
 that the implementation supports the following dynamic states:
 
-`VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE`
+[VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE`
+[VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE`
+[VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE](VkDynamicState.html)
 
 `extendedDynamicState2LogicOp` indicates that the implementation
 supports the following dynamic state:
 
 * 
-`VK_DYNAMIC_STATE_LOGIC_OP_EXT`
+[VK_DYNAMIC_STATE_LOGIC_OP_EXT](VkDynamicState.html)
 
 `extendedDynamicState2PatchControlPoints` indicates that the
 implementation supports the following dynamic state:
 
 * 
-`VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT`
+[VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT](VkDynamicState.html)
 
 If the `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -70,7 +70,7 @@ If the `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT` structure is included 
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -78,7 +78,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExtendedDynamicState2FeaturesEXT-sType-sType) VUID-VkPhysicalDeviceExtendedDynamicState2FeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_2_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_2_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_extended_dynamic_state2](VK_EXT_extended_dynamic_state2.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -48,9 +48,9 @@ resampled to the fragment density of the render pass
 
 `subsampledCoarseReconstructionEarlyAccess` specifies if performing
 image data read with samplers created with `flags` containing
-`VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT` in
+[VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT](VkSamplerCreateFlagBits.html) in
 fragment shader will trigger additional reads during
-`VK_PIPELINE_STAGE_VERTEX_SHADER_BIT`
+[VK_PIPELINE_STAGE_VERTEX_SHADER_BIT](VkPipelineStageFlagBits.html)
 
 * 
  `maxSubsampledArrayLayers` is
@@ -72,7 +72,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFragmentDensityMap2PropertiesEXT-sType-sType) VUID-VkPhysicalDeviceFragmentDensityMap2PropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_fragment_density_map2](VK_EXT_fragment_density_map2.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

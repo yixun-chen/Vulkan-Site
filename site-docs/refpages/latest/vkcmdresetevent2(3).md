@@ -71,50 +71,50 @@ Valid Usage
 
 If the [`geometryShader`](../../../../spec/latest/chapters/features.html#features-geometryShader) feature is not
 enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](VkPipelineStageFlagBits2.html)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-03930) VUID-vkCmdResetEvent2-stageMask-03930
 
 If the [`tessellationShader`](../../../../spec/latest/chapters/features.html#features-tessellationShader) feature
 is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](VkPipelineStageFlagBits2.html) or
+[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](VkPipelineStageFlagBits2.html)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-03931) VUID-vkCmdResetEvent2-stageMask-03931
 
 If the [`conditionalRendering`](../../../../spec/latest/chapters/features.html#features-conditionalRendering)
 feature is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](VkPipelineStageFlagBits2.html)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-03932) VUID-vkCmdResetEvent2-stageMask-03932
 
 If the [`fragmentDensityMap`](../../../../spec/latest/chapters/features.html#features-fragmentDensityMap) feature
 is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](VkPipelineStageFlagBits2.html)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-03933) VUID-vkCmdResetEvent2-stageMask-03933
 
 If the [`transformFeedback`](../../../../spec/latest/chapters/features.html#features-transformFeedback) feature
 is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](VkPipelineStageFlagBits2.html)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-03934) VUID-vkCmdResetEvent2-stageMask-03934
 
 If the [`meshShader`](../../../../spec/latest/chapters/features.html#features-meshShader) feature is not enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](VkPipelineStageFlagBits2.html)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-03935) VUID-vkCmdResetEvent2-stageMask-03935
 
 If the [`taskShader`](../../../../spec/latest/chapters/features.html#features-taskShader) feature is not enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](VkPipelineStageFlagBits2.html)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-07316) VUID-vkCmdResetEvent2-stageMask-07316
@@ -122,21 +122,21 @@ If the [`taskShader`](../../../../spec/latest/chapters/features.html#features-ta
 If neither of the [`shadingRateImage`](../../../../spec/latest/chapters/features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](../../../../spec/latest/chapters/features.html#features-attachmentFragmentShadingRate) features are enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-04957) VUID-vkCmdResetEvent2-stageMask-04957
 
 If the [`subpassShading`](../../../../spec/latest/chapters/features.html#features-subpassShading) feature is not
 enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](VkPipelineStageFlagBits2.html)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-04995) VUID-vkCmdResetEvent2-stageMask-04995
 
 If the [`invocationMask`](../../../../spec/latest/chapters/features.html#features-invocationMask) feature is not
 enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](VkPipelineStageFlagBits2.html)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-07946) VUID-vkCmdResetEvent2-stageMask-07946
@@ -144,28 +144,28 @@ enabled, `stageMask` **must** not contain
 If neither the [VK_NV_ray_tracing](VK_NV_ray_tracing.html) extension or the
 [`rayTracingPipeline`](../../../../spec/latest/chapters/features.html#features-rayTracingPipeline) feature are
 enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-10751) VUID-vkCmdResetEvent2-stageMask-10751
 
 If the [`accelerationStructure`](../../../../spec/latest/chapters/features.html#features-accelerationStructure)
 feature is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-10752) VUID-vkCmdResetEvent2-stageMask-10752
 
 If the [`rayTracingMaintenance1`](../../../../spec/latest/chapters/features.html#features-rayTracingMaintenance1)
 feature is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-10753) VUID-vkCmdResetEvent2-stageMask-10753
 
 If the [`micromap`](../../../../spec/latest/chapters/features.html#features-micromap) feature is not enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](VkPipelineStageFlagBits2.html)
 
 * 
 [](#VUID-vkCmdResetEvent2-synchronization2-03829) VUID-vkCmdResetEvent2-synchronization2-03829
@@ -176,7 +176,7 @@ be enabled
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-03830) VUID-vkCmdResetEvent2-stageMask-03830
 
-`stageMask` **must** not include `VK_PIPELINE_STAGE_2_HOST_BIT`
+`stageMask` **must** not include [VK_PIPELINE_STAGE_2_HOST_BIT](VkPipelineStageFlagBits2.html)
 
 * 
 [](#VUID-vkCmdResetEvent2-event-03831) VUID-vkCmdResetEvent2-event-03831
@@ -223,7 +223,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdResetEvent2-commandBuffer-cmdpool) VUID-vkCmdResetEvent2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](VkQueueFlagBits.html), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdResetEvent2-renderpass) VUID-vkCmdResetEvent2-renderpass

@@ -97,7 +97,7 @@ the `[VK_KHR_surface](VK_KHR_surface.html)` extension) that refers to a Fuchsia
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_IMAGEPIPE_SURFACE_CREATE_INFO_FUCHSIA`
+[VK_STRUCTURE_TYPE_IMAGEPIPE_SURFACE_CREATE_INFO_FUCHSIA](VkStructureType.html)
 
 * 
 Revision 1, 2018-07-27 (Craig Stout)

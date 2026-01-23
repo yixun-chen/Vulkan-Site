@@ -80,14 +80,14 @@ backing `dstAddress`
 
 The range of memory defined by `srcAddress` and `size` **must** be
 a device address range allocated to the application from a buffer
-created with the `VK_BUFFER_USAGE_TRANSFER_SRC_BIT` usage flag set
+created with the [VK_BUFFER_USAGE_TRANSFER_SRC_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkCopyMemoryIndirectCommandKHR-dstAddress-12212) VUID-VkCopyMemoryIndirectCommandKHR-dstAddress-12212
 
 The range of memory defined by `dstAddress` and `size` **must** be
 a device address range allocated to the application from a buffer
-created with the `VK_BUFFER_USAGE_TRANSFER_DST_BIT` usage flag set
+created with the [VK_BUFFER_USAGE_TRANSFER_DST_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 Valid Usage (Implicit)
 

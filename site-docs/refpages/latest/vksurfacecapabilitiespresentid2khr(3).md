@@ -41,19 +41,19 @@ able to support the present-ID extension
 
 This structure **can** be included in the `pNext` chain of
 [VkSurfaceCapabilities2KHR](VkSurfaceCapabilities2KHR.html) to determine support for present-wait.
-If `presentId2Supported` is `VK_FALSE`, it indicates that attaching
+If `presentId2Supported` is [VK_FALSE](VK_FALSE.html), it indicates that attaching
 an ID to presentation requests is not possible for this surface.
 
 Applications **must** not attempt to include [VkPresentId2KHR](VkPresentId2KHR.html) in the
 `pNext` chain of a [VkPresentInfoKHR](VkPresentInfoKHR.html) if `presentId2Supported`
-is `VK_FALSE`.
+is [VK_FALSE](VK_FALSE.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSurfaceCapabilitiesPresentId2KHR-sType-sType) VUID-VkSurfaceCapabilitiesPresentId2KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_ID_2_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_ID_2_KHR](VkStructureType.html)
 
 [VK_KHR_present_id2](VK_KHR_present_id2.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

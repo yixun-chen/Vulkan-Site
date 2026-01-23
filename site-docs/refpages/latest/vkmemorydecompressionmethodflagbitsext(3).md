@@ -36,7 +36,7 @@ static const VkMemoryDecompressionMethodFlagBitsEXT VK_MEMORY_DECOMPRESSION_METH
 typedef VkMemoryDecompressionMethodFlagBitsEXT VkMemoryDecompressionMethodFlagBitsNV;
 
 * 
-`VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_EXT` specifies that
+[VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_EXT](#) specifies that
 the GDeflate 1.0 algorithm is used to decompress data.
 
 [VK_EXT_memory_decompression](VK_EXT_memory_decompression.html), [VK_NV_memory_decompression](VK_NV_memory_decompression.html), [VkMemoryDecompressionMethodFlagsEXT](VkMemoryDecompressionMethodFlagsEXT.html)

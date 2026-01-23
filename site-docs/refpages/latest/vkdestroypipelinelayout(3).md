@@ -51,14 +51,6 @@ was created, a compatible set of callbacks **must** be provided here
 If no `VkAllocationCallbacks` were provided when
 `pipelineLayout` was created, `pAllocator` **must** be `NULL`
 
-* 
-[](#VUID-vkDestroyPipelineLayout-pipelineLayout-02004) VUID-vkDestroyPipelineLayout-pipelineLayout-02004
-
-`pipelineLayout` **must** not have been passed to any `vkCmd*`
-command for any command buffers that are still in the
-[recording state](../../../../spec/latest/chapters/cmdbuffers.html#commandbuffers-lifecycle) when
-`vkDestroyPipelineLayout` is called
-
 Valid Usage (Implicit)
 
 * 

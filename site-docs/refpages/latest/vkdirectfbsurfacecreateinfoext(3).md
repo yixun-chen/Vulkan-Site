@@ -63,7 +63,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDirectFBSurfaceCreateInfoEXT-sType-sType) VUID-VkDirectFBSurfaceCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DIRECTFB_SURFACE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DIRECTFB_SURFACE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDirectFBSurfaceCreateInfoEXT-pNext-pNext) VUID-VkDirectFBSurfaceCreateInfoEXT-pNext-pNext

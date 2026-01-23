@@ -39,6 +39,8 @@ static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_SHADER_DEVICE_ADDRESS_BIT 
 // Provided by VK_AMDX_shader_enqueue with VK_KHR_maintenance5 or VK_VERSION_1_4
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_EXECUTION_GRAPH_SCRATCH_BIT_AMDX = 0x02000000ULL;
 #endif
+// Provided by VK_EXT_descriptor_heap
+static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT = 0x10000000ULL;
 // Provided by VK_KHR_maintenance5
 static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_TRANSFER_SRC_BIT_KHR = 0x00000001ULL;
 // Provided by VK_KHR_maintenance5
@@ -109,53 +111,53 @@ static const VkBufferUsageFlagBits2 VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT 
 typedef VkBufferUsageFlagBits2 VkBufferUsageFlagBits2KHR;
 
 * 
-`VK_BUFFER_USAGE_2_TRANSFER_SRC_BIT` specifies that the buffer **can**
+[VK_BUFFER_USAGE_2_TRANSFER_SRC_BIT](#) specifies that the buffer **can**
 be used as the source of a *transfer command* (see the definition of
-[    `VK_PIPELINE_STAGE_TRANSFER_BIT`](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages-transfer)).
+[](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages-transfer)[VK_PIPELINE_STAGE_TRANSFER_BIT](VkPipelineStageFlagBits.html)).
 
 * 
-`VK_BUFFER_USAGE_2_TRANSFER_DST_BIT` specifies that the buffer **can**
+[VK_BUFFER_USAGE_2_TRANSFER_DST_BIT](#) specifies that the buffer **can**
 be used as the destination of a transfer command.
 
 * 
-`VK_BUFFER_USAGE_2_UNIFORM_TEXEL_BUFFER_BIT` specifies that the
+[VK_BUFFER_USAGE_2_UNIFORM_TEXEL_BUFFER_BIT](#) specifies that the
 buffer **can** be used to create a `VkBufferView` suitable for
 occupying a `VkDescriptorSet` slot of type
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`.
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html).
 
 * 
-`VK_BUFFER_USAGE_2_STORAGE_TEXEL_BUFFER_BIT` specifies that the
+[VK_BUFFER_USAGE_2_STORAGE_TEXEL_BUFFER_BIT](#) specifies that the
 buffer **can** be used to create a `VkBufferView` suitable for
 occupying a `VkDescriptorSet` slot of type
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`.
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html).
 
 * 
-`VK_BUFFER_USAGE_2_UNIFORM_BUFFER_BIT` specifies that the buffer
+[VK_BUFFER_USAGE_2_UNIFORM_BUFFER_BIT](#) specifies that the buffer
 **can** be used in a `VkDescriptorBufferInfo` suitable for occupying a
 `VkDescriptorSet` slot either of type
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` or
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`.
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html).
 
 * 
-`VK_BUFFER_USAGE_2_STORAGE_BUFFER_BIT` specifies that the buffer
+[VK_BUFFER_USAGE_2_STORAGE_BUFFER_BIT](#) specifies that the buffer
 **can** be used in a `VkDescriptorBufferInfo` suitable for occupying a
 `VkDescriptorSet` slot either of type
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`.
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html).
 
 * 
-`VK_BUFFER_USAGE_2_INDEX_BUFFER_BIT` specifies that the buffer is
+[VK_BUFFER_USAGE_2_INDEX_BUFFER_BIT](#) specifies that the buffer is
     suitable for passing as the `buffer` parameter to
 [vkCmdBindIndexBuffer2](vkCmdBindIndexBuffer2.html) and
     [vkCmdBindIndexBuffer](vkCmdBindIndexBuffer.html).
 
 * 
-`VK_BUFFER_USAGE_2_VERTEX_BUFFER_BIT` specifies that the buffer is
+[VK_BUFFER_USAGE_2_VERTEX_BUFFER_BIT](#) specifies that the buffer is
 suitable for passing as an element of the `pBuffers` array to
 [vkCmdBindVertexBuffers](vkCmdBindVertexBuffers.html).
 
 * 
-`VK_BUFFER_USAGE_2_INDIRECT_BUFFER_BIT` specifies that the buffer is
+[VK_BUFFER_USAGE_2_INDIRECT_BUFFER_BIT](#) specifies that the buffer is
 suitable for passing as the `buffer` parameter to
 [vkCmdDrawIndirect](vkCmdDrawIndirect.html), [vkCmdDrawIndexedIndirect](vkCmdDrawIndexedIndirect.html),
 [vkCmdDrawMeshTasksIndirectNV](vkCmdDrawMeshTasksIndirectNV.html),
@@ -173,110 +175,114 @@ It is also suitable for passing as the underlying buffer of either the
 `VkGeneratedCommandsInfoEXT`.
 
 * 
-`VK_BUFFER_USAGE_2_CONDITIONAL_RENDERING_BIT_EXT` specifies that the
+[VK_BUFFER_USAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#) specifies that the
 buffer is suitable for passing as the `buffer` parameter to
 [vkCmdBeginConditionalRenderingEXT](vkCmdBeginConditionalRenderingEXT.html).
 
 * 
-`VK_BUFFER_USAGE_2_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT` specifies that
+[VK_BUFFER_USAGE_2_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT](#) specifies that
 the buffer is suitable for using for binding as a transform feedback
 buffer with [vkCmdBindTransformFeedbackBuffersEXT](vkCmdBindTransformFeedbackBuffersEXT.html).
 
 * 
-`VK_BUFFER_USAGE_2_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_2_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT](#)
 specifies that the buffer is suitable for using as a counter buffer with
 [vkCmdBeginTransformFeedbackEXT](vkCmdBeginTransformFeedbackEXT.html) and
 [vkCmdEndTransformFeedbackEXT](vkCmdEndTransformFeedbackEXT.html).
 
 * 
-`VK_BUFFER_USAGE_2_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT` specifies that
+[VK_BUFFER_USAGE_2_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT](#) specifies that
 the buffer is suitable to contain sampler and combined image sampler
 descriptors when bound as a descriptor buffer.
 Buffers containing combined image sampler descriptors **must** also specify
-`VK_BUFFER_USAGE_2_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT`.
+[VK_BUFFER_USAGE_2_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](#).
 
 * 
-`VK_BUFFER_USAGE_2_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT` specifies
+[VK_BUFFER_USAGE_2_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](#) specifies
 that the buffer is suitable to contain resource descriptors when bound
 as a descriptor buffer.
 
 * 
-`VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT](#)
 specifies that the buffer, when bound, **can** be used by the
 implementation to support push descriptors when using descriptor
 buffers.
 
 * 
-`VK_BUFFER_USAGE_2_TILE_MEMORY_BIT_QCOM` specifies that the buffer
+[VK_BUFFER_USAGE_2_TILE_MEMORY_BIT_QCOM](#) specifies that the buffer
 **can** be bound to `VkDeviceMemory` allocated from a
-[VkMemoryHeap](VkMemoryHeap.html) with the `VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM`
+[VkMemoryHeap](VkMemoryHeap.html) with the [VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html)
 property.
 
 * 
-`VK_BUFFER_USAGE_2_RAY_TRACING_BIT_NV` specifies that the buffer is
+[VK_BUFFER_USAGE_2_RAY_TRACING_BIT_NV](#) specifies that the buffer is
 suitable for use in [vkCmdTraceRaysNV](vkCmdTraceRaysNV.html).
 
 * 
-`VK_BUFFER_USAGE_2_SHADER_BINDING_TABLE_BIT_KHR` specifies that the
+[VK_BUFFER_USAGE_2_SHADER_BINDING_TABLE_BIT_KHR](#) specifies that the
 buffer is suitable for use as a [Shader Binding    Table](../../../../spec/latest/chapters/raytracing.html#shader-binding-table).
 
 * 
-`VK_BUFFER_USAGE_2_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR`
+[VK_BUFFER_USAGE_2_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR](#)
 specifies that the buffer is suitable for use as a read-only input to an
 [acceleration structure build](../../../../spec/latest/chapters/accelstructures.html#acceleration-structure-building).
 
 * 
-`VK_BUFFER_USAGE_2_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR` specifies
+[VK_BUFFER_USAGE_2_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR](#) specifies
 that the buffer is suitable for storage space for a
 [VkAccelerationStructureKHR](VkAccelerationStructureKHR.html).
 
 * 
-`VK_BUFFER_USAGE_2_SHADER_DEVICE_ADDRESS_BIT` specifies that the
+[VK_BUFFER_USAGE_2_SHADER_DEVICE_ADDRESS_BIT](#) specifies that the
 buffer **can** be used to retrieve a buffer device address via
 [vkGetBufferDeviceAddress](vkGetBufferDeviceAddress.html) and use that address to access the
 buffer’s memory from a shader.
 
 * 
-`VK_BUFFER_USAGE_2_VIDEO_DECODE_SRC_BIT_KHR` specifies that the
+[VK_BUFFER_USAGE_2_VIDEO_DECODE_SRC_BIT_KHR](#) specifies that the
 buffer **can** be used as the source video bitstream buffer in a
 [video decode operation](../../../../spec/latest/chapters/videocoding.html#video-decode-operations).
 
 * 
-`VK_BUFFER_USAGE_2_VIDEO_DECODE_DST_BIT_KHR` is reserved for future
+[VK_BUFFER_USAGE_2_VIDEO_DECODE_DST_BIT_KHR](#) is reserved for future
 use.
 
 * 
-`VK_BUFFER_USAGE_2_VIDEO_ENCODE_DST_BIT_KHR` specifies that the
+[VK_BUFFER_USAGE_2_VIDEO_ENCODE_DST_BIT_KHR](#) specifies that the
 buffer **can** be used as the destination video bitstream buffer in a
 [video encode operation](../../../../spec/latest/chapters/videocoding.html#video-encode-operations).
 
 * 
-`VK_BUFFER_USAGE_2_VIDEO_ENCODE_SRC_BIT_KHR` is reserved for future
+[VK_BUFFER_USAGE_2_VIDEO_ENCODE_SRC_BIT_KHR](#) is reserved for future
 use.
 
 * 
-`VK_BUFFER_USAGE_2_EXECUTION_GRAPH_SCRATCH_BIT_AMDX` specifies that
+[VK_BUFFER_USAGE_2_EXECUTION_GRAPH_SCRATCH_BIT_AMDX](#) specifies that
 the buffer **can** be used for as scratch memory for
 [execution graph dispatch](../../../../spec/latest/chapters/executiongraphs.html#executiongraphs).
 
 * 
-`VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT` specifies that the
+[VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT](#) specifies that the
 buffer **can** be used as a preprocess buffer for
 [Device-Generated Commands](../../../../spec/latest/chapters/device_generated_commands/generatedcommands.html#device-generated-commands).
 
 * 
-`VK_BUFFER_USAGE_2_COMPRESSED_DATA_DGF1_BIT_AMDX` specifies that the
+[VK_BUFFER_USAGE_2_COMPRESSED_DATA_DGF1_BIT_AMDX](#) specifies that the
 buffer is suitable as storage space for [Dense    Geometry Format](../../../../spec/latest/chapters/VK_AMDX_dense_geometry_format/dense_geometry_format.html#dense-geometry-format) data.
 
 * 
-`VK_BUFFER_USAGE_2_DATA_GRAPH_FOREIGN_DESCRIPTOR_BIT_ARM` specifies
+[VK_BUFFER_USAGE_2_DATA_GRAPH_FOREIGN_DESCRIPTOR_BIT_ARM](#) specifies
 that the buffer is suitable to contain resource descriptors when bound
 as a descriptor buffer in command buffers allocated from a command pool
 that **can** target foreign [data graph    processing engines](../../../../spec/latest/chapters/VK_ARM_data_graph/graphs.html#graphs-processing-engines).
 
 * 
-`VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` specifies that the
+[VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#) specifies that the
 buffer **can** be used as a destination buffer in [    memory decompression](../../../../spec/latest/chapters/memory_decompression.html#memory-decompression).
+
+* 
+[VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT](#) specifies that the
+buffer **can** be used as a [descriptor heap](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps).
 
 [VK_KHR_maintenance5](VK_KHR_maintenance5.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), [VkBufferUsageFlags2](VkBufferUsageFlags2.html)
 

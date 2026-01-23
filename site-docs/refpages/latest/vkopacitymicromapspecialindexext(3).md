@@ -18,7 +18,7 @@
 
 VkOpacityMicromapSpecialIndexEXT - Enum for special indices in the opacity micromap
 
-The `VkOpacityMicromapSpecialIndexEXT` enumeration is defined as:
+The [VkOpacityMicromapSpecialIndexEXT](#) enumeration is defined as:
 
 // Provided by VK_EXT_opacity_micromap
 typedef enum VkOpacityMicromapSpecialIndexEXT {
@@ -31,23 +31,23 @@ typedef enum VkOpacityMicromapSpecialIndexEXT {
 } VkOpacityMicromapSpecialIndexEXT;
 
 * 
-`VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_TRANSPARENT_EXT` specifies
+[VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_TRANSPARENT_EXT](#) specifies
 that the entire triangle is fully transparent.
 
 * 
-`VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_OPAQUE_EXT` specifies that
+[VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_OPAQUE_EXT](#) specifies that
 the entire triangle is fully opaque.
 
 * 
-`VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_TRANSPARENT_EXT`
+[VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_TRANSPARENT_EXT](#)
 specifies that the entire triangle is unknown-transparent.
 
 * 
-`VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_OPAQUE_EXT`
+[VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_OPAQUE_EXT](#)
 specifies that the entire triangle is unknown-opaque.
 
 * 
-`VK_OPACITY_MICROMAP_SPECIAL_INDEX_CLUSTER_GEOMETRY_DISABLE_OPACITY_MICROMAP_NV`
+[VK_OPACITY_MICROMAP_SPECIAL_INDEX_CLUSTER_GEOMETRY_DISABLE_OPACITY_MICROMAP_NV](#)
 specifies that [Opacity Micromap](../../../../spec/latest/chapters/raytraversal.html#ray-opacity-micromap) will be
 disabled for this triangle and opacity value will be picked from
 [VkClusterAccelerationStructureBuildTriangleClusterInfoNV](VkClusterAccelerationStructureBuildTriangleClusterInfoNV.html)::`baseGeometryIndexAndGeometryFlags`

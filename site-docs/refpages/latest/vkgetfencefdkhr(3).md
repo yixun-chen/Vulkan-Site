@@ -51,7 +51,7 @@ or transfer ownership back to Vulkan by using the file descriptor to import
 a fence payload. |
 
 If `pGetFdInfo->handleType` is
-`VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT` and the fence is signaled at
+[VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT](VkExternalFenceHandleTypeFlagBits.html) and the fence is signaled at
 the time `vkGetFenceFdKHR` is called, `pFd` **may** return the value
 `-1` instead of a valid file descriptor.
 
@@ -85,21 +85,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_external_fence_fd](VK_KHR_external_fence_fd.html), [VkDevice](VkDevice.html), [VkFenceGetFdInfoKHR](VkFenceGetFdInfoKHR.html)
 

@@ -29,14 +29,14 @@ typedef enum VkCoverageReductionModeNV {
 } VkCoverageReductionModeNV;
 
 * 
-`VK_COVERAGE_REDUCTION_MODE_MERGE_NV` specifies that each color
+[VK_COVERAGE_REDUCTION_MODE_MERGE_NV](#) specifies that each color
 sample will be associated with an implementation-dependent subset of
 samples in the pixel coverage.
 If any of those associated samples are covered, the color sample is
 covered.
 
 * 
-`VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV` specifies that for color
+[VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV](#) specifies that for color
 samples present in the color attachments, a color sample is covered if
 the pixel coverage sample with the same
 [sample index](../../../../spec/latest/chapters/primsrast.html#primsrast-multisampling-coverage-mask) i is

@@ -67,8 +67,8 @@ No known IP claims.
 Courtney Goeltzenleuchter, Google
 
 This extension expands [VkColorSpaceKHR](VkColorSpaceKHR.html) to add support for most
-standard color spaces beyond `VK_COLOR_SPACE_SRGB_NONLINEAR_KHR`.
-This extension also adds support for `VK_COLOR_SPACE_PASS_THROUGH_EXT`
+standard color spaces beyond [VK_COLOR_SPACE_SRGB_NONLINEAR_KHR](VkColorSpaceKHR.html).
+This extension also adds support for [VK_COLOR_SPACE_PASS_THROUGH_EXT](VkColorSpaceKHR.html)
 which allows applications to use color spaces not explicitly enumerated in
 [VkColorSpaceKHR](VkColorSpaceKHR.html).
 
@@ -81,49 +81,49 @@ which allows applications to use color spaces not explicitly enumerated in
 * 
 Extending [VkColorSpaceKHR](VkColorSpaceKHR.html):
 
-`VK_COLOR_SPACE_ADOBERGB_LINEAR_EXT`
+[VK_COLOR_SPACE_ADOBERGB_LINEAR_EXT](VkColorSpaceKHR.html)
 
 * 
-`VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT`
+[VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT](VkColorSpaceKHR.html)
 
 * 
-`VK_COLOR_SPACE_BT2020_LINEAR_EXT`
+[VK_COLOR_SPACE_BT2020_LINEAR_EXT](VkColorSpaceKHR.html)
 
 * 
-`VK_COLOR_SPACE_BT709_LINEAR_EXT`
+[VK_COLOR_SPACE_BT709_LINEAR_EXT](VkColorSpaceKHR.html)
 
 * 
-`VK_COLOR_SPACE_BT709_NONLINEAR_EXT`
+[VK_COLOR_SPACE_BT709_NONLINEAR_EXT](VkColorSpaceKHR.html)
 
 * 
-`VK_COLOR_SPACE_DCI_P3_LINEAR_EXT`
+[VK_COLOR_SPACE_DCI_P3_LINEAR_EXT](VkColorSpaceKHR.html)
 
 * 
-`VK_COLOR_SPACE_DCI_P3_NONLINEAR_EXT`
+[VK_COLOR_SPACE_DCI_P3_NONLINEAR_EXT](VkColorSpaceKHR.html)
 
 * 
-`VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT`
+[VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT](VkColorSpaceKHR.html)
 
 * 
-`VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT`
+[VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT](VkColorSpaceKHR.html)
 
 * 
-`VK_COLOR_SPACE_DOLBYVISION_EXT`
+[VK_COLOR_SPACE_DOLBYVISION_EXT](VkColorSpaceKHR.html)
 
 * 
-`VK_COLOR_SPACE_EXTENDED_SRGB_LINEAR_EXT`
+[VK_COLOR_SPACE_EXTENDED_SRGB_LINEAR_EXT](VkColorSpaceKHR.html)
 
 * 
-`VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT`
+[VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT](VkColorSpaceKHR.html)
 
 * 
-`VK_COLOR_SPACE_HDR10_HLG_EXT`
+[VK_COLOR_SPACE_HDR10_HLG_EXT](VkColorSpaceKHR.html)
 
 * 
-`VK_COLOR_SPACE_HDR10_ST2084_EXT`
+[VK_COLOR_SPACE_HDR10_ST2084_EXT](VkColorSpaceKHR.html)
 
 * 
-`VK_COLOR_SPACE_PASS_THROUGH_EXT`
+[VK_COLOR_SPACE_PASS_THROUGH_EXT](VkColorSpaceKHR.html)
 
 1) Does the spec need to specify which kinds of image formats support the
 color spaces?

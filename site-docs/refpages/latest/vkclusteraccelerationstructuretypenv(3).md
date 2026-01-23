@@ -18,7 +18,7 @@
 
 VkClusterAccelerationStructureTypeNV - Enum providing the type of cluster acceleration structure
 
-Values which **can** be set in `VkClusterAccelerationStructureTypeNV` are:
+Values which **can** be set in [VkClusterAccelerationStructureTypeNV](#) are:
 
 // Provided by VK_NV_cluster_acceleration_structure
 typedef enum VkClusterAccelerationStructureTypeNV {
@@ -28,15 +28,15 @@ typedef enum VkClusterAccelerationStructureTypeNV {
 } VkClusterAccelerationStructureTypeNV;
 
 * 
-`VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_CLUSTERS_BOTTOM_LEVEL_NV`
+[VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_CLUSTERS_BOTTOM_LEVEL_NV](#)
 specifies a bottom level cluster acceleration structure.
 
 * 
-`VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_TRIANGLE_CLUSTER_NV`
+[VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_TRIANGLE_CLUSTER_NV](#)
 specifies a cluster acceleration structure.
 
 * 
-`VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_TRIANGLE_CLUSTER_TEMPLATE_NV`
+[VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_TRIANGLE_CLUSTER_TEMPLATE_NV](#)
 specifies a template cluster acceleration structure.
 
 [VK_NV_cluster_acceleration_structure](VK_NV_cluster_acceleration_structure.html), [VkClusterAccelerationStructureMoveObjectsInputNV](VkClusterAccelerationStructureMoveObjectsInputNV.html)

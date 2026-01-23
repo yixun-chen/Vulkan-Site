@@ -20,7 +20,7 @@
 VkSparseImageMemoryBindInfo - Structure specifying sparse image memory bind information
 
 Memory **can** be bound to sparse image blocks of `VkImage` objects created
-with the `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` flag using the following
+with the [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](VkImageCreateFlagBits.html) flag using the following
 structure:
 
 // Provided by VK_VERSION_1_0
@@ -68,7 +68,7 @@ when `image` was created
 [](#VUID-VkSparseImageMemoryBindInfo-image-02901) VUID-VkSparseImageMemoryBindInfo-image-02901
 
 `image` **must** have been created with
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` set
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](VkImageCreateFlagBits.html) set
 
 Valid Usage (Implicit)
 

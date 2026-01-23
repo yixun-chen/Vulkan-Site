@@ -51,19 +51,19 @@ used, subject to the following conditions:
 
 * 
 For descriptor set bindings created with the
-`VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT` bit set, all descriptors
+[VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT](VkDescriptorBindingFlagBits.html) bit set, all descriptors
 in that binding that are dynamically used **must** have been populated
 before the descriptor set is [consumed](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-binding).
 
 * 
 For descriptor set bindings created without the
-`VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT` bit set, all descriptors
+[VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT](VkDescriptorBindingFlagBits.html) bit set, all descriptors
 in that binding that are statically used **must** have been populated
 before the descriptor set is [consumed](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-binding).
 
 * 
 Descriptor bindings with descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` **can** be **undefined** when
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) **can** be **undefined** when
 the descriptor set is [consumed](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-binding); though values
 in that block will be **undefined**.
 
@@ -90,7 +90,7 @@ used to create the descriptor pool.
 
 If the allocation fails due to no more space in the descriptor pool, and not
 because of system or device memory exhaustion, then
-`VK_ERROR_OUT_OF_POOL_MEMORY` **must** be returned.
+[VK_ERROR_OUT_OF_POOL_MEMORY](VkResult.html) **must** be returned.
 
 `vkAllocateDescriptorSets` **can** be used to create multiple descriptor
 sets.
@@ -131,27 +131,27 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_FRAGMENTED_POOL`
+[VK_ERROR_FRAGMENTED_POOL](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_POOL_MEMORY`
+[VK_ERROR_OUT_OF_POOL_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkDescriptorSet](VkDescriptorSet.html), [VkDescriptorSetAllocateInfo](VkDescriptorSetAllocateInfo.html), [VkDevice](VkDevice.html)
 

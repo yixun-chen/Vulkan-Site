@@ -83,7 +83,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdCopyMemoryIndirectKHR-commandBuffer-cmdpool) VUID-vkCmdCopyMemoryIndirectKHR-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, or `VK_QUEUE_TRANSFER_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html), or [VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdCopyMemoryIndirectKHR-renderpass) VUID-vkCmdCopyMemoryIndirectKHR-renderpass

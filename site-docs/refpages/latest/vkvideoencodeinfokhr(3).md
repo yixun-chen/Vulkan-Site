@@ -90,7 +90,7 @@ Valid Usage
 [](#VUID-VkVideoEncodeInfoKHR-dstBuffer-08236) VUID-VkVideoEncodeInfoKHR-dstBuffer-08236
 
 `dstBuffer` **must** have been created with the
-`VK_BUFFER_USAGE_VIDEO_ENCODE_DST_BIT_KHR` usage flag set
+[VK_BUFFER_USAGE_VIDEO_ENCODE_DST_BIT_KHR](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkVideoEncodeInfoKHR-dstBufferOffset-08237) VUID-VkVideoEncodeInfoKHR-dstBufferOffset-08237
@@ -132,7 +132,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeInfoKHR-sType-sType) VUID-VkVideoEncodeInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoEncodeInfoKHR-pNext-pNext) VUID-VkVideoEncodeInfoKHR-pNext-pNext

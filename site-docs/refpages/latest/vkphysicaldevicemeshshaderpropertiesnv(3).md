@@ -142,7 +142,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMeshShaderPropertiesNV-sType-sType) VUID-VkPhysicalDeviceMeshShaderPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV](VkStructureType.html)
 
 [VK_NV_mesh_shader](VK_NV_mesh_shader.html), [VkStructureType](VkStructureType.html)
 

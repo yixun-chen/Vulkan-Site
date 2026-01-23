@@ -52,7 +52,7 @@ Valid Usage
 [](#VUID-VkSubpassBeginInfo-contents-09382) VUID-VkSubpassBeginInfo-contents-09382
 
 If `contents` is
-`VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR`, then
+[VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR](VkSubpassContents.html), then
 at least one of the following features **must** be enabled:
 
 [`maintenance7`](../../../../spec/latest/chapters/features.html#features-maintenance7)
@@ -65,7 +65,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSubpassBeginInfo-sType-sType) VUID-VkSubpassBeginInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkSubpassBeginInfo-pNext-pNext) VUID-VkSubpassBeginInfo-pNext-pNext

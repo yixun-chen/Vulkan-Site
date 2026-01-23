@@ -868,4 +868,4 @@ Enables hot reloading for faster development
 
 In the next section, we’ll explore rendering pipeline design, which will build upon the resource management system to create a flexible and efficient rendering system.
 
-[Previous: Component Systems](03_component_systems.adoc) | [Next: Rendering Pipeline](05_rendering_pipeline.adoc)
+[Previous: Component Systems](03_component_systems.html) | [Next: Rendering Pipeline](05_rendering_pipeline.html)

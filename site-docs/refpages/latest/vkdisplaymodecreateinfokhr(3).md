@@ -43,14 +43,14 @@ structure.
 `parameters` is a [VkDisplayModeParametersKHR](VkDisplayModeParametersKHR.html) structure
 describing the display parameters to use in creating the new mode.
 If the parameters are not compatible with the specified display, the
-implementation **must** return `VK_ERROR_INITIALIZATION_FAILED`.
+implementation **must** return [VK_ERROR_INITIALIZATION_FAILED](VkResult.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDisplayModeCreateInfoKHR-sType-sType) VUID-VkDisplayModeCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkDisplayModeCreateInfoKHR-pNext-pNext) VUID-VkDisplayModeCreateInfoKHR-pNext-pNext

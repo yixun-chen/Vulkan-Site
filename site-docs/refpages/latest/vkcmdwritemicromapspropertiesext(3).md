@@ -56,18 +56,18 @@ will contain the `micromapCount` number of results.
 
 Accesses to any of the micromaps listed in `pMicromaps` **must** be
 [synchronized](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies) with the
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](VkPipelineStageFlagBits2.html)
 [pipeline stage](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages) and an
 [access type](../../../../spec/latest/chapters/synchronization.html#synchronization-access-types) of
-`VK_ACCESS_2_MICROMAP_READ_BIT_EXT`.
+[VK_ACCESS_2_MICROMAP_READ_BIT_EXT](VkAccessFlagBits2.html).
 
 * 
 If `queryType` is
-`VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT`, then the value
+[VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT](VkQueryType.html), then the value
 written out is the number of bytes required by a serialized micromap.
 
 * 
-If `queryType` is `VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT`,
+If `queryType` is [VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT](VkQueryType.html),
 then the value written out is the number of bytes required by a
 compacted micromap.
 
@@ -107,14 +107,14 @@ the execution of this command
 [](#VUID-vkCmdWriteMicromapsPropertiesEXT-pMicromaps-07502) VUID-vkCmdWriteMicromapsPropertiesEXT-pMicromaps-07502
 
 All micromaps in `pMicromaps` **must** have been constructed with
-`VK_BUILD_MICROMAP_ALLOW_COMPACTION_BIT_EXT` if `queryType` is
-`VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT`
+[VK_BUILD_MICROMAP_ALLOW_COMPACTION_BIT_EXT](VkBuildMicromapFlagBitsEXT.html) if `queryType` is
+[VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT](VkQueryType.html)
 
 * 
 [](#VUID-vkCmdWriteMicromapsPropertiesEXT-queryType-07503) VUID-vkCmdWriteMicromapsPropertiesEXT-queryType-07503
 
-`queryType` **must** be `VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT`
-or `VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT`
+`queryType` **must** be [VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT](VkQueryType.html)
+or [VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT](VkQueryType.html)
 
 Valid Usage (Implicit)
 
@@ -146,7 +146,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdWriteMicromapsPropertiesEXT-commandBuffer-cmdpool) VUID-vkCmdWriteMicromapsPropertiesEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdWriteMicromapsPropertiesEXT-renderpass) VUID-vkCmdWriteMicromapsPropertiesEXT-renderpass

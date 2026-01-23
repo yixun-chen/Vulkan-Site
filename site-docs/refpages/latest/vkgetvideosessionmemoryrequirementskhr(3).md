@@ -54,7 +54,7 @@ binding requirements actually written to `pMemoryRequirements`.
 If `pMemoryRequirementsCount` is less than the number of memory bindings
 required for the video session, then at most `pMemoryRequirementsCount`
 elements will be written to `pMemoryRequirements`, and
-`VK_INCOMPLETE` will be returned, instead of `VK_SUCCESS`, to
+[VK_INCOMPLETE](VkResult.html) will be returned, instead of [VK_SUCCESS](VkResult.html), to
 indicate that not all required memory binding requirements were returned.
 
 Valid Usage (Implicit)
@@ -89,18 +89,18 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_video_queue](VK_KHR_video_queue.html), [VkDevice](VkDevice.html), [VkVideoSessionKHR](VkVideoSessionKHR.html), [VkVideoSessionMemoryRequirementsKHR](VkVideoSessionMemoryRequirementsKHR.html)
 

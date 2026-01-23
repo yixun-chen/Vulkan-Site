@@ -110,17 +110,17 @@ Extending [VkSamplerYcbcrConversionCreateInfo](VkSamplerYcbcrConversionCreateInf
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_DEGAMMA_FEATURES_QCOM`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_DEGAMMA_FEATURES_QCOM](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_YCBCR_DEGAMMA_CREATE_INFO_QCOM`
+[VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_YCBCR_DEGAMMA_CREATE_INFO_QCOM](VkStructureType.html)
 
 1) Which Y′CBCR formats support the degamma feature?
 
 **RESOLVED**: For implementations that support the extension, each format that
 contains 8-bit R, G, and B components and supports either
-`VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT` or
-`VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT` must support degamma.
+[VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT](VkFormatFeatureFlagBits.html) or
+[VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT](VkFormatFeatureFlagBits.html) must support degamma.
 
 Since non-compressed Vulkan sRGB formats are already limited to 8-bit
 components, and since Adreno supports degamma for all 8bit Y′CBCR formats,
@@ -153,7 +153,7 @@ The ITU transfer function is mathematically different from the sRGB transfer
 function and while sRGB and ITU define similar curves, the difference is
 significant.
 Performing the “sRGB degamma” prior to range expansion can introduce
-artifacts if the content uses `VK_SAMPLER_YCBCR_RANGE_ITU_NARROW`
+artifacts if the content uses [VK_SAMPLER_YCBCR_RANGE_ITU_NARROW](VkSamplerYcbcrRange.html)
 encoding.
 Nevertheless, using sRGB can make sense for certain use cases where camera
 YCbCr images are known to be encoded with sRGB (or a pure gamma 2.2)

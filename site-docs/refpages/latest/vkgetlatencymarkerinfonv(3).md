@@ -47,8 +47,8 @@ of latency data available or queried, as described below.
 If `pTimings` is `NULL` then the maximum number of queryable frame data
 is returned in `timingCount`.
 Otherwise, `timingCount` **must** be set by the application to the number
-of elements in the `pTimings` array, and on return the variable is
-overwritten with the number of values actually written to `pTimings`.
+of elements in the `pTimings` array, and on return is overwritten with
+the number of values actually written to `pTimings`.
 The elements of `pTimings` are arranged in the order they were requested
 in, with the oldest data in the first entry.
 
@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGetLatencyMarkerInfoNV-sType-sType) VUID-VkGetLatencyMarkerInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GET_LATENCY_MARKER_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GET_LATENCY_MARKER_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkGetLatencyMarkerInfoNV-pTimings-parameter) VUID-VkGetLatencyMarkerInfoNV-pTimings-parameter

@@ -49,7 +49,7 @@ If the `VkPhysicalDevicePrivateDataFeaturesEXT` structure is included in the `pN
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDevicePrivateDataFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR-sType-sType) VUID-VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MAXIMAL_RECONVERGENCE_FEATURES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MAXIMAL_RECONVERGENCE_FEATURES_KHR](VkStructureType.html)
 
 [VK_KHR_shader_maximal_reconvergence](VK_KHR_shader_maximal_reconvergence.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

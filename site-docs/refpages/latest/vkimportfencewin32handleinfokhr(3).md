@@ -61,8 +61,8 @@ The handle types supported by `handleType` are:
 
 | Handle Type | Transference | Permanence Supported |
 | --- | --- | --- |
-| `VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT` | Reference | Temporary,Permanent |
-| `VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT` | Reference | Temporary,Permanent |
+| [VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT](VkExternalFenceHandleTypeFlagBits.html) | Reference | Temporary,Permanent |
+| [VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](VkExternalFenceHandleTypeFlagBits.html) | Reference | Temporary,Permanent |
 
 Valid Usage
 
@@ -76,7 +76,7 @@ Valid Usage
 [](#VUID-VkImportFenceWin32HandleInfoKHR-handleType-01459) VUID-VkImportFenceWin32HandleInfoKHR-handleType-01459
 
 If `handleType` is not
-`VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT`, `name` **must**
+[VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT](VkExternalFenceHandleTypeFlagBits.html), `name` **must**
 be `NULL`
 
 * 
@@ -113,7 +113,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportFenceWin32HandleInfoKHR-sType-sType) VUID-VkImportFenceWin32HandleInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_FENCE_WIN32_HANDLE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_FENCE_WIN32_HANDLE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkImportFenceWin32HandleInfoKHR-pNext-pNext) VUID-VkImportFenceWin32HandleInfoKHR-pNext-pNext

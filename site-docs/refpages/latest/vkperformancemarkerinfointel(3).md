@@ -44,7 +44,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPerformanceMarkerInfoINTEL-sType-sType) VUID-VkPerformanceMarkerInfoINTEL-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PERFORMANCE_MARKER_INFO_INTEL`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_MARKER_INFO_INTEL](VkStructureType.html)
 
 * 
 [](#VUID-VkPerformanceMarkerInfoINTEL-pNext-pNext) VUID-VkPerformanceMarkerInfoINTEL-pNext-pNext

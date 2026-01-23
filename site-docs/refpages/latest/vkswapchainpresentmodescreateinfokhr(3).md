@@ -68,7 +68,7 @@ the surface
 [](#VUID-VkSwapchainPresentModesCreateInfoKHR-presentModeFifoLatestReady-10160) VUID-VkSwapchainPresentModesCreateInfoKHR-presentModeFifoLatestReady-10160
 
 If the [    `presentModeFifoLatestReady`](../../../../spec/latest/chapters/features.html#features-presentModeFifoLatestReady) feature is not enabled, pPresentModes
-**must** not contain `VK_PRESENT_MODE_FIFO_LATEST_READY_KHR`
+**must** not contain [VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](VkPresentModeKHR.html)
 
 * 
 [](#VUID-VkSwapchainPresentModesCreateInfoKHR-pPresentModes-07763) VUID-VkSwapchainPresentModesCreateInfoKHR-pPresentModes-07763
@@ -90,7 +90,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSwapchainPresentModesCreateInfoKHR-sType-sType) VUID-VkSwapchainPresentModesCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_MODES_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_MODES_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkSwapchainPresentModesCreateInfoKHR-pPresentModes-parameter) VUID-VkSwapchainPresentModesCreateInfoKHR-pPresentModes-parameter

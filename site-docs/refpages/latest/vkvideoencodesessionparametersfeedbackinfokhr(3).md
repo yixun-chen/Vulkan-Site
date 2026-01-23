@@ -50,7 +50,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeSessionParametersFeedbackInfoKHR-sType-sType) VUID-VkVideoEncodeSessionParametersFeedbackInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_PARAMETERS_FEEDBACK_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_PARAMETERS_FEEDBACK_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoEncodeSessionParametersFeedbackInfoKHR-pNext-pNext) VUID-VkVideoEncodeSessionParametersFeedbackInfoKHR-pNext-pNext

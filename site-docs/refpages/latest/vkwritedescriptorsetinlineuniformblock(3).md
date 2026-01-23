@@ -20,7 +20,7 @@
 VkWriteDescriptorSetInlineUniformBlock - Structure specifying inline uniform block data
 
 If the `descriptorType` member of [VkWriteDescriptorSet](VkWriteDescriptorSet.html) is
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then the data to write to the
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) then the data to write to the
 descriptor set is specified through a
 `VkWriteDescriptorSetInlineUniformBlock` structure included in the
 `pNext` chain of `VkWriteDescriptorSet`.
@@ -66,7 +66,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkWriteDescriptorSetInlineUniformBlock-sType-sType) VUID-VkWriteDescriptorSetInlineUniformBlock-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_INLINE_UNIFORM_BLOCK`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_INLINE_UNIFORM_BLOCK](VkStructureType.html)
 
 * 
 [](#VUID-VkWriteDescriptorSetInlineUniformBlock-pData-parameter) VUID-VkWriteDescriptorSetInlineUniformBlock-pData-parameter

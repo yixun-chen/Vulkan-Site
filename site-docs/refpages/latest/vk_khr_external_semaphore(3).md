@@ -129,12 +129,12 @@ Extending [VkSemaphoreCreateInfo](VkSemaphoreCreateInfo.html):
 * 
 Extending [VkSemaphoreImportFlagBits](VkSemaphoreImportFlagBits.html):
 
-`VK_SEMAPHORE_IMPORT_TEMPORARY_BIT_KHR`
+[VK_SEMAPHORE_IMPORT_TEMPORARY_BIT_KHR](VkSemaphoreImportFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO_KHR](VkStructureType.html)
 
 1) Should there be restrictions on what side effects can occur when waiting
 on imported semaphores that are in an invalid state?

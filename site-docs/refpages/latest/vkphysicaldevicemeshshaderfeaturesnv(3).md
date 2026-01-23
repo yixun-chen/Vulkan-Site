@@ -41,15 +41,15 @@ structure.
 * 
  `taskShader` specifies whether task
 shaders are supported.
-If this feature is not enabled, the `VK_SHADER_STAGE_TASK_BIT_NV`
-and `VK_PIPELINE_STAGE_TASK_SHADER_BIT_NV` enum values **must** not be
+If this feature is not enabled, the [VK_SHADER_STAGE_TASK_BIT_NV](VkShaderStageFlagBits.html)
+and [VK_PIPELINE_STAGE_TASK_SHADER_BIT_NV](VkPipelineStageFlagBits.html) enum values **must** not be
 used.
 
 * 
  `meshShader` specifies whether mesh
 shaders are supported.
-If this feature is not enabled, the `VK_SHADER_STAGE_MESH_BIT_NV`
-and `VK_PIPELINE_STAGE_MESH_SHADER_BIT_NV` enum values **must** not be
+If this feature is not enabled, the [VK_SHADER_STAGE_MESH_BIT_NV](VkShaderStageFlagBits.html)
+and [VK_PIPELINE_STAGE_MESH_SHADER_BIT_NV](VkPipelineStageFlagBits.html) enum values **must** not be
 used.
 
 If the `VkPhysicalDeviceMeshShaderFeaturesNV` structure is included in the `pNext` chain of the
@@ -58,7 +58,7 @@ If the `VkPhysicalDeviceMeshShaderFeaturesNV` structure is included in the `pNex
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceMeshShaderFeaturesNV`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -66,7 +66,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMeshShaderFeaturesNV-sType-sType) VUID-VkPhysicalDeviceMeshShaderFeaturesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV](VkStructureType.html)
 
 [VK_NV_mesh_shader](VK_NV_mesh_shader.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -36,37 +36,37 @@ typedef enum VkBorderColor {
 } VkBorderColor;
 
 * 
-`VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK` specifies a transparent,
+[VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK](#) specifies a transparent,
 floating-point format, black color.
 
 * 
-`VK_BORDER_COLOR_INT_TRANSPARENT_BLACK` specifies a transparent,
+[VK_BORDER_COLOR_INT_TRANSPARENT_BLACK](#) specifies a transparent,
 integer format, black color.
 
 * 
-`VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK` specifies an opaque,
+[VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK](#) specifies an opaque,
 floating-point format, black color.
 
 * 
-`VK_BORDER_COLOR_INT_OPAQUE_BLACK` specifies an opaque, integer
+[VK_BORDER_COLOR_INT_OPAQUE_BLACK](#) specifies an opaque, integer
 format, black color.
 
 * 
-`VK_BORDER_COLOR_FLOAT_OPAQUE_WHITE` specifies an opaque,
+[VK_BORDER_COLOR_FLOAT_OPAQUE_WHITE](#) specifies an opaque,
 floating-point format, white color.
 
 * 
-`VK_BORDER_COLOR_INT_OPAQUE_WHITE` specifies an opaque, integer
+[VK_BORDER_COLOR_INT_OPAQUE_WHITE](#) specifies an opaque, integer
 format, white color.
 
 * 
-`VK_BORDER_COLOR_FLOAT_CUSTOM_EXT` specifies that a
+[VK_BORDER_COLOR_FLOAT_CUSTOM_EXT](#) specifies that a
 [VkSamplerCustomBorderColorCreateInfoEXT](VkSamplerCustomBorderColorCreateInfoEXT.html) structure is included in
 the [VkSamplerCreateInfo](VkSamplerCreateInfo.html)::`pNext` chain containing the color
 data in floating-point format.
 
 * 
-`VK_BORDER_COLOR_INT_CUSTOM_EXT` specifies that a
+[VK_BORDER_COLOR_INT_CUSTOM_EXT](#) specifies that a
 [VkSamplerCustomBorderColorCreateInfoEXT](VkSamplerCustomBorderColorCreateInfoEXT.html) structure is included in
 the [VkSamplerCreateInfo](VkSamplerCreateInfo.html)::`pNext` chain containing the color
 data in integer format.

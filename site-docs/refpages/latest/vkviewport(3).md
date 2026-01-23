@@ -64,7 +64,7 @@ oy = `y` +  `height` / 2
 oz = `minDepth`
 (or (`maxDepth` + `minDepth`) / 2 if
 [VkPipelineViewportDepthClipControlCreateInfoEXT](VkPipelineViewportDepthClipControlCreateInfoEXT.html)::`negativeOneToOne`
-is `VK_TRUE`)
+is [VK_TRUE](VK_TRUE.html))
 
 px = `width`
 
@@ -73,7 +73,7 @@ py = `height`
 pz = `maxDepth` - `minDepth`
 (or (`maxDepth` - `minDepth`) / 2 if
 [VkPipelineViewportDepthClipControlCreateInfoEXT](VkPipelineViewportDepthClipControlCreateInfoEXT.html)::`negativeOneToOne`
-is `VK_TRUE`)
+is [VK_TRUE](VK_TRUE.html))
 
 If a render pass transform is enabled, the values (px,py) and
 (ox, oy) defining the viewport are transformed as described in

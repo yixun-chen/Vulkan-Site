@@ -82,7 +82,7 @@ This extension provides versions of [vkBindBufferMemory](vkBindBufferMemory.html
 [vkBindImageMemory](vkBindImageMemory.html) that allow multiple bindings to be performed at
 once, and are extensible.
 
-This extension also introduces `VK_IMAGE_CREATE_ALIAS_BIT_KHR`, which
+This extension also introduces [VK_IMAGE_CREATE_ALIAS_BIT_KHR](VkImageCreateFlagBits.html), which
 allows “identical” images that alias the same memory to interpret the
 contents consistently, even across image layout changes.
 
@@ -112,15 +112,15 @@ the core functionality.
 * 
 Extending [VkImageCreateFlagBits](VkImageCreateFlagBits.html):
 
-`VK_IMAGE_CREATE_ALIAS_BIT_KHR`
+[VK_IMAGE_CREATE_ALIAS_BIT_KHR](VkImageCreateFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_INFO_KHR`
+[VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_INFO_KHR`
+[VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_INFO_KHR](VkStructureType.html)
 
 * 
 Revision 1, 2017-05-19 (Tobias Hector)

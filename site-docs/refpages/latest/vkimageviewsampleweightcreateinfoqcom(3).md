@@ -101,7 +101,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageViewSampleWeightCreateInfoQCOM-sType-sType) VUID-VkImageViewSampleWeightCreateInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_VIEW_SAMPLE_WEIGHT_CREATE_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_SAMPLE_WEIGHT_CREATE_INFO_QCOM](VkStructureType.html)
 
 [VK_QCOM_image_processing](VK_QCOM_image_processing.html), [VkExtent2D](VkExtent2D.html), [VkOffset2D](VkOffset2D.html), [VkStructureType](VkStructureType.html)
 

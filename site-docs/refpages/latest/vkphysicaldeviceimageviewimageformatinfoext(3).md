@@ -45,7 +45,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceImageViewImageFormatInfoEXT-sType-sType) VUID-VkPhysicalDeviceImageViewImageFormatInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkPhysicalDeviceImageViewImageFormatInfoEXT-imageViewType-parameter) VUID-VkPhysicalDeviceImageViewImageFormatInfoEXT-imageViewType-parameter

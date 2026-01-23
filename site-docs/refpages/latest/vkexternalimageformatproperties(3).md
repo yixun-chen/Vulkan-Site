@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalImageFormatProperties-sType-sType) VUID-VkExternalImageFormatProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES](VkStructureType.html)
 
 [VK_KHR_external_memory_capabilities](VK_KHR_external_memory_capabilities.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkExternalMemoryProperties](VkExternalMemoryProperties.html), [VkStructureType](VkStructureType.html)
 

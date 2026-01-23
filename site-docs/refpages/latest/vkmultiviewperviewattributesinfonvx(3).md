@@ -51,8 +51,8 @@ component.
 Per-view viewport mask **can** also be used.
 
 When dynamic render pass instances are being used, instead of specifying
-`VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX` or
-`VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX` in the subpass
+[VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX](VkSubpassDescriptionFlagBits.html) or
+[VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX](VkSubpassDescriptionFlagBits.html) in the subpass
 description flags, the per-attribute properties of the render pass instance
 **must** be specified by the `VkMultiviewPerViewAttributesInfoNVX`
 structure Include the `VkMultiviewPerViewAttributesInfoNVX` structure in
@@ -67,7 +67,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMultiviewPerViewAttributesInfoNVX-sType-sType) VUID-VkMultiviewPerViewAttributesInfoNVX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_ATTRIBUTES_INFO_NVX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_ATTRIBUTES_INFO_NVX](VkStructureType.html)
 
 [VK_KHR_dynamic_rendering](VK_KHR_dynamic_rendering.html), [VK_NVX_multiview_per_view_attributes](VK_NVX_multiview_per_view_attributes.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

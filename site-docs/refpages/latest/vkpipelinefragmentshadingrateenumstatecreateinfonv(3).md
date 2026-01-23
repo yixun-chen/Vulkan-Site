@@ -62,18 +62,18 @@ that structure includes parameters controlling the pipeline fragment shading
 rate.
 
 If this structure is not present, `shadingRateType` is considered to be
-equal to `VK_FRAGMENT_SHADING_RATE_TYPE_FRAGMENT_SIZE_NV`,
+equal to [VK_FRAGMENT_SHADING_RATE_TYPE_FRAGMENT_SIZE_NV](VkFragmentShadingRateTypeNV.html),
 `shadingRate` is considered to be equal to
-`VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV`, and both elements
+[VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV](VkFragmentShadingRateNV.html), and both elements
 of `combinerOps` are considered to be equal to
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR`.
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](VkFragmentShadingRateCombinerOpKHR.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineFragmentShadingRateEnumStateCreateInfoNV-sType-sType) VUID-VkPipelineFragmentShadingRateEnumStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV](VkStructureType.html)
 
 [VK_NV_fragment_shading_rate_enums](VK_NV_fragment_shading_rate_enums.html), [VkFragmentShadingRateCombinerOpKHR](VkFragmentShadingRateCombinerOpKHR.html), [VkFragmentShadingRateNV](VkFragmentShadingRateNV.html), [VkFragmentShadingRateTypeNV](VkFragmentShadingRateTypeNV.html), [VkStructureType](VkStructureType.html)
 

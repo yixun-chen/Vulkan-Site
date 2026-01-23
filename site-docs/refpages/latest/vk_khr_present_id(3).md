@@ -52,11 +52,11 @@ Ratified
 
 and
 
-[VK_KHR_get_physical_device_properties2](VK_KHR_get_physical_device_properties2.html)
+     [VK_KHR_get_physical_device_properties2](VK_KHR_get_physical_device_properties2.html)
 
-or
+     or
 
-[Vulkan Version 1.1](../../../../spec/latest/appendices/versions.html#versions-1.1)
+     [Vulkan Version 1.1](../../../../spec/latest/appendices/versions.html#versions-1.1)
 
 **Contact**
 
@@ -107,10 +107,10 @@ Extending [VkPresentInfoKHR](VkPresentInfoKHR.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_ID_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_ID_FEATURES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PRESENT_ID_KHR`
+[VK_STRUCTURE_TYPE_PRESENT_ID_KHR](VkStructureType.html)
 
 None.
 

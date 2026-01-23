@@ -110,8 +110,8 @@ In practice, compilers compile [VkMicromapTriangleEXT](VkMicromapTriangleEXT.htm
 pattern.
 
 For opacity micromaps, the data at `data` is packed as either one bit
-per element for `VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT` or two bits per
-element for `VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT` and is packed from
+per element for [VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT](VkOpacityMicromapFormatEXT.html) or two bits per
+element for [VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT](VkOpacityMicromapFormatEXT.html) and is packed from
 LSB to MSB in each byte.
 The data at each index in those bytes is interpreted as discussed in
 [Ray Opacity Micromap](../../../../spec/latest/chapters/raytraversal.html#ray-opacity-micromap).
@@ -130,37 +130,37 @@ pointer, the other **must** be `NULL`
 * 
 [](#VUID-VkMicromapBuildInfoEXT-type-07517) VUID-VkMicromapBuildInfoEXT-type-07517
 
-If `type` is `VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT` the
+If `type` is [VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT](VkMicromapTypeEXT.html) the
 `format` member of [VkMicromapUsageEXT](VkMicromapUsageEXT.html) **must** be a valid value
-from `VkOpacityMicromapFormatEXT`
+from [VkOpacityMicromapFormatEXT](VkOpacityMicromapFormatEXT.html)
 
 * 
 [](#VUID-VkMicromapBuildInfoEXT-type-07518) VUID-VkMicromapBuildInfoEXT-type-07518
 
-If `type` is `VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT` the
+If `type` is [VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT](VkMicromapTypeEXT.html) the
 `format` member of [VkMicromapTriangleEXT](VkMicromapTriangleEXT.html) **must** be a valid
-value from `VkOpacityMicromapFormatEXT`
+value from [VkOpacityMicromapFormatEXT](VkOpacityMicromapFormatEXT.html)
 
 * 
 [](#VUID-VkMicromapBuildInfoEXT-type-08704) VUID-VkMicromapBuildInfoEXT-type-08704
 
-If `type` is `VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV` the
+If `type` is [VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV](VkMicromapTypeEXT.html) the
 `format` member of [VkMicromapUsageEXT](VkMicromapUsageEXT.html) **must** be a valid value
-from `VkDisplacementMicromapFormatNV`
+from [VkDisplacementMicromapFormatNV](VkDisplacementMicromapFormatNV.html)
 
 * 
 [](#VUID-VkMicromapBuildInfoEXT-type-08705) VUID-VkMicromapBuildInfoEXT-type-08705
 
-If `type` is `VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV` the
+If `type` is [VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV](VkMicromapTypeEXT.html) the
 `format` member of [VkMicromapTriangleEXT](VkMicromapTriangleEXT.html) **must** be a valid
-value from `VkDisplacementMicromapFormatNV`
+value from [VkDisplacementMicromapFormatNV](VkDisplacementMicromapFormatNV.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkMicromapBuildInfoEXT-sType-sType) VUID-VkMicromapBuildInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MICROMAP_BUILD_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MICROMAP_BUILD_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkMicromapBuildInfoEXT-pNext-pNext) VUID-VkMicromapBuildInfoEXT-pNext-pNext

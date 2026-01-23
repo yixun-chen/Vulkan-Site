@@ -57,4 +57,4 @@ Basic Vulkan concepts:
 
 Let’s begin by exploring how to implement a professional GUI system with Dear ImGui and Vulkan.
 
-[Previous: Lighting & Materials Conclusion](../Lighting_Materials/06_conclusion.adoc) | [Next: Setting Up Dear ImGui](02_imgui_setup.adoc)
+[Previous: Lighting & Materials Conclusion](../Lighting_Materials/06_conclusion.html) | [Next: Setting Up Dear ImGui](02_imgui_setup.html)

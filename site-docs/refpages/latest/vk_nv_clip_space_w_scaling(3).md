@@ -123,12 +123,12 @@ Extending [VkPipelineViewportStateCreateInfo](VkPipelineViewportStateCreateInfo.
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV`
+[VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV](VkDynamicState.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV`
+[VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV](VkStructureType.html)
 
 1) Is the pipeline structure name too long?
 

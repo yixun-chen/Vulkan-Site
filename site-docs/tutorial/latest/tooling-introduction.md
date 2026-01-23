@@ -50,4 +50,4 @@ Basic Vulkan concepts:
 
 Let’s begin by exploring how to set up a CI/CD pipeline for Vulkan projects.
 
-[Previous: Subsystems Conclusion](../Subsystems/06_conclusion.adoc) | [Next: CI/CD for Vulkan Projects](02_cicd.adoc)
+[Previous: Subsystems Conclusion](../Subsystems/06_conclusion.html) | [Next: CI/CD for Vulkan Projects](02_cicd.html)

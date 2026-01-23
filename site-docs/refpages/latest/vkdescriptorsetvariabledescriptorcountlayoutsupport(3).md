@@ -47,7 +47,7 @@ structure.
 descriptors supported in the highest numbered binding of the layout, if
 that binding is variable-sized.
 If the highest numbered binding of the layout has a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) then
 `maxVariableDescriptorCount` indicates the maximum byte size
 supported for the binding, if that binding is variable-sized.
 
@@ -66,7 +66,7 @@ For the purposes of this command, a variable-sized descriptor binding with a
 `descriptorCount` of zero is treated as having a `descriptorCount`
 of
 four if `descriptorType` is
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`, or one otherwise,
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html), or one otherwise,
 and thus the binding is not ignored and the maximum descriptor count will be
 returned.
 If the layout is not supported, then the value written to
@@ -77,7 +77,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDescriptorSetVariableDescriptorCountLayoutSupport-sType-sType) VUID-VkDescriptorSetVariableDescriptorCountLayoutSupport-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT](VkStructureType.html)
 
 [VK_EXT_descriptor_indexing](VK_EXT_descriptor_indexing.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), [VkStructureType](VkStructureType.html)
 

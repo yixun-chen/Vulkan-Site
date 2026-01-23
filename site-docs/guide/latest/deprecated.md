@@ -40,7 +40,7 @@
 - [Replacement](#_replacement_4)
 - [Code Example](#_code_example_4)
 - [Fallback Strategy](#_fallback_strategy_4)
-- [VK_PIPELINE_STAGE_ALL_TRANSFER_BIT](#all_transfer_replacement)
+- [VK_PIPELINE_STAGE_TRANSFER_BIT](#all_transfer_replacement)
 - [What It Was](#_what_it_was_4)
 - [What_It_Was](#_what_it_was_4)
 - [Replacement](#_replacement_5)
@@ -102,7 +102,7 @@ The following table lists deprecated items in Vulkan along with their replacemen
 | VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT | Used in synchronization to represent the earliest possible pipeline stage. | Different replacements depending on usage context. See [VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT](#top_of_pipe_replacement) for details. | With VK_KHR_synchronization2 | [View on GPU Info](https://vulkan.gpuinfo.org/displayextensiondetail.php?extension=VK_KHR_synchronization2) |
 | VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT | Used in synchronization to represent the latest possible pipeline stage. | Different replacements depending on usage context. See [VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT](#bottom_of_pipe_replacement) for details. | With VK_KHR_synchronization2 | [View on GPU Info](https://vulkan.gpuinfo.org/displayextensiondetail.php?extension=VK_KHR_synchronization2) |
 | VK_PIPELINE_STAGE_VERTEX_INPUT_BIT | Used to represent the vertex input stage in the pipeline. | Split into more specific flags: `VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT_KHR` and `VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT_KHR`. | With VK_KHR_synchronization2 | [View on GPU Info](https://vulkan.gpuinfo.org/displayextensiondetail.php?extension=VK_KHR_synchronization2) |
-| VK_PIPELINE_STAGE_ALL_TRANSFER_BIT | Used to represent all transfer operations in the pipeline. | Split into more specific flags: `VK_PIPELINE_STAGE_2_COPY_BIT_KHR`, `VK_PIPELINE_STAGE_2_RESOLVE_BIT_KHR`, `VK_PIPELINE_STAGE_2_BLIT_BIT_KHR`, and `VK_PIPELINE_STAGE_2_CLEAR_BIT_KHR`. | With VK_KHR_synchronization2 | [View on GPU Info](https://vulkan.gpuinfo.org/displayextensiondetail.php?extension=VK_KHR_synchronization2) |
+| VK_PIPELINE_STAGE_TRANSFER_BIT | Used to represent all transfer operations in the pipeline. | Split into more specific flags: `VK_PIPELINE_STAGE_2_COPY_BIT_KHR`, `VK_PIPELINE_STAGE_2_RESOLVE_BIT_KHR`, `VK_PIPELINE_STAGE_2_BLIT_BIT_KHR`, and `VK_PIPELINE_STAGE_2_CLEAR_BIT_KHR`. | With VK_KHR_synchronization2 | [View on GPU Info](https://vulkan.gpuinfo.org/displayextensiondetail.php?extension=VK_KHR_synchronization2) |
 | VK_ACCESS_SHADER_READ_BIT | Used to represent all shader read operations. | Split into more specific flags: `VK_ACCESS_2_UNIFORM_READ_BIT_KHR`, `VK_ACCESS_2_SHADER_SAMPLED_READ_BIT_KHR`, and `VK_ACCESS_2_SHADER_STORAGE_READ_BIT_KHR`. | With VK_KHR_synchronization2 | [View on GPU Info](https://vulkan.gpuinfo.org/displayextensiondetail.php?extension=VK_KHR_synchronization2) |
 | VK_ACCESS_SHADER_WRITE_BIT | Used to represent shader write operations. | Renamed to `VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT_KHR` to better describe the scope of what resources in the shader are described by the access flag. | With VK_KHR_synchronization2 | [View on GPU Info](https://vulkan.gpuinfo.org/displayextensiondetail.php?extension=VK_KHR_synchronization2) |
 
@@ -405,7 +405,7 @@ vkCmdPipelineBarrier2KHR(commandBuffer, &dependencyInfo);
 
 Check for the availability of the VK_KHR_synchronization2 extension and use the appropriate API. When using the new API, choose the most specific flag that applies to your use case.
 
-`VK_PIPELINE_STAGE_ALL_TRANSFER_BIT` was used to represent all transfer operations in the pipeline. With VK_KHR_synchronization2, it was split into more specific flags.
+`VK_PIPELINE_STAGE_TRANSFER_BIT` was used to represent all transfer operations in the pipeline. With VK_KHR_synchronization2, it was split into more specific flags.
 
 This flag represented all transfer operations, including copy, resolve, blit, and clear operations. It was used in synchronization primitives to indicate operations related to data transfer.
 
@@ -423,7 +423,7 @@ Split into more specific flags:
 * 
 `VK_PIPELINE_STAGE_2_CLEAR_BIT_KHR`: Represents clear operations
 
-// DEPRECATED: Using VK_PIPELINE_STAGE_ALL_TRANSFER_BIT
+// DEPRECATED: Using VK_PIPELINE_STAGE_TRANSFER_BIT
 VkImageMemoryBarrier imageBarrier = {
     .srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT,
     .dstAccessMask = VK_ACCESS_SHADER_READ_BIT,
@@ -434,7 +434,7 @@ VkImageMemoryBarrier imageBarrier = {
 };
 vkCmdPipelineBarrier(
     commandBuffer,
-    VK_PIPELINE_STAGE_ALL_TRANSFER_BIT,
+    VK_PIPELINE_STAGE_TRANSFER_BIT,
     VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT,
     0,
     0, nullptr,

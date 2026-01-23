@@ -85,21 +85,21 @@ Piers Daniell, NVIDIA
 * 
 Sourav Parmar, NVIDIA
 
-This extension expands support for using `VK_IMAGE_TILING_LINEAR` images
+This extension expands support for using [VK_IMAGE_TILING_LINEAR](VkImageTiling.html) images
 as color attachments when all the color attachments in the render pass
-instance have `VK_IMAGE_TILING_LINEAR` tiling.
+instance have [VK_IMAGE_TILING_LINEAR](VkImageTiling.html) tiling.
 This extension adds a new flag bit
-`VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV` that extends the
+[VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](VkFormatFeatureFlagBits2.html) that extends the
 existing [VkFormatFeatureFlagBits2KHR](VkFormatFeatureFlagBits2.html) bits.
 This flag **can** be set for renderable color formats in the
 [VkFormatProperties3KHR](VkFormatProperties3.html)::`linearTilingFeatures` format properties
 structure member.
-Formats with the `VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV`
+Formats with the [VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](VkFormatFeatureFlagBits2.html)
 flag **may** be used as color attachments as long as all the color attachments
-in the render pass instance have `VK_IMAGE_TILING_LINEAR` tiling, and
+in the render pass instance have [VK_IMAGE_TILING_LINEAR](VkImageTiling.html) tiling, and
 the formats their images views are created with have
 [VkFormatProperties3KHR](VkFormatProperties3.html)::`linearTilingFeatures` which include
-`VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV`.
+[VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](VkFormatFeatureFlagBits2.html).
 This extension supports both dynamic rendering and traditional render
 passes.
 
@@ -117,14 +117,14 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINEAR_COLOR_ATTACHMENT_FEATURES_NV`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINEAR_COLOR_ATTACHMENT_FEATURES_NV](VkStructureType.html)
 
 If [VK_KHR_format_feature_flags2](VK_KHR_format_feature_flags2.html) or [Vulkan Version 1.3](../../../../spec/latest/appendices/versions.html#versions-1.3) is supported:
 
 * 
 Extending [VkFormatFeatureFlagBits2](VkFormatFeatureFlagBits2.html):
 
-`VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV`
+[VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](VkFormatFeatureFlagBits2.html)
 
 * 
 Revision 1, 2021-11-29 (sourav parmar)

@@ -74,7 +74,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeRgbConversionCapabilitiesVALVE-sType-sType) VUID-VkVideoEncodeRgbConversionCapabilitiesVALVE-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_RGB_CONVERSION_CAPABILITIES_VALVE`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_RGB_CONVERSION_CAPABILITIES_VALVE](VkStructureType.html)
 
 [VK_VALVE_video_encode_rgb_conversion](VK_VALVE_video_encode_rgb_conversion.html), [VkStructureType](VkStructureType.html), [VkVideoEncodeRgbChromaOffsetFlagsVALVE](VkVideoEncodeRgbChromaOffsetFlagsVALVE.html), [VkVideoEncodeRgbModelConversionFlagsVALVE](VkVideoEncodeRgbModelConversionFlagsVALVE.html), [VkVideoEncodeRgbRangeCompressionFlagsVALVE](VkVideoEncodeRgbRangeCompressionFlagsVALVE.html)
 

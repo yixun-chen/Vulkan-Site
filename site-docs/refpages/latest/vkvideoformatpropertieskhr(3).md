@@ -52,7 +52,7 @@ channels are ordered when producing video decoder output or are expected
 to be ordered in video encoder input, when applicable.
 If the `format` reported does not require component swizzling then
 all members of `componentMapping` will be set to
-`VK_COMPONENT_SWIZZLE_IDENTITY`.
+[VK_COMPONENT_SWIZZLE_IDENTITY](VkComponentSwizzle.html).
 
 * 
 `imageCreateFlags` is a bitmask of [VkImageCreateFlagBits](VkImageCreateFlagBits.html)
@@ -75,7 +75,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoFormatPropertiesKHR-sType-sType) VUID-VkVideoFormatPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_FORMAT_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_FORMAT_PROPERTIES_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoFormatPropertiesKHR-pNext-pNext) VUID-VkVideoFormatPropertiesKHR-pNext-pNext

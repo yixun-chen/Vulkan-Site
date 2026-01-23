@@ -48,7 +48,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineCompilerControlCreateInfoAMD-sType-sType) VUID-VkPipelineCompilerControlCreateInfoAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineCompilerControlCreateInfoAMD-compilerControlFlags-zerobitmask) VUID-VkPipelineCompilerControlCreateInfoAMD-compilerControlFlags-zerobitmask

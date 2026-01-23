@@ -22,7 +22,7 @@ VkPhysicalDeviceImageDrmFormatModifierInfoEXT - Structure specifying a DRM forma
 To query the image capabilities that are compatible with a
 [Linux DRM format modifier](../../../../spec/latest/appendices/glossary.html#glossary-drm-format-modifier), set
 [VkPhysicalDeviceImageFormatInfo2](VkPhysicalDeviceImageFormatInfo2.html)::`tiling` to
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT` and add a
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html) and add a
 [VkPhysicalDeviceImageDrmFormatModifierInfoEXT](#) structure to the
 `pNext` chain of [VkPhysicalDeviceImageFormatInfo2](VkPhysicalDeviceImageFormatInfo2.html).
 
@@ -65,12 +65,12 @@ queue families.
 `pQueueFamilyIndices` is a pointer to an array of queue families
 that will access the image.
 It is ignored if `sharingMode` is not
-`VK_SHARING_MODE_CONCURRENT`.
+[VK_SHARING_MODE_CONCURRENT](VkSharingMode.html).
 
 If the `drmFormatModifier` is incompatible with the parameters specified
 in [VkPhysicalDeviceImageFormatInfo2](VkPhysicalDeviceImageFormatInfo2.html) and its `pNext` chain, then
 [vkGetPhysicalDeviceImageFormatProperties2](vkGetPhysicalDeviceImageFormatProperties2.html) returns
-`VK_ERROR_FORMAT_NOT_SUPPORTED`.
+[VK_ERROR_FORMAT_NOT_SUPPORTED](VkResult.html).
 The implementation **must** support the query of any `drmFormatModifier`,
 including unknown and invalid modifier values.
 
@@ -79,20 +79,20 @@ Valid Usage
 * 
 [](#VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sharingMode-02314) VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sharingMode-02314
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`, then
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](VkSharingMode.html), then
 `pQueueFamilyIndices` **must** be a valid pointer to an array of
 `queueFamilyIndexCount` `uint32_t` values
 
 * 
 [](#VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sharingMode-02315) VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sharingMode-02315
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`, then
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](VkSharingMode.html), then
 `queueFamilyIndexCount` **must** be greater than `1`
 
 * 
 [](#VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sharingMode-02316) VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sharingMode-02316
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`, each element
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](VkSharingMode.html), each element
 of `pQueueFamilyIndices` **must** be unique and **must** be less than the
 `pQueueFamilyPropertyCount` returned by
 [vkGetPhysicalDeviceQueueFamilyProperties2](vkGetPhysicalDeviceQueueFamilyProperties2.html) for the
@@ -103,7 +103,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sType-sType) VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sharingMode-parameter) VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sharingMode-parameter

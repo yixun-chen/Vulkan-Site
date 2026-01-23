@@ -98,30 +98,30 @@ Valid Usage
 
 If the [`protectedMemory`](../../../../spec/latest/chapters/features.html#features-protectedMemory) feature is
 not enabled or if [VkVideoCapabilitiesKHR](VkVideoCapabilitiesKHR.html)::`flags` does not
-include `VK_VIDEO_CAPABILITY_PROTECTED_CONTENT_BIT_KHR`, as returned
+include [VK_VIDEO_CAPABILITY_PROTECTED_CONTENT_BIT_KHR](VkVideoCapabilityFlagBitsKHR.html), as returned
 by [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the video profile
 specified by `pVideoProfile`, then `flags` **must** not include
-`VK_VIDEO_SESSION_CREATE_PROTECTED_CONTENT_BIT_KHR`
+[VK_VIDEO_SESSION_CREATE_PROTECTED_CONTENT_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html)
 
 * 
 [](#VUID-VkVideoSessionCreateInfoKHR-flags-08371) VUID-VkVideoSessionCreateInfoKHR-flags-08371
 
 If `flags` includes
-`VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR`, then
+[VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html), then
 [`videoMaintenance1`](../../../../spec/latest/chapters/features.html#features-videoMaintenance1) **must** be enabled
 
 * 
 [](#VUID-VkVideoSessionCreateInfoKHR-flags-10398) VUID-VkVideoSessionCreateInfoKHR-flags-10398
 
 If `flags` includes
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR`, then
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html), then
 [`videoMaintenance2`](../../../../spec/latest/chapters/features.html#features-videoMaintenance2) **must** be enabled
 
 * 
 [](#VUID-VkVideoSessionCreateInfoKHR-flags-10399) VUID-VkVideoSessionCreateInfoKHR-flags-10399
 
 If `flags` includes
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR`, then
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html), then
 `pVideoProfile->videoCodecOperation` **must** specify a decode
 operation
 
@@ -129,16 +129,16 @@ operation
 [](#VUID-VkVideoSessionCreateInfoKHR-flags-10264) VUID-VkVideoSessionCreateInfoKHR-flags-10264
 
 If `flags` includes
-`VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR`
-or `VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP_BIT_KHR`, then
+[VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html)
+or [VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html), then
 the [    `videoEncodeQuantizationMap`](../../../../spec/latest/chapters/features.html#features-videoEncodeQuantizationMap) feature **must** be enabled
 
 * 
 [](#VUID-VkVideoSessionCreateInfoKHR-flags-10265) VUID-VkVideoSessionCreateInfoKHR-flags-10265
 
 If `flags` includes
-`VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR`
-or `VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP_BIT_KHR`, then
+[VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html)
+or [VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html), then
 `pVideoProfile->videoCodecOperation` **must** specify an encode
 operation
 
@@ -146,28 +146,28 @@ operation
 [](#VUID-VkVideoSessionCreateInfoKHR-flags-10266) VUID-VkVideoSessionCreateInfoKHR-flags-10266
 
 If `flags` includes
-`VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR`,
+[VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html),
 then it **must** not also include
-`VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP_BIT_KHR`
+[VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html)
 
 * 
 [](#VUID-VkVideoSessionCreateInfoKHR-flags-10267) VUID-VkVideoSessionCreateInfoKHR-flags-10267
 
 If [VkVideoEncodeCapabilitiesKHR](VkVideoEncodeCapabilitiesKHR.html)::`flags` does not include
-`VK_VIDEO_ENCODE_CAPABILITY_QUANTIZATION_DELTA_MAP_BIT_KHR`, as
+[VK_VIDEO_ENCODE_CAPABILITY_QUANTIZATION_DELTA_MAP_BIT_KHR](VkVideoEncodeCapabilityFlagBitsKHR.html), as
 returned by [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the video
 profile specified by `pVideoProfile`, then `flags` **must** not
 include
-`VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR`
+[VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html)
 
 * 
 [](#VUID-VkVideoSessionCreateInfoKHR-flags-10268) VUID-VkVideoSessionCreateInfoKHR-flags-10268
 
 If [VkVideoEncodeCapabilitiesKHR](VkVideoEncodeCapabilitiesKHR.html)::`flags` does not include
-`VK_VIDEO_ENCODE_CAPABILITY_EMPHASIS_MAP_BIT_KHR`, as returned by
+[VK_VIDEO_ENCODE_CAPABILITY_EMPHASIS_MAP_BIT_KHR](VkVideoEncodeCapabilityFlagBitsKHR.html), as returned by
 [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the video profile
 specified by `pVideoProfile`, then `flags` **must** not include
-`VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP_BIT_KHR`
+[VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html)
 
 * 
 [](#VUID-VkVideoSessionCreateInfoKHR-pVideoProfile-11759) VUID-VkVideoSessionCreateInfoKHR-pVideoProfile-11759
@@ -222,7 +222,7 @@ formats, as returned by
 [vkGetPhysicalDeviceVideoFormatPropertiesKHR](vkGetPhysicalDeviceVideoFormatPropertiesKHR.html) in
 [VkVideoFormatPropertiesKHR](VkVideoFormatPropertiesKHR.html)::`format` when called with the
 `imageUsage` member of its `pVideoFormatInfo` parameter
-containing `VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR`, and with a
+containing [VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](VkImageUsageFlagBits.html), and with a
 [VkVideoProfileListInfoKHR](VkVideoProfileListInfoKHR.html) structure specified in the `pNext`
 chain of its `pVideoFormatInfo` parameter whose `pProfiles`
 member contains an element matching `pVideoProfile`
@@ -238,7 +238,7 @@ of the supported encode DPB formats, as returned by
 [vkGetPhysicalDeviceVideoFormatPropertiesKHR](vkGetPhysicalDeviceVideoFormatPropertiesKHR.html) in
 [VkVideoFormatPropertiesKHR](VkVideoFormatPropertiesKHR.html)::`format` when called with the
 `imageUsage` member of its `pVideoFormatInfo` parameter
-containing `VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR`, and with a
+containing [VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR](VkImageUsageFlagBits.html), and with a
 [VkVideoProfileListInfoKHR](VkVideoProfileListInfoKHR.html) structure specified in the `pNext`
 chain of its `pVideoFormatInfo` parameter whose `pProfiles`
 member contains an element matching `pVideoProfile`
@@ -252,7 +252,7 @@ output formats, as returned by
 [vkGetPhysicalDeviceVideoFormatPropertiesKHR](vkGetPhysicalDeviceVideoFormatPropertiesKHR.html) in
 [VkVideoFormatPropertiesKHR](VkVideoFormatPropertiesKHR.html)::`format` when called with the
 `imageUsage` member of its `pVideoFormatInfo` parameter
-containing `VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR`, and with a
+containing [VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](VkImageUsageFlagBits.html), and with a
 [VkVideoProfileListInfoKHR](VkVideoProfileListInfoKHR.html) structure specified in the `pNext`
 chain of its `pVideoFormatInfo` parameter whose `pProfiles`
 member contains an element matching `pVideoProfile`
@@ -266,7 +266,7 @@ input formats, as returned by
 [vkGetPhysicalDeviceVideoFormatPropertiesKHR](vkGetPhysicalDeviceVideoFormatPropertiesKHR.html) in
 [VkVideoFormatPropertiesKHR](VkVideoFormatPropertiesKHR.html)::`format` when called with the
 `imageUsage` member of its `pVideoFormatInfo` parameter
-containing `VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR`, and with a
+containing [VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR](VkImageUsageFlagBits.html), and with a
 [VkVideoProfileListInfoKHR](VkVideoProfileListInfoKHR.html) structure specified in the `pNext`
 chain of its `pVideoFormatInfo` parameter whose `pProfiles`
 member contains an element matching `pVideoProfile`
@@ -278,7 +278,7 @@ If `pVideoProfile->videoCodecOperation` specifies an encode
 operation, the `pNext` chain of this structure includes a
 [VkVideoEncodeSessionIntraRefreshCreateInfoKHR](VkVideoEncodeSessionIntraRefreshCreateInfoKHR.html) structure, and its
 `intraRefreshMode` member is not
-`VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_NONE_KHR`, then the
+[VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_NONE_KHR](VkVideoEncodeIntraRefreshModeFlagBitsKHR.html), then the
 [`videoEncodeIntraRefresh`](../../../../spec/latest/chapters/features.html#features-videoEncodeIntraRefresh)
 feature **must** be enabled
 
@@ -289,7 +289,7 @@ If `pVideoProfile->videoCodecOperation` specifies an encode
 operation, the `pNext` chain of this structure includes a
 [VkVideoEncodeSessionIntraRefreshCreateInfoKHR](VkVideoEncodeSessionIntraRefreshCreateInfoKHR.html) structure, and its
 `intraRefreshMode` member is not
-`VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_NONE_KHR`, then
+[VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_NONE_KHR](VkVideoEncodeIntraRefreshModeFlagBitsKHR.html), then
 `intraRefreshMode` **must** specify one of the bits included in
 [VkVideoEncodeIntraRefreshCapabilitiesKHR](VkVideoEncodeIntraRefreshCapabilitiesKHR.html)::`intraRefreshModes`,
 as returned by [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the
@@ -315,7 +315,7 @@ profile specified by `pVideoProfile`
 [](#VUID-VkVideoSessionCreateInfoKHR-pVideoProfile-10793) VUID-VkVideoSessionCreateInfoKHR-pVideoProfile-10793
 
 If `pVideoProfile->videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR`, then the
+[VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 [`videoDecodeVP9`](../../../../spec/latest/chapters/features.html#features-videoDecodeVP9) feature **must** be
 enabled
 
@@ -323,7 +323,7 @@ enabled
 [](#VUID-VkVideoSessionCreateInfoKHR-pVideoProfile-08251) VUID-VkVideoSessionCreateInfoKHR-pVideoProfile-08251
 
 If `pVideoProfile->videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR` and the `pNext`
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and the `pNext`
 chain of this structure includes a
 [VkVideoEncodeH264SessionCreateInfoKHR](VkVideoEncodeH264SessionCreateInfoKHR.html) structure, then its
 `maxLevelIdc` member **must** be less than or equal to
@@ -335,7 +335,7 @@ specified in `pVideoProfile`
 [](#VUID-VkVideoSessionCreateInfoKHR-pVideoProfile-08252) VUID-VkVideoSessionCreateInfoKHR-pVideoProfile-08252
 
 If `pVideoProfile->videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR` and the `pNext`
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and the `pNext`
 chain of this structure includes a
 [VkVideoEncodeH265SessionCreateInfoKHR](VkVideoEncodeH265SessionCreateInfoKHR.html) structure, then its
 `maxLevelIdc` member **must** be less than or equal to
@@ -347,7 +347,7 @@ specified in `pVideoProfile`
 [](#VUID-VkVideoSessionCreateInfoKHR-pVideoProfile-10269) VUID-VkVideoSessionCreateInfoKHR-pVideoProfile-10269
 
 If `pVideoProfile->videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR`, then the
+[VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 [`videoEncodeAV1`](../../../../spec/latest/chapters/features.html#features-videoEncodeAV1) feature **must** be
 enabled
 
@@ -355,7 +355,7 @@ enabled
 [](#VUID-VkVideoSessionCreateInfoKHR-pVideoProfile-10270) VUID-VkVideoSessionCreateInfoKHR-pVideoProfile-10270
 
 If `pVideoProfile->videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR` and the `pNext`
+[VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and the `pNext`
 chain of this structure includes a
 [VkVideoEncodeAV1SessionCreateInfoKHR](VkVideoEncodeAV1SessionCreateInfoKHR.html) structure, then its
 `maxLevel` member **must** be less than or equal to
@@ -379,14 +379,14 @@ included in the `pNext` chain of `pVideoProfile` and
 `VkVideoEncodeProfileRgbConversionInfoVALVE`::`performEncodeRgbConversion`
 is enabled, a [VkVideoEncodeSessionRgbConversionCreateInfoVALVE](VkVideoEncodeSessionRgbConversionCreateInfoVALVE.html)
 structure **must** be included in the `pNext` chain of
-[VkVideoSessionCreateInfoKHR](#).
+[VkVideoSessionCreateInfoKHR](#)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkVideoSessionCreateInfoKHR-sType-sType) VUID-VkVideoSessionCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_SESSION_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_SESSION_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoSessionCreateInfoKHR-pNext-pNext) VUID-VkVideoSessionCreateInfoKHR-pNext-pNext

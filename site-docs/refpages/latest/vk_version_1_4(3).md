@@ -107,16 +107,16 @@ are respectively gated behind the new boolean
 
 * 
 If `dynamicRenderingLocalReadDepthStencilAttachments` is
-`VK_FALSE`, implementations do not support depth/stencil attachment
+[VK_FALSE](VK_FALSE.html), implementations do not support depth/stencil attachment
 access within dynamic rendering.
 
 * 
 If `dynamicRenderingLocalReadMultisampledAttachments` is
-`VK_FALSE`, implementations do not support multisampled attachment
+[VK_FALSE](VK_FALSE.html), implementations do not support multisampled attachment
 access within dynamic rendering.
 
 * 
-If both properties are `VK_TRUE`, the full functionality of the
+If both properties are [VK_TRUE](VK_TRUE.html), the full functionality of the
 extension is supported.
 
 Differences Relative to `VK_EXT_host_image_copy`
@@ -125,12 +125,12 @@ If the [VK_EXT_host_image_copy](VK_EXT_host_image_copy.html) extension is not su
 it is optional in Vulkan 1.4.
 
 * 
-An implementation that has a `VK_QUEUE_GRAPHICS_BIT` queue must support either:
+An implementation that has a [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) queue must support either:
 
 the [`hostImageCopy`](../../../../spec/latest/chapters/features.html#features-hostImageCopy) feature; or
 
 * 
-an additional queue that supports `VK_QUEUE_TRANSFER_BIT`.
+an additional queue that supports [VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html).
 
 Differences Relative to `VK_KHR_push_descriptor`
 
@@ -164,14 +164,14 @@ In addition to the promoted extensions described above, Vulkan 1.4 added
 required support for:
 
 * 
-All queues supporting `VK_QUEUE_GRAPHICS_BIT` or
-`VK_QUEUE_COMPUTE_BIT` **must** also advertise
-`VK_QUEUE_TRANSFER_BIT`.
+All queues supporting [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) or
+[VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html) **must** also advertise
+[VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html).
 
 * 
 Clustered subgroup operations **must** be advertised in Vulkan 1.4 via
-setting both `VK_SUBGROUP_FEATURE_CLUSTERED_BIT` and
-`VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT` (as an interaction with
+setting both [VK_SUBGROUP_FEATURE_CLUSTERED_BIT](VkSubgroupFeatureFlagBits.html) and
+[VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT](VkSubgroupFeatureFlagBits.html) (as an interaction with
 the promoted [VK_KHR_shader_subgroup_rotate](VK_KHR_shader_subgroup_rotate.html) functionality) in
 [`supportedOperations`](../../../../spec/latest/chapters/devsandqueues.html#limits-subgroupSupportedOperations).
 
@@ -314,10 +314,10 @@ Vulkan 1.4 also requires support for the following updated limits:
 [`maxComputeWorkGroupSize`](../../../../spec/latest/chapters/limits.html#limits-maxComputeWorkGroupSize) is increased from (128,128,64) to (256,256,64)
 
 * 
-[`shaderSignedZeroInfNanPreserveFloat16`](../../../../spec/latest/chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat16) is changed from unspecified to `VK_TRUE`
+[`shaderSignedZeroInfNanPreserveFloat16`](../../../../spec/latest/chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat16) is changed from unspecified to [VK_TRUE](VK_TRUE.html)
 
 * 
-[`shaderSignedZeroInfNanPreserveFloat32`](../../../../spec/latest/chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat32) is changed from unspecified to `VK_TRUE`
+[`shaderSignedZeroInfNanPreserveFloat32`](../../../../spec/latest/chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat32) is changed from unspecified to [VK_TRUE](VK_TRUE.html)
 
 * 
 [`subTexelPrecisionBits`](../../../../spec/latest/chapters/limits.html#limits-subTexelPrecisionBits) is increased from 4 to 8
@@ -344,7 +344,7 @@ Vulkan 1.4 also requires support for the following updated limits:
 [`maxColorAttachments`](../../../../spec/latest/chapters/limits.html#limits-maxColorAttachments) is increased from 7 to 8
 
 * 
-[`timestampComputeAndGraphics`](../../../../spec/latest/chapters/limits.html#limits-timestampComputeAndGraphics) is changed from unspecified to `VK_TRUE`
+[`timestampComputeAndGraphics`](../../../../spec/latest/chapters/limits.html#limits-timestampComputeAndGraphics) is changed from unspecified to [VK_TRUE](VK_TRUE.html)
 
 * 
 [`pointSizeRange`](../../../../spec/latest/chapters/limits.html#limits-pointSizeRange) is increased from (1.0,64.0 - ULP) to (1.0,256.0 - `pointSizeGranularity`)
@@ -359,7 +359,7 @@ Vulkan 1.4 also requires support for the following updated limits:
 [`maxPushDescriptors`](../../../../spec/latest/chapters/devsandqueues.html#limits-maxPushDescriptors) is increased from 16 to 32
 
 * 
-[`standardSampleLocations`](../../../../spec/latest/chapters/limits.html#limits-standardSampleLocations) is changed from unspecified to `VK_TRUE`
+[`standardSampleLocations`](../../../../spec/latest/chapters/limits.html#limits-standardSampleLocations) is changed from unspecified to [VK_TRUE](VK_TRUE.html)
 
 * 
 [VK_API_VERSION_1_4](VK_API_VERSION_1_4.html)
@@ -637,233 +637,233 @@ Extending [VkSubresourceLayout2](VkSubresourceLayout2.html):
 [VkPipelineCreateFlags2](VkPipelineCreateFlags2.html)
 
 * 
-`VK_MAX_GLOBAL_PRIORITY_SIZE`
+[VK_MAX_GLOBAL_PRIORITY_SIZE](VK_MAX_GLOBAL_PRIORITY_SIZE.html)
 
 * 
 Extending [VkAttachmentLoadOp](VkAttachmentLoadOp.html):
 
-`VK_ATTACHMENT_LOAD_OP_NONE`
+[VK_ATTACHMENT_LOAD_OP_NONE](VkAttachmentLoadOp.html)
 
 Extending [VkBufferUsageFlagBits2](VkBufferUsageFlagBits2.html):
 
 * 
-`VK_BUFFER_USAGE_2_SHADER_DEVICE_ADDRESS_BIT`
+[VK_BUFFER_USAGE_2_SHADER_DEVICE_ADDRESS_BIT](VkBufferUsageFlagBits2.html)
 
 Extending [VkDescriptorSetLayoutCreateFlagBits](VkDescriptorSetLayoutCreateFlagBits.html):
 
 * 
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](VkDescriptorSetLayoutCreateFlagBits.html)
 
 Extending [VkDescriptorUpdateTemplateType](VkDescriptorUpdateTemplateType.html):
 
 * 
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS`
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](VkDescriptorUpdateTemplateType.html)
 
 Extending [VkDynamicState](VkDynamicState.html):
 
 * 
-`VK_DYNAMIC_STATE_LINE_STIPPLE`
+[VK_DYNAMIC_STATE_LINE_STIPPLE](VkDynamicState.html)
 
 Extending [VkFormat](VkFormat.html):
 
 * 
-`VK_FORMAT_A1B5G5R5_UNORM_PACK16`
+[VK_FORMAT_A1B5G5R5_UNORM_PACK16](VkFormat.html)
 
 * 
-`VK_FORMAT_A8_UNORM`
+[VK_FORMAT_A8_UNORM](VkFormat.html)
 
 Extending [VkFormatFeatureFlagBits2](VkFormatFeatureFlagBits2.html):
 
 * 
-`VK_FORMAT_FEATURE_2_HOST_IMAGE_TRANSFER_BIT`
+[VK_FORMAT_FEATURE_2_HOST_IMAGE_TRANSFER_BIT](VkFormatFeatureFlagBits2.html)
 
 Extending [VkImageLayout](VkImageLayout.html):
 
 * 
-`VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+[VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](VkImageLayout.html)
 
 Extending [VkImageUsageFlagBits](VkImageUsageFlagBits.html):
 
 * 
-`VK_IMAGE_USAGE_HOST_TRANSFER_BIT`
+[VK_IMAGE_USAGE_HOST_TRANSFER_BIT](VkImageUsageFlagBits.html)
 
 Extending [VkIndexType](VkIndexType.html):
 
 * 
-`VK_INDEX_TYPE_UINT8`
+[VK_INDEX_TYPE_UINT8](VkIndexType.html)
 
 Extending [VkPipelineCreateFlagBits](VkPipelineCreateFlagBits.html):
 
 * 
-`VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT`
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](VkPipelineCreateFlagBits.html)
 
 * 
-`VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT`
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](VkPipelineCreateFlagBits.html)
 
 Extending [VkResult](VkResult.html):
 
 * 
-`VK_ERROR_NOT_PERMITTED`
+[VK_ERROR_NOT_PERMITTED](VkResult.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_SETS_INFO`
+[VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_SETS_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_BIND_MEMORY_STATUS`
+[VK_STRUCTURE_TYPE_BIND_MEMORY_STATUS](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO`
+[VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_COPY_IMAGE_TO_IMAGE_INFO`
+[VK_STRUCTURE_TYPE_COPY_IMAGE_TO_IMAGE_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_COPY_IMAGE_TO_MEMORY_INFO`
+[VK_STRUCTURE_TYPE_COPY_IMAGE_TO_MEMORY_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_COPY_MEMORY_TO_IMAGE_INFO`
+[VK_STRUCTURE_TYPE_COPY_MEMORY_TO_IMAGE_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_DEVICE_IMAGE_SUBRESOURCE_INFO`
+[VK_STRUCTURE_TYPE_DEVICE_IMAGE_SUBRESOURCE_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO`
+[VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY`
+[VK_STRUCTURE_TYPE_HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_HOST_IMAGE_LAYOUT_TRANSITION_INFO`
+[VK_STRUCTURE_TYPE_HOST_IMAGE_LAYOUT_TRANSITION_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_IMAGE_SUBRESOURCE_2`
+[VK_STRUCTURE_TYPE_IMAGE_SUBRESOURCE_2](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_IMAGE_TO_MEMORY_COPY`
+[VK_STRUCTURE_TYPE_IMAGE_TO_MEMORY_COPY](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_MEMORY_MAP_INFO`
+[VK_STRUCTURE_TYPE_MEMORY_MAP_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_MEMORY_TO_IMAGE_COPY`
+[VK_STRUCTURE_TYPE_MEMORY_TO_IMAGE_COPY](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO`
+[VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_LOCAL_READ_FEATURES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_LOCAL_READ_FEATURES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GLOBAL_PRIORITY_QUERY_FEATURES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GLOBAL_PRIORITY_QUERY_FEATURES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_FEATURES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_FEATURES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_FEATURES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_FEATURES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_PROPERTIES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_PROPERTIES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_FEATURES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_FEATURES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_PROPERTIES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_PROPERTIES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_FEATURES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_FEATURES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROTECTED_ACCESS_FEATURES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROTECTED_ACCESS_FEATURES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_FEATURES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_FEATURES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_PROPERTIES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_PROPERTIES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_EXPECT_ASSUME_FEATURES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_EXPECT_ASSUME_FEATURES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT_CONTROLS_2_FEATURES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT_CONTROLS_2_FEATURES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_ROTATE_FEATURES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_ROTATE_FEATURES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_4_FEATURES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_4_FEATURES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_4_PROPERTIES`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_4_PROPERTIES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_CREATE_FLAGS_2_CREATE_INFO`
+[VK_STRUCTURE_TYPE_PIPELINE_CREATE_FLAGS_2_CREATE_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO`
+[VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_ROBUSTNESS_CREATE_INFO`
+[VK_STRUCTURE_TYPE_PIPELINE_ROBUSTNESS_CREATE_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO`
+[VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PUSH_CONSTANTS_INFO`
+[VK_STRUCTURE_TYPE_PUSH_CONSTANTS_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_INFO`
+[VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_WITH_TEMPLATE_INFO`
+[VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_WITH_TEMPLATE_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES`
+[VK_STRUCTURE_TYPE_QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_RENDERING_AREA_INFO`
+[VK_STRUCTURE_TYPE_RENDERING_AREA_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_LOCATION_INFO`
+[VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_LOCATION_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO`
+[VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SUBRESOURCE_HOST_MEMCPY_SIZE`
+[VK_STRUCTURE_TYPE_SUBRESOURCE_HOST_MEMCPY_SIZE](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SUBRESOURCE_LAYOUT_2`
+[VK_STRUCTURE_TYPE_SUBRESOURCE_LAYOUT_2](VkStructureType.html)
 
 Extending [VkSubgroupFeatureFlagBits](VkSubgroupFeatureFlagBits.html):
 
 * 
-`VK_SUBGROUP_FEATURE_ROTATE_BIT`
+[VK_SUBGROUP_FEATURE_ROTATE_BIT](VkSubgroupFeatureFlagBits.html)
 
 * 
-`VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT`
+[VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT](VkSubgroupFeatureFlagBits.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), [VK_VERSION_1_3](VK_VERSION_1_3.html)
 

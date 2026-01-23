@@ -44,16 +44,16 @@ structure.
 behavior for the counter.
 
 * 
-`name` is an array of size `VK_MAX_DESCRIPTION_SIZE`, containing
+`name` is an array of size [VK_MAX_DESCRIPTION_SIZE](VK_MAX_DESCRIPTION_SIZE.html), containing
 a null-terminated UTF-8 string specifying the name of the counter.
 
 * 
-`category` is an array of size `VK_MAX_DESCRIPTION_SIZE`,
+`category` is an array of size [VK_MAX_DESCRIPTION_SIZE](VK_MAX_DESCRIPTION_SIZE.html),
 containing a null-terminated UTF-8 string specifying the category of the
 counter.
 
 * 
-`description` is an array of size `VK_MAX_DESCRIPTION_SIZE`,
+`description` is an array of size [VK_MAX_DESCRIPTION_SIZE](VK_MAX_DESCRIPTION_SIZE.html),
 containing a null-terminated UTF-8 string specifying the description of
 the counter.
 
@@ -62,7 +62,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPerformanceCounterDescriptionKHR-sType-sType) VUID-VkPerformanceCounterDescriptionKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_DESCRIPTION_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_DESCRIPTION_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPerformanceCounterDescriptionKHR-pNext-pNext) VUID-VkPerformanceCounterDescriptionKHR-pNext-pNext

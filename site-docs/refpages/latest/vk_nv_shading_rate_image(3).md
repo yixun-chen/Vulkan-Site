@@ -190,44 +190,44 @@ Extending [VkPipelineViewportStateCreateInfo](VkPipelineViewportStateCreateInfo.
 * 
 Extending [VkAccessFlagBits](VkAccessFlagBits.html):
 
-`VK_ACCESS_SHADING_RATE_IMAGE_READ_BIT_NV`
+[VK_ACCESS_SHADING_RATE_IMAGE_READ_BIT_NV](VkAccessFlagBits.html)
 
 Extending [VkDynamicState](VkDynamicState.html):
 
 * 
-`VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV`
+[VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV`
+[VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV](VkDynamicState.html)
 
 Extending [VkImageLayout](VkImageLayout.html):
 
 * 
-`VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV`
+[VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV](VkImageLayout.html)
 
 Extending [VkImageUsageFlagBits](VkImageUsageFlagBits.html):
 
 * 
-`VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV`
+[VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV](VkImageUsageFlagBits.html)
 
 Extending [VkPipelineStageFlagBits](VkPipelineStageFlagBits.html):
 
 * 
-`VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV`
+[VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV](VkPipelineStageFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV`
+[VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV`
+[VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV](VkStructureType.html)
 
 (1) When using shading rates specifying “coarse” fragments covering
     multiple pixels, we will generate a combined coverage mask that combines
@@ -257,16 +257,16 @@ fragment sample ordering to perform such a query, it could instead just set
 its own order, also using custom per-pixel sample locations if required.
 
 (2) For the pipeline stage
-`VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV`, should we specify a
+[VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV](VkPipelineStageFlagBits.html), should we specify a
 precise location in the pipeline the shading rate image is accessed (after
 geometry shading, but before the early fragment tests) or leave it
 under-specified in case there are other implementations that access the
 image in a different pipeline location?
 
 **RESOLVED** We are specifying the pipeline stage to be between the final
-[pre-rasterization shader stage](../../../../spec/latest/chapters/pipelines.html#pipelines-graphics-subsets-pre-rasterization) (`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`) and before the first
+[pre-rasterization shader stage](../../../../spec/latest/chapters/pipelines.html#pipelines-graphics-subsets-pre-rasterization) ([VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](VkPipelineStageFlagBits.html)) and before the first
 stage used for fragment processing
-(`VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT`), which seems to be the
+([VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT](VkPipelineStageFlagBits.html)), which seems to be the
 natural place to access the shading rate image.
 
 (3) How do centroid-sampled variables work with fragments larger than one

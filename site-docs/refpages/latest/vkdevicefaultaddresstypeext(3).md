@@ -32,36 +32,36 @@ typedef enum VkDeviceFaultAddressTypeEXT {
 } VkDeviceFaultAddressTypeEXT;
 
 * 
-`VK_DEVICE_FAULT_ADDRESS_TYPE_NONE_EXT` specifies that
+[VK_DEVICE_FAULT_ADDRESS_TYPE_NONE_EXT](#) specifies that
 [VkDeviceFaultAddressInfoEXT](VkDeviceFaultAddressInfoEXT.html) does not describe a page fault, or an
 instruction address.
 
 * 
-`VK_DEVICE_FAULT_ADDRESS_TYPE_READ_INVALID_EXT` specifies that
+[VK_DEVICE_FAULT_ADDRESS_TYPE_READ_INVALID_EXT](#) specifies that
 [VkDeviceFaultAddressInfoEXT](VkDeviceFaultAddressInfoEXT.html) describes a page fault triggered by an
 invalid read operation.
 
 * 
-`VK_DEVICE_FAULT_ADDRESS_TYPE_WRITE_INVALID_EXT` specifies that
+[VK_DEVICE_FAULT_ADDRESS_TYPE_WRITE_INVALID_EXT](#) specifies that
 [VkDeviceFaultAddressInfoEXT](VkDeviceFaultAddressInfoEXT.html) describes a page fault triggered by an
 invalid write operation.
 
 * 
-`VK_DEVICE_FAULT_ADDRESS_TYPE_EXECUTE_INVALID_EXT` describes a page
+[VK_DEVICE_FAULT_ADDRESS_TYPE_EXECUTE_INVALID_EXT](#) describes a page
 fault triggered by an attempt to execute non-executable memory.
 
 * 
-`VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_UNKNOWN_EXT`
+[VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_UNKNOWN_EXT](#)
 specifies an instruction pointer value at the time the fault occurred.
 This may or may not be related to a fault.
 
 * 
-`VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_INVALID_EXT`
+[VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_INVALID_EXT](#)
 specifies an instruction pointer value associated with an invalid
 instruction fault.
 
 * 
-`VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_FAULT_EXT`
+[VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_FAULT_EXT](#)
 specifies an instruction pointer value associated with a fault.
 
 |  | The instruction pointer values recorded may not identify the specific

@@ -57,8 +57,8 @@ application to the number of elements in the `pCounters`,
 `pCounterDescriptions`, or both arrays and on return the variable is
 overwritten with the number of structures actually written out.
 If `pCounterCount` is less than the number of counters available, at
-most `pCounterCount` structures will be written, and `VK_INCOMPLETE`
-will be returned instead of `VK_SUCCESS`, to indicate that not all the
+most `pCounterCount` structures will be written, and [VK_INCOMPLETE](VkResult.html)
+will be returned instead of [VK_SUCCESS](VkResult.html), to indicate that not all the
 available counters were returned.
 
 Valid Usage (Implicit)
@@ -88,27 +88,27 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_ARM_performance_counters_by_region](VK_ARM_performance_counters_by_region.html), [VkPerformanceCounterARM](VkPerformanceCounterARM.html), [VkPerformanceCounterDescriptionARM](VkPerformanceCounterDescriptionARM.html), [VkPhysicalDevice](VkPhysicalDevice.html)
 

@@ -82,19 +82,19 @@ is supported when
  `maxPushDescriptors` is
 the maximum number of descriptors that **can** be used in a descriptor set
 layout created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT` set.
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](VkDescriptorSetLayoutCreateFlagBits.html) set.
 
 * 
 
-`dynamicRenderingLocalReadDepthStencilAttachments` is `VK_TRUE`
+`dynamicRenderingLocalReadDepthStencilAttachments` is [VK_TRUE](VK_TRUE.html)
 if the implementation supports local reads of depth/stencil attachments,
-`VK_FALSE` otherwise.
+[VK_FALSE](VK_FALSE.html) otherwise.
 
 * 
 
-`dynamicRenderingLocalReadMultisampledAttachments` is `VK_TRUE`
+`dynamicRenderingLocalReadMultisampledAttachments` is [VK_TRUE](VK_TRUE.html)
 if the implementation supports local reads of multisampled attachments,
-`VK_FALSE` otherwise.
+[VK_FALSE](VK_FALSE.html) otherwise.
 
 * 
 `earlyFragmentMultisampleCoverageAfterSampleCounting` is a boolean
@@ -111,13 +111,13 @@ execution mode.
 
 * 
 `depthStencilSwizzleOneSupport` is a boolean indicating that
-depth/stencil texturing operations with `VK_COMPONENT_SWIZZLE_ONE`
+depth/stencil texturing operations with [VK_COMPONENT_SWIZZLE_ONE](VkComponentSwizzle.html)
 have defined behavior.
 
 * 
 `polygonModePointSize` is a boolean value indicating whether the
 point size of the final rasterization of polygons with
-`VK_POLYGON_MODE_POINT` is controlled by `PointSize`.
+[VK_POLYGON_MODE_POINT](VkPolygonMode.html) is controlled by `PointSize`.
 
 * 
 `nonStrictSinglePixelWideLinesUseParallelogram` is a boolean value
@@ -132,7 +132,7 @@ parallelograms or using Bresenham’s algorithm.
 * 
 `blockTexelViewCompatibleMultipleLayers` is a boolean value
 indicating that an implementation supports creating image views with
-`VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT` where the
+[VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](VkImageCreateFlagBits.html) where the
 `layerCount` member of `subresourceRange` is greater than `1`.
 
 * 
@@ -186,14 +186,14 @@ which supported image layouts for use with host copy operations to
 images are returned.
 
 * 
-`optimalTilingLayoutUUID` is an array of `VK_UUID_SIZE`
+`optimalTilingLayoutUUID` is an array of [VK_UUID_SIZE](VK_UUID_SIZE.html)
 `uint8_t` values representing a universally unique identifier for the
 implementation’s swizzling layout of images created with
-`VK_IMAGE_TILING_OPTIMAL`.
+[VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html).
 
 * 
 `identicalMemoryTypeRequirements` indicates that specifying the
-`VK_IMAGE_USAGE_HOST_TRANSFER_BIT` flag in
+[VK_IMAGE_USAGE_HOST_TRANSFER_BIT](VkImageUsageFlagBits.html) flag in
 [VkImageCreateInfo](VkImageCreateInfo.html)::`usage` does not affect the memory type
 requirements of the image.
 
@@ -209,7 +209,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVulkan14Properties-sType-sType) VUID-VkPhysicalDeviceVulkan14Properties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_4_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_4_PROPERTIES](VkStructureType.html)
 
 [VK_VERSION_1_4](VK_VERSION_1_4.html), `VkBool32`, [VkImageLayout](VkImageLayout.html), [VkPipelineRobustnessBufferBehavior](VkPipelineRobustnessBufferBehavior.html), [VkPipelineRobustnessImageBehavior](VkPipelineRobustnessImageBehavior.html), [VkStructureType](VkStructureType.html)
 

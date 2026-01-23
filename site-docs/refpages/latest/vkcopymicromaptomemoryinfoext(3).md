@@ -61,19 +61,19 @@ The memory pointed to by `dst` **must** be at least as large as the
 serialization size of `src`, as reported by
 [vkWriteMicromapsPropertiesEXT](vkWriteMicromapsPropertiesEXT.html) or
 [vkCmdWriteMicromapsPropertiesEXT](vkCmdWriteMicromapsPropertiesEXT.html) with a query type of
-`VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT`
+[VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT](VkQueryType.html)
 
 * 
 [](#VUID-VkCopyMicromapToMemoryInfoEXT-mode-07542) VUID-VkCopyMicromapToMemoryInfoEXT-mode-07542
 
-`mode` **must** be `VK_COPY_MICROMAP_MODE_SERIALIZE_EXT`
+`mode` **must** be [VK_COPY_MICROMAP_MODE_SERIALIZE_EXT](VkCopyMicromapModeEXT.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkCopyMicromapToMemoryInfoEXT-sType-sType) VUID-VkCopyMicromapToMemoryInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COPY_MICROMAP_TO_MEMORY_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COPY_MICROMAP_TO_MEMORY_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkCopyMicromapToMemoryInfoEXT-pNext-pNext) VUID-VkCopyMicromapToMemoryInfoEXT-pNext-pNext

@@ -70,4 +70,4 @@ A well-designed camera system is essential for any 3D application. It serves as 
 
 Remember that the code provided in this chapter is a starting point. Feel free to modify and extend it to suit your specific needs and application requirements.
 
-[Previous: Engine Architecture](#../Engine_Architecture/conclusion.adoc) | [Next: Lighting & Materials](#../Lighting_Materials/01_introduction.adoc)
+[Previous: Vulkan Integration](05_vulkan_integration.html) | [Next: Lighting & Materials](../Lighting_Materials/01_introduction.html)

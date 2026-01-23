@@ -29,11 +29,11 @@ typedef enum VkIndirectExecutionSetInfoTypeEXT {
 } VkIndirectExecutionSetInfoTypeEXT;
 
 * 
-`VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT` specifies that
+[VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT](#) specifies that
 the indirect execution set contains [VkPipeline](VkPipeline.html) objects.
 
 * 
-`VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT` specifies
+[VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT](#) specifies
 that the indirect execution set contains [VkShaderEXT](VkShaderEXT.html) objects.
 
 [VK_EXT_device_generated_commands](VK_EXT_device_generated_commands.html), [VkIndirectCommandsExecutionSetTokenEXT](VkIndirectCommandsExecutionSetTokenEXT.html), [VkIndirectExecutionSetCreateInfoEXT](VkIndirectExecutionSetCreateInfoEXT.html)

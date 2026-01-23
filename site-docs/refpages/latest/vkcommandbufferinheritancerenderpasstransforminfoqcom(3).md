@@ -65,17 +65,17 @@ Valid Usage
 * 
 [](#VUID-VkCommandBufferInheritanceRenderPassTransformInfoQCOM-transform-02864) VUID-VkCommandBufferInheritanceRenderPassTransformInfoQCOM-transform-02864
 
-`transform` **must** be `VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR`,
-`VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR`,
-`VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR`, or
-`VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR`
+`transform` **must** be [VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html),
+[VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html),
+[VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html), or
+[VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkCommandBufferInheritanceRenderPassTransformInfoQCOM-sType-sType) VUID-VkCommandBufferInheritanceRenderPassTransformInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDER_PASS_TRANSFORM_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDER_PASS_TRANSFORM_INFO_QCOM](VkStructureType.html)
 
 [VK_QCOM_render_pass_transform](VK_QCOM_render_pass_transform.html), [VkRect2D](VkRect2D.html), [VkStructureType](VkStructureType.html), [VkSurfaceTransformFlagBitsKHR](VkSurfaceTransformFlagBitsKHR.html)
 

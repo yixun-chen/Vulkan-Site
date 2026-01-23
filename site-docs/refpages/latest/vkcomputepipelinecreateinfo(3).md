@@ -85,14 +85,14 @@ If the `pNext` chain does not include a
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-07984) VUID-VkComputePipelineCreateInfo-flags-07984
 
-If `flags` contains the `VK_PIPELINE_CREATE_DERIVATIVE_BIT`
+If `flags` contains the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](VkPipelineCreateFlagBits.html)
 flag, and `basePipelineIndex` is -1, `basePipelineHandle` **must**
 be a valid compute `VkPipeline` handle
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-07985) VUID-VkComputePipelineCreateInfo-flags-07985
 
-If `flags` contains the `VK_PIPELINE_CREATE_DERIVATIVE_BIT`
+If `flags` contains the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](VkPipelineCreateFlagBits.html)
 flag, and `basePipelineHandle` is [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 `basePipelineIndex` **must** be a valid index into the calling
 command’s `pCreateInfos` parameter
@@ -100,35 +100,37 @@ command’s `pCreateInfos` parameter
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-07986) VUID-VkComputePipelineCreateInfo-flags-07986
 
-If `flags` contains the `VK_PIPELINE_CREATE_DERIVATIVE_BIT`
+If `flags` contains the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](VkPipelineCreateFlagBits.html)
 flag, `basePipelineIndex` **must** be -1 or `basePipelineHandle`
 **must** be [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-layout-07987) VUID-VkComputePipelineCreateInfo-layout-07987
 
-If a push constant block is declared in a shader, a push constant range
-in `layout` **must** match the shader stage
+If a push constant block is declared in a shader and `layout` is not
+[VK_NULL_HANDLE](VK_NULL_HANDLE.html), a push constant range in `layout` **must** match
+the shader stage
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-layout-10069) VUID-VkComputePipelineCreateInfo-layout-10069
 
-If a push constant block is declared in a shader, the block must be
-contained inside the push constant range in `layout` that matches
-the stage
+If a push constant block is declared in a shader and `layout` is not
+[VK_NULL_HANDLE](VK_NULL_HANDLE.html), the block must be contained inside the push
+constant range in `layout` that matches the stage
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-layout-07988) VUID-VkComputePipelineCreateInfo-layout-07988
 
-If a [resource variable](../../../../spec/latest/chapters/interfaces.html#interfaces-resources) is declared in a shader,
-the corresponding descriptor set in `layout` **must** match the shader
-stage
+If a [resource variable](../../../../spec/latest/chapters/interfaces.html#interfaces-resources) is declared in a shader
+and `layout` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), the corresponding
+descriptor set in `layout` **must** match the shader stage
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-layout-07990) VUID-VkComputePipelineCreateInfo-layout-07990
 
 If a [resource variable](../../../../spec/latest/chapters/interfaces.html#interfaces-resources) is declared in a shader,
-and the descriptor type is not `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`,
+`layout` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
+and the descriptor type is not [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html),
 the corresponding descriptor set in `layout` **must** match the
 descriptor type
 
@@ -136,71 +138,111 @@ descriptor type
 [](#VUID-VkComputePipelineCreateInfo-layout-07991) VUID-VkComputePipelineCreateInfo-layout-07991
 
 If a [resource variable](../../../../spec/latest/chapters/interfaces.html#interfaces-resources) is declared in a shader
-as an array, the corresponding descriptor binding used to create
-`layout` **must** have a `descriptorCount` that is greater than or
-equal to the length of the array
+as an array and `layout` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), the
+corresponding descriptor binding used to create `layout` **must** have
+a `descriptorCount` that is greater than or equal to the length of
+the array
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-None-10391) VUID-VkComputePipelineCreateInfo-None-10391
 
 If a [resource variables](../../../../spec/latest/chapters/interfaces.html#interfaces-resources) is declared in a shader
 as an array of descriptors, then the descriptor type of that variable
-**must** not be `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+**must** not be [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-11798) VUID-VkComputePipelineCreateInfo-flags-11798
 
 If [shader64BitIndexing](../../../../spec/latest/chapters/features.html#features-shader64BitIndexing) feature is not
 enabled, `flags` **must** not contain
-`VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT`
+[VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT](VkPipelineCreateFlagBits2.html)
+
+* 
+[](#VUID-VkComputePipelineCreateInfo-pipelineCreationCacheControl-02878) VUID-VkComputePipelineCreateInfo-pipelineCreationCacheControl-02878
+
+If the [    `pipelineCreationCacheControl`](../../../../spec/latest/chapters/features.html#features-pipelineCreationCacheControl) feature is not enabled, `flags`
+**must** not include
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](VkPipelineCreateFlagBits.html) nor
+[VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT](VkPipelineCreateFlagBits.html)
+
+* 
+[](#VUID-VkComputePipelineCreateInfo-pipelineProtectedAccess-07368) VUID-VkComputePipelineCreateInfo-pipelineProtectedAccess-07368
+
+If the [    `pipelineProtectedAccess`](../../../../spec/latest/chapters/features.html#features-pipelineProtectedAccess) feature is not enabled, `flags`
+**must** not include [VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](VkPipelineCreateFlagBits.html) nor
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](VkPipelineCreateFlagBits.html)
+
+* 
+[](#VUID-VkComputePipelineCreateInfo-flags-07369) VUID-VkComputePipelineCreateInfo-flags-07369
+
+`flags` **must** not include both
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](VkPipelineCreateFlagBits.html) and
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](VkPipelineCreateFlagBits.html)
+
+* 
+[](#VUID-VkComputePipelineCreateInfo-flags-11311) VUID-VkComputePipelineCreateInfo-flags-11311
+
+If [VkPipelineCreateFlags2CreateInfoKHR](VkPipelineCreateFlags2CreateInfo.html)::`flags` includes
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2.html), `layout` **must**
+be [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
+
+* 
+[](#VUID-VkComputePipelineCreateInfo-flags-11312) VUID-VkComputePipelineCreateInfo-flags-11312
+
+If [VkPipelineCreateFlags2CreateInfoKHR](VkPipelineCreateFlags2CreateInfo.html)::`flags` includes
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2.html), all shader variables
+in the [shader resource interface](../../../../spec/latest/chapters/interfaces.html#interfaces-resources) with a
+`DescriptorSet` and `Binding` decoration **must** have a mapping
+declared in
+[VkShaderDescriptorSetAndBindingMappingInfoEXT](VkShaderDescriptorSetAndBindingMappingInfoEXT.html)::pMappings
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-03365) VUID-VkComputePipelineCreateInfo-flags-03365
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-03366) VUID-VkComputePipelineCreateInfo-flags-03366
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-03367) VUID-VkComputePipelineCreateInfo-flags-03367
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-03368) VUID-VkComputePipelineCreateInfo-flags-03368
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-03369) VUID-VkComputePipelineCreateInfo-flags-03369
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-03370) VUID-VkComputePipelineCreateInfo-flags-03370
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-03576) VUID-VkComputePipelineCreateInfo-flags-03576
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-04945) VUID-VkComputePipelineCreateInfo-flags-04945
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV`
+[VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-09007) VUID-VkComputePipelineCreateInfo-flags-09007
@@ -208,13 +250,13 @@ enabled, `flags` **must** not contain
 If the [    `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV`::`deviceGeneratedComputePipelines`](../../../../spec/latest/chapters/features.html#features-deviceGeneratedComputePipelines)
 feature is not enabled,
 `flags` **must** not include
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV`
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-09008) VUID-VkComputePipelineCreateInfo-flags-09008
 
 If `flags` includes
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV`, then the `pNext`
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](VkPipelineCreateFlagBits.html), then the `pNext`
 chain **must** include a pointer to a valid instance of
 [VkComputePipelineIndirectBufferInfoNV](VkComputePipelineIndirectBufferInfoNV.html) specifying the address where
 the pipeline’s metadata will be saved
@@ -223,23 +265,15 @@ the pipeline’s metadata will be saved
 [](#VUID-VkComputePipelineCreateInfo-flags-11007) VUID-VkComputePipelineCreateInfo-flags-11007
 
 If `flags` includes
-`VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT`, then the
+[VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT](VkPipelineCreateFlagBits2.html), then the
 [    `VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT`::`deviceGeneratedCommands`](../../../../spec/latest/chapters/features.html#features-deviceGeneratedCommands)
 feature **must** be enabled
-
-* 
-[](#VUID-VkComputePipelineCreateInfo-pipelineCreationCacheControl-02875) VUID-VkComputePipelineCreateInfo-pipelineCreationCacheControl-02875
-
-If the [    `pipelineCreationCacheControl`](../../../../spec/latest/chapters/features.html#features-pipelineCreationCacheControl) feature is not enabled, `flags`
-**must** not include
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT` or
-`VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT`
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-stage-00701) VUID-VkComputePipelineCreateInfo-stage-00701
 
 The `stage` member of `stage` **must** be
-`VK_SHADER_STAGE_COMPUTE_BIT`
+[VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-stage-00702) VUID-VkComputePipelineCreateInfo-stage-00702
@@ -252,22 +286,22 @@ chapter
 * 
 [](#VUID-VkComputePipelineCreateInfo-layout-01687) VUID-VkComputePipelineCreateInfo-layout-01687
 
-The number of resources in `layout` accessible to the compute shader
-stage **must** be less than or equal to
-`VkPhysicalDeviceLimits`::`maxPerStageResources`
+If `layout` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), the number of resources in
+`layout` accessible to the compute shader stage **must** be less than
+or equal to `VkPhysicalDeviceLimits`::`maxPerStageResources`
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-shaderEnqueue-09177) VUID-VkComputePipelineCreateInfo-shaderEnqueue-09177
 
 If the [`shaderEnqueue`](../../../../spec/latest/chapters/features.html#features-shaderEnqueue) feature is not
 enabled,
-`flags` **must** not include `VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`
+`flags` **must** not include [VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-09178) VUID-VkComputePipelineCreateInfo-flags-09178
 
 If `flags` does not include
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`, the shader specified by
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](VkPipelineCreateFlagBits.html), the shader specified by
 `stage` **must** not declare the `ShaderEnqueueAMDX` capability
 
 * 
@@ -281,20 +315,27 @@ is not `0`, it **must** be `1`
 [](#VUID-VkComputePipelineCreateInfo-flags-07367) VUID-VkComputePipelineCreateInfo-flags-07367
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT`
+[VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-07996) VUID-VkComputePipelineCreateInfo-flags-07996
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV`
+[VK_PIPELINE_CREATE_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV](VkPipelineCreateFlagBits.html)
+
+* 
+[](#VUID-VkComputePipelineCreateInfo-None-11367) VUID-VkComputePipelineCreateInfo-None-11367
+
+If [VkPipelineCreateFlags2CreateInfoKHR](VkPipelineCreateFlags2CreateInfo.html)::`flags` does not
+include [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2.html),
+`layout` **must** not be [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-sType-sType) VUID-VkComputePipelineCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-pNext-pNext) VUID-VkComputePipelineCreateInfo-pNext-pNext
@@ -314,7 +355,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkComputePipelineCreateInfo-layout-parameter) VUID-VkComputePipelineCreateInfo-layout-parameter
 
- `layout` **must** be a valid [VkPipelineLayout](VkPipelineLayout.html) handle
+ If `layout` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `layout` **must** be a valid [VkPipelineLayout](VkPipelineLayout.html) handle
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-commonparent) VUID-VkComputePipelineCreateInfo-commonparent

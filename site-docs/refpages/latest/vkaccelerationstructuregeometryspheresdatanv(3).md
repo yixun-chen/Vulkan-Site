@@ -76,7 +76,7 @@ sphere’s radius data value.
 * 
 `indexData` is a device or host address of memory containing index
 data for vertex and radius buffers for this geometry.
-When `indexType` is `VK_INDEX_TYPE_NONE_KHR` it **must** be `NULL`.
+When `indexType` is [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html) it **must** be `NULL`.
 
 * 
 `indexStride` is the stride in bytes between each index element.
@@ -109,13 +109,13 @@ the smallest [component size](../../../../spec/latest/chapters/formats.html#form
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-buffer-view-format-features) of
 `vertexFormat` **must** contain
-`VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR`
+[VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR](VkFormatFeatureFlagBits.html)
 
 [](#VUID-VkAccelerationStructureGeometrySpheresDataNV-radiusFormat-10435) VUID-VkAccelerationStructureGeometrySpheresDataNV-radiusFormat-10435
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-buffer-view-format-features) of
 `radiusFormat` **must** contain
-`VK_FORMAT_FEATURE_2_ACCELERATION_STRUCTURE_RADIUS_BUFFER_BIT_NV`
+[VK_FORMAT_FEATURE_2_ACCELERATION_STRUCTURE_RADIUS_BUFFER_BIT_NV](VkFormatFeatureFlagBits2.html)
 
 [](#VUID-VkAccelerationStructureGeometrySpheresDataNV-radiusData-10436) VUID-VkAccelerationStructureGeometrySpheresDataNV-radiusData-10436
 
@@ -124,15 +124,15 @@ to `0`
 
 [](#VUID-VkAccelerationStructureGeometrySpheresDataNV-indexData-10437) VUID-VkAccelerationStructureGeometrySpheresDataNV-indexData-10437
 
-`indexType` **must** be `VK_INDEX_TYPE_UINT16`,
-`VK_INDEX_TYPE_UINT32`, `VK_INDEX_TYPE_NONE_KHR`
+`indexType` **must** be [VK_INDEX_TYPE_UINT16](VkIndexType.html),
+[VK_INDEX_TYPE_UINT32](VkIndexType.html), [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkAccelerationStructureGeometrySpheresDataNV-sType-sType) VUID-VkAccelerationStructureGeometrySpheresDataNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_SPHERES_DATA_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_SPHERES_DATA_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkAccelerationStructureGeometrySpheresDataNV-vertexFormat-parameter) VUID-VkAccelerationStructureGeometrySpheresDataNV-vertexFormat-parameter

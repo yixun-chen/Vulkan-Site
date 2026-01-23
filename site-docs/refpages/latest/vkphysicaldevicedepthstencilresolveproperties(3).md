@@ -48,7 +48,7 @@ structure.
 `supportedDepthResolveModes` is a bitmask of
 [VkResolveModeFlagBits](VkResolveModeFlagBits.html) indicating the set of supported depth
 resolve modes.
-`VK_RESOLVE_MODE_SAMPLE_ZERO_BIT` **must** be included in the set but
+[VK_RESOLVE_MODE_SAMPLE_ZERO_BIT](VkResolveModeFlagBits.html) **must** be included in the set but
 implementations **may** support additional modes.
 
 * 
@@ -56,23 +56,23 @@ implementations **may** support additional modes.
 `supportedStencilResolveModes` is a bitmask of
 [VkResolveModeFlagBits](VkResolveModeFlagBits.html) indicating the set of supported stencil
 resolve modes.
-`VK_RESOLVE_MODE_SAMPLE_ZERO_BIT` **must** be included in the set but
+[VK_RESOLVE_MODE_SAMPLE_ZERO_BIT](VkResolveModeFlagBits.html) **must** be included in the set but
 implementations **may** support additional modes.
-`VK_RESOLVE_MODE_AVERAGE_BIT` **must** not be included in the set.
+[VK_RESOLVE_MODE_AVERAGE_BIT](VkResolveModeFlagBits.html) **must** not be included in the set.
 
 * 
 
-`independentResolveNone` is `VK_TRUE` if the implementation
+`independentResolveNone` is [VK_TRUE](VK_TRUE.html) if the implementation
 supports setting the depth and stencil resolve modes to different values
-when one of those modes is `VK_RESOLVE_MODE_NONE`.
+when one of those modes is [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html).
 Otherwise the implementation only supports setting both modes to the
 same value.
 
 * 
  `independentResolve`
-is `VK_TRUE` if the implementation supports all combinations of the
+is [VK_TRUE](VK_TRUE.html) if the implementation supports all combinations of the
 supported depth and stencil resolve modes, including setting either
-depth or stencil resolve mode to `VK_RESOLVE_MODE_NONE`.
+depth or stencil resolve mode to [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html).
 An implementation that supports `independentResolve` **must** also
 support `independentResolveNone`.
 
@@ -86,7 +86,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDepthStencilResolveProperties-sType-sType) VUID-VkPhysicalDeviceDepthStencilResolveProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES](VkStructureType.html)
 
 [VK_KHR_depth_stencil_resolve](VK_KHR_depth_stencil_resolve.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), `VkBool32`, [VkResolveModeFlags](VkResolveModeFlags.html), [VkStructureType](VkStructureType.html)
 

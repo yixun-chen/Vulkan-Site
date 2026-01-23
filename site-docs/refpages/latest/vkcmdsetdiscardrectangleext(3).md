@@ -53,7 +53,7 @@ replace the current state for the discard rectangle at index
 This command sets the discard rectangles for subsequent drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT` set in
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineDiscardRectangleStateCreateInfoEXT](VkPipelineDiscardRectangleStateCreateInfoEXT.html)::`pDiscardRectangles`
@@ -116,7 +116,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDiscardRectangleEXT-commandBuffer-cmdpool) VUID-vkCmdSetDiscardRectangleEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetDiscardRectangleEXT-videocoding) VUID-vkCmdSetDiscardRectangleEXT-videocoding

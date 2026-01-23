@@ -29,12 +29,12 @@ typedef enum VkBuildMicromapFlagBitsEXT {
 } VkBuildMicromapFlagBitsEXT;
 
 * 
-`VK_BUILD_MICROMAP_PREFER_FAST_TRACE_BIT_EXT` specifies that the
+[VK_BUILD_MICROMAP_PREFER_FAST_TRACE_BIT_EXT](#) specifies that the
 given micromap build **should** prioritize trace performance over build
 time.
 
 * 
-`VK_BUILD_MICROMAP_PREFER_FAST_BUILD_BIT_EXT` specifies that the
+[VK_BUILD_MICROMAP_PREFER_FAST_BUILD_BIT_EXT](#) specifies that the
 given micromap build **should** prioritize build time over trace
 performance.
 

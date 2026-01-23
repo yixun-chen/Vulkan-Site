@@ -24,7 +24,7 @@ typedef enum VkFenceCreateFlagBits {
 } VkFenceCreateFlagBits;
 
 * 
-`VK_FENCE_CREATE_SIGNALED_BIT` specifies that the fence object is
+[VK_FENCE_CREATE_SIGNALED_BIT](#) specifies that the fence object is
 created in the signaled state.
 Otherwise, it is created in the unsignaled state.
 

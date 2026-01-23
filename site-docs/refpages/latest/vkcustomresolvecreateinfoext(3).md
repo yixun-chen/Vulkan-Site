@@ -84,9 +84,9 @@ that the fragment shader will be used in a custom resolve operation.
 If a graphics pipeline is created with a valid [VkRenderPass](VkRenderPass.html),
 parameters of this structure are ignored.
 
-If `customResolve` is `VK_FALSE`, the pipeline **can** only be used
+If `customResolve` is [VK_FALSE](VK_FALSE.html), the pipeline **can** only be used
 outside the custom resolve section.
-If `customResolve` is `VK_TRUE`, the pipeline **can** only be used
+If `customResolve` is [VK_TRUE](VK_TRUE.html), the pipeline **can** only be used
 inside the custom resolve section.
 
 When a dynamic render pass instance contains a custom resolve operation
@@ -100,25 +100,23 @@ structure.
 
 If the [`dynamicRenderingUnusedAttachments`](../../../../spec/latest/chapters/features.html#features-dynamicRenderingUnusedAttachments) feature is enabled, then when this
 structure is not included in the `pNext` chain for
-[VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html), `customResolve` is `VK_FALSE`,
+[VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html), `customResolve` is [VK_FALSE](VK_FALSE.html),
 `colorAttachmentCount` is `0`, and `depthAttachmentFormat` and
-`stencilAttachmentFormat` are `VK_FORMAT_UNDEFINED`.
+`stencilAttachmentFormat` are [VK_FORMAT_UNDEFINED](VkFormat.html).
 
 If `depthAttachmentFormat`, `stencilAttachmentFormat`, or any
-element of `pColorAttachmentFormats` is `VK_FORMAT_UNDEFINED`, it
+element of `pColorAttachmentFormats` is [VK_FORMAT_UNDEFINED](VkFormat.html), it
 indicates that the corresponding attachment is unused within the resolve
 portion of the render pass.
 Valid formats indicate that an attachment **can** be used - but it is still
 valid to set the attachment to `NULL` when beginning rendering.
-
-Overdraw during a custom resolve will produce **undefined** behavior.
 
 When passed as a `pNext` member to a [VkShaderCreateInfoEXT](VkShaderCreateInfoEXT.html) struct
 for use with fragment density maps, the `colorAttachmentCount`,
 `pColorAttachmentFormats`, `depthAttachmentFormat`, and
 `stencilAttachmentFormat` members of this struct are ignored.
 When not passed as a `pNext` member, `customResolve` is
-`VK_FALSE`.
+[VK_FALSE](VK_FALSE.html).
 
 Valid Usage
 
@@ -131,45 +129,45 @@ Valid Usage
 * 
 [](#VUID-VkCustomResolveCreateInfoEXT-depthAttachmentFormat-11508) VUID-VkCustomResolveCreateInfoEXT-depthAttachmentFormat-11508
 
-If `depthAttachmentFormat` is not `VK_FORMAT_UNDEFINED`, it
+If `depthAttachmentFormat` is not [VK_FORMAT_UNDEFINED](VkFormat.html), it
 **must** be a format that includes a depth component
 
 * 
 [](#VUID-VkCustomResolveCreateInfoEXT-depthAttachmentFormat-11509) VUID-VkCustomResolveCreateInfoEXT-depthAttachmentFormat-11509
 
-If `depthAttachmentFormat` is not `VK_FORMAT_UNDEFINED`, it
+If `depthAttachmentFormat` is not [VK_FORMAT_UNDEFINED](VkFormat.html), it
 **must** be a format with [potential format    features](../../../../spec/latest/chapters/formats.html#potential-format-features) that include
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-VkCustomResolveCreateInfoEXT-pColorAttachmentFormats-11510) VUID-VkCustomResolveCreateInfoEXT-pColorAttachmentFormats-11510
 
 If any element of `pColorAttachmentFormats` is not
-`VK_FORMAT_UNDEFINED`, it **must** be a format with
+[VK_FORMAT_UNDEFINED](VkFormat.html), it **must** be a format with
 [potential format features](../../../../spec/latest/chapters/formats.html#potential-format-features) that include
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT`
-, or `VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV` if the
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](VkFormatFeatureFlagBits.html)
+, or [VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](VkFormatFeatureFlagBits2.html) if the
 [`linearColorAttachment`](../../../../spec/latest/chapters/features.html#features-linearColorAttachment) feature
 is enabled
 
 * 
 [](#VUID-VkCustomResolveCreateInfoEXT-stencilAttachmentFormat-11511) VUID-VkCustomResolveCreateInfoEXT-stencilAttachmentFormat-11511
 
-If `stencilAttachmentFormat` is not `VK_FORMAT_UNDEFINED`, it
+If `stencilAttachmentFormat` is not [VK_FORMAT_UNDEFINED](VkFormat.html), it
 **must** be a format that includes a stencil aspect
 
 * 
 [](#VUID-VkCustomResolveCreateInfoEXT-stencilAttachmentFormat-11512) VUID-VkCustomResolveCreateInfoEXT-stencilAttachmentFormat-11512
 
-If `stencilAttachmentFormat` is not `VK_FORMAT_UNDEFINED`, it
+If `stencilAttachmentFormat` is not [VK_FORMAT_UNDEFINED](VkFormat.html), it
 **must** be a format with [potential format    features](../../../../spec/latest/chapters/formats.html#potential-format-features) that include
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-VkCustomResolveCreateInfoEXT-depthAttachmentFormat-11513) VUID-VkCustomResolveCreateInfoEXT-depthAttachmentFormat-11513
 
-If `depthAttachmentFormat` is not `VK_FORMAT_UNDEFINED` and
-`stencilAttachmentFormat` is not `VK_FORMAT_UNDEFINED`,
+If `depthAttachmentFormat` is not [VK_FORMAT_UNDEFINED](VkFormat.html) and
+`stencilAttachmentFormat` is not [VK_FORMAT_UNDEFINED](VkFormat.html),
 `depthAttachmentFormat` **must** equal `stencilAttachmentFormat`
 
 Valid Usage (Implicit)
@@ -177,7 +175,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCustomResolveCreateInfoEXT-sType-sType) VUID-VkCustomResolveCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CUSTOM_RESOLVE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CUSTOM_RESOLVE_CREATE_INFO_EXT](VkStructureType.html)
 
 [VK_EXT_custom_resolve](VK_EXT_custom_resolve.html), [VK_KHR_dynamic_rendering](VK_KHR_dynamic_rendering.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), `VkBool32`, [VkFormat](VkFormat.html), [VkStructureType](VkStructureType.html)
 

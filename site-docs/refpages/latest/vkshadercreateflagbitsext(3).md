@@ -24,6 +24,8 @@ specifying how a shader object is created, are:
 // Provided by VK_EXT_shader_object
 typedef enum VkShaderCreateFlagBitsEXT {
     VK_SHADER_CREATE_LINK_STAGE_BIT_EXT = 0x00000001,
+  // Provided by VK_EXT_descriptor_heap with VK_EXT_shader_object
+    VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT = 0x00000400,
   // Provided by VK_EXT_shader_object with VK_EXT_subgroup_size_control or VK_VERSION_1_3
     VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT = 0x00000002,
   // Provided by VK_EXT_shader_object with VK_EXT_subgroup_size_control or VK_VERSION_1_3
@@ -43,51 +45,55 @@ typedef enum VkShaderCreateFlagBitsEXT {
 } VkShaderCreateFlagBitsEXT;
 
 * 
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT` specifies that a shader is
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#) specifies that a shader is
 linked to all other shaders created in the same [vkCreateShadersEXT](vkCreateShadersEXT.html)
 call whose [VkShaderCreateInfoEXT](VkShaderCreateInfoEXT.html) structures' `flags` include
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`.
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#).
 
 * 
-`VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT` specifies
+[VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT](#) specifies
     that the [`SubgroupSize`](../../../../spec/latest/chapters/interfaces.html#interfaces-builtin-variables-sgs) **may**
     vary in a
 task, mesh, or
     compute shader.
 
 * 
-`VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT` specifies that the
+[VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT](#) specifies that the
     subgroup sizes **must** be launched with all invocations active in a
 task, mesh, or
     compute shader.
 
 * 
-`VK_SHADER_CREATE_NO_TASK_SHADER_BIT_EXT` specifies that a mesh
+[VK_SHADER_CREATE_NO_TASK_SHADER_BIT_EXT](#) specifies that a mesh
 shader **must** only be used without a task shader.
 Otherwise, the mesh shader **must** only be used with a task shader.
 
 * 
-`VK_SHADER_CREATE_DISPATCH_BASE_BIT_EXT` specifies that a compute
+[VK_SHADER_CREATE_DISPATCH_BASE_BIT_EXT](#) specifies that a compute
 shader **can** be used with [vkCmdDispatchBase](vkCmdDispatchBase.html) with a non-zero base
 workgroup.
 
 * 
-`VK_SHADER_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_EXT`
+[VK_SHADER_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_EXT](#)
 specifies that a fragment shader **can** be used with a fragment shading
 rate attachment.
 
 * 
-`VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT` specifies
+[VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT](#) specifies
 that a fragment shader **can** be used with a fragment density map
 attachment.
 
 * 
-`VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT` specifies that the
+[VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT](#) specifies that the
 shader **can** be used in combination with [Device-Generated Commands](../../../../spec/latest/chapters/device_generated_commands/generatedcommands.html#device-generated-commands).
 
 * 
-`VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT` specifies that the shader
+[VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT](#) specifies that the shader
 enables [64-bit indexing](../../../../spec/latest/appendices/spirvenv.html#spirvenv-64bindexing).
+
+* 
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](#) specifies that the shader
+will use descriptor heap mappings instead of descriptor set layouts.
 
 [VK_EXT_shader_object](VK_EXT_shader_object.html), [VkShaderCreateFlagsEXT](VkShaderCreateFlagsEXT.html)
 

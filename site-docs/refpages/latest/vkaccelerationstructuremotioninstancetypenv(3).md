@@ -18,7 +18,7 @@
 
 VkAccelerationStructureMotionInstanceTypeNV - Enum specifying a type of acceleration structure motion instance data for building into an acceleration structure geometry
 
-The `VkAccelerationStructureMotionInstanceTypeNV` enumeration is defined
+The [VkAccelerationStructureMotionInstanceTypeNV](#) enumeration is defined
 as:
 
 // Provided by VK_NV_ray_tracing_motion_blur
@@ -29,16 +29,16 @@ typedef enum VkAccelerationStructureMotionInstanceTypeNV {
 } VkAccelerationStructureMotionInstanceTypeNV;
 
 * 
-`VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_STATIC_NV` specifies
+[VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_STATIC_NV](#) specifies
 that the instance is a static instance with no instance motion.
 
 * 
-`VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_MATRIX_MOTION_NV`
+[VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_MATRIX_MOTION_NV](#)
 specifies that the instance is a motion instance with motion specified
 by interpolation between two matrices.
 
 * 
-`VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_SRT_MOTION_NV`
+[VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_SRT_MOTION_NV](#)
 specifies that the instance is a motion instance with motion specified
 by interpolation in the SRT decomposition.
 

@@ -41,12 +41,12 @@ typedef VkFormatProperties3 VkFormatProperties3KHR;
 * 
 `linearTilingFeatures` is a bitmask of
 [VkFormatFeatureFlagBits2](VkFormatFeatureFlagBits2.html) specifying features supported by images
-created with a `tiling` parameter of `VK_IMAGE_TILING_LINEAR`.
+created with a `tiling` parameter of [VK_IMAGE_TILING_LINEAR](VkImageTiling.html).
 
 * 
 `optimalTilingFeatures` is a bitmask of
 [VkFormatFeatureFlagBits2](VkFormatFeatureFlagBits2.html) specifying features supported by images
-created with a `tiling` parameter of `VK_IMAGE_TILING_OPTIMAL`.
+created with a `tiling` parameter of [VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html).
 
 * 
 `bufferFeatures` is a bitmask of [VkFormatFeatureFlagBits2](VkFormatFeatureFlagBits2.html)
@@ -61,7 +61,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFormatProperties3-sType-sType) VUID-VkFormatProperties3-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_3`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_3](VkStructureType.html)
 
 [VK_KHR_format_feature_flags2](VK_KHR_format_feature_flags2.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), [VkFormatFeatureFlags2](VkFormatFeatureFlags2.html), [VkStructureType](VkStructureType.html)
 

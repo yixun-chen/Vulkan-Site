@@ -49,7 +49,7 @@ Valid Usage
 [](#VUID-vkUpdateIndirectExecutionSetPipelineEXT-indirectExecutionSet-11035) VUID-vkUpdateIndirectExecutionSetPipelineEXT-indirectExecutionSet-11035
 
 `indirectExecutionSet` **must** have been created with type
-`VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT`
+[VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT](VkIndirectExecutionSetInfoTypeEXT.html)
 
 * 
 [](#VUID-vkUpdateIndirectExecutionSetPipelineEXT-executionSetWriteCount-11037) VUID-vkUpdateIndirectExecutionSetPipelineEXT-executionSetWriteCount-11037
@@ -70,9 +70,27 @@ Each member of the Indirect Execution Set referenced by the update
 command **must** not be in use by the device
 
 * 
+[](#VUID-vkUpdateIndirectExecutionSetPipelineEXT-initialPipeline-11324) VUID-vkUpdateIndirectExecutionSetPipelineEXT-initialPipeline-11324
+
+If `initialPipeline` was created without
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2.html), each pipeline in
+`pExecutionSetWrites` **must** also have been created without
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2.html)
+
+* 
+[](#VUID-vkUpdateIndirectExecutionSetPipelineEXT-initialPipeline-11325) VUID-vkUpdateIndirectExecutionSetPipelineEXT-initialPipeline-11325
+
+If `initialPipeline` was created with
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2.html), each pipeline in
+`pExecutionSetWrites` **must** also have been created with
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2.html)
+
+* 
 [](#VUID-vkUpdateIndirectExecutionSetPipelineEXT-None-11039) VUID-vkUpdateIndirectExecutionSetPipelineEXT-None-11039
 
-The layout of each pipeline in `pExecutionSetWrites` **must** be
+If `initialPipeline` was created without
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2.html), the
+layout of each pipeline in `pExecutionSetWrites` **must** be
 [compatible](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility) with the
 `initialPipeline` used to create the Indirect Execution Set
 

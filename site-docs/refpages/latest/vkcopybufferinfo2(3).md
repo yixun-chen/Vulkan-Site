@@ -92,7 +92,7 @@ in memory
 [](#VUID-VkCopyBufferInfo2-srcBuffer-00118) VUID-VkCopyBufferInfo2-srcBuffer-00118
 
 `srcBuffer` **must** have been created with the
-`VK_BUFFER_USAGE_TRANSFER_SRC_BIT` usage flag set
+[VK_BUFFER_USAGE_TRANSFER_SRC_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkCopyBufferInfo2-srcBuffer-00119) VUID-VkCopyBufferInfo2-srcBuffer-00119
@@ -104,7 +104,7 @@ contiguously to a single `VkDeviceMemory` object
 [](#VUID-VkCopyBufferInfo2-dstBuffer-00120) VUID-VkCopyBufferInfo2-dstBuffer-00120
 
 `dstBuffer` **must** have been created with the
-`VK_BUFFER_USAGE_TRANSFER_DST_BIT` usage flag set
+[VK_BUFFER_USAGE_TRANSFER_DST_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkCopyBufferInfo2-dstBuffer-00121) VUID-VkCopyBufferInfo2-dstBuffer-00121
@@ -117,7 +117,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCopyBufferInfo2-sType-sType) VUID-VkCopyBufferInfo2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COPY_BUFFER_INFO_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COPY_BUFFER_INFO_2](VkStructureType.html)
 
 * 
 [](#VUID-VkCopyBufferInfo2-pNext-pNext) VUID-VkCopyBufferInfo2-pNext-pNext

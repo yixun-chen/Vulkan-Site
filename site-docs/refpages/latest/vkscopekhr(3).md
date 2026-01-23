@@ -41,16 +41,16 @@ typedef enum VkScopeKHR {
 typedef VkScopeKHR VkScopeNV;
 
 * 
-`VK_SCOPE_DEVICE_KHR` corresponds to SPIR-V `Device` scope.
+[VK_SCOPE_DEVICE_KHR](#) corresponds to SPIR-V `Device` scope.
 
 * 
-`VK_SCOPE_WORKGROUP_KHR` corresponds to SPIR-V `Workgroup` scope.
+[VK_SCOPE_WORKGROUP_KHR](#) corresponds to SPIR-V `Workgroup` scope.
 
 * 
-`VK_SCOPE_SUBGROUP_KHR` corresponds to SPIR-V `Subgroup` scope.
+[VK_SCOPE_SUBGROUP_KHR](#) corresponds to SPIR-V `Subgroup` scope.
 
 * 
-`VK_SCOPE_QUEUE_FAMILY_KHR` corresponds to SPIR-V `QueueFamily`
+[VK_SCOPE_QUEUE_FAMILY_KHR](#) corresponds to SPIR-V `QueueFamily`
 scope.
 
 All enum values match the corresponding SPIR-V value.

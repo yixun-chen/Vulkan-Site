@@ -91,7 +91,7 @@ types depending on which descriptor types are written into, or copied into a
 descriptor set.
 
 The main use case this extension intends to address is descriptor indexing
-with `VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT` where the
+with [VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](VkDescriptorBindingFlagBits.html) where the
 descriptor types are completely generic, as this means applications can
 allocate one large descriptor set, rather than having one large descriptor
 set per descriptor type, which significantly bloats descriptor memory usage
@@ -128,25 +128,25 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkDescriptorPoolCreateFlagBits](VkDescriptorPoolCreateFlagBits.html):
 
-`VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT`
+[VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT](VkDescriptorPoolCreateFlagBits.html)
 
 Extending [VkDescriptorSetLayoutCreateFlagBits](VkDescriptorSetLayoutCreateFlagBits.html):
 
 * 
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html)
 
 Extending [VkDescriptorType](VkDescriptorType.html):
 
 * 
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MUTABLE_DESCRIPTOR_TYPE_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MUTABLE_DESCRIPTOR_TYPE_FEATURES_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2022-08-22 (Jon Leech)

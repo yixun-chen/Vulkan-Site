@@ -29,7 +29,7 @@ typedef enum VkDataGraphModelCacheTypeQCOM {
 } VkDataGraphModelCacheTypeQCOM;
 
 * 
-`VK_DATA_GRAPH_MODEL_CACHE_TYPE_GENERIC_BINARY_QCOM` specifies a
+[VK_DATA_GRAPH_MODEL_CACHE_TYPE_GENERIC_BINARY_QCOM](#) specifies a
 general binary layout type.
 
 [VK_QCOM_data_graph_model](VK_QCOM_data_graph_model.html), [VkPipelineCacheHeaderVersionDataGraphQCOM](VkPipelineCacheHeaderVersionDataGraphQCOM.html)

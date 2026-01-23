@@ -89,8 +89,8 @@ modes.
 `supportedIndirectCommandsShaderStages` indicates the stages which
 **can** be used to generate indirect commands.
 Implementations are required to support, at minimum:
-`VK_SHADER_STAGE_VERTEX_BIT`, `VK_SHADER_STAGE_FRAGMENT_BIT`,
-`VK_SHADER_STAGE_COMPUTE_BIT`.
+[VK_SHADER_STAGE_VERTEX_BIT](VkShaderStageFlagBits.html), [VK_SHADER_STAGE_FRAGMENT_BIT](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html).
 
 * 
 
@@ -109,7 +109,7 @@ binding shader stages using shader objects.
 `deviceGeneratedCommandsTransformFeedback` indicates whether the
 implementation supports interactions with
 `[VK_EXT_transform_feedback](VK_EXT_transform_feedback.html)` for pipelines not created with
-`VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT`.
+[VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT](VkPipelineCreateFlagBits2.html).
 
 * 
 
@@ -127,7 +127,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_device_generated_commands](VK_EXT_device_generated_commands.html), `VkBool32`, [VkIndirectCommandsInputModeFlagsEXT](VkIndirectCommandsInputModeFlagsEXT.html), [VkShaderStageFlags](VkShaderStageFlags.html), [VkStructureType](VkStructureType.html)
 

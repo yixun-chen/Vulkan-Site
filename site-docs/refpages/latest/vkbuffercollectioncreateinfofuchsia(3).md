@@ -54,7 +54,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferCollectionCreateInfoFUCHSIA-sType-sType) VUID-VkBufferCollectionCreateInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_COLLECTION_CREATE_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_COLLECTION_CREATE_INFO_FUCHSIA](VkStructureType.html)
 
 * 
 [](#VUID-VkBufferCollectionCreateInfoFUCHSIA-pNext-pNext) VUID-VkBufferCollectionCreateInfoFUCHSIA-pNext-pNext

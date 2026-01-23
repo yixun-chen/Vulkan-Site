@@ -50,14 +50,14 @@ Valid Usage
 [](#VUID-VkAttachmentFeedbackLoopInfoEXT-unifiedImageLayouts-10782) VUID-VkAttachmentFeedbackLoopInfoEXT-unifiedImageLayouts-10782
 
 If the [`unifiedImageLayouts`](../../../../spec/latest/chapters/features.html#features-unifiedImageLayouts)
-feature is not enabled, `feedbackLoopEnable` **must** be `VK_FALSE`
+feature is not enabled, `feedbackLoopEnable` **must** be [VK_FALSE](VK_FALSE.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkAttachmentFeedbackLoopInfoEXT-sType-sType) VUID-VkAttachmentFeedbackLoopInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ATTACHMENT_FEEDBACK_LOOP_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ATTACHMENT_FEEDBACK_LOOP_INFO_EXT](VkStructureType.html)
 
 [VK_EXT_attachment_feedback_loop_layout](VK_EXT_attachment_feedback_loop_layout.html), [VK_KHR_dynamic_rendering](VK_KHR_dynamic_rendering.html), [VK_KHR_unified_image_layouts](VK_KHR_unified_image_layouts.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

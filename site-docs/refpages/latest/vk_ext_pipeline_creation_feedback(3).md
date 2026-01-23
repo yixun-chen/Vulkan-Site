@@ -136,18 +136,18 @@ Extending [VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html), [Vk
 * 
 Extending [VkPipelineCreationFeedbackFlagBits](VkPipelineCreationFeedbackFlagBits.html):
 
-`VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT_EXT`
+[VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT_EXT](VkPipelineCreationFeedbackFlagBits.html)
 
 * 
-`VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT_EXT`
+[VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT_EXT](VkPipelineCreationFeedbackFlagBits.html)
 
 * 
-`VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT_EXT`
+[VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT_EXT](VkPipelineCreationFeedbackFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO_EXT](VkStructureType.html)
 
 Vulkan APIs in this extension are included in core Vulkan 1.3, with the EXT
 suffix omitted.

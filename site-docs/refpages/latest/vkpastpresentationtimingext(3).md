@@ -68,13 +68,13 @@ report times in `pPresentStages`.
 `timeDomainId` is the id associated with `timeDomain`.
 
 * 
-`reportComplete` is `VK_TRUE` if the presentation engine has
+`reportComplete` is [VK_TRUE](VK_TRUE.html) if the presentation engine has
 reported all the requested results in `pPresentStages`.
 
 When calling [vkGetPastPresentationTimingEXT](vkGetPastPresentationTimingEXT.html), the implementation sets
 `presentStageCount` to the number of present stages it has written
 results for.
-If `VK_PAST_PRESENTATION_TIMING_ALLOW_PARTIAL_RESULTS_BIT_EXT` was
+If [VK_PAST_PRESENTATION_TIMING_ALLOW_PARTIAL_RESULTS_BIT_EXT](VkPastPresentationTimingFlagBitsEXT.html) was
 specified in [VkPastPresentationTimingInfoEXT](VkPastPresentationTimingInfoEXT.html)::`flags`, the
 implementation **may** return an incomplete report containing fewer present
 stage results than were queried by the associated presentation request.
@@ -104,27 +104,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPastPresentationTimingEXT-sType-sType) VUID-VkPastPresentationTimingEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkPastPresentationTimingEXT-pNext-pNext) VUID-VkPastPresentationTimingEXT-pNext-pNext
 
  `pNext` **must** be `NULL`
-
-* 
-[](#VUID-VkPastPresentationTimingEXT-pPresentStages-parameter) VUID-VkPastPresentationTimingEXT-pPresentStages-parameter
-
- `pPresentStages` **must** be a valid pointer to an array of `presentStageCount` [VkPresentStageTimeEXT](VkPresentStageTimeEXT.html) structures
-
-* 
-[](#VUID-VkPastPresentationTimingEXT-timeDomain-parameter) VUID-VkPastPresentationTimingEXT-timeDomain-parameter
-
- `timeDomain` **must** be a valid [VkTimeDomainKHR](VkTimeDomainKHR.html) value
-
-* 
-[](#VUID-VkPastPresentationTimingEXT-presentStageCount-arraylength) VUID-VkPastPresentationTimingEXT-presentStageCount-arraylength
-
- `presentStageCount` **must** be greater than `0`
 
 [VK_EXT_present_timing](VK_EXT_present_timing.html), `VkBool32`, [VkPastPresentationTimingPropertiesEXT](VkPastPresentationTimingPropertiesEXT.html), [VkPresentStageTimeEXT](VkPresentStageTimeEXT.html), [VkStructureType](VkStructureType.html), [VkTimeDomainKHR](VkTimeDomainKHR.html)
 

@@ -85,7 +85,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFenceGetFdInfoKHR-sType-sType) VUID-VkFenceGetFdInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FENCE_GET_FD_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FENCE_GET_FD_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkFenceGetFdInfoKHR-pNext-pNext) VUID-VkFenceGetFdInfoKHR-pNext-pNext

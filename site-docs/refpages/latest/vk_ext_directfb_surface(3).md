@@ -95,7 +95,7 @@ via DirectFB.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_DIRECTFB_SURFACE_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_DIRECTFB_SURFACE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2020-06-16 (Nicolas Caramelli)

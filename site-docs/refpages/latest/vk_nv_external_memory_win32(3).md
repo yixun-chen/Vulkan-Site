@@ -108,10 +108,10 @@ Extending [VkMemoryAllocateInfo](VkMemoryAllocateInfo.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV`
+[VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV`
+[VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV](VkStructureType.html)
 
 1) If memory objects are shared between processes and APIs, is this
 considered aliasing according to the rules outlined in the
@@ -136,7 +136,7 @@ Other APIs will fall into two categories: Those that are Vulkan compatible
 (a term to be defined by subsequent interopability extensions), or Vulkan
 incompatible.
 When sharing images with Vulkan incompatible APIs, the Vulkan image must be
-transitioned to the `VK_IMAGE_LAYOUT_GENERAL` layout before handing it
+transitioned to the [VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html) layout before handing it
 off to the external API.
 
 Note this does not attempt to address cross-device transitions, nor
@@ -146,7 +146,7 @@ Both of these are beyond the scope of this extension.
 
 3) Do applications need to call `CloseHandle`() on the values returned
 from [vkGetMemoryWin32HandleNV](vkGetMemoryWin32HandleNV.html) when `handleType` is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV`?
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV](VkExternalMemoryHandleTypeFlagBitsNV.html)?
 
 **RESOLVED**: Yes, unless it is passed back in to another driver instance to
 import the object.

@@ -21,7 +21,7 @@ VkIndirectCommandsIndexBufferTokenEXT - Structure specifying layout token info f
 
 The `VkIndirectCommandsIndexBufferTokenEXT` structure specifies the
 layout token info for the
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT` token.
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT](VkIndirectCommandsTokenTypeEXT.html) token.
 
 // Provided by VK_EXT_device_generated_commands
 typedef struct VkIndirectCommandsIndexBufferTokenEXT {
@@ -32,7 +32,7 @@ typedef struct VkIndirectCommandsIndexBufferTokenEXT {
 `mode` specifies the mode to use with this token.
 
 This allows for easy layering of Vulkan atop other APIs.
-When `VK_INDIRECT_COMMANDS_INPUT_MODE_DXGI_INDEX_BUFFER_EXT` is
+When [VK_INDIRECT_COMMANDS_INPUT_MODE_DXGI_INDEX_BUFFER_EXT](VkIndirectCommandsInputModeFlagBitsEXT.html) is
 specified, the indirect buffer can contain a `D3D12_INDEX_BUFFER_VIEW`
 instead of [VkBindIndexBufferIndirectCommandEXT](VkBindIndexBufferIndirectCommandEXT.html) as D3D’s DXGI format
 value is mapped to the [VkIndexType](VkIndexType.html).

@@ -57,7 +57,7 @@ created memory allocation on the same implementation.
 address retrieved from [vkGetDeviceMemoryOpaqueCaptureAddress](vkGetDeviceMemoryOpaqueCaptureAddress.html) on an
 identically created memory allocation.
 If this is not the case, it is likely that
-`VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS` errors will occur.
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS](VkResult.html) errors will occur.
 
 This is, however, not a strict requirement because trace capture/replay
 tools may need to adjust memory allocation parameters for imported memory. |
@@ -70,7 +70,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryOpaqueCaptureAddressAllocateInfo-sType-sType) VUID-VkMemoryOpaqueCaptureAddressAllocateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO](VkStructureType.html)
 
 [VK_KHR_buffer_device_address](VK_KHR_buffer_device_address.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), [VkStructureType](VkStructureType.html)
 

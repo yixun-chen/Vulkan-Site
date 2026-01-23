@@ -61,7 +61,7 @@ accesses.
 indicates whether the implementation supports inline uniform block
 descriptors.
 If this feature is not enabled,
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` **must** not be used.
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) **must** not be used.
 
 * 
 
@@ -69,8 +69,8 @@ If this feature is not enabled,
 indicates whether the implementation supports updating inline uniform
 block descriptors after a set is bound.
 If this feature is not enabled,
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` **must** not be used with
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`.
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html) **must** not be used with
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html).
 
 * 
 
@@ -79,16 +79,16 @@ supports:
 
 The following **can** be used in `Vk*PipelineCreateInfo`::`flags`:
 
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT`
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](VkPipelineCreateFlagBits.html)
 
 * 
-`VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT`
+[VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT](VkPipelineCreateFlagBits.html)
 
 The following **can** be used in
 [VkPipelineCacheCreateInfo](VkPipelineCacheCreateInfo.html)::`flags`:
 
 * 
-`VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT`
+[VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT](VkPipelineCacheCreateFlagBits.html)
 
  `privateData` indicates
 whether the implementation supports private data.
@@ -104,7 +104,7 @@ extension.
 
 `subgroupSizeControl` indicates whether the implementation supports
 controlling shader subgroup sizes via the
-`VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT`
+[VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT](VkPipelineShaderStageCreateFlagBits.html)
 flag and the [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.html)
 structure.
 
@@ -112,7 +112,7 @@ structure.
 requiring full subgroups in compute
 , mesh, or task
 shaders via the
-`VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT` flag.
+[VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT](VkPipelineShaderStageCreateFlagBits.html) flag.
 
  `synchronization2`
 indicates whether the implementation supports the new set of
@@ -121,52 +121,52 @@ synchronization commands introduced in `[VK_KHR_synchronization2](VK_KHR_synchro
 `textureCompressionASTC_HDR` indicates whether all of the ASTC HDR
 compressed texture formats are supported.
 If this feature is enabled, then the
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT`,
-`VK_FORMAT_FEATURE_BLIT_SRC_BIT` and
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT` features **must**
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](VkFormatFeatureFlagBits.html),
+[VK_FORMAT_FEATURE_BLIT_SRC_BIT](VkFormatFeatureFlagBits.html) and
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](VkFormatFeatureFlagBits.html) features **must**
 be supported in `optimalTilingFeatures` for the following formats:
 
 * 
-`VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK`
+[VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK`
+[VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_5x5_SFLOAT_BLOCK`
+[VK_FORMAT_ASTC_5x5_SFLOAT_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_6x5_SFLOAT_BLOCK`
+[VK_FORMAT_ASTC_6x5_SFLOAT_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_6x6_SFLOAT_BLOCK`
+[VK_FORMAT_ASTC_6x6_SFLOAT_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_8x5_SFLOAT_BLOCK`
+[VK_FORMAT_ASTC_8x5_SFLOAT_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_8x6_SFLOAT_BLOCK`
+[VK_FORMAT_ASTC_8x6_SFLOAT_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_8x8_SFLOAT_BLOCK`
+[VK_FORMAT_ASTC_8x8_SFLOAT_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_10x5_SFLOAT_BLOCK`
+[VK_FORMAT_ASTC_10x5_SFLOAT_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_10x6_SFLOAT_BLOCK`
+[VK_FORMAT_ASTC_10x6_SFLOAT_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_10x8_SFLOAT_BLOCK`
+[VK_FORMAT_ASTC_10x8_SFLOAT_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_10x10_SFLOAT_BLOCK`
+[VK_FORMAT_ASTC_10x10_SFLOAT_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK`
+[VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK`
+[VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK](VkFormat.html)
 
 To query for additional properties, or if the feature is not enabled,
 [vkGetPhysicalDeviceFormatProperties](vkGetPhysicalDeviceFormatProperties.html) and
@@ -218,7 +218,7 @@ If the `VkPhysicalDeviceVulkan13Features` structure is included in the `pNext` c
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceVulkan13Features`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -226,7 +226,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVulkan13Features-sType-sType) VUID-VkPhysicalDeviceVulkan13Features-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_FEATURES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_FEATURES](VkStructureType.html)
 
 [VK_VERSION_1_3](VK_VERSION_1_3.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

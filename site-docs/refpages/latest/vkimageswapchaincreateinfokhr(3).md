@@ -59,7 +59,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageSwapchainCreateInfoKHR-sType-sType) VUID-VkImageSwapchainCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkImageSwapchainCreateInfoKHR-swapchain-parameter) VUID-VkImageSwapchainCreateInfoKHR-swapchain-parameter

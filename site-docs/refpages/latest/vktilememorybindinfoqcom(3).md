@@ -51,14 +51,14 @@ Valid Usage
 [](#VUID-VkTileMemoryBindInfoQCOM-memory-10726) VUID-VkTileMemoryBindInfoQCOM-memory-10726
 
 `memory` **must** have been allocated from a [VkMemoryHeap](VkMemoryHeap.html) with
-the `VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property
+the [VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkTileMemoryBindInfoQCOM-sType-sType) VUID-VkTileMemoryBindInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TILE_MEMORY_BIND_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TILE_MEMORY_BIND_INFO_QCOM](VkStructureType.html)
 
 * 
 [](#VUID-VkTileMemoryBindInfoQCOM-memory-parameter) VUID-VkTileMemoryBindInfoQCOM-memory-parameter

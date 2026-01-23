@@ -82,62 +82,62 @@ typedef enum VkImageUsageFlagBits {
 } VkImageUsageFlagBits;
 
 * 
-`VK_IMAGE_USAGE_TRANSFER_SRC_BIT` specifies that the image **can** be
+[VK_IMAGE_USAGE_TRANSFER_SRC_BIT](#) specifies that the image **can** be
 used as the source of a transfer command.
 
 * 
-`VK_IMAGE_USAGE_TRANSFER_DST_BIT` specifies that the image **can** be
+[VK_IMAGE_USAGE_TRANSFER_DST_BIT](#) specifies that the image **can** be
 used as the destination of a transfer command.
 
 * 
-`VK_IMAGE_USAGE_SAMPLED_BIT` specifies that the image **can** be used
+[VK_IMAGE_USAGE_SAMPLED_BIT](#) specifies that the image **can** be used
 to create a `VkImageView` suitable for occupying a
 `VkDescriptorSet` slot either of type
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE` or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, and be sampled by a
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html), and be sampled by a
 shader.
 
 * 
-`VK_IMAGE_USAGE_STORAGE_BIT` specifies that the image **can** be used
+[VK_IMAGE_USAGE_STORAGE_BIT](#) specifies that the image **can** be used
 to create a `VkImageView` suitable for occupying a
 `VkDescriptorSet` slot of type
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`.
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html).
 
 * 
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` specifies that the image **can**
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](#) specifies that the image **can**
 be used to create a `VkImageView` suitable for use as a color or
 resolve attachment in a `VkFramebuffer`.
 
 * 
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` specifies that the
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](#) specifies that the
 image **can** be used to create a `VkImageView` suitable for use as a
 depth/stencil
 or depth/stencil resolve
 attachment in a `VkFramebuffer`.
 
 * 
-`VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT` specifies that
+[VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](#) specifies that
 implementations **may** support using [memory allocations](../../../../spec/latest/chapters/memory.html#memory) with
-the `VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT` to back an image with
+the [VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT](VkMemoryPropertyFlagBits.html) to back an image with
 this usage.
 This bit **can** be set for any image that **can** be used to create a
 `VkImageView` suitable for use as a color, resolve, depth/stencil,
 or input attachment.
 
 * 
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` specifies that the image **can**
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](#) specifies that the image **can**
 be used to create a `VkImageView` suitable for occupying
 `VkDescriptorSet` slot of type
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`; be read from a shader as an
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html); be read from a shader as an
 input attachment; and be used as an input attachment in a framebuffer.
 
 * 
-`VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT` specifies that the
+[VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT](#) specifies that the
 image **can** be used to create a `VkImageView` suitable for use as a
 [fragment density map image](../../../../spec/latest/chapters/fragmentdensitymapops.html#fragmentdensitymapops).
 
 * 
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR` specifies
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#) specifies
     that the image **can** be used to create a `VkImageView` suitable for
     use as a
     [fragment shading rate    attachment](../../../../spec/latest/chapters/primsrast.html#primsrast-fragment-shading-rate-attachment)
@@ -145,65 +145,65 @@ or
     [shading rate image](../../../../spec/latest/chapters/primsrast.html#primsrast-shading-rate-image)
 
 * 
-`VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR` specifies that the image
+[VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](#) specifies that the image
 **can** be used as a [decode output picture](../../../../spec/latest/chapters/videocoding.html#decode-output-picture) in a
 [video decode operation](../../../../spec/latest/chapters/videocoding.html#video-decode-operations).
 
 * 
-`VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR` is reserved for future
+[VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR](#) is reserved for future
 use.
 
 * 
-`VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR` specifies that the image
+[VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](#) specifies that the image
 **can** be used as an output [reconstructed    picture](../../../../spec/latest/chapters/videocoding.html#reconstructed-picture) or an input [reference picture](../../../../spec/latest/chapters/videocoding.html#reference-picture) in a
 [video decode operation](../../../../spec/latest/chapters/videocoding.html#video-decode-operations).
 
 * 
-`VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR` is reserved for future
+[VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR](#) is reserved for future
 use.
 
 * 
-`VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR` specifies that the image
+[VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR](#) specifies that the image
 **can** be used as an [encode input picture](../../../../spec/latest/chapters/videocoding.html#encode-input-picture) in a
 [video encode operation](../../../../spec/latest/chapters/videocoding.html#video-encode-operations).
 
 * 
-`VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR` specifies that the image
+[VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR](#) specifies that the image
 **can** be used as an output [reconstructed    picture](../../../../spec/latest/chapters/videocoding.html#reconstructed-picture) or an input [reference picture](../../../../spec/latest/chapters/videocoding.html#reference-picture) in a
 [video encode operation](../../../../spec/latest/chapters/videocoding.html#video-encode-operations).
 
 * 
-`VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT` specifies that the
+[VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](#) specifies that the
 image **can** be used as a color or depth/stencil attachment with
 [feedback loop enabled](../../../../spec/latest/chapters/renderpass.html#renderpass-feedbackloop).
 
 * 
-`VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM` specifies that the image **can**
+[VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM](#) specifies that the image **can**
 be bound to `VkDeviceMemory` allocated from a [VkMemoryHeap](VkMemoryHeap.html)
-with the `VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property.
+with the [VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property.
 
 * 
-`VK_IMAGE_USAGE_HOST_TRANSFER_BIT` specifies that the image **can** be
+[VK_IMAGE_USAGE_HOST_TRANSFER_BIT](#) specifies that the image **can** be
 used with host copy commands and host layout transitions.
 
 * 
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR`
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](#)
 specifies that the image **can** be used as a
 [quantization delta map](../../../../spec/latest/chapters/videocoding.html#encode-quantization-delta-map) in a
 [video encode operation](../../../../spec/latest/chapters/videocoding.html#video-encode-operations).
 
 * 
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR` specifies that
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](#) specifies that
 the image **can** be used as an [emphasis map](../../../../spec/latest/chapters/videocoding.html#encode-emphasis-map) in a
 [video encode operation](../../../../spec/latest/chapters/videocoding.html#video-encode-operations).
 
 * 
-`VK_IMAGE_USAGE_HOST_TRANSFER_BIT_EXT` specifies that the image **can**
+[VK_IMAGE_USAGE_HOST_TRANSFER_BIT_EXT](#) specifies that the image **can**
 be used with host copy commands and host layout transitions.
 
 * 
-`VK_IMAGE_USAGE_TENSOR_ALIASING_BIT_ARM` specifies that the image
-**can** be transitioned to the `VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM`
+[VK_IMAGE_USAGE_TENSOR_ALIASING_BIT_ARM](#) specifies that the image
+**can** be transitioned to the [VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM](VkImageLayout.html)
 layout.
 See [Memory Aliasing](../../../../spec/latest/chapters/resources.html#resources-memory-aliasing) for a complete set of rules for
 tensor/image aliasing.

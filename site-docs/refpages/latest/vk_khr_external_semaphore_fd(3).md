@@ -107,10 +107,10 @@ import semaphore payload from POSIX file descriptors.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_FD_INFO_KHR`
+[VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_FD_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SEMAPHORE_GET_FD_INFO_KHR`
+[VK_STRUCTURE_TYPE_SEMAPHORE_GET_FD_INFO_KHR](VkStructureType.html)
 
 1) Does the application need to close the file descriptor returned by
 [vkGetSemaphoreFdKHR](vkGetSemaphoreFdKHR.html)?

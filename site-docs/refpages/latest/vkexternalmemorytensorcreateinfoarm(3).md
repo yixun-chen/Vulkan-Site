@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalMemoryTensorCreateInfoARM-sType-sType) VUID-VkExternalMemoryTensorCreateInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_TENSOR_CREATE_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_TENSOR_CREATE_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkExternalMemoryTensorCreateInfoARM-handleTypes-parameter) VUID-VkExternalMemoryTensorCreateInfoARM-handleTypes-parameter

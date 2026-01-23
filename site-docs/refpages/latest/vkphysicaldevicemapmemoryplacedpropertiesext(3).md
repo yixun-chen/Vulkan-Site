@@ -47,7 +47,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMapMemoryPlacedPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceMapMemoryPlacedPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_map_memory_placed](VK_EXT_map_memory_placed.html), `VkDeviceSize`, [VkStructureType](VkStructureType.html)
 

@@ -48,9 +48,9 @@ structure.
 selecting the provoking vertex mode.
 
 If this structure is not provided when creating the pipeline, the pipeline
-will use the `VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT` mode.
+will use the [VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT](VkProvokingVertexModeEXT.html) mode.
 
-If the [`provokingVertexModePerPipeline`](../../../../spec/latest/chapters/limits.html#limits-provokingVertexModePerPipeline) limit is `VK_FALSE`, then all
+If the [`provokingVertexModePerPipeline`](../../../../spec/latest/chapters/limits.html#limits-provokingVertexModePerPipeline) limit is [VK_FALSE](VK_FALSE.html), then all
 pipelines bound within a render pass instance **must** have the same
 `provokingVertexMode`.
 
@@ -60,7 +60,7 @@ Valid Usage
 [](#VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-provokingVertexMode-04883) VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-provokingVertexMode-04883
 
 If `provokingVertexMode` is
-`VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT`, then the
+[VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT](VkProvokingVertexModeEXT.html), then the
 [`provokingVertexLast`](../../../../spec/latest/chapters/features.html#features-provokingVertexLast) feature
 **must** be enabled
 
@@ -69,7 +69,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-sType-sType) VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-provokingVertexMode-parameter) VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-provokingVertexMode-parameter

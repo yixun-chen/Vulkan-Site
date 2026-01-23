@@ -38,7 +38,7 @@ structure.
 * 
 `localDimmingSupport` specifies whether the surface supports local
 dimming.
-If this is `VK_TRUE`, [VkSwapchainDisplayNativeHdrCreateInfoAMD](VkSwapchainDisplayNativeHdrCreateInfoAMD.html)
+If this is [VK_TRUE](VK_TRUE.html), [VkSwapchainDisplayNativeHdrCreateInfoAMD](VkSwapchainDisplayNativeHdrCreateInfoAMD.html)
 **can** be used to explicitly enable or disable local dimming for the
 surface.
 Local dimming may also be overridden by [vkSetLocalDimmingAMD](vkSetLocalDimmingAMD.html)
@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDisplayNativeHdrSurfaceCapabilitiesAMD-sType-sType) VUID-VkDisplayNativeHdrSurfaceCapabilitiesAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_NATIVE_HDR_SURFACE_CAPABILITIES_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_NATIVE_HDR_SURFACE_CAPABILITIES_AMD](VkStructureType.html)
 
 [VK_AMD_display_native_hdr](VK_AMD_display_native_hdr.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

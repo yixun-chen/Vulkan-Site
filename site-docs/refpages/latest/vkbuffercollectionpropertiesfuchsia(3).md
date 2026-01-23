@@ -112,7 +112,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferCollectionPropertiesFUCHSIA-sType-sType) VUID-VkBufferCollectionPropertiesFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_COLLECTION_PROPERTIES_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_COLLECTION_PROPERTIES_FUCHSIA](VkStructureType.html)
 
 * 
 [](#VUID-VkBufferCollectionPropertiesFUCHSIA-pNext-pNext) VUID-VkBufferCollectionPropertiesFUCHSIA-pNext-pNext

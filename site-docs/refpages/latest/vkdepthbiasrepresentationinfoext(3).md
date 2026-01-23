@@ -51,27 +51,27 @@ Valid Usage
 
 If the [    `leastRepresentableValueForceUnormRepresentation`](../../../../spec/latest/chapters/features.html#features-leastRepresentableValueForceUnormRepresentation) feature is not
 enabled, `depthBiasRepresentation` **must** not be
-`VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT`
+[VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT](VkDepthBiasRepresentationEXT.html)
 
 * 
 [](#VUID-VkDepthBiasRepresentationInfoEXT-floatRepresentation-08948) VUID-VkDepthBiasRepresentationInfoEXT-floatRepresentation-08948
 
 If the [`floatRepresentation`](../../../../spec/latest/chapters/features.html#features-floatRepresentation)
 feature is not enabled, `depthBiasRepresentation` **must** not be
-`VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT`
+[VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT](VkDepthBiasRepresentationEXT.html)
 
 * 
 [](#VUID-VkDepthBiasRepresentationInfoEXT-depthBiasExact-08949) VUID-VkDepthBiasRepresentationInfoEXT-depthBiasExact-08949
 
 If the [`depthBiasExact`](../../../../spec/latest/chapters/features.html#features-depthBiasExact) feature is not
-enabled, `depthBiasExact` **must** be `VK_FALSE`
+enabled, `depthBiasExact` **must** be [VK_FALSE](VK_FALSE.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDepthBiasRepresentationInfoEXT-sType-sType) VUID-VkDepthBiasRepresentationInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEPTH_BIAS_REPRESENTATION_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEPTH_BIAS_REPRESENTATION_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDepthBiasRepresentationInfoEXT-depthBiasRepresentation-parameter) VUID-VkDepthBiasRepresentationInfoEXT-depthBiasRepresentation-parameter

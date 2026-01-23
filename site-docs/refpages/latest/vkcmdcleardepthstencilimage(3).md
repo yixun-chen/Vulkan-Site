@@ -39,8 +39,8 @@ recorded.
 
 * 
 `imageLayout` specifies the current layout of the image subresource
-ranges to be cleared, and **must** be `VK_IMAGE_LAYOUT_GENERAL` or
-`VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL`.
+ranges to be cleared, and **must** be [VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](VkImageLayout.html).
 
 * 
 `pDepthStencil` is a pointer to a [VkClearDepthStencilValue](VkClearDepthStencilValue.html)
@@ -62,33 +62,33 @@ Valid Usage
 [](#VUID-vkCmdClearDepthStencilImage-image-01994) VUID-vkCmdClearDepthStencilImage-image-01994
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of `image`
-**must** contain `VK_FORMAT_FEATURE_TRANSFER_DST_BIT`
+**must** contain [VK_FORMAT_FEATURE_TRANSFER_DST_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-vkCmdClearDepthStencilImage-pRanges-02658) VUID-vkCmdClearDepthStencilImage-pRanges-02658
 
 If the `aspect` member of any element of `pRanges` includes
-`VK_IMAGE_ASPECT_STENCIL_BIT`, and `image` was created with
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html), and `image` was created with
 [separate stencil usage](../../../../spec/latest/chapters/resources.html#VkImageStencilUsageCreateInfo), it must have
-been created with the `VK_IMAGE_USAGE_TRANSFER_DST_BIT` usage flag
+been created with the [VK_IMAGE_USAGE_TRANSFER_DST_BIT](VkImageUsageFlagBits.html) usage flag
 set
 
 * 
 [](#VUID-vkCmdClearDepthStencilImage-pRanges-02659) VUID-vkCmdClearDepthStencilImage-pRanges-02659
 
 If the `aspect` member of any element of `pRanges` includes
-`VK_IMAGE_ASPECT_STENCIL_BIT`,
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html),
 and `image` was not created with
 [separate stencil usage](../../../../spec/latest/chapters/resources.html#VkImageStencilUsageCreateInfo),
-the `VK_IMAGE_USAGE_TRANSFER_DST_BIT` usage flag **must** have been set
+the [VK_IMAGE_USAGE_TRANSFER_DST_BIT](VkImageUsageFlagBits.html) usage flag **must** have been set
 in the [VkImageCreateInfo](VkImageCreateInfo.html)::`usage` used to create `image`
 
 * 
 [](#VUID-vkCmdClearDepthStencilImage-pRanges-02660) VUID-vkCmdClearDepthStencilImage-pRanges-02660
 
 If the `aspect` member of any element of `pRanges` includes
-`VK_IMAGE_ASPECT_DEPTH_BIT`, `image` **must** have been created
-with the `VK_IMAGE_USAGE_TRANSFER_DST_BIT` usage flag set
+[VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html), `image` **must** have been created
+with the [VK_IMAGE_USAGE_TRANSFER_DST_BIT](VkImageUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdClearDepthStencilImage-image-00010) VUID-vkCmdClearDepthStencilImage-image-00010
@@ -107,15 +107,15 @@ command is executed on a `VkDevice`
 [](#VUID-vkCmdClearDepthStencilImage-imageLayout-00012) VUID-vkCmdClearDepthStencilImage-imageLayout-00012
 
 `imageLayout` **must** be either of
-`VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL` or
-`VK_IMAGE_LAYOUT_GENERAL`
+[VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html)
 
 * 
 [](#VUID-vkCmdClearDepthStencilImage-aspectMask-02824) VUID-vkCmdClearDepthStencilImage-aspectMask-02824
 
 The [VkImageSubresourceRange](VkImageSubresourceRange.html)::`aspectMask` member of each
 element of the `pRanges` array **must** not include bits other than
-`VK_IMAGE_ASPECT_DEPTH_BIT` or `VK_IMAGE_ASPECT_STENCIL_BIT`
+[VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) or [VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-vkCmdClearDepthStencilImage-image-02825) VUID-vkCmdClearDepthStencilImage-image-02825
@@ -123,7 +123,7 @@ element of the `pRanges` array **must** not include bits other than
 If the `image`’s format does not have a stencil component, then the
 [VkImageSubresourceRange](VkImageSubresourceRange.html)::`aspectMask` member of each element
 of the `pRanges` array **must** not include the
-`VK_IMAGE_ASPECT_STENCIL_BIT` bit
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html) bit
 
 * 
 [](#VUID-vkCmdClearDepthStencilImage-image-02826) VUID-vkCmdClearDepthStencilImage-image-02826
@@ -131,7 +131,7 @@ of the `pRanges` array **must** not include the
 If the `image`’s format does not have a depth component, then the
 [VkImageSubresourceRange](VkImageSubresourceRange.html)::`aspectMask` member of each element
 of the `pRanges` array **must** not include the
-`VK_IMAGE_ASPECT_DEPTH_BIT` bit
+[VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) bit
 
 * 
 [](#VUID-vkCmdClearDepthStencilImage-baseMipLevel-01474) VUID-vkCmdClearDepthStencilImage-baseMipLevel-01474
@@ -145,7 +145,7 @@ was created
 [](#VUID-vkCmdClearDepthStencilImage-pRanges-01694) VUID-vkCmdClearDepthStencilImage-pRanges-01694
 
 For each [VkImageSubresourceRange](VkImageSubresourceRange.html) element of `pRanges`, if the
-`levelCount` member is not `VK_REMAINING_MIP_LEVELS`, then
+`levelCount` member is not [VK_REMAINING_MIP_LEVELS](VK_REMAINING_MIP_LEVELS.html), then
 `baseMipLevel` +  `levelCount` **must** be less than or
 equal to the `mipLevels` specified in [VkImageCreateInfo](VkImageCreateInfo.html) when
 `image` was created
@@ -162,7 +162,7 @@ was created
 [](#VUID-vkCmdClearDepthStencilImage-pRanges-01695) VUID-vkCmdClearDepthStencilImage-pRanges-01695
 
 For each [VkImageSubresourceRange](VkImageSubresourceRange.html) element of `pRanges`, if the
-`layerCount` member is not `VK_REMAINING_ARRAY_LAYERS`, then
+`layerCount` member is not [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), then
 `baseArrayLayer` +  `layerCount` **must** be less than or
 equal to the `arrayLayers` specified in [VkImageCreateInfo](VkImageCreateInfo.html) when
 `image` was created
@@ -221,7 +221,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdClearDepthStencilImage-commandBuffer-cmdpool) VUID-vkCmdClearDepthStencilImage-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdClearDepthStencilImage-renderpass) VUID-vkCmdClearDepthStencilImage-renderpass

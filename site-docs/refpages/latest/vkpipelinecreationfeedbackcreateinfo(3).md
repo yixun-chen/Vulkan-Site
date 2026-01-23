@@ -65,14 +65,14 @@ An implementation **should** write pipeline creation feedback to
 `pPipelineCreationFeedback` and **may** write pipeline stage creation
 feedback to `pPipelineStageCreationFeedbacks`.
 An implementation **must** set or clear the
-`VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT` in
+[VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT](VkPipelineCreationFeedbackFlagBits.html) in
 [VkPipelineCreationFeedback](VkPipelineCreationFeedback.html)::`flags` for
 `pPipelineCreationFeedback` and every element of
 `pPipelineStageCreationFeedbacks`.
 
 |  | One common scenario for an implementation to skip per-stage feedback is when
 | --- | --- |
-`VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT` is
+[VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT](VkPipelineCreationFeedbackFlagBits.html) is
 set in `pPipelineCreationFeedback`. |
 
 When chained to
@@ -94,7 +94,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineCreationFeedbackCreateInfo-sType-sType) VUID-VkPipelineCreationFeedbackCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineCreationFeedbackCreateInfo-pPipelineCreationFeedback-parameter) VUID-VkPipelineCreationFeedbackCreateInfo-pPipelineCreationFeedback-parameter

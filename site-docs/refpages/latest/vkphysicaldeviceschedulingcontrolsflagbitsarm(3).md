@@ -28,7 +28,7 @@ typedef VkFlags64 VkPhysicalDeviceSchedulingControlsFlagBitsARM;
 static const VkPhysicalDeviceSchedulingControlsFlagBitsARM VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM = 0x00000001ULL;
 
 * 
-`VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM`
+[VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM](#)
 specifies that a [VkDeviceQueueShaderCoreControlCreateInfoARM](VkDeviceQueueShaderCoreControlCreateInfoARM.html)
 structure **may** be included in the `pNext` chain of a
 [VkDeviceQueueCreateInfo](VkDeviceQueueCreateInfo.html) or [VkDeviceCreateInfo](VkDeviceCreateInfo.html) structure.

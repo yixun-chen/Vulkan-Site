@@ -39,7 +39,7 @@ typedef enum VkDescriptorPoolCreateFlagBits {
 } VkDescriptorPoolCreateFlagBits;
 
 * 
-`VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT` specifies that
+[VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT](#) specifies that
 descriptor sets **can** return their individual allocations to the pool,
 i.e. all of [vkAllocateDescriptorSets](vkAllocateDescriptorSets.html), [vkFreeDescriptorSets](vkFreeDescriptorSets.html),
 and [vkResetDescriptorPool](vkResetDescriptorPool.html) are allowed.
@@ -49,15 +49,15 @@ individually freed back to the pool, i.e. only
 allowed.
 
 * 
-`VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT` specifies that
+[VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](#) specifies that
 descriptor sets allocated from this pool **can** include bindings with the
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` bit set.
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html) bit set.
 It is valid to allocate descriptor sets that have bindings that do not
-set the `VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` bit from a
-pool that has `VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT` set.
+set the [VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html) bit from a
+pool that has [VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](#) set.
 
 * 
-`VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT` specifies that this
+[VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT](#) specifies that this
 descriptor pool and the descriptor sets allocated from it reside
 entirely in host memory and cannot be bound.
 Similar to descriptor sets allocated without this flag, applications
@@ -72,7 +72,7 @@ different threads, though the same descriptor **must** not be updated
 concurrently by two threads.
 
 * 
-`VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV`
+[VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV](#)
 specifies that the implementation should allow the application to
 allocate more than [VkDescriptorPoolCreateInfo](VkDescriptorPoolCreateInfo.html)::`maxSets`
 descriptor set objects from the descriptor pool as available resources
@@ -81,7 +81,7 @@ The implementation **may** use the `maxSets` value to allocate the
 initial available sets, but using zero is permitted.
 
 * 
-`VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV`
+[VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV](#)
 specifies that the implementation should allow the application to
 allocate more descriptors from the pool than was specified by the
 [VkDescriptorPoolSize](VkDescriptorPoolSize.html)::`descriptorCount` for any descriptor

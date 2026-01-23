@@ -79,12 +79,12 @@ chain of [VkImageCreateInfo](VkImageCreateInfo.html), the usage is calculated ba
 `subresource.aspectMask` provided:
 
 * 
-If `aspectMask` includes only `VK_IMAGE_ASPECT_STENCIL_BIT`, the
+If `aspectMask` includes only [VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html), the
 implicit `usage` is equal to
 [VkImageStencilUsageCreateInfo](VkImageStencilUsageCreateInfo.html)::`stencilUsage`.
 
 * 
-If `aspectMask` includes only `VK_IMAGE_ASPECT_DEPTH_BIT`, the
+If `aspectMask` includes only [VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html), the
 implicit `usage` is equal to [VkImageCreateInfo](VkImageCreateInfo.html)::`usage`.
 
 * 
@@ -96,12 +96,12 @@ If both aspects are included in `aspectMask`, the implicit
 If `image` is a 3D image, its Z range **can** be restricted to a subset by
 adding a [VkImageViewSlicedCreateInfoEXT](VkImageViewSlicedCreateInfoEXT.html) to the `pNext` chain.
 
-If `image` was created with the `VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT`
+If `image` was created with the [VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](VkImageCreateFlagBits.html)
 flag,
 and if the `format` of the image is not [multi-planar](../../../../spec/latest/chapters/formats.html#formats-multiplanar)
 `format` **can** be different from the image’s format, but if
 `image` was created without the
-`VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT` flag and
+[VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](VkImageCreateFlagBits.html) flag and
 they are not equal they **must** be *compatible*.
 Image format compatibility is defined in the
 [Format Compatibility Classes](../../../../spec/latest/chapters/formats.html#formats-compatibility-classes) section.
@@ -110,9 +110,9 @@ coordinates and memory locations irrespective of the `format`, with only
 the interpretation of the bit pattern changing.
 
 If `image` was created with a [multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar), and the image view’s `aspectMask` is one of
-`VK_IMAGE_ASPECT_PLANE_0_BIT`, `VK_IMAGE_ASPECT_PLANE_1_BIT` or
-`VK_IMAGE_ASPECT_PLANE_2_BIT`, the view’s aspect mask is considered to
-be equivalent to `VK_IMAGE_ASPECT_COLOR_BIT` when used as a framebuffer
+[VK_IMAGE_ASPECT_PLANE_0_BIT](VkImageAspectFlagBits.html), [VK_IMAGE_ASPECT_PLANE_1_BIT](VkImageAspectFlagBits.html) or
+[VK_IMAGE_ASPECT_PLANE_2_BIT](VkImageAspectFlagBits.html), the view’s aspect mask is considered to
+be equivalent to [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html) when used as a framebuffer
 attachment.
 
 |  | Values intended to be used with one view format **may** not be exactly
@@ -126,7 +126,7 @@ pattern exactly equal to -2b **may** be changed to -2b +  1
 as described in [Conversion from Normalized Fixed-Point to Floating-Point](../../../../spec/latest/chapters/fundamentals.html#fundamentals-fixedfpconv). |
 
 If `image` was created with the
-`VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT` flag, `format`
+[VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](VkImageCreateFlagBits.html) flag, `format`
 **must** be *compatible* with the image’s format as described above; or **must**
 be an uncompressed format, in which case it **must** be
 [*size-compatible*](../../../../spec/latest/chapters/formats.html#formats-size-compatibility) with the image’s format.
@@ -155,18 +155,18 @@ Conversely, if a [VkSamplerYcbcrConversion](VkSamplerYcbcrConversion.html) objec
 the image.
 
 If the image has a [multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar),
-`subresourceRange.aspectMask` is `VK_IMAGE_ASPECT_COLOR_BIT`, and
-`usage` includes `VK_IMAGE_USAGE_SAMPLED_BIT`, then the `format`
+`subresourceRange.aspectMask` is [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html), and
+`usage` includes [VK_IMAGE_USAGE_SAMPLED_BIT](VkImageUsageFlagBits.html), then the `format`
 **must** be identical to the image `format` and the sampler to be used with
 the image view **must** enable [sampler Y′CBCR conversion](../../../../spec/latest/chapters/samplers.html#samplers-YCbCr-conversion).
 
 When such an image is used in a [video coding](../../../../spec/latest/chapters/videocoding.html#video-coding) operation, the
 [sampler Y′CBCR conversion](../../../../spec/latest/chapters/samplers.html#samplers-YCbCr-conversion) has no effect.
 
-If `image` was created with the `VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT`
+If `image` was created with the [VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](VkImageCreateFlagBits.html)
 and the image has a [multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar), and if
-`subresourceRange.aspectMask` is `VK_IMAGE_ASPECT_PLANE_0_BIT`,
-`VK_IMAGE_ASPECT_PLANE_1_BIT`, or `VK_IMAGE_ASPECT_PLANE_2_BIT`,
+`subresourceRange.aspectMask` is [VK_IMAGE_ASPECT_PLANE_0_BIT](VkImageAspectFlagBits.html),
+[VK_IMAGE_ASPECT_PLANE_1_BIT](VkImageAspectFlagBits.html), or [VK_IMAGE_ASPECT_PLANE_2_BIT](VkImageAspectFlagBits.html),
 `format` **must** be [compatible](../../../../spec/latest/chapters/formats.html#formats-compatible-planes) with the
 corresponding plane of the image, and the sampler to be used with the image
 view **must** not enable [sampler Y′CBCR conversion](../../../../spec/latest/chapters/samplers.html#samplers-YCbCr-conversion).
@@ -188,15 +188,15 @@ reconstruction operations operate on the same (*uplane*, *vplane*) or
 
 | Image View Type | Compatible Image Types |
 | --- | --- |
-| `VK_IMAGE_VIEW_TYPE_1D` | `VK_IMAGE_TYPE_1D` |
-| `VK_IMAGE_VIEW_TYPE_1D_ARRAY` | `VK_IMAGE_TYPE_1D` |
-| `VK_IMAGE_VIEW_TYPE_2D` | `VK_IMAGE_TYPE_2D`
-, `VK_IMAGE_TYPE_3D` |
-| `VK_IMAGE_VIEW_TYPE_2D_ARRAY` | `VK_IMAGE_TYPE_2D`
-, `VK_IMAGE_TYPE_3D` |
-| `VK_IMAGE_VIEW_TYPE_CUBE` | `VK_IMAGE_TYPE_2D` |
-| `VK_IMAGE_VIEW_TYPE_CUBE_ARRAY` | `VK_IMAGE_TYPE_2D` |
-| `VK_IMAGE_VIEW_TYPE_3D` | `VK_IMAGE_TYPE_3D` |
+| [VK_IMAGE_VIEW_TYPE_1D](VkImageViewType.html) | [VK_IMAGE_TYPE_1D](VkImageType.html) |
+| [VK_IMAGE_VIEW_TYPE_1D_ARRAY](VkImageViewType.html) | [VK_IMAGE_TYPE_1D](VkImageType.html) |
+| [VK_IMAGE_VIEW_TYPE_2D](VkImageViewType.html) | [VK_IMAGE_TYPE_2D](VkImageType.html)
+, [VK_IMAGE_TYPE_3D](VkImageType.html) |
+| [VK_IMAGE_VIEW_TYPE_2D_ARRAY](VkImageViewType.html) | [VK_IMAGE_TYPE_2D](VkImageType.html)
+, [VK_IMAGE_TYPE_3D](VkImageType.html) |
+| [VK_IMAGE_VIEW_TYPE_CUBE](VkImageViewType.html) | [VK_IMAGE_TYPE_2D](VkImageType.html) |
+| [VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](VkImageViewType.html) | [VK_IMAGE_TYPE_2D](VkImageType.html) |
+| [VK_IMAGE_VIEW_TYPE_3D](VkImageViewType.html) | [VK_IMAGE_TYPE_3D](VkImageType.html) |
 
 Valid Usage
 
@@ -204,164 +204,198 @@ Valid Usage
 [](#VUID-VkImageViewCreateInfo-image-01003) VUID-VkImageViewCreateInfo-image-01003
 
 If `image` was not created with
-`VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT` then `viewType` **must** not
-be `VK_IMAGE_VIEW_TYPE_CUBE` or `VK_IMAGE_VIEW_TYPE_CUBE_ARRAY`
+[VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT](VkImageCreateFlagBits.html) then `viewType` **must** not
+be [VK_IMAGE_VIEW_TYPE_CUBE](VkImageViewType.html) or [VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](VkImageViewType.html)
 
 * 
 [](#VUID-VkImageViewCreateInfo-viewType-01004) VUID-VkImageViewCreateInfo-viewType-01004
 
 If the [`imageCubeArray`](../../../../spec/latest/chapters/features.html#features-imageCubeArray) feature is not
-enabled, `viewType` **must** not be `VK_IMAGE_VIEW_TYPE_CUBE_ARRAY`
+enabled, `viewType` **must** not be [VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](VkImageViewType.html)
 
 * 
 [](#VUID-VkImageViewCreateInfo-image-06723) VUID-VkImageViewCreateInfo-image-06723
 
-If `image` was created with `VK_IMAGE_TYPE_3D` but without
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set then `viewType`
-**must** not be `VK_IMAGE_VIEW_TYPE_2D_ARRAY`
+If `image` was created with [VK_IMAGE_TYPE_3D](VkImageType.html) but without
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](VkImageCreateFlagBits.html) set then `viewType`
+**must** not be [VK_IMAGE_VIEW_TYPE_2D_ARRAY](VkImageViewType.html)
 
 * 
 [](#VUID-VkImageViewCreateInfo-image-06728) VUID-VkImageViewCreateInfo-image-06728
 
-If `image` was created with `VK_IMAGE_TYPE_3D` but without
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` or
-`VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT` set, then
-`viewType` **must** not be `VK_IMAGE_VIEW_TYPE_2D`
+If `image` was created with [VK_IMAGE_TYPE_3D](VkImageType.html) but without
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](VkImageCreateFlagBits.html) or
+[VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT](VkImageCreateFlagBits.html) set, then
+`viewType` **must** not be [VK_IMAGE_VIEW_TYPE_2D](VkImageViewType.html)
 
 * 
 [](#VUID-VkImageViewCreateInfo-image-04970) VUID-VkImageViewCreateInfo-image-04970
 
-If `image` was created with `VK_IMAGE_TYPE_3D` and
-`viewType` is `VK_IMAGE_VIEW_TYPE_2D` or
-`VK_IMAGE_VIEW_TYPE_2D_ARRAY` then `subresourceRange.levelCount`
+If `image` was created with [VK_IMAGE_TYPE_3D](VkImageType.html) and
+`viewType` is [VK_IMAGE_VIEW_TYPE_2D](VkImageViewType.html) or
+[VK_IMAGE_VIEW_TYPE_2D_ARRAY](VkImageViewType.html) then `subresourceRange.levelCount`
 **must** be 1
 
 * 
 [](#VUID-VkImageViewCreateInfo-image-04972) VUID-VkImageViewCreateInfo-image-04972
 
 If `image` was created with a `samples` value not equal to
-`VK_SAMPLE_COUNT_1_BIT` then `viewType` **must** be either
-`VK_IMAGE_VIEW_TYPE_2D` or `VK_IMAGE_VIEW_TYPE_2D_ARRAY`
+[VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) then `viewType` **must** be either
+[VK_IMAGE_VIEW_TYPE_2D](VkImageViewType.html) or [VK_IMAGE_VIEW_TYPE_2D_ARRAY](VkImageViewType.html)
 
 * 
 [](#VUID-VkImageViewCreateInfo-image-04441) VUID-VkImageViewCreateInfo-image-04441
 
 `image` **must** have been created with a `usage` value containing
-at least one of the usages defined in the [    valid image usage](../../../../spec/latest/chapters/resources.html#valid-imageview-imageusage) list for image views
+at least one of the following:
+
+[VK_IMAGE_USAGE_SAMPLED_BIT](VkImageUsageFlagBits.html)
 
 * 
+[VK_IMAGE_USAGE_STORAGE_BIT](VkImageUsageFlagBits.html)
+
+* 
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](VkImageUsageFlagBits.html)
+
+* 
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](VkImageUsageFlagBits.html)
+
+* 
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](VkImageUsageFlagBits.html)
+
+* 
+[VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](VkImageUsageFlagBits.html)
+
+* 
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](VkImageUsageFlagBits.html)
+
+* 
+[VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT](VkImageUsageFlagBits.html)
+
+* 
+[VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](VkImageUsageFlagBits.html)
+
+* 
+[VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](VkImageUsageFlagBits.html)
+
+* 
+[VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR](VkImageUsageFlagBits.html)
+
+* 
+[VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR](VkImageUsageFlagBits.html)
+
+* 
+[VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM](VkImageUsageFlagBits.html)
+
+* 
+[VK_IMAGE_USAGE_SAMPLE_BLOCK_MATCH_BIT_QCOM](VkImageUsageFlagBits.html)
+
+* 
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](VkImageUsageFlagBits.html)
+
+* 
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](VkImageUsageFlagBits.html)
+
 [](#VUID-VkImageViewCreateInfo-None-02273) VUID-VkImageViewCreateInfo-None-02273
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) of the
 resultant image view **must** contain at least one bit
 
-* 
 [](#VUID-VkImageViewCreateInfo-usage-02274) VUID-VkImageViewCreateInfo-usage-02274
 
-If `usage` contains `VK_IMAGE_USAGE_SAMPLED_BIT`, then the
+If `usage` contains [VK_IMAGE_USAGE_SAMPLED_BIT](VkImageUsageFlagBits.html), then the
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) of the
 resultant image view **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](VkFormatFeatureFlagBits.html)
 
-* 
 [](#VUID-VkImageViewCreateInfo-usage-02275) VUID-VkImageViewCreateInfo-usage-02275
 
-If `usage` contains `VK_IMAGE_USAGE_STORAGE_BIT`, then the image
+If `usage` contains [VK_IMAGE_USAGE_STORAGE_BIT](VkImageUsageFlagBits.html), then the image
 view’s [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must**
-contain `VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT`
+contain [VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT](VkFormatFeatureFlagBits.html)
 
-* 
 [](#VUID-VkImageViewCreateInfo-usage-08931) VUID-VkImageViewCreateInfo-usage-08931
 
-If `usage` contains `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT`, then
-the image view’s [format    features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain `VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT` or
-`VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV`
+If `usage` contains [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](VkImageUsageFlagBits.html), then
+the image view’s [format    features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain [VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](VkFormatFeatureFlagBits.html) or
+[VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](VkFormatFeatureFlagBits2.html)
 
-* 
 [](#VUID-VkImageViewCreateInfo-usage-02277) VUID-VkImageViewCreateInfo-usage-02277
 
 If `usage` contains
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`, then the image view’s
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](VkImageUsageFlagBits.html), then the image view’s
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](VkFormatFeatureFlagBits.html)
 
-* 
 [](#VUID-VkImageViewCreateInfo-image-08333) VUID-VkImageViewCreateInfo-image-08333
 
-If `usage` contains `VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR`,
+If `usage` contains [VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](VkImageUsageFlagBits.html),
 then the image view’s [format    features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_VIDEO_DECODE_OUTPUT_BIT_KHR`
+[VK_FORMAT_FEATURE_VIDEO_DECODE_OUTPUT_BIT_KHR](VkFormatFeatureFlagBits.html)
 
-* 
 [](#VUID-VkImageViewCreateInfo-image-08334) VUID-VkImageViewCreateInfo-image-08334
 
-If `usage` contains `VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR`,
+If `usage` contains [VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](VkImageUsageFlagBits.html),
 then the image view’s [format    features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_VIDEO_DECODE_DPB_BIT_KHR`
+[VK_FORMAT_FEATURE_VIDEO_DECODE_DPB_BIT_KHR](VkFormatFeatureFlagBits.html)
 
-* 
 [](#VUID-VkImageViewCreateInfo-image-08335) VUID-VkImageViewCreateInfo-image-08335
 
 `usage` **must** not include
-`VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR`
+[VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR](VkImageUsageFlagBits.html)
 
-* 
 [](#VUID-VkImageViewCreateInfo-image-08336) VUID-VkImageViewCreateInfo-image-08336
 
-If `usage` contains `VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR`,
+If `usage` contains [VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR](VkImageUsageFlagBits.html),
 then the image view’s [format    features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_VIDEO_ENCODE_INPUT_BIT_KHR`
+[VK_FORMAT_FEATURE_VIDEO_ENCODE_INPUT_BIT_KHR](VkFormatFeatureFlagBits.html)
 
-* 
 [](#VUID-VkImageViewCreateInfo-image-08337) VUID-VkImageViewCreateInfo-image-08337
 
-If `usage` contains `VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR`,
+If `usage` contains [VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR](VkImageUsageFlagBits.html),
 then the image view’s [format    features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_VIDEO_ENCODE_DPB_BIT_KHR`
+[VK_FORMAT_FEATURE_VIDEO_ENCODE_DPB_BIT_KHR](VkFormatFeatureFlagBits.html)
 
-* 
 [](#VUID-VkImageViewCreateInfo-image-08338) VUID-VkImageViewCreateInfo-image-08338
 
 `usage` **must** not include
-`VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR`
+[VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR](VkImageUsageFlagBits.html)
 
-* 
 [](#VUID-VkImageViewCreateInfo-usage-10259) VUID-VkImageViewCreateInfo-usage-10259
 
 If `usage` contains
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR`, then
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](VkImageUsageFlagBits.html), then
 the image view’s [format    features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR`
+[VK_FORMAT_FEATURE_2_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
-* 
 [](#VUID-VkImageViewCreateInfo-usage-10260) VUID-VkImageViewCreateInfo-usage-10260
 
 If `usage` contains
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR`, then the image
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](VkImageUsageFlagBits.html), then the image
 view’s [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must**
-contain `VK_FORMAT_FEATURE_2_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR`
+contain [VK_FORMAT_FEATURE_2_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
-* 
 [](#VUID-VkImageViewCreateInfo-usage-08932) VUID-VkImageViewCreateInfo-usage-08932
 
-If `usage` contains `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`,
+If `usage` contains [VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](VkImageUsageFlagBits.html),
 and any of the following is true:
 
+* 
 the [`externalFormatResolve`](../../../../spec/latest/chapters/features.html#features-externalFormatResolve)
 feature is not enabled
 
 * 
 the [     `nullColorAttachmentWithExternalFormatResolve`](../../../../spec/latest/chapters/limits.html#limits-nullColorAttachmentWithExternalFormatResolve) property is
-`VK_FALSE`
+[VK_FALSE](VK_FALSE.html)
 
 * 
 `image` was created with an
 [VkExternalFormatANDROID](VkExternalFormatANDROID.html)::`externalFormat` value of 0
 
 then the image view’s [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain at least one of
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT` or
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
-    or `VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV`
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](VkFormatFeatureFlagBits.html) or
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](VkFormatFeatureFlagBits.html)
+    or [VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](VkFormatFeatureFlagBits2.html)
 
 [](#VUID-VkImageViewCreateInfo-subresourceRange-01478) VUID-VkImageViewCreateInfo-subresourceRange-01478
 
@@ -372,7 +406,7 @@ was created
 [](#VUID-VkImageViewCreateInfo-subresourceRange-01718) VUID-VkImageViewCreateInfo-subresourceRange-01718
 
 If `subresourceRange.levelCount` is not
-`VK_REMAINING_MIP_LEVELS`, `subresourceRange.baseMipLevel`
+[VK_REMAINING_MIP_LEVELS](VK_REMAINING_MIP_LEVELS.html), `subresourceRange.baseMipLevel`
 +  `subresourceRange.levelCount` **must** be less than or equal to
 the `mipLevels` specified in [VkImageCreateInfo](VkImageCreateInfo.html) when
 `image` was created
@@ -380,15 +414,15 @@ the `mipLevels` specified in [VkImageCreateInfo](VkImageCreateInfo.html) when
 [](#VUID-VkImageViewCreateInfo-image-02571) VUID-VkImageViewCreateInfo-image-02571
 
 If `image` was created with the
-`VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT` usage flag set,
+[VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT](VkImageUsageFlagBits.html) usage flag set,
 `subresourceRange.levelCount` **must** be `1`
 
 [](#VUID-VkImageViewCreateInfo-image-06724) VUID-VkImageViewCreateInfo-image-06724
 
 If `image` is not a 3D image created with
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` or
-`VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT` set, or `viewType`
-is not `VK_IMAGE_VIEW_TYPE_2D` or `VK_IMAGE_VIEW_TYPE_2D_ARRAY`,
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](VkImageCreateFlagBits.html) or
+[VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT](VkImageCreateFlagBits.html) set, or `viewType`
+is not [VK_IMAGE_VIEW_TYPE_2D](VkImageViewType.html) or [VK_IMAGE_VIEW_TYPE_2D_ARRAY](VkImageViewType.html),
 `subresourceRange.baseArrayLayer` **must** be less than the
 `arrayLayers` specified in [VkImageCreateInfo](VkImageCreateInfo.html) when `image`
 was created
@@ -396,10 +430,10 @@ was created
 [](#VUID-VkImageViewCreateInfo-subresourceRange-06725) VUID-VkImageViewCreateInfo-subresourceRange-06725
 
 If `subresourceRange.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`, `image` is not a 3D image created
-with `VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` or
-`VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT` set, or `viewType`
-is not `VK_IMAGE_VIEW_TYPE_2D` or `VK_IMAGE_VIEW_TYPE_2D_ARRAY`,
+[VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), `image` is not a 3D image created
+with [VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](VkImageCreateFlagBits.html) or
+[VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT](VkImageCreateFlagBits.html) set, or `viewType`
+is not [VK_IMAGE_VIEW_TYPE_2D](VkImageViewType.html) or [VK_IMAGE_VIEW_TYPE_2D_ARRAY](VkImageViewType.html),
 `subresourceRange.layerCount` **must** be non-zero and
 `subresourceRange.baseArrayLayer` + 
 `subresourceRange.layerCount` **must** be less than or equal to the
@@ -409,8 +443,8 @@ was created
 [](#VUID-VkImageViewCreateInfo-image-02724) VUID-VkImageViewCreateInfo-image-02724
 
 If `image` is a 3D image created with
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set, and `viewType` is
-`VK_IMAGE_VIEW_TYPE_2D` or `VK_IMAGE_VIEW_TYPE_2D_ARRAY`,
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](VkImageCreateFlagBits.html) set, and `viewType` is
+[VK_IMAGE_VIEW_TYPE_2D](VkImageViewType.html) or [VK_IMAGE_VIEW_TYPE_2D_ARRAY](VkImageViewType.html),
 `subresourceRange.baseArrayLayer` **must** be less than the depth
 computed from `baseMipLevel` and `extent.depth` specified in
 [VkImageCreateInfo](VkImageCreateInfo.html) when `image` was created, according to the
@@ -419,9 +453,9 @@ formula defined in [Image Mip Level    Sizing](../../../../spec/latest/chapters/
 [](#VUID-VkImageViewCreateInfo-subresourceRange-02725) VUID-VkImageViewCreateInfo-subresourceRange-02725
 
 If `subresourceRange.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`, `image` is a 3D image created with
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set, and `viewType` is
-`VK_IMAGE_VIEW_TYPE_2D` or `VK_IMAGE_VIEW_TYPE_2D_ARRAY`,
+[VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), `image` is a 3D image created with
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](VkImageCreateFlagBits.html) set, and `viewType` is
+[VK_IMAGE_VIEW_TYPE_2D](VkImageViewType.html) or [VK_IMAGE_VIEW_TYPE_2D_ARRAY](VkImageViewType.html),
 `subresourceRange.layerCount` **must** be non-zero and
 `subresourceRange.baseArrayLayer` + 
 `subresourceRange.layerCount` **must** be less than or equal to the
@@ -432,8 +466,8 @@ the formula defined in [Image Mip    Level Sizing](../../../../spec/latest/chapt
 [](#VUID-VkImageViewCreateInfo-image-01761) VUID-VkImageViewCreateInfo-image-01761
 
 If `image` was created with the
-`VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT` flag,
-but without the `VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT`
+[VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](VkImageCreateFlagBits.html) flag,
+but without the [VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](VkImageCreateFlagBits.html)
 flag,
 and if the `format` of the `image` is not a
 [multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar),
@@ -443,7 +477,7 @@ and if the `format` of the `image` is not a
 [](#VUID-VkImageViewCreateInfo-image-01583) VUID-VkImageViewCreateInfo-image-01583
 
 If `image` was created with the
-`VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT` flag, `format`
+[VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](VkImageCreateFlagBits.html) flag, `format`
 **must** be compatible with, or **must** be an uncompressed format that is
 [size-compatible](../../../../spec/latest/chapters/formats.html#formats-size-compatibility) with, the `format`
 used to create `image`
@@ -451,17 +485,17 @@ used to create `image`
 [](#VUID-VkImageViewCreateInfo-image-07072) VUID-VkImageViewCreateInfo-image-07072
 
 If `image` was created with the
-`VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT` flag and
+[VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](VkImageCreateFlagBits.html) flag and
 `format` is a non-compressed format, the `levelCount` member of
 `subresourceRange` **must** be `1`
 
 [](#VUID-VkImageViewCreateInfo-image-09487) VUID-VkImageViewCreateInfo-image-09487
 
 If `image` was created with the
-`VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT` flag,
+[VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](VkImageCreateFlagBits.html) flag,
 the
 `VkPhysicalDeviceMaintenance6Properties`::`blockTexelViewCompatibleMultipleLayers`
-property is not `VK_TRUE`,
+property is not [VK_TRUE](VK_TRUE.html),
 and `format` is a non-compressed format, then the `layerCount`
 member of `subresourceRange` **must** be `1`
 
@@ -477,7 +511,7 @@ then `format` **must** be one of the formats in
 [](#VUID-VkImageViewCreateInfo-image-01586) VUID-VkImageViewCreateInfo-image-01586
 
 If `image` was created with the
-`VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT` flag, if the `format` of
+[VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](VkImageCreateFlagBits.html) flag, if the `format` of
 the `image` is a [multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar), and
 if `subresourceRange.aspectMask` is one of the
 [multi-planar aspect mask](../../../../spec/latest/chapters/formats.html#formats-multiplanar-image-aspect) bits, then
@@ -494,16 +528,16 @@ of the `image` `format` indicated by
 [](#VUID-VkImageViewCreateInfo-image-01762) VUID-VkImageViewCreateInfo-image-01762
 
 If `image` was not created with the
-`VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT` flag,
+[VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](VkImageCreateFlagBits.html) flag,
 or if the `format` of the `image` is a [    multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar) and if `subresourceRange.aspectMask` is
-`VK_IMAGE_ASPECT_COLOR_BIT`,
+[VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html),
 `format` **must** be identical to the `format` used to create
 `image`
 
 [](#VUID-VkImageViewCreateInfo-format-06415) VUID-VkImageViewCreateInfo-format-06415
 
 If the image view [    requires a sampler Y′CBCR conversion](../../../../spec/latest/chapters/resources.html#image-views-requiring-sampler-ycbcr-conversion) and `usage` contains
-`VK_IMAGE_USAGE_SAMPLED_BIT`, then the `pNext` chain **must**
+[VK_IMAGE_USAGE_SAMPLED_BIT](VkImageUsageFlagBits.html), then the `pNext` chain **must**
 include a [VkSamplerYcbcrConversionInfo](VkSamplerYcbcrConversionInfo.html) structure with a conversion
 value other than [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
@@ -546,7 +580,7 @@ in the [view type compatibility    table](../../../../spec/latest/chapters/resou
 [](#VUID-VkImageViewCreateInfo-image-02399) VUID-VkImageViewCreateInfo-image-02399
 
 If `image` has an
-[Android    external format](../../../../spec/latest/chapters/memory.html#memory-external-android-hardware-buffer-external-formats), `format` **must** be `VK_FORMAT_UNDEFINED`
+[Android    external format](../../../../spec/latest/chapters/memory.html#memory-external-android-hardware-buffer-external-formats), `format` **must** be [VK_FORMAT_UNDEFINED](VkFormat.html)
 
 [](#VUID-VkImageViewCreateInfo-image-02400) VUID-VkImageViewCreateInfo-image-02400
 
@@ -564,7 +598,7 @@ If `image` has an
 [](#VUID-VkImageViewCreateInfo-image-08957) VUID-VkImageViewCreateInfo-image-08957
 
 If `image` has an
-[QNX Screen external    format](../../../../spec/latest/chapters/memory.html#memory-external-screen-buffer-external-formats), `format` **must** be `VK_FORMAT_UNDEFINED`
+[QNX Screen external    format](../../../../spec/latest/chapters/memory.html#memory-external-screen-buffer-external-formats), `format` **must** be [VK_FORMAT_UNDEFINED](VkFormat.html)
 
 [](#VUID-VkImageViewCreateInfo-image-08958) VUID-VkImageViewCreateInfo-image-08958
 
@@ -582,58 +616,58 @@ If `image` has an
 [](#VUID-VkImageViewCreateInfo-image-02086) VUID-VkImageViewCreateInfo-image-02086
 
 If `image` was created with the
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR` usage flag
-set, `viewType` **must** be `VK_IMAGE_VIEW_TYPE_2D` or
-`VK_IMAGE_VIEW_TYPE_2D_ARRAY`
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](VkImageUsageFlagBits.html) usage flag
+set, `viewType` **must** be [VK_IMAGE_VIEW_TYPE_2D](VkImageViewType.html) or
+[VK_IMAGE_VIEW_TYPE_2D_ARRAY](VkImageViewType.html)
 
 [](#VUID-VkImageViewCreateInfo-image-02087) VUID-VkImageViewCreateInfo-image-02087
 
 If the [`shadingRateImage`](../../../../spec/latest/chapters/features.html#features-shadingRateImage) feature is
 enabled, and `image` was created with the
-`VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV` usage flag set,
-`format` **must** be `VK_FORMAT_R8_UINT`
+[VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV](VkImageUsageFlagBits.html) usage flag set,
+`format` **must** be [VK_FORMAT_R8_UINT](VkFormat.html)
 
 [](#VUID-VkImageViewCreateInfo-usage-04550) VUID-VkImageViewCreateInfo-usage-04550
 
 If the [    `attachmentFragmentShadingRate`](../../../../spec/latest/chapters/features.html#features-attachmentFragmentShadingRate) feature is enabled, and the
 `usage` for the image view includes
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`, then the
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](VkImageUsageFlagBits.html), then the
 image view’s [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features)
 **must** contain
-`VK_FORMAT_FEATURE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_FORMAT_FEATURE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](VkFormatFeatureFlagBits.html)
 
 [](#VUID-VkImageViewCreateInfo-usage-04551) VUID-VkImageViewCreateInfo-usage-04551
 
 If the [    `attachmentFragmentShadingRate`](../../../../spec/latest/chapters/features.html#features-attachmentFragmentShadingRate) feature is enabled, the
 `usage` for the image view includes
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`, and
-[    `layeredShadingRateAttachments`](../../../../spec/latest/chapters/limits.html#limits-layeredShadingRateAttachments) is `VK_FALSE`,
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](VkImageUsageFlagBits.html), and
+[    `layeredShadingRateAttachments`](../../../../spec/latest/chapters/limits.html#limits-layeredShadingRateAttachments) is [VK_FALSE](VK_FALSE.html),
 `subresourceRange.layerCount` **must** be `1`
 
 [](#VUID-VkImageViewCreateInfo-flags-02572) VUID-VkImageViewCreateInfo-flags-02572
 
 If the [    `fragmentDensityMapDynamic`](../../../../spec/latest/chapters/features.html#features-fragmentDensityMapDynamic) feature is not enabled, `flags`
 **must** not contain
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT`
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT](VkImageViewCreateFlagBits.html)
 
 [](#VUID-VkImageViewCreateInfo-flags-03567) VUID-VkImageViewCreateInfo-flags-03567
 
 If the [    `fragmentDensityMapDeferred`](../../../../spec/latest/chapters/features.html#features-fragmentDensityMapDeferred) feature is not enabled, `flags`
 **must** not contain
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT`
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT](VkImageViewCreateFlagBits.html)
 
 [](#VUID-VkImageViewCreateInfo-flags-03568) VUID-VkImageViewCreateInfo-flags-03568
 
 If `flags` contains
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT`,
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT](VkImageViewCreateFlagBits.html),
 `flags` **must** not contain
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT`
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT](VkImageViewCreateFlagBits.html)
 
 [](#VUID-VkImageViewCreateInfo-image-03569) VUID-VkImageViewCreateInfo-image-03569
 
 If `image` was created with `flags` containing
-`VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT` and the
-`VK_IMAGE_USAGE_SAMPLED_BIT` usage flag set,
+[VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](VkImageCreateFlagBits.html) and the
+[VK_IMAGE_USAGE_SAMPLED_BIT](VkImageUsageFlagBits.html) usage flag set,
 `subresourceRange.layerCount` **must** be less than or equal to
 [    `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`::`maxSubsampledArrayLayers`](../../../../spec/latest/chapters/limits.html#limits-maxSubsampledArrayLayers)
 
@@ -641,20 +675,20 @@ If `image` was created with `flags` containing
 
 If the [`invocationMask`](../../../../spec/latest/chapters/features.html#features-invocationMask) feature is
 enabled, and `image` was created with the
-`VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI` usage flag set,
-`format` **must** be `VK_FORMAT_R8_UINT`
+[VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI](VkImageUsageFlagBits.html) usage flag set,
+`format` **must** be [VK_FORMAT_R8_UINT](VkFormat.html)
 
 [](#VUID-VkImageViewCreateInfo-flags-04116) VUID-VkImageViewCreateInfo-flags-04116
 
 If `flags` does not contain
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT`, and
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT](VkImageViewCreateFlagBits.html), and
 `image` was created with the
-`VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT` usage flag set, its
+[VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT](VkImageUsageFlagBits.html) usage flag set, its
 `flags` **must** not contain any of
-`VK_IMAGE_CREATE_PROTECTED_BIT`,
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT`,
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`, or
-`VK_IMAGE_CREATE_SPARSE_ALIASED_BIT`
+[VK_IMAGE_CREATE_PROTECTED_BIT](VkImageCreateFlagBits.html),
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](VkImageCreateFlagBits.html),
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](VkImageCreateFlagBits.html), or
+[VK_IMAGE_CREATE_SPARSE_ALIASED_BIT](VkImageCreateFlagBits.html)
 
 [](#VUID-VkImageViewCreateInfo-pNext-02662) VUID-VkImageViewCreateInfo-pNext-02662
 
@@ -672,7 +706,7 @@ structure, `image` was created with a
 [VkImageStencilUsageCreateInfo](VkImageStencilUsageCreateInfo.html) structure included in the
 `pNext` chain of [VkImageCreateInfo](VkImageCreateInfo.html), and
 `subresourceRange.aspectMask` includes
-`VK_IMAGE_ASPECT_STENCIL_BIT`, the `usage` member of the
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html), the `usage` member of the
 [VkImageViewUsageCreateInfo](VkImageViewUsageCreateInfo.html) structure **must** not include any bits
 that were not set in the `usage` member of the
 [VkImageStencilUsageCreateInfo](VkImageStencilUsageCreateInfo.html) structure used to create `image`
@@ -684,97 +718,97 @@ structure, `image` was created with a
 [VkImageStencilUsageCreateInfo](VkImageStencilUsageCreateInfo.html) structure included in the
 `pNext` chain of [VkImageCreateInfo](VkImageCreateInfo.html), and
 `subresourceRange.aspectMask` includes bits other than
-`VK_IMAGE_ASPECT_STENCIL_BIT`, the `usage` member of the
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html), the `usage` member of the
 [VkImageViewUsageCreateInfo](VkImageViewUsageCreateInfo.html) structure **must** not include any bits
 that were not set in the `usage` member of the
 [VkImageCreateInfo](VkImageCreateInfo.html) structure used to create `image`
 
 [](#VUID-VkImageViewCreateInfo-imageViewType-04973) VUID-VkImageViewCreateInfo-imageViewType-04973
 
-If `viewType` is `VK_IMAGE_VIEW_TYPE_1D`,
-`VK_IMAGE_VIEW_TYPE_2D`, or `VK_IMAGE_VIEW_TYPE_3D`; and
+If `viewType` is [VK_IMAGE_VIEW_TYPE_1D](VkImageViewType.html),
+[VK_IMAGE_VIEW_TYPE_2D](VkImageViewType.html), or [VK_IMAGE_VIEW_TYPE_3D](VkImageViewType.html); and
 `subresourceRange.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`, then `subresourceRange.layerCount`
+[VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), then `subresourceRange.layerCount`
 **must** be 1
 
 [](#VUID-VkImageViewCreateInfo-imageViewType-04974) VUID-VkImageViewCreateInfo-imageViewType-04974
 
-If `viewType` is `VK_IMAGE_VIEW_TYPE_1D`,
-`VK_IMAGE_VIEW_TYPE_2D`, or `VK_IMAGE_VIEW_TYPE_3D`; and
-`subresourceRange.layerCount` is `VK_REMAINING_ARRAY_LAYERS`,
+If `viewType` is [VK_IMAGE_VIEW_TYPE_1D](VkImageViewType.html),
+[VK_IMAGE_VIEW_TYPE_2D](VkImageViewType.html), or [VK_IMAGE_VIEW_TYPE_3D](VkImageViewType.html); and
+`subresourceRange.layerCount` is [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html),
 then the remaining number of layers **must** be 1
 
 [](#VUID-VkImageViewCreateInfo-viewType-02960) VUID-VkImageViewCreateInfo-viewType-02960
 
-If `viewType` is `VK_IMAGE_VIEW_TYPE_CUBE` and
+If `viewType` is [VK_IMAGE_VIEW_TYPE_CUBE](VkImageViewType.html) and
 `subresourceRange.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`, `subresourceRange.layerCount` **must**
+[VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), `subresourceRange.layerCount` **must**
 be `6`
 
 [](#VUID-VkImageViewCreateInfo-viewType-02961) VUID-VkImageViewCreateInfo-viewType-02961
 
-If `viewType` is `VK_IMAGE_VIEW_TYPE_CUBE_ARRAY` and
+If `viewType` is [VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](VkImageViewType.html) and
 `subresourceRange.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`, `subresourceRange.layerCount` **must**
+[VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), `subresourceRange.layerCount` **must**
 be a multiple of `6`
 
 [](#VUID-VkImageViewCreateInfo-viewType-02962) VUID-VkImageViewCreateInfo-viewType-02962
 
-If `viewType` is `VK_IMAGE_VIEW_TYPE_CUBE` and
-`subresourceRange.layerCount` is `VK_REMAINING_ARRAY_LAYERS`,
+If `viewType` is [VK_IMAGE_VIEW_TYPE_CUBE](VkImageViewType.html) and
+`subresourceRange.layerCount` is [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html),
 the remaining number of layers **must** be `6`
 
 [](#VUID-VkImageViewCreateInfo-viewType-02963) VUID-VkImageViewCreateInfo-viewType-02963
 
-If `viewType` is `VK_IMAGE_VIEW_TYPE_CUBE_ARRAY` and
-`subresourceRange.layerCount` is `VK_REMAINING_ARRAY_LAYERS`,
+If `viewType` is [VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](VkImageViewType.html) and
+`subresourceRange.layerCount` is [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html),
 the remaining number of layers **must** be a multiple of `6`
 
 [](#VUID-VkImageViewCreateInfo-imageViewFormatSwizzle-04465) VUID-VkImageViewCreateInfo-imageViewFormatSwizzle-04465
 
 If the `[VK_KHR_portability_subset](VK_KHR_portability_subset.html)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](VkPhysicalDevicePortabilitySubsetFeaturesKHR.html)::`imageViewFormatSwizzle`
-is `VK_FALSE`, all elements of `components` **must** have the
+is [VK_FALSE](VK_FALSE.html), all elements of `components` **must** have the
 [identity swizzle](../../../../spec/latest/chapters/resources.html#resources-image-views-identity-mappings)
 
 [](#VUID-VkImageViewCreateInfo-imageViewFormatReinterpretation-04466) VUID-VkImageViewCreateInfo-imageViewFormatReinterpretation-04466
 
 If the `[VK_KHR_portability_subset](VK_KHR_portability_subset.html)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](VkPhysicalDevicePortabilitySubsetFeaturesKHR.html)::`imageViewFormatReinterpretation`
-is `VK_FALSE`, the [VkFormat](VkFormat.html) in `format` **must** not contain
+is [VK_FALSE](VK_FALSE.html), the [VkFormat](VkFormat.html) in `format` **must** not contain
 a different number of components, or a different number of bits in each
 component, than the format of the `VkImage` in `image`
 
 [](#VUID-VkImageViewCreateInfo-image-04817) VUID-VkImageViewCreateInfo-image-04817
 
 If `image` was created with the
-`VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR` usage flag set,
-`VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR`, or
-`VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR`, then the `viewType`
-**must** be `VK_IMAGE_VIEW_TYPE_2D` or
-`VK_IMAGE_VIEW_TYPE_2D_ARRAY`
+[VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](VkImageUsageFlagBits.html) usage flag set,
+[VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR](VkImageUsageFlagBits.html), or
+[VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](VkImageUsageFlagBits.html), then the `viewType`
+**must** be [VK_IMAGE_VIEW_TYPE_2D](VkImageViewType.html) or
+[VK_IMAGE_VIEW_TYPE_2D_ARRAY](VkImageViewType.html)
 
 [](#VUID-VkImageViewCreateInfo-image-04818) VUID-VkImageViewCreateInfo-image-04818
 
 If `image` was created with the
-`VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR` usage flag set,
-`VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR`, or
-`VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR`, then the `viewType`
-**must** be `VK_IMAGE_VIEW_TYPE_2D` or
-`VK_IMAGE_VIEW_TYPE_2D_ARRAY`
+[VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR](VkImageUsageFlagBits.html) usage flag set,
+[VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR](VkImageUsageFlagBits.html), or
+[VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR](VkImageUsageFlagBits.html), then the `viewType`
+**must** be [VK_IMAGE_VIEW_TYPE_2D](VkImageViewType.html) or
+[VK_IMAGE_VIEW_TYPE_2D_ARRAY](VkImageViewType.html)
 
 [](#VUID-VkImageViewCreateInfo-image-10261) VUID-VkImageViewCreateInfo-image-10261
 
 If `image` was created with the
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR` or
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR` usage flags set,
-then `viewType` **must** be `VK_IMAGE_VIEW_TYPE_2D` or
-`VK_IMAGE_VIEW_TYPE_2D_ARRAY`
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](VkImageUsageFlagBits.html) or
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](VkImageUsageFlagBits.html) usage flags set,
+then `viewType` **must** be [VK_IMAGE_VIEW_TYPE_2D](VkImageViewType.html) or
+[VK_IMAGE_VIEW_TYPE_2D_ARRAY](VkImageViewType.html)
 
 [](#VUID-VkImageViewCreateInfo-flags-08106) VUID-VkImageViewCreateInfo-flags-08106
 
 If `flags` includes
-`VK_IMAGE_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`, the
+[VK_IMAGE_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](VkImageViewCreateFlagBits.html), the
 [    `descriptorBufferCaptureReplay`](../../../../spec/latest/chapters/features.html#features-descriptorBufferCaptureReplay) feature **must** be enabled
 
 [](#VUID-VkImageViewCreateInfo-pNext-08107) VUID-VkImageViewCreateInfo-pNext-08107
@@ -782,14 +816,14 @@ If `flags` includes
 If the `pNext` chain includes a
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](VkOpaqueCaptureDescriptorDataCreateInfoEXT.html) structure, `flags`
 **must** contain
-`VK_IMAGE_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`
+[VK_IMAGE_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](VkImageViewCreateFlagBits.html)
 
 [](#VUID-VkImageViewCreateInfo-pNext-06787) VUID-VkImageViewCreateInfo-pNext-06787
 
 If the `pNext` chain includes a
 [VkExportMetalObjectCreateInfoEXT](VkExportMetalObjectCreateInfoEXT.html) structure, its
 `exportObjectType` member **must** be
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT`
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT](VkExportMetalObjectTypeFlagBitsEXT.html)
 
 [](#VUID-VkImageViewCreateInfo-pNext-06944) VUID-VkImageViewCreateInfo-pNext-06944
 
@@ -803,13 +837,13 @@ If the `pNext` chain includes
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](VkImageViewSampleWeightCreateInfoQCOM.html) structure, then `image`
 **must** have been created with the
-`VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM` usage flag set
+[VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM](VkImageUsageFlagBits.html) usage flag set
 
 [](#VUID-VkImageViewCreateInfo-pNext-06946) VUID-VkImageViewCreateInfo-pNext-06946
 
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](VkImageViewSampleWeightCreateInfoQCOM.html) structure, then
-`components` **must** be `VK_COMPONENT_SWIZZLE_IDENTITY` for all
+`components` **must** be [VK_COMPONENT_SWIZZLE_IDENTITY](VkComponentSwizzle.html) for all
 components
 
 [](#VUID-VkImageViewCreateInfo-pNext-06947) VUID-VkImageViewCreateInfo-pNext-06947
@@ -817,7 +851,7 @@ components
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](VkImageViewSampleWeightCreateInfoQCOM.html) structure, then
 `subresourceRange.aspectMask` **must** be
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html)
 
 [](#VUID-VkImageViewCreateInfo-pNext-06948) VUID-VkImageViewCreateInfo-pNext-06948
 
@@ -829,28 +863,28 @@ If the `pNext` chain includes
 
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](VkImageViewSampleWeightCreateInfoQCOM.html) structure, then
-`viewType` **must** be `VK_IMAGE_VIEW_TYPE_1D_ARRAY` or
-`VK_IMAGE_VIEW_TYPE_2D_ARRAY`
+`viewType` **must** be [VK_IMAGE_VIEW_TYPE_1D_ARRAY](VkImageViewType.html) or
+[VK_IMAGE_VIEW_TYPE_2D_ARRAY](VkImageViewType.html)
 
 [](#VUID-VkImageViewCreateInfo-pNext-06950) VUID-VkImageViewCreateInfo-pNext-06950
 
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](VkImageViewSampleWeightCreateInfoQCOM.html) structure and if
-`viewType` is `VK_IMAGE_VIEW_TYPE_1D_ARRAY`, then `image`
-**must** have been created with `imageType` `VK_IMAGE_TYPE_1D`
+`viewType` is [VK_IMAGE_VIEW_TYPE_1D_ARRAY](VkImageViewType.html), then `image`
+**must** have been created with `imageType` [VK_IMAGE_TYPE_1D](VkImageType.html)
 
 [](#VUID-VkImageViewCreateInfo-pNext-06951) VUID-VkImageViewCreateInfo-pNext-06951
 
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](VkImageViewSampleWeightCreateInfoQCOM.html) structure and `viewType`
-is `VK_IMAGE_VIEW_TYPE_1D_ARRAY`, then
+is [VK_IMAGE_VIEW_TYPE_1D_ARRAY](VkImageViewType.html), then
 `subresourceRange.layerCount` **must** be equal to `2`
 
 [](#VUID-VkImageViewCreateInfo-pNext-06952) VUID-VkImageViewCreateInfo-pNext-06952
 
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](VkImageViewSampleWeightCreateInfoQCOM.html) structure and `viewType`
-is `VK_IMAGE_VIEW_TYPE_1D_ARRAY`, then `image` **must** have been
+is [VK_IMAGE_VIEW_TYPE_1D_ARRAY](VkImageViewType.html), then `image` **must** have been
 created with `width` equal to or greater than \((numPhases
 \times \mathbin{max}\left(
 \mathbin{align}\left(filterSize.width,4\right),
@@ -860,14 +894,14 @@ filterSize.height\right))\)
 
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](VkImageViewSampleWeightCreateInfoQCOM.html) structure and if
-`viewType` is `VK_IMAGE_VIEW_TYPE_2D_ARRAY`, then `image`
-**must** have been created with `imageType` `VK_IMAGE_TYPE_2D`
+`viewType` is [VK_IMAGE_VIEW_TYPE_2D_ARRAY](VkImageViewType.html), then `image`
+**must** have been created with `imageType` [VK_IMAGE_TYPE_2D](VkImageType.html)
 
 [](#VUID-VkImageViewCreateInfo-pNext-06954) VUID-VkImageViewCreateInfo-pNext-06954
 
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](VkImageViewSampleWeightCreateInfoQCOM.html) structure and `viewType`
-is `VK_IMAGE_VIEW_TYPE_2D_ARRAY`, then
+is [VK_IMAGE_VIEW_TYPE_2D_ARRAY](VkImageViewType.html), then
 `subresourceRange.layerCount` **must** be equal or greater than
 numPhases
 
@@ -875,14 +909,14 @@ numPhases
 
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](VkImageViewSampleWeightCreateInfoQCOM.html) structure and `viewType`
-is `VK_IMAGE_VIEW_TYPE_2D_ARRAY`, then `image` **must** have been
+is [VK_IMAGE_VIEW_TYPE_2D_ARRAY](VkImageViewType.html), then `image` **must** have been
 created with `width` equal to or greater than `filterSize.width`
 
 [](#VUID-VkImageViewCreateInfo-pNext-06956) VUID-VkImageViewCreateInfo-pNext-06956
 
 If the `pNext` chain includes
 [VkImageViewSampleWeightCreateInfoQCOM](VkImageViewSampleWeightCreateInfoQCOM.html) structure and `viewType`
-is `VK_IMAGE_VIEW_TYPE_2D_ARRAY`, then `image` **must** have been
+is [VK_IMAGE_VIEW_TYPE_2D_ARRAY](VkImageViewType.html), then `image` **must** have been
 created with `height` equal to or greater than
 `filterSize.height`
 
@@ -898,12 +932,23 @@ If the `pNext` chain includes
 `subresourceRange.aspectMask` **must** be valid for the `format`
 the `image` was created with
 
+[](#VUID-VkImageViewCreateInfo-None-12280) VUID-VkImageViewCreateInfo-None-12280
+
+    If
+Vulkan 1.3 is not supported and
+    the [`ycbcr2plane444Formats`](../../../../spec/latest/chapters/features.html#features-ycbcr2plane444Formats)
+    feature is not enabled, `format` **must** not be
+    [VK_FORMAT_G8_B8R8_2PLANE_444_UNORM](VkFormat.html),
+    [VK_FORMAT_G10X6_B10X6R10X6_2PLANE_444_UNORM_3PACK16](VkFormat.html),
+    [VK_FORMAT_G12X4_B12X4R12X4_2PLANE_444_UNORM_3PACK16](VkFormat.html), or
+    [VK_FORMAT_G16_B16R16_2PLANE_444_UNORM](VkFormat.html)
+
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkImageViewCreateInfo-sType-sType) VUID-VkImageViewCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkImageViewCreateInfo-pNext-pNext) VUID-VkImageViewCreateInfo-pNext-pNext
@@ -945,7 +990,7 @@ Valid Usage (Implicit)
 
  `subresourceRange` **must** be a valid [VkImageSubresourceRange](VkImageSubresourceRange.html) structure
 
-[VK_VERSION_1_0](VK_VERSION_1_0.html), [VkComponentMapping](VkComponentMapping.html), [VkFormat](VkFormat.html), [VkImage](VkImage.html), [VkImageSubresourceRange](VkImageSubresourceRange.html), [VkImageViewCreateFlags](VkImageViewCreateFlags.html), [VkImageViewType](VkImageViewType.html), [VkStructureType](VkStructureType.html), [vkCreateImageView](vkCreateImageView.html)
+[VK_VERSION_1_0](VK_VERSION_1_0.html), [VkComponentMapping](VkComponentMapping.html), [VkFormat](VkFormat.html), [VkImage](VkImage.html), [VkImageDescriptorInfoEXT](VkImageDescriptorInfoEXT.html), [VkImageSubresourceRange](VkImageSubresourceRange.html), [VkImageViewCreateFlags](VkImageViewCreateFlags.html), [VkImageViewType](VkImageViewType.html), [VkStructureType](VkStructureType.html), [vkCreateImageView](vkCreateImageView.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkImageViewCreateInfo).
 

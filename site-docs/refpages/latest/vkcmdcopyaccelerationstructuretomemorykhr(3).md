@@ -36,19 +36,19 @@ recorded.
 copy operation.
 
 Accesses to `pInfo->src` **must** be [synchronized](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies) with the
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](VkPipelineStageFlagBits2.html)
 [pipeline stage](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages) or the
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits.html)
 [pipeline stage](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages), and an
 [access type](../../../../spec/latest/chapters/synchronization.html#synchronization-access-types) of
-`VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR`.
+[VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR](VkAccessFlagBits.html).
 Accesses to the buffer indicated by `pInfo->dst.deviceAddress` **must** be
 synchronized with the
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](VkPipelineStageFlagBits2.html)
 [pipeline stage](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages) or the
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits.html)
 [pipeline stage](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages), and an access type of
-`VK_ACCESS_TRANSFER_WRITE_BIT`.
+[VK_ACCESS_TRANSFER_WRITE_BIT](VkAccessFlagBits.html).
 
 This command produces the same results as
 [vkCopyAccelerationStructureToMemoryKHR](vkCopyAccelerationStructureToMemoryKHR.html), but writes its result to a
@@ -60,16 +60,16 @@ equally used by either [vkCmdCopyMemoryToAccelerationStructureKHR](vkCmdCopyMemo
 The defined header structure for the serialized data consists of:
 
 * 
-`VK_UUID_SIZE` bytes of data matching
+[VK_UUID_SIZE](VK_UUID_SIZE.html) bytes of data matching
 `VkPhysicalDeviceIDProperties`::`driverUUID`
 
 * 
-`VK_UUID_SIZE` bytes of data identifying the compatibility for
+[VK_UUID_SIZE](VK_UUID_SIZE.html) bytes of data identifying the compatibility for
 comparison using [vkGetDeviceAccelerationStructureCompatibilityKHR](vkGetDeviceAccelerationStructureCompatibilityKHR.html)
 
 * 
 A 64-bit integer of the total size matching the value queried using
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR](VkQueryType.html)
 
 * 
 A 64-bit integer of the deserialized size to be passed in to
@@ -79,7 +79,7 @@ A 64-bit integer of the deserialized size to be passed in to
 A 64-bit integer of the count of the number of acceleration structure
 handles following.
 This value matches the value queried using
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR`.
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR](VkQueryType.html).
 This will be zero for a bottom-level acceleration structure.
 For top-level acceleration structures this number is
 implementation-dependent; the number of and ordering of the handles may
@@ -141,7 +141,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdCopyAccelerationStructureToMemoryKHR-commandBuffer-cmdpool) VUID-vkCmdCopyAccelerationStructureToMemoryKHR-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdCopyAccelerationStructureToMemoryKHR-renderpass) VUID-vkCmdCopyAccelerationStructureToMemoryKHR-renderpass

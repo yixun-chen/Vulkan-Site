@@ -49,7 +49,7 @@ This command sets the pipeline fragment shading rate and combiner operation
 for subsequent drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` set in
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](VkPipelineFragmentShadingRateStateCreateInfoKHR.html) values used to create
@@ -81,22 +81,22 @@ One of the [    `pipelineFragmentShadingRate`](../../../../spec/latest/chapters/
 
 If the [    `primitiveFragmentShadingRate`](../../../../spec/latest/chapters/features.html#features-primitiveFragmentShadingRate) feature is not enabled,
 `combinerOps`[0] **must** be
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR`
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](VkFragmentShadingRateCombinerOpKHR.html)
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateKHR-attachmentFragmentShadingRate-04511) VUID-vkCmdSetFragmentShadingRateKHR-attachmentFragmentShadingRate-04511
 
 If the [    `attachmentFragmentShadingRate`](../../../../spec/latest/chapters/features.html#features-attachmentFragmentShadingRate) feature is not enabled,
 `combinerOps`[1] **must** be
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR`
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](VkFragmentShadingRateCombinerOpKHR.html)
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateKHR-fragmentSizeNonTrivialCombinerOps-04512) VUID-vkCmdSetFragmentShadingRateKHR-fragmentSizeNonTrivialCombinerOps-04512
 
 If the [    `fragmentSizeNonTrivialCombinerOps`](../../../../spec/latest/chapters/limits.html#limits-fragmentShadingRateNonTrivialCombinerOps) limit is not supported,
 elements of `combinerOps` **must** be either
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR` or
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR`
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](VkFragmentShadingRateCombinerOpKHR.html) or
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR](VkFragmentShadingRateCombinerOpKHR.html)
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateKHR-pFragmentSize-04513) VUID-vkCmdSetFragmentShadingRateKHR-pFragmentSize-04513
@@ -153,7 +153,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetFragmentShadingRateKHR-commandBuffer-cmdpool) VUID-vkCmdSetFragmentShadingRateKHR-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateKHR-videocoding) VUID-vkCmdSetFragmentShadingRateKHR-videocoding

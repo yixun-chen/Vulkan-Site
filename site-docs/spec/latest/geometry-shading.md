@@ -44,7 +44,7 @@ active, as follows:
 
 * 
 An input primitive type of `InputPoints` **must** only be used with a
-pipeline topology of `VK_PRIMITIVE_TOPOLOGY_POINT_LIST`, or with a
+pipeline topology of [VK_PRIMITIVE_TOPOLOGY_POINT_LIST](drawing.html#VkPrimitiveTopology), or with a
 tessellation shader specifying `PointMode`.
 The input arrays always contain one element, as described by the
 [point list topology](drawing.html#drawing-point-lists) or
@@ -52,8 +52,8 @@ The input arrays always contain one element, as described by the
 
 * 
 An input primitive type of `InputLines` **must** only be used with a
-pipeline topology of `VK_PRIMITIVE_TOPOLOGY_LINE_LIST` or
-`VK_PRIMITIVE_TOPOLOGY_LINE_STRIP`, or with a tessellation shader
+pipeline topology of [VK_PRIMITIVE_TOPOLOGY_LINE_LIST](drawing.html#VkPrimitiveTopology) or
+[VK_PRIMITIVE_TOPOLOGY_LINE_STRIP](drawing.html#VkPrimitiveTopology), or with a tessellation shader
 specifying `IsoLines` that does not specify `PointMode`.
 The input arrays always contain two elements, as described by the
 [line list topology](drawing.html#drawing-line-lists) or [    line strip topology](drawing.html#drawing-line-strips), or by [    isoline tessellation](tessellation.html#tessellation-isoline-tessellation).
@@ -61,17 +61,17 @@ The input arrays always contain two elements, as described by the
 * 
 An input primitive type of `InputLinesAdjacency` **must** only be used
 when tessellation is inactive, with a pipeline topology of
-`VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY` or
-`VK_PRIMITIVE_TOPOLOGY_LINE_STRIP_WITH_ADJACENCY`.
+[VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY](drawing.html#VkPrimitiveTopology) or
+[VK_PRIMITIVE_TOPOLOGY_LINE_STRIP_WITH_ADJACENCY](drawing.html#VkPrimitiveTopology).
 The input arrays always contain four elements, as described by the
 [line list with adjacency topology](drawing.html#drawing-line-lists-with-adjacency)
 or [line strip with adjacency    topology](drawing.html#drawing-line-strips-with-adjacency).
 
 * 
 An input primitive type of `Triangles` **must** only be used with a
-pipeline topology of `VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST`,
-`VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP`, or
-`VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN`; or with a tessellation shader
+pipeline topology of [VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST](drawing.html#VkPrimitiveTopology),
+[VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP](drawing.html#VkPrimitiveTopology), or
+[VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN](drawing.html#VkPrimitiveTopology); or with a tessellation shader
 specifying `Quads` or `Triangles` that does not specify
 `PointMode`.
 The input arrays always contain three elements, as described by the
@@ -86,8 +86,8 @@ topology, but **must** adhere to the specified winding order.
 * 
 An input primitive type of `InputTrianglesAdjacency` **must** only be
 used when tessellation is inactive, with a pipeline topology of
-`VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY` or
-`VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY`.
+[VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY](drawing.html#VkPrimitiveTopology) or
+[VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY](drawing.html#VkPrimitiveTopology).
 The input arrays always contain six elements, as described by the
 [triangle list with adjacency    topology](drawing.html#drawing-triangle-lists-with-adjacency) or [triangle strip    with adjacency topology](drawing.html#drawing-triangle-strips-with-adjacency).
 Vertices **may** be in a different absolute order than specified by the

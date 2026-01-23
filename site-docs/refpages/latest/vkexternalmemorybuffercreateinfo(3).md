@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalMemoryBufferCreateInfo-sType-sType) VUID-VkExternalMemoryBufferCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkExternalMemoryBufferCreateInfo-handleTypes-parameter) VUID-VkExternalMemoryBufferCreateInfo-handleTypes-parameter

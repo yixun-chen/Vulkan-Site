@@ -56,7 +56,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSwapchainCounterCreateInfoEXT-sType-sType) VUID-VkSwapchainCounterCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkSwapchainCounterCreateInfoEXT-surfaceCounters-parameter) VUID-VkSwapchainCounterCreateInfoEXT-surfaceCounters-parameter

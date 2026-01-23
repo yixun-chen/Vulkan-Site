@@ -36,11 +36,11 @@ typedef enum VkChromaLocation {
 typedef VkChromaLocation VkChromaLocationKHR;
 
 * 
-`VK_CHROMA_LOCATION_COSITED_EVEN` specifies that downsampled chroma
+[VK_CHROMA_LOCATION_COSITED_EVEN](#) specifies that downsampled chroma
 samples are aligned with luma samples with even coordinates.
 
 * 
-`VK_CHROMA_LOCATION_MIDPOINT` specifies that downsampled chroma
+[VK_CHROMA_LOCATION_MIDPOINT](#) specifies that downsampled chroma
 samples are located half way between each even luma sample and the
 nearest higher odd luma sample.
 

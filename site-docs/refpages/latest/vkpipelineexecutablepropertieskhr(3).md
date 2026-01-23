@@ -44,12 +44,12 @@ indicating which shader stages (if any) were principally used as inputs
 to compile this pipeline executable.
 
 * 
-`name` is an array of `VK_MAX_DESCRIPTION_SIZE` `char`
+`name` is an array of [VK_MAX_DESCRIPTION_SIZE](VK_MAX_DESCRIPTION_SIZE.html) `char`
 containing a null-terminated UTF-8 string which is a short human
 readable name for this pipeline executable.
 
 * 
-`description` is an array of `VK_MAX_DESCRIPTION_SIZE` `char`
+`description` is an array of [VK_MAX_DESCRIPTION_SIZE](VK_MAX_DESCRIPTION_SIZE.html) `char`
 containing a null-terminated UTF-8 string which is a human readable
 description for this pipeline executable.
 
@@ -74,7 +74,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineExecutablePropertiesKHR-sType-sType) VUID-VkPipelineExecutablePropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_PROPERTIES_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineExecutablePropertiesKHR-pNext-pNext) VUID-VkPipelineExecutablePropertiesKHR-pNext-pNext

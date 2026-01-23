@@ -44,16 +44,16 @@ Valid Usage
 [](#VUID-VkMicromapUsageEXT-format-07519) VUID-VkMicromapUsageEXT-format-07519
 
 If the [VkMicromapTypeEXT](VkMicromapTypeEXT.html) of the micromap is
-`VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT` then `format` **must** be
-`VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT` or
-`VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT`
+[VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT](VkMicromapTypeEXT.html) then `format` **must** be
+[VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT](VkOpacityMicromapFormatEXT.html) or
+[VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT](VkOpacityMicromapFormatEXT.html)
 
 * 
 [](#VUID-VkMicromapUsageEXT-format-07520) VUID-VkMicromapUsageEXT-format-07520
 
 If the [VkMicromapTypeEXT](VkMicromapTypeEXT.html) of the micromap is
-`VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT` and `format` is
-`VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT` then `subdivisionLevel`
+[VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT](VkMicromapTypeEXT.html) and `format` is
+[VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT](VkOpacityMicromapFormatEXT.html) then `subdivisionLevel`
 **must** be less than or equal to
 [VkPhysicalDeviceOpacityMicromapPropertiesEXT](VkPhysicalDeviceOpacityMicromapPropertiesEXT.html)::`maxOpacity2StateSubdivisionLevel`
 
@@ -61,8 +61,8 @@ If the [VkMicromapTypeEXT](VkMicromapTypeEXT.html) of the micromap is
 [](#VUID-VkMicromapUsageEXT-format-07521) VUID-VkMicromapUsageEXT-format-07521
 
 If the [VkMicromapTypeEXT](VkMicromapTypeEXT.html) of the micromap is
-`VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT` and `format` is
-`VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT` then `subdivisionLevel`
+[VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT](VkMicromapTypeEXT.html) and `format` is
+[VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT](VkOpacityMicromapFormatEXT.html) then `subdivisionLevel`
 **must** be less than or equal to
 [VkPhysicalDeviceOpacityMicromapPropertiesEXT](VkPhysicalDeviceOpacityMicromapPropertiesEXT.html)::`maxOpacity4StateSubdivisionLevel`
 
@@ -70,16 +70,16 @@ If the [VkMicromapTypeEXT](VkMicromapTypeEXT.html) of the micromap is
 [](#VUID-VkMicromapUsageEXT-format-08706) VUID-VkMicromapUsageEXT-format-08706
 
 If the [VkMicromapTypeEXT](VkMicromapTypeEXT.html) of the micromap is
-`VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV` then `format` **must**
-be `VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV`,
-`VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV` or
-`VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV`
+[VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV](VkMicromapTypeEXT.html) then `format` **must**
+be [VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV](VkDisplacementMicromapFormatNV.html),
+[VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV](VkDisplacementMicromapFormatNV.html) or
+[VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV](VkDisplacementMicromapFormatNV.html)
 
 * 
 [](#VUID-VkMicromapUsageEXT-subdivisionLevel-08707) VUID-VkMicromapUsageEXT-subdivisionLevel-08707
 
 If the [VkMicromapTypeEXT](VkMicromapTypeEXT.html) of the micromap is
-`VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV` then
+[VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV](VkMicromapTypeEXT.html) then
 `subdivisionLevel` **must** be less than or equal to
 [VkPhysicalDeviceDisplacementMicromapPropertiesNV](VkPhysicalDeviceDisplacementMicromapPropertiesNV.html)::`maxDisplacementMicromapSubdivisionLevel`
 

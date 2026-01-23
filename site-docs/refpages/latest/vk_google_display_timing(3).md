@@ -122,7 +122,7 @@ Extending [VkPresentInfoKHR](VkPresentInfoKHR.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE`
+[VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE](VkStructureType.html)
 
 |  | The example code for the this extension (like the `[VK_KHR_surface](VK_KHR_surface.html)`
 | --- | --- |

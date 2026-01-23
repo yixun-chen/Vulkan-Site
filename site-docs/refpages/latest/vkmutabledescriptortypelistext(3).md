@@ -49,50 +49,50 @@ Valid Usage
 [](#VUID-VkMutableDescriptorTypeListEXT-descriptorTypeCount-04597) VUID-VkMutableDescriptorTypeListEXT-descriptorTypeCount-04597
 
 `descriptorTypeCount` **must** not be `0` if the corresponding binding
-is of `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+is of [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html)
 
 * 
 [](#VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04598) VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04598
 
 `pDescriptorTypes` **must** be a valid pointer to an array of
 `descriptorTypeCount` valid, unique [VkDescriptorType](VkDescriptorType.html) values if
-the given binding is of `VK_DESCRIPTOR_TYPE_MUTABLE_EXT` type
+the given binding is of [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html) type
 
 * 
 [](#VUID-VkMutableDescriptorTypeListEXT-descriptorTypeCount-04599) VUID-VkMutableDescriptorTypeListEXT-descriptorTypeCount-04599
 
 `descriptorTypeCount` **must** be `0` if the corresponding binding is
-not of `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+not of [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html)
 
 * 
 [](#VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04600) VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04600
 
 `pDescriptorTypes` **must** not contain
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html)
 
 * 
 [](#VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04601) VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04601
 
 `pDescriptorTypes` **must** not contain
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html)
 
 * 
 [](#VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04602) VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04602
 
 `pDescriptorTypes` **must** not contain
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html)
 
 * 
 [](#VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04603) VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04603
 
 `pDescriptorTypes` **must** not contain
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html)
 
 * 
 [](#VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-09696) VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-09696
 
 `pDescriptorTypes` **must** not contain
-`VK_DESCRIPTOR_TYPE_TENSOR_ARM`
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html)
 
 Valid Usage (Implicit)
 

@@ -27,12 +27,12 @@ typedef enum VkVideoCapabilityFlagBitsKHR {
 } VkVideoCapabilityFlagBitsKHR;
 
 * 
-`VK_VIDEO_CAPABILITY_PROTECTED_CONTENT_BIT_KHR` specifies that video
+[VK_VIDEO_CAPABILITY_PROTECTED_CONTENT_BIT_KHR](#) specifies that video
 sessions support producing and consuming protected content.
 
 * 
 
-`VK_VIDEO_CAPABILITY_SEPARATE_REFERENCE_IMAGES_BIT_KHR` indicates
+[VK_VIDEO_CAPABILITY_SEPARATE_REFERENCE_IMAGES_BIT_KHR](#) indicates
 that the [video picture resources](../../../../spec/latest/chapters/videocoding.html#video-picture-resources) associated
 with the [DPB slots](../../../../spec/latest/chapters/videocoding.html#dpb-slot) of a video session **can** be backed by
 separate `VkImage` objects.

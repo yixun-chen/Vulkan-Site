@@ -67,7 +67,7 @@ factor is looked up from a table in `pCoverageModulationTable`.
 `pCoverageModulationTable` is a table of modulation factors
 containing a value for each number of covered samples.
 
-If `coverageModulationTableEnable` is `VK_FALSE`, then for each
+If `coverageModulationTableEnable` is [VK_FALSE](VK_FALSE.html), then for each
 color sample the associated bits of the pixel coverage are counted and
 divided by the number of associated bits to produce a modulation factor
 R in the range (0,1] (a value of zero would have been killed due
@@ -84,7 +84,7 @@ color attachments
 * 
 R = popcount(associated coverage bits) / (N / M)
 
-If `coverageModulationTableEnable` is `VK_TRUE`, the value R
+If `coverageModulationTableEnable` is [VK_TRUE](VK_TRUE.html), the value R
 is computed using a programmable lookup table.
 The lookup table has N / M elements, and the element of the table is
 selected by:
@@ -108,20 +108,20 @@ Which components are modulated is controlled by
 `coverageModulationMode`.
 
 If this structure is not included in the `pNext` chain, it is as if
-`coverageModulationMode` is `VK_COVERAGE_MODULATION_MODE_NONE_NV`.
+`coverageModulationMode` is [VK_COVERAGE_MODULATION_MODE_NONE_NV](VkCoverageModulationModeNV.html).
 
 If the [coverage reduction mode](../../../../spec/latest/chapters/fragops.html#fragops-coverage-reduction) is
-`VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV`, each color sample is
+[VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV](VkCoverageReductionModeNV.html), each color sample is
 associated with only a single coverage sample.
 In this case, it is as if `coverageModulationMode` is
-`VK_COVERAGE_MODULATION_MODE_NONE_NV`.
+[VK_COVERAGE_MODULATION_MODE_NONE_NV](VkCoverageModulationModeNV.html).
 
 Valid Usage
 
 * 
 [](#VUID-VkPipelineCoverageModulationStateCreateInfoNV-coverageModulationTableEnable-01405) VUID-VkPipelineCoverageModulationStateCreateInfoNV-coverageModulationTableEnable-01405
 
-If `coverageModulationTableEnable` is `VK_TRUE`,
+If `coverageModulationTableEnable` is [VK_TRUE](VK_TRUE.html),
 `coverageModulationTableCount` **must** be equal to the number of
 rasterization samples divided by the number of color samples in the
 subpass
@@ -131,7 +131,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineCoverageModulationStateCreateInfoNV-sType-sType) VUID-VkPipelineCoverageModulationStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineCoverageModulationStateCreateInfoNV-flags-zerobitmask) VUID-VkPipelineCoverageModulationStateCreateInfoNV-flags-zerobitmask

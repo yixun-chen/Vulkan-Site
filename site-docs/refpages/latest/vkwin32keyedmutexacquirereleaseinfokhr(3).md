@@ -93,15 +93,15 @@ Valid Usage
 Each member of `pAcquireSyncs` and `pReleaseSyncs` **must** be a
 device memory object imported by setting
 [VkImportMemoryWin32HandleInfoKHR](VkImportMemoryWin32HandleInfoKHR.html)::`handleType` to
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT](VkExternalMemoryHandleTypeFlagBits.html) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT](VkExternalMemoryHandleTypeFlagBits.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkWin32KeyedMutexAcquireReleaseInfoKHR-sType-sType) VUID-VkWin32KeyedMutexAcquireReleaseInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkWin32KeyedMutexAcquireReleaseInfoKHR-pAcquireSyncs-parameter) VUID-VkWin32KeyedMutexAcquireReleaseInfoKHR-pAcquireSyncs-parameter

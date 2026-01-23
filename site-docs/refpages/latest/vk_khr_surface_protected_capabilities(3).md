@@ -78,12 +78,12 @@ Daniel Koch, NVIDIA
 
 This extension extends [VkSurfaceCapabilities2KHR](VkSurfaceCapabilities2KHR.html), providing
 applications a way to query whether swapchains **can** be created with the
-`VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR` flag set.
+[VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html) flag set.
 
 Vulkan 1.1 added (optional) support for protect memory and protected
-resources including buffers (`VK_BUFFER_CREATE_PROTECTED_BIT`), images
-(`VK_IMAGE_CREATE_PROTECTED_BIT`), and swapchains
-(`VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR`).
+resources including buffers ([VK_BUFFER_CREATE_PROTECTED_BIT](VkBufferCreateFlagBits.html)), images
+([VK_IMAGE_CREATE_PROTECTED_BIT](VkImageCreateFlagBits.html)), and swapchains
+([VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html)).
 However, on implementations which support multiple windowing systems, not
 all window systems **may** be able to provide a protected display path.
 
@@ -109,7 +109,7 @@ Extending [VkSurfaceCapabilities2KHR](VkSurfaceCapabilities2KHR.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_SURFACE_PROTECTED_CAPABILITIES_KHR`
+[VK_STRUCTURE_TYPE_SURFACE_PROTECTED_CAPABILITIES_KHR](VkStructureType.html)
 
 * 
 Revision 1, 2018-12-18 (Sandeep Shinde, Daniel Koch)

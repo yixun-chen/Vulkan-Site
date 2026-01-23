@@ -120,7 +120,7 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES_KHR](VkStructureType.html)
 
 * 
 [`Int64Atomics`](../../../../spec/latest/appendices/spirvenv.html#spirvenv-capabilities-table-Int64Atomics)

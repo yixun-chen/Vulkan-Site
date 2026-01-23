@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV-sType-sType) VUID-VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CLUSTER_ACCELERATION_STRUCTURE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CLUSTER_ACCELERATION_STRUCTURE_CREATE_INFO_NV](VkStructureType.html)
 
 [VK_KHR_ray_tracing_pipeline](VK_KHR_ray_tracing_pipeline.html), [VK_NV_cluster_acceleration_structure](VK_NV_cluster_acceleration_structure.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

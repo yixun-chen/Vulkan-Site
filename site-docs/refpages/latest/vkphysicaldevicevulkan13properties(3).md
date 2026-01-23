@@ -83,8 +83,8 @@ structure.
  `minSubgroupSize` is the
 minimum subgroup size supported by this device.
 `minSubgroupSize` is at least one if any of the physical device’s
-queues support `VK_QUEUE_GRAPHICS_BIT` or
-`VK_QUEUE_COMPUTE_BIT`.
+queues support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) or
+[VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html).
 `minSubgroupSize` is a power-of-two.
 `minSubgroupSize` is less than or equal to `maxSubgroupSize`.
 `minSubgroupSize` is less than or equal to [    `subgroupSize`](../../../../spec/latest/chapters/devsandqueues.html#limits-subgroupSize).
@@ -93,8 +93,8 @@ queues support `VK_QUEUE_GRAPHICS_BIT` or
  `maxSubgroupSize` is the
 maximum subgroup size supported by this device.
 `maxSubgroupSize` is at least one if any of the physical device’s
-queues support `VK_QUEUE_GRAPHICS_BIT` or
-`VK_QUEUE_COMPUTE_BIT`.
+queues support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) or
+[VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html).
 `maxSubgroupSize` is a power-of-two.
 `maxSubgroupSize` is greater than or equal to `minSubgroupSize`.
 `maxSubgroupSize` is greater than or equal to [    `subgroupSize`](../../../../spec/latest/chapters/devsandqueues.html#limits-subgroupSize).
@@ -120,9 +120,9 @@ support having a required subgroup size specified.
 inline uniform block bindings that **can** be accessible to a single shader
 stage in a pipeline layout.
 Descriptor bindings with a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` count against this limit.
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) count against this limit.
 Only descriptor bindings in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 
 * 
@@ -130,7 +130,7 @@ count against this limit.
 `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks`
 is similar to `maxPerStageDescriptorInlineUniformBlocks` but counts
 descriptor bindings from descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -140,9 +140,9 @@ inline uniform block bindings that **can** be included in descriptor
 bindings in a pipeline layout across all pipeline shader stages and
 descriptor set numbers.
 Descriptor bindings with a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` count against this limit.
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) count against this limit.
 Only descriptor bindings in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 
 * 
@@ -150,7 +150,7 @@ count against this limit.
 `maxDescriptorSetUpdateAfterBindInlineUniformBlocks`
 is similar to `maxDescriptorSetInlineUniformBlocks` but counts
 descriptor bindings from descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -159,125 +159,125 @@ set.
 all inline uniform block bindings, across all pipeline shader stages and
 descriptor set numbers, that **can** be included in a pipeline layout.
 Descriptor bindings with a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` count against this limit.
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) count against this limit.
 
 * 
 `integerDotProduct8BitUnsignedAccelerated` is a boolean that will be
-`VK_TRUE` if the support for 8-bit unsigned dot product operations
+[VK_TRUE](VK_TRUE.html) if the support for 8-bit unsigned dot product operations
 using the `OpUDotKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct8BitSignedAccelerated` is a boolean that will be
-`VK_TRUE` if the support for 8-bit signed dot product operations
+[VK_TRUE](VK_TRUE.html) if the support for 8-bit signed dot product operations
 using the `OpSDotKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct8BitMixedSignednessAccelerated` is a boolean that
-will be `VK_TRUE` if the support for 8-bit mixed signedness dot
+will be [VK_TRUE](VK_TRUE.html) if the support for 8-bit mixed signedness dot
 product operations using the `OpSUDotKHR` SPIR-V instruction is
 accelerated [as defined    below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct4x8BitPackedUnsignedAccelerated` is a boolean that
-will be `VK_TRUE` if the support for 8-bit unsigned dot product
+will be [VK_TRUE](VK_TRUE.html) if the support for 8-bit unsigned dot product
 operations from operands packed into 32-bit integers using the
 `OpUDotKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct4x8BitPackedSignedAccelerated` is a boolean that
-will be `VK_TRUE` if the support for 8-bit signed dot product
+will be [VK_TRUE](VK_TRUE.html) if the support for 8-bit signed dot product
 operations from operands packed into 32-bit integers using the
 `OpSDotKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct4x8BitPackedMixedSignednessAccelerated` is a
-boolean that will be `VK_TRUE` if the support for 8-bit mixed
+boolean that will be [VK_TRUE](VK_TRUE.html) if the support for 8-bit mixed
 signedness dot product operations from operands packed into 32-bit
 integers using the `OpSUDotKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct16BitUnsignedAccelerated` is a boolean that will
-be `VK_TRUE` if the support for 16-bit unsigned dot product
+be [VK_TRUE](VK_TRUE.html) if the support for 16-bit unsigned dot product
 operations using the `OpUDotKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct16BitSignedAccelerated` is a boolean that will be
-`VK_TRUE` if the support for 16-bit signed dot product operations
+[VK_TRUE](VK_TRUE.html) if the support for 16-bit signed dot product operations
 using the `OpSDotKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct16BitMixedSignednessAccelerated` is a boolean that
-will be `VK_TRUE` if the support for 16-bit mixed signedness dot
+will be [VK_TRUE](VK_TRUE.html) if the support for 16-bit mixed signedness dot
 product operations using the `OpSUDotKHR` SPIR-V instruction is
 accelerated [as defined    below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct32BitUnsignedAccelerated` is a boolean that will
-be `VK_TRUE` if the support for 32-bit unsigned dot product
+be [VK_TRUE](VK_TRUE.html) if the support for 32-bit unsigned dot product
 operations using the `OpUDotKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct32BitSignedAccelerated` is a boolean that will be
-`VK_TRUE` if the support for 32-bit signed dot product operations
+[VK_TRUE](VK_TRUE.html) if the support for 32-bit signed dot product operations
 using the `OpSDotKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct32BitMixedSignednessAccelerated` is a boolean that
-will be `VK_TRUE` if the support for 32-bit mixed signedness dot
+will be [VK_TRUE](VK_TRUE.html) if the support for 32-bit mixed signedness dot
 product operations using the `OpSUDotKHR` SPIR-V instruction is
 accelerated [as defined    below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct64BitUnsignedAccelerated` is a boolean that will
-be `VK_TRUE` if the support for 64-bit unsigned dot product
+be [VK_TRUE](VK_TRUE.html) if the support for 64-bit unsigned dot product
 operations using the `OpUDotKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct64BitSignedAccelerated` is a boolean that will be
-`VK_TRUE` if the support for 64-bit signed dot product operations
+[VK_TRUE](VK_TRUE.html) if the support for 64-bit signed dot product operations
 using the `OpSDotKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct64BitMixedSignednessAccelerated` is a boolean that
-will be `VK_TRUE` if the support for 64-bit mixed signedness dot
+will be [VK_TRUE](VK_TRUE.html) if the support for 64-bit mixed signedness dot
 product operations using the `OpSUDotKHR` SPIR-V instruction is
 accelerated [as defined    below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated` is
-a boolean that will be `VK_TRUE` if the support for 8-bit unsigned
+a boolean that will be [VK_TRUE](VK_TRUE.html) if the support for 8-bit unsigned
 accumulating saturating dot product operations using the
 `OpUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating8BitSignedAccelerated` is a
-boolean that will be `VK_TRUE` if the support for 8-bit signed
+boolean that will be [VK_TRUE](VK_TRUE.html) if the support for 8-bit signed
 accumulating saturating dot product operations using the
 `OpSDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 8-bit mixed
+is a boolean that will be [VK_TRUE](VK_TRUE.html) if the support for 8-bit mixed
 signedness accumulating saturating dot product operations using the
 `OpSUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 8-bit
+is a boolean that will be [VK_TRUE](VK_TRUE.html) if the support for 8-bit
 unsigned accumulating saturating dot product operations from operands
 packed into 32-bit integers using the `OpUDotAccSatKHR` SPIR-V
 instruction is accelerated
@@ -285,14 +285,14 @@ instruction is accelerated
 
 * 
 `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 8-bit signed
+is a boolean that will be [VK_TRUE](VK_TRUE.html) if the support for 8-bit signed
 accumulating saturating dot product operations from operands packed into
 32-bit integers using the `OpSDotAccSatKHR` SPIR-V instruction is
 accelerated [as defined    below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 8-bit mixed
+is a boolean that will be [VK_TRUE](VK_TRUE.html) if the support for 8-bit mixed
 signedness accumulating saturating dot product operations from operands
 packed into 32-bit integers using the `OpSUDotAccSatKHR` SPIR-V
 instruction is accelerated
@@ -300,63 +300,63 @@ instruction is accelerated
 
 * 
 `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated` is
-a boolean that will be `VK_TRUE` if the support for 16-bit unsigned
+a boolean that will be [VK_TRUE](VK_TRUE.html) if the support for 16-bit unsigned
 accumulating saturating dot product operations using the
 `OpUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating16BitSignedAccelerated` is a
-boolean that will be `VK_TRUE` if the support for 16-bit signed
+boolean that will be [VK_TRUE](VK_TRUE.html) if the support for 16-bit signed
 accumulating saturating dot product operations using the
 `OpSDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 16-bit mixed
+is a boolean that will be [VK_TRUE](VK_TRUE.html) if the support for 16-bit mixed
 signedness accumulating saturating dot product operations using the
 `OpSUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated` is
-a boolean that will be `VK_TRUE` if the support for 32-bit unsigned
+a boolean that will be [VK_TRUE](VK_TRUE.html) if the support for 32-bit unsigned
 accumulating saturating dot product operations using the
 `OpUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating32BitSignedAccelerated` is a
-boolean that will be `VK_TRUE` if the support for 32-bit signed
+boolean that will be [VK_TRUE](VK_TRUE.html) if the support for 32-bit signed
 accumulating saturating dot product operations using the
 `OpSDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 32-bit mixed
+is a boolean that will be [VK_TRUE](VK_TRUE.html) if the support for 32-bit mixed
 signedness accumulating saturating dot product operations using the
 `OpSUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated` is
-a boolean that will be `VK_TRUE` if the support for 64-bit unsigned
+a boolean that will be [VK_TRUE](VK_TRUE.html) if the support for 64-bit unsigned
 accumulating saturating dot product operations using the
 `OpUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating64BitSignedAccelerated` is a
-boolean that will be `VK_TRUE` if the support for 64-bit signed
+boolean that will be [VK_TRUE](VK_TRUE.html) if the support for 64-bit signed
 accumulating saturating dot product operations using the
 `OpSDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 64-bit mixed
+is a boolean that will be [VK_TRUE](VK_TRUE.html) if the support for 64-bit mixed
 signedness accumulating saturating dot product operations using the
 `OpSUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-integer-dot-product-accelerated).
@@ -406,7 +406,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVulkan13Properties-sType-sType) VUID-VkPhysicalDeviceVulkan13Properties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_PROPERTIES](VkStructureType.html)
 
 [VK_VERSION_1_3](VK_VERSION_1_3.html), `VkBool32`, `VkDeviceSize`, [VkShaderStageFlags](VkShaderStageFlags.html), [VkStructureType](VkStructureType.html)
 

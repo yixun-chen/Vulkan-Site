@@ -39,9 +39,9 @@ structure.
 `pVersionData` is a pointer to the version header of an acceleration
 structure as defined in [vkCmdCopyAccelerationStructureToMemoryKHR](vkCmdCopyAccelerationStructureToMemoryKHR.html)
 
-|  | `pVersionData` is a *pointer* to an array of 2×`VK_UUID_SIZE`
+|  | `pVersionData` is a *pointer* to an array of 2×[VK_UUID_SIZE](VK_UUID_SIZE.html)
 | --- | --- |
-`uint8_t` values instead of two `VK_UUID_SIZE` arrays as the expected
+`uint8_t` values instead of two [VK_UUID_SIZE](VK_UUID_SIZE.html) arrays as the expected
 use case for this member is to be pointed at the header of a previously
 serialized acceleration structure (via
 [vkCmdCopyAccelerationStructureToMemoryKHR](vkCmdCopyAccelerationStructureToMemoryKHR.html) or
@@ -53,7 +53,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureVersionInfoKHR-sType-sType) VUID-VkAccelerationStructureVersionInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_VERSION_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_VERSION_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkAccelerationStructureVersionInfoKHR-pNext-pNext) VUID-VkAccelerationStructureVersionInfoKHR-pNext-pNext

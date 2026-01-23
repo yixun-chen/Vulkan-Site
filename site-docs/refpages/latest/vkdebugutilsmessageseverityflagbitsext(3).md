@@ -31,17 +31,17 @@ typedef enum VkDebugUtilsMessageSeverityFlagBitsEXT {
 } VkDebugUtilsMessageSeverityFlagBitsEXT;
 
 * 
-`VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT` specifies the most
+[VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT](#) specifies the most
 verbose output indicating all diagnostic messages from the Vulkan
 loader, layers, and drivers should be captured.
 
 * 
-`VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT` specifies an
+[VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT](#) specifies an
 informational message such as resource details that may be handy when
 debugging an application.
 
 * 
-`VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT` specifies use of
+[VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT](#) specifies use of
 Vulkan that **may** expose an application bug.
 Such cases may not be immediately harmful, such as a fragment shader
 outputting to a location with no attachment.
@@ -51,7 +51,7 @@ In general if you see a warning but you know that the behavior is
 intended/desired, then simply ignore the warning.
 
 * 
-`VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT` specifies that the
+[VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT](#) specifies that the
 application has violated a valid usage condition of the specification.
 
 |  | The values of [VkDebugUtilsMessageSeverityFlagBitsEXT](#) are sorted based

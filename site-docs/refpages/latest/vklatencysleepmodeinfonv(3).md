@@ -51,7 +51,7 @@ increased power consumption.
 [vkQueuePresentKHR](vkQueuePresentKHR.html) calls for a given swapchain that
 [vkLatencySleepNV](vkLatencySleepNV.html) will enforce.
 
-If `lowLatencyMode` is `VK_FALSE`, `lowLatencyBoost` will still
+If `lowLatencyMode` is [VK_FALSE](VK_FALSE.html), `lowLatencyBoost` will still
 hint to the GPU to increase its power state and `vkLatencySleepNV` will
 still enforce `minimumIntervalUs` between `vkQueuePresentKHR` calls.
 
@@ -60,7 +60,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkLatencySleepModeInfoNV-sType-sType) VUID-VkLatencySleepModeInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_LATENCY_SLEEP_MODE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_LATENCY_SLEEP_MODE_INFO_NV](VkStructureType.html)
 
 [VK_NV_low_latency2](VK_NV_low_latency2.html), `VkBool32`, [VkStructureType](VkStructureType.html), [vkSetLatencySleepModeNV](vkSetLatencySleepModeNV.html)
 

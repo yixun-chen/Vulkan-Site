@@ -88,7 +88,7 @@ scope.
 This device extension allows applications to query the global queue
 priorities supported by a queue family, and then set a priority when
 creating queues.
-The default queue priority is `VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT`.
+The default queue priority is [VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT](VkQueueGlobalPriority.html).
 
 Implementations can report which global priority levels are treated
 differently by the implementation.
@@ -107,14 +107,14 @@ per-process queue priority
 Abuse of this feature may result in starving the rest of the system from
 hardware resources.
 Therefore, the driver implementation may deny requests to acquire a priority
-above the default priority (`VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT`) if
+above the default priority ([VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT](VkQueueGlobalPriority.html)) if
 the caller does not have sufficient privileges.
-In this scenario `VK_ERROR_NOT_PERMITTED_EXT` is returned.
+In this scenario [VK_ERROR_NOT_PERMITTED_EXT](VkResult.html) is returned.
 
 The driver implementation may fail the queue allocation request if resources
 required to complete the operation have been exhausted (either by the same
 process or a different process).
-In this scenario `VK_ERROR_INITIALIZATION_FAILED` is returned.
+In this scenario [VK_ERROR_INITIALIZATION_FAILED](VkResult.html) is returned.
 
 * 
 Extending [VkDeviceQueueCreateInfo](VkDeviceQueueCreateInfo.html):
@@ -141,37 +141,37 @@ Extending [VkQueueFamilyProperties2](VkQueueFamilyProperties2.html):
 `VK_KHR_GLOBAL_PRIORITY_SPEC_VERSION`
 
 * 
-`VK_MAX_GLOBAL_PRIORITY_SIZE_KHR`
+[VK_MAX_GLOBAL_PRIORITY_SIZE_KHR](VK_MAX_GLOBAL_PRIORITY_SIZE.html)
 
 * 
 Extending [VkQueueGlobalPriority](VkQueueGlobalPriority.html):
 
-`VK_QUEUE_GLOBAL_PRIORITY_HIGH_KHR`
+[VK_QUEUE_GLOBAL_PRIORITY_HIGH_KHR](VkQueueGlobalPriority.html)
 
 * 
-`VK_QUEUE_GLOBAL_PRIORITY_LOW_KHR`
+[VK_QUEUE_GLOBAL_PRIORITY_LOW_KHR](VkQueueGlobalPriority.html)
 
 * 
-`VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_KHR`
+[VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_KHR](VkQueueGlobalPriority.html)
 
 * 
-`VK_QUEUE_GLOBAL_PRIORITY_REALTIME_KHR`
+[VK_QUEUE_GLOBAL_PRIORITY_REALTIME_KHR](VkQueueGlobalPriority.html)
 
 Extending [VkResult](VkResult.html):
 
 * 
-`VK_ERROR_NOT_PERMITTED_KHR`
+[VK_ERROR_NOT_PERMITTED_KHR](VkResult.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GLOBAL_PRIORITY_QUERY_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GLOBAL_PRIORITY_QUERY_FEATURES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES_KHR`
+[VK_STRUCTURE_TYPE_QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES_KHR](VkStructureType.html)
 
 Functionality in this extension is included in core Vulkan 1.4 with the KHR
 suffix omitted.

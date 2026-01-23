@@ -34,13 +34,13 @@ recorded.
 `pInfo` is an a pointer to a [VkCopyMicromapToMemoryInfoEXT](VkCopyMicromapToMemoryInfoEXT.html)
 structure defining the copy operation.
 
-Accesses to `pInfo->src` **must** be [synchronized](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies) with the `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+Accesses to `pInfo->src` **must** be [synchronized](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies) with the [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](VkPipelineStageFlagBits2.html)
 [pipeline stage](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages) and an
 [access type](../../../../spec/latest/chapters/synchronization.html#synchronization-access-types) of
-`VK_ACCESS_2_MICROMAP_READ_BIT_EXT`.
+[VK_ACCESS_2_MICROMAP_READ_BIT_EXT](VkAccessFlagBits2.html).
 Accesses to the buffer indicated by `pInfo->dst.deviceAddress` **must** be
-synchronized with the `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
-pipeline stage and an access type of `VK_ACCESS_TRANSFER_WRITE_BIT`.
+synchronized with the [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](VkPipelineStageFlagBits2.html)
+pipeline stage and an access type of [VK_ACCESS_TRANSFER_WRITE_BIT](VkAccessFlagBits.html).
 
 This command produces the same results as [vkCopyMicromapToMemoryEXT](vkCopyMicromapToMemoryEXT.html),
 but writes its result to a device address, and is executed on the device
@@ -52,11 +52,11 @@ equally used by either [vkCmdCopyMemoryToMicromapEXT](vkCmdCopyMemoryToMicromapE
 The defined header structure for the serialized data consists of:
 
 * 
-`VK_UUID_SIZE` bytes of data matching
+[VK_UUID_SIZE](VK_UUID_SIZE.html) bytes of data matching
 `VkPhysicalDeviceIDProperties`::`driverUUID`
 
 * 
-`VK_UUID_SIZE` bytes of data identifying the compatibility for
+[VK_UUID_SIZE](VK_UUID_SIZE.html) bytes of data identifying the compatibility for
     comparison using [vkGetDeviceMicromapCompatibilityEXT](vkGetDeviceMicromapCompatibilityEXT.html)
 The serialized data is written to the buffer (or read from the buffer)
 according to the host endianness.
@@ -106,7 +106,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdCopyMicromapToMemoryEXT-commandBuffer-cmdpool) VUID-vkCmdCopyMicromapToMemoryEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdCopyMicromapToMemoryEXT-renderpass) VUID-vkCmdCopyMicromapToMemoryEXT-renderpass

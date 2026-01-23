@@ -20,7 +20,7 @@
 VkBindVertexBufferIndirectCommandNV - Structure specifying input data for a single vertex buffer command token
 
 The `VkBindVertexBufferIndirectCommandNV` structure specifies the input
-data for the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NV` token.
+data for the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NV](VkIndirectCommandsTokenTypeNV.html) token.
 
 // Provided by VK_NV_device_generated_commands
 typedef struct VkBindVertexBufferIndirectCommandNV {
@@ -51,7 +51,7 @@ Valid Usage
 [](#VUID-VkBindVertexBufferIndirectCommandNV-None-02949) VUID-VkBindVertexBufferIndirectCommandNV-None-02949
 
 The buffer’s usage flag from which the address was acquired **must** have
-the `VK_BUFFER_USAGE_VERTEX_BUFFER_BIT` bit set
+the [VK_BUFFER_USAGE_VERTEX_BUFFER_BIT](VkBufferUsageFlagBits.html) bit set
 
 Valid Usage (Implicit)
 

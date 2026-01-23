@@ -21,8 +21,10 @@ VkIndirectCommandsPushConstantTokenEXT - Structure specifying layout token info 
 
 The `VkIndirectCommandsPushConstantTokenEXT` structure specifies the
 layout token info for
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT` and
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT` tokens.
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](VkIndirectCommandsTokenTypeEXT.html),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT](VkIndirectCommandsTokenTypeEXT.html),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT](VkIndirectCommandsTokenTypeEXT.html),
+and [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](VkIndirectCommandsTokenTypeEXT.html) tokens.
 
 // Provided by VK_EXT_device_generated_commands
 typedef struct VkIndirectCommandsPushConstantTokenEXT {
@@ -40,15 +42,19 @@ Valid Usage
 * 
 [](#VUID-VkIndirectCommandsPushConstantTokenEXT-updateRange-11132) VUID-VkIndirectCommandsPushConstantTokenEXT-updateRange-11132
 
+If the token type is
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](VkIndirectCommandsTokenTypeEXT.html) or
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](VkIndirectCommandsTokenTypeEXT.html),
 `updateRange` **must** be contained within the push constant info used
 by [VkIndirectCommandsLayoutCreateInfoEXT](VkIndirectCommandsLayoutCreateInfoEXT.html)
 
 * 
 [](#VUID-VkIndirectCommandsPushConstantTokenEXT-size-11133) VUID-VkIndirectCommandsPushConstantTokenEXT-size-11133
 
-If the token type is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT`, the `size`
-member of `updateRange` **must** be 4
+    If the token type is
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT](VkIndirectCommandsTokenTypeEXT.html) or
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](VkIndirectCommandsTokenTypeEXT.html), the `size`
+    member of `updateRange` **must** be 4
 
 Valid Usage (Implicit)
 

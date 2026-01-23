@@ -88,7 +88,7 @@ Each added reference picture is associated with the
 associated with a DPB slot is intended to be used as an active reference
 picture and both fields are stored in the same image subregion (which is the
 case when using
-`VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_INTERLEAVED_LINES_BIT_KHR`
+[VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_INTERLEAVED_LINES_BIT_KHR](VkVideoDecodeH264PictureLayoutFlagBitsKHR.html)
 which stores the two fields at even and odd scanlines of the same image
 subregion), both references have to be provided through a single
 [VkVideoReferenceSlotInfoKHR](VkVideoReferenceSlotInfoKHR.html) structure that has both
@@ -100,7 +100,7 @@ structure’s `pNext` chain.
 However, this approach can only be used when both fields are stored in the
 same image subregion.
 If that is not the case (e.g. when using
-`VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES_BIT_KHR`
+[VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES_BIT_KHR](VkVideoDecodeH264PictureLayoutFlagBitsKHR.html)
 which requires separate `codedOffset` values for the two fields and also
 allows storing the two fields of a frame in separate image layers or
 entirely separate images), then a separate [VkVideoReferenceSlotInfoKHR](VkVideoReferenceSlotInfoKHR.html)
@@ -177,7 +177,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoDecodeH264DpbSlotInfoKHR-sType-sType) VUID-VkVideoDecodeH264DpbSlotInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_DPB_SLOT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_DPB_SLOT_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoDecodeH264DpbSlotInfoKHR-pStdReferenceInfo-parameter) VUID-VkVideoDecodeH264DpbSlotInfoKHR-pStdReferenceInfo-parameter

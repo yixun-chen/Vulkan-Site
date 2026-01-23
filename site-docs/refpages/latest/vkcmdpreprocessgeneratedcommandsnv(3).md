@@ -46,7 +46,7 @@ Valid Usage
 
 `pGeneratedCommandsInfo->indirectCommandsLayout` **must** have been
 created with the
-`VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_NV` bit
+[VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_NV](VkIndirectCommandsLayoutUsageFlagBitsNV.html) bit
 set
 
 * 
@@ -75,7 +75,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdPreprocessGeneratedCommandsNV-commandBuffer-cmdpool) VUID-vkCmdPreprocessGeneratedCommandsNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdPreprocessGeneratedCommandsNV-renderpass) VUID-vkCmdPreprocessGeneratedCommandsNV-renderpass

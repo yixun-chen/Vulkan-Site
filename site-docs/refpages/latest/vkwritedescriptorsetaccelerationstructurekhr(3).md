@@ -53,8 +53,8 @@ Valid Usage
 
 Each acceleration structure in `pAccelerationStructures` **must** have
 been created with a `type` of
-`VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR` or
-`VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR`
+[VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR](VkAccelerationStructureTypeKHR.html) or
+[VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](VkAccelerationStructureTypeKHR.html)
 
 * 
 [](#VUID-VkWriteDescriptorSetAccelerationStructureKHR-pAccelerationStructures-03580) VUID-VkWriteDescriptorSetAccelerationStructureKHR-pAccelerationStructures-03580
@@ -68,7 +68,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkWriteDescriptorSetAccelerationStructureKHR-sType-sType) VUID-VkWriteDescriptorSetAccelerationStructureKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkWriteDescriptorSetAccelerationStructureKHR-pAccelerationStructures-parameter) VUID-VkWriteDescriptorSetAccelerationStructureKHR-pAccelerationStructures-parameter

@@ -42,22 +42,22 @@ typedef enum VkPipelineRobustnessBufferBehavior {
 typedef VkPipelineRobustnessBufferBehavior VkPipelineRobustnessBufferBehaviorEXT;
 
 * 
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT` specifies
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT](#) specifies
 that [out of bounds](../../../../spec/latest/chapters/shaders.html#shaders-execution-memory-access-bounds) buffer
 accesses follow the behavior of robust buffer access features enabled
 for the device.
 
 * 
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DISABLED` specifies that
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DISABLED](#) specifies that
 buffer accesses **must** not be [    out of bounds](../../../../spec/latest/chapters/shaders.html#shaders-execution-memory-access-bounds).
 
 * 
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS`
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](#)
 specifies that buffer accesses conform to
 [Robust Buffer Access](../../../../spec/latest/chapters/shaders.html#shaders-robust-buffer-access) guarantees.
 
 * 
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2`
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](#)
 specifies that buffer accesses conform to
 [Robust Buffer Access 2](../../../../spec/latest/chapters/shaders.html#shaders-robust-buffer-access2) guarantees.
 

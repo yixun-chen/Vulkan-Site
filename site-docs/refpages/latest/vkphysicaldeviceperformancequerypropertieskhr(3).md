@@ -37,7 +37,7 @@ typedef struct VkPhysicalDevicePerformanceQueryPropertiesKHR {
 structure.
 
 * 
-`allowCommandBufferQueryCopies` is `VK_TRUE` if the performance
+`allowCommandBufferQueryCopies` is [VK_TRUE](VK_TRUE.html) if the performance
 query pools are allowed to be used with [vkCmdCopyQueryPoolResults](vkCmdCopyQueryPoolResults.html).
 
 If the `VkPhysicalDevicePerformanceQueryPropertiesKHR` structure is included in the `pNext` chain of the
@@ -50,7 +50,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePerformanceQueryPropertiesKHR-sType-sType) VUID-VkPhysicalDevicePerformanceQueryPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_QUERY_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_QUERY_PROPERTIES_KHR](VkStructureType.html)
 
 [VK_KHR_performance_query](VK_KHR_performance_query.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

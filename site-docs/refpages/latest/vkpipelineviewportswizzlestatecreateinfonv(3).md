@@ -64,7 +64,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineViewportSwizzleStateCreateInfoNV-sType-sType) VUID-VkPipelineViewportSwizzleStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineViewportSwizzleStateCreateInfoNV-flags-zerobitmask) VUID-VkPipelineViewportSwizzleStateCreateInfoNV-flags-zerobitmask

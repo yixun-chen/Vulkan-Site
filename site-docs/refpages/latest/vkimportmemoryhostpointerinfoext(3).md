@@ -61,7 +61,7 @@ into a given physical device due to platform constraints.
 Importing memory from a particular host pointer **may** not be possible due to
 additional platform-specific restrictions beyond the scope of this
 specification in which case the implementation **must** fail the memory import
-operation with the error code `VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR`.
+operation with the error code [VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR](VkResult.html).
 
 Whether device memory objects imported from a host pointer hold a reference
 to their payload is **undefined**.
@@ -98,8 +98,8 @@ reported in [VkExternalMemoryProperties](VkExternalMemoryProperties.html)
 [](#VUID-VkImportMemoryHostPointerInfoEXT-handleType-01748) VUID-VkImportMemoryHostPointerInfoEXT-handleType-01748
 
 If `handleType` is not `0`, it **must** be
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html)
 
 * 
 [](#VUID-VkImportMemoryHostPointerInfoEXT-pHostPointer-01749) VUID-VkImportMemoryHostPointerInfoEXT-pHostPointer-01749
@@ -111,7 +111,7 @@ If `handleType` is not `0`, it **must** be
 [](#VUID-VkImportMemoryHostPointerInfoEXT-handleType-01750) VUID-VkImportMemoryHostPointerInfoEXT-handleType-01750
 
 If `handleType` is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html),
 `pHostPointer` **must** be a pointer to `allocationSize` number of
 bytes of host memory, where `allocationSize` is the member of the
 `VkMemoryAllocateInfo` structure this structure is chained to
@@ -120,7 +120,7 @@ bytes of host memory, where `allocationSize` is the member of the
 [](#VUID-VkImportMemoryHostPointerInfoEXT-handleType-01751) VUID-VkImportMemoryHostPointerInfoEXT-handleType-01751
 
 If `handleType` is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html),
 `pHostPointer` **must** be a pointer to `allocationSize` number of
 bytes of host mapped foreign memory, where `allocationSize` is the
 member of the `VkMemoryAllocateInfo` structure this structure is
@@ -131,7 +131,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMemoryHostPointerInfoEXT-sType-sType) VUID-VkImportMemoryHostPointerInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkImportMemoryHostPointerInfoEXT-handleType-parameter) VUID-VkImportMemoryHostPointerInfoEXT-handleType-parameter

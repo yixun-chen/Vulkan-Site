@@ -54,7 +54,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureGeometryKHR-sType-sType) VUID-VkAccelerationStructureGeometryKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkAccelerationStructureGeometryKHR-pNext-pNext) VUID-VkAccelerationStructureGeometryKHR-pNext-pNext
@@ -74,17 +74,17 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureGeometryKHR-triangles-parameter) VUID-VkAccelerationStructureGeometryKHR-triangles-parameter
 
- If `geometryType` is `VK_GEOMETRY_TYPE_TRIANGLES_KHR`, the `triangles` member of `geometry` **must** be a valid [VkAccelerationStructureGeometryTrianglesDataKHR](VkAccelerationStructureGeometryTrianglesDataKHR.html) structure
+ If `geometryType` is [VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), the `triangles` member of `geometry` **must** be a valid [VkAccelerationStructureGeometryTrianglesDataKHR](VkAccelerationStructureGeometryTrianglesDataKHR.html) structure
 
 * 
 [](#VUID-VkAccelerationStructureGeometryKHR-aabbs-parameter) VUID-VkAccelerationStructureGeometryKHR-aabbs-parameter
 
- If `geometryType` is `VK_GEOMETRY_TYPE_AABBS_KHR`, the `aabbs` member of `geometry` **must** be a valid [VkAccelerationStructureGeometryAabbsDataKHR](VkAccelerationStructureGeometryAabbsDataKHR.html) structure
+ If `geometryType` is [VK_GEOMETRY_TYPE_AABBS_KHR](VkGeometryTypeKHR.html), the `aabbs` member of `geometry` **must** be a valid [VkAccelerationStructureGeometryAabbsDataKHR](VkAccelerationStructureGeometryAabbsDataKHR.html) structure
 
 * 
 [](#VUID-VkAccelerationStructureGeometryKHR-instances-parameter) VUID-VkAccelerationStructureGeometryKHR-instances-parameter
 
- If `geometryType` is `VK_GEOMETRY_TYPE_INSTANCES_KHR`, the `instances` member of `geometry` **must** be a valid [VkAccelerationStructureGeometryInstancesDataKHR](VkAccelerationStructureGeometryInstancesDataKHR.html) structure
+ If `geometryType` is [VK_GEOMETRY_TYPE_INSTANCES_KHR](VkGeometryTypeKHR.html), the `instances` member of `geometry` **must** be a valid [VkAccelerationStructureGeometryInstancesDataKHR](VkAccelerationStructureGeometryInstancesDataKHR.html) structure
 
 * 
 [](#VUID-VkAccelerationStructureGeometryKHR-flags-parameter) VUID-VkAccelerationStructureGeometryKHR-flags-parameter

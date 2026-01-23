@@ -103,7 +103,7 @@ Extending [VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html), [Vk
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD`
+[VK_STRUCTURE_TYPE_PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD](VkStructureType.html)
 
 None.
 

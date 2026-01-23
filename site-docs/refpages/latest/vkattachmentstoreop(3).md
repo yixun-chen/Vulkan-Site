@@ -37,31 +37,31 @@ typedef enum VkAttachmentStoreOp {
 } VkAttachmentStoreOp;
 
 * 
-`VK_ATTACHMENT_STORE_OP_STORE` specifies the contents generated
+[VK_ATTACHMENT_STORE_OP_STORE](#) specifies the contents generated
 during the render pass and within the render area are written to memory.
 For attachments with a depth/stencil format, this uses the access type
-`VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT`.
+[VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](VkAccessFlagBits.html).
 For attachments with a color format, this uses the access type
-`VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT`.
+[VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT](VkAccessFlagBits.html).
 
 * 
-`VK_ATTACHMENT_STORE_OP_DONT_CARE` specifies the contents within the
+[VK_ATTACHMENT_STORE_OP_DONT_CARE](#) specifies the contents within the
 render area are not needed after rendering, and **may** be discarded; the
 contents of the attachment will be **undefined** inside the render area.
 For attachments with a depth/stencil format, this uses the access type
-`VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT`.
+[VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](VkAccessFlagBits.html).
 For attachments with a color format, this uses the access type
-`VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT`.
+[VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT](VkAccessFlagBits.html).
 
 * 
-`VK_ATTACHMENT_STORE_OP_NONE` specifies the contents within the
+[VK_ATTACHMENT_STORE_OP_NONE](#) specifies the contents within the
 render area are not accessed by the store operation as long as no values
 are written to the attachment during the render pass.
 If values are written during the render pass, this behaves identically
-to `VK_ATTACHMENT_STORE_OP_DONT_CARE` and with matching access
+to [VK_ATTACHMENT_STORE_OP_DONT_CARE](#) and with matching access
 semantics.
 
-|  | `VK_ATTACHMENT_STORE_OP_DONT_CARE` **can** cause contents generated during
+|  | [VK_ATTACHMENT_STORE_OP_DONT_CARE](#) **can** cause contents generated during
 | --- | --- |
 previous render passes to be discarded before reaching memory, even if no
 write to the attachment occurs during the current render pass. |

@@ -28,12 +28,12 @@ typedef enum VkTensorTilingARM {
 } VkTensorTilingARM;
 
 * 
-`VK_TENSOR_TILING_OPTIMAL_ARM` specifies optimal tiling (elements
+[VK_TENSOR_TILING_OPTIMAL_ARM](#) specifies optimal tiling (elements
 are laid out in an implementation-dependent arrangement, for more
 efficient memory access).
 
 * 
-`VK_TENSOR_TILING_LINEAR_ARM` specifies linear tiling (elements are
+[VK_TENSOR_TILING_LINEAR_ARM](#) specifies linear tiling (elements are
 laid out linearly and the offset between each element is determined by
 the [strides](../../../../spec/latest/chapters/resources.html#resources-tensor-description-strides) of the tensor).
 

@@ -37,7 +37,7 @@ typedef struct VkDeviceGroupPresentCapabilitiesKHR {
 structure.
 
 * 
-`presentMask` is an array of `VK_MAX_DEVICE_GROUP_SIZE`
+`presentMask` is an array of [VK_MAX_DEVICE_GROUP_SIZE](VK_MAX_DEVICE_GROUP_SIZE.html)
 `uint32_t` masks, where the mask at element i is non-zero if
 physical device i has a presentation engine, and where bit j
 is set in element i if physical device i **can** present
@@ -48,20 +48,20 @@ If element i is non-zero, then bit i **must** be set.
 `modes` is a bitmask of [VkDeviceGroupPresentModeFlagBitsKHR](VkDeviceGroupPresentModeFlagBitsKHR.html)
 indicating which device group presentation modes are supported.
 
-`modes` always has `VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR` set.
+`modes` always has [VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR](VkDeviceGroupPresentModeFlagBitsKHR.html) set.
 
 The present mode flags are also used when presenting an image, in
 [VkDeviceGroupPresentInfoKHR](VkDeviceGroupPresentInfoKHR.html)::`mode`.
 
 If a device group only includes a single physical device, then `modes`
-**must** equal `VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR`.
+**must** equal [VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR](VkDeviceGroupPresentModeFlagBitsKHR.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDeviceGroupPresentCapabilitiesKHR-sType-sType) VUID-VkDeviceGroupPresentCapabilitiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceGroupPresentCapabilitiesKHR-pNext-pNext) VUID-VkDeviceGroupPresentCapabilitiesKHR-pNext-pNext

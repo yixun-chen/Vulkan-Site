@@ -32,18 +32,18 @@ typedef enum VkCompositeAlphaFlagBitsKHR {
 These values are described as follows:
 
 * 
-`VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR`: The alpha component, if it
+[VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR](#): The alpha component, if it
 exists, of the images is ignored in the compositing process.
 Instead, the image is treated as if it has a constant alpha of 1.0.
 
 * 
-`VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR`: The alpha component, if
+[VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR](#): The alpha component, if
 it exists, of the images is respected in the compositing process.
 The non-alpha components of the image are expected to already be
 multiplied by the alpha component by the application.
 
 * 
-`VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR`: The alpha component,
+[VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR](#): The alpha component,
 if it exists, of the images is respected in the compositing process.
 The non-alpha components of the image are not expected to already be
 multiplied by the alpha component by the application; instead, the
@@ -51,7 +51,7 @@ compositor will multiply the non-alpha components of the image by the
 alpha component during compositing.
 
 * 
-`VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR`: The way in which the
+[VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR](#): The way in which the
 presentation engine treats the alpha component in the images is unknown
 to the Vulkan API.
 Instead, the application is responsible for setting the composite alpha

@@ -31,15 +31,15 @@ typedef enum VkVideoEncodeContentFlagBitsKHR {
 } VkVideoEncodeContentFlagBitsKHR;
 
 * 
-`VK_VIDEO_ENCODE_CONTENT_CAMERA_BIT_KHR` specifies that video
+[VK_VIDEO_ENCODE_CONTENT_CAMERA_BIT_KHR](#) specifies that video
 encoding is intended to be used to encode camera content.
 
 * 
-`VK_VIDEO_ENCODE_CONTENT_DESKTOP_BIT_KHR` specifies that video
+[VK_VIDEO_ENCODE_CONTENT_DESKTOP_BIT_KHR](#) specifies that video
 encoding is intended to be used to encode desktop content.
 
 * 
-`VK_VIDEO_ENCODE_CONTENT_RENDERED_BIT_KHR` specified that video
+[VK_VIDEO_ENCODE_CONTENT_RENDERED_BIT_KHR](#) specified that video
 encoding is intended to be used to encode rendered (e.g. game) content.
 
 |  | There are no restrictions on the combination of bits that **can** be specified

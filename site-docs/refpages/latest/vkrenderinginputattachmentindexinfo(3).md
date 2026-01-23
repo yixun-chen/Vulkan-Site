@@ -65,7 +65,7 @@ This structure allows applications to remap attachments to different input
 attachment indices.
 
 Each element of `pColorAttachmentInputIndices` set to a value of
-`VK_ATTACHMENT_UNUSED` indicates that the corresponding attachment will
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html) indicates that the corresponding attachment will
 not be used as an input attachment in this pipeline.
 Any other value in each of those elements will map the corresponding
 attachment to a `InputAttachmentIndex` value defined in shader code.
@@ -76,7 +76,7 @@ each element to its index within the array.
 If `pDepthInputAttachmentIndex` or `pStencilInputAttachmentIndex`
 are set to `NULL`, they map to input attachments without a
 `InputAttachmentIndex` decoration.
-If they point to a value of `VK_ATTACHMENT_UNUSED`, it indicates that
+If they point to a value of [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html), it indicates that
 the corresponding attachment will not be used as an input attachment in this
 pipeline.
 If they point to any other value it maps the corresponding attachment to a
@@ -129,40 +129,40 @@ Valid Usage
 
 If the [    `dynamicRenderingLocalRead`](../../../../spec/latest/chapters/features.html#features-dynamicRenderingLocalRead) feature is not enabled, and
 `pColorAttachmentInputIndices` is not `NULL`, each element **must** be
-`VK_ATTACHMENT_UNUSED`
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html)
 
 * 
 [](#VUID-VkRenderingInputAttachmentIndexInfo-dynamicRenderingLocalRead-09520) VUID-VkRenderingInputAttachmentIndexInfo-dynamicRenderingLocalRead-09520
 
 If the [    `dynamicRenderingLocalRead`](../../../../spec/latest/chapters/features.html#features-dynamicRenderingLocalRead) feature is not enabled,
 `pDepthInputAttachmentIndex` **must** be a valid pointer to a value of
-`VK_ATTACHMENT_UNUSED`
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html)
 
 * 
 [](#VUID-VkRenderingInputAttachmentIndexInfo-dynamicRenderingLocalRead-09521) VUID-VkRenderingInputAttachmentIndexInfo-dynamicRenderingLocalRead-09521
 
 If the [    `dynamicRenderingLocalRead`](../../../../spec/latest/chapters/features.html#features-dynamicRenderingLocalRead) feature is not enabled,
 `pStencilInputAttachmentIndex` **must** be a valid pointer to a value
-of `VK_ATTACHMENT_UNUSED`
+of [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html)
 
 * 
 [](#VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09522) VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09522
 
 Elements of `pColorAttachmentInputIndices` that are not
-`VK_ATTACHMENT_UNUSED` **must** each be unique
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html) **must** each be unique
 
 * 
 [](#VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09523) VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09523
 
 Elements of `pColorAttachmentInputIndices` that are not
-`VK_ATTACHMENT_UNUSED` **must** not take the same value as the content
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html) **must** not take the same value as the content
 of `pDepthInputAttachmentIndex`
 
 * 
 [](#VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09524) VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09524
 
 Elements of `pColorAttachmentInputIndices` that are not
-`VK_ATTACHMENT_UNUSED` **must** not take the same value as the content
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html) **must** not take the same value as the content
 of `pStencilInputAttachmentIndex`
 
 * 
@@ -171,12 +171,21 @@ of `pStencilInputAttachmentIndex`
 `colorAttachmentCount` **must** be less than or equal to
 [`maxColorAttachments`](../../../../spec/latest/chapters/limits.html#limits-maxColorAttachments)
 
+* 
+[](#VUID-VkRenderingInputAttachmentIndexInfo-pDepthInputAttachmentIndex-12274) VUID-VkRenderingInputAttachmentIndexInfo-pDepthInputAttachmentIndex-12274
+
+Elements of `pDepthInputAttachmentIndex`,
+`pStencilInputAttachmentIndex`, and
+`pColorAttachmentInputIndices` that are not
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html) **must** be less than
+[    `maxPerStageDescriptorInputAttachments`](../../../../spec/latest/chapters/limits.html#limits-maxPerStageDescriptorInputAttachments)
+
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkRenderingInputAttachmentIndexInfo-sType-sType) VUID-VkRenderingInputAttachmentIndexInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-parameter) VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-parameter

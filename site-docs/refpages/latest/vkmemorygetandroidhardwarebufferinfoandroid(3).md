@@ -45,7 +45,7 @@ Valid Usage
 * 
 [](#VUID-VkMemoryGetAndroidHardwareBufferInfoANDROID-handleTypes-01882) VUID-VkMemoryGetAndroidHardwareBufferInfoANDROID-handleTypes-01882
 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](VkExternalMemoryHandleTypeFlagBits.html)
 **must** have been included in
 [VkExportMemoryAllocateInfo](VkExportMemoryAllocateInfo.html)::`handleTypes` when `memory`
 was created
@@ -63,7 +63,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryGetAndroidHardwareBufferInfoANDROID-sType-sType) VUID-VkMemoryGetAndroidHardwareBufferInfoANDROID-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_GET_ANDROID_HARDWARE_BUFFER_INFO_ANDROID`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_GET_ANDROID_HARDWARE_BUFFER_INFO_ANDROID](VkStructureType.html)
 
 * 
 [](#VUID-VkMemoryGetAndroidHardwareBufferInfoANDROID-pNext-pNext) VUID-VkMemoryGetAndroidHardwareBufferInfoANDROID-pNext-pNext

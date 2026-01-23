@@ -92,13 +92,23 @@ completed execution.
 If semaphores to be signaled are provided, they define a
 [semaphore signal operation](../../../../spec/latest/chapters/synchronization.html#synchronization-semaphores-signaling).
 
+The first [synchronization scope](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-scopes) of
+each [semaphore signal operation](../../../../spec/latest/chapters/synchronization.html#synchronization-semaphores-signaling)
+defined by this structure includes all sparse binding operations defined by
+this structure.
+
+The second [synchronization scope](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-scopes) of
+each [semaphore wait operation](../../../../spec/latest/chapters/synchronization.html#synchronization-semaphores-waiting) defined
+by this structure includes all sparse binding operations defined by this
+structure.
+
 Valid Usage
 
 * 
 [](#VUID-VkBindSparseInfo-pWaitSemaphores-03246) VUID-VkBindSparseInfo-pWaitSemaphores-03246
 
 If any element of `pWaitSemaphores` or `pSignalSemaphores` was
-created with a [VkSemaphoreType](VkSemaphoreType.html) of `VK_SEMAPHORE_TYPE_TIMELINE`
+created with a [VkSemaphoreType](VkSemaphoreType.html) of [VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html)
 then the `pNext` chain **must** include a
 [VkTimelineSemaphoreSubmitInfo](VkTimelineSemaphoreSubmitInfo.html) structure
 
@@ -108,7 +118,7 @@ then the `pNext` chain **must** include a
 If the `pNext` chain of this structure includes a
 [VkTimelineSemaphoreSubmitInfo](VkTimelineSemaphoreSubmitInfo.html) structure and any element of
 `pWaitSemaphores` was created with a [VkSemaphoreType](VkSemaphoreType.html) of
-`VK_SEMAPHORE_TYPE_TIMELINE` then its `waitSemaphoreValueCount`
+[VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html) then its `waitSemaphoreValueCount`
 member **must** equal `waitSemaphoreCount`
 
 * 
@@ -117,7 +127,7 @@ member **must** equal `waitSemaphoreCount`
 If the `pNext` chain of this structure includes a
 [VkTimelineSemaphoreSubmitInfo](VkTimelineSemaphoreSubmitInfo.html) structure and any element of
 `pSignalSemaphores` was created with a [VkSemaphoreType](VkSemaphoreType.html) of
-`VK_SEMAPHORE_TYPE_TIMELINE` then its
+[VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html) then its
 `signalSemaphoreValueCount` member **must** equal
 `signalSemaphoreCount`
 
@@ -125,7 +135,7 @@ If the `pNext` chain of this structure includes a
 [](#VUID-VkBindSparseInfo-pSignalSemaphores-03249) VUID-VkBindSparseInfo-pSignalSemaphores-03249
 
 For each element of `pSignalSemaphores` created with a
-[VkSemaphoreType](VkSemaphoreType.html) of `VK_SEMAPHORE_TYPE_TIMELINE` the
+[VkSemaphoreType](VkSemaphoreType.html) of [VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html) the
 corresponding element of
 [VkTimelineSemaphoreSubmitInfo](VkTimelineSemaphoreSubmitInfo.html)::`pSignalSemaphoreValues` **must**
 have a value greater than the current value of the semaphore when the
@@ -136,7 +146,7 @@ executed
 [](#VUID-VkBindSparseInfo-pWaitSemaphores-03250) VUID-VkBindSparseInfo-pWaitSemaphores-03250
 
 For each element of `pWaitSemaphores` created with a
-[VkSemaphoreType](VkSemaphoreType.html) of `VK_SEMAPHORE_TYPE_TIMELINE` the
+[VkSemaphoreType](VkSemaphoreType.html) of [VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html) the
 corresponding element of
 [VkTimelineSemaphoreSubmitInfo](VkTimelineSemaphoreSubmitInfo.html)::`pWaitSemaphoreValues` **must**
 have a value which does not differ from the current value of the
@@ -148,7 +158,7 @@ operation on that semaphore by more than
 [](#VUID-VkBindSparseInfo-pSignalSemaphores-03251) VUID-VkBindSparseInfo-pSignalSemaphores-03251
 
 For each element of `pSignalSemaphores` created with a
-[VkSemaphoreType](VkSemaphoreType.html) of `VK_SEMAPHORE_TYPE_TIMELINE` the
+[VkSemaphoreType](VkSemaphoreType.html) of [VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html) the
 corresponding element of
 [VkTimelineSemaphoreSubmitInfo](VkTimelineSemaphoreSubmitInfo.html)::`pSignalSemaphoreValues` **must**
 have a value which does not differ from the current value of the
@@ -161,14 +171,14 @@ operation on that semaphore by more than
 
 If the `pNext` chain of this structure includes a
 [VkFrameBoundaryTensorsARM](VkFrameBoundaryTensorsARM.html) structure then it **must** also include a
-[VkFrameBoundaryEXT](VkFrameBoundaryEXT.html) structure.
+[VkFrameBoundaryEXT](VkFrameBoundaryEXT.html) structure
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkBindSparseInfo-sType-sType) VUID-VkBindSparseInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_SPARSE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_SPARSE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkBindSparseInfo-pNext-pNext) VUID-VkBindSparseInfo-pNext-pNext

@@ -180,33 +180,33 @@ The following core increased limits are **required**
 | `maxSamplerLodBias` | - | 2 | 14 | min |
 | `pointSizeGranularity` | 0.0 | 1.0 | 0.125 | max, fixed point increment |
 | `lineWidthGranularity` | 0.0 | 1.0 | 0.5 | max, fixed point increment |
-| `standardSampleLocations` | - | - | `VK_TRUE` | implementation-dependent |
+| `standardSampleLocations` | - | - | [VK_TRUE](../chapters/fundamentals.html#VK_TRUE) | implementation-dependent |
 | `maxColorAttachments` | - | 4 | 7 | min |
 
 | Limit Name | Unsupported Limit | Core Limit | Profile Limit | Limit Type1 |
 | --- | --- | --- | --- | --- |
 | `subgroupSize` | - | 1/4 | 4 | implementation-dependent |
-| `subgroupSupportedStages` | - | `VK_SHADER_STAGE_COMPUTE_BIT` | `VK_SHADER_STAGE_COMPUTE_BIT`
+| `subgroupSupportedStages` | - | [VK_SHADER_STAGE_COMPUTE_BIT](../chapters/pipelines.html#VkShaderStageFlagBits) | [VK_SHADER_STAGE_COMPUTE_BIT](../chapters/pipelines.html#VkShaderStageFlagBits)
 
-                                                   `VK_SHADER_STAGE_FRAGMENT_BIT` | implementation-dependent |
-| `subgroupSupportedOperations` | - | `VK_SUBGROUP_FEATURE_BASIC_BIT` | `VK_SUBGROUP_FEATURE_BASIC_BIT`
+                                                   [VK_SHADER_STAGE_FRAGMENT_BIT](../chapters/pipelines.html#VkShaderStageFlagBits) | implementation-dependent |
+| `subgroupSupportedOperations` | - | [VK_SUBGROUP_FEATURE_BASIC_BIT](../chapters/limits.html#VkSubgroupFeatureFlagBits) | [VK_SUBGROUP_FEATURE_BASIC_BIT](../chapters/limits.html#VkSubgroupFeatureFlagBits)
 
-                                                   `VK_SUBGROUP_FEATURE_VOTE_BIT`
+                                                   [VK_SUBGROUP_FEATURE_VOTE_BIT](../chapters/limits.html#VkSubgroupFeatureFlagBits)
 
-                                                   `VK_SUBGROUP_FEATURE_ARITHMETIC_BIT`
+                                                   [VK_SUBGROUP_FEATURE_ARITHMETIC_BIT](../chapters/limits.html#VkSubgroupFeatureFlagBits)
 
-                                                   `VK_SUBGROUP_FEATURE_BALLOT_BIT`
+                                                   [VK_SUBGROUP_FEATURE_BALLOT_BIT](../chapters/limits.html#VkSubgroupFeatureFlagBits)
 
-                                                   `VK_SUBGROUP_FEATURE_SHUFFLE_BIT`
+                                                   [VK_SUBGROUP_FEATURE_SHUFFLE_BIT](../chapters/limits.html#VkSubgroupFeatureFlagBits)
 
-                                                   `VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT`
+                                                   [VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT](../chapters/limits.html#VkSubgroupFeatureFlagBits)
 
-                                                   `VK_SUBGROUP_FEATURE_QUAD_BIT` | implementation-dependent |
+                                                   [VK_SUBGROUP_FEATURE_QUAD_BIT](../chapters/limits.html#VkSubgroupFeatureFlagBits) | implementation-dependent |
 
 | Limit Name | Unsupported Limit | Core Limit | Profile Limit | Limit Type1 |
 | --- | --- | --- | --- | --- |
-| `shaderSignedZeroInfNanPreserveFloat16` | - | - | `VK_TRUE` | implementation-dependent |
-| `shaderSignedZeroInfNanPreserveFloat32` | - | - | `VK_TRUE` | implementation-dependent |
+| `shaderSignedZeroInfNanPreserveFloat16` | - | - | [VK_TRUE](../chapters/fundamentals.html#VK_TRUE) | implementation-dependent |
+| `shaderSignedZeroInfNanPreserveFloat32` | - | - | [VK_TRUE](../chapters/fundamentals.html#VK_TRUE) | implementation-dependent |
 | `maxPerStageDescriptorUpdateAfterBindInputAttachments` | 0 | 4 | 7 | min |
 
 | Limit Name | Unsupported Limit | Core Limit | Profile Limit | Limit Type1 |

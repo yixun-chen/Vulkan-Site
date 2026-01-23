@@ -38,56 +38,56 @@ typedef union VkDescriptorDataEXT {
 
 * 
 `pSampler` is a pointer to a [VkSampler](VkSampler.html) handle specifying the
-parameters of a `VK_DESCRIPTOR_TYPE_SAMPLER` descriptor.
+parameters of a [VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html) descriptor.
 
 * 
 `pCombinedImageSampler` is a pointer to a
 [VkDescriptorImageInfo](VkDescriptorImageInfo.html) structure specifying the parameters of a
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` descriptor.
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) descriptor.
 
 * 
 `pInputAttachmentImage` is a pointer to a
 [VkDescriptorImageInfo](VkDescriptorImageInfo.html) structure specifying the parameters of a
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` descriptor.
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html) descriptor.
 
 * 
 `pSampledImage` is a pointer to a [VkDescriptorImageInfo](VkDescriptorImageInfo.html)
 structure specifying the parameters of a
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE` descriptor.
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html) descriptor.
 
 * 
 `pStorageImage` is a pointer to a [VkDescriptorImageInfo](VkDescriptorImageInfo.html)
 structure specifying the parameters of a
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE` descriptor.
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html) descriptor.
 
 * 
 `pUniformTexelBuffer` is a pointer to a
 [VkDescriptorAddressInfoEXT](VkDescriptorAddressInfoEXT.html) structure specifying the parameters of
-a `VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` descriptor.
+a [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html) descriptor.
 
 * 
 `pStorageTexelBuffer` is a pointer to a
 [VkDescriptorAddressInfoEXT](VkDescriptorAddressInfoEXT.html) structure specifying the parameters of
-a `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` descriptor.
+a [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html) descriptor.
 
 * 
 `pUniformBuffer` is a pointer to a [VkDescriptorAddressInfoEXT](VkDescriptorAddressInfoEXT.html)
 structure specifying the parameters of a
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` descriptor.
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html) descriptor.
 
 * 
 `pStorageBuffer` is a pointer to a [VkDescriptorAddressInfoEXT](VkDescriptorAddressInfoEXT.html)
 structure specifying the parameters of a
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` descriptor.
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html) descriptor.
 
 * 
 `accelerationStructure` is
      the address of a [VkAccelerationStructureKHR](VkAccelerationStructureKHR.html) specifying the
-     parameters of a `VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR`
+     parameters of a [VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](VkDescriptorType.html)
      descriptor
 , or
     a [VkAccelerationStructureNV](VkAccelerationStructureNV.html) handle specifying the parameters of a
-    `VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV` descriptor.
+    [VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](VkDescriptorType.html) descriptor.
 
 If the [`nullDescriptor`](../../../../spec/latest/chapters/features.html#features-nullDescriptor) feature is enabled,
 `pSampledImage`, `pStorageImage`, `pUniformTexelBuffer`,
@@ -107,7 +107,7 @@ Valid Usage
 [](#VUID-VkDescriptorDataEXT-type-08034) VUID-VkDescriptorDataEXT-type-08034
 
 If [VkDescriptorGetInfoEXT](VkDescriptorGetInfoEXT.html)::`type` is
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, and the
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html), and the
 [`nullDescriptor`](../../../../spec/latest/chapters/features.html#features-nullDescriptor) feature is not
 enabled, `pCombinedImageSampler->imageView` **must** not be
 [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
@@ -116,7 +116,7 @@ enabled, `pCombinedImageSampler->imageView` **must** not be
 [](#VUID-VkDescriptorDataEXT-type-08035) VUID-VkDescriptorDataEXT-type-08035
 
 If [VkDescriptorGetInfoEXT](VkDescriptorGetInfoEXT.html)::`type` is
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, and the
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html), and the
 [`nullDescriptor`](../../../../spec/latest/chapters/features.html#features-nullDescriptor) feature is not
 enabled, `pSampledImage` **must** not be `NULL` and
 `pSampledImage->imageView` **must** not be [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
@@ -125,7 +125,7 @@ enabled, `pSampledImage` **must** not be `NULL` and
 [](#VUID-VkDescriptorDataEXT-type-08036) VUID-VkDescriptorDataEXT-type-08036
 
 If [VkDescriptorGetInfoEXT](VkDescriptorGetInfoEXT.html)::`type` is
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, and the
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html), and the
 [`nullDescriptor`](../../../../spec/latest/chapters/features.html#features-nullDescriptor) feature is not
 enabled, `pStorageImage` **must** not be `NULL` and
 `pStorageImage->imageView` **must** not be [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
@@ -134,7 +134,7 @@ enabled, `pStorageImage` **must** not be `NULL` and
 [](#VUID-VkDescriptorDataEXT-type-08037) VUID-VkDescriptorDataEXT-type-08037
 
 If [VkDescriptorGetInfoEXT](VkDescriptorGetInfoEXT.html)::`type` is
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`, and the
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html), and the
 [`nullDescriptor`](../../../../spec/latest/chapters/features.html#features-nullDescriptor) feature is not
 enabled, `pUniformTexelBuffer` **must** not be `NULL`
 
@@ -142,7 +142,7 @@ enabled, `pUniformTexelBuffer` **must** not be `NULL`
 [](#VUID-VkDescriptorDataEXT-type-08038) VUID-VkDescriptorDataEXT-type-08038
 
 If [VkDescriptorGetInfoEXT](VkDescriptorGetInfoEXT.html)::`type` is
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`, and the
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html), and the
 [`nullDescriptor`](../../../../spec/latest/chapters/features.html#features-nullDescriptor) feature is not
 enabled, `pStorageTexelBuffer` **must** not be `NULL`
 
@@ -150,7 +150,7 @@ enabled, `pStorageTexelBuffer` **must** not be `NULL`
 [](#VUID-VkDescriptorDataEXT-type-08039) VUID-VkDescriptorDataEXT-type-08039
 
 If [VkDescriptorGetInfoEXT](VkDescriptorGetInfoEXT.html)::`type` is
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`, and the
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html), and the
 [`nullDescriptor`](../../../../spec/latest/chapters/features.html#features-nullDescriptor) feature is not
 enabled, `pUniformBuffer` **must** not be `NULL`
 
@@ -158,7 +158,7 @@ enabled, `pUniformBuffer` **must** not be `NULL`
 [](#VUID-VkDescriptorDataEXT-type-08040) VUID-VkDescriptorDataEXT-type-08040
 
 If [VkDescriptorGetInfoEXT](VkDescriptorGetInfoEXT.html)::`type` is
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`, and the
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html), and the
 [`nullDescriptor`](../../../../spec/latest/chapters/features.html#features-nullDescriptor) feature is not
 enabled, `pStorageBuffer` **must** not be `NULL`
 
@@ -166,7 +166,7 @@ enabled, `pStorageBuffer` **must** not be `NULL`
 [](#VUID-VkDescriptorDataEXT-type-08041) VUID-VkDescriptorDataEXT-type-08041
 
 If [VkDescriptorGetInfoEXT](VkDescriptorGetInfoEXT.html)::`type` is
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR`, and the
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](VkDescriptorType.html), and the
 [`nullDescriptor`](../../../../spec/latest/chapters/features.html#features-nullDescriptor) feature is not
 enabled, `accelerationStructure` **must** not be `0`
 
@@ -174,7 +174,7 @@ enabled, `accelerationStructure` **must** not be `0`
 [](#VUID-VkDescriptorDataEXT-type-08042) VUID-VkDescriptorDataEXT-type-08042
 
 If [VkDescriptorGetInfoEXT](VkDescriptorGetInfoEXT.html)::`type` is
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV`, and the
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](VkDescriptorType.html), and the
 [`nullDescriptor`](../../../../spec/latest/chapters/features.html#features-nullDescriptor) feature is not
 enabled, `accelerationStructure` **must** not be `0`
 

@@ -63,7 +63,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkIOSSurfaceCreateInfoMVK-sType-sType) VUID-VkIOSSurfaceCreateInfoMVK-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IOS_SURFACE_CREATE_INFO_MVK`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IOS_SURFACE_CREATE_INFO_MVK](VkStructureType.html)
 
 * 
 [](#VUID-VkIOSSurfaceCreateInfoMVK-pNext-pNext) VUID-VkIOSSurfaceCreateInfoMVK-pNext-pNext

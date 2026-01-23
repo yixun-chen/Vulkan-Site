@@ -29,19 +29,19 @@ typedef enum VkDisplacementMicromapFormatNV {
 } VkDisplacementMicromapFormatNV;
 
 * 
-`VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV` specifies
+[VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV](#) specifies
 that the given micromap format encodes 64 micro-triangles worth of
 displacements in 64 bytes as described in
 [Displacement Micromap Encoding](../../../../spec/latest/chapters/VK_EXT_opacity_micromap/micromaps.html#displacement-micromap-encoding).
 
 * 
-`VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV`
+[VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV](#)
 specifies that the given micromap format encodes 256 micro-triangles
 worth of displacements in 128 bytes as described in
 [Displacement Micromap Encoding](../../../../spec/latest/chapters/VK_EXT_opacity_micromap/micromaps.html#displacement-micromap-encoding).
 
 * 
-`VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV`
+[VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV](#)
 specifies that the given micromap format encodes 1024 micro-triangles
 worth of displacements in 128 bytes as described in
 [Displacement Micromap Encoding](../../../../spec/latest/chapters/VK_EXT_opacity_micromap/micromaps.html#displacement-micromap-encoding).

@@ -36,7 +36,7 @@ describe the following features:
 * 
  `screenBufferImport` indicates
 whether QNX Screen buffer import functionality is supported.
-If `screenBufferImport` is `VK_TRUE`, [VkDeviceMemory](VkDeviceMemory.html)
+If `screenBufferImport` is [VK_TRUE](VK_TRUE.html), [VkDeviceMemory](VkDeviceMemory.html)
 supports importing `_screen_buffer` from applications.
 In this case, the application is responsible for the resource management
 of the `_screen_buffer`.
@@ -64,7 +64,7 @@ If the `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX` structure is incl
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -72,7 +72,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX-sType-sType) VUID-VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_SCREEN_BUFFER_FEATURES_QNX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_SCREEN_BUFFER_FEATURES_QNX](VkStructureType.html)
 
 [VK_QNX_external_memory_screen_buffer](VK_QNX_external_memory_screen_buffer.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

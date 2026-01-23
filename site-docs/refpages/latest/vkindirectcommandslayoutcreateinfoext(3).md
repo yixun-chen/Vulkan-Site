@@ -59,7 +59,10 @@ in this layout use.
 If the [    `dynamicGeneratedPipelineLayout`](../../../../spec/latest/chapters/features.html#features-dynamicGeneratedPipelineLayout) feature is enabled,
 `pipelineLayout` **can** be [VK_NULL_HANDLE](VK_NULL_HANDLE.html) and the layout **must**
 be specified by chaining the [VkPipelineLayoutCreateInfo](VkPipelineLayoutCreateInfo.html) structure
-off the `pNext`
+off the `pNext`.
+If the [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) feature is
+enabled, `pipelineLayout` **can** be [VK_NULL_HANDLE](VK_NULL_HANDLE.html) without
+providing a [VkPipelineLayoutCreateInfo](VkPipelineLayoutCreateInfo.html) structure.
 
 * 
 `tokenCount` is the length of the individual command sequence.
@@ -105,29 +108,30 @@ Valid Usage
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11093) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11093
 
 The number of tokens in the `pTokens` array with `type` equal to
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT` **must** be less
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](VkIndirectCommandsTokenTypeEXT.html) **must** be less
 than or equal to `1`
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11145) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11145
 
 The number of tokens in the `pTokens` array with `type` equal to
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT` **must** be less
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](VkIndirectCommandsTokenTypeEXT.html) **must** be less
 than or equal to `1`
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11094) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11094
 
-The number of tokens in the `pTokens` array with `type` equal to
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT` **must** be less
-than or equal to `1`
+    The number of tokens in the `pTokens` array with `type` equal to
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](VkIndirectCommandsTokenTypeEXT.html)
+or [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT](VkIndirectCommandsTokenTypeEXT.html)
+    **must** be less than or equal to `1`
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11095) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11095
 
 If the action command token in the `pTokens` array is not an indexed
 draw token, then `pTokens` **must** not contain a member with
-`type` set to `VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT`
+`type` set to [VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT](VkIndirectCommandsTokenTypeEXT.html)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11096) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11096
@@ -135,13 +139,13 @@ draw token, then `pTokens` **must** not contain a member with
 If the action command token in the `pTokens` array is not a non-mesh
 draw token, then `pTokens` **must** not contain a member with
 `type` set to
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT](VkIndirectCommandsTokenTypeEXT.html)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11097) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11097
 
 If the `pTokens` array contains multiple tokens with `type`
-equal to `VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT`, then
+equal to [VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT](VkIndirectCommandsTokenTypeEXT.html), then
 there **must** be no duplicate
 [VkIndirectCommandsVertexBufferTokenEXT](VkIndirectCommandsVertexBufferTokenEXT.html)::`vertexBindingUnit`
 values
@@ -149,10 +153,11 @@ values
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11099) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11099
 
-For all `VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT` and
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT` type tokens in
-`pTokens`, there **must** be no overlapping ranges between any
-specified push constant ranges
+    For all [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](VkIndirectCommandsTokenTypeEXT.html),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT](VkIndirectCommandsTokenTypeEXT.html), [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT](VkIndirectCommandsTokenTypeEXT.html),
+    and [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](VkIndirectCommandsTokenTypeEXT.html) type tokens
+    in `pTokens`, there **must** be no overlapping ranges between any
+    specified push constant ranges
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11100) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11100
@@ -164,15 +169,15 @@ array
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11139) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11139
 
 If the `pTokens` array contains a
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT` token, then this
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](VkIndirectCommandsTokenTypeEXT.html) token, then this
 token **must** be the first token in the array
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11101) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11101
 
 For any element of `pTokens`, if `type` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT` or
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT` and the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](VkIndirectCommandsTokenTypeEXT.html) or
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](VkIndirectCommandsTokenTypeEXT.html) and the
 [    `dynamicGeneratedPipelineLayout`](../../../../spec/latest/chapters/features.html#features-dynamicGeneratedPipelineLayout) feature is not enabled, then the
 `pipelineLayout` **must** not be [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
@@ -180,8 +185,8 @@ For any element of `pTokens`, if `type` is
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11102) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11102
 
 For any element of `pTokens`, if `type` is either
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT` or
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT` and
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](VkIndirectCommandsTokenTypeEXT.html) or
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](VkIndirectCommandsTokenTypeEXT.html) and
 `pipelineLayout` is [VK_NULL_HANDLE](VK_NULL_HANDLE.html), then the `pNext` chain
 **must** include a [VkPipelineLayoutCreateInfo](VkPipelineLayoutCreateInfo.html) struct
 
@@ -195,46 +200,46 @@ or equal to the `offset` member of the previous tokens
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11104) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11104
 
 For any element of `pTokens`, if `type` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_COUNT_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_COUNT_EXT`, or
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_EXT`, then `shaderStages`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT](VkIndirectCommandsTokenTypeEXT.html),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT](VkIndirectCommandsTokenTypeEXT.html),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT](VkIndirectCommandsTokenTypeEXT.html),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT](VkIndirectCommandsTokenTypeEXT.html),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT](VkIndirectCommandsTokenTypeEXT.html),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT](VkIndirectCommandsTokenTypeEXT.html),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_COUNT_EXT](VkIndirectCommandsTokenTypeEXT.html),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_EXT](VkIndirectCommandsTokenTypeEXT.html),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_COUNT_EXT](VkIndirectCommandsTokenTypeEXT.html), or
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_EXT](VkIndirectCommandsTokenTypeEXT.html), then `shaderStages`
 **must** contain graphics stages
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11105) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11105
 
 For any element of `pTokens`, if `type` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT`, then
-`shaderStages` **must** be `VK_SHADER_STAGE_COMPUTE_BIT`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT](VkIndirectCommandsTokenTypeEXT.html), then
+`shaderStages` **must** be [VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11106) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11106
 
 For any element of `pTokens`, if `type` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT` or
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT`, then
-`shaderStages` **must** contain `VK_SHADER_STAGE_MESH_BIT_EXT`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT](VkIndirectCommandsTokenTypeEXT.html) or
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT](VkIndirectCommandsTokenTypeEXT.html), then
+`shaderStages` **must** contain [VK_SHADER_STAGE_MESH_BIT_EXT](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11107) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11107
 
 For any element of `pTokens`, if `type` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT` or
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT`, then
-the `shaderStages` **must** contain `VK_SHADER_STAGE_MESH_BIT_NV`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT](VkIndirectCommandsTokenTypeEXT.html) or
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT](VkIndirectCommandsTokenTypeEXT.html), then
+the `shaderStages` **must** contain [VK_SHADER_STAGE_MESH_BIT_NV](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11108) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11108
 
 For any element of `pTokens`, if `type` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT`, then
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT](VkIndirectCommandsTokenTypeEXT.html), then
 `shaderStages` **must** contain ray tracing stages
 
 * 
@@ -242,28 +247,30 @@ For any element of `pTokens`, if `type` is
 
     If `shaderStages` contains graphics stages then the state tokens in
     `pTokens` **must** not include
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT`,
-    `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT](VkIndirectCommandsTokenTypeEXT.html),
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT](VkIndirectCommandsTokenTypeEXT.html)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-shaderStages-11110) VUID-VkIndirectCommandsLayoutCreateInfoEXT-shaderStages-11110
 
-If `shaderStages` is `VK_SHADER_STAGE_COMPUTE_BIT` then the
-state tokens in `pTokens` **must** only include
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT`, or
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT`
+    If `shaderStages` is [VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html) then the
+    state tokens in `pTokens` **must** only include
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT](VkIndirectCommandsTokenTypeEXT.html),
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](VkIndirectCommandsTokenTypeEXT.html),
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](VkIndirectCommandsTokenTypeEXT.html),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT](VkIndirectCommandsTokenTypeEXT.html), [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT](VkIndirectCommandsTokenTypeEXT.html),
+    or [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](VkIndirectCommandsTokenTypeEXT.html)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-shaderStages-11111) VUID-VkIndirectCommandsLayoutCreateInfoEXT-shaderStages-11111
 
-If `shaderStages` contains ray tracing stages then the state tokens
-in `pTokens` **must** only include
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT`, or
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT`
+    If `shaderStages` contains ray tracing stages then the state tokens
+    in `pTokens` **must** only include
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT](VkIndirectCommandsTokenTypeEXT.html),
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](VkIndirectCommandsTokenTypeEXT.html),
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](VkIndirectCommandsTokenTypeEXT.html),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT](VkIndirectCommandsTokenTypeEXT.html), [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT](VkIndirectCommandsTokenTypeEXT.html),
+    or [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](VkIndirectCommandsTokenTypeEXT.html)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-shaderStages-11112) VUID-VkIndirectCommandsLayoutCreateInfoEXT-shaderStages-11112
@@ -271,29 +278,32 @@ in `pTokens` **must** only include
 The `shaderStages` **must** only contain stages from one of the
 following:
 
+[VK_SHADER_STAGE_ALL](VkShaderStageFlagBits.html) (if the [     `descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) feature is enabled)
+
+* 
 graphics stages
 
 * 
-`VK_SHADER_STAGE_COMPUTE_BIT`
+[VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html)
 
 * 
-mesh stages and `VK_SHADER_STAGE_FRAGMENT_BIT`
+mesh stages and [VK_SHADER_STAGE_FRAGMENT_BIT](VkShaderStageFlagBits.html)
 
 * 
 ray tracing stages
 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-shaderStages-11113) VUID-VkIndirectCommandsLayoutCreateInfoEXT-shaderStages-11113
 
-If `shaderStages` contains `VK_SHADER_STAGE_FRAGMENT_BIT`, then
-`shaderStages` **must** also contain `VK_SHADER_STAGE_VERTEX_BIT`
-or `VK_SHADER_STAGE_MESH_BIT_EXT`
+If `shaderStages` contains [VK_SHADER_STAGE_FRAGMENT_BIT](VkShaderStageFlagBits.html), then
+`shaderStages` **must** also contain [VK_SHADER_STAGE_VERTEX_BIT](VkShaderStageFlagBits.html)
+or [VK_SHADER_STAGE_MESH_BIT_EXT](VkShaderStageFlagBits.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-sType-sType) VUID-VkIndirectCommandsLayoutCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pNext-pNext) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pNext-pNext

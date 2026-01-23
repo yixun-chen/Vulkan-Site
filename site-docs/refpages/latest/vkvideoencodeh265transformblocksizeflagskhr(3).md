@@ -26,7 +26,7 @@ setting a mask of zero or more
 [VkVideoEncodeH265TransformBlockSizeFlagBitsKHR](VkVideoEncodeH265TransformBlockSizeFlagBitsKHR.html).
 
 Implementations **must** support at least one of
-`VkVideoEncodeH265TransformBlockSizeFlagBitsKHR`.
+[VkVideoEncodeH265TransformBlockSizeFlagBitsKHR](VkVideoEncodeH265TransformBlockSizeFlagBitsKHR.html).
 
 [VK_KHR_video_encode_h265](VK_KHR_video_encode_h265.html), `VkFlags`, [VkVideoEncodeH265CapabilitiesKHR](VkVideoEncodeH265CapabilitiesKHR.html), [VkVideoEncodeH265TransformBlockSizeFlagBitsKHR](VkVideoEncodeH265TransformBlockSizeFlagBitsKHR.html)
 

@@ -21,8 +21,8 @@ vkGetMemoryWin32HandleNV - Retrieve Win32 handle to a device memory object
 
 To retrieve the handle corresponding to a device memory object created with
 [VkExportMemoryAllocateInfoNV](VkExportMemoryAllocateInfoNV.html)::`handleTypes` set to include
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_NV`, call:
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV](VkExternalMemoryHandleTypeFlagBitsNV.html) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_NV](VkExternalMemoryHandleTypeFlagBitsNV.html), call:
 
 // Provided by VK_NV_external_memory_win32
 VkResult vkGetMemoryWin32HandleNV(
@@ -92,21 +92,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_NV_external_memory_win32](VK_NV_external_memory_win32.html), [VkDevice](VkDevice.html), [VkDeviceMemory](VkDeviceMemory.html), [VkExternalMemoryHandleTypeFlagsNV](VkExternalMemoryHandleTypeFlagsNV.html)
 

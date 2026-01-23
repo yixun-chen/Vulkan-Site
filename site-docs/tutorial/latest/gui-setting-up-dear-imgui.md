@@ -42,6 +42,23 @@
 - [Resource_Initialization_—_Texture_Sampling_Configuration_and_Descriptor_Management](#_resource_initialization_texture_sampling_configuration_and_descriptor_management)
 - [Frame Management and Rendering](#_frame_management_and_rendering)
 - [Frame_Management_and_Rendering](#_frame_management_and_rendering)
+- [Begin a rendering scope](#_begin_a_rendering_scope)
+- [Begin_a_rendering_scope](#_begin_a_rendering_scope)
+- [Bind pipeline and set viewport](#_bind_pipeline_and_set_viewport)
+- [Bind_pipeline_and_set_viewport](#_bind_pipeline_and_set_viewport)
+- [Push per-frame constants](#_push_per_frame_constants)
+- [Push_per-frame_constants](#_push_per_frame_constants)
+- [Bind geometry buffers](#_bind_geometry_buffers)
+- [Bind_geometry_buffers](#_bind_geometry_buffers)
+- [Iterate command lists, set scissor, draw](#_iterate_command_lists_set_scissor_draw)
+- [Iterate_command_lists,_set_scissor,_draw](#_iterate_command_lists_set_scissor_draw)
+- [End the rendering scope](#_end_the_rendering_scope)
+- [End_the_rendering_scope](#_end_the_rendering_scope)
+- [Input Handling](#_input_handling)
+- [Using the ImGuiVulkanUtil Class](#_using_the_imguivulkanutil_class)
+- [Using_the_ImGuiVulkanUtil_Class](#_using_the_imguivulkanutil_class)
+- [Testing the Integration](#_testing_the_integration)
+- [Testing_the_Integration](#_testing_the_integration)
 
 ## Content
 
@@ -227,6 +244,9 @@ ImGuiVulkanUtil::ImGuiVulkanUtil(vk::raii::Device& device, vk::raii::PhysicalDev
 
 ImGuiVulkanUtil::~ImGuiVulkanUtil() {
     // Wait for device to finish operations before destroying resources
+    // NOTE: waitIdle() is acceptable in destructors/cleanup code but should NEVER be used
+    // in the main rendering loop as it causes severe performance issues. For frame
+    // synchronization, use fences and semaphores instead.
     if (device) {
         device->waitIdle();
     }
@@ -290,7 +310,7 @@ void ImGuiVulkanUtil::setStyle(uint32_t index) {
 
 Now let’s implement the method to initialize all Vulkan resources needed for ImGui rendering. This complex process involves several distinct steps that work together to create the GPU resources required for text and UI rendering.
 
-First extract font atlas data from ImGui and calculates the memory requirements for GPU storage.
+First extract font atlas data from ImGui and calculate the memory requirements for GPU storage.
 
 void ImGuiVulkanUtil::initResources() {
     // Extract font atlas data from ImGui's internal font system
@@ -535,149 +555,121 @@ void ImGuiVulkanUtil::updateBuffers() {
     indexBuffer.unmap();
 }
 
-==== Begin a rendering scope
-
 Before issuing any UI draw commands, we open a dynamic rendering scope that targets the current framebuffer. This replaces vkCmdBeginRenderPass/EndRenderPass and keeps the UI pass lightweight.
-
-[source,cpp]
 
 void ImGuiVulkanUtil::drawFrame(vk::raii::CommandBuffer& commandBuffer) {
     ImDrawData* drawData = ImGui::GetDrawData();
-    if (!drawData || drawData→CmdListsCount == 0) {
+    if (!drawData || drawData->CmdListsCount == 0) {
         return;
     }
 
-// Begin dynamic rendering
-vk::RenderingAttachmentInfo colorAttachment{};
-// Note: In a real implementation, you would set imageView, imageLayout,
-// loadOp, storeOp, and clearValue based on your swapchain image
+    // Begin dynamic rendering
+    vk::RenderingAttachmentInfo colorAttachment{};
+    // Note: In a real implementation, you would set imageView, imageLayout,
+    // loadOp, storeOp, and clearValue based on your swapchain image
 
-vk::RenderingInfo renderingInfo{};
-renderingInfo.renderArea = vk::Rect2D{{0, 0}, {static_cast(drawData->DisplaySize.x),
-                                               static_cast(drawData->DisplaySize.y)}};
-renderingInfo.layerCount = 1;
-renderingInfo.colorAttachmentCount = 1;
-renderingInfo.pColorAttachments = &colorAttachment;
+    vk::RenderingInfo renderingInfo{};
+    renderingInfo.renderArea = vk::Rect2D{{0, 0}, {static_cast(drawData->DisplaySize.x),
+                                                   static_cast(drawData->DisplaySize.y)}};
+    renderingInfo.layerCount = 1;
+    renderingInfo.colorAttachmentCount = 1;
+    renderingInfo.pColorAttachments = &colorAttachment;
 
-commandBuffer.beginRendering(renderingInfo);
+    commandBuffer.beginRendering(renderingInfo);
 
 At this point, commands affect the UI overlay only. Next we bind state that doesn’t change per draw.
 
-==== Bind pipeline and set viewport
+    // Bind the pipeline used for ImGui
+    commandBuffer.bindPipeline(vk::PipelineBindPoint::eGraphics, *pipeline);
 
-[source,cpp]
-
-// Bind the pipeline used for ImGui
-commandBuffer.bindPipeline(vk::PipelineBindPoint::eGraphics, *pipeline);
-
-// Configure viewport for UI pixel coordinates
-vk::Viewport viewport{};
-viewport.width = drawData->DisplaySize.x;
-viewport.height = drawData->DisplaySize.y;
-viewport.minDepth = 0.0f;
-viewport.maxDepth = 1.0f;
-commandBuffer.setViewport(0, viewport);
+    // Configure viewport for UI pixel coordinates
+    vk::Viewport viewport{};
+    viewport.width = drawData->DisplaySize.x;
+    viewport.height = drawData->DisplaySize.y;
+    viewport.minDepth = 0.0f;
+    viewport.maxDepth = 1.0f;
+    commandBuffer.setViewport(0, viewport);
 
 The pipeline has blending and raster states tailored for UI. The viewport maps ImGui’s coordinate system to the framebuffer.
 
-==== Push per-frame constants
-
-[source,cpp]
-
-// Convert from ImGui coordinates into NDC via a simple scale/translate
-pushConstBlock.scale = glm::vec2(2.0f / drawData->DisplaySize.x, 2.0f / drawData->DisplaySize.y);
-pushConstBlock.translate = glm::vec2(-1.0f);
-commandBuffer.pushConstants(*pipelineLayout, vk::ShaderStageFlagBits::eVertex,
-                          0, sizeof(PushConstBlock), &pushConstBlock);
+    // Convert from ImGui coordinates into NDC via a simple scale/translate
+    pushConstBlock.scale = glm::vec2(2.0f / drawData->DisplaySize.x, 2.0f / drawData->DisplaySize.y);
+    pushConstBlock.translate = glm::vec2(-1.0f);
+    commandBuffer.pushConstants(*pipelineLayout, vk::ShaderStageFlagBits::eVertex,
+                              0, sizeof(PushConstBlock), &pushConstBlock);
 
 This keeps the shader simple and avoids per-vertex work for coordinate transforms.
 
-==== Bind geometry buffers
+    // We already filled these buffers this frame
+    vk::Buffer vertexBuffers[] = { vertexBuffer.getHandle() };
+    vk::DeviceSize offsets[] = { 0 };
+    commandBuffer.bindVertexBuffers(0, 1, vertexBuffers, offsets);
+    commandBuffer.bindIndexBuffer(indexBuffer.getHandle(), 0, vk::IndexType::eUint16);
 
-[source,cpp]
+    int vertexOffset = 0;
+    int indexOffset = 0;
 
-// We already filled these buffers this frame
-vk::Buffer vertexBuffers[] = { vertexBuffer.getHandle() };
-vk::DeviceSize offsets[] = { 0 };
-commandBuffer.bindVertexBuffers(0, 1, vertexBuffers, offsets);
-commandBuffer.bindIndexBuffer(indexBuffer.getHandle(), 0, vk::IndexType::eUint16);
+    for (int i = 0; i CmdListsCount; i++) {
+        const ImDrawList* cmdList = drawData->CmdLists[i];
 
-==== Iterate command lists, set scissor, draw
+        for (int j = 0; j CmdBuffer.Size; j++) {
+            const ImDrawCmd* pcmd = &cmdList->CmdBuffer[j];
 
-[source,cpp]
+            // Clip per draw call
+            vk::Rect2D scissor{};
+            scissor.offset.x = std::max(static_cast(pcmd->ClipRect.x), 0);
+            scissor.offset.y = std::max(static_cast(pcmd->ClipRect.y), 0);
+            scissor.extent.width = static_cast(pcmd->ClipRect.z - pcmd->ClipRect.x);
+            scissor.extent.height = static_cast(pcmd->ClipRect.w - pcmd->ClipRect.y);
+            commandBuffer.setScissor(0, scissor);
 
-int vertexOffset = 0;
-int indexOffset = 0;
+            // Bind font (and any UI) textures for this draw
+            commandBuffer.bindDescriptorSets(vk::PipelineBindPoint::eGraphics,
+                                           *pipelineLayout, 0, *descriptorSet, {});
 
-for (int i = 0; i CmdListsCount; i++) {
-    const ImDrawList* cmdList = drawData->CmdLists[i];
+            // Issue indexed draw for this UI batch
+            commandBuffer.drawIndexed(pcmd->ElemCount, 1, indexOffset, vertexOffset, 0);
+            indexOffset += pcmd->ElemCount;
+        }
 
-for (int j = 0; j CmdBuffer.Size; j++) {
-    const ImDrawCmd* pcmd = &cmdList->CmdBuffer[j];
-
-// Clip per draw call
-vk::Rect2D scissor{};
-scissor.offset.x = std::max(static_cast(pcmd->ClipRect.x), 0);
-scissor.offset.y = std::max(static_cast(pcmd->ClipRect.y), 0);
-scissor.extent.width = static_cast(pcmd->ClipRect.z - pcmd->ClipRect.x);
-scissor.extent.height = static_cast(pcmd->ClipRect.w - pcmd->ClipRect.y);
-commandBuffer.setScissor(0, scissor);
-
-// Bind font (and any UI) textures for this draw
-commandBuffer.bindDescriptorSets(vk::PipelineBindPoint::eGraphics,
-                               *pipelineLayout, 0, *descriptorSet, {});
-
-    // Issue indexed draw for this UI batch
-    commandBuffer.drawIndexed(pcmd->ElemCount, 1, indexOffset, vertexOffset, 0);
-    indexOffset += pcmd->ElemCount;
-}
-
-    vertexOffset += cmdList->VtxBuffer.Size;
-}
+        vertexOffset += cmdList->VtxBuffer.Size;
+    }
 
 Each ImDrawCmd provides a scissor rect that clips widgets efficiently without extra passes.
-
-==== End the rendering scope
-
-[source,cpp]
 
     // Close the rendering scope for the UI overlay
     commandBuffer.endRendering();
 }
 
-=== Input Handling
-
-Let's implement the input handling methods:
-
-[source,cpp]
+Let’s implement the input handling methods:
 
 void ImGuiVulkanUtil::handleKey(int key, int scancode, int action, int mods) {
     ImGuiIO& io = ImGui::GetIO();
 
-// This example uses GLFW key codes and actions, but you can adapt this
-// to work with any windowing library's input system
+    // This example uses GLFW key codes and actions, but you can adapt this
+    // to work with any windowing library's input system
 
-// Map the platform-specific key action to ImGui's key state
-// In GLFW: GLFW_PRESS = 1, GLFW_RELEASE = 0
-const int KEY_PRESSED = 1;  // Generic key pressed value
-const int KEY_RELEASED = 0; // Generic key released value
+    // Map the platform-specific key action to ImGui's key state
+    // In GLFW: GLFW_PRESS = 1, GLFW_RELEASE = 0
+    const int KEY_PRESSED = 1;  // Generic key pressed value
+    const int KEY_RELEASED = 0; // Generic key released value
 
-if (action == KEY_PRESSED)
-    io.KeysDown[key] = true;
-if (action == KEY_RELEASED)
-    io.KeysDown[key] = false;
+    if (action == KEY_PRESSED)
+        io.KeysDown[key] = true;
+    if (action == KEY_RELEASED)
+        io.KeysDown[key] = false;
 
-// Update modifier keys
-// These key codes are GLFW-specific, but you would use your windowing library's
-// equivalent key codes for other libraries
-const int KEY_LEFT_CTRL = 341;   // GLFW_KEY_LEFT_CONTROL
-const int KEY_RIGHT_CTRL = 345;  // GLFW_KEY_RIGHT_CONTROL
-const int KEY_LEFT_SHIFT = 340;  // GLFW_KEY_LEFT_SHIFT
-const int KEY_RIGHT_SHIFT = 344; // GLFW_KEY_RIGHT_SHIFT
-const int KEY_LEFT_ALT = 342;    // GLFW_KEY_LEFT_ALT
-const int KEY_RIGHT_ALT = 346;   // GLFW_KEY_RIGHT_ALT
-const int KEY_LEFT_SUPER = 343;  // GLFW_KEY_LEFT_SUPER
-const int KEY_RIGHT_SUPER = 347; // GLFW_KEY_RIGHT_SUPER
+    // Update modifier keys
+    // These key codes are GLFW-specific, but you would use your windowing library's
+    // equivalent key codes for other libraries
+    const int KEY_LEFT_CTRL = 341;   // GLFW_KEY_LEFT_CONTROL
+    const int KEY_RIGHT_CTRL = 345;  // GLFW_KEY_RIGHT_CONTROL
+    const int KEY_LEFT_SHIFT = 340;  // GLFW_KEY_LEFT_SHIFT
+    const int KEY_RIGHT_SHIFT = 344; // GLFW_KEY_RIGHT_SHIFT
+    const int KEY_LEFT_ALT = 342;    // GLFW_KEY_LEFT_ALT
+    const int KEY_RIGHT_ALT = 346;   // GLFW_KEY_RIGHT_ALT
+    const int KEY_LEFT_SUPER = 343;  // GLFW_KEY_LEFT_SUPER
+    const int KEY_RIGHT_SUPER = 347; // GLFW_KEY_RIGHT_SUPER
 
     io.KeyCtrl = io.KeysDown[KEY_LEFT_CTRL] || io.KeysDown[KEY_RIGHT_CTRL];
     io.KeyShift = io.KeysDown[KEY_LEFT_SHIFT] || io.KeysDown[KEY_RIGHT_SHIFT];
@@ -694,14 +686,12 @@ void ImGuiVulkanUtil::charPressed(uint32_t key) {
     io.AddInputCharacter(key);
 }
 
-=== Using the ImGuiVulkanUtil Class
+Now that we’ve implemented our ImGuiVulkanUtil class, let’s see how to use it in a Vulkan application:
 
-Now that we've implemented our ImGuiVulkanUtil class, let's see how to use it in a Vulkan application:
-
-[source,cpp]
-
+// In your application class
 ImGuiVulkanUtil imGui;
 
+// During initialization
 void initImGui() {
     // Initialize ImGui directly
     imGui = ImGuiVulkanUtil(
@@ -715,27 +705,33 @@ void initImGui() {
     imGui.initResources(); // No renderPass needed with dynamic rendering
 }
 
+// In your render loop
 void drawFrame() {
-    // …​ existing frame preparation code …​
+    // ... existing frame preparation code ...
 
-// Update ImGui
-if (imGui.newFrame()) {
-    imGui.updateBuffers();
-}
+    // Update ImGui
+    if (imGui.newFrame()) {
+        imGui.updateBuffers();
+    }
 
-// Begin command buffer recording
-// Note: With dynamic rendering, we don't need to begin a render pass
-// The ImGui drawFrame method will handle dynamic rendering internally
+    // Begin command buffer recording
+    // Note: With dynamic rendering, we don't need to begin a render pass
+    // The ImGui drawFrame method will handle dynamic rendering internally
 
-// Render scene using dynamic rendering
-// ...
+    // Render scene using dynamic rendering
+    // ...
 
-// Render ImGui (in multi-frame renderers, pass the current frame index to bind per-frame buffers)
-imGui.drawFrame(commandBuffer);
+    // Render ImGui (in multi-frame renderers, pass the current frame index to bind per-frame buffers)
+    imGui.drawFrame(commandBuffer);
 
     // ... submit command buffer ...
 }
 
+// Input handling
+// This example shows how to handle input with GLFW, but you can adapt this
+// to work with any windowing library's input system
+
+// Example key callback function for GLFW
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
     // First check if ImGui wants to capture this input
     imGui.handleKey(key, scancode, action, mods);
@@ -746,31 +742,33 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
     }
 }
 
+// Example character input callback for GLFW
 void charCallback(GLFWwindow* window, unsigned int codepoint) {
     imGui.charPressed(codepoint);
 }
 
+// With other windowing libraries, you would implement similar callback functions
+// using their equivalent APIs and event systems
+
+// Cleanup
 void cleanup() {
-    // …​ existing cleanup code …​
+    // ... existing cleanup code ...
 
     // ImGui will be automatically cleaned up when the application exits
     // No manual cleanup needed
 }
 
-=== Testing the Integration
+To verify that our ImGui integration is working correctly, we can use the ImGui demo window, which showcases all of ImGui’s features:
 
-To verify that our ImGui integration is working correctly, we can use the ImGui demo window, which showcases all of ImGui's features:
-
-[source,cpp]
-
+// In your ImGuiVulkanUtil::newFrame method
 bool ImGuiVulkanUtil::newFrame() {
     ImGui::NewFrame();
 
-// Show the demo window
-ImGui::ShowDemoWindow();
+    // Show the demo window
+    ImGui::ShowDemoWindow();
 
-ImGui::EndFrame();
-ImGui::Render();
+    ImGui::EndFrame();
+    ImGui::Render();
 
     // Check if buffers need updating
     // ...
@@ -778,6 +776,6 @@ ImGui::Render();
 
 With this implementation, you have a Vulkan implementation for ImGui that allows you to customize the rendering process to fit your specific needs.
 
-In the next section, we'll explore how to handle input for both the GUI and the 3D scene.
+In the next section, we’ll explore how to handle input for both the GUI and the 3D scene.
 
-link:01_introduction.adoc[Previous: Introduction] | link:03_input_handling.adoc[Next: Input Handling]
+[Previous: Introduction](01_introduction.html) | [Next: Input Handling](03_input_handling.html)

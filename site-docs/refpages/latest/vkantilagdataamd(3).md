@@ -61,7 +61,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAntiLagDataAMD-sType-sType) VUID-VkAntiLagDataAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD](VkStructureType.html)
 
 * 
 [](#VUID-VkAntiLagDataAMD-mode-parameter) VUID-VkAntiLagDataAMD-mode-parameter

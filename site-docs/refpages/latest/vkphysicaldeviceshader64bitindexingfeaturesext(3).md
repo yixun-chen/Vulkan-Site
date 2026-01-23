@@ -51,7 +51,7 @@ If the `VkPhysicalDeviceShader64BitIndexingFeaturesEXT` structure is included in
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceShader64BitIndexingFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -59,7 +59,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShader64BitIndexingFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceShader64BitIndexingFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_shader_64bit_indexing](VK_EXT_shader_64bit_indexing.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

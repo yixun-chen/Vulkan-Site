@@ -29,7 +29,7 @@ typedef enum VkPartitionedAccelerationStructureOpTypeNV {
 } VkPartitionedAccelerationStructureOpTypeNV;
 
 * 
-`VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_WRITE_INSTANCE_NV` is
+[VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_WRITE_INSTANCE_NV](#) is
 used to assign a transformed bottom level acceleration structure to an
 instance and partition.
 This is similar to [VkAccelerationStructureInstanceKHR](VkAccelerationStructureInstanceKHR.html) that defines
@@ -39,12 +39,12 @@ Any partition that contains at least one of the affected instances will
 have their internal acceleration structure rebuilt.
 
 * 
-`VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_UPDATE_INSTANCE_NV`
+[VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_UPDATE_INSTANCE_NV](#)
 specifies that an instance will be updated with a new bottom level
 acceleration structure.
 
 * 
-`VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_WRITE_PARTITION_TRANSLATION_NV`
+[VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_WRITE_PARTITION_TRANSLATION_NV](#)
 specifies that a partition will be assigned a
 [translation vector](../../../../spec/latest/chapters/accelstructures.html#ptlas-partition-translation).
 

@@ -70,26 +70,26 @@ memories or scratch memories being used by any of the builds. |
 Accesses to the micromap scratch buffers as identified by the
 [VkMicromapBuildInfoEXT](#VkMicromapBuildInfoEXT)::`scratchData` buffer device addresses
 **must** be [synchronized](../synchronization.html#synchronization-dependencies) with the
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](../synchronization.html#VkPipelineStageFlagBits2KHR)
 [pipeline stage](../synchronization.html#synchronization-pipeline-stages) and an
 [access type](../synchronization.html#synchronization-access-types) of
-(`VK_ACCESS_2_MICROMAP_READ_BIT_EXT` |
-`VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT`).
+([VK_ACCESS_2_MICROMAP_READ_BIT_EXT](../synchronization.html#VkAccessFlagBits2KHR) |
+[VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT](../synchronization.html#VkAccessFlagBits2KHR)).
 Accesses to [VkMicromapBuildInfoEXT](#VkMicromapBuildInfoEXT)::`dstMicromap` **must** be
 [synchronized](../synchronization.html#synchronization-dependencies) with the
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](../synchronization.html#VkPipelineStageFlagBits2KHR)
 [pipeline stage](../synchronization.html#synchronization-pipeline-stages) and an
 [access type](../synchronization.html#synchronization-access-types) of
-`VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT`.
+[VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT](../synchronization.html#VkAccessFlagBits2KHR).
 
 Accesses to other input buffers as identified by any used values of
 [VkMicromapBuildInfoEXT](#VkMicromapBuildInfoEXT)::`data` or
 [VkMicromapBuildInfoEXT](#VkMicromapBuildInfoEXT)::`triangleArray` **must** be
 [synchronized](../synchronization.html#synchronization-dependencies) with the
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](../synchronization.html#VkPipelineStageFlagBits2KHR)
 [pipeline stage](../synchronization.html#synchronization-pipeline-stages) and an
 [access type](../synchronization.html#synchronization-access-types) of
-`VK_ACCESS_SHADER_READ_BIT`.
+[VK_ACCESS_SHADER_READ_BIT](../synchronization.html#VkAccessFlagBits).
 
 Valid Usage
 
@@ -155,7 +155,7 @@ For each element of `pInfos`, the `buffer` used to create its
 * 
 [](#VUID-vkCmdBuildMicromapsEXT-pInfos-07509) VUID-vkCmdBuildMicromapsEXT-pInfos-07509
 
-If `pInfos`[i].`mode` is `VK_BUILD_MICROMAP_MODE_BUILD_EXT`,
+If `pInfos`[i].`mode` is [VK_BUILD_MICROMAP_MODE_BUILD_EXT](#VkBuildMicromapModeEXT),
 all addresses between `pInfos`[i].`scratchData.deviceAddress`
 and `pInfos`[i].`scratchData.deviceAddress` +  N - 1 **must**
 be in the buffer device address range of the same buffer, where N is
@@ -170,7 +170,7 @@ given by the `buildScratchSize` member of the
 The buffers from which the buffer device addresses for all of the
 `data` and `triangleArray` members of all `pInfos`[i] are
 queried **must** have been created with the
-`VK_BUFFER_USAGE_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT` usage flag
+[VK_BUFFER_USAGE_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT](../resources.html#VkBufferUsageFlagBits) usage flag
 set
 
 * 
@@ -179,7 +179,7 @@ set
 For each element of `pInfos`[i] the buffer from which the buffer
 device address `pInfos`[i].`scratchData.deviceAddress` is
 queried **must** have been created with the
-`VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](../resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdBuildMicromapsEXT-pInfos-07512) VUID-vkCmdBuildMicromapsEXT-pInfos-07512
@@ -236,7 +236,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBuildMicromapsEXT-commandBuffer-cmdpool) VUID-vkCmdBuildMicromapsEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](../devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBuildMicromapsEXT-renderpass) VUID-vkCmdBuildMicromapsEXT-renderpass
@@ -287,12 +287,12 @@ typedef enum VkOpacityMicromapFormatEXT {
 } VkOpacityMicromapFormatEXT;
 
 * 
-`VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT` specifies that the given
+[VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT](#VkOpacityMicromapFormatEXT) specifies that the given
 micromap format has one bit per subtriangle encoding either fully opaque
 or fully transparent.
 
 * 
-`VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT` specifies that the given
+[VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT](#VkOpacityMicromapFormatEXT) specifies that the given
 micromap format has two bits per subtriangle encoding four modes which
 can be interpreted as described in [ray    traversal](../raytraversal.html#ray-opacity-micromap).
 
@@ -310,19 +310,19 @@ typedef enum VkDisplacementMicromapFormatNV {
 } VkDisplacementMicromapFormatNV;
 
 * 
-`VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV` specifies
+[VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV](#VkDisplacementMicromapFormatNV) specifies
 that the given micromap format encodes 64 micro-triangles worth of
 displacements in 64 bytes as described in
 [Displacement Micromap Encoding](#displacement-micromap-encoding).
 
 * 
-`VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV`
+[VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV](#VkDisplacementMicromapFormatNV)
 specifies that the given micromap format encodes 256 micro-triangles
 worth of displacements in 128 bytes as described in
 [Displacement Micromap Encoding](#displacement-micromap-encoding).
 
 * 
-`VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV`
+[VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV](#VkDisplacementMicromapFormatNV)
 specifies that the given micromap format encodes 1024 micro-triangles
 worth of displacements in 128 bytes as described in
 [Displacement Micromap Encoding](#displacement-micromap-encoding).
@@ -421,8 +421,8 @@ In practice, compilers compile [VkMicromapTriangleEXT](#VkMicromapTriangleEXT) t
 pattern.
 
 For opacity micromaps, the data at `data` is packed as either one bit
-per element for `VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT` or two bits per
-element for `VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT` and is packed from
+per element for [VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT](#VkOpacityMicromapFormatEXT) or two bits per
+element for [VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT](#VkOpacityMicromapFormatEXT) and is packed from
 LSB to MSB in each byte.
 The data at each index in those bytes is interpreted as discussed in
 [Ray Opacity Micromap](../raytraversal.html#ray-opacity-micromap).
@@ -441,37 +441,37 @@ pointer, the other **must** be `NULL`
 * 
 [](#VUID-VkMicromapBuildInfoEXT-type-07517) VUID-VkMicromapBuildInfoEXT-type-07517
 
-If `type` is `VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT` the
+If `type` is [VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT](../resources.html#VkMicromapTypeEXT) the
 `format` member of [VkMicromapUsageEXT](#VkMicromapUsageEXT) **must** be a valid value
-from `VkOpacityMicromapFormatEXT`
+from [VkOpacityMicromapFormatEXT](#VkOpacityMicromapFormatEXT)
 
 * 
 [](#VUID-VkMicromapBuildInfoEXT-type-07518) VUID-VkMicromapBuildInfoEXT-type-07518
 
-If `type` is `VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT` the
+If `type` is [VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT](../resources.html#VkMicromapTypeEXT) the
 `format` member of [VkMicromapTriangleEXT](#VkMicromapTriangleEXT) **must** be a valid
-value from `VkOpacityMicromapFormatEXT`
+value from [VkOpacityMicromapFormatEXT](#VkOpacityMicromapFormatEXT)
 
 * 
 [](#VUID-VkMicromapBuildInfoEXT-type-08704) VUID-VkMicromapBuildInfoEXT-type-08704
 
-If `type` is `VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV` the
+If `type` is [VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV](../resources.html#VkMicromapTypeEXT) the
 `format` member of [VkMicromapUsageEXT](#VkMicromapUsageEXT) **must** be a valid value
-from `VkDisplacementMicromapFormatNV`
+from [VkDisplacementMicromapFormatNV](#VkDisplacementMicromapFormatNV)
 
 * 
 [](#VUID-VkMicromapBuildInfoEXT-type-08705) VUID-VkMicromapBuildInfoEXT-type-08705
 
-If `type` is `VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV` the
+If `type` is [VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV](../resources.html#VkMicromapTypeEXT) the
 `format` member of [VkMicromapTriangleEXT](#VkMicromapTriangleEXT) **must** be a valid
-value from `VkDisplacementMicromapFormatNV`
+value from [VkDisplacementMicromapFormatNV](#VkDisplacementMicromapFormatNV)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkMicromapBuildInfoEXT-sType-sType) VUID-VkMicromapBuildInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MICROMAP_BUILD_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MICROMAP_BUILD_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMicromapBuildInfoEXT-pNext-pNext) VUID-VkMicromapBuildInfoEXT-pNext-pNext
@@ -498,7 +498,7 @@ Valid Usage (Implicit)
 
  If `usageCountsCount` is not `0`, and `ppUsageCounts` is not `NULL`, `ppUsageCounts` **must** be a valid pointer to an array of `usageCountsCount` valid pointers to [VkMicromapUsageEXT](#VkMicromapUsageEXT) structures
 
-The `VkBuildMicromapModeEXT` enumeration is defined as:
+The [VkBuildMicromapModeEXT](#VkBuildMicromapModeEXT) enumeration is defined as:
 
 // Provided by VK_EXT_opacity_micromap
 typedef enum VkBuildMicromapModeEXT {
@@ -506,7 +506,7 @@ typedef enum VkBuildMicromapModeEXT {
 } VkBuildMicromapModeEXT;
 
 * 
-`VK_BUILD_MICROMAP_MODE_BUILD_EXT` specifies that the destination
+[VK_BUILD_MICROMAP_MODE_BUILD_EXT](#VkBuildMicromapModeEXT) specifies that the destination
 micromap will be built using the specified data.
 
 The `VkMicromapUsageEXT` structure is defined as:
@@ -534,16 +534,16 @@ Valid Usage
 [](#VUID-VkMicromapUsageEXT-format-07519) VUID-VkMicromapUsageEXT-format-07519
 
 If the [VkMicromapTypeEXT](../resources.html#VkMicromapTypeEXT) of the micromap is
-`VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT` then `format` **must** be
-`VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT` or
-`VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT`
+[VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT](../resources.html#VkMicromapTypeEXT) then `format` **must** be
+[VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT](#VkOpacityMicromapFormatEXT) or
+[VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT](#VkOpacityMicromapFormatEXT)
 
 * 
 [](#VUID-VkMicromapUsageEXT-format-07520) VUID-VkMicromapUsageEXT-format-07520
 
 If the [VkMicromapTypeEXT](../resources.html#VkMicromapTypeEXT) of the micromap is
-`VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT` and `format` is
-`VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT` then `subdivisionLevel`
+[VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT](../resources.html#VkMicromapTypeEXT) and `format` is
+[VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT](#VkOpacityMicromapFormatEXT) then `subdivisionLevel`
 **must** be less than or equal to
 [VkPhysicalDeviceOpacityMicromapPropertiesEXT](../limits.html#VkPhysicalDeviceOpacityMicromapPropertiesEXT)::`maxOpacity2StateSubdivisionLevel`
 
@@ -551,8 +551,8 @@ If the [VkMicromapTypeEXT](../resources.html#VkMicromapTypeEXT) of the micromap 
 [](#VUID-VkMicromapUsageEXT-format-07521) VUID-VkMicromapUsageEXT-format-07521
 
 If the [VkMicromapTypeEXT](../resources.html#VkMicromapTypeEXT) of the micromap is
-`VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT` and `format` is
-`VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT` then `subdivisionLevel`
+[VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT](../resources.html#VkMicromapTypeEXT) and `format` is
+[VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT](#VkOpacityMicromapFormatEXT) then `subdivisionLevel`
 **must** be less than or equal to
 [VkPhysicalDeviceOpacityMicromapPropertiesEXT](../limits.html#VkPhysicalDeviceOpacityMicromapPropertiesEXT)::`maxOpacity4StateSubdivisionLevel`
 
@@ -560,16 +560,16 @@ If the [VkMicromapTypeEXT](../resources.html#VkMicromapTypeEXT) of the micromap 
 [](#VUID-VkMicromapUsageEXT-format-08706) VUID-VkMicromapUsageEXT-format-08706
 
 If the [VkMicromapTypeEXT](../resources.html#VkMicromapTypeEXT) of the micromap is
-`VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV` then `format` **must**
-be `VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV`,
-`VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV` or
-`VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV`
+[VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV](../resources.html#VkMicromapTypeEXT) then `format` **must**
+be [VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV](#VkDisplacementMicromapFormatNV),
+[VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV](#VkDisplacementMicromapFormatNV) or
+[VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV](#VkDisplacementMicromapFormatNV)
 
 * 
 [](#VUID-VkMicromapUsageEXT-subdivisionLevel-08707) VUID-VkMicromapUsageEXT-subdivisionLevel-08707
 
 If the [VkMicromapTypeEXT](../resources.html#VkMicromapTypeEXT) of the micromap is
-`VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV` then
+[VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV](../resources.html#VkMicromapTypeEXT) then
 `subdivisionLevel` **must** be less than or equal to
 [VkPhysicalDeviceDisplacementMicromapPropertiesNV](../limits.html#VkPhysicalDeviceDisplacementMicromapPropertiesNV)::`maxDisplacementMicromapSubdivisionLevel`
 
@@ -602,16 +602,16 @@ Valid Usage
 [](#VUID-VkMicromapTriangleEXT-format-07522) VUID-VkMicromapTriangleEXT-format-07522
 
 If the [VkMicromapTypeEXT](../resources.html#VkMicromapTypeEXT) of the micromap is
-`VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT` then `format` **must** be
-`VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT` or
-`VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT`
+[VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT](../resources.html#VkMicromapTypeEXT) then `format` **must** be
+[VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT](#VkOpacityMicromapFormatEXT) or
+[VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT](#VkOpacityMicromapFormatEXT)
 
 * 
 [](#VUID-VkMicromapTriangleEXT-format-07523) VUID-VkMicromapTriangleEXT-format-07523
 
 If the [VkMicromapTypeEXT](../resources.html#VkMicromapTypeEXT) of the micromap is
-`VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT` and `format` is
-`VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT` then `subdivisionLevel`
+[VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT](../resources.html#VkMicromapTypeEXT) and `format` is
+[VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT](#VkOpacityMicromapFormatEXT) then `subdivisionLevel`
 **must** be less than or equal to
 [VkPhysicalDeviceOpacityMicromapPropertiesEXT](../limits.html#VkPhysicalDeviceOpacityMicromapPropertiesEXT)::`maxOpacity2StateSubdivisionLevel`
 
@@ -619,8 +619,8 @@ If the [VkMicromapTypeEXT](../resources.html#VkMicromapTypeEXT) of the micromap 
 [](#VUID-VkMicromapTriangleEXT-format-07524) VUID-VkMicromapTriangleEXT-format-07524
 
 If the [VkMicromapTypeEXT](../resources.html#VkMicromapTypeEXT) of the micromap is
-`VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT` and `format` is
-`VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT` then `subdivisionLevel`
+[VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT](../resources.html#VkMicromapTypeEXT) and `format` is
+[VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT](#VkOpacityMicromapFormatEXT) then `subdivisionLevel`
 **must** be less than or equal to
 [VkPhysicalDeviceOpacityMicromapPropertiesEXT](../limits.html#VkPhysicalDeviceOpacityMicromapPropertiesEXT)::`maxOpacity4StateSubdivisionLevel`
 
@@ -628,16 +628,16 @@ If the [VkMicromapTypeEXT](../resources.html#VkMicromapTypeEXT) of the micromap 
 [](#VUID-VkMicromapTriangleEXT-format-08708) VUID-VkMicromapTriangleEXT-format-08708
 
 If the [VkMicromapTypeEXT](../resources.html#VkMicromapTypeEXT) of the micromap is
-`VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV` then `format` **must**
-be `VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV`,
-`VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV` or
-`VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV`
+[VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV](../resources.html#VkMicromapTypeEXT) then `format` **must**
+be [VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV](#VkDisplacementMicromapFormatNV),
+[VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV](#VkDisplacementMicromapFormatNV) or
+[VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV](#VkDisplacementMicromapFormatNV)
 
 * 
 [](#VUID-VkMicromapTriangleEXT-subdivisionLevel-08709) VUID-VkMicromapTriangleEXT-subdivisionLevel-08709
 
 If the [VkMicromapTypeEXT](../resources.html#VkMicromapTypeEXT) of the micromap is
-`VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV` then
+[VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV](../resources.html#VkMicromapTypeEXT) then
 `subdivisionLevel` **must** be less than or equal to
 [VkPhysicalDeviceDisplacementMicromapPropertiesNV](../limits.html#VkPhysicalDeviceDisplacementMicromapPropertiesNV)::`maxDisplacementMicromapSubdivisionLevel`
 
@@ -686,18 +686,18 @@ will contain the `micromapCount` number of results.
 
 Accesses to any of the micromaps listed in `pMicromaps` **must** be
 [synchronized](../synchronization.html#synchronization-dependencies) with the
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](../synchronization.html#VkPipelineStageFlagBits2KHR)
 [pipeline stage](../synchronization.html#synchronization-pipeline-stages) and an
 [access type](../synchronization.html#synchronization-access-types) of
-`VK_ACCESS_2_MICROMAP_READ_BIT_EXT`.
+[VK_ACCESS_2_MICROMAP_READ_BIT_EXT](../synchronization.html#VkAccessFlagBits2KHR).
 
 * 
 If `queryType` is
-`VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT`, then the value
+[VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT](../queries.html#VkQueryType), then the value
 written out is the number of bytes required by a serialized micromap.
 
 * 
-If `queryType` is `VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT`,
+If `queryType` is [VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT](../queries.html#VkQueryType),
 then the value written out is the number of bytes required by a
 compacted micromap.
 
@@ -737,14 +737,14 @@ the execution of this command
 [](#VUID-vkCmdWriteMicromapsPropertiesEXT-pMicromaps-07502) VUID-vkCmdWriteMicromapsPropertiesEXT-pMicromaps-07502
 
 All micromaps in `pMicromaps` **must** have been constructed with
-`VK_BUILD_MICROMAP_ALLOW_COMPACTION_BIT_EXT` if `queryType` is
-`VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT`
+[VK_BUILD_MICROMAP_ALLOW_COMPACTION_BIT_EXT](../resources.html#VkBuildMicromapFlagBitsEXT) if `queryType` is
+[VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT](../queries.html#VkQueryType)
 
 * 
 [](#VUID-vkCmdWriteMicromapsPropertiesEXT-queryType-07503) VUID-vkCmdWriteMicromapsPropertiesEXT-queryType-07503
 
-`queryType` **must** be `VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT`
-or `VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT`
+`queryType` **must** be [VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT](../queries.html#VkQueryType)
+or [VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT](../queries.html#VkQueryType)
 
 Valid Usage (Implicit)
 
@@ -776,7 +776,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdWriteMicromapsPropertiesEXT-commandBuffer-cmdpool) VUID-vkCmdWriteMicromapsPropertiesEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](../devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdWriteMicromapsPropertiesEXT-renderpass) VUID-vkCmdWriteMicromapsPropertiesEXT-renderpass
@@ -842,11 +842,11 @@ micromap in the manner specified by `pInfo->mode`.
 
 Accesses to `pInfo->src` and `pInfo->dst` **must** be
 [synchronized](../synchronization.html#synchronization-dependencies) with the
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](../synchronization.html#VkPipelineStageFlagBits2KHR)
 [pipeline stage](../synchronization.html#synchronization-pipeline-stages) and an
 [access type](../synchronization.html#synchronization-access-types) of
-`VK_ACCESS_2_MICROMAP_READ_BIT_EXT` or
-`VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT` as appropriate.
+[VK_ACCESS_2_MICROMAP_READ_BIT_EXT](../synchronization.html#VkAccessFlagBits2KHR) or
+[VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT](../synchronization.html#VkAccessFlagBits2KHR) as appropriate.
 
 Valid Usage
 
@@ -882,7 +882,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdCopyMicromapEXT-commandBuffer-cmdpool) VUID-vkCmdCopyMicromapEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](../devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdCopyMicromapEXT-renderpass) VUID-vkCmdCopyMicromapEXT-renderpass
@@ -951,8 +951,8 @@ Valid Usage
 * 
 [](#VUID-VkCopyMicromapInfoEXT-mode-07531) VUID-VkCopyMicromapInfoEXT-mode-07531
 
-`mode` **must** be `VK_COPY_MICROMAP_MODE_COMPACT_EXT` or
-`VK_COPY_MICROMAP_MODE_CLONE_EXT`
+`mode` **must** be [VK_COPY_MICROMAP_MODE_COMPACT_EXT](#VkCopyMicromapModeEXT) or
+[VK_COPY_MICROMAP_MODE_CLONE_EXT](#VkCopyMicromapModeEXT)
 
 * 
 [](#VUID-VkCopyMicromapInfoEXT-src-07532) VUID-VkCopyMicromapInfoEXT-src-07532
@@ -963,9 +963,9 @@ prior to the execution of this command
 * 
 [](#VUID-VkCopyMicromapInfoEXT-mode-07533) VUID-VkCopyMicromapInfoEXT-mode-07533
 
-If `mode` is `VK_COPY_MICROMAP_MODE_COMPACT_EXT`, `src`
+If `mode` is [VK_COPY_MICROMAP_MODE_COMPACT_EXT](#VkCopyMicromapModeEXT), `src`
 **must** have been constructed with
-`VK_BUILD_MICROMAP_ALLOW_COMPACTION_BIT_EXT` in the build
+[VK_BUILD_MICROMAP_ALLOW_COMPACTION_BIT_EXT](../resources.html#VkBuildMicromapFlagBitsEXT) in the build
 
 * 
 [](#VUID-VkCopyMicromapInfoEXT-buffer-07534) VUID-VkCopyMicromapInfoEXT-buffer-07534
@@ -984,7 +984,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCopyMicromapInfoEXT-sType-sType) VUID-VkCopyMicromapInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COPY_MICROMAP_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COPY_MICROMAP_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkCopyMicromapInfoEXT-pNext-pNext) VUID-VkCopyMicromapInfoEXT-pNext-pNext
@@ -1023,21 +1023,21 @@ typedef enum VkCopyMicromapModeEXT {
 } VkCopyMicromapModeEXT;
 
 * 
-`VK_COPY_MICROMAP_MODE_CLONE_EXT` creates a direct copy of the
+[VK_COPY_MICROMAP_MODE_CLONE_EXT](#VkCopyMicromapModeEXT) creates a direct copy of the
 micromap specified in `src` into the one specified by `dst`.
 The `dst` micromap **must** have been created with the same parameters
 as `src`.
 
 * 
-`VK_COPY_MICROMAP_MODE_SERIALIZE_EXT` serializes the micromap to a
+[VK_COPY_MICROMAP_MODE_SERIALIZE_EXT](#VkCopyMicromapModeEXT) serializes the micromap to a
 semi-opaque format which can be reloaded on a compatible implementation.
 
 * 
-`VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT` deserializes the semi-opaque
+[VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT](#VkCopyMicromapModeEXT) deserializes the semi-opaque
 serialization format in the buffer to the micromap.
 
 * 
-`VK_COPY_MICROMAP_MODE_COMPACT_EXT` creates a more compact version
+[VK_COPY_MICROMAP_MODE_COMPACT_EXT](#VkCopyMicromapModeEXT) creates a more compact version
 of a micromap `src` into `dst`.
 The micromap `dst` **must** have been created with a size at least as
 large as that returned by [vkCmdWriteMicromapsPropertiesEXT](#vkCmdWriteMicromapsPropertiesEXT) after
@@ -1058,13 +1058,13 @@ recorded.
 `pInfo` is an a pointer to a [VkCopyMicromapToMemoryInfoEXT](#VkCopyMicromapToMemoryInfoEXT)
 structure defining the copy operation.
 
-Accesses to `pInfo->src` **must** be [synchronized](../synchronization.html#synchronization-dependencies) with the `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+Accesses to `pInfo->src` **must** be [synchronized](../synchronization.html#synchronization-dependencies) with the [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](../synchronization.html#VkPipelineStageFlagBits2KHR)
 [pipeline stage](../synchronization.html#synchronization-pipeline-stages) and an
 [access type](../synchronization.html#synchronization-access-types) of
-`VK_ACCESS_2_MICROMAP_READ_BIT_EXT`.
+[VK_ACCESS_2_MICROMAP_READ_BIT_EXT](../synchronization.html#VkAccessFlagBits2KHR).
 Accesses to the buffer indicated by `pInfo->dst.deviceAddress` **must** be
-synchronized with the `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
-pipeline stage and an access type of `VK_ACCESS_TRANSFER_WRITE_BIT`.
+synchronized with the [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](../synchronization.html#VkPipelineStageFlagBits2KHR)
+pipeline stage and an access type of [VK_ACCESS_TRANSFER_WRITE_BIT](../synchronization.html#VkAccessFlagBits).
 
 This command produces the same results as [vkCopyMicromapToMemoryEXT](#vkCopyMicromapToMemoryEXT),
 but writes its result to a device address, and is executed on the device
@@ -1076,11 +1076,11 @@ equally used by either [vkCmdCopyMemoryToMicromapEXT](#vkCmdCopyMemoryToMicromap
 The defined header structure for the serialized data consists of:
 
 * 
-`VK_UUID_SIZE` bytes of data matching
+[VK_UUID_SIZE](../devsandqueues.html#VK_UUID_SIZE) bytes of data matching
 `VkPhysicalDeviceIDProperties`::`driverUUID`
 
 * 
-`VK_UUID_SIZE` bytes of data identifying the compatibility for
+[VK_UUID_SIZE](../devsandqueues.html#VK_UUID_SIZE) bytes of data identifying the compatibility for
     comparison using [vkGetDeviceMicromapCompatibilityEXT](#vkGetDeviceMicromapCompatibilityEXT)
 The serialized data is written to the buffer (or read from the buffer)
 according to the host endianness.
@@ -1130,7 +1130,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdCopyMicromapToMemoryEXT-commandBuffer-cmdpool) VUID-vkCmdCopyMicromapToMemoryEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](../devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdCopyMicromapToMemoryEXT-renderpass) VUID-vkCmdCopyMicromapToMemoryEXT-renderpass
@@ -1208,19 +1208,19 @@ The memory pointed to by `dst` **must** be at least as large as the
 serialization size of `src`, as reported by
 [vkWriteMicromapsPropertiesEXT](#vkWriteMicromapsPropertiesEXT) or
 [vkCmdWriteMicromapsPropertiesEXT](#vkCmdWriteMicromapsPropertiesEXT) with a query type of
-`VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT`
+[VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT](../queries.html#VkQueryType)
 
 * 
 [](#VUID-VkCopyMicromapToMemoryInfoEXT-mode-07542) VUID-VkCopyMicromapToMemoryInfoEXT-mode-07542
 
-`mode` **must** be `VK_COPY_MICROMAP_MODE_SERIALIZE_EXT`
+`mode` **must** be [VK_COPY_MICROMAP_MODE_SERIALIZE_EXT](#VkCopyMicromapModeEXT)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkCopyMicromapToMemoryInfoEXT-sType-sType) VUID-VkCopyMicromapToMemoryInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COPY_MICROMAP_TO_MEMORY_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COPY_MICROMAP_TO_MEMORY_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkCopyMicromapToMemoryInfoEXT-pNext-pNext) VUID-VkCopyMicromapToMemoryInfoEXT-pNext-pNext
@@ -1252,13 +1252,13 @@ recorded.
 `pInfo` is a pointer to a [VkCopyMemoryToMicromapInfoEXT](#VkCopyMemoryToMicromapInfoEXT)
 structure defining the copy operation.
 
-Accesses to `pInfo->dst` **must** be [synchronized](../synchronization.html#synchronization-dependencies) with the `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+Accesses to `pInfo->dst` **must** be [synchronized](../synchronization.html#synchronization-dependencies) with the [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](../synchronization.html#VkPipelineStageFlagBits2KHR)
 [pipeline stage](../synchronization.html#synchronization-pipeline-stages) and an
 [access type](../synchronization.html#synchronization-access-types) of
-`VK_ACCESS_2_MICROMAP_READ_BIT_EXT`.
+[VK_ACCESS_2_MICROMAP_READ_BIT_EXT](../synchronization.html#VkAccessFlagBits2KHR).
 Accesses to the buffer indicated by `pInfo->src.deviceAddress` **must** be
-synchronized with the `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
-pipeline stage and an access type of `VK_ACCESS_TRANSFER_READ_BIT`.
+synchronized with the [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](../synchronization.html#VkPipelineStageFlagBits2KHR)
+pipeline stage and an access type of [VK_ACCESS_TRANSFER_READ_BIT](../synchronization.html#VkAccessFlagBits).
 
 This command can accept micromaps produced by either
 [vkCmdCopyMicromapToMemoryEXT](#vkCmdCopyMicromapToMemoryEXT) or [vkCopyMicromapToMemoryEXT](#vkCopyMicromapToMemoryEXT).
@@ -1308,7 +1308,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdCopyMemoryToMicromapEXT-commandBuffer-cmdpool) VUID-vkCmdCopyMemoryToMicromapEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](../devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdCopyMemoryToMicromapEXT-renderpass) VUID-vkCmdCopyMemoryToMicromapEXT-renderpass
@@ -1384,7 +1384,7 @@ serialized using [vkCmdCopyMicromapToMemoryEXT](#vkCmdCopyMicromapToMemoryEXT)
 * 
 [](#VUID-VkCopyMemoryToMicromapInfoEXT-mode-07548) VUID-VkCopyMemoryToMicromapInfoEXT-mode-07548
 
-`mode` **must** be `VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT`
+`mode` **must** be [VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT](#VkCopyMicromapModeEXT)
 
 * 
 [](#VUID-VkCopyMemoryToMicromapInfoEXT-src-07549) VUID-VkCopyMemoryToMicromapInfoEXT-src-07549
@@ -1404,7 +1404,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCopyMemoryToMicromapInfoEXT-sType-sType) VUID-VkCopyMemoryToMicromapInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COPY_MEMORY_TO_MICROMAP_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COPY_MEMORY_TO_MICROMAP_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkCopyMemoryToMicromapInfoEXT-pNext-pNext) VUID-VkCopyMemoryToMicromapInfoEXT-pNext-pNext
@@ -1486,9 +1486,9 @@ structure.
 `pVersionData` is a pointer to the version header of a micromap as
 defined in [vkCmdCopyMicromapToMemoryEXT](#vkCmdCopyMicromapToMemoryEXT)
 
-|  | `pVersionData` is a *pointer* to an array of 2×`VK_UUID_SIZE`
+|  | `pVersionData` is a *pointer* to an array of 2×[VK_UUID_SIZE](../devsandqueues.html#VK_UUID_SIZE)
 | --- | --- |
-`uint8_t` values instead of two `VK_UUID_SIZE` arrays as the expected
+`uint8_t` values instead of two [VK_UUID_SIZE](../devsandqueues.html#VK_UUID_SIZE) arrays as the expected
 use case for this member is to be pointed at the header of a previously
 serialized micromap (via [vkCmdCopyMicromapToMemoryEXT](#vkCmdCopyMicromapToMemoryEXT) or
 [vkCopyMicromapToMemoryEXT](#vkCopyMicromapToMemoryEXT)) that is loaded in memory.
@@ -1499,7 +1499,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMicromapVersionInfoEXT-sType-sType) VUID-VkMicromapVersionInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MICROMAP_VERSION_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MICROMAP_VERSION_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMicromapVersionInfoEXT-pNext-pNext) VUID-VkMicromapVersionInfoEXT-pNext-pNext
@@ -1676,7 +1676,7 @@ feature **must** be enabled
 * 
 [](#VUID-vkBuildMicromapsEXT-pInfos-07556) VUID-vkBuildMicromapsEXT-pInfos-07556
 
-If `pInfos`[i].`mode` is `VK_BUILD_MICROMAP_MODE_BUILD_EXT`,
+If `pInfos`[i].`mode` is [VK_BUILD_MICROMAP_MODE_BUILD_EXT](#VkBuildMicromapModeEXT),
 and N is not `0`, then all addresses between
 `pInfos`[i].`scratchData.hostAddress` and
 `pInfos`[i].`scratchData.hostAddress` +  N - 1 **must**
@@ -1724,27 +1724,27 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_OPERATION_DEFERRED_KHR`
+[VK_OPERATION_DEFERRED_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_OPERATION_NOT_DEFERRED_KHR`
+[VK_OPERATION_NOT_DEFERRED_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 To copy or compact a micromap on the host, call:
 
@@ -1834,27 +1834,27 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_OPERATION_DEFERRED_KHR`
+[VK_OPERATION_DEFERRED_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_OPERATION_NOT_DEFERRED_KHR`
+[VK_OPERATION_NOT_DEFERRED_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 To copy host accessible memory to a micromap, call:
 
@@ -1945,27 +1945,27 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_OPERATION_DEFERRED_KHR`
+[VK_OPERATION_DEFERRED_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_OPERATION_NOT_DEFERRED_KHR`
+[VK_OPERATION_NOT_DEFERRED_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 To copy a micromap to host accessible memory, call:
 
@@ -2060,27 +2060,27 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_OPERATION_DEFERRED_KHR`
+[VK_OPERATION_DEFERRED_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_OPERATION_NOT_DEFERRED_KHR`
+[VK_OPERATION_NOT_DEFERRED_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 To query micromap size parameters on the host, call:
 
@@ -2136,29 +2136,29 @@ the execution of this command
 [](#VUID-vkWriteMicromapsPropertiesEXT-pMicromaps-07502) VUID-vkWriteMicromapsPropertiesEXT-pMicromaps-07502
 
 All micromaps in `pMicromaps` **must** have been constructed with
-`VK_BUILD_MICROMAP_ALLOW_COMPACTION_BIT_EXT` if `queryType` is
-`VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT`
+[VK_BUILD_MICROMAP_ALLOW_COMPACTION_BIT_EXT](../resources.html#VkBuildMicromapFlagBitsEXT) if `queryType` is
+[VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT](../queries.html#VkQueryType)
 
 * 
 [](#VUID-vkWriteMicromapsPropertiesEXT-queryType-07503) VUID-vkWriteMicromapsPropertiesEXT-queryType-07503
 
-`queryType` **must** be `VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT`
-or `VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT`
+`queryType` **must** be [VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT](../queries.html#VkQueryType)
+or [VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT](../queries.html#VkQueryType)
 
 * 
 [](#VUID-vkWriteMicromapsPropertiesEXT-queryType-10071) VUID-vkWriteMicromapsPropertiesEXT-queryType-10071
 
 If `queryType` is
-`VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT` or
-`VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT` then `stride` **must**
+[VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT](../queries.html#VkQueryType) or
+[VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT](../queries.html#VkQueryType) then `stride` **must**
 be a multiple of the size of `VkDeviceSize`
 
 * 
 [](#VUID-vkWriteMicromapsPropertiesEXT-queryType-10072) VUID-vkWriteMicromapsPropertiesEXT-queryType-10072
 
 If `queryType` is
-`VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT` or
-`VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT` then `pData` **must**
+[VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT](../queries.html#VkQueryType) or
+[VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT](../queries.html#VkQueryType) then `pData` **must**
 point to a `VkDeviceSize`
 
 * 
@@ -2227,21 +2227,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 A displacement micromap in an acceleration structure includes information in
 the [VkAccelerationStructureTrianglesDisplacementMicromapNV](../accelstructures.html#VkAccelerationStructureTrianglesDisplacementMicromapNV) to define a
@@ -2291,7 +2291,7 @@ triangles.
 To maintain that the hierarchical ordering is contiguous while keeping
 continuous winding, some triangles are flipped and wound differently.
 
-The `VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV` format is
+The [VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV](#VkDisplacementMicromapFormatNV) format is
 an uncompressed, packed format which covers 64 microtriangles (subdivision
 level 3) in a block.
 The block contains 45 displacement values encoded as 11 bit unorm values and
@@ -2307,8 +2307,8 @@ the later unused values are ignored.
 | Unused |  | 1 | 15 | 495 |
 | Reserved | Must be 0 | 1 | 2 | 510 |
 
-The `VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV` and
-`VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV` formats
+The [VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV](#VkDisplacementMicromapFormatNV) and
+[VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV](#VkDisplacementMicromapFormatNV) formats
 store displacements in a compressed form to save space.
 Both formats use the same compression algorithm, differing in the number of
 bits used in the different fields.
@@ -2334,7 +2334,7 @@ the level then by 4 values, selected from interior or the 3 edges in vertex
 order in that order.
 
 The bit encoding for
-`VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV`
+[VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV](#VkDisplacementMicromapFormatNV)
 
 | Section | Field | Entries | Bits per entry | Starting bit offset |
 | --- | --- | --- | --- | --- |
@@ -2349,7 +2349,7 @@ The bit encoding for
 | Reserved | Must be 0 | 1 | 2 | 1022 |
 
 The bit encoding for
-`VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV`
+[VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV](#VkDisplacementMicromapFormatNV)
 
 | Section | Field | Entries | Bits per entry | Starting bit offset |
 | --- | --- | --- | --- | --- |

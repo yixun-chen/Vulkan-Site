@@ -80,10 +80,10 @@ These values all have the same meaning as the equivalently named values for
 [VkPipelineStageFlags2](VkPipelineStageFlags2.html).
 
 * 
-`VK_PIPELINE_STAGE_NONE` specifies no stages of execution.
+[VK_PIPELINE_STAGE_NONE](#) specifies no stages of execution.
 
 * 
-`VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT` specifies the stage of the
+[VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT](#) specifies the stage of the
 pipeline where `VkDrawIndirect*` / `VkDispatchIndirect*` /
 `VkTraceRaysIndirect*` data structures are consumed.
 This stage also includes reading commands written by
@@ -92,52 +92,52 @@ This stage also includes reading commands written by
 [vkCmdExecuteGeneratedCommandsEXT](vkCmdExecuteGeneratedCommandsEXT.html).
 
 * 
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT` specifies the task shader
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](#) specifies the task shader
 stage.
 
 * 
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT` specifies the mesh shader
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](#) specifies the mesh shader
 stage.
 
 * 
-`VK_PIPELINE_STAGE_VERTEX_INPUT_BIT` specifies the stage of the
+[VK_PIPELINE_STAGE_VERTEX_INPUT_BIT](#) specifies the stage of the
 pipeline where vertex and index buffers are consumed.
 
 * 
-`VK_PIPELINE_STAGE_VERTEX_SHADER_BIT` specifies the vertex shader
+[VK_PIPELINE_STAGE_VERTEX_SHADER_BIT](#) specifies the vertex shader
 stage.
 
 * 
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT` specifies the
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](#) specifies the
 tessellation control shader stage.
 
 * 
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT` specifies the
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](#) specifies the
 tessellation evaluation shader stage.
 
 * 
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT` specifies the geometry
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](#) specifies the geometry
 shader stage.
 
 * 
-`VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT` specifies the fragment
+[VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT](#) specifies the fragment
 shader stage.
 
 * 
-`VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT` specifies the stage of
+[VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT](#) specifies the stage of
 the pipeline where early fragment tests (depth and stencil tests before
 fragment shading) are performed.
 This stage also includes [render pass load    operations](../../../../spec/latest/chapters/renderpass.html#renderpass-load-operations) for framebuffer attachments with a depth/stencil format.
 
 * 
-`VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT` specifies the stage of
+[VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT](#) specifies the stage of
 the pipeline where late fragment tests (depth and stencil tests after
 fragment shading) are performed.
 This stage also includes [render pass    store operations](../../../../spec/latest/chapters/renderpass.html#renderpass-store-operations) for framebuffer attachments with a depth/stencil
 format.
 
 * 
-`VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT` specifies the stage
+[VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](#) specifies the stage
 of the pipeline after blending where the final color values are output
 from the pipeline.
 This stage includes [blending](../../../../spec/latest/chapters/framebuffer.html#framebuffer-blending),
@@ -146,12 +146,12 @@ This stage includes [blending](../../../../spec/latest/chapters/framebuffer.html
 [render pass multisample resolve    operations](../../../../spec/latest/chapters/renderpass.html#renderpass-resolve-operations), and [vkCmdClearAttachments](vkCmdClearAttachments.html).
 
 * 
-`VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT` specifies the execution of a
+[VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT](#) specifies the execution of a
 compute shader.
 
 * 
 
-`VK_PIPELINE_STAGE_TRANSFER_BIT` specifies the following commands:
+[VK_PIPELINE_STAGE_TRANSFER_BIT](#) specifies the following commands:
 
 All [copy commands](../../../../spec/latest/chapters/copies.html#copies), including [vkCmdCopyQueryPoolResults](vkCmdCopyQueryPoolResults.html)
 
@@ -165,11 +165,11 @@ All [copy commands](../../../../spec/latest/chapters/copies.html#copies), includ
 All [clear commands](../../../../spec/latest/chapters/clears.html#clears), with the exception of
 [vkCmdClearAttachments](vkCmdClearAttachments.html)
 
-`VK_PIPELINE_STAGE_HOST_BIT` specifies a pseudo-stage indicating
+[VK_PIPELINE_STAGE_HOST_BIT](#) specifies a pseudo-stage indicating
 execution on the host of reads/writes of device memory.
 This stage is not invoked by any commands recorded in a command buffer.
 
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR` specifies
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#) specifies
     the execution of
     [vkCmdBuildAccelerationStructureNV](vkCmdBuildAccelerationStructureNV.html),
     [vkCmdCopyAccelerationStructureNV](vkCmdCopyAccelerationStructureNV.html),
@@ -182,87 +182,87 @@ This stage is not invoked by any commands recorded in a command buffer.
     [vkCmdCopyMemoryToAccelerationStructureKHR](vkCmdCopyMemoryToAccelerationStructureKHR.html), and
     [vkCmdWriteAccelerationStructuresPropertiesKHR](vkCmdWriteAccelerationStructuresPropertiesKHR.html).
 
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR` specifies the
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](#) specifies the
     execution of the ray tracing shader stages, via
 [vkCmdTraceRaysNV](vkCmdTraceRaysNV.html)
 ,
 [vkCmdTraceRaysKHR](vkCmdTraceRaysKHR.html), or [vkCmdTraceRaysIndirectKHR](vkCmdTraceRaysIndirectKHR.html)
 
-`VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` specifies the
+[VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](VkPipelineStageFlagBits2.html) specifies the
 execution of decompression commands with [vkCmdDecompressMemoryEXT](vkCmdDecompressMemoryEXT.html)
 and [vkCmdDecompressMemoryIndirectCountEXT](vkCmdDecompressMemoryIndirectCountEXT.html).
 
-`VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT` specifies the execution of all
+[VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT](#) specifies the execution of all
 graphics pipeline stages, and is equivalent to the logical OR of:
 
 * 
-`VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT`
+[VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT](#)
 
 * 
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](#)
 
 * 
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](#)
 
 * 
-`VK_PIPELINE_STAGE_VERTEX_INPUT_BIT`
+[VK_PIPELINE_STAGE_VERTEX_INPUT_BIT](#)
 
 * 
-`VK_PIPELINE_STAGE_VERTEX_SHADER_BIT`
+[VK_PIPELINE_STAGE_VERTEX_SHADER_BIT](#)
 
 * 
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](#)
 
 * 
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](#)
 
 * 
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](#)
 
 * 
-`VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT](#)
 
 * 
-`VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT`
+[VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT](#)
 
 * 
-`VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT`
+[VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT](#)
 
 * 
-`VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT`
+[VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](#)
 
 * 
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](#)
 
 * 
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](#)
 
 * 
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#)
 
 * 
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#)
 
-`VK_PIPELINE_STAGE_ALL_COMMANDS_BIT` specifies all operations
+[VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](#) specifies all operations
 performed by all commands supported on the queue it is used with.
 
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT` specifies the
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](#) specifies the
 stage of the pipeline where the predicate of conditional rendering is
 consumed.
 
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT` specifies the stage
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](#) specifies the stage
 of the pipeline where vertex attribute output values are written to the
 transform feedback buffers.
 
-`VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV` specifies the stage of
+[VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV](#) specifies the stage of
 the pipeline where device-side preprocessing for generated commands via
 [vkCmdPreprocessGeneratedCommandsNV](vkCmdPreprocessGeneratedCommandsNV.html) is handled.
 
-`VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_EXT` specifies the stage
+[VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_EXT](#) specifies the stage
 of the pipeline where device-side preprocessing for generated commands
 via [vkCmdPreprocessGeneratedCommandsEXT](vkCmdPreprocessGeneratedCommandsEXT.html) is handled.
 
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#)
     specifies the stage of the pipeline where the
     [fragment shading rate    attachment](../../../../spec/latest/chapters/primsrast.html#primsrast-fragment-shading-rate-attachment)
 or
@@ -270,17 +270,17 @@ or
     is read to determine the fragment shading rate for portions of a
     rasterized primitive.
 
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT` specifies the
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#) specifies the
 stage of the pipeline where the fragment density map is read to
 [generate the fragment areas](../../../../spec/latest/chapters/fragmentdensitymapops.html#fragmentdensitymapops).
 
-`VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT` is equivalent to
-`VK_PIPELINE_STAGE_ALL_COMMANDS_BIT` with [VkAccessFlags](VkAccessFlags.html) set to
+[VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT](#) is equivalent to
+[VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](#) with [VkAccessFlags](VkAccessFlags.html) set to
 `0` when specified in the second synchronization scope, but specifies no
 stage of execution when specified in the first scope.
 
-`VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT` is equivalent to
-`VK_PIPELINE_STAGE_ALL_COMMANDS_BIT` with [VkAccessFlags](VkAccessFlags.html) set to
+[VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT](#) is equivalent to
+[VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](#) with [VkAccessFlags](VkAccessFlags.html) set to
 `0` when specified in the first synchronization scope, but specifies no
 stage of execution when specified in the second scope.
 

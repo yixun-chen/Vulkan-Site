@@ -31,16 +31,16 @@ typedef enum VkVideoDecodeUsageFlagBitsKHR {
 } VkVideoDecodeUsageFlagBitsKHR;
 
 * 
-`VK_VIDEO_DECODE_USAGE_TRANSCODING_BIT_KHR` specifies that video
+[VK_VIDEO_DECODE_USAGE_TRANSCODING_BIT_KHR](#) specifies that video
 decoding is intended to be used in conjunction with video encoding to
 transcode a video bitstream with the same and/or different codecs.
 
 * 
-`VK_VIDEO_DECODE_USAGE_OFFLINE_BIT_KHR` specifies that video
+[VK_VIDEO_DECODE_USAGE_OFFLINE_BIT_KHR](#) specifies that video
 decoding is intended to be used to consume a local video bitstream.
 
 * 
-`VK_VIDEO_DECODE_USAGE_STREAMING_BIT_KHR` specifies that video
+[VK_VIDEO_DECODE_USAGE_STREAMING_BIT_KHR](#) specifies that video
 decoding is intended to be used to consume a video bitstream received as
 a continuous flow over network.
 

@@ -39,7 +39,7 @@ This command sets the `lineRasterizationMode` state for subsequent
 drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT` set in
+[VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationLineStateCreateInfo](VkPipelineRasterizationLineStateCreateInfo.html)::`lineRasterizationMode`
@@ -61,21 +61,21 @@ The [`shaderObject`](../../../../spec/latest/chapters/features.html#features-sha
 [](#VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07418) VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07418
 
 If `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR`, then the
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR](VkLineRasterizationMode.html), then the
 [`rectangularLines`](../../../../spec/latest/chapters/features.html#features-rectangularLines) feature **must** be
 enabled
 
 [](#VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07419) VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07419
 
 If `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_BRESENHAM`, then the
+[VK_LINE_RASTERIZATION_MODE_BRESENHAM](VkLineRasterizationMode.html), then the
 [`bresenhamLines`](../../../../spec/latest/chapters/features.html#features-bresenhamLines) feature **must** be
 enabled
 
 [](#VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07420) VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07420
 
 If `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH`, then the
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH](VkLineRasterizationMode.html), then the
 [`smoothLines`](../../../../spec/latest/chapters/features.html#features-smoothLines) feature **must** be enabled
 
 Valid Usage (Implicit)
@@ -98,7 +98,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetLineRasterizationModeEXT-commandBuffer-cmdpool) VUID-vkCmdSetLineRasterizationModeEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetLineRasterizationModeEXT-videocoding) VUID-vkCmdSetLineRasterizationModeEXT-videocoding

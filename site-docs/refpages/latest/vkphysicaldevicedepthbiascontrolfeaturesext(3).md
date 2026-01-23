@@ -50,13 +50,13 @@ the `VkDepthBiasRepresentationInfoEXT` structure.
 
 `leastRepresentableValueForceUnormRepresentation` indicates whether
 the implementation supports using the
-`VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT`
+[VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT](VkDepthBiasRepresentationEXT.html)
 depth bias representation.
 
 * 
  `floatRepresentation` indicates
 whether the implementation supports using the
-`VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT` depth bias representation.
+[VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT](VkDepthBiasRepresentationEXT.html) depth bias representation.
 
 * 
  `depthBiasExact` indicates whether the
@@ -69,7 +69,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDepthBiasControlFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceDepthBiasControlFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_BIAS_CONTROL_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_BIAS_CONTROL_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_depth_bias_control](VK_EXT_depth_bias_control.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

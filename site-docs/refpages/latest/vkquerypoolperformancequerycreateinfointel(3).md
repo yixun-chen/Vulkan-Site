@@ -35,7 +35,7 @@ typedef VkQueryPoolPerformanceQueryCreateInfoINTEL VkQueryPoolCreateInfoINTEL;
 
 To create a pool for Intel performance queries, set
 [VkQueryPoolCreateInfo](VkQueryPoolCreateInfo.html)::`queryType` to
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL` and add a
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL](VkQueryType.html) and add a
 `VkQueryPoolPerformanceQueryCreateInfoINTEL` structure to the
 `pNext` chain of the [VkQueryPoolCreateInfo](VkQueryPoolCreateInfo.html) structure.
 
@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueryPoolPerformanceQueryCreateInfoINTEL-sType-sType) VUID-VkQueryPoolPerformanceQueryCreateInfoINTEL-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_QUERY_CREATE_INFO_INTEL`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_QUERY_CREATE_INFO_INTEL](VkStructureType.html)
 
 * 
 [](#VUID-VkQueryPoolPerformanceQueryCreateInfoINTEL-performanceCountersSampling-parameter) VUID-VkQueryPoolPerformanceQueryCreateInfoINTEL-performanceCountersSampling-parameter

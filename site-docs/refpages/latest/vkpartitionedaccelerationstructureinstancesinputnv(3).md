@@ -76,7 +76,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPartitionedAccelerationStructureInstancesInputNV-sType-sType) VUID-VkPartitionedAccelerationStructureInstancesInputNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCES_INPUT_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCES_INPUT_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkPartitionedAccelerationStructureInstancesInputNV-pNext-pNext) VUID-VkPartitionedAccelerationStructureInstancesInputNV-pNext-pNext

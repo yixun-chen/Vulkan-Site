@@ -63,7 +63,7 @@ At least one of `image` and `buffer` **must** be
 If `image` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), the image **must** have been
 created with
 [VkDedicatedAllocationImageCreateInfoNV](VkDedicatedAllocationImageCreateInfoNV.html)::`dedicatedAllocation`
-equal to `VK_TRUE`
+equal to [VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-VkDedicatedAllocationMemoryAllocateInfoNV-buffer-00651) VUID-VkDedicatedAllocationMemoryAllocateInfoNV-buffer-00651
@@ -71,7 +71,7 @@ equal to `VK_TRUE`
 If `buffer` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), the buffer **must** have been
 created with
 [VkDedicatedAllocationBufferCreateInfoNV](VkDedicatedAllocationBufferCreateInfoNV.html)::`dedicatedAllocation`
-equal to `VK_TRUE`
+equal to [VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-VkDedicatedAllocationMemoryAllocateInfoNV-image-00652) VUID-VkDedicatedAllocationMemoryAllocateInfoNV-image-00652
@@ -110,7 +110,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDedicatedAllocationMemoryAllocateInfoNV-sType-sType) VUID-VkDedicatedAllocationMemoryAllocateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkDedicatedAllocationMemoryAllocateInfoNV-image-parameter) VUID-VkDedicatedAllocationMemoryAllocateInfoNV-image-parameter

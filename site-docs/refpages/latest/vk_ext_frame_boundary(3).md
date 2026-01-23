@@ -120,10 +120,10 @@ Extending [VkSubmitInfo](VkSubmitInfo.html), [VkSubmitInfo2](VkSubmitInfo2.html)
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT`
+[VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAME_BOUNDARY_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAME_BOUNDARY_FEATURES_EXT](VkStructureType.html)
 
 * 
 Revision 0, 2022-01-14 (Hugues Evard)

@@ -144,18 +144,18 @@ Extending [VkRenderPassCreateInfo](VkRenderPassCreateInfo.html):
 * 
 Extending [VkDependencyFlagBits](VkDependencyFlagBits.html):
 
-`VK_DEPENDENCY_VIEW_LOCAL_BIT_KHR`
+[VK_DEPENDENCY_VIEW_LOCAL_BIT_KHR](VkDependencyFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [`ViewIndex`](../../../../spec/latest/chapters/interfaces.html#interfaces-builtin-variables-viewindex)

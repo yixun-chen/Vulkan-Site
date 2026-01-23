@@ -53,7 +53,7 @@ typedef enum VkRenderingFlagBits {
 typedef VkRenderingFlagBits VkRenderingFlagBitsKHR;
 
 * 
-`VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT` specifies that
+[VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT](#) specifies that
 draw calls for the render pass instance will be recorded in secondary
 command buffers.
 If the [`nestedCommandBuffer`](../../../../spec/latest/chapters/features.html#features-nestedCommandBuffer)
@@ -61,51 +61,51 @@ feature is enabled, the draw calls **can** come from both inline and
 [vkCmdExecuteCommands](vkCmdExecuteCommands.html).
 
 * 
-`VK_RENDERING_RESUMING_BIT` specifies that the render pass instance
+[VK_RENDERING_RESUMING_BIT](#) specifies that the render pass instance
 is resuming an earlier suspended render pass instance.
 
 * 
-`VK_RENDERING_SUSPENDING_BIT` specifies that the render pass
+[VK_RENDERING_SUSPENDING_BIT](#) specifies that the render pass
 instance will be suspended.
 
 * 
-`VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT` specifies that
+[VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT](#) specifies that
 [Legacy Dithering](../../../../spec/latest/chapters/interfaces.html#interfaces-legacy-dithering) is enabled for the
 render pass instance.
 
 * 
-`VK_RENDERING_CONTENTS_INLINE_BIT_KHR` specifies that draw calls for
+[VK_RENDERING_CONTENTS_INLINE_BIT_KHR](#) specifies that draw calls for
 the render pass instance **can** be recorded inline within the current
 command buffer.
 This **can** be combined with the
-`VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT` bit to allow
+[VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT](#) bit to allow
 draw calls to be recorded both inline and in secondary command buffers.
 
 * 
-`VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE` specifies that
+[VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](#) specifies that
 the render pass **can** be used with layered fragment density maps.
 
 * 
-`VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR`
+[VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR](#)
 specifies that
-`VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR` will
+[VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR](VkRenderingAttachmentFlagBitsKHR.html) will
 always be specified for any attachment which invokes the behavior
 described by [that    flag](../../../../spec/latest/chapters/renderpass.html#rendering-attachment-input-attachment-feedback).
 
 * 
-`VK_RENDERING_FRAGMENT_REGION_BIT_EXT` specifies that the render
+[VK_RENDERING_FRAGMENT_REGION_BIT_EXT](#) specifies that the render
 pass **can** access samples which are not covered in its `SampleMask`.
 
 * 
-`VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT` specifies that the render pass
+[VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT](#) specifies that the render pass
 contains a custom resolve.
 When this bit is set, [vkCmdBeginCustomResolveEXT](vkCmdBeginCustomResolveEXT.html) **can** be called.
 
 The contents of `pRenderingInfo` **must** match between suspended render
 pass instances and the render pass instances that resume them, other than
-the presence or absence of the `VK_RENDERING_RESUMING_BIT`,
-`VK_RENDERING_SUSPENDING_BIT`, and
-`VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT` flags.
+the presence or absence of the [VK_RENDERING_RESUMING_BIT](#),
+[VK_RENDERING_SUSPENDING_BIT](#), and
+[VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT](#) flags.
 No action or synchronization commands, or other render pass instances, are
 allowed between suspending and resuming render pass instances.
 

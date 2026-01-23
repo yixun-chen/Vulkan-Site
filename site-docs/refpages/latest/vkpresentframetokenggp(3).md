@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPresentFrameTokenGGP-sType-sType) VUID-VkPresentFrameTokenGGP-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP](VkStructureType.html)
 
 [VK_GGP_frame_token](VK_GGP_frame_token.html), [VkStructureType](VkStructureType.html)
 

@@ -59,7 +59,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceRenderPassStripedPropertiesARM-sType-sType) VUID-VkPhysicalDeviceRenderPassStripedPropertiesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RENDER_PASS_STRIPED_PROPERTIES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RENDER_PASS_STRIPED_PROPERTIES_ARM](VkStructureType.html)
 
 [VK_ARM_render_pass_striped](VK_ARM_render_pass_striped.html), [VkExtent2D](VkExtent2D.html), [VkStructureType](VkStructureType.html)
 

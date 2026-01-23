@@ -131,7 +131,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM-sType-sType) VUID-VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM](VkStructureType.html)
 
 * 
 [](#VUID-VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM-pPerViewRenderAreas-parameter) VUID-VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM-pPerViewRenderAreas-parameter

@@ -54,7 +54,7 @@ If the `VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures` structure is incl
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -62,7 +62,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures-sType-sType) VUID-VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_WORKGROUP_MEMORY_FEATURES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_WORKGROUP_MEMORY_FEATURES](VkStructureType.html)
 
 [VK_KHR_zero_initialize_workgroup_memory](VK_KHR_zero_initialize_workgroup_memory.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -48,7 +48,7 @@ in `minQp`.
 * 
 `minQp` specifies the lower bounds on the QP values, for each
 picture type, that the implementation’s rate control algorithm will use
-when `useMinQp` is `VK_TRUE`.
+when `useMinQp` is [VK_TRUE](VK_TRUE.html).
 
 * 
 `useMaxQp` indicates whether the QP values determined by rate
@@ -58,7 +58,7 @@ in `maxQp`.
 * 
 `maxQp` specifies the upper bounds on the QP values, for each
 picture type, that the implementation’s rate control algorithm will use
-when `useMaxQp` is `VK_TRUE`.
+when `useMaxQp` is [VK_TRUE](VK_TRUE.html).
 
 * 
 `useMaxFrameSize` indicates whether the implementation’s rate
@@ -67,7 +67,7 @@ as the upper bounds on the encoded frame size for each picture type.
 
 * 
 `maxFrameSize` specifies the upper bounds on the encoded frame size,
-for each picture type, when `useMaxFrameSize` is `VK_TRUE`.
+for each picture type, when `useMaxFrameSize` is [VK_TRUE](VK_TRUE.html).
 
 When used, the values in `minQp` and `maxQp` guarantee that the
 effective QP values used by the implementation will respect those lower and
@@ -101,9 +101,9 @@ elements of the `pLayers` array member of the
 [VkVideoEncodeRateControlInfoKHR](VkVideoEncodeRateControlInfoKHR.html) structure passed to the
 [vkCmdControlVideoCodingKHR](vkCmdControlVideoCodingKHR.html) command,
 [VkVideoCodingControlInfoKHR](VkVideoCodingControlInfoKHR.html)::`flags` includes
-`VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR`, and the bound
+[VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR](VkVideoCodingControlFlagBitsKHR.html), and the bound
 video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR`, it specifies the
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), it specifies the
 H.265-specific rate control parameters of the rate control layer
 corresponding to that element of `pLayers`.
 
@@ -112,7 +112,7 @@ Valid Usage
 * 
 [](#VUID-VkVideoEncodeH265RateControlLayerInfoKHR-useMinQp-08297) VUID-VkVideoEncodeH265RateControlLayerInfoKHR-useMinQp-08297
 
-If `useMinQp` is `VK_TRUE`, then the `qpI`, `qpP`, and
+If `useMinQp` is [VK_TRUE](VK_TRUE.html), then the `qpI`, `qpP`, and
 `qpB` members of `minQp` **must** all be between
 [VkVideoEncodeH265CapabilitiesKHR](VkVideoEncodeH265CapabilitiesKHR.html)::`minQp` and
 [VkVideoEncodeH265CapabilitiesKHR](VkVideoEncodeH265CapabilitiesKHR.html)::`maxQp`, as returned by
@@ -121,7 +121,7 @@ If `useMinQp` is `VK_TRUE`, then the `qpI`, `qpP`, and
 * 
 [](#VUID-VkVideoEncodeH265RateControlLayerInfoKHR-useMaxQp-08298) VUID-VkVideoEncodeH265RateControlLayerInfoKHR-useMaxQp-08298
 
-If `useMaxQp` is `VK_TRUE`, then the `qpI`, `qpP`, and
+If `useMaxQp` is [VK_TRUE](VK_TRUE.html), then the `qpI`, `qpP`, and
 `qpB` members of `maxQp` **must** all be between
 [VkVideoEncodeH265CapabilitiesKHR](VkVideoEncodeH265CapabilitiesKHR.html)::`minQp` and
 [VkVideoEncodeH265CapabilitiesKHR](VkVideoEncodeH265CapabilitiesKHR.html)::`maxQp`, as returned by
@@ -130,29 +130,29 @@ If `useMaxQp` is `VK_TRUE`, then the `qpI`, `qpP`, and
 * 
 [](#VUID-VkVideoEncodeH265RateControlLayerInfoKHR-useMinQp-08299) VUID-VkVideoEncodeH265RateControlLayerInfoKHR-useMinQp-08299
 
-If `useMinQp` is `VK_TRUE` and
+If `useMinQp` is [VK_TRUE](VK_TRUE.html) and
 [VkVideoEncodeH265CapabilitiesKHR](VkVideoEncodeH265CapabilitiesKHR.html)::`flags`, as returned by
 [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the used video
 profile, does not include
-`VK_VIDEO_ENCODE_H265_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_KHR`,
+[VK_VIDEO_ENCODE_H265_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_KHR](VkVideoEncodeH265CapabilityFlagBitsKHR.html),
 then the `qpI`, `qpP`, and `qpB` members of `minQp`
 **must** all specify the same value
 
 * 
 [](#VUID-VkVideoEncodeH265RateControlLayerInfoKHR-useMaxQp-08300) VUID-VkVideoEncodeH265RateControlLayerInfoKHR-useMaxQp-08300
 
-If `useMaxQp` is `VK_TRUE` and
+If `useMaxQp` is [VK_TRUE](VK_TRUE.html) and
 [VkVideoEncodeH265CapabilitiesKHR](VkVideoEncodeH265CapabilitiesKHR.html)::`flags`, as returned by
 [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the used video
 profile, does not include
-`VK_VIDEO_ENCODE_H265_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_KHR`,
+[VK_VIDEO_ENCODE_H265_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_KHR](VkVideoEncodeH265CapabilityFlagBitsKHR.html),
 then the `qpI`, `qpP`, and `qpB` members of `maxQp`
 **must** all specify the same value
 
 * 
 [](#VUID-VkVideoEncodeH265RateControlLayerInfoKHR-useMinQp-08375) VUID-VkVideoEncodeH265RateControlLayerInfoKHR-useMinQp-08375
 
-If `useMinQp` and `useMaxQp` are both `VK_TRUE`, then the
+If `useMinQp` and `useMaxQp` are both [VK_TRUE](VK_TRUE.html), then the
 `qpI`, `qpP`, and `qpB` members of `minQp` **must** all be
 less than or equal to the respective members of `maxQp`
 
@@ -161,7 +161,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeH265RateControlLayerInfoKHR-sType-sType) VUID-VkVideoEncodeH265RateControlLayerInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_RATE_CONTROL_LAYER_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_RATE_CONTROL_LAYER_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoEncodeH265RateControlLayerInfoKHR-minQp-parameter) VUID-VkVideoEncodeH265RateControlLayerInfoKHR-minQp-parameter

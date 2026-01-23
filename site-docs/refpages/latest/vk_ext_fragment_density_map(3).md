@@ -45,7 +45,7 @@ Device extension
 
 **Revision**
 
-2
+3
 
 **Ratification Status**
 
@@ -82,7 +82,7 @@ Matthew Netsch [mnetsch](https://github.com/KhronosGroup/Vulkan-Docs/issues/new?
 
 **Last Modified Date**
 
-2021-09-30
+2025-05-20
 
 **Interactions and External Dependencies**
 
@@ -165,78 +165,78 @@ Extending [VkRenderingInfo](VkRenderingInfo.html):
 * 
 Extending [VkAccessFlagBits](VkAccessFlagBits.html):
 
-`VK_ACCESS_FRAGMENT_DENSITY_MAP_READ_BIT_EXT`
+[VK_ACCESS_FRAGMENT_DENSITY_MAP_READ_BIT_EXT](VkAccessFlagBits.html)
 
 Extending [VkFormatFeatureFlagBits](VkFormatFeatureFlagBits.html):
 
 * 
-`VK_FORMAT_FEATURE_FRAGMENT_DENSITY_MAP_BIT_EXT`
+[VK_FORMAT_FEATURE_FRAGMENT_DENSITY_MAP_BIT_EXT](VkFormatFeatureFlagBits.html)
 
 Extending [VkImageCreateFlagBits](VkImageCreateFlagBits.html):
 
 * 
-`VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`
+[VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](VkImageCreateFlagBits.html)
 
 Extending [VkImageLayout](VkImageLayout.html):
 
 * 
-`VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT`
+[VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT](VkImageLayout.html)
 
 Extending [VkImageUsageFlagBits](VkImageUsageFlagBits.html):
 
 * 
-`VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT`
+[VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT](VkImageUsageFlagBits.html)
 
 Extending [VkImageViewCreateFlagBits](VkImageViewCreateFlagBits.html):
 
 * 
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT`
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT](VkImageViewCreateFlagBits.html)
 
 Extending [VkPipelineStageFlagBits](VkPipelineStageFlagBits.html):
 
 * 
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](VkPipelineStageFlagBits.html)
 
 Extending [VkSamplerCreateFlagBits](VkSamplerCreateFlagBits.html):
 
 * 
-`VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT`
+[VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](VkSamplerCreateFlagBits.html)
 
 * 
-`VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT`
+[VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT](VkSamplerCreateFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT](VkStructureType.html)
 
 If [VK_KHR_format_feature_flags2](VK_KHR_format_feature_flags2.html) or [Vulkan Version 1.3](../../../../spec/latest/appendices/versions.html#versions-1.3) is supported:
 
 * 
 Extending [VkFormatFeatureFlagBits2](VkFormatFeatureFlagBits2.html):
 
-`VK_FORMAT_FEATURE_2_FRAGMENT_DENSITY_MAP_BIT_EXT`
+[VK_FORMAT_FEATURE_2_FRAGMENT_DENSITY_MAP_BIT_EXT](VkFormatFeatureFlagBits2.html)
 
 If [Vulkan Version 1.3](../../../../spec/latest/appendices/versions.html#versions-1.3) or [VK_KHR_dynamic_rendering](VK_KHR_dynamic_rendering.html) is supported:
 
 * 
 Extending [VkPipelineCreateFlagBits](VkPipelineCreateFlagBits.html):
 
-`VK_PIPELINE_CREATE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT`
+[VK_PIPELINE_CREATE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT](VkPipelineCreateFlagBits.html)
 
 * 
-`VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT`
+[VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT](VkPipelineCreateFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_INFO_EXT`
+[VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_INFO_EXT](VkStructureType.html)
 
 * 
 [`FragInvocationCountEXT`](../../../../spec/latest/chapters/interfaces.html#interfaces-builtin-variables-fraginvocationcount)
@@ -260,9 +260,9 @@ help to further optimize rendering in areas of low density.
 
 The density map image can be modified by the application until calling
 `vkCmdBeginRenderPass` for the render pass that uses the image.
-If `VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT` is used,
+If [VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT](VkImageViewCreateFlagBits.html) is used,
 then the application can modify the image until the device reads it during
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`.
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](VkPipelineStageFlagBits.html).
 
 // Create fragment density map
 VkImageCreateInfo imageCreateInfo =
@@ -367,6 +367,11 @@ Revision 2, 2021-09-30 (Jon Leech)
 
 * 
 Add interaction with `[VK_KHR_format_feature_flags2](VK_KHR_format_feature_flags2.html)` to `vk.xml`
+
+Revision 3, 2025-05-20 (Matthew Netsch)
+
+* 
+Fixes fragmentDensityTexelSize calculation equation
 
 No cross-references are available
 

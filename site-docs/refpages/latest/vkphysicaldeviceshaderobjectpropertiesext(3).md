@@ -38,7 +38,7 @@ structure.
 
 * 
  `shaderBinaryUUID` is an array of
-`VK_UUID_SIZE` `uint8_t` values representing a universally unique
+[VK_UUID_SIZE](VK_UUID_SIZE.html) `uint8_t` values representing a universally unique
 identifier for one or more implementations whose shader binaries are
 guaranteed to be compatible with each other.
 
@@ -60,7 +60,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderObjectPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceShaderObjectPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_shader_object](VK_EXT_shader_object.html), [VkStructureType](VkStructureType.html)
 

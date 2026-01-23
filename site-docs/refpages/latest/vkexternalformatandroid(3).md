@@ -40,7 +40,7 @@ structure.
 external format
 
 When included in the `pNext` chain of another structure, it indicates
-[additional format information](../../../../spec/latest/chapters/memory.html#memory-external-android-hardware-buffer-external-formats) beyond what is provided by `VkFormat` values for an
+[additional format information](../../../../spec/latest/chapters/memory.html#memory-external-android-hardware-buffer-external-formats) beyond what is provided by [VkFormat](VkFormat.html) values for an
 Android hardware buffer.
 If `externalFormat` is zero, it indicates that no external format is
 used, and implementations should rely only on other format information.
@@ -62,7 +62,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalFormatANDROID-sType-sType) VUID-VkExternalFormatANDROID-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID](VkStructureType.html)
 
 [VK_ANDROID_external_memory_android_hardware_buffer](VK_ANDROID_external_memory_android_hardware_buffer.html), [VkStructureType](VkStructureType.html)
 

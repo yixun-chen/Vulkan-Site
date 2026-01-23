@@ -50,7 +50,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoDecodeCapabilitiesKHR-sType-sType) VUID-VkVideoDecodeCapabilitiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_DECODE_CAPABILITIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_CAPABILITIES_KHR](VkStructureType.html)
 
 [VK_KHR_video_decode_queue](VK_KHR_video_decode_queue.html), [VkStructureType](VkStructureType.html), [VkVideoDecodeCapabilityFlagsKHR](VkVideoDecodeCapabilityFlagsKHR.html)
 

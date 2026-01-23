@@ -17,7 +17,7 @@
 
 VK_LUID_SIZE - Length of a locally unique device identifier
 
-`VK_LUID_SIZE` is the length in `uint8_t` values of an array
+[VK_LUID_SIZE](#) is the length in `uint8_t` values of an array
 containing a locally unique device identifier, as returned in
 [VkPhysicalDeviceIDProperties](VkPhysicalDeviceIDProperties.html)::`deviceLUID`.
 

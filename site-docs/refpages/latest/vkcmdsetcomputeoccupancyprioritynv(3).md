@@ -45,7 +45,7 @@ specified priority parameters until another
 [vkCmdSetComputeOccupancyPriorityNV](#) call is made.
 
 All command buffers (primary and secondary) start with a priority level
-equal to the `VK_COMPUTE_OCCUPANCY_PRIORITY_NORMAL_NV` value.
+equal to the [VK_COMPUTE_OCCUPANCY_PRIORITY_NORMAL_NV](VK_COMPUTE_OCCUPANCY_PRIORITY_NORMAL_NV.html) value.
 The priority state is not inherited by secondary command buffers - each
 command buffer maintains its own independent priority state.
 
@@ -69,7 +69,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetComputeOccupancyPriorityNV-commandBuffer-cmdpool) VUID-vkCmdSetComputeOccupancyPriorityNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetComputeOccupancyPriorityNV-videocoding) VUID-vkCmdSetComputeOccupancyPriorityNV-videocoding

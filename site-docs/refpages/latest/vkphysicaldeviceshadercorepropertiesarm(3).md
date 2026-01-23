@@ -63,7 +63,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderCorePropertiesARM-sType-sType) VUID-VkPhysicalDeviceShaderCorePropertiesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_ARM](VkStructureType.html)
 
 [VK_ARM_shader_core_properties](VK_ARM_shader_core_properties.html), [VkStructureType](VkStructureType.html)
 

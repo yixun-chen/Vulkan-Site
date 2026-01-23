@@ -47,12 +47,12 @@ structure.
 device.
 
 * 
-`driverName` is an array of `VK_MAX_DRIVER_NAME_SIZE` `char`
+`driverName` is an array of [VK_MAX_DRIVER_NAME_SIZE](VK_MAX_DRIVER_NAME_SIZE.html) `char`
 containing a null-terminated UTF-8 string which is the name of the
 driver.
 
 * 
-`driverInfo` is an array of `VK_MAX_DRIVER_INFO_SIZE` `char`
+`driverInfo` is an array of [VK_MAX_DRIVER_INFO_SIZE](VK_MAX_DRIVER_INFO_SIZE.html) `char`
 containing a null-terminated UTF-8 string with additional information
 about the driver.
 
@@ -76,7 +76,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDriverProperties-sType-sType) VUID-VkPhysicalDeviceDriverProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES](VkStructureType.html)
 
 [VK_KHR_driver_properties](VK_KHR_driver_properties.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), [VkConformanceVersion](VkConformanceVersion.html), [VkDriverId](VkDriverId.html), [VkStructureType](VkStructureType.html)
 

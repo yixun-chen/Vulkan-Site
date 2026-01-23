@@ -99,7 +99,7 @@ Extending [VkDeviceCreateInfo](VkDeviceCreateInfo.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD`
+[VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD](VkStructureType.html)
 
 * 
 Revision 1, 2018-09-19 (Martin Dinkov)

@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:spec" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -174,6 +174,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/descriptorsets.html">Resource Descriptors</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../chapters/descriptorheaps.html">Descriptor Heaps</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/interfaces.html">Shader Interfaces</a>
@@ -576,7 +579,7 @@ detects a different version.</p>
 <p>A semaphore with a boolean payload indicating whether the semaphore is
 signaled or unsignaled.
 Represented by a <a href="../chapters/synchronization.html#VkSemaphore" class="xref page">VkSemaphore</a> object
-created with a semaphore type of <code>VK_SEMAPHORE_TYPE_BINARY</code>
+created with a semaphore type of <a href="../chapters/synchronization.html#VkSemaphoreTypeKHR" class="xref page">VK_SEMAPHORE_TYPE_BINARY</a>
 .</p>
 </dd>
 <dt class="hdlist1">Binding (Memory)</dt>
@@ -668,7 +671,7 @@ The <em>fragment mask</em> will contain indices to the <em>color fragment</em>.<
 </dd>
 <dt class="hdlist1">Color Renderable Format</dt>
 <dd>
-<p>A <a href="../chapters/formats.html#VkFormat" class="xref page">VkFormat</a> where <code>VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT</code> is
+<p>A <a href="../chapters/formats.html#VkFormat" class="xref page">VkFormat</a> where <a href="../chapters/formats.html#VkFormatFeatureFlagBits" class="xref page">VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT</a> is
 set in one of the following, depending on the image&#8217;s tiling:</p>
 <div class="ulist">
 <ul>
@@ -678,7 +681,7 @@ set in one of the following, depending on the image&#8217;s tiling:</p>
 <li>
 <p><a href="../chapters/formats.html#VkFormatProperties" class="xref page">VkFormatProperties</a>::<code>optimalTilingFeatures</code>
 or a <a href="../chapters/formats.html#VkFormat" class="xref page">VkFormat</a> where
-<code>VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV</code> is set in
+<a href="../chapters/formats.html#VkFormatFeatureFlagBits2KHR" class="xref page">VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV</a> is set in
 <a href="../chapters/formats.html#VkFormatProperties" class="xref page">VkFormatProperties</a>::<code>linearTilingFeatures</code></p>
 </li>
 <li>
@@ -784,7 +787,7 @@ networks.</p>
 <dd>
 <p>A <a href="../chapters/resources.html#VkImage" class="xref page">VkImage</a> where unnormalized texel coordinates are centered on
 integer values instead of half-integer values.
-Specified by setting the <code>VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV</code> bit
+Specified by setting the <a href="../chapters/resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV</a> bit
 on <a href="../chapters/resources.html#VkImageCreateInfo" class="xref page">VkImageCreateInfo</a>::<code>flags</code> at image creation.</p>
 </dd>
 <dt class="hdlist1">Coverage Index</dt>
@@ -975,7 +978,7 @@ Includes
 <p><em>Disjoint planes</em> are <em>image planes</em> to which memory is bound
 independently.<br>
 A <em>disjoint image</em> consists of multiple <em>disjoint planes</em>, and is
-created with the <code>VK_IMAGE_CREATE_DISJOINT_BIT</code> bit set.</p>
+created with the <a href="../chapters/resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_DISJOINT_BIT</a> bit set.</p>
 </dd>
 <dt class="hdlist1">Dispatchable Command</dt>
 <dd>
@@ -1255,8 +1258,9 @@ operations.</p>
 </dd>
 <dt class="hdlist1">Framebuffer Region</dt>
 <dd>
-<p>A framebuffer region is a set of sample (x, y, layer, sample)
-coordinates that is a subset of the entire framebuffer.</p>
+<p>A framebuffer region is a set of sample <span class="eq">(x, y, layer,
+view,
+sample)</span> coordinates that is a subset of the entire framebuffer.</p>
 </dd>
 <dt class="hdlist1">Frame Rate</dt>
 <dd>
@@ -1334,7 +1338,7 @@ structures.</p>
 <dt class="hdlist1">Host-Accessible Subresource</dt>
 <dd>
 <p>A buffer, or a linear image subresource in either the
-<code>VK_IMAGE_LAYOUT_PREINITIALIZED</code> or <code>VK_IMAGE_LAYOUT_GENERAL</code>
+<a href="../chapters/resources.html#VkImageLayout" class="xref page">VK_IMAGE_LAYOUT_PREINITIALIZED</a> or <a href="../chapters/resources.html#VkImageLayout" class="xref page">VK_IMAGE_LAYOUT_GENERAL</a>
 layout.
 Host-accessible subresources have a well-defined addressing scheme which
 can be used by the host.</p>
@@ -1630,11 +1634,11 @@ currently recommended way to achieve that purpose.</p>
 <p>a <a href="../chapters/resources.html#VkBuffer" class="xref page">VkBuffer</a></p>
 </li>
 <li>
-<p>a <a href="../chapters/resources.html#VkImage" class="xref page">VkImage</a> created with <code>VK_IMAGE_TILING_LINEAR</code></p>
+<p>a <a href="../chapters/resources.html#VkImage" class="xref page">VkImage</a> created with <a href="../chapters/resources.html#VkImageTiling" class="xref page">VK_IMAGE_TILING_LINEAR</a></p>
 </li>
 <li>
 <p>a <a href="../chapters/resources.html#VkImage" class="xref page">VkImage</a> created with
-<code>VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT</code> and whose
+<a href="../chapters/resources.html#VkImageTiling" class="xref page">VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT</a> and whose
 <a href="#glossary-drm-format-modifier">Linux DRM format modifier</a> is
 <code>DRM_FORMAT_MOD_LINEAR</code></p>
 </li>
@@ -1646,7 +1650,7 @@ However, the <a href="../chapters/resources.html#VkBuffer" class="xref page">VkB
 resource is placed is a linear resource.</p>
 </li>
 <li>
-<p>a <a href="../chapters/resources.html#VkTensorARM" class="xref page">VkTensorARM</a> created with <code>VK_TENSOR_TILING_LINEAR_ARM</code></p>
+<p>a <a href="../chapters/resources.html#VkTensorARM" class="xref page">VkTensorARM</a> created with <a href="../chapters/resources.html#VkTensorTilingARM" class="xref page">VK_TENSOR_TILING_LINEAR_ARM</a></p>
 </li>
 </ul>
 </div>
@@ -1656,16 +1660,16 @@ resource is placed is a linear resource.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>a <a href="../chapters/resources.html#VkImage" class="xref page">VkImage</a> created with <code>VK_IMAGE_TILING_OPTIMAL</code></p>
+<p>a <a href="../chapters/resources.html#VkImage" class="xref page">VkImage</a> created with <a href="../chapters/resources.html#VkImageTiling" class="xref page">VK_IMAGE_TILING_OPTIMAL</a></p>
 </li>
 <li>
 <p>a <a href="../chapters/resources.html#VkImage" class="xref page">VkImage</a> created with
-<code>VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT</code> and whose
+<a href="../chapters/resources.html#VkImageTiling" class="xref page">VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT</a> and whose
 <a href="#glossary-drm-format-modifier">Linux DRM format modifier</a> is not
 <code>DRM_FORMAT_MOD_LINEAR</code></p>
 </li>
 <li>
-<p>a <a href="../chapters/resources.html#VkTensorARM" class="xref page">VkTensorARM</a> created with <code>VK_TENSOR_TILING_OPTIMAL_ARM</code></p>
+<p>a <a href="../chapters/resources.html#VkTensorARM" class="xref page">VkTensorARM</a> created with <a href="../chapters/resources.html#VkTensorTilingARM" class="xref page">VK_TENSOR_TILING_OPTIMAL_ARM</a></p>
 </li>
 </ul>
 </div>
@@ -1683,7 +1687,7 @@ vendor-specific details of an image&#8217;s memory layout.
 In Linux graphics APIs, <em>modifiers</em> are commonly used to specify the
 memory layout of externally shared images.
 An image has a <em>modifier</em> if and only if it is created with <code>tiling</code>
-equal to <code>VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT</code>.
+equal to <a href="../chapters/resources.html#VkImageTiling" class="xref page">VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT</a>.
 For more details, refer to the appendix for extension
 <code><a href="extensions.html#VK_EXT_image_drm_format_modifier" class="xref page">VK_EXT_image_drm_format_modifier</a></code>.</p>
 </dd>
@@ -1841,6 +1845,14 @@ framebuffer coordinates.</p>
 <p>A 64-bit value representing the device address of a buffer or memory
 object that is expected to be used by trace capture/replay tools in
 combination with the <a href="../chapters/features.html#features-bufferDeviceAddress" class="xref page">    <code>bufferDeviceAddress</code></a> feature.</p>
+</dd>
+<dt class="hdlist1">Overdraw</dt>
+<dd>
+<p>Happens when more than one fragment invocation writes to the same (x, y,
+layer, view, sample) coordinate during a render pass instance.
+Usually refers to the performance impact of either rendering too much
+transparent geometry or redundantly rendering opaque geometry which is
+replaced by future fragments.</p>
 </dd>
 <dt class="hdlist1">Overlapped Range (Aliased Range)</dt>
 <dd>
@@ -2020,7 +2032,7 @@ components across multiple image planes.
 The host-accessible properties of each image plane are accessible for a
 linear layout using <a href="../chapters/resources.html#vkGetImageSubresourceLayout" class="xref page">vkGetImageSubresourceLayout</a>.
 If a multi-planar image is created with the
-<code>VK_IMAGE_CREATE_DISJOINT_BIT</code> bit set, the image is described as
+<a href="../chapters/resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_DISJOINT_BIT</a> bit set, the image is described as
 <em>disjoint</em>, and its planes are therefore bound to memory independently.</p>
 </dd>
 <dt class="hdlist1">Point Sampling (Rasterization)</dt>
@@ -2377,8 +2389,8 @@ framebuffer region.</p>
 <dt class="hdlist1">Shared presentable image</dt>
 <dd>
 <p>A presentable image created from a swapchain with <a href="../chapters/VK_KHR_surface/wsi.html#VkPresentModeKHR" class="xref page">VkPresentModeKHR</a>
-set to either <code>VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR</code> or
-<code>VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR</code>.</p>
+set to either <a href="../chapters/VK_KHR_surface/wsi.html#VkPresentModeKHR" class="xref page">VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR</a> or
+<a href="../chapters/VK_KHR_surface/wsi.html#VkPresentModeKHR" class="xref page">VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR</a>.</p>
 </dd>
 <dt class="hdlist1">Side Effect</dt>
 <dd>
@@ -2568,7 +2580,7 @@ framebuffer is considered to be divided into tiles.</p>
 indicating whether the semaphore is signaled with respect to a
 particular reference value.
 Represented by a <a href="../chapters/synchronization.html#VkSemaphore" class="xref page">VkSemaphore</a> object created with a semaphore type
-of <code>VK_SEMAPHORE_TYPE_TIMELINE</code>.</p>
+of <a href="../chapters/synchronization.html#VkSemaphoreTypeKHR" class="xref page">VK_SEMAPHORE_TYPE_TIMELINE</a>.</p>
 </dd>
 <dt class="hdlist1">Uniform Texel Buffer</dt>
 <dd>
@@ -2619,6 +2631,12 @@ the host.</p>
 <dd>
 <p>A shader entry point&#8217;s variables with <code>Input</code> or <code>Output</code> storage
 class that are not built-in variables.</p>
+</dd>
+<dt class="hdlist1">Vector Type</dt>
+<dd>
+<p>A SPIR-V <code>OpTypeVector</code>
+or <code>OpTypeVectorIdEXT</code>
+.</p>
 </dd>
 <dt class="hdlist1">Vertex Input Attribute</dt>
 <dd>

@@ -38,12 +38,12 @@ typedef enum VkSamplerYcbcrRange {
 typedef VkSamplerYcbcrRange VkSamplerYcbcrRangeKHR;
 
 * 
-`VK_SAMPLER_YCBCR_RANGE_ITU_FULL` specifies that the full range of
+[VK_SAMPLER_YCBCR_RANGE_ITU_FULL](#) specifies that the full range of
 the encoded values are valid and interpreted according to the ITU “full
 range” quantization rules.
 
 * 
-`VK_SAMPLER_YCBCR_RANGE_ITU_NARROW` specifies that headroom and foot
+[VK_SAMPLER_YCBCR_RANGE_ITU_NARROW](#) specifies that headroom and foot
 room are reserved in the numerical range of encoded values, and the
 remaining values are expanded according to the ITU “narrow range”
 quantization rules.
@@ -52,7 +52,7 @@ The formulae for these conversions is described in the
 [Sampler Y′CBCR Range Expansion](../../../../spec/latest/chapters/textures.html#textures-sampler-YCbCr-conversion-rangeexpand) section of the [Image Operations](../../../../spec/latest/chapters/textures.html#textures) chapter.
 
 No range modification takes place if `ycbcrModel` is
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY`; the `ycbcrRange`
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY](VkSamplerYcbcrModelConversion.html); the `ycbcrRange`
 field of [VkSamplerYcbcrConversionCreateInfo](VkSamplerYcbcrConversionCreateInfo.html) is ignored in this case.
 
 [VK_KHR_sampler_ycbcr_conversion](VK_KHR_sampler_ycbcr_conversion.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkAndroidHardwareBufferFormatProperties2ANDROID](VkAndroidHardwareBufferFormatProperties2ANDROID.html), [VkAndroidHardwareBufferFormatPropertiesANDROID](VkAndroidHardwareBufferFormatPropertiesANDROID.html), [VkBufferCollectionPropertiesFUCHSIA](VkBufferCollectionPropertiesFUCHSIA.html), [VkNativeBufferFormatPropertiesOHOS](VkNativeBufferFormatPropertiesOHOS.html), [VkSamplerYcbcrConversionCreateInfo](VkSamplerYcbcrConversionCreateInfo.html), [VkScreenBufferFormatPropertiesQNX](VkScreenBufferFormatPropertiesQNX.html)

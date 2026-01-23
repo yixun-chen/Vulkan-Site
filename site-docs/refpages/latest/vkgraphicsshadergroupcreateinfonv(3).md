@@ -91,7 +91,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGraphicsShaderGroupCreateInfoNV-sType-sType) VUID-VkGraphicsShaderGroupCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GRAPHICS_SHADER_GROUP_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GRAPHICS_SHADER_GROUP_CREATE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkGraphicsShaderGroupCreateInfoNV-pNext-pNext) VUID-VkGraphicsShaderGroupCreateInfoNV-pNext-pNext

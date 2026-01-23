@@ -164,7 +164,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCudaLaunchInfoNV-sType-sType) VUID-VkCudaLaunchInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CUDA_LAUNCH_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CUDA_LAUNCH_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkCudaLaunchInfoNV-pNext-pNext) VUID-VkCudaLaunchInfoNV-pNext-pNext

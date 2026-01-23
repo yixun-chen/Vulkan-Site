@@ -50,6 +50,22 @@ Any previously bound buffers at binding points greater than or equal to
 Valid Usage
 
 * 
+[](#VUID-vkCmdBindDescriptorBuffersEXT-commandBuffer-11295) VUID-vkCmdBindDescriptorBuffersEXT-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdBindDescriptorBuffersEXT-commandBuffer-11296) VUID-vkCmdBindDescriptorBuffersEXT-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pResourceHeapBindInfo`
+equal to `NULL`
+
+* 
 [](#VUID-vkCmdBindDescriptorBuffersEXT-None-08047) VUID-vkCmdBindDescriptorBuffersEXT-None-08047
 
 The [`descriptorBuffer`](../../../../spec/latest/chapters/features.html#features-descriptorBuffer) feature **must**
@@ -62,7 +78,7 @@ There **must** be no more than
 [VkPhysicalDeviceDescriptorBufferPropertiesEXT](VkPhysicalDeviceDescriptorBufferPropertiesEXT.html)::`maxSamplerDescriptorBufferBindings`
 elements in `pBindingInfos` with
 [VkDescriptorBufferBindingInfoEXT](VkDescriptorBufferBindingInfoEXT.html)::`usage` containing
-`VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT](VkBufferUsageFlagBits.html)
 
 * 
 [](#VUID-vkCmdBindDescriptorBuffersEXT-maxResourceDescriptorBufferBindings-08049) VUID-vkCmdBindDescriptorBuffersEXT-maxResourceDescriptorBufferBindings-08049
@@ -71,14 +87,14 @@ There **must** be no more than
 [VkPhysicalDeviceDescriptorBufferPropertiesEXT](VkPhysicalDeviceDescriptorBufferPropertiesEXT.html)::`maxResourceDescriptorBufferBindings`
 elements in `pBindingInfos` with
 [VkDescriptorBufferBindingInfoEXT](VkDescriptorBufferBindingInfoEXT.html)::`usage` containing
-`VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](VkBufferUsageFlagBits.html)
 
 * 
 [](#VUID-vkCmdBindDescriptorBuffersEXT-None-08050) VUID-vkCmdBindDescriptorBuffersEXT-None-08050
 
 There **must** be no more than `1` element in `pBindingInfos` with
 [VkDescriptorBufferBindingInfoEXT](VkDescriptorBufferBindingInfoEXT.html)::`usage` containing
-`VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT](VkBufferUsageFlagBits.html)
 
 * 
 [](#VUID-vkCmdBindDescriptorBuffersEXT-bufferCount-08051) VUID-vkCmdBindDescriptorBuffersEXT-bufferCount-08051
@@ -91,7 +107,7 @@ There **must** be no more than `1` element in `pBindingInfos` with
 
 For each element of `pBindingInfos`, the buffer from which
 `address` was queried **must** have been created with the
-`VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT` usage flag set
+[VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT](VkBufferUsageFlagBits.html) usage flag set
 if it contains sampler descriptor data
 
 * 
@@ -99,7 +115,7 @@ if it contains sampler descriptor data
 
 For each element of `pBindingInfos`, the buffer from which
 `address` was queried **must** have been created with the
-`VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT` usage flag set
+[VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](VkBufferUsageFlagBits.html) usage flag set
 if it contains resource descriptor data
 
 * 
@@ -113,11 +129,11 @@ For each element of `pBindingInfos`, at least one buffer from which
 
 For all elements of `pBindingInfos`, the buffer from which
 `address` was queried **must** have been created with the
-`VK_BUFFER_USAGE_2_DATA_GRAPH_FOREIGN_DESCRIPTOR_BIT_ARM` usage flag
+[VK_BUFFER_USAGE_2_DATA_GRAPH_FOREIGN_DESCRIPTOR_BIT_ARM](VkBufferUsageFlagBits2.html) usage flag
 set if the command pool from which `commandBuffer` was allocated
 from was created with any element of
 [VkDataGraphProcessingEngineCreateInfoARM](VkDataGraphProcessingEngineCreateInfoARM.html)::pProcessingEngines with
-`isForeign` set to `VK_TRUE`
+`isForeign` set to [VK_TRUE](VK_TRUE.html)
 
 Valid Usage (Implicit)
 
@@ -139,7 +155,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindDescriptorBuffersEXT-commandBuffer-cmdpool) VUID-vkCmdBindDescriptorBuffersEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_DATA_GRAPH_BIT_ARM`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_DATA_GRAPH_BIT_ARM](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBindDescriptorBuffersEXT-videocoding) VUID-vkCmdBindDescriptorBuffersEXT-videocoding

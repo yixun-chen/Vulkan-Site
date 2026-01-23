@@ -40,17 +40,17 @@ typedef enum VkAccelerationStructureTypeKHR {
 typedef VkAccelerationStructureTypeKHR VkAccelerationStructureTypeNV;
 
 * 
-`VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR` is a top-level
+[VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR](#) is a top-level
 acceleration structure containing instance data referring to
 bottom-level acceleration structures.
 
 * 
-`VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR` is a bottom-level
+[VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR](#) is a bottom-level
 acceleration structure containing the AABBs or geometry to be
 intersected.
 
 * 
-`VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR` is an acceleration
+[VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](#) is an acceleration
 structure whose type is determined at build time used for special
 circumstances.
 In these cases, the acceleration structure type is not known at creation

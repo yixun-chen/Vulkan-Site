@@ -62,7 +62,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineDynamicStateCreateInfo-sType-sType) VUID-VkPipelineDynamicStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineDynamicStateCreateInfo-pNext-pNext) VUID-VkPipelineDynamicStateCreateInfo-pNext-pNext

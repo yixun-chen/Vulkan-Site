@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_fragment_density_map_offset](VK_EXT_fragment_density_map_offset.html), [VK_QCOM_fragment_density_map_offset](VK_QCOM_fragment_density_map_offset.html), [VkExtent2D](VkExtent2D.html), [VkStructureType](VkStructureType.html)
 

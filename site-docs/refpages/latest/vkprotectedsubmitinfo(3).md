@@ -33,8 +33,8 @@ typedef struct VkProtectedSubmitInfo {
 
 * 
 `protectedSubmit` specifies whether the batch is protected.
-If `protectedSubmit` is `VK_TRUE`, the batch is protected.
-If `protectedSubmit` is `VK_FALSE`, the batch is unprotected.
+If `protectedSubmit` is [VK_TRUE](VK_TRUE.html), the batch is protected.
+If `protectedSubmit` is [VK_FALSE](VK_FALSE.html), the batch is unprotected.
 If the `VkSubmitInfo`::`pNext` chain does not include this
 structure, the batch is unprotected.
 
@@ -43,7 +43,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkProtectedSubmitInfo-sType-sType) VUID-VkProtectedSubmitInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO](VkStructureType.html)
 
 [VK_VERSION_1_1](VK_VERSION_1_1.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

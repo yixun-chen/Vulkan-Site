@@ -49,17 +49,17 @@ Valid Usage
 [](#VUID-vkCreateBuffer-device-09664) VUID-vkCreateBuffer-device-09664
 
     `device` **must** support at least one queue family with one of the
-    `VK_QUEUE_VIDEO_ENCODE_BIT_KHR`,
-    `VK_QUEUE_VIDEO_DECODE_BIT_KHR`,
-`VK_QUEUE_SPARSE_BINDING_BIT`,
-    `VK_QUEUE_TRANSFER_BIT`, `VK_QUEUE_COMPUTE_BIT`, or
-    `VK_QUEUE_GRAPHICS_BIT` capabilities
+    [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](VkQueueFlagBits.html),
+    [VK_QUEUE_VIDEO_DECODE_BIT_KHR](VkQueueFlagBits.html),
+[VK_QUEUE_SPARSE_BINDING_BIT](VkQueueFlagBits.html),
+    [VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html), [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or
+    [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) capabilities
 
 * 
 [](#VUID-vkCreateBuffer-flags-00911) VUID-vkCreateBuffer-flags-00911
 
 If the `flags` member of `pCreateInfo` includes
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT`,
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](VkBufferCreateFlagBits.html),
 and the [    `extendedSparseAddressSpace`](../../../../spec/latest/chapters/features.html#features-extendedSparseAddressSpace) feature is not enabled,
 creating this `VkBuffer` **must** not cause the total required sparse
 memory for all currently valid sparse resources on the device to exceed
@@ -69,7 +69,7 @@ memory for all currently valid sparse resources on the device to exceed
 [](#VUID-vkCreateBuffer-flags-09383) VUID-vkCreateBuffer-flags-09383
 
 If the `flags` member of `pCreateInfo` includes
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT`, the
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](VkBufferCreateFlagBits.html), the
 [    `extendedSparseAddressSpace`](../../../../spec/latest/chapters/features.html#features-extendedSparseAddressSpace) feature is enabled, and the
 `usage` member of `pCreateInfo` contains bits not in
 `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`::`extendedSparseBufferUsageFlags`,
@@ -87,7 +87,7 @@ to exceed `VkPhysicalDeviceLimits`::`sparseAddressSpaceSize`
 [](#VUID-vkCreateBuffer-flags-09384) VUID-vkCreateBuffer-flags-09384
 
 If the `flags` member of `pCreateInfo` includes
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT` and the
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](VkBufferCreateFlagBits.html) and the
 [    `extendedSparseAddressSpace`](../../../../spec/latest/chapters/features.html#features-extendedSparseAddressSpace) feature is enabled, creating this
 `VkBuffer` **must** not cause the total required sparse memory for all
 currently valid sparse resources on the device to exceed
@@ -136,24 +136,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR`
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkAllocationCallbacks](VkAllocationCallbacks.html), [VkBuffer](VkBuffer.html), [VkBufferCreateInfo](VkBufferCreateInfo.html), [VkDevice](VkDevice.html)
 

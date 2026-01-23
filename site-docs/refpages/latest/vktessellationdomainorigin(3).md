@@ -36,12 +36,12 @@ typedef enum VkTessellationDomainOrigin {
 typedef VkTessellationDomainOrigin VkTessellationDomainOriginKHR;
 
 * 
-`VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT` specifies that the origin
+[VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT](#) specifies that the origin
 of the domain space is in the upper left corner, as shown in figure
 [Figure 15. Domain parameterization for tessellation primitive modes (upper-left origin)](../../../../spec/latest/chapters/tessellation.html#img-tessellation-topology-ul).
 
 * 
-`VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT` specifies that the origin
+[VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT](#) specifies that the origin
 of the domain space is in the lower left corner, as shown in figure
 [Figure 16. Domain parameterization for tessellation primitive modes (lower-left origin)](../../../../spec/latest/chapters/tessellation.html#img-tessellation-topology-ll).
 

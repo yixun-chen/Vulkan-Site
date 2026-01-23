@@ -43,7 +43,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkHeadlessSurfaceCreateInfoEXT-sType-sType) VUID-VkHeadlessSurfaceCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_HEADLESS_SURFACE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_HEADLESS_SURFACE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkHeadlessSurfaceCreateInfoEXT-pNext-pNext) VUID-VkHeadlessSurfaceCreateInfoEXT-pNext-pNext

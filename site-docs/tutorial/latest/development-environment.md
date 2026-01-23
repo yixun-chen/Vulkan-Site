@@ -136,7 +136,7 @@ Vulkan SDK has support for using find_package. To use it with your project,
 you can add the search path for the *-config.cmake to the `HINTS` portion of
 the find_package config calls: i.e.
 
-find_package(Slang CONFIG HINTS "$ENV{VULKAN_SDK}/lib/cmake").
+find_package(slang CONFIG HINTS "$ENV{VULKAN_SDK}/lib/cmake").
 
 In the future, FindVulkan.cmake might migrate to the *-config.cmake standard,
 however at the time of writing it is recommended to grab FindVulkan.cmake
@@ -313,7 +313,7 @@ Place the uncompressed VulkanSDK in a convenient path, and create a symbolic
 link to the latest on like so:
 
 pushd vulkansdk
-tar -xzf vulkansdk-linux-x86_64-1.4.304.1.tgz
+tar -xf vulkansdk-linux-x86_64-1.4.304.1.tar.xz
 ln -s 1.4.304.1 default
 
 Then add the following to your ~/.bashrc file so Vulkan’s environment

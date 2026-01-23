@@ -96,11 +96,14 @@ If the [`nullDescriptor`](../../../../spec/latest/chapters/features.html#feature
 a null descriptor is also considered valid.
 A descriptor that was disturbed by [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility), or was never bound by `vkCmdBindDescriptorSets`
 is not considered valid.
-If a pipeline accesses a descriptor either statically or dynamically
-depending on the [VkDescriptorBindingFlagBits](VkDescriptorBindingFlagBits.html), the consuming descriptor
-type in the pipeline **must** match the [VkDescriptorType](VkDescriptorType.html) in
-[VkDescriptorSetLayoutCreateInfo](VkDescriptorSetLayoutCreateInfo.html) for the descriptor to be considered
-valid.
+For any given descriptor, [VkDescriptorBindingFlagBits](VkDescriptorBindingFlagBits.html) and
+[VkDescriptorSetLayoutCreateFlagBits](VkDescriptorSetLayoutCreateFlagBits.html) determine if validity is defined
+in terms of the descriptor being statically accessed, or dynamically
+accessed.
+If the descriptor is determined to be accessed by the appropriate
+definition, the consuming descriptor type in the pipeline **must** match the
+[VkDescriptorType](VkDescriptorType.html) in [VkDescriptorSetLayoutCreateInfo](VkDescriptorSetLayoutCreateInfo.html) for the
+descriptor to be considered valid.
 If a descriptor is a mutable descriptor, the consuming descriptor type in
 the pipeline **must** match the active descriptor type for the descriptor to be
 considered valid.
@@ -136,7 +139,7 @@ The descriptor set contents bound by a call to `vkCmdBindDescriptorSets`
 
 * 
 For descriptor bindings created with the
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` bit set, the contents
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html) bit set, the contents
 **may** be consumed when the command buffer is submitted to a queue, or
 during shader execution of the resulting draws and dispatches, or any
 time in between.
@@ -157,6 +160,22 @@ Once all pending uses have completed, it is legal to update and reuse a
 descriptor set.
 
 Valid Usage
+
+* 
+[](#VUID-vkCmdBindDescriptorSets-commandBuffer-11295) VUID-vkCmdBindDescriptorSets-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdBindDescriptorSets-commandBuffer-11296) VUID-vkCmdBindDescriptorSets-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pResourceHeapBindInfo`
+equal to `NULL`
 
 * 
 [](#VUID-vkCmdBindDescriptorSets-pDescriptorSets-00358) VUID-vkCmdBindDescriptorSets-pDescriptorSets-00358
@@ -185,7 +204,7 @@ provided when `layout` was created
 [](#VUID-vkCmdBindDescriptorSets-pDynamicOffsets-01971) VUID-vkCmdBindDescriptorSets-pDynamicOffsets-01971
 
 Each element of `pDynamicOffsets` which corresponds to a descriptor
-binding with type `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` **must**
+binding with type [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) **must**
 be a multiple of
 `VkPhysicalDeviceLimits`::`minUniformBufferOffsetAlignment`
 
@@ -193,7 +212,7 @@ be a multiple of
 [](#VUID-vkCmdBindDescriptorSets-pDynamicOffsets-01972) VUID-vkCmdBindDescriptorSets-pDynamicOffsets-01972
 
 Each element of `pDynamicOffsets` which corresponds to a descriptor
-binding with type `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` **must**
+binding with type [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html) **must**
 be a multiple of
 `VkPhysicalDeviceLimits`::`minStorageBufferOffsetAlignment`
 
@@ -208,7 +227,7 @@ equal to the size of the buffer
 [](#VUID-vkCmdBindDescriptorSets-pDescriptorSets-06715) VUID-vkCmdBindDescriptorSets-pDescriptorSets-06715
 
 For each dynamic uniform or storage buffer binding in
-`pDescriptorSets`, if the range was set with `VK_WHOLE_SIZE`
+`pDescriptorSets`, if the range was set with [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html)
 then `pDynamicOffsets` which corresponds to the descriptor binding
 **must** be 0
 
@@ -217,7 +236,7 @@ then `pDynamicOffsets` which corresponds to the descriptor binding
 
 Each element of `pDescriptorSets` **must** not have been allocated from
 a `VkDescriptorPool` with the
-`VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT` flag set
+[VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT](VkDescriptorPoolCreateFlagBits.html) flag set
 
 * 
 [](#VUID-vkCmdBindDescriptorSets-pDescriptorSets-06563) VUID-vkCmdBindDescriptorSets-pDescriptorSets-06563
@@ -230,7 +249,7 @@ element of `pDescriptorSets` **must** be a valid [VkDescriptorSet](VkDescriptorS
 
 Each element of `pDescriptorSets` **must** have been allocated with a
 `VkDescriptorSetLayout` which was not created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html)
 
 * 
 [](#VUID-vkCmdBindDescriptorSets-pDescriptorSets-09914) VUID-vkCmdBindDescriptorSets-pDescriptorSets-09914
@@ -300,7 +319,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindDescriptorSets-commandBuffer-cmdpool) VUID-vkCmdBindDescriptorSets-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_DATA_GRAPH_BIT_ARM`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_DATA_GRAPH_BIT_ARM](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBindDescriptorSets-videocoding) VUID-vkCmdBindDescriptorSets-videocoding

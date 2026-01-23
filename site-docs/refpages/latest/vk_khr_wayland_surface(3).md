@@ -144,12 +144,12 @@ Wayland compositor.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR](VkStructureType.html)
 
 1) Does Wayland need a way to query for compatibility between a particular
 physical device and a specific Wayland display? This would be a more general
 query than [vkGetPhysicalDeviceSurfaceSupportKHR](vkGetPhysicalDeviceSurfaceSupportKHR.html): if the
-Wayland-specific query returned `VK_TRUE` for a ([VkPhysicalDevice](VkPhysicalDevice.html),
+Wayland-specific query returned [VK_TRUE](VK_TRUE.html) for a ([VkPhysicalDevice](VkPhysicalDevice.html),
 `struct wl_display*`) pair, then the physical device could be assumed to
 support presentation to any [VkSurfaceKHR](VkSurfaceKHR.html) for surfaces on the display.
 
@@ -158,15 +158,15 @@ support presentation to any [VkSurfaceKHR](VkSurfaceKHR.html) for surfaces on th
 this issue.
 
 2) Should we require surfaces created with [vkCreateWaylandSurfaceKHR](vkCreateWaylandSurfaceKHR.html)
-to support the `VK_PRESENT_MODE_MAILBOX_KHR` present mode?
+to support the [VK_PRESENT_MODE_MAILBOX_KHR](VkPresentModeKHR.html) present mode?
 
 **RESOLVED**: Yes.
 Wayland is an inherently mailbox window system and mailbox support is
 required for some Wayland compositor interactions to work as expected.
 While handling these interactions may be possible with
-`VK_PRESENT_MODE_FIFO_KHR`, it is much more difficult to do without
+[VK_PRESENT_MODE_FIFO_KHR](VkPresentModeKHR.html), it is much more difficult to do without
 deadlock and requiring all Wayland applications to be able to support
-implementations which only support `VK_PRESENT_MODE_FIFO_KHR` would be
+implementations which only support [VK_PRESENT_MODE_FIFO_KHR](VkPresentModeKHR.html) would be
 an onerous restriction on application developers.
 
 * 
@@ -207,7 +207,7 @@ Revision 6, 2017-02-08 (Faith Ekstrand)
 
 * 
 Added the requirement that implementations support
-`VK_PRESENT_MODE_MAILBOX_KHR`.
+[VK_PRESENT_MODE_MAILBOX_KHR](VkPresentModeKHR.html).
 
 * 
 Added wording about interactions between [vkQueuePresentKHR](vkQueuePresentKHR.html) and

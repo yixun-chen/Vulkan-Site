@@ -259,7 +259,7 @@ float4 PSMain(VSOutput input) : SV_TARGET
     }
 
     // === LIGHTING SETUP ===
-    // Calculate view direction (camera to fragment)
+    // Calculate view direction (fragment to camera)
     float3 V = normalize(ubo.camPos.xyz - input.WorldPos);
 
     // Calculate reflection vector for environment mapping
@@ -706,4 +706,4 @@ void Renderer::pushMaterialProperties(vk::CommandBuffer commandBuffer, const Mod
 
 In the next section, we’ll integrate our lighting implementation with the rest of the Vulkan rendering pipeline.
 
-[Previous: Push Constants](03_push_constants.adoc) | [Next: Vulkan Integration](05_vulkan_integration.adoc)
+[Previous: Push Constants](03_push_constants.html) | [Next: Vulkan Integration](05_vulkan_integration.html)

@@ -93,7 +93,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetRenderingAttachmentLocations-commandBuffer-cmdpool) VUID-vkCmdSetRenderingAttachmentLocations-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetRenderingAttachmentLocations-renderpass) VUID-vkCmdSetRenderingAttachmentLocations-renderpass

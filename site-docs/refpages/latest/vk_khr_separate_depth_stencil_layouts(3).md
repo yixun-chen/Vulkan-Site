@@ -92,8 +92,8 @@ Jesse Barker, Unity
 Tobias Hector, AMD
 
 This extension allows image memory barriers for depth/stencil images to have
-just one of the `VK_IMAGE_ASPECT_DEPTH_BIT` or
-`VK_IMAGE_ASPECT_STENCIL_BIT` aspect bits set, rather than require both.
+just one of the [VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) or
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html) aspect bits set, rather than require both.
 This allows their layouts to be set independently.
 To support depth/stencil images with different layouts for the depth and
 stencil aspects, the depth/stencil attachment interface has been updated to
@@ -128,27 +128,27 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkImageLayout](VkImageLayout.html):
 
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL_KHR](VkImageLayout.html)
 
 * 
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL_KHR](VkImageLayout.html)
 
 * 
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL_KHR](VkImageLayout.html)
 
 * 
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL_KHR](VkImageLayout.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_STENCIL_LAYOUT_KHR`
+[VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_STENCIL_LAYOUT_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_STENCIL_LAYOUT_KHR`
+[VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_STENCIL_LAYOUT_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES_KHR](VkStructureType.html)
 
 * 
 Revision 1, 2019-06-25 (Piers Daniell)

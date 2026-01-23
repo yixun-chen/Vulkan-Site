@@ -33,20 +33,20 @@ typedef enum VkMemoryHeapFlagBits {
 } VkMemoryHeapFlagBits;
 
 * 
-`VK_MEMORY_HEAP_DEVICE_LOCAL_BIT` specifies that the heap
+[VK_MEMORY_HEAP_DEVICE_LOCAL_BIT](#) specifies that the heap
 corresponds to device-local memory.
 Device-local memory **may** have different performance characteristics than
 host-local memory, and **may** support different memory property flags.
 
 * 
-`VK_MEMORY_HEAP_MULTI_INSTANCE_BIT` specifies that in a logical
+[VK_MEMORY_HEAP_MULTI_INSTANCE_BIT](#) specifies that in a logical
 device representing more than one physical device, there is a
 per-physical device instance of the heap memory.
 By default, an allocation from such a heap will be replicated to each
 physical device’s instance of the heap.
 
 * 
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` bit specifies that the heap
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](#) bit specifies that the heap
 corresponds to tile memory.
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkMemoryHeapFlags](VkMemoryHeapFlags.html)

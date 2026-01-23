@@ -67,7 +67,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMutableDescriptorTypeCreateInfoEXT-sType-sType) VUID-VkMutableDescriptorTypeCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkMutableDescriptorTypeCreateInfoEXT-pMutableDescriptorTypeLists-parameter) VUID-VkMutableDescriptorTypeCreateInfoEXT-pMutableDescriptorTypeLists-parameter

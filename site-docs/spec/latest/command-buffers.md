@@ -54,10 +54,21 @@ When a command buffer begins recording, all state in that command buffer is
 When secondary command buffer(s) are recorded to execute on a primary
 command buffer, the secondary command buffer inherits no state from the
 primary command buffer, and all state of the primary command buffer is
-**undefined** after an execute secondary command buffer command is recorded.
-There is one exception to this rule - if the primary command buffer is
-inside a render pass instance, then the render pass and subpass state is not
-disturbed by executing secondary command buffers.
+**undefined** after an execute secondary command buffer command is recorded,
+with the following exception(s):
+
+* 
+If the primary command buffer is inside a render pass instance, then the
+render pass and subpass state is not disturbed by executing secondary
+command buffers.
+
+* 
+If the primary command buffer has a descriptor heap bound, and the
+address of that descriptor heap is specified in
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](#VkCommandBufferInheritanceDescriptorHeapInfoEXT) for every
+secondary command buffer, that heap binding is not disturbed by
+executing secondary command buffers.
+
 For state dependent commands (such as draws and dispatches), any state
 consumed by those commands **must** not be **undefined**.
 
@@ -110,7 +121,7 @@ the command buffer in any way - as the device **may** be processing the
 commands recorded to it.
 Once execution of a command buffer completes, the command buffer either
 reverts back to the *executable state*, or if it was recorded with
-`VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT`, it moves to the
+[VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT](#VkCommandBufferUsageFlagBits), it moves to the
 *invalid state*.
 A [synchronization](synchronization.html#synchronization) command **should** be used to detect
 when this occurs.
@@ -238,21 +249,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkCommandPoolCreateInfo` structure is defined as:
 
@@ -287,7 +298,7 @@ Valid Usage
 [](#VUID-VkCommandPoolCreateInfo-flags-02860) VUID-VkCommandPoolCreateInfo-flags-02860
 
 If the [`protectedMemory`](features.html#features-protectedMemory) feature is
-not enabled, the `VK_COMMAND_POOL_CREATE_PROTECTED_BIT` bit of
+not enabled, the [VK_COMMAND_POOL_CREATE_PROTECTED_BIT](#VkCommandPoolCreateFlagBits) bit of
 `flags` **must** not be set
 
 * 
@@ -296,7 +307,7 @@ not enabled, the `VK_COMMAND_POOL_CREATE_PROTECTED_BIT` bit of
 If the `pNext` chain includes a
 [VkDataGraphProcessingEngineCreateInfoARM](VK_ARM_data_graph/graphs.html#VkDataGraphProcessingEngineCreateInfoARM) structure, then
 `queueFamilyIndex` **must** designate a queue family that supports
-`VK_QUEUE_DATA_GRAPH_BIT_ARM`
+[VK_QUEUE_DATA_GRAPH_BIT_ARM](devsandqueues.html#VkQueueFlagBits)
 
 * 
 [](#VUID-VkCommandPoolCreateInfo-pNext-09909) VUID-VkCommandPoolCreateInfo-pNext-09909
@@ -313,23 +324,23 @@ create `device`
 [](#VUID-VkCommandPoolCreateInfo-queueFamilyIndex-11830) VUID-VkCommandPoolCreateInfo-queueFamilyIndex-11830
 
 If `queueFamilyIndex` designates a queue family that supports
-`VK_QUEUE_DATA_GRAPH_BIT_ARM` and enumerates a foreign engine
+[VK_QUEUE_DATA_GRAPH_BIT_ARM](devsandqueues.html#VkQueueFlagBits) and enumerates a foreign engine
 through [vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM](VK_ARM_data_graph/graphs.html#vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM) with
 type
-`VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_NEURAL_QCOM`
+[VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_NEURAL_QCOM](VK_ARM_data_graph/graphs.html#VkPhysicalDeviceDataGraphProcessingEngineTypeARM)
 or
-`VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_COMPUTE_QCOM`,
+[VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_COMPUTE_QCOM](VK_ARM_data_graph/graphs.html#VkPhysicalDeviceDataGraphProcessingEngineTypeARM),
 the `pNext` chain must include
 [VkDataGraphProcessingEngineCreateInfoARM](VK_ARM_data_graph/graphs.html#VkDataGraphProcessingEngineCreateInfoARM) with
 [VkPhysicalDeviceDataGraphProcessingEngineARM](VK_ARM_data_graph/graphs.html#VkPhysicalDeviceDataGraphProcessingEngineARM)::`isForeign` set
-to `VK_TRUE` for all elements of `pProcessingEngines`
+to [VK_TRUE](fundamentals.html#VK_TRUE) for all elements of `pProcessingEngines`
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkCommandPoolCreateInfo-sType-sType) VUID-VkCommandPoolCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkCommandPoolCreateInfo-pNext-pNext) VUID-VkCommandPoolCreateInfo-pNext-pNext
@@ -358,14 +369,14 @@ typedef enum VkCommandPoolCreateFlagBits {
 } VkCommandPoolCreateFlagBits;
 
 * 
-`VK_COMMAND_POOL_CREATE_TRANSIENT_BIT` specifies that command
+[VK_COMMAND_POOL_CREATE_TRANSIENT_BIT](#VkCommandPoolCreateFlagBits) specifies that command
 buffers allocated from the pool will be short-lived, meaning that they
 will be reset or freed in a relatively short timeframe.
 This flag **may** be used by the implementation to control memory
 allocation behavior within the pool.
 
 * 
-`VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT` allows any command
+[VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT](#VkCommandPoolCreateFlagBits) allows any command
 buffer allocated from a pool to be individually reset to the
 [initial state](#commandbuffers-lifecycle); either by calling
 [vkResetCommandBuffer](#vkResetCommandBuffer), or via the implicit reset when calling
@@ -374,7 +385,7 @@ If this flag is not set on a pool, then `vkResetCommandBuffer` **must**
 not be called for any command buffer allocated from that pool.
 
 * 
-`VK_COMMAND_POOL_CREATE_PROTECTED_BIT` specifies that command
+[VK_COMMAND_POOL_CREATE_PROTECTED_BIT](#VkCommandPoolCreateFlagBits) specifies that command
 buffers allocated from the pool are protected command buffers.
 
 // Provided by VK_VERSION_1_0
@@ -552,18 +563,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Bits which **can** be set in [vkResetCommandPool](#vkResetCommandPool)::`flags`, controlling
 the reset operation, are:
@@ -574,7 +585,7 @@ typedef enum VkCommandPoolResetFlagBits {
 } VkCommandPoolResetFlagBits;
 
 * 
-`VK_COMMAND_POOL_RESET_RELEASE_RESOURCES_BIT`
+[VK_COMMAND_POOL_RESET_RELEASE_RESOURCES_BIT](#VkCommandPoolResetFlagBits)
 specifies that resetting a command pool recycles all of the resources
 from the command pool back to the system.
 
@@ -728,21 +739,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkCommandBufferAllocateInfo` structure is defined as:
 
@@ -779,7 +790,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCommandBufferAllocateInfo-sType-sType) VUID-VkCommandBufferAllocateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkCommandBufferAllocateInfo-pNext-pNext) VUID-VkCommandBufferAllocateInfo-pNext-pNext
@@ -811,11 +822,11 @@ typedef enum VkCommandBufferLevel {
 } VkCommandBufferLevel;
 
 * 
-`VK_COMMAND_BUFFER_LEVEL_PRIMARY` specifies a primary command
+[VK_COMMAND_BUFFER_LEVEL_PRIMARY](#VkCommandBufferLevel) specifies a primary command
 buffer.
 
 * 
-`VK_COMMAND_BUFFER_LEVEL_SECONDARY` specifies a secondary command
+[VK_COMMAND_BUFFER_LEVEL_SECONDARY](#VkCommandBufferLevel) specifies a secondary command
 buffer.
 
 To reset a command buffer, call:
@@ -853,7 +864,7 @@ Valid Usage
 [](#VUID-vkResetCommandBuffer-commandBuffer-00046) VUID-vkResetCommandBuffer-commandBuffer-00046
 
 `commandBuffer` **must** have been allocated from a pool that was
-created with the `VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT`
+created with the [VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT](#VkCommandPoolCreateFlagBits)
 
 Valid Usage (Implicit)
 
@@ -880,18 +891,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Bits which **can** be set in [vkResetCommandBuffer](#vkResetCommandBuffer)::`flags`,
 controlling the reset operation, are:
@@ -902,7 +913,7 @@ typedef enum VkCommandBufferResetFlagBits {
 } VkCommandBufferResetFlagBits;
 
 * 
-`VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT` specifies that most
+[VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT](#VkCommandBufferResetFlagBits) specifies that most
 or all memory resources currently owned by the command buffer **should** be
 returned to the parent command pool.
 If this flag is not set, then the command buffer **may** hold onto memory
@@ -1019,7 +1030,7 @@ Valid Usage
 [](#VUID-vkBeginCommandBuffer-commandBuffer-00050) VUID-vkBeginCommandBuffer-commandBuffer-00050
 
 If `commandBuffer` was allocated from a [VkCommandPool](#VkCommandPool) which
-did not have the `VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT`
+did not have the [VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT](#VkCommandPoolCreateFlagBits)
 flag set, `commandBuffer` **must** be in the
 [initial state](#commandbuffers-lifecycle)
 
@@ -1035,18 +1046,18 @@ If `commandBuffer` is a secondary command buffer, the
 
 If `commandBuffer` is a secondary command buffer and either the
 `occlusionQueryEnable` member of the `pInheritanceInfo` member
-of `pBeginInfo` is `VK_FALSE`, or the
+of `pBeginInfo` is [VK_FALSE](fundamentals.html#VK_FALSE), or the
 [`occlusionQueryPrecise`](features.html#features-occlusionQueryPrecise) feature
 is not enabled, then `pBeginInfo->pInheritanceInfo→queryFlags`
-**must** not contain `VK_QUERY_CONTROL_PRECISE_BIT`
+**must** not contain [VK_QUERY_CONTROL_PRECISE_BIT](queries.html#VkQueryControlFlagBits)
 
 * 
 [](#VUID-vkBeginCommandBuffer-commandBuffer-02840) VUID-vkBeginCommandBuffer-commandBuffer-02840
 
 If `commandBuffer` is a primary command buffer, then
 `pBeginInfo->flags` **must** not set both the
-`VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT` and the
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT` flags
+[VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT](#VkCommandBufferUsageFlagBits) and the
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](#VkCommandBufferUsageFlagBits) flags
 
 Valid Usage (Implicit)
 
@@ -1073,21 +1084,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkCommandBufferBeginInfo` structure is defined as:
 
@@ -1122,7 +1133,7 @@ Valid Usage
 [](#VUID-VkCommandBufferBeginInfo-flags-09123) VUID-VkCommandBufferBeginInfo-flags-09123
 
 If `flags` contains
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`, the
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](#VkCommandBufferUsageFlagBits), the
 [VkCommandPool](#VkCommandPool) that `commandBuffer` was allocated from **must**
 support graphics operations
 
@@ -1130,7 +1141,7 @@ support graphics operations
 [](#VUID-VkCommandBufferBeginInfo-flags-00055) VUID-VkCommandBufferBeginInfo-flags-00055
 
 If `flags` contains
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`, the
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](#VkCommandBufferUsageFlagBits), the
 `framebuffer` member of `pInheritanceInfo` **must** be either
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), or a valid `VkFramebuffer` that is compatible
 with the `renderPass` member of `pInheritanceInfo`
@@ -1139,7 +1150,7 @@ with the `renderPass` member of `pInheritanceInfo`
 [](#VUID-VkCommandBufferBeginInfo-flags-09240) VUID-VkCommandBufferBeginInfo-flags-09240
 
 If `flags` contains
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT` and the
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](#VkCommandBufferUsageFlagBits) and the
 [`dynamicRendering`](features.html#features-dynamicRendering) feature is not
 enabled, the `renderPass` member of `pInheritanceInfo` **must** not
 be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
@@ -1148,7 +1159,7 @@ be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 [](#VUID-VkCommandBufferBeginInfo-flags-06002) VUID-VkCommandBufferBeginInfo-flags-06002
 
 If `flags` contains
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT` and the
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](#VkCommandBufferUsageFlagBits) and the
 `renderPass` member of `pInheritanceInfo` is
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the `pNext` chain of `pInheritanceInfo`
 **must** include a [VkCommandBufferInheritanceRenderingInfo](#VkCommandBufferInheritanceRenderingInfo) structure
@@ -1157,7 +1168,7 @@ If `flags` contains
 [](#VUID-VkCommandBufferBeginInfo-flags-06003) VUID-VkCommandBufferBeginInfo-flags-06003
 
 If `flags` contains
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`, the
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](#VkCommandBufferUsageFlagBits), the
 `renderPass` member of `pInheritanceInfo` is
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and the `pNext` chain of
 `pInheritanceInfo` includes a [VkAttachmentSampleCountInfoAMD](#VkAttachmentSampleCountInfoAMD)
@@ -1170,7 +1181,7 @@ the value of
 [](#VUID-VkCommandBufferBeginInfo-flags-06000) VUID-VkCommandBufferBeginInfo-flags-06000
 
 If `flags` contains
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](#VkCommandBufferUsageFlagBits)
 and the `renderPass` member of `pInheritanceInfo` is not
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 the `renderPass` member of `pInheritanceInfo` **must** be a valid
@@ -1180,7 +1191,7 @@ the `renderPass` member of `pInheritanceInfo` **must** be a valid
 [](#VUID-VkCommandBufferBeginInfo-flags-06001) VUID-VkCommandBufferBeginInfo-flags-06001
 
 If `flags` contains
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](#VkCommandBufferUsageFlagBits)
 and the `renderPass` member of `pInheritanceInfo` is not
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 the `subpass` member of `pInheritanceInfo` **must** be a valid
@@ -1191,10 +1202,10 @@ subpass index within the `renderPass` member of
 [](#VUID-VkCommandBufferBeginInfo-flags-10617) VUID-VkCommandBufferBeginInfo-flags-10617
 
 If `flags` contains
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](#VkCommandBufferUsageFlagBits)
 , the `renderPass` member of `pInheritanceInfo` is not
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
-and `renderPass` was created with [tile    shading enabled](renderpass.html#renderpass-tile-shading), `VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM`
+and `renderPass` was created with [tile    shading enabled](renderpass.html#renderpass-tile-shading), [VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](renderpass.html#VkTileShadingRenderPassFlagBitsQCOM)
 **must** be included in
 [VkRenderPassTileShadingCreateInfoQCOM](renderpass.html#VkRenderPassTileShadingCreateInfoQCOM)::`flags`
 
@@ -1202,17 +1213,17 @@ and `renderPass` was created with [tile    shading enabled](renderpass.html#rend
 [](#VUID-VkCommandBufferBeginInfo-flags-10618) VUID-VkCommandBufferBeginInfo-flags-10618
 
 If `flags` does not contain
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](#VkCommandBufferUsageFlagBits)
 , the `renderPass` member of `pInheritanceInfo` is
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 or `renderPass` was not created with tile shading enabled,
-`VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` **must** not be included
+[VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](renderpass.html#VkTileShadingRenderPassFlagBitsQCOM) **must** not be included
 in [VkRenderPassTileShadingCreateInfoQCOM](renderpass.html#VkRenderPassTileShadingCreateInfoQCOM)::`flags`
 
 * 
 [](#VUID-VkCommandBufferBeginInfo-flags-10619) VUID-VkCommandBufferBeginInfo-flags-10619
 
-If `VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` is included in
+If [VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](renderpass.html#VkTileShadingRenderPassFlagBitsQCOM) is included in
 [VkRenderPassTileShadingCreateInfoQCOM](renderpass.html#VkRenderPassTileShadingCreateInfoQCOM)::`flags`,
 [VkRenderPassTileShadingCreateInfoQCOM](renderpass.html#VkRenderPassTileShadingCreateInfoQCOM)::`tileApronSize` **must**
 be equal to the `tileApronSize` used to create `renderPass`
@@ -1222,7 +1233,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCommandBufferBeginInfo-sType-sType) VUID-VkCommandBufferBeginInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkCommandBufferBeginInfo-pNext-pNext) VUID-VkCommandBufferBeginInfo-pNext-pNext
@@ -1250,18 +1261,18 @@ typedef enum VkCommandBufferUsageFlagBits {
 } VkCommandBufferUsageFlagBits;
 
 * 
-`VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT` specifies that each
+[VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT](#VkCommandBufferUsageFlagBits) specifies that each
 recording of the command buffer will only be submitted once, and the
 command buffer will be reset and recorded again between each submission.
 
 * 
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT` specifies that a
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](#VkCommandBufferUsageFlagBits) specifies that a
 secondary command buffer is considered to be entirely inside a render
 pass.
 If this is a primary command buffer, then this bit is ignored.
 
 * 
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT` specifies that a
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](#VkCommandBufferUsageFlagBits) specifies that a
 command buffer **can** be resubmitted to any queue of the same queue family
 while it is in the *pending state*, and recorded into multiple primary
 command buffers.
@@ -1318,19 +1329,19 @@ time. |
 `occlusionQueryEnable` specifies whether the command buffer **can** be
 executed while an occlusion query is active in the primary command
 buffer.
-If this is `VK_TRUE`, then this command buffer **can** be executed
+If this is [VK_TRUE](fundamentals.html#VK_TRUE), then this command buffer **can** be executed
 whether the primary command buffer has an occlusion query active or not.
-If this is `VK_FALSE`, then the primary command buffer **must** not
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then the primary command buffer **must** not
 have an occlusion query active.
 
 * 
 `queryFlags` specifies the query flags that **can** be used by an
 active occlusion query in the primary command buffer when this secondary
 command buffer is executed.
-If this value includes the `VK_QUERY_CONTROL_PRECISE_BIT` bit, then
+If this value includes the [VK_QUERY_CONTROL_PRECISE_BIT](queries.html#VkQueryControlFlagBits) bit, then
 the active query **can** return boolean results or actual sample counts.
 If this bit is not set, then the active query **must** not use the
-`VK_QUERY_CONTROL_PRECISE_BIT` bit.
+[VK_QUERY_CONTROL_PRECISE_BIT](queries.html#VkQueryControlFlagBits) bit.
 
 * 
 `pipelineStatistics` is a bitmask of
@@ -1354,7 +1365,7 @@ Valid Usage
 [](#VUID-VkCommandBufferInheritanceInfo-occlusionQueryEnable-00056) VUID-VkCommandBufferInheritanceInfo-occlusionQueryEnable-00056
 
 If the [`inheritedQueries`](features.html#features-inheritedQueries) feature is
-not enabled, `occlusionQueryEnable` **must** be `VK_FALSE`
+not enabled, `occlusionQueryEnable` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkCommandBufferInheritanceInfo-queryFlags-00057) VUID-VkCommandBufferInheritanceInfo-queryFlags-00057
@@ -1387,12 +1398,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCommandBufferInheritanceInfo-sType-sType) VUID-VkCommandBufferInheritanceInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkCommandBufferInheritanceInfo-pNext-pNext) VUID-VkCommandBufferInheritanceInfo-pNext-pNext
 
- Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkAttachmentSampleCountInfoAMD](#VkAttachmentSampleCountInfoAMD), [VkCommandBufferInheritanceConditionalRenderingInfoEXT](#VkCommandBufferInheritanceConditionalRenderingInfoEXT), [VkCommandBufferInheritanceRenderPassTransformInfoQCOM](#VkCommandBufferInheritanceRenderPassTransformInfoQCOM), [VkCommandBufferInheritanceRenderingInfo](#VkCommandBufferInheritanceRenderingInfo), [VkCommandBufferInheritanceViewportScissorInfoNV](#VkCommandBufferInheritanceViewportScissorInfoNV), [VkCustomResolveCreateInfoEXT](pipelines.html#VkCustomResolveCreateInfoEXT), [VkExternalFormatANDROID](resources.html#VkExternalFormatANDROID), [VkExternalFormatOHOS](resources.html#VkExternalFormatOHOS), [VkMultiviewPerViewAttributesInfoNVX](renderpass.html#VkMultiviewPerViewAttributesInfoNVX), [VkRenderPassTileShadingCreateInfoQCOM](renderpass.html#VkRenderPassTileShadingCreateInfoQCOM), [VkRenderingAttachmentLocationInfo](interfaces.html#VkRenderingAttachmentLocationInfo), [VkRenderingInputAttachmentIndexInfo](interfaces.html#VkRenderingInputAttachmentIndexInfo), or [VkTileMemoryBindInfoQCOM](memory.html#VkTileMemoryBindInfoQCOM)
+ Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkAttachmentSampleCountInfoAMD](#VkAttachmentSampleCountInfoAMD), [VkCommandBufferInheritanceConditionalRenderingInfoEXT](#VkCommandBufferInheritanceConditionalRenderingInfoEXT), [VkCommandBufferInheritanceDescriptorHeapInfoEXT](#VkCommandBufferInheritanceDescriptorHeapInfoEXT), [VkCommandBufferInheritanceRenderPassTransformInfoQCOM](#VkCommandBufferInheritanceRenderPassTransformInfoQCOM), [VkCommandBufferInheritanceRenderingInfo](#VkCommandBufferInheritanceRenderingInfo), [VkCommandBufferInheritanceViewportScissorInfoNV](#VkCommandBufferInheritanceViewportScissorInfoNV), [VkCustomResolveCreateInfoEXT](pipelines.html#VkCustomResolveCreateInfoEXT), [VkExternalFormatANDROID](resources.html#VkExternalFormatANDROID), [VkExternalFormatOHOS](resources.html#VkExternalFormatOHOS), [VkMultiviewPerViewAttributesInfoNVX](renderpass.html#VkMultiviewPerViewAttributesInfoNVX), [VkRenderPassTileShadingCreateInfoQCOM](renderpass.html#VkRenderPassTileShadingCreateInfoQCOM), [VkRenderingAttachmentLocationInfo](interfaces.html#VkRenderingAttachmentLocationInfo), [VkRenderingInputAttachmentIndexInfo](interfaces.html#VkRenderingInputAttachmentIndexInfo), or [VkTileMemoryBindInfoQCOM](memory.html#VkTileMemoryBindInfoQCOM)
 
 * 
 [](#VUID-VkCommandBufferInheritanceInfo-sType-unique) VUID-VkCommandBufferInheritanceInfo-sType-unique
@@ -1406,24 +1417,25 @@ Valid Usage (Implicit)
 
 |  | On some implementations, not using the
 | --- | --- |
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT` bit enables command
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](#VkCommandBufferUsageFlagBits) bit enables command
 buffers to be patched in-place if needed, rather than creating a copy of the
 command buffer. |
 
 If a command buffer is in the [invalid, or executable state](#commandbuffers-lifecycle), and the command buffer was allocated from a command pool
-with the `VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT` flag set,
+with the [VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT](#VkCommandPoolCreateFlagBits) flag set,
 then `vkBeginCommandBuffer` implicitly resets the command buffer,
 behaving as if `vkResetCommandBuffer` had been called with
-`VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT` not set.
+[VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT](#VkCommandBufferResetFlagBits) not set.
 After the implicit reset, `commandBuffer` is moved to the
 [recording state](#commandbuffers-lifecycle).
 
 If the [`commandBufferInheritance`](features.html#features-commandBufferInheritance)
 feature is enabled, all graphics and compute state including bound pipeline
 state, bound shader objects, bound vertex and index buffers, bound
-descriptor sets and push constants, and all previously set dynamic state is
-inherited by the secondary command buffer from the primary or secondary
-command buffer that executes it.
+descriptor sets and push constants,
+descriptor heaps and push data,
+and all previously set dynamic state is inherited by the secondary command
+buffer from the primary or secondary command buffer that executes it.
 Furthermore, all of the state set by this secondary command buffer is
 inherited back to the primary or secondard command buffer that executes it.
 If the [`commandBufferInheritance`](features.html#features-commandBufferInheritance)
@@ -1457,14 +1469,14 @@ structure.
 `conditionalRenderingEnable` specifies whether the command buffer
 **can** be executed while conditional rendering is active in the primary
 command buffer.
-If this is `VK_TRUE`, then this command buffer **can** be executed
+If this is [VK_TRUE](fundamentals.html#VK_TRUE), then this command buffer **can** be executed
 whether the primary command buffer has active conditional rendering or
 not.
-If this is `VK_FALSE`, then the primary command buffer **must** not
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then the primary command buffer **must** not
 have conditional rendering active.
 
 If this structure is not present, the behavior is as if
-`conditionalRenderingEnable` is `VK_FALSE`.
+`conditionalRenderingEnable` is [VK_FALSE](fundamentals.html#VK_FALSE).
 
 Valid Usage
 
@@ -1472,14 +1484,14 @@ Valid Usage
 [](#VUID-VkCommandBufferInheritanceConditionalRenderingInfoEXT-conditionalRenderingEnable-01977) VUID-VkCommandBufferInheritanceConditionalRenderingInfoEXT-conditionalRenderingEnable-01977
 
 If the [    `inheritedConditionalRendering`](features.html#features-inheritedConditionalRendering) feature is not enabled,
-`conditionalRenderingEnable` **must** be `VK_FALSE`
+`conditionalRenderingEnable` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkCommandBufferInheritanceConditionalRenderingInfoEXT-sType-sType) VUID-VkCommandBufferInheritanceConditionalRenderingInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT](fundamentals.html#VkStructureType)
 
 To begin recording a secondary command buffer compatible with execution
 inside a render pass using [render pass transform](vertexpostproc.html#vertexpostproc-renderpass-transform), add the
@@ -1527,17 +1539,17 @@ Valid Usage
 * 
 [](#VUID-VkCommandBufferInheritanceRenderPassTransformInfoQCOM-transform-02864) VUID-VkCommandBufferInheritanceRenderPassTransformInfoQCOM-transform-02864
 
-`transform` **must** be `VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR`,
-`VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR`,
-`VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR`, or
-`VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR`
+`transform` **must** be [VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR),
+[VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR](VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR),
+[VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR](VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR), or
+[VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR](VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkCommandBufferInheritanceRenderPassTransformInfoQCOM-sType-sType) VUID-VkCommandBufferInheritanceRenderPassTransformInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDER_PASS_TRANSFORM_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDER_PASS_TRANSFORM_INFO_QCOM](fundamentals.html#VkStructureType)
 
 The `VkCommandBufferInheritanceViewportScissorInfoNV` structure is
 defined as:
@@ -1565,7 +1577,7 @@ inherited.
 * 
 `viewportDepthCount` specifies the maximum number of viewports to
 inherit.
-When `viewportScissor2D` is `VK_FALSE`, the behavior is as if
+When `viewportScissor2D` is [VK_FALSE](fundamentals.html#VK_FALSE), the behavior is as if
 this value is zero.
 
 * 
@@ -1578,35 +1590,35 @@ structure controls whether a command buffer **can** inherit the following state
 from other command buffers:
 
 * 
-`VK_DYNAMIC_STATE_SCISSOR`
+[VK_DYNAMIC_STATE_SCISSOR](pipelines.html#VkDynamicState)
 
 * 
-`VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT`
+[VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](pipelines.html#VkDynamicState)
 
 * 
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT`
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](pipelines.html#VkDynamicState)
 
 * 
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT`
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT](pipelines.html#VkDynamicState)
 
 * 
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT`
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT](pipelines.html#VkDynamicState)
 
 as well as the following state, with restrictions on inherited depth values
 and viewport count:
 
 * 
-`VK_DYNAMIC_STATE_VIEWPORT`
+[VK_DYNAMIC_STATE_VIEWPORT](pipelines.html#VkDynamicState)
 
 * 
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT`
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](pipelines.html#VkDynamicState)
 
-If `viewportScissor2D` is `VK_FALSE`, then the command buffer does
+If `viewportScissor2D` is [VK_FALSE](fundamentals.html#VK_FALSE), then the command buffer does
 not inherit the listed dynamic state, and **should** set this state itself.
 If this structure is not present, the behavior is as if
-`viewportScissor2D` is `VK_FALSE`.
+`viewportScissor2D` is [VK_FALSE](fundamentals.html#VK_FALSE).
 
-If `viewportScissor2D` is `VK_TRUE`, then the listed dynamic state
+If `viewportScissor2D` is [VK_TRUE](fundamentals.html#VK_TRUE), then the listed dynamic state
 is inherited, and the command buffer **must** not set this
 state, except that the viewport and scissor count **may** be set by binding a
 graphics pipeline that does not specify this state as dynamic.
@@ -1663,25 +1675,25 @@ Valid Usage
 [](#VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04782) VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04782
 
 If the [    `inheritedViewportScissor2D`](features.html#features-inheritedViewportScissor2D) feature is not enabled,
-`viewportScissor2D` **must** be `VK_FALSE`
+`viewportScissor2D` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04783) VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04783
 
 If the [`multiViewport`](features.html#features-multiViewport) feature is not
-enabled and `viewportScissor2D` is `VK_TRUE`, then
+enabled and `viewportScissor2D` is [VK_TRUE](fundamentals.html#VK_TRUE), then
 `viewportDepthCount` **must** be `1`
 
 * 
 [](#VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04784) VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04784
 
-If `viewportScissor2D` is `VK_TRUE`, then
+If `viewportScissor2D` is [VK_TRUE](fundamentals.html#VK_TRUE), then
 `viewportDepthCount` **must** be greater than `0`
 
 * 
 [](#VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04785) VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04785
 
-If `viewportScissor2D` is `VK_TRUE`, then `pViewportDepths`
+If `viewportScissor2D` is [VK_TRUE](fundamentals.html#VK_TRUE), then `pViewportDepths`
 **must** be a valid pointer to an array of `viewportDepthCount` valid
 `VkViewport` structures, except any requirements on `x`, `y`,
 `width`, and `height` do not apply
@@ -1689,16 +1701,16 @@ If `viewportScissor2D` is `VK_TRUE`, then `pViewportDepths`
 * 
 [](#VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04786) VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04786
 
-If `viewportScissor2D` is `VK_TRUE`, then the command buffer
+If `viewportScissor2D` is [VK_TRUE](fundamentals.html#VK_TRUE), then the command buffer
 **must** be recorded with the
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](#VkCommandBufferUsageFlagBits)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkCommandBufferInheritanceViewportScissorInfoNV-sType-sType) VUID-VkCommandBufferInheritanceViewportScissorInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_VIEWPORT_SCISSOR_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_VIEWPORT_SCISSOR_INFO_NV](fundamentals.html#VkStructureType)
 
 The `VkCommandBufferInheritanceRenderingInfo` structure is defined as:
 
@@ -1759,7 +1771,7 @@ controls parameters of dynamic render pass instances that the
 [VkCommandBuffer](#VkCommandBuffer) **can** be executed within.
 If [VkCommandBufferInheritanceInfo](#VkCommandBufferInheritanceInfo)::`renderPass` is not
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), or
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT` is not specified in
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](#VkCommandBufferUsageFlagBits) is not specified in
 [VkCommandBufferBeginInfo](#VkCommandBufferBeginInfo)::`flags`, parameters of this structure
 are ignored.
 
@@ -1768,7 +1780,7 @@ If `colorAttachmentCount` is `0` and the
 is enabled, `rasterizationSamples` is ignored.
 
 If `depthAttachmentFormat`, `stencilAttachmentFormat`, or any
-element of `pColorAttachmentFormats` is `VK_FORMAT_UNDEFINED`, it
+element of `pColorAttachmentFormats` is [VK_FORMAT_UNDEFINED](formats.html#VkFormat), it
 indicates that the corresponding attachment is unused within the render pass
 and writes to those attachments are discarded.
 
@@ -1790,45 +1802,45 @@ value
 * 
 [](#VUID-VkCommandBufferInheritanceRenderingInfo-depthAttachmentFormat-06540) VUID-VkCommandBufferInheritanceRenderingInfo-depthAttachmentFormat-06540
 
-If `depthAttachmentFormat` is not `VK_FORMAT_UNDEFINED`, it
+If `depthAttachmentFormat` is not [VK_FORMAT_UNDEFINED](formats.html#VkFormat), it
 **must** be a format that includes a depth component
 
 * 
 [](#VUID-VkCommandBufferInheritanceRenderingInfo-depthAttachmentFormat-06007) VUID-VkCommandBufferInheritanceRenderingInfo-depthAttachmentFormat-06007
 
-If `depthAttachmentFormat` is not `VK_FORMAT_UNDEFINED`, it
+If `depthAttachmentFormat` is not [VK_FORMAT_UNDEFINED](formats.html#VkFormat), it
 **must** be a format with [potential format    features](formats.html#potential-format-features) that include
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkCommandBufferInheritanceRenderingInfo-pColorAttachmentFormats-06492) VUID-VkCommandBufferInheritanceRenderingInfo-pColorAttachmentFormats-06492
 
 If any element of `pColorAttachmentFormats` is not
-`VK_FORMAT_UNDEFINED`, it **must** be a format with
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat), it **must** be a format with
 [potential format features](formats.html#potential-format-features) that include
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT`
-, or `VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV` if the
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
+, or [VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](formats.html#VkFormatFeatureFlagBits2KHR) if the
 [`linearColorAttachment`](features.html#features-linearColorAttachment) feature
 is enabled
 
 * 
 [](#VUID-VkCommandBufferInheritanceRenderingInfo-stencilAttachmentFormat-06541) VUID-VkCommandBufferInheritanceRenderingInfo-stencilAttachmentFormat-06541
 
-If `stencilAttachmentFormat` is not `VK_FORMAT_UNDEFINED`, it
+If `stencilAttachmentFormat` is not [VK_FORMAT_UNDEFINED](formats.html#VkFormat), it
 **must** be a format that includes a stencil aspect
 
 * 
 [](#VUID-VkCommandBufferInheritanceRenderingInfo-stencilAttachmentFormat-06199) VUID-VkCommandBufferInheritanceRenderingInfo-stencilAttachmentFormat-06199
 
-If `stencilAttachmentFormat` is not `VK_FORMAT_UNDEFINED`, it
+If `stencilAttachmentFormat` is not [VK_FORMAT_UNDEFINED](formats.html#VkFormat), it
 **must** be a format with [potential format    features](formats.html#potential-format-features) that include
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkCommandBufferInheritanceRenderingInfo-depthAttachmentFormat-06200) VUID-VkCommandBufferInheritanceRenderingInfo-depthAttachmentFormat-06200
 
-If `depthAttachmentFormat` is not `VK_FORMAT_UNDEFINED` and
-`stencilAttachmentFormat` is not `VK_FORMAT_UNDEFINED`,
+If `depthAttachmentFormat` is not [VK_FORMAT_UNDEFINED](formats.html#VkFormat) and
+`stencilAttachmentFormat` is not [VK_FORMAT_UNDEFINED](formats.html#VkFormat),
 `depthAttachmentFormat` **must** equal `stencilAttachmentFormat`
 
 * 
@@ -1848,7 +1860,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCommandBufferInheritanceRenderingInfo-sType-sType) VUID-VkCommandBufferInheritanceRenderingInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDERING_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDERING_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkCommandBufferInheritanceRenderingInfo-flags-parameter) VUID-VkCommandBufferInheritanceRenderingInfo-flags-parameter
@@ -1915,7 +1927,7 @@ attachments.
 value defining the sample count of a depth/stencil attachment.
 
 If [VkCommandBufferInheritanceInfo](#VkCommandBufferInheritanceInfo)::`renderPass` is
-[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`
+[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), [VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](#VkCommandBufferUsageFlagBits)
 is specified in [VkCommandBufferBeginInfo](#VkCommandBufferBeginInfo)::`flags`, and the
 `pNext` chain of [VkCommandBufferInheritanceInfo](#VkCommandBufferInheritanceInfo) includes
 `VkAttachmentSampleCountInfoAMD`, then this structure defines the sample
@@ -1925,7 +1937,7 @@ If `VkAttachmentSampleCountInfoAMD` is not included, the value of
 used as the sample count for each attachment.
 If [VkCommandBufferInheritanceInfo](#VkCommandBufferInheritanceInfo)::`renderPass` is not
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), or
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT` is not specified in
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](#VkCommandBufferUsageFlagBits) is not specified in
 [VkCommandBufferBeginInfo](#VkCommandBufferBeginInfo)::`flags`, parameters of this structure
 are ignored.
 
@@ -1947,7 +1959,90 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAttachmentSampleCountInfoAMD-sType-sType) VUID-VkAttachmentSampleCountInfoAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_AMD](fundamentals.html#VkStructureType)
+
+If the `pNext` chain of [VkCommandBufferInheritanceInfo](#VkCommandBufferInheritanceInfo) includes a
+`VkCommandBufferInheritanceDescriptorHeapInfoEXT` structure, then that
+structure indicates that the secondary will use the same descriptor heaps as
+the primary command buffer.
+
+The `VkCommandBufferInheritanceDescriptorHeapInfoEXT` structure is
+defined as:
+
+// Provided by VK_EXT_descriptor_heap
+typedef struct VkCommandBufferInheritanceDescriptorHeapInfoEXT {
+    VkStructureType             sType;
+    const void*                 pNext;
+    const VkBindHeapInfoEXT*    pSamplerHeapBindInfo;
+    const VkBindHeapInfoEXT*    pResourceHeapBindInfo;
+} VkCommandBufferInheritanceDescriptorHeapInfoEXT;
+
+* 
+`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
+
+* 
+`pNext` is `NULL` or a pointer to a structure extending this
+structure.
+
+* 
+`pSamplerHeapBindInfo` specifies the [VkBindHeapInfoEXT](descriptorheaps.html#VkBindHeapInfoEXT) of the
+sampler heap bound using [vkCmdBindSamplerHeapEXT](descriptorheaps.html#vkCmdBindSamplerHeapEXT) in the primary.
+If this is `NULL`, it indicates that no sampler heap is bound.
+
+* 
+`pResourceHeapBindInfo` specifies the [VkBindHeapInfoEXT](descriptorheaps.html#VkBindHeapInfoEXT) of the
+resource heap bound using [vkCmdBindResourceHeapEXT](descriptorheaps.html#vkCmdBindResourceHeapEXT) in the primary.
+If this is `NULL`, it indicates that no resource heap is bound.
+
+If this structure is not present, the behavior is as if
+`pSamplerHeapBindInfo` and `pResourceHeapBindInfo` were both `NULL`.
+
+Valid Usage
+
+* 
+[](#VUID-VkCommandBufferInheritanceDescriptorHeapInfoEXT-descriptorHeap-11200) VUID-VkCommandBufferInheritanceDescriptorHeapInfoEXT-descriptorHeap-11200
+
+If the [`descriptorHeap`](features.html#features-descriptorHeap) feature is not
+enabled, `pSamplerHeapBindInfo` **must** be `NULL`
+
+* 
+[](#VUID-VkCommandBufferInheritanceDescriptorHeapInfoEXT-descriptorHeap-11201) VUID-VkCommandBufferInheritanceDescriptorHeapInfoEXT-descriptorHeap-11201
+
+If the [`descriptorHeap`](features.html#features-descriptorHeap) feature is not
+enabled, `pResourceHeapBindInfo` **must** be `NULL`
+
+* 
+[](#VUID-VkCommandBufferInheritanceDescriptorHeapInfoEXT-pSamplerHeapBindInfo-11470) VUID-VkCommandBufferInheritanceDescriptorHeapInfoEXT-pSamplerHeapBindInfo-11470
+
+If `pSamplerHeapBindInfo` is not `NULL`,
+`pSamplerHeapBindInfo->heapRange` **must** be a device address range
+allocated to the application from a buffer created with the
+[VK_BUFFER_USAGE_DESCRIPTOR_HEAP_BIT_EXT](resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-VkCommandBufferInheritanceDescriptorHeapInfoEXT-pResourceHeapBindInfo-11471) VUID-VkCommandBufferInheritanceDescriptorHeapInfoEXT-pResourceHeapBindInfo-11471
+
+If `pResourceHeapBindInfo` is not `NULL`,
+`pResourceHeapBindInfo->heapRange` **must** be a device address range
+allocated to the application from a buffer created with the
+[VK_BUFFER_USAGE_DESCRIPTOR_HEAP_BIT_EXT](resources.html#VkBufferUsageFlagBits) usage flag set
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkCommandBufferInheritanceDescriptorHeapInfoEXT-sType-sType) VUID-VkCommandBufferInheritanceDescriptorHeapInfoEXT-sType-sType
+
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_DESCRIPTOR_HEAP_INFO_EXT](fundamentals.html#VkStructureType)
+
+* 
+[](#VUID-VkCommandBufferInheritanceDescriptorHeapInfoEXT-pSamplerHeapBindInfo-parameter) VUID-VkCommandBufferInheritanceDescriptorHeapInfoEXT-pSamplerHeapBindInfo-parameter
+
+ If `pSamplerHeapBindInfo` is not `NULL`, `pSamplerHeapBindInfo` **must** be a valid pointer to a valid [VkBindHeapInfoEXT](descriptorheaps.html#VkBindHeapInfoEXT) structure
+
+* 
+[](#VUID-VkCommandBufferInheritanceDescriptorHeapInfoEXT-pResourceHeapBindInfo-parameter) VUID-VkCommandBufferInheritanceDescriptorHeapInfoEXT-pResourceHeapBindInfo-parameter
+
+ If `pResourceHeapBindInfo` is not `NULL`, `pResourceHeapBindInfo` **must** be a valid pointer to a valid [VkBindHeapInfoEXT](descriptorheaps.html#VkBindHeapInfoEXT) structure
 
 Once recording starts, an application records a sequence of commands
 (`vkCmd*`) to set state in the command buffer, draw, dispatch, and other
@@ -1973,7 +2068,7 @@ an unsuccessful return code returned by `vkEndCommandBuffer`, and the
 command buffer will be moved to the [invalid state](#commandbuffers-lifecycle).
 
 In case the application recorded one or more [video encode operations](videocoding.html#video-encode-operations) into the command buffer, implementations **may** return the
-`VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR` error if any of the
+[VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR](fundamentals.html#VkResult) error if any of the
 specified Video Std parameters do not adhere to the syntactic or semantic
 requirements of the used video compression standard, or if values derived
 from parameters according to the rules defined by the used video compression
@@ -1982,7 +2077,7 @@ or the implementation.
 
 |  | Applications **should** not rely on the
 | --- | --- |
-`VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR` error being returned by any
+[VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR](fundamentals.html#VkResult) error being returned by any
 command as a means to verify Video Std parameters, as implementations are
 not required to report the error in any specific set of cases. |
 
@@ -2052,24 +2147,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR`
+[VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 When a command buffer is in the executable state, it **can** be submitted to a
 queue for execution.
@@ -2120,11 +2215,21 @@ point until this command completes on the device.
 
 `vkQueueSubmit2` is a [queue submission command](devsandqueues.html#devsandqueues-submission), with each batch defined by an element of `pSubmits`.
 
-Semaphore operations submitted with [vkQueueSubmit2](#vkQueueSubmit2) have additional
-ordering constraints compared to other submission commands, with
-dependencies involving previous and subsequent queue operations.
-Information about these additional constraints can be found in the
-[semaphore](synchronization.html#synchronization-semaphores) section of [the synchronization chapter](synchronization.html#synchronization).
+The first [synchronization scope](synchronization.html#synchronization-dependencies-scopes) of
+each [semaphore signal operation](synchronization.html#synchronization-semaphores-signaling)
+defined by this command includes every command in the same batch that the
+signal operation is defined in, and all commands that occur earlier in
+[submission order](synchronization.html#synchronization-submission-order).
+The scope is limited by the `stageMask` member of the
+[VkSemaphoreSubmitInfo](#VkSemaphoreSubmitInfo) used to define each such operation.
+
+The second [synchronization scope](synchronization.html#synchronization-dependencies-scopes) of
+each [semaphore wait operation](synchronization.html#synchronization-semaphores-waiting) defined
+by this command includes every command in the same batch that the wait
+operation is defined in, and all commands that occur later in
+[submission order](synchronization.html#synchronization-submission-order).
+The scope is limited by the `stageMask` member of the
+[VkSemaphoreSubmitInfo](#VkSemaphoreSubmitInfo) used to define each such operation.
 
 If any command buffer submitted to this queue is in the
 [executable state](#commandbuffers-lifecycle), it is moved to the
@@ -2133,18 +2238,18 @@ Once execution of all submissions of a command buffer complete, it moves
 from the [pending state](#commandbuffers-lifecycle), back to the
 [executable state](#commandbuffers-lifecycle).
 If a command buffer was recorded with the
-`VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT` flag, it instead moves
+[VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT](#VkCommandBufferUsageFlagBits) flag, it instead moves
 back to the [invalid state](#commandbuffers-lifecycle).
 
 If `vkQueueSubmit2` fails, it **may** return
-`VK_ERROR_OUT_OF_HOST_MEMORY` or `VK_ERROR_OUT_OF_DEVICE_MEMORY`.
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult) or [VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult).
 If it does, the implementation **must** ensure that the state and contents of
 any resources or synchronization primitives referenced by the submitted
 command buffers and any semaphores referenced by `pSubmits` is
 unaffected by the call or its failure.
 If `vkQueueSubmit2` fails in such a way that the implementation is
 unable to make that guarantee, the implementation **must** return
-`VK_ERROR_DEVICE_LOST`.
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult).
 See [Lost Device](devsandqueues.html#devsandqueues-lost-device).
 
 Valid Usage
@@ -2215,7 +2320,7 @@ defined by the `semaphore` member of any element of the
 The `semaphore` member of any element of the
 `pWaitSemaphoreInfos` member of any element of `pSubmits`
 that was created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_BINARY`
+[VK_SEMAPHORE_TYPE_BINARY](synchronization.html#VkSemaphoreTypeKHR)
 **must** reference a semaphore signal operation that has been submitted for
 execution and any [semaphore    signal operations](synchronization.html#synchronization-semaphores-signaling) on which it depends **must** have also been submitted
 for execution
@@ -2233,7 +2338,7 @@ be in the [pending or executable state](#commandbuffers-lifecycle)
 If a command recorded into the `commandBuffer` member of any element
 of the `pCommandBufferInfos` member of any element of `pSubmits`
 was not recorded with the
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT`, it **must** not be in
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](#VkCommandBufferUsageFlagBits), it **must** not be in
 the [pending state](#commandbuffers-lifecycle)
 
 * 
@@ -2251,7 +2356,7 @@ If any [secondary command buffers recorded](#commandbuffers-secondary)
 into the `commandBuffer` member of any element of the
 `pCommandBufferInfos` member of any element of `pSubmits` was
 not recorded with the
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT`, it **must** not be in
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](#VkCommandBufferUsageFlagBits), it **must** not be in
 the [pending state](#commandbuffers-lifecycle)
 
 * 
@@ -2289,7 +2394,7 @@ the acquire operation
 If a command recorded into the `commandBuffer` member of any element
 of the `pCommandBufferInfos` member of any element of `pSubmits`
 was a [vkCmdBeginQuery](queries.html#vkCmdBeginQuery) whose `queryPool` was created with a
-`queryType` of `VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, the
+`queryType` of [VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](queries.html#VkQueryType), the
 [profiling lock](queries.html#profiling-lock) **must** have been held continuously on
 the `VkDevice` that `queue` was retrieved from, throughout
 recording of those command buffers
@@ -2298,9 +2403,9 @@ recording of those command buffers
 [](#VUID-vkQueueSubmit2-queue-06447) VUID-vkQueueSubmit2-queue-06447
 
 If `queue` was not created with
-`VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT`, the `flags` member of
+[VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT](devsandqueues.html#VkDeviceQueueCreateFlagBits), the `flags` member of
 any element of `pSubmits` **must** not include
-`VK_SUBMIT_PROTECTED_BIT_KHR`
+[VK_SUBMIT_PROTECTED_BIT_KHR](#VkSubmitFlagBitsKHR)
 
 Valid Usage (Implicit)
 
@@ -2328,6 +2433,8 @@ Host Synchronization
 
 * 
 Host access to `queue` **must** be externally synchronized
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
 
 * 
 Host access to `fence` **must** be externally synchronized
@@ -2342,24 +2449,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkSubmitInfo2` structure is defined as:
 
@@ -2460,13 +2567,13 @@ wait or signal operation on that semaphore by more than
 * 
 [](#VUID-VkSubmitInfo2-flags-03886) VUID-VkSubmitInfo2-flags-03886
 
-If `flags` includes `VK_SUBMIT_PROTECTED_BIT`, all elements of
+If `flags` includes [VK_SUBMIT_PROTECTED_BIT](#VkSubmitFlagBitsKHR), all elements of
 `pCommandBuffers` **must** be protected command buffers
 
 * 
 [](#VUID-VkSubmitInfo2-flags-03887) VUID-VkSubmitInfo2-flags-03887
 
-If `flags` does not include `VK_SUBMIT_PROTECTED_BIT`, each
+If `flags` does not include [VK_SUBMIT_PROTECTED_BIT](#VkSubmitFlagBitsKHR), each
 element of `pCommandBuffers` **must** not be a protected command buffer
 
 * 
@@ -2513,7 +2620,7 @@ on, **must** use the same sample locations
 
 If the `pNext` chain of this structure includes a
 [VkFrameBoundaryTensorsARM](debugging.html#VkFrameBoundaryTensorsARM) structure then it **must** also include a
-[VkFrameBoundaryEXT](debugging.html#VkFrameBoundaryEXT) structure.
+[VkFrameBoundaryEXT](debugging.html#VkFrameBoundaryEXT) structure
 
 * 
 [](#VUID-VkSubmitInfo2-pCommandBufferInfos-09933) VUID-VkSubmitInfo2-pCommandBufferInfos-09933
@@ -2540,7 +2647,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSubmitInfo2-sType-sType) VUID-VkSubmitInfo2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SUBMIT_INFO_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SUBMIT_INFO_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSubmitInfo2-pNext-pNext) VUID-VkSubmitInfo2-pNext-pNext
@@ -2587,7 +2694,7 @@ typedef enum VkSubmitFlagBits {
 typedef VkSubmitFlagBits VkSubmitFlagBitsKHR;
 
 * 
-`VK_SUBMIT_PROTECTED_BIT` specifies that this batch is a protected
+[VK_SUBMIT_PROTECTED_BIT](#VkSubmitFlagBitsKHR) specifies that this batch is a protected
 submission.
 
 // Provided by VK_VERSION_1_3
@@ -2645,6 +2752,10 @@ executes the semaphore wait or signal operation.
 
 Whether this structure defines a semaphore wait or signal operation is
 defined by how it is used.
+The first [synchronization scope](synchronization.html#synchronization-dependencies-scopes) of
+a [semaphore signal operation](synchronization.html#synchronization-semaphores-signaling) or the
+second synchronization scope of a [semaphore wait operation](synchronization.html#synchronization-semaphores-waiting) defined by this structure are limited to
+operations in stages indicated by `stageMask`.
 
 Valid Usage
 
@@ -2653,50 +2764,50 @@ Valid Usage
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkSemaphoreSubmitInfo-stageMask-03930) VUID-VkSemaphoreSubmitInfo-stageMask-03930
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkSemaphoreSubmitInfo-stageMask-03931) VUID-VkSemaphoreSubmitInfo-stageMask-03931
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkSemaphoreSubmitInfo-stageMask-03932) VUID-VkSemaphoreSubmitInfo-stageMask-03932
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkSemaphoreSubmitInfo-stageMask-03933) VUID-VkSemaphoreSubmitInfo-stageMask-03933
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkSemaphoreSubmitInfo-stageMask-03934) VUID-VkSemaphoreSubmitInfo-stageMask-03934
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkSemaphoreSubmitInfo-stageMask-03935) VUID-VkSemaphoreSubmitInfo-stageMask-03935
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkSemaphoreSubmitInfo-stageMask-07316) VUID-VkSemaphoreSubmitInfo-stageMask-07316
@@ -2704,21 +2815,21 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkSemaphoreSubmitInfo-stageMask-04957) VUID-VkSemaphoreSubmitInfo-stageMask-04957
 
 If the [`subpassShading`](features.html#features-subpassShading) feature is not
 enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkSemaphoreSubmitInfo-stageMask-04995) VUID-VkSemaphoreSubmitInfo-stageMask-04995
 
 If the [`invocationMask`](features.html#features-invocationMask) feature is not
 enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkSemaphoreSubmitInfo-stageMask-07946) VUID-VkSemaphoreSubmitInfo-stageMask-07946
@@ -2726,28 +2837,28 @@ enabled, `stageMask` **must** not contain
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkSemaphoreSubmitInfo-stageMask-10751) VUID-VkSemaphoreSubmitInfo-stageMask-10751
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkSemaphoreSubmitInfo-stageMask-10752) VUID-VkSemaphoreSubmitInfo-stageMask-10752
 
 If the [`rayTracingMaintenance1`](features.html#features-rayTracingMaintenance1)
 feature is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkSemaphoreSubmitInfo-stageMask-10753) VUID-VkSemaphoreSubmitInfo-stageMask-10753
 
 If the [`micromap`](features.html#features-micromap) feature is not enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](synchronization.html#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkSemaphoreSubmitInfo-device-03888) VUID-VkSemaphoreSubmitInfo-device-03888
@@ -2766,7 +2877,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSemaphoreSubmitInfo-sType-sType) VUID-VkSemaphoreSubmitInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SEMAPHORE_SUBMIT_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SEMAPHORE_SUBMIT_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSemaphoreSubmitInfo-pNext-pNext) VUID-VkSemaphoreSubmitInfo-pNext-pNext
@@ -2820,7 +2931,7 @@ Valid Usage
 [](#VUID-VkCommandBufferSubmitInfo-commandBuffer-03890) VUID-VkCommandBufferSubmitInfo-commandBuffer-03890
 
 `commandBuffer` **must** not have been allocated with
-`VK_COMMAND_BUFFER_LEVEL_SECONDARY`
+[VK_COMMAND_BUFFER_LEVEL_SECONDARY](#VkCommandBufferLevel)
 
 * 
 [](#VUID-VkCommandBufferSubmitInfo-deviceMask-03891) VUID-VkCommandBufferSubmitInfo-deviceMask-03891
@@ -2832,7 +2943,7 @@ If `deviceMask` is not `0`, it **must** be a valid device mask
 
 If any render pass instance in `commandBuffer` was recorded with a
 [VkRenderPassStripeBeginInfoARM](renderpass.html#VkRenderPassStripeBeginInfoARM) structure in its pNext chain and
-did not specify the `VK_RENDERING_RESUMING_BIT` flag, a
+did not specify the [VK_RENDERING_RESUMING_BIT](renderpass.html#VkRenderingFlagBitsKHR) flag, a
 [VkRenderPassStripeSubmitInfoARM](#VkRenderPassStripeSubmitInfoARM) **must** be included in the
 `pNext` chain
 
@@ -2845,14 +2956,14 @@ If a [VkRenderPassStripeSubmitInfoARM](#VkRenderPassStripeSubmitInfoARM) is incl
 **must** be equal to the sum of the
 [VkRenderPassStripeBeginInfoARM](renderpass.html#VkRenderPassStripeBeginInfoARM)::`stripeInfoCount` parameters
 provided to render pass instances recorded in `commandBuffer` that
-did not specify the `VK_RENDERING_RESUMING_BIT` flag
+did not specify the [VK_RENDERING_RESUMING_BIT](renderpass.html#VkRenderingFlagBitsKHR) flag
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkCommandBufferSubmitInfo-sType-sType) VUID-VkCommandBufferSubmitInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMMAND_BUFFER_SUBMIT_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_BUFFER_SUBMIT_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkCommandBufferSubmitInfo-pNext-pNext) VUID-VkCommandBufferSubmitInfo-pNext-pNext
@@ -2910,7 +3021,7 @@ all views in the view mask.
 In a render pass instance with `layerCount` greater than 1, the stripe
 includes all layers.
 
-Render pass instances that specify the `VK_RENDERING_RESUMING_BIT` will
+Render pass instances that specify the [VK_RENDERING_RESUMING_BIT](renderpass.html#VkRenderingFlagBitsKHR) will
 not have any elements of `pStripeSemaphoreInfos` mapped to them.
 Instead, for suspending and resuming render pass instances, this mapping is
 done for the first suspending render pass instance, and the per-stripe
@@ -2923,14 +3034,14 @@ Valid Usage
 
 The `semaphore` member of each element of
 `pStripeSemaphoreInfos` **must** have been created with a
-[VkSemaphoreType](synchronization.html#VkSemaphoreType) of `VK_SEMAPHORE_TYPE_BINARY`
+[VkSemaphoreType](synchronization.html#VkSemaphoreType) of [VK_SEMAPHORE_TYPE_BINARY](synchronization.html#VkSemaphoreTypeKHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkRenderPassStripeSubmitInfoARM-sType-sType) VUID-VkRenderPassStripeSubmitInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_SUBMIT_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_SUBMIT_INFO_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderPassStripeSubmitInfoARM-pStripeSemaphoreInfos-parameter) VUID-VkRenderPassStripeSubmitInfoARM-pStripeSemaphoreInfos-parameter
@@ -2976,20 +3087,31 @@ point until this command completes on the device.
 Batches begin execution in the order they appear in `pSubmits`, but **may**
 complete out of order.
 
-Fence and semaphore operations submitted with [vkQueueSubmit](#vkQueueSubmit) have
-additional ordering constraints compared to other submission commands, with
-dependencies involving previous and subsequent queue operations.
-Information about these additional constraints can be found in the
-[semaphore](synchronization.html#synchronization-semaphores) and [fence](synchronization.html#synchronization-fences) sections of [the synchronization chapter](synchronization.html#synchronization).
-
-Details on the interaction of `pWaitDstStageMask` with synchronization
-are described in the [semaphore wait operation](synchronization.html#synchronization-semaphores-waiting) section of [the synchronization chapter](synchronization.html#synchronization).
-
 The order that batches appear in `pSubmits` is used to determine
 [submission order](synchronization.html#synchronization-submission-order), and thus all the
 [implicit ordering guarantees](synchronization.html#synchronization-implicit) that respect it.
 Other than these implicit ordering guarantees and any [explicit synchronization primitives](synchronization.html#synchronization), these batches **may** overlap or
 otherwise execute out of order.
+
+Fence operations submitted with [vkQueueSubmit](#vkQueueSubmit) have additional ordering
+constraints compared to other submission commands, with dependencies
+involving previous and subsequent queue operations.
+Information about these additional constraints can be found in the
+[fence](synchronization.html#synchronization-fences) sections of [the synchronization chapter](synchronization.html#synchronization).
+
+The first [synchronization scope](synchronization.html#synchronization-dependencies-scopes) of
+each [semaphore signal operation](synchronization.html#synchronization-semaphores-signaling)
+defined by this command includes every command in the same batch that the
+signal operation is defined in, and all commands that occur earlier in
+[submission order](synchronization.html#synchronization-submission-order).
+
+The second [synchronization scope](synchronization.html#synchronization-dependencies-scopes) of
+each [semaphore wait operation](synchronization.html#synchronization-semaphores-waiting) defined
+by this command includes every command in the same batch that the wait
+operation is defined in, and all commands that occur later in
+[submission order](synchronization.html#synchronization-submission-order).
+The scope is limited by the `pWaitDstStageMask` for each batch, as
+described in [VkSubmitInfo](#VkSubmitInfo).
 
 If any command buffer submitted to this queue is in the
 [executable state](#commandbuffers-lifecycle), it is moved to the
@@ -2998,18 +3120,18 @@ Once execution of all submissions of a command buffer complete, it moves
 from the [pending state](#commandbuffers-lifecycle), back to the
 [executable state](#commandbuffers-lifecycle).
 If a command buffer was recorded with the
-`VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT` flag, it instead moves to
+[VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT](#VkCommandBufferUsageFlagBits) flag, it instead moves to
 the [invalid state](#commandbuffers-lifecycle).
 
 If `vkQueueSubmit` fails, it **may** return
-`VK_ERROR_OUT_OF_HOST_MEMORY` or `VK_ERROR_OUT_OF_DEVICE_MEMORY`.
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult) or [VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult).
 If it does, the implementation **must** ensure that the state and contents of
 any resources or synchronization primitives referenced by the submitted
 command buffers and any semaphores referenced by `pSubmits` is
 unaffected by the call or its failure.
 If `vkQueueSubmit` fails in such a way that the implementation is unable
 to make that guarantee, the implementation **must** return
-`VK_ERROR_DEVICE_LOST`.
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult).
 See [Lost Device](devsandqueues.html#devsandqueues-lost-device).
 
 Valid Usage
@@ -3065,7 +3187,7 @@ waiting on the same semaphore
 
 All elements of the `pWaitSemaphores` member of all elements of
 `pSubmits`
-created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of `VK_SEMAPHORE_TYPE_BINARY`
+created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of [VK_SEMAPHORE_TYPE_BINARY](synchronization.html#VkSemaphoreTypeKHR)
 **must** reference a semaphore signal operation that has been submitted for
 execution and any [semaphore    signal operations](synchronization.html#synchronization-semaphores-signaling) on which it depends **must** have also been submitted
 for execution
@@ -3081,7 +3203,7 @@ Each element of the `pCommandBuffers` member of each element of
 
 If any element of the `pCommandBuffers` member of any element of
 `pSubmits` was not recorded with the
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT`, it **must** not be in
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](#VkCommandBufferUsageFlagBits), it **must** not be in
 the [pending state](#commandbuffers-lifecycle)
 
 * 
@@ -3097,7 +3219,7 @@ into any element of the `pCommandBuffers` member of any element of
 If any [secondary command buffers recorded](#commandbuffers-secondary)
 into any element of the `pCommandBuffers` member of any element of
 `pSubmits` was not recorded with the
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT`, it **must** not be in
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](#VkCommandBufferUsageFlagBits), it **must** not be in
 the [pending state](#commandbuffers-lifecycle)
 
 * 
@@ -3131,7 +3253,7 @@ acquire operation
 
 If a command recorded into any element of `pCommandBuffers` was a
 [vkCmdBeginQuery](queries.html#vkCmdBeginQuery) whose `queryPool` was created with a
-`queryType` of `VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, the
+`queryType` of [VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](queries.html#VkQueryType), the
 [profiling lock](queries.html#profiling-lock) **must** have been held continuously on
 the `VkDevice` that `queue` was retrieved from, throughout
 recording of those command buffers
@@ -3139,7 +3261,7 @@ recording of those command buffers
 * 
 [](#VUID-vkQueueSubmit-pSubmits-02808) VUID-vkQueueSubmit-pSubmits-02808
 
-Any resource created with `VK_SHARING_MODE_EXCLUSIVE` that is read
+Any resource created with [VK_SHARING_MODE_EXCLUSIVE](resources.html#VkSharingMode) that is read
 by an operation specified by `pSubmits` **must** not be owned by any
 queue family other than the one which `queue` belongs to, at the
 time it is executed
@@ -3147,7 +3269,7 @@ time it is executed
 * 
 [](#VUID-vkQueueSubmit-pSubmits-04626) VUID-vkQueueSubmit-pSubmits-04626
 
-Any resource created with `VK_SHARING_MODE_CONCURRENT` that is
+Any resource created with [VK_SHARING_MODE_CONCURRENT](resources.html#VkSharingMode) that is
 accessed by an operation specified by `pSubmits` **must** have included
 the queue family of `queue` at resource creation time
 
@@ -3155,9 +3277,9 @@ the queue family of `queue` at resource creation time
 [](#VUID-vkQueueSubmit-queue-06448) VUID-vkQueueSubmit-queue-06448
 
 If `queue` was not created with
-`VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT`, there **must** be no element of
+[VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT](devsandqueues.html#VkDeviceQueueCreateFlagBits), there **must** be no element of
 `pSubmits` that includes a [VkProtectedSubmitInfo](#VkProtectedSubmitInfo) structure in
-its `pNext` chain with `protectedSubmit` equal to `VK_TRUE`
+its `pNext` chain with `protectedSubmit` equal to [VK_TRUE](fundamentals.html#VK_TRUE)
 
 Valid Usage (Implicit)
 
@@ -3185,6 +3307,8 @@ Host Synchronization
 
 * 
 Host access to `queue` **must** be externally synchronized
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
 
 * 
 Host access to `fence` **must** be externally synchronized
@@ -3199,24 +3323,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkSubmitInfo` structure is defined as:
 
@@ -3282,6 +3406,64 @@ respect it.
 Other than these implicit ordering guarantees and any [explicit synchronization primitives](synchronization.html#synchronization), these command buffers **may** overlap or
 otherwise execute out of order.
 
+The second [synchronization scope](synchronization.html#synchronization-dependencies-scopes) of
+each [semaphore wait operation](synchronization.html#synchronization-semaphores-waiting) defined
+by this structure is limited to operations in stages indicated by the
+corresponding element of `pWaitDstStageMask`.
+
+|  | A common scenario for using `pWaitDstStageMask` with values other than
+| --- | --- |
+[VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](synchronization.html#VkPipelineStageFlagBits) is when synchronizing a window
+system presentation operation against subsequent command buffers which
+render the next frame.
+In this case, a presentation image **must** not be overwritten until the
+presentation operation completes, but other pipeline stages **can** execute
+without waiting.
+A mask of [VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](synchronization.html#VkPipelineStageFlagBits) prevents
+subsequent color attachment writes from executing until the semaphore
+signals.
+Some implementations **may** be able to execute transfer operations and/or
+pre-rasterization work before the semaphore is signaled.
+
+If an image layout transition needs to be performed on a presentable image
+before it is used in a framebuffer, that **can** be performed as the first
+operation submitted to the queue after acquiring the image, and **should** not
+prevent other work from overlapping with the presentation operation.
+For example, a `VkImageMemoryBarrier` could use:
+
+* 
+`srcStageMask` = [VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](synchronization.html#VkPipelineStageFlagBits)
+
+* 
+`srcAccessMask` = 0
+
+* 
+`dstStageMask` = [VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](synchronization.html#VkPipelineStageFlagBits)
+
+* 
+`dstAccessMask` = [VK_ACCESS_COLOR_ATTACHMENT_READ_BIT](synchronization.html#VkAccessFlagBits) \|
+[VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT](synchronization.html#VkAccessFlagBits).
+
+* 
+`oldLayout` = [VK_IMAGE_LAYOUT_PRESENT_SRC_KHR](resources.html#VkImageLayout)
+
+* 
+`newLayout` = [VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
+
+Alternatively, `oldLayout` **can** be [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout), if
+the image’s contents need not be preserved.
+
+This barrier accomplishes a dependency chain between previous presentation
+operations and subsequent color attachment output operations, with the
+layout transition performed in between, and does not introduce a dependency
+between previous work and any
+[pre-rasterization shader stage](pipelines.html#pipelines-graphics-subsets-pre-rasterization)s.
+More precisely, the semaphore signals after the presentation operation
+completes, the semaphore wait stalls the
+[VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](synchronization.html#VkPipelineStageFlagBits) stage, and there is a
+dependency from that same stage to itself with the layout transition
+performed in between. |
+
 Valid Usage
 
 * 
@@ -3289,50 +3471,50 @@ Valid Usage
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-04091) VUID-VkSubmitInfo-pWaitDstStageMask-04091
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits) or
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-04092) VUID-VkSubmitInfo-pWaitDstStageMask-04092
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-04093) VUID-VkSubmitInfo-pWaitDstStageMask-04093
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-04094) VUID-VkSubmitInfo-pWaitDstStageMask-04094
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-04095) VUID-VkSubmitInfo-pWaitDstStageMask-04095
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-04096) VUID-VkSubmitInfo-pWaitDstStageMask-04096
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-07318) VUID-VkSubmitInfo-pWaitDstStageMask-07318
@@ -3340,7 +3522,7 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-03937) VUID-VkSubmitInfo-pWaitDstStageMask-03937
@@ -3354,33 +3536,33 @@ not enabled, `pWaitDstStageMask` **must** not be `0`
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-10754) VUID-VkSubmitInfo-pWaitDstStageMask-10754
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubmitInfo-pCommandBuffers-00075) VUID-VkSubmitInfo-pCommandBuffers-00075
 
 Each element of `pCommandBuffers` **must** not have been allocated with
-`VK_COMMAND_BUFFER_LEVEL_SECONDARY`
+[VK_COMMAND_BUFFER_LEVEL_SECONDARY](#VkCommandBufferLevel)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-00078) VUID-VkSubmitInfo-pWaitDstStageMask-00078
 
 Each element of `pWaitDstStageMask` **must** not include
-`VK_PIPELINE_STAGE_HOST_BIT`
+[VK_PIPELINE_STAGE_HOST_BIT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitSemaphores-03239) VUID-VkSubmitInfo-pWaitSemaphores-03239
 
 If any element of `pWaitSemaphores` or `pSignalSemaphores` was
 created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_TIMELINE`, then the `pNext` chain **must**
+[VK_SEMAPHORE_TYPE_TIMELINE](synchronization.html#VkSemaphoreTypeKHR), then the `pNext` chain **must**
 include a [VkTimelineSemaphoreSubmitInfo](#VkTimelineSemaphoreSubmitInfo) structure
 
 * 
@@ -3389,7 +3571,7 @@ include a [VkTimelineSemaphoreSubmitInfo](#VkTimelineSemaphoreSubmitInfo) struct
 If the `pNext` chain of this structure includes a
 [VkTimelineSemaphoreSubmitInfo](#VkTimelineSemaphoreSubmitInfo) structure and any element of
 `pWaitSemaphores` was created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_TIMELINE`, then its `waitSemaphoreValueCount`
+[VK_SEMAPHORE_TYPE_TIMELINE](synchronization.html#VkSemaphoreTypeKHR), then its `waitSemaphoreValueCount`
 member **must** equal `waitSemaphoreCount`
 
 * 
@@ -3398,7 +3580,7 @@ member **must** equal `waitSemaphoreCount`
 If the `pNext` chain of this structure includes a
 [VkTimelineSemaphoreSubmitInfo](#VkTimelineSemaphoreSubmitInfo) structure and any element of
 `pSignalSemaphores` was created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_TIMELINE`, then its
+[VK_SEMAPHORE_TYPE_TIMELINE](synchronization.html#VkSemaphoreTypeKHR), then its
 `signalSemaphoreValueCount` member **must** equal
 `signalSemaphoreCount`
 
@@ -3406,7 +3588,7 @@ If the `pNext` chain of this structure includes a
 [](#VUID-VkSubmitInfo-pSignalSemaphores-03242) VUID-VkSubmitInfo-pSignalSemaphores-03242
 
 For each element of `pSignalSemaphores` created with a
-[VkSemaphoreType](synchronization.html#VkSemaphoreType) of `VK_SEMAPHORE_TYPE_TIMELINE` the
+[VkSemaphoreType](synchronization.html#VkSemaphoreType) of [VK_SEMAPHORE_TYPE_TIMELINE](synchronization.html#VkSemaphoreTypeKHR) the
 corresponding element of
 [VkTimelineSemaphoreSubmitInfo](#VkTimelineSemaphoreSubmitInfo)::`pSignalSemaphoreValues` **must**
 have a value greater than the current value of the semaphore when the
@@ -3417,7 +3599,7 @@ executed
 [](#VUID-VkSubmitInfo-pWaitSemaphores-03243) VUID-VkSubmitInfo-pWaitSemaphores-03243
 
 For each element of `pWaitSemaphores` created with a
-[VkSemaphoreType](synchronization.html#VkSemaphoreType) of `VK_SEMAPHORE_TYPE_TIMELINE` the
+[VkSemaphoreType](synchronization.html#VkSemaphoreType) of [VK_SEMAPHORE_TYPE_TIMELINE](synchronization.html#VkSemaphoreTypeKHR) the
 corresponding element of
 [VkTimelineSemaphoreSubmitInfo](#VkTimelineSemaphoreSubmitInfo)::`pWaitSemaphoreValues` **must**
 have a value which does not differ from the current value of the
@@ -3429,7 +3611,7 @@ operation on that semaphore by more than
 [](#VUID-VkSubmitInfo-pSignalSemaphores-03244) VUID-VkSubmitInfo-pSignalSemaphores-03244
 
 For each element of `pSignalSemaphores` created with a
-[VkSemaphoreType](synchronization.html#VkSemaphoreType) of `VK_SEMAPHORE_TYPE_TIMELINE` the
+[VkSemaphoreType](synchronization.html#VkSemaphoreType) of [VK_SEMAPHORE_TYPE_TIMELINE](synchronization.html#VkSemaphoreTypeKHR) the
 corresponding element of
 [VkTimelineSemaphoreSubmitInfo](#VkTimelineSemaphoreSubmitInfo)::`pSignalSemaphoreValues` **must**
 have a value which does not differ from the current value of the
@@ -3442,7 +3624,7 @@ operation on that semaphore by more than
 
 If the `pNext` chain of this structure does not include a
 `VkProtectedSubmitInfo` structure with `protectedSubmit` set to
-`VK_TRUE`, then each element of the `pCommandBuffers` array
+[VK_TRUE](fundamentals.html#VK_TRUE), then each element of the `pCommandBuffers` array
 **must** be an unprotected command buffer
 
 * 
@@ -3450,7 +3632,7 @@ If the `pNext` chain of this structure does not include a
 
 If the `pNext` chain of this structure includes a
 `VkProtectedSubmitInfo` structure with `protectedSubmit` set to
-`VK_TRUE`, then each element of the `pCommandBuffers` array
+[VK_TRUE](fundamentals.html#VK_TRUE), then each element of the `pCommandBuffers` array
 **must** be a protected command buffer
 
 * 
@@ -3494,7 +3676,7 @@ locations
 
 If the `pNext` chain of this structure includes a
 [VkFrameBoundaryTensorsARM](debugging.html#VkFrameBoundaryTensorsARM) structure then it **must** also include a
-[VkFrameBoundaryEXT](debugging.html#VkFrameBoundaryEXT) structure.
+[VkFrameBoundaryEXT](debugging.html#VkFrameBoundaryEXT) structure
 
 * 
 [](#VUID-VkSubmitInfo-pCommandBufferInfos-09942) VUID-VkSubmitInfo-pCommandBufferInfos-09942
@@ -3521,7 +3703,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSubmitInfo-sType-sType) VUID-VkSubmitInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SUBMIT_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SUBMIT_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSubmitInfo-pNext-pNext) VUID-VkSubmitInfo-pNext-pNext
@@ -3559,7 +3741,7 @@ Valid Usage (Implicit)
  Each of the elements of `pCommandBuffers`, the elements of `pSignalSemaphores`, and the elements of `pWaitSemaphores` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](devsandqueues.html#VkDevice)
 
 To specify the values to use when waiting for and signaling semaphores
-created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of `VK_SEMAPHORE_TYPE_TIMELINE`,
+created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of [VK_SEMAPHORE_TYPE_TIMELINE](synchronization.html#VkSemaphoreTypeKHR),
 add a [VkTimelineSemaphoreSubmitInfo](#VkTimelineSemaphoreSubmitInfo) structure to the `pNext` chain
 of the [VkSubmitInfo](#VkSubmitInfo) structure when using [vkQueueSubmit](#vkQueueSubmit)
 or the [VkBindSparseInfo](sparsemem.html#VkBindSparseInfo) structure when using [vkQueueBindSparse](sparsemem.html#vkQueueBindSparse)
@@ -3609,7 +3791,7 @@ If the semaphore in [VkSubmitInfo](#VkSubmitInfo)::`pWaitSemaphores` or
 [VkSubmitInfo](#VkSubmitInfo)::`pSignalSemaphores` corresponding to an entry in
 `pWaitSemaphoreValues` or `pSignalSemaphoreValues` respectively was
 not created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_TIMELINE`, the implementation **must** ignore the value
+[VK_SEMAPHORE_TYPE_TIMELINE](synchronization.html#VkSemaphoreTypeKHR), the implementation **must** ignore the value
 in the `pWaitSemaphoreValues` or `pSignalSemaphoreValues` entry.
 
 Valid Usage (Implicit)
@@ -3617,7 +3799,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTimelineSemaphoreSubmitInfo-sType-sType) VUID-VkTimelineSemaphoreSubmitInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TIMELINE_SEMAPHORE_SUBMIT_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TIMELINE_SEMAPHORE_SUBMIT_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkTimelineSemaphoreSubmitInfo-pWaitSemaphoreValues-parameter) VUID-VkTimelineSemaphoreSubmitInfo-pWaitSemaphoreValues-parameter
@@ -3679,14 +3861,14 @@ in the `pWaitSemaphoreValues` or `pSignalSemaphoreValues` entry.
 
 |  | As the introduction of the external semaphore handle type
 | --- | --- |
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT` predates that of
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR) predates that of
 timeline semaphores, support for importing semaphore payloads from external
 handles of that type into semaphores created (implicitly or explicitly) with
-a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of `VK_SEMAPHORE_TYPE_BINARY` is preserved for
+a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of [VK_SEMAPHORE_TYPE_BINARY](synchronization.html#VkSemaphoreTypeKHR) is preserved for
 backwards compatibility.
 However, applications **should** prefer importing such handle types into
 semaphores created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_TIMELINE`, and use the
+[VK_SEMAPHORE_TYPE_TIMELINE](synchronization.html#VkSemaphoreTypeKHR), and use the
 [VkTimelineSemaphoreSubmitInfo](#VkTimelineSemaphoreSubmitInfo) structure instead of the
 `VkD3D12FenceSubmitInfoKHR` structure to specify the values to use when
 waiting for and signaling such semaphores. |
@@ -3712,7 +3894,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkD3D12FenceSubmitInfoKHR-sType-sType) VUID-VkD3D12FenceSubmitInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkD3D12FenceSubmitInfoKHR-pWaitSemaphoreValues-parameter) VUID-VkD3D12FenceSubmitInfoKHR-pWaitSemaphoreValues-parameter
@@ -3798,15 +3980,15 @@ Valid Usage
 Each member of `pAcquireSyncs` and `pReleaseSyncs` **must** be a
 device memory object imported by setting
 [VkImportMemoryWin32HandleInfoKHR](memory.html#VkImportMemoryWin32HandleInfoKHR)::`handleType` to
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkWin32KeyedMutexAcquireReleaseInfoKHR-sType-sType) VUID-VkWin32KeyedMutexAcquireReleaseInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkWin32KeyedMutexAcquireReleaseInfoKHR-pAcquireSyncs-parameter) VUID-VkWin32KeyedMutexAcquireReleaseInfoKHR-pAcquireSyncs-parameter
@@ -3910,7 +4092,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkWin32KeyedMutexAcquireReleaseInfoNV-sType-sType) VUID-VkWin32KeyedMutexAcquireReleaseInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkWin32KeyedMutexAcquireReleaseInfoNV-pAcquireSyncs-parameter) VUID-VkWin32KeyedMutexAcquireReleaseInfoNV-pAcquireSyncs-parameter
@@ -3956,8 +4138,8 @@ typedef struct VkProtectedSubmitInfo {
 
 * 
 `protectedSubmit` specifies whether the batch is protected.
-If `protectedSubmit` is `VK_TRUE`, the batch is protected.
-If `protectedSubmit` is `VK_FALSE`, the batch is unprotected.
+If `protectedSubmit` is [VK_TRUE](fundamentals.html#VK_TRUE), the batch is protected.
+If `protectedSubmit` is [VK_FALSE](fundamentals.html#VK_FALSE), the batch is unprotected.
 If the `VkSubmitInfo`::`pNext` chain does not include this
 structure, the batch is unprotected.
 
@@ -3966,7 +4148,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkProtectedSubmitInfo-sType-sType) VUID-VkProtectedSubmitInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO](fundamentals.html#VkStructureType)
 
 If the `pNext` chain of [VkSubmitInfo](#VkSubmitInfo) includes a
 `VkDeviceGroupSubmitInfo` structure, then that structure includes device
@@ -4070,7 +4252,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceGroupSubmitInfo-sType-sType) VUID-VkDeviceGroupSubmitInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_GROUP_SUBMIT_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_GROUP_SUBMIT_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceGroupSubmitInfo-pWaitSemaphoreDeviceIndices-parameter) VUID-VkDeviceGroupSubmitInfo-pWaitSemaphoreDeviceIndices-parameter
@@ -4129,14 +4311,14 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPerformanceQuerySubmitInfoKHR-sType-sType) VUID-VkPerformanceQuerySubmitInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PERFORMANCE_QUERY_SUBMIT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_QUERY_SUBMIT_INFO_KHR](fundamentals.html#VkStructureType)
 
 When using binary semaphores, the application **must** ensure that command
 buffer submissions will be able to complete without any subsequent
 operations by the application on any queue.
 After any call to `vkQueueSubmit` (or other queue operation), for every
 queued wait on a semaphore
-created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of `VK_SEMAPHORE_TYPE_BINARY`
+created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of [VK_SEMAPHORE_TYPE_BINARY](synchronization.html#VkSemaphoreTypeKHR)
 there **must** be a prior signal of that semaphore that will not be consumed by
 a different wait on the semaphore.
 
@@ -4190,7 +4372,7 @@ recorded to execute in the primary command buffer in the order they are
 listed in the array.
 
 If any element of `pCommandBuffers` was not recorded with the
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT` flag, and it was recorded
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](#VkCommandBufferUsageFlagBits) flag, and it was recorded
 into any other primary command buffer which is currently in the
 [executable or recording state](#commandbuffers-lifecycle), that primary
 command buffer becomes [invalid](#commandbuffers-lifecycle).
@@ -4205,7 +4387,7 @@ Valid Usage
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-00088) VUID-vkCmdExecuteCommands-pCommandBuffers-00088
 
 Each element of `pCommandBuffers` **must** have been allocated with a
-`level` of `VK_COMMAND_BUFFER_LEVEL_SECONDARY`
+`level` of [VK_COMMAND_BUFFER_LEVEL_SECONDARY](#VkCommandBufferLevel)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-00089) VUID-vkCmdExecuteCommands-pCommandBuffers-00089
@@ -4217,21 +4399,21 @@ Each element of `pCommandBuffers` **must** be in the
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-00091) VUID-vkCmdExecuteCommands-pCommandBuffers-00091
 
 If any element of `pCommandBuffers` was not recorded with the
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT` flag, it **must** not be
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](#VkCommandBufferUsageFlagBits) flag, it **must** not be
 in the [pending state](#commandbuffers-lifecycle)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-00092) VUID-vkCmdExecuteCommands-pCommandBuffers-00092
 
 If any element of `pCommandBuffers` was not recorded with the
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT` flag, it **must** not
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](#VkCommandBufferUsageFlagBits) flag, it **must** not
 have already been recorded to `commandBuffer`
 
 * 
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-00093) VUID-vkCmdExecuteCommands-pCommandBuffers-00093
 
 If any element of `pCommandBuffers` was not recorded with the
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT` flag, it **must** not
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](#VkCommandBufferUsageFlagBits) flag, it **must** not
 appear more than once in `pCommandBuffers`
 
 * 
@@ -4246,7 +4428,7 @@ Each element of `pCommandBuffers` **must** have been allocated from a
 
 If this command is called within a render pass instance, each element of
 `pCommandBuffers` **must** have been recorded with the
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](#VkCommandBufferUsageFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-00099) VUID-vkCmdExecuteCommands-pCommandBuffers-00099
@@ -4264,8 +4446,8 @@ of `pCommandBuffers` was recorded with
     [vkCmdBeginRenderPass](renderpass.html#vkCmdBeginRenderPass), and [vkCmdNextSubpass](renderpass.html#vkCmdNextSubpass) has not been
     called in the current render pass instance, the `contents` parameter
     of [vkCmdBeginRenderPass](renderpass.html#vkCmdBeginRenderPass) **must** have been
-    `VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS`
-, or `VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT`
+    [VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS](renderpass.html#VkSubpassContents)
+, or [VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT](renderpass.html#VkSubpassContents)
 
 * 
 [](#VUID-vkCmdExecuteCommands-None-09681) VUID-vkCmdExecuteCommands-None-09681
@@ -4274,8 +4456,8 @@ of `pCommandBuffers` was recorded with
     [vkCmdBeginRenderPass](renderpass.html#vkCmdBeginRenderPass), and [vkCmdNextSubpass](renderpass.html#vkCmdNextSubpass) has been called
     in the current render pass instance, the `contents` parameter of the
     last call to [vkCmdNextSubpass](renderpass.html#vkCmdNextSubpass) **must** have been
-    `VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS`
-, or `VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR`
+    [VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS](renderpass.html#VkSubpassContents)
+, or [VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR](renderpass.html#VkSubpassContents)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-06019) VUID-vkCmdExecuteCommands-pCommandBuffers-06019
@@ -4331,7 +4513,7 @@ identical to [VkRenderPassBeginInfo](renderpass.html#VkRenderPassBeginInfo)::`re
 
 If `vkCmdExecuteCommands` is not being called within a render pass
 instance, each element of `pCommandBuffers` **must** not have been
-recorded with the `VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`
+recorded with the [VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](#VkCommandBufferUsageFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteCommands-commandBuffer-00101) VUID-vkCmdExecuteCommands-commandBuffer-00101
@@ -4343,16 +4525,16 @@ not enabled, `commandBuffer` **must** not have any queries
 * 
 [](#VUID-vkCmdExecuteCommands-commandBuffer-00102) VUID-vkCmdExecuteCommands-commandBuffer-00102
 
-If `commandBuffer` has a `VK_QUERY_TYPE_OCCLUSION` query
+If `commandBuffer` has a [VK_QUERY_TYPE_OCCLUSION](queries.html#VkQueryType) query
 [active](queries.html#queries-operation-active), then each element of
 `pCommandBuffers` **must** have been recorded with
 `VkCommandBufferInheritanceInfo`::`occlusionQueryEnable` set to
-`VK_TRUE`
+[VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-vkCmdExecuteCommands-commandBuffer-00103) VUID-vkCmdExecuteCommands-commandBuffer-00103
 
-If `commandBuffer` has a `VK_QUERY_TYPE_OCCLUSION` query
+If `commandBuffer` has a [VK_QUERY_TYPE_OCCLUSION](queries.html#VkQueryType) query
 [active](queries.html#queries-operation-active), then each element of
 `pCommandBuffers` **must** have been recorded with
 `VkCommandBufferInheritanceInfo`::`queryFlags` having all bits
@@ -4361,7 +4543,7 @@ set that are set for the query
 * 
 [](#VUID-vkCmdExecuteCommands-commandBuffer-00104) VUID-vkCmdExecuteCommands-commandBuffer-00104
 
-If `commandBuffer` has a `VK_QUERY_TYPE_PIPELINE_STATISTICS`
+If `commandBuffer` has a [VK_QUERY_TYPE_PIPELINE_STATISTICS](queries.html#VkQueryType)
 query [active](queries.html#queries-operation-active), then each element of
 `pCommandBuffers` **must** have been recorded with
 `VkCommandBufferInheritanceInfo`::`pipelineStatistics` having
@@ -4377,8 +4559,8 @@ that are [active](queries.html#queries-operation-active) in `commandBuffer`
 [](#VUID-vkCmdExecuteCommands-commandBuffer-07594) VUID-vkCmdExecuteCommands-commandBuffer-07594
 
 `commandBuffer` **must** not have any queries other than
-`VK_QUERY_TYPE_OCCLUSION` and
-`VK_QUERY_TYPE_PIPELINE_STATISTICS`
+[VK_QUERY_TYPE_OCCLUSION](queries.html#VkQueryType) and
+[VK_QUERY_TYPE_PIPELINE_STATISTICS](queries.html#VkQueryType)
 [active](queries.html#queries-operation-active)
 
 * 
@@ -4468,7 +4650,7 @@ locations
 If this command is called within a render pass instance begun with
 [vkCmdBeginRendering](renderpass.html#vkCmdBeginRendering), its [VkRenderingInfo](renderpass.html#VkRenderingInfo)::`flags`
 parameter **must** have included
-`VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT`
+[VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT](renderpass.html#VkRenderingFlagBitsKHR)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pBeginInfo-06025) VUID-vkCmdExecuteCommands-pBeginInfo-06025
@@ -4490,7 +4672,7 @@ If this command is called within a render pass instance begun with
 recording each element of `pCommandBuffers` **must** be equal to the
 [VkRenderingInfo](renderpass.html#VkRenderingInfo)::`flags` parameter to
 [vkCmdBeginRendering](renderpass.html#vkCmdBeginRendering), excluding
-`VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT`
+[VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT](renderpass.html#VkRenderingFlagBitsKHR)
 
 * 
 [](#VUID-vkCmdExecuteCommands-colorAttachmentCount-06027) VUID-vkCmdExecuteCommands-colorAttachmentCount-06027
@@ -4530,7 +4712,7 @@ element of the `pColorAttachmentFormats` member of the
 `pNext` chain of
 [VkCommandBufferBeginInfo](#VkCommandBufferBeginInfo)::`pInheritanceInfo` used to begin
 recording each element of `pCommandBuffers` **must** be
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pDepthAttachment-06029) VUID-vkCmdExecuteCommands-pDepthAttachment-06029
@@ -4572,7 +4754,7 @@ If this command is called within a render pass instance begun with
 `pNext` chain of
 [VkCommandBufferBeginInfo](#VkCommandBufferBeginInfo)::`pInheritanceInfo` used to begin
 recording each element of `pCommandBuffers` **must** be
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pStencilAttachment-06775) VUID-vkCmdExecuteCommands-pStencilAttachment-06775
@@ -4586,7 +4768,7 @@ If this command is called within a render pass instance begun with
 `pNext` chain of
 [VkCommandBufferBeginInfo](#VkCommandBufferBeginInfo)::`pInheritanceInfo` used to begin
 recording each element of `pCommandBuffers` **must** be
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-11500) VUID-vkCmdExecuteCommands-pCommandBuffers-11500
@@ -4613,7 +4795,7 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](renderpass.html#vkCmdBeginRendering) and [vkCmdBeginCustomResolveEXT](renderpass.html#vkCmdBeginCustomResolveEXT) has been
 recorded in the render pass instance, then each element of
 `pCommandBuffers` **must** have been recorded with
-[VkCustomResolveCreateInfoEXT](pipelines.html#VkCustomResolveCreateInfoEXT)::`customResolve` as `VK_TRUE`
+[VkCustomResolveCreateInfoEXT](pipelines.html#VkCustomResolveCreateInfoEXT)::`customResolve` as [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-11503) VUID-vkCmdExecuteCommands-pCommandBuffers-11503
@@ -4624,7 +4806,7 @@ If the current render pass instance was begun with
 pass instance, then each element of `pCommandBuffers` **must** have
 been recorded with
 [VkCustomResolveCreateInfoEXT](pipelines.html#VkCustomResolveCreateInfoEXT)::`customResolve` as
-`VK_FALSE`
+[VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-vkCmdExecuteCommands-colorAttachmentCount-11532) VUID-vkCmdExecuteCommands-colorAttachmentCount-11532
@@ -4664,7 +4846,7 @@ element of the `pColorAttachmentFormats` member of the
 [VkCustomResolveCreateInfoEXT](pipelines.html#VkCustomResolveCreateInfoEXT) structure included in the `pNext`
 chain of [VkCommandBufferBeginInfo](#VkCommandBufferBeginInfo)::`pInheritanceInfo` used to
 begin recording each element of `pCommandBuffers` **must** be
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pDepthAttachment-11535) VUID-vkCmdExecuteCommands-pDepthAttachment-11535
@@ -4704,7 +4886,7 @@ value of the `depthAttachmentFormat` member of the
 [VkCustomResolveCreateInfoEXT](pipelines.html#VkCustomResolveCreateInfoEXT) structure included in the `pNext`
 chain of [VkCommandBufferBeginInfo](#VkCommandBufferBeginInfo)::`pInheritanceInfo` used to
 begin recording each element of `pCommandBuffers` **must** be
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pStencilAttachment-11538) VUID-vkCmdExecuteCommands-pStencilAttachment-11538
@@ -4717,7 +4899,7 @@ value of the `stencilAttachmentFormat` member of the
 [VkCustomResolveCreateInfoEXT](pipelines.html#VkCustomResolveCreateInfoEXT) structure included in the `pNext`
 chain of [VkCommandBufferBeginInfo](#VkCommandBufferBeginInfo)::`pInheritanceInfo` used to
 begin recording each element of `pCommandBuffers` **must** be
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat)
 
 * 
 [](#VUID-vkCmdExecuteCommands-resolveImageView-11526) VUID-vkCmdExecuteCommands-resolveImageView-11526
@@ -4873,7 +5055,7 @@ sample count used to create that image view
 
 If this command is called within a render pass instance begun with
 [vkCmdBeginRendering](renderpass.html#vkCmdBeginRendering), with any color attachment using a resolve
-mode of `VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`,
+mode of [VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](renderpass.html#VkResolveModeFlagBitsKHR),
 the `pNext` chain of [VkCommandBufferInheritanceInfo](#VkCommandBufferInheritanceInfo) used to
 create each element of `pCommandBuffers` **must** include a
 [VkExternalFormatANDROID](resources.html#VkExternalFormatANDROID) structure with an `externalFormat`
@@ -4884,12 +5066,12 @@ matching that used to create the resolve attachment in the render pass
 
 If this command is called within a render pass instance begun with
 [vkCmdBeginRendering](renderpass.html#vkCmdBeginRendering) with any color attachment using a resolve mode
-of `VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`, and the
+of [VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](renderpass.html#VkResolveModeFlagBitsKHR), and the
 `pNext` chain of [VkCommandBufferInheritanceInfo](#VkCommandBufferInheritanceInfo) does not
 include a [VkAttachmentSampleCountInfoAMD](#VkAttachmentSampleCountInfoAMD) or
 [VkAttachmentSampleCountInfoNV](#VkAttachmentSampleCountInfoNV) structure, the value of
 [VkCommandBufferInheritanceRenderingInfo](#VkCommandBufferInheritanceRenderingInfo)::`rasterizationSamples`
-**must** be `VK_SAMPLE_COUNT_1_BIT`
+**must** be [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteCommands-commandBuffer-09375) VUID-vkCmdExecuteCommands-commandBuffer-09375
@@ -4912,7 +5094,7 @@ element of `pCommandBuffers` **must** be less than
 If the [    `nestedCommandBufferRendering`](features.html#features-nestedCommandBufferRendering) feature is not enabled, and
 `commandBuffer` is a [secondary command buffer](../appendices/glossary.html#glossary),
 `commandBuffer` **must** not have been recorded with
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](#VkCommandBufferUsageFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteCommands-nestedCommandBufferSimultaneousUse-09378) VUID-vkCmdExecuteCommands-nestedCommandBufferSimultaneousUse-09378
@@ -4920,7 +5102,7 @@ If the [    `nestedCommandBufferRendering`](features.html#features-nestedCommand
 If the [    `nestedCommandBufferSimultaneousUse`](features.html#features-nestedCommandBufferSimultaneousUse) feature is not enabled, and
 `commandBuffer` is a [secondary command buffer](../appendices/glossary.html#glossary), each
 element of `pCommandBuffers` **must** not have been recorded with
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT`
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](#VkCommandBufferUsageFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-09504) VUID-vkCmdExecuteCommands-pCommandBuffers-09504
@@ -4957,7 +5139,7 @@ active bound [bound tile memory object](memory.html#memory-bind-tile-memory) in
 If this command is being recorded within a render pass instance with
 [tile shading](renderpass.html#renderpass-tile-shading) enabled, all elements of
 `pCommandBuffers` **must** have been recorded with
-`VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` included in
+[VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](renderpass.html#VkTileShadingRenderPassFlagBitsQCOM) included in
 [VkRenderPassTileShadingCreateInfoQCOM](renderpass.html#VkRenderPassTileShadingCreateInfoQCOM)::`flags`
 
 * 
@@ -4966,7 +5148,7 @@ If this command is being recorded within a render pass instance with
 If the [per-tile execution model](renderpass.html#renderpass-per-tile-execution-model)
 is enabled, all elements of `pCommandBuffers` **must** have been
 recorded with
-`VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM` included
+[VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM](renderpass.html#VkTileShadingRenderPassFlagBitsQCOM) included
 in [VkRenderPassTileShadingCreateInfoQCOM](renderpass.html#VkRenderPassTileShadingCreateInfoQCOM)::`flags`
 
 * 
@@ -4981,7 +5163,7 @@ used to record all elements of `pCommandBuffers`
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-10623) VUID-vkCmdExecuteCommands-pCommandBuffers-10623
 
 If any element of `pCommandBuffers` was recorded with
-`VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` included in
+[VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](renderpass.html#VkTileShadingRenderPassFlagBitsQCOM) included in
 [VkRenderPassTileShadingCreateInfoQCOM](renderpass.html#VkRenderPassTileShadingCreateInfoQCOM)::`flags`, this command
 **must** be recorded in a render pass that has tile shading enabled
 
@@ -4989,7 +5171,7 @@ If any element of `pCommandBuffers` was recorded with
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-10624) VUID-vkCmdExecuteCommands-pCommandBuffers-10624
 
 If any element of `pCommandBuffers` was recorded with
-`VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM` included
+[VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM](renderpass.html#VkTileShadingRenderPassFlagBitsQCOM) included
 in [VkRenderPassTileShadingCreateInfoQCOM](renderpass.html#VkRenderPassTileShadingCreateInfoQCOM)::`flags`,
 [per-tile execution model](renderpass.html#renderpass-per-tile-execution-model) **must**
 be enabled
@@ -5001,6 +5183,44 @@ If this command is not being recorded into a render pass instance, the
 [VkRenderPassTileShadingCreateInfoQCOM](renderpass.html#VkRenderPassTileShadingCreateInfoQCOM)::`tileApronSize` that
 was recorded into all elements of `pCommandBuffers` **must** equal
 `(0,0)`
+
+* 
+[](#VUID-vkCmdExecuteCommands-commandBuffer-11351) VUID-vkCmdExecuteCommands-commandBuffer-11351
+
+If there is a sampler descriptor heap bound to `commandBuffer`, each
+element of `pCommandBuffers` **must** have been recorded with a value
+of
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pSamplerHeapBindInfo`
+that is either `NULL` or a pointer to a bind info that is identical to
+that set via the last call to [vkCmdBindSamplerHeapEXT](descriptorheaps.html#vkCmdBindSamplerHeapEXT)
+
+* 
+[](#VUID-vkCmdExecuteCommands-commandBuffer-11352) VUID-vkCmdExecuteCommands-commandBuffer-11352
+
+If there is a resource descriptor heap bound to `commandBuffer`,
+each element of `pCommandBuffers` **must** have been recorded with a
+value of
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pResourceHeapBindInfo`
+that is either `NULL` or a pointer to a bind info that is identical to
+that set via the last call to [vkCmdBindResourceHeapEXT](descriptorheaps.html#vkCmdBindResourceHeapEXT)
+
+* 
+[](#VUID-vkCmdExecuteCommands-commandBuffer-11473) VUID-vkCmdExecuteCommands-commandBuffer-11473
+
+If there is no sampler descriptor heap bound to `commandBuffer`,
+each element of `pCommandBuffers` **must** have been recorded with a
+value of
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pSamplerHeapBindInfo`
+set to `NULL`
+
+* 
+[](#VUID-vkCmdExecuteCommands-commandBuffer-11474) VUID-vkCmdExecuteCommands-commandBuffer-11474
+
+If there is no resource descriptor heap bound to `commandBuffer`,
+each element of `pCommandBuffers` **must** have been recorded with a
+value of
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pResourceHeapBindInfo`
+set to `NULL`
 
 Valid Usage (Implicit)
 
@@ -5022,7 +5242,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdExecuteCommands-commandBuffer-cmdpool) VUID-vkCmdExecuteCommands-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, or `VK_QUEUE_TRANSFER_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdExecuteCommands-videocoding) VUID-vkCmdExecuteCommands-videocoding
@@ -5085,14 +5305,14 @@ This limit is advertised in [`maxCommandBufferNestingLevel`](limits.html#limits-
 
 If the [`nestedCommandBufferRendering`](features.html#features-nestedCommandBufferRendering) feature is enabled, the implementation
 supports calling [vkCmdExecuteCommands](#vkCmdExecuteCommands) inside secondary command buffers
-recorded with `VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`.
+recorded with [VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](#VkCommandBufferUsageFlagBits).
 If the [`nestedCommandBufferSimultaneousUse`](features.html#features-nestedCommandBufferSimultaneousUse) feature is enabled, the
 implementation supports calling [vkCmdExecuteCommands](#vkCmdExecuteCommands) with secondary
 command buffers recorded with
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT`.
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](#VkCommandBufferUsageFlagBits).
 
 Whenever [vkCmdExecuteCommands](#vkCmdExecuteCommands) is recorded inside a secondary command
-buffer recorded with `VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`,
+buffer recorded with [VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](#VkCommandBufferUsageFlagBits),
 each member of `pCommandBuffers` **must** have been recorded with a
 [VkCommandBufferBeginInfo](#VkCommandBufferBeginInfo) with [VkCommandBufferInheritanceInfo](#VkCommandBufferInheritanceInfo)
 compatible with the [VkCommandBufferInheritanceInfo](#VkCommandBufferInheritanceInfo) of the command
@@ -5181,7 +5401,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceGroupCommandBufferBeginInfo-sType-sType) VUID-VkDeviceGroupCommandBufferBeginInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO](fundamentals.html#VkStructureType)
 
 To update the current device mask of a command buffer, call:
 
@@ -5254,7 +5474,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDeviceMask-commandBuffer-cmdpool) VUID-vkCmdSetDeviceMask-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, or `VK_QUEUE_TRANSFER_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 Host Synchronization
 

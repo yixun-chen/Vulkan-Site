@@ -43,10 +43,10 @@ render pass.
 This command is treated as a “transfer” operation for the purposes of
 synchronization barriers.
 The writes to the address **must** be synchronized using stages
-`VK_PIPELINE_STAGE_2_COPY_BIT` and
-`VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV` and with access masks
-`VK_ACCESS_MEMORY_WRITE_BIT` and
-`VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_NV` respectively before using the
+[VK_PIPELINE_STAGE_2_COPY_BIT](VkPipelineStageFlagBits2.html) and
+[VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV](VkPipelineStageFlagBits.html) and with access masks
+[VK_ACCESS_MEMORY_WRITE_BIT](VkAccessFlagBits.html) and
+[VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_NV](VkAccessFlagBits.html) respectively before using the
 results in preprocessing.
 
 Valid Usage
@@ -54,13 +54,13 @@ Valid Usage
 * 
 [](#VUID-vkCmdUpdatePipelineIndirectBufferNV-pipelineBindPoint-09018) VUID-vkCmdUpdatePipelineIndirectBufferNV-pipelineBindPoint-09018
 
-`pipelineBindPoint` **must** be `VK_PIPELINE_BIND_POINT_COMPUTE`
+`pipelineBindPoint` **must** be [VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html)
 
 * 
 [](#VUID-vkCmdUpdatePipelineIndirectBufferNV-pipeline-09019) VUID-vkCmdUpdatePipelineIndirectBufferNV-pipeline-09019
 
 `pipeline` **must** have been created with
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV` flag set
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](VkPipelineCreateFlagBits.html) flag set
 
 * 
 [](#VUID-vkCmdUpdatePipelineIndirectBufferNV-pipeline-09020) VUID-vkCmdUpdatePipelineIndirectBufferNV-pipeline-09020
@@ -100,7 +100,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdUpdatePipelineIndirectBufferNV-commandBuffer-cmdpool) VUID-vkCmdUpdatePipelineIndirectBufferNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, or `VK_QUEUE_TRANSFER_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html), or [VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdUpdatePipelineIndirectBufferNV-renderpass) VUID-vkCmdUpdatePipelineIndirectBufferNV-renderpass

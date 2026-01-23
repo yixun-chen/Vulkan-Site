@@ -56,10 +56,10 @@ The timing relationship between the presentation of the image to the user
 and the wait request completing is implementation-dependent due to
 variations in window system implementations.
 
-If the `swapchain` becomes `VK_ERROR_OUT_OF_DATE_KHR` either before
-or during this call, the call **may** either return `VK_SUCCESS` (if the
+If the `swapchain` becomes [VK_ERROR_OUT_OF_DATE_KHR](VkResult.html) either before
+or during this call, the call **may** either return [VK_SUCCESS](VkResult.html) (if the
 image was delivered to the presentation engine and **may** have been presented
-to the user) or return early with status `VK_ERROR_OUT_OF_DATE_KHR` (if
+to the user) or return early with status [VK_ERROR_OUT_OF_DATE_KHR](VkResult.html) (if
 the image could not be presented to the user).
 
 As an exception to the normal rules for objects which are externally
@@ -87,8 +87,8 @@ be present for the underlying surface
 [](#VUID-vkWaitForPresent2KHR-None-10816) VUID-vkWaitForPresent2KHR-None-10816
 
 The swapchain must have been created with
-`VK_SWAPCHAIN_CREATE_PRESENT_WAIT_2_BIT_KHR` bit set in the
-`VkSwapchainCreateFlagBitsKHR` field
+[VK_SWAPCHAIN_CREATE_PRESENT_WAIT_2_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html) bit set in the
+[VkSwapchainCreateFlagBitsKHR](VkSwapchainCreateFlagBitsKHR.html) field
 
 * 
 [](#VUID-vkWaitForPresent2KHR-presentId-10817) VUID-vkWaitForPresent2KHR-presentId-10817
@@ -129,39 +129,39 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUBOPTIMAL_KHR`
+[VK_SUBOPTIMAL_KHR](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 * 
-`VK_TIMEOUT`
+[VK_TIMEOUT](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](VkResult.html)
 
 * 
-`VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT`
+[VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DATE_KHR`
+[VK_ERROR_OUT_OF_DATE_KHR](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_present_wait2](VK_KHR_present_wait2.html), [VkDevice](VkDevice.html), [VkPresentWait2InfoKHR](VkPresentWait2InfoKHR.html), [VkSwapchainKHR](VkSwapchainKHR.html)
 

@@ -83,6 +83,64 @@ respect it.
 Other than these implicit ordering guarantees and any [explicit synchronization primitives](../../../../spec/latest/chapters/synchronization.html#synchronization), these command buffers **may** overlap or
 otherwise execute out of order.
 
+The second [synchronization scope](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-scopes) of
+each [semaphore wait operation](../../../../spec/latest/chapters/synchronization.html#synchronization-semaphores-waiting) defined
+by this structure is limited to operations in stages indicated by the
+corresponding element of `pWaitDstStageMask`.
+
+|  | A common scenario for using `pWaitDstStageMask` with values other than
+| --- | --- |
+[VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](VkPipelineStageFlagBits.html) is when synchronizing a window
+system presentation operation against subsequent command buffers which
+render the next frame.
+In this case, a presentation image **must** not be overwritten until the
+presentation operation completes, but other pipeline stages **can** execute
+without waiting.
+A mask of [VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](VkPipelineStageFlagBits.html) prevents
+subsequent color attachment writes from executing until the semaphore
+signals.
+Some implementations **may** be able to execute transfer operations and/or
+pre-rasterization work before the semaphore is signaled.
+
+If an image layout transition needs to be performed on a presentable image
+before it is used in a framebuffer, that **can** be performed as the first
+operation submitted to the queue after acquiring the image, and **should** not
+prevent other work from overlapping with the presentation operation.
+For example, a `VkImageMemoryBarrier` could use:
+
+* 
+`srcStageMask` = [VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](VkPipelineStageFlagBits.html)
+
+* 
+`srcAccessMask` = 0
+
+* 
+`dstStageMask` = [VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](VkPipelineStageFlagBits.html)
+
+* 
+`dstAccessMask` = [VK_ACCESS_COLOR_ATTACHMENT_READ_BIT](VkAccessFlagBits.html) \|
+[VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT](VkAccessFlagBits.html).
+
+* 
+`oldLayout` = [VK_IMAGE_LAYOUT_PRESENT_SRC_KHR](VkImageLayout.html)
+
+* 
+`newLayout` = [VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](VkImageLayout.html)
+
+Alternatively, `oldLayout` **can** be [VK_IMAGE_LAYOUT_UNDEFINED](VkImageLayout.html), if
+the image’s contents need not be preserved.
+
+This barrier accomplishes a dependency chain between previous presentation
+operations and subsequent color attachment output operations, with the
+layout transition performed in between, and does not introduce a dependency
+between previous work and any
+[pre-rasterization shader stage](../../../../spec/latest/chapters/pipelines.html#pipelines-graphics-subsets-pre-rasterization)s.
+More precisely, the semaphore signals after the presentation operation
+completes, the semaphore wait stalls the
+[VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](VkPipelineStageFlagBits.html) stage, and there is a
+dependency from that same stage to itself with the layout transition
+performed in between. |
+
 Valid Usage
 
 * 
@@ -90,50 +148,50 @@ Valid Usage
 
 If the [`geometryShader`](../../../../spec/latest/chapters/features.html#features-geometryShader) feature is not
 enabled, `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-04091) VUID-VkSubmitInfo-pWaitDstStageMask-04091
 
 If the [`tessellationShader`](../../../../spec/latest/chapters/features.html#features-tessellationShader) feature
 is not enabled, `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](VkPipelineStageFlagBits.html) or
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-04092) VUID-VkSubmitInfo-pWaitDstStageMask-04092
 
 If the [`conditionalRendering`](../../../../spec/latest/chapters/features.html#features-conditionalRendering)
 feature is not enabled, `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-04093) VUID-VkSubmitInfo-pWaitDstStageMask-04093
 
 If the [`fragmentDensityMap`](../../../../spec/latest/chapters/features.html#features-fragmentDensityMap) feature
 is not enabled, `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-04094) VUID-VkSubmitInfo-pWaitDstStageMask-04094
 
 If the [`transformFeedback`](../../../../spec/latest/chapters/features.html#features-transformFeedback) feature
 is not enabled, `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-04095) VUID-VkSubmitInfo-pWaitDstStageMask-04095
 
 If the [`meshShader`](../../../../spec/latest/chapters/features.html#features-meshShader) feature is not enabled,
 `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-04096) VUID-VkSubmitInfo-pWaitDstStageMask-04096
 
 If the [`taskShader`](../../../../spec/latest/chapters/features.html#features-taskShader) feature is not enabled,
 `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-07318) VUID-VkSubmitInfo-pWaitDstStageMask-07318
@@ -141,7 +199,7 @@ If the [`taskShader`](../../../../spec/latest/chapters/features.html#features-ta
 If neither of the [`shadingRateImage`](../../../../spec/latest/chapters/features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](../../../../spec/latest/chapters/features.html#features-attachmentFragmentShadingRate) features are enabled,
 `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-03937) VUID-VkSubmitInfo-pWaitDstStageMask-03937
@@ -155,33 +213,33 @@ not enabled, `pWaitDstStageMask` **must** not be `0`
 If neither the [VK_NV_ray_tracing](VK_NV_ray_tracing.html) extension or the
 [`rayTracingPipeline`](../../../../spec/latest/chapters/features.html#features-rayTracingPipeline) feature are
 enabled, `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-10754) VUID-VkSubmitInfo-pWaitDstStageMask-10754
 
 If the [`accelerationStructure`](../../../../spec/latest/chapters/features.html#features-accelerationStructure)
 feature is not enabled, `pWaitDstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-VkSubmitInfo-pCommandBuffers-00075) VUID-VkSubmitInfo-pCommandBuffers-00075
 
 Each element of `pCommandBuffers` **must** not have been allocated with
-`VK_COMMAND_BUFFER_LEVEL_SECONDARY`
+[VK_COMMAND_BUFFER_LEVEL_SECONDARY](VkCommandBufferLevel.html)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitDstStageMask-00078) VUID-VkSubmitInfo-pWaitDstStageMask-00078
 
 Each element of `pWaitDstStageMask` **must** not include
-`VK_PIPELINE_STAGE_HOST_BIT`
+[VK_PIPELINE_STAGE_HOST_BIT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-VkSubmitInfo-pWaitSemaphores-03239) VUID-VkSubmitInfo-pWaitSemaphores-03239
 
 If any element of `pWaitSemaphores` or `pSignalSemaphores` was
 created with a [VkSemaphoreType](VkSemaphoreType.html) of
-`VK_SEMAPHORE_TYPE_TIMELINE`, then the `pNext` chain **must**
+[VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html), then the `pNext` chain **must**
 include a [VkTimelineSemaphoreSubmitInfo](VkTimelineSemaphoreSubmitInfo.html) structure
 
 * 
@@ -190,7 +248,7 @@ include a [VkTimelineSemaphoreSubmitInfo](VkTimelineSemaphoreSubmitInfo.html) st
 If the `pNext` chain of this structure includes a
 [VkTimelineSemaphoreSubmitInfo](VkTimelineSemaphoreSubmitInfo.html) structure and any element of
 `pWaitSemaphores` was created with a [VkSemaphoreType](VkSemaphoreType.html) of
-`VK_SEMAPHORE_TYPE_TIMELINE`, then its `waitSemaphoreValueCount`
+[VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html), then its `waitSemaphoreValueCount`
 member **must** equal `waitSemaphoreCount`
 
 * 
@@ -199,7 +257,7 @@ member **must** equal `waitSemaphoreCount`
 If the `pNext` chain of this structure includes a
 [VkTimelineSemaphoreSubmitInfo](VkTimelineSemaphoreSubmitInfo.html) structure and any element of
 `pSignalSemaphores` was created with a [VkSemaphoreType](VkSemaphoreType.html) of
-`VK_SEMAPHORE_TYPE_TIMELINE`, then its
+[VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html), then its
 `signalSemaphoreValueCount` member **must** equal
 `signalSemaphoreCount`
 
@@ -207,7 +265,7 @@ If the `pNext` chain of this structure includes a
 [](#VUID-VkSubmitInfo-pSignalSemaphores-03242) VUID-VkSubmitInfo-pSignalSemaphores-03242
 
 For each element of `pSignalSemaphores` created with a
-[VkSemaphoreType](VkSemaphoreType.html) of `VK_SEMAPHORE_TYPE_TIMELINE` the
+[VkSemaphoreType](VkSemaphoreType.html) of [VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html) the
 corresponding element of
 [VkTimelineSemaphoreSubmitInfo](VkTimelineSemaphoreSubmitInfo.html)::`pSignalSemaphoreValues` **must**
 have a value greater than the current value of the semaphore when the
@@ -218,7 +276,7 @@ executed
 [](#VUID-VkSubmitInfo-pWaitSemaphores-03243) VUID-VkSubmitInfo-pWaitSemaphores-03243
 
 For each element of `pWaitSemaphores` created with a
-[VkSemaphoreType](VkSemaphoreType.html) of `VK_SEMAPHORE_TYPE_TIMELINE` the
+[VkSemaphoreType](VkSemaphoreType.html) of [VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html) the
 corresponding element of
 [VkTimelineSemaphoreSubmitInfo](VkTimelineSemaphoreSubmitInfo.html)::`pWaitSemaphoreValues` **must**
 have a value which does not differ from the current value of the
@@ -230,7 +288,7 @@ operation on that semaphore by more than
 [](#VUID-VkSubmitInfo-pSignalSemaphores-03244) VUID-VkSubmitInfo-pSignalSemaphores-03244
 
 For each element of `pSignalSemaphores` created with a
-[VkSemaphoreType](VkSemaphoreType.html) of `VK_SEMAPHORE_TYPE_TIMELINE` the
+[VkSemaphoreType](VkSemaphoreType.html) of [VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html) the
 corresponding element of
 [VkTimelineSemaphoreSubmitInfo](VkTimelineSemaphoreSubmitInfo.html)::`pSignalSemaphoreValues` **must**
 have a value which does not differ from the current value of the
@@ -243,7 +301,7 @@ operation on that semaphore by more than
 
 If the `pNext` chain of this structure does not include a
 `VkProtectedSubmitInfo` structure with `protectedSubmit` set to
-`VK_TRUE`, then each element of the `pCommandBuffers` array
+[VK_TRUE](VK_TRUE.html), then each element of the `pCommandBuffers` array
 **must** be an unprotected command buffer
 
 * 
@@ -251,7 +309,7 @@ If the `pNext` chain of this structure does not include a
 
 If the `pNext` chain of this structure includes a
 `VkProtectedSubmitInfo` structure with `protectedSubmit` set to
-`VK_TRUE`, then each element of the `pCommandBuffers` array
+[VK_TRUE](VK_TRUE.html), then each element of the `pCommandBuffers` array
 **must** be a protected command buffer
 
 * 
@@ -295,7 +353,7 @@ locations
 
 If the `pNext` chain of this structure includes a
 [VkFrameBoundaryTensorsARM](VkFrameBoundaryTensorsARM.html) structure then it **must** also include a
-[VkFrameBoundaryEXT](VkFrameBoundaryEXT.html) structure.
+[VkFrameBoundaryEXT](VkFrameBoundaryEXT.html) structure
 
 * 
 [](#VUID-VkSubmitInfo-pCommandBufferInfos-09942) VUID-VkSubmitInfo-pCommandBufferInfos-09942
@@ -322,7 +380,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSubmitInfo-sType-sType) VUID-VkSubmitInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SUBMIT_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SUBMIT_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkSubmitInfo-pNext-pNext) VUID-VkSubmitInfo-pNext-pNext

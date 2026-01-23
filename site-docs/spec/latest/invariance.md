@@ -35,7 +35,7 @@ because these memory operations are not guaranteed to be processed in a
 defined order.
 
 The repeatability requirement does not apply for rendering done using a
-graphics pipeline that uses `VK_RASTERIZATION_ORDER_RELAXED_AMD`.
+graphics pipeline that uses [VK_RASTERIZATION_ORDER_RELAXED_AMD](../chapters/primsrast.html#VkRasterizationOrderAMD).
 
 One purpose of repeatability is avoidance of visual artifacts when a
 double-buffered scene is redrawn.

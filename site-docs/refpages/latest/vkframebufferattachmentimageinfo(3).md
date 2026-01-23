@@ -94,14 +94,14 @@ If `viewFormatCount` is not 0,
 and the render pass is not being used with an external format resolve
 attachment,
 each element of `pViewFormats` **must** not be
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](VkFormat.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkFramebufferAttachmentImageInfo-sType-sType) VUID-VkFramebufferAttachmentImageInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENT_IMAGE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENT_IMAGE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkFramebufferAttachmentImageInfo-pNext-pNext) VUID-VkFramebufferAttachmentImageInfo-pNext-pNext

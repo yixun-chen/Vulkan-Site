@@ -93,8 +93,8 @@ information **may** be returned in the additional available space.
 If any `pFaultCounts` structure count member is smaller than the number
 of corresponding fault properties available, or if
 `pFaultCounts`->vendorBinarySize is smaller than the size in bytes of
-the generated binary crash dump data, `VK_INCOMPLETE` will be returned
-instead of `VK_SUCCESS`, to indicate that not all the available
+the generated binary crash dump data, [VK_INCOMPLETE](VkResult.html) will be returned
+instead of [VK_SUCCESS](VkResult.html), to indicate that not all the available
 properties were returned.
 
 If `pFaultCounts`->vendorBinarySize is less than what is necessary to
@@ -157,21 +157,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_EXT_device_fault](VK_EXT_device_fault.html), [VkDevice](VkDevice.html), [VkDeviceFaultCountsEXT](VkDeviceFaultCountsEXT.html), [VkDeviceFaultInfoEXT](VkDeviceFaultInfoEXT.html)
 

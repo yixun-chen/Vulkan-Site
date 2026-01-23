@@ -78,7 +78,7 @@ There are several types of cameras commonly used in 3D applications:
 **First-Person Camera**: Simulates viewing the world through the eyes of a character.
 
 * 
-**Third-Person Camera**: Follows a character from behind or another fixed position.
+**Third-Person Camera**: Follows a character from behind or another fixed relative position.
 
 * 
 **Orbit Camera**: Rotates around a fixed point, useful for object inspection.
@@ -196,18 +196,26 @@ And implement the movement logic:
 void Camera::processKeyboard(CameraMovement direction, float deltaTime) {
     float velocity = movementSpeed * deltaTime;
 
-    if (direction == CameraMovement::FORWARD)
-        position += front * velocity;
-    if (direction == CameraMovement::BACKWARD)
-        position -= front * velocity;
-    if (direction == CameraMovement::LEFT)
-        position -= right * velocity;
-    if (direction == CameraMovement::RIGHT)
-        position += right * velocity;
-    if (direction == CameraMovement::UP)
-        position += up * velocity;
-    if (direction == CameraMovement::DOWN)
-        position -= up * velocity;
+    switch (direction) {
+        case CameraMovement::FORWARD:
+            position += front * velocity;
+            break;
+        case CameraMovement::BACKWARD:
+            position -= front * velocity;
+            break;
+        case CameraMovement::LEFT:
+            position -= right * velocity;
+            break;
+        case CameraMovement::RIGHT:
+            position += right * velocity;
+            break;
+        case CameraMovement::UP:
+            position += up * velocity;
+            break;
+        case CameraMovement::DOWN:
+            position -= up * velocity;
+            break;
+    }
 }
 
 The camera class provides methods to process input, but integrating these with your application’s input system requires careful consideration of different input modalities and their unique characteristics. Let’s break down the input handling implementation to demonstrate both the technical integration and the design principles behind effective camera controls.
@@ -321,9 +329,12 @@ void Camera::processMouseMovement(float xOffset, float yOffset, bool constrainPi
 
     // Constrain pitch to avoid flipping
     if (constrainPitch) {
-        if (pitch > 89.0f)
-            pitch = 89.0f;
-        if (pitch 
+        pitch = std::clamp(pitch, -89.0f, 89.0f);
+    }
+
+    // Update camera vectors based on updated Euler angles
+    updateCameraVectors();
+}
 
 After changing the camera’s orientation, we need to recalculate the front, right, and up vectors:
 
@@ -564,9 +575,27 @@ void ThirdPersonCamera::orbit(float horizontalAngle, float verticalAngle) {
     pitch += verticalAngle;
 
     // Constrain pitch to avoid flipping
-    if (pitch > 89.0f)
-        pitch = 89.0f;
-    if (pitch 
+    pitch = std::clamp(pitch, -89.0f, 89.0f);
+
+    // Calculate the new camera position based on spherical coordinates
+    float radius = followDistance;
+    float yawRad = glm::radians(yaw);
+    float pitchRad = glm::radians(pitch);
+
+    // Convert spherical coordinates to Cartesian
+    glm::vec3 offset;
+    offset.x = radius * cos(yawRad) * cos(pitchRad);
+    offset.y = radius * sin(pitchRad);
+    offset.z = radius * sin(yawRad) * cos(pitchRad);
+
+    // Set the desired position
+    desiredPosition = targetPosition + offset;
+
+    // Update camera vectors
+    front = glm::normalize(targetPosition - desiredPosition);
+    right = glm::normalize(glm::cross(front, worldUp));
+    up = glm::normalize(glm::cross(right, front));
+}
 
 This implementation:
 
@@ -607,9 +636,9 @@ void gameLoop(float deltaTime) {
     renderer.render(scene, viewMatrix, projMatrix);
 }
 
-|  | For more advanced camera techniques, refer to the Advanced Camera Techniques section in the [Appendix](#../Appendix/appendix.adoc). |
+|  | For more advanced camera techniques, refer to the Advanced Camera Techniques section in the [Appendix](../Appendix/appendix.html). |
 | --- | --- |
 
 In the next section, we’ll integrate our camera system with Vulkan to render 3D scenes.
 
-[Next: Vulkan Integration](#05_vulkan_integration.adoc)
+[Previous: Transformation Matrices](03_transformation_matrices.html) | [Next: Vulkan Integration](05_vulkan_integration.html)

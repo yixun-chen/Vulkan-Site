@@ -74,7 +74,7 @@ typedef enum VkExternalMemoryHandleTypeFlagBits {
 typedef VkExternalMemoryHandleTypeFlagBits VkExternalMemoryHandleTypeFlagBitsKHR;
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT` specifies a POSIX
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT](#) specifies a POSIX
 file descriptor handle that has only limited valid usage outside of
 Vulkan and other compatible APIs.
 It **must** be compatible with the POSIX system calls `dup`, `dup2`,
@@ -85,7 +85,7 @@ It owns a reference to the underlying memory resource represented by its
 Vulkan memory object.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT` specifies an NT
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT](#) specifies an NT
 handle that has only limited valid usage outside of Vulkan and other
 compatible APIs.
 It **must** be compatible with the functions `DuplicateHandle`,
@@ -95,7 +95,7 @@ It owns a reference to the underlying memory resource represented by its
 Vulkan memory object.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT` specifies a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](#) specifies a
 global share handle that has only limited valid usage outside of Vulkan
 and other compatible APIs.
 It is not compatible with any native APIs.
@@ -104,13 +104,13 @@ represented by its Vulkan memory object, and will therefore become
 invalid when all Vulkan memory objects associated with it are destroyed.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT` specifies an NT
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT](#) specifies an NT
 handle returned by `IDXGIResource1`::`CreateSharedHandle`
 referring to a Direct3D 10 or 11 texture resource.
 It owns a reference to the memory used by the Direct3D resource.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT` specifies a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT](#) specifies a
 global share handle returned by `IDXGIResource`::`GetSharedHandle`
 referring to a Direct3D 10 or 11 texture resource.
 It does not own a reference to the underlying Direct3D resource, and
@@ -118,68 +118,68 @@ will therefore become invalid when all Vulkan memory objects and
 Direct3D resources associated with it are destroyed.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT` specifies an NT
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT](#) specifies an NT
 handle returned by `ID3D12Device`::`CreateSharedHandle` referring
 to a Direct3D 12 heap resource.
 It owns a reference to the resources used by the Direct3D heap.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT` specifies an NT
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT](#) specifies an NT
 handle returned by `ID3D12Device`::`CreateSharedHandle` referring
 to a Direct3D 12 committed resource.
 It owns a reference to the memory used by the Direct3D resource.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT` specifies a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](#) specifies a
 host pointer returned by a host memory allocation command.
 It does not own a reference to the underlying memory resource, and will
 therefore become invalid if the host memory is freed.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](#)
 specifies a host pointer to *host mapped foreign memory*.
 It does not own a reference to the underlying memory resource, and will
 therefore become invalid if the foreign memory is unmapped or otherwise
 becomes no longer available.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT` is a file
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT](#) is a file
 descriptor for a Linux dma_buf.
 It owns a reference to the underlying memory resource represented by its
 Vulkan memory object.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](#)
 specifies an `AHardwareBuffer` object defined by the Android NDK.
 See [Android Hardware Buffers](../../../../spec/latest/chapters/memory.html#memory-external-android-hardware-buffer)
 for more details of this handle type.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA` is a Zircon
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA](#) is a Zircon
 handle to a virtual memory object.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_RDMA_ADDRESS_BIT_NV` is a handle to
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_RDMA_ADDRESS_BIT_NV](#) is a handle to
 an allocation accessible by remote devices.
 It owns a reference to the underlying memory resource represented by its
 Vulkan memory object.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX` specifies a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](#) specifies a
 `_screen_buffer` object defined by the QNX SDP.
 See [QNX Screen Buffer](../../../../spec/latest/chapters/memory.html#memory-external-qnx-screen-buffer) for more
 details of this handle type.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLBUFFER_BIT_EXT` is a handle to a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLBUFFER_BIT_EXT](#) is a handle to a
 `MTLResource` holding a `MTLBuffer`.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT` is a handle to a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT](#) is a handle to a
 `MTLResource` holding a `MTLTexture`.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLHEAP_BIT_EXT` is a handle to a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLHEAP_BIT_EXT](#) is a handle to a
 `MTLResource` holding a `MTLHeap`.
 
 Some external memory handle types can only be shared within the same
@@ -188,35 +188,35 @@ following table:
 
 | Handle type | `VkPhysicalDeviceIDProperties`::`driverUUID` | `VkPhysicalDeviceIDProperties`::`deviceUUID` |
 | --- | --- | --- |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT` | Must match | Must match |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT` | Must match | Must match |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT` | Must match | Must match |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT` | Must match | Must match |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT` | Must match | Must match |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT` | Must match | Must match |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT` | Must match | Must match |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT` | No restriction | No restriction |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT` | No restriction | No restriction |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT` | No restriction | No restriction |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID` | No restriction | No restriction |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA` | No restriction | No restriction |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_RDMA_ADDRESS_BIT_NV` | No restriction | No restriction |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX` | No restriction | No restriction |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLBUFFER_BIT_EXT` | No restriction | Must match |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT` | No restriction | Must match |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLHEAP_BIT_EXT` | No restriction | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT](#) | Must match | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT](#) | Must match | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](#) | Must match | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT](#) | Must match | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT](#) | Must match | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT](#) | Must match | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT](#) | Must match | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](#) | No restriction | No restriction |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](#) | No restriction | No restriction |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT](#) | No restriction | No restriction |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](#) | No restriction | No restriction |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA](#) | No restriction | No restriction |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_RDMA_ADDRESS_BIT_NV](#) | No restriction | No restriction |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](#) | No restriction | No restriction |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLBUFFER_BIT_EXT](#) | No restriction | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT](#) | No restriction | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLHEAP_BIT_EXT](#) | No restriction | Must match |
 
 |  | The above table does not restrict the drivers and devices with which
 | --- | --- |
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT` and
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT` **may**
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](#) and
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](#) **may**
 be shared, as these handle types inherently mean memory that does not come
 from the same device, as they import memory from the host or a foreign
 device, respectively. |
 
 |  | Even though the above table does not restrict the drivers and devices with
 | --- | --- |
-which `VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT` **may** be shared,
+which [VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT](#) **may** be shared,
 query mechanisms exist in the Vulkan API that prevent the import of
 incompatible dma-bufs (such as [vkGetMemoryFdPropertiesKHR](vkGetMemoryFdPropertiesKHR.html)) and that
 prevent incompatible usage of dma-bufs (such as

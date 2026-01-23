@@ -46,14 +46,14 @@ Valid Usage
 [](#VUID-VkPipelineViewportDepthClipControlCreateInfoEXT-negativeOneToOne-06470) VUID-VkPipelineViewportDepthClipControlCreateInfoEXT-negativeOneToOne-06470
 
 If the [`depthClipControl`](../../../../spec/latest/chapters/features.html#features-depthClipControl) feature is
-not enabled, `negativeOneToOne` **must** be `VK_FALSE`
+not enabled, `negativeOneToOne` **must** be [VK_FALSE](VK_FALSE.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineViewportDepthClipControlCreateInfoEXT-sType-sType) VUID-VkPipelineViewportDepthClipControlCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT](VkStructureType.html)
 
 [VK_EXT_depth_clip_control](VK_EXT_depth_clip_control.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -34,9 +34,9 @@ described in [Version Numbers](../../../../spec/latest/chapters/extensions.html#
 |  | The intended behavior of [vkEnumerateInstanceVersion](#) is that an
 | --- | --- |
 implementation **should** not need to perform memory allocations and **should**
-unconditionally return `VK_SUCCESS`.
+unconditionally return [VK_SUCCESS](VkResult.html).
 The loader, and any enabled layers, **may** return
-`VK_ERROR_OUT_OF_HOST_MEMORY` in the case of a failed memory allocation. |
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html) in the case of a failed memory allocation. |
 
 Valid Usage (Implicit)
 
@@ -50,18 +50,18 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_1](VK_VERSION_1_1.html)
 

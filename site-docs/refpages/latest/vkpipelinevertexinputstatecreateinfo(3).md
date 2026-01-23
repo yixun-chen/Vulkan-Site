@@ -97,7 +97,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineVertexInputStateCreateInfo-sType-sType) VUID-VkPipelineVertexInputStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineVertexInputStateCreateInfo-pNext-pNext) VUID-VkPipelineVertexInputStateCreateInfo-pNext-pNext

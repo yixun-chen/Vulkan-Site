@@ -68,7 +68,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderingAreaInfo-sType-sType) VUID-VkRenderingAreaInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDERING_AREA_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDERING_AREA_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderingAreaInfo-pNext-pNext) VUID-VkRenderingAreaInfo-pNext-pNext

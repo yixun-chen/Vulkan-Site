@@ -44,13 +44,13 @@ each viewport.
 * 
 `pDepthClampRange` sets the depth clamp range for all viewports if
 `depthClampMode` is
-`VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT`.
+[VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT](VkDepthClampModeEXT.html).
 
 This structure extends `VkPipelineViewportStateCreateInfo` and specifies
 the depth clamp range used in the pipeline.
 If this structure is not provided in the next chain then
 `depthClampMode` defaults to
-`VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT`.
+[VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT](VkDepthClampModeEXT.html).
 
 Valid Usage
 
@@ -58,8 +58,8 @@ Valid Usage
 [](#VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-pDepthClampRange-09646) VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-pDepthClampRange-09646
 
 If `depthClampMode` is
-`VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT`, and the pipeline is
-not created with `VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT`, then
+[VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT](VkDepthClampModeEXT.html), and the pipeline is
+not created with [VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT](VkDynamicState.html), then
 `pDepthClampRange` **must** be a valid pointer to a valid
 `VkDepthClampRangeEXT` structure
 
@@ -68,7 +68,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-sType-sType) VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-depthClampMode-parameter) VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-depthClampMode-parameter

@@ -102,15 +102,15 @@ provided in `pColorAttachments`[**X**].
 If the `imageView` member of any element of `pColorAttachments` is
 [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 and `resolveMode` is not
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`,
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](VkResolveModeFlagBits.html),
 writes to the corresponding location by a fragment are discarded.
 
 The `aspectMask` of any image view specified for `pDepthAttachment`
 or `pStencilAttachment` is ignored.
 Instead, depth attachments are automatically treated as if
-`VK_IMAGE_ASPECT_DEPTH_BIT` was specified for their aspect masks, and
+[VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) was specified for their aspect masks, and
 stencil attachments are automatically treated as if
-`VK_IMAGE_ASPECT_STENCIL_BIT` was specified for their aspect masks.
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html) was specified for their aspect masks.
 
 Valid Usage
 
@@ -122,11 +122,7 @@ If `viewMask` is `0`, `layerCount` **must** not be `0`
 * 
 [](#VUID-VkRenderingInfo-multisampledRenderToSingleSampled-06857) VUID-VkRenderingInfo-multisampledRenderToSingleSampled-06857
 
-`imageView` members of `pDepthAttachment`,
-`pStencilAttachment`, and elements of `pColorAttachments` that
-are not [VK_NULL_HANDLE](VK_NULL_HANDLE.html) **must** have been created with the same
-`sampleCount`
-, if none of the following are enabled:
+If none of the following are enabled:
 
 The `[VK_AMD_mixed_attachment_samples](VK_AMD_mixed_attachment_samples.html)` extension
 
@@ -134,7 +130,11 @@ The `[VK_AMD_mixed_attachment_samples](VK_AMD_mixed_attachment_samples.html)` ex
 The `[VK_NV_framebuffer_mixed_samples](VK_NV_framebuffer_mixed_samples.html)` extension
 
 * 
-The [     `multisampledRenderToSingleSampled`](../../../../spec/latest/chapters/features.html#features-multisampledRenderToSingleSampled) feature,
+The [     `multisampledRenderToSingleSampled`](../../../../spec/latest/chapters/features.html#features-multisampledRenderToSingleSampled) feature
+
+`imageView` members of `pDepthAttachment`, `pStencilAttachment`,
+and elements of `pColorAttachments` that are not [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
+**must** have been created with the same `sampleCount`
 
 [](#VUID-VkRenderingInfo-imageView-09429) VUID-VkRenderingInfo-imageView-09429
 
@@ -162,7 +162,7 @@ If
 is enabled, then all attachments referenced by `imageView` members
 of `pDepthAttachment`, `pStencilAttachment`, and elements of
 `pColorAttachments` that are not [VK_NULL_HANDLE](VK_NULL_HANDLE.html) **must** have a
-sample count that is either `VK_SAMPLE_COUNT_1_BIT` or equal to
+sample count that is either [VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) or equal to
 [VkMultisampledRenderToSingleSampledInfoEXT](VkMultisampledRenderToSingleSampledInfoEXT.html)::`rasterizationSamples`
 
 [](#VUID-VkRenderingInfo-imageView-06859) VUID-VkRenderingInfo-imageView-06859
@@ -172,8 +172,8 @@ If
 is enabled, then all attachments referenced by `imageView` members
 of `pDepthAttachment`, `pStencilAttachment`, and elements of
 `pColorAttachments` that are not [VK_NULL_HANDLE](VK_NULL_HANDLE.html) and have a
-sample count of `VK_SAMPLE_COUNT_1_BIT` **must** have been created with
-`VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT` in
+sample count of [VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) **must** have been created with
+[VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT](VkImageCreateFlagBits.html) in
 their [VkImageCreateInfo](VkImageCreateInfo.html)::`flags`
 
 [](#VUID-VkRenderingInfo-pNext-06077) VUID-VkRenderingInfo-pNext-06077
@@ -261,7 +261,7 @@ be the same
 
 If neither `pDepthAttachment` or `pStencilAttachment` are
 `NULL`, and the `resolveMode` member of each is not
-`VK_RESOLVE_MODE_NONE`, the `resolveImageView` member of each
+[VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html), the `resolveImageView` member of each
 structure **must** be the same
 
 [](#VUID-VkRenderingInfo-colorAttachmentCount-06087) VUID-VkRenderingInfo-colorAttachmentCount-06087
@@ -269,19 +269,19 @@ structure **must** be the same
 If `colorAttachmentCount` is not `0` and the `imageView` member
 of an element of `pColorAttachments` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 that `imageView` **must** have been created with the
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](VkImageUsageFlagBits.html) usage flag set
 
 [](#VUID-VkRenderingInfo-colorAttachmentCount-09476) VUID-VkRenderingInfo-colorAttachmentCount-09476
 
 If `colorAttachmentCount` is not `0` and there is an element of
 `pColorAttachments` with
 either its `resolveMode` member set to
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`, or
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](VkResolveModeFlagBits.html), or
 its `imageView` member not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), and its
-`resolveMode` member not set to `VK_RESOLVE_MODE_NONE`, the
+`resolveMode` member not set to [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html), the
 `resolveImageView` member of that element of `pColorAttachments`
 **must** have been created with the
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](VkImageUsageFlagBits.html) usage flag set
 
 [](#VUID-VkRenderingInfo-pDepthAttachment-06547) VUID-VkRenderingInfo-pDepthAttachment-06547
 
@@ -295,14 +295,14 @@ that includes a depth component
 If `pDepthAttachment` is not `NULL` and
 `pDepthAttachment->imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 `pDepthAttachment->imageView` **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](VkImageUsageFlagBits.html) usage flag set
 
 [](#VUID-VkRenderingInfo-pDepthAttachment-09477) VUID-VkRenderingInfo-pDepthAttachment-09477
 
 If `pDepthAttachment` is not `NULL` and
-`pDepthAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pDepthAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html),
 `pDepthAttachment->resolveImageView` **must** have been created with
-the `VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+the [VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](VkImageUsageFlagBits.html) usage flag set
 
 [](#VUID-VkRenderingInfo-pStencilAttachment-06548) VUID-VkRenderingInfo-pStencilAttachment-06548
 
@@ -316,81 +316,81 @@ format that includes a stencil aspect
 If `pStencilAttachment` is not `NULL` and
 `pStencilAttachment->imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 `pStencilAttachment->imageView` **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](VkImageUsageFlagBits.html) usage flag set
 
 [](#VUID-VkRenderingInfo-pStencilAttachment-09478) VUID-VkRenderingInfo-pStencilAttachment-09478
 
 If `pStencilAttachment` is not `NULL` and
-`pStencilAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pStencilAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html),
 `pStencilAttachment->resolveImageView` **must** have been created with
-the `VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+the [VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](VkImageUsageFlagBits.html) usage flag set
 
 [](#VUID-VkRenderingInfo-colorAttachmentCount-06090) VUID-VkRenderingInfo-colorAttachmentCount-06090
 
 If `colorAttachmentCount` is not `0` and the `imageView` member
 of an element of `pColorAttachments` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 the `layout` member of that element of `pColorAttachments` **must**
-not be `VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`
+not be [VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 [](#VUID-VkRenderingInfo-colorAttachmentCount-06091) VUID-VkRenderingInfo-colorAttachmentCount-06091
 
 If `colorAttachmentCount` is not `0` and the `imageView` member
 of an element of `pColorAttachments` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), if
 the `resolveMode` member of that element of `pColorAttachments`
-is not `VK_RESOLVE_MODE_NONE`, its `resolveImageLayout` member
-**must** not be `VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`
+is not [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html), its `resolveImageLayout` member
+**must** not be [VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 [](#VUID-VkRenderingInfo-pDepthAttachment-06092) VUID-VkRenderingInfo-pDepthAttachment-06092
 
 If `pDepthAttachment` is not `NULL` and
 `pDepthAttachment->imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 `pDepthAttachment->layout` **must** not be
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](VkImageLayout.html)
 
 [](#VUID-VkRenderingInfo-pDepthAttachment-06093) VUID-VkRenderingInfo-pDepthAttachment-06093
 
 If `pDepthAttachment` is not `NULL`,
 `pDepthAttachment->imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), and
-`pDepthAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pDepthAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html),
 `pDepthAttachment->resolveImageLayout` **must** not be
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](VkImageLayout.html)
 
 [](#VUID-VkRenderingInfo-pStencilAttachment-06094) VUID-VkRenderingInfo-pStencilAttachment-06094
 
 If `pStencilAttachment` is not `NULL` and
 `pStencilAttachment->imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 `pStencilAttachment->layout` **must** not be
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](VkImageLayout.html)
 
 [](#VUID-VkRenderingInfo-flags-11514) VUID-VkRenderingInfo-flags-11514
 
-If `flags` contains `VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT` or
-`VK_RENDERING_FRAGMENT_REGION_BIT_EXT`, then the
+If `flags` contains [VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT](VkRenderingFlagBits.html) or
+[VK_RENDERING_FRAGMENT_REGION_BIT_EXT](VkRenderingFlagBits.html), then the
 [`customResolve`](../../../../spec/latest/chapters/features.html#features-customResolve) feature **must** enabled
 
 [](#VUID-VkRenderingInfo-pColorAttachments-11515) VUID-VkRenderingInfo-pColorAttachments-11515
 
 For any element of `pColorAttachments`, `pDepthAttachment`, or
 `pStencilAttachment`, if `resolveMode` contains
-`VK_RESOLVE_MODE_CUSTOM_BIT_EXT`, then `flags` **must** contain
-`VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT`
+[VK_RESOLVE_MODE_CUSTOM_BIT_EXT](VkResolveModeFlagBits.html), then `flags` **must** contain
+[VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT](VkRenderingFlagBits.html)
 
 [](#VUID-VkRenderingInfo-flags-11516) VUID-VkRenderingInfo-flags-11516
 
-If `flags` contains `VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT`, then
+If `flags` contains [VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT](VkRenderingFlagBits.html), then
 for any element of `pColorAttachments`, `pDepthAttachment`, or
 `pStencilAttachment`, `resolveMode` **must** be
-`VK_RESOLVE_MODE_CUSTOM_BIT_EXT` or `VK_RESOLVE_MODE_NONE`
+[VK_RESOLVE_MODE_CUSTOM_BIT_EXT](VkResolveModeFlagBits.html) or [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html)
 
 [](#VUID-VkRenderingInfo-pStencilAttachment-06095) VUID-VkRenderingInfo-pStencilAttachment-06095
 
 If `pStencilAttachment` is not `NULL`,
 `pStencilAttachment->imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), and
-`pStencilAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pStencilAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html),
 `pStencilAttachment->resolveImageLayout` **must** not be
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](VkImageLayout.html)
 
 [](#VUID-VkRenderingInfo-layerCount-07817) VUID-VkRenderingInfo-layerCount-07817
 
@@ -423,89 +423,89 @@ or equal to `VkRenderingInfo`::`layerCount`
 If `colorAttachmentCount` is not `0` and the `imageView` member
 of an element of `pColorAttachments` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 the `layout` member of that element of `pColorAttachments` **must**
-not be `VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
-or `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`
+not be [VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html)
+or [VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 [](#VUID-VkRenderingInfo-colorAttachmentCount-06097) VUID-VkRenderingInfo-colorAttachmentCount-06097
 
 If `colorAttachmentCount` is not `0` and the `imageView` member
 of an element of `pColorAttachments` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), if
 the `resolveMode` member of that element of `pColorAttachments`
-is not `VK_RESOLVE_MODE_NONE`, its `resolveImageLayout` member
+is not [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html), its `resolveImageLayout` member
 **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 [](#VUID-VkRenderingInfo-pDepthAttachment-06098) VUID-VkRenderingInfo-pDepthAttachment-06098
 
 If `pDepthAttachment` is not `NULL`,
 `pDepthAttachment->imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), and
-`pDepthAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pDepthAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html),
 `pDepthAttachment->resolveImageLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html)
 
 [](#VUID-VkRenderingInfo-pStencilAttachment-06099) VUID-VkRenderingInfo-pStencilAttachment-06099
 
 If `pStencilAttachment` is not `NULL`,
 `pStencilAttachment->imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), and
-`pStencilAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pStencilAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html),
 `pStencilAttachment->resolveImageLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 [](#VUID-VkRenderingInfo-colorAttachmentCount-06100) VUID-VkRenderingInfo-colorAttachmentCount-06100
 
 If `colorAttachmentCount` is not `0` and the `imageView` member
 of an element of `pColorAttachments` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 the `layout` member of that element of `pColorAttachments` **must**
-not be `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+not be [VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 [](#VUID-VkRenderingInfo-colorAttachmentCount-06101) VUID-VkRenderingInfo-colorAttachmentCount-06101
 
 If `colorAttachmentCount` is not `0` and the `imageView` member
 of an element of `pColorAttachments` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), if
 the `resolveMode` member of that element of `pColorAttachments`
-is not `VK_RESOLVE_MODE_NONE`, its `resolveImageLayout` member
-**must** not be `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+is not [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html), its `resolveImageLayout` member
+**must** not be [VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 [](#VUID-VkRenderingInfo-pDepthAttachment-07732) VUID-VkRenderingInfo-pDepthAttachment-07732
 
 If `pDepthAttachment` is not `NULL` and
 `pDepthAttachment->imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 `pDepthAttachment->layout` **must** not be
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 [](#VUID-VkRenderingInfo-pDepthAttachment-07733) VUID-VkRenderingInfo-pDepthAttachment-07733
 
 If `pDepthAttachment` is not `NULL`,
 `pDepthAttachment->imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), and
-`pDepthAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pDepthAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html),
 `pDepthAttachment->resolveImageLayout` **must** not be
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 [](#VUID-VkRenderingInfo-pStencilAttachment-07734) VUID-VkRenderingInfo-pStencilAttachment-07734
 
 If `pStencilAttachment` is not `NULL` and
 `pStencilAttachment->imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 `pStencilAttachment->layout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 [](#VUID-VkRenderingInfo-pStencilAttachment-07735) VUID-VkRenderingInfo-pStencilAttachment-07735
 
 If `pStencilAttachment` is not `NULL`,
 `pStencilAttachment->imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), and
-`pStencilAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pStencilAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html),
 `pStencilAttachment->resolveImageLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 [](#VUID-VkRenderingInfo-pDepthAttachment-06102) VUID-VkRenderingInfo-pDepthAttachment-06102
 
@@ -528,7 +528,7 @@ If `pDepthAttachment` or `pStencilAttachment` are both not
 `pStencilAttachment->imageView` are both not [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 and
 [VkPhysicalDeviceDepthStencilResolveProperties](VkPhysicalDeviceDepthStencilResolveProperties.html)::`independentResolveNone`
-is `VK_FALSE`, the `resolveMode` of both structures **must** be the
+is [VK_FALSE](VK_FALSE.html), the `resolveMode` of both structures **must** be the
 same value
 
 [](#VUID-VkRenderingInfo-pDepthAttachment-06105) VUID-VkRenderingInfo-pDepthAttachment-06105
@@ -537,8 +537,8 @@ If `pDepthAttachment` or `pStencilAttachment` are both not
 `NULL`, `pDepthAttachment->imageView` and
 `pStencilAttachment->imageView` are both not [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 [VkPhysicalDeviceDepthStencilResolveProperties](VkPhysicalDeviceDepthStencilResolveProperties.html)::`independentResolve`
-is `VK_FALSE`, and the `resolveMode` of neither structure is
-`VK_RESOLVE_MODE_NONE`, the `resolveMode` of both structures
+is [VK_FALSE](VK_FALSE.html), and the `resolveMode` of neither structure is
+[VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html), the `resolveMode` of both structures
 **must** be the same value
 
 [](#VUID-VkRenderingInfo-colorAttachmentCount-06106) VUID-VkRenderingInfo-colorAttachmentCount-06106
@@ -555,7 +555,7 @@ in the `pNext` chain is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), and the
 valid `imageView` and `resolveImageView` members of
 `pDepthAttachment`, `pStencilAttachment`, and each element of
 `pColorAttachments` **must** be a [VkImageView](VkImageView.html) created with
-`VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`
+[VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](VkImageCreateFlagBits.html)
 
 [](#VUID-VkRenderingInfo-imageView-06108) VUID-VkRenderingInfo-imageView-06108
 
@@ -630,7 +630,7 @@ equal to the `imageView` or `resolveImageView` member of
 [](#VUID-VkRenderingInfo-flags-10826) VUID-VkRenderingInfo-flags-10826
 
 If `flags` contains
-`VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE`, then
+[VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](VkRenderingFlagBits.html), then
 `layerCount` **must** be less than or equal to
 [    `maxFragmentDensityMapLayers`](../../../../spec/latest/chapters/limits.html#limits-maxFragmentDensityMapLayers)
 
@@ -638,14 +638,14 @@ If `flags` contains
 
 If the [    `fragmentDensityMapLayered`](../../../../spec/latest/chapters/features.html#features-fragmentDensityMapLayered) feature is not enabled, `flags`
 **must** not contain
-`VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE`
+[VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](VkRenderingFlagBits.html)
 
 [](#VUID-VkRenderingInfo-pNext-06119) VUID-VkRenderingInfo-pNext-06119
 
 If
 the [`maintenance7`](../../../../spec/latest/chapters/features.html#features-maintenance7) feature is not enabled
 or the [    `robustFragmentShadingRateAttachmentAccess`](../../../../spec/latest/chapters/limits.html#limits-robustFragmentShadingRateAttachmentAccess) limit is
-`VK_FALSE` or the `imageView` member of a
+[VK_FALSE](VK_FALSE.html) or the `imageView` member of a
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](VkRenderingFragmentShadingRateAttachmentInfoKHR.html) structure was
 created with [VkImageSubresourceRange](VkImageSubresourceRange.html)::`baseMipLevel` greater
 than 0,
@@ -663,7 +663,7 @@ in the `pNext` chain is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `imageView`
 If
 the [`maintenance7`](../../../../spec/latest/chapters/features.html#features-maintenance7) feature is not enabled
 or the [    `robustFragmentShadingRateAttachmentAccess`](../../../../spec/latest/chapters/limits.html#limits-robustFragmentShadingRateAttachmentAccess) limit is
-`VK_FALSE` or the `imageView` member of a
+[VK_FALSE](VK_FALSE.html) or the `imageView` member of a
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](VkRenderingFragmentShadingRateAttachmentInfoKHR.html) structure was
 created with [VkImageSubresourceRange](VkImageSubresourceRange.html)::`baseMipLevel` greater
 than 0,
@@ -681,7 +681,7 @@ in the `pNext` chain is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `imageView`
 If
 the [`maintenance7`](../../../../spec/latest/chapters/features.html#features-maintenance7) feature is not enabled
 or the [    `robustFragmentShadingRateAttachmentAccess`](../../../../spec/latest/chapters/limits.html#limits-robustFragmentShadingRateAttachmentAccess) limit is
-`VK_FALSE` or the `imageView` member of a
+[VK_FALSE](VK_FALSE.html) or the `imageView` member of a
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](VkRenderingFragmentShadingRateAttachmentInfoKHR.html) structure was
 created with [VkImageSubresourceRange](VkImageSubresourceRange.html)::`baseMipLevel` greater
 than 0,
@@ -699,7 +699,7 @@ for each element of `pDeviceRenderAreas`
 If
 the [`maintenance7`](../../../../spec/latest/chapters/features.html#features-maintenance7) feature is not enabled
 or the [    `robustFragmentShadingRateAttachmentAccess`](../../../../spec/latest/chapters/limits.html#limits-robustFragmentShadingRateAttachmentAccess) limit is
-`VK_FALSE` or the `imageView` member of a
+[VK_FALSE](VK_FALSE.html) or the `imageView` member of a
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](VkRenderingFragmentShadingRateAttachmentInfoKHR.html) structure was
 created with [VkImageSubresourceRange](VkImageSubresourceRange.html)::`baseMipLevel` greater
 than 0,
@@ -781,7 +781,7 @@ by this structure
 
 [](#VUID-VkRenderingInfo-flags-10012) VUID-VkRenderingInfo-flags-10012
 
-If `flags` includes `VK_RENDERING_CONTENTS_INLINE_BIT_KHR` then
+If `flags` includes [VK_RENDERING_CONTENTS_INLINE_BIT_KHR](VkRenderingFlagBits.html) then
 at least one of the following features **must** be enabled
 
 * 
@@ -793,30 +793,30 @@ at least one of the following features **must** be enabled
 [](#VUID-VkRenderingInfo-pDepthAttachment-09318) VUID-VkRenderingInfo-pDepthAttachment-09318
 
 `pDepthAttachment->resolveMode` **must** not be
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](VkResolveModeFlagBits.html)
 
 [](#VUID-VkRenderingInfo-pStencilAttachment-09319) VUID-VkRenderingInfo-pStencilAttachment-09319
 
 `pStencilAttachment->resolveMode` **must** not be
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](VkResolveModeFlagBits.html)
 
 [](#VUID-VkRenderingInfo-colorAttachmentCount-09320) VUID-VkRenderingInfo-colorAttachmentCount-09320
 
 If `colorAttachmentCount` is not `1`, the `resolveMode` member
 of any element of `pColorAttachments` **must** not be
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](VkResolveModeFlagBits.html)
 
 [](#VUID-VkRenderingInfo-resolveMode-09321) VUID-VkRenderingInfo-resolveMode-09321
 
 If the `resolveMode` of any element of `pColorAttachments` is
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`,
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](VkResolveModeFlagBits.html),
 [VkRenderingFragmentDensityMapAttachmentInfoEXT](VkRenderingFragmentDensityMapAttachmentInfoEXT.html)::`imageView`
 **must** be [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
 [](#VUID-VkRenderingInfo-resolveMode-09322) VUID-VkRenderingInfo-resolveMode-09322
 
 If the `resolveMode` of any element of `pColorAttachments` is
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`,
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](VkResolveModeFlagBits.html),
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](VkRenderingFragmentShadingRateAttachmentInfoKHR.html)::`imageView`
 **must** be [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
@@ -839,9 +839,9 @@ that `imageView` **must** have been created with the
 If `colorAttachmentCount` is not `0`, and there is an element of
 `pColorAttachments` with
 either its `resolveMode` member set to
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`, or
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](VkResolveModeFlagBits.html), or
 its `imageView` member not set to [VK_NULL_HANDLE](VK_NULL_HANDLE.html) and its
-`resolveMode` member not set to `VK_RESOLVE_MODE_NONE`, the
+`resolveMode` member not set to [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html), the
 `resolveImageView` member of that element of `pColorAttachments`
 **must** have been created with the
 [identity swizzle](../../../../spec/latest/chapters/resources.html#resources-image-views-identity-mappings)
@@ -857,7 +857,7 @@ If `pDepthAttachment` is not `NULL` and
 
 If `pDepthAttachment` is not `NULL`,
 `pDepthAttachment->imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), and
-`pDepthAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pDepthAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html),
 `pDepthAttachment->resolveImageView` **must** have been created with
 the [identity swizzle](../../../../spec/latest/chapters/resources.html#resources-image-views-identity-mappings)
 
@@ -872,7 +872,7 @@ If `pStencilAttachment` is not `NULL` and
 
 If `pStencilAttachment` is not `NULL`,
 `pStencilAttachment->imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), and
-`pStencilAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pStencilAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html),
 `pStencilAttachment->resolveImageView` **must** have been created with
 the [identity swizzle](../../../../spec/latest/chapters/resources.html#resources-image-views-identity-mappings)
 
@@ -895,14 +895,14 @@ created with the [identity    swizzle](../../../../spec/latest/chapters/resource
 If the `imageView` member of a
 [VkRenderingFragmentDensityMapAttachmentInfoEXT](VkRenderingFragmentDensityMapAttachmentInfoEXT.html) structure included
 in the `pNext` chain is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
-`VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` **must** not be included
+[VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](VkTileShadingRenderPassFlagBitsQCOM.html) **must** not be included
 in [VkRenderPassTileShadingCreateInfoQCOM](VkRenderPassTileShadingCreateInfoQCOM.html)::`flags`
 
 [](#VUID-VkRenderingInfo-resolveMode-10644) VUID-VkRenderingInfo-resolveMode-10644
 
 If the `resolveMode` of any element of `pColorAttachments` is
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`,
-`VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` **must** not be included
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](VkResolveModeFlagBits.html),
+[VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](VkTileShadingRenderPassFlagBitsQCOM.html) **must** not be included
 in [VkRenderPassTileShadingCreateInfoQCOM](VkRenderPassTileShadingCreateInfoQCOM.html)::`flags`
 
 Valid Usage (Implicit)
@@ -910,7 +910,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderingInfo-sType-sType) VUID-VkRenderingInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDERING_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDERING_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderingInfo-pNext-pNext) VUID-VkRenderingInfo-pNext-pNext

@@ -81,8 +81,8 @@ Joshua Ashton, Valve
 * 
 Faith Ekstrand, Intel
 
-This extension defines the `VK_FORMAT_A4R4G4B4_UNORM_PACK16_EXT` and
-`VK_FORMAT_A4B4G4R4_UNORM_PACK16_EXT` formats which are defined in other
+This extension defines the [VK_FORMAT_A4R4G4B4_UNORM_PACK16_EXT](VkFormat.html) and
+[VK_FORMAT_A4B4G4R4_UNORM_PACK16_EXT](VkFormat.html) formats which are defined in other
 current graphics APIs.
 
 This extension may be useful for building translation layers for those APIs
@@ -107,15 +107,15 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkFormat](VkFormat.html):
 
-`VK_FORMAT_A4B4G4R4_UNORM_PACK16_EXT`
+[VK_FORMAT_A4B4G4R4_UNORM_PACK16_EXT](VkFormat.html)
 
 * 
-`VK_FORMAT_A4R4G4B4_UNORM_PACK16_EXT`
+[VK_FORMAT_A4R4G4B4_UNORM_PACK16_EXT](VkFormat.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_4444_FORMATS_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_4444_FORMATS_FEATURES_EXT](VkStructureType.html)
 
 The format enumerants introduced by the extension are included in core
 Vulkan 1.3, with the EXT suffix omitted.

@@ -124,15 +124,15 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_ROTATE_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_ROTATE_FEATURES_KHR](VkStructureType.html)
 
 Extending [VkSubgroupFeatureFlagBits](VkSubgroupFeatureFlagBits.html):
 
 * 
-`VK_SUBGROUP_FEATURE_ROTATE_BIT_KHR`
+[VK_SUBGROUP_FEATURE_ROTATE_BIT_KHR](VkSubgroupFeatureFlagBits.html)
 
 * 
-`VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT_KHR`
+[VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT_KHR](VkSubgroupFeatureFlagBits.html)
 
 * 
 [GroupNonUniformRotateKHR](../../../../spec/latest/appendices/spirvenv.html#spirvenv-capabilities-table-GroupNonUniformRotateKHR)
@@ -145,8 +145,8 @@ the core functionality.
 * 
 Revision 2, 2024-01-29 (Kévin Petit)
 
-Add `VK_SUBGROUP_FEATURE_ROTATE_BIT_KHR` and
-`VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT_KHR`
+Add [VK_SUBGROUP_FEATURE_ROTATE_BIT_KHR](VkSubgroupFeatureFlagBits.html) and
+[VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT_KHR](VkSubgroupFeatureFlagBits.html)
 
 Revision 1, 2023-06-20 (Kévin Petit)
 

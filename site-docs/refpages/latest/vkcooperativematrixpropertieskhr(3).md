@@ -75,9 +75,9 @@ structure.
 `saturatingAccumulation` indicates whether the
 `SaturatingAccumulation` operand to `OpCooperativeMatrixMulAddKHR`
 **must** be present or not.
-If it is `VK_TRUE`, the `SaturatingAccumulation` operand **must** be
+If it is [VK_TRUE](VK_TRUE.html), the `SaturatingAccumulation` operand **must** be
 present.
-If it is `VK_FALSE`, the `SaturatingAccumulation` operand **must**
+If it is [VK_FALSE](VK_FALSE.html), the `SaturatingAccumulation` operand **must**
 not be present.
 
 * 
@@ -94,14 +94,14 @@ At least one entry in the list **must** have power of two values for all of
 If the
 [`cooperativeMatrixWorkgroupScope`](../../../../spec/latest/chapters/features.html#features-cooperativeMatrixWorkgroupScope)
 feature is not supported,
-`scope` **must** be `VK_SCOPE_SUBGROUP_KHR`.
+`scope` **must** be [VK_SCOPE_SUBGROUP_KHR](VkScopeKHR.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkCooperativeMatrixPropertiesKHR-sType-sType) VUID-VkCooperativeMatrixPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkCooperativeMatrixPropertiesKHR-pNext-pNext) VUID-VkCooperativeMatrixPropertiesKHR-pNext-pNext

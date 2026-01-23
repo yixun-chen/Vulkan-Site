@@ -26,20 +26,22 @@ specifying additional parameters of a tensor, are:
 typedef VkFlags64 VkTensorCreateFlagBitsARM;
 static const VkTensorCreateFlagBitsARM VK_TENSOR_CREATE_MUTABLE_FORMAT_BIT_ARM = 0x00000001ULL;
 static const VkTensorCreateFlagBitsARM VK_TENSOR_CREATE_PROTECTED_BIT_ARM = 0x00000002ULL;
+// Provided by VK_EXT_descriptor_heap with VK_ARM_tensors
+static const VkTensorCreateFlagBitsARM VK_TENSOR_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_ARM = 0x00000008ULL;
 // Provided by VK_EXT_descriptor_buffer with VK_ARM_tensors
 static const VkTensorCreateFlagBitsARM VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM = 0x00000004ULL;
 
 * 
-`VK_TENSOR_CREATE_MUTABLE_FORMAT_BIT_ARM` specifies that the tensor
+[VK_TENSOR_CREATE_MUTABLE_FORMAT_BIT_ARM](#) specifies that the tensor
 **can** be used to create a `VkTensorViewARM` with a different format
 from the tensor.
 
 * 
-`VK_TENSOR_CREATE_PROTECTED_BIT_ARM` specifies that the tensor is a
+[VK_TENSOR_CREATE_PROTECTED_BIT_ARM](#) specifies that the tensor is a
 protected tensor.
 
 * 
-`VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM`
+[VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM](#)
 specifies that the tensor **can** be used with descriptor buffers when
 capturing and replaying (e.g. for trace capture and replay), see
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](VkOpaqueCaptureDescriptorDataCreateInfoEXT.html) for more detail.

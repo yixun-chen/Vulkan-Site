@@ -66,7 +66,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalSemaphoreProperties-sType-sType) VUID-VkExternalSemaphoreProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_SEMAPHORE_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_SEMAPHORE_PROPERTIES](VkStructureType.html)
 
 * 
 [](#VUID-VkExternalSemaphoreProperties-pNext-pNext) VUID-VkExternalSemaphoreProperties-pNext-pNext

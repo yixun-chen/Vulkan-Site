@@ -113,7 +113,7 @@ Valid Usage
 
 `raygenShaderRecordAddress` **must** be a device address allocated to
 the application from a buffer created with the
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
+[VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkTraceRaysIndirectCommand2KHR-pRayGenShaderBindingTable-03682) VUID-VkTraceRaysIndirectCommand2KHR-pRayGenShaderBindingTable-03682
@@ -126,7 +126,7 @@ the application from a buffer created with the
 
 `missShaderBindingTableAddress` **must** be a device address allocated to
 the application from a buffer created with the
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
+[VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkTraceRaysIndirectCommand2KHR-pMissShaderBindingTable-03685) VUID-VkTraceRaysIndirectCommand2KHR-pMissShaderBindingTable-03685
@@ -151,7 +151,7 @@ the application from a buffer created with the
 
 `hitShaderBindingTableAddress` **must** be a device address allocated to
 the application from a buffer created with the
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
+[VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkTraceRaysIndirectCommand2KHR-pHitShaderBindingTable-03689) VUID-VkTraceRaysIndirectCommand2KHR-pHitShaderBindingTable-03689
@@ -176,7 +176,7 @@ the application from a buffer created with the
 
 `callableShaderBindingTableAddress` **must** be a device address allocated
 to the application from a buffer created with the
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
+[VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkTraceRaysIndirectCommand2KHR-pCallableShaderBindingTable-03693) VUID-VkTraceRaysIndirectCommand2KHR-pCallableShaderBindingTable-03693
@@ -201,7 +201,7 @@ to the application from a buffer created with the
 
 If the bound ray tracing pipeline was created with `flags` that
 included
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR`, the
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR](VkPipelineCreateFlagBits.html), the
 entries in the table identified by `missShaderBindingTableAddress`
 accessed as a result of this command in order to execute a miss shader
 **must** not be zero
@@ -211,7 +211,7 @@ accessed as a result of this command in order to execute a miss shader
 
 If the bound ray tracing pipeline was created with `flags` that
 included
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR`,
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR](VkPipelineCreateFlagBits.html),
 entries in the table identified by `hitShaderBindingTableAddress`
 accessed as a result of this command in order to execute an any-hit
 shader **must** not be zero
@@ -221,7 +221,7 @@ shader **must** not be zero
 
 If the bound ray tracing pipeline was created with `flags` that
 included
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR`,
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR](VkPipelineCreateFlagBits.html),
 entries in the table identified by `hitShaderBindingTableAddress`
 accessed as a result of this command in order to execute a closest hit
 shader **must** not be zero
@@ -231,7 +231,7 @@ shader **must** not be zero
 
 If the bound ray tracing pipeline was created with `flags` that
 included
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR`,
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR](VkPipelineCreateFlagBits.html),
 entries in the table identified by `hitShaderBindingTableAddress`
 accessed as a result of this command in order to execute an intersection
 shader **must** not be zero
@@ -241,18 +241,18 @@ shader **must** not be zero
 
 Any non-zero hit shader group entries in the table identified by
 `hitShaderBindingTableAddress` accessed by this call from a geometry
-with a `geometryType` of `VK_GEOMETRY_TYPE_TRIANGLES_KHR` **must**
+with a `geometryType` of [VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html) **must**
 have been created with
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR`
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR](VkRayTracingShaderGroupTypeKHR.html)
 
 * 
 [](#VUID-VkTraceRaysIndirectCommand2KHR-pHitShaderBindingTable-04736) VUID-VkTraceRaysIndirectCommand2KHR-pHitShaderBindingTable-04736
 
 Any non-zero hit shader group entries in the table identified by
 `hitShaderBindingTableAddress` accessed by this call from a geometry
-with a `geometryType` of `VK_GEOMETRY_TYPE_AABBS_KHR` **must** have
+with a `geometryType` of [VK_GEOMETRY_TYPE_AABBS_KHR](VkGeometryTypeKHR.html) **must** have
 been created with
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR`
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR](VkRayTracingShaderGroupTypeKHR.html)
 
 * 
 [](#VUID-VkTraceRaysIndirectCommand2KHR-width-03638) VUID-VkTraceRaysIndirectCommand2KHR-width-03638

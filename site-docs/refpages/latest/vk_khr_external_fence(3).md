@@ -120,12 +120,12 @@ Extending [VkFenceCreateInfo](VkFenceCreateInfo.html):
 * 
 Extending [VkFenceImportFlagBits](VkFenceImportFlagBits.html):
 
-`VK_FENCE_IMPORT_TEMPORARY_BIT_KHR`
+[VK_FENCE_IMPORT_TEMPORARY_BIT_KHR](VkFenceImportFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO_KHR](VkStructureType.html)
 
 This extension borrows concepts, semantics, and language from
 `[VK_KHR_external_semaphore](VK_KHR_external_semaphore.html)`.

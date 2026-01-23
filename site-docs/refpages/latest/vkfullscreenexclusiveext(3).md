@@ -30,12 +30,12 @@ typedef enum VkFullScreenExclusiveEXT {
 } VkFullScreenExclusiveEXT;
 
 * 
-`VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT` specifies that the
+[VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT](#) specifies that the
 implementation **should** determine the appropriate full-screen method by
 whatever means it deems appropriate.
 
 * 
-`VK_FULL_SCREEN_EXCLUSIVE_ALLOWED_EXT` specifies that the
+[VK_FULL_SCREEN_EXCLUSIVE_ALLOWED_EXT](#) specifies that the
 implementation **may** use full-screen exclusive mechanisms when available.
 Such mechanisms **may** result in better performance and/or the
 availability of different presentation capabilities, but **may** require a
@@ -43,12 +43,12 @@ more disruptive transition during swapchain initialization, first
 presentation and/or destruction.
 
 * 
-`VK_FULL_SCREEN_EXCLUSIVE_DISALLOWED_EXT` specifies that the
+[VK_FULL_SCREEN_EXCLUSIVE_DISALLOWED_EXT](#) specifies that the
 implementation **should** avoid using full-screen mechanisms which rely on
 disruptive transitions.
 
 * 
-`VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT` specifies that
+[VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT](#) specifies that
 the application will manage full-screen exclusive mode by using the
 [vkAcquireFullScreenExclusiveModeEXT](vkAcquireFullScreenExclusiveModeEXT.html) and
 [vkReleaseFullScreenExclusiveModeEXT](vkReleaseFullScreenExclusiveModeEXT.html) commands.

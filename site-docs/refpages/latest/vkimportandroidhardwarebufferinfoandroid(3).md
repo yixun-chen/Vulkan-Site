@@ -70,7 +70,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportAndroidHardwareBufferInfoANDROID-sType-sType) VUID-VkImportAndroidHardwareBufferInfoANDROID-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID](VkStructureType.html)
 
 * 
 [](#VUID-VkImportAndroidHardwareBufferInfoANDROID-buffer-parameter) VUID-VkImportAndroidHardwareBufferInfoANDROID-buffer-parameter

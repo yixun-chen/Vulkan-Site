@@ -29,13 +29,13 @@ typedef enum VkImageType {
 } VkImageType;
 
 * 
-`VK_IMAGE_TYPE_1D` specifies a one-dimensional image.
+[VK_IMAGE_TYPE_1D](#) specifies a one-dimensional image.
 
 * 
-`VK_IMAGE_TYPE_2D` specifies a two-dimensional image.
+[VK_IMAGE_TYPE_2D](#) specifies a two-dimensional image.
 
 * 
-`VK_IMAGE_TYPE_3D` specifies a three-dimensional image.
+[VK_IMAGE_TYPE_3D](#) specifies a three-dimensional image.
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkImageCreateInfo](VkImageCreateInfo.html), [VkPhysicalDeviceImageFormatInfo2](VkPhysicalDeviceImageFormatInfo2.html), [VkPhysicalDeviceSparseImageFormatInfo2](VkPhysicalDeviceSparseImageFormatInfo2.html), [VkVideoFormatPropertiesKHR](VkVideoFormatPropertiesKHR.html), [vkGetPhysicalDeviceExternalImageFormatPropertiesNV](vkGetPhysicalDeviceExternalImageFormatPropertiesNV.html), [vkGetPhysicalDeviceImageFormatProperties](vkGetPhysicalDeviceImageFormatProperties.html), [vkGetPhysicalDeviceSparseImageFormatProperties](vkGetPhysicalDeviceSparseImageFormatProperties.html)
 

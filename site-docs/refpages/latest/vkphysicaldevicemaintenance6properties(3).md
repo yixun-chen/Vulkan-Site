@@ -44,7 +44,7 @@ structure.
 * 
 `blockTexelViewCompatibleMultipleLayers` is a boolean value
 indicating that an implementation supports creating image views with
-`VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT` where the
+[VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](VkImageCreateFlagBits.html) where the
 `layerCount` member of `subresourceRange` is greater than `1`.
 
 * 
@@ -68,7 +68,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMaintenance6Properties-sType-sType) VUID-VkPhysicalDeviceMaintenance6Properties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES](VkStructureType.html)
 
 [VK_KHR_maintenance6](VK_KHR_maintenance6.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

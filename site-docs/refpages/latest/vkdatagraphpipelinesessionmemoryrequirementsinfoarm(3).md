@@ -66,7 +66,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDataGraphPipelineSessionMemoryRequirementsInfoARM-sType-sType) VUID-VkDataGraphPipelineSessionMemoryRequirementsInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_MEMORY_REQUIREMENTS_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_MEMORY_REQUIREMENTS_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkDataGraphPipelineSessionMemoryRequirementsInfoARM-pNext-pNext) VUID-VkDataGraphPipelineSessionMemoryRequirementsInfoARM-pNext-pNext

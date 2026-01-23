@@ -49,7 +49,7 @@ structure.
 in this queue family, and it **must** be greater than 0.
 
 * 
-`priorities` is an array of `VK_MAX_GLOBAL_PRIORITY_SIZE`
+`priorities` is an array of [VK_MAX_GLOBAL_PRIORITY_SIZE](VK_MAX_GLOBAL_PRIORITY_SIZE.html)
 [VkQueueGlobalPriority](VkQueueGlobalPriority.html) enums representing all supported global
 queue priorities in this queue family.
 The first `priorityCount` elements of the array will be valid.
@@ -67,16 +67,16 @@ The valid elements of `priorities` **must** be a continuous sequence of
 
 |  | For example, returning `priorityCount` as 3 with supported
 | --- | --- |
-`priorities` as `VK_QUEUE_GLOBAL_PRIORITY_LOW`,
-`VK_QUEUE_GLOBAL_PRIORITY_MEDIUM` and
-`VK_QUEUE_GLOBAL_PRIORITY_REALTIME` is not allowed. |
+`priorities` as [VK_QUEUE_GLOBAL_PRIORITY_LOW](VkQueueGlobalPriority.html),
+[VK_QUEUE_GLOBAL_PRIORITY_MEDIUM](VkQueueGlobalPriority.html) and
+[VK_QUEUE_GLOBAL_PRIORITY_REALTIME](VkQueueGlobalPriority.html) is not allowed. |
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkQueueFamilyGlobalPriorityProperties-sType-sType) VUID-VkQueueFamilyGlobalPriorityProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES](VkStructureType.html)
 
 [VK_EXT_global_priority_query](VK_EXT_global_priority_query.html), [VK_KHR_global_priority](VK_KHR_global_priority.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), [VkQueueGlobalPriority](VkQueueGlobalPriority.html), [VkStructureType](VkStructureType.html)
 

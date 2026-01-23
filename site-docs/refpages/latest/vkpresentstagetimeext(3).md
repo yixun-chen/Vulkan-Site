@@ -34,18 +34,6 @@ stage.
 * 
 `time` is a time in nanoseconds associated with the `stage`.
 
-Valid Usage (Implicit)
-
-* 
-[](#VUID-VkPresentStageTimeEXT-stage-parameter) VUID-VkPresentStageTimeEXT-stage-parameter
-
- `stage` **must** be a valid combination of [VkPresentStageFlagBitsEXT](VkPresentStageFlagBitsEXT.html) values
-
-* 
-[](#VUID-VkPresentStageTimeEXT-stage-requiredbitmask) VUID-VkPresentStageTimeEXT-stage-requiredbitmask
-
- `stage` **must** not be `0`
-
 [VK_EXT_present_timing](VK_EXT_present_timing.html), [VkPastPresentationTimingEXT](VkPastPresentationTimingEXT.html), [VkPresentStageFlagsEXT](VkPresentStageFlagsEXT.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/VK_KHR_surface/wsi.html#VkPresentStageTimeEXT).

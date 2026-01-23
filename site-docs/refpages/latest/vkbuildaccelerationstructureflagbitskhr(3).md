@@ -81,12 +81,12 @@ typedef enum VkBuildAccelerationStructureFlagBitsKHR {
 typedef VkBuildAccelerationStructureFlagBitsKHR VkBuildAccelerationStructureFlagBitsNV;
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_KHR` specifies
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_KHR](#) specifies
     that the specified acceleration structure **can** be updated with
-    a `mode` of `VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR` in
+    a `mode` of [VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html) in
     [VkAccelerationStructureBuildGeometryInfoKHR](VkAccelerationStructureBuildGeometryInfoKHR.html)
 or
-    an `update` of `VK_TRUE` in
+    an `update` of [VK_TRUE](VK_TRUE.html) in
     [vkCmdBuildAccelerationStructureNV](vkCmdBuildAccelerationStructureNV.html)
     .
     For sphere and LSS primitives, only positions and radii may be updated,
@@ -94,77 +94,77 @@ or
     initial build.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR` specifies
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR](#) specifies
 that the specified acceleration structure **can** act as the source for a
 copy acceleration structure command with `mode` of
-`VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR` to produce a
+[VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR](VkCopyAccelerationStructureModeKHR.html) to produce a
 compacted acceleration structure.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_KHR`
+[VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_KHR](#)
 specifies that the given acceleration structure build **should** prioritize
 trace performance over build time.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_KHR`
+[VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_KHR](#)
 specifies that the given acceleration structure build **should** prioritize
 build time over trace performance.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_KHR` specifies that
+[VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_KHR](#) specifies that
 this acceleration structure **should** minimize the size of the scratch
 memory and the final result acceleration structure, potentially at the
 expense of build time or trace performance.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_UPDATE_BIT_EXT`
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_UPDATE_BIT_EXT](#)
 specifies that the opacity micromaps associated with the specified
 acceleration structure **may** change with an acceleration structure
 update.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_DATA_UPDATE_BIT_EXT`
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_DATA_UPDATE_BIT_EXT](#)
 specifies that the data of the opacity micromaps associated with the
 specified acceleration structure **may** change with an acceleration
 structure update.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISABLE_OPACITY_MICROMAPS_BIT_EXT`
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISABLE_OPACITY_MICROMAPS_BIT_EXT](#)
 specifies that the specified acceleration structure **may** be referenced
 in an instance with
-`VK_GEOMETRY_INSTANCE_DISABLE_OPACITY_MICROMAPS_BIT_EXT` set.
+[VK_GEOMETRY_INSTANCE_DISABLE_OPACITY_MICROMAPS_BIT_EXT](VkGeometryInstanceFlagBitsKHR.html) set.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_CLUSTER_OPACITY_MICROMAPS_BIT_NV`
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_CLUSTER_OPACITY_MICROMAPS_BIT_NV](#)
 specifies that opacity micromaps **may** be associated with the given
 cluster acceleration structure.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR`
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR](#)
 specifies that the specified acceleration structure **can** be used when
 fetching the
 vertex and radius positions of a hit LSS or sphere primitive, or
 vertex positions of a hit triangle.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISPLACEMENT_MICROMAP_UPDATE_BIT_NV`
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISPLACEMENT_MICROMAP_UPDATE_BIT_NV](#)
 specifies that the displacement micromaps associated with the specified
 acceleration structure **may** change with an acceleration structure
 update.
 
-|  | `VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_KHR` and
+|  | [VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_KHR](#) and
 | --- | --- |
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR` **may** take
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR](#) **may** take
 more time and memory than a normal build, and so **should** only be used when
 those features are needed. |
 
-|  | `VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_KHR` and
+|  | [VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_KHR](#) and
 | --- | --- |
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR` are allowed
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR](#) are allowed
 to be used together.
 In that case, the result of the compaction copy is used as the source of a
 build with `mode` of
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR` to perform the
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html) to perform the
 compacted update. |
 
 [VK_KHR_acceleration_structure](VK_KHR_acceleration_structure.html), [VK_NV_ray_tracing](VK_NV_ray_tracing.html), [VkBuildAccelerationStructureFlagsKHR](VkBuildAccelerationStructureFlagsKHR.html)

@@ -49,7 +49,7 @@ Valid Usage
 [](#VUID-vkCreateSampler-device-09668) VUID-vkCreateSampler-device-09668
 
 `device` **must** support at least one queue family with one of the
-`VK_QUEUE_COMPUTE_BIT` or `VK_QUEUE_GRAPHICS_BIT` capabilities
+[VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html) or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) capabilities
 
 * 
 [](#VUID-vkCreateSampler-maxSamplerAllocationCount-04110) VUID-vkCreateSampler-maxSamplerAllocationCount-04110
@@ -57,6 +57,17 @@ Valid Usage
 There **must** be less than
 [VkPhysicalDeviceLimits](VkPhysicalDeviceLimits.html)::`maxSamplerAllocationCount`
 [VkSampler](VkSampler.html) objects currently created on the device
+
+* 
+[](#VUID-vkCreateSampler-maxSamplerAllocationCount-11412) VUID-vkCreateSampler-maxSamplerAllocationCount-11412
+
+    If there are any pipelines
+ifdef:VK_EXT_shader_object[or shaders] with embedded samplers currently
+    created on the device, there **must** be less than
+    ([`maxSamplerAllocationCount`](../../../../spec/latest/chapters/limits.html#limits-maxSamplerAllocationCount)
+    -  ([    `minSamplerHeapReservedRangeWithEmbedded`](../../../../spec/latest/chapters/limits.html#limits-minSamplerHeapReservedRangeWithEmbedded) /
+    [`samplerDescriptorSize`](../../../../spec/latest/chapters/limits.html#limits-samplerDescriptorSize)))
+    [VkSampler](VkSampler.html) objects currently created on the device
 
 Valid Usage (Implicit)
 
@@ -85,24 +96,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR`
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkAllocationCallbacks](VkAllocationCallbacks.html), [VkDevice](VkDevice.html), [VkSampler](VkSampler.html), [VkSamplerCreateInfo](VkSamplerCreateInfo.html)
 

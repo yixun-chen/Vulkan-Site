@@ -68,16 +68,16 @@ was created
 [](#VUID-VkMemoryGetMetalHandleInfoEXT-handleType-10415) VUID-VkMemoryGetMetalHandleInfoEXT-handleType-10415
 
 `handleType` **must** be
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLBUFFER_BIT_EXT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLHEAP_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLBUFFER_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLHEAP_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkMemoryGetMetalHandleInfoEXT-sType-sType) VUID-VkMemoryGetMetalHandleInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_GET_METAL_HANDLE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_GET_METAL_HANDLE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkMemoryGetMetalHandleInfoEXT-pNext-pNext) VUID-VkMemoryGetMetalHandleInfoEXT-pNext-pNext

@@ -61,7 +61,7 @@ of the command this structure is passed to.
 `pAttachments` is a pointer to an array of [VkImageView](VkImageView.html)
 handles, each of which will be used as the corresponding attachment in a
 render pass instance.
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, this
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), this
 parameter is ignored.
 
 * 
@@ -80,7 +80,7 @@ the `aspectMask` is ignored.
 
 It is legal for a subpass to use no color or depth/stencil attachments,
 either because it has no attachment references or because all of them are
-`VK_ATTACHMENT_UNUSED`.
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html).
 This kind of subpass **can** use shader side effects such as image stores and
 atomics to produce an output.
 In this case, the subpass continues to use the `width`, `height`,
@@ -89,7 +89,7 @@ rendering area, and the `rasterizationSamples` from each pipeline’s
 [VkPipelineMultisampleStateCreateInfo](VkPipelineMultisampleStateCreateInfo.html) to define the number of samples
 used in rasterization; however, if
 [VkPhysicalDeviceFeatures](VkPhysicalDeviceFeatures.html)::`variableMultisampleRate` is
-`VK_FALSE`, then all pipelines to be bound with the subpass **must** have
+[VK_FALSE](VK_FALSE.html), then all pipelines to be bound with the subpass **must** have
 the same value for
 [VkPipelineMultisampleStateCreateInfo](VkPipelineMultisampleStateCreateInfo.html)::`rasterizationSamples`.
 In all such cases, `rasterizationSamples` **must** be a valid
@@ -108,7 +108,7 @@ in `renderPass`
 [](#VUID-VkFramebufferCreateInfo-flags-02778) VUID-VkFramebufferCreateInfo-flags-02778
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT` and `attachmentCount` is
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html) and `attachmentCount` is
 not `0`, `pAttachments` **must** be a valid pointer to an array of
 `attachmentCount` valid [VkImageView](VkImageView.html) handles
 
@@ -116,44 +116,44 @@ not `0`, `pAttachments` **must** be a valid pointer to an array of
 [](#VUID-VkFramebufferCreateInfo-pAttachments-00877) VUID-VkFramebufferCreateInfo-pAttachments-00877
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of
 `pAttachments` that is used as a color attachment or resolve
 attachment by `renderPass` **must** have been created with the
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](VkImageUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkFramebufferCreateInfo-pAttachments-02633) VUID-VkFramebufferCreateInfo-pAttachments-02633
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of
 `pAttachments` that is used as a depth/stencil attachment by
 `renderPass` **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](VkImageUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkFramebufferCreateInfo-pAttachments-02634) VUID-VkFramebufferCreateInfo-pAttachments-02634
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of
 `pAttachments` that is used as a depth/stencil resolve attachment by
 `renderPass` **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](VkImageUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkFramebufferCreateInfo-pAttachments-00879) VUID-VkFramebufferCreateInfo-pAttachments-00879
 
 If `renderpass` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `flags` does not
-include `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+include [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of
 `pAttachments` that is used as an input attachment by
 `renderPass` **must** have been created with the
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](VkImageUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkFramebufferCreateInfo-pAttachments-02552) VUID-VkFramebufferCreateInfo-pAttachments-02552
 
 Each element of `pAttachments` that is used as a fragment density
 map attachment by `renderPass` **must** not have been created with a
-`flags` value including `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`
+`flags` value including [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](VkImageCreateFlagBits.html)
 
 * 
 [](#VUID-VkFramebufferCreateInfo-renderPass-02553) VUID-VkFramebufferCreateInfo-renderPass-02553
@@ -161,22 +161,31 @@ map attachment by `renderPass` **must** not have been created with a
 If `renderPass` has a fragment density map attachment and the
 [    `fragmentDensityMapNonSubsampledImages`](../../../../spec/latest/chapters/features.html#features-fragmentDensityMapNonSubsampledImages) feature is not enabled,
 each element of `pAttachments` **must** have been created with a
-`flags` value including `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`
+`flags` value including [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](VkImageCreateFlagBits.html)
 unless that element is the fragment density map attachment
 
 * 
 [](#VUID-VkFramebufferCreateInfo-renderPass-10830) VUID-VkFramebufferCreateInfo-renderPass-10830
 
 If `renderPass` was created with
-`VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE`, then
+[VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](VkRenderPassCreateFlagBits.html), then
 `layers` **must** be less than or equal to
 [    `maxFragmentDensityMapLayers`](../../../../spec/latest/chapters/limits.html#limits-maxFragmentDensityMapLayers)
+
+* 
+[](#VUID-VkFramebufferCreateInfo-pAttachments-12327) VUID-VkFramebufferCreateInfo-pAttachments-12327
+
+If flags does not include VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT, then each
+element of `pAttachments` that is used as a resolve attachment by
+`renderPass` **must** not be bound to a `VkDeviceMemory` object
+allocated from a `VkMemoryHeap` with the
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property
 
 * 
 [](#VUID-VkFramebufferCreateInfo-pAttachments-00880) VUID-VkFramebufferCreateInfo-pAttachments-00880
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of
 `pAttachments` **must** have been created with a [VkFormat](VkFormat.html) value
 that matches the [VkFormat](VkFormat.html) specified by the corresponding
 `VkAttachmentDescription` in `renderPass`
@@ -185,7 +194,7 @@ that matches the [VkFormat](VkFormat.html) specified by the corresponding
 [](#VUID-VkFramebufferCreateInfo-pAttachments-00881) VUID-VkFramebufferCreateInfo-pAttachments-00881
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of
 `pAttachments` **must** have been created with a `samples` value
 that matches the `samples` value specified by the corresponding
 `VkAttachmentDescription` in `renderPass`
@@ -194,7 +203,7 @@ that matches the `samples` value specified by the corresponding
 [](#VUID-VkFramebufferCreateInfo-flags-04533) VUID-VkFramebufferCreateInfo-flags-04533
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of
 `pAttachments` that is used as an input, color, resolve, or
 depth/stencil attachment by `renderPass` **must** have been created
 with a [VkImageCreateInfo](VkImageCreateInfo.html)::`extent.width` greater than or equal
@@ -204,7 +213,7 @@ to `width`
 [](#VUID-VkFramebufferCreateInfo-flags-04534) VUID-VkFramebufferCreateInfo-flags-04534
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of
 `pAttachments` that is used as an input, color, resolve, or
 depth/stencil attachment by `renderPass` **must** have been created
 with a [VkImageCreateInfo](VkImageCreateInfo.html)::`extent.height` greater than or
@@ -214,7 +223,7 @@ equal to `height`
 [](#VUID-VkFramebufferCreateInfo-flags-04535) VUID-VkFramebufferCreateInfo-flags-04535
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of
 `pAttachments` that is used as an input, color, resolve, or
 depth/stencil attachment by `renderPass` **must** have been created
 with a [VkImageViewCreateInfo](VkImageViewCreateInfo.html)::`subresourceRange.layerCount`
@@ -243,7 +252,7 @@ masks
 [](#VUID-VkFramebufferCreateInfo-pAttachments-02555) VUID-VkFramebufferCreateInfo-pAttachments-02555
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, an element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), an element of
 `pAttachments` that is referenced by
 `fragmentDensityMapAttachment` **must** have a width at least as large
 as
@@ -253,7 +262,7 @@ as
 [](#VUID-VkFramebufferCreateInfo-pAttachments-02556) VUID-VkFramebufferCreateInfo-pAttachments-02556
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, an element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), an element of
 `pAttachments` that is referenced by
 `fragmentDensityMapAttachment` **must** have a height at least as large
 as
@@ -263,7 +272,7 @@ as
 [](#VUID-VkFramebufferCreateInfo-flags-04537) VUID-VkFramebufferCreateInfo-flags-04537
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, and `renderPass` was
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), and `renderPass` was
 specified with non-zero view masks, each element of `pAttachments`
 that is used as a [fragment    shading rate attachment](../../../../spec/latest/chapters/primsrast.html#primsrast-fragment-shading-rate-attachment) by `renderPass` **must** have a
 `layerCount` that is either `1`, or greater than the index of the
@@ -273,7 +282,7 @@ most significant bit set in any of those view masks
 [](#VUID-VkFramebufferCreateInfo-flags-04538) VUID-VkFramebufferCreateInfo-flags-04538
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, and `renderPass` was not
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), and `renderPass` was not
 specified with non-zero view masks, each element of `pAttachments`
 that is used as a [fragment    shading rate attachment](../../../../spec/latest/chapters/primsrast.html#primsrast-fragment-shading-rate-attachment) by `renderPass` **must** have a
 `layerCount` that is either `1`, or greater than `layers`
@@ -284,11 +293,11 @@ that is used as a [fragment    shading rate attachment](../../../../spec/latest/
 If
 the [`maintenance7`](../../../../spec/latest/chapters/features.html#features-maintenance7) feature is not enabled
 or the [    `robustFragmentShadingRateAttachmentAccess`](../../../../spec/latest/chapters/limits.html#limits-robustFragmentShadingRateAttachmentAccess) limit is
-`VK_FALSE` or the `imageView` member of a
+[VK_FALSE](VK_FALSE.html) or the `imageView` member of a
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](VkRenderingFragmentShadingRateAttachmentInfoKHR.html) structure was
 created with [VkImageSubresourceRange](VkImageSubresourceRange.html)::`baseMipLevel` greater
 than 0,
-`flags` does not include `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`,
+`flags` does not include [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html),
 an element of `pAttachments` that is used as a
 [fragment shading rate    attachment](../../../../spec/latest/chapters/primsrast.html#primsrast-fragment-shading-rate-attachment) **must** have a width at least as large as
 ⌈`width` / `texelWidth`⌉, where `texelWidth`
@@ -302,11 +311,11 @@ attachment
 If
 the [`maintenance7`](../../../../spec/latest/chapters/features.html#features-maintenance7) feature is not enabled
 or the [    `robustFragmentShadingRateAttachmentAccess`](../../../../spec/latest/chapters/limits.html#limits-robustFragmentShadingRateAttachmentAccess) limit is
-`VK_FALSE` or the `imageView` member of a
+[VK_FALSE](VK_FALSE.html) or the `imageView` member of a
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](VkRenderingFragmentShadingRateAttachmentInfoKHR.html) structure was
 created with [VkImageSubresourceRange](VkImageSubresourceRange.html)::`baseMipLevel` greater
 than 0,
-`flags` does not include `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`,
+`flags` does not include [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html),
 an element of `pAttachments` that is used as a
 [fragment shading rate    attachment](../../../../spec/latest/chapters/primsrast.html#primsrast-fragment-shading-rate-attachment) **must** have a height at least as large as
 ⌈`height` / `texelHeight`⌉, where
@@ -319,14 +328,14 @@ attachment
 [](#VUID-VkFramebufferCreateInfo-pAttachments-00883) VUID-VkFramebufferCreateInfo-pAttachments-00883
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of
 `pAttachments` **must** only specify a single mip level
 
 * 
 [](#VUID-VkFramebufferCreateInfo-pAttachments-00884) VUID-VkFramebufferCreateInfo-pAttachments-00884
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of
 `pAttachments` **must** have been created with the identity swizzle
 
 * 
@@ -371,7 +380,7 @@ If `renderPass` was specified with non-zero view masks, `layers`
 [](#VUID-VkFramebufferCreateInfo-pAttachments-00891) VUID-VkFramebufferCreateInfo-pAttachments-00891
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of
 `pAttachments` that is a 2D or 2D array image view taken from a 3D
 image **must** not be a depth/stencil format
 
@@ -380,19 +389,19 @@ image **must** not be a depth/stencil format
 
 If the [`imagelessFramebuffer`](../../../../spec/latest/chapters/features.html#features-imagelessFramebuffer)
 feature is not enabled, `flags` **must** not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html)
 
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-03190) VUID-VkFramebufferCreateInfo-flags-03190
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), the
 `pNext` chain **must** include a
 [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html) structure
 
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-03191) VUID-VkFramebufferCreateInfo-flags-03191
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), the
 `attachmentImageInfoCount` member of a
 [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html) structure in the `pNext`
 chain **must** be equal to either zero or `attachmentCount`
@@ -400,7 +409,7 @@ chain **must** be equal to either zero or `attachmentCount`
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-04541) VUID-VkFramebufferCreateInfo-flags-04541
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), the
 `width` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html) structure in the
 `pNext` chain that is used as an input, color, resolve or
@@ -410,7 +419,7 @@ equal to `width`
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-04542) VUID-VkFramebufferCreateInfo-flags-04542
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), the
 `height` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html) structure in the
 `pNext` chain that is used as an input, color, resolve or
@@ -420,7 +429,7 @@ equal to `height`
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-03196) VUID-VkFramebufferCreateInfo-flags-03196
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), the
 `width` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html) structure in the
 `pNext` chain that is referenced by
@@ -431,7 +440,7 @@ in `renderPass` **must** be greater than or equal to
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-03197) VUID-VkFramebufferCreateInfo-flags-03197
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), the
 `height` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html) structure included
 in the `pNext` chain that is referenced by
@@ -445,11 +454,11 @@ in `renderPass` **must** be greater than or equal to
 If
 the [`maintenance7`](../../../../spec/latest/chapters/features.html#features-maintenance7) feature is not enabled
 or the [    `robustFragmentShadingRateAttachmentAccess`](../../../../spec/latest/chapters/limits.html#limits-robustFragmentShadingRateAttachmentAccess) limit is
-`VK_FALSE` or the `imageView` member of a
+[VK_FALSE](VK_FALSE.html) or the `imageView` member of a
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](VkRenderingFragmentShadingRateAttachmentInfoKHR.html) structure was
 created with [VkImageSubresourceRange](VkImageSubresourceRange.html)::`baseMipLevel` greater
 than 0, and
-`flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+`flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), the
 `width` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html) structure in the
 `pNext` chain that is used as a
@@ -465,11 +474,11 @@ attachment
 If
 the [`maintenance7`](../../../../spec/latest/chapters/features.html#features-maintenance7) feature is not enabled
 or the [    `robustFragmentShadingRateAttachmentAccess`](../../../../spec/latest/chapters/limits.html#limits-robustFragmentShadingRateAttachmentAccess) limit is
-`VK_FALSE` or the `imageView` member of a
+[VK_FALSE](VK_FALSE.html) or the `imageView` member of a
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](VkRenderingFragmentShadingRateAttachmentInfoKHR.html) structure was
 created with [VkImageSubresourceRange](VkImageSubresourceRange.html)::`baseMipLevel` greater
 than 0, and
-`flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+`flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), the
 `height` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html) structure in the
 `pNext` chain that is used as a
@@ -482,7 +491,7 @@ attachment
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-04545) VUID-VkFramebufferCreateInfo-flags-04545
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), the
 `layerCount` member of any element of the
 `pAttachmentImageInfos` member of a
 [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html) structure in the `pNext`
@@ -492,7 +501,7 @@ or equal to `layers`
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-04587) VUID-VkFramebufferCreateInfo-flags-04587
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT` and
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html) and
 `renderPass` was specified with non-zero view masks, the
 `layerCount` member of any element of the
 `pAttachmentImageInfos` member of a
@@ -504,7 +513,7 @@ the index of the most significant bit set in any of those view masks
 [](#VUID-VkFramebufferCreateInfo-renderPass-03198) VUID-VkFramebufferCreateInfo-renderPass-03198
 
 If multiview is enabled for `renderPass` and `flags` includes
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the `layerCount` member
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), the `layerCount` member
 of any element of the `pAttachmentImageInfos` member of a
 [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html) structure included in the
 `pNext` chain used as an input, color, resolve, or depth/stencil
@@ -517,7 +526,7 @@ index set in the view mask in the subpasses in which it is used in
 
 If
 multiview is not enabled for `renderPass` and
-`flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+`flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), the
 `layerCount` member of any element of the
 `pAttachmentImageInfos` member of a
 [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html) structure included in the
@@ -528,47 +537,47 @@ attachment in `renderPass` **must** be greater than or equal to
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-03201) VUID-VkFramebufferCreateInfo-flags-03201
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), the
 `usage` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html) structure included
 in the `pNext` chain that refers to an attachment used as a color
 attachment or resolve attachment by `renderPass` **must** include
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT`
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](VkImageUsageFlagBits.html)
 
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-03202) VUID-VkFramebufferCreateInfo-flags-03202
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), the
 `usage` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html) structure included
 in the `pNext` chain that refers to an attachment used as a
 depth/stencil attachment by `renderPass` **must** include
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](VkImageUsageFlagBits.html)
 
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-03203) VUID-VkFramebufferCreateInfo-flags-03203
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), the
 `usage` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html) structure included
 in the `pNext` chain that refers to an attachment used as a
 depth/stencil resolve attachment by `renderPass` **must** include
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](VkImageUsageFlagBits.html)
 
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-03204) VUID-VkFramebufferCreateInfo-flags-03204
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), the
 `usage` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html) structure included
 in the `pNext` chain that refers to an attachment used as an input
 attachment by `renderPass` **must** include
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](VkImageUsageFlagBits.html)
 
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-03205) VUID-VkFramebufferCreateInfo-flags-03205
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, at
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), at
 least one element of the `pViewFormats` member of any element of the
 `pAttachmentImageInfos` member of a
 [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html) structure included in the
@@ -580,30 +589,30 @@ least one element of the `pViewFormats` member of any element of the
 [](#VUID-VkFramebufferCreateInfo-flags-04113) VUID-VkFramebufferCreateInfo-flags-04113
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of
 `pAttachments` **must** have been created with
 [VkImageViewCreateInfo](VkImageViewCreateInfo.html)::`viewType` not equal to
-`VK_IMAGE_VIEW_TYPE_3D`
+[VK_IMAGE_VIEW_TYPE_3D](VkImageViewType.html)
 
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-04548) VUID-VkFramebufferCreateInfo-flags-04548
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of
 `pAttachments` that is used as a fragment shading rate attachment by
 `renderPass` **must** have been created with the
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR` usage flag
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](VkImageUsageFlagBits.html) usage flag
 set
 
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-04549) VUID-VkFramebufferCreateInfo-flags-04549
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), the
 `usage` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html) structure included
 in the `pNext` chain that refers to an attachment used as a fragment
 shading rate attachment by `renderPass` **must** include
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](VkImageUsageFlagBits.html)
 
 * 
 [](#VUID-VkFramebufferCreateInfo-samples-06881) VUID-VkFramebufferCreateInfo-samples-06881
@@ -614,8 +623,8 @@ is enabled for any subpass, all color, depth/stencil and input
 attachments used in that subpass which have
 `VkAttachmentDescription`::`samples` or
 `VkAttachmentDescription2`::`samples` equal to
-`VK_SAMPLE_COUNT_1_BIT` **must** have been created with
-`VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT` in
+[VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) **must** have been created with
+[VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT](VkImageCreateFlagBits.html) in
 their [VkImageCreateInfo](VkImageCreateInfo.html)::`flags`
 
 * 
@@ -627,16 +636,16 @@ is enabled for any subpass, all color, depth/stencil and input
 attachments used in that subpass which have
 `VkAttachmentDescription`::`samples` or
 `VkAttachmentDescription2`::`samples` equal to
-`VK_SAMPLE_COUNT_1_BIT` **must** have a format that supports the sample
+[VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) **must** have a format that supports the sample
 count specified in
 [VkMultisampledRenderToSingleSampledInfoEXT](VkMultisampledRenderToSingleSampledInfoEXT.html)::`rasterizationSamples`
 
 * 
 [](#VUID-VkFramebufferCreateInfo-nullColorAttachmentWithExternalFormatResolve-09349) VUID-VkFramebufferCreateInfo-nullColorAttachmentWithExternalFormatResolve-09349
 
-If the [    `nullColorAttachmentWithExternalFormatResolve`](../../../../spec/latest/chapters/limits.html#limits-nullColorAttachmentWithExternalFormatResolve) is `VK_FALSE`,
+If the [    `nullColorAttachmentWithExternalFormatResolve`](../../../../spec/latest/chapters/limits.html#limits-nullColorAttachmentWithExternalFormatResolve) is [VK_FALSE](VK_FALSE.html),
 and `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`,
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html),
 the format of the color attachment for each subpass in `renderPass`
 that includes an external format image as a resolve attachment **must**
 have a format equal to the value of
@@ -650,10 +659,10 @@ resolve attachment
 [](#VUID-VkFramebufferCreateInfo-pAttachments-09350) VUID-VkFramebufferCreateInfo-pAttachments-09350
 
 If
-`flags` does not include `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`,
+`flags` does not include [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html),
 then if
 an element of `pAttachments` has a format of
-`VK_FORMAT_UNDEFINED`, it **must** have been created with a
+[VK_FORMAT_UNDEFINED](VkFormat.html), it **must** have been created with a
 [VkExternalFormatANDROID](VkExternalFormatANDROID.html)::`externalFormat` value identical to
 that provided in the [VkExternalFormatANDROID](VkExternalFormatANDROID.html)::`externalFormat`
 specified by the corresponding [VkAttachmentDescription2](VkAttachmentDescription2.html) in
@@ -664,7 +673,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFramebufferCreateInfo-sType-sType) VUID-VkFramebufferCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkFramebufferCreateInfo-pNext-pNext) VUID-VkFramebufferCreateInfo-pNext-pNext

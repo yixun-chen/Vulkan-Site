@@ -41,7 +41,7 @@ typedef struct VkPhysicalDeviceMemoryBudgetPropertiesEXT {
 structure.
 
 * 
-`heapBudget` is an array of `VK_MAX_MEMORY_HEAPS`
+`heapBudget` is an array of [VK_MAX_MEMORY_HEAPS](VK_MAX_MEMORY_HEAPS.html)
 `VkDeviceSize` values in which memory budgets are returned, with
 one element for each memory heap.
 A heap’s budget is a rough estimate of how much memory the process **can**
@@ -50,7 +50,7 @@ performance degradation.
 The budget includes any currently allocated device memory.
 
 * 
-`heapUsage` is an array of `VK_MAX_MEMORY_HEAPS`
+`heapUsage` is an array of [VK_MAX_MEMORY_HEAPS](VK_MAX_MEMORY_HEAPS.html)
 `VkDeviceSize` values in which memory usages are returned, with
 one element for each memory heap.
 A heap’s usage is an estimate of how much memory the process is
@@ -70,7 +70,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMemoryBudgetPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceMemoryBudgetPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_memory_budget](VK_EXT_memory_budget.html), `VkDeviceSize`, [VkStructureType](VkStructureType.html)
 

@@ -69,8 +69,8 @@ type [VkComponentTypeKHR](VkComponentTypeKHR.html).
 `transpose` is a boolean indicating whether opaque layout matrices
 with this combination of input and output types supports transposition.
 
-`VK_COMPONENT_TYPE_SINT8_PACKED_NV` and
-`VK_COMPONENT_TYPE_UINT8_PACKED_NV` **must** not be used for members other
+[VK_COMPONENT_TYPE_SINT8_PACKED_NV](VkComponentTypeKHR.html) and
+[VK_COMPONENT_TYPE_UINT8_PACKED_NV](VkComponentTypeKHR.html) **must** not be used for members other
 than `inputInterpretation`.
 
 The following combinations **must** be supported (each row is a required
@@ -90,7 +90,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCooperativeVectorPropertiesNV-sType-sType) VUID-VkCooperativeVectorPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COOPERATIVE_VECTOR_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COOPERATIVE_VECTOR_PROPERTIES_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkCooperativeVectorPropertiesNV-pNext-pNext) VUID-VkCooperativeVectorPropertiesNV-pNext-pNext

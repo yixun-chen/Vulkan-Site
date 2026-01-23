@@ -78,7 +78,7 @@ components using [VkImageViewCreateInfo](VkImageViewCreateInfo.html)::`component
 * 
  `imageView2DOn3DImage` indicates
 whether this implementation supports a `VkImage` being created with
-the `VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` flag set, permitting a
+the [VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](VkImageCreateFlagBits.html) flag set, permitting a
 2D or 2D array image view to be created on a 3D `VkImage`.
 
 * 
@@ -142,7 +142,7 @@ If the `VkPhysicalDevicePortabilitySubsetFeaturesKHR` structure is included in t
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDevicePortabilitySubsetFeaturesKHR`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -150,7 +150,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePortabilitySubsetFeaturesKHR-sType-sType) VUID-VkPhysicalDevicePortabilitySubsetFeaturesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PORTABILITY_SUBSET_FEATURES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PORTABILITY_SUBSET_FEATURES_KHR](VkStructureType.html)
 
 [VK_KHR_portability_subset](VK_KHR_portability_subset.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

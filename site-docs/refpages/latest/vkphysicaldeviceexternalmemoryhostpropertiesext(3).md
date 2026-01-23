@@ -53,7 +53,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExternalMemoryHostPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceExternalMemoryHostPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_external_memory_host](VK_EXT_external_memory_host.html), `VkDeviceSize`, [VkStructureType](VkStructureType.html)
 

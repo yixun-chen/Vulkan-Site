@@ -65,14 +65,14 @@ Valid Usage
 [](#VUID-VkSubpassShadingPipelineCreateInfoHUAWEI-subpass-04946) VUID-VkSubpassShadingPipelineCreateInfoHUAWEI-subpass-04946
 
 `subpass` **must** be created with
-`VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI` bind point
+[VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI](VkPipelineBindPoint.html) bind point
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSubpassShadingPipelineCreateInfoHUAWEI-sType-sType) VUID-VkSubpassShadingPipelineCreateInfoHUAWEI-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SUBPASS_SHADING_PIPELINE_CREATE_INFO_HUAWEI`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SUBPASS_SHADING_PIPELINE_CREATE_INFO_HUAWEI](VkStructureType.html)
 
 * 
 [](#VUID-VkSubpassShadingPipelineCreateInfoHUAWEI-renderPass-parameter) VUID-VkSubpassShadingPipelineCreateInfoHUAWEI-renderPass-parameter

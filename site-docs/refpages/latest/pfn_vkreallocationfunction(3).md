@@ -22,7 +22,7 @@ PFN_vkReallocationFunction - Application-defined memory reallocation function
 The type of `pfnReallocation` is:
 
 // Provided by VK_VERSION_1_0
-typedef void* (VKAPI_PTR *PFN_vkReallocationFunction)(
+typedef void* (*PFN_vkReallocationFunction)(
     void*                                       pUserData,
     void*                                       pOriginal,
     size_t                                      size,

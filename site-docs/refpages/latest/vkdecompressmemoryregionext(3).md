@@ -44,11 +44,11 @@ be written.
 
 Accesses to compressed and decompressed data specified in `srcAddress`
 and `dstAddress` **must** be [synchronized](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies)
-with the `VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT`
+with the [VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](VkPipelineStageFlagBits2.html)
 [pipeline stage](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages) with
 [access type](../../../../spec/latest/chapters/synchronization.html#synchronization-access-types) of
-`VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT` or
-`VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT`.
+[VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT](VkAccessFlagBits2.html) or
+[VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT](VkAccessFlagBits2.html).
 
 Valid Usage
 
@@ -106,14 +106,14 @@ The memory range defined by `srcAddress` and `compressedSize`
 
 `srcAddress` **must** be a device address allocated to the application
 from a buffer created with the
-`VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` usage flag set
+[VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](VkBufferUsageFlagBits2.html) usage flag set
 
 * 
 [](#VUID-VkDecompressMemoryRegionEXT-dstAddress-11765) VUID-VkDecompressMemoryRegionEXT-dstAddress-11765
 
 `dstAddress` **must** be a device address allocated to the application
 from a buffer created with the
-`VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` usage flag set
+[VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](VkBufferUsageFlagBits2.html) usage flag set
 
 Valid Usage (Implicit)
 

@@ -35,7 +35,7 @@ command.
 functionality.
 
 Following this call, any `resolveImageView` with `resolveMode` set
-to `VK_RESOLVE_MODE_CUSTOM_BIT_EXT` will be written by outputs which
+to [VK_RESOLVE_MODE_CUSTOM_BIT_EXT](VkResolveModeFlagBits.html) will be written by outputs which
 would otherwise have written to the `imageView` image until the end of
 the current render pass instance.
 
@@ -47,13 +47,21 @@ containing the smaller fragment.
 Reads of input attachments not mapped to a color, depth, or stencil
 attachment use the new fragment area.
 
-|  | Shader resolve operations allow for custom resolve operations, but
+|  | Because the content of any depth/stencil resolve attachment as well as any
 | --- | --- |
-overdrawing pixels **may** have a performance and/or power cost.
-Furthermore, since the content of any depth/stencil resolve attachment as
-well as any color resolve attachment is **undefined** at the beginning of a
-resolve operation, any depth testing, stencil testing, or blending operation
-which sources these **undefined** values also has **undefined** result value. |
+color resolve attachment is **undefined** at the beginning of a resolve
+operation, any depth testing, stencil testing, or blending operation which
+sources these **undefined** values also has **undefined** result value. |
+
+During a custom resolve pass, multiple fragment invocations writing to the
+same (x, y, layer,
+view,
+sample) coordinate, i.e. overdraw, will produce **undefined** behavior.
+
+|  | Implementations are allowed to implement custom resolve attachment writes
+| --- | --- |
+through other mechanisms than framebuffer attachment writes, which would
+normally obey rules of rasterization order. |
 
 Valid Usage
 
@@ -73,13 +81,13 @@ the current render pass instance
 [](#VUID-vkCmdBeginCustomResolveEXT-None-11519) VUID-vkCmdBeginCustomResolveEXT-None-11519
 
 The current render pass instance **must** have specified
-`VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT`
+[VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT](VkRenderingFlagBits.html)
 
 * 
 [](#VUID-vkCmdBeginCustomResolveEXT-None-11520) VUID-vkCmdBeginCustomResolveEXT-None-11520
 
 The current render pass instance **must** not have specified
-`VK_RENDERING_SUSPENDING_BIT`
+[VK_RENDERING_SUSPENDING_BIT](VkRenderingFlagBits.html)
 
 Valid Usage (Implicit)
 
@@ -101,7 +109,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBeginCustomResolveEXT-commandBuffer-cmdpool) VUID-vkCmdBeginCustomResolveEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBeginCustomResolveEXT-renderpass) VUID-vkCmdBeginCustomResolveEXT-renderpass

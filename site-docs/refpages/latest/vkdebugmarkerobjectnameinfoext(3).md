@@ -59,7 +59,7 @@ Valid Usage
 [](#VUID-VkDebugMarkerObjectNameInfoEXT-objectType-01490) VUID-VkDebugMarkerObjectNameInfoEXT-objectType-01490
 
 `objectType` **must** not be
-`VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT`
+[VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT](VkDebugReportObjectTypeEXT.html)
 
 * 
 [](#VUID-VkDebugMarkerObjectNameInfoEXT-object-01491) VUID-VkDebugMarkerObjectNameInfoEXT-object-01491
@@ -77,7 +77,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDebugMarkerObjectNameInfoEXT-sType-sType) VUID-VkDebugMarkerObjectNameInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDebugMarkerObjectNameInfoEXT-pNext-pNext) VUID-VkDebugMarkerObjectNameInfoEXT-pNext-pNext

@@ -61,7 +61,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportFenceCreateInfo-sType-sType) VUID-VkExportFenceCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkExportFenceCreateInfo-handleTypes-parameter) VUID-VkExportFenceCreateInfo-handleTypes-parameter

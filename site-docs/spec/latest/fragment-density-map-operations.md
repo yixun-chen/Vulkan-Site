@@ -82,10 +82,19 @@ The offset fragment coordinate (x',y') [reads a texel from the fragment density 
 Where the size of each region in the framebuffer is:
 
 \(fragmentDensityTexelSize'_{width} =
-{2^{\lceil{\log_2(\frac{framebuffer_{width}}{fragmentDensityMap_{width}})}\rceil}}\)
+{2^{\lceil{\log_2(\lfloor{\frac{framebuffer_{width}}{fragmentDensityMap_{width}}}\rfloor)}\rceil}}\)
 
 \(fragmentDensityTexelSize'_{height} =
-{2^{\lceil{\log_2(\frac{framebuffer_{height}}{fragmentDensityMap_{height}})}\rceil}}\)
+{2^{\lceil{\log_2(\lfloor{\frac{framebuffer_{height}}{fragmentDensityMap_{height}}}\rfloor)}\rceil}}\)
+
+|  | The original spec did not include the floor in the equation above.
+| --- | --- |
+Implementations have shipped with and without the floor.
+Given that the earliest implementations shipped with the floor, the spec now
+reflects that as most content was written with this behavior.
+
+All implementations exposing support for version 3 or greater of the
+extension **must** implement with the floor included. |
 
 If using [vkCmdBeginRendering](renderpass.html#vkCmdBeginRendering), then    and
    are defined as:
@@ -115,9 +124,9 @@ layer used for offsets and for fetching from the fragment density map is:
   
 
 Otherwise, if the render pass was created with
-`VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE` specified,
+[VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](renderpass.html#VkRenderPassCreateFlagBits) specified,
 or the dynamic render pass was begun with
-`VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE` specified,
+[VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](renderpass.html#VkRenderingFlagBitsKHR) specified,
 then the layer used is:
 
   

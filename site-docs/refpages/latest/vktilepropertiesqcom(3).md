@@ -61,7 +61,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTilePropertiesQCOM-sType-sType) VUID-VkTilePropertiesQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TILE_PROPERTIES_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TILE_PROPERTIES_QCOM](VkStructureType.html)
 
 * 
 [](#VUID-VkTilePropertiesQCOM-pNext-pNext) VUID-VkTilePropertiesQCOM-pNext-pNext

@@ -121,7 +121,7 @@ or `minIndirectCommandsBufferOffsetAlignment`, whichever is lower
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02976) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02976
 
 If `tokenType` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NV`,
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NV](VkIndirectCommandsTokenTypeNV.html),
 `vertexBindingUnit` **must** stay within device supported limits for
 the appropriate commands
 
@@ -129,28 +129,28 @@ the appropriate commands
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02977) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02977
 
 If `tokenType` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV`,
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](VkIndirectCommandsTokenTypeNV.html),
 `pushconstantPipelineLayout` **must** be valid
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02978) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02978
 
 If `tokenType` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV`,
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](VkIndirectCommandsTokenTypeNV.html),
 `pushconstantOffset` **must** be a multiple of `4`
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02979) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02979
 
 If `tokenType` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV`,
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](VkIndirectCommandsTokenTypeNV.html),
 `pushconstantSize` **must** be a multiple of `4`
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02980) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02980
 
 If `tokenType` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV`,
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](VkIndirectCommandsTokenTypeNV.html),
 `pushconstantOffset` **must** be less than
 `VkPhysicalDeviceLimits`::`maxPushConstantsSize`
 
@@ -158,7 +158,7 @@ If `tokenType` is
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02981) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02981
 
 If `tokenType` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV`,
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](VkIndirectCommandsTokenTypeNV.html),
 `pushconstantSize` **must** be less than or equal to
 `VkPhysicalDeviceLimits`::`maxPushConstantsSize` minus
 `pushconstantOffset`
@@ -167,7 +167,7 @@ If `tokenType` is
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02982) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02982
 
 If `tokenType` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV`, for each byte in
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](VkIndirectCommandsTokenTypeNV.html), for each byte in
 the range specified by `pushconstantOffset` and
 `pushconstantSize` and for each shader stage in
 `pushconstantShaderStageFlags`, there **must** be a push constant range
@@ -178,7 +178,7 @@ stage
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02983) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02983
 
 If `tokenType` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV`, for each byte in
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](VkIndirectCommandsTokenTypeNV.html), for each byte in
 the range specified by `pushconstantOffset` and
 `pushconstantSize` and for each push constant range that overlaps
 that byte, `pushconstantShaderStageFlags` **must** include all stages
@@ -189,20 +189,33 @@ in that push constant range’s
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02984) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02984
 
 If `tokenType` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV`,
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV](VkIndirectCommandsTokenTypeNV.html),
 `indirectStateFlags` **must** not be `0`
+
+* 
+[](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-11334) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-11334
+
+If `tokenType` is
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_NV](VkIndirectCommandsTokenTypeNV.html),
+[VkIndirectCommandsLayoutPushDataTokenNV](VkIndirectCommandsLayoutPushDataTokenNV.html)::`pushDataSize` **must**
+be greater than `0`
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenNV-sType-sType) VUID-VkIndirectCommandsLayoutTokenNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenNV-pNext-pNext) VUID-VkIndirectCommandsLayoutTokenNV-pNext-pNext
 
- `pNext` **must** be `NULL`
+ `pNext` **must** be `NULL` or a pointer to a valid instance of [VkIndirectCommandsLayoutPushDataTokenNV](VkIndirectCommandsLayoutPushDataTokenNV.html)
+
+* 
+[](#VUID-VkIndirectCommandsLayoutTokenNV-sType-unique) VUID-VkIndirectCommandsLayoutTokenNV-sType-unique
+
+ The `sType` value of each structure in the `pNext` chain **must** be unique
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-parameter) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-parameter

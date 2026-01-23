@@ -56,10 +56,10 @@ color blending information.
 [VkPipelineColorBlendAttachmentState](VkPipelineColorBlendAttachmentState.html) elements in
 `pAttachments`.
 It is ignored if the pipeline is created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT`,
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT`, and
-`VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT` dynamic states set, and
-either `VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT` set or the
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](VkDynamicState.html),
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](VkDynamicState.html), and
+[VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](VkDynamicState.html) dynamic states set, and
+either [VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](VkDynamicState.html) set or the
 [advancedBlendCoherentOperations](../../../../spec/latest/chapters/features.html#features-advancedBlendCoherentOperations)
 feature is not enabled.
 
@@ -68,10 +68,10 @@ feature is not enabled.
 [VkPipelineColorBlendAttachmentState](VkPipelineColorBlendAttachmentState.html) structures defining blend
 state for each color attachment.
 It is ignored if the pipeline is created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT`,
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT`, and
-`VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT` dynamic states set, and
-either `VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT` set or the
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](VkDynamicState.html),
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](VkDynamicState.html), and
+[VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](VkDynamicState.html) dynamic states set, and
+either [VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](VkDynamicState.html) set or the
 [advancedBlendCoherentOperations](../../../../spec/latest/chapters/features.html#features-advancedBlendCoherentOperations)
 feature is not enabled.
 
@@ -92,12 +92,12 @@ not enabled, all elements of `pAttachments` **must** be identical
 [](#VUID-VkPipelineColorBlendStateCreateInfo-logicOpEnable-00606) VUID-VkPipelineColorBlendStateCreateInfo-logicOpEnable-00606
 
 If the [`logicOp`](../../../../spec/latest/chapters/features.html#features-logicOp) feature is not enabled,
-`logicOpEnable` **must** be `VK_FALSE`
+`logicOpEnable` **must** be [VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-VkPipelineColorBlendStateCreateInfo-logicOpEnable-00607) VUID-VkPipelineColorBlendStateCreateInfo-logicOpEnable-00607
 
-If `logicOpEnable` is `VK_TRUE`, `logicOp` **must** be a valid
+If `logicOpEnable` is [VK_TRUE](VK_TRUE.html), `logicOp` **must** be a valid
 [VkLogicOp](VkLogicOp.html) value
 
 * 
@@ -105,16 +105,16 @@ If `logicOpEnable` is `VK_TRUE`, `logicOp` **must** be a valid
 
 If the [    `rasterizationOrderColorAttachmentAccess`](../../../../spec/latest/chapters/features.html#features-rasterizationOrderColorAttachmentAccess) feature is not enabled,
 `flags` **must** not include
-`VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT`
+[VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT](VkPipelineColorBlendStateCreateFlagBits.html)
 
 * 
 [](#VUID-VkPipelineColorBlendStateCreateInfo-pAttachments-07353) VUID-VkPipelineColorBlendStateCreateInfo-pAttachments-07353
 
 If `attachmentCount` is not `0`
-, and any of `VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT`,
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT`,
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT`, or
-`VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT` are not set,
+, and any of [VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](VkDynamicState.html),
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](VkDynamicState.html),
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](VkDynamicState.html), or
+[VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](VkDynamicState.html) are not set,
 `pAttachments` **must** be a valid pointer to an array of
 `attachmentCount` valid [VkPipelineColorBlendAttachmentState](VkPipelineColorBlendAttachmentState.html)
 structures
@@ -124,7 +124,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineColorBlendStateCreateInfo-sType-sType) VUID-VkPipelineColorBlendStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineColorBlendStateCreateInfo-pNext-pNext) VUID-VkPipelineColorBlendStateCreateInfo-pNext-pNext

@@ -73,7 +73,7 @@ The `aspectMask` member of `srcSubresource` and
 [](#VUID-VkImageBlit2-layerCount-08800) VUID-VkImageBlit2-layerCount-08800
 
 If neither of the `layerCount` members of `srcSubresource` or
-`dstSubresource` are `VK_REMAINING_ARRAY_LAYERS`, the
+`dstSubresource` are [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), the
 `layerCount` members of `srcSubresource` or `dstSubresource`
 **must** match
 
@@ -81,8 +81,8 @@ If neither of the `layerCount` members of `srcSubresource` or
 [](#VUID-VkImageBlit2-layerCount-08801) VUID-VkImageBlit2-layerCount-08801
 
 If one of the `layerCount` members of `srcSubresource` or
-`dstSubresource` is `VK_REMAINING_ARRAY_LAYERS`, the other
-member **must** be either `VK_REMAINING_ARRAY_LAYERS` or equal to the
+`dstSubresource` is [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), the other
+member **must** be either [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html) or equal to the
 `arrayLayers` member of the [VkImageCreateInfo](VkImageCreateInfo.html) used to create
 the image minus `baseArrayLayer`
 
@@ -91,7 +91,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageBlit2-sType-sType) VUID-VkImageBlit2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_BLIT_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_BLIT_2](VkStructureType.html)
 
 * 
 [](#VUID-VkImageBlit2-pNext-pNext) VUID-VkImageBlit2-pNext-pNext

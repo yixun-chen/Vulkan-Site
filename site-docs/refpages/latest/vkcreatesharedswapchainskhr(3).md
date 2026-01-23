@@ -59,7 +59,7 @@ presentable images **must** match between all the swapchains.
 If the displays used by any of the swapchains do not use the same
 presentable image layout or are incompatible in a way that prevents sharing
 images, swapchain creation will fail with the result code
-`VK_ERROR_INCOMPATIBLE_DISPLAY_KHR`.
+[VK_ERROR_INCOMPATIBLE_DISPLAY_KHR](VkResult.html).
 If any error occurs, no swapchains will be created.
 Images presented to multiple swapchains **must** be re-acquired from all of
 them before being modified.
@@ -103,30 +103,30 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](VkResult.html)
 
 * 
-`VK_ERROR_INCOMPATIBLE_DISPLAY_KHR`
+[VK_ERROR_INCOMPATIBLE_DISPLAY_KHR](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_display_swapchain](VK_KHR_display_swapchain.html), [VkAllocationCallbacks](VkAllocationCallbacks.html), [VkDevice](VkDevice.html), [VkSwapchainCreateInfoKHR](VkSwapchainCreateInfoKHR.html), [VkSwapchainKHR](VkSwapchainKHR.html)
 

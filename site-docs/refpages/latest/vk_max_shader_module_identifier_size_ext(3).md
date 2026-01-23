@@ -17,7 +17,7 @@
 
 VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT - Maximum length of a shader module identifier
 
-`VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT` is the length in bytes of a
+[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT](#) is the length in bytes of a
 shader module identifier, as returned in
 [VkShaderModuleIdentifierEXT](VkShaderModuleIdentifierEXT.html)::`identifierSize`.
 

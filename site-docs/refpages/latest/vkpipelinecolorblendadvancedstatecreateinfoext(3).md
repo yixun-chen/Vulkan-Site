@@ -56,9 +56,9 @@ blend operation is treated as premultiplied.
 source and destination sample’s coverage is correlated.
 
 If this structure is not present, `srcPremultiplied` and
-`dstPremultiplied` are both considered to be `VK_TRUE`, and
+`dstPremultiplied` are both considered to be [VK_TRUE](VK_TRUE.html), and
 `blendOverlap` is considered to be
-`VK_BLEND_OVERLAP_UNCORRELATED_EXT`.
+[VK_BLEND_OVERLAP_UNCORRELATED_EXT](VkBlendOverlapEXT.html).
 
 Valid Usage
 
@@ -66,27 +66,27 @@ Valid Usage
 [](#VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-srcPremultiplied-01424) VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-srcPremultiplied-01424
 
 If the [non-premultiplied    source color](../../../../spec/latest/chapters/limits.html#limits-advancedBlendNonPremultipliedSrcColor) property is not supported, `srcPremultiplied` **must**
-be `VK_TRUE`
+be [VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-dstPremultiplied-01425) VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-dstPremultiplied-01425
 
 If the [non-premultiplied    destination color](../../../../spec/latest/chapters/limits.html#limits-advancedBlendNonPremultipliedDstColor) property is not supported, `dstPremultiplied`
-**must** be `VK_TRUE`
+**must** be [VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-blendOverlap-01426) VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-blendOverlap-01426
 
 If the [correlated overlap](../../../../spec/latest/chapters/limits.html#limits-advancedBlendCorrelatedOverlap)
 property is not supported, `blendOverlap` **must** be
-`VK_BLEND_OVERLAP_UNCORRELATED_EXT`
+[VK_BLEND_OVERLAP_UNCORRELATED_EXT](VkBlendOverlapEXT.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-sType-sType) VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-blendOverlap-parameter) VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-blendOverlap-parameter

@@ -10,6 +10,12 @@
 
 - [Sampler Y′CBCR Conversion](#samplers-YCbCr-conversion)
 - [Sampler_Y′CBCR_Conversion](#samplers-YCbCr-conversion)
+- [Custom Border Colors](#_custom_border_colors)
+- [Custom_Border_Colors](#_custom_border_colors)
+- [Custom Border Color Registration](#_custom_border_color_registration)
+- [Custom_Border_Color_Registration](#_custom_border_color_registration)
+- [Sampler block matching](#_sampler_block_matching)
+- [Sampler_block_matching](#_sampler_block_matching)
 
 ## Content
 
@@ -52,7 +58,7 @@ Valid Usage
 [](#VUID-vkCreateSampler-device-09668) VUID-vkCreateSampler-device-09668
 
 `device` **must** support at least one queue family with one of the
-`VK_QUEUE_COMPUTE_BIT` or `VK_QUEUE_GRAPHICS_BIT` capabilities
+[VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) capabilities
 
 * 
 [](#VUID-vkCreateSampler-maxSamplerAllocationCount-04110) VUID-vkCreateSampler-maxSamplerAllocationCount-04110
@@ -60,6 +66,17 @@ Valid Usage
 There **must** be less than
 [VkPhysicalDeviceLimits](limits.html#VkPhysicalDeviceLimits)::`maxSamplerAllocationCount`
 [VkSampler](#VkSampler) objects currently created on the device
+
+* 
+[](#VUID-vkCreateSampler-maxSamplerAllocationCount-11412) VUID-vkCreateSampler-maxSamplerAllocationCount-11412
+
+    If there are any pipelines
+ifdef:VK_EXT_shader_object[or shaders] with embedded samplers currently
+    created on the device, there **must** be less than
+    ([`maxSamplerAllocationCount`](limits.html#limits-maxSamplerAllocationCount)
+    -  ([    `minSamplerHeapReservedRangeWithEmbedded`](limits.html#limits-minSamplerHeapReservedRangeWithEmbedded) /
+    [`samplerDescriptorSize`](limits.html#limits-samplerDescriptorSize)))
+    [VkSampler](#VkSampler) objects currently created on the device
 
 Valid Usage (Implicit)
 
@@ -88,24 +105,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR`
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkSamplerCreateInfo` structure is defined as:
 
@@ -168,7 +185,7 @@ coordinate used to sample the image would be out of bounds.
 `addressModeW` is a [VkSamplerAddressMode](#VkSamplerAddressMode) value specifying the
 [wrapping operation](textures.html#textures-wrapping-operation) used when the k
 coordinate used to sample the image would be out of bounds.
-If `unnormalizedCoordinates` is `VK_TRUE`, `addressModeW` is
+If `unnormalizedCoordinates` is [VK_TRUE](fundamentals.html#VK_TRUE), `addressModeW` is
 ignored.
 
 * 
@@ -177,20 +194,20 @@ mipmap LOD calculation and bias provided by image sampling functions in
 SPIR-V, as described in the [LOD    Operation](textures.html#textures-level-of-detail-operation) section.
 
 * 
- `anisotropyEnable` is `VK_TRUE` to
+ `anisotropyEnable` is [VK_TRUE](fundamentals.html#VK_TRUE) to
 enable anisotropic filtering, as described in the
 [Texel Anisotropic Filtering](textures.html#textures-texel-anisotropic-filtering)
-section, or `VK_FALSE` otherwise.
+section, or [VK_FALSE](fundamentals.html#VK_FALSE) otherwise.
 
 * 
 `maxAnisotropy` is the anisotropy value clamp used by the sampler
-when `anisotropyEnable` is `VK_TRUE`.
-If `anisotropyEnable` is `VK_FALSE`, `maxAnisotropy` is
+when `anisotropyEnable` is [VK_TRUE](fundamentals.html#VK_TRUE).
+If `anisotropyEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), `maxAnisotropy` is
 ignored.
 
 * 
-`compareEnable` is `VK_TRUE` to enable comparison against a
-reference value during lookups, or `VK_FALSE` otherwise.
+`compareEnable` is [VK_TRUE](fundamentals.html#VK_TRUE) to enable comparison against a
+reference value during lookups, or [VK_FALSE](fundamentals.html#VK_FALSE) otherwise.
 
 Note: Some implementations will default to shader state if this member
 does not match.
@@ -203,7 +220,7 @@ operator to apply to fetched data before filtering as described in the
 
 `maxLod` is used to clamp the [    maximum of the computed LOD value](textures.html#textures-level-of-detail-operation).
 To avoid clamping the maximum value, set `maxLod` to the constant
-`VK_LOD_CLAMP_NONE`.
+[VK_LOD_CLAMP_NONE](#VK_LOD_CLAMP_NONE).
 
 `borderColor` is a [VkBorderColor](#VkBorderColor) value specifying the
 predefined border color to use.
@@ -211,23 +228,23 @@ predefined border color to use.
  `unnormalizedCoordinates`
 controls whether to use unnormalized or normalized texel coordinates to
 address texels of the image.
-When `unnormalizedCoordinates` is `VK_TRUE`, the range of the
+When `unnormalizedCoordinates` is [VK_TRUE](fundamentals.html#VK_TRUE), the range of the
 image coordinates used to lookup the texel is in the range of zero to
 the image size in each dimension.
-When `unnormalizedCoordinates` is `VK_FALSE`, the range of image
+When `unnormalizedCoordinates` is [VK_FALSE](fundamentals.html#VK_FALSE), the range of image
 coordinates is zero to one.
 
-When `unnormalizedCoordinates` is `VK_TRUE`, images the sampler is
+When `unnormalizedCoordinates` is [VK_TRUE](fundamentals.html#VK_TRUE), images the sampler is
 used with in the shader have the following requirements:
 
 * 
-The `viewType` **must** be either `VK_IMAGE_VIEW_TYPE_1D` or
-`VK_IMAGE_VIEW_TYPE_2D`.
+The `viewType` **must** be either [VK_IMAGE_VIEW_TYPE_1D](resources.html#VkImageViewType) or
+[VK_IMAGE_VIEW_TYPE_2D](resources.html#VkImageViewType).
 
 * 
 The image view **must** have a single layer and a single mip level.
 
-When `unnormalizedCoordinates` is `VK_TRUE`, image built-in
+When `unnormalizedCoordinates` is [VK_TRUE](fundamentals.html#VK_TRUE), image built-in
 functions in the shader that use the sampler have the following
 requirements:
 
@@ -240,20 +257,20 @@ The functions **must** not use offsets.
 |  | Mapping of OpenGL to Vulkan Filter Modes
 | --- | --- |
 
-`magFilter` values of `VK_FILTER_NEAREST` and `VK_FILTER_LINEAR`
+`magFilter` values of [VK_FILTER_NEAREST](#VkFilter) and [VK_FILTER_LINEAR](#VkFilter)
 directly correspond to `GL_NEAREST` and `GL_LINEAR` magnification
 filters.
 `minFilter` and `mipmapMode` combine to correspond to the similarly
 named OpenGL minification filter of `GL_minFilter_MIPMAP_mipmapMode`
-(e.g. `minFilter` of `VK_FILTER_LINEAR` and `mipmapMode` of
-`VK_SAMPLER_MIPMAP_MODE_NEAREST` correspond to
+(e.g. `minFilter` of [VK_FILTER_LINEAR](#VkFilter) and `mipmapMode` of
+[VK_SAMPLER_MIPMAP_MODE_NEAREST](#VkSamplerMipmapMode) correspond to
 `GL_LINEAR_MIPMAP_NEAREST`).
 
 There are no Vulkan filter modes that directly correspond to OpenGL
 minification filters of `GL_LINEAR` or `GL_NEAREST`, but they **can** be
-emulated using `VK_SAMPLER_MIPMAP_MODE_NEAREST`, `minLod` = 0, and
-`maxLod` = 0.25, and using `minFilter` = `VK_FILTER_LINEAR` or
-`minFilter` = `VK_FILTER_NEAREST`, respectively.
+emulated using [VK_SAMPLER_MIPMAP_MODE_NEAREST](#VkSamplerMipmapMode), `minLod` = 0, and
+`maxLod` = 0.25, and using `minFilter` = [VK_FILTER_LINEAR](#VkFilter) or
+`minFilter` = [VK_FILTER_NEAREST](#VkFilter), respectively.
 
 Note that using a `maxLod` of zero would cause
 [magnification](textures.html#textures-texel-filtering) to always be performed, and the
@@ -272,7 +289,7 @@ of the [VkPhysicalDeviceLimits](limits.html#VkPhysicalDeviceLimits) structure.
 
 |  | For historical reasons, if `maxSamplerAllocationCount` is exceeded, some
 | --- | --- |
-implementations may return `VK_ERROR_TOO_MANY_OBJECTS`.
+implementations may return [VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult).
 Exceeding this limit will result in **undefined** behavior, and an application
 should not rely on the use of the returned error code in order to identify
 when the limit is reached. |
@@ -281,6 +298,27 @@ Since [VkSampler](#VkSampler) is a non-dispatchable handle type, implementations
 **may** return the same handle for sampler state vectors that are identical.
 In such cases, all such objects would only count once against the
 `maxSamplerAllocationCount` limit.
+
+When this structure is used to write a descriptor via
+[vkWriteSamplerDescriptorsEXT](descriptorheaps.html#vkWriteSamplerDescriptorsEXT), applications **can** give the descriptor a
+debug name in a similar way to naming an object, via the
+[VkDebugUtilsObjectNameInfoEXT](debugging.html#VkDebugUtilsObjectNameInfoEXT) structure.
+However, as there is no actual object, [VkDebugUtilsObjectNameInfoEXT](debugging.html#VkDebugUtilsObjectNameInfoEXT)
+**must** be passed via the `pNext` chain of this structure, with a
+`objectType` of [VK_OBJECT_TYPE_UNKNOWN](debugging.html#VkObjectType) and a `objectHandle` of
+[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE).
+The name is attached to the unique set of descriptor bits written by the
+implementation, and writing the same bits again with new debug info **may**
+rename the original descriptor.
+
+|  | Implementations are not prevented from returning the same bits for different
+| --- | --- |
+descriptors.
+This can result in multiple different samplers mapping to the same name. |
+
+[VkDescriptorSetAndBindingMappingEXT](descriptorheaps.html#VkDescriptorSetAndBindingMappingEXT) **can** also be chained in the same
+way when defining an embedded sampler via
+[VkDescriptorSetAndBindingMappingEXT](descriptorheaps.html#VkDescriptorSetAndBindingMappingEXT), naming the embedded sampler.
 
 Valid Usage
 
@@ -295,7 +333,7 @@ The absolute value of `mipLodBias` **must** be less than or equal to
 
 If the `[VK_KHR_portability_subset](../appendices/extensions.html#VK_KHR_portability_subset)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR)::`samplerMipLodBias`
-is `VK_FALSE`, `mipLodBias` **must** be zero
+is [VK_FALSE](fundamentals.html#VK_FALSE), `mipLodBias` **must** be zero
 
 * 
 [](#VUID-VkSamplerCreateInfo-maxLod-01973) VUID-VkSamplerCreateInfo-maxLod-01973
@@ -306,12 +344,12 @@ is `VK_FALSE`, `mipLodBias` **must** be zero
 [](#VUID-VkSamplerCreateInfo-anisotropyEnable-01070) VUID-VkSamplerCreateInfo-anisotropyEnable-01070
 
 If the [`samplerAnisotropy`](features.html#features-samplerAnisotropy) feature
-is not enabled, `anisotropyEnable` **must** be `VK_FALSE`
+is not enabled, `anisotropyEnable` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkSamplerCreateInfo-anisotropyEnable-01071) VUID-VkSamplerCreateInfo-anisotropyEnable-01071
 
-If `anisotropyEnable` is `VK_TRUE`, `maxAnisotropy` **must** be
+If `anisotropyEnable` is [VK_TRUE](fundamentals.html#VK_TRUE), `maxAnisotropy` **must** be
 between `1.0` and
 `VkPhysicalDeviceLimits`::`maxSamplerAnisotropy`, inclusive
 
@@ -321,53 +359,53 @@ between `1.0` and
 If [sampler Y′CBCR conversion](#samplers-YCbCr-conversion) is enabled
 and the [potential format features](formats.html#potential-format-features) of the
 sampler Y′CBCR conversion do not support
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT`,
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT](formats.html#VkFormatFeatureFlagBits),
 `minFilter` and `magFilter` **must** be equal to the sampler
 Y′CBCR conversion’s `chromaFilter`
 
 * 
 [](#VUID-VkSamplerCreateInfo-unnormalizedCoordinates-01072) VUID-VkSamplerCreateInfo-unnormalizedCoordinates-01072
 
-If `unnormalizedCoordinates` is `VK_TRUE`, `minFilter` and
+If `unnormalizedCoordinates` is [VK_TRUE](fundamentals.html#VK_TRUE), `minFilter` and
 `magFilter` **must** be equal
 
 * 
 [](#VUID-VkSamplerCreateInfo-unnormalizedCoordinates-01073) VUID-VkSamplerCreateInfo-unnormalizedCoordinates-01073
 
-If `unnormalizedCoordinates` is `VK_TRUE`, `mipmapMode`
-**must** be `VK_SAMPLER_MIPMAP_MODE_NEAREST`
+If `unnormalizedCoordinates` is [VK_TRUE](fundamentals.html#VK_TRUE), `mipmapMode`
+**must** be [VK_SAMPLER_MIPMAP_MODE_NEAREST](#VkSamplerMipmapMode)
 
 * 
 [](#VUID-VkSamplerCreateInfo-unnormalizedCoordinates-01074) VUID-VkSamplerCreateInfo-unnormalizedCoordinates-01074
 
-If `unnormalizedCoordinates` is `VK_TRUE`, `minLod` and
+If `unnormalizedCoordinates` is [VK_TRUE](fundamentals.html#VK_TRUE), `minLod` and
 `maxLod` **must** be zero
 
 * 
 [](#VUID-VkSamplerCreateInfo-unnormalizedCoordinates-01075) VUID-VkSamplerCreateInfo-unnormalizedCoordinates-01075
 
-If `unnormalizedCoordinates` is `VK_TRUE`, `addressModeU`
+If `unnormalizedCoordinates` is [VK_TRUE](fundamentals.html#VK_TRUE), `addressModeU`
 and `addressModeV` **must** each be either
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE` or
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER`
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](#VkSamplerAddressMode) or
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER](#VkSamplerAddressMode)
 
 * 
 [](#VUID-VkSamplerCreateInfo-unnormalizedCoordinates-01076) VUID-VkSamplerCreateInfo-unnormalizedCoordinates-01076
 
-If `unnormalizedCoordinates` is `VK_TRUE`,
-`anisotropyEnable` **must** be `VK_FALSE`
+If `unnormalizedCoordinates` is [VK_TRUE](fundamentals.html#VK_TRUE),
+`anisotropyEnable` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkSamplerCreateInfo-unnormalizedCoordinates-01077) VUID-VkSamplerCreateInfo-unnormalizedCoordinates-01077
 
-If `unnormalizedCoordinates` is `VK_TRUE`, `compareEnable`
-**must** be `VK_FALSE`
+If `unnormalizedCoordinates` is [VK_TRUE](fundamentals.html#VK_TRUE), `compareEnable`
+**must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkSamplerCreateInfo-addressModeU-01078) VUID-VkSamplerCreateInfo-addressModeU-01078
 
 If any of `addressModeU`, `addressModeV` or `addressModeW`
-are `VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER`, `borderColor`
+are [VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER](#VkSamplerAddressMode), `borderColor`
 **must** be a valid [VkBorderColor](#VkBorderColor) value
 
 * 
@@ -375,9 +413,9 @@ are `VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER`, `borderColor`
 
 If [sampler Y′CBCR conversion](#samplers-YCbCr-conversion) is enabled,
 `addressModeU`, `addressModeV`, and `addressModeW` **must** be
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE`, `anisotropyEnable`
-**must** be `VK_FALSE`, and `unnormalizedCoordinates` **must** be
-`VK_FALSE`
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](#VkSamplerAddressMode), `anisotropyEnable`
+**must** be [VK_FALSE](fundamentals.html#VK_FALSE), and `unnormalizedCoordinates` **must** be
+[VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkSamplerCreateInfo-None-01647) VUID-VkSamplerCreateInfo-None-01647
@@ -385,7 +423,7 @@ If [sampler Y′CBCR conversion](#samplers-YCbCr-conversion) is enabled,
 If [sampler Y′CBCR conversion](#samplers-YCbCr-conversion) is enabled
 and the `pNext` chain includes a
 [VkSamplerReductionModeCreateInfo](#VkSamplerReductionModeCreateInfo) structure, then the sampler
-reduction mode **must** be `VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`
+reduction mode **must** be [VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](#VkSamplerReductionModeEXT)
 
 * 
 [](#VUID-VkSamplerCreateInfo-pNext-06726) VUID-VkSamplerCreateInfo-pNext-06726
@@ -393,7 +431,7 @@ reduction mode **must** be `VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`
 If the [`samplerFilterMinmax`](features.html#features-samplerFilterMinmax)
 feature is not enabled and the `pNext` chain includes a
 [VkSamplerReductionModeCreateInfo](#VkSamplerReductionModeCreateInfo) structure, then the sampler
-reduction mode **must** be `VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`
+reduction mode **must** be [VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](#VkSamplerReductionModeEXT)
 
 * 
 [](#VUID-VkSamplerCreateInfo-addressModeU-01079) VUID-VkSamplerCreateInfo-addressModeU-01079
@@ -401,93 +439,93 @@ reduction mode **must** be `VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`
 If the [    `samplerMirrorClampToEdge`](features.html#features-samplerMirrorClampToEdge) feature is not enabled, and if the
 `[VK_KHR_sampler_mirror_clamp_to_edge](../appendices/extensions.html#VK_KHR_sampler_mirror_clamp_to_edge)` extension is not enabled,
 `addressModeU`, `addressModeV` and `addressModeW` **must** not
-be `VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE`
+be [VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE](#VkSamplerAddressMode)
 
 * 
 [](#VUID-VkSamplerCreateInfo-compareEnable-01080) VUID-VkSamplerCreateInfo-compareEnable-01080
 
-If `compareEnable` is `VK_TRUE`, `compareOp` **must** be a
+If `compareEnable` is [VK_TRUE](fundamentals.html#VK_TRUE), `compareOp` **must** be a
 valid [VkCompareOp](#VkCompareOp) value
 
 * 
 [](#VUID-VkSamplerCreateInfo-magFilter-01081) VUID-VkSamplerCreateInfo-magFilter-01081
 
 If either `magFilter` or `minFilter` is
-`VK_FILTER_CUBIC_EXT`, `anisotropyEnable` **must** be
-`VK_FALSE`
+[VK_FILTER_CUBIC_EXT](#VkFilter), `anisotropyEnable` **must** be
+[VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkSamplerCreateInfo-magFilter-07911) VUID-VkSamplerCreateInfo-magFilter-07911
 
 If
 the [VK_EXT_filter_cubic](../appendices/extensions.html#VK_EXT_filter_cubic) extension is not enabled and
-either `magFilter` or `minFilter` is `VK_FILTER_CUBIC_IMG`,
+either `magFilter` or `minFilter` is [VK_FILTER_CUBIC_IMG](#VkFilter),
 the `reductionMode` member of [VkSamplerReductionModeCreateInfo](#VkSamplerReductionModeCreateInfo)
-**must** be `VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`
+**must** be [VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](#VkSamplerReductionModeEXT)
 
 * 
 [](#VUID-VkSamplerCreateInfo-compareEnable-01423) VUID-VkSamplerCreateInfo-compareEnable-01423
 
-If `compareEnable` is `VK_TRUE`, the `reductionMode` member
+If `compareEnable` is [VK_TRUE](fundamentals.html#VK_TRUE), the `reductionMode` member
 of [VkSamplerReductionModeCreateInfo](#VkSamplerReductionModeCreateInfo) **must** be
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](#VkSamplerReductionModeEXT)
 
 * 
 [](#VUID-VkSamplerCreateInfo-flags-02574) VUID-VkSamplerCreateInfo-flags-02574
 
-If `flags` includes `VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT`, then
+If `flags` includes [VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](#VkSamplerCreateFlagBits), then
 `minFilter` and `magFilter` **must** be equal
 
 * 
 [](#VUID-VkSamplerCreateInfo-flags-02575) VUID-VkSamplerCreateInfo-flags-02575
 
-If `flags` includes `VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT`, then
-`mipmapMode` **must** be `VK_SAMPLER_MIPMAP_MODE_NEAREST`
+If `flags` includes [VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](#VkSamplerCreateFlagBits), then
+`mipmapMode` **must** be [VK_SAMPLER_MIPMAP_MODE_NEAREST](#VkSamplerMipmapMode)
 
 * 
 [](#VUID-VkSamplerCreateInfo-flags-02576) VUID-VkSamplerCreateInfo-flags-02576
 
-If `flags` includes `VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT`, then
+If `flags` includes [VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](#VkSamplerCreateFlagBits), then
 `minLod` and `maxLod` **must** be zero
 
 * 
 [](#VUID-VkSamplerCreateInfo-flags-02577) VUID-VkSamplerCreateInfo-flags-02577
 
-If `flags` includes `VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT`, then
+If `flags` includes [VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](#VkSamplerCreateFlagBits), then
 `addressModeU` and `addressModeV` **must** each be either
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE` or
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER`
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](#VkSamplerAddressMode) or
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER](#VkSamplerAddressMode)
 
 * 
 [](#VUID-VkSamplerCreateInfo-flags-02578) VUID-VkSamplerCreateInfo-flags-02578
 
-If `flags` includes `VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT`, then
-`anisotropyEnable` **must** be `VK_FALSE`
+If `flags` includes [VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](#VkSamplerCreateFlagBits), then
+`anisotropyEnable` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkSamplerCreateInfo-flags-02579) VUID-VkSamplerCreateInfo-flags-02579
 
-If `flags` includes `VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT`, then
-`compareEnable` **must** be `VK_FALSE`
+If `flags` includes [VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](#VkSamplerCreateFlagBits), then
+`compareEnable` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkSamplerCreateInfo-flags-02580) VUID-VkSamplerCreateInfo-flags-02580
 
-If `flags` includes `VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT`, then
-`unnormalizedCoordinates` **must** be `VK_FALSE`
+If `flags` includes [VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](#VkSamplerCreateFlagBits), then
+`unnormalizedCoordinates` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkSamplerCreateInfo-nonSeamlessCubeMap-06788) VUID-VkSamplerCreateInfo-nonSeamlessCubeMap-06788
 
 If the [`nonSeamlessCubeMap`](features.html#features-nonSeamlessCubeMap) feature
 is not enabled, `flags` **must** not include
-`VK_SAMPLER_CREATE_NON_SEAMLESS_CUBE_MAP_BIT_EXT`
+[VK_SAMPLER_CREATE_NON_SEAMLESS_CUBE_MAP_BIT_EXT](#VkSamplerCreateFlagBits)
 
 * 
 [](#VUID-VkSamplerCreateInfo-borderColor-04011) VUID-VkSamplerCreateInfo-borderColor-04011
 
-If `borderColor` is one of `VK_BORDER_COLOR_FLOAT_CUSTOM_EXT` or
-`VK_BORDER_COLOR_INT_CUSTOM_EXT`, then a
+If `borderColor` is one of [VK_BORDER_COLOR_FLOAT_CUSTOM_EXT](#VkBorderColor) or
+[VK_BORDER_COLOR_INT_CUSTOM_EXT](#VkBorderColor), then a
 [VkSamplerCustomBorderColorCreateInfoEXT](#VkSamplerCustomBorderColorCreateInfoEXT) **must** be included in the
 `pNext` chain
 
@@ -496,16 +534,16 @@ If `borderColor` is one of `VK_BORDER_COLOR_FLOAT_CUSTOM_EXT` or
 
 If the [`customBorderColors`](features.html#features-customBorderColors) feature
 is not enabled, `borderColor` **must** not be
-`VK_BORDER_COLOR_FLOAT_CUSTOM_EXT` or
-`VK_BORDER_COLOR_INT_CUSTOM_EXT`
+[VK_BORDER_COLOR_FLOAT_CUSTOM_EXT](#VkBorderColor) or
+[VK_BORDER_COLOR_INT_CUSTOM_EXT](#VkBorderColor)
 
 * 
 [](#VUID-VkSamplerCreateInfo-borderColor-04442) VUID-VkSamplerCreateInfo-borderColor-04442
 
-If `borderColor` is one of `VK_BORDER_COLOR_FLOAT_CUSTOM_EXT` or
-`VK_BORDER_COLOR_INT_CUSTOM_EXT`, and
+If `borderColor` is one of [VK_BORDER_COLOR_FLOAT_CUSTOM_EXT](#VkBorderColor) or
+[VK_BORDER_COLOR_INT_CUSTOM_EXT](#VkBorderColor), and
 [VkSamplerCustomBorderColorCreateInfoEXT](#VkSamplerCustomBorderColorCreateInfoEXT)::`format` is not
-`VK_FORMAT_UNDEFINED`,
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat),
 [VkSamplerCustomBorderColorCreateInfoEXT](#VkSamplerCustomBorderColorCreateInfoEXT)::`customBorderColor`
 **must** be within the range of values representable in `format`
 
@@ -521,7 +559,7 @@ specified by the [    `maxCustomBorderColorSamplers`](limits.html#limits-maxCust
 [](#VUID-VkSamplerCreateInfo-flags-08110) VUID-VkSamplerCreateInfo-flags-08110
 
 If `flags` includes
-`VK_SAMPLER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`, the
+[VK_SAMPLER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#VkSamplerCreateFlagBits), the
 [    `descriptorBufferCaptureReplay`](features.html#features-descriptorBufferCaptureReplay) feature **must** be enabled
 
 * 
@@ -530,72 +568,72 @@ If `flags` includes
 If the `pNext` chain includes a
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT) structure, `flags`
 **must** contain
-`VK_SAMPLER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`
+[VK_SAMPLER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#VkSamplerCreateFlagBits)
 
 * 
 [](#VUID-VkSamplerCreateInfo-flags-06964) VUID-VkSamplerCreateInfo-flags-06964
 
 If `flags` includes
-`VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`, then `minFilter`
-and `magFilter` **must** be `VK_FILTER_NEAREST`
+[VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](#VkSamplerCreateFlagBits), then `minFilter`
+and `magFilter` **must** be [VK_FILTER_NEAREST](#VkFilter)
 
 * 
 [](#VUID-VkSamplerCreateInfo-flags-06965) VUID-VkSamplerCreateInfo-flags-06965
 
 If `flags` includes
-`VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`, then `mipmapMode`
-**must** be `VK_SAMPLER_MIPMAP_MODE_NEAREST`
+[VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](#VkSamplerCreateFlagBits), then `mipmapMode`
+**must** be [VK_SAMPLER_MIPMAP_MODE_NEAREST](#VkSamplerMipmapMode)
 
 * 
 [](#VUID-VkSamplerCreateInfo-flags-06966) VUID-VkSamplerCreateInfo-flags-06966
 
 [If `flags` includes
-`VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`, then `minLod` and
+[VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](#VkSamplerCreateFlagBits), then `minLod` and
 `maxLod` **must** be zero
 
 * 
 [](#VUID-VkSamplerCreateInfo-flags-06967) VUID-VkSamplerCreateInfo-flags-06967
 
 If `flags` includes
-`VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`, then
+[VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](#VkSamplerCreateFlagBits), then
 `addressModeU` and `addressModeV` **must** each be either
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE` or
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER`
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](#VkSamplerAddressMode) or
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER](#VkSamplerAddressMode)
 
 * 
 [](#VUID-VkSamplerCreateInfo-flags-06968) VUID-VkSamplerCreateInfo-flags-06968
 
 If `flags` includes
-`VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`, and if
+[VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](#VkSamplerCreateFlagBits), and if
 `addressModeU` or `addressModeV` is
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER`, then `borderColor`
-**must** be `VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK`
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER](#VkSamplerAddressMode), then `borderColor`
+**must** be [VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK](#VkBorderColor)
 
 * 
 [](#VUID-VkSamplerCreateInfo-flags-06969) VUID-VkSamplerCreateInfo-flags-06969
 
 If `flags` includes
-`VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`, then
-`anisotropyEnable` **must** be `VK_FALSE`
+[VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](#VkSamplerCreateFlagBits), then
+`anisotropyEnable` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkSamplerCreateInfo-flags-06970) VUID-VkSamplerCreateInfo-flags-06970
 
 If `flags` includes
-`VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`, then
-`compareEnable` **must** be `VK_FALSE`
+[VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](#VkSamplerCreateFlagBits), then
+`compareEnable` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSamplerCreateInfo-sType-sType) VUID-VkSamplerCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSamplerCreateInfo-pNext-pNext) VUID-VkSamplerCreateInfo-pNext-pNext
 
- Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT), [VkSamplerBlockMatchWindowCreateInfoQCOM](#VkSamplerBlockMatchWindowCreateInfoQCOM), [VkSamplerBorderColorComponentMappingCreateInfoEXT](#VkSamplerBorderColorComponentMappingCreateInfoEXT), [VkSamplerCubicWeightsCreateInfoQCOM](#VkSamplerCubicWeightsCreateInfoQCOM), [VkSamplerCustomBorderColorCreateInfoEXT](#VkSamplerCustomBorderColorCreateInfoEXT), [VkSamplerReductionModeCreateInfo](#VkSamplerReductionModeCreateInfo), or [VkSamplerYcbcrConversionInfo](#VkSamplerYcbcrConversionInfo)
+ Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkDebugUtilsObjectNameInfoEXT](debugging.html#VkDebugUtilsObjectNameInfoEXT), [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT), [VkSamplerBlockMatchWindowCreateInfoQCOM](#VkSamplerBlockMatchWindowCreateInfoQCOM), [VkSamplerBorderColorComponentMappingCreateInfoEXT](#VkSamplerBorderColorComponentMappingCreateInfoEXT), [VkSamplerCubicWeightsCreateInfoQCOM](#VkSamplerCubicWeightsCreateInfoQCOM), [VkSamplerCustomBorderColorCreateInfoEXT](#VkSamplerCustomBorderColorCreateInfoEXT), [VkSamplerCustomBorderColorIndexCreateInfoEXT](#VkSamplerCustomBorderColorIndexCreateInfoEXT), [VkSamplerReductionModeCreateInfo](#VkSamplerReductionModeCreateInfo), or [VkSamplerYcbcrConversionInfo](#VkSamplerYcbcrConversionInfo)
 
 * 
 [](#VUID-VkSamplerCreateInfo-sType-unique) VUID-VkSamplerCreateInfo-sType-unique
@@ -637,7 +675,7 @@ Valid Usage (Implicit)
 
  `addressModeW` **must** be a valid [VkSamplerAddressMode](#VkSamplerAddressMode) value
 
-`VK_LOD_CLAMP_NONE` is a special constant value used for
+[VK_LOD_CLAMP_NONE](#VK_LOD_CLAMP_NONE) is a special constant value used for
 [VkSamplerCreateInfo](#VkSamplerCreateInfo)::`maxLod` to indicate that maximum LOD
 clamping should not be performed.
 
@@ -661,24 +699,24 @@ typedef enum VkSamplerCreateFlagBits {
 } VkSamplerCreateFlagBits;
 
 * 
- `VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT`
+ [VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](#VkSamplerCreateFlagBits)
 specifies that the sampler will read from an image created with
-`flags` containing `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`.
+`flags` containing [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](resources.html#VkImageCreateFlagBits).
 
 * 
-`VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT`
+[VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT](#VkSamplerCreateFlagBits)
 specifies that the implementation **may** use approximations when
 reconstructing a full color value for texture access from a subsampled
 image.
 
 * 
-`VK_SAMPLER_CREATE_NON_SEAMLESS_CUBE_MAP_BIT_EXT` specifies that
+[VK_SAMPLER_CREATE_NON_SEAMLESS_CUBE_MAP_BIT_EXT](#VkSamplerCreateFlagBits) specifies that
 [cube map edge handling](textures.html#textures-cubemapedge) is not performed.
 
 * 
 
-`VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM` specifies that the
-sampler will read from images using only `OpImageWeightedSampleQCOM`,
+[VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](#VkSamplerCreateFlagBits) specifies that the
+sampler will read from images using only `OpImageSampleWeightedQCOM`,
 `OpImageBoxFilterQCOM`,
 `OpImageBlockMatchGatherSSDQCOM`,
 `OpImageBlockMatchGatherSADQCOM`,
@@ -688,7 +726,7 @@ sampler will read from images using only `OpImageWeightedSampleQCOM`,
 
 |  | The approximations used when
 | --- | --- |
-`VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT` is
+[VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT](#VkSamplerCreateFlagBits) is
 specified are implementation defined.
 Some implementations **may** interpolate between fragment density levels in a
 subsampled image.
@@ -696,7 +734,7 @@ In that case, this bit **may** be used to decide whether the interpolation
 factors are calculated per fragment or at a coarser granularity. |
 
 * 
-`VK_SAMPLER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`
+[VK_SAMPLER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#VkSamplerCreateFlagBits)
 specifies that the sampler **can** be used with descriptor buffers when
 capturing and replaying (e.g. for trace capture and replay), see
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](descriptorsets.html#VkOpaqueCaptureDescriptorDataCreateInfoEXT) for more detail.
@@ -736,14 +774,14 @@ If the `pNext` chain of [VkSamplerCreateInfo](#VkSamplerCreateInfo) includes a
 includes a mode controlling how texture filtering combines texel values.
 
 If this structure is not present, `reductionMode` is considered to be
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`.
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](#VkSamplerReductionModeEXT).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSamplerReductionModeCreateInfo-sType-sType) VUID-VkSamplerReductionModeCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSamplerReductionModeCreateInfo-reductionMode-parameter) VUID-VkSamplerReductionModeCreateInfo-reductionMode-parameter
@@ -773,25 +811,25 @@ typedef enum VkSamplerReductionMode {
 typedef VkSamplerReductionMode VkSamplerReductionModeEXT;
 
 * 
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE` specifies that texel
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](#VkSamplerReductionModeEXT) specifies that texel
 values are combined by computing a weighted average of values in the
 footprint, using weights as specified in
 [the image operations chapter](textures.html#textures-unnormalized-to-integer).
 
 * 
-`VK_SAMPLER_REDUCTION_MODE_MIN` specifies that texel values are
+[VK_SAMPLER_REDUCTION_MODE_MIN](#VkSamplerReductionModeEXT) specifies that texel values are
 combined by taking the component-wise minimum of values in the footprint
 with non-zero weights.
 
 * 
-`VK_SAMPLER_REDUCTION_MODE_MAX` specifies that texel values are
+[VK_SAMPLER_REDUCTION_MODE_MAX](#VkSamplerReductionModeEXT) specifies that texel values are
 combined by taking the component-wise maximum of values in the footprint
 with non-zero weights.
 
 * 
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM`
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](#VkSamplerReductionModeEXT)
 specifies values are combined as described by
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`, followed by a
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](#VkSamplerReductionModeEXT), followed by a
 [texel range clamp](textures.html#textures-texel-range-clamp).
 
 The `VkSamplerCubicWeightsCreateInfoQCOM` structure is defined as:
@@ -819,14 +857,14 @@ If the `pNext` chain of [VkSamplerCreateInfo](#VkSamplerCreateInfo) includes a
 specifies which cubic weights are used.
 
 If that structure is not present, `cubicWeights` is considered to be
-`VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM`.
+[VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM](#VkCubicFilterWeightsQCOM).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSamplerCubicWeightsCreateInfoQCOM-sType-sType) VUID-VkSamplerCubicWeightsCreateInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_CUBIC_WEIGHTS_CREATE_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_CUBIC_WEIGHTS_CREATE_INFO_QCOM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSamplerCubicWeightsCreateInfoQCOM-cubicWeights-parameter) VUID-VkSamplerCubicWeightsCreateInfoQCOM-cubicWeights-parameter
@@ -846,18 +884,18 @@ typedef enum VkCubicFilterWeightsQCOM {
 } VkCubicFilterWeightsQCOM;
 
 * 
-`VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM` specifies Catmull-Rom
+[VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM](#VkCubicFilterWeightsQCOM) specifies Catmull-Rom
 weights.
 
 * 
-`VK_CUBIC_FILTER_WEIGHTS_ZERO_TANGENT_CARDINAL_QCOM` specifies Zero
+[VK_CUBIC_FILTER_WEIGHTS_ZERO_TANGENT_CARDINAL_QCOM](#VkCubicFilterWeightsQCOM) specifies Zero
 Tangent Cardinal weights.
 
 * 
-`VK_CUBIC_FILTER_WEIGHTS_B_SPLINE_QCOM` specifies B-Spline weights.
+[VK_CUBIC_FILTER_WEIGHTS_B_SPLINE_QCOM](#VkCubicFilterWeightsQCOM) specifies B-Spline weights.
 
 * 
-`VK_CUBIC_FILTER_WEIGHTS_MITCHELL_NETRAVALI_QCOM` specifies
+[VK_CUBIC_FILTER_WEIGHTS_MITCHELL_NETRAVALI_QCOM](#VkCubicFilterWeightsQCOM) specifies
 Mitchell-Netravali weights.
 
 Possible values of the [VkSamplerCreateInfo](#VkSamplerCreateInfo)::`magFilter` and
@@ -875,13 +913,13 @@ typedef enum VkFilter {
 } VkFilter;
 
 * 
-`VK_FILTER_NEAREST` specifies nearest filtering.
+[VK_FILTER_NEAREST](#VkFilter) specifies nearest filtering.
 
 * 
-`VK_FILTER_LINEAR` specifies linear filtering.
+[VK_FILTER_LINEAR](#VkFilter) specifies linear filtering.
 
 * 
-`VK_FILTER_CUBIC_EXT` specifies cubic filtering.
+[VK_FILTER_CUBIC_EXT](#VkFilter) specifies cubic filtering.
 
 These filters are described in detail in [Texel Filtering](textures.html#textures-texel-filtering).
 
@@ -895,10 +933,10 @@ typedef enum VkSamplerMipmapMode {
 } VkSamplerMipmapMode;
 
 * 
-`VK_SAMPLER_MIPMAP_MODE_NEAREST` specifies nearest filtering.
+[VK_SAMPLER_MIPMAP_MODE_NEAREST](#VkSamplerMipmapMode) specifies nearest filtering.
 
 * 
-`VK_SAMPLER_MIPMAP_MODE_LINEAR` specifies linear filtering.
+[VK_SAMPLER_MIPMAP_MODE_LINEAR](#VkSamplerMipmapMode) specifies linear filtering.
 
 These modes are described in detail in [Texel Filtering](textures.html#textures-texel-filtering).
 
@@ -919,23 +957,23 @@ typedef enum VkSamplerAddressMode {
 } VkSamplerAddressMode;
 
 * 
-`VK_SAMPLER_ADDRESS_MODE_REPEAT` specifies that the repeat wrap mode
+[VK_SAMPLER_ADDRESS_MODE_REPEAT](#VkSamplerAddressMode) specifies that the repeat wrap mode
 will be used.
 
 * 
-`VK_SAMPLER_ADDRESS_MODE_MIRRORED_REPEAT` specifies that the
+[VK_SAMPLER_ADDRESS_MODE_MIRRORED_REPEAT](#VkSamplerAddressMode) specifies that the
 mirrored repeat wrap mode will be used.
 
 * 
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE` specifies that the clamp to
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](#VkSamplerAddressMode) specifies that the clamp to
 edge wrap mode will be used.
 
 * 
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER` specifies that the clamp
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER](#VkSamplerAddressMode) specifies that the clamp
 to border wrap mode will be used.
 
 * 
-`VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE` specifies that the
+[VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE](#VkSamplerAddressMode) specifies that the
     mirror clamp to edge wrap mode will be used.
     This is only valid if
 the [`samplerMirrorClampToEdge`](features.html#features-samplerMirrorClampToEdge) feature is enabled, or if
@@ -959,35 +997,35 @@ typedef enum VkCompareOp {
 } VkCompareOp;
 
 * 
-`VK_COMPARE_OP_NEVER` specifies that the comparison always evaluates
+[VK_COMPARE_OP_NEVER](#VkCompareOp) specifies that the comparison always evaluates
 false.
 
 * 
-`VK_COMPARE_OP_LESS` specifies that the comparison evaluates
+[VK_COMPARE_OP_LESS](#VkCompareOp) specifies that the comparison evaluates
 *reference* .
 
 * 
-`VK_COMPARE_OP_EQUAL` specifies that the comparison evaluates
+[VK_COMPARE_OP_EQUAL](#VkCompareOp) specifies that the comparison evaluates
 *reference* = *test*.
 
 * 
-`VK_COMPARE_OP_LESS_OR_EQUAL` specifies that the comparison
+[VK_COMPARE_OP_LESS_OR_EQUAL](#VkCompareOp) specifies that the comparison
 evaluates *reference* ≤ *test*.
 
 * 
-`VK_COMPARE_OP_GREATER` specifies that the comparison evaluates
+[VK_COMPARE_OP_GREATER](#VkCompareOp) specifies that the comparison evaluates
 *reference* > *test*.
 
 * 
-`VK_COMPARE_OP_NOT_EQUAL` specifies that the comparison evaluates
+[VK_COMPARE_OP_NOT_EQUAL](#VkCompareOp) specifies that the comparison evaluates
 *reference* ≠ *test*.
 
 * 
-`VK_COMPARE_OP_GREATER_OR_EQUAL` specifies that the comparison
+[VK_COMPARE_OP_GREATER_OR_EQUAL](#VkCompareOp) specifies that the comparison
 evaluates *reference* ≥ *test*.
 
 * 
-`VK_COMPARE_OP_ALWAYS` specifies that the comparison always
+[VK_COMPARE_OP_ALWAYS](#VkCompareOp) specifies that the comparison always
 evaluates true.
 
 Comparison operators are used for:
@@ -1029,37 +1067,37 @@ typedef enum VkBorderColor {
 } VkBorderColor;
 
 * 
-`VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK` specifies a transparent,
+[VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK](#VkBorderColor) specifies a transparent,
 floating-point format, black color.
 
 * 
-`VK_BORDER_COLOR_INT_TRANSPARENT_BLACK` specifies a transparent,
+[VK_BORDER_COLOR_INT_TRANSPARENT_BLACK](#VkBorderColor) specifies a transparent,
 integer format, black color.
 
 * 
-`VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK` specifies an opaque,
+[VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK](#VkBorderColor) specifies an opaque,
 floating-point format, black color.
 
 * 
-`VK_BORDER_COLOR_INT_OPAQUE_BLACK` specifies an opaque, integer
+[VK_BORDER_COLOR_INT_OPAQUE_BLACK](#VkBorderColor) specifies an opaque, integer
 format, black color.
 
 * 
-`VK_BORDER_COLOR_FLOAT_OPAQUE_WHITE` specifies an opaque,
+[VK_BORDER_COLOR_FLOAT_OPAQUE_WHITE](#VkBorderColor) specifies an opaque,
 floating-point format, white color.
 
 * 
-`VK_BORDER_COLOR_INT_OPAQUE_WHITE` specifies an opaque, integer
+[VK_BORDER_COLOR_INT_OPAQUE_WHITE](#VkBorderColor) specifies an opaque, integer
 format, white color.
 
 * 
-`VK_BORDER_COLOR_FLOAT_CUSTOM_EXT` specifies that a
+[VK_BORDER_COLOR_FLOAT_CUSTOM_EXT](#VkBorderColor) specifies that a
 [VkSamplerCustomBorderColorCreateInfoEXT](#VkSamplerCustomBorderColorCreateInfoEXT) structure is included in
 the [VkSamplerCreateInfo](#VkSamplerCreateInfo)::`pNext` chain containing the color
 data in floating-point format.
 
 * 
-`VK_BORDER_COLOR_INT_CUSTOM_EXT` specifies that a
+[VK_BORDER_COLOR_INT_CUSTOM_EXT](#VkBorderColor) specifies that a
 [VkSamplerCustomBorderColorCreateInfoEXT](#VkSamplerCustomBorderColorCreateInfoEXT) structure is included in
 the [VkSamplerCreateInfo](#VkSamplerCreateInfo)::`pNext` chain containing the color
 data in integer format.
@@ -1137,12 +1175,13 @@ To create a sampler with Y′CBCR conversion enabled, add a
 To create a sampler Y′CBCR conversion, the
 [`samplerYcbcrConversion`](features.html#features-samplerYcbcrConversion) feature
 **must** be enabled.
-Conversion **must** be fixed at pipeline creation time, through use of a
-combined image sampler with an immutable sampler in
+Conversion **must** be fixed at pipeline creation time, through use of
+a combined [embedded sampler and image mapping](descriptorheaps.html#VkDescriptorSetAndBindingMappingEXT) if using descriptor heaps, or
+a combined image sampler with an immutable sampler in
 `VkDescriptorSetLayoutBinding`.
 
 A [VkSamplerYcbcrConversionInfo](#VkSamplerYcbcrConversionInfo) **must** be provided for samplers to be
-used with image views that access `VK_IMAGE_ASPECT_COLOR_BIT` if the
+used with image views that access [VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits) if the
 format is one of the [formats that require a sampler Y′CBCR conversion](formats.html#formats-requiring-sampler-ycbcr-conversion)
 , or if the image view has an
 [external format](memory.html#memory-external-android-hardware-buffer-external-formats)
@@ -1177,7 +1216,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSamplerYcbcrConversionInfo-sType-sType) VUID-VkSamplerYcbcrConversionInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionInfo-conversion-parameter) VUID-VkSamplerYcbcrConversionInfo-conversion-parameter
@@ -1267,21 +1306,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkSamplerYcbcrConversionCreateInfo` structure is defined as:
 
@@ -1347,20 +1386,20 @@ components are not downsampled vertically.
 `forceExplicitReconstruction` **can** be used to ensure that
 reconstruction is done explicitly, if supported.
 
-|  | Setting `forceExplicitReconstruction` to `VK_TRUE` **may** have a
+|  | Setting `forceExplicitReconstruction` to [VK_TRUE](fundamentals.html#VK_TRUE) **may** have a
 | --- | --- |
 performance penalty on implementations where explicit reconstruction is not
 the default mode of operation.
 
 If `format` supports
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT](formats.html#VkFormatFeatureFlagBits)
 the `forceExplicitReconstruction` value behaves as if it were
-`VK_TRUE`. |
+[VK_TRUE](fundamentals.html#VK_TRUE). |
 
 If the `pNext` chain includes a [VkExternalFormatANDROID](resources.html#VkExternalFormatANDROID) structure
 with non-zero `externalFormat` member, the sampler Y′CBCR conversion
 object represents an *external format conversion*, and `format` **must** be
-`VK_FORMAT_UNDEFINED`.
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat).
 Such conversions **must** only be used to sample image views with a matching
 [external format](memory.html#memory-external-android-hardware-buffer-external-formats).
 When creating an external format conversion, the value of `components`
@@ -1372,7 +1411,7 @@ Valid Usage
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-format-01904) VUID-VkSamplerYcbcrConversionCreateInfo-format-01904
 
 If an external format conversion is being created, `format` **must** be
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-format-04061) VUID-VkSamplerYcbcrConversionCreateInfo-format-04061
@@ -1386,17 +1425,17 @@ If an external format conversion is not being created,
 
 The [potential format features](formats.html#potential-format-features) of the
 sampler Y′CBCR conversion **must** support
-`VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT` or
-`VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT`
+[VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT](formats.html#VkFormatFeatureFlagBits) or
+[VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-xChromaOffset-01651) VUID-VkSamplerYcbcrConversionCreateInfo-xChromaOffset-01651
 
 If the [potential format features](formats.html#potential-format-features) of the
 sampler Y′CBCR conversion do not support
-`VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT`, `xChromaOffset`
+[VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT](formats.html#VkFormatFeatureFlagBits), `xChromaOffset`
 and `yChromaOffset` **must** not be
-`VK_CHROMA_LOCATION_COSITED_EVEN` if the corresponding components
+[VK_CHROMA_LOCATION_COSITED_EVEN](#VkChromaLocationKHR) if the corresponding components
 are [downsampled](textures.html#textures-chroma-reconstruction)
 
 * 
@@ -1404,8 +1443,8 @@ are [downsampled](textures.html#textures-chroma-reconstruction)
 
 If the [potential format features](formats.html#potential-format-features) of the
 sampler Y′CBCR conversion do not support
-`VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT`, `xChromaOffset`
-and `yChromaOffset` **must** not be `VK_CHROMA_LOCATION_MIDPOINT`
+[VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT](formats.html#VkFormatFeatureFlagBits), `xChromaOffset`
+and `yChromaOffset` **must** not be [VK_CHROMA_LOCATION_MIDPOINT](#VkChromaLocationKHR)
 if the corresponding components are [    downsampled](textures.html#textures-chroma-reconstruction)
 
 * 
@@ -1421,7 +1460,7 @@ If the format has a `_422` or `_420` suffix, then
 If the format has a `_422` or `_420` suffix, then
 `components.a` **must** be the
 [identity swizzle](resources.html#resources-image-views-identity-mappings),
-`VK_COMPONENT_SWIZZLE_ONE`, or `VK_COMPONENT_SWIZZLE_ZERO`
+[VK_COMPONENT_SWIZZLE_ONE](resources.html#VkComponentSwizzle), or [VK_COMPONENT_SWIZZLE_ZERO](resources.html#VkComponentSwizzle)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-components-02583) VUID-VkSamplerYcbcrConversionCreateInfo-components-02583
@@ -1429,7 +1468,7 @@ If the format has a `_422` or `_420` suffix, then
 If the format has a `_422` or `_420` suffix, then
 `components.r` **must** be the
 [identity swizzle](resources.html#resources-image-views-identity-mappings) or
-`VK_COMPONENT_SWIZZLE_B`
+[VK_COMPONENT_SWIZZLE_B](resources.html#VkComponentSwizzle)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-components-02584) VUID-VkSamplerYcbcrConversionCreateInfo-components-02584
@@ -1437,7 +1476,7 @@ If the format has a `_422` or `_420` suffix, then
 If the format has a `_422` or `_420` suffix, then
 `components.b` **must** be the
 [identity swizzle](resources.html#resources-image-views-identity-mappings) or
-`VK_COMPONENT_SWIZZLE_R`
+[VK_COMPONENT_SWIZZLE_R](resources.html#VkComponentSwizzle)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-components-02585) VUID-VkSamplerYcbcrConversionCreateInfo-components-02585
@@ -1451,18 +1490,18 @@ values **must** be the identity swizzle
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-ycbcrModel-01655) VUID-VkSamplerYcbcrConversionCreateInfo-ycbcrModel-01655
 
 If `ycbcrModel` is not
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY`, then
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY](#VkSamplerYcbcrModelConversionKHR), then
 `components.r`, `components.g`, and `components.b` **must**
 correspond to components of the `format`; that is,
 `components.r`, `components.g`, and `components.b` **must** not
-be `VK_COMPONENT_SWIZZLE_ZERO` or `VK_COMPONENT_SWIZZLE_ONE`,
+be [VK_COMPONENT_SWIZZLE_ZERO](resources.html#VkComponentSwizzle) or [VK_COMPONENT_SWIZZLE_ONE](resources.html#VkComponentSwizzle),
 and **must** not correspond to a component containing zero or one as a
 consequence of [component substitution](images.html#images-component-substitution)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-ycbcrRange-02748) VUID-VkSamplerYcbcrConversionCreateInfo-ycbcrRange-02748
 
-If `ycbcrRange` is `VK_SAMPLER_YCBCR_RANGE_ITU_NARROW` then the
+If `ycbcrRange` is [VK_SAMPLER_YCBCR_RANGE_ITU_NARROW](#VkSamplerYcbcrRangeKHR) then the
 R, G and B components obtained by applying the `component` swizzle
 to `format` **must** each have a bit-depth greater than or equal to 8
 
@@ -1471,16 +1510,16 @@ to `format` **must** each have a bit-depth greater than or equal to 8
 
 If the [potential format features](formats.html#potential-format-features) of the
 sampler Y′CBCR conversion do not support
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT`
-`forceExplicitReconstruction` **must** be `VK_FALSE`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT](formats.html#VkFormatFeatureFlagBits)
+`forceExplicitReconstruction` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-chromaFilter-01657) VUID-VkSamplerYcbcrConversionCreateInfo-chromaFilter-01657
 
 If the [potential format features](formats.html#potential-format-features) of the
 sampler Y′CBCR conversion do not support
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT`,
-`chromaFilter` **must** not be `VK_FILTER_LINEAR`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT](formats.html#VkFormatFeatureFlagBits),
+`chromaFilter` **must** not be [VK_FILTER_LINEAR](#VkFilter)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-pNext-09207) VUID-VkSamplerYcbcrConversionCreateInfo-pNext-09207
@@ -1490,7 +1529,7 @@ If the `pNext` chain includes a
 if the [`ycbcrDegamma`](features.html#features-ycbcrDegamma) feature is not
 enabled, then
 [VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM](#VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM)::`enableYDegamma`
-**must** be `VK_FALSE`
+**must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-pNext-09208) VUID-VkSamplerYcbcrConversionCreateInfo-pNext-09208
@@ -1500,7 +1539,7 @@ If the `pNext` chain includes a
 if the [`ycbcrDegamma`](features.html#features-ycbcrDegamma) feature is not
 enabled, then
 [VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM](#VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM)::`enableCbCrDegamma`
-**must** be `VK_FALSE`
+**must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-pNext-09209) VUID-VkSamplerYcbcrConversionCreateInfo-pNext-09209
@@ -1514,7 +1553,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-sType-sType) VUID-VkSamplerYcbcrConversionCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-pNext-pNext) VUID-VkSamplerYcbcrConversionCreateInfo-pNext-pNext
@@ -1561,7 +1600,7 @@ Valid Usage (Implicit)
 
  `chromaFilter` **must** be a valid [VkFilter](#VkFilter) value
 
-If `chromaFilter` is `VK_FILTER_NEAREST`, chroma samples are
+If `chromaFilter` is [VK_FILTER_NEAREST](#VkFilter), chroma samples are
 reconstructed to luma component resolution using nearest-neighbour sampling.
 Otherwise, chroma samples are reconstructed using interpolation.
 More details can be found in [the description of sampler Y′CBCR conversion](textures.html#textures-sampler-YCbCr-conversion) in the [Image Operations](textures.html#textures) chapter.
@@ -1594,27 +1633,27 @@ typedef enum VkSamplerYcbcrModelConversion {
 typedef VkSamplerYcbcrModelConversion VkSamplerYcbcrModelConversionKHR;
 
 * 
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY` specifies that the
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY](#VkSamplerYcbcrModelConversionKHR) specifies that the
 input values to the conversion are unmodified.
 
 * 
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY` specifies no
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY](#VkSamplerYcbcrModelConversionKHR) specifies no
 model conversion but the inputs are range expanded as for Y′CBCR.
 
 * 
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_709` specifies the color
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_709](#VkSamplerYcbcrModelConversionKHR) specifies the color
 model conversion from Y′CBCR to R′G′B′ defined in BT.709 and
 described in the “BT.709 Y′CBCR conversion” section of the
 [Khronos Data Format Specification](introduction.html#data-format).
 
 * 
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_601` specifies the color
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_601](#VkSamplerYcbcrModelConversionKHR) specifies the color
 model conversion from Y′CBCR to R′G′B′ defined in BT.601 and
 described in the “BT.601 Y′CBCR conversion” section of the
 [Khronos Data Format Specification](introduction.html#data-format).
 
 * 
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_2020` specifies the color
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_2020](#VkSamplerYcbcrModelConversionKHR) specifies the color
 model conversion from Y′CBCR to R′G′B′ defined in BT.2020 and
 described in the “BT.2020 Y′CBCR conversion” section of the
 [Khronos Data Format Specification](introduction.html#data-format).
@@ -1644,19 +1683,19 @@ operation (controlled by
 
 |  | For example, an “YUVA” 32-bit format comprising four 8-bit components can
 | --- | --- |
-be implemented as `VK_FORMAT_R8G8B8A8_UNORM` with a component mapping:
+be implemented as [VK_FORMAT_R8G8B8A8_UNORM](formats.html#VkFormat) with a component mapping:
 
 * 
-`components.a` = `VK_COMPONENT_SWIZZLE_IDENTITY`
+`components.a` = [VK_COMPONENT_SWIZZLE_IDENTITY](resources.html#VkComponentSwizzle)
 
 * 
-`components.r` = `VK_COMPONENT_SWIZZLE_B`
+`components.r` = [VK_COMPONENT_SWIZZLE_B](resources.html#VkComponentSwizzle)
 
 * 
-`components.g` = `VK_COMPONENT_SWIZZLE_R`
+`components.g` = [VK_COMPONENT_SWIZZLE_R](resources.html#VkComponentSwizzle)
 
 * 
-`components.b` = `VK_COMPONENT_SWIZZLE_G` |
+`components.b` = [VK_COMPONENT_SWIZZLE_G](resources.html#VkComponentSwizzle) |
 
 The [VkSamplerYcbcrRange](#VkSamplerYcbcrRange) enum describes whether color components are
 encoded using the full range of numerical values or whether values are
@@ -1678,12 +1717,12 @@ typedef enum VkSamplerYcbcrRange {
 typedef VkSamplerYcbcrRange VkSamplerYcbcrRangeKHR;
 
 * 
-`VK_SAMPLER_YCBCR_RANGE_ITU_FULL` specifies that the full range of
+[VK_SAMPLER_YCBCR_RANGE_ITU_FULL](#VkSamplerYcbcrRangeKHR) specifies that the full range of
 the encoded values are valid and interpreted according to the ITU “full
 range” quantization rules.
 
 * 
-`VK_SAMPLER_YCBCR_RANGE_ITU_NARROW` specifies that headroom and foot
+[VK_SAMPLER_YCBCR_RANGE_ITU_NARROW](#VkSamplerYcbcrRangeKHR) specifies that headroom and foot
 room are reserved in the numerical range of encoded values, and the
 remaining values are expanded according to the ITU “narrow range”
 quantization rules.
@@ -1692,7 +1731,7 @@ The formulae for these conversions is described in the
 [Sampler Y′CBCR Range Expansion](textures.html#textures-sampler-YCbCr-conversion-rangeexpand) section of the [Image Operations](textures.html#textures) chapter.
 
 No range modification takes place if `ycbcrModel` is
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY`; the `ycbcrRange`
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY](#VkSamplerYcbcrModelConversionKHR); the `ycbcrRange`
 field of [VkSamplerYcbcrConversionCreateInfo](#VkSamplerYcbcrConversionCreateInfo) is ignored in this case.
 
 The [VkChromaLocation](#VkChromaLocation) enum defines the location of downsampled chroma
@@ -1713,11 +1752,11 @@ typedef enum VkChromaLocation {
 typedef VkChromaLocation VkChromaLocationKHR;
 
 * 
-`VK_CHROMA_LOCATION_COSITED_EVEN` specifies that downsampled chroma
+[VK_CHROMA_LOCATION_COSITED_EVEN](#VkChromaLocationKHR) specifies that downsampled chroma
 samples are aligned with luma samples with even coordinates.
 
 * 
-`VK_CHROMA_LOCATION_MIDPOINT` specifies that downsampled chroma
+[VK_CHROMA_LOCATION_MIDPOINT](#VkChromaLocationKHR) specifies that downsampled chroma
 samples are located half way between each even luma sample and the
 nearest higher odd luma sample.
 
@@ -1755,7 +1794,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM-sType-sType) VUID-VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_YCBCR_DEGAMMA_CREATE_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_YCBCR_DEGAMMA_CREATE_INFO_QCOM](fundamentals.html#VkStructureType)
 
 To destroy a sampler Y′CBCR conversion, call:
 
@@ -1838,20 +1877,20 @@ desired custom sampler border color.
 * 
 `format` is a [VkFormat](formats.html#VkFormat) representing the format of the sampled
 image view(s).
-This field may be `VK_FORMAT_UNDEFINED` if the
+This field may be [VK_FORMAT_UNDEFINED](formats.html#VkFormat) if the
 [    `customBorderColorWithoutFormat`](features.html#features-customBorderColorWithoutFormat) feature is enabled.
 
 |  | If `format` is a depth/stencil format, the aspect is determined by the
 | --- | --- |
 value of [VkSamplerCreateInfo](#VkSamplerCreateInfo)::`borderColor`.
 If [VkSamplerCreateInfo](#VkSamplerCreateInfo)::`borderColor` is
-`VK_BORDER_COLOR_FLOAT_CUSTOM_EXT`, the depth aspect is considered.
+[VK_BORDER_COLOR_FLOAT_CUSTOM_EXT](#VkBorderColor), the depth aspect is considered.
 If [VkSamplerCreateInfo](#VkSamplerCreateInfo)::`borderColor` is
-`VK_BORDER_COLOR_INT_CUSTOM_EXT`, the stencil aspect is considered.
+[VK_BORDER_COLOR_INT_CUSTOM_EXT](#VkBorderColor), the stencil aspect is considered.
 
-If `format` is `VK_FORMAT_UNDEFINED`, the
+If `format` is [VK_FORMAT_UNDEFINED](formats.html#VkFormat), the
 [VkSamplerCreateInfo](#VkSamplerCreateInfo)::`borderColor` is
-`VK_BORDER_COLOR_INT_CUSTOM_EXT`, and the sampler is used with an image
+[VK_BORDER_COLOR_INT_CUSTOM_EXT](#VkBorderColor), and the sampler is used with an image
 with a stencil format, then the implementation **must** source the custom
 border color from either the first or second components of
 [VkSamplerCreateInfo](#VkSamplerCreateInfo)::`borderColor` and **should** source it from the
@@ -1862,7 +1901,7 @@ Valid Usage
 * 
 [](#VUID-VkSamplerCustomBorderColorCreateInfoEXT-format-07605) VUID-VkSamplerCustomBorderColorCreateInfoEXT-format-07605
 
-If `format` is not `VK_FORMAT_UNDEFINED` and `format` is not
+If `format` is not [VK_FORMAT_UNDEFINED](formats.html#VkFormat) and `format` is not
 a depth/stencil format then the
 [VkSamplerCreateInfo](#VkSamplerCreateInfo)::`borderColor` type **must** match the
 sampled type of the provided `format`, as shown in the *SPIR-V Type*
@@ -1872,34 +1911,34 @@ column of the [Interpretation of Numeric Format](formats.html#formats-numericfor
 [](#VUID-VkSamplerCustomBorderColorCreateInfoEXT-format-04014) VUID-VkSamplerCustomBorderColorCreateInfoEXT-format-04014
 
 If the [    `customBorderColorWithoutFormat`](features.html#features-customBorderColorWithoutFormat) feature is not enabled then
-`format` **must** not be `VK_FORMAT_UNDEFINED`
+`format` **must** not be [VK_FORMAT_UNDEFINED](formats.html#VkFormat)
 
 * 
 [](#VUID-VkSamplerCustomBorderColorCreateInfoEXT-format-04015) VUID-VkSamplerCustomBorderColorCreateInfoEXT-format-04015
 
 If the sampler is used to sample an image view of
-`VK_FORMAT_B4G4R4A4_UNORM_PACK16`,
-`VK_FORMAT_B5G6R5_UNORM_PACK16`,
-`VK_FORMAT_A1B5G5R5_UNORM_PACK16`,
-or `VK_FORMAT_B5G5R5A1_UNORM_PACK16` format then `format` **must**
-not be `VK_FORMAT_UNDEFINED`
+[VK_FORMAT_B4G4R4A4_UNORM_PACK16](formats.html#VkFormat),
+[VK_FORMAT_B5G6R5_UNORM_PACK16](formats.html#VkFormat),
+[VK_FORMAT_A1B5G5R5_UNORM_PACK16](formats.html#VkFormat),
+or [VK_FORMAT_B5G5R5A1_UNORM_PACK16](formats.html#VkFormat) format then `format` **must**
+not be [VK_FORMAT_UNDEFINED](formats.html#VkFormat)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSamplerCustomBorderColorCreateInfoEXT-sType-sType) VUID-VkSamplerCustomBorderColorCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSamplerCustomBorderColorCreateInfoEXT-format-parameter) VUID-VkSamplerCustomBorderColorCreateInfoEXT-format-parameter
 
  `format` **must** be a valid [VkFormat](formats.html#VkFormat) value
 
-If the sampler is created with `VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK`,
-`VK_BORDER_COLOR_INT_OPAQUE_BLACK`,
-`VK_BORDER_COLOR_FLOAT_CUSTOM_EXT`, or
-`VK_BORDER_COLOR_INT_CUSTOM_EXT` `borderColor`, and that sampler
+If the sampler is created with [VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK](#VkBorderColor),
+[VK_BORDER_COLOR_INT_OPAQUE_BLACK](#VkBorderColor),
+[VK_BORDER_COLOR_FLOAT_CUSTOM_EXT](#VkBorderColor), or
+[VK_BORDER_COLOR_INT_CUSTOM_EXT](#VkBorderColor) `borderColor`, and that sampler
 will be combined with an image view that does not have an
 [identity swizzle](resources.html#resources-image-views-identity-mappings), and
 [VkPhysicalDeviceBorderColorSwizzleFeaturesEXT](features.html#VkPhysicalDeviceBorderColorSwizzleFeaturesEXT)::`borderColorSwizzleFromImage`
@@ -1951,12 +1990,208 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSamplerBorderColorComponentMappingCreateInfoEXT-sType-sType) VUID-VkSamplerBorderColorComponentMappingCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_BORDER_COLOR_COMPONENT_MAPPING_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_BORDER_COLOR_COMPONENT_MAPPING_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSamplerBorderColorComponentMappingCreateInfoEXT-components-parameter) VUID-VkSamplerBorderColorComponentMappingCreateInfoEXT-components-parameter
 
  `components` **must** be a valid [VkComponentMapping](resources.html#VkComponentMapping) structure
+
+When using descriptor heaps, it is possible to create a sampler descriptor
+without creating a sampler object.
+Without this object, implementations using a fixed palette of border colors
+have no way to know which custom border colors are active or not.
+
+In order to use custom border colors with descriptor heaps, border colors
+**must** instead be registered with the implementation and unregistered when
+they are no longer in use, and the registered index provided when writing
+the sampler descriptor.
+
+To register a custom border color, call:
+
+// Provided by VK_EXT_custom_border_color with VK_EXT_descriptor_heap
+VkResult vkRegisterCustomBorderColorEXT(
+    VkDevice                                    device,
+    const VkSamplerCustomBorderColorCreateInfoEXT* pBorderColor,
+    VkBool32                                    requestIndex,
+    uint32_t*                                   pIndex);
+
+* 
+`device` is the logical device where the border color is registered.
+
+* 
+`pBorderColor` is a pointer to a
+[VkSamplerCustomBorderColorCreateInfoEXT](#VkSamplerCustomBorderColorCreateInfoEXT) structure specifying the
+custom border color value to register.
+
+* 
+`requestIndex` is a Boolean value indicating if a specific index is
+requested or not.
+
+* 
+`pIndex` is a pointer to a `uint32_t` index value that will be
+written by the command upon success.
+
+If `requestIndex` is [VK_TRUE](fundamentals.html#VK_TRUE), the value present in `pIndex`
+when passed to the command is a requested index, and rather than returning a
+new index, the implementation will attempt to register that index, leaving
+the value intact.
+If the implementation is unable to register a requested index,
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS](fundamentals.html#VkResult) will be returned.
+If an index has not been registered (either explicitly or implicitly by
+creating a sampler object), or if it has been subsequently unregistered, the
+implementation **must** register that index successfully.
+
+If `requestIndex` is [VK_FALSE](fundamentals.html#VK_FALSE), the value stored in `pIndex` is
+ignored, and a new index will be returned if the implementation is able to
+register a new index.
+If the implementation is unable to register a new index,
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult) will be returned.
+
+If an index is successfully registered, it **can** be used when writing a
+sampler descriptor or creating a sampler object to use with the custom
+border color, via [VkSamplerCustomBorderColorIndexCreateInfoEXT](#VkSamplerCustomBorderColorIndexCreateInfoEXT).
+
+|  | The type of border color is not specified by this command
+| --- | --- |
+([VK_BORDER_COLOR_FLOAT_CUSTOM_EXT](#VkBorderColor) vs.
+[VK_BORDER_COLOR_INT_CUSTOM_EXT](#VkBorderColor)); the data will be interpreted at the
+point the border color is sampled with an actual sampler.
+Implementations are expected to store the data as raw bytes if they do not
+need the format to be specified. |
+
+Valid Usage
+
+* 
+[](#VUID-vkRegisterCustomBorderColorEXT-requestIndex-11287) VUID-vkRegisterCustomBorderColorEXT-requestIndex-11287
+
+If `requestIndex` is [VK_TRUE](fundamentals.html#VK_TRUE), the value stored in `pIndex`
+**must** be less than [    maxCustomBorderColorSamplers](limits.html#limits-maxCustomBorderColorSamplers)
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-vkRegisterCustomBorderColorEXT-device-parameter) VUID-vkRegisterCustomBorderColorEXT-device-parameter
+
+ `device` **must** be a valid [VkDevice](devsandqueues.html#VkDevice) handle
+
+* 
+[](#VUID-vkRegisterCustomBorderColorEXT-pBorderColor-parameter) VUID-vkRegisterCustomBorderColorEXT-pBorderColor-parameter
+
+ `pBorderColor` **must** be a valid pointer to a valid [VkSamplerCustomBorderColorCreateInfoEXT](#VkSamplerCustomBorderColorCreateInfoEXT) structure
+
+* 
+[](#VUID-vkRegisterCustomBorderColorEXT-pIndex-parameter) VUID-vkRegisterCustomBorderColorEXT-pIndex-parameter
+
+ `pIndex` **must** be a valid pointer to a `uint32_t` value
+
+Return Codes
+
+[Success](fundamentals.html#fundamentals-successcodes)
+
+* 
+[VK_SUCCESS](fundamentals.html#VkResult)
+
+[Failure](fundamentals.html#fundamentals-errorcodes)
+
+* 
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
+
+To unregister a custom border color, call:
+
+// Provided by VK_EXT_custom_border_color with VK_EXT_descriptor_heap
+void vkUnregisterCustomBorderColorEXT(
+    VkDevice                                    device,
+    uint32_t                                    index);
+
+* 
+`device` is the logical device where the border color is registered.
+
+* 
+`index` is the `uint32_t` index value to unregister.
+
+Valid Usage
+
+* 
+[](#VUID-vkUnregisterCustomBorderColorEXT-index-11288) VUID-vkUnregisterCustomBorderColorEXT-index-11288
+
+`index` **must** be less than [    `maxCustomBorderColorSamplers`](limits.html#limits-maxCustomBorderColorSamplers)
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-vkUnregisterCustomBorderColorEXT-device-parameter) VUID-vkUnregisterCustomBorderColorEXT-device-parameter
+
+ `device` **must** be a valid [VkDevice](devsandqueues.html#VkDevice) handle
+
+The `VkSamplerCustomBorderColorIndexCreateInfoEXT` structure is defined
+as:
+
+// Provided by VK_EXT_custom_border_color with VK_EXT_descriptor_heap
+typedef struct VkSamplerCustomBorderColorIndexCreateInfoEXT {
+    VkStructureType    sType;
+    const void*        pNext;
+    uint32_t           index;
+} VkSamplerCustomBorderColorIndexCreateInfoEXT;
+
+* 
+`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
+
+* 
+`pNext` is `NULL` or a pointer to a structure extending this
+structure.
+
+* 
+`index` is the `uint32_t` index value to use with the sampler
+
+If this structure is included in the `pNext` chain of
+[VkSamplerCreateInfo](#VkSamplerCreateInfo), the value of `index` will be used for the
+custom border color registration.
+`index` does not need to be registered at the point that a sampler
+object is created or a sampler descriptor is written; as long as it is
+registered when any use of the sampler is recorded to a command, and remains
+registered while the sampler is in use.
+The color registered with the index and the color specified in the sampler
+**must** be identically defined.
+
+If this structure is not provided when creating a sampler object with a
+custom border color, it is equivalent to registering a new custom border
+color by calling [vkRegisterCustomBorderColorEXT](#vkRegisterCustomBorderColorEXT) with that custom
+border color value, and using that value as `index` in this structure.
+This implicit registration will be implicitly unregistered when the sampler
+is destroyed.
+
+If this structure is not provided when creating a sampler object without a
+custom border color, it is equivalent to setting `index` to 0.
+
+Valid Usage
+
+* 
+[](#VUID-VkSamplerCustomBorderColorIndexCreateInfoEXT-index-11289) VUID-VkSamplerCustomBorderColorIndexCreateInfoEXT-index-11289
+
+`index` **must** be less than [    `maxCustomBorderColorSamplers`](limits.html#limits-maxCustomBorderColorSamplers)
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkSamplerCustomBorderColorIndexCreateInfoEXT-sType-sType) VUID-VkSamplerCustomBorderColorIndexCreateInfoEXT-sType-sType
+
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_INDEX_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 The `VkSamplerBlockMatchWindowCreateInfoQCOM` structure is defined as:
 
@@ -1996,7 +2231,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSamplerBlockMatchWindowCreateInfoQCOM-sType-sType) VUID-VkSamplerBlockMatchWindowCreateInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_BLOCK_MATCH_WINDOW_CREATE_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_BLOCK_MATCH_WINDOW_CREATE_INFO_QCOM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSamplerBlockMatchWindowCreateInfoQCOM-windowCompareMode-parameter) VUID-VkSamplerBlockMatchWindowCreateInfoQCOM-windowCompareMode-parameter
@@ -2014,11 +2249,11 @@ typedef enum VkBlockMatchWindowCompareModeQCOM {
 } VkBlockMatchWindowCompareModeQCOM;
 
 * 
-`VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MIN_QCOM` specifies that
+[VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MIN_QCOM](#VkBlockMatchWindowCompareModeQCOM) specifies that
 windowed block match operations return the minimum error within the
 window.
 
 * 
-`VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_QCOM` specifies that
+[VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_QCOM](#VkBlockMatchWindowCompareModeQCOM) specifies that
 windowed block match operations return the maximum error within the
 window.

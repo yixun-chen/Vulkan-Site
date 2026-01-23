@@ -57,10 +57,10 @@ will contain the `accelerationStructureCount` number of results.
 
 Accesses to any of the acceleration structures listed in
 `pAccelerationStructures` **must** be [synchronized](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies) with the
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits.html)
 [pipeline stage](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages) and an
 [access type](../../../../spec/latest/chapters/synchronization.html#synchronization-access-types) of
-`VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR`.
+[VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR](VkAccessFlagBits.html).
 
 Valid Usage
 
@@ -94,15 +94,15 @@ been built prior to the execution of this command
 
 All acceleration structures in `pAccelerationStructures` **must** have
 been built with
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR` if
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR](VkBuildAccelerationStructureFlagBitsKHR.html) if
 `queryType` is
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV](VkQueryType.html)
 
 * 
 [](#VUID-vkCmdWriteAccelerationStructuresPropertiesNV-queryType-06216) VUID-vkCmdWriteAccelerationStructuresPropertiesNV-queryType-06216
 
 `queryType` **must** be
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV](VkQueryType.html)
 
 Valid Usage (Implicit)
 
@@ -134,7 +134,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdWriteAccelerationStructuresPropertiesNV-commandBuffer-cmdpool) VUID-vkCmdWriteAccelerationStructuresPropertiesNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdWriteAccelerationStructuresPropertiesNV-renderpass) VUID-vkCmdWriteAccelerationStructuresPropertiesNV-renderpass

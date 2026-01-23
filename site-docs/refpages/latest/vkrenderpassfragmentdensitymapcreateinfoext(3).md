@@ -52,12 +52,12 @@ the following constraints determined by the attachment’s image view
 `flags`:
 
 * 
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT`
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT](VkImageViewCreateFlagBits.html)
 specifies that the fragment density map will be read by the device
-during `VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+during [VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT`
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT](VkImageViewCreateFlagBits.html)
 specifies that the fragment density map will be read by the host during
 [vkEndCommandBuffer](vkEndCommandBuffer.html) of the primary command buffer that the render
 pass is recorded into
@@ -67,17 +67,17 @@ Otherwise the fragment density map will be read by the host during
 [vkCmdBeginRenderPass](vkCmdBeginRenderPass.html)
 
 The fragment density map **may** additionally be read by the device during
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT` for any mode.
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](VkPipelineStageFlagBits.html) for any mode.
 
 If this structure is not present, it is as if
-`fragmentDensityMapAttachment` was given as `VK_ATTACHMENT_UNUSED`.
+`fragmentDensityMapAttachment` was given as [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html).
 
 Valid Usage
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-02548) VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-02548
 
-If `fragmentDensityMapAttachment` is not `VK_ATTACHMENT_UNUSED`,
+If `fragmentDensityMapAttachment` is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html),
 `fragmentDensityMapAttachment` **must** not be an element of
 `VkSubpassDescription`::`pInputAttachments`,
 `VkSubpassDescription`::`pColorAttachments`,
@@ -88,32 +88,32 @@ If `fragmentDensityMapAttachment` is not `VK_ATTACHMENT_UNUSED`,
 * 
 [](#VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-02549) VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-02549
 
-If `fragmentDensityMapAttachment` is not `VK_ATTACHMENT_UNUSED`,
+If `fragmentDensityMapAttachment` is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html),
 `layout` **must** be equal to
-`VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT`, or
-`VK_IMAGE_LAYOUT_GENERAL`
+[VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT](VkImageLayout.html), or
+[VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-02550) VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-02550
 
-If `fragmentDensityMapAttachment` is not `VK_ATTACHMENT_UNUSED`,
+If `fragmentDensityMapAttachment` is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html),
 `fragmentDensityMapAttachment` **must** reference an attachment with a
-`loadOp` equal to `VK_ATTACHMENT_LOAD_OP_LOAD` or
-`VK_ATTACHMENT_LOAD_OP_DONT_CARE`
+`loadOp` equal to [VK_ATTACHMENT_LOAD_OP_LOAD](VkAttachmentLoadOp.html) or
+[VK_ATTACHMENT_LOAD_OP_DONT_CARE](VkAttachmentLoadOp.html)
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-02551) VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-02551
 
-If `fragmentDensityMapAttachment` is not `VK_ATTACHMENT_UNUSED`,
+If `fragmentDensityMapAttachment` is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html),
 `fragmentDensityMapAttachment` **must** reference an attachment with a
-`storeOp` equal to `VK_ATTACHMENT_STORE_OP_DONT_CARE`
+`storeOp` equal to [VK_ATTACHMENT_STORE_OP_DONT_CARE](VkAttachmentStoreOp.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-sType-sType) VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-parameter) VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-parameter

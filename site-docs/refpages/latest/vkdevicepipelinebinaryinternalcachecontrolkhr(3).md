@@ -42,7 +42,7 @@ structure.
 implementation’s internal pipeline cache.
 
 If the `VkDeviceCreateInfo`::`pNext` chain does not include this
-structure, then `disableInternalCache` defaults to `VK_FALSE`.
+structure, then `disableInternalCache` defaults to [VK_FALSE](VK_FALSE.html).
 
 Valid Usage
 
@@ -51,14 +51,14 @@ Valid Usage
 
 If
 [VkPhysicalDevicePipelineBinaryPropertiesKHR](VkPhysicalDevicePipelineBinaryPropertiesKHR.html)::`pipelineBinaryInternalCacheControl`
-is `VK_FALSE`, `disableInternalCache` **must** be `VK_FALSE`
+is [VK_FALSE](VK_FALSE.html), `disableInternalCache` **must** be [VK_FALSE](VK_FALSE.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDevicePipelineBinaryInternalCacheControlKHR-sType-sType) VUID-VkDevicePipelineBinaryInternalCacheControlKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_PIPELINE_BINARY_INTERNAL_CACHE_CONTROL_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_PIPELINE_BINARY_INTERNAL_CACHE_CONTROL_KHR](VkStructureType.html)
 
 [VK_KHR_pipeline_binary](VK_KHR_pipeline_binary.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -17,7 +17,7 @@
 
 VK_MAX_DRIVER_NAME_SIZE - Maximum length of a physical device driver name string
 
-`VK_MAX_DRIVER_NAME_SIZE` is the length in `char` values of an array
+[VK_MAX_DRIVER_NAME_SIZE](#) is the length in `char` values of an array
 containing a driver name string, as returned in
 [VkPhysicalDeviceDriverProperties](VkPhysicalDeviceDriverProperties.html)::`driverName`.
 

@@ -57,7 +57,7 @@ This command returns information about whether a descriptor set satisfies
 this limit.
 If the descriptor set layout satisfies the
 [VkPhysicalDeviceMaintenance3Properties](VkPhysicalDeviceMaintenance3Properties.html)::`maxPerSetDescriptors`
-limit, this command is guaranteed to return `VK_TRUE` in
+limit, this command is guaranteed to return [VK_TRUE](VK_TRUE.html) in
 [VkDescriptorSetLayoutSupport](VkDescriptorSetLayoutSupport.html)::`supported`.
 If the descriptor set layout exceeds the
 [VkPhysicalDeviceMaintenance3Properties](VkPhysicalDeviceMaintenance3Properties.html)::`maxPerSetDescriptors`

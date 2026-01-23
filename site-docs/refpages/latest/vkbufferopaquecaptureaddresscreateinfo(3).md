@@ -57,13 +57,13 @@ zero.
 
 Applications **should** avoid creating buffers with application-provided
 addresses and implementation-provided addresses in the same process, to
-reduce the likelihood of `VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS`
+reduce the likelihood of [VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS](VkResult.html)
 errors.
 
 |  | The expected usage for this is that a trace capture/replay tool will add the
 | --- | --- |
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` flag to all buffers
-that use `VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT`, and during capture
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkBufferCreateFlagBits.html) flag to all buffers
+that use [VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](VkBufferUsageFlagBits.html), and during capture
 will save the queried opaque device addresses in the trace.
 During replay, the buffers will be created specifying the original address
 so any address values stored in the trace data will remain valid.
@@ -72,7 +72,7 @@ Implementations are expected to separate such buffers in the GPU address
 space so normal allocations will avoid using these addresses.
 Applications and tools should avoid mixing application-provided and
 implementation-provided addresses for buffers created with
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT`, to avoid address
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkBufferCreateFlagBits.html), to avoid address
 space allocation conflicts. |
 
 Valid Usage (Implicit)
@@ -80,7 +80,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferOpaqueCaptureAddressCreateInfo-sType-sType) VUID-VkBufferOpaqueCaptureAddressCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_OPAQUE_CAPTURE_ADDRESS_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_OPAQUE_CAPTURE_ADDRESS_CREATE_INFO](VkStructureType.html)
 
 [VK_KHR_buffer_device_address](VK_KHR_buffer_device_address.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), [VkStructureType](VkStructureType.html)
 

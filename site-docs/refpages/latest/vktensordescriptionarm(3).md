@@ -65,9 +65,9 @@ each dimension.
 `usage` is a bitmask of [VkTensorUsageFlagBitsARM](VkTensorUsageFlagBitsARM.html) specifying
 the usage of the tensor.
 
-When describing a tensor created with `VK_TENSOR_TILING_OPTIMAL_ARM`,
+When describing a tensor created with [VK_TENSOR_TILING_OPTIMAL_ARM](VkTensorTilingARM.html),
 `pStrides` must be equal to `NULL`.
-When describing a tensor created with `VK_TENSOR_TILING_LINEAR_ARM`,
+When describing a tensor created with [VK_TENSOR_TILING_LINEAR_ARM](VkTensorTilingARM.html),
 `pStrides` is either an array of size `dimensionCount` or `NULL`.
 
 The formats that **must** be supported for `format` are documented in
@@ -86,7 +86,7 @@ element and for each dimension `n` greater than 0 and less than
 If the [tensorNonPacked](../../../../spec/latest/chapters/features.html#features-tensorNonPacked) feature is not enabled,
 the tensor **must** be a packed tensor.
 
-When a tensor is created with `VK_TENSOR_TILING_LINEAR_ARM` and
+When a tensor is created with [VK_TENSOR_TILING_LINEAR_ARM](VkTensorTilingARM.html) and
 `pStrides` equal to `NULL` the tensor strides are calculated by the
 vulkan implementation such that the resulting tensor is a packed tensor.
 
@@ -121,7 +121,7 @@ For each i where i ≤ dimensionCount-1,
 * 
 [](#VUID-VkTensorDescriptionARM-format-09735) VUID-VkTensorDescriptionARM-format-09735
 
-`format` **must** not be `VK_FORMAT_UNDEFINED` and **must** be a
+`format` **must** not be [VK_FORMAT_UNDEFINED](VkFormat.html) and **must** be a
 one-component [VkFormat](VkFormat.html)
 
 * 
@@ -167,8 +167,8 @@ a packed tensor
 * 
 [](#VUID-VkTensorDescriptionARM-tiling-09741) VUID-VkTensorDescriptionARM-tiling-09741
 
-If `tiling` is `VK_TENSOR_TILING_OPTIMAL_ARM` and `usage` is
-`VK_TENSOR_USAGE_IMAGE_ALIASING_BIT_ARM` then the size of the tensor
+If `tiling` is [VK_TENSOR_TILING_OPTIMAL_ARM](VkTensorTilingARM.html) and `usage` is
+[VK_TENSOR_USAGE_IMAGE_ALIASING_BIT_ARM](VkTensorUsageFlagBitsARM.html) then the size of the tensor
 along its innermost dimension, i.e.
 `pDimensions`[`dimensionCount` - 1], **must** be less than or
 equal to `4`
@@ -176,8 +176,8 @@ equal to `4`
 * 
 [](#VUID-VkTensorDescriptionARM-tiling-09742) VUID-VkTensorDescriptionARM-tiling-09742
 
-If `tiling` is `VK_TENSOR_TILING_LINEAR_ARM` then
-`VK_TENSOR_USAGE_IMAGE_ALIASING_BIT_ARM` **must** not be set in
+If `tiling` is [VK_TENSOR_TILING_LINEAR_ARM](VkTensorTilingARM.html) then
+[VK_TENSOR_USAGE_IMAGE_ALIASING_BIT_ARM](VkTensorUsageFlagBitsARM.html) **must** not be set in
 `usage`
 
 Valid Usage (Implicit)
@@ -185,7 +185,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTensorDescriptionARM-sType-sType) VUID-VkTensorDescriptionARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TENSOR_DESCRIPTION_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TENSOR_DESCRIPTION_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkTensorDescriptionARM-tiling-parameter) VUID-VkTensorDescriptionARM-tiling-parameter

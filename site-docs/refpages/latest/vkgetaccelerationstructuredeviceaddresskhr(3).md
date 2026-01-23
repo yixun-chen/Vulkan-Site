@@ -46,9 +46,9 @@ If the acceleration structure was created with a non-zero value of
 value will be the same address.
 
 If the acceleration structure was created with a `type` of
-`VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR`, the returned address **must**
+[VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](VkAccelerationStructureTypeKHR.html), the returned address **must**
 be consistent with the relative offset to other acceleration structures with
-`type` `VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR` allocated with
+`type` [VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](VkAccelerationStructureTypeKHR.html) allocated with
 the same [VkBuffer](VkBuffer.html).
 That is, the difference in returned addresses between the two **must** be the
 same as the difference in offsets provided at acceleration structure
@@ -60,7 +60,7 @@ The returned address **must** be aligned to 256 bytes.
 | --- | --- |
 device address corresponding to the acceleration structure’s start offset in
 its storage buffer for acceleration structure types other than
-`VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR`. |
+[VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](VkAccelerationStructureTypeKHR.html). |
 
 Valid Usage
 
@@ -88,7 +88,7 @@ single `VkDeviceMemory` object
 
 The buffer on which `pInfo->accelerationStructure` was placed **must**
 have been created with the
-`VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT` usage flag set
+[VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 Valid Usage (Implicit)
 

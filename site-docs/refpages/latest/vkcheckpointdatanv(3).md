@@ -37,7 +37,7 @@ typedef struct VkCheckpointDataNV {
 structure.
 
 * 
-`stage` is a `VkPipelineStageFlagBits` value specifying which
+`stage` is a [VkPipelineStageFlagBits](VkPipelineStageFlagBits.html) value specifying which
 pipeline stage the checkpoint marker data refers to.
 
 * 
@@ -53,7 +53,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCheckpointDataNV-sType-sType) VUID-VkCheckpointDataNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CHECKPOINT_DATA_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CHECKPOINT_DATA_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkCheckpointDataNV-pNext-pNext) VUID-VkCheckpointDataNV-pNext-pNext

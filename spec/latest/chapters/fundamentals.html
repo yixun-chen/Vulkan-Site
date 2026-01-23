@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:spec" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -174,6 +174,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="descriptorsets.html">Resource Descriptors</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="descriptorheaps.html">Descriptor Heaps</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="interfaces.html">Shader Interfaces</a>
@@ -913,16 +916,16 @@ typedef uint32_t VkBool32;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>VK_TRUE</code> represents a boolean <strong>True</strong> (unsigned integer 1) value, and
-<code>VK_FALSE</code> a boolean <strong>False</strong> (unsigned integer 0) value.</p>
+<p><a href="#VK_TRUE">VK_TRUE</a> represents a boolean <strong>True</strong> (unsigned integer 1) value, and
+<a href="#VK_FALSE">VK_FALSE</a> a boolean <strong>False</strong> (unsigned integer 0) value.</p>
 </div>
 <div class="paragraph">
 <p>All values returned from a Vulkan implementation in a <code>VkBool32</code> will
-be either <code>VK_TRUE</code> or <code>VK_FALSE</code>.</p>
+be either <a href="#VK_TRUE">VK_TRUE</a> or <a href="#VK_FALSE">VK_FALSE</a>.</p>
 </div>
 <div class="paragraph">
-<p>Applications <strong>must</strong> not pass any other values than <code>VK_TRUE</code> or
-<code>VK_FALSE</code> into a Vulkan implementation where a <code>VkBool32</code> is
+<p>Applications <strong>must</strong> not pass any other values than <a href="#VK_TRUE">VK_TRUE</a> or
+<a href="#VK_FALSE">VK_FALSE</a> into a Vulkan implementation where a <code>VkBool32</code> is
 expected.</p>
 </div>
 </div>
@@ -930,7 +933,7 @@ expected.</p>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p><code>VK_TRUE</code> is a constant representing a <code>VkBool32</code> <strong>True</strong> value.</p>
+<p><a href="#VK_TRUE">VK_TRUE</a> is a constant representing a <code>VkBool32</code> <strong>True</strong> value.</p>
 </div>
 <div id="VK_TRUE" class="listingblock">
 <div class="content">
@@ -942,7 +945,7 @@ expected.</p>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p><code>VK_FALSE</code> is a constant representing a <code>VkBool32</code> <strong>False</strong> value.</p>
+<p><a href="#VK_FALSE">VK_FALSE</a> is a constant representing a <code>VkBool32</code> <strong>False</strong> value.</p>
 </div>
 <div id="VK_FALSE" class="listingblock">
 <div class="content">
@@ -1083,7 +1086,7 @@ return array.
 If the input element count is less than the number of retrievable array
 elements, the query will write only as many elements to the return array as
 specified by the element count variable set by the application, and the
-command will return <code>VK_INCOMPLETE</code> instead of <code>VK_SUCCESS</code>, to
+command will return <a href="#VkResult">VK_INCOMPLETE</a> instead of <a href="#VkResult">VK_SUCCESS</a>, to
 indicate that not all retrievable array elements were returned.</p>
 </div>
 <div class="admonitionblock note">
@@ -1147,7 +1150,7 @@ number of elements actually written to the return array.
 If the input element count is less than the number of retrievable array
 elements, the query will write only as many elements to the return array as
 specified by the input element count, and the command will return
-<code>VK_INCOMPLETE</code> instead of <code>VK_SUCCESS</code>, if the query command has a
+<a href="#VkResult">VK_INCOMPLETE</a> instead of <a href="#VkResult">VK_SUCCESS</a>, if the query command has a
 <a href="#VkResult">VkResult</a> return type, to indicate that not all retrievable array
 elements were returned.</p>
 </div>
@@ -1205,7 +1208,7 @@ storage in any output structure.</p>
 <div class="paragraph">
 <p>Some query commands of the form <code>vkGet*</code> retrieve opaque binary data in
 the form of a byte array and have a possible result code of
-<code>VK_ERROR_NOT_ENOUGH_SPACE_KHR</code>.
+<a href="#VkResult">VK_ERROR_NOT_ENOUGH_SPACE_KHR</a>.
 Such commands always have two pointer arguments as follows:</p>
 </div>
 <div class="ulist">
@@ -1232,18 +1235,18 @@ case the binary data size argument is not a pointer.</p>
 <div class="paragraph">
 <p>If the input binary size is less than the total retrievable binary size, the
 query will not write any data to the location pointed to the binary pointer,
-and the command will return <code>VK_ERROR_NOT_ENOUGH_SPACE_KHR</code> instead of
-<code>VK_SUCCESS</code>.</p>
+and the command will return <a href="#VkResult">VK_ERROR_NOT_ENOUGH_SPACE_KHR</a> instead of
+<a href="#VkResult">VK_SUCCESS</a>.</p>
 </div>
 <div class="paragraph">
-<p>If the return code is <code>VK_SUCCESS</code> or
-<code>VK_ERROR_NOT_ENOUGH_SPACE_KHR</code>, the total size of the binary data that
+<p>If the return code is <a href="#VkResult">VK_SUCCESS</a> or
+<a href="#VkResult">VK_ERROR_NOT_ENOUGH_SPACE_KHR</a>, the total size of the binary data that
 <strong>can</strong> be retrieved is returned in the variable pointed to by the binary size
 pointer.</p>
 </div>
 <div class="paragraph">
 <p>If multiple binaries are being retrieved,
-<code>VK_ERROR_NOT_ENOUGH_SPACE_KHR</code> will be returned if any input binary
+<a href="#VkResult">VK_ERROR_NOT_ENOUGH_SPACE_KHR</a> will be returned if any input binary
 sizes are less than their respective total retrievable binary sizes.
 Unless otherwise specified, this command will determine writing data to each
 binary individually based on if their input binary sizes are sufficiently
@@ -1261,7 +1264,7 @@ sized, following the behavior for single binary retrieval.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If <code>VK_ERROR_NOT_ENOUGH_SPACE_KHR</code> is returned with a command that
+<p>If <a href="#VkResult">VK_ERROR_NOT_ENOUGH_SPACE_KHR</a> is returned with a command that
 returns multiple binaries, the application <strong>can</strong> determine which binaries are
 undersized by comparing the total binary size that is returned for each
 binary against the allocated size that was provided to the command.</p>
@@ -1279,7 +1282,7 @@ binary against the allocated size that was provided to the command.</p>
 <td class="content">
 <div class="paragraph">
 <p>Some binary queries do not behave consistently with this pattern for
-historical reasons, primarily that the <code>VK_ERROR_NOT_ENOUGH_SPACE_KHR</code>
+historical reasons, primarily that the <a href="#VkResult">VK_ERROR_NOT_ENOUGH_SPACE_KHR</a>
 error code was not defined until after those queries were written.</p>
 </div>
 <div class="paragraph">
@@ -1362,13 +1365,17 @@ These implicit parameters are documented as described below.</p>
 <p>The <code>device</code> parameter in <a href="devsandqueues.html#vkDestroyDevice" class="xref page">vkDestroyDevice</a></p>
 </li>
 <li>
-<p>The <code>queue</code> parameter in <a href="cmdbuffers.html#vkQueueSubmit" class="xref page">vkQueueSubmit</a></p>
+<p>The <code>queue</code> parameter in <a href="cmdbuffers.html#vkQueueSubmit" class="xref page">vkQueueSubmit</a>,
+if it was not created with
+<a href="devsandqueues.html#VkDeviceQueueCreateFlagBits" class="xref page">VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR</a></p>
 </li>
 <li>
 <p>The <code>fence</code> parameter in <a href="cmdbuffers.html#vkQueueSubmit" class="xref page">vkQueueSubmit</a></p>
 </li>
 <li>
-<p>The <code>queue</code> parameter in <a href="synchronization.html#vkQueueWaitIdle" class="xref page">vkQueueWaitIdle</a></p>
+<p>The <code>queue</code> parameter in <a href="synchronization.html#vkQueueWaitIdle" class="xref page">vkQueueWaitIdle</a>,
+if it was not created with
+<a href="devsandqueues.html#VkDeviceQueueCreateFlagBits" class="xref page">VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR</a></p>
 </li>
 <li>
 <p>The <code>memory</code> parameter in <a href="memory.html#vkFreeMemory" class="xref page">vkFreeMemory</a></p>
@@ -1386,7 +1393,9 @@ These implicit parameters are documented as described below.</p>
 <p>The <code>image</code> parameter in <a href="resources.html#vkBindImageMemory" class="xref page">vkBindImageMemory</a></p>
 </li>
 <li>
-<p>The <code>queue</code> parameter in <a href="sparsemem.html#vkQueueBindSparse" class="xref page">vkQueueBindSparse</a></p>
+<p>The <code>queue</code> parameter in <a href="sparsemem.html#vkQueueBindSparse" class="xref page">vkQueueBindSparse</a>,
+if it was not created with
+<a href="devsandqueues.html#VkDeviceQueueCreateFlagBits" class="xref page">VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR</a></p>
 </li>
 <li>
 <p>The <code>fence</code> parameter in <a href="sparsemem.html#vkQueueBindSparse" class="xref page">vkQueueBindSparse</a></p>
@@ -1656,7 +1665,9 @@ These implicit parameters are documented as described below.</p>
 <p>The <code>commandBuffer</code> parameter in <a href="queries.html#vkCmdWriteTimestamp2" class="xref page">vkCmdWriteTimestamp2</a></p>
 </li>
 <li>
-<p>The <code>queue</code> parameter in <a href="cmdbuffers.html#vkQueueSubmit2" class="xref page">vkQueueSubmit2</a></p>
+<p>The <code>queue</code> parameter in <a href="cmdbuffers.html#vkQueueSubmit2" class="xref page">vkQueueSubmit2</a>,
+if it was not created with
+<a href="devsandqueues.html#VkDeviceQueueCreateFlagBits" class="xref page">VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR</a></p>
 </li>
 <li>
 <p>The <code>fence</code> parameter in <a href="cmdbuffers.html#vkQueueSubmit2" class="xref page">vkQueueSubmit2</a></p>
@@ -1785,7 +1796,9 @@ These implicit parameters are documented as described below.</p>
 <p>The <code>fence</code> parameter in <a href="VK_KHR_surface/wsi.html#vkAcquireNextImageKHR" class="xref page">vkAcquireNextImageKHR</a></p>
 </li>
 <li>
-<p>The <code>queue</code> parameter in <a href="VK_KHR_surface/wsi.html#vkQueuePresentKHR" class="xref page">vkQueuePresentKHR</a></p>
+<p>The <code>queue</code> parameter in <a href="VK_KHR_surface/wsi.html#vkQueuePresentKHR" class="xref page">vkQueuePresentKHR</a>,
+if it was not created with
+<a href="devsandqueues.html#VkDeviceQueueCreateFlagBits" class="xref page">VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR</a></p>
 </li>
 <li>
 <p>The <code>surface</code> parameter in <a href="VK_KHR_surface/wsi.html#vkGetDeviceGroupSurfacePresentModesKHR" class="xref page">vkGetDeviceGroupSurfacePresentModesKHR</a></p>
@@ -1902,7 +1915,9 @@ These implicit parameters are documented as described below.</p>
 <p>The <code>commandBuffer</code> parameter in <a href="queries.html#vkCmdWriteTimestamp2KHR" class="xref page">vkCmdWriteTimestamp2KHR</a></p>
 </li>
 <li>
-<p>The <code>queue</code> parameter in <a href="cmdbuffers.html#vkQueueSubmit2KHR" class="xref page">vkQueueSubmit2KHR</a></p>
+<p>The <code>queue</code> parameter in <a href="cmdbuffers.html#vkQueueSubmit2KHR" class="xref page">vkQueueSubmit2KHR</a>,
+if it was not created with
+<a href="devsandqueues.html#VkDeviceQueueCreateFlagBits" class="xref page">VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR</a></p>
 </li>
 <li>
 <p>The <code>fence</code> parameter in <a href="cmdbuffers.html#vkQueueSubmit2KHR" class="xref page">vkQueueSubmit2KHR</a></p>
@@ -2031,13 +2046,19 @@ These implicit parameters are documented as described below.</p>
 <p>The <code>objectHandle</code> member of the <code>pNameInfo</code> parameter in <a href="debugging.html#vkSetDebugUtilsObjectNameEXT" class="xref page">vkSetDebugUtilsObjectNameEXT</a></p>
 </li>
 <li>
-<p>The <code>queue</code> parameter in <a href="debugging.html#vkQueueBeginDebugUtilsLabelEXT" class="xref page">vkQueueBeginDebugUtilsLabelEXT</a></p>
+<p>The <code>queue</code> parameter in <a href="debugging.html#vkQueueBeginDebugUtilsLabelEXT" class="xref page">vkQueueBeginDebugUtilsLabelEXT</a>,
+if it was not created with
+<a href="devsandqueues.html#VkDeviceQueueCreateFlagBits" class="xref page">VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR</a></p>
 </li>
 <li>
-<p>The <code>queue</code> parameter in <a href="debugging.html#vkQueueEndDebugUtilsLabelEXT" class="xref page">vkQueueEndDebugUtilsLabelEXT</a></p>
+<p>The <code>queue</code> parameter in <a href="debugging.html#vkQueueEndDebugUtilsLabelEXT" class="xref page">vkQueueEndDebugUtilsLabelEXT</a>,
+if it was not created with
+<a href="devsandqueues.html#VkDeviceQueueCreateFlagBits" class="xref page">VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR</a></p>
 </li>
 <li>
-<p>The <code>queue</code> parameter in <a href="debugging.html#vkQueueInsertDebugUtilsLabelEXT" class="xref page">vkQueueInsertDebugUtilsLabelEXT</a></p>
+<p>The <code>queue</code> parameter in <a href="debugging.html#vkQueueInsertDebugUtilsLabelEXT" class="xref page">vkQueueInsertDebugUtilsLabelEXT</a>,
+if it was not created with
+<a href="devsandqueues.html#VkDeviceQueueCreateFlagBits" class="xref page">VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR</a></p>
 </li>
 <li>
 <p>The <code>commandBuffer</code> parameter in <a href="debugging.html#vkCmdBeginDebugUtilsLabelEXT" class="xref page">vkCmdBeginDebugUtilsLabelEXT</a></p>
@@ -2053,6 +2074,15 @@ These implicit parameters are documented as described below.</p>
 </li>
 <li>
 <p>The <code>pipelineCache</code> parameter in <a href="executiongraphs.html#vkCreateExecutionGraphPipelinesAMDX" class="xref page">vkCreateExecutionGraphPipelinesAMDX</a>, conditionally<sup>1</sup></p>
+</li>
+<li>
+<p>The <code>commandBuffer</code> parameter in <a href="descriptorheaps.html#vkCmdBindSamplerHeapEXT" class="xref page">vkCmdBindSamplerHeapEXT</a></p>
+</li>
+<li>
+<p>The <code>commandBuffer</code> parameter in <a href="descriptorheaps.html#vkCmdBindResourceHeapEXT" class="xref page">vkCmdBindResourceHeapEXT</a></p>
+</li>
+<li>
+<p>The <code>commandBuffer</code> parameter in <a href="descriptorheaps.html#vkCmdPushDataEXT" class="xref page">vkCmdPushDataEXT</a></p>
 </li>
 <li>
 <p>The <code>commandBuffer</code> parameter in <a href="primsrast.html#vkCmdSetSampleLocationsEXT" class="xref page">vkCmdSetSampleLocationsEXT</a></p>
@@ -2136,7 +2166,9 @@ These implicit parameters are documented as described below.</p>
 <p>The <code>configuration</code> parameter in <a href="queries.html#vkReleasePerformanceConfigurationINTEL" class="xref page">vkReleasePerformanceConfigurationINTEL</a></p>
 </li>
 <li>
-<p>The <code>queue</code> parameter in <a href="queries.html#vkQueueSetPerformanceConfigurationINTEL" class="xref page">vkQueueSetPerformanceConfigurationINTEL</a></p>
+<p>The <code>queue</code> parameter in <a href="queries.html#vkQueueSetPerformanceConfigurationINTEL" class="xref page">vkQueueSetPerformanceConfigurationINTEL</a>,
+if it was not created with
+<a href="devsandqueues.html#VkDeviceQueueCreateFlagBits" class="xref page">VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR</a></p>
 </li>
 <li>
 <p>The <code>commandBuffer</code> parameter in <a href="primsrast.html#vkCmdSetLineStippleEXT" class="xref page">vkCmdSetLineStippleEXT</a></p>
@@ -2629,10 +2661,16 @@ The implicit parameters and their associated object are listed below.</p>
 <p>All <code>VkPhysicalDevice</code> objects enumerated from <code>instance</code> in <a href="initialization.html#vkDestroyInstance" class="xref page">vkDestroyInstance</a></p>
 </li>
 <li>
-<p>All <code>VkQueue</code> objects created from <code>device</code> in <a href="devsandqueues.html#vkDestroyDevice" class="xref page">vkDestroyDevice</a></p>
+<p>All <code>VkQueue</code> objects created from <code>device</code>
+that are not created with
+<a href="devsandqueues.html#VkDeviceQueueCreateFlagBits" class="xref page">VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR</a>
+             in <a href="devsandqueues.html#vkDestroyDevice" class="xref page">vkDestroyDevice</a></p>
 </li>
 <li>
-<p>All <code>VkQueue</code> objects created from <code>device</code> in <a href="synchronization.html#vkDeviceWaitIdle" class="xref page">vkDeviceWaitIdle</a></p>
+<p>All <code>VkQueue</code> objects created from <code>device</code>
+that are not created with
+<a href="devsandqueues.html#VkDeviceQueueCreateFlagBits" class="xref page">VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR</a>
+             in <a href="synchronization.html#vkDeviceWaitIdle" class="xref page">vkDeviceWaitIdle</a></p>
 </li>
 <li>
 <p>The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from in <a href="cmdbuffers.html#vkBeginCommandBuffer" class="xref page">vkBeginCommandBuffer</a></p>
@@ -3113,6 +3151,15 @@ The implicit parameters and their associated object are listed below.</p>
 </li>
 <li>
 <p>The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from, in <a href="executiongraphs.html#vkCmdDispatchGraphIndirectCountAMDX" class="xref page">vkCmdDispatchGraphIndirectCountAMDX</a></p>
+</li>
+<li>
+<p>The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from, in <a href="descriptorheaps.html#vkCmdBindSamplerHeapEXT" class="xref page">vkCmdBindSamplerHeapEXT</a></p>
+</li>
+<li>
+<p>The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from, in <a href="descriptorheaps.html#vkCmdBindResourceHeapEXT" class="xref page">vkCmdBindResourceHeapEXT</a></p>
+</li>
+<li>
+<p>The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from, in <a href="descriptorheaps.html#vkCmdPushDataEXT" class="xref page">vkCmdPushDataEXT</a></p>
 </li>
 <li>
 <p>The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from, in <a href="primsrast.html#vkCmdSetSampleLocationsEXT" class="xref page">vkCmdSetSampleLocationsEXT</a></p>
@@ -4298,57 +4345,57 @@ typedef enum VkResult {
 <div class="title">Success Codes</div>
 <ul>
 <li>
-<p><code>VK_SUCCESS</code> Command successfully completed</p>
+<p><a href="#VkResult">VK_SUCCESS</a> Command successfully completed</p>
 </li>
 <li>
-<p><code>VK_NOT_READY</code> A fence or query has not yet completed</p>
+<p><a href="#VkResult">VK_NOT_READY</a> A fence or query has not yet completed</p>
 </li>
 <li>
-<p><code>VK_TIMEOUT</code> A wait operation has not completed in the specified
+<p><a href="#VkResult">VK_TIMEOUT</a> A wait operation has not completed in the specified
 time</p>
 </li>
 <li>
-<p><code>VK_EVENT_SET</code> An event is signaled</p>
+<p><a href="#VkResult">VK_EVENT_SET</a> An event is signaled</p>
 </li>
 <li>
-<p><code>VK_EVENT_RESET</code> An event is unsignaled</p>
+<p><a href="#VkResult">VK_EVENT_RESET</a> An event is unsignaled</p>
 </li>
 <li>
-<p><code>VK_INCOMPLETE</code> A return array was too small for the result</p>
+<p><a href="#VkResult">VK_INCOMPLETE</a> A return array was too small for the result</p>
 </li>
 <li>
-<p><code>VK_SUBOPTIMAL_KHR</code> A swapchain no longer matches the surface
+<p><a href="#VkResult">VK_SUBOPTIMAL_KHR</a> A swapchain no longer matches the surface
 properties exactly, but <strong>can</strong> still be used to present to the surface
 successfully.</p>
 </li>
 <li>
-<p><code>VK_THREAD_IDLE_KHR</code> A deferred operation is not complete but there
+<p><a href="#VkResult">VK_THREAD_IDLE_KHR</a> A deferred operation is not complete but there
 is currently no work for this thread to do at the time of this call.</p>
 </li>
 <li>
-<p><code>VK_THREAD_DONE_KHR</code> A deferred operation is not complete but there
+<p><a href="#VkResult">VK_THREAD_DONE_KHR</a> A deferred operation is not complete but there
 is no work remaining to assign to additional threads.</p>
 </li>
 <li>
-<p><code>VK_OPERATION_DEFERRED_KHR</code> A deferred operation was requested and
+<p><a href="#VkResult">VK_OPERATION_DEFERRED_KHR</a> A deferred operation was requested and
 at least some of the work was deferred.</p>
 </li>
 <li>
-<p><code>VK_OPERATION_NOT_DEFERRED_KHR</code> A deferred operation was requested
+<p><a href="#VkResult">VK_OPERATION_NOT_DEFERRED_KHR</a> A deferred operation was requested
 and no operations were deferred.</p>
 </li>
 <li>
-<p><code>VK_PIPELINE_COMPILE_REQUIRED</code> A requested pipeline creation would
+<p><a href="#VkResult">VK_PIPELINE_COMPILE_REQUIRED</a> A requested pipeline creation would
 have required compilation, but the application requested compilation to
 not be performed.</p>
 </li>
 <li>
-<p><code>VK_PIPELINE_BINARY_MISSING_KHR</code> The application attempted to create
+<p><a href="#VkResult">VK_PIPELINE_BINARY_MISSING_KHR</a> The application attempted to create
 a pipeline binary by querying an internal cache, but the internal cache
 entry did not exist.</p>
 </li>
 <li>
-<p><code>VK_INCOMPATIBLE_SHADER_BINARY_EXT</code> The provided binary shader code
+<p><a href="#VkResult">VK_INCOMPATIBLE_SHADER_BINARY_EXT</a> The provided binary shader code
 is not compatible with this device.</p>
 <div class="admonitionblock note">
 <table>
@@ -4359,7 +4406,7 @@ is not compatible with this device.</p>
 <td class="content">
 <div class="paragraph">
 <p>In the initial version of the <code><a href="../appendices/extensions.html#VK_EXT_shader_object" class="xref page">VK_EXT_shader_object</a></code> extension, this
-return code was named <code>VK_ERROR_INCOMPATIBLE_SHADER_BINARY_EXT</code> and
+return code was named <a href="#VkResult">VK_ERROR_INCOMPATIBLE_SHADER_BINARY_EXT</a> and
 improperly described as an error code.
 The name has been changed, but the old name is retained as an alias for
 compatibility with old code.</p>
@@ -4375,154 +4422,154 @@ compatibility with old code.</p>
 <div class="title">Error Codes</div>
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code> A host memory allocation has failed.</p>
+<p><a href="#VkResult">VK_ERROR_OUT_OF_HOST_MEMORY</a> A host memory allocation has failed.</p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code> A device memory allocation has
+<p><a href="#VkResult">VK_ERROR_OUT_OF_DEVICE_MEMORY</a> A device memory allocation has
 failed.</p>
 </li>
 <li>
-<p><code>VK_ERROR_INITIALIZATION_FAILED</code> Initialization of an object could
+<p><a href="#VkResult">VK_ERROR_INITIALIZATION_FAILED</a> Initialization of an object could
 not be completed for implementation-specific reasons.</p>
 </li>
 <li>
-<p><code>VK_ERROR_DEVICE_LOST</code> The logical or physical device has been lost.
+<p><a href="#VkResult">VK_ERROR_DEVICE_LOST</a> The logical or physical device has been lost.
 See <a href="devsandqueues.html#devsandqueues-lost-device" class="xref page">Lost Device</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_MEMORY_MAP_FAILED</code> Mapping of a memory object has failed.</p>
+<p><a href="#VkResult">VK_ERROR_MEMORY_MAP_FAILED</a> Mapping of a memory object has failed.</p>
 </li>
 <li>
-<p><code>VK_ERROR_LAYER_NOT_PRESENT</code> A requested layer is not present or
+<p><a href="#VkResult">VK_ERROR_LAYER_NOT_PRESENT</a> A requested layer is not present or
 could not be loaded.</p>
 </li>
 <li>
-<p><code>VK_ERROR_EXTENSION_NOT_PRESENT</code> A requested extension is not
+<p><a href="#VkResult">VK_ERROR_EXTENSION_NOT_PRESENT</a> A requested extension is not
 supported.</p>
 </li>
 <li>
-<p><code>VK_ERROR_FEATURE_NOT_PRESENT</code> A requested feature is not supported.</p>
+<p><a href="#VkResult">VK_ERROR_FEATURE_NOT_PRESENT</a> A requested feature is not supported.</p>
 </li>
 <li>
-<p><code>VK_ERROR_INCOMPATIBLE_DRIVER</code> The requested version of Vulkan is
+<p><a href="#VkResult">VK_ERROR_INCOMPATIBLE_DRIVER</a> The requested version of Vulkan is
 not supported by the driver or is otherwise incompatible for
 implementation-specific reasons.</p>
 </li>
 <li>
-<p><code>VK_ERROR_TOO_MANY_OBJECTS</code> Too many objects of the type have
+<p><a href="#VkResult">VK_ERROR_TOO_MANY_OBJECTS</a> Too many objects of the type have
 already been created.</p>
 </li>
 <li>
-<p><code>VK_ERROR_FORMAT_NOT_SUPPORTED</code> A requested format is not supported
+<p><a href="#VkResult">VK_ERROR_FORMAT_NOT_SUPPORTED</a> A requested format is not supported
 on this device.</p>
 </li>
 <li>
-<p><code>VK_ERROR_FRAGMENTED_POOL</code> A pool allocation has failed due to
+<p><a href="#VkResult">VK_ERROR_FRAGMENTED_POOL</a> A pool allocation has failed due to
 fragmentation of the pool&#8217;s memory.
 This <strong>must</strong> only be returned if no attempt to allocate host or device
 memory was made to accommodate the new allocation.
 This <strong>should</strong> be returned in preference to
-<code>VK_ERROR_OUT_OF_POOL_MEMORY</code>, but only if the implementation is
+<a href="#VkResult">VK_ERROR_OUT_OF_POOL_MEMORY</a>, but only if the implementation is
 certain that the pool allocation failure was due to fragmentation.</p>
 </li>
 <li>
-<p><code>VK_ERROR_SURFACE_LOST_KHR</code> A surface is no longer available.</p>
+<p><a href="#VkResult">VK_ERROR_SURFACE_LOST_KHR</a> A surface is no longer available.</p>
 </li>
 <li>
-<p><code>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</code> The requested window is already
+<p><a href="#VkResult">VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</a> The requested window is already
 in use by Vulkan or another API in a manner which prevents it from being
 used again.</p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_DATE_KHR</code> A surface has changed in such a way that
+<p><a href="#VkResult">VK_ERROR_OUT_OF_DATE_KHR</a> A surface has changed in such a way that
 it is no longer compatible with the swapchain, and further presentation
 requests using the swapchain will fail.
 Applications <strong>must</strong> query the new surface properties and recreate their
 swapchain if they wish to continue presenting to the surface.</p>
 </li>
 <li>
-<p><code>VK_ERROR_INCOMPATIBLE_DISPLAY_KHR</code> The display used by a swapchain
+<p><a href="#VkResult">VK_ERROR_INCOMPATIBLE_DISPLAY_KHR</a> The display used by a swapchain
 does not use the same presentable image layout, or is incompatible in a
 way that prevents sharing an image.</p>
 </li>
 <li>
-<p><code>VK_ERROR_INVALID_SHADER_NV</code> One or more shaders failed to compile
+<p><a href="#VkResult">VK_ERROR_INVALID_SHADER_NV</a> One or more shaders failed to compile
 or link.
 More details are reported back to the application via
 <code><a href="../appendices/extensions.html#VK_EXT_debug_report" class="xref page">VK_EXT_debug_report</a></code> if enabled.</p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_POOL_MEMORY</code> A pool memory allocation has failed.
+<p><a href="#VkResult">VK_ERROR_OUT_OF_POOL_MEMORY</a> A pool memory allocation has failed.
 This <strong>must</strong> only be returned if no attempt to allocate host or device
 memory was made to accommodate the new allocation.
 If the failure was definitely due to fragmentation of the pool,
-<code>VK_ERROR_FRAGMENTED_POOL</code> <strong>should</strong> be returned instead.</p>
+<a href="#VkResult">VK_ERROR_FRAGMENTED_POOL</a> <strong>should</strong> be returned instead.</p>
 </li>
 <li>
-<p><code>VK_ERROR_INVALID_EXTERNAL_HANDLE</code> An external handle is not a valid
+<p><a href="#VkResult">VK_ERROR_INVALID_EXTERNAL_HANDLE</a> An external handle is not a valid
 handle of the specified type.</p>
 </li>
 <li>
-<p><code>VK_ERROR_FRAGMENTATION</code> A descriptor pool creation has failed due
+<p><a href="#VkResult">VK_ERROR_FRAGMENTATION</a> A descriptor pool creation has failed due
 to fragmentation.</p>
 </li>
 <li>
-<p><code>VK_ERROR_INVALID_DEVICE_ADDRESS_EXT</code> A buffer creation failed
+<p><a href="#VkResult">VK_ERROR_INVALID_DEVICE_ADDRESS_EXT</a> A buffer creation failed
 because the requested address is not available.</p>
 </li>
 <li>
-<p><code>VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS</code> A buffer creation
+<p><a href="#VkResult">VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS</a> A buffer creation
 or memory allocation
 failed because the requested address is not available.
 A shader group handle assignment failed because the requested shader
 group handle information is no longer valid.</p>
 </li>
 <li>
-<p><code>VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT</code> An operation on a
+<p><a href="#VkResult">VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT</a> An operation on a
 swapchain created with
-<code>VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT</code> failed as it
+<a href="VK_KHR_surface/wsi.html#VkFullScreenExclusiveEXT" class="xref page">VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT</a> failed as it
 did not have exclusive full-screen access.
 This <strong>may</strong> occur due to implementation-dependent reasons, outside of the
 application&#8217;s control.</p>
 </li>
 <li>
-<p><code>VK_ERROR_VALIDATION_FAILED</code> A command failed because invalid usage
+<p><a href="#VkResult">VK_ERROR_VALIDATION_FAILED</a> A command failed because invalid usage
 was detected by the implementation or a validation layer.
 This <strong>may</strong> result in the command not being dispatched to the ICD.</p>
 </li>
 <li>
-<p><code>VK_ERROR_COMPRESSION_EXHAUSTED_EXT</code> An image creation failed
+<p><a href="#VkResult">VK_ERROR_COMPRESSION_EXHAUSTED_EXT</a> An image creation failed
 because internal resources required for compression are exhausted.
 This <strong>must</strong> only be returned when fixed-rate compression is requested.</p>
 </li>
 <li>
-<p><code>VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR</code> The requested
+<p><a href="#VkResult">VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR</a> The requested
 <a href="resources.html#VkImageUsageFlags" class="xref page">VkImageUsageFlags</a> are not supported.</p>
 </li>
 <li>
-<p><code>VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR</code> The requested
+<p><a href="#VkResult">VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR</a> The requested
 video picture layout is not supported.</p>
 </li>
 <li>
-<p><code>VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR</code> A video profile
+<p><a href="#VkResult">VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR</a> A video profile
 operation specified via
 <a href="videocoding.html#VkVideoProfileInfoKHR" class="xref page">VkVideoProfileInfoKHR</a>::<code>videoCodecOperation</code> is not supported.</p>
 </li>
 <li>
-<p><code>VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR</code> Format parameters
+<p><a href="#VkResult">VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR</a> Format parameters
 in a requested <a href="videocoding.html#VkVideoProfileInfoKHR" class="xref page">VkVideoProfileInfoKHR</a> chain are not supported.</p>
 </li>
 <li>
-<p><code>VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR</code> Codec-specific
+<p><a href="#VkResult">VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR</a> Codec-specific
 parameters in a requested <a href="videocoding.html#VkVideoProfileInfoKHR" class="xref page">VkVideoProfileInfoKHR</a> chain are not
 supported.</p>
 </li>
 <li>
-<p><code>VK_ERROR_VIDEO_STD_VERSION_NOT_SUPPORTED_KHR</code> The specified video
+<p><a href="#VkResult">VK_ERROR_VIDEO_STD_VERSION_NOT_SUPPORTED_KHR</a> The specified video
 Std header version is not supported.</p>
 </li>
 <li>
-<p><code>VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR</code> The specified Video Std
+<p><a href="#VkResult">VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR</a> The specified Video Std
 parameters do not adhere to the syntactic or semantic requirements of
 the used video compression standard, or values derived from parameters
 according to the rules defined by the used video compression standard do
@@ -4530,17 +4577,17 @@ not adhere to the capabilities of the video compression standard or the
 implementation.</p>
 </li>
 <li>
-<p><code>VK_ERROR_NOT_PERMITTED</code> The driver implementation has denied a
+<p><a href="#VkResult">VK_ERROR_NOT_PERMITTED</a> The driver implementation has denied a
 request to acquire a priority above the default priority
-(<code>VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT</code>) because the application does
+(<a href="devsandqueues.html#VkQueueGlobalPriorityEXT" class="xref page">VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT</a>) because the application does
 not have sufficient privileges.</p>
 </li>
 <li>
-<p><code>VK_ERROR_NOT_ENOUGH_SPACE_KHR</code> The application did not provide
+<p><a href="#VkResult">VK_ERROR_NOT_ENOUGH_SPACE_KHR</a> The application did not provide
 enough space to return all the required data.</p>
 </li>
 <li>
-<p><code>VK_ERROR_UNKNOWN</code> An unknown error has occurred; either the
+<p><a href="#VkResult">VK_ERROR_UNKNOWN</a> An unknown error has occurred; either the
 application has provided invalid input, or an implementation failure has
 occurred.</p>
 </li>
@@ -4569,7 +4616,7 @@ the application.</p>
 <td class="content">
 <div class="paragraph">
 <p>As a general rule, <code>Free</code>, <code>Release</code>, and <code>Reset</code> commands do
-not return <code>VK_ERROR_OUT_OF_HOST_MEMORY</code>, while any other command with a
+not return <a href="#VkResult">VK_ERROR_OUT_OF_HOST_MEMORY</a>, while any other command with a
 return code <strong>may</strong> return it.
 Any exceptions from this rule are described for those commands.</p>
 </div>
@@ -4578,7 +4625,7 @@ Any exceptions from this rule are described for those commands.</p>
 </table>
 </div>
 <div class="paragraph">
-<p><code>VK_ERROR_UNKNOWN</code> will be returned by an implementation when an
+<p><a href="#VkResult">VK_ERROR_UNKNOWN</a> will be returned by an implementation when an
 unexpected error occurs that cannot be attributed to valid behavior of the
 application and implementation.
 Under these conditions, it <strong>may</strong> be returned from any command returning a
@@ -4592,9 +4639,9 @@ Under these conditions, it <strong>may</strong> be returned from any command ret
 </td>
 <td class="content">
 <div class="paragraph">
-<p><code>VK_ERROR_UNKNOWN</code> is not expected to ever be returned if the
+<p><a href="#VkResult">VK_ERROR_UNKNOWN</a> is not expected to ever be returned if the
 application behavior is valid, and if the implementation is bug-free.
-If <code>VK_ERROR_UNKNOWN</code> is returned, the application should be checked
+If <a href="#VkResult">VK_ERROR_UNKNOWN</a> is returned, the application should be checked
 against the latest validation layers to verify correct behavior as much as
 possible.
 If no issues are identified it could be an implementation issue, and the
@@ -4606,7 +4653,7 @@ implementor should be contacted for support.</p>
 </div>
 <div class="paragraph">
 <p>Any command returning a <a href="#VkResult">VkResult</a> <strong>may</strong> return
-<code>VK_ERROR_VALIDATION_FAILED</code> if a violation of valid usage is detected.</p>
+<a href="#VkResult">VK_ERROR_VALIDATION_FAILED</a> if a violation of valid usage is detected.</p>
 </div>
 <div class="paragraph">
 <p>Performance-critical commands generally do not have return codes.
@@ -4923,9 +4970,9 @@ handles.</p>
 a fixed-length buffer of C <code>char</code>.
 For example, a string returned in
 <a href="devsandqueues.html#VkPhysicalDeviceProperties" class="xref page">VkPhysicalDeviceProperties</a>::<code>deviceName</code> has maximum length
-<code>VK_MAX_PHYSICAL_DEVICE_NAME_SIZE</code>, and a string returned in
+<a href="devsandqueues.html#VK_MAX_PHYSICAL_DEVICE_NAME_SIZE" class="xref page">VK_MAX_PHYSICAL_DEVICE_NAME_SIZE</a>, and a string returned in
 <a href="extensions.html#VkExtensionProperties" class="xref page">VkExtensionProperties</a>::<code>extensionName</code> has maximum length
-<code>VK_MAX_EXTENSION_NAME_SIZE</code>.
+<a href="extensions.html#VK_MAX_EXTENSION_NAME_SIZE" class="xref page">VK_MAX_EXTENSION_NAME_SIZE</a>.
 The string, <strong>including</strong> its null terminator, will always fit completely
 within this buffer.
 If the string is shorter than the buffer size, the contents of <code>char</code> in
@@ -5110,7 +5157,158 @@ typedef struct VkRect2D {
 </div>
 </div>
 <div class="sect2">
+<h3 id="_host_address_ranges"><a class="anchor" href="#_host_address_ranges"></a>Host Address Ranges</h3>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>A host address range indicates a range of host memory.</p>
+</div>
+<div id="VkHostAddressRangeEXT" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_heap
+typedef struct VkHostAddressRangeEXT {
+    void*     address;
+    size_t    size;
+} VkHostAddressRangeEXT;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>address</code> is a host memory address.</p>
+</li>
+<li>
+<p><code>size</code> is the size of the range.</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-VkHostAddressRangeEXT-address-parameter" href="#VUID-VkHostAddressRangeEXT-address-parameter"></a> <span class="vuid">VUID-VkHostAddressRangeEXT-address-parameter</span><br>
+ <code>address</code> <strong>must</strong> be a valid pointer to an array of <code>size</code> bytes</p>
+</li>
+<li>
+<p><a id="VUID-VkHostAddressRangeEXT-size-arraylength" href="#VUID-VkHostAddressRangeEXT-size-arraylength"></a> <span class="vuid">VUID-VkHostAddressRangeEXT-size-arraylength</span><br>
+ <code>size</code> <strong>must</strong> be greater than <code>0</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>A constant host address range indicates a range of host memory that cannot
+be altered.</p>
+</div>
+<div id="VkHostAddressRangeConstEXT" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_heap
+typedef struct VkHostAddressRangeConstEXT {
+    const void*    address;
+    size_t         size;
+} VkHostAddressRangeConstEXT;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>address</code> is a read-only host memory address.</p>
+</li>
+<li>
+<p><code>size</code> is the size of the range.</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-VkHostAddressRangeConstEXT-address-parameter" href="#VUID-VkHostAddressRangeConstEXT-address-parameter"></a> <span class="vuid">VUID-VkHostAddressRangeConstEXT-address-parameter</span><br>
+ <code>address</code> <strong>must</strong> be a valid pointer to an array of <code>size</code> bytes</p>
+</li>
+<li>
+<p><a id="VUID-VkHostAddressRangeConstEXT-size-arraylength" href="#VUID-VkHostAddressRangeConstEXT-size-arraylength"></a> <span class="vuid">VUID-VkHostAddressRangeConstEXT-size-arraylength</span><br>
+ <code>size</code> <strong>must</strong> be greater than <code>0</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_device_address_ranges"><a class="anchor" href="#_device_address_ranges"></a>Device Address Ranges</h3>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>A device address range indicates a sized range of device memory.</p>
+</div>
+<div id="VkDeviceAddressRangeEXT" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_descriptor_heap
+typedef struct VkDeviceAddressRangeEXT {
+    VkDeviceAddress    address;
+    VkDeviceSize       size;
+} VkDeviceAddressRangeEXT;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>address</code> is a <code>VkDeviceAddress</code> specifying the start of the
+range.</p>
+</li>
+<li>
+<p><code>size</code> is a <code>VkDeviceSize</code> specifying the size of the range.</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-VkDeviceAddressRangeEXT-size-11411" href="#VUID-VkDeviceAddressRangeEXT-size-11411"></a> <span class="vuid">VUID-VkDeviceAddressRangeEXT-size-11411</span><br>
+
+If <code>size</code> is not 0, <code>address</code> <strong>must</strong> not be 0</p>
+</li>
+<li>
+<p><a id="VUID-VkDeviceAddressRangeEXT-address-11365" href="#VUID-VkDeviceAddressRangeEXT-address-11365"></a> <span class="vuid">VUID-VkDeviceAddressRangeEXT-address-11365</span><br>
+
+The sum of <code>address</code> and <code>size</code> <strong>must</strong> be less than or equal to
+the sum of an address retrieved from a <a href="resources.html#VkBuffer" class="xref page">VkBuffer</a> and the value of
+<a href="resources.html#VkBufferCreateInfo" class="xref page">VkBufferCreateInfo</a>::<code>size</code> used to create that <a href="resources.html#VkBuffer" class="xref page">VkBuffer</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-VkDeviceAddressRangeEXT-address-parameter" href="#VUID-VkDeviceAddressRangeEXT-address-parameter"></a> <span class="vuid">VUID-VkDeviceAddressRangeEXT-address-parameter</span><br>
+ If <code>address</code> is not <code>0</code>, <code>address</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
@@ -5195,13 +5393,13 @@ by taking the name of the structure, stripping the leading <code>Vk</code>,
 prefixing each capital letter with <code>_</code>, converting the entire resulting
 string to upper case, and prefixing it with <code>VK_STRUCTURE_TYPE_</code>.
 For example, structures of type <a href="resources.html#VkImageCreateInfo" class="xref page">VkImageCreateInfo</a> correspond to a
-<a href="#VkStructureType">VkStructureType</a> value of <code>VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO</code>,
+<a href="#VkStructureType">VkStructureType</a> value of <a href="#VkStructureType">VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO</a>,
 and thus a structure of this type <strong>must</strong> have its <code>sType</code> member set to
 this value before it is passed to the API.</p>
 </div>
 <div class="paragraph">
-<p>The values <code>VK_STRUCTURE_TYPE_LOADER_INSTANCE_CREATE_INFO</code> and
-<code>VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO</code> are reserved for internal
+<p>The values <a href="#VkStructureType">VK_STRUCTURE_TYPE_LOADER_INSTANCE_CREATE_INFO</a> and
+<a href="#VkStructureType">VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO</a> are reserved for internal
 use by the loader, and do not have corresponding Vulkan structures in this
 Specification.</p>
 </div>
@@ -6055,6 +6253,36 @@ typedef enum VkStructureType {
   // Provided by VK_AMDX_shader_enqueue
     VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_NODE_CREATE_INFO_AMDX = 1000134004,
 #endif
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_TEXEL_BUFFER_DESCRIPTOR_INFO_EXT = 1000135000,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_IMAGE_DESCRIPTOR_INFO_EXT = 1000135001,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_RESOURCE_DESCRIPTOR_INFO_EXT = 1000135002,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_BIND_HEAP_INFO_EXT = 1000135003,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_PUSH_DATA_INFO_EXT = 1000135004,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_DESCRIPTOR_SET_AND_BINDING_MAPPING_EXT = 1000135005,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_SHADER_DESCRIPTOR_SET_AND_BINDING_MAPPING_INFO_EXT = 1000135006,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_OPAQUE_CAPTURE_DATA_CREATE_INFO_EXT = 1000135007,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_PROPERTIES_EXT = 1000135008,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_FEATURES_EXT = 1000135009,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_DESCRIPTOR_HEAP_INFO_EXT = 1000135010,
+  // Provided by VK_EXT_custom_border_color with VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_INDEX_CREATE_INFO_EXT = 1000135011,
+  // Provided by VK_EXT_descriptor_heap with VK_NV_device_generated_commands
+    VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_PUSH_DATA_TOKEN_NV = 1000135012,
+  // Provided by VK_EXT_descriptor_heap with VK_EXT_fragment_density_map
+    VK_STRUCTURE_TYPE_SUBSAMPLED_IMAGE_FORMAT_PROPERTIES_EXT = 1000135013,
+  // Provided by VK_EXT_descriptor_heap with VK_ARM_tensors
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_TENSOR_PROPERTIES_ARM = 1000135014,
   // Provided by VK_AMD_mixed_attachment_samples with VK_VERSION_1_3 or VK_KHR_dynamic_rendering
     VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_AMD = 1000044008,
   // Provided by VK_KHR_shader_bfloat16
@@ -6423,6 +6651,8 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT = 1000287001,
   // Provided by VK_EXT_custom_border_color
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT = 1000287002,
+  // Provided by VK_EXT_texture_compression_astc_3d
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_3D_FEATURES_EXT = 1000288000,
   // Provided by VK_KHR_pipeline_library
     VK_STRUCTURE_TYPE_PIPELINE_LIBRARY_CREATE_INFO_KHR = 1000290000,
   // Provided by VK_NV_present_barrier
@@ -7045,6 +7275,8 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_LIBRARY_GROUP_HANDLES_FEATURES_EXT = 1000498000,
   // Provided by VK_EXT_dynamic_rendering_unused_attachments
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_FEATURES_EXT = 1000499000,
+  // Provided by VK_KHR_internally_synchronized_queues
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INTERNALLY_SYNCHRONIZED_QUEUES_FEATURES_KHR = 1000504000,
   // Provided by VK_NV_low_latency2
     VK_STRUCTURE_TYPE_LATENCY_SLEEP_MODE_INFO_NV = 1000505000,
   // Provided by VK_NV_low_latency2
@@ -7365,6 +7597,12 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA = 1000575002,
   // Provided by VK_KHR_shader_fma
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FMA_FEATURES_KHR = 1000579000,
+  // Provided by VK_NV_push_constant_bank
+    VK_STRUCTURE_TYPE_PUSH_CONSTANT_BANK_INFO_NV = 1000580000,
+  // Provided by VK_NV_push_constant_bank
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_CONSTANT_BANK_FEATURES_NV = 1000580001,
+  // Provided by VK_NV_push_constant_bank
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_CONSTANT_BANK_PROPERTIES_NV = 1000580002,
   // Provided by VK_EXT_ray_tracing_invocation_reorder
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_EXT = 1000581000,
   // Provided by VK_EXT_ray_tracing_invocation_reorder
@@ -7389,12 +7627,6 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_INLINE_SESSION_PARAMETERS_INFO_KHR = 1000586003,
   // Provided by VK_OHOS_surface
     VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS = 1000685000,
-  // Provided by VK_OHOS_native_buffer
-    VK_STRUCTURE_TYPE_NATIVE_BUFFER_OHOS = 1000453001,
-  // Provided by VK_OHOS_native_buffer
-    VK_STRUCTURE_TYPE_SWAPCHAIN_IMAGE_CREATE_INFO_OHOS = 1000453002,
-  // Provided by VK_OHOS_native_buffer
-    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENTATION_PROPERTIES_OHOS = 1000453003,
   // Provided by VK_HUAWEI_hdr_vivid
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI = 1000590000,
   // Provided by VK_HUAWEI_hdr_vivid
@@ -7479,6 +7711,10 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_RENDERING_END_INFO_KHR = 1000619003,
   // Provided by VK_KHR_maintenance10
     VK_STRUCTURE_TYPE_RESOLVE_IMAGE_MODE_INFO_KHR = 1000630004,
+  // Provided by VK_EXT_shader_long_vector
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_FEATURES_EXT = 1000635000,
+  // Provided by VK_EXT_shader_long_vector
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_PROPERTIES_EXT = 1000635001,
   // Provided by VK_SEC_pipeline_cache_incremental_mode
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CACHE_INCREMENTAL_MODE_FEATURES_SEC = 1000637000,
   // Provided by VK_EXT_shader_uniform_buffer_unsized_array
@@ -7487,6 +7723,8 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_COMPUTE_OCCUPANCY_PRIORITY_PARAMETERS_NV = 1000645000,
   // Provided by VK_NV_compute_occupancy_priority
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_OCCUPANCY_PRIORITY_FEATURES_NV = 1000645001,
+  // Provided by VK_EXT_shader_subgroup_partitioned
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT = 1000662000,
   // Provided by VK_VERSION_1_1
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES,
   // Provided by VK_VERSION_1_1
@@ -8025,7 +8263,7 @@ indefinitely.</p>
 <p><code>VK_STENCIL_FRONT_AND_BACK</code> is an example of a <em>typo alias</em>.
 It was initially defined as part of <a href="fragops.html#VkStencilFaceFlagBits" class="xref page">VkStencilFaceFlagBits</a>.
 Once the naming inconsistency was noticed, it was renamed to
-<code>VK_STENCIL_FACE_FRONT_AND_BACK</code>, and the old name was aliased to the
+<a href="fragops.html#VkStencilFaceFlagBits" class="xref page">VK_STENCIL_FACE_FRONT_AND_BACK</a>, and the old name was aliased to the
 correct name.</p>
 </div>
 </td>

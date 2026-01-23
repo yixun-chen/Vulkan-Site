@@ -386,8 +386,8 @@ void setupInstanceBuffers() {
         void* instanceBufferMapped = device.mapMemory(instanceBufferMemory, 0, bufferSize, {});
 
         // Store buffer and memory
-        instanceBuffers.push_back(instanceBuffer);
-        instanceBufferMemories.push_back(instanceBufferMemory);
+        instanceBuffers.push_back(std::move(instanceBuffer));
+        instanceBufferMemories.push_back(std::move(instanceBufferMemory));
         instanceBuffersMapped.push_back(instanceBufferMapped);
 
         // Set the instance buffer index for this node
@@ -759,4 +759,4 @@ Material variations for visual diversity
 
 These techniques form the foundation for creating complex, visually rich 3D scenes. In the next chapter, we’ll build upon this foundation to implement a complete scene rendering system that integrates all the components we’ve developed so far.
 
-[Previous: Understanding Physically Based Rendering](05_pbr_rendering.adoc) | [Next: Rendering the Scene](07_scene_rendering.adoc)
+[Previous: Understanding Physically Based Rendering](05_pbr_rendering.html) | [Next: Rendering the Scene](07_scene_rendering.html)

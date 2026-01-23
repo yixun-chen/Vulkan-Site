@@ -70,18 +70,18 @@ In such cases, there **can** be no contents generated for an attachment within
 the render area.
 
 This extension adds a new [VkAttachmentStoreOp](VkAttachmentStoreOp.html)
-`VK_ATTACHMENT_STORE_OP_NONE_QCOM` specifying that the contents within
+[VK_ATTACHMENT_STORE_OP_NONE_QCOM](VkAttachmentStoreOp.html) specifying that the contents within
 the render area **may** not be written to memory, but that the prior contents
 of the attachment in memory are preserved.
 However, if any contents were generated within the render area during
 rendering, the contents of the attachment will be **undefined** inside the
 render area.
 
-|  | The [VkAttachmentStoreOp](VkAttachmentStoreOp.html) `VK_ATTACHMENT_STORE_OP_STORE` **may** force
+|  | The [VkAttachmentStoreOp](VkAttachmentStoreOp.html) [VK_ATTACHMENT_STORE_OP_STORE](VkAttachmentStoreOp.html) **may** force
 | --- | --- |
 an implementation to assume that the attachment was written and force an
 implementation to flush data to memory or to a higher level cache.
-The [VkAttachmentStoreOp](VkAttachmentStoreOp.html) `VK_ATTACHMENT_STORE_OP_NONE_QCOM` **may**
+The [VkAttachmentStoreOp](VkAttachmentStoreOp.html) [VK_ATTACHMENT_STORE_OP_NONE_QCOM](VkAttachmentStoreOp.html) **may**
 allow an implementation to assume that the attachment was not written and
 allow an implementation to avoid such a flush. |
 
@@ -94,7 +94,7 @@ allow an implementation to avoid such a flush. |
 * 
 Extending [VkAttachmentStoreOp](VkAttachmentStoreOp.html):
 
-`VK_ATTACHMENT_STORE_OP_NONE_QCOM`
+[VK_ATTACHMENT_STORE_OP_NONE_QCOM](VkAttachmentStoreOp.html)
 
 * 
 Revision 1, 2019-12-20 (wwlk)

@@ -65,7 +65,7 @@ to enable in this render pass instance.
 Performance counters values are written to each element of
 `pCounterAddresses` in an implementation-dependent manner.
 These writes execute in the
-`VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT` pipeline stage.
+[VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](VkPipelineStageFlagBits2.html) pipeline stage.
 
 The index into this array is calculated as:
 
@@ -93,7 +93,7 @@ in [VkRenderPassSubpassFeedbackInfoEXT](VkRenderPassSubpassFeedbackInfoEXT.html)
 Within each element of `pCounterAddresses`, counter values are written
 in framebuffer-space order if
 [VkPhysicalDevicePerformanceCountersByRegionPropertiesARM](VkPhysicalDevicePerformanceCountersByRegionPropertiesARM.html)::`identityTransformOrder`
-is `VK_TRUE`.
+is [VK_TRUE](VK_TRUE.html).
 
 Each counter value is written as an unsigned 32-bit integer value.
 
@@ -151,7 +151,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-sType-sType) VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_PERFORMANCE_COUNTERS_BY_REGION_BEGIN_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_PERFORMANCE_COUNTERS_BY_REGION_BEGIN_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-pCounterAddresses-parameter) VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-pCounterAddresses-parameter

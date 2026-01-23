@@ -21,7 +21,7 @@ VkVideoEncodeH264QualityLevelPropertiesKHR - Structure describing the H.264 enco
 
 When calling [vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR](vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR.html)
 with `pVideoProfile->videoCodecOperation` specified as
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR`, the
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), the
 [VkVideoEncodeH264QualityLevelPropertiesKHR](#) structure **must** be included
 in the `pNext` chain of the [VkVideoEncodeQualityLevelPropertiesKHR](VkVideoEncodeQualityLevelPropertiesKHR.html)
 structure to retrieve additional video encode quality level properties
@@ -79,7 +79,7 @@ for [VkVideoEncodeH264RateControlInfoKHR](VkVideoEncodeH264RateControlInfoKHR.ht
 `preferredConstantQp` indicates the preferred values to use for
 [VkVideoEncodeH264NaluSliceInfoKHR](VkVideoEncodeH264NaluSliceInfoKHR.html)::`constantQp` for each
 picture type when using [rate control mode](../../../../spec/latest/chapters/videocoding.html#encode-rate-control-modes)
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR`.
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html).
 
 * 
 `preferredMaxL0ReferenceCount` indicates the preferred maximum
@@ -98,7 +98,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeH264QualityLevelPropertiesKHR-sType-sType) VUID-VkVideoEncodeH264QualityLevelPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_QUALITY_LEVEL_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_QUALITY_LEVEL_PROPERTIES_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_h264](VK_KHR_video_encode_h264.html), `VkBool32`, [VkStructureType](VkStructureType.html), [VkVideoEncodeH264QpKHR](VkVideoEncodeH264QpKHR.html), [VkVideoEncodeH264RateControlFlagsKHR](VkVideoEncodeH264RateControlFlagsKHR.html)
 

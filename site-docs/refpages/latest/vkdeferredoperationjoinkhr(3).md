@@ -39,13 +39,13 @@ deferred operation on the calling thread.
 The return value will be one of the following:
 
 * 
-A return value of `VK_SUCCESS` indicates that `operation` is
+A return value of [VK_SUCCESS](VkResult.html) indicates that `operation` is
 complete.
 The application **should** use [vkGetDeferredOperationResultKHR](vkGetDeferredOperationResultKHR.html) to
 retrieve the result of `operation`.
 
 * 
-A return value of `VK_THREAD_DONE_KHR` indicates that the deferred
+A return value of [VK_THREAD_DONE_KHR](VkResult.html) indicates that the deferred
 operation is not complete, but there is no work remaining to assign to
 threads.
 Future calls to [vkDeferredOperationJoinKHR](#) are not necessary and
@@ -55,12 +55,12 @@ This situation **may** occur when other threads executing
 and the implementation is unable to partition the workload any further.
 
 * 
-A return value of `VK_THREAD_IDLE_KHR` indicates that the deferred
+A return value of [VK_THREAD_IDLE_KHR](VkResult.html) indicates that the deferred
 operation is not complete, and there is no work for the thread to do at
 the time of the call.
 This situation **may** occur if the operation encounters a temporary
 reduction in parallelism.
-By returning `VK_THREAD_IDLE_KHR`, the implementation is signaling
+By returning [VK_THREAD_IDLE_KHR](VkResult.html), the implementation is signaling
 that it expects that more opportunities for parallelism will emerge as
 execution progresses, and that future calls to
 [vkDeferredOperationJoinKHR](#) **can** be beneficial.
@@ -72,11 +72,11 @@ invariants:
 
 If only one thread has invoked [vkDeferredOperationJoinKHR](#) on a
 given operation, that thread **must** execute the operation to completion
-and return `VK_SUCCESS`.
+and return [VK_SUCCESS](VkResult.html).
 
 If multiple threads have concurrently invoked
 [vkDeferredOperationJoinKHR](#) on the same operation, then at least
-one of them **must** complete the operation and return `VK_SUCCESS`.
+one of them **must** complete the operation and return [VK_SUCCESS](VkResult.html).
 
 Valid Usage (Implicit)
 
@@ -100,27 +100,27 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 * 
-`VK_THREAD_DONE_KHR`
+[VK_THREAD_DONE_KHR](VkResult.html)
 
 * 
-`VK_THREAD_IDLE_KHR`
+[VK_THREAD_IDLE_KHR](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_deferred_host_operations](VK_KHR_deferred_host_operations.html), [VkDeferredOperationKHR](VkDeferredOperationKHR.html), [VkDevice](VkDevice.html)
 

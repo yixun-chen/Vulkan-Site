@@ -54,7 +54,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePointClippingProperties-sType-sType) VUID-VkPhysicalDevicePointClippingProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES](VkStructureType.html)
 
 [VK_KHR_maintenance2](VK_KHR_maintenance2.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkPointClippingBehavior](VkPointClippingBehavior.html), [VkStructureType](VkStructureType.html)
 

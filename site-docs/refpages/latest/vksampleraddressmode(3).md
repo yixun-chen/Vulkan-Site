@@ -35,23 +35,23 @@ typedef enum VkSamplerAddressMode {
 } VkSamplerAddressMode;
 
 * 
-`VK_SAMPLER_ADDRESS_MODE_REPEAT` specifies that the repeat wrap mode
+[VK_SAMPLER_ADDRESS_MODE_REPEAT](#) specifies that the repeat wrap mode
 will be used.
 
 * 
-`VK_SAMPLER_ADDRESS_MODE_MIRRORED_REPEAT` specifies that the
+[VK_SAMPLER_ADDRESS_MODE_MIRRORED_REPEAT](#) specifies that the
 mirrored repeat wrap mode will be used.
 
 * 
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE` specifies that the clamp to
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](#) specifies that the clamp to
 edge wrap mode will be used.
 
 * 
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER` specifies that the clamp
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER](#) specifies that the clamp
 to border wrap mode will be used.
 
 * 
-`VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE` specifies that the
+[VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE](#) specifies that the
     mirror clamp to edge wrap mode will be used.
     This is only valid if
 the [`samplerMirrorClampToEdge`](../../../../spec/latest/chapters/features.html#features-samplerMirrorClampToEdge) feature is enabled, or if

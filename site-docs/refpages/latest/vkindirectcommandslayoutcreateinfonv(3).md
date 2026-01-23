@@ -91,8 +91,8 @@ Valid Usage
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-pipelineBindPoint-02930) VUID-VkIndirectCommandsLayoutCreateInfoNV-pipelineBindPoint-02930
 
 The `pipelineBindPoint` **must** be
-`VK_PIPELINE_BIND_POINT_GRAPHICS`
-or `VK_PIPELINE_BIND_POINT_COMPUTE`
+[VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html)
+or [VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-tokenCount-02931) VUID-VkIndirectCommandsLayoutCreateInfoNV-tokenCount-02931
@@ -104,7 +104,7 @@ or `VK_PIPELINE_BIND_POINT_COMPUTE`
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-pTokens-02932) VUID-VkIndirectCommandsLayoutCreateInfoNV-pTokens-02932
 
 If `pTokens` contains an entry of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV` it **must** be the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV](VkIndirectCommandsTokenTypeNV.html) it **must** be the
 first element of the array and there **must** be only a single element of
 such token type
 
@@ -112,7 +112,7 @@ such token type
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-pTokens-09585) VUID-VkIndirectCommandsLayoutCreateInfoNV-pTokens-09585
 
 If `pTokens` contains an entry of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV` it **must** be the first
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV](VkIndirectCommandsTokenTypeNV.html) it **must** be the first
 element of the array and there **must** be only a single element of such
 token type
 
@@ -120,18 +120,18 @@ token type
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-pTokens-02933) VUID-VkIndirectCommandsLayoutCreateInfoNV-pTokens-02933
 
 If `pTokens` contains an entry of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV` there **must** be only
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV](VkIndirectCommandsTokenTypeNV.html) there **must** be only
 a single element of such token type
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-pTokens-02934) VUID-VkIndirectCommandsLayoutCreateInfoNV-pTokens-02934
 
 All state tokens in `pTokens` **must** occur before any action command
-tokens (`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_NV`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NV`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_TASKS_NV`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV`
-, `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NV`
+tokens ([VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_NV](VkIndirectCommandsTokenTypeNV.html),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NV](VkIndirectCommandsTokenTypeNV.html),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_TASKS_NV](VkIndirectCommandsTokenTypeNV.html),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV](VkIndirectCommandsTokenTypeNV.html)
+, [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NV](VkIndirectCommandsTokenTypeNV.html)
 )
 
 * 
@@ -157,25 +157,26 @@ Furthermore the alignment of each token input **must** be ensured
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-pipelineBindPoint-09088) VUID-VkIndirectCommandsLayoutCreateInfoNV-pipelineBindPoint-09088
 
-If `pipelineBindPoint` is `VK_PIPELINE_BIND_POINT_COMPUTE` then
+If `pipelineBindPoint` is [VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html) then
 the [    `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV`::`deviceGeneratedCompute`](../../../../spec/latest/chapters/features.html#features-deviceGeneratedCompute)
 feature **must** be enabled
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-pipelineBindPoint-09089) VUID-VkIndirectCommandsLayoutCreateInfoNV-pipelineBindPoint-09089
 
-If `pipelineBindPoint` is `VK_PIPELINE_BIND_POINT_COMPUTE` then
+If `pipelineBindPoint` is [VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html) then
 the state tokens in `pTokens` **must** only include
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NV`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV`, or
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NV](VkIndirectCommandsTokenTypeNV.html),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV](VkIndirectCommandsTokenTypeNV.html),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_NV](VkIndirectCommandsTokenTypeNV.html),
+or [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](VkIndirectCommandsTokenTypeNV.html)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-pipelineBindPoint-09090) VUID-VkIndirectCommandsLayoutCreateInfoNV-pipelineBindPoint-09090
 
-If `pipelineBindPoint` is `VK_PIPELINE_BIND_POINT_COMPUTE` and
+If `pipelineBindPoint` is [VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html) and
 `pTokens` includes
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV`, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV](VkIndirectCommandsTokenTypeNV.html), then the
 [    `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV`::`deviceGeneratedComputePipelines`](../../../../spec/latest/chapters/features.html#features-deviceGeneratedComputePipelines)
 feature **must** be enabled
 
@@ -184,7 +185,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-sType-sType) VUID-VkIndirectCommandsLayoutCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-pNext-pNext) VUID-VkIndirectCommandsLayoutCreateInfoNV-pNext-pNext

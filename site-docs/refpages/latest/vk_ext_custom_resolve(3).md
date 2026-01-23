@@ -44,7 +44,7 @@ Device extension
 
 **Ratification Status**
 
-Not ratified
+Ratified
 
 **Extension and Version Dependencies**
 
@@ -161,38 +161,38 @@ Extending [VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html), [Vk
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_RESOLVE_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_RESOLVE_FEATURES_EXT](VkStructureType.html)
 
 Extending [VkSubpassDescriptionFlagBits](VkSubpassDescriptionFlagBits.html):
 
 * 
-`VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT`
+[VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT](VkSubpassDescriptionFlagBits.html)
 
 * 
-`VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT`
+[VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT](VkSubpassDescriptionFlagBits.html)
 
 If [VK_KHR_dynamic_rendering](VK_KHR_dynamic_rendering.html) or [Vulkan Version 1.3](../../../../spec/latest/appendices/versions.html#versions-1.3) is supported:
 
 * 
 Extending [VkRenderingFlagBits](VkRenderingFlagBits.html):
 
-`VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT`
+[VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT](VkRenderingFlagBits.html)
 
 * 
-`VK_RENDERING_FRAGMENT_REGION_BIT_EXT`
+[VK_RENDERING_FRAGMENT_REGION_BIT_EXT](VkRenderingFlagBits.html)
 
 Extending [VkResolveModeFlagBits](VkResolveModeFlagBits.html):
 
 * 
-`VK_RESOLVE_MODE_CUSTOM_BIT_EXT`
+[VK_RESOLVE_MODE_CUSTOM_BIT_EXT](VkResolveModeFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_BEGIN_CUSTOM_RESOLVE_INFO_EXT`
+[VK_STRUCTURE_TYPE_BEGIN_CUSTOM_RESOLVE_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_CUSTOM_RESOLVE_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_CUSTOM_RESOLVE_CREATE_INFO_EXT](VkStructureType.html)
 
 1) How will this work with shader objects?
 

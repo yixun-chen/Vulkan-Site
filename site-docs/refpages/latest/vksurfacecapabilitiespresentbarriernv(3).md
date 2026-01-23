@@ -42,7 +42,7 @@ surface is able to make use of the present barrier feature.
 This structure **can** be included in the `pNext` chain of
 [VkSurfaceCapabilities2KHR](VkSurfaceCapabilities2KHR.html) to determine support for present barrier
 access.
-If `presentBarrierSupported` is `VK_FALSE`, it indicates that the
+If `presentBarrierSupported` is [VK_FALSE](VK_FALSE.html), it indicates that the
 present barrier feature is not obtainable for this surface.
 
 Valid Usage (Implicit)
@@ -50,7 +50,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSurfaceCapabilitiesPresentBarrierNV-sType-sType) VUID-VkSurfaceCapabilitiesPresentBarrierNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_BARRIER_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_BARRIER_NV](VkStructureType.html)
 
 [VK_NV_present_barrier](VK_NV_present_barrier.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

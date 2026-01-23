@@ -51,7 +51,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_vertex_attribute_divisor](VK_EXT_vertex_attribute_divisor.html), [VkStructureType](VkStructureType.html)
 

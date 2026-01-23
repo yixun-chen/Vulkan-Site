@@ -93,7 +93,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdNextSubpass2-commandBuffer-cmdpool) VUID-vkCmdNextSubpass2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdNextSubpass2-renderpass) VUID-vkCmdNextSubpass2-renderpass

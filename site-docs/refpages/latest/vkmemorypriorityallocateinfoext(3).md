@@ -62,7 +62,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryPriorityAllocateInfoEXT-sType-sType) VUID-VkMemoryPriorityAllocateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT](VkStructureType.html)
 
 [VK_EXT_memory_priority](VK_EXT_memory_priority.html), [VkStructureType](VkStructureType.html)
 

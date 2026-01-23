@@ -47,7 +47,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceDiagnosticsConfigCreateInfoNV-sType-sType) VUID-VkDeviceDiagnosticsConfigCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceDiagnosticsConfigCreateInfoNV-flags-parameter) VUID-VkDeviceDiagnosticsConfigCreateInfoNV-flags-parameter

@@ -63,7 +63,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoDecodeH265InlineSessionParametersInfoKHR-sType-sType) VUID-VkVideoDecodeH265InlineSessionParametersInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_INLINE_SESSION_PARAMETERS_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_INLINE_SESSION_PARAMETERS_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoDecodeH265InlineSessionParametersInfoKHR-pStdVPS-parameter) VUID-VkVideoDecodeH265InlineSessionParametersInfoKHR-pStdVPS-parameter

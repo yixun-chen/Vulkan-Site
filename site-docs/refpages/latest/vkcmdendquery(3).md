@@ -86,9 +86,9 @@ mask **must** be less than or equal to the number of queries in
 [](#VUID-vkCmdEndQuery-queryPool-03227) VUID-vkCmdEndQuery-queryPool-03227
 
 If `queryPool` was created with a `queryType` of
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR` and one or more of the
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](VkQueryType.html) and one or more of the
 counters used to create `queryPool` was
-`VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR`, the
+[VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR](VkPerformanceCounterScopeKHR.html), the
 [vkCmdEndQuery](#) **must** be the last recorded command in
 `commandBuffer`
 
@@ -96,9 +96,9 @@ counters used to create `queryPool` was
 [](#VUID-vkCmdEndQuery-queryPool-03228) VUID-vkCmdEndQuery-queryPool-03228
 
 If `queryPool` was created with a `queryType` of
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR` and one or more of the
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](VkQueryType.html) and one or more of the
 counters used to create `queryPool` was
-`VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR`, the
+[VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR](VkPerformanceCounterScopeKHR.html), the
 [vkCmdEndQuery](#) **must** not be recorded within a render pass instance
 
 * 
@@ -135,7 +135,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdEndQuery-commandBuffer-cmdpool) VUID-vkCmdEndQuery-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](VkQueueFlagBits.html), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdEndQuery-suspended) VUID-vkCmdEndQuery-suspended

@@ -116,26 +116,26 @@ If there is a [fragment shader](#fragops-shader) and it declares the
 
 If
 `VkPhysicalDeviceMaintenance5Properties`::`earlyFragmentMultisampleCoverageAfterSampleCounting`
-is `VK_TRUE` and there is a [fragment shader](#fragops-shader) which
+is [VK_TRUE](fundamentals.html#VK_TRUE) and there is a [fragment shader](#fragops-shader) which
 declares the `EarlyFragmentTests` execution mode, [fragment shading](#fragops-shader) and [multisample coverage](#fragops-covg) operations
 **must** be performed after [sample counting](#fragops-samplecount).
 
 Otherwise, if
 `VkPhysicalDeviceMaintenance5Properties`::`earlyFragmentMultisampleCoverageAfterSampleCounting`
-is `VK_FALSE` and there is a [fragment shader](#fragops-shader) which
+is [VK_FALSE](fundamentals.html#VK_FALSE) and there is a [fragment shader](#fragops-shader) which
 declares the `EarlyFragmentTests` execution mode, [fragment shading](#fragops-shader) and [multisample coverage](#fragops-covg) operations
 **should** instead be performed after [sample counting](#fragops-samplecount),
 but **may** be performed before [sample counting](#fragops-samplecount).
 
 If
 `VkPhysicalDeviceMaintenance5Properties`::`earlyFragmentSampleMaskTestBeforeSampleCounting`
-is `VK_TRUE` and there is a [fragment shader](#fragops-shader) which
+is [VK_TRUE](fundamentals.html#VK_TRUE) and there is a [fragment shader](#fragops-shader) which
 declares the `EarlyFragmentTests` execution mode [sample mask test](#fragops-samplemask) operations **must** follow the order of fragment operations
 from above.
 
 Otherwise, if
 `VkPhysicalDeviceMaintenance5Properties`::`earlyFragmentSampleMaskTestBeforeSampleCounting`
-is `VK_FALSE` and there is a [fragment shader](#fragops-shader) which
+is [VK_FALSE](fundamentals.html#VK_FALSE) and there is a [fragment shader](#fragops-shader) which
 declares the `EarlyFragmentTests` execution mode, [sample mask test](#fragops-samplemask) operations **should** follow the order of fragment
 operations from above but **may** instead be performed after
 [sample counting](#fragops-samplecount).
@@ -170,13 +170,13 @@ execution mode;
 the fragment shader specifies the `StencilRefLessFrontAMD` execution
 mode and the pipeline uses a
 [VkPipelineDepthStencilStateCreateInfo](#VkPipelineDepthStencilStateCreateInfo)::`front.compareOp` of
-`VK_COMPARE_OP_GREATER` or `VK_COMPARE_OP_GREATER_OR_EQUAL`; or
+[VK_COMPARE_OP_GREATER](samplers.html#VkCompareOp) or [VK_COMPARE_OP_GREATER_OR_EQUAL](samplers.html#VkCompareOp); or
 
 * 
 the fragment shader specifies the `StencilRefGreaterFrontAMD`
 execution mode and the pipeline uses a
 [VkPipelineDepthStencilStateCreateInfo](#VkPipelineDepthStencilStateCreateInfo)::`front.compareOp` of
-`VK_COMPARE_OP_LESS` or `VK_COMPARE_OP_LESS_OR_EQUAL`; and
+[VK_COMPARE_OP_LESS](samplers.html#VkCompareOp) or [VK_COMPARE_OP_LESS_OR_EQUAL](samplers.html#VkCompareOp); and
 
 either
 
@@ -188,13 +188,13 @@ execution mode;
 the fragment shader specifies the `StencilRefLessBackAMD` execution
 mode and the pipeline uses a
 [VkPipelineDepthStencilStateCreateInfo](#VkPipelineDepthStencilStateCreateInfo)::`back.compareOp` of
-`VK_COMPARE_OP_GREATER` or `VK_COMPARE_OP_GREATER_OR_EQUAL`; or
+[VK_COMPARE_OP_GREATER](samplers.html#VkCompareOp) or [VK_COMPARE_OP_GREATER_OR_EQUAL](samplers.html#VkCompareOp); or
 
 * 
 the fragment shader specifies the `StencilRefGreaterBackAMD`
 execution mode and the pipeline uses a
 [VkPipelineDepthStencilStateCreateInfo](#VkPipelineDepthStencilStateCreateInfo)::`back.compareOp` of
-`VK_COMPARE_OP_LESS` or `VK_COMPARE_OP_LESS_OR_EQUAL`
+[VK_COMPARE_OP_LESS](samplers.html#VkCompareOp) or [VK_COMPARE_OP_LESS_OR_EQUAL](samplers.html#VkCompareOp)
 
 an additional [stencil test](#fragops-stencil) **may** be performed before
 [fragment shading](#fragops-shader), using the stencil reference value
@@ -225,13 +225,13 @@ the fragment shader specifies the `DepthUnchanged` execution mode;
 the fragment shader specifies the `DepthLess` execution mode and the
 pipeline uses a
 [VkPipelineDepthStencilStateCreateInfo](#VkPipelineDepthStencilStateCreateInfo)::`depthCompareOp` of
-`VK_COMPARE_OP_GREATER` or `VK_COMPARE_OP_GREATER_OR_EQUAL`; or
+[VK_COMPARE_OP_GREATER](samplers.html#VkCompareOp) or [VK_COMPARE_OP_GREATER_OR_EQUAL](samplers.html#VkCompareOp); or
 
 * 
 the fragment shader specifies the `DepthGreater` execution mode and
 the pipeline uses a
 [VkPipelineDepthStencilStateCreateInfo](#VkPipelineDepthStencilStateCreateInfo)::`depthCompareOp` of
-`VK_COMPARE_OP_LESS` or `VK_COMPARE_OP_LESS_OR_EQUAL`
+[VK_COMPARE_OP_LESS](samplers.html#VkCompareOp) or [VK_COMPARE_OP_LESS_OR_EQUAL](samplers.html#VkCompareOp)
 
 the implementation **may** perform [depth bounds test](#fragops-dbt) before
 [fragment shading](#fragops-shader) and perform an additional
@@ -298,15 +298,15 @@ exclusive.
 `pDiscardRectangles` is a pointer to an array of [VkRect2D](fundamentals.html#VkRect2D)
 structures defining discard rectangles.
 
-If the `VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT` dynamic state is enabled
+If the [VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](pipelines.html#VkDynamicState) dynamic state is enabled
 for a pipeline, the `pDiscardRectangles` member is ignored.
-If the `VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT` dynamic state is
+If the [VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT](pipelines.html#VkDynamicState) dynamic state is
 not enabled for the pipeline the presence of this structure in the
 [VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo) chain, and a `discardRectangleCount`
 greater than zero, implicitly enables discard rectangles in the pipeline,
 otherwise discard rectangles **must** enabled or disabled by
 [vkCmdSetDiscardRectangleEnableEXT](#vkCmdSetDiscardRectangleEnableEXT).
-If the `VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT` dynamic state is
+If the [VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT](pipelines.html#VkDynamicState) dynamic state is
 enabled for the pipeline, the `discardRectangleMode` member is ignored,
 and the discard rectangle mode **must** be set by
 [vkCmdSetDiscardRectangleModeEXT](#vkCmdSetDiscardRectangleModeEXT).
@@ -314,13 +314,13 @@ and the discard rectangle mode **must** be set by
 When this structure is included in the `pNext` chain of
 [VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo), it defines parameters of the discard
 rectangle test.
-If the `VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT` dynamic state is not
+If the [VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](pipelines.html#VkDynamicState) dynamic state is not
 enabled, and this structure is not included in the `pNext` chain, it is
 equivalent to specifying this structure with a `discardRectangleCount`
 of `0`.
-If all `VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT`,
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT`, and
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT` dynamic states are
+If all [VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](pipelines.html#VkDynamicState),
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT](pipelines.html#VkDynamicState), and
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT](pipelines.html#VkDynamicState) dynamic states are
 enabled, the application **can** omit this structure from the `pNext` chain
 of [VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo) and still use discard rectangles by
 setting all state dynamically.
@@ -344,7 +344,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineDiscardRectangleStateCreateInfoEXT-sType-sType) VUID-VkPipelineDiscardRectangleStateCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineDiscardRectangleStateCreateInfoEXT-flags-zerobitmask) VUID-VkPipelineDiscardRectangleStateCreateInfoEXT-flags-zerobitmask
@@ -362,7 +362,7 @@ typedef VkFlags VkPipelineDiscardRectangleStateCreateFlagsEXT;
 `VkPipelineDiscardRectangleStateCreateFlagsEXT` is a bitmask type for
 setting a mask, but is currently reserved for future use.
 
-`VkDiscardRectangleModeEXT` values are:
+[VkDiscardRectangleModeEXT](#VkDiscardRectangleModeEXT) values are:
 
 // Provided by VK_EXT_discard_rectangles
 typedef enum VkDiscardRectangleModeEXT {
@@ -371,11 +371,11 @@ typedef enum VkDiscardRectangleModeEXT {
 } VkDiscardRectangleModeEXT;
 
 * 
-`VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT` specifies that the discard
+[VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT](#VkDiscardRectangleModeEXT) specifies that the discard
 rectangle test is inclusive.
 
 * 
-`VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT` specifies that the discard
+[VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT](#VkDiscardRectangleModeEXT) specifies that the discard
 rectangle test is exclusive.
 
 To [dynamically set](pipelines.html#pipelines-dynamic-state) the discard rectangles,
@@ -412,7 +412,7 @@ replace the current state for the discard rectangle at index
 This command sets the discard rectangles for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT` set in
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineDiscardRectangleStateCreateInfoEXT](#VkPipelineDiscardRectangleStateCreateInfoEXT)::`pDiscardRectangles`
@@ -475,7 +475,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDiscardRectangleEXT-commandBuffer-cmdpool) VUID-vkCmdSetDiscardRectangleEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetDiscardRectangleEXT-videocoding) VUID-vkCmdSetDiscardRectangleEXT-videocoding
@@ -526,7 +526,7 @@ This command sets the discard rectangle enable for subsequent drawing
 commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT` set in
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is implied by the
 [VkPipelineDiscardRectangleStateCreateInfoEXT](#VkPipelineDiscardRectangleStateCreateInfoEXT)::`discardRectangleCount`
@@ -558,7 +558,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDiscardRectangleEnableEXT-commandBuffer-cmdpool) VUID-vkCmdSetDiscardRectangleEnableEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetDiscardRectangleEnableEXT-videocoding) VUID-vkCmdSetDiscardRectangleEnableEXT-videocoding
@@ -603,7 +603,7 @@ discard rectangles, either inclusive or exclusive.
 This command sets the discard rectangle mode for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT` set in
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineDiscardRectangleStateCreateInfoEXT](#VkPipelineDiscardRectangleStateCreateInfoEXT)::`discardRectangleMode`
@@ -638,7 +638,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDiscardRectangleModeEXT-commandBuffer-cmdpool) VUID-vkCmdSetDiscardRectangleModeEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetDiscardRectangleModeEXT-videocoding) VUID-vkCmdSetDiscardRectangleModeEXT-videocoding
@@ -717,7 +717,7 @@ for i in [0, `scissorCount`).
 
 This command sets the scissor rectangles for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
-when the graphics pipeline is created with `VK_DYNAMIC_STATE_SCISSOR`
+when the graphics pipeline is created with [VK_DYNAMIC_STATE_SCISSOR](pipelines.html#VkDynamicState)
 set in [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineViewportStateCreateInfo](vertexpostproc.html#VkPipelineViewportStateCreateInfo)::`pScissors` values used to
@@ -790,7 +790,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetScissor-commandBuffer-cmdpool) VUID-vkCmdSetScissor-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetScissor-videocoding) VUID-vkCmdSetScissor-videocoding
@@ -869,7 +869,7 @@ rectangles.
 `pExclusiveScissors` is a pointer to an array of [VkRect2D](fundamentals.html#VkRect2D)
 structures defining exclusive scissor rectangles.
 
-If the `VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV` dynamic state is enabled
+If the [VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV](pipelines.html#VkDynamicState) dynamic state is enabled
 for a pipeline, the `pExclusiveScissors` member is ignored.
 
 When this structure is included in the `pNext` chain of
@@ -903,7 +903,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineViewportExclusiveScissorStateCreateInfoNV-sType-sType) VUID-VkPipelineViewportExclusiveScissorStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 To [dynamically set](pipelines.html#pipelines-dynamic-state) the exclusive scissor
 rectangles, call:
@@ -940,7 +940,7 @@ This command sets the exclusive scissor rectangles for subsequent drawing
 commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV` set in
+[VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineViewportExclusiveScissorStateCreateInfoNV](#VkPipelineViewportExclusiveScissorStateCreateInfoNV)::`pExclusiveScissors`
@@ -1013,7 +1013,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetExclusiveScissorNV-commandBuffer-cmdpool) VUID-vkCmdSetExclusiveScissorNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetExclusiveScissorNV-videocoding) VUID-vkCmdSetExclusiveScissorNV-videocoding
@@ -1080,7 +1080,7 @@ This command sets the exclusive scissor enable for subsequent drawing
 commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV` set in
+[VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is implied by the
 [VkPipelineViewportExclusiveScissorStateCreateInfoNV](#VkPipelineViewportExclusiveScissorStateCreateInfoNV)::`exclusiveScissorCount`
@@ -1118,7 +1118,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetExclusiveScissorEnableNV-commandBuffer-cmdpool) VUID-vkCmdSetExclusiveScissorEnableNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetExclusiveScissorEnableNV-videocoding) VUID-vkCmdSetExclusiveScissorEnableNV-videocoding
@@ -1178,7 +1178,7 @@ mask has all bits set to `1`.
 This command sets the sample mask for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_SAMPLE_MASK_EXT` set in
+[VK_DYNAMIC_STATE_SAMPLE_MASK_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo)::`pSampleMask` value used to
@@ -1228,7 +1228,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetSampleMaskEXT-commandBuffer-cmdpool) VUID-vkCmdSetSampleMaskEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetSampleMaskEXT-videocoding) VUID-vkCmdSetSampleMaskEXT-videocoding
@@ -1289,7 +1289,7 @@ If a fragment shader statically computes the same values for different
 framebuffer locations, and does not write to any storage resources,
 multiple fragments **may** be shaded by one fragment shader invocation.
 This **may** affect
-`VK_QUERY_PIPELINE_STATISTIC_FRAGMENT_SHADER_INVOCATIONS_BIT`
+[VK_QUERY_PIPELINE_STATISTIC_FRAGMENT_SHADER_INVOCATIONS_BIT](queries.html#VkQueryPipelineStatisticFlagBits)
 results, but **must** otherwise not be visible behavior to applications.
 
 Otherwise, at least one fragment shader **must** be executed.
@@ -1327,7 +1327,7 @@ Similarly, if the render pass has a fragment density map attachment, more
 than one fragment shader invocation may be invoked for each covered sample.
 Such additional invocations are only produced if
 `VkPhysicalDeviceFragmentDensityMapPropertiesEXT`::`fragmentDensityInvocations`
-is `VK_TRUE`.
+is [VK_TRUE](fundamentals.html#VK_TRUE).
 Implementations may generate these additional fragment shader invocations in
 order to make transitions between fragment areas with different fragment
 densities more smooth. |
@@ -1403,7 +1403,7 @@ This functionality is supported for
 [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo)::`rasterizationSamples` > 1
 when
 [VkPhysicalDeviceShaderTileImagePropertiesEXT](devsandqueues.html#VkPhysicalDeviceShaderTileImagePropertiesEXT)::`shaderTileImageReadSampleFromPixelRateInvocation`
-is `VK_TRUE`.
+is [VK_TRUE](fundamentals.html#VK_TRUE).
 
 If [sample shading](primsrast.html#primsrast-sampleshading) is enabled, and
 `minSampleShading` is 1.0, a fragment invocation **must** only read from
@@ -1418,7 +1418,7 @@ writes are disabled.
 
 If
 [VkPhysicalDeviceShaderTileImagePropertiesEXT](devsandqueues.html#VkPhysicalDeviceShaderTileImagePropertiesEXT)::`shaderTileImageReadFromHelperInvocation`
-is `VK_FALSE`, values read from helper invocations are **undefined**
+is [VK_FALSE](fundamentals.html#VK_FALSE), values read from helper invocations are **undefined**
 otherwise the values read are subject to the coherency guarantees described
 below.
 
@@ -1465,7 +1465,7 @@ visible via tile image reads.
 
 When
 [VkPhysicalDeviceShaderTileImagePropertiesEXT](devsandqueues.html#VkPhysicalDeviceShaderTileImagePropertiesEXT)::`shaderTileImageCoherentReadAccelerated`
-is `VK_TRUE`, the implementation prefers that coherent tile image reads
+is [VK_TRUE](fundamentals.html#VK_TRUE), the implementation prefers that coherent tile image reads
 are used, otherwise the implementation prefers that non-coherent tile image
 reads are used.
 
@@ -1581,7 +1581,7 @@ include `SampleMask` in its interface, the coverage mask is not modified.
 Next, the fragment alpha value and coverage mask are modified based on the
 line coverage factor if the `lineRasterizationMode` member of the
 [VkPipelineRasterizationStateCreateInfo](primsrast.html#VkPipelineRasterizationStateCreateInfo) structure is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH`, and the
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH](primsrast.html#VkLineRasterizationModeEXT), and the
 `alphaToCoverageEnable` and `alphaToOneEnable` members of the
 [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo) structure.
 
@@ -1605,7 +1605,7 @@ This command sets the `alphaToCoverageEnable` state for subsequent
 drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT` set in
+[VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo)::`alphaToCoverageEnable`
@@ -1639,7 +1639,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetAlphaToCoverageEnableEXT-commandBuffer-cmdpool) VUID-vkCmdSetAlphaToCoverageEnableEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetAlphaToCoverageEnableEXT-videocoding) VUID-vkCmdSetAlphaToCoverageEnableEXT-videocoding
@@ -1684,7 +1684,7 @@ This command sets the `alphaToOneEnable` state for subsequent drawing
 commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT` set in
+[VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo)::`alphaToOneEnable` value
@@ -1706,7 +1706,7 @@ The [`shaderObject`](features.html#features-shaderObject) feature is enabled
 [](#VUID-vkCmdSetAlphaToOneEnableEXT-alphaToOne-07607) VUID-vkCmdSetAlphaToOneEnableEXT-alphaToOne-07607
 
 If the [`alphaToOne`](features.html#features-alphaToOne) feature is not enabled,
-`alphaToOneEnable` **must** be `VK_FALSE`
+`alphaToOneEnable` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 Valid Usage (Implicit)
 
@@ -1723,7 +1723,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetAlphaToOneEnableEXT-commandBuffer-cmdpool) VUID-vkCmdSetAlphaToOneEnableEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetAlphaToOneEnableEXT-videocoding) VUID-vkCmdSetAlphaToOneEnableEXT-videocoding
@@ -1758,7 +1758,7 @@ operations are skipped.
 
 If the `lineRasterizationMode` member of the
 [VkPipelineRasterizationStateCreateInfo](primsrast.html#VkPipelineRasterizationStateCreateInfo) structure is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH` and the fragment came
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH](primsrast.html#VkLineRasterizationModeEXT) and the fragment came
 from a line segment, then the alpha value is replaced by multiplying it by
 the coverage factor for the fragment computed during
 [smooth line rasterization](primsrast.html#primsrast-lines-smooth).
@@ -1823,9 +1823,9 @@ depth/stencil state information.
 is enabled.
 
 * 
-`depthWriteEnable` controls whether [depth    writes](#fragops-depth-write) are enabled when `depthTestEnable` is `VK_TRUE`.
+`depthWriteEnable` controls whether [depth    writes](#fragops-depth-write) are enabled when `depthTestEnable` is [VK_TRUE](fundamentals.html#VK_TRUE).
 Depth writes are always disabled when `depthTestEnable` is
-`VK_FALSE`.
+[VK_FALSE](fundamentals.html#VK_FALSE).
 
 * 
 `depthCompareOp` is a [VkCompareOp](samplers.html#VkCompareOp) value specifying the
@@ -1855,18 +1855,18 @@ Valid Usage
 [](#VUID-VkPipelineDepthStencilStateCreateInfo-depthBoundsTestEnable-00598) VUID-VkPipelineDepthStencilStateCreateInfo-depthBoundsTestEnable-00598
 
 If the [`depthBounds`](features.html#features-depthBounds) feature is not
-enabled, `depthBoundsTestEnable` **must** be `VK_FALSE`
+enabled, `depthBoundsTestEnable` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkPipelineDepthStencilStateCreateInfo-separateStencilMaskRef-04453) VUID-VkPipelineDepthStencilStateCreateInfo-separateStencilMaskRef-04453
 
 If the `[VK_KHR_portability_subset](../appendices/extensions.html#VK_KHR_portability_subset)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR)::`separateStencilMaskRef`
-is `VK_FALSE`, and the value of
+is [VK_FALSE](fundamentals.html#VK_FALSE), and the value of
 [VkPipelineDepthStencilStateCreateInfo](#VkPipelineDepthStencilStateCreateInfo)::`stencilTestEnable` is
-`VK_TRUE`, and the value of
+[VK_TRUE](fundamentals.html#VK_TRUE), and the value of
 [VkPipelineRasterizationStateCreateInfo](primsrast.html#VkPipelineRasterizationStateCreateInfo)::`cullMode` is
-`VK_CULL_MODE_NONE`, the value of `reference` in each of the
+[VK_CULL_MODE_NONE](primsrast.html#VkCullModeFlagBits), the value of `reference` in each of the
 [VkStencilOpState](#VkStencilOpState) structs in `front` and `back` **must** be
 the same
 
@@ -1875,21 +1875,21 @@ the same
 
 If the [    `rasterizationOrderDepthAttachmentAccess`](features.html#features-rasterizationOrderDepthAttachmentAccess) feature is not enabled,
 `flags` **must** not include
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT`
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT](#VkPipelineDepthStencilStateCreateFlagBits)
 
 * 
 [](#VUID-VkPipelineDepthStencilStateCreateInfo-rasterizationOrderStencilAttachmentAccess-06464) VUID-VkPipelineDepthStencilStateCreateInfo-rasterizationOrderStencilAttachmentAccess-06464
 
 If the [    `rasterizationOrderStencilAttachmentAccess`](features.html#features-rasterizationOrderStencilAttachmentAccess) feature is not
 enabled, `flags` **must** not include
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT`
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT](#VkPipelineDepthStencilStateCreateFlagBits)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineDepthStencilStateCreateInfo-sType-sType) VUID-VkPipelineDepthStencilStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineDepthStencilStateCreateInfo-pNext-pNext) VUID-VkPipelineDepthStencilStateCreateInfo-pNext-pNext
@@ -1938,31 +1938,31 @@ typedef enum VkPipelineDepthStencilStateCreateFlagBits {
 } VkPipelineDepthStencilStateCreateFlagBits;
 
 * 
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT`
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT](#VkPipelineDepthStencilStateCreateFlagBits)
 specifies that access to the depth aspects of depth/stencil and input
 attachments will have implicit framebuffer-local memory dependencies.
 
 * 
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT`
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT](#VkPipelineDepthStencilStateCreateFlagBits)
 specifies that access to the stencil aspects of depth/stencil and input
 attachments will have implicit framebuffer-local memory dependencies.
 
 When
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT`
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT](#VkPipelineDepthStencilStateCreateFlagBits)
 is included in a pipeline, it forms a framebuffer-local memory dependency
 for each fragment generated by draw commands for that pipeline with the
 following scopes:
 
 * 
 The first [synchronization scope](synchronization.html#synchronization-dependencies-scopes)
-includes `VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT` and
-`VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT` pipeline stages executed
+includes [VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits) and
+[VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT](synchronization.html#VkPipelineStageFlagBits) pipeline stages executed
 by all previous fragments (as defined by [    primitive order](drawing.html#drawing-primitive-order)) in the corresponding
 [framebuffer regions](synchronization.html#synchronization-framebuffer-regions) including
 those generated by the same draw command.
 
 * 
-The second [synchronization    scope](synchronization.html#synchronization-dependencies-scopes) includes `VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT` stage
+The second [synchronization    scope](synchronization.html#synchronization-dependencies-scopes) includes [VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits) stage
 executed by the generated fragment.
 
 * 
@@ -1974,22 +1974,22 @@ The second [access scope](synchronization.html#synchronization-dependencies-acce
 includes all reads from the depth aspect of input attachments.
 
 When
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT`
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT](#VkPipelineDepthStencilStateCreateFlagBits)
 is included in a pipeline, it forms a framebuffer-local memory dependency
 for each fragment generated by draw commands for that pipeline with the
 following scopes:
 
 * 
 The first [synchronization scope](synchronization.html#synchronization-dependencies-scopes)
-includes `VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT`
-`VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT` pipeline stages executed
+includes [VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits)
+[VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT](synchronization.html#VkPipelineStageFlagBits) pipeline stages executed
 by all previous fragments (as defined by [    primitive order](drawing.html#drawing-primitive-order)) in the corresponding
 [framebuffer regions](synchronization.html#synchronization-framebuffer-regions) including
 those generated by the same draw command.
 
 * 
-The second [synchronization    scope](synchronization.html#synchronization-dependencies-scopes) includes `VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT` and
-`VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT` pipeline stages executed
+The second [synchronization    scope](synchronization.html#synchronization-dependencies-scopes) includes [VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits) and
+[VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT](synchronization.html#VkPipelineStageFlagBits) pipeline stages executed
 by the generated fragment.
 
 * 
@@ -2046,7 +2046,7 @@ enabled.
 This command sets the depth bounds enable for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE` set in
+[VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineDepthStencilStateCreateInfo](#VkPipelineDepthStencilStateCreateInfo)::`depthBoundsTestEnable`
@@ -2073,7 +2073,7 @@ equal to Version 1.3
 [](#VUID-vkCmdSetDepthBoundsTestEnable-depthBounds-10010) VUID-vkCmdSetDepthBoundsTestEnable-depthBounds-10010
 
 If the [`depthBounds`](features.html#features-depthBounds) feature is not
-enabled, `depthBoundsTestEnable` **must** be `VK_FALSE`
+enabled, `depthBoundsTestEnable` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 Valid Usage (Implicit)
 
@@ -2090,7 +2090,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDepthBoundsTestEnable-commandBuffer-cmdpool) VUID-vkCmdSetDepthBoundsTestEnable-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetDepthBoundsTestEnable-videocoding) VUID-vkCmdSetDepthBoundsTestEnable-videocoding
@@ -2138,7 +2138,7 @@ recorded.
 This command sets the depth bounds range for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_DEPTH_BOUNDS` set in
+[VK_DYNAMIC_STATE_DEPTH_BOUNDS](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineDepthStencilStateCreateInfo](#VkPipelineDepthStencilStateCreateInfo)::`minDepthBounds` and
@@ -2179,7 +2179,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDepthBounds-commandBuffer-cmdpool) VUID-vkCmdSetDepthBounds-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetDepthBounds-videocoding) VUID-vkCmdSetDepthBounds-videocoding
@@ -2294,7 +2294,7 @@ recorded.
 This command sets the stencil test enable for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE` set in
+[VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineDepthStencilStateCreateInfo](#VkPipelineDepthStencilStateCreateInfo)::`stencilTestEnable` value
@@ -2333,7 +2333,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetStencilTestEnable-commandBuffer-cmdpool) VUID-vkCmdSetStencilTestEnable-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetStencilTestEnable-videocoding) VUID-vkCmdSetStencilTestEnable-videocoding
@@ -2406,7 +2406,7 @@ operator used in the stencil test.
 
 This command sets the stencil operation for subsequent drawing commands when
 when drawing using [shader objects](shaders.html#shaders-objects), or
-when the graphics pipeline is created with `VK_DYNAMIC_STATE_STENCIL_OP`
+when the graphics pipeline is created with [VK_DYNAMIC_STATE_STENCIL_OP](pipelines.html#VkDynamicState)
 set in [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the corresponding
 `VkPipelineDepthStencilStateCreateInfo`::`failOp`, `passOp`,
@@ -2476,7 +2476,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetStencilOp-commandBuffer-cmdpool) VUID-vkCmdSetStencilOp-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetStencilOp-videocoding) VUID-vkCmdSetStencilOp-videocoding
@@ -2588,7 +2588,7 @@ the set of stencil state for which to update the compare mask.
 This command sets the stencil compare mask for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK` set in
+[VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkStencilOpState](#VkStencilOpState)::`compareMask` value used to create the currently
@@ -2619,7 +2619,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetStencilCompareMask-commandBuffer-cmdpool) VUID-vkCmdSetStencilCompareMask-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetStencilCompareMask-videocoding) VUID-vkCmdSetStencilCompareMask-videocoding
@@ -2645,7 +2645,7 @@ Conditional Rendering
 
 vkCmdSetStencilCompareMask is not affected by [conditional rendering](drawing.html#drawing-conditional-rendering)
 
-`VkStencilFaceFlagBits` values are:
+[VkStencilFaceFlagBits](#VkStencilFaceFlagBits) values are:
 
 // Provided by VK_VERSION_1_0
 typedef enum VkStencilFaceFlagBits {
@@ -2657,16 +2657,16 @@ typedef enum VkStencilFaceFlagBits {
 } VkStencilFaceFlagBits;
 
 * 
-`VK_STENCIL_FACE_FRONT_BIT` specifies that only the front set of
+[VK_STENCIL_FACE_FRONT_BIT](#VkStencilFaceFlagBits) specifies that only the front set of
 stencil state is updated.
 
 * 
-`VK_STENCIL_FACE_BACK_BIT` specifies that only the back set of
+[VK_STENCIL_FACE_BACK_BIT](#VkStencilFaceFlagBits) specifies that only the back set of
 stencil state is updated.
 
 * 
-`VK_STENCIL_FACE_FRONT_AND_BACK` is the combination of
-`VK_STENCIL_FACE_FRONT_BIT` and `VK_STENCIL_FACE_BACK_BIT`, and
+[VK_STENCIL_FACE_FRONT_AND_BACK](#VkStencilFaceFlagBits) is the combination of
+[VK_STENCIL_FACE_FRONT_BIT](#VkStencilFaceFlagBits) and [VK_STENCIL_FACE_BACK_BIT](#VkStencilFaceFlagBits), and
 specifies that both sets of stencil state are updated.
 
 // Provided by VK_VERSION_1_0
@@ -2699,7 +2699,7 @@ described above for [vkCmdSetStencilCompareMask](#vkCmdSetStencilCompareMask).
 This command sets the stencil write mask for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_STENCIL_WRITE_MASK` set in
+[VK_DYNAMIC_STATE_STENCIL_WRITE_MASK](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the `writeMask` value used to
 create the currently active pipeline, for both
@@ -2731,7 +2731,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetStencilWriteMask-commandBuffer-cmdpool) VUID-vkCmdSetStencilWriteMask-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetStencilWriteMask-videocoding) VUID-vkCmdSetStencilWriteMask-videocoding
@@ -2782,7 +2782,7 @@ This command sets the stencil reference value for subsequent drawing
 commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_STENCIL_REFERENCE` set in
+[VK_DYNAMIC_STATE_STENCIL_REFERENCE](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineDepthStencilStateCreateInfo](#VkPipelineDepthStencilStateCreateInfo)::`reference` value used to
@@ -2813,7 +2813,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetStencilReference-commandBuffer-cmdpool) VUID-vkCmdSetStencilReference-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetStencilReference-videocoding) VUID-vkCmdSetStencilReference-videocoding
@@ -2856,31 +2856,31 @@ typedef enum VkStencilOp {
 } VkStencilOp;
 
 * 
-`VK_STENCIL_OP_KEEP` keeps the current value.
+[VK_STENCIL_OP_KEEP](#VkStencilOp) keeps the current value.
 
 * 
-`VK_STENCIL_OP_ZERO` sets the value to 0.
+[VK_STENCIL_OP_ZERO](#VkStencilOp) sets the value to 0.
 
 * 
-`VK_STENCIL_OP_REPLACE` sets the value to `reference`.
+[VK_STENCIL_OP_REPLACE](#VkStencilOp) sets the value to `reference`.
 
 * 
-`VK_STENCIL_OP_INCREMENT_AND_CLAMP` increments the current value and
+[VK_STENCIL_OP_INCREMENT_AND_CLAMP](#VkStencilOp) increments the current value and
 clamps to the maximum representable unsigned value.
 
 * 
-`VK_STENCIL_OP_DECREMENT_AND_CLAMP` decrements the current value and
+[VK_STENCIL_OP_DECREMENT_AND_CLAMP](#VkStencilOp) decrements the current value and
 clamps to 0.
 
 * 
-`VK_STENCIL_OP_INVERT` bitwise-inverts the current value.
+[VK_STENCIL_OP_INVERT](#VkStencilOp) bitwise-inverts the current value.
 
 * 
-`VK_STENCIL_OP_INCREMENT_AND_WRAP` increments the current value and
+[VK_STENCIL_OP_INCREMENT_AND_WRAP](#VkStencilOp) increments the current value and
 wraps to 0 when the maximum value would have been exceeded.
 
 * 
-`VK_STENCIL_OP_DECREMENT_AND_WRAP` decrements the current value and
+[VK_STENCIL_OP_DECREMENT_AND_WRAP](#VkStencilOp) decrements the current value and
 wraps to the maximum possible value when the value would go below 0.
 
 For purposes of increment and decrement, the stencil bits are considered as
@@ -2910,7 +2910,7 @@ this fragment, respectively.
 If the [`depthClampControl`](features.html#features-depthClampControl) feature is
 enabled and
 [VkPipelineViewportDepthClampControlCreateInfoEXT](#VkPipelineViewportDepthClampControlCreateInfoEXT)::`depthClampMode`
-is `VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT`, then zmin and
+is [VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT](#VkDepthClampModeEXT), then zmin and
 zmax are equal to the `minDepthClamp` and `maxDepthClamp`
 values of the [VkDepthClampRangeEXT](#VkDepthClampRangeEXT) structure pointed to by
 `pDepthClampRange`.
@@ -2963,13 +2963,13 @@ each viewport.
 * 
 `pDepthClampRange` sets the depth clamp range for all viewports if
 `depthClampMode` is
-`VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT`.
+[VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT](#VkDepthClampModeEXT).
 
 This structure extends `VkPipelineViewportStateCreateInfo` and specifies
 the depth clamp range used in the pipeline.
 If this structure is not provided in the next chain then
 `depthClampMode` defaults to
-`VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT`.
+[VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT](#VkDepthClampModeEXT).
 
 Valid Usage
 
@@ -2977,8 +2977,8 @@ Valid Usage
 [](#VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-pDepthClampRange-09646) VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-pDepthClampRange-09646
 
 If `depthClampMode` is
-`VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT`, and the pipeline is
-not created with `VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT`, then
+[VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT](#VkDepthClampModeEXT), and the pipeline is
+not created with [VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT](pipelines.html#VkDynamicState), then
 `pDepthClampRange` **must** be a valid pointer to a valid
 `VkDepthClampRangeEXT` structure
 
@@ -2987,7 +2987,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-sType-sType) VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-depthClampMode-parameter) VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-depthClampMode-parameter
@@ -3010,7 +3010,7 @@ typedef enum VkDepthClampModeEXT {
 } VkDepthClampModeEXT;
 
 * 
-`VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT` specifies that the depth
+[VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT](#VkDepthClampModeEXT) specifies that the depth
 clamp range follows the viewport depth range.
 The depth clamp range of each viewport will implicitly be set to
 zmin = min(n,f) and zmax = max(n,f), where n and
@@ -3018,7 +3018,7 @@ f are the `minDepth` and `maxDepth` depth range values of
 the viewport.
 
 * 
-`VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT` specifies that a single
+[VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT](#VkDepthClampModeEXT) specifies that a single
 user-defined depth clamp range will be used for all viewports.
 The user-defined depth clamp range is defined by the `minDepthClamp`
 and `maxDepthClamp` members of [VkDepthClampRangeEXT](#VkDepthClampRangeEXT).
@@ -3043,13 +3043,13 @@ each viewport.
 * 
 `pDepthClampRange` sets the depth clamp range for all viewports if
 `depthClampMode` is
-`VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT`.
+[VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT](#VkDepthClampModeEXT).
 
 This command sets the viewport depth clamp range for subsequent drawing
 commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT` set in
+[VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineViewportDepthClampControlCreateInfoEXT](#VkPipelineViewportDepthClampControlCreateInfoEXT)::`depthClampMode`
@@ -3061,7 +3061,7 @@ Valid Usage
 [](#VUID-vkCmdSetDepthClampRangeEXT-pDepthClampRange-09647) VUID-vkCmdSetDepthClampRangeEXT-pDepthClampRange-09647
 
 If `depthClampMode` is
-`VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT`, then
+[VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT](#VkDepthClampModeEXT), then
 `pDepthClampRange` must be a valid pointer to a valid
 `VkDepthClampRangeEXT` structure
 
@@ -3090,7 +3090,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDepthClampRangeEXT-commandBuffer-cmdpool) VUID-vkCmdSetDepthClampRangeEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetDepthClampRangeEXT-videocoding) VUID-vkCmdSetDepthClampRangeEXT-videocoding
@@ -3204,7 +3204,7 @@ recorded.
 This command sets the depth test enable for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE` set in
+[VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineDepthStencilStateCreateInfo](#VkPipelineDepthStencilStateCreateInfo)::`depthTestEnable` value
@@ -3243,7 +3243,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDepthTestEnable-commandBuffer-cmdpool) VUID-vkCmdSetDepthTestEnable-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetDepthTestEnable-videocoding) VUID-vkCmdSetDepthTestEnable-videocoding
@@ -3295,7 +3295,7 @@ This command sets the depth comparison operator for subsequent drawing
 commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_DEPTH_COMPARE_OP` set in
+[VK_DYNAMIC_STATE_DEPTH_COMPARE_OP](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineDepthStencilStateCreateInfo](#VkPipelineDepthStencilStateCreateInfo)::`depthCompareOp` value used
@@ -3339,7 +3339,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDepthCompareOp-commandBuffer-cmdpool) VUID-vkCmdSetDepthCompareOp-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetDepthCompareOp-videocoding) VUID-vkCmdSetDepthCompareOp-videocoding
@@ -3389,7 +3389,7 @@ recorded.
 This command sets the depth write enable for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE` set in
+[VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineDepthStencilStateCreateInfo](#VkPipelineDepthStencilStateCreateInfo)::`depthWriteEnable` value
@@ -3428,7 +3428,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDepthWriteEnable-commandBuffer-cmdpool) VUID-vkCmdSetDepthWriteEnable-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetDepthWriteEnable-videocoding) VUID-vkCmdSetDepthWriteEnable-videocoding
@@ -3495,7 +3495,7 @@ structure.
 representative fragment test is enabled.
 
 If this structure is not included in the `pNext` chain,
-`representativeFragmentTestEnable` is considered to be `VK_FALSE`,
+`representativeFragmentTestEnable` is considered to be [VK_FALSE](fundamentals.html#VK_FALSE),
 and the representative fragment test is disabled.
 
 If the active fragment shader does not specify the `EarlyFragmentTests`
@@ -3507,7 +3507,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineRepresentativeFragmentTestStateCreateInfoNV-sType-sType) VUID-VkPipelineRepresentativeFragmentTestStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 To [dynamically set](pipelines.html#pipelines-dynamic-state) the
 `representativeFragmentTestEnable` state, call:
@@ -3529,7 +3529,7 @@ This command sets the `representativeFragmentTestEnable` state for
 subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_REPRESENTATIVE_FRAGMENT_TEST_ENABLE_NV` set in
+[VK_DYNAMIC_STATE_REPRESENTATIVE_FRAGMENT_TEST_ENABLE_NV](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRepresentativeFragmentTestStateCreateInfoNV](#VkPipelineRepresentativeFragmentTestStateCreateInfoNV)::`representativeFragmentTestEnable`
@@ -3563,7 +3563,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetRepresentativeFragmentTestEnableNV-commandBuffer-cmdpool) VUID-vkCmdSetRepresentativeFragmentTestEnableNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetRepresentativeFragmentTestEnableNV-videocoding) VUID-vkCmdSetRepresentativeFragmentTestEnableNV-videocoding
@@ -3635,7 +3635,7 @@ includes a `VkPipelineCoverageToColorStateCreateInfoNV` structure, then
 that structure controls whether the fragment coverage is substituted for a
 fragment color output and, if so, which output is replaced.
 
-If `coverageToColorEnable` is `VK_TRUE`, the
+If `coverageToColorEnable` is [VK_TRUE](fundamentals.html#VK_TRUE), the
 [coverage mask](primsrast.html#primsrast-multisampling-coverage-mask) replaces the first
 component of the color value corresponding to the fragment shader output
 location with `Location` equal to `coverageToColorLocation` and
@@ -3645,32 +3645,32 @@ low bits of the sample coverage mask are taken without any clamping.
 If the color attachment format has more bits than the coverage mask, the
 high bits of the sample coverage mask are filled with zeros.
 
-If `coverageToColorEnable` is `VK_FALSE`, these operations are
+If `coverageToColorEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), these operations are
 skipped.
 If this structure is not included in the `pNext` chain, it is as if
-`coverageToColorEnable` is `VK_FALSE`.
+`coverageToColorEnable` is [VK_FALSE](fundamentals.html#VK_FALSE).
 
 Valid Usage
 
 * 
 [](#VUID-VkPipelineCoverageToColorStateCreateInfoNV-coverageToColorEnable-01404) VUID-VkPipelineCoverageToColorStateCreateInfoNV-coverageToColorEnable-01404
 
-If `coverageToColorEnable` is `VK_TRUE`, then the render pass
+If `coverageToColorEnable` is [VK_TRUE](fundamentals.html#VK_TRUE), then the render pass
 subpass indicated by
 [VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo)::`renderPass` and
 [VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo)::`subpass` **must** have a color
 attachment at the location selected by `coverageToColorLocation`,
-with a [VkFormat](formats.html#VkFormat) of `VK_FORMAT_R8_UINT`,
-`VK_FORMAT_R8_SINT`, `VK_FORMAT_R16_UINT`,
-`VK_FORMAT_R16_SINT`, `VK_FORMAT_R32_UINT`, or
-`VK_FORMAT_R32_SINT`
+with a [VkFormat](formats.html#VkFormat) of [VK_FORMAT_R8_UINT](formats.html#VkFormat),
+[VK_FORMAT_R8_SINT](formats.html#VkFormat), [VK_FORMAT_R16_UINT](formats.html#VkFormat),
+[VK_FORMAT_R16_SINT](formats.html#VkFormat), [VK_FORMAT_R32_UINT](formats.html#VkFormat), or
+[VK_FORMAT_R32_SINT](formats.html#VkFormat)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineCoverageToColorStateCreateInfoNV-sType-sType) VUID-VkPipelineCoverageToColorStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineCoverageToColorStateCreateInfoNV-flags-zerobitmask) VUID-VkPipelineCoverageToColorStateCreateInfoNV-flags-zerobitmask
@@ -3703,7 +3703,7 @@ This command sets the `coverageToColorEnable` state for subsequent
 drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_ENABLE_NV` set in
+[VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_ENABLE_NV](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineCoverageToColorStateCreateInfoNV](#VkPipelineCoverageToColorStateCreateInfoNV)::`coverageToColorEnable`
@@ -3737,7 +3737,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetCoverageToColorEnableNV-commandBuffer-cmdpool) VUID-vkCmdSetCoverageToColorEnableNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetCoverageToColorEnableNV-videocoding) VUID-vkCmdSetCoverageToColorEnableNV-videocoding
@@ -3783,7 +3783,7 @@ This command sets the `coverageToColorLocation` state for subsequent
 drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_LOCATION_NV` set in
+[VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_LOCATION_NV](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineCoverageToColorStateCreateInfoNV](#VkPipelineCoverageToColorStateCreateInfoNV)::`coverageToColorLocation`
@@ -3817,7 +3817,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetCoverageToColorLocationNV-commandBuffer-cmdpool) VUID-vkCmdSetCoverageToColorLocationNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetCoverageToColorLocationNV-videocoding) VUID-vkCmdSetCoverageToColorLocationNV-videocoding
@@ -3894,7 +3894,7 @@ If the `pNext` chain of [VkSubpassDescription2](renderpass.html#VkSubpassDescrip
 or [VkRenderingInfo](renderpass.html#VkRenderingInfo)
 includes a [VkMultisampledRenderToSingleSampledInfoEXT](renderpass.html#VkMultisampledRenderToSingleSampledInfoEXT) structure with
 the `multisampledRenderToSingleSampledEnable` field equal to
-`VK_TRUE`, sample coverage is calculated as if the attachment has
+[VK_TRUE](fundamentals.html#VK_TRUE), sample coverage is calculated as if the attachment has
 [VkMultisampledRenderToSingleSampledInfoEXT](renderpass.html#VkMultisampledRenderToSingleSampledInfoEXT)::`rasterizationSamples`
 samples.
 
@@ -3935,12 +3935,12 @@ follows:
 * 
 If the `[VK_NV_framebuffer_mixed_samples](../appendices/extensions.html#VK_NV_framebuffer_mixed_samples)` extension is enabled,
 then it is as if the `coverageReductionMode` is
-`VK_COVERAGE_REDUCTION_MODE_MERGE_NV`.
+[VK_COVERAGE_REDUCTION_MODE_MERGE_NV](#VkCoverageReductionModeNV).
 
 * 
 If the `[VK_AMD_mixed_attachment_samples](../appendices/extensions.html#VK_AMD_mixed_attachment_samples)` extension is enabled,
 then it is as if the `coverageReductionMode` is
-`VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV`.
+[VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV](#VkCoverageReductionModeNV).
 
 * 
 If both `[VK_NV_framebuffer_mixed_samples](../appendices/extensions.html#VK_NV_framebuffer_mixed_samples)` and
@@ -3952,7 +3952,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineCoverageReductionStateCreateInfoNV-sType-sType) VUID-VkPipelineCoverageReductionStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineCoverageReductionStateCreateInfoNV-flags-zerobitmask) VUID-VkPipelineCoverageReductionStateCreateInfoNV-flags-zerobitmask
@@ -3981,14 +3981,14 @@ typedef enum VkCoverageReductionModeNV {
 } VkCoverageReductionModeNV;
 
 * 
-`VK_COVERAGE_REDUCTION_MODE_MERGE_NV` specifies that each color
+[VK_COVERAGE_REDUCTION_MODE_MERGE_NV](#VkCoverageReductionModeNV) specifies that each color
 sample will be associated with an implementation-dependent subset of
 samples in the pixel coverage.
 If any of those associated samples are covered, the color sample is
 covered.
 
 * 
-`VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV` specifies that for color
+[VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV](#VkCoverageReductionModeNV) specifies that for color
 samples present in the color attachments, a color sample is covered if
 the pixel coverage sample with the same
 [sample index](primsrast.html#primsrast-multisampling-coverage-mask) i is
@@ -4014,7 +4014,7 @@ This command sets the `coverageReductionMode` state for subsequent
 drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV` set in
+[VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineCoverageReductionStateCreateInfoNV](#VkPipelineCoverageReductionStateCreateInfoNV)::`coverageReductionMode`
@@ -4053,7 +4053,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetCoverageReductionModeNV-commandBuffer-cmdpool) VUID-vkCmdSetCoverageReductionModeNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetCoverageReductionModeNV-videocoding) VUID-vkCmdSetCoverageReductionModeNV-videocoding
@@ -4112,7 +4112,7 @@ written to `pCombinations`.
 If the value of `pCombinationCount` is less than the number of
 combinations supported for the given `physicalDevice`, at most
 `pCombinationCount` values will be written to `pCombinations`, and
-`VK_INCOMPLETE` will be returned instead of `VK_SUCCESS`, to
+[VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead of [VK_SUCCESS](fundamentals.html#VkResult), to
 indicate that not all the supported values were returned.
 
 Valid Usage (Implicit)
@@ -4137,24 +4137,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkFramebufferMixedSamplesCombinationNV` structure is defined as:
 
@@ -4199,7 +4199,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFramebufferMixedSamplesCombinationNV-sType-sType) VUID-VkFramebufferMixedSamplesCombinationNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FRAMEBUFFER_MIXED_SAMPLES_COMBINATION_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FRAMEBUFFER_MIXED_SAMPLES_COMBINATION_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkFramebufferMixedSamplesCombinationNV-pNext-pNext) VUID-VkFramebufferMixedSamplesCombinationNV-pNext-pNext
@@ -4254,7 +4254,7 @@ factor is looked up from a table in `pCoverageModulationTable`.
 `pCoverageModulationTable` is a table of modulation factors
 containing a value for each number of covered samples.
 
-If `coverageModulationTableEnable` is `VK_FALSE`, then for each
+If `coverageModulationTableEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), then for each
 color sample the associated bits of the pixel coverage are counted and
 divided by the number of associated bits to produce a modulation factor
 R in the range (0,1] (a value of zero would have been killed due
@@ -4271,7 +4271,7 @@ color attachments
 * 
 R = popcount(associated coverage bits) / (N / M)
 
-If `coverageModulationTableEnable` is `VK_TRUE`, the value R
+If `coverageModulationTableEnable` is [VK_TRUE](fundamentals.html#VK_TRUE), the value R
 is computed using a programmable lookup table.
 The lookup table has N / M elements, and the element of the table is
 selected by:
@@ -4295,20 +4295,20 @@ Which components are modulated is controlled by
 `coverageModulationMode`.
 
 If this structure is not included in the `pNext` chain, it is as if
-`coverageModulationMode` is `VK_COVERAGE_MODULATION_MODE_NONE_NV`.
+`coverageModulationMode` is [VK_COVERAGE_MODULATION_MODE_NONE_NV](#VkCoverageModulationModeNV).
 
 If the [coverage reduction mode](#fragops-coverage-reduction) is
-`VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV`, each color sample is
+[VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV](#VkCoverageReductionModeNV), each color sample is
 associated with only a single coverage sample.
 In this case, it is as if `coverageModulationMode` is
-`VK_COVERAGE_MODULATION_MODE_NONE_NV`.
+[VK_COVERAGE_MODULATION_MODE_NONE_NV](#VkCoverageModulationModeNV).
 
 Valid Usage
 
 * 
 [](#VUID-VkPipelineCoverageModulationStateCreateInfoNV-coverageModulationTableEnable-01405) VUID-VkPipelineCoverageModulationStateCreateInfoNV-coverageModulationTableEnable-01405
 
-If `coverageModulationTableEnable` is `VK_TRUE`,
+If `coverageModulationTableEnable` is [VK_TRUE](fundamentals.html#VK_TRUE),
 `coverageModulationTableCount` **must** be equal to the number of
 rasterization samples divided by the number of color samples in the
 subpass
@@ -4318,7 +4318,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineCoverageModulationStateCreateInfoNV-sType-sType) VUID-VkPipelineCoverageModulationStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineCoverageModulationStateCreateInfoNV-flags-zerobitmask) VUID-VkPipelineCoverageModulationStateCreateInfoNV-flags-zerobitmask
@@ -4349,19 +4349,19 @@ typedef enum VkCoverageModulationModeNV {
 } VkCoverageModulationModeNV;
 
 * 
-`VK_COVERAGE_MODULATION_MODE_NONE_NV` specifies that no components
+[VK_COVERAGE_MODULATION_MODE_NONE_NV](#VkCoverageModulationModeNV) specifies that no components
 are multiplied by the modulation factor.
 
 * 
-`VK_COVERAGE_MODULATION_MODE_RGB_NV` specifies that the red, green,
+[VK_COVERAGE_MODULATION_MODE_RGB_NV](#VkCoverageModulationModeNV) specifies that the red, green,
 and blue components are multiplied by the modulation factor.
 
 * 
-`VK_COVERAGE_MODULATION_MODE_ALPHA_NV` specifies that the alpha
+[VK_COVERAGE_MODULATION_MODE_ALPHA_NV](#VkCoverageModulationModeNV) specifies that the alpha
 component is multiplied by the modulation factor.
 
 * 
-`VK_COVERAGE_MODULATION_MODE_RGBA_NV` specifies that all components
+[VK_COVERAGE_MODULATION_MODE_RGBA_NV](#VkCoverageModulationModeNV) specifies that all components
 are multiplied by the modulation factor.
 
 To [dynamically set](pipelines.html#pipelines-dynamic-state) the
@@ -4384,7 +4384,7 @@ This command sets the `coverageModulationMode` state for subsequent
 drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 the graphics pipeline is created with
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_MODE_NV` set in
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_MODE_NV](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineCoverageModulationStateCreateInfoNV](#VkPipelineCoverageModulationStateCreateInfoNV)::`coverageModulationMode`
@@ -4423,7 +4423,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetCoverageModulationModeNV-commandBuffer-cmdpool) VUID-vkCmdSetCoverageModulationModeNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetCoverageModulationModeNV-videocoding) VUID-vkCmdSetCoverageModulationModeNV-videocoding
@@ -4469,7 +4469,7 @@ This command sets the `coverageModulationTableEnable` state for
 subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_ENABLE_NV` set in
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_ENABLE_NV](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineCoverageModulationStateCreateInfoNV](#VkPipelineCoverageModulationStateCreateInfoNV)::`coverageModulationTableEnable`
@@ -4503,7 +4503,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetCoverageModulationTableEnableNV-commandBuffer-cmdpool) VUID-vkCmdSetCoverageModulationTableEnableNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetCoverageModulationTableEnableNV-videocoding) VUID-vkCmdSetCoverageModulationTableEnableNV-videocoding
@@ -4554,7 +4554,7 @@ This command sets the table of modulation factors for subsequent drawing
 commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_NV` set in
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_NV](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineCoverageModulationStateCreateInfoNV](#VkPipelineCoverageModulationStateCreateInfoNV)::`coverageModulationTableCount`,
@@ -4595,7 +4595,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetCoverageModulationTableNV-commandBuffer-cmdpool) VUID-vkCmdSetCoverageModulationTableNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetCoverageModulationTableNV-videocoding) VUID-vkCmdSetCoverageModulationTableNV-videocoding

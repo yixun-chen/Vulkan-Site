@@ -44,7 +44,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryGetNativeBufferInfoOHOS-sType-sType) VUID-VkMemoryGetNativeBufferInfoOHOS-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_GET_NATIVE_BUFFER_INFO_OHOS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_GET_NATIVE_BUFFER_INFO_OHOS](VkStructureType.html)
 
 * 
 [](#VUID-VkMemoryGetNativeBufferInfoOHOS-pNext-pNext) VUID-VkMemoryGetNativeBufferInfoOHOS-pNext-pNext

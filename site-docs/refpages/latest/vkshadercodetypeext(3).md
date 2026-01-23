@@ -28,11 +28,11 @@ typedef enum VkShaderCodeTypeEXT {
 } VkShaderCodeTypeEXT;
 
 * 
-`VK_SHADER_CODE_TYPE_BINARY_EXT` specifies shader code in an opaque,
+[VK_SHADER_CODE_TYPE_BINARY_EXT](#) specifies shader code in an opaque,
 implementation-defined binary format specific to the physical device.
 
 * 
-`VK_SHADER_CODE_TYPE_SPIRV_EXT` specifies shader code in SPIR-V
+[VK_SHADER_CODE_TYPE_SPIRV_EXT](#) specifies shader code in SPIR-V
 format.
 
 [VK_EXT_shader_object](VK_EXT_shader_object.html), [VkShaderCreateInfoEXT](VkShaderCreateInfoEXT.html)

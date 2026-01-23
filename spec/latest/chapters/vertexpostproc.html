@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:spec" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -174,6 +174,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="descriptorsets.html">Resource Descriptors</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="descriptorheaps.html">Descriptor Heaps</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="interfaces.html">Shader Interfaces</a>
@@ -518,7 +521,7 @@ order defined as follows:</p>
 <li>
 <p>If neither <a href="geometry.html#geometry" class="xref page">geometry</a> or <a href="tessellation.html#tessellation" class="xref page">tessellation    shading</a> is active, vertices within a primitive are appended according
 to the winding order described by the <a href="drawing.html#drawing-primitive-topologies" class="xref page">    primitive topology</a> defined by the
-<a href="drawing.html#VkPipelineInputAssemblyStateCreateInfo" class="xref page">VkPipelineInputAssemblyStateCreateInfo</a>:<code>topology</code> used to
+<a href="drawing.html#VkPipelineInputAssemblyStateCreateInfo" class="xref page">VkPipelineInputAssemblyStateCreateInfo</a>::<code>topology</code> used to
 execute the <a href="drawing.html#drawing" class="xref page">drawing command</a>.</p>
 </li>
 <li>
@@ -548,20 +551,20 @@ each primitive:</p>
 <li>
 <p>When the
 <a href="#VkPipelineRasterizationProvokingVertexStateCreateInfoEXT">pipeline&#8217;s    provoking vertex mode</a> is
-<code>VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT</code>, the primitive&#8217;s
+<a href="#VkProvokingVertexModeEXT">VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT</a>, the primitive&#8217;s
 provoking vertex <strong>must</strong> be the first vertex written.</p>
 </li>
 <li>
 <p>When the
 <a href="#VkPipelineRasterizationProvokingVertexStateCreateInfoEXT">pipeline&#8217;s    provoking vertex mode</a> is
-<code>VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT</code>, the primitive&#8217;s
+<a href="#VkProvokingVertexModeEXT">VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT</a>, the primitive&#8217;s
 provoking vertex <strong>must</strong> be the last vertex written.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>If <a href="limits.html#limits-transformFeedbackPreservesTriangleFanProvokingVertex" class="xref page"><code>transformFeedbackPreservesTriangleFanProvokingVertex</code></a> is
-<code>VK_FALSE</code>, neither <a href="geometry.html#geometry" class="xref page">geometry</a> nor <a href="tessellation.html#tessellation" class="xref page">tessellation</a> shading is active, and the <a href="drawing.html#drawing-primitive-topologies" class="xref page">primitive topology</a> is <code>VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN</code>, then the
+<a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, neither <a href="geometry.html#geometry" class="xref page">geometry</a> nor <a href="tessellation.html#tessellation" class="xref page">tessellation</a> shading is active, and the <a href="drawing.html#drawing-primitive-topologies" class="xref page">primitive topology</a> is <a href="drawing.html#VkPrimitiveTopology" class="xref page">VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN</a>, then the
 first vertex written from each primitive is implementation-defined even when
 the <a href="features.html#features-transformFeedbackPreservesProvokingVertex" class="xref page"><code>transformFeedbackPreservesProvokingVertex</code></a> feature is enabled.</p>
 </div>
@@ -582,7 +585,7 @@ For matrix types, outputs are written as an array of column vectors.</p>
 <p>If any component of an output with an assigned transform feedback offset was
 not written to by its shader, the value recorded for that component is
 <strong>undefined</strong>, and the primitives needed and primitives written counts in the
-corresponding <code>VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</code> query will
+corresponding <a href="queries.html#VkQueryType" class="xref page">VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</a> query will
 increment as normal.
 All components of an output variable <strong>must</strong> be written at an offset aligned
 to the size of the component.
@@ -620,7 +623,7 @@ than the size of all of the vertex data for that primitive based on the
 <code>XfbStride</code> for that <code>XfbBuffer</code> then no vertex data of that primitive
 is recorded in any transform feedback buffer, and the value for the number
 of primitives written in the corresponding
-<code>VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</code> query for all transform
+<a href="queries.html#VkQueryType" class="xref page">VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</a> query for all transform
 feedback buffers is no longer incremented.</p>
 </div>
 <div class="paragraph">
@@ -670,7 +673,7 @@ state is updated by the command.</p>
 buffer sizes, specifying the maximum number of bytes to capture to the
 corresponding transform feedback buffer.
 If <code>pSizes</code> is <code>NULL</code>, it is equivalent to setting a <code>pSizes</code>
-array where every element is <code>VK_WHOLE_SIZE</code>.</p>
+array where every element is <a href="synchronization.html#VK_WHOLE_SIZE" class="xref page">VK_WHOLE_SIZE</a>.</p>
 </li>
 </ul>
 </div>
@@ -683,7 +686,7 @@ The transform feedback binding is updated to start at the offset indicated
 by <code>pOffsets</code>[i] from the start of the buffer <code>pBuffers</code>[i].</p>
 </div>
 <div id="transform-feedback-effective-size" class="paragraph">
-<p>When an element of <code>pSizes</code>[i] is <code>VK_WHOLE_SIZE</code>, or <code>pSizes</code>
+<p>When an element of <code>pSizes</code>[i] is <a href="synchronization.html#VK_WHOLE_SIZE" class="xref page">VK_WHOLE_SIZE</a>, or <code>pSizes</code>
 is <code>NULL</code>, the effective range is calculated by taking the size of
 <code>pBuffers</code>[i] minus <code>pOffsets</code>[i].
 Otherwise, the effective range is equal to the element in <code>pSizes</code>[i].</p>
@@ -727,7 +730,7 @@ All elements of <code>pOffsets</code> <strong>must</strong> be a multiple of 4</
 <p><a id="VUID-vkCmdBindTransformFeedbackBuffersEXT-pBuffers-02360" href="#VUID-vkCmdBindTransformFeedbackBuffersEXT-pBuffers-02360"></a> <span class="vuid">VUID-vkCmdBindTransformFeedbackBuffersEXT-pBuffers-02360</span><br>
 
 All elements of <code>pBuffers</code> <strong>must</strong> have been created with the
-<code>VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT</code> usage flag set</p>
+<a href="resources.html#VkBufferUsageFlagBits" class="xref page">VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT</a> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBindTransformFeedbackBuffersEXT-pOffsets-02363" href="#VUID-vkCmdBindTransformFeedbackBuffersEXT-pOffsets-02363"></a> <span class="vuid">VUID-vkCmdBindTransformFeedbackBuffersEXT-pOffsets-02363</span><br>
@@ -776,7 +779,7 @@ Transform feedback <strong>must</strong> not be active when the
 </li>
 <li>
 <p><a id="VUID-vkCmdBindTransformFeedbackBuffersEXT-commandBuffer-cmdpool" href="#VUID-vkCmdBindTransformFeedbackBuffersEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdBindTransformFeedbackBuffersEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBindTransformFeedbackBuffersEXT-videocoding" href="#VUID-vkCmdBindTransformFeedbackBuffersEXT-videocoding"></a> <span class="vuid">VUID-vkCmdBindTransformFeedbackBuffersEXT-videocoding</span><br>
@@ -896,10 +899,10 @@ feedback from the previous location.
 In that case, a pipeline barrier is required between the calls to
 <code>vkCmdEndTransformFeedbackEXT</code> and
 <code>vkCmdBeginTransformFeedbackEXT</code>, with
-<code>VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT</code> as the source and
+<a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT</a> as the source and
 destination stages,
-<code>VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT</code> as the source
-access and <code>VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT</code> as
+<a href="synchronization.html#VkAccessFlagBits" class="xref page">VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT</a> as the source
+access and <a href="synchronization.html#VkAccessFlagBits" class="xref page">VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT</a> as
 the destination access.
 If <code>pCounterBuffers</code> is <code>NULL</code>, then transform feedback will start
 capturing vertex data to byte offset zero in all bound transform
@@ -982,7 +985,7 @@ If <code>pCounterBuffer</code> is <code>NULL</code>, then <code>pCounterBufferOf
 
 For each buffer handle in the <code>pCounterBuffers</code> array that is not
 <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a> it <strong>must</strong> have been created with the
-<code>VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT</code> usage
+<a href="resources.html#VkBufferUsageFlagBits" class="xref page">VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT</a> usage
 flag set</p>
 </li>
 <li>
@@ -998,7 +1001,7 @@ by <a href="#vkCmdBindTransformFeedbackBuffersEXT">vkCmdBindTransformFeedbackBuf
 If the <a href="features.html#features-shaderObject" class="xref page"><code>shaderObject</code></a> feature is not
 enabled, a
 valid graphics pipeline <strong>must</strong> be bound to
-<code>VK_PIPELINE_BIND_POINT_GRAPHICS</code></p>
+<a href="pipelines.html#VkPipelineBindPoint" class="xref page">VK_PIPELINE_BIND_POINT_GRAPHICS</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginTransformFeedbackEXT-None-04128" href="#VUID-vkCmdBeginTransformFeedbackEXT-None-04128"></a> <span class="vuid">VUID-vkCmdBeginTransformFeedbackEXT-None-04128</span><br>
@@ -1043,7 +1046,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginTransformFeedbackEXT-commandBuffer-cmdpool" href="#VUID-vkCmdBeginTransformFeedbackEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdBeginTransformFeedbackEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginTransformFeedbackEXT-renderpass" href="#VUID-vkCmdBeginTransformFeedbackEXT-renderpass"></a> <span class="vuid">VUID-vkCmdBeginTransformFeedbackEXT-renderpass</span><br>
@@ -1231,7 +1234,7 @@ If <code>pCounterBuffer</code> is <code>NULL</code>, then <code>pCounterBufferOf
 
 For each buffer handle in the <code>pCounterBuffers</code> array that is not
 <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a> it <strong>must</strong> have been created with the
-<code>VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT</code> usage
+<a href="resources.html#VkBufferUsageFlagBits" class="xref page">VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT</a> usage
 flag set</p>
 </li>
 <li>
@@ -1264,7 +1267,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEndTransformFeedbackEXT-commandBuffer-cmdpool" href="#VUID-vkCmdEndTransformFeedbackEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdEndTransformFeedbackEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEndTransformFeedbackEXT-renderpass" href="#VUID-vkCmdEndTransformFeedbackEXT-renderpass"></a> <span class="vuid">VUID-vkCmdEndTransformFeedbackEXT-renderpass</span><br>
@@ -1409,7 +1412,7 @@ pipeline.</p>
 <ul>
 <li>
 <p><a id="VUID-VkPipelineViewportSwizzleStateCreateInfoNV-sType-sType" href="#VUID-VkPipelineViewportSwizzleStateCreateInfoNV-sType-sType"></a> <span class="vuid">VUID-VkPipelineViewportSwizzleStateCreateInfoNV-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineViewportSwizzleStateCreateInfoNV-flags-zerobitmask" href="#VUID-VkPipelineViewportSwizzleStateCreateInfoNV-flags-zerobitmask"></a> <span class="vuid">VUID-VkPipelineViewportSwizzleStateCreateInfoNV-flags-zerobitmask</span><br>
@@ -1489,7 +1492,7 @@ updated by the command.</p>
 <p>This command sets the viewport swizzle state for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineViewportSwizzleStateCreateInfoNV">VkPipelineViewportSwizzleStateCreateInfoNV</a>::<code>viewportCount</code>, and
@@ -1540,7 +1543,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetViewportSwizzleNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetViewportSwizzleNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetViewportSwizzleNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetViewportSwizzleNV-videocoding" href="#VUID-vkCmdSetViewportSwizzleNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetViewportSwizzleNV-videocoding</span><br>
@@ -1637,10 +1640,10 @@ if (x == VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_W_NV) x' = -w;</code></pre>
 coordinates.
 This swizzling is applied before clipping and perspective divide.
 If the swizzle for an active viewport index is not specified, the swizzle
-for <code>x</code> is <code>VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_X_NV</code>, <code>y</code>
-is <code>VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_Y_NV</code>, <code>z</code> is
-<code>VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_Z_NV</code> and <code>w</code> is
-<code>VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_W_NV</code>.</p>
+for <code>x</code> is <a href="#VkViewportCoordinateSwizzleNV">VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_X_NV</a>, <code>y</code>
+is <a href="#VkViewportCoordinateSwizzleNV">VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_Y_NV</a>, <code>z</code> is
+<a href="#VkViewportCoordinateSwizzleNV">VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_Z_NV</a> and <code>w</code> is
+<a href="#VkViewportCoordinateSwizzleNV">VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_W_NV</a>.</p>
 </div>
 <div class="paragraph">
 <p>Viewport swizzle parameters are specified by setting the <code>pNext</code> pointer
@@ -1758,7 +1761,7 @@ are decorated as <code>Flat</code>.</p>
 <a href="VK_NV_mesh_shader/mesh.html#mesh" class="xref page">mesh</a>,
 <a href="geometry.html#geometry" class="xref page">geometry</a> nor <a href="tessellation.html#tessellation" class="xref page">tessellation shading</a> is active,
 the provoking vertex is determined by the <a href="drawing.html#drawing-primitive-topologies" class="xref page">primitive topology</a> defined by
-<a href="drawing.html#VkPipelineInputAssemblyStateCreateInfo" class="xref page">VkPipelineInputAssemblyStateCreateInfo</a>:<code>topology</code> used to execute
+<a href="drawing.html#VkPipelineInputAssemblyStateCreateInfo" class="xref page">VkPipelineInputAssemblyStateCreateInfo</a>::<code>topology</code> used to execute
 the <a href="drawing.html#drawing" class="xref page">drawing command</a>.</p>
 </div>
 <div class="paragraph">
@@ -1822,10 +1825,10 @@ selecting the provoking vertex mode.</p>
 </div>
 <div class="paragraph">
 <p>If this structure is not provided when creating the pipeline, the pipeline
-will use the <code>VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT</code> mode.</p>
+will use the <a href="#VkProvokingVertexModeEXT">VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT</a> mode.</p>
 </div>
 <div class="paragraph">
-<p>If the <a href="limits.html#limits-provokingVertexModePerPipeline" class="xref page"><code>provokingVertexModePerPipeline</code></a> limit is <code>VK_FALSE</code>, then all
+<p>If the <a href="limits.html#limits-provokingVertexModePerPipeline" class="xref page"><code>provokingVertexModePerPipeline</code></a> limit is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then all
 pipelines bound within a render pass instance <strong>must</strong> have the same
 <code>provokingVertexMode</code>.</p>
 </div>
@@ -1838,7 +1841,7 @@ pipelines bound within a render pass instance <strong>must</strong> have the sam
 <p><a id="VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-provokingVertexMode-04883" href="#VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-provokingVertexMode-04883"></a> <span class="vuid">VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-provokingVertexMode-04883</span><br>
 
 If <code>provokingVertexMode</code> is
-<code>VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT</code>, then the
+<a href="#VkProvokingVertexModeEXT">VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT</a>, then the
 <a href="features.html#features-provokingVertexLast" class="xref page"><code>provokingVertexLast</code></a> feature
 <strong>must</strong> be enabled</p>
 </li>
@@ -1853,7 +1856,7 @@ If <code>provokingVertexMode</code> is
 <ul>
 <li>
 <p><a id="VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-sType-sType" href="#VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-sType-sType"></a> <span class="vuid">VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-provokingVertexMode-parameter" href="#VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-provokingVertexMode-parameter"></a> <span class="vuid">VUID-VkPipelineRasterizationProvokingVertexStateCreateInfoEXT-provokingVertexMode-parameter</span><br>
@@ -1884,12 +1887,12 @@ typedef enum VkProvokingVertexModeEXT {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT</code> specifies that the
+<p><a href="#VkProvokingVertexModeEXT">VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT</a> specifies that the
 provoking vertex is the first non-adjacency vertex in the list of
 vertices used by a primitive.</p>
 </li>
 <li>
-<p><code>VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT</code> specifies that the
+<p><a href="#VkProvokingVertexModeEXT">VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT</a> specifies that the
 provoking vertex is the last non-adjacency vertex in the list of
 vertices used by a primitive.</p>
 </li>
@@ -1931,7 +1934,7 @@ recorded.</p>
 commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_PROVOKING_VERTEX_MODE_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_PROVOKING_VERTEX_MODE_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineRasterizationProvokingVertexStateCreateInfoEXT">VkPipelineRasterizationProvokingVertexStateCreateInfoEXT</a>::<code>provokingVertexMode</code>
@@ -1962,7 +1965,7 @@ enabled</p>
 <p><a id="VUID-vkCmdSetProvokingVertexModeEXT-provokingVertexMode-07447" href="#VUID-vkCmdSetProvokingVertexModeEXT-provokingVertexMode-07447"></a> <span class="vuid">VUID-vkCmdSetProvokingVertexModeEXT-provokingVertexMode-07447</span><br>
 
 If <code>provokingVertexMode</code> is
-<code>VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT</code>, then the
+<a href="#VkProvokingVertexModeEXT">VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT</a>, then the
 <a href="features.html#features-provokingVertexLast" class="xref page"><code>provokingVertexLast</code></a> feature
 <strong>must</strong> be enabled</p>
 </li>
@@ -1989,7 +1992,7 @@ If <code>provokingVertexMode</code> is
 </li>
 <li>
 <p><a id="VUID-vkCmdSetProvokingVertexModeEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetProvokingVertexModeEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetProvokingVertexModeEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetProvokingVertexModeEXT-videocoding" href="#VUID-vkCmdSetProvokingVertexModeEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetProvokingVertexModeEXT-videocoding</span><br>
@@ -2076,7 +2079,7 @@ In clip coordinates, the <em>view volume</em> is defined by:</p>
 <p>where
 if
 <a href="#VkPipelineViewportDepthClipControlCreateInfoEXT">VkPipelineViewportDepthClipControlCreateInfoEXT</a>::<code>negativeOneToOne</code>
-is <code>VK_TRUE</code> <span class="eq">z<sub>m</sub></span> is equal to <span class="eq">-w<sub>c</sub></span> otherwise
+is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a> <span class="eq">z<sub>m</sub></span> is equal to <span class="eq">-w<sub>c</sub></span> otherwise
 <span class="eq">z<sub>m</sub></span> is equal to zero.</p>
 </div>
 <div class="paragraph">
@@ -2136,11 +2139,11 @@ of the entry point of the final shader stage before clipping.</p>
 <p>If <a href="primsrast.html#VkPipelineRasterizationDepthClipStateCreateInfoEXT" class="xref page">VkPipelineRasterizationDepthClipStateCreateInfoEXT</a> is present in
 the graphics pipeline state then depth clipping is disabled if
 <a href="primsrast.html#VkPipelineRasterizationDepthClipStateCreateInfoEXT" class="xref page">VkPipelineRasterizationDepthClipStateCreateInfoEXT</a>::<code>depthClipEnable</code>
-is <code>VK_FALSE</code>.
+is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>.
 Otherwise, if <a href="primsrast.html#VkPipelineRasterizationDepthClipStateCreateInfoEXT" class="xref page">VkPipelineRasterizationDepthClipStateCreateInfoEXT</a> is
 not present, depth clipping is disabled when
 <a href="primsrast.html#VkPipelineRasterizationStateCreateInfo" class="xref page">VkPipelineRasterizationStateCreateInfo</a>::<code>depthClampEnable</code> is
-<code>VK_TRUE</code>.</p>
+<a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>.</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -2172,7 +2175,7 @@ recorded.</p>
 subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="primsrast.html#VkPipelineRasterizationStateCreateInfo" class="xref page">VkPipelineRasterizationStateCreateInfo</a>::<code>depthClampEnable</code> value
@@ -2180,7 +2183,7 @@ used to create the currently active pipeline.</p>
 </div>
 <div class="paragraph">
 <p>If the depth clamping state is changed dynamically, and the pipeline was not
-created with <code>VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT</code> enabled, then
+created with <a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT</a> enabled, then
 depth clipping is enabled when depth clamping is disabled and vice versa.</p>
 </div>
 <div class="sidebarblock">
@@ -2208,7 +2211,7 @@ enabled</p>
 <p><a id="VUID-vkCmdSetDepthClampEnableEXT-depthClamp-07449" href="#VUID-vkCmdSetDepthClampEnableEXT-depthClamp-07449"></a> <span class="vuid">VUID-vkCmdSetDepthClampEnableEXT-depthClamp-07449</span><br>
 
 If the <a href="features.html#features-depthClamp" class="xref page"><code>depthClamp</code></a> feature is not enabled,
-<code>depthClampEnable</code> <strong>must</strong> be <code>VK_FALSE</code></p>
+<code>depthClampEnable</code> <strong>must</strong> be <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a></p>
 </li>
 </ul>
 </div>
@@ -2229,7 +2232,7 @@ If the <a href="features.html#features-depthClamp" class="xref page"><code>depth
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthClampEnableEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetDepthClampEnableEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetDepthClampEnableEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthClampEnableEXT-videocoding" href="#VUID-vkCmdSetDepthClampEnableEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetDepthClampEnableEXT-videocoding</span><br>
@@ -2327,7 +2330,7 @@ recorded.</p>
 subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="primsrast.html#VkPipelineRasterizationDepthClipStateCreateInfoEXT" class="xref page">VkPipelineRasterizationDepthClipStateCreateInfoEXT</a>::<code>depthClipEnable</code>
@@ -2381,7 +2384,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthClipEnableEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetDepthClipEnableEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetDepthClipEnableEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthClipEnableEXT-videocoding" href="#VUID-vkCmdSetDepthClipEnableEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetDepthClipEnableEXT-videocoding</span><br>
@@ -2500,12 +2503,12 @@ typedef VkPointClippingBehavior VkPointClippingBehaviorKHR;</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES</code> specifies that the
+<p><a href="#VkPointClippingBehaviorKHR">VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES</a> specifies that the
 primitive is discarded if the vertex lies outside any clip plane,
 including the planes bounding the view volume.</p>
 </li>
 <li>
-<p><code>VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY</code> specifies that
+<p><a href="#VkPointClippingBehaviorKHR">VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY</a> specifies that
 the primitive is discarded only if the vertex lies outside any user clip
 plane.</p>
 </li>
@@ -2605,7 +2608,7 @@ structure.</p>
 <p><a id="VUID-VkPipelineViewportDepthClipControlCreateInfoEXT-negativeOneToOne-06470" href="#VUID-VkPipelineViewportDepthClipControlCreateInfoEXT-negativeOneToOne-06470"></a> <span class="vuid">VUID-VkPipelineViewportDepthClipControlCreateInfoEXT-negativeOneToOne-06470</span><br>
 
 If the <a href="features.html#features-depthClipControl" class="xref page"><code>depthClipControl</code></a> feature is
-not enabled, <code>negativeOneToOne</code> <strong>must</strong> be <code>VK_FALSE</code></p>
+not enabled, <code>negativeOneToOne</code> <strong>must</strong> be <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a></p>
 </li>
 </ul>
 </div>
@@ -2618,7 +2621,7 @@ not enabled, <code>negativeOneToOne</code> <strong>must</strong> be <code>VK_FAL
 <ul>
 <li>
 <p><a id="VUID-VkPipelineViewportDepthClipControlCreateInfoEXT-sType-sType" href="#VUID-VkPipelineViewportDepthClipControlCreateInfoEXT-sType-sType"></a> <span class="vuid">VUID-VkPipelineViewportDepthClipControlCreateInfoEXT-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT</a></p>
 </li>
 </ul>
 </div>
@@ -2656,7 +2659,7 @@ recorded.</p>
 commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_DEPTH_CLIP_NEGATIVE_ONE_TO_ONE_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DEPTH_CLIP_NEGATIVE_ONE_TO_ONE_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineViewportDepthClipControlCreateInfoEXT">VkPipelineViewportDepthClipControlCreateInfoEXT</a>::<code>negativeOneToOne</code>
@@ -2708,7 +2711,7 @@ be enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthClipNegativeOneToOneEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetDepthClipNegativeOneToOneEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetDepthClipNegativeOneToOneEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthClipNegativeOneToOneEXT-videocoding" href="#VUID-vkCmdSetDepthClipNegativeOneToOneEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetDepthClipNegativeOneToOneEXT-videocoding</span><br>
@@ -2906,7 +2909,7 @@ If the viewport <strong>W</strong> scaling state is dynamic, this member is igno
 <ul>
 <li>
 <p><a id="VUID-VkPipelineViewportWScalingStateCreateInfoNV-sType-sType" href="#VUID-VkPipelineViewportWScalingStateCreateInfoNV-sType-sType"></a> <span class="vuid">VUID-VkPipelineViewportWScalingStateCreateInfoNV-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineViewportWScalingStateCreateInfoNV-viewportCount-arraylength" href="#VUID-VkPipelineViewportWScalingStateCreateInfoNV-viewportCount-arraylength"></a> <span class="vuid">VUID-VkPipelineViewportWScalingStateCreateInfoNV-viewportCount-arraylength</span><br>
@@ -2955,7 +2958,7 @@ state.</p>
 drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_ENABLE_NV</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_ENABLE_NV</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineViewportWScalingStateCreateInfoNV">VkPipelineViewportWScalingStateCreateInfoNV</a>::<code>viewportWScalingEnable</code>
@@ -3001,7 +3004,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetViewportWScalingEnableNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetViewportWScalingEnableNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetViewportWScalingEnableNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetViewportWScalingEnableNV-videocoding" href="#VUID-vkCmdSetViewportWScalingEnableNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetViewportWScalingEnableNV-videocoding</span><br>
@@ -3115,7 +3118,7 @@ updated by the command.</p>
 <p>This command sets the viewport <strong>W</strong> scaling for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineViewportWScalingStateCreateInfoNV">VkPipelineViewportWScalingStateCreateInfoNV</a>::<code>pViewportWScalings</code>
@@ -3155,7 +3158,7 @@ The sum of <code>firstViewport</code> and <code>viewportCount</code> <strong>mus
 </li>
 <li>
 <p><a id="VUID-vkCmdSetViewportWScalingNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetViewportWScalingNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetViewportWScalingNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetViewportWScalingNV-videocoding" href="#VUID-vkCmdSetViewportWScalingNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetViewportWScalingNV-videocoding</span><br>
@@ -3315,19 +3318,19 @@ The transformed vertex in clip coordinates has a position given by</p>
 <ul>
 <li>
 <p><em><span class="eq">θ</span></em> is 0 degrees for
-<code>VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR</code></p>
+<a href="VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR" class="xref page">VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR</a></p>
 </li>
 <li>
 <p><em><span class="eq">θ</span></em> is 90 degrees for
-<code>VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR</code></p>
+<a href="VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR" class="xref page">VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR</a></p>
 </li>
 <li>
 <p><em><span class="eq">θ</span></em> is 180 degrees for
-<code>VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR</code></p>
+<a href="VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR" class="xref page">VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR</a></p>
 </li>
 <li>
 <p><em><span class="eq">θ</span></em> is 270 degrees for
-<code>VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR</code></p>
+<a href="VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR" class="xref page">VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR</a></p>
 </li>
 </ul>
 </div>
@@ -3547,7 +3550,7 @@ If <code>scissorCount</code> and <code>viewportCount</code> are both not dynamic
 <p><a id="VUID-VkPipelineViewportStateCreateInfo-viewportCount-04135" href="#VUID-VkPipelineViewportStateCreateInfo-viewportCount-04135"></a> <span class="vuid">VUID-VkPipelineViewportStateCreateInfo-viewportCount-04135</span><br>
 
 If the graphics pipeline is being created with
-<code>VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT</code> set then <code>viewportCount</code>
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT</a> set then <code>viewportCount</code>
 <strong>must</strong> be <code>0</code>, otherwise
 <code>viewportCount</code> <strong>must</strong> be greater than <code>0</code></p>
 </li>
@@ -3555,7 +3558,7 @@ If the graphics pipeline is being created with
 <p><a id="VUID-VkPipelineViewportStateCreateInfo-scissorCount-04136" href="#VUID-VkPipelineViewportStateCreateInfo-scissorCount-04136"></a> <span class="vuid">VUID-VkPipelineViewportStateCreateInfo-scissorCount-04136</span><br>
 
 If the graphics pipeline is being created with
-<code>VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT</code> set then <code>scissorCount</code>
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT</a> set then <code>scissorCount</code>
 <strong>must</strong> be <code>0</code>, otherwise
 <code>scissorCount</code> <strong>must</strong> be greater than <code>0</code></p>
 </li>
@@ -3564,7 +3567,7 @@ If the graphics pipeline is being created with
 
 If the <code>viewportWScalingEnable</code> member of a
 <a href="#VkPipelineViewportWScalingStateCreateInfoNV">VkPipelineViewportWScalingStateCreateInfoNV</a> structure included in
-the <code>pNext</code> chain is <code>VK_TRUE</code>, the <code>viewportCount</code> member
+the <code>pNext</code> chain is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, the <code>viewportCount</code> member
 of the <a href="#VkPipelineViewportWScalingStateCreateInfoNV">VkPipelineViewportWScalingStateCreateInfoNV</a> structure <strong>must</strong>
 be greater than or equal to
 <a href="#VkPipelineViewportStateCreateInfo">VkPipelineViewportStateCreateInfo</a>::<code>viewportCount</code></p>
@@ -3580,7 +3583,7 @@ be greater than or equal to
 <ul>
 <li>
 <p><a id="VUID-VkPipelineViewportStateCreateInfo-sType-sType" href="#VUID-VkPipelineViewportStateCreateInfo-sType-sType"></a> <span class="vuid">VUID-VkPipelineViewportStateCreateInfo-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineViewportStateCreateInfo-pNext-pNext" href="#VUID-VkPipelineViewportStateCreateInfo-pNext-pNext"></a> <span class="vuid">VUID-VkPipelineViewportStateCreateInfo-pNext-pNext</span><br>
@@ -3644,7 +3647,7 @@ recorded.</p>
 drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the corresponding
 <a href="#VkPipelineViewportStateCreateInfo">VkPipelineViewportStateCreateInfo</a>::<code>viewportCount</code> and
@@ -3718,7 +3721,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetViewportWithCount-commandBuffer-cmdpool" href="#VUID-vkCmdSetViewportWithCount-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetViewportWithCount-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetViewportWithCount-videocoding" href="#VUID-vkCmdSetViewportWithCount-videocoding"></a> <span class="vuid">VUID-vkCmdSetViewportWithCount-videocoding</span><br>
@@ -3834,7 +3837,7 @@ recorded.</p>
 subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the corresponding
 <a href="#VkPipelineViewportStateCreateInfo">VkPipelineViewportStateCreateInfo</a>::<code>scissorCount</code> and
@@ -3928,7 +3931,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetScissorWithCount-commandBuffer-cmdpool" href="#VUID-vkCmdSetScissorWithCount-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetScissorWithCount-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetScissorWithCount-videocoding" href="#VUID-vkCmdSetScissorWithCount-videocoding"></a> <span class="vuid">VUID-vkCmdSetScissorWithCount-videocoding</span><br>
@@ -4036,7 +4039,7 @@ transformation.</p>
 </div>
 <div class="paragraph">
 <p>A single vertex <strong>can</strong> be used in more than one individual primitive, in
-primitives such as <code>VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP</code>.
+primitives such as <a href="drawing.html#VkPrimitiveTopology" class="xref page">VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP</a>.
 In this case, the viewport transformation is applied separately for each
 primitive.</p>
 </div>
@@ -4080,7 +4083,7 @@ specifying viewport parameters.</p>
 <p>This command sets the viewport transformation parameters state for
 subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
-when the graphics pipeline is created with <code>VK_DYNAMIC_STATE_VIEWPORT</code>
+when the graphics pipeline is created with <a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_VIEWPORT</a>
 set in <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <code>VkPipelineViewportStateCreateInfo</code>::<code>pViewports</code> values used to
@@ -4144,7 +4147,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetViewport-commandBuffer-cmdpool" href="#VUID-vkCmdSetViewport-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetViewport-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetViewport-videocoding" href="#VUID-vkCmdSetViewport-videocoding"></a> <span class="vuid">VUID-vkCmdSetViewport-videocoding</span><br>
@@ -4296,7 +4299,7 @@ values as</p>
 <p><span class="eq">o<sub>z</sub> = <code>minDepth</code></span>
 (or <span class="eq">(<code>maxDepth</code> + <code>minDepth</code>) / 2</span> if
 <a href="#VkPipelineViewportDepthClipControlCreateInfoEXT">VkPipelineViewportDepthClipControlCreateInfoEXT</a>::<code>negativeOneToOne</code>
-is <code>VK_TRUE</code>)</p>
+is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>)</p>
 </dd>
 <dt class="hdlist1"></dt>
 <dd>
@@ -4311,7 +4314,7 @@ is <code>VK_TRUE</code>)</p>
 <p><span class="eq">p<sub>z</sub> = <code>maxDepth</code> - <code>minDepth</code></span>
 (or <span class="eq">(<code>maxDepth</code> - <code>minDepth</code>) / 2</span> if
 <a href="#VkPipelineViewportDepthClipControlCreateInfoEXT">VkPipelineViewportDepthClipControlCreateInfoEXT</a>::<code>negativeOneToOne</code>
-is <code>VK_TRUE</code>)</p>
+is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>)</p>
 </dd>
 </dl>
 </div>

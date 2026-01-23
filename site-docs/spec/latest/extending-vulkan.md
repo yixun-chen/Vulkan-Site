@@ -302,7 +302,7 @@ return the variable is overwritten with the number of structures actually
 written to `pProperties`.
 If `pPropertyCount` is less than the number of layer properties
 available, at most `pPropertyCount` structures will be written, and
-`VK_INCOMPLETE` will be returned instead of `VK_SUCCESS`, to
+[VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead of [VK_SUCCESS](fundamentals.html#VkResult), to
 indicate that not all the available properties were returned.
 
 The list of available layers may change at any time due to actions outside
@@ -331,24 +331,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkLayerProperties` structure is defined as:
 
@@ -361,7 +361,7 @@ typedef struct VkLayerProperties {
 } VkLayerProperties;
 
 * 
-`layerName` is an array of `VK_MAX_EXTENSION_NAME_SIZE`
+`layerName` is an array of [VK_MAX_EXTENSION_NAME_SIZE](#VK_MAX_EXTENSION_NAME_SIZE)
 `char` containing a null-terminated UTF-8 string which is the name of
 the layer.
 Use this name in the `ppEnabledLayerNames` array passed in the
@@ -377,18 +377,18 @@ encoded as described in [Version Numbers](#extendingvulkan-coreversions-versionn
 It is an integer, increasing with backward compatible changes.
 
 * 
-`description` is an array of `VK_MAX_DESCRIPTION_SIZE` `char`
+`description` is an array of [VK_MAX_DESCRIPTION_SIZE](#VK_MAX_DESCRIPTION_SIZE) `char`
 containing a null-terminated UTF-8 string which provides additional
 details that **can** be used by the application to identify the layer.
 
-`VK_MAX_EXTENSION_NAME_SIZE` is the length in `char` values of an
+[VK_MAX_EXTENSION_NAME_SIZE](#VK_MAX_EXTENSION_NAME_SIZE) is the length in `char` values of an
 array containing a layer or extension name string, as returned in
 [VkLayerProperties](#VkLayerProperties)::`layerName`,
 [VkExtensionProperties](#VkExtensionProperties)::`extensionName`, and other queries.
 
 #define VK_MAX_EXTENSION_NAME_SIZE        256U
 
-`VK_MAX_DESCRIPTION_SIZE` is the length in `char` values of an array
+[VK_MAX_DESCRIPTION_SIZE](#VK_MAX_DESCRIPTION_SIZE) is the length in `char` values of an array
 containing a string with additional descriptive information about a query,
 as returned in [VkLayerProperties](#VkLayerProperties)::`description` and other queries.
 
@@ -442,7 +442,7 @@ return the variable is overwritten with the number of structures actually
 written to `pProperties`.
 If `pPropertyCount` is less than the number of layer properties
 available, at most `pPropertyCount` structures will be written, and
-`VK_INCOMPLETE` will be returned instead of `VK_SUCCESS`, to
+[VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead of [VK_SUCCESS](fundamentals.html#VkResult), to
 indicate that not all the available properties were returned.
 
 The list of layers enumerated by `vkEnumerateDeviceLayerProperties`
@@ -480,24 +480,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `ppEnabledLayerNames` and `enabledLayerCount` members of
 [VkDeviceCreateInfo](devsandqueues.html#VkDeviceCreateInfo) are legacy and their values **must** be ignored by
@@ -588,7 +588,7 @@ return the variable is overwritten with the number of structures actually
 written to `pProperties`.
 If `pPropertyCount` is less than the number of extension properties
 available, at most `pPropertyCount` structures will be written, and
-`VK_INCOMPLETE` will be returned instead of `VK_SUCCESS`, to
+[VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead of [VK_SUCCESS](fundamentals.html#VkResult), to
 indicate that not all the available properties were returned.
 
 Because the list of available layers may change externally between calls to
@@ -625,27 +625,27 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_LAYER_NOT_PRESENT`
+[VK_ERROR_LAYER_NOT_PRESENT](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Device extensions add new [device-level functionality](#extendingvulkan-functionalitylevels) to the API, outside of the core specification.
 If
@@ -694,6 +694,10 @@ be enabled against the advertised version.
 If the `[VK_KHR_ray_tracing_pipeline](../appendices/extensions.html#VK_KHR_ray_tracing_pipeline)` extension is advertised as
 supported by this query, the `[VK_KHR_pipeline_library](../appendices/extensions.html#VK_KHR_pipeline_library)` extension
 **must** also be supported.
+
+If the `[VK_EXT_descriptor_heap](../appendices/extensions.html#VK_EXT_descriptor_heap)` extension is advertised as supported
+by this query, the `[VK_KHR_shader_untyped_pointers](../appendices/extensions.html#VK_KHR_shader_untyped_pointers)` extension **must**
+also be supported.
 
 Implementations claiming support for the [Roadmap 2022](../appendices/roadmap.html#roadmap-2022)
 profile **must** advertise the `[VK_KHR_global_priority](../appendices/extensions.html#VK_KHR_global_priority)` extension in
@@ -778,27 +782,27 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_LAYER_NOT_PRESENT`
+[VK_ERROR_LAYER_NOT_PRESENT](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkExtensionProperties` structure is defined as:
 
@@ -809,7 +813,7 @@ typedef struct VkExtensionProperties {
 } VkExtensionProperties;
 
 * 
-`extensionName` is an array of `VK_MAX_EXTENSION_NAME_SIZE`
+`extensionName` is an array of [VK_MAX_EXTENSION_NAME_SIZE](#VK_MAX_EXTENSION_NAME_SIZE)
 `char` containing a null-terminated UTF-8 string which is the name of
 the extension.
 
@@ -1000,10 +1004,10 @@ exist in the extension will **not** be promoted.
 |  | As a hypothetical example, if the `[VK_KHR_surface](../appendices/extensions.html#VK_KHR_surface)` extension were
 | --- | --- |
 promoted to part of a future core version, the
-`VK_COLOR_SPACE_SRGB_NONLINEAR_KHR` token defined by that extension
+[VK_COLOR_SPACE_SRGB_NONLINEAR_KHR](VK_KHR_surface/wsi.html#VkColorSpaceKHR) token defined by that extension
 would be promoted to `VK_COLOR_SPACE_SRGB_NONLINEAR`.
 However, the `VK_COLORSPACE_SRGB_NONLINEAR_KHR` token aliases
-`VK_COLOR_SPACE_SRGB_NONLINEAR_KHR`.
+[VK_COLOR_SPACE_SRGB_NONLINEAR_KHR](VK_KHR_surface/wsi.html#VkColorSpaceKHR).
 The `VK_COLORSPACE_SRGB_NONLINEAR_KHR` would not be promoted, because it
 is a backwards compatibility alias that exists only due to a naming mistake
 when the extension was initially published. |

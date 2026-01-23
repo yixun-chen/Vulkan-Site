@@ -54,7 +54,7 @@ limit is supported using [vkGetDescriptorSetLayoutSupport](vkGetDescriptorSetLay
 `maxMemoryAllocationSize` is the maximum size of a memory allocation
 that **can** be created, even if there is more space available in the heap.
 If [VkMemoryAllocateInfo](VkMemoryAllocateInfo.html)::`allocationSize` is larger the error
-`VK_ERROR_OUT_OF_DEVICE_MEMORY` **may** be returned.
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html) **may** be returned.
 
 If the `VkPhysicalDeviceMaintenance3Properties` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html) structure passed to
@@ -66,7 +66,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMaintenance3Properties-sType-sType) VUID-VkPhysicalDeviceMaintenance3Properties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES](VkStructureType.html)
 
 [VK_KHR_maintenance3](VK_KHR_maintenance3.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), `VkDeviceSize`, [VkStructureType](VkStructureType.html)
 

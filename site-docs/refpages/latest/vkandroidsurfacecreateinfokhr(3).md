@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAndroidSurfaceCreateInfoKHR-sType-sType) VUID-VkAndroidSurfaceCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkAndroidSurfaceCreateInfoKHR-pNext-pNext) VUID-VkAndroidSurfaceCreateInfoKHR-pNext-pNext

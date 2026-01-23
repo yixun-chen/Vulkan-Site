@@ -90,6 +90,8 @@
 - [Callable Shader Execution](#shaders-callable-execution)
 - [Callable_Shader_Execution](#shaders-callable-execution)
 - [Interpolation Decorations](#shaders-interpolation-decorations)
+- [Push Constant Decorations](#shaders-pushconstant-decorations)
+- [Push_Constant_Decorations](#shaders-pushconstant-decorations)
 - [Static Use](#shaders-staticuse)
 - [Scope](#shaders-scope)
 - [Cross Device](#shaders-scope-cross-device)
@@ -240,20 +242,20 @@ Valid Usage
 [](#VUID-vkCreateShadersEXT-stage-09670) VUID-vkCreateShadersEXT-stage-09670
 
 If the `stage` member of any element of `pCreateInfos` is
-`VK_SHADER_STAGE_COMPUTE_BIT`, `device` **must** support at least
-one queue family with the `VK_QUEUE_COMPUTE_BIT` capability
+[VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits), `device` **must** support at least
+one queue family with the [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) capability
 
 * 
 [](#VUID-vkCreateShadersEXT-stage-09671) VUID-vkCreateShadersEXT-stage-09671
 
 If the `stage` member of any element of `pCreateInfos` is
-`VK_SHADER_STAGE_TASK_BIT_EXT`, `VK_SHADER_STAGE_MESH_BIT_EXT`,
-`VK_SHADER_STAGE_VERTEX_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`,
-`VK_SHADER_STAGE_GEOMETRY_BIT`, or
-`VK_SHADER_STAGE_FRAGMENT_BIT`, `device` **must** support at least
-one queue family with the `VK_QUEUE_GRAPHICS_BIT` capability
+[VK_SHADER_STAGE_TASK_BIT_EXT](pipelines.html#VkShaderStageFlagBits), [VK_SHADER_STAGE_MESH_BIT_EXT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_GEOMETRY_BIT](pipelines.html#VkShaderStageFlagBits), or
+[VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits), `device` **must** support at least
+one queue family with the [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) capability
 
 * 
 [](#VUID-vkCreateShadersEXT-None-08400) VUID-vkCreateShadersEXT-None-08400
@@ -265,81 +267,81 @@ enabled
 [](#VUID-vkCreateShadersEXT-pCreateInfos-08402) VUID-vkCreateShadersEXT-pCreateInfos-08402
 
 If the `flags` member of any element of `pCreateInfos` includes
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`, the `flags` member of all
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT), the `flags` member of all
 other elements of `pCreateInfos` whose `stage` is
-`VK_SHADER_STAGE_VERTEX_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`,
-`VK_SHADER_STAGE_GEOMETRY_BIT`, or
-`VK_SHADER_STAGE_FRAGMENT_BIT` **must** also include
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`
+[VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_GEOMETRY_BIT](pipelines.html#VkShaderStageFlagBits), or
+[VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits) **must** also include
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT)
 
 * 
 [](#VUID-vkCreateShadersEXT-pCreateInfos-08403) VUID-vkCreateShadersEXT-pCreateInfos-08403
 
 If the `flags` member of any element of `pCreateInfos` includes
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`, the `flags` member of all
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT), the `flags` member of all
 other elements of `pCreateInfos` whose `stage` is
-`VK_SHADER_STAGE_TASK_BIT_EXT` or `VK_SHADER_STAGE_MESH_BIT_EXT`
-**must** also include `VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`
+[VK_SHADER_STAGE_TASK_BIT_EXT](pipelines.html#VkShaderStageFlagBits) or [VK_SHADER_STAGE_MESH_BIT_EXT](pipelines.html#VkShaderStageFlagBits)
+**must** also include [VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT)
 
 * 
 [](#VUID-vkCreateShadersEXT-pCreateInfos-08404) VUID-vkCreateShadersEXT-pCreateInfos-08404
 
 If the `flags` member of any element of `pCreateInfos` whose
-`stage` is `VK_SHADER_STAGE_TASK_BIT_EXT` or
-`VK_SHADER_STAGE_MESH_BIT_EXT` includes
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`, there **must** be no member of
-`pCreateInfos` whose `stage` is `VK_SHADER_STAGE_VERTEX_BIT`
+`stage` is [VK_SHADER_STAGE_TASK_BIT_EXT](pipelines.html#VkShaderStageFlagBits) or
+[VK_SHADER_STAGE_MESH_BIT_EXT](pipelines.html#VkShaderStageFlagBits) includes
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT), there **must** be no member of
+`pCreateInfos` whose `stage` is [VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits)
 and whose `flags` member includes
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT)
 
 * 
 [](#VUID-vkCreateShadersEXT-pCreateInfos-08405) VUID-vkCreateShadersEXT-pCreateInfos-08405
 
 If there is any element of `pCreateInfos` whose `stage` is
-`VK_SHADER_STAGE_MESH_BIT_EXT` and whose `flags` member includes
-both `VK_SHADER_CREATE_LINK_STAGE_BIT_EXT` and
-`VK_SHADER_CREATE_NO_TASK_SHADER_BIT_EXT`, there **must** be no element
+[VK_SHADER_STAGE_MESH_BIT_EXT](pipelines.html#VkShaderStageFlagBits) and whose `flags` member includes
+both [VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT) and
+[VK_SHADER_CREATE_NO_TASK_SHADER_BIT_EXT](#VkShaderCreateFlagBitsEXT), there **must** be no element
 of `pCreateInfos` whose `stage` is
-`VK_SHADER_STAGE_TASK_BIT_EXT` and whose `flags` member includes
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`
+[VK_SHADER_STAGE_TASK_BIT_EXT](pipelines.html#VkShaderStageFlagBits) and whose `flags` member includes
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT)
 
 * 
 [](#VUID-vkCreateShadersEXT-pCreateInfos-08409) VUID-vkCreateShadersEXT-pCreateInfos-08409
 
 For each element of `pCreateInfos` whose `flags` member includes
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`, if there is any other element
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT), if there is any other element
 of `pCreateInfos` whose `stage` is logically later than the
 `stage` of the former and whose `flags` member also includes
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`, the `nextStage` of the
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT), the `nextStage` of the
 former **must** be equal to the `stage` of the element with the
 logically earliest `stage` following the `stage` of the former
 whose `flags` member also includes
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT)
 
 * 
 [](#VUID-vkCreateShadersEXT-pCreateInfos-08410) VUID-vkCreateShadersEXT-pCreateInfos-08410
 
 The `stage` member of each element of `pCreateInfos` whose
-`flags` member includes `VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`
+`flags` member includes [VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT)
 **must** be unique
 
 * 
 [](#VUID-vkCreateShadersEXT-pCreateInfos-08411) VUID-vkCreateShadersEXT-pCreateInfos-08411
 
 The `codeType` member of all elements of `pCreateInfos` whose
-`flags` member includes `VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`
+`flags` member includes [VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT)
 **must** be the same
 
 * 
 [](#VUID-vkCreateShadersEXT-pCreateInfos-12224) VUID-vkCreateShadersEXT-pCreateInfos-12224
 
 If `pCreateInfos` contains elements with both
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` and
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`, both elements'
-`flags` include `VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`, both
-elements' `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, at
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits) and
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits), both elements'
+`flags` include [VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT), both
+elements' `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), at
 least one **must** contain an `OpExecutionMode` instruction specifying
 the orientation of triangles generated by the tessellator
 
@@ -347,10 +349,10 @@ the orientation of triangles generated by the tessellator
 [](#VUID-vkCreateShadersEXT-pCreateInfos-12225) VUID-vkCreateShadersEXT-pCreateInfos-12225
 
 If `pCreateInfos` contains elements with both
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` and
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`, both elements'
-`flags` include `VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`, both
-elements' `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, at
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits) and
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits), both elements'
+`flags` include [VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT), both
+elements' `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), at
 least one **must** contain an `OpExecutionMode` instruction specifying
 the spacing of segments on the edges of tessellated primitives
 
@@ -358,10 +360,10 @@ the spacing of segments on the edges of tessellated primitives
 [](#VUID-vkCreateShadersEXT-pCreateInfos-08867) VUID-vkCreateShadersEXT-pCreateInfos-08867
 
 If `pCreateInfos` contains elements with both
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` and
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`, both elements'
-`flags` include `VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`, both
-elements' `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits) and
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits), both elements'
+`flags` include [VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT), both
+elements' `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), and
 both stages contains an `OpExecutionMode` instruction specifying the
 type of subdivision, they **must** be the same
 
@@ -369,10 +371,10 @@ type of subdivision, they **must** be the same
 [](#VUID-vkCreateShadersEXT-pCreateInfos-08868) VUID-vkCreateShadersEXT-pCreateInfos-08868
 
 If `pCreateInfos` contains elements with both
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` and
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`, both elements'
-`flags` include `VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`, both
-elements' `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits) and
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits), both elements'
+`flags` include [VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT), both
+elements' `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), and
 both stages contains an `OpExecutionMode` instruction specifying the
 orientation of triangles, they **must** be the same
 
@@ -380,10 +382,10 @@ orientation of triangles, they **must** be the same
 [](#VUID-vkCreateShadersEXT-pCreateInfos-08870) VUID-vkCreateShadersEXT-pCreateInfos-08870
 
 If `pCreateInfos` contains elements with both
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` and
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`, both elements'
-`flags` include `VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`, both
-elements' `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits) and
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits), both elements'
+`flags` include [VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT), both
+elements' `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), and
 both stages contains an `OpExecutionMode` instruction specifying the
 spacing of segments on the edges of tessellated primitives, they **must**
 be the same
@@ -392,21 +394,56 @@ be the same
 [](#VUID-vkCreateShadersEXT-pCreateInfos-08871) VUID-vkCreateShadersEXT-pCreateInfos-08871
 
 If `pCreateInfos` contains elements with both
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` and
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`, both elements'
-`flags` include `VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`, both
-elements' `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits) and
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits), both elements'
+`flags` include [VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT), both
+elements' `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), and
 both stages contains an `OpExecutionMode` instruction specifying the
 output patch size, they **must** be the same
 
 * 
 [](#VUID-vkCreateShadersEXT-pCreateInfos-09632) VUID-vkCreateShadersEXT-pCreateInfos-09632
 
-If `pCreateInfos` contains a `VK_SHADER_STAGE_MESH_BIT_EXT` with
-`codeType` of `VK_SHADER_CODE_TYPE_SPIRV_EXT` and
-`VK_SHADER_CREATE_NO_TASK_SHADER_BIT_EXT` is not set, then the mesh
+If `pCreateInfos` contains a [VK_SHADER_STAGE_MESH_BIT_EXT](pipelines.html#VkShaderStageFlagBits) with
+`codeType` of [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT) and
+[VK_SHADER_CREATE_NO_TASK_SHADER_BIT_EXT](#VkShaderCreateFlagBitsEXT) is not set, then the mesh
 shader’s entry point **must** not declare a variable with a `DrawIndex`
 `BuiltIn` decoration
+
+* 
+[](#VUID-vkCreateShadersEXT-pCreateInfos-11413) VUID-vkCreateShadersEXT-pCreateInfos-11413
+
+If any element of `pCreateInfos` sets
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](#VkShaderCreateFlagBitsEXT) and includes embedded
+sampler mappings, there **must** be less than
+([`maxSamplerAllocationCount`](limits.html#limits-maxSamplerAllocationCount)
+-  ([    `minSamplerHeapReservedRangeWithEmbedded`](limits.html#limits-minSamplerHeapReservedRangeWithEmbedded) /
+[`samplerDescriptorSize`](limits.html#limits-samplerDescriptorSize)))
+[VkSampler](samplers.html#VkSampler) objects currently created on the device
+
+* 
+[](#VUID-vkCreateShadersEXT-pCreateInfos-11428) VUID-vkCreateShadersEXT-pCreateInfos-11428
+
+If any element of `pCreateInfos` sets
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](#VkShaderCreateFlagBitsEXT) and includes embedded
+sampler mappings, this command **must** not cause the total number of
+unique embedded samplers in pipelines and shaders on this device to
+exceed [    `maxDescriptorHeapEmbeddedSamplers`](limits.html#limits-maxDescriptorHeapEmbeddedSamplers)
+
+* 
+[](#VUID-vkCreateShadersEXT-flags-11472) VUID-vkCreateShadersEXT-flags-11472
+
+If the `flags` member of any element of `pCreateInfos` includes
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT) and
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](#VkShaderCreateFlagBitsEXT), the `flags` member
+of all other elements of `pCreateInfos` whose `stage` is
+[VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_GEOMETRY_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TASK_BIT_EXT](pipelines.html#VkShaderStageFlagBits), [VK_SHADER_STAGE_MESH_BIT_EXT](pipelines.html#VkShaderStageFlagBits),
+or [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits) **must** also include
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](#VkShaderCreateFlagBitsEXT)
 
 Valid Usage (Implicit)
 
@@ -440,27 +477,27 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPATIBLE_SHADER_BINARY_EXT`
+[VK_INCOMPATIBLE_SHADER_BINARY_EXT](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkShaderCreateInfoEXT` structure is defined as:
 
@@ -542,36 +579,63 @@ structure, as described in
 [Specialization Constants](pipelines.html#pipelines-specialization-constants), or
 `NULL`.
 
+When specifying descriptor heap mappings, only mappings corresponding to
+bindings that are actually present in the SPIR-V shader affect compilation.
+Mappings are ignored when `codeType` is
+[VK_SHADER_CODE_TYPE_BINARY_EXT](#VkShaderCodeTypeEXT).
+The resulting compiled binary from two different SPIR-V shaders which would
+have identical bit patterns **must** remain identical even if the mapping
+entries vary in any of the following ways:
+
+* 
+Different numbers of unused mapping structures
+
+* 
+Different binding counts for unused bindings
+
+* 
+Unused parameters in mapping structures (e.g. sampler offsets)
+
+* 
+Ignored parameters in mapping structures
+
+* 
+Different order of mapping structures, used or unused
+
+|  | Calculating the same offset in a mapping via different parameter
+| --- | --- |
+values is not guaranteed to provide identical results. |
+
 Valid Usage
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-codeSize-08735) VUID-VkShaderCreateInfoEXT-codeSize-08735
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, `codeSize` **must** be a multiple of 4
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), `codeSize` **must** be a multiple of 4
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08736) VUID-VkShaderCreateInfoEXT-pCode-08736
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, `pCode` **must** point to valid SPIR-V code,
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), `pCode` **must** point to valid SPIR-V code,
 formatted and packed as described by the [Khronos SPIR-V     Specification](introduction.html#spirv-spec)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08737) VUID-VkShaderCreateInfoEXT-pCode-08737
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, `pCode` **must** adhere to the validation rules
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), `pCode` **must** adhere to the validation rules
 described by the [Validation Rules within a     Module](../appendices/spirvenv.html#spirvenv-module-validation) section of the [SPIR-V Environment](../appendices/spirvenv.html#spirvenv-capabilities)
 appendix
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08738) VUID-VkShaderCreateInfoEXT-pCode-08738
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, `pCode` **must** declare the `Shader` capability
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), `pCode` **must** declare the `Shader` capability
 for SPIR-V code
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08739) VUID-VkShaderCreateInfoEXT-pCode-08739
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, `pCode` **must** not declare any capability that is
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), `pCode` **must** not declare any capability that is
 not supported by the API, as described by the
 [Capabilities](../appendices/spirvenv.html#spirvenv-module-validation) section of the
 [SPIR-V Environment](../appendices/spirvenv.html#spirvenv-capabilities) appendix
@@ -579,14 +643,14 @@ not supported by the API, as described by the
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08740) VUID-VkShaderCreateInfoEXT-pCode-08740
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and `pCode` declares any of the capabilities
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), and `pCode` declares any of the capabilities
 listed in the [SPIR-V Environment](../appendices/spirvenv.html#spirvenv-capabilities-table)
 appendix, one of the corresponding requirements **must** be satisfied
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08741) VUID-VkShaderCreateInfoEXT-pCode-08741
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, `pCode` **must** not declare any SPIR-V extension
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), `pCode` **must** not declare any SPIR-V extension
 that is not supported by the API, as described by the
 [Extension](../appendices/spirvenv.html#spirvenv-extensions) section of the
 [SPIR-V Environment](../appendices/spirvenv.html#spirvenv-capabilities) appendix
@@ -594,54 +658,134 @@ that is not supported by the API, as described by the
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08742) VUID-VkShaderCreateInfoEXT-pCode-08742
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and `pCode` declares any of the SPIR-V extensions
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), and `pCode` declares any of the SPIR-V extensions
 listed in the [SPIR-V Environment](../appendices/spirvenv.html#spirvenv-extensions-table)
 appendix, one of the corresponding requirements **must** be satisfied
 
 * 
+[](#VUID-VkShaderCreateInfoEXT-descriptorHeap-11314) VUID-VkShaderCreateInfoEXT-descriptorHeap-11314
+
+If the [`descriptorHeap`](features.html#features-descriptorHeap) feature is not
+enabled,
+[VkShaderDescriptorSetAndBindingMappingInfoEXT](descriptorheaps.html#VkShaderDescriptorSetAndBindingMappingInfoEXT)::`mappingCount`
+**must** be 0
+
+* 
+[](#VUID-VkShaderCreateInfoEXT-pNext-11315) VUID-VkShaderCreateInfoEXT-pNext-11315
+
+If the `pNext` chain specifies a [    descriptor mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_RESOURCE_HEAP_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the mapped
+resource in the shader **must** be a variable with a structure type
+decorated with `Block` in the `Uniform` `Storage` `Class`
+
+* 
+[](#VUID-VkShaderCreateInfoEXT-pNext-11316) VUID-VkShaderCreateInfoEXT-pNext-11316
+
+If the `pNext` chain specifies a [    descriptor mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the mapped structure
+**must** not be larger than the sum of `pushDataOffset` used in the
+mapping and [`maxPushDataSize`](limits.html#limits-maxPushDataSize)
+
+* 
+[](#VUID-VkShaderCreateInfoEXT-pNext-11317) VUID-VkShaderCreateInfoEXT-pNext-11317
+
+If the `pNext` chain specifies a [    descriptor mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the sum of
+mapped structure size and `shaderRecordDataOffset` used in the
+mapping **must** not be larger than
+[`maxShaderGroupStride`](limits.html#limits-maxShaderGroupStride)
+
+* 
+[](#VUID-VkShaderCreateInfoEXT-pNext-11318) VUID-VkShaderCreateInfoEXT-pNext-11318
+
+If the `pNext` chain specifies a [    descriptor mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the mapped resource
+in the shader **must** be one of:
+
+A variable with a structure type decorated with `Block` in the
+`Uniform` `Storage` `Class`
+
+* 
+A variable with a structure type decorated with `BufferBlock` in the
+`Uniform` `Storage` `Class`
+
+* 
+A variable with a structure type decorated with `Block` in the
+`StorageBuffer` `Storage` `Class`
+
+* 
+A `OpTypeAccelerationStructureKHR` variable
+
+* 
+A `OpTypeAccelerationStructureNV` variable
+
+[](#VUID-VkShaderCreateInfoEXT-pNext-11378) VUID-VkShaderCreateInfoEXT-pNext-11378
+
+If the `pNext` chain specifies a [    descriptor mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the
+`OpArrayLength` instruction **must** not be used on that resource
+
+[](#VUID-VkShaderCreateInfoEXT-pNext-11399) VUID-VkShaderCreateInfoEXT-pNext-11399
+
+If the `pNext` chain specifies a [    descriptor mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_CONSTANT_OFFSET_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and the mapped resource declaration is an array, the
+`pEmbeddedSampler` member of the corresponding mapping structure
+**must** be `NULL`
+
+* 
 [](#VUID-VkShaderCreateInfoEXT-flags-08412) VUID-VkShaderCreateInfoEXT-flags-08412
 
-If `stage` is not `VK_SHADER_STAGE_TASK_BIT_EXT`,
-`VK_SHADER_STAGE_MESH_BIT_EXT`, `VK_SHADER_STAGE_VERTEX_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`,
-`VK_SHADER_STAGE_GEOMETRY_BIT`, or
-`VK_SHADER_STAGE_FRAGMENT_BIT`, `flags` **must** not include
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`
+If `stage` is not [VK_SHADER_STAGE_TASK_BIT_EXT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_MESH_BIT_EXT](pipelines.html#VkShaderStageFlagBits), [VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_GEOMETRY_BIT](pipelines.html#VkShaderStageFlagBits), or
+[VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits), `flags` **must** not include
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-flags-08486) VUID-VkShaderCreateInfoEXT-flags-08486
 
-If `stage` is not `VK_SHADER_STAGE_FRAGMENT_BIT`, `flags`
+If `stage` is not [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits), `flags`
 **must** not include
-`VK_SHADER_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_EXT`
+[VK_SHADER_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_EXT](#VkShaderCreateFlagBitsEXT)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-flags-08487) VUID-VkShaderCreateInfoEXT-flags-08487
 
 If the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) feature is not enabled,
 `flags` **must** not include
-`VK_SHADER_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_EXT`
+[VK_SHADER_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_EXT](#VkShaderCreateFlagBitsEXT)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-flags-08488) VUID-VkShaderCreateInfoEXT-flags-08488
 
-If `stage` is not `VK_SHADER_STAGE_FRAGMENT_BIT`, `flags`
+If `stage` is not [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits), `flags`
 **must** not include
-`VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT`
+[VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT](#VkShaderCreateFlagBitsEXT)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-flags-08489) VUID-VkShaderCreateInfoEXT-flags-08489
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `flags` **must** not include
-`VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT`
+[VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT](#VkShaderCreateFlagBitsEXT)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-flags-09404) VUID-VkShaderCreateInfoEXT-flags-09404
 
 If `flags` includes
-`VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT`, the
+[VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT](#VkShaderCreateFlagBitsEXT), the
 [`subgroupSizeControl`](features.html#features-subgroupSizeControl) feature
 **must** be enabled
 
@@ -649,7 +793,7 @@ If `flags` includes
 [](#VUID-VkShaderCreateInfoEXT-flags-09405) VUID-VkShaderCreateInfoEXT-flags-09405
 
 If `flags` includes
-`VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT`, the
+[VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT](#VkShaderCreateFlagBitsEXT), the
 [`computeFullSubgroups`](features.html#features-computeFullSubgroups) feature
 **must** be enabled
 
@@ -657,7 +801,7 @@ If `flags` includes
 [](#VUID-VkShaderCreateInfoEXT-flags-11005) VUID-VkShaderCreateInfoEXT-flags-11005
 
 If `flags` includes
-`VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT`, then the
+[VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT](#VkShaderCreateFlagBitsEXT), then the
 [    `VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT`::`deviceGeneratedCommands`](features.html#features-deviceGeneratedCommands)
 feature **must** be enabled
 
@@ -665,37 +809,37 @@ feature **must** be enabled
 [](#VUID-VkShaderCreateInfoEXT-flags-11006) VUID-VkShaderCreateInfoEXT-flags-11006
 
 If `flags` includes
-`VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT`, then the identified
+[VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT](#VkShaderCreateFlagBitsEXT), then the identified
 entry point **must** not specify `Xfb` execution mode
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-flags-08992) VUID-VkShaderCreateInfoEXT-flags-08992
 
 If `flags` includes
-`VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT`, `stage` **must**
+[VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT](#VkShaderCreateFlagBitsEXT), `stage` **must**
 be
-one of `VK_SHADER_STAGE_MESH_BIT_EXT`,
-`VK_SHADER_STAGE_TASK_BIT_EXT`, or
-`VK_SHADER_STAGE_COMPUTE_BIT`
+one of [VK_SHADER_STAGE_MESH_BIT_EXT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TASK_BIT_EXT](pipelines.html#VkShaderStageFlagBits), or
+[VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-flags-08485) VUID-VkShaderCreateInfoEXT-flags-08485
 
-If `stage` is not `VK_SHADER_STAGE_COMPUTE_BIT`, `flags`
-**must** not include `VK_SHADER_CREATE_DISPATCH_BASE_BIT_EXT`
+If `stage` is not [VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits), `flags`
+**must** not include [VK_SHADER_CREATE_DISPATCH_BASE_BIT_EXT](#VkShaderCreateFlagBitsEXT)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-flags-08414) VUID-VkShaderCreateInfoEXT-flags-08414
 
-If `stage` is not `VK_SHADER_STAGE_MESH_BIT_EXT`, `flags`
-**must** not include `VK_SHADER_CREATE_NO_TASK_SHADER_BIT_EXT`
+If `stage` is not [VK_SHADER_STAGE_MESH_BIT_EXT](pipelines.html#VkShaderStageFlagBits), `flags`
+**must** not include [VK_SHADER_CREATE_NO_TASK_SHADER_BIT_EXT](#VkShaderCreateFlagBitsEXT)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-flags-08416) VUID-VkShaderCreateInfoEXT-flags-08416
 
 If `flags` includes both
-`VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT` and
-`VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT`, the local
+[VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT](#VkShaderCreateFlagBitsEXT) and
+[VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT](#VkShaderCreateFlagBitsEXT), the local
 workgroup size in the X dimension of the shader **must** be a multiple of
 [`maxSubgroupSize`](devsandqueues.html#limits-maxSubgroupSize)
 
@@ -703,8 +847,8 @@ workgroup size in the X dimension of the shader **must** be a multiple of
 [](#VUID-VkShaderCreateInfoEXT-flags-08417) VUID-VkShaderCreateInfoEXT-flags-08417
 
 If `flags` includes
-`VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT` but not
-`VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT` and no
+[VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT](#VkShaderCreateFlagBitsEXT) but not
+[VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT](#VkShaderCreateFlagBitsEXT) and no
 [VkShaderRequiredSubgroupSizeCreateInfoEXT](pipelines.html#VkShaderRequiredSubgroupSizeCreateInfoEXT) structure is included in
 the `pNext` chain, the local workgroup size in the X dimension of
 the shader **must** be a multiple of
@@ -713,133 +857,133 @@ the shader **must** be a multiple of
 * 
 [](#VUID-VkShaderCreateInfoEXT-stage-08418) VUID-VkShaderCreateInfoEXT-stage-08418
 
-`stage` **must** not be `VK_SHADER_STAGE_ALL_GRAPHICS` or
-`VK_SHADER_STAGE_ALL`
+`stage` **must** not be [VK_SHADER_STAGE_ALL_GRAPHICS](pipelines.html#VkShaderStageFlagBits) or
+[VK_SHADER_STAGE_ALL](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-stage-08419) VUID-VkShaderCreateInfoEXT-stage-08419
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `stage` **must** not be
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` or
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits) or
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-stage-08420) VUID-VkShaderCreateInfoEXT-stage-08420
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
-enabled, `stage` **must** not be `VK_SHADER_STAGE_GEOMETRY_BIT`
+enabled, `stage` **must** not be [VK_SHADER_STAGE_GEOMETRY_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-stage-08421) VUID-VkShaderCreateInfoEXT-stage-08421
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
-`stage` **must** not be `VK_SHADER_STAGE_TASK_BIT_EXT`
+`stage` **must** not be [VK_SHADER_STAGE_TASK_BIT_EXT](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-stage-08422) VUID-VkShaderCreateInfoEXT-stage-08422
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
-`stage` **must** not be `VK_SHADER_STAGE_MESH_BIT_EXT`
+`stage` **must** not be [VK_SHADER_STAGE_MESH_BIT_EXT](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-stage-08425) VUID-VkShaderCreateInfoEXT-stage-08425
 
 `stage` **must** not be
-`VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI`
+[VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-stage-08426) VUID-VkShaderCreateInfoEXT-stage-08426
 
 `stage` **must** not be
-`VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI`
+[VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-nextStage-08427) VUID-VkShaderCreateInfoEXT-nextStage-08427
 
-If `stage` is `VK_SHADER_STAGE_VERTEX_BIT`, `nextStage`
+If `stage` is [VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits), `nextStage`
 **must** not include any bits other than
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`,
-`VK_SHADER_STAGE_GEOMETRY_BIT`, and
-`VK_SHADER_STAGE_FRAGMENT_BIT`
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_GEOMETRY_BIT](pipelines.html#VkShaderStageFlagBits), and
+[VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-nextStage-08428) VUID-VkShaderCreateInfoEXT-nextStage-08428
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `nextStage` **must** not include
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` or
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits) or
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-nextStage-08429) VUID-VkShaderCreateInfoEXT-nextStage-08429
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `nextStage` **must** not include
-`VK_SHADER_STAGE_GEOMETRY_BIT`
+[VK_SHADER_STAGE_GEOMETRY_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-nextStage-08430) VUID-VkShaderCreateInfoEXT-nextStage-08430
 
-If `stage` is `VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`,
+If `stage` is [VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits),
 `nextStage` **must** not include any bits other than
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-nextStage-08431) VUID-VkShaderCreateInfoEXT-nextStage-08431
 
-If `stage` is `VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`,
+If `stage` is [VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits),
 `nextStage` **must** not include any bits other than
-`VK_SHADER_STAGE_GEOMETRY_BIT` and
-`VK_SHADER_STAGE_FRAGMENT_BIT`
+[VK_SHADER_STAGE_GEOMETRY_BIT](pipelines.html#VkShaderStageFlagBits) and
+[VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-nextStage-08433) VUID-VkShaderCreateInfoEXT-nextStage-08433
 
-If `stage` is `VK_SHADER_STAGE_GEOMETRY_BIT`, `nextStage`
-**must** not include any bits other than `VK_SHADER_STAGE_FRAGMENT_BIT`
+If `stage` is [VK_SHADER_STAGE_GEOMETRY_BIT](pipelines.html#VkShaderStageFlagBits), `nextStage`
+**must** not include any bits other than [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-nextStage-08434) VUID-VkShaderCreateInfoEXT-nextStage-08434
 
-If `stage` is `VK_SHADER_STAGE_FRAGMENT_BIT` or
-`VK_SHADER_STAGE_COMPUTE_BIT`, `nextStage` **must** be 0
+If `stage` is [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits) or
+[VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits), `nextStage` **must** be 0
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-nextStage-08435) VUID-VkShaderCreateInfoEXT-nextStage-08435
 
-If `stage` is `VK_SHADER_STAGE_TASK_BIT_EXT`, `nextStage`
-**must** not include any bits other than `VK_SHADER_STAGE_MESH_BIT_EXT`
+If `stage` is [VK_SHADER_STAGE_TASK_BIT_EXT](pipelines.html#VkShaderStageFlagBits), `nextStage`
+**must** not include any bits other than [VK_SHADER_STAGE_MESH_BIT_EXT](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-nextStage-08436) VUID-VkShaderCreateInfoEXT-nextStage-08436
 
-If `stage` is `VK_SHADER_STAGE_MESH_BIT_EXT`, `nextStage`
-**must** not include any bits other than `VK_SHADER_STAGE_FRAGMENT_BIT`
+If `stage` is [VK_SHADER_STAGE_MESH_BIT_EXT](pipelines.html#VkShaderStageFlagBits), `nextStage`
+**must** not include any bits other than [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-pName-08440) VUID-VkShaderCreateInfoEXT-pName-08440
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, `pName`
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), `pName`
 **must** be the name of an `OpEntryPoint` in `pCode` with an
 execution model that matches `stage`
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08492) VUID-VkShaderCreateInfoEXT-pCode-08492
 
-If `codeType` is `VK_SHADER_CODE_TYPE_BINARY_EXT`, `pCode`
+If `codeType` is [VK_SHADER_CODE_TYPE_BINARY_EXT](#VkShaderCodeTypeEXT), `pCode`
 **must** be aligned to `16` bytes
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08493) VUID-VkShaderCreateInfoEXT-pCode-08493
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, `pCode`
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), `pCode`
 **must** be aligned to `4` bytes
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08448) VUID-VkShaderCreateInfoEXT-pCode-08448
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and the
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), and the
 identified entry point includes any variable in its interface that is
 declared with the `ClipDistance` `BuiltIn` decoration, that
 variable **must** not have an array size greater than
@@ -848,7 +992,7 @@ variable **must** not have an array size greater than
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08449) VUID-VkShaderCreateInfoEXT-pCode-08449
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and the
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), and the
 identified entry point includes any variable in its interface that is
 declared with the `CullDistance` `BuiltIn` decoration, that
 variable **must** not have an array size greater than
@@ -857,7 +1001,7 @@ variable **must** not have an array size greater than
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08450) VUID-VkShaderCreateInfoEXT-pCode-08450
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and the
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), and the
 identified entry point includes variables in its interface that are
 declared with the `ClipDistance` `BuiltIn` decoration and
 variables in its interface that are declared with the `CullDistance`
@@ -868,7 +1012,7 @@ which sum to more than
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08451) VUID-VkShaderCreateInfoEXT-pCode-08451
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and the
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), and the
 identified entry point includes any variable in its interface that is
 declared with the `SampleMask` `BuiltIn` decoration, that variable
 **must** not have an array size greater than
@@ -877,9 +1021,9 @@ declared with the `SampleMask` `BuiltIn` decoration, that variable
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08453) VUID-VkShaderCreateInfoEXT-pCode-08453
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and
-`stage` is `VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` or
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`, and the identified
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), and
+`stage` is [VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits) or
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits), and the identified
 entry point has an `OpExecutionMode` instruction specifying a patch
 size with `OutputVertices`, the patch size **must** be greater than `0`
 and less than or equal to
@@ -888,8 +1032,8 @@ and less than or equal to
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08454) VUID-VkShaderCreateInfoEXT-pCode-08454
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and
-`stage` is `VK_SHADER_STAGE_GEOMETRY_BIT`, the identified entry
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), and
+`stage` is [VK_SHADER_STAGE_GEOMETRY_BIT](pipelines.html#VkShaderStageFlagBits), the identified entry
 point **must** have an `OpExecutionMode` instruction specifying a
 maximum output vertex count that is greater than `0` and less than or
 equal to `VkPhysicalDeviceLimits`::`maxGeometryOutputVertices`
@@ -897,8 +1041,8 @@ equal to `VkPhysicalDeviceLimits`::`maxGeometryOutputVertices`
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08455) VUID-VkShaderCreateInfoEXT-pCode-08455
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and
-`stage` is `VK_SHADER_STAGE_GEOMETRY_BIT`, the identified entry
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), and
+`stage` is [VK_SHADER_STAGE_GEOMETRY_BIT](pipelines.html#VkShaderStageFlagBits), the identified entry
 point **must** have an `OpExecutionMode` instruction specifying an
 invocation count that is greater than `0` and less than or equal to
 `VkPhysicalDeviceLimits`::`maxGeometryShaderInvocations`
@@ -906,7 +1050,7 @@ invocation count that is greater than `0` and less than or equal to
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08456) VUID-VkShaderCreateInfoEXT-pCode-08456
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), and
 `stage` is a
 [pre-rasterization shader    stage](pipelines.html#pipelines-graphics-subsets-pre-rasterization), and the identified entry point writes to `Layer` for any
 primitive, it **must** write the same value to `Layer` for all vertices
@@ -915,7 +1059,7 @@ of a given primitive
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08457) VUID-VkShaderCreateInfoEXT-pCode-08457
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), and
 `stage` is a
 [pre-rasterization shader    stage](pipelines.html#pipelines-graphics-subsets-pre-rasterization), and the identified entry point writes to `ViewportIndex` for
 any primitive, it **must** write the same value to `ViewportIndex` for
@@ -924,8 +1068,8 @@ all vertices of a given primitive
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08459) VUID-VkShaderCreateInfoEXT-pCode-08459
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and
-`stage` is `VK_SHADER_STAGE_FRAGMENT_BIT`, and the identified
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), and
+`stage` is [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits), and the identified
 entry point writes to `FragDepth` in any execution path, all
 execution paths that are not exclusive to helper invocations **must**
 either discard the fragment, or write or initialize the value of
@@ -934,7 +1078,7 @@ either discard the fragment, or write or initialize the value of
 * 
 [](#VUID-VkShaderCreateInfoEXT-pCode-08460) VUID-VkShaderCreateInfoEXT-pCode-08460
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, the shader
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), the shader
 code in `pCode` **must** be valid as described by the
 [Khronos SPIR-V Specification](introduction.html#spirv-spec) after applying the
 specializations provided in `pSpecializationInfo`, if any, and then
@@ -943,16 +1087,16 @@ converting all specialization constants into fixed constants
 * 
 [](#VUID-VkShaderCreateInfoEXT-codeType-08872) VUID-VkShaderCreateInfoEXT-codeType-08872
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and
-`stage` is `VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`,
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), and
+`stage` is [VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits),
 `pCode` **must** contain an `OpExecutionMode` instruction specifying
 the type of subdivision
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-codeType-12226) VUID-VkShaderCreateInfoEXT-codeType-12226
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and
-`stage` is `VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`,
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), and
+`stage` is [VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits),
 `pCode` **must** contain an `OpExecutionMode` instruction specifying
 the output patch size
 
@@ -965,56 +1109,70 @@ stage in `stageFlags`
 * 
 [](#VUID-VkShaderCreateInfoEXT-codeType-10064) VUID-VkShaderCreateInfoEXT-codeType-10064
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and if a push
-constant block is declared in a shader, then an element of
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT),
+`flags` does not include
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](#VkShaderCreateFlagBitsEXT)
+and if a push constant block is declared in a shader, then an element of
 `pPushConstantRanges->stageFlags` **must** match `stage`
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-codeType-10065) VUID-VkShaderCreateInfoEXT-codeType-10065
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and if a push
-constant block is declared in a shader, the block must be contained
-inside the element of `pPushConstantRanges` that matches the stage
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT),
+`flags` does not include
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](#VkShaderCreateFlagBitsEXT)
+and if a push constant block is declared in a shader, the block must be
+contained inside the element of `pPushConstantRanges` that matches
+the stage
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-codeType-10383) VUID-VkShaderCreateInfoEXT-codeType-10383
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and a
-[resource variable](interfaces.html#interfaces-resources) is declared in a shader, the
-corresponding descriptor set in `pSetLayouts` **must** match the shader
-stage
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT),
+`flags` does not include
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](#VkShaderCreateFlagBitsEXT)
+and a [resource variable](interfaces.html#interfaces-resources) is declared in a
+shader, the corresponding descriptor set in `pSetLayouts` **must**
+match the shader stage
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-codeType-10384) VUID-VkShaderCreateInfoEXT-codeType-10384
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and a
-[resource variable](interfaces.html#interfaces-resources) is declared in a shader,
-and the descriptor type is not `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`,
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT),
+`flags` does not include
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](#VkShaderCreateFlagBitsEXT)
+and a [resource variable](interfaces.html#interfaces-resources) is declared in a
+shader,
+and the descriptor type is not [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](descriptorsets.html#VkDescriptorType),
 the corresponding descriptor set in `pSetLayouts` **must** match the
 descriptor type
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-codeType-10385) VUID-VkShaderCreateInfoEXT-codeType-10385
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and a
-[resource variable](interfaces.html#interfaces-resources) is declared in a shader as an
-array, the corresponding descriptor set in `pSetLayouts` **must** match
-the descriptor count
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT),
+`flags` does not include
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](#VkShaderCreateFlagBitsEXT)
+and a [resource variable](interfaces.html#interfaces-resources) is declared in a shader
+as an array, the corresponding descriptor set in `pSetLayouts` **must**
+match the descriptor count
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-codeType-10386) VUID-VkShaderCreateInfoEXT-codeType-10386
 
-If `codeType` is `VK_SHADER_CODE_TYPE_SPIRV_EXT`, and a
-[resource variable](interfaces.html#interfaces-resources) is declared in a shader as an
-array of descriptors, then the descriptor type of that variable **must**
-not be `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+If `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT),
+`flags` does not include
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](#VkShaderCreateFlagBitsEXT)
+and a [resource variable](interfaces.html#interfaces-resources) is declared in a shader
+as an array of descriptors, then the descriptor type of that variable
+**must** not be [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](descriptorsets.html#VkDescriptorType)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-flags-11758) VUID-VkShaderCreateInfoEXT-flags-11758
 
 If [shader64BitIndexing](features.html#features-shader64BitIndexing) feature is not
 enabled, `flags` **must** not contain
-`VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT`
+[VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT](#VkShaderCreateFlagBitsEXT)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-setLayoutCount-12257) VUID-VkShaderCreateInfoEXT-setLayoutCount-12257
@@ -1022,17 +1180,51 @@ enabled, `flags` **must** not contain
 `setLayoutCount` **must** be less than or equal to
 `VkPhysicalDeviceLimits`::`maxBoundDescriptorSets`
 
+* 
+[](#VUID-VkShaderCreateInfoEXT-flags-11290) VUID-VkShaderCreateInfoEXT-flags-11290
+
+If `flags` includes [VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](#VkShaderCreateFlagBitsEXT),
+`setLayoutCount` **must** be 0
+
+* 
+[](#VUID-VkShaderCreateInfoEXT-flags-11291) VUID-VkShaderCreateInfoEXT-flags-11291
+
+If `flags` includes [VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](#VkShaderCreateFlagBitsEXT),
+`pSetLayouts` **must** be `NULL`
+
+* 
+[](#VUID-VkShaderCreateInfoEXT-flags-11370) VUID-VkShaderCreateInfoEXT-flags-11370
+
+If `flags` includes [VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](#VkShaderCreateFlagBitsEXT),
+`pushConstantRangeCount` **must** be 0
+
+* 
+[](#VUID-VkShaderCreateInfoEXT-flags-11371) VUID-VkShaderCreateInfoEXT-flags-11371
+
+If `flags` includes [VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](#VkShaderCreateFlagBitsEXT),
+`pPushConstantRanges` **must** be `NULL`
+
+* 
+[](#VUID-VkShaderCreateInfoEXT-flags-11292) VUID-VkShaderCreateInfoEXT-flags-11292
+
+If `flags` includes [VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](#VkShaderCreateFlagBitsEXT),
+and `codeType` is [VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT), all shader
+variables in the [shader resource interface](interfaces.html#interfaces-resources) with
+a `DescriptorSet` and `Binding` decoration **must** have a mapping
+declared in
+[VkShaderDescriptorSetAndBindingMappingInfoEXT](descriptorheaps.html#VkShaderDescriptorSetAndBindingMappingInfoEXT)::pMappings
+
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-sType-sType) VUID-VkShaderCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SHADER_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SHADER_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-pNext-pNext) VUID-VkShaderCreateInfoEXT-pNext-pNext
 
- Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkCustomResolveCreateInfoEXT](pipelines.html#VkCustomResolveCreateInfoEXT), [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](pipelines.html#VkPipelineShaderStageRequiredSubgroupSizeCreateInfo), or [VkValidationFeaturesEXT](initialization.html#VkValidationFeaturesEXT)
+ Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkCustomResolveCreateInfoEXT](pipelines.html#VkCustomResolveCreateInfoEXT), [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](pipelines.html#VkPipelineShaderStageRequiredSubgroupSizeCreateInfo), [VkShaderDescriptorSetAndBindingMappingInfoEXT](descriptorheaps.html#VkShaderDescriptorSetAndBindingMappingInfoEXT), or [VkValidationFeaturesEXT](initialization.html#VkValidationFeaturesEXT)
 
 * 
 [](#VUID-VkShaderCreateInfoEXT-sType-unique) VUID-VkShaderCreateInfoEXT-sType-unique
@@ -1101,6 +1293,8 @@ specifying how a shader object is created, are:
 // Provided by VK_EXT_shader_object
 typedef enum VkShaderCreateFlagBitsEXT {
     VK_SHADER_CREATE_LINK_STAGE_BIT_EXT = 0x00000001,
+  // Provided by VK_EXT_descriptor_heap with VK_EXT_shader_object
+    VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT = 0x00000400,
   // Provided by VK_EXT_shader_object with VK_EXT_subgroup_size_control or VK_VERSION_1_3
     VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT = 0x00000002,
   // Provided by VK_EXT_shader_object with VK_EXT_subgroup_size_control or VK_VERSION_1_3
@@ -1120,61 +1314,65 @@ typedef enum VkShaderCreateFlagBitsEXT {
 } VkShaderCreateFlagBitsEXT;
 
 * 
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT` specifies that a shader is
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT) specifies that a shader is
 linked to all other shaders created in the same [vkCreateShadersEXT](#vkCreateShadersEXT)
 call whose [VkShaderCreateInfoEXT](#VkShaderCreateInfoEXT) structures' `flags` include
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT`.
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](#VkShaderCreateFlagBitsEXT).
 
 * 
-`VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT` specifies
+[VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT](#VkShaderCreateFlagBitsEXT) specifies
     that the [`SubgroupSize`](interfaces.html#interfaces-builtin-variables-sgs) **may**
     vary in a
 task, mesh, or
     compute shader.
 
 * 
-`VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT` specifies that the
+[VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT](#VkShaderCreateFlagBitsEXT) specifies that the
     subgroup sizes **must** be launched with all invocations active in a
 task, mesh, or
     compute shader.
 
 * 
-`VK_SHADER_CREATE_NO_TASK_SHADER_BIT_EXT` specifies that a mesh
+[VK_SHADER_CREATE_NO_TASK_SHADER_BIT_EXT](#VkShaderCreateFlagBitsEXT) specifies that a mesh
 shader **must** only be used without a task shader.
 Otherwise, the mesh shader **must** only be used with a task shader.
 
 * 
-`VK_SHADER_CREATE_DISPATCH_BASE_BIT_EXT` specifies that a compute
+[VK_SHADER_CREATE_DISPATCH_BASE_BIT_EXT](#VkShaderCreateFlagBitsEXT) specifies that a compute
 shader **can** be used with [vkCmdDispatchBase](dispatch.html#vkCmdDispatchBase) with a non-zero base
 workgroup.
 
 * 
-`VK_SHADER_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_EXT`
+[VK_SHADER_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_EXT](#VkShaderCreateFlagBitsEXT)
 specifies that a fragment shader **can** be used with a fragment shading
 rate attachment.
 
 * 
-`VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT` specifies
+[VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT](#VkShaderCreateFlagBitsEXT) specifies
 that a fragment shader **can** be used with a fragment density map
 attachment.
 
 * 
-`VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT` specifies that the
+[VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT](#VkShaderCreateFlagBitsEXT) specifies that the
 shader **can** be used in combination with [Device-Generated Commands](device_generated_commands/generatedcommands.html#device-generated-commands).
 
 * 
-`VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT` specifies that the shader
+[VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT](#VkShaderCreateFlagBitsEXT) specifies that the shader
 enables [64-bit indexing](../appendices/spirvenv.html#spirvenv-64bindexing).
+
+* 
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](#VkShaderCreateFlagBitsEXT) specifies that the shader
+will use descriptor heap mappings instead of descriptor set layouts.
 
 |  | The behavior of
 | --- | --- |
-`VK_SHADER_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_EXT`
+[VK_SHADER_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_EXT](#VkShaderCreateFlagBitsEXT)
 and
-`VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT`
+[VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT](#VkShaderCreateFlagBitsEXT)
 differs subtly from the behavior of
-`VK_PIPELINE_CREATE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_CREATE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](pipelines.html#VkPipelineCreateFlagBits)
 and
-`VK_PIPELINE_CREATE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT`
+[VK_PIPELINE_CREATE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits)
 in that the shader bit allows, but does not require the shader to be used
 with that type of attachment.
 This means that the application need not create multiple shaders when it
@@ -1194,11 +1392,11 @@ typedef enum VkShaderCodeTypeEXT {
 } VkShaderCodeTypeEXT;
 
 * 
-`VK_SHADER_CODE_TYPE_BINARY_EXT` specifies shader code in an opaque,
+[VK_SHADER_CODE_TYPE_BINARY_EXT](#VkShaderCodeTypeEXT) specifies shader code in an opaque,
 implementation-defined binary format specific to the physical device.
 
 * 
-`VK_SHADER_CODE_TYPE_SPIRV_EXT` specifies shader code in SPIR-V
+[VK_SHADER_CODE_TYPE_SPIRV_EXT](#VkShaderCodeTypeEXT) specifies shader code in SPIR-V
 format.
 
 Binary shader code **can** be retrieved from a shader object using the command:
@@ -1230,8 +1428,8 @@ to the size of the buffer, in bytes, pointed to by `pData`, and on
 return the variable is overwritten with the amount of data actually written
 to `pData`.
 If `pDataSize` is less than the size of the binary shader code, nothing
-is written to `pData`, and `VK_INCOMPLETE` will be returned instead
-of `VK_SUCCESS`.
+is written to `pData`, and [VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead
+of [VK_SUCCESS](fundamentals.html#VkResult).
 
 |  | The behavior of this command when `pDataSize` is too small differs from
 | --- | --- |
@@ -1246,12 +1444,12 @@ This behavior is not consistent with the behavior described in
 reasons.
 
 If the amount of data available is larger than the passed `pDataSize`,
-the query returns a `VK_INCOMPLETE` success status instead of a
-`VK_ERROR_NOT_ENOUGH_SPACE_KHR` error status. |
+the query returns a [VK_INCOMPLETE](fundamentals.html#VkResult) success status instead of a
+[VK_ERROR_NOT_ENOUGH_SPACE_KHR](fundamentals.html#VkResult) error status. |
 
 Binary shader code retrieved using `vkGetShaderBinaryDataEXT` **can** be
 passed to a subsequent call to [vkCreateShadersEXT](#vkCreateShadersEXT) on a compatible
-physical device by specifying `VK_SHADER_CODE_TYPE_BINARY_EXT` in the
+physical device by specifying [VK_SHADER_CODE_TYPE_BINARY_EXT](#VkShaderCodeTypeEXT) in the
 `codeType` member of `VkShaderCreateInfoEXT`.
 
 The shader code returned by repeated calls to this function with the same
@@ -1303,24 +1501,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Binary shader compatibility means that binary shader code returned from a
 call to [vkGetShaderBinaryDataEXT](#vkGetShaderBinaryDataEXT) **can** be passed to a later call to
@@ -1370,10 +1568,10 @@ code created on a device with a different or unknown `shaderBinaryUUID`
 and/or higher `shaderBinaryVersion`.
 In this case, the implementation **may** use any unspecified means of its
 choosing to determine whether the provided binary shader code is usable.
-If it is, [vkCreateShadersEXT](#vkCreateShadersEXT) **must** return `VK_SUCCESS`, and the
+If it is, [vkCreateShadersEXT](#vkCreateShadersEXT) **must** return [VK_SUCCESS](fundamentals.html#VkResult), and the
 created shader object is guaranteed to be valid.
 Otherwise, in the absence of some error, [vkCreateShadersEXT](#vkCreateShadersEXT) **must**
-return `VK_INCOMPATIBLE_SHADER_BINARY_EXT` to indicate that the provided
+return [VK_INCOMPATIBLE_SHADER_BINARY_EXT](fundamentals.html#VkResult) to indicate that the provided
 binary shader code is not compatible with the device.
 
 Once shader objects have been created, they **can** be bound to the command
@@ -1432,30 +1630,30 @@ Every element of `pStages` **must** be unique
 * 
 [](#VUID-vkCmdBindShadersEXT-pStages-08464) VUID-vkCmdBindShadersEXT-pStages-08464
 
-`pStages` **must** not contain `VK_SHADER_STAGE_ALL_GRAPHICS` or
-`VK_SHADER_STAGE_ALL`
+`pStages` **must** not contain [VK_SHADER_STAGE_ALL_GRAPHICS](pipelines.html#VkShaderStageFlagBits) or
+[VK_SHADER_STAGE_ALL](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-vkCmdBindShadersEXT-pStages-08465) VUID-vkCmdBindShadersEXT-pStages-08465
 
-`pStages` **must** not contain `VK_SHADER_STAGE_RAYGEN_BIT_KHR`,
-`VK_SHADER_STAGE_ANY_HIT_BIT_KHR`,
-`VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR`,
-`VK_SHADER_STAGE_MISS_BIT_KHR`,
-`VK_SHADER_STAGE_INTERSECTION_BIT_KHR`, or
-`VK_SHADER_STAGE_CALLABLE_BIT_KHR`
+`pStages` **must** not contain [VK_SHADER_STAGE_RAYGEN_BIT_KHR](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_ANY_HIT_BIT_KHR](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_MISS_BIT_KHR](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_INTERSECTION_BIT_KHR](pipelines.html#VkShaderStageFlagBits), or
+[VK_SHADER_STAGE_CALLABLE_BIT_KHR](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-vkCmdBindShadersEXT-pStages-08467) VUID-vkCmdBindShadersEXT-pStages-08467
 
 `pStages` **must** not contain
-`VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI`
+[VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-vkCmdBindShadersEXT-pStages-08468) VUID-vkCmdBindShadersEXT-pStages-08468
 
 `pStages` **must** not contain
-`VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI`
+[VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-vkCmdBindShadersEXT-pShaders-08469) VUID-vkCmdBindShadersEXT-pShaders-08469
@@ -1468,45 +1666,45 @@ equal to the corresponding element of `pStages`
 * 
 [](#VUID-vkCmdBindShadersEXT-pShaders-08470) VUID-vkCmdBindShadersEXT-pShaders-08470
 
-If `pStages` contains both `VK_SHADER_STAGE_TASK_BIT_EXT` and
-`VK_SHADER_STAGE_VERTEX_BIT`, and `pShaders` is not `NULL`, and
-the same index in `pShaders` as `VK_SHADER_STAGE_TASK_BIT_EXT`
+If `pStages` contains both [VK_SHADER_STAGE_TASK_BIT_EXT](pipelines.html#VkShaderStageFlagBits) and
+[VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits), and `pShaders` is not `NULL`, and
+the same index in `pShaders` as [VK_SHADER_STAGE_TASK_BIT_EXT](pipelines.html#VkShaderStageFlagBits)
 in `pStages` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the same index in
-`pShaders` as `VK_SHADER_STAGE_VERTEX_BIT` in `pStages`
+`pShaders` as [VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits) in `pStages`
 **must** be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
 [](#VUID-vkCmdBindShadersEXT-pShaders-08471) VUID-vkCmdBindShadersEXT-pShaders-08471
 
-If `pStages` contains both `VK_SHADER_STAGE_MESH_BIT_EXT` and
-`VK_SHADER_STAGE_VERTEX_BIT`, and `pShaders` is not `NULL`, and
-the same index in `pShaders` as `VK_SHADER_STAGE_MESH_BIT_EXT`
+If `pStages` contains both [VK_SHADER_STAGE_MESH_BIT_EXT](pipelines.html#VkShaderStageFlagBits) and
+[VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits), and `pShaders` is not `NULL`, and
+the same index in `pShaders` as [VK_SHADER_STAGE_MESH_BIT_EXT](pipelines.html#VkShaderStageFlagBits)
 in `pStages` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the same index in
-`pShaders` as `VK_SHADER_STAGE_VERTEX_BIT` in `pStages`
+`pShaders` as [VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits) in `pStages`
 **must** be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
 [](#VUID-vkCmdBindShadersEXT-pShaders-08476) VUID-vkCmdBindShadersEXT-pShaders-08476
 
-If `pStages` contains `VK_SHADER_STAGE_COMPUTE_BIT`, the
+If `pStages` contains [VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits), the
 `VkCommandPool` that `commandBuffer` was allocated from **must**
 support compute operations
 
 * 
 [](#VUID-vkCmdBindShadersEXT-pShaders-08477) VUID-vkCmdBindShadersEXT-pShaders-08477
 
-If `pStages` contains `VK_SHADER_STAGE_VERTEX_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`,
-`VK_SHADER_STAGE_GEOMETRY_BIT`, or
-`VK_SHADER_STAGE_FRAGMENT_BIT`, the `VkCommandPool` that
+If `pStages` contains [VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_GEOMETRY_BIT](pipelines.html#VkShaderStageFlagBits), or
+[VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits), the `VkCommandPool` that
 `commandBuffer` was allocated from **must** support graphics operations
 
 * 
 [](#VUID-vkCmdBindShadersEXT-pShaders-08478) VUID-vkCmdBindShadersEXT-pShaders-08478
 
-If `pStages` contains `VK_SHADER_STAGE_MESH_BIT_EXT` or
-`VK_SHADER_STAGE_TASK_BIT_EXT`, the `VkCommandPool` that
+If `pStages` contains [VK_SHADER_STAGE_MESH_BIT_EXT](pipelines.html#VkShaderStageFlagBits) or
+[VK_SHADER_STAGE_TASK_BIT_EXT](pipelines.html#VkShaderStageFlagBits), the `VkCommandPool` that
 `commandBuffer` was allocated from **must** support graphics operations
 
 Valid Usage (Implicit)
@@ -1534,7 +1732,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindShadersEXT-commandBuffer-cmdpool) VUID-vkCmdBindShadersEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBindShadersEXT-videocoding) VUID-vkCmdBindShadersEXT-videocoding
@@ -1585,7 +1783,7 @@ called to set the relevant state in the command buffer prior to drawing:
 * 
 [vkCmdSetRasterizerDiscardEnable](primsrast.html#vkCmdSetRasterizerDiscardEnable)
 
-If a shader is bound to the `VK_SHADER_STAGE_VERTEX_BIT` stage, the
+If a shader is bound to the [VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits) stage, the
 following commands **must** have been called in the command buffer prior to
 drawing:
 
@@ -1598,22 +1796,22 @@ drawing:
 * 
 [vkCmdSetPrimitiveRestartEnable](drawing.html#vkCmdSetPrimitiveRestartEnable)
 
-If a shader is bound to the `VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`
+If a shader is bound to the [VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits)
 stage, the following command **must** have been called in the command buffer
 prior to drawing:
 
 * 
 [vkCmdSetPatchControlPointsEXT](#vkCmdSetPatchControlPointsEXT), if `primitiveTopology` is
-`VK_PRIMITIVE_TOPOLOGY_PATCH_LIST`
+[VK_PRIMITIVE_TOPOLOGY_PATCH_LIST](drawing.html#VkPrimitiveTopology)
 
 If a shader is bound to the
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT` stage, the following
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits) stage, the following
 command **must** have been called in the command buffer prior to drawing:
 
 * 
 [vkCmdSetTessellationDomainOriginEXT](tessellation.html#vkCmdSetTessellationDomainOriginEXT)
 
-If `rasterizerDiscardEnable` is `VK_FALSE`, the following commands
+If `rasterizerDiscardEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), the following commands
 **must** have been called in the command buffer prior to drawing:
 
 * 
@@ -1646,24 +1844,24 @@ If `rasterizerDiscardEnable` is `VK_FALSE`, the following commands
 
 * 
 [vkCmdSetDepthWriteEnable](fragops.html#vkCmdSetDepthWriteEnable), if `depthTestEnable` is
-`VK_TRUE`
+[VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
-[vkCmdSetDepthCompareOp](fragops.html#vkCmdSetDepthCompareOp), if `depthTestEnable` is `VK_TRUE`
+[vkCmdSetDepthCompareOp](fragops.html#vkCmdSetDepthCompareOp), if `depthTestEnable` is [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [vkCmdSetDepthBoundsTestEnable](fragops.html#vkCmdSetDepthBoundsTestEnable), if the [    depthBounds](features.html#features-depthBounds) feature is enabled
 
 * 
 [vkCmdSetDepthBounds](fragops.html#vkCmdSetDepthBounds), if `depthBoundsTestEnable` is
-`VK_TRUE`
+[VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [vkCmdSetDepthBiasEnable](primsrast.html#vkCmdSetDepthBiasEnable)
 
 * 
 [vkCmdSetDepthBias](primsrast.html#vkCmdSetDepthBias) or [vkCmdSetDepthBias2EXT](primsrast.html#vkCmdSetDepthBias2EXT),
-if `depthBiasEnable` is `VK_TRUE`
+if `depthBiasEnable` is [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [vkCmdSetDepthClampEnableEXT](vertexpostproc.html#vkCmdSetDepthClampEnableEXT), if the [    depthClamp](features.html#features-depthClamp) feature is enabled
@@ -1672,29 +1870,29 @@ if `depthBiasEnable` is `VK_TRUE`
 [vkCmdSetStencilTestEnable](fragops.html#vkCmdSetStencilTestEnable)
 
 * 
-[vkCmdSetStencilOp](fragops.html#vkCmdSetStencilOp), if `stencilTestEnable` is `VK_TRUE`
+[vkCmdSetStencilOp](fragops.html#vkCmdSetStencilOp), if `stencilTestEnable` is [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [vkCmdSetStencilCompareMask](fragops.html#vkCmdSetStencilCompareMask), if `stencilTestEnable` is
-`VK_TRUE`
+[VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [vkCmdSetStencilWriteMask](fragops.html#vkCmdSetStencilWriteMask), if `stencilTestEnable` is
-`VK_TRUE`
+[VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [vkCmdSetStencilReference](fragops.html#vkCmdSetStencilReference), if `stencilTestEnable` is
-`VK_TRUE`
+[VK_TRUE](fundamentals.html#VK_TRUE)
 
-If a shader is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage, and
-`rasterizerDiscardEnable` is `VK_FALSE`, the following commands
+If a shader is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits) stage, and
+`rasterizerDiscardEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), the following commands
 **must** have been called in the command buffer prior to drawing:
 
 * 
 [vkCmdSetLogicOpEnableEXT](framebuffer.html#vkCmdSetLogicOpEnableEXT), if the [    `logicOp`](features.html#features-logicOp) feature is enabled
 
 * 
-[vkCmdSetLogicOpEXT](framebuffer.html#vkCmdSetLogicOpEXT), if `logicOpEnable` is `VK_TRUE`
+[vkCmdSetLogicOpEXT](framebuffer.html#vkCmdSetLogicOpEXT), if `logicOpEnable` is [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [vkCmdSetColorBlendEnableEXT](framebuffer.html#vkCmdSetColorBlendEnableEXT) and [vkCmdSetColorWriteMaskEXT](framebuffer.html#vkCmdSetColorWriteMaskEXT),
@@ -1705,26 +1903,26 @@ attachment in the render pass instance active at draw time
 [vkCmdSetColorBlendEquationEXT](framebuffer.html#vkCmdSetColorBlendEquationEXT) or
 [vkCmdSetColorBlendAdvancedEXT](framebuffer.html#vkCmdSetColorBlendAdvancedEXT),
 if color attachments are bound, for every attachment whose index in
-`pColorBlendEnables` is a pointer to a value of `VK_TRUE`
+`pColorBlendEnables` is a pointer to a value of [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [vkCmdSetBlendConstants](framebuffer.html#vkCmdSetBlendConstants), if any index in `pColorBlendEnables`
-is `VK_TRUE`, and the same index in `pColorBlendEquations` is a
+is [VK_TRUE](fundamentals.html#VK_TRUE), and the same index in `pColorBlendEquations` is a
 `VkColorBlendEquationEXT` structure with any [VkBlendFactor](framebuffer.html#VkBlendFactor)
-member with a value of `VK_BLEND_FACTOR_CONSTANT_COLOR`,
-`VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR`,
-`VK_BLEND_FACTOR_CONSTANT_ALPHA`, or
-`VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA`
+member with a value of [VK_BLEND_FACTOR_CONSTANT_COLOR](framebuffer.html#VkBlendFactor),
+[VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR](framebuffer.html#VkBlendFactor),
+[VK_BLEND_FACTOR_CONSTANT_ALPHA](framebuffer.html#VkBlendFactor), or
+[VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA](framebuffer.html#VkBlendFactor)
 
 If the [`pipelineFragmentShadingRate`](features.html#features-pipelineFragmentShadingRate) feature is enabled, and
-`rasterizerDiscardEnable` is `VK_FALSE`, the following command **must**
+`rasterizerDiscardEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), the following command **must**
 have been called in the command buffer prior to drawing:
 
 * 
 [vkCmdSetFragmentShadingRateKHR](primsrast.html#vkCmdSetFragmentShadingRateKHR)
 
 If the [`geometryStreams`](features.html#features-geometryStreams) feature is
-enabled, and a shader is bound to the `VK_SHADER_STAGE_GEOMETRY_BIT`
+enabled, and a shader is bound to the [VK_SHADER_STAGE_GEOMETRY_BIT](pipelines.html#VkShaderStageFlagBits)
 stage, the following command **must** have been called in the command buffer
 prior to drawing:
 
@@ -1732,7 +1930,7 @@ prior to drawing:
 [vkCmdSetRasterizationStreamEXT](primsrast.html#vkCmdSetRasterizationStreamEXT)
 
 If the `[VK_EXT_discard_rectangles](../appendices/extensions.html#VK_EXT_discard_rectangles)` extension is enabled, and
-`rasterizerDiscardEnable` is `VK_FALSE`, the following commands
+`rasterizerDiscardEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), the following commands
 **must** have been called in the command buffer prior to drawing:
 
 * 
@@ -1740,14 +1938,14 @@ If the `[VK_EXT_discard_rectangles](../appendices/extensions.html#VK_EXT_discard
 
 * 
 [vkCmdSetDiscardRectangleModeEXT](fragops.html#vkCmdSetDiscardRectangleModeEXT), if `discardRectangleEnable` is
-`VK_TRUE`
+[VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [vkCmdSetDiscardRectangleEXT](fragops.html#vkCmdSetDiscardRectangleEXT), if `discardRectangleEnable` is
-`VK_TRUE`
+[VK_TRUE](fundamentals.html#VK_TRUE)
 
 If the `[VK_EXT_conservative_rasterization](../appendices/extensions.html#VK_EXT_conservative_rasterization)` extension is enabled, and
-`rasterizerDiscardEnable` is `VK_FALSE`, the following commands
+`rasterizerDiscardEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), the following commands
 **must** have been called in the command buffer prior to drawing:
 
 * 
@@ -1756,7 +1954,7 @@ If the `[VK_EXT_conservative_rasterization](../appendices/extensions.html#VK_EXT
 * 
 [vkCmdSetExtraPrimitiveOverestimationSizeEXT](primsrast.html#vkCmdSetExtraPrimitiveOverestimationSizeEXT), if
 `conservativeRasterizationMode` is
-`VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT`
+[VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT](primsrast.html#VkConservativeRasterizationModeEXT)
 
 If the [`depthClipEnable`](features.html#features-depthClipEnable) feature is
 enabled, the following command **must** have been called in the command buffer
@@ -1766,7 +1964,7 @@ prior to drawing:
 [vkCmdSetDepthClipEnableEXT](vertexpostproc.html#vkCmdSetDepthClipEnableEXT)
 
 If the `[VK_EXT_sample_locations](../appendices/extensions.html#VK_EXT_sample_locations)` extension is enabled, and
-`rasterizerDiscardEnable` is `VK_FALSE`, the following commands
+`rasterizerDiscardEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), the following commands
 **must** have been called in the command buffer prior to drawing:
 
 * 
@@ -1774,18 +1972,18 @@ If the `[VK_EXT_sample_locations](../appendices/extensions.html#VK_EXT_sample_lo
 
 * 
 [vkCmdSetSampleLocationsEXT](primsrast.html#vkCmdSetSampleLocationsEXT), if `sampleLocationsEnable` is
-`VK_TRUE`
+[VK_TRUE](fundamentals.html#VK_TRUE)
 
 If the `[VK_EXT_provoking_vertex](../appendices/extensions.html#VK_EXT_provoking_vertex)` extension is enabled, and
-`rasterizerDiscardEnable` is `VK_FALSE`, and a shader is bound to
-the `VK_SHADER_STAGE_VERTEX_BIT` stage, the following command **must** have
+`rasterizerDiscardEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), and a shader is bound to
+the [VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits) stage, the following command **must** have
 been called in the command buffer prior to drawing:
 
 * 
 [vkCmdSetProvokingVertexModeEXT](vertexpostproc.html#vkCmdSetProvokingVertexModeEXT)
 
 If any of the [`stippledRectangularLines`](features.html#features-stippledRectangularLines), [`stippledBresenhamLines`](features.html#features-stippledBresenhamLines), or [`stippledSmoothLines`](features.html#features-stippledSmoothLines) features are enabled, and
-`rasterizerDiscardEnable` is `VK_FALSE`, and if the
+`rasterizerDiscardEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), and if the
 [effective rasterization input topology](drawing.html#drawing-rasterization-input-topology) is in line [topology class](drawing.html#drawing-primitive-topology-class),
 the following commands **must** have been called in the command buffer prior to
 drawing:
@@ -1797,7 +1995,7 @@ drawing:
 [vkCmdSetLineStippleEnableEXT](primsrast.html#vkCmdSetLineStippleEnableEXT)
 
 * 
-[vkCmdSetLineStipple](primsrast.html#vkCmdSetLineStipple), if `stippledLineEnable` is `VK_TRUE`
+[vkCmdSetLineStipple](primsrast.html#vkCmdSetLineStipple), if `stippledLineEnable` is [VK_TRUE](fundamentals.html#VK_TRUE)
 
 If the [`depthClipControl`](features.html#features-depthClipControl) feature is
 enabled, the following command **must** have been called in the command buffer
@@ -1807,8 +2005,8 @@ prior to drawing:
 [vkCmdSetDepthClipNegativeOneToOneEXT](vertexpostproc.html#vkCmdSetDepthClipNegativeOneToOneEXT)
 
 If the [`colorWriteEnable`](features.html#features-colorWriteEnable) feature is
-enabled, and a shader is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT`
-stage, and `rasterizerDiscardEnable` is `VK_FALSE`, the following
+enabled, and a shader is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits)
+stage, and `rasterizerDiscardEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), the following
 command **must** have been called in the command buffer prior to drawing:
 
 * 
@@ -1816,8 +2014,8 @@ command **must** have been called in the command buffer prior to drawing:
 attachment in the render pass instance active at draw time
 
 If the [attachmentFeedbackLoopDynamicState](features.html#features-attachmentFeedbackLoopDynamicState) feature is enabled, and a shader is
-bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage, and
-`rasterizerDiscardEnable` is `VK_FALSE`, the following command **must**
+bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits) stage, and
+`rasterizerDiscardEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), the following command **must**
 have been called in the command buffer prior to drawing:
 
 * 
@@ -1832,10 +2030,10 @@ drawing:
 
 * 
 [vkCmdSetViewportWScalingNV](vertexpostproc.html#vkCmdSetViewportWScalingNV), if `viewportWScalingEnable` is
-`VK_TRUE`
+[VK_TRUE](fundamentals.html#VK_TRUE)
 
 If the [depthClamp](features.html#features-depthClamp) and [`depthClampControl`](features.html#features-depthClampControl) features are enabled, and `depthClampEnable`
-is `VK_TRUE`, the following command **must** have been called in the
+is [VK_TRUE](fundamentals.html#VK_TRUE), the following command **must** have been called in the
 command buffer prior to drawing:
 
 * 
@@ -1848,7 +2046,7 @@ command **must** have been called in the command buffer prior to drawing:
 [vkCmdSetViewportSwizzleNV](vertexpostproc.html#vkCmdSetViewportSwizzleNV)
 
 If the `[VK_NV_fragment_coverage_to_color](../appendices/extensions.html#VK_NV_fragment_coverage_to_color)` extension is enabled, and
-`rasterizerDiscardEnable` is `VK_FALSE`, the following commands
+`rasterizerDiscardEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), the following commands
 **must** have been called in the command buffer prior to drawing:
 
 * 
@@ -1856,10 +2054,10 @@ If the `[VK_NV_fragment_coverage_to_color](../appendices/extensions.html#VK_NV_f
 
 * 
 [vkCmdSetCoverageToColorLocationNV](fragops.html#vkCmdSetCoverageToColorLocationNV), if `coverageToColorEnable`
-is `VK_TRUE`
+is [VK_TRUE](fundamentals.html#VK_TRUE)
 
 If the `[VK_NV_framebuffer_mixed_samples](../appendices/extensions.html#VK_NV_framebuffer_mixed_samples)` extension is enabled, and
-`rasterizerDiscardEnable` is `VK_FALSE`, the following commands
+`rasterizerDiscardEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), the following commands
 **must** have been called in the command buffer prior to drawing:
 
 * 
@@ -1868,14 +2066,14 @@ If the `[VK_NV_framebuffer_mixed_samples](../appendices/extensions.html#VK_NV_fr
 * 
 [vkCmdSetCoverageModulationTableEnableNV](fragops.html#vkCmdSetCoverageModulationTableEnableNV), if
 `coverageModulationMode` is not
-`VK_COVERAGE_MODULATION_MODE_NONE_NV`
+[VK_COVERAGE_MODULATION_MODE_NONE_NV](fragops.html#VkCoverageModulationModeNV)
 
 * 
 [vkCmdSetCoverageModulationTableNV](fragops.html#vkCmdSetCoverageModulationTableNV), if
-`coverageModulationTableEnable` is `VK_TRUE`
+`coverageModulationTableEnable` is [VK_TRUE](fundamentals.html#VK_TRUE)
 
 If the [`coverageReductionMode`](features.html#features-coverageReductionMode)
-feature is enabled, and `rasterizerDiscardEnable` is `VK_FALSE`, the
+feature is enabled, and `rasterizerDiscardEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), the
 following command **must** have been called in the command buffer prior to
 drawing:
 
@@ -1883,14 +2081,14 @@ drawing:
 [vkCmdSetCoverageReductionModeNV](fragops.html#vkCmdSetCoverageReductionModeNV)
 
 If the [`representativeFragmentTest`](features.html#features-representativeFragmentTest) feature is enabled, and
-`rasterizerDiscardEnable` is `VK_FALSE`, the following command **must**
+`rasterizerDiscardEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), the following command **must**
 have been called in the command buffer prior to drawing:
 
 * 
 [vkCmdSetRepresentativeFragmentTestEnableNV](fragops.html#vkCmdSetRepresentativeFragmentTestEnableNV)
 
 If the [`shadingRateImage`](features.html#features-shadingRateImage) feature is
-enabled, and `rasterizerDiscardEnable` is `VK_FALSE`, the following
+enabled, and `rasterizerDiscardEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), the following
 commands **must** have been called in the command buffer prior to drawing:
 
 * 
@@ -1901,7 +2099,7 @@ commands **must** have been called in the command buffer prior to drawing:
 
 * 
 [vkCmdSetViewportShadingRatePaletteNV](primsrast.html#vkCmdSetViewportShadingRatePaletteNV), if
-`shadingRateImageEnable` is `VK_TRUE`
+`shadingRateImageEnable` is [VK_TRUE](fundamentals.html#VK_TRUE)
 
 If the [`exclusiveScissor`](features.html#features-exclusiveScissor) feature is
 enabled, the following commands **must** have been called in the command buffer
@@ -1912,7 +2110,7 @@ prior to drawing:
 
 * 
 [vkCmdSetExclusiveScissorNV](fragops.html#vkCmdSetExclusiveScissorNV), if any value in
-`pExclusiveScissorEnables` is `VK_TRUE`
+`pExclusiveScissorEnables` is [VK_TRUE](fundamentals.html#VK_TRUE)
 
 State **can** be set either at any time before or after shader objects are
 bound, but all required state **must** be set prior to issuing drawing
@@ -1929,7 +2127,7 @@ Calling [vkCmdBindShadersEXT](#vkCmdBindShadersEXT) causes the pipeline bind poi
 disturbed, meaning that any [pipelines](pipelines.html#pipelines) that had previously
 been bound to those pipeline bind points are no longer bound.
 
-If `VK_PIPELINE_BIND_POINT_GRAPHICS` is disturbed (i.e., if
+If [VK_PIPELINE_BIND_POINT_GRAPHICS](pipelines.html#VkPipelineBindPoint) is disturbed (i.e., if
 `pStages` contains any graphics stage), any graphics pipeline state that
 the previously bound pipeline did not specify as [dynamic](pipelines.html#pipelines-dynamic-state) becomes **undefined**, and **must** be set in the command buffer before
 issuing drawing commands using shader objects.
@@ -2105,24 +2303,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_SHADER_NV`
+[VK_ERROR_INVALID_SHADER_NV](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkShaderModuleCreateInfo` structure is defined as:
 
@@ -2233,7 +2431,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkShaderModuleCreateInfo-sType-sType) VUID-VkShaderModuleCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkShaderModuleCreateInfo-flags-zerobitmask) VUID-VkShaderModuleCreateInfo-flags-zerobitmask
@@ -2286,7 +2484,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkShaderModuleValidationCacheCreateInfoEXT-sType-sType) VUID-VkShaderModuleValidationCacheCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkShaderModuleValidationCacheCreateInfoEXT-validationCache-parameter) VUID-VkShaderModuleValidationCacheCreateInfoEXT-validationCache-parameter
@@ -2507,7 +2705,7 @@ structure.
 Any returned values beyond the first `identifierSize` bytes are
 **undefined**.
 Implementations **must** return an `identifierSize` greater than 0, and
-less-or-equal to `VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT`.
+less-or-equal to [VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT](#VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT).
 
 Two identifiers are considered equal if `identifierSize` is equal and
 the first `identifierSize` bytes of `identifier` compare equal.
@@ -2522,14 +2720,14 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkShaderModuleIdentifierEXT-sType-sType) VUID-VkShaderModuleIdentifierEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SHADER_MODULE_IDENTIFIER_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SHADER_MODULE_IDENTIFIER_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkShaderModuleIdentifierEXT-pNext-pNext) VUID-VkShaderModuleIdentifierEXT-pNext-pNext
 
  `pNext` **must** be `NULL`
 
-`VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT` is the length in bytes of a
+[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT](#VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT) is the length in bytes of a
 shader module identifier, as returned in
 [VkShaderModuleIdentifierEXT](#VkShaderModuleIdentifierEXT)::`identifierSize`.
 
@@ -2547,52 +2745,52 @@ pipeline bind points:
 | Shader stage | Pipeline bind point | behavior controlled |
 | --- | --- | --- |
 | * 
-`VK_SHADER_STAGE_VERTEX_BIT`
+[VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
-`VK_SHADER_STAGE_GEOMETRY_BIT`
+[VK_SHADER_STAGE_GEOMETRY_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
-`VK_SHADER_STAGE_FRAGMENT_BIT`
+[VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
-`VK_SHADER_STAGE_TASK_BIT_EXT`
+[VK_SHADER_STAGE_TASK_BIT_EXT](pipelines.html#VkShaderStageFlagBits)
 
 * 
-`VK_SHADER_STAGE_MESH_BIT_EXT` | `VK_PIPELINE_BIND_POINT_GRAPHICS` | all [drawing commands](drawing.html#drawing) |
+[VK_SHADER_STAGE_MESH_BIT_EXT](pipelines.html#VkShaderStageFlagBits) | [VK_PIPELINE_BIND_POINT_GRAPHICS](pipelines.html#VkPipelineBindPoint) | all [drawing commands](drawing.html#drawing) |
 | * 
-`VK_SHADER_STAGE_COMPUTE_BIT` | `VK_PIPELINE_BIND_POINT_COMPUTE` | all [dispatch commands](dispatch.html#dispatch) |
+[VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits) | [VK_PIPELINE_BIND_POINT_COMPUTE](pipelines.html#VkPipelineBindPoint) | all [dispatch commands](dispatch.html#dispatch) |
 | * 
-`VK_SHADER_STAGE_ANY_HIT_BIT_KHR`
+[VK_SHADER_STAGE_ANY_HIT_BIT_KHR](pipelines.html#VkShaderStageFlagBits)
 
 * 
-`VK_SHADER_STAGE_CALLABLE_BIT_KHR`
+[VK_SHADER_STAGE_CALLABLE_BIT_KHR](pipelines.html#VkShaderStageFlagBits)
 
 * 
-`VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR`
+[VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR](pipelines.html#VkShaderStageFlagBits)
 
 * 
-`VK_SHADER_STAGE_INTERSECTION_BIT_KHR`
+[VK_SHADER_STAGE_INTERSECTION_BIT_KHR](pipelines.html#VkShaderStageFlagBits)
 
 * 
-`VK_SHADER_STAGE_MISS_BIT_KHR`
+[VK_SHADER_STAGE_MISS_BIT_KHR](pipelines.html#VkShaderStageFlagBits)
 
 * 
-`VK_SHADER_STAGE_RAYGEN_BIT_KHR` | `VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR` | [vkCmdTraceRaysNV](raytracing.html#vkCmdTraceRaysNV)
+[VK_SHADER_STAGE_RAYGEN_BIT_KHR](pipelines.html#VkShaderStageFlagBits) | [VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR](pipelines.html#VkPipelineBindPoint) | [vkCmdTraceRaysNV](raytracing.html#vkCmdTraceRaysNV)
 [vkCmdTraceRaysKHR](raytracing.html#vkCmdTraceRaysKHR) and [vkCmdTraceRaysIndirectKHR](raytracing.html#vkCmdTraceRaysIndirectKHR) |
 | * 
-`VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI`
+[VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI](pipelines.html#VkShaderStageFlagBits)
 
 * 
-`VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI` | `VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI` | [vkCmdSubpassShadingHUAWEI](dispatch.html#vkCmdSubpassShadingHUAWEI) |
+[VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI](pipelines.html#VkShaderStageFlagBits) | [VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI](pipelines.html#VkPipelineBindPoint) | [vkCmdSubpassShadingHUAWEI](dispatch.html#vkCmdSubpassShadingHUAWEI) |
 | * 
-`VK_SHADER_STAGE_COMPUTE_BIT` | `VK_PIPELINE_BIND_POINT_EXECUTION_GRAPH_AMDX` | all [execution graph commands](executiongraphs.html#executiongraphs) |
+[VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits) | [VK_PIPELINE_BIND_POINT_EXECUTION_GRAPH_AMDX](pipelines.html#VkPipelineBindPoint) | all [execution graph commands](executiongraphs.html#executiongraphs) |
 
 At each stage of the pipeline, multiple invocations of a shader **may** execute
 simultaneously.
@@ -2677,9 +2875,9 @@ Automatic checks do not necessarily account for all possible bounds - e.g.
 buffer access example in the prior note. |
 
 Robust buffer access **can** be enabled by
-specifying `VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS`
+specifying [VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT)
 in [VkPipelineRobustnessCreateInfo](pipelines.html#VkPipelineRobustnessCreateInfo), or specifying
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT` and enabling the
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) and enabling the
 the [`robustBufferAccess`](features.html#features-robustBufferAccess) feature.
 
 When robust buffer access is enabled, access to a buffer via a descriptor is
@@ -2798,9 +2996,9 @@ bounds-checked.
 
 Robust buffer access 2 **can** be enabled by
 specifying
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2` in
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) in
 [VkPipelineRobustnessCreateInfo](pipelines.html#VkPipelineRobustnessCreateInfo), or specifying
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT` and enabling the
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) and enabling the
 the [`robustBufferAccess2`](features.html#features-robustBufferAccess) feature.
 
 When robust buffer access 2 is enabled, access to a buffer via a descriptor
@@ -2878,9 +3076,9 @@ coordinates exceeding the dimensions specified for the descriptor are
 accessed, as described in the [Wrapping Operation](textures.html#textures-wrapping-operation) section.
 
 Robust image access **can** be enabled by
-specifying `VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS`
+specifying [VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS](pipelines.html#VkPipelineRobustnessImageBehaviorEXT)
 in [VkPipelineRobustnessCreateInfo](pipelines.html#VkPipelineRobustnessCreateInfo), or specifying
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DEVICE_DEFAULT` and enabling the
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DEVICE_DEFAULT](pipelines.html#VkPipelineRobustnessImageBehaviorEXT) and enabling the
 the [`robustImageAccess`](features.html#features-robustImageAccess) feature.
 
 If robust image access is enabled, accesses to image descriptors are bounds
@@ -2905,9 +3103,9 @@ difference being that the alpha channel must be replaced with 1, rather than
 1 or 0, for out of bounds texel access. |
 
 Robust image access 2 **can** be enabled by
-specifying `VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2`
+specifying [VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2](pipelines.html#VkPipelineRobustnessImageBehaviorEXT)
 in [VkPipelineRobustnessCreateInfo](pipelines.html#VkPipelineRobustnessCreateInfo), or specifying
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DEVICE_DEFAULT` and enabling the
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DEVICE_DEFAULT](pipelines.html#VkPipelineRobustnessImageBehaviorEXT) and enabling the
 the [`robustImageAccess2`](features.html#features-robustImageAccess2) feature.
 
 If robust image access 2 is enabled, accesses to image descriptors are
@@ -3072,7 +3270,7 @@ Cluster Culling shaders operate in workgroups to perform cluster-based
 culling and produce zero or more cluster drawing command that will be
 processed by subsequent stages of the graphics pipeline.
 
-The Cluster Drawing Command(CDC) is very similar to the MDI command,
+The Cluster Drawing Command (CDC) is very similar to the MDI command,
 invocations in workgroup can emit zero of more CDC to draw zero or more
 visible cluster.
 
@@ -3151,7 +3349,7 @@ This command sets the number of control points per patch for subsequent
 drawing commands
 when drawing using [shader objects](#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT` set in
+[VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineTessellationStateCreateInfo](tessellation.html#VkPipelineTessellationStateCreateInfo)::`patchControlPoints` value
@@ -3190,7 +3388,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetPatchControlPointsEXT-commandBuffer-cmdpool) VUID-vkCmdSetPatchControlPointsEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetPatchControlPointsEXT-videocoding) VUID-vkCmdSetPatchControlPointsEXT-videocoding
@@ -3430,6 +3628,23 @@ If the `CustomInterpAMD` decoration is present on an input variable, the
 value **cannot** be accessed directly; instead the extended instruction
 `InterpolateAtVertexAMD` **must** be used to obtain values from the input
 vertices.
+
+Variables in the `PushConstant` storage class **can** be decorated with
+additional parameters to control their placement and behavior within push
+constant banks.
+
+The `BankNV` decoration specifies which hardware push constant bank a
+variable or block should be placed in.
+When present on a push constant variable or block, it indicates the hardware
+bank index to use for accessing the push constant data.
+When BankNV is absent, it behaves as if the value is 0.
+
+The `MemberOffsetNV` decoration specifies an additional offset within a
+push constant bank for push constant variables or blocks.
+This decoration allows control over the placement of push constants within
+the specified bank, enabling more efficient memory layout and access
+patterns.
+When MemberOffsetNV is absent, it behaves as if the value is 0.
 
 A SPIR-V module declares a global object in memory using the `OpVariable`
 or `OpUntypedVariableKHR`
@@ -4053,8 +4268,8 @@ return the variable is overwritten with the number of structures actually
 written to `pProperties`.
 If `pPropertyCount` is less than the number of cooperative matrix
 properties available, at most `pPropertyCount` structures will be
-written, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available cooperative matrix
+written, and [VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead of
+[VK_SUCCESS](fundamentals.html#VkResult), to indicate that not all the available cooperative matrix
 properties were returned.
 
 Valid Usage (Implicit)
@@ -4079,24 +4294,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To enumerate additional supported cooperative matrix types and operations,
 call:
@@ -4126,8 +4341,8 @@ return the variable is overwritten with the number of structures actually
 written to `pProperties`.
 If `pPropertyCount` is less than the number flexible dimensions
 properties available, at most `pPropertyCount` structures will be
-written, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available flexible dimensions
+written, and [VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead of
+[VK_SUCCESS](fundamentals.html#VkResult), to indicate that not all the available flexible dimensions
 properties were returned.
 
 If the
@@ -4157,24 +4372,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To enumerate the supported cooperative matrix types and operations, call:
 
@@ -4203,8 +4418,8 @@ return the variable is overwritten with the number of structures actually
 written to `pProperties`.
 If `pPropertyCount` is less than the number of cooperative matrix
 properties available, at most `pPropertyCount` structures will be
-written, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available cooperative matrix
+written, and [VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead of
+[VK_SUCCESS](fundamentals.html#VkResult), to indicate that not all the available cooperative matrix
 properties were returned.
 
 Valid Usage (Implicit)
@@ -4229,24 +4444,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Each
 [VkCooperativeMatrixPropertiesKHR](#VkCooperativeMatrixPropertiesKHR)
@@ -4334,9 +4549,9 @@ structure.
 `saturatingAccumulation` indicates whether the
 `SaturatingAccumulation` operand to `OpCooperativeMatrixMulAddKHR`
 **must** be present or not.
-If it is `VK_TRUE`, the `SaturatingAccumulation` operand **must** be
+If it is [VK_TRUE](fundamentals.html#VK_TRUE), the `SaturatingAccumulation` operand **must** be
 present.
-If it is `VK_FALSE`, the `SaturatingAccumulation` operand **must**
+If it is [VK_FALSE](fundamentals.html#VK_FALSE), the `SaturatingAccumulation` operand **must**
 not be present.
 
 * 
@@ -4353,14 +4568,14 @@ At least one entry in the list **must** have power of two values for all of
 If the
 [`cooperativeMatrixWorkgroupScope`](features.html#features-cooperativeMatrixWorkgroupScope)
 feature is not supported,
-`scope` **must** be `VK_SCOPE_SUBGROUP_KHR`.
+`scope` **must** be [VK_SCOPE_SUBGROUP_KHR](#VkScopeNV).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkCooperativeMatrixPropertiesKHR-sType-sType) VUID-VkCooperativeMatrixPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkCooperativeMatrixPropertiesKHR-pNext-pNext) VUID-VkCooperativeMatrixPropertiesKHR-pNext-pNext
@@ -4428,9 +4643,9 @@ The columns **must** be an integer multiple of this value.
 `saturatingAccumulation` indicates whether the
 `SaturatingAccumulation` operand to `OpCooperativeMatrixMulAddKHR`
 **must** be present or not.
-If it is `VK_TRUE`, the `SaturatingAccumulation` operand **must** be
+If it is [VK_TRUE](fundamentals.html#VK_TRUE), the `SaturatingAccumulation` operand **must** be
 present.
-If it is `VK_FALSE`, the `SaturatingAccumulation` operand **must**
+If it is [VK_FALSE](fundamentals.html#VK_FALSE), the `SaturatingAccumulation` operand **must**
 not be present.
 
 * 
@@ -4467,7 +4682,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCooperativeMatrixFlexibleDimensionsPropertiesNV-sType-sType) VUID-VkCooperativeMatrixFlexibleDimensionsPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_FLEXIBLE_DIMENSIONS_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_FLEXIBLE_DIMENSIONS_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkCooperativeMatrixFlexibleDimensionsPropertiesNV-pNext-pNext) VUID-VkCooperativeMatrixFlexibleDimensionsPropertiesNV-pNext-pNext
@@ -4538,7 +4753,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCooperativeMatrixPropertiesNV-sType-sType) VUID-VkCooperativeMatrixPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkCooperativeMatrixPropertiesNV-pNext-pNext) VUID-VkCooperativeMatrixPropertiesNV-pNext-pNext
@@ -4568,16 +4783,16 @@ typedef enum VkScopeKHR {
 typedef VkScopeKHR VkScopeNV;
 
 * 
-`VK_SCOPE_DEVICE_KHR` corresponds to SPIR-V `Device` scope.
+[VK_SCOPE_DEVICE_KHR](#VkScopeNV) corresponds to SPIR-V `Device` scope.
 
 * 
-`VK_SCOPE_WORKGROUP_KHR` corresponds to SPIR-V `Workgroup` scope.
+[VK_SCOPE_WORKGROUP_KHR](#VkScopeNV) corresponds to SPIR-V `Workgroup` scope.
 
 * 
-`VK_SCOPE_SUBGROUP_KHR` corresponds to SPIR-V `Subgroup` scope.
+[VK_SCOPE_SUBGROUP_KHR](#VkScopeNV) corresponds to SPIR-V `Subgroup` scope.
 
 * 
-`VK_SCOPE_QUEUE_FAMILY_KHR` corresponds to SPIR-V `QueueFamily`
+[VK_SCOPE_QUEUE_FAMILY_KHR](#VkScopeNV) corresponds to SPIR-V `QueueFamily`
 scope.
 
 All enum values match the corresponding SPIR-V value.
@@ -4640,77 +4855,77 @@ typedef enum VkComponentTypeKHR {
 typedef VkComponentTypeKHR VkComponentTypeNV;
 
 * 
-`VK_COMPONENT_TYPE_FLOAT16_KHR` corresponds to SPIR-V
+[VK_COMPONENT_TYPE_FLOAT16_KHR](#VkComponentTypeNV) corresponds to SPIR-V
 `OpTypeFloat` 16.
 
 * 
-`VK_COMPONENT_TYPE_FLOAT32_KHR` corresponds to SPIR-V
+[VK_COMPONENT_TYPE_FLOAT32_KHR](#VkComponentTypeNV) corresponds to SPIR-V
 `OpTypeFloat` 32.
 
 * 
-`VK_COMPONENT_TYPE_FLOAT64_KHR` corresponds to SPIR-V
+[VK_COMPONENT_TYPE_FLOAT64_KHR](#VkComponentTypeNV) corresponds to SPIR-V
 `OpTypeFloat` 64.
 
 * 
-`VK_COMPONENT_TYPE_SINT8_KHR` corresponds to SPIR-V `OpTypeInt` 8
+[VK_COMPONENT_TYPE_SINT8_KHR](#VkComponentTypeNV) corresponds to SPIR-V `OpTypeInt` 8
 0/1.
 
 * 
-`VK_COMPONENT_TYPE_SINT16_KHR` corresponds to SPIR-V `OpTypeInt`
+[VK_COMPONENT_TYPE_SINT16_KHR](#VkComponentTypeNV) corresponds to SPIR-V `OpTypeInt`
 16 0/1.
 
 * 
-`VK_COMPONENT_TYPE_SINT32_KHR` corresponds to SPIR-V `OpTypeInt`
+[VK_COMPONENT_TYPE_SINT32_KHR](#VkComponentTypeNV) corresponds to SPIR-V `OpTypeInt`
 32 0/1.
 
 * 
-`VK_COMPONENT_TYPE_SINT64_KHR` corresponds to SPIR-V `OpTypeInt`
+[VK_COMPONENT_TYPE_SINT64_KHR](#VkComponentTypeNV) corresponds to SPIR-V `OpTypeInt`
 64 0/1.
 
 * 
-`VK_COMPONENT_TYPE_UINT8_KHR` corresponds to SPIR-V `OpTypeInt` 8
+[VK_COMPONENT_TYPE_UINT8_KHR](#VkComponentTypeNV) corresponds to SPIR-V `OpTypeInt` 8
 0/1.
 
 * 
-`VK_COMPONENT_TYPE_UINT16_KHR` corresponds to SPIR-V `OpTypeInt`
+[VK_COMPONENT_TYPE_UINT16_KHR](#VkComponentTypeNV) corresponds to SPIR-V `OpTypeInt`
 16 0/1.
 
 * 
-`VK_COMPONENT_TYPE_UINT32_KHR` corresponds to SPIR-V `OpTypeInt`
+[VK_COMPONENT_TYPE_UINT32_KHR](#VkComponentTypeNV) corresponds to SPIR-V `OpTypeInt`
 32 0/1.
 
 * 
-`VK_COMPONENT_TYPE_UINT64_KHR` corresponds to SPIR-V `OpTypeInt`
+[VK_COMPONENT_TYPE_UINT64_KHR](#VkComponentTypeNV) corresponds to SPIR-V `OpTypeInt`
 64 0/1.
 
 * 
-`VK_COMPONENT_TYPE_BFLOAT16_KHR` corresponds to SPIR-V
+[VK_COMPONENT_TYPE_BFLOAT16_KHR](#VkComponentTypeNV) corresponds to SPIR-V
 `OpTypeFloat` 16 BFloat16KHR.
 
 * 
-`VK_COMPONENT_TYPE_SINT8_PACKED_NV` corresponds to four 8-bit signed
+[VK_COMPONENT_TYPE_SINT8_PACKED_NV](#VkComponentTypeNV) corresponds to four 8-bit signed
 integers packed in a 32-bit unsigned integer.
 
 * 
-`VK_COMPONENT_TYPE_UINT8_PACKED_NV` corresponds to four 8-bit
+[VK_COMPONENT_TYPE_UINT8_PACKED_NV](#VkComponentTypeNV) corresponds to four 8-bit
 unsigned integers packed in a 32-bit unsigned integer.
 
 * 
-`VK_COMPONENT_TYPE_FLOAT_E4M3_NV` corresponds to a floating-point
+[VK_COMPONENT_TYPE_FLOAT_E4M3_NV](#VkComponentTypeNV) corresponds to a floating-point
 type with a sign bit in the most significant bit, followed by four
 exponent bits, followed by three mantissa bits.
 
 * 
-`VK_COMPONENT_TYPE_FLOAT_E5M2_NV` corresponds to a floating-point
+[VK_COMPONENT_TYPE_FLOAT_E5M2_NV](#VkComponentTypeNV) corresponds to a floating-point
 type with a sign bit in the most significant bit, followed by five
 exponent bits, followed by two mantissa bits.
 
 * 
-`VK_COMPONENT_TYPE_FLOAT8_E4M3_EXT` corresponds to SPIR-V
+[VK_COMPONENT_TYPE_FLOAT8_E4M3_EXT](#VkComponentTypeNV) corresponds to SPIR-V
 `OpTypeFloat` 8 Float8E4M3EXT.
 
 * 
-`VK_COMPONENT_TYPE_FLOAT8_E5M2_EXT` corresponds to SPIR-V
+[VK_COMPONENT_TYPE_FLOAT8_E5M2_EXT](#VkComponentTypeNV) corresponds to SPIR-V
 `OpTypeFloat` 8 Float8E5M2EXT.
 
 A *cooperative vector* type is a SPIR-V vector type optimized for the
@@ -4747,8 +4962,8 @@ variable is overwritten with the number of structures actually written to
 `pProperties`.
 If `pPropertyCount` is less than the number of cooperative vector
 properties available, at most `pPropertyCount` structures will be
-written, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available cooperative vector
+written, and [VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead of
+[VK_SUCCESS](fundamentals.html#VkResult), to indicate that not all the available cooperative vector
 properties were returned.
 
 Valid Usage (Implicit)
@@ -4773,24 +4988,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Each `VkCooperativeVectorPropertiesNV` structure describes a single
 supported combination of types for a matrix-vector multiply (or
@@ -4842,8 +5057,8 @@ type [VkComponentTypeKHR](#VkComponentTypeKHR).
 `transpose` is a boolean indicating whether opaque layout matrices
 with this combination of input and output types supports transposition.
 
-`VK_COMPONENT_TYPE_SINT8_PACKED_NV` and
-`VK_COMPONENT_TYPE_UINT8_PACKED_NV` **must** not be used for members other
+[VK_COMPONENT_TYPE_SINT8_PACKED_NV](#VkComponentTypeNV) and
+[VK_COMPONENT_TYPE_UINT8_PACKED_NV](#VkComponentTypeNV) **must** not be used for members other
 than `inputInterpretation`.
 
 The following combinations **must** be supported (each row is a required
@@ -4863,7 +5078,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCooperativeVectorPropertiesNV-sType-sType) VUID-VkCooperativeVectorPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COOPERATIVE_VECTOR_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COOPERATIVE_VECTOR_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkCooperativeVectorPropertiesNV-pNext-pNext) VUID-VkCooperativeVectorPropertiesNV-pNext-pNext
@@ -4919,8 +5134,8 @@ is overwritten with the number of bytes actually written to
 `pInfo->dstData`.
 `pInfo->srcData` **can** be `NULL` when `pInfo->dstData` is `NULL`.
 If `pInfo->pDstSize` is less than the number of bytes required to store
-the converted matrix, no bytes will be written, and `VK_INCOMPLETE` will
-be returned instead of `VK_SUCCESS`, to indicate that not enough space
+the converted matrix, no bytes will be written, and [VK_INCOMPLETE](fundamentals.html#VkResult) will
+be returned instead of [VK_SUCCESS](fundamentals.html#VkResult), to indicate that not enough space
 was provided.
 
 Valid Usage
@@ -4970,21 +5185,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Each `VkConvertCooperativeVectorMatrixInfoNV` structure describes a
 request to convert the layout and type of a cooperative vector matrix.
@@ -5065,15 +5280,15 @@ When called from [vkConvertCooperativeVectorMatrixNV](#vkConvertCooperativeVecto
 `hostAddress` members of `srcData` and `dstData` are used.
 
 For each of the source and destination matrix, if the layout is not either
-`VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_ROW_MAJOR_NV` or
-`VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_COLUMN_MAJOR_NV`, then the
+[VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_ROW_MAJOR_NV](#VkCooperativeVectorMatrixLayoutNV) or
+[VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_COLUMN_MAJOR_NV](#VkCooperativeVectorMatrixLayoutNV), then the
 corresponding stride parameter is ignored.
 
 The size of the destination is only a function of the destination layout
 information, and does not depend on the source layout information.
 
 Conversion **can** be used to convert between
-`VK_COMPONENT_TYPE_FLOAT32_KHR` or `VK_COMPONENT_TYPE_FLOAT16_KHR`
+[VK_COMPONENT_TYPE_FLOAT32_KHR](#VkComponentTypeNV) or [VK_COMPONENT_TYPE_FLOAT16_KHR](#VkComponentTypeNV)
 and any supported lower-precision floating-point type.
 In this case, the conversion uses round-to-nearest-even rounding.
 
@@ -5099,7 +5314,7 @@ element size
 If `srcComponentType` is not a supported
 [VkCooperativeVectorPropertiesNV](#VkCooperativeVectorPropertiesNV)::`matrixInterpretation` value
 as reported by [vkGetPhysicalDeviceCooperativeVectorPropertiesNV](#vkGetPhysicalDeviceCooperativeVectorPropertiesNV),
-then `srcComponentType` **must** be `VK_COMPONENT_TYPE_FLOAT32_KHR`
+then `srcComponentType` **must** be [VK_COMPONENT_TYPE_FLOAT32_KHR](#VkComponentTypeNV)
 
 * 
 [](#VUID-VkConvertCooperativeVectorMatrixInfoNV-dstComponentType-10080) VUID-VkConvertCooperativeVectorMatrixInfoNV-dstComponentType-10080
@@ -5107,30 +5322,30 @@ then `srcComponentType` **must** be `VK_COMPONENT_TYPE_FLOAT32_KHR`
 If `dstComponentType` is not a supported
 [VkCooperativeVectorPropertiesNV](#VkCooperativeVectorPropertiesNV)::`matrixInterpretation` value
 as reported by [vkGetPhysicalDeviceCooperativeVectorPropertiesNV](#vkGetPhysicalDeviceCooperativeVectorPropertiesNV),
-then `dstComponentType` **must** be `VK_COMPONENT_TYPE_FLOAT32_KHR`
+then `dstComponentType` **must** be [VK_COMPONENT_TYPE_FLOAT32_KHR](#VkComponentTypeNV)
 
 * 
 [](#VUID-VkConvertCooperativeVectorMatrixInfoNV-srcComponentType-10081) VUID-VkConvertCooperativeVectorMatrixInfoNV-srcComponentType-10081
 
 If `srcComponentType` and `dstComponentType` are not equal, then
-one **must** be `VK_COMPONENT_TYPE_FLOAT32_KHR` or
-`VK_COMPONENT_TYPE_FLOAT16_KHR` and the other **must** be a
+one **must** be [VK_COMPONENT_TYPE_FLOAT32_KHR](#VkComponentTypeNV) or
+[VK_COMPONENT_TYPE_FLOAT16_KHR](#VkComponentTypeNV) and the other **must** be a
 lower-precision floating-point type
 
 * 
 [](#VUID-VkConvertCooperativeVectorMatrixInfoNV-dstComponentType-10082) VUID-VkConvertCooperativeVectorMatrixInfoNV-dstComponentType-10082
 
-If `dstComponentType` is `VK_COMPONENT_TYPE_FLOAT_E4M3_NV` or
-`VK_COMPONENT_TYPE_FLOAT_E5M2_NV`, then `dstLayout` **must** be
-`VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_INFERENCING_OPTIMAL_NV` or
-`VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_TRAINING_OPTIMAL_NV`
+If `dstComponentType` is [VK_COMPONENT_TYPE_FLOAT_E4M3_NV](#VkComponentTypeNV) or
+[VK_COMPONENT_TYPE_FLOAT_E5M2_NV](#VkComponentTypeNV), then `dstLayout` **must** be
+[VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_INFERENCING_OPTIMAL_NV](#VkCooperativeVectorMatrixLayoutNV) or
+[VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_TRAINING_OPTIMAL_NV](#VkCooperativeVectorMatrixLayoutNV)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkConvertCooperativeVectorMatrixInfoNV-sType-sType) VUID-VkConvertCooperativeVectorMatrixInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CONVERT_COOPERATIVE_VECTOR_MATRIX_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CONVERT_COOPERATIVE_VECTOR_MATRIX_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkConvertCooperativeVectorMatrixInfoNV-pNext-pNext) VUID-VkConvertCooperativeVectorMatrixInfoNV-pNext-pNext
@@ -5183,19 +5398,19 @@ typedef enum VkCooperativeVectorMatrixLayoutNV {
 } VkCooperativeVectorMatrixLayoutNV;
 
 * 
-`VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_ROW_MAJOR_NV` corresponds to
+[VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_ROW_MAJOR_NV](#VkCooperativeVectorMatrixLayoutNV) corresponds to
 SPIR-V `RowMajorNV` layout.
 
 * 
-`VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_COLUMN_MAJOR_NV` corresponds to
+[VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_COLUMN_MAJOR_NV](#VkCooperativeVectorMatrixLayoutNV) corresponds to
 SPIR-V `ColumnMajorNV` layout.
 
 * 
-`VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_INFERENCING_OPTIMAL_NV`
+[VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_INFERENCING_OPTIMAL_NV](#VkCooperativeVectorMatrixLayoutNV)
 corresponds to SPIR-V `InferencingOptimalNV` layout.
 
 * 
-`VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_TRAINING_OPTIMAL_NV`
+[VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_TRAINING_OPTIMAL_NV](#VkCooperativeVectorMatrixLayoutNV)
 corresponds to SPIR-V `TrainingOptimalNV` layout.
 
 All enum values match the corresponding SPIR-V value.
@@ -5210,8 +5425,8 @@ Inferencing-optimal and Training-optimal layouts are
 implementation-dependent, and the application **can** convert a matrix to those
 layouts using [vkConvertCooperativeVectorMatrixNV](#vkConvertCooperativeVectorMatrixNV) or
 [vkCmdConvertCooperativeVectorMatrixNV](#vkCmdConvertCooperativeVectorMatrixNV).
-Training-optimal layout with `VK_COMPONENT_TYPE_FLOAT16_KHR` or
-`VK_COMPONENT_TYPE_FLOAT32_KHR` type has the additional guarantee that
+Training-optimal layout with [VK_COMPONENT_TYPE_FLOAT16_KHR](#VkComponentTypeNV) or
+[VK_COMPONENT_TYPE_FLOAT32_KHR](#VkComponentTypeNV) type has the additional guarantee that
 the application **can** reinterpret the data as an array of elements and
 perform element-wise operations on the data, and finite values in any
 padding elements do not affect the result of a matrix-vector multiply
@@ -5243,7 +5458,7 @@ One conversion is performed for each of the `infoCount` elements of
 `pInfos`.
 
 This command’s execution is synchronized using
-`VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV`.
+[VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](synchronization.html#VkPipelineStageFlagBits2KHR).
 
 Valid Usage
 
@@ -5312,7 +5527,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdConvertCooperativeVectorMatrixNV-commandBuffer-cmdpool) VUID-vkCmdConvertCooperativeVectorMatrixNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdConvertCooperativeVectorMatrixNV-renderpass) VUID-vkCmdConvertCooperativeVectorMatrixNV-renderpass
@@ -5457,18 +5672,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkValidationCacheCreateInfoEXT` structure is defined as:
 
@@ -5523,7 +5738,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkValidationCacheCreateInfoEXT-sType-sType) VUID-VkValidationCacheCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VALIDATION_CACHE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VALIDATION_CACHE_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkValidationCacheCreateInfoEXT-pNext-pNext) VUID-VkValidationCacheCreateInfoEXT-pNext-pNext
@@ -5625,21 +5840,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Data **can** be retrieved from a validation cache object using the command:
 
@@ -5673,7 +5888,7 @@ to `pData`.
 If `pDataSize` is less than the maximum size that **can** be retrieved by
 the validation cache, at most `pDataSize` bytes will be written to
 `pData`, and `vkGetValidationCacheDataEXT` will return
-`VK_INCOMPLETE` instead of `VK_SUCCESS`, to indicate that not all of
+[VK_INCOMPLETE](fundamentals.html#VkResult) instead of [VK_SUCCESS](fundamentals.html#VkResult), to indicate that not all of
 the validation cache was returned.
 
 Any data written to `pData` is valid and **can** be provided as the
@@ -5701,7 +5916,7 @@ be a header consisting of the following members:
 | 4 | 4 | a [VkValidationCacheHeaderVersionEXT](#VkValidationCacheHeaderVersionEXT) value
                              written as a stream of bytes, with the least
                              significant byte first |
-| 8 | `VK_UUID_SIZE` | a layer commit ID expressed as a UUID, which uniquely
+| 8 | [VK_UUID_SIZE](devsandqueues.html#VK_UUID_SIZE) | a layer commit ID expressed as a UUID, which uniquely
                              identifies the version of the validation layers used
                              to generate these validation results |
 
@@ -5726,8 +5941,8 @@ reasons.
 
 If the amount of data available is larger than the passed `pDataSize`,
 the query returns up to the size of the passed buffer, and signals overflow
-with a `VK_INCOMPLETE` success status instead of returning a
-`VK_ERROR_NOT_ENOUGH_SPACE_KHR` error status. |
+with a [VK_INCOMPLETE](fundamentals.html#VkResult) success status instead of returning a
+[VK_ERROR_NOT_ENOUGH_SPACE_KHR](fundamentals.html#VkResult) error status. |
 
 Valid Usage (Implicit)
 
@@ -5761,24 +5976,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Possible values of the second group of four bytes in the header returned by
 [vkGetValidationCacheDataEXT](#vkGetValidationCacheDataEXT), encoding the validation cache version,
@@ -5790,7 +6005,7 @@ typedef enum VkValidationCacheHeaderVersionEXT {
 } VkValidationCacheHeaderVersionEXT;
 
 * 
-`VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT` specifies version one
+[VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT](#VkValidationCacheHeaderVersionEXT) specifies version one
 of the validation cache.
 
 To destroy a validation cache, call:
@@ -5920,21 +6135,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkCudaModuleCreateInfoNV` structure is defined as:
 
@@ -5972,7 +6187,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCudaModuleCreateInfoNV-sType-sType) VUID-VkCudaModuleCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkCudaModuleCreateInfoNV-pNext-pNext) VUID-VkCudaModuleCreateInfoNV-pNext-pNext
@@ -6053,21 +6268,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkCudaFunctionCreateInfoNV` structure is defined as:
 
@@ -6099,7 +6314,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCudaFunctionCreateInfoNV-sType-sType) VUID-VkCudaFunctionCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CUDA_FUNCTION_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CUDA_FUNCTION_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkCudaFunctionCreateInfoNV-pNext-pNext) VUID-VkCudaFunctionCreateInfoNV-pNext-pNext
@@ -6232,8 +6447,8 @@ to the size of the buffer, in bytes, pointed to by `pCacheData`, and on
 return the variable is overwritten with the amount of data actually written
 to `pCacheData`.
 If `pCacheSize` is less than the size of the binary shader code, nothing
-is written to `pCacheData`, and `VK_INCOMPLETE` will be returned
-instead of `VK_SUCCESS`.
+is written to `pCacheData`, and [VK_INCOMPLETE](fundamentals.html#VkResult) will be returned
+instead of [VK_SUCCESS](fundamentals.html#VkResult).
 
 The returned cache **may** then be used later for further initialization of the
 CUDA module, by sending this cache *instead* of the PTX code when using
@@ -6261,8 +6476,8 @@ architecture, this cache **may** become invalid. |
 reasons.
 
 If the amount of data available is larger than the passed `pDataSize`,
-the query returns a `VK_INCOMPLETE` success status instead of a
-`VK_ERROR_NOT_ENOUGH_SPACE_KHR` error status. |
+the query returns a [VK_INCOMPLETE](fundamentals.html#VkResult) success status instead of a
+[VK_ERROR_NOT_ENOUGH_SPACE_KHR](fundamentals.html#VkResult) error status. |
 
 Valid Usage (Implicit)
 
@@ -6296,21 +6511,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 CUDA and Vulkan do not use the device in the same configuration.
 The following limitations **must** be taken into account:

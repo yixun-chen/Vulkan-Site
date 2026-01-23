@@ -52,7 +52,7 @@ tile memory allocation required for the resource.
 The `size` and `alignment` **must** be used when the resource is bound
 to a [VkDeviceMemory](VkDeviceMemory.html) object that was allocated from a
 [VkMemoryType](VkMemoryType.html) that has a `heapIndex` that corresponds to a
-[VkMemoryHeap](VkMemoryHeap.html) with the `VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM`
+[VkMemoryHeap](VkMemoryHeap.html) with the [VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html)
 property.
 
 If the resource cannot be bound to tile memory, then `size` and
@@ -63,7 +63,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTileMemoryRequirementsQCOM-sType-sType) VUID-VkTileMemoryRequirementsQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TILE_MEMORY_REQUIREMENTS_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TILE_MEMORY_REQUIREMENTS_QCOM](VkStructureType.html)
 
 [VK_QCOM_tile_memory_heap](VK_QCOM_tile_memory_heap.html), `VkDeviceSize`, [VkStructureType](VkStructureType.html)
 

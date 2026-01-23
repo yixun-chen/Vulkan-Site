@@ -53,37 +53,37 @@ Valid Usage
 * 
 [](#VUID-VkImageViewHandleInfoNVX-descriptorType-02654) VUID-VkImageViewHandleInfoNVX-descriptorType-02654
 
-`descriptorType` **must** be `VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`
+`descriptorType` **must** be [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html), or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html)
 
 * 
 [](#VUID-VkImageViewHandleInfoNVX-sampler-02655) VUID-VkImageViewHandleInfoNVX-sampler-02655
 
 `sampler` **must** be a valid [VkSampler](VkSampler.html) if `descriptorType`
-is `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`
+is [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html)
 
 * 
 [](#VUID-VkImageViewHandleInfoNVX-imageView-02656) VUID-VkImageViewHandleInfoNVX-imageView-02656
 
-If descriptorType is `VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE` or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, the image that
+If descriptorType is [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html), the image that
 `imageView` was created from **must** have been created with the
-`VK_IMAGE_USAGE_SAMPLED_BIT` usage flag set
+[VK_IMAGE_USAGE_SAMPLED_BIT](VkImageUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkImageViewHandleInfoNVX-imageView-02657) VUID-VkImageViewHandleInfoNVX-imageView-02657
 
-If descriptorType is `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, the image
+If descriptorType is [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html), the image
 that `imageView` was created from **must** have been created with the
-`VK_IMAGE_USAGE_STORAGE_BIT` usage flag set
+[VK_IMAGE_USAGE_STORAGE_BIT](VkImageUsageFlagBits.html) usage flag set
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkImageViewHandleInfoNVX-sType-sType) VUID-VkImageViewHandleInfoNVX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX](VkStructureType.html)
 
 * 
 [](#VUID-VkImageViewHandleInfoNVX-pNext-pNext) VUID-VkImageViewHandleInfoNVX-pNext-pNext

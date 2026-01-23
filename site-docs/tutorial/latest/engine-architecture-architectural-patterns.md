@@ -41,7 +41,7 @@ Layered architecture divides the system into distinct layers, each with a specif
 * Easier to understand and maintain
 * Can replace or modify individual layers without affecting others
 
-For detailed information and implementation examples, see the [Appendix: Layered Architecture](#../Appendix/appendix.adoc#layered-architecture).
+For detailed information and implementation examples, see the [Appendix: Layered Architecture](../Appendix/appendix.html#layered-architecture).
 
 Data-Oriented Design (DOD) focuses on organizing data for efficient processing rather than organizing code around objects. It emphasizes cache-friendly memory layouts and bulk processing of data.
 
@@ -52,7 +52,7 @@ Data-Oriented Design (DOD) focuses on organizing data for efficient processing r
 * More efficient memory usage
 * Easier to parallelize
 
-For detailed information and implementation examples, see the [Appendix: Data-Oriented Design](#../Appendix/appendix.adoc#data-oriented-design).
+For detailed information and implementation examples, see the [Appendix: Data-Oriented Design](../Appendix/appendix.html#data-oriented-design).
 
 The Service Locator pattern provides a global point of access to services without coupling consumers to concrete implementations.
 
@@ -63,7 +63,7 @@ The Service Locator pattern provides a global point of access to services withou
 * Allows for easy service replacement
 * Facilitates testing with mock services
 
-For detailed information and implementation examples, see the [Appendix: Service Locator Pattern](#../Appendix/appendix.adoc#service-locator-pattern).
+For detailed information and implementation examples, see the [Appendix: Service Locator Pattern](../Appendix/appendix.html#service-locator-pattern).
 
 Component-based architecture is widely used in modern game engines and forms the foundation of our Vulkan rendering engine. It promotes composition over inheritance and allows for more flexible entity design.
 
@@ -178,8 +178,8 @@ For our Vulkan rendering engine, we’ve chosen to focus on component-based arch
 
 While other architectural patterns have their merits, component-based architecture provides the best foundation for a modern, flexible rendering engine. That said, we’ll incorporate aspects of other patterns where appropriate - using layered architecture for our overall engine structure, data-oriented design for performance-critical systems, and service locators for cross-cutting concerns.
 
-We’ve provided a brief overview of common architectural patterns, with a focus on Component-Based Architecture which we’ll use throughout this tutorial. For more detailed information about other architectural patterns, including implementation examples and comparative analysis, see the [Appendix: Detailed Architectural Patterns](#../Appendix/appendix.adoc).
+We’ve provided a brief overview of common architectural patterns, with a focus on Component-Based Architecture which we’ll use throughout this tutorial. For more detailed information about other architectural patterns, including implementation examples and comparative analysis, see the [Appendix: Detailed Architectural Patterns](../Appendix/appendix.html).
 
 In the next section, we’ll dive deeper into component systems and how to implement them effectively in your engine.
 
-[Previous: Introduction](#01_introduction.adoc) | [Next: Component Systems](#03_component_systems.adoc)
+[Previous: Introduction](01_introduction.html) | [Next: Component Systems](03_component_systems.html)

@@ -18,7 +18,7 @@
 
 VkCompressedTriangleFormatAMDX - Available compressed triangle formats
 
-The `VkCompressedTriangleFormatAMDX` enumeration is defined as:
+The [VkCompressedTriangleFormatAMDX](#) enumeration is defined as:
 
 // Provided by VK_AMDX_dense_geometry_format
 typedef enum VkCompressedTriangleFormatAMDX {
@@ -26,7 +26,7 @@ typedef enum VkCompressedTriangleFormatAMDX {
 } VkCompressedTriangleFormatAMDX;
 
 * 
-`VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX` specifies that the
+[VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX](#) specifies that the
 compressed triangle data is in [Dense Geometry    Format](../../../../spec/latest/chapters/VK_AMDX_dense_geometry_format/dense_geometry_format.html#dense-geometry-format), version 1, consisting of an array of 128B DGF blocks.
 
 [VK_AMDX_dense_geometry_format](VK_AMDX_dense_geometry_format.html), [VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX](VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX.html)

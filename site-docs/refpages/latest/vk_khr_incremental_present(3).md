@@ -122,7 +122,7 @@ Extending [VkPresentInfoKHR](VkPresentInfoKHR.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR`
+[VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR](VkStructureType.html)
 
 1) How should we handle steroescopic-3D swapchains? We need to add a layer
 for each rectangle.
@@ -164,7 +164,7 @@ honored, including waiting for semaphores to signal.
 
 5) When the swapchain is created with
 `VkSwapchainCreateInfoKHR`::`preTransform` set to a value other than
-`VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR`, should the rectangular region,
+[VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html), should the rectangular region,
 [VkRectLayerKHR](VkRectLayerKHR.html), be transformed to align with the `preTransform`?
 
 **RESOLVED**: No.

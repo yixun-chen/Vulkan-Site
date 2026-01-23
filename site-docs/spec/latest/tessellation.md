@@ -79,7 +79,7 @@ When using pipelines, one
 mode **must** be set in at least one of the tessellation shader stages.
 If the `[VK_KHR_portability_subset](../appendices/extensions.html#VK_KHR_portability_subset)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR)::`tessellationIsolines`
-is `VK_FALSE`, then isoline tessellation is not supported by the
+is [VK_FALSE](fundamentals.html#VK_FALSE), then isoline tessellation is not supported by the
 implementation, and `IsoLines` **must** not be used in either
 tessellation shader stage.
 
@@ -98,7 +98,7 @@ This functionality defaults to disabled, and is enabled if either shader
 stage includes the execution mode.
 If the `[VK_KHR_portability_subset](../appendices/extensions.html#VK_KHR_portability_subset)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR)::`tessellationPointMode`
-is `VK_FALSE`, then point mode tessellation is not supported by the
+is [VK_FALSE](fundamentals.html#VK_FALSE), then point mode tessellation is not supported by the
 implementation, and `PointMode` **must** not be used in either
 tessellation shader stage.
 
@@ -505,7 +505,7 @@ line segment, are implementation-dependent.
 |  | If the `[VK_KHR_portability_subset](../appendices/extensions.html#VK_KHR_portability_subset)` extension is enabled, and
 | --- | --- |
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR)::`tessellationIsolines`
-is `VK_FALSE`, then isoline tessellation is not supported by the
+is [VK_FALSE](fundamentals.html#VK_FALSE), then isoline tessellation is not supported by the
 implementation. |
 
 For all primitive modes, the tessellator is capable of generating points
@@ -522,7 +522,7 @@ input primitive is **undefined**.
 |  | If the `[VK_KHR_portability_subset](../appendices/extensions.html#VK_KHR_portability_subset)` extension is enabled, and
 | --- | --- |
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR)::`tessellationPointMode`
-is `VK_FALSE`, then tessellation point mode is not supported by the
+is [VK_FALSE](fundamentals.html#VK_FALSE), then tessellation point mode is not supported by the
 implementation. |
 
 The `pTessellationState` member of [VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo) is
@@ -564,7 +564,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineTessellationStateCreateInfo-sType-sType) VUID-VkPipelineTessellationStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineTessellationStateCreateInfo-pNext-pNext) VUID-VkPipelineTessellationStateCreateInfo-pNext-pNext
@@ -617,14 +617,14 @@ included in the `pNext` chain of
 [VkPipelineTessellationStateCreateInfo](#VkPipelineTessellationStateCreateInfo), it controls the origin of the
 tessellation domain.
 If this structure is not present, it is as if `domainOrigin` was
-`VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT`.
+[VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT](#VkTessellationDomainOriginKHR).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineTessellationDomainOriginStateCreateInfo-sType-sType) VUID-VkPipelineTessellationDomainOriginStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineTessellationDomainOriginStateCreateInfo-domainOrigin-parameter) VUID-VkPipelineTessellationDomainOriginStateCreateInfo-domainOrigin-parameter
@@ -649,12 +649,12 @@ typedef enum VkTessellationDomainOrigin {
 typedef VkTessellationDomainOrigin VkTessellationDomainOriginKHR;
 
 * 
-`VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT` specifies that the origin
+[VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT](#VkTessellationDomainOriginKHR) specifies that the origin
 of the domain space is in the upper left corner, as shown in figure
 [Figure 15. Domain parameterization for tessellation primitive modes (upper-left origin)](#img-tessellation-topology-ul).
 
 * 
-`VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT` specifies that the origin
+[VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT](#VkTessellationDomainOriginKHR) specifies that the origin
 of the domain space is in the lower left corner, as shown in figure
 [Figure 16. Domain parameterization for tessellation primitive modes (lower-left origin)](#img-tessellation-topology-ll).
 
@@ -682,7 +682,7 @@ This command sets the origin of the tessellation domain space for subsequent
 drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_TESSELLATION_DOMAIN_ORIGIN_EXT` set in
+[VK_DYNAMIC_STATE_TESSELLATION_DOMAIN_ORIGIN_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineTessellationDomainOriginStateCreateInfo](#VkPipelineTessellationDomainOriginStateCreateInfo)::`domainOrigin`
@@ -721,7 +721,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetTessellationDomainOriginEXT-commandBuffer-cmdpool) VUID-vkCmdSetTessellationDomainOriginEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetTessellationDomainOriginEXT-videocoding) VUID-vkCmdSetTessellationDomainOriginEXT-videocoding

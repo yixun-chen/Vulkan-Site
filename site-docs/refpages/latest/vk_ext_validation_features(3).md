@@ -130,7 +130,7 @@ Extending [VkInstanceCreateInfo](VkInstanceCreateInfo.html), [VkShaderModuleCrea
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2018-11-14 (Karl Schultz)

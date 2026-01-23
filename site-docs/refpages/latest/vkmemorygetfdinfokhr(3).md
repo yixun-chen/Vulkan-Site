@@ -52,7 +52,7 @@ properties of the defined external memory handle types.
 |  | The size of the exported file **may** be larger than the size requested by
 | --- | --- |
 [VkMemoryAllocateInfo](VkMemoryAllocateInfo.html)::`allocationSize`.
-If `handleType` is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT`,
+If `handleType` is [VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html),
 then the application **can** query the file’s actual size with
 [`lseek`](https://man7.org/linux/man-pages/man2/lseek.2.html). |
 
@@ -69,15 +69,15 @@ was created
 [](#VUID-VkMemoryGetFdInfoKHR-handleType-00672) VUID-VkMemoryGetFdInfoKHR-handleType-00672
 
 `handleType` **must** be
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT](VkExternalMemoryHandleTypeFlagBits.html) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkMemoryGetFdInfoKHR-sType-sType) VUID-VkMemoryGetFdInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_GET_FD_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_GET_FD_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkMemoryGetFdInfoKHR-pNext-pNext) VUID-VkMemoryGetFdInfoKHR-pNext-pNext

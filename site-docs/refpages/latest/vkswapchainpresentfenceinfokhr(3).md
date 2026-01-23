@@ -114,7 +114,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSwapchainPresentFenceInfoKHR-sType-sType) VUID-VkSwapchainPresentFenceInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_FENCE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_FENCE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkSwapchainPresentFenceInfoKHR-pFences-parameter) VUID-VkSwapchainPresentFenceInfoKHR-pFences-parameter

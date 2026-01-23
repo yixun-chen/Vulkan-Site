@@ -54,13 +54,13 @@ Valid Usage
 [](#VUID-VkImageResolve-aspectMask-10981) VUID-VkImageResolve-aspectMask-10981
 
 The `aspectMask` member of `srcSubresource` and
-`dstSubresource` **must** only contain `VK_IMAGE_ASPECT_COLOR_BIT`
+`dstSubresource` **must** only contain [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkImageResolve-layerCount-08803) VUID-VkImageResolve-layerCount-08803
 
 If neither of the `layerCount` members of `srcSubresource` or
-`dstSubresource` are `VK_REMAINING_ARRAY_LAYERS`, the
+`dstSubresource` are [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), the
 `layerCount` member of `srcSubresource` and `dstSubresource`
 **must** match
 
@@ -68,8 +68,8 @@ If neither of the `layerCount` members of `srcSubresource` or
 [](#VUID-VkImageResolve-layerCount-08804) VUID-VkImageResolve-layerCount-08804
 
 If one of the `layerCount` members of `srcSubresource` or
-`dstSubresource` is `VK_REMAINING_ARRAY_LAYERS`, the other
-member **must** be either `VK_REMAINING_ARRAY_LAYERS` or equal to the
+`dstSubresource` is [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), the other
+member **must** be either [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html) or equal to the
 `arrayLayers` member of the [VkImageCreateInfo](VkImageCreateInfo.html) used to create
 the image minus `baseArrayLayer`
 

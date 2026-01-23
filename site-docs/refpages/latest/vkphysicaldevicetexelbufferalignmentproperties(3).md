@@ -72,9 +72,9 @@ If the `VkPhysicalDeviceTexelBufferAlignmentProperties` structure is included in
 [vkGetPhysicalDeviceProperties2](vkGetPhysicalDeviceProperties2.html), it is filled in with each
 corresponding implementation-dependent property.
 
-If the single texel alignment property is `VK_FALSE`, then the buffer
+If the single texel alignment property is [VK_FALSE](VK_FALSE.html), then the buffer
 view’s offset **must** be aligned to the corresponding byte alignment value.
-If the single texel alignment property is `VK_TRUE`, then the buffer
+If the single texel alignment property is [VK_TRUE](VK_TRUE.html), then the buffer
 view’s offset **must** be aligned to the lesser of the corresponding byte
 alignment value or the size of a single texel, based on
 [VkBufferViewCreateInfo](VkBufferViewCreateInfo.html)::`format`.
@@ -91,7 +91,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceTexelBufferAlignmentProperties-sType-sType) VUID-VkPhysicalDeviceTexelBufferAlignmentProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_PROPERTIES](VkStructureType.html)
 
 [VK_EXT_texel_buffer_alignment](VK_EXT_texel_buffer_alignment.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), `VkBool32`, `VkDeviceSize`, [VkStructureType](VkStructureType.html)
 

@@ -58,15 +58,15 @@ structures, each structure specifying the coverage sample order for a
 single combination of fragment area and coverage sample count.
 
 If this structure is not present, `sampleOrderType` is considered to be
-`VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV`.
+[VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV](VkCoarseSampleOrderTypeNV.html).
 
-If `sampleOrderType` is `VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV`, the
+If `sampleOrderType` is [VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV](VkCoarseSampleOrderTypeNV.html), the
 coverage sample order used for any combination of fragment area and coverage
 sample count not enumerated in `pCustomSampleOrders` will be identical
-to that used for `VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV`.
+to that used for [VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV](VkCoarseSampleOrderTypeNV.html).
 
 If the pipeline was created with
-`VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV`, the contents of this
+[VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV](VkDynamicState.html), the contents of this
 structure (if present) are ignored, and the coverage sample order is instead
 specified by [vkCmdSetCoarseSampleOrderNV](vkCmdSetCoarseSampleOrderNV.html).
 
@@ -76,7 +76,7 @@ Valid Usage
 [](#VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sampleOrderType-02072) VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sampleOrderType-02072
 
 If `sampleOrderType` is not
-`VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV`,
+[VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV](VkCoarseSampleOrderTypeNV.html),
 `customSamplerOrderCount` **must** be `0`
 
 * 
@@ -91,7 +91,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sType-sType) VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sampleOrderType-parameter) VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sampleOrderType-parameter

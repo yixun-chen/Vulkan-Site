@@ -77,7 +77,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRayTracingPipelineInterfaceCreateInfoKHR-sType-sType) VUID-VkRayTracingPipelineInterfaceCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_INTERFACE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_INTERFACE_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkRayTracingPipelineInterfaceCreateInfoKHR-pNext-pNext) VUID-VkRayTracingPipelineInterfaceCreateInfoKHR-pNext-pNext

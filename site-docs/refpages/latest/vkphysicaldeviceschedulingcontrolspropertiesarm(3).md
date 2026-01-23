@@ -44,7 +44,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceSchedulingControlsPropertiesARM-sType-sType) VUID-VkPhysicalDeviceSchedulingControlsPropertiesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM](VkStructureType.html)
 
 [VK_ARM_scheduling_controls](VK_ARM_scheduling_controls.html), [VkPhysicalDeviceSchedulingControlsFlagsARM](VkPhysicalDeviceSchedulingControlsFlagsARM.html), [VkStructureType](VkStructureType.html)
 

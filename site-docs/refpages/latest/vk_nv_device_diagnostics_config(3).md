@@ -76,7 +76,7 @@ device crash dumps into their error reporting mechanisms, **may** use this
 extension to configure options related to device crash dump creation.
 
 Version 2 of this extension adds
-`VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_ERROR_REPORTING_BIT_NV`
+[VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_ERROR_REPORTING_BIT_NV](VkDeviceDiagnosticsConfigFlagBitsNV.html)
 which when set enables enhanced reporting of shader execution errors.
 
 * 
@@ -104,10 +104,10 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV`
+[VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DIAGNOSTICS_CONFIG_FEATURES_NV`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DIAGNOSTICS_CONFIG_FEATURES_NV](VkStructureType.html)
 
 * 
 Revision 1, 2019-11-21 (Kedarnath Thangudu)
@@ -118,7 +118,7 @@ Revision 2, 2022-04-06 (Kedarnath Thangudu)
 
 * 
 Added a config bit
-`VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_ERROR_REPORTING_BIT_NV`
+[VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_ERROR_REPORTING_BIT_NV](VkDeviceDiagnosticsConfigFlagBitsNV.html)
 
 No cross-references are available
 

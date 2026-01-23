@@ -46,27 +46,27 @@ Valid Usage
 `swapchain` **must** be a swapchain created with a
 [VkSurfaceFullScreenExclusiveInfoEXT](VkSurfaceFullScreenExclusiveInfoEXT.html) structure, with
 `fullScreenExclusive` set to
-`VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT`
+[VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT](VkFullScreenExclusiveEXT.html)
 
 * 
 [](#VUID-vkAcquireFullScreenExclusiveModeEXT-swapchain-02676) VUID-vkAcquireFullScreenExclusiveModeEXT-swapchain-02676
 
 `swapchain` **must** not currently have exclusive full-screen access
 
-A return value of `VK_SUCCESS` indicates that the `swapchain`
+A return value of [VK_SUCCESS](VkResult.html) indicates that the `swapchain`
 successfully acquired exclusive full-screen access.
 The swapchain will retain this exclusivity until either the application
 releases exclusive full-screen access with
 [vkReleaseFullScreenExclusiveModeEXT](vkReleaseFullScreenExclusiveModeEXT.html), destroys the swapchain, or if any
 of the swapchain commands return
-`VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT` indicating that the mode
+[VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT](VkResult.html) indicating that the mode
 was lost because of platform-specific changes.
 
 If the swapchain was unable to acquire exclusive full-screen access to the
-display then `VK_ERROR_INITIALIZATION_FAILED` is returned.
+display then [VK_ERROR_INITIALIZATION_FAILED](VkResult.html) is returned.
 An application **can** attempt to acquire exclusive full-screen access again
 for the same swapchain even if this command fails, or if
-`VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT` has been returned by a
+[VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT](VkResult.html) has been returned by a
 swapchain command.
 
 Valid Usage (Implicit)
@@ -91,27 +91,27 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_EXT_full_screen_exclusive](VK_EXT_full_screen_exclusive.html), [VkDevice](VkDevice.html), [VkSwapchainKHR](VkSwapchainKHR.html)
 

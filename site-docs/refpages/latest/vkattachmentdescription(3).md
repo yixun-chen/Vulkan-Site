@@ -92,7 +92,7 @@ attachment, and no load or store ops will be performed.
 However, any transition specified by `initialLayout` and
 `finalLayout` will still be executed.
 
-If `flags` includes `VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT`, then
+If `flags` includes [VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT](VkAttachmentDescriptionFlagBits.html), then
 the attachment is treated as if it shares physical memory with another
 attachment in the same render pass.
 This information limits the ability of the implementation to reorder certain
@@ -103,7 +103,7 @@ This is described in more detail below.
 
 If a render pass uses multiple attachments that alias the same device
 memory, those attachments **must** each include the
-`VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT` bit in their attachment
+[VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT](VkAttachmentDescriptionFlagBits.html) bit in their attachment
 description flags.
 Attachments aliasing the same memory occurs in multiple ways:
 
@@ -125,7 +125,7 @@ subpass dependency chain) between any two subpasses that operate on the same
 attachment or aliasing attachments and those subpass dependencies **must**
 include execution and memory dependencies separating uses of the aliases, if
 at least one of those subpasses writes to one of the aliases.
-These dependencies **must** not include the `VK_DEPENDENCY_BY_REGION_BIT`
+These dependencies **must** not include the [VK_DEPENDENCY_BY_REGION_BIT](VkDependencyFlagBits.html)
 if the aliases are views of distinct image subresources which overlap in
 memory. |
 
@@ -141,7 +141,7 @@ or depth/stencil attachments nor as resolve or preserve attachments.
 
 If a set of attachments alias each other, then all except the first to be
 used in the render pass **must** use an `initialLayout` of
-`VK_IMAGE_LAYOUT_UNDEFINED`, since the earlier uses of the other aliases
+[VK_IMAGE_LAYOUT_UNDEFINED](VkImageLayout.html), since the earlier uses of the other aliases
 make their contents **undefined**.
 Once an alias has been used and a different alias has been used after it,
 the first alias **must** not be used in any later subpasses.
@@ -149,11 +149,11 @@ However, an application **can** assign the same image view to multiple aliasing
 attachment indices, which allows that image view to be used multiple times
 even if other aliases are used in between.
 
-|  | Once an attachment needs the `VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT`
+|  | Once an attachment needs the [VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT](VkAttachmentDescriptionFlagBits.html)
 | --- | --- |
 bit, there **should** be no additional cost of introducing additional aliases,
 and using these additional aliases **may** allow more efficient clearing of the
-attachments on multiple uses via `VK_ATTACHMENT_LOAD_OP_CLEAR`. |
+attachments on multiple uses via [VK_ATTACHMENT_LOAD_OP_CLEAR](VkAttachmentLoadOp.html). |
 
 Valid Usage
 
@@ -161,155 +161,155 @@ Valid Usage
 [](#VUID-VkAttachmentDescription-format-06699) VUID-VkAttachmentDescription-format-06699
 
 If `format` includes a color or depth component and `loadOp` is
-`VK_ATTACHMENT_LOAD_OP_LOAD`, then `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_UNDEFINED`
+[VK_ATTACHMENT_LOAD_OP_LOAD](VkAttachmentLoadOp.html), then `initialLayout` **must** not be
+[VK_IMAGE_LAYOUT_UNDEFINED](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-finalLayout-00843) VUID-VkAttachmentDescription-finalLayout-00843
 
-    `finalLayout` **must** not be `VK_IMAGE_LAYOUT_UNDEFINED` or
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT` or
-    `VK_IMAGE_LAYOUT_PREINITIALIZED`
+    `finalLayout` **must** not be [VK_IMAGE_LAYOUT_UNDEFINED](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](VkImageLayout.html) or
+    [VK_IMAGE_LAYOUT_PREINITIALIZED](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-format-03280) VUID-VkAttachmentDescription-format-03280
 
 If `format` is a color format, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-format-03281) VUID-VkAttachmentDescription-format-03281
 
 If `format` is a depth/stencil format, `initialLayout` **must** not
-be `VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`
+be [VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-format-03282) VUID-VkAttachmentDescription-format-03282
 
 If `format` is a color format, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-format-03283) VUID-VkAttachmentDescription-format-03283
 
 If `format` is a depth/stencil format, `finalLayout` **must** not
-be `VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`
+be [VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-format-06487) VUID-VkAttachmentDescription-format-06487
 
 If `format` is a color format, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-format-06488) VUID-VkAttachmentDescription-format-06488
 
 If `format` is a color format, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-separateDepthStencilLayouts-03284) VUID-VkAttachmentDescription-separateDepthStencilLayouts-03284
 
 If the [    `separateDepthStencilLayouts`](../../../../spec/latest/chapters/features.html#features-separateDepthStencilLayouts) feature is not enabled,
 `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`,
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html),
 
 * 
 [](#VUID-VkAttachmentDescription-separateDepthStencilLayouts-03285) VUID-VkAttachmentDescription-separateDepthStencilLayouts-03285
 
 If the [    `separateDepthStencilLayouts`](../../../../spec/latest/chapters/features.html#features-separateDepthStencilLayouts) feature is not enabled,
 `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`,
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html),
 
 * 
 [](#VUID-VkAttachmentDescription-format-03286) VUID-VkAttachmentDescription-format-03286
 
 If `format` is a color format, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-format-03287) VUID-VkAttachmentDescription-format-03287
 
 If `format` is a color format, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-format-06906) VUID-VkAttachmentDescription-format-06906
 
 If `format` is a depth/stencil format which includes both depth and
 stencil components, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-format-06907) VUID-VkAttachmentDescription-format-06907
 
 If `format` is a depth/stencil format which includes both depth and
 stencil components, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-format-03290) VUID-VkAttachmentDescription-format-03290
 
 If `format` is a depth/stencil format which includes only the depth
 component, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-format-03291) VUID-VkAttachmentDescription-format-03291
 
 If `format` is a depth/stencil format which includes only the depth
 component, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-synchronization2-06908) VUID-VkAttachmentDescription-synchronization2-06908
 
 If the [`synchronization2`](../../../../spec/latest/chapters/features.html#features-synchronization2) feature is
 not enabled, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR` or
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-synchronization2-06909) VUID-VkAttachmentDescription-synchronization2-06909
 
 If the [`synchronization2`](../../../../spec/latest/chapters/features.html#features-synchronization2) feature is
 not enabled, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR` or
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-attachmentFeedbackLoopLayout-07309) VUID-VkAttachmentDescription-attachmentFeedbackLoopLayout-07309
 
 If the [    `attachmentFeedbackLoopLayout`](../../../../spec/latest/chapters/features.html#features-attachmentFeedbackLoopLayout) feature is not enabled,
 `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT`
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-attachmentFeedbackLoopLayout-07310) VUID-VkAttachmentDescription-attachmentFeedbackLoopLayout-07310
 
 If the [    `attachmentFeedbackLoopLayout`](../../../../spec/latest/chapters/features.html#features-attachmentFeedbackLoopLayout) feature is not enabled,
 `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT`
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-samples-08745) VUID-VkAttachmentDescription-samples-08745
@@ -324,59 +324,59 @@ set in `imageCreateSampleCounts` (as defined in
 
 If the [    `dynamicRenderingLocalRead`](../../../../spec/latest/chapters/features.html#features-dynamicRenderingLocalRead) feature is not enabled,
 `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+[VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-dynamicRenderingLocalRead-09545) VUID-VkAttachmentDescription-dynamicRenderingLocalRead-09545
 
 If the [    `dynamicRenderingLocalRead`](../../../../spec/latest/chapters/features.html#features-dynamicRenderingLocalRead) feature is not enabled,
 `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+[VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-flags-11773) VUID-VkAttachmentDescription-flags-11773
 
 If `flags` includes
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`,
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](VkAttachmentDescriptionFlagBits.html),
 `flags` **must** not include
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](VkAttachmentDescriptionFlagBits.html)
 
 * 
 [](#VUID-VkAttachmentDescription-flags-11774) VUID-VkAttachmentDescription-flags-11774
 
 If `flags` includes
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](VkAttachmentDescriptionFlagBits.html)
 or
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`,
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](VkAttachmentDescriptionFlagBits.html),
 [`resolveSrgbFormatSupportsTransferFunctionControl`](../../../../spec/latest/chapters/limits.html#limits-resolveSrgbFormatSupportsTransferFunctionControl)
-**must** be `VK_TRUE`
+**must** be [VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-VkAttachmentDescription-flags-11775) VUID-VkAttachmentDescription-flags-11775
 
 If `flags` includes
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](VkAttachmentDescriptionFlagBits.html)
 or
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`,
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](VkAttachmentDescriptionFlagBits.html),
 [`maintenance10`](../../../../spec/latest/chapters/features.html#features-maintenance10) **must** be enabled
 
 * 
 [](#VUID-VkAttachmentDescription-flags-11776) VUID-VkAttachmentDescription-flags-11776
 
 If `flags` includes
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](VkAttachmentDescriptionFlagBits.html)
 or
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`,
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](VkAttachmentDescriptionFlagBits.html),
 `format` **must** use sRGB encoding
 
 * 
 [](#VUID-VkAttachmentDescription-flags-11777) VUID-VkAttachmentDescription-flags-11777
 
 If `flags` includes
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](VkAttachmentDescriptionFlagBits.html)
 or
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`,
-`samples` **must** be `VK_SAMPLE_COUNT_1_BIT`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](VkAttachmentDescriptionFlagBits.html),
+`samples` **must** be [VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html)
 
 * 
 [](#VUID-VkAttachmentDescription-format-06698) VUID-VkAttachmentDescription-format-06698
@@ -387,40 +387,40 @@ or
 [](#VUID-VkAttachmentDescription-format-06700) VUID-VkAttachmentDescription-format-06700
 
 If `format` includes a stencil component and `stencilLoadOp` is
-`VK_ATTACHMENT_LOAD_OP_LOAD`, then `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_UNDEFINED`
+[VK_ATTACHMENT_LOAD_OP_LOAD](VkAttachmentLoadOp.html), then `initialLayout` **must** not be
+[VK_IMAGE_LAYOUT_UNDEFINED](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-format-03292) VUID-VkAttachmentDescription-format-03292
 
 If `format` is a depth/stencil format which includes only the
 stencil component, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-format-03293) VUID-VkAttachmentDescription-format-03293
 
 If `format` is a depth/stencil format which includes only the
 stencil component, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-format-06242) VUID-VkAttachmentDescription-format-06242
 
 If `format` is a depth/stencil format which includes both depth and
 stencil components, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkAttachmentDescription-format-06243) VUID-VkAttachmentDescription-format-06243
 
 If `format` is a depth/stencil format which includes both depth and
 stencil components, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 Valid Usage (Implicit)
 

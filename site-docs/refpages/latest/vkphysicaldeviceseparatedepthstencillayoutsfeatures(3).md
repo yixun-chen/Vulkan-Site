@@ -46,12 +46,12 @@ structure.
 
 `separateDepthStencilLayouts` indicates whether the implementation
 supports a `VkImageMemoryBarrier` for a depth/stencil image with
-only one of `VK_IMAGE_ASPECT_DEPTH_BIT` or
-`VK_IMAGE_ASPECT_STENCIL_BIT` set, and whether
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL` can be used.
+only one of [VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) or
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html) set, and whether
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html) can be used.
 
 If the `VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -59,7 +59,7 @@ If the `VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures` structure is includ
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -67,7 +67,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures-sType-sType) VUID-VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES](VkStructureType.html)
 
 [VK_KHR_separate_depth_stencil_layouts](VK_KHR_separate_depth_stencil_layouts.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

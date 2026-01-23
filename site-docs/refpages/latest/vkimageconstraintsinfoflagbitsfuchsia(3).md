@@ -34,21 +34,21 @@ General hints about the type of memory that should be allocated by Sysmem
 based on the expected usage of the images in the buffer collection include:
 
 * 
-`VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_RARELY_FUCHSIA`
+[VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_RARELY_FUCHSIA](#)
 
 * 
-`VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_OFTEN_FUCHSIA`
+[VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_OFTEN_FUCHSIA](#)
 
 * 
-`VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_RARELY_FUCHSIA`
+[VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_RARELY_FUCHSIA](#)
 
 * 
-`VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_OFTEN_FUCHSIA`
+[VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_OFTEN_FUCHSIA](#)
 
 For protected memory:
 
 * 
-`VK_IMAGE_CONSTRAINTS_INFO_PROTECTED_OPTIONAL_FUCHSIA` specifies
+[VK_IMAGE_CONSTRAINTS_INFO_PROTECTED_OPTIONAL_FUCHSIA](#) specifies
 that protected memory is optional for the buffer collection.
 
 Note that if all participants in the buffer collection (Vulkan or otherwise)

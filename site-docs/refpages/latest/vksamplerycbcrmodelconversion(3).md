@@ -46,27 +46,27 @@ typedef enum VkSamplerYcbcrModelConversion {
 typedef VkSamplerYcbcrModelConversion VkSamplerYcbcrModelConversionKHR;
 
 * 
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY` specifies that the
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY](#) specifies that the
 input values to the conversion are unmodified.
 
 * 
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY` specifies no
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY](#) specifies no
 model conversion but the inputs are range expanded as for Y′CBCR.
 
 * 
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_709` specifies the color
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_709](#) specifies the color
 model conversion from Y′CBCR to R′G′B′ defined in BT.709 and
 described in the “BT.709 Y′CBCR conversion” section of the
 [Khronos Data Format Specification](../../../../spec/latest/chapters/introduction.html#data-format).
 
 * 
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_601` specifies the color
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_601](#) specifies the color
 model conversion from Y′CBCR to R′G′B′ defined in BT.601 and
 described in the “BT.601 Y′CBCR conversion” section of the
 [Khronos Data Format Specification](../../../../spec/latest/chapters/introduction.html#data-format).
 
 * 
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_2020` specifies the color
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_2020](#) specifies the color
 model conversion from Y′CBCR to R′G′B′ defined in BT.2020 and
 described in the “BT.2020 Y′CBCR conversion” section of the
 [Khronos Data Format Specification](../../../../spec/latest/chapters/introduction.html#data-format).
@@ -96,19 +96,19 @@ operation (controlled by
 
 |  | For example, an “YUVA” 32-bit format comprising four 8-bit components can
 | --- | --- |
-be implemented as `VK_FORMAT_R8G8B8A8_UNORM` with a component mapping:
+be implemented as [VK_FORMAT_R8G8B8A8_UNORM](VkFormat.html) with a component mapping:
 
 * 
-`components.a` = `VK_COMPONENT_SWIZZLE_IDENTITY`
+`components.a` = [VK_COMPONENT_SWIZZLE_IDENTITY](VkComponentSwizzle.html)
 
 * 
-`components.r` = `VK_COMPONENT_SWIZZLE_B`
+`components.r` = [VK_COMPONENT_SWIZZLE_B](VkComponentSwizzle.html)
 
 * 
-`components.g` = `VK_COMPONENT_SWIZZLE_R`
+`components.g` = [VK_COMPONENT_SWIZZLE_R](VkComponentSwizzle.html)
 
 * 
-`components.b` = `VK_COMPONENT_SWIZZLE_G` |
+`components.b` = [VK_COMPONENT_SWIZZLE_G](VkComponentSwizzle.html) |
 
 [VK_KHR_sampler_ycbcr_conversion](VK_KHR_sampler_ycbcr_conversion.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkAndroidHardwareBufferFormatProperties2ANDROID](VkAndroidHardwareBufferFormatProperties2ANDROID.html), [VkAndroidHardwareBufferFormatPropertiesANDROID](VkAndroidHardwareBufferFormatPropertiesANDROID.html), [VkBufferCollectionPropertiesFUCHSIA](VkBufferCollectionPropertiesFUCHSIA.html), [VkNativeBufferFormatPropertiesOHOS](VkNativeBufferFormatPropertiesOHOS.html), [VkSamplerYcbcrConversionCreateInfo](VkSamplerYcbcrConversionCreateInfo.html), [VkScreenBufferFormatPropertiesQNX](VkScreenBufferFormatPropertiesQNX.html)
 

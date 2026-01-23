@@ -56,20 +56,20 @@ When `pPipelineCreateInfo` is not `NULL`, an implementation will attempt
 to retrieve pipeline binary data from an internal cache external to the
 application if
 [`pipelineBinaryInternalCache`](../../../../spec/latest/chapters/limits.html#limits-pipelineBinaryInternalCache) is
-`VK_TRUE`.
+[VK_TRUE](VK_TRUE.html).
 Applications **can** use this to determine if a pipeline **can** be created
 without compilation.
 If the implementation fails to create a pipeline binary due to missing an
-internal cache entry, `VK_PIPELINE_BINARY_MISSING_KHR` is returned.
+internal cache entry, [VK_PIPELINE_BINARY_MISSING_KHR](VkResult.html) is returned.
 If creation succeeds, the resulting binary **can** be used to create a
 pipeline.
-`VK_PIPELINE_BINARY_MISSING_KHR` **may** be returned for any reason in this
+[VK_PIPELINE_BINARY_MISSING_KHR](VkResult.html) **may** be returned for any reason in this
 situation, even if creating a pipeline binary with the same parameters that
 succeeded earlier.
 
 If
 [`pipelineBinaryPrecompiledInternalCache`](../../../../spec/latest/chapters/limits.html#limits-pipelineBinaryPrecompiledInternalCache)
-is `VK_TRUE`, the implementation **may** be able to create pipeline
+is [VK_TRUE](VK_TRUE.html), the implementation **may** be able to create pipeline
 binaries even when `pPipelineCreateInfo` has not been used to create
 binaries before by the application.
 
@@ -83,7 +83,7 @@ Valid Usage
 [](#VUID-VkPipelineBinaryCreateInfoKHR-pipeline-09607) VUID-VkPipelineBinaryCreateInfoKHR-pipeline-09607
 
 If `pipeline` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `pipeline` **must** have
-been created with `VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR`
+been created with [VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](VkPipelineCreateFlagBits2.html)
 
 * 
 [](#VUID-VkPipelineBinaryCreateInfoKHR-pipeline-09608) VUID-VkPipelineBinaryCreateInfoKHR-pipeline-09608
@@ -97,14 +97,14 @@ If `pipeline` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 
 If
 [`pipelineBinaryInternalCache`](../../../../spec/latest/chapters/limits.html#limits-pipelineBinaryInternalCache)
-is `VK_FALSE` pPipelineCreateInfo **must** be `NULL`
+is [VK_FALSE](VK_FALSE.html) pPipelineCreateInfo **must** be `NULL`
 
 * 
 [](#VUID-VkPipelineBinaryCreateInfoKHR-device-09610) VUID-VkPipelineBinaryCreateInfoKHR-device-09610
 
 If `device` was created with
 [VkDevicePipelineBinaryInternalCacheControlKHR](VkDevicePipelineBinaryInternalCacheControlKHR.html)::`disableInternalCache`
-set to `VK_TRUE`, `pPipelineCreateInfo` **must** be `NULL`
+set to [VK_TRUE](VK_TRUE.html), `pPipelineCreateInfo` **must** be `NULL`
 
 * 
 [](#VUID-VkPipelineBinaryCreateInfoKHR-pKeysAndDataInfo-09619) VUID-VkPipelineBinaryCreateInfoKHR-pKeysAndDataInfo-09619
@@ -125,7 +125,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineBinaryCreateInfoKHR-sType-sType) VUID-VkPipelineBinaryCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_BINARY_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_BINARY_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineBinaryCreateInfoKHR-pNext-pNext) VUID-VkPipelineBinaryCreateInfoKHR-pNext-pNext

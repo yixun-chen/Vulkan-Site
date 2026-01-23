@@ -83,7 +83,7 @@ Valid Usage
 [](#VUID-VkVideoDecodeInfoKHR-srcBuffer-07165) VUID-VkVideoDecodeInfoKHR-srcBuffer-07165
 
 `srcBuffer` **must** have been created with the
-`VK_BUFFER_USAGE_VIDEO_DECODE_SRC_BIT_KHR` usage flag set
+[VK_BUFFER_USAGE_VIDEO_DECODE_SRC_BIT_KHR](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkVideoDecodeInfoKHR-srcBufferOffset-07166) VUID-VkVideoDecodeInfoKHR-srcBufferOffset-07166
@@ -125,7 +125,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoDecodeInfoKHR-sType-sType) VUID-VkVideoDecodeInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_DECODE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoDecodeInfoKHR-pNext-pNext) VUID-VkVideoDecodeInfoKHR-pNext-pNext

@@ -43,7 +43,7 @@ descriptor update template.
 `dstArrayElement` is the starting element in the array belonging to
 `dstBinding`.
 If the descriptor binding identified by `dstBinding` has a
-descriptor type of `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then
+descriptor type of [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) then
 `dstArrayElement` specifies the starting byte offset to update.
 
 * 
@@ -52,7 +52,7 @@ If `descriptorCount` is greater than the number of remaining array
 elements in the destination binding, those affect consecutive bindings
 in a manner similar to [VkWriteDescriptorSet](VkWriteDescriptorSet.html) above.
 If the descriptor binding identified by `dstBinding` has a
-descriptor type of `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then
+descriptor type of [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) then
 `descriptorCount` specifies the number of bytes to update and the
 remaining array elements in the destination binding refer to the
 remaining number of bytes in it.
@@ -75,7 +75,7 @@ computed using the following formula:
 
 The stride is useful in case the bindings are stored in structs along with
 other data.
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html)
 then the value of `stride` is ignored and the stride is assumed to be
 `1`, i.e. the descriptor update information for them is always specified as
 a contiguous range.
@@ -101,14 +101,14 @@ descriptors, and all applicable [    consecutive bindings](../../../../spec/late
 [](#VUID-VkDescriptorUpdateTemplateEntry-descriptor-02226) VUID-VkDescriptorUpdateTemplateEntry-descriptor-02226
 
 If `descriptor` type is
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`, `dstArrayElement`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html), `dstArrayElement`
 **must** be an integer multiple of `4`
 
 * 
 [](#VUID-VkDescriptorUpdateTemplateEntry-descriptor-02227) VUID-VkDescriptorUpdateTemplateEntry-descriptor-02227
 
 If `descriptor` type is
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`, `descriptorCount`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html), `descriptorCount`
 **must** be an integer multiple of `4`
 
 Valid Usage (Implicit)

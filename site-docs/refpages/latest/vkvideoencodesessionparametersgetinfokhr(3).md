@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeSessionParametersGetInfoKHR-sType-sType) VUID-VkVideoEncodeSessionParametersGetInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_PARAMETERS_GET_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_PARAMETERS_GET_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoEncodeSessionParametersGetInfoKHR-pNext-pNext) VUID-VkVideoEncodeSessionParametersGetInfoKHR-pNext-pNext

@@ -64,7 +64,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMacOSSurfaceCreateInfoMVK-sType-sType) VUID-VkMacOSSurfaceCreateInfoMVK-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK](VkStructureType.html)
 
 * 
 [](#VUID-VkMacOSSurfaceCreateInfoMVK-pNext-pNext) VUID-VkMacOSSurfaceCreateInfoMVK-pNext-pNext

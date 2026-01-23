@@ -69,7 +69,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceToolProperties-sType-sType) VUID-VkPhysicalDeviceToolProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TOOL_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TOOL_PROPERTIES](VkStructureType.html)
 
 * 
 [](#VUID-VkPhysicalDeviceToolProperties-pNext-pNext) VUID-VkPhysicalDeviceToolProperties-pNext-pNext

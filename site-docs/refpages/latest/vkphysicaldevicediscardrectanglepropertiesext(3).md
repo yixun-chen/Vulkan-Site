@@ -50,7 +50,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDiscardRectanglePropertiesEXT-sType-sType) VUID-VkPhysicalDeviceDiscardRectanglePropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_discard_rectangles](VK_EXT_discard_rectangles.html), [VkStructureType](VkStructureType.html)
 

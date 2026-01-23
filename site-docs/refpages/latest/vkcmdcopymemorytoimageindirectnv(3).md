@@ -62,7 +62,7 @@ subresources of the destination image data for the copy operation.
 
 Each region in `copyBufferAddress` is copied from the source memory
 region to an image region in the destination image.
-If the destination image is of type `VK_IMAGE_TYPE_3D`, the starting
+If the destination image is of type [VK_IMAGE_TYPE_3D](VkImageType.html), the starting
 slice and number of slices to copy are specified in
 `pImageSubresources->baseArrayLayer` and
 `pImageSubresources->layerCount` respectively.
@@ -105,16 +105,17 @@ The `aspectMask` member for every subresource in
 `pImageSubresources` **must** only have a single bit set
 
 * 
-[](#VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-07663) VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-07663
+[](#VUID-vkCmdCopyMemoryToImageIndirectNV-aspectMask-12287) VUID-vkCmdCopyMemoryToImageIndirectNV-aspectMask-12287
 
-The image region specified by each element in `copyBufferAddress` **must** be
-a region that is contained within `dstImage`
+The `aspectMask` member for every subresource in
+`pImageSubresources` **must** specify an aspect present in
+`dstImage`
 
 * 
 [](#VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-07664) VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-07664
 
 `dstImage` **must** have been created with the
-`VK_IMAGE_USAGE_TRANSFER_DST_BIT` usage flag set
+[VK_IMAGE_USAGE_TRANSFER_DST_BIT](VkImageUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-07665) VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-07665
@@ -128,7 +129,7 @@ or each specified *disjoint* plane
 [](#VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-07973) VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-07973
 
 `dstImage` **must** have a sample count equal to
-`VK_SAMPLE_COUNT_1_BIT`
+[VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html)
 
 * 
 [](#VUID-vkCmdCopyMemoryToImageIndirectNV-dstImageLayout-07667) VUID-vkCmdCopyMemoryToImageIndirectNV-dstImageLayout-07667
@@ -141,9 +142,9 @@ of `dstImage` at the time this command is executed on a
 [](#VUID-vkCmdCopyMemoryToImageIndirectNV-dstImageLayout-07669) VUID-vkCmdCopyMemoryToImageIndirectNV-dstImageLayout-07669
 
 `dstImageLayout` **must** be
-`VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL`,
-`VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`,
-or `VK_IMAGE_LAYOUT_GENERAL`
+[VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](VkImageLayout.html),
+or [VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html)
 
 * 
 [](#VUID-vkCmdCopyMemoryToImageIndirectNV-mipLevel-07670) VUID-vkCmdCopyMemoryToImageIndirectNV-mipLevel-07670
@@ -153,42 +154,78 @@ The specified `mipLevel` of each region in `pImageSubresources`
 [VkImageCreateInfo](VkImageCreateInfo.html) when `dstImage` was created
 
 * 
-[](#VUID-vkCmdCopyMemoryToImageIndirectNV-layerCount-08764) VUID-vkCmdCopyMemoryToImageIndirectNV-layerCount-08764
+[](#VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-12288) VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-12288
 
-If the specified `layerCount` of each region in
-`pImageSubresources` is not `VK_REMAINING_ARRAY_LAYERS`, the
-specified `baseArrayLayer` +  `layerCount` of each region in
-`pImageSubresources` **must** be less than or equal to the
-`arrayLayers` specified in [VkImageCreateInfo](VkImageCreateInfo.html) when
-`dstImage` was created
+If `dstImage` is not of type [VK_IMAGE_TYPE_3D](VkImageType.html), and the
+specified `layerCount` of each region in `pImageSubresources` is
+not [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), the specified `baseArrayLayer`
++  `layerCount` of each region in `pImageSubresources` **must**
+be less than or equal to the `arrayLayers` specified in
+[VkImageCreateInfo](VkImageCreateInfo.html) when `dstImage` was created
+
+* 
+[](#VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-12289) VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-12289
+
+If `dstImage` is of type [VK_IMAGE_TYPE_3D](VkImageType.html), and the specified
+`layerCount` of each region in `pImageSubresources` is not
+[VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), for each destination region,
+(`imageSubresource.baseArrayLayer` + 
+`imageSubresource.layerCount`) **must** be less than or equal to the
+depth of the specified subresource
+
+* 
+[](#VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-12290) VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-12290
+
+If `dstImage` is of type [VK_IMAGE_TYPE_3D](VkImageType.html), and the specified
+`layerCount` of each region in `pImageSubresources` is not
+[VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), for each destination region, if
+(`imageSubresource.baseArrayLayer` + 
+`imageSubresource.layerCount`) does not equal the depth of the
+specified subresource, `imageSubresource.layerCount` **must** be a
+multiple of the [texel block extent    depth](../../../../spec/latest/chapters/formats.html#formats-compatibility-classes) of the [VkFormat](VkFormat.html) of `dstImage`
+
+* 
+[](#VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-12291) VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-12291
+
+If `dstImage` is of type [VK_IMAGE_TYPE_3D](VkImageType.html), for each
+destination region, `imageSubresource.baseArrayLayer` **must** be a
+multiple of the [texel block extent    depth](../../../../spec/latest/chapters/formats.html#formats-compatibility-classes) of the [VkFormat](VkFormat.html) of `dstImage`
+
+* 
+[](#VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-12292) VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-12292
+
+If `dstImage` is of type [VK_IMAGE_TYPE_3D](VkImageType.html), for each
+destination region, `imageSubresource.baseArrayLayer` **must** be less
+than or equal to the depth of the specified subresource
 
 * 
 [](#VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-07673) VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-07673
 
 `dstImage` **must** not have been created with `flags` containing
-`VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`
+[VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](VkImageCreateFlagBits.html)
 
 * 
 [](#VUID-vkCmdCopyMemoryToImageIndirectNV-commandBuffer-07674) VUID-vkCmdCopyMemoryToImageIndirectNV-commandBuffer-07674
 
 If the queue family used to create the [VkCommandPool](VkCommandPool.html) which
 `commandBuffer` was allocated from does not support
-`VK_QUEUE_GRAPHICS_BIT`, for each region, the `aspectMask`
+[VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html), for each region, the `aspectMask`
 member of `pImageSubresources` **must** not be
-`VK_IMAGE_ASPECT_DEPTH_BIT` or `VK_IMAGE_ASPECT_STENCIL_BIT`
+[VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) or [VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-10974) VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-10974
 
 The format features of `dstImage` **must** contain
-`VK_FORMAT_FEATURE_TRANSFER_DST_BIT`
+[VK_FORMAT_FEATURE_TRANSFER_DST_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-vkCmdCopyMemoryToImageIndirectNV-copyBufferAddress-10975) VUID-vkCmdCopyMemoryToImageIndirectNV-copyBufferAddress-10975
 
 Any of the source or destination memory regions specified in
 `copyBufferAddress` **must** not overlap with any of the specified
-destination memory regions
+destination memory regions at the time this command is executed on
+device
 
 Valid Usage (Implicit)
 
@@ -225,7 +262,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdCopyMemoryToImageIndirectNV-commandBuffer-cmdpool) VUID-vkCmdCopyMemoryToImageIndirectNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, or `VK_QUEUE_TRANSFER_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html), or [VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdCopyMemoryToImageIndirectNV-renderpass) VUID-vkCmdCopyMemoryToImageIndirectNV-renderpass

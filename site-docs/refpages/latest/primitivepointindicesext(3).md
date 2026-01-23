@@ -52,10 +52,18 @@ declared as an array of scalar 32-bit integer values
 * 
 [](#VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-07045) VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-07045
 
-All index values of the array decorated with
+The index to access the array decorated with
 `PrimitivePointIndicesEXT` **must** be in the range [0, N-1],
-where N is the value specified by the `OutputVertices`
-`Execution` `Mode`
+where N is the value specified by the “Primitive Count” operand
+of `OpSetMeshOutputsEXT`
+
+* 
+[](#VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-12335) VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-12335
+
+All index values written to the array decorated with
+`PrimitivePointIndicesEXT` **must** be in the range [0, N-1],
+where N is the value specified by the “Vertex Count” operand of
+`OpSetMeshOutputsEXT`
 
 * 
 [](#VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-07046) VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-07046

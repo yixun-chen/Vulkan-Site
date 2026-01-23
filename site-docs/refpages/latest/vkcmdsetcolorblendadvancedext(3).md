@@ -50,7 +50,7 @@ This command sets the advanced blend operation parameters of the specified
 attachments for subsequent drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT` set in
+[VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineColorBlendAdvancedStateCreateInfoEXT](VkPipelineColorBlendAdvancedStateCreateInfoEXT.html)::`srcPremultiplied`,
@@ -91,7 +91,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetColorBlendAdvancedEXT-commandBuffer-cmdpool) VUID-vkCmdSetColorBlendAdvancedEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetColorBlendAdvancedEXT-videocoding) VUID-vkCmdSetColorBlendAdvancedEXT-videocoding

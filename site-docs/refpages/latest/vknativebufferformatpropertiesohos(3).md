@@ -48,7 +48,7 @@ structure.
 
 * 
 `format` is the Vulkan format corresponding to the Open Harmony OS
-native buffer’s format, or `VK_FORMAT_UNDEFINED` if there is not an
+native buffer’s format, or [VK_FORMAT_UNDEFINED](VkFormat.html) if there is not an
 equivalent Vulkan format.
 
 * 
@@ -80,7 +80,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkNativeBufferFormatPropertiesOHOS-sType-sType) VUID-VkNativeBufferFormatPropertiesOHOS-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_NATIVE_BUFFER_FORMAT_PROPERTIES_OHOS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_NATIVE_BUFFER_FORMAT_PROPERTIES_OHOS](VkStructureType.html)
 
 [VK_OHOS_external_memory](VK_OHOS_external_memory.html), [VkChromaLocation](VkChromaLocation.html), [VkComponentMapping](VkComponentMapping.html), [VkFormat](VkFormat.html), [VkFormatFeatureFlags](VkFormatFeatureFlags.html), [VkSamplerYcbcrModelConversion](VkSamplerYcbcrModelConversion.html), [VkSamplerYcbcrRange](VkSamplerYcbcrRange.html), [VkStructureType](VkStructureType.html)
 

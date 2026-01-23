@@ -25,7 +25,7 @@ defined as:
 // Provided by VK_ARM_data_graph
 typedef struct VkQueueFamilyDataGraphProcessingEnginePropertiesARM {
     VkStructureType                       sType;
-    const void*                           pNext;
+    void*                                 pNext;
     VkExternalSemaphoreHandleTypeFlags    foreignSemaphoreHandleTypes;
     VkExternalMemoryHandleTypeFlags       foreignMemoryHandleTypes;
 } VkQueueFamilyDataGraphProcessingEnginePropertiesARM;
@@ -53,32 +53,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueueFamilyDataGraphProcessingEnginePropertiesARM-sType-sType) VUID-VkQueueFamilyDataGraphProcessingEnginePropertiesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_PROCESSING_ENGINE_PROPERTIES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_PROCESSING_ENGINE_PROPERTIES_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkQueueFamilyDataGraphProcessingEnginePropertiesARM-pNext-pNext) VUID-VkQueueFamilyDataGraphProcessingEnginePropertiesARM-pNext-pNext
 
  `pNext` **must** be `NULL`
-
-* 
-[](#VUID-VkQueueFamilyDataGraphProcessingEnginePropertiesARM-foreignSemaphoreHandleTypes-parameter) VUID-VkQueueFamilyDataGraphProcessingEnginePropertiesARM-foreignSemaphoreHandleTypes-parameter
-
- `foreignSemaphoreHandleTypes` **must** be a valid combination of [VkExternalSemaphoreHandleTypeFlagBits](VkExternalSemaphoreHandleTypeFlagBits.html) values
-
-* 
-[](#VUID-VkQueueFamilyDataGraphProcessingEnginePropertiesARM-foreignSemaphoreHandleTypes-requiredbitmask) VUID-VkQueueFamilyDataGraphProcessingEnginePropertiesARM-foreignSemaphoreHandleTypes-requiredbitmask
-
- `foreignSemaphoreHandleTypes` **must** not be `0`
-
-* 
-[](#VUID-VkQueueFamilyDataGraphProcessingEnginePropertiesARM-foreignMemoryHandleTypes-parameter) VUID-VkQueueFamilyDataGraphProcessingEnginePropertiesARM-foreignMemoryHandleTypes-parameter
-
- `foreignMemoryHandleTypes` **must** be a valid combination of [VkExternalMemoryHandleTypeFlagBits](VkExternalMemoryHandleTypeFlagBits.html) values
-
-* 
-[](#VUID-VkQueueFamilyDataGraphProcessingEnginePropertiesARM-foreignMemoryHandleTypes-requiredbitmask) VUID-VkQueueFamilyDataGraphProcessingEnginePropertiesARM-foreignMemoryHandleTypes-requiredbitmask
-
- `foreignMemoryHandleTypes` **must** not be `0`
 
 [VK_ARM_data_graph](VK_ARM_data_graph.html), [VkExternalMemoryHandleTypeFlags](VkExternalMemoryHandleTypeFlags.html), [VkExternalSemaphoreHandleTypeFlags](VkExternalSemaphoreHandleTypeFlags.html), [VkStructureType](VkStructureType.html), [vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM](vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM.html)
 

@@ -83,8 +83,8 @@ density map is not enabled in the render pass,
 
 If
 [VkRenderPassFragmentDensityMapCreateInfoEXT](VkRenderPassFragmentDensityMapCreateInfoEXT.html)::`fragmentDensityMapAttachment`
-is not `VK_ATTACHMENT_UNUSED` and was not created with
-`VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT`,
+is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html) and was not created with
+[VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT](VkImageCreateFlagBits.html),
 `fragmentDensityOffsetCount` **must** equal `0`
 
 * 
@@ -92,35 +92,35 @@ is not `VK_ATTACHMENT_UNUSED` and was not created with
 
 If the depth or stencil attachments for the render pass are used and
 were not created with
-`VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT`,
+[VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT](VkImageCreateFlagBits.html),
 `fragmentDensityOffsetCount` **must** equal `0`
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pInputAttachments-06506) VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pInputAttachments-06506
 
 If any used input attachments for the render pass were not created with
-`VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT`,
+[VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT](VkImageCreateFlagBits.html),
 `fragmentDensityOffsetCount` **must** equal `0`
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pColorAttachments-06507) VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pColorAttachments-06507
 
 If any used color attachments for the render pass were not created with
-`VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT`,
+[VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT](VkImageCreateFlagBits.html),
 `fragmentDensityOffsetCount` **must** equal `0`
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pResolveAttachments-06508) VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pResolveAttachments-06508
 
 If any used resolve attachments for the render pass were not created
-with `VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT`,
+with [VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT](VkImageCreateFlagBits.html),
 `fragmentDensityOffsetCount` **must** equal `0`
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pPreserveAttachments-06509) VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pPreserveAttachments-06509
 
 If any used preserve attachments for the render pass were not created
-with `VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT`,
+with [VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT](VkImageCreateFlagBits.html),
 `fragmentDensityOffsetCount` **must** equal `0`
 
 * 
@@ -163,7 +163,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-sType-sType) VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_OFFSET_END_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_OFFSET_END_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pFragmentDensityOffsets-parameter) VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pFragmentDensityOffsets-parameter

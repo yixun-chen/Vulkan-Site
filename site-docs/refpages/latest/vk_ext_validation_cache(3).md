@@ -123,15 +123,15 @@ Extending [VkShaderModuleCreateInfo](VkShaderModuleCreateInfo.html), [VkPipeline
 * 
 Extending [VkObjectType](VkObjectType.html):
 
-`VK_OBJECT_TYPE_VALIDATION_CACHE_EXT`
+[VK_OBJECT_TYPE_VALIDATION_CACHE_EXT](VkObjectType.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_VALIDATION_CACHE_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_VALIDATION_CACHE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2017-08-29 (Cort Stratton)

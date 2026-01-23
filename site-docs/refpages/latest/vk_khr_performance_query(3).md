@@ -203,30 +203,30 @@ Extending [VkSubmitInfo](VkSubmitInfo.html), [VkSubmitInfo2](VkSubmitInfo2.html)
 * 
 Extending [VkQueryType](VkQueryType.html):
 
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](VkQueryType.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_ACQUIRE_PROFILING_LOCK_INFO_KHR`
+[VK_STRUCTURE_TYPE_ACQUIRE_PROFILING_LOCK_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_DESCRIPTION_KHR`
+[VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_DESCRIPTION_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_KHR`
+[VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PERFORMANCE_QUERY_SUBMIT_INFO_KHR`
+[VK_STRUCTURE_TYPE_PERFORMANCE_QUERY_SUBMIT_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_QUERY_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_QUERY_FEATURES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_QUERY_PROPERTIES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_QUERY_PROPERTIES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR](VkStructureType.html)
 
 1) Should this extension include a mechanism to begin a query in command
 buffer *A* and end the query in command buffer *B*?
@@ -248,7 +248,7 @@ parameter in VkPerformanceQuerySubmitInfoKHR.
 4) How to handle counters across parallel workloads?
 
 **RESOLVED** In the spirit of Vulkan, a counter description flag
-`VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_BIT_KHR`
+[VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_BIT_KHR](VkPerformanceCounterDescriptionFlagBitsKHR.html)
 denotes that the accuracy of a counter result is affected by parallel
 workloads.
 

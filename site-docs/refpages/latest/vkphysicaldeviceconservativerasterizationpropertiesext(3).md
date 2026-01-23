@@ -76,27 +76,27 @@ representable non-zero value in the screen space pixel fixed-point grid.
 
 * 
  `primitiveUnderestimation` is
-`VK_TRUE` if the implementation supports the
-`VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT` conservative
+[VK_TRUE](VK_TRUE.html) if the implementation supports the
+[VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT](VkConservativeRasterizationModeEXT.html) conservative
 rasterization mode in addition to
-`VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT`.
+[VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT](VkConservativeRasterizationModeEXT.html).
 Otherwise the implementation only supports
-`VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT`.
+[VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT](VkConservativeRasterizationModeEXT.html).
 
 * 
 
-`conservativePointAndLineRasterization` is `VK_TRUE` if the
+`conservativePointAndLineRasterization` is [VK_TRUE](VK_TRUE.html) if the
 implementation supports conservative rasterization of point and line
 primitives as well as triangle primitives.
 Otherwise the implementation only supports triangle primitives.
 
 * 
 
-`degenerateTrianglesRasterized` is `VK_FALSE` if the
+`degenerateTrianglesRasterized` is [VK_FALSE](VK_FALSE.html) if the
 implementation culls primitives generated from triangles that become
 zero area after they are quantized to the fixed-point rasterization
 pixel grid.
-`degenerateTrianglesRasterized` is `VK_TRUE` if these primitives
+`degenerateTrianglesRasterized` is [VK_TRUE](VK_TRUE.html) if these primitives
 are not culled and the provoking vertex attributes and depth value are
 used for the fragments.
 The primitive area calculation is done on the primitive generated from
@@ -106,15 +106,15 @@ backface culling if desired.
 
 * 
  `degenerateLinesRasterized` is
-`VK_FALSE` if the implementation culls lines that become zero length
+[VK_FALSE](VK_FALSE.html) if the implementation culls lines that become zero length
 after they are quantized to the fixed-point rasterization pixel grid.
-`degenerateLinesRasterized` is `VK_TRUE` if zero length lines
+`degenerateLinesRasterized` is [VK_TRUE](VK_TRUE.html) if zero length lines
 are not culled and the provoking vertex attributes and depth value are
 used for the fragments.
 
 * 
 
-`fullyCoveredFragmentShaderInputVariable` is `VK_TRUE` if the
+`fullyCoveredFragmentShaderInputVariable` is [VK_TRUE](VK_TRUE.html) if the
 implementation supports the SPIR-V builtin fragment shader input
 variable `FullyCoveredEXT` specifying that conservative rasterization
 is enabled and the fragment area is fully covered by the generating
@@ -122,7 +122,7 @@ primitive.
 
 * 
 
-`conservativeRasterizationPostDepthCoverage` is `VK_TRUE` if the
+`conservativeRasterizationPostDepthCoverage` is [VK_TRUE](VK_TRUE.html) if the
 implementation supports conservative rasterization with the
 `PostDepthCoverage` execution mode enabled.
 Otherwise the `PostDepthCoverage` execution mode **must** not be used
@@ -138,7 +138,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceConservativeRasterizationPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceConservativeRasterizationPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_conservative_rasterization](VK_EXT_conservative_rasterization.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

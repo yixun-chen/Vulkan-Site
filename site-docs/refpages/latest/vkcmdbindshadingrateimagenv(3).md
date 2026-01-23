@@ -54,20 +54,20 @@ be enabled
 [](#VUID-vkCmdBindShadingRateImageNV-imageView-02059) VUID-vkCmdBindShadingRateImageNV-imageView-02059
 
 If `imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), it **must** be a valid
-[VkImageView](VkImageView.html) handle of type `VK_IMAGE_VIEW_TYPE_2D` or
-`VK_IMAGE_VIEW_TYPE_2D_ARRAY`
+[VkImageView](VkImageView.html) handle of type [VK_IMAGE_VIEW_TYPE_2D](VkImageViewType.html) or
+[VK_IMAGE_VIEW_TYPE_2D_ARRAY](VkImageViewType.html)
 
 * 
 [](#VUID-vkCmdBindShadingRateImageNV-imageView-02060) VUID-vkCmdBindShadingRateImageNV-imageView-02060
 
 If `imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), it **must** have a format
-of `VK_FORMAT_R8_UINT`
+of [VK_FORMAT_R8_UINT](VkFormat.html)
 
 * 
 [](#VUID-vkCmdBindShadingRateImageNV-imageView-02061) VUID-vkCmdBindShadingRateImageNV-imageView-02061
 
 If `imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), it **must** have been
-created with the `VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV` usage
+created with the [VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV](VkImageUsageFlagBits.html) usage
 flag set
 
 * 
@@ -81,8 +81,8 @@ match the actual [VkImageLayout](VkImageLayout.html) of each subresource accessi
 [](#VUID-vkCmdBindShadingRateImageNV-imageLayout-02063) VUID-vkCmdBindShadingRateImageNV-imageLayout-02063
 
 If `imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `imageLayout` **must**
-be `VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV` or
-`VK_IMAGE_LAYOUT_GENERAL`
+be [VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html)
 
 Valid Usage (Implicit)
 
@@ -109,7 +109,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindShadingRateImageNV-commandBuffer-cmdpool) VUID-vkCmdBindShadingRateImageNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBindShadingRateImageNV-videocoding) VUID-vkCmdBindShadingRateImageNV-videocoding

@@ -43,15 +43,15 @@ structure.
 the implementation supports the following:
 
 The new buffer creation flag
-`VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR`.
+[VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](VkBufferCreateFlagBits.html).
 
 * 
 The new image creation flag
-`VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR`.
+[VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](VkImageCreateFlagBits.html).
 
 * 
 The new video session creation flag
-`VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR`.
+[VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html).
 
 If the `VkPhysicalDeviceVideoMaintenance1FeaturesKHR` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -59,7 +59,7 @@ If the `VkPhysicalDeviceVideoMaintenance1FeaturesKHR` structure is included in t
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceVideoMaintenance1FeaturesKHR`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -67,7 +67,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVideoMaintenance1FeaturesKHR-sType-sType) VUID-VkPhysicalDeviceVideoMaintenance1FeaturesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_MAINTENANCE_1_FEATURES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_MAINTENANCE_1_FEATURES_KHR](VkStructureType.html)
 
 [VK_KHR_video_maintenance1](VK_KHR_video_maintenance1.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -77,7 +77,7 @@ The [`dataGraph`](../../../../spec/latest/chapters/features.html#features-dataGr
 [](#VUID-vkCreateDataGraphPipelinesARM-device-09927) VUID-vkCreateDataGraphPipelinesARM-device-09927
 
 `device` **must** support at least one queue family with the
-`VK_QUEUE_DATA_GRAPH_BIT_ARM` capability
+[VK_QUEUE_DATA_GRAPH_BIT_ARM](VkQueueFlagBits.html) capability
 
 * 
 [](#VUID-vkCreateDataGraphPipelinesARM-deferredOperation-09761) VUID-vkCreateDataGraphPipelinesARM-deferredOperation-09761
@@ -89,7 +89,7 @@ The [`dataGraph`](../../../../spec/latest/chapters/features.html#features-dataGr
 
 If `deferredOperation` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), the `flags`
 member of elements of `pCreateInfos` **must** not include
-`VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT`
+[VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-vkCreateDataGraphPipelinesARM-pNext-09928) VUID-vkCreateDataGraphPipelinesARM-pNext-09928
@@ -103,7 +103,7 @@ If at least one of the [VkDataGraphPipelineCreateInfoARM](VkDataGraphPipelineCre
 [](#VUID-vkCreateDataGraphPipelinesARM-pipelineCache-09762) VUID-vkCreateDataGraphPipelinesARM-pipelineCache-09762
 
 If `pipelineCache` was created with
-`VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT`, host access
+[VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT](VkPipelineCacheCreateFlagBits.html), host access
 to `pipelineCache` **must** be
 [externally synchronized](../../../../spec/latest/chapters/fundamentals.html#fundamentals-threadingbehavior)
 
@@ -164,24 +164,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_PIPELINE_COMPILE_REQUIRED_EXT`
+[VK_PIPELINE_COMPILE_REQUIRED_EXT](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_ARM_data_graph](VK_ARM_data_graph.html), [VkAllocationCallbacks](VkAllocationCallbacks.html), [VkDataGraphPipelineCreateInfoARM](VkDataGraphPipelineCreateInfoARM.html), [VkDeferredOperationKHR](VkDeferredOperationKHR.html), [VkDevice](VkDevice.html), [VkPipeline](VkPipeline.html), [VkPipelineCache](VkPipelineCache.html)
 

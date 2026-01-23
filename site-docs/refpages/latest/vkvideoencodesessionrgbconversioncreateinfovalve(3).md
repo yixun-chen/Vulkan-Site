@@ -100,7 +100,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeSessionRgbConversionCreateInfoVALVE-sType-sType) VUID-VkVideoEncodeSessionRgbConversionCreateInfoVALVE-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_RGB_CONVERSION_CREATE_INFO_VALVE`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_RGB_CONVERSION_CREATE_INFO_VALVE](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoEncodeSessionRgbConversionCreateInfoVALVE-rgbModel-parameter) VUID-VkVideoEncodeSessionRgbConversionCreateInfoVALVE-rgbModel-parameter

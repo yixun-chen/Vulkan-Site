@@ -21,7 +21,7 @@ VkVideoDecodeAV1ProfileInfoKHR - Structure specifying AV1 decode profile
 
 A video profile supporting AV1 video decode operations is specified by
 setting [VkVideoProfileInfoKHR](VkVideoProfileInfoKHR.html)::`videoCodecOperation` to
-`VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR` and adding a
+[VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and adding a
 `VkVideoDecodeAV1ProfileInfoKHR` structure to the
 [VkVideoProfileInfoKHR](VkVideoProfileInfoKHR.html)::`pNext` chain.
 
@@ -50,7 +50,7 @@ codec profile, as defined in section A.2 of the [AV1    Specification](../../../
  `filmGrainSupport` specifies
 whether AV1 film grain, as defined in section 7.8.3 of the
 [AV1 Specification](../../../../spec/latest/chapters/introduction.html#aomedia-av1), **can** be used with the video profile.
-When this member is `VK_TRUE`, video session objects created against
+When this member is [VK_TRUE](VK_TRUE.html), video session objects created against
 the video profile will be able to decode pictures that have
 [film grain](../../../../spec/latest/chapters/videocoding.html#decode-av1-film-grain) enabled.
 
@@ -63,7 +63,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoDecodeAV1ProfileInfoKHR-sType-sType) VUID-VkVideoDecodeAV1ProfileInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_PROFILE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_PROFILE_INFO_KHR](VkStructureType.html)
 
 [VK_KHR_video_decode_av1](VK_KHR_video_decode_av1.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

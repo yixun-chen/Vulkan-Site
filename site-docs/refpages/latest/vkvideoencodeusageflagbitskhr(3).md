@@ -32,22 +32,22 @@ typedef enum VkVideoEncodeUsageFlagBitsKHR {
 } VkVideoEncodeUsageFlagBitsKHR;
 
 * 
-`VK_VIDEO_ENCODE_USAGE_TRANSCODING_BIT_KHR` specifies that video
+[VK_VIDEO_ENCODE_USAGE_TRANSCODING_BIT_KHR](#) specifies that video
 encoding is intended to be used in conjunction with video decoding to
 transcode a video bitstream with the same and/or different codecs.
 
 * 
-`VK_VIDEO_ENCODE_USAGE_STREAMING_BIT_KHR` specifies that video
+[VK_VIDEO_ENCODE_USAGE_STREAMING_BIT_KHR](#) specifies that video
 encoding is intended to be used to produce a video bitstream that is
 expected to be sent as a continuous flow over network.
 
 * 
-`VK_VIDEO_ENCODE_USAGE_RECORDING_BIT_KHR` specifies that video
+[VK_VIDEO_ENCODE_USAGE_RECORDING_BIT_KHR](#) specifies that video
 encoding is intended to be used for real-time recording for offline
 consumption.
 
 * 
-`VK_VIDEO_ENCODE_USAGE_CONFERENCING_BIT_KHR` specifies that video
+[VK_VIDEO_ENCODE_USAGE_CONFERENCING_BIT_KHR](#) specifies that video
 encoding is intended to be used in a video conferencing scenario.
 
 |  | There are no restrictions on the combination of bits that **can** be specified

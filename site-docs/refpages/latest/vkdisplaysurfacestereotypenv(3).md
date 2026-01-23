@@ -31,25 +31,25 @@ typedef enum VkDisplaySurfaceStereoTypeNV {
 } VkDisplaySurfaceStereoTypeNV;
 
 * 
-`VK_DISPLAY_SURFACE_STEREO_TYPE_NONE_NV` specifies no configuration
+[VK_DISPLAY_SURFACE_STEREO_TYPE_NONE_NV](#) specifies no configuration
 for stereo presentation.
 This is the default behavior if [VkDisplaySurfaceStereoCreateInfoNV](VkDisplaySurfaceStereoCreateInfoNV.html)
 is not provided.
 
 * 
-`VK_DISPLAY_SURFACE_STEREO_TYPE_ONBOARD_DIN_NV` specifies
+[VK_DISPLAY_SURFACE_STEREO_TYPE_ONBOARD_DIN_NV](#) specifies
 configuration for glasses that connect via a DIN connector on the back
 of the graphics card.
 
 * 
-`VK_DISPLAY_SURFACE_STEREO_TYPE_HDMI_3D_NV` specifies configuration
+[VK_DISPLAY_SURFACE_STEREO_TYPE_HDMI_3D_NV](#) specifies configuration
 for HDMI 3D compatible display devices with their own stereo emitters.
 This is also known as HDMI Frame Packed Stereo, where the left and right
 eye images are stacked into a single frame with a doubled pixel clock
 and refresh rate.
 
 * 
-`VK_DISPLAY_SURFACE_STEREO_TYPE_INBAND_DISPLAYPORT_NV` specifies
+[VK_DISPLAY_SURFACE_STEREO_TYPE_INBAND_DISPLAYPORT_NV](#) specifies
 configuration for DisplayPort display devices with in-band stereo
 signaling and emitters.
 

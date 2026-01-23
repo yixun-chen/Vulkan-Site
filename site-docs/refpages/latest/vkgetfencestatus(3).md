@@ -37,9 +37,9 @@ with the following return codes:
 
 | Status | Meaning |
 | --- | --- |
-| `VK_SUCCESS` | The fence specified by `fence` is signaled. |
-| `VK_NOT_READY` | The fence specified by `fence` is unsignaled. |
-| `VK_ERROR_DEVICE_LOST` | The device has been lost.  See [Lost Device](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-lost-device). |
+| [VK_SUCCESS](VkResult.html) | The fence specified by `fence` is signaled. |
+| [VK_NOT_READY](VkResult.html) | The fence specified by `fence` is unsignaled. |
+| [VK_ERROR_DEVICE_LOST](VkResult.html) | The device has been lost.  See [Lost Device](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-lost-device). |
 
 If a [queue submission](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-submission) command is pending
 execution, then the value returned by this command **may** immediately be out
@@ -48,8 +48,8 @@ of date.
 If the device has been lost (see [Lost Device](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-lost-device)),
 `vkGetFenceStatus` **may** return any of the above status codes.
 If the device has been lost and `vkGetFenceStatus` is called repeatedly,
-it will eventually return either `VK_SUCCESS` or
-`VK_ERROR_DEVICE_LOST`.
+it will eventually return either [VK_SUCCESS](VkResult.html) or
+[VK_ERROR_DEVICE_LOST](VkResult.html).
 
 Valid Usage (Implicit)
 
@@ -73,27 +73,27 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_NOT_READY`
+[VK_NOT_READY](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkDevice](VkDevice.html), [VkFence](VkFence.html)
 

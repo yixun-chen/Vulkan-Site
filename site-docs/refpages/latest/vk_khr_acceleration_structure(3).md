@@ -413,120 +413,120 @@ Extending [VkWriteDescriptorSet](VkWriteDescriptorSet.html):
 * 
 Extending [VkAccessFlagBits](VkAccessFlagBits.html):
 
-`VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR`
+[VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR](VkAccessFlagBits.html)
 
 * 
-`VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR`
+[VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR](VkAccessFlagBits.html)
 
 Extending [VkBufferUsageFlagBits](VkBufferUsageFlagBits.html):
 
 * 
-`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR`
+[VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR](VkBufferUsageFlagBits.html)
 
 * 
-`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR`
+[VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR](VkBufferUsageFlagBits.html)
 
 Extending [VkCopyAccelerationStructureModeKHR](VkCopyAccelerationStructureModeKHR.html):
 
 * 
-`VK_COPY_ACCELERATION_STRUCTURE_MODE_DESERIALIZE_KHR`
+[VK_COPY_ACCELERATION_STRUCTURE_MODE_DESERIALIZE_KHR](VkCopyAccelerationStructureModeKHR.html)
 
 * 
-`VK_COPY_ACCELERATION_STRUCTURE_MODE_SERIALIZE_KHR`
+[VK_COPY_ACCELERATION_STRUCTURE_MODE_SERIALIZE_KHR](VkCopyAccelerationStructureModeKHR.html)
 
 Extending [VkDescriptorType](VkDescriptorType.html):
 
 * 
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR`
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](VkDescriptorType.html)
 
 Extending [VkFormatFeatureFlagBits](VkFormatFeatureFlagBits.html):
 
 * 
-`VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR`
+[VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR](VkFormatFeatureFlagBits.html)
 
 Extending [VkIndexType](VkIndexType.html):
 
 * 
-`VK_INDEX_TYPE_NONE_KHR`
+[VK_INDEX_TYPE_NONE_KHR](VkIndexType.html)
 
 Extending [VkObjectType](VkObjectType.html):
 
 * 
-`VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR`
+[VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR](VkObjectType.html)
 
 Extending [VkPipelineStageFlagBits](VkPipelineStageFlagBits.html):
 
 * 
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits.html)
 
 Extending [VkQueryType](VkQueryType.html):
 
 * 
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR](VkQueryType.html)
 
 * 
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR](VkQueryType.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR`
+[VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_SIZES_INFO_KHR`
+[VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_SIZES_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_DEVICE_ADDRESS_INFO_KHR`
+[VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_DEVICE_ADDRESS_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_AABBS_DATA_KHR`
+[VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_AABBS_DATA_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_INSTANCES_DATA_KHR`
+[VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_INSTANCES_DATA_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_KHR`
+[VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR`
+[VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_VERSION_INFO_KHR`
+[VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_VERSION_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_COPY_ACCELERATION_STRUCTURE_INFO_KHR`
+[VK_STRUCTURE_TYPE_COPY_ACCELERATION_STRUCTURE_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_COPY_ACCELERATION_STRUCTURE_TO_MEMORY_INFO_KHR`
+[VK_STRUCTURE_TYPE_COPY_ACCELERATION_STRUCTURE_TO_MEMORY_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_COPY_MEMORY_TO_ACCELERATION_STRUCTURE_INFO_KHR`
+[VK_STRUCTURE_TYPE_COPY_MEMORY_TO_ACCELERATION_STRUCTURE_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_FEATURES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR`
+[VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR](VkStructureType.html)
 
 If [VK_EXT_debug_report](VK_EXT_debug_report.html) is supported:
 
 * 
 Extending [VkDebugReportObjectTypeEXT](VkDebugReportObjectTypeEXT.html):
 
-`VK_DEBUG_REPORT_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR_EXT`
+[VK_DEBUG_REPORT_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR_EXT](VkDebugReportObjectTypeEXT.html)
 
 If [VK_KHR_format_feature_flags2](VK_KHR_format_feature_flags2.html) or [Vulkan Version 1.3](../../../../spec/latest/appendices/versions.html#versions-1.3) is supported:
 
 * 
 Extending [VkFormatFeatureFlagBits2](VkFormatFeatureFlagBits2.html):
 
-`VK_FORMAT_FEATURE_2_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR`
+[VK_FORMAT_FEATURE_2_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 (1) How does this extension differ from VK_NV_ray_tracing?
 
@@ -537,8 +537,8 @@ VK_KHR_acceleration_structure and VK_NV_ray_tracing:
 
 * 
 added acceleration structure serialization / deserialization
-(`VK_COPY_ACCELERATION_STRUCTURE_MODE_SERIALIZE_KHR`,
-`VK_COPY_ACCELERATION_STRUCTURE_MODE_DESERIALIZE_KHR`,
+([VK_COPY_ACCELERATION_STRUCTURE_MODE_SERIALIZE_KHR](VkCopyAccelerationStructureModeKHR.html),
+[VK_COPY_ACCELERATION_STRUCTURE_MODE_DESERIALIZE_KHR](VkCopyAccelerationStructureModeKHR.html),
 [vkCmdCopyAccelerationStructureToMemoryKHR](vkCmdCopyAccelerationStructureToMemoryKHR.html),
 [vkCmdCopyMemoryToAccelerationStructureKHR](vkCmdCopyMemoryToAccelerationStructureKHR.html))
 
@@ -573,7 +573,7 @@ build
 
 * 
 added format feature for acceleration structure build vertex formats
-(`VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR`)
+([VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR](VkFormatFeatureFlagBits.html))
 
 (2) Can you give a more detailed comparison of differences and similarities
 between VK_NV_ray_tracing and VK_KHR_acceleration_structure?
@@ -634,8 +634,8 @@ for descriptive purposes)
 Changed enums, structures, and commands:
 
 * 
-renamed `VK_GEOMETRY_INSTANCE_TRIANGLE_CULL_DISABLE_BIT_NV` →
-`VK_GEOMETRY_INSTANCE_TRIANGLE_FACING_CULL_DISABLE_BIT_KHR` in
+renamed [VK_GEOMETRY_INSTANCE_TRIANGLE_CULL_DISABLE_BIT_NV](VkGeometryInstanceFlagBitsKHR.html) →
+[VK_GEOMETRY_INSTANCE_TRIANGLE_FACING_CULL_DISABLE_BIT_KHR](VkGeometryInstanceFlagBitsKHR.html) in
 [VkGeometryInstanceFlagBitsKHR](VkGeometryInstanceFlagBitsKHR.html)
 
 * 
@@ -719,11 +719,11 @@ acceleration structure types)
 Added enums, structures and commands:
 
 * 
-`VK_GEOMETRY_TYPE_INSTANCES_KHR` to [VkGeometryTypeKHR](VkGeometryTypeKHR.html) enum
+[VK_GEOMETRY_TYPE_INSTANCES_KHR](VkGeometryTypeKHR.html) to [VkGeometryTypeKHR](VkGeometryTypeKHR.html) enum
 
 * 
-`VK_COPY_ACCELERATION_STRUCTURE_MODE_SERIALIZE_KHR`,
-`VK_COPY_ACCELERATION_STRUCTURE_MODE_DESERIALIZE_KHR` to
+[VK_COPY_ACCELERATION_STRUCTURE_MODE_SERIALIZE_KHR](VkCopyAccelerationStructureModeKHR.html),
+[VK_COPY_ACCELERATION_STRUCTURE_MODE_DESERIALIZE_KHR](VkCopyAccelerationStructureModeKHR.html) to
 [VkCopyAccelerationStructureModeKHR](VkCopyAccelerationStructureModeKHR.html) enum
 
 * 
@@ -808,7 +808,7 @@ renamed `VkAccelerationStructureVersionKHR` to
 
 * 
 renamed `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_VERSION_KHR` to
-`VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_VERSION_INFO_KHR`
+[VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_VERSION_INFO_KHR](VkStructureType.html)
 
 * 
 removed `VK_ERROR_INCOMPATIBLE_VERSION_KHR`
@@ -911,14 +911,14 @@ operation completes
 Change acceleration structure build to always be sized
 
 * 
-de-alias `VkAccelerationStructureMemoryRequirementsTypeNV` and
+de-alias [VkAccelerationStructureMemoryRequirementsTypeNV](VkAccelerationStructureMemoryRequirementsTypeNV.html) and
 `VkAccelerationStructureMemoryRequirementsTypeKHR`, and remove
 `VkAccelerationStructureMemoryRequirementsTypeKHR`
 
 * 
 add [vkGetAccelerationStructureBuildSizesKHR](vkGetAccelerationStructureBuildSizesKHR.html) command and
 [VkAccelerationStructureBuildSizesInfoKHR](VkAccelerationStructureBuildSizesInfoKHR.html) structure and
-`VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_SIZES_INFO_KHR`
+[VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_SIZES_INFO_KHR](VkStructureType.html)
 enum to query sizes for acceleration structures and scratch storage
 
 * 
@@ -959,24 +959,24 @@ shader stages)
 clarify buffer usage flags for ray tracing
 
 * 
-`VK_BUFFER_USAGE_RAY_TRACING_BIT_NV` is left alone in
+[VK_BUFFER_USAGE_RAY_TRACING_BIT_NV](VkBufferUsageFlagBits.html) is left alone in
 `[VK_NV_ray_tracing](VK_NV_ray_tracing.html)` (required on `scratch` and
 `instanceData`)
 
 * 
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` is added as an alias
-of `VK_BUFFER_USAGE_RAY_TRACING_BIT_NV` in
+[VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR](VkBufferUsageFlagBits.html) is added as an alias
+of [VK_BUFFER_USAGE_RAY_TRACING_BIT_NV](VkBufferUsageFlagBits.html) in
 `[VK_KHR_ray_tracing_pipeline](VK_KHR_ray_tracing_pipeline.html)` and is required on shader binding
 table buffers
 
 * 
-`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR`
+[VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR](VkBufferUsageFlagBits.html)
 is added in `[VK_KHR_acceleration_structure](#)` for all vertex,
 index, transform, aabb, and instance buffer data referenced by device
 build commands
 
 * 
-`VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` is used for `scratchData`
+[VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](VkBufferUsageFlagBits.html) is used for `scratchData`
 
 add max primitive counts (`ppMaxPrimitiveCounts`) to
 [vkCmdBuildAccelerationStructuresIndirectKHR](vkCmdBuildAccelerationStructuresIndirectKHR.html)
@@ -996,14 +996,14 @@ acceleration structures now take a [VkBuffer](VkBuffer.html) and offset at
 creation time for memory placement
 
 * 
-add a new `VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR`
+add a new [VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR](VkBufferUsageFlagBits.html)
 buffer usage for such buffers
 
 * 
-add a new `VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR` acceleration
+add a new [VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](VkAccelerationStructureTypeKHR.html) acceleration
 structure type for layering
 
-move `VK_GEOMETRY_TYPE_INSTANCES_KHR` to main enum instead of being
+move [VK_GEOMETRY_TYPE_INSTANCES_KHR](VkGeometryTypeKHR.html) to main enum instead of being
 added via extension
 
 make build commands more consistent - all now build multiple
@@ -1013,7 +1013,7 @@ acceleration structures and are named plurally
 [vkBuildAccelerationStructuresKHR](vkBuildAccelerationStructuresKHR.html))
 
 add interactions with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` for
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) for
 acceleration structures, including a new feature
 (`descriptorBindingAccelerationStructureUpdateAfterBind`) and 3 new
 properties (`maxPerStageDescriptorAccelerationStructures`,
@@ -1027,7 +1027,7 @@ define synchronization requirements for builds, traces, and copies
 define synchronization requirements for AS build inputs and indirect
 build buffer
 
-(5) What is `VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR` for?
+(5) What is [VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](VkAccelerationStructureTypeKHR.html) for?
 
 **RESOLVED**: It is primarily intended for API layering.
 In DXR, the acceleration structure is basically just a buffer in a special
@@ -1365,7 +1365,7 @@ specify alignment for host copy commands (#2273,!4037)
 
 * 
 document
-`VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR`
+[VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR](VkFormatFeatureFlagBits.html)
 
 * 
 specify that acceleration structures are non-linear (#2289,!4068)
@@ -1408,7 +1408,7 @@ document limits for vertex and aabb strides (#2390,!4184)
 
 * 
 specify that
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR` applies to
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits.html) applies to
 AS copies (#2382,#4173)
 
 * 

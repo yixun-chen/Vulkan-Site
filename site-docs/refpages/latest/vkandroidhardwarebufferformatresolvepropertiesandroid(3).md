@@ -42,24 +42,24 @@ color attachment images that **must** be used for color attachments when
 resolving to the specified external format.
 If the implementation supports external format resolves for the
 specified external format, this value will be a color format supporting
-the `VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT` in
+the [VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](VkFormatFeatureFlagBits.html) in
 [VkFormatProperties](VkFormatProperties.html)::`optimalTilingFeatures` as returned by
 [vkGetPhysicalDeviceFormatProperties](vkGetPhysicalDeviceFormatProperties.html) with `format` equal to
 `colorAttachmentFormat` If external format resolves are not
-supported, this value will be `VK_FORMAT_UNDEFINED`.
+supported, this value will be [VK_FORMAT_UNDEFINED](VkFormat.html).
 
 Any Android hardware buffer created with the `GRALLOC_USAGE_HW_RENDER`
 flag **must** be renderable in some way in Vulkan, either:
 
 * 
 [VkAndroidHardwareBufferFormatPropertiesANDROID](VkAndroidHardwareBufferFormatPropertiesANDROID.html)::`format` **must**
-be a format that supports `VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT`
-or `VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT` in
+be a format that supports [VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](VkFormatFeatureFlagBits.html)
+or [VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](VkFormatFeatureFlagBits.html) in
 [VkFormatProperties](VkFormatProperties.html)::`optimalTilingFeatures`; or
 
 * 
 `colorAttachmentFormat` **must** be a format that supports
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT` in
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](VkFormatFeatureFlagBits.html) in
 [VkFormatProperties](VkFormatProperties.html)::`optimalTilingFeatures`.
 
 Valid Usage (Implicit)
@@ -67,7 +67,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAndroidHardwareBufferFormatResolvePropertiesANDROID-sType-sType) VUID-VkAndroidHardwareBufferFormatResolvePropertiesANDROID-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_RESOLVE_PROPERTIES_ANDROID`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_RESOLVE_PROPERTIES_ANDROID](VkStructureType.html)
 
 [VK_ANDROID_external_format_resolve](VK_ANDROID_external_format_resolve.html), [VkFormat](VkFormat.html), [VkStructureType](VkStructureType.html)
 

@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:refpages" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -150,9 +150,6 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkAcquireFullScreenExclusiveModeEXT.html">vkAcquireFullScreenExclusiveModeEXT</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="vkAcquireImageOHOS.html">vkAcquireImageOHOS</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkAcquireNextImage2KHR.html">vkAcquireNextImage2KHR</a>
@@ -312,6 +309,12 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkCmdBindPipelineShaderGroupNV.html">vkCmdBindPipelineShaderGroupNV</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkCmdBindResourceHeapEXT.html">vkCmdBindResourceHeapEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkCmdBindSamplerHeapEXT.html">vkCmdBindSamplerHeapEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkCmdBindShadersEXT.html">vkCmdBindShadersEXT</a>
@@ -669,6 +672,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkCmdPushConstants2.html">vkCmdPushConstants2KHR</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkCmdPushDataEXT.html">vkCmdPushDataEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkCmdPushDescriptorSet.html">vkCmdPushDescriptorSet</a>
@@ -1712,6 +1718,9 @@
     <a class="nav-link" href="vkGetDeviceBufferMemoryRequirements.html">vkGetDeviceBufferMemoryRequirementsKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkGetDeviceCombinedImageSamplerIndexNVX.html">vkGetDeviceCombinedImageSamplerIndexNVX</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetDeviceFaultInfoEXT.html">vkGetDeviceFaultInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -1841,6 +1850,9 @@
     <a class="nav-link" href="vkGetImageMemoryRequirements2.html">vkGetImageMemoryRequirements2KHR</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkGetImageOpaqueCaptureDataEXT.html">vkGetImageOpaqueCaptureDataEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetImageOpaqueCaptureDescriptorDataEXT.html">vkGetImageOpaqueCaptureDescriptorDataEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -1956,6 +1968,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetPhysicalDeviceCooperativeVectorPropertiesNV.html">vkGetPhysicalDeviceCooperativeVectorPropertiesNV</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkGetPhysicalDeviceDescriptorSizeEXT.html">vkGetPhysicalDeviceDescriptorSizeEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetPhysicalDeviceDirectFBPresentationSupportEXT.html">vkGetPhysicalDeviceDirectFBPresentationSupportEXT</a>
@@ -2243,9 +2258,6 @@
     <a class="nav-link" href="vkGetSwapchainCounterEXT.html">vkGetSwapchainCounterEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="vkGetSwapchainGrallocUsageOHOS.html">vkGetSwapchainGrallocUsageOHOS</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetSwapchainImagesKHR.html">vkGetSwapchainImagesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -2259,6 +2271,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetTensorMemoryRequirementsARM.html">vkGetTensorMemoryRequirementsARM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkGetTensorOpaqueCaptureDataARM.html">vkGetTensorOpaqueCaptureDataARM</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetTensorOpaqueCaptureDescriptorDataARM.html">vkGetTensorOpaqueCaptureDescriptorDataARM</a>
@@ -2360,9 +2375,6 @@
     <a class="nav-link" href="vkQueueSetPerformanceConfigurationINTEL.html">vkQueueSetPerformanceConfigurationINTEL</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="vkQueueSignalReleaseImageOHOS.html">vkQueueSignalReleaseImageOHOS</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkQueueSubmit.html">vkQueueSubmit</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -2380,6 +2392,9 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">R</span>
 <ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkRegisterCustomBorderColorEXT.html">vkRegisterCustomBorderColorEXT</a>
+  </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkRegisterDeviceEventEXT.html">vkRegisterDeviceEventEXT</a>
   </li>
@@ -2519,6 +2534,9 @@
     <a class="nav-link" href="vkUnmapMemory2.html">vkUnmapMemory2KHR</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkUnregisterCustomBorderColorEXT.html">vkUnregisterCustomBorderColorEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkUpdateDescriptorSets.html">vkUpdateDescriptorSets</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -2562,6 +2580,12 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkWriteMicromapsPropertiesEXT.html">vkWriteMicromapsPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkWriteResourceDescriptorsEXT.html">vkWriteResourceDescriptorsEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkWriteSamplerDescriptorsEXT.html">vkWriteSamplerDescriptorsEXT</a>
   </li>
 </ul>
   </li>
@@ -2791,6 +2815,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkBindDescriptorSetsInfo.html">VkBindDescriptorSetsInfoKHR</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkBindHeapInfoEXT.html">VkBindHeapInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkBindImageMemoryDeviceGroupInfo.html">VkBindImageMemoryDeviceGroupInfo</a>
@@ -3037,6 +3064,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkCommandBufferInheritanceConditionalRenderingInfoEXT.html">VkCommandBufferInheritanceConditionalRenderingInfoEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkCommandBufferInheritanceDescriptorHeapInfoEXT.html">VkCommandBufferInheritanceDescriptorHeapInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkCommandBufferInheritanceInfo.html">VkCommandBufferInheritanceInfo</a>
@@ -3351,6 +3381,30 @@
     <a class="nav-link" href="VkDescriptorImageInfo.html">VkDescriptorImageInfo</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceConstantOffsetEXT.html">VkDescriptorMappingSourceConstantOffsetEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceDataEXT.html">VkDescriptorMappingSourceDataEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceHeapDataEXT.html">VkDescriptorMappingSourceHeapDataEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceIndirectAddressEXT.html">VkDescriptorMappingSourceIndirectAddressEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceIndirectIndexArrayEXT.html">VkDescriptorMappingSourceIndirectIndexArrayEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceIndirectIndexEXT.html">VkDescriptorMappingSourceIndirectIndexEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourcePushIndexEXT.html">VkDescriptorMappingSourcePushIndexEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceShaderRecordIndexEXT.html">VkDescriptorMappingSourceShaderRecordIndexEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkDescriptorPoolCreateInfo.html">VkDescriptorPoolCreateInfo</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -3364,6 +3418,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkDescriptorSetAllocateInfo.html">VkDescriptorSetAllocateInfo</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorSetAndBindingMappingEXT.html">VkDescriptorSetAndBindingMappingEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkDescriptorSetBindingReferenceVALVE.html">VkDescriptorSetBindingReferenceVALVE</a>
@@ -3415,6 +3472,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkDeviceAddressBindingCallbackDataEXT.html">VkDeviceAddressBindingCallbackDataEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDeviceAddressRangeEXT.html">VkDeviceAddressRangeEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkDeviceBufferMemoryRequirements.html">VkDeviceBufferMemoryRequirements</a>
@@ -3936,6 +3996,12 @@
     <a class="nav-link" href="VkHeadlessSurfaceCreateInfoEXT.html">VkHeadlessSurfaceCreateInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkHostAddressRangeConstEXT.html">VkHostAddressRangeConstEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkHostAddressRangeEXT.html">VkHostAddressRangeEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkHostImageCopyDevicePerformanceQuery.html">VkHostImageCopyDevicePerformanceQuery</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -3988,6 +4054,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkImageCreateInfo.html">VkImageCreateInfo</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkImageDescriptorInfoEXT.html">VkImageDescriptorInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkImageDrmFormatModifierExplicitCreateInfoEXT.html">VkImageDrmFormatModifierExplicitCreateInfoEXT</a>
@@ -4186,6 +4255,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkIndirectCommandsLayoutCreateInfoNV.html">VkIndirectCommandsLayoutCreateInfoNV</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkIndirectCommandsLayoutPushDataTokenNV.html">VkIndirectCommandsLayoutPushDataTokenNV</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkIndirectCommandsLayoutTokenEXT.html">VkIndirectCommandsLayoutTokenEXT</a>
@@ -4455,9 +4527,6 @@
     <a class="nav-link" href="VkNativeBufferFormatPropertiesOHOS.html">VkNativeBufferFormatPropertiesOHOS</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="VkNativeBufferOHOS.html">VkNativeBufferOHOS</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkNativeBufferPropertiesOHOS.html">VkNativeBufferPropertiesOHOS</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -4474,6 +4543,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkOffset3D.html">VkOffset3D</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkOpaqueCaptureDataCreateInfoEXT.html">VkOpaqueCaptureDataCreateInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkOpaqueCaptureDescriptorDataCreateInfoEXT.html">VkOpaqueCaptureDescriptorDataCreateInfoEXT</a>
@@ -4792,6 +4864,15 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceDescriptorBufferTensorPropertiesARM.html">VkPhysicalDeviceDescriptorBufferTensorPropertiesARM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceDescriptorHeapFeaturesEXT.html">VkPhysicalDeviceDescriptorHeapFeaturesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceDescriptorHeapPropertiesEXT.html">VkPhysicalDeviceDescriptorHeapPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceDescriptorHeapTensorPropertiesARM.html">VkPhysicalDeviceDescriptorHeapTensorPropertiesARM</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceDescriptorIndexingFeatures.html">VkPhysicalDeviceDescriptorIndexingFeatures</a>
@@ -5145,6 +5226,9 @@
     <a class="nav-link" href="VkPhysicalDeviceInlineUniformBlockProperties.html">VkPhysicalDeviceInlineUniformBlockPropertiesEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR.html">VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceInvocationMaskFeaturesHUAWEI.html">VkPhysicalDeviceInvocationMaskFeaturesHUAWEI</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -5442,9 +5526,6 @@
     <a class="nav-link" href="VkPhysicalDevicePortabilitySubsetPropertiesKHR.html">VkPhysicalDevicePortabilitySubsetPropertiesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="VkPhysicalDevicePresentationPropertiesOHOS.html">VkPhysicalDevicePresentationPropertiesOHOS</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDevicePresentBarrierFeaturesNV.html">VkPhysicalDevicePresentBarrierFeaturesNV</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -5503,6 +5584,12 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceProvokingVertexPropertiesEXT.html">VkPhysicalDeviceProvokingVertexPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDevicePushConstantBankFeaturesNV.html">VkPhysicalDevicePushConstantBankFeaturesNV</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDevicePushConstantBankPropertiesNV.html">VkPhysicalDevicePushConstantBankPropertiesNV</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDevicePushDescriptorProperties.html">VkPhysicalDevicePushDescriptorProperties</a>
@@ -5727,6 +5814,12 @@
     <a class="nav-link" href="VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.html">VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceShaderLongVectorFeaturesEXT.html">VkPhysicalDeviceShaderLongVectorFeaturesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceShaderLongVectorPropertiesEXT.html">VkPhysicalDeviceShaderLongVectorPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR.html">VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -5761,6 +5854,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures.html">VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT.html">VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceShaderSubgroupRotateFeatures.html">VkPhysicalDeviceShaderSubgroupRotateFeatures</a>
@@ -5857,6 +5953,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceTexelBufferAlignmentProperties.html">VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT.html">VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceTextureCompressionASTCHDRFeatures.html">VkPhysicalDeviceTextureCompressionASTCHDRFeatures</a>
@@ -6312,6 +6411,9 @@
     <a class="nav-link" href="VkProtectedSubmitInfo.html">VkProtectedSubmitInfo</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPushConstantBankInfoNV.html">VkPushConstantBankInfoNV</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPushConstantRange.html">VkPushConstantRange</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -6319,6 +6421,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPushConstantsInfo.html">VkPushConstantsInfoKHR</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPushDataInfoEXT.html">VkPushDataInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPushDescriptorSetInfo.html">VkPushDescriptorSetInfo</a>
@@ -6563,6 +6668,12 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkResolveImageModeInfoKHR.html">VkResolveImageModeInfoKHR</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkResourceDescriptorDataEXT.html">VkResourceDescriptorDataEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkResourceDescriptorInfoEXT.html">VkResourceDescriptorInfoEXT</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -6592,6 +6703,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSamplerCustomBorderColorCreateInfoEXT.html">VkSamplerCustomBorderColorCreateInfoEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkSamplerCustomBorderColorIndexCreateInfoEXT.html">VkSamplerCustomBorderColorIndexCreateInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSamplerReductionModeCreateInfo.html">VkSamplerReductionModeCreateInfo</a>
@@ -6679,6 +6793,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkShaderCreateInfoEXT.html">VkShaderCreateInfoEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkShaderDescriptorSetAndBindingMappingInfoEXT.html">VkShaderDescriptorSetAndBindingMappingInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkShaderModuleCreateInfo.html">VkShaderModuleCreateInfo</a>
@@ -6837,6 +6954,9 @@
     <a class="nav-link" href="VkSubresourceLayout2.html">VkSubresourceLayout2KHR</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkSubsampledImageFormatPropertiesEXT.html">VkSubsampledImageFormatPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSurfaceCapabilities2EXT.html">VkSurfaceCapabilities2EXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -6904,9 +7024,6 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSwapchainDisplayNativeHdrCreateInfoAMD.html">VkSwapchainDisplayNativeHdrCreateInfoAMD</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="VkSwapchainImageCreateInfoOHOS.html">VkSwapchainImageCreateInfoOHOS</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSwapchainLatencyCreateInfoNV.html">VkSwapchainLatencyCreateInfoNV</a>
@@ -6982,6 +7099,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkTensorViewCreateInfoARM.html">VkTensorViewCreateInfoARM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkTexelBufferDescriptorInfoEXT.html">VkTexelBufferDescriptorInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkTextureLODGatherFormatPropertiesAMD.html">VkTextureLODGatherFormatPropertiesAMD</a>
@@ -7729,6 +7849,9 @@
     <a class="nav-link" href="VkDescriptorBindingFlagBits.html">VkDescriptorBindingFlagBitsEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceEXT.html">VkDescriptorMappingSourceEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkDescriptorPoolCreateFlagBits.html">VkDescriptorPoolCreateFlagBits</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -8464,6 +8587,9 @@
     <a class="nav-link" href="VkSparseMemoryBindFlagBits.html">VkSparseMemoryBindFlagBits</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkSpirvResourceTypeFlagBitsEXT.html">VkSpirvResourceTypeFlagBitsEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkStencilFaceFlagBits.html">VkStencilFaceFlagBits</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -8498,9 +8624,6 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSwapchainCreateFlagBitsKHR.html">VkSwapchainCreateFlagBitsKHR</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="VkSwapchainImageUsageFlagBitsOHOS.html">VkSwapchainImageUsageFlagBitsOHOS</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSystemAllocationScope.html">VkSystemAllocationScope</a>
@@ -9353,6 +9476,9 @@
     <a class="nav-link" href="VkSparseMemoryBindFlags.html">VkSparseMemoryBindFlags</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkSpirvResourceTypeFlagsEXT.html">VkSpirvResourceTypeFlagsEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkStencilFaceFlags.html">VkStencilFaceFlags</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -9381,9 +9507,6 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSwapchainCreateFlagsKHR.html">VkSwapchainCreateFlagsKHR</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="VkSwapchainImageUsageFlagsOHOS.html">VkSwapchainImageUsageFlagsOHOS</a>
   </li>
 </ul>
   </li>
@@ -9979,9 +10102,6 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">O</span>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="OHBufferHandle.html">OHBufferHandle</a>
-  </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="OHNativeWindow.html">OHNativeWindow</a>
   </li>
@@ -10687,6 +10807,9 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="RayTminKHR.html">RayTminKHR</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ResourceHeapEXT.html">ResourceHeapEXT</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -10701,6 +10824,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="SamplePosition.html">SamplePosition</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="SamplerHeapEXT.html">SamplerHeapEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="ShaderIndexAMDX.html">ShaderIndexAMDX</a>
@@ -11065,6 +11191,9 @@
     <a class="nav-link" href="VK_EXT_descriptor_buffer.html">VK_EXT_descriptor_buffer</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_EXT_descriptor_heap.html">VK_EXT_descriptor_heap</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_EXT_descriptor_indexing.html">VK_EXT_descriptor_indexing</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -11335,6 +11464,9 @@
     <a class="nav-link" href="VK_EXT_shader_image_atomic_int64.html">VK_EXT_shader_image_atomic_int64</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_EXT_shader_long_vector.html">VK_EXT_shader_long_vector</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_EXT_shader_module_identifier.html">VK_EXT_shader_module_identifier</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -11348,6 +11480,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_EXT_shader_subgroup_ballot.html">VK_EXT_shader_subgroup_ballot</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_EXT_shader_subgroup_partitioned.html">VK_EXT_shader_subgroup_partitioned</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_EXT_shader_subgroup_vote.html">VK_EXT_shader_subgroup_vote</a>
@@ -11378,6 +11513,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_EXT_texel_buffer_alignment.html">VK_EXT_texel_buffer_alignment</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_EXT_texture_compression_astc_3d.html">VK_EXT_texture_compression_astc_3d</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_EXT_texture_compression_astc_hdr.html">VK_EXT_texture_compression_astc_hdr</a>
@@ -11651,6 +11789,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_KHR_index_type_uint8.html">VK_KHR_index_type_uint8</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_KHR_internally_synchronized_queues.html">VK_KHR_internally_synchronized_queues</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_KHR_line_rasterization.html">VK_KHR_line_rasterization</a>
@@ -12109,6 +12250,9 @@
     <a class="nav-link" href="VK_NV_present_metering.html">VK_NV_present_metering</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_NV_push_constant_bank.html">VK_NV_push_constant_bank</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_NV_raw_access_chains.html">VK_NV_raw_access_chains</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12167,9 +12311,6 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_OHOS_external_memory.html">VK_OHOS_external_memory</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="VK_OHOS_native_buffer.html">VK_OHOS_native_buffer</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_OHOS_surface.html">VK_OHOS_surface</a>
@@ -12551,7 +12692,7 @@ underlying <code>Vk*FlagBits</code> type, breaking the ABI.</p>
 <h2 id="_see_also"><a class="anchor" href="#_see_also"></a>See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="VK_VERSION_1_0.html" class="xref page">VK_VERSION_1_0</a>, <a href="VkAccelerationStructureCreateFlagsKHR.html" class="xref page">VkAccelerationStructureCreateFlagsKHR</a>, <a href="VkAccelerationStructureMotionInfoFlagsNV.html" class="xref page">VkAccelerationStructureMotionInfoFlagsNV</a>, <a href="VkAccelerationStructureMotionInstanceFlagsNV.html" class="xref page">VkAccelerationStructureMotionInstanceFlagsNV</a>, <a href="VkAccessFlags.html" class="xref page">VkAccessFlags</a>, <a href="VkAcquireProfilingLockFlagsKHR.html" class="xref page">VkAcquireProfilingLockFlagsKHR</a>, <a href="VkAddressCopyFlagsKHR.html" class="xref page">VkAddressCopyFlagsKHR</a>, <a href="VkAndroidSurfaceCreateFlagsKHR.html" class="xref page">VkAndroidSurfaceCreateFlagsKHR</a>, <a href="VkAttachmentDescriptionFlags.html" class="xref page">VkAttachmentDescriptionFlags</a>, <a href="VkBufferCreateFlags.html" class="xref page">VkBufferCreateFlags</a>, <a href="VkBufferUsageFlags.html" class="xref page">VkBufferUsageFlags</a>, <a href="VkBufferViewCreateFlags.html" class="xref page">VkBufferViewCreateFlags</a>, <a href="VkBuildAccelerationStructureFlagsKHR.html" class="xref page">VkBuildAccelerationStructureFlagsKHR</a>, <a href="VkBuildMicromapFlagsEXT.html" class="xref page">VkBuildMicromapFlagsEXT</a>, <a href="VkClusterAccelerationStructureAddressResolutionFlagsNV.html" class="xref page">VkClusterAccelerationStructureAddressResolutionFlagsNV</a>, <a href="VkClusterAccelerationStructureClusterFlagsNV.html" class="xref page">VkClusterAccelerationStructureClusterFlagsNV</a>, <a href="VkClusterAccelerationStructureGeometryFlagsNV.html" class="xref page">VkClusterAccelerationStructureGeometryFlagsNV</a>, <a href="VkClusterAccelerationStructureIndexFormatFlagsNV.html" class="xref page">VkClusterAccelerationStructureIndexFormatFlagsNV</a>, <a href="VkColorComponentFlags.html" class="xref page">VkColorComponentFlags</a>, <a href="VkCommandBufferResetFlags.html" class="xref page">VkCommandBufferResetFlags</a>, <a href="VkCommandBufferUsageFlags.html" class="xref page">VkCommandBufferUsageFlags</a>, <a href="VkCommandPoolCreateFlags.html" class="xref page">VkCommandPoolCreateFlags</a>, <a href="VkCommandPoolResetFlags.html" class="xref page">VkCommandPoolResetFlags</a>, <a href="VkCommandPoolTrimFlags.html" class="xref page">VkCommandPoolTrimFlags</a>, <a href="VkCompositeAlphaFlagsKHR.html" class="xref page">VkCompositeAlphaFlagsKHR</a>, <a href="VkConditionalRenderingFlagsEXT.html" class="xref page">VkConditionalRenderingFlagsEXT</a>, <a href="VkCullModeFlags.html" class="xref page">VkCullModeFlags</a>, <a href="VkDebugReportFlagsEXT.html" class="xref page">VkDebugReportFlagsEXT</a>, <a href="VkDebugUtilsMessageSeverityFlagsEXT.html" class="xref page">VkDebugUtilsMessageSeverityFlagsEXT</a>, <a href="VkDebugUtilsMessageTypeFlagsEXT.html" class="xref page">VkDebugUtilsMessageTypeFlagsEXT</a>, <a href="VkDebugUtilsMessengerCallbackDataFlagsEXT.html" class="xref page">VkDebugUtilsMessengerCallbackDataFlagsEXT</a>, <a href="VkDebugUtilsMessengerCreateFlagsEXT.html" class="xref page">VkDebugUtilsMessengerCreateFlagsEXT</a>, <a href="VkDependencyFlags.html" class="xref page">VkDependencyFlags</a>, <a href="VkDescriptorBindingFlags.html" class="xref page">VkDescriptorBindingFlags</a>, <a href="VkDescriptorPoolCreateFlags.html" class="xref page">VkDescriptorPoolCreateFlags</a>, <a href="VkDescriptorPoolResetFlags.html" class="xref page">VkDescriptorPoolResetFlags</a>, <a href="VkDescriptorSetLayoutCreateFlags.html" class="xref page">VkDescriptorSetLayoutCreateFlags</a>, <a href="VkDescriptorUpdateTemplateCreateFlags.html" class="xref page">VkDescriptorUpdateTemplateCreateFlags</a>, <a href="VkDeviceAddressBindingFlagsEXT.html" class="xref page">VkDeviceAddressBindingFlagsEXT</a>, <a href="VkDeviceCreateFlags.html" class="xref page">VkDeviceCreateFlags</a>, <a href="VkDeviceDiagnosticsConfigFlagsNV.html" class="xref page">VkDeviceDiagnosticsConfigFlagsNV</a>, <a href="VkDeviceGroupPresentModeFlagsKHR.html" class="xref page">VkDeviceGroupPresentModeFlagsKHR</a>, <a href="VkDeviceMemoryReportFlagsEXT.html" class="xref page">VkDeviceMemoryReportFlagsEXT</a>, <a href="VkDeviceQueueCreateFlags.html" class="xref page">VkDeviceQueueCreateFlags</a>, <a href="VkDirectDriverLoadingFlagsLUNARG.html" class="xref page">VkDirectDriverLoadingFlagsLUNARG</a>, <a href="VkDirectFBSurfaceCreateFlagsEXT.html" class="xref page">VkDirectFBSurfaceCreateFlagsEXT</a>, <a href="VkDisplayModeCreateFlagsKHR.html" class="xref page">VkDisplayModeCreateFlagsKHR</a>, <a href="VkDisplayPlaneAlphaFlagsKHR.html" class="xref page">VkDisplayPlaneAlphaFlagsKHR</a>, <a href="VkDisplaySurfaceCreateFlagsKHR.html" class="xref page">VkDisplaySurfaceCreateFlagsKHR</a>, <a href="VkEventCreateFlags.html" class="xref page">VkEventCreateFlags</a>, <a href="VkExportMetalObjectTypeFlagsEXT.html" class="xref page">VkExportMetalObjectTypeFlagsEXT</a>, <a href="VkExternalFenceFeatureFlags.html" class="xref page">VkExternalFenceFeatureFlags</a>, <a href="VkExternalFenceHandleTypeFlags.html" class="xref page">VkExternalFenceHandleTypeFlags</a>, <a href="VkExternalMemoryFeatureFlags.html" class="xref page">VkExternalMemoryFeatureFlags</a>, <a href="VkExternalMemoryFeatureFlagsNV.html" class="xref page">VkExternalMemoryFeatureFlagsNV</a>, <a href="VkExternalMemoryHandleTypeFlags.html" class="xref page">VkExternalMemoryHandleTypeFlags</a>, <a href="VkExternalMemoryHandleTypeFlagsNV.html" class="xref page">VkExternalMemoryHandleTypeFlagsNV</a>, <a href="VkExternalSemaphoreFeatureFlags.html" class="xref page">VkExternalSemaphoreFeatureFlags</a>, <a href="VkExternalSemaphoreHandleTypeFlags.html" class="xref page">VkExternalSemaphoreHandleTypeFlags</a>, <a href="VkFenceCreateFlags.html" class="xref page">VkFenceCreateFlags</a>, <a href="VkFenceImportFlags.html" class="xref page">VkFenceImportFlags</a>, <code>VkFlags64</code>, <a href="VkFormatFeatureFlags.html" class="xref page">VkFormatFeatureFlags</a>, <a href="VkFrameBoundaryFlagsEXT.html" class="xref page">VkFrameBoundaryFlagsEXT</a>, <a href="VkFramebufferCreateFlags.html" class="xref page">VkFramebufferCreateFlags</a>, <a href="VkGeometryFlagsKHR.html" class="xref page">VkGeometryFlagsKHR</a>, <a href="VkGeometryInstanceFlagsKHR.html" class="xref page">VkGeometryInstanceFlagsKHR</a>, <a href="VkGraphicsPipelineLibraryFlagsEXT.html" class="xref page">VkGraphicsPipelineLibraryFlagsEXT</a>, <a href="VkHeadlessSurfaceCreateFlagsEXT.html" class="xref page">VkHeadlessSurfaceCreateFlagsEXT</a>, <a href="VkHostImageCopyFlags.html" class="xref page">VkHostImageCopyFlags</a>, <a href="VkIOSSurfaceCreateFlagsMVK.html" class="xref page">VkIOSSurfaceCreateFlagsMVK</a>, <a href="VkImageAspectFlags.html" class="xref page">VkImageAspectFlags</a>, <a href="VkImageCompressionFixedRateFlagsEXT.html" class="xref page">VkImageCompressionFixedRateFlagsEXT</a>, <a href="VkImageCompressionFlagsEXT.html" class="xref page">VkImageCompressionFlagsEXT</a>, <a href="VkImageConstraintsInfoFlagsFUCHSIA.html" class="xref page">VkImageConstraintsInfoFlagsFUCHSIA</a>, <a href="VkImageCreateFlags.html" class="xref page">VkImageCreateFlags</a>, <a href="VkImageFormatConstraintsFlagsFUCHSIA.html" class="xref page">VkImageFormatConstraintsFlagsFUCHSIA</a>, <a href="VkImagePipeSurfaceCreateFlagsFUCHSIA.html" class="xref page">VkImagePipeSurfaceCreateFlagsFUCHSIA</a>, <a href="VkImageUsageFlags.html" class="xref page">VkImageUsageFlags</a>, <a href="VkImageViewCreateFlags.html" class="xref page">VkImageViewCreateFlags</a>, <a href="VkIndirectCommandsInputModeFlagsEXT.html" class="xref page">VkIndirectCommandsInputModeFlagsEXT</a>, <a href="VkIndirectCommandsLayoutUsageFlagsEXT.html" class="xref page">VkIndirectCommandsLayoutUsageFlagsEXT</a>, <a href="VkIndirectCommandsLayoutUsageFlagsNV.html" class="xref page">VkIndirectCommandsLayoutUsageFlagsNV</a>, <a href="VkIndirectStateFlagsNV.html" class="xref page">VkIndirectStateFlagsNV</a>, <a href="VkInstanceCreateFlags.html" class="xref page">VkInstanceCreateFlags</a>, <a href="VkMacOSSurfaceCreateFlagsMVK.html" class="xref page">VkMacOSSurfaceCreateFlagsMVK</a>, <a href="VkMemoryAllocateFlags.html" class="xref page">VkMemoryAllocateFlags</a>, <a href="VkMemoryHeapFlags.html" class="xref page">VkMemoryHeapFlags</a>, <a href="VkMemoryMapFlags.html" class="xref page">VkMemoryMapFlags</a>, <a href="VkMemoryPropertyFlags.html" class="xref page">VkMemoryPropertyFlags</a>, <a href="VkMemoryUnmapFlags.html" class="xref page">VkMemoryUnmapFlags</a>, <a href="VkMetalSurfaceCreateFlagsEXT.html" class="xref page">VkMetalSurfaceCreateFlagsEXT</a>, <a href="VkMicromapCreateFlagsEXT.html" class="xref page">VkMicromapCreateFlagsEXT</a>, <a href="VkOpticalFlowExecuteFlagsNV.html" class="xref page">VkOpticalFlowExecuteFlagsNV</a>, <a href="VkOpticalFlowGridSizeFlagsNV.html" class="xref page">VkOpticalFlowGridSizeFlagsNV</a>, <a href="VkOpticalFlowSessionCreateFlagsNV.html" class="xref page">VkOpticalFlowSessionCreateFlagsNV</a>, <a href="VkOpticalFlowUsageFlagsNV.html" class="xref page">VkOpticalFlowUsageFlagsNV</a>, <a href="VkPartitionedAccelerationStructureInstanceFlagsNV.html" class="xref page">VkPartitionedAccelerationStructureInstanceFlagsNV</a>, <a href="VkPastPresentationTimingFlagsEXT.html" class="xref page">VkPastPresentationTimingFlagsEXT</a>, <a href="VkPeerMemoryFeatureFlags.html" class="xref page">VkPeerMemoryFeatureFlags</a>, <a href="VkPerformanceCounterDescriptionFlagsARM.html" class="xref page">VkPerformanceCounterDescriptionFlagsARM</a>, <a href="VkPerformanceCounterDescriptionFlagsKHR.html" class="xref page">VkPerformanceCounterDescriptionFlagsKHR</a>, <a href="VkPipelineCacheCreateFlags.html" class="xref page">VkPipelineCacheCreateFlags</a>, <a href="VkPipelineColorBlendStateCreateFlags.html" class="xref page">VkPipelineColorBlendStateCreateFlags</a>, <a href="VkPipelineCompilerControlFlagsAMD.html" class="xref page">VkPipelineCompilerControlFlagsAMD</a>, <a href="VkPipelineCoverageModulationStateCreateFlagsNV.html" class="xref page">VkPipelineCoverageModulationStateCreateFlagsNV</a>, <a href="VkPipelineCoverageReductionStateCreateFlagsNV.html" class="xref page">VkPipelineCoverageReductionStateCreateFlagsNV</a>, <a href="VkPipelineCoverageToColorStateCreateFlagsNV.html" class="xref page">VkPipelineCoverageToColorStateCreateFlagsNV</a>, <a href="VkPipelineCreateFlags.html" class="xref page">VkPipelineCreateFlags</a>, <a href="VkPipelineCreationFeedbackFlags.html" class="xref page">VkPipelineCreationFeedbackFlags</a>, <a href="VkPipelineDepthStencilStateCreateFlags.html" class="xref page">VkPipelineDepthStencilStateCreateFlags</a>, <a href="VkPipelineDiscardRectangleStateCreateFlagsEXT.html" class="xref page">VkPipelineDiscardRectangleStateCreateFlagsEXT</a>, <a href="VkPipelineDynamicStateCreateFlags.html" class="xref page">VkPipelineDynamicStateCreateFlags</a>, <a href="VkPipelineInputAssemblyStateCreateFlags.html" class="xref page">VkPipelineInputAssemblyStateCreateFlags</a>, <a href="VkPipelineLayoutCreateFlags.html" class="xref page">VkPipelineLayoutCreateFlags</a>, <a href="VkPipelineMultisampleStateCreateFlags.html" class="xref page">VkPipelineMultisampleStateCreateFlags</a>, <a href="VkPipelineRasterizationConservativeStateCreateFlagsEXT.html" class="xref page">VkPipelineRasterizationConservativeStateCreateFlagsEXT</a>, <a href="VkPipelineRasterizationDepthClipStateCreateFlagsEXT.html" class="xref page">VkPipelineRasterizationDepthClipStateCreateFlagsEXT</a>, <a href="VkPipelineRasterizationStateCreateFlags.html" class="xref page">VkPipelineRasterizationStateCreateFlags</a>, <a href="VkPipelineRasterizationStateStreamCreateFlagsEXT.html" class="xref page">VkPipelineRasterizationStateStreamCreateFlagsEXT</a>, <a href="VkPipelineShaderStageCreateFlags.html" class="xref page">VkPipelineShaderStageCreateFlags</a>, <a href="VkPipelineStageFlags.html" class="xref page">VkPipelineStageFlags</a>, <a href="VkPipelineTessellationStateCreateFlags.html" class="xref page">VkPipelineTessellationStateCreateFlags</a>, <a href="VkPipelineVertexInputStateCreateFlags.html" class="xref page">VkPipelineVertexInputStateCreateFlags</a>, <a href="VkPipelineViewportStateCreateFlags.html" class="xref page">VkPipelineViewportStateCreateFlags</a>, <a href="VkPipelineViewportSwizzleStateCreateFlagsNV.html" class="xref page">VkPipelineViewportSwizzleStateCreateFlagsNV</a>, <a href="VkPresentGravityFlagsKHR.html" class="xref page">VkPresentGravityFlagsKHR</a>, <a href="VkPresentScalingFlagsKHR.html" class="xref page">VkPresentScalingFlagsKHR</a>, <a href="VkPresentStageFlagsEXT.html" class="xref page">VkPresentStageFlagsEXT</a>, <a href="VkPresentTimingInfoFlagsEXT.html" class="xref page">VkPresentTimingInfoFlagsEXT</a>, <a href="VkPrivateDataSlotCreateFlags.html" class="xref page">VkPrivateDataSlotCreateFlags</a>, <a href="VkQueryControlFlags.html" class="xref page">VkQueryControlFlags</a>, <a href="VkQueryPipelineStatisticFlags.html" class="xref page">VkQueryPipelineStatisticFlags</a>, <a href="VkQueryPoolCreateFlags.html" class="xref page">VkQueryPoolCreateFlags</a>, <a href="VkQueryResultFlags.html" class="xref page">VkQueryResultFlags</a>, <a href="VkQueueFlags.html" class="xref page">VkQueueFlags</a>, <a href="VkRenderPassCreateFlags.html" class="xref page">VkRenderPassCreateFlags</a>, <a href="VkRenderingAttachmentFlagsKHR.html" class="xref page">VkRenderingAttachmentFlagsKHR</a>, <a href="VkRenderingFlags.html" class="xref page">VkRenderingFlags</a>, <a href="VkResolveImageFlagsKHR.html" class="xref page">VkResolveImageFlagsKHR</a>, <a href="VkResolveModeFlags.html" class="xref page">VkResolveModeFlags</a>, <a href="VkSampleCountFlags.html" class="xref page">VkSampleCountFlags</a>, <a href="VkSamplerCreateFlags.html" class="xref page">VkSamplerCreateFlags</a>, <a href="VkScreenSurfaceCreateFlagsQNX.html" class="xref page">VkScreenSurfaceCreateFlagsQNX</a>, <a href="VkSemaphoreCreateFlags.html" class="xref page">VkSemaphoreCreateFlags</a>, <a href="VkSemaphoreImportFlags.html" class="xref page">VkSemaphoreImportFlags</a>, <a href="VkSemaphoreWaitFlags.html" class="xref page">VkSemaphoreWaitFlags</a>, <a href="VkShaderCorePropertiesFlagsAMD.html" class="xref page">VkShaderCorePropertiesFlagsAMD</a>, <a href="VkShaderCreateFlagsEXT.html" class="xref page">VkShaderCreateFlagsEXT</a>, <a href="VkShaderModuleCreateFlags.html" class="xref page">VkShaderModuleCreateFlags</a>, <a href="VkShaderStageFlags.html" class="xref page">VkShaderStageFlags</a>, <a href="VkSparseImageFormatFlags.html" class="xref page">VkSparseImageFormatFlags</a>, <a href="VkSparseMemoryBindFlags.html" class="xref page">VkSparseMemoryBindFlags</a>, <a href="VkStencilFaceFlags.html" class="xref page">VkStencilFaceFlags</a>, <a href="VkStreamDescriptorSurfaceCreateFlagsGGP.html" class="xref page">VkStreamDescriptorSurfaceCreateFlagsGGP</a>, <a href="VkSubgroupFeatureFlags.html" class="xref page">VkSubgroupFeatureFlags</a>, <a href="VkSubmitFlags.html" class="xref page">VkSubmitFlags</a>, <a href="VkSubpassDescriptionFlags.html" class="xref page">VkSubpassDescriptionFlags</a>, <a href="VkSurfaceCounterFlagsEXT.html" class="xref page">VkSurfaceCounterFlagsEXT</a>, <a href="VkSurfaceCreateFlagsOHOS.html" class="xref page">VkSurfaceCreateFlagsOHOS</a>, <a href="VkSurfaceTransformFlagsKHR.html" class="xref page">VkSurfaceTransformFlagsKHR</a>, <a href="VkSwapchainCreateFlagsKHR.html" class="xref page">VkSwapchainCreateFlagsKHR</a>, <a href="VkSwapchainImageUsageFlagsOHOS.html" class="xref page">VkSwapchainImageUsageFlagsOHOS</a>, <a href="VkTileShadingRenderPassFlagsQCOM.html" class="xref page">VkTileShadingRenderPassFlagsQCOM</a>, <a href="VkToolPurposeFlags.html" class="xref page">VkToolPurposeFlags</a>, <a href="VkValidationCacheCreateFlagsEXT.html" class="xref page">VkValidationCacheCreateFlagsEXT</a>, <a href="VkViSurfaceCreateFlagsNN.html" class="xref page">VkViSurfaceCreateFlagsNN</a>, <a href="VkVideoBeginCodingFlagsKHR.html" class="xref page">VkVideoBeginCodingFlagsKHR</a>, <a href="VkVideoCapabilityFlagsKHR.html" class="xref page">VkVideoCapabilityFlagsKHR</a>, <a href="VkVideoChromaSubsamplingFlagsKHR.html" class="xref page">VkVideoChromaSubsamplingFlagsKHR</a>, <a href="VkVideoCodecOperationFlagsKHR.html" class="xref page">VkVideoCodecOperationFlagsKHR</a>, <a href="VkVideoCodingControlFlagsKHR.html" class="xref page">VkVideoCodingControlFlagsKHR</a>, <a href="VkVideoComponentBitDepthFlagsKHR.html" class="xref page">VkVideoComponentBitDepthFlagsKHR</a>, <a href="VkVideoDecodeCapabilityFlagsKHR.html" class="xref page">VkVideoDecodeCapabilityFlagsKHR</a>, <a href="VkVideoDecodeFlagsKHR.html" class="xref page">VkVideoDecodeFlagsKHR</a>, <a href="VkVideoDecodeH264PictureLayoutFlagsKHR.html" class="xref page">VkVideoDecodeH264PictureLayoutFlagsKHR</a>, <a href="VkVideoDecodeUsageFlagsKHR.html" class="xref page">VkVideoDecodeUsageFlagsKHR</a>, <a href="VkVideoEncodeAV1CapabilityFlagsKHR.html" class="xref page">VkVideoEncodeAV1CapabilityFlagsKHR</a>, <a href="VkVideoEncodeAV1RateControlFlagsKHR.html" class="xref page">VkVideoEncodeAV1RateControlFlagsKHR</a>, <a href="VkVideoEncodeAV1StdFlagsKHR.html" class="xref page">VkVideoEncodeAV1StdFlagsKHR</a>, <a href="VkVideoEncodeAV1SuperblockSizeFlagsKHR.html" class="xref page">VkVideoEncodeAV1SuperblockSizeFlagsKHR</a>, <a href="VkVideoEncodeCapabilityFlagsKHR.html" class="xref page">VkVideoEncodeCapabilityFlagsKHR</a>, <a href="VkVideoEncodeContentFlagsKHR.html" class="xref page">VkVideoEncodeContentFlagsKHR</a>, <a href="VkVideoEncodeFeedbackFlagsKHR.html" class="xref page">VkVideoEncodeFeedbackFlagsKHR</a>, <a href="VkVideoEncodeFlagsKHR.html" class="xref page">VkVideoEncodeFlagsKHR</a>, <a href="VkVideoEncodeH264CapabilityFlagsKHR.html" class="xref page">VkVideoEncodeH264CapabilityFlagsKHR</a>, <a href="VkVideoEncodeH264RateControlFlagsKHR.html" class="xref page">VkVideoEncodeH264RateControlFlagsKHR</a>, <a href="VkVideoEncodeH264StdFlagsKHR.html" class="xref page">VkVideoEncodeH264StdFlagsKHR</a>, <a href="VkVideoEncodeH265CapabilityFlagsKHR.html" class="xref page">VkVideoEncodeH265CapabilityFlagsKHR</a>, <a href="VkVideoEncodeH265CtbSizeFlagsKHR.html" class="xref page">VkVideoEncodeH265CtbSizeFlagsKHR</a>, <a href="VkVideoEncodeH265RateControlFlagsKHR.html" class="xref page">VkVideoEncodeH265RateControlFlagsKHR</a>, <a href="VkVideoEncodeH265StdFlagsKHR.html" class="xref page">VkVideoEncodeH265StdFlagsKHR</a>, <a href="VkVideoEncodeH265TransformBlockSizeFlagsKHR.html" class="xref page">VkVideoEncodeH265TransformBlockSizeFlagsKHR</a>, <a href="VkVideoEncodeIntraRefreshModeFlagsKHR.html" class="xref page">VkVideoEncodeIntraRefreshModeFlagsKHR</a>, <a href="VkVideoEncodeRateControlFlagsKHR.html" class="xref page">VkVideoEncodeRateControlFlagsKHR</a>, <a href="VkVideoEncodeRateControlModeFlagsKHR.html" class="xref page">VkVideoEncodeRateControlModeFlagsKHR</a>, <a href="VkVideoEncodeRgbChromaOffsetFlagsVALVE.html" class="xref page">VkVideoEncodeRgbChromaOffsetFlagsVALVE</a>, <a href="VkVideoEncodeRgbModelConversionFlagsVALVE.html" class="xref page">VkVideoEncodeRgbModelConversionFlagsVALVE</a>, <a href="VkVideoEncodeRgbRangeCompressionFlagsVALVE.html" class="xref page">VkVideoEncodeRgbRangeCompressionFlagsVALVE</a>, <a href="VkVideoEncodeUsageFlagsKHR.html" class="xref page">VkVideoEncodeUsageFlagsKHR</a>, <a href="VkVideoEndCodingFlagsKHR.html" class="xref page">VkVideoEndCodingFlagsKHR</a>, <a href="VkVideoSessionCreateFlagsKHR.html" class="xref page">VkVideoSessionCreateFlagsKHR</a>, <a href="VkVideoSessionParametersCreateFlagsKHR.html" class="xref page">VkVideoSessionParametersCreateFlagsKHR</a>, <a href="VkWaylandSurfaceCreateFlagsKHR.html" class="xref page">VkWaylandSurfaceCreateFlagsKHR</a>, <a href="VkWin32SurfaceCreateFlagsKHR.html" class="xref page">VkWin32SurfaceCreateFlagsKHR</a>, <a href="VkXcbSurfaceCreateFlagsKHR.html" class="xref page">VkXcbSurfaceCreateFlagsKHR</a>, <a href="VkXlibSurfaceCreateFlagsKHR.html" class="xref page">VkXlibSurfaceCreateFlagsKHR</a></p>
+<p><a href="VK_VERSION_1_0.html" class="xref page">VK_VERSION_1_0</a>, <a href="VkAccelerationStructureCreateFlagsKHR.html" class="xref page">VkAccelerationStructureCreateFlagsKHR</a>, <a href="VkAccelerationStructureMotionInfoFlagsNV.html" class="xref page">VkAccelerationStructureMotionInfoFlagsNV</a>, <a href="VkAccelerationStructureMotionInstanceFlagsNV.html" class="xref page">VkAccelerationStructureMotionInstanceFlagsNV</a>, <a href="VkAccessFlags.html" class="xref page">VkAccessFlags</a>, <a href="VkAcquireProfilingLockFlagsKHR.html" class="xref page">VkAcquireProfilingLockFlagsKHR</a>, <a href="VkAddressCopyFlagsKHR.html" class="xref page">VkAddressCopyFlagsKHR</a>, <a href="VkAndroidSurfaceCreateFlagsKHR.html" class="xref page">VkAndroidSurfaceCreateFlagsKHR</a>, <a href="VkAttachmentDescriptionFlags.html" class="xref page">VkAttachmentDescriptionFlags</a>, <a href="VkBufferCreateFlags.html" class="xref page">VkBufferCreateFlags</a>, <a href="VkBufferUsageFlags.html" class="xref page">VkBufferUsageFlags</a>, <a href="VkBufferViewCreateFlags.html" class="xref page">VkBufferViewCreateFlags</a>, <a href="VkBuildAccelerationStructureFlagsKHR.html" class="xref page">VkBuildAccelerationStructureFlagsKHR</a>, <a href="VkBuildMicromapFlagsEXT.html" class="xref page">VkBuildMicromapFlagsEXT</a>, <a href="VkClusterAccelerationStructureAddressResolutionFlagsNV.html" class="xref page">VkClusterAccelerationStructureAddressResolutionFlagsNV</a>, <a href="VkClusterAccelerationStructureClusterFlagsNV.html" class="xref page">VkClusterAccelerationStructureClusterFlagsNV</a>, <a href="VkClusterAccelerationStructureGeometryFlagsNV.html" class="xref page">VkClusterAccelerationStructureGeometryFlagsNV</a>, <a href="VkClusterAccelerationStructureIndexFormatFlagsNV.html" class="xref page">VkClusterAccelerationStructureIndexFormatFlagsNV</a>, <a href="VkColorComponentFlags.html" class="xref page">VkColorComponentFlags</a>, <a href="VkCommandBufferResetFlags.html" class="xref page">VkCommandBufferResetFlags</a>, <a href="VkCommandBufferUsageFlags.html" class="xref page">VkCommandBufferUsageFlags</a>, <a href="VkCommandPoolCreateFlags.html" class="xref page">VkCommandPoolCreateFlags</a>, <a href="VkCommandPoolResetFlags.html" class="xref page">VkCommandPoolResetFlags</a>, <a href="VkCommandPoolTrimFlags.html" class="xref page">VkCommandPoolTrimFlags</a>, <a href="VkCompositeAlphaFlagsKHR.html" class="xref page">VkCompositeAlphaFlagsKHR</a>, <a href="VkConditionalRenderingFlagsEXT.html" class="xref page">VkConditionalRenderingFlagsEXT</a>, <a href="VkCullModeFlags.html" class="xref page">VkCullModeFlags</a>, <a href="VkDebugReportFlagsEXT.html" class="xref page">VkDebugReportFlagsEXT</a>, <a href="VkDebugUtilsMessageSeverityFlagsEXT.html" class="xref page">VkDebugUtilsMessageSeverityFlagsEXT</a>, <a href="VkDebugUtilsMessageTypeFlagsEXT.html" class="xref page">VkDebugUtilsMessageTypeFlagsEXT</a>, <a href="VkDebugUtilsMessengerCallbackDataFlagsEXT.html" class="xref page">VkDebugUtilsMessengerCallbackDataFlagsEXT</a>, <a href="VkDebugUtilsMessengerCreateFlagsEXT.html" class="xref page">VkDebugUtilsMessengerCreateFlagsEXT</a>, <a href="VkDependencyFlags.html" class="xref page">VkDependencyFlags</a>, <a href="VkDescriptorBindingFlags.html" class="xref page">VkDescriptorBindingFlags</a>, <a href="VkDescriptorPoolCreateFlags.html" class="xref page">VkDescriptorPoolCreateFlags</a>, <a href="VkDescriptorPoolResetFlags.html" class="xref page">VkDescriptorPoolResetFlags</a>, <a href="VkDescriptorSetLayoutCreateFlags.html" class="xref page">VkDescriptorSetLayoutCreateFlags</a>, <a href="VkDescriptorUpdateTemplateCreateFlags.html" class="xref page">VkDescriptorUpdateTemplateCreateFlags</a>, <a href="VkDeviceAddressBindingFlagsEXT.html" class="xref page">VkDeviceAddressBindingFlagsEXT</a>, <a href="VkDeviceCreateFlags.html" class="xref page">VkDeviceCreateFlags</a>, <a href="VkDeviceDiagnosticsConfigFlagsNV.html" class="xref page">VkDeviceDiagnosticsConfigFlagsNV</a>, <a href="VkDeviceGroupPresentModeFlagsKHR.html" class="xref page">VkDeviceGroupPresentModeFlagsKHR</a>, <a href="VkDeviceMemoryReportFlagsEXT.html" class="xref page">VkDeviceMemoryReportFlagsEXT</a>, <a href="VkDeviceQueueCreateFlags.html" class="xref page">VkDeviceQueueCreateFlags</a>, <a href="VkDirectDriverLoadingFlagsLUNARG.html" class="xref page">VkDirectDriverLoadingFlagsLUNARG</a>, <a href="VkDirectFBSurfaceCreateFlagsEXT.html" class="xref page">VkDirectFBSurfaceCreateFlagsEXT</a>, <a href="VkDisplayModeCreateFlagsKHR.html" class="xref page">VkDisplayModeCreateFlagsKHR</a>, <a href="VkDisplayPlaneAlphaFlagsKHR.html" class="xref page">VkDisplayPlaneAlphaFlagsKHR</a>, <a href="VkDisplaySurfaceCreateFlagsKHR.html" class="xref page">VkDisplaySurfaceCreateFlagsKHR</a>, <a href="VkEventCreateFlags.html" class="xref page">VkEventCreateFlags</a>, <a href="VkExportMetalObjectTypeFlagsEXT.html" class="xref page">VkExportMetalObjectTypeFlagsEXT</a>, <a href="VkExternalFenceFeatureFlags.html" class="xref page">VkExternalFenceFeatureFlags</a>, <a href="VkExternalFenceHandleTypeFlags.html" class="xref page">VkExternalFenceHandleTypeFlags</a>, <a href="VkExternalMemoryFeatureFlags.html" class="xref page">VkExternalMemoryFeatureFlags</a>, <a href="VkExternalMemoryFeatureFlagsNV.html" class="xref page">VkExternalMemoryFeatureFlagsNV</a>, <a href="VkExternalMemoryHandleTypeFlags.html" class="xref page">VkExternalMemoryHandleTypeFlags</a>, <a href="VkExternalMemoryHandleTypeFlagsNV.html" class="xref page">VkExternalMemoryHandleTypeFlagsNV</a>, <a href="VkExternalSemaphoreFeatureFlags.html" class="xref page">VkExternalSemaphoreFeatureFlags</a>, <a href="VkExternalSemaphoreHandleTypeFlags.html" class="xref page">VkExternalSemaphoreHandleTypeFlags</a>, <a href="VkFenceCreateFlags.html" class="xref page">VkFenceCreateFlags</a>, <a href="VkFenceImportFlags.html" class="xref page">VkFenceImportFlags</a>, <code>VkFlags64</code>, <a href="VkFormatFeatureFlags.html" class="xref page">VkFormatFeatureFlags</a>, <a href="VkFrameBoundaryFlagsEXT.html" class="xref page">VkFrameBoundaryFlagsEXT</a>, <a href="VkFramebufferCreateFlags.html" class="xref page">VkFramebufferCreateFlags</a>, <a href="VkGeometryFlagsKHR.html" class="xref page">VkGeometryFlagsKHR</a>, <a href="VkGeometryInstanceFlagsKHR.html" class="xref page">VkGeometryInstanceFlagsKHR</a>, <a href="VkGraphicsPipelineLibraryFlagsEXT.html" class="xref page">VkGraphicsPipelineLibraryFlagsEXT</a>, <a href="VkHeadlessSurfaceCreateFlagsEXT.html" class="xref page">VkHeadlessSurfaceCreateFlagsEXT</a>, <a href="VkHostImageCopyFlags.html" class="xref page">VkHostImageCopyFlags</a>, <a href="VkIOSSurfaceCreateFlagsMVK.html" class="xref page">VkIOSSurfaceCreateFlagsMVK</a>, <a href="VkImageAspectFlags.html" class="xref page">VkImageAspectFlags</a>, <a href="VkImageCompressionFixedRateFlagsEXT.html" class="xref page">VkImageCompressionFixedRateFlagsEXT</a>, <a href="VkImageCompressionFlagsEXT.html" class="xref page">VkImageCompressionFlagsEXT</a>, <a href="VkImageConstraintsInfoFlagsFUCHSIA.html" class="xref page">VkImageConstraintsInfoFlagsFUCHSIA</a>, <a href="VkImageCreateFlags.html" class="xref page">VkImageCreateFlags</a>, <a href="VkImageFormatConstraintsFlagsFUCHSIA.html" class="xref page">VkImageFormatConstraintsFlagsFUCHSIA</a>, <a href="VkImagePipeSurfaceCreateFlagsFUCHSIA.html" class="xref page">VkImagePipeSurfaceCreateFlagsFUCHSIA</a>, <a href="VkImageUsageFlags.html" class="xref page">VkImageUsageFlags</a>, <a href="VkImageViewCreateFlags.html" class="xref page">VkImageViewCreateFlags</a>, <a href="VkIndirectCommandsInputModeFlagsEXT.html" class="xref page">VkIndirectCommandsInputModeFlagsEXT</a>, <a href="VkIndirectCommandsLayoutUsageFlagsEXT.html" class="xref page">VkIndirectCommandsLayoutUsageFlagsEXT</a>, <a href="VkIndirectCommandsLayoutUsageFlagsNV.html" class="xref page">VkIndirectCommandsLayoutUsageFlagsNV</a>, <a href="VkIndirectStateFlagsNV.html" class="xref page">VkIndirectStateFlagsNV</a>, <a href="VkInstanceCreateFlags.html" class="xref page">VkInstanceCreateFlags</a>, <a href="VkMacOSSurfaceCreateFlagsMVK.html" class="xref page">VkMacOSSurfaceCreateFlagsMVK</a>, <a href="VkMemoryAllocateFlags.html" class="xref page">VkMemoryAllocateFlags</a>, <a href="VkMemoryHeapFlags.html" class="xref page">VkMemoryHeapFlags</a>, <a href="VkMemoryMapFlags.html" class="xref page">VkMemoryMapFlags</a>, <a href="VkMemoryPropertyFlags.html" class="xref page">VkMemoryPropertyFlags</a>, <a href="VkMemoryUnmapFlags.html" class="xref page">VkMemoryUnmapFlags</a>, <a href="VkMetalSurfaceCreateFlagsEXT.html" class="xref page">VkMetalSurfaceCreateFlagsEXT</a>, <a href="VkMicromapCreateFlagsEXT.html" class="xref page">VkMicromapCreateFlagsEXT</a>, <a href="VkOpticalFlowExecuteFlagsNV.html" class="xref page">VkOpticalFlowExecuteFlagsNV</a>, <a href="VkOpticalFlowGridSizeFlagsNV.html" class="xref page">VkOpticalFlowGridSizeFlagsNV</a>, <a href="VkOpticalFlowSessionCreateFlagsNV.html" class="xref page">VkOpticalFlowSessionCreateFlagsNV</a>, <a href="VkOpticalFlowUsageFlagsNV.html" class="xref page">VkOpticalFlowUsageFlagsNV</a>, <a href="VkPartitionedAccelerationStructureInstanceFlagsNV.html" class="xref page">VkPartitionedAccelerationStructureInstanceFlagsNV</a>, <a href="VkPastPresentationTimingFlagsEXT.html" class="xref page">VkPastPresentationTimingFlagsEXT</a>, <a href="VkPeerMemoryFeatureFlags.html" class="xref page">VkPeerMemoryFeatureFlags</a>, <a href="VkPerformanceCounterDescriptionFlagsARM.html" class="xref page">VkPerformanceCounterDescriptionFlagsARM</a>, <a href="VkPerformanceCounterDescriptionFlagsKHR.html" class="xref page">VkPerformanceCounterDescriptionFlagsKHR</a>, <a href="VkPipelineCacheCreateFlags.html" class="xref page">VkPipelineCacheCreateFlags</a>, <a href="VkPipelineColorBlendStateCreateFlags.html" class="xref page">VkPipelineColorBlendStateCreateFlags</a>, <a href="VkPipelineCompilerControlFlagsAMD.html" class="xref page">VkPipelineCompilerControlFlagsAMD</a>, <a href="VkPipelineCoverageModulationStateCreateFlagsNV.html" class="xref page">VkPipelineCoverageModulationStateCreateFlagsNV</a>, <a href="VkPipelineCoverageReductionStateCreateFlagsNV.html" class="xref page">VkPipelineCoverageReductionStateCreateFlagsNV</a>, <a href="VkPipelineCoverageToColorStateCreateFlagsNV.html" class="xref page">VkPipelineCoverageToColorStateCreateFlagsNV</a>, <a href="VkPipelineCreateFlags.html" class="xref page">VkPipelineCreateFlags</a>, <a href="VkPipelineCreationFeedbackFlags.html" class="xref page">VkPipelineCreationFeedbackFlags</a>, <a href="VkPipelineDepthStencilStateCreateFlags.html" class="xref page">VkPipelineDepthStencilStateCreateFlags</a>, <a href="VkPipelineDiscardRectangleStateCreateFlagsEXT.html" class="xref page">VkPipelineDiscardRectangleStateCreateFlagsEXT</a>, <a href="VkPipelineDynamicStateCreateFlags.html" class="xref page">VkPipelineDynamicStateCreateFlags</a>, <a href="VkPipelineInputAssemblyStateCreateFlags.html" class="xref page">VkPipelineInputAssemblyStateCreateFlags</a>, <a href="VkPipelineLayoutCreateFlags.html" class="xref page">VkPipelineLayoutCreateFlags</a>, <a href="VkPipelineMultisampleStateCreateFlags.html" class="xref page">VkPipelineMultisampleStateCreateFlags</a>, <a href="VkPipelineRasterizationConservativeStateCreateFlagsEXT.html" class="xref page">VkPipelineRasterizationConservativeStateCreateFlagsEXT</a>, <a href="VkPipelineRasterizationDepthClipStateCreateFlagsEXT.html" class="xref page">VkPipelineRasterizationDepthClipStateCreateFlagsEXT</a>, <a href="VkPipelineRasterizationStateCreateFlags.html" class="xref page">VkPipelineRasterizationStateCreateFlags</a>, <a href="VkPipelineRasterizationStateStreamCreateFlagsEXT.html" class="xref page">VkPipelineRasterizationStateStreamCreateFlagsEXT</a>, <a href="VkPipelineShaderStageCreateFlags.html" class="xref page">VkPipelineShaderStageCreateFlags</a>, <a href="VkPipelineStageFlags.html" class="xref page">VkPipelineStageFlags</a>, <a href="VkPipelineTessellationStateCreateFlags.html" class="xref page">VkPipelineTessellationStateCreateFlags</a>, <a href="VkPipelineVertexInputStateCreateFlags.html" class="xref page">VkPipelineVertexInputStateCreateFlags</a>, <a href="VkPipelineViewportStateCreateFlags.html" class="xref page">VkPipelineViewportStateCreateFlags</a>, <a href="VkPipelineViewportSwizzleStateCreateFlagsNV.html" class="xref page">VkPipelineViewportSwizzleStateCreateFlagsNV</a>, <a href="VkPresentGravityFlagsKHR.html" class="xref page">VkPresentGravityFlagsKHR</a>, <a href="VkPresentScalingFlagsKHR.html" class="xref page">VkPresentScalingFlagsKHR</a>, <a href="VkPresentStageFlagsEXT.html" class="xref page">VkPresentStageFlagsEXT</a>, <a href="VkPresentTimingInfoFlagsEXT.html" class="xref page">VkPresentTimingInfoFlagsEXT</a>, <a href="VkPrivateDataSlotCreateFlags.html" class="xref page">VkPrivateDataSlotCreateFlags</a>, <a href="VkQueryControlFlags.html" class="xref page">VkQueryControlFlags</a>, <a href="VkQueryPipelineStatisticFlags.html" class="xref page">VkQueryPipelineStatisticFlags</a>, <a href="VkQueryPoolCreateFlags.html" class="xref page">VkQueryPoolCreateFlags</a>, <a href="VkQueryResultFlags.html" class="xref page">VkQueryResultFlags</a>, <a href="VkQueueFlags.html" class="xref page">VkQueueFlags</a>, <a href="VkRenderPassCreateFlags.html" class="xref page">VkRenderPassCreateFlags</a>, <a href="VkRenderingAttachmentFlagsKHR.html" class="xref page">VkRenderingAttachmentFlagsKHR</a>, <a href="VkRenderingFlags.html" class="xref page">VkRenderingFlags</a>, <a href="VkResolveImageFlagsKHR.html" class="xref page">VkResolveImageFlagsKHR</a>, <a href="VkResolveModeFlags.html" class="xref page">VkResolveModeFlags</a>, <a href="VkSampleCountFlags.html" class="xref page">VkSampleCountFlags</a>, <a href="VkSamplerCreateFlags.html" class="xref page">VkSamplerCreateFlags</a>, <a href="VkScreenSurfaceCreateFlagsQNX.html" class="xref page">VkScreenSurfaceCreateFlagsQNX</a>, <a href="VkSemaphoreCreateFlags.html" class="xref page">VkSemaphoreCreateFlags</a>, <a href="VkSemaphoreImportFlags.html" class="xref page">VkSemaphoreImportFlags</a>, <a href="VkSemaphoreWaitFlags.html" class="xref page">VkSemaphoreWaitFlags</a>, <a href="VkShaderCorePropertiesFlagsAMD.html" class="xref page">VkShaderCorePropertiesFlagsAMD</a>, <a href="VkShaderCreateFlagsEXT.html" class="xref page">VkShaderCreateFlagsEXT</a>, <a href="VkShaderModuleCreateFlags.html" class="xref page">VkShaderModuleCreateFlags</a>, <a href="VkShaderStageFlags.html" class="xref page">VkShaderStageFlags</a>, <a href="VkSparseImageFormatFlags.html" class="xref page">VkSparseImageFormatFlags</a>, <a href="VkSparseMemoryBindFlags.html" class="xref page">VkSparseMemoryBindFlags</a>, <a href="VkSpirvResourceTypeFlagsEXT.html" class="xref page">VkSpirvResourceTypeFlagsEXT</a>, <a href="VkStencilFaceFlags.html" class="xref page">VkStencilFaceFlags</a>, <a href="VkStreamDescriptorSurfaceCreateFlagsGGP.html" class="xref page">VkStreamDescriptorSurfaceCreateFlagsGGP</a>, <a href="VkSubgroupFeatureFlags.html" class="xref page">VkSubgroupFeatureFlags</a>, <a href="VkSubmitFlags.html" class="xref page">VkSubmitFlags</a>, <a href="VkSubpassDescriptionFlags.html" class="xref page">VkSubpassDescriptionFlags</a>, <a href="VkSurfaceCounterFlagsEXT.html" class="xref page">VkSurfaceCounterFlagsEXT</a>, <a href="VkSurfaceCreateFlagsOHOS.html" class="xref page">VkSurfaceCreateFlagsOHOS</a>, <a href="VkSurfaceTransformFlagsKHR.html" class="xref page">VkSurfaceTransformFlagsKHR</a>, <a href="VkSwapchainCreateFlagsKHR.html" class="xref page">VkSwapchainCreateFlagsKHR</a>, <a href="VkTileShadingRenderPassFlagsQCOM.html" class="xref page">VkTileShadingRenderPassFlagsQCOM</a>, <a href="VkToolPurposeFlags.html" class="xref page">VkToolPurposeFlags</a>, <a href="VkValidationCacheCreateFlagsEXT.html" class="xref page">VkValidationCacheCreateFlagsEXT</a>, <a href="VkViSurfaceCreateFlagsNN.html" class="xref page">VkViSurfaceCreateFlagsNN</a>, <a href="VkVideoBeginCodingFlagsKHR.html" class="xref page">VkVideoBeginCodingFlagsKHR</a>, <a href="VkVideoCapabilityFlagsKHR.html" class="xref page">VkVideoCapabilityFlagsKHR</a>, <a href="VkVideoChromaSubsamplingFlagsKHR.html" class="xref page">VkVideoChromaSubsamplingFlagsKHR</a>, <a href="VkVideoCodecOperationFlagsKHR.html" class="xref page">VkVideoCodecOperationFlagsKHR</a>, <a href="VkVideoCodingControlFlagsKHR.html" class="xref page">VkVideoCodingControlFlagsKHR</a>, <a href="VkVideoComponentBitDepthFlagsKHR.html" class="xref page">VkVideoComponentBitDepthFlagsKHR</a>, <a href="VkVideoDecodeCapabilityFlagsKHR.html" class="xref page">VkVideoDecodeCapabilityFlagsKHR</a>, <a href="VkVideoDecodeFlagsKHR.html" class="xref page">VkVideoDecodeFlagsKHR</a>, <a href="VkVideoDecodeH264PictureLayoutFlagsKHR.html" class="xref page">VkVideoDecodeH264PictureLayoutFlagsKHR</a>, <a href="VkVideoDecodeUsageFlagsKHR.html" class="xref page">VkVideoDecodeUsageFlagsKHR</a>, <a href="VkVideoEncodeAV1CapabilityFlagsKHR.html" class="xref page">VkVideoEncodeAV1CapabilityFlagsKHR</a>, <a href="VkVideoEncodeAV1RateControlFlagsKHR.html" class="xref page">VkVideoEncodeAV1RateControlFlagsKHR</a>, <a href="VkVideoEncodeAV1StdFlagsKHR.html" class="xref page">VkVideoEncodeAV1StdFlagsKHR</a>, <a href="VkVideoEncodeAV1SuperblockSizeFlagsKHR.html" class="xref page">VkVideoEncodeAV1SuperblockSizeFlagsKHR</a>, <a href="VkVideoEncodeCapabilityFlagsKHR.html" class="xref page">VkVideoEncodeCapabilityFlagsKHR</a>, <a href="VkVideoEncodeContentFlagsKHR.html" class="xref page">VkVideoEncodeContentFlagsKHR</a>, <a href="VkVideoEncodeFeedbackFlagsKHR.html" class="xref page">VkVideoEncodeFeedbackFlagsKHR</a>, <a href="VkVideoEncodeFlagsKHR.html" class="xref page">VkVideoEncodeFlagsKHR</a>, <a href="VkVideoEncodeH264CapabilityFlagsKHR.html" class="xref page">VkVideoEncodeH264CapabilityFlagsKHR</a>, <a href="VkVideoEncodeH264RateControlFlagsKHR.html" class="xref page">VkVideoEncodeH264RateControlFlagsKHR</a>, <a href="VkVideoEncodeH264StdFlagsKHR.html" class="xref page">VkVideoEncodeH264StdFlagsKHR</a>, <a href="VkVideoEncodeH265CapabilityFlagsKHR.html" class="xref page">VkVideoEncodeH265CapabilityFlagsKHR</a>, <a href="VkVideoEncodeH265CtbSizeFlagsKHR.html" class="xref page">VkVideoEncodeH265CtbSizeFlagsKHR</a>, <a href="VkVideoEncodeH265RateControlFlagsKHR.html" class="xref page">VkVideoEncodeH265RateControlFlagsKHR</a>, <a href="VkVideoEncodeH265StdFlagsKHR.html" class="xref page">VkVideoEncodeH265StdFlagsKHR</a>, <a href="VkVideoEncodeH265TransformBlockSizeFlagsKHR.html" class="xref page">VkVideoEncodeH265TransformBlockSizeFlagsKHR</a>, <a href="VkVideoEncodeIntraRefreshModeFlagsKHR.html" class="xref page">VkVideoEncodeIntraRefreshModeFlagsKHR</a>, <a href="VkVideoEncodeRateControlFlagsKHR.html" class="xref page">VkVideoEncodeRateControlFlagsKHR</a>, <a href="VkVideoEncodeRateControlModeFlagsKHR.html" class="xref page">VkVideoEncodeRateControlModeFlagsKHR</a>, <a href="VkVideoEncodeRgbChromaOffsetFlagsVALVE.html" class="xref page">VkVideoEncodeRgbChromaOffsetFlagsVALVE</a>, <a href="VkVideoEncodeRgbModelConversionFlagsVALVE.html" class="xref page">VkVideoEncodeRgbModelConversionFlagsVALVE</a>, <a href="VkVideoEncodeRgbRangeCompressionFlagsVALVE.html" class="xref page">VkVideoEncodeRgbRangeCompressionFlagsVALVE</a>, <a href="VkVideoEncodeUsageFlagsKHR.html" class="xref page">VkVideoEncodeUsageFlagsKHR</a>, <a href="VkVideoEndCodingFlagsKHR.html" class="xref page">VkVideoEndCodingFlagsKHR</a>, <a href="VkVideoSessionCreateFlagsKHR.html" class="xref page">VkVideoSessionCreateFlagsKHR</a>, <a href="VkVideoSessionParametersCreateFlagsKHR.html" class="xref page">VkVideoSessionParametersCreateFlagsKHR</a>, <a href="VkWaylandSurfaceCreateFlagsKHR.html" class="xref page">VkWaylandSurfaceCreateFlagsKHR</a>, <a href="VkWin32SurfaceCreateFlagsKHR.html" class="xref page">VkWin32SurfaceCreateFlagsKHR</a>, <a href="VkXcbSurfaceCreateFlagsKHR.html" class="xref page">VkXcbSurfaceCreateFlagsKHR</a>, <a href="VkXlibSurfaceCreateFlagsKHR.html" class="xref page">VkXlibSurfaceCreateFlagsKHR</a></p>
 </div>
 </div>
 </div>

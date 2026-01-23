@@ -124,14 +124,14 @@ On top of replicating all the bits from [VkFormatFeatureFlagBits](VkFormatFeatur
 [VkFormatFeatureFlagBits2KHR](VkFormatFeatureFlagBits2.html) adds the following bits :
 
 * 
-`VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT_KHR` and
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT_KHR` specify
+[VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT_KHR](VkFormatFeatureFlagBits2.html) and
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT_KHR](VkFormatFeatureFlagBits2.html) specify
 that an implementation supports reading and writing, respectively, a
 given [VkFormat](VkFormat.html) through storage operations without specifying the
 format in the shader.
 
 * 
-`VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT_KHR`
+[VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT_KHR](VkFormatFeatureFlagBits2.html)
 specifies that an implementation supports depth comparison performed by
 `OpImage*Dref*` instructions on a given [VkFormat](VkFormat.html).
 Previously the result of executing a `OpImage*Dref*` instruction on
@@ -142,8 +142,8 @@ This bit clarifies on which formats such instructions can be used.
 Prior to version 2 of this extension, implementations exposing the
 [`shaderStorageImageReadWithoutFormat`](../../../../spec/latest/chapters/features.html#features-shaderStorageImageReadWithoutFormat) and
 [`shaderStorageImageWriteWithoutFormat`](../../../../spec/latest/chapters/features.html#features-shaderStorageImageWriteWithoutFormat) features may not report
-`VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT_KHR` and
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT_KHR` in
+[VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT_KHR](VkFormatFeatureFlagBits2.html) and
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT_KHR](VkFormatFeatureFlagBits2.html) in
 [VkFormatProperties3KHR](VkFormatProperties3.html)::`bufferFeatures`.
 Despite this, buffer reads/writes are supported as intended by the original
 features.
@@ -168,98 +168,98 @@ Extending [VkFormatProperties2](VkFormatProperties2.html):
 * 
 Extending [VkFormatFeatureFlagBits2](VkFormatFeatureFlagBits2.html):
 
-`VK_FORMAT_FEATURE_2_BLIT_DST_BIT_KHR`
+[VK_FORMAT_FEATURE_2_BLIT_DST_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_BLIT_SRC_BIT_KHR`
+[VK_FORMAT_FEATURE_2_BLIT_SRC_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_COLOR_ATTACHMENT_BIT_KHR`
+[VK_FORMAT_FEATURE_2_COLOR_ATTACHMENT_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_COLOR_ATTACHMENT_BLEND_BIT_KHR`
+[VK_FORMAT_FEATURE_2_COLOR_ATTACHMENT_BLEND_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_COSITED_CHROMA_SAMPLES_BIT_KHR`
+[VK_FORMAT_FEATURE_2_COSITED_CHROMA_SAMPLES_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_DEPTH_STENCIL_ATTACHMENT_BIT_KHR`
+[VK_FORMAT_FEATURE_2_DEPTH_STENCIL_ATTACHMENT_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_DISJOINT_BIT_KHR`
+[VK_FORMAT_FEATURE_2_DISJOINT_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_MIDPOINT_CHROMA_SAMPLES_BIT_KHR`
+[VK_FORMAT_FEATURE_2_MIDPOINT_CHROMA_SAMPLES_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_BIT_KHR`
+[VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT_KHR`
+[VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_LINEAR_BIT_KHR`
+[VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_LINEAR_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT_KHR`
+[VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT_KHR`
+[VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT_KHR`
+[VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT_KHR`
+[VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_STORAGE_IMAGE_ATOMIC_BIT_KHR`
+[VK_FORMAT_FEATURE_2_STORAGE_IMAGE_ATOMIC_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_STORAGE_IMAGE_BIT_KHR`
+[VK_FORMAT_FEATURE_2_STORAGE_IMAGE_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT_KHR`
+[VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_STORAGE_TEXEL_BUFFER_ATOMIC_BIT_KHR`
+[VK_FORMAT_FEATURE_2_STORAGE_TEXEL_BUFFER_ATOMIC_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_STORAGE_TEXEL_BUFFER_BIT_KHR`
+[VK_FORMAT_FEATURE_2_STORAGE_TEXEL_BUFFER_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT_KHR`
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_TRANSFER_DST_BIT_KHR`
+[VK_FORMAT_FEATURE_2_TRANSFER_DST_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_TRANSFER_SRC_BIT_KHR`
+[VK_FORMAT_FEATURE_2_TRANSFER_SRC_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_UNIFORM_TEXEL_BUFFER_BIT_KHR`
+[VK_FORMAT_FEATURE_2_UNIFORM_TEXEL_BUFFER_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
-`VK_FORMAT_FEATURE_2_VERTEX_BUFFER_BIT_KHR`
+[VK_FORMAT_FEATURE_2_VERTEX_BUFFER_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_3_KHR`
+[VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_3_KHR](VkStructureType.html)
 
 If [VK_EXT_filter_cubic](VK_EXT_filter_cubic.html) or [VK_IMG_filter_cubic](VK_IMG_filter_cubic.html) is supported:
 
 * 
 Extending [VkFormatFeatureFlagBits2](VkFormatFeatureFlagBits2.html):
 
-`VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT`
+[VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT](VkFormatFeatureFlagBits2.html)
 
 If [Vulkan Version 1.2](../../../../spec/latest/appendices/versions.html#versions-1.2) or [VK_EXT_sampler_filter_minmax](VK_EXT_sampler_filter_minmax.html) is supported:
 
 * 
 Extending [VkFormatFeatureFlagBits2](VkFormatFeatureFlagBits2.html):
 
-`VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_MINMAX_BIT_KHR`
+[VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_MINMAX_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 Vulkan APIs in this extension are included in core Vulkan 1.3, with the KHR
 suffix omitted.

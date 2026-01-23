@@ -31,16 +31,16 @@ typedef enum VkDisplayPlaneAlphaFlagBitsKHR {
 } VkDisplayPlaneAlphaFlagBitsKHR;
 
 * 
-`VK_DISPLAY_PLANE_ALPHA_OPAQUE_BIT_KHR` specifies that the source
+[VK_DISPLAY_PLANE_ALPHA_OPAQUE_BIT_KHR](#) specifies that the source
 image will be treated as opaque.
 
 * 
-`VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR` specifies that a global
+[VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR](#) specifies that a global
 alpha value **must** be specified that will be applied to all pixels in the
 source image.
 
 * 
-`VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR` specifies that the alpha
+[VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR](#) specifies that the alpha
 value will be determined by the alpha component of the source image’s
 pixels.
 If the source format contains no alpha values, no blending will be
@@ -49,8 +49,8 @@ The source alpha values are not premultiplied into the source image’s
 other color components.
 
 * 
-`VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_PREMULTIPLIED_BIT_KHR` is
-equivalent to `VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR`, except the
+[VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_PREMULTIPLIED_BIT_KHR](#) is
+equivalent to [VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR](#), except the
 source alpha values are assumed to be premultiplied into the source
 image’s other color components.
 

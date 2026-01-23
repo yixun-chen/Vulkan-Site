@@ -75,7 +75,7 @@ QNX Screen buffer
 [](#VUID-VkMemoryDedicatedAllocateInfo-image-01434) VUID-VkMemoryDedicatedAllocateInfo-image-01434
 
 If `image` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `image` **must** have been
-created without `VK_IMAGE_CREATE_SPARSE_BINDING_BIT` set in
+created without [VK_IMAGE_CREATE_SPARSE_BINDING_BIT](VkImageCreateFlagBits.html) set in
 [VkImageCreateInfo](VkImageCreateInfo.html)::`flags`
 
 * 
@@ -93,7 +93,7 @@ QNX Screen buffer
 [](#VUID-VkMemoryDedicatedAllocateInfo-buffer-01436) VUID-VkMemoryDedicatedAllocateInfo-buffer-01436
 
 If `buffer` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `buffer` **must** have
-been created without `VK_BUFFER_CREATE_SPARSE_BINDING_BIT` set in
+been created without [VK_BUFFER_CREATE_SPARSE_BINDING_BIT](VkBufferCreateFlagBits.html) set in
 [VkBufferCreateInfo](VkBufferCreateInfo.html)::`flags`
 
 * 
@@ -101,12 +101,12 @@ been created without `VK_BUFFER_CREATE_SPARSE_BINDING_BIT` set in
 
 If `image` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html) and
 [VkMemoryAllocateInfo](VkMemoryAllocateInfo.html) defines a memory import operation with handle
-type `VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT`, or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT`, and the
+type [VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT](VkExternalMemoryHandleTypeFlagBits.html),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](VkExternalMemoryHandleTypeFlagBits.html),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT](VkExternalMemoryHandleTypeFlagBits.html),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT](VkExternalMemoryHandleTypeFlagBits.html),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT](VkExternalMemoryHandleTypeFlagBits.html), or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT](VkExternalMemoryHandleTypeFlagBits.html), and the
 external handle was created by the Vulkan API, then the memory being
 imported **must** also be a dedicated image allocation and `image`
 **must** be identical to the image associated with the imported memory
@@ -116,12 +116,12 @@ imported **must** also be a dedicated image allocation and `image`
 
 If `buffer` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html) and
 [VkMemoryAllocateInfo](VkMemoryAllocateInfo.html) defines a memory import operation with handle
-type `VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT`, or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT`, and the
+type [VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT](VkExternalMemoryHandleTypeFlagBits.html),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](VkExternalMemoryHandleTypeFlagBits.html),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT](VkExternalMemoryHandleTypeFlagBits.html),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT](VkExternalMemoryHandleTypeFlagBits.html),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT](VkExternalMemoryHandleTypeFlagBits.html), or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT](VkExternalMemoryHandleTypeFlagBits.html), and the
 external handle was created by the Vulkan API, then the memory being
 imported **must** also be a dedicated buffer allocation and `buffer`
 **must** be identical to the buffer associated with the imported memory
@@ -131,7 +131,7 @@ imported **must** also be a dedicated buffer allocation and `buffer`
 
 If `image` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html) and
 [VkMemoryAllocateInfo](VkMemoryAllocateInfo.html) defines a memory import operation with handle
-type `VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT`, the memory
+type [VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT](VkExternalMemoryHandleTypeFlagBits.html), the memory
 being imported **must** also be a dedicated image allocation and
 `image` **must** be identical to the image associated with the imported
 memory
@@ -141,7 +141,7 @@ memory
 
 If `buffer` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html) and
 [VkMemoryAllocateInfo](VkMemoryAllocateInfo.html) defines a memory import operation with handle
-type `VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT`, the memory
+type [VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT](VkExternalMemoryHandleTypeFlagBits.html), the memory
 being imported **must** also be a dedicated buffer allocation and
 `buffer` **must** be identical to the buffer associated with the
 imported memory
@@ -150,7 +150,7 @@ imported memory
 [](#VUID-VkMemoryDedicatedAllocateInfo-image-01797) VUID-VkMemoryDedicatedAllocateInfo-image-01797
 
 If `image` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `image` **must** not have
-been created with `VK_IMAGE_CREATE_DISJOINT_BIT` set in
+been created with [VK_IMAGE_CREATE_DISJOINT_BIT](VkImageCreateFlagBits.html) set in
 [VkImageCreateInfo](VkImageCreateInfo.html)::`flags`
 
 * 
@@ -158,7 +158,7 @@ been created with `VK_IMAGE_CREATE_DISJOINT_BIT` set in
 
 If `image` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html) and
 [VkMemoryAllocateInfo](VkMemoryAllocateInfo.html) defines a memory import operation with handle
-type `VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA`, the
+type [VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA](VkExternalMemoryHandleTypeFlagBits.html), the
 memory being imported **must** also be a dedicated image allocation and
 `image` **must** be identical to the image associated with the imported
 memory
@@ -168,7 +168,7 @@ memory
 
 If `buffer` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html) and
 [VkMemoryAllocateInfo](VkMemoryAllocateInfo.html) defines a memory import operation with handle
-type `VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA`, the
+type [VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA](VkExternalMemoryHandleTypeFlagBits.html), the
 memory being imported **must** also be a dedicated buffer allocation and
 `buffer` **must** be identical to the buffer associated with the
 imported memory
@@ -178,7 +178,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryDedicatedAllocateInfo-sType-sType) VUID-VkMemoryDedicatedAllocateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkMemoryDedicatedAllocateInfo-image-parameter) VUID-VkMemoryDedicatedAllocateInfo-image-parameter

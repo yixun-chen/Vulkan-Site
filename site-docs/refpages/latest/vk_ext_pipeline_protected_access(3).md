@@ -107,15 +107,15 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkPipelineCreateFlagBits](VkPipelineCreateFlagBits.html):
 
-`VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT_EXT`
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT_EXT](VkPipelineCreateFlagBits.html)
 
 * 
-`VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT_EXT`
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT_EXT](VkPipelineCreateFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROTECTED_ACCESS_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROTECTED_ACCESS_FEATURES_EXT](VkStructureType.html)
 
 Functionality in this extension is included in core Vulkan 1.4 with the EXT
 suffix omitted.

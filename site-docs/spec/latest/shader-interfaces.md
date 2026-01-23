@@ -38,6 +38,8 @@
 - [Push_Constant_Interface](#interfaces-resources-pushconst)
 - [Descriptor Set Interface](#interfaces-resources-descset)
 - [Descriptor_Set_Interface](#interfaces-resources-descset)
+- [Descriptor Heap Interface](#interfaces-resources-descriptorheap)
+- [Descriptor_Heap_Interface](#interfaces-resources-descriptorheap)
 - [DescriptorSet and Binding Assignment](#interfaces-resources-setandbinding)
 - [DescriptorSet_and_Binding_Assignment](#interfaces-resources-setandbinding)
 - [Offset and Stride Assignment](#interfaces-resources-layout)
@@ -433,7 +435,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetRenderingAttachmentLocations-commandBuffer-cmdpool) VUID-vkCmdSetRenderingAttachmentLocations-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetRenderingAttachmentLocations-renderpass) VUID-vkCmdSetRenderingAttachmentLocations-renderpass
@@ -498,7 +500,7 @@ This structure allows applications to remap the locations of color
 attachments to different fragment shader output locations.
 
 Each element of `pColorAttachmentLocations` set to
-`VK_ATTACHMENT_UNUSED` will be inaccessible to this pipeline as a color
+[VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED) will be inaccessible to this pipeline as a color
 attachment; no location will map to it.
 Each element of `pColorAttachmentLocations` set to any other value will
 map the specified location value to the color attachment specified in the
@@ -529,7 +531,7 @@ This structure **can** be included in the `pNext` chain of a
 from the primary command buffer.
 If [VkCommandBufferInheritanceInfo](cmdbuffers.html#VkCommandBufferInheritanceInfo)::renderPass is not
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), or
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT` is not specified in
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](cmdbuffers.html#VkCommandBufferUsageFlagBits) is not specified in
 [VkCommandBufferBeginInfo](cmdbuffers.html#VkCommandBufferBeginInfo)::flags, members of this structure are
 ignored.
 If this structure is not included in the `pNext` chain of
@@ -556,7 +558,7 @@ value of its index within the array
 [](#VUID-VkRenderingAttachmentLocationInfo-pColorAttachmentLocations-09513) VUID-VkRenderingAttachmentLocationInfo-pColorAttachmentLocations-09513
 
 Elements of `pColorAttachmentLocations` that are not
-`VK_ATTACHMENT_UNUSED` **must** each be unique
+[VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED) **must** each be unique
 
 * 
 [](#VUID-VkRenderingAttachmentLocationInfo-colorAttachmentCount-09514) VUID-VkRenderingAttachmentLocationInfo-colorAttachmentCount-09514
@@ -575,7 +577,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderingAttachmentLocationInfo-sType-sType) VUID-VkRenderingAttachmentLocationInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_LOCATION_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_LOCATION_INFO](fundamentals.html#VkStructureType)
 
 When an active fragment shader invocation finishes, the values of all
 fragment shader outputs are copied out and used as blend inputs or color
@@ -626,11 +628,11 @@ format of the corresponding color attachment, the resulting values are
 
 The application **can** enable dithering to be applied to the color output of a
 subpass, by using the
-`VK_SUBPASS_DESCRIPTION_ENABLE_LEGACY_DITHERING_BIT_EXT` flag.
+[VK_SUBPASS_DESCRIPTION_ENABLE_LEGACY_DITHERING_BIT_EXT](renderpass.html#VkSubpassDescriptionFlagBits) flag.
 For use in a dynamic render pass, the
-`VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT` flag **must** be used.
+[VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT](renderpass.html#VkRenderingFlagBitsKHR) flag **must** be used.
 In that case, the pipelines used **must** have been created with
-`VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT`.
+[VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR).
 
 When dithering is enabled, the implementation **may** modify the output color
 value c by one ULP.
@@ -698,8 +700,8 @@ instructions.
 Tile attachment variables **can** be declared as either single-sampled with
 `MS` operand of `0`, or as multi-sampled with `MS` operand of `1`.
 The image subresources of the tile attachment image **must** not be in
-`VK_IMAGE_LAYOUT_UNDEFINED`
-or `VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT`
+[VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout)
+or [VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout)
 layout in order to access its data in a shader.
 
 Tile attachment variables statically accessed by a fragment or compute
@@ -716,10 +718,10 @@ variables.
 * 
 *Sampled tile attachment* variables **must** be declared with a
 `Sampled` operand of `1`, **must** be backed by a descriptor of type
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM`,
-`VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM`,
-or `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, and **can** be used
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](descriptorsets.html#VkDescriptorType),
+or [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](descriptorsets.html#VkDescriptorType), and **can** be used
 with `OpImageFetch`, `OpImageSparseFetch`, or used to construct an
 `OpTypeSampledImage` that is subsequently consumed by
 `OpImageSample*`, `OpImageSparseSample*`,
@@ -733,11 +735,12 @@ images.
 * 
 *Storage tile attachment* variables **must** be declared with a
 `Sampled` operand of `2`, **must** be backed by a descriptor of type
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, and **can** be used with
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](descriptorsets.html#VkDescriptorType), and **can** be used with
 `OpImageRead`, `OpImageSparseRead`, and `OpImageWrite`
 instructions.
 *Storage tile attachment* variables **can** be consumed by
-`OpImageTexelPointer` for compatibility with atomic operations.
+`OpImageTexelPointer`
+for compatibility with atomic operations.
 *Sampled tile attachment* variables are managed by the
 [Descriptor Set Interface](#interfaces-resources-descset) as storage
 images.
@@ -745,7 +748,7 @@ images.
 * 
 *Input tile attachment* variables **must** be declared with a `Sampled`
 operand of `2`, **must** be backed by a descriptor of type
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`, and **can** be used with
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](descriptorsets.html#VkDescriptorType), and **can** be used with
 `OpImageRead` instructions.
 *Input tile attachment* variables are managed by the
 [Descriptor Set Interface](#interfaces-resources-descset) as input
@@ -781,7 +784,7 @@ These variables **must** be declared with a type of `OpTypeImage`, a
 `Sampled` operand of 2.
 The `MS` operand of the `OpTypeImage` **must** be 0 if the `samples`
 field of the corresponding [VkAttachmentDescription](renderpass.html#VkAttachmentDescription) is
-`VK_SAMPLE_COUNT_1_BIT` and
+[VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits) and
 [multisampled-render-to-single-sampled](renderpass.html#subpass-multisampledrendertosinglesampled)
 is not enabled, and
 1 otherwise.
@@ -884,7 +887,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetRenderingInputAttachmentIndices-commandBuffer-cmdpool) VUID-vkCmdSetRenderingInputAttachmentIndices-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetRenderingInputAttachmentIndices-renderpass) VUID-vkCmdSetRenderingInputAttachmentIndices-renderpass
@@ -961,7 +964,7 @@ This structure allows applications to remap attachments to different input
 attachment indices.
 
 Each element of `pColorAttachmentInputIndices` set to a value of
-`VK_ATTACHMENT_UNUSED` indicates that the corresponding attachment will
+[VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED) indicates that the corresponding attachment will
 not be used as an input attachment in this pipeline.
 Any other value in each of those elements will map the corresponding
 attachment to a `InputAttachmentIndex` value defined in shader code.
@@ -972,7 +975,7 @@ each element to its index within the array.
 If `pDepthInputAttachmentIndex` or `pStencilInputAttachmentIndex`
 are set to `NULL`, they map to input attachments without a
 `InputAttachmentIndex` decoration.
-If they point to a value of `VK_ATTACHMENT_UNUSED`, it indicates that
+If they point to a value of [VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED), it indicates that
 the corresponding attachment will not be used as an input attachment in this
 pipeline.
 If they point to any other value it maps the corresponding attachment to a
@@ -1025,40 +1028,40 @@ Valid Usage
 
 If the [    `dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead) feature is not enabled, and
 `pColorAttachmentInputIndices` is not `NULL`, each element **must** be
-`VK_ATTACHMENT_UNUSED`
+[VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED)
 
 * 
 [](#VUID-VkRenderingInputAttachmentIndexInfo-dynamicRenderingLocalRead-09520) VUID-VkRenderingInputAttachmentIndexInfo-dynamicRenderingLocalRead-09520
 
 If the [    `dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead) feature is not enabled,
 `pDepthInputAttachmentIndex` **must** be a valid pointer to a value of
-`VK_ATTACHMENT_UNUSED`
+[VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED)
 
 * 
 [](#VUID-VkRenderingInputAttachmentIndexInfo-dynamicRenderingLocalRead-09521) VUID-VkRenderingInputAttachmentIndexInfo-dynamicRenderingLocalRead-09521
 
 If the [    `dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead) feature is not enabled,
 `pStencilInputAttachmentIndex` **must** be a valid pointer to a value
-of `VK_ATTACHMENT_UNUSED`
+of [VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED)
 
 * 
 [](#VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09522) VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09522
 
 Elements of `pColorAttachmentInputIndices` that are not
-`VK_ATTACHMENT_UNUSED` **must** each be unique
+[VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED) **must** each be unique
 
 * 
 [](#VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09523) VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09523
 
 Elements of `pColorAttachmentInputIndices` that are not
-`VK_ATTACHMENT_UNUSED` **must** not take the same value as the content
+[VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED) **must** not take the same value as the content
 of `pDepthInputAttachmentIndex`
 
 * 
 [](#VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09524) VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09524
 
 Elements of `pColorAttachmentInputIndices` that are not
-`VK_ATTACHMENT_UNUSED` **must** not take the same value as the content
+[VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED) **must** not take the same value as the content
 of `pStencilInputAttachmentIndex`
 
 * 
@@ -1067,12 +1070,21 @@ of `pStencilInputAttachmentIndex`
 `colorAttachmentCount` **must** be less than or equal to
 [`maxColorAttachments`](limits.html#limits-maxColorAttachments)
 
+* 
+[](#VUID-VkRenderingInputAttachmentIndexInfo-pDepthInputAttachmentIndex-12274) VUID-VkRenderingInputAttachmentIndexInfo-pDepthInputAttachmentIndex-12274
+
+Elements of `pDepthInputAttachmentIndex`,
+`pStencilInputAttachmentIndex`, and
+`pColorAttachmentInputIndices` that are not
+[VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED) **must** be less than
+[    `maxPerStageDescriptorInputAttachments`](limits.html#limits-maxPerStageDescriptorInputAttachments)
+
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkRenderingInputAttachmentIndexInfo-sType-sType) VUID-VkRenderingInputAttachmentIndexInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-parameter) VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-parameter
@@ -1166,11 +1178,17 @@ attribute **must** only declare one variable of that type.
 | Miss | r/w | r/w |  | r/w |  |
 | Callable |  |  |  | r/w | r/w |
 
-When a shader stage accesses
-buffer, tensor,
-or image resources, as described in the [Resource Descriptors](descriptorsets.html#descriptorsets) section, the shader resource variables **must** be matched with
-the [pipeline layout](descriptorsets.html#descriptorsets-pipelinelayout) that is provided at
+When a shader stage accesses buffer,
+tensor,
+or image resources through a descriptor set, as described in the
+[Resource Descriptors](descriptorsets.html#descriptorsets) section, the shader resource
+variables **must** be matched with the [pipeline layout](descriptorsets.html#descriptorsets-pipelinelayout) that is provided at
+shader or
 pipeline creation time.
+If a pipeline is created with
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR),
+or a shader is created with [VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT),
+then no layout information needs to be provided.
 
 The set of shader variables that form the *shader resource interface* for a
 stage are the variables statically used by that stage’s `OpEntryPoint`
@@ -1179,8 +1197,9 @@ with a storage class of `Uniform`, `UniformConstant`,
 or `PushConstant`.
 For the fragment shader, this includes the [fragment input attachment interface](#interfaces-inputattachment).
 
-The shader resource interface consists of two sub-interfaces: the push
-constant interface and the descriptor set interface.
+The shader resource interface consists of multiple sub-interfaces:
+the descriptor heap interface,
+the push constant interface, and the descriptor set interface.
 
 The shader variables defined with a storage class of `PushConstant` that
 are statically used by the shader entry points for the pipeline define the
@@ -1201,14 +1220,36 @@ laid out explicitly using the `Offset`, `ArrayStride`, and
 There **must** be no more than one push constant block statically used per
 shader entry point.
 
-Each statically used member of a push constant block **must** be placed at an
-`Offset` such that the entire member is entirely contained within the
-[VkPushConstantRange](descriptorsets.html#VkPushConstantRange) for each `OpEntryPoint` that uses it, and the
-`stageFlags` for that range **must** specify the appropriate
-[VkShaderStageFlagBits](pipelines.html#VkShaderStageFlagBits) for that stage.
+When using
+descriptor buffers or
+descriptor sets, each statically used member of a push constant block **must**
+be placed at an `Offset` such that the entire member is entirely
+contained within the [VkPushConstantRange](descriptorsets.html#VkPushConstantRange) for each `OpEntryPoint`
+that uses it, and the `stageFlags` for that range **must** specify the
+appropriate [VkShaderStageFlagBits](pipelines.html#VkShaderStageFlagBits) for that stage.
 The `Offset` decoration for any member of a push constant block **must** not
 cause the space required for that member to extend outside the range
 [0, `maxPushConstantsSize`).
+
+When using descriptor heaps, each statically used member of a push constant
+block **must** be placed at an `Offset` such that the entire member is
+entirely contained within the range specified by [vkCmdPushDataEXT](descriptorheaps.html#vkCmdPushDataEXT) in
+the command buffer.
+The `Offset` decoration for any member of a push constant block **must** not
+cause the space required for that member to extend outside the range
+[0, `maxPushDataSize`).
+
+Push constant variables or blocks **can** be decorated with
+[`BankNV`](shaders.html#shaders-pushconstant-decorations-banknv) and
+[`MemberOffsetNV`](shaders.html#shaders-pushconstant-decorations-memberoffsetnv)
+decorations to control their placement within push constant banks.
+The `BankNV` decoration specifies which hardware bank the push constant
+data should be placed in or accessed from, while `MemberOffsetNV`
+provides additional offset control within the specified bank.
+When these decorations are used, the push constant data placement is
+determined by both the API-specified ranges and the shader-specified bank
+and offset decorations, allowing for more flexible push constant management
+on implementations where multiple banks are available.
 
 Any member of a push constant block that is declared as an array **must** only
 be accessed with *dynamically uniform* indices.
@@ -1220,6 +1261,9 @@ storage class of
 `Uniform` or `UniformConstant` (including the variables in the
 [fragment input attachment interface](#interfaces-inputattachment)) that are
 statically used by the shader entry points for the pipeline.
+
+When using descriptor heaps, this interface is not used directly to access
+heaps, but **may** be accessed by specifying [Shader Bindings](descriptorheaps.html#descriptorheaps-bindings) to map to the descriptor heaps.
 
 These variables **must** have `DescriptorSet` and `Binding` decorations
 specified, which are assigned and matched with the
@@ -1240,7 +1284,7 @@ capability.
 
 * 
 For `OpImageWrite`, if the image format supports
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT` and the
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR) and the
 shader module declares the `StorageImageWriteWithoutFormat`
 capability.
 
@@ -1252,7 +1296,7 @@ capability.
 
 * 
 For `OpImageRead` or `OpImageSparseRead`, if the image format
-supports `VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT` and
+supports [VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR) and
 the shader module declares the `StorageImageReadWithoutFormat`
 capability.
 
@@ -1305,7 +1349,7 @@ for that variable to extend outside the range [0,
 Variables identified with the `Uniform` storage class **can** also be used
 to access transparent descriptor set backed resources when the variable is
 assigned to a descriptor set layout binding with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`.
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](descriptorsets.html#VkDescriptorType).
 In this case the variable **must** be typed as `OpTypeStruct` and **cannot** be
 aggregated into arrays of that type.
 Further, the `Offset` decoration for any member of such a variable **must**
@@ -1329,6 +1373,11 @@ SPIR-V variables decorated with a descriptor set and binding that identify a
 [combined image sampler descriptor](descriptorsets.html#descriptorsets-combinedimagesampler)
 **can** have a type of `OpTypeImage`, `OpTypeSampler` (`Sampled`=1),
 or `OpTypeSampledImage`.
+
+|  | When using descriptor heaps, there is no combined image sampler descriptor
+| --- | --- |
+type, but shader variables of `OpTypeSampledImage` can be mapped to a
+separate image and sampler for compatibility. |
 
 When accessing a resource through such a variable, the resource **must** be
 selected via compile time constant expressions unless features are enabled
@@ -1456,26 +1505,28 @@ samples a [subsampled image](samplers.html#samplers-subsamplesampler)
 
 | Resource type | Descriptor Type |
 | --- | --- |
-| sampler | `VK_DESCRIPTOR_TYPE_SAMPLER` or
-                           `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` |
-| sampled image | `VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE` or
-                           `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` |
-| storage image | `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE` |
-| combined image sampler | `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` |
-| uniform texel buffer | `VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` |
-| storage texel buffer | `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` |
-| uniform buffer | `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` or
-                           `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` |
-| storage buffer | `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` or
-                           `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` |
-| input attachment | `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` |
-| inline uniform block | `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` |
-| acceleration structure | `VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR`
+| sampler | [VK_DESCRIPTOR_TYPE_SAMPLER](descriptorsets.html#VkDescriptorType) or
+                           [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](descriptorsets.html#VkDescriptorType) |
+| sampled image | [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](descriptorsets.html#VkDescriptorType) or
+                           [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](descriptorsets.html#VkDescriptorType) |
+| storage image | [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](descriptorsets.html#VkDescriptorType) |
+| combined image sampler | [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](descriptorsets.html#VkDescriptorType)
+                           or both [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](descriptorsets.html#VkDescriptorType) and
+                           [VK_DESCRIPTOR_TYPE_SAMPLER](descriptorsets.html#VkDescriptorType) when using heaps |
+| uniform texel buffer | [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType) |
+| storage texel buffer | [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType) |
+| uniform buffer | [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](descriptorsets.html#VkDescriptorType) or
+                           [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType) |
+| storage buffer | [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](descriptorsets.html#VkDescriptorType) or
+                           [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType) |
+| input attachment | [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](descriptorsets.html#VkDescriptorType) |
+| inline uniform block | [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](descriptorsets.html#VkDescriptorType) |
+| acceleration structure | [VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](descriptorsets.html#VkDescriptorType)
 or
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV` |
-| weight image | `VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM` |
-| block matching image | `VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM` |
-| storage tensor | `VK_DESCRIPTOR_TYPE_TENSOR_ARM` |
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](descriptorsets.html#VkDescriptorType) |
+| weight image | [VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](descriptorsets.html#VkDescriptorType) |
+| block matching image | [VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](descriptorsets.html#VkDescriptorType) |
+| storage tensor | [VK_DESCRIPTOR_TYPE_TENSOR_ARM](descriptorsets.html#VkDescriptorType) |
 
 | Resource type | Storage Class | Type1 | Decoration(s)2 |
 | --- | --- | --- | --- |
@@ -1521,16 +1572,110 @@ They do not correspond to resource types where a generic
 
 In addition to `DescriptorSet` and `Binding`.
 
+The *descriptor heap interface* is a vastly simplified interface for
+accessing resources through pointers to heaps of different types, without
+many of the restrictions that apply to the [descriptor set interface](#interfaces-resources-descset).
+
+Two built-in pointers are available to shaders:
+
+* 
+[SamplerHeapEXT](descriptorheaps.html#SamplerHeapEXT) for samplers
+
+* 
+[ResourceHeapEXT](descriptorheaps.html#ResourceHeapEXT) for resources
+
+These built-ins **must** be declared as pointers in the `UniformConstant`
+`Storage` `Class`.
+These built-ins **must** not be used to access data outside of the heap bound
+to them.
+
+These built-ins **can** be accessed non-uniformly, with no further decoration
+required, and with no dependency on other features or properties.
+The `UniformId` decoration **can** be applied to the result of accesses to
+indicate that the data will be accessed uniformly to a given scope, as a
+hint to improve performance on some implementations.
+
+Resources retrieved from each heap **must** have been created with descriptors
+that match the variable being declared, as follows:
+
+| Descriptor Type | Heap | SPIR-V Type |
+| --- | --- | --- |
+| [VK_DESCRIPTOR_TYPE_SAMPLER](descriptorsets.html#VkDescriptorType) | `SamplerHeapEXT` | `OpTypeSampler` |
+| [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](descriptorsets.html#VkDescriptorType) | `ResourceHeapEXT` | `OpTypeImage` |
+| [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](descriptorsets.html#VkDescriptorType) | `ResourceHeapEXT` | `OpTypeImage` |
+| [VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](descriptorsets.html#VkDescriptorType) | `ResourceHeapEXT` | `OpTypeImage` |
+| [VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](descriptorsets.html#VkDescriptorType) | `ResourceHeapEXT` | `OpTypeImage` |
+| [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](descriptorsets.html#VkDescriptorType) | `ResourceHeapEXT` | `OpTypeImage` |
+| [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType) | `ResourceHeapEXT` | `OpTypeImage` |
+| [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType) | `ResourceHeapEXT` | `OpTypeImage` |
+| [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](descriptorsets.html#VkDescriptorType) | `ResourceHeapEXT` | `OpTypeBufferEXT` with the `Uniform` `Storage` `Class` |
+| [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](descriptorsets.html#VkDescriptorType) | `ResourceHeapEXT` | `OpTypeBufferEXT` with the `StorageBuffer` `Storage` `Class` |
+| [VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](descriptorsets.html#VkDescriptorType) | `ResourceHeapEXT` | `OpTypeAccelerationStructureKHR` |
+| [VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](descriptorsets.html#VkDescriptorType) | `ResourceHeapEXT` | `OpTypeAccelerationStructureNV` |
+| [VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV](descriptorsets.html#VkDescriptorType) | `ResourceHeapEXT` | `OpTypeAccelerationStructureKHR` |
+| [VK_DESCRIPTOR_TYPE_TENSOR_ARM](descriptorsets.html#VkDescriptorType) | `ResourceHeapEXT` | `OpTypeTensorARM` |
+
+While the built-in heap pointers **can** be declared and dereferenced as
+pointing to any type, applications **must** not access data types valid for one
+heap from any other heap.
+
+When one of the types above is read from a heap in the shader, it will read
+a number of bytes equal to value advertised for the [VkDescriptorType](descriptorsets.html#VkDescriptorType)
+as returned by [vkGetPhysicalDeviceDescriptorSizeEXT](descriptorheaps.html#vkGetPhysicalDeviceDescriptorSizeEXT).
+
+For image types, there are further restrictions on the operands used for the
+type, according to the descriptor type:
+
+| Descriptor Type | `Dim` | `Arrayed` | `MS` | `Sampled` |
+| --- | --- | --- | --- | --- |
+| VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE | * | * | 0 | 1 |
+| VK_DESCRIPTOR_TYPE_STORAGE_IMAGE | * | * | 0 or 1 | 2 |
+| VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT | `SubpassData` | 0 | 0 or 1 | 2 |
+| VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER | `Buffer` | 0 | 0 | 2 |
+| VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER | `Buffer` | 0 | 0 | 2 |
+| VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM | `2D` | 1 | 0 | 1 |
+| VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM | `2D` | 0 | 0 | 1 |
+
+For storage images and input attachments, `MS` is 0 if the image has one
+sample per pixel, or 1 otherwise.
+For sampled and storage images, the `Dim` and `Arrayed` qualifiers
+depend on the [VkImageViewType](resources.html#VkImageViewType) specified when writing the descriptor:
+
+| Image View Type | `Dim` | `Arrayed` |
+| --- | --- | --- |
+| VK_IMAGE_VIEW_TYPE_1D | `1D` | 0 |
+| VK_IMAGE_VIEW_TYPE_2D | `2D` | 0 |
+| VK_IMAGE_VIEW_TYPE_3D | `3D` | 0 |
+| VK_IMAGE_VIEW_TYPE_CUBE | `Cube` | 0 |
+| VK_IMAGE_VIEW_TYPE_1D_ARRAY | `1D` | 1 |
+| VK_IMAGE_VIEW_TYPE_2D_ARRAY | `2D` | 1 |
+| VK_IMAGE_VIEW_TYPE_CUBE_ARRAY | `Cube` | 1 |
+
+The [type](../appendices/spirvenv.html#spirvenv-format-type-matching) and [format](../appendices/spirvenv.html#spirvenv-image-formats) of the image resource **must** also match between the API and SPIR-V.
+
+Descriptors accessed via the `ResourceHeapEXT` built-in **must** be
+[explicitly laid out](#interfaces-resources-layout).
+
+There is no further limit to the number of resources that **can** be accessed
+by a shader through a heap pointer beyond the size of the bound range for
+each heap.
+
 A variable decorated with a `DescriptorSet` decoration of s and a
 `Binding` decoration of b indicates that this variable is
 associated with the [VkDescriptorSetLayoutBinding](descriptorsets.html#VkDescriptorSetLayoutBinding) that has a
 `binding` equal to b in `pSetLayouts`[*s*] that was specified
 in [VkPipelineLayoutCreateInfo](descriptorsets.html#VkPipelineLayoutCreateInfo).
+If using descriptor heaps, such a variable will instead be associated with a
+[shader binding](descriptorheaps.html#descriptorheaps-bindings).
 
+If not using descriptor heaps,
 `DescriptorSet` decoration values **must** be between zero and
 `maxBoundDescriptorSets` minus one, inclusive.
-`Binding` decoration values **can** be any 32-bit unsigned integer value, as
-described in [Descriptor Set Layout](descriptorsets.html#descriptorsets-setlayout).
+If a pipeline is created with
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR),
+or a shader is created with [VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT),
+`DescriptorSet` decorations **can** be any 32-bit unsigned integer value.
+`Binding` decoration values **can** be any 32-bit unsigned integer value.
 Each descriptor set has its own binding name space.
 
 If the `Binding` decoration is used with an array, the entire array is
@@ -1547,6 +1692,13 @@ For the purposes of interface matching and descriptor set
 [operations](descriptorsets.html#descriptorsets-updates), if a resource variable is not an
 array, it is treated as if it has an arrayElement of zero.
 
+|  | Even though an array is assigned to a single `Binding`, when using
+| --- | --- |
+[descriptor heap mappings](descriptorheaps.html#descriptorheaps-bindings), each element will be
+assigned a consecutive offset according to the stride for that type.
+Applications should take care to set subsequent bindings with this in mind
+to avoid unintentional overlap. |
+
 There is a limit on the number of resources of each type that **can** be
 accessed by a pipeline stage as shown in
 [Shader Resource Limits](#interfaces-resources-limits).
@@ -1556,20 +1708,26 @@ stage in a pipeline.
 The “Resource Types” column lists which resource types are counted against
 the limit.
 Some resource types count against multiple limits.
-The `VK_DESCRIPTOR_TYPE_MUTABLE_EXT` descriptor type counts as one
+The [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](descriptorsets.html#VkDescriptorType) descriptor type counts as one
 individual resource and one for every unique resource limit per descriptor
 set type that is present in the associated binding’s
 [VkMutableDescriptorTypeListEXT](descriptorsets.html#VkMutableDescriptorTypeListEXT).
 If multiple descriptor types in [VkMutableDescriptorTypeListEXT](descriptorsets.html#VkMutableDescriptorTypeListEXT) map to
 the same resource limit, only one descriptor is consumed for purposes of
 computing resource limits.
+These limits only apply to resources accessed with `DescriptorSet` and
+`Binding` values.
 
-The pipeline layout **may** include descriptor sets and bindings which are not
+A pipeline layout **may** include descriptor sets and bindings which are not
 referenced by any variables statically used by the entry points for the
 shader stages in the binding’s `stageFlags`.
+Similarly, [descriptor heap bindings](descriptorheaps.html#descriptorheaps-bindings) **may**
+include mappings that are unused by the shader.
 
 However, if a variable assigned to a given `DescriptorSet` and
 `Binding` is statically used by the entry point for a shader stage, the
+[heap bindings](descriptorheaps.html#descriptorheaps-bindings) **must** specify a mapping for it
+when using heaps, or the
 pipeline layout **must** contain a descriptor set layout binding in that
 descriptor set layout and for that binding number, and that binding’s
 `stageFlags` **must** include the appropriate [VkShaderStageFlagBits](pipelines.html#VkShaderStageFlagBits)
@@ -1605,7 +1763,7 @@ statically used.
 
 A noteworthy example of using multiple statically-used shader variables
 sharing the same descriptor set and binding values is a descriptor of type
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` that has multiple
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](descriptorsets.html#VkDescriptorType) that has multiple
 corresponding shader variables in the `UniformConstant` storage class,
 where some could be `OpTypeImage` (`Sampled`=1), some could be
 `OpTypeSampler`, and some could be `OpTypeSampledImage`. |
@@ -1638,6 +1796,11 @@ or `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` | inline uniform bl
 or
 `maxPerStageDescriptorAccelerationStructures` or
 `maxPerStageDescriptorUpdateAfterBindAccelerationStructures` | acceleration structure |
+
+|  | Resources accessed directly through the
+| --- | --- |
+[descriptor heap interface](#interfaces-resources-descriptorheap) do not
+count towards these limits. |
 
 1
 
@@ -1688,6 +1851,35 @@ of any of its members.
 * 
 A matrix type inherits *scalar alignment* from the equivalent array
 declaration.
+
+* 
+`OpTypeImage` has a scalar alignment equal to the value of
+[`imageDescriptorAlignment`](limits.html#limits-imageDescriptorAlignment)
+
+* 
+`OpTypeBufferEXT` has a scalar alignment equal to the value of
+[`bufferDescriptorAlignment`](limits.html#limits-bufferDescriptorAlignment)
+
+* 
+`OpTypeSampler` has a scalar alignment equal to the value of
+[`samplerDescriptorAlignment`](limits.html#limits-samplerDescriptorAlignment)
+
+* 
+`OpTypeTensorARM` has a scalar alignment equal to the value of
+[`tensorDescriptorAlignment`](limits.html#limits-tensorDescriptorAlignment)
+
+The aligned size of a `OpTypeImage`, `OpTypeBufferEXT`, or
+`OpTypeSampler` can be queried from within SPIR-V using
+`OpConstantSizeOfEXT`, which can be used with the `OffsetIdEXT` or
+`ArrayStrideIdEXT` decorations to lay out types in a descriptor heap.
+`OpConstantSizeOfEXT` returns the following for values for each type:
+
+| Type | Size |
+| --- | --- |
+| `OpTypeSampler` | `samplerDescriptorSize` aligned to `samplerDescriptorAlignment` |
+| `OpTypeImage` | `imageDescriptorSize` aligned to `imageDescriptorAlignment` |
+| `OpTypeBufferEXT` | `bufferDescriptorSize` aligned to `bufferDescriptorAlignment` |
+| `OpTypeAccelerationStructureKHR` | `bufferDescriptorSize` aligned to `bufferDescriptorAlignment` |
 
 The *base alignment* of the type of an `OpTypeStruct` member is defined
 recursively as follows:
@@ -1763,8 +1955,10 @@ If the [`scalarBlockLayout`](features.html#features-scalarBlockLayout) feature
 is enabled and the storage class is `Uniform`, `StorageBuffer`,
 `PhysicalStorageBuffer`,
 `ShaderRecordBufferKHR`,
-or `PushConstant` then every member **must** be aligned according to its
-scalar alignment.
+or `PushConstant`,
+or the storage class is `UniformConstant` and the type is decorated
+with either `SamplerHeapEXT` or `ResourceHeapEXT`,
+then every member **must** be aligned according to its scalar alignment.
 
 If the [    `workgroupMemoryExplicitLayoutScalarBlockLayout`](features.html#features-workgroupMemoryExplicitLayoutScalarBlockLayout) feature is
 enabled and the storage class is `Workgroup` then every member **must**
@@ -1786,12 +1980,15 @@ use the *base alignment*. |
 The memory layout **must** obey the following rules:
 
 * 
-The `Offset` decoration of any member **must** be a multiple of its
-alignment.
+The `Offset`
+or `OffsetIdEXT`
+decoration of any member **must** be a multiple of its alignment.
 
 * 
-Any `ArrayStride` or `MatrixStride` decoration **must** be a multiple
-of the alignment of the array or matrix as defined above.
+Any `ArrayStride`,
+or `ArrayStrideIdEXT`,
+or `MatrixStride` decoration **must** be a multiple of the alignment of
+the array or matrix as defined above.
 
 If one of the conditions below applies
 
@@ -1852,6 +2049,19 @@ decoration.
 Any two variables declared in the `Output` storage class listed as
 operands on the same `OpEntryPoint` **must** not have the same `BuiltIn`
 decoration.
+
+Built-in values for descriptor heaps are listed in the descriptor heap
+chapter:
+
+* 
+[SamplerHeapEXT](descriptorheaps.html#SamplerHeapEXT)
+
+* 
+[ResourceHeapEXT](descriptorheaps.html#ResourceHeapEXT)
+
+Types used to access these built-ins **must** be laid out explicitly using the
+`Offset`, `OffsetIdEXT`, `ArrayStride`, `ArrayStrideIdEXT`, and
+`MatrixStride` decorations as specified in [Offset and Stride Assignment](#interfaces-resources-layout).
 
 `BaryCoordKHR`
 
@@ -3077,7 +3287,7 @@ used only if the value of `HitKindKHR` is
 
 The acceleration structure corresponding to the current intersection
 **must** have been built with
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR`
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR](resources.html#VkBuildAccelerationStructureFlagBitsNV)
 
 `IncomingRayFlagsKHR`
 
@@ -3844,9 +4054,9 @@ two-component vector of 32-bit floating-point values
 
 Decorating a variable with the `PointSize` built-in decoration will make
 that variable contain the size of point primitives
-or the final rasterization of polygons if [polygon mode](primsrast.html#primsrast-polygonmode) is `VK_POLYGON_MODE_POINT` when
+or the final rasterization of polygons if [polygon mode](primsrast.html#primsrast-polygonmode) is [VK_POLYGON_MODE_POINT](primsrast.html#VkPolygonMode) when
 `VkPhysicalDeviceMaintenance5Properties`::`polygonModePointSize` is
-set to `VK_TRUE`
+set to [VK_TRUE](fundamentals.html#VK_TRUE)
 .
 The value written to the variable decorated with `PointSize` by the last
 [pre-rasterization shader stage](pipelines.html#pipelines-graphics-subsets-pre-rasterization) in the pipeline is used as the framebuffer-space size of points
@@ -3951,7 +4161,7 @@ and rasterization operations, as with `Position`.
 [pre-rasterization shader stage](pipelines.html#pipelines-graphics-subsets-pre-rasterization).
 
 If a shader is compiled against a subpass that has the
-`VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX` bit set, then
+[VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX](renderpass.html#VkSubpassDescriptionFlagBits) bit set, then
 the position values for each view **must** not differ in any component other
 than the X component.
 If the values do differ, one will be chosen in an implementation-dependent
@@ -4257,10 +4467,18 @@ declared as an array of scalar 32-bit integer values
 * 
 [](#VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-07045) VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-07045
 
-All index values of the array decorated with
+The index to access the array decorated with
 `PrimitivePointIndicesEXT` **must** be in the range [0, N-1],
-where N is the value specified by the `OutputVertices`
-`Execution` `Mode`
+where N is the value specified by the “Primitive Count” operand
+of `OpSetMeshOutputsEXT`
+
+* 
+[](#VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-12335) VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-12335
+
+All index values written to the array decorated with
+`PrimitivePointIndicesEXT` **must** be in the range [0, N-1],
+where N is the value specified by the “Vertex Count” operand of
+`OpSetMeshOutputsEXT`
 
 * 
 [](#VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-07046) VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-07046
@@ -4303,10 +4521,18 @@ declared as an array of two component vector 32-bit integer values
 * 
 [](#VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-07051) VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-07051
 
-All index values of the array decorated with
+The index to access the array decorated with
 `PrimitiveLineIndicesEXT` **must** be in the range [0, N-1], where
-N is the value specified by the `OutputVertices`
-`Execution` `Mode`
+N is the value specified by the “Primitive Count” operand of
+`OpSetMeshOutputsEXT`
+
+* 
+[](#VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-12336) VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-12336
+
+All index values written to the array decorated with
+`PrimitiveLineIndicesEXT` **must** be in the range [0, N-1], where
+N is the value specified by the “Vertex Count” operand of
+`OpSetMeshOutputsEXT`
 
 * 
 [](#VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-07052) VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-07052
@@ -4349,10 +4575,18 @@ declared as an array of three component vector 32-bit integer values
 * 
 [](#VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-07057) VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-07057
 
-All index values of the array decorated with
+The index to access the array decorated with
 `PrimitiveTriangleIndicesEXT` **must** be in the range [0, N-1],
-where N is the value specified by the `OutputVertices`
-`Execution` `Mode`
+where N is the value specified by the “Primitive Count” operand
+of `OpSetMeshOutputsEXT`
+
+* 
+[](#VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-12337) VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-12337
+
+All index values written to the array decorated with
+`PrimitiveTriangleIndicesEXT` **must** be in the range [0, N-1],
+where N is the value specified by the “Vertex Count” operand of
+`OpSetMeshOutputsEXT`
 
 * 
 [](#VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-07058) VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-07058
@@ -4451,6 +4685,12 @@ array **must** match the value specified by `OutputPrimitivesEXT`
 If `PrimitiveShadingRateKHR` decorates a member of a structure, the
 variable declaration of the containing `Block` type **must** have an
 array size that matches the value specified by `OutputPrimitivesEXT`
+
+* 
+[](#VUID-PrimitiveShadingRateKHR-PrimitiveShadingRateKHR-12275) VUID-PrimitiveShadingRateKHR-PrimitiveShadingRateKHR-12275
+
+If `PrimitiveShadingRateKHR` is declared in the `MeshEXT`
+`Execution` `Model`, the [    primitiveFragmentShadingRateMeshShader](features.html#features-primitiveFragmentShadingRateMeshShader) feature **must** be enabled
 
 `RayGeometryIndexKHR`
 
@@ -4907,7 +5147,7 @@ decoration will make that variable contain the index of the invocation
 within the subgroup.
 This variable is in range [0,`SubgroupSize`-1].
 
-If `VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT` is
+If [VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT](pipelines.html#VkPipelineShaderStageCreateFlagBits) is
 specified,
 or if `module` declares SPIR-V version 1.6 or higher, and the local
 workgroup size in the X dimension of the `stage` is a multiple of
@@ -4933,9 +5173,9 @@ If full subgroups are not enabled, some subgroups may be dispatched with
 inactive invocations that do not correspond to a local workgroup invocation,
 making the value of index unreliable. |
 
-|  | `VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT`
+|  | [VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT](pipelines.html#VkPipelineShaderStageCreateFlagBits)
 | --- | --- |
-and `VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT` are
+and [VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) are
 effectively deprecated when compiling SPIR-V 1.6 shaders, as this behavior
 is the default for Vulkan with SPIR-V 1.6.
 This is more aligned with developer expectations, and avoids applications
@@ -4963,10 +5203,10 @@ make that variable contain the implementation-dependent
 This value **must** be a power-of-two integer.
 
 If the pipeline was created with the
-`VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT` flag
+[VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT](pipelines.html#VkPipelineShaderStageCreateFlagBits) flag
 set,
 or the shader object was created with the
-`VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT` flag set,
+[VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag set,
 or the SPIR-V `module` is at least version 1.6,
 the `SubgroupSize` decorated variable will contain the subgroup size for
 each subgroup that gets dispatched.
@@ -4990,11 +5230,11 @@ the `SubgroupSize` decorated variable will match
 If
 SPIR-V `module` is less than version 1.6 and
 the pipeline was not created with the
-`VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT` flag
+[VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT](pipelines.html#VkPipelineShaderStageCreateFlagBits) flag
 set and no [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](pipelines.html#VkPipelineShaderStageRequiredSubgroupSizeCreateInfo)
 structure was chained,
 and the shader was not created with the
-`VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT` flag set and no
+[VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag set and no
 [VkShaderRequiredSubgroupSizeCreateInfoEXT](pipelines.html#VkShaderRequiredSubgroupSizeCreateInfoEXT) structure was chained,
 the
 variable decorated with `SubgroupSize` will match [`subgroupSize`](devsandqueues.html#limits-subgroupSize).
@@ -5005,8 +5245,8 @@ subgroup is 128.
 |  | The old behavior for `SubgroupSize` is considered legacy as certain
 | --- | --- |
 compute algorithms cannot be easily implemented without the guarantees of
-`VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT` and
-`VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT`. |
+[VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT](pipelines.html#VkPipelineShaderStageCreateFlagBits) and
+[VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT](pipelines.html#VkPipelineShaderStageCreateFlagBits). |
 
 Valid Usage
 
@@ -5241,7 +5481,7 @@ which will be filled with the width and height of the active tile’s apron.
 If [per-tile execution model](renderpass.html#renderpass-tile-shading) is enabled for the
 current shader invocation, and is executing in a dynamic render pass or is
 executing in a subpass where
-`VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM` is included in its
+[VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM](renderpass.html#VkSubpassDescriptionFlagBits) is included in its
 `flags`, x and y components of `TileApronSizeQCOM`
 reflect the with and height of the tile apron corresponding to the shader
 invocation.

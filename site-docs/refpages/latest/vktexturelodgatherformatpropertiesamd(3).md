@@ -53,7 +53,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTextureLODGatherFormatPropertiesAMD-sType-sType) VUID-VkTextureLODGatherFormatPropertiesAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD](VkStructureType.html)
 
 [VK_AMD_texture_gather_bias_lod](VK_AMD_texture_gather_bias_lod.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

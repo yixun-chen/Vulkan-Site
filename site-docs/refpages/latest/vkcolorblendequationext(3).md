@@ -62,87 +62,87 @@ Valid Usage
 
 If the [`dualSrcBlend`](../../../../spec/latest/chapters/features.html#features-dualSrcBlend) feature is not
 enabled, `srcColorBlendFactor` **must** not be
-`VK_BLEND_FACTOR_SRC1_COLOR`,
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR`,
-`VK_BLEND_FACTOR_SRC1_ALPHA`, or
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA`
+[VK_BLEND_FACTOR_SRC1_COLOR](VkBlendFactor.html),
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR](VkBlendFactor.html),
+[VK_BLEND_FACTOR_SRC1_ALPHA](VkBlendFactor.html), or
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA](VkBlendFactor.html)
 
 * 
 [](#VUID-VkColorBlendEquationEXT-dualSrcBlend-07358) VUID-VkColorBlendEquationEXT-dualSrcBlend-07358
 
 If the [`dualSrcBlend`](../../../../spec/latest/chapters/features.html#features-dualSrcBlend) feature is not
 enabled, `dstColorBlendFactor` **must** not be
-`VK_BLEND_FACTOR_SRC1_COLOR`,
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR`,
-`VK_BLEND_FACTOR_SRC1_ALPHA`, or
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA`
+[VK_BLEND_FACTOR_SRC1_COLOR](VkBlendFactor.html),
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR](VkBlendFactor.html),
+[VK_BLEND_FACTOR_SRC1_ALPHA](VkBlendFactor.html), or
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA](VkBlendFactor.html)
 
 * 
 [](#VUID-VkColorBlendEquationEXT-dualSrcBlend-07359) VUID-VkColorBlendEquationEXT-dualSrcBlend-07359
 
 If the [`dualSrcBlend`](../../../../spec/latest/chapters/features.html#features-dualSrcBlend) feature is not
 enabled, `srcAlphaBlendFactor` **must** not be
-`VK_BLEND_FACTOR_SRC1_COLOR`,
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR`,
-`VK_BLEND_FACTOR_SRC1_ALPHA`, or
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA`
+[VK_BLEND_FACTOR_SRC1_COLOR](VkBlendFactor.html),
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR](VkBlendFactor.html),
+[VK_BLEND_FACTOR_SRC1_ALPHA](VkBlendFactor.html), or
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA](VkBlendFactor.html)
 
 * 
 [](#VUID-VkColorBlendEquationEXT-dualSrcBlend-07360) VUID-VkColorBlendEquationEXT-dualSrcBlend-07360
 
 If the [`dualSrcBlend`](../../../../spec/latest/chapters/features.html#features-dualSrcBlend) feature is not
 enabled, `dstAlphaBlendFactor` **must** not be
-`VK_BLEND_FACTOR_SRC1_COLOR`,
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR`,
-`VK_BLEND_FACTOR_SRC1_ALPHA`, or
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA`
+[VK_BLEND_FACTOR_SRC1_COLOR](VkBlendFactor.html),
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR](VkBlendFactor.html),
+[VK_BLEND_FACTOR_SRC1_ALPHA](VkBlendFactor.html), or
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA](VkBlendFactor.html)
 
 * 
 [](#VUID-VkColorBlendEquationEXT-colorBlendOp-07361) VUID-VkColorBlendEquationEXT-colorBlendOp-07361
 
 `colorBlendOp` and `alphaBlendOp` **must** not be
-`VK_BLEND_OP_ZERO_EXT`, `VK_BLEND_OP_SRC_EXT`,
-`VK_BLEND_OP_DST_EXT`, `VK_BLEND_OP_SRC_OVER_EXT`,
-`VK_BLEND_OP_DST_OVER_EXT`, `VK_BLEND_OP_SRC_IN_EXT`,
-`VK_BLEND_OP_DST_IN_EXT`, `VK_BLEND_OP_SRC_OUT_EXT`,
-`VK_BLEND_OP_DST_OUT_EXT`, `VK_BLEND_OP_SRC_ATOP_EXT`,
-`VK_BLEND_OP_DST_ATOP_EXT`, `VK_BLEND_OP_XOR_EXT`,
-`VK_BLEND_OP_MULTIPLY_EXT`, `VK_BLEND_OP_SCREEN_EXT`,
-`VK_BLEND_OP_OVERLAY_EXT`, `VK_BLEND_OP_DARKEN_EXT`,
-`VK_BLEND_OP_LIGHTEN_EXT`, `VK_BLEND_OP_COLORDODGE_EXT`,
-`VK_BLEND_OP_COLORBURN_EXT`, `VK_BLEND_OP_HARDLIGHT_EXT`,
-`VK_BLEND_OP_SOFTLIGHT_EXT`, `VK_BLEND_OP_DIFFERENCE_EXT`,
-`VK_BLEND_OP_EXCLUSION_EXT`, `VK_BLEND_OP_INVERT_EXT`,
-`VK_BLEND_OP_INVERT_RGB_EXT`, `VK_BLEND_OP_LINEARDODGE_EXT`,
-`VK_BLEND_OP_LINEARBURN_EXT`, `VK_BLEND_OP_VIVIDLIGHT_EXT`,
-`VK_BLEND_OP_LINEARLIGHT_EXT`, `VK_BLEND_OP_PINLIGHT_EXT`,
-`VK_BLEND_OP_HARDMIX_EXT`, `VK_BLEND_OP_HSL_HUE_EXT`,
-`VK_BLEND_OP_HSL_SATURATION_EXT`, `VK_BLEND_OP_HSL_COLOR_EXT`,
-`VK_BLEND_OP_HSL_LUMINOSITY_EXT`, `VK_BLEND_OP_PLUS_EXT`,
-`VK_BLEND_OP_PLUS_CLAMPED_EXT`,
-`VK_BLEND_OP_PLUS_CLAMPED_ALPHA_EXT`,
-`VK_BLEND_OP_PLUS_DARKER_EXT`, `VK_BLEND_OP_MINUS_EXT`,
-`VK_BLEND_OP_MINUS_CLAMPED_EXT`, `VK_BLEND_OP_CONTRAST_EXT`,
-`VK_BLEND_OP_INVERT_OVG_EXT`, `VK_BLEND_OP_RED_EXT`,
-`VK_BLEND_OP_GREEN_EXT`, or `VK_BLEND_OP_BLUE_EXT`
+[VK_BLEND_OP_ZERO_EXT](VkBlendOp.html), [VK_BLEND_OP_SRC_EXT](VkBlendOp.html),
+[VK_BLEND_OP_DST_EXT](VkBlendOp.html), [VK_BLEND_OP_SRC_OVER_EXT](VkBlendOp.html),
+[VK_BLEND_OP_DST_OVER_EXT](VkBlendOp.html), [VK_BLEND_OP_SRC_IN_EXT](VkBlendOp.html),
+[VK_BLEND_OP_DST_IN_EXT](VkBlendOp.html), [VK_BLEND_OP_SRC_OUT_EXT](VkBlendOp.html),
+[VK_BLEND_OP_DST_OUT_EXT](VkBlendOp.html), [VK_BLEND_OP_SRC_ATOP_EXT](VkBlendOp.html),
+[VK_BLEND_OP_DST_ATOP_EXT](VkBlendOp.html), [VK_BLEND_OP_XOR_EXT](VkBlendOp.html),
+[VK_BLEND_OP_MULTIPLY_EXT](VkBlendOp.html), [VK_BLEND_OP_SCREEN_EXT](VkBlendOp.html),
+[VK_BLEND_OP_OVERLAY_EXT](VkBlendOp.html), [VK_BLEND_OP_DARKEN_EXT](VkBlendOp.html),
+[VK_BLEND_OP_LIGHTEN_EXT](VkBlendOp.html), [VK_BLEND_OP_COLORDODGE_EXT](VkBlendOp.html),
+[VK_BLEND_OP_COLORBURN_EXT](VkBlendOp.html), [VK_BLEND_OP_HARDLIGHT_EXT](VkBlendOp.html),
+[VK_BLEND_OP_SOFTLIGHT_EXT](VkBlendOp.html), [VK_BLEND_OP_DIFFERENCE_EXT](VkBlendOp.html),
+[VK_BLEND_OP_EXCLUSION_EXT](VkBlendOp.html), [VK_BLEND_OP_INVERT_EXT](VkBlendOp.html),
+[VK_BLEND_OP_INVERT_RGB_EXT](VkBlendOp.html), [VK_BLEND_OP_LINEARDODGE_EXT](VkBlendOp.html),
+[VK_BLEND_OP_LINEARBURN_EXT](VkBlendOp.html), [VK_BLEND_OP_VIVIDLIGHT_EXT](VkBlendOp.html),
+[VK_BLEND_OP_LINEARLIGHT_EXT](VkBlendOp.html), [VK_BLEND_OP_PINLIGHT_EXT](VkBlendOp.html),
+[VK_BLEND_OP_HARDMIX_EXT](VkBlendOp.html), [VK_BLEND_OP_HSL_HUE_EXT](VkBlendOp.html),
+[VK_BLEND_OP_HSL_SATURATION_EXT](VkBlendOp.html), [VK_BLEND_OP_HSL_COLOR_EXT](VkBlendOp.html),
+[VK_BLEND_OP_HSL_LUMINOSITY_EXT](VkBlendOp.html), [VK_BLEND_OP_PLUS_EXT](VkBlendOp.html),
+[VK_BLEND_OP_PLUS_CLAMPED_EXT](VkBlendOp.html),
+[VK_BLEND_OP_PLUS_CLAMPED_ALPHA_EXT](VkBlendOp.html),
+[VK_BLEND_OP_PLUS_DARKER_EXT](VkBlendOp.html), [VK_BLEND_OP_MINUS_EXT](VkBlendOp.html),
+[VK_BLEND_OP_MINUS_CLAMPED_EXT](VkBlendOp.html), [VK_BLEND_OP_CONTRAST_EXT](VkBlendOp.html),
+[VK_BLEND_OP_INVERT_OVG_EXT](VkBlendOp.html), [VK_BLEND_OP_RED_EXT](VkBlendOp.html),
+[VK_BLEND_OP_GREEN_EXT](VkBlendOp.html), or [VK_BLEND_OP_BLUE_EXT](VkBlendOp.html)
 
 * 
 [](#VUID-VkColorBlendEquationEXT-constantAlphaColorBlendFactors-07362) VUID-VkColorBlendEquationEXT-constantAlphaColorBlendFactors-07362
 
 If the `[VK_KHR_portability_subset](VK_KHR_portability_subset.html)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](VkPhysicalDevicePortabilitySubsetFeaturesKHR.html)::`constantAlphaColorBlendFactors`
-is `VK_FALSE`, `srcColorBlendFactor` **must** not be
-`VK_BLEND_FACTOR_CONSTANT_ALPHA` or
-`VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA`
+is [VK_FALSE](VK_FALSE.html), `srcColorBlendFactor` **must** not be
+[VK_BLEND_FACTOR_CONSTANT_ALPHA](VkBlendFactor.html) or
+[VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA](VkBlendFactor.html)
 
 * 
 [](#VUID-VkColorBlendEquationEXT-constantAlphaColorBlendFactors-07363) VUID-VkColorBlendEquationEXT-constantAlphaColorBlendFactors-07363
 
 If the `[VK_KHR_portability_subset](VK_KHR_portability_subset.html)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](VkPhysicalDevicePortabilitySubsetFeaturesKHR.html)::`constantAlphaColorBlendFactors`
-is `VK_FALSE`, `dstColorBlendFactor` **must** not be
-`VK_BLEND_FACTOR_CONSTANT_ALPHA` or
-`VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA`
+is [VK_FALSE](VK_FALSE.html), `dstColorBlendFactor` **must** not be
+[VK_BLEND_FACTOR_CONSTANT_ALPHA](VkBlendFactor.html) or
+[VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA](VkBlendFactor.html)
 
 Valid Usage (Implicit)
 

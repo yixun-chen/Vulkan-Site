@@ -33,7 +33,7 @@ typedef struct VkDescriptorPoolSize {
 * 
 `descriptorCount` is the number of descriptors of that type to
 allocate.
-If `type` is `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then
+If `type` is [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) then
 `descriptorCount` is the number of bytes to allocate for descriptors
 of this type.
 
@@ -59,7 +59,7 @@ Valid Usage
 * 
 [](#VUID-VkDescriptorPoolSize-type-02218) VUID-VkDescriptorPoolSize-type-02218
 
-If `type` is `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then
+If `type` is [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) then
 `descriptorCount` **must** be a multiple of `4`
 
 Valid Usage (Implicit)

@@ -91,7 +91,7 @@ In some cases it may be useful to extend this concept to a system-wide
 scope.
 This extension provides a mechanism for callers to set their system-wide
 priority.
-The default queue priority is `VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT`.
+The default queue priority is [VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT](VkQueueGlobalPriority.html).
 
 The driver implementation will attempt to skew hardware resource allocation
 in favor of the higher-priority task.
@@ -105,14 +105,14 @@ per-process queue priority
 Abuse of this feature may result in starving the rest of the system from
 hardware resources.
 Therefore, the driver implementation may deny requests to acquire a priority
-above the default priority (`VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT`) if
+above the default priority ([VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT](VkQueueGlobalPriority.html)) if
 the caller does not have sufficient privileges.
-In this scenario `VK_ERROR_NOT_PERMITTED_EXT` is returned.
+In this scenario [VK_ERROR_NOT_PERMITTED_EXT](VkResult.html) is returned.
 
 The driver implementation may fail the queue allocation request if resources
 required to complete the operation have been exhausted (either by the same
 process or a different process).
-In this scenario `VK_ERROR_INITIALIZATION_FAILED` is returned.
+In this scenario [VK_ERROR_INITIALIZATION_FAILED](VkResult.html) is returned.
 
 * 
 Extending [VkDeviceQueueCreateInfo](VkDeviceQueueCreateInfo.html):
@@ -131,26 +131,26 @@ Extending [VkDeviceQueueCreateInfo](VkDeviceQueueCreateInfo.html):
 * 
 Extending [VkQueueGlobalPriority](VkQueueGlobalPriority.html):
 
-`VK_QUEUE_GLOBAL_PRIORITY_HIGH_EXT`
+[VK_QUEUE_GLOBAL_PRIORITY_HIGH_EXT](VkQueueGlobalPriority.html)
 
 * 
-`VK_QUEUE_GLOBAL_PRIORITY_LOW_EXT`
+[VK_QUEUE_GLOBAL_PRIORITY_LOW_EXT](VkQueueGlobalPriority.html)
 
 * 
-`VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT`
+[VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT](VkQueueGlobalPriority.html)
 
 * 
-`VK_QUEUE_GLOBAL_PRIORITY_REALTIME_EXT`
+[VK_QUEUE_GLOBAL_PRIORITY_REALTIME_EXT](VkQueueGlobalPriority.html)
 
 Extending [VkResult](VkResult.html):
 
 * 
-`VK_ERROR_NOT_PERMITTED_EXT`
+[VK_ERROR_NOT_PERMITTED_EXT](VkResult.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 Revision 2, 2017-11-03 (Andres Rodriguez)

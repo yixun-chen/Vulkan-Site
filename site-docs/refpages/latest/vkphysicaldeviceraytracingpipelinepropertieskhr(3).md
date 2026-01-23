@@ -51,8 +51,9 @@ structure.
 maximum number of levels of ray recursion allowed in a trace command.
 
 * 
-`maxShaderGroupStride` is the maximum stride in bytes allowed
-between shader groups in the shader binding table.
+ `maxShaderGroupStride` is the
+maximum stride in bytes allowed between shader groups in the shader
+binding table.
 
 * 
 `shaderGroupBaseAlignment` is the **required** alignment in bytes for
@@ -89,7 +90,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceRayTracingPipelinePropertiesKHR-sType-sType) VUID-VkPhysicalDeviceRayTracingPipelinePropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PIPELINE_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PIPELINE_PROPERTIES_KHR](VkStructureType.html)
 
 [VK_KHR_ray_tracing_pipeline](VK_KHR_ray_tracing_pipeline.html), [VkStructureType](VkStructureType.html)
 

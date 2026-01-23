@@ -45,7 +45,7 @@ Currently each call to this command results in the issue of a single video
 decode operation.
 
 If the bound video session was created with
-`VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR` and the `pNext`
+[VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html) and the `pNext`
 chain of `pDecodeInfo` includes a [VkVideoInlineQueryInfoKHR](VkVideoInlineQueryInfoKHR.html)
 structure with its `queryPool` member specifying a valid
 `VkQueryPool` handle, then this command will execute a query for each
@@ -171,7 +171,7 @@ of `codedOffsetGranularity` are `0`.
 * 
 If the bound video session was created with an [     H.264 decode profile](../../../../spec/latest/chapters/videocoding.html#decode-h264-profile) with a
 [VkVideoDecodeH264ProfileInfoKHR](VkVideoDecodeH264ProfileInfoKHR.html)::`pictureLayout` of
-`VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES_BIT_KHR`,
+[VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES_BIT_KHR](VkVideoDecodeH264PictureLayoutFlagBitsKHR.html),
 then `codedOffsetGranularity` is equal to
 [VkVideoDecodeH264CapabilitiesKHR](VkVideoDecodeH264CapabilitiesKHR.html)::`fieldOffsetGranularity`,
 as returned by [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for that
@@ -281,7 +281,7 @@ be less than or equal to the
 [](#VUID-vkCmdDecodeVideoKHR-pNext-08365) VUID-vkCmdDecodeVideoKHR-pNext-08365
 
 If the bound video session was created with
-`VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR`, and the
+[VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html), and the
 `pNext` chain of `pDecodeInfo` includes a
 [VkVideoInlineQueryInfoKHR](VkVideoInlineQueryInfoKHR.html) structure with its `queryPool`
 member specifying a valid `VkQueryPool` handle, then
@@ -291,7 +291,7 @@ member specifying a valid `VkQueryPool` handle, then
 [](#VUID-vkCmdDecodeVideoKHR-pNext-08366) VUID-vkCmdDecodeVideoKHR-pNext-08366
 
 If the bound video session was created with
-`VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR`, and the
+[VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html), and the
 `pNext` chain of `pDecodeInfo` includes a
 [VkVideoInlineQueryInfoKHR](VkVideoInlineQueryInfoKHR.html) structure with its `queryPool`
 member specifying a valid `VkQueryPool` handle, then all the queries
@@ -302,17 +302,17 @@ structure, **must** be *unavailable*
 [](#VUID-vkCmdDecodeVideoKHR-queryType-08367) VUID-vkCmdDecodeVideoKHR-queryType-08367
 
 If the bound video session was created with
-`VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR`, then the
+[VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html), then the
 `queryType` used to create the `queryPool` specified in the
 [VkVideoInlineQueryInfoKHR](VkVideoInlineQueryInfoKHR.html) structure included in the `pNext`
 chain of `pDecodeInfo` **must** be
-`VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR`
+[VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR](VkQueryType.html)
 
 * 
 [](#VUID-vkCmdDecodeVideoKHR-queryPool-08368) VUID-vkCmdDecodeVideoKHR-queryPool-08368
 
 If the bound video session was created with
-`VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR`, then the
+[VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html), then the
 `queryPool` specified in the [VkVideoInlineQueryInfoKHR](VkVideoInlineQueryInfoKHR.html)
 structure included in the `pNext` chain of `pDecodeInfo` **must**
 have been created with a [VkVideoProfileInfoKHR](VkVideoProfileInfoKHR.html) structure included
@@ -324,11 +324,11 @@ the bound video session was created with
 [](#VUID-vkCmdDecodeVideoKHR-queryType-08369) VUID-vkCmdDecodeVideoKHR-queryType-08369
 
 If the bound video session was created with
-`VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR`, and the
+[VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html), and the
 `queryType` used to create the `queryPool` specified in the
 [VkVideoInlineQueryInfoKHR](VkVideoInlineQueryInfoKHR.html) structure included in the `pNext`
 chain of `pDecodeInfo` is
-`VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR`, then the `VkCommandPool`
+[VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR](VkQueryType.html), then the `VkCommandPool`
 that `commandBuffer` was allocated from **must** have been created with
 a queue family index that supports [result    status queries](../../../../spec/latest/chapters/queries.html#queries-result-status-only), as indicated by
 [VkQueueFamilyQueryResultStatusPropertiesKHR](VkQueueFamilyQueryResultStatusPropertiesKHR.html)::`queryResultStatusSupport`
@@ -367,7 +367,7 @@ profile the bound video session was created with
 
 If `pDecodeInfo->pSetupReferenceSlot` is not `NULL` and
 [VkVideoDecodeCapabilitiesKHR](VkVideoDecodeCapabilitiesKHR.html)::`flags` does not include
-`VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR`, as
+[VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR](VkVideoDecodeCapabilityFlagBitsKHR.html), as
 returned by [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the video
 profile the bound video session was created with, then the video picture
 resources specified by `pDecodeInfo->dstPictureResource` and
@@ -381,15 +381,15 @@ If `pDecodeInfo->pSetupReferenceSlot` is not `NULL` and none of the
 following is true:
 
 [VkVideoDecodeCapabilitiesKHR](VkVideoDecodeCapabilitiesKHR.html)::`flags` includes
-`VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR`, as
+[VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR](VkVideoDecodeCapabilityFlagBitsKHR.html), as
 returned by [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the video
 profile the bound video session was created with
 
 * 
 the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR` and
+[VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and
 [VkVideoDecodeAV1ProfileInfoKHR](VkVideoDecodeAV1ProfileInfoKHR.html)::`filmGrainSupport` set to
-`VK_TRUE`, and [film grain](../../../../spec/latest/chapters/videocoding.html#decode-av1-film-grain) is enabled for
+[VK_TRUE](VK_TRUE.html), and [film grain](../../../../spec/latest/chapters/videocoding.html#decode-av1-film-grain) is enabled for
 the decoded picture
 
 then the video picture resources specified by
@@ -423,7 +423,7 @@ video session was created with
 [](#VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07146) VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07146
 
 `pDecodeInfo->dstPictureResource.imageViewBinding` **must** have been
-created with the `VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR` usage
+created with the [VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](VkImageUsageFlagBits.html) usage
 flag set
 
 [](#VUID-vkCmdDecodeVideoKHR-commandBuffer-07147) VUID-vkCmdDecodeVideoKHR-commandBuffer-07147
@@ -525,10 +525,10 @@ If `pDecodeInfo->pSetupReferenceSlot` is `NULL` or
 subresource as `pDecodeInfo->dstPictureResource`, then the image
 subresource [referred](../../../../spec/latest/chapters/videocoding.html#video-image-subresource-reference) to by
 `pDecodeInfo->dstPictureResource` **must** be in the
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR` layout at the time the video
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR](VkImageLayout.html) layout at the time the video
 decode operation is executed on the device
 , unless the [    `unifiedImageLayoutsVideo`](../../../../spec/latest/chapters/features.html#features-unifiedImageLayoutsVideo) feature is enabled, in which case it
-**may** be in the `VK_IMAGE_LAYOUT_GENERAL` layout
+**may** be in the [VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html) layout
 
 [](#VUID-vkCmdDecodeVideoKHR-pDecodeInfo-10802) VUID-vkCmdDecodeVideoKHR-pDecodeInfo-10802
 
@@ -538,42 +538,42 @@ If `pDecodeInfo->pSetupReferenceSlot` is not `NULL` and
 subresource as `pDecodeInfo->dstPictureResource`, then the image
 subresource [referred](../../../../spec/latest/chapters/videocoding.html#video-image-subresource-reference) to by
 `pDecodeInfo->dstPictureResource` **must** be in the
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR` layout at the time the video
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR](VkImageLayout.html) layout at the time the video
 decode operation is executed on the device
 , unless the [    `unifiedImageLayoutsVideo`](../../../../spec/latest/chapters/features.html#features-unifiedImageLayoutsVideo) feature is enabled, in which case it
-**may** be in the `VK_IMAGE_LAYOUT_GENERAL` layout
+**may** be in the [VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html) layout
 
 [](#VUID-vkCmdDecodeVideoKHR-pDecodeInfo-10803) VUID-vkCmdDecodeVideoKHR-pDecodeInfo-10803
 
 If `pDecodeInfo->pSetupReferenceSlot` is not `NULL`, then the image
 subresource [referred](../../../../spec/latest/chapters/videocoding.html#video-image-subresource-reference) to by
 `pDecodeInfo->pSetupReferenceSlot→pPictureResource` **must** be in the
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR` layout at the time the video
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR](VkImageLayout.html) layout at the time the video
 decode operation is executed on the device
 , unless the [    `unifiedImageLayoutsVideo`](../../../../spec/latest/chapters/features.html#features-unifiedImageLayoutsVideo) feature is enabled, in which case it
-**may** be in the `VK_IMAGE_LAYOUT_GENERAL` layout
+**may** be in the [VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html) layout
 
 [](#VUID-vkCmdDecodeVideoKHR-pPictureResource-10804) VUID-vkCmdDecodeVideoKHR-pPictureResource-10804
 
 The image subresource [referred](../../../../spec/latest/chapters/videocoding.html#video-image-subresource-reference) to
 by the `pPictureResource` member of each element of
 `pDecodeInfo->pReferenceSlots` **must** be in the
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR` layout at the time the video
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR](VkImageLayout.html) layout at the time the video
 decode operation is executed on the device
 , unless the [    `unifiedImageLayoutsVideo`](../../../../spec/latest/chapters/features.html#features-unifiedImageLayoutsVideo) feature is enabled, in which case it
-**may** be in the `VK_IMAGE_LAYOUT_GENERAL` layout
+**may** be in the [VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html) layout
 
 [](#VUID-vkCmdDecodeVideoKHR-pNext-07152) VUID-vkCmdDecodeVideoKHR-pNext-07152
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain of `pDecodeInfo` **must** include a
 [VkVideoDecodeH264PictureInfoKHR](VkVideoDecodeH264PictureInfoKHR.html) structure
 
 [](#VUID-vkCmdDecodeVideoKHR-None-07258) VUID-vkCmdDecodeVideoKHR-None-07258
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR` but was not created
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) but was not created
 with [interlaced frame support](../../../../spec/latest/chapters/videocoding.html#decode-h264-interlaced-support), then
 the [decode output picture](../../../../spec/latest/chapters/videocoding.html#decode-h264-output-picture-info) **must**
 represent a frame
@@ -581,7 +581,7 @@ represent a frame
 [](#VUID-vkCmdDecodeVideoKHR-pSliceOffsets-07153) VUID-vkCmdDecodeVideoKHR-pSliceOffsets-07153
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR`, then all elements of
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then all elements of
 the `pSliceOffsets` member of the
 [VkVideoDecodeH264PictureInfoKHR](VkVideoDecodeH264PictureInfoKHR.html) structure included in the
 `pNext` chain of `pDecodeInfo` **must** be less than
@@ -590,13 +590,13 @@ the `pSliceOffsets` member of the
 [](#VUID-vkCmdDecodeVideoKHR-None-10400) VUID-vkCmdDecodeVideoKHR-None-10400
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR`, then there **must** be
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then there **must** be
 a bound video session parameters object if any of the following
 conditions are not met:
 
 * 
 the bound video session was created with
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR`
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html)
 
 * 
 the `pNext` chain of `pDecodeInfo` includes a
@@ -615,7 +615,7 @@ included in the `pNext` chain of `pDecodeInfo` is not `NULL`
 [](#VUID-vkCmdDecodeVideoKHR-StdVideoH264SequenceParameterSet-07154) VUID-vkCmdDecodeVideoKHR-StdVideoH264SequenceParameterSet-07154
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR`, then the bound video
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the bound video
 session parameters object **must** contain a
 `StdVideoH264SequenceParameterSet` entry with
 `seq_parameter_set_id` matching
@@ -624,7 +624,7 @@ provided in the `pStdPictureInfo` member of the
 [VkVideoDecodeH264PictureInfoKHR](VkVideoDecodeH264PictureInfoKHR.html) structure included in the
 `pNext` chain of `pDecodeInfo`
 , unless the bound video session was created with
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR` and the
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html) and the
 `pNext` chain of `pDecodeInfo` includes a
 [VkVideoDecodeH264InlineSessionParametersInfoKHR](VkVideoDecodeH264InlineSessionParametersInfoKHR.html) structure, and its
 `pStdSPS` member is not equal to `NULL`
@@ -632,8 +632,8 @@ provided in the `pStdPictureInfo` member of the
 [](#VUID-vkCmdDecodeVideoKHR-pNext-10401) VUID-vkCmdDecodeVideoKHR-pNext-10401
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR` and with
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR`, and the
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and with
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html), and the
 `pNext` chain of `pDecodeInfo` includes a
 [VkVideoDecodeH264InlineSessionParametersInfoKHR](VkVideoDecodeH264InlineSessionParametersInfoKHR.html) structure with a
 non-`NULL` `pStdSPS` member, then
@@ -646,7 +646,7 @@ in the `pStdPictureInfo` member of the
 [](#VUID-vkCmdDecodeVideoKHR-StdVideoH264PictureParameterSet-07155) VUID-vkCmdDecodeVideoKHR-StdVideoH264PictureParameterSet-07155
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR`, then the bound video
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the bound video
 session parameters object **must** contain a
 `StdVideoH264PictureParameterSet` entry with
 `seq_parameter_set_id` and `pic_parameter_set_id` matching
@@ -656,7 +656,7 @@ respectively, that are provided in the `pStdPictureInfo` member of
 the [VkVideoDecodeH264PictureInfoKHR](VkVideoDecodeH264PictureInfoKHR.html) structure included in the
 `pNext` chain of `pDecodeInfo`
 , unless the bound video session was created with
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR` and the
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html) and the
 `pNext` chain of `pDecodeInfo` includes a
 [VkVideoDecodeH264InlineSessionParametersInfoKHR](VkVideoDecodeH264InlineSessionParametersInfoKHR.html) structure, and its
 `pStdPPS` member is not equal to `NULL`
@@ -664,8 +664,8 @@ the [VkVideoDecodeH264PictureInfoKHR](VkVideoDecodeH264PictureInfoKHR.html) stru
 [](#VUID-vkCmdDecodeVideoKHR-pNext-10402) VUID-vkCmdDecodeVideoKHR-pNext-10402
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR` and with
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR`, and the
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and with
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html), and the
 `pNext` chain of `pDecodeInfo` includes a
 [VkVideoDecodeH264InlineSessionParametersInfoKHR](VkVideoDecodeH264InlineSessionParametersInfoKHR.html) structure with a
 non-`NULL` `pStdPPS` member, then
@@ -680,7 +680,7 @@ respectively, provided in the `pStdPictureInfo` member of the
 [](#VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07156) VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07156
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR` and
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and
 `pDecodeInfo->pSetupReferenceSlot` is not `NULL`, then the
 `pNext` chain of `pDecodeInfo->pSetupReferenceSlot` **must**
 include a [VkVideoDecodeH264DpbSlotInfoKHR](VkVideoDecodeH264DpbSlotInfoKHR.html) structure
@@ -688,7 +688,7 @@ include a [VkVideoDecodeH264DpbSlotInfoKHR](VkVideoDecodeH264DpbSlotInfoKHR.html
 [](#VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07259) VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07259
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR` but was not created
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) but was not created
 with [interlaced frame support](../../../../spec/latest/chapters/videocoding.html#decode-h264-interlaced-support), and
 `pDecodeInfo->pSetupReferenceSlot` is not `NULL`, then the
 [reconstructed picture](../../../../spec/latest/chapters/videocoding.html#decode-h264-reconstructed-picture-info) **must**
@@ -697,14 +697,14 @@ represent a frame
 [](#VUID-vkCmdDecodeVideoKHR-pNext-07157) VUID-vkCmdDecodeVideoKHR-pNext-07157
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain of each element of `pDecodeInfo->pReferenceSlots` **must**
 include a [VkVideoDecodeH264DpbSlotInfoKHR](VkVideoDecodeH264DpbSlotInfoKHR.html) structure
 
 [](#VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07260) VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07260
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR` but was not created
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) but was not created
 with [interlaced frame support](../../../../spec/latest/chapters/videocoding.html#decode-h264-interlaced-support), then
 each [active reference    picture](../../../../spec/latest/chapters/videocoding.html#decode-h264-active-reference-picture-info) corresponding to the elements of
 `pDecodeInfo->pReferenceSlots` **must** represent a frame
@@ -712,7 +712,7 @@ each [active reference    picture](../../../../spec/latest/chapters/videocoding.
 [](#VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07261) VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07261
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR`,
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html),
 `pDecodeInfo->pSetupReferenceSlot` is not `NULL`, and the
 [decode output picture](../../../../spec/latest/chapters/videocoding.html#decode-h264-output-picture-info) represents a
 frame, then the [reconstructed    picture](../../../../spec/latest/chapters/videocoding.html#decode-h264-reconstructed-picture-info) **must** also represent a frame
@@ -720,7 +720,7 @@ frame, then the [reconstructed    picture](../../../../spec/latest/chapters/vide
 [](#VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07262) VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07262
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR`,
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html),
 `pDecodeInfo->pSetupReferenceSlot` is not `NULL`, and the
 [decode output picture](../../../../spec/latest/chapters/videocoding.html#decode-h264-output-picture-info) represents a
 top field, then the
@@ -730,7 +730,7 @@ also represent a top field
 [](#VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07263) VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07263
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR`,
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html),
 `pDecodeInfo->pSetupReferenceSlot` is not `NULL`, and the
 [decode output picture](../../../../spec/latest/chapters/videocoding.html#decode-h264-output-picture-info) represents a
 bottom field, then the [    reconstructed picture](../../../../spec/latest/chapters/videocoding.html#decode-h264-reconstructed-picture-info) **must** also represent a bottom field
@@ -738,7 +738,7 @@ bottom field, then the [    reconstructed picture](../../../../spec/latest/chapt
 [](#VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07266) VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07266
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR` and an
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and an
 [active reference picture](../../../../spec/latest/chapters/videocoding.html#decode-h264-active-reference-picture-info)
 corresponding to any element of `pDecodeInfo->pReferenceSlots`
 represents a frame, then the DPB slot index of the bound video session
@@ -751,7 +751,7 @@ the time the command is executed on the device
 [](#VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07267) VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07267
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR` and an
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and an
 [active reference picture](../../../../spec/latest/chapters/videocoding.html#decode-h264-active-reference-picture-info)
 corresponding to any element of `pDecodeInfo->pReferenceSlots`
 represents a top field, then the DPB slot index of the bound video
@@ -764,7 +764,7 @@ the time the command is executed on the device
 [](#VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07268) VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07268
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR` and an
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and an
 [active reference picture](../../../../spec/latest/chapters/videocoding.html#decode-h264-active-reference-picture-info)
 corresponding to any element of `pDecodeInfo->pReferenceSlots`
 represents a bottom field, then the DPB slot index of the bound video
@@ -777,14 +777,14 @@ the time the command is executed on the device
 [](#VUID-vkCmdDecodeVideoKHR-pNext-07158) VUID-vkCmdDecodeVideoKHR-pNext-07158
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain of `pDecodeInfo` **must** include a
 [VkVideoDecodeH265PictureInfoKHR](VkVideoDecodeH265PictureInfoKHR.html) structure
 
 [](#VUID-vkCmdDecodeVideoKHR-pSliceSegmentOffsets-07159) VUID-vkCmdDecodeVideoKHR-pSliceSegmentOffsets-07159
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR`, then all elements of
+[VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then all elements of
 the `pSliceSegmentOffsets` member of the
 [VkVideoDecodeH265PictureInfoKHR](VkVideoDecodeH265PictureInfoKHR.html) structure included in the
 `pNext` chain of `pDecodeInfo` **must** be less than
@@ -793,13 +793,13 @@ the `pSliceSegmentOffsets` member of the
 [](#VUID-vkCmdDecodeVideoKHR-None-10403) VUID-vkCmdDecodeVideoKHR-None-10403
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR`, then there **must** be
+[VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then there **must** be
 a bound video session parameters object if any of the following
 conditions are not met:
 
 * 
 the bound video session was created with
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR`
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html)
 
 * 
 the `pNext` chain of `pDecodeInfo` includes a
@@ -823,7 +823,7 @@ included in the `pNext` chain of `pDecodeInfo` is not `NULL`
 [](#VUID-vkCmdDecodeVideoKHR-StdVideoH265VideoParameterSet-07160) VUID-vkCmdDecodeVideoKHR-StdVideoH265VideoParameterSet-07160
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR`, then the bound video
+[VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the bound video
 session parameters object **must** contain a
 `StdVideoH265VideoParameterSet` entry with
 `vps_video_parameter_set_id` matching
@@ -832,7 +832,7 @@ that is provided in the `pStdPictureInfo` member of the
 [VkVideoDecodeH265PictureInfoKHR](VkVideoDecodeH265PictureInfoKHR.html) structure included in the
 `pNext` chain of `pDecodeInfo`
 , unless the bound video session was created with
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR` and the
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html) and the
 `pNext` chain of `pDecodeInfo` includes a
 [VkVideoDecodeH265InlineSessionParametersInfoKHR](VkVideoDecodeH265InlineSessionParametersInfoKHR.html) structure, and its
 `pStdVPS` member is not equal to `NULL`
@@ -840,8 +840,8 @@ that is provided in the `pStdPictureInfo` member of the
 [](#VUID-vkCmdDecodeVideoKHR-pNext-10404) VUID-vkCmdDecodeVideoKHR-pNext-10404
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR` and with
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR`, and the
+[VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and with
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html), and the
 `pNext` chain of `pDecodeInfo` includes a
 [VkVideoDecodeH265InlineSessionParametersInfoKHR](VkVideoDecodeH265InlineSessionParametersInfoKHR.html) structure with a
 non-`NULL` `pStdVPS` member, then
@@ -854,7 +854,7 @@ provided in the `pStdPictureInfo` member of the
 [](#VUID-vkCmdDecodeVideoKHR-StdVideoH265SequenceParameterSet-07161) VUID-vkCmdDecodeVideoKHR-StdVideoH265SequenceParameterSet-07161
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR`, then the bound video
+[VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the bound video
 session parameters object **must** contain a
 `StdVideoH265SequenceParameterSet` entry with
 `sps_video_parameter_set_id` and `sps_seq_parameter_set_id`
@@ -865,7 +865,7 @@ respectively, that are provided in the `pStdPictureInfo` member of
 the [VkVideoDecodeH265PictureInfoKHR](VkVideoDecodeH265PictureInfoKHR.html) structure included in the
 `pNext` chain of `pDecodeInfo`
 , unless the bound video session was created with
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR` and the
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html) and the
 `pNext` chain of `pDecodeInfo` includes a
 [VkVideoDecodeH265InlineSessionParametersInfoKHR](VkVideoDecodeH265InlineSessionParametersInfoKHR.html) structure, and its
 `pStdSPS` member is not equal to `NULL`
@@ -873,8 +873,8 @@ the [VkVideoDecodeH265PictureInfoKHR](VkVideoDecodeH265PictureInfoKHR.html) stru
 [](#VUID-vkCmdDecodeVideoKHR-pNext-10405) VUID-vkCmdDecodeVideoKHR-pNext-10405
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR` and with
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR`, and the
+[VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and with
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html), and the
 `pNext` chain of `pDecodeInfo` includes a
 [VkVideoDecodeH265InlineSessionParametersInfoKHR](VkVideoDecodeH265InlineSessionParametersInfoKHR.html) structure with a
 non-`NULL` `pStdSPS` member, then
@@ -889,7 +889,7 @@ respectively, provided in the `pStdPictureInfo` member of the
 [](#VUID-vkCmdDecodeVideoKHR-StdVideoH265PictureParameterSet-07162) VUID-vkCmdDecodeVideoKHR-StdVideoH265PictureParameterSet-07162
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR`, then the bound video
+[VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the bound video
 session parameters object **must** contain a
 `StdVideoH265PictureParameterSet` entry with
 `sps_video_parameter_set_id`, `pps_seq_parameter_set_id`, and
@@ -901,7 +901,7 @@ respectively, that are provided in the `pStdPictureInfo` member of
 the [VkVideoDecodeH265PictureInfoKHR](VkVideoDecodeH265PictureInfoKHR.html) structure included in the
 `pNext` chain of `pDecodeInfo`
 , unless the bound video session was created with
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR` and the
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html) and the
 `pNext` chain of `pDecodeInfo` includes a
 [VkVideoDecodeH265InlineSessionParametersInfoKHR](VkVideoDecodeH265InlineSessionParametersInfoKHR.html) structure, and its
 `pStdPPS` member is not equal to `NULL`
@@ -909,8 +909,8 @@ the [VkVideoDecodeH265PictureInfoKHR](VkVideoDecodeH265PictureInfoKHR.html) stru
 [](#VUID-vkCmdDecodeVideoKHR-pNext-10406) VUID-vkCmdDecodeVideoKHR-pNext-10406
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR` and with
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR`, and the
+[VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and with
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html), and the
 `pNext` chain of `pDecodeInfo` includes a
 [VkVideoDecodeH265InlineSessionParametersInfoKHR](VkVideoDecodeH265InlineSessionParametersInfoKHR.html) structure with a
 non-`NULL` `pStdPPS` member, then
@@ -927,7 +927,7 @@ respectively, provided in the `pStdPictureInfo` member of the
 [](#VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07163) VUID-vkCmdDecodeVideoKHR-pDecodeInfo-07163
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR` and
+[VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and
 `pDecodeInfo->pSetupReferenceSlot` is not `NULL`, then the
 `pNext` chain of `pDecodeInfo->pSetupReferenceSlot` **must**
 include a [VkVideoDecodeH265DpbSlotInfoKHR](VkVideoDecodeH265DpbSlotInfoKHR.html) structure
@@ -935,21 +935,21 @@ include a [VkVideoDecodeH265DpbSlotInfoKHR](VkVideoDecodeH265DpbSlotInfoKHR.html
 [](#VUID-vkCmdDecodeVideoKHR-pNext-07164) VUID-vkCmdDecodeVideoKHR-pNext-07164
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain of each element of `pDecodeInfo->pReferenceSlots` **must**
 include a [VkVideoDecodeH265DpbSlotInfoKHR](VkVideoDecodeH265DpbSlotInfoKHR.html) structure
 
 [](#VUID-vkCmdDecodeVideoKHR-pNext-10805) VUID-vkCmdDecodeVideoKHR-pNext-10805
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain of `pDecodeInfo` **must** include a
 [VkVideoDecodeVP9PictureInfoKHR](VkVideoDecodeVP9PictureInfoKHR.html) structure
 
 [](#VUID-vkCmdDecodeVideoKHR-uncompressedHeaderOffset-10806) VUID-vkCmdDecodeVideoKHR-uncompressedHeaderOffset-10806
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR`, then the
+[VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 `uncompressedHeaderOffset` member of the
 [VkVideoDecodeVP9PictureInfoKHR](VkVideoDecodeVP9PictureInfoKHR.html) structure included in the
 `pNext` chain of `pDecodeInfo` **must** be less than
@@ -958,7 +958,7 @@ If the bound video session was created with the video codec operation
 [](#VUID-vkCmdDecodeVideoKHR-compressedHeaderOffset-10807) VUID-vkCmdDecodeVideoKHR-compressedHeaderOffset-10807
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR`, then the
+[VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 `compressedHeaderOffset` member of the
 [VkVideoDecodeVP9PictureInfoKHR](VkVideoDecodeVP9PictureInfoKHR.html) structure included in the
 `pNext` chain of `pDecodeInfo` **must** be less than
@@ -967,7 +967,7 @@ If the bound video session was created with the video codec operation
 [](#VUID-vkCmdDecodeVideoKHR-tilesOffset-10808) VUID-vkCmdDecodeVideoKHR-tilesOffset-10808
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR`, then the
+[VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 `tilesOffset` member of the [VkVideoDecodeVP9PictureInfoKHR](VkVideoDecodeVP9PictureInfoKHR.html)
 structure included in the `pNext` chain of `pDecodeInfo` **must**
 be less than `pDecodeInfo->srcBufferRange`
@@ -975,7 +975,7 @@ be less than `pDecodeInfo->srcBufferRange`
 [](#VUID-vkCmdDecodeVideoKHR-referenceNameSlotIndices-10809) VUID-vkCmdDecodeVideoKHR-referenceNameSlotIndices-10809
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR`, then each element of
+[VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then each element of
 the `referenceNameSlotIndices` array member of the
 [VkVideoDecodeVP9PictureInfoKHR](VkVideoDecodeVP9PictureInfoKHR.html) structure included in the
 `pNext` chain of `pDecodeInfo` **must** either be negative or **must**
@@ -985,7 +985,7 @@ equal the `slotIndex` member of one of the elements of
 [](#VUID-vkCmdDecodeVideoKHR-slotIndex-10810) VUID-vkCmdDecodeVideoKHR-slotIndex-10810
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR`, then the
+[VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 `slotIndex` member of each element of
 `pDecodeInfo->pReferenceSlots` **must** equal one of the elements of
 the `referenceNameSlotIndices` array member of the
@@ -995,15 +995,15 @@ the `referenceNameSlotIndices` array member of the
 [](#VUID-vkCmdDecodeVideoKHR-filmGrainSupport-09248) VUID-vkCmdDecodeVideoKHR-filmGrainSupport-09248
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR` and
+[VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and
 [VkVideoDecodeAV1ProfileInfoKHR](VkVideoDecodeAV1ProfileInfoKHR.html)::`filmGrainSupport` set to
-`VK_FALSE`, then [film grain](../../../../spec/latest/chapters/videocoding.html#decode-av1-film-grain) **must** not be
+[VK_FALSE](VK_FALSE.html), then [film grain](../../../../spec/latest/chapters/videocoding.html#decode-av1-film-grain) **must** not be
 enabled for the decoded picture
 
 [](#VUID-vkCmdDecodeVideoKHR-pDecodeInfo-09249) VUID-vkCmdDecodeVideoKHR-pDecodeInfo-09249
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR`,
+[VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html),
 `pDecodeInfo->pSetupReferenceSlot` is not `NULL`, and
 [film grain](../../../../spec/latest/chapters/videocoding.html#decode-av1-film-grain) is enabled for the decoded picture,
 then the video picture resources specified by
@@ -1014,14 +1014,14 @@ then the video picture resources specified by
 [](#VUID-vkCmdDecodeVideoKHR-pNext-09250) VUID-vkCmdDecodeVideoKHR-pNext-09250
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain of `pDecodeInfo` **must** include a
 [VkVideoDecodeAV1PictureInfoKHR](VkVideoDecodeAV1PictureInfoKHR.html) structure
 
 [](#VUID-vkCmdDecodeVideoKHR-frameHeaderOffset-09251) VUID-vkCmdDecodeVideoKHR-frameHeaderOffset-09251
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR`, then the
+[VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 `frameHeaderOffset` member of the
 [VkVideoDecodeAV1PictureInfoKHR](VkVideoDecodeAV1PictureInfoKHR.html) structure included in the
 `pNext` chain of `pDecodeInfo` **must** be less than
@@ -1030,7 +1030,7 @@ If the bound video session was created with the video codec operation
 [](#VUID-vkCmdDecodeVideoKHR-pTileOffsets-09253) VUID-vkCmdDecodeVideoKHR-pTileOffsets-09253
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR`, then all elements of
+[VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then all elements of
 the `pTileOffsets` member of the
 [VkVideoDecodeAV1PictureInfoKHR](VkVideoDecodeAV1PictureInfoKHR.html) structure included in the
 `pNext` chain of `pDecodeInfo` **must** be less than
@@ -1039,7 +1039,7 @@ the `pTileOffsets` member of the
 [](#VUID-vkCmdDecodeVideoKHR-pTileOffsets-09252) VUID-vkCmdDecodeVideoKHR-pTileOffsets-09252
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR`, then for each element
+[VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then for each element
 i of the `pTileOffsets` and `pTileSizes` members of the
 [VkVideoDecodeAV1PictureInfoKHR](VkVideoDecodeAV1PictureInfoKHR.html) structure included in the
 `pNext` chain of `pDecodeInfo` the sum of `pTileOffsets`[i]
@@ -1049,7 +1049,7 @@ and `pTileSizes`[i] **must** be less than or equal to
 [](#VUID-vkCmdDecodeVideoKHR-pDecodeInfo-09254) VUID-vkCmdDecodeVideoKHR-pDecodeInfo-09254
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR` and
+[VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and
 `pDecodeInfo->pSetupReferenceSlot` is not `NULL`, then the
 `pNext` chain of `pDecodeInfo->pSetupReferenceSlot` **must**
 include a [VkVideoDecodeAV1DpbSlotInfoKHR](VkVideoDecodeAV1DpbSlotInfoKHR.html) structure
@@ -1057,14 +1057,14 @@ include a [VkVideoDecodeAV1DpbSlotInfoKHR](VkVideoDecodeAV1DpbSlotInfoKHR.html) 
 [](#VUID-vkCmdDecodeVideoKHR-pNext-09255) VUID-vkCmdDecodeVideoKHR-pNext-09255
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain of each element of `pDecodeInfo->pReferenceSlots` **must**
 include a [VkVideoDecodeAV1DpbSlotInfoKHR](VkVideoDecodeAV1DpbSlotInfoKHR.html) structure
 
 [](#VUID-vkCmdDecodeVideoKHR-referenceNameSlotIndices-09262) VUID-vkCmdDecodeVideoKHR-referenceNameSlotIndices-09262
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR`, then each element of
+[VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then each element of
 the `referenceNameSlotIndices` array member of the
 [VkVideoDecodeAV1PictureInfoKHR](VkVideoDecodeAV1PictureInfoKHR.html) structure included in the
 `pNext` chain of `pDecodeInfo` **must** either be negative or **must**
@@ -1074,7 +1074,7 @@ equal the `slotIndex` member of one of the elements of
 [](#VUID-vkCmdDecodeVideoKHR-slotIndex-09263) VUID-vkCmdDecodeVideoKHR-slotIndex-09263
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR`, then the
+[VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 `slotIndex` member of each element of
 `pDecodeInfo->pReferenceSlots` **must** equal one of the elements of
 the `referenceNameSlotIndices` array member of the
@@ -1084,13 +1084,13 @@ the `referenceNameSlotIndices` array member of the
 [](#VUID-vkCmdDecodeVideoKHR-None-10407) VUID-vkCmdDecodeVideoKHR-None-10407
 
 If the bound video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR`, then there **must** be a
+[VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then there **must** be a
 bound video session parameters object if any of the following conditions
 are not met:
 
 * 
 the bound video session was created with
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR`
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html)
 
 * 
 the `pNext` chain of `pDecodeInfo` includes a
@@ -1121,7 +1121,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdDecodeVideoKHR-commandBuffer-cmdpool) VUID-vkCmdDecodeVideoKHR-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_VIDEO_DECODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_VIDEO_DECODE_BIT_KHR](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdDecodeVideoKHR-renderpass) VUID-vkCmdDecodeVideoKHR-renderpass

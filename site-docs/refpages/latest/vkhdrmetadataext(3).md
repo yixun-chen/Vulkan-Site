@@ -87,7 +87,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkHdrMetadataEXT-sType-sType) VUID-VkHdrMetadataEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_HDR_METADATA_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_HDR_METADATA_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkHdrMetadataEXT-pNext-pNext) VUID-VkHdrMetadataEXT-pNext-pNext

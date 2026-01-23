@@ -104,13 +104,13 @@ the `[VK_KHR_get_physical_device_properties2](VK_KHR_get_physical_device_propert
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR`
+[VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR`
+[VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR](VkStructureType.html)
 
 1) What should this extension be named?
 

@@ -54,7 +54,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkShaderModuleValidationCacheCreateInfoEXT-sType-sType) VUID-VkShaderModuleValidationCacheCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkShaderModuleValidationCacheCreateInfoEXT-validationCache-parameter) VUID-VkShaderModuleValidationCacheCreateInfoEXT-validationCache-parameter

@@ -40,7 +40,7 @@ stage.
 `duration` is the duration spent creating a pipeline or pipeline
 stage in nanoseconds.
 
-If the `VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT` is not set in
+If the [VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT](VkPipelineCreationFeedbackFlagBits.html) is not set in
 `flags`, an implementation **must** not set any other bits in `flags`,
 and the values of all other `VkPipelineCreationFeedback` data members
 are **undefined**.

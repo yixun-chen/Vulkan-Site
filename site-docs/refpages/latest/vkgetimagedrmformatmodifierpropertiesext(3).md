@@ -19,7 +19,7 @@
 
 vkGetImageDrmFormatModifierPropertiesEXT - Returns an image’s DRM format modifier
 
-If an image was created with `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`,
+If an image was created with [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html),
 then the image has a [Linux DRM format modifier](../../../../spec/latest/appendices/glossary.html#glossary-drm-format-modifier).
 To query the *modifier*, call:
 
@@ -45,7 +45,7 @@ Valid Usage
 * 
 [](#VUID-vkGetImageDrmFormatModifierPropertiesEXT-image-02272) VUID-vkGetImageDrmFormatModifierPropertiesEXT-image-02272
 
-`image` **must** have been created with [    `tiling`](../../../../spec/latest/chapters/resources.html#VkImageCreateInfo) equal to `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`
+`image` **must** have been created with [    `tiling`](../../../../spec/latest/chapters/resources.html#VkImageCreateInfo) equal to [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html)
 
 Valid Usage (Implicit)
 
@@ -74,18 +74,18 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_EXT_image_drm_format_modifier](VK_EXT_image_drm_format_modifier.html), [VkDevice](VkDevice.html), [VkImage](VkImage.html), [VkImageDrmFormatModifierPropertiesEXT](VkImageDrmFormatModifierPropertiesEXT.html)
 

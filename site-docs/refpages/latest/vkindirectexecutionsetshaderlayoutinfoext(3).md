@@ -52,15 +52,15 @@ Valid Usage
 [](#VUID-VkIndirectExecutionSetShaderLayoutInfoEXT-pSetLayouts-11024) VUID-VkIndirectExecutionSetShaderLayoutInfoEXT-pSetLayouts-11024
 
 All members of `pSetLayouts` **must** not contain descriptors of type
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkIndirectExecutionSetShaderLayoutInfoEXT-sType-sType) VUID-VkIndirectExecutionSetShaderLayoutInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_SHADER_LAYOUT_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_SHADER_LAYOUT_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkIndirectExecutionSetShaderLayoutInfoEXT-pSetLayouts-parameter) VUID-VkIndirectExecutionSetShaderLayoutInfoEXT-pSetLayouts-parameter

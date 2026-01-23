@@ -78,12 +78,12 @@ using fixed texture sampling functionality.
 * 
 Extending [VkFilter](VkFilter.html):
 
-`VK_FILTER_CUBIC_IMG`
+[VK_FILTER_CUBIC_IMG](VkFilter.html)
 
 Extending [VkFormatFeatureFlagBits](VkFormatFeatureFlagBits.html):
 
 * 
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_IMG`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_IMG](VkFormatFeatureFlagBits.html)
 
 Creating a sampler with the new filter for both magnification and
 minification

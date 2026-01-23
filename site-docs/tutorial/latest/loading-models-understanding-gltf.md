@@ -227,7 +227,7 @@ Reduces the number of file operations during loading
 * 
 Better for deployment and distribution
 
-|  | This section provides a brief overview of PBR materials as they relate to glTF loading. For a more comprehensive explanation of PBR concepts and lighting models, please refer to the [Physically Based Rendering section](../../Lighting_Materials/02_lighting_models.adoc#physically-based-rendering-pbr) in the Lighting Materials chapter. |
+|  | This section provides a brief overview of PBR materials as they relate to glTF loading. For a more comprehensive explanation of PBR concepts and lighting models, please refer to the [Physically Based Rendering section](../Lighting_Materials/02_lighting_models.html#physically-based-rendering-pbr) in the Lighting Materials chapter. |
 | --- | --- |
 
 Materials define how surfaces look when rendered. Modern games and engines use Physically Based Rendering (PBR), which simulates how light interacts with real-world materials based on physical principles.
@@ -292,6 +292,8 @@ Not affected by scene lighting
 These properties can be specified as constant values or as texture maps for
 spatial variation across the surface. We’ll go into details about PBR in the
 next few chapters.
+
+![Bookstand with complex PBR materials - demonstrating wood](../../_images/images/bookstand.png)
 
 In our engine, we use KTX2 with Basis Universal compression for textures. This approach offers several advantages:
 
@@ -712,9 +714,15 @@ glTF uses a flexible animation system that can represent various animation techn
 **Targets**: The properties being animated (translation, rotation, scale, or weights for morph targets)
 
 glTF supports three interpolation methods:
-* **LINEAR**: Smooth transitions with constant velocity
-* **STEP**: Sudden changes with no interpolation
-* **CUBICSPLINE**: Smooth curves with control points for acceleration and deceleration
+
+* 
+**LINEAR**: Smooth transitions with constant velocity
+
+* 
+**STEP**: Sudden changes with no interpolation
+
+* 
+**CUBICSPLINE**: Smooth curves with control points for acceleration and deceleration
 
 This system allows for complex animations that can target specific parts of a model independently, enabling actions like walking, facial expressions, and complex interactions.
 
@@ -997,4 +1005,4 @@ In the next chapter, we’ll explore how to render these models using
 physically-based rendering techniques, bringing our loaded assets to life
 with realistic lighting and materials.
 
-[Previous: Implementing the Model Loading System](03_model_system.adoc) | [Next: Implementing PBR Rendering](05_pbr_rendering.adoc)
+[Previous: Implementing the Model Loading System](03_model_system.html) | [Next: Implementing PBR Rendering](05_pbr_rendering.html)

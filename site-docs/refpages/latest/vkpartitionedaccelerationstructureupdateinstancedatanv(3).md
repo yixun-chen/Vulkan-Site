@@ -65,7 +65,7 @@ The most significant 8 bits of `instanceContributionToHitGroupIndex`
 [](#VUID-VkPartitionedAccelerationStructureUpdateInstanceDataNV-None-10572) VUID-VkPartitionedAccelerationStructureUpdateInstanceDataNV-None-10572
 
 The instance **must** have either been created with flag
-`VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_ENABLE_EXPLICIT_BOUNDING_BOX_NV`
+[VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_ENABLE_EXPLICIT_BOUNDING_BOX_NV](VkPartitionedAccelerationStructureInstanceFlagBitsNV.html)
 or did not have an acceleration structure assigned with
 [VkPartitionedAccelerationStructureWriteInstanceDataNV](VkPartitionedAccelerationStructureWriteInstanceDataNV.html)
 

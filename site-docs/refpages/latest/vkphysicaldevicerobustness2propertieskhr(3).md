@@ -64,7 +64,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceRobustness2PropertiesKHR-sType-sType) VUID-VkPhysicalDeviceRobustness2PropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_KHR](VkStructureType.html)
 
 [VK_EXT_robustness2](VK_EXT_robustness2.html), [VK_KHR_robustness2](VK_KHR_robustness2.html), `VkDeviceSize`, [VkStructureType](VkStructureType.html)
 

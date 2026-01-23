@@ -124,14 +124,14 @@ extensions in `ppEnabledExtensionNames` **must** contain
 If the `pNext` chain includes a
 [VkExportMetalObjectCreateInfoEXT](VkExportMetalObjectCreateInfoEXT.html) structure, its
 `exportObjectType` member **must** be either
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT` or
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT`
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT](VkExportMetalObjectTypeFlagBitsEXT.html) or
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT](VkExportMetalObjectTypeFlagBitsEXT.html)
 
 * 
 [](#VUID-VkInstanceCreateInfo-flags-06559) VUID-VkInstanceCreateInfo-flags-06559
 
 If `flags` has the
-`VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR` bit set, the list
+[VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR](VkInstanceCreateFlagBits.html) bit set, the list
 of enabled extensions in `ppEnabledExtensionNames` **must** contain
 `[VK_KHR_portability_enumeration](VK_KHR_portability_enumeration.html)`
 
@@ -172,7 +172,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkInstanceCreateInfo-sType-sType) VUID-VkInstanceCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkInstanceCreateInfo-pNext-pNext) VUID-VkInstanceCreateInfo-pNext-pNext

@@ -31,19 +31,19 @@ typedef enum VkVideoEncodeH265TransformBlockSizeFlagBitsKHR {
 } VkVideoEncodeH265TransformBlockSizeFlagBitsKHR;
 
 * 
-`VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_4_BIT_KHR` specifies that
+[VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_4_BIT_KHR](#) specifies that
 a transform block size of 4x4 is supported.
 
 * 
-`VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_8_BIT_KHR` specifies that
+[VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_8_BIT_KHR](#) specifies that
 a transform block size of 8x8 is supported.
 
 * 
-`VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_16_BIT_KHR` specifies
+[VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_16_BIT_KHR](#) specifies
 that a transform block size of 16x16 is supported.
 
 * 
-`VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_32_BIT_KHR` specifies
+[VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_32_BIT_KHR](#) specifies
 that a transform block size of 32x32 is supported.
 
 [VK_KHR_video_encode_h265](VK_KHR_video_encode_h265.html), [VkVideoEncodeH265TransformBlockSizeFlagsKHR](VkVideoEncodeH265TransformBlockSizeFlagsKHR.html)

@@ -56,7 +56,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDisplayPlaneInfo2KHR-sType-sType) VUID-VkDisplayPlaneInfo2KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_PLANE_INFO_2_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_PLANE_INFO_2_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkDisplayPlaneInfo2KHR-pNext-pNext) VUID-VkDisplayPlaneInfo2KHR-pNext-pNext

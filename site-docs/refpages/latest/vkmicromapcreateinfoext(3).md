@@ -72,17 +72,17 @@ at the same `offset`.
 
 Applications **should** avoid creating micromaps with application-provided
 addresses and implementation-provided addresses in the same process, to
-reduce the likelihood of `VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR`
+reduce the likelihood of [VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR](VkResult.html)
 errors.
 
 |  | The expected usage for this is that a trace capture/replay tool will add the
 | --- | --- |
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` flag to all buffers
-that use `VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT`, and will add
-`VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT` to all buffers used as
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkBufferCreateFlagBits.html) flag to all buffers
+that use [VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](VkBufferUsageFlagBits.html), and will add
+[VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](VkBufferUsageFlagBits.html) to all buffers used as
 storage for a micromap where `deviceAddress` is not zero.
 This also means that the tool will need to add
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT` to memory allocations to allow
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](VkMemoryAllocateFlagBits.html) to memory allocations to allow
 the flag to be set where the application may not have otherwise required it.
 During capture the tool will save the queried opaque device addresses in the
 trace.
@@ -93,7 +93,7 @@ Implementations are expected to separate such buffers in the GPU address
 space so normal allocations will avoid using these addresses.
 Applications and tools should avoid mixing application-provided and
 implementation-provided addresses for buffers created with
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT`, to avoid address
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkBufferCreateFlagBits.html), to avoid address
 space allocation conflicts. |
 
 If the micromap will be the target of a build operation, the required size
@@ -105,27 +105,27 @@ Valid Usage
 [](#VUID-VkMicromapCreateInfoEXT-deviceAddress-07433) VUID-VkMicromapCreateInfoEXT-deviceAddress-07433
 
 If `deviceAddress` is not zero, `createFlags` **must** include
-`VK_MICROMAP_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT`
+[VK_MICROMAP_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT](VkMicromapCreateFlagBitsEXT.html)
 
 * 
 [](#VUID-VkMicromapCreateInfoEXT-createFlags-07434) VUID-VkMicromapCreateInfoEXT-createFlags-07434
 
 If `createFlags` includes
-`VK_MICROMAP_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT`,
+[VK_MICROMAP_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT](VkMicromapCreateFlagBitsEXT.html),
 [VkPhysicalDeviceOpacityMicromapFeaturesEXT](VkPhysicalDeviceOpacityMicromapFeaturesEXT.html)::`micromapCaptureReplay`
-**must** be `VK_TRUE`
+**must** be [VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-VkMicromapCreateInfoEXT-buffer-07435) VUID-VkMicromapCreateInfoEXT-buffer-07435
 
 `buffer` **must** have been created with the
-`VK_BUFFER_USAGE_MICROMAP_STORAGE_BIT_EXT` usage flag set
+[VK_BUFFER_USAGE_MICROMAP_STORAGE_BIT_EXT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkMicromapCreateInfoEXT-buffer-07436) VUID-VkMicromapCreateInfoEXT-buffer-07436
 
 `buffer` **must** not have been created with
-`VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](VkBufferCreateFlagBits.html)
 
 * 
 [](#VUID-VkMicromapCreateInfoEXT-offset-07437) VUID-VkMicromapCreateInfoEXT-offset-07437
@@ -143,7 +143,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMicromapCreateInfoEXT-sType-sType) VUID-VkMicromapCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MICROMAP_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MICROMAP_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkMicromapCreateInfoEXT-pNext-pNext) VUID-VkMicromapCreateInfoEXT-pNext-pNext

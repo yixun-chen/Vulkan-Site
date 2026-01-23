@@ -55,15 +55,15 @@ Valid Usage
 * 
 [](#VUID-VkGeometryNV-geometryType-03503) VUID-VkGeometryNV-geometryType-03503
 
-`geometryType` **must** be `VK_GEOMETRY_TYPE_TRIANGLES_NV` or
-`VK_GEOMETRY_TYPE_AABBS_NV`
+`geometryType` **must** be [VK_GEOMETRY_TYPE_TRIANGLES_NV](VkGeometryTypeKHR.html) or
+[VK_GEOMETRY_TYPE_AABBS_NV](VkGeometryTypeKHR.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkGeometryNV-sType-sType) VUID-VkGeometryNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GEOMETRY_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GEOMETRY_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkGeometryNV-pNext-pNext) VUID-VkGeometryNV-pNext-pNext

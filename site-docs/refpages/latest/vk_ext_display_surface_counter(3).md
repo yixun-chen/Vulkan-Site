@@ -107,10 +107,10 @@ It provides a mechanism to query support for such a counter from a
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES2_EXT`
+[VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES2_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT`
+[VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2016-12-13 (James Jones)

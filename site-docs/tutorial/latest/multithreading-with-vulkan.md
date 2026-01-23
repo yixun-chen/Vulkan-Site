@@ -192,8 +192,11 @@ Finally, we’ll update our main loop to coordinate the worker threads:
 
 void drawFrame() {
     // Wait for the previous frame to finish
-    while (vk::Result::eTimeout == device.waitForFences(*inFlightFences[frameIndex], vk::True, UINT64_MAX));
-    device.resetFences(*inFlightFences[frameIndex]);
+    auto fenceResult = device.waitForFences(*inFlightFences[frameIndex], vk::True, UINT64_MAX);
+    if (fenceResult != vk::Result::eSuccess)
+    {
+        throw std::runtime_error("failed to wait for fence!");
+    }
 
     // Acquire the next image
     auto [result, imageIndex] = swapChain.acquireNextImage(UINT64_MAX, *imageAvailableSemaphores[frameIndex], nullptr);
@@ -241,6 +244,7 @@ void drawFrame() {
 
     {
         std::lock_guard lock(queueSubmitMutex);
+        device.resetFences(*inFlightFences[frameIndex]);
         graphicsQueue.submit(graphicsSubmitInfo, *inFlightFences[frameIndex]);
     }
 

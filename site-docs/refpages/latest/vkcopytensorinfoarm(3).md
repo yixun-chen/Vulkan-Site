@@ -117,25 +117,25 @@ of `srcTensor` or `dstTensor`
 [](#VUID-VkCopyTensorInfoARM-srcTensor-09690) VUID-VkCopyTensorInfoARM-srcTensor-09690
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-tensor-view-format-features) of
-`srcTensor` **must** contain `VK_FORMAT_FEATURE_2_TRANSFER_SRC_BIT`
+`srcTensor` **must** contain [VK_FORMAT_FEATURE_2_TRANSFER_SRC_BIT](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-VkCopyTensorInfoARM-srcTensor-09691) VUID-VkCopyTensorInfoARM-srcTensor-09691
 
 `srcTensor` **must** have been created with the
-`VK_TENSOR_USAGE_TRANSFER_SRC_BIT_ARM` usage flag set
+[VK_TENSOR_USAGE_TRANSFER_SRC_BIT_ARM](VkTensorUsageFlagBitsARM.html) usage flag set
 
 * 
 [](#VUID-VkCopyTensorInfoARM-dstTensor-09692) VUID-VkCopyTensorInfoARM-dstTensor-09692
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-tensor-view-format-features) of
-`dstTensor` **must** contain `VK_FORMAT_FEATURE_2_TRANSFER_DST_BIT`
+`dstTensor` **must** contain [VK_FORMAT_FEATURE_2_TRANSFER_DST_BIT](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-VkCopyTensorInfoARM-dstTensor-09693) VUID-VkCopyTensorInfoARM-dstTensor-09693
 
 `dstTensor` **must** have been created with the
-`VK_TENSOR_USAGE_TRANSFER_DST_BIT_ARM` usage flag set
+[VK_TENSOR_USAGE_TRANSFER_DST_BIT_ARM](VkTensorUsageFlagBitsARM.html) usage flag set
 
 * 
 [](#VUID-VkCopyTensorInfoARM-srcTensor-09694) VUID-VkCopyTensorInfoARM-srcTensor-09694
@@ -154,7 +154,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCopyTensorInfoARM-sType-sType) VUID-VkCopyTensorInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COPY_TENSOR_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COPY_TENSOR_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkCopyTensorInfoARM-pNext-pNext) VUID-VkCopyTensorInfoARM-pNext-pNext

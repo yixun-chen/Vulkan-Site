@@ -77,7 +77,7 @@ The vertex input binding is updated to start at the offset indicated by
 If `pSizes` is not `NULL` then `pSizes`[i] specifies the bound size
 of the vertex buffer starting from the corresponding elements of
 `pBuffers`[i] plus `pOffsets`[i].
-If `pSizes`[i] is `VK_WHOLE_SIZE` then the bound size is from
+If `pSizes`[i] is [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html) then the bound size is from
 `pBuffers`[i] plus `pOffsets`[i] to the end of the buffer
 `pBuffers`[i].
 All vertex input attributes that use each of these bindings will use these
@@ -96,7 +96,7 @@ strides between consecutive elements within buffer `pBuffers`[i] to the
 corresponding `pStrides`[i] value
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE` set in
+[VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, strides are specified by the
 [VkVertexInputBindingDescription](VkVertexInputBindingDescription.html)::`stride` values used to create
@@ -106,7 +106,7 @@ If
 drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects)
 or if
 the bound pipeline state object was also created with the
-`VK_DYNAMIC_STATE_VERTEX_INPUT_EXT` dynamic state enabled
+[VK_DYNAMIC_STATE_VERTEX_INPUT_EXT](VkDynamicState.html) dynamic state enabled
 then [vkCmdSetVertexInputEXT](vkCmdSetVertexInputEXT.html) **can** be used instead of
 `vkCmdBindVertexBuffers2` to set the stride.
 
@@ -153,14 +153,14 @@ less than the size of the corresponding element in `pBuffers`
 
 If `pSizes` is not `NULL`, all elements of `pOffsets` plus
 `pSizes`
-, where `pSizes` is not `VK_WHOLE_SIZE`,
+, where `pSizes` is not [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html),
 **must** be less than or equal to the size of the corresponding element in
 `pBuffers`
 
 [](#VUID-vkCmdBindVertexBuffers2-pBuffers-03359) VUID-vkCmdBindVertexBuffers2-pBuffers-03359
 
 All elements of `pBuffers` **must** have been created with the
-`VK_BUFFER_USAGE_VERTEX_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_VERTEX_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 [](#VUID-vkCmdBindVertexBuffers2-pBuffers-03360) VUID-vkCmdBindVertexBuffers2-pBuffers-03360
 
@@ -228,7 +228,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindVertexBuffers2-commandBuffer-cmdpool) VUID-vkCmdBindVertexBuffers2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBindVertexBuffers2-videocoding) VUID-vkCmdBindVertexBuffers2-videocoding

@@ -81,7 +81,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferCollectionConstraintsInfoFUCHSIA-sType-sType) VUID-VkBufferCollectionConstraintsInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_COLLECTION_CONSTRAINTS_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_COLLECTION_CONSTRAINTS_INFO_FUCHSIA](VkStructureType.html)
 
 * 
 [](#VUID-VkBufferCollectionConstraintsInfoFUCHSIA-pNext-pNext) VUID-VkBufferCollectionConstraintsInfoFUCHSIA-pNext-pNext

@@ -69,7 +69,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassStripeBeginInfoARM-sType-sType) VUID-VkRenderPassStripeBeginInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_BEGIN_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_BEGIN_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderPassStripeBeginInfoARM-pStripeInfos-parameter) VUID-VkRenderPassStripeBeginInfoARM-pStripeInfos-parameter

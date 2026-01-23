@@ -58,7 +58,7 @@ This structure **can** be used either to specify the sample locations to be
 used for rendering or to specify the set of sample locations an image
 subresource has been last rendered with for the purposes of layout
 transitions of depth/stencil images created with
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT`.
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](VkImageCreateFlagBits.html).
 
 The sample locations in `pSampleLocations` specify
 `sampleLocationsPerPixel` number of sample locations for each pixel in
@@ -94,7 +94,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSampleLocationsInfoEXT-sType-sType) VUID-VkSampleLocationsInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkSampleLocationsInfoEXT-pSampleLocations-parameter) VUID-VkSampleLocationsInfoEXT-pSampleLocations-parameter

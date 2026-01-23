@@ -104,7 +104,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageCopy2-sType-sType) VUID-VkImageCopy2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_COPY_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_COPY_2](VkStructureType.html)
 
 * 
 [](#VUID-VkImageCopy2-pNext-pNext) VUID-VkImageCopy2-pNext-pNext

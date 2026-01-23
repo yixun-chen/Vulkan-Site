@@ -57,7 +57,7 @@ feature **must** be enabled
 [](#VUID-vkGetPipelineIndirectMemoryRequirementsNV-pCreateInfo-09083) VUID-vkGetPipelineIndirectMemoryRequirementsNV-pCreateInfo-09083
 
 `pCreateInfo->flags` **must** include
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV`
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](VkPipelineCreateFlagBits.html)
 
 Valid Usage (Implicit)
 

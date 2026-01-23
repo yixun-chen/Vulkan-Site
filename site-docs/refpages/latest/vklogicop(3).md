@@ -22,12 +22,12 @@ Logical operations are controlled by the `logicOpEnable` and
 `logicOp` members of [VkPipelineColorBlendStateCreateInfo](VkPipelineColorBlendStateCreateInfo.html).
 The `logicOpEnable` state can also be controlled by
 [vkCmdSetLogicOpEnableEXT](vkCmdSetLogicOpEnableEXT.html) if graphics pipeline is created with
-`VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT` set in
+[VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 The `logicOp` state can also be controlled by [vkCmdSetLogicOpEXT](vkCmdSetLogicOpEXT.html)
-if graphics pipeline is created with `VK_DYNAMIC_STATE_LOGIC_OP_EXT` set
+if graphics pipeline is created with [VK_DYNAMIC_STATE_LOGIC_OP_EXT](VkDynamicState.html) set
 in [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
-If `logicOpEnable` is `VK_TRUE`, then a logical operation selected
+If `logicOpEnable` is [VK_TRUE](VK_TRUE.html), then a logical operation selected
 by `logicOp` is applied between each color attachment and the fragment’s
 corresponding output value, and blending of all attachments is treated as if
 it were disabled.
@@ -83,22 +83,22 @@ value:
 
 | Mode | Operation |
 | --- | --- |
-| `VK_LOGIC_OP_CLEAR` | 0 |
-| `VK_LOGIC_OP_AND` | s ∧ d |
-| `VK_LOGIC_OP_AND_REVERSE` | s ∧ ¬ d |
-| `VK_LOGIC_OP_COPY` | s |
-| `VK_LOGIC_OP_AND_INVERTED` | ¬ s ∧ d |
-| `VK_LOGIC_OP_NO_OP` | d |
-| `VK_LOGIC_OP_XOR` | s ⊕ d |
-| `VK_LOGIC_OP_OR` | s ∨ d |
-| `VK_LOGIC_OP_NOR` | ¬ (s ∨ d) |
-| `VK_LOGIC_OP_EQUIVALENT` | ¬ (s ⊕ d) |
-| `VK_LOGIC_OP_INVERT` | ¬ d |
-| `VK_LOGIC_OP_OR_REVERSE` | s ∨ ¬ d |
-| `VK_LOGIC_OP_COPY_INVERTED` | ¬ s |
-| `VK_LOGIC_OP_OR_INVERTED` | ¬ s ∨ d |
-| `VK_LOGIC_OP_NAND` | ¬ (s ∧ d) |
-| `VK_LOGIC_OP_SET` | all 1s |
+| [VK_LOGIC_OP_CLEAR](#) | 0 |
+| [VK_LOGIC_OP_AND](#) | s ∧ d |
+| [VK_LOGIC_OP_AND_REVERSE](#) | s ∧ ¬ d |
+| [VK_LOGIC_OP_COPY](#) | s |
+| [VK_LOGIC_OP_AND_INVERTED](#) | ¬ s ∧ d |
+| [VK_LOGIC_OP_NO_OP](#) | d |
+| [VK_LOGIC_OP_XOR](#) | s ⊕ d |
+| [VK_LOGIC_OP_OR](#) | s ∨ d |
+| [VK_LOGIC_OP_NOR](#) | ¬ (s ∨ d) |
+| [VK_LOGIC_OP_EQUIVALENT](#) | ¬ (s ⊕ d) |
+| [VK_LOGIC_OP_INVERT](#) | ¬ d |
+| [VK_LOGIC_OP_OR_REVERSE](#) | s ∨ ¬ d |
+| [VK_LOGIC_OP_COPY_INVERTED](#) | ¬ s |
+| [VK_LOGIC_OP_OR_INVERTED](#) | ¬ s ∨ d |
+| [VK_LOGIC_OP_NAND](#) | ¬ (s ∧ d) |
+| [VK_LOGIC_OP_SET](#) | all 1s |
 
 The result of the logical operation is then written to the color attachment
 as controlled by the component write mask, described in

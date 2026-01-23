@@ -43,25 +43,25 @@ typedef enum VkMemoryAllocateFlagBits {
 typedef VkMemoryAllocateFlagBits VkMemoryAllocateFlagBitsKHR;
 
 * 
-`VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT` specifies that memory will be
+[VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT](#) specifies that memory will be
 allocated for the devices in
 [VkMemoryAllocateFlagsInfo](VkMemoryAllocateFlagsInfo.html)::`deviceMask`.
 
 * 
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT` specifies that the memory
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](#) specifies that the memory
 **can** be attached to a buffer object created with the
-`VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT` usage flag set, and that
-the memory handle **can** be used to retrieve an opaque address via
-[vkGetDeviceMemoryOpaqueCaptureAddress](vkGetDeviceMemoryOpaqueCaptureAddress.html).
+[VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](VkBufferUsageFlagBits.html) usage flag set.
 
 * 
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` specifies
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#) specifies
 that the memory’s address **can** be saved and reused on a subsequent run
 (e.g. for trace capture and replay), see
 [VkBufferOpaqueCaptureAddressCreateInfo](VkBufferOpaqueCaptureAddressCreateInfo.html) for more detail.
+If this bit is set, [VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](#) **must**
+also be set.
 
 * 
-`VK_MEMORY_ALLOCATE_ZERO_INITIALIZE_BIT_EXT` specifies that the
+[VK_MEMORY_ALLOCATE_ZERO_INITIALIZE_BIT_EXT](#) specifies that the
 memory will be zeroed automatically by the implementation before
 application is able to access it.
 

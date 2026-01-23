@@ -63,7 +63,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureGeometryAabbsDataKHR-sType-sType) VUID-VkAccelerationStructureGeometryAabbsDataKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_AABBS_DATA_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_AABBS_DATA_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkAccelerationStructureGeometryAabbsDataKHR-pNext-pNext) VUID-VkAccelerationStructureGeometryAabbsDataKHR-pNext-pNext

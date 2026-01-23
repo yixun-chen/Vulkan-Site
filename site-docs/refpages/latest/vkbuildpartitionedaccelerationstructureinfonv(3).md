@@ -83,7 +83,7 @@ Valid Usage
 If the `buildScratchSize` member of the
 [VkAccelerationStructureBuildSizesInfoKHR](VkAccelerationStructureBuildSizesInfoKHR.html) structure returned from a
 call to [vkGetPartitionedAccelerationStructuresBuildSizesNV](vkGetPartitionedAccelerationStructuresBuildSizesNV.html) is not
-`0`, then `scratchData` **must** be a valid device address
+`0`, then `scratchData` **must** be a valid `VkDeviceAddress`
 
 * 
 [](#VUID-VkBuildPartitionedAccelerationStructureInfoNV-scratchData-10559) VUID-VkBuildPartitionedAccelerationStructureInfoNV-scratchData-10559
@@ -131,7 +131,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBuildPartitionedAccelerationStructureInfoNV-sType-sType) VUID-VkBuildPartitionedAccelerationStructureInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUILD_PARTITIONED_ACCELERATION_STRUCTURE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUILD_PARTITIONED_ACCELERATION_STRUCTURE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkBuildPartitionedAccelerationStructureInfoNV-pNext-pNext) VUID-VkBuildPartitionedAccelerationStructureInfoNV-pNext-pNext

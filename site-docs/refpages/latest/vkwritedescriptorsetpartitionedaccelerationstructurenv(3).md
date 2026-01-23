@@ -20,7 +20,7 @@
 VkWriteDescriptorSetPartitionedAccelerationStructureNV - Structure specifying descriptor for PTLAS
 
 If the `descriptorType` member of [VkWriteDescriptorSet](VkWriteDescriptorSet.html) is
-`VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV`, then the
+[VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV](VkDescriptorType.html), then the
 data to write to the descriptor set is specified through a
 `VkWriteDescriptorSetPartitionedAccelerationStructureNV` structure
 included in the `pNext` chain of `VkWriteDescriptorSet`.
@@ -71,7 +71,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkWriteDescriptorSetPartitionedAccelerationStructureNV-sType-sType) VUID-VkWriteDescriptorSetPartitionedAccelerationStructureNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_PARTITIONED_ACCELERATION_STRUCTURE_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_PARTITIONED_ACCELERATION_STRUCTURE_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkWriteDescriptorSetPartitionedAccelerationStructureNV-pAccelerationStructures-parameter) VUID-VkWriteDescriptorSetPartitionedAccelerationStructureNV-pAccelerationStructures-parameter

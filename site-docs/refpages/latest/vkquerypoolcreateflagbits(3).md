@@ -28,7 +28,7 @@ typedef enum VkQueryPoolCreateFlagBits {
 } VkQueryPoolCreateFlagBits;
 
 * 
-`VK_QUERY_POOL_CREATE_RESET_BIT_KHR` specifies that queries in the
+[VK_QUERY_POOL_CREATE_RESET_BIT_KHR](#) specifies that queries in the
 query pool are initialized on creation and do not need to be reset
 before first use.
 

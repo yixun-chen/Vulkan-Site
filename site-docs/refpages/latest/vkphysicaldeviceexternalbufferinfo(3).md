@@ -84,7 +84,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExternalBufferInfo-sType-sType) VUID-VkPhysicalDeviceExternalBufferInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_BUFFER_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_BUFFER_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPhysicalDeviceExternalBufferInfo-pNext-pNext) VUID-VkPhysicalDeviceExternalBufferInfo-pNext-pNext

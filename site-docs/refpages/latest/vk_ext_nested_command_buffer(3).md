@@ -103,20 +103,20 @@ Extending [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html):
 * 
 Extending [VkRenderingFlagBits](VkRenderingFlagBits.html):
 
-`VK_RENDERING_CONTENTS_INLINE_BIT_EXT`
+[VK_RENDERING_CONTENTS_INLINE_BIT_EXT](VkRenderingFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_FEATURES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT](VkStructureType.html)
 
 Extending [VkSubpassContents](VkSubpassContents.html):
 
 * 
-`VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT`
+[VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT](VkSubpassContents.html)
 
 1) The Command Buffer Levels property for the Vulkan commands comes from the
 `cmdbufferlevel` attribute in `vk.xml` for the command, and it is currently

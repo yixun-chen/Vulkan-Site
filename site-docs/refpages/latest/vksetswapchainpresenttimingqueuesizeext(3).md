@@ -44,7 +44,7 @@ queue.
 If this function is called multiple times, the internal queue is reallocated
 to fit the new `size`.
 If the new `size` is less than the current number of outstanding
-results, `VK_NOT_READY` is returned and no allocation is performed.
+results, [VK_NOT_READY](VkResult.html) is returned and no allocation is performed.
 
 Valid Usage
 
@@ -53,7 +53,7 @@ Valid Usage
 
 `swapchain` **must** have been created with
 `VkSwapchainCreateInfoKHR`::`flags` containing
-`VK_SWAPCHAIN_CREATE_PRESENT_TIMING_BIT_EXT`
+[VK_SWAPCHAIN_CREATE_PRESENT_TIMING_BIT_EXT](VkSwapchainCreateFlagBitsKHR.html)
 
 Valid Usage (Implicit)
 
@@ -82,24 +82,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_NOT_READY`
+[VK_NOT_READY](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_EXT_present_timing](VK_EXT_present_timing.html), [VkDevice](VkDevice.html), [VkSwapchainKHR](VkSwapchainKHR.html)
 

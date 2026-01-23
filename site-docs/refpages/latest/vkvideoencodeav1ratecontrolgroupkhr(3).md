@@ -28,18 +28,18 @@ typedef enum VkVideoEncodeAV1RateControlGroupKHR {
 } VkVideoEncodeAV1RateControlGroupKHR;
 
 * 
-`VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_INTRA_KHR` **should** be
+[VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_INTRA_KHR](#) **should** be
 specified when encoding AV1 frames that use intra-only prediction (e.g.
 when encoding AV1 frames of type `STD_VIDEO_AV1_FRAME_TYPE_KEY` or
 `STD_VIDEO_AV1_FRAME_TYPE_INTRA_ONLY`).
 
 * 
-`VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_PREDICTIVE_KHR` **should** be
+[VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_PREDICTIVE_KHR](#) **should** be
 specified when encoding AV1 frames that only have forward references in
 display order.
 
 * 
-`VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_BIPREDICTIVE_KHR` **should** be
+[VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_BIPREDICTIVE_KHR](#) **should** be
 specified when encoding AV1 frames that have backward references in
 display order.
 

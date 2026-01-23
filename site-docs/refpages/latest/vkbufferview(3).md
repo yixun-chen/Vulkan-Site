@@ -25,10 +25,10 @@ In order to create a valid buffer view, the buffer **must** have been created
 with at least one of the following usage flags:
 
 * 
-`VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT`
+[VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits.html)
 
 * 
-`VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT`
+[VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits.html)
 
 Buffer views are represented by `VkBufferView` handles:
 

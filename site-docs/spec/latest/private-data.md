@@ -105,18 +105,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkPrivateDataSlotCreateInfo` structure is defined as:
 
@@ -146,7 +146,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPrivateDataSlotCreateInfo-sType-sType) VUID-VkPrivateDataSlotCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRIVATE_DATA_SLOT_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRIVATE_DATA_SLOT_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPrivateDataSlotCreateInfo-pNext-pNext) VUID-VkPrivateDataSlotCreateInfo-pNext-pNext
@@ -313,18 +313,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To retrieve application-defined data from a slot associated with a Vulkan
 object, call:

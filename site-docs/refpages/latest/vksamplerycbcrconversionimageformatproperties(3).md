@@ -56,7 +56,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSamplerYcbcrConversionImageFormatProperties-sType-sType) VUID-VkSamplerYcbcrConversionImageFormatProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES](VkStructureType.html)
 
 [VK_KHR_sampler_ycbcr_conversion](VK_KHR_sampler_ycbcr_conversion.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkStructureType](VkStructureType.html)
 

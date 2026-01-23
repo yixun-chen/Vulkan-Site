@@ -50,7 +50,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExternalComputeQueuePropertiesNV-sType-sType) VUID-VkPhysicalDeviceExternalComputeQueuePropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_COMPUTE_QUEUE_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_COMPUTE_QUEUE_PROPERTIES_NV](VkStructureType.html)
 
 [VK_NV_external_compute_queue](VK_NV_external_compute_queue.html), [VkStructureType](VkStructureType.html)
 

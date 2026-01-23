@@ -49,8 +49,8 @@ type.
 
 If the
 [VkPhysicalDeviceDescriptorBufferPropertiesEXT](VkPhysicalDeviceDescriptorBufferPropertiesEXT.html)::`combinedImageSamplerDescriptorSingleArray`
-property is `VK_FALSE` the implementation requires an array of
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` descriptors to be written
+property is [VK_FALSE](VK_FALSE.html) the implementation requires an array of
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) descriptors to be written
 into a descriptor buffer as an array of image descriptors, immediately
 followed by an array of sampler descriptors.
 Applications **must** write the first
@@ -60,7 +60,7 @@ the remaining
 [VkPhysicalDeviceDescriptorBufferPropertiesEXT](VkPhysicalDeviceDescriptorBufferPropertiesEXT.html)::`samplerDescriptorSize`
 bytes of the data to the second array.
 For variable-sized descriptor bindings of
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` descriptors, the two arrays
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) descriptors, the two arrays
 each have a size equal to the upper bound `descriptorCount` of that
 binding.
 
@@ -82,7 +82,7 @@ be enabled
 [](#VUID-vkGetDescriptorEXT-dataSize-08125) VUID-vkGetDescriptorEXT-dataSize-08125
 
 If `pDescriptorInfo->type` is not
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) or
 `pDescriptorInfo->data.pCombinedImageSampler` has an `imageView`
 member that was not created with a `VkSamplerYcbcrConversionInfo`
 structure in its `pNext` chain,
@@ -92,14 +92,14 @@ structure in its `pNext` chain,
 , or determined by
 [VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT](VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT.html)::`combinedImageSamplerDensityMapDescriptorSize`
 if `pDescriptorInfo` specifies a
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` whose [VkSampler](VkSampler.html)
-was created with `VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT` set
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) whose [VkSampler](VkSampler.html)
+was created with [VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](VkSamplerCreateFlagBits.html) set
 
 * 
 [](#VUID-vkGetDescriptorEXT-descriptorType-09469) VUID-vkGetDescriptorEXT-descriptorType-09469
 
 If `pDescriptorInfo->type` is
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` and
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) and
 `pDescriptorInfo->data.pCombinedImageSampler` has an `imageView`
 member that was created with a `VkSamplerYcbcrConversionInfo`
 structure in its `pNext` chain, `dataSize` **must** equal the size
@@ -112,7 +112,7 @@ times
 [](#VUID-vkGetDescriptorEXT-pDescriptorInfo-09507) VUID-vkGetDescriptorEXT-pDescriptorInfo-09507
 
 If `pDescriptorInfo->type` is
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` and it has a
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) and it has a
 `imageView` that is [VK_NULL_HANDLE](VK_NULL_HANDLE.html) then `dataSize` **must**
 be equal to the size of
 [VkPhysicalDeviceDescriptorBufferPropertiesEXT](VkPhysicalDeviceDescriptorBufferPropertiesEXT.html)::`combinedImageSamplerDescriptorSize`

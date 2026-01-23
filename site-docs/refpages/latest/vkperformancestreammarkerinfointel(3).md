@@ -46,14 +46,14 @@ Valid Usage
 
 The value written by the application into `marker` **must** only used
 the valid bits as reported by [vkGetPerformanceParameterINTEL](vkGetPerformanceParameterINTEL.html) with
-the `VK_PERFORMANCE_PARAMETER_TYPE_STREAM_MARKER_VALID_BITS_INTEL`
+the [VK_PERFORMANCE_PARAMETER_TYPE_STREAM_MARKER_VALID_BITS_INTEL](VkPerformanceParameterTypeINTEL.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPerformanceStreamMarkerInfoINTEL-sType-sType) VUID-VkPerformanceStreamMarkerInfoINTEL-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PERFORMANCE_STREAM_MARKER_INFO_INTEL`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_STREAM_MARKER_INFO_INTEL](VkStructureType.html)
 
 * 
 [](#VUID-VkPerformanceStreamMarkerInfoINTEL-pNext-pNext) VUID-VkPerformanceStreamMarkerInfoINTEL-pNext-pNext

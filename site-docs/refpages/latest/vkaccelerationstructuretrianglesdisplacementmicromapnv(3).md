@@ -90,7 +90,7 @@ micromap.
 * 
 `indexBuffer` is a device or host address of memory containing the
 triangle indices.
-When `indexType` is `VK_INDEX_TYPE_NONE_KHR` it **must** be `NULL`.
+When `indexType` is [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html) it **must** be `NULL`.
 
 * 
 `indexStride` is the byte stride between triangle indices.
@@ -139,12 +139,12 @@ Valid Usage
 [](#VUID-VkAccelerationStructureTrianglesDisplacementMicromapNV-displacementBiasAndScaleFormat-09501) VUID-VkAccelerationStructureTrianglesDisplacementMicromapNV-displacementBiasAndScaleFormat-09501
 
 `displacementBiasAndScaleFormat` **must** not be
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](VkFormat.html)
 
 * 
 [](#VUID-VkAccelerationStructureTrianglesDisplacementMicromapNV-displacementVectorFormat-09502) VUID-VkAccelerationStructureTrianglesDisplacementMicromapNV-displacementVectorFormat-09502
 
-`displacementVectorFormat` **must** not be `VK_FORMAT_UNDEFINED`
+`displacementVectorFormat` **must** not be [VK_FORMAT_UNDEFINED](VkFormat.html)
 
 * 
 [](#VUID-VkAccelerationStructureTrianglesDisplacementMicromapNV-pUsageCounts-07992) VUID-VkAccelerationStructureTrianglesDisplacementMicromapNV-pUsageCounts-07992
@@ -157,7 +157,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureTrianglesDisplacementMicromapNV-sType-sType) VUID-VkAccelerationStructureTrianglesDisplacementMicromapNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_DISPLACEMENT_MICROMAP_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_DISPLACEMENT_MICROMAP_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkAccelerationStructureTrianglesDisplacementMicromapNV-displacementBiasAndScaleFormat-parameter) VUID-VkAccelerationStructureTrianglesDisplacementMicromapNV-displacementBiasAndScaleFormat-parameter

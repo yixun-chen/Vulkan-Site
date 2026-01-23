@@ -56,7 +56,7 @@ If `pSparseMemoryRequirementCount` is less than the number of sparse
 memory requirements available, at most `pSparseMemoryRequirementCount`
 structures will be written.
 
-If the image was not created with `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`
+If the image was not created with [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](VkImageCreateFlagBits.html)
 then `pSparseMemoryRequirementCount` will be zero and
 `pSparseMemoryRequirements` will not be written to.
 

@@ -17,7 +17,7 @@
 
 VK_FALSE - Boolean false value
 
-`VK_FALSE` is a constant representing a `VkBool32` **False** value.
+[VK_FALSE](#) is a constant representing a `VkBool32` **False** value.
 
 #define VK_FALSE                          0U
 

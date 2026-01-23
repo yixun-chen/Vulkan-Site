@@ -160,18 +160,18 @@ a given device.
 * 
 Extending [VkObjectType](VkObjectType.html):
 
-`VK_OBJECT_TYPE_DISPLAY_KHR`
+[VK_OBJECT_TYPE_DISPLAY_KHR](VkObjectType.html)
 
 * 
-`VK_OBJECT_TYPE_DISPLAY_MODE_KHR`
+[VK_OBJECT_TYPE_DISPLAY_MODE_KHR](VkObjectType.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR](VkStructureType.html)
 
 1) Which properties of a mode should be fixed in the mode information vs.
 settable in some other function when setting the mode? E.g., do we need to

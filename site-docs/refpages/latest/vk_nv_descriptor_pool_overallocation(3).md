@@ -71,10 +71,10 @@ This extension gives applications the ability to request the implementation
 allow more sets or descriptors to be allocated than initially specified at
 descriptor pool creation time, subject to available resources.
 
-The `VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV` flag
+The [VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV](VkDescriptorPoolCreateFlagBits.html) flag
 lets the application allocate more than
 [VkDescriptorPoolCreateInfo](VkDescriptorPoolCreateInfo.html)::`maxSets` descriptor sets, and the
-`VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV` lets the
+[VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV](VkDescriptorPoolCreateFlagBits.html) lets the
 application allocate more descriptors than initially specified by
 [VkDescriptorPoolSize](VkDescriptorPoolSize.html)::`descriptorCount` for any descriptor types.
 
@@ -92,15 +92,15 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkDescriptorPoolCreateFlagBits](VkDescriptorPoolCreateFlagBits.html):
 
-`VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV`
+[VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV](VkDescriptorPoolCreateFlagBits.html)
 
 * 
-`VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV`
+[VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV](VkDescriptorPoolCreateFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV](VkStructureType.html)
 
 * 
 Revision 1, 2023-08-30 (Piers Daniell)

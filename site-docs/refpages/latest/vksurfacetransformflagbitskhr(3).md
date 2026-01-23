@@ -40,42 +40,42 @@ typedef enum VkSurfaceTransformFlagBitsKHR {
 } VkSurfaceTransformFlagBitsKHR;
 
 * 
-`VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR` specifies that image content
+[VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](#) specifies that image content
 is presented without being transformed.
 
 * 
-`VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR` specifies that image
+[VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR](#) specifies that image
 content is rotated 90 degrees clockwise.
 
 * 
-`VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR` specifies that image
+[VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR](#) specifies that image
 content is rotated 180 degrees clockwise.
 
 * 
-`VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR` specifies that image
+[VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR](#) specifies that image
 content is rotated 270 degrees clockwise.
 
 * 
-`VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR` specifies that
+[VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR](#) specifies that
 image content is mirrored horizontally.
 
 * 
-`VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR` specifies
+[VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR](#) specifies
 that image content is mirrored horizontally, then rotated 90 degrees
 clockwise.
 
 * 
-`VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR`
+[VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR](#)
 specifies that image content is mirrored horizontally, then rotated 180
 degrees clockwise.
 
 * 
-`VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR`
+[VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR](#)
 specifies that image content is mirrored horizontally, then rotated 270
 degrees clockwise.
 
 * 
-`VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR` specifies that the
+[VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR](#) specifies that the
 presentation transform is not specified, and is instead determined by
 platform-specific considerations and mechanisms outside Vulkan.
 

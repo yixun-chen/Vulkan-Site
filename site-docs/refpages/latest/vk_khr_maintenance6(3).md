@@ -136,7 +136,7 @@ the maximum number of descriptors needed for any of the
 
 * 
 A new property `blockTexelViewCompatibleMultipleLayers` indicating
-whether `VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT` is allowed
+whether [VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](VkImageCreateFlagBits.html) is allowed
 to be used with `layerCount` > 1
 
 * 
@@ -210,39 +210,39 @@ If [VK_KHR_push_descriptor](VK_KHR_push_descriptor.html) is supported:
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_SETS_INFO_KHR`
+[VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_SETS_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_BIND_MEMORY_STATUS_KHR`
+[VK_STRUCTURE_TYPE_BIND_MEMORY_STATUS_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_FEATURES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PUSH_CONSTANTS_INFO_KHR`
+[VK_STRUCTURE_TYPE_PUSH_CONSTANTS_INFO_KHR](VkStructureType.html)
 
 If [VK_EXT_descriptor_buffer](VK_EXT_descriptor_buffer.html) is supported:
 
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT`
+[VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT`
+[VK_STRUCTURE_TYPE_SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT](VkStructureType.html)
 
 If [VK_KHR_push_descriptor](VK_KHR_push_descriptor.html) is supported:
 
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_INFO_KHR`
+[VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_WITH_TEMPLATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_WITH_TEMPLATE_INFO_KHR](VkStructureType.html)
 
 Functionality in this extension is included in core Vulkan 1.4 with the KHR
 suffix omitted.

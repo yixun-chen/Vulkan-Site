@@ -90,7 +90,7 @@ If any element of `pRegions` contains
 
 If any element of `pRegions` contains
 [VkCopyCommandTransformInfoQCOM](VkCopyCommandTransformInfoQCOM.html) in its `pNext` chain, then
-`dstImage` **must** be of type `VK_IMAGE_TYPE_2D`
+`dstImage` **must** be of type [VK_IMAGE_TYPE_2D](VkImageType.html)
 
 * 
 [](#VUID-VkCopyBufferToImageInfo2KHR-pRegions-06204) VUID-VkCopyBufferToImageInfo2KHR-pRegions-06204
@@ -116,13 +116,13 @@ in memory
 [](#VUID-VkCopyBufferToImageInfo2-srcBuffer-00174) VUID-VkCopyBufferToImageInfo2-srcBuffer-00174
 
 `srcBuffer` **must** have been created with the
-`VK_BUFFER_USAGE_TRANSFER_SRC_BIT` usage flag set
+[VK_BUFFER_USAGE_TRANSFER_SRC_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkCopyBufferToImageInfo2-dstImage-01997) VUID-VkCopyBufferToImageInfo2-dstImage-01997
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of
-`dstImage` **must** contain `VK_FORMAT_FEATURE_TRANSFER_DST_BIT`
+`dstImage` **must** contain [VK_FORMAT_FEATURE_TRANSFER_DST_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-VkCopyBufferToImageInfo2-srcBuffer-00176) VUID-VkCopyBufferToImageInfo2-srcBuffer-00176
@@ -134,7 +134,7 @@ contiguously to a single `VkDeviceMemory` object
 [](#VUID-VkCopyBufferToImageInfo2-dstImage-00177) VUID-VkCopyBufferToImageInfo2-dstImage-00177
 
 `dstImage` **must** have been created with the
-`VK_IMAGE_USAGE_TRANSFER_DST_BIT` usage flag set
+[VK_IMAGE_USAGE_TRANSFER_DST_BIT](VkImageUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkCopyBufferToImageInfo2-dstImageLayout-00180) VUID-VkCopyBufferToImageInfo2-dstImageLayout-00180
@@ -147,9 +147,9 @@ is executed on a `VkDevice`
 [](#VUID-VkCopyBufferToImageInfo2-dstImageLayout-01396) VUID-VkCopyBufferToImageInfo2-dstImageLayout-01396
 
 `dstImageLayout` **must** be
-`VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`,
-`VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_GENERAL`
+[VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](VkImageLayout.html), or
+[VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkCopyBufferToImageInfo2-pRegions-07931) VUID-VkCopyBufferToImageInfo2-pRegions-07931
@@ -178,7 +178,7 @@ The `imageSubresource.mipLevel` member of each element of
 [](#VUID-VkCopyBufferToImageInfo2-imageSubresource-07968) VUID-VkCopyBufferToImageInfo2-imageSubresource-07968
 
 If `imageSubresource.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`,
+[VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html),
 `imageSubresource.baseArrayLayer` + 
 `imageSubresource.layerCount` of each element of `pRegions`
 **must** be less than or equal to the `arrayLayers` specified in
@@ -188,18 +188,18 @@ If `imageSubresource.layerCount` is not
 [](#VUID-VkCopyBufferToImageInfo2-dstImage-07969) VUID-VkCopyBufferToImageInfo2-dstImage-07969
 
 `dstImage` **must** not have been created with `flags`
-containing `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`
+containing [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](VkImageCreateFlagBits.html)
 
 * 
 [](#VUID-VkCopyBufferToImageInfo2-dstImage-07973) VUID-VkCopyBufferToImageInfo2-dstImage-07973
 
 `dstImage` **must** have a sample count equal to
-`VK_SAMPLE_COUNT_1_BIT`
+[VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html)
 
 * 
 [](#VUID-VkCopyBufferToImageInfo2-dstImage-07979) VUID-VkCopyBufferToImageInfo2-dstImage-07979
 
-If `dstImage` is of type `VK_IMAGE_TYPE_1D`, then for each
+If `dstImage` is of type [VK_IMAGE_TYPE_1D](VkImageType.html), then for each
 element of `pRegions`, `imageOffset.y` **must** be `0` and
 `imageExtent.height` **must** be `1`
 
@@ -214,8 +214,8 @@ of the specified `imageSubresource` of `dstImage`
 * 
 [](#VUID-VkCopyBufferToImageInfo2-dstImage-07980) VUID-VkCopyBufferToImageInfo2-dstImage-07980
 
-If `dstImage` is of type `VK_IMAGE_TYPE_1D` or
-`VK_IMAGE_TYPE_2D`, then for each element of `pRegions`,
+If `dstImage` is of type [VK_IMAGE_TYPE_1D](VkImageType.html) or
+[VK_IMAGE_TYPE_2D](VkImageType.html), then for each element of `pRegions`,
 `imageOffset.z` **must** be `0` and `imageExtent.depth` **must**
 be `1`
 
@@ -224,8 +224,8 @@ be `1`
 
 For each element of `pRegions`,
 if [VkCopyCommandTransformInfoQCOM](VkCopyCommandTransformInfoQCOM.html)::`transform` is equal to
-`VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR` or
-`VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR`,
+[VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html) or
+[VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html),
 `imageOffset.x` **must** be a multiple of the
 [texel block extent width](../../../../spec/latest/chapters/formats.html#formats-compatibility-classes) of the
 [VkFormat](VkFormat.html) of `dstImage`
@@ -235,8 +235,8 @@ if [VkCopyCommandTransformInfoQCOM](VkCopyCommandTransformInfoQCOM.html)::`trans
 
 For each element of `pRegions`, if
 [VkCopyCommandTransformInfoQCOM](VkCopyCommandTransformInfoQCOM.html)::`transform` is equal to
-`VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR` or
-`VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR`, and `imageOffset.x`
+[VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html) or
+[VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html), and `imageOffset.x`
 does not equal the width of the subresource specified by
 `imageSubresource`, `imageOffset.x` **must** be a multiple of
 the [texel block extent width](../../../../spec/latest/chapters/formats.html#formats-compatibility-classes) of the
@@ -247,8 +247,8 @@ the [texel block extent width](../../../../spec/latest/chapters/formats.html#for
 
 For each element of `pRegions`,
 if [VkCopyCommandTransformInfoQCOM](VkCopyCommandTransformInfoQCOM.html)::`transform` is equal to
-`VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR` or
-`VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR`,
+[VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html) or
+[VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html),
 `imageOffset.y` **must** be a multiple of the
 [texel block extent height](../../../../spec/latest/chapters/formats.html#formats-compatibility-classes) of the
 [VkFormat](VkFormat.html) of `dstImage`
@@ -258,8 +258,8 @@ if [VkCopyCommandTransformInfoQCOM](VkCopyCommandTransformInfoQCOM.html)::`trans
 
 For each element of `pRegions`, if
 [VkCopyCommandTransformInfoQCOM](VkCopyCommandTransformInfoQCOM.html)::`transform` is equal to
-`VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR` or
-`VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR`, and `imageOffset.y`
+[VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html) or
+[VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html), and `imageOffset.y`
 does not equal the height of the subresource specified by
 `imageSubresource`, `imageOffset.y` **must** be a multiple of
 the [texel block extent height](../../../../spec/latest/chapters/formats.html#formats-compatibility-classes) of the
@@ -276,7 +276,7 @@ multiple of the [texel block extent    depth](../../../../spec/latest/chapters/f
 
 For each element of `pRegions`, if
 [VkCopyCommandTransformInfoQCOM](VkCopyCommandTransformInfoQCOM.html)::`transform` is equal to
-`VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR`,
+[VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html),
 the sum of `imageOffset.x` and `extent.width` does not equal
 the width of the subresource specified by `imageSubresource`,
 `extent.width` **must** be a multiple of the
@@ -288,7 +288,7 @@ the width of the subresource specified by `imageSubresource`,
 
 For each element of `pRegions`, if
 [VkCopyCommandTransformInfoQCOM](VkCopyCommandTransformInfoQCOM.html)::`transform` is equal to
-`VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR`, the difference of
+[VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html), the difference of
 `imageOffset.x` and `extent.height` **must** be a multiple of the
 [texel block extent width](../../../../spec/latest/chapters/formats.html#formats-compatibility-classes) of the
 [VkFormat](VkFormat.html) of `dstImage`
@@ -298,7 +298,7 @@ For each element of `pRegions`, if
 
 For each element of `pRegions`, if
 [VkCopyCommandTransformInfoQCOM](VkCopyCommandTransformInfoQCOM.html)::`transform` is equal to
-`VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR`, the difference of
+[VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html), the difference of
 `imageOffset.x` and `extent.width` **must** be a multiple of the
 [texel block extent width](../../../../spec/latest/chapters/formats.html#formats-compatibility-classes) of the
 [VkFormat](VkFormat.html) of `dstImage`
@@ -308,7 +308,7 @@ For each element of `pRegions`, if
 
 For each element of `pRegions`, if
 [VkCopyCommandTransformInfoQCOM](VkCopyCommandTransformInfoQCOM.html)::`transform` is equal to
-`VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR`, the sum of
+[VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html), the sum of
 `imageOffset.x` and `extent.height` does not equal the width
 of the subresource specified by `imageSubresource`,
 `extent.height` **must** be a multiple of the
@@ -320,7 +320,7 @@ of the subresource specified by `imageSubresource`,
 
 For each element of `pRegions`, if
 [VkCopyCommandTransformInfoQCOM](VkCopyCommandTransformInfoQCOM.html)::`transform` is equal to
-`VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR`, and
+[VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html), and
 the sum of `imageOffset.y` and `extent.height` does not equal
 the height of the subresource specified by `imageSubresource`,
 `extent.height` **must** be a multiple of the
@@ -332,7 +332,7 @@ the height of the subresource specified by `imageSubresource`,
 
 For each element of `pRegions`, if
 [VkCopyCommandTransformInfoQCOM](VkCopyCommandTransformInfoQCOM.html)::`transform` is equal to
-`VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR`, the sum of
+[VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html), the sum of
 `imageOffset.y` and `extent.width` does not equal the height
 of the subresource specified by `imageSubresource`,
 `extent.width` **must** be a multiple of the
@@ -344,7 +344,7 @@ of the subresource specified by `imageSubresource`,
 
 For each element of `pRegions`, if
 [VkCopyCommandTransformInfoQCOM](VkCopyCommandTransformInfoQCOM.html)::`transform` is equal to
-`VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR`, the difference of
+[VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html), the difference of
 `imageOffset.y` and `extent.height` **must** be a multiple of the
 [texel block extent height](../../../../spec/latest/chapters/formats.html#formats-compatibility-classes) of the
 [VkFormat](VkFormat.html) of `dstImage`
@@ -354,7 +354,7 @@ For each element of `pRegions`, if
 
 For each element of `pRegions`, if
 [VkCopyCommandTransformInfoQCOM](VkCopyCommandTransformInfoQCOM.html)::`transform` is equal to
-`VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR`, the difference of
+[VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html), the difference of
 `imageOffset.y` and `extent.width` **must** be a multiple of the
 [texel block extent height](../../../../spec/latest/chapters/formats.html#formats-compatibility-classes) of the
 [VkFormat](VkFormat.html) of `dstImage`
@@ -383,7 +383,7 @@ If `dstImage` has a [multi-planar    format](../../../../spec/latest/chapters/fo
 * 
 [](#VUID-VkCopyBufferToImageInfo2-dstImage-07983) VUID-VkCopyBufferToImageInfo2-dstImage-07983
 
-If `dstImage` is of type `VK_IMAGE_TYPE_3D`, for each
+If `dstImage` is of type [VK_IMAGE_TYPE_3D](VkImageType.html), for each
 element of `pRegions`, `imageSubresource.baseArrayLayer` **must**
 be `0` and `imageSubresource.layerCount` **must** be `1`
 
@@ -454,7 +454,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCopyBufferToImageInfo2-sType-sType) VUID-VkCopyBufferToImageInfo2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COPY_BUFFER_TO_IMAGE_INFO_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COPY_BUFFER_TO_IMAGE_INFO_2](VkStructureType.html)
 
 * 
 [](#VUID-VkCopyBufferToImageInfo2-pNext-pNext) VUID-VkCopyBufferToImageInfo2-pNext-pNext

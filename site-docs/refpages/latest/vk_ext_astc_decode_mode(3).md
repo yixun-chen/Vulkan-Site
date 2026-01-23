@@ -86,15 +86,15 @@ intermediate decoding precision.
 Three decoding options are provided:
 
 * 
-Decode to `VK_FORMAT_R16G16B16A16_SFLOAT` precision: This is the
+Decode to [VK_FORMAT_R16G16B16A16_SFLOAT](VkFormat.html) precision: This is the
 default, and matches the required behavior in the core API.
 
 * 
-Decode to `VK_FORMAT_R8G8B8A8_UNORM` precision: This is provided as
+Decode to [VK_FORMAT_R8G8B8A8_UNORM](VkFormat.html) precision: This is provided as
 an option in LDR mode.
 
 * 
-Decode to `VK_FORMAT_E5B9G9R9_UFLOAT_PACK32` precision: This is
+Decode to [VK_FORMAT_E5B9G9R9_UFLOAT_PACK32](VkFormat.html) precision: This is
 provided as an option in both LDR and HDR mode.
 In this mode, negative values cannot be represented and are clamped to
 zero.
@@ -121,10 +121,10 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_IMAGE_VIEW_ASTC_DECODE_MODE_EXT`
+[VK_STRUCTURE_TYPE_IMAGE_VIEW_ASTC_DECODE_MODE_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ASTC_DECODE_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ASTC_DECODE_FEATURES_EXT](VkStructureType.html)
 
 1) Are implementations allowed to decode at a higher precision than what is
 requested?
@@ -142,7 +142,7 @@ RESOLUTION: Image view state only.
 Some implementations treat the different decode modes as different
 texture formats.
 
-Create an image view that decodes to `VK_FORMAT_R8G8B8A8_UNORM`
+Create an image view that decodes to [VK_FORMAT_R8G8B8A8_UNORM](VkFormat.html)
 precision:
 
     VkImageViewASTCDecodeModeEXT decodeMode =

@@ -57,7 +57,7 @@ viewport.
 If the shading rate palette state is dynamic, this member is ignored.
 
 If this structure is not present, `shadingRateImageEnable` is considered
-to be `VK_FALSE`, and the shading rate image and palettes are not used.
+to be [VK_FALSE](VK_FALSE.html), and the shading rate image and palettes are not used.
 
 Valid Usage
 
@@ -76,7 +76,7 @@ enabled, `viewportCount` **must** be `0` or `1`
 * 
 [](#VUID-VkPipelineViewportShadingRateImageStateCreateInfoNV-shadingRateImageEnable-02056) VUID-VkPipelineViewportShadingRateImageStateCreateInfoNV-shadingRateImageEnable-02056
 
-If `shadingRateImageEnable` is `VK_TRUE`, `viewportCount`
+If `shadingRateImageEnable` is [VK_TRUE](VK_TRUE.html), `viewportCount`
 **must** be greater or equal to the `viewportCount` member of
 [VkPipelineViewportStateCreateInfo](VkPipelineViewportStateCreateInfo.html)
 
@@ -85,7 +85,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineViewportShadingRateImageStateCreateInfoNV-sType-sType) VUID-VkPipelineViewportShadingRateImageStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV](VkStructureType.html)
 
 [VK_NV_shading_rate_image](VK_NV_shading_rate_image.html), `VkBool32`, [VkShadingRatePaletteNV](VkShadingRatePaletteNV.html), [VkStructureType](VkStructureType.html)
 

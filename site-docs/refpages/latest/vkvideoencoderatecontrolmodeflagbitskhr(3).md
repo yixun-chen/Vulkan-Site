@@ -29,11 +29,11 @@ typedef enum VkVideoEncodeRateControlModeFlagBitsKHR {
 } VkVideoEncodeRateControlModeFlagBitsKHR;
 
 * 
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR` specifies the use of
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR](#) specifies the use of
 implementation-specific rate control.
 
 * 
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR` specifies that
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR](#) specifies that
 rate control is disabled and the application will specify per-operation
 rate control parameters controlling the encoding quality.
 In this mode implementations will encode pictures independently of the
@@ -56,13 +56,13 @@ implementations will use the quantizer index value specified in
 [VkVideoEncodeAV1PictureInfoKHR](VkVideoEncodeAV1PictureInfoKHR.html)::`constantQIndex` to control
 the quality of the encoded picture.
 
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR` specifies the use of
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR](#) specifies the use of
 constant bitrate (CBR) rate control mode.
 In this mode the implementation will attempt to produce the encoded
 bitstream at a constant bitrate while conforming to the constraints of
 other rate control parameters.
 
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR` specifies the use of
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR](#) specifies the use of
 variable bitrate (VBR) rate control mode.
 In this mode the implementation will produce the encoded bitstream at a
 variable bitrate according to the constraints of other rate control

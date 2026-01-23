@@ -35,27 +35,27 @@ typedef enum VkPerformanceCounterStorageKHR {
 } VkPerformanceCounterStorageKHR;
 
 * 
-`VK_PERFORMANCE_COUNTER_STORAGE_INT32_KHR` - the performance counter
+[VK_PERFORMANCE_COUNTER_STORAGE_INT32_KHR](#) - the performance counter
 storage is a 32-bit signed integer.
 
 * 
-`VK_PERFORMANCE_COUNTER_STORAGE_INT64_KHR` - the performance counter
+[VK_PERFORMANCE_COUNTER_STORAGE_INT64_KHR](#) - the performance counter
 storage is a 64-bit signed integer.
 
 * 
-`VK_PERFORMANCE_COUNTER_STORAGE_UINT32_KHR` - the performance
+[VK_PERFORMANCE_COUNTER_STORAGE_UINT32_KHR](#) - the performance
 counter storage is a 32-bit unsigned integer.
 
 * 
-`VK_PERFORMANCE_COUNTER_STORAGE_UINT64_KHR` - the performance
+[VK_PERFORMANCE_COUNTER_STORAGE_UINT64_KHR](#) - the performance
 counter storage is a 64-bit unsigned integer.
 
 * 
-`VK_PERFORMANCE_COUNTER_STORAGE_FLOAT32_KHR` - the performance
+[VK_PERFORMANCE_COUNTER_STORAGE_FLOAT32_KHR](#) - the performance
 counter storage is a 32-bit floating-point.
 
 * 
-`VK_PERFORMANCE_COUNTER_STORAGE_FLOAT64_KHR` - the performance
+[VK_PERFORMANCE_COUNTER_STORAGE_FLOAT64_KHR](#) - the performance
 counter storage is a 64-bit floating-point.
 
 [VK_KHR_performance_query](VK_KHR_performance_query.html), [VkPerformanceCounterKHR](VkPerformanceCounterKHR.html)

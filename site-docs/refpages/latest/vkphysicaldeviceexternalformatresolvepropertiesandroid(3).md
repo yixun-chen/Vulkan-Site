@@ -42,7 +42,7 @@ structure.
 
 `nullColorAttachmentWithExternalFormatResolve` indicates that there
 **must** be no color attachment image when performing external format
-resolves if it is `VK_TRUE`.
+resolves if it is [VK_TRUE](VK_TRUE.html).
 
 * 
 
@@ -52,7 +52,7 @@ accesses to an external format image as a resolve attachment.
 This **must** be consistent between external format resolves and load
 operations from external format resolve attachments to color attachments
 when `nullColorAttachmentWithExternalFormatResolve` is
-`VK_TRUE`.
+[VK_TRUE](VK_TRUE.html).
 
 * 
 
@@ -62,7 +62,7 @@ accesses to an external format image as a resolve attachment.
 This **must** be consistent between external format resolves and load
 operations from external format resolve attachments to color attachments
 when `nullColorAttachmentWithExternalFormatResolve` is
-`VK_TRUE`.
+[VK_TRUE](VK_TRUE.html).
 
 If the `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html) structure passed to
@@ -74,7 +74,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExternalFormatResolvePropertiesANDROID-sType-sType) VUID-VkPhysicalDeviceExternalFormatResolvePropertiesANDROID-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_PROPERTIES_ANDROID`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_PROPERTIES_ANDROID](VkStructureType.html)
 
 [VK_ANDROID_external_format_resolve](VK_ANDROID_external_format_resolve.html), `VkBool32`, [VkChromaLocation](VkChromaLocation.html), [VkStructureType](VkStructureType.html)
 

@@ -17,7 +17,7 @@
 
 VK_DATA_GRAPH_MODEL_TOOLCHAIN_VERSION_LENGTH_QCOM - Length of a data graph toolchain version string
 
-`VK_DATA_GRAPH_MODEL_TOOLCHAIN_VERSION_LENGTH_QCOM` is the length in
+[VK_DATA_GRAPH_MODEL_TOOLCHAIN_VERSION_LENGTH_QCOM](#) is the length in
 `char` values of an array containing the version of the compiler that
 built a data graph cache, as returned in
 [VkPipelineCacheHeaderVersionDataGraphQCOM](VkPipelineCacheHeaderVersionDataGraphQCOM.html)::`toolchainVersion`.

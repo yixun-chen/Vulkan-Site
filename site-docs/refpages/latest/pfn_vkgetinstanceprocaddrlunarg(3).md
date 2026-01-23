@@ -22,8 +22,9 @@ PFN_vkGetInstanceProcAddrLUNARG - Type definition for vkGetInstanceProcAddr
 The type of [PFN_vkGetInstanceProcAddrLUNARG](#) is:
 
 // Provided by VK_LUNARG_direct_driver_loading
-typedef PFN_vkVoidFunction (VKAPI_PTR *PFN_vkGetInstanceProcAddrLUNARG)(
-    VkInstance instance, const char* pName);
+typedef PFN_vkVoidFunction (*PFN_vkGetInstanceProcAddrLUNARG)(
+    VkInstance                                  instance,
+    const char*                                 pName);
 
 * 
 `instance` is a [VkInstance](VkInstance.html) handle.
@@ -42,7 +43,7 @@ processing scripts, and its name may change in the future.
 Ideally we would use the `PFN_vkGetInstanceProcAddr` type generated in
 the `vulkan_core.h` header. |
 
-[VK_LUNARG_direct_driver_loading](VK_LUNARG_direct_driver_loading.html), [VkDirectDriverLoadingInfoLUNARG](VkDirectDriverLoadingInfoLUNARG.html), [VkInstance](VkInstance.html)
+[PFN_vkVoidFunction](PFN_vkVoidFunction.html), [VK_LUNARG_direct_driver_loading](VK_LUNARG_direct_driver_loading.html), [VkDirectDriverLoadingInfoLUNARG](VkDirectDriverLoadingInfoLUNARG.html), [VkInstance](VkInstance.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/initialization.html#PFN_vkGetInstanceProcAddrLUNARG).
 

@@ -18,13 +18,13 @@
 
 VkTensorViewCreateFlagsARM - Reserved for future use
 
-// Provided by VK_ARM_tensors
+// Provided by VK_EXT_descriptor_heap, VK_ARM_tensors
 typedef VkFlags64 VkTensorViewCreateFlagsARM;
 
 `VkTensorViewCreateFlagsARM` is a bitmask type for setting a mask of
 zero or more [VkTensorViewCreateFlagBitsARM](VkTensorViewCreateFlagBitsARM.html).
 
-[VK_ARM_tensors](VK_ARM_tensors.html), `VkFlags64`, [VkTensorViewCreateFlagBitsARM](VkTensorViewCreateFlagBitsARM.html), [VkTensorViewCreateInfoARM](VkTensorViewCreateInfoARM.html)
+[VK_ARM_tensors](VK_ARM_tensors.html), [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html), `VkFlags64`, [VkTensorViewCreateFlagBitsARM](VkTensorViewCreateFlagBitsARM.html), [VkTensorViewCreateInfoARM](VkTensorViewCreateInfoARM.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkTensorViewCreateFlagsARM).
 

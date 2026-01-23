@@ -144,12 +144,12 @@ for rendering via XCB.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR](VkStructureType.html)
 
 1) Does XCB need a way to query for compatibility between a particular
 physical device and a specific screen? This would be a more general query
 than [vkGetPhysicalDeviceSurfaceSupportKHR](vkGetPhysicalDeviceSurfaceSupportKHR.html): If it returned
-`VK_TRUE`, then the physical device could be assumed to support
+[VK_TRUE](VK_TRUE.html), then the physical device could be assumed to support
 presentation to any window on that screen.
 
 **RESOLVED**: Yes, this is needed for toolkits that want to create a

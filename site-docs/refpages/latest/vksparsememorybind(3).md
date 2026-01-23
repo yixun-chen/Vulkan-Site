@@ -52,7 +52,7 @@ usage of the binding operation.
 
 The *binding range* [`resourceOffset`, `resourceOffset` + 
 `size`) has different constraints based on `flags`.
-If `flags` contains `VK_SPARSE_MEMORY_BIND_METADATA_BIT`, the
+If `flags` contains [VK_SPARSE_MEMORY_BIND_METADATA_BIT](VkSparseMemoryBindFlagBits.html), the
 binding range **must** be within the mip tail region of the metadata aspect.
 This metadata region is defined by:
 
@@ -69,9 +69,9 @@ of the image, and n is a valid array layer index for the image,
 
 `imageMipTailStride` is considered to be zero for aspects where
 `VkSparseImageMemoryRequirements`::`formatProperties.flags` contains
-`VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT`.
+[VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT](VkSparseImageFormatFlagBits.html).
 
-If `flags` does not contain `VK_SPARSE_MEMORY_BIND_METADATA_BIT`,
+If `flags` does not contain [VK_SPARSE_MEMORY_BIND_METADATA_BIT](VkSparseMemoryBindFlagBits.html),
 the binding range **must** be within the range
 [0,[VkMemoryRequirements](VkMemoryRequirements.html)::`size`).
 
@@ -106,7 +106,7 @@ of the [VkMemoryRequirements](VkMemoryRequirements.html) structure returned from
 
 If `memory` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `memory` **must** not have
 been created with a memory type that reports
-`VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT` bit set
+[VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT](VkMemoryPropertyFlagBits.html) bit set
 
 * 
 [](#VUID-VkSparseMemoryBind-size-01098) VUID-VkSparseMemoryBind-size-01098

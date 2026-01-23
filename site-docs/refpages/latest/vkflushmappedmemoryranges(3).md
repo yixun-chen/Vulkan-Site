@@ -41,7 +41,7 @@ flush.
 `vkFlushMappedMemoryRanges` guarantees that host writes to the memory
 ranges described by `pMemoryRanges` are made available to the host
 memory domain, such that they **can** be made available to the device memory
-domain via [memory domain operations](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-available-and-visible) using the `VK_ACCESS_HOST_WRITE_BIT`
+domain via [memory domain operations](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-available-and-visible) using the [VK_ACCESS_HOST_WRITE_BIT](VkAccessFlagBits.html)
 [access type](../../../../spec/latest/chapters/synchronization.html#synchronization-access-types).
 
 The first [synchronization scope](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-scopes)
@@ -108,21 +108,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkDevice](VkDevice.html), [VkMappedMemoryRange](VkMappedMemoryRange.html)
 

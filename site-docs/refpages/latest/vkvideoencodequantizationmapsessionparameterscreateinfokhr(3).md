@@ -40,7 +40,7 @@ structure.
 `quantizationMapTexelSize` specifies the
 [quantization map texel size](../../../../spec/latest/chapters/videocoding.html#encode-quantization-map-texel-size) a
 video session parameters object created with
-`VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR`
+[VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR](VkVideoSessionParametersCreateFlagBitsKHR.html)
 is compatible with.
 
 Valid Usage (Implicit)
@@ -48,7 +48,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR-sType-sType) VUID-VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUANTIZATION_MAP_SESSION_PARAMETERS_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUANTIZATION_MAP_SESSION_PARAMETERS_CREATE_INFO_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_quantization_map](VK_KHR_video_encode_quantization_map.html), [VkExtent2D](VkExtent2D.html), [VkStructureType](VkStructureType.html)
 

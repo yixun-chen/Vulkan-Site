@@ -68,7 +68,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportScreenBufferInfoQNX-sType-sType) VUID-VkImportScreenBufferInfoQNX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_SCREEN_BUFFER_INFO_QNX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_SCREEN_BUFFER_INFO_QNX](VkStructureType.html)
 
 [VK_QNX_external_memory_screen_buffer](VK_QNX_external_memory_screen_buffer.html), [VkStructureType](VkStructureType.html)
 

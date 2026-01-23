@@ -19,8 +19,8 @@
 - [Splitting_up_pipeline_stages_and_access_masks](#_splitting_up_pipeline_stages_and_access_masks)
 - [Splitting up VK_PIPELINE_STAGE_VERTEX_INPUT_BIT](#_splitting_up_vk_pipeline_stage_vertex_input_bit)
 - [Splitting_up_VK_PIPELINE_STAGE_VERTEX_INPUT_BIT](#_splitting_up_vk_pipeline_stage_vertex_input_bit)
-- [Splitting up VK_PIPELINE_STAGE_ALL_TRANSFER_BIT](#_splitting_up_vk_pipeline_stage_all_transfer_bit)
-- [Splitting_up_VK_PIPELINE_STAGE_ALL_TRANSFER_BIT](#_splitting_up_vk_pipeline_stage_all_transfer_bit)
+- [Splitting up VK_PIPELINE_STAGE_TRANSFER_BIT](#_splitting_up_vk_pipeline_stage_transfer_bit)
+- [Splitting_up_VK_PIPELINE_STAGE_TRANSFER_BIT](#_splitting_up_vk_pipeline_stage_transfer_bit)
 - [Splitting up VK_ACCESS_SHADER_READ_BIT](#_splitting_up_vk_access_shader_read_bit)
 - [Splitting_up_VK_ACCESS_SHADER_READ_BIT](#_splitting_up_vk_access_shader_read_bit)
 - [Combining shader stages for pre-rasterization](#_combining_shader_stages_for_pre_rasterization)
@@ -113,7 +113,7 @@ The `VK_PIPELINE_STAGE_VERTEX_INPUT_BIT` (now `VK_PIPELINE_STAGE_2_VERTEX_INPUT_
 * 
 `VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT_KHR`
 
-The `VK_PIPELINE_STAGE_ALL_TRANSFER_BIT` (now `VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT_KHR`) was split into 4 new stage flags which specify a dedicated stage for the various staging commands instead of having them combined into a single pipeline stage flag.
+The `VK_PIPELINE_STAGE_TRANSFER_BIT` (now `VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT_KHR`) was split into 4 new stage flags which specify a dedicated stage for the various staging commands instead of having them combined into a single pipeline stage flag.
 
 * 
 `VK_PIPELINE_STAGE_2_COPY_BIT_KHR`

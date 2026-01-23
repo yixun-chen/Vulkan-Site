@@ -619,4 +619,4 @@ By thoughtfully integrating ImGui with your Vulkan application and implementing 
 
 In the next section, we’ll explore more details about integrating the GUI rendering with the Vulkan rendering pipeline.
 
-[Previous: Input Handling](03_input_handling.adoc) | [Next: Vulkan Integration](05_vulkan_integration.adoc)
+[Previous: Input Handling](03_input_handling.html) | [Next: Vulkan Integration](05_vulkan_integration.html)

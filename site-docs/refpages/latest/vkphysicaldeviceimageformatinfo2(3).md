@@ -77,15 +77,15 @@ Valid Usage
 * 
 [](#VUID-VkPhysicalDeviceImageFormatInfo2-tiling-02249) VUID-VkPhysicalDeviceImageFormatInfo2-tiling-02249
 
-`tiling` **must** be `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT` if
+`tiling` **must** be [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html) if
 and only if the `pNext` chain includes
 [VkPhysicalDeviceImageDrmFormatModifierInfoEXT](VkPhysicalDeviceImageDrmFormatModifierInfoEXT.html)
 
 * 
 [](#VUID-VkPhysicalDeviceImageFormatInfo2-tiling-02313) VUID-VkPhysicalDeviceImageFormatInfo2-tiling-02313
 
-If `tiling` is `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT` and
-`flags` contains `VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT`, then the
+If `tiling` is [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html) and
+`flags` contains [VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](VkImageCreateFlagBits.html), then the
 `pNext` chain **must** include a [VkImageFormatListCreateInfo](VkImageFormatListCreateInfo.html)
 structure with non-zero `viewFormatCount`
 
@@ -94,7 +94,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceImageFormatInfo2-sType-sType) VUID-VkPhysicalDeviceImageFormatInfo2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2](VkStructureType.html)
 
 * 
 [](#VUID-VkPhysicalDeviceImageFormatInfo2-pNext-pNext) VUID-VkPhysicalDeviceImageFormatInfo2-pNext-pNext

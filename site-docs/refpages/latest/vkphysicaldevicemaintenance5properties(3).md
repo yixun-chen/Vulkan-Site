@@ -59,13 +59,13 @@ execution mode.
 
 * 
 `depthStencilSwizzleOneSupport` is a boolean indicating that
-depth/stencil texturing operations with `VK_COMPONENT_SWIZZLE_ONE`
+depth/stencil texturing operations with [VK_COMPONENT_SWIZZLE_ONE](VkComponentSwizzle.html)
 have defined behavior.
 
 * 
 `polygonModePointSize` is a boolean value indicating whether the
 point size of the final rasterization of polygons with
-`VK_POLYGON_MODE_POINT` is controlled by `PointSize`.
+[VK_POLYGON_MODE_POINT](VkPolygonMode.html) is controlled by `PointSize`.
 
 * 
 `nonStrictSinglePixelWideLinesUseParallelogram` is a boolean value
@@ -87,7 +87,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMaintenance5Properties-sType-sType) VUID-VkPhysicalDeviceMaintenance5Properties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_PROPERTIES](VkStructureType.html)
 
 [VK_KHR_maintenance5](VK_KHR_maintenance5.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -43,7 +43,8 @@ being acquired.
 no image is available.
 
 * 
-`semaphore` is [VK_NULL_HANDLE](VK_NULL_HANDLE.html) or a semaphore to signal.
+`semaphore` is [VK_NULL_HANDLE](VK_NULL_HANDLE.html) or a semaphore defining a
+[semaphore signal operation](../../../../spec/latest/chapters/synchronization.html#synchronization-semaphores-signaling).
 
 * 
 `fence` is [VK_NULL_HANDLE](VK_NULL_HANDLE.html) or a fence to signal.
@@ -54,10 +55,15 @@ the next image to use (i.e. an index into the array of images returned
 by `vkGetSwapchainImagesKHR`) is returned.
 
 If the `swapchain` has been created with the
-`VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR` flag, the image
+[VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html) flag, the image
 whose index is returned in `pImageIndex` will be fully backed by memory
 before this call returns to the application, as if it is bound completely
 and contiguously to a single `VkDeviceMemory` object.
+
+If `semaphore` defines a
+[semaphore signal operation](../../../../spec/latest/chapters/synchronization.html#synchronization-semaphores-signaling), its
+first [synchronization scope](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-scopes)
+includes acquisition of the image.
 
 Valid Usage
 
@@ -107,7 +113,7 @@ member of `pAcquireInfo`, `timeout` **must** not be `UINT64_MAX`
 [](#VUID-vkAcquireNextImageKHR-semaphore-03265) VUID-vkAcquireNextImageKHR-semaphore-03265
 
 `semaphore` **must** have a [VkSemaphoreType](VkSemaphoreType.html) of
-`VK_SEMAPHORE_TYPE_BINARY`
+[VK_SEMAPHORE_TYPE_BINARY](VkSemaphoreType.html)
 
 Valid Usage (Implicit)
 
@@ -167,42 +173,42 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_NOT_READY`
+[VK_NOT_READY](VkResult.html)
 
 * 
-`VK_SUBOPTIMAL_KHR`
+[VK_SUBOPTIMAL_KHR](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 * 
-`VK_TIMEOUT`
+[VK_TIMEOUT](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](VkResult.html)
 
 * 
-`VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT`
+[VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DATE_KHR`
+[VK_ERROR_OUT_OF_DATE_KHR](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_swapchain](VK_KHR_swapchain.html), [VkDevice](VkDevice.html), [VkFence](VkFence.html), [VkSemaphore](VkSemaphore.html), [VkSwapchainKHR](VkSwapchainKHR.html)
 

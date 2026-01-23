@@ -125,12 +125,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPushConstantsInfo-sType-sType) VUID-VkPushConstantsInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PUSH_CONSTANTS_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PUSH_CONSTANTS_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPushConstantsInfo-pNext-pNext) VUID-VkPushConstantsInfo-pNext-pNext
 
- `pNext` **must** be `NULL` or a pointer to a valid instance of [VkPipelineLayoutCreateInfo](VkPipelineLayoutCreateInfo.html)
+ Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkPipelineLayoutCreateInfo](VkPipelineLayoutCreateInfo.html) or [VkPushConstantBankInfoNV](VkPushConstantBankInfoNV.html)
 
 * 
 [](#VUID-VkPushConstantsInfo-sType-unique) VUID-VkPushConstantsInfo-sType-unique

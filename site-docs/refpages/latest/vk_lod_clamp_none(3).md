@@ -17,7 +17,7 @@
 
 VK_LOD_CLAMP_NONE - Maximum LOD unclamped access sentinel
 
-`VK_LOD_CLAMP_NONE` is a special constant value used for
+[VK_LOD_CLAMP_NONE](#) is a special constant value used for
 [VkSamplerCreateInfo](VkSamplerCreateInfo.html)::`maxLod` to indicate that maximum LOD
 clamping should not be performed.
 

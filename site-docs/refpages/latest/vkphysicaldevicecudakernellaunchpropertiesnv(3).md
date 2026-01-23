@@ -51,7 +51,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceCudaKernelLaunchPropertiesNV-sType-sType) VUID-VkPhysicalDeviceCudaKernelLaunchPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV](VkStructureType.html)
 
 [VK_NV_cuda_kernel_launch](VK_NV_cuda_kernel_launch.html), [VkStructureType](VkStructureType.html)
 

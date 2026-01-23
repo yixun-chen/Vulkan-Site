@@ -35,7 +35,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCuModuleTexturingModeCreateInfoNVX-sType-sType) VUID-VkCuModuleTexturingModeCreateInfoNVX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CU_MODULE_TEXTURING_MODE_CREATE_INFO_NVX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CU_MODULE_TEXTURING_MODE_CREATE_INFO_NVX](VkStructureType.html)
 
 [VK_NVX_binary_import](VK_NVX_binary_import.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

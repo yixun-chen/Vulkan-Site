@@ -32,19 +32,19 @@ typedef enum VkAccelerationStructureCreateFlagBitsKHR {
 } VkAccelerationStructureCreateFlagBitsKHR;
 
 * 
-`VK_ACCELERATION_STRUCTURE_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR`
+[VK_ACCELERATION_STRUCTURE_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR](#)
 specifies that the acceleration structure’s address **can** be saved and
 reused on a subsequent run.
 
 * 
-`VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`
+[VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](#)
 specifies that the acceleration structure **can** be used with descriptor
 buffers when capturing and replaying (e.g. for trace capture and
 replay), see [VkOpaqueCaptureDescriptorDataCreateInfoEXT](VkOpaqueCaptureDescriptorDataCreateInfoEXT.html) for more
 detail.
 
 * 
-`VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV` specifies that the
+[VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV](#) specifies that the
 acceleration structure will be used with motion information, see
 [VkAccelerationStructureMotionInfoNV](VkAccelerationStructureMotionInfoNV.html) for more detail.
 

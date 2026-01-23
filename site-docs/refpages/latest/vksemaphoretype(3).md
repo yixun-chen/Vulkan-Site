@@ -36,13 +36,13 @@ typedef enum VkSemaphoreType {
 typedef VkSemaphoreType VkSemaphoreTypeKHR;
 
 * 
-`VK_SEMAPHORE_TYPE_BINARY` specifies a *binary semaphore* type that
+[VK_SEMAPHORE_TYPE_BINARY](#) specifies a *binary semaphore* type that
 has a boolean payload indicating whether the semaphore is currently
 signaled or unsignaled.
 When created, the semaphore is in the unsignaled state.
 
 * 
-`VK_SEMAPHORE_TYPE_TIMELINE` specifies a *timeline semaphore* type
+[VK_SEMAPHORE_TYPE_TIMELINE](#) specifies a *timeline semaphore* type
 that has a strictly increasing 64-bit unsigned integer payload
 indicating whether the semaphore is signaled with respect to a
 particular reference value.

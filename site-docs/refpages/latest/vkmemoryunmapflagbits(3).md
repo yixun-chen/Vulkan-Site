@@ -32,19 +32,19 @@ typedef enum VkMemoryUnmapFlagBits {
 typedef VkMemoryUnmapFlagBits VkMemoryUnmapFlagBitsKHR;
 
 * 
-`VK_MEMORY_UNMAP_RESERVE_BIT_EXT` requests that virtual address
+[VK_MEMORY_UNMAP_RESERVE_BIT_EXT](#) requests that virtual address
 range currently occupied by the memory map remain reserved after the
 [vkUnmapMemory2](vkUnmapMemory2.html) call completes.
 Future system memory map operations or calls to [vkMapMemory](vkMapMemory.html) or
 [vkMapMemory2](vkMapMemory2.html) will not return addresses in that range unless the
 range has since been unreserved by the client or the mapping is
 explicitly placed in that range by calling [vkMapMemory2](vkMapMemory2.html) with
-`VK_MEMORY_MAP_PLACED_BIT_EXT`, or doing the system memory map
+[VK_MEMORY_MAP_PLACED_BIT_EXT](VkMemoryMapFlagBits.html), or doing the system memory map
 equivalent.
-When `VK_MEMORY_UNMAP_RESERVE_BIT_EXT` is set, the memory unmap
+When [VK_MEMORY_UNMAP_RESERVE_BIT_EXT](#) is set, the memory unmap
 operation **may** fail, in which case the memory object will remain host
 mapped and [vkUnmapMemory2](vkUnmapMemory2.html) will return
-`VK_ERROR_MEMORY_MAP_FAILED`.
+[VK_ERROR_MEMORY_MAP_FAILED](VkResult.html).
 
 [VK_KHR_map_memory2](VK_KHR_map_memory2.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), [VkMemoryUnmapFlags](VkMemoryUnmapFlags.html)
 

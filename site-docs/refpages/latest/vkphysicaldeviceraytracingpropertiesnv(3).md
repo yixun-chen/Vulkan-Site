@@ -92,7 +92,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceRayTracingPropertiesNV-sType-sType) VUID-VkPhysicalDeviceRayTracingPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_NV](VkStructureType.html)
 
 [VK_NV_ray_tracing](VK_NV_ray_tracing.html), [VkStructureType](VkStructureType.html)
 

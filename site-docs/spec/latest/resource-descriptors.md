@@ -106,26 +106,26 @@ The mapping of each type to SPIR-V is listed in the
 [Shader Resource and Descriptor Type Correspondence](interfaces.html#interfaces-resources-correspondence) and [Shader Resource and Storage Class Correspondence](interfaces.html#interfaces-resources-storage-class-correspondence) tables in the
 [Shader Interfaces](interfaces.html#interfaces) chapter.
 
-A *storage image* (`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`) is a descriptor
+A *storage image* ([VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType)) is a descriptor
 type associated with an [image resource](resources.html#resources-images) via an
 [image view](resources.html#resources-image-views) that load, store, and atomic
 operations **can** be performed on.
 
 Storage image loads are supported in all shader stages for image views whose
 [format features](resources.html#resources-image-view-format-features) contain
-[`VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT`](formats.html#formats-properties).
+[](formats.html#formats-properties)[VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT](formats.html#VkFormatFeatureFlagBits).
 
 Stores to storage images are supported in
 task, mesh and
 compute shaders for image views whose
 [format features](resources.html#resources-image-view-format-features) contain
-[`VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT`](formats.html#formats-properties).
+[](formats.html#formats-properties)[VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT](formats.html#VkFormatFeatureFlagBits).
 
 Atomic operations on storage images are supported in
 task, mesh and
 compute shaders for image views whose
 [format features](resources.html#resources-image-view-format-features) contain
-[`VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT`](formats.html#formats-properties).
+[](formats.html#formats-properties)[VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT](formats.html#VkFormatFeatureFlagBits).
 
 When the [`fragmentStoresAndAtomics`](features.html#features-fragmentStoresAndAtomics) feature is enabled, stores and atomic
 operations are also supported for storage images in fragment shaders with
@@ -135,15 +135,15 @@ operations are also supported in vertex, tessellation, and geometry shaders
 with the same set of image formats as supported in compute shaders.
 
 The image subresources for a storage image **must** be in the
-`VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR` or
-`VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM` or
-`VK_IMAGE_LAYOUT_GENERAL` layout in order to access its data in a
+[VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout) layout in order to access its data in a
 shader.
 
 When the [`tileShadingColorAttachments`](features.html#features-tileShadingColorAttachments) feature is enabled, loads using
 `OpImageRead` or `OpImageSparseRead` are supported for color
 [tile attachments](interfaces.html#interfaces-tile-attachment) in fragment and compute
-shaders for image views whose [format features](resources.html#resources-image-view-format-features) contain [`VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT`](formats.html#formats-properties).
+shaders for image views whose [format features](resources.html#resources-image-view-format-features) contain [](formats.html#formats-properties)[VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT](formats.html#VkFormatFeatureFlagBits).
 Additionally, when the [`tileShadingColorAttachments`](features.html#features-tileShadingColorAttachments) feature is enabled, stores using
 `OpImageWrite` are supported for color attachments in compute shaders
 with the same set of image formats as for loads.
@@ -164,12 +164,12 @@ stencil aspects of a depth/stencil [tile attachment](interfaces.html#interfaces-
 formats as for color attachments.
 Stores to depth/stencil attachments are not supported.
 
-A *sampler descriptor* (`VK_DESCRIPTOR_TYPE_SAMPLER`) is a descriptor
+A *sampler descriptor* ([VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType)) is a descriptor
 type associated with a [sampler](samplers.html#samplers) object, used to control the
 behavior of [sampling operations](textures.html#textures) performed on a
 [sampled image](#descriptorsets-sampledimage).
 
-A *sampled image* (`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`) is a descriptor
+A *sampled image* ([VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType)) is a descriptor
 type associated with an [image resource](resources.html#resources-images) via an
 [image view](resources.html#resources-image-views) that [sampling operations](textures.html#textures)
 **can** be performed on.
@@ -179,45 +179,45 @@ sampling operations.
 
 Sampled images are supported in all shader stages for image views whose
 [format features](resources.html#resources-image-view-format-features) contain
-[`VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT`](formats.html#formats-properties).
+[](formats.html#formats-properties)[VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](formats.html#VkFormatFeatureFlagBits).
 
 An image subresources for a sampled image **must** be in one of the following
 layouts:
 
 * 
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_GENERAL`
+[VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`
+[VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT`
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM`
+[VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM](resources.html#VkImageLayout)
 
-A *combined image sampler* (`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`)
+A *combined image sampler* ([VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType))
 is a single descriptor type associated with both a [sampler](samplers.html#samplers) and
 an [image resource](resources.html#resources-images), combining both a
 [sampler](#descriptorsets-sampler) and [sampled image](#descriptorsets-sampledimage) descriptor into a single descriptor.
@@ -234,44 +234,44 @@ An image subresources for a combined image sampler **must** be in one of the
 following layouts:
 
 * 
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_GENERAL`
+[VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`
+[VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT`
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM`
+[VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM](resources.html#VkImageLayout)
 
 |  | On some implementations, it **may** be more efficient to sample from an image
 | --- | --- |
 using a combination of sampler and sampled image that are stored together in
 the descriptor set in a combined descriptor. |
 
-A *uniform texel buffer* (`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`) is
+A *uniform texel buffer* ([VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType)) is
 a descriptor type associated with a [buffer resource](resources.html#resources-buffers)
 via a [buffer view](resources.html#resources-buffer-views) that [image sampling operations](textures.html#textures) **can** be performed on.
 
@@ -282,9 +282,9 @@ the same way as they are for an image.
 Load operations from uniform texel buffers are supported in all shader
 stages for buffer view formats which report
 [format features](resources.html#resources-buffer-view-format-features) support for
-`VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT`
+[VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT](formats.html#VkFormatFeatureFlagBits)
 
-A *storage texel buffer* (`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`) is
+A *storage texel buffer* ([VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType)) is
 a descriptor type associated with a [buffer resource](resources.html#resources-buffers)
 via a [buffer view](resources.html#resources-buffer-views) that [image load, store, and atomic operations](textures.html#textures) **can** be performed on.
 
@@ -298,19 +298,19 @@ buffers can also be written to in the same way as for
 Storage texel buffer loads are supported in all shader stages for texel
 buffer view formats which report
 [format features](resources.html#resources-buffer-view-format-features) support for
-`VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT`
+[VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT](formats.html#VkFormatFeatureFlagBits)
 
 Stores to storage texel buffers are supported in
 task, mesh and
 compute shaders for texel buffer formats which report
 [format features](resources.html#resources-buffer-view-format-features) support for
-`VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT`
+[VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT](formats.html#VkFormatFeatureFlagBits)
 
 Atomic operations on storage texel buffers are supported in
 task, mesh and
 compute shaders for texel buffer formats which report
 [format features](resources.html#resources-buffer-view-format-features) support for
-`VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT`
+[VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT](formats.html#VkFormatFeatureFlagBits)
 
 When the [`fragmentStoresAndAtomics`](features.html#features-fragmentStoresAndAtomics) feature is enabled, stores and atomic
 operations are also supported for storage texel buffers in fragment shaders
@@ -319,7 +319,7 @@ When the [`vertexPipelineStoresAndAtomics`](features.html#features-vertexPipelin
 operations are also supported in vertex, tessellation, and geometry shaders
 with the same set of texel buffer formats as supported in compute shaders.
 
-A *storage buffer* (`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`) is a descriptor
+A *storage buffer* ([VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType)) is a descriptor
 type associated with a [buffer resource](resources.html#resources-buffers) directly,
 described in a shader as a structure with various members that load, store,
 and atomic operations **can** be performed on.
@@ -328,12 +328,12 @@ and atomic operations **can** be performed on.
 | --- | --- |
 defined in the [SPIR-V environment appendix](../appendices/spirvenv.html#spirvenv). |
 
-A *uniform buffer* (`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`) is a descriptor
+A *uniform buffer* ([VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType)) is a descriptor
 type associated with a [buffer resource](resources.html#resources-buffers) directly,
 described in a shader as a structure with various members that load
 operations **can** be performed on.
 
-A *dynamic uniform buffer* (`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`)
+A *dynamic uniform buffer* ([VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType))
 is almost identical to a [uniform buffer](#descriptorsets-uniformbuffer),
 and differs only in how the offset into the buffer is specified.
 The base offset calculated by the [VkDescriptorBufferInfo](#VkDescriptorBufferInfo) when
@@ -341,7 +341,7 @@ initially [updating the descriptor set](#descriptorsets-updates) is added
 to a [dynamic offset](#descriptorsets-binding-dynamicoffsets) when binding
 the descriptor set.
 
-A *dynamic storage buffer* (`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`)
+A *dynamic storage buffer* ([VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType))
 is almost identical to a [storage buffer](#descriptorsets-storagebuffer),
 and differs only in how the offset into the buffer is specified.
 The base offset calculated by the [VkDescriptorBufferInfo](#VkDescriptorBufferInfo) when
@@ -349,7 +349,7 @@ initially [updating the descriptor set](#descriptorsets-updates) is added
 to a [dynamic offset](#descriptorsets-binding-dynamicoffsets) when binding
 the descriptor set.
 
-An *inline uniform block* (`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`) is
+An *inline uniform block* ([VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType)) is
 almost identical to a [uniform buffer](#descriptorsets-uniformbuffer), and
 differs only in taking its storage directly from the encompassing descriptor
 set instead of being backed by buffer memory.
@@ -364,7 +364,7 @@ Inline uniform block descriptors **cannot** be aggregated into arrays.
 Instead, the array size specified for an inline uniform block descriptor
 binding specifies the binding’s capacity in bytes.
 
-A *sample weight image* (`VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM`)
+A *sample weight image* ([VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](#VkDescriptorType))
 is a descriptor type associated with an [image resource](resources.html#resources-images)
 via an [image view](resources.html#resources-image-views) that **can** be used in
 [weight image sampling](textures.html#textures-weightimage).
@@ -377,17 +377,17 @@ a sampler variable to perform [weight image sampling](textures.html#textures-wei
 Weight image sampling is supported in all shader stages if the weight image
 view specifies a format that supports
 [format feature](resources.html#resources-image-view-format-features)
-[`VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM`](formats.html#formats-properties) and
+[](formats.html#formats-properties)[VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR) and
 the sampled image view specifies a format that supports
 [format feature](resources.html#resources-image-view-format-features)
-[`VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM`](formats.html#formats-properties)
+[](formats.html#formats-properties)[VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 The image subresources for the weight image **must** be in the
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_GENERAL` layout in order to access its data in a
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout) layout in order to access its data in a
 shader.
 
-A *block matching image* (`VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM`)
+A *block matching image* ([VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](#VkDescriptorType))
 is a descriptor type associated with an [image resource](resources.html#resources-images)
 via an [image view](resources.html#resources-image-views) that **can** be used in
 [block matching](textures.html#textures-blockmatch).
@@ -398,71 +398,71 @@ and a sampler variable to perform [block matching](textures.html#textures-blockm
 Block matching is supported in all shader stages for if both the target view
 and reference view specifies a format that supports
 [format feature](resources.html#resources-image-view-format-features)
-[`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`](formats.html#formats-properties)
+[](formats.html#formats-properties)[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 The image subresources for block matching **must** be in the
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_GENERAL` layout in order to access its data in a
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout) layout in order to access its data in a
 shader.
 
-An *input attachment* (`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`) is a
+An *input attachment* ([VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType)) is a
 descriptor type associated with an [image resource](resources.html#resources-images) via
 an [image view](resources.html#resources-image-views) that **can** be used for
 [framebuffer local](synchronization.html#synchronization-framebuffer-regions) load operations in
 fragment shaders.
 
 All image formats that are supported for color attachments
-(`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT`
-or `VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV`
+([VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
+or [VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](formats.html#VkFormatFeatureFlagBits2KHR)
 ) or depth/stencil attachments
-(`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`) for a given image
+([VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)) for a given image
 tiling mode are also supported for input attachments.
 
 An image view used as an input attachment **must** be in one of the following
 layouts:
 
 * 
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_GENERAL`
+[VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`
+[VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT`
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout)
 
 * 
-`VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+[VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout)
 
 An *acceleration structure* (
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR`
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](#VkDescriptorType)
 or
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV`
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](#VkDescriptorType)
 ) is a descriptor type that is used to retrieve scene geometry from within
 shaders that are used for ray traversal.
 Shaders have read-only access to the memory.
 
-A descriptor of *mutable* (`VK_DESCRIPTOR_TYPE_MUTABLE_EXT`) type
+A descriptor of *mutable* ([VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType)) type
 indicates that this descriptor **can** mutate to any of the descriptor types
 given in the [VkMutableDescriptorTypeListEXT](#VkMutableDescriptorTypeListEXT)::`pDescriptorTypes`
 list of descriptor types in the `pNext` chain of
@@ -472,13 +472,13 @@ descriptor type.
 The active descriptor type **can** be any one of the declared types in
 `pDescriptorTypes`.
 Additionally, a mutable descriptor’s active descriptor type **can** be of the
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT` type, which is the initial active
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType) type, which is the initial active
 descriptor type.
 The active descriptor type **can** change when the descriptor is updated.
 When a descriptor is consumed by binding a descriptor set, the active
-descriptor type is considered, not `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`.
+descriptor type is considered, not [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType).
 
-An active descriptor type of `VK_DESCRIPTOR_TYPE_MUTABLE_EXT` is
+An active descriptor type of [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType) is
 considered an **undefined** descriptor.
 If a descriptor is consumed where the active descriptor type does not match
 what the shader expects, the descriptor is considered an **undefined**
@@ -486,9 +486,9 @@ descriptor.
 
 |  | To find which descriptor types are supported as
 | --- | --- |
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, the application **can** use
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType), the application **can** use
 [vkGetDescriptorSetLayoutSupport](#vkGetDescriptorSetLayoutSupport) with a
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT` binding, with the list of descriptor
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType) binding, with the list of descriptor
 types to query in the
 [VkMutableDescriptorTypeCreateInfoEXT](#VkMutableDescriptorTypeCreateInfoEXT)::`pMutableDescriptorTypeLists`
 array for that binding. |
@@ -506,19 +506,19 @@ encouraged to use them outside API layering efforts.
 Mutable descriptor types can be more efficient if the alternative is using
 many different descriptors to emulate mutable descriptor types. |
 
-A *storage tensor* (`VK_DESCRIPTOR_TYPE_TENSOR_ARM`) is a descriptor
+A *storage tensor* ([VK_DESCRIPTOR_TYPE_TENSOR_ARM](#VkDescriptorType)) is a descriptor
 type associated with a [tensor resource](resources.html#resources-tensors) via a
 [tensor view](resources.html#resources-tensor-views) that read and write operations **can**
 be performed on.
 
 Storage tensor reads and writes are supported in shaders for tensor views
 whose [format features](resources.html#resources-tensor-view-format-features) contain
-[`VK_FORMAT_FEATURE_2_TENSOR_SHADER_BIT_ARM`](formats.html#formats-properties).
+[](formats.html#formats-properties)[VK_FORMAT_FEATURE_2_TENSOR_SHADER_BIT_ARM](formats.html#VkFormatFeatureFlagBits2KHR).
 
 Storage tensor reads and writes are supported in graph pipelines for tensor
 views whose [format features](resources.html#resources-tensor-view-format-features)
 contain
-[`VK_FORMAT_FEATURE_2_TENSOR_DATA_GRAPH_BIT_ARM`](formats.html#formats-properties).
+[](formats.html#formats-properties)[VK_FORMAT_FEATURE_2_TENSOR_DATA_GRAPH_BIT_ARM](formats.html#VkFormatFeatureFlagBits2KHR).
 
 Descriptors are grouped together into descriptor set objects.
 A descriptor set object is an opaque object containing storage for a set of
@@ -529,6 +529,10 @@ binding with memory or other implementation resources.
 The layout is used both for determining the resources that need to be
 associated with the descriptor set, and determining the interface between
 shader stages and shader resources.
+
+|  | When available, applications can use [descriptor heaps](descriptorheaps.html#descriptorheaps)
+| --- | --- |
+as a powerful and flexible alternative to descriptor sets. |
 
 A descriptor set layout object is defined by an array of zero or more
 descriptor bindings.
@@ -578,7 +582,7 @@ If the descriptor layout exceeds the limits reported through the
 [physical device limits](limits.html#limits), then
 [vkGetDescriptorSetLayoutSupport](#vkGetDescriptorSetLayoutSupport) **must** have returned
 [VkDescriptorSetLayoutSupport](#VkDescriptorSetLayoutSupport) with `support` equal to
-`VK_TRUE` for `pCreateInfo`
+[VK_TRUE](fundamentals.html#VK_TRUE) for `pCreateInfo`
 
 Valid Usage (Implicit)
 
@@ -607,21 +611,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Information about the descriptor set layout is passed in a
 `VkDescriptorSetLayoutCreateInfo` structure:
@@ -661,7 +665,7 @@ Valid Usage
 
 If the [`perStageDescriptorSet`](features.html#features-perStageDescriptorSet)
 feature is not enabled, or `flags` does not contain
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV`, then the
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV](#VkDescriptorSetLayoutCreateFlagBits), then the
 [VkDescriptorSetLayoutBinding](#VkDescriptorSetLayoutBinding)::`binding` members of the
 elements of the `pBindings` array **must** each have different values
 
@@ -669,7 +673,7 @@ elements of the `pBindings` array **must** each have different values
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-10354) VUID-VkDescriptorSetLayoutCreateInfo-flags-10354
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](#VkDescriptorSetLayoutCreateFlagBits),
 and the [VK_KHR_push_descriptor](../appendices/extensions.html#VK_KHR_push_descriptor) extension is not enabled,
 [`pushDescriptor`](features.html#features-pushDescriptor) **must** be enabled
 
@@ -677,24 +681,24 @@ and the [VK_KHR_push_descriptor](../appendices/extensions.html#VK_KHR_push_descr
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-00280) VUID-VkDescriptorSetLayoutCreateInfo-flags-00280
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`, then all
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](#VkDescriptorSetLayoutCreateFlagBits), then all
 elements of `pBindings` **must** not have a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-02208) VUID-VkDescriptorSetLayoutCreateInfo-flags-02208
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`, then all
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](#VkDescriptorSetLayoutCreateFlagBits), then all
 elements of `pBindings` **must** not have a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-00281) VUID-VkDescriptorSetLayoutCreateInfo-flags-00281
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`, then the
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](#VkDescriptorSetLayoutCreateFlagBits), then the
 total number of elements of all bindings **must** be less than or equal to
 [VkPhysicalDevicePushDescriptorProperties](limits.html#VkPhysicalDevicePushDescriptorProperties)::`maxPushDescriptors`
 
@@ -702,46 +706,46 @@ total number of elements of all bindings **must** be less than or equal to
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-04590) VUID-VkDescriptorSetLayoutCreateInfo-flags-04590
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`, `flags`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](#VkDescriptorSetLayoutCreateFlagBits), `flags`
 **must** not contain
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-04591) VUID-VkDescriptorSetLayoutCreateInfo-flags-04591
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](#VkDescriptorSetLayoutCreateFlagBits),
 `pBindings` **must** not have a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-03000) VUID-VkDescriptorSetLayoutCreateInfo-flags-03000
 
-If any binding has the `VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`
+If any binding has the [VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT)
 bit set, `flags` **must** include
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-descriptorType-03001) VUID-VkDescriptorSetLayoutCreateInfo-descriptorType-03001
 
-If any binding has the `VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`
+If any binding has the [VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT)
 bit set, then all bindings **must** not have `descriptorType` of
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-04592) VUID-VkDescriptorSetLayoutCreateInfo-flags-04592
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits),
 `flags` **must** not contain
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-pBindings-07303) VUID-VkDescriptorSetLayoutCreateInfo-pBindings-07303
 
 If any element `pBindings`[i] has a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, then the `pNext` chain **must**
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType), then the `pNext` chain **must**
 include a [VkMutableDescriptorTypeCreateInfoEXT](#VkMutableDescriptorTypeCreateInfoEXT) structure, and
 `mutableDescriptorTypeListCount` **must** be greater than i
 
@@ -749,7 +753,7 @@ include a [VkMutableDescriptorTypeCreateInfoEXT](#VkMutableDescriptorTypeCreateI
 [](#VUID-VkDescriptorSetLayoutCreateInfo-descriptorType-04594) VUID-VkDescriptorSetLayoutCreateInfo-descriptorType-04594
 
 If a binding has a `descriptorType` value of
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, then `pImmutableSamplers`
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType), then `pImmutableSamplers`
 **must** be `NULL`
 
 * 
@@ -758,13 +762,13 @@ If a binding has a `descriptorType` value of
 If
 [VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT](features.html#VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT)::`mutableDescriptorType`
 is not enabled, `pBindings` **must** not contain a `descriptorType`
-of `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+of [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-04596) VUID-VkDescriptorSetLayoutCreateInfo-flags-04596
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits),
 [VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT](features.html#VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT)::`mutableDescriptorType`
 **must** be enabled
 
@@ -772,40 +776,40 @@ If `flags` contains
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-08000) VUID-VkDescriptorSetLayoutCreateInfo-flags-08000
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, then
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits), then
 all elements of `pBindings` **must** not have a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-08001) VUID-VkDescriptorSetLayoutCreateInfo-flags-08001
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits),
 `flags` **must** also contain
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-08002) VUID-VkDescriptorSetLayoutCreateInfo-flags-08002
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, then
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits), then
 `flags` **must** not contain
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-08003) VUID-VkDescriptorSetLayoutCreateInfo-flags-08003
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, then
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits), then
 `flags` **must** not contain
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-09463) VUID-VkDescriptorSetLayoutCreateInfo-flags-09463
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV`, then
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV](#VkDescriptorSetLayoutCreateFlagBits), then
 [`perStageDescriptorSet`](features.html#features-perStageDescriptorSet) **must** be
 enabled
 
@@ -813,7 +817,7 @@ enabled
 [](#VUID-VkDescriptorSetLayoutCreateInfo-flags-09464) VUID-VkDescriptorSetLayoutCreateInfo-flags-09464
 
 If `flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV`, then there **must**
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV](#VkDescriptorSetLayoutCreateFlagBits), then there **must**
 not be any two elements of the `pBindings` array with the same
 [VkDescriptorSetLayoutBinding](#VkDescriptorSetLayoutBinding)::`binding` value and their
 [VkDescriptorSetLayoutBinding](#VkDescriptorSetLayoutBinding)::`stageFlags` containing the same
@@ -824,7 +828,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-sType-sType) VUID-VkDescriptorSetLayoutCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDescriptorSetLayoutCreateInfo-pNext-pNext) VUID-VkDescriptorSetLayoutCreateInfo-pNext-pNext
@@ -894,7 +898,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMutableDescriptorTypeCreateInfoEXT-sType-sType) VUID-VkMutableDescriptorTypeCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMutableDescriptorTypeCreateInfoEXT-pMutableDescriptorTypeLists-parameter) VUID-VkMutableDescriptorTypeCreateInfoEXT-pMutableDescriptorTypeLists-parameter
@@ -931,50 +935,50 @@ Valid Usage
 [](#VUID-VkMutableDescriptorTypeListEXT-descriptorTypeCount-04597) VUID-VkMutableDescriptorTypeListEXT-descriptorTypeCount-04597
 
 `descriptorTypeCount` **must** not be `0` if the corresponding binding
-is of `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+is of [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType)
 
 * 
 [](#VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04598) VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04598
 
 `pDescriptorTypes` **must** be a valid pointer to an array of
 `descriptorTypeCount` valid, unique [VkDescriptorType](#VkDescriptorType) values if
-the given binding is of `VK_DESCRIPTOR_TYPE_MUTABLE_EXT` type
+the given binding is of [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType) type
 
 * 
 [](#VUID-VkMutableDescriptorTypeListEXT-descriptorTypeCount-04599) VUID-VkMutableDescriptorTypeListEXT-descriptorTypeCount-04599
 
 `descriptorTypeCount` **must** be `0` if the corresponding binding is
-not of `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+not of [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType)
 
 * 
 [](#VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04600) VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04600
 
 `pDescriptorTypes` **must** not contain
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType)
 
 * 
 [](#VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04601) VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04601
 
 `pDescriptorTypes` **must** not contain
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType)
 
 * 
 [](#VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04602) VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04602
 
 `pDescriptorTypes` **must** not contain
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType)
 
 * 
 [](#VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04603) VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-04603
 
 `pDescriptorTypes` **must** not contain
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType)
 
 * 
 [](#VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-09696) VUID-VkMutableDescriptorTypeListEXT-pDescriptorTypes-09696
 
 `pDescriptorTypes` **must** not contain
-`VK_DESCRIPTOR_TYPE_TENSOR_ARM`
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](#VkDescriptorType)
 
 Valid Usage (Implicit)
 
@@ -1012,15 +1016,15 @@ typedef enum VkDescriptorSetLayoutCreateFlagBits {
 } VkDescriptorSetLayoutCreateFlagBits;
 
 * 
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT` specifies that
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](#VkDescriptorSetLayoutCreateFlagBits) specifies that
 descriptor sets **must** not be allocated using this layout, and
 descriptors are instead pushed by [vkCmdPushDescriptorSet](#vkCmdPushDescriptorSet).
 
 * 
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits)
 specifies that descriptor sets using this layout **must** be allocated from
 a descriptor pool created with the
-`VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT` bit set.
+[VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](#VkDescriptorPoolCreateFlagBits) bit set.
 Descriptor set layouts created with this bit set have alternate limits
 for the maximum number of descriptors per-stage and per-pipeline layout.
 The non-UpdateAfterBind limits only count descriptors in sets created
@@ -1029,28 +1033,28 @@ The UpdateAfterBind limits count all descriptors, but the limits **may** be
 higher than the non-UpdateAfterBind limits.
 
 * 
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_INDIRECT_BINDABLE_BIT_NV` specifies
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_INDIRECT_BINDABLE_BIT_NV](#VkDescriptorSetLayoutCreateFlagBits) specifies
 that descriptor sets using this layout allows them to be bound with
 compute pipelines that are created with
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV` flag set to be used in
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](pipelines.html#VkPipelineCreateFlagBits) flag set to be used in
 [Device-Generated Commands](device_generated_commands/generatedcommands.html#device-generated-commands).
 
 * 
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits)
 specifies that this layout **must** only be used with descriptor buffers.
 
 * 
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits)
 specifies that this is a layout only containing immutable samplers that
 **can** be bound by [vkCmdBindDescriptorBufferEmbeddedSamplersEXT](#vkCmdBindDescriptorBufferEmbeddedSamplersEXT).
 Unlike normal immutable samplers, embedded immutable samplers do not
 require the application to provide them in a descriptor buffer.
 
 * 
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT` specifies
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits) specifies
 that descriptor sets using this layout **must** be allocated from a
 descriptor pool created with the
-`VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT` bit set.
+[VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT](#VkDescriptorPoolCreateFlagBits) bit set.
 Descriptor set layouts created with this bit have no expressible limit
 for maximum number of descriptors per-stage.
 Host descriptor sets are limited only by available host memory, but **may**
@@ -1060,7 +1064,7 @@ UpdateAfterBind limits or non-UpdateAfterBind limits, whichever is
 larger.
 
 * 
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV` specifies that
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV](#VkDescriptorSetLayoutCreateFlagBits) specifies that
 binding numbers in descriptor sets using this layout **may** represent
 different resources and/or types of resources in each stage.
 
@@ -1093,7 +1097,7 @@ of resource descriptors are used for this binding.
 `descriptorCount` is the number of descriptors contained in the
 binding, accessed in a shader as an
 array, except if `descriptorType` is
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` in which case
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) in which case
 `descriptorCount` is the size in bytes of the inline uniform block.
 If `descriptorCount` is zero this binding entry is reserved and the
 resource **must** not be accessed from any stage via this binding within
@@ -1103,7 +1107,7 @@ any pipeline using the set layout.
 `stageFlags` member is a bitmask of [VkShaderStageFlagBits](pipelines.html#VkShaderStageFlagBits)
 specifying which pipeline shader stages **can** access a resource for this
 binding.
-`VK_SHADER_STAGE_ALL` is a shorthand specifying that all defined
+[VK_SHADER_STAGE_ALL](pipelines.html#VkShaderStageFlagBits) is a shorthand specifying that all defined
 shader stages, including any additional stages defined by extensions,
 **can** access the resource.
 
@@ -1117,14 +1121,14 @@ and the compute stage.
 
 * 
 `pImmutableSamplers` affects initialization of samplers.
-If `descriptorType` specifies a `VK_DESCRIPTOR_TYPE_SAMPLER` or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` type descriptor, then
+If `descriptorType` specifies a [VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) type descriptor, then
 `pImmutableSamplers` **can** be used to initialize a set of *immutable
 samplers*.
 Immutable samplers are permanently bound into the set layout and **must**
-not be changed; updating a `VK_DESCRIPTOR_TYPE_SAMPLER` descriptor
+not be changed; updating a [VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType) descriptor
 with immutable samplers is not allowed and updates to a
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` descriptor with
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) descriptor with
 immutable samplers does not modify the samplers (the image views are
 updated, but the sampler updates are ignored).
 If `pImmutableSamplers` is not `NULL`, then it is a pointer to an
@@ -1160,8 +1164,8 @@ Valid Usage
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-descriptorType-00282) VUID-VkDescriptorSetLayoutBinding-descriptorType-00282
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_SAMPLER` or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, and
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType), and
 `descriptorCount` is not `0` and `pImmutableSamplers` is not
 `NULL`, `pImmutableSamplers` **must** be a valid pointer to an array of
 `descriptorCount` valid `VkSampler` handles
@@ -1170,7 +1174,7 @@ If `descriptorType` is `VK_DESCRIPTOR_TYPE_SAMPLER` or
 [](#VUID-VkDescriptorSetLayoutBinding-descriptorType-12200) VUID-VkDescriptorSetLayoutBinding-descriptorType-12200
 
 If `descriptorType` is
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, and
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType), and
 `descriptorCount` is not `0` and `pImmutableSamplers` is not
 `NULL`, either each element of `pImmutableSamplers` **must** be a
 `VkSampler` that enables [sampler Y′CBCR    conversion](samplers.html#samplers-YCbCr-conversion) or none of them enable sampler Y′CBCR conversion
@@ -1178,7 +1182,7 @@ If `descriptorType` is
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-descriptorType-12215) VUID-VkDescriptorSetLayoutBinding-descriptorType-12215
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_SAMPLER`, each
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType), each
 element of `pImmutableSamplers` **must** not be a `VkSampler`
 object that enables [sampler Y′CBCR    conversion](samplers.html#samplers-YCbCr-conversion)
 
@@ -1187,20 +1191,20 @@ object that enables [sampler Y′CBCR    conversion](samplers.html#samplers-YCbC
 
 If the [`inlineUniformBlock`](features.html#features-inlineUniformBlock) feature
 is not enabled, `descriptorType` **must** not be
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-descriptorType-02209) VUID-VkDescriptorSetLayoutBinding-descriptorType-02209
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType)
 then `descriptorCount` **must** be a multiple of `4`
 
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-descriptorType-08004) VUID-VkDescriptorSetLayoutBinding-descriptorType-08004
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType)
 and [VkDescriptorSetLayoutCreateInfo](#VkDescriptorSetLayoutCreateInfo)::`flags` does not contain
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits)
 then `descriptorCount` **must** be less than or equal to
 `VkPhysicalDeviceInlineUniformBlockProperties`::`maxInlineUniformBlockSize`
 
@@ -1208,21 +1212,21 @@ then `descriptorCount` **must** be less than or equal to
 [](#VUID-VkDescriptorSetLayoutBinding-flags-08005) VUID-VkDescriptorSetLayoutBinding-flags-08005
 
 If [VkDescriptorSetLayoutCreateInfo](#VkDescriptorSetLayoutCreateInfo)::`flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`,
-`descriptorType` **must** be `VK_DESCRIPTOR_TYPE_SAMPLER`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits),
+`descriptorType` **must** be [VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-flags-08006) VUID-VkDescriptorSetLayoutBinding-flags-08006
 
 If [VkDescriptorSetLayoutCreateInfo](#VkDescriptorSetLayoutCreateInfo)::`flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits),
 `descriptorCount` **must** be less than or equal to `1`
 
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-flags-08007) VUID-VkDescriptorSetLayoutBinding-flags-08007
 
 If [VkDescriptorSetLayoutCreateInfo](#VkDescriptorSetLayoutCreateInfo)::`flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits),
 and `descriptorCount` is equal to `1`, `pImmutableSamplers`
 **must** not be `NULL`
 
@@ -1230,41 +1234,41 @@ and `descriptorCount` is equal to `1`, `pImmutableSamplers`
 [](#VUID-VkDescriptorSetLayoutBinding-descriptorCount-09465) VUID-VkDescriptorSetLayoutBinding-descriptorCount-09465
 
 If `descriptorCount` is not `0`, `stageFlags` **must** be
-`VK_SHADER_STAGE_ALL` or a valid combination of other
+[VK_SHADER_STAGE_ALL](pipelines.html#VkShaderStageFlagBits) or a valid combination of other
 [VkShaderStageFlagBits](pipelines.html#VkShaderStageFlagBits) values
 
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-descriptorType-01510) VUID-VkDescriptorSetLayoutBinding-descriptorType-01510
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` and
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType) and
 `descriptorCount` is not `0`, then `stageFlags` **must** be `0` or
-`VK_SHADER_STAGE_FRAGMENT_BIT`
+[VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-pImmutableSamplers-04009) VUID-VkDescriptorSetLayoutBinding-pImmutableSamplers-04009
 
 The sampler objects indicated by `pImmutableSamplers` **must** not have
 a `borderColor` with one of the values
-`VK_BORDER_COLOR_FLOAT_CUSTOM_EXT` or
-`VK_BORDER_COLOR_INT_CUSTOM_EXT`
+[VK_BORDER_COLOR_FLOAT_CUSTOM_EXT](samplers.html#VkBorderColor) or
+[VK_BORDER_COLOR_INT_CUSTOM_EXT](samplers.html#VkBorderColor)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-descriptorType-04605) VUID-VkDescriptorSetLayoutBinding-descriptorType-04605
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, then
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType), then
 `pImmutableSamplers` **must** be `NULL`
 
 * 
 [](#VUID-VkDescriptorSetLayoutBinding-flags-09466) VUID-VkDescriptorSetLayoutBinding-flags-09466
 
 If [VkDescriptorSetLayoutCreateInfo](#VkDescriptorSetLayoutCreateInfo)::`flags` contains
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV`, and
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV](#VkDescriptorSetLayoutCreateFlagBits), and
 `descriptorCount` is not `0`, then `stageFlags` **must** be a valid
-combination of `VK_SHADER_STAGE_VERTEX_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`,
-`VK_SHADER_STAGE_GEOMETRY_BIT`, `VK_SHADER_STAGE_FRAGMENT_BIT`
-and `VK_SHADER_STAGE_COMPUTE_BIT` values
+combination of [VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_GEOMETRY_BIT](pipelines.html#VkShaderStageFlagBits), [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits)
+and [VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits) values
 
 Valid Usage (Implicit)
 
@@ -1328,17 +1332,17 @@ If `bindingCount` is not zero, `bindingCount` **must** equal
 [](#VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-flags-03003) VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-flags-03003
 
 If [VkDescriptorSetLayoutCreateInfo](#VkDescriptorSetLayoutCreateInfo)::`flags` includes
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`, then all
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](#VkDescriptorSetLayoutCreateFlagBits), then all
 elements of `pBindingFlags` **must** not include
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`,
-`VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT`, or
-`VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT`
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT),
+[VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT](#VkDescriptorBindingFlagBitsEXT), or
+[VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](#VkDescriptorBindingFlagBitsEXT)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-pBindingFlags-03004) VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-pBindingFlags-03004
 
 If an element of `pBindingFlags` includes
-`VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT`, then it **must**
+[VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](#VkDescriptorBindingFlagBitsEXT), then it **must**
 be the element with the highest `binding` number
 
 * 
@@ -1347,8 +1351,8 @@ be the element with the highest `binding` number
 If
 [VkPhysicalDeviceDescriptorIndexingFeatures](features.html#VkPhysicalDeviceDescriptorIndexingFeatures)::`descriptorBindingUniformBufferUpdateAfterBind`
 is not enabled, all bindings with descriptor type
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` **must** not use
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType) **must** not use
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingSampledImageUpdateAfterBind-03006) VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingSampledImageUpdateAfterBind-03006
@@ -1356,10 +1360,10 @@ is not enabled, all bindings with descriptor type
 If
 [VkPhysicalDeviceDescriptorIndexingFeatures](features.html#VkPhysicalDeviceDescriptorIndexingFeatures)::`descriptorBindingSampledImageUpdateAfterBind`
 is not enabled, all bindings with descriptor type
-`VK_DESCRIPTOR_TYPE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, or
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE` **must** not use
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`
+[VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType) **must** not use
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingStorageImageUpdateAfterBind-03007) VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingStorageImageUpdateAfterBind-03007
@@ -1367,8 +1371,8 @@ is not enabled, all bindings with descriptor type
 If
 [VkPhysicalDeviceDescriptorIndexingFeatures](features.html#VkPhysicalDeviceDescriptorIndexingFeatures)::`descriptorBindingStorageImageUpdateAfterBind`
 is not enabled, all bindings with descriptor type
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE` **must** not use
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType) **must** not use
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingStorageBufferUpdateAfterBind-03008) VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingStorageBufferUpdateAfterBind-03008
@@ -1376,8 +1380,8 @@ is not enabled, all bindings with descriptor type
 If
 [VkPhysicalDeviceDescriptorIndexingFeatures](features.html#VkPhysicalDeviceDescriptorIndexingFeatures)::`descriptorBindingStorageBufferUpdateAfterBind`
 is not enabled, all bindings with descriptor type
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` **must** not use
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType) **must** not use
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingUniformTexelBufferUpdateAfterBind-03009) VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingUniformTexelBufferUpdateAfterBind-03009
@@ -1385,8 +1389,8 @@ is not enabled, all bindings with descriptor type
 If
 [VkPhysicalDeviceDescriptorIndexingFeatures](features.html#VkPhysicalDeviceDescriptorIndexingFeatures)::`descriptorBindingUniformTexelBufferUpdateAfterBind`
 is not enabled, all bindings with descriptor type
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` **must** not use
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType) **must** not use
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingStorageTexelBufferUpdateAfterBind-03010) VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingStorageTexelBufferUpdateAfterBind-03010
@@ -1394,8 +1398,8 @@ is not enabled, all bindings with descriptor type
 If
 [VkPhysicalDeviceDescriptorIndexingFeatures](features.html#VkPhysicalDeviceDescriptorIndexingFeatures)::`descriptorBindingStorageTexelBufferUpdateAfterBind`
 is not enabled, all bindings with descriptor type
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` **must** not use
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType) **must** not use
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingInlineUniformBlockUpdateAfterBind-02211) VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingInlineUniformBlockUpdateAfterBind-02211
@@ -1403,8 +1407,8 @@ is not enabled, all bindings with descriptor type
 If
 [VkPhysicalDeviceInlineUniformBlockFeatures](features.html#VkPhysicalDeviceInlineUniformBlockFeatures)::`descriptorBindingInlineUniformBlockUpdateAfterBind`
 is not enabled, all bindings with descriptor type
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` **must** not use
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) **must** not use
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingAccelerationStructureUpdateAfterBind-03570) VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingAccelerationStructureUpdateAfterBind-03570
@@ -1412,18 +1416,18 @@ is not enabled, all bindings with descriptor type
 If
 [VkPhysicalDeviceAccelerationStructureFeaturesKHR](features.html#VkPhysicalDeviceAccelerationStructureFeaturesKHR)::`descriptorBindingAccelerationStructureUpdateAfterBind`
 is not enabled, all bindings with descriptor type
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR` or
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV` **must** not use
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](#VkDescriptorType) **must** not use
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-None-03011) VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-None-03011
 
 All bindings with descriptor type
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`,
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`, or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` **must** not use
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType) **must** not use
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingUpdateUnusedWhilePending-03012) VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingUpdateUnusedWhilePending-03012
@@ -1431,7 +1435,7 @@ All bindings with descriptor type
 If
 [VkPhysicalDeviceDescriptorIndexingFeatures](features.html#VkPhysicalDeviceDescriptorIndexingFeatures)::`descriptorBindingUpdateUnusedWhilePending`
 is not enabled, all elements of `pBindingFlags` **must** not include
-`VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT`
+[VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT](#VkDescriptorBindingFlagBitsEXT)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingPartiallyBound-03013) VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingPartiallyBound-03013
@@ -1439,7 +1443,7 @@ is not enabled, all elements of `pBindingFlags` **must** not include
 If
 [VkPhysicalDeviceDescriptorIndexingFeatures](features.html#VkPhysicalDeviceDescriptorIndexingFeatures)::`descriptorBindingPartiallyBound`
 is not enabled, all elements of `pBindingFlags` **must** not include
-`VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT`
+[VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT](#VkDescriptorBindingFlagBitsEXT)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingVariableDescriptorCount-03014) VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingVariableDescriptorCount-03014
@@ -1447,16 +1451,16 @@ is not enabled, all elements of `pBindingFlags` **must** not include
 If
 [VkPhysicalDeviceDescriptorIndexingFeatures](features.html#VkPhysicalDeviceDescriptorIndexingFeatures)::`descriptorBindingVariableDescriptorCount`
 is not enabled, all elements of `pBindingFlags` **must** not include
-`VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT`
+[VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](#VkDescriptorBindingFlagBitsEXT)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-pBindingFlags-03015) VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-pBindingFlags-03015
 
 If an element of `pBindingFlags` includes
-`VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT`, that
+[VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](#VkDescriptorBindingFlagBitsEXT), that
 element’s `descriptorType` **must** not be
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingStorageTensorUpdateAfterBind-09697) VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-descriptorBindingStorageTensorUpdateAfterBind-09697
@@ -1464,15 +1468,15 @@ element’s `descriptorType` **must** not be
 If
 [VkPhysicalDeviceTensorFeaturesARM](features.html#VkPhysicalDeviceTensorFeaturesARM)::`descriptorBindingStorageTensorUpdateAfterBind`
 is not enabled, all bindings with descriptor type
-`VK_DESCRIPTOR_TYPE_TENSOR_ARM` **must** not use
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](#VkDescriptorType) **must** not use
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-sType-sType) VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-pBindingFlags-parameter) VUID-VkDescriptorSetLayoutBindingFlagsCreateInfo-pBindingFlags-parameter
@@ -1504,7 +1508,7 @@ typedef enum VkDescriptorBindingFlagBits {
 typedef VkDescriptorBindingFlagBits VkDescriptorBindingFlagBitsEXT;
 
 * 
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` specifies that if
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT) specifies that if
 descriptors in this binding are updated between when the descriptor set
 is bound in a command buffer and when that command buffer is submitted
 to a queue, then the submission will use the most recently set
@@ -1522,7 +1526,7 @@ being bound to a command buffer in another thread, but not concurrently
 with the set being reset or freed.
 
 * 
-`VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT` specifies that
+[VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT](#VkDescriptorBindingFlagBitsEXT) specifies that
 descriptors in this binding that are not *dynamically used* need not
 contain valid descriptors at the time the descriptors are consumed.
 A descriptor is dynamically used if any shader invocation executes an
@@ -1531,7 +1535,7 @@ If a descriptor is not dynamically used, any resource referenced by the
 descriptor is not considered to be referenced during command execution.
 
 * 
-`VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT` specifies
+[VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT](#VkDescriptorBindingFlagBitsEXT) specifies
 that descriptors in this binding **can** be updated after a command buffer
 has bound this descriptor set, or while a command buffer that uses this
 descriptor set is pending execution, as long as the descriptors that are
@@ -1540,16 +1544,16 @@ Descriptor bindings created with this flag are also partially exempt
 from the external synchronization requirement in
 [vkUpdateDescriptorSetWithTemplateKHR](#vkUpdateDescriptorSetWithTemplateKHR) and
 [vkUpdateDescriptorSets](#vkUpdateDescriptorSets) in the same way as for
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`.
-If `VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT` is also set, then
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT).
+If [VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT](#VkDescriptorBindingFlagBitsEXT) is also set, then
 descriptors **can** be updated as long as they are not dynamically used by
 any shader invocations.
-If `VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT` is not set, then
+If [VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT](#VkDescriptorBindingFlagBitsEXT) is not set, then
 descriptors **can** be updated as long as they are not statically used by
 any shader invocations.
 
 * 
-`VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT` specifies that
+[VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](#VkDescriptorBindingFlagBitsEXT) specifies that
     this is a *variable-sized descriptor binding* whose size will be
     specified when a descriptor set is allocated using this layout.
     The value of `descriptorCount` is treated as an upper bound on the
@@ -1560,21 +1564,21 @@ any shader invocations.
     `maxDescriptorSet`* and `maxPerStageDescriptor`*, the full value
     of `descriptorCount` is
     counted, except for descriptor bindings with a descriptor type of
-    `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`, when
+    [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType), when
     [VkDescriptorSetLayoutCreateInfo](#VkDescriptorSetLayoutCreateInfo)::`flags` does not contain
-    `VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`.
+    [VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits).
     In this case, `descriptorCount` specifies the upper bound on the
     byte size of the binding; thus it counts against the
 [`maxInlineUniformBlockSize`](devsandqueues.html#limits-maxInlineUniformBlockSize) and [`maxInlineUniformTotalSize`](devsandqueues.html#limits-maxInlineUniformTotalSize) limits
 instead.
 
-|  | Note that while `VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` and
+|  | Note that while [VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT) and
 | --- | --- |
-`VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT` both involve
+[VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT](#VkDescriptorBindingFlagBitsEXT) both involve
 updates to descriptor sets after they are bound,
-`VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT` is a weaker
+[VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT](#VkDescriptorBindingFlagBitsEXT) is a weaker
 requirement since it is only about descriptors that are not used, whereas
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` requires the
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT) requires the
 implementation to observe updates to descriptors that are used. |
 
 // Provided by VK_VERSION_1_2
@@ -1625,7 +1629,7 @@ This command returns information about whether a descriptor set satisfies
 this limit.
 If the descriptor set layout satisfies the
 [VkPhysicalDeviceMaintenance3Properties](limits.html#VkPhysicalDeviceMaintenance3Properties)::`maxPerSetDescriptors`
-limit, this command is guaranteed to return `VK_TRUE` in
+limit, this command is guaranteed to return [VK_TRUE](fundamentals.html#VK_TRUE) in
 [VkDescriptorSetLayoutSupport](#VkDescriptorSetLayoutSupport)::`supported`.
 If the descriptor set layout exceeds the
 [VkPhysicalDeviceMaintenance3Properties](limits.html#VkPhysicalDeviceMaintenance3Properties)::`maxPerSetDescriptors`
@@ -1685,15 +1689,15 @@ structure.
 `supported` specifies whether the descriptor set layout **can** be
 created.
 
-`supported` will be `VK_TRUE` if the descriptor set **can** be created,
-or else `VK_FALSE`.
+`supported` will be [VK_TRUE](fundamentals.html#VK_TRUE) if the descriptor set **can** be created,
+or else [VK_FALSE](fundamentals.html#VK_FALSE).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDescriptorSetLayoutSupport-sType-sType) VUID-VkDescriptorSetLayoutSupport-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDescriptorSetLayoutSupport-pNext-pNext) VUID-VkDescriptorSetLayoutSupport-pNext-pNext
@@ -1733,7 +1737,7 @@ structure.
 descriptors supported in the highest numbered binding of the layout, if
 that binding is variable-sized.
 If the highest numbered binding of the layout has a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) then
 `maxVariableDescriptorCount` indicates the maximum byte size
 supported for the binding, if that binding is variable-sized.
 
@@ -1752,7 +1756,7 @@ For the purposes of this command, a variable-sized descriptor binding with a
 `descriptorCount` of zero is treated as having a `descriptorCount`
 of
 four if `descriptorType` is
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`, or one otherwise,
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType), or one otherwise,
 and thus the binding is not ignored and the maximum descriptor count will be
 returned.
 If the layout is not supported, then the value written to
@@ -1763,7 +1767,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDescriptorSetVariableDescriptorCountLayoutSupport-sType-sType) VUID-VkDescriptorSetVariableDescriptorCountLayoutSupport-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT](fundamentals.html#VkStructureType)
 
 The following examples show a shader snippet using two descriptor sets, and
 application code that creates corresponding descriptor set layouts.
@@ -2029,21 +2033,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The [VkPipelineLayoutCreateInfo](#VkPipelineLayoutCreateInfo) structure is defined as:
 
@@ -2107,9 +2111,9 @@ Valid Usage
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_SAMPLER` and
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` accessible to any given
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType) and
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) accessible to any given
 shader stage across all elements of `pSetLayouts` **must** be less than
 or equal to
 `VkPhysicalDeviceLimits`::`maxPerStageDescriptorSamplers`
@@ -2119,9 +2123,9 @@ or equal to
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`
-and `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` accessible to any
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType)
+and [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType) accessible to any
 given shader stage across all elements of `pSetLayouts` **must** be
 less than or equal to
 `VkPhysicalDeviceLimits`::`maxPerStageDescriptorUniformBuffers`
@@ -2131,9 +2135,9 @@ less than or equal to
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`
-and `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` accessible to any
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType)
+and [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType) accessible to any
 given shader stage across all elements of `pSetLayouts` **must** be
 less than or equal to
 `VkPhysicalDeviceLimits`::`maxPerStageDescriptorStorageBuffers`
@@ -2143,13 +2147,13 @@ less than or equal to
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
 with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM`,
-`VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM`,
-and `VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`, accessible to any
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](#VkDescriptorType),
+and [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType), accessible to any
 given shader stage across all elements of `pSetLayouts` **must** be
 less than or equal to
 `VkPhysicalDeviceLimits`::`maxPerStageDescriptorSampledImages`
@@ -2159,9 +2163,9 @@ less than or equal to
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`,
-and `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` accessible to any
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType),
+and [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType) accessible to any
 given shader stage across all elements of `pSetLayouts` **must** be
 less than or equal to
 `VkPhysicalDeviceLimits`::`maxPerStageDescriptorStorageImages`
@@ -2171,8 +2175,8 @@ less than or equal to
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType)
 accessible to any given shader stage across all elements of
 `pSetLayouts` **must** be less than or equal to
 `VkPhysicalDeviceLimits`::`maxPerStageDescriptorInputAttachments`
@@ -2182,10 +2186,10 @@ accessible to any given shader stage across all elements of
 
 The total number of bindings in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
 and
 with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` accessible to any given
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) accessible to any given
 shader stage across all elements of `pSetLayouts`, **must** be less
 than or equal to
 `VkPhysicalDeviceInlineUniformBlockProperties`::`maxPerStageDescriptorInlineUniformBlocks`
@@ -2196,8 +2200,8 @@ than or equal to
 If the
 [`descriptorBindingSampledImageUpdateAfterBind`](features.html#features-descriptorBindingSampledImageUpdateAfterBind)
 feature is supported on the device, the total number of descriptors with
-a `descriptorType` of `VK_DESCRIPTOR_TYPE_SAMPLER` and
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` accessible to any given
+a `descriptorType` of [VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType) and
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) accessible to any given
 shader stage across all elements of `pSetLayouts` **must** be less than
 or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxPerStageDescriptorUpdateAfterBindSamplers`
@@ -2208,8 +2212,8 @@ or equal to
 If the
 [`descriptorBindingUniformBufferUpdateAfterBind`](features.html#features-descriptorBindingUniformBufferUpdateAfterBind)
 feature is supported on the device, the total number of descriptors with
-a `descriptorType` of `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` and
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` accessible to any given
+a `descriptorType` of [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType) and
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType) accessible to any given
 shader stage across all elements of `pSetLayouts` **must** be less than
 or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxPerStageDescriptorUpdateAfterBindUniformBuffers`
@@ -2220,8 +2224,8 @@ or equal to
 If the
 [`descriptorBindingStorageBufferUpdateAfterBind`](features.html#features-descriptorBindingStorageBufferUpdateAfterBind)
 feature is supported on the device, the total number of descriptors with
-a `descriptorType` of `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` and
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` accessible to any given
+a `descriptorType` of [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType) and
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType) accessible to any given
 shader stage across all elements of `pSetLayouts` **must** be less than
 or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxPerStageDescriptorUpdateAfterBindStorageBuffers`
@@ -2233,9 +2237,9 @@ If the
 [`descriptorBindingSampledImageUpdateAfterBind`](features.html#features-descriptorBindingSampledImageUpdateAfterBind)
 feature is supported on the device, the total number of descriptors with
 a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, and
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` accessible to any given
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType), and
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType) accessible to any given
 shader stage across all elements of `pSetLayouts` **must** be less than
 or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxPerStageDescriptorUpdateAfterBindSampledImages`
@@ -2246,8 +2250,8 @@ or equal to
 If the
 [`descriptorBindingStorageImageUpdateAfterBind`](features.html#features-descriptorBindingStorageImageUpdateAfterBind)
 feature is supported on the device, the total number of descriptors with
-a `descriptorType` of `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, and
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` accessible to any given
+a `descriptorType` of [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType), and
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType) accessible to any given
 shader stage across all elements of `pSetLayouts` **must** be less than
 or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxPerStageDescriptorUpdateAfterBindStorageImages`
@@ -2256,9 +2260,9 @@ or equal to
 [](#VUID-VkPipelineLayoutCreateInfo-descriptorType-03027) VUID-VkPipelineLayoutCreateInfo-descriptorType-03027
 
 If any element of `pSetLayouts` is created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit
 set, the total number of descriptors with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` accessible to any given shader
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType) accessible to any given shader
 stage across all elements of `pSetLayouts` **must** be less than or
 equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxPerStageDescriptorUpdateAfterBindInputAttachments`
@@ -2269,7 +2273,7 @@ equal to
 If the
 [`descriptorBindingInlineUniformBlockUpdateAfterBind`](features.html#features-descriptorBindingInlineUniformBlockUpdateAfterBind)
 feature is supported on the device, the total number of bindings with a
-`descriptorType` of `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+`descriptorType` of [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType)
 accessible to any given shader stage across all elements of
 `pSetLayouts` **must** be less than or equal to
 `VkPhysicalDeviceInlineUniformBlockProperties`::`maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks`
@@ -2279,9 +2283,9 @@ accessible to any given shader stage across all elements of
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_SAMPLER` and
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` accessible across all
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType) and
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetSamplers`
@@ -2291,8 +2295,8 @@ than or equal to
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType)
 accessible across all shader stages and across all elements of
 `pSetLayouts` **must** be less than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetUniformBuffers`
@@ -2304,9 +2308,9 @@ If the [`maintenance7`](features.html#features-maintenance7) feature is not
 enabled, the
 total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
 with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` accessible across all
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetUniformBuffersDynamic`
@@ -2317,9 +2321,9 @@ than or equal to
 If the [`maintenance7`](features.html#features-maintenance7) feature is enabled,
 the total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
 with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` accessible across all
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to [    `VkPhysicalDeviceMaintenance7PropertiesKHR`::`maxDescriptorSetTotalUniformBuffersDynamic`](limits.html#limits-maxDescriptorSetTotalUniformBuffersDynamic)
 
@@ -2328,8 +2332,8 @@ than or equal to [    `VkPhysicalDeviceMaintenance7PropertiesKHR`::`maxDescripto
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType)
 accessible across all shader stages and across all elements of
 `pSetLayouts` **must** be less than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetStorageBuffers`
@@ -2341,9 +2345,9 @@ If the [`maintenance7`](features.html#features-maintenance7) feature is not
 enabled, the
 total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
 with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` accessible across all
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetStorageBuffersDynamic`
@@ -2354,9 +2358,9 @@ than or equal to
 If the [`maintenance7`](features.html#features-maintenance7) feature is enabled,
 the total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
 with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` accessible across all
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to [    `VkPhysicalDeviceMaintenance7PropertiesKHR`::`maxDescriptorSetTotalStorageBuffersDynamic`](limits.html#limits-maxDescriptorSetTotalStorageBuffersDynamic)
 
@@ -2365,10 +2369,10 @@ than or equal to [    `VkPhysicalDeviceMaintenance7PropertiesKHR`::`maxDescripto
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
 with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` accessible across all
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to [    `VkPhysicalDeviceMaintenance7PropertiesKHR`::`maxDescriptorSetTotalBuffersDynamic`](limits.html#limits-maxDescriptorSetTotalBuffersDynamic)
 
@@ -2380,8 +2384,8 @@ If either the
 or
 [`descriptorBindingUniformBufferUpdateAfterBind`](features.html#features-descriptorBindingUniformBufferUpdateAfterBind)
 feature is supported on the device, the total number of descriptors of
-the type `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` accessible across all
+the type [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 [    `VkPhysicalDeviceMaintenance7PropertiesKHR`::`maxDescriptorSetUpdateAfterBindTotalBuffersDynamic`](limits.html#limits-maxDescriptorSetUpdateAfterBindTotalBuffersDynamic)
@@ -2391,11 +2395,11 @@ than or equal to
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
 with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, and
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` accessible across all
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType), and
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetSampledImages`
@@ -2405,9 +2409,9 @@ than or equal to
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`,
-and `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` accessible across all
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType),
+and [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetStorageImages`
@@ -2417,8 +2421,8 @@ than or equal to
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType)
 accessible across all shader stages and across all elements of
 `pSetLayouts` **must** be less than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetInputAttachments`
@@ -2428,9 +2432,9 @@ accessible across all shader stages and across all elements of
 
 The total number of bindings in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
 with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` accessible across all
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceInlineUniformBlockProperties`::`maxDescriptorSetInlineUniformBlocks`
@@ -2441,8 +2445,8 @@ than or equal to
 If the
 [`descriptorBindingSampledImageUpdateAfterBind`](features.html#features-descriptorBindingSampledImageUpdateAfterBind)
 feature is supported on the device, the total number of descriptors of
-the type `VK_DESCRIPTOR_TYPE_SAMPLER` and
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` accessible across all
+the type [VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType) and
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxDescriptorSetUpdateAfterBindSamplers`
@@ -2453,7 +2457,7 @@ than or equal to
 If the
 [`descriptorBindingUniformBufferUpdateAfterBind`](features.html#features-descriptorBindingUniformBufferUpdateAfterBind)
 feature is supported on the device, the total number of descriptors of
-the type `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` accessible across all
+the type [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxDescriptorSetUpdateAfterBindUniformBuffers`
@@ -2467,7 +2471,7 @@ feature is supported on the device,
 and if the [`maintenance7`](features.html#features-maintenance7) feature is not
 enabled,
 the total number of descriptors of the type
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` accessible across all
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetUpdateAfterBindUniformBuffersDynamic`
@@ -2478,7 +2482,7 @@ than or equal to
 If the
 [`descriptorBindingUniformBufferUpdateAfterBind`](features.html#features-descriptorBindingUniformBufferUpdateAfterBind)
 feature is supported on the device, and the [    `maintenance7`](features.html#features-maintenance7) feature is enabled, the total number of descriptors
-of the type `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` accessible
+of the type [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType) accessible
 across all shader stages and across all elements of `pSetLayouts`
 **must** be less than or equal to
 [    `VkPhysicalDeviceMaintenance7PropertiesKHR`::`maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic`](limits.html#limits-maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic)
@@ -2489,7 +2493,7 @@ across all shader stages and across all elements of `pSetLayouts`
 If the
 [`descriptorBindingStorageBufferUpdateAfterBind`](features.html#features-descriptorBindingStorageBufferUpdateAfterBind)
 feature is supported on the device, the total number of descriptors of
-the type `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` accessible across all
+the type [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxDescriptorSetUpdateAfterBindStorageBuffers`
@@ -2503,7 +2507,7 @@ feature is supported on the device,
 and if the [`maintenance7`](features.html#features-maintenance7) feature is not
 enabled,
 the total number of descriptors of the type
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` accessible across all
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceLimits`::`maxDescriptorSetUpdateAfterBindStorageBuffersDynamic`
@@ -2514,7 +2518,7 @@ than or equal to
 If the
 [`descriptorBindingStorageBufferUpdateAfterBind`](features.html#features-descriptorBindingStorageBufferUpdateAfterBind)
 feature is supported on the device, and if the [    `maintenance7`](features.html#features-maintenance7) feature is enabled, the total number of descriptors
-of the type `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` accessible
+of the type [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType) accessible
 across all shader stages and across all elements of `pSetLayouts`
 **must** be less than or equal to
 [    `VkPhysicalDeviceMaintenance7PropertiesKHR`::`maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic`](limits.html#limits-maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic)
@@ -2525,9 +2529,9 @@ across all shader stages and across all elements of `pSetLayouts`
 If the
 [`descriptorBindingSampledImageUpdateAfterBind`](features.html#features-descriptorBindingSampledImageUpdateAfterBind)
 feature is supported on the device, the total number of descriptors of
-the type `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, and
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` accessible across all
+the type [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType), and
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxDescriptorSetUpdateAfterBindSampledImages`
@@ -2538,8 +2542,8 @@ than or equal to
 If the
 [`descriptorBindingStorageImageUpdateAfterBind`](features.html#features-descriptorBindingStorageImageUpdateAfterBind)
 feature is supported on the device, the total number of descriptors of
-the type `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, and
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` accessible across all
+the type [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType), and
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxDescriptorSetUpdateAfterBindStorageImages`
@@ -2548,9 +2552,9 @@ than or equal to
 [](#VUID-VkPipelineLayoutCreateInfo-pSetLayouts-03043) VUID-VkPipelineLayoutCreateInfo-pSetLayouts-03043
 
 If any element of `pSetLayouts` is created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit
 set, the total number of descriptors of the type
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` accessible across all shader
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType) accessible across all shader
 stages and across all elements of `pSetLayouts` **must** be less than
 or equal to
 `VkPhysicalDeviceDescriptorIndexingProperties`::`maxDescriptorSetUpdateAfterBindInputAttachments`
@@ -2561,7 +2565,7 @@ or equal to
 If the
 [`descriptorBindingInlineUniformBlockUpdateAfterBind`](features.html#features-descriptorBindingInlineUniformBlockUpdateAfterBind)
 feature is supported on the device, the total number of bindings with a
-`descriptorType` of `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+`descriptorType` of [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType)
 accessible across all shader stages and across all elements of
 `pSetLayouts` **must** be less than or equal to
 `VkPhysicalDeviceInlineUniformBlockProperties`::`maxDescriptorSetUpdateAfterBindInlineUniformBlocks`
@@ -2570,7 +2574,7 @@ accessible across all shader stages and across all elements of
 [](#VUID-VkPipelineLayoutCreateInfo-descriptorType-06531) VUID-VkPipelineLayoutCreateInfo-descriptorType-06531
 
 The total number of descriptors with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` accessible across all
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 `VkPhysicalDeviceVulkan13Properties`::`maxInlineUniformTotalSize`
@@ -2586,15 +2590,15 @@ stage in `stageFlags`
 
 `pSetLayouts` **must** not contain more than one descriptor set layout
 that was created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT` set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](#VkDescriptorSetLayoutCreateFlagBits) set
 
 * 
 [](#VUID-VkPipelineLayoutCreateInfo-descriptorType-03571) VUID-VkPipelineLayoutCreateInfo-descriptorType-03571
 
 The total number of bindings in descriptor set layouts created without
-the `VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+the [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit
 set with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR` accessible to any
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](#VkDescriptorType) accessible to any
 given shader stage across all elements of `pSetLayouts` **must** be
 less than or equal to
 [VkPhysicalDeviceAccelerationStructurePropertiesKHR](limits.html#VkPhysicalDeviceAccelerationStructurePropertiesKHR)::`maxPerStageDescriptorAccelerationStructures`
@@ -2603,7 +2607,7 @@ less than or equal to
 [](#VUID-VkPipelineLayoutCreateInfo-descriptorType-03572) VUID-VkPipelineLayoutCreateInfo-descriptorType-03572
 
 The total number of bindings with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR` accessible to any
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](#VkDescriptorType) accessible to any
 given shader stage across all elements of `pSetLayouts` **must** be
 less than or equal to
 [VkPhysicalDeviceAccelerationStructurePropertiesKHR](limits.html#VkPhysicalDeviceAccelerationStructurePropertiesKHR)::`maxPerStageDescriptorUpdateAfterBindAccelerationStructures`
@@ -2612,9 +2616,9 @@ less than or equal to
 [](#VUID-VkPipelineLayoutCreateInfo-descriptorType-03573) VUID-VkPipelineLayoutCreateInfo-descriptorType-03573
 
 The total number of bindings in descriptor set layouts created without
-the `VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+the [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit
 set with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR` accessible across
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](#VkDescriptorType) accessible across
 all shader stages and across all elements of `pSetLayouts` **must** be
 less than or equal to
 [VkPhysicalDeviceAccelerationStructurePropertiesKHR](limits.html#VkPhysicalDeviceAccelerationStructurePropertiesKHR)::`maxDescriptorSetAccelerationStructures`
@@ -2623,7 +2627,7 @@ less than or equal to
 [](#VUID-VkPipelineLayoutCreateInfo-descriptorType-03574) VUID-VkPipelineLayoutCreateInfo-descriptorType-03574
 
 The total number of bindings with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR` accessible across
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](#VkDescriptorType) accessible across
 all shader stages and across all elements of `pSetLayouts` **must** be
 less than or equal to
 [VkPhysicalDeviceAccelerationStructurePropertiesKHR](limits.html#VkPhysicalDeviceAccelerationStructurePropertiesKHR)::`maxDescriptorSetUpdateAfterBindAccelerationStructures`
@@ -2632,7 +2636,7 @@ less than or equal to
 [](#VUID-VkPipelineLayoutCreateInfo-descriptorType-02381) VUID-VkPipelineLayoutCreateInfo-descriptorType-02381
 
 The total number of bindings with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV` accessible across all
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](#VkDescriptorType) accessible across all
 shader stages and across all elements of `pSetLayouts` **must** be less
 than or equal to
 [VkPhysicalDeviceRayTracingPropertiesNV](limits.html#VkPhysicalDeviceRayTracingPropertiesNV)::`maxDescriptorSetAccelerationStructures`
@@ -2641,8 +2645,8 @@ than or equal to
 [](#VUID-VkPipelineLayoutCreateInfo-pImmutableSamplers-03566) VUID-VkPipelineLayoutCreateInfo-pImmutableSamplers-03566
 
 The total number of `pImmutableSamplers` created with `flags`
-containing `VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT` or
-`VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT` across
+containing [VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](samplers.html#VkSamplerCreateFlagBits) or
+[VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT](samplers.html#VkSamplerCreateFlagBits) across
 all shader stages and across all elements of `pSetLayouts` **must** be
 less than or equal to [    `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`::`maxDescriptorSetSubsampledSamplers`](limits.html#limits-maxDescriptorSetSubsampledSamplers)
 
@@ -2650,7 +2654,7 @@ less than or equal to [    `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`::`
 [](#VUID-VkPipelineLayoutCreateInfo-pSetLayouts-04606) VUID-VkPipelineLayoutCreateInfo-pSetLayouts-04606
 
 Any element of `pSetLayouts` **must** not have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits) bit set
 
 * 
 [](#VUID-VkPipelineLayoutCreateInfo-graphicsPipelineLibrary-06753) VUID-VkPipelineLayoutCreateInfo-graphicsPipelineLibrary-06753
@@ -2662,17 +2666,17 @@ of `pSetLayouts` **must** be valid [VkDescriptorSetLayout](#VkDescriptorSetLayou
 [](#VUID-VkPipelineLayoutCreateInfo-pSetLayouts-08008) VUID-VkPipelineLayoutCreateInfo-pSetLayouts-08008
 
 If any element of `pSetLayouts` was created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT` bit set,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits) bit set,
 all elements of `pSetLayouts` **must** have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits) bit set
 
 * 
 [](#VUID-VkPipelineLayoutCreateInfo-pSetLayouts-09698) VUID-VkPipelineLayoutCreateInfo-pSetLayouts-09698
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_TENSOR_ARM`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_TENSOR_ARM](#VkDescriptorType)
 accessible to any given shader stage across all elements of
 `pSetLayouts` **must** be less than or equal to
 [VkPhysicalDeviceTensorPropertiesARM](limits.html#VkPhysicalDeviceTensorPropertiesARM)::`maxPerStageDescriptorSetStorageTensors`
@@ -2682,8 +2686,8 @@ accessible to any given shader stage across all elements of
 
 The total number of descriptors in descriptor set layouts
 created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
-with a `descriptorType` of `VK_DESCRIPTOR_TYPE_TENSOR_ARM`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit set
+with a `descriptorType` of [VK_DESCRIPTOR_TYPE_TENSOR_ARM](#VkDescriptorType)
 accessible across all shader stages and across all elements of
 `pSetLayouts` **must** be less than or equal to
 [VkPhysicalDeviceTensorPropertiesARM](limits.html#VkPhysicalDeviceTensorPropertiesARM)::`maxDescriptorSetStorageTensors`
@@ -2692,7 +2696,7 @@ accessible across all shader stages and across all elements of
 [](#VUID-VkPipelineLayoutCreateInfo-pSetLayouts-09878) VUID-VkPipelineLayoutCreateInfo-pSetLayouts-09878
 
 The total number of descriptors of the type
-`VK_DESCRIPTOR_TYPE_TENSOR_ARM` accessible across all shader stages
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](#VkDescriptorType) accessible across all shader stages
 and across all elements of `pSetLayouts` **must** be less than or equal
 to
 [VkPhysicalDeviceTensorPropertiesARM](limits.html#VkPhysicalDeviceTensorPropertiesARM)::`maxDescriptorSetUpdateAfterBindStorageTensors`
@@ -2701,7 +2705,7 @@ to
 [](#VUID-VkPipelineLayoutCreateInfo-descriptorType-09879) VUID-VkPipelineLayoutCreateInfo-descriptorType-09879
 
 The total number of descriptors with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_TENSOR_ARM` accessible to any given shader stage
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](#VkDescriptorType) accessible to any given shader stage
 across all elements of `pSetLayouts` **must** be less than or equal to
 `VkPhysicalDeviceTensorPropertiesARM`::`maxPerStageDescriptorUpdateAfterBindStorageTensors`
 
@@ -2710,7 +2714,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineLayoutCreateInfo-sType-sType) VUID-VkPipelineLayoutCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineLayoutCreateInfo-flags-parameter) VUID-VkPipelineLayoutCreateInfo-flags-parameter
@@ -2734,12 +2738,12 @@ typedef enum VkPipelineLayoutCreateFlagBits {
 } VkPipelineLayoutCreateFlagBits;
 
 * 
-`VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT` specifies that
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](#VkPipelineLayoutCreateFlagBits) specifies that
 implementations **must** ensure that the properties and/or absence of a
 particular descriptor set do not influence any other properties of the
 pipeline layout.
 This allows pipelines libraries linked without
-`VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT` to be created
+[VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits) to be created
 with a subset of the total descriptor sets.
 
 // Provided by VK_VERSION_1_0
@@ -2919,14 +2923,6 @@ was created, a compatible set of callbacks **must** be provided here
 If no `VkAllocationCallbacks` were provided when
 `pipelineLayout` was created, `pAllocator` **must** be `NULL`
 
-* 
-[](#VUID-vkDestroyPipelineLayout-pipelineLayout-02004) VUID-vkDestroyPipelineLayout-pipelineLayout-02004
-
-`pipelineLayout` **must** not have been passed to any `vkCmd*`
-command for any command buffers that are still in the
-[recording state](cmdbuffers.html#commandbuffers-lifecycle) when
-`vkDestroyPipelineLayout` is called
-
 Valid Usage (Implicit)
 
 * 
@@ -2961,7 +2957,7 @@ Two pipeline layouts are defined to be “compatible for set N” if they were
 created with [identically defined](../appendices/glossary.html#glossary-identically-defined) descriptor
 set layouts for sets zero through N,
 if both of them either were or were not created with
-`VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT`,
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](#VkPipelineLayoutCreateFlagBits),
 and if they were created with identical push constant ranges.
 
 When binding a descriptor set (see [Descriptor Set Binding](#descriptorsets-binding)) to set number N, a previously bound descriptor set bound with
@@ -3105,24 +3101,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_FRAGMENTATION_EXT`
+[VK_ERROR_FRAGMENTATION_EXT](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Additional information about the pool is passed in a
 `VkDescriptorPoolCreateInfo` structure:
@@ -3177,7 +3173,7 @@ cause allocation failure, as described below.
 If a descriptor pool has not had any descriptor sets freed since it was
 created or most recently reset then fragmentation **must** not cause an
 allocation failure (note that this is always the case for a pool created
-without the `VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT` bit
+without the [VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT](#VkDescriptorPoolCreateFlagBits) bit
 set).
 Additionally, if all sets allocated from the pool since it was created or
 most recently reset use the same number of descriptors (of each type) and
@@ -3188,33 +3184,33 @@ If an allocation failure occurs due to fragmentation, an application **can**
 create an additional descriptor pool to perform further descriptor set
 allocations.
 
-If `flags` has the `VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT`
+If `flags` has the [VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](#VkDescriptorPoolCreateFlagBits)
 bit set, descriptor pool creation **may** fail with the error
-`VK_ERROR_FRAGMENTATION` if the total number of descriptors across all
+[VK_ERROR_FRAGMENTATION](fundamentals.html#VkResult) if the total number of descriptors across all
 pools (including this one) created with this bit set exceeds
 `maxUpdateAfterBindDescriptorsInAllPools`, or if fragmentation of the
 underlying hardware resources occurs.
 
 If a `pPoolSizes`[i]::`type` is
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, a
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType), a
 [VkMutableDescriptorTypeCreateInfoEXT](#VkMutableDescriptorTypeCreateInfoEXT) structure in the `pNext`
 chain **can** be used to specify which mutable descriptor types **can** be
 allocated from the pool.
 If included in the `pNext` chain,
 [VkMutableDescriptorTypeCreateInfoEXT](#VkMutableDescriptorTypeCreateInfoEXT)::`pMutableDescriptorTypeLists`[i]
-specifies which kind of `VK_DESCRIPTOR_TYPE_MUTABLE_EXT` descriptors
+specifies which kind of [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType) descriptors
 **can** be allocated from this pool entry.
 If [VkMutableDescriptorTypeCreateInfoEXT](#VkMutableDescriptorTypeCreateInfoEXT) does not exist in the
 `pNext` chain, or
 [VkMutableDescriptorTypeCreateInfoEXT](#VkMutableDescriptorTypeCreateInfoEXT)::`pMutableDescriptorTypeLists`[i]
 is out of range, the descriptor pool allocates enough memory to be able to
-allocate a `VK_DESCRIPTOR_TYPE_MUTABLE_EXT` descriptor with any
+allocate a [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType) descriptor with any
 supported [VkDescriptorType](#VkDescriptorType) as a mutable descriptor.
 A mutable descriptor **can** be allocated from a pool entry if the type list in
 [VkDescriptorSetLayoutCreateInfo](#VkDescriptorSetLayoutCreateInfo) is a subset of the type list declared
 in the descriptor pool, or if the pool entry is created without a descriptor
 type list.
-Multiple `pPoolSizes` entries with `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+Multiple `pPoolSizes` entries with [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType)
 **can** be declared.
 When multiple such pool entries are present in `pPoolSizes`, they
 specify sets of supported descriptor types which either fully overlap,
@@ -3240,22 +3236,22 @@ Valid Usage
 
 If the [    `descriptorPoolOverallocation`](features.html#features-descriptorPoolOverallocation) feature is not enabled, or
 `flags` does not have
-`VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV` set,
+[VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV](#VkDescriptorPoolCreateFlagBits) set,
 `maxSets` **must** be greater than `0`
 
 * 
 [](#VUID-VkDescriptorPoolCreateInfo-flags-09228) VUID-VkDescriptorPoolCreateInfo-flags-09228
 
 If `flags` has the
-`VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV` or
-`VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV` bits
+[VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV](#VkDescriptorPoolCreateFlagBits) or
+[VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV](#VkDescriptorPoolCreateFlagBits) bits
 set, then [    `descriptorPoolOverallocation`](features.html#features-descriptorPoolOverallocation) **must** be enabled
 
 * 
 [](#VUID-VkDescriptorPoolCreateInfo-flags-04607) VUID-VkDescriptorPoolCreateInfo-flags-04607
 
-If `flags` has the `VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT`
-bit set, then the `VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT`
+If `flags` has the [VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT](#VkDescriptorPoolCreateFlagBits)
+bit set, then the [VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](#VkDescriptorPoolCreateFlagBits)
 bit **must** not be set
 
 * 
@@ -3264,12 +3260,12 @@ bit **must** not be set
 If
 [VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT](features.html#VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT)::`mutableDescriptorType`
 is not enabled, `pPoolSizes` **must** not contain a
-`descriptorType` of `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+`descriptorType` of [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType)
 
 * 
 [](#VUID-VkDescriptorPoolCreateInfo-flags-04609) VUID-VkDescriptorPoolCreateInfo-flags-04609
 
-If `flags` has the `VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT`
+If `flags` has the [VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT](#VkDescriptorPoolCreateFlagBits)
 bit set,
 [VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT](features.html#VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT)::`mutableDescriptorType`
 **must** be enabled
@@ -3278,15 +3274,15 @@ bit set,
 [](#VUID-VkDescriptorPoolCreateInfo-pPoolSizes-04787) VUID-VkDescriptorPoolCreateInfo-pPoolSizes-04787
 
 If `pPoolSizes` contains a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, any other
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT` element in `pPoolSizes` **must**
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType), any other
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType) element in `pPoolSizes` **must**
 not have sets of supported descriptor types which partially overlap
 
 * 
 [](#VUID-VkDescriptorPoolCreateInfo-pPoolSizes-09424) VUID-VkDescriptorPoolCreateInfo-pPoolSizes-09424
 
 If `pPoolSizes` contains a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`, the `pNext` chain
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType), the `pNext` chain
 **must** include a [VkDescriptorPoolInlineUniformBlockCreateInfo](#VkDescriptorPoolInlineUniformBlockCreateInfo)
 structure whose `maxInlineUniformBlockBindings` member is not zero
 
@@ -3305,7 +3301,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDescriptorPoolCreateInfo-sType-sType) VUID-VkDescriptorPoolCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDescriptorPoolCreateInfo-pNext-pNext) VUID-VkDescriptorPoolCreateInfo-pNext-pNext
@@ -3333,7 +3329,7 @@ descriptor pool **must** be created with specifying the inline uniform block
 binding capacity of the descriptor pool, in addition to the total inline
 uniform data capacity in bytes which is specified through a
 [VkDescriptorPoolSize](#VkDescriptorPoolSize) structure with a `descriptorType` value of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`.
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType).
 This **can** be done by adding a
 `VkDescriptorPoolInlineUniformBlockCreateInfo` structure to the
 `pNext` chain of [VkDescriptorPoolCreateInfo](#VkDescriptorPoolCreateInfo).
@@ -3368,7 +3364,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDescriptorPoolInlineUniformBlockCreateInfo-sType-sType) VUID-VkDescriptorPoolInlineUniformBlockCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO](fundamentals.html#VkStructureType)
 
 Bits which **can** be set in [VkDescriptorPoolCreateInfo](#VkDescriptorPoolCreateInfo)::`flags`,
 enabling operations on a descriptor pool, are:
@@ -3391,7 +3387,7 @@ typedef enum VkDescriptorPoolCreateFlagBits {
 } VkDescriptorPoolCreateFlagBits;
 
 * 
-`VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT` specifies that
+[VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT](#VkDescriptorPoolCreateFlagBits) specifies that
 descriptor sets **can** return their individual allocations to the pool,
 i.e. all of [vkAllocateDescriptorSets](#vkAllocateDescriptorSets), [vkFreeDescriptorSets](#vkFreeDescriptorSets),
 and [vkResetDescriptorPool](#vkResetDescriptorPool) are allowed.
@@ -3401,15 +3397,15 @@ individually freed back to the pool, i.e. only
 allowed.
 
 * 
-`VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT` specifies that
+[VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](#VkDescriptorPoolCreateFlagBits) specifies that
 descriptor sets allocated from this pool **can** include bindings with the
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` bit set.
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT) bit set.
 It is valid to allocate descriptor sets that have bindings that do not
-set the `VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` bit from a
-pool that has `VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT` set.
+set the [VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT) bit from a
+pool that has [VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](#VkDescriptorPoolCreateFlagBits) set.
 
 * 
-`VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT` specifies that this
+[VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT](#VkDescriptorPoolCreateFlagBits) specifies that this
 descriptor pool and the descriptor sets allocated from it reside
 entirely in host memory and cannot be bound.
 Similar to descriptor sets allocated without this flag, applications
@@ -3424,7 +3420,7 @@ different threads, though the same descriptor **must** not be updated
 concurrently by two threads.
 
 * 
-`VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV`
+[VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV](#VkDescriptorPoolCreateFlagBits)
 specifies that the implementation should allow the application to
 allocate more than [VkDescriptorPoolCreateInfo](#VkDescriptorPoolCreateInfo)::`maxSets`
 descriptor set objects from the descriptor pool as available resources
@@ -3433,7 +3429,7 @@ The implementation **may** use the `maxSets` value to allocate the
 initial available sets, but using zero is permitted.
 
 * 
-`VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV`
+[VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV](#VkDescriptorPoolCreateFlagBits)
 specifies that the implementation should allow the application to
 allocate more descriptors from the pool than was specified by the
 [VkDescriptorPoolSize](#VkDescriptorPoolSize)::`descriptorCount` for any descriptor
@@ -3466,7 +3462,7 @@ typedef struct VkDescriptorPoolSize {
 * 
 `descriptorCount` is the number of descriptors of that type to
 allocate.
-If `type` is `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then
+If `type` is [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) then
 `descriptorCount` is the number of bytes to allocate for descriptors
 of this type.
 
@@ -3492,7 +3488,7 @@ Valid Usage
 * 
 [](#VUID-VkDescriptorPoolSize-type-02218) VUID-VkDescriptorPoolSize-type-02218
 
-If `type` is `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then
+If `type` is [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) then
 `descriptorCount` **must** be a multiple of `4`
 
 Valid Usage (Implicit)
@@ -3610,19 +3606,19 @@ used, subject to the following conditions:
 
 * 
 For descriptor set bindings created with the
-`VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT` bit set, all descriptors
+[VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT](#VkDescriptorBindingFlagBitsEXT) bit set, all descriptors
 in that binding that are dynamically used **must** have been populated
 before the descriptor set is [consumed](#descriptorsets-binding).
 
 * 
 For descriptor set bindings created without the
-`VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT` bit set, all descriptors
+[VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT](#VkDescriptorBindingFlagBitsEXT) bit set, all descriptors
 in that binding that are statically used **must** have been populated
 before the descriptor set is [consumed](#descriptorsets-binding).
 
 * 
 Descriptor bindings with descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` **can** be **undefined** when
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) **can** be **undefined** when
 the descriptor set is [consumed](#descriptorsets-binding); though values
 in that block will be **undefined**.
 
@@ -3649,7 +3645,7 @@ used to create the descriptor pool.
 
 If the allocation fails due to no more space in the descriptor pool, and not
 because of system or device memory exhaustion, then
-`VK_ERROR_OUT_OF_POOL_MEMORY` **must** be returned.
+[VK_ERROR_OUT_OF_POOL_MEMORY](fundamentals.html#VkResult) **must** be returned.
 
 `vkAllocateDescriptorSets` **can** be used to create multiple descriptor
 sets.
@@ -3690,27 +3686,27 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_FRAGMENTED_POOL`
+[VK_ERROR_FRAGMENTED_POOL](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_POOL_MEMORY`
+[VK_ERROR_OUT_OF_POOL_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkDescriptorSetAllocateInfo` structure is defined as:
 
@@ -3766,22 +3762,22 @@ remaining to allocate the descriptor sets of the specified layouts
 [](#VUID-VkDescriptorSetAllocateInfo-pSetLayouts-00308) VUID-VkDescriptorSetAllocateInfo-pSetLayouts-00308
 
 Each element of `pSetLayouts` **must** not have been created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT` set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](#VkDescriptorSetLayoutCreateFlagBits) set
 
 * 
 [](#VUID-VkDescriptorSetAllocateInfo-pSetLayouts-03044) VUID-VkDescriptorSetAllocateInfo-pSetLayouts-03044
 
 If any element of `pSetLayouts` was created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) bit
 set, `descriptorPool` **must** have been created with the
-`VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT` flag set
+[VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](#VkDescriptorPoolCreateFlagBits) flag set
 
 * 
 [](#VUID-VkDescriptorSetAllocateInfo-pSetLayouts-09380) VUID-VkDescriptorSetAllocateInfo-pSetLayouts-09380
 
 If `pSetLayouts`[i] was created with an element of
 `pBindingFlags` that includes
-`VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT`, and
+[VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](#VkDescriptorBindingFlagBitsEXT), and
 [VkDescriptorSetVariableDescriptorCountAllocateInfo](#VkDescriptorSetVariableDescriptorCountAllocateInfo) is included in
 the `pNext` chain, and
 `VkDescriptorSetVariableDescriptorCountAllocateInfo`::`descriptorSetCount`
@@ -3795,22 +3791,22 @@ corresponding binding used to create `pSetLayouts`[i]
 [](#VUID-VkDescriptorSetAllocateInfo-pSetLayouts-04610) VUID-VkDescriptorSetAllocateInfo-pSetLayouts-04610
 
 If any element of `pSetLayouts` was created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT` bit set,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits) bit set,
 `descriptorPool` **must** have been created with the
-`VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT` flag set
+[VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT](#VkDescriptorPoolCreateFlagBits) flag set
 
 * 
 [](#VUID-VkDescriptorSetAllocateInfo-pSetLayouts-08009) VUID-VkDescriptorSetAllocateInfo-pSetLayouts-08009
 
 Each element of `pSetLayouts` **must** not have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits) bit set
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDescriptorSetAllocateInfo-sType-sType) VUID-VkDescriptorSetAllocateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDescriptorSetAllocateInfo-pNext-pNext) VUID-VkDescriptorSetAllocateInfo-pNext-pNext
@@ -3892,7 +3888,7 @@ variable-sized descriptor binding in the corresponding descriptor set
 layout.
 If the variable-sized descriptor binding in the corresponding descriptor set
 layout has a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) then
 `pDescriptorCounts`[i] specifies the binding’s capacity in bytes.
 If [VkDescriptorSetAllocateInfo](#VkDescriptorSetAllocateInfo)::`pSetLayouts`[i] does not include
 a variable-sized descriptor binding, then `pDescriptorCounts`[i] is
@@ -3911,7 +3907,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDescriptorSetVariableDescriptorCountAllocateInfo-sType-sType) VUID-VkDescriptorSetVariableDescriptorCountAllocateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDescriptorSetVariableDescriptorCountAllocateInfo-pDescriptorCounts-parameter) VUID-VkDescriptorSetVariableDescriptorCountAllocateInfo-pDescriptorCounts-parameter
@@ -3964,7 +3960,7 @@ which **must** either be a valid handle or [VK_NULL_HANDLE](../appendices/boiler
 [](#VUID-vkFreeDescriptorSets-descriptorPool-00312) VUID-vkFreeDescriptorSets-descriptorPool-00312
 
 `descriptorPool` **must** have been created with the
-`VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT` flag
+[VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT](#VkDescriptorPoolCreateFlagBits) flag
 
 Valid Usage (Implicit)
 
@@ -4006,15 +4002,15 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To return all descriptor sets allocated from a given pool to the pool,
 rather than freeing individual descriptor sets, call:
@@ -4081,15 +4077,15 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 // Provided by VK_VERSION_1_0
 typedef VkFlags VkDescriptorPoolResetFlags;
@@ -4148,8 +4144,8 @@ If the `dstSet` member of any element of `pDescriptorWrites` or
 was recorded to a command buffer which is currently in the
 [recording or executable state](cmdbuffers.html#commandbuffers-lifecycle),
 and any of the descriptor bindings that are updated were not created with
-the `VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` or
-`VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT` bits set,
+the [VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT) or
+[VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT](#VkDescriptorBindingFlagBitsEXT) bits set,
 that command buffer becomes [invalid](cmdbuffers.html#commandbuffers-lifecycle).
 
 Copying a descriptor from a descriptor set does not constitute a use of the
@@ -4165,8 +4161,8 @@ Valid Usage
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` or
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`, elements of the
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType), elements of the
 `pTexelBufferView` member of `pDescriptorWrites`[i] **must** have
 been created on `device`
 
@@ -4175,10 +4171,10 @@ been created on `device`
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`,
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`,
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`, or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`, the `buffer` member
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType), the `buffer` member
 of any element of the `pBufferInfo` member of
 `pDescriptorWrites`[i] **must** have been created on `device`
 
@@ -4187,8 +4183,8 @@ of any element of the `pBufferInfo` member of
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_SAMPLER` or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, and `dstSet` was
+[VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType), and `dstSet` was
 not allocated with a layout that included immutable samplers for
 `dstBinding` with `descriptorType`, the `sampler` member of
 any element of the `pImageInfo` member of `pDescriptorWrites`[i]
@@ -4199,10 +4195,12 @@ any element of the `pImageInfo` member of `pDescriptorWrites`[i]
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`,
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`, or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` the `imageView`
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](#VkDescriptorType),
+or [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) the `imageView`
 member of any element of `pDescriptorWrites`[i] **must** have been
 created on `device`
 
@@ -4211,7 +4209,7 @@ created on `device`
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR`, elements of the
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](#VkDescriptorType), elements of the
 `pAccelerationStructures` member of a
 [VkWriteDescriptorSetAccelerationStructureKHR](#VkWriteDescriptorSetAccelerationStructureKHR) structure in the
 `pNext` chain of `pDescriptorWrites`[i] **must** have been created
@@ -4222,43 +4220,34 @@ on `device`
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV`, elements of the
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](#VkDescriptorType), elements of the
 `pAccelerationStructures` member of a
 [VkWriteDescriptorSetAccelerationStructureNV](#VkWriteDescriptorSetAccelerationStructureNV) structure in the
 `pNext` chain of `pDescriptorWrites`[i] **must** have been created
 on `device`
 
 * 
-[](#VUID-vkUpdateDescriptorSets-pDescriptorWrites-06940) VUID-vkUpdateDescriptorSets-pDescriptorWrites-06940
+[](#VUID-vkUpdateDescriptorSets-pDescriptorWrites-12324) VUID-vkUpdateDescriptorSets-pDescriptorWrites-12324
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM` or
-`VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM`, the `imageView`
-member of any element of `pDescriptorWrites`[i] **must** have been
-created on `device`
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](#VkDescriptorType), elements of the `pTensorViews`
+member of a [VkWriteDescriptorSetTensorARM](#VkWriteDescriptorSetTensorARM) structure in the
+`pNext` chain of `pDescriptorWrites`[i] **must** have been created
+on `device`
 
 * 
 [](#VUID-vkUpdateDescriptorSets-pDescriptorWrites-06493) VUID-vkUpdateDescriptorSets-pDescriptorWrites-06493
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`,
-`pDescriptorWrites`[i].`pImageInfo` **must** be a valid pointer to
-an array of `pDescriptorWrites`[i].`descriptorCount` valid
-`VkDescriptorImageInfo` structures
-
-* 
-[](#VUID-vkUpdateDescriptorSets-pDescriptorWrites-06941) VUID-vkUpdateDescriptorSets-pDescriptorWrites-06941
-
-For each element i where
-`pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM` or
-`VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM`,
+[VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](#VkDescriptorType),
+or [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType),
 `pDescriptorWrites`[i].`pImageInfo` **must** be a valid pointer to
 an array of `pDescriptorWrites`[i].`descriptorCount` valid
 `VkDescriptorImageInfo` structures
@@ -4269,8 +4258,8 @@ an array of `pDescriptorWrites`[i].`descriptorCount` valid
 The `dstSet` member of each element of `pDescriptorWrites` or
 `pDescriptorCopies`
 for bindings which were created without the
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` or
-`VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT` bits set
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT) or
+[VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT](#VkDescriptorBindingFlagBitsEXT) bits set
 **must** not be used by any command that was recorded to a command buffer
 which is in the [pending state](cmdbuffers.html#commandbuffers-lifecycle)
 
@@ -4332,14 +4321,14 @@ structure.
 `dstArrayElement` is the starting element in that array.
 If the descriptor binding identified by `dstSet` and
 `dstBinding` has a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then `dstArrayElement`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) then `dstArrayElement`
 specifies the starting byte offset within the binding.
 
 * 
 `descriptorCount` is the number of descriptors to update.
 If the descriptor binding identified by `dstSet` and
 `dstBinding` has a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`, then
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType), then
 `descriptorCount` specifies the number of bytes to update.
 Otherwise,
 `descriptorCount` is one of
@@ -4372,7 +4361,7 @@ a value matching the `descriptorCount` of a
 each descriptor in `pImageInfo`, `pBufferInfo`, or
 `pTexelBufferView`, as described below.
 If `VkDescriptorSetLayoutBinding` for `dstSet` at
-`dstBinding` is not equal to `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`,
+`dstBinding` is not equal to [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType),
 `descriptorType` **must**
 be the same type as the `descriptorType` specified in
 `VkDescriptorSetLayoutBinding` for `dstSet` at `dstBinding`.
@@ -4395,21 +4384,21 @@ members is used according to the descriptor type specified in the
 `descriptorType` member of the containing `VkWriteDescriptorSet`
 structure,
 or none of them in case `descriptorType` is
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`, in which case the source data
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType), in which case the source data
 for the descriptor writes is taken from the
 [VkWriteDescriptorSetInlineUniformBlock](#VkWriteDescriptorSetInlineUniformBlock) structure included in the
 `pNext` chain of `VkWriteDescriptorSet`,
 or if `descriptorType` is
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR`, in which case the
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](#VkDescriptorType), in which case the
 source data for the descriptor writes is taken from the
 [VkWriteDescriptorSetAccelerationStructureKHR](#VkWriteDescriptorSetAccelerationStructureKHR) structure in the
 `pNext` chain of `VkWriteDescriptorSet`,
 or if `descriptorType` is
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV`, in which case the source
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](#VkDescriptorType), in which case the source
 data for the descriptor writes is taken from the
 [VkWriteDescriptorSetAccelerationStructureNV](#VkWriteDescriptorSetAccelerationStructureNV) structure in the
 `pNext` chain of `VkWriteDescriptorSet`,
-or if `descriptorType` is `VK_DESCRIPTOR_TYPE_TENSOR_ARM`, in which
+or if `descriptorType` is [VK_DESCRIPTOR_TYPE_TENSOR_ARM](#VkDescriptorType), in which
 case the source data for the descriptor writes is taken from the instance of
 [VkWriteDescriptorSetTensorARM](#VkWriteDescriptorSetTensorARM) in the `pNext` chain of
 `VkWriteDescriptorSet`,
@@ -4441,12 +4430,12 @@ Consecutive bindings **must** have identical [VkDescriptorType](#VkDescriptorTyp
 [VkDescriptorBindingFlagBits](#VkDescriptorBindingFlagBits),
 and immutable samplers references.
 In addition, if the [VkDescriptorType](#VkDescriptorType) is
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, the supported descriptor types in
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType), the supported descriptor types in
 [VkMutableDescriptorTypeCreateInfoEXT](#VkMutableDescriptorTypeCreateInfoEXT) **must** be equally defined.
 
 |  | The same behavior applies to bindings with a descriptor type of
 | --- | --- |
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` where `descriptorCount`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) where `descriptorCount`
 specifies the number of bytes to update while `dstArrayElement`
 specifies the starting byte offset, thus in this case if the
 `dstBinding` has a smaller byte size than the sum of
@@ -4527,29 +4516,29 @@ binding specified by `dstBinding`, and all applicable
 [](#VUID-VkWriteDescriptorSet-descriptorType-02219) VUID-VkWriteDescriptorSet-descriptorType-02219
 
 If `descriptorType` is
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`, `dstArrayElement`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType), `dstArrayElement`
 **must** be an integer multiple of `4`
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-02220) VUID-VkWriteDescriptorSet-descriptorType-02220
 
 If `descriptorType` is
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`, `descriptorCount`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType), `descriptorCount`
 **must** be an integer multiple of `4`
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-02994) VUID-VkWriteDescriptorSet-descriptorType-02994
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`
-or `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`, each element of
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType)
+or [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType), each element of
 `pTexelBufferView` **must** be either a valid `VkBufferView` handle
 or [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-02995) VUID-VkWriteDescriptorSet-descriptorType-02995
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`
-or `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` and the
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType)
+or [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType) and the
 [`nullDescriptor`](features.html#features-nullDescriptor) feature is not
 enabled, each element of `pTexelBufferView` **must** not be
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
@@ -4557,18 +4546,18 @@ enabled, each element of `pTexelBufferView` **must** not be
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-00324) VUID-VkWriteDescriptorSet-descriptorType-00324
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`,
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`,
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`, or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`, `pBufferInfo` **must**
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType), `pBufferInfo` **must**
 be a valid pointer to an array of `descriptorCount` valid
 `VkDescriptorBufferInfo` structures
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-00325) VUID-VkWriteDescriptorSet-descriptorType-00325
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_SAMPLER` or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, and `dstSet` was
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType), and `dstSet` was
 not allocated with a layout that included immutable samplers for
 `dstBinding` with `descriptorType`, the `sampler` member of
 each element of `pImageInfo` **must** be a valid `VkSampler` object
@@ -4577,9 +4566,9 @@ each element of `pImageInfo` **must** be a valid `VkSampler` object
 [](#VUID-VkWriteDescriptorSet-descriptorType-02996) VUID-VkWriteDescriptorSet-descriptorType-02996
 
 If `descriptorType` is
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, the `imageView` member of
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType), the `imageView` member of
 each element of `pImageInfo` **must** be either a valid
 `VkImageView` handle or [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
@@ -4587,9 +4576,9 @@ each element of `pImageInfo` **must** be either a valid
 [](#VUID-VkWriteDescriptorSet-descriptorType-02997) VUID-VkWriteDescriptorSet-descriptorType-02997
 
 If `descriptorType` is
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, and the
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType), and the
 [`nullDescriptor`](features.html#features-nullDescriptor) feature is not
 enabled, the `imageView` member of each element of `pImageInfo`
 **must** not be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
@@ -4597,15 +4586,18 @@ enabled, the `imageView` member of each element of `pImageInfo`
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-07683) VUID-VkWriteDescriptorSet-descriptorType-07683
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`,
-the `imageView` member of each element of `pImageInfo` **must** not
-be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
+If `descriptorType` is
+[VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType), then the `imageView`
+member of each element of `pImageInfo` **must** not be
+[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-02221) VUID-VkWriteDescriptorSet-descriptorType-02221
 
 If `descriptorType` is
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`, the `pNext` chain
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType), the `pNext` chain
 **must** include a [VkWriteDescriptorSetInlineUniformBlock](#VkWriteDescriptorSetInlineUniformBlock) structure
 whose `dataSize` member equals `descriptorCount`
 
@@ -4613,7 +4605,7 @@ whose `dataSize` member equals `descriptorCount`
 [](#VUID-VkWriteDescriptorSet-descriptorType-02382) VUID-VkWriteDescriptorSet-descriptorType-02382
 
 If `descriptorType` is
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR`, the `pNext`
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](#VkDescriptorType), the `pNext`
 chain **must** include a [VkWriteDescriptorSetAccelerationStructureKHR](#VkWriteDescriptorSetAccelerationStructureKHR)
 structure whose `accelerationStructureCount` member equals
 `descriptorCount`
@@ -4622,7 +4614,7 @@ structure whose `accelerationStructureCount` member equals
 [](#VUID-VkWriteDescriptorSet-descriptorType-03817) VUID-VkWriteDescriptorSet-descriptorType-03817
 
 If `descriptorType` is
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV`, the `pNext`
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](#VkDescriptorType), the `pNext`
 chain **must** include a [VkWriteDescriptorSetAccelerationStructureNV](#VkWriteDescriptorSetAccelerationStructureNV)
 structure whose `accelerationStructureCount` member equals
 `descriptorCount`
@@ -4630,7 +4622,7 @@ structure whose `accelerationStructureCount` member equals
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-09945) VUID-VkWriteDescriptorSet-descriptorType-09945
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_TENSOR_ARM`, the
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_TENSOR_ARM](#VkDescriptorType), the
 `pNext` chain **must** include a [VkWriteDescriptorSetTensorARM](#VkWriteDescriptorSetTensorARM)
 structure whose `tensorViewCount` member equals
 `descriptorCount`
@@ -4638,7 +4630,7 @@ structure whose `tensorViewCount` member equals
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-01946) VUID-VkWriteDescriptorSet-descriptorType-01946
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, then
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType), then
 the `imageView` member of each `pImageInfo` element **must** have
 been created without a `VkSamplerYcbcrConversionInfo` structure in
 its `pNext` chain
@@ -4647,7 +4639,7 @@ its `pNext` chain
 [](#VUID-VkWriteDescriptorSet-descriptorType-02738) VUID-VkWriteDescriptorSet-descriptorType-02738
 
 If `descriptorType` is
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, and if any element of
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType), and if any element of
 `pImageInfo` has an `imageView` member that was created with a
 `VkSamplerYcbcrConversionInfo` structure in its `pNext` chain,
 then `dstSet` **must** have been allocated with a layout that included
@@ -4660,7 +4652,7 @@ sampler **must** have been created with an
 [](#VUID-VkWriteDescriptorSet-descriptorType-01948) VUID-VkWriteDescriptorSet-descriptorType-01948
 
 If `descriptorType` is
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, and `dstSet` was
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType), and `dstSet` was
 allocated with a layout that included immutable samplers for
 `dstBinding`, then the `imageView` member of each element of
 `pImageInfo` which corresponds to an immutable sampler that enables
@@ -4673,7 +4665,7 @@ immutable sampler
 [](#VUID-VkWriteDescriptorSet-descriptorType-09506) VUID-VkWriteDescriptorSet-descriptorType-09506
 
 If `descriptorType` is
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, `dstSet` was
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType), `dstSet` was
 allocated with a layout that included immutable samplers for
 `dstBinding`, and those samplers enable
 [sampler Y′CBCR conversion](samplers.html#samplers-YCbCr-conversion), then
@@ -4682,26 +4674,26 @@ allocated with a layout that included immutable samplers for
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-00327) VUID-VkWriteDescriptorSet-descriptorType-00327
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` or
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`, the `offset` member
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType), the `offset` member
 of each element of `pBufferInfo` **must** be a multiple of
 `VkPhysicalDeviceLimits`::`minUniformBufferOffsetAlignment`
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-00328) VUID-VkWriteDescriptorSet-descriptorType-00328
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`, the `offset` member
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType), the `offset` member
 of each element of `pBufferInfo` **must** be a multiple of
 `VkPhysicalDeviceLimits`::`minStorageBufferOffsetAlignment`
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-00329) VUID-VkWriteDescriptorSet-descriptorType-00329
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`,
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`,
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`, or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`, and the `buffer`
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType), and the `buffer`
 member of any element of `pBufferInfo` is the handle of a non-sparse
 buffer, then that buffer **must** be bound completely and contiguously to a
 single `VkDeviceMemory` object
@@ -4709,75 +4701,75 @@ single `VkDeviceMemory` object
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-00330) VUID-VkWriteDescriptorSet-descriptorType-00330
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` or
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`, the `buffer` member
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType), the `buffer` member
 of each element of `pBufferInfo` **must** have been created with the
-`VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-00331) VUID-VkWriteDescriptorSet-descriptorType-00331
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`, the `buffer` member
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType), the `buffer` member
 of each element of `pBufferInfo` **must** have been created with the
-`VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-00332) VUID-VkWriteDescriptorSet-descriptorType-00332
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` or
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`, the `range` member
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType), the `range` member
 of each element of `pBufferInfo`, or the
 [effective range](#buffer-info-effective-range) if `range` is
-`VK_WHOLE_SIZE`, **must** be less than or equal to
+[VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), **must** be less than or equal to
 `VkPhysicalDeviceLimits`::`maxUniformBufferRange`
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-00333) VUID-VkWriteDescriptorSet-descriptorType-00333
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`,
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType),
 and the [`shader64BitIndexing`](features.html#features-shader64BitIndexing)
 feature is not enabled,
 the `range` member of each element of `pBufferInfo`, or the
 [effective range](#buffer-info-effective-range) if `range` is
-`VK_WHOLE_SIZE`, **must** be less than or equal to
+[VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), **must** be less than or equal to
 `VkPhysicalDeviceLimits`::`maxStorageBufferRange`
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-08765) VUID-VkWriteDescriptorSet-descriptorType-08765
 
 If `descriptorType` is
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`, the
-`pTexelBufferView` [buffer view    usage](resources.html#resources-buffer-views-usage) **must** include `VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT`
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType), the
+`pTexelBufferView` [buffer view    usage](resources.html#resources-buffer-views-usage) **must** include [VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](resources.html#VkBufferUsageFlagBits)
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-08766) VUID-VkWriteDescriptorSet-descriptorType-08766
 
 If `descriptorType` is
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`, the
-`pTexelBufferView` [buffer view    usage](resources.html#resources-buffer-views-usage) **must** include `VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT`
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType), the
+`pTexelBufferView` [buffer view    usage](resources.html#resources-buffer-views-usage) **must** include [VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](resources.html#VkBufferUsageFlagBits)
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-00336) VUID-VkWriteDescriptorSet-descriptorType-00336
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE` or
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`, the `imageView` member of
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType), the `imageView` member of
 each element of `pImageInfo` **must** have been created with the
 [identity swizzle](resources.html#resources-image-views-identity-mappings)
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-00337) VUID-VkWriteDescriptorSet-descriptorType-00337
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE` or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, the `imageView`
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType), the `imageView`
 member of each element of `pImageInfo` **must** have been created with
-the `VK_IMAGE_USAGE_SAMPLED_BIT` usage flag set
+the [VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-04149) VUID-VkWriteDescriptorSet-descriptorType-04149
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE` the
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType) the
 `imageLayout` member of each element of `pImageInfo` **must** be a
 member of the list given in [Sampled    Image](#descriptorsets-sampledimage)
 
@@ -4785,43 +4777,43 @@ member of the list given in [Sampled    Image](#descriptorsets-sampledimage)
 [](#VUID-VkWriteDescriptorSet-descriptorType-04150) VUID-VkWriteDescriptorSet-descriptorType-04150
 
 If `descriptorType` is
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` the `imageLayout`
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) the `imageLayout`
 member of each element of `pImageInfo` **must** be a member of the list
 given in [Combined Image Sampler](#descriptorsets-combinedimagesampler)
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-04151) VUID-VkWriteDescriptorSet-descriptorType-04151
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` the
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType) the
 `imageLayout` member of each element of `pImageInfo` **must** be a
 member of the list given in [Input    Attachment](#descriptorsets-inputattachment)
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-04152) VUID-VkWriteDescriptorSet-descriptorType-04152
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE` the
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType) the
 `imageLayout` member of each element of `pImageInfo` **must** be a
 member of the list given in [Storage    Image](#descriptorsets-storageimage)
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-00338) VUID-VkWriteDescriptorSet-descriptorType-00338
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`,
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType),
 the `imageView` member of each element of `pImageInfo` **must**
-have been created with the `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`
+have been created with the [VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-00339) VUID-VkWriteDescriptorSet-descriptorType-00339
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, the
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType), the
 `imageView` member of each element of `pImageInfo` **must** have
-been created with the `VK_IMAGE_USAGE_STORAGE_BIT` usage flag set
+been created with the [VK_IMAGE_USAGE_STORAGE_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-02752) VUID-VkWriteDescriptorSet-descriptorType-02752
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_SAMPLER`, then
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType), then
 `dstSet` **must** not have been allocated with a layout that included
 immutable samplers for `dstBinding`
 
@@ -4829,14 +4821,14 @@ immutable samplers for `dstBinding`
 [](#VUID-VkWriteDescriptorSet-dstSet-04611) VUID-VkWriteDescriptorSet-dstSet-04611
 
 If the `VkDescriptorSetLayoutBinding` for `dstSet` at
-`dstBinding` is `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, the new active
+`dstBinding` is [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType), the new active
 descriptor type `descriptorType` **must** exist in the corresponding
 `pMutableDescriptorTypeLists` list for `dstBinding`
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-06450) VUID-VkWriteDescriptorSet-descriptorType-06450
 
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`,
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType),
 the `imageView` member of each element of `pImageInfo` **must**
 have either been created without a [VkImageViewMinLodCreateInfoEXT](resources.html#VkImageViewMinLodCreateInfoEXT)
 included in the `pNext` chain or with a
@@ -4846,26 +4838,26 @@ included in the `pNext` chain or with a
 [](#VUID-VkWriteDescriptorSet-descriptorType-06942) VUID-VkWriteDescriptorSet-descriptorType-06942
 
 If `descriptorType` is
-`VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM`, the `imageView`
+[VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](#VkDescriptorType), the `imageView`
 member of each element of `pImageInfo` **must** have been created with
 a view created with an `image` created with the
-`VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM` usage flag set
+[VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkWriteDescriptorSet-descriptorType-06943) VUID-VkWriteDescriptorSet-descriptorType-06943
 
 If `descriptorType` is
-`VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM`, the `imageView`
+[VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](#VkDescriptorType), the `imageView`
 member of each element of `pImageInfo` **must** have been created with
 a view created with an `image` created with the
-`VK_IMAGE_USAGE_SAMPLE_BLOCK_MATCH_BIT_QCOM` usage flag set
+[VK_IMAGE_USAGE_SAMPLE_BLOCK_MATCH_BIT_QCOM](resources.html#VkImageUsageFlagBits) usage flag set
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkWriteDescriptorSet-sType-sType) VUID-VkWriteDescriptorSet-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkWriteDescriptorSet-pNext-pNext) VUID-VkWriteDescriptorSet-pNext-pNext
@@ -4932,66 +4924,66 @@ typedef enum VkDescriptorType {
 } VkDescriptorType;
 
 * 
-`VK_DESCRIPTOR_TYPE_SAMPLER` specifies a [    sampler descriptor](#descriptorsets-sampler).
+[VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType) specifies a [    sampler descriptor](#descriptorsets-sampler).
 
 * 
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` specifies a
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) specifies a
 [combined image sampler    descriptor](#descriptorsets-combinedimagesampler).
 
 * 
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE` specifies a
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType) specifies a
 [sampled image descriptor](#descriptorsets-sampledimage).
 
 * 
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE` specifies a
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType) specifies a
 [storage image descriptor](#descriptorsets-storageimage).
 
 * 
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` specifies a
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType) specifies a
 [uniform texel buffer descriptor](#descriptorsets-uniformtexelbuffer).
 
 * 
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` specifies a
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType) specifies a
 [storage texel buffer descriptor](#descriptorsets-storagetexelbuffer).
 
 * 
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` specifies a
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType) specifies a
 [uniform buffer descriptor](#descriptorsets-uniformbuffer).
 
 * 
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` specifies a
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType) specifies a
 [storage buffer descriptor](#descriptorsets-storagebuffer).
 
 * 
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` specifies a
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType) specifies a
 [dynamic uniform buffer    descriptor](#descriptorsets-uniformbufferdynamic).
 
 * 
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` specifies a
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType) specifies a
 [dynamic storage buffer    descriptor](#descriptorsets-storagebufferdynamic).
 
 * 
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` specifies an
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType) specifies an
 [input attachment descriptor](#descriptorsets-inputattachment).
 
 * 
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` specifies an
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) specifies an
 [inline uniform block](#descriptorsets-inlineuniformblock).
 
 * 
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT` specifies a
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType) specifies a
 [descriptor of mutable type](#descriptorsets-mutable).
 
 * 
-`VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM` specifies a
+[VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](#VkDescriptorType) specifies a
 [sampled weight image descriptor](#descriptorsets-weightimage).
 
 * 
-`VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM` specifies a
+[VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](#VkDescriptorType) specifies a
 [block matching image descriptor](#descriptorsets-blockmatch).
 
 * 
-`VK_DESCRIPTOR_TYPE_TENSOR_ARM` specifies a
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](#VkDescriptorType) specifies a
 [storage tensor descriptor](#descriptorsets-storagetensor).
 
 When a descriptor set is updated via elements of [VkWriteDescriptorSet](#VkWriteDescriptorSet),
@@ -5001,53 +4993,53 @@ type being defined - otherwise they are ignored.
 The members accessed are as follows for each descriptor type:
 
 * 
-For `VK_DESCRIPTOR_TYPE_SAMPLER`, only the `sampler` member of
+For [VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType), only the `sampler` member of
 each element of [VkWriteDescriptorSet](#VkWriteDescriptorSet)::`pImageInfo` is
 accessed.
 
 * 
-For `VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`, only the `imageView` and
+For [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType), only the `imageView` and
 `imageLayout` members of each element of
 [VkWriteDescriptorSet](#VkWriteDescriptorSet)::`pImageInfo` are accessed.
 
 * 
-For `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, all members of each
+For [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType), all members of each
 element of [VkWriteDescriptorSet](#VkWriteDescriptorSet)::`pImageInfo` are accessed.
 
 * 
-For `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`,
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`,
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`, or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`, all members of each
+For [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType), all members of each
 element of [VkWriteDescriptorSet](#VkWriteDescriptorSet)::`pBufferInfo` are accessed.
 
 * 
-For `VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` or
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`, each element of
+For [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType), each element of
 [VkWriteDescriptorSet](#VkWriteDescriptorSet)::`pTexelBufferView` is accessed.
 
 When updating descriptors with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`, none of the `pImageInfo`,
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType), none of the `pImageInfo`,
 `pBufferInfo`, or `pTexelBufferView` members are accessed, instead
 the source data of the descriptor update operation is taken from the
 [VkWriteDescriptorSetInlineUniformBlock](#VkWriteDescriptorSetInlineUniformBlock) structure in the `pNext`
 chain of `VkWriteDescriptorSet`.
 When updating descriptors with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR`, none of the
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](#VkDescriptorType), none of the
 `pImageInfo`, `pBufferInfo`, or `pTexelBufferView` members are
 accessed, instead the source data of the descriptor update operation is
 taken from the [VkWriteDescriptorSetAccelerationStructureKHR](#VkWriteDescriptorSetAccelerationStructureKHR) structure
 in the `pNext` chain of `VkWriteDescriptorSet`.
 When updating descriptors with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV`, none of the
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](#VkDescriptorType), none of the
 `pImageInfo`, `pBufferInfo`, or `pTexelBufferView` members are
 accessed, instead the source data of the descriptor update operation is
 taken from the [VkWriteDescriptorSetAccelerationStructureNV](#VkWriteDescriptorSetAccelerationStructureNV) structure
 in the `pNext` chain of `VkWriteDescriptorSet`.
 When updating descriptors with a `descriptorType` of
-`VK_DESCRIPTOR_TYPE_TENSOR_ARM`, none of the `pImageInfo`,
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](#VkDescriptorType), none of the `pImageInfo`,
 `pBufferInfo`, or `pTexelBufferView` members are accessed, instead
 the source data of the descriptor update operation is taken from the
 instance of [VkWriteDescriptorSetTensorARM](#VkWriteDescriptorSetTensorARM) in the `pNext` chain of
@@ -5074,23 +5066,23 @@ relative to this starting offset.
 
 * 
 `range` is the size in bytes that is used for this descriptor
-update, or `VK_WHOLE_SIZE` to use the range from `offset` to the
+update, or [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE) to use the range from `offset` to the
 end of the buffer.
 
-|  | When setting `range` to `VK_WHOLE_SIZE`, the
+|  | When setting `range` to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), the
 | --- | --- |
 [effective range](#buffer-info-effective-range) **must** not be larger than
 the maximum range for the descriptor type ([`maxUniformBufferRange`](limits.html#limits-maxUniformBufferRange) or [`maxStorageBufferRange`](limits.html#limits-maxStorageBufferRange)).
-This means that `VK_WHOLE_SIZE` is not typically useful in the common
+This means that [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE) is not typically useful in the common
 case where uniform buffer descriptors are suballocated from a buffer that is
 much larger than `maxUniformBufferRange`. |
 
-For `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` and
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` descriptor types,
+For [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType) and
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType) descriptor types,
 `offset` is the base offset from which the dynamic offset is applied and
 `range` is the static size used for all dynamic offsets.
 
-When `range` is `VK_WHOLE_SIZE` the effective range is calculated at
+When `range` is [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE) the effective range is calculated at
 [vkUpdateDescriptorSets](#vkUpdateDescriptorSets) is by taking the size of `buffer` minus the
 `offset`.
 
@@ -5104,13 +5096,13 @@ Valid Usage
 * 
 [](#VUID-VkDescriptorBufferInfo-range-00341) VUID-VkDescriptorBufferInfo-range-00341
 
-If `range` is not equal to `VK_WHOLE_SIZE`, `range` **must** be
+If `range` is not equal to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), `range` **must** be
 greater than `0`
 
 * 
 [](#VUID-VkDescriptorBufferInfo-range-00342) VUID-VkDescriptorBufferInfo-range-00342
 
-If `range` is not equal to `VK_WHOLE_SIZE`, `range` **must** be
+If `range` is not equal to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), `range` **must** be
 less than or equal to the size of `buffer` minus `offset`
 
 * 
@@ -5123,7 +5115,7 @@ enabled, `buffer` **must** not be [VK_NULL_HANDLE](../appendices/boilerplate.htm
 [](#VUID-VkDescriptorBufferInfo-buffer-02999) VUID-VkDescriptorBufferInfo-buffer-02999
 
 If `buffer` is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `offset` **must** be zero and
-`range` **must** be `VK_WHOLE_SIZE`
+`range` **must** be [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE)
 
 Valid Usage (Implicit)
 
@@ -5143,27 +5135,27 @@ typedef struct VkDescriptorImageInfo {
 
 * 
 `sampler` is a sampler handle, and is used in descriptor updates for
-types `VK_DESCRIPTOR_TYPE_SAMPLER` and
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` if the binding being
+types [VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType) and
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) if the binding being
 updated does not use immutable samplers.
 
 * 
 `imageView` is
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) or
 an image view handle, and is used in descriptor updates for types
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`,
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, and
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`.
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType), and
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType).
 
 * 
 `imageLayout` is the layout that the image subresources accessible
 from `imageView` will be in at the time this descriptor is accessed.
 `imageLayout` is used in descriptor updates for types
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`,
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, and
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`.
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType), and
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType).
 
 Members of `VkDescriptorImageInfo` that are not used in an update (as
 described above) are ignored.
@@ -5180,23 +5172,23 @@ image
 [](#VUID-VkDescriptorImageInfo-imageView-07795) VUID-VkDescriptorImageInfo-imageView-07795
 
 If `imageView` is a 2D view created from a 3D image, then
-`descriptorType` **must** be `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`
+`descriptorType` **must** be [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType)
 
 * 
 [](#VUID-VkDescriptorImageInfo-imageView-07796) VUID-VkDescriptorImageInfo-imageView-07796
 
 If `imageView` is a 2D view created from a 3D image, then the image
 **must** have been created with
-`VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT` set
+[VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT](resources.html#VkImageCreateFlagBits) set
 
 * 
 [](#VUID-VkDescriptorImageInfo-descriptorType-06713) VUID-VkDescriptorImageInfo-descriptorType-06713
 
 If the [`image2DViewOf3D`](features.html#features-image2DViewOf3D) feature is
 not enabled or `descriptorType` is not
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE` then
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType) then
 `imageView` **must** not be a 2D view created from a 3D image
 
 * 
@@ -5204,8 +5196,8 @@ not enabled or `descriptorType` is not
 
 If the [`sampler2DViewOf3D`](features.html#features-sampler2DViewOf3D) feature
 is not enabled or `descriptorType` is not
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE` or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` then
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) then
 `imageView` **must** not be a 2D view created from a 3D image
 
 * 
@@ -5213,38 +5205,38 @@ is not enabled or `descriptorType` is not
 
 If `imageView` is created from a depth/stencil image, the
 `aspectMask` used to create the `imageView` **must** include either
-`VK_IMAGE_ASPECT_DEPTH_BIT` or `VK_IMAGE_ASPECT_STENCIL_BIT` but
+[VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits) or [VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits) but
 not both
 
 * 
 [](#VUID-VkDescriptorImageInfo-imageLayout-09425) VUID-VkDescriptorImageInfo-imageLayout-09425
 
-If `imageLayout` is `VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`,
+If `imageLayout` is [VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
 then the `aspectMask` used to create `imageView` **must** not
-include either `VK_IMAGE_ASPECT_DEPTH_BIT` or
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+include either [VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits) or
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkDescriptorImageInfo-imageLayout-09426) VUID-VkDescriptorImageInfo-imageLayout-09426
 
 If `imageLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`, then the
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout), then the
 `aspectMask` used to create `imageView` **must** not include
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkDescriptorImageInfo-sampler-01564) VUID-VkDescriptorImageInfo-sampler-01564
 
 If `sampler` is used and the [VkFormat](formats.html#VkFormat) of the image is a
 [multi-planar format](formats.html#formats-multiplanar), the image **must** have been
-created with `VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT`, and the
+created with [VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](resources.html#VkImageCreateFlagBits), and the
 `aspectMask` of the `imageView` **must** be a valid
 [multi-planar aspect mask](formats.html#formats-multiplanar-image-aspect) bit
 
@@ -5253,8 +5245,8 @@ created with `VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT`, and the
 
 If the `[VK_KHR_portability_subset](../appendices/extensions.html#VK_KHR_portability_subset)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR)::`mutableComparisonSamplers`
-is `VK_FALSE`, then `sampler` **must** have been created with
-[VkSamplerCreateInfo](samplers.html#VkSamplerCreateInfo)::`compareEnable` set to `VK_FALSE`
+is [VK_FALSE](fundamentals.html#VK_FALSE), then `sampler` **must** have been created with
+[VkSamplerCreateInfo](samplers.html#VkSamplerCreateInfo)::`compareEnable` set to [VK_FALSE](fundamentals.html#VK_FALSE)
 
 Valid Usage (Implicit)
 
@@ -5264,7 +5256,7 @@ Valid Usage (Implicit)
  Both of `imageView`, and `sampler` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](devsandqueues.html#VkDevice)
 
 If the `descriptorType` member of [VkWriteDescriptorSet](#VkWriteDescriptorSet) is
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then the data to write to the
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) then the data to write to the
 descriptor set is specified through a
 `VkWriteDescriptorSetInlineUniformBlock` structure included in the
 `pNext` chain of `VkWriteDescriptorSet`.
@@ -5310,7 +5302,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkWriteDescriptorSetInlineUniformBlock-sType-sType) VUID-VkWriteDescriptorSetInlineUniformBlock-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_INLINE_UNIFORM_BLOCK`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_INLINE_UNIFORM_BLOCK](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkWriteDescriptorSetInlineUniformBlock-pData-parameter) VUID-VkWriteDescriptorSetInlineUniformBlock-pData-parameter
@@ -5356,8 +5348,8 @@ Valid Usage
 
 Each acceleration structure in `pAccelerationStructures` **must** have
 been created with a `type` of
-`VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR` or
-`VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR`
+[VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR](resources.html#VkAccelerationStructureTypeNV) or
+[VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](resources.html#VkAccelerationStructureTypeNV)
 
 * 
 [](#VUID-VkWriteDescriptorSetAccelerationStructureKHR-pAccelerationStructures-03580) VUID-VkWriteDescriptorSetAccelerationStructureKHR-pAccelerationStructures-03580
@@ -5371,7 +5363,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkWriteDescriptorSetAccelerationStructureKHR-sType-sType) VUID-VkWriteDescriptorSetAccelerationStructureKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkWriteDescriptorSetAccelerationStructureKHR-pAccelerationStructures-parameter) VUID-VkWriteDescriptorSetAccelerationStructureKHR-pAccelerationStructures-parameter
@@ -5384,7 +5376,7 @@ Valid Usage (Implicit)
  `accelerationStructureCount` **must** be greater than `0`
 
 If the `descriptorType` member of [VkWriteDescriptorSet](#VkWriteDescriptorSet) is
-`VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV`, then the
+[VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV](#VkDescriptorType), then the
 data to write to the descriptor set is specified through a
 `VkWriteDescriptorSetPartitionedAccelerationStructureNV` structure
 included in the `pNext` chain of `VkWriteDescriptorSet`.
@@ -5435,7 +5427,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkWriteDescriptorSetPartitionedAccelerationStructureNV-sType-sType) VUID-VkWriteDescriptorSetPartitionedAccelerationStructureNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_PARTITIONED_ACCELERATION_STRUCTURE_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_PARTITIONED_ACCELERATION_STRUCTURE_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkWriteDescriptorSetPartitionedAccelerationStructureNV-pAccelerationStructures-parameter) VUID-VkWriteDescriptorSetPartitionedAccelerationStructureNV-pAccelerationStructures-parameter
@@ -5480,7 +5472,7 @@ Valid Usage
 [](#VUID-VkWriteDescriptorSetAccelerationStructureNV-pAccelerationStructures-03748) VUID-VkWriteDescriptorSetAccelerationStructureNV-pAccelerationStructures-03748
 
 Each acceleration structure in `pAccelerationStructures` **must** have
-been created with `VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR`
+been created with [VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR](resources.html#VkAccelerationStructureTypeNV)
 
 * 
 [](#VUID-VkWriteDescriptorSetAccelerationStructureNV-pAccelerationStructures-03749) VUID-VkWriteDescriptorSetAccelerationStructureNV-pAccelerationStructures-03749
@@ -5494,7 +5486,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkWriteDescriptorSetAccelerationStructureNV-sType-sType) VUID-VkWriteDescriptorSetAccelerationStructureNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkWriteDescriptorSetAccelerationStructureNV-pAccelerationStructures-parameter) VUID-VkWriteDescriptorSetAccelerationStructureNV-pAccelerationStructures-parameter
@@ -5544,7 +5536,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkWriteDescriptorSetTensorARM-sType-sType) VUID-VkWriteDescriptorSetTensorARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_TENSOR_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_TENSOR_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkWriteDescriptorSetTensorARM-pTensorViews-parameter) VUID-VkWriteDescriptorSetTensorARM-pTensorViews-parameter
@@ -5583,7 +5575,7 @@ structure.
 set, binding, and array element, respectively.
 If the descriptor binding identified by `srcSet` and
 `srcBinding` has a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then `srcArrayElement`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) then `srcArrayElement`
 specifies the starting byte offset within the binding to copy from.
 
 * 
@@ -5591,7 +5583,7 @@ specifies the starting byte offset within the binding to copy from.
 destination set, binding, and array element, respectively.
 If the descriptor binding identified by `dstSet` and
 `dstBinding` has a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then `dstArrayElement`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) then `dstArrayElement`
 specifies the starting byte offset within the binding to copy to.
 
 * 
@@ -5602,17 +5594,17 @@ elements in the source or destination binding, those affect consecutive
 bindings in a manner similar to [VkWriteDescriptorSet](#VkWriteDescriptorSet) above.
 If the descriptor binding identified by `srcSet` and
 `srcBinding` has a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then `descriptorCount`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) then `descriptorCount`
 specifies the number of bytes to copy and the remaining array elements
 in the source or destination binding refer to the remaining number of
 bytes in those.
 
 If the `VkDescriptorSetLayoutBinding` for `dstBinding` is
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT` and `srcBinding` is not
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, the new active descriptor type becomes
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType) and `srcBinding` is not
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType), the new active descriptor type becomes
 the descriptor type of `srcBinding`.
 If both `VkDescriptorSetLayoutBinding` for `srcBinding` and
-`dstBinding` are `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, the active
+`dstBinding` are [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType), the active
 descriptor type in each source descriptor is copied into the corresponding
 destination descriptor.
 The active descriptor type **can** be different for each source descriptor.
@@ -5669,14 +5661,14 @@ destination ranges of descriptors **must** not overlap, where the ranges
 [](#VUID-VkCopyDescriptorSet-srcBinding-02223) VUID-VkCopyDescriptorSet-srcBinding-02223
 
 If the descriptor type of the descriptor set binding specified by
-`srcBinding` is `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`,
+`srcBinding` is [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType),
 `srcArrayElement` **must** be an integer multiple of `4`
 
 * 
 [](#VUID-VkCopyDescriptorSet-dstBinding-02224) VUID-VkCopyDescriptorSet-dstBinding-02224
 
 If the descriptor type of the descriptor set binding specified by
-`dstBinding` is `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`,
+`dstBinding` is [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType),
 `dstArrayElement` **must** be an integer multiple of `4`
 
 * 
@@ -5684,54 +5676,54 @@ If the descriptor type of the descriptor set binding specified by
 
 If the descriptor type of the descriptor set binding specified by either
 `srcBinding` or `dstBinding` is
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`, `descriptorCount`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType), `descriptorCount`
 **must** be an integer multiple of `4`
 
 * 
 [](#VUID-VkCopyDescriptorSet-srcSet-01918) VUID-VkCopyDescriptorSet-srcSet-01918
 
 If `srcSet`’s layout was created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` flag
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) flag
 set, then `dstSet`’s layout **must** also have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` flag
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) flag
 set
 
 * 
 [](#VUID-VkCopyDescriptorSet-srcSet-04885) VUID-VkCopyDescriptorSet-srcSet-04885
 
 If `srcSet`’s layout was created without
-either the `VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT`
+either the [VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits)
 flag or
-the `VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT`
+the [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits)
 flag set, then `dstSet`’s layout **must** have been created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` flag
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#VkDescriptorSetLayoutCreateFlagBits) flag
 set
 
 * 
 [](#VUID-VkCopyDescriptorSet-srcSet-01920) VUID-VkCopyDescriptorSet-srcSet-01920
 
 If the descriptor pool from which `srcSet` was allocated was created
-with the `VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT` flag set,
+with the [VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](#VkDescriptorPoolCreateFlagBits) flag set,
 then the descriptor pool from which `dstSet` was allocated **must**
 also have been created with the
-`VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT` flag set
+[VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](#VkDescriptorPoolCreateFlagBits) flag set
 
 * 
 [](#VUID-VkCopyDescriptorSet-srcSet-04887) VUID-VkCopyDescriptorSet-srcSet-04887
 
 If the descriptor pool from which `srcSet` was allocated was created
 without
-either the `VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT` flag or
-the `VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT` flag set, then
+either the [VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT](#VkDescriptorPoolCreateFlagBits) flag or
+the [VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](#VkDescriptorPoolCreateFlagBits) flag set, then
 the descriptor pool from which `dstSet` was allocated **must** have
 been created without the
-`VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT` flag set
+[VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](#VkDescriptorPoolCreateFlagBits) flag set
 
 * 
 [](#VUID-VkCopyDescriptorSet-dstBinding-02753) VUID-VkCopyDescriptorSet-dstBinding-02753
 
 If the descriptor type of the descriptor set binding specified by
-`dstBinding` is `VK_DESCRIPTOR_TYPE_SAMPLER`, then `dstSet`
+`dstBinding` is [VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType), then `dstSet`
 **must** not have been allocated with a layout that included immutable
 samplers for `dstBinding`
 
@@ -5739,18 +5731,18 @@ samplers for `dstBinding`
 [](#VUID-VkCopyDescriptorSet-dstSet-04612) VUID-VkCopyDescriptorSet-dstSet-04612
 
 If `VkDescriptorSetLayoutBinding` for `dstSet` at
-`dstBinding` is `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, the new active
+`dstBinding` is [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType), the new active
 descriptor type **must** exist in the corresponding
 `pMutableDescriptorTypeLists` list for `dstBinding` if the new
-active descriptor type is not `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+active descriptor type is not [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType)
 
 * 
 [](#VUID-VkCopyDescriptorSet-srcSet-04613) VUID-VkCopyDescriptorSet-srcSet-04613
 
 If `VkDescriptorSetLayoutBinding` for `srcSet` at
-`srcBinding` is `VK_DESCRIPTOR_TYPE_MUTABLE_EXT` and the
+`srcBinding` is [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType) and the
 `VkDescriptorSetLayoutBinding` for `dstSet` at `dstBinding`
-is not `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, the active descriptor type
+is not [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType), the active descriptor type
 for the source descriptor **must** match the descriptor type of
 `dstBinding`
 
@@ -5758,8 +5750,8 @@ for the source descriptor **must** match the descriptor type of
 [](#VUID-VkCopyDescriptorSet-dstSet-04614) VUID-VkCopyDescriptorSet-dstSet-04614
 
 If `VkDescriptorSetLayoutBinding` for `dstSet` at
-`dstBinding` is `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, and the new
-active descriptor type is `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, the
+`dstBinding` is [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType), and the new
+active descriptor type is [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType), the
 `pMutableDescriptorTypeLists` for `srcBinding` and
 `dstBinding` **must** match exactly
 
@@ -5768,7 +5760,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCopyDescriptorSet-sType-sType) VUID-VkCopyDescriptorSet-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COPY_DESCRIPTOR_SET`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COPY_DESCRIPTOR_SET](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkCopyDescriptorSet-pNext-pNext) VUID-VkCopyDescriptorSet-pNext-pNext
@@ -5903,21 +5895,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The [VkDescriptorUpdateTemplateCreateInfo](#VkDescriptorUpdateTemplateCreateInfo) structure is defined as:
 
@@ -5960,10 +5952,10 @@ descriptors to be updated by the descriptor update template.
 
 * 
 `templateType` Specifies the type of the descriptor update template.
-If set to `VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET` it
+If set to [VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET](#VkDescriptorUpdateTemplateTypeKHR) it
 **can** only be used to update descriptor sets with a fixed
 `descriptorSetLayout`.
-If set to `VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS` it
+If set to [VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](#VkDescriptorUpdateTemplateTypeKHR) it
 **can** only be used to push descriptor sets using the provided
 `pipelineBindPoint`, `pipelineLayout`, and `set` number.
 
@@ -5974,7 +5966,7 @@ All descriptor sets which are going to be updated through the newly
 created descriptor update template **must** be created with a layout that
 matches (is the same as, or defined identically to) this layout.
 This parameter is ignored if `templateType` is not
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET`.
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET](#VkDescriptorUpdateTemplateTypeKHR).
 The implementation **must** not access this object outside of the duration
 of the command this structure is passed to.
 
@@ -5982,19 +5974,19 @@ of the command this structure is passed to.
 `pipelineBindPoint` is a [VkPipelineBindPoint](pipelines.html#VkPipelineBindPoint) indicating the
 type of the pipeline that will use the descriptors.
 This parameter is ignored if `templateType` is not
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS`
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](#VkDescriptorUpdateTemplateTypeKHR)
 
 * 
 `pipelineLayout` is a [VkPipelineLayout](#VkPipelineLayout) object used to program
 the bindings.
 This parameter is ignored if `templateType` is not
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS`
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](#VkDescriptorUpdateTemplateTypeKHR)
 
 * 
 `set` is the set number of the descriptor set in the pipeline layout
 that will be updated.
 This parameter is ignored if `templateType` is not
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS`
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](#VkDescriptorUpdateTemplateTypeKHR)
 
 Valid Usage
 
@@ -6002,7 +5994,7 @@ Valid Usage
 [](#VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-00350) VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-00350
 
 If `templateType` is
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET`,
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET](#VkDescriptorUpdateTemplateTypeKHR),
 `descriptorSetLayout` **must** be a valid `VkDescriptorSetLayout`
 handle
 
@@ -6010,7 +6002,7 @@ handle
 [](#VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-10355) VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-10355
 
 If `templateType` is
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS`,
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](#VkDescriptorUpdateTemplateTypeKHR),
 and the [VK_KHR_push_descriptor](../appendices/extensions.html#VK_KHR_push_descriptor) extension is not enabled,
 [`pushDescriptor`](features.html#features-pushDescriptor) **must** be enabled
 
@@ -6018,39 +6010,39 @@ and the [VK_KHR_push_descriptor](../appendices/extensions.html#VK_KHR_push_descr
 [](#VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-00351) VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-00351
 
 If `templateType` is
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS`,
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](#VkDescriptorUpdateTemplateTypeKHR),
 `pipelineBindPoint` **must** be a valid [VkPipelineBindPoint](pipelines.html#VkPipelineBindPoint) value
 
 * 
 [](#VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-00352) VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-00352
 
 If `templateType` is
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS`,
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](#VkDescriptorUpdateTemplateTypeKHR),
 `pipelineLayout` **must** be a valid `VkPipelineLayout` handle
 
 * 
 [](#VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-00353) VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-00353
 
 If `templateType` is
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS`, `set`
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](#VkDescriptorUpdateTemplateTypeKHR), `set`
 **must** be the unique set number in the pipeline layout that uses a
 descriptor set layout that was created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](#VkDescriptorSetLayoutCreateFlagBits)
 
 * 
 [](#VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-04615) VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-04615
 
 If `templateType` is
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET`,
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET](#VkDescriptorUpdateTemplateTypeKHR),
 `descriptorSetLayout` **must** not contain a binding with type
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDescriptorUpdateTemplateCreateInfo-sType-sType) VUID-VkDescriptorUpdateTemplateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDescriptorUpdateTemplateCreateInfo-pNext-pNext) VUID-VkDescriptorUpdateTemplateCreateInfo-pNext-pNext
@@ -6112,12 +6104,12 @@ typedef enum VkDescriptorUpdateTemplateType {
 typedef VkDescriptorUpdateTemplateType VkDescriptorUpdateTemplateTypeKHR;
 
 * 
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET` specifies that
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET](#VkDescriptorUpdateTemplateTypeKHR) specifies that
 the descriptor update template will be used for descriptor set updates
 only.
 
 * 
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS` specifies that
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](#VkDescriptorUpdateTemplateTypeKHR) specifies that
 the descriptor update template will be used for push descriptor updates
 only.
 
@@ -6145,7 +6137,7 @@ descriptor update template.
 `dstArrayElement` is the starting element in the array belonging to
 `dstBinding`.
 If the descriptor binding identified by `dstBinding` has a
-descriptor type of `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then
+descriptor type of [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) then
 `dstArrayElement` specifies the starting byte offset to update.
 
 * 
@@ -6154,7 +6146,7 @@ If `descriptorCount` is greater than the number of remaining array
 elements in the destination binding, those affect consecutive bindings
 in a manner similar to [VkWriteDescriptorSet](#VkWriteDescriptorSet) above.
 If the descriptor binding identified by `dstBinding` has a
-descriptor type of `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then
+descriptor type of [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType) then
 `descriptorCount` specifies the number of bytes to update and the
 remaining array elements in the destination binding refer to the
 remaining number of bytes in it.
@@ -6177,7 +6169,7 @@ computed using the following formula:
 
 The stride is useful in case the bindings are stored in structs along with
 other data.
-If `descriptorType` is `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+If `descriptorType` is [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType)
 then the value of `stride` is ignored and the stride is assumed to be
 `1`, i.e. the descriptor update information for them is always specified as
 a contiguous range.
@@ -6203,14 +6195,14 @@ descriptors, and all applicable [    consecutive bindings](#descriptorsets-updat
 [](#VUID-VkDescriptorUpdateTemplateEntry-descriptor-02226) VUID-VkDescriptorUpdateTemplateEntry-descriptor-02226
 
 If `descriptor` type is
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`, `dstArrayElement`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType), `dstArrayElement`
 **must** be an integer multiple of `4`
 
 * 
 [](#VUID-VkDescriptorUpdateTemplateEntry-descriptor-02227) VUID-VkDescriptorUpdateTemplateEntry-descriptor-02227
 
 If `descriptor` type is
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`, `descriptorCount`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType), `descriptorCount`
 **must** be an integer multiple of `4`
 
 Valid Usage (Implicit)
@@ -6528,11 +6520,14 @@ If the [`nullDescriptor`](features.html#features-nullDescriptor) feature is enab
 a null descriptor is also considered valid.
 A descriptor that was disturbed by [Pipeline Layout Compatibility](#descriptorsets-compatibility), or was never bound by `vkCmdBindDescriptorSets`
 is not considered valid.
-If a pipeline accesses a descriptor either statically or dynamically
-depending on the [VkDescriptorBindingFlagBits](#VkDescriptorBindingFlagBits), the consuming descriptor
-type in the pipeline **must** match the [VkDescriptorType](#VkDescriptorType) in
-[VkDescriptorSetLayoutCreateInfo](#VkDescriptorSetLayoutCreateInfo) for the descriptor to be considered
-valid.
+For any given descriptor, [VkDescriptorBindingFlagBits](#VkDescriptorBindingFlagBits) and
+[VkDescriptorSetLayoutCreateFlagBits](#VkDescriptorSetLayoutCreateFlagBits) determine if validity is defined
+in terms of the descriptor being statically accessed, or dynamically
+accessed.
+If the descriptor is determined to be accessed by the appropriate
+definition, the consuming descriptor type in the pipeline **must** match the
+[VkDescriptorType](#VkDescriptorType) in [VkDescriptorSetLayoutCreateInfo](#VkDescriptorSetLayoutCreateInfo) for the
+descriptor to be considered valid.
 If a descriptor is a mutable descriptor, the consuming descriptor type in
 the pipeline **must** match the active descriptor type for the descriptor to be
 considered valid.
@@ -6568,7 +6563,7 @@ The descriptor set contents bound by a call to `vkCmdBindDescriptorSets`
 
 * 
 For descriptor bindings created with the
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` bit set, the contents
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT) bit set, the contents
 **may** be consumed when the command buffer is submitted to a queue, or
 during shader execution of the resulting draws and dispatches, or any
 time in between.
@@ -6589,6 +6584,22 @@ Once all pending uses have completed, it is legal to update and reuse a
 descriptor set.
 
 Valid Usage
+
+* 
+[](#VUID-vkCmdBindDescriptorSets-commandBuffer-11295) VUID-vkCmdBindDescriptorSets-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdBindDescriptorSets-commandBuffer-11296) VUID-vkCmdBindDescriptorSets-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pResourceHeapBindInfo`
+equal to `NULL`
 
 * 
 [](#VUID-vkCmdBindDescriptorSets-pDescriptorSets-00358) VUID-vkCmdBindDescriptorSets-pDescriptorSets-00358
@@ -6617,7 +6628,7 @@ provided when `layout` was created
 [](#VUID-vkCmdBindDescriptorSets-pDynamicOffsets-01971) VUID-vkCmdBindDescriptorSets-pDynamicOffsets-01971
 
 Each element of `pDynamicOffsets` which corresponds to a descriptor
-binding with type `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` **must**
+binding with type [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType) **must**
 be a multiple of
 `VkPhysicalDeviceLimits`::`minUniformBufferOffsetAlignment`
 
@@ -6625,7 +6636,7 @@ be a multiple of
 [](#VUID-vkCmdBindDescriptorSets-pDynamicOffsets-01972) VUID-vkCmdBindDescriptorSets-pDynamicOffsets-01972
 
 Each element of `pDynamicOffsets` which corresponds to a descriptor
-binding with type `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` **must**
+binding with type [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType) **must**
 be a multiple of
 `VkPhysicalDeviceLimits`::`minStorageBufferOffsetAlignment`
 
@@ -6640,7 +6651,7 @@ equal to the size of the buffer
 [](#VUID-vkCmdBindDescriptorSets-pDescriptorSets-06715) VUID-vkCmdBindDescriptorSets-pDescriptorSets-06715
 
 For each dynamic uniform or storage buffer binding in
-`pDescriptorSets`, if the range was set with `VK_WHOLE_SIZE`
+`pDescriptorSets`, if the range was set with [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE)
 then `pDynamicOffsets` which corresponds to the descriptor binding
 **must** be 0
 
@@ -6649,7 +6660,7 @@ then `pDynamicOffsets` which corresponds to the descriptor binding
 
 Each element of `pDescriptorSets` **must** not have been allocated from
 a `VkDescriptorPool` with the
-`VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT` flag set
+[VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT](#VkDescriptorPoolCreateFlagBits) flag set
 
 * 
 [](#VUID-vkCmdBindDescriptorSets-pDescriptorSets-06563) VUID-vkCmdBindDescriptorSets-pDescriptorSets-06563
@@ -6662,7 +6673,7 @@ element of `pDescriptorSets` **must** be a valid [VkDescriptorSet](#VkDescriptor
 
 Each element of `pDescriptorSets` **must** have been allocated with a
 `VkDescriptorSetLayout` which was not created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits)
 
 * 
 [](#VUID-vkCmdBindDescriptorSets-pDescriptorSets-09914) VUID-vkCmdBindDescriptorSets-pDescriptorSets-09914
@@ -6732,7 +6743,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindDescriptorSets-commandBuffer-cmdpool) VUID-vkCmdBindDescriptorSets-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_DATA_GRAPH_BIT_ARM`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_DATA_GRAPH_BIT_ARM](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBindDescriptorSets-videocoding) VUID-vkCmdBindDescriptorSets-videocoding
@@ -6796,6 +6807,22 @@ be bound to.
 Valid Usage
 
 * 
+[](#VUID-vkCmdBindDescriptorSets2-commandBuffer-11295) VUID-vkCmdBindDescriptorSets2-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdBindDescriptorSets2-commandBuffer-11296) VUID-vkCmdBindDescriptorSets2-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pResourceHeapBindInfo`
+equal to `NULL`
+
+* 
 [](#VUID-vkCmdBindDescriptorSets2-pBindDescriptorSetsInfo-09467) VUID-vkCmdBindDescriptorSets2-pBindDescriptorSetsInfo-09467
 
 Each bit in `pBindDescriptorSetsInfo->stageFlags` **must** be a stage
@@ -6822,7 +6849,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindDescriptorSets2-commandBuffer-cmdpool) VUID-vkCmdBindDescriptorSets2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBindDescriptorSets2-videocoding) VUID-vkCmdBindDescriptorSets2-videocoding
@@ -6913,10 +6940,10 @@ more pipeline bind points, the binding operation still affects all stages
 corresponding to the given pipeline bind point(s) as if the equivalent
 original version of this command had been called with the same parameters.
 For example, specifying a `stageFlags` value of
-`VK_SHADER_STAGE_VERTEX_BIT` | `VK_SHADER_STAGE_FRAGMENT_BIT` |
-`VK_SHADER_STAGE_COMPUTE_BIT` is equivalent to calling the original
-version of this command once with `VK_PIPELINE_BIND_POINT_GRAPHICS` and
-once with `VK_PIPELINE_BIND_POINT_COMPUTE`.
+[VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits) | [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits) |
+[VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits) is equivalent to calling the original
+version of this command once with [VK_PIPELINE_BIND_POINT_GRAPHICS](pipelines.html#VkPipelineBindPoint) and
+once with [VK_PIPELINE_BIND_POINT_COMPUTE](pipelines.html#VkPipelineBindPoint).
 
 Valid Usage
 
@@ -6947,7 +6974,7 @@ provided when `layout` was created
 [](#VUID-VkBindDescriptorSetsInfo-pDynamicOffsets-01971) VUID-VkBindDescriptorSetsInfo-pDynamicOffsets-01971
 
 Each element of `pDynamicOffsets` which corresponds to a descriptor
-binding with type `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` **must**
+binding with type [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType) **must**
 be a multiple of
 `VkPhysicalDeviceLimits`::`minUniformBufferOffsetAlignment`
 
@@ -6955,7 +6982,7 @@ be a multiple of
 [](#VUID-VkBindDescriptorSetsInfo-pDynamicOffsets-01972) VUID-VkBindDescriptorSetsInfo-pDynamicOffsets-01972
 
 Each element of `pDynamicOffsets` which corresponds to a descriptor
-binding with type `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` **must**
+binding with type [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType) **must**
 be a multiple of
 `VkPhysicalDeviceLimits`::`minStorageBufferOffsetAlignment`
 
@@ -6970,7 +6997,7 @@ equal to the size of the buffer
 [](#VUID-VkBindDescriptorSetsInfo-pDescriptorSets-06715) VUID-VkBindDescriptorSetsInfo-pDescriptorSets-06715
 
 For each dynamic uniform or storage buffer binding in
-`pDescriptorSets`, if the range was set with `VK_WHOLE_SIZE`
+`pDescriptorSets`, if the range was set with [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE)
 then `pDynamicOffsets` which corresponds to the descriptor binding
 **must** be 0
 
@@ -6979,7 +7006,7 @@ then `pDynamicOffsets` which corresponds to the descriptor binding
 
 Each element of `pDescriptorSets` **must** not have been allocated from
 a `VkDescriptorPool` with the
-`VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT` flag set
+[VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT](#VkDescriptorPoolCreateFlagBits) flag set
 
 * 
 [](#VUID-VkBindDescriptorSetsInfo-pDescriptorSets-06563) VUID-VkBindDescriptorSetsInfo-pDescriptorSets-06563
@@ -6992,7 +7019,7 @@ element of `pDescriptorSets` **must** be a valid [VkDescriptorSet](#VkDescriptor
 
 Each element of `pDescriptorSets` **must** have been allocated with a
 `VkDescriptorSetLayout` which was not created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits)
 
 * 
 [](#VUID-VkBindDescriptorSetsInfo-pDescriptorSets-09914) VUID-VkBindDescriptorSetsInfo-pDescriptorSets-09914
@@ -7039,7 +7066,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindDescriptorSetsInfo-sType-sType) VUID-VkBindDescriptorSetsInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_SETS_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_SETS_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBindDescriptorSetsInfo-pNext-pNext) VUID-VkBindDescriptorSetsInfo-pNext-pNext
@@ -7171,15 +7198,31 @@ Each element of `pDescriptorWrites` is interpreted as in
 To push an immutable sampler, use a [VkWriteDescriptorSet](#VkWriteDescriptorSet) with
 `dstBinding` and `dstArrayElement` selecting the immutable sampler’s
 binding.
-If the descriptor type is `VK_DESCRIPTOR_TYPE_SAMPLER`, the
+If the descriptor type is [VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType), the
 `pImageInfo` parameter is ignored and the immutable sampler is taken
 from the push descriptor set layout in the pipeline layout.
-If the descriptor type is `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
+If the descriptor type is [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType),
 the `sampler` member of the `pImageInfo` parameter is ignored and
 the immutable sampler is taken from the push descriptor set layout in the
 pipeline layout.
 
 Valid Usage
+
+* 
+[](#VUID-vkCmdPushDescriptorSet-commandBuffer-11295) VUID-vkCmdPushDescriptorSet-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdPushDescriptorSet-commandBuffer-11296) VUID-vkCmdPushDescriptorSet-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pResourceHeapBindInfo`
+equal to `NULL`
 
 * 
 [](#VUID-vkCmdPushDescriptorSet-set-00364) VUID-vkCmdPushDescriptorSet-set-00364
@@ -7193,18 +7236,18 @@ Valid Usage
 
 `set` **must** be the unique set number in the pipeline layout that
 uses a descriptor set layout that was created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](#VkDescriptorSetLayoutCreateFlagBits)
 
 * 
 [](#VUID-vkCmdPushDescriptorSet-pDescriptorWrites-06494) VUID-vkCmdPushDescriptorSet-pDescriptorWrites-06494
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`,
+[VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType),
 `pDescriptorWrites`[i].`pImageInfo` **must** be a valid pointer to
 an array of `pDescriptorWrites`[i].`descriptorCount` valid
 `VkDescriptorImageInfo` structures
@@ -7251,7 +7294,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdPushDescriptorSet-commandBuffer-cmdpool) VUID-vkCmdPushDescriptorSet-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdPushDescriptorSet-videocoding) VUID-vkCmdPushDescriptorSet-videocoding
@@ -7313,6 +7356,22 @@ recorded in.
 Valid Usage
 
 * 
+[](#VUID-vkCmdPushDescriptorSet2-commandBuffer-11295) VUID-vkCmdPushDescriptorSet2-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdPushDescriptorSet2-commandBuffer-11296) VUID-vkCmdPushDescriptorSet2-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pResourceHeapBindInfo`
+equal to `NULL`
+
+* 
 [](#VUID-vkCmdPushDescriptorSet2-pPushDescriptorSetInfo-09468) VUID-vkCmdPushDescriptorSet2-pPushDescriptorSetInfo-09468
 
 Each bit in `pPushDescriptorSetInfo->stageFlags` **must** be a stage
@@ -7345,7 +7404,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdPushDescriptorSet2-commandBuffer-cmdpool) VUID-vkCmdPushDescriptorSet2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdPushDescriptorSet2-videocoding) VUID-vkCmdPushDescriptorSet2-videocoding
@@ -7427,10 +7486,10 @@ more pipeline bind points, the binding operation still affects all stages
 corresponding to the given pipeline bind point(s) as if the equivalent
 original version of this command had been called with the same parameters.
 For example, specifying a `stageFlags` value of
-`VK_SHADER_STAGE_VERTEX_BIT` | `VK_SHADER_STAGE_FRAGMENT_BIT` |
-`VK_SHADER_STAGE_COMPUTE_BIT` is equivalent to calling the original
-version of this command once with `VK_PIPELINE_BIND_POINT_GRAPHICS` and
-once with `VK_PIPELINE_BIND_POINT_COMPUTE`.
+[VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits) | [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits) |
+[VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits) is equivalent to calling the original
+version of this command once with [VK_PIPELINE_BIND_POINT_GRAPHICS](pipelines.html#VkPipelineBindPoint) and
+once with [VK_PIPELINE_BIND_POINT_COMPUTE](pipelines.html#VkPipelineBindPoint).
 
 Valid Usage
 
@@ -7446,18 +7505,18 @@ Valid Usage
 
 `set` **must** be the unique set number in the pipeline layout that
 uses a descriptor set layout that was created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](#VkDescriptorSetLayoutCreateFlagBits)
 
 * 
 [](#VUID-VkPushDescriptorSetInfo-pDescriptorWrites-06494) VUID-VkPushDescriptorSetInfo-pDescriptorWrites-06494
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`,
+[VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType),
 `pDescriptorWrites`[i].`pImageInfo` **must** be a valid pointer to
 an array of `pDescriptorWrites`[i].`descriptorCount` valid
 `VkDescriptorImageInfo` structures
@@ -7480,7 +7539,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPushDescriptorSetInfo-sType-sType) VUID-VkPushDescriptorSetInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPushDescriptorSetInfo-pNext-pNext) VUID-VkPushDescriptorSetInfo-pNext-pNext
@@ -7564,6 +7623,22 @@ templated update.
 Valid Usage
 
 * 
+[](#VUID-vkCmdPushDescriptorSetWithTemplate-commandBuffer-11295) VUID-vkCmdPushDescriptorSetWithTemplate-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdPushDescriptorSetWithTemplate-commandBuffer-11296) VUID-vkCmdPushDescriptorSetWithTemplate-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pResourceHeapBindInfo`
+equal to `NULL`
+
+* 
 [](#VUID-vkCmdPushDescriptorSetWithTemplate-commandBuffer-00366) VUID-vkCmdPushDescriptorSetWithTemplate-commandBuffer-00366
 
 The `pipelineBindPoint` specified during the creation of the
@@ -7590,7 +7665,7 @@ by `descriptorUpdateTemplate` when it was created with
 
 `descriptorUpdateTemplate` **must** have been created with a
 `templateType` of
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS`
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](#VkDescriptorUpdateTemplateTypeKHR)
 
 * 
 [](#VUID-vkCmdPushDescriptorSetWithTemplate-set-07995) VUID-vkCmdPushDescriptorSetWithTemplate-set-07995
@@ -7616,7 +7691,7 @@ by `descriptorUpdateTemplate` when it was created with
 
 `set` **must** be the unique set number in the pipeline layout that
 uses a descriptor set layout that was created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](#VkDescriptorSetLayoutCreateFlagBits)
 
 * 
 [](#VUID-vkCmdPushDescriptorSetWithTemplate-None-10358) VUID-vkCmdPushDescriptorSetWithTemplate-None-10358
@@ -7649,7 +7724,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdPushDescriptorSetWithTemplate-commandBuffer-cmdpool) VUID-vkCmdPushDescriptorSetWithTemplate-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdPushDescriptorSetWithTemplate-videocoding) VUID-vkCmdPushDescriptorSetWithTemplate-videocoding
@@ -7751,6 +7826,24 @@ recorded in.
 `pPushDescriptorSetWithTemplateInfo` is a pointer to a
 `VkPushDescriptorSetWithTemplateInfo` structure.
 
+Valid Usage
+
+* 
+[](#VUID-vkCmdPushDescriptorSetWithTemplate2-commandBuffer-11295) VUID-vkCmdPushDescriptorSetWithTemplate2-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdPushDescriptorSetWithTemplate2-commandBuffer-11296) VUID-vkCmdPushDescriptorSetWithTemplate2-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pResourceHeapBindInfo`
+equal to `NULL`
+
 Valid Usage (Implicit)
 
 * 
@@ -7771,7 +7864,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdPushDescriptorSetWithTemplate2-commandBuffer-cmdpool) VUID-vkCmdPushDescriptorSetWithTemplate2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdPushDescriptorSetWithTemplate2-videocoding) VUID-vkCmdPushDescriptorSetWithTemplate2-videocoding
@@ -7875,7 +7968,7 @@ by `descriptorUpdateTemplate` when it was created with
 
 `descriptorUpdateTemplate` **must** have been created with a
 `templateType` of
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS`
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](#VkDescriptorUpdateTemplateTypeKHR)
 
 * 
 [](#VUID-VkPushDescriptorSetWithTemplateInfo-set-07995) VUID-VkPushDescriptorSetWithTemplateInfo-set-07995
@@ -7901,7 +7994,7 @@ by `descriptorUpdateTemplate` when it was created with
 
 `set` **must** be the unique set number in the pipeline layout that
 uses a descriptor set layout that was created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](#VkDescriptorSetLayoutCreateFlagBits)
 
 * 
 [](#VUID-VkPushDescriptorSetWithTemplateInfo-None-09495) VUID-VkPushDescriptorSetWithTemplateInfo-None-09495
@@ -7927,7 +8020,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPushDescriptorSetWithTemplateInfo-sType-sType) VUID-VkPushDescriptorSetWithTemplateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_WITH_TEMPLATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_WITH_TEMPLATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPushDescriptorSetWithTemplateInfo-pNext-pNext) VUID-VkPushDescriptorSetWithTemplateInfo-pNext-pNext
@@ -8027,6 +8120,22 @@ created on are ignored. |
 Valid Usage
 
 * 
+[](#VUID-vkCmdPushConstants-commandBuffer-11295) VUID-vkCmdPushConstants-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdPushConstants-commandBuffer-11296) VUID-vkCmdPushConstants-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pResourceHeapBindInfo`
+equal to `NULL`
+
+* 
 [](#VUID-vkCmdPushConstants-offset-01795) VUID-vkCmdPushConstants-offset-01795
 
 For each byte in the range specified by `offset` and `size` and
@@ -8099,7 +8208,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdPushConstants-commandBuffer-cmdpool) VUID-vkCmdPushConstants-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdPushConstants-videocoding) VUID-vkCmdPushConstants-videocoding
@@ -8158,6 +8267,24 @@ update will be recorded.
 `pPushConstantsInfo` is a pointer to a [VkPushConstantsInfo](#VkPushConstantsInfo)
 structure.
 
+Valid Usage
+
+* 
+[](#VUID-vkCmdPushConstants2-commandBuffer-11295) VUID-vkCmdPushConstants2-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdPushConstants2-commandBuffer-11296) VUID-vkCmdPushConstants2-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pResourceHeapBindInfo`
+equal to `NULL`
+
 Valid Usage (Implicit)
 
 * 
@@ -8178,7 +8305,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdPushConstants2-commandBuffer-cmdpool) VUID-vkCmdPushConstants2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdPushConstants2-videocoding) VUID-vkCmdPushConstants2-videocoding
@@ -8312,12 +8439,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPushConstantsInfo-sType-sType) VUID-VkPushConstantsInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PUSH_CONSTANTS_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PUSH_CONSTANTS_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPushConstantsInfo-pNext-pNext) VUID-VkPushConstantsInfo-pNext-pNext
 
- `pNext` **must** be `NULL` or a pointer to a valid instance of [VkPipelineLayoutCreateInfo](#VkPipelineLayoutCreateInfo)
+ Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkPipelineLayoutCreateInfo](#VkPipelineLayoutCreateInfo) or [VkPushConstantBankInfoNV](descriptorheaps.html#VkPushConstantBankInfoNV)
 
 * 
 [](#VUID-VkPushConstantsInfo-sType-unique) VUID-VkPushConstantsInfo-sType-unique
@@ -8397,11 +8524,11 @@ layout’s offsets as obtained by
 [vkGetDescriptorSetLayoutBindingOffsetEXT](#vkGetDescriptorSetLayoutBindingOffsetEXT).
 
 If any `binding` in `layout` is
-`VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT`, the returned size
+[VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](#VkDescriptorBindingFlagBitsEXT), the returned size
 includes space for the maximum `descriptorCount` descriptors as declared
 for that `binding`.
 To compute the required size of a descriptor set with a
-`VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT`:
+[VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](#VkDescriptorBindingFlagBitsEXT):
 
 size = offset + descriptorSize ×
 variableDescriptorCount
@@ -8412,14 +8539,14 @@ the size of the relevant descriptor as obtained from
 [VkPhysicalDeviceDescriptorBufferPropertiesEXT](limits.html#VkPhysicalDeviceDescriptorBufferPropertiesEXT), and
 variableDescriptorCount is the equivalent of
 [VkDescriptorSetVariableDescriptorCountAllocateInfo](#VkDescriptorSetVariableDescriptorCountAllocateInfo)::`pDescriptorCounts`.
-For `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`,
+For [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType),
 variableDescriptorCount is the size in bytes for the inline uniform
 block, and descriptorSize is 1.
 
 If
 [VkPhysicalDeviceDescriptorBufferPropertiesEXT](limits.html#VkPhysicalDeviceDescriptorBufferPropertiesEXT)::`combinedImageSamplerDescriptorSingleArray`
-is `VK_FALSE` and the variable descriptor type is
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
+is [VK_FALSE](fundamentals.html#VK_FALSE) and the variable descriptor type is
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType),
 variableDescriptorCount is always considered to be the upper bound.
 
 Valid Usage
@@ -8434,19 +8561,19 @@ be enabled
 [](#VUID-vkGetDescriptorSetLayoutSizeEXT-layout-08012) VUID-vkGetDescriptorSetLayoutSizeEXT-layout-08012
 
 `layout` **must** have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT` flag set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits) flag set
 
 * 
 [](#VUID-vkGetDescriptorSetLayoutSizeEXT-layout-11811) VUID-vkGetDescriptorSetLayoutSizeEXT-layout-11811
 
 `layout` **must** have not been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT` flag set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](#VkDescriptorSetLayoutCreateFlagBits) flag set
 
 * 
 [](#VUID-vkGetDescriptorSetLayoutSizeEXT-layout-11812) VUID-vkGetDescriptorSetLayoutSizeEXT-layout-11812
 
 `layout` **must** have not been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits)
 flag set
 
 Valid Usage (Implicit)
@@ -8524,10 +8651,10 @@ for samplers and
 for resources.
 
 If any `binding` in `layout` is
-`VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT`, that
+[VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](#VkDescriptorBindingFlagBitsEXT), that
 `binding` **must** have the largest offset of any `binding`.
 
-A descriptor `binding` with type `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+A descriptor `binding` with type [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](#VkDescriptorType)
 **can** be used.
 Any potential types in
 [VkMutableDescriptorTypeCreateInfoEXT](#VkMutableDescriptorTypeCreateInfoEXT)::`pDescriptorTypes` for
@@ -8548,19 +8675,19 @@ be enabled
 [](#VUID-vkGetDescriptorSetLayoutBindingOffsetEXT-layout-08014) VUID-vkGetDescriptorSetLayoutBindingOffsetEXT-layout-08014
 
 `layout` **must** have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT` flag set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits) flag set
 
 * 
 [](#VUID-vkGetDescriptorSetLayoutBindingOffsetEXT-layout-11813) VUID-vkGetDescriptorSetLayoutBindingOffsetEXT-layout-11813
 
 `layout` **must** have not been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT` flag set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](#VkDescriptorSetLayoutCreateFlagBits) flag set
 
 * 
 [](#VUID-vkGetDescriptorSetLayoutBindingOffsetEXT-layout-11814) VUID-vkGetDescriptorSetLayoutBindingOffsetEXT-layout-11814
 
 `layout` **must** have not been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits)
 flag set
 
 Valid Usage (Implicit)
@@ -8615,8 +8742,8 @@ type.
 
 If the
 [VkPhysicalDeviceDescriptorBufferPropertiesEXT](limits.html#VkPhysicalDeviceDescriptorBufferPropertiesEXT)::`combinedImageSamplerDescriptorSingleArray`
-property is `VK_FALSE` the implementation requires an array of
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` descriptors to be written
+property is [VK_FALSE](fundamentals.html#VK_FALSE) the implementation requires an array of
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) descriptors to be written
 into a descriptor buffer as an array of image descriptors, immediately
 followed by an array of sampler descriptors.
 Applications **must** write the first
@@ -8626,7 +8753,7 @@ the remaining
 [VkPhysicalDeviceDescriptorBufferPropertiesEXT](limits.html#VkPhysicalDeviceDescriptorBufferPropertiesEXT)::`samplerDescriptorSize`
 bytes of the data to the second array.
 For variable-sized descriptor bindings of
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` descriptors, the two arrays
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) descriptors, the two arrays
 each have a size equal to the upper bound `descriptorCount` of that
 binding.
 
@@ -8648,7 +8775,7 @@ be enabled
 [](#VUID-vkGetDescriptorEXT-dataSize-08125) VUID-vkGetDescriptorEXT-dataSize-08125
 
 If `pDescriptorInfo->type` is not
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) or
 `pDescriptorInfo->data.pCombinedImageSampler` has an `imageView`
 member that was not created with a `VkSamplerYcbcrConversionInfo`
 structure in its `pNext` chain,
@@ -8658,14 +8785,14 @@ structure in its `pNext` chain,
 , or determined by
 [VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT](limits.html#VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT)::`combinedImageSamplerDensityMapDescriptorSize`
 if `pDescriptorInfo` specifies a
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` whose [VkSampler](samplers.html#VkSampler)
-was created with `VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT` set
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) whose [VkSampler](samplers.html#VkSampler)
+was created with [VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT](samplers.html#VkSamplerCreateFlagBits) set
 
 * 
 [](#VUID-vkGetDescriptorEXT-descriptorType-09469) VUID-vkGetDescriptorEXT-descriptorType-09469
 
 If `pDescriptorInfo->type` is
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` and
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) and
 `pDescriptorInfo->data.pCombinedImageSampler` has an `imageView`
 member that was created with a `VkSamplerYcbcrConversionInfo`
 structure in its `pNext` chain, `dataSize` **must** equal the size
@@ -8678,7 +8805,7 @@ times
 [](#VUID-vkGetDescriptorEXT-pDescriptorInfo-09507) VUID-vkGetDescriptorEXT-pDescriptorInfo-09507
 
 If `pDescriptorInfo->type` is
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` and it has a
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) and it has a
 `imageView` that is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) then `dataSize` **must**
 be equal to the size of
 [VkPhysicalDeviceDescriptorBufferPropertiesEXT](limits.html#VkPhysicalDeviceDescriptorBufferPropertiesEXT)::`combinedImageSamplerDescriptorSize`
@@ -8735,35 +8862,35 @@ Valid Usage
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-08018) VUID-VkDescriptorGetInfoEXT-type-08018
 
-`type` **must** not be `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`,
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` or
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+`type` **must** not be [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](#VkDescriptorType)
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-08019) VUID-VkDescriptorGetInfoEXT-type-08019
 
-If `type` is `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, the
+If `type` is [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType), the
 `pCombinedImageSampler->sampler` member of `data` **must** be a
 [VkSampler](samplers.html#VkSampler) created on `device`
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-08020) VUID-VkDescriptorGetInfoEXT-type-08020
 
-If `type` is `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, the
+If `type` is [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType), the
 `pCombinedImageSampler->imageView` member of `data` **must** be a
 [VkImageView](resources.html#VkImageView) created on `device`, or [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-08021) VUID-VkDescriptorGetInfoEXT-type-08021
 
-If `type` is `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`, the
+If `type` is [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType), the
 `pInputAttachmentImage->imageView` member of `data` **must** be a
 [VkImageView](resources.html#VkImageView) created on `device`
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-08022) VUID-VkDescriptorGetInfoEXT-type-08022
 
-If `type` is `VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, and if
+If `type` is [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType), and if
 `pSampledImage` is not `NULL`, the `pSampledImage->imageView`
 member of `data` **must** be a [VkImageView](resources.html#VkImageView) created on
 `device`, or [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
@@ -8771,49 +8898,15 @@ member of `data` **must** be a [VkImageView](resources.html#VkImageView) created
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-08023) VUID-VkDescriptorGetInfoEXT-type-08023
 
-If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, and if
+If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType), and if
 `pStorageImage` is not `NULL`, the `pStorageImage->imageView`
 member of `data` **must** be a [VkImageView](resources.html#VkImageView) created on
 `device`, or [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
-[](#VUID-VkDescriptorGetInfoEXT-type-08024) VUID-VkDescriptorGetInfoEXT-type-08024
-
-If `type` is `VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`,
-`pUniformTexelBuffer` is not `NULL` and
-`pUniformTexelBuffer->address` is not zero,
-`pUniformTexelBuffer->address` **must** be an address within a
-[VkBuffer](resources.html#VkBuffer) created on `device`
-
-* 
-[](#VUID-VkDescriptorGetInfoEXT-type-08025) VUID-VkDescriptorGetInfoEXT-type-08025
-
-If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`,
-`pStorageTexelBuffer` is not `NULL` and
-`pStorageTexelBuffer->address` is not zero,
-`pStorageTexelBuffer->address` **must** be an address within a
-[VkBuffer](resources.html#VkBuffer) created on `device`
-
-* 
-[](#VUID-VkDescriptorGetInfoEXT-type-08026) VUID-VkDescriptorGetInfoEXT-type-08026
-
-If `type` is `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`,
-`pUniformBuffer` is not `NULL` and `pUniformBuffer->address` is
-not zero, `pUniformBuffer->address` **must** be an address within a
-[VkBuffer](resources.html#VkBuffer) created on `device`
-
-* 
-[](#VUID-VkDescriptorGetInfoEXT-type-08027) VUID-VkDescriptorGetInfoEXT-type-08027
-
-If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`,
-`pStorageBuffer` is not `NULL` and `pStorageBuffer->address` is
-not zero, `pStorageBuffer->address` **must** be an address within a
-[VkBuffer](resources.html#VkBuffer) created on `device`
-
-* 
 [](#VUID-VkDescriptorGetInfoEXT-type-09427) VUID-VkDescriptorGetInfoEXT-type-09427
 
-If `type` is `VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`,
+If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType),
 `pUniformBuffer` is not `NULL` , the number of texel buffer elements
 given by (⌊`pUniformBuffer->range` / (texel block
 size)⌋ × (texels per block)) where texel block size and
@@ -8824,7 +8917,7 @@ less than or equal to
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-09428) VUID-VkDescriptorGetInfoEXT-type-09428
 
-If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`,
+If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType),
 `pStorageBuffer` is not `NULL` , the number of texel buffer elements
 given by (⌊`pStorageBuffer->range` / (texel block
 size)⌋ × (texels per block)) where texel block size and
@@ -8835,7 +8928,7 @@ less than or equal to
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-08028) VUID-VkDescriptorGetInfoEXT-type-08028
 
-If `type` is `VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR` and
+If `type` is [VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](#VkDescriptorType) and
 `accelerationStructure` is not `0`, `accelerationStructure`
 **must** contain the address of a [VkAccelerationStructureKHR](resources.html#VkAccelerationStructureKHR) created
 on `device`
@@ -8843,7 +8936,7 @@ on `device`
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-08029) VUID-VkDescriptorGetInfoEXT-type-08029
 
-If `type` is `VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV` and
+If `type` is [VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](#VkDescriptorType) and
 `accelerationStructure` is not `0`, `accelerationStructure`
 **must** contain the handle of a [VkAccelerationStructureNV](resources.html#VkAccelerationStructureNV) created on
 `device`, returned by [vkGetAccelerationStructureHandleNV](resources.html#vkGetAccelerationStructureHandleNV)
@@ -8851,87 +8944,153 @@ If `type` is `VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV` and
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-09701) VUID-VkDescriptorGetInfoEXT-type-09701
 
-If `type` is `VK_DESCRIPTOR_TYPE_TENSOR_ARM`, a
+If `type` is [VK_DESCRIPTOR_TYPE_TENSOR_ARM](#VkDescriptorType), a
 [VkDescriptorGetTensorInfoARM](#VkDescriptorGetTensorInfoARM) structure **must** be included in the
 `pNext` chain and `data` is ignored
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-12216) VUID-VkDescriptorGetInfoEXT-type-12216
 
-If `type` is `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` and
+If `type` is [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) and
 `pCombinedImageSampler->imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the
 `pCombinedImageSampler->imageView` member of `data` **must** have
-been created with `VK_IMAGE_USAGE_SAMPLED_BIT` set
+been created with [VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits) set
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-12217) VUID-VkDescriptorGetInfoEXT-type-12217
 
-If `type` is `VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
+If `type` is [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType),
 `pSampledImage` is not `NULL`, and `pSampledImage->imageView` is
 not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the `pSampledImage->imageView` member of
-`data` **must** have been created with `VK_IMAGE_USAGE_SAMPLED_BIT`
+`data` **must** have been created with [VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits)
 set
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-12218) VUID-VkDescriptorGetInfoEXT-type-12218
 
-If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`,
+If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType),
 `pStorageImage` is not `NULL`, and `pStorageImage->imageView` is
 not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the `pStorageImage->imageView` member of
-`data` **must** have been created with `VK_IMAGE_USAGE_STORAGE_BIT`
+`data` **must** have been created with [VK_IMAGE_USAGE_STORAGE_BIT](resources.html#VkImageUsageFlagBits)
 set
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-12219) VUID-VkDescriptorGetInfoEXT-type-12219
 
-If `type` is `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`, the
+If `type` is [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType), the
 `pInputAttachmentImage->imageView` member of `data` **must** have
-been created with `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` set
+been created with [VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) set
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-12220) VUID-VkDescriptorGetInfoEXT-type-12220
 
-If `type` is `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`,
+If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType),
 `pUniformBuffer` is not `NULL` and `pUniformBuffer->address` is
 not zero, `pUniformBuffer->address` **must** be a device address
 allocated to the application from a buffer created with the
-`VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-12221) VUID-VkDescriptorGetInfoEXT-type-12221
 
-If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`,
+If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType),
 `pStorageBuffer` is not `NULL` and `pStorageBuffer->address` is
 not zero, `pStorageBuffer->address` **must** be a device address
 allocated to the application from a buffer created with the
-`VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-12222) VUID-VkDescriptorGetInfoEXT-type-12222
 
-If `type` is `VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`,
+If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType),
 `pUniformTexelBuffer` is not `NULL` and
 `pUniformTexelBuffer->address` is not zero,
 `pUniformTexelBuffer->address` **must** be a device address allocated
 to the application from a buffer created with the
-`VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-12223) VUID-VkDescriptorGetInfoEXT-type-12223
 
-If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`,
+If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType),
 `pStorageTexelBuffer` is not `NULL` and
 `pStorageTexelBuffer->address` is not zero,
 `pStorageTexelBuffer->address` **must** be a device address allocated
 to the application from a buffer created with the
-`VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-VkDescriptorGetInfoEXT-type-12265) VUID-VkDescriptorGetInfoEXT-type-12265
+
+If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType) and
+`pUniformBuffer` is not `NULL`, `pUniformBuffer->address` **must**
+be aligned to
+`VkPhysicalDeviceLimits`::`minUniformBufferOffsetAlignment`
+
+* 
+[](#VUID-VkDescriptorGetInfoEXT-type-12266) VUID-VkDescriptorGetInfoEXT-type-12266
+
+If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType) and
+`pStorageBuffer` is not `NULL`, `pStorageBuffer->address` **must**
+be aligned to
+`VkPhysicalDeviceLimits`::`minStorageBufferOffsetAlignment`
+
+* 
+[](#VUID-VkDescriptorGetInfoEXT-type-12267) VUID-VkDescriptorGetInfoEXT-type-12267
+
+If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType),
+the [`texelBufferAlignment`](features.html#features-texelBufferAlignment)
+feature is not enabled,
+and `pUniformTexelBuffer` is not `NULL`,
+`pUniformTexelBuffer->address` **must** be aligned to
+`VkPhysicalDeviceLimits`::`minTexelBufferOffsetAlignment`
+
+* 
+[](#VUID-VkDescriptorGetInfoEXT-type-12268) VUID-VkDescriptorGetInfoEXT-type-12268
+
+If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType),
+the [`texelBufferAlignment`](features.html#features-texelBufferAlignment)
+feature is not enabled,
+and `pStorageTexelBuffer` is not `NULL`,
+`pStorageTexelBuffer->address` **must** be aligned to
+`VkPhysicalDeviceLimits`::`minTexelBufferOffsetAlignment`
+
+* 
+[](#VUID-VkDescriptorGetInfoEXT-type-12269) VUID-VkDescriptorGetInfoEXT-type-12269
+
+If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType), the
+[`texelBufferAlignment`](features.html#features-texelBufferAlignment) feature is
+enabled, and `pUniformTexelBuffer` is not `NULL`,
+`pUniformTexelBuffer->address` **must** be a multiple of the lesser of
+[VkPhysicalDeviceTexelBufferAlignmentProperties](limits.html#VkPhysicalDeviceTexelBufferAlignmentProperties)::`uniformTexelBufferOffsetAlignmentBytes`
+or, if
+[VkPhysicalDeviceTexelBufferAlignmentProperties](limits.html#VkPhysicalDeviceTexelBufferAlignmentProperties)::`uniformTexelBufferOffsetSingleTexelAlignment`
+is [VK_TRUE](fundamentals.html#VK_TRUE), the size of a texel of the requested
+`pUniformTexelBuffer->format`.
+If the size of a texel is a multiple of three bytes, then the size of a
+single component of `format` is used instead
+
+* 
+[](#VUID-VkDescriptorGetInfoEXT-type-12270) VUID-VkDescriptorGetInfoEXT-type-12270
+
+If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType), the
+[`texelBufferAlignment`](features.html#features-texelBufferAlignment) feature is
+enabled, and `pStorageTexelBuffer` is not `NULL`,
+`pStorageTexelBuffer->address` **must** be a multiple of the lesser of
+[VkPhysicalDeviceTexelBufferAlignmentProperties](limits.html#VkPhysicalDeviceTexelBufferAlignmentProperties)::`storageTexelBufferOffsetAlignmentBytes`
+or, if
+[VkPhysicalDeviceTexelBufferAlignmentProperties](limits.html#VkPhysicalDeviceTexelBufferAlignmentProperties)::`storageTexelBufferOffsetSingleTexelAlignment`
+is [VK_TRUE](fundamentals.html#VK_TRUE), the size of a texel of the requested
+`pStorageTexelBuffer->format`.
+If the size of a texel is a multiple of three bytes, then the size of a
+single component of `format` is used instead
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-sType-sType) VUID-VkDescriptorGetInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_GET_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_GET_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pNext-pNext) VUID-VkDescriptorGetInfoEXT-pNext-pNext
@@ -8951,52 +9110,52 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pSampler-parameter) VUID-VkDescriptorGetInfoEXT-pSampler-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_SAMPLER`, the `pSampler` member of `data` **must** be a valid pointer to a valid [VkSampler](samplers.html#VkSampler) handle
+ If `type` is [VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType), the `pSampler` member of `data` **must** be a valid pointer to a valid [VkSampler](samplers.html#VkSampler) handle
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pCombinedImageSampler-parameter) VUID-VkDescriptorGetInfoEXT-pCombinedImageSampler-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, the `pCombinedImageSampler` member of `data` **must** be a valid pointer to a valid [VkDescriptorImageInfo](#VkDescriptorImageInfo) structure
+ If `type` is [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType), the `pCombinedImageSampler` member of `data` **must** be a valid pointer to a valid [VkDescriptorImageInfo](#VkDescriptorImageInfo) structure
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pInputAttachmentImage-parameter) VUID-VkDescriptorGetInfoEXT-pInputAttachmentImage-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`, the `pInputAttachmentImage` member of `data` **must** be a valid pointer to a valid [VkDescriptorImageInfo](#VkDescriptorImageInfo) structure
+ If `type` is [VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType), the `pInputAttachmentImage` member of `data` **must** be a valid pointer to a valid [VkDescriptorImageInfo](#VkDescriptorImageInfo) structure
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pSampledImage-parameter) VUID-VkDescriptorGetInfoEXT-pSampledImage-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, and if `pSampledImage` is not `NULL`, the `pSampledImage` member of `data` **must** be a valid pointer to a valid [VkDescriptorImageInfo](#VkDescriptorImageInfo) structure
+ If `type` is [VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType), and if `pSampledImage` is not `NULL`, the `pSampledImage` member of `data` **must** be a valid pointer to a valid [VkDescriptorImageInfo](#VkDescriptorImageInfo) structure
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pStorageImage-parameter) VUID-VkDescriptorGetInfoEXT-pStorageImage-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, and if `pStorageImage` is not `NULL`, the `pStorageImage` member of `data` **must** be a valid pointer to a valid [VkDescriptorImageInfo](#VkDescriptorImageInfo) structure
+ If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType), and if `pStorageImage` is not `NULL`, the `pStorageImage` member of `data` **must** be a valid pointer to a valid [VkDescriptorImageInfo](#VkDescriptorImageInfo) structure
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pUniformTexelBuffer-parameter) VUID-VkDescriptorGetInfoEXT-pUniformTexelBuffer-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`, and if `pUniformTexelBuffer` is not `NULL`, the `pUniformTexelBuffer` member of `data` **must** be a valid pointer to a valid [VkDescriptorAddressInfoEXT](#VkDescriptorAddressInfoEXT) structure
+ If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType), and if `pUniformTexelBuffer` is not `NULL`, the `pUniformTexelBuffer` member of `data` **must** be a valid pointer to a valid [VkDescriptorAddressInfoEXT](#VkDescriptorAddressInfoEXT) structure
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pStorageTexelBuffer-parameter) VUID-VkDescriptorGetInfoEXT-pStorageTexelBuffer-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`, and if `pStorageTexelBuffer` is not `NULL`, the `pStorageTexelBuffer` member of `data` **must** be a valid pointer to a valid [VkDescriptorAddressInfoEXT](#VkDescriptorAddressInfoEXT) structure
+ If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType), and if `pStorageTexelBuffer` is not `NULL`, the `pStorageTexelBuffer` member of `data` **must** be a valid pointer to a valid [VkDescriptorAddressInfoEXT](#VkDescriptorAddressInfoEXT) structure
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pUniformBuffer-parameter) VUID-VkDescriptorGetInfoEXT-pUniformBuffer-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`, and if `pUniformBuffer` is not `NULL`, the `pUniformBuffer` member of `data` **must** be a valid pointer to a valid [VkDescriptorAddressInfoEXT](#VkDescriptorAddressInfoEXT) structure
+ If `type` is [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType), and if `pUniformBuffer` is not `NULL`, the `pUniformBuffer` member of `data` **must** be a valid pointer to a valid [VkDescriptorAddressInfoEXT](#VkDescriptorAddressInfoEXT) structure
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-pStorageBuffer-parameter) VUID-VkDescriptorGetInfoEXT-pStorageBuffer-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`, and if `pStorageBuffer` is not `NULL`, the `pStorageBuffer` member of `data` **must** be a valid pointer to a valid [VkDescriptorAddressInfoEXT](#VkDescriptorAddressInfoEXT) structure
+ If `type` is [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType), and if `pStorageBuffer` is not `NULL`, the `pStorageBuffer` member of `data` **must** be a valid pointer to a valid [VkDescriptorAddressInfoEXT](#VkDescriptorAddressInfoEXT) structure
 
 * 
 [](#VUID-VkDescriptorGetInfoEXT-accelerationStructure-parameter) VUID-VkDescriptorGetInfoEXT-accelerationStructure-parameter
 
- If `type` is `VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR` or `VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV`, the `accelerationStructure` member of `data` **must** be a valid `VkDeviceAddress` value
+ If `type` is [VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](#VkDescriptorType) or [VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](#VkDescriptorType), the `accelerationStructure` member of `data` **must** be a valid `VkDeviceAddress` value
 
 Data describing the descriptor is passed in a `VkDescriptorDataEXT`
 structure:
@@ -9017,56 +9176,56 @@ typedef union VkDescriptorDataEXT {
 
 * 
 `pSampler` is a pointer to a [VkSampler](samplers.html#VkSampler) handle specifying the
-parameters of a `VK_DESCRIPTOR_TYPE_SAMPLER` descriptor.
+parameters of a [VK_DESCRIPTOR_TYPE_SAMPLER](#VkDescriptorType) descriptor.
 
 * 
 `pCombinedImageSampler` is a pointer to a
 [VkDescriptorImageInfo](#VkDescriptorImageInfo) structure specifying the parameters of a
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` descriptor.
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType) descriptor.
 
 * 
 `pInputAttachmentImage` is a pointer to a
 [VkDescriptorImageInfo](#VkDescriptorImageInfo) structure specifying the parameters of a
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` descriptor.
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](#VkDescriptorType) descriptor.
 
 * 
 `pSampledImage` is a pointer to a [VkDescriptorImageInfo](#VkDescriptorImageInfo)
 structure specifying the parameters of a
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE` descriptor.
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType) descriptor.
 
 * 
 `pStorageImage` is a pointer to a [VkDescriptorImageInfo](#VkDescriptorImageInfo)
 structure specifying the parameters of a
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE` descriptor.
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType) descriptor.
 
 * 
 `pUniformTexelBuffer` is a pointer to a
 [VkDescriptorAddressInfoEXT](#VkDescriptorAddressInfoEXT) structure specifying the parameters of
-a `VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` descriptor.
+a [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType) descriptor.
 
 * 
 `pStorageTexelBuffer` is a pointer to a
 [VkDescriptorAddressInfoEXT](#VkDescriptorAddressInfoEXT) structure specifying the parameters of
-a `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` descriptor.
+a [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType) descriptor.
 
 * 
 `pUniformBuffer` is a pointer to a [VkDescriptorAddressInfoEXT](#VkDescriptorAddressInfoEXT)
 structure specifying the parameters of a
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` descriptor.
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType) descriptor.
 
 * 
 `pStorageBuffer` is a pointer to a [VkDescriptorAddressInfoEXT](#VkDescriptorAddressInfoEXT)
 structure specifying the parameters of a
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` descriptor.
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType) descriptor.
 
 * 
 `accelerationStructure` is
      the address of a [VkAccelerationStructureKHR](resources.html#VkAccelerationStructureKHR) specifying the
-     parameters of a `VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR`
+     parameters of a [VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](#VkDescriptorType)
      descriptor
 , or
     a [VkAccelerationStructureNV](resources.html#VkAccelerationStructureNV) handle specifying the parameters of a
-    `VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV` descriptor.
+    [VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](#VkDescriptorType) descriptor.
 
 If the [`nullDescriptor`](features.html#features-nullDescriptor) feature is enabled,
 `pSampledImage`, `pStorageImage`, `pUniformTexelBuffer`,
@@ -9086,7 +9245,7 @@ Valid Usage
 [](#VUID-VkDescriptorDataEXT-type-08034) VUID-VkDescriptorDataEXT-type-08034
 
 If [VkDescriptorGetInfoEXT](#VkDescriptorGetInfoEXT)::`type` is
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, and the
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](#VkDescriptorType), and the
 [`nullDescriptor`](features.html#features-nullDescriptor) feature is not
 enabled, `pCombinedImageSampler->imageView` **must** not be
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
@@ -9095,7 +9254,7 @@ enabled, `pCombinedImageSampler->imageView` **must** not be
 [](#VUID-VkDescriptorDataEXT-type-08035) VUID-VkDescriptorDataEXT-type-08035
 
 If [VkDescriptorGetInfoEXT](#VkDescriptorGetInfoEXT)::`type` is
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, and the
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](#VkDescriptorType), and the
 [`nullDescriptor`](features.html#features-nullDescriptor) feature is not
 enabled, `pSampledImage` **must** not be `NULL` and
 `pSampledImage->imageView` **must** not be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
@@ -9104,7 +9263,7 @@ enabled, `pSampledImage` **must** not be `NULL` and
 [](#VUID-VkDescriptorDataEXT-type-08036) VUID-VkDescriptorDataEXT-type-08036
 
 If [VkDescriptorGetInfoEXT](#VkDescriptorGetInfoEXT)::`type` is
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, and the
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](#VkDescriptorType), and the
 [`nullDescriptor`](features.html#features-nullDescriptor) feature is not
 enabled, `pStorageImage` **must** not be `NULL` and
 `pStorageImage->imageView` **must** not be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
@@ -9113,7 +9272,7 @@ enabled, `pStorageImage` **must** not be `NULL` and
 [](#VUID-VkDescriptorDataEXT-type-08037) VUID-VkDescriptorDataEXT-type-08037
 
 If [VkDescriptorGetInfoEXT](#VkDescriptorGetInfoEXT)::`type` is
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`, and the
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType), and the
 [`nullDescriptor`](features.html#features-nullDescriptor) feature is not
 enabled, `pUniformTexelBuffer` **must** not be `NULL`
 
@@ -9121,7 +9280,7 @@ enabled, `pUniformTexelBuffer` **must** not be `NULL`
 [](#VUID-VkDescriptorDataEXT-type-08038) VUID-VkDescriptorDataEXT-type-08038
 
 If [VkDescriptorGetInfoEXT](#VkDescriptorGetInfoEXT)::`type` is
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`, and the
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType), and the
 [`nullDescriptor`](features.html#features-nullDescriptor) feature is not
 enabled, `pStorageTexelBuffer` **must** not be `NULL`
 
@@ -9129,7 +9288,7 @@ enabled, `pStorageTexelBuffer` **must** not be `NULL`
 [](#VUID-VkDescriptorDataEXT-type-08039) VUID-VkDescriptorDataEXT-type-08039
 
 If [VkDescriptorGetInfoEXT](#VkDescriptorGetInfoEXT)::`type` is
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`, and the
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType), and the
 [`nullDescriptor`](features.html#features-nullDescriptor) feature is not
 enabled, `pUniformBuffer` **must** not be `NULL`
 
@@ -9137,7 +9296,7 @@ enabled, `pUniformBuffer` **must** not be `NULL`
 [](#VUID-VkDescriptorDataEXT-type-08040) VUID-VkDescriptorDataEXT-type-08040
 
 If [VkDescriptorGetInfoEXT](#VkDescriptorGetInfoEXT)::`type` is
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`, and the
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType), and the
 [`nullDescriptor`](features.html#features-nullDescriptor) feature is not
 enabled, `pStorageBuffer` **must** not be `NULL`
 
@@ -9145,7 +9304,7 @@ enabled, `pStorageBuffer` **must** not be `NULL`
 [](#VUID-VkDescriptorDataEXT-type-08041) VUID-VkDescriptorDataEXT-type-08041
 
 If [VkDescriptorGetInfoEXT](#VkDescriptorGetInfoEXT)::`type` is
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR`, and the
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](#VkDescriptorType), and the
 [`nullDescriptor`](features.html#features-nullDescriptor) feature is not
 enabled, `accelerationStructure` **must** not be `0`
 
@@ -9153,14 +9312,14 @@ enabled, `accelerationStructure` **must** not be `0`
 [](#VUID-VkDescriptorDataEXT-type-08042) VUID-VkDescriptorDataEXT-type-08042
 
 If [VkDescriptorGetInfoEXT](#VkDescriptorGetInfoEXT)::`type` is
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV`, and the
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV](#VkDescriptorType), and the
 [`nullDescriptor`](features.html#features-nullDescriptor) feature is not
 enabled, `accelerationStructure` **must** not be `0`
 
-Data describing a `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`,
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`,
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`, or
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` descriptor is passed in a
+Data describing a [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType) descriptor is passed in a
 `VkDescriptorAddressInfoEXT` structure:
 
 // Provided by VK_EXT_descriptor_buffer
@@ -9199,9 +9358,9 @@ Valid Usage
 
 If
 `address` is not zero, and
-the descriptor is of type `VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`
-or `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`, then `format`
-**must** not be `VK_FORMAT_UNDEFINED`
+the descriptor is of type [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](#VkDescriptorType)
+or [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](#VkDescriptorType), then `format`
+**must** not be [VK_FORMAT_UNDEFINED](formats.html#VkFormat)
 
 * 
 [](#VUID-VkDescriptorAddressInfoEXT-address-08043) VUID-VkDescriptorAddressInfoEXT-address-08043
@@ -9213,32 +9372,44 @@ enabled,
 * 
 [](#VUID-VkDescriptorAddressInfoEXT-nullDescriptor-08938) VUID-VkDescriptorAddressInfoEXT-nullDescriptor-08938
 
-If `address` is zero, `range` **must** be `VK_WHOLE_SIZE`
+If `address` is zero, `range` **must** be [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE)
 
 * 
 [](#VUID-VkDescriptorAddressInfoEXT-nullDescriptor-08939) VUID-VkDescriptorAddressInfoEXT-nullDescriptor-08939
 
 If `address` is not zero,
-`range` **must** not be `VK_WHOLE_SIZE`
+`range` **must** not be [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE)
 
 * 
 [](#VUID-VkDescriptorAddressInfoEXT-range-08045) VUID-VkDescriptorAddressInfoEXT-range-08045
 
-`range` **must** be less than or equal to the size of the buffer
-containing `address` minus the offset of `address` from the base
-address of the buffer
+If `address` is not zero, then `range` **must** be less than or
+equal to the size of the buffer containing `address` minus the
+offset of `address` from the base address of the buffer
 
 * 
 [](#VUID-VkDescriptorAddressInfoEXT-range-08940) VUID-VkDescriptorAddressInfoEXT-range-08940
 
 `range` **must** not be zero
 
+* 
+[](#VUID-VkDescriptorAddressInfoEXT-None-12271) VUID-VkDescriptorAddressInfoEXT-None-12271
+
+    If
+Vulkan 1.3 is not supported and
+    the [`ycbcr2plane444Formats`](features.html#features-ycbcr2plane444Formats)
+    feature is not enabled, `format` **must** not be
+    [VK_FORMAT_G8_B8R8_2PLANE_444_UNORM](formats.html#VkFormat),
+    [VK_FORMAT_G10X6_B10X6R10X6_2PLANE_444_UNORM_3PACK16](formats.html#VkFormat),
+    [VK_FORMAT_G12X4_B12X4R12X4_2PLANE_444_UNORM_3PACK16](formats.html#VkFormat), or
+    [VK_FORMAT_G16_B16R16_2PLANE_444_UNORM](formats.html#VkFormat)
+
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDescriptorAddressInfoEXT-sType-sType) VUID-VkDescriptorAddressInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_ADDRESS_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_ADDRESS_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDescriptorAddressInfoEXT-pNext-pNext) VUID-VkDescriptorAddressInfoEXT-pNext-pNext
@@ -9269,7 +9440,7 @@ consumes the sampler.
 
 |  | If the descriptor set layout was created with
 | --- | --- |
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits),
 there is no buffer backing for the immutable sampler, so this requirement
 does not exist.
 The implementation handles allocation of these descriptors internally. |
@@ -9298,7 +9469,7 @@ structure.
 
 * 
 `tensorView` is a [VkTensorViewARM](resources.html#VkTensorViewARM) handle specifying the
-parameters of a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor.
+parameters of a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](#VkDescriptorType) descriptor.
 
 Valid Usage
 
@@ -9313,7 +9484,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDescriptorGetTensorInfoARM-sType-sType) VUID-VkDescriptorGetTensorInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_GET_TENSOR_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_GET_TENSOR_INFO_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDescriptorGetTensorInfoARM-tensorView-parameter) VUID-VkDescriptorGetTensorInfoARM-tensorView-parameter
@@ -9366,6 +9537,22 @@ Any previously bound buffers at binding points greater than or equal to
 Valid Usage
 
 * 
+[](#VUID-vkCmdBindDescriptorBuffersEXT-commandBuffer-11295) VUID-vkCmdBindDescriptorBuffersEXT-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdBindDescriptorBuffersEXT-commandBuffer-11296) VUID-vkCmdBindDescriptorBuffersEXT-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pResourceHeapBindInfo`
+equal to `NULL`
+
+* 
 [](#VUID-vkCmdBindDescriptorBuffersEXT-None-08047) VUID-vkCmdBindDescriptorBuffersEXT-None-08047
 
 The [`descriptorBuffer`](features.html#features-descriptorBuffer) feature **must**
@@ -9378,7 +9565,7 @@ There **must** be no more than
 [VkPhysicalDeviceDescriptorBufferPropertiesEXT](limits.html#VkPhysicalDeviceDescriptorBufferPropertiesEXT)::`maxSamplerDescriptorBufferBindings`
 elements in `pBindingInfos` with
 [VkDescriptorBufferBindingInfoEXT](#VkDescriptorBufferBindingInfoEXT)::`usage` containing
-`VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits)
 
 * 
 [](#VUID-vkCmdBindDescriptorBuffersEXT-maxResourceDescriptorBufferBindings-08049) VUID-vkCmdBindDescriptorBuffersEXT-maxResourceDescriptorBufferBindings-08049
@@ -9387,14 +9574,14 @@ There **must** be no more than
 [VkPhysicalDeviceDescriptorBufferPropertiesEXT](limits.html#VkPhysicalDeviceDescriptorBufferPropertiesEXT)::`maxResourceDescriptorBufferBindings`
 elements in `pBindingInfos` with
 [VkDescriptorBufferBindingInfoEXT](#VkDescriptorBufferBindingInfoEXT)::`usage` containing
-`VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits)
 
 * 
 [](#VUID-vkCmdBindDescriptorBuffersEXT-None-08050) VUID-vkCmdBindDescriptorBuffersEXT-None-08050
 
 There **must** be no more than `1` element in `pBindingInfos` with
 [VkDescriptorBufferBindingInfoEXT](#VkDescriptorBufferBindingInfoEXT)::`usage` containing
-`VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits)
 
 * 
 [](#VUID-vkCmdBindDescriptorBuffersEXT-bufferCount-08051) VUID-vkCmdBindDescriptorBuffersEXT-bufferCount-08051
@@ -9407,7 +9594,7 @@ There **must** be no more than `1` element in `pBindingInfos` with
 
 For each element of `pBindingInfos`, the buffer from which
 `address` was queried **must** have been created with the
-`VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT` usage flag set
+[VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits) usage flag set
 if it contains sampler descriptor data
 
 * 
@@ -9415,7 +9602,7 @@ if it contains sampler descriptor data
 
 For each element of `pBindingInfos`, the buffer from which
 `address` was queried **must** have been created with the
-`VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT` usage flag set
+[VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits) usage flag set
 if it contains resource descriptor data
 
 * 
@@ -9429,11 +9616,11 @@ For each element of `pBindingInfos`, at least one buffer from which
 
 For all elements of `pBindingInfos`, the buffer from which
 `address` was queried **must** have been created with the
-`VK_BUFFER_USAGE_2_DATA_GRAPH_FOREIGN_DESCRIPTOR_BIT_ARM` usage flag
+[VK_BUFFER_USAGE_2_DATA_GRAPH_FOREIGN_DESCRIPTOR_BIT_ARM](resources.html#VkBufferUsageFlagBits2KHR) usage flag
 set if the command pool from which `commandBuffer` was allocated
 from was created with any element of
 [VkDataGraphProcessingEngineCreateInfoARM](VK_ARM_data_graph/graphs.html#VkDataGraphProcessingEngineCreateInfoARM)::pProcessingEngines with
-`isForeign` set to `VK_TRUE`
+`isForeign` set to [VK_TRUE](fundamentals.html#VK_TRUE)
 
 Valid Usage (Implicit)
 
@@ -9455,7 +9642,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindDescriptorBuffersEXT-commandBuffer-cmdpool) VUID-vkCmdBindDescriptorBuffersEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_DATA_GRAPH_BIT_ARM`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_DATA_GRAPH_BIT_ARM](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBindDescriptorBuffersEXT-videocoding) VUID-vkCmdBindDescriptorBuffersEXT-videocoding
@@ -9517,9 +9704,9 @@ address defining the descriptor buffer to be bound.
 [VkBufferCreateInfo](resources.html#VkBufferCreateInfo)::`usage` for the buffer from which
 `address` was queried.
 Usage flags other than
-`VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT`,
-`VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT`, and
-`VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT` are
+[VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits),
+[VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits), and
+[VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits) are
 ignored.
 
 If the `pNext` chain includes a [VkBufferUsageFlags2CreateInfo](resources.html#VkBufferUsageFlags2CreateInfo)
@@ -9547,16 +9734,16 @@ If the `pNext` chain does not include a
 [](#VUID-VkDescriptorBufferBindingInfoEXT-usage-10998) VUID-VkDescriptorBufferBindingInfoEXT-usage-10998
 
 The `usage` must include at least one of
-`VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT`,
-`VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT`, or
-`VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits),
+[VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits), or
+[VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits)
 
 * 
 [](#VUID-VkDescriptorBufferBindingInfoEXT-bufferlessPushDescriptors-08056) VUID-VkDescriptorBufferBindingInfoEXT-bufferlessPushDescriptors-08056
 
 If [    `VkPhysicalDeviceDescriptorBufferPropertiesEXT`::`bufferlessPushDescriptors`](limits.html#limits-bufferlessPushDescriptors)
-is `VK_FALSE`, and `usage` contains
-`VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT`, then
+is [VK_FALSE](fundamentals.html#VK_FALSE), and `usage` contains
+[VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits), then
 the `pNext` chain **must** include a
 [VkDescriptorBufferBindingPushDescriptorBufferHandleEXT](#VkDescriptorBufferBindingPushDescriptorBufferHandleEXT) structure
 
@@ -9570,28 +9757,28 @@ the `pNext` chain **must** include a
 [](#VUID-VkDescriptorBufferBindingInfoEXT-usage-08122) VUID-VkDescriptorBufferBindingInfoEXT-usage-08122
 
 If `usage` includes
-`VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT`, `address`
+[VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits), `address`
 **must** be a device address allocated to the application from a buffer
-created with the `VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT`
+created with the [VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkDescriptorBufferBindingInfoEXT-usage-08123) VUID-VkDescriptorBufferBindingInfoEXT-usage-08123
 
 If `usage` includes
-`VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT`, `address`
+[VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits), `address`
 **must** be a device address allocated to the application from a buffer
 created with the
-`VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT` usage flag set
+[VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkDescriptorBufferBindingInfoEXT-usage-08124) VUID-VkDescriptorBufferBindingInfoEXT-usage-08124
 
 If `usage` includes
-`VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT`,
+[VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits),
 `address` **must** be a device address allocated to the application
 from a buffer created with the
-`VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT` usage
+[VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits) usage
 flag set
 
 Valid Usage (Implicit)
@@ -9599,7 +9786,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDescriptorBufferBindingInfoEXT-sType-sType) VUID-VkDescriptorBufferBindingInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_BUFFER_BINDING_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_BUFFER_BINDING_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDescriptorBufferBindingInfoEXT-pNext-pNext) VUID-VkDescriptorBufferBindingInfoEXT-pNext-pNext
@@ -9617,7 +9804,7 @@ Valid Usage (Implicit)
  `address` **must** be a valid `VkDeviceAddress` value
 
 When the [`VkPhysicalDeviceDescriptorBufferPropertiesEXT`::`bufferlessPushDescriptors`](limits.html#limits-bufferlessPushDescriptors)
-property is `VK_FALSE`, the `VkBuffer` handle of the buffer for push
+property is [VK_FALSE](fundamentals.html#VK_FALSE), the `VkBuffer` handle of the buffer for push
 descriptors is passed in a
 `VkDescriptorBufferBindingPushDescriptorBufferHandleEXT` structure:
 
@@ -9645,14 +9832,14 @@ Valid Usage
 [](#VUID-VkDescriptorBufferBindingPushDescriptorBufferHandleEXT-bufferlessPushDescriptors-08059) VUID-VkDescriptorBufferBindingPushDescriptorBufferHandleEXT-bufferlessPushDescriptors-08059
 
 [    `VkPhysicalDeviceDescriptorBufferPropertiesEXT`::`bufferlessPushDescriptors`](limits.html#limits-bufferlessPushDescriptors)
-**must** be `VK_FALSE`
+**must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDescriptorBufferBindingPushDescriptorBufferHandleEXT-sType-sType) VUID-VkDescriptorBufferBindingPushDescriptorBufferHandleEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_BUFFER_BINDING_PUSH_DESCRIPTOR_BUFFER_HANDLE_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_BUFFER_BINDING_PUSH_DESCRIPTOR_BUFFER_HANDLE_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDescriptorBufferBindingPushDescriptorBufferHandleEXT-buffer-parameter) VUID-VkDescriptorBufferBindingPushDescriptorBufferHandleEXT-buffer-parameter
@@ -9717,7 +9904,7 @@ After binding descriptors, applications **can** modify descriptor memory either
 by performing writes on the host or with device commands.
 When descriptor memory is updated with device commands, visibility for the
 shader stage accessing a descriptor is ensured with the
-`VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT` access flag.
+[VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT](synchronization.html#VkAccessFlagBits2KHR) access flag.
 Implementations **must** not access resources referenced by these descriptors
 unless they are dynamically accessed by shaders.
 Descriptors bound with this call **can** be **undefined** if they are not
@@ -9725,9 +9912,9 @@ dynamically accessed by shaders.
 
 Implementations **may** read descriptor data for any statically accessed
 descriptor if the `binding` in `layout` is not declared with the
-`VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT` flag.
+[VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](#VkDescriptorBindingFlagBitsEXT) flag.
 If the `binding` in `layout` is declared with
-`VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT`, implementations
+[VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](#VkDescriptorBindingFlagBitsEXT), implementations
 **must** not read descriptor data that is not dynamically accessed.
 
 Applications **must** ensure that any descriptor which the implementation **may**
@@ -9753,12 +9940,28 @@ are updated on the device. |
 
 |  | The requirements above imply that all descriptor bindings have been defined
 | --- | --- |
-with the equivalent of `VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`,
-`VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT` and
-`VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT`, but enabling those features
+with the equivalent of [VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](#VkDescriptorBindingFlagBitsEXT),
+[VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT](#VkDescriptorBindingFlagBitsEXT) and
+[VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT](#VkDescriptorBindingFlagBitsEXT), but enabling those features
 is not required to get this behavior. |
 
 Valid Usage
+
+* 
+[](#VUID-vkCmdSetDescriptorBufferOffsetsEXT-commandBuffer-11295) VUID-vkCmdSetDescriptorBufferOffsetsEXT-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdSetDescriptorBufferOffsetsEXT-commandBuffer-11296) VUID-vkCmdSetDescriptorBufferOffsetsEXT-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pResourceHeapBindInfo`
+equal to `NULL`
 
 * 
 [](#VUID-vkCmdSetDescriptorBufferOffsetsEXT-pOffsets-08061) VUID-vkCmdSetDescriptorBufferOffsetsEXT-pOffsets-08061
@@ -9771,7 +9974,7 @@ The offsets in `pOffsets` **must** be aligned to
 
 The offsets in `pOffsets` **must** be small enough such that any
 descriptor binding referenced by `layout`
-without the `VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT`
+without the [VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](#VkDescriptorBindingFlagBitsEXT)
 flag
 computes a valid address inside the underlying [VkBuffer](resources.html#VkBuffer)
 
@@ -9817,7 +10020,7 @@ to [VkPipelineLayoutCreateInfo](#VkPipelineLayoutCreateInfo)::`setLayoutCount` p
 The [VkDescriptorSetLayout](#VkDescriptorSetLayout) for each set from `firstSet` to
 `firstSet` +  `setCount` when `layout` was created
 **must** have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits) bit set
 
 * 
 [](#VUID-vkCmdSetDescriptorBufferOffsetsEXT-firstSet-11803) VUID-vkCmdSetDescriptorBufferOffsetsEXT-firstSet-11803
@@ -9825,7 +10028,7 @@ The [VkDescriptorSetLayout](#VkDescriptorSetLayout) for each set from `firstSet`
 The [VkDescriptorSetLayout](#VkDescriptorSetLayout) for each set from `firstSet` to
 `firstSet` +  `setCount` when `layout` was created
 **must** not have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR](#VkDescriptorSetLayoutCreateFlagBits) bit set
 
 * 
 [](#VUID-vkCmdSetDescriptorBufferOffsetsEXT-firstSet-11804) VUID-vkCmdSetDescriptorBufferOffsetsEXT-firstSet-11804
@@ -9833,7 +10036,7 @@ The [VkDescriptorSetLayout](#VkDescriptorSetLayout) for each set from `firstSet`
 The [VkDescriptorSetLayout](#VkDescriptorSetLayout) for each set from `firstSet` to
 `firstSet` +  `setCount` when `layout` was created
 **must** not have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits)
 bit set
 
 * 
@@ -9883,7 +10086,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDescriptorBufferOffsetsEXT-commandBuffer-cmdpool) VUID-vkCmdSetDescriptorBufferOffsetsEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_DATA_GRAPH_BIT_ARM`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_DATA_GRAPH_BIT_ARM](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetDescriptorBufferOffsetsEXT-videocoding) VUID-vkCmdSetDescriptorBufferOffsetsEXT-videocoding
@@ -9941,6 +10144,22 @@ offsets will be set.
 Valid Usage
 
 * 
+[](#VUID-vkCmdSetDescriptorBufferOffsets2EXT-commandBuffer-11295) VUID-vkCmdSetDescriptorBufferOffsets2EXT-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdSetDescriptorBufferOffsets2EXT-commandBuffer-11296) VUID-vkCmdSetDescriptorBufferOffsets2EXT-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pResourceHeapBindInfo`
+equal to `NULL`
+
+* 
 [](#VUID-vkCmdSetDescriptorBufferOffsets2EXT-descriptorBuffer-09470) VUID-vkCmdSetDescriptorBufferOffsets2EXT-descriptorBuffer-09470
 
 The [`descriptorBuffer`](features.html#features-descriptorBuffer) feature **must**
@@ -9973,7 +10192,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDescriptorBufferOffsets2EXT-commandBuffer-cmdpool) VUID-vkCmdSetDescriptorBufferOffsets2EXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_DATA_GRAPH_BIT_ARM`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_DATA_GRAPH_BIT_ARM](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetDescriptorBufferOffsets2EXT-videocoding) VUID-vkCmdSetDescriptorBufferOffsets2EXT-videocoding
@@ -10057,10 +10276,10 @@ more pipeline bind points, the binding operation still affects all stages
 corresponding to the given pipeline bind point(s) as if the equivalent
 original version of this command had been called with the same parameters.
 For example, specifying a `stageFlags` value of
-`VK_SHADER_STAGE_VERTEX_BIT` | `VK_SHADER_STAGE_FRAGMENT_BIT` |
-`VK_SHADER_STAGE_COMPUTE_BIT` is equivalent to calling the original
-version of this command once with `VK_PIPELINE_BIND_POINT_GRAPHICS` and
-once with `VK_PIPELINE_BIND_POINT_COMPUTE`.
+[VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits) | [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits) |
+[VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits) is equivalent to calling the original
+version of this command once with [VK_PIPELINE_BIND_POINT_GRAPHICS](pipelines.html#VkPipelineBindPoint) and
+once with [VK_PIPELINE_BIND_POINT_COMPUTE](pipelines.html#VkPipelineBindPoint).
 
 Valid Usage
 
@@ -10075,7 +10294,7 @@ The offsets in `pOffsets` **must** be aligned to
 
 The offsets in `pOffsets` **must** be small enough such that any
 descriptor binding referenced by `layout`
-without the `VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT`
+without the [VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](#VkDescriptorBindingFlagBitsEXT)
 flag
 computes a valid address inside the underlying [VkBuffer](resources.html#VkBuffer)
 
@@ -10121,7 +10340,7 @@ to [VkPipelineLayoutCreateInfo](#VkPipelineLayoutCreateInfo)::`setLayoutCount` p
 The [VkDescriptorSetLayout](#VkDescriptorSetLayout) for each set from `firstSet` to
 `firstSet` +  `setCount` when `layout` was created
 **must** have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits) bit set
 
 * 
 [](#VUID-VkSetDescriptorBufferOffsetsInfoEXT-firstSet-11803) VUID-VkSetDescriptorBufferOffsetsInfoEXT-firstSet-11803
@@ -10129,7 +10348,7 @@ The [VkDescriptorSetLayout](#VkDescriptorSetLayout) for each set from `firstSet`
 The [VkDescriptorSetLayout](#VkDescriptorSetLayout) for each set from `firstSet` to
 `firstSet` +  `setCount` when `layout` was created
 **must** not have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR](#VkDescriptorSetLayoutCreateFlagBits) bit set
 
 * 
 [](#VUID-VkSetDescriptorBufferOffsetsInfoEXT-firstSet-11804) VUID-VkSetDescriptorBufferOffsetsInfoEXT-firstSet-11804
@@ -10137,7 +10356,7 @@ The [VkDescriptorSetLayout](#VkDescriptorSetLayout) for each set from `firstSet`
 The [VkDescriptorSetLayout](#VkDescriptorSetLayout) for each set from `firstSet` to
 `firstSet` +  `setCount` when `layout` was created
 **must** not have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits)
 bit set
 
 * 
@@ -10158,7 +10377,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSetDescriptorBufferOffsetsInfoEXT-sType-sType) VUID-VkSetDescriptorBufferOffsetsInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSetDescriptorBufferOffsetsInfoEXT-pNext-pNext) VUID-VkSetDescriptorBufferOffsetsInfoEXT-pNext-pNext
@@ -10239,11 +10458,27 @@ as described in [Pipeline Layout Compatibility](#descriptorsets-compatibility).
 Valid Usage
 
 * 
+[](#VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-commandBuffer-11295) VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-commandBuffer-11296) VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pResourceHeapBindInfo`
+equal to `NULL`
+
+* 
 [](#VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-set-08070) VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-set-08070
 
 The [VkDescriptorSetLayout](#VkDescriptorSetLayout) at index `set` when `layout` was
 created **must** have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits)
 bit set
 
 * 
@@ -10290,7 +10525,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-commandBuffer-cmdpool) VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-videocoding) VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-videocoding
@@ -10341,6 +10576,22 @@ samplers will be bound to.
 Valid Usage
 
 * 
+[](#VUID-vkCmdBindDescriptorBufferEmbeddedSamplers2EXT-commandBuffer-11295) VUID-vkCmdBindDescriptorBufferEmbeddedSamplers2EXT-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdBindDescriptorBufferEmbeddedSamplers2EXT-commandBuffer-11296) VUID-vkCmdBindDescriptorBufferEmbeddedSamplers2EXT-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](cmdbuffers.html#VkCommandBufferInheritanceDescriptorHeapInfoEXT)::`pResourceHeapBindInfo`
+equal to `NULL`
+
+* 
 [](#VUID-vkCmdBindDescriptorBufferEmbeddedSamplers2EXT-descriptorBuffer-09472) VUID-vkCmdBindDescriptorBufferEmbeddedSamplers2EXT-descriptorBuffer-09472
 
 The [`descriptorBuffer`](features.html#features-descriptorBuffer) feature **must**
@@ -10373,7 +10624,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindDescriptorBufferEmbeddedSamplers2EXT-commandBuffer-cmdpool) VUID-vkCmdBindDescriptorBufferEmbeddedSamplers2EXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBindDescriptorBufferEmbeddedSamplers2EXT-videocoding) VUID-vkCmdBindDescriptorBufferEmbeddedSamplers2EXT-videocoding
@@ -10440,10 +10691,10 @@ more pipeline bind points, the binding operation still affects all stages
 corresponding to the given pipeline bind point(s) as if the equivalent
 original version of this command had been called with the same parameters.
 For example, specifying a `stageFlags` value of
-`VK_SHADER_STAGE_VERTEX_BIT` | `VK_SHADER_STAGE_FRAGMENT_BIT` |
-`VK_SHADER_STAGE_COMPUTE_BIT` is equivalent to calling the original
-version of this command once with `VK_PIPELINE_BIND_POINT_GRAPHICS` and
-once with `VK_PIPELINE_BIND_POINT_COMPUTE`.
+[VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits) | [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits) |
+[VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits) is equivalent to calling the original
+version of this command once with [VK_PIPELINE_BIND_POINT_GRAPHICS](pipelines.html#VkPipelineBindPoint) and
+once with [VK_PIPELINE_BIND_POINT_COMPUTE](pipelines.html#VkPipelineBindPoint).
 
 Valid Usage
 
@@ -10452,7 +10703,7 @@ Valid Usage
 
 The [VkDescriptorSetLayout](#VkDescriptorSetLayout) at index `set` when `layout` was
 created **must** have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](#VkDescriptorSetLayoutCreateFlagBits)
 bit set
 
 * 
@@ -10480,7 +10731,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindDescriptorBufferEmbeddedSamplersInfoEXT-sType-sType) VUID-VkBindDescriptorBufferEmbeddedSamplersInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBindDescriptorBufferEmbeddedSamplersInfoEXT-pNext-pNext) VUID-VkBindDescriptorBufferEmbeddedSamplersInfoEXT-pNext-pNext
@@ -10511,7 +10762,7 @@ Updates to descriptor data in buffers **can** be performed by any operation on
 either the host or device that **can** access memory.
 
 Descriptor buffer reads **can** be synchronized using
-`VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT` in the relevant shader
+[VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT](synchronization.html#VkAccessFlagBits2KHR) in the relevant shader
 stage.
 
 If the [`descriptorBufferPushDescriptors`](features.html#features-descriptorBufferPushDescriptors) feature is enabled, push descriptors
@@ -10521,10 +10772,10 @@ sets.
 The [`VkPhysicalDeviceDescriptorBufferPropertiesEXT`::`bufferlessPushDescriptors`](limits.html#limits-bufferlessPushDescriptors)
 property indicates whether the implementation requires a buffer to back push
 descriptors.
-If the property is `VK_FALSE` then before recording any push
+If the property is [VK_FALSE](fundamentals.html#VK_FALSE) then before recording any push
 descriptors, the application **must** bind exactly `1` descriptor buffer that
 was created with the
-`VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT` usage flag
+[VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT](resources.html#VkBufferUsageFlagBits) usage flag
 set.
 When this buffer is bound, any previously recorded push descriptors that are
 required for a subsequent command **must** be recorded again.
@@ -10599,21 +10850,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Information about the buffer to get descriptor buffer capture data for is
 passed in a `VkBufferCaptureDescriptorDataInfoEXT` structure:
@@ -10642,7 +10893,7 @@ Valid Usage
 [](#VUID-VkBufferCaptureDescriptorDataInfoEXT-buffer-08075) VUID-VkBufferCaptureDescriptorDataInfoEXT-buffer-08075
 
 `buffer` **must** have been created with
-`VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` set in
+[VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](resources.html#VkBufferCreateFlagBits) set in
 [VkBufferCreateInfo](resources.html#VkBufferCreateInfo)::`flags`
 
 Valid Usage (Implicit)
@@ -10650,7 +10901,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferCaptureDescriptorDataInfoEXT-sType-sType) VUID-VkBufferCaptureDescriptorDataInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_CAPTURE_DESCRIPTOR_DATA_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_CAPTURE_DESCRIPTOR_DATA_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBufferCaptureDescriptorDataInfoEXT-pNext-pNext) VUID-VkBufferCaptureDescriptorDataInfoEXT-pNext-pNext
@@ -10723,21 +10974,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Information about the image to get descriptor buffer capture data for is
 passed in a `VkImageCaptureDescriptorDataInfoEXT` structure:
@@ -10766,7 +11017,7 @@ Valid Usage
 [](#VUID-VkImageCaptureDescriptorDataInfoEXT-image-08079) VUID-VkImageCaptureDescriptorDataInfoEXT-image-08079
 
 `image` **must** have been created with
-`VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` set in
+[VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](resources.html#VkImageCreateFlagBits) set in
 [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`flags`
 
 Valid Usage (Implicit)
@@ -10774,7 +11025,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageCaptureDescriptorDataInfoEXT-sType-sType) VUID-VkImageCaptureDescriptorDataInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_CAPTURE_DESCRIPTOR_DATA_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_CAPTURE_DESCRIPTOR_DATA_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageCaptureDescriptorDataInfoEXT-pNext-pNext) VUID-VkImageCaptureDescriptorDataInfoEXT-pNext-pNext
@@ -10848,21 +11099,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Information about the image view to get descriptor buffer capture data for
 is passed in a `VkImageViewCaptureDescriptorDataInfoEXT` structure:
@@ -10891,7 +11142,7 @@ Valid Usage
 [](#VUID-VkImageViewCaptureDescriptorDataInfoEXT-imageView-08083) VUID-VkImageViewCaptureDescriptorDataInfoEXT-imageView-08083
 
 `imageView` **must** have been created with
-`VK_IMAGE_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` set
+[VK_IMAGE_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](resources.html#VkImageViewCreateFlagBits) set
 in [VkImageViewCreateInfo](resources.html#VkImageViewCreateInfo)::`flags`
 
 Valid Usage (Implicit)
@@ -10899,7 +11150,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageViewCaptureDescriptorDataInfoEXT-sType-sType) VUID-VkImageViewCaptureDescriptorDataInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_VIEW_CAPTURE_DESCRIPTOR_DATA_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_CAPTURE_DESCRIPTOR_DATA_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageViewCaptureDescriptorDataInfoEXT-pNext-pNext) VUID-VkImageViewCaptureDescriptorDataInfoEXT-pNext-pNext
@@ -10973,21 +11224,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Information about the sampler to get descriptor buffer capture data for is
 passed in a `VkSamplerCaptureDescriptorDataInfoEXT` structure:
@@ -11016,7 +11267,7 @@ Valid Usage
 [](#VUID-VkSamplerCaptureDescriptorDataInfoEXT-sampler-08087) VUID-VkSamplerCaptureDescriptorDataInfoEXT-sampler-08087
 
 `sampler` **must** have been created with
-`VK_SAMPLER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` set in
+[VK_SAMPLER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](samplers.html#VkSamplerCreateFlagBits) set in
 [VkSamplerCreateInfo](samplers.html#VkSamplerCreateInfo)::`flags`
 
 Valid Usage (Implicit)
@@ -11024,7 +11275,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSamplerCaptureDescriptorDataInfoEXT-sType-sType) VUID-VkSamplerCaptureDescriptorDataInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_CAPTURE_DESCRIPTOR_DATA_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_CAPTURE_DESCRIPTOR_DATA_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSamplerCaptureDescriptorDataInfoEXT-pNext-pNext) VUID-VkSamplerCaptureDescriptorDataInfoEXT-pNext-pNext
@@ -11099,21 +11350,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Information about the acceleration structure to get descriptor buffer
 capture data for is passed in a
@@ -11149,7 +11400,7 @@ Valid Usage
 
 If `accelerationStructure` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) then
 `accelerationStructure` **must** have been created with
-`VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`
+[VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](resources.html#VkAccelerationStructureCreateFlagBitsKHR)
 set in [VkAccelerationStructureCreateInfoKHR](resources.html#VkAccelerationStructureCreateInfoKHR)::`createFlags`
 
 * 
@@ -11157,7 +11408,7 @@ set in [VkAccelerationStructureCreateInfoKHR](resources.html#VkAccelerationStruc
 
 If `accelerationStructureNV` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) then
 `accelerationStructureNV` **must** have been created with
-`VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`
+[VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](resources.html#VkAccelerationStructureCreateFlagBitsKHR)
 set in [VkAccelerationStructureCreateInfoNV](resources.html#VkAccelerationStructureCreateInfoNV)::`info.flags`
 
 * 
@@ -11177,7 +11428,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureCaptureDescriptorDataInfoEXT-sType-sType) VUID-VkAccelerationStructureCaptureDescriptorDataInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CAPTURE_DESCRIPTOR_DATA_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CAPTURE_DESCRIPTOR_DATA_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkAccelerationStructureCaptureDescriptorDataInfoEXT-pNext-pNext) VUID-VkAccelerationStructureCaptureDescriptorDataInfoEXT-pNext-pNext
@@ -11235,12 +11486,21 @@ During replay, opaque descriptor capture data **can** be specified by adding a
 [VkAccelerationStructureCreateInfoNV](resources.html#VkAccelerationStructureCreateInfoNV) or
 [VkAccelerationStructureCreateInfoKHR](resources.html#VkAccelerationStructureCreateInfoKHR) structure.
 
+When providing opaque capture data for an image, if the `pNext` chain of
+[VkImageCreateInfo](resources.html#VkImageCreateInfo)
+or [VkTensorCreateInfoARM](resources.html#VkTensorCreateInfoARM)
+contains an instance of both this structure and
+[VkOpaqueCaptureDataCreateInfoEXT](resources.html#VkOpaqueCaptureDataCreateInfoEXT), they **should** both specify data from
+the same original resource.
+If they have capture data from different original resources, resource
+creation is much more likely to fail.
+
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkOpaqueCaptureDescriptorDataCreateInfoEXT-sType-sType) VUID-VkOpaqueCaptureDescriptorDataCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_OPAQUE_CAPTURE_DESCRIPTOR_DATA_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_OPAQUE_CAPTURE_DESCRIPTOR_DATA_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkOpaqueCaptureDescriptorDataCreateInfoEXT-opaqueCaptureDescriptorData-parameter) VUID-VkOpaqueCaptureDescriptorDataCreateInfoEXT-opaqueCaptureDescriptorData-parameter
@@ -11309,21 +11569,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Information about the tensor to get descriptor buffer capture data for is
 passed in a `VkTensorCaptureDescriptorDataInfoARM` structure:
@@ -11353,7 +11613,7 @@ Valid Usage
 
 If `tensor` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) then `tensor` **must** have
 been created with
-`VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM` set in
+[VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM](resources.html#VkTensorCreateFlagBitsARM) set in
 [VkTensorCreateInfoARM](resources.html#VkTensorCreateInfoARM)::`flags`
 
 Valid Usage (Implicit)
@@ -11361,7 +11621,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTensorCaptureDescriptorDataInfoARM-sType-sType) VUID-VkTensorCaptureDescriptorDataInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TENSOR_CAPTURE_DESCRIPTOR_DATA_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TENSOR_CAPTURE_DESCRIPTOR_DATA_INFO_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkTensorCaptureDescriptorDataInfoARM-pNext-pNext) VUID-VkTensorCaptureDescriptorDataInfoARM-pNext-pNext
@@ -11436,21 +11696,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Information about the tensor view to get descriptor buffer capture data for
 is passed in a `VkTensorViewCaptureDescriptorDataInfoARM` structure:
@@ -11480,7 +11740,7 @@ Valid Usage
 
 If `tensorView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) then `tensorView`
 **must** have been created with
-`VK_TENSOR_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM` set
+[VK_TENSOR_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM](resources.html#VkTensorViewCreateFlagBitsARM) set
 in [VkTensorViewCreateInfoARM](resources.html#VkTensorViewCreateInfoARM)::`flags`
 
 Valid Usage (Implicit)
@@ -11488,7 +11748,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTensorViewCaptureDescriptorDataInfoARM-sType-sType) VUID-VkTensorViewCaptureDescriptorDataInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TENSOR_VIEW_CAPTURE_DESCRIPTOR_DATA_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TENSOR_VIEW_CAPTURE_DESCRIPTOR_DATA_INFO_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkTensorViewCaptureDescriptorDataInfoARM-pNext-pNext) VUID-VkTensorViewCaptureDescriptorDataInfoARM-pNext-pNext

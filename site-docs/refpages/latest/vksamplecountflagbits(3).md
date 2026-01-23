@@ -34,28 +34,28 @@ typedef enum VkSampleCountFlagBits {
 } VkSampleCountFlagBits;
 
 * 
-`VK_SAMPLE_COUNT_1_BIT` specifies an image with one sample per
+[VK_SAMPLE_COUNT_1_BIT](#) specifies an image with one sample per
 pixel.
 
 * 
-`VK_SAMPLE_COUNT_2_BIT` specifies an image with 2 samples per pixel.
+[VK_SAMPLE_COUNT_2_BIT](#) specifies an image with 2 samples per pixel.
 
 * 
-`VK_SAMPLE_COUNT_4_BIT` specifies an image with 4 samples per pixel.
+[VK_SAMPLE_COUNT_4_BIT](#) specifies an image with 4 samples per pixel.
 
 * 
-`VK_SAMPLE_COUNT_8_BIT` specifies an image with 8 samples per pixel.
+[VK_SAMPLE_COUNT_8_BIT](#) specifies an image with 8 samples per pixel.
 
 * 
-`VK_SAMPLE_COUNT_16_BIT` specifies an image with 16 samples per
+[VK_SAMPLE_COUNT_16_BIT](#) specifies an image with 16 samples per
 pixel.
 
 * 
-`VK_SAMPLE_COUNT_32_BIT` specifies an image with 32 samples per
+[VK_SAMPLE_COUNT_32_BIT](#) specifies an image with 32 samples per
 pixel.
 
 * 
-`VK_SAMPLE_COUNT_64_BIT` specifies an image with 64 samples per
+[VK_SAMPLE_COUNT_64_BIT](#) specifies an image with 64 samples per
 pixel.
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkAttachmentDescription](VkAttachmentDescription.html), [VkAttachmentDescription2](VkAttachmentDescription2.html), [VkAttachmentSampleCountInfoAMD](VkAttachmentSampleCountInfoAMD.html), [VkCommandBufferInheritanceRenderingInfo](VkCommandBufferInheritanceRenderingInfo.html), [VkFramebufferMixedSamplesCombinationNV](VkFramebufferMixedSamplesCombinationNV.html), [VkImageCreateInfo](VkImageCreateInfo.html), [VkMultisampledRenderToSingleSampledInfoEXT](VkMultisampledRenderToSingleSampledInfoEXT.html), [VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV](VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV.html), [VkPhysicalDeviceFragmentShadingRatePropertiesKHR](VkPhysicalDeviceFragmentShadingRatePropertiesKHR.html), [VkPhysicalDeviceSparseImageFormatInfo2](VkPhysicalDeviceSparseImageFormatInfo2.html), [VkPipelineMultisampleStateCreateInfo](VkPipelineMultisampleStateCreateInfo.html), [VkSampleCountFlags](VkSampleCountFlags.html), [VkSampleLocationsInfoEXT](VkSampleLocationsInfoEXT.html), [vkCmdSetRasterizationSamplesEXT](vkCmdSetRasterizationSamplesEXT.html), [vkCmdSetSampleMaskEXT](vkCmdSetSampleMaskEXT.html), [vkGetPhysicalDeviceMultisamplePropertiesEXT](vkGetPhysicalDeviceMultisamplePropertiesEXT.html), [vkGetPhysicalDeviceSparseImageFormatProperties](vkGetPhysicalDeviceSparseImageFormatProperties.html)

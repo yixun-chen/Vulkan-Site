@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureGeometryMotionTrianglesDataNV-sType-sType) VUID-VkAccelerationStructureGeometryMotionTrianglesDataNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_MOTION_TRIANGLES_DATA_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_MOTION_TRIANGLES_DATA_NV](VkStructureType.html)
 
 [VK_NV_ray_tracing_motion_blur](VK_NV_ray_tracing_motion_blur.html), [VkDeviceOrHostAddressConstKHR](VkDeviceOrHostAddressConstKHR.html), [VkStructureType](VkStructureType.html)
 

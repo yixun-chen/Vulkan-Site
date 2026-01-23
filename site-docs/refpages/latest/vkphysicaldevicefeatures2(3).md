@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFeatures2-sType-sType) VUID-VkPhysicalDeviceFeatures2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2](VkStructureType.html)
 
 [VK_KHR_get_physical_device_properties2](VK_KHR_get_physical_device_properties2.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkPhysicalDeviceFeatures](VkPhysicalDeviceFeatures.html), [VkStructureType](VkStructureType.html), [vkGetPhysicalDeviceFeatures2](vkGetPhysicalDeviceFeatures2.html), [vkGetPhysicalDeviceFeatures2](vkGetPhysicalDeviceFeatures2.html)
 

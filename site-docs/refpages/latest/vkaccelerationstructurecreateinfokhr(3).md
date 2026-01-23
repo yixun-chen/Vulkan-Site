@@ -71,16 +71,16 @@ If `deviceAddress` is zero, no specific address is requested.
 Applications **should** avoid creating acceleration structures with
 application-provided addresses and implementation-provided addresses in the
 same process, to reduce the likelihood of
-`VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR` errors.
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR](VkResult.html) errors.
 
 |  | The expected usage for this is that a trace capture/replay tool will add the
 | --- | --- |
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` flag to all buffers
-that use `VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT`, and will add
-`VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT` to all buffers used as
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkBufferCreateFlagBits.html) flag to all buffers
+that use [VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](VkBufferUsageFlagBits.html), and will add
+[VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](VkBufferUsageFlagBits.html) to all buffers used as
 storage for an acceleration structure where `deviceAddress` is not zero.
 This also means that the tool will need to add
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT` to memory allocations to allow
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](VkMemoryAllocateFlagBits.html) to memory allocations to allow
 the flag to be set where the application may not have otherwise required it.
 During capture the tool will save the queried opaque device addresses in the
 trace.
@@ -91,21 +91,21 @@ Implementations are expected to separate such buffers in the GPU address
 space so normal allocations will avoid using these addresses.
 Applications and tools should avoid mixing application-provided and
 implementation-provided addresses for buffers created with
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT`, to avoid address
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkBufferCreateFlagBits.html), to avoid address
 space allocation conflicts. |
 
 Applications **should** create an acceleration structure with a specific
 [VkAccelerationStructureTypeKHR](VkAccelerationStructureTypeKHR.html) other than
-`VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR`.
+[VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](VkAccelerationStructureTypeKHR.html).
 
-|  | `VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR` is intended to be used by
+|  | [VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](VkAccelerationStructureTypeKHR.html) is intended to be used by
 | --- | --- |
 API translation layers.
 This can be used at acceleration structure creation time in cases where the
 actual acceleration structure type (top or bottom) is not yet known.
 The actual acceleration structure type must be specified as
-`VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR` or
-`VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR` when the build is
+[VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR](VkAccelerationStructureTypeKHR.html) or
+[VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR](VkAccelerationStructureTypeKHR.html) when the build is
 performed. |
 
 If the acceleration structure will be the target of a build operation, the
@@ -117,8 +117,8 @@ copy, [vkCmdWriteAccelerationStructuresPropertiesKHR](vkCmdWriteAccelerationStru
 compacted size required.
 
 If the acceleration structure will be the target of a build operation with
-`VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV` it **must** include
-`VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV` in `createFlags`
+[VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV](VkBuildAccelerationStructureFlagBitsKHR.html) it **must** include
+[VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV](VkAccelerationStructureCreateFlagBitsKHR.html) in `createFlags`
 and include [VkAccelerationStructureMotionInfoNV](VkAccelerationStructureMotionInfoNV.html) as an extension
 structure in `pNext` with the number of instances as metadata for the
 object.
@@ -129,7 +129,7 @@ Valid Usage
 [](#VUID-VkAccelerationStructureCreateInfoKHR-deviceAddress-03612) VUID-VkAccelerationStructureCreateInfoKHR-deviceAddress-03612
 
 If `deviceAddress` is not zero, `createFlags` **must** include
-`VK_ACCELERATION_STRUCTURE_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR`
+[VK_ACCELERATION_STRUCTURE_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR](VkAccelerationStructureCreateFlagBitsKHR.html)
 
 * 
 [](#VUID-VkAccelerationStructureCreateInfoKHR-deviceAddress-09488) VUID-VkAccelerationStructureCreateInfoKHR-deviceAddress-09488
@@ -160,22 +160,22 @@ which `deviceAddress` was retrieved
 [](#VUID-VkAccelerationStructureCreateInfoKHR-createFlags-03613) VUID-VkAccelerationStructureCreateInfoKHR-createFlags-03613
 
 If `createFlags` includes
-`VK_ACCELERATION_STRUCTURE_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR`,
+[VK_ACCELERATION_STRUCTURE_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR](VkAccelerationStructureCreateFlagBitsKHR.html),
 [VkPhysicalDeviceAccelerationStructureFeaturesKHR](VkPhysicalDeviceAccelerationStructureFeaturesKHR.html)::`accelerationStructureCaptureReplay`
-**must** be `VK_TRUE`
+**must** be [VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-VkAccelerationStructureCreateInfoKHR-buffer-03614) VUID-VkAccelerationStructureCreateInfoKHR-buffer-03614
 
 `buffer` **must** have been created with the
-`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR` usage flag
+[VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR](VkBufferUsageFlagBits.html) usage flag
 set
 
 * 
 [](#VUID-VkAccelerationStructureCreateInfoKHR-buffer-03615) VUID-VkAccelerationStructureCreateInfoKHR-buffer-03615
 
 `buffer` **must** not have been created with
-`VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](VkBufferCreateFlagBits.html)
 
 * 
 [](#VUID-VkAccelerationStructureCreateInfoKHR-offset-03616) VUID-VkAccelerationStructureCreateInfoKHR-offset-03616
@@ -191,9 +191,9 @@ the size of `buffer`
 * 
 [](#VUID-VkAccelerationStructureCreateInfoKHR-createFlags-04954) VUID-VkAccelerationStructureCreateInfoKHR-createFlags-04954
 
-If `VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV` is set in
+If [VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV](VkAccelerationStructureCreateFlagBitsKHR.html) is set in
 `createFlags` and `type` is
-`VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR`, one member of the
+[VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR](VkAccelerationStructureTypeKHR.html), one member of the
 `pNext` chain **must** be a pointer to a valid instance of
 [VkAccelerationStructureMotionInfoNV](VkAccelerationStructureMotionInfoNV.html)
 
@@ -203,13 +203,13 @@ If `VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV` is set in
 If any geometry includes
 `VkAccelerationStructureGeometryMotionTrianglesDataNV` then
 `createFlags` **must** contain
-`VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV`
+[VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV](VkAccelerationStructureCreateFlagBitsKHR.html)
 
 * 
 [](#VUID-VkAccelerationStructureCreateInfoKHR-createFlags-08108) VUID-VkAccelerationStructureCreateInfoKHR-createFlags-08108
 
 If `createFlags` includes
-`VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`,
+[VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](VkAccelerationStructureCreateFlagBitsKHR.html),
 the [    `descriptorBufferCaptureReplay`](../../../../spec/latest/chapters/features.html#features-descriptorBufferCaptureReplay) feature **must** be enabled
 
 * 
@@ -218,14 +218,14 @@ the [    `descriptorBufferCaptureReplay`](../../../../spec/latest/chapters/featu
 If the `pNext` chain includes a
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](VkOpaqueCaptureDescriptorDataCreateInfoEXT.html) structure,
 `createFlags` **must** contain
-`VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`
+[VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](VkAccelerationStructureCreateFlagBitsKHR.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkAccelerationStructureCreateInfoKHR-sType-sType) VUID-VkAccelerationStructureCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkAccelerationStructureCreateInfoKHR-pNext-pNext) VUID-VkAccelerationStructureCreateInfoKHR-pNext-pNext

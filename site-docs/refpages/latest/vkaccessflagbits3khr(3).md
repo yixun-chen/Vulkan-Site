@@ -28,7 +28,7 @@ typedef VkFlags64 VkAccessFlagBits3KHR;
 static const VkAccessFlagBits3KHR VK_ACCESS_3_NONE_KHR = 0ULL;
 
 * 
-`VK_ACCESS_3_NONE_KHR` specifies no additional accesses.
+[VK_ACCESS_3_NONE_KHR](#) specifies no additional accesses.
 
 [VK_KHR_maintenance8](VK_KHR_maintenance8.html), [VkAccessFlags3KHR](VkAccessFlags3KHR.html)
 

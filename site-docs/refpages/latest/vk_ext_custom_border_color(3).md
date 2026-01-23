@@ -126,19 +126,19 @@ Peter Quayle, Imagination Technologies
 
 This extension provides cross-vendor functionality to specify a custom
 border color for use when the sampler address mode
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER` is used.
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER](VkSamplerAddressMode.html) is used.
 
 To create a sampler which uses a custom border color set
 [VkSamplerCreateInfo](VkSamplerCreateInfo.html)::`borderColor` to one of:
 
 * 
-`VK_BORDER_COLOR_FLOAT_CUSTOM_EXT`
+[VK_BORDER_COLOR_FLOAT_CUSTOM_EXT](VkBorderColor.html)
 
 * 
-`VK_BORDER_COLOR_INT_CUSTOM_EXT`
+[VK_BORDER_COLOR_INT_CUSTOM_EXT](VkBorderColor.html)
 
-When `VK_BORDER_COLOR_FLOAT_CUSTOM_EXT` or
-`VK_BORDER_COLOR_INT_CUSTOM_EXT` is used, applications must provide a
+When [VK_BORDER_COLOR_FLOAT_CUSTOM_EXT](VkBorderColor.html) or
+[VK_BORDER_COLOR_INT_CUSTOM_EXT](VkBorderColor.html) is used, applications must provide a
 [VkSamplerCustomBorderColorCreateInfoEXT](VkSamplerCustomBorderColorCreateInfoEXT.html) in the `pNext` chain for
 [VkSamplerCreateInfo](VkSamplerCreateInfo.html).
 
@@ -166,21 +166,21 @@ Extending [VkSamplerCreateInfo](VkSamplerCreateInfo.html):
 * 
 Extending [VkBorderColor](VkBorderColor.html):
 
-`VK_BORDER_COLOR_FLOAT_CUSTOM_EXT`
+[VK_BORDER_COLOR_FLOAT_CUSTOM_EXT](VkBorderColor.html)
 
 * 
-`VK_BORDER_COLOR_INT_CUSTOM_EXT`
+[VK_BORDER_COLOR_INT_CUSTOM_EXT](VkBorderColor.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT](VkStructureType.html)
 
 1) Should VkClearColorValue be used for the border color value, or should we
 have our own struct/union? Do we need to specify the type of the input

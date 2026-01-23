@@ -75,9 +75,9 @@ on the same underlying physical device as `device`
 [](#VUID-VkImportMemoryMetalHandleInfoEXT-handleType-10410) VUID-VkImportMemoryMetalHandleInfoEXT-handleType-10410
 
 If `handleType` is not `0`, it **must** be
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLBUFFER_BIT_EXT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLHEAP_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLBUFFER_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLHEAP_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html)
 
 * 
 [](#VUID-VkImportMemoryMetalHandleInfoEXT-handleType-10411) VUID-VkImportMemoryMetalHandleInfoEXT-handleType-10411
@@ -96,7 +96,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMemoryMetalHandleInfoEXT-sType-sType) VUID-VkImportMemoryMetalHandleInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_MEMORY_METAL_HANDLE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_MEMORY_METAL_HANDLE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkImportMemoryMetalHandleInfoEXT-handleType-parameter) VUID-VkImportMemoryMetalHandleInfoEXT-handleType-parameter

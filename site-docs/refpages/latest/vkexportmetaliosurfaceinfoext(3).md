@@ -56,7 +56,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMetalIOSurfaceInfoEXT-sType-sType) VUID-VkExportMetalIOSurfaceInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_METAL_IO_SURFACE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_METAL_IO_SURFACE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkExportMetalIOSurfaceInfoEXT-image-parameter) VUID-VkExportMetalIOSurfaceInfoEXT-image-parameter

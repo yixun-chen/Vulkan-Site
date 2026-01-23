@@ -103,14 +103,14 @@ inclusive
 [](#VUID-VkVertexInputBindingDescription2EXT-divisor-06227) VUID-VkVertexInputBindingDescription2EXT-divisor-06227
 
 If `divisor` is not `1` then `inputRate` **must** be of type
-`VK_VERTEX_INPUT_RATE_INSTANCE`
+[VK_VERTEX_INPUT_RATE_INSTANCE](VkVertexInputRate.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkVertexInputBindingDescription2EXT-sType-sType) VUID-VkVertexInputBindingDescription2EXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VERTEX_INPUT_BINDING_DESCRIPTION_2_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VERTEX_INPUT_BINDING_DESCRIPTION_2_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkVertexInputBindingDescription2EXT-inputRate-parameter) VUID-VkVertexInputBindingDescription2EXT-inputRate-parameter

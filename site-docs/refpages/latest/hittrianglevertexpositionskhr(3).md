@@ -59,7 +59,7 @@ used only if the value of `HitKindKHR` is
 
 The acceleration structure corresponding to the current intersection
 **must** have been built with
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR`
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR](VkBuildAccelerationStructureFlagBitsKHR.html)
 
 No cross-references are available
 

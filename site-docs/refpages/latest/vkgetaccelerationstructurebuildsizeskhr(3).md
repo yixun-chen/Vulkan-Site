@@ -70,13 +70,13 @@ following properties:
 
 * 
 The build command is a host build command, and `buildType` is
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_KHR` or
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR`
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_KHR](VkAccelerationStructureBuildTypeKHR.html) or
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR](VkAccelerationStructureBuildTypeKHR.html)
 
 * 
 The build command is a device build command, and `buildType` is
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_DEVICE_KHR` or
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR`
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_DEVICE_KHR](VkAccelerationStructureBuildTypeKHR.html) or
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR](VkAccelerationStructureBuildTypeKHR.html)
 
 * 
 For [VkAccelerationStructureBuildGeometryInfoKHR](VkAccelerationStructureBuildGeometryInfoKHR.html):
@@ -101,21 +101,21 @@ member of the same element in `pBuildInfo`.
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_TRIANGLES_KHR`, the `vertexFormat` and
+[VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), the `vertexFormat` and
 `indexType` members of `geometry.triangles` are equal to the
 corresponding members of the same element in `pBuildInfo`.
 
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_TRIANGLES_KHR`, the `maxVertex` member of
+[VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), the `maxVertex` member of
 `geometry.triangles` is less than or equal to the corresponding
 member of the same element in `pBuildInfo`.
 
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_TRIANGLES_KHR`, if the applicable address in the
+[VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), if the applicable address in the
 `transformData` member of `geometry.triangles` is not `NULL`,
 the corresponding `transformData.hostAddress` parameter in
 `pBuildInfo` is not `NULL`.
@@ -123,7 +123,7 @@ the corresponding `transformData.hostAddress` parameter in
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`, the
+[VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](VkGeometryTypeKHR.html), the
 `numTriangles` member of the
 [VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX](VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX.html)
 structure in the `pNext` chain is less than or equal to the
@@ -132,7 +132,7 @@ corresponding member of the same element in `pBuildInfo`
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`, the
+[VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](VkGeometryTypeKHR.html), the
 `numVertices` member of the
 [VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX](VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX.html)
 structure in the `pNext` chain is less than or equal to the
@@ -141,7 +141,7 @@ corresponding member of the same element in `pBuildInfo`
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`, the
+[VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](VkGeometryTypeKHR.html), the
 `maxPrimitiveIndex` member of the
 [VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX](VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX.html)
 structure in the `pNext` chain is less than or equal to the
@@ -150,7 +150,7 @@ corresponding member of the same element in `pBuildInfo`
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`, the
+[VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](VkGeometryTypeKHR.html), the
 `maxGeometryIndex` member of the
 [VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX](VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX.html)
 structure in the `pNext` chain is less than or equal to the
@@ -159,7 +159,7 @@ corresponding member of the same element in `pBuildInfo`
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`, the
+[VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](VkGeometryTypeKHR.html), the
 `format` member of the
 [VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX](VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX.html)
 structure in the `pNext` chain is equal to the corresponding member
@@ -175,7 +175,7 @@ corresponding element of `pMaxPrimitiveCounts`.
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_TRIANGLES_KHR`, if the `pNext` chain contains
+[VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), if the `pNext` chain contains
 [VkAccelerationStructureTrianglesOpacityMicromapEXT](VkAccelerationStructureTrianglesOpacityMicromapEXT.html) the
 corresponding member of `pBuildInfo` also contains
 [VkAccelerationStructureTrianglesOpacityMicromapEXT](VkAccelerationStructureTrianglesOpacityMicromapEXT.html) and with an
@@ -184,7 +184,7 @@ equivalent `micromap`.
 * 
 For each element of either `pGeometries` or `ppGeometries` at a
 given index, with a `geometryType` member equal to
-`VK_GEOMETRY_TYPE_TRIANGLES_KHR`, if the `pNext` chain contains
+[VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), if the `pNext` chain contains
 [VkAccelerationStructureTrianglesDisplacementMicromapNV](VkAccelerationStructureTrianglesDisplacementMicromapNV.html) the
 corresponding member of `pBuildInfo` also contains
 [VkAccelerationStructureTrianglesDisplacementMicromapNV](VkAccelerationStructureTrianglesDisplacementMicromapNV.html) and with
@@ -198,10 +198,10 @@ Its `primitiveCount` member is less than or equal to the
 corresponding element of `pMaxPrimitiveCounts`.
 
 Similarly, the `updateScratchSize` value will support any build command
-specifying the `VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`
+specifying the [VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html)
 `mode` under the above conditions, and the `buildScratchSize` value
 will support any build command specifying the
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR` `mode` under the
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR](VkBuildAccelerationStructureModeKHR.html) `mode` under the
 above conditions.
 
 Valid Usage
@@ -229,7 +229,7 @@ If `pBuildInfo->geometryCount` is not `0`, `pMaxPrimitiveCounts`
 [](#VUID-vkGetAccelerationStructureBuildSizesKHR-pBuildInfo-03785) VUID-vkGetAccelerationStructureBuildSizesKHR-pBuildInfo-03785
 
 If `pBuildInfo->pGeometries` or `pBuildInfo->ppGeometries` has a
-`geometryType` of `VK_GEOMETRY_TYPE_INSTANCES_KHR`, each
+`geometryType` of [VK_GEOMETRY_TYPE_INSTANCES_KHR](VkGeometryTypeKHR.html), each
 `pMaxPrimitiveCounts`[i] **must** be less than or equal to
 [VkPhysicalDeviceAccelerationStructurePropertiesKHR](VkPhysicalDeviceAccelerationStructurePropertiesKHR.html)::`maxInstanceCount`
 

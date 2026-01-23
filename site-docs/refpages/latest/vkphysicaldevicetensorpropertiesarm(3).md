@@ -91,7 +91,7 @@ with `OpTensorReadARM` or written to a tensor with
 `maxDescriptorSetStorageTensors` is the maximum number of tensors
 that **can** be included in descriptor bindings in a pipeline layout across
 all pipeline shader stages and descriptor set numbers.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_TENSOR_ARM` count
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html) count
 against this limit.
 
 * 
@@ -99,7 +99,7 @@ against this limit.
 `maxPerStageDescriptorSetStorageTensors` is the maximum number of
 tensors that **can** be accessible to a single shader stage in a pipeline
 layout.
-Descriptors with a type of `VK_DESCRIPTOR_TYPE_TENSOR_ARM` count
+Descriptors with a type of [VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html) count
 against this limit.
 A descriptor is accessible to a pipeline shader stage when the
 `stageFlags` member of the [VkDescriptorSetLayoutBinding](VkDescriptorSetLayoutBinding.html)
@@ -110,7 +110,7 @@ structure has the bit for that shader stage set.
 `maxDescriptorSetUpdateAfterBindStorageTensors` is similar to
 `maxDescriptorSetStorageTensors` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -118,7 +118,7 @@ set.
 `maxPerStageDescriptorUpdateAfterBindStorageTensors` is similar to
 `maxPerStageDescriptorSetStorageTensors` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -126,7 +126,7 @@ set.
 `shaderStorageTensorArrayNonUniformIndexingNative` is a boolean
 value indicating whether storage tensor descriptors natively support
 nonuniform indexing.
-If this is `VK_FALSE`, then a single dynamic instance of an
+If this is [VK_FALSE](VK_FALSE.html), then a single dynamic instance of an
 instruction that nonuniformly indexes an array of storage buffers may
 execute multiple times in order to access all the descriptors.
 
@@ -135,8 +135,8 @@ execute multiple times in order to access all the descriptors.
 is a bitfield of [VkShaderStageFlagBits](VkShaderStageFlagBits.html) describing the shader
 stages that **can** access tensor resources.
 `shaderTensorSupportedStages` will have the
-`VK_SHADER_STAGE_COMPUTE_BIT` bit set if any of the physical
-device’s queues support `VK_QUEUE_COMPUTE_BIT`.
+[VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html) bit set if any of the physical
+device’s queues support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html).
 
 If the `VkPhysicalDeviceTensorPropertiesARM` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html) structure passed to
@@ -148,7 +148,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceTensorPropertiesARM-sType-sType) VUID-VkPhysicalDeviceTensorPropertiesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TENSOR_PROPERTIES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TENSOR_PROPERTIES_ARM](VkStructureType.html)
 
 [VK_ARM_tensors](VK_ARM_tensors.html), `VkBool32`, [VkShaderStageFlags](VkShaderStageFlags.html), [VkStructureType](VkStructureType.html)
 

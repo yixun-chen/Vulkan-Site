@@ -62,7 +62,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePCIBusInfoPropertiesEXT-sType-sType) VUID-VkPhysicalDevicePCIBusInfoPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_pci_bus_info](VK_EXT_pci_bus_info.html), [VkStructureType](VkStructureType.html)
 

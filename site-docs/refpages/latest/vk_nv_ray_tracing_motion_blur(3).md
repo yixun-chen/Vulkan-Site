@@ -156,28 +156,28 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkAccelerationStructureCreateFlagBitsKHR](VkAccelerationStructureCreateFlagBitsKHR.html):
 
-`VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV`
+[VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV](VkAccelerationStructureCreateFlagBitsKHR.html)
 
 Extending [VkBuildAccelerationStructureFlagBitsKHR](VkBuildAccelerationStructureFlagBitsKHR.html):
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV`
+[VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV](VkBuildAccelerationStructureFlagBitsKHR.html)
 
 Extending [VkPipelineCreateFlagBits](VkPipelineCreateFlagBits.html):
 
 * 
-`VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV`
+[VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV](VkPipelineCreateFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_MOTION_TRIANGLES_DATA_NV`
+[VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_MOTION_TRIANGLES_DATA_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MOTION_INFO_NV`
+[VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MOTION_INFO_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_MOTION_BLUR_FEATURES_NV`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_MOTION_BLUR_FEATURES_NV](VkStructureType.html)
 
 (1) What size is VkAccelerationStructureMotionInstanceNV?
 

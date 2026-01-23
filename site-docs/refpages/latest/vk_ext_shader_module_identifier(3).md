@@ -113,7 +113,7 @@ A pipeline creation call with such a module **may** succeed if a pipeline could
 be created without invoking compilation, and information inside the SPIR-V
 module is not required by the implementation.
 
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT` **must** be used
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](VkPipelineCreateFlagBits.html) **must** be used
 if only the identifier is provided, and this use case is intended to work
 like a non-blocking, speculative compile.
 Applications **can** fallback as necessary.
@@ -158,21 +158,21 @@ Extending [VkPipelineShaderStageCreateInfo](VkPipelineShaderStageCreateInfo.html
 `VK_EXT_SHADER_MODULE_IDENTIFIER_SPEC_VERSION`
 
 * 
-`VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT`
+[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT](VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT.html)
 
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MODULE_IDENTIFIER_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MODULE_IDENTIFIER_FEATURES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MODULE_IDENTIFIER_PROPERTIES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MODULE_IDENTIFIER_PROPERTIES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_MODULE_IDENTIFIER_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_MODULE_IDENTIFIER_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SHADER_MODULE_IDENTIFIER_EXT`
+[VK_STRUCTURE_TYPE_SHADER_MODULE_IDENTIFIER_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2022-03-16 (Hans-Kristian Arntzen)

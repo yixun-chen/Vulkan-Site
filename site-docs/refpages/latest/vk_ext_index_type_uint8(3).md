@@ -104,12 +104,12 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkIndexType](VkIndexType.html):
 
-`VK_INDEX_TYPE_UINT8_EXT`
+[VK_INDEX_TYPE_UINT8_EXT](VkIndexType.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2019-05-02 (Piers Daniell)

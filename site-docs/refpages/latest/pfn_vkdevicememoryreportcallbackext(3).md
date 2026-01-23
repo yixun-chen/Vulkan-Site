@@ -24,7 +24,7 @@ The prototype for the
 function implemented by the application is:
 
 // Provided by VK_EXT_device_memory_report
-typedef void (VKAPI_PTR *PFN_vkDeviceMemoryReportCallbackEXT)(
+typedef void (*PFN_vkDeviceMemoryReportCallbackEXT)(
     const VkDeviceMemoryReportCallbackDataEXT*  pCallbackData,
     void*                                       pUserData);
 

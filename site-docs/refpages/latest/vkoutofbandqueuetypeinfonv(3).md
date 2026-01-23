@@ -44,7 +44,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkOutOfBandQueueTypeInfoNV-sType-sType) VUID-VkOutOfBandQueueTypeInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_OUT_OF_BAND_QUEUE_TYPE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_OUT_OF_BAND_QUEUE_TYPE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkOutOfBandQueueTypeInfoNV-queueType-parameter) VUID-VkOutOfBandQueueTypeInfoNV-queueType-parameter

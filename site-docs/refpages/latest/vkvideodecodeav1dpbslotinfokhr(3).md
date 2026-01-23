@@ -153,7 +153,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoDecodeAV1DpbSlotInfoKHR-sType-sType) VUID-VkVideoDecodeAV1DpbSlotInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_DPB_SLOT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_DPB_SLOT_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoDecodeAV1DpbSlotInfoKHR-pStdReferenceInfo-parameter) VUID-VkVideoDecodeAV1DpbSlotInfoKHR-pStdReferenceInfo-parameter

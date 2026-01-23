@@ -91,14 +91,14 @@ associated [semaphore signal    operation](../../../../spec/latest/chapters/sync
 [](#VUID-VkSemaphoreGetZirconHandleInfoFUCHSIA-semaphore-04763) VUID-VkSemaphoreGetZirconHandleInfoFUCHSIA-semaphore-04763
 
 `semaphore` **must** have been created with a [VkSemaphoreType](VkSemaphoreType.html) of
-`VK_SEMAPHORE_TYPE_BINARY`
+[VK_SEMAPHORE_TYPE_BINARY](VkSemaphoreType.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSemaphoreGetZirconHandleInfoFUCHSIA-sType-sType) VUID-VkSemaphoreGetZirconHandleInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SEMAPHORE_GET_ZIRCON_HANDLE_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SEMAPHORE_GET_ZIRCON_HANDLE_INFO_FUCHSIA](VkStructureType.html)
 
 * 
 [](#VUID-VkSemaphoreGetZirconHandleInfoFUCHSIA-pNext-pNext) VUID-VkSemaphoreGetZirconHandleInfoFUCHSIA-pNext-pNext

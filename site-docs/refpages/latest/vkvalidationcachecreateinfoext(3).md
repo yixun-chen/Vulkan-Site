@@ -72,7 +72,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkValidationCacheCreateInfoEXT-sType-sType) VUID-VkValidationCacheCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VALIDATION_CACHE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VALIDATION_CACHE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkValidationCacheCreateInfoEXT-pNext-pNext) VUID-VkValidationCacheCreateInfoEXT-pNext-pNext

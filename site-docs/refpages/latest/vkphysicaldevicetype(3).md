@@ -31,23 +31,23 @@ typedef enum VkPhysicalDeviceType {
 } VkPhysicalDeviceType;
 
 * 
-`VK_PHYSICAL_DEVICE_TYPE_OTHER` - the device does not match any
+[VK_PHYSICAL_DEVICE_TYPE_OTHER](#) - the device does not match any
 other available types.
 
 * 
-`VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU` - the device is typically
+[VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU](#) - the device is typically
 one embedded in or tightly coupled with the host.
 
 * 
-`VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU` - the device is typically a
+[VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU](#) - the device is typically a
 separate processor connected to the host via an interlink.
 
 * 
-`VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU` - the device is typically a
+[VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU](#) - the device is typically a
 virtual node in a virtualization environment.
 
 * 
-`VK_PHYSICAL_DEVICE_TYPE_CPU` - the device is typically running on
+[VK_PHYSICAL_DEVICE_TYPE_CPU](#) - the device is typically running on
 the same processors as the host.
 
 The physical device type is advertised for informational purposes only, and

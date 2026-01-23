@@ -53,7 +53,7 @@ If the `VkPhysicalDeviceShaderFloat8FeaturesEXT` structure is included in the `p
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceShaderFloat8FeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -61,7 +61,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderFloat8FeaturesEXT-sType-sType) VUID-VkPhysicalDeviceShaderFloat8FeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT8_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT8_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_shader_float8](VK_EXT_shader_float8.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

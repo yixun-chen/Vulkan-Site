@@ -47,7 +47,7 @@ If the `VkPhysicalDevicePresentWait2FeaturesKHR` structure is included in the `p
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDevicePresentWait2FeaturesKHR`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePresentWait2FeaturesKHR-sType-sType) VUID-VkPhysicalDevicePresentWait2FeaturesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_WAIT_2_FEATURES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_WAIT_2_FEATURES_KHR](VkStructureType.html)
 
 [VK_KHR_present_wait2](VK_KHR_present_wait2.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

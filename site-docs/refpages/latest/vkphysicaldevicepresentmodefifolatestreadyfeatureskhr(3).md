@@ -43,7 +43,7 @@ structure.
 * 
  `presentModeFifoLatestReady`
 specifies whether the implementation supports the
-`VK_PRESENT_MODE_FIFO_LATEST_READY_KHR` present mode.
+[VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](VkPresentModeKHR.html) present mode.
 
 If the `VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -51,7 +51,7 @@ If the `VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR` structure is incl
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -59,7 +59,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR-sType-sType) VUID-VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_KHR](VkStructureType.html)
 
 [VK_EXT_present_mode_fifo_latest_ready](VK_EXT_present_mode_fifo_latest_ready.html), [VK_KHR_present_mode_fifo_latest_ready](VK_KHR_present_mode_fifo_latest_ready.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

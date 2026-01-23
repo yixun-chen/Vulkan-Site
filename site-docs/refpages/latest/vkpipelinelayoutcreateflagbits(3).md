@@ -25,12 +25,12 @@ typedef enum VkPipelineLayoutCreateFlagBits {
 } VkPipelineLayoutCreateFlagBits;
 
 * 
-`VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT` specifies that
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](#) specifies that
 implementations **must** ensure that the properties and/or absence of a
 particular descriptor set do not influence any other properties of the
 pipeline layout.
 This allows pipelines libraries linked without
-`VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT` to be created
+[VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT](VkPipelineCreateFlagBits.html) to be created
 with a subset of the total descriptor sets.
 
 [VK_EXT_graphics_pipeline_library](VK_EXT_graphics_pipeline_library.html), [VkPipelineLayoutCreateFlags](VkPipelineLayoutCreateFlags.html)

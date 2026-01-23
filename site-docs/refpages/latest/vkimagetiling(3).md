@@ -30,17 +30,17 @@ typedef enum VkImageTiling {
 } VkImageTiling;
 
 * 
-`VK_IMAGE_TILING_OPTIMAL` specifies optimal tiling (texels are laid
+[VK_IMAGE_TILING_OPTIMAL](#) specifies optimal tiling (texels are laid
 out in an implementation-dependent arrangement, for more efficient
 memory access).
 
 * 
-`VK_IMAGE_TILING_LINEAR` specifies linear tiling (texels are laid
+[VK_IMAGE_TILING_LINEAR](#) specifies linear tiling (texels are laid
 out in memory in row-major order, possibly with some padding on each
 row).
 
 * 
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT` specifies that the image’s
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](#) specifies that the image’s
 tiling is defined by a [Linux DRM format    modifier](../../../../spec/latest/appendices/glossary.html#glossary-drm-format-modifier).
 The modifier is specified at image creation with
 [VkImageDrmFormatModifierListCreateInfoEXT](VkImageDrmFormatModifierListCreateInfoEXT.html) or

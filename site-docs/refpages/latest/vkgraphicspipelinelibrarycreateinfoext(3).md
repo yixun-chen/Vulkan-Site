@@ -48,7 +48,7 @@ libraries is aggregated with said subset.
 
 If this structure is omitted, and either
 [VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html)::`flags` includes
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR` or the
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](VkPipelineCreateFlagBits.html) or the
 [VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html)::`pNext` chain includes a
 [VkPipelineLibraryCreateInfoKHR](VkPipelineLibraryCreateInfoKHR.html) structure with a `libraryCount`
 greater than `0`, it is as if `flags` is `0`.
@@ -61,7 +61,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGraphicsPipelineLibraryCreateInfoEXT-sType-sType) VUID-VkGraphicsPipelineLibraryCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_LIBRARY_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_LIBRARY_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkGraphicsPipelineLibraryCreateInfoEXT-flags-parameter) VUID-VkGraphicsPipelineLibraryCreateInfoEXT-flags-parameter

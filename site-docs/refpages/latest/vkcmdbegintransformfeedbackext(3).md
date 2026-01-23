@@ -55,10 +55,10 @@ feedback from the previous location.
 In that case, a pipeline barrier is required between the calls to
 `vkCmdEndTransformFeedbackEXT` and
 `vkCmdBeginTransformFeedbackEXT`, with
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT` as the source and
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](VkPipelineStageFlagBits.html) as the source and
 destination stages,
-`VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT` as the source
-access and `VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT` as
+[VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT](VkAccessFlagBits.html) as the source
+access and [VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT](VkAccessFlagBits.html) as
 the destination access.
 If `pCounterBuffers` is `NULL`, then transform feedback will start
 capturing vertex data to byte offset zero in all bound transform
@@ -135,7 +135,7 @@ If `pCounterBuffer` is `NULL`, then `pCounterBufferOffsets`
 
 For each buffer handle in the `pCounterBuffers` array that is not
 [VK_NULL_HANDLE](VK_NULL_HANDLE.html) it **must** have been created with the
-`VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT` usage
+[VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT](VkBufferUsageFlagBits.html) usage
 flag set
 
 * 
@@ -151,7 +151,7 @@ by [vkCmdBindTransformFeedbackBuffersEXT](vkCmdBindTransformFeedbackBuffersEXT.h
 If the [`shaderObject`](../../../../spec/latest/chapters/features.html#features-shaderObject) feature is not
 enabled, a
 valid graphics pipeline **must** be bound to
-`VK_PIPELINE_BIND_POINT_GRAPHICS`
+[VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html)
 
 * 
 [](#VUID-vkCmdBeginTransformFeedbackEXT-None-04128) VUID-vkCmdBeginTransformFeedbackEXT-None-04128
@@ -193,7 +193,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBeginTransformFeedbackEXT-commandBuffer-cmdpool) VUID-vkCmdBeginTransformFeedbackEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBeginTransformFeedbackEXT-renderpass) VUID-vkCmdBeginTransformFeedbackEXT-renderpass

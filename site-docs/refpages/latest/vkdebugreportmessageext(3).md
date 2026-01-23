@@ -79,7 +79,7 @@ Valid Usage
 * 
 [](#VUID-vkDebugReportMessageEXT-objectType-01498) VUID-vkDebugReportMessageEXT-objectType-01498
 
-If `objectType` is not `VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT`
+If `objectType` is not [VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT](VkDebugReportObjectTypeEXT.html)
 and `object` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `object` **must** be a
 Vulkan object of the corresponding type associated with `objectType`
 as defined in [VkDebugReportObjectTypeEXT and Vulkan Handle Relationship](../../../../spec/latest/chapters/debugging.html#debug-report-object-types)

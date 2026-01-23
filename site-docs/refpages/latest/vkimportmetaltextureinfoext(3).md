@@ -66,7 +66,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMetalTextureInfoEXT-sType-sType) VUID-VkImportMetalTextureInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_METAL_TEXTURE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_METAL_TEXTURE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkImportMetalTextureInfoEXT-plane-parameter) VUID-VkImportMetalTextureInfoEXT-plane-parameter

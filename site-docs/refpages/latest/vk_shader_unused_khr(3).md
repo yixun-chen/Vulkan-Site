@@ -17,7 +17,7 @@
 
 VK_SHADER_UNUSED_KHR - Sentinel for an unused shader index
 
-`VK_SHADER_UNUSED_KHR` is a special shader index used to indicate that a
+[VK_SHADER_UNUSED_KHR](#) is a special shader index used to indicate that a
 ray generation, miss, or callable shader member is not used.
 
 #define VK_SHADER_UNUSED_KHR              (~0U)

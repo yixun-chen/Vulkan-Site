@@ -33,19 +33,19 @@ typedef enum VkPolygonMode {
 } VkPolygonMode;
 
 * 
-`VK_POLYGON_MODE_POINT` specifies that polygon vertices are drawn as
+[VK_POLYGON_MODE_POINT](#) specifies that polygon vertices are drawn as
 points.
 
 * 
-`VK_POLYGON_MODE_LINE` specifies that polygon edges are drawn as
+[VK_POLYGON_MODE_LINE](#) specifies that polygon edges are drawn as
 line segments.
 
 * 
-`VK_POLYGON_MODE_FILL` specifies that polygons are rendered using
+[VK_POLYGON_MODE_FILL](#) specifies that polygons are rendered using
 the polygon rasterization rules in this section.
 
 * 
-`VK_POLYGON_MODE_FILL_RECTANGLE_NV` specifies that polygons are
+[VK_POLYGON_MODE_FILL_RECTANGLE_NV](#) specifies that polygons are
 rendered using polygon rasterization rules, modified to consider a
 sample within the primitive if the sample location is inside the
 axis-aligned bounding box of the triangle after projection.
@@ -58,26 +58,26 @@ In such a case, if two rectangles lie on either side of a common edge
 one of the triangles **must** produce a fragment that covers that sample
 during rasterization.
 
-Polygons rendered in `VK_POLYGON_MODE_FILL_RECTANGLE_NV` mode **may** be
+Polygons rendered in [VK_POLYGON_MODE_FILL_RECTANGLE_NV](#) mode **may** be
 clipped by the frustum or by user clip planes.
 If clipping is applied, the triangle is culled rather than clipped.
 
 Area calculation and facingness are determined for
-`VK_POLYGON_MODE_FILL_RECTANGLE_NV` mode using the triangle’s vertices.
+[VK_POLYGON_MODE_FILL_RECTANGLE_NV](#) mode using the triangle’s vertices.
 
 These modes affect only the final rasterization of polygons: in particular,
 a polygon’s vertices are shaded and the polygon is clipped and possibly
 culled before these modes are applied.
 
 If `VkPhysicalDeviceMaintenance5Properties`::`polygonModePointSize`
-is `VK_TRUE`, the point size of the final rasterization of polygons is
+is [VK_TRUE](VK_TRUE.html), the point size of the final rasterization of polygons is
 taken from `PointSize` when [polygon mode](../../../../spec/latest/chapters/primsrast.html#primsrast-polygonmode) is
-`VK_POLYGON_MODE_POINT`.
+[VK_POLYGON_MODE_POINT](#).
 
 Otherwise, if
 `VkPhysicalDeviceMaintenance5Properties`::`polygonModePointSize` is
-`VK_FALSE`, the point size of the final rasterization of polygons is 1.0
-when [polygon mode](../../../../spec/latest/chapters/primsrast.html#primsrast-polygonmode) is `VK_POLYGON_MODE_POINT`.
+[VK_FALSE](VK_FALSE.html), the point size of the final rasterization of polygons is 1.0
+when [polygon mode](../../../../spec/latest/chapters/primsrast.html#primsrast-polygonmode) is [VK_POLYGON_MODE_POINT](#).
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkPipelineRasterizationStateCreateInfo](VkPipelineRasterizationStateCreateInfo.html), [vkCmdSetPolygonModeEXT](vkCmdSetPolygonModeEXT.html)
 

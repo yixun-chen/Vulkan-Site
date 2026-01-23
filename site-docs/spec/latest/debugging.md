@@ -153,58 +153,58 @@ typedef enum VkObjectType {
 
 | [VkObjectType](#VkObjectType) | Vulkan Handle Type |
 | --- | --- |
-| `VK_OBJECT_TYPE_UNKNOWN` | Unknown/Undefined Handle |
-| `VK_OBJECT_TYPE_INSTANCE` | [VkInstance](initialization.html#VkInstance) |
-| `VK_OBJECT_TYPE_PHYSICAL_DEVICE` | [VkPhysicalDevice](devsandqueues.html#VkPhysicalDevice) |
-| `VK_OBJECT_TYPE_DEVICE` | [VkDevice](devsandqueues.html#VkDevice) |
-| `VK_OBJECT_TYPE_QUEUE` | [VkQueue](devsandqueues.html#VkQueue) |
-| `VK_OBJECT_TYPE_SEMAPHORE` | [VkSemaphore](synchronization.html#VkSemaphore) |
-| `VK_OBJECT_TYPE_COMMAND_BUFFER` | [VkCommandBuffer](cmdbuffers.html#VkCommandBuffer) |
-| `VK_OBJECT_TYPE_FENCE` | [VkFence](synchronization.html#VkFence) |
-| `VK_OBJECT_TYPE_DEVICE_MEMORY` | [VkDeviceMemory](memory.html#VkDeviceMemory) |
-| `VK_OBJECT_TYPE_BUFFER` | [VkBuffer](resources.html#VkBuffer) |
-| `VK_OBJECT_TYPE_IMAGE` | [VkImage](resources.html#VkImage) |
-| `VK_OBJECT_TYPE_EVENT` | [VkEvent](synchronization.html#VkEvent) |
-| `VK_OBJECT_TYPE_QUERY_POOL` | [VkQueryPool](queries.html#VkQueryPool) |
-| `VK_OBJECT_TYPE_BUFFER_VIEW` | [VkBufferView](resources.html#VkBufferView) |
-| `VK_OBJECT_TYPE_IMAGE_VIEW` | [VkImageView](resources.html#VkImageView) |
-| `VK_OBJECT_TYPE_SHADER_MODULE` | [VkShaderModule](shaders.html#VkShaderModule) |
-| `VK_OBJECT_TYPE_PIPELINE_CACHE` | [VkPipelineCache](pipelines.html#VkPipelineCache) |
-| `VK_OBJECT_TYPE_PIPELINE_LAYOUT` | [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) |
-| `VK_OBJECT_TYPE_RENDER_PASS` | [VkRenderPass](renderpass.html#VkRenderPass) |
-| `VK_OBJECT_TYPE_PIPELINE` | [VkPipeline](pipelines.html#VkPipeline) |
-| `VK_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT` | [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) |
-| `VK_OBJECT_TYPE_SAMPLER` | [VkSampler](samplers.html#VkSampler) |
-| `VK_OBJECT_TYPE_DESCRIPTOR_POOL` | [VkDescriptorPool](descriptorsets.html#VkDescriptorPool) |
-| `VK_OBJECT_TYPE_DESCRIPTOR_SET` | [VkDescriptorSet](descriptorsets.html#VkDescriptorSet) |
-| `VK_OBJECT_TYPE_FRAMEBUFFER` | [VkFramebuffer](renderpass.html#VkFramebuffer) |
-| `VK_OBJECT_TYPE_COMMAND_POOL` | [VkCommandPool](cmdbuffers.html#VkCommandPool) |
-| `VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION` | [VkSamplerYcbcrConversion](samplers.html#VkSamplerYcbcrConversion) |
-| `VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE` | [VkDescriptorUpdateTemplate](descriptorsets.html#VkDescriptorUpdateTemplate) |
-| `VK_OBJECT_TYPE_PRIVATE_DATA_SLOT` | [VkPrivateDataSlot](private_data.html#VkPrivateDataSlot) |
-| `VK_OBJECT_TYPE_SURFACE_KHR` | [VkSurfaceKHR](VK_KHR_surface/wsi.html#VkSurfaceKHR) |
-| `VK_OBJECT_TYPE_SWAPCHAIN_KHR` | [VkSwapchainKHR](VK_KHR_surface/wsi.html#VkSwapchainKHR) |
-| `VK_OBJECT_TYPE_DISPLAY_KHR` | [VkDisplayKHR](VK_KHR_surface/wsi.html#VkDisplayKHR) |
-| `VK_OBJECT_TYPE_DISPLAY_MODE_KHR` | [VkDisplayModeKHR](VK_KHR_surface/wsi.html#VkDisplayModeKHR) |
-| `VK_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT` | [VkDebugReportCallbackEXT](#VkDebugReportCallbackEXT) |
-| `VK_OBJECT_TYPE_VIDEO_SESSION_KHR` | [VkVideoSessionKHR](videocoding.html#VkVideoSessionKHR) |
-| `VK_OBJECT_TYPE_VIDEO_SESSION_PARAMETERS_KHR` | [VkVideoSessionParametersKHR](videocoding.html#VkVideoSessionParametersKHR) |
-| `VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT` | [VkDebugUtilsMessengerEXT](#VkDebugUtilsMessengerEXT) |
-| `VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR` | [VkAccelerationStructureKHR](resources.html#VkAccelerationStructureKHR) |
-| `VK_OBJECT_TYPE_VALIDATION_CACHE_EXT` | [VkValidationCacheEXT](shaders.html#VkValidationCacheEXT) |
-| `VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV` | [VkAccelerationStructureNV](resources.html#VkAccelerationStructureNV) |
-| `VK_OBJECT_TYPE_PERFORMANCE_CONFIGURATION_INTEL` | [VkPerformanceConfigurationINTEL](queries.html#VkPerformanceConfigurationINTEL) |
-| `VK_OBJECT_TYPE_DEFERRED_OPERATION_KHR` | [VkDeferredOperationKHR](VK_KHR_deferred_host_operations/deferred_host_operations.html#VkDeferredOperationKHR) |
-| `VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NV` | [VkIndirectCommandsLayoutNV](device_generated_commands/generatedcommands.html#VkIndirectCommandsLayoutNV) |
-| `VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_EXT` | [VkIndirectCommandsLayoutEXT](device_generated_commands/generatedcommands.html#VkIndirectCommandsLayoutEXT) |
-| `VK_OBJECT_TYPE_INDIRECT_EXECUTION_SET_EXT` | [VkIndirectExecutionSetEXT](device_generated_commands/generatedcommands.html#VkIndirectExecutionSetEXT) |
-| `VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA` | [VkBufferCollectionFUCHSIA](resources.html#VkBufferCollectionFUCHSIA) |
-| `VK_OBJECT_TYPE_MICROMAP_EXT` | [VkMicromapEXT](resources.html#VkMicromapEXT) |
-| `VK_OBJECT_TYPE_OPTICAL_FLOW_SESSION_NV` | [VkOpticalFlowSessionNV](VK_NV_optical_flow/optical_flow.html#VkOpticalFlowSessionNV) |
-| `VK_OBJECT_TYPE_SHADER_EXT` | [VkShaderEXT](shaders.html#VkShaderEXT) |
-| `VK_OBJECT_TYPE_TENSOR_ARM` | [VkTensorARM](resources.html#VkTensorARM) |
-| `VK_OBJECT_TYPE_TENSOR_VIEW_ARM` | [VkTensorViewARM](resources.html#VkTensorViewARM) |
-| `VK_OBJECT_TYPE_DATA_GRAPH_PIPELINE_SESSION_ARM` | [VkDataGraphPipelineSessionARM](VK_ARM_data_graph/graphs.html#VkDataGraphPipelineSessionARM) |
+| [VK_OBJECT_TYPE_UNKNOWN](#VkObjectType) | Unknown/Undefined Handle |
+| [VK_OBJECT_TYPE_INSTANCE](#VkObjectType) | [VkInstance](initialization.html#VkInstance) |
+| [VK_OBJECT_TYPE_PHYSICAL_DEVICE](#VkObjectType) | [VkPhysicalDevice](devsandqueues.html#VkPhysicalDevice) |
+| [VK_OBJECT_TYPE_DEVICE](#VkObjectType) | [VkDevice](devsandqueues.html#VkDevice) |
+| [VK_OBJECT_TYPE_QUEUE](#VkObjectType) | [VkQueue](devsandqueues.html#VkQueue) |
+| [VK_OBJECT_TYPE_SEMAPHORE](#VkObjectType) | [VkSemaphore](synchronization.html#VkSemaphore) |
+| [VK_OBJECT_TYPE_COMMAND_BUFFER](#VkObjectType) | [VkCommandBuffer](cmdbuffers.html#VkCommandBuffer) |
+| [VK_OBJECT_TYPE_FENCE](#VkObjectType) | [VkFence](synchronization.html#VkFence) |
+| [VK_OBJECT_TYPE_DEVICE_MEMORY](#VkObjectType) | [VkDeviceMemory](memory.html#VkDeviceMemory) |
+| [VK_OBJECT_TYPE_BUFFER](#VkObjectType) | [VkBuffer](resources.html#VkBuffer) |
+| [VK_OBJECT_TYPE_IMAGE](#VkObjectType) | [VkImage](resources.html#VkImage) |
+| [VK_OBJECT_TYPE_EVENT](#VkObjectType) | [VkEvent](synchronization.html#VkEvent) |
+| [VK_OBJECT_TYPE_QUERY_POOL](#VkObjectType) | [VkQueryPool](queries.html#VkQueryPool) |
+| [VK_OBJECT_TYPE_BUFFER_VIEW](#VkObjectType) | [VkBufferView](resources.html#VkBufferView) |
+| [VK_OBJECT_TYPE_IMAGE_VIEW](#VkObjectType) | [VkImageView](resources.html#VkImageView) |
+| [VK_OBJECT_TYPE_SHADER_MODULE](#VkObjectType) | [VkShaderModule](shaders.html#VkShaderModule) |
+| [VK_OBJECT_TYPE_PIPELINE_CACHE](#VkObjectType) | [VkPipelineCache](pipelines.html#VkPipelineCache) |
+| [VK_OBJECT_TYPE_PIPELINE_LAYOUT](#VkObjectType) | [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) |
+| [VK_OBJECT_TYPE_RENDER_PASS](#VkObjectType) | [VkRenderPass](renderpass.html#VkRenderPass) |
+| [VK_OBJECT_TYPE_PIPELINE](#VkObjectType) | [VkPipeline](pipelines.html#VkPipeline) |
+| [VK_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT](#VkObjectType) | [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) |
+| [VK_OBJECT_TYPE_SAMPLER](#VkObjectType) | [VkSampler](samplers.html#VkSampler) |
+| [VK_OBJECT_TYPE_DESCRIPTOR_POOL](#VkObjectType) | [VkDescriptorPool](descriptorsets.html#VkDescriptorPool) |
+| [VK_OBJECT_TYPE_DESCRIPTOR_SET](#VkObjectType) | [VkDescriptorSet](descriptorsets.html#VkDescriptorSet) |
+| [VK_OBJECT_TYPE_FRAMEBUFFER](#VkObjectType) | [VkFramebuffer](renderpass.html#VkFramebuffer) |
+| [VK_OBJECT_TYPE_COMMAND_POOL](#VkObjectType) | [VkCommandPool](cmdbuffers.html#VkCommandPool) |
+| [VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION](#VkObjectType) | [VkSamplerYcbcrConversion](samplers.html#VkSamplerYcbcrConversion) |
+| [VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE](#VkObjectType) | [VkDescriptorUpdateTemplate](descriptorsets.html#VkDescriptorUpdateTemplate) |
+| [VK_OBJECT_TYPE_PRIVATE_DATA_SLOT](#VkObjectType) | [VkPrivateDataSlot](private_data.html#VkPrivateDataSlot) |
+| [VK_OBJECT_TYPE_SURFACE_KHR](#VkObjectType) | [VkSurfaceKHR](VK_KHR_surface/wsi.html#VkSurfaceKHR) |
+| [VK_OBJECT_TYPE_SWAPCHAIN_KHR](#VkObjectType) | [VkSwapchainKHR](VK_KHR_surface/wsi.html#VkSwapchainKHR) |
+| [VK_OBJECT_TYPE_DISPLAY_KHR](#VkObjectType) | [VkDisplayKHR](VK_KHR_surface/wsi.html#VkDisplayKHR) |
+| [VK_OBJECT_TYPE_DISPLAY_MODE_KHR](#VkObjectType) | [VkDisplayModeKHR](VK_KHR_surface/wsi.html#VkDisplayModeKHR) |
+| [VK_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT](#VkObjectType) | [VkDebugReportCallbackEXT](#VkDebugReportCallbackEXT) |
+| [VK_OBJECT_TYPE_VIDEO_SESSION_KHR](#VkObjectType) | [VkVideoSessionKHR](videocoding.html#VkVideoSessionKHR) |
+| [VK_OBJECT_TYPE_VIDEO_SESSION_PARAMETERS_KHR](#VkObjectType) | [VkVideoSessionParametersKHR](videocoding.html#VkVideoSessionParametersKHR) |
+| [VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT](#VkObjectType) | [VkDebugUtilsMessengerEXT](#VkDebugUtilsMessengerEXT) |
+| [VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR](#VkObjectType) | [VkAccelerationStructureKHR](resources.html#VkAccelerationStructureKHR) |
+| [VK_OBJECT_TYPE_VALIDATION_CACHE_EXT](#VkObjectType) | [VkValidationCacheEXT](shaders.html#VkValidationCacheEXT) |
+| [VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV](#VkObjectType) | [VkAccelerationStructureNV](resources.html#VkAccelerationStructureNV) |
+| [VK_OBJECT_TYPE_PERFORMANCE_CONFIGURATION_INTEL](#VkObjectType) | [VkPerformanceConfigurationINTEL](queries.html#VkPerformanceConfigurationINTEL) |
+| [VK_OBJECT_TYPE_DEFERRED_OPERATION_KHR](#VkObjectType) | [VkDeferredOperationKHR](VK_KHR_deferred_host_operations/deferred_host_operations.html#VkDeferredOperationKHR) |
+| [VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NV](#VkObjectType) | [VkIndirectCommandsLayoutNV](device_generated_commands/generatedcommands.html#VkIndirectCommandsLayoutNV) |
+| [VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_EXT](#VkObjectType) | [VkIndirectCommandsLayoutEXT](device_generated_commands/generatedcommands.html#VkIndirectCommandsLayoutEXT) |
+| [VK_OBJECT_TYPE_INDIRECT_EXECUTION_SET_EXT](#VkObjectType) | [VkIndirectExecutionSetEXT](device_generated_commands/generatedcommands.html#VkIndirectExecutionSetEXT) |
+| [VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA](#VkObjectType) | [VkBufferCollectionFUCHSIA](resources.html#VkBufferCollectionFUCHSIA) |
+| [VK_OBJECT_TYPE_MICROMAP_EXT](#VkObjectType) | [VkMicromapEXT](resources.html#VkMicromapEXT) |
+| [VK_OBJECT_TYPE_OPTICAL_FLOW_SESSION_NV](#VkObjectType) | [VkOpticalFlowSessionNV](VK_NV_optical_flow/optical_flow.html#VkOpticalFlowSessionNV) |
+| [VK_OBJECT_TYPE_SHADER_EXT](#VkObjectType) | [VkShaderEXT](shaders.html#VkShaderEXT) |
+| [VK_OBJECT_TYPE_TENSOR_ARM](#VkObjectType) | [VkTensorARM](resources.html#VkTensorARM) |
+| [VK_OBJECT_TYPE_TENSOR_VIEW_ARM](#VkObjectType) | [VkTensorViewARM](resources.html#VkTensorViewARM) |
+| [VK_OBJECT_TYPE_DATA_GRAPH_PIPELINE_SESSION_ARM](#VkObjectType) | [VkDataGraphPipelineSessionARM](VK_ARM_data_graph/graphs.html#VkDataGraphPipelineSessionARM) |
 
 If this Specification was generated with any such extensions included, they
 will be described in the remainder of this chapter.
@@ -267,7 +267,7 @@ Valid Usage
 * 
 [](#VUID-vkSetDebugUtilsObjectNameEXT-pNameInfo-02587) VUID-vkSetDebugUtilsObjectNameEXT-pNameInfo-02587
 
-`pNameInfo->objectType` **must** not be `VK_OBJECT_TYPE_UNKNOWN`
+`pNameInfo->objectType` **must** not be [VK_OBJECT_TYPE_UNKNOWN](#VkObjectType)
 
 * 
 [](#VUID-vkSetDebugUtilsObjectNameEXT-pNameInfo-02588) VUID-vkSetDebugUtilsObjectNameEXT-pNameInfo-02588
@@ -319,21 +319,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkDebugUtilsObjectNameInfoEXT` structure is defined as:
 
@@ -377,18 +377,26 @@ In order to continue to allow naming these shaders independently,
 chain of [VkPipelineShaderStageCreateInfo](pipelines.html#VkPipelineShaderStageCreateInfo), which associates a static
 name with that particular shader.
 
+This structure **can** be included in the `pNext` chain of
+[VkResourceDescriptorInfoEXT](descriptorheaps.html#VkResourceDescriptorInfoEXT) or [VkSamplerCreateInfo](samplers.html#VkSamplerCreateInfo) to label a
+descriptor or embedded sampler.
+This structure **may** be ignored when included in the `pNext` chain of
+[VkSamplerCreateInfo](samplers.html#VkSamplerCreateInfo) when creating a sampler object.
+The label **must** remain valid while the descriptor is valid; it **may** be
+discarded if it becomes invalid.
+
 Valid Usage
 
 * 
 [](#VUID-VkDebugUtilsObjectNameInfoEXT-objectType-02589) VUID-VkDebugUtilsObjectNameInfoEXT-objectType-02589
 
-If `objectType` is `VK_OBJECT_TYPE_UNKNOWN`, `objectHandle`
+If `objectType` is [VK_OBJECT_TYPE_UNKNOWN](#VkObjectType), `objectHandle`
 **must** not be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
 [](#VUID-VkDebugUtilsObjectNameInfoEXT-objectType-02590) VUID-VkDebugUtilsObjectNameInfoEXT-objectType-02590
 
-If `objectType` is not `VK_OBJECT_TYPE_UNKNOWN`,
+If `objectType` is not [VK_OBJECT_TYPE_UNKNOWN](#VkObjectType),
 `objectHandle` **must** be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) or a valid Vulkan
 handle of the type associated with `objectType` as defined in the
 [`VkObjectType` and Vulkan Handle    Relationship](#debugging-object-types) table
@@ -398,7 +406,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDebugUtilsObjectNameInfoEXT-sType-sType) VUID-VkDebugUtilsObjectNameInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDebugUtilsObjectNameInfoEXT-objectType-parameter) VUID-VkDebugUtilsObjectNameInfoEXT-objectType-parameter
@@ -474,21 +482,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkDebugUtilsObjectTagInfoEXT` structure is defined as:
 
@@ -537,7 +545,7 @@ Valid Usage
 * 
 [](#VUID-VkDebugUtilsObjectTagInfoEXT-objectType-01908) VUID-VkDebugUtilsObjectTagInfoEXT-objectType-01908
 
-`objectType` **must** not be `VK_OBJECT_TYPE_UNKNOWN`
+`objectType` **must** not be [VK_OBJECT_TYPE_UNKNOWN](#VkObjectType)
 
 * 
 [](#VUID-VkDebugUtilsObjectTagInfoEXT-objectHandle-01910) VUID-VkDebugUtilsObjectTagInfoEXT-objectHandle-01910
@@ -550,7 +558,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDebugUtilsObjectTagInfoEXT-sType-sType) VUID-VkDebugUtilsObjectTagInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_TAG_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_TAG_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDebugUtilsObjectTagInfoEXT-pNext-pNext) VUID-VkDebugUtilsObjectTagInfoEXT-pNext-pNext
@@ -622,6 +630,8 @@ Host Synchronization
 
 * 
 Host access to `queue` **must** be externally synchronized
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
 
 Command Properties
 | [Command Buffer Levels](cmdbuffers.html#VkCommandBufferLevel) | [Render Pass Scope](renderpass.html#vkCmdBeginRenderPass) | [Video Coding Scope](videocoding.html#vkCmdBeginVideoCodingKHR) | [Supported Queue Types](devsandqueues.html#VkQueueFlagBits) | [Command Type](fundamentals.html#fundamentals-queueoperation-command-types) |
@@ -661,7 +671,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDebugUtilsLabelEXT-sType-sType) VUID-VkDebugUtilsLabelEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDebugUtilsLabelEXT-pNext-pNext) VUID-VkDebugUtilsLabelEXT-pNext-pNext
@@ -704,6 +714,8 @@ Host Synchronization
 
 * 
 Host access to `queue` **must** be externally synchronized
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
 
 Command Properties
 | [Command Buffer Levels](cmdbuffers.html#VkCommandBufferLevel) | [Render Pass Scope](renderpass.html#vkCmdBeginRenderPass) | [Video Coding Scope](videocoding.html#vkCmdBeginVideoCodingKHR) | [Supported Queue Types](devsandqueues.html#VkQueueFlagBits) | [Command Type](fundamentals.html#fundamentals-queueoperation-command-types) |
@@ -740,6 +752,8 @@ Host Synchronization
 
 * 
 Host access to `queue` **must** be externally synchronized
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
 
 Command Properties
 | [Command Buffer Levels](cmdbuffers.html#VkCommandBufferLevel) | [Render Pass Scope](renderpass.html#vkCmdBeginRenderPass) | [Video Coding Scope](videocoding.html#vkCmdBeginVideoCodingKHR) | [Supported Queue Types](devsandqueues.html#VkQueueFlagBits) | [Command Type](fundamentals.html#fundamentals-queueoperation-command-types) |
@@ -796,7 +810,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBeginDebugUtilsLabelEXT-commandBuffer-cmdpool) VUID-vkCmdBeginDebugUtilsLabelEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_OPTICAL_FLOW_BIT_NV`, `VK_QUEUE_TRANSFER_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_OPTICAL_FLOW_BIT_NV](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 Host Synchronization
 
@@ -887,7 +901,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdEndDebugUtilsLabelEXT-commandBuffer-cmdpool) VUID-vkCmdEndDebugUtilsLabelEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_OPTICAL_FLOW_BIT_NV`, `VK_QUEUE_TRANSFER_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_OPTICAL_FLOW_BIT_NV](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 Host Synchronization
 
@@ -953,7 +967,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdInsertDebugUtilsLabelEXT-commandBuffer-cmdpool) VUID-vkCmdInsertDebugUtilsLabelEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_OPTICAL_FLOW_BIT_NV`, `VK_QUEUE_TRANSFER_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_OPTICAL_FLOW_BIT_NV](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 Host Synchronization
 
@@ -1062,18 +1076,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The application **must** ensure that [vkCreateDebugUtilsMessengerEXT](#vkCreateDebugUtilsMessengerEXT) is
 not executed in parallel with any Vulkan command that is also called with
@@ -1160,7 +1174,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDebugUtilsMessengerCreateInfoEXT-sType-sType) VUID-VkDebugUtilsMessengerCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDebugUtilsMessengerCreateInfoEXT-flags-zerobitmask) VUID-VkDebugUtilsMessengerCreateInfoEXT-flags-zerobitmask
@@ -1211,17 +1225,17 @@ typedef enum VkDebugUtilsMessageSeverityFlagBitsEXT {
 } VkDebugUtilsMessageSeverityFlagBitsEXT;
 
 * 
-`VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT` specifies the most
+[VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT](#VkDebugUtilsMessageSeverityFlagBitsEXT) specifies the most
 verbose output indicating all diagnostic messages from the Vulkan
 loader, layers, and drivers should be captured.
 
 * 
-`VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT` specifies an
+[VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT](#VkDebugUtilsMessageSeverityFlagBitsEXT) specifies an
 informational message such as resource details that may be handy when
 debugging an application.
 
 * 
-`VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT` specifies use of
+[VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT](#VkDebugUtilsMessageSeverityFlagBitsEXT) specifies use of
 Vulkan that **may** expose an application bug.
 Such cases may not be immediately harmful, such as a fragment shader
 outputting to a location with no attachment.
@@ -1231,7 +1245,7 @@ In general if you see a warning but you know that the behavior is
 intended/desired, then simply ignore the warning.
 
 * 
-`VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT` specifies that the
+[VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT](#VkDebugUtilsMessageSeverityFlagBitsEXT) specifies that the
 application has violated a valid usage condition of the specification.
 
 |  | The values of [VkDebugUtilsMessageSeverityFlagBitsEXT](#VkDebugUtilsMessageSeverityFlagBitsEXT) are sorted based
@@ -1270,24 +1284,24 @@ typedef enum VkDebugUtilsMessageTypeFlagBitsEXT {
 } VkDebugUtilsMessageTypeFlagBitsEXT;
 
 * 
-`VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT` specifies that some
+[VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT](#VkDebugUtilsMessageTypeFlagBitsEXT) specifies that some
 general event has occurred.
 This is typically a non-specification, non-performance event.
 
 * 
-`VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT` specifies that
+[VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT](#VkDebugUtilsMessageTypeFlagBitsEXT) specifies that
 something has occurred during validation against the Vulkan
 specification that may indicate invalid behavior.
 
 * 
-`VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT` specifies a
+[VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT](#VkDebugUtilsMessageTypeFlagBitsEXT) specifies a
 potentially non-optimal use of Vulkan, e.g. using
 [vkCmdClearColorImage](clears.html#vkCmdClearColorImage) when setting
 [VkAttachmentDescription](renderpass.html#VkAttachmentDescription)::`loadOp` to
-`VK_ATTACHMENT_LOAD_OP_CLEAR` would have worked.
+[VK_ATTACHMENT_LOAD_OP_CLEAR](renderpass.html#VkAttachmentLoadOp) would have worked.
 
 * 
-`VK_DEBUG_UTILS_MESSAGE_TYPE_DEVICE_ADDRESS_BINDING_BIT_EXT`
+[VK_DEBUG_UTILS_MESSAGE_TYPE_DEVICE_ADDRESS_BINDING_BIT_EXT](#VkDebugUtilsMessageTypeFlagBitsEXT)
 specifies that the implementation has modified the set of GPU-visible
 virtual addresses associated with a Vulkan object.
 
@@ -1302,11 +1316,11 @@ The prototype for the
 implemented by the application is:
 
 // Provided by VK_EXT_debug_utils
-typedef VkBool32 (VKAPI_PTR *PFN_vkDebugUtilsMessengerCallbackEXT)(
-    VkDebugUtilsMessageSeverityFlagBitsEXT           messageSeverity,
-    VkDebugUtilsMessageTypeFlagsEXT                  messageTypes,
-    const VkDebugUtilsMessengerCallbackDataEXT*      pCallbackData,
-    void*                                            pUserData);
+typedef VkBool32 (*PFN_vkDebugUtilsMessengerCallbackEXT)(
+    VkDebugUtilsMessageSeverityFlagBitsEXT      messageSeverity,
+    VkDebugUtilsMessageTypeFlagsEXT             messageTypes,
+    const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
+    void*                                       pUserData);
 
 * 
 `messageSeverity` specifies the
@@ -1329,8 +1343,8 @@ specified when the [VkDebugUtilsMessengerEXT](#VkDebugUtilsMessengerEXT) object 
 
 The callback returns a `VkBool32`, which is interpreted in a
 layer-specified manner.
-The application **should** always return `VK_FALSE`.
-The `VK_TRUE` value is reserved for use in layer development.
+The application **should** always return [VK_FALSE](fundamentals.html#VK_FALSE).
+The [VK_TRUE](fundamentals.html#VK_TRUE) value is reserved for use in layer development.
 
 Valid Usage
 
@@ -1382,7 +1396,7 @@ number is an internal hash of the VUID.
 * 
 `pMessage` is
 `NULL` if `messageTypes` is equal to
-`VK_DEBUG_UTILS_MESSAGE_TYPE_DEVICE_ADDRESS_BINDING_BIT_EXT`, or
+[VK_DEBUG_UTILS_MESSAGE_TYPE_DEVICE_ADDRESS_BINDING_BIT_EXT](#VkDebugUtilsMessageTypeFlagBitsEXT), or
 a null-terminated UTF-8 string detailing the trigger conditions.
 If the message corresponds to a validation layer message, then this will
 contain the main message with the specification text and link.
@@ -1451,7 +1465,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDebugUtilsMessengerCallbackDataEXT-sType-sType) VUID-VkDebugUtilsMessengerCallbackDataEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDebugUtilsMessengerCallbackDataEXT-pNext-pNext) VUID-VkDebugUtilsMessengerCallbackDataEXT-pNext-pNext
@@ -1544,11 +1558,11 @@ submit a debug message with the following properties:
 
 * 
 `messageSeverity` equal to
-`VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT`
+[VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT](#VkDebugUtilsMessageSeverityFlagBitsEXT)
 
 * 
 `messageTypes` equal to
-`VK_DEBUG_UTILS_MESSAGE_TYPE_DEVICE_ADDRESS_BINDING_BIT_EXT`
+[VK_DEBUG_UTILS_MESSAGE_TYPE_DEVICE_ADDRESS_BINDING_BIT_EXT](#VkDebugUtilsMessageTypeFlagBitsEXT)
 
 * 
 `VkDebugUtilsMessengerCallbackDataEXT`::`pObjects` **must**
@@ -1569,7 +1583,7 @@ an application via other Vulkan commands.
 For example, object creation functions **may** report binding events that occur
 during an objects creation.
 In such cases, `VkDeviceAddressBindingCallbackDataEXT`::`flags`
-**must** include `VK_DEVICE_ADDRESS_BINDING_INTERNAL_OBJECT_BIT_EXT`.
+**must** include [VK_DEVICE_ADDRESS_BINDING_INTERNAL_OBJECT_BIT_EXT](#VkDeviceAddressBindingFlagBitsEXT).
 
 Object handles reported in this manner are not
 [valid object handles](fundamentals.html#fundamentals-validusage-handles), and **must** not be
@@ -1584,7 +1598,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceAddressBindingCallbackDataEXT-sType-sType) VUID-VkDeviceAddressBindingCallbackDataEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_ADDRESS_BINDING_CALLBACK_DATA_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_ADDRESS_BINDING_CALLBACK_DATA_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceAddressBindingCallbackDataEXT-flags-parameter) VUID-VkDeviceAddressBindingCallbackDataEXT-flags-parameter
@@ -1611,7 +1625,7 @@ typedef enum VkDeviceAddressBindingFlagBitsEXT {
 } VkDeviceAddressBindingFlagBitsEXT;
 
 * 
-`VK_DEVICE_ADDRESS_BINDING_INTERNAL_OBJECT_BIT_EXT` specifies that
+[VK_DEVICE_ADDRESS_BINDING_INTERNAL_OBJECT_BIT_EXT](#VkDeviceAddressBindingFlagBitsEXT) specifies that
 [VkDeviceAddressBindingCallbackDataEXT](#VkDeviceAddressBindingCallbackDataEXT) describes a Vulkan object
 that has not been made visible to the application via a Vulkan command.
 
@@ -1621,7 +1635,7 @@ typedef VkFlags VkDeviceAddressBindingFlagsEXT;
 [VkDeviceAddressBindingFlagsEXT](#VkDeviceAddressBindingFlagsEXT) is a bitmask type for setting a mask of
 zero or more [VkDeviceAddressBindingFlagBitsEXT](#VkDeviceAddressBindingFlagBitsEXT).
 
-The `VkDeviceAddressBindingTypeEXT` enum is defined as:
+The [VkDeviceAddressBindingTypeEXT](#VkDeviceAddressBindingTypeEXT) enum is defined as:
 
 // Provided by VK_EXT_device_address_binding_report
 typedef enum VkDeviceAddressBindingTypeEXT {
@@ -1630,11 +1644,11 @@ typedef enum VkDeviceAddressBindingTypeEXT {
 } VkDeviceAddressBindingTypeEXT;
 
 * 
-`VK_DEVICE_ADDRESS_BINDING_TYPE_BIND_EXT` specifies that a new
+[VK_DEVICE_ADDRESS_BINDING_TYPE_BIND_EXT](#VkDeviceAddressBindingTypeEXT) specifies that a new
 GPU-accessible virtual address range has been bound.
 
 * 
-`VK_DEVICE_ADDRESS_BINDING_TYPE_UNBIND_EXT` specifies that a
+[VK_DEVICE_ADDRESS_BINDING_TYPE_UNBIND_EXT](#VkDeviceAddressBindingTypeEXT) specifies that a
 GPU-accessible virtual address range has been unbound.
 
 To intentionally submit a debug message, call:
@@ -1674,7 +1688,7 @@ Valid Usage
 [](#VUID-vkSubmitDebugUtilsMessageEXT-objectType-02591) VUID-vkSubmitDebugUtilsMessageEXT-objectType-02591
 
 The `objectType` member of each element of
-`pCallbackData->pObjects` **must** not be `VK_OBJECT_TYPE_UNKNOWN`
+`pCallbackData->pObjects` **must** not be [VK_OBJECT_TYPE_UNKNOWN](#VkObjectType)
 
 Valid Usage (Implicit)
 
@@ -1814,21 +1828,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkDebugMarkerObjectNameInfoEXT` structure is defined as:
 
@@ -1870,7 +1884,7 @@ Valid Usage
 [](#VUID-VkDebugMarkerObjectNameInfoEXT-objectType-01490) VUID-VkDebugMarkerObjectNameInfoEXT-objectType-01490
 
 `objectType` **must** not be
-`VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT`
+[VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT](#VkDebugReportObjectTypeEXT)
 
 * 
 [](#VUID-VkDebugMarkerObjectNameInfoEXT-object-01491) VUID-VkDebugMarkerObjectNameInfoEXT-object-01491
@@ -1888,7 +1902,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDebugMarkerObjectNameInfoEXT-sType-sType) VUID-VkDebugMarkerObjectNameInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDebugMarkerObjectNameInfoEXT-pNext-pNext) VUID-VkDebugMarkerObjectNameInfoEXT-pNext-pNext
@@ -1946,21 +1960,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkDebugMarkerObjectTagInfoEXT` structure is defined as:
 
@@ -2010,7 +2024,7 @@ Valid Usage
 [](#VUID-VkDebugMarkerObjectTagInfoEXT-objectType-01493) VUID-VkDebugMarkerObjectTagInfoEXT-objectType-01493
 
 `objectType` **must** not be
-`VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT`
+[VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT](#VkDebugReportObjectTypeEXT)
 
 * 
 [](#VUID-VkDebugMarkerObjectTagInfoEXT-object-01494) VUID-VkDebugMarkerObjectTagInfoEXT-object-01494
@@ -2028,7 +2042,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDebugMarkerObjectTagInfoEXT-sType-sType) VUID-VkDebugMarkerObjectTagInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_TAG_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_TAG_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDebugMarkerObjectTagInfoEXT-pNext-pNext) VUID-VkDebugMarkerObjectTagInfoEXT-pNext-pNext
@@ -2111,7 +2125,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdDebugMarkerBeginEXT-commandBuffer-cmdpool) VUID-vkCmdDebugMarkerBeginEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_OPTICAL_FLOW_BIT_NV`, `VK_QUEUE_TRANSFER_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_OPTICAL_FLOW_BIT_NV](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 Host Synchronization
 
@@ -2175,7 +2189,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDebugMarkerMarkerInfoEXT-sType-sType) VUID-VkDebugMarkerMarkerInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEBUG_MARKER_MARKER_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEBUG_MARKER_MARKER_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDebugMarkerMarkerInfoEXT-pNext-pNext) VUID-VkDebugMarkerMarkerInfoEXT-pNext-pNext
@@ -2243,7 +2257,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdDebugMarkerEndEXT-commandBuffer-cmdpool) VUID-vkCmdDebugMarkerEndEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_OPTICAL_FLOW_BIT_NV`, `VK_QUEUE_TRANSFER_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_OPTICAL_FLOW_BIT_NV](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 Host Synchronization
 
@@ -2309,7 +2323,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdDebugMarkerInsertEXT-commandBuffer-cmdpool) VUID-vkCmdDebugMarkerInsertEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_OPTICAL_FLOW_BIT_NV`, `VK_QUEUE_TRANSFER_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_OPTICAL_FLOW_BIT_NV](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 Host Synchronization
 
@@ -2402,18 +2416,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The definition of [VkDebugReportCallbackCreateInfoEXT](#VkDebugReportCallbackCreateInfoEXT) is:
 
@@ -2468,7 +2482,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDebugReportCallbackCreateInfoEXT-sType-sType) VUID-VkDebugReportCallbackCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDebugReportCallbackCreateInfoEXT-flags-parameter) VUID-VkDebugReportCallbackCreateInfoEXT-flags-parameter
@@ -2494,11 +2508,11 @@ typedef enum VkDebugReportFlagBitsEXT {
 } VkDebugReportFlagBitsEXT;
 
 * 
-`VK_DEBUG_REPORT_ERROR_BIT_EXT` specifies that the application has
+[VK_DEBUG_REPORT_ERROR_BIT_EXT](#VkDebugReportFlagBitsEXT) specifies that the application has
 violated a valid usage condition of the specification.
 
 * 
-`VK_DEBUG_REPORT_WARNING_BIT_EXT` specifies use of Vulkan that **may**
+[VK_DEBUG_REPORT_WARNING_BIT_EXT](#VkDebugReportFlagBitsEXT) specifies use of Vulkan that **may**
 expose an application bug.
 Such cases may not be immediately harmful, such as a fragment shader
 outputting to a location with no attachment.
@@ -2508,19 +2522,19 @@ In general if you see a warning but you know that the behavior is
 intended/desired, then simply ignore the warning.
 
 * 
-`VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT` specifies a
+[VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT](#VkDebugReportFlagBitsEXT) specifies a
 potentially non-optimal use of Vulkan, e.g. using
 [vkCmdClearColorImage](clears.html#vkCmdClearColorImage) when setting
 [VkAttachmentDescription](renderpass.html#VkAttachmentDescription)::`loadOp` to
-`VK_ATTACHMENT_LOAD_OP_CLEAR` would have worked.
+[VK_ATTACHMENT_LOAD_OP_CLEAR](renderpass.html#VkAttachmentLoadOp) would have worked.
 
 * 
-`VK_DEBUG_REPORT_INFORMATION_BIT_EXT` specifies an informational
+[VK_DEBUG_REPORT_INFORMATION_BIT_EXT](#VkDebugReportFlagBitsEXT) specifies an informational
 message such as resource details that may be handy when debugging an
 application.
 
 * 
-`VK_DEBUG_REPORT_DEBUG_BIT_EXT` specifies diagnostic information
+[VK_DEBUG_REPORT_DEBUG_BIT_EXT](#VkDebugReportFlagBitsEXT) specifies diagnostic information
 from the implementation and layers.
 
 // Provided by VK_EXT_debug_report
@@ -2534,7 +2548,7 @@ The prototype for the
 implemented by the application is:
 
 // Provided by VK_EXT_debug_report
-typedef VkBool32 (VKAPI_PTR *PFN_vkDebugReportCallbackEXT)(
+typedef VkBool32 (*PFN_vkDebugReportCallbackEXT)(
     VkDebugReportFlagsEXT                       flags,
     VkDebugReportObjectTypeEXT                  objectType,
     uint64_t                                    object,
@@ -2555,7 +2569,7 @@ triggered.
 
 * 
 `object` is the object where the issue was detected.
-If `objectType` is `VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT`,
+If `objectType` is [VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT](#VkDebugReportObjectTypeEXT),
 `object` is **undefined**.
 
 * 
@@ -2586,11 +2600,11 @@ The callback **must** not call `vkDestroyDebugReportCallbackEXT`.
 
 The callback returns a `VkBool32`, which is interpreted in a
 layer-specified manner.
-The application **should** always return `VK_FALSE`.
-The `VK_TRUE` value is reserved for use in layer development.
+The application **should** always return [VK_FALSE](fundamentals.html#VK_FALSE).
+The [VK_TRUE](fundamentals.html#VK_TRUE) value is reserved for use in layer development.
 
 `object` **must** be a Vulkan object or [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE).
-If `objectType` is not `VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT` and
+If `objectType` is not [VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT](#VkDebugReportObjectTypeEXT) and
 `object` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `object` **must** be a Vulkan
 object of the corresponding type associated with `objectType` as defined
 in [VkDebugReportObjectTypeEXT and Vulkan Handle Relationship](#debug-report-object-types).
@@ -2664,45 +2678,45 @@ typedef enum VkDebugReportObjectTypeEXT {
 
 | [VkDebugReportObjectTypeEXT](#VkDebugReportObjectTypeEXT) | Vulkan Handle Type |
 | --- | --- |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT` | Unknown/Undefined Handle |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_INSTANCE_EXT` | [VkInstance](initialization.html#VkInstance) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_PHYSICAL_DEVICE_EXT` | [VkPhysicalDevice](devsandqueues.html#VkPhysicalDevice) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_EXT` | [VkDevice](devsandqueues.html#VkDevice) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_QUEUE_EXT` | [VkQueue](devsandqueues.html#VkQueue) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_SEMAPHORE_EXT` | [VkSemaphore](synchronization.html#VkSemaphore) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_BUFFER_EXT` | [VkCommandBuffer](cmdbuffers.html#VkCommandBuffer) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_FENCE_EXT` | [VkFence](synchronization.html#VkFence) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_MEMORY_EXT` | [VkDeviceMemory](memory.html#VkDeviceMemory) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_EXT` | [VkBuffer](resources.html#VkBuffer) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_EXT` | [VkImage](resources.html#VkImage) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_EVENT_EXT` | [VkEvent](synchronization.html#VkEvent) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_QUERY_POOL_EXT` | [VkQueryPool](queries.html#VkQueryPool) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_VIEW_EXT` | [VkBufferView](resources.html#VkBufferView) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_VIEW_EXT` | [VkImageView](resources.html#VkImageView) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_SHADER_MODULE_EXT` | [VkShaderModule](shaders.html#VkShaderModule) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_CACHE_EXT` | [VkPipelineCache](pipelines.html#VkPipelineCache) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_LAYOUT_EXT` | [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_RENDER_PASS_EXT` | [VkRenderPass](renderpass.html#VkRenderPass) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_EXT` | [VkPipeline](pipelines.html#VkPipeline) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT_EXT` | [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_EXT` | [VkSampler](samplers.html#VkSampler) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_POOL_EXT` | [VkDescriptorPool](descriptorsets.html#VkDescriptorPool) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_EXT` | [VkDescriptorSet](descriptorsets.html#VkDescriptorSet) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_FRAMEBUFFER_EXT` | [VkFramebuffer](renderpass.html#VkFramebuffer) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_POOL_EXT` | [VkCommandPool](cmdbuffers.html#VkCommandPool) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_SURFACE_KHR_EXT` | [VkSurfaceKHR](VK_KHR_surface/wsi.html#VkSurfaceKHR) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_SWAPCHAIN_KHR_EXT` | [VkSwapchainKHR](VK_KHR_surface/wsi.html#VkSwapchainKHR) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT` | [VkDebugReportCallbackEXT](#VkDebugReportCallbackEXT) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_KHR_EXT` | [VkDisplayKHR](VK_KHR_surface/wsi.html#VkDisplayKHR) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_MODE_KHR_EXT` | [VkDisplayModeKHR](VK_KHR_surface/wsi.html#VkDisplayModeKHR) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_EXT` | [VkDescriptorUpdateTemplate](descriptorsets.html#VkDescriptorUpdateTemplate) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT](#VkDebugReportObjectTypeEXT) | Unknown/Undefined Handle |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_INSTANCE_EXT](#VkDebugReportObjectTypeEXT) | [VkInstance](initialization.html#VkInstance) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_PHYSICAL_DEVICE_EXT](#VkDebugReportObjectTypeEXT) | [VkPhysicalDevice](devsandqueues.html#VkPhysicalDevice) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_EXT](#VkDebugReportObjectTypeEXT) | [VkDevice](devsandqueues.html#VkDevice) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_QUEUE_EXT](#VkDebugReportObjectTypeEXT) | [VkQueue](devsandqueues.html#VkQueue) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_SEMAPHORE_EXT](#VkDebugReportObjectTypeEXT) | [VkSemaphore](synchronization.html#VkSemaphore) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_BUFFER_EXT](#VkDebugReportObjectTypeEXT) | [VkCommandBuffer](cmdbuffers.html#VkCommandBuffer) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_FENCE_EXT](#VkDebugReportObjectTypeEXT) | [VkFence](synchronization.html#VkFence) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_MEMORY_EXT](#VkDebugReportObjectTypeEXT) | [VkDeviceMemory](memory.html#VkDeviceMemory) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_EXT](#VkDebugReportObjectTypeEXT) | [VkBuffer](resources.html#VkBuffer) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_EXT](#VkDebugReportObjectTypeEXT) | [VkImage](resources.html#VkImage) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_EVENT_EXT](#VkDebugReportObjectTypeEXT) | [VkEvent](synchronization.html#VkEvent) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_QUERY_POOL_EXT](#VkDebugReportObjectTypeEXT) | [VkQueryPool](queries.html#VkQueryPool) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_VIEW_EXT](#VkDebugReportObjectTypeEXT) | [VkBufferView](resources.html#VkBufferView) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_VIEW_EXT](#VkDebugReportObjectTypeEXT) | [VkImageView](resources.html#VkImageView) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_SHADER_MODULE_EXT](#VkDebugReportObjectTypeEXT) | [VkShaderModule](shaders.html#VkShaderModule) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_CACHE_EXT](#VkDebugReportObjectTypeEXT) | [VkPipelineCache](pipelines.html#VkPipelineCache) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_LAYOUT_EXT](#VkDebugReportObjectTypeEXT) | [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_RENDER_PASS_EXT](#VkDebugReportObjectTypeEXT) | [VkRenderPass](renderpass.html#VkRenderPass) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_EXT](#VkDebugReportObjectTypeEXT) | [VkPipeline](pipelines.html#VkPipeline) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT_EXT](#VkDebugReportObjectTypeEXT) | [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_EXT](#VkDebugReportObjectTypeEXT) | [VkSampler](samplers.html#VkSampler) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_POOL_EXT](#VkDebugReportObjectTypeEXT) | [VkDescriptorPool](descriptorsets.html#VkDescriptorPool) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_EXT](#VkDebugReportObjectTypeEXT) | [VkDescriptorSet](descriptorsets.html#VkDescriptorSet) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_FRAMEBUFFER_EXT](#VkDebugReportObjectTypeEXT) | [VkFramebuffer](renderpass.html#VkFramebuffer) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_POOL_EXT](#VkDebugReportObjectTypeEXT) | [VkCommandPool](cmdbuffers.html#VkCommandPool) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_SURFACE_KHR_EXT](#VkDebugReportObjectTypeEXT) | [VkSurfaceKHR](VK_KHR_surface/wsi.html#VkSurfaceKHR) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_SWAPCHAIN_KHR_EXT](#VkDebugReportObjectTypeEXT) | [VkSwapchainKHR](VK_KHR_surface/wsi.html#VkSwapchainKHR) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT](#VkDebugReportObjectTypeEXT) | [VkDebugReportCallbackEXT](#VkDebugReportCallbackEXT) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_KHR_EXT](#VkDebugReportObjectTypeEXT) | [VkDisplayKHR](VK_KHR_surface/wsi.html#VkDisplayKHR) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_MODE_KHR_EXT](#VkDebugReportObjectTypeEXT) | [VkDisplayModeKHR](VK_KHR_surface/wsi.html#VkDisplayModeKHR) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_EXT](#VkDebugReportObjectTypeEXT) | [VkDescriptorUpdateTemplate](descriptorsets.html#VkDescriptorUpdateTemplate) |
 
-|  | The primary expected use of `VK_ERROR_VALIDATION_FAILED_EXT` is for
+|  | The primary expected use of [VK_ERROR_VALIDATION_FAILED_EXT](fundamentals.html#VkResult) is for
 | --- | --- |
 validation layer testing to prevent invalid commands from reaching the ICD.
 It is not expected that an application would see this error code during
 normal use of the validation layers.
-If an application returns `VK_TRUE` in
+If an application returns [VK_TRUE](fundamentals.html#VK_TRUE) in
 [VkDebugUtilsMessengerCallbackDataEXT](#VkDebugUtilsMessengerCallbackDataEXT), the validation layers will
 return this error code instead of passing the command down the dispatch
 chain. |
@@ -2767,7 +2781,7 @@ Valid Usage
 * 
 [](#VUID-vkDebugReportMessageEXT-objectType-01498) VUID-vkDebugReportMessageEXT-objectType-01498
 
-If `objectType` is not `VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT`
+If `objectType` is not [VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT](#VkDebugReportObjectTypeEXT)
 and `object` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `object` **must** be a
 Vulkan object of the corresponding type associated with `objectType`
 as defined in [VkDebugReportObjectTypeEXT and Vulkan Handle Relationship](#debug-report-object-types)
@@ -2901,7 +2915,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetCheckpointNV-commandBuffer-cmdpool) VUID-vkCmdSetCheckpointNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, or `VK_QUEUE_TRANSFER_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetCheckpointNV-suspended) VUID-vkCmdSetCheckpointNV-suspended
@@ -2941,7 +2955,7 @@ It does not need to be a valid pointer and will not be dereferenced by the
 implementation.
 
 If the device encounters an error during execution, the implementation will
-return a `VK_ERROR_DEVICE_LOST` error to the application at some point
+return a [VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult) error to the application at some point
 during host execution.
 When this happens, the application **can** call
 [vkGetQueueCheckpointData2NV](#vkGetQueueCheckpointData2NV) to retrieve information on the most recent
@@ -3029,7 +3043,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCheckpointData2NV-sType-sType) VUID-VkCheckpointData2NV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CHECKPOINT_DATA_2_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CHECKPOINT_DATA_2_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkCheckpointData2NV-pNext-pNext) VUID-VkCheckpointData2NV-pNext-pNext
@@ -3041,7 +3055,7 @@ implementation-defined and **can** be queried by calling
 [vkGetPhysicalDeviceQueueFamilyProperties2](devsandqueues.html#vkGetPhysicalDeviceQueueFamilyProperties2).
 
 If the device encounters an error during execution, the implementation will
-return a `VK_ERROR_DEVICE_LOST` error to the application at a certain
+return a [VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult) error to the application at a certain
 point during host execution.
 When this happens, the application **can** call
 [vkGetQueueCheckpointDataNV](#vkGetQueueCheckpointDataNV) to retrieve information on the most recent
@@ -3118,7 +3132,7 @@ typedef struct VkCheckpointDataNV {
 structure.
 
 * 
-`stage` is a `VkPipelineStageFlagBits` value specifying which
+`stage` is a [VkPipelineStageFlagBits](synchronization.html#VkPipelineStageFlagBits) value specifying which
 pipeline stage the checkpoint marker data refers to.
 
 * 
@@ -3134,7 +3148,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCheckpointDataNV-sType-sType) VUID-VkCheckpointDataNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CHECKPOINT_DATA_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CHECKPOINT_DATA_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkCheckpointDataNV-pNext-pNext) VUID-VkCheckpointDataNV-pNext-pNext
@@ -3215,8 +3229,8 @@ information **may** be returned in the additional available space.
 If any `pFaultCounts` structure count member is smaller than the number
 of corresponding fault properties available, or if
 `pFaultCounts`->vendorBinarySize is smaller than the size in bytes of
-the generated binary crash dump data, `VK_INCOMPLETE` will be returned
-instead of `VK_SUCCESS`, to indicate that not all the available
+the generated binary crash dump data, [VK_INCOMPLETE](fundamentals.html#VkResult) will be returned
+instead of [VK_SUCCESS](fundamentals.html#VkResult), to indicate that not all the available
 properties were returned.
 
 If `pFaultCounts`->vendorBinarySize is less than what is necessary to
@@ -3279,21 +3293,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkDeviceFaultCountsEXT` structure is defined as:
 
@@ -3333,7 +3347,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceFaultCountsEXT-sType-sType) VUID-VkDeviceFaultCountsEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_FAULT_COUNTS_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_FAULT_COUNTS_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceFaultCountsEXT-pNext-pNext) VUID-VkDeviceFaultCountsEXT-pNext-pNext
@@ -3360,7 +3374,7 @@ typedef struct VkDeviceFaultInfoEXT {
 structure.
 
 * 
-`description` is an array of `VK_MAX_DESCRIPTION_SIZE` `char`
+`description` is an array of [VK_MAX_DESCRIPTION_SIZE](extensions.html#VK_MAX_DESCRIPTION_SIZE) `char`
 containing a null-terminated UTF-8 string which is a human readable
 description of the fault.
 
@@ -3417,7 +3431,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceFaultInfoEXT-sType-sType) VUID-VkDeviceFaultInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_FAULT_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_FAULT_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceFaultInfoEXT-pNext-pNext) VUID-VkDeviceFaultInfoEXT-pNext-pNext
@@ -3484,36 +3498,36 @@ typedef enum VkDeviceFaultAddressTypeEXT {
 } VkDeviceFaultAddressTypeEXT;
 
 * 
-`VK_DEVICE_FAULT_ADDRESS_TYPE_NONE_EXT` specifies that
+[VK_DEVICE_FAULT_ADDRESS_TYPE_NONE_EXT](#VkDeviceFaultAddressTypeEXT) specifies that
 [VkDeviceFaultAddressInfoEXT](#VkDeviceFaultAddressInfoEXT) does not describe a page fault, or an
 instruction address.
 
 * 
-`VK_DEVICE_FAULT_ADDRESS_TYPE_READ_INVALID_EXT` specifies that
+[VK_DEVICE_FAULT_ADDRESS_TYPE_READ_INVALID_EXT](#VkDeviceFaultAddressTypeEXT) specifies that
 [VkDeviceFaultAddressInfoEXT](#VkDeviceFaultAddressInfoEXT) describes a page fault triggered by an
 invalid read operation.
 
 * 
-`VK_DEVICE_FAULT_ADDRESS_TYPE_WRITE_INVALID_EXT` specifies that
+[VK_DEVICE_FAULT_ADDRESS_TYPE_WRITE_INVALID_EXT](#VkDeviceFaultAddressTypeEXT) specifies that
 [VkDeviceFaultAddressInfoEXT](#VkDeviceFaultAddressInfoEXT) describes a page fault triggered by an
 invalid write operation.
 
 * 
-`VK_DEVICE_FAULT_ADDRESS_TYPE_EXECUTE_INVALID_EXT` describes a page
+[VK_DEVICE_FAULT_ADDRESS_TYPE_EXECUTE_INVALID_EXT](#VkDeviceFaultAddressTypeEXT) describes a page
 fault triggered by an attempt to execute non-executable memory.
 
 * 
-`VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_UNKNOWN_EXT`
+[VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_UNKNOWN_EXT](#VkDeviceFaultAddressTypeEXT)
 specifies an instruction pointer value at the time the fault occurred.
 This may or may not be related to a fault.
 
 * 
-`VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_INVALID_EXT`
+[VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_INVALID_EXT](#VkDeviceFaultAddressTypeEXT)
 specifies an instruction pointer value associated with an invalid
 instruction fault.
 
 * 
-`VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_FAULT_EXT`
+[VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_FAULT_EXT](#VkDeviceFaultAddressTypeEXT)
 specifies an instruction pointer value associated with a fault.
 
 |  | The instruction pointer values recorded may not identify the specific
@@ -3532,7 +3546,7 @@ typedef struct VkDeviceFaultVendorInfoEXT {
 } VkDeviceFaultVendorInfoEXT;
 
 * 
-`description` is an array of `VK_MAX_DESCRIPTION_SIZE` `char`
+`description` is an array of [VK_MAX_DESCRIPTION_SIZE](extensions.html#VK_MAX_DESCRIPTION_SIZE) `char`
 containing a null-terminated UTF-8 string which is a human readable
 description of the fault.
 
@@ -3595,7 +3609,7 @@ of the implementation.
 implementation.
 
 * 
-`pipelineCacheUUID` is an array of `VK_UUID_SIZE` `uint8_t`
+`pipelineCacheUUID` is an array of [VK_UUID_SIZE](devsandqueues.html#VK_UUID_SIZE) `uint8_t`
 values matching the
 `VkPhysicalDeviceProperties`::`pipelineCacheUUID` property of
 the implementation.
@@ -3653,7 +3667,7 @@ Valid Usage
 [](#VUID-VkDeviceFaultVendorBinaryHeaderVersionOneEXT-headerVersion-07341) VUID-VkDeviceFaultVendorBinaryHeaderVersionOneEXT-headerVersion-07341
 
 `headerVersion` **must** be
-`VK_DEVICE_FAULT_VENDOR_BINARY_HEADER_VERSION_ONE_EXT`
+[VK_DEVICE_FAULT_VENDOR_BINARY_HEADER_VERSION_ONE_EXT](#VkDeviceFaultVendorBinaryHeaderVersionEXT)
 
 Valid Usage (Implicit)
 
@@ -3671,7 +3685,7 @@ typedef enum VkDeviceFaultVendorBinaryHeaderVersionEXT {
 } VkDeviceFaultVendorBinaryHeaderVersionEXT;
 
 * 
-`VK_DEVICE_FAULT_VENDOR_BINARY_HEADER_VERSION_ONE_EXT` specifies
+[VK_DEVICE_FAULT_VENDOR_BINARY_HEADER_VERSION_ONE_EXT](#VkDeviceFaultVendorBinaryHeaderVersionEXT) specifies
 version one of the binary crash dump header.
 
 Information about tools providing debugging, profiling, or similar services,
@@ -3738,21 +3752,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The [VkPhysicalDeviceToolProperties](#VkPhysicalDeviceToolProperties) structure is defined as:
 
@@ -3804,7 +3818,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceToolProperties-sType-sType) VUID-VkPhysicalDeviceToolProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TOOL_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TOOL_PROPERTIES](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPhysicalDeviceToolProperties-pNext-pNext) VUID-VkPhysicalDeviceToolProperties-pNext-pNext
@@ -3843,30 +3857,30 @@ typedef enum VkToolPurposeFlagBits {
 typedef VkToolPurposeFlagBits VkToolPurposeFlagBitsEXT;
 
 * 
-`VK_TOOL_PURPOSE_VALIDATION_BIT` specifies that the tool provides
+[VK_TOOL_PURPOSE_VALIDATION_BIT](#VkToolPurposeFlagBitsEXT) specifies that the tool provides
 validation of API usage.
 
 * 
-`VK_TOOL_PURPOSE_PROFILING_BIT` specifies that the tool provides
+[VK_TOOL_PURPOSE_PROFILING_BIT](#VkToolPurposeFlagBitsEXT) specifies that the tool provides
 profiling of API usage.
 
 * 
-`VK_TOOL_PURPOSE_TRACING_BIT` specifies that the tool is capturing
+[VK_TOOL_PURPOSE_TRACING_BIT](#VkToolPurposeFlagBitsEXT) specifies that the tool is capturing
 data about the application’s API usage, including anything from simple
 logging to capturing data for later replay.
 
 * 
-`VK_TOOL_PURPOSE_ADDITIONAL_FEATURES_BIT` specifies that the tool
+[VK_TOOL_PURPOSE_ADDITIONAL_FEATURES_BIT](#VkToolPurposeFlagBitsEXT) specifies that the tool
 provides additional API features/extensions on top of the underlying
 implementation.
 
 * 
-`VK_TOOL_PURPOSE_MODIFYING_FEATURES_BIT` specifies that the tool
+[VK_TOOL_PURPOSE_MODIFYING_FEATURES_BIT](#VkToolPurposeFlagBitsEXT) specifies that the tool
 modifies the API features/limits/extensions presented to the
 application.
 
 * 
-`VK_TOOL_PURPOSE_DEBUG_REPORTING_BIT_EXT` specifies that the tool
+[VK_TOOL_PURPOSE_DEBUG_REPORTING_BIT_EXT](#VkToolPurposeFlagBitsEXT) specifies that the tool
 reports additional information to the application via callbacks
 specified by
 [vkCreateDebugReportCallbackEXT](#vkCreateDebugReportCallbackEXT)
@@ -3874,7 +3888,7 @@ or
 [vkCreateDebugUtilsMessengerEXT](#vkCreateDebugUtilsMessengerEXT)
 
 * 
-`VK_TOOL_PURPOSE_DEBUG_MARKERS_BIT_EXT` specifies that the tool
+[VK_TOOL_PURPOSE_DEBUG_MARKERS_BIT_EXT](#VkToolPurposeFlagBitsEXT) specifies that the tool
 consumes
 [debug markers](#debugging-debug-markers)
 or
@@ -3987,7 +4001,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFrameBoundaryEXT-sType-sType) VUID-VkFrameBoundaryEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkFrameBoundaryEXT-flags-parameter) VUID-VkFrameBoundaryEXT-flags-parameter
@@ -4022,7 +4036,7 @@ typedef enum VkFrameBoundaryFlagBitsEXT {
 } VkFrameBoundaryFlagBitsEXT;
 
 * 
-`VK_FRAME_BOUNDARY_FRAME_END_BIT_EXT` specifies that this queue
+[VK_FRAME_BOUNDARY_FRAME_END_BIT_EXT](#VkFrameBoundaryFlagBitsEXT) specifies that this queue
 submission is the last one for this frame, i.e. once this queue
 submission has terminated, then the work for this frame is completed.
 
@@ -4068,7 +4082,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFrameBoundaryTensorsARM-sType-sType) VUID-VkFrameBoundaryTensorsARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FRAME_BOUNDARY_TENSORS_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FRAME_BOUNDARY_TENSORS_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkFrameBoundaryTensorsARM-pTensors-parameter) VUID-VkFrameBoundaryTensorsARM-pTensors-parameter

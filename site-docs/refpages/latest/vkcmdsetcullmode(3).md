@@ -41,7 +41,7 @@ recorded.
 
 This command sets the cull mode for subsequent drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
-when the graphics pipeline is created with `VK_DYNAMIC_STATE_CULL_MODE`
+when the graphics pipeline is created with [VK_DYNAMIC_STATE_CULL_MODE](VkDynamicState.html)
 set in [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationStateCreateInfo](VkPipelineRasterizationStateCreateInfo.html)::`cullMode` value used to
@@ -85,7 +85,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetCullMode-commandBuffer-cmdpool) VUID-vkCmdSetCullMode-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetCullMode-videocoding) VUID-vkCmdSetCullMode-videocoding

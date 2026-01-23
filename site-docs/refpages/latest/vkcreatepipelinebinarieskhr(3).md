@@ -52,7 +52,7 @@ The corresponding entry in the `pPipelineBinaries` output array will
 be filled with [VK_NULL_HANDLE](VK_NULL_HANDLE.html).
 
 * 
-The `VkResult` returned by [vkCreatePipelineBinariesKHR](#) will
+The [VkResult](VkResult.html) returned by [vkCreatePipelineBinariesKHR](#) will
 contain the error value for the first entry in the output array in
 `pBinaries` containing [VK_NULL_HANDLE](VK_NULL_HANDLE.html).
 
@@ -83,30 +83,30 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_PIPELINE_BINARY_MISSING_KHR`
+[VK_PIPELINE_BINARY_MISSING_KHR](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_pipeline_binary](VK_KHR_pipeline_binary.html), [VkAllocationCallbacks](VkAllocationCallbacks.html), [VkDevice](VkDevice.html), [VkPipelineBinaryCreateInfoKHR](VkPipelineBinaryCreateInfoKHR.html), [VkPipelineBinaryHandlesInfoKHR](VkPipelineBinaryHandlesInfoKHR.html)
 

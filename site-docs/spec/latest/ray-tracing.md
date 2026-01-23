@@ -161,7 +161,7 @@ The ballot **may** be incorrect as the set of invocations could have changed.
 
 While the `SubgroupSize` built-in is required to be declared
 `Volatile`, its value will never change unless
-`VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT` is set
+[VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT](pipelines.html#VkPipelineShaderStageCreateFlagBits) is set
 on pipeline creation, as without that bit set, its value is required to
 match that of [VkPhysicalDeviceSubgroupProperties](limits.html#VkPhysicalDeviceSubgroupProperties)::`subgroupSize`.
 
@@ -257,53 +257,53 @@ Valid Usage
 [](#VUID-vkCmdTraceRaysKHR-magFilter-04553) VUID-vkCmdTraceRaysKHR-magFilter-04553
 
 If a [VkSampler](samplers.html#VkSampler) created with `magFilter` or `minFilter`
-equal to `VK_FILTER_LINEAR`,
+equal to [VK_FILTER_LINEAR](samplers.html#VkFilter),
 `reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`,
-and `compareEnable` equal to `VK_FALSE` is used to sample a
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](samplers.html#VkSamplerReductionModeEXT),
+and `compareEnable` equal to [VK_FALSE](fundamentals.html#VK_FALSE) is used to sample a
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-magFilter-09598) VUID-vkCmdTraceRaysKHR-magFilter-09598
 
 If a [VkSampler](samplers.html#VkSampler) created with `magFilter` or `minFilter`
-equal to `VK_FILTER_LINEAR` and `reductionMode` equal to either
-`VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` is used to sample a
+equal to [VK_FILTER_LINEAR](samplers.html#VkFilter) and `reductionMode` equal to either
+[VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT) is used to sample a
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-mipmapMode-04770) VUID-vkCmdTraceRaysKHR-mipmapMode-04770
 
 If a [VkSampler](samplers.html#VkSampler) created with `mipmapMode` equal to
-`VK_SAMPLER_MIPMAP_MODE_LINEAR`,
+[VK_SAMPLER_MIPMAP_MODE_LINEAR](samplers.html#VkSamplerMipmapMode),
 `reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`,
-and `compareEnable` equal to `VK_FALSE` is used to sample a
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](samplers.html#VkSamplerReductionModeEXT),
+and `compareEnable` equal to [VK_FALSE](fundamentals.html#VK_FALSE) is used to sample a
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-mipmapMode-09599) VUID-vkCmdTraceRaysKHR-mipmapMode-09599
 
 If a [VkSampler](samplers.html#VkSampler) created with `mipmapMode` equal to
-`VK_SAMPLER_MIPMAP_MODE_LINEAR` and `reductionMode` equal to
-either `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` is used to sample a
+[VK_SAMPLER_MIPMAP_MODE_LINEAR](samplers.html#VkSamplerMipmapMode) and `reductionMode` equal to
+either [VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT) is used to sample a
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-unnormalizedCoordinates-09635) VUID-vkCmdTraceRaysKHR-unnormalizedCoordinates-09635
 
 If a [VkSampler](samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
+[VK_TRUE](fundamentals.html#VK_TRUE) is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
 command, then the image view’s `levelCount` and `layerCount`
 **must** be 1
 
@@ -311,15 +311,15 @@ command, then the image view’s `levelCount` and `layerCount`
 [](#VUID-vkCmdTraceRaysKHR-None-08609) VUID-vkCmdTraceRaysKHR-None-08609
 
 If a [VkSampler](samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
+[VK_TRUE](fundamentals.html#VK_TRUE) is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
 command, then the image view’s `viewType` **must** be
-`VK_IMAGE_VIEW_TYPE_1D` or `VK_IMAGE_VIEW_TYPE_2D`
+[VK_IMAGE_VIEW_TYPE_1D](resources.html#VkImageViewType) or [VK_IMAGE_VIEW_TYPE_2D](resources.html#VkImageViewType)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-None-08610) VUID-vkCmdTraceRaysKHR-None-08610
 
 If a [VkSampler](samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
+[VK_TRUE](fundamentals.html#VK_TRUE) is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
 command, then the sampler **must** not be used with any of the SPIR-V
 `OpImageSample*` or `OpImageSparseSample*` instructions with
 `ImplicitLod`, `Dref` or `Proj` in their name
@@ -328,7 +328,7 @@ command, then the sampler **must** not be used with any of the SPIR-V
 [](#VUID-vkCmdTraceRaysKHR-None-08611) VUID-vkCmdTraceRaysKHR-None-08611
 
 If a [VkSampler](samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
+[VK_TRUE](fundamentals.html#VK_TRUE) is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
 command, then the sampler **must** not be used with any of the SPIR-V
 `OpImageSample*` or `OpImageSparseSample*` instructions that includes a
 LOD bias or any offset values
@@ -339,7 +339,7 @@ LOD bias or any offset values
 If a [VkImageView](resources.html#VkImageView) is sampled with
 [depth comparison](textures.html#textures-depth-compare-operation), the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT`
+[VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-None-02691) VUID-vkCmdTraceRaysKHR-None-02691
@@ -347,38 +347,38 @@ If a [VkImageView](resources.html#VkImageView) is sampled with
 If a [VkImageView](resources.html#VkImageView) is accessed using atomic operations as a result
 of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT`
+[VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-None-07888) VUID-vkCmdTraceRaysKHR-None-07888
 
-If a `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` descriptor is
+If a [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType) descriptor is
 accessed using atomic operations as a result of this command, then the
 storage texel buffer’s [format    features](resources.html#resources-buffer-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT`
+[VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-None-02692) VUID-vkCmdTraceRaysKHR-None-02692
 
-If a [VkImageView](resources.html#VkImageView) is sampled with `VK_FILTER_CUBIC_EXT` as a
+If a [VkImageView](resources.html#VkImageView) is sampled with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a
 result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-None-02693) VUID-vkCmdTraceRaysKHR-None-02693
 
 If
 the [VK_EXT_filter_cubic](../appendices/extensions.html#VK_EXT_filter_cubic) extension is not enabled and
-any [VkImageView](resources.html#VkImageView) is sampled with `VK_FILTER_CUBIC_EXT` as a
+any [VkImageView](resources.html#VkImageView) is sampled with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a
 result of this command, it **must** not have a [VkImageViewType](resources.html#VkImageViewType) of
-`VK_IMAGE_VIEW_TYPE_3D`, `VK_IMAGE_VIEW_TYPE_CUBE`, or
-`VK_IMAGE_VIEW_TYPE_CUBE_ARRAY`
+[VK_IMAGE_VIEW_TYPE_3D](resources.html#VkImageViewType), [VK_IMAGE_VIEW_TYPE_CUBE](resources.html#VkImageViewType), or
+[VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](resources.html#VkImageViewType)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-filterCubic-02694) VUID-vkCmdTraceRaysKHR-filterCubic-02694
 
-Any [VkImageView](resources.html#VkImageView) being sampled with `VK_FILTER_CUBIC_EXT` as a
+Any [VkImageView](resources.html#VkImageView) being sampled with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a
 result of this command **must** have a [VkImageViewType](resources.html#VkImageViewType) and format
 that supports cubic filtering, as specified by
 [VkFilterCubicImageViewImageFormatPropertiesEXT](capabilities.html#VkFilterCubicImageViewImageFormatPropertiesEXT)::`filterCubic`
@@ -387,9 +387,9 @@ returned by [vkGetPhysicalDeviceImageFormatProperties2](capabilities.html#vkGetP
 * 
 [](#VUID-vkCmdTraceRaysKHR-filterCubicMinmax-02695) VUID-vkCmdTraceRaysKHR-filterCubicMinmax-02695
 
-Any [VkImageView](resources.html#VkImageView) being sampled with `VK_FILTER_CUBIC_EXT` with
-a reduction mode of either `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` as a result of this command **must**
+Any [VkImageView](resources.html#VkImageView) being sampled with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) with
+a reduction mode of either [VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT) as a result of this command **must**
 have a [VkImageViewType](resources.html#VkImageViewType) and format that supports cubic filtering
 together with minmax filtering, as specified by
 [VkFilterCubicImageViewImageFormatPropertiesEXT](capabilities.html#VkFilterCubicImageViewImageFormatPropertiesEXT)::`filterCubicMinmax`
@@ -400,35 +400,35 @@ returned by [vkGetPhysicalDeviceImageFormatProperties2](capabilities.html#vkGetP
 
 If the [`cubicRangeClamp`](features.html#features-cubicRangeClamp) feature is
 not enabled, then any [VkImageView](resources.html#VkImageView) being sampled with
-`VK_FILTER_CUBIC_EXT` as a result of this command **must** not have a
+[VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a result of this command **must** not have a
 [VkSamplerReductionModeCreateInfo](samplers.html#VkSamplerReductionModeCreateInfo)::`reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM`
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](samplers.html#VkSamplerReductionModeEXT)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-reductionMode-09213) VUID-vkCmdTraceRaysKHR-reductionMode-09213
 
 Any [VkImageView](resources.html#VkImageView) being sampled with a
 [VkSamplerReductionModeCreateInfo](samplers.html#VkSamplerReductionModeCreateInfo)::`reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM` as a
-result of this command **must** sample with `VK_FILTER_CUBIC_EXT`
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](samplers.html#VkSamplerReductionModeEXT) as a
+result of this command **must** sample with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-selectableCubicWeights-09214) VUID-vkCmdTraceRaysKHR-selectableCubicWeights-09214
 
 If the [`selectableCubicWeights`](features.html#features-selectableCubicWeights)
 feature is not enabled, then any [VkImageView](resources.html#VkImageView) being sampled with
-`VK_FILTER_CUBIC_EXT` as a result of this command **must** have
+[VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a result of this command **must** have
 [VkSamplerCubicWeightsCreateInfoQCOM](samplers.html#VkSamplerCubicWeightsCreateInfoQCOM)::`cubicWeights` equal to
-`VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM`
+[VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM](samplers.html#VkCubicFilterWeightsQCOM)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-flags-02696) VUID-vkCmdTraceRaysKHR-flags-02696
 
 Any [VkImage](resources.html#VkImage) created with a [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`flags`
-containing `VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV` sampled as a
+containing [VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV](resources.html#VkImageCreateFlagBits) sampled as a
 result of this command **must** only be sampled using a
 [VkSamplerAddressMode](samplers.html#VkSamplerAddressMode) of
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE`
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](samplers.html#VkSamplerAddressMode)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-OpTypeImage-07027) VUID-vkCmdTraceRaysKHR-OpTypeImage-07027
@@ -436,7 +436,7 @@ result of this command **must** only be sampled using a
 For any [VkImageView](resources.html#VkImageView) being written as a storage image where the
 image format field of the `OpTypeImage` is `Unknown`, the view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-OpTypeImage-07028) VUID-vkCmdTraceRaysKHR-OpTypeImage-07028
@@ -444,7 +444,7 @@ image format field of the `OpTypeImage` is `Unknown`, the view’s
 For any [VkImageView](resources.html#VkImageView) being read as a storage image where the image
 format field of the `OpTypeImage` is `Unknown`, the view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-OpTypeImage-07029) VUID-vkCmdTraceRaysKHR-OpTypeImage-07029
@@ -452,7 +452,7 @@ format field of the `OpTypeImage` is `Unknown`, the view’s
 For any [VkBufferView](resources.html#VkBufferView) being written as a storage texel buffer where
 the image format field of the `OpTypeImage` is `Unknown`, the
 view’s [buffer features](formats.html#VkFormatProperties3) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-OpTypeImage-07030) VUID-vkCmdTraceRaysKHR-OpTypeImage-07030
@@ -460,15 +460,21 @@ view’s [buffer features](formats.html#VkFormatProperties3) **must** contain
 Any [VkBufferView](resources.html#VkBufferView) being read as a storage texel buffer where the
 image format field of the `OpTypeImage` is `Unknown` then the
 view’s [buffer features](formats.html#VkFormatProperties3) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-None-08600) VUID-vkCmdTraceRaysKHR-None-08600
 
-For each set *n* that is statically used by [a bound    shader](shaders.html#shaders-binding), a descriptor set **must** have been bound to *n* at the same
-pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is compatible
-for set *n*, with the [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current
-[VkPipeline](pipelines.html#VkPipeline)
+If a [a bound shader](shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a set *n*, a descriptor set **must** have been bound to *n*
+at the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
+compatible for set *n*, with the [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create
+the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](shaders.html#VkShaderEXT)
 , as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptorsets-compatibility)
@@ -476,13 +482,18 @@ or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array 
 * 
 [](#VUID-vkCmdTraceRaysKHR-None-08601) VUID-vkCmdTraceRaysKHR-None-08601
 
-For each push constant that is statically used by [a    bound shader](shaders.html#shaders-binding), a push constant value **must** have been set for the same
-pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is compatible
-for push constants, with the [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the
-current [VkPipeline](pipelines.html#VkPipeline)
+If a [a bound shader](shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a push constant value, that value **must** have been set
+for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
+[compatible for push constants](descriptorsets.html#descriptorsets-compatibility) with the
+[VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](shaders.html#VkShaderEXT)
-, as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptorsets-compatibility)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-None-10068) VUID-vkCmdTraceRaysKHR-None-10068
@@ -494,26 +505,28 @@ sets used by this command
 * 
 [](#VUID-vkCmdTraceRaysKHR-maintenance4-08602) VUID-vkCmdTraceRaysKHR-maintenance4-08602
 
-If the [`maintenance4`](features.html#features-maintenance4) feature is not
-enabled, then for each push constant that is statically used by
-[a bound shader](shaders.html#shaders-binding), a push constant value **must** have
-been set for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout)
-that is compatible for push constants, with the [VkPipelineLayout](descriptorsets.html#VkPipelineLayout)
-used to create the current [VkPipeline](pipelines.html#VkPipeline)
+If a [a bound shader](shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a push constant value, that value **must** have been set
+for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
+[compatible for push constants](descriptorsets.html#descriptorsets-compatibility) with the
+[VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) and [VkPushConstantRange](descriptorsets.html#VkPushConstantRange) arrays
 used to create the current [VkShaderEXT](shaders.html#VkShaderEXT)
-, as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptorsets-compatibility)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-None-08114) VUID-vkCmdTraceRaysKHR-None-08114
 
 Descriptors in each bound descriptor set, specified via
-[vkCmdBindDescriptorSets](descriptorsets.html#vkCmdBindDescriptorSets), **must** be valid as described by
-[descriptor validity](descriptorsets.html#descriptor-validity) if they are statically used
-by
+[vkCmdBindDescriptorSets](descriptorsets.html#vkCmdBindDescriptorSets), **must** be valid if they are accessed as
+described by [descriptor validity](descriptorsets.html#descriptor-validity) by
 the [VkPipeline](pipelines.html#VkPipeline) bound to the pipeline bind point used by this
 command and the bound [VkPipeline](pipelines.html#VkPipeline) was not created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-imageLayout-00344) VUID-vkCmdTraceRaysKHR-imageLayout-00344
@@ -528,7 +541,7 @@ defined by the [image layout    matching rules](resources.html#resources-image-l
 If the descriptors used by the [VkPipeline](pipelines.html#VkPipeline) bound to the pipeline
 bind point were specified via [vkCmdBindDescriptorSets](descriptorsets.html#vkCmdBindDescriptorSets), the bound
 [VkPipeline](pipelines.html#VkPipeline) **must** have been created without
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-None-08116) VUID-vkCmdTraceRaysKHR-None-08116
@@ -537,7 +550,7 @@ Descriptors in bound descriptor buffers, specified via
 [vkCmdSetDescriptorBufferOffsetsEXT](descriptorsets.html#vkCmdSetDescriptorBufferOffsetsEXT), **must** be valid if they are
 dynamically used by the [VkPipeline](pipelines.html#VkPipeline) bound to the pipeline bind
 point used by this command and the bound [VkPipeline](pipelines.html#VkPipeline) was created
-with `VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+with [VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-None-08604) VUID-vkCmdTraceRaysKHR-None-08604
@@ -553,13 +566,13 @@ to the pipeline bind point used by this command
 If the descriptors used by the [VkPipeline](pipelines.html#VkPipeline) bound to the pipeline
 bind point were specified via [vkCmdSetDescriptorBufferOffsetsEXT](descriptorsets.html#vkCmdSetDescriptorBufferOffsetsEXT),
 the bound [VkPipeline](pipelines.html#VkPipeline) **must** have been created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-None-08119) VUID-vkCmdTraceRaysKHR-None-08119
 
 If a descriptor is dynamically used with a [VkPipeline](pipelines.html#VkPipeline) created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, the descriptor
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits), the descriptor
 memory **must** be resident
 
 * 
@@ -567,7 +580,7 @@ memory **must** be resident
 
 If a descriptor is dynamically used with a [VkShaderEXT](shaders.html#VkShaderEXT) created
 with a `VkDescriptorSetLayout` that was created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, the
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits), the
 descriptor memory **must** be resident
 
 * 
@@ -593,8 +606,8 @@ pipeline bind point used by this command, since that pipeline was bound
 If any stage of the [VkPipeline](pipelines.html#VkPipeline) object bound to the pipeline bind
 point used by this command accesses a uniform buffer,
 and that stage was created without enabling either
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2` for
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
 `uniformBuffers`,
 and the [`robustBufferAccess`](features.html#features-robustBufferAccess)
 feature is not enabled, that stage **must** not access values outside of
@@ -616,8 +629,8 @@ specified in the descriptor set bound to the same pipeline bind point
 If any stage of the [VkPipeline](pipelines.html#VkPipeline) object bound to the pipeline bind
 point used by this command accesses a storage buffer,
 and that stage was created without enabling either
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2` for
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
 `storageBuffers`,
 and the [`robustBufferAccess`](features.html#features-robustBufferAccess)
 feature is not enabled, that stage **must** not access values outside of
@@ -660,7 +673,7 @@ view’s `format` and the `Sampled` `Type` operand of the
 [](#VUID-vkCmdTraceRaysKHR-OpImageWrite-08795) VUID-vkCmdTraceRaysKHR-OpImageWrite-08795
 
 If a [VkImageView](resources.html#VkImageView)
-created with a format other than `VK_FORMAT_A8_UNORM`
+created with a format other than [VK_FORMAT_A8_UNORM](formats.html#VkFormat)
 is accessed using `OpImageWrite` as a result of this command, then
 the `Type` of the `Texel` operand of that instruction **must** have
 at least as many components as the image view’s format
@@ -668,7 +681,7 @@ at least as many components as the image view’s format
 * 
 [](#VUID-vkCmdTraceRaysKHR-OpImageWrite-08796) VUID-vkCmdTraceRaysKHR-OpImageWrite-08796
 
-If a [VkImageView](resources.html#VkImageView) created with the format `VK_FORMAT_A8_UNORM`
+If a [VkImageView](resources.html#VkImageView) created with the format [VK_FORMAT_A8_UNORM](formats.html#VkFormat)
 is accessed using `OpImageWrite` as a result of this command, then
 the `Type` of the `Texel` operand of that instruction **must** have
 four components
@@ -717,7 +730,7 @@ less than 64-bit is accessed as a result of this command, the
 [](#VUID-vkCmdTraceRaysKHR-sparseImageInt64Atomics-04474) VUID-vkCmdTraceRaysKHR-sparseImageInt64Atomics-04474
 
 If the [    `sparseImageInt64Atomics`](features.html#features-sparseImageInt64Atomics) feature is not enabled, [VkImage](resources.html#VkImage)
-objects created with the `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` flag
+objects created with the [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits) flag
 **must** not be accessed by atomic instructions through an `OpTypeImage`
 with a `SampledType` with a `Width` of 64 by this command
 
@@ -725,26 +738,26 @@ with a `SampledType` with a `Width` of 64 by this command
 [](#VUID-vkCmdTraceRaysKHR-sparseImageInt64Atomics-04475) VUID-vkCmdTraceRaysKHR-sparseImageInt64Atomics-04475
 
 If the [    `sparseImageInt64Atomics`](features.html#features-sparseImageInt64Atomics) feature is not enabled, [VkBuffer](resources.html#VkBuffer)
-objects created with the `VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`
+objects created with the [VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkBufferCreateFlagBits)
 flag **must** not be accessed by atomic instructions through an
 `OpTypeImage` with a `SampledType` with a `Width` of 64 by this
 command
 
 * 
-[](#VUID-vkCmdTraceRaysKHR-OpImageWeightedSampleQCOM-06971) VUID-vkCmdTraceRaysKHR-OpImageWeightedSampleQCOM-06971
+[](#VUID-vkCmdTraceRaysKHR-OpImageSampleWeightedQCOM-06971) VUID-vkCmdTraceRaysKHR-OpImageSampleWeightedQCOM-06971
 
-If `OpImageWeightedSampleQCOM` is used to sample a [VkImageView](resources.html#VkImageView)
+If `OpImageSampleWeightedQCOM` is used to sample a [VkImageView](resources.html#VkImageView)
 as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
-[](#VUID-vkCmdTraceRaysKHR-OpImageWeightedSampleQCOM-06972) VUID-vkCmdTraceRaysKHR-OpImageWeightedSampleQCOM-06972
+[](#VUID-vkCmdTraceRaysKHR-OpImageSampleWeightedQCOM-06972) VUID-vkCmdTraceRaysKHR-OpImageSampleWeightedQCOM-06972
 
-If `OpImageWeightedSampleQCOM` uses a [VkImageView](resources.html#VkImageView) as a sample
+If `OpImageSampleWeightedQCOM` uses a [VkImageView](resources.html#VkImageView) as a sample
 weight image as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-OpImageBoxFilterQCOM-06973) VUID-vkCmdTraceRaysKHR-OpImageBoxFilterQCOM-06973
@@ -752,7 +765,7 @@ weight image as a result of this command, then the image view’s
 If `OpImageBoxFilterQCOM` is used to sample a [VkImageView](resources.html#VkImageView) as a
 result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BOX_FILTER_SAMPLED_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BOX_FILTER_SAMPLED_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-OpImageBlockMatchSSDQCOM-06974) VUID-vkCmdTraceRaysKHR-OpImageBlockMatchSSDQCOM-06974
@@ -760,7 +773,7 @@ result of this command, then the image view’s
 If `OpImageBlockMatchSSDQCOM` is used to read from an
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-OpImageBlockMatchSADQCOM-06975) VUID-vkCmdTraceRaysKHR-OpImageBlockMatchSADQCOM-06975
@@ -768,7 +781,7 @@ If `OpImageBlockMatchSSDQCOM` is used to read from an
 If `OpImageBlockMatchSADQCOM` is used to read from an
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-OpImageBlockMatchSADQCOM-06976) VUID-vkCmdTraceRaysKHR-OpImageBlockMatchSADQCOM-06976
@@ -779,21 +792,21 @@ specified reference coordinates **must** not fail
 [integer texel coordinate    validation](textures.html#textures-integer-coordinate-validation)
 
 * 
-[](#VUID-vkCmdTraceRaysKHR-OpImageWeightedSampleQCOM-06977) VUID-vkCmdTraceRaysKHR-OpImageWeightedSampleQCOM-06977
+[](#VUID-vkCmdTraceRaysKHR-OpImageSampleWeightedQCOM-06977) VUID-vkCmdTraceRaysKHR-OpImageSampleWeightedQCOM-06977
 
-If `OpImageWeightedSampleQCOM`, `OpImageBoxFilterQCOM`,
+If `OpImageSampleWeightedQCOM`, `OpImageBoxFilterQCOM`,
 `OpImageBlockMatchWindowSSDQCOM`,
 `OpImageBlockMatchWindowSADQCOM`,
 `OpImageBlockMatchGatherSSDQCOM`,
 `OpImageBlockMatchGatherSADQCOM`,
 `OpImageBlockMatchSSDQCOM`, or `OpImageBlockMatchSADQCOM` uses a
 [VkSampler](samplers.html#VkSampler) as a result of this command, then the sampler **must** have
-been created with `VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`
+been created with [VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](samplers.html#VkSamplerCreateFlagBits)
 
 * 
-[](#VUID-vkCmdTraceRaysKHR-OpImageWeightedSampleQCOM-06978) VUID-vkCmdTraceRaysKHR-OpImageWeightedSampleQCOM-06978
+[](#VUID-vkCmdTraceRaysKHR-OpImageSampleWeightedQCOM-06978) VUID-vkCmdTraceRaysKHR-OpImageSampleWeightedQCOM-06978
 
-If any command other than `OpImageWeightedSampleQCOM`,
+If any command other than `OpImageSampleWeightedQCOM`,
 `OpImageBoxFilterQCOM`,
 `OpImageBlockMatchWindowSSDQCOM`,
 `OpImageBlockMatchWindowSADQCOM`,
@@ -801,7 +814,7 @@ If any command other than `OpImageWeightedSampleQCOM`,
 `OpImageBlockMatchGatherSADQCOM`,
 `OpImageBlockMatchSSDQCOM`, or `OpImageBlockMatchSADQCOM` uses a
 [VkSampler](samplers.html#VkSampler) as a result of this command, then the sampler **must** not
-have been created with `VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`
+have been created with [VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](samplers.html#VkSamplerCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-OpImageBlockMatchWindow-09215) VUID-vkCmdTraceRaysKHR-OpImageBlockMatchWindow-09215
@@ -810,7 +823,7 @@ If a `OpImageBlockMatchWindow*QCOM` or
 `OpImageBlockMatchGather*QCOM` instruction is used to read from an
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-OpImageBlockMatchWindow-09216) VUID-vkCmdTraceRaysKHR-OpImageBlockMatchWindow-09216
@@ -838,11 +851,11 @@ Any shader invocation executed by this command **must**
 [](#VUID-vkCmdTraceRaysKHR-None-09600) VUID-vkCmdTraceRaysKHR-None-09600
 
 If a descriptor with type equal to any of
-`VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM`,
-`VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` is accessed as a result of
+[VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](descriptorsets.html#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](descriptorsets.html#VkDescriptorType) is accessed as a result of
 this command, all image subresources identified by that descriptor **must**
 be in the image layout identified when the descriptor was written
 
@@ -850,7 +863,7 @@ be in the image layout identified when the descriptor was written
 [](#VUID-vkCmdTraceRaysKHR-commandBuffer-10746) VUID-vkCmdTraceRaysKHR-commandBuffer-10746
 
 The `VkDeviceMemory` object allocated from a `VkMemoryHeap` with
-the `VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property that is bound to
+the [VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property that is bound to
 a resource accessed as a result of this command **must** be the active
 bound [bound tile memory object](memory.html#memory-bind-tile-memory) in
 `commandBuffer`
@@ -860,8 +873,8 @@ bound [bound tile memory object](memory.html#memory-bind-tile-memory) in
 
 If this command is recorded inside a [tile    shading render pass](renderpass.html#renderpass-tile-shading) instance, the stages corresponding to the pipeline
 bind point used by this command **must** only include
-`VK_SHADER_STAGE_VERTEX_BIT`, `VK_SHADER_STAGE_FRAGMENT_BIT`,
-and/or `VK_SHADER_STAGE_COMPUTE_BIT`
+[VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits), [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits),
+and/or [VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-None-10679) VUID-vkCmdTraceRaysKHR-None-10679
@@ -870,21 +883,20 @@ If this command is recorded where
 [per-tile execution model](renderpass.html#renderpass-per-tile-execution-model) is
 enabled, there **must** be no access to any image while the image was be
 transitioned to the
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` layout
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout) layout
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-pDescription-09900) VUID-vkCmdTraceRaysKHR-pDescription-09900
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](descriptorsets.html#VkDescriptorType) descriptor is accessed as a
 result of this command, then the underlying [VkTensorARM](resources.html#VkTensorARM) object
-**must** have been created with a
-[VkTensorCreateInfoARM](resources.html#VkTensorCreateInfoARM)::`pDescription` whose `usage` member
-contained `VK_TENSOR_USAGE_SHADER_BIT_ARM`
+**must** have been created with the [VK_TENSOR_USAGE_SHADER_BIT_ARM](resources.html#VkTensorUsageFlagBitsARM)
+usage flag set
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-dimensionCount-09905) VUID-vkCmdTraceRaysKHR-dimensionCount-09905
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](descriptorsets.html#VkDescriptorType) descriptor is accessed as a
 result of this command, then the `Rank` of the `OpTypeTensorARM`
 of the tensor resource variable **must** be equal to the
 `dimensionCount` provided via
@@ -894,11 +906,347 @@ underlying [VkTensorARM](resources.html#VkTensorARM) object
 * 
 [](#VUID-vkCmdTraceRaysKHR-OpTypeTensorARM-09906) VUID-vkCmdTraceRaysKHR-OpTypeTensorARM-09906
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](descriptorsets.html#VkDescriptorType) descriptor is accessed as a
 result of this command, then the element type of the
 `OpTypeTensorARM` of the tensor resource variable **must** be
 [compatible](../appendices/spirvenv.html#spirvenv-tensor-formats) with the [VkFormat](formats.html#VkFormat) of the
 [VkTensorViewARM](resources.html#VkTensorViewARM) used for the access
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11297) VUID-vkCmdTraceRaysKHR-None-11297
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses a `OpTypeStruct` decorated with `Block` or
+`BufferBlock` using that mapping, the calculated offset for the
+resource heap **must** be a multiple of [    `bufferDescriptorAlignment`](limits.html#limits-bufferDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11298) VUID-vkCmdTraceRaysKHR-None-11298
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses an `OpTypeImage` or `OpTypeSampledImage` using
+that mapping, the calculated offset for the resource heap **must** be
+a multiple of [    `imageDescriptorAlignment`](limits.html#limits-imageDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11299) VUID-vkCmdTraceRaysKHR-None-11299
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses an `OpTypeSampler` or `OpTypeSampledImage` using
+that mapping, the calculated offset for the sampler heap **must** be
+a multiple of [    `samplerDescriptorAlignment`](limits.html#limits-samplerDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11397) VUID-vkCmdTraceRaysKHR-None-11397
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses an `OpTypeTensorARM` using that mapping, the
+calculated offset for the resource heap **must** be a multiple of
+[`tensorDescriptorAlignment`](limits.html#limits-tensorDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11300) VUID-vkCmdTraceRaysKHR-None-11300
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a
+shader accesses a resource using that mapping, the value of the address
+at the expected location in push data **must** be a multiple of 4
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11301) VUID-vkCmdTraceRaysKHR-None-11301
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a
+shader accesses a resource using that mapping, the value of the address
+at the expected location in push data **must** be a valid
+`VkDeviceAddress` backed by physical memory at every offset
+specified by each mapping
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11302) VUID-vkCmdTraceRaysKHR-None-11302
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a valid
+`VkDeviceAddress`
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11304) VUID-vkCmdTraceRaysKHR-None-11304
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a multiple of 8
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11305) VUID-vkCmdTraceRaysKHR-None-11305
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a valid
+`VkDeviceAddress` backed by physical memory at every offset
+specified by each mapping
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11306) VUID-vkCmdTraceRaysKHR-None-11306
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and a shader accesses a resource using that mapping, the value of the
+address pointed to by the address in push data **must** be a valid
+`VkDeviceAddress`
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11308) VUID-vkCmdTraceRaysKHR-None-11308
+
+For each [descriptor heap](descriptorheaps.html#descriptorheaps) that is statically used by
+[a bound shader](shaders.html#shaders-binding), either directly or via a
+[descriptor mapping](descriptorheaps.html#descriptorheaps-bindings), a valid descriptor heap
+**must** be bound
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11309) VUID-vkCmdTraceRaysKHR-None-11309
+
+If a [bound shader](shaders.html#shaders-binding) was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) with the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline with the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, execution of
+this command **must** not result in any descriptor read accessing data
+outside of the user range of the respective heap bound by
+`vkCmdBind*HeapEXT` commands
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11372) VUID-vkCmdTraceRaysKHR-None-11372
+
+If any stage of the [VkPipeline](pipelines.html#VkPipeline) object bound to the pipeline bind
+point used by this command accesses a uniform buffer or uniform texel
+buffer through a descriptor in the bound resource heap,
+that stage was created without enabling either
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
+`uniformBuffers`,
+the [`robustBufferAccess2`](features.html#features-robustBufferAccess2) feature
+is not enabled,
+and the [`robustBufferAccess`](features.html#features-robustBufferAccess)
+feature is not enabled, that stage **must** not access values outside of
+the range of the descriptor specified via [VkDeviceAddressRangeEXT](fundamentals.html#VkDeviceAddressRangeEXT)
+when the descriptor was written
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11373) VUID-vkCmdTraceRaysKHR-None-11373
+
+If any stage of the [VkPipeline](pipelines.html#VkPipeline) object bound to the pipeline bind
+point used by this command accesses a storage buffer or storage texel
+buffer through a descriptor in the bound resource heap,
+that stage was created without enabling either
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
+`storageBuffers`,
+the [`robustBufferAccess2`](features.html#features-robustBufferAccess2) feature
+is not enabled,
+and the [`robustBufferAccess`](features.html#features-robustBufferAccess)
+feature is not enabled, that stage **must** not access values outside of
+the range of the descriptor specified by [VkDeviceAddressRangeEXT](fundamentals.html#VkDeviceAddressRangeEXT)
+when the descriptor was written
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11374) VUID-vkCmdTraceRaysKHR-None-11374
+
+If
+the [`robustBufferAccess2`](features.html#features-robustBufferAccess2) feature
+is not enabled,
+the [`robustBufferAccess`](features.html#features-robustBufferAccess) feature is
+not enabled, and any [VkShaderEXT](shaders.html#VkShaderEXT) bound to a stage corresponding to
+the pipeline bind point used by this command accesses a uniform buffer,
+uniform texel buffer, storage buffer, or storage texel buffer, that
+shader **must** not access values outside of the range of the buffer as
+specified by [VkDeviceAddressRangeEXT](fundamentals.html#VkDeviceAddressRangeEXT) when the descriptor was
+written
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-pBindInfo-11375) VUID-vkCmdTraceRaysKHR-pBindInfo-11375
+
+If any [bound shader](shaders.html#shaders-binding) uses an embedded sampler via a
+[descriptor mapping](descriptorheaps.html#descriptorheaps-bindings), the value of
+`pBindInfo->reservedRangeSize` set for [vkCmdBindSamplerHeapEXT](descriptorheaps.html#vkCmdBindSamplerHeapEXT)
+**must** be greater than or equal to
+[    `minSamplerHeapReservedRangeWithEmbedded`](limits.html#limits-minSamplerHeapReservedRangeWithEmbedded)
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11376) VUID-vkCmdTraceRaysKHR-None-11376
+
+If a [bound shader](shaders.html#shaders-binding) was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) with the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline with the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a push constant value, that value **must** have been set by
+[vkCmdPushDataEXT](descriptorheaps.html#vkCmdPushDataEXT)
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11398) VUID-vkCmdTraceRaysKHR-None-11398
+
+If a [bound shader](shaders.html#shaders-binding) was created with a
+[descriptor mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_RESOURCE_HEAP_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), or
+[VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a resource using that mapping, the access **must** not be
+[out of bounds](shaders.html#shaders-execution-memory-access-bounds)
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11437) VUID-vkCmdTraceRaysKHR-None-11437
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), or
+[VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a resource using that mapping, the buffer from which the
+address in push data was queried **must** have been created with the
+[VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11438) VUID-vkCmdTraceRaysKHR-None-11438
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a uniform buffer using that mapping, the address that the
+uniform buffer is mapped to **must** have been queried from a buffer
+created with the [VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11441) VUID-vkCmdTraceRaysKHR-None-11441
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a uniform buffer using that mapping, the address that the
+uniform buffer is mapped to **must** be aligned to
+[    `minUniformBufferOffsetAlignment`](limits.html#limits-minUniformBufferOffsetAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11439) VUID-vkCmdTraceRaysKHR-None-11439
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a storage buffer using that mapping, the address that the
+storage buffer is mapped to **must** have been queried from a buffer
+created with the [VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11442) VUID-vkCmdTraceRaysKHR-None-11442
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a storage buffer using that mapping, the address that the
+storage buffer is mapped to **must** be aligned to
+[    `minStorageBufferOffsetAlignment`](limits.html#limits-minStorageBufferOffsetAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11485) VUID-vkCmdTraceRaysKHR-None-11485
+
+    If a pipeline is bound to the pipeline bind point used by this command,
+    or shader is bound to a shader stage used by this command,
+    and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+    [VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+    or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+    accesses an acceleration structure using that mapping, the address that
+    the acceleration structure is mapped to **must** be an acceleration
+    structure
+    address retrieved from a [VkAccelerationStructureKHR](resources.html#VkAccelerationStructureKHR) object via
+    [vkGetAccelerationStructureDeviceAddressKHR](resources.html#vkGetAccelerationStructureDeviceAddressKHR)
+or
+    handle retrieved from a [VkAccelerationStructureNV](resources.html#VkAccelerationStructureNV) object via
+    [vkGetAccelerationStructureHandleNV](resources.html#vkGetAccelerationStructureHandleNV)
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-index-11450) VUID-vkCmdTraceRaysKHR-index-11450
+
+If a shader uses a sampler descriptor to sample an image as a result of
+this command, and that sampler descriptor uses a custom border color
+with an index defined by
+[VkSamplerCustomBorderColorIndexCreateInfoEXT](samplers.html#VkSamplerCustomBorderColorIndexCreateInfoEXT), the value of
+[VkSamplerCustomBorderColorIndexCreateInfoEXT](samplers.html#VkSamplerCustomBorderColorIndexCreateInfoEXT)::`index` **must**
+have been registered before this command was recorded, and still be
+registered during the sampling operation, with an identically defined
+color
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-protectedNoFault-11455) VUID-vkCmdTraceRaysKHR-protectedNoFault-11455
+
+If [`protectedNoFault`](devsandqueues.html#limits-protectedNoFault) is not supported,
+a pipeline is bound to the pipeline bind point used by this command,
+or a shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the address
+that the resource is mapped to **must** have been queried from a buffer
+created without the [VK_BUFFER_CREATE_PROTECTED_BIT](resources.html#VkBufferCreateFlagBits) create flag set
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-protectedNoFault-11456) VUID-vkCmdTraceRaysKHR-protectedNoFault-11456
+
+If [`protectedNoFault`](devsandqueues.html#limits-protectedNoFault) is not supported,
+a pipeline is bound to the pipeline bind point used by this command,
+or a shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+the address of the indirect memory **must** have been queried from a buffer
+created without the [VK_BUFFER_CREATE_PROTECTED_BIT](resources.html#VkBufferCreateFlagBits) create flag set
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-None-03429) VUID-vkCmdTraceRaysKHR-None-03429
@@ -910,9 +1258,19 @@ from the bound ray tracing pipeline
 [](#VUID-vkCmdTraceRaysKHR-None-09458) VUID-vkCmdTraceRaysKHR-None-09458
 
 If the bound ray tracing pipeline state was created with the
-`VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR` dynamic state
+[VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR](pipelines.html#VkDynamicState) dynamic state
 enabled then [vkCmdSetRayTracingPipelineStackSizeKHR](pipelines.html#vkCmdSetRayTracingPipelineStackSizeKHR) **must** have
 been called in the current command buffer prior to this trace command
+
+* 
+[](#VUID-vkCmdTraceRaysKHR-None-11319) VUID-vkCmdTraceRaysKHR-None-11319
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the value
+of the address at the expected location in shader record data **must** be a
+valid address
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-maxPipelineRayRecursionDepth-03679) VUID-vkCmdTraceRaysKHR-maxPipelineRayRecursionDepth-03679
@@ -937,7 +1295,7 @@ to its `stride` member
 
 `pRayGenShaderBindingTable->deviceAddress` **must** be a device address allocated to
 the application from a buffer created with the
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
+[VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-pRayGenShaderBindingTable-03682) VUID-vkCmdTraceRaysKHR-pRayGenShaderBindingTable-03682
@@ -950,7 +1308,7 @@ the application from a buffer created with the
 
 `pMissShaderBindingTable->deviceAddress` **must** be a device address allocated to
 the application from a buffer created with the
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
+[VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-pMissShaderBindingTable-03685) VUID-vkCmdTraceRaysKHR-pMissShaderBindingTable-03685
@@ -975,7 +1333,7 @@ the application from a buffer created with the
 
 `pHitShaderBindingTable->deviceAddress` **must** be a device address allocated to
 the application from a buffer created with the
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
+[VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-pHitShaderBindingTable-03689) VUID-vkCmdTraceRaysKHR-pHitShaderBindingTable-03689
@@ -1000,7 +1358,7 @@ the application from a buffer created with the
 
 `pCallableShaderBindingTable->deviceAddress` **must** be a device address allocated
 to the application from a buffer created with the
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
+[VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-pCallableShaderBindingTable-03693) VUID-vkCmdTraceRaysKHR-pCallableShaderBindingTable-03693
@@ -1025,7 +1383,7 @@ to the application from a buffer created with the
 
 If the bound ray tracing pipeline was created with `flags` that
 included
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR`, the
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR](pipelines.html#VkPipelineCreateFlagBits), the
 entries in the table identified by `pMissShaderBindingTable->deviceAddress`
 accessed as a result of this command in order to execute a miss shader
 **must** not be zero
@@ -1035,7 +1393,7 @@ accessed as a result of this command in order to execute a miss shader
 
 If the bound ray tracing pipeline was created with `flags` that
 included
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR`,
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR](pipelines.html#VkPipelineCreateFlagBits),
 entries in the table identified by `pHitShaderBindingTable->deviceAddress`
 accessed as a result of this command in order to execute an any-hit
 shader **must** not be zero
@@ -1045,7 +1403,7 @@ shader **must** not be zero
 
 If the bound ray tracing pipeline was created with `flags` that
 included
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR`,
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR](pipelines.html#VkPipelineCreateFlagBits),
 entries in the table identified by `pHitShaderBindingTable->deviceAddress`
 accessed as a result of this command in order to execute a closest hit
 shader **must** not be zero
@@ -1055,7 +1413,7 @@ shader **must** not be zero
 
 If the bound ray tracing pipeline was created with `flags` that
 included
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR`,
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR](pipelines.html#VkPipelineCreateFlagBits),
 entries in the table identified by `pHitShaderBindingTable->deviceAddress`
 accessed as a result of this command in order to execute an intersection
 shader **must** not be zero
@@ -1065,18 +1423,18 @@ shader **must** not be zero
 
 Any non-zero hit shader group entries in the table identified by
 `pHitShaderBindingTable->deviceAddress` accessed by this call from a geometry
-with a `geometryType` of `VK_GEOMETRY_TYPE_TRIANGLES_KHR` **must**
+with a `geometryType` of [VK_GEOMETRY_TYPE_TRIANGLES_KHR](resources.html#VkGeometryTypeNV) **must**
 have been created with
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR`
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR](pipelines.html#VkRayTracingShaderGroupTypeNV)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-pHitShaderBindingTable-04736) VUID-vkCmdTraceRaysKHR-pHitShaderBindingTable-04736
 
 Any non-zero hit shader group entries in the table identified by
 `pHitShaderBindingTable->deviceAddress` accessed by this call from a geometry
-with a `geometryType` of `VK_GEOMETRY_TYPE_AABBS_KHR` **must** have
+with a `geometryType` of [VK_GEOMETRY_TYPE_AABBS_KHR](resources.html#VkGeometryTypeNV) **must** have
 been created with
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR`
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR](pipelines.html#VkRayTracingShaderGroupTypeNV)
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-width-03638) VUID-vkCmdTraceRaysKHR-width-03638
@@ -1148,7 +1506,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdTraceRaysKHR-commandBuffer-cmdpool) VUID-vkCmdTraceRaysKHR-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdTraceRaysKHR-renderpass) VUID-vkCmdTraceRaysKHR-renderpass
@@ -1220,26 +1578,26 @@ enabled
 [](#VUID-vkCmdBindInvocationMaskHUAWEI-imageView-04977) VUID-vkCmdBindInvocationMaskHUAWEI-imageView-04977
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), it **must** be a valid
-[VkImageView](resources.html#VkImageView) handle of type `VK_IMAGE_VIEW_TYPE_2D`
+[VkImageView](resources.html#VkImageView) handle of type [VK_IMAGE_VIEW_TYPE_2D](resources.html#VkImageViewType)
 
 * 
 [](#VUID-vkCmdBindInvocationMaskHUAWEI-imageView-04978) VUID-vkCmdBindInvocationMaskHUAWEI-imageView-04978
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), it **must** have a format
-of `VK_FORMAT_R8_UINT`
+of [VK_FORMAT_R8_UINT](formats.html#VkFormat)
 
 * 
 [](#VUID-vkCmdBindInvocationMaskHUAWEI-imageView-04979) VUID-vkCmdBindInvocationMaskHUAWEI-imageView-04979
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), it **must** have been
-created with the `VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI` usage
+created with the [VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI](resources.html#VkImageUsageFlagBits) usage
 flag set
 
 * 
 [](#VUID-vkCmdBindInvocationMaskHUAWEI-imageView-04980) VUID-vkCmdBindInvocationMaskHUAWEI-imageView-04980
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `imageLayout` **must**
-be `VK_IMAGE_LAYOUT_GENERAL`
+be [VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-vkCmdBindInvocationMaskHUAWEI-width-04981) VUID-vkCmdBindInvocationMaskHUAWEI-width-04981
@@ -1284,7 +1642,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindInvocationMaskHUAWEI-commandBuffer-cmdpool) VUID-vkCmdBindInvocationMaskHUAWEI-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBindInvocationMaskHUAWEI-renderpass) VUID-vkCmdBindInvocationMaskHUAWEI-renderpass
@@ -1368,53 +1726,53 @@ Valid Usage
 [](#VUID-vkCmdTraceRaysIndirectKHR-magFilter-04553) VUID-vkCmdTraceRaysIndirectKHR-magFilter-04553
 
 If a [VkSampler](samplers.html#VkSampler) created with `magFilter` or `minFilter`
-equal to `VK_FILTER_LINEAR`,
+equal to [VK_FILTER_LINEAR](samplers.html#VkFilter),
 `reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`,
-and `compareEnable` equal to `VK_FALSE` is used to sample a
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](samplers.html#VkSamplerReductionModeEXT),
+and `compareEnable` equal to [VK_FALSE](fundamentals.html#VK_FALSE) is used to sample a
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-magFilter-09598) VUID-vkCmdTraceRaysIndirectKHR-magFilter-09598
 
 If a [VkSampler](samplers.html#VkSampler) created with `magFilter` or `minFilter`
-equal to `VK_FILTER_LINEAR` and `reductionMode` equal to either
-`VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` is used to sample a
+equal to [VK_FILTER_LINEAR](samplers.html#VkFilter) and `reductionMode` equal to either
+[VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT) is used to sample a
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-mipmapMode-04770) VUID-vkCmdTraceRaysIndirectKHR-mipmapMode-04770
 
 If a [VkSampler](samplers.html#VkSampler) created with `mipmapMode` equal to
-`VK_SAMPLER_MIPMAP_MODE_LINEAR`,
+[VK_SAMPLER_MIPMAP_MODE_LINEAR](samplers.html#VkSamplerMipmapMode),
 `reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`,
-and `compareEnable` equal to `VK_FALSE` is used to sample a
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](samplers.html#VkSamplerReductionModeEXT),
+and `compareEnable` equal to [VK_FALSE](fundamentals.html#VK_FALSE) is used to sample a
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-mipmapMode-09599) VUID-vkCmdTraceRaysIndirectKHR-mipmapMode-09599
 
 If a [VkSampler](samplers.html#VkSampler) created with `mipmapMode` equal to
-`VK_SAMPLER_MIPMAP_MODE_LINEAR` and `reductionMode` equal to
-either `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` is used to sample a
+[VK_SAMPLER_MIPMAP_MODE_LINEAR](samplers.html#VkSamplerMipmapMode) and `reductionMode` equal to
+either [VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT) is used to sample a
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-unnormalizedCoordinates-09635) VUID-vkCmdTraceRaysIndirectKHR-unnormalizedCoordinates-09635
 
 If a [VkSampler](samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
+[VK_TRUE](fundamentals.html#VK_TRUE) is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
 command, then the image view’s `levelCount` and `layerCount`
 **must** be 1
 
@@ -1422,15 +1780,15 @@ command, then the image view’s `levelCount` and `layerCount`
 [](#VUID-vkCmdTraceRaysIndirectKHR-None-08609) VUID-vkCmdTraceRaysIndirectKHR-None-08609
 
 If a [VkSampler](samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
+[VK_TRUE](fundamentals.html#VK_TRUE) is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
 command, then the image view’s `viewType` **must** be
-`VK_IMAGE_VIEW_TYPE_1D` or `VK_IMAGE_VIEW_TYPE_2D`
+[VK_IMAGE_VIEW_TYPE_1D](resources.html#VkImageViewType) or [VK_IMAGE_VIEW_TYPE_2D](resources.html#VkImageViewType)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-None-08610) VUID-vkCmdTraceRaysIndirectKHR-None-08610
 
 If a [VkSampler](samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
+[VK_TRUE](fundamentals.html#VK_TRUE) is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
 command, then the sampler **must** not be used with any of the SPIR-V
 `OpImageSample*` or `OpImageSparseSample*` instructions with
 `ImplicitLod`, `Dref` or `Proj` in their name
@@ -1439,7 +1797,7 @@ command, then the sampler **must** not be used with any of the SPIR-V
 [](#VUID-vkCmdTraceRaysIndirectKHR-None-08611) VUID-vkCmdTraceRaysIndirectKHR-None-08611
 
 If a [VkSampler](samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
+[VK_TRUE](fundamentals.html#VK_TRUE) is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
 command, then the sampler **must** not be used with any of the SPIR-V
 `OpImageSample*` or `OpImageSparseSample*` instructions that includes a
 LOD bias or any offset values
@@ -1450,7 +1808,7 @@ LOD bias or any offset values
 If a [VkImageView](resources.html#VkImageView) is sampled with
 [depth comparison](textures.html#textures-depth-compare-operation), the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT`
+[VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-None-02691) VUID-vkCmdTraceRaysIndirectKHR-None-02691
@@ -1458,38 +1816,38 @@ If a [VkImageView](resources.html#VkImageView) is sampled with
 If a [VkImageView](resources.html#VkImageView) is accessed using atomic operations as a result
 of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT`
+[VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-None-07888) VUID-vkCmdTraceRaysIndirectKHR-None-07888
 
-If a `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` descriptor is
+If a [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType) descriptor is
 accessed using atomic operations as a result of this command, then the
 storage texel buffer’s [format    features](resources.html#resources-buffer-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT`
+[VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-None-02692) VUID-vkCmdTraceRaysIndirectKHR-None-02692
 
-If a [VkImageView](resources.html#VkImageView) is sampled with `VK_FILTER_CUBIC_EXT` as a
+If a [VkImageView](resources.html#VkImageView) is sampled with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a
 result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-None-02693) VUID-vkCmdTraceRaysIndirectKHR-None-02693
 
 If
 the [VK_EXT_filter_cubic](../appendices/extensions.html#VK_EXT_filter_cubic) extension is not enabled and
-any [VkImageView](resources.html#VkImageView) is sampled with `VK_FILTER_CUBIC_EXT` as a
+any [VkImageView](resources.html#VkImageView) is sampled with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a
 result of this command, it **must** not have a [VkImageViewType](resources.html#VkImageViewType) of
-`VK_IMAGE_VIEW_TYPE_3D`, `VK_IMAGE_VIEW_TYPE_CUBE`, or
-`VK_IMAGE_VIEW_TYPE_CUBE_ARRAY`
+[VK_IMAGE_VIEW_TYPE_3D](resources.html#VkImageViewType), [VK_IMAGE_VIEW_TYPE_CUBE](resources.html#VkImageViewType), or
+[VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](resources.html#VkImageViewType)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-filterCubic-02694) VUID-vkCmdTraceRaysIndirectKHR-filterCubic-02694
 
-Any [VkImageView](resources.html#VkImageView) being sampled with `VK_FILTER_CUBIC_EXT` as a
+Any [VkImageView](resources.html#VkImageView) being sampled with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a
 result of this command **must** have a [VkImageViewType](resources.html#VkImageViewType) and format
 that supports cubic filtering, as specified by
 [VkFilterCubicImageViewImageFormatPropertiesEXT](capabilities.html#VkFilterCubicImageViewImageFormatPropertiesEXT)::`filterCubic`
@@ -1498,9 +1856,9 @@ returned by [vkGetPhysicalDeviceImageFormatProperties2](capabilities.html#vkGetP
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-filterCubicMinmax-02695) VUID-vkCmdTraceRaysIndirectKHR-filterCubicMinmax-02695
 
-Any [VkImageView](resources.html#VkImageView) being sampled with `VK_FILTER_CUBIC_EXT` with
-a reduction mode of either `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` as a result of this command **must**
+Any [VkImageView](resources.html#VkImageView) being sampled with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) with
+a reduction mode of either [VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT) as a result of this command **must**
 have a [VkImageViewType](resources.html#VkImageViewType) and format that supports cubic filtering
 together with minmax filtering, as specified by
 [VkFilterCubicImageViewImageFormatPropertiesEXT](capabilities.html#VkFilterCubicImageViewImageFormatPropertiesEXT)::`filterCubicMinmax`
@@ -1511,35 +1869,35 @@ returned by [vkGetPhysicalDeviceImageFormatProperties2](capabilities.html#vkGetP
 
 If the [`cubicRangeClamp`](features.html#features-cubicRangeClamp) feature is
 not enabled, then any [VkImageView](resources.html#VkImageView) being sampled with
-`VK_FILTER_CUBIC_EXT` as a result of this command **must** not have a
+[VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a result of this command **must** not have a
 [VkSamplerReductionModeCreateInfo](samplers.html#VkSamplerReductionModeCreateInfo)::`reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM`
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](samplers.html#VkSamplerReductionModeEXT)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-reductionMode-09213) VUID-vkCmdTraceRaysIndirectKHR-reductionMode-09213
 
 Any [VkImageView](resources.html#VkImageView) being sampled with a
 [VkSamplerReductionModeCreateInfo](samplers.html#VkSamplerReductionModeCreateInfo)::`reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM` as a
-result of this command **must** sample with `VK_FILTER_CUBIC_EXT`
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](samplers.html#VkSamplerReductionModeEXT) as a
+result of this command **must** sample with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-selectableCubicWeights-09214) VUID-vkCmdTraceRaysIndirectKHR-selectableCubicWeights-09214
 
 If the [`selectableCubicWeights`](features.html#features-selectableCubicWeights)
 feature is not enabled, then any [VkImageView](resources.html#VkImageView) being sampled with
-`VK_FILTER_CUBIC_EXT` as a result of this command **must** have
+[VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a result of this command **must** have
 [VkSamplerCubicWeightsCreateInfoQCOM](samplers.html#VkSamplerCubicWeightsCreateInfoQCOM)::`cubicWeights` equal to
-`VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM`
+[VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM](samplers.html#VkCubicFilterWeightsQCOM)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-flags-02696) VUID-vkCmdTraceRaysIndirectKHR-flags-02696
 
 Any [VkImage](resources.html#VkImage) created with a [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`flags`
-containing `VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV` sampled as a
+containing [VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV](resources.html#VkImageCreateFlagBits) sampled as a
 result of this command **must** only be sampled using a
 [VkSamplerAddressMode](samplers.html#VkSamplerAddressMode) of
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE`
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](samplers.html#VkSamplerAddressMode)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-OpTypeImage-07027) VUID-vkCmdTraceRaysIndirectKHR-OpTypeImage-07027
@@ -1547,7 +1905,7 @@ result of this command **must** only be sampled using a
 For any [VkImageView](resources.html#VkImageView) being written as a storage image where the
 image format field of the `OpTypeImage` is `Unknown`, the view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-OpTypeImage-07028) VUID-vkCmdTraceRaysIndirectKHR-OpTypeImage-07028
@@ -1555,7 +1913,7 @@ image format field of the `OpTypeImage` is `Unknown`, the view’s
 For any [VkImageView](resources.html#VkImageView) being read as a storage image where the image
 format field of the `OpTypeImage` is `Unknown`, the view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-OpTypeImage-07029) VUID-vkCmdTraceRaysIndirectKHR-OpTypeImage-07029
@@ -1563,7 +1921,7 @@ format field of the `OpTypeImage` is `Unknown`, the view’s
 For any [VkBufferView](resources.html#VkBufferView) being written as a storage texel buffer where
 the image format field of the `OpTypeImage` is `Unknown`, the
 view’s [buffer features](formats.html#VkFormatProperties3) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-OpTypeImage-07030) VUID-vkCmdTraceRaysIndirectKHR-OpTypeImage-07030
@@ -1571,15 +1929,21 @@ view’s [buffer features](formats.html#VkFormatProperties3) **must** contain
 Any [VkBufferView](resources.html#VkBufferView) being read as a storage texel buffer where the
 image format field of the `OpTypeImage` is `Unknown` then the
 view’s [buffer features](formats.html#VkFormatProperties3) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-None-08600) VUID-vkCmdTraceRaysIndirectKHR-None-08600
 
-For each set *n* that is statically used by [a bound    shader](shaders.html#shaders-binding), a descriptor set **must** have been bound to *n* at the same
-pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is compatible
-for set *n*, with the [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current
-[VkPipeline](pipelines.html#VkPipeline)
+If a [a bound shader](shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a set *n*, a descriptor set **must** have been bound to *n*
+at the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
+compatible for set *n*, with the [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create
+the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](shaders.html#VkShaderEXT)
 , as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptorsets-compatibility)
@@ -1587,13 +1951,18 @@ or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-None-08601) VUID-vkCmdTraceRaysIndirectKHR-None-08601
 
-For each push constant that is statically used by [a    bound shader](shaders.html#shaders-binding), a push constant value **must** have been set for the same
-pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is compatible
-for push constants, with the [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the
-current [VkPipeline](pipelines.html#VkPipeline)
+If a [a bound shader](shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a push constant value, that value **must** have been set
+for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
+[compatible for push constants](descriptorsets.html#descriptorsets-compatibility) with the
+[VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](shaders.html#VkShaderEXT)
-, as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptorsets-compatibility)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-None-10068) VUID-vkCmdTraceRaysIndirectKHR-None-10068
@@ -1605,26 +1974,28 @@ sets used by this command
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-maintenance4-08602) VUID-vkCmdTraceRaysIndirectKHR-maintenance4-08602
 
-If the [`maintenance4`](features.html#features-maintenance4) feature is not
-enabled, then for each push constant that is statically used by
-[a bound shader](shaders.html#shaders-binding), a push constant value **must** have
-been set for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout)
-that is compatible for push constants, with the [VkPipelineLayout](descriptorsets.html#VkPipelineLayout)
-used to create the current [VkPipeline](pipelines.html#VkPipeline)
+If a [a bound shader](shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a push constant value, that value **must** have been set
+for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
+[compatible for push constants](descriptorsets.html#descriptorsets-compatibility) with the
+[VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) and [VkPushConstantRange](descriptorsets.html#VkPushConstantRange) arrays
 used to create the current [VkShaderEXT](shaders.html#VkShaderEXT)
-, as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptorsets-compatibility)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-None-08114) VUID-vkCmdTraceRaysIndirectKHR-None-08114
 
 Descriptors in each bound descriptor set, specified via
-[vkCmdBindDescriptorSets](descriptorsets.html#vkCmdBindDescriptorSets), **must** be valid as described by
-[descriptor validity](descriptorsets.html#descriptor-validity) if they are statically used
-by
+[vkCmdBindDescriptorSets](descriptorsets.html#vkCmdBindDescriptorSets), **must** be valid if they are accessed as
+described by [descriptor validity](descriptorsets.html#descriptor-validity) by
 the [VkPipeline](pipelines.html#VkPipeline) bound to the pipeline bind point used by this
 command and the bound [VkPipeline](pipelines.html#VkPipeline) was not created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-imageLayout-00344) VUID-vkCmdTraceRaysIndirectKHR-imageLayout-00344
@@ -1639,7 +2010,7 @@ defined by the [image layout    matching rules](resources.html#resources-image-l
 If the descriptors used by the [VkPipeline](pipelines.html#VkPipeline) bound to the pipeline
 bind point were specified via [vkCmdBindDescriptorSets](descriptorsets.html#vkCmdBindDescriptorSets), the bound
 [VkPipeline](pipelines.html#VkPipeline) **must** have been created without
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-None-08116) VUID-vkCmdTraceRaysIndirectKHR-None-08116
@@ -1648,7 +2019,7 @@ Descriptors in bound descriptor buffers, specified via
 [vkCmdSetDescriptorBufferOffsetsEXT](descriptorsets.html#vkCmdSetDescriptorBufferOffsetsEXT), **must** be valid if they are
 dynamically used by the [VkPipeline](pipelines.html#VkPipeline) bound to the pipeline bind
 point used by this command and the bound [VkPipeline](pipelines.html#VkPipeline) was created
-with `VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+with [VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-None-08604) VUID-vkCmdTraceRaysIndirectKHR-None-08604
@@ -1664,13 +2035,13 @@ to the pipeline bind point used by this command
 If the descriptors used by the [VkPipeline](pipelines.html#VkPipeline) bound to the pipeline
 bind point were specified via [vkCmdSetDescriptorBufferOffsetsEXT](descriptorsets.html#vkCmdSetDescriptorBufferOffsetsEXT),
 the bound [VkPipeline](pipelines.html#VkPipeline) **must** have been created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-None-08119) VUID-vkCmdTraceRaysIndirectKHR-None-08119
 
 If a descriptor is dynamically used with a [VkPipeline](pipelines.html#VkPipeline) created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, the descriptor
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits), the descriptor
 memory **must** be resident
 
 * 
@@ -1678,7 +2049,7 @@ memory **must** be resident
 
 If a descriptor is dynamically used with a [VkShaderEXT](shaders.html#VkShaderEXT) created
 with a `VkDescriptorSetLayout` that was created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, the
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits), the
 descriptor memory **must** be resident
 
 * 
@@ -1704,8 +2075,8 @@ pipeline bind point used by this command, since that pipeline was bound
 If any stage of the [VkPipeline](pipelines.html#VkPipeline) object bound to the pipeline bind
 point used by this command accesses a uniform buffer,
 and that stage was created without enabling either
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2` for
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
 `uniformBuffers`,
 and the [`robustBufferAccess`](features.html#features-robustBufferAccess)
 feature is not enabled, that stage **must** not access values outside of
@@ -1727,8 +2098,8 @@ specified in the descriptor set bound to the same pipeline bind point
 If any stage of the [VkPipeline](pipelines.html#VkPipeline) object bound to the pipeline bind
 point used by this command accesses a storage buffer,
 and that stage was created without enabling either
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2` for
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
 `storageBuffers`,
 and the [`robustBufferAccess`](features.html#features-robustBufferAccess)
 feature is not enabled, that stage **must** not access values outside of
@@ -1771,7 +2142,7 @@ view’s `format` and the `Sampled` `Type` operand of the
 [](#VUID-vkCmdTraceRaysIndirectKHR-OpImageWrite-08795) VUID-vkCmdTraceRaysIndirectKHR-OpImageWrite-08795
 
 If a [VkImageView](resources.html#VkImageView)
-created with a format other than `VK_FORMAT_A8_UNORM`
+created with a format other than [VK_FORMAT_A8_UNORM](formats.html#VkFormat)
 is accessed using `OpImageWrite` as a result of this command, then
 the `Type` of the `Texel` operand of that instruction **must** have
 at least as many components as the image view’s format
@@ -1779,7 +2150,7 @@ at least as many components as the image view’s format
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-OpImageWrite-08796) VUID-vkCmdTraceRaysIndirectKHR-OpImageWrite-08796
 
-If a [VkImageView](resources.html#VkImageView) created with the format `VK_FORMAT_A8_UNORM`
+If a [VkImageView](resources.html#VkImageView) created with the format [VK_FORMAT_A8_UNORM](formats.html#VkFormat)
 is accessed using `OpImageWrite` as a result of this command, then
 the `Type` of the `Texel` operand of that instruction **must** have
 four components
@@ -1828,7 +2199,7 @@ less than 64-bit is accessed as a result of this command, the
 [](#VUID-vkCmdTraceRaysIndirectKHR-sparseImageInt64Atomics-04474) VUID-vkCmdTraceRaysIndirectKHR-sparseImageInt64Atomics-04474
 
 If the [    `sparseImageInt64Atomics`](features.html#features-sparseImageInt64Atomics) feature is not enabled, [VkImage](resources.html#VkImage)
-objects created with the `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` flag
+objects created with the [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits) flag
 **must** not be accessed by atomic instructions through an `OpTypeImage`
 with a `SampledType` with a `Width` of 64 by this command
 
@@ -1836,26 +2207,26 @@ with a `SampledType` with a `Width` of 64 by this command
 [](#VUID-vkCmdTraceRaysIndirectKHR-sparseImageInt64Atomics-04475) VUID-vkCmdTraceRaysIndirectKHR-sparseImageInt64Atomics-04475
 
 If the [    `sparseImageInt64Atomics`](features.html#features-sparseImageInt64Atomics) feature is not enabled, [VkBuffer](resources.html#VkBuffer)
-objects created with the `VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`
+objects created with the [VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkBufferCreateFlagBits)
 flag **must** not be accessed by atomic instructions through an
 `OpTypeImage` with a `SampledType` with a `Width` of 64 by this
 command
 
 * 
-[](#VUID-vkCmdTraceRaysIndirectKHR-OpImageWeightedSampleQCOM-06971) VUID-vkCmdTraceRaysIndirectKHR-OpImageWeightedSampleQCOM-06971
+[](#VUID-vkCmdTraceRaysIndirectKHR-OpImageSampleWeightedQCOM-06971) VUID-vkCmdTraceRaysIndirectKHR-OpImageSampleWeightedQCOM-06971
 
-If `OpImageWeightedSampleQCOM` is used to sample a [VkImageView](resources.html#VkImageView)
+If `OpImageSampleWeightedQCOM` is used to sample a [VkImageView](resources.html#VkImageView)
 as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
-[](#VUID-vkCmdTraceRaysIndirectKHR-OpImageWeightedSampleQCOM-06972) VUID-vkCmdTraceRaysIndirectKHR-OpImageWeightedSampleQCOM-06972
+[](#VUID-vkCmdTraceRaysIndirectKHR-OpImageSampleWeightedQCOM-06972) VUID-vkCmdTraceRaysIndirectKHR-OpImageSampleWeightedQCOM-06972
 
-If `OpImageWeightedSampleQCOM` uses a [VkImageView](resources.html#VkImageView) as a sample
+If `OpImageSampleWeightedQCOM` uses a [VkImageView](resources.html#VkImageView) as a sample
 weight image as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-OpImageBoxFilterQCOM-06973) VUID-vkCmdTraceRaysIndirectKHR-OpImageBoxFilterQCOM-06973
@@ -1863,7 +2234,7 @@ weight image as a result of this command, then the image view’s
 If `OpImageBoxFilterQCOM` is used to sample a [VkImageView](resources.html#VkImageView) as a
 result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BOX_FILTER_SAMPLED_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BOX_FILTER_SAMPLED_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-OpImageBlockMatchSSDQCOM-06974) VUID-vkCmdTraceRaysIndirectKHR-OpImageBlockMatchSSDQCOM-06974
@@ -1871,7 +2242,7 @@ result of this command, then the image view’s
 If `OpImageBlockMatchSSDQCOM` is used to read from an
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-OpImageBlockMatchSADQCOM-06975) VUID-vkCmdTraceRaysIndirectKHR-OpImageBlockMatchSADQCOM-06975
@@ -1879,7 +2250,7 @@ If `OpImageBlockMatchSSDQCOM` is used to read from an
 If `OpImageBlockMatchSADQCOM` is used to read from an
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-OpImageBlockMatchSADQCOM-06976) VUID-vkCmdTraceRaysIndirectKHR-OpImageBlockMatchSADQCOM-06976
@@ -1890,21 +2261,21 @@ specified reference coordinates **must** not fail
 [integer texel coordinate    validation](textures.html#textures-integer-coordinate-validation)
 
 * 
-[](#VUID-vkCmdTraceRaysIndirectKHR-OpImageWeightedSampleQCOM-06977) VUID-vkCmdTraceRaysIndirectKHR-OpImageWeightedSampleQCOM-06977
+[](#VUID-vkCmdTraceRaysIndirectKHR-OpImageSampleWeightedQCOM-06977) VUID-vkCmdTraceRaysIndirectKHR-OpImageSampleWeightedQCOM-06977
 
-If `OpImageWeightedSampleQCOM`, `OpImageBoxFilterQCOM`,
+If `OpImageSampleWeightedQCOM`, `OpImageBoxFilterQCOM`,
 `OpImageBlockMatchWindowSSDQCOM`,
 `OpImageBlockMatchWindowSADQCOM`,
 `OpImageBlockMatchGatherSSDQCOM`,
 `OpImageBlockMatchGatherSADQCOM`,
 `OpImageBlockMatchSSDQCOM`, or `OpImageBlockMatchSADQCOM` uses a
 [VkSampler](samplers.html#VkSampler) as a result of this command, then the sampler **must** have
-been created with `VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`
+been created with [VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](samplers.html#VkSamplerCreateFlagBits)
 
 * 
-[](#VUID-vkCmdTraceRaysIndirectKHR-OpImageWeightedSampleQCOM-06978) VUID-vkCmdTraceRaysIndirectKHR-OpImageWeightedSampleQCOM-06978
+[](#VUID-vkCmdTraceRaysIndirectKHR-OpImageSampleWeightedQCOM-06978) VUID-vkCmdTraceRaysIndirectKHR-OpImageSampleWeightedQCOM-06978
 
-If any command other than `OpImageWeightedSampleQCOM`,
+If any command other than `OpImageSampleWeightedQCOM`,
 `OpImageBoxFilterQCOM`,
 `OpImageBlockMatchWindowSSDQCOM`,
 `OpImageBlockMatchWindowSADQCOM`,
@@ -1912,7 +2283,7 @@ If any command other than `OpImageWeightedSampleQCOM`,
 `OpImageBlockMatchGatherSADQCOM`,
 `OpImageBlockMatchSSDQCOM`, or `OpImageBlockMatchSADQCOM` uses a
 [VkSampler](samplers.html#VkSampler) as a result of this command, then the sampler **must** not
-have been created with `VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`
+have been created with [VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](samplers.html#VkSamplerCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-OpImageBlockMatchWindow-09215) VUID-vkCmdTraceRaysIndirectKHR-OpImageBlockMatchWindow-09215
@@ -1921,7 +2292,7 @@ If a `OpImageBlockMatchWindow*QCOM` or
 `OpImageBlockMatchGather*QCOM` instruction is used to read from an
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-OpImageBlockMatchWindow-09216) VUID-vkCmdTraceRaysIndirectKHR-OpImageBlockMatchWindow-09216
@@ -1949,11 +2320,11 @@ Any shader invocation executed by this command **must**
 [](#VUID-vkCmdTraceRaysIndirectKHR-None-09600) VUID-vkCmdTraceRaysIndirectKHR-None-09600
 
 If a descriptor with type equal to any of
-`VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM`,
-`VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` is accessed as a result of
+[VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](descriptorsets.html#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](descriptorsets.html#VkDescriptorType) is accessed as a result of
 this command, all image subresources identified by that descriptor **must**
 be in the image layout identified when the descriptor was written
 
@@ -1961,7 +2332,7 @@ be in the image layout identified when the descriptor was written
 [](#VUID-vkCmdTraceRaysIndirectKHR-commandBuffer-10746) VUID-vkCmdTraceRaysIndirectKHR-commandBuffer-10746
 
 The `VkDeviceMemory` object allocated from a `VkMemoryHeap` with
-the `VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property that is bound to
+the [VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property that is bound to
 a resource accessed as a result of this command **must** be the active
 bound [bound tile memory object](memory.html#memory-bind-tile-memory) in
 `commandBuffer`
@@ -1971,8 +2342,8 @@ bound [bound tile memory object](memory.html#memory-bind-tile-memory) in
 
 If this command is recorded inside a [tile    shading render pass](renderpass.html#renderpass-tile-shading) instance, the stages corresponding to the pipeline
 bind point used by this command **must** only include
-`VK_SHADER_STAGE_VERTEX_BIT`, `VK_SHADER_STAGE_FRAGMENT_BIT`,
-and/or `VK_SHADER_STAGE_COMPUTE_BIT`
+[VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits), [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits),
+and/or [VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-None-10679) VUID-vkCmdTraceRaysIndirectKHR-None-10679
@@ -1981,21 +2352,20 @@ If this command is recorded where
 [per-tile execution model](renderpass.html#renderpass-per-tile-execution-model) is
 enabled, there **must** be no access to any image while the image was be
 transitioned to the
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` layout
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout) layout
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-pDescription-09900) VUID-vkCmdTraceRaysIndirectKHR-pDescription-09900
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](descriptorsets.html#VkDescriptorType) descriptor is accessed as a
 result of this command, then the underlying [VkTensorARM](resources.html#VkTensorARM) object
-**must** have been created with a
-[VkTensorCreateInfoARM](resources.html#VkTensorCreateInfoARM)::`pDescription` whose `usage` member
-contained `VK_TENSOR_USAGE_SHADER_BIT_ARM`
+**must** have been created with the [VK_TENSOR_USAGE_SHADER_BIT_ARM](resources.html#VkTensorUsageFlagBitsARM)
+usage flag set
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-dimensionCount-09905) VUID-vkCmdTraceRaysIndirectKHR-dimensionCount-09905
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](descriptorsets.html#VkDescriptorType) descriptor is accessed as a
 result of this command, then the `Rank` of the `OpTypeTensorARM`
 of the tensor resource variable **must** be equal to the
 `dimensionCount` provided via
@@ -2005,11 +2375,347 @@ underlying [VkTensorARM](resources.html#VkTensorARM) object
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-OpTypeTensorARM-09906) VUID-vkCmdTraceRaysIndirectKHR-OpTypeTensorARM-09906
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](descriptorsets.html#VkDescriptorType) descriptor is accessed as a
 result of this command, then the element type of the
 `OpTypeTensorARM` of the tensor resource variable **must** be
 [compatible](../appendices/spirvenv.html#spirvenv-tensor-formats) with the [VkFormat](formats.html#VkFormat) of the
 [VkTensorViewARM](resources.html#VkTensorViewARM) used for the access
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11297) VUID-vkCmdTraceRaysIndirectKHR-None-11297
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses a `OpTypeStruct` decorated with `Block` or
+`BufferBlock` using that mapping, the calculated offset for the
+resource heap **must** be a multiple of [    `bufferDescriptorAlignment`](limits.html#limits-bufferDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11298) VUID-vkCmdTraceRaysIndirectKHR-None-11298
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses an `OpTypeImage` or `OpTypeSampledImage` using
+that mapping, the calculated offset for the resource heap **must** be
+a multiple of [    `imageDescriptorAlignment`](limits.html#limits-imageDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11299) VUID-vkCmdTraceRaysIndirectKHR-None-11299
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses an `OpTypeSampler` or `OpTypeSampledImage` using
+that mapping, the calculated offset for the sampler heap **must** be
+a multiple of [    `samplerDescriptorAlignment`](limits.html#limits-samplerDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11397) VUID-vkCmdTraceRaysIndirectKHR-None-11397
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses an `OpTypeTensorARM` using that mapping, the
+calculated offset for the resource heap **must** be a multiple of
+[`tensorDescriptorAlignment`](limits.html#limits-tensorDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11300) VUID-vkCmdTraceRaysIndirectKHR-None-11300
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a
+shader accesses a resource using that mapping, the value of the address
+at the expected location in push data **must** be a multiple of 4
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11301) VUID-vkCmdTraceRaysIndirectKHR-None-11301
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a
+shader accesses a resource using that mapping, the value of the address
+at the expected location in push data **must** be a valid
+`VkDeviceAddress` backed by physical memory at every offset
+specified by each mapping
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11302) VUID-vkCmdTraceRaysIndirectKHR-None-11302
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a valid
+`VkDeviceAddress`
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11304) VUID-vkCmdTraceRaysIndirectKHR-None-11304
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a multiple of 8
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11305) VUID-vkCmdTraceRaysIndirectKHR-None-11305
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a valid
+`VkDeviceAddress` backed by physical memory at every offset
+specified by each mapping
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11306) VUID-vkCmdTraceRaysIndirectKHR-None-11306
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and a shader accesses a resource using that mapping, the value of the
+address pointed to by the address in push data **must** be a valid
+`VkDeviceAddress`
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11308) VUID-vkCmdTraceRaysIndirectKHR-None-11308
+
+For each [descriptor heap](descriptorheaps.html#descriptorheaps) that is statically used by
+[a bound shader](shaders.html#shaders-binding), either directly or via a
+[descriptor mapping](descriptorheaps.html#descriptorheaps-bindings), a valid descriptor heap
+**must** be bound
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11309) VUID-vkCmdTraceRaysIndirectKHR-None-11309
+
+If a [bound shader](shaders.html#shaders-binding) was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) with the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline with the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, execution of
+this command **must** not result in any descriptor read accessing data
+outside of the user range of the respective heap bound by
+`vkCmdBind*HeapEXT` commands
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11372) VUID-vkCmdTraceRaysIndirectKHR-None-11372
+
+If any stage of the [VkPipeline](pipelines.html#VkPipeline) object bound to the pipeline bind
+point used by this command accesses a uniform buffer or uniform texel
+buffer through a descriptor in the bound resource heap,
+that stage was created without enabling either
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
+`uniformBuffers`,
+the [`robustBufferAccess2`](features.html#features-robustBufferAccess2) feature
+is not enabled,
+and the [`robustBufferAccess`](features.html#features-robustBufferAccess)
+feature is not enabled, that stage **must** not access values outside of
+the range of the descriptor specified via [VkDeviceAddressRangeEXT](fundamentals.html#VkDeviceAddressRangeEXT)
+when the descriptor was written
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11373) VUID-vkCmdTraceRaysIndirectKHR-None-11373
+
+If any stage of the [VkPipeline](pipelines.html#VkPipeline) object bound to the pipeline bind
+point used by this command accesses a storage buffer or storage texel
+buffer through a descriptor in the bound resource heap,
+that stage was created without enabling either
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
+`storageBuffers`,
+the [`robustBufferAccess2`](features.html#features-robustBufferAccess2) feature
+is not enabled,
+and the [`robustBufferAccess`](features.html#features-robustBufferAccess)
+feature is not enabled, that stage **must** not access values outside of
+the range of the descriptor specified by [VkDeviceAddressRangeEXT](fundamentals.html#VkDeviceAddressRangeEXT)
+when the descriptor was written
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11374) VUID-vkCmdTraceRaysIndirectKHR-None-11374
+
+If
+the [`robustBufferAccess2`](features.html#features-robustBufferAccess2) feature
+is not enabled,
+the [`robustBufferAccess`](features.html#features-robustBufferAccess) feature is
+not enabled, and any [VkShaderEXT](shaders.html#VkShaderEXT) bound to a stage corresponding to
+the pipeline bind point used by this command accesses a uniform buffer,
+uniform texel buffer, storage buffer, or storage texel buffer, that
+shader **must** not access values outside of the range of the buffer as
+specified by [VkDeviceAddressRangeEXT](fundamentals.html#VkDeviceAddressRangeEXT) when the descriptor was
+written
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-pBindInfo-11375) VUID-vkCmdTraceRaysIndirectKHR-pBindInfo-11375
+
+If any [bound shader](shaders.html#shaders-binding) uses an embedded sampler via a
+[descriptor mapping](descriptorheaps.html#descriptorheaps-bindings), the value of
+`pBindInfo->reservedRangeSize` set for [vkCmdBindSamplerHeapEXT](descriptorheaps.html#vkCmdBindSamplerHeapEXT)
+**must** be greater than or equal to
+[    `minSamplerHeapReservedRangeWithEmbedded`](limits.html#limits-minSamplerHeapReservedRangeWithEmbedded)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11376) VUID-vkCmdTraceRaysIndirectKHR-None-11376
+
+If a [bound shader](shaders.html#shaders-binding) was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) with the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline with the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a push constant value, that value **must** have been set by
+[vkCmdPushDataEXT](descriptorheaps.html#vkCmdPushDataEXT)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11398) VUID-vkCmdTraceRaysIndirectKHR-None-11398
+
+If a [bound shader](shaders.html#shaders-binding) was created with a
+[descriptor mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_RESOURCE_HEAP_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), or
+[VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a resource using that mapping, the access **must** not be
+[out of bounds](shaders.html#shaders-execution-memory-access-bounds)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11437) VUID-vkCmdTraceRaysIndirectKHR-None-11437
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), or
+[VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a resource using that mapping, the buffer from which the
+address in push data was queried **must** have been created with the
+[VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11438) VUID-vkCmdTraceRaysIndirectKHR-None-11438
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a uniform buffer using that mapping, the address that the
+uniform buffer is mapped to **must** have been queried from a buffer
+created with the [VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11441) VUID-vkCmdTraceRaysIndirectKHR-None-11441
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a uniform buffer using that mapping, the address that the
+uniform buffer is mapped to **must** be aligned to
+[    `minUniformBufferOffsetAlignment`](limits.html#limits-minUniformBufferOffsetAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11439) VUID-vkCmdTraceRaysIndirectKHR-None-11439
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a storage buffer using that mapping, the address that the
+storage buffer is mapped to **must** have been queried from a buffer
+created with the [VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11442) VUID-vkCmdTraceRaysIndirectKHR-None-11442
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a storage buffer using that mapping, the address that the
+storage buffer is mapped to **must** be aligned to
+[    `minStorageBufferOffsetAlignment`](limits.html#limits-minStorageBufferOffsetAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11485) VUID-vkCmdTraceRaysIndirectKHR-None-11485
+
+    If a pipeline is bound to the pipeline bind point used by this command,
+    or shader is bound to a shader stage used by this command,
+    and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+    [VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+    or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+    accesses an acceleration structure using that mapping, the address that
+    the acceleration structure is mapped to **must** be an acceleration
+    structure
+    address retrieved from a [VkAccelerationStructureKHR](resources.html#VkAccelerationStructureKHR) object via
+    [vkGetAccelerationStructureDeviceAddressKHR](resources.html#vkGetAccelerationStructureDeviceAddressKHR)
+or
+    handle retrieved from a [VkAccelerationStructureNV](resources.html#VkAccelerationStructureNV) object via
+    [vkGetAccelerationStructureHandleNV](resources.html#vkGetAccelerationStructureHandleNV)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-index-11450) VUID-vkCmdTraceRaysIndirectKHR-index-11450
+
+If a shader uses a sampler descriptor to sample an image as a result of
+this command, and that sampler descriptor uses a custom border color
+with an index defined by
+[VkSamplerCustomBorderColorIndexCreateInfoEXT](samplers.html#VkSamplerCustomBorderColorIndexCreateInfoEXT), the value of
+[VkSamplerCustomBorderColorIndexCreateInfoEXT](samplers.html#VkSamplerCustomBorderColorIndexCreateInfoEXT)::`index` **must**
+have been registered before this command was recorded, and still be
+registered during the sampling operation, with an identically defined
+color
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-protectedNoFault-11455) VUID-vkCmdTraceRaysIndirectKHR-protectedNoFault-11455
+
+If [`protectedNoFault`](devsandqueues.html#limits-protectedNoFault) is not supported,
+a pipeline is bound to the pipeline bind point used by this command,
+or a shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the address
+that the resource is mapped to **must** have been queried from a buffer
+created without the [VK_BUFFER_CREATE_PROTECTED_BIT](resources.html#VkBufferCreateFlagBits) create flag set
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-protectedNoFault-11456) VUID-vkCmdTraceRaysIndirectKHR-protectedNoFault-11456
+
+If [`protectedNoFault`](devsandqueues.html#limits-protectedNoFault) is not supported,
+a pipeline is bound to the pipeline bind point used by this command,
+or a shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+the address of the indirect memory **must** have been queried from a buffer
+created without the [VK_BUFFER_CREATE_PROTECTED_BIT](resources.html#VkBufferCreateFlagBits) create flag set
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-None-03429) VUID-vkCmdTraceRaysIndirectKHR-None-03429
@@ -2021,9 +2727,19 @@ from the bound ray tracing pipeline
 [](#VUID-vkCmdTraceRaysIndirectKHR-None-09458) VUID-vkCmdTraceRaysIndirectKHR-None-09458
 
 If the bound ray tracing pipeline state was created with the
-`VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR` dynamic state
+[VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR](pipelines.html#VkDynamicState) dynamic state
 enabled then [vkCmdSetRayTracingPipelineStackSizeKHR](pipelines.html#vkCmdSetRayTracingPipelineStackSizeKHR) **must** have
 been called in the current command buffer prior to this trace command
+
+* 
+[](#VUID-vkCmdTraceRaysIndirectKHR-None-11319) VUID-vkCmdTraceRaysIndirectKHR-None-11319
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the value
+of the address at the expected location in shader record data **must** be a
+valid address
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-maxPipelineRayRecursionDepth-03679) VUID-vkCmdTraceRaysIndirectKHR-maxPipelineRayRecursionDepth-03679
@@ -2048,7 +2764,7 @@ to its `stride` member
 
 `pRayGenShaderBindingTable->deviceAddress` **must** be a device address allocated to
 the application from a buffer created with the
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
+[VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-pRayGenShaderBindingTable-03682) VUID-vkCmdTraceRaysIndirectKHR-pRayGenShaderBindingTable-03682
@@ -2061,7 +2777,7 @@ the application from a buffer created with the
 
 `pMissShaderBindingTable->deviceAddress` **must** be a device address allocated to
 the application from a buffer created with the
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
+[VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-pMissShaderBindingTable-03685) VUID-vkCmdTraceRaysIndirectKHR-pMissShaderBindingTable-03685
@@ -2086,7 +2802,7 @@ the application from a buffer created with the
 
 `pHitShaderBindingTable->deviceAddress` **must** be a device address allocated to
 the application from a buffer created with the
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
+[VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-pHitShaderBindingTable-03689) VUID-vkCmdTraceRaysIndirectKHR-pHitShaderBindingTable-03689
@@ -2111,7 +2827,7 @@ the application from a buffer created with the
 
 `pCallableShaderBindingTable->deviceAddress` **must** be a device address allocated
 to the application from a buffer created with the
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
+[VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-pCallableShaderBindingTable-03693) VUID-vkCmdTraceRaysIndirectKHR-pCallableShaderBindingTable-03693
@@ -2136,7 +2852,7 @@ to the application from a buffer created with the
 
 If the bound ray tracing pipeline was created with `flags` that
 included
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR`, the
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR](pipelines.html#VkPipelineCreateFlagBits), the
 entries in the table identified by `pMissShaderBindingTable->deviceAddress`
 accessed as a result of this command in order to execute a miss shader
 **must** not be zero
@@ -2146,7 +2862,7 @@ accessed as a result of this command in order to execute a miss shader
 
 If the bound ray tracing pipeline was created with `flags` that
 included
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR`,
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR](pipelines.html#VkPipelineCreateFlagBits),
 entries in the table identified by `pHitShaderBindingTable->deviceAddress`
 accessed as a result of this command in order to execute an any-hit
 shader **must** not be zero
@@ -2156,7 +2872,7 @@ shader **must** not be zero
 
 If the bound ray tracing pipeline was created with `flags` that
 included
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR`,
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR](pipelines.html#VkPipelineCreateFlagBits),
 entries in the table identified by `pHitShaderBindingTable->deviceAddress`
 accessed as a result of this command in order to execute a closest hit
 shader **must** not be zero
@@ -2166,7 +2882,7 @@ shader **must** not be zero
 
 If the bound ray tracing pipeline was created with `flags` that
 included
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR`,
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR](pipelines.html#VkPipelineCreateFlagBits),
 entries in the table identified by `pHitShaderBindingTable->deviceAddress`
 accessed as a result of this command in order to execute an intersection
 shader **must** not be zero
@@ -2176,25 +2892,25 @@ shader **must** not be zero
 
 Any non-zero hit shader group entries in the table identified by
 `pHitShaderBindingTable->deviceAddress` accessed by this call from a geometry
-with a `geometryType` of `VK_GEOMETRY_TYPE_TRIANGLES_KHR` **must**
+with a `geometryType` of [VK_GEOMETRY_TYPE_TRIANGLES_KHR](resources.html#VkGeometryTypeNV) **must**
 have been created with
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR`
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR](pipelines.html#VkRayTracingShaderGroupTypeNV)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-pHitShaderBindingTable-04736) VUID-vkCmdTraceRaysIndirectKHR-pHitShaderBindingTable-04736
 
 Any non-zero hit shader group entries in the table identified by
 `pHitShaderBindingTable->deviceAddress` accessed by this call from a geometry
-with a `geometryType` of `VK_GEOMETRY_TYPE_AABBS_KHR` **must** have
+with a `geometryType` of [VK_GEOMETRY_TYPE_AABBS_KHR](resources.html#VkGeometryTypeNV) **must** have
 been created with
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR`
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR](pipelines.html#VkRayTracingShaderGroupTypeNV)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-indirectDeviceAddress-03633) VUID-vkCmdTraceRaysIndirectKHR-indirectDeviceAddress-03633
 
 `indirectDeviceAddress` **must** be a device address allocated to the
 application from a buffer created with the
-`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-indirectDeviceAddress-03634) VUID-vkCmdTraceRaysIndirectKHR-indirectDeviceAddress-03634
@@ -2217,7 +2933,7 @@ The [`rayTracingPipelineTraceRaysIndirect`](#features-rayTracingPipelineTraceRay
 [](#VUID-vkCmdTraceRaysIndirectKHR-rayTracingMotionBlurPipelineTraceRaysIndirect-04951) VUID-vkCmdTraceRaysIndirectKHR-rayTracingMotionBlurPipelineTraceRaysIndirect-04951
 
 If the bound ray tracing pipeline was created with
-`VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV`
+[VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV](pipelines.html#VkPipelineCreateFlagBits)
 `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV`::`rayTracingMotionBlurPipelineTraceRaysIndirect`
 feature **must** be enabled
 
@@ -2261,7 +2977,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-commandBuffer-cmdpool) VUID-vkCmdTraceRaysIndirectKHR-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-renderpass) VUID-vkCmdTraceRaysIndirectKHR-renderpass
@@ -2375,53 +3091,53 @@ Valid Usage
 [](#VUID-vkCmdTraceRaysIndirect2KHR-magFilter-04553) VUID-vkCmdTraceRaysIndirect2KHR-magFilter-04553
 
 If a [VkSampler](samplers.html#VkSampler) created with `magFilter` or `minFilter`
-equal to `VK_FILTER_LINEAR`,
+equal to [VK_FILTER_LINEAR](samplers.html#VkFilter),
 `reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`,
-and `compareEnable` equal to `VK_FALSE` is used to sample a
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](samplers.html#VkSamplerReductionModeEXT),
+and `compareEnable` equal to [VK_FALSE](fundamentals.html#VK_FALSE) is used to sample a
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-magFilter-09598) VUID-vkCmdTraceRaysIndirect2KHR-magFilter-09598
 
 If a [VkSampler](samplers.html#VkSampler) created with `magFilter` or `minFilter`
-equal to `VK_FILTER_LINEAR` and `reductionMode` equal to either
-`VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` is used to sample a
+equal to [VK_FILTER_LINEAR](samplers.html#VkFilter) and `reductionMode` equal to either
+[VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT) is used to sample a
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-mipmapMode-04770) VUID-vkCmdTraceRaysIndirect2KHR-mipmapMode-04770
 
 If a [VkSampler](samplers.html#VkSampler) created with `mipmapMode` equal to
-`VK_SAMPLER_MIPMAP_MODE_LINEAR`,
+[VK_SAMPLER_MIPMAP_MODE_LINEAR](samplers.html#VkSamplerMipmapMode),
 `reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`,
-and `compareEnable` equal to `VK_FALSE` is used to sample a
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](samplers.html#VkSamplerReductionModeEXT),
+and `compareEnable` equal to [VK_FALSE](fundamentals.html#VK_FALSE) is used to sample a
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-mipmapMode-09599) VUID-vkCmdTraceRaysIndirect2KHR-mipmapMode-09599
 
 If a [VkSampler](samplers.html#VkSampler) created with `mipmapMode` equal to
-`VK_SAMPLER_MIPMAP_MODE_LINEAR` and `reductionMode` equal to
-either `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` is used to sample a
+[VK_SAMPLER_MIPMAP_MODE_LINEAR](samplers.html#VkSamplerMipmapMode) and `reductionMode` equal to
+either [VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT) is used to sample a
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-unnormalizedCoordinates-09635) VUID-vkCmdTraceRaysIndirect2KHR-unnormalizedCoordinates-09635
 
 If a [VkSampler](samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
+[VK_TRUE](fundamentals.html#VK_TRUE) is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
 command, then the image view’s `levelCount` and `layerCount`
 **must** be 1
 
@@ -2429,15 +3145,15 @@ command, then the image view’s `levelCount` and `layerCount`
 [](#VUID-vkCmdTraceRaysIndirect2KHR-None-08609) VUID-vkCmdTraceRaysIndirect2KHR-None-08609
 
 If a [VkSampler](samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
+[VK_TRUE](fundamentals.html#VK_TRUE) is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
 command, then the image view’s `viewType` **must** be
-`VK_IMAGE_VIEW_TYPE_1D` or `VK_IMAGE_VIEW_TYPE_2D`
+[VK_IMAGE_VIEW_TYPE_1D](resources.html#VkImageViewType) or [VK_IMAGE_VIEW_TYPE_2D](resources.html#VkImageViewType)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-None-08610) VUID-vkCmdTraceRaysIndirect2KHR-None-08610
 
 If a [VkSampler](samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
+[VK_TRUE](fundamentals.html#VK_TRUE) is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
 command, then the sampler **must** not be used with any of the SPIR-V
 `OpImageSample*` or `OpImageSparseSample*` instructions with
 `ImplicitLod`, `Dref` or `Proj` in their name
@@ -2446,7 +3162,7 @@ command, then the sampler **must** not be used with any of the SPIR-V
 [](#VUID-vkCmdTraceRaysIndirect2KHR-None-08611) VUID-vkCmdTraceRaysIndirect2KHR-None-08611
 
 If a [VkSampler](samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
+[VK_TRUE](fundamentals.html#VK_TRUE) is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
 command, then the sampler **must** not be used with any of the SPIR-V
 `OpImageSample*` or `OpImageSparseSample*` instructions that includes a
 LOD bias or any offset values
@@ -2457,7 +3173,7 @@ LOD bias or any offset values
 If a [VkImageView](resources.html#VkImageView) is sampled with
 [depth comparison](textures.html#textures-depth-compare-operation), the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT`
+[VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-None-02691) VUID-vkCmdTraceRaysIndirect2KHR-None-02691
@@ -2465,38 +3181,38 @@ If a [VkImageView](resources.html#VkImageView) is sampled with
 If a [VkImageView](resources.html#VkImageView) is accessed using atomic operations as a result
 of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT`
+[VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-None-07888) VUID-vkCmdTraceRaysIndirect2KHR-None-07888
 
-If a `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` descriptor is
+If a [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType) descriptor is
 accessed using atomic operations as a result of this command, then the
 storage texel buffer’s [format    features](resources.html#resources-buffer-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT`
+[VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-None-02692) VUID-vkCmdTraceRaysIndirect2KHR-None-02692
 
-If a [VkImageView](resources.html#VkImageView) is sampled with `VK_FILTER_CUBIC_EXT` as a
+If a [VkImageView](resources.html#VkImageView) is sampled with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a
 result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-None-02693) VUID-vkCmdTraceRaysIndirect2KHR-None-02693
 
 If
 the [VK_EXT_filter_cubic](../appendices/extensions.html#VK_EXT_filter_cubic) extension is not enabled and
-any [VkImageView](resources.html#VkImageView) is sampled with `VK_FILTER_CUBIC_EXT` as a
+any [VkImageView](resources.html#VkImageView) is sampled with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a
 result of this command, it **must** not have a [VkImageViewType](resources.html#VkImageViewType) of
-`VK_IMAGE_VIEW_TYPE_3D`, `VK_IMAGE_VIEW_TYPE_CUBE`, or
-`VK_IMAGE_VIEW_TYPE_CUBE_ARRAY`
+[VK_IMAGE_VIEW_TYPE_3D](resources.html#VkImageViewType), [VK_IMAGE_VIEW_TYPE_CUBE](resources.html#VkImageViewType), or
+[VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](resources.html#VkImageViewType)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-filterCubic-02694) VUID-vkCmdTraceRaysIndirect2KHR-filterCubic-02694
 
-Any [VkImageView](resources.html#VkImageView) being sampled with `VK_FILTER_CUBIC_EXT` as a
+Any [VkImageView](resources.html#VkImageView) being sampled with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a
 result of this command **must** have a [VkImageViewType](resources.html#VkImageViewType) and format
 that supports cubic filtering, as specified by
 [VkFilterCubicImageViewImageFormatPropertiesEXT](capabilities.html#VkFilterCubicImageViewImageFormatPropertiesEXT)::`filterCubic`
@@ -2505,9 +3221,9 @@ returned by [vkGetPhysicalDeviceImageFormatProperties2](capabilities.html#vkGetP
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-filterCubicMinmax-02695) VUID-vkCmdTraceRaysIndirect2KHR-filterCubicMinmax-02695
 
-Any [VkImageView](resources.html#VkImageView) being sampled with `VK_FILTER_CUBIC_EXT` with
-a reduction mode of either `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` as a result of this command **must**
+Any [VkImageView](resources.html#VkImageView) being sampled with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) with
+a reduction mode of either [VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT) as a result of this command **must**
 have a [VkImageViewType](resources.html#VkImageViewType) and format that supports cubic filtering
 together with minmax filtering, as specified by
 [VkFilterCubicImageViewImageFormatPropertiesEXT](capabilities.html#VkFilterCubicImageViewImageFormatPropertiesEXT)::`filterCubicMinmax`
@@ -2518,35 +3234,35 @@ returned by [vkGetPhysicalDeviceImageFormatProperties2](capabilities.html#vkGetP
 
 If the [`cubicRangeClamp`](features.html#features-cubicRangeClamp) feature is
 not enabled, then any [VkImageView](resources.html#VkImageView) being sampled with
-`VK_FILTER_CUBIC_EXT` as a result of this command **must** not have a
+[VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a result of this command **must** not have a
 [VkSamplerReductionModeCreateInfo](samplers.html#VkSamplerReductionModeCreateInfo)::`reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM`
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](samplers.html#VkSamplerReductionModeEXT)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-reductionMode-09213) VUID-vkCmdTraceRaysIndirect2KHR-reductionMode-09213
 
 Any [VkImageView](resources.html#VkImageView) being sampled with a
 [VkSamplerReductionModeCreateInfo](samplers.html#VkSamplerReductionModeCreateInfo)::`reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM` as a
-result of this command **must** sample with `VK_FILTER_CUBIC_EXT`
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](samplers.html#VkSamplerReductionModeEXT) as a
+result of this command **must** sample with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-selectableCubicWeights-09214) VUID-vkCmdTraceRaysIndirect2KHR-selectableCubicWeights-09214
 
 If the [`selectableCubicWeights`](features.html#features-selectableCubicWeights)
 feature is not enabled, then any [VkImageView](resources.html#VkImageView) being sampled with
-`VK_FILTER_CUBIC_EXT` as a result of this command **must** have
+[VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a result of this command **must** have
 [VkSamplerCubicWeightsCreateInfoQCOM](samplers.html#VkSamplerCubicWeightsCreateInfoQCOM)::`cubicWeights` equal to
-`VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM`
+[VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM](samplers.html#VkCubicFilterWeightsQCOM)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-flags-02696) VUID-vkCmdTraceRaysIndirect2KHR-flags-02696
 
 Any [VkImage](resources.html#VkImage) created with a [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`flags`
-containing `VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV` sampled as a
+containing [VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV](resources.html#VkImageCreateFlagBits) sampled as a
 result of this command **must** only be sampled using a
 [VkSamplerAddressMode](samplers.html#VkSamplerAddressMode) of
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE`
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](samplers.html#VkSamplerAddressMode)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-OpTypeImage-07027) VUID-vkCmdTraceRaysIndirect2KHR-OpTypeImage-07027
@@ -2554,7 +3270,7 @@ result of this command **must** only be sampled using a
 For any [VkImageView](resources.html#VkImageView) being written as a storage image where the
 image format field of the `OpTypeImage` is `Unknown`, the view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-OpTypeImage-07028) VUID-vkCmdTraceRaysIndirect2KHR-OpTypeImage-07028
@@ -2562,7 +3278,7 @@ image format field of the `OpTypeImage` is `Unknown`, the view’s
 For any [VkImageView](resources.html#VkImageView) being read as a storage image where the image
 format field of the `OpTypeImage` is `Unknown`, the view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-OpTypeImage-07029) VUID-vkCmdTraceRaysIndirect2KHR-OpTypeImage-07029
@@ -2570,7 +3286,7 @@ format field of the `OpTypeImage` is `Unknown`, the view’s
 For any [VkBufferView](resources.html#VkBufferView) being written as a storage texel buffer where
 the image format field of the `OpTypeImage` is `Unknown`, the
 view’s [buffer features](formats.html#VkFormatProperties3) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-OpTypeImage-07030) VUID-vkCmdTraceRaysIndirect2KHR-OpTypeImage-07030
@@ -2578,15 +3294,21 @@ view’s [buffer features](formats.html#VkFormatProperties3) **must** contain
 Any [VkBufferView](resources.html#VkBufferView) being read as a storage texel buffer where the
 image format field of the `OpTypeImage` is `Unknown` then the
 view’s [buffer features](formats.html#VkFormatProperties3) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-None-08600) VUID-vkCmdTraceRaysIndirect2KHR-None-08600
 
-For each set *n* that is statically used by [a bound    shader](shaders.html#shaders-binding), a descriptor set **must** have been bound to *n* at the same
-pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is compatible
-for set *n*, with the [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current
-[VkPipeline](pipelines.html#VkPipeline)
+If a [a bound shader](shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a set *n*, a descriptor set **must** have been bound to *n*
+at the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
+compatible for set *n*, with the [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create
+the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](shaders.html#VkShaderEXT)
 , as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptorsets-compatibility)
@@ -2594,13 +3316,18 @@ or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-None-08601) VUID-vkCmdTraceRaysIndirect2KHR-None-08601
 
-For each push constant that is statically used by [a    bound shader](shaders.html#shaders-binding), a push constant value **must** have been set for the same
-pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is compatible
-for push constants, with the [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the
-current [VkPipeline](pipelines.html#VkPipeline)
+If a [a bound shader](shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a push constant value, that value **must** have been set
+for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
+[compatible for push constants](descriptorsets.html#descriptorsets-compatibility) with the
+[VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](shaders.html#VkShaderEXT)
-, as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptorsets-compatibility)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-None-10068) VUID-vkCmdTraceRaysIndirect2KHR-None-10068
@@ -2612,26 +3339,28 @@ sets used by this command
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-maintenance4-08602) VUID-vkCmdTraceRaysIndirect2KHR-maintenance4-08602
 
-If the [`maintenance4`](features.html#features-maintenance4) feature is not
-enabled, then for each push constant that is statically used by
-[a bound shader](shaders.html#shaders-binding), a push constant value **must** have
-been set for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout)
-that is compatible for push constants, with the [VkPipelineLayout](descriptorsets.html#VkPipelineLayout)
-used to create the current [VkPipeline](pipelines.html#VkPipeline)
+If a [a bound shader](shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a push constant value, that value **must** have been set
+for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
+[compatible for push constants](descriptorsets.html#descriptorsets-compatibility) with the
+[VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) and [VkPushConstantRange](descriptorsets.html#VkPushConstantRange) arrays
 used to create the current [VkShaderEXT](shaders.html#VkShaderEXT)
-, as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptorsets-compatibility)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-None-08114) VUID-vkCmdTraceRaysIndirect2KHR-None-08114
 
 Descriptors in each bound descriptor set, specified via
-[vkCmdBindDescriptorSets](descriptorsets.html#vkCmdBindDescriptorSets), **must** be valid as described by
-[descriptor validity](descriptorsets.html#descriptor-validity) if they are statically used
-by
+[vkCmdBindDescriptorSets](descriptorsets.html#vkCmdBindDescriptorSets), **must** be valid if they are accessed as
+described by [descriptor validity](descriptorsets.html#descriptor-validity) by
 the [VkPipeline](pipelines.html#VkPipeline) bound to the pipeline bind point used by this
 command and the bound [VkPipeline](pipelines.html#VkPipeline) was not created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-imageLayout-00344) VUID-vkCmdTraceRaysIndirect2KHR-imageLayout-00344
@@ -2646,7 +3375,7 @@ defined by the [image layout    matching rules](resources.html#resources-image-l
 If the descriptors used by the [VkPipeline](pipelines.html#VkPipeline) bound to the pipeline
 bind point were specified via [vkCmdBindDescriptorSets](descriptorsets.html#vkCmdBindDescriptorSets), the bound
 [VkPipeline](pipelines.html#VkPipeline) **must** have been created without
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-None-08116) VUID-vkCmdTraceRaysIndirect2KHR-None-08116
@@ -2655,7 +3384,7 @@ Descriptors in bound descriptor buffers, specified via
 [vkCmdSetDescriptorBufferOffsetsEXT](descriptorsets.html#vkCmdSetDescriptorBufferOffsetsEXT), **must** be valid if they are
 dynamically used by the [VkPipeline](pipelines.html#VkPipeline) bound to the pipeline bind
 point used by this command and the bound [VkPipeline](pipelines.html#VkPipeline) was created
-with `VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+with [VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-None-08604) VUID-vkCmdTraceRaysIndirect2KHR-None-08604
@@ -2671,13 +3400,13 @@ to the pipeline bind point used by this command
 If the descriptors used by the [VkPipeline](pipelines.html#VkPipeline) bound to the pipeline
 bind point were specified via [vkCmdSetDescriptorBufferOffsetsEXT](descriptorsets.html#vkCmdSetDescriptorBufferOffsetsEXT),
 the bound [VkPipeline](pipelines.html#VkPipeline) **must** have been created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-None-08119) VUID-vkCmdTraceRaysIndirect2KHR-None-08119
 
 If a descriptor is dynamically used with a [VkPipeline](pipelines.html#VkPipeline) created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, the descriptor
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits), the descriptor
 memory **must** be resident
 
 * 
@@ -2685,7 +3414,7 @@ memory **must** be resident
 
 If a descriptor is dynamically used with a [VkShaderEXT](shaders.html#VkShaderEXT) created
 with a `VkDescriptorSetLayout` that was created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, the
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits), the
 descriptor memory **must** be resident
 
 * 
@@ -2711,8 +3440,8 @@ pipeline bind point used by this command, since that pipeline was bound
 If any stage of the [VkPipeline](pipelines.html#VkPipeline) object bound to the pipeline bind
 point used by this command accesses a uniform buffer,
 and that stage was created without enabling either
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2` for
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
 `uniformBuffers`,
 and the [`robustBufferAccess`](features.html#features-robustBufferAccess)
 feature is not enabled, that stage **must** not access values outside of
@@ -2734,8 +3463,8 @@ specified in the descriptor set bound to the same pipeline bind point
 If any stage of the [VkPipeline](pipelines.html#VkPipeline) object bound to the pipeline bind
 point used by this command accesses a storage buffer,
 and that stage was created without enabling either
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2` for
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
 `storageBuffers`,
 and the [`robustBufferAccess`](features.html#features-robustBufferAccess)
 feature is not enabled, that stage **must** not access values outside of
@@ -2778,7 +3507,7 @@ view’s `format` and the `Sampled` `Type` operand of the
 [](#VUID-vkCmdTraceRaysIndirect2KHR-OpImageWrite-08795) VUID-vkCmdTraceRaysIndirect2KHR-OpImageWrite-08795
 
 If a [VkImageView](resources.html#VkImageView)
-created with a format other than `VK_FORMAT_A8_UNORM`
+created with a format other than [VK_FORMAT_A8_UNORM](formats.html#VkFormat)
 is accessed using `OpImageWrite` as a result of this command, then
 the `Type` of the `Texel` operand of that instruction **must** have
 at least as many components as the image view’s format
@@ -2786,7 +3515,7 @@ at least as many components as the image view’s format
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-OpImageWrite-08796) VUID-vkCmdTraceRaysIndirect2KHR-OpImageWrite-08796
 
-If a [VkImageView](resources.html#VkImageView) created with the format `VK_FORMAT_A8_UNORM`
+If a [VkImageView](resources.html#VkImageView) created with the format [VK_FORMAT_A8_UNORM](formats.html#VkFormat)
 is accessed using `OpImageWrite` as a result of this command, then
 the `Type` of the `Texel` operand of that instruction **must** have
 four components
@@ -2835,7 +3564,7 @@ less than 64-bit is accessed as a result of this command, the
 [](#VUID-vkCmdTraceRaysIndirect2KHR-sparseImageInt64Atomics-04474) VUID-vkCmdTraceRaysIndirect2KHR-sparseImageInt64Atomics-04474
 
 If the [    `sparseImageInt64Atomics`](features.html#features-sparseImageInt64Atomics) feature is not enabled, [VkImage](resources.html#VkImage)
-objects created with the `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` flag
+objects created with the [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits) flag
 **must** not be accessed by atomic instructions through an `OpTypeImage`
 with a `SampledType` with a `Width` of 64 by this command
 
@@ -2843,26 +3572,26 @@ with a `SampledType` with a `Width` of 64 by this command
 [](#VUID-vkCmdTraceRaysIndirect2KHR-sparseImageInt64Atomics-04475) VUID-vkCmdTraceRaysIndirect2KHR-sparseImageInt64Atomics-04475
 
 If the [    `sparseImageInt64Atomics`](features.html#features-sparseImageInt64Atomics) feature is not enabled, [VkBuffer](resources.html#VkBuffer)
-objects created with the `VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`
+objects created with the [VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkBufferCreateFlagBits)
 flag **must** not be accessed by atomic instructions through an
 `OpTypeImage` with a `SampledType` with a `Width` of 64 by this
 command
 
 * 
-[](#VUID-vkCmdTraceRaysIndirect2KHR-OpImageWeightedSampleQCOM-06971) VUID-vkCmdTraceRaysIndirect2KHR-OpImageWeightedSampleQCOM-06971
+[](#VUID-vkCmdTraceRaysIndirect2KHR-OpImageSampleWeightedQCOM-06971) VUID-vkCmdTraceRaysIndirect2KHR-OpImageSampleWeightedQCOM-06971
 
-If `OpImageWeightedSampleQCOM` is used to sample a [VkImageView](resources.html#VkImageView)
+If `OpImageSampleWeightedQCOM` is used to sample a [VkImageView](resources.html#VkImageView)
 as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
-[](#VUID-vkCmdTraceRaysIndirect2KHR-OpImageWeightedSampleQCOM-06972) VUID-vkCmdTraceRaysIndirect2KHR-OpImageWeightedSampleQCOM-06972
+[](#VUID-vkCmdTraceRaysIndirect2KHR-OpImageSampleWeightedQCOM-06972) VUID-vkCmdTraceRaysIndirect2KHR-OpImageSampleWeightedQCOM-06972
 
-If `OpImageWeightedSampleQCOM` uses a [VkImageView](resources.html#VkImageView) as a sample
+If `OpImageSampleWeightedQCOM` uses a [VkImageView](resources.html#VkImageView) as a sample
 weight image as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-OpImageBoxFilterQCOM-06973) VUID-vkCmdTraceRaysIndirect2KHR-OpImageBoxFilterQCOM-06973
@@ -2870,7 +3599,7 @@ weight image as a result of this command, then the image view’s
 If `OpImageBoxFilterQCOM` is used to sample a [VkImageView](resources.html#VkImageView) as a
 result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BOX_FILTER_SAMPLED_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BOX_FILTER_SAMPLED_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-OpImageBlockMatchSSDQCOM-06974) VUID-vkCmdTraceRaysIndirect2KHR-OpImageBlockMatchSSDQCOM-06974
@@ -2878,7 +3607,7 @@ result of this command, then the image view’s
 If `OpImageBlockMatchSSDQCOM` is used to read from an
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-OpImageBlockMatchSADQCOM-06975) VUID-vkCmdTraceRaysIndirect2KHR-OpImageBlockMatchSADQCOM-06975
@@ -2886,7 +3615,7 @@ If `OpImageBlockMatchSSDQCOM` is used to read from an
 If `OpImageBlockMatchSADQCOM` is used to read from an
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-OpImageBlockMatchSADQCOM-06976) VUID-vkCmdTraceRaysIndirect2KHR-OpImageBlockMatchSADQCOM-06976
@@ -2897,21 +3626,21 @@ specified reference coordinates **must** not fail
 [integer texel coordinate    validation](textures.html#textures-integer-coordinate-validation)
 
 * 
-[](#VUID-vkCmdTraceRaysIndirect2KHR-OpImageWeightedSampleQCOM-06977) VUID-vkCmdTraceRaysIndirect2KHR-OpImageWeightedSampleQCOM-06977
+[](#VUID-vkCmdTraceRaysIndirect2KHR-OpImageSampleWeightedQCOM-06977) VUID-vkCmdTraceRaysIndirect2KHR-OpImageSampleWeightedQCOM-06977
 
-If `OpImageWeightedSampleQCOM`, `OpImageBoxFilterQCOM`,
+If `OpImageSampleWeightedQCOM`, `OpImageBoxFilterQCOM`,
 `OpImageBlockMatchWindowSSDQCOM`,
 `OpImageBlockMatchWindowSADQCOM`,
 `OpImageBlockMatchGatherSSDQCOM`,
 `OpImageBlockMatchGatherSADQCOM`,
 `OpImageBlockMatchSSDQCOM`, or `OpImageBlockMatchSADQCOM` uses a
 [VkSampler](samplers.html#VkSampler) as a result of this command, then the sampler **must** have
-been created with `VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`
+been created with [VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](samplers.html#VkSamplerCreateFlagBits)
 
 * 
-[](#VUID-vkCmdTraceRaysIndirect2KHR-OpImageWeightedSampleQCOM-06978) VUID-vkCmdTraceRaysIndirect2KHR-OpImageWeightedSampleQCOM-06978
+[](#VUID-vkCmdTraceRaysIndirect2KHR-OpImageSampleWeightedQCOM-06978) VUID-vkCmdTraceRaysIndirect2KHR-OpImageSampleWeightedQCOM-06978
 
-If any command other than `OpImageWeightedSampleQCOM`,
+If any command other than `OpImageSampleWeightedQCOM`,
 `OpImageBoxFilterQCOM`,
 `OpImageBlockMatchWindowSSDQCOM`,
 `OpImageBlockMatchWindowSADQCOM`,
@@ -2919,7 +3648,7 @@ If any command other than `OpImageWeightedSampleQCOM`,
 `OpImageBlockMatchGatherSADQCOM`,
 `OpImageBlockMatchSSDQCOM`, or `OpImageBlockMatchSADQCOM` uses a
 [VkSampler](samplers.html#VkSampler) as a result of this command, then the sampler **must** not
-have been created with `VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`
+have been created with [VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](samplers.html#VkSamplerCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-OpImageBlockMatchWindow-09215) VUID-vkCmdTraceRaysIndirect2KHR-OpImageBlockMatchWindow-09215
@@ -2928,7 +3657,7 @@ If a `OpImageBlockMatchWindow*QCOM` or
 `OpImageBlockMatchGather*QCOM` instruction is used to read from an
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-OpImageBlockMatchWindow-09216) VUID-vkCmdTraceRaysIndirect2KHR-OpImageBlockMatchWindow-09216
@@ -2956,11 +3685,11 @@ Any shader invocation executed by this command **must**
 [](#VUID-vkCmdTraceRaysIndirect2KHR-None-09600) VUID-vkCmdTraceRaysIndirect2KHR-None-09600
 
 If a descriptor with type equal to any of
-`VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM`,
-`VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` is accessed as a result of
+[VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](descriptorsets.html#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](descriptorsets.html#VkDescriptorType) is accessed as a result of
 this command, all image subresources identified by that descriptor **must**
 be in the image layout identified when the descriptor was written
 
@@ -2968,7 +3697,7 @@ be in the image layout identified when the descriptor was written
 [](#VUID-vkCmdTraceRaysIndirect2KHR-commandBuffer-10746) VUID-vkCmdTraceRaysIndirect2KHR-commandBuffer-10746
 
 The `VkDeviceMemory` object allocated from a `VkMemoryHeap` with
-the `VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property that is bound to
+the [VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property that is bound to
 a resource accessed as a result of this command **must** be the active
 bound [bound tile memory object](memory.html#memory-bind-tile-memory) in
 `commandBuffer`
@@ -2978,8 +3707,8 @@ bound [bound tile memory object](memory.html#memory-bind-tile-memory) in
 
 If this command is recorded inside a [tile    shading render pass](renderpass.html#renderpass-tile-shading) instance, the stages corresponding to the pipeline
 bind point used by this command **must** only include
-`VK_SHADER_STAGE_VERTEX_BIT`, `VK_SHADER_STAGE_FRAGMENT_BIT`,
-and/or `VK_SHADER_STAGE_COMPUTE_BIT`
+[VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits), [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits),
+and/or [VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-None-10679) VUID-vkCmdTraceRaysIndirect2KHR-None-10679
@@ -2988,21 +3717,20 @@ If this command is recorded where
 [per-tile execution model](renderpass.html#renderpass-per-tile-execution-model) is
 enabled, there **must** be no access to any image while the image was be
 transitioned to the
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` layout
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout) layout
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-pDescription-09900) VUID-vkCmdTraceRaysIndirect2KHR-pDescription-09900
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](descriptorsets.html#VkDescriptorType) descriptor is accessed as a
 result of this command, then the underlying [VkTensorARM](resources.html#VkTensorARM) object
-**must** have been created with a
-[VkTensorCreateInfoARM](resources.html#VkTensorCreateInfoARM)::`pDescription` whose `usage` member
-contained `VK_TENSOR_USAGE_SHADER_BIT_ARM`
+**must** have been created with the [VK_TENSOR_USAGE_SHADER_BIT_ARM](resources.html#VkTensorUsageFlagBitsARM)
+usage flag set
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-dimensionCount-09905) VUID-vkCmdTraceRaysIndirect2KHR-dimensionCount-09905
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](descriptorsets.html#VkDescriptorType) descriptor is accessed as a
 result of this command, then the `Rank` of the `OpTypeTensorARM`
 of the tensor resource variable **must** be equal to the
 `dimensionCount` provided via
@@ -3012,11 +3740,347 @@ underlying [VkTensorARM](resources.html#VkTensorARM) object
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-OpTypeTensorARM-09906) VUID-vkCmdTraceRaysIndirect2KHR-OpTypeTensorARM-09906
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](descriptorsets.html#VkDescriptorType) descriptor is accessed as a
 result of this command, then the element type of the
 `OpTypeTensorARM` of the tensor resource variable **must** be
 [compatible](../appendices/spirvenv.html#spirvenv-tensor-formats) with the [VkFormat](formats.html#VkFormat) of the
 [VkTensorViewARM](resources.html#VkTensorViewARM) used for the access
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11297) VUID-vkCmdTraceRaysIndirect2KHR-None-11297
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses a `OpTypeStruct` decorated with `Block` or
+`BufferBlock` using that mapping, the calculated offset for the
+resource heap **must** be a multiple of [    `bufferDescriptorAlignment`](limits.html#limits-bufferDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11298) VUID-vkCmdTraceRaysIndirect2KHR-None-11298
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses an `OpTypeImage` or `OpTypeSampledImage` using
+that mapping, the calculated offset for the resource heap **must** be
+a multiple of [    `imageDescriptorAlignment`](limits.html#limits-imageDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11299) VUID-vkCmdTraceRaysIndirect2KHR-None-11299
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses an `OpTypeSampler` or `OpTypeSampledImage` using
+that mapping, the calculated offset for the sampler heap **must** be
+a multiple of [    `samplerDescriptorAlignment`](limits.html#limits-samplerDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11397) VUID-vkCmdTraceRaysIndirect2KHR-None-11397
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses an `OpTypeTensorARM` using that mapping, the
+calculated offset for the resource heap **must** be a multiple of
+[`tensorDescriptorAlignment`](limits.html#limits-tensorDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11300) VUID-vkCmdTraceRaysIndirect2KHR-None-11300
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a
+shader accesses a resource using that mapping, the value of the address
+at the expected location in push data **must** be a multiple of 4
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11301) VUID-vkCmdTraceRaysIndirect2KHR-None-11301
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a
+shader accesses a resource using that mapping, the value of the address
+at the expected location in push data **must** be a valid
+`VkDeviceAddress` backed by physical memory at every offset
+specified by each mapping
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11302) VUID-vkCmdTraceRaysIndirect2KHR-None-11302
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a valid
+`VkDeviceAddress`
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11304) VUID-vkCmdTraceRaysIndirect2KHR-None-11304
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a multiple of 8
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11305) VUID-vkCmdTraceRaysIndirect2KHR-None-11305
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a valid
+`VkDeviceAddress` backed by physical memory at every offset
+specified by each mapping
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11306) VUID-vkCmdTraceRaysIndirect2KHR-None-11306
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and a shader accesses a resource using that mapping, the value of the
+address pointed to by the address in push data **must** be a valid
+`VkDeviceAddress`
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11308) VUID-vkCmdTraceRaysIndirect2KHR-None-11308
+
+For each [descriptor heap](descriptorheaps.html#descriptorheaps) that is statically used by
+[a bound shader](shaders.html#shaders-binding), either directly or via a
+[descriptor mapping](descriptorheaps.html#descriptorheaps-bindings), a valid descriptor heap
+**must** be bound
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11309) VUID-vkCmdTraceRaysIndirect2KHR-None-11309
+
+If a [bound shader](shaders.html#shaders-binding) was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) with the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline with the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, execution of
+this command **must** not result in any descriptor read accessing data
+outside of the user range of the respective heap bound by
+`vkCmdBind*HeapEXT` commands
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11372) VUID-vkCmdTraceRaysIndirect2KHR-None-11372
+
+If any stage of the [VkPipeline](pipelines.html#VkPipeline) object bound to the pipeline bind
+point used by this command accesses a uniform buffer or uniform texel
+buffer through a descriptor in the bound resource heap,
+that stage was created without enabling either
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
+`uniformBuffers`,
+the [`robustBufferAccess2`](features.html#features-robustBufferAccess2) feature
+is not enabled,
+and the [`robustBufferAccess`](features.html#features-robustBufferAccess)
+feature is not enabled, that stage **must** not access values outside of
+the range of the descriptor specified via [VkDeviceAddressRangeEXT](fundamentals.html#VkDeviceAddressRangeEXT)
+when the descriptor was written
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11373) VUID-vkCmdTraceRaysIndirect2KHR-None-11373
+
+If any stage of the [VkPipeline](pipelines.html#VkPipeline) object bound to the pipeline bind
+point used by this command accesses a storage buffer or storage texel
+buffer through a descriptor in the bound resource heap,
+that stage was created without enabling either
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
+`storageBuffers`,
+the [`robustBufferAccess2`](features.html#features-robustBufferAccess2) feature
+is not enabled,
+and the [`robustBufferAccess`](features.html#features-robustBufferAccess)
+feature is not enabled, that stage **must** not access values outside of
+the range of the descriptor specified by [VkDeviceAddressRangeEXT](fundamentals.html#VkDeviceAddressRangeEXT)
+when the descriptor was written
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11374) VUID-vkCmdTraceRaysIndirect2KHR-None-11374
+
+If
+the [`robustBufferAccess2`](features.html#features-robustBufferAccess2) feature
+is not enabled,
+the [`robustBufferAccess`](features.html#features-robustBufferAccess) feature is
+not enabled, and any [VkShaderEXT](shaders.html#VkShaderEXT) bound to a stage corresponding to
+the pipeline bind point used by this command accesses a uniform buffer,
+uniform texel buffer, storage buffer, or storage texel buffer, that
+shader **must** not access values outside of the range of the buffer as
+specified by [VkDeviceAddressRangeEXT](fundamentals.html#VkDeviceAddressRangeEXT) when the descriptor was
+written
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-pBindInfo-11375) VUID-vkCmdTraceRaysIndirect2KHR-pBindInfo-11375
+
+If any [bound shader](shaders.html#shaders-binding) uses an embedded sampler via a
+[descriptor mapping](descriptorheaps.html#descriptorheaps-bindings), the value of
+`pBindInfo->reservedRangeSize` set for [vkCmdBindSamplerHeapEXT](descriptorheaps.html#vkCmdBindSamplerHeapEXT)
+**must** be greater than or equal to
+[    `minSamplerHeapReservedRangeWithEmbedded`](limits.html#limits-minSamplerHeapReservedRangeWithEmbedded)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11376) VUID-vkCmdTraceRaysIndirect2KHR-None-11376
+
+If a [bound shader](shaders.html#shaders-binding) was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) with the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline with the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a push constant value, that value **must** have been set by
+[vkCmdPushDataEXT](descriptorheaps.html#vkCmdPushDataEXT)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11398) VUID-vkCmdTraceRaysIndirect2KHR-None-11398
+
+If a [bound shader](shaders.html#shaders-binding) was created with a
+[descriptor mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_RESOURCE_HEAP_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), or
+[VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a resource using that mapping, the access **must** not be
+[out of bounds](shaders.html#shaders-execution-memory-access-bounds)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11437) VUID-vkCmdTraceRaysIndirect2KHR-None-11437
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), or
+[VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a resource using that mapping, the buffer from which the
+address in push data was queried **must** have been created with the
+[VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11438) VUID-vkCmdTraceRaysIndirect2KHR-None-11438
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a uniform buffer using that mapping, the address that the
+uniform buffer is mapped to **must** have been queried from a buffer
+created with the [VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11441) VUID-vkCmdTraceRaysIndirect2KHR-None-11441
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a uniform buffer using that mapping, the address that the
+uniform buffer is mapped to **must** be aligned to
+[    `minUniformBufferOffsetAlignment`](limits.html#limits-minUniformBufferOffsetAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11439) VUID-vkCmdTraceRaysIndirect2KHR-None-11439
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a storage buffer using that mapping, the address that the
+storage buffer is mapped to **must** have been queried from a buffer
+created with the [VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11442) VUID-vkCmdTraceRaysIndirect2KHR-None-11442
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a storage buffer using that mapping, the address that the
+storage buffer is mapped to **must** be aligned to
+[    `minStorageBufferOffsetAlignment`](limits.html#limits-minStorageBufferOffsetAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11485) VUID-vkCmdTraceRaysIndirect2KHR-None-11485
+
+    If a pipeline is bound to the pipeline bind point used by this command,
+    or shader is bound to a shader stage used by this command,
+    and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+    [VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+    or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+    accesses an acceleration structure using that mapping, the address that
+    the acceleration structure is mapped to **must** be an acceleration
+    structure
+    address retrieved from a [VkAccelerationStructureKHR](resources.html#VkAccelerationStructureKHR) object via
+    [vkGetAccelerationStructureDeviceAddressKHR](resources.html#vkGetAccelerationStructureDeviceAddressKHR)
+or
+    handle retrieved from a [VkAccelerationStructureNV](resources.html#VkAccelerationStructureNV) object via
+    [vkGetAccelerationStructureHandleNV](resources.html#vkGetAccelerationStructureHandleNV)
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-index-11450) VUID-vkCmdTraceRaysIndirect2KHR-index-11450
+
+If a shader uses a sampler descriptor to sample an image as a result of
+this command, and that sampler descriptor uses a custom border color
+with an index defined by
+[VkSamplerCustomBorderColorIndexCreateInfoEXT](samplers.html#VkSamplerCustomBorderColorIndexCreateInfoEXT), the value of
+[VkSamplerCustomBorderColorIndexCreateInfoEXT](samplers.html#VkSamplerCustomBorderColorIndexCreateInfoEXT)::`index` **must**
+have been registered before this command was recorded, and still be
+registered during the sampling operation, with an identically defined
+color
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-protectedNoFault-11455) VUID-vkCmdTraceRaysIndirect2KHR-protectedNoFault-11455
+
+If [`protectedNoFault`](devsandqueues.html#limits-protectedNoFault) is not supported,
+a pipeline is bound to the pipeline bind point used by this command,
+or a shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the address
+that the resource is mapped to **must** have been queried from a buffer
+created without the [VK_BUFFER_CREATE_PROTECTED_BIT](resources.html#VkBufferCreateFlagBits) create flag set
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-protectedNoFault-11456) VUID-vkCmdTraceRaysIndirect2KHR-protectedNoFault-11456
+
+If [`protectedNoFault`](devsandqueues.html#limits-protectedNoFault) is not supported,
+a pipeline is bound to the pipeline bind point used by this command,
+or a shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+the address of the indirect memory **must** have been queried from a buffer
+created without the [VK_BUFFER_CREATE_PROTECTED_BIT](resources.html#VkBufferCreateFlagBits) create flag set
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-None-03429) VUID-vkCmdTraceRaysIndirect2KHR-None-03429
@@ -3028,9 +4092,19 @@ from the bound ray tracing pipeline
 [](#VUID-vkCmdTraceRaysIndirect2KHR-None-09458) VUID-vkCmdTraceRaysIndirect2KHR-None-09458
 
 If the bound ray tracing pipeline state was created with the
-`VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR` dynamic state
+[VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR](pipelines.html#VkDynamicState) dynamic state
 enabled then [vkCmdSetRayTracingPipelineStackSizeKHR](pipelines.html#vkCmdSetRayTracingPipelineStackSizeKHR) **must** have
 been called in the current command buffer prior to this trace command
+
+* 
+[](#VUID-vkCmdTraceRaysIndirect2KHR-None-11319) VUID-vkCmdTraceRaysIndirect2KHR-None-11319
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the value
+of the address at the expected location in shader record data **must** be a
+valid address
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-maxPipelineRayRecursionDepth-03679) VUID-vkCmdTraceRaysIndirect2KHR-maxPipelineRayRecursionDepth-03679
@@ -3049,7 +4123,7 @@ used to create the bound ray tracing pipeline
 
 `indirectDeviceAddress` **must** be a device address allocated to the
 application from a buffer created with the
-`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-indirectDeviceAddress-03634) VUID-vkCmdTraceRaysIndirect2KHR-indirectDeviceAddress-03634
@@ -3072,7 +4146,7 @@ The [`rayTracingPipelineTraceRaysIndirect2`](#features-rayTracingPipelineTraceRa
 [](#VUID-vkCmdTraceRaysIndirect2KHR-rayTracingMotionBlurPipelineTraceRaysIndirect-04951) VUID-vkCmdTraceRaysIndirect2KHR-rayTracingMotionBlurPipelineTraceRaysIndirect-04951
 
 If the bound ray tracing pipeline was created with
-`VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV`
+[VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV](pipelines.html#VkPipelineCreateFlagBits)
 `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV`::`rayTracingMotionBlurPipelineTraceRaysIndirect`
 feature **must** be enabled
 
@@ -3096,7 +4170,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-commandBuffer-cmdpool) VUID-vkCmdTraceRaysIndirect2KHR-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-renderpass) VUID-vkCmdTraceRaysIndirect2KHR-renderpass
@@ -3226,7 +4300,7 @@ Valid Usage
 
 `raygenShaderRecordAddress` **must** be a device address allocated to
 the application from a buffer created with the
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
+[VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkTraceRaysIndirectCommand2KHR-pRayGenShaderBindingTable-03682) VUID-VkTraceRaysIndirectCommand2KHR-pRayGenShaderBindingTable-03682
@@ -3239,7 +4313,7 @@ the application from a buffer created with the
 
 `missShaderBindingTableAddress` **must** be a device address allocated to
 the application from a buffer created with the
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
+[VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkTraceRaysIndirectCommand2KHR-pMissShaderBindingTable-03685) VUID-VkTraceRaysIndirectCommand2KHR-pMissShaderBindingTable-03685
@@ -3264,7 +4338,7 @@ the application from a buffer created with the
 
 `hitShaderBindingTableAddress` **must** be a device address allocated to
 the application from a buffer created with the
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
+[VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkTraceRaysIndirectCommand2KHR-pHitShaderBindingTable-03689) VUID-VkTraceRaysIndirectCommand2KHR-pHitShaderBindingTable-03689
@@ -3289,7 +4363,7 @@ the application from a buffer created with the
 
 `callableShaderBindingTableAddress` **must** be a device address allocated
 to the application from a buffer created with the
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
+[VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkTraceRaysIndirectCommand2KHR-pCallableShaderBindingTable-03693) VUID-VkTraceRaysIndirectCommand2KHR-pCallableShaderBindingTable-03693
@@ -3314,7 +4388,7 @@ to the application from a buffer created with the
 
 If the bound ray tracing pipeline was created with `flags` that
 included
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR`, the
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR](pipelines.html#VkPipelineCreateFlagBits), the
 entries in the table identified by `missShaderBindingTableAddress`
 accessed as a result of this command in order to execute a miss shader
 **must** not be zero
@@ -3324,7 +4398,7 @@ accessed as a result of this command in order to execute a miss shader
 
 If the bound ray tracing pipeline was created with `flags` that
 included
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR`,
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR](pipelines.html#VkPipelineCreateFlagBits),
 entries in the table identified by `hitShaderBindingTableAddress`
 accessed as a result of this command in order to execute an any-hit
 shader **must** not be zero
@@ -3334,7 +4408,7 @@ shader **must** not be zero
 
 If the bound ray tracing pipeline was created with `flags` that
 included
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR`,
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR](pipelines.html#VkPipelineCreateFlagBits),
 entries in the table identified by `hitShaderBindingTableAddress`
 accessed as a result of this command in order to execute a closest hit
 shader **must** not be zero
@@ -3344,7 +4418,7 @@ shader **must** not be zero
 
 If the bound ray tracing pipeline was created with `flags` that
 included
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR`,
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR](pipelines.html#VkPipelineCreateFlagBits),
 entries in the table identified by `hitShaderBindingTableAddress`
 accessed as a result of this command in order to execute an intersection
 shader **must** not be zero
@@ -3354,18 +4428,18 @@ shader **must** not be zero
 
 Any non-zero hit shader group entries in the table identified by
 `hitShaderBindingTableAddress` accessed by this call from a geometry
-with a `geometryType` of `VK_GEOMETRY_TYPE_TRIANGLES_KHR` **must**
+with a `geometryType` of [VK_GEOMETRY_TYPE_TRIANGLES_KHR](resources.html#VkGeometryTypeNV) **must**
 have been created with
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR`
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR](pipelines.html#VkRayTracingShaderGroupTypeNV)
 
 * 
 [](#VUID-VkTraceRaysIndirectCommand2KHR-pHitShaderBindingTable-04736) VUID-VkTraceRaysIndirectCommand2KHR-pHitShaderBindingTable-04736
 
 Any non-zero hit shader group entries in the table identified by
 `hitShaderBindingTableAddress` accessed by this call from a geometry
-with a `geometryType` of `VK_GEOMETRY_TYPE_AABBS_KHR` **must** have
+with a `geometryType` of [VK_GEOMETRY_TYPE_AABBS_KHR](resources.html#VkGeometryTypeNV) **must** have
 been created with
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR`
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR](pipelines.html#VkRayTracingShaderGroupTypeNV)
 
 * 
 [](#VUID-VkTraceRaysIndirectCommand2KHR-width-03638) VUID-VkTraceRaysIndirectCommand2KHR-width-03638
@@ -3507,53 +4581,53 @@ Valid Usage
 [](#VUID-vkCmdTraceRaysNV-magFilter-04553) VUID-vkCmdTraceRaysNV-magFilter-04553
 
 If a [VkSampler](samplers.html#VkSampler) created with `magFilter` or `minFilter`
-equal to `VK_FILTER_LINEAR`,
+equal to [VK_FILTER_LINEAR](samplers.html#VkFilter),
 `reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`,
-and `compareEnable` equal to `VK_FALSE` is used to sample a
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](samplers.html#VkSamplerReductionModeEXT),
+and `compareEnable` equal to [VK_FALSE](fundamentals.html#VK_FALSE) is used to sample a
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-magFilter-09598) VUID-vkCmdTraceRaysNV-magFilter-09598
 
 If a [VkSampler](samplers.html#VkSampler) created with `magFilter` or `minFilter`
-equal to `VK_FILTER_LINEAR` and `reductionMode` equal to either
-`VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` is used to sample a
+equal to [VK_FILTER_LINEAR](samplers.html#VkFilter) and `reductionMode` equal to either
+[VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT) is used to sample a
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-mipmapMode-04770) VUID-vkCmdTraceRaysNV-mipmapMode-04770
 
 If a [VkSampler](samplers.html#VkSampler) created with `mipmapMode` equal to
-`VK_SAMPLER_MIPMAP_MODE_LINEAR`,
+[VK_SAMPLER_MIPMAP_MODE_LINEAR](samplers.html#VkSamplerMipmapMode),
 `reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`,
-and `compareEnable` equal to `VK_FALSE` is used to sample a
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](samplers.html#VkSamplerReductionModeEXT),
+and `compareEnable` equal to [VK_FALSE](fundamentals.html#VK_FALSE) is used to sample a
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-mipmapMode-09599) VUID-vkCmdTraceRaysNV-mipmapMode-09599
 
 If a [VkSampler](samplers.html#VkSampler) created with `mipmapMode` equal to
-`VK_SAMPLER_MIPMAP_MODE_LINEAR` and `reductionMode` equal to
-either `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` is used to sample a
+[VK_SAMPLER_MIPMAP_MODE_LINEAR](samplers.html#VkSamplerMipmapMode) and `reductionMode` equal to
+either [VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT) is used to sample a
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-unnormalizedCoordinates-09635) VUID-vkCmdTraceRaysNV-unnormalizedCoordinates-09635
 
 If a [VkSampler](samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
+[VK_TRUE](fundamentals.html#VK_TRUE) is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
 command, then the image view’s `levelCount` and `layerCount`
 **must** be 1
 
@@ -3561,15 +4635,15 @@ command, then the image view’s `levelCount` and `layerCount`
 [](#VUID-vkCmdTraceRaysNV-None-08609) VUID-vkCmdTraceRaysNV-None-08609
 
 If a [VkSampler](samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
+[VK_TRUE](fundamentals.html#VK_TRUE) is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
 command, then the image view’s `viewType` **must** be
-`VK_IMAGE_VIEW_TYPE_1D` or `VK_IMAGE_VIEW_TYPE_2D`
+[VK_IMAGE_VIEW_TYPE_1D](resources.html#VkImageViewType) or [VK_IMAGE_VIEW_TYPE_2D](resources.html#VkImageViewType)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-None-08610) VUID-vkCmdTraceRaysNV-None-08610
 
 If a [VkSampler](samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
+[VK_TRUE](fundamentals.html#VK_TRUE) is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
 command, then the sampler **must** not be used with any of the SPIR-V
 `OpImageSample*` or `OpImageSparseSample*` instructions with
 `ImplicitLod`, `Dref` or `Proj` in their name
@@ -3578,7 +4652,7 @@ command, then the sampler **must** not be used with any of the SPIR-V
 [](#VUID-vkCmdTraceRaysNV-None-08611) VUID-vkCmdTraceRaysNV-None-08611
 
 If a [VkSampler](samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
+[VK_TRUE](fundamentals.html#VK_TRUE) is used to sample a [VkImageView](resources.html#VkImageView) as a result of this
 command, then the sampler **must** not be used with any of the SPIR-V
 `OpImageSample*` or `OpImageSparseSample*` instructions that includes a
 LOD bias or any offset values
@@ -3589,7 +4663,7 @@ LOD bias or any offset values
 If a [VkImageView](resources.html#VkImageView) is sampled with
 [depth comparison](textures.html#textures-depth-compare-operation), the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT`
+[VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-None-02691) VUID-vkCmdTraceRaysNV-None-02691
@@ -3597,38 +4671,38 @@ If a [VkImageView](resources.html#VkImageView) is sampled with
 If a [VkImageView](resources.html#VkImageView) is accessed using atomic operations as a result
 of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT`
+[VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-None-07888) VUID-vkCmdTraceRaysNV-None-07888
 
-If a `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` descriptor is
+If a [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType) descriptor is
 accessed using atomic operations as a result of this command, then the
 storage texel buffer’s [format    features](resources.html#resources-buffer-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT`
+[VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-None-02692) VUID-vkCmdTraceRaysNV-None-02692
 
-If a [VkImageView](resources.html#VkImageView) is sampled with `VK_FILTER_CUBIC_EXT` as a
+If a [VkImageView](resources.html#VkImageView) is sampled with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a
 result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-None-02693) VUID-vkCmdTraceRaysNV-None-02693
 
 If
 the [VK_EXT_filter_cubic](../appendices/extensions.html#VK_EXT_filter_cubic) extension is not enabled and
-any [VkImageView](resources.html#VkImageView) is sampled with `VK_FILTER_CUBIC_EXT` as a
+any [VkImageView](resources.html#VkImageView) is sampled with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a
 result of this command, it **must** not have a [VkImageViewType](resources.html#VkImageViewType) of
-`VK_IMAGE_VIEW_TYPE_3D`, `VK_IMAGE_VIEW_TYPE_CUBE`, or
-`VK_IMAGE_VIEW_TYPE_CUBE_ARRAY`
+[VK_IMAGE_VIEW_TYPE_3D](resources.html#VkImageViewType), [VK_IMAGE_VIEW_TYPE_CUBE](resources.html#VkImageViewType), or
+[VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](resources.html#VkImageViewType)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-filterCubic-02694) VUID-vkCmdTraceRaysNV-filterCubic-02694
 
-Any [VkImageView](resources.html#VkImageView) being sampled with `VK_FILTER_CUBIC_EXT` as a
+Any [VkImageView](resources.html#VkImageView) being sampled with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a
 result of this command **must** have a [VkImageViewType](resources.html#VkImageViewType) and format
 that supports cubic filtering, as specified by
 [VkFilterCubicImageViewImageFormatPropertiesEXT](capabilities.html#VkFilterCubicImageViewImageFormatPropertiesEXT)::`filterCubic`
@@ -3637,9 +4711,9 @@ returned by [vkGetPhysicalDeviceImageFormatProperties2](capabilities.html#vkGetP
 * 
 [](#VUID-vkCmdTraceRaysNV-filterCubicMinmax-02695) VUID-vkCmdTraceRaysNV-filterCubicMinmax-02695
 
-Any [VkImageView](resources.html#VkImageView) being sampled with `VK_FILTER_CUBIC_EXT` with
-a reduction mode of either `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` as a result of this command **must**
+Any [VkImageView](resources.html#VkImageView) being sampled with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) with
+a reduction mode of either [VK_SAMPLER_REDUCTION_MODE_MIN](samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](samplers.html#VkSamplerReductionModeEXT) as a result of this command **must**
 have a [VkImageViewType](resources.html#VkImageViewType) and format that supports cubic filtering
 together with minmax filtering, as specified by
 [VkFilterCubicImageViewImageFormatPropertiesEXT](capabilities.html#VkFilterCubicImageViewImageFormatPropertiesEXT)::`filterCubicMinmax`
@@ -3650,35 +4724,35 @@ returned by [vkGetPhysicalDeviceImageFormatProperties2](capabilities.html#vkGetP
 
 If the [`cubicRangeClamp`](features.html#features-cubicRangeClamp) feature is
 not enabled, then any [VkImageView](resources.html#VkImageView) being sampled with
-`VK_FILTER_CUBIC_EXT` as a result of this command **must** not have a
+[VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a result of this command **must** not have a
 [VkSamplerReductionModeCreateInfo](samplers.html#VkSamplerReductionModeCreateInfo)::`reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM`
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](samplers.html#VkSamplerReductionModeEXT)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-reductionMode-09213) VUID-vkCmdTraceRaysNV-reductionMode-09213
 
 Any [VkImageView](resources.html#VkImageView) being sampled with a
 [VkSamplerReductionModeCreateInfo](samplers.html#VkSamplerReductionModeCreateInfo)::`reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM` as a
-result of this command **must** sample with `VK_FILTER_CUBIC_EXT`
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](samplers.html#VkSamplerReductionModeEXT) as a
+result of this command **must** sample with [VK_FILTER_CUBIC_EXT](samplers.html#VkFilter)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-selectableCubicWeights-09214) VUID-vkCmdTraceRaysNV-selectableCubicWeights-09214
 
 If the [`selectableCubicWeights`](features.html#features-selectableCubicWeights)
 feature is not enabled, then any [VkImageView](resources.html#VkImageView) being sampled with
-`VK_FILTER_CUBIC_EXT` as a result of this command **must** have
+[VK_FILTER_CUBIC_EXT](samplers.html#VkFilter) as a result of this command **must** have
 [VkSamplerCubicWeightsCreateInfoQCOM](samplers.html#VkSamplerCubicWeightsCreateInfoQCOM)::`cubicWeights` equal to
-`VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM`
+[VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM](samplers.html#VkCubicFilterWeightsQCOM)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-flags-02696) VUID-vkCmdTraceRaysNV-flags-02696
 
 Any [VkImage](resources.html#VkImage) created with a [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`flags`
-containing `VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV` sampled as a
+containing [VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV](resources.html#VkImageCreateFlagBits) sampled as a
 result of this command **must** only be sampled using a
 [VkSamplerAddressMode](samplers.html#VkSamplerAddressMode) of
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE`
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](samplers.html#VkSamplerAddressMode)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-OpTypeImage-07027) VUID-vkCmdTraceRaysNV-OpTypeImage-07027
@@ -3686,7 +4760,7 @@ result of this command **must** only be sampled using a
 For any [VkImageView](resources.html#VkImageView) being written as a storage image where the
 image format field of the `OpTypeImage` is `Unknown`, the view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-OpTypeImage-07028) VUID-vkCmdTraceRaysNV-OpTypeImage-07028
@@ -3694,7 +4768,7 @@ image format field of the `OpTypeImage` is `Unknown`, the view’s
 For any [VkImageView](resources.html#VkImageView) being read as a storage image where the image
 format field of the `OpTypeImage` is `Unknown`, the view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-OpTypeImage-07029) VUID-vkCmdTraceRaysNV-OpTypeImage-07029
@@ -3702,7 +4776,7 @@ format field of the `OpTypeImage` is `Unknown`, the view’s
 For any [VkBufferView](resources.html#VkBufferView) being written as a storage texel buffer where
 the image format field of the `OpTypeImage` is `Unknown`, the
 view’s [buffer features](formats.html#VkFormatProperties3) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-OpTypeImage-07030) VUID-vkCmdTraceRaysNV-OpTypeImage-07030
@@ -3710,15 +4784,21 @@ view’s [buffer features](formats.html#VkFormatProperties3) **must** contain
 Any [VkBufferView](resources.html#VkBufferView) being read as a storage texel buffer where the
 image format field of the `OpTypeImage` is `Unknown` then the
 view’s [buffer features](formats.html#VkFormatProperties3) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-None-08600) VUID-vkCmdTraceRaysNV-None-08600
 
-For each set *n* that is statically used by [a bound    shader](shaders.html#shaders-binding), a descriptor set **must** have been bound to *n* at the same
-pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is compatible
-for set *n*, with the [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current
-[VkPipeline](pipelines.html#VkPipeline)
+If a [a bound shader](shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a set *n*, a descriptor set **must** have been bound to *n*
+at the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
+compatible for set *n*, with the [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create
+the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](shaders.html#VkShaderEXT)
 , as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptorsets-compatibility)
@@ -3726,13 +4806,18 @@ or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array 
 * 
 [](#VUID-vkCmdTraceRaysNV-None-08601) VUID-vkCmdTraceRaysNV-None-08601
 
-For each push constant that is statically used by [a    bound shader](shaders.html#shaders-binding), a push constant value **must** have been set for the same
-pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is compatible
-for push constants, with the [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the
-current [VkPipeline](pipelines.html#VkPipeline)
+If a [a bound shader](shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a push constant value, that value **must** have been set
+for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
+[compatible for push constants](descriptorsets.html#descriptorsets-compatibility) with the
+[VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](shaders.html#VkShaderEXT)
-, as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptorsets-compatibility)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-None-10068) VUID-vkCmdTraceRaysNV-None-10068
@@ -3744,26 +4829,28 @@ sets used by this command
 * 
 [](#VUID-vkCmdTraceRaysNV-maintenance4-08602) VUID-vkCmdTraceRaysNV-maintenance4-08602
 
-If the [`maintenance4`](features.html#features-maintenance4) feature is not
-enabled, then for each push constant that is statically used by
-[a bound shader](shaders.html#shaders-binding), a push constant value **must** have
-been set for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout)
-that is compatible for push constants, with the [VkPipelineLayout](descriptorsets.html#VkPipelineLayout)
-used to create the current [VkPipeline](pipelines.html#VkPipeline)
+If a [a bound shader](shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a push constant value, that value **must** have been set
+for the same pipeline bind point, with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is
+[compatible for push constants](descriptorsets.html#descriptorsets-compatibility) with the
+[VkPipelineLayout](descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](descriptorsets.html#VkDescriptorSetLayout) and [VkPushConstantRange](descriptorsets.html#VkPushConstantRange) arrays
 used to create the current [VkShaderEXT](shaders.html#VkShaderEXT)
-, as described in [Pipeline Layout Compatibility](descriptorsets.html#descriptorsets-compatibility)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-None-08114) VUID-vkCmdTraceRaysNV-None-08114
 
 Descriptors in each bound descriptor set, specified via
-[vkCmdBindDescriptorSets](descriptorsets.html#vkCmdBindDescriptorSets), **must** be valid as described by
-[descriptor validity](descriptorsets.html#descriptor-validity) if they are statically used
-by
+[vkCmdBindDescriptorSets](descriptorsets.html#vkCmdBindDescriptorSets), **must** be valid if they are accessed as
+described by [descriptor validity](descriptorsets.html#descriptor-validity) by
 the [VkPipeline](pipelines.html#VkPipeline) bound to the pipeline bind point used by this
 command and the bound [VkPipeline](pipelines.html#VkPipeline) was not created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-imageLayout-00344) VUID-vkCmdTraceRaysNV-imageLayout-00344
@@ -3778,7 +4865,7 @@ defined by the [image layout    matching rules](resources.html#resources-image-l
 If the descriptors used by the [VkPipeline](pipelines.html#VkPipeline) bound to the pipeline
 bind point were specified via [vkCmdBindDescriptorSets](descriptorsets.html#vkCmdBindDescriptorSets), the bound
 [VkPipeline](pipelines.html#VkPipeline) **must** have been created without
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-None-08116) VUID-vkCmdTraceRaysNV-None-08116
@@ -3787,7 +4874,7 @@ Descriptors in bound descriptor buffers, specified via
 [vkCmdSetDescriptorBufferOffsetsEXT](descriptorsets.html#vkCmdSetDescriptorBufferOffsetsEXT), **must** be valid if they are
 dynamically used by the [VkPipeline](pipelines.html#VkPipeline) bound to the pipeline bind
 point used by this command and the bound [VkPipeline](pipelines.html#VkPipeline) was created
-with `VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+with [VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-None-08604) VUID-vkCmdTraceRaysNV-None-08604
@@ -3803,13 +4890,13 @@ to the pipeline bind point used by this command
 If the descriptors used by the [VkPipeline](pipelines.html#VkPipeline) bound to the pipeline
 bind point were specified via [vkCmdSetDescriptorBufferOffsetsEXT](descriptorsets.html#vkCmdSetDescriptorBufferOffsetsEXT),
 the bound [VkPipeline](pipelines.html#VkPipeline) **must** have been created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-None-08119) VUID-vkCmdTraceRaysNV-None-08119
 
 If a descriptor is dynamically used with a [VkPipeline](pipelines.html#VkPipeline) created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, the descriptor
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits), the descriptor
 memory **must** be resident
 
 * 
@@ -3817,7 +4904,7 @@ memory **must** be resident
 
 If a descriptor is dynamically used with a [VkShaderEXT](shaders.html#VkShaderEXT) created
 with a `VkDescriptorSetLayout` that was created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, the
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits), the
 descriptor memory **must** be resident
 
 * 
@@ -3843,8 +4930,8 @@ pipeline bind point used by this command, since that pipeline was bound
 If any stage of the [VkPipeline](pipelines.html#VkPipeline) object bound to the pipeline bind
 point used by this command accesses a uniform buffer,
 and that stage was created without enabling either
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2` for
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
 `uniformBuffers`,
 and the [`robustBufferAccess`](features.html#features-robustBufferAccess)
 feature is not enabled, that stage **must** not access values outside of
@@ -3866,8 +4953,8 @@ specified in the descriptor set bound to the same pipeline bind point
 If any stage of the [VkPipeline](pipelines.html#VkPipeline) object bound to the pipeline bind
 point used by this command accesses a storage buffer,
 and that stage was created without enabling either
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2` for
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
 `storageBuffers`,
 and the [`robustBufferAccess`](features.html#features-robustBufferAccess)
 feature is not enabled, that stage **must** not access values outside of
@@ -3910,7 +4997,7 @@ view’s `format` and the `Sampled` `Type` operand of the
 [](#VUID-vkCmdTraceRaysNV-OpImageWrite-08795) VUID-vkCmdTraceRaysNV-OpImageWrite-08795
 
 If a [VkImageView](resources.html#VkImageView)
-created with a format other than `VK_FORMAT_A8_UNORM`
+created with a format other than [VK_FORMAT_A8_UNORM](formats.html#VkFormat)
 is accessed using `OpImageWrite` as a result of this command, then
 the `Type` of the `Texel` operand of that instruction **must** have
 at least as many components as the image view’s format
@@ -3918,7 +5005,7 @@ at least as many components as the image view’s format
 * 
 [](#VUID-vkCmdTraceRaysNV-OpImageWrite-08796) VUID-vkCmdTraceRaysNV-OpImageWrite-08796
 
-If a [VkImageView](resources.html#VkImageView) created with the format `VK_FORMAT_A8_UNORM`
+If a [VkImageView](resources.html#VkImageView) created with the format [VK_FORMAT_A8_UNORM](formats.html#VkFormat)
 is accessed using `OpImageWrite` as a result of this command, then
 the `Type` of the `Texel` operand of that instruction **must** have
 four components
@@ -3967,7 +5054,7 @@ less than 64-bit is accessed as a result of this command, the
 [](#VUID-vkCmdTraceRaysNV-sparseImageInt64Atomics-04474) VUID-vkCmdTraceRaysNV-sparseImageInt64Atomics-04474
 
 If the [    `sparseImageInt64Atomics`](features.html#features-sparseImageInt64Atomics) feature is not enabled, [VkImage](resources.html#VkImage)
-objects created with the `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` flag
+objects created with the [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits) flag
 **must** not be accessed by atomic instructions through an `OpTypeImage`
 with a `SampledType` with a `Width` of 64 by this command
 
@@ -3975,26 +5062,26 @@ with a `SampledType` with a `Width` of 64 by this command
 [](#VUID-vkCmdTraceRaysNV-sparseImageInt64Atomics-04475) VUID-vkCmdTraceRaysNV-sparseImageInt64Atomics-04475
 
 If the [    `sparseImageInt64Atomics`](features.html#features-sparseImageInt64Atomics) feature is not enabled, [VkBuffer](resources.html#VkBuffer)
-objects created with the `VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`
+objects created with the [VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkBufferCreateFlagBits)
 flag **must** not be accessed by atomic instructions through an
 `OpTypeImage` with a `SampledType` with a `Width` of 64 by this
 command
 
 * 
-[](#VUID-vkCmdTraceRaysNV-OpImageWeightedSampleQCOM-06971) VUID-vkCmdTraceRaysNV-OpImageWeightedSampleQCOM-06971
+[](#VUID-vkCmdTraceRaysNV-OpImageSampleWeightedQCOM-06971) VUID-vkCmdTraceRaysNV-OpImageSampleWeightedQCOM-06971
 
-If `OpImageWeightedSampleQCOM` is used to sample a [VkImageView](resources.html#VkImageView)
+If `OpImageSampleWeightedQCOM` is used to sample a [VkImageView](resources.html#VkImageView)
 as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
-[](#VUID-vkCmdTraceRaysNV-OpImageWeightedSampleQCOM-06972) VUID-vkCmdTraceRaysNV-OpImageWeightedSampleQCOM-06972
+[](#VUID-vkCmdTraceRaysNV-OpImageSampleWeightedQCOM-06972) VUID-vkCmdTraceRaysNV-OpImageSampleWeightedQCOM-06972
 
-If `OpImageWeightedSampleQCOM` uses a [VkImageView](resources.html#VkImageView) as a sample
+If `OpImageSampleWeightedQCOM` uses a [VkImageView](resources.html#VkImageView) as a sample
 weight image as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-OpImageBoxFilterQCOM-06973) VUID-vkCmdTraceRaysNV-OpImageBoxFilterQCOM-06973
@@ -4002,7 +5089,7 @@ weight image as a result of this command, then the image view’s
 If `OpImageBoxFilterQCOM` is used to sample a [VkImageView](resources.html#VkImageView) as a
 result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BOX_FILTER_SAMPLED_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BOX_FILTER_SAMPLED_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-OpImageBlockMatchSSDQCOM-06974) VUID-vkCmdTraceRaysNV-OpImageBlockMatchSSDQCOM-06974
@@ -4010,7 +5097,7 @@ result of this command, then the image view’s
 If `OpImageBlockMatchSSDQCOM` is used to read from an
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-OpImageBlockMatchSADQCOM-06975) VUID-vkCmdTraceRaysNV-OpImageBlockMatchSADQCOM-06975
@@ -4018,7 +5105,7 @@ If `OpImageBlockMatchSSDQCOM` is used to read from an
 If `OpImageBlockMatchSADQCOM` is used to read from an
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-OpImageBlockMatchSADQCOM-06976) VUID-vkCmdTraceRaysNV-OpImageBlockMatchSADQCOM-06976
@@ -4029,21 +5116,21 @@ specified reference coordinates **must** not fail
 [integer texel coordinate    validation](textures.html#textures-integer-coordinate-validation)
 
 * 
-[](#VUID-vkCmdTraceRaysNV-OpImageWeightedSampleQCOM-06977) VUID-vkCmdTraceRaysNV-OpImageWeightedSampleQCOM-06977
+[](#VUID-vkCmdTraceRaysNV-OpImageSampleWeightedQCOM-06977) VUID-vkCmdTraceRaysNV-OpImageSampleWeightedQCOM-06977
 
-If `OpImageWeightedSampleQCOM`, `OpImageBoxFilterQCOM`,
+If `OpImageSampleWeightedQCOM`, `OpImageBoxFilterQCOM`,
 `OpImageBlockMatchWindowSSDQCOM`,
 `OpImageBlockMatchWindowSADQCOM`,
 `OpImageBlockMatchGatherSSDQCOM`,
 `OpImageBlockMatchGatherSADQCOM`,
 `OpImageBlockMatchSSDQCOM`, or `OpImageBlockMatchSADQCOM` uses a
 [VkSampler](samplers.html#VkSampler) as a result of this command, then the sampler **must** have
-been created with `VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`
+been created with [VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](samplers.html#VkSamplerCreateFlagBits)
 
 * 
-[](#VUID-vkCmdTraceRaysNV-OpImageWeightedSampleQCOM-06978) VUID-vkCmdTraceRaysNV-OpImageWeightedSampleQCOM-06978
+[](#VUID-vkCmdTraceRaysNV-OpImageSampleWeightedQCOM-06978) VUID-vkCmdTraceRaysNV-OpImageSampleWeightedQCOM-06978
 
-If any command other than `OpImageWeightedSampleQCOM`,
+If any command other than `OpImageSampleWeightedQCOM`,
 `OpImageBoxFilterQCOM`,
 `OpImageBlockMatchWindowSSDQCOM`,
 `OpImageBlockMatchWindowSADQCOM`,
@@ -4051,7 +5138,7 @@ If any command other than `OpImageWeightedSampleQCOM`,
 `OpImageBlockMatchGatherSADQCOM`,
 `OpImageBlockMatchSSDQCOM`, or `OpImageBlockMatchSADQCOM` uses a
 [VkSampler](samplers.html#VkSampler) as a result of this command, then the sampler **must** not
-have been created with `VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`
+have been created with [VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](samplers.html#VkSamplerCreateFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-OpImageBlockMatchWindow-09215) VUID-vkCmdTraceRaysNV-OpImageBlockMatchWindow-09215
@@ -4060,7 +5147,7 @@ If a `OpImageBlockMatchWindow*QCOM` or
 `OpImageBlockMatchGather*QCOM` instruction is used to read from an
 [VkImageView](resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-OpImageBlockMatchWindow-09216) VUID-vkCmdTraceRaysNV-OpImageBlockMatchWindow-09216
@@ -4088,11 +5175,11 @@ Any shader invocation executed by this command **must**
 [](#VUID-vkCmdTraceRaysNV-None-09600) VUID-vkCmdTraceRaysNV-None-09600
 
 If a descriptor with type equal to any of
-`VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM`,
-`VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` is accessed as a result of
+[VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](descriptorsets.html#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](descriptorsets.html#VkDescriptorType) is accessed as a result of
 this command, all image subresources identified by that descriptor **must**
 be in the image layout identified when the descriptor was written
 
@@ -4100,7 +5187,7 @@ be in the image layout identified when the descriptor was written
 [](#VUID-vkCmdTraceRaysNV-commandBuffer-10746) VUID-vkCmdTraceRaysNV-commandBuffer-10746
 
 The `VkDeviceMemory` object allocated from a `VkMemoryHeap` with
-the `VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property that is bound to
+the [VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property that is bound to
 a resource accessed as a result of this command **must** be the active
 bound [bound tile memory object](memory.html#memory-bind-tile-memory) in
 `commandBuffer`
@@ -4110,8 +5197,8 @@ bound [bound tile memory object](memory.html#memory-bind-tile-memory) in
 
 If this command is recorded inside a [tile    shading render pass](renderpass.html#renderpass-tile-shading) instance, the stages corresponding to the pipeline
 bind point used by this command **must** only include
-`VK_SHADER_STAGE_VERTEX_BIT`, `VK_SHADER_STAGE_FRAGMENT_BIT`,
-and/or `VK_SHADER_STAGE_COMPUTE_BIT`
+[VK_SHADER_STAGE_VERTEX_BIT](pipelines.html#VkShaderStageFlagBits), [VK_SHADER_STAGE_FRAGMENT_BIT](pipelines.html#VkShaderStageFlagBits),
+and/or [VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-vkCmdTraceRaysNV-None-10679) VUID-vkCmdTraceRaysNV-None-10679
@@ -4120,21 +5207,20 @@ If this command is recorded where
 [per-tile execution model](renderpass.html#renderpass-per-tile-execution-model) is
 enabled, there **must** be no access to any image while the image was be
 transitioned to the
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` layout
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout) layout
 
 * 
 [](#VUID-vkCmdTraceRaysNV-pDescription-09900) VUID-vkCmdTraceRaysNV-pDescription-09900
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](descriptorsets.html#VkDescriptorType) descriptor is accessed as a
 result of this command, then the underlying [VkTensorARM](resources.html#VkTensorARM) object
-**must** have been created with a
-[VkTensorCreateInfoARM](resources.html#VkTensorCreateInfoARM)::`pDescription` whose `usage` member
-contained `VK_TENSOR_USAGE_SHADER_BIT_ARM`
+**must** have been created with the [VK_TENSOR_USAGE_SHADER_BIT_ARM](resources.html#VkTensorUsageFlagBitsARM)
+usage flag set
 
 * 
 [](#VUID-vkCmdTraceRaysNV-dimensionCount-09905) VUID-vkCmdTraceRaysNV-dimensionCount-09905
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](descriptorsets.html#VkDescriptorType) descriptor is accessed as a
 result of this command, then the `Rank` of the `OpTypeTensorARM`
 of the tensor resource variable **must** be equal to the
 `dimensionCount` provided via
@@ -4144,11 +5230,347 @@ underlying [VkTensorARM](resources.html#VkTensorARM) object
 * 
 [](#VUID-vkCmdTraceRaysNV-OpTypeTensorARM-09906) VUID-vkCmdTraceRaysNV-OpTypeTensorARM-09906
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](descriptorsets.html#VkDescriptorType) descriptor is accessed as a
 result of this command, then the element type of the
 `OpTypeTensorARM` of the tensor resource variable **must** be
 [compatible](../appendices/spirvenv.html#spirvenv-tensor-formats) with the [VkFormat](formats.html#VkFormat) of the
 [VkTensorViewARM](resources.html#VkTensorViewARM) used for the access
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11297) VUID-vkCmdTraceRaysNV-None-11297
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses a `OpTypeStruct` decorated with `Block` or
+`BufferBlock` using that mapping, the calculated offset for the
+resource heap **must** be a multiple of [    `bufferDescriptorAlignment`](limits.html#limits-bufferDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11298) VUID-vkCmdTraceRaysNV-None-11298
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses an `OpTypeImage` or `OpTypeSampledImage` using
+that mapping, the calculated offset for the resource heap **must** be
+a multiple of [    `imageDescriptorAlignment`](limits.html#limits-imageDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11299) VUID-vkCmdTraceRaysNV-None-11299
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses an `OpTypeSampler` or `OpTypeSampledImage` using
+that mapping, the calculated offset for the sampler heap **must** be
+a multiple of [    `samplerDescriptorAlignment`](limits.html#limits-samplerDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11397) VUID-vkCmdTraceRaysNV-None-11397
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses an `OpTypeTensorARM` using that mapping, the
+calculated offset for the resource heap **must** be a multiple of
+[`tensorDescriptorAlignment`](limits.html#limits-tensorDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11300) VUID-vkCmdTraceRaysNV-None-11300
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a
+shader accesses a resource using that mapping, the value of the address
+at the expected location in push data **must** be a multiple of 4
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11301) VUID-vkCmdTraceRaysNV-None-11301
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a
+shader accesses a resource using that mapping, the value of the address
+at the expected location in push data **must** be a valid
+`VkDeviceAddress` backed by physical memory at every offset
+specified by each mapping
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11302) VUID-vkCmdTraceRaysNV-None-11302
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a valid
+`VkDeviceAddress`
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11304) VUID-vkCmdTraceRaysNV-None-11304
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a multiple of 8
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11305) VUID-vkCmdTraceRaysNV-None-11305
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a valid
+`VkDeviceAddress` backed by physical memory at every offset
+specified by each mapping
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11306) VUID-vkCmdTraceRaysNV-None-11306
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and a shader accesses a resource using that mapping, the value of the
+address pointed to by the address in push data **must** be a valid
+`VkDeviceAddress`
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11308) VUID-vkCmdTraceRaysNV-None-11308
+
+For each [descriptor heap](descriptorheaps.html#descriptorheaps) that is statically used by
+[a bound shader](shaders.html#shaders-binding), either directly or via a
+[descriptor mapping](descriptorheaps.html#descriptorheaps-bindings), a valid descriptor heap
+**must** be bound
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11309) VUID-vkCmdTraceRaysNV-None-11309
+
+If a [bound shader](shaders.html#shaders-binding) was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) with the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline with the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, execution of
+this command **must** not result in any descriptor read accessing data
+outside of the user range of the respective heap bound by
+`vkCmdBind*HeapEXT` commands
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11372) VUID-vkCmdTraceRaysNV-None-11372
+
+If any stage of the [VkPipeline](pipelines.html#VkPipeline) object bound to the pipeline bind
+point used by this command accesses a uniform buffer or uniform texel
+buffer through a descriptor in the bound resource heap,
+that stage was created without enabling either
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
+`uniformBuffers`,
+the [`robustBufferAccess2`](features.html#features-robustBufferAccess2) feature
+is not enabled,
+and the [`robustBufferAccess`](features.html#features-robustBufferAccess)
+feature is not enabled, that stage **must** not access values outside of
+the range of the descriptor specified via [VkDeviceAddressRangeEXT](fundamentals.html#VkDeviceAddressRangeEXT)
+when the descriptor was written
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11373) VUID-vkCmdTraceRaysNV-None-11373
+
+If any stage of the [VkPipeline](pipelines.html#VkPipeline) object bound to the pipeline bind
+point used by this command accesses a storage buffer or storage texel
+buffer through a descriptor in the bound resource heap,
+that stage was created without enabling either
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
+`storageBuffers`,
+the [`robustBufferAccess2`](features.html#features-robustBufferAccess2) feature
+is not enabled,
+and the [`robustBufferAccess`](features.html#features-robustBufferAccess)
+feature is not enabled, that stage **must** not access values outside of
+the range of the descriptor specified by [VkDeviceAddressRangeEXT](fundamentals.html#VkDeviceAddressRangeEXT)
+when the descriptor was written
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11374) VUID-vkCmdTraceRaysNV-None-11374
+
+If
+the [`robustBufferAccess2`](features.html#features-robustBufferAccess2) feature
+is not enabled,
+the [`robustBufferAccess`](features.html#features-robustBufferAccess) feature is
+not enabled, and any [VkShaderEXT](shaders.html#VkShaderEXT) bound to a stage corresponding to
+the pipeline bind point used by this command accesses a uniform buffer,
+uniform texel buffer, storage buffer, or storage texel buffer, that
+shader **must** not access values outside of the range of the buffer as
+specified by [VkDeviceAddressRangeEXT](fundamentals.html#VkDeviceAddressRangeEXT) when the descriptor was
+written
+
+* 
+[](#VUID-vkCmdTraceRaysNV-pBindInfo-11375) VUID-vkCmdTraceRaysNV-pBindInfo-11375
+
+If any [bound shader](shaders.html#shaders-binding) uses an embedded sampler via a
+[descriptor mapping](descriptorheaps.html#descriptorheaps-bindings), the value of
+`pBindInfo->reservedRangeSize` set for [vkCmdBindSamplerHeapEXT](descriptorheaps.html#vkCmdBindSamplerHeapEXT)
+**must** be greater than or equal to
+[    `minSamplerHeapReservedRangeWithEmbedded`](limits.html#limits-minSamplerHeapReservedRangeWithEmbedded)
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11376) VUID-vkCmdTraceRaysNV-None-11376
+
+If a [bound shader](shaders.html#shaders-binding) was created
+as a [VkShaderEXT](shaders.html#VkShaderEXT) with the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline with the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a push constant value, that value **must** have been set by
+[vkCmdPushDataEXT](descriptorheaps.html#vkCmdPushDataEXT)
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11398) VUID-vkCmdTraceRaysNV-None-11398
+
+If a [bound shader](shaders.html#shaders-binding) was created with a
+[descriptor mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_RESOURCE_HEAP_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), or
+[VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a resource using that mapping, the access **must** not be
+[out of bounds](shaders.html#shaders-execution-memory-access-bounds)
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11437) VUID-vkCmdTraceRaysNV-None-11437
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), or
+[VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a resource using that mapping, the buffer from which the
+address in push data was queried **must** have been created with the
+[VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11438) VUID-vkCmdTraceRaysNV-None-11438
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a uniform buffer using that mapping, the address that the
+uniform buffer is mapped to **must** have been queried from a buffer
+created with the [VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11441) VUID-vkCmdTraceRaysNV-None-11441
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a uniform buffer using that mapping, the address that the
+uniform buffer is mapped to **must** be aligned to
+[    `minUniformBufferOffsetAlignment`](limits.html#limits-minUniformBufferOffsetAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11439) VUID-vkCmdTraceRaysNV-None-11439
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a storage buffer using that mapping, the address that the
+storage buffer is mapped to **must** have been queried from a buffer
+created with the [VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11442) VUID-vkCmdTraceRaysNV-None-11442
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a storage buffer using that mapping, the address that the
+storage buffer is mapped to **must** be aligned to
+[    `minStorageBufferOffsetAlignment`](limits.html#limits-minStorageBufferOffsetAlignment)
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11485) VUID-vkCmdTraceRaysNV-None-11485
+
+    If a pipeline is bound to the pipeline bind point used by this command,
+    or shader is bound to a shader stage used by this command,
+    and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+    [VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+    or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+    accesses an acceleration structure using that mapping, the address that
+    the acceleration structure is mapped to **must** be an acceleration
+    structure
+    address retrieved from a [VkAccelerationStructureKHR](resources.html#VkAccelerationStructureKHR) object via
+    [vkGetAccelerationStructureDeviceAddressKHR](resources.html#vkGetAccelerationStructureDeviceAddressKHR)
+or
+    handle retrieved from a [VkAccelerationStructureNV](resources.html#VkAccelerationStructureNV) object via
+    [vkGetAccelerationStructureHandleNV](resources.html#vkGetAccelerationStructureHandleNV)
+
+* 
+[](#VUID-vkCmdTraceRaysNV-index-11450) VUID-vkCmdTraceRaysNV-index-11450
+
+If a shader uses a sampler descriptor to sample an image as a result of
+this command, and that sampler descriptor uses a custom border color
+with an index defined by
+[VkSamplerCustomBorderColorIndexCreateInfoEXT](samplers.html#VkSamplerCustomBorderColorIndexCreateInfoEXT), the value of
+[VkSamplerCustomBorderColorIndexCreateInfoEXT](samplers.html#VkSamplerCustomBorderColorIndexCreateInfoEXT)::`index` **must**
+have been registered before this command was recorded, and still be
+registered during the sampling operation, with an identically defined
+color
+
+* 
+[](#VUID-vkCmdTraceRaysNV-protectedNoFault-11455) VUID-vkCmdTraceRaysNV-protectedNoFault-11455
+
+If [`protectedNoFault`](devsandqueues.html#limits-protectedNoFault) is not supported,
+a pipeline is bound to the pipeline bind point used by this command,
+or a shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the address
+that the resource is mapped to **must** have been queried from a buffer
+created without the [VK_BUFFER_CREATE_PROTECTED_BIT](resources.html#VkBufferCreateFlagBits) create flag set
+
+* 
+[](#VUID-vkCmdTraceRaysNV-protectedNoFault-11456) VUID-vkCmdTraceRaysNV-protectedNoFault-11456
+
+If [`protectedNoFault`](devsandqueues.html#limits-protectedNoFault) is not supported,
+a pipeline is bound to the pipeline bind point used by this command,
+or a shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+the address of the indirect memory **must** have been queried from a buffer
+created without the [VK_BUFFER_CREATE_PROTECTED_BIT](resources.html#VkBufferCreateFlagBits) create flag set
 
 * 
 [](#VUID-vkCmdTraceRaysNV-None-03429) VUID-vkCmdTraceRaysNV-None-03429
@@ -4160,9 +5582,19 @@ from the bound ray tracing pipeline
 [](#VUID-vkCmdTraceRaysNV-None-09458) VUID-vkCmdTraceRaysNV-None-09458
 
 If the bound ray tracing pipeline state was created with the
-`VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR` dynamic state
+[VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR](pipelines.html#VkDynamicState) dynamic state
 enabled then [vkCmdSetRayTracingPipelineStackSizeKHR](pipelines.html#vkCmdSetRayTracingPipelineStackSizeKHR) **must** have
 been called in the current command buffer prior to this trace command
+
+* 
+[](#VUID-vkCmdTraceRaysNV-None-11319) VUID-vkCmdTraceRaysNV-None-11319
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the value
+of the address at the expected location in shader record data **must** be a
+valid address
 
 * 
 [](#VUID-vkCmdTraceRaysNV-commandBuffer-04624) VUID-vkCmdTraceRaysNV-commandBuffer-04624
@@ -4348,7 +5780,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdTraceRaysNV-commandBuffer-cmdpool) VUID-vkCmdTraceRaysNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdTraceRaysNV-renderpass) VUID-vkCmdTraceRaysNV-renderpass
@@ -4404,7 +5836,7 @@ Each entry in the shader binding table consists of
 [vkGetRayTracingShaderGroupHandlesKHR](pipelines.html#vkGetRayTracingShaderGroupHandlesKHR) to refer to those specified
 shaders, or all zeros to refer to a zero shader group.
 A zero shader group behaves as though it is a shader group consisting
-entirely of `VK_SHADER_UNUSED_KHR`.
+entirely of [VK_SHADER_UNUSED_KHR](pipelines.html#VK_SHADER_UNUSED_KHR).
 The remainder of the data specified by the stride is application-visible
 data that can be referenced by a `ShaderRecordBufferKHR` block in the
 shader.
@@ -4439,10 +5871,10 @@ required for that variable to extend outside the range [0,
 
 Accesses to the shader binding table from ray tracing pipelines **must** be
 [synchronized](synchronization.html#synchronization-dependencies) with the
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](synchronization.html#VkPipelineStageFlagBits)
 [pipeline stage](synchronization.html#synchronization-pipeline-stages) and an
 [access type](synchronization.html#synchronization-access-types) of
-`VK_ACCESS_SHADER_READ_BIT`.
+[VK_ACCESS_SHADER_READ_BIT](synchronization.html#VkAccessFlagBits).
 
 |  | Because different shader record buffers can be associated with the same
 | --- | --- |
@@ -4451,9 +5883,10 @@ not be dynamically uniform if different invocations of the same shader can
 reference different data in the shader record buffer, such as if the same
 shader occurs twice in the shader binding table with a different shader
 record buffer.
-In this case, indexing resources based on values in the
-`ShaderRecordBufferKHR` storage class, the index should be decorated as
-`NonUniform`. |
+In this case,
+if the `DescriptorHeapEXT` capability is not declared,
+when indexing resources based on values in the `ShaderRecordBufferKHR`
+storage class, the index should be decorated as `NonUniform`. |
 
 In order to execute the correct shaders and access the correct resources
 during a ray tracing dispatch, the implementation **must** be able to locate

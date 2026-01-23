@@ -37,7 +37,7 @@ tracing trace commands.
 
 This command sets the stack size for subsequent ray tracing commands when
 the ray tracing pipeline is created with
-`VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR` set in
+[VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, the stack size is computed as described in
 [Ray Tracing Pipeline Stack](../../../../spec/latest/chapters/raytracing.html#ray-tracing-pipeline-stack).
@@ -66,7 +66,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetRayTracingPipelineStackSizeKHR-commandBuffer-cmdpool) VUID-vkCmdSetRayTracingPipelineStackSizeKHR-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetRayTracingPipelineStackSizeKHR-renderpass) VUID-vkCmdSetRayTracingPipelineStackSizeKHR-renderpass

@@ -68,7 +68,7 @@ If the `VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT` structure
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -76,7 +76,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_FEATURES_EXT](VkStructureType.html)
 
 [VK_ARM_rasterization_order_attachment_access](VK_ARM_rasterization_order_attachment_access.html), [VK_EXT_rasterization_order_attachment_access](VK_EXT_rasterization_order_attachment_access.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -79,15 +79,15 @@ Bill Licea-Kane, Qualcomm Technologies, Inc.
 * 
 Tobias Hector, AMD
 
-This extension incorporates `VK_ATTACHMENT_STORE_OP_NONE_EXT` from
+This extension incorporates [VK_ATTACHMENT_STORE_OP_NONE_EXT](VkAttachmentStoreOp.html) from
 `[VK_QCOM_render_pass_store_ops](VK_QCOM_render_pass_store_ops.html)`, enabling applications to avoid
 unnecessary synchronization when an attachment is not written during a
 render pass.
 
-Additionally, `VK_ATTACHMENT_LOAD_OP_NONE_EXT` is introduced to avoid
+Additionally, [VK_ATTACHMENT_LOAD_OP_NONE_EXT](VkAttachmentLoadOp.html) is introduced to avoid
 unnecessary synchronization when an attachment is not used during a render
 pass at all.
-In combination with `VK_ATTACHMENT_STORE_OP_NONE_EXT`, this is useful as
+In combination with [VK_ATTACHMENT_STORE_OP_NONE_EXT](VkAttachmentStoreOp.html), this is useful as
 an alternative to preserve attachments in applications that cannot decide if
 an attachment will be used in a render pass until after the necessary
 pipelines have been created.
@@ -106,14 +106,14 @@ functionality.
 * 
 Extending [VkAttachmentLoadOp](VkAttachmentLoadOp.html):
 
-`VK_ATTACHMENT_LOAD_OP_NONE_EXT`
+[VK_ATTACHMENT_LOAD_OP_NONE_EXT](VkAttachmentLoadOp.html)
 
 Extending [VkAttachmentStoreOp](VkAttachmentStoreOp.html):
 
 * 
-`VK_ATTACHMENT_STORE_OP_NONE_EXT`
+[VK_ATTACHMENT_STORE_OP_NONE_EXT](VkAttachmentStoreOp.html)
 
-|  | While `VK_ATTACHMENT_STORE_OP_NONE` is part of Vulkan 1.3, this
+|  | While [VK_ATTACHMENT_STORE_OP_NONE](VkAttachmentStoreOp.html) is part of Vulkan 1.3, this
 | --- | --- |
 extension was not promoted to core either in whole or in part.
 This functionality was promoted from `[VK_KHR_dynamic_rendering](VK_KHR_dynamic_rendering.html)`. |

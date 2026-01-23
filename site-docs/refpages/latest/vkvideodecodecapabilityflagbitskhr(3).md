@@ -28,14 +28,14 @@ typedef enum VkVideoDecodeCapabilityFlagBitsKHR {
 } VkVideoDecodeCapabilityFlagBitsKHR;
 
 * 
-`VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR`
+[VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR](#)
 specifies support for using the same video picture resource as the
 [reconstructed picture](../../../../spec/latest/chapters/videocoding.html#reconstructed-picture) and
 [decode output picture](../../../../spec/latest/chapters/videocoding.html#decode-output-picture) in a video decode
 operation.
 
 * 
-`VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR`
+[VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR](#)
 specifies support for using distinct video picture resources as the
 [reconstructed picture](../../../../spec/latest/chapters/videocoding.html#reconstructed-picture) and
 [decode output picture](../../../../spec/latest/chapters/videocoding.html#decode-output-picture) in a video decode
@@ -45,20 +45,20 @@ operation.
 | --- | --- |
 reconstructed picture and decode output picture in specific video decode
 operations even when the video decode profile does not support
-`VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR`.
+[VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR](#).
 Even if the implementation only reports coincide, the decode output picture
 for [film grain](../../../../spec/latest/chapters/videocoding.html#decode-av1-film-grain) enabled frames must be a different
 video picture resource from the reconstructed picture because film grain is
 applied outside of the coding loop. |
 
 Implementations are only **required** to support one of
-`VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR` and
-`VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR`.
+[VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR](#) and
+[VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR](#).
 Accordingly, applications **should** handle both cases to maximize portability.
 
-|  | If both `VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR` and
+|  | If both [VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR](#) and
 | --- | --- |
-`VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR` are
+[VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR](#) are
 supported, an application can choose to create separate images for decode
 DPB and decode output.
 E.g. in cases when linear tiling is preferred (and supported) for the decode

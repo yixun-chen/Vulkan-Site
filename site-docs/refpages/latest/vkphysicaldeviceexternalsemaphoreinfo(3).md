@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExternalSemaphoreInfo-sType-sType) VUID-VkPhysicalDeviceExternalSemaphoreInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_SEMAPHORE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_SEMAPHORE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPhysicalDeviceExternalSemaphoreInfo-pNext-pNext) VUID-VkPhysicalDeviceExternalSemaphoreInfo-pNext-pNext

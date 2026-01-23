@@ -55,7 +55,7 @@ version of the compiler that built the data graph cache.
 The application **should** verify that the header info is compatible with the
 [VkDataGraphProcessingEngineCreateInfoARM](VkDataGraphProcessingEngineCreateInfoARM.html) passed during pipeline
 creation.
-Implementations **may** return `VK_PIPELINE_COMPILE_REQUIRED_EXT` from
+Implementations **may** return [VK_PIPELINE_COMPILE_REQUIRED_EXT](VkResult.html) from
 [vkCreateDataGraphPipelinesARM](vkCreateDataGraphPipelinesARM.html) if the cache is not compatible.
 
 |  | This cache type is built using offline compilation, therefore Vulkan does
@@ -93,7 +93,7 @@ enabled
 [](#VUID-VkPipelineCacheHeaderVersionDataGraphQCOM-headerVersion-11837) VUID-VkPipelineCacheHeaderVersionDataGraphQCOM-headerVersion-11837
 
 `headerVersion` **must** be
-`VK_PIPELINE_CACHE_HEADER_VERSION_DATA_GRAPH_QCOM`
+[VK_PIPELINE_CACHE_HEADER_VERSION_DATA_GRAPH_QCOM](VkPipelineCacheHeaderVersion.html)
 
 * 
 [](#VUID-VkPipelineCacheHeaderVersionDataGraphQCOM-headerSize-11838) VUID-VkPipelineCacheHeaderVersionDataGraphQCOM-headerSize-11838

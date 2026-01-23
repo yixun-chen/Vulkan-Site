@@ -40,7 +40,7 @@ typedef VkBindMemoryStatus VkBindMemoryStatusKHR;
 structure.
 
 * 
-`pResult` is a pointer to a `VkResult` value.
+`pResult` is a pointer to a [VkResult](VkResult.html) value.
 
 If the `pNext` chain of [VkBindBufferMemoryInfo](VkBindBufferMemoryInfo.html) or
 [VkBindImageMemoryInfo](VkBindImageMemoryInfo.html) includes a `VkBindMemoryStatus` structure,
@@ -52,7 +52,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindMemoryStatus-sType-sType) VUID-VkBindMemoryStatus-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_MEMORY_STATUS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_MEMORY_STATUS](VkStructureType.html)
 
 * 
 [](#VUID-VkBindMemoryStatus-pResult-parameter) VUID-VkBindMemoryStatus-pResult-parameter

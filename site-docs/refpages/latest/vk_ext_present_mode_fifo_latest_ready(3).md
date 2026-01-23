@@ -83,19 +83,19 @@ James Jones, NVIDIA
 Lionel Duc, NVIDIA
 
 This device extension adds a new present mode,
-`VK_PRESENT_MODE_FIFO_LATEST_READY_EXT`.
+[VK_PRESENT_MODE_FIFO_LATEST_READY_EXT](VkPresentModeKHR.html).
 
 This tear-free present mode behaves much like
-`VK_PRESENT_MODE_FIFO_KHR`, except that each vertical blanking period
+[VK_PRESENT_MODE_FIFO_KHR](VkPresentModeKHR.html), except that each vertical blanking period
 dequeues consecutive present requests until the latest ready is found to
 update the current image.
 
-While this seems similar in concept to `VK_PRESENT_MODE_MAILBOX_KHR`,
+While this seems similar in concept to [VK_PRESENT_MODE_MAILBOX_KHR](VkPresentModeKHR.html),
 the fundamental difference is that the processing of the present requests is
 done during vblank.
 From the application perspective, this means for example, that in a
 flip-based model, a single vblank **may** cause multiple swapchain images to be
-released at once, while `VK_PRESENT_MODE_MAILBOX_KHR` **may** continuously
+released at once, while [VK_PRESENT_MODE_MAILBOX_KHR](VkPresentModeKHR.html) **may** continuously
 be releasing images as new requests become ready.
 
 This additional present mode is useful when using a time-based present API.
@@ -120,12 +120,12 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkPresentModeKHR](VkPresentModeKHR.html):
 
-`VK_PRESENT_MODE_FIFO_LATEST_READY_EXT`
+[VK_PRESENT_MODE_FIFO_LATEST_READY_EXT](VkPresentModeKHR.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2024-05-28 (Lionel Duc)

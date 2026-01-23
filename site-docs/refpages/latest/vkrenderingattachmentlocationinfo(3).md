@@ -53,7 +53,7 @@ This structure allows applications to remap the locations of color
 attachments to different fragment shader output locations.
 
 Each element of `pColorAttachmentLocations` set to
-`VK_ATTACHMENT_UNUSED` will be inaccessible to this pipeline as a color
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html) will be inaccessible to this pipeline as a color
 attachment; no location will map to it.
 Each element of `pColorAttachmentLocations` set to any other value will
 map the specified location value to the color attachment specified in the
@@ -84,7 +84,7 @@ This structure **can** be included in the `pNext` chain of a
 from the primary command buffer.
 If [VkCommandBufferInheritanceInfo](VkCommandBufferInheritanceInfo.html)::renderPass is not
 [VK_NULL_HANDLE](VK_NULL_HANDLE.html), or
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT` is not specified in
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](VkCommandBufferUsageFlagBits.html) is not specified in
 [VkCommandBufferBeginInfo](VkCommandBufferBeginInfo.html)::flags, members of this structure are
 ignored.
 If this structure is not included in the `pNext` chain of
@@ -111,7 +111,7 @@ value of its index within the array
 [](#VUID-VkRenderingAttachmentLocationInfo-pColorAttachmentLocations-09513) VUID-VkRenderingAttachmentLocationInfo-pColorAttachmentLocations-09513
 
 Elements of `pColorAttachmentLocations` that are not
-`VK_ATTACHMENT_UNUSED` **must** each be unique
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html) **must** each be unique
 
 * 
 [](#VUID-VkRenderingAttachmentLocationInfo-colorAttachmentCount-09514) VUID-VkRenderingAttachmentLocationInfo-colorAttachmentCount-09514
@@ -130,7 +130,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderingAttachmentLocationInfo-sType-sType) VUID-VkRenderingAttachmentLocationInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_LOCATION_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_LOCATION_INFO](VkStructureType.html)
 
 [VK_KHR_dynamic_rendering_local_read](VK_KHR_dynamic_rendering_local_read.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), [VkStructureType](VkStructureType.html), [vkCmdSetRenderingAttachmentLocations](vkCmdSetRenderingAttachmentLocations.html), [vkCmdSetRenderingAttachmentLocations](vkCmdSetRenderingAttachmentLocations.html)
 

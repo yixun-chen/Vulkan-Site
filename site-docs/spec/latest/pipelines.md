@@ -20,6 +20,12 @@
 - [Graphics_Pipeline_Shader_Groups](#graphics-shadergroups)
 - [Ray Tracing Pipelines](#pipelines-ray-tracing)
 - [Ray_Tracing_Pipelines](#pipelines-ray-tracing)
+- [Ray Tracing Pipeline Enums and Types](#_ray_tracing_pipeline_enums_and_types)
+- [Ray_Tracing_Pipeline_Enums_and_Types](#_ray_tracing_pipeline_enums_and_types)
+- [Ray Tracing Pipeline Creation](#_ray_tracing_pipeline_creation)
+- [Ray_Tracing_Pipeline_Creation](#_ray_tracing_pipeline_creation)
+- [Ray Tracing Pipeline Queries and Commands](#_ray_tracing_pipeline_queries_and_commands)
+- [Ray_Tracing_Pipeline_Queries_and_Commands](#_ray_tracing_pipeline_queries_and_commands)
 - [Pipeline Destruction](#pipelines-destruction)
 - [Pipeline Derivatives](#pipelines-pipeline-derivatives)
 - [Pipeline Cache](#pipelines-cache)
@@ -92,9 +98,9 @@ attribute data in the process.
 When using the Cluster Culling Shader, a compute-like shader will perform
 cluster-based culling, a set of new built-in output variables are used to
 express visible cluster, in addition, a new built-in function is used to
-emit these variables from the cluster culling shader to the Input
-Assembler(IA) stage, then IA can use these variables to fetch vertices of
-visible cluster and drive vertex shader to work.
+emit these variables from the cluster culling shader to the Input Assembler
+(IA) stage, then IA can use these variables to fetch vertices of visible
+cluster and drive vertex shader to work.
 
 **Mesh Shading**
 
@@ -223,7 +229,7 @@ The implementation will attempt to create all pipelines, and only return
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) values for those that actually failed.
 
 If creation fails for a pipeline that has the
-`VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT` set in its
+[VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT](#VkPipelineCreateFlagBits) set in its
 `Vk*PipelineCreateInfo`, pipelines at an index in the `pPipelines`
 array greater than or equal to that of the failing pipeline will be
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE).
@@ -281,7 +287,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineCreateFlags2CreateInfo-sType-sType) VUID-VkPipelineCreateFlags2CreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_CREATE_FLAGS_2_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_CREATE_FLAGS_2_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineCreateFlags2CreateInfo-flags-parameter) VUID-VkPipelineCreateFlags2CreateInfo-flags-parameter
@@ -308,6 +314,8 @@ static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_PROTECTED_ACCESS_ONL
 // Provided by VK_AMDX_shader_enqueue with VK_KHR_maintenance5 or VK_VERSION_1_4
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX = 0x100000000ULL;
 #endif
+// Provided by VK_EXT_descriptor_heap
+static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT = 0x1000000000ULL;
 // Provided by VK_KHR_ray_tracing_pipeline
 static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_BUILT_IN_PRIMITIVES_BIT_KHR = 0x00001000ULL;
 // Provided by VK_NV_ray_tracing_linear_swept_spheres
@@ -392,38 +400,38 @@ static const VkPipelineCreateFlagBits2 VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_
 typedef VkPipelineCreateFlagBits2 VkPipelineCreateFlagBits2KHR;
 
 * 
-`VK_PIPELINE_CREATE_2_DISABLE_OPTIMIZATION_BIT` specifies that the
+[VK_PIPELINE_CREATE_2_DISABLE_OPTIMIZATION_BIT](#VkPipelineCreateFlagBits2KHR) specifies that the
 created pipeline will not be optimized.
 Using this flag **may** reduce the time taken to create the pipeline.
 
 * 
-`VK_PIPELINE_CREATE_2_ALLOW_DERIVATIVES_BIT` specifies that the
+[VK_PIPELINE_CREATE_2_ALLOW_DERIVATIVES_BIT](#VkPipelineCreateFlagBits2KHR) specifies that the
 pipeline to be created is allowed to be the parent of a pipeline that
 will be created in a subsequent pipeline creation call.
 
 * 
-`VK_PIPELINE_CREATE_2_DERIVATIVE_BIT` specifies that the pipeline to
+[VK_PIPELINE_CREATE_2_DERIVATIVE_BIT](#VkPipelineCreateFlagBits2KHR) specifies that the pipeline to
 be created will be a child of a previously created parent pipeline.
 
 * 
-`VK_PIPELINE_CREATE_2_VIEW_INDEX_FROM_DEVICE_INDEX_BIT` specifies
+[VK_PIPELINE_CREATE_2_VIEW_INDEX_FROM_DEVICE_INDEX_BIT](#VkPipelineCreateFlagBits2KHR) specifies
 that any shader input variables decorated as `ViewIndex` will be
 assigned values as if they were decorated as `DeviceIndex`.
 
 * 
-`VK_PIPELINE_CREATE_2_DISPATCH_BASE_BIT` specifies that a compute
+[VK_PIPELINE_CREATE_2_DISPATCH_BASE_BIT](#VkPipelineCreateFlagBits2KHR) specifies that a compute
 pipeline **can** be used with [vkCmdDispatchBase](dispatch.html#vkCmdDispatchBase) with a non-zero base
 workgroup.
 
 * 
-`VK_PIPELINE_CREATE_2_DEFER_COMPILE_BIT_NV` specifies that a
+[VK_PIPELINE_CREATE_2_DEFER_COMPILE_BIT_NV](#VkPipelineCreateFlagBits2KHR) specifies that a
 pipeline is created with all shaders in the deferred state.
 Before using the pipeline the application **must** call
 [vkCompileDeferredNV](#vkCompileDeferredNV) exactly once on each shader in the pipeline
 before using the pipeline.
 
 * 
-`VK_PIPELINE_CREATE_2_CAPTURE_STATISTICS_BIT_KHR` specifies that the
+[VK_PIPELINE_CREATE_2_CAPTURE_STATISTICS_BIT_KHR](#VkPipelineCreateFlagBits2KHR) specifies that the
 shader compiler should capture statistics for the pipeline executables
 produced by the compile process which **can** later be retrieved by calling
 [vkGetPipelineExecutableStatisticsKHR](#vkGetPipelineExecutableStatisticsKHR).
@@ -431,7 +439,7 @@ Enabling this flag **must** not affect the final compiled pipeline but **may**
 disable pipeline caching or otherwise affect pipeline creation time.
 
 * 
-`VK_PIPELINE_CREATE_2_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR`
+[VK_PIPELINE_CREATE_2_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR](#VkPipelineCreateFlagBits2KHR)
 specifies that the shader compiler should capture the internal
 representations of pipeline executables produced by the compile process
 which **can** later be retrieved by calling
@@ -445,7 +453,7 @@ Applications **should** retrieve IR from each library, and any linked
 pipelines, separately.
 
 * 
-`VK_PIPELINE_CREATE_2_LIBRARY_BIT_KHR` specifies that the pipeline
+[VK_PIPELINE_CREATE_2_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits2KHR) specifies that the pipeline
     **cannot** be used directly, and instead defines a *pipeline library* that
     **can** be combined with other pipelines using the
     [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR) structure.
@@ -456,184 +464,189 @@ graphics
     pipelines.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits2KHR)
 specifies that an any-hit shader will always be present when an any-hit
 shader would be executed.
 A NULL any-hit shader is an any-hit shader which is effectively
-`VK_SHADER_UNUSED_KHR`, such as from a shader group consisting
+[VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR), such as from a shader group consisting
 entirely of zeros.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits2KHR)
 specifies that a closest hit shader will always be present when a
 closest hit shader would be executed.
 A NULL closest hit shader is a closest hit shader which is effectively
-`VK_SHADER_UNUSED_KHR`, such as from a shader group consisting
+[VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR), such as from a shader group consisting
 entirely of zeros.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits2KHR)
 specifies that a miss shader will always be present when a miss shader
 would be executed.
 A NULL miss shader is a miss shader which is effectively
-`VK_SHADER_UNUSED_KHR`, such as from a shader group consisting
+[VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR), such as from a shader group consisting
 entirely of zeros.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_2_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits2KHR)
 specifies that an intersection shader will always be present when an
 intersection shader would be executed.
 A NULL intersection shader is an intersection shader which is
-effectively `VK_SHADER_UNUSED_KHR`, such as from a shader group
+effectively [VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR), such as from a shader group
 consisting entirely of zeros.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR` specifies
+[VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR](#VkPipelineCreateFlagBits2KHR) specifies
 that all built-in primitives
 including triangles, spheres and LSS primitives
 will be skipped during traversal using [    pipeline trace ray](../appendices/glossary.html#glossary-pipeline-trace-ray) instructions.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_BUILT_IN_PRIMITIVES_BIT_KHR`
+[VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_BUILT_IN_PRIMITIVES_BIT_KHR](#VkPipelineCreateFlagBits2KHR)
 is an alias for
-`VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR`.
+[VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR](#VkPipelineCreateFlagBits2KHR).
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_AABBS_BIT_KHR` specifies that
+[VK_PIPELINE_CREATE_2_RAY_TRACING_SKIP_AABBS_BIT_KHR](#VkPipelineCreateFlagBits2KHR) specifies that
 AABB primitives will be skipped during traversal using
 [pipeline trace ray](../appendices/glossary.html#glossary-pipeline-trace-ray) instructions.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR`
+[VK_PIPELINE_CREATE_2_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR](#VkPipelineCreateFlagBits2KHR)
 specifies that the shader group handles **can** be saved and reused on a
 subsequent run (e.g. for trace capture and replay).
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_ALLOW_SPHERES_AND_LINEAR_SWEPT_SPHERES_BIT_NV`
+[VK_PIPELINE_CREATE_2_RAY_TRACING_ALLOW_SPHERES_AND_LINEAR_SWEPT_SPHERES_BIT_NV](#VkPipelineCreateFlagBits2KHR)
 specifies that the pipeline is allowed to use spheres or linear swept
 spheres as a geometry type in the acceleration structures.
 Using this flag **may** affect performance.
 
 * 
-`VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_NV` specifies that the
+[VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_NV](#VkPipelineCreateFlagBits2KHR) specifies that the
 pipeline can be used in combination with [Device-Generated Commands](device_generated_commands/generatedcommands.html#device-generated-commands).
 
 * 
-`VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT` specifies that the
+[VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT](#VkPipelineCreateFlagBits2KHR) specifies that the
 pipeline **can** be used in a `VkIndirectExecutionSetEXT`.
 
 * 
-`VK_PIPELINE_CREATE_2_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT`
+[VK_PIPELINE_CREATE_2_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](#VkPipelineCreateFlagBits2KHR)
 specifies that pipeline creation will fail if a compile is required for
 creation of a valid [VkPipeline](#VkPipeline) object;
-`VK_PIPELINE_COMPILE_REQUIRED` will be returned by pipeline
+[VK_PIPELINE_COMPILE_REQUIRED](fundamentals.html#VkResult) will be returned by pipeline
 creation, and the [VkPipeline](#VkPipeline) will be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE).
 
 * 
 When creating multiple pipelines,
-`VK_PIPELINE_CREATE_2_EARLY_RETURN_ON_FAILURE_BIT` specifies that
+[VK_PIPELINE_CREATE_2_EARLY_RETURN_ON_FAILURE_BIT](#VkPipelineCreateFlagBits2KHR) specifies that
 control will be returned to the application if any individual pipeline
-returns a result which is not `VK_SUCCESS` rather than continuing to
+returns a result which is not [VK_SUCCESS](fundamentals.html#VkResult) rather than continuing to
 create additional pipelines.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_ALLOW_MOTION_BIT_NV` specifies
+[VK_PIPELINE_CREATE_2_RAY_TRACING_ALLOW_MOTION_BIT_NV](#VkPipelineCreateFlagBits2KHR) specifies
 that the pipeline is allowed to use `OpTraceRayMotionNV`.
 
 * 
-`VK_PIPELINE_CREATE_2_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_CREATE_2_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineCreateFlagBits2KHR)
 specifies that the pipeline will be used with a fragment shading rate
 attachment.
 
 * 
-`VK_PIPELINE_CREATE_2_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT`
+[VK_PIPELINE_CREATE_2_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT](#VkPipelineCreateFlagBits2KHR)
 specifies that the pipeline will be used with a fragment density map
 attachment.
 
 * 
-`VK_PIPELINE_CREATE_2_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE`
+[VK_PIPELINE_CREATE_2_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](#VkPipelineCreateFlagBits2KHR)
 specifies that the pipeline **can** be used with layered fragment density
 maps.
 
 * 
-`VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT` specifies that
+[VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT](#VkPipelineCreateFlagBits2KHR) specifies that
 pipeline libraries being linked into this library **should** have link time
 optimizations applied.
 If this bit is omitted, implementations **should** instead perform linking
 as rapidly as possible.
 
 * 
-`VK_PIPELINE_CREATE_2_RETAIN_LINK_TIME_OPTIMIZATION_INFO_BIT_EXT`
+[VK_PIPELINE_CREATE_2_RETAIN_LINK_TIME_OPTIMIZATION_INFO_BIT_EXT](#VkPipelineCreateFlagBits2KHR)
 specifies that pipeline libraries should retain any information
 necessary to later perform an optimal link with
-`VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT`.
+[VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT](#VkPipelineCreateFlagBits2KHR).
 
 * 
-`VK_PIPELINE_CREATE_2_DESCRIPTOR_BUFFER_BIT_EXT` specifies that a
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_BUFFER_BIT_EXT](#VkPipelineCreateFlagBits2KHR) specifies that a
 pipeline will be used with [descriptor buffers](descriptorsets.html#descriptorbuffers),
 rather than [descriptor sets](descriptorsets.html#descriptorsets).
 
 * 
-`VK_PIPELINE_CREATE_2_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT`
+[VK_PIPELINE_CREATE_2_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](#VkPipelineCreateFlagBits2KHR)
 specifies that the pipeline **may** be used with an attachment
 [feedback loop](renderpass.html#renderpass-feedbackloop) including color attachments.
 
 * 
-`VK_PIPELINE_CREATE_2_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT`
+[VK_PIPELINE_CREATE_2_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](#VkPipelineCreateFlagBits2KHR)
 specifies that the pipeline **may** be used with an attachment
 [feedback loop](renderpass.html#renderpass-feedbackloop) including depth-stencil
 attachments.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT`
+[VK_PIPELINE_CREATE_2_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR)
 specifies that the ray tracing pipeline **can** be used with acceleration
 structures which reference an opacity micromap array.
 
 * 
-`VK_PIPELINE_CREATE_2_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV`
+[VK_PIPELINE_CREATE_2_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV](#VkPipelineCreateFlagBits2KHR)
 specifies that the ray tracing pipeline **can** be used with acceleration
 structures which reference a displacement micromap array.
 
 * 
-`VK_PIPELINE_CREATE_2_NO_PROTECTED_ACCESS_BIT` specifies that the
+[VK_PIPELINE_CREATE_2_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits2KHR) specifies that the
 pipeline **must** not be bound to a protected command buffer.
 
 * 
-`VK_PIPELINE_CREATE_2_PROTECTED_ACCESS_ONLY_BIT` specifies that the
+[VK_PIPELINE_CREATE_2_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits2KHR) specifies that the
 pipeline **must** not be bound to an unprotected command buffer.
 
 * 
-`VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR` specifies that
+[VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](#VkPipelineCreateFlagBits2KHR) specifies that
 `VkPipelineBinaryKHR` objects **can** be created from the pipeline.
-If `VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR` is used,
+If [VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](#VkPipelineCreateFlagBits2KHR) is used,
 implementations **should** not store pipeline data to an internal cache, if
 such a cache exists as stated by
 [`pipelineBinaryInternalCache`](limits.html#limits-pipelineBinaryInternalCache).
 If
 [`pipelineBinaryPrefersInternalCache`](limits.html#limits-pipelineBinaryPrefersInternalCache)
-is `VK_TRUE`, applications **should** not use
-`VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR`.
+is [VK_TRUE](fundamentals.html#VK_TRUE), applications **should** not use
+[VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](#VkPipelineCreateFlagBits2KHR).
 
 * 
-`VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT` specifies
+[VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT](#VkPipelineCreateFlagBits2KHR) specifies
 that the pipeline will be used in a render pass that is begun with
-`VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT`.
+[VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT](renderpass.html#VkRenderingFlagBitsKHR).
 
 * 
-`VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX` specifies that the
+[VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX](#VkPipelineCreateFlagBits2KHR) specifies that the
 pipeline will be used in an [execution graph](executiongraphs.html#executiongraphs)
 
 * 
-`VK_PIPELINE_CREATE_2_DISALLOW_OPACITY_MICROMAP_BIT_ARM` specifies
+[VK_PIPELINE_CREATE_2_DISALLOW_OPACITY_MICROMAP_BIT_ARM](#VkPipelineCreateFlagBits2KHR) specifies
 that the pipeline **must** not be used with acceleration structures which
 reference an opacity micromap array.
 
 * 
-`VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT` specifies that the
+[VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT](#VkPipelineCreateFlagBits2KHR) specifies that the
 pipeline enables [64-bit indexing](../appendices/spirvenv.html#spirvenv-64bindexing).
 
-It is valid to set both `VK_PIPELINE_CREATE_2_ALLOW_DERIVATIVES_BIT` and
-`VK_PIPELINE_CREATE_2_DERIVATIVE_BIT`.
+* 
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR) specifies that the
+pipeline will use descriptor heap mappings instead of descriptor set
+layouts.
+
+It is valid to set both [VK_PIPELINE_CREATE_2_ALLOW_DERIVATIVES_BIT](#VkPipelineCreateFlagBits2KHR) and
+[VK_PIPELINE_CREATE_2_DERIVATIVE_BIT](#VkPipelineCreateFlagBits2KHR).
 This allows a pipeline to be both a parent and possibly a child in a
 pipeline hierarchy.
 See [Pipeline Derivatives](#pipelines-pipeline-derivatives) for more
@@ -643,10 +656,10 @@ When an implementation is looking up a pipeline in a
 [pipeline cache](#pipelines-cache), if that pipeline is being created using
 linked libraries, implementations **should** always return an equivalent
 pipeline created with
-`VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT` if available,
+[VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT](#VkPipelineCreateFlagBits2KHR) if available,
 whether or not that bit was specified.
 
-|  | Using `VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT` (or not)
+|  | Using [VK_PIPELINE_CREATE_2_LINK_TIME_OPTIMIZATION_BIT_EXT](#VkPipelineCreateFlagBits2KHR) (or not)
 | --- | --- |
 when linking pipeline libraries is intended as a performance tradeoff
 between host and device.
@@ -776,38 +789,38 @@ typedef enum VkPipelineCreateFlagBits {
 } VkPipelineCreateFlagBits;
 
 * 
-`VK_PIPELINE_CREATE_DISABLE_OPTIMIZATION_BIT` specifies that the
+[VK_PIPELINE_CREATE_DISABLE_OPTIMIZATION_BIT](#VkPipelineCreateFlagBits) specifies that the
 created pipeline will not be optimized.
 Using this flag **may** reduce the time taken to create the pipeline.
 
 * 
-`VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT` specifies that the
+[VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT](#VkPipelineCreateFlagBits) specifies that the
 pipeline to be created is allowed to be the parent of a pipeline that
 will be created in a subsequent pipeline creation call.
 
 * 
-`VK_PIPELINE_CREATE_DERIVATIVE_BIT` specifies that the pipeline to
+[VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits) specifies that the pipeline to
 be created will be a child of a previously created parent pipeline.
 
 * 
-`VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT` specifies that
+[VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT](#VkPipelineCreateFlagBits) specifies that
 any shader input variables decorated as `ViewIndex` will be assigned
 values as if they were decorated as `DeviceIndex`.
 
 * 
-`VK_PIPELINE_CREATE_DISPATCH_BASE_BIT` specifies that a compute
+[VK_PIPELINE_CREATE_DISPATCH_BASE_BIT](#VkPipelineCreateFlagBits) specifies that a compute
 pipeline **can** be used with [vkCmdDispatchBase](dispatch.html#vkCmdDispatchBase) with a non-zero base
 workgroup.
 
 * 
-`VK_PIPELINE_CREATE_DEFER_COMPILE_BIT_NV` specifies that a pipeline
+[VK_PIPELINE_CREATE_DEFER_COMPILE_BIT_NV](#VkPipelineCreateFlagBits) specifies that a pipeline
 is created with all shaders in the deferred state.
 Before using the pipeline the application **must** call
 [vkCompileDeferredNV](#vkCompileDeferredNV) exactly once on each shader in the pipeline
 before using the pipeline.
 
 * 
-`VK_PIPELINE_CREATE_CAPTURE_STATISTICS_BIT_KHR` specifies that the
+[VK_PIPELINE_CREATE_CAPTURE_STATISTICS_BIT_KHR](#VkPipelineCreateFlagBits) specifies that the
 shader compiler should capture statistics for the pipeline executables
 produced by the compile process which **can** later be retrieved by calling
 [vkGetPipelineExecutableStatisticsKHR](#vkGetPipelineExecutableStatisticsKHR).
@@ -815,7 +828,7 @@ Enabling this flag **must** not affect the final compiled pipeline but **may**
 disable pipeline caching or otherwise affect pipeline creation time.
 
 * 
-`VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR`
+[VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR](#VkPipelineCreateFlagBits)
 specifies that the shader compiler should capture the internal
 representations of pipeline executables produced by the compile process
 which **can** later be retrieved by calling
@@ -829,7 +842,7 @@ Applications **should** retrieve IR from each library, and any linked
 pipelines, separately.
 
 * 
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR` specifies that the pipeline
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits) specifies that the pipeline
     **cannot** be used directly, and instead defines a *pipeline library* that
     **can** be combined with other pipelines using the
     [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR) structure.
@@ -840,141 +853,141 @@ graphics
     pipelines.
 
 * 
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits)
 specifies that an any-hit shader will always be present when an any-hit
 shader would be executed.
 A NULL any-hit shader is an any-hit shader which is effectively
-`VK_SHADER_UNUSED_KHR`, such as from a shader group consisting
+[VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR), such as from a shader group consisting
 entirely of zeros.
 
 * 
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits)
 specifies that a closest hit shader will always be present when a
 closest hit shader would be executed.
 A NULL closest hit shader is a closest hit shader which is effectively
-`VK_SHADER_UNUSED_KHR`, such as from a shader group consisting
+[VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR), such as from a shader group consisting
 entirely of zeros.
 
 * 
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits)
 specifies that a miss shader will always be present when a miss shader
 would be executed.
 A NULL miss shader is a miss shader which is effectively
-`VK_SHADER_UNUSED_KHR`, such as from a shader group consisting
+[VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR), such as from a shader group consisting
 entirely of zeros.
 
 * 
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits)
 specifies that an intersection shader will always be present when an
 intersection shader would be executed.
 A NULL intersection shader is an intersection shader which is
-effectively `VK_SHADER_UNUSED_KHR`, such as from a shader group
+effectively [VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR), such as from a shader group
 consisting entirely of zeros.
 
 * 
-`VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR` specifies
+[VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR](#VkPipelineCreateFlagBits) specifies
 that
 sphere, LSS and
 triangle primitives will be skipped during traversal using
 [pipeline trace ray](../appendices/glossary.html#glossary-pipeline-trace-ray) instructions.
 
 * 
-`VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR` specifies that
+[VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR](#VkPipelineCreateFlagBits) specifies that
 AABB primitives will be skipped during traversal using
 [pipeline trace ray](../appendices/glossary.html#glossary-pipeline-trace-ray) instructions.
 
 * 
-`VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR](#VkPipelineCreateFlagBits)
 specifies that the shader group handles **can** be saved and reused on a
 subsequent run (e.g. for trace capture and replay).
 
 * 
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV` specifies that the
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](#VkPipelineCreateFlagBits) specifies that the
 pipeline **can** be used in combination with [Device-Generated Commands](device_generated_commands/generatedcommands.html#device-generated-commands).
 
 * 
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT` specifies
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](#VkPipelineCreateFlagBits) specifies
 that pipeline creation will fail if a compile is required for creation
-of a valid [VkPipeline](#VkPipeline) object; `VK_PIPELINE_COMPILE_REQUIRED`
+of a valid [VkPipeline](#VkPipeline) object; [VK_PIPELINE_COMPILE_REQUIRED](fundamentals.html#VkResult)
 will be returned by pipeline creation, and the [VkPipeline](#VkPipeline) will be
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE).
 
 * 
 When creating multiple pipelines,
-`VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT` specifies that
+[VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT](#VkPipelineCreateFlagBits) specifies that
 control will be returned to the application if any individual pipeline
-returns a result which is not `VK_SUCCESS` rather than continuing to
+returns a result which is not [VK_SUCCESS](fundamentals.html#VkResult) rather than continuing to
 create additional pipelines.
 
 * 
-`VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV` specifies that
+[VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV](#VkPipelineCreateFlagBits) specifies that
 the pipeline is allowed to use `OpTraceRayMotionNV`.
 
 * 
-`VK_PIPELINE_CREATE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_CREATE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineCreateFlagBits)
 specifies that the pipeline will be used with a fragment shading rate
 attachment and dynamic rendering.
 
 * 
-`VK_PIPELINE_CREATE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT`
+[VK_PIPELINE_CREATE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT](#VkPipelineCreateFlagBits)
 specifies that the pipeline will be used with a fragment density map
 attachment and dynamic rendering.
 
 * 
-`VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT` specifies that
+[VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT](#VkPipelineCreateFlagBits) specifies that
 pipeline libraries being linked into this library **should** have link time
 optimizations applied.
 If this bit is omitted, implementations **should** instead perform linking
 as rapidly as possible.
 
 * 
-`VK_PIPELINE_CREATE_RETAIN_LINK_TIME_OPTIMIZATION_INFO_BIT_EXT`
+[VK_PIPELINE_CREATE_RETAIN_LINK_TIME_OPTIMIZATION_INFO_BIT_EXT](#VkPipelineCreateFlagBits)
 specifies that pipeline libraries should retain any information
 necessary to later perform an optimal link with
-`VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT`.
+[VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT](#VkPipelineCreateFlagBits).
 
 * 
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT` specifies that a
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkPipelineCreateFlagBits) specifies that a
 pipeline will be used with [descriptor buffers](descriptorsets.html#descriptorbuffers),
 rather than [descriptor sets](descriptorsets.html#descriptorsets).
 
 * 
-`VK_PIPELINE_CREATE_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT`
+[VK_PIPELINE_CREATE_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](#VkPipelineCreateFlagBits)
 specifies that the pipeline **may** be used with an attachment
 [feedback loop](renderpass.html#renderpass-feedbackloop) including color attachments.
 It is ignored if
-`VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT` is set in
+[VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT](#VkDynamicState) is set in
 `pDynamicStates`.
 
 * 
-`VK_PIPELINE_CREATE_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT`
+[VK_PIPELINE_CREATE_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](#VkPipelineCreateFlagBits)
 specifies that the pipeline **may** be used with an attachment
 [feedback loop](renderpass.html#renderpass-feedbackloop) including depth-stencil
 attachments.
 It is ignored if
-`VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT` is set in
+[VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT](#VkDynamicState) is set in
 `pDynamicStates`.
 
 * 
-`VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT` specifies
+[VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT](#VkPipelineCreateFlagBits) specifies
 that the ray tracing pipeline **can** be used with acceleration structures
 which reference an opacity micromap array.
 
 * 
-`VK_PIPELINE_CREATE_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV`
+[VK_PIPELINE_CREATE_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV](#VkPipelineCreateFlagBits)
 specifies that the ray tracing pipeline **can** be used with acceleration
 structures which reference a displacement micromap array.
 
 * 
-`VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT` specifies that the
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits) specifies that the
 pipeline **must** not be bound to a protected command buffer.
 
 * 
-`VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT` specifies that the
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits) specifies that the
 pipeline **must** not be bound to an unprotected command buffer.
 
-It is valid to set both `VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT` and
-`VK_PIPELINE_CREATE_DERIVATIVE_BIT`.
+It is valid to set both [VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT](#VkPipelineCreateFlagBits) and
+[VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits).
 This allows a pipeline to be both a parent and possibly a child in a
 pipeline hierarchy.
 See [Pipeline Derivatives](#pipelines-pipeline-derivatives) for more
@@ -984,10 +997,10 @@ When an implementation is looking up a pipeline in a
 [pipeline cache](#pipelines-cache), if that pipeline is being created using
 linked libraries, implementations **should** always return an equivalent
 pipeline created with
-`VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT` if available,
+[VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT](#VkPipelineCreateFlagBits) if available,
 whether or not that bit was specified.
 
-|  | Using `VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT` (or not) when
+|  | Using [VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT](#VkPipelineCreateFlagBits) (or not) when
 | --- | --- |
 linking pipeline libraries is intended as a performance tradeoff between
 host and device.
@@ -1063,13 +1076,13 @@ Valid Usage
 [](#VUID-vkCreateComputePipelines-device-09661) VUID-vkCreateComputePipelines-device-09661
 
 `device` **must** support at least one queue family with the
-`VK_QUEUE_COMPUTE_BIT` capability
+[VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) capability
 
 * 
 [](#VUID-vkCreateComputePipelines-flags-00695) VUID-vkCreateComputePipelines-flags-00695
 
 If the `flags` member of any element of `pCreateInfos` contains
-the `VK_PIPELINE_CREATE_DERIVATIVE_BIT` flag, and the
+the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits) flag, and the
 `basePipelineIndex` member of that same element is not `-1`,
 `basePipelineIndex` **must** be less than the index into
 `pCreateInfos` that corresponds to that element
@@ -1078,15 +1091,15 @@ the `VK_PIPELINE_CREATE_DERIVATIVE_BIT` flag, and the
 [](#VUID-vkCreateComputePipelines-flags-00696) VUID-vkCreateComputePipelines-flags-00696
 
 If the `flags` member of any element of `pCreateInfos` contains
-the `VK_PIPELINE_CREATE_DERIVATIVE_BIT` flag, the base pipeline
+the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits) flag, the base pipeline
 **must** have been created with the
-`VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT` flag set
+[VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT](#VkPipelineCreateFlagBits) flag set
 
 * 
 [](#VUID-vkCreateComputePipelines-pipelineCache-02873) VUID-vkCreateComputePipelines-pipelineCache-02873
 
 If `pipelineCache` was created with
-`VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT`, host access
+[VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT](#VkPipelineCacheCreateFlagBits), host access
 to `pipelineCache` **must** be
 [externally synchronized](fundamentals.html#fundamentals-threadingbehavior)
 
@@ -1101,7 +1114,7 @@ element of `pCreateInfos`, `pipelineCache` **must** be
 [](#VUID-vkCreateComputePipelines-pNext-09617) VUID-vkCreateComputePipelines-pNext-09617
 
 If a [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR) structure with the
-`VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR` flag set is included in
+[VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](#VkPipelineCreateFlagBits2KHR) flag set is included in
 the `pNext` chain of any element of `pCreateInfos`,
 `pipelineCache` **must** be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
@@ -1110,7 +1123,7 @@ the `pNext` chain of any element of `pCreateInfos`,
 
 If [VkPipelineBinaryInfoKHR](#VkPipelineBinaryInfoKHR)::`binaryCount` is not `0` for any
 element of `pCreateInfos`,
-`VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT`
+[VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT](#VkPipelineCreationFeedbackFlagBitsEXT)
 **must** not be set in the `flags` of that element
 
 * 
@@ -1118,7 +1131,7 @@ element of `pCreateInfos`,
 
 If [VkPipelineBinaryInfoKHR](#VkPipelineBinaryInfoKHR)::`binaryCount` is not `0` for any
 element of `pCreateInfos`,
-`VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT` **must**
+[VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT](#VkPipelineCreationFeedbackFlagBitsEXT) **must**
 not be set in the `flags` of that element
 
 * 
@@ -1126,8 +1139,29 @@ not be set in the `flags` of that element
 
 If [VkPipelineBinaryInfoKHR](#VkPipelineBinaryInfoKHR)::`binaryCount` is not `0` for any
 element of `pCreateInfos`,
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_EXT` **must**
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_EXT](#VkPipelineCreateFlagBits) **must**
 not be set in the `flags` of that element
+
+* 
+[](#VUID-vkCreateComputePipelines-pCreateInfos-11414) VUID-vkCreateComputePipelines-pCreateInfos-11414
+
+If any element of `pCreateInfos` sets
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR) and includes embedded
+sampler mappings, there **must** be less than
+([`maxSamplerAllocationCount`](limits.html#limits-maxSamplerAllocationCount)
+-  ([    `minSamplerHeapReservedRangeWithEmbedded`](limits.html#limits-minSamplerHeapReservedRangeWithEmbedded) /
+[`samplerDescriptorSize`](limits.html#limits-samplerDescriptorSize)))
+[VkSampler](samplers.html#VkSampler) objects currently created on the device
+
+* 
+[](#VUID-vkCreateComputePipelines-pCreateInfos-11429) VUID-vkCreateComputePipelines-pCreateInfos-11429
+
+    If any element of `pCreateInfos` sets
+    [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR) and includes embedded
+    sampler mappings, this command **must** not cause the total number of
+    unique embedded samplers in pipelines
+and shaders
+    on this device to exceed [    `maxDescriptorHeapEmbeddedSamplers`](limits.html#limits-maxDescriptorHeapEmbeddedSamplers)
 
 Valid Usage (Implicit)
 
@@ -1171,27 +1205,27 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_PIPELINE_COMPILE_REQUIRED_EXT`
+[VK_PIPELINE_COMPILE_REQUIRED_EXT](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_SHADER_NV`
+[VK_ERROR_INVALID_SHADER_NV](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkComputePipelineCreateInfo` structure is defined as:
 
@@ -1259,14 +1293,14 @@ If the `pNext` chain does not include a
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-07984) VUID-VkComputePipelineCreateInfo-flags-07984
 
-If `flags` contains the `VK_PIPELINE_CREATE_DERIVATIVE_BIT`
+If `flags` contains the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits)
 flag, and `basePipelineIndex` is -1, `basePipelineHandle` **must**
 be a valid compute `VkPipeline` handle
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-07985) VUID-VkComputePipelineCreateInfo-flags-07985
 
-If `flags` contains the `VK_PIPELINE_CREATE_DERIVATIVE_BIT`
+If `flags` contains the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits)
 flag, and `basePipelineHandle` is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 `basePipelineIndex` **must** be a valid index into the calling
 command’s `pCreateInfos` parameter
@@ -1274,35 +1308,37 @@ command’s `pCreateInfos` parameter
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-07986) VUID-VkComputePipelineCreateInfo-flags-07986
 
-If `flags` contains the `VK_PIPELINE_CREATE_DERIVATIVE_BIT`
+If `flags` contains the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits)
 flag, `basePipelineIndex` **must** be -1 or `basePipelineHandle`
 **must** be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-layout-07987) VUID-VkComputePipelineCreateInfo-layout-07987
 
-If a push constant block is declared in a shader, a push constant range
-in `layout` **must** match the shader stage
+If a push constant block is declared in a shader and `layout` is not
+[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), a push constant range in `layout` **must** match
+the shader stage
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-layout-10069) VUID-VkComputePipelineCreateInfo-layout-10069
 
-If a push constant block is declared in a shader, the block must be
-contained inside the push constant range in `layout` that matches
-the stage
+If a push constant block is declared in a shader and `layout` is not
+[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the block must be contained inside the push
+constant range in `layout` that matches the stage
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-layout-07988) VUID-VkComputePipelineCreateInfo-layout-07988
 
-If a [resource variable](interfaces.html#interfaces-resources) is declared in a shader,
-the corresponding descriptor set in `layout` **must** match the shader
-stage
+If a [resource variable](interfaces.html#interfaces-resources) is declared in a shader
+and `layout` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the corresponding
+descriptor set in `layout` **must** match the shader stage
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-layout-07990) VUID-VkComputePipelineCreateInfo-layout-07990
 
 If a [resource variable](interfaces.html#interfaces-resources) is declared in a shader,
-and the descriptor type is not `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`,
+`layout` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
+and the descriptor type is not [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](descriptorsets.html#VkDescriptorType),
 the corresponding descriptor set in `layout` **must** match the
 descriptor type
 
@@ -1310,71 +1346,111 @@ descriptor type
 [](#VUID-VkComputePipelineCreateInfo-layout-07991) VUID-VkComputePipelineCreateInfo-layout-07991
 
 If a [resource variable](interfaces.html#interfaces-resources) is declared in a shader
-as an array, the corresponding descriptor binding used to create
-`layout` **must** have a `descriptorCount` that is greater than or
-equal to the length of the array
+as an array and `layout` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the
+corresponding descriptor binding used to create `layout` **must** have
+a `descriptorCount` that is greater than or equal to the length of
+the array
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-None-10391) VUID-VkComputePipelineCreateInfo-None-10391
 
 If a [resource variables](interfaces.html#interfaces-resources) is declared in a shader
 as an array of descriptors, then the descriptor type of that variable
-**must** not be `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+**must** not be [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](descriptorsets.html#VkDescriptorType)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-11798) VUID-VkComputePipelineCreateInfo-flags-11798
 
 If [shader64BitIndexing](features.html#features-shader64BitIndexing) feature is not
 enabled, `flags` **must** not contain
-`VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT`
+[VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT](#VkPipelineCreateFlagBits2KHR)
+
+* 
+[](#VUID-VkComputePipelineCreateInfo-pipelineCreationCacheControl-02878) VUID-VkComputePipelineCreateInfo-pipelineCreationCacheControl-02878
+
+If the [    `pipelineCreationCacheControl`](features.html#features-pipelineCreationCacheControl) feature is not enabled, `flags`
+**must** not include
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](#VkPipelineCreateFlagBits) nor
+[VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkComputePipelineCreateInfo-pipelineProtectedAccess-07368) VUID-VkComputePipelineCreateInfo-pipelineProtectedAccess-07368
+
+If the [    `pipelineProtectedAccess`](features.html#features-pipelineProtectedAccess) feature is not enabled, `flags`
+**must** not include [VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits) nor
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkComputePipelineCreateInfo-flags-07369) VUID-VkComputePipelineCreateInfo-flags-07369
+
+`flags` **must** not include both
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits) and
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkComputePipelineCreateInfo-flags-11311) VUID-VkComputePipelineCreateInfo-flags-11311
+
+If [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` includes
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR), `layout` **must**
+be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
+
+* 
+[](#VUID-VkComputePipelineCreateInfo-flags-11312) VUID-VkComputePipelineCreateInfo-flags-11312
+
+If [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` includes
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR), all shader variables
+in the [shader resource interface](interfaces.html#interfaces-resources) with a
+`DescriptorSet` and `Binding` decoration **must** have a mapping
+declared in
+[VkShaderDescriptorSetAndBindingMappingInfoEXT](descriptorheaps.html#VkShaderDescriptorSetAndBindingMappingInfoEXT)::pMappings
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-03365) VUID-VkComputePipelineCreateInfo-flags-03365
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-03366) VUID-VkComputePipelineCreateInfo-flags-03366
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-03367) VUID-VkComputePipelineCreateInfo-flags-03367
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-03368) VUID-VkComputePipelineCreateInfo-flags-03368
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-03369) VUID-VkComputePipelineCreateInfo-flags-03369
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-03370) VUID-VkComputePipelineCreateInfo-flags-03370
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-03576) VUID-VkComputePipelineCreateInfo-flags-03576
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-04945) VUID-VkComputePipelineCreateInfo-flags-04945
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV`
+[VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-09007) VUID-VkComputePipelineCreateInfo-flags-09007
@@ -1382,13 +1458,13 @@ enabled, `flags` **must** not contain
 If the [    `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV`::`deviceGeneratedComputePipelines`](features.html#features-deviceGeneratedComputePipelines)
 feature is not enabled,
 `flags` **must** not include
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV`
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-09008) VUID-VkComputePipelineCreateInfo-flags-09008
 
 If `flags` includes
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV`, then the `pNext`
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](#VkPipelineCreateFlagBits), then the `pNext`
 chain **must** include a pointer to a valid instance of
 [VkComputePipelineIndirectBufferInfoNV](#VkComputePipelineIndirectBufferInfoNV) specifying the address where
 the pipeline’s metadata will be saved
@@ -1397,23 +1473,15 @@ the pipeline’s metadata will be saved
 [](#VUID-VkComputePipelineCreateInfo-flags-11007) VUID-VkComputePipelineCreateInfo-flags-11007
 
 If `flags` includes
-`VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT`, then the
+[VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT](#VkPipelineCreateFlagBits2KHR), then the
 [    `VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT`::`deviceGeneratedCommands`](features.html#features-deviceGeneratedCommands)
 feature **must** be enabled
-
-* 
-[](#VUID-VkComputePipelineCreateInfo-pipelineCreationCacheControl-02875) VUID-VkComputePipelineCreateInfo-pipelineCreationCacheControl-02875
-
-If the [    `pipelineCreationCacheControl`](features.html#features-pipelineCreationCacheControl) feature is not enabled, `flags`
-**must** not include
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT` or
-`VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT`
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-stage-00701) VUID-VkComputePipelineCreateInfo-stage-00701
 
 The `stage` member of `stage` **must** be
-`VK_SHADER_STAGE_COMPUTE_BIT`
+[VK_SHADER_STAGE_COMPUTE_BIT](#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-stage-00702) VUID-VkComputePipelineCreateInfo-stage-00702
@@ -1426,22 +1494,22 @@ chapter
 * 
 [](#VUID-VkComputePipelineCreateInfo-layout-01687) VUID-VkComputePipelineCreateInfo-layout-01687
 
-The number of resources in `layout` accessible to the compute shader
-stage **must** be less than or equal to
-`VkPhysicalDeviceLimits`::`maxPerStageResources`
+If `layout` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the number of resources in
+`layout` accessible to the compute shader stage **must** be less than
+or equal to `VkPhysicalDeviceLimits`::`maxPerStageResources`
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-shaderEnqueue-09177) VUID-VkComputePipelineCreateInfo-shaderEnqueue-09177
 
 If the [`shaderEnqueue`](features.html#features-shaderEnqueue) feature is not
 enabled,
-`flags` **must** not include `VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`
+`flags` **must** not include [VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-09178) VUID-VkComputePipelineCreateInfo-flags-09178
 
 If `flags` does not include
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`, the shader specified by
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits), the shader specified by
 `stage` **must** not declare the `ShaderEnqueueAMDX` capability
 
 * 
@@ -1455,20 +1523,27 @@ is not `0`, it **must** be `1`
 [](#VUID-VkComputePipelineCreateInfo-flags-07367) VUID-VkComputePipelineCreateInfo-flags-07367
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT`
+[VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-flags-07996) VUID-VkComputePipelineCreateInfo-flags-07996
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV`
+[VK_PIPELINE_CREATE_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkComputePipelineCreateInfo-None-11367) VUID-VkComputePipelineCreateInfo-None-11367
+
+If [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not
+include [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+`layout` **must** not be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-sType-sType) VUID-VkComputePipelineCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-pNext-pNext) VUID-VkComputePipelineCreateInfo-pNext-pNext
@@ -1488,7 +1563,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkComputePipelineCreateInfo-layout-parameter) VUID-VkComputePipelineCreateInfo-layout-parameter
 
- `layout` **must** be a valid [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) handle
+ If `layout` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `layout` **must** be a valid [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) handle
 
 * 
 [](#VUID-VkComputePipelineCreateInfo-commonparent) VUID-VkComputePipelineCreateInfo-commonparent
@@ -1557,10 +1632,10 @@ The identifier allows an implementation to look up a pipeline without
 consuming a valid SPIR-V module.
 If a pipeline is not found, pipeline compilation is not possible and the
 implementation **must** fail as specified by
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT`.
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](#VkPipelineCreateFlagBits).
 
 When an identifier is used in lieu of a shader module, implementations **may**
-fail pipeline compilation with `VK_PIPELINE_COMPILE_REQUIRED` for any
+fail pipeline compilation with [VK_PIPELINE_COMPILE_REQUIRED](fundamentals.html#VkResult) for any
 reason.
 
 |  | The rationale for the relaxed requirement on implementations to return a
@@ -1572,55 +1647,135 @@ ICDs are not expected to fail pipeline compilation if the pipeline exists in
 a cache somewhere. |
 
 Applications **can** use identifiers when creating pipelines with
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`.
-When creating such pipelines, `VK_SUCCESS` **may** be returned, but
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits).
+When creating such pipelines, [VK_SUCCESS](fundamentals.html#VkResult) **may** be returned, but
 subsequently fail when referencing the pipeline in a
 [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR) struct.
 Applications **must** allow pipeline compilation to fail during link steps with
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT` as it **may**
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](#VkPipelineCreateFlagBits) as it **may**
 not be possible to determine if a pipeline **can** be created from identifiers
 until the link step.
 
 Valid Usage
 
 * 
+[](#VUID-VkPipelineShaderStageCreateInfo-descriptorHeap-11314) VUID-VkPipelineShaderStageCreateInfo-descriptorHeap-11314
+
+If the [`descriptorHeap`](features.html#features-descriptorHeap) feature is not
+enabled,
+[VkShaderDescriptorSetAndBindingMappingInfoEXT](descriptorheaps.html#VkShaderDescriptorSetAndBindingMappingInfoEXT)::`mappingCount`
+**must** be 0
+
+* 
+[](#VUID-VkPipelineShaderStageCreateInfo-pNext-11315) VUID-VkPipelineShaderStageCreateInfo-pNext-11315
+
+If the `pNext` chain specifies a [    descriptor mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_RESOURCE_HEAP_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the mapped
+resource in the shader **must** be a variable with a structure type
+decorated with `Block` in the `Uniform` `Storage` `Class`
+
+* 
+[](#VUID-VkPipelineShaderStageCreateInfo-pNext-11316) VUID-VkPipelineShaderStageCreateInfo-pNext-11316
+
+If the `pNext` chain specifies a [    descriptor mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the mapped structure
+**must** not be larger than the sum of `pushDataOffset` used in the
+mapping and [`maxPushDataSize`](limits.html#limits-maxPushDataSize)
+
+* 
+[](#VUID-VkPipelineShaderStageCreateInfo-pNext-11317) VUID-VkPipelineShaderStageCreateInfo-pNext-11317
+
+If the `pNext` chain specifies a [    descriptor mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_DATA_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the sum of
+mapped structure size and `shaderRecordDataOffset` used in the
+mapping **must** not be larger than
+[`maxShaderGroupStride`](limits.html#limits-maxShaderGroupStride)
+
+* 
+[](#VUID-VkPipelineShaderStageCreateInfo-pNext-11318) VUID-VkPipelineShaderStageCreateInfo-pNext-11318
+
+If the `pNext` chain specifies a [    descriptor mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the mapped resource
+in the shader **must** be one of:
+
+A variable with a structure type decorated with `Block` in the
+`Uniform` `Storage` `Class`
+
+* 
+A variable with a structure type decorated with `BufferBlock` in the
+`Uniform` `Storage` `Class`
+
+* 
+A variable with a structure type decorated with `Block` in the
+`StorageBuffer` `Storage` `Class`
+
+* 
+A `OpTypeAccelerationStructureKHR` variable
+
+* 
+A `OpTypeAccelerationStructureNV` variable
+
+[](#VUID-VkPipelineShaderStageCreateInfo-pNext-11378) VUID-VkPipelineShaderStageCreateInfo-pNext-11378
+
+If the `pNext` chain specifies a [    descriptor mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), the
+`OpArrayLength` instruction **must** not be used on that resource
+
+[](#VUID-VkPipelineShaderStageCreateInfo-pNext-11399) VUID-VkPipelineShaderStageCreateInfo-pNext-11399
+
+If the `pNext` chain specifies a [    descriptor mapping](descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_CONSTANT_OFFSET_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT), or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and the mapped resource declaration is an array, the
+`pEmbeddedSampler` member of the corresponding mapping structure
+**must** be `NULL`
+
+* 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-00704) VUID-VkPipelineShaderStageCreateInfo-stage-00704
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
-enabled, `stage` **must** not be `VK_SHADER_STAGE_GEOMETRY_BIT`
+enabled, `stage` **must** not be [VK_SHADER_STAGE_GEOMETRY_BIT](#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-00705) VUID-VkPipelineShaderStageCreateInfo-stage-00705
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `stage` **must** not be
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` or
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](#VkShaderStageFlagBits) or
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-02091) VUID-VkPipelineShaderStageCreateInfo-stage-02091
 
 If the [`meshShaders`](features.html#features-meshShader) feature is not
-enabled, `stage` **must** not be `VK_SHADER_STAGE_MESH_BIT_EXT`
+enabled, `stage` **must** not be [VK_SHADER_STAGE_MESH_BIT_EXT](#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-02092) VUID-VkPipelineShaderStageCreateInfo-stage-02092
 
 If the [`taskShaders`](features.html#features-taskShader) feature is not
-enabled, `stage` **must** not be `VK_SHADER_STAGE_TASK_BIT_EXT`
+enabled, `stage` **must** not be [VK_SHADER_STAGE_TASK_BIT_EXT](#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-clustercullingShader-07813) VUID-VkPipelineShaderStageCreateInfo-clustercullingShader-07813
 
 If the [`clustercullingShader`](features.html#features-clustercullingShader)
 feature is not enabled, `stage` **must** not be
-`VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI`
+[VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI](#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-00706) VUID-VkPipelineShaderStageCreateInfo-stage-00706
 
-`stage` **must** not be `VK_SHADER_STAGE_ALL_GRAPHICS`, or
-`VK_SHADER_STAGE_ALL`
+`stage` **must** not be [VK_SHADER_STAGE_ALL_GRAPHICS](#VkShaderStageFlagBits), or
+[VK_SHADER_STAGE_ALL](#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-pName-00707) VUID-VkPipelineShaderStageCreateInfo-pName-00707
@@ -1665,8 +1820,8 @@ variable **must** not have an array size greater than
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-00713) VUID-VkPipelineShaderStageCreateInfo-stage-00713
 
-If `stage` is `VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` or
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`, and the identified
+If `stage` is [VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](#VkShaderStageFlagBits) or
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](#VkShaderStageFlagBits), and the identified
 entry point has an `OpExecutionMode` instruction specifying a patch
 size with `OutputVertices`, the patch size **must** be greater than `0`
 and less than or equal to
@@ -1675,7 +1830,7 @@ and less than or equal to
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-00714) VUID-VkPipelineShaderStageCreateInfo-stage-00714
 
-If `stage` is `VK_SHADER_STAGE_GEOMETRY_BIT`, the identified
+If `stage` is [VK_SHADER_STAGE_GEOMETRY_BIT](#VkShaderStageFlagBits), the identified
 entry point **must** have an `OpExecutionMode` instruction specifying a
 maximum output vertex count that is greater than `0` and less than or
 equal to `VkPhysicalDeviceLimits`::`maxGeometryOutputVertices`
@@ -1683,7 +1838,7 @@ equal to `VkPhysicalDeviceLimits`::`maxGeometryOutputVertices`
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-00715) VUID-VkPipelineShaderStageCreateInfo-stage-00715
 
-If `stage` is `VK_SHADER_STAGE_GEOMETRY_BIT`, the identified
+If `stage` is [VK_SHADER_STAGE_GEOMETRY_BIT](#VkShaderStageFlagBits), the identified
 entry point **must** have an `OpExecutionMode` instruction specifying an
 invocation count that is greater than `0` and less than or equal to
 `VkPhysicalDeviceLimits`::`maxGeometryShaderInvocations`
@@ -1691,27 +1846,27 @@ invocation count that is greater than `0` and less than or equal to
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-02596) VUID-VkPipelineShaderStageCreateInfo-stage-02596
 
-If `stage` is either `VK_SHADER_STAGE_VERTEX_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`, or
-`VK_SHADER_STAGE_GEOMETRY_BIT`, and the identified entry point
+If `stage` is either [VK_SHADER_STAGE_VERTEX_BIT](#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](#VkShaderStageFlagBits), or
+[VK_SHADER_STAGE_GEOMETRY_BIT](#VkShaderStageFlagBits), and the identified entry point
 writes to `Layer` for any primitive, it **must** write the same value to
 `Layer` for all vertices of a given primitive
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-02597) VUID-VkPipelineShaderStageCreateInfo-stage-02597
 
-If `stage` is either `VK_SHADER_STAGE_VERTEX_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`, or
-`VK_SHADER_STAGE_GEOMETRY_BIT`, and the identified entry point
+If `stage` is either [VK_SHADER_STAGE_VERTEX_BIT](#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](#VkShaderStageFlagBits), or
+[VK_SHADER_STAGE_GEOMETRY_BIT](#VkShaderStageFlagBits), and the identified entry point
 writes to `ViewportIndex` for any primitive, it **must** write the same
 value to `ViewportIndex` for all vertices of a given primitive
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-06685) VUID-VkPipelineShaderStageCreateInfo-stage-06685
 
-If `stage` is `VK_SHADER_STAGE_FRAGMENT_BIT`, and the identified
+If `stage` is [VK_SHADER_STAGE_FRAGMENT_BIT](#VkShaderStageFlagBits), and the identified
 entry point writes to `FragDepth` in any execution path, all
 execution paths that are not exclusive to helper invocations **must**
 either discard the fragment, or write or initialize the value of
@@ -1720,7 +1875,7 @@ either discard the fragment, or write or initialize the value of
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-06686) VUID-VkPipelineShaderStageCreateInfo-stage-06686
 
-If `stage` is `VK_SHADER_STAGE_FRAGMENT_BIT`, and the identified
+If `stage` is [VK_SHADER_STAGE_FRAGMENT_BIT](#VkShaderStageFlagBits), and the identified
 entry point writes to `FragStencilRefEXT` in any execution path, all
 execution paths that are not exclusive to helper invocations **must**
 either discard the fragment, or write or initialize the value of
@@ -1730,14 +1885,14 @@ either discard the fragment, or write or initialize the value of
 [](#VUID-VkPipelineShaderStageCreateInfo-flags-02784) VUID-VkPipelineShaderStageCreateInfo-flags-02784
 
 If `flags` has the
-`VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT`
+[VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT](#VkPipelineShaderStageCreateFlagBits)
 flag set, the [    `subgroupSizeControl`](features.html#features-subgroupSizeControl) feature **must** be enabled
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-flags-02785) VUID-VkPipelineShaderStageCreateInfo-flags-02785
 
 If `flags` has the
-`VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT` flag
+[VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT](#VkPipelineShaderStageCreateFlagBits) flag
 set, the [`computeFullSubgroups`](features.html#features-computeFullSubgroups)
 feature **must** be enabled
 
@@ -1745,18 +1900,18 @@ feature **must** be enabled
 [](#VUID-VkPipelineShaderStageCreateInfo-flags-08988) VUID-VkPipelineShaderStageCreateInfo-flags-08988
 
 If `flags` includes
-`VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT`,
+[VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT](#VkPipelineShaderStageCreateFlagBits),
 `stage` **must** be
-one of `VK_SHADER_STAGE_MESH_BIT_EXT`,
-`VK_SHADER_STAGE_TASK_BIT_EXT`, or
-`VK_SHADER_STAGE_COMPUTE_BIT`
+one of [VK_SHADER_STAGE_MESH_BIT_EXT](#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TASK_BIT_EXT](#VkShaderStageFlagBits), or
+[VK_SHADER_STAGE_COMPUTE_BIT](#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-pNext-02754) VUID-VkPipelineShaderStageCreateInfo-pNext-02754
 
 If a [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](#VkPipelineShaderStageRequiredSubgroupSizeCreateInfo) structure
 is included in the `pNext` chain, `flags` **must** not have the
-`VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT`
+[VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT](#VkPipelineShaderStageCreateFlagBits)
 flag set
 
 * 
@@ -1773,8 +1928,8 @@ is included in the `pNext` chain, the
 
     If a [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](#VkPipelineShaderStageRequiredSubgroupSizeCreateInfo) structure
     is included in the `pNext` chain and `stage` is
-    `VK_SHADER_STAGE_COMPUTE_BIT`,
-`VK_SHADER_STAGE_MESH_BIT_EXT`, or `VK_SHADER_STAGE_TASK_BIT_EXT`,
+    [VK_SHADER_STAGE_COMPUTE_BIT](#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_MESH_BIT_EXT](#VkShaderStageFlagBits), or [VK_SHADER_STAGE_TASK_BIT_EXT](#VkShaderStageFlagBits),
     the local workgroup size of the shader **must** be less than or equal to
     the product of
     [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](#VkPipelineShaderStageRequiredSubgroupSizeCreateInfo)::`requiredSubgroupSize`
@@ -1785,7 +1940,7 @@ is included in the `pNext` chain, the
 
 If a [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](#VkPipelineShaderStageRequiredSubgroupSizeCreateInfo) structure
 is included in the `pNext` chain, and `flags` has the
-`VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT` flag
+[VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT](#VkPipelineShaderStageCreateFlagBits) flag
 set, the local workgroup size in the X dimension of the pipeline **must**
 be a multiple of
 [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](#VkPipelineShaderStageRequiredSubgroupSizeCreateInfo)::`requiredSubgroupSize`
@@ -1794,8 +1949,8 @@ be a multiple of
 [](#VUID-VkPipelineShaderStageCreateInfo-flags-02758) VUID-VkPipelineShaderStageCreateInfo-flags-02758
 
 If `flags` has both the
-`VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT` and
-`VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT`
+[VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT](#VkPipelineShaderStageCreateFlagBits) and
+[VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT](#VkPipelineShaderStageCreateFlagBits)
 flags set, the local workgroup size in the X dimension of the pipeline
 **must** be a multiple of [`maxSubgroupSize`](devsandqueues.html#limits-maxSubgroupSize)
 
@@ -1803,9 +1958,9 @@ flags set, the local workgroup size in the X dimension of the pipeline
 [](#VUID-VkPipelineShaderStageCreateInfo-flags-02759) VUID-VkPipelineShaderStageCreateInfo-flags-02759
 
 If `flags` has the
-`VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT` flag
+[VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT](#VkPipelineShaderStageCreateFlagBits) flag
 set and `flags` does not have the
-`VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT`
+[VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT](#VkPipelineShaderStageCreateFlagBits)
 flag set and no
 [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](#VkPipelineShaderStageRequiredSubgroupSizeCreateInfo) structure is
 included in the `pNext` chain, the local workgroup size in the X
@@ -1817,7 +1972,7 @@ dimension of the pipeline **must** be a multiple of [    `subgroupSize`](devsand
 If `module` uses the `OpTypeCooperativeMatrixKHR` instruction
 with a `Scope` equal to `Subgroup`, then the local workgroup size
 in the X dimension of the pipeline **must** be a multiple of the
-[effective subgroup size](interfaces.html#interfaces-builtin-variables-sgs).
+[effective subgroup size](interfaces.html#interfaces-builtin-variables-sgs)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-module-10169) VUID-VkPipelineShaderStageCreateInfo-module-10169
@@ -1880,12 +2035,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-sType-sType) VUID-VkPipelineShaderStageCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-pNext-pNext) VUID-VkPipelineShaderStageCreateInfo-pNext-pNext
 
- Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkDebugUtilsObjectNameInfoEXT](debugging.html#VkDebugUtilsObjectNameInfoEXT), [VkPipelineRobustnessCreateInfo](#VkPipelineRobustnessCreateInfo), [VkPipelineShaderStageModuleIdentifierCreateInfoEXT](#VkPipelineShaderStageModuleIdentifierCreateInfoEXT), [VkPipelineShaderStageNodeCreateInfoAMDX](executiongraphs.html#VkPipelineShaderStageNodeCreateInfoAMDX), [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](#VkPipelineShaderStageRequiredSubgroupSizeCreateInfo), [VkShaderModuleCreateInfo](shaders.html#VkShaderModuleCreateInfo), or [VkShaderModuleValidationCacheCreateInfoEXT](shaders.html#VkShaderModuleValidationCacheCreateInfoEXT)
+ Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkDebugUtilsObjectNameInfoEXT](debugging.html#VkDebugUtilsObjectNameInfoEXT), [VkPipelineRobustnessCreateInfo](#VkPipelineRobustnessCreateInfo), [VkPipelineShaderStageModuleIdentifierCreateInfoEXT](#VkPipelineShaderStageModuleIdentifierCreateInfoEXT), [VkPipelineShaderStageNodeCreateInfoAMDX](executiongraphs.html#VkPipelineShaderStageNodeCreateInfoAMDX), [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](#VkPipelineShaderStageRequiredSubgroupSizeCreateInfo), [VkShaderDescriptorSetAndBindingMappingInfoEXT](descriptorheaps.html#VkShaderDescriptorSetAndBindingMappingInfoEXT), [VkShaderModuleCreateInfo](shaders.html#VkShaderModuleCreateInfo), or [VkShaderModuleValidationCacheCreateInfoEXT](shaders.html#VkShaderModuleValidationCacheCreateInfoEXT)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-sType-unique) VUID-VkPipelineShaderStageCreateInfo-sType-unique
@@ -1940,21 +2095,21 @@ typedef enum VkPipelineShaderStageCreateFlagBits {
 } VkPipelineShaderStageCreateFlagBits;
 
 * 
-`VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT`
+[VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT](#VkPipelineShaderStageCreateFlagBits)
 specifies that the
 [`SubgroupSize`](interfaces.html#interfaces-builtin-variables-sgs) **may** vary in the
 shader stage.
 
 * 
-`VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT`
+[VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT](#VkPipelineShaderStageCreateFlagBits)
     specifies that the subgroup sizes **must** be launched with all invocations
     active in the
 task, mesh, or
     compute stage.
 
-|  | If `VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT`
+|  | If [VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT](#VkPipelineShaderStageCreateFlagBits)
 | --- | --- |
-and `VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT` are
+and [VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT](#VkPipelineShaderStageCreateFlagBits) are
 specified and [`minSubgroupSize`](devsandqueues.html#limits-minSubgroupSize) does not
 equal [`maxSubgroupSize`](devsandqueues.html#limits-maxSubgroupSize) and no
 [required subgroup size](#pipelines-required-subgroup-size) is specified,
@@ -2015,66 +2170,66 @@ typedef enum VkShaderStageFlagBits {
 } VkShaderStageFlagBits;
 
 * 
-`VK_SHADER_STAGE_VERTEX_BIT` specifies the vertex stage.
+[VK_SHADER_STAGE_VERTEX_BIT](#VkShaderStageFlagBits) specifies the vertex stage.
 
 * 
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` specifies the
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](#VkShaderStageFlagBits) specifies the
 tessellation control stage.
 
 * 
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT` specifies the
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](#VkShaderStageFlagBits) specifies the
 tessellation evaluation stage.
 
 * 
-`VK_SHADER_STAGE_GEOMETRY_BIT` specifies the geometry stage.
+[VK_SHADER_STAGE_GEOMETRY_BIT](#VkShaderStageFlagBits) specifies the geometry stage.
 
 * 
-`VK_SHADER_STAGE_FRAGMENT_BIT` specifies the fragment stage.
+[VK_SHADER_STAGE_FRAGMENT_BIT](#VkShaderStageFlagBits) specifies the fragment stage.
 
 * 
-`VK_SHADER_STAGE_COMPUTE_BIT` specifies the compute stage.
+[VK_SHADER_STAGE_COMPUTE_BIT](#VkShaderStageFlagBits) specifies the compute stage.
 
 * 
-`VK_SHADER_STAGE_ALL_GRAPHICS` is a combination of bits used as
+[VK_SHADER_STAGE_ALL_GRAPHICS](#VkShaderStageFlagBits) is a combination of bits used as
 shorthand to specify all graphics stages defined above (excluding the
 compute stage).
 
 * 
-`VK_SHADER_STAGE_ALL` is a combination of bits used as shorthand to
+[VK_SHADER_STAGE_ALL](#VkShaderStageFlagBits) is a combination of bits used as shorthand to
 specify all shader stages supported by the device, including all
 additional stages which are introduced by extensions.
 
 * 
-`VK_SHADER_STAGE_TASK_BIT_EXT` specifies the task stage.
+[VK_SHADER_STAGE_TASK_BIT_EXT](#VkShaderStageFlagBits) specifies the task stage.
 
 * 
-`VK_SHADER_STAGE_MESH_BIT_EXT` specifies the mesh stage.
+[VK_SHADER_STAGE_MESH_BIT_EXT](#VkShaderStageFlagBits) specifies the mesh stage.
 
 * 
-`VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI` specifies the cluster
+[VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI](#VkShaderStageFlagBits) specifies the cluster
 culling stage.
 
 * 
-`VK_SHADER_STAGE_RAYGEN_BIT_KHR` specifies the ray generation stage.
+[VK_SHADER_STAGE_RAYGEN_BIT_KHR](#VkShaderStageFlagBits) specifies the ray generation stage.
 
 * 
-`VK_SHADER_STAGE_ANY_HIT_BIT_KHR` specifies the any-hit stage.
+[VK_SHADER_STAGE_ANY_HIT_BIT_KHR](#VkShaderStageFlagBits) specifies the any-hit stage.
 
 * 
-`VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR` specifies the closest hit
+[VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR](#VkShaderStageFlagBits) specifies the closest hit
 stage.
 
 * 
-`VK_SHADER_STAGE_MISS_BIT_KHR` specifies the miss stage.
+[VK_SHADER_STAGE_MISS_BIT_KHR](#VkShaderStageFlagBits) specifies the miss stage.
 
 * 
-`VK_SHADER_STAGE_INTERSECTION_BIT_KHR` specifies the intersection
+[VK_SHADER_STAGE_INTERSECTION_BIT_KHR](#VkShaderStageFlagBits) specifies the intersection
 stage.
 
 * 
-`VK_SHADER_STAGE_CALLABLE_BIT_KHR` specifies the callable stage.
+[VK_SHADER_STAGE_CALLABLE_BIT_KHR](#VkShaderStageFlagBits) specifies the callable stage.
 
-|  | `VK_SHADER_STAGE_ALL_GRAPHICS` only includes the original five graphics
+|  | [VK_SHADER_STAGE_ALL_GRAPHICS](#VkShaderStageFlagBits) only includes the original five graphics
 | --- | --- |
 stages included in Vulkan 1.0, and not any stages added by extensions.
 Thus, it may not have the desired effect in all cases. |
@@ -2150,7 +2305,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineShaderStageRequiredSubgroupSizeCreateInfo-sType-sType) VUID-VkPipelineShaderStageRequiredSubgroupSizeCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_REQUIRED_SUBGROUP_SIZE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_REQUIRED_SUBGROUP_SIZE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 A subpass shading pipeline is a compute pipeline which **must** be called only
 in a subpass of a render pass with work dimensions specified by render area
@@ -2198,14 +2353,14 @@ Valid Usage
 [](#VUID-VkSubpassShadingPipelineCreateInfoHUAWEI-subpass-04946) VUID-VkSubpassShadingPipelineCreateInfoHUAWEI-subpass-04946
 
 `subpass` **must** be created with
-`VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI` bind point
+[VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI](#VkPipelineBindPoint) bind point
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSubpassShadingPipelineCreateInfoHUAWEI-sType-sType) VUID-VkSubpassShadingPipelineCreateInfoHUAWEI-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SUBPASS_SHADING_PIPELINE_CREATE_INFO_HUAWEI`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SUBPASS_SHADING_PIPELINE_CREATE_INFO_HUAWEI](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSubpassShadingPipelineCreateInfoHUAWEI-renderPass-parameter) VUID-VkSubpassShadingPipelineCreateInfoHUAWEI-renderPass-parameter
@@ -2268,24 +2423,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkPipelineRobustnessCreateInfo` structure is defined as:
 
@@ -2314,28 +2469,28 @@ structure.
 `storageBuffers` sets the behavior of out of bounds accesses made to
 resources bound as:
 
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](descriptorsets.html#VkDescriptorType)
 
 * 
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType)
 
 * 
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType)
 
 `uniformBuffers` describes the behavior of out of bounds accesses
 made to resources bound as:
 
 * 
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](descriptorsets.html#VkDescriptorType)
 
 * 
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](descriptorsets.html#VkDescriptorType)
 
 * 
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](descriptorsets.html#VkDescriptorType)
 
 * 
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](descriptorsets.html#VkDescriptorType)
 
 `vertexInputs` describes the behavior of out of bounds accesses made
 to vertex input attributes
@@ -2344,12 +2499,12 @@ to vertex input attributes
 resources bound as:
 
 * 
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](descriptorsets.html#VkDescriptorType)
 
 * 
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](descriptorsets.html#VkDescriptorType)
 
-Resources bound as `VK_DESCRIPTOR_TYPE_MUTABLE_EXT` will have the
+Resources bound as [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](descriptorsets.html#VkDescriptorType) will have the
 robustness behavior that covers its active descriptor type.
 
 The scope of the effect of `VkPipelineRobustnessCreateInfo` depends on
@@ -2390,102 +2545,102 @@ Valid Usage
 
 If the [`pipelineRobustness`](features.html#features-pipelineRobustness) feature
 is not enabled, `storageBuffers` **must** be
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT`
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT](#VkPipelineRobustnessBufferBehaviorEXT)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-pipelineRobustness-06927) VUID-VkPipelineRobustnessCreateInfo-pipelineRobustness-06927
 
 If the [`pipelineRobustness`](features.html#features-pipelineRobustness) feature
 is not enabled, `uniformBuffers` **must** be
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT`
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT](#VkPipelineRobustnessBufferBehaviorEXT)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-pipelineRobustness-06928) VUID-VkPipelineRobustnessCreateInfo-pipelineRobustness-06928
 
 If the [`pipelineRobustness`](features.html#features-pipelineRobustness) feature
 is not enabled, `vertexInputs` **must** be
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT`
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT](#VkPipelineRobustnessBufferBehaviorEXT)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-pipelineRobustness-06929) VUID-VkPipelineRobustnessCreateInfo-pipelineRobustness-06929
 
 If the [`pipelineRobustness`](features.html#features-pipelineRobustness) feature
 is not enabled, `images` **must** be
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DEVICE_DEFAULT`
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DEVICE_DEFAULT](#VkPipelineRobustnessImageBehaviorEXT)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-robustImageAccess-06930) VUID-VkPipelineRobustnessCreateInfo-robustImageAccess-06930
 
 If the [`robustImageAccess`](features.html#features-robustImageAccess) feature
 is not supported, `images` **must** not be
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS`
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS](#VkPipelineRobustnessImageBehaviorEXT)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-robustBufferAccess2-06931) VUID-VkPipelineRobustnessCreateInfo-robustBufferAccess2-06931
 
 If the [`robustBufferAccess2`](features.html#features-robustBufferAccess2)
 feature is not supported, `storageBuffers` **must** not be
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2`
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](#VkPipelineRobustnessBufferBehaviorEXT)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-robustBufferAccess2-06932) VUID-VkPipelineRobustnessCreateInfo-robustBufferAccess2-06932
 
 If the [`robustBufferAccess2`](features.html#features-robustBufferAccess2)
 feature is not supported, `uniformBuffers` **must** not be
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2`
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](#VkPipelineRobustnessBufferBehaviorEXT)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-robustBufferAccess2-06933) VUID-VkPipelineRobustnessCreateInfo-robustBufferAccess2-06933
 
 If the [`robustBufferAccess2`](features.html#features-robustBufferAccess2)
 feature is not supported, `vertexInputs` **must** not be
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2`
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](#VkPipelineRobustnessBufferBehaviorEXT)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-robustImageAccess2-06934) VUID-VkPipelineRobustnessCreateInfo-robustImageAccess2-06934
 
 If the [`robustImageAccess2`](features.html#features-robustImageAccess2) feature
 is not supported, `images` **must** not be
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2`
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2](#VkPipelineRobustnessImageBehaviorEXT)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-storageBuffers-10636) VUID-VkPipelineRobustnessCreateInfo-storageBuffers-10636
 
 If `storageBuffers` is
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2`, and
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](#VkPipelineRobustnessBufferBehaviorEXT), and
 either the [    `descriptorBindingStorageBufferUpdateAfterBind`](features.html#features-descriptorBindingStorageBufferUpdateAfterBind) feature or the
 [    `descriptorBindingStorageTexelBufferUpdateAfterBind`](features.html#features-descriptorBindingStorageTexelBufferUpdateAfterBind) feature is
-enabled on the device, [    `robustBufferAccessUpdateAfterBind`](devsandqueues.html#limits-robustBufferAccessUpdateAfterBind) **must** be `VK_TRUE`
+enabled on the device, [    `robustBufferAccessUpdateAfterBind`](devsandqueues.html#limits-robustBufferAccessUpdateAfterBind) **must** be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-uniformBuffers-10637) VUID-VkPipelineRobustnessCreateInfo-uniformBuffers-10637
 
 If `uniformBuffers` is
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2`, and
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](#VkPipelineRobustnessBufferBehaviorEXT), and
 either
 the [    `descriptorBindingInlineUniformBlockUpdateAfterBind`](features.html#features-descriptorBindingInlineUniformBlockUpdateAfterBind) feature,
 the [    `descriptorBindingUniformBufferUpdateAfterBind`](features.html#features-descriptorBindingUniformBufferUpdateAfterBind) feature, or the
 [    `descriptorBindingUniformTexelBufferUpdateAfterBind`](features.html#features-descriptorBindingUniformTexelBufferUpdateAfterBind) feature is
-enabled on the device, [    `robustBufferAccessUpdateAfterBind`](devsandqueues.html#limits-robustBufferAccessUpdateAfterBind) **must** be `VK_TRUE`
+enabled on the device, [    `robustBufferAccessUpdateAfterBind`](devsandqueues.html#limits-robustBufferAccessUpdateAfterBind) **must** be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-images-10638) VUID-VkPipelineRobustnessCreateInfo-images-10638
 
 If `images` is
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2`, and
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS](#VkPipelineRobustnessImageBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2](#VkPipelineRobustnessImageBehaviorEXT), and
 either the [    `descriptorBindingStorageImageUpdateAfterBind`](features.html#features-descriptorBindingStorageImageUpdateAfterBind) feature or the
 [    `descriptorBindingSampledImageUpdateAfterBind`](features.html#features-descriptorBindingSampledImageUpdateAfterBind) feature is enabled
-on the device, [    `robustBufferAccessUpdateAfterBind`](devsandqueues.html#limits-robustBufferAccessUpdateAfterBind) **must** be `VK_TRUE`
+on the device, [    `robustBufferAccessUpdateAfterBind`](devsandqueues.html#limits-robustBufferAccessUpdateAfterBind) **must** be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-sType-sType) VUID-VkPipelineRobustnessCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_ROBUSTNESS_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_ROBUSTNESS_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-storageBuffers-parameter) VUID-VkPipelineRobustnessCreateInfo-storageBuffers-parameter
@@ -2531,22 +2686,22 @@ typedef enum VkPipelineRobustnessBufferBehavior {
 typedef VkPipelineRobustnessBufferBehavior VkPipelineRobustnessBufferBehaviorEXT;
 
 * 
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT` specifies
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT](#VkPipelineRobustnessBufferBehaviorEXT) specifies
 that [out of bounds](shaders.html#shaders-execution-memory-access-bounds) buffer
 accesses follow the behavior of robust buffer access features enabled
 for the device.
 
 * 
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DISABLED` specifies that
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DISABLED](#VkPipelineRobustnessBufferBehaviorEXT) specifies that
 buffer accesses **must** not be [    out of bounds](shaders.html#shaders-execution-memory-access-bounds).
 
 * 
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS`
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](#VkPipelineRobustnessBufferBehaviorEXT)
 specifies that buffer accesses conform to
 [Robust Buffer Access](shaders.html#shaders-robust-buffer-access) guarantees.
 
 * 
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2`
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](#VkPipelineRobustnessBufferBehaviorEXT)
 specifies that buffer accesses conform to
 [Robust Buffer Access 2](shaders.html#shaders-robust-buffer-access2) guarantees.
 
@@ -2574,22 +2729,22 @@ typedef enum VkPipelineRobustnessImageBehavior {
 typedef VkPipelineRobustnessImageBehavior VkPipelineRobustnessImageBehaviorEXT;
 
 * 
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DEVICE_DEFAULT` specifies
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DEVICE_DEFAULT](#VkPipelineRobustnessImageBehaviorEXT) specifies
 that [out of bounds](shaders.html#shaders-execution-memory-access-bounds) image
 accesses follow the behavior of robust image access features enabled for
 the device.
 
 * 
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DISABLED` specifies that
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DISABLED](#VkPipelineRobustnessImageBehaviorEXT) specifies that
 image accesses **must** not be [    out of bounds](shaders.html#shaders-execution-memory-access-bounds).
 
 * 
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS`
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS](#VkPipelineRobustnessImageBehaviorEXT)
 specifies that image accesses conform to [Robust Image Access](shaders.html#shaders-robust-image-access)
 guarantees.
 
 * 
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2`
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2](#VkPipelineRobustnessImageBehaviorEXT)
 specifies that image accesses conform to
 [Robust Image Access 2](shaders.html#shaders-robust-image-access2) guarantees.
 
@@ -2625,7 +2780,7 @@ identifier.
 Any identifier **can** be used.
 If the pipeline being created with identifier requires compilation to
 complete the pipeline creation call, pipeline compilation **must** fail as
-defined by `VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT`.
+defined by [VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](#VkPipelineCreateFlagBits).
 
 `pIdentifier` and `identifierSize` **can** be obtained from an
 [VkShaderModuleIdentifierEXT](shaders.html#VkShaderModuleIdentifierEXT) queried earlier.
@@ -2646,20 +2801,20 @@ feature **must** be enabled
 If this structure is included in a `pNext` chain of
 [VkPipelineShaderStageCreateInfo](#VkPipelineShaderStageCreateInfo) and `identifierSize` is not
 equal to 0, the pipeline **must** be created with the
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT` flag set
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](#VkPipelineCreateFlagBits) flag set
 
 * 
 [](#VUID-VkPipelineShaderStageModuleIdentifierCreateInfoEXT-identifierSize-06852) VUID-VkPipelineShaderStageModuleIdentifierCreateInfoEXT-identifierSize-06852
 
 `identifierSize` **must** be less-or-equal to
-`VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT`
+[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT](shaders.html#VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineShaderStageModuleIdentifierCreateInfoEXT-sType-sType) VUID-VkPipelineShaderStageModuleIdentifierCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_MODULE_IDENTIFIER_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_MODULE_IDENTIFIER_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineShaderStageModuleIdentifierCreateInfoEXT-pIdentifier-parameter) VUID-VkPipelineShaderStageModuleIdentifierCreateInfoEXT-pIdentifier-parameter
@@ -2727,7 +2882,7 @@ feature **must** be enabled
 
 The pipeline creation flags in
 [VkComputePipelineCreateInfo](#VkComputePipelineCreateInfo)::`flags` **must** include
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV`
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkComputePipelineIndirectBufferInfoNV-deviceAddress-09011) VUID-VkComputePipelineIndirectBufferInfoNV-deviceAddress-09011
@@ -2740,8 +2895,8 @@ returned by [vkGetPipelineIndirectMemoryRequirementsNV](device_generated_command
 [](#VUID-VkComputePipelineIndirectBufferInfoNV-deviceAddress-09012) VUID-VkComputePipelineIndirectBufferInfoNV-deviceAddress-09012
 
 `deviceAddress` **must** have been allocated from a buffer that was
-created with both the `VK_BUFFER_USAGE_TRANSFER_DST_BIT` and
-`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage flags set
+created with both the [VK_BUFFER_USAGE_TRANSFER_DST_BIT](resources.html#VkBufferUsageFlagBits) and
+[VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](resources.html#VkBufferUsageFlagBits) usage flags set
 
 * 
 [](#VUID-VkComputePipelineIndirectBufferInfoNV-size-09013) VUID-VkComputePipelineIndirectBufferInfoNV-size-09013
@@ -2762,7 +2917,7 @@ feature **must** be enabled
 
 If `pipelineDeviceAddressCaptureReplay` is non-zero then that
 address **must** have been allocated with flag
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](memory.html#VkMemoryAllocateFlagBitsKHR) set
 
 * 
 [](#VUID-VkComputePipelineIndirectBufferInfoNV-pipelineDeviceAddressCaptureReplay-09016) VUID-VkComputePipelineIndirectBufferInfoNV-pipelineDeviceAddressCaptureReplay-09016
@@ -2782,7 +2937,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkComputePipelineIndirectBufferInfoNV-sType-sType) VUID-VkComputePipelineIndirectBufferInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_INDIRECT_BUFFER_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_INDIRECT_BUFFER_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkComputePipelineIndirectBufferInfoNV-deviceAddress-parameter) VUID-VkComputePipelineIndirectBufferInfoNV-deviceAddress-parameter
@@ -2818,10 +2973,10 @@ render pass.
 This command is treated as a “transfer” operation for the purposes of
 synchronization barriers.
 The writes to the address **must** be synchronized using stages
-`VK_PIPELINE_STAGE_2_COPY_BIT` and
-`VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV` and with access masks
-`VK_ACCESS_MEMORY_WRITE_BIT` and
-`VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_NV` respectively before using the
+[VK_PIPELINE_STAGE_2_COPY_BIT](synchronization.html#VkPipelineStageFlagBits2KHR) and
+[VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV](synchronization.html#VkPipelineStageFlagBits) and with access masks
+[VK_ACCESS_MEMORY_WRITE_BIT](synchronization.html#VkAccessFlagBits) and
+[VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_NV](synchronization.html#VkAccessFlagBits) respectively before using the
 results in preprocessing.
 
 Valid Usage
@@ -2829,13 +2984,13 @@ Valid Usage
 * 
 [](#VUID-vkCmdUpdatePipelineIndirectBufferNV-pipelineBindPoint-09018) VUID-vkCmdUpdatePipelineIndirectBufferNV-pipelineBindPoint-09018
 
-`pipelineBindPoint` **must** be `VK_PIPELINE_BIND_POINT_COMPUTE`
+`pipelineBindPoint` **must** be [VK_PIPELINE_BIND_POINT_COMPUTE](#VkPipelineBindPoint)
 
 * 
 [](#VUID-vkCmdUpdatePipelineIndirectBufferNV-pipeline-09019) VUID-vkCmdUpdatePipelineIndirectBufferNV-pipeline-09019
 
 `pipeline` **must** have been created with
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV` flag set
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](#VkPipelineCreateFlagBits) flag set
 
 * 
 [](#VUID-vkCmdUpdatePipelineIndirectBufferNV-pipeline-09020) VUID-vkCmdUpdatePipelineIndirectBufferNV-pipeline-09020
@@ -2875,7 +3030,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdUpdatePipelineIndirectBufferNV-commandBuffer-cmdpool) VUID-vkCmdUpdatePipelineIndirectBufferNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, or `VK_QUEUE_TRANSFER_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdUpdatePipelineIndirectBufferNV-renderpass) VUID-vkCmdUpdatePipelineIndirectBufferNV-renderpass
@@ -2974,13 +3129,13 @@ Valid Usage
 [](#VUID-vkCreateGraphicsPipelines-device-09662) VUID-vkCreateGraphicsPipelines-device-09662
 
 `device` **must** support at least one queue family with the
-`VK_QUEUE_GRAPHICS_BIT` capability
+[VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) capability
 
 * 
 [](#VUID-vkCreateGraphicsPipelines-flags-00720) VUID-vkCreateGraphicsPipelines-flags-00720
 
 If the `flags` member of any element of `pCreateInfos` contains
-the `VK_PIPELINE_CREATE_DERIVATIVE_BIT` flag, and the
+the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits) flag, and the
 `basePipelineIndex` member of that same element is not `-1`,
 `basePipelineIndex` **must** be less than the index into
 `pCreateInfos` that corresponds to that element
@@ -2989,15 +3144,15 @@ the `VK_PIPELINE_CREATE_DERIVATIVE_BIT` flag, and the
 [](#VUID-vkCreateGraphicsPipelines-flags-00721) VUID-vkCreateGraphicsPipelines-flags-00721
 
 If the `flags` member of any element of `pCreateInfos` contains
-the `VK_PIPELINE_CREATE_DERIVATIVE_BIT` flag, the base pipeline
+the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits) flag, the base pipeline
 **must** have been created with the
-`VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT` flag set
+[VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT](#VkPipelineCreateFlagBits) flag set
 
 * 
 [](#VUID-vkCreateGraphicsPipelines-pipelineCache-02876) VUID-vkCreateGraphicsPipelines-pipelineCache-02876
 
 If `pipelineCache` was created with
-`VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT`, host access
+[VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT](#VkPipelineCacheCreateFlagBits), host access
 to `pipelineCache` **must** be
 [externally synchronized](fundamentals.html#fundamentals-threadingbehavior)
 
@@ -3012,7 +3167,7 @@ element of `pCreateInfos`, `pipelineCache` **must** be
 [](#VUID-vkCreateGraphicsPipelines-pNext-09617) VUID-vkCreateGraphicsPipelines-pNext-09617
 
 If a [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR) structure with the
-`VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR` flag set is included in
+[VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](#VkPipelineCreateFlagBits2KHR) flag set is included in
 the `pNext` chain of any element of `pCreateInfos`,
 `pipelineCache` **must** be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
@@ -3021,7 +3176,7 @@ the `pNext` chain of any element of `pCreateInfos`,
 
 If [VkPipelineBinaryInfoKHR](#VkPipelineBinaryInfoKHR)::`binaryCount` is not `0` for any
 element of `pCreateInfos`,
-`VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT`
+[VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT](#VkPipelineCreationFeedbackFlagBitsEXT)
 **must** not be set in the `flags` of that element
 
 * 
@@ -3029,7 +3184,7 @@ element of `pCreateInfos`,
 
 If [VkPipelineBinaryInfoKHR](#VkPipelineBinaryInfoKHR)::`binaryCount` is not `0` for any
 element of `pCreateInfos`,
-`VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT` **must**
+[VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT](#VkPipelineCreationFeedbackFlagBitsEXT) **must**
 not be set in the `flags` of that element
 
 * 
@@ -3037,13 +3192,34 @@ not be set in the `flags` of that element
 
 If [VkPipelineBinaryInfoKHR](#VkPipelineBinaryInfoKHR)::`binaryCount` is not `0` for any
 element of `pCreateInfos`,
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_EXT` **must**
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_EXT](#VkPipelineCreateFlagBits) **must**
 not be set in the `flags` of that element
+
+* 
+[](#VUID-vkCreateGraphicsPipelines-pCreateInfos-11414) VUID-vkCreateGraphicsPipelines-pCreateInfos-11414
+
+If any element of `pCreateInfos` sets
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR) and includes embedded
+sampler mappings, there **must** be less than
+([`maxSamplerAllocationCount`](limits.html#limits-maxSamplerAllocationCount)
+-  ([    `minSamplerHeapReservedRangeWithEmbedded`](limits.html#limits-minSamplerHeapReservedRangeWithEmbedded) /
+[`samplerDescriptorSize`](limits.html#limits-samplerDescriptorSize)))
+[VkSampler](samplers.html#VkSampler) objects currently created on the device
+
+* 
+[](#VUID-vkCreateGraphicsPipelines-pCreateInfos-11429) VUID-vkCreateGraphicsPipelines-pCreateInfos-11429
+
+    If any element of `pCreateInfos` sets
+    [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR) and includes embedded
+    sampler mappings, this command **must** not cause the total number of
+    unique embedded samplers in pipelines
+and shaders
+    on this device to exceed [    `maxDescriptorHeapEmbeddedSamplers`](limits.html#limits-maxDescriptorHeapEmbeddedSamplers)
 
 |  | An implicit cache may be provided by the implementation or a layer.
 | --- | --- |
 For this reason, it is still valid to set
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT` on
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](#VkPipelineCreateFlagBits) on
 `flags` for any element of `pCreateInfos` while passing
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) for `pipelineCache`. |
 
@@ -3089,27 +3265,27 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_PIPELINE_COMPILE_REQUIRED_EXT`
+[VK_PIPELINE_COMPILE_REQUIRED_EXT](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_SHADER_NV`
+[VK_ERROR_INVALID_SHADER_NV](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkGraphicsPipelineCreateInfo` structure is defined as:
 
@@ -3160,7 +3336,7 @@ the shader stages to be included in the graphics pipeline.
 [VkPipelineVertexInputStateCreateInfo](fxvertex.html#VkPipelineVertexInputStateCreateInfo) structure.
 It is ignored if the pipeline includes a mesh shader stage.
 It **can** be `NULL` if the pipeline is created with the
-`VK_DYNAMIC_STATE_VERTEX_INPUT_EXT` dynamic state set.
+[VK_DYNAMIC_STATE_VERTEX_INPUT_EXT](#VkDynamicState) dynamic state set.
 
 * 
 `pInputAssemblyState` is a pointer to a
@@ -3169,9 +3345,9 @@ input assembly behavior for vertex shading, as described in [    Drawing Command
  If the
 `[VK_EXT_extended_dynamic_state3](../appendices/extensions.html#VK_EXT_extended_dynamic_state3)` extension is enabled, it **can** be
 `NULL` if the pipeline is created with both
-`VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE`, and
-`VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY` dynamic states set and
-[    `dynamicPrimitiveTopologyUnrestricted`](limits.html#limits-dynamicPrimitiveTopologyUnrestricted) is `VK_TRUE`.
+[VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE](#VkDynamicState), and
+[VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY](#VkDynamicState) dynamic states set and
+[    `dynamicPrimitiveTopologyUnrestricted`](limits.html#limits-dynamicPrimitiveTopologyUnrestricted) is [VK_TRUE](fundamentals.html#VK_TRUE).
 It is ignored if the pipeline includes a mesh shader stage.
 
 * 
@@ -3179,7 +3355,7 @@ It is ignored if the pipeline includes a mesh shader stage.
 [VkPipelineTessellationStateCreateInfo](tessellation.html#VkPipelineTessellationStateCreateInfo) structure defining
 tessellation state used by tessellation shaders.
 It **can** be `NULL` if the pipeline is created with the
-`VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT` dynamic state set.
+[VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT](#VkDynamicState) dynamic state set.
 
 * 
 `pViewportState` is a pointer to a
@@ -3188,8 +3364,8 @@ state used when rasterization is enabled.
  If the
 `[VK_EXT_extended_dynamic_state3](../appendices/extensions.html#VK_EXT_extended_dynamic_state3)` extension is enabled, it **can** be
 `NULL` if the pipeline is created with both
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT`, and
-`VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT` dynamic states set.
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](#VkDynamicState), and
+[VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](#VkDynamicState) dynamic states set.
 
 * 
 `pRasterizationState` is a pointer to a
@@ -3198,12 +3374,12 @@ rasterization state.
  If the
 `[VK_EXT_extended_dynamic_state3](../appendices/extensions.html#VK_EXT_extended_dynamic_state3)` extension is enabled, it **can** be
 `NULL` if the pipeline is created with all of
-`VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT`,
-`VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE`,
-`VK_DYNAMIC_STATE_POLYGON_MODE_EXT`,
-`VK_DYNAMIC_STATE_CULL_MODE`, `VK_DYNAMIC_STATE_FRONT_FACE`,
-`VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE`,
-`VK_DYNAMIC_STATE_DEPTH_BIAS`, and `VK_DYNAMIC_STATE_LINE_WIDTH`
+[VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT](#VkDynamicState),
+[VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE](#VkDynamicState),
+[VK_DYNAMIC_STATE_POLYGON_MODE_EXT](#VkDynamicState),
+[VK_DYNAMIC_STATE_CULL_MODE](#VkDynamicState), [VK_DYNAMIC_STATE_FRONT_FACE](#VkDynamicState),
+[VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE](#VkDynamicState),
+[VK_DYNAMIC_STATE_DEPTH_BIAS](#VkDynamicState), and [VK_DYNAMIC_STATE_LINE_WIDTH](#VkDynamicState)
 dynamic states set.
 
 * 
@@ -3213,14 +3389,14 @@ multisample state used when rasterization is enabled.
  If the
 `[VK_EXT_extended_dynamic_state3](../appendices/extensions.html#VK_EXT_extended_dynamic_state3)` extension is enabled, it **can** be
 `NULL` if the pipeline is created with all of
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT`,
-`VK_DYNAMIC_STATE_SAMPLE_MASK_EXT`, and
-`VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT` dynamic states set,
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](#VkDynamicState),
+[VK_DYNAMIC_STATE_SAMPLE_MASK_EXT](#VkDynamicState), and
+[VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT](#VkDynamicState) dynamic states set,
 and either the [alphaToOne](features.html#features-alphaToOne) feature is not
-enabled or `VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT` is set, in
+enabled or [VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT](#VkDynamicState) is set, in
 which case
 [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo)::`sampleShadingEnable` is
-assumed to be `VK_FALSE`.
+assumed to be [VK_FALSE](fundamentals.html#VK_FALSE).
 
 * 
 `pDepthStencilState` is a pointer to a
@@ -3230,13 +3406,13 @@ stencil attachments accessed during rendering.
  If the
 `[VK_EXT_extended_dynamic_state3](../appendices/extensions.html#VK_EXT_extended_dynamic_state3)` extension is enabled, it **can** be
 `NULL` if the pipeline is created with all of
-`VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE`,
-`VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE`,
-`VK_DYNAMIC_STATE_DEPTH_COMPARE_OP`,
-`VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE`,
-`VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE`,
-`VK_DYNAMIC_STATE_STENCIL_OP`, and
-`VK_DYNAMIC_STATE_DEPTH_BOUNDS` dynamic states set.
+[VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE](#VkDynamicState),
+[VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE](#VkDynamicState),
+[VK_DYNAMIC_STATE_DEPTH_COMPARE_OP](#VkDynamicState),
+[VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE](#VkDynamicState),
+[VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE](#VkDynamicState),
+[VK_DYNAMIC_STATE_STENCIL_OP](#VkDynamicState), and
+[VK_DYNAMIC_STATE_DEPTH_BOUNDS](#VkDynamicState) dynamic states set.
 
 * 
 `pColorBlendState` is a pointer to a
@@ -3246,12 +3422,12 @@ accessed during rendering.
  If the
 `[VK_EXT_extended_dynamic_state3](../appendices/extensions.html#VK_EXT_extended_dynamic_state3)` extension is enabled, it **can** be
 `NULL` if the pipeline is created with all of
-`VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT`,
-`VK_DYNAMIC_STATE_LOGIC_OP_EXT`,
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT`,
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT`,
-`VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT`, and
-`VK_DYNAMIC_STATE_BLEND_CONSTANTS` dynamic states set.
+[VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT](#VkDynamicState),
+[VK_DYNAMIC_STATE_LOGIC_OP_EXT](#VkDynamicState),
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](#VkDynamicState),
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](#VkDynamicState),
+[VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](#VkDynamicState), and
+[VK_DYNAMIC_STATE_BLEND_CONSTANTS](#VkDynamicState) dynamic states set.
 
 * 
 `pDynamicState` is a pointer to a
@@ -3298,7 +3474,7 @@ described in more detail in [Pipeline Derivatives](#pipelines-pipeline-derivativ
 
 If any shader stage fails to compile,
 the compile log will be reported back to the application, and
-`VK_ERROR_INVALID_SHADER_NV` will be generated.
+[VK_ERROR_INVALID_SHADER_NV](fundamentals.html#VkResult) will be generated.
 
 |  | With `[VK_EXT_extended_dynamic_state3](../appendices/extensions.html#VK_EXT_extended_dynamic_state3)`, it is possible that many of
 | --- | --- |
@@ -3329,7 +3505,7 @@ either directly or by including it as a pipeline library and its
 create a [complete graphics pipeline](#pipelines-graphics-subsets-complete).
 
 If a pipeline includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_VERTEX_INPUT_INTERFACE_BIT_EXT` in
+[VK_GRAPHICS_PIPELINE_LIBRARY_VERTEX_INPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) in
 [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` either explicitly
 or as a default, and either the conditions requiring this state for a
 [complete graphics pipeline](#pipelines-graphics-subsets-complete) are met
@@ -3362,10 +3538,10 @@ Mesh shaders
 
 Within the [VkPipelineLayout](descriptorsets.html#VkPipelineLayout), all descriptor sets with
 pre-rasterization shader bindings if
-`VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT` was specified.
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits) was specified.
 
 * 
-If `VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT` was not
+If [VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits) was not
 specified, the full pipeline layout **must** be specified.
 
 [VkPipelineViewportStateCreateInfo](vertexpostproc.html#VkPipelineViewportStateCreateInfo)
@@ -3384,14 +3560,14 @@ The `viewMask` parameter of [VkPipelineRenderingCreateInfo](#VkPipelineRendering
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR)
 
 Inclusion/omission of the
-`VK_PIPELINE_CREATE_2_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE` flag
+[VK_PIPELINE_CREATE_2_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](#VkPipelineCreateFlagBits2KHR) flag
 
 This state **must** be specified to create a
 [complete graphics pipeline](#pipelines-graphics-subsets-complete).
 
 If either the `pNext` chain includes a
 [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT) structure with
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT`
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT)
 included in `flags`, or it is not specified and would default to include
 that value, this state **must** be specified in the pipeline.
 
@@ -3404,9 +3580,9 @@ A [VkPipelineShaderStageCreateInfo](#VkPipelineShaderStageCreateInfo) entry for 
 * 
 Within the [VkPipelineLayout](descriptorsets.html#VkPipelineLayout), all descriptor sets with fragment
 shader bindings if
-`VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT` was specified.
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits) was specified.
 
-If `VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT` was not
+If [VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits) was not
 specified, the full pipeline layout **must** be specified.
 
 [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo)
@@ -3427,34 +3603,34 @@ The `viewMask` parameter of [VkPipelineRenderingCreateInfo](#VkPipelineRendering
 [VkPipelineRepresentativeFragmentTestStateCreateInfoNV](fragops.html#VkPipelineRepresentativeFragmentTestStateCreateInfoNV)
 
 Inclusion/omission of the
-`VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineCreateFlagBits)
 flag
 
 Inclusion/omission of the
-`VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT`
+[VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT](#VkPipelineCreateFlagBits)
 flag
 
 [VkRenderingInputAttachmentIndexInfo](interfaces.html#VkRenderingInputAttachmentIndexInfo)
 
 Inclusion/omission of the
-`VK_PIPELINE_CREATE_2_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE` flag
+[VK_PIPELINE_CREATE_2_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](#VkPipelineCreateFlagBits2KHR) flag
 
 The `customResolve` parameter of [VkCustomResolveCreateInfoEXT](#VkCustomResolveCreateInfoEXT).
 Formats are ignored, and not including the structure behaves identically
-to setting `customResolve` to `VK_FALSE`, unlike in
+to setting `customResolve` to [VK_FALSE](fundamentals.html#VK_FALSE), unlike in
 [fragment output interface    state](#pipelines-graphics-subsets-fragment-output).
 
 If
 a pipeline specifies
 [pre-rasterization state](#pipelines-graphics-subsets-pre-rasterization)
 either directly or by including it as a pipeline library and
-`rasterizerDiscardEnable` is `VK_FALSE`
-or `VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE` is used,
+`rasterizerDiscardEnable` is [VK_FALSE](fundamentals.html#VK_FALSE)
+or [VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE](#VkDynamicState) is used,
 this state **must** be specified to create a
 [complete graphics pipeline](#pipelines-graphics-subsets-complete).
 
 If a pipeline includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT` in
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) in
 [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` either explicitly
 or as a default, and either the conditions requiring this state for a
 [complete graphics pipeline](#pipelines-graphics-subsets-complete) are met
@@ -3491,13 +3667,13 @@ Fragment output state is defined by:
 
 * 
 Inclusion/omission of the
-`VK_PIPELINE_CREATE_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT` and
-`VK_PIPELINE_CREATE_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT`
+[VK_PIPELINE_CREATE_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](#VkPipelineCreateFlagBits) and
+[VK_PIPELINE_CREATE_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](#VkPipelineCreateFlagBits)
 flags
 
 * 
 Inclusion/omission of the
-`VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT` flag
+[VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT](#VkPipelineCreateFlagBits2KHR) flag
 
 * 
 [VkRenderingAttachmentLocationInfo](interfaces.html#VkRenderingAttachmentLocationInfo)
@@ -3506,13 +3682,13 @@ If
 a pipeline specifies
 [pre-rasterization state](#pipelines-graphics-subsets-pre-rasterization)
 either directly or by including it as a pipeline library and
-`rasterizerDiscardEnable` is `VK_FALSE`
-or `VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE` is used,
+`rasterizerDiscardEnable` is [VK_FALSE](fundamentals.html#VK_FALSE)
+or [VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE](#VkDynamicState) is used,
 this state **must** be specified to create a
 [complete graphics pipeline](#pipelines-graphics-subsets-complete).
 
 If a pipeline includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT` in
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) in
 [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` either explicitly
 or as a default, and either the conditions requiring this state for a
 [complete graphics pipeline](#pipelines-graphics-subsets-complete) are met
@@ -3541,17 +3717,17 @@ the above sections.
 
 Graphics Pipeline Library Layouts
 If different subsets are linked together with pipeline layouts created with
-`VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT`, the final
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits), the final
 effective pipeline layout is effectively the union of the linked pipeline
 layouts.
 When binding descriptor sets for this pipeline, the pipeline layout used
 **must** be compatible with this union.
 This pipeline layout **can** be overridden when linking with
-`VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT` by providing a
+[VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT](#VkPipelineCreateFlagBits) by providing a
 [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is [compatible](descriptorsets.html#descriptorsets-compatibility)
 with this union other than
-`VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT`, or when linking
-without `VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT` by providing
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits), or when linking
+without [VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT](#VkPipelineCreateFlagBits) by providing
 a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) that is fully
 [compatible](descriptorsets.html#descriptorsets-compatibility) with this union.
 
@@ -3572,14 +3748,14 @@ If the `pNext` chain does not include a
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-07984) VUID-VkGraphicsPipelineCreateInfo-flags-07984
 
-If `flags` contains the `VK_PIPELINE_CREATE_DERIVATIVE_BIT`
+If `flags` contains the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits)
 flag, and `basePipelineIndex` is -1, `basePipelineHandle` **must**
 be a valid graphics `VkPipeline` handle
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-07985) VUID-VkGraphicsPipelineCreateInfo-flags-07985
 
-If `flags` contains the `VK_PIPELINE_CREATE_DERIVATIVE_BIT`
+If `flags` contains the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits)
 flag, and `basePipelineHandle` is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 `basePipelineIndex` **must** be a valid index into the calling
 command’s `pCreateInfos` parameter
@@ -3587,35 +3763,37 @@ command’s `pCreateInfos` parameter
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-07986) VUID-VkGraphicsPipelineCreateInfo-flags-07986
 
-If `flags` contains the `VK_PIPELINE_CREATE_DERIVATIVE_BIT`
+If `flags` contains the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits)
 flag, `basePipelineIndex` **must** be -1 or `basePipelineHandle`
 **must** be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-layout-07987) VUID-VkGraphicsPipelineCreateInfo-layout-07987
 
-If a push constant block is declared in a shader, a push constant range
-in `layout` **must** match the shader stage
+If a push constant block is declared in a shader and `layout` is not
+[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), a push constant range in `layout` **must** match
+the shader stage
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-layout-10069) VUID-VkGraphicsPipelineCreateInfo-layout-10069
 
-If a push constant block is declared in a shader, the block must be
-contained inside the push constant range in `layout` that matches
-the stage
+If a push constant block is declared in a shader and `layout` is not
+[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the block must be contained inside the push
+constant range in `layout` that matches the stage
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-layout-07988) VUID-VkGraphicsPipelineCreateInfo-layout-07988
 
-If a [resource variable](interfaces.html#interfaces-resources) is declared in a shader,
-the corresponding descriptor set in `layout` **must** match the shader
-stage
+If a [resource variable](interfaces.html#interfaces-resources) is declared in a shader
+and `layout` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the corresponding
+descriptor set in `layout` **must** match the shader stage
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-layout-07990) VUID-VkGraphicsPipelineCreateInfo-layout-07990
 
 If a [resource variable](interfaces.html#interfaces-resources) is declared in a shader,
-and the descriptor type is not `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`,
+`layout` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
+and the descriptor type is not [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](descriptorsets.html#VkDescriptorType),
 the corresponding descriptor set in `layout` **must** match the
 descriptor type
 
@@ -3623,57 +3801,97 @@ descriptor type
 [](#VUID-VkGraphicsPipelineCreateInfo-layout-07991) VUID-VkGraphicsPipelineCreateInfo-layout-07991
 
 If a [resource variable](interfaces.html#interfaces-resources) is declared in a shader
-as an array, the corresponding descriptor binding used to create
-`layout` **must** have a `descriptorCount` that is greater than or
-equal to the length of the array
+as an array and `layout` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the
+corresponding descriptor binding used to create `layout` **must** have
+a `descriptorCount` that is greater than or equal to the length of
+the array
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-None-10391) VUID-VkGraphicsPipelineCreateInfo-None-10391
 
 If a [resource variables](interfaces.html#interfaces-resources) is declared in a shader
 as an array of descriptors, then the descriptor type of that variable
-**must** not be `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+**must** not be [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](descriptorsets.html#VkDescriptorType)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-11798) VUID-VkGraphicsPipelineCreateInfo-flags-11798
 
 If [shader64BitIndexing](features.html#features-shader64BitIndexing) feature is not
 enabled, `flags` **must** not contain
-`VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT`
+[VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT](#VkPipelineCreateFlagBits2KHR)
+
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-pipelineCreationCacheControl-02878) VUID-VkGraphicsPipelineCreateInfo-pipelineCreationCacheControl-02878
+
+If the [    `pipelineCreationCacheControl`](features.html#features-pipelineCreationCacheControl) feature is not enabled, `flags`
+**must** not include
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](#VkPipelineCreateFlagBits) nor
+[VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-pipelineProtectedAccess-07368) VUID-VkGraphicsPipelineCreateInfo-pipelineProtectedAccess-07368
+
+If the [    `pipelineProtectedAccess`](features.html#features-pipelineProtectedAccess) feature is not enabled, `flags`
+**must** not include [VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits) nor
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-flags-07369) VUID-VkGraphicsPipelineCreateInfo-flags-07369
+
+`flags` **must** not include both
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits) and
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-flags-11311) VUID-VkGraphicsPipelineCreateInfo-flags-11311
+
+If [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` includes
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR), `layout` **must**
+be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
+
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-flags-11312) VUID-VkGraphicsPipelineCreateInfo-flags-11312
+
+If [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` includes
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR), all shader variables
+in the [shader resource interface](interfaces.html#interfaces-resources) with a
+`DescriptorSet` and `Binding` decoration **must** have a mapping
+declared in
+[VkShaderDescriptorSetAndBindingMappingInfoEXT](descriptorheaps.html#VkShaderDescriptorSetAndBindingMappingInfoEXT)::pMappings
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-stage-02096) VUID-VkGraphicsPipelineCreateInfo-stage-02096
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) the `stage` member of one element
-of `pStages` **must** be `VK_SHADER_STAGE_VERTEX_BIT`
-or `VK_SHADER_STAGE_MESH_BIT_EXT`
+of `pStages` **must** be [VK_SHADER_STAGE_VERTEX_BIT](#VkShaderStageFlagBits)
+or [VK_SHADER_STAGE_MESH_BIT_EXT](#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pStages-02095) VUID-VkGraphicsPipelineCreateInfo-pStages-02095
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) the geometric shader stages provided in
 `pStages` **must** be either from the mesh shading pipeline
-(`stage` is `VK_SHADER_STAGE_TASK_BIT_EXT` or
-`VK_SHADER_STAGE_MESH_BIT_EXT`) or from the primitive shading
-pipeline (`stage` is `VK_SHADER_STAGE_VERTEX_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`, or
-`VK_SHADER_STAGE_GEOMETRY_BIT`)
+(`stage` is [VK_SHADER_STAGE_TASK_BIT_EXT](#VkShaderStageFlagBits) or
+[VK_SHADER_STAGE_MESH_BIT_EXT](#VkShaderStageFlagBits)) or from the primitive shading
+pipeline (`stage` is [VK_SHADER_STAGE_VERTEX_BIT](#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](#VkShaderStageFlagBits), or
+[VK_SHADER_STAGE_GEOMETRY_BIT](#VkShaderStageFlagBits))
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pStages-09631) VUID-VkGraphicsPipelineCreateInfo-pStages-09631
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) and `pStages` contains both
-`VK_SHADER_STAGE_TASK_BIT_EXT` and
-`VK_SHADER_STAGE_MESH_BIT_EXT`, then the mesh shader’s entry point
+[VK_SHADER_STAGE_TASK_BIT_EXT](#VkShaderStageFlagBits) and
+[VK_SHADER_STAGE_MESH_BIT_EXT](#VkShaderStageFlagBits), then the mesh shader’s entry point
 **must** not declare a variable with a `DrawIndex` `BuiltIn`
 decoration
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-TaskNV-07063) VUID-VkGraphicsPipelineCreateInfo-TaskNV-07063
 
-The shader stages for `VK_SHADER_STAGE_TASK_BIT_EXT` or
-`VK_SHADER_STAGE_MESH_BIT_EXT` **must** use either the `TaskNV` and
+The shader stages for [VK_SHADER_STAGE_TASK_BIT_EXT](#VkShaderStageFlagBits) or
+[VK_SHADER_STAGE_MESH_BIT_EXT](#VkShaderStageFlagBits) **must** use either the `TaskNV` and
 `MeshNV` `Execution` `Model` or the `TaskEXT` and `MeshEXT`
 `Execution` `Model`, but **must** not use both
 
@@ -3697,7 +3915,7 @@ control shader stage
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) and `pStages` includes a
 tessellation control shader stage,
 and the `[VK_EXT_extended_dynamic_state3](../appendices/extensions.html#VK_EXT_extended_dynamic_state3)` extension is not enabled
-or the `VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT` dynamic state is
+or the [VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT](#VkDynamicState) dynamic state is
 not set,
 `pTessellationState` **must** be a valid pointer to a valid
 [VkPipelineTessellationStateCreateInfo](tessellation.html#VkPipelineTessellationStateCreateInfo) structure
@@ -3745,23 +3963,23 @@ pipeline, they **must** both specify the same patch size
 
 If the pipeline is being created with
 [pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization) and [vertex input    state](#pipelines-graphics-subsets-vertex-input) and `pStages` includes tessellation shader stages,
-and either `VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY` dynamic state is
+and either [VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY](#VkDynamicState) dynamic state is
 not enabled or
 [`dynamicPrimitiveTopologyUnrestricted`](limits.html#limits-dynamicPrimitiveTopologyUnrestricted)
-is `VK_FALSE`,
+is [VK_FALSE](fundamentals.html#VK_FALSE),
 the `topology` member of `pInputAssembly` **must** be
-`VK_PRIMITIVE_TOPOLOGY_PATCH_LIST`
+[VK_PRIMITIVE_TOPOLOGY_PATCH_LIST](drawing.html#VkPrimitiveTopology)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-topology-08889) VUID-VkGraphicsPipelineCreateInfo-topology-08889
 
 If the pipeline is being created with
 [pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization) and [vertex input    state](#pipelines-graphics-subsets-vertex-input) and the `topology` member of `pInputAssembly` is
-`VK_PRIMITIVE_TOPOLOGY_PATCH_LIST`,
-and either `VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY` dynamic state is
+[VK_PRIMITIVE_TOPOLOGY_PATCH_LIST](drawing.html#VkPrimitiveTopology),
+and either [VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY](#VkDynamicState) dynamic state is
 not enabled or
 [`dynamicPrimitiveTopologyUnrestricted`](limits.html#limits-dynamicPrimitiveTopologyUnrestricted)
-is `VK_FALSE`,
+is [VK_FALSE](fundamentals.html#VK_FALSE),
 then `pStages` **must** include tessellation shader stages
 
 * 
@@ -3781,11 +3999,11 @@ enabled
 If the pipeline is being created with a `Vertex` `Execution` `Model` and
 no `TessellationEvaluation` or `Geometry` `Execution` `Model`, and
 the `topology` member of `pInputAssembly` is
-`VK_PRIMITIVE_TOPOLOGY_POINT_LIST`,
-and either `VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY` dynamic state is
+[VK_PRIMITIVE_TOPOLOGY_POINT_LIST](drawing.html#VkPrimitiveTopology),
+and either [VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY](#VkDynamicState) dynamic state is
 not enabled or
 [`dynamicPrimitiveTopologyUnrestricted`](limits.html#limits-dynamicPrimitiveTopologyUnrestricted)
-is `VK_FALSE`,
+is [VK_FALSE](fundamentals.html#VK_FALSE),
 a `PointSize` decorated variable **must** be written to
 if the [`maintenance5`](features.html#features-maintenance5) feature is not
 enabled
@@ -3860,7 +4078,7 @@ output variable, decorated with `PrimitiveId`, in all execution paths
 
 If `renderPass` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and the pipeline is
 being created with [    fragment shader state](#pipelines-graphics-subsets-fragment-shader) the fragment shader **must** not read from any
-input attachment that is defined as `VK_ATTACHMENT_UNUSED` in
+input attachment that is defined as [VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED) in
 `subpass`
 
 * 
@@ -3888,10 +4106,10 @@ If `renderPass` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_H
 being created with [    fragment output interface state](#pipelines-graphics-subsets-fragment-output), then for each color attachment in the
 subpass, if the [potential format features](formats.html#potential-format-features)
 of the format of the corresponding attachment description do not contain
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT`, then the
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT](formats.html#VkFormatFeatureFlagBits), then the
 `blendEnable` member of the corresponding element of the
 `pAttachments` member of `pColorBlendState` **must** be
-`VK_FALSE`
+[VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-renderPass-07609) VUID-VkGraphicsPipelineCreateInfo-renderPass-07609
@@ -3924,17 +4142,17 @@ structures
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), and the [    `wideLines`](features.html#features-wideLines) feature is not enabled, and no element of the
 `pDynamicStates` member of `pDynamicState` is
-`VK_DYNAMIC_STATE_LINE_WIDTH`, the `lineWidth` member of
+[VK_DYNAMIC_STATE_LINE_WIDTH](#VkDynamicState), the `lineWidth` member of
 `pRasterizationState` **must** be `1.0`
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-rasterizerDiscardEnable-09024) VUID-VkGraphicsPipelineCreateInfo-rasterizerDiscardEnable-09024
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), and
-the `VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE` dynamic state is
+the [VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE](#VkDynamicState) dynamic state is
 enabled or
 the `rasterizerDiscardEnable` member of `pRasterizationState` is
-`VK_FALSE`,
+[VK_FALSE](fundamentals.html#VK_FALSE),
 and [related dynamic state is not set](#pipelines-pViewportState-null),
 `pViewportState` **must** be a valid pointer to a valid
 [VkPipelineViewportStateCreateInfo](vertexpostproc.html#VkPipelineViewportStateCreateInfo) structure
@@ -3950,11 +4168,11 @@ valid [VkPipelineViewportStateCreateInfo](vertexpostproc.html#VkPipelineViewport
 
 If the pipeline requires [    fragment output interface state](#pipelines-graphics-subsets-fragment-output),
 and the `[VK_EXT_extended_dynamic_state3](../appendices/extensions.html#VK_EXT_extended_dynamic_state3)` extension is not enabled
-or any of the `VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT`,
-`VK_DYNAMIC_STATE_SAMPLE_MASK_EXT`, or
-`VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT` dynamic states is
+or any of the [VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](#VkDynamicState),
+[VK_DYNAMIC_STATE_SAMPLE_MASK_EXT](#VkDynamicState), or
+[VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT](#VkDynamicState) dynamic states is
 not set, or the [alphaToOne](features.html#features-alphaToOne) feature is enabled
-and `VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT` is not set,
+and [VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT](#VkDynamicState) is not set,
 `pMultisampleState` **must** be a valid pointer to a valid
 [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo) structure
 
@@ -3971,7 +4189,7 @@ If the pipeline is being created with
 [fragment shader state](#pipelines-graphics-subsets-fragment-shader),
 the
 [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo)::`alphaToCoverageEnable`
-is not ignored and is `VK_TRUE`, then the
+is not ignored and is [VK_TRUE](fundamentals.html#VK_TRUE), then the
 [Fragment Output Interface](interfaces.html#interfaces-fragmentoutput) **must** contain a
 variable for the alpha `Component` word in `Location` 0 at
 `Index` 0
@@ -4005,8 +4223,8 @@ and [related dynamic state is not    set](#pipelines-pColorBlendState-null),
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), the [    `depthBiasClamp`](features.html#features-depthBiasClamp) feature is not enabled, no element of the
 `pDynamicStates` member of `pDynamicState` is
-`VK_DYNAMIC_STATE_DEPTH_BIAS`, and the `depthBiasEnable` member
-of `pRasterizationState` is `VK_TRUE`, the `depthBiasClamp`
+[VK_DYNAMIC_STATE_DEPTH_BIAS](#VkDynamicState), and the `depthBiasEnable` member
+of `pRasterizationState` is [VK_TRUE](fundamentals.html#VK_TRUE), the `depthBiasClamp`
 member of `pRasterizationState` **must** be `0.0`
 
 * 
@@ -4015,20 +4233,20 @@ member of `pRasterizationState` **must** be `0.0`
 If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets-fragment-shader),
 the `[VK_EXT_depth_range_unrestricted](../appendices/extensions.html#VK_EXT_depth_range_unrestricted)` extension is not enabled
 and no element of the `pDynamicStates` member of `pDynamicState`
-is `VK_DYNAMIC_STATE_DEPTH_BOUNDS`, and the
+is [VK_DYNAMIC_STATE_DEPTH_BOUNDS](#VkDynamicState), and the
 `depthBoundsTestEnable` member of `pDepthStencilState` is
-`VK_TRUE`, the `minDepthBounds` and `maxDepthBounds` members
+[VK_TRUE](fundamentals.html#VK_TRUE), the `minDepthBounds` and `maxDepthBounds` members
 of `pDepthStencilState` **must** be between `0.0` and `1.0`, inclusive
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-10913) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-10913
 
 If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets-fragment-shader), no element of the `pDynamicStates` member
-of `pDynamicState` is `VK_DYNAMIC_STATE_DEPTH_BOUNDS`, and
+of `pDynamicState` is [VK_DYNAMIC_STATE_DEPTH_BOUNDS](#VkDynamicState), and
 `pDynamicStates` includes
-`VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE` or
+[VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE](#VkDynamicState) or
 the `depthBoundsTestEnable` member of `pDepthStencilState` is
-`VK_TRUE`, `minDepthBounds` **must** be less than or equal to
+[VK_TRUE](fundamentals.html#VK_TRUE), `minDepthBounds` **must** be less than or equal to
 `maxDepthBounds`
 
 * 
@@ -4038,7 +4256,7 @@ If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets
 `sampleLocationsInfo` are not dynamic, and
 [VkPipelineSampleLocationsStateCreateInfoEXT](primsrast.html#VkPipelineSampleLocationsStateCreateInfoEXT)::`sampleLocationsEnable`
 included in the `pNext` chain of `pMultisampleState` is
-`VK_TRUE`, `sampleLocationsInfo.sampleLocationGridSize.width`
+[VK_TRUE](fundamentals.html#VK_TRUE), `sampleLocationsInfo.sampleLocationGridSize.width`
 **must** evenly divide
 [VkMultisamplePropertiesEXT](limits.html#VkMultisamplePropertiesEXT)::`maxSampleLocationGridSize.width`
 as returned by [vkGetPhysicalDeviceMultisamplePropertiesEXT](limits.html#vkGetPhysicalDeviceMultisamplePropertiesEXT) with a
@@ -4051,7 +4269,7 @@ If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets
 `sampleLocationsInfo` are not dynamic, and
 [VkPipelineSampleLocationsStateCreateInfoEXT](primsrast.html#VkPipelineSampleLocationsStateCreateInfoEXT)::`sampleLocationsEnable`
 the included in the `pNext` chain of `pMultisampleState` is
-`VK_TRUE` or `VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT` is
+[VK_TRUE](fundamentals.html#VK_TRUE) or [VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT](#VkDynamicState) is
 used, `sampleLocationsInfo.sampleLocationGridSize.height` **must**
 evenly divide
 [VkMultisamplePropertiesEXT](limits.html#VkMultisamplePropertiesEXT)::`maxSampleLocationGridSize.height`
@@ -4065,7 +4283,7 @@ If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets
 `sampleLocationsInfo` are not dynamic, and
 [VkPipelineSampleLocationsStateCreateInfoEXT](primsrast.html#VkPipelineSampleLocationsStateCreateInfoEXT)::`sampleLocationsEnable`
 included in the `pNext` chain of `pMultisampleState` is
-`VK_TRUE` or `VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT` is
+[VK_TRUE](fundamentals.html#VK_TRUE) or [VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT](#VkDynamicState) is
 used, `sampleLocationsInfo.sampleLocationsPerPixel` **must** equal
 `rasterizationSamples`
 
@@ -4074,7 +4292,7 @@ used, `sampleLocationsInfo.sampleLocationsPerPixel` **must** equal
 
 If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets-fragment-shader), and the `sampleLocationsEnable` member of a
 [VkPipelineSampleLocationsStateCreateInfoEXT](primsrast.html#VkPipelineSampleLocationsStateCreateInfoEXT) structure included in
-the `pNext` chain of `pMultisampleState` is `VK_TRUE`, the
+the `pNext` chain of `pMultisampleState` is [VK_TRUE](fundamentals.html#VK_TRUE), the
 fragment shader code **must** not statically use the extended instruction
 `InterpolateAtSample`
 
@@ -4108,7 +4326,7 @@ If `renderPass` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_H
 enabled, `rasterizationSamples` is not dynamic, and `subpass`
 has a [VkMultisampledRenderToSingleSampledInfoEXT](renderpass.html#VkMultisampledRenderToSingleSampledInfoEXT) structure
 included in the [VkSubpassDescription2](renderpass.html#VkSubpassDescription2)::`pNext` chain with
-`multisampledRenderToSingleSampledEnable` equal to `VK_TRUE`,
+`multisampledRenderToSingleSampledEnable` equal to [VK_TRUE](fundamentals.html#VK_TRUE),
 then the `rasterizationSamples` member of `pMultisampleState`
 **must** be equal to
 [VkMultisampledRenderToSingleSampledInfoEXT](renderpass.html#VkMultisampledRenderToSingleSampledInfoEXT)::`rasterizationSamples`
@@ -4194,10 +4412,19 @@ created with [    pre-rasterization shader state](#pipelines-graphics-subsets-pr
 include a mesh shader
 
 * 
+[](#VUID-VkGraphicsPipelineCreateInfo-renderPass-12325) VUID-VkGraphicsPipelineCreateInfo-renderPass-12325
+
+If `renderPass` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the pipeline is being
+created with [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), `pStages` include a mesh shader,
+and `subpass` viewMask is not `0`, then the index of the most
+significant bit in `viewMask` **must** be less than
+[`maxMeshMultiviewViewCount`](limits.html#limits-maxMeshMultiviewViewCount)
+
+* 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-00764) VUID-VkGraphicsPipelineCreateInfo-flags-00764
 
 `flags` **must** not contain the
-`VK_PIPELINE_CREATE_DISPATCH_BASE_BIT` flag
+[VK_PIPELINE_CREATE_DISPATCH_BASE_BIT](#VkPipelineCreateFlagBits) flag
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pStages-01565) VUID-VkGraphicsPipelineCreateInfo-pStages-01565
@@ -4219,10 +4446,10 @@ that is used by the pipeline **must** be less than or equal to
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), and no element of the
 `pDynamicStates` member of `pDynamicState` is
-`VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV`, and the
+[VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV](#VkDynamicState), and the
 `viewportWScalingEnable` member of a
 [VkPipelineViewportWScalingStateCreateInfoNV](vertexpostproc.html#VkPipelineViewportWScalingStateCreateInfoNV) structure, included in
-the `pNext` chain of `pViewportState`, is `VK_TRUE`, the
+the `pNext` chain of `pViewportState`, is [VK_TRUE](fundamentals.html#VK_TRUE), the
 `pViewportWScalings` member of the
 [VkPipelineViewportWScalingStateCreateInfoNV](vertexpostproc.html#VkPipelineViewportWScalingStateCreateInfoNV) **must** be a pointer to
 an array of
@@ -4234,7 +4461,7 @@ valid [VkViewportWScalingNV](vertexpostproc.html#VkViewportWScalingNV) structure
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), and no element of the
 `pDynamicStates` member of `pDynamicState` is
-`VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV`, and if
+[VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV](#VkDynamicState), and if
 `pViewportState->pNext` chain includes a
 [VkPipelineViewportExclusiveScissorStateCreateInfoNV](fragops.html#VkPipelineViewportExclusiveScissorStateCreateInfoNV) structure, and
 if its `exclusiveScissorCount` member is not `0`, then its
@@ -4244,7 +4471,7 @@ if its `exclusiveScissorCount` member is not `0`, then its
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07854) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07854
 
-If `VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV` is included in the
+If [VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV](#VkDynamicState) is included in the
 `pDynamicStates` array then the implementation **must** support at
 least `specVersion` `2` of the `[VK_NV_scissor_exclusive](../appendices/extensions.html#VK_NV_scissor_exclusive)`
 extension
@@ -4254,7 +4481,7 @@ extension
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), and no element of the
 `pDynamicStates` member of `pDynamicState` is
-`VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV`, and if
+[VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV](#VkDynamicState), and if
 `pViewportState->pNext` chain includes a
 [VkPipelineViewportShadingRateImageStateCreateInfoNV](primsrast.html#VkPipelineViewportShadingRateImageStateCreateInfoNV) structure,
 then its `pShadingRatePalettes` member **must** be a valid pointer to
@@ -4266,7 +4493,7 @@ structures
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), and no element of the
 `pDynamicStates` member of `pDynamicState` is
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT`, and if `pNext` chain
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](#VkDynamicState), and if `pNext` chain
 includes a [VkPipelineDiscardRectangleStateCreateInfoEXT](fragops.html#VkPipelineDiscardRectangleStateCreateInfoEXT) structure,
 and if its `discardRectangleCount` member is not `0`, then its
 `pDiscardRectangles` member **must** be a valid pointer to an array of
@@ -4275,7 +4502,7 @@ and if its `discardRectangleCount` member is not `0`, then its
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07855) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07855
 
-If `VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT` is included in
+If [VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT](#VkDynamicState) is included in
 the `pDynamicStates` array then the implementation **must** support at
 least `specVersion` `2` of the `[VK_EXT_discard_rectangles](../appendices/extensions.html#VK_EXT_discard_rectangles)`
 extension
@@ -4283,7 +4510,7 @@ extension
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07856) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07856
 
-If `VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT` is included in the
+If [VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT](#VkDynamicState) is included in the
 `pDynamicStates` array then the implementation **must** support at
 least `specVersion` `2` of the `[VK_EXT_discard_rectangles](../appendices/extensions.html#VK_EXT_discard_rectangles)`
 extension
@@ -4424,19 +4651,19 @@ If the pipeline requires [    pre-rasterization shader state](#pipelines-graphic
 `lineRasterizationMode` member of a
 [VkPipelineRasterizationLineStateCreateInfo](primsrast.html#VkPipelineRasterizationLineStateCreateInfo) structure included in
 the `pNext` chain of `pRasterizationState` is
-`VK_LINE_RASTERIZATION_MODE_BRESENHAM` or
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH`, then the
+[VK_LINE_RASTERIZATION_MODE_BRESENHAM](primsrast.html#VkLineRasterizationModeEXT) or
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH](primsrast.html#VkLineRasterizationModeEXT), then the
 `alphaToCoverageEnable`, `alphaToOneEnable`, and
 `sampleShadingEnable` members of `pMultisampleState` **must** all
-be `VK_FALSE`
+be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-stippledLineEnable-02767) VUID-VkGraphicsPipelineCreateInfo-stippledLineEnable-02767
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), the `stippledLineEnable` member of
-[VkPipelineRasterizationLineStateCreateInfo](primsrast.html#VkPipelineRasterizationLineStateCreateInfo) is `VK_TRUE`, and
+[VkPipelineRasterizationLineStateCreateInfo](primsrast.html#VkPipelineRasterizationLineStateCreateInfo) is [VK_TRUE](fundamentals.html#VK_TRUE), and
 no element of the `pDynamicStates` member of `pDynamicState` is
-`VK_DYNAMIC_STATE_LINE_STIPPLE`, then the `lineStippleFactor`
+[VK_DYNAMIC_STATE_LINE_STIPPLE](#VkDynamicState), then the `lineStippleFactor`
 member of [VkPipelineRasterizationLineStateCreateInfo](primsrast.html#VkPipelineRasterizationLineStateCreateInfo) **must** be in
 the range [1,256]
 
@@ -4451,21 +4678,21 @@ not enabled, shaders specified by `pStages` **must** not declare the
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-10188) VUID-VkGraphicsPipelineCreateInfo-flags-10188
 
 If `flags` does not include
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`, shaders specified by
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits), shaders specified by
 `pStages` **must** not declare the `ShaderEnqueueAMDX` capability
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pStages-10189) VUID-VkGraphicsPipelineCreateInfo-pStages-10189
 
 If any shader stages in `pStages` declare the `ShaderEnqueueAMDX`
-capability, `VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX` and
-`VK_PIPELINE_CREATE_2_LIBRARY_BIT_KHR` **must** be included in
+capability, [VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX](#VkPipelineCreateFlagBits2KHR) and
+[VK_PIPELINE_CREATE_2_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits2KHR) **must** be included in
 `flags`
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-10190) VUID-VkGraphicsPipelineCreateInfo-flags-10190
 
-If `VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX` is included in
+If [VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX](#VkPipelineCreateFlagBits2KHR) is included in
 `flags`, and the pipeline requires
 [pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization), there **must** not be a task or vertex shader specified in
 `pStages`
@@ -4473,58 +4700,58 @@ If `VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX` is included in
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-10191) VUID-VkGraphicsPipelineCreateInfo-flags-10191
 
-If `VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX` is included in
+If [VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX](#VkPipelineCreateFlagBits2KHR) is included in
 `flags`, all elements of
 [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries` **must** have been
-created with `VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX`
+created with [VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX](#VkPipelineCreateFlagBits2KHR)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-03372) VUID-VkGraphicsPipelineCreateInfo-flags-03372
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-03373) VUID-VkGraphicsPipelineCreateInfo-flags-03373
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-03374) VUID-VkGraphicsPipelineCreateInfo-flags-03374
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-03375) VUID-VkGraphicsPipelineCreateInfo-flags-03375
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-03376) VUID-VkGraphicsPipelineCreateInfo-flags-03376
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-03377) VUID-VkGraphicsPipelineCreateInfo-flags-03377
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-03577) VUID-VkGraphicsPipelineCreateInfo-flags-03577
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-04947) VUID-VkGraphicsPipelineCreateInfo-flags-04947
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV`
+[VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-03378) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-03378
@@ -4537,47 +4764,47 @@ and
     create the [VkInstance](initialization.html#VkInstance) and `apiVersion` supported by the
     physical device is less than Version 1.3
     there **must** be no element of the `pDynamicStates` member of
-    `pDynamicState` set to `VK_DYNAMIC_STATE_CULL_MODE`,
-    `VK_DYNAMIC_STATE_FRONT_FACE`,
-    `VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY`,
-    `VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT`,
-    `VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT`,
-    `VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE`,
-    `VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE`,
-    `VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE`,
-    `VK_DYNAMIC_STATE_DEPTH_COMPARE_OP`,
-    `VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE`,
-    `VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE`, or
-    `VK_DYNAMIC_STATE_STENCIL_OP`
+    `pDynamicState` set to [VK_DYNAMIC_STATE_CULL_MODE](#VkDynamicState),
+    [VK_DYNAMIC_STATE_FRONT_FACE](#VkDynamicState),
+    [VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY](#VkDynamicState),
+    [VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](#VkDynamicState),
+    [VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](#VkDynamicState),
+    [VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE](#VkDynamicState),
+    [VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE](#VkDynamicState),
+    [VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE](#VkDynamicState),
+    [VK_DYNAMIC_STATE_DEPTH_COMPARE_OP](#VkDynamicState),
+    [VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE](#VkDynamicState),
+    [VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE](#VkDynamicState), or
+    [VK_DYNAMIC_STATE_STENCIL_OP](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-03379) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-03379
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), and
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` is included in the
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](#VkDynamicState) is included in the
 `pDynamicStates` array then `viewportCount` **must** be zero
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-03380) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-03380
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), and
-`VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT` is included in the
+[VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](#VkDynamicState) is included in the
 `pDynamicStates` array then `scissorCount` **must** be zero
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-04132) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-04132
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), and
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` is included in the
-`pDynamicStates` array then `VK_DYNAMIC_STATE_VIEWPORT` **must**
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](#VkDynamicState) is included in the
+`pDynamicStates` array then [VK_DYNAMIC_STATE_VIEWPORT](#VkDynamicState) **must**
 not be present
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-04133) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-04133
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), and
-`VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT` is included in the
-`pDynamicStates` array then `VK_DYNAMIC_STATE_SCISSOR` **must** not
+[VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](#VkDynamicState) is included in the
+`pDynamicStates` array then [VK_DYNAMIC_STATE_SCISSOR](#VkDynamicState) **must** not
 be present
 
 * 
@@ -4585,8 +4812,8 @@ be present
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), and includes a mesh shader, there
 **must** be no element of the `pDynamicStates` member of
-`pDynamicState` set to `VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY`, or
-`VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE`
+`pDynamicState` set to [VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY](#VkDynamicState), or
+[VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-04868) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-04868
@@ -4599,16 +4826,16 @@ and
     create the [VkInstance](initialization.html#VkInstance) and `apiVersion` supported by the
     physical device is less than Version 1.3
     there **must** be no element of the `pDynamicStates` member of
-    `pDynamicState` set to `VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE`,
-    `VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE`, or
-    `VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE`
+    `pDynamicState` set to [VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE](#VkDynamicState),
+    [VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE](#VkDynamicState), or
+    [VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-04869) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-04869
 
 If the [    `extendedDynamicState2LogicOp`](features.html#features-extendedDynamicState2LogicOp) feature is not enabled, there **must**
 be no element of the `pDynamicStates` member of `pDynamicState`
-set to `VK_DYNAMIC_STATE_LOGIC_OP_EXT`
+set to [VK_DYNAMIC_STATE_LOGIC_OP_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-04870) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-04870
@@ -4616,7 +4843,7 @@ set to `VK_DYNAMIC_STATE_LOGIC_OP_EXT`
 If the [    `extendedDynamicState2PatchControlPoints`](features.html#features-extendedDynamicState2PatchControlPoints) feature is not enabled,
 there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT`
+[VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07066) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07066
@@ -4624,14 +4851,14 @@ there **must** be no element of the `pDynamicStates` member of
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), and includes a mesh shader, there
 **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE`, or
-`VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT`
+[VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE](#VkDynamicState), or
+[VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-02877) VUID-VkGraphicsPipelineCreateInfo-flags-02877
 
 If `flags` includes
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV`, then the
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](#VkPipelineCreateFlagBits), then the
 [    `VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV`::`deviceGeneratedCommands`](features.html#features-deviceGeneratedCommandsNV)
 feature **must** be enabled
 
@@ -4639,7 +4866,7 @@ feature **must** be enabled
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-02966) VUID-VkGraphicsPipelineCreateInfo-flags-02966
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) and `flags` includes
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV`, then all stages **must**
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](#VkPipelineCreateFlagBits), then all stages **must**
 not specify `Xfb` execution mode
 
 * 
@@ -4666,7 +4893,7 @@ be greater than `0`
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-11000) VUID-VkGraphicsPipelineCreateInfo-flags-11000
 
 If `flags` includes
-`VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT`, then the
+[VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT](#VkPipelineCreateFlagBits2KHR), then the
 [    `VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT`::`deviceGeneratedCommands`](features.html#features-deviceGeneratedCommands)
 feature **must** be enabled
 
@@ -4674,37 +4901,15 @@ feature **must** be enabled
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-11001) VUID-VkGraphicsPipelineCreateInfo-flags-11001
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) and `flags` includes
-`VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT`, then all stages
+[VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT](#VkPipelineCreateFlagBits2KHR), then all stages
 **must** not specify `Xfb` execution mode
-
-* 
-[](#VUID-VkGraphicsPipelineCreateInfo-pipelineCreationCacheControl-02878) VUID-VkGraphicsPipelineCreateInfo-pipelineCreationCacheControl-02878
-
-If the [    `pipelineCreationCacheControl`](features.html#features-pipelineCreationCacheControl) feature is not enabled, `flags`
-**must** not include
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT` or
-`VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT`
-
-* 
-[](#VUID-VkGraphicsPipelineCreateInfo-pipelineProtectedAccess-07368) VUID-VkGraphicsPipelineCreateInfo-pipelineProtectedAccess-07368
-
-If the [    `pipelineProtectedAccess`](features.html#features-pipelineProtectedAccess) feature is not enabled, `flags`
-**must** not include `VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT` or
-`VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT`
-
-* 
-[](#VUID-VkGraphicsPipelineCreateInfo-flags-07369) VUID-VkGraphicsPipelineCreateInfo-flags-07369
-
-`flags` **must** not include both
-`VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT` and
-`VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT`
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicState-04494) VUID-VkGraphicsPipelineCreateInfo-pDynamicState-04494
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) or
 [fragment shader state](#pipelines-graphics-subsets-fragment-shader)
-and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+and [VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`,
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR)::`fragmentSize.width`
 **must** be greater than or equal to `1`
@@ -4714,7 +4919,7 @@ and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) or
 [fragment shader state](#pipelines-graphics-subsets-fragment-shader)
-and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+and [VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`,
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR)::`fragmentSize.height`
 **must** be greater than or equal to `1`
@@ -4724,7 +4929,7 @@ and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) or
 [fragment shader state](#pipelines-graphics-subsets-fragment-shader)
-and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+and [VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`,
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR)::`fragmentSize.width`
 **must** be a power-of-two value
@@ -4734,7 +4939,7 @@ and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) or
 [fragment shader state](#pipelines-graphics-subsets-fragment-shader)
-and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+and [VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`,
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR)::`fragmentSize.height`
 **must** be a power-of-two value
@@ -4744,7 +4949,7 @@ and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) or
 [fragment shader state](#pipelines-graphics-subsets-fragment-shader)
-and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+and [VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`,
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR)::`fragmentSize.width`
 **must** be less than or equal to `4`
@@ -4754,7 +4959,7 @@ and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) or
 [fragment shader state](#pipelines-graphics-subsets-fragment-shader)
-and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+and [VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`,
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR)::`fragmentSize.height`
 **must** be less than or equal to `4`
@@ -4764,7 +4969,7 @@ and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) or
 [fragment shader state](#pipelines-graphics-subsets-fragment-shader)
-and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+and [VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`, and the
 [    `pipelineFragmentShadingRate`](features.html#features-pipelineFragmentShadingRate) feature is not enabled,
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR)::`fragmentSize.width`
@@ -4777,7 +4982,7 @@ and
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) or
 [fragment shader state](#pipelines-graphics-subsets-fragment-shader)
-and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+and [VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`,
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR)::`combinerOps`[0]
 **must** be a valid [VkFragmentShadingRateCombinerOpKHR](primsrast.html#VkFragmentShadingRateCombinerOpKHR) value
@@ -4787,7 +4992,7 @@ and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) or
 [fragment shader state](#pipelines-graphics-subsets-fragment-shader)
-and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+and [VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`,
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR)::`combinerOps`[1]
 **must** be a valid [VkFragmentShadingRateCombinerOpKHR](primsrast.html#VkFragmentShadingRateCombinerOpKHR) value
@@ -4797,29 +5002,29 @@ and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) or
 [fragment shader state](#pipelines-graphics-subsets-fragment-shader)
-and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+and [VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`, and the
 [    `primitiveFragmentShadingRate`](features.html#features-primitiveFragmentShadingRate) feature is not enabled,
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR)::`combinerOps`[0]
-**must** be `VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR`
+**must** be [VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](primsrast.html#VkFragmentShadingRateCombinerOpKHR)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicState-04502) VUID-VkGraphicsPipelineCreateInfo-pDynamicState-04502
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) or
 [fragment shader state](#pipelines-graphics-subsets-fragment-shader)
-and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+and [VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`, and the
 [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) feature is not enabled,
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR)::`combinerOps`[1]
-**must** be `VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR`
+**must** be [VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](primsrast.html#VkFragmentShadingRateCombinerOpKHR)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-primitiveFragmentShadingRateWithMultipleViewports-04503) VUID-VkGraphicsPipelineCreateInfo-primitiveFragmentShadingRateWithMultipleViewports-04503
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) and the
 [    `primitiveFragmentShadingRateWithMultipleViewports`](limits.html#limits-primitiveFragmentShadingRateWithMultipleViewports) limit is not
-supported, `VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` is not included in
+supported, [VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`, and
 [VkPipelineViewportStateCreateInfo](vertexpostproc.html#VkPipelineViewportStateCreateInfo)::`viewportCount` is greater
 than `1`, entry points specified in `pStages` **must** not write to the
@@ -4849,17 +5054,17 @@ supported, and entry points specified in `pStages` write to the
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) or
 [fragment shader state](#pipelines-graphics-subsets-fragment-shader),
 the [    `fragmentShadingRateNonTrivialCombinerOps`](limits.html#limits-fragmentShadingRateNonTrivialCombinerOps) limit is not supported,
-and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+and [VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`, elements of
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR)::`combinerOps`
-**must** be `VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR` or
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR`
+**must** be [VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](primsrast.html#VkFragmentShadingRateCombinerOpKHR) or
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR](primsrast.html#VkFragmentShadingRateCombinerOpKHR)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-None-06569) VUID-VkGraphicsPipelineCreateInfo-None-06569
 
  If the pipeline requires [     fragment shader state](#pipelines-graphics-subsets-fragment-shader)
-and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+and [VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`,
 [VkPipelineFragmentShadingRateEnumStateCreateInfoNV](primsrast.html#VkPipelineFragmentShadingRateEnumStateCreateInfoNV)::`shadingRateType`
 **must** be a valid [VkFragmentShadingRateTypeNV](primsrast.html#VkFragmentShadingRateTypeNV) value
@@ -4868,7 +5073,7 @@ and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicState-06570) VUID-VkGraphicsPipelineCreateInfo-pDynamicState-06570
 
 If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets-fragment-shader) and
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`,
 [VkPipelineFragmentShadingRateEnumStateCreateInfoNV](primsrast.html#VkPipelineFragmentShadingRateEnumStateCreateInfoNV)::`shadingRate`
 **must** be a valid [VkFragmentShadingRateNV](primsrast.html#VkFragmentShadingRateNV) value
@@ -4877,7 +5082,7 @@ If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicState-06571) VUID-VkGraphicsPipelineCreateInfo-pDynamicState-06571
 
 If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets-fragment-shader) and
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`,
 [VkPipelineFragmentShadingRateEnumStateCreateInfoNV](primsrast.html#VkPipelineFragmentShadingRateEnumStateCreateInfoNV)::`combinerOps`[0]
 **must** be a valid [VkFragmentShadingRateCombinerOpKHR](primsrast.html#VkFragmentShadingRateCombinerOpKHR) value
@@ -4886,7 +5091,7 @@ If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicState-06572) VUID-VkGraphicsPipelineCreateInfo-pDynamicState-06572
 
 If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets-fragment-shader) and
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`,
 [VkPipelineFragmentShadingRateEnumStateCreateInfoNV](primsrast.html#VkPipelineFragmentShadingRateEnumStateCreateInfoNV)::`combinerOps`[1]
 **must** be a valid [VkFragmentShadingRateCombinerOpKHR](primsrast.html#VkFragmentShadingRateCombinerOpKHR) value
@@ -4895,54 +5100,54 @@ If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicState-04569) VUID-VkGraphicsPipelineCreateInfo-pDynamicState-04569
 
 If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets-fragment-shader) and
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`, and the
 [`fragmentShadingRateEnums`](features.html#features-fragmentShadingRateEnums)
 feature is not enabled,
 [VkPipelineFragmentShadingRateEnumStateCreateInfoNV](primsrast.html#VkPipelineFragmentShadingRateEnumStateCreateInfoNV)::`shadingRateType`
-**must** be equal to `VK_FRAGMENT_SHADING_RATE_TYPE_FRAGMENT_SIZE_NV`
+**must** be equal to [VK_FRAGMENT_SHADING_RATE_TYPE_FRAGMENT_SIZE_NV](primsrast.html#VkFragmentShadingRateTypeNV)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicState-04570) VUID-VkGraphicsPipelineCreateInfo-pDynamicState-04570
 
 If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets-fragment-shader) and
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`, and the
 [    `pipelineFragmentShadingRate`](features.html#features-pipelineFragmentShadingRate) feature is not enabled,
 [VkPipelineFragmentShadingRateEnumStateCreateInfoNV](primsrast.html#VkPipelineFragmentShadingRateEnumStateCreateInfoNV)::`shadingRate`
 **must** be equal to
-`VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV`
+[VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV](primsrast.html#VkFragmentShadingRateNV)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicState-04571) VUID-VkGraphicsPipelineCreateInfo-pDynamicState-04571
 
 If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets-fragment-shader) and
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`, and the
 [    `primitiveFragmentShadingRate`](features.html#features-primitiveFragmentShadingRate) feature is not enabled,
 [VkPipelineFragmentShadingRateEnumStateCreateInfoNV](primsrast.html#VkPipelineFragmentShadingRateEnumStateCreateInfoNV)::`combinerOps`[0]
-**must** be `VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR`
+**must** be [VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](primsrast.html#VkFragmentShadingRateCombinerOpKHR)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicState-04572) VUID-VkGraphicsPipelineCreateInfo-pDynamicState-04572
 
 If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets-fragment-shader) and
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`, and the
 [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) feature is not enabled,
 [VkPipelineFragmentShadingRateEnumStateCreateInfoNV](primsrast.html#VkPipelineFragmentShadingRateEnumStateCreateInfoNV)::`combinerOps`[1]
-**must** be `VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR`
+**must** be [VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](primsrast.html#VkFragmentShadingRateCombinerOpKHR)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-fragmentShadingRateNonTrivialCombinerOps-04573) VUID-VkGraphicsPipelineCreateInfo-fragmentShadingRateNonTrivialCombinerOps-04573
 
 If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets-fragment-shader), and the
 [    `fragmentShadingRateNonTrivialCombinerOps`](limits.html#limits-fragmentShadingRateNonTrivialCombinerOps) limit is not supported
-and `VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` is not included in
+and [VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) is not included in
 `pDynamicState->pDynamicStates`, elements of
 [VkPipelineFragmentShadingRateEnumStateCreateInfoNV](primsrast.html#VkPipelineFragmentShadingRateEnumStateCreateInfoNV)::`combinerOps`
-**must** be `VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR` or
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR`
+**must** be [VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](primsrast.html#VkFragmentShadingRateCombinerOpKHR) or
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR](primsrast.html#VkFragmentShadingRateCombinerOpKHR)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-None-04574) VUID-VkGraphicsPipelineCreateInfo-None-04574
@@ -4951,10 +5156,10 @@ If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets
 [    `supersampleFragmentShadingRates`](features.html#features-supersampleFragmentShadingRates) feature is not enabled,
 [VkPipelineFragmentShadingRateEnumStateCreateInfoNV](primsrast.html#VkPipelineFragmentShadingRateEnumStateCreateInfoNV)::`shadingRate`
 **must** not be equal to
-`VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV`,
-`VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV`,
-`VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV`, or
-`VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV`
+[VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV](primsrast.html#VkFragmentShadingRateNV),
+[VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV](primsrast.html#VkFragmentShadingRateNV),
+[VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV](primsrast.html#VkFragmentShadingRateNV), or
+[VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV](primsrast.html#VkFragmentShadingRateNV)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-None-04575) VUID-VkGraphicsPipelineCreateInfo-None-04575
@@ -4962,13 +5167,13 @@ If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets
 If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets-fragment-shader), and the
 [    `noInvocationFragmentShadingRates`](features.html#features-noInvocationFragmentShadingRates) feature is not enabled,
 [VkPipelineFragmentShadingRateEnumStateCreateInfoNV](primsrast.html#VkPipelineFragmentShadingRateEnumStateCreateInfoNV)::`shadingRate`
-**must** not be equal to `VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV`
+**must** not be equal to [VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV](primsrast.html#VkFragmentShadingRateNV)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-03578) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-03578
 
 All elements of the `pDynamicStates` member of `pDynamicState`
-**must** not be `VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR`
+**must** not be [VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-04807) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-04807
@@ -4977,14 +5182,14 @@ If the pipeline requires [    pre-rasterization shader state](#pipelines-graphic
 [`vertexInputDynamicState`](features.html#features-vertexInputDynamicState)
 feature is not enabled, there **must** be no element of the
 `pDynamicStates` member of `pDynamicState` set to
-`VK_DYNAMIC_STATE_VERTEX_INPUT_EXT`
+[VK_DYNAMIC_STATE_VERTEX_INPUT_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07067) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07067
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), and includes a mesh shader, there
 **must** be no element of the `pDynamicStates` member of
-`pDynamicState` set to `VK_DYNAMIC_STATE_VERTEX_INPUT_EXT`
+`pDynamicState` set to [VK_DYNAMIC_STATE_VERTEX_INPUT_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-04800) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-04800
@@ -4992,7 +5197,7 @@ If the pipeline requires [    pre-rasterization shader state](#pipelines-graphic
 If the [`colorWriteEnable`](features.html#features-colorWriteEnable) feature is
 not enabled, there **must** be no element of the `pDynamicStates`
 member of `pDynamicState` set to
-`VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT`
+[VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-rasterizationSamples-04899) VUID-VkGraphicsPipelineCreateInfo-rasterizationSamples-04899
@@ -5003,7 +5208,7 @@ or
     the [`customResolve`](features.html#features-customResolve) feature
     is enabled, `rasterizationSamples` is not dynamic, and if subpass
     has any input attachments, and if the subpass description contains
-    `VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT`, then the sample
+    [VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT](renderpass.html#VkSubpassDescriptionFlagBits), then the sample
     count of the input attachments **must** equal `rasterizationSamples`
 
 * 
@@ -5014,7 +5219,7 @@ or
 or
     the [`customResolve`](features.html#features-customResolve) feature
     is enabled, and if the subpass description contains
-    `VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT`, then
+    [VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT](renderpass.html#VkSubpassDescriptionFlagBits), then
     `sampleShadingEnable` **must** be false
 
 * 
@@ -5068,10 +5273,10 @@ be a valid [VkFormat](formats.html#VkFormat) value
 If the pipeline requires [    fragment output interface state](#pipelines-graphics-subsets-fragment-output), `renderPass` is
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and any element of
 [VkPipelineRenderingCreateInfo](#VkPipelineRenderingCreateInfo)::`pColorAttachmentFormats` is
-not `VK_FORMAT_UNDEFINED`, that format **must** be a format with
+not [VK_FORMAT_UNDEFINED](formats.html#VkFormat), that format **must** be a format with
 [potential format features](formats.html#potential-format-features) that include
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT`
-or `VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV`
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
+or [VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-renderPass-06583) VUID-VkGraphicsPipelineCreateInfo-renderPass-06583
@@ -5095,9 +5300,9 @@ be a valid [VkFormat](formats.html#VkFormat) value
 If the pipeline requires [    fragment output interface state](#pipelines-graphics-subsets-fragment-output), `renderPass` is
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and
 [VkPipelineRenderingCreateInfo](#VkPipelineRenderingCreateInfo)::`depthAttachmentFormat` is not
-`VK_FORMAT_UNDEFINED`, it **must** be a format with
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat), it **must** be a format with
 [potential format features](formats.html#potential-format-features) that include
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-renderPass-06586) VUID-VkGraphicsPipelineCreateInfo-renderPass-06586
@@ -5105,9 +5310,9 @@ If the pipeline requires [    fragment output interface state](#pipelines-graphi
 If the pipeline requires [    fragment output interface state](#pipelines-graphics-subsets-fragment-output), `renderPass` is
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and
 [VkPipelineRenderingCreateInfo](#VkPipelineRenderingCreateInfo)::`stencilAttachmentFormat` is
-not `VK_FORMAT_UNDEFINED`, it **must** be a format with
+not [VK_FORMAT_UNDEFINED](formats.html#VkFormat), it **must** be a format with
 [potential format features](formats.html#potential-format-features) that include
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-renderPass-06587) VUID-VkGraphicsPipelineCreateInfo-renderPass-06587
@@ -5115,7 +5320,7 @@ not `VK_FORMAT_UNDEFINED`, it **must** be a format with
 If the pipeline requires [    fragment output interface state](#pipelines-graphics-subsets-fragment-output), `renderPass` is
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and
 [VkPipelineRenderingCreateInfo](#VkPipelineRenderingCreateInfo)::`depthAttachmentFormat` is not
-`VK_FORMAT_UNDEFINED`, it **must** be a format that includes a depth
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat), it **must** be a format that includes a depth
 component
 
 * 
@@ -5124,7 +5329,7 @@ component
 If the pipeline requires [    fragment output interface state](#pipelines-graphics-subsets-fragment-output), `renderPass` is
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and
 [VkPipelineRenderingCreateInfo](#VkPipelineRenderingCreateInfo)::`stencilAttachmentFormat` is
-not `VK_FORMAT_UNDEFINED`, it **must** be a format that includes a
+not [VK_FORMAT_UNDEFINED](formats.html#VkFormat), it **must** be a format that includes a
 stencil component
 
 * 
@@ -5133,9 +5338,9 @@ stencil component
 If the pipeline requires [    fragment output interface state](#pipelines-graphics-subsets-fragment-output), `renderPass` is
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 [VkPipelineRenderingCreateInfo](#VkPipelineRenderingCreateInfo)::`depthAttachmentFormat` is not
-`VK_FORMAT_UNDEFINED`, and
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat), and
 [VkPipelineRenderingCreateInfo](#VkPipelineRenderingCreateInfo)::`stencilAttachmentFormat` is
-not `VK_FORMAT_UNDEFINED`, `depthAttachmentFormat` **must** equal
+not [VK_FORMAT_UNDEFINED](formats.html#VkFormat), `depthAttachmentFormat` **must** equal
 `stencilAttachmentFormat`
 
 * 
@@ -5145,15 +5350,15 @@ If `renderPass` is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDL
 created with [fragment    shader state](#pipelines-graphics-subsets-fragment-shader) and [    fragment output interface state](#pipelines-graphics-subsets-fragment-output), and either of
 [VkPipelineRenderingCreateInfo](#VkPipelineRenderingCreateInfo)::`depthAttachmentFormat` or
 [VkPipelineRenderingCreateInfo](#VkPipelineRenderingCreateInfo)::`stencilAttachmentFormat` are
-not `VK_FORMAT_UNDEFINED`,
+not [VK_FORMAT_UNDEFINED](formats.html#VkFormat),
 and the `[VK_EXT_extended_dynamic_state3](../appendices/extensions.html#VK_EXT_extended_dynamic_state3)` extension is not enabled
-or any of the `VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE`,
-`VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE`,
-`VK_DYNAMIC_STATE_DEPTH_COMPARE_OP`,
-`VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE`,
-`VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE`,
-`VK_DYNAMIC_STATE_STENCIL_OP`, or
-`VK_DYNAMIC_STATE_DEPTH_BOUNDS` dynamic states are not set,
+or any of the [VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE](#VkDynamicState),
+[VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE](#VkDynamicState),
+[VK_DYNAMIC_STATE_DEPTH_COMPARE_OP](#VkDynamicState),
+[VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE](#VkDynamicState),
+[VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE](#VkDynamicState),
+[VK_DYNAMIC_STATE_STENCIL_OP](#VkDynamicState), or
+[VK_DYNAMIC_STATE_DEPTH_BOUNDS](#VkDynamicState) dynamic states are not set,
 `pDepthStencilState` **must** be a valid pointer to a valid
 [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) structure
 
@@ -5169,13 +5374,13 @@ a valid [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthSten
 If `renderPass` is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and the pipeline is being
 created with [fragment    shader state](#pipelines-graphics-subsets-fragment-shader) but not [    fragment output interface state](#pipelines-graphics-subsets-fragment-output),
 and the `[VK_EXT_extended_dynamic_state3](../appendices/extensions.html#VK_EXT_extended_dynamic_state3)` extension is not
-enabled, or any of the `VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE`,
-`VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE`,
-`VK_DYNAMIC_STATE_DEPTH_COMPARE_OP`,
-`VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE`,
-`VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE`,
-`VK_DYNAMIC_STATE_STENCIL_OP`, or
-`VK_DYNAMIC_STATE_DEPTH_BOUNDS` dynamic states are not set,
+enabled, or any of the [VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE](#VkDynamicState),
+[VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE](#VkDynamicState),
+[VK_DYNAMIC_STATE_DEPTH_COMPARE_OP](#VkDynamicState),
+[VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE](#VkDynamicState),
+[VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE](#VkDynamicState),
+[VK_DYNAMIC_STATE_STENCIL_OP](#VkDynamicState), or
+[VK_DYNAMIC_STATE_DEPTH_BOUNDS](#VkDynamicState) dynamic states are not set,
 `pDepthStencilState` **must** be a valid pointer to a valid
 [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) structure
 
@@ -5191,14 +5396,14 @@ a valid [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthSten
 If `renderPass` is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the pipeline is being
 created with [fragment    output interface state](#pipelines-graphics-subsets-fragment-output), and any element of
 [VkPipelineRenderingCreateInfo](#VkPipelineRenderingCreateInfo)::`pColorAttachmentFormats` is
-not `VK_FORMAT_UNDEFINED`,
+not [VK_FORMAT_UNDEFINED](formats.html#VkFormat),
 and the `[VK_EXT_extended_dynamic_state3](../appendices/extensions.html#VK_EXT_extended_dynamic_state3)` extension is not
-enabled, or any of the `VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT`,
-`VK_DYNAMIC_STATE_LOGIC_OP_EXT`,
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT`,
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT`,
-`VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT`, or
-`VK_DYNAMIC_STATE_BLEND_CONSTANTS` dynamic states are not set,
+enabled, or any of the [VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT](#VkDynamicState),
+[VK_DYNAMIC_STATE_LOGIC_OP_EXT](#VkDynamicState),
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](#VkDynamicState),
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](#VkDynamicState),
+[VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](#VkDynamicState), or
+[VK_DYNAMIC_STATE_BLEND_CONSTANTS](#VkDynamicState) dynamic states are not set,
 `pColorBlendState` **must** be a valid pointer to a valid
 [VkPipelineColorBlendStateCreateInfo](framebuffer.html#VkPipelineColorBlendStateCreateInfo) structure
 
@@ -5264,6 +5469,15 @@ created with [    pre-rasterization shader state](#pipelines-graphics-subsets-pr
 include a mesh shader
 
 * 
+[](#VUID-VkGraphicsPipelineCreateInfo-renderPass-12326) VUID-VkGraphicsPipelineCreateInfo-renderPass-12326
+
+If `renderPass` is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the pipeline is being
+created with [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), `pStages` include a mesh shader,
+and [VkPipelineRenderingCreateInfo](#VkPipelineRenderingCreateInfo)::`viewMask` is not `0`, then
+the index of the most significant bit in `viewMask` **must** be less
+than [    `maxMeshMultiviewViewCount`](limits.html#limits-maxMeshMultiviewViewCount)
+
+* 
 [](#VUID-VkGraphicsPipelineCreateInfo-renderPass-06061) VUID-VkGraphicsPipelineCreateInfo-renderPass-06061
 
 If
@@ -5289,10 +5503,10 @@ If the pipeline requires [    fragment output interface state](#pipelines-graphi
 `pColorAttachmentFormats` member of
 [VkPipelineRenderingCreateInfo](#VkPipelineRenderingCreateInfo), if its
 [potential format features](formats.html#potential-format-features) do not contain
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT`, then the
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT](formats.html#VkFormatFeatureFlagBits), then the
 `blendEnable` member of the corresponding element of the
 `pAttachments` member of `pColorBlendState` **must** be
-`VK_FALSE`
+[VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-renderPass-06063) VUID-VkGraphicsPipelineCreateInfo-renderPass-06063
@@ -5311,9 +5525,9 @@ If `pStages` includes a fragment shader stage, and the fragment
 shader declares the `EarlyFragmentTests` execution mode, the
 `flags` member of [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) **must**
 not include
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT`
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT](fragops.html#VkPipelineDepthStencilStateCreateFlagBits)
 or
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT`
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT](fragops.html#VkPipelineDepthStencilStateCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06482) VUID-VkGraphicsPipelineCreateInfo-flags-06482
@@ -5322,7 +5536,7 @@ If
 the [    `dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead) feature is not enabled,
 the pipeline requires [    fragment output interface state](#pipelines-graphics-subsets-fragment-output), and the `flags` member of
 [VkPipelineColorBlendStateCreateInfo](framebuffer.html#VkPipelineColorBlendStateCreateInfo) includes
-`VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT`,
+[VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT](framebuffer.html#VkPipelineColorBlendStateCreateFlagBits),
 `renderPass` **must** not be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
@@ -5332,9 +5546,9 @@ If
 the [    `dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead) feature is not enabled,
 the pipeline requires [    fragment output interface state](#pipelines-graphics-subsets-fragment-output), and the `flags` member of
 [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) includes
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT`
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT](fragops.html#VkPipelineDepthStencilStateCreateFlagBits)
 or
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT`,
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT](fragops.html#VkPipelineDepthStencilStateCreateFlagBits),
 `renderPass` **must** not be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
@@ -5359,9 +5573,9 @@ If the [fragment output    interface state](#pipelines-graphics-subsets-fragment
 If the pipeline requires [    fragment output interface state](#pipelines-graphics-subsets-fragment-output), `renderPass` is not
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and the `flags` member of
 [VkPipelineColorBlendStateCreateInfo](framebuffer.html#VkPipelineColorBlendStateCreateInfo) includes
-`VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT`
+[VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT](framebuffer.html#VkPipelineColorBlendStateCreateFlagBits)
 `subpass` **must** have been created with
-`VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_COLOR_ACCESS_BIT_EXT`
+[VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_COLOR_ACCESS_BIT_EXT](renderpass.html#VkSubpassDescriptionFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-renderPass-09528) VUID-VkGraphicsPipelineCreateInfo-renderPass-09528
@@ -5369,9 +5583,9 @@ If the pipeline requires [    fragment output interface state](#pipelines-graphi
 If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets-fragment-shader), `renderPass` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 and the `flags` member of
 [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) includes
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT`,
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT](fragops.html#VkPipelineDepthStencilStateCreateFlagBits),
 `subpass` **must** have been created with
-`VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT`
+[VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT](renderpass.html#VkSubpassDescriptionFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-renderPass-09529) VUID-VkGraphicsPipelineCreateInfo-renderPass-09529
@@ -5379,9 +5593,9 @@ and the `flags` member of
 If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets-fragment-shader), `renderPass` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 and the `flags` member of
 [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) includes
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT`,
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT](fragops.html#VkPipelineDepthStencilStateCreateFlagBits),
 `subpass` **must** have been created with
-`VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT`
+[VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT](renderpass.html#VkSubpassDescriptionFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pipelineStageCreationFeedbackCount-06594) VUID-VkGraphicsPipelineCreateInfo-pipelineStageCreationFeedbackCount-06594
@@ -5398,17 +5612,17 @@ created with [    pre-rasterization shader state](#pipelines-graphics-subsets-pr
 [fragment shader state](#pipelines-graphics-subsets-fragment-shader),
 and
 [VkMultiviewPerViewAttributesInfoNVX](renderpass.html#VkMultiviewPerViewAttributesInfoNVX)::`perViewAttributesPositionXOnly`
-is `VK_TRUE` then
+is [VK_TRUE](fundamentals.html#VK_TRUE) then
 [VkMultiviewPerViewAttributesInfoNVX](renderpass.html#VkMultiviewPerViewAttributesInfoNVX)::`perViewAttributes` **must**
-also be `VK_TRUE`
+also be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06596) VUID-VkGraphicsPipelineCreateInfo-flags-06596
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
 only one of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, and an
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), and an
 element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes the other flag, the value of
 [VkMultiviewPerViewAttributesInfoNVX](renderpass.html#VkMultiviewPerViewAttributesInfoNVX)::`perViewAttributes`
@@ -5419,9 +5633,9 @@ specified in both this pipeline and the library **must** be equal
 
 If one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` and
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) and
 another element includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, the value of
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), the value of
 [VkMultiviewPerViewAttributesInfoNVX](renderpass.html#VkMultiviewPerViewAttributesInfoNVX)::`perViewAttributes`
 specified in both libraries **must** be equal
 
@@ -5430,8 +5644,8 @@ specified in both libraries **must** be equal
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
 only one of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, and an
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), and an
 element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes the other flag, the value of
 [VkMultiviewPerViewAttributesInfoNVX](renderpass.html#VkMultiviewPerViewAttributesInfoNVX)::`perViewAttributesPositionXOnly`
@@ -5442,9 +5656,9 @@ specified in both this pipeline and the library **must** be equal
 
 If one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` and
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) and
 another element includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, the value of
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), the value of
 [VkMultiviewPerViewAttributesInfoNVX](renderpass.html#VkMultiviewPerViewAttributesInfoNVX)::`perViewAttributesPositionXOnly`
 specified in both libraries **must** be equal
 
@@ -5475,7 +5689,7 @@ and [related dynamic state is not    set](#pipelines-pRasterizationState-null),
 
 If
 [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 and
 [related dynamic state is not set](#pipelines-pMultisampleState-null),
 then `pMultisampleState` **must** be a valid pointer to a valid
@@ -5491,7 +5705,10 @@ to a valid [VkPipelineRasterizationStateCreateInfo](primsrast.html#VkPipelineRas
 [](#VUID-VkGraphicsPipelineCreateInfo-layout-06602) VUID-VkGraphicsPipelineCreateInfo-layout-06602
 
 If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets-fragment-shader) or
-[pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization), `layout` **must** be a valid [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) handle
+[pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization),
+and [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not
+include [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+`layout` **must** be a valid [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) handle
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-renderPass-06603) VUID-VkGraphicsPipelineCreateInfo-renderPass-06603
@@ -5515,7 +5732,7 @@ If the pipeline requires [    pre-rasterization shader state](#pipelines-graphic
 and if
     the [`shaderMeshEnqueue`](features.html#features-shaderMeshEnqueue) feature is
     not enabled,
-    `flags` **must** not include `VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`
+    `flags` **must** not include [VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06608) VUID-VkGraphicsPipelineCreateInfo-flags-06608
@@ -5524,32 +5741,32 @@ If the [`shaderMeshEnqueue`](features.html#features-shaderMeshEnqueue) feature i
 not enabled, and
 the pipeline is being created with
 [all possible state subsets](#pipelines-graphics-subsets-complete),
-`flags` **must** not include `VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`
+`flags` **must** not include [VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06609) VUID-VkGraphicsPipelineCreateInfo-flags-06609
 
 If `flags` includes
-`VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT`, pipeline
+[VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT](#VkPipelineCreateFlagBits), pipeline
 libraries included via [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR) **must** have
 been created with
-`VK_PIPELINE_CREATE_RETAIN_LINK_TIME_OPTIMIZATION_INFO_BIT_EXT`
+[VK_PIPELINE_CREATE_RETAIN_LINK_TIME_OPTIMIZATION_INFO_BIT_EXT](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-09245) VUID-VkGraphicsPipelineCreateInfo-flags-09245
 
 If `flags` includes
-`VK_PIPELINE_CREATE_RETAIN_LINK_TIME_OPTIMIZATION_INFO_BIT_EXT`,
-`flags` **must** also include `VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`
+[VK_PIPELINE_CREATE_RETAIN_LINK_TIME_OPTIMIZATION_INFO_BIT_EXT](#VkPipelineCreateFlagBits),
+`flags` **must** also include [VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06610) VUID-VkGraphicsPipelineCreateInfo-flags-06610
 
 If `flags` includes
-`VK_PIPELINE_CREATE_RETAIN_LINK_TIME_OPTIMIZATION_INFO_BIT_EXT`,
+[VK_PIPELINE_CREATE_RETAIN_LINK_TIME_OPTIMIZATION_INFO_BIT_EXT](#VkPipelineCreateFlagBits),
 pipeline libraries included via [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)
 **must** have been created with
-`VK_PIPELINE_CREATE_RETAIN_LINK_TIME_OPTIMIZATION_INFO_BIT_EXT`
+[VK_PIPELINE_CREATE_RETAIN_LINK_TIME_OPTIMIZATION_INFO_BIT_EXT](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pLibraries-06611) VUID-VkGraphicsPipelineCreateInfo-pLibraries-06611
@@ -5563,65 +5780,80 @@ structure or defined by any other pipeline library in
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06612) VUID-VkGraphicsPipelineCreateInfo-flags-06612
 
-If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-only one of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, and an
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+[VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes only
+one of
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), and an
 element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes the other flag, and `layout` was not created with
-`VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT`, then the
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits), then the
 `layout` used by this pipeline and the library **must** be *identically
 defined*
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pLibraries-06613) VUID-VkGraphicsPipelineCreateInfo-pLibraries-06613
 
-If one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` and
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) and
 another element includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, and the
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), and the
 `layout` specified by either library was not created with
-`VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT`, then the
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits), then the
 `layout` used by each library **must** be
 [identically defined](../appendices/glossary.html#glossary-identically-defined)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06614) VUID-VkGraphicsPipelineCreateInfo-flags-06614
 
-If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-only one of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, an element
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+[VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes only
+one of
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), an element
 of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries` includes the
 other subset, and `layout` was created with
-`VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT`, then the
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits), then the
 `layout` used by the library **must** also have been created with
-`VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT`
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pLibraries-06615) VUID-VkGraphicsPipelineCreateInfo-pLibraries-06615
 
-If one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` and
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) and
 another element includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, and the
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), and the
 `layout` specified by either library was created with
-`VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT`, then the
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits), then the
 `layout` used by both libraries **must** have been created with
-`VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT`
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06616) VUID-VkGraphicsPipelineCreateInfo-flags-06616
 
-If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-only one of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, an element
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+[VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes only
+one of
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), an element
 of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries` includes the
 other subset, and `layout` was created with
-`VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT`, elements of
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits), elements of
 the `pSetLayouts` array which `layout` was created with that are
 not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) **must** be
 [identically defined](../appendices/glossary.html#glossary-identically-defined) to the element at
@@ -5631,13 +5863,16 @@ the same index of `pSetLayouts` used to create the library’s
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pLibraries-06617) VUID-VkGraphicsPipelineCreateInfo-pLibraries-06617
 
-If one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` and
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) and
 another element includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, and the
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), and the
 `layout` specified by either library was created with
-`VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT`, elements of
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits), elements of
 the `pSetLayouts` array which either `layout` was created with
 that are not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) **must** be
 [identically defined](../appendices/glossary.html#glossary-identically-defined) to the element at
@@ -5647,10 +5882,13 @@ the same index of `pSetLayouts` used to create the other library’s
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06618) VUID-VkGraphicsPipelineCreateInfo-flags-06618
 
-If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-only one of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, and an
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+[VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes only
+one of
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), and an
 element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes the other flag, any descriptor set layout *N* specified by
 `layout` in both this pipeline and the library which include
@@ -5660,11 +5898,14 @@ defined*
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pLibraries-06619) VUID-VkGraphicsPipelineCreateInfo-pLibraries-06619
 
-If one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` and
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) and
 another element includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, any
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), any
 descriptor set layout *N* specified by `layout` in both libraries
 which include bindings accessed by shader stages in each **must** be
 [identically defined](../appendices/glossary.html#glossary-identically-defined)
@@ -5672,10 +5913,13 @@ which include bindings accessed by shader stages in each **must** be
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06620) VUID-VkGraphicsPipelineCreateInfo-flags-06620
 
-If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-only one of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, and an
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+[VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes only
+one of
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), and an
 element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes the other flag, push constants specified in `layout` in
 both this pipeline and the library which are available to shader stages
@@ -5684,11 +5928,14 @@ in each **must** be [identically defined](../appendices/glossary.html#glossary-i
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pLibraries-06621) VUID-VkGraphicsPipelineCreateInfo-pLibraries-06621
 
-If one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR), and
+one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` and
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) and
 another element includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, push
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), push
 constants specified in `layout` in both this pipeline and the
 library which are available to shader stages in each **must** be
 [identically defined](../appendices/glossary.html#glossary-identically-defined)
@@ -5696,10 +5943,13 @@ library which are available to shader stages in each **must** be
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06679) VUID-VkGraphicsPipelineCreateInfo-flags-06679
 
-If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-only one of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, an element
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR), and
+[VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes only
+one of
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), an element
 of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries` includes the
 other subset, any element of the `pSetLayouts` array when
 `layout` was created and the corresponding element of the
@@ -5709,11 +5959,14 @@ not both be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pLibraries-06681) VUID-VkGraphicsPipelineCreateInfo-pLibraries-06681
 
-If one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` and
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) and
 another element includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, and any
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), and any
 element of the `pSetLayouts` array used to create each library’s
 `layout` was [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), then the corresponding element of
 the `pSetLayouts` array used to create the other library’s
@@ -5722,10 +5975,13 @@ the `pSetLayouts` array used to create the other library’s
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06756) VUID-VkGraphicsPipelineCreateInfo-flags-06756
 
-If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-only one of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, an element
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+[VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes only
+one of
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), an element
 of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries` includes the
 other subset, and any element of the `pSetLayouts` array which
 `layout` was created with was [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), then the
@@ -5736,10 +5992,13 @@ other subset
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06757) VUID-VkGraphicsPipelineCreateInfo-flags-06757
 
-If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-only one of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, an element
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+[VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes only
+one of
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), an element
 of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries` includes the
 other subset, and any element of the `pSetLayouts` array used to
 create the library’s `layout` was [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), then the
@@ -5750,11 +6009,14 @@ the other subset
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pLibraries-06758) VUID-VkGraphicsPipelineCreateInfo-pLibraries-06758
 
-If one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` and
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) and
 another element includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, and any
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), and any
 element of the `pSetLayouts` array used to create each library’s
 `layout` was [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), then the corresponding element of
 the `pSetLayouts` array used to create the other library’s
@@ -5764,19 +6026,24 @@ subset
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06682) VUID-VkGraphicsPipelineCreateInfo-flags-06682
 
-If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-both
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` and
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, `layout`
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR), and
+[VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes both
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) and
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), `layout`
 **must** have been created with no elements of the `pSetLayouts` array
 set to [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06683) VUID-VkGraphicsPipelineCreateInfo-flags-06683
 
-If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` and
-`pRasterizationState->rasterizerDiscardEnable` is `VK_TRUE`,
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+[VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
+and `pRasterizationState->rasterizerDiscardEnable` is [VK_TRUE](fundamentals.html#VK_TRUE),
 `layout` **must** have been created with no elements of the
 `pSetLayouts` array set to [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
@@ -5785,9 +6052,9 @@ If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfo
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes at
 least one of and no more than two of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT`,
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 and an element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes one of the other flags, the value of `subpass` **must** be
 equal to that used to create the library
@@ -5797,9 +6064,9 @@ equal to that used to create the library
 
 If one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes at least one of and no more than two of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT`,
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 and another element of
 [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries` includes one of
 the other flags, the value of `subpass` used to create each library
@@ -5811,9 +6078,9 @@ the other flags, the value of `subpass` used to create each library
 If `renderpass` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes at
 least one of and no more than two of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT`,
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 and an element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes one of the other flags, `renderPass` **must** be compatible
 with that used to create the library
@@ -5824,9 +6091,9 @@ with that used to create the library
 If `renderpass` is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes at
 least one of and no more than two of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT`,
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 and an element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes one of the other flags, the value of `renderPass` used to
 create that library **must** also be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
@@ -5836,9 +6103,9 @@ create that library **must** also be [VK_NULL_HANDLE](../appendices/boilerplate.
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes at
 least one of and no more than two of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT`,
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT`, an
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), an
 element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes one of the other flags, and `renderPass` is
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the value of
@@ -5850,9 +6117,9 @@ pipeline and that specified by the library **must** be identical
 
 If one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes at least one of and no more than two of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT`,
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 another element of
 [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries` includes one of
 the other flags, and `renderPass` was [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) for both
@@ -5865,9 +6132,9 @@ libraries, the value of
 
 If one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes at least one of and no more than two of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT`,
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 and another element of
 [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries` includes one of
 the other flags, the `renderPass` objects used to create each
@@ -5879,11 +6146,11 @@ library **must** be compatible or all equal to [VK_NULL_HANDLE](../appendices/bo
 If `renderPass` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the pipeline requires
 [fragment shader state](#pipelines-graphics-subsets-fragment-shader),
 and the `[VK_EXT_extended_dynamic_state3](../appendices/extensions.html#VK_EXT_extended_dynamic_state3)` extension is not enabled
-or any of the `VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT`,
-`VK_DYNAMIC_STATE_SAMPLE_MASK_EXT`, or
-`VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT` dynamic states is
+or any of the [VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](#VkDynamicState),
+[VK_DYNAMIC_STATE_SAMPLE_MASK_EXT](#VkDynamicState), or
+[VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT](#VkDynamicState) dynamic states is
 not set, or the [alphaToOne](features.html#features-alphaToOne) feature is enabled
-and `VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT` is not set,
+and [VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT](#VkDynamicState) is not set,
 then `pMultisampleState` **must** be a valid pointer to a valid
 [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo) structure
 
@@ -5894,11 +6161,11 @@ If the pipeline requires [    fragment shader state](#pipelines-graphics-subsets
 [sample shading](primsrast.html#primsrast-sampleshading) or decorates any variable in
 the `Input` storage class with `Sample`,
 and the `[VK_EXT_extended_dynamic_state3](../appendices/extensions.html#VK_EXT_extended_dynamic_state3)` extension is not enabled
-or any of the `VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT`,
-`VK_DYNAMIC_STATE_SAMPLE_MASK_EXT`, or
-`VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT` dynamic states is
+or any of the [VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](#VkDynamicState),
+[VK_DYNAMIC_STATE_SAMPLE_MASK_EXT](#VkDynamicState), or
+[VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT](#VkDynamicState) dynamic states is
 not set, or the [alphaToOne](features.html#features-alphaToOne) feature is enabled
-and `VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT` is not set,
+and [VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT](#VkDynamicState) is not set,
 then `pMultisampleState` **must** be a valid pointer to a valid
 [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo) structure
 
@@ -5907,79 +6174,79 @@ then `pMultisampleState` **must** be a valid pointer to a valid
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
 either
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 [VkCustomResolveCreateInfoEXT](#VkCustomResolveCreateInfoEXT) is included and
 [VkCustomResolveCreateInfoEXT](#VkCustomResolveCreateInfoEXT)::`customResolve` is
-`VK_TRUE`, and an element of
+[VK_TRUE](fundamentals.html#VK_TRUE), and an element of
 [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries` also includes
 either
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, the library
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), the library
 **must** also include [VkCustomResolveCreateInfoEXT](#VkCustomResolveCreateInfoEXT) and the
 [VkCustomResolveCreateInfoEXT](#VkCustomResolveCreateInfoEXT)::`customResolve` specified by the
-library **must** be `VK_TRUE`
+library **must** be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-11857) VUID-VkGraphicsPipelineCreateInfo-flags-11857
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
 either
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 [VkCustomResolveCreateInfoEXT](#VkCustomResolveCreateInfoEXT) is not included or
 [VkCustomResolveCreateInfoEXT](#VkCustomResolveCreateInfoEXT)::`customResolve` is
-`VK_FALSE`, and an element of
+[VK_FALSE](fundamentals.html#VK_FALSE), and an element of
 [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries` also includes
 either
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, either the
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), either the
 library **must** not include [VkCustomResolveCreateInfoEXT](#VkCustomResolveCreateInfoEXT) or the
 [VkCustomResolveCreateInfoEXT](#VkCustomResolveCreateInfoEXT)::`customResolve` specified by the
-library **must** be `VK_FALSE`
+library **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-customResolve-11858) VUID-VkGraphicsPipelineCreateInfo-customResolve-11858
 
 If one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR) includes either
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 [VkCustomResolveCreateInfoEXT](#VkCustomResolveCreateInfoEXT) is included and
 [VkCustomResolveCreateInfoEXT](#VkCustomResolveCreateInfoEXT)::`customResolve` is
-`VK_TRUE`, and another element of
+[VK_TRUE](fundamentals.html#VK_TRUE), and another element of
 [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries` also includes
 either
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, the other
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), the other
 library **must** also include [VkCustomResolveCreateInfoEXT](#VkCustomResolveCreateInfoEXT) and the
 [VkCustomResolveCreateInfoEXT](#VkCustomResolveCreateInfoEXT)::`customResolve` specified by the
-library **must** be `VK_TRUE`
+library **must** be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-customResolve-11859) VUID-VkGraphicsPipelineCreateInfo-customResolve-11859
 
 If one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR) includes either
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 [VkCustomResolveCreateInfoEXT](#VkCustomResolveCreateInfoEXT) is not included or
 [VkCustomResolveCreateInfoEXT](#VkCustomResolveCreateInfoEXT)::`customResolve` is
-`VK_FALSE`, and another element of
+[VK_FALSE](fundamentals.html#VK_FALSE), and another element of
 [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries` also includes
 either
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, either the
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), either the
 other library **must** not include [VkCustomResolveCreateInfoEXT](#VkCustomResolveCreateInfoEXT) or
 the [VkCustomResolveCreateInfoEXT](#VkCustomResolveCreateInfoEXT)::`customResolve` specified by
-the library **must** be `VK_FALSE`
+the library **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06633) VUID-VkGraphicsPipelineCreateInfo-flags-06633
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT` with a
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) with a
 `pMultisampleState` that was not `NULL`, and an element of
 [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries` was created with
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 `pMultisampleState` **must** be
 [identically defined](../appendices/glossary.html#glossary-identically-defined) to that used to
 create the library
@@ -5989,10 +6256,10 @@ create the library
 
 If an element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 was created with
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT` with a
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) with a
 `pMultisampleState` that was not `NULL`, and if
 [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 `pMultisampleState` **must** be
 [identically defined](../appendices/glossary.html#glossary-identically-defined) to that used to
 create the library
@@ -6002,11 +6269,11 @@ create the library
 
 If one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 was created with
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT` with a
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) with a
 `pMultisampleState` that was not `NULL`, and if a different element
 of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries` was created
 with
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 the `pMultisampleState` used to create each library **must** be
 [identically defined](../appendices/glossary.html#glossary-identically-defined)
 
@@ -6015,11 +6282,11 @@ the `pMultisampleState` used to create each library **must** be
 
 If one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 was created with
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT` and
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) and
 a value of `pMultisampleState->sampleShadingEnable` equal
-`VK_TRUE`, and if a different element of
+[VK_TRUE](fundamentals.html#VK_TRUE), and if a different element of
 [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries` was created with
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, the
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), the
 `pMultisampleState` used to create each library **must** be
 [identically defined](../appendices/glossary.html#glossary-identically-defined)
 
@@ -6027,10 +6294,10 @@ a value of `pMultisampleState->sampleShadingEnable` equal
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06637) VUID-VkGraphicsPipelineCreateInfo-flags-06637
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT`,
-`pMultisampleState->sampleShadingEnable` is `VK_TRUE`, and an
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
+`pMultisampleState->sampleShadingEnable` is [VK_TRUE](fundamentals.html#VK_TRUE), and an
 element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries` was
-created with `VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`,
+created with [VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 `pMultisampleState` **must** be
 [identically defined](../appendices/glossary.html#glossary-identically-defined) to that used to
 create the library
@@ -6040,11 +6307,11 @@ create the library
 
 If one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 was created with
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT` and
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) and
 a value of `pMultisampleState->sampleShadingEnable` equal
-`VK_TRUE`, and if
+[VK_TRUE](fundamentals.html#VK_TRUE), and if
 [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 `pMultisampleState` **must** be
 [identically defined](../appendices/glossary.html#glossary-identically-defined) to that used to
 create the library
@@ -6054,8 +6321,8 @@ create the library
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
 only one of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, and an
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), and an
 element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes the other flag, values specified in
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR) for both this
@@ -6066,9 +6333,9 @@ pipeline and that library **must** be identical
 
 If one element of [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`
 includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` and
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) and
 another element includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, values
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), values
 specified in [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR) for
 both this pipeline and that library **must** be identical
 
@@ -6076,26 +6343,29 @@ both this pipeline and that library **must** be identical
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06640) VUID-VkGraphicsPipelineCreateInfo-flags-06640
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 `pStages` **must** be a valid pointer to an array of `stageCount`
 valid [VkPipelineShaderStageCreateInfo](#VkPipelineShaderStageCreateInfo) structures
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06642) VUID-VkGraphicsPipelineCreateInfo-flags-06642
 
-If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, `layout`
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+[VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), `layout`
 **must** be a valid [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) handle
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06643) VUID-VkGraphicsPipelineCreateInfo-flags-06643
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT`, or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`,
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 and `renderPass` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `renderPass` **must**
 be a valid [VkRenderPass](renderpass.html#VkRenderPass) handle
 
@@ -6103,8 +6373,8 @@ be a valid [VkRenderPass](renderpass.html#VkRenderPass) handle
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06644) VUID-VkGraphicsPipelineCreateInfo-flags-06644
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` or
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) or
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 `stageCount` **must** be greater than `0`
 
 * 
@@ -6112,18 +6382,18 @@ If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfo
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` is
 non-zero, if `flags` includes
-`VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR`, any
+[VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR](#VkPipelineCreateFlagBits), any
 libraries **must** have also been created with
-`VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR`
+[VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pLibraries-06646) VUID-VkGraphicsPipelineCreateInfo-pLibraries-06646
 
 If [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries` includes more
 than one library, and any library was created with
-`VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR`, all
+[VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR](#VkPipelineCreateFlagBits), all
 libraries **must** have also been created with
-`VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR`
+[VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pLibraries-06647) VUID-VkGraphicsPipelineCreateInfo-pLibraries-06647
@@ -6132,47 +6402,59 @@ If [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibrarie
 least one library,
 [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` is non-zero,
 and any library was created with
-`VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR`,
+[VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR](#VkPipelineCreateFlagBits),
 `flags` **must** include
-`VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR`
+[VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-None-07826) VUID-VkGraphicsPipelineCreateInfo-None-07826
 
-If the pipeline includes a [    complete set of state](#pipelines-graphics-subsets-complete), and there are no libraries included in
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+the pipeline includes a [complete    set of state](#pipelines-graphics-subsets-complete), and there are no libraries included in
 [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR)::`pLibraries`, then
 [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) **must** be a valid pipeline layout
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-layout-07827) VUID-VkGraphicsPipelineCreateInfo-layout-07827
 
-If the pipeline includes a [    complete set of state](#pipelines-graphics-subsets-complete) specified entirely by libraries, and each
-library was created with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) created without
-`VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT`, then
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+the pipeline includes a [complete    set of state](#pipelines-graphics-subsets-complete) specified entirely by libraries, and each library was
+created with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) created without
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits), then
 `layout` **must** be [compatible](descriptorsets.html#descriptorsets-compatibility) with
 the layouts in those libraries
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06729) VUID-VkGraphicsPipelineCreateInfo-flags-06729
 
-If `flags` includes
-`VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT`, the pipeline
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+`flags` includes
+[VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT](#VkPipelineCreateFlagBits), the pipeline
 includes a [complete set of    state](#pipelines-graphics-subsets-complete) specified entirely by libraries, and each library was created
 with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) created with
-`VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT`, then
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits), then
 `layout` **must** be [compatible](descriptorsets.html#descriptorsets-compatibility) with
 the union of the libraries' pipeline layouts other than the
 inclusion/exclusion of
-`VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT`
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-06730) VUID-VkGraphicsPipelineCreateInfo-flags-06730
 
-If `flags` does not include
-`VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT`, the pipeline
+If
+[VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not include
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+`flags` does not include
+[VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT](#VkPipelineCreateFlagBits), the pipeline
 includes a [complete set of    state](#pipelines-graphics-subsets-complete) specified entirely by libraries, and each library was created
 with a [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) created with
-`VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT`, then
+[VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT](descriptorsets.html#VkPipelineLayoutCreateFlagBits), then
 `layout` **must** be [compatible](descriptorsets.html#descriptorsets-compatibility) with
 the union of the libraries' pipeline layouts
 
@@ -6182,7 +6464,7 @@ the union of the libraries' pipeline layouts
 If [    `conservativePointAndLineRasterization`](limits.html#limits-conservativePointAndLineRasterization) is not supported and the
 [effective rasterization input    topology](drawing.html#drawing-rasterization-input-topology) is in line or point topology class, then
 [VkPipelineRasterizationConservativeStateCreateInfoEXT](primsrast.html#VkPipelineRasterizationConservativeStateCreateInfoEXT)::`conservativeRasterizationMode`
-**must** be `VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT`
+**must** be [VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT](primsrast.html#VkConservativeRasterizationModeEXT)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pStages-06894) VUID-VkGraphicsPipelineCreateInfo-pStages-06894
@@ -6190,7 +6472,7 @@ If [    `conservativePointAndLineRasterization`](limits.html#limits-conservative
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization) but not
 [fragment shader state](#pipelines-graphics-subsets-fragment-shader),
 elements of `pStages` **must** not have `stage` set to
-`VK_SHADER_STAGE_FRAGMENT_BIT`
+[VK_SHADER_STAGE_FRAGMENT_BIT](#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pStages-06895) VUID-VkGraphicsPipelineCreateInfo-pStages-06895
@@ -6220,21 +6502,21 @@ element of `pStages`
 If the [    `extendedDynamicState3TessellationDomainOrigin`](features.html#features-extendedDynamicState3TessellationDomainOrigin) feature is not
 enabled, there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_TESSELLATION_DOMAIN_ORIGIN_EXT`
+[VK_DYNAMIC_STATE_TESSELLATION_DOMAIN_ORIGIN_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3DepthClampEnable-07371) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3DepthClampEnable-07371
 
 If the [    `extendedDynamicState3DepthClampEnable`](features.html#features-extendedDynamicState3DepthClampEnable) feature is not enabled,
 there **must** be no element of the `pDynamicStates` member of
-`pDynamicState` set to `VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT`
+`pDynamicState` set to [VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3PolygonMode-07372) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3PolygonMode-07372
 
 If the [    `extendedDynamicState3PolygonMode`](features.html#features-extendedDynamicState3PolygonMode) feature is not enabled, there
 **must** be no element of the `pDynamicStates` member of
-`pDynamicState` set to `VK_DYNAMIC_STATE_POLYGON_MODE_EXT`
+`pDynamicState` set to [VK_DYNAMIC_STATE_POLYGON_MODE_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3RasterizationSamples-07373) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3RasterizationSamples-07373
@@ -6242,14 +6524,14 @@ If the [    `extendedDynamicState3PolygonMode`](features.html#features-extendedD
 If the [    `extendedDynamicState3RasterizationSamples`](features.html#features-extendedDynamicState3RasterizationSamples) feature is not
 enabled, there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT`
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3SampleMask-07374) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3SampleMask-07374
 
 If the [    `extendedDynamicState3SampleMask`](features.html#features-extendedDynamicState3SampleMask) feature is not enabled, there
 **must** be no element of the `pDynamicStates` member of
-`pDynamicState` set to `VK_DYNAMIC_STATE_SAMPLE_MASK_EXT`
+`pDynamicState` set to [VK_DYNAMIC_STATE_SAMPLE_MASK_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3AlphaToCoverageEnable-07375) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3AlphaToCoverageEnable-07375
@@ -6257,7 +6539,7 @@ If the [    `extendedDynamicState3SampleMask`](features.html#features-extendedDy
 If the [    `extendedDynamicState3AlphaToCoverageEnable`](features.html#features-extendedDynamicState3AlphaToCoverageEnable) feature is not
 enabled, there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT`
+[VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3AlphaToOneEnable-07376) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3AlphaToOneEnable-07376
@@ -6265,21 +6547,21 @@ enabled, there **must** be no element of the `pDynamicStates` member of
 If the [    `extendedDynamicState3AlphaToOneEnable`](features.html#features-extendedDynamicState3AlphaToOneEnable) feature is not enabled,
 there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT`
+[VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3LogicOpEnable-07377) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3LogicOpEnable-07377
 
 If the [    `extendedDynamicState3LogicOpEnable`](features.html#features-extendedDynamicState3LogicOpEnable) feature is not enabled, there
 **must** be no element of the `pDynamicStates` member of
-`pDynamicState` set to `VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT`
+`pDynamicState` set to [VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ColorBlendEnable-07378) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ColorBlendEnable-07378
 
 If the [    `extendedDynamicState3ColorBlendEnable`](features.html#features-extendedDynamicState3ColorBlendEnable) feature is not enabled,
 there **must** be no element of the `pDynamicStates` member of
-`pDynamicState` set to `VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT`
+`pDynamicState` set to [VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ColorBlendEquation-07379) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ColorBlendEquation-07379
@@ -6287,14 +6569,14 @@ there **must** be no element of the `pDynamicStates` member of
 If the [    `extendedDynamicState3ColorBlendEquation`](features.html#features-extendedDynamicState3ColorBlendEquation) feature is not enabled,
 there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT`
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ColorWriteMask-07380) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ColorWriteMask-07380
 
 If the [    `extendedDynamicState3ColorWriteMask`](features.html#features-extendedDynamicState3ColorWriteMask) feature is not enabled,
 there **must** be no element of the `pDynamicStates` member of
-`pDynamicState` set to `VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT`
+`pDynamicState` set to [VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3RasterizationStream-07381) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3RasterizationStream-07381
@@ -6302,7 +6584,7 @@ there **must** be no element of the `pDynamicStates` member of
 If the [    `extendedDynamicState3RasterizationStream`](features.html#features-extendedDynamicState3RasterizationStream) feature is not enabled,
 there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT`
+[VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ConservativeRasterizationMode-07382) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ConservativeRasterizationMode-07382
@@ -6310,7 +6592,7 @@ there **must** be no element of the `pDynamicStates` member of
 If the [    `extendedDynamicState3ConservativeRasterizationMode`](features.html#features-extendedDynamicState3ConservativeRasterizationMode) feature is
 not enabled, there **must** be no element of the `pDynamicStates`
 member of `pDynamicState` set to
-`VK_DYNAMIC_STATE_CONSERVATIVE_RASTERIZATION_MODE_EXT`
+[VK_DYNAMIC_STATE_CONSERVATIVE_RASTERIZATION_MODE_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ExtraPrimitiveOverestimationSize-07383) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ExtraPrimitiveOverestimationSize-07383
@@ -6318,15 +6600,15 @@ member of `pDynamicState` set to
 If the [    `extendedDynamicState3ExtraPrimitiveOverestimationSize`](features.html#features-extendedDynamicState3ExtraPrimitiveOverestimationSize) feature is
 not enabled, there **must** be no element of the `pDynamicStates`
 member of `pDynamicState` set to
-`VK_DYNAMIC_STATE_EXTRA_PRIMITIVE_OVERESTIMATION_SIZE_EXT`
+[VK_DYNAMIC_STATE_EXTRA_PRIMITIVE_OVERESTIMATION_SIZE_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicState-09639) VUID-VkGraphicsPipelineCreateInfo-pDynamicState-09639
 
 If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), `pDynamicState` includes
-`VK_DYNAMIC_STATE_CONSERVATIVE_RASTERIZATION_MODE_EXT`, and
+[VK_DYNAMIC_STATE_CONSERVATIVE_RASTERIZATION_MODE_EXT](#VkDynamicState), and
 `pDynamicState` does not include
-`VK_DYNAMIC_STATE_EXTRA_PRIMITIVE_OVERESTIMATION_SIZE_EXT`,
+[VK_DYNAMIC_STATE_EXTRA_PRIMITIVE_OVERESTIMATION_SIZE_EXT](#VkDynamicState),
 `pRasterizationState` **must** include a
 [VkPipelineRasterizationConservativeStateCreateInfoEXT](primsrast.html#VkPipelineRasterizationConservativeStateCreateInfoEXT) in its
 `pNext` chain
@@ -6336,7 +6618,7 @@ If the pipeline requires [    pre-rasterization shader state](#pipelines-graphic
 
 If the [    `extendedDynamicState3DepthClipEnable`](features.html#features-extendedDynamicState3DepthClipEnable) feature is not enabled,
 there **must** be no element of the `pDynamicStates` member of
-`pDynamicState` set to `VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT`
+`pDynamicState` set to [VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3SampleLocationsEnable-07385) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3SampleLocationsEnable-07385
@@ -6344,7 +6626,7 @@ there **must** be no element of the `pDynamicStates` member of
 If the [    `extendedDynamicState3SampleLocationsEnable`](features.html#features-extendedDynamicState3SampleLocationsEnable) feature is not
 enabled, there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT`
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ColorBlendAdvanced-07386) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ColorBlendAdvanced-07386
@@ -6352,7 +6634,7 @@ enabled, there **must** be no element of the `pDynamicStates` member of
 If the [    `extendedDynamicState3ColorBlendAdvanced`](features.html#features-extendedDynamicState3ColorBlendAdvanced) feature is not enabled,
 there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT`
+[VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ProvokingVertexMode-07387) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ProvokingVertexMode-07387
@@ -6360,7 +6642,7 @@ there **must** be no element of the `pDynamicStates` member of
 If the [    `extendedDynamicState3ProvokingVertexMode`](features.html#features-extendedDynamicState3ProvokingVertexMode) feature is not enabled,
 there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_PROVOKING_VERTEX_MODE_EXT`
+[VK_DYNAMIC_STATE_PROVOKING_VERTEX_MODE_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3LineRasterizationMode-07388) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3LineRasterizationMode-07388
@@ -6368,7 +6650,7 @@ there **must** be no element of the `pDynamicStates` member of
 If the [    `extendedDynamicState3LineRasterizationMode`](features.html#features-extendedDynamicState3LineRasterizationMode) feature is not
 enabled, there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT`
+[VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3LineStippleEnable-07389) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3LineStippleEnable-07389
@@ -6376,7 +6658,7 @@ enabled, there **must** be no element of the `pDynamicStates` member of
 If the [    `extendedDynamicState3LineStippleEnable`](features.html#features-extendedDynamicState3LineStippleEnable) feature is not enabled,
 there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT`
+[VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3DepthClipNegativeOneToOne-07390) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3DepthClipNegativeOneToOne-07390
@@ -6384,7 +6666,7 @@ there **must** be no element of the `pDynamicStates` member of
 If the [    `extendedDynamicState3DepthClipNegativeOneToOne`](features.html#features-extendedDynamicState3DepthClipNegativeOneToOne) feature is not
 enabled, there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_DEPTH_CLIP_NEGATIVE_ONE_TO_ONE_EXT`
+[VK_DYNAMIC_STATE_DEPTH_CLIP_NEGATIVE_ONE_TO_ONE_EXT](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ViewportWScalingEnable-07391) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ViewportWScalingEnable-07391
@@ -6392,14 +6674,14 @@ enabled, there **must** be no element of the `pDynamicStates` member of
 If the [    `extendedDynamicState3ViewportWScalingEnable`](features.html#features-extendedDynamicState3ViewportWScalingEnable) feature is not
 enabled, there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_ENABLE_NV`
+[VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_ENABLE_NV](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ViewportSwizzle-07392) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ViewportSwizzle-07392
 
 If the [    `extendedDynamicState3ViewportSwizzle`](features.html#features-extendedDynamicState3ViewportSwizzle) feature is not enabled,
 there **must** be no element of the `pDynamicStates` member of
-`pDynamicState` set to `VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV`
+`pDynamicState` set to [VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3CoverageToColorEnable-07393) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3CoverageToColorEnable-07393
@@ -6407,7 +6689,7 @@ there **must** be no element of the `pDynamicStates` member of
 If the [    `extendedDynamicState3CoverageToColorEnable`](features.html#features-extendedDynamicState3CoverageToColorEnable) feature is not
 enabled, there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_ENABLE_NV`
+[VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_ENABLE_NV](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3CoverageToColorLocation-07394) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3CoverageToColorLocation-07394
@@ -6415,7 +6697,7 @@ enabled, there **must** be no element of the `pDynamicStates` member of
 If the [    `extendedDynamicState3CoverageToColorLocation`](features.html#features-extendedDynamicState3CoverageToColorLocation) feature is not
 enabled, there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_LOCATION_NV`
+[VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_LOCATION_NV](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3CoverageModulationMode-07395) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3CoverageModulationMode-07395
@@ -6423,7 +6705,7 @@ enabled, there **must** be no element of the `pDynamicStates` member of
 If the [    `extendedDynamicState3CoverageModulationMode`](features.html#features-extendedDynamicState3CoverageModulationMode) feature is not
 enabled, there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_MODE_NV`
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_MODE_NV](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3CoverageModulationTableEnable-07396) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3CoverageModulationTableEnable-07396
@@ -6431,7 +6713,7 @@ enabled, there **must** be no element of the `pDynamicStates` member of
 If the [    `extendedDynamicState3CoverageModulationTableEnable`](features.html#features-extendedDynamicState3CoverageModulationTableEnable) feature is
 not enabled, there **must** be no element of the `pDynamicStates`
 member of `pDynamicState` set to
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_ENABLE_NV`
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_ENABLE_NV](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3CoverageModulationTable-07397) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3CoverageModulationTable-07397
@@ -6439,7 +6721,7 @@ member of `pDynamicState` set to
 If the [    `extendedDynamicState3CoverageModulationTable`](features.html#features-extendedDynamicState3CoverageModulationTable) feature is not
 enabled, there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_NV`
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_NV](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3CoverageReductionMode-07398) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3CoverageReductionMode-07398
@@ -6447,7 +6729,7 @@ enabled, there **must** be no element of the `pDynamicStates` member of
 If the [    `extendedDynamicState3CoverageReductionMode`](features.html#features-extendedDynamicState3CoverageReductionMode) feature is not
 enabled, there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV`
+[VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3RepresentativeFragmentTestEnable-07399) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3RepresentativeFragmentTestEnable-07399
@@ -6455,7 +6737,7 @@ enabled, there **must** be no element of the `pDynamicStates` member of
 If the [    `extendedDynamicState3RepresentativeFragmentTestEnable`](features.html#features-extendedDynamicState3RepresentativeFragmentTestEnable) feature is
 not enabled, there **must** be no element of the `pDynamicStates`
 member of `pDynamicState` set to
-`VK_DYNAMIC_STATE_REPRESENTATIVE_FRAGMENT_TEST_ENABLE_NV`
+[VK_DYNAMIC_STATE_REPRESENTATIVE_FRAGMENT_TEST_ENABLE_NV](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ShadingRateImageEnable-07400) VUID-VkGraphicsPipelineCreateInfo-extendedDynamicState3ShadingRateImageEnable-07400
@@ -6463,19 +6745,19 @@ member of `pDynamicState` set to
 If the [    `extendedDynamicState3ShadingRateImageEnable`](features.html#features-extendedDynamicState3ShadingRateImageEnable) feature is not
 enabled, there **must** be no element of the `pDynamicStates` member of
 `pDynamicState` set to
-`VK_DYNAMIC_STATE_SHADING_RATE_IMAGE_ENABLE_NV`
+[VK_DYNAMIC_STATE_SHADING_RATE_IMAGE_ENABLE_NV](#VkDynamicState)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-07401) VUID-VkGraphicsPipelineCreateInfo-flags-07401
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT`
+[VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-07997) VUID-VkGraphicsPipelineCreateInfo-flags-07997
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV`
+[VK_PIPELINE_CREATE_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07730) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07730
@@ -6483,7 +6765,7 @@ enabled, there **must** be no element of the `pDynamicStates` member of
 If the [    `multiviewPerViewViewports`](features.html#features-multiviewPerViewViewports) feature is enabled, `renderpass`
 is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the pipeline requires
 [pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization), and no element of the `pDynamicStates` member of
-`pDynamicState` is `VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT`, then
+`pDynamicState` is [VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](#VkDynamicState), then
 the index of the most significant bit in each element of
 [VkRenderPassMultiviewCreateInfo](renderpass.html#VkRenderPassMultiviewCreateInfo)::`pViewMasks` **must** be less
 than `pViewportState->viewportCount`
@@ -6494,7 +6776,7 @@ than `pViewportState->viewportCount`
 If the [    `multiviewPerViewViewports`](features.html#features-multiviewPerViewViewports) feature is enabled, `renderpass`
 is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the pipeline requires
 [pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization), and no element of the `pDynamicStates` member of
-`pDynamicState` is `VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT`, then
+`pDynamicState` is [VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](#VkDynamicState), then
 the index of the most significant bit in each element of
 [VkRenderPassMultiviewCreateInfo](renderpass.html#VkRenderPassMultiviewCreateInfo)::`pViewMasks` **must** be less
 than `pViewportState->scissorCount`
@@ -6505,7 +6787,7 @@ than `pViewportState->scissorCount`
 If the [    `multiviewPerViewViewports`](features.html#features-multiviewPerViewViewports) feature is enabled, `renderpass`
 is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the pipeline requires
 [pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization), and no element of the `pDynamicStates` member of
-`pDynamicState` is `VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT`, then
+`pDynamicState` is [VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](#VkDynamicState), then
 the index of the most significant bit in
 [VkPipelineRenderingCreateInfo](#VkPipelineRenderingCreateInfo)::`viewMask` **must** be less than
 `pViewportState->viewportCount`
@@ -6516,7 +6798,7 @@ the index of the most significant bit in
 If the [    `multiviewPerViewViewports`](features.html#features-multiviewPerViewViewports) feature is enabled, `renderpass`
 is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the pipeline requires
 [pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization), and no element of the `pDynamicStates` member of
-`pDynamicState` is `VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT`, then
+`pDynamicState` is [VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](#VkDynamicState), then
 the index of the most significant bit in
 [VkPipelineRenderingCreateInfo](#VkPipelineRenderingCreateInfo)::`viewMask` **must** be less than
 `pViewportState->scissorCount`
@@ -6525,17 +6807,17 @@ the index of the most significant bit in
 [](#VUID-VkGraphicsPipelineCreateInfo-pStages-08711) VUID-VkGraphicsPipelineCreateInfo-pStages-08711
 
 If `pStages` includes a fragment shader stage,
-`VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE` is not set in
+[VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE](#VkDynamicState) is not set in
 [VkPipelineDynamicStateCreateInfo](#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`, and the
 fragment shader declares the `EarlyFragmentTests` execution mode and
 uses `OpDepthAttachmentReadEXT`, the `depthWriteEnable` member of
-[VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) **must** be `VK_FALSE`
+[VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pStages-08712) VUID-VkGraphicsPipelineCreateInfo-pStages-08712
 
 If `pStages` includes a fragment shader stage,
-`VK_DYNAMIC_STATE_STENCIL_WRITE_MASK` is not set in
+[VK_DYNAMIC_STATE_STENCIL_WRITE_MASK](#VkDynamicState) is not set in
 [VkPipelineDynamicStateCreateInfo](#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`, and the
 fragment shader declares the `EarlyFragmentTests` execution mode and
 uses `OpStencilAttachmentReadEXT`, the value of
@@ -6556,15 +6838,15 @@ value that is set in `imageCreateSampleCounts` (as defined in
 [Image Creation Limits](resources.html#resources-image-creation-limits)) for every
 element of `depthAttachmentFormat`, `stencilAttachmentFormat`
 and the `pColorAttachmentFormats` array which is not
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-08897) VUID-VkGraphicsPipelineCreateInfo-flags-08897
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_VERTEX_INPUT_INTERFACE_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_VERTEX_INPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 [pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization) is specified either in a library or by the inclusion of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 and that state includes a vertex shader stage in `pStages`, the
 pipeline **must** define [vertex    input state](#pipelines-graphics-subsets-vertex-input)
 
@@ -6572,7 +6854,7 @@ pipeline **must** define [vertex    input state](#pipelines-graphics-subsets-ver
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-08898) VUID-VkGraphicsPipelineCreateInfo-flags-08898
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_VERTEX_INPUT_INTERFACE_BIT_EXT`, and
+[VK_GRAPHICS_PIPELINE_LIBRARY_VERTEX_INPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), and
 [pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization) is not specified, the pipeline **must** define
 [vertex input state](#pipelines-graphics-subsets-vertex-input)
 
@@ -6580,9 +6862,9 @@ If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfo
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-08899) VUID-VkGraphicsPipelineCreateInfo-flags-08899
 
 If `flags` does not include
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`,
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits),
 [pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization) is specified either in a library or by the inclusion of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 and that state includes a vertex shader stage in `pStages`, the
 pipeline **must** either define [    vertex input state](#pipelines-graphics-subsets-vertex-input) or include that state in a linked pipeline library
 
@@ -6590,34 +6872,34 @@ pipeline **must** either define [    vertex input state](#pipelines-graphics-sub
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-08900) VUID-VkGraphicsPipelineCreateInfo-flags-08900
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT` the
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) the
 pipeline **must** define [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-08901) VUID-VkGraphicsPipelineCreateInfo-flags-08901
 
 If `flags` does not include
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`, the pipeline **must** either
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits), the pipeline **must** either
 define [pre-rasterization    shader state](#pipelines-graphics-subsets-pre-rasterization) or include that state in a linked pipeline library
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-08903) VUID-VkGraphicsPipelineCreateInfo-flags-08903
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 [pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization) is specified either in a library or by the inclusion of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 and that state
-either includes `VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE` or
+either includes [VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE](#VkDynamicState) or
 has `pRasterizationState->rasterizerDiscardEnable` set to
-`VK_FALSE`, the pipeline **must** define
+[VK_FALSE](fundamentals.html#VK_FALSE), the pipeline **must** define
 [fragment shader state](#pipelines-graphics-subsets-fragment-shader)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-08904) VUID-VkGraphicsPipelineCreateInfo-flags-08904
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, and
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), and
 [pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization) is not specified, the pipeline **must** define
 [fragment shader state](#pipelines-graphics-subsets-fragment-shader)
 
@@ -6625,20 +6907,20 @@ If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfo
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-08906) VUID-VkGraphicsPipelineCreateInfo-flags-08906
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 [pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization) is specified either in a library or by the inclusion of
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 and that state
-either includes `VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE` or
+either includes [VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE](#VkDynamicState) or
 has `pRasterizationState->rasterizerDiscardEnable` set to
-`VK_FALSE`, the pipeline **must** define
+[VK_FALSE](fundamentals.html#VK_FALSE), the pipeline **must** define
 [fragment output interface    state](#pipelines-graphics-subsets-fragment-output)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-08907) VUID-VkGraphicsPipelineCreateInfo-flags-08907
 
 If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfoEXT)::`flags` includes
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT`, and
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT), and
 [pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization) is not specified, the pipeline **must** define
 [fragment output interface    state](#pipelines-graphics-subsets-fragment-output)
 
@@ -6646,13 +6928,13 @@ If [VkGraphicsPipelineLibraryCreateInfoEXT](#VkGraphicsPipelineLibraryCreateInfo
 [](#VUID-VkGraphicsPipelineCreateInfo-flags-08909) VUID-VkGraphicsPipelineCreateInfo-flags-08909
 
 If `flags` does not include
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`,
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits),
 [pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization) is specified either in a library or by the inclusion of
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT`,
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT),
 and that state
-either includes `VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE` or
+either includes [VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE](#VkDynamicState) or
 has `pRasterizationState->rasterizerDiscardEnable` set to
-`VK_FALSE`, the pipeline **must** define
+[VK_FALSE](fundamentals.html#VK_FALSE), the pipeline **must** define
 [fragment output interface    state](#pipelines-graphics-subsets-fragment-output) and [fragment    shader state](#pipelines-graphics-subsets-fragment-shader) or include those states in linked pipeline libraries
 
 * 
@@ -6660,12 +6942,12 @@ has `pRasterizationState->rasterizerDiscardEnable` set to
 
 If
 `pDynamicState->pDynamicStates` does not include
-`VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT`, and
+[VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](#VkDynamicState), and
 the format of any color attachment is
-`VK_FORMAT_E5B9G9R9_UFLOAT_PACK32`, the `colorWriteMask` member
+[VK_FORMAT_E5B9G9R9_UFLOAT_PACK32](formats.html#VkFormat), the `colorWriteMask` member
 of the corresponding element of `pColorBlendState->pAttachments`
-**must** either include all of `VK_COLOR_COMPONENT_R_BIT`,
-`VK_COLOR_COMPONENT_G_BIT`, and `VK_COLOR_COMPONENT_B_BIT`, or
+**must** either include all of [VK_COLOR_COMPONENT_R_BIT](framebuffer.html#VkColorComponentFlagBits),
+[VK_COLOR_COMPONENT_G_BIT](framebuffer.html#VkColorComponentFlagBits), and [VK_COLOR_COMPONENT_B_BIT](framebuffer.html#VkColorComponentFlagBits), or
 none of them
 
 * 
@@ -6696,7 +6978,7 @@ feature is enabled, the pipeline requires
 [fragment output interface    state](#pipelines-graphics-subsets-fragment-output), `renderPass` is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and
 [VkExternalFormatANDROID](resources.html#VkExternalFormatANDROID)::`externalFormat` is not `0`, and
 `blendEnable` is not dynamic, the `blendEnable` member of each
-element of `pColorBlendState->pAttachments` **must** be `VK_FALSE`
+element of `pColorBlendState->pAttachments` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-externalFormatResolve-09306) VUID-VkGraphicsPipelineCreateInfo-externalFormatResolve-09306
@@ -6706,7 +6988,7 @@ feature is enabled, the pipeline requires
 [fragment output interface    state](#pipelines-graphics-subsets-fragment-output), `renderPass` is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and
 [VkExternalFormatANDROID](resources.html#VkExternalFormatANDROID)::`externalFormat` is not `0`, and
 `pDynamicState->pDynamicStates` does not include
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR`,
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState),
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR)::`fragmentSize.width`
 **must** be `1`
 
@@ -6718,7 +7000,7 @@ feature is enabled, the pipeline requires
 [fragment output interface    state](#pipelines-graphics-subsets-fragment-output), `renderPass` is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and
 [VkExternalFormatANDROID](resources.html#VkExternalFormatANDROID)::`externalFormat` is not `0`, and
 `pDynamicState->pDynamicStates` does not include
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR`,
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState),
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR)::`fragmentSize.height`
 **must** be `1`
 
@@ -6762,7 +7044,7 @@ feature is enabled, the pipeline requires
 includes an external format resolve attachment, and
 `rasterizationSamples` is not dynamic,
 [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo)::`rasterizationSamples`
-**must** be `VK_SAMPLE_COUNT_1_BIT`
+**must** be [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-externalFormatResolve-09314) VUID-VkGraphicsPipelineCreateInfo-externalFormatResolve-09314
@@ -6772,7 +7054,7 @@ feature is enabled, the pipeline requires
 [fragment output interface    state](#pipelines-graphics-subsets-fragment-output), `renderPass` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `subpass`
 includes an external format resolve attachment, and `blendEnable` is
 not dynamic, the `blendEnable` member of each element of
-`pColorBlendState->pAttachments` **must** be `VK_FALSE`
+`pColorBlendState->pAttachments` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-externalFormatResolve-09315) VUID-VkGraphicsPipelineCreateInfo-externalFormatResolve-09315
@@ -6782,7 +7064,7 @@ feature is enabled, the pipeline requires
 [fragment output interface    state](#pipelines-graphics-subsets-fragment-output), `renderPass` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `subpass`
 includes an external format resolve attachment, and
 `pDynamicState->pDynamicStates` does not include
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR`,
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState),
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR)::`fragmentSize.width`
 **must** be `1`
 
@@ -6794,7 +7076,7 @@ feature is enabled, the pipeline requires
 [fragment output interface    state](#pipelines-graphics-subsets-fragment-output), `renderPass` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `subpass`
 includes an external format resolve attachment, and
 `pDynamicState->pDynamicStates` does not include
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR`,
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState),
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR)::`fragmentSize.height`
 **must** be `1`
 
@@ -6840,12 +7122,26 @@ and the value of `renderPass` is [VK_NULL_HANDLE](../appendices/boilerplate.html
 **must** be equal to
 [VkPipelineRenderingCreateInfo](#VkPipelineRenderingCreateInfo)::`colorAttachmentCount`
 
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-flags-11273) VUID-VkGraphicsPipelineCreateInfo-flags-11273
+
+If [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` includes
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR), all libraries linked
+to this pipeline **must** also have that flag set
+
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-flags-11274) VUID-VkGraphicsPipelineCreateInfo-flags-11274
+
+If [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not
+include [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR), all
+libraries linked to this pipeline **must** also not have that flag set
+
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-sType-sType) VUID-VkGraphicsPipelineCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pNext-pNext) VUID-VkGraphicsPipelineCreateInfo-pNext-pNext
@@ -6901,7 +7197,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineFragmentDensityMapLayeredCreateInfoVALVE-sType-sType) VUID-VkPipelineFragmentDensityMapLayeredCreateInfoVALVE-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_DENSITY_MAP_LAYERED_CREATE_INFO_VALVE`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_DENSITY_MAP_LAYERED_CREATE_INFO_VALVE](fundamentals.html#VkStructureType)
 
 The `VkPipelineRenderingCreateInfo` structure is defined as:
 
@@ -6954,12 +7250,12 @@ specifies the view mask and format of attachments used for rendering.
 If this structure is not specified, and the pipeline does not include a
 [VkRenderPass](renderpass.html#VkRenderPass), `viewMask` and `colorAttachmentCount` are `0`,
 and `depthAttachmentFormat` and `stencilAttachmentFormat` are
-`VK_FORMAT_UNDEFINED`.
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat).
 If a graphics pipeline is created with a valid [VkRenderPass](renderpass.html#VkRenderPass),
 parameters of this structure are ignored.
 
 If `depthAttachmentFormat`, `stencilAttachmentFormat`, or any
-element of `pColorAttachmentFormats` is `VK_FORMAT_UNDEFINED`, it
+element of `pColorAttachmentFormats` is [VK_FORMAT_UNDEFINED](formats.html#VkFormat), it
 indicates that the corresponding attachment is unused within the render
 pass.
 Valid formats indicate that an attachment **can** be used - but it is still
@@ -6983,7 +7279,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineRenderingCreateInfo-sType-sType) VUID-VkPipelineRenderingCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO](fundamentals.html#VkStructureType)
 
 The `VkCustomResolveCreateInfoEXT` structure is defined as:
 
@@ -7050,9 +7346,9 @@ that the fragment shader will be used in a custom resolve operation.
 If a graphics pipeline is created with a valid [VkRenderPass](renderpass.html#VkRenderPass),
 parameters of this structure are ignored.
 
-If `customResolve` is `VK_FALSE`, the pipeline **can** only be used
+If `customResolve` is [VK_FALSE](fundamentals.html#VK_FALSE), the pipeline **can** only be used
 outside the custom resolve section.
-If `customResolve` is `VK_TRUE`, the pipeline **can** only be used
+If `customResolve` is [VK_TRUE](fundamentals.html#VK_TRUE), the pipeline **can** only be used
 inside the custom resolve section.
 
 When a dynamic render pass instance contains a custom resolve operation
@@ -7066,25 +7362,23 @@ structure.
 
 If the [`dynamicRenderingUnusedAttachments`](features.html#features-dynamicRenderingUnusedAttachments) feature is enabled, then when this
 structure is not included in the `pNext` chain for
-[VkGraphicsPipelineCreateInfo](#VkGraphicsPipelineCreateInfo), `customResolve` is `VK_FALSE`,
+[VkGraphicsPipelineCreateInfo](#VkGraphicsPipelineCreateInfo), `customResolve` is [VK_FALSE](fundamentals.html#VK_FALSE),
 `colorAttachmentCount` is `0`, and `depthAttachmentFormat` and
-`stencilAttachmentFormat` are `VK_FORMAT_UNDEFINED`.
+`stencilAttachmentFormat` are [VK_FORMAT_UNDEFINED](formats.html#VkFormat).
 
 If `depthAttachmentFormat`, `stencilAttachmentFormat`, or any
-element of `pColorAttachmentFormats` is `VK_FORMAT_UNDEFINED`, it
+element of `pColorAttachmentFormats` is [VK_FORMAT_UNDEFINED](formats.html#VkFormat), it
 indicates that the corresponding attachment is unused within the resolve
 portion of the render pass.
 Valid formats indicate that an attachment **can** be used - but it is still
 valid to set the attachment to `NULL` when beginning rendering.
-
-Overdraw during a custom resolve will produce **undefined** behavior.
 
 When passed as a `pNext` member to a [VkShaderCreateInfoEXT](shaders.html#VkShaderCreateInfoEXT) struct
 for use with fragment density maps, the `colorAttachmentCount`,
 `pColorAttachmentFormats`, `depthAttachmentFormat`, and
 `stencilAttachmentFormat` members of this struct are ignored.
 When not passed as a `pNext` member, `customResolve` is
-`VK_FALSE`.
+[VK_FALSE](fundamentals.html#VK_FALSE).
 
 Valid Usage
 
@@ -7097,45 +7391,45 @@ Valid Usage
 * 
 [](#VUID-VkCustomResolveCreateInfoEXT-depthAttachmentFormat-11508) VUID-VkCustomResolveCreateInfoEXT-depthAttachmentFormat-11508
 
-If `depthAttachmentFormat` is not `VK_FORMAT_UNDEFINED`, it
+If `depthAttachmentFormat` is not [VK_FORMAT_UNDEFINED](formats.html#VkFormat), it
 **must** be a format that includes a depth component
 
 * 
 [](#VUID-VkCustomResolveCreateInfoEXT-depthAttachmentFormat-11509) VUID-VkCustomResolveCreateInfoEXT-depthAttachmentFormat-11509
 
-If `depthAttachmentFormat` is not `VK_FORMAT_UNDEFINED`, it
+If `depthAttachmentFormat` is not [VK_FORMAT_UNDEFINED](formats.html#VkFormat), it
 **must** be a format with [potential format    features](formats.html#potential-format-features) that include
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkCustomResolveCreateInfoEXT-pColorAttachmentFormats-11510) VUID-VkCustomResolveCreateInfoEXT-pColorAttachmentFormats-11510
 
 If any element of `pColorAttachmentFormats` is not
-`VK_FORMAT_UNDEFINED`, it **must** be a format with
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat), it **must** be a format with
 [potential format features](formats.html#potential-format-features) that include
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT`
-, or `VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV` if the
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
+, or [VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](formats.html#VkFormatFeatureFlagBits2KHR) if the
 [`linearColorAttachment`](features.html#features-linearColorAttachment) feature
 is enabled
 
 * 
 [](#VUID-VkCustomResolveCreateInfoEXT-stencilAttachmentFormat-11511) VUID-VkCustomResolveCreateInfoEXT-stencilAttachmentFormat-11511
 
-If `stencilAttachmentFormat` is not `VK_FORMAT_UNDEFINED`, it
+If `stencilAttachmentFormat` is not [VK_FORMAT_UNDEFINED](formats.html#VkFormat), it
 **must** be a format that includes a stencil aspect
 
 * 
 [](#VUID-VkCustomResolveCreateInfoEXT-stencilAttachmentFormat-11512) VUID-VkCustomResolveCreateInfoEXT-stencilAttachmentFormat-11512
 
-If `stencilAttachmentFormat` is not `VK_FORMAT_UNDEFINED`, it
+If `stencilAttachmentFormat` is not [VK_FORMAT_UNDEFINED](formats.html#VkFormat), it
 **must** be a format with [potential format    features](formats.html#potential-format-features) that include
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkCustomResolveCreateInfoEXT-depthAttachmentFormat-11513) VUID-VkCustomResolveCreateInfoEXT-depthAttachmentFormat-11513
 
-If `depthAttachmentFormat` is not `VK_FORMAT_UNDEFINED` and
-`stencilAttachmentFormat` is not `VK_FORMAT_UNDEFINED`,
+If `depthAttachmentFormat` is not [VK_FORMAT_UNDEFINED](formats.html#VkFormat) and
+`stencilAttachmentFormat` is not [VK_FORMAT_UNDEFINED](formats.html#VkFormat),
 `depthAttachmentFormat` **must** equal `stencilAttachmentFormat`
 
 Valid Usage (Implicit)
@@ -7143,7 +7437,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCustomResolveCreateInfoEXT-sType-sType) VUID-VkCustomResolveCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CUSTOM_RESOLVE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CUSTOM_RESOLVE_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 The `VkPipelineBinaryInfoKHR` structure is defined as:
 
@@ -7178,6 +7472,8 @@ recalculating it.
 Any shader module identifiers, shader modules, or chained
 [VkShaderModuleCreateInfo](shaders.html#VkShaderModuleCreateInfo) structures declared in
 [VkPipelineShaderStageCreateInfo](#VkPipelineShaderStageCreateInfo) instances, are ignored.
+Any [VkShaderDescriptorSetAndBindingMappingInfoEXT](descriptorheaps.html#VkShaderDescriptorSetAndBindingMappingInfoEXT) in the `pNext`
+chains of [VkPipelineShaderStageCreateInfo](#VkPipelineShaderStageCreateInfo) instances are ignored.
 
 If this structure is not included in the `pNext` chain, it is equivalent
 to specifying this structure with a `binaryCount` of `0`.
@@ -7192,7 +7488,7 @@ Valid Usage
 [vkCreatePipelineBinariesKHR](#vkCreatePipelineBinariesKHR) for the matching
 `Vk*PipelineCreateInfo` structure and its `pNext` chain,
 ignoring the presence of the `VkPipelineBinaryInfoKHR` structure,
-the presence of the `VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR`
+the presence of the [VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](#VkPipelineCreateFlagBits2KHR)
 flag, and absence of any shader module identifiers, shader modules, or
 `VkShaderModuleCreateInfo` structures, for the same
 [global pipeline key](#global-pipeline-key), from either:
@@ -7207,7 +7503,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineBinaryInfoKHR-sType-sType) VUID-VkPipelineBinaryInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_BINARY_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_BINARY_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineBinaryInfoKHR-pPipelineBinaries-parameter) VUID-VkPipelineBinaryInfoKHR-pPipelineBinaries-parameter
@@ -7243,7 +7539,7 @@ libraries is aggregated with said subset.
 
 If this structure is omitted, and either
 [VkGraphicsPipelineCreateInfo](#VkGraphicsPipelineCreateInfo)::`flags` includes
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR` or the
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits) or the
 [VkGraphicsPipelineCreateInfo](#VkGraphicsPipelineCreateInfo)::`pNext` chain includes a
 [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR) structure with a `libraryCount`
 greater than `0`, it is as if `flags` is `0`.
@@ -7256,7 +7552,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGraphicsPipelineLibraryCreateInfoEXT-sType-sType) VUID-VkGraphicsPipelineLibraryCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_LIBRARY_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_LIBRARY_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkGraphicsPipelineLibraryCreateInfoEXT-flags-parameter) VUID-VkGraphicsPipelineLibraryCreateInfoEXT-flags-parameter
@@ -7287,22 +7583,22 @@ typedef enum VkGraphicsPipelineLibraryFlagBitsEXT {
 } VkGraphicsPipelineLibraryFlagBitsEXT;
 
 * 
-`VK_GRAPHICS_PIPELINE_LIBRARY_VERTEX_INPUT_INTERFACE_BIT_EXT`
+[VK_GRAPHICS_PIPELINE_LIBRARY_VERTEX_INPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT)
 specifies that a pipeline will include
 [vertex input interface    state](#pipelines-graphics-subsets-vertex-input).
 
 * 
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT`
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT)
 specifies that a pipeline will include
 [pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization).
 
 * 
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT` specifies
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT) specifies
 that a pipeline will include
 [fragment shader state](#pipelines-graphics-subsets-fragment-shader).
 
 * 
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT`
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#VkGraphicsPipelineLibraryFlagBitsEXT)
 specifies that a pipeline will include
 [fragment output interface    state](#pipelines-graphics-subsets-fragment-output).
 
@@ -7349,7 +7645,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineDynamicStateCreateInfo-sType-sType) VUID-VkPipelineDynamicStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineDynamicStateCreateInfo-pNext-pNext) VUID-VkPipelineDynamicStateCreateInfo-pNext-pNext
@@ -7553,7 +7849,7 @@ typedef enum VkDynamicState {
 } VkDynamicState;
 
 * 
-`VK_DYNAMIC_STATE_VIEWPORT` specifies that the `pViewports`
+[VK_DYNAMIC_STATE_VIEWPORT](#VkDynamicState) specifies that the `pViewports`
 state in [VkPipelineViewportStateCreateInfo](vertexpostproc.html#VkPipelineViewportStateCreateInfo) will be ignored and
 **must** be set dynamically with [vkCmdSetViewport](vertexpostproc.html#vkCmdSetViewport) before any drawing
 commands.
@@ -7561,7 +7857,7 @@ The number of viewports used by a pipeline is still specified by the
 `viewportCount` member of [VkPipelineViewportStateCreateInfo](vertexpostproc.html#VkPipelineViewportStateCreateInfo).
 
 * 
-`VK_DYNAMIC_STATE_SCISSOR` specifies that the `pScissors` state
+[VK_DYNAMIC_STATE_SCISSOR](#VkDynamicState) specifies that the `pScissors` state
 in [VkPipelineViewportStateCreateInfo](vertexpostproc.html#VkPipelineViewportStateCreateInfo) will be ignored and **must** be
 set dynamically with [vkCmdSetScissor](fragops.html#vkCmdSetScissor) before any drawing commands.
 The number of scissor rectangles used by a pipeline is still specified
@@ -7569,13 +7865,13 @@ by the `scissorCount` member of
 [VkPipelineViewportStateCreateInfo](vertexpostproc.html#VkPipelineViewportStateCreateInfo).
 
 * 
-`VK_DYNAMIC_STATE_LINE_WIDTH` specifies that the `lineWidth`
+[VK_DYNAMIC_STATE_LINE_WIDTH](#VkDynamicState) specifies that the `lineWidth`
 state in [VkPipelineRasterizationStateCreateInfo](primsrast.html#VkPipelineRasterizationStateCreateInfo) will be ignored
 and **must** be set dynamically with [vkCmdSetLineWidth](primsrast.html#vkCmdSetLineWidth) before any
 drawing commands that generate line primitives for the rasterizer.
 
 * 
-`VK_DYNAMIC_STATE_DEPTH_BIAS` specifies that
+[VK_DYNAMIC_STATE_DEPTH_BIAS](#VkDynamicState) specifies that
     any instance of [VkDepthBiasRepresentationInfoEXT](primsrast.html#VkDepthBiasRepresentationInfoEXT) included in the
     `pNext` chain of [VkPipelineRasterizationStateCreateInfo](primsrast.html#VkPipelineRasterizationStateCreateInfo) as
     well as
@@ -7587,68 +7883,68 @@ or [vkCmdSetDepthBias2EXT](primsrast.html#vkCmdSetDepthBias2EXT)
     before any draws are performed with [depth    bias enabled](primsrast.html#primsrast-depthbias-enable).
 
 * 
-`VK_DYNAMIC_STATE_BLEND_CONSTANTS` specifies that the
+[VK_DYNAMIC_STATE_BLEND_CONSTANTS](#VkDynamicState) specifies that the
 `blendConstants` state in [VkPipelineColorBlendStateCreateInfo](framebuffer.html#VkPipelineColorBlendStateCreateInfo)
 will be ignored and **must** be set dynamically with
 [vkCmdSetBlendConstants](framebuffer.html#vkCmdSetBlendConstants) before any draws are performed with a
 pipeline state with `VkPipelineColorBlendAttachmentState` member
-`blendEnable` set to `VK_TRUE` and any of the blend functions
+`blendEnable` set to [VK_TRUE](fundamentals.html#VK_TRUE) and any of the blend functions
 using a constant blend color.
 
 * 
-`VK_DYNAMIC_STATE_DEPTH_BOUNDS` specifies that the
+[VK_DYNAMIC_STATE_DEPTH_BOUNDS](#VkDynamicState) specifies that the
 `minDepthBounds` and `maxDepthBounds` states of
 [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) will be ignored and **must** be
 set dynamically with [vkCmdSetDepthBounds](fragops.html#vkCmdSetDepthBounds) before any draws are
 performed with a pipeline state with
 [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) member
-`depthBoundsTestEnable` set to `VK_TRUE`.
+`depthBoundsTestEnable` set to [VK_TRUE](fundamentals.html#VK_TRUE).
 
 * 
-`VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK` specifies that the
+[VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK](#VkDynamicState) specifies that the
 `compareMask` state in [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo)
 for both `front` and `back` will be ignored and **must** be set
 dynamically with [vkCmdSetStencilCompareMask](fragops.html#vkCmdSetStencilCompareMask) before any draws are
 performed with a pipeline state with
 [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) member
-`stencilTestEnable` set to `VK_TRUE`
+`stencilTestEnable` set to [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
-`VK_DYNAMIC_STATE_STENCIL_WRITE_MASK` specifies that the
+[VK_DYNAMIC_STATE_STENCIL_WRITE_MASK](#VkDynamicState) specifies that the
 `writeMask` state in [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) for
 both `front` and `back` will be ignored and **must** be set
 dynamically with [vkCmdSetStencilWriteMask](fragops.html#vkCmdSetStencilWriteMask) before any draws are
 performed with a pipeline state with
 [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) member
-`stencilTestEnable` set to `VK_TRUE`
+`stencilTestEnable` set to [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
-`VK_DYNAMIC_STATE_STENCIL_REFERENCE` specifies that the
+[VK_DYNAMIC_STATE_STENCIL_REFERENCE](#VkDynamicState) specifies that the
 `reference` state in [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) for
 both `front` and `back` will be ignored and **must** be set
 dynamically with [vkCmdSetStencilReference](fragops.html#vkCmdSetStencilReference) before any draws are
 performed with a pipeline state with
 [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) member
-`stencilTestEnable` set to `VK_TRUE`
+`stencilTestEnable` set to [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
-`VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV` specifies that the
+[VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV](#VkDynamicState) specifies that the
 `pViewportWScalings` state in
 [VkPipelineViewportWScalingStateCreateInfoNV](vertexpostproc.html#VkPipelineViewportWScalingStateCreateInfoNV) will be ignored and
 **must** be set dynamically with [vkCmdSetViewportWScalingNV](vertexpostproc.html#vkCmdSetViewportWScalingNV) before
 any draws are performed with a pipeline state with
 [VkPipelineViewportWScalingStateCreateInfoNV](vertexpostproc.html#VkPipelineViewportWScalingStateCreateInfoNV) member
-`viewportScalingEnable` set to `VK_TRUE`
+`viewportScalingEnable` set to [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT` specifies that the
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](#VkDynamicState) specifies that the
 `pDiscardRectangles` state in
 [VkPipelineDiscardRectangleStateCreateInfoEXT](fragops.html#VkPipelineDiscardRectangleStateCreateInfoEXT) will be ignored and
 **must** be set dynamically with [vkCmdSetDiscardRectangleEXT](fragops.html#vkCmdSetDiscardRectangleEXT) before
 any draw or clear commands.
 
 * 
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT` specifies that the
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT](#VkDynamicState) specifies that the
 presence of the [VkPipelineDiscardRectangleStateCreateInfoEXT](fragops.html#VkPipelineDiscardRectangleStateCreateInfoEXT)
 structure in the [VkGraphicsPipelineCreateInfo](#VkGraphicsPipelineCreateInfo) chain with a
 `discardRectangleCount` greater than zero does not implicitly enable
@@ -7659,7 +7955,7 @@ This is available on implementations that support at least
 extension.
 
 * 
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT` specifies that the
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT](#VkDynamicState) specifies that the
 `discardRectangleMode` state in
 [VkPipelineDiscardRectangleStateCreateInfoEXT](fragops.html#VkPipelineDiscardRectangleStateCreateInfoEXT) will be ignored and
 **must** be set dynamically with [vkCmdSetDiscardRectangleModeEXT](fragops.html#vkCmdSetDiscardRectangleModeEXT)
@@ -7669,7 +7965,7 @@ This is available on implementations that support at least
 extension.
 
 * 
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` specifies that the
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](#VkDynamicState) specifies that the
 `sampleLocationsInfo` state in
 [VkPipelineSampleLocationsStateCreateInfoEXT](primsrast.html#VkPipelineSampleLocationsStateCreateInfoEXT) will be ignored and
 **must** be set dynamically with [vkCmdSetSampleLocationsEXT](primsrast.html#vkCmdSetSampleLocationsEXT) before
@@ -7679,14 +7975,14 @@ Enabling custom sample locations is still indicated by the
 [VkPipelineSampleLocationsStateCreateInfoEXT](primsrast.html#VkPipelineSampleLocationsStateCreateInfoEXT).
 
 * 
-`VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV` specifies that the
+[VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV](#VkDynamicState) specifies that the
 `pExclusiveScissors` state in
 [VkPipelineViewportExclusiveScissorStateCreateInfoNV](fragops.html#VkPipelineViewportExclusiveScissorStateCreateInfoNV) will be
 ignored and **must** be set dynamically with
 [vkCmdSetExclusiveScissorNV](fragops.html#vkCmdSetExclusiveScissorNV) before any drawing commands.
 
 * 
-`VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV` specifies that the
+[VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV](#VkDynamicState) specifies that the
 exclusive scissors **must** be explicitly enabled with
 [vkCmdSetExclusiveScissorEnableNV](fragops.html#vkCmdSetExclusiveScissorEnableNV) and the
 `exclusiveScissorCount` value in
@@ -7696,143 +7992,143 @@ This is available on implementations that support at least
 `specVersion` `2` of the `[VK_NV_scissor_exclusive](../appendices/extensions.html#VK_NV_scissor_exclusive)` extension.
 
 * 
-`VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV` specifies that
+[VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV](#VkDynamicState) specifies that
 the `pShadingRatePalettes` state in
 [VkPipelineViewportShadingRateImageStateCreateInfoNV](primsrast.html#VkPipelineViewportShadingRateImageStateCreateInfoNV) will be
 ignored and **must** be set dynamically with
 [vkCmdSetViewportShadingRatePaletteNV](primsrast.html#vkCmdSetViewportShadingRatePaletteNV) before any drawing commands.
 
 * 
-`VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV` specifies that
+[VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV](#VkDynamicState) specifies that
 the coarse sample order state in
 [VkPipelineViewportCoarseSampleOrderStateCreateInfoNV](primsrast.html#VkPipelineViewportCoarseSampleOrderStateCreateInfoNV) will be
 ignored and **must** be set dynamically with
 [vkCmdSetCoarseSampleOrderNV](primsrast.html#vkCmdSetCoarseSampleOrderNV) before any drawing commands.
 
 * 
-`VK_DYNAMIC_STATE_LINE_STIPPLE` specifies that the
+[VK_DYNAMIC_STATE_LINE_STIPPLE](#VkDynamicState) specifies that the
 `lineStippleFactor` and `lineStipplePattern` state in
 [VkPipelineRasterizationLineStateCreateInfo](primsrast.html#VkPipelineRasterizationLineStateCreateInfo) will be ignored and
 **must** be set dynamically with [vkCmdSetLineStipple](primsrast.html#vkCmdSetLineStipple) before any draws
 are performed with a pipeline state with
 [VkPipelineRasterizationLineStateCreateInfo](primsrast.html#VkPipelineRasterizationLineStateCreateInfo) member
-`stippledLineEnable` set to `VK_TRUE`.
+`stippledLineEnable` set to [VK_TRUE](fundamentals.html#VK_TRUE).
 
 * 
-`VK_DYNAMIC_STATE_CULL_MODE` specifies that the `cullMode` state
+[VK_DYNAMIC_STATE_CULL_MODE](#VkDynamicState) specifies that the `cullMode` state
 in [VkPipelineRasterizationStateCreateInfo](primsrast.html#VkPipelineRasterizationStateCreateInfo) will be ignored and
 **must** be set dynamically with [vkCmdSetCullMode](primsrast.html#vkCmdSetCullMode) before any drawing
 commands.
 
 * 
-`VK_DYNAMIC_STATE_FRONT_FACE` specifies that the `frontFace`
+[VK_DYNAMIC_STATE_FRONT_FACE](#VkDynamicState) specifies that the `frontFace`
 state in [VkPipelineRasterizationStateCreateInfo](primsrast.html#VkPipelineRasterizationStateCreateInfo) will be ignored
 and **must** be set dynamically with [vkCmdSetFrontFace](primsrast.html#vkCmdSetFrontFace) before any
 drawing commands.
 
 * 
-`VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY` specifies that the
+[VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY](#VkDynamicState) specifies that the
 `topology` state in [VkPipelineInputAssemblyStateCreateInfo](drawing.html#VkPipelineInputAssemblyStateCreateInfo)
 only specifies the [topology class](drawing.html#drawing-primitive-topology-class),
 and the specific topology order and adjacency **must** be set dynamically
 with [vkCmdSetPrimitiveTopology](drawing.html#vkCmdSetPrimitiveTopology) before any drawing commands.
 
 * 
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` specifies that the
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](#VkDynamicState) specifies that the
 `viewportCount` and `pViewports` state in
 [VkPipelineViewportStateCreateInfo](vertexpostproc.html#VkPipelineViewportStateCreateInfo) will be ignored and **must** be set
 dynamically with [vkCmdSetViewportWithCount](vertexpostproc.html#vkCmdSetViewportWithCount) before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT` specifies that the
+[VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](#VkDynamicState) specifies that the
 `scissorCount` and `pScissors` state in
 [VkPipelineViewportStateCreateInfo](vertexpostproc.html#VkPipelineViewportStateCreateInfo) will be ignored and **must** be set
 dynamically with [vkCmdSetScissorWithCount](vertexpostproc.html#vkCmdSetScissorWithCount) before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE` specifies that the
+[VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE](#VkDynamicState) specifies that the
 `stride` state in [VkVertexInputBindingDescription](fxvertex.html#VkVertexInputBindingDescription) will be
 ignored and **must** be set dynamically with [vkCmdBindVertexBuffers2](fxvertex.html#vkCmdBindVertexBuffers2)
 before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE` specifies that the
+[VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE](#VkDynamicState) specifies that the
 `depthTestEnable` state in
 [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) will be ignored and **must** be
 set dynamically with [vkCmdSetDepthTestEnable](fragops.html#vkCmdSetDepthTestEnable) before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE` specifies that the
+[VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE](#VkDynamicState) specifies that the
 `depthWriteEnable` state in
 [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) will be ignored and **must** be
 set dynamically with [vkCmdSetDepthWriteEnable](fragops.html#vkCmdSetDepthWriteEnable) before any draw
 call.
 
 * 
-`VK_DYNAMIC_STATE_DEPTH_COMPARE_OP` specifies that the
+[VK_DYNAMIC_STATE_DEPTH_COMPARE_OP](#VkDynamicState) specifies that the
 `depthCompareOp` state in
 [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) will be ignored and **must** be
 set dynamically with [vkCmdSetDepthCompareOp](fragops.html#vkCmdSetDepthCompareOp) before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE` specifies that the
+[VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE](#VkDynamicState) specifies that the
 `depthBoundsTestEnable` state in
 [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) will be ignored and **must** be
 set dynamically with [vkCmdSetDepthBoundsTestEnable](fragops.html#vkCmdSetDepthBoundsTestEnable) before any draw
 call.
 
 * 
-`VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE` specifies that the
+[VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE](#VkDynamicState) specifies that the
 `stencilTestEnable` state in
 [VkPipelineDepthStencilStateCreateInfo](fragops.html#VkPipelineDepthStencilStateCreateInfo) will be ignored and **must** be
 set dynamically with [vkCmdSetStencilTestEnable](fragops.html#vkCmdSetStencilTestEnable) before any draw
 call.
 
 * 
-`VK_DYNAMIC_STATE_STENCIL_OP` specifies that the `failOp`,
+[VK_DYNAMIC_STATE_STENCIL_OP](#VkDynamicState) specifies that the `failOp`,
 `passOp`, `depthFailOp`, and `compareOp` states in
 `VkPipelineDepthStencilStateCreateInfo` for both `front` and
 `back` will be ignored and **must** be set dynamically with
 [vkCmdSetStencilOp](fragops.html#vkCmdSetStencilOp) before any draws are performed with a pipeline
 state with `VkPipelineDepthStencilStateCreateInfo` member
-`stencilTestEnable` set to `VK_TRUE`
+`stencilTestEnable` set to [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
-`VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT` specifies that the
+[VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT](#VkDynamicState) specifies that the
 `patchControlPoints` state in
 [VkPipelineTessellationStateCreateInfo](tessellation.html#VkPipelineTessellationStateCreateInfo) will be ignored and **must** be
 set dynamically with [vkCmdSetPatchControlPointsEXT](shaders.html#vkCmdSetPatchControlPointsEXT) before any
 drawing commands.
 
 * 
-`VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE` specifies that the
+[VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE](#VkDynamicState) specifies that the
 `rasterizerDiscardEnable` state in
 [VkPipelineRasterizationStateCreateInfo](primsrast.html#VkPipelineRasterizationStateCreateInfo) will be ignored and **must**
 be set dynamically with [vkCmdSetRasterizerDiscardEnable](primsrast.html#vkCmdSetRasterizerDiscardEnable) before any
 drawing commands.
 
 * 
-`VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE` specifies that the
+[VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE](#VkDynamicState) specifies that the
 `depthBiasEnable` state in
 [VkPipelineRasterizationStateCreateInfo](primsrast.html#VkPipelineRasterizationStateCreateInfo) will be ignored and **must**
 be set dynamically with [vkCmdSetDepthBiasEnable](primsrast.html#vkCmdSetDepthBiasEnable) before any drawing
 commands.
 
 * 
-`VK_DYNAMIC_STATE_LOGIC_OP_EXT` specifies that the `logicOp`
+[VK_DYNAMIC_STATE_LOGIC_OP_EXT](#VkDynamicState) specifies that the `logicOp`
 state in [VkPipelineColorBlendStateCreateInfo](framebuffer.html#VkPipelineColorBlendStateCreateInfo) will be ignored and
 **must** be set dynamically with [vkCmdSetLogicOpEXT](framebuffer.html#vkCmdSetLogicOpEXT) before any
 drawing commands.
 
 * 
-`VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE` specifies that the
+[VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE](#VkDynamicState) specifies that the
 `primitiveRestartEnable` state in
 [VkPipelineInputAssemblyStateCreateInfo](drawing.html#VkPipelineInputAssemblyStateCreateInfo) will be ignored and **must**
 be set dynamically with [vkCmdSetPrimitiveRestartEnable](drawing.html#vkCmdSetPrimitiveRestartEnable) before any
 drawing commands.
 
 * 
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` specifies that state in
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](#VkDynamicState) specifies that state in
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](primsrast.html#VkPipelineFragmentShadingRateStateCreateInfoKHR)
 and [VkPipelineFragmentShadingRateEnumStateCreateInfoNV](primsrast.html#VkPipelineFragmentShadingRateEnumStateCreateInfoNV)
 will be ignored and **must** be set dynamically with
@@ -7841,85 +8137,85 @@ or [vkCmdSetFragmentShadingRateEnumNV](primsrast.html#vkCmdSetFragmentShadingRat
 before any drawing commands.
 
 * 
-`VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR` specifies
+[VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR](#VkDynamicState) specifies
 that the default stack size computation for the pipeline will be ignored
 and **must** be set dynamically with
 [vkCmdSetRayTracingPipelineStackSizeKHR](#vkCmdSetRayTracingPipelineStackSizeKHR) before any ray tracing
 calls are performed.
 
 * 
-`VK_DYNAMIC_STATE_VERTEX_INPUT_EXT` specifies that the
+[VK_DYNAMIC_STATE_VERTEX_INPUT_EXT](#VkDynamicState) specifies that the
 `pVertexInputState` state will be ignored and **must** be set
 dynamically with [vkCmdSetVertexInputEXT](fxvertex.html#vkCmdSetVertexInputEXT) before any drawing
 commands
 
 * 
-`VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT` specifies that the
+[VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT](#VkDynamicState) specifies that the
 `pColorWriteEnables` state in
 [VkPipelineColorWriteCreateInfoEXT](framebuffer.html#VkPipelineColorWriteCreateInfoEXT) will be ignored and **must** be set
 dynamically with [vkCmdSetColorWriteEnableEXT](framebuffer.html#vkCmdSetColorWriteEnableEXT) before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_TESSELLATION_DOMAIN_ORIGIN_EXT` specifies that the
+[VK_DYNAMIC_STATE_TESSELLATION_DOMAIN_ORIGIN_EXT](#VkDynamicState) specifies that the
 `domainOrigin` state in
 [VkPipelineTessellationDomainOriginStateCreateInfo](tessellation.html#VkPipelineTessellationDomainOriginStateCreateInfo) will be ignored
 and **must** be set dynamically with
 [vkCmdSetTessellationDomainOriginEXT](tessellation.html#vkCmdSetTessellationDomainOriginEXT) before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT` specifies that the
+[VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT](#VkDynamicState) specifies that the
 `depthClampEnable` state in
 [VkPipelineRasterizationStateCreateInfo](primsrast.html#VkPipelineRasterizationStateCreateInfo) will be ignored and **must**
 be set dynamically with [vkCmdSetDepthClampEnableEXT](vertexpostproc.html#vkCmdSetDepthClampEnableEXT) before any
 draw call.
 
 * 
-`VK_DYNAMIC_STATE_POLYGON_MODE_EXT` specifies that the
+[VK_DYNAMIC_STATE_POLYGON_MODE_EXT](#VkDynamicState) specifies that the
 `polygonMode` state in [VkPipelineRasterizationStateCreateInfo](primsrast.html#VkPipelineRasterizationStateCreateInfo)
 will be ignored and **must** be set dynamically with
 [vkCmdSetPolygonModeEXT](primsrast.html#vkCmdSetPolygonModeEXT) before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` specifies that the
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](#VkDynamicState) specifies that the
 `rasterizationSamples` state in
 [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo) will be ignored and **must** be
 set dynamically with [vkCmdSetRasterizationSamplesEXT](primsrast.html#vkCmdSetRasterizationSamplesEXT) before any
 draw call.
 
 * 
-`VK_DYNAMIC_STATE_SAMPLE_MASK_EXT` specifies that the
+[VK_DYNAMIC_STATE_SAMPLE_MASK_EXT](#VkDynamicState) specifies that the
 `pSampleMask` state in [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo)
 will be ignored and **must** be set dynamically with
 [vkCmdSetSampleMaskEXT](fragops.html#vkCmdSetSampleMaskEXT) before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT` specifies that the
+[VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT](#VkDynamicState) specifies that the
 `alphaToCoverageEnable` state in
 [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo) will be ignored and **must** be
 set dynamically with [vkCmdSetAlphaToCoverageEnableEXT](fragops.html#vkCmdSetAlphaToCoverageEnableEXT) before any
 draw call.
 
 * 
-`VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT` specifies that the
+[VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT](#VkDynamicState) specifies that the
 `alphaToOneEnable` state in
 [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo) will be ignored and **must** be
 set dynamically with [vkCmdSetAlphaToOneEnableEXT](fragops.html#vkCmdSetAlphaToOneEnableEXT) before any draw
 call.
 
 * 
-`VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT` specifies that the
+[VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT](#VkDynamicState) specifies that the
 `logicOpEnable` state in [VkPipelineColorBlendStateCreateInfo](framebuffer.html#VkPipelineColorBlendStateCreateInfo)
 will be ignored and **must** be set dynamically with
 [vkCmdSetLogicOpEnableEXT](framebuffer.html#vkCmdSetLogicOpEnableEXT) before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT` specifies that the
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](#VkDynamicState) specifies that the
 `blendEnable` state in [VkPipelineColorBlendAttachmentState](framebuffer.html#VkPipelineColorBlendAttachmentState)
 will be ignored and **must** be set dynamically with
 [vkCmdSetColorBlendEnableEXT](framebuffer.html#vkCmdSetColorBlendEnableEXT) before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT` specifies that the
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](#VkDynamicState) specifies that the
 `srcColorBlendFactor`, `dstColorBlendFactor`,
 `colorBlendOp`, `srcAlphaBlendFactor`,
 `dstAlphaBlendFactor`, and `alphaBlendOp` states in
@@ -7928,48 +8224,48 @@ set dynamically with [vkCmdSetColorBlendEquationEXT](framebuffer.html#vkCmdSetCo
 call.
 
 * 
-`VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT` specifies that the
+[VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](#VkDynamicState) specifies that the
 `colorWriteMask` state in [VkPipelineColorBlendAttachmentState](framebuffer.html#VkPipelineColorBlendAttachmentState)
 will be ignored and **must** be set dynamically with
 [vkCmdSetColorWriteMaskEXT](framebuffer.html#vkCmdSetColorWriteMaskEXT) before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT` specifies that the
+[VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT](#VkDynamicState) specifies that the
 `rasterizationStream` state in
 [VkPipelineRasterizationStateStreamCreateInfoEXT](primsrast.html#VkPipelineRasterizationStateStreamCreateInfoEXT) will be ignored
 and **must** be set dynamically with [vkCmdSetRasterizationStreamEXT](primsrast.html#vkCmdSetRasterizationStreamEXT)
 before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_CONSERVATIVE_RASTERIZATION_MODE_EXT` specifies
+[VK_DYNAMIC_STATE_CONSERVATIVE_RASTERIZATION_MODE_EXT](#VkDynamicState) specifies
 that the `conservativeRasterizationMode` state in
 [VkPipelineRasterizationConservativeStateCreateInfoEXT](primsrast.html#VkPipelineRasterizationConservativeStateCreateInfoEXT) will be
 ignored and **must** be set dynamically with
 [vkCmdSetConservativeRasterizationModeEXT](primsrast.html#vkCmdSetConservativeRasterizationModeEXT) before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_EXTRA_PRIMITIVE_OVERESTIMATION_SIZE_EXT` specifies
+[VK_DYNAMIC_STATE_EXTRA_PRIMITIVE_OVERESTIMATION_SIZE_EXT](#VkDynamicState) specifies
 that the `extraPrimitiveOverestimationSize` state in
 [VkPipelineRasterizationConservativeStateCreateInfoEXT](primsrast.html#VkPipelineRasterizationConservativeStateCreateInfoEXT) will be
 ignored and **must** be set dynamically with
 [vkCmdSetExtraPrimitiveOverestimationSizeEXT](primsrast.html#vkCmdSetExtraPrimitiveOverestimationSizeEXT) before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT` specifies that the
+[VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT](#VkDynamicState) specifies that the
 `depthClipEnable` state in
 [VkPipelineRasterizationDepthClipStateCreateInfoEXT](primsrast.html#VkPipelineRasterizationDepthClipStateCreateInfoEXT) will be ignored
 and **must** be set dynamically with [vkCmdSetDepthClipEnableEXT](vertexpostproc.html#vkCmdSetDepthClipEnableEXT)
 before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT` specifies that the
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT](#VkDynamicState) specifies that the
 `sampleLocationsEnable` state in
 [VkPipelineSampleLocationsStateCreateInfoEXT](primsrast.html#VkPipelineSampleLocationsStateCreateInfoEXT) will be ignored and
 **must** be set dynamically with [vkCmdSetSampleLocationsEnableEXT](primsrast.html#vkCmdSetSampleLocationsEnableEXT)
 before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT` specifies that the
+[VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](#VkDynamicState) specifies that the
 `colorBlendOp` state in [VkPipelineColorBlendAttachmentState](framebuffer.html#VkPipelineColorBlendAttachmentState),
 and `srcPremultiplied`, `dstPremultiplied`, and
 `blendOverlap` states in
@@ -7978,115 +8274,115 @@ and `srcPremultiplied`, `dstPremultiplied`, and
 any draw call.
 
 * 
-`VK_DYNAMIC_STATE_PROVOKING_VERTEX_MODE_EXT` specifies that the
+[VK_DYNAMIC_STATE_PROVOKING_VERTEX_MODE_EXT](#VkDynamicState) specifies that the
 `provokingVertexMode` state in
 [VkPipelineRasterizationProvokingVertexStateCreateInfoEXT](vertexpostproc.html#VkPipelineRasterizationProvokingVertexStateCreateInfoEXT) will be
 ignored and **must** be set dynamically with
 [vkCmdSetProvokingVertexModeEXT](vertexpostproc.html#vkCmdSetProvokingVertexModeEXT) before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT` specifies that the
+[VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT](#VkDynamicState) specifies that the
 `lineRasterizationMode` state in
 [VkPipelineRasterizationLineStateCreateInfo](primsrast.html#VkPipelineRasterizationLineStateCreateInfo) will be ignored and
 **must** be set dynamically with [vkCmdSetLineRasterizationModeEXT](primsrast.html#vkCmdSetLineRasterizationModeEXT)
 before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT` specifies that the
+[VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT](#VkDynamicState) specifies that the
 `stippledLineEnable` state in
 [VkPipelineRasterizationLineStateCreateInfo](primsrast.html#VkPipelineRasterizationLineStateCreateInfo) will be ignored and
 **must** be set dynamically with [vkCmdSetLineStippleEnableEXT](primsrast.html#vkCmdSetLineStippleEnableEXT) before
 any draw call.
 
 * 
-`VK_DYNAMIC_STATE_DEPTH_CLIP_NEGATIVE_ONE_TO_ONE_EXT` specifies that
+[VK_DYNAMIC_STATE_DEPTH_CLIP_NEGATIVE_ONE_TO_ONE_EXT](#VkDynamicState) specifies that
 the `negativeOneToOne` state in
 [VkPipelineViewportDepthClipControlCreateInfoEXT](vertexpostproc.html#VkPipelineViewportDepthClipControlCreateInfoEXT) will be ignored
 and **must** be set dynamically with
 [vkCmdSetDepthClipNegativeOneToOneEXT](vertexpostproc.html#vkCmdSetDepthClipNegativeOneToOneEXT) before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT` specifies that the
+[VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT](#VkDynamicState) specifies that the
 `depthClampMode` and `pDepthClampRange` state in
 [VkPipelineViewportDepthClampControlCreateInfoEXT](fragops.html#VkPipelineViewportDepthClampControlCreateInfoEXT) will be ignored
 and **must** be set dynamically with [vkCmdSetDepthClampRangeEXT](fragops.html#vkCmdSetDepthClampRangeEXT)
 before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_ENABLE_NV` specifies that the
+[VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_ENABLE_NV](#VkDynamicState) specifies that the
 `viewportWScalingEnable` state in
 [VkPipelineViewportWScalingStateCreateInfoNV](vertexpostproc.html#VkPipelineViewportWScalingStateCreateInfoNV) will be ignored and
 **must** be set dynamically with [vkCmdSetViewportWScalingEnableNV](vertexpostproc.html#vkCmdSetViewportWScalingEnableNV)
 before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV` specifies that the
+[VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV](#VkDynamicState) specifies that the
 `viewportCount`, and `pViewportSwizzles` states in
 [VkPipelineViewportSwizzleStateCreateInfoNV](vertexpostproc.html#VkPipelineViewportSwizzleStateCreateInfoNV) will be ignored and
 **must** be set dynamically with [vkCmdSetViewportSwizzleNV](vertexpostproc.html#vkCmdSetViewportSwizzleNV) before any
 draw call.
 
 * 
-`VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_ENABLE_NV` specifies that the
+[VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_ENABLE_NV](#VkDynamicState) specifies that the
 `coverageToColorEnable` state in
 [VkPipelineCoverageToColorStateCreateInfoNV](fragops.html#VkPipelineCoverageToColorStateCreateInfoNV) will be ignored and
 **must** be set dynamically with [vkCmdSetCoverageToColorEnableNV](fragops.html#vkCmdSetCoverageToColorEnableNV)
 before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_LOCATION_NV` specifies that the
+[VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_LOCATION_NV](#VkDynamicState) specifies that the
 `coverageToColorLocation` state in
 [VkPipelineCoverageToColorStateCreateInfoNV](fragops.html#VkPipelineCoverageToColorStateCreateInfoNV) will be ignored and
 **must** be set dynamically with [vkCmdSetCoverageToColorLocationNV](fragops.html#vkCmdSetCoverageToColorLocationNV)
 before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_MODE_NV` specifies that the
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_MODE_NV](#VkDynamicState) specifies that the
 `coverageModulationMode` state in
 [VkPipelineCoverageModulationStateCreateInfoNV](fragops.html#VkPipelineCoverageModulationStateCreateInfoNV) will be ignored and
 **must** be set dynamically with [vkCmdSetCoverageModulationModeNV](fragops.html#vkCmdSetCoverageModulationModeNV)
 before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_ENABLE_NV` specifies
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_ENABLE_NV](#VkDynamicState) specifies
 that the `coverageModulationTableEnable` state in
 [VkPipelineCoverageModulationStateCreateInfoNV](fragops.html#VkPipelineCoverageModulationStateCreateInfoNV) will be ignored and
 **must** be set dynamically with
 [vkCmdSetCoverageModulationTableEnableNV](fragops.html#vkCmdSetCoverageModulationTableEnableNV) before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_NV` specifies that the
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_NV](#VkDynamicState) specifies that the
 `coverageModulationTableCount`, and `pCoverageModulationTable`
 states in [VkPipelineCoverageModulationStateCreateInfoNV](fragops.html#VkPipelineCoverageModulationStateCreateInfoNV) will be
 ignored and **must** be set dynamically with
 [vkCmdSetCoverageModulationTableNV](fragops.html#vkCmdSetCoverageModulationTableNV) before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_SHADING_RATE_IMAGE_ENABLE_NV` specifies that the
+[VK_DYNAMIC_STATE_SHADING_RATE_IMAGE_ENABLE_NV](#VkDynamicState) specifies that the
 `shadingRateImageEnable` state in
 [VkPipelineViewportShadingRateImageStateCreateInfoNV](primsrast.html#VkPipelineViewportShadingRateImageStateCreateInfoNV) will be
 ignored and **must** be set dynamically with
 [vkCmdSetShadingRateImageEnableNV](primsrast.html#vkCmdSetShadingRateImageEnableNV) before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_REPRESENTATIVE_FRAGMENT_TEST_ENABLE_NV` specifies
+[VK_DYNAMIC_STATE_REPRESENTATIVE_FRAGMENT_TEST_ENABLE_NV](#VkDynamicState) specifies
 that the `representativeFragmentTestEnable` state in
 [VkPipelineRepresentativeFragmentTestStateCreateInfoNV](fragops.html#VkPipelineRepresentativeFragmentTestStateCreateInfoNV) will be
 ignored and **must** be set dynamically with
 [vkCmdSetRepresentativeFragmentTestEnableNV](fragops.html#vkCmdSetRepresentativeFragmentTestEnableNV) before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV` specifies that the
+[VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV](#VkDynamicState) specifies that the
 `coverageReductionMode` state in
 [VkPipelineCoverageReductionStateCreateInfoNV](fragops.html#VkPipelineCoverageReductionStateCreateInfoNV) will be ignored and
 **must** be set dynamically with [vkCmdSetCoverageReductionModeNV](fragops.html#vkCmdSetCoverageReductionModeNV)
 before any draw call.
 
 * 
-`VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT` specifies
-that the `VK_PIPELINE_CREATE_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT`
+[VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT](#VkDynamicState) specifies
+that the [VK_PIPELINE_CREATE_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](#VkPipelineCreateFlagBits)
 and
-`VK_PIPELINE_CREATE_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT`
+[VK_PIPELINE_CREATE_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](#VkPipelineCreateFlagBits)
 flags will be ignored and **must** be set dynamically with
 [vkCmdSetAttachmentFeedbackLoopEnableEXT](renderpass.html#vkCmdSetAttachmentFeedbackLoopEnableEXT) before any draw call.
 
@@ -8368,7 +8664,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGraphicsPipelineShaderGroupsCreateInfoNV-sType-sType) VUID-VkGraphicsPipelineShaderGroupsCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_SHADER_GROUPS_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_SHADER_GROUPS_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkGraphicsPipelineShaderGroupsCreateInfoNV-pGroups-parameter) VUID-VkGraphicsPipelineShaderGroupsCreateInfoNV-pGroups-parameter
@@ -8452,7 +8748,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGraphicsShaderGroupCreateInfoNV-sType-sType) VUID-VkGraphicsShaderGroupCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GRAPHICS_SHADER_GROUP_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GRAPHICS_SHADER_GROUP_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkGraphicsShaderGroupCreateInfoNV-pNext-pNext) VUID-VkGraphicsShaderGroupCreateInfoNV-pNext-pNext
@@ -8472,202 +8768,53 @@ Valid Usage (Implicit)
 Ray tracing pipelines consist of multiple shader stages, fixed-function
 traversal stages, and a pipeline layout.
 
-`VK_SHADER_UNUSED_KHR` is a special shader index used to indicate that a
+[VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR) is a special shader index used to indicate that a
 ray generation, miss, or callable shader member is not used.
 
 #define VK_SHADER_UNUSED_KHR              (~0U)
 
 #define VK_SHADER_UNUSED_NV               VK_SHADER_UNUSED_KHR
 
-To create ray tracing pipelines, call:
+The [VkRayTracingShaderGroupTypeKHR](#VkRayTracingShaderGroupTypeKHR) enumeration is defined as:
+
+// Provided by VK_KHR_ray_tracing_pipeline
+typedef enum VkRayTracingShaderGroupTypeKHR {
+    VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR = 0,
+    VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR = 1,
+    VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR = 2,
+  // Provided by VK_NV_ray_tracing
+    VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV = VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR,
+  // Provided by VK_NV_ray_tracing
+    VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV = VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR,
+  // Provided by VK_NV_ray_tracing
+    VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV = VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR,
+} VkRayTracingShaderGroupTypeKHR;
 
 // Provided by VK_NV_ray_tracing
-VkResult vkCreateRayTracingPipelinesNV(
-    VkDevice                                    device,
-    VkPipelineCache                             pipelineCache,
-    uint32_t                                    createInfoCount,
-    const VkRayTracingPipelineCreateInfoNV*     pCreateInfos,
-    const VkAllocationCallbacks*                pAllocator,
-    VkPipeline*                                 pPipelines);
+// Equivalent to VkRayTracingShaderGroupTypeKHR
+typedef VkRayTracingShaderGroupTypeKHR VkRayTracingShaderGroupTypeNV;
 
 * 
-`device` is the logical device that creates the ray tracing
-pipelines.
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR](#VkRayTracingShaderGroupTypeNV) specifies that a
+shader group with a single [VK_SHADER_STAGE_RAYGEN_BIT_KHR](#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_MISS_BIT_KHR](#VkShaderStageFlagBits), or
+[VK_SHADER_STAGE_CALLABLE_BIT_KHR](#VkShaderStageFlagBits) shader in it.
 
 * 
-`pipelineCache` is
-either [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), indicating that pipeline caching is
-disabled, or to enable caching,
-the handle of a valid [VkPipelineCache](#VkPipelineCache) object.
-The implementation **must** not access this object outside of the duration
-of this command.
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR](#VkRayTracingShaderGroupTypeNV) specifies
+that a shader group that only hits triangles and **must** not contain an
+intersection shader, only closest hit and any-hit shaders.
 
 * 
-`createInfoCount` is the length of the `pCreateInfos` and
-`pPipelines` arrays.
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR](#VkRayTracingShaderGroupTypeNV)
+specifies that a shader group that only intersects with custom geometry
+and **must** contain an intersection shader and **may** contain closest hit
+and any-hit shaders.
 
-* 
-`pCreateInfos` is a pointer to an array of
-[VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV) structures.
-
-* 
-`pAllocator` controls host memory allocation as described in the
-[Memory Allocation](memory.html#memory-allocation) chapter.
-
-* 
-`pPipelines` is a pointer to an array in which the resulting ray
-tracing pipeline objects are returned.
-
-Pipelines are created and returned as described for [Multiple Pipeline Creation](#pipelines-multiple).
-
-Valid Usage
-
-* 
-[](#VUID-vkCreateRayTracingPipelinesNV-device-09677) VUID-vkCreateRayTracingPipelinesNV-device-09677
-
-`device` **must** support at least one queue family with the
-`VK_QUEUE_COMPUTE_BIT` capability
-
-* 
-[](#VUID-vkCreateRayTracingPipelinesNV-flags-03415) VUID-vkCreateRayTracingPipelinesNV-flags-03415
-
-If the `flags` member of any element of `pCreateInfos` contains
-the `VK_PIPELINE_CREATE_DERIVATIVE_BIT` flag, and the
-`basePipelineIndex` member of that same element is not `-1`,
-`basePipelineIndex` **must** be less than the index into
-`pCreateInfos` that corresponds to that element
-
-* 
-[](#VUID-vkCreateRayTracingPipelinesNV-flags-03416) VUID-vkCreateRayTracingPipelinesNV-flags-03416
-
-If the `flags` member of any element of `pCreateInfos` contains
-the `VK_PIPELINE_CREATE_DERIVATIVE_BIT` flag, the base pipeline
-**must** have been created with the
-`VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT` flag set
-
-* 
-[](#VUID-vkCreateRayTracingPipelinesNV-flags-03816) VUID-vkCreateRayTracingPipelinesNV-flags-03816
-
-`flags` **must** not contain the
-`VK_PIPELINE_CREATE_DISPATCH_BASE_BIT` flag
-
-* 
-[](#VUID-vkCreateRayTracingPipelinesNV-pipelineCache-02903) VUID-vkCreateRayTracingPipelinesNV-pipelineCache-02903
-
-If `pipelineCache` was created with
-`VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT`, host access
-to `pipelineCache` **must** be
-[externally synchronized](fundamentals.html#fundamentals-threadingbehavior)
-
-* 
-[](#VUID-vkCreateRayTracingPipelinesNV-pNext-09616) VUID-vkCreateRayTracingPipelinesNV-pNext-09616
-
-If [VkPipelineBinaryInfoKHR](#VkPipelineBinaryInfoKHR)::`binaryCount` is not `0` for any
-element of `pCreateInfos`, `pipelineCache` **must** be
-[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
-
-* 
-[](#VUID-vkCreateRayTracingPipelinesNV-pNext-09617) VUID-vkCreateRayTracingPipelinesNV-pNext-09617
-
-If a [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR) structure with the
-`VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR` flag set is included in
-the `pNext` chain of any element of `pCreateInfos`,
-`pipelineCache` **must** be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
-
-* 
-[](#VUID-vkCreateRayTracingPipelinesNV-binaryCount-09620) VUID-vkCreateRayTracingPipelinesNV-binaryCount-09620
-
-If [VkPipelineBinaryInfoKHR](#VkPipelineBinaryInfoKHR)::`binaryCount` is not `0` for any
-element of `pCreateInfos`,
-`VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT`
-**must** not be set in the `flags` of that element
-
-* 
-[](#VUID-vkCreateRayTracingPipelinesNV-binaryCount-09621) VUID-vkCreateRayTracingPipelinesNV-binaryCount-09621
-
-If [VkPipelineBinaryInfoKHR](#VkPipelineBinaryInfoKHR)::`binaryCount` is not `0` for any
-element of `pCreateInfos`,
-`VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT` **must**
-not be set in the `flags` of that element
-
-* 
-[](#VUID-vkCreateRayTracingPipelinesNV-binaryCount-09622) VUID-vkCreateRayTracingPipelinesNV-binaryCount-09622
-
-If [VkPipelineBinaryInfoKHR](#VkPipelineBinaryInfoKHR)::`binaryCount` is not `0` for any
-element of `pCreateInfos`,
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_EXT` **must**
-not be set in the `flags` of that element
-
-* 
-[](#VUID-vkCreateRayTracingPipelinesNV-pNext-10150) VUID-vkCreateRayTracingPipelinesNV-pNext-10150
-
-If a [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR) structure is included in
-the `pNext` chain of any element of `pCreateInfos`,
-`VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR` flag **must** not be set
-
-Valid Usage (Implicit)
-
-* 
-[](#VUID-vkCreateRayTracingPipelinesNV-device-parameter) VUID-vkCreateRayTracingPipelinesNV-device-parameter
-
- `device` **must** be a valid [VkDevice](devsandqueues.html#VkDevice) handle
-
-* 
-[](#VUID-vkCreateRayTracingPipelinesNV-pipelineCache-parameter) VUID-vkCreateRayTracingPipelinesNV-pipelineCache-parameter
-
- If `pipelineCache` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `pipelineCache` **must** be a valid [VkPipelineCache](#VkPipelineCache) handle
-
-* 
-[](#VUID-vkCreateRayTracingPipelinesNV-pCreateInfos-parameter) VUID-vkCreateRayTracingPipelinesNV-pCreateInfos-parameter
-
- `pCreateInfos` **must** be a valid pointer to an array of `createInfoCount` valid [VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV) structures
-
-* 
-[](#VUID-vkCreateRayTracingPipelinesNV-pAllocator-parameter) VUID-vkCreateRayTracingPipelinesNV-pAllocator-parameter
-
- If `pAllocator` is not `NULL`, `pAllocator` **must** be a valid pointer to a valid [VkAllocationCallbacks](memory.html#VkAllocationCallbacks) structure
-
-* 
-[](#VUID-vkCreateRayTracingPipelinesNV-pPipelines-parameter) VUID-vkCreateRayTracingPipelinesNV-pPipelines-parameter
-
- `pPipelines` **must** be a valid pointer to an array of `createInfoCount` [VkPipeline](#VkPipeline) handles
-
-* 
-[](#VUID-vkCreateRayTracingPipelinesNV-createInfoCount-arraylength) VUID-vkCreateRayTracingPipelinesNV-createInfoCount-arraylength
-
- `createInfoCount` **must** be greater than `0`
-
-* 
-[](#VUID-vkCreateRayTracingPipelinesNV-pipelineCache-parent) VUID-vkCreateRayTracingPipelinesNV-pipelineCache-parent
-
- If `pipelineCache` is a valid handle, it **must** have been created, allocated, or retrieved from `device`
-
-Return Codes
-
-[Success](fundamentals.html#fundamentals-successcodes)
-
-* 
-`VK_PIPELINE_COMPILE_REQUIRED_EXT`
-
-* 
-`VK_SUCCESS`
-
-[Failure](fundamentals.html#fundamentals-errorcodes)
-
-* 
-`VK_ERROR_INVALID_SHADER_NV`
-
-* 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
-
-* 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
-
-* 
-`VK_ERROR_UNKNOWN`
-
-* 
-`VK_ERROR_VALIDATION_FAILED`
+|  | For current group types, the hit group type could be inferred from the
+| --- | --- |
+presence or absence of the intersection shader, but we provide the type
+explicitly for future hit groups that do not have that property. |
 
 To create ray tracing pipelines, call:
 
@@ -8713,7 +8860,7 @@ of this command.
 `pPipelines` is a pointer to an array in which the resulting ray
 tracing pipeline objects are returned.
 
-The `VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS` error is returned if the
+The [VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS](fundamentals.html#VkResult) error is returned if the
 implementation is unable to reuse the shader group handles provided in
 [VkRayTracingShaderGroupCreateInfoKHR](#VkRayTracingShaderGroupCreateInfoKHR)::`pShaderGroupCaptureReplayHandle`
 when
@@ -8728,13 +8875,13 @@ Valid Usage
 [](#VUID-vkCreateRayTracingPipelinesKHR-device-09677) VUID-vkCreateRayTracingPipelinesKHR-device-09677
 
 `device` **must** support at least one queue family with the
-`VK_QUEUE_COMPUTE_BIT` capability
+[VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) capability
 
 * 
 [](#VUID-vkCreateRayTracingPipelinesKHR-flags-03415) VUID-vkCreateRayTracingPipelinesKHR-flags-03415
 
 If the `flags` member of any element of `pCreateInfos` contains
-the `VK_PIPELINE_CREATE_DERIVATIVE_BIT` flag, and the
+the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits) flag, and the
 `basePipelineIndex` member of that same element is not `-1`,
 `basePipelineIndex` **must** be less than the index into
 `pCreateInfos` that corresponds to that element
@@ -8743,21 +8890,21 @@ the `VK_PIPELINE_CREATE_DERIVATIVE_BIT` flag, and the
 [](#VUID-vkCreateRayTracingPipelinesKHR-flags-03416) VUID-vkCreateRayTracingPipelinesKHR-flags-03416
 
 If the `flags` member of any element of `pCreateInfos` contains
-the `VK_PIPELINE_CREATE_DERIVATIVE_BIT` flag, the base pipeline
+the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits) flag, the base pipeline
 **must** have been created with the
-`VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT` flag set
+[VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT](#VkPipelineCreateFlagBits) flag set
 
 * 
 [](#VUID-vkCreateRayTracingPipelinesKHR-flags-03816) VUID-vkCreateRayTracingPipelinesKHR-flags-03816
 
 `flags` **must** not contain the
-`VK_PIPELINE_CREATE_DISPATCH_BASE_BIT` flag
+[VK_PIPELINE_CREATE_DISPATCH_BASE_BIT](#VkPipelineCreateFlagBits) flag
 
 * 
 [](#VUID-vkCreateRayTracingPipelinesKHR-pipelineCache-02903) VUID-vkCreateRayTracingPipelinesKHR-pipelineCache-02903
 
 If `pipelineCache` was created with
-`VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT`, host access
+[VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT](#VkPipelineCacheCreateFlagBits), host access
 to `pipelineCache` **must** be
 [externally synchronized](fundamentals.html#fundamentals-threadingbehavior)
 
@@ -8778,7 +8925,7 @@ element of `pCreateInfos`, `pipelineCache` **must** be
 [](#VUID-vkCreateRayTracingPipelinesKHR-pNext-09617) VUID-vkCreateRayTracingPipelinesKHR-pNext-09617
 
 If a [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR) structure with the
-`VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR` flag set is included in
+[VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](#VkPipelineCreateFlagBits2KHR) flag set is included in
 the `pNext` chain of any element of `pCreateInfos`,
 `pipelineCache` **must** be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
@@ -8787,7 +8934,7 @@ the `pNext` chain of any element of `pCreateInfos`,
 
 If [VkPipelineBinaryInfoKHR](#VkPipelineBinaryInfoKHR)::`binaryCount` is not `0` for any
 element of `pCreateInfos`,
-`VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT`
+[VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT](#VkPipelineCreationFeedbackFlagBitsEXT)
 **must** not be set in the `flags` of that element
 
 * 
@@ -8795,7 +8942,7 @@ element of `pCreateInfos`,
 
 If [VkPipelineBinaryInfoKHR](#VkPipelineBinaryInfoKHR)::`binaryCount` is not `0` for any
 element of `pCreateInfos`,
-`VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT` **must**
+[VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT](#VkPipelineCreationFeedbackFlagBitsEXT) **must**
 not be set in the `flags` of that element
 
 * 
@@ -8803,8 +8950,29 @@ not be set in the `flags` of that element
 
 If [VkPipelineBinaryInfoKHR](#VkPipelineBinaryInfoKHR)::`binaryCount` is not `0` for any
 element of `pCreateInfos`,
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_EXT` **must**
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_EXT](#VkPipelineCreateFlagBits) **must**
 not be set in the `flags` of that element
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesKHR-pCreateInfos-11414) VUID-vkCreateRayTracingPipelinesKHR-pCreateInfos-11414
+
+If any element of `pCreateInfos` sets
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR) and includes embedded
+sampler mappings, there **must** be less than
+([`maxSamplerAllocationCount`](limits.html#limits-maxSamplerAllocationCount)
+-  ([    `minSamplerHeapReservedRangeWithEmbedded`](limits.html#limits-minSamplerHeapReservedRangeWithEmbedded) /
+[`samplerDescriptorSize`](limits.html#limits-samplerDescriptorSize)))
+[VkSampler](samplers.html#VkSampler) objects currently created on the device
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesKHR-pCreateInfos-11429) VUID-vkCreateRayTracingPipelinesKHR-pCreateInfos-11429
+
+    If any element of `pCreateInfos` sets
+    [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR) and includes embedded
+    sampler mappings, this command **must** not cause the total number of
+    unique embedded samplers in pipelines
+and shaders
+    on this device to exceed [    `maxDescriptorHeapEmbeddedSamplers`](limits.html#limits-maxDescriptorHeapEmbeddedSamplers)
 
 * 
 [](#VUID-vkCreateRayTracingPipelinesKHR-rayTracingPipeline-03586) VUID-vkCreateRayTracingPipelinesKHR-rayTracingPipeline-03586
@@ -8817,7 +8985,7 @@ The [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature
 
 If `deferredOperation` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the `flags`
 member of elements of `pCreateInfos` **must** not include
-`VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT`
+[VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT](#VkPipelineCreateFlagBits)
 
 Valid Usage (Implicit)
 
@@ -8871,373 +9039,33 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_OPERATION_DEFERRED_KHR`
+[VK_OPERATION_DEFERRED_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_OPERATION_NOT_DEFERRED_KHR`
+[VK_OPERATION_NOT_DEFERRED_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_PIPELINE_COMPILE_REQUIRED_EXT`
+[VK_PIPELINE_COMPILE_REQUIRED_EXT](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS`
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
-
-The `VkRayTracingPipelineCreateInfoNV` structure is defined as:
-
-// Provided by VK_NV_ray_tracing
-typedef struct VkRayTracingPipelineCreateInfoNV {
-    VkStructureType                               sType;
-    const void*                                   pNext;
-    VkPipelineCreateFlags                         flags;
-    uint32_t                                      stageCount;
-    const VkPipelineShaderStageCreateInfo*        pStages;
-    uint32_t                                      groupCount;
-    const VkRayTracingShaderGroupCreateInfoNV*    pGroups;
-    uint32_t                                      maxRecursionDepth;
-    VkPipelineLayout                              layout;
-    VkPipeline                                    basePipelineHandle;
-    int32_t                                       basePipelineIndex;
-} VkRayTracingPipelineCreateInfoNV;
-
-* 
-`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
-
-* 
-`pNext` is `NULL` or a pointer to a structure extending this
-structure.
-
-* 
-`flags` is a bitmask of [VkPipelineCreateFlagBits](#VkPipelineCreateFlagBits) specifying
-how the pipeline will be generated.
-
-* 
-`stageCount` is the number of entries in the `pStages` array.
-
-* 
-`pStages` is a pointer to an array of
-[VkPipelineShaderStageCreateInfo](#VkPipelineShaderStageCreateInfo) structures specifying the set of
-the shader stages to be included in the ray tracing pipeline.
-
-* 
-`groupCount` is the number of entries in the `pGroups` array.
-
-* 
-`pGroups` is a pointer to an array of
-[VkRayTracingShaderGroupCreateInfoNV](#VkRayTracingShaderGroupCreateInfoNV) structures describing the set
-of the shader stages to be included in each shader group in the ray
-tracing pipeline.
-
-* 
-`maxRecursionDepth` is the [maximum    recursion depth](raytracing.html#ray-tracing-recursion-depth) of shaders executed by this pipeline.
-
-* 
-`layout` is the description of binding locations used by both the
-    pipeline and descriptor sets used with the pipeline.
-    If
-    [VkPhysicalDeviceProperties](devsandqueues.html#VkPhysicalDeviceProperties)::`apiVersion` is greater than or
-    equal to Vulkan 1.3
-or
-    [VK_KHR_maintenance4](../appendices/extensions.html#VK_KHR_maintenance4) is enabled
-    `layout` **must** not be accessed by the implementation outside of the
-    duration of the command this structure is passed to.
-
-* 
-`basePipelineHandle` is a pipeline to derive from.
-
-* 
-`basePipelineIndex` is an index into the `pCreateInfos`
-parameter to use as a pipeline to derive from.
-
-The parameters `basePipelineHandle` and `basePipelineIndex` are
-described in more detail in [Pipeline Derivatives](#pipelines-pipeline-derivatives).
-
-If the `pNext` chain includes a [VkPipelineCreateFlags2CreateInfo](#VkPipelineCreateFlags2CreateInfo)
-structure, [VkPipelineCreateFlags2CreateInfo](#VkPipelineCreateFlags2CreateInfo)::`flags` from that
-structure is used instead of `flags` from this structure.
-
-Valid Usage
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-None-09497) VUID-VkRayTracingPipelineCreateInfoNV-None-09497
-
-If the `pNext` chain does not include a
-[VkPipelineCreateFlags2CreateInfo](#VkPipelineCreateFlags2CreateInfo) structure,
-`flags` **must** be a valid combination of
-[VkPipelineCreateFlagBits](#VkPipelineCreateFlagBits) values
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-07984) VUID-VkRayTracingPipelineCreateInfoNV-flags-07984
-
-If `flags` contains the `VK_PIPELINE_CREATE_DERIVATIVE_BIT`
-flag, and `basePipelineIndex` is -1, `basePipelineHandle` **must**
-be a valid ray tracing `VkPipeline` handle
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-07985) VUID-VkRayTracingPipelineCreateInfoNV-flags-07985
-
-If `flags` contains the `VK_PIPELINE_CREATE_DERIVATIVE_BIT`
-flag, and `basePipelineHandle` is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
-`basePipelineIndex` **must** be a valid index into the calling
-command’s `pCreateInfos` parameter
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-07986) VUID-VkRayTracingPipelineCreateInfoNV-flags-07986
-
-If `flags` contains the `VK_PIPELINE_CREATE_DERIVATIVE_BIT`
-flag, `basePipelineIndex` **must** be -1 or `basePipelineHandle`
-**must** be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-layout-07987) VUID-VkRayTracingPipelineCreateInfoNV-layout-07987
-
-If a push constant block is declared in a shader, a push constant range
-in `layout` **must** match the shader stage
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-layout-10069) VUID-VkRayTracingPipelineCreateInfoNV-layout-10069
-
-If a push constant block is declared in a shader, the block must be
-contained inside the push constant range in `layout` that matches
-the stage
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-layout-07988) VUID-VkRayTracingPipelineCreateInfoNV-layout-07988
-
-If a [resource variable](interfaces.html#interfaces-resources) is declared in a shader,
-the corresponding descriptor set in `layout` **must** match the shader
-stage
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-layout-07990) VUID-VkRayTracingPipelineCreateInfoNV-layout-07990
-
-If a [resource variable](interfaces.html#interfaces-resources) is declared in a shader,
-and the descriptor type is not `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`,
-the corresponding descriptor set in `layout` **must** match the
-descriptor type
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-layout-07991) VUID-VkRayTracingPipelineCreateInfoNV-layout-07991
-
-If a [resource variable](interfaces.html#interfaces-resources) is declared in a shader
-as an array, the corresponding descriptor binding used to create
-`layout` **must** have a `descriptorCount` that is greater than or
-equal to the length of the array
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-None-10391) VUID-VkRayTracingPipelineCreateInfoNV-None-10391
-
-If a [resource variables](interfaces.html#interfaces-resources) is declared in a shader
-as an array of descriptors, then the descriptor type of that variable
-**must** not be `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-11798) VUID-VkRayTracingPipelineCreateInfoNV-flags-11798
-
-If [shader64BitIndexing](features.html#features-shader64BitIndexing) feature is not
-enabled, `flags` **must** not contain
-`VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-pStages-03426) VUID-VkRayTracingPipelineCreateInfoNV-pStages-03426
-
-The shader code for the entry points identified by `pStages`, and
-the rest of the state identified by this structure **must** adhere to the
-pipeline linking rules described in the [Shader Interfaces](interfaces.html#interfaces)
-chapter
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-layout-03428) VUID-VkRayTracingPipelineCreateInfoNV-layout-03428
-
-The number of resources in `layout` accessible to each shader stage
-that is used by the pipeline **must** be less than or equal to
-[VkPhysicalDeviceLimits](limits.html#VkPhysicalDeviceLimits)::`maxPerStageResources`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-02904) VUID-VkRayTracingPipelineCreateInfoNV-flags-02904
-
-`flags` **must** not include
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-pipelineCreationCacheControl-02905) VUID-VkRayTracingPipelineCreateInfoNV-pipelineCreationCacheControl-02905
-
-If the [    `pipelineCreationCacheControl`](features.html#features-pipelineCreationCacheControl) feature is not enabled, `flags`
-**must** not include
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT` or
-`VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-stage-06232) VUID-VkRayTracingPipelineCreateInfoNV-stage-06232
-
-The `stage` member of at least one element of `pStages` **must** be
-`VK_SHADER_STAGE_RAYGEN_BIT_KHR`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-03456) VUID-VkRayTracingPipelineCreateInfoNV-flags-03456
-
-`flags` **must** not include `VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-maxRecursionDepth-03457) VUID-VkRayTracingPipelineCreateInfoNV-maxRecursionDepth-03457
-
-`maxRecursionDepth` **must** be less than or equal to
-[VkPhysicalDeviceRayTracingPropertiesNV](limits.html#VkPhysicalDeviceRayTracingPropertiesNV)::`maxRecursionDepth`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-03458) VUID-VkRayTracingPipelineCreateInfoNV-flags-03458
-
-`flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-03459) VUID-VkRayTracingPipelineCreateInfoNV-flags-03459
-
-`flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-03460) VUID-VkRayTracingPipelineCreateInfoNV-flags-03460
-
-`flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-03461) VUID-VkRayTracingPipelineCreateInfoNV-flags-03461
-
-`flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-03462) VUID-VkRayTracingPipelineCreateInfoNV-flags-03462
-
-`flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-03463) VUID-VkRayTracingPipelineCreateInfoNV-flags-03463
-
-`flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-03588) VUID-VkRayTracingPipelineCreateInfoNV-flags-03588
-
-`flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-04948) VUID-VkRayTracingPipelineCreateInfoNV-flags-04948
-
-`flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-02957) VUID-VkRayTracingPipelineCreateInfoNV-flags-02957
-
-`flags` **must** not include both
-`VK_PIPELINE_CREATE_DEFER_COMPILE_BIT_NV` and
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT` at the
-same time
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-pipelineStageCreationFeedbackCount-06651) VUID-VkRayTracingPipelineCreateInfoNV-pipelineStageCreationFeedbackCount-06651
-
-If
-[VkPipelineCreationFeedbackCreateInfo](#VkPipelineCreationFeedbackCreateInfo)::`pipelineStageCreationFeedbackCount`
-is not `0`, it **must** be equal to `stageCount`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-stage-06898) VUID-VkRayTracingPipelineCreateInfoNV-stage-06898
-
-The `stage` value in all `pStages` elements **must** be one of
-`VK_SHADER_STAGE_RAYGEN_BIT_KHR`,
-`VK_SHADER_STAGE_ANY_HIT_BIT_KHR`,
-`VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR`,
-`VK_SHADER_STAGE_MISS_BIT_KHR`,
-`VK_SHADER_STAGE_INTERSECTION_BIT_KHR`, or
-`VK_SHADER_STAGE_CALLABLE_BIT_KHR`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-07402) VUID-VkRayTracingPipelineCreateInfoNV-flags-07402
-
-`flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-07998) VUID-VkRayTracingPipelineCreateInfoNV-flags-07998
-
-`flags` **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-11008) VUID-VkRayTracingPipelineCreateInfoNV-flags-11008
-
-`flags` **must** not include
-`VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT`
-
-Valid Usage (Implicit)
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-sType-sType) VUID-VkRayTracingPipelineCreateInfoNV-sType-sType
-
- `sType` **must** be `VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CREATE_INFO_NV`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-pNext-pNext) VUID-VkRayTracingPipelineCreateInfoNV-pNext-pNext
-
- Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkPipelineCreateFlags2CreateInfo](#VkPipelineCreateFlags2CreateInfo) or [VkPipelineCreationFeedbackCreateInfo](#VkPipelineCreationFeedbackCreateInfo)
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-sType-unique) VUID-VkRayTracingPipelineCreateInfoNV-sType-unique
-
- The `sType` value of each structure in the `pNext` chain **must** be unique
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-pStages-parameter) VUID-VkRayTracingPipelineCreateInfoNV-pStages-parameter
-
- `pStages` **must** be a valid pointer to an array of `stageCount` valid [VkPipelineShaderStageCreateInfo](#VkPipelineShaderStageCreateInfo) structures
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-pGroups-parameter) VUID-VkRayTracingPipelineCreateInfoNV-pGroups-parameter
-
- `pGroups` **must** be a valid pointer to an array of `groupCount` valid [VkRayTracingShaderGroupCreateInfoNV](#VkRayTracingShaderGroupCreateInfoNV) structures
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-layout-parameter) VUID-VkRayTracingPipelineCreateInfoNV-layout-parameter
-
- `layout` **must** be a valid [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) handle
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-stageCount-arraylength) VUID-VkRayTracingPipelineCreateInfoNV-stageCount-arraylength
-
- `stageCount` **must** be greater than `0`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-groupCount-arraylength) VUID-VkRayTracingPipelineCreateInfoNV-groupCount-arraylength
-
- `groupCount` **must** be greater than `0`
-
-* 
-[](#VUID-VkRayTracingPipelineCreateInfoNV-commonparent) VUID-VkRayTracingPipelineCreateInfoNV-commonparent
-
- Both of `basePipelineHandle`, and `layout` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](devsandqueues.html#VkDevice)
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkRayTracingPipelineCreateInfoKHR` structure is defined as:
 
@@ -9329,7 +9157,7 @@ parameter to use as a pipeline to derive from.
 The parameters `basePipelineHandle` and `basePipelineIndex` are
 described in more detail in [Pipeline Derivatives](#pipelines-pipeline-derivatives).
 
-When `VK_PIPELINE_CREATE_LIBRARY_BIT_KHR` is specified, this pipeline
+When [VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits) is specified, this pipeline
 defines a *pipeline library* which **cannot** be bound as a ray tracing
 pipeline directly.
 Instead, pipeline libraries define common shaders and shader groups which
@@ -9350,7 +9178,7 @@ created, referencing those specified in the pipeline library, not in the
 pipeline that includes it.
 
 The default stack size for a pipeline if
-`VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR` is not provided
+[VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR](#VkDynamicState) is not provided
 is computed as described in [Ray Tracing Pipeline Stack](raytracing.html#ray-tracing-pipeline-stack).
 
 If the `pNext` chain includes a [VkPipelineCreateFlags2CreateInfo](#VkPipelineCreateFlags2CreateInfo)
@@ -9375,14 +9203,14 @@ If the `pNext` chain does not include a
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-07984) VUID-VkRayTracingPipelineCreateInfoKHR-flags-07984
 
-If `flags` contains the `VK_PIPELINE_CREATE_DERIVATIVE_BIT`
+If `flags` contains the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits)
 flag, and `basePipelineIndex` is -1, `basePipelineHandle` **must**
 be a valid ray tracing `VkPipeline` handle
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-07985) VUID-VkRayTracingPipelineCreateInfoKHR-flags-07985
 
-If `flags` contains the `VK_PIPELINE_CREATE_DERIVATIVE_BIT`
+If `flags` contains the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits)
 flag, and `basePipelineHandle` is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 `basePipelineIndex` **must** be a valid index into the calling
 command’s `pCreateInfos` parameter
@@ -9390,35 +9218,37 @@ command’s `pCreateInfos` parameter
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-07986) VUID-VkRayTracingPipelineCreateInfoKHR-flags-07986
 
-If `flags` contains the `VK_PIPELINE_CREATE_DERIVATIVE_BIT`
+If `flags` contains the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits)
 flag, `basePipelineIndex` **must** be -1 or `basePipelineHandle`
 **must** be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-layout-07987) VUID-VkRayTracingPipelineCreateInfoKHR-layout-07987
 
-If a push constant block is declared in a shader, a push constant range
-in `layout` **must** match the shader stage
+If a push constant block is declared in a shader and `layout` is not
+[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), a push constant range in `layout` **must** match
+the shader stage
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-layout-10069) VUID-VkRayTracingPipelineCreateInfoKHR-layout-10069
 
-If a push constant block is declared in a shader, the block must be
-contained inside the push constant range in `layout` that matches
-the stage
+If a push constant block is declared in a shader and `layout` is not
+[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the block must be contained inside the push
+constant range in `layout` that matches the stage
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-layout-07988) VUID-VkRayTracingPipelineCreateInfoKHR-layout-07988
 
-If a [resource variable](interfaces.html#interfaces-resources) is declared in a shader,
-the corresponding descriptor set in `layout` **must** match the shader
-stage
+If a [resource variable](interfaces.html#interfaces-resources) is declared in a shader
+and `layout` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the corresponding
+descriptor set in `layout` **must** match the shader stage
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-layout-07990) VUID-VkRayTracingPipelineCreateInfoKHR-layout-07990
 
 If a [resource variable](interfaces.html#interfaces-resources) is declared in a shader,
-and the descriptor type is not `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`,
+`layout` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
+and the descriptor type is not [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](descriptorsets.html#VkDescriptorType),
 the corresponding descriptor set in `layout` **must** match the
 descriptor type
 
@@ -9426,23 +9256,63 @@ descriptor type
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-layout-07991) VUID-VkRayTracingPipelineCreateInfoKHR-layout-07991
 
 If a [resource variable](interfaces.html#interfaces-resources) is declared in a shader
-as an array, the corresponding descriptor binding used to create
-`layout` **must** have a `descriptorCount` that is greater than or
-equal to the length of the array
+as an array and `layout` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the
+corresponding descriptor binding used to create `layout` **must** have
+a `descriptorCount` that is greater than or equal to the length of
+the array
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-None-10391) VUID-VkRayTracingPipelineCreateInfoKHR-None-10391
 
 If a [resource variables](interfaces.html#interfaces-resources) is declared in a shader
 as an array of descriptors, then the descriptor type of that variable
-**must** not be `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+**must** not be [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](descriptorsets.html#VkDescriptorType)
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-11798) VUID-VkRayTracingPipelineCreateInfoKHR-flags-11798
 
 If [shader64BitIndexing](features.html#features-shader64BitIndexing) feature is not
 enabled, `flags` **must** not contain
-`VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT`
+[VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT](#VkPipelineCreateFlagBits2KHR)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoKHR-pipelineCreationCacheControl-02878) VUID-VkRayTracingPipelineCreateInfoKHR-pipelineCreationCacheControl-02878
+
+If the [    `pipelineCreationCacheControl`](features.html#features-pipelineCreationCacheControl) feature is not enabled, `flags`
+**must** not include
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](#VkPipelineCreateFlagBits) nor
+[VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoKHR-pipelineProtectedAccess-07368) VUID-VkRayTracingPipelineCreateInfoKHR-pipelineProtectedAccess-07368
+
+If the [    `pipelineProtectedAccess`](features.html#features-pipelineProtectedAccess) feature is not enabled, `flags`
+**must** not include [VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits) nor
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-07369) VUID-VkRayTracingPipelineCreateInfoKHR-flags-07369
+
+`flags` **must** not include both
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits) and
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-11311) VUID-VkRayTracingPipelineCreateInfoKHR-flags-11311
+
+If [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` includes
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR), `layout` **must**
+be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-11312) VUID-VkRayTracingPipelineCreateInfoKHR-flags-11312
+
+If [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` includes
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR), all shader variables
+in the [shader resource interface](interfaces.html#interfaces-resources) with a
+`DescriptorSet` and `Binding` decoration **must** have a mapping
+declared in
+[VkShaderDescriptorSetAndBindingMappingInfoEXT](descriptorheaps.html#VkShaderDescriptorSetAndBindingMappingInfoEXT)::pMappings
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-pStages-03426) VUID-VkRayTracingPipelineCreateInfoKHR-pStages-03426
@@ -9463,23 +9333,22 @@ that is used by the pipeline **must** be less than or equal to
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-02904) VUID-VkRayTracingPipelineCreateInfoKHR-flags-02904
 
 `flags` **must** not include
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV`
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](#VkPipelineCreateFlagBits)
 
 * 
-[](#VUID-VkRayTracingPipelineCreateInfoKHR-pipelineCreationCacheControl-02905) VUID-VkRayTracingPipelineCreateInfoKHR-pipelineCreationCacheControl-02905
+[](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-12341) VUID-VkRayTracingPipelineCreateInfoKHR-flags-12341
 
-If the [    `pipelineCreationCacheControl`](features.html#features-pipelineCreationCacheControl) feature is not enabled, `flags`
-**must** not include
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT` or
-`VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT`
+`flags` **must** not include
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits) nor
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-stage-03425) VUID-VkRayTracingPipelineCreateInfoKHR-stage-03425
 
 If `flags` does not include
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`, the `stage` member of at
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits), the `stage` member of at
 least one element of `pStages`, including those implicitly added by
-`pLibraryInfo`, **must** be `VK_SHADER_STAGE_RAYGEN_BIT_KHR`
+`pLibraryInfo`, **must** be [VK_SHADER_STAGE_RAYGEN_BIT_KHR](#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-maxPipelineRayRecursionDepth-03589) VUID-VkRayTracingPipelineCreateInfoKHR-maxPipelineRayRecursionDepth-03589
@@ -9490,7 +9359,7 @@ least one element of `pStages`, including those implicitly added by
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-03465) VUID-VkRayTracingPipelineCreateInfoKHR-flags-03465
 
-If `flags` includes `VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`,
+If `flags` includes [VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits),
 `pLibraryInterface` **must** not be `NULL`
 
 * 
@@ -9509,9 +9378,10 @@ this pipeline
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-pLibraryInfo-03592) VUID-VkRayTracingPipelineCreateInfoKHR-pLibraryInfo-03592
 
-If `pLibraryInfo` is not `NULL`, each element of its
-`pLibraries` member **must** have been created with a `layout` that
-is compatible with the `layout` in this pipeline
+If `pLibraryInfo` is not `NULL` and `layout` is not
+[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), each element of `pLibraryInfo->pLibraries`
+**must** have been created with a `layout` that is compatible with the
+`layout` in this pipeline
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-pLibraryInfo-03593) VUID-VkRayTracingPipelineCreateInfoKHR-pLibraryInfo-03593
@@ -9525,65 +9395,65 @@ members of `pLibraryInterface` equal to those in this pipeline
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-03594) VUID-VkRayTracingPipelineCreateInfoKHR-flags-03594
 
 If `flags` includes
-`VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR`,
+[VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR](#VkPipelineCreateFlagBits),
 each element of `pLibraryInfo->pLibraries` **must** have been created
 with the
-`VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR](#VkPipelineCreateFlagBits)
 bit set
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-04718) VUID-VkRayTracingPipelineCreateInfoKHR-flags-04718
 
 If `flags` includes
-`VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR`, each element of
+[VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR](#VkPipelineCreateFlagBits), each element of
 `pLibraryInfo->pLibraries` **must** have been created with the
-`VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR` bit set
+[VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR](#VkPipelineCreateFlagBits) bit set
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-04719) VUID-VkRayTracingPipelineCreateInfoKHR-flags-04719
 
 If `flags` includes
-`VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR`, each
+[VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR](#VkPipelineCreateFlagBits), each
 element of `pLibraryInfo->pLibraries` **must** have been created with
-the `VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR` bit set
+the [VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR](#VkPipelineCreateFlagBits) bit set
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-04720) VUID-VkRayTracingPipelineCreateInfoKHR-flags-04720
 
 If `flags` includes
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR`,
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits),
 each element of `pLibraryInfo->pLibraries` **must** have been created
 with the
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR` bit
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits) bit
 set
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-04721) VUID-VkRayTracingPipelineCreateInfoKHR-flags-04721
 
 If `flags` includes
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR`,
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits),
 each element of `pLibraryInfo->pLibraries` **must** have been created
 with the
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits)
 bit set
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-04722) VUID-VkRayTracingPipelineCreateInfoKHR-flags-04722
 
 If `flags` includes
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR`,
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits),
 each element of `pLibraryInfo->pLibraries` **must** have been created
 with the
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits)
 bit set
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-04723) VUID-VkRayTracingPipelineCreateInfoKHR-flags-04723
 
 If `flags` includes
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR`, each
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits), each
 element of `pLibraryInfo->pLibraries` **must** have been created with
-the `VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR`
+the [VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits)
 bit set
 
 * 
@@ -9596,50 +9466,50 @@ If the `[VK_KHR_pipeline_library](../appendices/extensions.html#VK_KHR_pipeline_
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-03470) VUID-VkRayTracingPipelineCreateInfoKHR-flags-03470
 
 If `flags` includes
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR`,
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits),
 for each element of `pGroups` with a `type` of
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR` or
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR`, the
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR](#VkRayTracingShaderGroupTypeNV) or
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR](#VkRayTracingShaderGroupTypeNV), the
 `anyHitShader` of that element **must** not be
-`VK_SHADER_UNUSED_KHR`
+[VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR)
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-03471) VUID-VkRayTracingPipelineCreateInfoKHR-flags-03471
 
 If `flags` includes
-`VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR`,
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits),
 for each element of `pGroups` with a `type` of
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR` or
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR`, the
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR](#VkRayTracingShaderGroupTypeNV) or
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR](#VkRayTracingShaderGroupTypeNV), the
 `closestHitShader` of that element **must** not be
-`VK_SHADER_UNUSED_KHR`
+[VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR)
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-rayTraversalPrimitiveCulling-03596) VUID-VkRayTracingPipelineCreateInfoKHR-rayTraversalPrimitiveCulling-03596
 
 If the [    `rayTraversalPrimitiveCulling`](features.html#features-rayTraversalPrimitiveCulling) feature is not enabled, `flags`
 **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-rayTraversalPrimitiveCulling-03597) VUID-VkRayTracingPipelineCreateInfoKHR-rayTraversalPrimitiveCulling-03597
 
 If the [    `rayTraversalPrimitiveCulling`](features.html#features-rayTraversalPrimitiveCulling) feature is not enabled, `flags`
 **must** not include
-`VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-06546) VUID-VkRayTracingPipelineCreateInfoKHR-flags-06546
 
 `flags` **must** not include both
-`VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR` and
-`VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR](#VkPipelineCreateFlagBits) and
+[VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-03598) VUID-VkRayTracingPipelineCreateInfoKHR-flags-03598
 
 If `flags` includes
-`VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR`,
+[VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR](#VkPipelineCreateFlagBits),
 [    `rayTracingPipelineShaderGroupHandleCaptureReplay`](features.html#features-rayTracingPipelineShaderGroupHandleCaptureReplay) **must** be
 enabled
 
@@ -9648,9 +9518,9 @@ enabled
 
 If
 [VkPhysicalDeviceRayTracingPipelineFeaturesKHR](features.html#VkPhysicalDeviceRayTracingPipelineFeaturesKHR)::`rayTracingPipelineShaderGroupHandleCaptureReplay`
-is `VK_TRUE` and the `pShaderGroupCaptureReplayHandle` member of
+is [VK_TRUE](fundamentals.html#VK_TRUE) and the `pShaderGroupCaptureReplayHandle` member of
 any element of `pGroups` is not `NULL`, `flags` **must** include
-`VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-pLibraryInfo-07999) VUID-VkRayTracingPipelineCreateInfoKHR-pLibraryInfo-07999
@@ -9661,7 +9531,7 @@ If `pLibraryInfo` is `NULL` or its `libraryCount` is `0`,
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-08700) VUID-VkRayTracingPipelineCreateInfoKHR-flags-08700
 
-If `flags` does not include `VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`
+If `flags` does not include [VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits)
 and either `pLibraryInfo` is `NULL` or its `libraryCount` is
 `0`, `groupCount` **must** not be `0`
 
@@ -9669,7 +9539,7 @@ and either `pLibraryInfo` is `NULL` or its `libraryCount` is
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-pDynamicStates-03602) VUID-VkRayTracingPipelineCreateInfoKHR-pDynamicStates-03602
 
 Any element of the `pDynamicStates` member of `pDynamicState`
-**must** be `VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR`
+**must** be [VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR](#VkDynamicState)
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-pipelineStageCreationFeedbackCount-06652) VUID-VkRayTracingPipelineCreateInfoKHR-pipelineStageCreationFeedbackCount-06652
@@ -9682,29 +9552,29 @@ is not `0`, it **must** be equal to `stageCount`
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-stage-06899) VUID-VkRayTracingPipelineCreateInfoKHR-stage-06899
 
 The `stage` value in all `pStages` elements **must** be one of
-`VK_SHADER_STAGE_RAYGEN_BIT_KHR`,
-`VK_SHADER_STAGE_ANY_HIT_BIT_KHR`,
-`VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR`,
-`VK_SHADER_STAGE_MISS_BIT_KHR`,
-`VK_SHADER_STAGE_INTERSECTION_BIT_KHR`, or
-`VK_SHADER_STAGE_CALLABLE_BIT_KHR`
+[VK_SHADER_STAGE_RAYGEN_BIT_KHR](#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_ANY_HIT_BIT_KHR](#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR](#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_MISS_BIT_KHR](#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_INTERSECTION_BIT_KHR](#VkShaderStageFlagBits), or
+[VK_SHADER_STAGE_CALLABLE_BIT_KHR](#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-07403) VUID-VkRayTracingPipelineCreateInfoKHR-flags-07403
 
 If `flags` includes
-`VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT`, each
+[VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT](#VkPipelineCreateFlagBits), each
 element of `pLibraryInfo->pLibraries` **must** have been created with
-the `VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT` bit
+the [VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT](#VkPipelineCreateFlagBits) bit
 set
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-08701) VUID-VkRayTracingPipelineCreateInfoKHR-flags-08701
 
 If `flags` includes
-`VK_PIPELINE_CREATE_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV`, each
+[VK_PIPELINE_CREATE_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV](#VkPipelineCreateFlagBits), each
 element of `pLibraryInfo->pLibraries` **must** have been created with
-the `VK_PIPELINE_CREATE_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV`
+the [VK_PIPELINE_CREATE_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV](#VkPipelineCreateFlagBits)
 bit set
 
 * 
@@ -9713,15 +9583,36 @@ bit set
 If the `pNext` chain includes a
 [VkPipelineCreateFlags2CreateInfo](#VkPipelineCreateFlags2CreateInfo) structure, `flags` **must** not
 include both
-`VK_PIPELINE_CREATE_2_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT` and
-`VK_PIPELINE_CREATE_2_DISALLOW_OPACITY_MICROMAP_BIT_ARM`
+[VK_PIPELINE_CREATE_2_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR) and
+[VK_PIPELINE_CREATE_2_DISALLOW_OPACITY_MICROMAP_BIT_ARM](#VkPipelineCreateFlagBits2KHR)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-11275) VUID-VkRayTracingPipelineCreateInfoKHR-flags-11275
+
+If [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` includes
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR), all libraries linked
+to this pipeline **must** also have that flag set
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoKHR-flags-11276) VUID-VkRayTracingPipelineCreateInfoKHR-flags-11276
+
+If [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not
+include [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR), all
+libraries linked to this pipeline **must** also not have that flag set
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoKHR-None-11369) VUID-VkRayTracingPipelineCreateInfoKHR-None-11369
+
+If [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not
+include [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+`layout` **must** not be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-sType-sType) VUID-VkRayTracingPipelineCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CREATE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-pNext-pNext) VUID-VkRayTracingPipelineCreateInfoKHR-pNext-pNext
@@ -9761,7 +9652,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-layout-parameter) VUID-VkRayTracingPipelineCreateInfoKHR-layout-parameter
 
- `layout` **must** be a valid [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) handle
+ If `layout` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `layout` **must** be a valid [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) handle
 
 * 
 [](#VUID-VkRayTracingPipelineCreateInfoKHR-commonparent) VUID-VkRayTracingPipelineCreateInfoKHR-commonparent
@@ -9806,127 +9697,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV-sType-sType) VUID-VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CLUSTER_ACCELERATION_STRUCTURE_CREATE_INFO_NV`
-
-The `VkRayTracingShaderGroupCreateInfoNV` structure is defined as:
-
-// Provided by VK_NV_ray_tracing
-typedef struct VkRayTracingShaderGroupCreateInfoNV {
-    VkStructureType                   sType;
-    const void*                       pNext;
-    VkRayTracingShaderGroupTypeKHR    type;
-    uint32_t                          generalShader;
-    uint32_t                          closestHitShader;
-    uint32_t                          anyHitShader;
-    uint32_t                          intersectionShader;
-} VkRayTracingShaderGroupCreateInfoNV;
-
-* 
-`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
-
-* 
-`pNext` is `NULL` or a pointer to a structure extending this
-structure.
-
-* 
-`type` is the type of hit group specified in this structure.
-
-* 
-`generalShader` is the index of the ray generation, miss, or
-callable shader from
-[VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV)::`pStages` in the group if
-the shader group has `type` of
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV`, and
-`VK_SHADER_UNUSED_NV` otherwise.
-
-* 
-`closestHitShader` is the optional index of the closest hit shader
-from [VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV)::`pStages` in the group
-if the shader group has `type` of
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV` or
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV`, and
-`VK_SHADER_UNUSED_NV` otherwise.
-
-* 
-`anyHitShader` is the optional index of the any-hit shader from
-[VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV)::`pStages` in the group if
-the shader group has `type` of
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV` or
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV`, and
-`VK_SHADER_UNUSED_NV` otherwise.
-
-* 
-`intersectionShader` is the index of the intersection shader from
-[VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV)::`pStages` in the group if
-the shader group has `type` of
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV`, and
-`VK_SHADER_UNUSED_NV` otherwise.
-
-Valid Usage
-
-* 
-[](#VUID-VkRayTracingShaderGroupCreateInfoNV-type-02413) VUID-VkRayTracingShaderGroupCreateInfoNV-type-02413
-
-If `type` is `VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV` then
-`generalShader` **must** be a valid index into
-[VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV)::`pStages` referring to a
-shader of `VK_SHADER_STAGE_RAYGEN_BIT_NV`,
-`VK_SHADER_STAGE_MISS_BIT_NV`, or
-`VK_SHADER_STAGE_CALLABLE_BIT_NV`
-
-* 
-[](#VUID-VkRayTracingShaderGroupCreateInfoNV-type-02414) VUID-VkRayTracingShaderGroupCreateInfoNV-type-02414
-
-If `type` is `VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV` then
-`closestHitShader`, `anyHitShader`, and `intersectionShader`
-**must** be `VK_SHADER_UNUSED_NV`
-
-* 
-[](#VUID-VkRayTracingShaderGroupCreateInfoNV-type-02415) VUID-VkRayTracingShaderGroupCreateInfoNV-type-02415
-
-If `type` is
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV` then
-`intersectionShader` **must** be a valid index into
-[VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV)::`pStages` referring to a
-shader of `VK_SHADER_STAGE_INTERSECTION_BIT_NV`
-
-* 
-[](#VUID-VkRayTracingShaderGroupCreateInfoNV-type-02416) VUID-VkRayTracingShaderGroupCreateInfoNV-type-02416
-
-If `type` is
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV` then
-`intersectionShader` **must** be `VK_SHADER_UNUSED_NV`
-
-* 
-[](#VUID-VkRayTracingShaderGroupCreateInfoNV-closestHitShader-02417) VUID-VkRayTracingShaderGroupCreateInfoNV-closestHitShader-02417
-
-`closestHitShader` **must** be either `VK_SHADER_UNUSED_NV` or a
-valid index into [VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV)::`pStages`
-referring to a shader of `VK_SHADER_STAGE_CLOSEST_HIT_BIT_NV`
-
-* 
-[](#VUID-VkRayTracingShaderGroupCreateInfoNV-anyHitShader-02418) VUID-VkRayTracingShaderGroupCreateInfoNV-anyHitShader-02418
-
-`anyHitShader` **must** be either `VK_SHADER_UNUSED_NV` or a valid
-index into [VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV)::`pStages`
-referring to a shader of `VK_SHADER_STAGE_ANY_HIT_BIT_NV`
-
-Valid Usage (Implicit)
-
-* 
-[](#VUID-VkRayTracingShaderGroupCreateInfoNV-sType-sType) VUID-VkRayTracingShaderGroupCreateInfoNV-sType-sType
-
- `sType` **must** be `VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_NV`
-
-* 
-[](#VUID-VkRayTracingShaderGroupCreateInfoNV-pNext-pNext) VUID-VkRayTracingShaderGroupCreateInfoNV-pNext-pNext
-
- `pNext` **must** be `NULL`
-
-* 
-[](#VUID-VkRayTracingShaderGroupCreateInfoNV-type-parameter) VUID-VkRayTracingShaderGroupCreateInfoNV-type-parameter
-
- `type` **must** be a valid [VkRayTracingShaderGroupTypeKHR](#VkRayTracingShaderGroupTypeKHR) value
+ `sType` **must** be [VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CLUSTER_ACCELERATION_STRUCTURE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 The `VkRayTracingShaderGroupCreateInfoKHR` structure is defined as:
 
@@ -9957,31 +9728,31 @@ structure.
 callable shader from
 [VkRayTracingPipelineCreateInfoKHR](#VkRayTracingPipelineCreateInfoKHR)::`pStages` in the group if
 the shader group has `type` of
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR`, and
-`VK_SHADER_UNUSED_KHR` otherwise.
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR](#VkRayTracingShaderGroupTypeNV), and
+[VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR) otherwise.
 
 * 
 `closestHitShader` is the optional index of the closest hit shader
 from [VkRayTracingPipelineCreateInfoKHR](#VkRayTracingPipelineCreateInfoKHR)::`pStages` in the group
 if the shader group has `type` of
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR` or
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR`, and
-`VK_SHADER_UNUSED_KHR` otherwise.
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR](#VkRayTracingShaderGroupTypeNV) or
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR](#VkRayTracingShaderGroupTypeNV), and
+[VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR) otherwise.
 
 * 
 `anyHitShader` is the optional index of the any-hit shader from
 [VkRayTracingPipelineCreateInfoKHR](#VkRayTracingPipelineCreateInfoKHR)::`pStages` in the group if
 the shader group has `type` of
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR` or
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR`, and
-`VK_SHADER_UNUSED_KHR` otherwise.
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR](#VkRayTracingShaderGroupTypeNV) or
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR](#VkRayTracingShaderGroupTypeNV), and
+[VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR) otherwise.
 
 * 
 `intersectionShader` is the index of the intersection shader from
 [VkRayTracingPipelineCreateInfoKHR](#VkRayTracingPipelineCreateInfoKHR)::`pStages` in the group if
 the shader group has `type` of
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR`, and
-`VK_SHADER_UNUSED_KHR` otherwise.
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR](#VkRayTracingShaderGroupTypeNV), and
+[VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR) otherwise.
 
 * 
 `pShaderGroupCaptureReplayHandle` is `NULL` or a pointer to replay
@@ -9990,9 +9761,9 @@ information for this shader group queried from
 [Ray Tracing Capture Replay](raytracing.html#ray-tracing-capture-replay).
 Ignored if
 [VkPhysicalDeviceRayTracingPipelineFeaturesKHR](features.html#VkPhysicalDeviceRayTracingPipelineFeaturesKHR)::`rayTracingPipelineShaderGroupHandleCaptureReplay`
-is `VK_FALSE`.
+is [VK_FALSE](fundamentals.html#VK_FALSE).
 
-If the pipeline is created with `VK_PIPELINE_CREATE_LIBRARY_BIT_KHR` and
+If the pipeline is created with [VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits) and
 the [pipelineLibraryGroupHandles](features.html#features-pipelineLibraryGroupHandles)
 feature is enabled, `pShaderGroupCaptureReplayHandle` is inherited by
 all pipelines which link against this pipeline and remains bitwise identical
@@ -10003,56 +9774,64 @@ Valid Usage
 * 
 [](#VUID-VkRayTracingShaderGroupCreateInfoKHR-type-03474) VUID-VkRayTracingShaderGroupCreateInfoKHR-type-03474
 
-If `type` is `VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR` then
-`generalShader` **must** be a valid index into
-[VkRayTracingPipelineCreateInfoKHR](#VkRayTracingPipelineCreateInfoKHR)::`pStages` referring to a
-shader of `VK_SHADER_STAGE_RAYGEN_BIT_KHR`,
-`VK_SHADER_STAGE_MISS_BIT_KHR`, or
-`VK_SHADER_STAGE_CALLABLE_BIT_KHR`
+If `type` is [VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR](#VkRayTracingShaderGroupTypeNV) then
+`generalShader` **must** be a valid index into the list of shaders,
+formed by shaders in
+[VkRayTracingPipelineCreateInfoKHR](#VkRayTracingPipelineCreateInfoKHR)::`pStages` and the shaders
+imported from pipeline libraries, referring to a shader of
+[VK_SHADER_STAGE_RAYGEN_BIT_KHR](#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_MISS_BIT_KHR](#VkShaderStageFlagBits), or
+[VK_SHADER_STAGE_CALLABLE_BIT_KHR](#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkRayTracingShaderGroupCreateInfoKHR-type-03475) VUID-VkRayTracingShaderGroupCreateInfoKHR-type-03475
 
-If `type` is `VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR` then
+If `type` is [VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR](#VkRayTracingShaderGroupTypeNV) then
 `closestHitShader`, `anyHitShader`, and `intersectionShader`
-**must** be `VK_SHADER_UNUSED_KHR`
+**must** be [VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR)
 
 * 
 [](#VUID-VkRayTracingShaderGroupCreateInfoKHR-type-03476) VUID-VkRayTracingShaderGroupCreateInfoKHR-type-03476
 
 If `type` is
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR` then
-`intersectionShader` **must** be a valid index into
-[VkRayTracingPipelineCreateInfoKHR](#VkRayTracingPipelineCreateInfoKHR)::`pStages` referring to a
-shader of `VK_SHADER_STAGE_INTERSECTION_BIT_KHR`
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR](#VkRayTracingShaderGroupTypeNV) then
+`intersectionShader` **must** be a valid index into the list of
+shaders, formed by shaders in
+[VkRayTracingPipelineCreateInfoKHR](#VkRayTracingPipelineCreateInfoKHR)::`pStages` and the shaders
+imported from pipeline libraries, referring to a shader of
+[VK_SHADER_STAGE_INTERSECTION_BIT_KHR](#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkRayTracingShaderGroupCreateInfoKHR-type-03477) VUID-VkRayTracingShaderGroupCreateInfoKHR-type-03477
 
 If `type` is
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR` then
-`intersectionShader` **must** be `VK_SHADER_UNUSED_KHR`
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR](#VkRayTracingShaderGroupTypeNV) then
+`intersectionShader` **must** be [VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR)
 
 * 
 [](#VUID-VkRayTracingShaderGroupCreateInfoKHR-closestHitShader-03478) VUID-VkRayTracingShaderGroupCreateInfoKHR-closestHitShader-03478
 
-`closestHitShader` **must** be either `VK_SHADER_UNUSED_KHR` or a
-valid index into [VkRayTracingPipelineCreateInfoKHR](#VkRayTracingPipelineCreateInfoKHR)::`pStages`
-referring to a shader of `VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR`
+`closestHitShader` **must** be either [VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR) or a
+valid index into the list of shaders, formed by shaders in
+[VkRayTracingPipelineCreateInfoKHR](#VkRayTracingPipelineCreateInfoKHR)::`pStages` and the shaders
+imported from pipeline libraries, referring to a shader of
+[VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR](#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkRayTracingShaderGroupCreateInfoKHR-anyHitShader-03479) VUID-VkRayTracingShaderGroupCreateInfoKHR-anyHitShader-03479
 
-`anyHitShader` **must** be either `VK_SHADER_UNUSED_KHR` or a valid
-index into [VkRayTracingPipelineCreateInfoKHR](#VkRayTracingPipelineCreateInfoKHR)::`pStages`
-referring to a shader of `VK_SHADER_STAGE_ANY_HIT_BIT_KHR`
+`anyHitShader` **must** be either [VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR) or a valid
+index into the list of shaders, formed by shaders in
+[VkRayTracingPipelineCreateInfoKHR](#VkRayTracingPipelineCreateInfoKHR)::`pStages` and the shaders
+imported from pipeline libraries, referring to a shader of
+[VK_SHADER_STAGE_ANY_HIT_BIT_KHR](#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkRayTracingShaderGroupCreateInfoKHR-rayTracingPipelineShaderGroupHandleCaptureReplayMixed-03603) VUID-VkRayTracingShaderGroupCreateInfoKHR-rayTracingPipelineShaderGroupHandleCaptureReplayMixed-03603
 
 If
 [VkPhysicalDeviceRayTracingPipelineFeaturesKHR](features.html#VkPhysicalDeviceRayTracingPipelineFeaturesKHR)::`rayTracingPipelineShaderGroupHandleCaptureReplayMixed`
-is `VK_FALSE` then `pShaderGroupCaptureReplayHandle` **must** not
+is [VK_FALSE](fundamentals.html#VK_FALSE) then `pShaderGroupCaptureReplayHandle` **must** not
 be provided if it has not been provided on a previous call to ray
 tracing pipeline creation
 
@@ -10061,7 +9840,7 @@ tracing pipeline creation
 
 If
 [VkPhysicalDeviceRayTracingPipelineFeaturesKHR](features.html#VkPhysicalDeviceRayTracingPipelineFeaturesKHR)::`rayTracingPipelineShaderGroupHandleCaptureReplayMixed`
-is `VK_FALSE` then the caller **must** guarantee that no ray tracing
+is [VK_FALSE](fundamentals.html#VK_FALSE) then the caller **must** guarantee that no ray tracing
 pipeline creation commands with `pShaderGroupCaptureReplayHandle`
 provided execute simultaneously with ray tracing pipeline creation
 commands without `pShaderGroupCaptureReplayHandle` provided
@@ -10071,7 +9850,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRayTracingShaderGroupCreateInfoKHR-sType-sType) VUID-VkRayTracingShaderGroupCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRayTracingShaderGroupCreateInfoKHR-pNext-pNext) VUID-VkRayTracingShaderGroupCreateInfoKHR-pNext-pNext
@@ -10082,47 +9861,6 @@ Valid Usage (Implicit)
 [](#VUID-VkRayTracingShaderGroupCreateInfoKHR-type-parameter) VUID-VkRayTracingShaderGroupCreateInfoKHR-type-parameter
 
  `type` **must** be a valid [VkRayTracingShaderGroupTypeKHR](#VkRayTracingShaderGroupTypeKHR) value
-
-The `VkRayTracingShaderGroupTypeKHR` enumeration is defined as:
-
-// Provided by VK_KHR_ray_tracing_pipeline
-typedef enum VkRayTracingShaderGroupTypeKHR {
-    VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR = 0,
-    VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR = 1,
-    VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR = 2,
-  // Provided by VK_NV_ray_tracing
-    VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV = VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR,
-  // Provided by VK_NV_ray_tracing
-    VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV = VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR,
-  // Provided by VK_NV_ray_tracing
-    VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV = VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR,
-} VkRayTracingShaderGroupTypeKHR;
-
-// Provided by VK_NV_ray_tracing
-// Equivalent to VkRayTracingShaderGroupTypeKHR
-typedef VkRayTracingShaderGroupTypeKHR VkRayTracingShaderGroupTypeNV;
-
-* 
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR` specifies that a
-shader group with a single `VK_SHADER_STAGE_RAYGEN_BIT_KHR`,
-`VK_SHADER_STAGE_MISS_BIT_KHR`, or
-`VK_SHADER_STAGE_CALLABLE_BIT_KHR` shader in it.
-
-* 
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR` specifies
-that a shader group that only hits triangles and **must** not contain an
-intersection shader, only closest hit and any-hit shaders.
-
-* 
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR`
-specifies that a shader group that only intersects with custom geometry
-and **must** contain an intersection shader and **may** contain closest hit
-and any-hit shaders.
-
-|  | For current group types, the hit group type could be inferred from the
-| --- | --- |
-presence or absence of the intersection shader, but we provide the type
-explicitly for future hit groups that do not have that property. |
 
 The `VkRayTracingPipelineInterfaceCreateInfoKHR` structure is defined
 as:
@@ -10182,12 +9920,731 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRayTracingPipelineInterfaceCreateInfoKHR-sType-sType) VUID-VkRayTracingPipelineInterfaceCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_INTERFACE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_INTERFACE_CREATE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRayTracingPipelineInterfaceCreateInfoKHR-pNext-pNext) VUID-VkRayTracingPipelineInterfaceCreateInfoKHR-pNext-pNext
 
  `pNext` **must** be `NULL`
+
+To create ray tracing pipelines, call:
+
+// Provided by VK_NV_ray_tracing
+VkResult vkCreateRayTracingPipelinesNV(
+    VkDevice                                    device,
+    VkPipelineCache                             pipelineCache,
+    uint32_t                                    createInfoCount,
+    const VkRayTracingPipelineCreateInfoNV*     pCreateInfos,
+    const VkAllocationCallbacks*                pAllocator,
+    VkPipeline*                                 pPipelines);
+
+* 
+`device` is the logical device that creates the ray tracing
+pipelines.
+
+* 
+`pipelineCache` is
+either [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), indicating that pipeline caching is
+disabled, or to enable caching,
+the handle of a valid [VkPipelineCache](#VkPipelineCache) object.
+The implementation **must** not access this object outside of the duration
+of this command.
+
+* 
+`createInfoCount` is the length of the `pCreateInfos` and
+`pPipelines` arrays.
+
+* 
+`pCreateInfos` is a pointer to an array of
+[VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV) structures.
+
+* 
+`pAllocator` controls host memory allocation as described in the
+[Memory Allocation](memory.html#memory-allocation) chapter.
+
+* 
+`pPipelines` is a pointer to an array in which the resulting ray
+tracing pipeline objects are returned.
+
+Pipelines are created and returned as described for [Multiple Pipeline Creation](#pipelines-multiple).
+
+Valid Usage
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-device-09677) VUID-vkCreateRayTracingPipelinesNV-device-09677
+
+`device` **must** support at least one queue family with the
+[VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) capability
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-flags-03415) VUID-vkCreateRayTracingPipelinesNV-flags-03415
+
+If the `flags` member of any element of `pCreateInfos` contains
+the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits) flag, and the
+`basePipelineIndex` member of that same element is not `-1`,
+`basePipelineIndex` **must** be less than the index into
+`pCreateInfos` that corresponds to that element
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-flags-03416) VUID-vkCreateRayTracingPipelinesNV-flags-03416
+
+If the `flags` member of any element of `pCreateInfos` contains
+the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits) flag, the base pipeline
+**must** have been created with the
+[VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT](#VkPipelineCreateFlagBits) flag set
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-flags-03816) VUID-vkCreateRayTracingPipelinesNV-flags-03816
+
+`flags` **must** not contain the
+[VK_PIPELINE_CREATE_DISPATCH_BASE_BIT](#VkPipelineCreateFlagBits) flag
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-pipelineCache-02903) VUID-vkCreateRayTracingPipelinesNV-pipelineCache-02903
+
+If `pipelineCache` was created with
+[VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT](#VkPipelineCacheCreateFlagBits), host access
+to `pipelineCache` **must** be
+[externally synchronized](fundamentals.html#fundamentals-threadingbehavior)
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-pNext-09616) VUID-vkCreateRayTracingPipelinesNV-pNext-09616
+
+If [VkPipelineBinaryInfoKHR](#VkPipelineBinaryInfoKHR)::`binaryCount` is not `0` for any
+element of `pCreateInfos`, `pipelineCache` **must** be
+[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-pNext-09617) VUID-vkCreateRayTracingPipelinesNV-pNext-09617
+
+If a [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR) structure with the
+[VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](#VkPipelineCreateFlagBits2KHR) flag set is included in
+the `pNext` chain of any element of `pCreateInfos`,
+`pipelineCache` **must** be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-binaryCount-09620) VUID-vkCreateRayTracingPipelinesNV-binaryCount-09620
+
+If [VkPipelineBinaryInfoKHR](#VkPipelineBinaryInfoKHR)::`binaryCount` is not `0` for any
+element of `pCreateInfos`,
+[VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT](#VkPipelineCreationFeedbackFlagBitsEXT)
+**must** not be set in the `flags` of that element
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-binaryCount-09621) VUID-vkCreateRayTracingPipelinesNV-binaryCount-09621
+
+If [VkPipelineBinaryInfoKHR](#VkPipelineBinaryInfoKHR)::`binaryCount` is not `0` for any
+element of `pCreateInfos`,
+[VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT](#VkPipelineCreationFeedbackFlagBitsEXT) **must**
+not be set in the `flags` of that element
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-binaryCount-09622) VUID-vkCreateRayTracingPipelinesNV-binaryCount-09622
+
+If [VkPipelineBinaryInfoKHR](#VkPipelineBinaryInfoKHR)::`binaryCount` is not `0` for any
+element of `pCreateInfos`,
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_EXT](#VkPipelineCreateFlagBits) **must**
+not be set in the `flags` of that element
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-pCreateInfos-11414) VUID-vkCreateRayTracingPipelinesNV-pCreateInfos-11414
+
+If any element of `pCreateInfos` sets
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR) and includes embedded
+sampler mappings, there **must** be less than
+([`maxSamplerAllocationCount`](limits.html#limits-maxSamplerAllocationCount)
+-  ([    `minSamplerHeapReservedRangeWithEmbedded`](limits.html#limits-minSamplerHeapReservedRangeWithEmbedded) /
+[`samplerDescriptorSize`](limits.html#limits-samplerDescriptorSize)))
+[VkSampler](samplers.html#VkSampler) objects currently created on the device
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-pCreateInfos-11429) VUID-vkCreateRayTracingPipelinesNV-pCreateInfos-11429
+
+    If any element of `pCreateInfos` sets
+    [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR) and includes embedded
+    sampler mappings, this command **must** not cause the total number of
+    unique embedded samplers in pipelines
+and shaders
+    on this device to exceed [    `maxDescriptorHeapEmbeddedSamplers`](limits.html#limits-maxDescriptorHeapEmbeddedSamplers)
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-pNext-10150) VUID-vkCreateRayTracingPipelinesNV-pNext-10150
+
+If a [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR) structure is included in
+the `pNext` chain of any element of `pCreateInfos`,
+[VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](#VkPipelineCreateFlagBits2KHR) flag **must** not be set
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-device-parameter) VUID-vkCreateRayTracingPipelinesNV-device-parameter
+
+ `device` **must** be a valid [VkDevice](devsandqueues.html#VkDevice) handle
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-pipelineCache-parameter) VUID-vkCreateRayTracingPipelinesNV-pipelineCache-parameter
+
+ If `pipelineCache` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `pipelineCache` **must** be a valid [VkPipelineCache](#VkPipelineCache) handle
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-pCreateInfos-parameter) VUID-vkCreateRayTracingPipelinesNV-pCreateInfos-parameter
+
+ `pCreateInfos` **must** be a valid pointer to an array of `createInfoCount` valid [VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV) structures
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-pAllocator-parameter) VUID-vkCreateRayTracingPipelinesNV-pAllocator-parameter
+
+ If `pAllocator` is not `NULL`, `pAllocator` **must** be a valid pointer to a valid [VkAllocationCallbacks](memory.html#VkAllocationCallbacks) structure
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-pPipelines-parameter) VUID-vkCreateRayTracingPipelinesNV-pPipelines-parameter
+
+ `pPipelines` **must** be a valid pointer to an array of `createInfoCount` [VkPipeline](#VkPipeline) handles
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-createInfoCount-arraylength) VUID-vkCreateRayTracingPipelinesNV-createInfoCount-arraylength
+
+ `createInfoCount` **must** be greater than `0`
+
+* 
+[](#VUID-vkCreateRayTracingPipelinesNV-pipelineCache-parent) VUID-vkCreateRayTracingPipelinesNV-pipelineCache-parent
+
+ If `pipelineCache` is a valid handle, it **must** have been created, allocated, or retrieved from `device`
+
+Return Codes
+
+[Success](fundamentals.html#fundamentals-successcodes)
+
+* 
+[VK_PIPELINE_COMPILE_REQUIRED_EXT](fundamentals.html#VkResult)
+
+* 
+[VK_SUCCESS](fundamentals.html#VkResult)
+
+[Failure](fundamentals.html#fundamentals-errorcodes)
+
+* 
+[VK_ERROR_INVALID_SHADER_NV](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
+
+The `VkRayTracingPipelineCreateInfoNV` structure is defined as:
+
+// Provided by VK_NV_ray_tracing
+typedef struct VkRayTracingPipelineCreateInfoNV {
+    VkStructureType                               sType;
+    const void*                                   pNext;
+    VkPipelineCreateFlags                         flags;
+    uint32_t                                      stageCount;
+    const VkPipelineShaderStageCreateInfo*        pStages;
+    uint32_t                                      groupCount;
+    const VkRayTracingShaderGroupCreateInfoNV*    pGroups;
+    uint32_t                                      maxRecursionDepth;
+    VkPipelineLayout                              layout;
+    VkPipeline                                    basePipelineHandle;
+    int32_t                                       basePipelineIndex;
+} VkRayTracingPipelineCreateInfoNV;
+
+* 
+`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
+
+* 
+`pNext` is `NULL` or a pointer to a structure extending this
+structure.
+
+* 
+`flags` is a bitmask of [VkPipelineCreateFlagBits](#VkPipelineCreateFlagBits) specifying
+how the pipeline will be generated.
+
+* 
+`stageCount` is the number of entries in the `pStages` array.
+
+* 
+`pStages` is a pointer to an array of
+[VkPipelineShaderStageCreateInfo](#VkPipelineShaderStageCreateInfo) structures specifying the set of
+the shader stages to be included in the ray tracing pipeline.
+
+* 
+`groupCount` is the number of entries in the `pGroups` array.
+
+* 
+`pGroups` is a pointer to an array of
+[VkRayTracingShaderGroupCreateInfoNV](#VkRayTracingShaderGroupCreateInfoNV) structures describing the set
+of the shader stages to be included in each shader group in the ray
+tracing pipeline.
+
+* 
+`maxRecursionDepth` is the [maximum    recursion depth](raytracing.html#ray-tracing-recursion-depth) of shaders executed by this pipeline.
+
+* 
+`layout` is the description of binding locations used by both the
+    pipeline and descriptor sets used with the pipeline.
+    If
+    [VkPhysicalDeviceProperties](devsandqueues.html#VkPhysicalDeviceProperties)::`apiVersion` is greater than or
+    equal to Vulkan 1.3
+or
+    [VK_KHR_maintenance4](../appendices/extensions.html#VK_KHR_maintenance4) is enabled
+    `layout` **must** not be accessed by the implementation outside of the
+    duration of the command this structure is passed to.
+
+* 
+`basePipelineHandle` is a pipeline to derive from.
+
+* 
+`basePipelineIndex` is an index into the `pCreateInfos`
+parameter to use as a pipeline to derive from.
+
+The parameters `basePipelineHandle` and `basePipelineIndex` are
+described in more detail in [Pipeline Derivatives](#pipelines-pipeline-derivatives).
+
+If the `pNext` chain includes a [VkPipelineCreateFlags2CreateInfo](#VkPipelineCreateFlags2CreateInfo)
+structure, [VkPipelineCreateFlags2CreateInfo](#VkPipelineCreateFlags2CreateInfo)::`flags` from that
+structure is used instead of `flags` from this structure.
+
+Valid Usage
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-None-09497) VUID-VkRayTracingPipelineCreateInfoNV-None-09497
+
+If the `pNext` chain does not include a
+[VkPipelineCreateFlags2CreateInfo](#VkPipelineCreateFlags2CreateInfo) structure,
+`flags` **must** be a valid combination of
+[VkPipelineCreateFlagBits](#VkPipelineCreateFlagBits) values
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-07984) VUID-VkRayTracingPipelineCreateInfoNV-flags-07984
+
+If `flags` contains the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits)
+flag, and `basePipelineIndex` is -1, `basePipelineHandle` **must**
+be a valid ray tracing `VkPipeline` handle
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-07985) VUID-VkRayTracingPipelineCreateInfoNV-flags-07985
+
+If `flags` contains the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits)
+flag, and `basePipelineHandle` is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
+`basePipelineIndex` **must** be a valid index into the calling
+command’s `pCreateInfos` parameter
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-07986) VUID-VkRayTracingPipelineCreateInfoNV-flags-07986
+
+If `flags` contains the [VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits)
+flag, `basePipelineIndex` **must** be -1 or `basePipelineHandle`
+**must** be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-layout-07987) VUID-VkRayTracingPipelineCreateInfoNV-layout-07987
+
+If a push constant block is declared in a shader and `layout` is not
+[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), a push constant range in `layout` **must** match
+the shader stage
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-layout-10069) VUID-VkRayTracingPipelineCreateInfoNV-layout-10069
+
+If a push constant block is declared in a shader and `layout` is not
+[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the block must be contained inside the push
+constant range in `layout` that matches the stage
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-layout-07988) VUID-VkRayTracingPipelineCreateInfoNV-layout-07988
+
+If a [resource variable](interfaces.html#interfaces-resources) is declared in a shader
+and `layout` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the corresponding
+descriptor set in `layout` **must** match the shader stage
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-layout-07990) VUID-VkRayTracingPipelineCreateInfoNV-layout-07990
+
+If a [resource variable](interfaces.html#interfaces-resources) is declared in a shader,
+`layout` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
+and the descriptor type is not [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](descriptorsets.html#VkDescriptorType),
+the corresponding descriptor set in `layout` **must** match the
+descriptor type
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-layout-07991) VUID-VkRayTracingPipelineCreateInfoNV-layout-07991
+
+If a [resource variable](interfaces.html#interfaces-resources) is declared in a shader
+as an array and `layout` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the
+corresponding descriptor binding used to create `layout` **must** have
+a `descriptorCount` that is greater than or equal to the length of
+the array
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-None-10391) VUID-VkRayTracingPipelineCreateInfoNV-None-10391
+
+If a [resource variables](interfaces.html#interfaces-resources) is declared in a shader
+as an array of descriptors, then the descriptor type of that variable
+**must** not be [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](descriptorsets.html#VkDescriptorType)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-11798) VUID-VkRayTracingPipelineCreateInfoNV-flags-11798
+
+If [shader64BitIndexing](features.html#features-shader64BitIndexing) feature is not
+enabled, `flags` **must** not contain
+[VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT](#VkPipelineCreateFlagBits2KHR)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-pipelineCreationCacheControl-02878) VUID-VkRayTracingPipelineCreateInfoNV-pipelineCreationCacheControl-02878
+
+If the [    `pipelineCreationCacheControl`](features.html#features-pipelineCreationCacheControl) feature is not enabled, `flags`
+**must** not include
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](#VkPipelineCreateFlagBits) nor
+[VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-pipelineProtectedAccess-07368) VUID-VkRayTracingPipelineCreateInfoNV-pipelineProtectedAccess-07368
+
+If the [    `pipelineProtectedAccess`](features.html#features-pipelineProtectedAccess) feature is not enabled, `flags`
+**must** not include [VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits) nor
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-07369) VUID-VkRayTracingPipelineCreateInfoNV-flags-07369
+
+`flags` **must** not include both
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits) and
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-11311) VUID-VkRayTracingPipelineCreateInfoNV-flags-11311
+
+If [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` includes
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR), `layout` **must**
+be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-11312) VUID-VkRayTracingPipelineCreateInfoNV-flags-11312
+
+If [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` includes
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR), all shader variables
+in the [shader resource interface](interfaces.html#interfaces-resources) with a
+`DescriptorSet` and `Binding` decoration **must** have a mapping
+declared in
+[VkShaderDescriptorSetAndBindingMappingInfoEXT](descriptorheaps.html#VkShaderDescriptorSetAndBindingMappingInfoEXT)::pMappings
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-pStages-03426) VUID-VkRayTracingPipelineCreateInfoNV-pStages-03426
+
+The shader code for the entry points identified by `pStages`, and
+the rest of the state identified by this structure **must** adhere to the
+pipeline linking rules described in the [Shader Interfaces](interfaces.html#interfaces)
+chapter
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-layout-03428) VUID-VkRayTracingPipelineCreateInfoNV-layout-03428
+
+The number of resources in `layout` accessible to each shader stage
+that is used by the pipeline **must** be less than or equal to
+[VkPhysicalDeviceLimits](limits.html#VkPhysicalDeviceLimits)::`maxPerStageResources`
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-02904) VUID-VkRayTracingPipelineCreateInfoNV-flags-02904
+
+`flags` **must** not include
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-12341) VUID-VkRayTracingPipelineCreateInfoNV-flags-12341
+
+`flags` **must** not include
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits) nor
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-stage-06232) VUID-VkRayTracingPipelineCreateInfoNV-stage-06232
+
+The `stage` member of at least one element of `pStages` **must** be
+[VK_SHADER_STAGE_RAYGEN_BIT_KHR](#VkShaderStageFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-03456) VUID-VkRayTracingPipelineCreateInfoNV-flags-03456
+
+`flags` **must** not include [VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-maxRecursionDepth-03457) VUID-VkRayTracingPipelineCreateInfoNV-maxRecursionDepth-03457
+
+`maxRecursionDepth` **must** be less than or equal to
+[VkPhysicalDeviceRayTracingPropertiesNV](limits.html#VkPhysicalDeviceRayTracingPropertiesNV)::`maxRecursionDepth`
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-03458) VUID-VkRayTracingPipelineCreateInfoNV-flags-03458
+
+`flags` **must** not include
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-03459) VUID-VkRayTracingPipelineCreateInfoNV-flags-03459
+
+`flags` **must** not include
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-03460) VUID-VkRayTracingPipelineCreateInfoNV-flags-03460
+
+`flags` **must** not include
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-03461) VUID-VkRayTracingPipelineCreateInfoNV-flags-03461
+
+`flags` **must** not include
+[VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-03462) VUID-VkRayTracingPipelineCreateInfoNV-flags-03462
+
+`flags` **must** not include
+[VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-03463) VUID-VkRayTracingPipelineCreateInfoNV-flags-03463
+
+`flags` **must** not include
+[VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-03588) VUID-VkRayTracingPipelineCreateInfoNV-flags-03588
+
+`flags` **must** not include
+[VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-04948) VUID-VkRayTracingPipelineCreateInfoNV-flags-04948
+
+`flags` **must** not include
+[VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-02957) VUID-VkRayTracingPipelineCreateInfoNV-flags-02957
+
+`flags` **must** not include both
+[VK_PIPELINE_CREATE_DEFER_COMPILE_BIT_NV](#VkPipelineCreateFlagBits) and
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](#VkPipelineCreateFlagBits) at the
+same time
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-pipelineStageCreationFeedbackCount-06651) VUID-VkRayTracingPipelineCreateInfoNV-pipelineStageCreationFeedbackCount-06651
+
+If
+[VkPipelineCreationFeedbackCreateInfo](#VkPipelineCreationFeedbackCreateInfo)::`pipelineStageCreationFeedbackCount`
+is not `0`, it **must** be equal to `stageCount`
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-stage-06898) VUID-VkRayTracingPipelineCreateInfoNV-stage-06898
+
+The `stage` value in all `pStages` elements **must** be one of
+[VK_SHADER_STAGE_RAYGEN_BIT_KHR](#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_ANY_HIT_BIT_KHR](#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR](#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_MISS_BIT_KHR](#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_INTERSECTION_BIT_KHR](#VkShaderStageFlagBits), or
+[VK_SHADER_STAGE_CALLABLE_BIT_KHR](#VkShaderStageFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-07402) VUID-VkRayTracingPipelineCreateInfoNV-flags-07402
+
+`flags` **must** not include
+[VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-07998) VUID-VkRayTracingPipelineCreateInfoNV-flags-07998
+
+`flags` **must** not include
+[VK_PIPELINE_CREATE_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-flags-11008) VUID-VkRayTracingPipelineCreateInfoNV-flags-11008
+
+`flags` **must** not include
+[VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT](#VkPipelineCreateFlagBits2KHR)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-None-11368) VUID-VkRayTracingPipelineCreateInfoNV-None-11368
+
+If [VkPipelineCreateFlags2CreateInfoKHR](#VkPipelineCreateFlags2CreateInfoKHR)::`flags` does not
+include [VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](#VkPipelineCreateFlagBits2KHR),
+`layout` **must** not be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-sType-sType) VUID-VkRayTracingPipelineCreateInfoNV-sType-sType
+
+ `sType` **must** be [VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-pNext-pNext) VUID-VkRayTracingPipelineCreateInfoNV-pNext-pNext
+
+ Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkPipelineCreateFlags2CreateInfo](#VkPipelineCreateFlags2CreateInfo) or [VkPipelineCreationFeedbackCreateInfo](#VkPipelineCreationFeedbackCreateInfo)
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-sType-unique) VUID-VkRayTracingPipelineCreateInfoNV-sType-unique
+
+ The `sType` value of each structure in the `pNext` chain **must** be unique
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-pStages-parameter) VUID-VkRayTracingPipelineCreateInfoNV-pStages-parameter
+
+ `pStages` **must** be a valid pointer to an array of `stageCount` valid [VkPipelineShaderStageCreateInfo](#VkPipelineShaderStageCreateInfo) structures
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-pGroups-parameter) VUID-VkRayTracingPipelineCreateInfoNV-pGroups-parameter
+
+ `pGroups` **must** be a valid pointer to an array of `groupCount` valid [VkRayTracingShaderGroupCreateInfoNV](#VkRayTracingShaderGroupCreateInfoNV) structures
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-layout-parameter) VUID-VkRayTracingPipelineCreateInfoNV-layout-parameter
+
+ If `layout` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `layout` **must** be a valid [VkPipelineLayout](descriptorsets.html#VkPipelineLayout) handle
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-stageCount-arraylength) VUID-VkRayTracingPipelineCreateInfoNV-stageCount-arraylength
+
+ `stageCount` **must** be greater than `0`
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-groupCount-arraylength) VUID-VkRayTracingPipelineCreateInfoNV-groupCount-arraylength
+
+ `groupCount` **must** be greater than `0`
+
+* 
+[](#VUID-VkRayTracingPipelineCreateInfoNV-commonparent) VUID-VkRayTracingPipelineCreateInfoNV-commonparent
+
+ Both of `basePipelineHandle`, and `layout` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](devsandqueues.html#VkDevice)
+
+The `VkRayTracingShaderGroupCreateInfoNV` structure is defined as:
+
+// Provided by VK_NV_ray_tracing
+typedef struct VkRayTracingShaderGroupCreateInfoNV {
+    VkStructureType                   sType;
+    const void*                       pNext;
+    VkRayTracingShaderGroupTypeKHR    type;
+    uint32_t                          generalShader;
+    uint32_t                          closestHitShader;
+    uint32_t                          anyHitShader;
+    uint32_t                          intersectionShader;
+} VkRayTracingShaderGroupCreateInfoNV;
+
+* 
+`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
+
+* 
+`pNext` is `NULL` or a pointer to a structure extending this
+structure.
+
+* 
+`type` is the type of hit group specified in this structure.
+
+* 
+`generalShader` is the index of the ray generation, miss, or
+callable shader from
+[VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV)::`pStages` in the group if
+the shader group has `type` of
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV](#VkRayTracingShaderGroupTypeNV), and
+[VK_SHADER_UNUSED_NV](#VK_SHADER_UNUSED_NV) otherwise.
+
+* 
+`closestHitShader` is the optional index of the closest hit shader
+from [VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV)::`pStages` in the group
+if the shader group has `type` of
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV](#VkRayTracingShaderGroupTypeNV) or
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV](#VkRayTracingShaderGroupTypeNV), and
+[VK_SHADER_UNUSED_NV](#VK_SHADER_UNUSED_NV) otherwise.
+
+* 
+`anyHitShader` is the optional index of the any-hit shader from
+[VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV)::`pStages` in the group if
+the shader group has `type` of
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV](#VkRayTracingShaderGroupTypeNV) or
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV](#VkRayTracingShaderGroupTypeNV), and
+[VK_SHADER_UNUSED_NV](#VK_SHADER_UNUSED_NV) otherwise.
+
+* 
+`intersectionShader` is the index of the intersection shader from
+[VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV)::`pStages` in the group if
+the shader group has `type` of
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV](#VkRayTracingShaderGroupTypeNV), and
+[VK_SHADER_UNUSED_NV](#VK_SHADER_UNUSED_NV) otherwise.
+
+Valid Usage
+
+* 
+[](#VUID-VkRayTracingShaderGroupCreateInfoNV-type-02413) VUID-VkRayTracingShaderGroupCreateInfoNV-type-02413
+
+If `type` is [VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV](#VkRayTracingShaderGroupTypeNV) then
+`generalShader` **must** be a valid index into
+[VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV)::`pStages` referring to a
+shader of [VK_SHADER_STAGE_RAYGEN_BIT_NV](#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_MISS_BIT_NV](#VkShaderStageFlagBits), or
+[VK_SHADER_STAGE_CALLABLE_BIT_NV](#VkShaderStageFlagBits)
+
+* 
+[](#VUID-VkRayTracingShaderGroupCreateInfoNV-type-02414) VUID-VkRayTracingShaderGroupCreateInfoNV-type-02414
+
+If `type` is [VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV](#VkRayTracingShaderGroupTypeNV) then
+`closestHitShader`, `anyHitShader`, and `intersectionShader`
+**must** be [VK_SHADER_UNUSED_NV](#VK_SHADER_UNUSED_NV)
+
+* 
+[](#VUID-VkRayTracingShaderGroupCreateInfoNV-type-02415) VUID-VkRayTracingShaderGroupCreateInfoNV-type-02415
+
+If `type` is
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV](#VkRayTracingShaderGroupTypeNV) then
+`intersectionShader` **must** be a valid index into
+[VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV)::`pStages` referring to a
+shader of [VK_SHADER_STAGE_INTERSECTION_BIT_NV](#VkShaderStageFlagBits)
+
+* 
+[](#VUID-VkRayTracingShaderGroupCreateInfoNV-type-02416) VUID-VkRayTracingShaderGroupCreateInfoNV-type-02416
+
+If `type` is
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV](#VkRayTracingShaderGroupTypeNV) then
+`intersectionShader` **must** be [VK_SHADER_UNUSED_NV](#VK_SHADER_UNUSED_NV)
+
+* 
+[](#VUID-VkRayTracingShaderGroupCreateInfoNV-closestHitShader-02417) VUID-VkRayTracingShaderGroupCreateInfoNV-closestHitShader-02417
+
+`closestHitShader` **must** be either [VK_SHADER_UNUSED_NV](#VK_SHADER_UNUSED_NV) or a
+valid index into [VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV)::`pStages`
+referring to a shader of [VK_SHADER_STAGE_CLOSEST_HIT_BIT_NV](#VkShaderStageFlagBits)
+
+* 
+[](#VUID-VkRayTracingShaderGroupCreateInfoNV-anyHitShader-02418) VUID-VkRayTracingShaderGroupCreateInfoNV-anyHitShader-02418
+
+`anyHitShader` **must** be either [VK_SHADER_UNUSED_NV](#VK_SHADER_UNUSED_NV) or a valid
+index into [VkRayTracingPipelineCreateInfoNV](#VkRayTracingPipelineCreateInfoNV)::`pStages`
+referring to a shader of [VK_SHADER_STAGE_ANY_HIT_BIT_NV](#VkShaderStageFlagBits)
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkRayTracingShaderGroupCreateInfoNV-sType-sType) VUID-VkRayTracingShaderGroupCreateInfoNV-sType-sType
+
+ `sType` **must** be [VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_NV](fundamentals.html#VkStructureType)
+
+* 
+[](#VUID-VkRayTracingShaderGroupCreateInfoNV-pNext-pNext) VUID-VkRayTracingShaderGroupCreateInfoNV-pNext-pNext
+
+ `pNext` **must** be `NULL`
+
+* 
+[](#VUID-VkRayTracingShaderGroupCreateInfoNV-type-parameter) VUID-VkRayTracingShaderGroupCreateInfoNV-type-parameter
+
+ `type` **must** be a valid [VkRayTracingShaderGroupTypeKHR](#VkRayTracingShaderGroupTypeKHR) value
 
 To query the opaque handles of shaders in the ray tracing pipeline, call:
 
@@ -10240,14 +10697,14 @@ On success, an array of `groupCount` shader handles will be written to
 `pData`, with each element being of size
 [VkPhysicalDeviceRayTracingPipelinePropertiesKHR](limits.html#VkPhysicalDeviceRayTracingPipelinePropertiesKHR)::`shaderGroupHandleSize`.
 
-If `pipeline` was created with `VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`
+If `pipeline` was created with [VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits)
 and the [pipelineLibraryGroupHandles](features.html#features-pipelineLibraryGroupHandles)
 feature is enabled applications **can** query group handles from that pipeline,
 even if the pipeline is a library and is never bound to a command buffer.
 These group handles remain bitwise identical for any `pipeline` which
 references the pipeline library.
 Group indices are assigned as-if the pipeline was created without
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`.
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits).
 
 Valid Usage
 
@@ -10282,7 +10739,7 @@ If the
 [pipelineLibraryGroupHandles](features.html#features-pipelineLibraryGroupHandles)
 feature is not enabled,
 `pipeline` **must** not have been created with
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits)
 
 Valid Usage (Implicit)
 
@@ -10316,21 +10773,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To query the opaque capture data of shader groups in a ray tracing pipeline,
 call:
@@ -10376,14 +10833,14 @@ Once queried, this opaque data **can** be provided at pipeline creation time
 [VkRayTracingShaderGroupCreateInfoKHR](#VkRayTracingShaderGroupCreateInfoKHR)::`pShaderGroupCaptureReplayHandle`,
 as described in [Ray Tracing Capture Replay](raytracing.html#ray-tracing-capture-replay).
 
-If `pipeline` was created with `VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`
+If `pipeline` was created with [VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits)
 and the [pipelineLibraryGroupHandles](features.html#features-pipelineLibraryGroupHandles)
 feature is enabled applications **can** query capture replay group handles from
 that pipeline.
 The capture replay handle remains bitwise identical for any `pipeline`
 which references the pipeline library.
 Group indices are assigned as-if the pipeline was created without
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`.
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits).
 
 Valid Usage
 
@@ -10421,7 +10878,7 @@ equal to the number of shader groups in `pipeline`
 [](#VUID-vkGetRayTracingCaptureReplayShaderGroupHandlesKHR-pipeline-03607) VUID-vkGetRayTracingCaptureReplayShaderGroupHandlesKHR-pipeline-03607
 
 `pipeline` **must** have been created with a `flags` that included
-`VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR`
+[VK_PIPELINE_CREATE_RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkGetRayTracingCaptureReplayShaderGroupHandlesKHR-pipeline-07829) VUID-vkGetRayTracingCaptureReplayShaderGroupHandlesKHR-pipeline-07829
@@ -10430,7 +10887,7 @@ If the
 [pipelineLibraryGroupHandles](features.html#features-pipelineLibraryGroupHandles)
 feature is not enabled,
 `pipeline` **must** not have been created with
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits)
 
 Valid Usage (Implicit)
 
@@ -10464,99 +10921,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
-
-Ray tracing pipelines **can** contain more shaders than a graphics or compute
-pipeline, so to allow parallel compilation of shaders within a pipeline, an
-application **can** choose to defer compilation until a later point in time.
-
-To compile a deferred shader in a pipeline call:
-
-// Provided by VK_NV_ray_tracing
-VkResult vkCompileDeferredNV(
-    VkDevice                                    device,
-    VkPipeline                                  pipeline,
-    uint32_t                                    shader);
-
-* 
-`device` is the logical device containing the ray tracing pipeline.
-
-* 
-`pipeline` is the ray tracing pipeline object containing the
-shaders.
-
-* 
-`shader` is the index of the shader to compile.
-
-Valid Usage
-
-* 
-[](#VUID-vkCompileDeferredNV-pipeline-04621) VUID-vkCompileDeferredNV-pipeline-04621
-
-`pipeline` **must** be a ray tracing pipeline
-
-* 
-[](#VUID-vkCompileDeferredNV-pipeline-02237) VUID-vkCompileDeferredNV-pipeline-02237
-
-`pipeline` **must** have been created with
-`VK_PIPELINE_CREATE_DEFER_COMPILE_BIT_NV`
-
-* 
-[](#VUID-vkCompileDeferredNV-shader-02238) VUID-vkCompileDeferredNV-shader-02238
-
-`shader` **must** not have been called as a deferred compile before
-
-Valid Usage (Implicit)
-
-* 
-[](#VUID-vkCompileDeferredNV-device-parameter) VUID-vkCompileDeferredNV-device-parameter
-
- `device` **must** be a valid [VkDevice](devsandqueues.html#VkDevice) handle
-
-* 
-[](#VUID-vkCompileDeferredNV-pipeline-parameter) VUID-vkCompileDeferredNV-pipeline-parameter
-
- `pipeline` **must** be a valid [VkPipeline](#VkPipeline) handle
-
-* 
-[](#VUID-vkCompileDeferredNV-pipeline-parent) VUID-vkCompileDeferredNV-pipeline-parent
-
- `pipeline` **must** have been created, allocated, or retrieved from `device`
-
-Return Codes
-
-[Success](fundamentals.html#fundamentals-successcodes)
-
-* 
-`VK_SUCCESS`
-
-[Failure](fundamentals.html#fundamentals-errorcodes)
-
-* 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
-
-* 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
-
-* 
-`VK_ERROR_UNKNOWN`
-
-* 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To query the pipeline stack size of shaders in a shader group in the ray
 tracing pipeline, call:
@@ -10601,7 +10980,7 @@ in `pipeline`
 [](#VUID-vkGetRayTracingShaderGroupStackSizeKHR-groupShader-03609) VUID-vkGetRayTracingShaderGroupStackSizeKHR-groupShader-03609
 
 The shader identified by `groupShader` in `group` **must** not be
-`VK_SHADER_UNUSED_KHR`
+[VK_SHADER_UNUSED_KHR](#VK_SHADER_UNUSED_KHR)
 
 Valid Usage (Implicit)
 
@@ -10637,22 +11016,22 @@ typedef enum VkShaderGroupShaderKHR {
 } VkShaderGroupShaderKHR;
 
 * 
-`VK_SHADER_GROUP_SHADER_GENERAL_KHR` uses the shader specified in
+[VK_SHADER_GROUP_SHADER_GENERAL_KHR](#VkShaderGroupShaderKHR) uses the shader specified in
 the group with
 [VkRayTracingShaderGroupCreateInfoKHR](#VkRayTracingShaderGroupCreateInfoKHR)::`generalShader`
 
 * 
-`VK_SHADER_GROUP_SHADER_CLOSEST_HIT_KHR` uses the shader specified
+[VK_SHADER_GROUP_SHADER_CLOSEST_HIT_KHR](#VkShaderGroupShaderKHR) uses the shader specified
 in the group with
 [VkRayTracingShaderGroupCreateInfoKHR](#VkRayTracingShaderGroupCreateInfoKHR)::`closestHitShader`
 
 * 
-`VK_SHADER_GROUP_SHADER_ANY_HIT_KHR` uses the shader specified in
+[VK_SHADER_GROUP_SHADER_ANY_HIT_KHR](#VkShaderGroupShaderKHR) uses the shader specified in
 the group with
 [VkRayTracingShaderGroupCreateInfoKHR](#VkRayTracingShaderGroupCreateInfoKHR)::`anyHitShader`
 
 * 
-`VK_SHADER_GROUP_SHADER_INTERSECTION_KHR` uses the shader specified
+[VK_SHADER_GROUP_SHADER_INTERSECTION_KHR](#VkShaderGroupShaderKHR) uses the shader specified
 in the group with
 [VkRayTracingShaderGroupCreateInfoKHR](#VkRayTracingShaderGroupCreateInfoKHR)::`intersectionShader`
 
@@ -10674,7 +11053,7 @@ tracing trace commands.
 
 This command sets the stack size for subsequent ray tracing commands when
 the ray tracing pipeline is created with
-`VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR` set in
+[VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR](#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, the stack size is computed as described in
 [Ray Tracing Pipeline Stack](raytracing.html#ray-tracing-pipeline-stack).
@@ -10703,7 +11082,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetRayTracingPipelineStackSizeKHR-commandBuffer-cmdpool) VUID-vkCmdSetRayTracingPipelineStackSizeKHR-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetRayTracingPipelineStackSizeKHR-renderpass) VUID-vkCmdSetRayTracingPipelineStackSizeKHR-renderpass
@@ -10733,6 +11112,84 @@ Secondary | Outside | Outside | VK_QUEUE_COMPUTE_BIT | State |
 Conditional Rendering
 
 vkCmdSetRayTracingPipelineStackSizeKHR is not affected by [conditional rendering](drawing.html#drawing-conditional-rendering)
+
+Ray tracing pipelines **can** contain more shaders than a graphics or compute
+pipeline, so to allow parallel compilation of shaders within a pipeline, an
+application **can** choose to defer compilation until a later point in time.
+
+To compile a deferred shader in a pipeline call:
+
+// Provided by VK_NV_ray_tracing
+VkResult vkCompileDeferredNV(
+    VkDevice                                    device,
+    VkPipeline                                  pipeline,
+    uint32_t                                    shader);
+
+* 
+`device` is the logical device containing the ray tracing pipeline.
+
+* 
+`pipeline` is the ray tracing pipeline object containing the
+shaders.
+
+* 
+`shader` is the index of the shader to compile.
+
+Valid Usage
+
+* 
+[](#VUID-vkCompileDeferredNV-pipeline-04621) VUID-vkCompileDeferredNV-pipeline-04621
+
+`pipeline` **must** be a ray tracing pipeline
+
+* 
+[](#VUID-vkCompileDeferredNV-pipeline-02237) VUID-vkCompileDeferredNV-pipeline-02237
+
+`pipeline` **must** have been created with
+[VK_PIPELINE_CREATE_DEFER_COMPILE_BIT_NV](#VkPipelineCreateFlagBits)
+
+* 
+[](#VUID-vkCompileDeferredNV-shader-02238) VUID-vkCompileDeferredNV-shader-02238
+
+`shader` **must** not have been called as a deferred compile before
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-vkCompileDeferredNV-device-parameter) VUID-vkCompileDeferredNV-device-parameter
+
+ `device` **must** be a valid [VkDevice](devsandqueues.html#VkDevice) handle
+
+* 
+[](#VUID-vkCompileDeferredNV-pipeline-parameter) VUID-vkCompileDeferredNV-pipeline-parameter
+
+ `pipeline` **must** be a valid [VkPipeline](#VkPipeline) handle
+
+* 
+[](#VUID-vkCompileDeferredNV-pipeline-parent) VUID-vkCompileDeferredNV-pipeline-parent
+
+ `pipeline` **must** have been created, allocated, or retrieved from `device`
+
+Return Codes
+
+[Success](fundamentals.html#fundamentals-successcodes)
+
+* 
+[VK_SUCCESS](fundamentals.html#VkResult)
+
+[Failure](fundamentals.html#fundamentals-errorcodes)
+
+* 
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
+
+* 
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To destroy a pipeline, call:
 
@@ -10807,7 +11264,7 @@ parent as a starting point, and that it be more efficient (on either host or
 device) to switch/bind between children of the same parent.
 
 A derivative pipeline is created by setting the
-`VK_PIPELINE_CREATE_DERIVATIVE_BIT` flag in the
+[VK_PIPELINE_CREATE_DERIVATIVE_BIT](#VkPipelineCreateFlagBits) flag in the
 `Vk*PipelineCreateInfo` structure.
 If this is set, then exactly one of `basePipelineHandle` or
 `basePipelineIndex` members of the structure **must** have a valid
@@ -10822,7 +11279,7 @@ same command.
 If `basePipelineIndex` is used, the base pipeline **must** appear earlier
 in the array.
 The base pipeline **must** have been created with the
-`VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT` flag set.
+[VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT](#VkPipelineCreateFlagBits) flag set.
 
 Pipeline cache objects allow the result of pipeline construction to be
 reused between pipelines and between runs of an application.
@@ -10888,7 +11345,7 @@ synchronized, and the same pipeline cache object **can** be used in multiple
 threads simultaneously.
 
 If `flags` of `pCreateInfo` includes
-`VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT`, all commands
+[VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT](#VkPipelineCacheCreateFlagBits), all commands
 that modify the returned pipeline cache object **must** be
 [externally synchronized](fundamentals.html#fundamentals-threadingbehavior).
 
@@ -10924,21 +11381,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkPipelineCacheCreateInfo` structure is defined as:
 
@@ -10994,29 +11451,29 @@ retrieved from a previous call to `vkGetPipelineCacheData`
 
 If the [    `pipelineCreationCacheControl`](features.html#features-pipelineCreationCacheControl) feature is not enabled, `flags`
 **must** not include
-`VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT`
+[VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT](#VkPipelineCacheCreateFlagBits)
 
 * 
 [](#VUID-VkPipelineCacheCreateInfo-maintenance8-10200) VUID-VkPipelineCacheCreateInfo-maintenance8-10200
 
 If the [`maintenance8`](features.html#features-maintenance8) feature is not
 enabled, `flags` **must** not include
-`VK_PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_BIT_KHR`
+[VK_PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_BIT_KHR](#VkPipelineCacheCreateFlagBits)
 
 * 
 [](#VUID-VkPipelineCacheCreateInfo-flags-10201) VUID-VkPipelineCacheCreateInfo-flags-10201
 
 If `flags` includes
-`VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT`, it **must** not
+[VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT](#VkPipelineCacheCreateFlagBits), it **must** not
 include
-`VK_PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_BIT_KHR`
+[VK_PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_BIT_KHR](#VkPipelineCacheCreateFlagBits)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineCacheCreateInfo-sType-sType) VUID-VkPipelineCacheCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineCacheCreateInfo-pNext-pNext) VUID-VkPipelineCacheCreateInfo-pNext-pNext
@@ -11053,7 +11510,7 @@ typedef enum VkPipelineCacheCreateFlagBits {
 } VkPipelineCacheCreateFlagBits;
 
 * 
-`VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT` specifies
+[VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT](#VkPipelineCacheCreateFlagBits) specifies
 that all commands that modify the created [VkPipelineCache](#VkPipelineCache) will be
 [externally synchronized](fundamentals.html#fundamentals-threadingbehavior).
 When set, the implementation **may** skip any unnecessary processing needed
@@ -11061,12 +11518,12 @@ to support simultaneous modification from multiple threads where
 allowed.
 
 * 
-`VK_PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_BIT_KHR`
+[VK_PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_BIT_KHR](#VkPipelineCacheCreateFlagBits)
 specifies that when the created [VkPipelineCache](#VkPipelineCache) is used as the
 `dstCache` parameter of [vkMergePipelineCaches](#vkMergePipelineCaches), it does not
 need to be [externally synchronized](fundamentals.html#fundamentals-threadingbehavior).
 This flag is mutually exclusive with
-`VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT`.
+[VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT](#VkPipelineCacheCreateFlagBits).
 
 Pipeline cache objects **can** be merged using the command:
 
@@ -11109,14 +11566,14 @@ Valid Usage
 
 Host access to `dstCache` **must** be externally synchronized
 if it was not created with
-`VK_PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_BIT_KHR`
+[VK_PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_BIT_KHR](#VkPipelineCacheCreateFlagBits)
 
 * 
 [](#VUID-vkMergePipelineCaches-dstCache-11832) VUID-vkMergePipelineCaches-dstCache-11832
 
 `dstCache` **must** not have been created with the `headerVersion`
 member of [VkPipelineCacheCreateInfo](#VkPipelineCacheCreateInfo)::`pInitialData` equal to
-`VK_PIPELINE_CACHE_HEADER_VERSION_DATA_GRAPH_QCOM`
+[VK_PIPELINE_CACHE_HEADER_VERSION_DATA_GRAPH_QCOM](#VkPipelineCacheHeaderVersion)
 
 * 
 [](#VUID-vkMergePipelineCaches-headerVersion-11833) VUID-vkMergePipelineCaches-headerVersion-11833
@@ -11124,7 +11581,7 @@ member of [VkPipelineCacheCreateInfo](#VkPipelineCacheCreateInfo)::`pInitialData
 Each member of pSrcCaches **must** not have been created with the
 `headerVersion` member of
 [VkPipelineCacheCreateInfo](#VkPipelineCacheCreateInfo)::`pInitialData` equal to
-`VK_PIPELINE_CACHE_HEADER_VERSION_DATA_GRAPH_QCOM`
+[VK_PIPELINE_CACHE_HEADER_VERSION_DATA_GRAPH_QCOM](#VkPipelineCacheHeaderVersion)
 
 Valid Usage (Implicit)
 
@@ -11163,21 +11620,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Data **can** be retrieved from a pipeline cache object using the command:
 
@@ -11209,8 +11666,8 @@ return the variable is overwritten with the amount of data actually written
 to `pData`.
 If `pDataSize` is less than the maximum size that **can** be retrieved by
 the pipeline cache, at most `pDataSize` bytes will be written to
-`pData`, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all of the pipeline cache was
+`pData`, and [VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead of
+[VK_SUCCESS](fundamentals.html#VkResult), to indicate that not all of the pipeline cache was
 returned.
 
 Any data written to `pData` is valid and **can** be provided as the
@@ -11235,8 +11692,8 @@ reasons.
 
 If the amount of data available is larger than the passed `pDataSize`,
 the query returns up to the size of the passed buffer, and signals overflow
-with a `VK_INCOMPLETE` success status instead of returning a
-`VK_ERROR_NOT_ENOUGH_SPACE_KHR` error status. |
+with a [VK_INCOMPLETE](fundamentals.html#VkResult) success status instead of returning a
+[VK_ERROR_NOT_ENOUGH_SPACE_KHR](fundamentals.html#VkResult) error status. |
 
 Valid Usage
 
@@ -11246,7 +11703,7 @@ Valid Usage
 `pipelineCache` **must** not have been created with the
 `headerVersion` member of
 [VkPipelineCacheCreateInfo](#VkPipelineCacheCreateInfo)::`pInitialData` equal to
-`VK_PIPELINE_CACHE_HEADER_VERSION_DATA_GRAPH_QCOM`
+[VK_PIPELINE_CACHE_HEADER_VERSION_DATA_GRAPH_QCOM](#VkPipelineCacheHeaderVersion)
 
 Valid Usage (Implicit)
 
@@ -11280,24 +11737,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Applications **can** store the data retrieved from the pipeline cache, and use
 these data, possibly in a future run of the application, to populate new
@@ -11374,7 +11831,7 @@ Valid Usage
 * 
 [](#VUID-VkPipelineCacheHeaderVersionOne-headerVersion-04968) VUID-VkPipelineCacheHeaderVersionOne-headerVersion-04968
 
-`headerVersion` **must** be `VK_PIPELINE_CACHE_HEADER_VERSION_ONE`
+`headerVersion` **must** be [VK_PIPELINE_CACHE_HEADER_VERSION_ONE](#VkPipelineCacheHeaderVersion)
 
 * 
 [](#VUID-VkPipelineCacheHeaderVersionOne-headerSize-08990) VUID-VkPipelineCacheHeaderVersionOne-headerSize-08990
@@ -11399,11 +11856,11 @@ typedef enum VkPipelineCacheHeaderVersion {
 } VkPipelineCacheHeaderVersion;
 
 * 
-`VK_PIPELINE_CACHE_HEADER_VERSION_ONE` specifies version one of the
+[VK_PIPELINE_CACHE_HEADER_VERSION_ONE](#VkPipelineCacheHeaderVersion) specifies version one of the
 pipeline cache, described by [VkPipelineCacheHeaderVersionOne](#VkPipelineCacheHeaderVersionOne).
 
 * 
-`VK_PIPELINE_CACHE_HEADER_VERSION_DATA_GRAPH_QCOM` specifies a
+[VK_PIPELINE_CACHE_HEADER_VERSION_DATA_GRAPH_QCOM](#VkPipelineCacheHeaderVersion) specifies a
 pipeline cache for offline built data graph models, described by
 [VkPipelineCacheHeaderVersionDataGraphQCOM](#VkPipelineCacheHeaderVersionDataGraphQCOM).
 
@@ -11443,7 +11900,7 @@ version of the compiler that built the data graph cache.
 The application **should** verify that the header info is compatible with the
 [VkDataGraphProcessingEngineCreateInfoARM](VK_ARM_data_graph/graphs.html#VkDataGraphProcessingEngineCreateInfoARM) passed during pipeline
 creation.
-Implementations **may** return `VK_PIPELINE_COMPILE_REQUIRED_EXT` from
+Implementations **may** return [VK_PIPELINE_COMPILE_REQUIRED_EXT](fundamentals.html#VkResult) from
 [vkCreateDataGraphPipelinesARM](VK_ARM_data_graph/graphs.html#vkCreateDataGraphPipelinesARM) if the cache is not compatible.
 
 |  | This cache type is built using offline compilation, therefore Vulkan does
@@ -11481,7 +11938,7 @@ enabled
 [](#VUID-VkPipelineCacheHeaderVersionDataGraphQCOM-headerVersion-11837) VUID-VkPipelineCacheHeaderVersionDataGraphQCOM-headerVersion-11837
 
 `headerVersion` **must** be
-`VK_PIPELINE_CACHE_HEADER_VERSION_DATA_GRAPH_QCOM`
+[VK_PIPELINE_CACHE_HEADER_VERSION_DATA_GRAPH_QCOM](#VkPipelineCacheHeaderVersion)
 
 * 
 [](#VUID-VkPipelineCacheHeaderVersionDataGraphQCOM-headerSize-11838) VUID-VkPipelineCacheHeaderVersionDataGraphQCOM-headerSize-11838
@@ -11511,10 +11968,10 @@ typedef enum VkDataGraphModelCacheTypeQCOM {
 } VkDataGraphModelCacheTypeQCOM;
 
 * 
-`VK_DATA_GRAPH_MODEL_CACHE_TYPE_GENERIC_BINARY_QCOM` specifies a
+[VK_DATA_GRAPH_MODEL_CACHE_TYPE_GENERIC_BINARY_QCOM](#VkDataGraphModelCacheTypeQCOM) specifies a
 general binary layout type.
 
-`VK_DATA_GRAPH_MODEL_TOOLCHAIN_VERSION_LENGTH_QCOM` is the length in
+[VK_DATA_GRAPH_MODEL_TOOLCHAIN_VERSION_LENGTH_QCOM](#VK_DATA_GRAPH_MODEL_TOOLCHAIN_VERSION_LENGTH_QCOM) is the length in
 `char` values of an array containing the version of the compiler that
 built a data graph cache, as returned in
 [VkPipelineCacheHeaderVersionDataGraphQCOM](#VkPipelineCacheHeaderVersionDataGraphQCOM)::`toolchainVersion`.
@@ -11594,7 +12051,7 @@ object on subsequent runs.
 
 When creating a pipeline that includes [VkPipelineBinaryInfoKHR](#VkPipelineBinaryInfoKHR) in the
 `pNext` chain, or has the
-`VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR` flag set, the use of
+[VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](#VkPipelineCreateFlagBits2KHR) flag set, the use of
 [VkPipelineCache](#VkPipelineCache) objects is not allowed.
 
 Pipeline binary objects are represented by `VkPipelineBinaryKHR`
@@ -11677,21 +12134,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkPipelineCreateInfoKHR` structure is defined as:
 
@@ -11723,7 +12180,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineCreateInfoKHR-sType-sType) VUID-VkPipelineCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_CREATE_INFO_KHR](fundamentals.html#VkStructureType)
 
 The `VkPipelineBinaryKeyKHR` structure is defined as:
 
@@ -11751,7 +12208,7 @@ structure.
 
 Any returned values beyond the first `keySize` bytes are **undefined**.
 Implementations **must** return a `keySize` greater than 0, and
-less-or-equal to `VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR`.
+less-or-equal to [VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR](#VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR).
 
 Two keys are considered equal if `keySize` is equal and the first
 `keySize` bytes of `key` compare equal.
@@ -11767,14 +12224,14 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineBinaryKeyKHR-sType-sType) VUID-VkPipelineBinaryKeyKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_BINARY_KEY_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_BINARY_KEY_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineBinaryKeyKHR-pNext-pNext) VUID-VkPipelineBinaryKeyKHR-pNext-pNext
 
  `pNext` **must** be `NULL`
 
-`VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR` is the length in bytes of a binary
+[VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR](#VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR) is the length in bytes of a binary
 key, as returned in [VkPipelineBinaryKeyKHR](#VkPipelineBinaryKeyKHR)::`keySize`.
 
 #define VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR 32U
@@ -11812,7 +12269,7 @@ The corresponding entry in the `pPipelineBinaries` output array will
 be filled with [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE).
 
 * 
-The `VkResult` returned by [vkCreatePipelineBinariesKHR](#vkCreatePipelineBinariesKHR) will
+The [VkResult](fundamentals.html#VkResult) returned by [vkCreatePipelineBinariesKHR](#vkCreatePipelineBinariesKHR) will
 contain the error value for the first entry in the output array in
 `pBinaries` containing [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE).
 
@@ -11843,30 +12300,30 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_PIPELINE_BINARY_MISSING_KHR`
+[VK_PIPELINE_BINARY_MISSING_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkPipelineBinaryHandlesInfoKHR` structure is defined as:
 
@@ -11902,8 +12359,8 @@ Otherwise, `pipelineBinaryCount` **must** be the number of entries in the
 with the number of handles actually written to `pPipelineBinaries`.
 If the value of `pipelineBinaryCount` is less than the number of
 binaries that would have been created, at most `pipelineBinaryCount`
-handles will be written to `pPipelineBinaries` and `VK_INCOMPLETE`
-will be returned instead of `VK_SUCCESS`, to indicate that
+handles will be written to `pPipelineBinaries` and [VK_INCOMPLETE](fundamentals.html#VkResult)
+will be returned instead of [VK_SUCCESS](fundamentals.html#VkResult), to indicate that
 `pPipelineBinaries` was not large enough to create all the binaries.
 
 Valid Usage (Implicit)
@@ -11911,7 +12368,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineBinaryHandlesInfoKHR-sType-sType) VUID-VkPipelineBinaryHandlesInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_BINARY_HANDLES_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_BINARY_HANDLES_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineBinaryHandlesInfoKHR-pNext-pNext) VUID-VkPipelineBinaryHandlesInfoKHR-pNext-pNext
@@ -11960,20 +12417,20 @@ When `pPipelineCreateInfo` is not `NULL`, an implementation will attempt
 to retrieve pipeline binary data from an internal cache external to the
 application if
 [`pipelineBinaryInternalCache`](limits.html#limits-pipelineBinaryInternalCache) is
-`VK_TRUE`.
+[VK_TRUE](fundamentals.html#VK_TRUE).
 Applications **can** use this to determine if a pipeline **can** be created
 without compilation.
 If the implementation fails to create a pipeline binary due to missing an
-internal cache entry, `VK_PIPELINE_BINARY_MISSING_KHR` is returned.
+internal cache entry, [VK_PIPELINE_BINARY_MISSING_KHR](fundamentals.html#VkResult) is returned.
 If creation succeeds, the resulting binary **can** be used to create a
 pipeline.
-`VK_PIPELINE_BINARY_MISSING_KHR` **may** be returned for any reason in this
+[VK_PIPELINE_BINARY_MISSING_KHR](fundamentals.html#VkResult) **may** be returned for any reason in this
 situation, even if creating a pipeline binary with the same parameters that
 succeeded earlier.
 
 If
 [`pipelineBinaryPrecompiledInternalCache`](limits.html#limits-pipelineBinaryPrecompiledInternalCache)
-is `VK_TRUE`, the implementation **may** be able to create pipeline
+is [VK_TRUE](fundamentals.html#VK_TRUE), the implementation **may** be able to create pipeline
 binaries even when `pPipelineCreateInfo` has not been used to create
 binaries before by the application.
 
@@ -11987,7 +12444,7 @@ Valid Usage
 [](#VUID-VkPipelineBinaryCreateInfoKHR-pipeline-09607) VUID-VkPipelineBinaryCreateInfoKHR-pipeline-09607
 
 If `pipeline` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `pipeline` **must** have
-been created with `VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR`
+been created with [VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](#VkPipelineCreateFlagBits2KHR)
 
 * 
 [](#VUID-VkPipelineBinaryCreateInfoKHR-pipeline-09608) VUID-VkPipelineBinaryCreateInfoKHR-pipeline-09608
@@ -12001,14 +12458,14 @@ If `pipeline` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HAN
 
 If
 [`pipelineBinaryInternalCache`](limits.html#limits-pipelineBinaryInternalCache)
-is `VK_FALSE` pPipelineCreateInfo **must** be `NULL`
+is [VK_FALSE](fundamentals.html#VK_FALSE) pPipelineCreateInfo **must** be `NULL`
 
 * 
 [](#VUID-VkPipelineBinaryCreateInfoKHR-device-09610) VUID-VkPipelineBinaryCreateInfoKHR-device-09610
 
 If `device` was created with
 [VkDevicePipelineBinaryInternalCacheControlKHR](devsandqueues.html#VkDevicePipelineBinaryInternalCacheControlKHR)::`disableInternalCache`
-set to `VK_TRUE`, `pPipelineCreateInfo` **must** be `NULL`
+set to [VK_TRUE](fundamentals.html#VK_TRUE), `pPipelineCreateInfo` **must** be `NULL`
 
 * 
 [](#VUID-VkPipelineBinaryCreateInfoKHR-pKeysAndDataInfo-09619) VUID-VkPipelineBinaryCreateInfoKHR-pKeysAndDataInfo-09619
@@ -12029,7 +12486,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineBinaryCreateInfoKHR-sType-sType) VUID-VkPipelineBinaryCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_BINARY_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_BINARY_CREATE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineBinaryCreateInfoKHR-pNext-pNext) VUID-VkPipelineBinaryCreateInfoKHR-pNext-pNext
@@ -12156,15 +12613,15 @@ buffer, in bytes, pointed to by `pPipelineBinaryData`, and on return
 bytes, that is required to store the binary.
 If `pPipelineBinaryDataSize` is less than the size that is required to
 store the binary, nothing is written to `pPipelineBinaryData` and
-`VK_ERROR_NOT_ENOUGH_SPACE_KHR` will be returned, instead of
-`VK_SUCCESS`.
+[VK_ERROR_NOT_ENOUGH_SPACE_KHR](fundamentals.html#VkResult) will be returned, instead of
+[VK_SUCCESS](fundamentals.html#VkResult).
 
 If the call returns one of the success return codes, the pipeline binary key
 is written to `pPipelineBinaryKey`, regardless of whether
 `pPipelineBinaryData` is `NULL` or not.
 
 If [pipelineBinaryCompressedData](limits.html#limits-pipelineBinaryCompressedData) is
-`VK_FALSE`, implementations **should** not return compressed pipeline
+[VK_FALSE](fundamentals.html#VK_FALSE), implementations **should** not return compressed pipeline
 binary data to the application.
 
 Valid Usage (Implicit)
@@ -12199,24 +12656,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_NOT_ENOUGH_SPACE_KHR`
+[VK_ERROR_NOT_ENOUGH_SPACE_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkPipelineBinaryDataInfoKHR` structure is defined as:
 
@@ -12242,7 +12699,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineBinaryDataInfoKHR-sType-sType) VUID-VkPipelineBinaryDataInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_BINARY_DATA_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_BINARY_DATA_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineBinaryDataInfoKHR-pNext-pNext) VUID-VkPipelineBinaryDataInfoKHR-pNext-pNext
@@ -12255,7 +12712,7 @@ Valid Usage (Implicit)
  `pipelineBinary` **must** be a valid [VkPipelineBinaryKHR](#VkPipelineBinaryKHR) handle
 
 To release pipeline resources captured with
-`VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR`, call:
+[VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](#VkPipelineCreateFlagBits2KHR), call:
 
 // Provided by VK_KHR_pipeline_binary
 VkResult vkReleaseCapturedPipelineDataKHR(
@@ -12275,14 +12732,14 @@ structure which describes the pipeline to release the data from.
 [Memory Allocation](memory.html#memory-allocation) chapter.
 
 The implementation **may** free any resources captured as a result of creating
-the pipeline with `VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR` and put
+the pipeline with [VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](#VkPipelineCreateFlagBits2KHR) and put
 the pipeline into a state as if
-`VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR` had not been provided at
+[VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](#VkPipelineCreateFlagBits2KHR) had not been provided at
 pipeline creation time.
 
 |  | Any resources captured as a result of creating the pipeline with
 | --- | --- |
-`VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR` are implicitly freed by
+[VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](#VkPipelineCreateFlagBits2KHR) are implicitly freed by
 [vkDestroyPipeline](#vkDestroyPipeline). |
 
 Valid Usage
@@ -12322,15 +12779,15 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkReleaseCapturedPipelineDataInfoKHR` structure is defined as:
 
@@ -12358,7 +12815,7 @@ Valid Usage
 [](#VUID-VkReleaseCapturedPipelineDataInfoKHR-pipeline-09613) VUID-VkReleaseCapturedPipelineDataInfoKHR-pipeline-09613
 
 `pipeline` **must** have been created with
-`VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR`
+[VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](#VkPipelineCreateFlagBits2KHR)
 
 * 
 [](#VUID-VkReleaseCapturedPipelineDataInfoKHR-pipeline-09618) VUID-VkReleaseCapturedPipelineDataInfoKHR-pipeline-09618
@@ -12371,7 +12828,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkReleaseCapturedPipelineDataInfoKHR-sType-sType) VUID-VkReleaseCapturedPipelineDataInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RELEASE_CAPTURED_PIPELINE_DATA_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RELEASE_CAPTURED_PIPELINE_DATA_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkReleaseCapturedPipelineDataInfoKHR-pNext-pNext) VUID-VkReleaseCapturedPipelineDataInfoKHR-pNext-pNext
@@ -12664,7 +13121,7 @@ and let the other constants use their default values encoded within the
 OpSpecConstant declarations.
 
 A pipeline library is a special pipeline that was created using the
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR` and cannot be bound, instead it
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits) and cannot be bound, instead it
 defines a set of pipeline state which can be linked into other pipelines.
 For ray tracing pipelines this includes shaders and shader groups.
 For graphics pipelines this includes distinct library types defined by
@@ -12706,7 +13163,7 @@ Valid Usage
 [](#VUID-VkPipelineLibraryCreateInfoKHR-pLibraries-03381) VUID-VkPipelineLibraryCreateInfoKHR-pLibraries-03381
 
 Each element of `pLibraries` **must** have been created with
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkPipelineLibraryCreateInfoKHR-pLibraries-06855) VUID-VkPipelineLibraryCreateInfoKHR-pLibraries-06855
@@ -12714,62 +13171,62 @@ Each element of `pLibraries` **must** have been created with
 If any library in `pLibraries` was created with a shader stage with
 [VkPipelineShaderStageModuleIdentifierCreateInfoEXT](#VkPipelineShaderStageModuleIdentifierCreateInfoEXT) and
 `identifierSize` not equal to 0, the pipeline **must** be created with
-the `VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT` flag
+the [VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](#VkPipelineCreateFlagBits) flag
 set
 
 * 
 [](#VUID-VkPipelineLibraryCreateInfoKHR-pLibraries-08096) VUID-VkPipelineLibraryCreateInfoKHR-pLibraries-08096
 
 If any element of `pLibraries` was created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, all elements **must**
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkPipelineCreateFlagBits), all elements **must**
 have been created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07404) VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07404
 
 If `pipeline` is being created with
-`VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT`, every element of
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits), every element of
 `pLibraries` **must** have been created with
-`VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT`
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07405) VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07405
 
 If `pipeline` is being created without
-`VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT`, every element of
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits), every element of
 `pLibraries` **must** have been created without
-`VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT`
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07406) VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07406
 
 If `pipeline` is being created with
-`VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT`, every element of
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits), every element of
 `pLibraries` **must** have been created with
-`VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT`
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07407) VUID-VkPipelineLibraryCreateInfoKHR-pipeline-07407
 
 If `pipeline` is being created without
-`VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT`, every element of
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits), every element of
 `pLibraries` **must** have been created without
-`VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT`
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineLibraryCreateInfoKHR-sType-sType) VUID-VkPipelineLibraryCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_LIBRARY_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_LIBRARY_CREATE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineLibraryCreateInfoKHR-pLibraries-parameter) VUID-VkPipelineLibraryCreateInfoKHR-pLibraries-parameter
 
  If `libraryCount` is not `0`, `pLibraries` **must** be a valid pointer to an array of `libraryCount` valid [VkPipeline](#VkPipeline) handles
 
-Pipelines created with `VK_PIPELINE_CREATE_LIBRARY_BIT_KHR` libraries
+Pipelines created with [VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits) libraries
 **can** depend on other pipeline libraries in
 [VkPipelineLibraryCreateInfoKHR](#VkPipelineLibraryCreateInfoKHR).
 
@@ -12813,27 +13270,27 @@ Valid Usage
 * 
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-00777) VUID-vkCmdBindPipeline-pipelineBindPoint-00777
 
-If `pipelineBindPoint` is `VK_PIPELINE_BIND_POINT_COMPUTE`, the
+If `pipelineBindPoint` is [VK_PIPELINE_BIND_POINT_COMPUTE](#VkPipelineBindPoint), the
 `VkCommandPool` that `commandBuffer` was allocated from **must**
 support compute operations
 
 * 
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-00778) VUID-vkCmdBindPipeline-pipelineBindPoint-00778
 
-If `pipelineBindPoint` is `VK_PIPELINE_BIND_POINT_GRAPHICS`, the
+If `pipelineBindPoint` is [VK_PIPELINE_BIND_POINT_GRAPHICS](#VkPipelineBindPoint), the
 `VkCommandPool` that `commandBuffer` was allocated from **must**
 support graphics operations
 
 * 
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-00779) VUID-vkCmdBindPipeline-pipelineBindPoint-00779
 
-If `pipelineBindPoint` is `VK_PIPELINE_BIND_POINT_COMPUTE`,
+If `pipelineBindPoint` is [VK_PIPELINE_BIND_POINT_COMPUTE](#VkPipelineBindPoint),
 `pipeline` **must** be a compute pipeline
 
 * 
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-00780) VUID-vkCmdBindPipeline-pipelineBindPoint-00780
 
-If `pipelineBindPoint` is `VK_PIPELINE_BIND_POINT_GRAPHICS`,
+If `pipelineBindPoint` is [VK_PIPELINE_BIND_POINT_GRAPHICS](#VkPipelineBindPoint),
 `pipeline` **must** be a graphics pipeline
 
 * 
@@ -12850,11 +13307,11 @@ the previous pipeline
 
 If
 [VkPhysicalDeviceSampleLocationsPropertiesEXT](limits.html#VkPhysicalDeviceSampleLocationsPropertiesEXT)::`variableSampleLocations`
-is `VK_FALSE`, and `pipeline` is a graphics pipeline created
+is [VK_FALSE](fundamentals.html#VK_FALSE), and `pipeline` is a graphics pipeline created
 with a `renderPass` that is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and with a
 [VkPipelineSampleLocationsStateCreateInfoEXT](primsrast.html#VkPipelineSampleLocationsStateCreateInfoEXT) structure having its
-`sampleLocationsEnable` member set to `VK_TRUE` but without
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` enabled then the current
+`sampleLocationsEnable` member set to [VK_TRUE](fundamentals.html#VK_TRUE) but without
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](#VkDynamicState) enabled then the current
 render pass instance **must** have been begun by specifying a
 [VkRenderPassSampleLocationsBeginInfoEXT](renderpass.html#VkRenderPassSampleLocationsBeginInfoEXT) structure whose
 `pPostSubpassSampleLocations` member contains an element with a
@@ -12873,7 +13330,7 @@ This command **must** not be recorded when transform feedback is active
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-02391) VUID-vkCmdBindPipeline-pipelineBindPoint-02391
 
 If `pipelineBindPoint` is
-`VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR`, the `VkCommandPool`
+[VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR](#VkPipelineBindPoint), the `VkCommandPool`
 that `commandBuffer` was allocated from **must** support compute
 operations
 
@@ -12881,14 +13338,14 @@ operations
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-02392) VUID-vkCmdBindPipeline-pipelineBindPoint-02392
 
 If `pipelineBindPoint` is
-`VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR`, `pipeline` **must** be a
+[VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR](#VkPipelineBindPoint), `pipeline` **must** be a
 ray tracing pipeline
 
 * 
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-06721) VUID-vkCmdBindPipeline-pipelineBindPoint-06721
 
 If `pipelineBindPoint` is
-`VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR`, `commandBuffer` **must**
+[VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR](#VkPipelineBindPoint), `commandBuffer` **must**
 not be a protected command buffer
 
 * 
@@ -12897,7 +13354,7 @@ not be a protected command buffer
 If the [    `pipelineProtectedAccess`](features.html#features-pipelineProtectedAccess) feature is enabled, and
 `commandBuffer` is a protected command buffer, `pipeline` **must**
 have been created without
-`VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT`
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdBindPipeline-pipelineProtectedAccess-07409) VUID-vkCmdBindPipeline-pipelineProtectedAccess-07409
@@ -12905,13 +13362,13 @@ have been created without
 If the [    `pipelineProtectedAccess`](features.html#features-pipelineProtectedAccess) feature is enabled, and
 `commandBuffer` is not a protected command buffer, `pipeline`
 **must** have been created without
-`VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT`
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdBindPipeline-pipeline-03382) VUID-vkCmdBindPipeline-pipeline-03382
 
 `pipeline` **must** not have been created with
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR` set
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](#VkPipelineCreateFlagBits) set
 
 * 
 [](#VUID-vkCmdBindPipeline-commandBuffer-04808) VUID-vkCmdBindPipeline-commandBuffer-04808
@@ -12919,11 +13376,11 @@ If the [    `pipelineProtectedAccess`](features.html#features-pipelineProtectedA
 If `commandBuffer` is a secondary command buffer with
 [VkCommandBufferInheritanceViewportScissorInfoNV](cmdbuffers.html#VkCommandBufferInheritanceViewportScissorInfoNV)::`viewportScissor2D`
 enabled and `pipelineBindPoint` is
-`VK_PIPELINE_BIND_POINT_GRAPHICS`, then the `pipeline` **must**
-have been created with `VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` or
-`VK_DYNAMIC_STATE_VIEWPORT`, and
-`VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT` or
-`VK_DYNAMIC_STATE_SCISSOR` enabled
+[VK_PIPELINE_BIND_POINT_GRAPHICS](#VkPipelineBindPoint), then the `pipeline` **must**
+have been created with [VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](#VkDynamicState) or
+[VK_DYNAMIC_STATE_VIEWPORT](#VkDynamicState), and
+[VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](#VkDynamicState) or
+[VK_DYNAMIC_STATE_SCISSOR](#VkDynamicState) enabled
 
 * 
 [](#VUID-vkCmdBindPipeline-commandBuffer-04809) VUID-vkCmdBindPipeline-commandBuffer-04809
@@ -12931,18 +13388,18 @@ have been created with `VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` or
 If `commandBuffer` is a secondary command buffer with
 [VkCommandBufferInheritanceViewportScissorInfoNV](cmdbuffers.html#VkCommandBufferInheritanceViewportScissorInfoNV)::`viewportScissor2D`
 enabled and `pipelineBindPoint` is
-`VK_PIPELINE_BIND_POINT_GRAPHICS` and `pipeline` was created
+[VK_PIPELINE_BIND_POINT_GRAPHICS](#VkPipelineBindPoint) and `pipeline` was created
 with [VkPipelineDiscardRectangleStateCreateInfoEXT](fragops.html#VkPipelineDiscardRectangleStateCreateInfoEXT) structure and
 its `discardRectangleCount` member is not `0`, or the pipeline was
-created with `VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT`
+created with [VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT](#VkDynamicState)
 enabled, then the pipeline **must** have been created with
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT` enabled
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](#VkDynamicState) enabled
 
 * 
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-04881) VUID-vkCmdBindPipeline-pipelineBindPoint-04881
 
-If `pipelineBindPoint` is `VK_PIPELINE_BIND_POINT_GRAPHICS` and
-the [    `provokingVertexModePerPipeline`](limits.html#limits-provokingVertexModePerPipeline) limit is `VK_FALSE`, then
+If `pipelineBindPoint` is [VK_PIPELINE_BIND_POINT_GRAPHICS](#VkPipelineBindPoint) and
+the [    `provokingVertexModePerPipeline`](limits.html#limits-provokingVertexModePerPipeline) limit is [VK_FALSE](fundamentals.html#VK_FALSE), then
 pipeline’s
 [VkPipelineRasterizationProvokingVertexStateCreateInfoEXT](vertexpostproc.html#VkPipelineRasterizationProvokingVertexStateCreateInfoEXT)::`provokingVertexMode`
 **must** be the same as that of any other pipelines previously bound to
@@ -12953,7 +13410,7 @@ pipeline already bound when beginning the render pass instance
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-04949) VUID-vkCmdBindPipeline-pipelineBindPoint-04949
 
 If `pipelineBindPoint` is
-`VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI`, the
+[VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI](#VkPipelineBindPoint), the
 `VkCommandPool` that `commandBuffer` was allocated from **must**
 support compute operations
 
@@ -12961,22 +13418,22 @@ support compute operations
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-04950) VUID-vkCmdBindPipeline-pipelineBindPoint-04950
 
 If `pipelineBindPoint` is
-`VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI`, `pipeline`
+[VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI](#VkPipelineBindPoint), `pipeline`
 **must** be a subpass shading pipeline
 
 * 
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-09910) VUID-vkCmdBindPipeline-pipelineBindPoint-09910
 
 If `pipelineBindPoint` is
-`VK_PIPELINE_BIND_POINT_DATA_GRAPH_ARM`, the `VkCommandPool`
+[VK_PIPELINE_BIND_POINT_DATA_GRAPH_ARM](#VkPipelineBindPoint), the `VkCommandPool`
 that `commandBuffer` was allocated from **must** have been created for
-a queue family that supports `VK_QUEUE_DATA_GRAPH_BIT_ARM`
+a queue family that supports [VK_QUEUE_DATA_GRAPH_BIT_ARM](devsandqueues.html#VkQueueFlagBits)
 
 * 
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-09911) VUID-vkCmdBindPipeline-pipelineBindPoint-09911
 
 If `pipelineBindPoint` is
-`VK_PIPELINE_BIND_POINT_DATA_GRAPH_ARM`, `pipeline` **must** be a
+[VK_PIPELINE_BIND_POINT_DATA_GRAPH_ARM](#VkPipelineBindPoint), `pipeline` **must** be a
 [data graph pipeline](VK_ARM_data_graph/graphs.html#graphs-pipelines)
 
 * 
@@ -13029,7 +13486,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindPipeline-commandBuffer-cmdpool) VUID-vkCmdBindPipeline-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_DATA_GRAPH_BIT_ARM`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_DATA_GRAPH_BIT_ARM](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBindPipeline-videocoding) VUID-vkCmdBindPipeline-videocoding
@@ -13086,23 +13543,23 @@ typedef enum VkPipelineBindPoint {
 } VkPipelineBindPoint;
 
 * 
-`VK_PIPELINE_BIND_POINT_COMPUTE` specifies binding as a compute
+[VK_PIPELINE_BIND_POINT_COMPUTE](#VkPipelineBindPoint) specifies binding as a compute
 pipeline.
 
 * 
-`VK_PIPELINE_BIND_POINT_GRAPHICS` specifies binding as a graphics
+[VK_PIPELINE_BIND_POINT_GRAPHICS](#VkPipelineBindPoint) specifies binding as a graphics
 pipeline.
 
 * 
-`VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR` specifies binding as a ray
+[VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR](#VkPipelineBindPoint) specifies binding as a ray
 tracing pipeline.
 
 * 
-`VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI` specifies binding as
+[VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI](#VkPipelineBindPoint) specifies binding as
 a subpass shading pipeline.
 
 * 
-`VK_PIPELINE_BIND_POINT_EXECUTION_GRAPH_AMDX` specifies binding as
+[VK_PIPELINE_BIND_POINT_EXECUTION_GRAPH_AMDX](#VkPipelineBindPoint) specifies binding as
 an [execution graph pipeline](executiongraphs.html#executiongraphs).
 
 For pipelines that were created with the support of multiple shader groups
@@ -13144,7 +13601,7 @@ including the referenced pipelines
 [](#VUID-vkCmdBindPipelineShaderGroupNV-pipelineBindPoint-02894) VUID-vkCmdBindPipelineShaderGroupNV-pipelineBindPoint-02894
 
 The `pipelineBindPoint` **must** be
-`VK_PIPELINE_BIND_POINT_GRAPHICS`
+[VK_PIPELINE_BIND_POINT_GRAPHICS](#VkPipelineBindPoint)
 
 * 
 [](#VUID-vkCmdBindPipelineShaderGroupNV-groupIndex-02895) VUID-vkCmdBindPipelineShaderGroupNV-groupIndex-02895
@@ -13184,7 +13641,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindPipelineShaderGroupNV-commandBuffer-cmdpool) VUID-vkCmdBindPipelineShaderGroupNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBindPipelineShaderGroupNV-videocoding) VUID-vkCmdBindPipelineShaderGroupNV-videocoding
@@ -13316,8 +13773,8 @@ return the variable is overwritten with the number of structures actually
 written to `pProperties`.
 If `pExecutableCount` is less than the number of pipeline executables
 associated with the pipeline, at most `pExecutableCount` structures will
-be written, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available properties were
+be written, and [VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead of
+[VK_SUCCESS](fundamentals.html#VkResult), to indicate that not all the available properties were
 returned.
 
 Valid Usage
@@ -13361,24 +13818,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkPipelineExecutablePropertiesKHR` structure is defined as:
 
@@ -13405,12 +13862,12 @@ indicating which shader stages (if any) were principally used as inputs
 to compile this pipeline executable.
 
 * 
-`name` is an array of `VK_MAX_DESCRIPTION_SIZE` `char`
+`name` is an array of [VK_MAX_DESCRIPTION_SIZE](extensions.html#VK_MAX_DESCRIPTION_SIZE) `char`
 containing a null-terminated UTF-8 string which is a short human
 readable name for this pipeline executable.
 
 * 
-`description` is an array of `VK_MAX_DESCRIPTION_SIZE` `char`
+`description` is an array of [VK_MAX_DESCRIPTION_SIZE](extensions.html#VK_MAX_DESCRIPTION_SIZE) `char`
 containing a null-terminated UTF-8 string which is a human readable
 description for this pipeline executable.
 
@@ -13435,7 +13892,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineExecutablePropertiesKHR-sType-sType) VUID-VkPipelineExecutablePropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineExecutablePropertiesKHR-pNext-pNext) VUID-VkPipelineExecutablePropertiesKHR-pNext-pNext
@@ -13503,18 +13960,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkPipelinePropertiesIdentifierEXT` structure is defined as:
 
@@ -13533,7 +13990,7 @@ typedef struct VkPipelinePropertiesIdentifierEXT {
 structure.
 
 * 
-`pipelineIdentifier` is an array of `VK_UUID_SIZE` `uint8_t`
+`pipelineIdentifier` is an array of [VK_UUID_SIZE](devsandqueues.html#VK_UUID_SIZE) `uint8_t`
 values into which the pipeline identifier will be written.
 
 Valid Usage (Implicit)
@@ -13541,7 +13998,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelinePropertiesIdentifierEXT-sType-sType) VUID-VkPipelinePropertiesIdentifierEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_PROPERTIES_IDENTIFIER_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_PROPERTIES_IDENTIFIER_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelinePropertiesIdentifierEXT-pNext-pNext) VUID-VkPipelinePropertiesIdentifierEXT-pNext-pNext
@@ -13576,7 +14033,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineInfoKHR-sType-sType) VUID-VkPipelineInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineInfoKHR-pNext-pNext) VUID-VkPipelineInfoKHR-pNext-pNext
@@ -13626,8 +14083,8 @@ return the variable is overwritten with the number of structures actually
 written to `pStatistics`.
 If `pStatisticCount` is less than the number of statistics associated
 with the pipeline executable, at most `pStatisticCount` structures will
-be written, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available statistics were
+be written, and [VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead of
+[VK_SUCCESS](fundamentals.html#VkResult), to indicate that not all the available statistics were
 returned.
 
 Valid Usage
@@ -13648,7 +14105,7 @@ created with `device`
 [](#VUID-vkGetPipelineExecutableStatisticsKHR-pipeline-03274) VUID-vkGetPipelineExecutableStatisticsKHR-pipeline-03274
 
 The `pipeline` member of `pExecutableInfo` **must** have been
-created with `VK_PIPELINE_CREATE_CAPTURE_STATISTICS_BIT_KHR`
+created with [VK_PIPELINE_CREATE_CAPTURE_STATISTICS_BIT_KHR](#VkPipelineCreateFlagBits)
 
 Valid Usage (Implicit)
 
@@ -13677,24 +14134,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkPipelineExecutableInfoKHR` structure is defined as:
 
@@ -13736,7 +14193,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineExecutableInfoKHR-sType-sType) VUID-VkPipelineExecutableInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineExecutableInfoKHR-pNext-pNext) VUID-VkPipelineExecutableInfoKHR-pNext-pNext
@@ -13768,12 +14225,12 @@ typedef struct VkPipelineExecutableStatisticKHR {
 structure.
 
 * 
-`name` is an array of `VK_MAX_DESCRIPTION_SIZE` `char`
+`name` is an array of [VK_MAX_DESCRIPTION_SIZE](extensions.html#VK_MAX_DESCRIPTION_SIZE) `char`
 containing a null-terminated UTF-8 string which is a short human
 readable name for this statistic.
 
 * 
-`description` is an array of `VK_MAX_DESCRIPTION_SIZE` `char`
+`description` is an array of [VK_MAX_DESCRIPTION_SIZE](extensions.html#VK_MAX_DESCRIPTION_SIZE) `char`
 containing a null-terminated UTF-8 string which is a human readable
 description for this statistic.
 
@@ -13789,14 +14246,14 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineExecutableStatisticKHR-sType-sType) VUID-VkPipelineExecutableStatisticKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_STATISTIC_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_STATISTIC_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineExecutableStatisticKHR-pNext-pNext) VUID-VkPipelineExecutableStatisticKHR-pNext-pNext
 
  `pNext` **must** be `NULL`
 
-The `VkPipelineExecutableStatisticFormatKHR` enum is defined as:
+The [VkPipelineExecutableStatisticFormatKHR](#VkPipelineExecutableStatisticFormatKHR) enum is defined as:
 
 // Provided by VK_KHR_pipeline_executable_properties
 typedef enum VkPipelineExecutableStatisticFormatKHR {
@@ -13807,24 +14264,24 @@ typedef enum VkPipelineExecutableStatisticFormatKHR {
 } VkPipelineExecutableStatisticFormatKHR;
 
 * 
-`VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_BOOL32_KHR` specifies that
+[VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_BOOL32_KHR](#VkPipelineExecutableStatisticFormatKHR) specifies that
 the statistic is returned as a 32-bit boolean value which **must** be
-either `VK_TRUE` or `VK_FALSE` and **should** be read from the
+either [VK_TRUE](fundamentals.html#VK_TRUE) or [VK_FALSE](fundamentals.html#VK_FALSE) and **should** be read from the
 `b32` field of `VkPipelineExecutableStatisticValueKHR`.
 
 * 
-`VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_INT64_KHR` specifies that
+[VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_INT64_KHR](#VkPipelineExecutableStatisticFormatKHR) specifies that
 the statistic is returned as a signed 64-bit integer and **should** be read
 from the `i64` field of `VkPipelineExecutableStatisticValueKHR`.
 
 * 
-`VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_UINT64_KHR` specifies that
+[VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_UINT64_KHR](#VkPipelineExecutableStatisticFormatKHR) specifies that
 the statistic is returned as an unsigned 64-bit integer and **should** be
 read from the `u64` field of
 `VkPipelineExecutableStatisticValueKHR`.
 
 * 
-`VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_FLOAT64_KHR` specifies that
+[VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_FLOAT64_KHR](#VkPipelineExecutableStatisticFormatKHR) specifies that
 the statistic is returned as a 64-bit floating-point value and **should**
 be read from the `f64` field of
 `VkPipelineExecutableStatisticValueKHR`.
@@ -13841,23 +14298,23 @@ typedef union VkPipelineExecutableStatisticValueKHR {
 
 * 
 `b32` is the 32-bit boolean value if the
-`VkPipelineExecutableStatisticFormatKHR` is
-`VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_BOOL32_KHR`.
+[VkPipelineExecutableStatisticFormatKHR](#VkPipelineExecutableStatisticFormatKHR) is
+[VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_BOOL32_KHR](#VkPipelineExecutableStatisticFormatKHR).
 
 * 
 `i64` is the signed 64-bit integer value if the
-`VkPipelineExecutableStatisticFormatKHR` is
-`VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_INT64_KHR`.
+[VkPipelineExecutableStatisticFormatKHR](#VkPipelineExecutableStatisticFormatKHR) is
+[VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_INT64_KHR](#VkPipelineExecutableStatisticFormatKHR).
 
 * 
 `u64` is the unsigned 64-bit integer value if the
-`VkPipelineExecutableStatisticFormatKHR` is
-`VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_UINT64_KHR`.
+[VkPipelineExecutableStatisticFormatKHR](#VkPipelineExecutableStatisticFormatKHR) is
+[VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_UINT64_KHR](#VkPipelineExecutableStatisticFormatKHR).
 
 * 
 `f64` is the 64-bit floating-point value if the
-`VkPipelineExecutableStatisticFormatKHR` is
-`VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_FLOAT64_KHR`.
+[VkPipelineExecutableStatisticFormatKHR](#VkPipelineExecutableStatisticFormatKHR) is
+[VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_FLOAT64_KHR](#VkPipelineExecutableStatisticFormatKHR).
 
 Each pipeline executable **may** have one or more text or binary internal
 representations associated with it which are generated as part of the
@@ -13901,7 +14358,7 @@ overwritten with the number of structures actually written to
 If `pInternalRepresentationCount` is less than the number of internal
 representations associated with the pipeline executable, at most
 `pInternalRepresentationCount` structures will be written, and
-`VK_INCOMPLETE` will be returned instead of `VK_SUCCESS`, to
+[VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead of [VK_SUCCESS](fundamentals.html#VkResult), to
 indicate that not all the available representations were returned.
 
 While the details of the internal representations remain
@@ -13928,7 +14385,7 @@ created with `device`
 
 The `pipeline` member of `pExecutableInfo` **must** have been
 created with
-`VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR`
+[VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR](#VkPipelineCreateFlagBits)
 
 Valid Usage (Implicit)
 
@@ -13957,24 +14414,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkPipelineExecutableInternalRepresentationKHR` structure is defined
 as:
@@ -13998,18 +14455,18 @@ typedef struct VkPipelineExecutableInternalRepresentationKHR {
 structure.
 
 * 
-`name` is an array of `VK_MAX_DESCRIPTION_SIZE` `char`
+`name` is an array of [VK_MAX_DESCRIPTION_SIZE](extensions.html#VK_MAX_DESCRIPTION_SIZE) `char`
 containing a null-terminated UTF-8 string which is a short human
 readable name for this internal representation.
 
 * 
-`description` is an array of `VK_MAX_DESCRIPTION_SIZE` `char`
+`description` is an array of [VK_MAX_DESCRIPTION_SIZE](extensions.html#VK_MAX_DESCRIPTION_SIZE) `char`
 containing a null-terminated UTF-8 string which is a human readable
 description for this internal representation.
 
 * 
 `isText` specifies whether the returned data is text or opaque data.
-If `isText` is `VK_TRUE` then the data returned in `pData`
+If `isText` is [VK_TRUE](fundamentals.html#VK_TRUE) then the data returned in `pData`
 is text and is guaranteed to be a null-terminated UTF-8 string.
 
 * 
@@ -14028,11 +14485,11 @@ number of bytes of data actually written to `pData` including any
 trailing null character.
 If `dataSize` is less than the size, in bytes, of the internal
 representation’s data, at most `dataSize` bytes of data will be written
-to `pData`, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available representation was
+to `pData`, and [VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead of
+[VK_SUCCESS](fundamentals.html#VkResult), to indicate that not all the available representation was
 returned.
 
-If `isText` is `VK_TRUE` and `pData` is not `NULL` and
+If `isText` is [VK_TRUE](fundamentals.html#VK_TRUE) and `pData` is not `NULL` and
 `dataSize` is not zero, the last byte written to `pData` will be a
 null character.
 
@@ -14041,7 +14498,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineExecutableInternalRepresentationKHR-sType-sType) VUID-VkPipelineExecutableInternalRepresentationKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_INTERNAL_REPRESENTATION_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_INTERNAL_REPRESENTATION_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineExecutableInternalRepresentationKHR-pNext-pNext) VUID-VkPipelineExecutableInternalRepresentationKHR-pNext-pNext
@@ -14089,33 +14546,33 @@ return the variable is overwritten with the amount of data actually written
 to `pInfo`.
 If `pInfoSize` is less than the maximum size that **can** be retrieved by
 the pipeline cache, then at most `pInfoSize` bytes will be written to
-`pInfo`, and `VK_INCOMPLETE` will be returned, instead of
-`VK_SUCCESS`, to indicate that not all required of the pipeline cache
+`pInfo`, and [VK_INCOMPLETE](fundamentals.html#VkResult) will be returned, instead of
+[VK_SUCCESS](fundamentals.html#VkResult), to indicate that not all required of the pipeline cache
 was returned.
 
 Not all information is available for every shader and implementations may
 not support all kinds of information for any shader.
 When a certain type of information is unavailable, the function returns
-`VK_ERROR_FEATURE_NOT_PRESENT`.
+[VK_ERROR_FEATURE_NOT_PRESENT](fundamentals.html#VkResult).
 
 If information is successfully and fully queried, the function will return
-`VK_SUCCESS`.
+[VK_SUCCESS](fundamentals.html#VkResult).
 
-For `infoType` `VK_SHADER_INFO_TYPE_STATISTICS_AMD`, a
+For `infoType` [VK_SHADER_INFO_TYPE_STATISTICS_AMD](#VkShaderInfoTypeAMD), a
 `VkShaderStatisticsInfoAMD` structure will be written to the buffer
 pointed to by `pInfo`.
 This structure will be populated with statistics regarding the physical
 device resources used by that shader along with other miscellaneous
 information and is described in further detail below.
 
-For `infoType` `VK_SHADER_INFO_TYPE_DISASSEMBLY_AMD`, `pInfo` is
+For `infoType` [VK_SHADER_INFO_TYPE_DISASSEMBLY_AMD](#VkShaderInfoTypeAMD), `pInfo` is
 a pointer to a null-terminated UTF-8 string containing human-readable
 disassembly.
 The exact formatting and contents of the disassembly string are
 vendor-specific.
 
 The formatting and contents of all other types of information, including
-`infoType` `VK_SHADER_INFO_TYPE_BINARY_AMD`, are left to the vendor
+`infoType` [VK_SHADER_INFO_TYPE_BINARY_AMD](#VkShaderInfoTypeAMD), are left to the vendor
 and are not further specified by this extension.
 
 |  | This query does not behave consistently with the behavior described in
@@ -14125,8 +14582,8 @@ reasons.
 
 If the amount of data available is larger than the passed `pInfoSize`,
 the query returns up to the size of the passed buffer, and signals overflow
-with a `VK_INCOMPLETE` success status instead of returning a
-`VK_ERROR_NOT_ENOUGH_SPACE_KHR` error status. |
+with a [VK_INCOMPLETE](fundamentals.html#VkResult) success status instead of returning a
+[VK_ERROR_NOT_ENOUGH_SPACE_KHR](fundamentals.html#VkResult) error status. |
 
 Valid Usage (Implicit)
 
@@ -14170,24 +14627,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_FEATURE_NOT_PRESENT`
+[VK_ERROR_FEATURE_NOT_PRESENT](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Possible values of [vkGetShaderInfoAMD](#vkGetShaderInfoAMD)::`infoType`, specifying the
 information being queried from a shader, are:
@@ -14200,15 +14657,15 @@ typedef enum VkShaderInfoTypeAMD {
 } VkShaderInfoTypeAMD;
 
 * 
-`VK_SHADER_INFO_TYPE_STATISTICS_AMD` specifies that device resources
+[VK_SHADER_INFO_TYPE_STATISTICS_AMD](#VkShaderInfoTypeAMD) specifies that device resources
 used by a shader will be queried.
 
 * 
-`VK_SHADER_INFO_TYPE_BINARY_AMD` specifies that
+[VK_SHADER_INFO_TYPE_BINARY_AMD](#VkShaderInfoTypeAMD) specifies that
 implementation-specific information will be queried.
 
 * 
-`VK_SHADER_INFO_TYPE_DISASSEMBLY_AMD` specifies that human-readable
+[VK_SHADER_INFO_TYPE_DISASSEMBLY_AMD](#VkShaderInfoTypeAMD) specifies that human-readable
 disassembly of a shader.
 
 The `VkShaderStatisticsInfoAMD` structure is defined as:
@@ -14327,7 +14784,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineCompilerControlCreateInfoAMD-sType-sType) VUID-VkPipelineCompilerControlCreateInfoAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineCompilerControlCreateInfoAMD-compilerControlFlags-zerobitmask) VUID-VkPipelineCompilerControlCreateInfoAMD-compilerControlFlags-zerobitmask
@@ -14393,14 +14850,14 @@ An implementation **should** write pipeline creation feedback to
 `pPipelineCreationFeedback` and **may** write pipeline stage creation
 feedback to `pPipelineStageCreationFeedbacks`.
 An implementation **must** set or clear the
-`VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT` in
+[VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT](#VkPipelineCreationFeedbackFlagBitsEXT) in
 [VkPipelineCreationFeedback](#VkPipelineCreationFeedback)::`flags` for
 `pPipelineCreationFeedback` and every element of
 `pPipelineStageCreationFeedbacks`.
 
 |  | One common scenario for an implementation to skip per-stage feedback is when
 | --- | --- |
-`VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT` is
+[VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT](#VkPipelineCreationFeedbackFlagBitsEXT) is
 set in `pPipelineCreationFeedback`. |
 
 When chained to
@@ -14422,7 +14879,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineCreationFeedbackCreateInfo-sType-sType) VUID-VkPipelineCreationFeedbackCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineCreationFeedbackCreateInfo-pPipelineCreationFeedback-parameter) VUID-VkPipelineCreationFeedbackCreateInfo-pPipelineCreationFeedback-parameter
@@ -14455,7 +14912,7 @@ stage.
 `duration` is the duration spent creating a pipeline or pipeline
 stage in nanoseconds.
 
-If the `VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT` is not set in
+If the [VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT](#VkPipelineCreationFeedbackFlagBitsEXT) is not set in
 `flags`, an implementation **must** not set any other bits in `flags`,
 and the values of all other `VkPipelineCreationFeedback` data members
 are **undefined**.
@@ -14481,17 +14938,17 @@ typedef enum VkPipelineCreationFeedbackFlagBits {
 typedef VkPipelineCreationFeedbackFlagBits VkPipelineCreationFeedbackFlagBitsEXT;
 
 * 
-`VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT` specifies that the
+[VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT](#VkPipelineCreationFeedbackFlagBitsEXT) specifies that the
 feedback information is valid.
 
 * 
-`VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT`
+[VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT](#VkPipelineCreationFeedbackFlagBitsEXT)
 specifies that a readily usable pipeline or pipeline stage was found in
 the `pipelineCache` specified by the application in the pipeline
 creation command.
 
 An implementation **should** set the
-`VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT` bit
+[VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT](#VkPipelineCreationFeedbackFlagBitsEXT) bit
 if it was able to avoid the large majority of pipeline or pipeline stage
 creation work by using the `pipelineCache` parameter of
 [vkCreateGraphicsPipelines](#vkCreateGraphicsPipelines),
@@ -14512,14 +14969,14 @@ If an implementation uses an internal cache, it is discouraged from setting
 this bit as the feedback would be unactionable. |
 
 * 
-`VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT`
+[VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT](#VkPipelineCreationFeedbackFlagBitsEXT)
 specifies that the base pipeline specified by the
 `basePipelineHandle` or `basePipelineIndex` member of the
 `Vk*PipelineCreateInfo` structure was used to accelerate the
 creation of the pipeline.
 
 An implementation **should** set the
-`VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT` bit if it
+[VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT](#VkPipelineCreationFeedbackFlagBitsEXT) bit if it
 was able to avoid a significant amount of work by using the base pipeline.
 
 |  | While “significant amount of work” is subjective, implementations are

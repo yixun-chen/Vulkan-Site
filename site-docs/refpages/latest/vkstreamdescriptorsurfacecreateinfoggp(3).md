@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkStreamDescriptorSurfaceCreateInfoGGP-sType-sType) VUID-VkStreamDescriptorSurfaceCreateInfoGGP-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP`
+ `sType` **must** be [VK_STRUCTURE_TYPE_STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP](VkStructureType.html)
 
 * 
 [](#VUID-VkStreamDescriptorSurfaceCreateInfoGGP-pNext-pNext) VUID-VkStreamDescriptorSurfaceCreateInfoGGP-pNext-pNext

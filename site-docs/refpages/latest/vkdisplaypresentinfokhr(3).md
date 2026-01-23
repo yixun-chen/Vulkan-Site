@@ -58,7 +58,7 @@ visible region, pixels mapping only to those portions of the rectangle
 will be discarded.
 
 * 
-`persistent`: If this is `VK_TRUE`, the display engine will
+`persistent`: If this is [VK_TRUE](VK_TRUE.html), the display engine will
 enable buffered mode on displays that support it.
 This allows the display engine to stop sending content to the display
 until a new image is presented.
@@ -92,15 +92,15 @@ presented uses
 If the `persistentContent` member of the
 `VkDisplayPropertiesKHR` structure returned by
 `vkGetPhysicalDeviceDisplayPropertiesKHR` for the display the
-present operation targets is `VK_FALSE`, then `persistent` **must**
-be `VK_FALSE`
+present operation targets is [VK_FALSE](VK_FALSE.html), then `persistent` **must**
+be [VK_FALSE](VK_FALSE.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDisplayPresentInfoKHR-sType-sType) VUID-VkDisplayPresentInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR](VkStructureType.html)
 
 [VK_KHR_display_swapchain](VK_KHR_display_swapchain.html), `VkBool32`, [VkRect2D](VkRect2D.html), [VkStructureType](VkStructureType.html)
 

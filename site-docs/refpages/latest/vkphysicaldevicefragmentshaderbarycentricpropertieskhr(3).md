@@ -32,13 +32,13 @@ typedef struct VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR {
 * 
  When the
 [provoking vertex mode](../../../../spec/latest/chapters/vertexpostproc.html#vertexpostproc-flatshading) is
-`VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT`, and the primitive order
+[VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT](VkProvokingVertexModeEXT.html), and the primitive order
 is odd in a triangle strip, the ordering of vertices is defined in
 [last vertex table](../../../../spec/latest/chapters/primsrast.html#primsrast-barycentric-order-table-last-vertex).
 `triStripVertexOrderIndependentOfProvokingVertex` equal to
-`VK_TRUE` indicates that the implementation ignores this and uses
+[VK_TRUE](VK_TRUE.html) indicates that the implementation ignores this and uses
 the vertex order defined by
-`VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT` instead.
+[VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT](VkProvokingVertexModeEXT.html) instead.
 
 If the `VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html) structure passed to
@@ -50,7 +50,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR-sType-sType) VUID-VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_PROPERTIES_KHR](VkStructureType.html)
 
 [VK_KHR_fragment_shader_barycentric](VK_KHR_fragment_shader_barycentric.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

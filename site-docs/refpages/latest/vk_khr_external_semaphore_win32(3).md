@@ -110,20 +110,20 @@ Extending [VkSubmitInfo](VkSubmitInfo.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR`
+[VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR`
+[VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR`
+[VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR`
+[VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR](VkStructureType.html)
 
 1) Do applications need to call `CloseHandle`() on the values returned
 from [vkGetSemaphoreWin32HandleKHR](vkGetSemaphoreWin32HandleKHR.html) when `handleType` is
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR`?
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR](VkExternalSemaphoreHandleTypeFlagBits.html)?
 
 **RESOLVED**: Yes.
 A successful get call transfers ownership of the handle to the application.

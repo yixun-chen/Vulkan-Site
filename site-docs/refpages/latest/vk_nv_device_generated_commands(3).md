@@ -292,51 +292,51 @@ Extending [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html):
 * 
 Extending [VkAccessFlagBits](VkAccessFlagBits.html):
 
-`VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_NV`
+[VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_NV](VkAccessFlagBits.html)
 
 * 
-`VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_NV`
+[VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_NV](VkAccessFlagBits.html)
 
 Extending [VkObjectType](VkObjectType.html):
 
 * 
-`VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NV`
+[VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NV](VkObjectType.html)
 
 Extending [VkPipelineCreateFlagBits](VkPipelineCreateFlagBits.html):
 
 * 
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV`
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](VkPipelineCreateFlagBits.html)
 
 Extending [VkPipelineStageFlagBits](VkPipelineStageFlagBits.html):
 
 * 
-`VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV`
+[VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV](VkPipelineStageFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_NV`
+[VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_NV`
+[VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_SHADER_GROUPS_CREATE_INFO_NV`
+[VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_SHADER_GROUPS_CREATE_INFO_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_GRAPHICS_SHADER_GROUP_CREATE_INFO_NV`
+[VK_STRUCTURE_TYPE_GRAPHICS_SHADER_GROUP_CREATE_INFO_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NV`
+[VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_NV`
+[VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_FEATURES_NV`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_FEATURES_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_NV`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_NV](VkStructureType.html)
 
 1) How to name this extension ?
 
@@ -420,7 +420,7 @@ the ability to change any [VkDynamicState](VkDynamicState.html).
 8) How do we allow reusing already “generated” `indirectCommands`?
 
 Expose a `preprocessBuffer` to reuse implementation-dependencyFlags data.
-Set `isPreprocessed` to `VK_TRUE` in
+Set `isPreprocessed` to [VK_TRUE](VK_TRUE.html) in
 [vkCmdExecuteGeneratedCommandsNV](vkCmdExecuteGeneratedCommandsNV.html).
 
 9) Under which conditions is [vkCmdExecuteGeneratedCommandsNV](vkCmdExecuteGeneratedCommandsNV.html) legal?
@@ -450,7 +450,7 @@ The inputs are “referenced”, and **must** not be modified after the call to
 11) Which buffer usage flags are required for the buffers referenced by
 `VkGeneratedCommandsInfoNV` ?
 
-Reuse existing `VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT`
+Reuse existing [VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](VkBufferUsageFlagBits.html)
 
 * 
 [VkGeneratedCommandsInfoNV](VkGeneratedCommandsInfoNV.html)::`preprocessBuffer`
@@ -469,51 +469,51 @@ happen?
 
 [vkCmdPreprocessGeneratedCommandsNV](vkCmdPreprocessGeneratedCommandsNV.html) is treated as if it occurs in a
 separate logical pipeline from either graphics or compute, and that pipeline
-only includes `VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT`, a new stage
-`VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV`, and
-`VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT`.
+only includes [VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT](VkPipelineStageFlagBits.html), a new stage
+[VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV](VkPipelineStageFlagBits.html), and
+[VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT](VkPipelineStageFlagBits.html).
 This new stage has two corresponding new access types,
-`VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_NV` and
-`VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_NV`, used to synchronize reading
+[VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_NV](VkAccessFlagBits.html) and
+[VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_NV](VkAccessFlagBits.html), used to synchronize reading
 the buffer inputs and writing the preprocess memory output.
 
 The generated output written in the preprocess buffer memory by
 [vkCmdExecuteGeneratedCommandsNV](vkCmdExecuteGeneratedCommandsNV.html) is considered to be consumed by the
-`VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT` pipeline stage.
+[VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT](VkPipelineStageFlagBits.html) pipeline stage.
 
 Thus, to synchronize from writing the input buffers to preprocessing via
 [vkCmdPreprocessGeneratedCommandsNV](vkCmdPreprocessGeneratedCommandsNV.html), use:
 
 * 
-`dstStageMask` = `VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV`
+`dstStageMask` = [VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV](VkPipelineStageFlagBits.html)
 
 * 
-`dstAccessMask` = `VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_NV`
+`dstAccessMask` = [VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_NV](VkAccessFlagBits.html)
 
 To synchronize from [vkCmdPreprocessGeneratedCommandsNV](vkCmdPreprocessGeneratedCommandsNV.html) to executing
 the generated commands by [vkCmdExecuteGeneratedCommandsNV](vkCmdExecuteGeneratedCommandsNV.html), use:
 
 * 
-`srcStageMask` = `VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV`
+`srcStageMask` = [VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV](VkPipelineStageFlagBits.html)
 
 * 
-`srcAccessMask` = `VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_NV`
+`srcAccessMask` = [VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_NV](VkAccessFlagBits.html)
 
 * 
-`dstStageMask` = `VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT`
+`dstStageMask` = [VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT](VkPipelineStageFlagBits.html)
 
 * 
-`dstAccessMask` = `VK_ACCESS_INDIRECT_COMMAND_READ_BIT`
+`dstAccessMask` = [VK_ACCESS_INDIRECT_COMMAND_READ_BIT](VkAccessFlagBits.html)
 
 When [vkCmdExecuteGeneratedCommandsNV](vkCmdExecuteGeneratedCommandsNV.html) is used with a
 `isPreprocessed` of `VK_FALSE`, the generated commands are implicitly
 preprocessed, therefore one only needs to synchronize the inputs via:
 
 * 
-`dstStageMask` = `VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT`
+`dstStageMask` = [VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT](VkPipelineStageFlagBits.html)
 
 * 
-`dstAccessMask` = `VK_ACCESS_INDIRECT_COMMAND_READ_BIT`
+`dstAccessMask` = [VK_ACCESS_INDIRECT_COMMAND_READ_BIT](VkAccessFlagBits.html)
 
 13) What if most token data is “static”, but we frequently want to render
 a subsection?
@@ -553,7 +553,7 @@ The [VkIndirectStateFlagBitsNV](VkIndirectStateFlagBitsNV.html) were introduced
     How to solve this?
 
 Added “pIndexTypeValues” to map custom `uint32_t` values to corresponding
-`VkIndexType`.
+[VkIndexType](VkIndexType.html).
 
 16) Do we need more shader group state overrides?
 

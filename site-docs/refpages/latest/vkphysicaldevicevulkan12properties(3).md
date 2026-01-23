@@ -91,12 +91,12 @@ structure.
 device.
 
 * 
-`driverName` is an array of `VK_MAX_DRIVER_NAME_SIZE` `char`
+`driverName` is an array of [VK_MAX_DRIVER_NAME_SIZE](VK_MAX_DRIVER_NAME_SIZE.html) `char`
 containing a null-terminated UTF-8 string which is the name of the
 driver.
 
 * 
-`driverInfo` is an array of `VK_MAX_DRIVER_INFO_SIZE` `char`
+`driverInfo` is an array of [VK_MAX_DRIVER_INFO_SIZE](VK_MAX_DRIVER_INFO_SIZE.html) `char`
 containing a null-terminated UTF-8 string with additional information
 about the driver.
 
@@ -242,7 +242,7 @@ be used for 64-bit floating-point types.
 `maxUpdateAfterBindDescriptorsInAllPools` is the maximum number of
 descriptors (summed over all descriptor types) that **can** be created
 across all pools that are created with the
-`VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT` bit set.
+[VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](VkDescriptorPoolCreateFlagBits.html) bit set.
 Pool creation **may** fail when this limit is exceeded, or when the space
 this limit represents is unable to satisfy a pool creation due to
 fragmentation.
@@ -252,7 +252,7 @@ fragmentation.
 `shaderUniformBufferArrayNonUniformIndexingNative` is a boolean
 value indicating whether uniform buffer descriptors natively support
 non-uniform indexing.
-If this is `VK_FALSE`, then a single dynamic instance of an
+If this is [VK_FALSE](VK_FALSE.html), then a single dynamic instance of an
 instruction that non-uniformly indexes an array of uniform buffers **may**
 execute multiple times in order to access all the descriptors.
 
@@ -261,7 +261,7 @@ execute multiple times in order to access all the descriptors.
 `shaderSampledImageArrayNonUniformIndexingNative` is a boolean value
 indicating whether sampler and image descriptors natively support
 non-uniform indexing.
-If this is `VK_FALSE`, then a single dynamic instance of an
+If this is [VK_FALSE](VK_FALSE.html), then a single dynamic instance of an
 instruction that non-uniformly indexes an array of samplers or images
 **may** execute multiple times in order to access all the descriptors.
 
@@ -270,7 +270,7 @@ instruction that non-uniformly indexes an array of samplers or images
 `shaderStorageBufferArrayNonUniformIndexingNative` is a boolean
 value indicating whether storage buffer descriptors natively support
 non-uniform indexing.
-If this is `VK_FALSE`, then a single dynamic instance of an
+If this is [VK_FALSE](VK_FALSE.html), then a single dynamic instance of an
 instruction that non-uniformly indexes an array of storage buffers **may**
 execute multiple times in order to access all the descriptors.
 
@@ -279,7 +279,7 @@ execute multiple times in order to access all the descriptors.
 `shaderStorageImageArrayNonUniformIndexingNative` is a boolean value
 indicating whether storage image descriptors natively support
 non-uniform indexing.
-If this is `VK_FALSE`, then a single dynamic instance of an
+If this is [VK_FALSE](VK_FALSE.html), then a single dynamic instance of an
 instruction that non-uniformly indexes an array of storage images **may**
 execute multiple times in order to access all the descriptors.
 
@@ -288,7 +288,7 @@ execute multiple times in order to access all the descriptors.
 `shaderInputAttachmentArrayNonUniformIndexingNative` is a boolean
 value indicating whether input attachment descriptors natively support
 non-uniform indexing.
-If this is `VK_FALSE`, then a single dynamic instance of an
+If this is [VK_FALSE](VK_FALSE.html), then a single dynamic instance of an
 instruction that non-uniformly indexes an array of input attachments
 **may** execute multiple times in order to access all the descriptors.
 
@@ -301,9 +301,9 @@ be enabled on a device simultaneously with
 `descriptorBindingStorageBufferUpdateAfterBind`,
 `descriptorBindingUniformTexelBufferUpdateAfterBind`, and/or
 `descriptorBindingStorageTexelBufferUpdateAfterBind`.
-If this is `VK_FALSE`, then either `robustBufferAccess` **must** be
+If this is [VK_FALSE](VK_FALSE.html), then either `robustBufferAccess` **must** be
 disabled or all of these update-after-bind features **must** be disabled.
-Similarly, if this property is `VK_FALSE`, robustness **must** not be
+Similarly, if this property is [VK_FALSE](VK_FALSE.html), robustness **must** not be
 enabled through the [VkPipelineRobustnessCreateInfo](VkPipelineRobustnessCreateInfo.html) mechanism.
 
 * 
@@ -319,7 +319,7 @@ See [Derivative Image    Operations](../../../../spec/latest/chapters/textures.h
 `maxPerStageDescriptorUpdateAfterBindSamplers` is similar to
 `maxPerStageDescriptorSamplers` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -327,7 +327,7 @@ set.
 `maxPerStageDescriptorUpdateAfterBindUniformBuffers` is similar to
 `maxPerStageDescriptorUniformBuffers` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -335,7 +335,7 @@ set.
 `maxPerStageDescriptorUpdateAfterBindStorageBuffers` is similar to
 `maxPerStageDescriptorStorageBuffers` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -343,7 +343,7 @@ set.
 `maxPerStageDescriptorUpdateAfterBindSampledImages` is similar to
 `maxPerStageDescriptorSampledImages` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -351,7 +351,7 @@ set.
 `maxPerStageDescriptorUpdateAfterBindStorageImages` is similar to
 `maxPerStageDescriptorStorageImages` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -359,7 +359,7 @@ set.
 `maxPerStageDescriptorUpdateAfterBindInputAttachments` is similar to
 `maxPerStageDescriptorInputAttachments` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -367,7 +367,7 @@ set.
 `maxPerStageUpdateAfterBindResources` is similar to
 `maxPerStageResources` but counts descriptors from descriptor sets
 created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -375,7 +375,7 @@ set.
 `maxDescriptorSetUpdateAfterBindSamplers` is similar to
 `maxDescriptorSetSamplers` but counts descriptors from descriptor
 sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -383,7 +383,7 @@ set.
 `maxDescriptorSetUpdateAfterBindUniformBuffers` is similar to
 `maxDescriptorSetUniformBuffers` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -391,21 +391,21 @@ set.
 `maxDescriptorSetUpdateAfterBindUniformBuffersDynamic` is similar to
 `maxDescriptorSetUniformBuffersDynamic` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 While an application **can** allocate dynamic uniform buffer descriptors
 from a pool created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html),
 bindings for these descriptors **must** not be present in any descriptor
 set layout that includes bindings created with
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`.
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html).
 
 * 
 
 `maxDescriptorSetUpdateAfterBindStorageBuffers` is similar to
 `maxDescriptorSetStorageBuffers` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -413,21 +413,21 @@ set.
 `maxDescriptorSetUpdateAfterBindStorageBuffersDynamic` is similar to
 `maxDescriptorSetStorageBuffersDynamic` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 While an application **can** allocate dynamic storage buffer descriptors
 from a pool created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html),
 bindings for these descriptors **must** not be present in any descriptor
 set layout that includes bindings created with
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`.
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html).
 
 * 
 
 `maxDescriptorSetUpdateAfterBindSampledImages` is similar to
 `maxDescriptorSetSampledImages` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -435,7 +435,7 @@ set.
 `maxDescriptorSetUpdateAfterBindStorageImages` is similar to
 `maxDescriptorSetStorageImages` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -443,7 +443,7 @@ set.
 `maxDescriptorSetUpdateAfterBindInputAttachments` is similar to
 `maxDescriptorSetInputAttachments` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -451,7 +451,7 @@ set.
 `supportedDepthResolveModes` is a bitmask of
 [VkResolveModeFlagBits](VkResolveModeFlagBits.html) indicating the set of supported depth
 resolve modes.
-`VK_RESOLVE_MODE_SAMPLE_ZERO_BIT` **must** be included in the set but
+[VK_RESOLVE_MODE_SAMPLE_ZERO_BIT](VkResolveModeFlagBits.html) **must** be included in the set but
 implementations **may** support additional modes.
 
 * 
@@ -459,23 +459,23 @@ implementations **may** support additional modes.
 `supportedStencilResolveModes` is a bitmask of
 [VkResolveModeFlagBits](VkResolveModeFlagBits.html) indicating the set of supported stencil
 resolve modes.
-`VK_RESOLVE_MODE_SAMPLE_ZERO_BIT` **must** be included in the set but
+[VK_RESOLVE_MODE_SAMPLE_ZERO_BIT](VkResolveModeFlagBits.html) **must** be included in the set but
 implementations **may** support additional modes.
-`VK_RESOLVE_MODE_AVERAGE_BIT` **must** not be included in the set.
+[VK_RESOLVE_MODE_AVERAGE_BIT](VkResolveModeFlagBits.html) **must** not be included in the set.
 
 * 
 
-`independentResolveNone` is `VK_TRUE` if the implementation
+`independentResolveNone` is [VK_TRUE](VK_TRUE.html) if the implementation
 supports setting the depth and stencil resolve modes to different values
-when one of those modes is `VK_RESOLVE_MODE_NONE`.
+when one of those modes is [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html).
 Otherwise the implementation only supports setting both modes to the
 same value.
 
 * 
  `independentResolve`
-is `VK_TRUE` if the implementation supports all combinations of the
+is [VK_TRUE](VK_TRUE.html) if the implementation supports all combinations of the
 supported depth and stencil resolve modes, including setting either
-depth or stencil resolve mode to `VK_RESOLVE_MODE_NONE`.
+depth or stencil resolve mode to [VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html).
 An implementation that supports `independentResolve` **must** also
 support `independentResolveNone`.
 
@@ -523,7 +523,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVulkan12Properties-sType-sType) VUID-VkPhysicalDeviceVulkan12Properties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_PROPERTIES](VkStructureType.html)
 
 [VK_VERSION_1_2](VK_VERSION_1_2.html), `VkBool32`, [VkConformanceVersion](VkConformanceVersion.html), [VkDriverId](VkDriverId.html), [VkResolveModeFlags](VkResolveModeFlags.html), [VkSampleCountFlags](VkSampleCountFlags.html), [VkShaderFloatControlsIndependence](VkShaderFloatControlsIndependence.html), [VkStructureType](VkStructureType.html)
 

@@ -121,7 +121,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceGroupSubmitInfo-sType-sType) VUID-VkDeviceGroupSubmitInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_GROUP_SUBMIT_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_GROUP_SUBMIT_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceGroupSubmitInfo-pWaitSemaphoreDeviceIndices-parameter) VUID-VkDeviceGroupSubmitInfo-pWaitSemaphoreDeviceIndices-parameter

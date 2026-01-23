@@ -44,14 +44,14 @@ If the `pNext` chain of [VkSamplerCreateInfo](VkSamplerCreateInfo.html) includes
 specifies which cubic weights are used.
 
 If that structure is not present, `cubicWeights` is considered to be
-`VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM`.
+[VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM](VkCubicFilterWeightsQCOM.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSamplerCubicWeightsCreateInfoQCOM-sType-sType) VUID-VkSamplerCubicWeightsCreateInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_CUBIC_WEIGHTS_CREATE_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_CUBIC_WEIGHTS_CREATE_INFO_QCOM](VkStructureType.html)
 
 * 
 [](#VUID-VkSamplerCubicWeightsCreateInfoQCOM-cubicWeights-parameter) VUID-VkSamplerCubicWeightsCreateInfoQCOM-cubicWeights-parameter

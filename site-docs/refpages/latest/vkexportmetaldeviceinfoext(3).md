@@ -53,7 +53,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMetalDeviceInfoEXT-sType-sType) VUID-VkExportMetalDeviceInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_METAL_DEVICE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_METAL_DEVICE_INFO_EXT](VkStructureType.html)
 
 [VK_EXT_metal_objects](VK_EXT_metal_objects.html), [VkStructureType](VkStructureType.html)
 

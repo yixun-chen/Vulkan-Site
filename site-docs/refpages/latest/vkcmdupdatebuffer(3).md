@@ -71,7 +71,7 @@ command is called.
 `vkCmdUpdateBuffer` is only allowed outside of a render pass.
 This command is treated as a “transfer” operation for the purposes of
 synchronization barriers.
-The `VK_BUFFER_USAGE_TRANSFER_DST_BIT` **must** be specified in `usage`
+The [VK_BUFFER_USAGE_TRANSFER_DST_BIT](VkBufferUsageFlagBits.html) **must** be specified in `usage`
 of [VkBufferCreateInfo](VkBufferCreateInfo.html) in order for the buffer to be compatible with
 `vkCmdUpdateBuffer`.
 
@@ -92,7 +92,7 @@ Valid Usage
 [](#VUID-vkCmdUpdateBuffer-dstBuffer-00034) VUID-vkCmdUpdateBuffer-dstBuffer-00034
 
 `dstBuffer` **must** have been created with the
-`VK_BUFFER_USAGE_TRANSFER_DST_BIT` usage flag set
+[VK_BUFFER_USAGE_TRANSFER_DST_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdUpdateBuffer-dstBuffer-00035) VUID-vkCmdUpdateBuffer-dstBuffer-00035
@@ -154,7 +154,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdUpdateBuffer-commandBuffer-cmdpool) VUID-vkCmdUpdateBuffer-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, or `VK_QUEUE_TRANSFER_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html), or [VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdUpdateBuffer-renderpass) VUID-vkCmdUpdateBuffer-renderpass

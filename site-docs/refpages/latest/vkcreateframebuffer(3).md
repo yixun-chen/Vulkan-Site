@@ -52,13 +52,13 @@ Valid Usage
 [](#VUID-vkCreateFramebuffer-device-10002) VUID-vkCreateFramebuffer-device-10002
 
 `device` **must** support at least one queue family with the
-`VK_QUEUE_GRAPHICS_BIT` capability
+[VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) capability
 
 * 
 [](#VUID-vkCreateFramebuffer-pCreateInfo-02777) VUID-vkCreateFramebuffer-pCreateInfo-02777
 
 If `pCreateInfo->flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, and `attachmentCount` is
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), and `attachmentCount` is
 not `0`, each element of `pCreateInfo->pAttachments` **must** have been
 created on `device`
 
@@ -94,21 +94,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkAllocationCallbacks](VkAllocationCallbacks.html), [VkDevice](VkDevice.html), [VkFramebuffer](VkFramebuffer.html), [VkFramebufferCreateInfo](VkFramebufferCreateInfo.html)
 

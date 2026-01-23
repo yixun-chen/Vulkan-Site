@@ -51,7 +51,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageSubresource2-sType-sType) VUID-VkImageSubresource2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_SUBRESOURCE_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_SUBRESOURCE_2](VkStructureType.html)
 
 * 
 [](#VUID-VkImageSubresource2-pNext-pNext) VUID-VkImageSubresource2-pNext-pNext

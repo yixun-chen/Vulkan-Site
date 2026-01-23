@@ -49,7 +49,7 @@ Valid Usage
 [](#VUID-vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR-pQualityLevelInfo-08257) VUID-vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR-pQualityLevelInfo-08257
 
 If `pQualityLevelInfo->pVideoProfile→videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain of `pQualityLevelProperties` **must** include a
 [VkVideoEncodeH264QualityLevelPropertiesKHR](VkVideoEncodeH264QualityLevelPropertiesKHR.html) structure
 
@@ -57,7 +57,7 @@ chain of `pQualityLevelProperties` **must** include a
 [](#VUID-vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR-pQualityLevelInfo-08258) VUID-vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR-pQualityLevelInfo-08258
 
 If `pQualityLevelInfo->pVideoProfile→videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain of `pQualityLevelProperties` **must** include a
 [VkVideoEncodeH265QualityLevelPropertiesKHR](VkVideoEncodeH265QualityLevelPropertiesKHR.html) structure
 
@@ -65,7 +65,7 @@ chain of `pQualityLevelProperties` **must** include a
 [](#VUID-vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR-pQualityLevelInfo-10305) VUID-vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR-pQualityLevelInfo-10305
 
 If `pQualityLevelInfo->pVideoProfile→videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain of `pQualityLevelProperties` **must** include a
 [VkVideoEncodeAV1QualityLevelPropertiesKHR](VkVideoEncodeAV1QualityLevelPropertiesKHR.html) structure
 
@@ -91,33 +91,33 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 * 
-`VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR](VkResult.html)
 
 * 
-`VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR](VkResult.html)
 
 * 
-`VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR](VkResult.html)
 
 * 
-`VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR](VkResult.html)
 
 [VK_KHR_video_encode_queue](VK_KHR_video_encode_queue.html), [VkPhysicalDevice](VkPhysicalDevice.html), [VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR](VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.html), [VkVideoEncodeQualityLevelPropertiesKHR](VkVideoEncodeQualityLevelPropertiesKHR.html)
 

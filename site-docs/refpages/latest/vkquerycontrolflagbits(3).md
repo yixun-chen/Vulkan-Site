@@ -27,7 +27,7 @@ typedef enum VkQueryControlFlagBits {
 } VkQueryControlFlagBits;
 
 * 
-`VK_QUERY_CONTROL_PRECISE_BIT` specifies the precision of
+[VK_QUERY_CONTROL_PRECISE_BIT](#) specifies the precision of
 [occlusion queries](../../../../spec/latest/chapters/queries.html#queries-occlusion).
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkQueryControlFlags](VkQueryControlFlags.html)

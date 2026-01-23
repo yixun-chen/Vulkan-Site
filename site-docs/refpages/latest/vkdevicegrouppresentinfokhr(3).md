@@ -54,21 +54,21 @@ each element of [VkPresentInfoKHR](VkPresentInfoKHR.html)::`pSwapchains`.
 specifying the device group present mode that will be used for this
 present.
 
-If `mode` is `VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR`, then each
+If `mode` is [VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR](VkDeviceGroupPresentModeFlagBitsKHR.html), then each
 element of `pDeviceMasks` selects which instance of the swapchain image
 is presented.
 Each element of `pDeviceMasks` **must** have exactly one bit set, and the
 corresponding physical device **must** have a presentation engine as reported
 by [VkDeviceGroupPresentCapabilitiesKHR](VkDeviceGroupPresentCapabilitiesKHR.html).
 
-If `mode` is `VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR`, then
+If `mode` is [VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR](VkDeviceGroupPresentModeFlagBitsKHR.html), then
 each element of `pDeviceMasks` selects which instance of the swapchain
 image is presented.
 Each element of `pDeviceMasks` **must** have exactly one bit set, and some
 physical device in the logical device **must** include that bit in its
 [VkDeviceGroupPresentCapabilitiesKHR](VkDeviceGroupPresentCapabilitiesKHR.html)::`presentMask`.
 
-If `mode` is `VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR`, then each
+If `mode` is [VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR](VkDeviceGroupPresentModeFlagBitsKHR.html), then each
 element of `pDeviceMasks` selects which instances of the swapchain image
 are component-wise summed and the sum of those images is presented.
 If the sum in any component is outside the representable range, the value of
@@ -78,7 +78,7 @@ are set in one of the elements of
 [VkDeviceGroupPresentCapabilitiesKHR](VkDeviceGroupPresentCapabilitiesKHR.html)::`presentMask`.
 
 If `mode` is
-`VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR`, then each
+[VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR](VkDeviceGroupPresentModeFlagBitsKHR.html), then each
 element of `pDeviceMasks` selects which instance(s) of the swapchain
 images are presented.
 For each bit set in each element of `pDeviceMasks`, the corresponding
@@ -88,7 +88,7 @@ physical device **must** have a presentation engine as reported by
 If `VkDeviceGroupPresentInfoKHR` is not provided or `swapchainCount`
 is zero then the masks are considered to be `1`.
 If `VkDeviceGroupPresentInfoKHR` is not provided, `mode` is
-considered to be `VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR`.
+considered to be [VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR](VkDeviceGroupPresentModeFlagBitsKHR.html).
 
 Valid Usage
 
@@ -101,7 +101,7 @@ Valid Usage
 * 
 [](#VUID-VkDeviceGroupPresentInfoKHR-mode-01298) VUID-VkDeviceGroupPresentInfoKHR-mode-01298
 
-If `mode` is `VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR`, then
+If `mode` is [VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR](VkDeviceGroupPresentModeFlagBitsKHR.html), then
 each element of `pDeviceMasks` **must** have exactly one bit set, and
 the corresponding element of
 [VkDeviceGroupPresentCapabilitiesKHR](VkDeviceGroupPresentCapabilitiesKHR.html)::`presentMask` **must** be
@@ -110,7 +110,7 @@ non-zero
 * 
 [](#VUID-VkDeviceGroupPresentInfoKHR-mode-01299) VUID-VkDeviceGroupPresentInfoKHR-mode-01299
 
-If `mode` is `VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR`, then
+If `mode` is [VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR](VkDeviceGroupPresentModeFlagBitsKHR.html), then
 each element of `pDeviceMasks` **must** have exactly one bit set, and
 some physical device in the logical device **must** include that bit in its
 [VkDeviceGroupPresentCapabilitiesKHR](VkDeviceGroupPresentCapabilitiesKHR.html)::`presentMask`
@@ -118,7 +118,7 @@ some physical device in the logical device **must** include that bit in its
 * 
 [](#VUID-VkDeviceGroupPresentInfoKHR-mode-01300) VUID-VkDeviceGroupPresentInfoKHR-mode-01300
 
-If `mode` is `VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR`, then
+If `mode` is [VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR](VkDeviceGroupPresentModeFlagBitsKHR.html), then
 each element of `pDeviceMasks` **must** have a value for which all set
 bits are set in one of the elements of
 [VkDeviceGroupPresentCapabilitiesKHR](VkDeviceGroupPresentCapabilitiesKHR.html)::`presentMask`
@@ -127,7 +127,7 @@ bits are set in one of the elements of
 [](#VUID-VkDeviceGroupPresentInfoKHR-mode-01301) VUID-VkDeviceGroupPresentInfoKHR-mode-01301
 
 If `mode` is
-`VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR`, then for
+[VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR](VkDeviceGroupPresentModeFlagBitsKHR.html), then for
 each bit set in each element of `pDeviceMasks`, the corresponding
 element of [VkDeviceGroupPresentCapabilitiesKHR](VkDeviceGroupPresentCapabilitiesKHR.html)::`presentMask`
 **must** be non-zero
@@ -150,7 +150,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceGroupPresentInfoKHR-sType-sType) VUID-VkDeviceGroupPresentInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceGroupPresentInfoKHR-pDeviceMasks-parameter) VUID-VkDeviceGroupPresentInfoKHR-pDeviceMasks-parameter

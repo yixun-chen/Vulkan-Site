@@ -92,7 +92,7 @@ Extending [VkPresentInfoKHR](VkPresentInfoKHR.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP`
+[VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP](VkStructureType.html)
 
 * 
 Revision 1, 2018-11-26 (Jean-Francois Roy)

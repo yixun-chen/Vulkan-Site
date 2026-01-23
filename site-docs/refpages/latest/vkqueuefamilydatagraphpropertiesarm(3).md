@@ -24,7 +24,7 @@ The `VkQueueFamilyDataGraphPropertiesARM` structure is defined as:
 // Provided by VK_ARM_data_graph
 typedef struct VkQueueFamilyDataGraphPropertiesARM {
     VkStructureType                                 sType;
-    const void*                                     pNext;
+    void*                                           pNext;
     VkPhysicalDeviceDataGraphProcessingEngineARM    engine;
     VkPhysicalDeviceDataGraphOperationSupportARM    operation;
 } VkQueueFamilyDataGraphPropertiesARM;
@@ -50,22 +50,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueueFamilyDataGraphPropertiesARM-sType-sType) VUID-VkQueueFamilyDataGraphPropertiesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_PROPERTIES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_PROPERTIES_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkQueueFamilyDataGraphPropertiesARM-pNext-pNext) VUID-VkQueueFamilyDataGraphPropertiesARM-pNext-pNext
 
  `pNext` **must** be `NULL`
-
-* 
-[](#VUID-VkQueueFamilyDataGraphPropertiesARM-engine-parameter) VUID-VkQueueFamilyDataGraphPropertiesARM-engine-parameter
-
- `engine` **must** be a valid [VkPhysicalDeviceDataGraphProcessingEngineARM](VkPhysicalDeviceDataGraphProcessingEngineARM.html) structure
-
-* 
-[](#VUID-VkQueueFamilyDataGraphPropertiesARM-operation-parameter) VUID-VkQueueFamilyDataGraphPropertiesARM-operation-parameter
-
- `operation` **must** be a valid [VkPhysicalDeviceDataGraphOperationSupportARM](VkPhysicalDeviceDataGraphOperationSupportARM.html) structure
 
 [VK_ARM_data_graph](VK_ARM_data_graph.html), [VkPhysicalDeviceDataGraphOperationSupportARM](VkPhysicalDeviceDataGraphOperationSupportARM.html), [VkPhysicalDeviceDataGraphProcessingEngineARM](VkPhysicalDeviceDataGraphProcessingEngineARM.html), [VkStructureType](VkStructureType.html), [vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM](vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM.html)
 

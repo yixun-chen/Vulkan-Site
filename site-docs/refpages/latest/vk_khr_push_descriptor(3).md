@@ -117,19 +117,19 @@ Extending [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html):
 * 
 Extending [VkDescriptorSetLayoutCreateFlagBits](VkDescriptorSetLayoutCreateFlagBits.html):
 
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR](VkDescriptorSetLayoutCreateFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES_KHR](VkStructureType.html)
 
 If [Vulkan Version 1.1](../../../../spec/latest/appendices/versions.html#versions-1.1) or [VK_KHR_descriptor_update_template](VK_KHR_descriptor_update_template.html) is supported:
 
 * 
 Extending [VkDescriptorUpdateTemplateType](VkDescriptorUpdateTemplateType.html):
 
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS_KHR`
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS_KHR](VkDescriptorUpdateTemplateType.html)
 
 Functionality in this extension is included in core Vulkan 1.4 with the KHR
 suffix omitted.

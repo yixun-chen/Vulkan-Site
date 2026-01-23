@@ -29,11 +29,11 @@ typedef enum VkPipelineCacheHeaderVersion {
 } VkPipelineCacheHeaderVersion;
 
 * 
-`VK_PIPELINE_CACHE_HEADER_VERSION_ONE` specifies version one of the
+[VK_PIPELINE_CACHE_HEADER_VERSION_ONE](#) specifies version one of the
 pipeline cache, described by [VkPipelineCacheHeaderVersionOne](VkPipelineCacheHeaderVersionOne.html).
 
 * 
-`VK_PIPELINE_CACHE_HEADER_VERSION_DATA_GRAPH_QCOM` specifies a
+[VK_PIPELINE_CACHE_HEADER_VERSION_DATA_GRAPH_QCOM](#) specifies a
 pipeline cache for offline built data graph models, described by
 [VkPipelineCacheHeaderVersionDataGraphQCOM](VkPipelineCacheHeaderVersionDataGraphQCOM.html).
 

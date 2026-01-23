@@ -83,7 +83,7 @@ allowed in the `memoryTypeBits` member of the
 [VkMemoryRequirements](VkMemoryRequirements.html) structure returned from a call to
 [vkGetAccelerationStructureMemoryRequirementsNV](vkGetAccelerationStructureMemoryRequirementsNV.html) with
 `accelerationStructure` and `type` of
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV`
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV](VkAccelerationStructureMemoryRequirementsTypeNV.html)
 
 * 
 [](#VUID-VkBindAccelerationStructureMemoryInfoNV-memoryOffset-03623) VUID-VkBindAccelerationStructureMemoryInfoNV-memoryOffset-03623
@@ -92,7 +92,7 @@ allowed in the `memoryTypeBits` member of the
 member of the [VkMemoryRequirements](VkMemoryRequirements.html) structure returned from a call
 to [vkGetAccelerationStructureMemoryRequirementsNV](vkGetAccelerationStructureMemoryRequirementsNV.html) with
 `accelerationStructure` and `type` of
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV`
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV](VkAccelerationStructureMemoryRequirementsTypeNV.html)
 
 * 
 [](#VUID-VkBindAccelerationStructureMemoryInfoNV-size-03624) VUID-VkBindAccelerationStructureMemoryInfoNV-size-03624
@@ -101,7 +101,7 @@ The `size` member of the `VkMemoryRequirements` structure
 returned from a call to
 [vkGetAccelerationStructureMemoryRequirementsNV](vkGetAccelerationStructureMemoryRequirementsNV.html) with
 `accelerationStructure` and `type` of
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV` **must**
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV](VkAccelerationStructureMemoryRequirementsTypeNV.html) **must**
 be less than or equal to the size of `memory` minus
 `memoryOffset`
 
@@ -110,7 +110,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindAccelerationStructureMemoryInfoNV-sType-sType) VUID-VkBindAccelerationStructureMemoryInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_ACCELERATION_STRUCTURE_MEMORY_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_ACCELERATION_STRUCTURE_MEMORY_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkBindAccelerationStructureMemoryInfoNV-pNext-pNext) VUID-VkBindAccelerationStructureMemoryInfoNV-pNext-pNext

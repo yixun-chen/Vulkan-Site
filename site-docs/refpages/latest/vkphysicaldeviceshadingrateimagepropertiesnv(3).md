@@ -69,7 +69,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShadingRateImagePropertiesNV-sType-sType) VUID-VkPhysicalDeviceShadingRateImagePropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV](VkStructureType.html)
 
 [VK_NV_shading_rate_image](VK_NV_shading_rate_image.html), [VkExtent2D](VkExtent2D.html), [VkStructureType](VkStructureType.html)
 

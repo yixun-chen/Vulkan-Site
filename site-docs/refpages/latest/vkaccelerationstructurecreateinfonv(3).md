@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureCreateInfoNV-sType-sType) VUID-VkAccelerationStructureCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkAccelerationStructureCreateInfoNV-pNext-pNext) VUID-VkAccelerationStructureCreateInfoNV-pNext-pNext

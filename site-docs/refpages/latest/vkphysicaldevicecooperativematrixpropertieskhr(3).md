@@ -42,11 +42,11 @@ structure.
 [VkShaderStageFlagBits](VkShaderStageFlagBits.html) describing the shader stages that
 cooperative matrix instructions are supported in.
 `cooperativeMatrixSupportedStages` will have the
-`VK_SHADER_STAGE_COMPUTE_BIT` bit set if any of the physical
-device’s queues support `VK_QUEUE_COMPUTE_BIT`.
+[VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html) bit set if any of the physical
+device’s queues support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html).
 
 `cooperativeMatrixSupportedStages` **must** not have any bits other than
-`VK_SHADER_STAGE_COMPUTE_BIT` set.
+[VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html) set.
 
 If the `VkPhysicalDeviceCooperativeMatrixPropertiesKHR` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html) structure passed to
@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceCooperativeMatrixPropertiesKHR-sType-sType) VUID-VkPhysicalDeviceCooperativeMatrixPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_KHR](VkStructureType.html)
 
 [VK_KHR_cooperative_matrix](VK_KHR_cooperative_matrix.html), [VkShaderStageFlags](VkShaderStageFlags.html), [VkStructureType](VkStructureType.html)
 

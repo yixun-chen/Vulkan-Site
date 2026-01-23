@@ -21,9 +21,9 @@ PointSize - Size of a point primitive
 
 Decorating a variable with the `PointSize` built-in decoration will make
 that variable contain the size of point primitives
-or the final rasterization of polygons if [polygon mode](../../../../spec/latest/chapters/primsrast.html#primsrast-polygonmode) is `VK_POLYGON_MODE_POINT` when
+or the final rasterization of polygons if [polygon mode](../../../../spec/latest/chapters/primsrast.html#primsrast-polygonmode) is [VK_POLYGON_MODE_POINT](VkPolygonMode.html) when
 `VkPhysicalDeviceMaintenance5Properties`::`polygonModePointSize` is
-set to `VK_TRUE`
+set to [VK_TRUE](VK_TRUE.html)
 .
 The value written to the variable decorated with `PointSize` by the last
 [pre-rasterization shader stage](../../../../spec/latest/chapters/pipelines.html#pipelines-graphics-subsets-pre-rasterization) in the pipeline is used as the framebuffer-space size of points

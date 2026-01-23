@@ -51,7 +51,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassCreationFeedbackCreateInfoEXT-sType-sType) VUID-VkRenderPassCreationFeedbackCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_CREATION_FEEDBACK_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_CREATION_FEEDBACK_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderPassCreationFeedbackCreateInfoEXT-pRenderPassFeedback-parameter) VUID-VkRenderPassCreationFeedbackCreateInfoEXT-pRenderPassFeedback-parameter

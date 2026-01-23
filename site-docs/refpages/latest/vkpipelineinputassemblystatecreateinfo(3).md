@@ -67,12 +67,12 @@ topology, as described below.
     either 0xFFFFFFFF when the `indexType` parameter of
 Vulkan 1.4 or
 `vkCmdBindIndexBuffer2` or
-    `vkCmdBindIndexBuffer` is equal to `VK_INDEX_TYPE_UINT32`;
-    0xFF when `indexType` is equal to `VK_INDEX_TYPE_UINT8`;
-    or 0xFFFF when `indexType` is equal to `VK_INDEX_TYPE_UINT16`.
+    `vkCmdBindIndexBuffer` is equal to [VK_INDEX_TYPE_UINT32](VkIndexType.html);
+    0xFF when `indexType` is equal to [VK_INDEX_TYPE_UINT8](VkIndexType.html);
+    or 0xFFFF when `indexType` is equal to [VK_INDEX_TYPE_UINT16](VkIndexType.html).
     Primitive restart is not allowed for “list” topologies, unless one of
     the features [    `primitiveTopologyPatchListRestart`](../../../../spec/latest/chapters/features.html#features-primitiveTopologyPatchListRestart) (for
-    `VK_PRIMITIVE_TOPOLOGY_PATCH_LIST`) or
+    [VK_PRIMITIVE_TOPOLOGY_PATCH_LIST](VkPrimitiveTopology.html)) or
     [    `primitiveTopologyListRestart`](../../../../spec/latest/chapters/features.html#features-primitiveTopologyListRestart) (for all other list topologies) is
     enabled.
 
@@ -90,52 +90,52 @@ Valid Usage
 
 If
 the [    `primitiveTopologyListRestart`](../../../../spec/latest/chapters/features.html#features-primitiveTopologyListRestart) feature is not enabled, and
-`topology` is `VK_PRIMITIVE_TOPOLOGY_POINT_LIST`,
-`VK_PRIMITIVE_TOPOLOGY_LINE_LIST`,
-`VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST`,
-`VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY`, or
-`VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY`,
-`primitiveRestartEnable` **must** be `VK_FALSE`
+`topology` is [VK_PRIMITIVE_TOPOLOGY_POINT_LIST](VkPrimitiveTopology.html),
+[VK_PRIMITIVE_TOPOLOGY_LINE_LIST](VkPrimitiveTopology.html),
+[VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST](VkPrimitiveTopology.html),
+[VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY](VkPrimitiveTopology.html), or
+[VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY](VkPrimitiveTopology.html),
+`primitiveRestartEnable` **must** be [VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-VkPipelineInputAssemblyStateCreateInfo-topology-06253) VUID-VkPipelineInputAssemblyStateCreateInfo-topology-06253
 
 If
 the [    `primitiveTopologyPatchListRestart`](../../../../spec/latest/chapters/features.html#features-primitiveTopologyPatchListRestart) feature is not enabled, and
-`topology` is `VK_PRIMITIVE_TOPOLOGY_PATCH_LIST`,
-`primitiveRestartEnable` **must** be `VK_FALSE`
+`topology` is [VK_PRIMITIVE_TOPOLOGY_PATCH_LIST](VkPrimitiveTopology.html),
+`primitiveRestartEnable` **must** be [VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-VkPipelineInputAssemblyStateCreateInfo-topology-00429) VUID-VkPipelineInputAssemblyStateCreateInfo-topology-00429
 
 If the [`geometryShader`](../../../../spec/latest/chapters/features.html#features-geometryShader) feature is not
 enabled, `topology` **must** not be any of
-`VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY`,
-`VK_PRIMITIVE_TOPOLOGY_LINE_STRIP_WITH_ADJACENCY`,
-`VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY` or
-`VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY`
+[VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY](VkPrimitiveTopology.html),
+[VK_PRIMITIVE_TOPOLOGY_LINE_STRIP_WITH_ADJACENCY](VkPrimitiveTopology.html),
+[VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY](VkPrimitiveTopology.html) or
+[VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY](VkPrimitiveTopology.html)
 
 * 
 [](#VUID-VkPipelineInputAssemblyStateCreateInfo-topology-00430) VUID-VkPipelineInputAssemblyStateCreateInfo-topology-00430
 
 If the [`tessellationShader`](../../../../spec/latest/chapters/features.html#features-tessellationShader) feature
 is not enabled, `topology` **must** not be
-`VK_PRIMITIVE_TOPOLOGY_PATCH_LIST`
+[VK_PRIMITIVE_TOPOLOGY_PATCH_LIST](VkPrimitiveTopology.html)
 
 * 
 [](#VUID-VkPipelineInputAssemblyStateCreateInfo-triangleFans-04452) VUID-VkPipelineInputAssemblyStateCreateInfo-triangleFans-04452
 
 If the `[VK_KHR_portability_subset](VK_KHR_portability_subset.html)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](VkPhysicalDevicePortabilitySubsetFeaturesKHR.html)::`triangleFans`
-is `VK_FALSE`, `topology` **must** not be
-`VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN`
+is [VK_FALSE](VK_FALSE.html), `topology` **must** not be
+[VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN](VkPrimitiveTopology.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineInputAssemblyStateCreateInfo-sType-sType) VUID-VkPipelineInputAssemblyStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineInputAssemblyStateCreateInfo-pNext-pNext) VUID-VkPipelineInputAssemblyStateCreateInfo-pNext-pNext

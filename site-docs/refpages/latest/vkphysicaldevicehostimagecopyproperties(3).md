@@ -65,14 +65,14 @@ which supported image layouts for use with host copy operations to
 images are returned.
 
 * 
-`optimalTilingLayoutUUID` is an array of `VK_UUID_SIZE`
+`optimalTilingLayoutUUID` is an array of [VK_UUID_SIZE](VK_UUID_SIZE.html)
 `uint8_t` values representing a universally unique identifier for the
 implementation’s swizzling layout of images created with
-`VK_IMAGE_TILING_OPTIMAL`.
+[VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html).
 
 * 
 `identicalMemoryTypeRequirements` indicates that specifying the
-`VK_IMAGE_USAGE_HOST_TRANSFER_BIT` flag in
+[VK_IMAGE_USAGE_HOST_TRANSFER_BIT](VkImageUsageFlagBits.html) flag in
 [VkImageCreateInfo](VkImageCreateInfo.html)::`usage` does not affect the memory type
 requirements of the image.
 
@@ -86,17 +86,17 @@ are supported in [VkCopyMemoryToImageInfo](VkCopyMemoryToImageInfo.html)::`dstIm
 [VkCopyImageToImageInfo](VkCopyImageToImageInfo.html)::`dstImageLayout` is returned in
 `copyDstLayoutCount`.
 Otherwise, `copyDstLayoutCount` **must** be set by the application to the
-number of elements in the `pCopyDstLayouts` array, and on return the
-variable is overwritten with the number of values actually written to
+number of elements in the `pCopyDstLayouts` array, and on return is
+overwritten with the number of values actually written to
 `pCopyDstLayouts`.
 If the value of `copyDstLayoutCount` is less than the number of image
 layouts that are supported, at most `copyDstLayoutCount` values will be
 written to `pCopyDstLayouts`.
-The implementation **must** include the `VK_IMAGE_LAYOUT_GENERAL` image
+The implementation **must** include the [VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html) image
 layout in `pCopyDstLayouts`.
 If the [`unifiedImageLayouts`](../../../../spec/latest/chapters/features.html#features-unifiedImageLayouts) feature
 is supported, the implementation **must** include all the image layouts that
-are interchangeable with `VK_IMAGE_LAYOUT_GENERAL` in
+are interchangeable with [VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html) in
 `pCopyDstLayouts`.
 
 If `pCopySrcLayouts` is `NULL`, then the number of image layouts that
@@ -104,21 +104,21 @@ are supported in [VkCopyImageToMemoryInfo](VkCopyImageToMemoryInfo.html)::`srcIm
 [VkCopyImageToImageInfo](VkCopyImageToImageInfo.html)::`srcImageLayout` is returned in
 `copySrcLayoutCount`.
 Otherwise, `copySrcLayoutCount` **must** be set by the application to the
-number of elements in the `pCopySrcLayouts` array, and on return the
-variable is overwritten with the number of values actually written to
+number of elements in the `pCopySrcLayouts` array, and on return is
+overwritten with the number of values actually written to
 `pCopySrcLayouts`.
 If the value of `copySrcLayoutCount` is less than the number of image
 layouts that are supported, at most `copySrcLayoutCount` values will be
 written to `pCopySrcLayouts`.
-The implementation **must** include the `VK_IMAGE_LAYOUT_GENERAL` image
+The implementation **must** include the [VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html) image
 layout in `pCopySrcLayouts`.
 If the [`unifiedImageLayouts`](../../../../spec/latest/chapters/features.html#features-unifiedImageLayouts) feature
 is supported, the implementation **must** include all the image layouts that
-are interchangeable with `VK_IMAGE_LAYOUT_GENERAL` in
+are interchangeable with [VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html) in
 `pCopySrcLayouts`.
 
 The `optimalTilingLayoutUUID` value can be used to ensure compatible
-data layouts when using the `VK_HOST_IMAGE_COPY_MEMCPY_BIT` flag in
+data layouts when using the [VK_HOST_IMAGE_COPY_MEMCPY_BIT](VkHostImageCopyFlagBits.html) flag in
 [vkCopyMemoryToImage](vkCopyMemoryToImage.html) and [vkCopyImageToMemory](vkCopyImageToMemory.html).
 
 Valid Usage (Implicit)
@@ -126,7 +126,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceHostImageCopyProperties-sType-sType) VUID-VkPhysicalDeviceHostImageCopyProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES](VkStructureType.html)
 
 * 
 [](#VUID-VkPhysicalDeviceHostImageCopyProperties-pCopySrcLayouts-parameter) VUID-VkPhysicalDeviceHostImageCopyProperties-pCopySrcLayouts-parameter

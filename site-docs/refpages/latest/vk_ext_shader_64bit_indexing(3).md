@@ -103,17 +103,17 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkPipelineCreateFlagBits2](VkPipelineCreateFlagBits2.html):
 
-`VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT`
+[VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT](VkPipelineCreateFlagBits2.html)
 
 Extending [VkShaderCreateFlagBitsEXT](VkShaderCreateFlagBitsEXT.html):
 
 * 
-`VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT`
+[VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT](VkShaderCreateFlagBitsEXT.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2025-05-02 (Jeff Bolz)

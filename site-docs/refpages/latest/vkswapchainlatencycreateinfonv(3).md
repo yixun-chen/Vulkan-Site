@@ -40,15 +40,15 @@ typedef struct VkSwapchainLatencyCreateInfoNV {
 structure.
 
 * 
-`latencyModeEnable` is `VK_TRUE` if the created swapchain will
-utilize low latency mode, `VK_FALSE` otherwise.
+`latencyModeEnable` is [VK_TRUE](VK_TRUE.html) if the created swapchain will
+utilize low latency mode, [VK_FALSE](VK_FALSE.html) otherwise.
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSwapchainLatencyCreateInfoNV-sType-sType) VUID-VkSwapchainLatencyCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_LATENCY_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_LATENCY_CREATE_INFO_NV](VkStructureType.html)
 
 [VK_NV_low_latency2](VK_NV_low_latency2.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

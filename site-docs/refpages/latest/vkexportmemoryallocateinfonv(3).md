@@ -48,7 +48,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMemoryAllocateInfoNV-sType-sType) VUID-VkExportMemoryAllocateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkExportMemoryAllocateInfoNV-handleTypes-parameter) VUID-VkExportMemoryAllocateInfoNV-handleTypes-parameter

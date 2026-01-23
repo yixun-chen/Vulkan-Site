@@ -17,7 +17,7 @@
 
 VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR - Length of an array of supported queue priorities
 
-`VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR` is the length of the array
+[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR](#) is the length of the array
 of DPB slot or AV1 reference names passed in
 [VkVideoDecodeAV1PictureInfoKHR](VkVideoDecodeAV1PictureInfoKHR.html)::`referenceNameSlotIndices`.
 

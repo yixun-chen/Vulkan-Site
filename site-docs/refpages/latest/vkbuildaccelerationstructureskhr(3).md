@@ -99,7 +99,7 @@ If the `srcAccelerationStructure` member of any element of
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-04630) VUID-vkBuildAccelerationStructuresKHR-pInfos-04630
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, its
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), its
 `srcAccelerationStructure` member **must** not be [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
 * 
@@ -128,27 +128,27 @@ The `dstAccelerationStructure` member of any element of `pInfos`
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03699) VUID-vkBuildAccelerationStructuresKHR-pInfos-03699
 
 For each element of `pInfos`, if its `type` member is
-`VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR`, its
+[VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR](VkAccelerationStructureTypeKHR.html), its
 `dstAccelerationStructure` member **must** have been created with a
 value of [VkAccelerationStructureCreateInfoKHR](VkAccelerationStructureCreateInfoKHR.html)::`type` equal to
-either `VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR` or
-`VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR`
+either [VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR](VkAccelerationStructureTypeKHR.html) or
+[VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](VkAccelerationStructureTypeKHR.html)
 
 * 
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03700) VUID-vkBuildAccelerationStructuresKHR-pInfos-03700
 
 For each element of `pInfos`, if its `type` member is
-`VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR`, its
+[VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR](VkAccelerationStructureTypeKHR.html), its
 `dstAccelerationStructure` member **must** have been created with a
 value of [VkAccelerationStructureCreateInfoKHR](VkAccelerationStructureCreateInfoKHR.html)::`type` equal to
-either `VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR` or
-`VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR`
+either [VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR](VkAccelerationStructureTypeKHR.html) or
+[VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](VkAccelerationStructureTypeKHR.html)
 
 * 
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03663) VUID-vkBuildAccelerationStructuresKHR-pInfos-03663
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`,
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html),
 [inactive primitives](../../../../spec/latest/chapters/accelstructures.html#acceleration-structure-inactive-prims) in its
 `srcAccelerationStructure` member **must** not be made active
 
@@ -156,7 +156,7 @@ For each element of `pInfos`, if its `mode` member is
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03664) VUID-vkBuildAccelerationStructuresKHR-pInfos-03664
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, active primitives
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), active primitives
 in its `srcAccelerationStructure` member **must** not be made
 [inactive](../../../../spec/latest/chapters/accelstructures.html#acceleration-structure-inactive-prims)
 
@@ -166,7 +166,7 @@ in its `srcAccelerationStructure` member **must** not be made
 The `dstAccelerationStructure` member of any element of `pInfos`
 **must** not be referenced by the `geometry.instances.data` member of
 any element of `pGeometries` or `ppGeometries` with a
-`geometryType` of `VK_GEOMETRY_TYPE_INSTANCES_KHR` in any other
+`geometryType` of [VK_GEOMETRY_TYPE_INSTANCES_KHR](VkGeometryTypeKHR.html) in any other
 element of `pInfos`
 
 * 
@@ -176,7 +176,7 @@ The range of memory backing the `dstAccelerationStructure` member of
 any element of `pInfos` that is accessed by this command **must** not
 overlap the memory backing the `srcAccelerationStructure` member of
 any other element of `pInfos` with a `mode` equal to
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, which is accessed
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), which is accessed
 by this command
 
 * 
@@ -211,7 +211,7 @@ The range of memory backing the `scratchData` member of any element
 of `pInfos` that is accessed by this command **must** not overlap the
 memory backing the `srcAccelerationStructure` member of any element
 of `pInfos` with a `mode` equal to
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR` (including the
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html) (including the
 same element), which is accessed by this command
 
 * 
@@ -222,17 +222,17 @@ any element of `pInfos` that is accessed by this command **must** not
 overlap the memory backing any acceleration structure referenced by the
 `geometry.instances.data` member of any element of `pGeometries`
 or `ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_INSTANCES_KHR` in any other element of
+[VK_GEOMETRY_TYPE_INSTANCES_KHR](VkGeometryTypeKHR.html) in any other element of
 `pInfos`, which is accessed by this command
 
 * 
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03667) VUID-vkBuildAccelerationStructuresKHR-pInfos-03667
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, its
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), its
 `srcAccelerationStructure` member **must** have previously been
 constructed with
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_KHR` set in
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_KHR](VkBuildAccelerationStructureFlagBitsKHR.html) set in
 [VkAccelerationStructureBuildGeometryInfoKHR](VkAccelerationStructureBuildGeometryInfoKHR.html)::`flags` in the
 build
 
@@ -240,7 +240,7 @@ build
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03668) VUID-vkBuildAccelerationStructuresKHR-pInfos-03668
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, its
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), its
 `srcAccelerationStructure` and `dstAccelerationStructure`
 members **must** either be the same [VkAccelerationStructureKHR](VkAccelerationStructureKHR.html), or
 not have any [memory aliasing](../../../../spec/latest/chapters/resources.html#resources-memory-aliasing)
@@ -249,7 +249,7 @@ not have any [memory aliasing](../../../../spec/latest/chapters/resources.html#r
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03758) VUID-vkBuildAccelerationStructuresKHR-pInfos-03758
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, its
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), its
 `geometryCount` member **must** have the same value which was specified
 when `srcAccelerationStructure` was last built
 
@@ -257,7 +257,7 @@ when `srcAccelerationStructure` was last built
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03759) VUID-vkBuildAccelerationStructuresKHR-pInfos-03759
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, its `flags`
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), its `flags`
 member **must** have the same value which was specified when
 `srcAccelerationStructure` was last built
 
@@ -265,7 +265,7 @@ member **must** have the same value which was specified when
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03760) VUID-vkBuildAccelerationStructuresKHR-pInfos-03760
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, its `type`
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), its `type`
 member **must** have the same value which was specified when
 `srcAccelerationStructure` was last built
 
@@ -273,7 +273,7 @@ member **must** have the same value which was specified when
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03761) VUID-vkBuildAccelerationStructuresKHR-pInfos-03761
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, then for each
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), then for each
 `VkAccelerationStructureGeometryKHR` structure referred to by its
 `pGeometries` or `ppGeometries` members, its `geometryType`
 member **must** have the same value which was specified when
@@ -283,7 +283,7 @@ member **must** have the same value which was specified when
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03762) VUID-vkBuildAccelerationStructuresKHR-pInfos-03762
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, then for each
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), then for each
 `VkAccelerationStructureGeometryKHR` structure referred to by its
 `pGeometries` or `ppGeometries` members, its `flags` member
 **must** have the same value which was specified when
@@ -293,10 +293,10 @@ For each element of `pInfos`, if its `mode` member is
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03763) VUID-vkBuildAccelerationStructuresKHR-pInfos-03763
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, then for each
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), then for each
 `VkAccelerationStructureGeometryKHR` structure referred to by its
 `pGeometries` or `ppGeometries` members, if `geometryType`
-is `VK_GEOMETRY_TYPE_TRIANGLES_KHR`, its
+is [VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), its
 `geometry.triangles.vertexFormat` member **must** have the same value
 which was specified when `srcAccelerationStructure` was last built
 
@@ -304,10 +304,10 @@ which was specified when `srcAccelerationStructure` was last built
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03764) VUID-vkBuildAccelerationStructuresKHR-pInfos-03764
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, then for each
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), then for each
 `VkAccelerationStructureGeometryKHR` structure referred to by its
 `pGeometries` or `ppGeometries` members, if `geometryType`
-is `VK_GEOMETRY_TYPE_TRIANGLES_KHR`, its
+is [VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), its
 `geometry.triangles.maxVertex` member **must** have the same value
 which was specified when `srcAccelerationStructure` was last built
 
@@ -315,10 +315,10 @@ which was specified when `srcAccelerationStructure` was last built
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03765) VUID-vkBuildAccelerationStructuresKHR-pInfos-03765
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, then for each
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), then for each
 `VkAccelerationStructureGeometryKHR` structure referred to by its
 `pGeometries` or `ppGeometries` members, if `geometryType`
-is `VK_GEOMETRY_TYPE_TRIANGLES_KHR`, its
+is [VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), its
 `geometry.triangles.indexType` member **must** have the same value
 which was specified when `srcAccelerationStructure` was last built
 
@@ -326,10 +326,10 @@ which was specified when `srcAccelerationStructure` was last built
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03766) VUID-vkBuildAccelerationStructuresKHR-pInfos-03766
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, then for each
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), then for each
 `VkAccelerationStructureGeometryKHR` structure referred to by its
 `pGeometries` or `ppGeometries` members, if `geometryType`
-is `VK_GEOMETRY_TYPE_TRIANGLES_KHR`, if its
+is [VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), if its
 `geometry.triangles.transformData` address was `NULL` when
 `srcAccelerationStructure` was last built, then it **must** be `NULL`
 
@@ -337,10 +337,10 @@ is `VK_GEOMETRY_TYPE_TRIANGLES_KHR`, if its
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03767) VUID-vkBuildAccelerationStructuresKHR-pInfos-03767
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, then for each
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), then for each
 `VkAccelerationStructureGeometryKHR` structure referred to by its
 `pGeometries` or `ppGeometries` members, if `geometryType`
-is `VK_GEOMETRY_TYPE_TRIANGLES_KHR`, if its
+is [VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), if its
 `geometry.triangles.transformData` address was not `NULL` when
 `srcAccelerationStructure` was last built, then it **must** not be
 `NULL`
@@ -349,10 +349,10 @@ is `VK_GEOMETRY_TYPE_TRIANGLES_KHR`, if its
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-10898) VUID-vkBuildAccelerationStructuresKHR-pInfos-10898
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, then for each
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), then for each
 `VkAccelerationStructureGeometryKHR` structure referred to by its
 `pGeometries` or `ppGeometries` members, if `geometryType`
-is `VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`, the
+is [VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](VkGeometryTypeKHR.html), the
 `numTriangles` member of the
 `VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX`
 structure in the `pNext` chain **must** have the same value which was
@@ -362,10 +362,10 @@ specified when `srcAccelerationStructure` was last built
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-10899) VUID-vkBuildAccelerationStructuresKHR-pInfos-10899
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, then for each
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), then for each
 `VkAccelerationStructureGeometryKHR` structure referred to by its
 `pGeometries` or `ppGeometries` members, if `geometryType`
-is `VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`, the
+is [VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](VkGeometryTypeKHR.html), the
 `numVertices` member of the
 `VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX`
 structure in the `pNext` chain **must** have the same value which was
@@ -375,10 +375,10 @@ specified when `srcAccelerationStructure` was last built
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-10900) VUID-vkBuildAccelerationStructuresKHR-pInfos-10900
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, then for each
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), then for each
 `VkAccelerationStructureGeometryKHR` structure referred to by its
 `pGeometries` or `ppGeometries` members, if `geometryType`
-is `VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`, the
+is [VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](VkGeometryTypeKHR.html), the
 `maxPrimitiveIndex` member of the
 `VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX`
 structure in the `pNext` chain **must** have the same value which was
@@ -388,10 +388,10 @@ specified when `srcAccelerationStructure` was last built
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-10901) VUID-vkBuildAccelerationStructuresKHR-pInfos-10901
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, then for each
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), then for each
 `VkAccelerationStructureGeometryKHR` structure referred to by its
 `pGeometries` or `ppGeometries` members, if `geometryType`
-is `VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`, the
+is [VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](VkGeometryTypeKHR.html), the
 `maxGeometryIndex` member of the
 `VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX`
 structure in the `pNext` chain **must** have the same value which was
@@ -401,10 +401,10 @@ specified when `srcAccelerationStructure` was last built
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-10902) VUID-vkBuildAccelerationStructuresKHR-pInfos-10902
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, then for each
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), then for each
 `VkAccelerationStructureGeometryKHR` structure referred to by its
 `pGeometries` or `ppGeometries` members, if `geometryType`
-is `VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`, the
+is [VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](VkGeometryTypeKHR.html), the
 `format` member of the
 `VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX`
 structure in the `pNext` chain **must** have the same value which was
@@ -414,10 +414,10 @@ specified when `srcAccelerationStructure` was last built
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-10903) VUID-vkBuildAccelerationStructuresKHR-pInfos-10903
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, then for each
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), then for each
 `VkAccelerationStructureGeometryKHR` structure referred to by its
 `pGeometries` or `ppGeometries` members, if `geometryType`
-is `VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`, the
+is [VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](VkGeometryTypeKHR.html), the
 `dataSize` member of the
 `VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX`
 structure in the `pNext` chain **must** have the same value which was
@@ -427,11 +427,11 @@ specified when `srcAccelerationStructure` was last built
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03768) VUID-vkBuildAccelerationStructuresKHR-pInfos-03768
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, then for each
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), then for each
 `VkAccelerationStructureGeometryKHR` structure referred to by its
 `pGeometries` or `ppGeometries` members, if `geometryType`
-is `VK_GEOMETRY_TYPE_TRIANGLES_KHR`, and
-`geometry.triangles.indexType` is not `VK_INDEX_TYPE_NONE_KHR`,
+is [VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), and
+`geometry.triangles.indexType` is not [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html),
 then the value of each index referenced **must** be the same as the
 corresponding index value when `srcAccelerationStructure` was last
 built
@@ -440,7 +440,7 @@ built
 [](#VUID-vkBuildAccelerationStructuresKHR-primitiveCount-03769) VUID-vkBuildAccelerationStructuresKHR-primitiveCount-03769
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, then for each
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), then for each
 `VkAccelerationStructureGeometryKHR` structure referred to by its
 `pGeometries` or `ppGeometries` members, the
 `primitiveCount` member of its corresponding
@@ -453,7 +453,7 @@ last built
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_INSTANCES_KHR`, the corresponding
+[VK_GEOMETRY_TYPE_INSTANCES_KHR](VkGeometryTypeKHR.html), the corresponding
 `ppBuildRangeInfos`[i][j].`primitiveCount` **must** be less than or equal to
 [VkPhysicalDeviceAccelerationStructurePropertiesKHR](VkPhysicalDeviceAccelerationStructurePropertiesKHR.html)::`maxInstanceCount`
 
@@ -474,7 +474,7 @@ the memory size required by the build operation, as returned by
 
 * 
 the result of querying the corresponding
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR`, if
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR](VkQueryType.html), if
 updating a compacted acceleration structure
 
 [](#VUID-vkBuildAccelerationStructuresKHR-ppBuildRangeInfos-03676) VUID-vkBuildAccelerationStructuresKHR-ppBuildRangeInfos-03676
@@ -488,7 +488,7 @@ an array of `pInfos`[i].`geometryCount`
 
 For each element of `pInfos`[i] whose `pGeometries` or
 `ppGeometries` members have a `geometryType` of
-`VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`,
+[VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](VkGeometryTypeKHR.html),
 `ppBuildRangeInfos`[i] **must** be `NULL`
 
 * 
@@ -508,7 +508,7 @@ device memory
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03723) VUID-vkBuildAccelerationStructuresKHR-pInfos-03723
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR` the `buffer`
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html) the `buffer`
 used to create its `srcAccelerationStructure` member **must** be bound
 to host-visible device memory
 
@@ -518,14 +518,14 @@ to host-visible device memory
 For each element of `pInfos`, the `buffer` used to create each
 acceleration structure referenced by the `geometry.instances.data`
 member of any element of `pGeometries` or `ppGeometries` with a
-`geometryType` of `VK_GEOMETRY_TYPE_INSTANCES_KHR` **must** be
+`geometryType` of [VK_GEOMETRY_TYPE_INSTANCES_KHR](VkGeometryTypeKHR.html) **must** be
 bound to host-visible device memory
 
 * 
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-12244) VUID-vkBuildAccelerationStructuresKHR-pInfos-12244
 
 If `pInfos`[i].`mode` is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR`, and N is not `0`,
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR](VkBuildAccelerationStructureModeKHR.html), and N is not `0`,
 all addresses between `pInfos`[i].`scratchData.hostAddress` and
 `pInfos`[i].`scratchData.hostAddress` +  N - 1 **must**
 be valid host memory, where N is given by the `buildScratchSize`
@@ -538,7 +538,7 @@ structure and primitive count
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-12245) VUID-vkBuildAccelerationStructuresKHR-pInfos-12245
 
 If `pInfos`[i].`mode` is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, and N is not `0`,
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html), and N is not `0`,
 all addresses between `pInfos`[i].`scratchData.hostAddress` and
 `pInfos`[i].`scratchData.hostAddress` +  N - 1 **must**
 be valid host memory, where N is given by the `updateScratchSize`
@@ -552,7 +552,7 @@ structure and primitive count
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_TRIANGLES_KHR`,
+[VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html),
 `geometry.triangles.vertexData.hostAddress` **must** be a valid host
 address
 
@@ -561,8 +561,8 @@ address
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_TRIANGLES_KHR`, if
-`geometry.triangles.indexType` is not `VK_INDEX_TYPE_NONE_KHR`,
+[VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), if
+`geometry.triangles.indexType` is not [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html),
 `geometry.triangles.indexData.hostAddress` **must** be a valid host
 address
 
@@ -571,7 +571,7 @@ address
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_TRIANGLES_KHR`, if
+[VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), if
 `geometry.triangles.transformData.hostAddress` is not `0`, it **must**
 be a valid host address
 
@@ -580,7 +580,7 @@ be a valid host address
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_AABBS_KHR`, `geometry.aabbs.data.hostAddress`
+[VK_GEOMETRY_TYPE_AABBS_KHR](VkGeometryTypeKHR.html), `geometry.aabbs.data.hostAddress`
 **must** be a valid host address
 
 * 
@@ -594,7 +594,7 @@ not allocated with multiple instances
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03776) VUID-vkBuildAccelerationStructuresKHR-pInfos-03776
 
 For each element of `pInfos`, if its `mode` member is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR` the `buffer`
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html) the `buffer`
 used to create its `srcAccelerationStructure` member **must** be bound
 to memory that was not allocated with multiple instances
 
@@ -604,7 +604,7 @@ to memory that was not allocated with multiple instances
 For each element of `pInfos`, the `buffer` used to create each
 acceleration structure referenced by the `geometry.instances.data`
 member of any element of `pGeometries` or `ppGeometries` with a
-`geometryType` of `VK_GEOMETRY_TYPE_INSTANCES_KHR` **must** be
+`geometryType` of [VK_GEOMETRY_TYPE_INSTANCES_KHR](VkGeometryTypeKHR.html) **must** be
 bound to memory that was not allocated with multiple instances
 
 * 
@@ -612,7 +612,7 @@ bound to memory that was not allocated with multiple instances
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_INSTANCES_KHR`,
+[VK_GEOMETRY_TYPE_INSTANCES_KHR](VkGeometryTypeKHR.html),
 `geometry.instances.data.hostAddress` **must** be a valid host address
 
 * 
@@ -620,7 +620,7 @@ For each element of `pInfos`[i].`pGeometries` or
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_INSTANCES_KHR`, each
+[VK_GEOMETRY_TYPE_INSTANCES_KHR](VkGeometryTypeKHR.html), each
 [VkAccelerationStructureInstanceKHR](VkAccelerationStructureInstanceKHR.html)::`accelerationStructureReference`
 value in `geometry.instances.data.hostAddress` **must** be a valid
 [VkAccelerationStructureKHR](VkAccelerationStructureKHR.html) object
@@ -630,8 +630,8 @@ value in `geometry.instances.data.hostAddress` **must** be a valid
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_INSTANCES_KHR` with
-`VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV` set, each
+[VK_GEOMETRY_TYPE_INSTANCES_KHR](VkGeometryTypeKHR.html) with
+[VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV](VkBuildAccelerationStructureFlagBitsKHR.html) set, each
 `accelerationStructureReference` in any structure in
 [VkAccelerationStructureMotionInstanceNV](VkAccelerationStructureMotionInstanceNV.html) value in
 `geometry.instances.data.hostAddress` **must** be a valid
@@ -642,7 +642,7 @@ For each element of `pInfos`[i].`pGeometries` or
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_TRIANGLES_KHR`, if there is an instance of
+[VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), if there is an instance of
 [VkAccelerationStructureGeometryMotionTrianglesDataNV](VkAccelerationStructureGeometryMotionTrianglesDataNV.html) in the
 `geometry.triangles.pNext` chain, then its
 `vertexData.hostAddress` **must** not be 0
@@ -652,10 +652,10 @@ For each element of `pInfos`[i].`pGeometries` or
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_TRIANGLES_KHR`, if there is an instance of
+[VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), if there is an instance of
 [VkAccelerationStructureTrianglesOpacityMicromapEXT](VkAccelerationStructureTrianglesOpacityMicromapEXT.html) in the
 `geometry.triangles.pNext` chain, and its `indexType` is
-`VK_INDEX_TYPE_NONE_KHR`, then its `indexBuffer.hostAddress`
+[VK_INDEX_TYPE_NONE_KHR](VkIndexType.html), then its `indexBuffer.hostAddress`
 **must** be 0
 
 * 
@@ -663,10 +663,10 @@ For each element of `pInfos`[i].`pGeometries` or
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_TRIANGLES_KHR`, if there is an instance of
+[VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), if there is an instance of
 [VkAccelerationStructureTrianglesOpacityMicromapEXT](VkAccelerationStructureTrianglesOpacityMicromapEXT.html) in the
 `geometry.triangles.pNext` chain, and its `indexType` is not
-`VK_INDEX_TYPE_NONE_KHR`, then its `indexBuffer.hostAddress`
+[VK_INDEX_TYPE_NONE_KHR](VkIndexType.html), then its `indexBuffer.hostAddress`
 **must** not be 0
 
 * 
@@ -674,9 +674,9 @@ For each element of `pInfos`[i].`pGeometries` or
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_SPHERES_NV`,
+[VK_GEOMETRY_TYPE_SPHERES_NV](VkGeometryTypeKHR.html),
 [VkAccelerationStructureGeometrySpheresDataNV](VkAccelerationStructureGeometrySpheresDataNV.html)::`indexType` is
-`VK_INDEX_TYPE_NONE_KHR`, then its `indexData.hostAddress` **must**
+[VK_INDEX_TYPE_NONE_KHR](VkIndexType.html), then its `indexData.hostAddress` **must**
 be 0
 
 * 
@@ -684,9 +684,9 @@ be 0
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_SPHERES_NV`,
+[VK_GEOMETRY_TYPE_SPHERES_NV](VkGeometryTypeKHR.html),
 [VkAccelerationStructureGeometrySpheresDataNV](VkAccelerationStructureGeometrySpheresDataNV.html)::`indexType` is
-not `VK_INDEX_TYPE_NONE_KHR`, then its `indexData.hostAddress`
+not [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html), then its `indexData.hostAddress`
 **must** not be 0
 
 * 
@@ -694,7 +694,7 @@ not `VK_INDEX_TYPE_NONE_KHR`, then its `indexData.hostAddress`
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_SPHERES_NV`,
+[VK_GEOMETRY_TYPE_SPHERES_NV](VkGeometryTypeKHR.html),
 [VkAccelerationStructureGeometrySpheresDataNV](VkAccelerationStructureGeometrySpheresDataNV.html)::`vertexData.hostAddress`
 **must** not be 0
 
@@ -703,7 +703,7 @@ For each element of `pInfos`[i].`pGeometries` or
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_SPHERES_NV`,
+[VK_GEOMETRY_TYPE_SPHERES_NV](VkGeometryTypeKHR.html),
 [VkAccelerationStructureGeometrySpheresDataNV](VkAccelerationStructureGeometrySpheresDataNV.html)::`radiusData.hostAddress`
 **must** not be 0
 
@@ -712,9 +712,9 @@ For each element of `pInfos`[i].`pGeometries` or
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV`,
+[VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV](VkGeometryTypeKHR.html),
 [VkAccelerationStructureGeometryLinearSweptSpheresDataNV](VkAccelerationStructureGeometryLinearSweptSpheresDataNV.html)::`indexType`
-is `VK_INDEX_TYPE_NONE_KHR`, then its `indexData.hostAddress`
+is [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html), then its `indexData.hostAddress`
 **must** be 0
 
 * 
@@ -722,9 +722,9 @@ is `VK_INDEX_TYPE_NONE_KHR`, then its `indexData.hostAddress`
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV`,
+[VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV](VkGeometryTypeKHR.html),
 [VkAccelerationStructureGeometryLinearSweptSpheresDataNV](VkAccelerationStructureGeometryLinearSweptSpheresDataNV.html)::`indexType`
-is not `VK_INDEX_TYPE_NONE_KHR`, then its
+is not [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html), then its
 `indexData.hostAddress` **must** not be 0
 
 * 
@@ -732,7 +732,7 @@ is not `VK_INDEX_TYPE_NONE_KHR`, then its
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV`,
+[VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV](VkGeometryTypeKHR.html),
 [VkAccelerationStructureGeometryLinearSweptSpheresDataNV](VkAccelerationStructureGeometryLinearSweptSpheresDataNV.html)::`vertexData.hostAddress`
 **must** not be 0
 
@@ -741,7 +741,7 @@ For each element of `pInfos`[i].`pGeometries` or
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries` with a `geometryType` of
-`VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV`,
+[VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV](VkGeometryTypeKHR.html),
 [VkAccelerationStructureGeometryLinearSweptSpheresDataNV](VkAccelerationStructureGeometryLinearSweptSpheresDataNV.html)::`radiusData.hostAddress`
 **must** not be 0
 
@@ -750,7 +750,7 @@ For each element of `pInfos`[i].`pGeometries` or
 
 For each element of `pInfos`[i].`pGeometries` or
 `pInfos`[i].`ppGeometries`, `geometryType` **must** not be
-`VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`
+[VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](VkGeometryTypeKHR.html)
 
 Valid Usage (Implicit)
 
@@ -789,27 +789,27 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_OPERATION_DEFERRED_KHR`
+[VK_OPERATION_DEFERRED_KHR](VkResult.html)
 
 * 
-`VK_OPERATION_NOT_DEFERRED_KHR`
+[VK_OPERATION_NOT_DEFERRED_KHR](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_acceleration_structure](VK_KHR_acceleration_structure.html), [VkAccelerationStructureBuildGeometryInfoKHR](VkAccelerationStructureBuildGeometryInfoKHR.html), [VkAccelerationStructureBuildRangeInfoKHR](VkAccelerationStructureBuildRangeInfoKHR.html), [VkDeferredOperationKHR](VkDeferredOperationKHR.html), [VkDevice](VkDevice.html)
 

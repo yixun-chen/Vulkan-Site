@@ -60,7 +60,7 @@ The `aspectMask` member of `srcSubresource` and
 [](#VUID-VkImageBlit-layerCount-08800) VUID-VkImageBlit-layerCount-08800
 
 If neither of the `layerCount` members of `srcSubresource` or
-`dstSubresource` are `VK_REMAINING_ARRAY_LAYERS`, the
+`dstSubresource` are [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), the
 `layerCount` members of `srcSubresource` or `dstSubresource`
 **must** match
 
@@ -68,8 +68,8 @@ If neither of the `layerCount` members of `srcSubresource` or
 [](#VUID-VkImageBlit-layerCount-08801) VUID-VkImageBlit-layerCount-08801
 
 If one of the `layerCount` members of `srcSubresource` or
-`dstSubresource` is `VK_REMAINING_ARRAY_LAYERS`, the other
-member **must** be either `VK_REMAINING_ARRAY_LAYERS` or equal to the
+`dstSubresource` is [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), the other
+member **must** be either [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html) or equal to the
 `arrayLayers` member of the [VkImageCreateInfo](VkImageCreateInfo.html) used to create
 the image minus `baseArrayLayer`
 

@@ -83,20 +83,20 @@ components are not downsampled vertically.
 `forceExplicitReconstruction` **can** be used to ensure that
 reconstruction is done explicitly, if supported.
 
-|  | Setting `forceExplicitReconstruction` to `VK_TRUE` **may** have a
+|  | Setting `forceExplicitReconstruction` to [VK_TRUE](VK_TRUE.html) **may** have a
 | --- | --- |
 performance penalty on implementations where explicit reconstruction is not
 the default mode of operation.
 
 If `format` supports
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT](VkFormatFeatureFlagBits.html)
 the `forceExplicitReconstruction` value behaves as if it were
-`VK_TRUE`. |
+[VK_TRUE](VK_TRUE.html). |
 
 If the `pNext` chain includes a [VkExternalFormatANDROID](VkExternalFormatANDROID.html) structure
 with non-zero `externalFormat` member, the sampler Y′CBCR conversion
 object represents an *external format conversion*, and `format` **must** be
-`VK_FORMAT_UNDEFINED`.
+[VK_FORMAT_UNDEFINED](VkFormat.html).
 Such conversions **must** only be used to sample image views with a matching
 [external format](../../../../spec/latest/chapters/memory.html#memory-external-android-hardware-buffer-external-formats).
 When creating an external format conversion, the value of `components`
@@ -108,7 +108,7 @@ Valid Usage
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-format-01904) VUID-VkSamplerYcbcrConversionCreateInfo-format-01904
 
 If an external format conversion is being created, `format` **must** be
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](VkFormat.html)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-format-04061) VUID-VkSamplerYcbcrConversionCreateInfo-format-04061
@@ -122,17 +122,17 @@ If an external format conversion is not being created,
 
 The [potential format features](../../../../spec/latest/chapters/formats.html#potential-format-features) of the
 sampler Y′CBCR conversion **must** support
-`VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT` or
-`VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT`
+[VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT](VkFormatFeatureFlagBits.html) or
+[VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-xChromaOffset-01651) VUID-VkSamplerYcbcrConversionCreateInfo-xChromaOffset-01651
 
 If the [potential format features](../../../../spec/latest/chapters/formats.html#potential-format-features) of the
 sampler Y′CBCR conversion do not support
-`VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT`, `xChromaOffset`
+[VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT](VkFormatFeatureFlagBits.html), `xChromaOffset`
 and `yChromaOffset` **must** not be
-`VK_CHROMA_LOCATION_COSITED_EVEN` if the corresponding components
+[VK_CHROMA_LOCATION_COSITED_EVEN](VkChromaLocation.html) if the corresponding components
 are [downsampled](../../../../spec/latest/chapters/textures.html#textures-chroma-reconstruction)
 
 * 
@@ -140,8 +140,8 @@ are [downsampled](../../../../spec/latest/chapters/textures.html#textures-chroma
 
 If the [potential format features](../../../../spec/latest/chapters/formats.html#potential-format-features) of the
 sampler Y′CBCR conversion do not support
-`VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT`, `xChromaOffset`
-and `yChromaOffset` **must** not be `VK_CHROMA_LOCATION_MIDPOINT`
+[VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT](VkFormatFeatureFlagBits.html), `xChromaOffset`
+and `yChromaOffset` **must** not be [VK_CHROMA_LOCATION_MIDPOINT](VkChromaLocation.html)
 if the corresponding components are [    downsampled](../../../../spec/latest/chapters/textures.html#textures-chroma-reconstruction)
 
 * 
@@ -157,7 +157,7 @@ If the format has a `_422` or `_420` suffix, then
 If the format has a `_422` or `_420` suffix, then
 `components.a` **must** be the
 [identity swizzle](../../../../spec/latest/chapters/resources.html#resources-image-views-identity-mappings),
-`VK_COMPONENT_SWIZZLE_ONE`, or `VK_COMPONENT_SWIZZLE_ZERO`
+[VK_COMPONENT_SWIZZLE_ONE](VkComponentSwizzle.html), or [VK_COMPONENT_SWIZZLE_ZERO](VkComponentSwizzle.html)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-components-02583) VUID-VkSamplerYcbcrConversionCreateInfo-components-02583
@@ -165,7 +165,7 @@ If the format has a `_422` or `_420` suffix, then
 If the format has a `_422` or `_420` suffix, then
 `components.r` **must** be the
 [identity swizzle](../../../../spec/latest/chapters/resources.html#resources-image-views-identity-mappings) or
-`VK_COMPONENT_SWIZZLE_B`
+[VK_COMPONENT_SWIZZLE_B](VkComponentSwizzle.html)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-components-02584) VUID-VkSamplerYcbcrConversionCreateInfo-components-02584
@@ -173,7 +173,7 @@ If the format has a `_422` or `_420` suffix, then
 If the format has a `_422` or `_420` suffix, then
 `components.b` **must** be the
 [identity swizzle](../../../../spec/latest/chapters/resources.html#resources-image-views-identity-mappings) or
-`VK_COMPONENT_SWIZZLE_R`
+[VK_COMPONENT_SWIZZLE_R](VkComponentSwizzle.html)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-components-02585) VUID-VkSamplerYcbcrConversionCreateInfo-components-02585
@@ -187,18 +187,18 @@ values **must** be the identity swizzle
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-ycbcrModel-01655) VUID-VkSamplerYcbcrConversionCreateInfo-ycbcrModel-01655
 
 If `ycbcrModel` is not
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY`, then
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY](VkSamplerYcbcrModelConversion.html), then
 `components.r`, `components.g`, and `components.b` **must**
 correspond to components of the `format`; that is,
 `components.r`, `components.g`, and `components.b` **must** not
-be `VK_COMPONENT_SWIZZLE_ZERO` or `VK_COMPONENT_SWIZZLE_ONE`,
+be [VK_COMPONENT_SWIZZLE_ZERO](VkComponentSwizzle.html) or [VK_COMPONENT_SWIZZLE_ONE](VkComponentSwizzle.html),
 and **must** not correspond to a component containing zero or one as a
 consequence of [component substitution](../../../../spec/latest/chapters/images.html#images-component-substitution)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-ycbcrRange-02748) VUID-VkSamplerYcbcrConversionCreateInfo-ycbcrRange-02748
 
-If `ycbcrRange` is `VK_SAMPLER_YCBCR_RANGE_ITU_NARROW` then the
+If `ycbcrRange` is [VK_SAMPLER_YCBCR_RANGE_ITU_NARROW](VkSamplerYcbcrRange.html) then the
 R, G and B components obtained by applying the `component` swizzle
 to `format` **must** each have a bit-depth greater than or equal to 8
 
@@ -207,16 +207,16 @@ to `format` **must** each have a bit-depth greater than or equal to 8
 
 If the [potential format features](../../../../spec/latest/chapters/formats.html#potential-format-features) of the
 sampler Y′CBCR conversion do not support
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT`
-`forceExplicitReconstruction` **must** be `VK_FALSE`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT](VkFormatFeatureFlagBits.html)
+`forceExplicitReconstruction` **must** be [VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-chromaFilter-01657) VUID-VkSamplerYcbcrConversionCreateInfo-chromaFilter-01657
 
 If the [potential format features](../../../../spec/latest/chapters/formats.html#potential-format-features) of the
 sampler Y′CBCR conversion do not support
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT`,
-`chromaFilter` **must** not be `VK_FILTER_LINEAR`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT](VkFormatFeatureFlagBits.html),
+`chromaFilter` **must** not be [VK_FILTER_LINEAR](VkFilter.html)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-pNext-09207) VUID-VkSamplerYcbcrConversionCreateInfo-pNext-09207
@@ -226,7 +226,7 @@ If the `pNext` chain includes a
 if the [`ycbcrDegamma`](../../../../spec/latest/chapters/features.html#features-ycbcrDegamma) feature is not
 enabled, then
 [VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM](VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM.html)::`enableYDegamma`
-**must** be `VK_FALSE`
+**must** be [VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-pNext-09208) VUID-VkSamplerYcbcrConversionCreateInfo-pNext-09208
@@ -236,7 +236,7 @@ If the `pNext` chain includes a
 if the [`ycbcrDegamma`](../../../../spec/latest/chapters/features.html#features-ycbcrDegamma) feature is not
 enabled, then
 [VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM](VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM.html)::`enableCbCrDegamma`
-**must** be `VK_FALSE`
+**must** be [VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-pNext-09209) VUID-VkSamplerYcbcrConversionCreateInfo-pNext-09209
@@ -250,7 +250,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-sType-sType) VUID-VkSamplerYcbcrConversionCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionCreateInfo-pNext-pNext) VUID-VkSamplerYcbcrConversionCreateInfo-pNext-pNext
@@ -297,7 +297,7 @@ Valid Usage (Implicit)
 
  `chromaFilter` **must** be a valid [VkFilter](VkFilter.html) value
 
-If `chromaFilter` is `VK_FILTER_NEAREST`, chroma samples are
+If `chromaFilter` is [VK_FILTER_NEAREST](VkFilter.html), chroma samples are
 reconstructed to luma component resolution using nearest-neighbour sampling.
 Otherwise, chroma samples are reconstructed using interpolation.
 More details can be found in [the description of sampler Y′CBCR conversion](../../../../spec/latest/chapters/textures.html#textures-sampler-YCbCr-conversion) in the [Image Operations](../../../../spec/latest/chapters/textures.html#textures) chapter.

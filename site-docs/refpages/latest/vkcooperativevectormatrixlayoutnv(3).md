@@ -29,19 +29,19 @@ typedef enum VkCooperativeVectorMatrixLayoutNV {
 } VkCooperativeVectorMatrixLayoutNV;
 
 * 
-`VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_ROW_MAJOR_NV` corresponds to
+[VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_ROW_MAJOR_NV](#) corresponds to
 SPIR-V `RowMajorNV` layout.
 
 * 
-`VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_COLUMN_MAJOR_NV` corresponds to
+[VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_COLUMN_MAJOR_NV](#) corresponds to
 SPIR-V `ColumnMajorNV` layout.
 
 * 
-`VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_INFERENCING_OPTIMAL_NV`
+[VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_INFERENCING_OPTIMAL_NV](#)
 corresponds to SPIR-V `InferencingOptimalNV` layout.
 
 * 
-`VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_TRAINING_OPTIMAL_NV`
+[VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_TRAINING_OPTIMAL_NV](#)
 corresponds to SPIR-V `TrainingOptimalNV` layout.
 
 All enum values match the corresponding SPIR-V value.
@@ -56,8 +56,8 @@ Inferencing-optimal and Training-optimal layouts are
 implementation-dependent, and the application **can** convert a matrix to those
 layouts using [vkConvertCooperativeVectorMatrixNV](vkConvertCooperativeVectorMatrixNV.html) or
 [vkCmdConvertCooperativeVectorMatrixNV](vkCmdConvertCooperativeVectorMatrixNV.html).
-Training-optimal layout with `VK_COMPONENT_TYPE_FLOAT16_KHR` or
-`VK_COMPONENT_TYPE_FLOAT32_KHR` type has the additional guarantee that
+Training-optimal layout with [VK_COMPONENT_TYPE_FLOAT16_KHR](VkComponentTypeKHR.html) or
+[VK_COMPONENT_TYPE_FLOAT32_KHR](VkComponentTypeKHR.html) type has the additional guarantee that
 the application **can** reinterpret the data as an array of elements and
 perform element-wise operations on the data, and finite values in any
 padding elements do not affect the result of a matrix-vector multiply

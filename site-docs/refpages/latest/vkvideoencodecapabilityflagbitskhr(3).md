@@ -32,29 +32,29 @@ typedef enum VkVideoEncodeCapabilityFlagBitsKHR {
 } VkVideoEncodeCapabilityFlagBitsKHR;
 
 * 
-`VK_VIDEO_ENCODE_CAPABILITY_PRECEDING_EXTERNALLY_ENCODED_BYTES_BIT_KHR`
+[VK_VIDEO_ENCODE_CAPABILITY_PRECEDING_EXTERNALLY_ENCODED_BYTES_BIT_KHR](#)
 specifies that the implementation supports the use of
 [VkVideoEncodeInfoKHR](VkVideoEncodeInfoKHR.html)::`precedingExternallyEncodedBytes`.
 
 * 
-`VK_VIDEO_ENCODE_CAPABILITY_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_DETECTION_BIT_KHR`
+[VK_VIDEO_ENCODE_CAPABILITY_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_DETECTION_BIT_KHR](#)
 specifies that the implementation is able to detect and report when the
 destination video bitstream buffer range provided by the application is
 not sufficiently large to fit the encoded bitstream data produced by a
 video encode operation by reporting the
-`VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR`
+[VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR](VkQueryResultStatusKHR.html)
 [query result status code](../../../../spec/latest/chapters/queries.html#query-result-status-codes).
 
 |  | Some implementations **may** not be able to reliably detect insufficient
 | --- | --- |
 bitstream buffer range conditions in all situations.
 Such implementations will not report support for the
-`VK_VIDEO_ENCODE_CAPABILITY_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_DETECTION_BIT_KHR`
+[VK_VIDEO_ENCODE_CAPABILITY_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_DETECTION_BIT_KHR](#)
 encode capability flag for the video profile, but **may** still report the
-`VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR` query
+[VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR](VkQueryResultStatusKHR.html) query
 result status code in certain cases.
 Applications **should** always check for the specific query result status code
-`VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR` even
+[VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR](VkQueryResultStatusKHR.html) even
 when this encode capability flag is not supported by the implementation for
 the video profile in question.
 However, applications **must** not assume that a different negative query

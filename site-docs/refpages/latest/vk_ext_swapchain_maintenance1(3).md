@@ -162,7 +162,7 @@ granularity.
 Allow applications to define the behavior when presenting a swapchain
 image to a surface with different dimensions than the image.
 Using this feature **may** allow implementations to avoid returning
-`VK_ERROR_OUT_OF_DATE_KHR` in this situation.
+[VK_ERROR_OUT_OF_DATE_KHR](VkResult.html) in this situation.
 
 * 
 Allow applications to defer swapchain memory allocation for improved
@@ -213,27 +213,27 @@ Extending [VkSwapchainCreateInfoKHR](VkSwapchainCreateInfoKHR.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SWAPCHAIN_MAINTENANCE_1_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SWAPCHAIN_MAINTENANCE_1_FEATURES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_RELEASE_SWAPCHAIN_IMAGES_INFO_EXT`
+[VK_STRUCTURE_TYPE_RELEASE_SWAPCHAIN_IMAGES_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_FENCE_INFO_EXT`
+[VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_FENCE_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_MODES_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_MODES_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_MODE_INFO_EXT`
+[VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_MODE_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_SCALING_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_SCALING_CREATE_INFO_EXT](VkStructureType.html)
 
 Extending [VkSwapchainCreateFlagBitsKHR](VkSwapchainCreateFlagBitsKHR.html):
 
 * 
-`VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_EXT`
+[VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_EXT](VkSwapchainCreateFlagBitsKHR.html)
 
 * 
 Revision 0, 2019-05-28 (James Jones)

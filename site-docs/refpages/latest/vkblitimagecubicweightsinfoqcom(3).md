@@ -44,7 +44,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBlitImageCubicWeightsInfoQCOM-sType-sType) VUID-VkBlitImageCubicWeightsInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BLIT_IMAGE_CUBIC_WEIGHTS_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BLIT_IMAGE_CUBIC_WEIGHTS_INFO_QCOM](VkStructureType.html)
 
 * 
 [](#VUID-VkBlitImageCubicWeightsInfoQCOM-cubicWeights-parameter) VUID-VkBlitImageCubicWeightsInfoQCOM-cubicWeights-parameter

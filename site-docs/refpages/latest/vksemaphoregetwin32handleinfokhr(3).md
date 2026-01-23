@@ -100,7 +100,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSemaphoreGetWin32HandleInfoKHR-sType-sType) VUID-VkSemaphoreGetWin32HandleInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkSemaphoreGetWin32HandleInfoKHR-pNext-pNext) VUID-VkSemaphoreGetWin32HandleInfoKHR-pNext-pNext

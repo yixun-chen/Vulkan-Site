@@ -34,9 +34,9 @@ typedef struct VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT {
 
 `graphicsPipelineLibraryFastLinking` indicates whether fast linking
 of graphics pipelines is supported.
-If it is `VK_TRUE`, creating a graphics pipeline entirely from
+If it is [VK_TRUE](VK_TRUE.html), creating a graphics pipeline entirely from
 pipeline libraries without
-`VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT` is comparable in
+[VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT](VkPipelineCreateFlagBits.html) is comparable in
 cost to recording a command in a command buffer.
 
 * 
@@ -45,9 +45,9 @@ cost to recording a command in a command buffer.
 indicates whether `NoPerspective` and `Flat` interpolation
 decorations in the last vertex processing stage and the fragment shader
 are required to match when using graphics pipeline libraries.
-If it is `VK_TRUE`, the interpolation decorations do not need to
+If it is [VK_TRUE](VK_TRUE.html), the interpolation decorations do not need to
 match.
-If it is `VK_FALSE`, these decorations **must** either be present in
+If it is [VK_FALSE](VK_FALSE.html), these decorations **must** either be present in
 both stages or neither stage in order for a given interface variable to
 match.
 
@@ -61,7 +61,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_graphics_pipeline_library](VK_EXT_graphics_pipeline_library.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

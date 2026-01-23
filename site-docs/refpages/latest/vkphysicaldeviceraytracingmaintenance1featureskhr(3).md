@@ -48,15 +48,15 @@ SPIR-V extension.
 
 * 
 Additional acceleration structure property queries:
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR`
-and `VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR`.
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR](VkQueryType.html)
+and [VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR](VkQueryType.html).
 
 * 
-A new access flag `VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR`.
+A new access flag [VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR](VkAccessFlagBits2.html).
 
 * 
 A new pipeline stage flag bit
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 `rayTracingPipelineTraceRaysIndirect2` indicates whether the
 implementation supports the extended indirect ray tracing command
@@ -68,7 +68,7 @@ If the `VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR` structure is included
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -76,7 +76,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR-sType-sType) VUID-VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR](VkStructureType.html)
 
 [VK_KHR_ray_tracing_maintenance1](VK_KHR_ray_tracing_maintenance1.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

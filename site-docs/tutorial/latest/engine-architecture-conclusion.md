@@ -44,7 +44,7 @@ The architectural foundation we’ve established in this chapter will support ev
 
 Active implementation proves far more valuable than passive reading when learning engine architecture. Build the code examples as you encounter them, but don’t stop there—experiment with variations to understand how different approaches affect your engine’s behavior. This experimentation develops the intuitive understanding that separates competent engine developers from those who merely copy implementations.
 
-The architectural concepts we’ve covered provide a foundation, but production engines require additional sophistication. The [Appendix](#../Appendix/appendix.adoc) explores advanced rendering techniques and architectural patterns that build on these fundamentals, helping you understand how simple patterns scale to handle complex real-world requirements.
+The architectural concepts we’ve covered provide a foundation, but production engines require additional sophistication. The [Appendix](../Appendix/appendix.html) explores advanced rendering techniques and architectural patterns that build on these fundamentals, helping you understand how simple patterns scale to handle complex real-world requirements.
 
 Studying existing open-source engines like [Hazel](https://github.com/TheCherno/Hazel) or examining the architectural decisions in established frameworks like [LWJGL](https://github.com/LWJGL/lwjgl3) provides valuable perspective on how these concepts apply in practice. Look for patterns we’ve discussed and notice how different engines make different trade-offs based on their specific goals and constraints.
 
@@ -56,4 +56,4 @@ Building a rendering engine is a challenging but rewarding endeavor. By applying
 
 Good luck with your engine development journey!
 
-[Previous: Event Systems](#06_event_systems.adoc) | [Next: Camera Transformations](#../Camera_Transformations/01_introduction.adoc)
+[Previous: Event Systems](06_event_systems.html) | [Next: Camera Transformations](../Camera_Transformations/01_introduction.html)

@@ -30,16 +30,16 @@ typedef enum VkPhysicalDeviceDataGraphOperationTypeARM {
 } VkPhysicalDeviceDataGraphOperationTypeARM;
 
 * 
-`VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_SPIRV_EXTENDED_INSTRUCTION_SET_ARM`
+[VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_SPIRV_EXTENDED_INSTRUCTION_SET_ARM](#)
 corresponds to operations provided by a SPIR-V extended instruction set.
 
 * 
-`VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_NEURAL_MODEL_QCOM`
+[VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_NEURAL_MODEL_QCOM](#)
 specifies an operation that executes neural models provided by the
 application.
 
 * 
-`VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_BUILTIN_MODEL_QCOM`
+[VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_BUILTIN_MODEL_QCOM](#)
 specifies an operation that executes specialized built-in models
 provided by the implementation.
 

@@ -33,39 +33,39 @@ typedef enum VkRenderingAttachmentFlagBitsKHR {
 } VkRenderingAttachmentFlagBitsKHR;
 
 * 
-`VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR`
+[VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR](#)
 specifies that the attachment **can** be used concurrently as both an input
 attachment and a write-only attachment during the render pass, creating
 a feedback loop while processing a fragment, and without a
-`VK_DEPENDENCY_BY_REGION_BIT` barrier separating the write
+[VK_DEPENDENCY_BY_REGION_BIT](VkDependencyFlagBits.html) barrier separating the write
 attachment and input attachment usage.
 Using this flag does not remove the general requirement to use a
-`VK_DEPENDENCY_BY_REGION_BIT` barrier to resolve hazards when two
+[VK_DEPENDENCY_BY_REGION_BIT](VkDependencyFlagBits.html) barrier to resolve hazards when two
 different fragments accesses a particular attachment region, where one
 of them performs an attachment write, and a subsequent fragment performs
 an input attachment read.
-If `VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR` is
+If [VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR](VkRenderingFlagBits.html) is
 specified in the rendering info, this flag **must** be set for an
 attachment to be used concurrently as an input attachment and a write
 attachment in this manner.
-If `VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR` is
+If [VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR](VkRenderingFlagBits.html) is
 not specified in the rendering info, this flag is implied to be set for
 any attachment which has a combination of image layouts and image view
 usage flags which support input attachment usage.
 
 * 
-`VK_RENDERING_ATTACHMENT_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`
+[VK_RENDERING_ATTACHMENT_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#)
 specifies that resolve operations happening to an sRGB encoded
 attachment **must** not convert samples from nonlinear to linear before
 averaging.
 
 * 
-`VK_RENDERING_ATTACHMENT_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`
+[VK_RENDERING_ATTACHMENT_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#)
 specifies that resolve operations happening to an sRGB encoded
 attachment **must** convert samples from nonlinear to linear before
 averaging.
 
-|  | `VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR` is intended
+|  | [VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR](#) is intended
 | --- | --- |
 to give implementations similar information as a subpass where an attachment
 could be used as both a color attachment and input attachment.
@@ -77,7 +77,7 @@ The primary use case for this flag is to enable feedback loops inside a
 single shader.
 
 Applications are encouraged to use
-`VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR` if
+[VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR](VkRenderingFlagBits.html) if
 [`maintenance10`](../../../../spec/latest/chapters/features.html#features-maintenance10) is available and they use
 feedback loops with [VK_KHR_dynamic_rendering_local_read](VK_KHR_dynamic_rendering_local_read.html).
 Feedback loops are still allowed when not using the rendering flag, but the

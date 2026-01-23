@@ -53,7 +53,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineCreateFlags2CreateInfo-sType-sType) VUID-VkPipelineCreateFlags2CreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_CREATE_FLAGS_2_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_CREATE_FLAGS_2_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineCreateFlags2CreateInfo-flags-parameter) VUID-VkPipelineCreateFlags2CreateInfo-flags-parameter

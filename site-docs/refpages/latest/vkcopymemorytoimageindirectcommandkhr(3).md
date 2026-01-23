@@ -71,6 +71,23 @@ Valid Usage
 The `srcAddress` **must** be 4 byte aligned
 
 * 
+[](#VUID-VkCopyMemoryToImageIndirectCommandKHR-dstImage-12282) VUID-VkCopyMemoryToImageIndirectCommandKHR-dstImage-12282
+
+If `dstImage` does not have either a depth/stencil format
+or a [multi-planar format](../../../../spec/latest/chapters/formats.html#formats-requiring-sampler-ycbcr-conversion),
+`srcAddress` **must** be a multiple of the
+[texel block size](../../../../spec/latest/chapters/formats.html#formats-compatibility-classes)
+
+* 
+[](#VUID-VkCopyMemoryToImageIndirectCommandKHR-dstImage-12283) VUID-VkCopyMemoryToImageIndirectCommandKHR-dstImage-12283
+
+If `dstImage` has a
+[multi-planar format](../../../../spec/latest/chapters/formats.html#formats-requiring-sampler-ycbcr-conversion),
+`srcAddress` **must** be a multiple of the element size of the
+compatible format for the format and the `aspectMask` of the
+`imageSubresource` as defined in [Compatible Formats of Planes of Multi-Planar Formats](../../../../spec/latest/chapters/formats.html#formats-compatible-planes)
+
+* 
 [](#VUID-VkCopyMemoryToImageIndirectCommandKHR-bufferRowLength-10964) VUID-VkCopyMemoryToImageIndirectCommandKHR-bufferRowLength-10964
 
 `bufferRowLength` **must** be `0`, or greater than or equal to the
@@ -125,29 +142,32 @@ be greater than or equal to `0` and less than or equal to the height of
 the specified subresource
 
 * 
-[](#VUID-VkCopyMemoryToImageIndirectCommandKHR-dstImage-10972) VUID-VkCopyMemoryToImageIndirectCommandKHR-dstImage-10972
+[](#VUID-VkCopyMemoryToImageIndirectCommandKHR-imageSubresource-12284) VUID-VkCopyMemoryToImageIndirectCommandKHR-imageSubresource-12284
 
-If `dstImage` is of type `VK_IMAGE_TYPE_3D`, for each
-destination region, `imageSubresource.baseArrayLayer` and
-(`imageSubresource.baseArrayLayer` + 
-`imageSubresource.layerCount`) **must** both be greater than or equal
-to `0` and less than or equal to the depth of the specified subresource
+The members of `imageSubresource` **must** be identical to the members
+of the [VkImageSubresourceLayers](VkImageSubresourceLayers.html) structure specified in the
+corresponding index of the
+`pCopyMemoryToImageIndirectInfo->pImageSubresources` array of
+[vkCmdCopyMemoryToImageIndirectKHR](vkCmdCopyMemoryToImageIndirectKHR.html) during command recording
 
 * 
-[](#VUID-VkCopyMemoryToImageIndirectCommandKHR-dstImage-10973) VUID-VkCopyMemoryToImageIndirectCommandKHR-dstImage-10973
+[](#VUID-VkCopyMemoryToImageIndirectCommandKHR-dstImage-12285) VUID-VkCopyMemoryToImageIndirectCommandKHR-dstImage-12285
 
-If `dstImage` is of type `VK_IMAGE_TYPE_3D`, `imageOffset.z`
-and `imageExtent.depth` are ignored as base slice and number of
-slices to copy are read from `baseArrayLayer` and `layerCount`
-from [VkImageSubresourceLayers](VkImageSubresourceLayers.html) in
-[VkCopyMemoryToImageIndirectInfoKHR](VkCopyMemoryToImageIndirectInfoKHR.html) at the time of command
-recording
+If `dstImage` is of type [VK_IMAGE_TYPE_1D](VkImageType.html), `imageOffset.y`
+**must** be `0` and `imageExtent.height` **must** be `1`
+
+* 
+[](#VUID-VkCopyMemoryToImageIndirectCommandKHR-dstImage-12286) VUID-VkCopyMemoryToImageIndirectCommandKHR-dstImage-12286
+
+If `dstImage` is of type [VK_IMAGE_TYPE_1D](VkImageType.html) or
+[VK_IMAGE_TYPE_2D](VkImageType.html), `imageOffset.z` **must** be `0` and
+`imageExtent.depth` **must** be `1`
 
 * 
 [](#VUID-VkCopyMemoryToImageIndirectCommandKHR-srcAddress-12214) VUID-VkCopyMemoryToImageIndirectCommandKHR-srcAddress-12214
 
 `srcAddress` **must** be a device address allocated to the application
-from a buffer created with the `VK_BUFFER_USAGE_TRANSFER_SRC_BIT`
+from a buffer created with the [VK_BUFFER_USAGE_TRANSFER_SRC_BIT](VkBufferUsageFlagBits.html)
 usage flag set
 
 Valid Usage (Implicit)

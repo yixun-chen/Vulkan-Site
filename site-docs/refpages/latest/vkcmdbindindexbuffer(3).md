@@ -66,7 +66,7 @@ multiple of the size of the type indicated by `indexType`
 [](#VUID-vkCmdBindIndexBuffer-buffer-08784) VUID-vkCmdBindIndexBuffer-buffer-08784
 
 `buffer` **must** have been created with the
-`VK_BUFFER_USAGE_INDEX_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_INDEX_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdBindIndexBuffer-buffer-08785) VUID-vkCmdBindIndexBuffer-buffer-08785
@@ -77,12 +77,12 @@ contiguously to a single `VkDeviceMemory` object
 * 
 [](#VUID-vkCmdBindIndexBuffer-indexType-08786) VUID-vkCmdBindIndexBuffer-indexType-08786
 
-`indexType` **must** not be `VK_INDEX_TYPE_NONE_KHR`
+`indexType` **must** not be [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html)
 
 * 
 [](#VUID-vkCmdBindIndexBuffer-indexType-08787) VUID-vkCmdBindIndexBuffer-indexType-08787
 
-If `indexType` is `VK_INDEX_TYPE_UINT8`, the
+If `indexType` is [VK_INDEX_TYPE_UINT8](VkIndexType.html), the
 [`indexTypeUint8`](../../../../spec/latest/chapters/features.html#features-indexTypeUint8) feature **must** be
 enabled
 
@@ -123,7 +123,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindIndexBuffer-commandBuffer-cmdpool) VUID-vkCmdBindIndexBuffer-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBindIndexBuffer-videocoding) VUID-vkCmdBindIndexBuffer-videocoding

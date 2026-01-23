@@ -44,7 +44,7 @@
 
 ## Content
 
-In the [Lighting & Materials chapter](#../Lighting_Materials/01_introduction.adoc), we explored the fundamentals of Physically Based Rendering (PBR), including its core principles, the BRDF, and material properties. Now, we’ll apply that knowledge to implement a PBR pipeline for the glTF models we’ve loaded.
+In the [Lighting & Materials chapter](../Lighting_Materials/01_introduction.html), we explored the fundamentals of Physically Based Rendering (PBR), including its core principles, the BRDF, and material properties. Now, we’ll apply that knowledge to implement a PBR pipeline for the glTF models we’ve loaded.
 
 As we learned in the [glTF and KTX2 Migration chapter](../../15_GLTF_KTX2_Migration.html), glTF uses PBR with the metallic-roughness workflow for its material system. This aligns perfectly with the PBR concepts we’ve already covered, making it straightforward to render our glTF models with physically accurate lighting.
 
@@ -99,7 +99,7 @@ This uniform buffer includes:
 
 **Image-Based Lighting Parameters**: For environment reflections (we’ll cover this in a later chapter)
 
-|  | We introduced push constants earlier in [push constants](#../Lighting_Materials/03_push_constants.adoc); here we focus on how the same mechanism carries glTF metallic‑roughness material knobs efficiently per draw. |
+|  | We introduced push constants earlier in [push constants](../Lighting_Materials/03_push_constants.html); here we focus on how the same mechanism carries glTF metallic‑roughness material knobs efficiently per draw. |
 | --- | --- |
 
 We’ll use [push constants](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#descriptorsets-pushconstant) to pass material properties to the shader:
@@ -487,16 +487,28 @@ While we’ve covered the basics of PBR implementation, there are several advanc
 * **Specular IBL**: Uses [pre-filtered environment maps](https://learnopengl.com/PBR/IBL/Specular-IBL) and [BRDF integration maps](https://learnopengl.com/PBR/IBL/Specular-IBL) for reflections
 
 For materials like skin, wax, or marble where light penetrates the surface:
-* [Simulates how light scatters within translucent materials](https://developer.nvidia.com/gpugems/gpugems3/part-iii-rendering/chapter-14-advanced-techniques-realistic-real-time-skin)
-* Can be approximated with techniques like subsurface scattering profiles
+
+* 
+[Simulates how light scatters within translucent materials](https://developer.nvidia.com/gpugems/gpugems3/part-iii-rendering/chapter-14-advanced-techniques-realistic-real-time-skin)
+
+* 
+Can be approximated with techniques like subsurface scattering profiles
 
 For materials with a thin, glossy layer on top:
-* [Automotive paint, varnished wood, etc.](https://github.com/KhronosGroup/glTF/tree/master/extensions/2.0/Khronos/KHR_materials_clearcoat)
-* Implemented as an additional specular lobe
+
+* 
+[Automotive paint, varnished wood, etc.](https://github.com/KhronosGroup/glTF/tree/master/extensions/2.0/Khronos/KHR_materials_clearcoat)
+
+* 
+Implemented as an additional specular lobe
 
 For materials with directional reflections:
-* [Brushed metal, hair, fabric, etc.](https://google.github.io/filament/Filament.html#materialsystem/anisotropicmodel)
-* Requires additional material parameters and modified BRDFs
+
+* 
+[Brushed metal, hair, fabric, etc.](https://google.github.io/filament/Filament.html#materialsystem/anisotropicmodel)
+
+* 
+Requires additional material parameters and modified BRDFs
 
 In this chapter, we’ve applied the PBR knowledge from the Lighting & Materials chapter to implement a PBR pipeline for our glTF models. We’ve learned:
 
@@ -521,4 +533,4 @@ In the next chapter, we’ll explore how to render multiple objects with differe
 
 If you want to dive deeper into lighting and materials, refer back to the Lighting & Materials chapter, where we explored the theory behind PBR in detail.
 
-[Previous: Loading a glTF Model](#04_loading_gltf.adoc) | [Next: Rendering Multiple Objects](#06_multiple_objects.adoc)
+[Previous: Loading a glTF Model](04_loading_gltf.html) | [Next: Rendering Multiple Objects](06_multiple_objects.html)

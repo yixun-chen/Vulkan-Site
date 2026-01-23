@@ -44,8 +44,8 @@ structure.
 `supportsProtected` specifies whether a protected swapchain created
 from [VkPhysicalDeviceSurfaceInfo2KHR](VkPhysicalDeviceSurfaceInfo2KHR.html)::`surface` for a
 particular windowing system **can** be displayed on screen or not.
-If `supportsProtected` is `VK_TRUE`, then creation of swapchains
-with the `VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR` flag set **must** be
+If `supportsProtected` is [VK_TRUE](VK_TRUE.html), then creation of swapchains
+with the [VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html) flag set **must** be
 supported for `surface`.
 
 If the `[VK_GOOGLE_surfaceless_query](VK_GOOGLE_surfaceless_query.html)` extension is enabled, the value
@@ -63,7 +63,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSurfaceProtectedCapabilitiesKHR-sType-sType) VUID-VkSurfaceProtectedCapabilitiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_PROTECTED_CAPABILITIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_PROTECTED_CAPABILITIES_KHR](VkStructureType.html)
 
 [VK_KHR_surface_protected_capabilities](VK_KHR_surface_protected_capabilities.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

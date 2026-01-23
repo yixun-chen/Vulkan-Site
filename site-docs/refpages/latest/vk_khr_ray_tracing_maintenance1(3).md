@@ -152,22 +152,22 @@ closest hit and miss shader stages.
 Adds support for a new pipeline stage and access mask built on top of
 `[VK_KHR_synchronization2](VK_KHR_synchronization2.html)`:
 
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR` to
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](VkPipelineStageFlagBits2.html) to
 specify execution of [acceleration     structure copy commands](../../../../spec/latest/chapters/accelstructures.html#acceleration-structure-copying)
 
 * 
-`VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR` to specify read
+[VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR](VkAccessFlagBits2.html) to specify read
 access to a [shader binding table](../../../../spec/latest/chapters/raytracing.html#shader-binding-table) in any
 shader pipeline stage
 
 Adds two new acceleration structure query parameters:
 
 * 
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR` to query the
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR](VkQueryType.html) to query the
 acceleration structure size on the device timeline
 
 * 
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR](VkQueryType.html)
 to query the number of bottom level acceleration structure pointers for
 serialization
 
@@ -201,36 +201,36 @@ If [VK_KHR_ray_tracing_pipeline](VK_KHR_ray_tracing_pipeline.html) is supported:
 * 
 Extending [VkQueryType](VkQueryType.html):
 
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR](VkQueryType.html)
 
 * 
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR](VkQueryType.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR](VkStructureType.html)
 
 If [VK_KHR_synchronization2](VK_KHR_synchronization2.html) or [Vulkan Version 1.3](../../../../spec/latest/appendices/versions.html#versions-1.3) and [VK_KHR_ray_tracing_pipeline](VK_KHR_ray_tracing_pipeline.html) is supported:
 
 * 
 Extending [VkAccessFlagBits2](VkAccessFlagBits2.html):
 
-`VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR`
+[VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR](VkAccessFlagBits2.html)
 
 If [VK_EXT_device_generated_commands](VK_EXT_device_generated_commands.html) is supported:
 
 * 
 Extending [VkIndirectCommandsTokenTypeEXT](VkIndirectCommandsTokenTypeEXT.html):
 
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT](VkIndirectCommandsTokenTypeEXT.html)
 
 If [VK_KHR_synchronization2](VK_KHR_synchronization2.html) or [Vulkan Version 1.3](../../../../spec/latest/appendices/versions.html#versions-1.3) is supported:
 
 * 
 Extending [VkPipelineStageFlagBits2](VkPipelineStageFlagBits2.html):
 
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
 [`CullMaskKHR`](../../../../spec/latest/chapters/interfaces.html#interfaces-builtin-variables-cullmask)

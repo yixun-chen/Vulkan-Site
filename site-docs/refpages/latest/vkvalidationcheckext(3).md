@@ -29,11 +29,11 @@ typedef enum VkValidationCheckEXT {
 } VkValidationCheckEXT;
 
 * 
-`VK_VALIDATION_CHECK_ALL_EXT` specifies that all validation checks
+[VK_VALIDATION_CHECK_ALL_EXT](#) specifies that all validation checks
 are disabled.
 
 * 
-`VK_VALIDATION_CHECK_SHADERS_EXT` specifies that shader validation
+[VK_VALIDATION_CHECK_SHADERS_EXT](#) specifies that shader validation
 is disabled.
 
 [VK_EXT_validation_flags](VK_EXT_validation_flags.html), [VkValidationFlagsEXT](VkValidationFlagsEXT.html)

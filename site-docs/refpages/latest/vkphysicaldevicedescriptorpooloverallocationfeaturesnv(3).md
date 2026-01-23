@@ -43,8 +43,8 @@ structure.
 `descriptorPoolOverallocation` indicates that the implementation
 allows the application to opt into descriptor pool overallocation by
 creating the descriptor pool with
-`VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV` and/or
-`VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV` flags.
+[VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV](VkDescriptorPoolCreateFlagBits.html) and/or
+[VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV](VkDescriptorPoolCreateFlagBits.html) flags.
 
 If the `VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -52,7 +52,7 @@ If the `VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV` structure is inc
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -60,7 +60,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV-sType-sType) VUID-VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV](VkStructureType.html)
 
 [VK_NV_descriptor_pool_overallocation](VK_NV_descriptor_pool_overallocation.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

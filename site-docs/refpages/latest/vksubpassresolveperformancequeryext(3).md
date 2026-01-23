@@ -43,7 +43,7 @@ structure.
 `optimal` specifies that a subpass resolve operation is optimally
 performed.
 
-If `optimal` is `VK_FALSE` for a [VkFormat](VkFormat.html), using a subpass
+If `optimal` is [VK_FALSE](VK_FALSE.html) for a [VkFormat](VkFormat.html), using a subpass
 resolve operation on a multisampled attachment with this format can incur
 additional costs, including additional memory bandwidth usage and a higher
 memory footprint.
@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSubpassResolvePerformanceQueryEXT-sType-sType) VUID-VkSubpassResolvePerformanceQueryEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SUBPASS_RESOLVE_PERFORMANCE_QUERY_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SUBPASS_RESOLVE_PERFORMANCE_QUERY_EXT](VkStructureType.html)
 
 [VK_EXT_multisampled_render_to_single_sampled](VK_EXT_multisampled_render_to_single_sampled.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

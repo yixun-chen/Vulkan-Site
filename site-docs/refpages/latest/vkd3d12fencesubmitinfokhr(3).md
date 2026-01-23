@@ -69,14 +69,14 @@ in the `pWaitSemaphoreValues` or `pSignalSemaphoreValues` entry.
 
 |  | As the introduction of the external semaphore handle type
 | --- | --- |
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT` predates that of
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT](VkExternalSemaphoreHandleTypeFlagBits.html) predates that of
 timeline semaphores, support for importing semaphore payloads from external
 handles of that type into semaphores created (implicitly or explicitly) with
-a [VkSemaphoreType](VkSemaphoreType.html) of `VK_SEMAPHORE_TYPE_BINARY` is preserved for
+a [VkSemaphoreType](VkSemaphoreType.html) of [VK_SEMAPHORE_TYPE_BINARY](VkSemaphoreType.html) is preserved for
 backwards compatibility.
 However, applications **should** prefer importing such handle types into
 semaphores created with a [VkSemaphoreType](VkSemaphoreType.html) of
-`VK_SEMAPHORE_TYPE_TIMELINE`, and use the
+[VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html), and use the
 [VkTimelineSemaphoreSubmitInfo](VkTimelineSemaphoreSubmitInfo.html) structure instead of the
 `VkD3D12FenceSubmitInfoKHR` structure to specify the values to use when
 waiting for and signaling such semaphores. |
@@ -102,7 +102,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkD3D12FenceSubmitInfoKHR-sType-sType) VUID-VkD3D12FenceSubmitInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkD3D12FenceSubmitInfoKHR-pWaitSemaphoreValues-parameter) VUID-VkD3D12FenceSubmitInfoKHR-pWaitSemaphoreValues-parameter

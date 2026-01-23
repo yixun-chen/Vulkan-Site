@@ -18,7 +18,7 @@
 
 VkBuildMicromapModeEXT - Enum specifying the type of build operation to perform
 
-The `VkBuildMicromapModeEXT` enumeration is defined as:
+The [VkBuildMicromapModeEXT](#) enumeration is defined as:
 
 // Provided by VK_EXT_opacity_micromap
 typedef enum VkBuildMicromapModeEXT {
@@ -26,7 +26,7 @@ typedef enum VkBuildMicromapModeEXT {
 } VkBuildMicromapModeEXT;
 
 * 
-`VK_BUILD_MICROMAP_MODE_BUILD_EXT` specifies that the destination
+[VK_BUILD_MICROMAP_MODE_BUILD_EXT](#) specifies that the destination
 micromap will be built using the specified data.
 
 [VK_EXT_opacity_micromap](VK_EXT_opacity_micromap.html), [VkMicromapBuildInfoEXT](VkMicromapBuildInfoEXT.html)

@@ -94,7 +94,7 @@ tests, the exclusive scissor test will pass if and only if the scissor test
 fails.
 
 Version 2 of this extension introduces
-`VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV` and
+[VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV](VkDynamicState.html) and
 [vkCmdSetExclusiveScissorEnableNV](vkCmdSetExclusiveScissorEnableNV.html).
 Applications that use this dynamic state must ensure the implementation
 advertises at least `specVersion` `2` of this extension.
@@ -124,18 +124,18 @@ Extending [VkPipelineViewportStateCreateInfo](VkPipelineViewportStateCreateInfo.
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV`
+[VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV`
+[VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV](VkDynamicState.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXCLUSIVE_SCISSOR_FEATURES_NV`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXCLUSIVE_SCISSOR_FEATURES_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV`
+[VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV](VkStructureType.html)
 
 1) For the scissor test, the viewport state must be created with a matching
 number of scissor and viewport rectangles.

@@ -31,7 +31,7 @@ typedef struct VkPartitionedAccelerationStructureWritePartitionTranslationDataNV
 * 
 `partitionIndex` is the index of partition to write.
 [Global partition](../../../../spec/latest/chapters/accelstructures.html#ptlas-global-partition) is referred to by
-`VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV`.
+[VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV](VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV.html).
 
 * 
 `partitionTranslation` sets the [    translation vector](../../../../spec/latest/chapters/accelstructures.html#ptlas-partition-translation) for this partition.

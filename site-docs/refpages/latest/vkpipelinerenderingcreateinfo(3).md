@@ -70,12 +70,12 @@ specifies the view mask and format of attachments used for rendering.
 If this structure is not specified, and the pipeline does not include a
 [VkRenderPass](VkRenderPass.html), `viewMask` and `colorAttachmentCount` are `0`,
 and `depthAttachmentFormat` and `stencilAttachmentFormat` are
-`VK_FORMAT_UNDEFINED`.
+[VK_FORMAT_UNDEFINED](VkFormat.html).
 If a graphics pipeline is created with a valid [VkRenderPass](VkRenderPass.html),
 parameters of this structure are ignored.
 
 If `depthAttachmentFormat`, `stencilAttachmentFormat`, or any
-element of `pColorAttachmentFormats` is `VK_FORMAT_UNDEFINED`, it
+element of `pColorAttachmentFormats` is [VK_FORMAT_UNDEFINED](VkFormat.html), it
 indicates that the corresponding attachment is unused within the render
 pass.
 Valid formats indicate that an attachment **can** be used - but it is still
@@ -99,7 +99,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineRenderingCreateInfo-sType-sType) VUID-VkPipelineRenderingCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO](VkStructureType.html)
 
 [VK_KHR_dynamic_rendering](VK_KHR_dynamic_rendering.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), [VkFormat](VkFormat.html), [VkStructureType](VkStructureType.html)
 

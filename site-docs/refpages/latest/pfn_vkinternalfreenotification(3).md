@@ -22,7 +22,7 @@ PFN_vkInternalFreeNotification - Application-defined memory free notification fu
 The type of `pfnInternalFree` is:
 
 // Provided by VK_VERSION_1_0
-typedef void (VKAPI_PTR *PFN_vkInternalFreeNotification)(
+typedef void (*PFN_vkInternalFreeNotification)(
     void*                                       pUserData,
     size_t                                      size,
     VkInternalAllocationType                    allocationType,

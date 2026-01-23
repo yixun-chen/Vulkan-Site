@@ -73,7 +73,7 @@ same logical device: any timestamp write that
 have a lower value unless its value overflows the maximum supported integer
 bit width of the query.
 Timestamps written by this command **must** be in the
-`VK_TIME_DOMAIN_DEVICE_KHR`
+[VK_TIME_DOMAIN_DEVICE_KHR](VkTimeDomainKHR.html)
 [time domain](../../../../spec/latest/chapters/synchronization.html#VkTimeDomainKHR).
 If an overflow occurs, the timestamp value **must** wrap back to zero.
 
@@ -115,50 +115,50 @@ was allocated from
 
 If the [`geometryShader`](../../../../spec/latest/chapters/features.html#features-geometryShader) feature is not
 enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-pipelineStage-04076) VUID-vkCmdWriteTimestamp-pipelineStage-04076
 
 If the [`tessellationShader`](../../../../spec/latest/chapters/features.html#features-tessellationShader) feature
 is not enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](VkPipelineStageFlagBits.html) or
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-pipelineStage-04077) VUID-vkCmdWriteTimestamp-pipelineStage-04077
 
 If the [`conditionalRendering`](../../../../spec/latest/chapters/features.html#features-conditionalRendering)
 feature is not enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-pipelineStage-04078) VUID-vkCmdWriteTimestamp-pipelineStage-04078
 
 If the [`fragmentDensityMap`](../../../../spec/latest/chapters/features.html#features-fragmentDensityMap) feature
 is not enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-pipelineStage-04079) VUID-vkCmdWriteTimestamp-pipelineStage-04079
 
 If the [`transformFeedback`](../../../../spec/latest/chapters/features.html#features-transformFeedback) feature
 is not enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-pipelineStage-04080) VUID-vkCmdWriteTimestamp-pipelineStage-04080
 
 If the [`meshShader`](../../../../spec/latest/chapters/features.html#features-meshShader) feature is not enabled,
 `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-pipelineStage-07077) VUID-vkCmdWriteTimestamp-pipelineStage-07077
 
 If the [`taskShader`](../../../../spec/latest/chapters/features.html#features-taskShader) feature is not enabled,
 `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-shadingRateImage-07314) VUID-vkCmdWriteTimestamp-shadingRateImage-07314
@@ -166,14 +166,14 @@ If the [`taskShader`](../../../../spec/latest/chapters/features.html#features-ta
 If neither of the [`shadingRateImage`](../../../../spec/latest/chapters/features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](../../../../spec/latest/chapters/features.html#features-attachmentFragmentShadingRate) features are enabled,
 `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-synchronization2-06489) VUID-vkCmdWriteTimestamp-synchronization2-06489
 
 If the [`synchronization2`](../../../../spec/latest/chapters/features.html#features-synchronization2) feature is
 not enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_NONE`
+[VK_PIPELINE_STAGE_NONE](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-rayTracingPipeline-07943) VUID-vkCmdWriteTimestamp-rayTracingPipeline-07943
@@ -181,13 +181,13 @@ not enabled, `pipelineStage` **must** not be
 If neither of the [VK_NV_ray_tracing](VK_NV_ray_tracing.html) extension or the
 [`rayTracingPipeline`](../../../../spec/latest/chapters/features.html#features-rayTracingPipeline) feature are
 enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-queryPool-01416) VUID-vkCmdWriteTimestamp-queryPool-01416
 
 `queryPool` **must** have been created with a `queryType` of
-`VK_QUERY_TYPE_TIMESTAMP`
+[VK_QUERY_TYPE_TIMESTAMP](VkQueryType.html)
 
 * 
 [](#VUID-vkCmdWriteTimestamp-timestampValidBits-00829) VUID-vkCmdWriteTimestamp-timestampValidBits-00829
@@ -245,7 +245,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdWriteTimestamp-commandBuffer-cmdpool) VUID-vkCmdWriteTimestamp-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_OPTICAL_FLOW_BIT_NV`, `VK_QUEUE_TRANSFER_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html), [VK_QUEUE_OPTICAL_FLOW_BIT_NV](VkQueueFlagBits.html), [VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](VkQueueFlagBits.html), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdWriteTimestamp-suspended) VUID-vkCmdWriteTimestamp-suspended

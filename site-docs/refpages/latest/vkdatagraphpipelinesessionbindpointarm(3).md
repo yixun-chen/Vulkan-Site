@@ -18,7 +18,7 @@
 
 VkDataGraphPipelineSessionBindPointARM - Enumeration describing the bind points of a data graph pipeline session
 
-Possible values of `VkDataGraphPipelineSessionBindPointARM`, specifying
+Possible values of [VkDataGraphPipelineSessionBindPointARM](#), specifying
 the bind point of a data graph pipeline session, are:
 
 // Provided by VK_ARM_data_graph
@@ -27,7 +27,7 @@ typedef enum VkDataGraphPipelineSessionBindPointARM {
 } VkDataGraphPipelineSessionBindPointARM;
 
 * 
-`VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TRANSIENT_ARM`
+[VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TRANSIENT_ARM](#)
 corresponds to the transient data produced and consumed during one
 dispatch of a data graph pipeline in a data graph pipeline session.
 This transient data is never reused by subsequent dispatches and can

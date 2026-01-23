@@ -63,14 +63,14 @@ Valid Usage
 [](#VUID-VkImageFormatListCreateInfo-viewFormatCount-09540) VUID-VkImageFormatListCreateInfo-viewFormatCount-09540
 
 If `viewFormatCount` is not 0, each element of `pViewFormats`
-**must** not be `VK_FORMAT_UNDEFINED`
+**must** not be [VK_FORMAT_UNDEFINED](VkFormat.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkImageFormatListCreateInfo-sType-sType) VUID-VkImageFormatListCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkImageFormatListCreateInfo-pViewFormats-parameter) VUID-VkImageFormatListCreateInfo-pViewFormats-parameter

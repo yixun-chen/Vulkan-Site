@@ -47,7 +47,7 @@ referencing individual [VkAccelerationStructureInstanceKHR](VkAccelerationStruct
 structures
 or packed motion instance information as described in
 [motion instances](../../../../spec/latest/chapters/accelstructures.html#acceleration-structure-motion-instances)
-if `arrayOfPointers` is `VK_TRUE`, or the address of an array of
+if `arrayOfPointers` is [VK_TRUE](VK_TRUE.html), or the address of an array of
 [VkAccelerationStructureInstanceKHR](VkAccelerationStructureInstanceKHR.html)
 or [VkAccelerationStructureMotionInstanceNV](VkAccelerationStructureMotionInstanceNV.html)
 structures.
@@ -61,7 +61,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureGeometryInstancesDataKHR-sType-sType) VUID-VkAccelerationStructureGeometryInstancesDataKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_INSTANCES_DATA_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_INSTANCES_DATA_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkAccelerationStructureGeometryInstancesDataKHR-pNext-pNext) VUID-VkAccelerationStructureGeometryInstancesDataKHR-pNext-pNext

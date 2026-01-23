@@ -30,7 +30,7 @@ object on subsequent runs.
 
 When creating a pipeline that includes [VkPipelineBinaryInfoKHR](VkPipelineBinaryInfoKHR.html) in the
 `pNext` chain, or has the
-`VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR` flag set, the use of
+[VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](VkPipelineCreateFlagBits2.html) flag set, the use of
 [VkPipelineCache](VkPipelineCache.html) objects is not allowed.
 
 Pipeline binary objects are represented by `VkPipelineBinaryKHR`

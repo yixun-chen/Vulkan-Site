@@ -49,8 +49,8 @@ structure.
 specifying the number of samples used in rasterization.
 This value is ignored for the purposes of setting the number of samples
 used in rasterization if the pipeline is created with the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` dynamic state set, but
-if `VK_DYNAMIC_STATE_SAMPLE_MASK_EXT` dynamic state is not set, it
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](VkDynamicState.html) dynamic state set, but
+if [VK_DYNAMIC_STATE_SAMPLE_MASK_EXT](VkDynamicState.html) dynamic state is not set, it
 is still used to define the size of the `pSampleMask` array as
 described below.
 
@@ -60,7 +60,7 @@ described below.
 
 * 
 `minSampleShading` specifies a minimum fraction of sample shading if
-`sampleShadingEnable` is `VK_TRUE`.
+`sampleShadingEnable` is [VK_TRUE](VK_TRUE.html).
 
 * 
 `pSampleMask` is a pointer to an array of `VkSampleMask`
@@ -94,13 +94,13 @@ Valid Usage
 [](#VUID-VkPipelineMultisampleStateCreateInfo-sampleShadingEnable-00784) VUID-VkPipelineMultisampleStateCreateInfo-sampleShadingEnable-00784
 
 If the [`sampleRateShading`](../../../../spec/latest/chapters/features.html#features-sampleRateShading) feature
-is not enabled, `sampleShadingEnable` **must** be `VK_FALSE`
+is not enabled, `sampleShadingEnable` **must** be [VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-VkPipelineMultisampleStateCreateInfo-alphaToOneEnable-00785) VUID-VkPipelineMultisampleStateCreateInfo-alphaToOneEnable-00785
 
 If the [`alphaToOne`](../../../../spec/latest/chapters/features.html#features-alphaToOne) feature is not enabled,
-`alphaToOneEnable` **must** be `VK_FALSE`
+`alphaToOneEnable` **must** be [VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-VkPipelineMultisampleStateCreateInfo-minSampleShading-00786) VUID-VkPipelineMultisampleStateCreateInfo-minSampleShading-00786
@@ -115,7 +115,7 @@ and the [`coverageReductionMode`](../../../../spec/latest/chapters/features.html
 feature is not enabled, or the `pNext` chain does not contain
 `VkPipelineCoverageReductionStateCreateInfoNV`, or
 `VkPipelineCoverageReductionStateCreateInfoNV`::`coverageReductionMode`
-is not set to `VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV`,
+is not set to [VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV](VkCoverageReductionModeNV.html),
 and the subpass has any color attachments, and
 `rasterizationSamples` is greater than the number of color samples,
 then [sample shading](../../../../spec/latest/chapters/primsrast.html#primsrast-sampleshading) **must** not be enabled
@@ -125,7 +125,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineMultisampleStateCreateInfo-sType-sType) VUID-VkPipelineMultisampleStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineMultisampleStateCreateInfo-pNext-pNext) VUID-VkPipelineMultisampleStateCreateInfo-pNext-pNext

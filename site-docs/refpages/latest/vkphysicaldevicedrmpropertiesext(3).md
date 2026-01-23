@@ -72,7 +72,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDrmPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceDrmPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRM_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRM_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_physical_device_drm](VK_EXT_physical_device_drm.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

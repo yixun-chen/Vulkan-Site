@@ -56,7 +56,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkOpticalFlowSessionCreatePrivateDataInfoNV-sType-sType) VUID-VkOpticalFlowSessionCreatePrivateDataInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_OPTICAL_FLOW_SESSION_CREATE_PRIVATE_DATA_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_OPTICAL_FLOW_SESSION_CREATE_PRIVATE_DATA_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkOpticalFlowSessionCreatePrivateDataInfoNV-pPrivateData-parameter) VUID-VkOpticalFlowSessionCreatePrivateDataInfoNV-pPrivateData-parameter

@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceFaultCountsEXT-sType-sType) VUID-VkDeviceFaultCountsEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_FAULT_COUNTS_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_FAULT_COUNTS_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceFaultCountsEXT-pNext-pNext) VUID-VkDeviceFaultCountsEXT-pNext-pNext

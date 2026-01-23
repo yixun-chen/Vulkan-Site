@@ -63,15 +63,15 @@ Valid Usage
 [](#VUID-VkRenderingFragmentShadingRateAttachmentInfoKHR-imageView-06147) VUID-VkRenderingFragmentShadingRateAttachmentInfoKHR-imageView-06147
 
 If `imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `layout` **must** be
-`VK_IMAGE_LAYOUT_GENERAL` or
-`VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR](VkImageLayout.html)
 
 * 
 [](#VUID-VkRenderingFragmentShadingRateAttachmentInfoKHR-imageView-06148) VUID-VkRenderingFragmentShadingRateAttachmentInfoKHR-imageView-06148
 
 If `imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), it **must** have been
 created with the
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR` usage flag
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](VkImageUsageFlagBits.html) usage flag
 set_KHR
 
 * 
@@ -136,7 +136,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderingFragmentShadingRateAttachmentInfoKHR-sType-sType) VUID-VkRenderingFragmentShadingRateAttachmentInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderingFragmentShadingRateAttachmentInfoKHR-imageView-parameter) VUID-VkRenderingFragmentShadingRateAttachmentInfoKHR-imageView-parameter

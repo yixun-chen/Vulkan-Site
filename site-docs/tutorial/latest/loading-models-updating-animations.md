@@ -82,7 +82,7 @@ Animations in 3D graphics typically involve:
 
 glTF provides a standardized way to store and transfer animations, which our engine can load and play back.
 
-As we saw in the [Model System chapter](03_model_system.adoc), our engine uses several structures to represent animations:
+As we saw in the [Model System chapter](03_model_system.html), our engine uses several structures to represent animations:
 
 // Structure for animation keyframes
 struct AnimationChannel {
@@ -135,19 +135,19 @@ void Model::updateAnimation(uint32_t index, float deltaTime) {
     // Update animation timing with automatic looping
     Animation& animation = animations[index];
     animation.currentTime += deltaTime;
-    if (animation.currentTime > animation.end) {
-        animation.currentTime = animation.start;
+    while (animation.currentTime >= animation.end) {
+        animation.currentTime -= (animation.end - animation.start);
     }
 
 Animation validation is critical for robust systems because not all models contain animations, and external code might request non-existent animation indices. By performing this check early, we avoid crashes and undefined behavior when working with static models or invalid animation requests. This defensive programming approach is essential in production game engines where content from various sources might have inconsistent animation data.
 
 Time management forms the foundation of animation playback, where the deltaTime parameter represents the elapsed time since the last update. This frame-rate independent approach ensures animations play at consistent speeds regardless of rendering performance. The automatic looping mechanism seamlessly restarts animations when they reach their end time, creating continuous motion that’s essential for idle animations, walking cycles, and other repetitive movements.
 
-New we iterate through all animation channels, establishing the connection between abstract animation data and the specific nodes in our scene graph that will receive transformation updates.
+Now we iterate through all animation channels, establishing the connection between abstract animation data and the specific nodes in our scene graph that will receive transformation updates.
 
     // Process each animation channel to update corresponding scene nodes
     for (auto& channel : animation.channels) {
-        AnimationSampler& sampler = animation.samplers[channel.samplerIndex];
+        assert(channel.samplerIndex 
 
 The channel iteration represents the heart of our animation-to-scene-graph mapping system. Each channel defines a specific transformation type (position, rotation, or scale) for a particular node in the scene hierarchy. This one-to-many relationship allows complex animations where multiple properties of multiple nodes can be animated simultaneously, enabling sophisticated character animations with dozens of moving parts.
 
@@ -155,10 +155,14 @@ The sampler access pattern demonstrates the separation of concerns in our animat
 
 Next, locate the appropriate keyframes that surround the current animation time and calculate the precise interpolation factor needed for smooth transitions between discrete animation samples.
 
-        // Find the current keyframe pair that brackets the animation time
-        for (size_t i = 0; i = sampler.inputs[i] && animation.currentTime 
+        // Find the current keyframe pair that brackets the animation time using binary search
+        auto nextKeyFrameIt = std::lower_bound(sampler.inputs.begin(), sampler.inputs.end(), animation.currentTime);
+        if (nextKeyFrameIt != sampler.inputs.end() && nextKeyFrameIt != sampler.inputs.begin()) {
+            size_t i = std::distance(sampler.inputs.begin(), nextKeyFrameIt) - 1;
+            // Calculate normalized interpolation factor between keyframes
+            float t = (animation.currentTime - sampler.inputs[i]) / (sampler.inputs[i + 1] - sampler.inputs[i]);
 
-The keyframe search algorithm performs a linear scan to find the pair of keyframes that bracket the current animation time. While this approach has O(n) complexity, it’s practical for typical animation data where keyframes are relatively sparse. Production systems often optimize this with binary search or by caching the last keyframe index, but the linear approach provides clarity for educational purposes and adequate performance for most real-world animation sequences.
+The keyframe search algorithm uses std::lower_bound to perform a binary search, finding the pair of keyframes that bracket the current animation time with O(log n) complexity. This efficient approach is ideal for animation data with many keyframes, providing optimal performance compared to linear scanning. The binary search returns an iterator to the first keyframe whose time is greater than or equal to the current animation time, allowing us to determine the bracketing pair by looking at the previous keyframe.
 
 The interpolation factor calculation creates a normalized value between 0.0 and 1.0 that represents exactly where the current time falls between two keyframes. When t=0.0, we’re at the first keyframe; when t=1.0, we’re at the second keyframe; values in between create smooth transitions. This mathematical foundation enables all the interpolation techniques that follow, whether for linear position changes or complex quaternion rotations.
 
@@ -339,11 +343,8 @@ void blendMultipleAnimations(const std::vector& animationIndices,
         return;
     }
 
-    // Normalize weights
-    float totalWeight = 0.0f;
-    for (float weight : weights) {
-        totalWeight += weight;
-    }
+    // Normalize weights using std::accumulate for cleaner code
+    float totalWeight = std::accumulate(weights.begin(), weights.end(), 0.0f);
 
     std::vector> allTranslations;
     std::vector> allRotations;
@@ -353,6 +354,11 @@ void blendMultipleAnimations(const std::vector& animationIndices,
     std::vector originalTranslations;
     std::vector originalRotations;
     std::vector originalScales;
+
+    // Reserve space to avoid reallocations
+    originalTranslations.reserve(model.linearNodes.size());
+    originalRotations.reserve(model.linearNodes.size());
+    originalScales.reserve(model.linearNodes.size());
 
     for (auto node : model.linearNodes) {
         originalTranslations.push_back(node->translation);
@@ -382,9 +388,9 @@ void blendMultipleAnimations(const std::vector& animationIndices,
             scales.push_back(node->scale);
         }
 
-        allTranslations.push_back(translations);
-        allRotations.push_back(rotations);
-        allScales.push_back(scales);
+        allTranslations.push_back(std::move(translations));
+        allRotations.push_back(std::move(rotations));
+        allScales.push_back(std::move(scales));
     }
 
     // Reset to original state
@@ -950,4 +956,4 @@ Our animation system provides a solid foundation for bringing 3D models to life.
 
 In the next chapter, we’ll wrap up our exploration of the model loading system and discuss future enhancements.
 
-[Previous: Rendering the Scene](07_scene_rendering.adoc) | [Next: Conclusion](09_conclusion.adoc)
+[Previous: Rendering the Scene](07_scene_rendering.html) | [Next: Conclusion](09_conclusion.html)

@@ -69,14 +69,14 @@ Valid Usage
 [](#VUID-VkGeneratedCommandsMemoryRequirementsInfoEXT-indirectCommandsLayout-11010) VUID-VkGeneratedCommandsMemoryRequirementsInfoEXT-indirectCommandsLayout-11010
 
 If `indirectCommandsLayout` was created with a token sequence that
-contained the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT`
+contained the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](VkIndirectCommandsTokenTypeEXT.html)
 token, `indirectExecutionSet` **must** not be [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
 * 
 [](#VUID-VkGeneratedCommandsMemoryRequirementsInfoEXT-indirectCommandsLayout-11151) VUID-VkGeneratedCommandsMemoryRequirementsInfoEXT-indirectCommandsLayout-11151
 
 If `indirectCommandsLayout` was created with a token sequence that
-contained the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT`
+contained the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](VkIndirectCommandsTokenTypeEXT.html)
 token, the shader stages used to create the initial shader state of
 `indirectExecutionSet` **must** equal the
 [VkIndirectCommandsExecutionSetTokenEXT](VkIndirectCommandsExecutionSetTokenEXT.html)::`shaderStages` used to
@@ -87,7 +87,7 @@ create `indirectCommandsLayout`
 
 If `indirectCommandsLayout` was not created with a token sequence
 that contained the
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT` token,
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](VkIndirectCommandsTokenTypeEXT.html) token,
 `indirectExecutionSet` **must** be [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
 * 
@@ -110,7 +110,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGeneratedCommandsMemoryRequirementsInfoEXT-sType-sType) VUID-VkGeneratedCommandsMemoryRequirementsInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkGeneratedCommandsMemoryRequirementsInfoEXT-pNext-pNext) VUID-VkGeneratedCommandsMemoryRequirementsInfoEXT-pNext-pNext

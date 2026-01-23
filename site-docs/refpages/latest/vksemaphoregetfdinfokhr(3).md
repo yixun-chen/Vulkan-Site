@@ -92,7 +92,7 @@ associated [semaphore signal    operation](../../../../spec/latest/chapters/sync
 
 If `handleType` refers to a handle type with copy payload
 transference semantics, `semaphore` **must** have been created with a
-[VkSemaphoreType](VkSemaphoreType.html) of `VK_SEMAPHORE_TYPE_BINARY`
+[VkSemaphoreType](VkSemaphoreType.html) of [VK_SEMAPHORE_TYPE_BINARY](VkSemaphoreType.html)
 
 * 
 [](#VUID-VkSemaphoreGetFdInfoKHR-handleType-03254) VUID-VkSemaphoreGetFdInfoKHR-handleType-03254
@@ -108,7 +108,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSemaphoreGetFdInfoKHR-sType-sType) VUID-VkSemaphoreGetFdInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SEMAPHORE_GET_FD_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SEMAPHORE_GET_FD_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkSemaphoreGetFdInfoKHR-pNext-pNext) VUID-VkSemaphoreGetFdInfoKHR-pNext-pNext

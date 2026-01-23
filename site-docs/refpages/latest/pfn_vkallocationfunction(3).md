@@ -22,7 +22,7 @@ PFN_vkAllocationFunction - Application-defined memory allocation function
 The type of `pfnAllocation` is:
 
 // Provided by VK_VERSION_1_0
-typedef void* (VKAPI_PTR *PFN_vkAllocationFunction)(
+typedef void* (*PFN_vkAllocationFunction)(
     void*                                       pUserData,
     size_t                                      size,
     size_t                                      alignment,
@@ -66,12 +66,12 @@ properly via other means (e.g. process termination). |
 If `pfnAllocation` returns `NULL`, and if the implementation is unable
 to continue correct processing of the current command without the requested
 allocation, it **must** treat this as a runtime error, and generate
-`VK_ERROR_OUT_OF_HOST_MEMORY` at the appropriate time for the command in
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html) at the appropriate time for the command in
 which the condition was detected, as described in [Return Codes](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes).
 
 If the implementation is able to continue correct processing of the current
 command without the requested allocation, then it **may** do so, and **must** not
-generate `VK_ERROR_OUT_OF_HOST_MEMORY` as a result of this failed
+generate [VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html) as a result of this failed
 allocation.
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkAllocationCallbacks](VkAllocationCallbacks.html), [VkSystemAllocationScope](VkSystemAllocationScope.html)

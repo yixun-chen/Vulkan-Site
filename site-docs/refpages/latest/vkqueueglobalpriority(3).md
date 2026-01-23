@@ -59,17 +59,17 @@ A comparison operation on the enum values can be used to determine the
 priority order.
 
 * 
-`VK_QUEUE_GLOBAL_PRIORITY_LOW` is below the system default.
+[VK_QUEUE_GLOBAL_PRIORITY_LOW](#) is below the system default.
 Useful for non-interactive tasks.
 
 * 
-`VK_QUEUE_GLOBAL_PRIORITY_MEDIUM` is the system default priority.
+[VK_QUEUE_GLOBAL_PRIORITY_MEDIUM](#) is the system default priority.
 
 * 
-`VK_QUEUE_GLOBAL_PRIORITY_HIGH` is above the system default.
+[VK_QUEUE_GLOBAL_PRIORITY_HIGH](#) is above the system default.
 
 * 
-`VK_QUEUE_GLOBAL_PRIORITY_REALTIME` is the highest priority.
+[VK_QUEUE_GLOBAL_PRIORITY_REALTIME](#) is the highest priority.
 Useful for critical tasks.
 
 [VK_EXT_global_priority](VK_EXT_global_priority.html), [VK_KHR_global_priority](VK_KHR_global_priority.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), [VkDeviceQueueGlobalPriorityCreateInfo](VkDeviceQueueGlobalPriorityCreateInfo.html), [VkQueueFamilyGlobalPriorityProperties](VkQueueFamilyGlobalPriorityProperties.html)

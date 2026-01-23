@@ -20,7 +20,7 @@
 VkBindPipelineIndirectCommandNV - Structure specifying input data for the compute pipeline dispatch token
 
 The `VkBindPipelineIndirectCommandNV` structure specifies the input data
-for the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV` token.
+for the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV](VkIndirectCommandsTokenTypeNV.html) token.
 
 // Provided by VK_NV_device_generated_commands_compute
 typedef struct VkBindPipelineIndirectCommandNV {
@@ -43,7 +43,7 @@ feature **must** be enabled
 [](#VUID-VkBindPipelineIndirectCommandNV-None-09092) VUID-VkBindPipelineIndirectCommandNV-None-09092
 
 The referenced pipeline **must** have been created with
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV`
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-VkBindPipelineIndirectCommandNV-None-09093) VUID-VkBindPipelineIndirectCommandNV-None-09093

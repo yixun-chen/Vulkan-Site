@@ -50,7 +50,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTensorDependencyInfoARM-sType-sType) VUID-VkTensorDependencyInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TENSOR_DEPENDENCY_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TENSOR_DEPENDENCY_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkTensorDependencyInfoARM-pTensorMemoryBarriers-parameter) VUID-VkTensorDependencyInfoARM-pTensorMemoryBarriers-parameter

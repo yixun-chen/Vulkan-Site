@@ -30,29 +30,29 @@ typedef enum VkPresentStageFlagBitsEXT {
 } VkPresentStageFlagBitsEXT;
 
 * 
-`VK_PRESENT_STAGE_QUEUE_OPERATIONS_END_BIT_EXT` marks the end of the
+[VK_PRESENT_STAGE_QUEUE_OPERATIONS_END_BIT_EXT](#) marks the end of the
 set of queue operations enqueued by [vkQueuePresentKHR](vkQueuePresentKHR.html) on the
 provided `VkQueue` for a presentation request.
 
 * 
-`VK_PRESENT_STAGE_REQUEST_DEQUEUED_BIT_EXT` is the stage after which
+[VK_PRESENT_STAGE_REQUEST_DEQUEUED_BIT_EXT](#) is the stage after which
 the presentation request has been dequeued from the swapchain’s internal
 presentation request queue, if any, as specified by the present mode
 associated with that request.
 
 * 
-`VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_OUT_BIT_EXT` is the stage after
+[VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_OUT_BIT_EXT](#) is the stage after
 which data for the first pixel of the presentation request associated
 with the image has left the presentation engine for a display hardware.
 
 * 
-`VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_VISIBLE_BIT_EXT` is the stage
+[VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_VISIBLE_BIT_EXT](#) is the stage
 after which a display hardware has made the first pixel visible for the
 presentation request associated with the image to be presented.
 
 |  | The set of queue operations delimited by
 | --- | --- |
-`VK_PRESENT_STAGE_QUEUE_OPERATIONS_END_BIT_EXT` includes the wait for
+[VK_PRESENT_STAGE_QUEUE_OPERATIONS_END_BIT_EXT](#) includes the wait for
 the semaphores specified in [VkPresentInfoKHR](VkPresentInfoKHR.html)::`pWaitSemaphores`,
 if any, and any work implicitly enqueued by the implementation. |
 

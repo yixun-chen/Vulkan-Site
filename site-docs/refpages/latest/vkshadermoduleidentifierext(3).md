@@ -47,7 +47,7 @@ structure.
 Any returned values beyond the first `identifierSize` bytes are
 **undefined**.
 Implementations **must** return an `identifierSize` greater than 0, and
-less-or-equal to `VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT`.
+less-or-equal to [VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT](VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT.html).
 
 Two identifiers are considered equal if `identifierSize` is equal and
 the first `identifierSize` bytes of `identifier` compare equal.
@@ -62,7 +62,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkShaderModuleIdentifierEXT-sType-sType) VUID-VkShaderModuleIdentifierEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SHADER_MODULE_IDENTIFIER_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SHADER_MODULE_IDENTIFIER_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkShaderModuleIdentifierEXT-pNext-pNext) VUID-VkShaderModuleIdentifierEXT-pNext-pNext

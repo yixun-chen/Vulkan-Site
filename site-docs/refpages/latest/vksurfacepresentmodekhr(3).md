@@ -49,8 +49,8 @@ returned in [VkSurfaceCapabilitiesKHR](VkSurfaceCapabilitiesKHR.html)::`minImage
 [VkSurfacePresentScalingCapabilitiesKHR](VkSurfacePresentScalingCapabilitiesKHR.html)::`minScaledImageExtent`,
 and [VkSurfacePresentScalingCapabilitiesKHR](VkSurfacePresentScalingCapabilitiesKHR.html)::`maxScaledImageExtent`
 are valid only for the specified `presentMode`.
-If `presentMode` is `VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR` or
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`, the per-present mode
+If `presentMode` is [VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](VkPresentModeKHR.html) or
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](VkPresentModeKHR.html), the per-present mode
 image counts **must** both be one.
 The per-present mode image counts **may** be less-than or greater-than the
 image counts returned when `VkSurfacePresentModeKHR` is not provided.
@@ -89,7 +89,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSurfacePresentModeKHR-sType-sType) VUID-VkSurfacePresentModeKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkSurfacePresentModeKHR-presentMode-parameter) VUID-VkSurfacePresentModeKHR-presentMode-parameter

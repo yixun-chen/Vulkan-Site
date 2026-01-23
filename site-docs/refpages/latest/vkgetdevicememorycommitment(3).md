@@ -52,7 +52,7 @@ Valid Usage
 [](#VUID-vkGetDeviceMemoryCommitment-memory-00690) VUID-vkGetDeviceMemoryCommitment-memory-00690
 
 `memory` **must** have been created with a memory type that reports
-`VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT`
+[VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT](VkMemoryPropertyFlagBits.html)
 
 Valid Usage (Implicit)
 

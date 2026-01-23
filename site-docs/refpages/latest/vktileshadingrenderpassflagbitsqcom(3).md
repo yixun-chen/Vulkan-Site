@@ -29,11 +29,11 @@ typedef enum VkTileShadingRenderPassFlagBitsQCOM {
 } VkTileShadingRenderPassFlagBitsQCOM;
 
 * 
-`VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` specifies that the
+[VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](#) specifies that the
 render pass has tile shading enabled.
 
 * 
-`VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM` specifies
+[VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM](#) specifies
 that the secondary command buffer will be executed within a
 [per-tile execution block](../../../../spec/latest/chapters/renderpass.html#renderpass-per-tile-execution-model).
 

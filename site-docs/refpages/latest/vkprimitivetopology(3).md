@@ -36,55 +36,55 @@ typedef enum VkPrimitiveTopology {
 } VkPrimitiveTopology;
 
 * 
-`VK_PRIMITIVE_TOPOLOGY_POINT_LIST` specifies a series of
+[VK_PRIMITIVE_TOPOLOGY_POINT_LIST](#) specifies a series of
 [separate point primitives](../../../../spec/latest/chapters/drawing.html#drawing-point-lists).
 
 * 
-`VK_PRIMITIVE_TOPOLOGY_LINE_LIST` specifies a series of
+[VK_PRIMITIVE_TOPOLOGY_LINE_LIST](#) specifies a series of
 [separate line primitives](../../../../spec/latest/chapters/drawing.html#drawing-line-lists).
 
 * 
-`VK_PRIMITIVE_TOPOLOGY_LINE_STRIP` specifies a series of
+[VK_PRIMITIVE_TOPOLOGY_LINE_STRIP](#) specifies a series of
 [connected line primitives](../../../../spec/latest/chapters/drawing.html#drawing-line-strips) with consecutive lines
 sharing a vertex.
 
 * 
-`VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST` specifies a series of
+[VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST](#) specifies a series of
 [separate triangle primitives](../../../../spec/latest/chapters/drawing.html#drawing-triangle-lists).
 
 * 
-`VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP` specifies a series of
+[VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP](#) specifies a series of
 [connected triangle primitives](../../../../spec/latest/chapters/drawing.html#drawing-triangle-strips) with
 consecutive triangles sharing an edge.
 
 * 
-`VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN` specifies a series of
+[VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN](#) specifies a series of
 [connected triangle primitives](../../../../spec/latest/chapters/drawing.html#drawing-triangle-fans) with all
 triangles sharing a common vertex.
 If the `[VK_KHR_portability_subset](VK_KHR_portability_subset.html)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](VkPhysicalDevicePortabilitySubsetFeaturesKHR.html)::`triangleFans`
-is `VK_FALSE`, then triangle fans are not supported by the
-implementation, and `VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN` **must** not
+is [VK_FALSE](VK_FALSE.html), then triangle fans are not supported by the
+implementation, and [VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN](#) **must** not
 be used.
 
 * 
-`VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY` specifies a series
+[VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY](#) specifies a series
 of [separate line primitives with    adjacency](../../../../spec/latest/chapters/drawing.html#drawing-line-lists-with-adjacency).
 
 * 
-`VK_PRIMITIVE_TOPOLOGY_LINE_STRIP_WITH_ADJACENCY` specifies a series
+[VK_PRIMITIVE_TOPOLOGY_LINE_STRIP_WITH_ADJACENCY](#) specifies a series
 of [connected line primitives with    adjacency](../../../../spec/latest/chapters/drawing.html#drawing-line-strips-with-adjacency), with consecutive primitives sharing three vertices.
 
 * 
-`VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY` specifies a
+[VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY](#) specifies a
 series of [separate triangle    primitives with adjacency](../../../../spec/latest/chapters/drawing.html#drawing-triangle-lists-with-adjacency).
 
 * 
-`VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY` specifies
+[VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY](#) specifies
 [connected triangle primitives    with adjacency](../../../../spec/latest/chapters/drawing.html#drawing-triangle-strips-with-adjacency), with consecutive triangles sharing an edge.
 
 * 
-`VK_PRIMITIVE_TOPOLOGY_PATCH_LIST` specifies
+[VK_PRIMITIVE_TOPOLOGY_PATCH_LIST](#) specifies
 [separate patch primitives](../../../../spec/latest/chapters/drawing.html#drawing-patch-lists).
 
 Each primitive topology, and its construction from a list of vertices, is

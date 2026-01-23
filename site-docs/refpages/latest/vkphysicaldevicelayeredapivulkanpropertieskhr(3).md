@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceLayeredApiVulkanPropertiesKHR-sType-sType) VUID-VkPhysicalDeviceLayeredApiVulkanPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR](VkStructureType.html)
 
 [VK_KHR_maintenance7](VK_KHR_maintenance7.html), [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html), [VkStructureType](VkStructureType.html)
 

@@ -46,7 +46,7 @@ Valid Usage
 [](#VUID-vkBeginCommandBuffer-commandBuffer-00050) VUID-vkBeginCommandBuffer-commandBuffer-00050
 
 If `commandBuffer` was allocated from a [VkCommandPool](VkCommandPool.html) which
-did not have the `VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT`
+did not have the [VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT](VkCommandPoolCreateFlagBits.html)
 flag set, `commandBuffer` **must** be in the
 [initial state](../../../../spec/latest/chapters/cmdbuffers.html#commandbuffers-lifecycle)
 
@@ -62,18 +62,18 @@ If `commandBuffer` is a secondary command buffer, the
 
 If `commandBuffer` is a secondary command buffer and either the
 `occlusionQueryEnable` member of the `pInheritanceInfo` member
-of `pBeginInfo` is `VK_FALSE`, or the
+of `pBeginInfo` is [VK_FALSE](VK_FALSE.html), or the
 [`occlusionQueryPrecise`](../../../../spec/latest/chapters/features.html#features-occlusionQueryPrecise) feature
 is not enabled, then `pBeginInfo->pInheritanceInfo→queryFlags`
-**must** not contain `VK_QUERY_CONTROL_PRECISE_BIT`
+**must** not contain [VK_QUERY_CONTROL_PRECISE_BIT](VkQueryControlFlagBits.html)
 
 * 
 [](#VUID-vkBeginCommandBuffer-commandBuffer-02840) VUID-vkBeginCommandBuffer-commandBuffer-02840
 
 If `commandBuffer` is a primary command buffer, then
 `pBeginInfo->flags` **must** not set both the
-`VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT` and the
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT` flags
+[VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT](VkCommandBufferUsageFlagBits.html) and the
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](VkCommandBufferUsageFlagBits.html) flags
 
 Valid Usage (Implicit)
 
@@ -100,21 +100,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkCommandBuffer](VkCommandBuffer.html), [VkCommandBufferBeginInfo](VkCommandBufferBeginInfo.html)
 

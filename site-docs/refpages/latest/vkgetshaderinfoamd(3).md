@@ -60,33 +60,33 @@ return the variable is overwritten with the amount of data actually written
 to `pInfo`.
 If `pInfoSize` is less than the maximum size that **can** be retrieved by
 the pipeline cache, then at most `pInfoSize` bytes will be written to
-`pInfo`, and `VK_INCOMPLETE` will be returned, instead of
-`VK_SUCCESS`, to indicate that not all required of the pipeline cache
+`pInfo`, and [VK_INCOMPLETE](VkResult.html) will be returned, instead of
+[VK_SUCCESS](VkResult.html), to indicate that not all required of the pipeline cache
 was returned.
 
 Not all information is available for every shader and implementations may
 not support all kinds of information for any shader.
 When a certain type of information is unavailable, the function returns
-`VK_ERROR_FEATURE_NOT_PRESENT`.
+[VK_ERROR_FEATURE_NOT_PRESENT](VkResult.html).
 
 If information is successfully and fully queried, the function will return
-`VK_SUCCESS`.
+[VK_SUCCESS](VkResult.html).
 
-For `infoType` `VK_SHADER_INFO_TYPE_STATISTICS_AMD`, a
+For `infoType` [VK_SHADER_INFO_TYPE_STATISTICS_AMD](VkShaderInfoTypeAMD.html), a
 `VkShaderStatisticsInfoAMD` structure will be written to the buffer
 pointed to by `pInfo`.
 This structure will be populated with statistics regarding the physical
 device resources used by that shader along with other miscellaneous
 information and is described in further detail below.
 
-For `infoType` `VK_SHADER_INFO_TYPE_DISASSEMBLY_AMD`, `pInfo` is
+For `infoType` [VK_SHADER_INFO_TYPE_DISASSEMBLY_AMD](VkShaderInfoTypeAMD.html), `pInfo` is
 a pointer to a null-terminated UTF-8 string containing human-readable
 disassembly.
 The exact formatting and contents of the disassembly string are
 vendor-specific.
 
 The formatting and contents of all other types of information, including
-`infoType` `VK_SHADER_INFO_TYPE_BINARY_AMD`, are left to the vendor
+`infoType` [VK_SHADER_INFO_TYPE_BINARY_AMD](VkShaderInfoTypeAMD.html), are left to the vendor
 and are not further specified by this extension.
 
 |  | This query does not behave consistently with the behavior described in
@@ -96,8 +96,8 @@ reasons.
 
 If the amount of data available is larger than the passed `pInfoSize`,
 the query returns up to the size of the passed buffer, and signals overflow
-with a `VK_INCOMPLETE` success status instead of returning a
-`VK_ERROR_NOT_ENOUGH_SPACE_KHR` error status. |
+with a [VK_INCOMPLETE](VkResult.html) success status instead of returning a
+[VK_ERROR_NOT_ENOUGH_SPACE_KHR](VkResult.html) error status. |
 
 Valid Usage (Implicit)
 
@@ -141,24 +141,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_FEATURE_NOT_PRESENT`
+[VK_ERROR_FEATURE_NOT_PRESENT](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_AMD_shader_info](VK_AMD_shader_info.html), [VkDevice](VkDevice.html), [VkPipeline](VkPipeline.html), [VkShaderInfoTypeAMD](VkShaderInfoTypeAMD.html), [VkShaderStageFlagBits](VkShaderStageFlagBits.html)
 

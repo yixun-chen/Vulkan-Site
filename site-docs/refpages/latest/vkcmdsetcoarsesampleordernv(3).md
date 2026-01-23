@@ -47,16 +47,16 @@ orderings to use when ordering coverage samples.
 the coverage sample order for a single combination of fragment area and
 coverage sample count.
 
-If `sampleOrderType` is `VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV`, the
+If `sampleOrderType` is [VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV](VkCoarseSampleOrderTypeNV.html), the
 coverage sample order used for any combination of fragment area and coverage
 sample count not enumerated in `pCustomSampleOrders` will be identical
-to that used for `VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV`.
+to that used for [VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV](VkCoarseSampleOrderTypeNV.html).
 
 This command sets the order of coverage samples for subsequent drawing
 commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV` set in
+[VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineViewportCoarseSampleOrderStateCreateInfoNV](VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.html) values used to
@@ -68,7 +68,7 @@ Valid Usage
 [](#VUID-vkCmdSetCoarseSampleOrderNV-sampleOrderType-02081) VUID-vkCmdSetCoarseSampleOrderNV-sampleOrderType-02081
 
 If `sampleOrderType` is not
-`VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV`,
+[VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV](VkCoarseSampleOrderTypeNV.html),
 `customSamplerOrderCount` **must** be `0`
 
 * 
@@ -103,7 +103,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetCoarseSampleOrderNV-commandBuffer-cmdpool) VUID-vkCmdSetCoarseSampleOrderNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetCoarseSampleOrderNV-videocoding) VUID-vkCmdSetCoarseSampleOrderNV-videocoding

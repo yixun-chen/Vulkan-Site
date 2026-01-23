@@ -41,22 +41,22 @@ typedef enum VkBlendOverlapEXT {
 } VkBlendOverlapEXT;
 
 * 
-`VK_BLEND_OVERLAP_UNCORRELATED_EXT` specifies that there is no
+[VK_BLEND_OVERLAP_UNCORRELATED_EXT](#) specifies that there is no
 correlation between the source and destination coverage.
 
 * 
-`VK_BLEND_OVERLAP_CONJOINT_EXT` specifies that the source and
+[VK_BLEND_OVERLAP_CONJOINT_EXT](#) specifies that the source and
 destination coverage are considered to have maximal overlap.
 
 * 
-`VK_BLEND_OVERLAP_DISJOINT_EXT` specifies that the source and
+[VK_BLEND_OVERLAP_DISJOINT_EXT](#) specifies that the source and
 destination coverage are considered to have minimal overlap.
 
 | Overlap Mode | Weighting Equations |
 | --- | --- |
-| `VK_BLEND_OVERLAP_UNCORRELATED_EXT` |  |
-| `VK_BLEND_OVERLAP_CONJOINT_EXT` |  |
-| `VK_BLEND_OVERLAP_DISJOINT_EXT` |  |
+| [VK_BLEND_OVERLAP_UNCORRELATED_EXT](#) |  |
+| [VK_BLEND_OVERLAP_CONJOINT_EXT](#) |  |
+| [VK_BLEND_OVERLAP_DISJOINT_EXT](#) |  |
 
 [VK_EXT_blend_operation_advanced](VK_EXT_blend_operation_advanced.html), [VkColorBlendAdvancedEXT](VkColorBlendAdvancedEXT.html), [VkPipelineColorBlendAdvancedStateCreateInfoEXT](VkPipelineColorBlendAdvancedStateCreateInfoEXT.html)
 

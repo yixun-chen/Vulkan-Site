@@ -142,14 +142,14 @@ Extending [VkCommandBufferInheritanceInfo](VkCommandBufferInheritanceInfo.html),
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV`
+[VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV](VkStructureType.html)
 
 If [Vulkan Version 1.3](../../../../spec/latest/appendices/versions.html#versions-1.3) or [VK_KHR_dynamic_rendering](VK_KHR_dynamic_rendering.html) is supported:
 
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_NV`
+[VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_NV](VkStructureType.html)
 
 * 
 Revision 1, 2017-06-04 (Jeff Bolz)

@@ -47,7 +47,7 @@ If the `VkPhysicalDeviceYcbcrDegammaFeaturesQCOM` structure is included in the `
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceYcbcrDegammaFeaturesQCOM`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceYcbcrDegammaFeaturesQCOM-sType-sType) VUID-VkPhysicalDeviceYcbcrDegammaFeaturesQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_DEGAMMA_FEATURES_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_DEGAMMA_FEATURES_QCOM](VkStructureType.html)
 
 [VK_QCOM_ycbcr_degamma](VK_QCOM_ycbcr_degamma.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

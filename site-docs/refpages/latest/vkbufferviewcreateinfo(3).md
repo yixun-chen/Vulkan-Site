@@ -56,9 +56,9 @@ to this starting offset.
 
 * 
 `range` is a size in bytes of the buffer view.
-If `range` is equal to `VK_WHOLE_SIZE`, the range from
+If `range` is equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), the range from
 `offset` to the end of the buffer is used.
-If `VK_WHOLE_SIZE` is used and the remaining size of the buffer is
+If [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html) is used and the remaining size of the buffer is
 not a multiple of the [texel block size](../../../../spec/latest/chapters/formats.html#texel-block-size) of
 `format`, the nearest smaller multiple is used.
 
@@ -82,19 +82,19 @@ Valid Usage
 * 
 [](#VUID-VkBufferViewCreateInfo-range-00928) VUID-VkBufferViewCreateInfo-range-00928
 
-If `range` is not equal to `VK_WHOLE_SIZE`, `range` **must** be
+If `range` is not equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), `range` **must** be
 greater than `0`
 
 * 
 [](#VUID-VkBufferViewCreateInfo-range-00929) VUID-VkBufferViewCreateInfo-range-00929
 
-If `range` is not equal to `VK_WHOLE_SIZE`, `range` **must** be
+If `range` is not equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), `range` **must** be
 an integer multiple of the texel block size of `format`
 
 * 
 [](#VUID-VkBufferViewCreateInfo-range-00930) VUID-VkBufferViewCreateInfo-range-00930
 
-If `range` is not equal to `VK_WHOLE_SIZE`, the number of texel
+If `range` is not equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), the number of texel
 buffer elements given by (⌊`range` / (texel block
 size)⌋ × (texels per block)) where texel block size and
 texels per block are as defined in the [    Compatible Formats](../../../../spec/latest/chapters/formats.html#formats-compatibility) table for `format`, **must** be less than or equal
@@ -103,14 +103,14 @@ to `VkPhysicalDeviceLimits`::`maxTexelBufferElements`
 * 
 [](#VUID-VkBufferViewCreateInfo-offset-00931) VUID-VkBufferViewCreateInfo-offset-00931
 
-If `range` is not equal to `VK_WHOLE_SIZE`, the sum of
+If `range` is not equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), the sum of
 `offset` and `range` **must** be less than or equal to the size of
 `buffer`
 
 * 
 [](#VUID-VkBufferViewCreateInfo-range-04059) VUID-VkBufferViewCreateInfo-range-04059
 
-If `range` is equal to `VK_WHOLE_SIZE`, the number of texel
+If `range` is equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), the number of texel
 buffer elements given by (⌊(size - `offset`) / (texel
 block size)⌋ × (texels per block)) where size is the size
 of `buffer`, and texel block size and texels per block are as
@@ -122,26 +122,26 @@ defined in the [Compatible Formats](../../../../spec/latest/chapters/formats.htm
 [](#VUID-VkBufferViewCreateInfo-buffer-00932) VUID-VkBufferViewCreateInfo-buffer-00932
 
 `buffer` **must** have been created with at least one of the
-`VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT` or
-`VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT` usage flags set
+[VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits.html) or
+[VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flags set
 
 * 
 [](#VUID-VkBufferViewCreateInfo-format-08778) VUID-VkBufferViewCreateInfo-format-08778
 
 If the [buffer view usage](../../../../spec/latest/chapters/resources.html#resources-buffer-views-usage) contains
-`VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT`, then
+[VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits.html), then
 [format features](../../../../spec/latest/chapters/resources.html#resources-buffer-view-format-features) of
 `format` **must** contain
-`VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT`
+[VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-VkBufferViewCreateInfo-format-08779) VUID-VkBufferViewCreateInfo-format-08779
 
 If the [buffer view usage](../../../../spec/latest/chapters/resources.html#resources-buffer-views-usage) contains
-`VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT`, then
+[VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits.html), then
 [format features](../../../../spec/latest/chapters/resources.html#resources-buffer-view-format-features) of
 `format` **must** contain
-`VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT`
+[VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-VkBufferViewCreateInfo-buffer-00935) VUID-VkBufferViewCreateInfo-buffer-00935
@@ -162,12 +162,12 @@ feature is not enabled,
 
 If the [`texelBufferAlignment`](../../../../spec/latest/chapters/features.html#features-texelBufferAlignment)
 feature is enabled and if `buffer` was created with the
-`VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT` usage flag set,
+[VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set,
 `offset` **must** be a multiple of the lesser of
 [VkPhysicalDeviceTexelBufferAlignmentProperties](VkPhysicalDeviceTexelBufferAlignmentProperties.html)::`storageTexelBufferOffsetAlignmentBytes`
 or, if
 [VkPhysicalDeviceTexelBufferAlignmentProperties](VkPhysicalDeviceTexelBufferAlignmentProperties.html)::`storageTexelBufferOffsetSingleTexelAlignment`
-is `VK_TRUE`, the size of a texel of the requested `format`.
+is [VK_TRUE](VK_TRUE.html), the size of a texel of the requested `format`.
 If the size of a texel is a multiple of three bytes, then the size of a
 single component of `format` is used instead
 
@@ -176,12 +176,12 @@ single component of `format` is used instead
 
 If the [`texelBufferAlignment`](../../../../spec/latest/chapters/features.html#features-texelBufferAlignment)
 feature is enabled and if `buffer` was created with the
-`VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT` usage flag set,
+[VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set,
 `offset` **must** be a multiple of the lesser of
 [VkPhysicalDeviceTexelBufferAlignmentProperties](VkPhysicalDeviceTexelBufferAlignmentProperties.html)::`uniformTexelBufferOffsetAlignmentBytes`
 or, if
 [VkPhysicalDeviceTexelBufferAlignmentProperties](VkPhysicalDeviceTexelBufferAlignmentProperties.html)::`uniformTexelBufferOffsetSingleTexelAlignment`
-is `VK_TRUE`, the size of a texel of the requested `format`.
+is [VK_TRUE](VK_TRUE.html), the size of a texel of the requested `format`.
 If the size of a texel is a multiple of three bytes, then the size of a
 single component of `format` is used instead
 
@@ -191,15 +191,15 @@ single component of `format` is used instead
 If the `pNext` chain includes a
 [VkExportMetalObjectCreateInfoEXT](VkExportMetalObjectCreateInfoEXT.html) structure, its
 `exportObjectType` member **must** be
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT`
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT](VkExportMetalObjectTypeFlagBitsEXT.html)
 
 * 
 [](#VUID-VkBufferViewCreateInfo-pNext-08780) VUID-VkBufferViewCreateInfo-pNext-08780
 
 If the `pNext` chain includes a [VkBufferUsageFlags2CreateInfo](VkBufferUsageFlags2CreateInfo.html),
 its `usage` **must** not contain any other bit than
-`VK_BUFFER_USAGE_2_UNIFORM_TEXEL_BUFFER_BIT` or
-`VK_BUFFER_USAGE_2_STORAGE_TEXEL_BUFFER_BIT`
+[VK_BUFFER_USAGE_2_UNIFORM_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits2.html) or
+[VK_BUFFER_USAGE_2_STORAGE_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits2.html)
 
 * 
 [](#VUID-VkBufferViewCreateInfo-pNext-08781) VUID-VkBufferViewCreateInfo-pNext-08781
@@ -210,12 +210,24 @@ its `usage` **must** be a subset of the
 [VkBufferUsageFlags2CreateInfo](VkBufferUsageFlags2CreateInfo.html)::`usage` from
 [VkBufferCreateInfo](VkBufferCreateInfo.html)::`pNext` when creating `buffer`
 
+* 
+[](#VUID-VkBufferViewCreateInfo-None-12278) VUID-VkBufferViewCreateInfo-None-12278
+
+    If
+Vulkan 1.3 is not supported and
+    the [`ycbcr2plane444Formats`](../../../../spec/latest/chapters/features.html#features-ycbcr2plane444Formats)
+    feature is not enabled, `format` **must** not be
+    [VK_FORMAT_G8_B8R8_2PLANE_444_UNORM](VkFormat.html),
+    [VK_FORMAT_G10X6_B10X6R10X6_2PLANE_444_UNORM_3PACK16](VkFormat.html),
+    [VK_FORMAT_G12X4_B12X4R12X4_2PLANE_444_UNORM_3PACK16](VkFormat.html), or
+    [VK_FORMAT_G16_B16R16_2PLANE_444_UNORM](VkFormat.html)
+
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkBufferViewCreateInfo-sType-sType) VUID-VkBufferViewCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkBufferViewCreateInfo-pNext-pNext) VUID-VkBufferViewCreateInfo-pNext-pNext

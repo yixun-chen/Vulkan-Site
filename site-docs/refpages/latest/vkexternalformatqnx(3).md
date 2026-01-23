@@ -60,7 +60,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalFormatQNX-sType-sType) VUID-VkExternalFormatQNX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_QNX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_QNX](VkStructureType.html)
 
 [VK_QNX_external_memory_screen_buffer](VK_QNX_external_memory_screen_buffer.html), [VkStructureType](VkStructureType.html)
 

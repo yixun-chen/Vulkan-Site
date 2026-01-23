@@ -30,15 +30,15 @@ typedef enum VkMemoryOverallocationBehaviorAMD {
 } VkMemoryOverallocationBehaviorAMD;
 
 * 
-`VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD` lets the
+[VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD](#) lets the
 implementation decide if overallocation is allowed.
 
 * 
-`VK_MEMORY_OVERALLOCATION_BEHAVIOR_ALLOWED_AMD` specifies
+[VK_MEMORY_OVERALLOCATION_BEHAVIOR_ALLOWED_AMD](#) specifies
 overallocation is allowed if platform permits.
 
 * 
-`VK_MEMORY_OVERALLOCATION_BEHAVIOR_DISALLOWED_AMD` specifies the
+[VK_MEMORY_OVERALLOCATION_BEHAVIOR_DISALLOWED_AMD](#) specifies the
 application is not allowed to allocate device memory beyond the heap
 sizes reported by [VkPhysicalDeviceMemoryProperties](VkPhysicalDeviceMemoryProperties.html).
 Allocations that are not explicitly made by the application within the

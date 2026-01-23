@@ -40,43 +40,43 @@ typedef enum VkQueueFlagBits {
 } VkQueueFlagBits;
 
 * 
-`VK_QUEUE_GRAPHICS_BIT` specifies that queues in this queue family
+[VK_QUEUE_GRAPHICS_BIT](#) specifies that queues in this queue family
 support graphics operations.
 
 * 
-`VK_QUEUE_COMPUTE_BIT` specifies that queues in this queue family
+[VK_QUEUE_COMPUTE_BIT](#) specifies that queues in this queue family
 support compute operations.
 
 * 
-`VK_QUEUE_TRANSFER_BIT` specifies that queues in this queue family
+[VK_QUEUE_TRANSFER_BIT](#) specifies that queues in this queue family
 support transfer operations.
 
 * 
-`VK_QUEUE_SPARSE_BINDING_BIT` specifies that queues in this queue
+[VK_QUEUE_SPARSE_BINDING_BIT](#) specifies that queues in this queue
 family support sparse memory management operations (see
 [Sparse Resources](../../../../spec/latest/chapters/sparsemem.html#sparsememory)).
 If any of the sparse resource features are supported, then at least one
 queue family **must** support this bit.
 
 * 
-`VK_QUEUE_VIDEO_DECODE_BIT_KHR` specifies that queues in this queue
+[VK_QUEUE_VIDEO_DECODE_BIT_KHR](#) specifies that queues in this queue
 family support [video decode operations](../../../../spec/latest/chapters/videocoding.html#video-decode-operations).
 
 * 
-`VK_QUEUE_VIDEO_ENCODE_BIT_KHR` specifies that queues in this queue
+[VK_QUEUE_VIDEO_ENCODE_BIT_KHR](#) specifies that queues in this queue
 family support [video encode operations](../../../../spec/latest/chapters/videocoding.html#video-encode-operations).
 
 * 
-`VK_QUEUE_OPTICAL_FLOW_BIT_NV` specifies that queues in this queue
+[VK_QUEUE_OPTICAL_FLOW_BIT_NV](#) specifies that queues in this queue
 family support optical flow operations.
 
 * 
-`VK_QUEUE_DATA_GRAPH_BIT_ARM` specifies that queues in this queue
+[VK_QUEUE_DATA_GRAPH_BIT_ARM](#) specifies that queues in this queue
 family support [data graph operations](../../../../spec/latest/chapters/VK_ARM_data_graph/graphs.html#graphs-operations).
 
 * 
-`VK_QUEUE_PROTECTED_BIT` specifies that queues in this queue family
-support the `VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT` bit.
+[VK_QUEUE_PROTECTED_BIT](#) specifies that queues in this queue family
+support the [VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT](VkDeviceQueueCreateFlagBits.html) bit.
 (see [Protected Memory](../../../../spec/latest/chapters/memory.html#memory-protected-memory)).
 If the physical device supports the [    `protectedMemory`](../../../../spec/latest/chapters/features.html#features-protectedMemory) feature, at least one of its queue families
 **must** support this bit.
@@ -112,8 +112,8 @@ graphics operations, compute operations, and protected memory operations.
 are also allowed on a queue that supports either graphics or compute
 operations.
 Thus, if the capabilities of a queue family include
-`VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT`, then reporting
-the `VK_QUEUE_TRANSFER_BIT` capability separately for that queue family
+[VK_QUEUE_GRAPHICS_BIT](#) or [VK_QUEUE_COMPUTE_BIT](#), then reporting
+the [VK_QUEUE_TRANSFER_BIT](#) capability separately for that queue family
 is **optional**. |
 
 For further details see [Queues](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-queues).

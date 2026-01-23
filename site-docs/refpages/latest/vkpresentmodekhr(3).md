@@ -39,14 +39,14 @@ typedef enum VkPresentModeKHR {
 } VkPresentModeKHR;
 
 * 
-`VK_PRESENT_MODE_IMMEDIATE_KHR` specifies that the presentation
+[VK_PRESENT_MODE_IMMEDIATE_KHR](#) specifies that the presentation
 engine does not wait for a vertical blanking period to update the
 current image, meaning this mode **may** result in visible tearing.
 No internal queuing of presentation requests is needed, as the requests
 are applied immediately.
 
 * 
-`VK_PRESENT_MODE_MAILBOX_KHR` specifies that the presentation engine
+[VK_PRESENT_MODE_MAILBOX_KHR](#) specifies that the presentation engine
 waits for the next vertical blanking period to update the current image.
 Tearing **cannot** be observed.
 An internal single-entry queue is used to hold pending presentation
@@ -58,7 +58,7 @@ One request is removed from the queue and processed during each vertical
 blanking period in which the queue is non-empty.
 
 * 
-`VK_PRESENT_MODE_FIFO_KHR` specifies that the presentation engine
+[VK_PRESENT_MODE_FIFO_KHR](#) specifies that the presentation engine
 waits for the next vertical blanking period to update the current image.
 Tearing **cannot** be observed.
 An internal queue is used to hold pending presentation requests.
@@ -69,7 +69,7 @@ This is the only value of `presentMode` that is **required** to be
 supported.
 
 * 
-`VK_PRESENT_MODE_FIFO_RELAXED_KHR` specifies that the presentation
+[VK_PRESENT_MODE_FIFO_RELAXED_KHR](#) specifies that the presentation
 engine generally waits for the next vertical blanking period to update
 the current image.
 If a vertical blanking period has already passed since the last update
@@ -86,7 +86,7 @@ removed from the beginning of the queue and processed during or after
 each vertical blanking period in which the queue is non-empty.
 
 * 
-`VK_PRESENT_MODE_FIFO_LATEST_READY_KHR` specifies that the
+[VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](#) specifies that the
     presentation engine waits for the next vertical blanking period to
     update the current image.
     Tearing **cannot** be observed.
@@ -108,7 +108,7 @@ or
     The other dequeued requests are dropped.
 
 * 
-`VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR` specifies that the
+[VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](#) specifies that the
 presentation engine and application have concurrent access to a single
 image, which is referred to as a *shared presentable image*.
 The presentation engine is only required to update the current image
@@ -119,7 +119,7 @@ However, the presentation engine **may** update the current image at any
 point, meaning this mode **may** result in visible tearing.
 
 * 
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR` specifies that the
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](#) specifies that the
 presentation engine and application have concurrent access to a single
 image, which is referred to as a *shared presentable image*.
 The presentation engine periodically updates the current image on its
@@ -139,18 +139,18 @@ mode, and can be determined as per the table below:
 
 | Presentation mode | Image usage flags |
 | --- | --- |
-| `VK_PRESENT_MODE_IMMEDIATE_KHR` | [VkSurfaceCapabilitiesKHR](VkSurfaceCapabilitiesKHR.html)::`supportedUsageFlags` |
-| `VK_PRESENT_MODE_MAILBOX_KHR` | [VkSurfaceCapabilitiesKHR](VkSurfaceCapabilitiesKHR.html)::`supportedUsageFlags` |
-| `VK_PRESENT_MODE_FIFO_KHR` | [VkSurfaceCapabilitiesKHR](VkSurfaceCapabilitiesKHR.html)::`supportedUsageFlags` |
-| `VK_PRESENT_MODE_FIFO_RELAXED_KHR` | [VkSurfaceCapabilitiesKHR](VkSurfaceCapabilitiesKHR.html)::`supportedUsageFlags` |
-| `VK_PRESENT_MODE_FIFO_LATEST_READY_KHR` | [VkSurfaceCapabilitiesKHR](VkSurfaceCapabilitiesKHR.html)::`supportedUsageFlags` |
-| `VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR` | [VkSharedPresentSurfaceCapabilitiesKHR](VkSharedPresentSurfaceCapabilitiesKHR.html)::`sharedPresentSupportedUsageFlags` |
-| `VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR` | [VkSharedPresentSurfaceCapabilitiesKHR](VkSharedPresentSurfaceCapabilitiesKHR.html)::`sharedPresentSupportedUsageFlags` |
+| [VK_PRESENT_MODE_IMMEDIATE_KHR](#) | [VkSurfaceCapabilitiesKHR](VkSurfaceCapabilitiesKHR.html)::`supportedUsageFlags` |
+| [VK_PRESENT_MODE_MAILBOX_KHR](#) | [VkSurfaceCapabilitiesKHR](VkSurfaceCapabilitiesKHR.html)::`supportedUsageFlags` |
+| [VK_PRESENT_MODE_FIFO_KHR](#) | [VkSurfaceCapabilitiesKHR](VkSurfaceCapabilitiesKHR.html)::`supportedUsageFlags` |
+| [VK_PRESENT_MODE_FIFO_RELAXED_KHR](#) | [VkSurfaceCapabilitiesKHR](VkSurfaceCapabilitiesKHR.html)::`supportedUsageFlags` |
+| [VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](#) | [VkSurfaceCapabilitiesKHR](VkSurfaceCapabilitiesKHR.html)::`supportedUsageFlags` |
+| [VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](#) | [VkSharedPresentSurfaceCapabilitiesKHR](VkSharedPresentSurfaceCapabilitiesKHR.html)::`sharedPresentSupportedUsageFlags` |
+| [VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](#) | [VkSharedPresentSurfaceCapabilitiesKHR](VkSharedPresentSurfaceCapabilitiesKHR.html)::`sharedPresentSupportedUsageFlags` |
 
-|  | For reference, the mode indicated by `VK_PRESENT_MODE_FIFO_KHR` is
+|  | For reference, the mode indicated by [VK_PRESENT_MODE_FIFO_KHR](#) is
 | --- | --- |
 equivalent to the behavior of {wgl\|glX\|egl}SwapBuffers with a swap interval
-of 1, while the mode indicated by `VK_PRESENT_MODE_FIFO_RELAXED_KHR` is
+of 1, while the mode indicated by [VK_PRESENT_MODE_FIFO_RELAXED_KHR](#) is
 equivalent to the behavior of {wgl\|glX}SwapBuffers with a swap interval of
 -1 (from the {WGL\|GLX}_EXT_swap_control_tear extensions). |
 

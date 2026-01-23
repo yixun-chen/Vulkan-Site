@@ -61,18 +61,26 @@ In order to continue to allow naming these shaders independently,
 chain of [VkPipelineShaderStageCreateInfo](VkPipelineShaderStageCreateInfo.html), which associates a static
 name with that particular shader.
 
+This structure **can** be included in the `pNext` chain of
+[VkResourceDescriptorInfoEXT](VkResourceDescriptorInfoEXT.html) or [VkSamplerCreateInfo](VkSamplerCreateInfo.html) to label a
+descriptor or embedded sampler.
+This structure **may** be ignored when included in the `pNext` chain of
+[VkSamplerCreateInfo](VkSamplerCreateInfo.html) when creating a sampler object.
+The label **must** remain valid while the descriptor is valid; it **may** be
+discarded if it becomes invalid.
+
 Valid Usage
 
 * 
 [](#VUID-VkDebugUtilsObjectNameInfoEXT-objectType-02589) VUID-VkDebugUtilsObjectNameInfoEXT-objectType-02589
 
-If `objectType` is `VK_OBJECT_TYPE_UNKNOWN`, `objectHandle`
+If `objectType` is [VK_OBJECT_TYPE_UNKNOWN](VkObjectType.html), `objectHandle`
 **must** not be [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
 * 
 [](#VUID-VkDebugUtilsObjectNameInfoEXT-objectType-02590) VUID-VkDebugUtilsObjectNameInfoEXT-objectType-02590
 
-If `objectType` is not `VK_OBJECT_TYPE_UNKNOWN`,
+If `objectType` is not [VK_OBJECT_TYPE_UNKNOWN](VkObjectType.html),
 `objectHandle` **must** be [VK_NULL_HANDLE](VK_NULL_HANDLE.html) or a valid Vulkan
 handle of the type associated with `objectType` as defined in the
 [`VkObjectType` and Vulkan Handle    Relationship](../../../../spec/latest/chapters/debugging.html#debugging-object-types) table
@@ -82,7 +90,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDebugUtilsObjectNameInfoEXT-sType-sType) VUID-VkDebugUtilsObjectNameInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDebugUtilsObjectNameInfoEXT-objectType-parameter) VUID-VkDebugUtilsObjectNameInfoEXT-objectType-parameter

@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:spec" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -174,6 +174,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="descriptorsets.html">Resource Descriptors</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="descriptorheaps.html">Descriptor Heaps</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="interfaces.html">Shader Interfaces</a>
@@ -513,14 +516,14 @@ unconditionally, even if no fragment shader previously wrote to that output.</p>
 <div class="paragraph">
 <p>If
 <code>VkPhysicalDeviceMaintenance5Properties</code>::<code>earlyFragmentMultisampleCoverageAfterSampleCounting</code>
-is <code>VK_TRUE</code> and there is a <a href="#fragops-shader">fragment shader</a> which
+is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a> and there is a <a href="#fragops-shader">fragment shader</a> which
 declares the <code>EarlyFragmentTests</code> execution mode, <a href="#fragops-shader">fragment shading</a> and <a href="#fragops-covg">multisample coverage</a> operations
 <strong>must</strong> be performed after <a href="#fragops-samplecount">sample counting</a>.</p>
 </div>
 <div class="paragraph">
 <p>Otherwise, if
 <code>VkPhysicalDeviceMaintenance5Properties</code>::<code>earlyFragmentMultisampleCoverageAfterSampleCounting</code>
-is <code>VK_FALSE</code> and there is a <a href="#fragops-shader">fragment shader</a> which
+is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a> and there is a <a href="#fragops-shader">fragment shader</a> which
 declares the <code>EarlyFragmentTests</code> execution mode, <a href="#fragops-shader">fragment shading</a> and <a href="#fragops-covg">multisample coverage</a> operations
 <strong>should</strong> instead be performed after <a href="#fragops-samplecount">sample counting</a>,
 but <strong>may</strong> be performed before <a href="#fragops-samplecount">sample counting</a>.</p>
@@ -528,14 +531,14 @@ but <strong>may</strong> be performed before <a href="#fragops-samplecount">samp
 <div class="paragraph">
 <p>If
 <code>VkPhysicalDeviceMaintenance5Properties</code>::<code>earlyFragmentSampleMaskTestBeforeSampleCounting</code>
-is <code>VK_TRUE</code> and there is a <a href="#fragops-shader">fragment shader</a> which
+is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a> and there is a <a href="#fragops-shader">fragment shader</a> which
 declares the <code>EarlyFragmentTests</code> execution mode <a href="#fragops-samplemask">sample mask test</a> operations <strong>must</strong> follow the order of fragment operations
 from above.</p>
 </div>
 <div class="paragraph">
 <p>Otherwise, if
 <code>VkPhysicalDeviceMaintenance5Properties</code>::<code>earlyFragmentSampleMaskTestBeforeSampleCounting</code>
-is <code>VK_FALSE</code> and there is a <a href="#fragops-shader">fragment shader</a> which
+is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a> and there is a <a href="#fragops-shader">fragment shader</a> which
 declares the <code>EarlyFragmentTests</code> execution mode, <a href="#fragops-samplemask">sample mask test</a> operations <strong>should</strong> follow the order of fragment
 operations from above but <strong>may</strong> instead be performed after
 <a href="#fragops-samplecount">sample counting</a>.</p>
@@ -576,13 +579,13 @@ execution mode;</p>
 <p>the fragment shader specifies the <code>StencilRefLessFrontAMD</code> execution
 mode and the pipeline uses a
 <a href="#VkPipelineDepthStencilStateCreateInfo">VkPipelineDepthStencilStateCreateInfo</a>::<code>front.compareOp</code> of
-<code>VK_COMPARE_OP_GREATER</code> or <code>VK_COMPARE_OP_GREATER_OR_EQUAL</code>; or</p>
+<a href="samplers.html#VkCompareOp" class="xref page">VK_COMPARE_OP_GREATER</a> or <a href="samplers.html#VkCompareOp" class="xref page">VK_COMPARE_OP_GREATER_OR_EQUAL</a>; or</p>
 </li>
 <li>
 <p>the fragment shader specifies the <code>StencilRefGreaterFrontAMD</code>
 execution mode and the pipeline uses a
 <a href="#VkPipelineDepthStencilStateCreateInfo">VkPipelineDepthStencilStateCreateInfo</a>::<code>front.compareOp</code> of
-<code>VK_COMPARE_OP_LESS</code> or <code>VK_COMPARE_OP_LESS_OR_EQUAL</code>; and</p>
+<a href="samplers.html#VkCompareOp" class="xref page">VK_COMPARE_OP_LESS</a> or <a href="samplers.html#VkCompareOp" class="xref page">VK_COMPARE_OP_LESS_OR_EQUAL</a>; and</p>
 </li>
 </ul>
 </div>
@@ -599,13 +602,13 @@ execution mode;</p>
 <p>the fragment shader specifies the <code>StencilRefLessBackAMD</code> execution
 mode and the pipeline uses a
 <a href="#VkPipelineDepthStencilStateCreateInfo">VkPipelineDepthStencilStateCreateInfo</a>::<code>back.compareOp</code> of
-<code>VK_COMPARE_OP_GREATER</code> or <code>VK_COMPARE_OP_GREATER_OR_EQUAL</code>; or</p>
+<a href="samplers.html#VkCompareOp" class="xref page">VK_COMPARE_OP_GREATER</a> or <a href="samplers.html#VkCompareOp" class="xref page">VK_COMPARE_OP_GREATER_OR_EQUAL</a>; or</p>
 </li>
 <li>
 <p>the fragment shader specifies the <code>StencilRefGreaterBackAMD</code>
 execution mode and the pipeline uses a
 <a href="#VkPipelineDepthStencilStateCreateInfo">VkPipelineDepthStencilStateCreateInfo</a>::<code>back.compareOp</code> of
-<code>VK_COMPARE_OP_LESS</code> or <code>VK_COMPARE_OP_LESS_OR_EQUAL</code></p>
+<a href="samplers.html#VkCompareOp" class="xref page">VK_COMPARE_OP_LESS</a> or <a href="samplers.html#VkCompareOp" class="xref page">VK_COMPARE_OP_LESS_OR_EQUAL</a></p>
 </li>
 </ul>
 </div>
@@ -647,13 +650,13 @@ and</p>
 <p>the fragment shader specifies the <code>DepthLess</code> execution mode and the
 pipeline uses a
 <a href="#VkPipelineDepthStencilStateCreateInfo">VkPipelineDepthStencilStateCreateInfo</a>::<code>depthCompareOp</code> of
-<code>VK_COMPARE_OP_GREATER</code> or <code>VK_COMPARE_OP_GREATER_OR_EQUAL</code>; or</p>
+<a href="samplers.html#VkCompareOp" class="xref page">VK_COMPARE_OP_GREATER</a> or <a href="samplers.html#VkCompareOp" class="xref page">VK_COMPARE_OP_GREATER_OR_EQUAL</a>; or</p>
 </li>
 <li>
 <p>the fragment shader specifies the <code>DepthGreater</code> execution mode and
 the pipeline uses a
 <a href="#VkPipelineDepthStencilStateCreateInfo">VkPipelineDepthStencilStateCreateInfo</a>::<code>depthCompareOp</code> of
-<code>VK_COMPARE_OP_LESS</code> or <code>VK_COMPARE_OP_LESS_OR_EQUAL</code></p>
+<a href="samplers.html#VkCompareOp" class="xref page">VK_COMPARE_OP_LESS</a> or <a href="samplers.html#VkCompareOp" class="xref page">VK_COMPARE_OP_LESS_OR_EQUAL</a></p>
 </li>
 </ul>
 </div>
@@ -747,15 +750,15 @@ structures defining discard rectangles.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>If the <code>VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT</code> dynamic state is enabled
+<p>If the <a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT</a> dynamic state is enabled
 for a pipeline, the <code>pDiscardRectangles</code> member is ignored.
-If the <code>VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT</code> dynamic state is
+If the <a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT</a> dynamic state is
 not enabled for the pipeline the presence of this structure in the
 <a href="pipelines.html#VkGraphicsPipelineCreateInfo" class="xref page">VkGraphicsPipelineCreateInfo</a> chain, and a <code>discardRectangleCount</code>
 greater than zero, implicitly enables discard rectangles in the pipeline,
 otherwise discard rectangles <strong>must</strong> enabled or disabled by
 <a href="#vkCmdSetDiscardRectangleEnableEXT">vkCmdSetDiscardRectangleEnableEXT</a>.
-If the <code>VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT</code> dynamic state is
+If the <a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT</a> dynamic state is
 enabled for the pipeline, the <code>discardRectangleMode</code> member is ignored,
 and the discard rectangle mode <strong>must</strong> be set by
 <a href="#vkCmdSetDiscardRectangleModeEXT">vkCmdSetDiscardRectangleModeEXT</a>.</p>
@@ -764,13 +767,13 @@ and the discard rectangle mode <strong>must</strong> be set by
 <p>When this structure is included in the <code>pNext</code> chain of
 <a href="pipelines.html#VkGraphicsPipelineCreateInfo" class="xref page">VkGraphicsPipelineCreateInfo</a>, it defines parameters of the discard
 rectangle test.
-If the <code>VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT</code> dynamic state is not
+If the <a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT</a> dynamic state is not
 enabled, and this structure is not included in the <code>pNext</code> chain, it is
 equivalent to specifying this structure with a <code>discardRectangleCount</code>
 of <code>0</code>.
-If all <code>VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT</code>,
-<code>VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT</code>, and
-<code>VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT</code> dynamic states are
+If all <a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT</a>,
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT</a>, and
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT</a> dynamic states are
 enabled, the application <strong>can</strong> omit this structure from the <code>pNext</code> chain
 of <a href="pipelines.html#VkGraphicsPipelineCreateInfo" class="xref page">VkGraphicsPipelineCreateInfo</a> and still use discard rectangles by
 setting all state dynamically.
@@ -803,7 +806,7 @@ to zero.</p>
 <ul>
 <li>
 <p><a id="VUID-VkPipelineDiscardRectangleStateCreateInfoEXT-sType-sType" href="#VUID-VkPipelineDiscardRectangleStateCreateInfoEXT-sType-sType"></a> <span class="vuid">VUID-VkPipelineDiscardRectangleStateCreateInfoEXT-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineDiscardRectangleStateCreateInfoEXT-flags-zerobitmask" href="#VUID-VkPipelineDiscardRectangleStateCreateInfoEXT-flags-zerobitmask"></a> <span class="vuid">VUID-VkPipelineDiscardRectangleStateCreateInfoEXT-flags-zerobitmask</span><br>
@@ -836,7 +839,7 @@ setting a mask, but is currently reserved for future use.</p>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p><code>VkDiscardRectangleModeEXT</code> values are:</p>
+<p><a href="#VkDiscardRectangleModeEXT">VkDiscardRectangleModeEXT</a> values are:</p>
 </div>
 <div id="VkDiscardRectangleModeEXT" class="listingblock">
 <div class="content">
@@ -850,11 +853,11 @@ typedef enum VkDiscardRectangleModeEXT {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT</code> specifies that the discard
+<p><a href="#VkDiscardRectangleModeEXT">VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT</a> specifies that the discard
 rectangle test is inclusive.</p>
 </li>
 <li>
-<p><code>VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT</code> specifies that the discard
+<p><a href="#VkDiscardRectangleModeEXT">VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT</a> specifies that the discard
 rectangle test is exclusive.</p>
 </li>
 </ul>
@@ -907,7 +910,7 @@ replace the current state for the discard rectangle at index
 <p>This command sets the discard rectangles for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineDiscardRectangleStateCreateInfoEXT">VkPipelineDiscardRectangleStateCreateInfoEXT</a>::<code>pDiscardRectangles</code>
@@ -976,7 +979,7 @@ enabled, then this function <strong>must</strong> not be called</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDiscardRectangleEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetDiscardRectangleEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetDiscardRectangleEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDiscardRectangleEXT-videocoding" href="#VUID-vkCmdSetDiscardRectangleEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetDiscardRectangleEXT-videocoding</span><br>
@@ -1079,7 +1082,7 @@ enabled or not.</p>
 commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is implied by the
 <a href="#VkPipelineDiscardRectangleStateCreateInfoEXT">VkPipelineDiscardRectangleStateCreateInfoEXT</a>::<code>discardRectangleCount</code>
@@ -1118,7 +1121,7 @@ extension</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDiscardRectangleEnableEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetDiscardRectangleEnableEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetDiscardRectangleEnableEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDiscardRectangleEnableEXT-videocoding" href="#VUID-vkCmdSetDiscardRectangleEnableEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetDiscardRectangleEnableEXT-videocoding</span><br>
@@ -1216,7 +1219,7 @@ discard rectangles, either inclusive or exclusive.</p>
 <p>This command sets the discard rectangle mode for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineDiscardRectangleStateCreateInfoEXT">VkPipelineDiscardRectangleStateCreateInfoEXT</a>::<code>discardRectangleMode</code>
@@ -1257,7 +1260,7 @@ extension</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDiscardRectangleModeEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetDiscardRectangleModeEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetDiscardRectangleModeEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDiscardRectangleModeEXT-videocoding" href="#VUID-vkCmdSetDiscardRectangleModeEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetDiscardRectangleModeEXT-videocoding</span><br>
@@ -1399,7 +1402,7 @@ for <span class="eq">i</span> in <span class="eq">[0, <code>scissorCount</code>)
 <div class="paragraph">
 <p>This command sets the scissor rectangles for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
-when the graphics pipeline is created with <code>VK_DYNAMIC_STATE_SCISSOR</code>
+when the graphics pipeline is created with <a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_SCISSOR</a>
 set in <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="vertexpostproc.html#VkPipelineViewportStateCreateInfo" class="xref page">VkPipelineViewportStateCreateInfo</a>::<code>pScissors</code> values used to
@@ -1478,7 +1481,7 @@ enabled, then this function <strong>must</strong> not be called</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetScissor-commandBuffer-cmdpool" href="#VUID-vkCmdSetScissor-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetScissor-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetScissor-videocoding" href="#VUID-vkCmdSetScissor-videocoding"></a> <span class="vuid">VUID-vkCmdSetScissor-videocoding</span><br>
@@ -1618,7 +1621,7 @@ structures defining exclusive scissor rectangles.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>If the <code>VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV</code> dynamic state is enabled
+<p>If the <a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV</a> dynamic state is enabled
 for a pipeline, the <code>pExclusiveScissors</code> member is ignored.</p>
 </div>
 <div class="paragraph">
@@ -1662,7 +1665,7 @@ enabled, <code>exclusiveScissorCount</code> <strong>must</strong> be <code>0</co
 <ul>
 <li>
 <p><a id="VUID-VkPipelineViewportExclusiveScissorStateCreateInfoNV-sType-sType" href="#VUID-VkPipelineViewportExclusiveScissorStateCreateInfoNV-sType-sType"></a> <span class="vuid">VUID-VkPipelineViewportExclusiveScissorStateCreateInfoNV-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV</a></p>
 </li>
 </ul>
 </div>
@@ -1717,7 +1720,7 @@ structures defining exclusive scissor rectangles.</p>
 commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineViewportExclusiveScissorStateCreateInfoNV">VkPipelineViewportExclusiveScissorStateCreateInfoNV</a>::<code>pExclusiveScissors</code>
@@ -1796,7 +1799,7 @@ addition overflow</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetExclusiveScissorNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetExclusiveScissorNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetExclusiveScissorNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetExclusiveScissorNV-videocoding" href="#VUID-vkCmdSetExclusiveScissorNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetExclusiveScissorNV-videocoding</span><br>
@@ -1916,7 +1919,7 @@ index <span class="eq"><code>firstExclusiveScissor</code> +  i</span>, for <span
 commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is implied by the
 <a href="#VkPipelineViewportExclusiveScissorStateCreateInfoNV">VkPipelineViewportExclusiveScissorStateCreateInfoNV</a>::<code>exclusiveScissorCount</code>
@@ -1960,7 +1963,7 @@ be enabled, and the implementation <strong>must</strong> support at least
 </li>
 <li>
 <p><a id="VUID-vkCmdSetExclusiveScissorEnableNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetExclusiveScissorEnableNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetExclusiveScissorEnableNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetExclusiveScissorEnableNV-videocoding" href="#VUID-vkCmdSetExclusiveScissorEnableNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetExclusiveScissorEnableNV-videocoding</span><br>
@@ -2078,7 +2081,7 @@ mask has all bits set to <code>1</code>.</p>
 <p>This command sets the sample mask for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_SAMPLE_MASK_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_SAMPLE_MASK_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="primsrast.html#VkPipelineMultisampleStateCreateInfo" class="xref page">VkPipelineMultisampleStateCreateInfo</a>::<code>pSampleMask</code> value used to
@@ -2139,7 +2142,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetSampleMaskEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetSampleMaskEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetSampleMaskEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetSampleMaskEXT-videocoding" href="#VUID-vkCmdSetSampleMaskEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetSampleMaskEXT-videocoding</span><br>
@@ -2255,7 +2258,7 @@ the shader does not write to any storage resources.</p>
 framebuffer locations, and does not write to any storage resources,
 multiple fragments <strong>may</strong> be shaded by one fragment shader invocation.
 This <strong>may</strong> affect
-<code>VK_QUERY_PIPELINE_STATISTIC_FRAGMENT_SHADER_INVOCATIONS_BIT</code>
+<a href="queries.html#VkQueryPipelineStatisticFlagBits" class="xref page">VK_QUERY_PIPELINE_STATISTIC_FRAGMENT_SHADER_INVOCATIONS_BIT</a>
 results, but <strong>must</strong> otherwise not be visible behavior to applications.</p>
 </li>
 </ul>
@@ -2313,7 +2316,7 @@ fragment shader may be invoked separately for each view.</p>
 than one fragment shader invocation may be invoked for each covered sample.
 Such additional invocations are only produced if
 <code>VkPhysicalDeviceFragmentDensityMapPropertiesEXT</code>::<code>fragmentDensityInvocations</code>
-is <code>VK_TRUE</code>.
+is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>.
 Implementations may generate these additional fragment shader invocations in
 order to make transitions between fragment areas with different fragment
 densities more smooth.</p>
@@ -2429,7 +2432,7 @@ This functionality is supported for
 <a href="primsrast.html#VkPipelineMultisampleStateCreateInfo" class="xref page">VkPipelineMultisampleStateCreateInfo</a>::<code>rasterizationSamples</code> &gt; 1
 when
 <a href="devsandqueues.html#VkPhysicalDeviceShaderTileImagePropertiesEXT" class="xref page">VkPhysicalDeviceShaderTileImagePropertiesEXT</a>::<code>shaderTileImageReadSampleFromPixelRateInvocation</code>
-is <code>VK_TRUE</code>.</p>
+is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>.</p>
 </div>
 <div class="paragraph">
 <p>If <a href="primsrast.html#primsrast-sampleshading" class="xref page">sample shading</a> is enabled, and
@@ -2447,7 +2450,7 @@ writes are disabled.</p>
 <div class="paragraph">
 <p>If
 <a href="devsandqueues.html#VkPhysicalDeviceShaderTileImagePropertiesEXT" class="xref page">VkPhysicalDeviceShaderTileImagePropertiesEXT</a>::<code>shaderTileImageReadFromHelperInvocation</code>
-is <code>VK_FALSE</code>, values read from helper invocations are <strong>undefined</strong>
+is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, values read from helper invocations are <strong>undefined</strong>
 otherwise the values read are subject to the coherency guarantees described
 below.</p>
 </div>
@@ -2507,7 +2510,7 @@ visible via tile image reads.</p>
 <div class="paragraph">
 <p>When
 <a href="devsandqueues.html#VkPhysicalDeviceShaderTileImagePropertiesEXT" class="xref page">VkPhysicalDeviceShaderTileImagePropertiesEXT</a>::<code>shaderTileImageCoherentReadAccelerated</code>
-is <code>VK_TRUE</code>, the implementation prefers that coherent tile image reads
+is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, the implementation prefers that coherent tile image reads
 are used, otherwise the implementation prefers that non-coherent tile image
 reads are used.</p>
 </div>
@@ -2665,7 +2668,7 @@ include <code>SampleMask</code> in its interface, the coverage mask is not modif
 <p>Next, the fragment alpha value and coverage mask are modified based on the
 line coverage factor if the <code>lineRasterizationMode</code> member of the
 <a href="primsrast.html#VkPipelineRasterizationStateCreateInfo" class="xref page">VkPipelineRasterizationStateCreateInfo</a> structure is
-<code>VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH</code>, and the
+<a href="primsrast.html#VkLineRasterizationModeEXT" class="xref page">VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH</a>, and the
 <code>alphaToCoverageEnable</code> and <code>alphaToOneEnable</code> members of the
 <a href="primsrast.html#VkPipelineMultisampleStateCreateInfo" class="xref page">VkPipelineMultisampleStateCreateInfo</a> structure.</p>
 </div>
@@ -2700,7 +2703,7 @@ state.</p>
 drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="primsrast.html#VkPipelineMultisampleStateCreateInfo" class="xref page">VkPipelineMultisampleStateCreateInfo</a>::<code>alphaToCoverageEnable</code>
@@ -2746,7 +2749,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetAlphaToCoverageEnableEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetAlphaToCoverageEnableEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetAlphaToCoverageEnableEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetAlphaToCoverageEnableEXT-videocoding" href="#VUID-vkCmdSetAlphaToCoverageEnableEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetAlphaToCoverageEnableEXT-videocoding</span><br>
@@ -2844,7 +2847,7 @@ recorded.</p>
 commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="primsrast.html#VkPipelineMultisampleStateCreateInfo" class="xref page">VkPipelineMultisampleStateCreateInfo</a>::<code>alphaToOneEnable</code> value
@@ -2875,7 +2878,7 @@ enabled</p>
 <p><a id="VUID-vkCmdSetAlphaToOneEnableEXT-alphaToOne-07607" href="#VUID-vkCmdSetAlphaToOneEnableEXT-alphaToOne-07607"></a> <span class="vuid">VUID-vkCmdSetAlphaToOneEnableEXT-alphaToOne-07607</span><br>
 
 If the <a href="features.html#features-alphaToOne" class="xref page"><code>alphaToOne</code></a> feature is not enabled,
-<code>alphaToOneEnable</code> <strong>must</strong> be <code>VK_FALSE</code></p>
+<code>alphaToOneEnable</code> <strong>must</strong> be <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a></p>
 </li>
 </ul>
 </div>
@@ -2896,7 +2899,7 @@ If the <a href="features.html#features-alphaToOne" class="xref page"><code>alpha
 </li>
 <li>
 <p><a id="VUID-vkCmdSetAlphaToOneEnableEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetAlphaToOneEnableEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetAlphaToOneEnableEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetAlphaToOneEnableEXT-videocoding" href="#VUID-vkCmdSetAlphaToOneEnableEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetAlphaToOneEnableEXT-videocoding</span><br>
@@ -2975,7 +2978,7 @@ operations are skipped.</p>
 <div class="paragraph">
 <p>If the <code>lineRasterizationMode</code> member of the
 <a href="primsrast.html#VkPipelineRasterizationStateCreateInfo" class="xref page">VkPipelineRasterizationStateCreateInfo</a> structure is
-<code>VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH</code> and the fragment came
+<a href="primsrast.html#VkLineRasterizationModeEXT" class="xref page">VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH</a> and the fragment came
 from a line segment, then the alpha value is replaced by multiplying it by
 the coverage factor for the fragment computed during
 <a href="primsrast.html#primsrast-lines-smooth" class="xref page">smooth line rasterization</a>.</p>
@@ -3068,9 +3071,9 @@ depth/stencil state information.</p>
 is enabled.</p>
 </li>
 <li>
-<p><code>depthWriteEnable</code> controls whether <a href="#fragops-depth-write">depth    writes</a> are enabled when <code>depthTestEnable</code> is <code>VK_TRUE</code>.
+<p><code>depthWriteEnable</code> controls whether <a href="#fragops-depth-write">depth    writes</a> are enabled when <code>depthTestEnable</code> is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>.
 Depth writes are always disabled when <code>depthTestEnable</code> is
-<code>VK_FALSE</code>.</p>
+<a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>.</p>
 </li>
 <li>
 <p><code>depthCompareOp</code> is a <a href="samplers.html#VkCompareOp" class="xref page">VkCompareOp</a> value specifying the
@@ -3105,18 +3108,18 @@ the corresponding parameters of the <a href="#fragops-stencil">stencil test</a>.
 <p><a id="VUID-VkPipelineDepthStencilStateCreateInfo-depthBoundsTestEnable-00598" href="#VUID-VkPipelineDepthStencilStateCreateInfo-depthBoundsTestEnable-00598"></a> <span class="vuid">VUID-VkPipelineDepthStencilStateCreateInfo-depthBoundsTestEnable-00598</span><br>
 
 If the <a href="features.html#features-depthBounds" class="xref page"><code>depthBounds</code></a> feature is not
-enabled, <code>depthBoundsTestEnable</code> <strong>must</strong> be <code>VK_FALSE</code></p>
+enabled, <code>depthBoundsTestEnable</code> <strong>must</strong> be <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineDepthStencilStateCreateInfo-separateStencilMaskRef-04453" href="#VUID-VkPipelineDepthStencilStateCreateInfo-separateStencilMaskRef-04453"></a> <span class="vuid">VUID-VkPipelineDepthStencilStateCreateInfo-separateStencilMaskRef-04453</span><br>
 
 If the <code><a href="../appendices/extensions.html#VK_KHR_portability_subset" class="xref page">VK_KHR_portability_subset</a></code> extension is enabled, and
 <a href="features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR" class="xref page">VkPhysicalDevicePortabilitySubsetFeaturesKHR</a>::<code>separateStencilMaskRef</code>
-is <code>VK_FALSE</code>, and the value of
+is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, and the value of
 <a href="#VkPipelineDepthStencilStateCreateInfo">VkPipelineDepthStencilStateCreateInfo</a>::<code>stencilTestEnable</code> is
-<code>VK_TRUE</code>, and the value of
+<a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, and the value of
 <a href="primsrast.html#VkPipelineRasterizationStateCreateInfo" class="xref page">VkPipelineRasterizationStateCreateInfo</a>::<code>cullMode</code> is
-<code>VK_CULL_MODE_NONE</code>, the value of <code>reference</code> in each of the
+<a href="primsrast.html#VkCullModeFlagBits" class="xref page">VK_CULL_MODE_NONE</a>, the value of <code>reference</code> in each of the
 <a href="#VkStencilOpState">VkStencilOpState</a> structs in <code>front</code> and <code>back</code> <strong>must</strong> be
 the same</p>
 </li>
@@ -3125,14 +3128,14 @@ the same</p>
 
 If the <a href="features.html#features-rasterizationOrderDepthAttachmentAccess" class="xref page">    <code>rasterizationOrderDepthAttachmentAccess</code></a> feature is not enabled,
 <code>flags</code> <strong>must</strong> not include
-<code>VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT</code></p>
+<a href="#VkPipelineDepthStencilStateCreateFlagBits">VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineDepthStencilStateCreateInfo-rasterizationOrderStencilAttachmentAccess-06464" href="#VUID-VkPipelineDepthStencilStateCreateInfo-rasterizationOrderStencilAttachmentAccess-06464"></a> <span class="vuid">VUID-VkPipelineDepthStencilStateCreateInfo-rasterizationOrderStencilAttachmentAccess-06464</span><br>
 
 If the <a href="features.html#features-rasterizationOrderStencilAttachmentAccess" class="xref page">    <code>rasterizationOrderStencilAttachmentAccess</code></a> feature is not
 enabled, <code>flags</code> <strong>must</strong> not include
-<code>VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT</code></p>
+<a href="#VkPipelineDepthStencilStateCreateFlagBits">VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT</a></p>
 </li>
 </ul>
 </div>
@@ -3145,7 +3148,7 @@ enabled, <code>flags</code> <strong>must</strong> not include
 <ul>
 <li>
 <p><a id="VUID-VkPipelineDepthStencilStateCreateInfo-sType-sType" href="#VUID-VkPipelineDepthStencilStateCreateInfo-sType-sType"></a> <span class="vuid">VUID-VkPipelineDepthStencilStateCreateInfo-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineDepthStencilStateCreateInfo-pNext-pNext" href="#VUID-VkPipelineDepthStencilStateCreateInfo-pNext-pNext"></a> <span class="vuid">VUID-VkPipelineDepthStencilStateCreateInfo-pNext-pNext</span><br>
@@ -3211,12 +3214,12 @@ typedef enum VkPipelineDepthStencilStateCreateFlagBits {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT</code>
+<p><a href="#VkPipelineDepthStencilStateCreateFlagBits">VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT</a>
 specifies that access to the depth aspects of depth/stencil and input
 attachments will have implicit framebuffer-local memory dependencies.</p>
 </li>
 <li>
-<p><code>VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT</code>
+<p><a href="#VkPipelineDepthStencilStateCreateFlagBits">VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT</a>
 specifies that access to the stencil aspects of depth/stencil and input
 attachments will have implicit framebuffer-local memory dependencies.</p>
 </li>
@@ -3224,7 +3227,7 @@ attachments will have implicit framebuffer-local memory dependencies.</p>
 </div>
 <div class="paragraph">
 <p>When
-<code>VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT</code>
+<a href="#VkPipelineDepthStencilStateCreateFlagBits">VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT</a>
 is included in a pipeline, it forms a framebuffer-local memory dependency
 for each fragment generated by draw commands for that pipeline with the
 following scopes:</p>
@@ -3233,14 +3236,14 @@ following scopes:</p>
 <ul>
 <li>
 <p>The first <a href="synchronization.html#synchronization-dependencies-scopes" class="xref page">synchronization scope</a>
-includes <code>VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT</code> and
-<code>VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT</code> pipeline stages executed
+includes <a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT</a> and
+<a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT</a> pipeline stages executed
 by all previous fragments (as defined by <a href="drawing.html#drawing-primitive-order" class="xref page">    primitive order</a>) in the corresponding
 <a href="synchronization.html#synchronization-framebuffer-regions" class="xref page">framebuffer regions</a> including
 those generated by the same draw command.</p>
 </li>
 <li>
-<p>The second <a href="synchronization.html#synchronization-dependencies-scopes" class="xref page">synchronization    scope</a> includes <code>VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT</code> stage
+<p>The second <a href="synchronization.html#synchronization-dependencies-scopes" class="xref page">synchronization    scope</a> includes <a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT</a> stage
 executed by the generated fragment.</p>
 </li>
 <li>
@@ -3255,7 +3258,7 @@ includes all reads from the depth aspect of input attachments.</p>
 </div>
 <div class="paragraph">
 <p>When
-<code>VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT</code>
+<a href="#VkPipelineDepthStencilStateCreateFlagBits">VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT</a>
 is included in a pipeline, it forms a framebuffer-local memory dependency
 for each fragment generated by draw commands for that pipeline with the
 following scopes:</p>
@@ -3264,15 +3267,15 @@ following scopes:</p>
 <ul>
 <li>
 <p>The first <a href="synchronization.html#synchronization-dependencies-scopes" class="xref page">synchronization scope</a>
-includes <code>VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT</code>
-<code>VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT</code> pipeline stages executed
+includes <a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT</a>
+<a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT</a> pipeline stages executed
 by all previous fragments (as defined by <a href="drawing.html#drawing-primitive-order" class="xref page">    primitive order</a>) in the corresponding
 <a href="synchronization.html#synchronization-framebuffer-regions" class="xref page">framebuffer regions</a> including
 those generated by the same draw command.</p>
 </li>
 <li>
-<p>The second <a href="synchronization.html#synchronization-dependencies-scopes" class="xref page">synchronization    scope</a> includes <code>VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT</code> and
-<code>VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT</code> pipeline stages executed
+<p>The second <a href="synchronization.html#synchronization-dependencies-scopes" class="xref page">synchronization    scope</a> includes <a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT</a> and
+<a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT</a> pipeline stages executed
 by the generated fragment.</p>
 </li>
 <li>
@@ -3356,7 +3359,7 @@ enabled.</p>
 <p>This command sets the depth bounds enable for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineDepthStencilStateCreateInfo">VkPipelineDepthStencilStateCreateInfo</a>::<code>depthBoundsTestEnable</code>
@@ -3392,7 +3395,7 @@ equal to Version 1.3</p>
 <p><a id="VUID-vkCmdSetDepthBoundsTestEnable-depthBounds-10010" href="#VUID-vkCmdSetDepthBoundsTestEnable-depthBounds-10010"></a> <span class="vuid">VUID-vkCmdSetDepthBoundsTestEnable-depthBounds-10010</span><br>
 
 If the <a href="features.html#features-depthBounds" class="xref page"><code>depthBounds</code></a> feature is not
-enabled, <code>depthBoundsTestEnable</code> <strong>must</strong> be <code>VK_FALSE</code></p>
+enabled, <code>depthBoundsTestEnable</code> <strong>must</strong> be <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a></p>
 </li>
 </ul>
 </div>
@@ -3413,7 +3416,7 @@ enabled, <code>depthBoundsTestEnable</code> <strong>must</strong> be <code>VK_FA
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthBoundsTestEnable-commandBuffer-cmdpool" href="#VUID-vkCmdSetDepthBoundsTestEnable-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetDepthBoundsTestEnable-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthBoundsTestEnable-videocoding" href="#VUID-vkCmdSetDepthBoundsTestEnable-videocoding"></a> <span class="vuid">VUID-vkCmdSetDepthBoundsTestEnable-videocoding</span><br>
@@ -3514,7 +3517,7 @@ recorded.</p>
 <p>This command sets the depth bounds range for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_DEPTH_BOUNDS</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DEPTH_BOUNDS</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineDepthStencilStateCreateInfo">VkPipelineDepthStencilStateCreateInfo</a>::<code>minDepthBounds</code> and
@@ -3562,7 +3565,7 @@ If the <code><a href="../appendices/extensions.html#VK_EXT_depth_range_unrestric
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthBounds-commandBuffer-cmdpool" href="#VUID-vkCmdSetDepthBounds-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetDepthBounds-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthBounds-videocoding" href="#VUID-vkCmdSetDepthBounds-videocoding"></a> <span class="vuid">VUID-vkCmdSetDepthBounds-videocoding</span><br>
@@ -3754,7 +3757,7 @@ recorded.</p>
 <p>This command sets the stencil test enable for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineDepthStencilStateCreateInfo">VkPipelineDepthStencilStateCreateInfo</a>::<code>stencilTestEnable</code> value
@@ -3805,7 +3808,7 @@ equal to Version 1.3</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetStencilTestEnable-commandBuffer-cmdpool" href="#VUID-vkCmdSetStencilTestEnable-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetStencilTestEnable-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetStencilTestEnable-videocoding" href="#VUID-vkCmdSetStencilTestEnable-videocoding"></a> <span class="vuid">VUID-vkCmdSetStencilTestEnable-videocoding</span><br>
@@ -3934,7 +3937,7 @@ operator used in the stencil test.</p>
 <div class="paragraph">
 <p>This command sets the stencil operation for subsequent drawing commands when
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
-when the graphics pipeline is created with <code>VK_DYNAMIC_STATE_STENCIL_OP</code>
+when the graphics pipeline is created with <a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_STENCIL_OP</a>
 set in <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the corresponding
 <code>VkPipelineDepthStencilStateCreateInfo</code>::<code>failOp</code>, <code>passOp</code>,
@@ -4010,7 +4013,7 @@ equal to Version 1.3</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetStencilOp-commandBuffer-cmdpool" href="#VUID-vkCmdSetStencilOp-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetStencilOp-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetStencilOp-videocoding" href="#VUID-vkCmdSetStencilOp-videocoding"></a> <span class="vuid">VUID-vkCmdSetStencilOp-videocoding</span><br>
@@ -4190,7 +4193,7 @@ the set of stencil state for which to update the compare mask.</p>
 <p>This command sets the stencil compare mask for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkStencilOpState">VkStencilOpState</a>::<code>compareMask</code> value used to create the currently
@@ -4219,7 +4222,7 @@ active pipeline, for both front and back faces.</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetStencilCompareMask-commandBuffer-cmdpool" href="#VUID-vkCmdSetStencilCompareMask-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetStencilCompareMask-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetStencilCompareMask-videocoding" href="#VUID-vkCmdSetStencilCompareMask-videocoding"></a> <span class="vuid">VUID-vkCmdSetStencilCompareMask-videocoding</span><br>
@@ -4290,7 +4293,7 @@ Secondary</p></td>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p><code>VkStencilFaceFlagBits</code> values are:</p>
+<p><a href="#VkStencilFaceFlagBits">VkStencilFaceFlagBits</a> values are:</p>
 </div>
 <div id="VkStencilFaceFlagBits" class="listingblock">
 <div class="content">
@@ -4307,16 +4310,16 @@ typedef enum VkStencilFaceFlagBits {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_STENCIL_FACE_FRONT_BIT</code> specifies that only the front set of
+<p><a href="#VkStencilFaceFlagBits">VK_STENCIL_FACE_FRONT_BIT</a> specifies that only the front set of
 stencil state is updated.</p>
 </li>
 <li>
-<p><code>VK_STENCIL_FACE_BACK_BIT</code> specifies that only the back set of
+<p><a href="#VkStencilFaceFlagBits">VK_STENCIL_FACE_BACK_BIT</a> specifies that only the back set of
 stencil state is updated.</p>
 </li>
 <li>
-<p><code>VK_STENCIL_FACE_FRONT_AND_BACK</code> is the combination of
-<code>VK_STENCIL_FACE_FRONT_BIT</code> and <code>VK_STENCIL_FACE_BACK_BIT</code>, and
+<p><a href="#VkStencilFaceFlagBits">VK_STENCIL_FACE_FRONT_AND_BACK</a> is the combination of
+<a href="#VkStencilFaceFlagBits">VK_STENCIL_FACE_FRONT_BIT</a> and <a href="#VkStencilFaceFlagBits">VK_STENCIL_FACE_BACK_BIT</a>, and
 specifies that both sets of stencil state are updated.</p>
 </li>
 </ul>
@@ -4372,7 +4375,7 @@ described above for <a href="#vkCmdSetStencilCompareMask">vkCmdSetStencilCompare
 <p>This command sets the stencil write mask for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_STENCIL_WRITE_MASK</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_STENCIL_WRITE_MASK</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the <code>writeMask</code> value used to
 create the currently active pipeline, for both
@@ -4402,7 +4405,7 @@ create the currently active pipeline, for both
 </li>
 <li>
 <p><a id="VUID-vkCmdSetStencilWriteMask-commandBuffer-cmdpool" href="#VUID-vkCmdSetStencilWriteMask-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetStencilWriteMask-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetStencilWriteMask-videocoding" href="#VUID-vkCmdSetStencilWriteMask-videocoding"></a> <span class="vuid">VUID-vkCmdSetStencilWriteMask-videocoding</span><br>
@@ -4506,7 +4509,7 @@ described above for <a href="#vkCmdSetStencilCompareMask">vkCmdSetStencilCompare
 commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_STENCIL_REFERENCE</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_STENCIL_REFERENCE</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineDepthStencilStateCreateInfo">VkPipelineDepthStencilStateCreateInfo</a>::<code>reference</code> value used to
@@ -4535,7 +4538,7 @@ create the currently active pipeline, for both front and back faces.</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetStencilReference-commandBuffer-cmdpool" href="#VUID-vkCmdSetStencilReference-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetStencilReference-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetStencilReference-videocoding" href="#VUID-vkCmdSetStencilReference-videocoding"></a> <span class="vuid">VUID-vkCmdSetStencilReference-videocoding</span><br>
@@ -4628,31 +4631,31 @@ typedef enum VkStencilOp {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_STENCIL_OP_KEEP</code> keeps the current value.</p>
+<p><a href="#VkStencilOp">VK_STENCIL_OP_KEEP</a> keeps the current value.</p>
 </li>
 <li>
-<p><code>VK_STENCIL_OP_ZERO</code> sets the value to 0.</p>
+<p><a href="#VkStencilOp">VK_STENCIL_OP_ZERO</a> sets the value to 0.</p>
 </li>
 <li>
-<p><code>VK_STENCIL_OP_REPLACE</code> sets the value to <code>reference</code>.</p>
+<p><a href="#VkStencilOp">VK_STENCIL_OP_REPLACE</a> sets the value to <code>reference</code>.</p>
 </li>
 <li>
-<p><code>VK_STENCIL_OP_INCREMENT_AND_CLAMP</code> increments the current value and
+<p><a href="#VkStencilOp">VK_STENCIL_OP_INCREMENT_AND_CLAMP</a> increments the current value and
 clamps to the maximum representable unsigned value.</p>
 </li>
 <li>
-<p><code>VK_STENCIL_OP_DECREMENT_AND_CLAMP</code> decrements the current value and
+<p><a href="#VkStencilOp">VK_STENCIL_OP_DECREMENT_AND_CLAMP</a> decrements the current value and
 clamps to 0.</p>
 </li>
 <li>
-<p><code>VK_STENCIL_OP_INVERT</code> bitwise-inverts the current value.</p>
+<p><a href="#VkStencilOp">VK_STENCIL_OP_INVERT</a> bitwise-inverts the current value.</p>
 </li>
 <li>
-<p><code>VK_STENCIL_OP_INCREMENT_AND_WRAP</code> increments the current value and
+<p><a href="#VkStencilOp">VK_STENCIL_OP_INCREMENT_AND_WRAP</a> increments the current value and
 wraps to 0 when the maximum value would have been exceeded.</p>
 </li>
 <li>
-<p><code>VK_STENCIL_OP_DECREMENT_AND_WRAP</code> decrements the current value and
+<p><a href="#VkStencilOp">VK_STENCIL_OP_DECREMENT_AND_WRAP</a> decrements the current value and
 wraps to the maximum possible value when the value would go below 0.</p>
 </li>
 </ul>
@@ -4698,7 +4701,7 @@ this fragment, respectively.
 If the <a href="features.html#features-depthClampControl" class="xref page"><code>depthClampControl</code></a> feature is
 enabled and
 <a href="#VkPipelineViewportDepthClampControlCreateInfoEXT">VkPipelineViewportDepthClampControlCreateInfoEXT</a>::<code>depthClampMode</code>
-is <code>VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT</code>, then <span class="eq">z<sub>min</sub></span> and
+is <a href="#VkDepthClampModeEXT">VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT</a>, then <span class="eq">z<sub>min</sub></span> and
 <span class="eq">z<sub>max</sub></span> are equal to the <code>minDepthClamp</code> and <code>maxDepthClamp</code>
 values of the <a href="#VkDepthClampRangeEXT">VkDepthClampRangeEXT</a> structure pointed to by
 <code>pDepthClampRange</code>.</p>
@@ -4769,7 +4772,7 @@ each viewport.</p>
 <li>
 <p><code>pDepthClampRange</code> sets the depth clamp range for all viewports if
 <code>depthClampMode</code> is
-<code>VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT</code>.</p>
+<a href="#VkDepthClampModeEXT">VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT</a>.</p>
 </li>
 </ul>
 </div>
@@ -4778,7 +4781,7 @@ each viewport.</p>
 the depth clamp range used in the pipeline.
 If this structure is not provided in the next chain then
 <code>depthClampMode</code> defaults to
-<code>VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT</code>.</p>
+<a href="#VkDepthClampModeEXT">VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT</a>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -4789,8 +4792,8 @@ If this structure is not provided in the next chain then
 <p><a id="VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-pDepthClampRange-09646" href="#VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-pDepthClampRange-09646"></a> <span class="vuid">VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-pDepthClampRange-09646</span><br>
 
 If <code>depthClampMode</code> is
-<code>VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT</code>, and the pipeline is
-not created with <code>VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT</code>, then
+<a href="#VkDepthClampModeEXT">VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT</a>, and the pipeline is
+not created with <a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT</a>, then
 <code>pDepthClampRange</code> <strong>must</strong> be a valid pointer to a valid
 <code>VkDepthClampRangeEXT</code> structure</p>
 </li>
@@ -4805,7 +4808,7 @@ not created with <code>VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT</code>, then
 <ul>
 <li>
 <p><a id="VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-sType-sType" href="#VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-sType-sType"></a> <span class="vuid">VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-depthClampMode-parameter" href="#VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-depthClampMode-parameter"></a> <span class="vuid">VUID-VkPipelineViewportDepthClampControlCreateInfoEXT-depthClampMode-parameter</span><br>
@@ -4840,7 +4843,7 @@ typedef enum VkDepthClampModeEXT {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT</code> specifies that the depth
+<p><a href="#VkDepthClampModeEXT">VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT</a> specifies that the depth
 clamp range follows the viewport depth range.
 The depth clamp range of each viewport will implicitly be set to
 <span class="eq">z<sub>min</sub> = min(n,f)</span> and <span class="eq">z<sub>max</sub> = max(n,f)</span>, where <span class="eq">n</span> and
@@ -4848,7 +4851,7 @@ The depth clamp range of each viewport will implicitly be set to
 the viewport.</p>
 </li>
 <li>
-<p><code>VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT</code> specifies that a single
+<p><a href="#VkDepthClampModeEXT">VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT</a> specifies that a single
 user-defined depth clamp range will be used for all viewports.
 The user-defined depth clamp range is defined by the <code>minDepthClamp</code>
 and <code>maxDepthClamp</code> members of <a href="#VkDepthClampRangeEXT">VkDepthClampRangeEXT</a>.</p>
@@ -4885,7 +4888,7 @@ each viewport.</p>
 <li>
 <p><code>pDepthClampRange</code> sets the depth clamp range for all viewports if
 <code>depthClampMode</code> is
-<code>VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT</code>.</p>
+<a href="#VkDepthClampModeEXT">VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT</a>.</p>
 </li>
 </ul>
 </div>
@@ -4894,7 +4897,7 @@ each viewport.</p>
 commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineViewportDepthClampControlCreateInfoEXT">VkPipelineViewportDepthClampControlCreateInfoEXT</a>::<code>depthClampMode</code>
@@ -4909,7 +4912,7 @@ value used to create the currently active pipeline.</p>
 <p><a id="VUID-vkCmdSetDepthClampRangeEXT-pDepthClampRange-09647" href="#VUID-vkCmdSetDepthClampRangeEXT-pDepthClampRange-09647"></a> <span class="vuid">VUID-vkCmdSetDepthClampRangeEXT-pDepthClampRange-09647</span><br>
 
 If <code>depthClampMode</code> is
-<code>VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT</code>, then
+<a href="#VkDepthClampModeEXT">VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT</a>, then
 <code>pDepthClampRange</code> must be a valid pointer to a valid
 <code>VkDepthClampRangeEXT</code> structure</p>
 </li>
@@ -4940,7 +4943,7 @@ If <code>depthClampMode</code> is
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthClampRangeEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetDepthClampRangeEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetDepthClampRangeEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthClampRangeEXT-videocoding" href="#VUID-vkCmdSetDepthClampRangeEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetDepthClampRangeEXT-videocoding</span><br>
@@ -5140,7 +5143,7 @@ recorded.</p>
 <p>This command sets the depth test enable for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineDepthStencilStateCreateInfo">VkPipelineDepthStencilStateCreateInfo</a>::<code>depthTestEnable</code> value
@@ -5191,7 +5194,7 @@ equal to Version 1.3</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthTestEnable-commandBuffer-cmdpool" href="#VUID-vkCmdSetDepthTestEnable-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetDepthTestEnable-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthTestEnable-videocoding" href="#VUID-vkCmdSetDepthTestEnable-videocoding"></a> <span class="vuid">VUID-vkCmdSetDepthTestEnable-videocoding</span><br>
@@ -5299,7 +5302,7 @@ comparison operator used for the <a href="#fragops-depth-comparison">Depth    Co
 commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_DEPTH_COMPARE_OP</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DEPTH_COMPARE_OP</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineDepthStencilStateCreateInfo">VkPipelineDepthStencilStateCreateInfo</a>::<code>depthCompareOp</code> value used
@@ -5354,7 +5357,7 @@ equal to Version 1.3</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthCompareOp-commandBuffer-cmdpool" href="#VUID-vkCmdSetDepthCompareOp-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetDepthCompareOp-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthCompareOp-videocoding" href="#VUID-vkCmdSetDepthCompareOp-videocoding"></a> <span class="vuid">VUID-vkCmdSetDepthCompareOp-videocoding</span><br>
@@ -5460,7 +5463,7 @@ recorded.</p>
 <p>This command sets the depth write enable for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineDepthStencilStateCreateInfo">VkPipelineDepthStencilStateCreateInfo</a>::<code>depthWriteEnable</code> value
@@ -5511,7 +5514,7 @@ equal to Version 1.3</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthWriteEnable-commandBuffer-cmdpool" href="#VUID-vkCmdSetDepthWriteEnable-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetDepthWriteEnable-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthWriteEnable-videocoding" href="#VUID-vkCmdSetDepthWriteEnable-videocoding"></a> <span class="vuid">VUID-vkCmdSetDepthWriteEnable-videocoding</span><br>
@@ -5639,7 +5642,7 @@ representative fragment test is enabled.</p>
 </div>
 <div class="paragraph">
 <p>If this structure is not included in the <code>pNext</code> chain,
-<code>representativeFragmentTestEnable</code> is considered to be <code>VK_FALSE</code>,
+<code>representativeFragmentTestEnable</code> is considered to be <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>,
 and the representative fragment test is disabled.</p>
 </div>
 <div class="paragraph">
@@ -5654,7 +5657,7 @@ if enabled.</p>
 <ul>
 <li>
 <p><a id="VUID-VkPipelineRepresentativeFragmentTestStateCreateInfoNV-sType-sType" href="#VUID-VkPipelineRepresentativeFragmentTestStateCreateInfoNV-sType-sType"></a> <span class="vuid">VUID-VkPipelineRepresentativeFragmentTestStateCreateInfoNV-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV</a></p>
 </li>
 </ul>
 </div>
@@ -5693,7 +5696,7 @@ recorded.</p>
 subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_REPRESENTATIVE_FRAGMENT_TEST_ENABLE_NV</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_REPRESENTATIVE_FRAGMENT_TEST_ENABLE_NV</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineRepresentativeFragmentTestStateCreateInfoNV">VkPipelineRepresentativeFragmentTestStateCreateInfoNV</a>::<code>representativeFragmentTestEnable</code>
@@ -5739,7 +5742,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRepresentativeFragmentTestEnableNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetRepresentativeFragmentTestEnableNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetRepresentativeFragmentTestEnableNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRepresentativeFragmentTestEnableNV-videocoding" href="#VUID-vkCmdSetRepresentativeFragmentTestEnableNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetRepresentativeFragmentTestEnableNV-videocoding</span><br>
@@ -5877,7 +5880,7 @@ that structure controls whether the fragment coverage is substituted for a
 fragment color output and, if so, which output is replaced.</p>
 </div>
 <div class="paragraph">
-<p>If <code>coverageToColorEnable</code> is <code>VK_TRUE</code>, the
+<p>If <code>coverageToColorEnable</code> is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, the
 <a href="primsrast.html#primsrast-multisampling-coverage-mask" class="xref page">coverage mask</a> replaces the first
 component of the color value corresponding to the fragment shader output
 location with <code>Location</code> equal to <code>coverageToColorLocation</code> and
@@ -5888,10 +5891,10 @@ If the color attachment format has more bits than the coverage mask, the
 high bits of the sample coverage mask are filled with zeros.</p>
 </div>
 <div class="paragraph">
-<p>If <code>coverageToColorEnable</code> is <code>VK_FALSE</code>, these operations are
+<p>If <code>coverageToColorEnable</code> is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, these operations are
 skipped.
 If this structure is not included in the <code>pNext</code> chain, it is as if
-<code>coverageToColorEnable</code> is <code>VK_FALSE</code>.</p>
+<code>coverageToColorEnable</code> is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -5901,15 +5904,15 @@ If this structure is not included in the <code>pNext</code> chain, it is as if
 <li>
 <p><a id="VUID-VkPipelineCoverageToColorStateCreateInfoNV-coverageToColorEnable-01404" href="#VUID-VkPipelineCoverageToColorStateCreateInfoNV-coverageToColorEnable-01404"></a> <span class="vuid">VUID-VkPipelineCoverageToColorStateCreateInfoNV-coverageToColorEnable-01404</span><br>
 
-If <code>coverageToColorEnable</code> is <code>VK_TRUE</code>, then the render pass
+If <code>coverageToColorEnable</code> is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, then the render pass
 subpass indicated by
 <a href="pipelines.html#VkGraphicsPipelineCreateInfo" class="xref page">VkGraphicsPipelineCreateInfo</a>::<code>renderPass</code> and
 <a href="pipelines.html#VkGraphicsPipelineCreateInfo" class="xref page">VkGraphicsPipelineCreateInfo</a>::<code>subpass</code> <strong>must</strong> have a color
 attachment at the location selected by <code>coverageToColorLocation</code>,
-with a <a href="formats.html#VkFormat" class="xref page">VkFormat</a> of <code>VK_FORMAT_R8_UINT</code>,
-<code>VK_FORMAT_R8_SINT</code>, <code>VK_FORMAT_R16_UINT</code>,
-<code>VK_FORMAT_R16_SINT</code>, <code>VK_FORMAT_R32_UINT</code>, or
-<code>VK_FORMAT_R32_SINT</code></p>
+with a <a href="formats.html#VkFormat" class="xref page">VkFormat</a> of <a href="formats.html#VkFormat" class="xref page">VK_FORMAT_R8_UINT</a>,
+<a href="formats.html#VkFormat" class="xref page">VK_FORMAT_R8_SINT</a>, <a href="formats.html#VkFormat" class="xref page">VK_FORMAT_R16_UINT</a>,
+<a href="formats.html#VkFormat" class="xref page">VK_FORMAT_R16_SINT</a>, <a href="formats.html#VkFormat" class="xref page">VK_FORMAT_R32_UINT</a>, or
+<a href="formats.html#VkFormat" class="xref page">VK_FORMAT_R32_SINT</a></p>
 </li>
 </ul>
 </div>
@@ -5922,7 +5925,7 @@ with a <a href="formats.html#VkFormat" class="xref page">VkFormat</a> of <code>V
 <ul>
 <li>
 <p><a id="VUID-VkPipelineCoverageToColorStateCreateInfoNV-sType-sType" href="#VUID-VkPipelineCoverageToColorStateCreateInfoNV-sType-sType"></a> <span class="vuid">VUID-VkPipelineCoverageToColorStateCreateInfoNV-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineCoverageToColorStateCreateInfoNV-flags-zerobitmask" href="#VUID-VkPipelineCoverageToColorStateCreateInfoNV-flags-zerobitmask"></a> <span class="vuid">VUID-VkPipelineCoverageToColorStateCreateInfoNV-flags-zerobitmask</span><br>
@@ -5979,7 +5982,7 @@ state.</p>
 drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_ENABLE_NV</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_ENABLE_NV</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineCoverageToColorStateCreateInfoNV">VkPipelineCoverageToColorStateCreateInfoNV</a>::<code>coverageToColorEnable</code>
@@ -6025,7 +6028,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCoverageToColorEnableNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetCoverageToColorEnableNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetCoverageToColorEnableNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCoverageToColorEnableNV-videocoding" href="#VUID-vkCmdSetCoverageToColorEnableNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetCoverageToColorEnableNV-videocoding</span><br>
@@ -6124,7 +6127,7 @@ recorded.</p>
 drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_LOCATION_NV</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_LOCATION_NV</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineCoverageToColorStateCreateInfoNV">VkPipelineCoverageToColorStateCreateInfoNV</a>::<code>coverageToColorLocation</code>
@@ -6170,7 +6173,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCoverageToColorLocationNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetCoverageToColorLocationNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetCoverageToColorLocationNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCoverageToColorLocationNV-videocoding" href="#VUID-vkCmdSetCoverageToColorLocationNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetCoverageToColorLocationNV-videocoding</span><br>
@@ -6309,7 +6312,7 @@ additional pixel coverage samples are discarded.</p>
 or <a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>
 includes a <a href="renderpass.html#VkMultisampledRenderToSingleSampledInfoEXT" class="xref page">VkMultisampledRenderToSingleSampledInfoEXT</a> structure with
 the <code>multisampledRenderToSingleSampledEnable</code> field equal to
-<code>VK_TRUE</code>, sample coverage is calculated as if the attachment has
+<a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, sample coverage is calculated as if the attachment has
 <a href="renderpass.html#VkMultisampledRenderToSingleSampledInfoEXT" class="xref page">VkMultisampledRenderToSingleSampledInfoEXT</a>::<code>rasterizationSamples</code>
 samples.</p>
 </div>
@@ -6364,12 +6367,12 @@ follows:</p>
 <li>
 <p>If the <code><a href="../appendices/extensions.html#VK_NV_framebuffer_mixed_samples" class="xref page">VK_NV_framebuffer_mixed_samples</a></code> extension is enabled,
 then it is as if the <code>coverageReductionMode</code> is
-<code>VK_COVERAGE_REDUCTION_MODE_MERGE_NV</code>.</p>
+<a href="#VkCoverageReductionModeNV">VK_COVERAGE_REDUCTION_MODE_MERGE_NV</a>.</p>
 </li>
 <li>
 <p>If the <code><a href="../appendices/extensions.html#VK_AMD_mixed_attachment_samples" class="xref page">VK_AMD_mixed_attachment_samples</a></code> extension is enabled,
 then it is as if the <code>coverageReductionMode</code> is
-<code>VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV</code>.</p>
+<a href="#VkCoverageReductionModeNV">VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV</a>.</p>
 </li>
 <li>
 <p>If both <code><a href="../appendices/extensions.html#VK_NV_framebuffer_mixed_samples" class="xref page">VK_NV_framebuffer_mixed_samples</a></code> and
@@ -6385,7 +6388,7 @@ coverage reduction mode is implementation-dependent.</p>
 <ul>
 <li>
 <p><a id="VUID-VkPipelineCoverageReductionStateCreateInfoNV-sType-sType" href="#VUID-VkPipelineCoverageReductionStateCreateInfoNV-sType-sType"></a> <span class="vuid">VUID-VkPipelineCoverageReductionStateCreateInfoNV-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineCoverageReductionStateCreateInfoNV-flags-zerobitmask" href="#VUID-VkPipelineCoverageReductionStateCreateInfoNV-flags-zerobitmask"></a> <span class="vuid">VUID-VkPipelineCoverageReductionStateCreateInfoNV-flags-zerobitmask</span><br>
@@ -6434,14 +6437,14 @@ typedef enum VkCoverageReductionModeNV {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_COVERAGE_REDUCTION_MODE_MERGE_NV</code> specifies that each color
+<p><a href="#VkCoverageReductionModeNV">VK_COVERAGE_REDUCTION_MODE_MERGE_NV</a> specifies that each color
 sample will be associated with an implementation-dependent subset of
 samples in the pixel coverage.
 If any of those associated samples are covered, the color sample is
 covered.</p>
 </li>
 <li>
-<p><code>VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV</code> specifies that for color
+<p><a href="#VkCoverageReductionModeNV">VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV</a> specifies that for color
 samples present in the color attachments, a color sample is covered if
 the pixel coverage sample with the same
 <a href="primsrast.html#primsrast-multisampling-coverage-mask" class="xref page">sample index</a> <span class="eq">i</span> is
@@ -6482,7 +6485,7 @@ state.</p>
 drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineCoverageReductionStateCreateInfoNV">VkPipelineCoverageReductionStateCreateInfoNV</a>::<code>coverageReductionMode</code>
@@ -6532,7 +6535,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCoverageReductionModeNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetCoverageReductionModeNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetCoverageReductionModeNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCoverageReductionModeNV-videocoding" href="#VUID-vkCmdSetCoverageReductionModeNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetCoverageReductionModeNV-videocoding</span><br>
@@ -6644,7 +6647,7 @@ written to <code>pCombinations</code>.
 If the value of <code>pCombinationCount</code> is less than the number of
 combinations supported for the given <code>physicalDevice</code>, at most
 <code>pCombinationCount</code> values will be written to <code>pCombinations</code>, and
-<code>VK_INCOMPLETE</code> will be returned instead of <code>VK_SUCCESS</code>, to
+<a href="fundamentals.html#VkResult" class="xref page">VK_INCOMPLETE</a> will be returned instead of <a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a>, to
 indicate that not all the supported values were returned.</p>
 </div>
 <div class="sidebarblock">
@@ -6678,10 +6681,10 @@ indicate that not all the supported values were returned.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_INCOMPLETE</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_INCOMPLETE</a></p>
 </li>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a></p>
 </li>
 </ul>
 </div>
@@ -6691,16 +6694,16 @@ indicate that not all the supported values were returned.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_DEVICE_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_HOST_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_UNKNOWN</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_UNKNOWN</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_VALIDATION_FAILED</a></p>
 </li>
 </ul>
 </div>
@@ -6766,7 +6769,7 @@ A value of 0 indicates the combination does not have a color attachment.</p>
 <ul>
 <li>
 <p><a id="VUID-VkFramebufferMixedSamplesCombinationNV-sType-sType" href="#VUID-VkFramebufferMixedSamplesCombinationNV-sType-sType"></a> <span class="vuid">VUID-VkFramebufferMixedSamplesCombinationNV-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_FRAMEBUFFER_MIXED_SAMPLES_COMBINATION_NV</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_FRAMEBUFFER_MIXED_SAMPLES_COMBINATION_NV</a></p>
 </li>
 <li>
 <p><a id="VUID-VkFramebufferMixedSamplesCombinationNV-pNext-pNext" href="#VUID-VkFramebufferMixedSamplesCombinationNV-pNext-pNext"></a> <span class="vuid">VUID-VkFramebufferMixedSamplesCombinationNV-pNext-pNext</span><br>
@@ -6842,7 +6845,7 @@ containing a value for each number of covered samples.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>If <code>coverageModulationTableEnable</code> is <code>VK_FALSE</code>, then for each
+<p>If <code>coverageModulationTableEnable</code> is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then for each
 color sample the associated bits of the pixel coverage are counted and
 divided by the number of associated bits to produce a modulation factor
 <span class="eq">R</span> in the range <span class="eq">(0,1]</span> (a value of zero would have been killed due
@@ -6864,7 +6867,7 @@ color attachments</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>If <code>coverageModulationTableEnable</code> is <code>VK_TRUE</code>, the value <span class="eq">R</span>
+<p>If <code>coverageModulationTableEnable</code> is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, the value <span class="eq">R</span>
 is computed using a programmable lookup table.
 The lookup table has <span class="eq">N / M</span> elements, and the element of the table is
 selected by:</p>
@@ -6896,14 +6899,14 @@ Which components are modulated is controlled by
 </div>
 <div class="paragraph">
 <p>If this structure is not included in the <code>pNext</code> chain, it is as if
-<code>coverageModulationMode</code> is <code>VK_COVERAGE_MODULATION_MODE_NONE_NV</code>.</p>
+<code>coverageModulationMode</code> is <a href="#VkCoverageModulationModeNV">VK_COVERAGE_MODULATION_MODE_NONE_NV</a>.</p>
 </div>
 <div class="paragraph">
 <p>If the <a href="#fragops-coverage-reduction">coverage reduction mode</a> is
-<code>VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV</code>, each color sample is
+<a href="#VkCoverageReductionModeNV">VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV</a>, each color sample is
 associated with only a single coverage sample.
 In this case, it is as if <code>coverageModulationMode</code> is
-<code>VK_COVERAGE_MODULATION_MODE_NONE_NV</code>.</p>
+<a href="#VkCoverageModulationModeNV">VK_COVERAGE_MODULATION_MODE_NONE_NV</a>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -6913,7 +6916,7 @@ In this case, it is as if <code>coverageModulationMode</code> is
 <li>
 <p><a id="VUID-VkPipelineCoverageModulationStateCreateInfoNV-coverageModulationTableEnable-01405" href="#VUID-VkPipelineCoverageModulationStateCreateInfoNV-coverageModulationTableEnable-01405"></a> <span class="vuid">VUID-VkPipelineCoverageModulationStateCreateInfoNV-coverageModulationTableEnable-01405</span><br>
 
-If <code>coverageModulationTableEnable</code> is <code>VK_TRUE</code>,
+If <code>coverageModulationTableEnable</code> is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>,
 <code>coverageModulationTableCount</code> <strong>must</strong> be equal to the number of
 rasterization samples divided by the number of color samples in the
 subpass</p>
@@ -6929,7 +6932,7 @@ subpass</p>
 <ul>
 <li>
 <p><a id="VUID-VkPipelineCoverageModulationStateCreateInfoNV-sType-sType" href="#VUID-VkPipelineCoverageModulationStateCreateInfoNV-sType-sType"></a> <span class="vuid">VUID-VkPipelineCoverageModulationStateCreateInfoNV-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineCoverageModulationStateCreateInfoNV-flags-zerobitmask" href="#VUID-VkPipelineCoverageModulationStateCreateInfoNV-flags-zerobitmask"></a> <span class="vuid">VUID-VkPipelineCoverageModulationStateCreateInfoNV-flags-zerobitmask</span><br>
@@ -6980,19 +6983,19 @@ typedef enum VkCoverageModulationModeNV {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_COVERAGE_MODULATION_MODE_NONE_NV</code> specifies that no components
+<p><a href="#VkCoverageModulationModeNV">VK_COVERAGE_MODULATION_MODE_NONE_NV</a> specifies that no components
 are multiplied by the modulation factor.</p>
 </li>
 <li>
-<p><code>VK_COVERAGE_MODULATION_MODE_RGB_NV</code> specifies that the red, green,
+<p><a href="#VkCoverageModulationModeNV">VK_COVERAGE_MODULATION_MODE_RGB_NV</a> specifies that the red, green,
 and blue components are multiplied by the modulation factor.</p>
 </li>
 <li>
-<p><code>VK_COVERAGE_MODULATION_MODE_ALPHA_NV</code> specifies that the alpha
+<p><a href="#VkCoverageModulationModeNV">VK_COVERAGE_MODULATION_MODE_ALPHA_NV</a> specifies that the alpha
 component is multiplied by the modulation factor.</p>
 </li>
 <li>
-<p><code>VK_COVERAGE_MODULATION_MODE_RGBA_NV</code> specifies that all components
+<p><a href="#VkCoverageModulationModeNV">VK_COVERAGE_MODULATION_MODE_RGBA_NV</a> specifies that all components
 are multiplied by the modulation factor.</p>
 </li>
 </ul>
@@ -7030,7 +7033,7 @@ state.</p>
 drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_COVERAGE_MODULATION_MODE_NV</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_COVERAGE_MODULATION_MODE_NV</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineCoverageModulationStateCreateInfoNV">VkPipelineCoverageModulationStateCreateInfoNV</a>::<code>coverageModulationMode</code>
@@ -7080,7 +7083,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCoverageModulationModeNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetCoverageModulationModeNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetCoverageModulationModeNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCoverageModulationModeNV-videocoding" href="#VUID-vkCmdSetCoverageModulationModeNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetCoverageModulationModeNV-videocoding</span><br>
@@ -7179,7 +7182,7 @@ recorded.</p>
 subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_ENABLE_NV</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_ENABLE_NV</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineCoverageModulationStateCreateInfoNV">VkPipelineCoverageModulationStateCreateInfoNV</a>::<code>coverageModulationTableEnable</code>
@@ -7225,7 +7228,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCoverageModulationTableEnableNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetCoverageModulationTableEnableNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetCoverageModulationTableEnableNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCoverageModulationTableEnableNV-videocoding" href="#VUID-vkCmdSetCoverageModulationTableEnableNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetCoverageModulationTableEnableNV-videocoding</span><br>
@@ -7329,7 +7332,7 @@ containing a value for each number of covered samples.</p>
 commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_NV</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_NV</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineCoverageModulationStateCreateInfoNV">VkPipelineCoverageModulationStateCreateInfoNV</a>::<code>coverageModulationTableCount</code>,
@@ -7381,7 +7384,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCoverageModulationTableNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetCoverageModulationTableNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetCoverageModulationTableNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCoverageModulationTableNV-videocoding" href="#VUID-vkCmdSetCoverageModulationTableNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetCoverageModulationTableNV-videocoding</span><br>

@@ -75,7 +75,7 @@ before encountering these internal limits.
 
 |  | For historical reasons, if `maxMemoryAllocationCount` is exceeded, some
 | --- | --- |
-implementations may return `VK_ERROR_TOO_MANY_OBJECTS`.
+implementations may return [VK_ERROR_TOO_MANY_OBJECTS](VkResult.html).
 Exceeding this limit will result in **undefined** behavior, and an application
 should not rely on the use of the returned error code in order to identify
 when the limit is reached. |
@@ -84,7 +84,7 @@ when the limit is reached. |
 | --- | --- |
 software support, and often have additional and much lower limits on the
 number of simultaneous protected memory allocations (from memory types with
-the `VK_MEMORY_PROPERTY_PROTECTED_BIT` property) than for non-protected
+the [VK_MEMORY_PROPERTY_PROTECTED_BIT](VkMemoryPropertyFlagBits.html) property) than for non-protected
 memory allocations.
 These limits can be system-wide, and depend on a variety of factors outside
 of the Vulkan implementation, so they cannot be queried in Vulkan.
@@ -100,7 +100,7 @@ Some platforms **may** have a limit on the maximum size of a single allocation.
 For example, certain systems **may** fail to create allocations with a size
 greater than or equal to 4GB.
 Such a limit is implementation-dependent, and if such a failure occurs then
-the error `VK_ERROR_OUT_OF_DEVICE_MEMORY` **must** be returned.
+the error [VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html) **must** be returned.
 This limit is advertised in
 [VkPhysicalDeviceMaintenance3Properties](VkPhysicalDeviceMaintenance3Properties.html)::`maxMemoryAllocationSize`.
 
@@ -113,7 +113,7 @@ The overallocation behavior **can** be specified through the
 `[VK_AMD_memory_overallocation_behavior](VK_AMD_memory_overallocation_behavior.html)` extension.
 
 If the `memoryTypeIndex` belongs to a heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` bit included in its properties,
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) bit included in its properties,
 this allocation is backed by tile memory, which is an on device cache.
 Unlike other heaps, allocations out of the tile memory will always have a
 starting address at the start of the heap and its contents are aliased with
@@ -123,7 +123,7 @@ executing within the same [*tile memory scope*](../../../../spec/latest/chapters
 If the
 [VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT](VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT.html)::`pageableDeviceLocalMemory`
 feature is enabled, memory allocations made from a heap that includes
-`VK_MEMORY_HEAP_DEVICE_LOCAL_BIT` in [VkMemoryHeap](VkMemoryHeap.html)::`flags`
+[VK_MEMORY_HEAP_DEVICE_LOCAL_BIT](VkMemoryHeapFlagBits.html) in [VkMemoryHeap](VkMemoryHeap.html)::`flags`
 **may** be transparently moved to host-local memory allowing multiple
 applications to share device-local memory.
 If there is no space left in device-local memory when this new allocation is
@@ -137,7 +137,7 @@ and adjust it as necessary with [vkSetDeviceMemoryPriorityEXT](vkSetDeviceMemory
 Higher priority allocations will moved to device-local memory first.
 
 Memory allocations made on heaps without the
-`VK_MEMORY_HEAP_DEVICE_LOCAL_BIT` property will not be transparently
+[VK_MEMORY_HEAP_DEVICE_LOCAL_BIT](VkMemoryHeapFlagBits.html) property will not be transparently
 promoted to device-local memory by the operating system.
 
 Valid Usage
@@ -166,7 +166,7 @@ returned by [vkGetPhysicalDeviceMemoryProperties](vkGetPhysicalDeviceMemoryPrope
 If the [`deviceCoherentMemory`](../../../../spec/latest/chapters/features.html#features-deviceCoherentMemory)
 feature is not enabled, `pAllocateInfo->memoryTypeIndex` **must** not
 identify a memory type supporting
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD`
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](VkMemoryPropertyFlagBits.html)
 
 * 
 [](#VUID-vkAllocateMemory-maxMemoryAllocationCount-04101) VUID-vkAllocateMemory-maxMemoryAllocationCount-04101
@@ -181,7 +181,7 @@ memory allocations currently allocated on the device
 If the [`tileMemoryHeap`](../../../../spec/latest/chapters/features.html#features-tileMemoryHeap) feature is not
 enabled, `pAllocateInfo->memoryTypeIndex` **must** not identify a
 memory type that corresponds to a [VkMemoryHeap](VkMemoryHeap.html) with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property
 
 Valid Usage (Implicit)
 
@@ -215,27 +215,27 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](VkResult.html)
 
 * 
-`VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR`
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkAllocationCallbacks](VkAllocationCallbacks.html), [VkDevice](VkDevice.html), [VkDeviceMemory](VkDeviceMemory.html), [VkMemoryAllocateInfo](VkMemoryAllocateInfo.html)
 

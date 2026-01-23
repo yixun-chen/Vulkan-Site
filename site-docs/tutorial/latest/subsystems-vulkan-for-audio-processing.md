@@ -428,4 +428,4 @@ By implementing Vulkan-based HRTF processing in our engine, we’re following in
 
 In the next section, we’ll shift our focus to the physics subsystem and explore how Vulkan compute shaders can accelerate physics simulations.
 
-[Previous: Audio Basics](02_audio_basics.adoc) | [Next: Physics Basics](04_physics_basics.adoc)
+[Previous: Audio Basics](02_audio_basics.html) | [Next: Physics Basics](04_physics_basics.html)

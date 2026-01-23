@@ -77,6 +77,8 @@
 - [Offsets](#_offsets)
 - [Extents](#_extents)
 - [Rectangles](#_rectangles)
+- [Host Address Ranges](#_host_address_ranges)
+- [Host_Address_Ranges](#_host_address_ranges)
 - [Device Address Ranges](#_device_address_ranges)
 - [Device_Address_Ranges](#_device_address_ranges)
 - [Structure Types](#_structure_types)
@@ -430,21 +432,21 @@ not have a sufficiently portable built-in boolean type:
 // Provided by VK_VERSION_1_0
 typedef uint32_t VkBool32;
 
-`VK_TRUE` represents a boolean **True** (unsigned integer 1) value, and
-`VK_FALSE` a boolean **False** (unsigned integer 0) value.
+[VK_TRUE](#VK_TRUE) represents a boolean **True** (unsigned integer 1) value, and
+[VK_FALSE](#VK_FALSE) a boolean **False** (unsigned integer 0) value.
 
 All values returned from a Vulkan implementation in a `VkBool32` will
-be either `VK_TRUE` or `VK_FALSE`.
+be either [VK_TRUE](#VK_TRUE) or [VK_FALSE](#VK_FALSE).
 
-Applications **must** not pass any other values than `VK_TRUE` or
-`VK_FALSE` into a Vulkan implementation where a `VkBool32` is
+Applications **must** not pass any other values than [VK_TRUE](#VK_TRUE) or
+[VK_FALSE](#VK_FALSE) into a Vulkan implementation where a `VkBool32` is
 expected.
 
-`VK_TRUE` is a constant representing a `VkBool32` **True** value.
+[VK_TRUE](#VK_TRUE) is a constant representing a `VkBool32` **True** value.
 
 #define VK_TRUE                           1U
 
-`VK_FALSE` is a constant representing a `VkBool32` **False** value.
+[VK_FALSE](#VK_FALSE) is a constant representing a `VkBool32` **False** value.
 
 #define VK_FALSE                          0U
 
@@ -539,7 +541,7 @@ return array.
 If the input element count is less than the number of retrievable array
 elements, the query will write only as many elements to the return array as
 specified by the element count variable set by the application, and the
-command will return `VK_INCOMPLETE` instead of `VK_SUCCESS`, to
+command will return [VK_INCOMPLETE](#VkResult) instead of [VK_SUCCESS](#VkResult), to
 indicate that not all retrievable array elements were returned.
 
 |  | In practice, this means that applications will typically call such query
@@ -582,7 +584,7 @@ number of elements actually written to the return array.
 If the input element count is less than the number of retrievable array
 elements, the query will write only as many elements to the return array as
 specified by the input element count, and the command will return
-`VK_INCOMPLETE` instead of `VK_SUCCESS`, if the query command has a
+[VK_INCOMPLETE](#VkResult) instead of [VK_SUCCESS](#VkResult), if the query command has a
 [VkResult](#VkResult) return type, to indicate that not all retrievable array
 elements were returned.
 
@@ -620,7 +622,7 @@ storage in any output structure.
 
 Some query commands of the form `vkGet*` retrieve opaque binary data in
 the form of a byte array and have a possible result code of
-`VK_ERROR_NOT_ENOUGH_SPACE_KHR`.
+[VK_ERROR_NOT_ENOUGH_SPACE_KHR](#VkResult).
 Such commands always have two pointer arguments as follows:
 
 * 
@@ -641,16 +643,16 @@ case the binary data size argument is not a pointer.
 
 If the input binary size is less than the total retrievable binary size, the
 query will not write any data to the location pointed to the binary pointer,
-and the command will return `VK_ERROR_NOT_ENOUGH_SPACE_KHR` instead of
-`VK_SUCCESS`.
+and the command will return [VK_ERROR_NOT_ENOUGH_SPACE_KHR](#VkResult) instead of
+[VK_SUCCESS](#VkResult).
 
-If the return code is `VK_SUCCESS` or
-`VK_ERROR_NOT_ENOUGH_SPACE_KHR`, the total size of the binary data that
+If the return code is [VK_SUCCESS](#VkResult) or
+[VK_ERROR_NOT_ENOUGH_SPACE_KHR](#VkResult), the total size of the binary data that
 **can** be retrieved is returned in the variable pointed to by the binary size
 pointer.
 
 If multiple binaries are being retrieved,
-`VK_ERROR_NOT_ENOUGH_SPACE_KHR` will be returned if any input binary
+[VK_ERROR_NOT_ENOUGH_SPACE_KHR](#VkResult) will be returned if any input binary
 sizes are less than their respective total retrievable binary sizes.
 Unless otherwise specified, this command will determine writing data to each
 binary individually based on if their input binary sizes are sufficiently
@@ -659,7 +661,7 @@ sized, following the behavior for single binary retrieval.
 For all other error codes, the contents of the return structures are
 **undefined**.
 
-|  | If `VK_ERROR_NOT_ENOUGH_SPACE_KHR` is returned with a command that
+|  | If [VK_ERROR_NOT_ENOUGH_SPACE_KHR](#VkResult) is returned with a command that
 | --- | --- |
 returns multiple binaries, the application **can** determine which binaries are
 undersized by comparing the total binary size that is returned for each
@@ -667,7 +669,7 @@ binary against the allocated size that was provided to the command. |
 
 |  | Some binary queries do not behave consistently with this pattern for
 | --- | --- |
-historical reasons, primarily that the `VK_ERROR_NOT_ENOUGH_SPACE_KHR`
+historical reasons, primarily that the [VK_ERROR_NOT_ENOUGH_SPACE_KHR](#VkResult)
 error code was not defined until after those queries were written.
 
 A NOTE is added to each such query, describing such inconsistent behavior. |
@@ -721,13 +723,17 @@ The `instance` parameter in [vkDestroyInstance](initialization.html#vkDestroyIns
 The `device` parameter in [vkDestroyDevice](devsandqueues.html#vkDestroyDevice)
 
 * 
-The `queue` parameter in [vkQueueSubmit](cmdbuffers.html#vkQueueSubmit)
+The `queue` parameter in [vkQueueSubmit](cmdbuffers.html#vkQueueSubmit),
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
 
 * 
 The `fence` parameter in [vkQueueSubmit](cmdbuffers.html#vkQueueSubmit)
 
 * 
-The `queue` parameter in [vkQueueWaitIdle](synchronization.html#vkQueueWaitIdle)
+The `queue` parameter in [vkQueueWaitIdle](synchronization.html#vkQueueWaitIdle),
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
 
 * 
 The `memory` parameter in [vkFreeMemory](memory.html#vkFreeMemory)
@@ -745,7 +751,9 @@ The `buffer` parameter in [vkBindBufferMemory](resources.html#vkBindBufferMemory
 The `image` parameter in [vkBindImageMemory](resources.html#vkBindImageMemory)
 
 * 
-The `queue` parameter in [vkQueueBindSparse](sparsemem.html#vkQueueBindSparse)
+The `queue` parameter in [vkQueueBindSparse](sparsemem.html#vkQueueBindSparse),
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
 
 * 
 The `fence` parameter in [vkQueueBindSparse](sparsemem.html#vkQueueBindSparse)
@@ -1015,7 +1023,9 @@ The `commandBuffer` parameter in [vkCmdPipelineBarrier2](synchronization.html#vk
 The `commandBuffer` parameter in [vkCmdWriteTimestamp2](queries.html#vkCmdWriteTimestamp2)
 
 * 
-The `queue` parameter in [vkQueueSubmit2](cmdbuffers.html#vkQueueSubmit2)
+The `queue` parameter in [vkQueueSubmit2](cmdbuffers.html#vkQueueSubmit2),
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
 
 * 
 The `fence` parameter in [vkQueueSubmit2](cmdbuffers.html#vkQueueSubmit2)
@@ -1144,7 +1154,9 @@ The `semaphore` parameter in [vkAcquireNextImageKHR](VK_KHR_surface/wsi.html#vkA
 The `fence` parameter in [vkAcquireNextImageKHR](VK_KHR_surface/wsi.html#vkAcquireNextImageKHR)
 
 * 
-The `queue` parameter in [vkQueuePresentKHR](VK_KHR_surface/wsi.html#vkQueuePresentKHR)
+The `queue` parameter in [vkQueuePresentKHR](VK_KHR_surface/wsi.html#vkQueuePresentKHR),
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
 
 * 
 The `surface` parameter in [vkGetDeviceGroupSurfacePresentModesKHR](VK_KHR_surface/wsi.html#vkGetDeviceGroupSurfacePresentModesKHR)
@@ -1261,7 +1273,9 @@ The `commandBuffer` parameter in [vkCmdPipelineBarrier2KHR](synchronization.html
 The `commandBuffer` parameter in [vkCmdWriteTimestamp2KHR](queries.html#vkCmdWriteTimestamp2KHR)
 
 * 
-The `queue` parameter in [vkQueueSubmit2KHR](cmdbuffers.html#vkQueueSubmit2KHR)
+The `queue` parameter in [vkQueueSubmit2KHR](cmdbuffers.html#vkQueueSubmit2KHR),
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
 
 * 
 The `fence` parameter in [vkQueueSubmit2KHR](cmdbuffers.html#vkQueueSubmit2KHR)
@@ -1390,13 +1404,19 @@ The `commandBuffer` parameter in [vkCmdSetDiscardRectangleModeEXT](fragops.html#
 The `objectHandle` member of the `pNameInfo` parameter in [vkSetDebugUtilsObjectNameEXT](debugging.html#vkSetDebugUtilsObjectNameEXT)
 
 * 
-The `queue` parameter in [vkQueueBeginDebugUtilsLabelEXT](debugging.html#vkQueueBeginDebugUtilsLabelEXT)
+The `queue` parameter in [vkQueueBeginDebugUtilsLabelEXT](debugging.html#vkQueueBeginDebugUtilsLabelEXT),
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
 
 * 
-The `queue` parameter in [vkQueueEndDebugUtilsLabelEXT](debugging.html#vkQueueEndDebugUtilsLabelEXT)
+The `queue` parameter in [vkQueueEndDebugUtilsLabelEXT](debugging.html#vkQueueEndDebugUtilsLabelEXT),
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
 
 * 
-The `queue` parameter in [vkQueueInsertDebugUtilsLabelEXT](debugging.html#vkQueueInsertDebugUtilsLabelEXT)
+The `queue` parameter in [vkQueueInsertDebugUtilsLabelEXT](debugging.html#vkQueueInsertDebugUtilsLabelEXT),
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
 
 * 
 The `commandBuffer` parameter in [vkCmdBeginDebugUtilsLabelEXT](debugging.html#vkCmdBeginDebugUtilsLabelEXT)
@@ -1412,6 +1432,15 @@ The `messenger` parameter in [vkDestroyDebugUtilsMessengerEXT](debugging.html#vk
 
 * 
 The `pipelineCache` parameter in [vkCreateExecutionGraphPipelinesAMDX](executiongraphs.html#vkCreateExecutionGraphPipelinesAMDX), conditionally1
+
+* 
+The `commandBuffer` parameter in [vkCmdBindSamplerHeapEXT](descriptorheaps.html#vkCmdBindSamplerHeapEXT)
+
+* 
+The `commandBuffer` parameter in [vkCmdBindResourceHeapEXT](descriptorheaps.html#vkCmdBindResourceHeapEXT)
+
+* 
+The `commandBuffer` parameter in [vkCmdPushDataEXT](descriptorheaps.html#vkCmdPushDataEXT)
 
 * 
 The `commandBuffer` parameter in [vkCmdSetSampleLocationsEXT](primsrast.html#vkCmdSetSampleLocationsEXT)
@@ -1495,7 +1524,9 @@ The `commandBuffer` parameter in [vkCmdSetPerformanceOverrideINTEL](queries.html
 The `configuration` parameter in [vkReleasePerformanceConfigurationINTEL](queries.html#vkReleasePerformanceConfigurationINTEL)
 
 * 
-The `queue` parameter in [vkQueueSetPerformanceConfigurationINTEL](queries.html#vkQueueSetPerformanceConfigurationINTEL)
+The `queue` parameter in [vkQueueSetPerformanceConfigurationINTEL](queries.html#vkQueueSetPerformanceConfigurationINTEL),
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
 
 * 
 The `commandBuffer` parameter in [vkCmdSetLineStippleEXT](primsrast.html#vkCmdSetLineStippleEXT)
@@ -1970,10 +2001,16 @@ Implicit Externally Synchronized Parameters
 All `VkPhysicalDevice` objects enumerated from `instance` in [vkDestroyInstance](initialization.html#vkDestroyInstance)
 
 * 
-All `VkQueue` objects created from `device` in [vkDestroyDevice](devsandqueues.html#vkDestroyDevice)
+All `VkQueue` objects created from `device`
+that are not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
+             in [vkDestroyDevice](devsandqueues.html#vkDestroyDevice)
 
 * 
-All `VkQueue` objects created from `device` in [vkDeviceWaitIdle](synchronization.html#vkDeviceWaitIdle)
+All `VkQueue` objects created from `device`
+that are not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
+             in [vkDeviceWaitIdle](synchronization.html#vkDeviceWaitIdle)
 
 * 
 The `VkCommandPool` that `commandBuffer` was allocated from in [vkBeginCommandBuffer](cmdbuffers.html#vkBeginCommandBuffer)
@@ -2454,6 +2491,15 @@ The `VkCommandPool` that `commandBuffer` was allocated from, in [vkCmdDispatchGr
 
 * 
 The `VkCommandPool` that `commandBuffer` was allocated from, in [vkCmdDispatchGraphIndirectCountAMDX](executiongraphs.html#vkCmdDispatchGraphIndirectCountAMDX)
+
+* 
+The `VkCommandPool` that `commandBuffer` was allocated from, in [vkCmdBindSamplerHeapEXT](descriptorheaps.html#vkCmdBindSamplerHeapEXT)
+
+* 
+The `VkCommandPool` that `commandBuffer` was allocated from, in [vkCmdBindResourceHeapEXT](descriptorheaps.html#vkCmdBindResourceHeapEXT)
+
+* 
+The `VkCommandPool` that `commandBuffer` was allocated from, in [vkCmdPushDataEXT](descriptorheaps.html#vkCmdPushDataEXT)
 
 * 
 The `VkCommandPool` that `commandBuffer` was allocated from, in [vkCmdSetSampleLocationsEXT](primsrast.html#vkCmdSetSampleLocationsEXT)
@@ -3379,62 +3425,62 @@ typedef enum VkResult {
 Success Codes
 
 * 
-`VK_SUCCESS` Command successfully completed
+[VK_SUCCESS](#VkResult) Command successfully completed
 
 * 
-`VK_NOT_READY` A fence or query has not yet completed
+[VK_NOT_READY](#VkResult) A fence or query has not yet completed
 
 * 
-`VK_TIMEOUT` A wait operation has not completed in the specified
+[VK_TIMEOUT](#VkResult) A wait operation has not completed in the specified
 time
 
 * 
-`VK_EVENT_SET` An event is signaled
+[VK_EVENT_SET](#VkResult) An event is signaled
 
 * 
-`VK_EVENT_RESET` An event is unsignaled
+[VK_EVENT_RESET](#VkResult) An event is unsignaled
 
 * 
-`VK_INCOMPLETE` A return array was too small for the result
+[VK_INCOMPLETE](#VkResult) A return array was too small for the result
 
 * 
-`VK_SUBOPTIMAL_KHR` A swapchain no longer matches the surface
+[VK_SUBOPTIMAL_KHR](#VkResult) A swapchain no longer matches the surface
 properties exactly, but **can** still be used to present to the surface
 successfully.
 
 * 
-`VK_THREAD_IDLE_KHR` A deferred operation is not complete but there
+[VK_THREAD_IDLE_KHR](#VkResult) A deferred operation is not complete but there
 is currently no work for this thread to do at the time of this call.
 
 * 
-`VK_THREAD_DONE_KHR` A deferred operation is not complete but there
+[VK_THREAD_DONE_KHR](#VkResult) A deferred operation is not complete but there
 is no work remaining to assign to additional threads.
 
 * 
-`VK_OPERATION_DEFERRED_KHR` A deferred operation was requested and
+[VK_OPERATION_DEFERRED_KHR](#VkResult) A deferred operation was requested and
 at least some of the work was deferred.
 
 * 
-`VK_OPERATION_NOT_DEFERRED_KHR` A deferred operation was requested
+[VK_OPERATION_NOT_DEFERRED_KHR](#VkResult) A deferred operation was requested
 and no operations were deferred.
 
 * 
-`VK_PIPELINE_COMPILE_REQUIRED` A requested pipeline creation would
+[VK_PIPELINE_COMPILE_REQUIRED](#VkResult) A requested pipeline creation would
 have required compilation, but the application requested compilation to
 not be performed.
 
 * 
-`VK_PIPELINE_BINARY_MISSING_KHR` The application attempted to create
+[VK_PIPELINE_BINARY_MISSING_KHR](#VkResult) The application attempted to create
 a pipeline binary by querying an internal cache, but the internal cache
 entry did not exist.
 
 * 
-`VK_INCOMPATIBLE_SHADER_BINARY_EXT` The provided binary shader code
+[VK_INCOMPATIBLE_SHADER_BINARY_EXT](#VkResult) The provided binary shader code
 is not compatible with this device.
 
 |  | In the initial version of the `[VK_EXT_shader_object](../appendices/extensions.html#VK_EXT_shader_object)` extension, this
 | --- | --- |
-return code was named `VK_ERROR_INCOMPATIBLE_SHADER_BINARY_EXT` and
+return code was named [VK_ERROR_INCOMPATIBLE_SHADER_BINARY_EXT](#VkResult) and
 improperly described as an error code.
 The name has been changed, but the old name is retained as an alias for
 compatibility with old code. |
@@ -3442,154 +3488,154 @@ compatibility with old code. |
 Error Codes
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY` A host memory allocation has failed.
+[VK_ERROR_OUT_OF_HOST_MEMORY](#VkResult) A host memory allocation has failed.
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY` A device memory allocation has
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](#VkResult) A device memory allocation has
 failed.
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED` Initialization of an object could
+[VK_ERROR_INITIALIZATION_FAILED](#VkResult) Initialization of an object could
 not be completed for implementation-specific reasons.
 
 * 
-`VK_ERROR_DEVICE_LOST` The logical or physical device has been lost.
+[VK_ERROR_DEVICE_LOST](#VkResult) The logical or physical device has been lost.
 See [Lost Device](devsandqueues.html#devsandqueues-lost-device)
 
 * 
-`VK_ERROR_MEMORY_MAP_FAILED` Mapping of a memory object has failed.
+[VK_ERROR_MEMORY_MAP_FAILED](#VkResult) Mapping of a memory object has failed.
 
 * 
-`VK_ERROR_LAYER_NOT_PRESENT` A requested layer is not present or
+[VK_ERROR_LAYER_NOT_PRESENT](#VkResult) A requested layer is not present or
 could not be loaded.
 
 * 
-`VK_ERROR_EXTENSION_NOT_PRESENT` A requested extension is not
+[VK_ERROR_EXTENSION_NOT_PRESENT](#VkResult) A requested extension is not
 supported.
 
 * 
-`VK_ERROR_FEATURE_NOT_PRESENT` A requested feature is not supported.
+[VK_ERROR_FEATURE_NOT_PRESENT](#VkResult) A requested feature is not supported.
 
 * 
-`VK_ERROR_INCOMPATIBLE_DRIVER` The requested version of Vulkan is
+[VK_ERROR_INCOMPATIBLE_DRIVER](#VkResult) The requested version of Vulkan is
 not supported by the driver or is otherwise incompatible for
 implementation-specific reasons.
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS` Too many objects of the type have
+[VK_ERROR_TOO_MANY_OBJECTS](#VkResult) Too many objects of the type have
 already been created.
 
 * 
-`VK_ERROR_FORMAT_NOT_SUPPORTED` A requested format is not supported
+[VK_ERROR_FORMAT_NOT_SUPPORTED](#VkResult) A requested format is not supported
 on this device.
 
 * 
-`VK_ERROR_FRAGMENTED_POOL` A pool allocation has failed due to
+[VK_ERROR_FRAGMENTED_POOL](#VkResult) A pool allocation has failed due to
 fragmentation of the pool’s memory.
 This **must** only be returned if no attempt to allocate host or device
 memory was made to accommodate the new allocation.
 This **should** be returned in preference to
-`VK_ERROR_OUT_OF_POOL_MEMORY`, but only if the implementation is
+[VK_ERROR_OUT_OF_POOL_MEMORY](#VkResult), but only if the implementation is
 certain that the pool allocation failure was due to fragmentation.
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR` A surface is no longer available.
+[VK_ERROR_SURFACE_LOST_KHR](#VkResult) A surface is no longer available.
 
 * 
-`VK_ERROR_NATIVE_WINDOW_IN_USE_KHR` The requested window is already
+[VK_ERROR_NATIVE_WINDOW_IN_USE_KHR](#VkResult) The requested window is already
 in use by Vulkan or another API in a manner which prevents it from being
 used again.
 
 * 
-`VK_ERROR_OUT_OF_DATE_KHR` A surface has changed in such a way that
+[VK_ERROR_OUT_OF_DATE_KHR](#VkResult) A surface has changed in such a way that
 it is no longer compatible with the swapchain, and further presentation
 requests using the swapchain will fail.
 Applications **must** query the new surface properties and recreate their
 swapchain if they wish to continue presenting to the surface.
 
 * 
-`VK_ERROR_INCOMPATIBLE_DISPLAY_KHR` The display used by a swapchain
+[VK_ERROR_INCOMPATIBLE_DISPLAY_KHR](#VkResult) The display used by a swapchain
 does not use the same presentable image layout, or is incompatible in a
 way that prevents sharing an image.
 
 * 
-`VK_ERROR_INVALID_SHADER_NV` One or more shaders failed to compile
+[VK_ERROR_INVALID_SHADER_NV](#VkResult) One or more shaders failed to compile
 or link.
 More details are reported back to the application via
 `[VK_EXT_debug_report](../appendices/extensions.html#VK_EXT_debug_report)` if enabled.
 
 * 
-`VK_ERROR_OUT_OF_POOL_MEMORY` A pool memory allocation has failed.
+[VK_ERROR_OUT_OF_POOL_MEMORY](#VkResult) A pool memory allocation has failed.
 This **must** only be returned if no attempt to allocate host or device
 memory was made to accommodate the new allocation.
 If the failure was definitely due to fragmentation of the pool,
-`VK_ERROR_FRAGMENTED_POOL` **should** be returned instead.
+[VK_ERROR_FRAGMENTED_POOL](#VkResult) **should** be returned instead.
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE` An external handle is not a valid
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](#VkResult) An external handle is not a valid
 handle of the specified type.
 
 * 
-`VK_ERROR_FRAGMENTATION` A descriptor pool creation has failed due
+[VK_ERROR_FRAGMENTATION](#VkResult) A descriptor pool creation has failed due
 to fragmentation.
 
 * 
-`VK_ERROR_INVALID_DEVICE_ADDRESS_EXT` A buffer creation failed
+[VK_ERROR_INVALID_DEVICE_ADDRESS_EXT](#VkResult) A buffer creation failed
 because the requested address is not available.
 
 * 
-`VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS` A buffer creation
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS](#VkResult) A buffer creation
 or memory allocation
 failed because the requested address is not available.
 A shader group handle assignment failed because the requested shader
 group handle information is no longer valid.
 
 * 
-`VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT` An operation on a
+[VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT](#VkResult) An operation on a
 swapchain created with
-`VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT` failed as it
+[VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT](VK_KHR_surface/wsi.html#VkFullScreenExclusiveEXT) failed as it
 did not have exclusive full-screen access.
 This **may** occur due to implementation-dependent reasons, outside of the
 application’s control.
 
 * 
-`VK_ERROR_VALIDATION_FAILED` A command failed because invalid usage
+[VK_ERROR_VALIDATION_FAILED](#VkResult) A command failed because invalid usage
 was detected by the implementation or a validation layer.
 This **may** result in the command not being dispatched to the ICD.
 
 * 
-`VK_ERROR_COMPRESSION_EXHAUSTED_EXT` An image creation failed
+[VK_ERROR_COMPRESSION_EXHAUSTED_EXT](#VkResult) An image creation failed
 because internal resources required for compression are exhausted.
 This **must** only be returned when fixed-rate compression is requested.
 
 * 
-`VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR` The requested
+[VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR](#VkResult) The requested
 [VkImageUsageFlags](resources.html#VkImageUsageFlags) are not supported.
 
 * 
-`VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR` The requested
+[VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR](#VkResult) The requested
 video picture layout is not supported.
 
 * 
-`VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR` A video profile
+[VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR](#VkResult) A video profile
 operation specified via
 [VkVideoProfileInfoKHR](videocoding.html#VkVideoProfileInfoKHR)::`videoCodecOperation` is not supported.
 
 * 
-`VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR` Format parameters
+[VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR](#VkResult) Format parameters
 in a requested [VkVideoProfileInfoKHR](videocoding.html#VkVideoProfileInfoKHR) chain are not supported.
 
 * 
-`VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR` Codec-specific
+[VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR](#VkResult) Codec-specific
 parameters in a requested [VkVideoProfileInfoKHR](videocoding.html#VkVideoProfileInfoKHR) chain are not
 supported.
 
 * 
-`VK_ERROR_VIDEO_STD_VERSION_NOT_SUPPORTED_KHR` The specified video
+[VK_ERROR_VIDEO_STD_VERSION_NOT_SUPPORTED_KHR](#VkResult) The specified video
 Std header version is not supported.
 
 * 
-`VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR` The specified Video Std
+[VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR](#VkResult) The specified Video Std
 parameters do not adhere to the syntactic or semantic requirements of
 the used video compression standard, or values derived from parameters
 according to the rules defined by the used video compression standard do
@@ -3597,17 +3643,17 @@ not adhere to the capabilities of the video compression standard or the
 implementation.
 
 * 
-`VK_ERROR_NOT_PERMITTED` The driver implementation has denied a
+[VK_ERROR_NOT_PERMITTED](#VkResult) The driver implementation has denied a
 request to acquire a priority above the default priority
-(`VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT`) because the application does
+([VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT](devsandqueues.html#VkQueueGlobalPriorityEXT)) because the application does
 not have sufficient privileges.
 
 * 
-`VK_ERROR_NOT_ENOUGH_SPACE_KHR` The application did not provide
+[VK_ERROR_NOT_ENOUGH_SPACE_KHR](#VkResult) The application did not provide
 enough space to return all the required data.
 
 * 
-`VK_ERROR_UNKNOWN` An unknown error has occurred; either the
+[VK_ERROR_UNKNOWN](#VkResult) An unknown error has occurred; either the
 application has provided invalid input, or an implementation failure has
 occurred.
 
@@ -3625,27 +3671,27 @@ the application.
 
 |  | As a general rule, `Free`, `Release`, and `Reset` commands do
 | --- | --- |
-not return `VK_ERROR_OUT_OF_HOST_MEMORY`, while any other command with a
+not return [VK_ERROR_OUT_OF_HOST_MEMORY](#VkResult), while any other command with a
 return code **may** return it.
 Any exceptions from this rule are described for those commands. |
 
-`VK_ERROR_UNKNOWN` will be returned by an implementation when an
+[VK_ERROR_UNKNOWN](#VkResult) will be returned by an implementation when an
 unexpected error occurs that cannot be attributed to valid behavior of the
 application and implementation.
 Under these conditions, it **may** be returned from any command returning a
 [VkResult](#VkResult).
 
-|  | `VK_ERROR_UNKNOWN` is not expected to ever be returned if the
+|  | [VK_ERROR_UNKNOWN](#VkResult) is not expected to ever be returned if the
 | --- | --- |
 application behavior is valid, and if the implementation is bug-free.
-If `VK_ERROR_UNKNOWN` is returned, the application should be checked
+If [VK_ERROR_UNKNOWN](#VkResult) is returned, the application should be checked
 against the latest validation layers to verify correct behavior as much as
 possible.
 If no issues are identified it could be an implementation issue, and the
 implementor should be contacted for support. |
 
 Any command returning a [VkResult](#VkResult) **may** return
-`VK_ERROR_VALIDATION_FAILED` if a violation of valid usage is detected.
+[VK_ERROR_VALIDATION_FAILED](#VkResult) if a violation of valid usage is detected.
 
 Performance-critical commands generally do not have return codes.
 If a runtime error occurs in such commands, the implementation will defer
@@ -3847,9 +3893,9 @@ When a UTF-8 string is **returned from** a Vulkan API query, it is returned in
 a fixed-length buffer of C `char`.
 For example, a string returned in
 [VkPhysicalDeviceProperties](devsandqueues.html#VkPhysicalDeviceProperties)::`deviceName` has maximum length
-`VK_MAX_PHYSICAL_DEVICE_NAME_SIZE`, and a string returned in
+[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE](devsandqueues.html#VK_MAX_PHYSICAL_DEVICE_NAME_SIZE), and a string returned in
 [VkExtensionProperties](extensions.html#VkExtensionProperties)::`extensionName` has maximum length
-`VK_MAX_EXTENSION_NAME_SIZE`.
+[VK_MAX_EXTENSION_NAME_SIZE](extensions.html#VK_MAX_EXTENSION_NAME_SIZE).
 The string, **including** its null terminator, will always fit completely
 within this buffer.
 If the string is shorter than the buffer size, the contents of `char` in
@@ -3955,6 +4001,95 @@ typedef struct VkRect2D {
 * 
 `extent` is a [VkExtent2D](#VkExtent2D) specifying the rectangle extent.
 
+A host address range indicates a range of host memory.
+
+// Provided by VK_EXT_descriptor_heap
+typedef struct VkHostAddressRangeEXT {
+    void*     address;
+    size_t    size;
+} VkHostAddressRangeEXT;
+
+* 
+`address` is a host memory address.
+
+* 
+`size` is the size of the range.
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkHostAddressRangeEXT-address-parameter) VUID-VkHostAddressRangeEXT-address-parameter
+
+ `address` **must** be a valid pointer to an array of `size` bytes
+
+* 
+[](#VUID-VkHostAddressRangeEXT-size-arraylength) VUID-VkHostAddressRangeEXT-size-arraylength
+
+ `size` **must** be greater than `0`
+
+A constant host address range indicates a range of host memory that cannot
+be altered.
+
+// Provided by VK_EXT_descriptor_heap
+typedef struct VkHostAddressRangeConstEXT {
+    const void*    address;
+    size_t         size;
+} VkHostAddressRangeConstEXT;
+
+* 
+`address` is a read-only host memory address.
+
+* 
+`size` is the size of the range.
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkHostAddressRangeConstEXT-address-parameter) VUID-VkHostAddressRangeConstEXT-address-parameter
+
+ `address` **must** be a valid pointer to an array of `size` bytes
+
+* 
+[](#VUID-VkHostAddressRangeConstEXT-size-arraylength) VUID-VkHostAddressRangeConstEXT-size-arraylength
+
+ `size` **must** be greater than `0`
+
+A device address range indicates a sized range of device memory.
+
+// Provided by VK_EXT_descriptor_heap
+typedef struct VkDeviceAddressRangeEXT {
+    VkDeviceAddress    address;
+    VkDeviceSize       size;
+} VkDeviceAddressRangeEXT;
+
+* 
+`address` is a `VkDeviceAddress` specifying the start of the
+range.
+
+* 
+`size` is a `VkDeviceSize` specifying the size of the range.
+
+Valid Usage
+
+* 
+[](#VUID-VkDeviceAddressRangeEXT-size-11411) VUID-VkDeviceAddressRangeEXT-size-11411
+
+If `size` is not 0, `address` **must** not be 0
+
+* 
+[](#VUID-VkDeviceAddressRangeEXT-address-11365) VUID-VkDeviceAddressRangeEXT-address-11365
+
+The sum of `address` and `size` **must** be less than or equal to
+the sum of an address retrieved from a [VkBuffer](resources.html#VkBuffer) and the value of
+[VkBufferCreateInfo](resources.html#VkBufferCreateInfo)::`size` used to create that [VkBuffer](resources.html#VkBuffer)
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkDeviceAddressRangeEXT-address-parameter) VUID-VkDeviceAddressRangeEXT-address-parameter
+
+ If `address` is not `0`, `address` **must** be a valid `VkDeviceAddress` value
+
 A strided device address range is defined by the structure:
 
 // Provided by VK_KHR_copy_memory_indirect
@@ -4008,12 +4143,12 @@ by taking the name of the structure, stripping the leading `Vk`,
 prefixing each capital letter with `_`, converting the entire resulting
 string to upper case, and prefixing it with `VK_STRUCTURE_TYPE_`.
 For example, structures of type [VkImageCreateInfo](resources.html#VkImageCreateInfo) correspond to a
-[VkStructureType](#VkStructureType) value of `VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO`,
+[VkStructureType](#VkStructureType) value of [VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO](#VkStructureType),
 and thus a structure of this type **must** have its `sType` member set to
 this value before it is passed to the API.
 
-The values `VK_STRUCTURE_TYPE_LOADER_INSTANCE_CREATE_INFO` and
-`VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO` are reserved for internal
+The values [VK_STRUCTURE_TYPE_LOADER_INSTANCE_CREATE_INFO](#VkStructureType) and
+[VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO](#VkStructureType) are reserved for internal
 use by the loader, and do not have corresponding Vulkan structures in this
 Specification.
 
@@ -4864,6 +4999,36 @@ typedef enum VkStructureType {
   // Provided by VK_AMDX_shader_enqueue
     VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_NODE_CREATE_INFO_AMDX = 1000134004,
 #endif
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_TEXEL_BUFFER_DESCRIPTOR_INFO_EXT = 1000135000,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_IMAGE_DESCRIPTOR_INFO_EXT = 1000135001,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_RESOURCE_DESCRIPTOR_INFO_EXT = 1000135002,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_BIND_HEAP_INFO_EXT = 1000135003,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_PUSH_DATA_INFO_EXT = 1000135004,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_DESCRIPTOR_SET_AND_BINDING_MAPPING_EXT = 1000135005,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_SHADER_DESCRIPTOR_SET_AND_BINDING_MAPPING_INFO_EXT = 1000135006,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_OPAQUE_CAPTURE_DATA_CREATE_INFO_EXT = 1000135007,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_PROPERTIES_EXT = 1000135008,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_FEATURES_EXT = 1000135009,
+  // Provided by VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_DESCRIPTOR_HEAP_INFO_EXT = 1000135010,
+  // Provided by VK_EXT_custom_border_color with VK_EXT_descriptor_heap
+    VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_INDEX_CREATE_INFO_EXT = 1000135011,
+  // Provided by VK_EXT_descriptor_heap with VK_NV_device_generated_commands
+    VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_PUSH_DATA_TOKEN_NV = 1000135012,
+  // Provided by VK_EXT_descriptor_heap with VK_EXT_fragment_density_map
+    VK_STRUCTURE_TYPE_SUBSAMPLED_IMAGE_FORMAT_PROPERTIES_EXT = 1000135013,
+  // Provided by VK_EXT_descriptor_heap with VK_ARM_tensors
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_TENSOR_PROPERTIES_ARM = 1000135014,
   // Provided by VK_AMD_mixed_attachment_samples with VK_VERSION_1_3 or VK_KHR_dynamic_rendering
     VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_AMD = 1000044008,
   // Provided by VK_KHR_shader_bfloat16
@@ -5232,6 +5397,8 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT = 1000287001,
   // Provided by VK_EXT_custom_border_color
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT = 1000287002,
+  // Provided by VK_EXT_texture_compression_astc_3d
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_3D_FEATURES_EXT = 1000288000,
   // Provided by VK_KHR_pipeline_library
     VK_STRUCTURE_TYPE_PIPELINE_LIBRARY_CREATE_INFO_KHR = 1000290000,
   // Provided by VK_NV_present_barrier
@@ -5854,6 +6021,8 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_LIBRARY_GROUP_HANDLES_FEATURES_EXT = 1000498000,
   // Provided by VK_EXT_dynamic_rendering_unused_attachments
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_FEATURES_EXT = 1000499000,
+  // Provided by VK_KHR_internally_synchronized_queues
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INTERNALLY_SYNCHRONIZED_QUEUES_FEATURES_KHR = 1000504000,
   // Provided by VK_NV_low_latency2
     VK_STRUCTURE_TYPE_LATENCY_SLEEP_MODE_INFO_NV = 1000505000,
   // Provided by VK_NV_low_latency2
@@ -6174,6 +6343,12 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA = 1000575002,
   // Provided by VK_KHR_shader_fma
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FMA_FEATURES_KHR = 1000579000,
+  // Provided by VK_NV_push_constant_bank
+    VK_STRUCTURE_TYPE_PUSH_CONSTANT_BANK_INFO_NV = 1000580000,
+  // Provided by VK_NV_push_constant_bank
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_CONSTANT_BANK_FEATURES_NV = 1000580001,
+  // Provided by VK_NV_push_constant_bank
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_CONSTANT_BANK_PROPERTIES_NV = 1000580002,
   // Provided by VK_EXT_ray_tracing_invocation_reorder
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_EXT = 1000581000,
   // Provided by VK_EXT_ray_tracing_invocation_reorder
@@ -6198,12 +6373,6 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_INLINE_SESSION_PARAMETERS_INFO_KHR = 1000586003,
   // Provided by VK_OHOS_surface
     VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS = 1000685000,
-  // Provided by VK_OHOS_native_buffer
-    VK_STRUCTURE_TYPE_NATIVE_BUFFER_OHOS = 1000453001,
-  // Provided by VK_OHOS_native_buffer
-    VK_STRUCTURE_TYPE_SWAPCHAIN_IMAGE_CREATE_INFO_OHOS = 1000453002,
-  // Provided by VK_OHOS_native_buffer
-    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENTATION_PROPERTIES_OHOS = 1000453003,
   // Provided by VK_HUAWEI_hdr_vivid
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI = 1000590000,
   // Provided by VK_HUAWEI_hdr_vivid
@@ -6288,6 +6457,10 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_RENDERING_END_INFO_KHR = 1000619003,
   // Provided by VK_KHR_maintenance10
     VK_STRUCTURE_TYPE_RESOLVE_IMAGE_MODE_INFO_KHR = 1000630004,
+  // Provided by VK_EXT_shader_long_vector
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_FEATURES_EXT = 1000635000,
+  // Provided by VK_EXT_shader_long_vector
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_PROPERTIES_EXT = 1000635001,
   // Provided by VK_SEC_pipeline_cache_incremental_mode
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CACHE_INCREMENTAL_MODE_FEATURES_SEC = 1000637000,
   // Provided by VK_EXT_shader_uniform_buffer_unsized_array
@@ -6296,6 +6469,8 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_COMPUTE_OCCUPANCY_PRIORITY_PARAMETERS_NV = 1000645000,
   // Provided by VK_NV_compute_occupancy_priority
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_OCCUPANCY_PRIORITY_FEATURES_NV = 1000645001,
+  // Provided by VK_EXT_shader_subgroup_partitioned
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT = 1000662000,
   // Provided by VK_VERSION_1_1
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES,
   // Provided by VK_VERSION_1_1
@@ -6817,5 +6992,5 @@ indefinitely.
 | --- | --- |
 It was initially defined as part of [VkStencilFaceFlagBits](fragops.html#VkStencilFaceFlagBits).
 Once the naming inconsistency was noticed, it was renamed to
-`VK_STENCIL_FACE_FRONT_AND_BACK`, and the old name was aliased to the
+[VK_STENCIL_FACE_FRONT_AND_BACK](fragops.html#VkStencilFaceFlagBits), and the old name was aliased to the
 correct name. |

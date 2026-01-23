@@ -44,7 +44,7 @@ This chapter builds directly on the foundation established in the main Vulkan tu
 
 Beyond Vulkan knowledge, you’ll benefit from familiarity with object-oriented programming principles, as modern engine architecture relies heavily on encapsulation, inheritance, and polymorphism to manage complexity. Experience with common design patterns like Observer, Factory, and Singleton will help you recognize when and why we apply these patterns in our engine design.
 
-Modern C:pp: features play a crucial role in our implementation approach. Smart pointers help us manage resource lifetimes safely, templates enable flexible, reusable components, and other C:pp:11/14/17 features allow us to write more expressive and maintainable code. If you’re not comfortable with these concepts, consider reviewing them before proceeding.
+Modern C++ features play a crucial role in our implementation approach. Smart pointers help us manage resource lifetimes safely, templates enable flexible, reusable components, and other C++11/14/17 features allow us to write more expressive and maintainable code. If you’re not comfortable with these concepts, consider reviewing them before proceeding.
 
 You should also be familiar with the following chapters from the main tutorial:
 
@@ -72,4 +72,4 @@ Performance opportunities often emerge from architectural decisions made early i
 
 Let’s begin our exploration of engine architecture with an overview of common architectural patterns used in modern rendering engines.
 
-[Next: Architectural Patterns](02_architectural_patterns.adoc)
+[Previous: Building a Simple Engine Introduction](../introduction.html) | [Next: Architectural Patterns](02_architectural_patterns.html)

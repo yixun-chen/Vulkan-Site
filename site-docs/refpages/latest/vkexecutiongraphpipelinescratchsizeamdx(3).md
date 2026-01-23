@@ -60,7 +60,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExecutionGraphPipelineScratchSizeAMDX-sType-sType) VUID-VkExecutionGraphPipelineScratchSizeAMDX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXECUTION_GRAPH_PIPELINE_SCRATCH_SIZE_AMDX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXECUTION_GRAPH_PIPELINE_SCRATCH_SIZE_AMDX](VkStructureType.html)
 
 [VK_AMDX_shader_enqueue](VK_AMDX_shader_enqueue.html), `VkDeviceSize`, [VkStructureType](VkStructureType.html), [vkGetExecutionGraphPipelineScratchSizeAMDX](vkGetExecutionGraphPipelineScratchSizeAMDX.html)
 

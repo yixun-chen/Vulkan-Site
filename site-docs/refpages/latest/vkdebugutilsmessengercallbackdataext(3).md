@@ -62,7 +62,7 @@ number is an internal hash of the VUID.
 * 
 `pMessage` is
 `NULL` if `messageTypes` is equal to
-`VK_DEBUG_UTILS_MESSAGE_TYPE_DEVICE_ADDRESS_BINDING_BIT_EXT`, or
+[VK_DEBUG_UTILS_MESSAGE_TYPE_DEVICE_ADDRESS_BINDING_BIT_EXT](VkDebugUtilsMessageTypeFlagBitsEXT.html), or
 a null-terminated UTF-8 string detailing the trigger conditions.
 If the message corresponds to a validation layer message, then this will
 contain the main message with the specification text and link.
@@ -131,7 +131,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDebugUtilsMessengerCallbackDataEXT-sType-sType) VUID-VkDebugUtilsMessengerCallbackDataEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDebugUtilsMessengerCallbackDataEXT-pNext-pNext) VUID-VkDebugUtilsMessengerCallbackDataEXT-pNext-pNext

@@ -29,11 +29,11 @@ typedef enum VkRasterizationOrderAMD {
 } VkRasterizationOrderAMD;
 
 * 
-`VK_RASTERIZATION_ORDER_STRICT_AMD` specifies that operations for
+[VK_RASTERIZATION_ORDER_STRICT_AMD](#) specifies that operations for
 each primitive in a subpass **must** occur in [    primitive order](../../../../spec/latest/chapters/drawing.html#drawing-primitive-order).
 
 * 
-`VK_RASTERIZATION_ORDER_RELAXED_AMD` specifies that operations for
+[VK_RASTERIZATION_ORDER_RELAXED_AMD](#) specifies that operations for
 each primitive in a subpass **may** not occur in [    primitive order](../../../../spec/latest/chapters/drawing.html#drawing-primitive-order).
 
 [VK_AMD_rasterization_order](VK_AMD_rasterization_order.html), [VkPipelineRasterizationStateRasterizationOrderAMD](VkPipelineRasterizationStateRasterizationOrderAMD.html)

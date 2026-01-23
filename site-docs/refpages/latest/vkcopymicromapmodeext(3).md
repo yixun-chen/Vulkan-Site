@@ -30,21 +30,21 @@ typedef enum VkCopyMicromapModeEXT {
 } VkCopyMicromapModeEXT;
 
 * 
-`VK_COPY_MICROMAP_MODE_CLONE_EXT` creates a direct copy of the
+[VK_COPY_MICROMAP_MODE_CLONE_EXT](#) creates a direct copy of the
 micromap specified in `src` into the one specified by `dst`.
 The `dst` micromap **must** have been created with the same parameters
 as `src`.
 
 * 
-`VK_COPY_MICROMAP_MODE_SERIALIZE_EXT` serializes the micromap to a
+[VK_COPY_MICROMAP_MODE_SERIALIZE_EXT](#) serializes the micromap to a
 semi-opaque format which can be reloaded on a compatible implementation.
 
 * 
-`VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT` deserializes the semi-opaque
+[VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT](#) deserializes the semi-opaque
 serialization format in the buffer to the micromap.
 
 * 
-`VK_COPY_MICROMAP_MODE_COMPACT_EXT` creates a more compact version
+[VK_COPY_MICROMAP_MODE_COMPACT_EXT](#) creates a more compact version
 of a micromap `src` into `dst`.
 The micromap `dst` **must** have been created with a size at least as
 large as that returned by [vkCmdWriteMicromapsPropertiesEXT](vkCmdWriteMicromapsPropertiesEXT.html) after

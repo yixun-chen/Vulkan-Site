@@ -36,7 +36,7 @@ typedef struct VkPipelinePropertiesIdentifierEXT {
 structure.
 
 * 
-`pipelineIdentifier` is an array of `VK_UUID_SIZE` `uint8_t`
+`pipelineIdentifier` is an array of [VK_UUID_SIZE](VK_UUID_SIZE.html) `uint8_t`
 values into which the pipeline identifier will be written.
 
 Valid Usage (Implicit)
@@ -44,7 +44,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelinePropertiesIdentifierEXT-sType-sType) VUID-VkPipelinePropertiesIdentifierEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_PROPERTIES_IDENTIFIER_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_PROPERTIES_IDENTIFIER_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelinePropertiesIdentifierEXT-pNext-pNext) VUID-VkPipelinePropertiesIdentifierEXT-pNext-pNext

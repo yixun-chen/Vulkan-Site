@@ -56,7 +56,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferCollectionImageCreateInfoFUCHSIA-sType-sType) VUID-VkBufferCollectionImageCreateInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_COLLECTION_IMAGE_CREATE_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_COLLECTION_IMAGE_CREATE_INFO_FUCHSIA](VkStructureType.html)
 
 * 
 [](#VUID-VkBufferCollectionImageCreateInfoFUCHSIA-collection-parameter) VUID-VkBufferCollectionImageCreateInfoFUCHSIA-collection-parameter

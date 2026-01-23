@@ -41,7 +41,7 @@ If the `VkPhysicalDeviceSchedulingControlsFeaturesARM` structure is included in 
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceSchedulingControlsFeaturesARM`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceSchedulingControlsFeaturesARM-sType-sType) VUID-VkPhysicalDeviceSchedulingControlsFeaturesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_FEATURES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_FEATURES_ARM](VkStructureType.html)
 
 [VK_ARM_scheduling_controls](VK_ARM_scheduling_controls.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

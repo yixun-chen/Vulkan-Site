@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:spec" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -174,6 +174,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="descriptorsets.html">Resource Descriptors</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="descriptorheaps.html">Descriptor Heaps</a>
   </li>
   <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="interfaces.html">Shader Interfaces</a>
@@ -984,7 +987,7 @@ The current render pass instance <strong>must</strong> have been started or resu
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRenderingAttachmentLocations-commandBuffer-cmdpool" href="#VUID-vkCmdSetRenderingAttachmentLocations-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetRenderingAttachmentLocations-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRenderingAttachmentLocations-renderpass" href="#VUID-vkCmdSetRenderingAttachmentLocations-renderpass"></a> <span class="vuid">VUID-vkCmdSetRenderingAttachmentLocations-renderpass</span><br>
@@ -1105,7 +1108,7 @@ attachments to different fragment shader output locations.</p>
 </div>
 <div class="paragraph">
 <p>Each element of <code>pColorAttachmentLocations</code> set to
-<code>VK_ATTACHMENT_UNUSED</code> will be inaccessible to this pipeline as a color
+<a href="renderpass.html#VK_ATTACHMENT_UNUSED" class="xref page">VK_ATTACHMENT_UNUSED</a> will be inaccessible to this pipeline as a color
 attachment; no location will map to it.
 Each element of <code>pColorAttachmentLocations</code> set to any other value will
 map the specified location value to the color attachment specified in the
@@ -1143,7 +1146,7 @@ structure with the following properties:</p>
 from the primary command buffer.
 If <a href="cmdbuffers.html#VkCommandBufferInheritanceInfo" class="xref page">VkCommandBufferInheritanceInfo</a>::renderPass is not
 <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, or
-<code>VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT</code> is not specified in
+<a href="cmdbuffers.html#VkCommandBufferUsageFlagBits" class="xref page">VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT</a> is not specified in
 <a href="cmdbuffers.html#VkCommandBufferBeginInfo" class="xref page">VkCommandBufferBeginInfo</a>::flags, members of this structure are
 ignored.
 If this structure is not included in the <code>pNext</code> chain of
@@ -1177,7 +1180,7 @@ value of its index within the array</p>
 <p><a id="VUID-VkRenderingAttachmentLocationInfo-pColorAttachmentLocations-09513" href="#VUID-VkRenderingAttachmentLocationInfo-pColorAttachmentLocations-09513"></a> <span class="vuid">VUID-VkRenderingAttachmentLocationInfo-pColorAttachmentLocations-09513</span><br>
 
 Elements of <code>pColorAttachmentLocations</code> that are not
-<code>VK_ATTACHMENT_UNUSED</code> <strong>must</strong> each be unique</p>
+<a href="renderpass.html#VK_ATTACHMENT_UNUSED" class="xref page">VK_ATTACHMENT_UNUSED</a> <strong>must</strong> each be unique</p>
 </li>
 <li>
 <p><a id="VUID-VkRenderingAttachmentLocationInfo-colorAttachmentCount-09514" href="#VUID-VkRenderingAttachmentLocationInfo-colorAttachmentCount-09514"></a> <span class="vuid">VUID-VkRenderingAttachmentLocationInfo-colorAttachmentCount-09514</span><br>
@@ -1202,7 +1205,7 @@ Each element of <code>pColorAttachmentLocations</code> <strong>must</strong> be 
 <ul>
 <li>
 <p><a id="VUID-VkRenderingAttachmentLocationInfo-sType-sType" href="#VUID-VkRenderingAttachmentLocationInfo-sType-sType"></a> <span class="vuid">VUID-VkRenderingAttachmentLocationInfo-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_LOCATION_INFO</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_LOCATION_INFO</a></p>
 </li>
 </ul>
 </div>
@@ -1270,11 +1273,11 @@ format of the corresponding color attachment, the resulting values are
 <div class="paragraph">
 <p>The application <strong>can</strong> enable dithering to be applied to the color output of a
 subpass, by using the
-<code>VK_SUBPASS_DESCRIPTION_ENABLE_LEGACY_DITHERING_BIT_EXT</code> flag.
+<a href="renderpass.html#VkSubpassDescriptionFlagBits" class="xref page">VK_SUBPASS_DESCRIPTION_ENABLE_LEGACY_DITHERING_BIT_EXT</a> flag.
 For use in a dynamic render pass, the
-<code>VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT</code> flag <strong>must</strong> be used.
+<a href="renderpass.html#VkRenderingFlagBitsKHR" class="xref page">VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT</a> flag <strong>must</strong> be used.
 In that case, the pipelines used <strong>must</strong> have been created with
-<code>VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT</code>.</p>
+<a href="pipelines.html#VkPipelineCreateFlagBits2KHR" class="xref page">VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT</a>.</p>
 </div>
 <div class="paragraph">
 <p>When dithering is enabled, the implementation <strong>may</strong> modify the output color
@@ -1373,8 +1376,8 @@ instructions.
 Tile attachment variables <strong>can</strong> be declared as either single-sampled with
 <code>MS</code> operand of <code>0</code>, or as multi-sampled with <code>MS</code> operand of <code>1</code>.
 The image subresources of the tile attachment image <strong>must</strong> not be in
-<code>VK_IMAGE_LAYOUT_UNDEFINED</code>
-or <code>VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT</code>
+<a href="resources.html#VkImageLayout" class="xref page">VK_IMAGE_LAYOUT_UNDEFINED</a>
+or <a href="resources.html#VkImageLayout" class="xref page">VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT</a>
 layout in order to access its data in a shader.</p>
 </div>
 <div class="paragraph">
@@ -1395,10 +1398,10 @@ variables.</p>
 <li>
 <p><em>Sampled tile attachment</em> variables <strong>must</strong> be declared with a
 <code>Sampled</code> operand of <code>1</code>, <strong>must</strong> be backed by a descriptor of type
-<code>VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE</code>,
-<code>VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM</code>,
-<code>VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM</code>,
-or <code>VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</code>, and <strong>can</strong> be used
+<a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE</a>,
+<a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM</a>,
+<a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM</a>,
+or <a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</a>, and <strong>can</strong> be used
 with <code>OpImageFetch</code>, <code>OpImageSparseFetch</code>, or used to construct an
 <code>OpTypeSampledImage</code> that is subsequently consumed by
 <code>OpImageSample*</code>, <code>OpImageSparseSample*</code>,
@@ -1412,11 +1415,12 @@ images.</p>
 <li>
 <p><em>Storage tile attachment</em> variables <strong>must</strong> be declared with a
 <code>Sampled</code> operand of <code>2</code>, <strong>must</strong> be backed by a descriptor of type
-<code>VK_DESCRIPTOR_TYPE_STORAGE_IMAGE</code>, and <strong>can</strong> be used with
+<a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_STORAGE_IMAGE</a>, and <strong>can</strong> be used with
 <code>OpImageRead</code>, <code>OpImageSparseRead</code>, and <code>OpImageWrite</code>
 instructions.
 <em>Storage tile attachment</em> variables <strong>can</strong> be consumed by
-<code>OpImageTexelPointer</code> for compatibility with atomic operations.
+<code>OpImageTexelPointer</code>
+for compatibility with atomic operations.
 <em>Sampled tile attachment</em> variables are managed by the
 <a href="#interfaces-resources-descset">Descriptor Set Interface</a> as storage
 images.</p>
@@ -1424,7 +1428,7 @@ images.</p>
 <li>
 <p><em>Input tile attachment</em> variables <strong>must</strong> be declared with a <code>Sampled</code>
 operand of <code>2</code>, <strong>must</strong> be backed by a descriptor of type
-<code>VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT</code>, and <strong>can</strong> be used with
+<a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT</a>, and <strong>can</strong> be used with
 <code>OpImageRead</code> instructions.
 <em>Input tile attachment</em> variables are managed by the
 <a href="#interfaces-resources-descset">Descriptor Set Interface</a> as input
@@ -1471,7 +1475,7 @@ These variables <strong>must</strong> be declared with a type of <code>OpTypeIma
 <code>Sampled</code> operand of 2.
 The <code>MS</code> operand of the <code>OpTypeImage</code> <strong>must</strong> be 0 if the <code>samples</code>
 field of the corresponding <a href="renderpass.html#VkAttachmentDescription" class="xref page">VkAttachmentDescription</a> is
-<code>VK_SAMPLE_COUNT_1_BIT</code> and
+<a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_1_BIT</a> and
 <a href="renderpass.html#subpass-multisampledrendertosinglesampled" class="xref page">multisampled-render-to-single-sampled</a>
 is not enabled, and
 1 otherwise.</p>
@@ -1597,7 +1601,7 @@ The current render pass instance <strong>must</strong> have been started or resu
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRenderingInputAttachmentIndices-commandBuffer-cmdpool" href="#VUID-vkCmdSetRenderingInputAttachmentIndices-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetRenderingInputAttachmentIndices-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRenderingInputAttachmentIndices-renderpass" href="#VUID-vkCmdSetRenderingInputAttachmentIndices-renderpass"></a> <span class="vuid">VUID-vkCmdSetRenderingInputAttachmentIndices-renderpass</span><br>
@@ -1730,7 +1734,7 @@ attachment indices.</p>
 </div>
 <div class="paragraph">
 <p>Each element of <code>pColorAttachmentInputIndices</code> set to a value of
-<code>VK_ATTACHMENT_UNUSED</code> indicates that the corresponding attachment will
+<a href="renderpass.html#VK_ATTACHMENT_UNUSED" class="xref page">VK_ATTACHMENT_UNUSED</a> indicates that the corresponding attachment will
 not be used as an input attachment in this pipeline.
 Any other value in each of those elements will map the corresponding
 attachment to a <code>InputAttachmentIndex</code> value defined in shader code.</p>
@@ -1743,7 +1747,7 @@ each element to its index within the array.</p>
 <p>If <code>pDepthInputAttachmentIndex</code> or <code>pStencilInputAttachmentIndex</code>
 are set to <code>NULL</code>, they map to input attachments without a
 <code>InputAttachmentIndex</code> decoration.
-If they point to a value of <code>VK_ATTACHMENT_UNUSED</code>, it indicates that
+If they point to a value of <a href="renderpass.html#VK_ATTACHMENT_UNUSED" class="xref page">VK_ATTACHMENT_UNUSED</a>, it indicates that
 the corresponding attachment will not be used as an input attachment in this
 pipeline.
 If they point to any other value it maps the corresponding attachment to a
@@ -1809,40 +1813,40 @@ structure with the following properties:</p>
 
 If the <a href="features.html#features-dynamicRenderingLocalRead" class="xref page">    <code>dynamicRenderingLocalRead</code></a> feature is not enabled, and
 <code>pColorAttachmentInputIndices</code> is not <code>NULL</code>, each element <strong>must</strong> be
-<code>VK_ATTACHMENT_UNUSED</code></p>
+<a href="renderpass.html#VK_ATTACHMENT_UNUSED" class="xref page">VK_ATTACHMENT_UNUSED</a></p>
 </li>
 <li>
 <p><a id="VUID-VkRenderingInputAttachmentIndexInfo-dynamicRenderingLocalRead-09520" href="#VUID-VkRenderingInputAttachmentIndexInfo-dynamicRenderingLocalRead-09520"></a> <span class="vuid">VUID-VkRenderingInputAttachmentIndexInfo-dynamicRenderingLocalRead-09520</span><br>
 
 If the <a href="features.html#features-dynamicRenderingLocalRead" class="xref page">    <code>dynamicRenderingLocalRead</code></a> feature is not enabled,
 <code>pDepthInputAttachmentIndex</code> <strong>must</strong> be a valid pointer to a value of
-<code>VK_ATTACHMENT_UNUSED</code></p>
+<a href="renderpass.html#VK_ATTACHMENT_UNUSED" class="xref page">VK_ATTACHMENT_UNUSED</a></p>
 </li>
 <li>
 <p><a id="VUID-VkRenderingInputAttachmentIndexInfo-dynamicRenderingLocalRead-09521" href="#VUID-VkRenderingInputAttachmentIndexInfo-dynamicRenderingLocalRead-09521"></a> <span class="vuid">VUID-VkRenderingInputAttachmentIndexInfo-dynamicRenderingLocalRead-09521</span><br>
 
 If the <a href="features.html#features-dynamicRenderingLocalRead" class="xref page">    <code>dynamicRenderingLocalRead</code></a> feature is not enabled,
 <code>pStencilInputAttachmentIndex</code> <strong>must</strong> be a valid pointer to a value
-of <code>VK_ATTACHMENT_UNUSED</code></p>
+of <a href="renderpass.html#VK_ATTACHMENT_UNUSED" class="xref page">VK_ATTACHMENT_UNUSED</a></p>
 </li>
 <li>
 <p><a id="VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09522" href="#VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09522"></a> <span class="vuid">VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09522</span><br>
 
 Elements of <code>pColorAttachmentInputIndices</code> that are not
-<code>VK_ATTACHMENT_UNUSED</code> <strong>must</strong> each be unique</p>
+<a href="renderpass.html#VK_ATTACHMENT_UNUSED" class="xref page">VK_ATTACHMENT_UNUSED</a> <strong>must</strong> each be unique</p>
 </li>
 <li>
 <p><a id="VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09523" href="#VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09523"></a> <span class="vuid">VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09523</span><br>
 
 Elements of <code>pColorAttachmentInputIndices</code> that are not
-<code>VK_ATTACHMENT_UNUSED</code> <strong>must</strong> not take the same value as the content
+<a href="renderpass.html#VK_ATTACHMENT_UNUSED" class="xref page">VK_ATTACHMENT_UNUSED</a> <strong>must</strong> not take the same value as the content
 of <code>pDepthInputAttachmentIndex</code></p>
 </li>
 <li>
 <p><a id="VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09524" href="#VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09524"></a> <span class="vuid">VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09524</span><br>
 
 Elements of <code>pColorAttachmentInputIndices</code> that are not
-<code>VK_ATTACHMENT_UNUSED</code> <strong>must</strong> not take the same value as the content
+<a href="renderpass.html#VK_ATTACHMENT_UNUSED" class="xref page">VK_ATTACHMENT_UNUSED</a> <strong>must</strong> not take the same value as the content
 of <code>pStencilInputAttachmentIndex</code></p>
 </li>
 <li>
@@ -1850,6 +1854,15 @@ of <code>pStencilInputAttachmentIndex</code></p>
 
 <code>colorAttachmentCount</code> <strong>must</strong> be less than or equal to
 <a href="limits.html#limits-maxColorAttachments" class="xref page"><code>maxColorAttachments</code></a></p>
+</li>
+<li>
+<p><a id="VUID-VkRenderingInputAttachmentIndexInfo-pDepthInputAttachmentIndex-12274" href="#VUID-VkRenderingInputAttachmentIndexInfo-pDepthInputAttachmentIndex-12274"></a> <span class="vuid">VUID-VkRenderingInputAttachmentIndexInfo-pDepthInputAttachmentIndex-12274</span><br>
+
+Elements of <code>pDepthInputAttachmentIndex</code>,
+<code>pStencilInputAttachmentIndex</code>, and
+<code>pColorAttachmentInputIndices</code> that are not
+<a href="renderpass.html#VK_ATTACHMENT_UNUSED" class="xref page">VK_ATTACHMENT_UNUSED</a> <strong>must</strong> be less than
+<a href="limits.html#limits-maxPerStageDescriptorInputAttachments" class="xref page">    <code>maxPerStageDescriptorInputAttachments</code></a></p>
 </li>
 </ul>
 </div>
@@ -1862,7 +1875,7 @@ of <code>pStencilInputAttachmentIndex</code></p>
 <ul>
 <li>
 <p><a id="VUID-VkRenderingInputAttachmentIndexInfo-sType-sType" href="#VUID-VkRenderingInputAttachmentIndexInfo-sType-sType"></a> <span class="vuid">VUID-VkRenderingInputAttachmentIndexInfo-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO</a></p>
 </li>
 <li>
 <p><a id="VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-parameter" href="#VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-parameter"></a> <span class="vuid">VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-parameter</span><br>
@@ -2050,11 +2063,17 @@ attribute <strong>must</strong> only declare one variable of that type.</p>
 <h2 id="interfaces-resources"><a class="anchor" href="#interfaces-resources"></a>Shader Resource Interface</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When a shader stage accesses
-buffer, tensor,
-or image resources, as described in the <a href="descriptorsets.html#descriptorsets" class="xref page">Resource Descriptors</a> section, the shader resource variables <strong>must</strong> be matched with
-the <a href="descriptorsets.html#descriptorsets-pipelinelayout" class="xref page">pipeline layout</a> that is provided at
-pipeline creation time.</p>
+<p>When a shader stage accesses buffer,
+tensor,
+or image resources through a descriptor set, as described in the
+<a href="descriptorsets.html#descriptorsets" class="xref page">Resource Descriptors</a> section, the shader resource
+variables <strong>must</strong> be matched with the <a href="descriptorsets.html#descriptorsets-pipelinelayout" class="xref page">pipeline layout</a> that is provided at
+shader or
+pipeline creation time.
+If a pipeline is created with
+<a href="pipelines.html#VkPipelineCreateFlagBits2KHR" class="xref page">VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT</a>,
+or a shader is created with <a href="shaders.html#VkShaderCreateFlagBitsEXT" class="xref page">VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT</a>,
+then no layout information needs to be provided.</p>
 </div>
 <div class="paragraph">
 <p>The set of shader variables that form the <em>shader resource interface</em> for a
@@ -2065,8 +2084,9 @@ or <code>PushConstant</code>.
 For the fragment shader, this includes the <a href="#interfaces-inputattachment">fragment input attachment interface</a>.</p>
 </div>
 <div class="paragraph">
-<p>The shader resource interface consists of two sub-interfaces: the push
-constant interface and the descriptor set interface.</p>
+<p>The shader resource interface consists of multiple sub-interfaces:
+the descriptor heap interface,
+the push constant interface, and the descriptor set interface.</p>
 </div>
 <div class="sect2">
 <h3 id="interfaces-resources-pushconst"><a class="anchor" href="#interfaces-resources-pushconst"></a>Push Constant Interface</h3>
@@ -2096,14 +2116,38 @@ They <strong>must</strong> be:</p>
 shader entry point.</p>
 </div>
 <div class="paragraph">
-<p>Each statically used member of a push constant block <strong>must</strong> be placed at an
-<code>Offset</code> such that the entire member is entirely contained within the
-<a href="descriptorsets.html#VkPushConstantRange" class="xref page">VkPushConstantRange</a> for each <code>OpEntryPoint</code> that uses it, and the
-<code>stageFlags</code> for that range <strong>must</strong> specify the appropriate
-<a href="pipelines.html#VkShaderStageFlagBits" class="xref page">VkShaderStageFlagBits</a> for that stage.
+<p>When using
+descriptor buffers or
+descriptor sets, each statically used member of a push constant block <strong>must</strong>
+be placed at an <code>Offset</code> such that the entire member is entirely
+contained within the <a href="descriptorsets.html#VkPushConstantRange" class="xref page">VkPushConstantRange</a> for each <code>OpEntryPoint</code>
+that uses it, and the <code>stageFlags</code> for that range <strong>must</strong> specify the
+appropriate <a href="pipelines.html#VkShaderStageFlagBits" class="xref page">VkShaderStageFlagBits</a> for that stage.
 The <code>Offset</code> decoration for any member of a push constant block <strong>must</strong> not
 cause the space required for that member to extend outside the range
 <span class="eq">[0, <code>maxPushConstantsSize</code>)</span>.</p>
+</div>
+<div class="paragraph">
+<p>When using descriptor heaps, each statically used member of a push constant
+block <strong>must</strong> be placed at an <code>Offset</code> such that the entire member is
+entirely contained within the range specified by <a href="descriptorheaps.html#vkCmdPushDataEXT" class="xref page">vkCmdPushDataEXT</a> in
+the command buffer.
+The <code>Offset</code> decoration for any member of a push constant block <strong>must</strong> not
+cause the space required for that member to extend outside the range
+<span class="eq">[0, <code>maxPushDataSize</code>)</span>.</p>
+</div>
+<div class="paragraph">
+<p>Push constant variables or blocks <strong>can</strong> be decorated with
+<a href="shaders.html#shaders-pushconstant-decorations-banknv" class="xref page"><code>BankNV</code></a> and
+<a href="shaders.html#shaders-pushconstant-decorations-memberoffsetnv" class="xref page"><code>MemberOffsetNV</code></a>
+decorations to control their placement within push constant banks.
+The <code>BankNV</code> decoration specifies which hardware bank the push constant
+data should be placed in or accessed from, while <code>MemberOffsetNV</code>
+provides additional offset control within the specified bank.
+When these decorations are used, the push constant data placement is
+determined by both the API-specified ranges and the shader-specified bank
+and offset decorations, allowing for more flexible push constant management
+on implementations where multiple banks are available.</p>
 </div>
 <div class="paragraph">
 <p>Any member of a push constant block that is declared as an array <strong>must</strong> only
@@ -2120,6 +2164,10 @@ storage class of
 <code>Uniform</code> or <code>UniformConstant</code> (including the variables in the
 <a href="#interfaces-inputattachment">fragment input attachment interface</a>) that are
 statically used by the shader entry points for the pipeline.</p>
+</div>
+<div class="paragraph">
+<p>When using descriptor heaps, this interface is not used directly to access
+heaps, but <strong>may</strong> be accessed by specifying <a href="descriptorheaps.html#descriptorheaps-bindings" class="xref page">Shader Bindings</a> to map to the descriptor heaps.</p>
 </div>
 <div class="paragraph">
 <p>These variables <strong>must</strong> have <code>DescriptorSet</code> and <code>Binding</code> decorations
@@ -2144,7 +2192,7 @@ capability.</p>
 </li>
 <li>
 <p>For <code>OpImageWrite</code>, if the image format supports
-<code>VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT</code> and the
+<a href="formats.html#VkFormatFeatureFlagBits2KHR" class="xref page">VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT</a> and the
 shader module declares the <code>StorageImageWriteWithoutFormat</code>
 capability.</p>
 </li>
@@ -2156,7 +2204,7 @@ capability.</p>
 </li>
 <li>
 <p>For <code>OpImageRead</code> or <code>OpImageSparseRead</code>, if the image format
-supports <code>VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT</code> and
+supports <a href="formats.html#VkFormatFeatureFlagBits2KHR" class="xref page">VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT</a> and
 the shader module declares the <code>StorageImageReadWithoutFormat</code>
 capability.</p>
 </li>
@@ -2224,7 +2272,7 @@ for that variable to extend outside the range <span class="eq">[0,
 <p>Variables identified with the <code>Uniform</code> storage class <strong>can</strong> also be used
 to access transparent descriptor set backed resources when the variable is
 assigned to a descriptor set layout binding with a <code>descriptorType</code> of
-<code>VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK</code>.
+<a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK</a>.
 In this case the variable <strong>must</strong> be typed as <code>OpTypeStruct</code> and <strong>cannot</strong> be
 aggregated into arrays of that type.
 Further, the <code>Offset</code> decoration for any member of such a variable <strong>must</strong>
@@ -2251,6 +2299,22 @@ decoration of <code>InputAttachmentIndex</code> <strong>must</strong> be declare
 <a href="descriptorsets.html#descriptorsets-combinedimagesampler" class="xref page">combined image sampler descriptor</a>
 <strong>can</strong> have a type of <code>OpTypeImage</code>, <code>OpTypeSampler</code> (<code>Sampled</code>=1),
 or <code>OpTypeSampledImage</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When using descriptor heaps, there is no combined image sampler descriptor
+type, but shader variables of <code>OpTypeSampledImage</code> can be mapped to a
+separate image and sampler for compatibility.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>When accessing a resource through such a variable, the resource <strong>must</strong> be
@@ -2463,65 +2527,67 @@ samples a <a href="samplers.html#samplers-subsamplesampler" class="xref page">su
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sampler</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_DESCRIPTOR_TYPE_SAMPLER</code> or
-                           <code>VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_SAMPLER</a> or
+                           <a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sampled image</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE</code> or
-                           <code>VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE</a> or
+                           <a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">storage image</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_DESCRIPTOR_TYPE_STORAGE_IMAGE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_STORAGE_IMAGE</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">combined image sampler</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</a>
+                           or both <a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE</a> and
+                           <a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_SAMPLER</a> when using heaps</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uniform texel buffer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">storage texel buffer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uniform buffer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER</code> or
-                           <code>VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER</a> or
+                           <a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">storage buffer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_DESCRIPTOR_TYPE_STORAGE_BUFFER</code> or
-                           <code>VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_STORAGE_BUFFER</a> or
+                           <a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">input attachment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">inline uniform block</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">acceleration structure</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR</code>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR</a>
 or
-<code>VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV</code></p></td>
+<a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">weight image</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">block matching image</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">storage tensor</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_TENSOR_ARM</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -2660,19 +2726,304 @@ They do not correspond to resource types where a generic
 </div>
 </div>
 <div class="sect2">
+<h3 id="interfaces-resources-descriptorheap"><a class="anchor" href="#interfaces-resources-descriptorheap"></a>Descriptor Heap Interface</h3>
+<div class="paragraph">
+<p>The <em>descriptor heap interface</em> is a vastly simplified interface for
+accessing resources through pointers to heaps of different types, without
+many of the restrictions that apply to the <a href="#interfaces-resources-descset">descriptor set interface</a>.</p>
+</div>
+<div class="paragraph">
+<p>Two built-in pointers are available to shaders:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="descriptorheaps.html#SamplerHeapEXT" class="xref page">SamplerHeapEXT</a> for samplers</p>
+</li>
+<li>
+<p><a href="descriptorheaps.html#ResourceHeapEXT" class="xref page">ResourceHeapEXT</a> for resources</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These built-ins <strong>must</strong> be declared as pointers in the <code>UniformConstant</code>
+<code>Storage</code> <code>Class</code>.
+These built-ins <strong>must</strong> not be used to access data outside of the heap bound
+to them.</p>
+</div>
+<div class="paragraph">
+<p>These built-ins <strong>can</strong> be accessed non-uniformly, with no further decoration
+required, and with no dependency on other features or properties.
+The <code>UniformId</code> decoration <strong>can</strong> be applied to the result of accesses to
+indicate that the data will be accessed uniformly to a given scope, as a
+hint to improve performance on some implementations.</p>
+</div>
+<div class="paragraph">
+<p>Resources retrieved from each heap <strong>must</strong> have been created with descriptors
+that match the variable being declared, as follows:</p>
+</div>
+<table id="interfaces-resources-heap-type-correspondence" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Heap Resource Type Correspondence</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Descriptor Type</th>
+<th class="tableblock halign-left valign-top">Heap</th>
+<th class="tableblock halign-left valign-top">SPIR-V Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_SAMPLER</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SamplerHeapEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeSampler</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ResourceHeapEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeImage</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_STORAGE_IMAGE</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ResourceHeapEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeImage</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ResourceHeapEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeImage</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ResourceHeapEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeImage</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ResourceHeapEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeImage</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ResourceHeapEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeImage</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ResourceHeapEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeImage</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ResourceHeapEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeBufferEXT</code> with the <code>Uniform</code> <code>Storage</code> <code>Class</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_STORAGE_BUFFER</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ResourceHeapEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeBufferEXT</code> with the <code>StorageBuffer</code> <code>Storage</code> <code>Class</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ResourceHeapEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeAccelerationStructureKHR</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ResourceHeapEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeAccelerationStructureNV</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ResourceHeapEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeAccelerationStructureKHR</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_TENSOR_ARM</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ResourceHeapEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeTensorARM</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>While the built-in heap pointers <strong>can</strong> be declared and dereferenced as
+pointing to any type, applications <strong>must</strong> not access data types valid for one
+heap from any other heap.</p>
+</div>
+<div class="paragraph">
+<p>When one of the types above is read from a heap in the shader, it will read
+a number of bytes equal to value advertised for the <a href="descriptorsets.html#VkDescriptorType" class="xref page">VkDescriptorType</a>
+as returned by <a href="descriptorheaps.html#vkGetPhysicalDeviceDescriptorSizeEXT" class="xref page">vkGetPhysicalDeviceDescriptorSizeEXT</a>.</p>
+</div>
+<div class="paragraph">
+<p>For image types, there are further restrictions on the operands used for the
+type, according to the descriptor type:</p>
+</div>
+<table id="interfaces-resources-heap-image-operand-correspondence" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Heap Image Operand Correspondence</caption>
+<colgroup>
+<col style="width: 38.4615%;">
+<col style="width: 15.3846%;">
+<col style="width: 15.3846%;">
+<col style="width: 15.3846%;">
+<col style="width: 15.3847%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Descriptor Type</th>
+<th class="tableblock halign-left valign-top"><code>Dim</code></th>
+<th class="tableblock halign-left valign-top"><code>Arrayed</code></th>
+<th class="tableblock halign-left valign-top"><code>MS</code></th>
+<th class="tableblock halign-left valign-top"><code>Sampled</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_DESCRIPTOR_TYPE_STORAGE_IMAGE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 or 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SubpassData</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 or 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Buffer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Buffer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2D</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2D</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>For storage images and input attachments, <code>MS</code> is 0 if the image has one
+sample per pixel, or 1 otherwise.
+For sampled and storage images, the <code>Dim</code> and <code>Arrayed</code> qualifiers
+depend on the <a href="resources.html#VkImageViewType" class="xref page">VkImageViewType</a> specified when writing the descriptor:</p>
+</div>
+<table id="interfaces-resources-heap-image-dim-correspondence" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Heap Image View Type Dimensionality</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image View Type</th>
+<th class="tableblock halign-left valign-top"><code>Dim</code></th>
+<th class="tableblock halign-left valign-top"><code>Arrayed</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_IMAGE_VIEW_TYPE_1D</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1D</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_IMAGE_VIEW_TYPE_2D</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2D</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_IMAGE_VIEW_TYPE_3D</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3D</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_IMAGE_VIEW_TYPE_CUBE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Cube</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_IMAGE_VIEW_TYPE_1D_ARRAY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1D</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_IMAGE_VIEW_TYPE_2D_ARRAY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2D</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_IMAGE_VIEW_TYPE_CUBE_ARRAY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Cube</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The <a href="../appendices/spirvenv.html#spirvenv-format-type-matching" class="xref page">type</a> and <a href="../appendices/spirvenv.html#spirvenv-image-formats" class="xref page">format</a> of the image resource <strong>must</strong> also match between the API and SPIR-V.</p>
+</div>
+<div class="paragraph">
+<p>Descriptors accessed via the <code>ResourceHeapEXT</code> built-in <strong>must</strong> be
+<a href="#interfaces-resources-layout">explicitly laid out</a>.</p>
+</div>
+<div class="paragraph">
+<p>There is no further limit to the number of resources that <strong>can</strong> be accessed
+by a shader through a heap pointer beyond the size of the bound range for
+each heap.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="interfaces-resources-setandbinding"><a class="anchor" href="#interfaces-resources-setandbinding"></a>DescriptorSet and Binding Assignment</h3>
 <div class="paragraph">
 <p>A variable decorated with a <code>DescriptorSet</code> decoration of <span class="eq">s</span> and a
 <code>Binding</code> decoration of <span class="eq">b</span> indicates that this variable is
 associated with the <a href="descriptorsets.html#VkDescriptorSetLayoutBinding" class="xref page">VkDescriptorSetLayoutBinding</a> that has a
 <code>binding</code> equal to <span class="eq">b</span> in <code>pSetLayouts</code>[<em>s</em>] that was specified
-in <a href="descriptorsets.html#VkPipelineLayoutCreateInfo" class="xref page">VkPipelineLayoutCreateInfo</a>.</p>
+in <a href="descriptorsets.html#VkPipelineLayoutCreateInfo" class="xref page">VkPipelineLayoutCreateInfo</a>.
+If using descriptor heaps, such a variable will instead be associated with a
+<a href="descriptorheaps.html#descriptorheaps-bindings" class="xref page">shader binding</a>.</p>
 </div>
 <div class="paragraph">
-<p><code>DescriptorSet</code> decoration values <strong>must</strong> be between zero and
+<p>If not using descriptor heaps,
+<code>DescriptorSet</code> decoration values <strong>must</strong> be between zero and
 <code>maxBoundDescriptorSets</code> minus one, inclusive.
-<code>Binding</code> decoration values <strong>can</strong> be any 32-bit unsigned integer value, as
-described in <a href="descriptorsets.html#descriptorsets-setlayout" class="xref page">Descriptor Set Layout</a>.
+If a pipeline is created with
+<a href="pipelines.html#VkPipelineCreateFlagBits2KHR" class="xref page">VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT</a>,
+or a shader is created with <a href="shaders.html#VkShaderCreateFlagBitsEXT" class="xref page">VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT</a>,
+<code>DescriptorSet</code> decorations <strong>can</strong> be any 32-bit unsigned integer value.
+<code>Binding</code> decoration values <strong>can</strong> be any 32-bit unsigned integer value.
 Each descriptor set has its own binding name space.</p>
 </div>
 <div class="paragraph">
@@ -2690,6 +3041,24 @@ For the purposes of interface matching and descriptor set
 <a href="descriptorsets.html#descriptorsets-updates" class="xref page">operations</a>, if a resource variable is not an
 array, it is treated as if it has an arrayElement of zero.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Even though an array is assigned to a single <code>Binding</code>, when using
+<a href="descriptorheaps.html#descriptorheaps-bindings" class="xref page">descriptor heap mappings</a>, each element will be
+assigned a consecutive offset according to the stride for that type.
+Applications should take care to set subsequent bindings with this in mind
+to avoid unintentional overlap.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>There is a limit on the number of resources of each type that <strong>can</strong> be
 accessed by a pipeline stage as shown in
@@ -2700,22 +3069,28 @@ stage in a pipeline.
 The &#8220;Resource Types&#8221; column lists which resource types are counted against
 the limit.
 Some resource types count against multiple limits.
-The <code>VK_DESCRIPTOR_TYPE_MUTABLE_EXT</code> descriptor type counts as one
+The <a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_MUTABLE_EXT</a> descriptor type counts as one
 individual resource and one for every unique resource limit per descriptor
 set type that is present in the associated binding&#8217;s
 <a href="descriptorsets.html#VkMutableDescriptorTypeListEXT" class="xref page">VkMutableDescriptorTypeListEXT</a>.
 If multiple descriptor types in <a href="descriptorsets.html#VkMutableDescriptorTypeListEXT" class="xref page">VkMutableDescriptorTypeListEXT</a> map to
 the same resource limit, only one descriptor is consumed for purposes of
-computing resource limits.</p>
+computing resource limits.
+These limits only apply to resources accessed with <code>DescriptorSet</code> and
+<code>Binding</code> values.</p>
 </div>
 <div class="paragraph">
-<p>The pipeline layout <strong>may</strong> include descriptor sets and bindings which are not
+<p>A pipeline layout <strong>may</strong> include descriptor sets and bindings which are not
 referenced by any variables statically used by the entry points for the
-shader stages in the binding&#8217;s <code>stageFlags</code>.</p>
+shader stages in the binding&#8217;s <code>stageFlags</code>.
+Similarly, <a href="descriptorheaps.html#descriptorheaps-bindings" class="xref page">descriptor heap bindings</a> <strong>may</strong>
+include mappings that are unused by the shader.</p>
 </div>
 <div class="paragraph">
 <p>However, if a variable assigned to a given <code>DescriptorSet</code> and
 <code>Binding</code> is statically used by the entry point for a shader stage, the
+<a href="descriptorheaps.html#descriptorheaps-bindings" class="xref page">heap bindings</a> <strong>must</strong> specify a mapping for it
+when using heaps, or the
 pipeline layout <strong>must</strong> contain a descriptor set layout binding in that
 descriptor set layout and for that binding number, and that binding&#8217;s
 <code>stageFlags</code> <strong>must</strong> include the appropriate <a href="pipelines.html#VkShaderStageFlagBits" class="xref page">VkShaderStageFlagBits</a>
@@ -2761,7 +3136,7 @@ statically used.</p>
 <div class="paragraph">
 <p>A noteworthy example of using multiple statically-used shader variables
 sharing the same descriptor set and binding values is a descriptor of type
-<code>VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</code> that has multiple
+<a href="descriptorsets.html#VkDescriptorType" class="xref page">VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</a> that has multiple
 corresponding shader variables in the <code>UniformConstant</code> storage class,
 where some could be <code>OpTypeImage</code> (<code>Sampled</code>=1), some could be
 <code>OpTypeSampler</code>, and some could be <code>OpTypeSampledImage</code>.</p>
@@ -2771,7 +3146,7 @@ where some could be <code>OpTypeImage</code> (<code>Sampled</code>=1), some coul
 </table>
 </div>
 <table id="interfaces-resources-limits" class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 5. Shader Resource Limits</caption>
+<caption class="title">Table 8. Shader Resource Limits</caption>
 <colgroup>
 <col style="width: 60.3448%;">
 <col style="width: 39.6552%;">
@@ -2851,6 +3226,22 @@ or
 </tr>
 </tbody>
 </table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Resources accessed directly through the
+<a href="#interfaces-resources-descriptorheap">descriptor heap interface</a> do not
+count towards these limits.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">1</dt>
@@ -2930,8 +3321,62 @@ of any of its members.</p>
 <p>A matrix type inherits <em>scalar alignment</em> from the equivalent array
 declaration.</p>
 </li>
+<li>
+<p><code>OpTypeImage</code> has a scalar alignment equal to the value of
+<a href="limits.html#limits-imageDescriptorAlignment" class="xref page"><code>imageDescriptorAlignment</code></a></p>
+</li>
+<li>
+<p><code>OpTypeBufferEXT</code> has a scalar alignment equal to the value of
+<a href="limits.html#limits-bufferDescriptorAlignment" class="xref page"><code>bufferDescriptorAlignment</code></a></p>
+</li>
+<li>
+<p><code>OpTypeSampler</code> has a scalar alignment equal to the value of
+<a href="limits.html#limits-samplerDescriptorAlignment" class="xref page"><code>samplerDescriptorAlignment</code></a></p>
+</li>
+<li>
+<p><code>OpTypeTensorARM</code> has a scalar alignment equal to the value of
+<a href="limits.html#limits-tensorDescriptorAlignment" class="xref page"><code>tensorDescriptorAlignment</code></a></p>
+</li>
 </ul>
 </div>
+<div class="paragraph">
+<p>The aligned size of a <code>OpTypeImage</code>, <code>OpTypeBufferEXT</code>, or
+<code>OpTypeSampler</code> can be queried from within SPIR-V using
+<code>OpConstantSizeOfEXT</code>, which can be used with the <code>OffsetIdEXT</code> or
+<code>ArrayStrideIdEXT</code> decorations to lay out types in a descriptor heap.
+<code>OpConstantSizeOfEXT</code> returns the following for values for each type:</p>
+</div>
+<table id="interfaces-descriptor-sizes" class="tableblock frame-all grid-all" style="width: 90%;">
+<caption class="title">Table 9. Shader Descriptor Sizes</caption>
+<colgroup>
+<col style="width: 23.0769%;">
+<col style="width: 76.9231%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeSampler</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>samplerDescriptorSize</code> aligned to <code>samplerDescriptorAlignment</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeImage</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>imageDescriptorSize</code> aligned to <code>imageDescriptorAlignment</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeBufferEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bufferDescriptorSize</code> aligned to <code>bufferDescriptorAlignment</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeAccelerationStructureKHR</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bufferDescriptorSize</code> aligned to <code>bufferDescriptorAlignment</code></p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
 <p>The <em>base alignment</em> of the type of an <code>OpTypeStruct</code> member is defined
 recursively as follows:</p>
@@ -3026,8 +3471,10 @@ it.</p>
 is enabled and the storage class is <code>Uniform</code>, <code>StorageBuffer</code>,
 <code>PhysicalStorageBuffer</code>,
 <code>ShaderRecordBufferKHR</code>,
-or <code>PushConstant</code> then every member <strong>must</strong> be aligned according to its
-scalar alignment.</p>
+or <code>PushConstant</code>,
+or the storage class is <code>UniformConstant</code> and the type is decorated
+with either <code>SamplerHeapEXT</code> or <code>ResourceHeapEXT</code>,
+then every member <strong>must</strong> be aligned according to its scalar alignment.</p>
 </li>
 <li>
 <p>If the <a href="features.html#features-workgroupMemoryExplicitLayoutScalarBlockLayout" class="xref page">    <code>workgroupMemoryExplicitLayoutScalarBlockLayout</code></a> feature is
@@ -3069,12 +3516,15 @@ use the <em>base alignment</em>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>Offset</code> decoration of any member <strong>must</strong> be a multiple of its
-alignment.</p>
+<p>The <code>Offset</code>
+or <code>OffsetIdEXT</code>
+decoration of any member <strong>must</strong> be a multiple of its alignment.</p>
 </li>
 <li>
-<p>Any <code>ArrayStride</code> or <code>MatrixStride</code> decoration <strong>must</strong> be a multiple
-of the alignment of the array or matrix as defined above.</p>
+<p>Any <code>ArrayStride</code>,
+or <code>ArrayStrideIdEXT</code>,
+or <code>MatrixStride</code> decoration <strong>must</strong> be a multiple of the alignment of
+the array or matrix as defined above.</p>
 </li>
 </ul>
 </div>
@@ -3178,6 +3628,25 @@ decoration.
 Any two variables declared in the <code>Output</code> storage class listed as
 operands on the same <code>OpEntryPoint</code> <strong>must</strong> not have the same <code>BuiltIn</code>
 decoration.</p>
+</div>
+<div class="paragraph">
+<p>Built-in values for descriptor heaps are listed in the descriptor heap
+chapter:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="descriptorheaps.html#SamplerHeapEXT" class="xref page">SamplerHeapEXT</a></p>
+</li>
+<li>
+<p><a href="descriptorheaps.html#ResourceHeapEXT" class="xref page">ResourceHeapEXT</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Types used to access these built-ins <strong>must</strong> be laid out explicitly using the
+<code>Offset</code>, <code>OffsetIdEXT</code>, <code>ArrayStride</code>, <code>ArrayStrideIdEXT</code>, and
+<code>MatrixStride</code> decorations as specified in <a href="#interfaces-resources-layout">Offset and Stride Assignment</a>.</p>
 </div>
 <div id="interfaces-builtin-variables-barycoordkhr" class="openblock">
 <div class="content">
@@ -4321,7 +4790,7 @@ scalar 32-bit integer value</p>
 that variable contain the coordinates <span class="eq">(x,y,z,1/w)</span> of the fragment
 being processed.</p>
 <div class="paragraph">
-<p>The <span class="eq">(x,y)</span> values are the framebuffer coordinates <span class="eq">(x<sub>f,y</sub>f)</span> of
+<p>The <span class="eq">(x,y)</span> values are the framebuffer coordinates <span class="eq">(x<sub>f</sub>,y<sub>f</sub>)</span> of
 the fragment.</p>
 </div>
 <div class="paragraph">
@@ -5046,7 +5515,7 @@ used only if the value of <code>HitKindKHR</code> is
 
 The acceleration structure corresponding to the current intersection
 <strong>must</strong> have been built with
-<code>VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR</code></p>
+<a href="resources.html#VkBuildAccelerationStructureFlagBitsNV" class="xref page">VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR</a></p>
 </li>
 </ul>
 </div>
@@ -6206,9 +6675,9 @@ two-component vector of 32-bit floating-point values</p>
 <dd>
 <p>Decorating a variable with the <code>PointSize</code> built-in decoration will make
 that variable contain the size of point primitives
-or the final rasterization of polygons if <a href="primsrast.html#primsrast-polygonmode" class="xref page">polygon mode</a> is <code>VK_POLYGON_MODE_POINT</code> when
+or the final rasterization of polygons if <a href="primsrast.html#primsrast-polygonmode" class="xref page">polygon mode</a> is <a href="primsrast.html#VkPolygonMode" class="xref page">VK_POLYGON_MODE_POINT</a> when
 <code>VkPhysicalDeviceMaintenance5Properties</code>::<code>polygonModePointSize</code> is
-set to <code>VK_TRUE</code>
+set to <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>
 .
 The value written to the variable decorated with <code>PointSize</code> by the last
 <a href="pipelines.html#pipelines-graphics-subsets-pre-rasterization" class="xref page">pre-rasterization shader stage</a> in the pipeline is used as the framebuffer-space size of points
@@ -6366,7 +6835,7 @@ and rasterization operations, as with <code>Position</code>.
 </div>
 <div class="paragraph">
 <p>If a shader is compiled against a subpass that has the
-<code>VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX</code> bit set, then
+<a href="renderpass.html#VkSubpassDescriptionFlagBits" class="xref page">VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX</a> bit set, then
 the position values for each view <strong>must</strong> not differ in any component other
 than the X component.
 If the values do differ, one will be chosen in an implementation-dependent
@@ -6764,10 +7233,18 @@ declared as an array of scalar 32-bit integer values</p>
 <li>
 <p><a id="VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-07045" href="#VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-07045"></a> <span class="vuid">VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-07045</span><br>
 
-All index values of the array decorated with
+The index to access the array decorated with
 <code>PrimitivePointIndicesEXT</code> <strong>must</strong> be in the range <span class="eq">[0, N-1]</span>,
-where <span class="eq">N</span> is the value specified by the <code>OutputVertices</code>
-<code>Execution</code> <code>Mode</code></p>
+where <span class="eq">N</span> is the value specified by the &#8220;Primitive Count&#8221; operand
+of <code>OpSetMeshOutputsEXT</code></p>
+</li>
+<li>
+<p><a id="VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-12335" href="#VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-12335"></a> <span class="vuid">VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-12335</span><br>
+
+All index values written to the array decorated with
+<code>PrimitivePointIndicesEXT</code> <strong>must</strong> be in the range <span class="eq">[0, N-1]</span>,
+where <span class="eq">N</span> is the value specified by the &#8220;Vertex Count&#8221; operand of
+<code>OpSetMeshOutputsEXT</code></p>
 </li>
 <li>
 <p><a id="VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-07046" href="#VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-07046"></a> <span class="vuid">VUID-PrimitivePointIndicesEXT-PrimitivePointIndicesEXT-07046</span><br>
@@ -6827,10 +7304,18 @@ declared as an array of two component vector 32-bit integer values</p>
 <li>
 <p><a id="VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-07051" href="#VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-07051"></a> <span class="vuid">VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-07051</span><br>
 
-All index values of the array decorated with
+The index to access the array decorated with
 <code>PrimitiveLineIndicesEXT</code> <strong>must</strong> be in the range <span class="eq">[0, N-1]</span>, where
-<span class="eq">N</span> is the value specified by the <code>OutputVertices</code>
-<code>Execution</code> <code>Mode</code></p>
+<span class="eq">N</span> is the value specified by the &#8220;Primitive Count&#8221; operand of
+<code>OpSetMeshOutputsEXT</code></p>
+</li>
+<li>
+<p><a id="VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-12336" href="#VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-12336"></a> <span class="vuid">VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-12336</span><br>
+
+All index values written to the array decorated with
+<code>PrimitiveLineIndicesEXT</code> <strong>must</strong> be in the range <span class="eq">[0, N-1]</span>, where
+<span class="eq">N</span> is the value specified by the &#8220;Vertex Count&#8221; operand of
+<code>OpSetMeshOutputsEXT</code></p>
 </li>
 <li>
 <p><a id="VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-07052" href="#VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-07052"></a> <span class="vuid">VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-07052</span><br>
@@ -6890,10 +7375,18 @@ declared as an array of three component vector 32-bit integer values</p>
 <li>
 <p><a id="VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-07057" href="#VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-07057"></a> <span class="vuid">VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-07057</span><br>
 
-All index values of the array decorated with
+The index to access the array decorated with
 <code>PrimitiveTriangleIndicesEXT</code> <strong>must</strong> be in the range <span class="eq">[0, N-1]</span>,
-where <span class="eq">N</span> is the value specified by the <code>OutputVertices</code>
-<code>Execution</code> <code>Mode</code></p>
+where <span class="eq">N</span> is the value specified by the &#8220;Primitive Count&#8221; operand
+of <code>OpSetMeshOutputsEXT</code></p>
+</li>
+<li>
+<p><a id="VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-12337" href="#VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-12337"></a> <span class="vuid">VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-12337</span><br>
+
+All index values written to the array decorated with
+<code>PrimitiveTriangleIndicesEXT</code> <strong>must</strong> be in the range <span class="eq">[0, N-1]</span>,
+where <span class="eq">N</span> is the value specified by the &#8220;Vertex Count&#8221; operand of
+<code>OpSetMeshOutputsEXT</code></p>
 </li>
 <li>
 <p><a id="VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-07058" href="#VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-07058"></a> <span class="vuid">VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-07058</span><br>
@@ -7010,6 +7503,12 @@ array <strong>must</strong> match the value specified by <code>OutputPrimitivesE
 If <code>PrimitiveShadingRateKHR</code> decorates a member of a structure, the
 variable declaration of the containing <code>Block</code> type <strong>must</strong> have an
 array size that matches the value specified by <code>OutputPrimitivesEXT</code></p>
+</li>
+<li>
+<p><a id="VUID-PrimitiveShadingRateKHR-PrimitiveShadingRateKHR-12275" href="#VUID-PrimitiveShadingRateKHR-PrimitiveShadingRateKHR-12275"></a> <span class="vuid">VUID-PrimitiveShadingRateKHR-PrimitiveShadingRateKHR-12275</span><br>
+
+If <code>PrimitiveShadingRateKHR</code> is declared in the <code>MeshEXT</code>
+<code>Execution</code> <code>Model</code>, the <a href="features.html#features-primitiveFragmentShadingRateMeshShader" class="xref page">    primitiveFragmentShadingRateMeshShader</a> feature <strong>must</strong> be enabled</p>
 </li>
 </ul>
 </div>
@@ -7729,7 +8228,7 @@ within the subgroup.
 This variable is in range [0,<code>SubgroupSize</code>-1].</p>
 </div>
 <div class="paragraph">
-<p>If <code>VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT</code> is
+<p>If <a href="pipelines.html#VkPipelineShaderStageCreateFlagBits" class="xref page">VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT</a> is
 specified,
 or if <code>module</code> declares SPIR-V version 1.6 or higher, and the local
 workgroup size in the X dimension of the <code>stage</code> is a multiple of
@@ -7779,8 +8278,8 @@ making the value of <span class="eq">index</span> unreliable.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p><code>VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT</code>
-and <code>VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT</code> are
+<p><a href="pipelines.html#VkPipelineShaderStageCreateFlagBits" class="xref page">VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT</a>
+and <a href="shaders.html#VkShaderCreateFlagBitsEXT" class="xref page">VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT</a> are
 effectively deprecated when compiling SPIR-V 1.6 shaders, as this behavior
 is the default for Vulkan with SPIR-V 1.6.
 This is more aligned with developer expectations, and avoids applications
@@ -7827,10 +8326,10 @@ This value <strong>must</strong> be a power-of-two integer.</p>
 </div>
 <div class="paragraph">
 <p>If the pipeline was created with the
-<code>VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT</code> flag
+<a href="pipelines.html#VkPipelineShaderStageCreateFlagBits" class="xref page">VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT</a> flag
 set,
 or the shader object was created with the
-<code>VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT</code> flag set,
+<a href="shaders.html#VkShaderCreateFlagBitsEXT" class="xref page">VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT</a> flag set,
 or the SPIR-V <code>module</code> is at least version 1.6,
 the <code>SubgroupSize</code> decorated variable will contain the subgroup size for
 each subgroup that gets dispatched.
@@ -7856,11 +8355,11 @@ the <code>SubgroupSize</code> decorated variable will match
 <p>If
 SPIR-V <code>module</code> is less than version 1.6 and
 the pipeline was not created with the
-<code>VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT</code> flag
+<a href="pipelines.html#VkPipelineShaderStageCreateFlagBits" class="xref page">VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT</a> flag
 set and no <a href="pipelines.html#VkPipelineShaderStageRequiredSubgroupSizeCreateInfo" class="xref page">VkPipelineShaderStageRequiredSubgroupSizeCreateInfo</a>
 structure was chained,
 and the shader was not created with the
-<code>VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT</code> flag set and no
+<a href="shaders.html#VkShaderCreateFlagBitsEXT" class="xref page">VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT</a> flag set and no
 <a href="pipelines.html#VkShaderRequiredSubgroupSizeCreateInfoEXT" class="xref page">VkShaderRequiredSubgroupSizeCreateInfoEXT</a> structure was chained,
 the
 variable decorated with <code>SubgroupSize</code> will match <a href="devsandqueues.html#limits-subgroupSize" class="xref page"><code>subgroupSize</code></a>.</p>
@@ -7882,8 +8381,8 @@ subgroup is 128.</p>
 <div class="paragraph">
 <p>The old behavior for <code>SubgroupSize</code> is considered legacy as certain
 compute algorithms cannot be easily implemented without the guarantees of
-<code>VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT</code> and
-<code>VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT</code>.</p>
+<a href="pipelines.html#VkPipelineShaderStageCreateFlagBits" class="xref page">VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT</a> and
+<a href="pipelines.html#VkPipelineShaderStageCreateFlagBits" class="xref page">VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT</a>.</p>
 </div>
 </td>
 </tr>
@@ -8235,7 +8734,7 @@ which will be filled with the width and height of the active tile&#8217;s apron.
 <p>If <a href="renderpass.html#renderpass-tile-shading" class="xref page">per-tile execution model</a> is enabled for the
 current shader invocation, and is executing in a dynamic render pass or is
 executing in a subpass where
-<code>VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM</code> is included in its
+<a href="renderpass.html#VkSubpassDescriptionFlagBits" class="xref page">VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM</a> is included in its
 <code>flags</code>, <span class="eq">x</span> and <span class="eq">y</span> components of <code>TileApronSizeQCOM</code>
 reflect the with and height of the tile apron corresponding to the shader
 invocation.</p>

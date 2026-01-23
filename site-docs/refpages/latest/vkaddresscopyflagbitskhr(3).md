@@ -28,17 +28,17 @@ typedef enum VkAddressCopyFlagBitsKHR {
 } VkAddressCopyFlagBitsKHR;
 
 * 
-`VK_ADDRESS_COPY_DEVICE_LOCAL_BIT_KHR` specifies that the address
+[VK_ADDRESS_COPY_DEVICE_LOCAL_BIT_KHR](#) specifies that the address
 range is expected to be resident in device local memory.
 Specifying this value is optional, but **may** lead to improved performance
 if set accurately.
 
 * 
-`VK_ADDRESS_COPY_PROTECTED_BIT_KHR` specifies that the address range
+[VK_ADDRESS_COPY_PROTECTED_BIT_KHR](#) specifies that the address range
 is allocated from protected memory.
 
 * 
-`VK_ADDRESS_COPY_SPARSE_BIT_KHR` specifies that the address range
+[VK_ADDRESS_COPY_SPARSE_BIT_KHR](#) specifies that the address range
 may not be fully bound to physical memory when accessed.
 
 [VK_KHR_copy_memory_indirect](VK_KHR_copy_memory_indirect.html), [VkAddressCopyFlagsKHR](VkAddressCopyFlagsKHR.html)

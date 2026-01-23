@@ -104,7 +104,7 @@ superseded by the `[VK_EXT_metal_surface](VK_EXT_metal_surface.html)` extension.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK`
+[VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK](VkStructureType.html)
 
 * 
 Revision 1, 2017-02-15 (Bill Hollings)

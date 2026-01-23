@@ -118,11 +118,7 @@ When we create the logical device later, we’ll pass a pointer to the first str
 For our application to work properly, we need to enable certain device extensions. These extensions provide additional functionality that we’ll need later in the tutorial.
 
 std::vector deviceExtensions = {
-    vk::KHRSwapchainExtensionName,
-    vk::KHRSpirv14ExtensionName,
-    vk::KHRSynchronization2ExtensionName,
-    vk::KHRCreateRenderpass2ExtensionName
-};
+    vk::KHRSwapchainExtensionName};
 
 The `VK_KHR_swapchain` extension is required for presenting rendered images to the window. The other extensions provide additional functionality that we’ll use in later parts of the tutorial.
 

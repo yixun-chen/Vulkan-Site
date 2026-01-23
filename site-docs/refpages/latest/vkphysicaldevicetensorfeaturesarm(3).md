@@ -51,7 +51,7 @@ whether shader modules **can** declare the `TensorsARM` capability.
 of storage tensors **can** be indexed by dynamically uniform integer
 expressions in shader code.
 If this feature is not enabled, resources with a descriptor type of
-`VK_DESCRIPTOR_TYPE_TENSOR_ARM` **must** be indexed only by constant
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html) **must** be indexed only by constant
 integral expressions when aggregated into arrays in shader code.
 This also indicates whether shader modules **can** declare the
 `StorageTensorArrayDynamicIndexingARM` capability.
@@ -62,7 +62,7 @@ This also indicates whether shader modules **can** declare the
 arrays of storage tensors **can** be indexed by non-uniform integer
 expressions in shader code.
 If this feature is not enabled, resources with a descriptor type of
-`VK_DESCRIPTOR_TYPE_TENSOR_ARM` **must** not be indexed by non-uniform
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html) **must** not be indexed by non-uniform
 integer expressions when aggregated into arrays in shader code.
 This also indicates whether shader modules **can** declare the
 `StorageTensorArrayNonUniformIndexingARM` capability.
@@ -73,8 +73,8 @@ This also indicates whether shader modules **can** declare the
 the implementation supports updating storage tensor descriptors after a
 set is bound.
 If this feature is not enabled,
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` **must** not be used with
-`VK_DESCRIPTOR_TYPE_TENSOR_ARM`.
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html) **must** not be used with
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html).
 
 * 
  `tensors` indicates whether the implementation
@@ -86,7 +86,7 @@ If the `VkPhysicalDeviceTensorFeaturesARM` structure is included in the `pNext` 
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceTensorFeaturesARM`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -94,7 +94,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceTensorFeaturesARM-sType-sType) VUID-VkPhysicalDeviceTensorFeaturesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TENSOR_FEATURES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TENSOR_FEATURES_ARM](VkStructureType.html)
 
 [VK_ARM_tensors](VK_ARM_tensors.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

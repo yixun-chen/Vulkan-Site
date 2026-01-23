@@ -115,7 +115,7 @@ quasi simultaneously from two time domains.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_KHR`
+[VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_KHR](VkStructureType.html)
 
 * 
 Revision 1, 2023-07-12 (Daniel Rakos)

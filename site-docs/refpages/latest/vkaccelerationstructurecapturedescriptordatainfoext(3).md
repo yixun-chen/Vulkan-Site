@@ -53,7 +53,7 @@ Valid Usage
 
 If `accelerationStructure` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html) then
 `accelerationStructure` **must** have been created with
-`VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`
+[VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](VkAccelerationStructureCreateFlagBitsKHR.html)
 set in [VkAccelerationStructureCreateInfoKHR](VkAccelerationStructureCreateInfoKHR.html)::`createFlags`
 
 * 
@@ -61,7 +61,7 @@ set in [VkAccelerationStructureCreateInfoKHR](VkAccelerationStructureCreateInfoK
 
 If `accelerationStructureNV` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html) then
 `accelerationStructureNV` **must** have been created with
-`VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`
+[VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](VkAccelerationStructureCreateFlagBitsKHR.html)
 set in [VkAccelerationStructureCreateInfoNV](VkAccelerationStructureCreateInfoNV.html)::`info.flags`
 
 * 
@@ -81,7 +81,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureCaptureDescriptorDataInfoEXT-sType-sType) VUID-VkAccelerationStructureCaptureDescriptorDataInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CAPTURE_DESCRIPTOR_DATA_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CAPTURE_DESCRIPTOR_DATA_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkAccelerationStructureCaptureDescriptorDataInfoEXT-pNext-pNext) VUID-VkAccelerationStructureCaptureDescriptorDataInfoEXT-pNext-pNext

@@ -68,7 +68,7 @@ by the barrier.
 
 * 
 `size` is a size in bytes of the affected area of backing memory for
-`buffer`, or `VK_WHOLE_SIZE` to use the range from `offset`
+`buffer`, or [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html) to use the range from `offset`
 to the end of the buffer.
 
 The first [access scope](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-access-scopes) is
@@ -77,7 +77,7 @@ types in the [source access mask](../../../../spec/latest/chapters/synchronizati
 by
 `srcAccessMask` and, if a [VkMemoryBarrierAccessFlags3KHR](VkMemoryBarrierAccessFlags3KHR.html) is passed
 in `pNext`, `srcAccessMask3`.
-If the source access mask includes `VK_ACCESS_HOST_WRITE_BIT`, a
+If the source access mask includes [VK_ACCESS_HOST_WRITE_BIT](VkAccessFlagBits.html), a
 [memory domain operation](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-available-and-visible) is performed where available memory in the host domain is also
 made available to the device domain.
 
@@ -87,28 +87,28 @@ types in the [destination access mask](../../../../spec/latest/chapters/synchron
 specified by
 `dstAccessMask` and, if a [VkMemoryBarrierAccessFlags3KHR](VkMemoryBarrierAccessFlags3KHR.html) is passed
 in `pNext`, `dstAccessMask3`.
-If the destination access mask includes `VK_ACCESS_HOST_WRITE_BIT` or
-`VK_ACCESS_HOST_READ_BIT`, a
+If the destination access mask includes [VK_ACCESS_HOST_WRITE_BIT](VkAccessFlagBits.html) or
+[VK_ACCESS_HOST_READ_BIT](VkAccessFlagBits.html), a
 [memory domain operation](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-available-and-visible) is performed where available memory in the device domain is also
 made available to the host domain.
 
 |  | Host writes to device memory that was allocated without
 | --- | --- |
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` have to be flushed with
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](VkMemoryPropertyFlagBits.html) have to be flushed with
 [vkFlushMappedMemoryRanges](vkFlushMappedMemoryRanges.html) before they can be accessed safely on the
 device.
 Similarly, device writes to such memory have to be invalidated with
 [vkInvalidateMappedMemoryRanges](vkInvalidateMappedMemoryRanges.html) before they can be accessed safely on
 the host.
 
-Memory allocated with `VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` does not
+Memory allocated with [VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](VkMemoryPropertyFlagBits.html) does not
 need to have these additional operations performed. |
 
 If `srcQueueFamilyIndex` is not equal to `dstQueueFamilyIndex`, and
 `srcQueueFamilyIndex` is equal to the current queue family, then the
 memory barrier defines a [queue family release operation](../../../../spec/latest/chapters/synchronization.html#synchronization-queue-transfers-release) for the specified buffer range, and
 if `dependencyFlags` did not include
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`,
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](VkDependencyFlagBits.html),
 the second synchronization scope of the calling command does not apply to
 this operation.
 
@@ -116,7 +116,7 @@ If `dstQueueFamilyIndex` is not equal to `srcQueueFamilyIndex`, and
 `dstQueueFamilyIndex` is equal to the current queue family, then the
 memory barrier defines a [queue family acquire operation](../../../../spec/latest/chapters/synchronization.html#synchronization-queue-transfers-acquire) for the specified buffer range, and
 if `dependencyFlags` did not include
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`,
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](VkDependencyFlagBits.html),
 the first synchronization scope of the calling command does not apply to
 this operation.
 
@@ -130,13 +130,13 @@ Valid Usage
 * 
 [](#VUID-VkBufferMemoryBarrier-size-01188) VUID-VkBufferMemoryBarrier-size-01188
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be
+If `size` is not equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), `size` **must** be
 greater than `0`
 
 * 
 [](#VUID-VkBufferMemoryBarrier-size-01189) VUID-VkBufferMemoryBarrier-size-01189
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be
+If `size` is not equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), `size` **must** be
 less than or equal to than the size of `buffer` minus `offset`
 
 * 
@@ -149,11 +149,11 @@ contiguously to a single `VkDeviceMemory` object
 [](#VUID-VkBufferMemoryBarrier-buffer-09095) VUID-VkBufferMemoryBarrier-buffer-09095
 
 If `buffer` was created with a sharing mode of
-`VK_SHARING_MODE_EXCLUSIVE`, and `srcQueueFamilyIndex` and
+[VK_SHARING_MODE_EXCLUSIVE](VkSharingMode.html), and `srcQueueFamilyIndex` and
 `dstQueueFamilyIndex` are not equal, `srcQueueFamilyIndex` **must**
 be
-`VK_QUEUE_FAMILY_EXTERNAL`,
-`VK_QUEUE_FAMILY_FOREIGN_EXT`,
+[VK_QUEUE_FAMILY_EXTERNAL](VK_QUEUE_FAMILY_EXTERNAL.html),
+[VK_QUEUE_FAMILY_FOREIGN_EXT](VK_QUEUE_FAMILY_FOREIGN_EXT.html),
 or
 a valid queue family
 
@@ -161,11 +161,11 @@ a valid queue family
 [](#VUID-VkBufferMemoryBarrier-buffer-09096) VUID-VkBufferMemoryBarrier-buffer-09096
 
 If `buffer` was created with a sharing mode of
-`VK_SHARING_MODE_EXCLUSIVE`, and `srcQueueFamilyIndex` and
+[VK_SHARING_MODE_EXCLUSIVE](VkSharingMode.html), and `srcQueueFamilyIndex` and
 `dstQueueFamilyIndex` are not equal, `dstQueueFamilyIndex` **must**
 be
-`VK_QUEUE_FAMILY_EXTERNAL`,
-`VK_QUEUE_FAMILY_FOREIGN_EXT`,
+[VK_QUEUE_FAMILY_EXTERNAL](VK_QUEUE_FAMILY_EXTERNAL.html),
+[VK_QUEUE_FAMILY_FOREIGN_EXT](VK_QUEUE_FAMILY_FOREIGN_EXT.html),
 or
 a valid queue family
 
@@ -178,7 +178,7 @@ If
 and
     the value of [VkApplicationInfo](VkApplicationInfo.html)::`apiVersion` used to create
     the [VkInstance](VkInstance.html) is not greater than or equal to Version 1.1,
-    `srcQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_EXTERNAL`
+    `srcQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_EXTERNAL](VK_QUEUE_FAMILY_EXTERNAL.html)
 
 * 
 [](#VUID-VkBufferMemoryBarrier-None-09098) VUID-VkBufferMemoryBarrier-None-09098
@@ -189,19 +189,19 @@ If
 and
     the value of [VkApplicationInfo](VkApplicationInfo.html)::`apiVersion` used to create
     the [VkInstance](VkInstance.html) is not greater than or equal to Version 1.1,
-    `dstQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_EXTERNAL`
+    `dstQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_EXTERNAL](VK_QUEUE_FAMILY_EXTERNAL.html)
 
 * 
 [](#VUID-VkBufferMemoryBarrier-srcQueueFamilyIndex-09099) VUID-VkBufferMemoryBarrier-srcQueueFamilyIndex-09099
 
 If the [VK_EXT_queue_family_foreign](VK_EXT_queue_family_foreign.html) extension is not enabled
-`srcQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_FOREIGN_EXT`
+`srcQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_FOREIGN_EXT](VK_QUEUE_FAMILY_FOREIGN_EXT.html)
 
 * 
 [](#VUID-VkBufferMemoryBarrier-dstQueueFamilyIndex-09100) VUID-VkBufferMemoryBarrier-dstQueueFamilyIndex-09100
 
 If the [VK_EXT_queue_family_foreign](VK_EXT_queue_family_foreign.html) extension is not enabled
-`dstQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_FOREIGN_EXT`
+`dstQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_FOREIGN_EXT](VK_QUEUE_FAMILY_FOREIGN_EXT.html)
 
 * 
 [](#VUID-VkBufferMemoryBarrier-None-09049) VUID-VkBufferMemoryBarrier-None-09049
@@ -210,9 +210,9 @@ If
 the [`synchronization2`](../../../../spec/latest/chapters/features.html#features-synchronization2) feature is not
 enabled, and
 `buffer` was created with a sharing mode of
-`VK_SHARING_MODE_CONCURRENT`, at least one of
+[VK_SHARING_MODE_CONCURRENT](VkSharingMode.html), at least one of
 `srcQueueFamilyIndex` and `dstQueueFamilyIndex` **must** be
-`VK_QUEUE_FAMILY_IGNORED`
+[VK_QUEUE_FAMILY_IGNORED](VK_QUEUE_FAMILY_IGNORED.html)
 
 * 
 [](#VUID-VkBufferMemoryBarrier-None-09050) VUID-VkBufferMemoryBarrier-None-09050
@@ -221,9 +221,9 @@ If
 the [`synchronization2`](../../../../spec/latest/chapters/features.html#features-synchronization2) feature is not
 enabled, and
 `buffer` was created with a sharing mode of
-`VK_SHARING_MODE_CONCURRENT`, `srcQueueFamilyIndex` **must** be
-`VK_QUEUE_FAMILY_IGNORED`
-or `VK_QUEUE_FAMILY_EXTERNAL`
+[VK_SHARING_MODE_CONCURRENT](VkSharingMode.html), `srcQueueFamilyIndex` **must** be
+[VK_QUEUE_FAMILY_IGNORED](VK_QUEUE_FAMILY_IGNORED.html)
+or [VK_QUEUE_FAMILY_EXTERNAL](VK_QUEUE_FAMILY_EXTERNAL.html)
 
 * 
 [](#VUID-VkBufferMemoryBarrier-None-09051) VUID-VkBufferMemoryBarrier-None-09051
@@ -232,16 +232,16 @@ If
 the [`synchronization2`](../../../../spec/latest/chapters/features.html#features-synchronization2) feature is not
 enabled, and
 `buffer` was created with a sharing mode of
-`VK_SHARING_MODE_CONCURRENT`, `dstQueueFamilyIndex` **must** be
-`VK_QUEUE_FAMILY_IGNORED`
-or `VK_QUEUE_FAMILY_EXTERNAL`
+[VK_SHARING_MODE_CONCURRENT](VkSharingMode.html), `dstQueueFamilyIndex` **must** be
+[VK_QUEUE_FAMILY_IGNORED](VK_QUEUE_FAMILY_IGNORED.html)
+or [VK_QUEUE_FAMILY_EXTERNAL](VK_QUEUE_FAMILY_EXTERNAL.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkBufferMemoryBarrier-sType-sType) VUID-VkBufferMemoryBarrier-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER](VkStructureType.html)
 
 * 
 [](#VUID-VkBufferMemoryBarrier-pNext-pNext) VUID-VkBufferMemoryBarrier-pNext-pNext

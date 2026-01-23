@@ -109,10 +109,10 @@ in some cases.
 * 
 Extending [VkSubpassDescriptionFlagBits](VkSubpassDescriptionFlagBits.html):
 
-`VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_QCOM`
+[VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_QCOM](VkSubpassDescriptionFlagBits.html)
 
 * 
-`VK_SUBPASS_DESCRIPTION_SHADER_RESOLVE_BIT_QCOM`
+[VK_SUBPASS_DESCRIPTION_SHADER_RESOLVE_BIT_QCOM](VkSubpassDescriptionFlagBits.html)
 
 1) Should this extension be named render_pass_shader_resolve?
 
@@ -138,7 +138,7 @@ shader resolve to resolve to a single sample buffer.
 To be more specific, it should be the last subpass in a subpass dependency
 chain.
 
-4) Do we need the `VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_QCOM` bit?
+4) Do we need the [VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_QCOM](VkSubpassDescriptionFlagBits.html) bit?
 
 **RESOLVED** Yes.
 

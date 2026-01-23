@@ -107,35 +107,35 @@ Valid Usage
 [](#VUID-VkPipelineRasterizationStateCreateInfo-depthClampEnable-00782) VUID-VkPipelineRasterizationStateCreateInfo-depthClampEnable-00782
 
 If the [`depthClamp`](../../../../spec/latest/chapters/features.html#features-depthClamp) feature is not enabled,
-`depthClampEnable` **must** be `VK_FALSE`
+`depthClampEnable` **must** be [VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-VkPipelineRasterizationStateCreateInfo-polygonMode-01507) VUID-VkPipelineRasterizationStateCreateInfo-polygonMode-01507
 
     If the [`fillModeNonSolid`](../../../../spec/latest/chapters/features.html#features-fillModeNonSolid) feature is
-    not enabled, `polygonMode` **must** be `VK_POLYGON_MODE_FILL`
-or `VK_POLYGON_MODE_FILL_RECTANGLE_NV`
+    not enabled, `polygonMode` **must** be [VK_POLYGON_MODE_FILL](VkPolygonMode.html)
+or [VK_POLYGON_MODE_FILL_RECTANGLE_NV](VkPolygonMode.html)
 
 * 
 [](#VUID-VkPipelineRasterizationStateCreateInfo-polygonMode-01414) VUID-VkPipelineRasterizationStateCreateInfo-polygonMode-01414
 
 If the `[VK_NV_fill_rectangle](VK_NV_fill_rectangle.html)` extension is not enabled,
-`polygonMode` **must** not be `VK_POLYGON_MODE_FILL_RECTANGLE_NV`
+`polygonMode` **must** not be [VK_POLYGON_MODE_FILL_RECTANGLE_NV](VkPolygonMode.html)
 
 * 
 [](#VUID-VkPipelineRasterizationStateCreateInfo-pointPolygons-04458) VUID-VkPipelineRasterizationStateCreateInfo-pointPolygons-04458
 
 If the `[VK_KHR_portability_subset](VK_KHR_portability_subset.html)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](VkPhysicalDevicePortabilitySubsetFeaturesKHR.html)::`pointPolygons`
-is `VK_FALSE`, and `rasterizerDiscardEnable` is `VK_FALSE`,
-`polygonMode` **must** not be `VK_POLYGON_MODE_POINT`
+is [VK_FALSE](VK_FALSE.html), and `rasterizerDiscardEnable` is [VK_FALSE](VK_FALSE.html),
+`polygonMode` **must** not be [VK_POLYGON_MODE_POINT](VkPolygonMode.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineRasterizationStateCreateInfo-sType-sType) VUID-VkPipelineRasterizationStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineRasterizationStateCreateInfo-pNext-pNext) VUID-VkPipelineRasterizationStateCreateInfo-pNext-pNext

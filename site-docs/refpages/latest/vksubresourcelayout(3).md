@@ -87,14 +87,14 @@ as arrays.
 If the image has a
 *single-plane*
 color format
-and its tiling is `VK_IMAGE_TILING_LINEAR`
+and its tiling is [VK_IMAGE_TILING_LINEAR](VkImageTiling.html)
 , then the `aspectMask` member of `VkImageSubresource` **must** be
-`VK_IMAGE_ASPECT_COLOR_BIT`.
+[VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html).
 
 If the image has a depth/stencil format
-and its tiling is `VK_IMAGE_TILING_LINEAR`
-, then `aspectMask` **must** be either `VK_IMAGE_ASPECT_DEPTH_BIT` or
-`VK_IMAGE_ASPECT_STENCIL_BIT`.
+and its tiling is [VK_IMAGE_TILING_LINEAR](VkImageTiling.html)
+, then `aspectMask` **must** be either [VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) or
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html).
 On implementations that store depth and stencil aspects separately, querying
 each of these image subresource layouts will return a different `offset`
 and `size` representing the region of memory used for that aspect.
@@ -103,10 +103,10 @@ same `offset` and `size` are returned and represent the interleaved
 memory allocation.
 
 If the image has a [multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar)
-and its tiling is `VK_IMAGE_TILING_LINEAR`
+and its tiling is [VK_IMAGE_TILING_LINEAR](VkImageTiling.html)
 , then the `aspectMask` member of `VkImageSubresource` **must** be
-`VK_IMAGE_ASPECT_PLANE_0_BIT`, `VK_IMAGE_ASPECT_PLANE_1_BIT`, or
-(for 3-plane formats only) `VK_IMAGE_ASPECT_PLANE_2_BIT`.
+[VK_IMAGE_ASPECT_PLANE_0_BIT](VkImageAspectFlagBits.html), [VK_IMAGE_ASPECT_PLANE_1_BIT](VkImageAspectFlagBits.html), or
+(for 3-plane formats only) [VK_IMAGE_ASPECT_PLANE_2_BIT](VkImageAspectFlagBits.html).
 Querying each of these image subresource layouts will return a different
 `offset` and `size` representing the region of memory used for that
 plane.
@@ -115,7 +115,7 @@ address of the plane.
 If the image is *non-disjoint*, then the `offset` is relative to the
 base address of the image.
 
-If the image’s tiling is `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then
+If the image’s tiling is [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html), then
 the `aspectMask` member of `VkImageSubresource` **must** be one of
 `VK_IMAGE_ASPECT_MEMORY_PLANE*_i_*BIT_EXT`, where the maximum allowed
 plane index *i* is defined by the

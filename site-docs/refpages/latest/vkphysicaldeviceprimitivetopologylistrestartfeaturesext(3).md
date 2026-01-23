@@ -42,17 +42,17 @@ structure.
 * 
 
 `primitiveTopologyListRestart` indicates that list type primitives,
-`VK_PRIMITIVE_TOPOLOGY_POINT_LIST`,
-`VK_PRIMITIVE_TOPOLOGY_LINE_LIST`,
-`VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST`,
-`VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY` and
-`VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY`, **can** use the
+[VK_PRIMITIVE_TOPOLOGY_POINT_LIST](VkPrimitiveTopology.html),
+[VK_PRIMITIVE_TOPOLOGY_LINE_LIST](VkPrimitiveTopology.html),
+[VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST](VkPrimitiveTopology.html),
+[VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY](VkPrimitiveTopology.html) and
+[VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY](VkPrimitiveTopology.html), **can** use the
 primitive restart index value in index buffers.
 
 * 
 
 `primitiveTopologyPatchListRestart` indicates that the
-`VK_PRIMITIVE_TOPOLOGY_PATCH_LIST` topology **can** use the primitive
+[VK_PRIMITIVE_TOPOLOGY_PATCH_LIST](VkPrimitiveTopology.html) topology **can** use the primitive
 restart index value in index buffers.
 
 If the `VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT` structure is included in the `pNext` chain of the
@@ -61,7 +61,7 @@ If the `VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT` structure is in
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -69,7 +69,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT-sType-sType) VUID-VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_TOPOLOGY_LIST_RESTART_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_TOPOLOGY_LIST_RESTART_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_primitive_topology_list_restart](VK_EXT_primitive_topology_list_restart.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

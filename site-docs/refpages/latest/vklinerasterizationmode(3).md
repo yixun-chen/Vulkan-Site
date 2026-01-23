@@ -55,23 +55,23 @@ typedef VkLineRasterizationMode VkLineRasterizationModeKHR;
 typedef VkLineRasterizationMode VkLineRasterizationModeEXT;
 
 * 
-`VK_LINE_RASTERIZATION_MODE_DEFAULT` is equivalent to
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR` if
-[VkPhysicalDeviceLimits](VkPhysicalDeviceLimits.html)::`strictLines` is `VK_TRUE`,
+[VK_LINE_RASTERIZATION_MODE_DEFAULT](#) is equivalent to
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR](#) if
+[VkPhysicalDeviceLimits](VkPhysicalDeviceLimits.html)::`strictLines` is [VK_TRUE](VK_TRUE.html),
 otherwise lines are drawn as non-`strictLines` parallelograms.
 Both of these modes are defined in [Basic Line    Segment Rasterization](../../../../spec/latest/chapters/primsrast.html#primsrast-lines-basic).
 
 * 
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR` specifies lines drawn as if
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR](#) specifies lines drawn as if
 they were rectangles extruded from the line
 
 * 
-`VK_LINE_RASTERIZATION_MODE_BRESENHAM` specifies lines drawn by
+[VK_LINE_RASTERIZATION_MODE_BRESENHAM](#) specifies lines drawn by
 determining which pixel diamonds the line intersects and exits, as
 defined in [Bresenham Line Segment    Rasterization](../../../../spec/latest/chapters/primsrast.html#primsrast-lines-bresenham).
 
 * 
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH` specifies lines
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH](#) specifies lines
 drawn if they were rectangles extruded from the line, with alpha
 falloff, as defined in [Smooth Lines](../../../../spec/latest/chapters/primsrast.html#primsrast-lines-smooth).
 

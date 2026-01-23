@@ -109,14 +109,14 @@ single contiguous range of memory corresponds to an identical offset
 within that range of memory.
 
 * 
-Requested via the `VK_IMAGE_CREATE_SPARSE_BINDING_BIT` and
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT` bits.
+Requested via the [VK_IMAGE_CREATE_SPARSE_BINDING_BIT](resources.html#VkImageCreateFlagBits) and
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](resources.html#VkBufferCreateFlagBits) bits.
 
 * 
-A sparse image created using `VK_IMAGE_CREATE_SPARSE_BINDING_BIT`
-(but not `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`) supports all
+A sparse image created using [VK_IMAGE_CREATE_SPARSE_BINDING_BIT](resources.html#VkImageCreateFlagBits)
+(but not [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits)) supports all
 formats that non-sparse usage supports, and supports both
-`VK_IMAGE_TILING_OPTIMAL` and `VK_IMAGE_TILING_LINEAR` tiling.
+[VK_IMAGE_TILING_OPTIMAL](resources.html#VkImageTiling) and [VK_IMAGE_TILING_LINEAR](resources.html#VkImageTiling) tiling.
 
 *Sparse Residency* builds on (and requires) the
 [`sparseBinding`](features.html#features-sparseBinding) feature.
@@ -142,8 +142,8 @@ When this property is absent, accesses are considered safe, but reads
 will return **undefined** values.
 
 * 
-Requested via the `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` and
-`VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT` bits.
+Requested via the [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits) and
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkBufferCreateFlagBits) bits.
 
 * 
  Sparse residency support is advertised on
@@ -151,37 +151,37 @@ a finer grain via the following features:
 
 The [`sparseResidencyBuffer`](features.html#features-sparseResidencyBuffer)
 feature provides support for creating `VkBuffer` objects with the
-`VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`.
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkBufferCreateFlagBits).
 
 * 
 The [`sparseResidencyImage2D`](features.html#features-sparseResidencyImage2D)
 feature provides support for creating 2D single-sampled `VkImage`
-objects with `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`.
+objects with [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits).
 
 * 
 The [`sparseResidencyImage3D`](features.html#features-sparseResidencyImage3D)
 feature provides support for creating 3D `VkImage` objects with
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`.
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits).
 
 * 
 The [      `sparseResidency2Samples`](features.html#features-sparseResidency2Samples) feature provides support for creating
 2D `VkImage` objects with 2 samples and
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`.
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits).
 
 * 
 The [      `sparseResidency4Samples`](features.html#features-sparseResidency4Samples) feature provides support for creating
 2D `VkImage` objects with 4 samples and
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`.
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits).
 
 * 
 The [      `sparseResidency8Samples`](features.html#features-sparseResidency8Samples) feature provides support for creating
 2D `VkImage` objects with 8 samples and
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`.
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits).
 
 * 
 The [      `sparseResidency16Samples`](features.html#features-sparseResidency16Samples) feature provides support for creating
 2D `VkImage` objects with 16 samples and
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`.
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits).
 
 Implementations supporting `sparseResidencyImage2D` are only **required**
 to support sparse 2D, single-sampled images.
@@ -190,12 +190,12 @@ Support for sparse 3D and MSAA images is **optional** and **can** be enabled via
 `sparseResidency4Samples`, `sparseResidency8Samples`, and
 `sparseResidency16Samples`.
 
-A sparse image created using `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`
+A sparse image created using [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits)
 supports all non-compressed color formats with power-of-two element
 size that non-sparse usage supports.
 Additional formats **may** also be supported and **can** be queried via
 [vkGetPhysicalDeviceSparseImageFormatProperties](#vkGetPhysicalDeviceSparseImageFormatProperties).
-`VK_IMAGE_TILING_LINEAR` tiling is not supported.
+[VK_IMAGE_TILING_LINEAR](resources.html#VkImageTiling) tiling is not supported.
 
 The [`sparseResidencyAliased`](features.html#features-sparseResidencyAliased)
 feature provides the following capability that **can** be enabled per
@@ -210,15 +210,15 @@ See [Sparse Memory Aliasing](#sparsememory-sparse-memory-aliasing) for more
 information.
 
 Both `VkBuffer` and `VkImage` objects created with the
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT` or
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT` bits **can** be thought of as a
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](resources.html#VkImageCreateFlagBits) or
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](resources.html#VkBufferCreateFlagBits) bits **can** be thought of as a
 linear region of address space.
-In the `VkImage` case if `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` is
+In the `VkImage` case if [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits) is
 not used, this linear region is entirely opaque, meaning that there is no
 application-visible mapping between texel location and memory offset.
 
-Unless `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` or
-`VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT` are also used, the entire
+Unless [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits) or
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkBufferCreateFlagBits) are also used, the entire
 resource **must** be bound to one or more `VkDeviceMemory` objects before
 use.
 
@@ -228,19 +228,19 @@ is reported as `VkMemoryRequirements`::`alignment`.
 binding granularity (in bytes) for sparse resources.
 
 `VkBuffer` objects created with the
-`VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT` bit allow the buffer to be made
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkBufferCreateFlagBits) bit allow the buffer to be made
 only partially resident.
 Partially resident `VkBuffer` objects are allocated and bound
 identically to `VkBuffer` objects using only the
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT` feature.
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](resources.html#VkBufferCreateFlagBits) feature.
 The only difference is the ability for some regions of the buffer to be
 unbound during device use.
 After creating a `VkBuffer` with
-`VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`, the entire buffer region is
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkBufferCreateFlagBits), the entire buffer region is
 considered unbound.
 
 `VkImage` objects created with the
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` bit allow specific rectangular
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits) bit allow specific rectangular
 regions of the image called sparse image blocks to be bound to specific
 ranges of memory.
 This allows the application to manage residency at either image subresource
@@ -249,7 +249,7 @@ Each image subresource (outside of the [mip tail](#sparsememory-miptail))
 starts on a sparse block boundary and has dimensions that are integer
 multiples of the corresponding dimensions of the sparse image block.
 After creating a `VkImage` with
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`, all image subresources are
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits), all image subresources are
 considered unbound.
 
 |  | Applications **can** use these types of images to control LOD based on total
@@ -285,7 +285,7 @@ some component values in the natural way for those accesses, e.g.
 substituting a value of one for alpha in formats that do not have an alpha
 component.
 
-Example: Reading the alpha component of an unbacked `VK_FORMAT_R8_UNORM`
+Example: Reading the alpha component of an unbacked [VK_FORMAT_R8_UNORM](formats.html#VkFormat)
 image will return a value of 1.0f.
 
 If a value was previously written to the same unbound sparse memory location
@@ -302,19 +302,19 @@ far the simplest. |
 
 See [Physical Device Enumeration](devsandqueues.html#devsandqueues-physical-device-enumeration) for instructions for retrieving physical device properties.
 
-Sparse images created using `VK_IMAGE_CREATE_SPARSE_BINDING_BIT`
-(without also using `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`) have no
+Sparse images created using [VK_IMAGE_CREATE_SPARSE_BINDING_BIT](resources.html#VkImageCreateFlagBits)
+(without also using [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits)) have no
 specific mapping of image region or image subresource to memory offset
 defined, so the entire image **can** be thought of as a linear opaque address
 region.
-However, images created with `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` do
+However, images created with [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits) do
 have a prescribed sparse image block layout, and hence each image
 subresource **must** start on a sparse block boundary.
 Within each array layer, the set of mip levels that have a smaller size than
 the sparse block size in bytes are grouped together into a *mip tail
 region*.
 
-If the `VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT` flag is present in
+If the [VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT](#VkSparseImageFormatFlagBits) flag is present in
 the `flags` member of `VkSparseImageFormatProperties`, for the
 image’s `format`, then any mip level which has dimensions that are not
 integer multiples of the corresponding dimensions of the sparse image block,
@@ -335,20 +335,20 @@ in bytes.
 An implementation **may** choose to allow each array-layer’s mip tail region to
 be bound to memory independently or require that all array-layer’s mip tail
 regions be treated as one.
-This is dictated by `VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT` in
+This is dictated by [VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT](#VkSparseImageFormatFlagBits) in
 `VkSparseImageMemoryRequirements`::`flags`.
 
 The following diagrams depict how
-`VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT` and
-`VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT` alter memory usage and
+[VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT](#VkSparseImageFormatFlagBits) and
+[VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT](#VkSparseImageFormatFlagBits) alter memory usage and
 requirements.
 
 ![sparseimage](../_images/sparseimage.svg)
 
 Figure 1. Sparse Image
 
-In the absence of `VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT` and
-`VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT`, each array layer contains a
+In the absence of [VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT](#VkSparseImageFormatFlagBits) and
+[VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT](#VkSparseImageFormatFlagBits), each array layer contains a
 mip tail region containing texel data for all mip levels smaller than the
 sparse image block in any dimension.
 
@@ -363,7 +363,7 @@ block size in bytes allocated in memory.
 
 Figure 2. Sparse Image with Single Mip Tail
 
-When `VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT` is present all array
+When [VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT](#VkSparseImageFormatFlagBits) is present all array
 layers will share a single mip tail region.
 
 ![sparseimage alignedmipsize](../_images/sparseimage_alignedmipsize.svg)
@@ -377,7 +377,7 @@ Each mip tail is logically a single array of sparse blocks with an
 implementation-dependent mapping of texels or compressed texel blocks to
 sparse blocks. |
 
-When `VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT` is present the first
+When [VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT](#VkSparseImageFormatFlagBits) is present the first
 mip level that would contain partially used sparse blocks begins the mip
 tail region.
 This level and all subsequent levels are placed in the mip tail.
@@ -396,8 +396,8 @@ It is logically a single array of sparse blocks with an
 implementation-dependent mapping of texels or compressed texel blocks to
 sparse blocks. |
 
-When both `VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT` and
-`VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT` are present the constraints
+When both [VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT](#VkSparseImageFormatFlagBits) and
+[VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT](#VkSparseImageFormatFlagBits) are present the constraints
 from each of these flags are in effect.
 
 Standard sparse image block shapes define a standard set of dimensions for
@@ -406,7 +406,7 @@ Layout of texels or compressed texel blocks within a sparse image block is
 implementation-dependent.
 All currently defined standard sparse image block shapes are 64 KB in size.
 
-For block-compressed formats (e.g. `VK_FORMAT_BC5_UNORM_BLOCK`), the
+For block-compressed formats (e.g. [VK_FORMAT_BC5_UNORM_BLOCK](formats.html#VkFormat)), the
 texel size is the size of the compressed texel block (e.g. 128-bit for
 `BC5`) thus the dimensions of the standard sparse image block shapes
 apply in terms of compressed texel blocks.
@@ -510,8 +510,8 @@ resources.
 See [Memory Aliasing](resources.html#resources-memory-aliasing) for more information.
 
 `VkDevice` objects that have the [`sparseResidencyAliased`](features.html#features-sparseResidencyAliased) feature enabled are able to use the
-`VK_BUFFER_CREATE_SPARSE_ALIASED_BIT` and
-`VK_IMAGE_CREATE_SPARSE_ALIASED_BIT` flags for resource creation.
+[VK_BUFFER_CREATE_SPARSE_ALIASED_BIT](resources.html#VkBufferCreateFlagBits) and
+[VK_IMAGE_CREATE_SPARSE_ALIASED_BIT](resources.html#VkImageCreateFlagBits) flags for resource creation.
 These flags allow resources to access physical memory bound into multiple
 locations within one or more sparse resources in a *data consistent*
 fashion.
@@ -531,8 +531,8 @@ Applications that wish to make use of data consistent sparse memory aliasing
 
 * 
 All sparse resources that are bound to aliased physical memory **must** be
-created with the `VK_BUFFER_CREATE_SPARSE_ALIASED_BIT` /
-`VK_IMAGE_CREATE_SPARSE_ALIASED_BIT` flag.
+created with the [VK_BUFFER_CREATE_SPARSE_ALIASED_BIT](resources.html#VkBufferCreateFlagBits) /
+[VK_IMAGE_CREATE_SPARSE_ALIASED_BIT](resources.html#VkImageCreateFlagBits) flag.
 
 * 
 All resources that access aliased physical memory **must** interpret the
@@ -594,41 +594,41 @@ features.
 
 * 
 `sparseBinding`: Support for creating [VkBuffer](resources.html#VkBuffer) and
-`VkImage` objects with the `VK_BUFFER_CREATE_SPARSE_BINDING_BIT`
-and `VK_IMAGE_CREATE_SPARSE_BINDING_BIT` flags, respectively.
+`VkImage` objects with the [VK_BUFFER_CREATE_SPARSE_BINDING_BIT](resources.html#VkBufferCreateFlagBits)
+and [VK_IMAGE_CREATE_SPARSE_BINDING_BIT](resources.html#VkImageCreateFlagBits) flags, respectively.
 
 * 
 `sparseResidencyBuffer`: Support for creating [VkBuffer](resources.html#VkBuffer) objects
-with the `VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT` flag.
+with the [VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkBufferCreateFlagBits) flag.
 
 * 
 `sparseResidencyImage2D`: Support for creating 2D single-sampled
-`VkImage` objects with `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`.
+`VkImage` objects with [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits).
 
 * 
 `sparseResidencyImage3D`: Support for creating 3D [VkImage](resources.html#VkImage)
-objects with `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`.
+objects with [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits).
 
 * 
 `sparseResidency2Samples`: Support for creating 2D [VkImage](resources.html#VkImage)
-objects with 2 samples and `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`.
+objects with 2 samples and [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits).
 
 * 
 `sparseResidency4Samples`: Support for creating 2D [VkImage](resources.html#VkImage)
-objects with 4 samples and `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`.
+objects with 4 samples and [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits).
 
 * 
 `sparseResidency8Samples`: Support for creating 2D [VkImage](resources.html#VkImage)
-objects with 8 samples and `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`.
+objects with 8 samples and [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits).
 
 * 
 `sparseResidency16Samples`: Support for creating 2D [VkImage](resources.html#VkImage)
-objects with 16 samples and `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`.
+objects with 16 samples and [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits).
 
 * 
 `sparseResidencyAliased`: Support for creating [VkBuffer](resources.html#VkBuffer) and
-`VkImage` objects with the `VK_BUFFER_CREATE_SPARSE_ALIASED_BIT`
-and `VK_IMAGE_CREATE_SPARSE_ALIASED_BIT` flags, respectively.
+`VkImage` objects with the [VK_BUFFER_CREATE_SPARSE_ALIASED_BIT](resources.html#VkBufferCreateFlagBits)
+and [VK_IMAGE_CREATE_SPARSE_ALIASED_BIT](resources.html#VkImageCreateFlagBits) flags, respectively.
 
 Some features of the implementation are not possible to disable, and are
 reported to allow applications to alter their sparse resource usage
@@ -650,7 +650,7 @@ typedef struct VkPhysicalDeviceSparseProperties {
 
 * 
 `residencyStandard2DBlockShape`
-is `VK_TRUE` if the physical device will access all single-sample 2D
+is [VK_TRUE](fundamentals.html#VK_TRUE) if the physical device will access all single-sample 2D
 sparse resources using the standard sparse image block shapes (based on
 image format), as described in the
 [Standard Sparse Image Block    Shapes (Single Sample)](#sparsememory-sparseblockshapessingle) table.
@@ -661,7 +661,7 @@ standard sparse image block dimensions listed in the table.
 
 * 
 `residencyStandard2DMultisampleBlockShape`
-is `VK_TRUE` if the physical device will access all multisample 2D
+is [VK_TRUE](fundamentals.html#VK_TRUE) if the physical device will access all multisample 2D
 sparse resources using the standard sparse image block shapes (based on
 image format), as described in the
 [Standard Sparse Image Block Shapes    (MSAA)](#sparsememory-sparseblockshapesmsaa) table.
@@ -672,7 +672,7 @@ standard sparse image block dimensions listed in the table.
 
 * 
 `residencyStandard3DBlockShape`
-is `VK_TRUE` if the physical device will access all 3D sparse
+is [VK_TRUE](fundamentals.html#VK_TRUE) if the physical device will access all 3D sparse
 resources using the standard sparse image block shapes (based on image
 format), as described in the
 [Standard Sparse Image Block    Shapes (Single Sample)](#sparsememory-sparseblockshapessingle) table.
@@ -683,7 +683,7 @@ image block dimensions listed in the table.
 
 * 
 `residencyAlignedMipSize`
-is `VK_TRUE` if images with mip level dimensions that are not
+is [VK_TRUE](fundamentals.html#VK_TRUE) if images with mip level dimensions that are not
 integer multiples of the corresponding dimensions of the sparse image
 block **may** be placed in the mip tail.
 If this property is not reported, only mip levels with dimensions
@@ -691,7 +691,7 @@ smaller than the `imageGranularity` member of the
 `VkSparseImageFormatProperties` structure will be placed in the mip
 tail.
 If this property is reported the implementation is allowed to return
-`VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT` in the `flags`
+[VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT](#VkSparseImageFormatFlagBits) in the `flags`
 member of `VkSparseImageFormatProperties`, indicating that mip level
 dimensions that are not integer multiples of the corresponding
 dimensions of the sparse image block will be placed in the mip tail.
@@ -700,7 +700,7 @@ dimensions of the sparse image block will be placed in the mip tail.
 `residencyNonResidentStrict`
 specifies whether the physical device **can** consistently access
 non-resident regions of a resource.
-If this property is `VK_TRUE`, access to non-resident regions of
+If this property is [VK_TRUE](fundamentals.html#VK_TRUE), access to non-resident regions of
 resources will be guaranteed to return values as if the resource was
 populated with 0; writes to non-resident regions will be discarded.
 
@@ -743,17 +743,17 @@ typedef enum VkSparseImageFormatFlagBits {
 } VkSparseImageFormatFlagBits;
 
 * 
-`VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT` specifies that the image
+[VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT](#VkSparseImageFormatFlagBits) specifies that the image
 uses a single mip tail region for all array layers.
 
 * 
-`VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT` specifies that the
+[VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT](#VkSparseImageFormatFlagBits) specifies that the
 first mip level whose dimensions are not integer multiples of the
 corresponding dimensions of the sparse image block begins the mip tail
 region.
 
 * 
-`VK_SPARSE_IMAGE_FORMAT_NONSTANDARD_BLOCK_SIZE_BIT` specifies that
+[VK_SPARSE_IMAGE_FORMAT_NONSTANDARD_BLOCK_SIZE_BIT](#VkSparseImageFormatFlagBits) specifies that
 the image uses non-standard sparse image block dimensions, and the
 `imageGranularity` values do not match the standard sparse image
 block dimensions for the given format.
@@ -824,7 +824,7 @@ written to `pProperties`.
 If `pPropertyCount` is less than the number of sparse format properties
 available, at most `pPropertyCount` structures will be written.
 
-If `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` is not supported for the given
+If [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits) is not supported for the given
 arguments, `pPropertyCount` will be zero upon return, and no data will
 be written to `pProperties`.
 
@@ -835,8 +835,8 @@ The depth and stencil data planes each have unique
 
 Depth/stencil images with depth and stencil data interleaved into a single
 plane will return a single `VkSparseImageFormatProperties` structure
-with the `aspectMask` set to `VK_IMAGE_ASPECT_DEPTH_BIT` |
-`VK_IMAGE_ASPECT_STENCIL_BIT`.
+with the `aspectMask` set to [VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits) |
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits).
 
 Valid Usage
 
@@ -1018,7 +1018,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceSparseImageFormatInfo2-sType-sType) VUID-VkPhysicalDeviceSparseImageFormatInfo2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SPARSE_IMAGE_FORMAT_INFO_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SPARSE_IMAGE_FORMAT_INFO_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPhysicalDeviceSparseImageFormatInfo2-pNext-pNext) VUID-VkPhysicalDeviceSparseImageFormatInfo2-pNext-pNext
@@ -1085,7 +1085,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSparseImageFormatProperties2-sType-sType) VUID-VkSparseImageFormatProperties2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SPARSE_IMAGE_FORMAT_PROPERTIES_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SPARSE_IMAGE_FORMAT_PROPERTIES_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSparseImageFormatProperties2-pNext-pNext) VUID-VkSparseImageFormatProperties2-pNext-pNext
@@ -1102,11 +1102,11 @@ When the appropriate device features are enabled, the
 See [vkCreateBuffer](resources.html#vkCreateBuffer) and [vkCreateImage](resources.html#vkCreateImage) for details of the resource
 creation APIs.
 
-|  | Specifying `VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT` or
+|  | Specifying [VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkBufferCreateFlagBits) or
 | --- | --- |
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` requires specifying
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT` or
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT`, respectively, as well.
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits) requires specifying
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](resources.html#VkBufferCreateFlagBits) or
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](resources.html#VkImageCreateFlagBits), respectively, as well.
 This means that resources **must** be created with the appropriate
 `*_SPARSE_BINDING_BIT` to be used with the sparse binding command
 (`vkQueueBindSparse`). |
@@ -1134,7 +1134,7 @@ Each structure describes the sparse memory requirements for a group of
 aspects of the image.
 
 The sparse image **must** have been created using the
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` flag to retrieve valid sparse
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits) flag to retrieve valid sparse
 image memory requirements.
 
 The `VkSparseImageMemoryRequirements` structure is defined as:
@@ -1160,7 +1160,7 @@ subresources are included in the mip tail region.
 `imageMipTailSize` is the memory size (in bytes) of the mip tail
 region.
 If `formatProperties.flags` contains
-`VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT`, this is the size of the
+[VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT](#VkSparseImageFormatFlagBits), this is the size of the
 whole mip tail, otherwise this is the size of the mip tail of a single
 array layer.
 This value is guaranteed to be a multiple of the sparse block size in
@@ -1173,7 +1173,7 @@ bytes.
 * 
 `imageMipTailStride` is the offset stride between each array-layer’s
 mip tail, if `formatProperties.flags` does not contain
-`VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT` (otherwise the value is
+[VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT](#VkSparseImageFormatFlagBits) (otherwise the value is
 **undefined**).
 
 To query sparse memory requirements for an image, call:
@@ -1213,7 +1213,7 @@ If `pSparseMemoryRequirementCount` is less than the number of sparse
 memory requirements available, at most `pSparseMemoryRequirementCount`
 structures will be written.
 
-If the image was not created with `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`
+If the image was not created with [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits)
 then `pSparseMemoryRequirementCount` will be zero and
 `pSparseMemoryRequirements` will not be written to.
 
@@ -1393,7 +1393,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageSparseMemoryRequirementsInfo2-sType-sType) VUID-VkImageSparseMemoryRequirementsInfo2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageSparseMemoryRequirementsInfo2-pNext-pNext) VUID-VkImageSparseMemoryRequirementsInfo2-pNext-pNext
@@ -1434,7 +1434,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSparseImageMemoryRequirements2-sType-sType) VUID-VkSparseImageMemoryRequirements2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSparseImageMemoryRequirements2-pNext-pNext) VUID-VkSparseImageMemoryRequirements2-pNext-pNext
@@ -1454,7 +1454,7 @@ the memory object to become unbound.
 Applications **must** not access resources bound to memory that has been freed. |
 
 Sparse memory bindings execute on a queue that includes the
-`VK_QUEUE_SPARSE_BINDING_BIT` bit.
+[VK_QUEUE_SPARSE_BINDING_BIT](devsandqueues.html#VkQueueFlagBits) bit.
 Applications **must** use [synchronization primitives](synchronization.html#synchronization) to
 guarantee that other queues do not access ranges of memory concurrently with
 a binding change.
@@ -1467,31 +1467,31 @@ blocks while another queue accesses those same sparse blocks via a sparse
 resource **must** not access memory owned by another process or otherwise
 corrupt the system. |
 
-While some implementations **may** include `VK_QUEUE_SPARSE_BINDING_BIT`
+While some implementations **may** include [VK_QUEUE_SPARSE_BINDING_BIT](devsandqueues.html#VkQueueFlagBits)
 support in queue families that also include graphics and compute support,
 other implementations **may** only expose a
-`VK_QUEUE_SPARSE_BINDING_BIT`-only queue family.
+[VK_QUEUE_SPARSE_BINDING_BIT](devsandqueues.html#VkQueueFlagBits)-only queue family.
 In either case, applications **must** use [synchronization primitives](synchronization.html#synchronization) to explicitly request any ordering dependencies between sparse
 memory binding operations and other graphics/compute/transfer operations, as
 sparse binding operations are not automatically ordered against command
 buffer execution, even within a single queue.
 
-When binding memory explicitly for the `VK_IMAGE_ASPECT_METADATA_BIT`
-the application **must** use the `VK_SPARSE_MEMORY_BIND_METADATA_BIT` in
+When binding memory explicitly for the [VK_IMAGE_ASPECT_METADATA_BIT](resources.html#VkImageAspectFlagBits)
+the application **must** use the [VK_SPARSE_MEMORY_BIND_METADATA_BIT](#VkSparseMemoryBindFlagBits) in
 the `VkSparseMemoryBind`::`flags` field when binding memory.
 Binding memory for metadata is done the same way as binding memory for the
-mip tail, with the addition of the `VK_SPARSE_MEMORY_BIND_METADATA_BIT`
+mip tail, with the addition of the [VK_SPARSE_MEMORY_BIND_METADATA_BIT](#VkSparseMemoryBindFlagBits)
 flag.
 
 Binding the mip tail for any aspect **must** only be performed using
 [VkSparseImageOpaqueMemoryBindInfo](#VkSparseImageOpaqueMemoryBindInfo).
 If `formatProperties.flags` contains
-`VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT`, then it **can** be bound with
+[VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT](#VkSparseImageFormatFlagBits), then it **can** be bound with
 a single [VkSparseMemoryBind](#VkSparseMemoryBind) structure, with `resourceOffset` =
 `imageMipTailOffset` and `size` = `imageMipTailSize`.
 
 If `formatProperties.flags` does not contain
-`VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT` then the offset for the mip
+[VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT](#VkSparseImageFormatFlagBits) then the offset for the mip
 tail in each array layer is given as:
 
 arrayMipTailOffset = imageMipTailOffset + arrayLayer * imageMipTailStride;
@@ -1536,7 +1536,7 @@ usage of the binding operation.
 
 The *binding range* [`resourceOffset`, `resourceOffset` + 
 `size`) has different constraints based on `flags`.
-If `flags` contains `VK_SPARSE_MEMORY_BIND_METADATA_BIT`, the
+If `flags` contains [VK_SPARSE_MEMORY_BIND_METADATA_BIT](#VkSparseMemoryBindFlagBits), the
 binding range **must** be within the mip tail region of the metadata aspect.
 This metadata region is defined by:
 
@@ -1553,9 +1553,9 @@ of the image, and n is a valid array layer index for the image,
 
 `imageMipTailStride` is considered to be zero for aspects where
 `VkSparseImageMemoryRequirements`::`formatProperties.flags` contains
-`VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT`.
+[VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT](#VkSparseImageFormatFlagBits).
 
-If `flags` does not contain `VK_SPARSE_MEMORY_BIND_METADATA_BIT`,
+If `flags` does not contain [VK_SPARSE_MEMORY_BIND_METADATA_BIT](#VkSparseMemoryBindFlagBits),
 the binding range **must** be within the range
 [0,[VkMemoryRequirements](resources.html#VkMemoryRequirements)::`size`).
 
@@ -1590,7 +1590,7 @@ of the [VkMemoryRequirements](resources.html#VkMemoryRequirements) structure ret
 
 If `memory` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `memory` **must** not have
 been created with a memory type that reports
-`VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT` bit set
+[VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT](memory.html#VkMemoryPropertyFlagBits) bit set
 
 * 
 [](#VUID-VkSparseMemoryBind-size-01098) VUID-VkSparseMemoryBind-size-01098
@@ -1659,7 +1659,7 @@ typedef enum VkSparseMemoryBindFlagBits {
 } VkSparseMemoryBindFlagBits;
 
 * 
-`VK_SPARSE_MEMORY_BIND_METADATA_BIT` specifies that the memory being
+[VK_SPARSE_MEMORY_BIND_METADATA_BIT](#VkSparseMemoryBindFlagBits) specifies that the memory being
 bound is only for the metadata aspect.
 
 // Provided by VK_VERSION_1_0
@@ -1669,7 +1669,7 @@ typedef VkFlags VkSparseMemoryBindFlags;
 or more [VkSparseMemoryBindFlagBits](#VkSparseMemoryBindFlagBits).
 
 Memory is bound to `VkBuffer` objects created with the
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT` flag using the following
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](resources.html#VkBufferCreateFlagBits) flag using the following
 structure:
 
 // Provided by VK_VERSION_1_0
@@ -1708,7 +1708,7 @@ Valid Usage (Implicit)
  `bindCount` **must** be greater than `0`
 
 Memory is bound to opaque regions of `VkImage` objects created with the
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT` flag using the following structure:
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](resources.html#VkImageCreateFlagBits) flag using the following structure:
 
 // Provided by VK_VERSION_1_0
 typedef struct VkSparseImageOpaqueMemoryBindInfo {
@@ -1735,7 +1735,7 @@ However, it **can** also be used to bind memory for the entire binding range of
 partially resident images.
 
 If the `pBinds`[i].flags of an element *i* of `pBinds` does not
-contain `VK_SPARSE_MEMORY_BIND_METADATA_BIT`, the `resourceOffset`
+contain [VK_SPARSE_MEMORY_BIND_METADATA_BIT](#VkSparseMemoryBindFlagBits), the `resourceOffset`
 is in the range [0, [VkMemoryRequirements](resources.html#VkMemoryRequirements)::`size`), This
 range includes data from all aspects of the image, including metadata.
 For most implementations this will probably mean that the
@@ -1746,7 +1746,7 @@ However, the application would not know what part of the image the memory is
 used for, or if any range is being used for metadata.
 
 If the `pBinds`[i].flags of an element *i* of `pBinds` contains
-`VK_SPARSE_MEMORY_BIND_METADATA_BIT`, the binding range specified **must**
+[VK_SPARSE_MEMORY_BIND_METADATA_BIT](#VkSparseMemoryBindFlagBits), the binding range specified **must**
 be within the mip tail region of the metadata aspect.
 In this case the `resourceOffset` is not **required** to be a simple device
 address offset within the resource.
@@ -1762,7 +1762,7 @@ Valid Usage
 [](#VUID-VkSparseImageOpaqueMemoryBindInfo-pBinds-01103) VUID-VkSparseImageOpaqueMemoryBindInfo-pBinds-01103
 
 If the `flags` member of any element of `pBinds` contains
-`VK_SPARSE_MEMORY_BIND_METADATA_BIT`, the binding range defined
+[VK_SPARSE_MEMORY_BIND_METADATA_BIT](#VkSparseMemoryBindFlagBits), the binding range defined
 **must** be within the mip tail region of the metadata aspect of
 `image`
 
@@ -1784,7 +1784,7 @@ Valid Usage (Implicit)
  `bindCount` **must** be greater than `0`
 
 Memory **can** be bound to sparse image blocks of `VkImage` objects created
-with the `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` flag using the following
+with the [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits) flag using the following
 structure:
 
 // Provided by VK_VERSION_1_0
@@ -1832,7 +1832,7 @@ when `image` was created
 [](#VUID-VkSparseImageMemoryBindInfo-image-02901) VUID-VkSparseImageMemoryBindInfo-image-02901
 
 `image` **must** have been created with
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` set
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits) set
 
 Valid Usage (Implicit)
 
@@ -2082,7 +2082,7 @@ waiting on the same semaphore
 
 All elements of the `pWaitSemaphores` member of all elements of
 `pBindInfo` referring to a semaphore
-created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of `VK_SEMAPHORE_TYPE_BINARY`
+created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of [VK_SEMAPHORE_TYPE_BINARY](synchronization.html#VkSemaphoreTypeKHR)
 **must** reference a semaphore signal operation that has been submitted for
 execution and any [semaphore    signal operations](synchronization.html#synchronization-semaphores-signaling) on which it depends **must** have also been submitted
 for execution
@@ -2107,7 +2107,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkQueueBindSparse-queuetype) VUID-vkQueueBindSparse-queuetype
 
- The `queue` **must** support `VK_QUEUE_SPARSE_BINDING_BIT` operations
+ The `queue` **must** support [VK_QUEUE_SPARSE_BINDING_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkQueueBindSparse-commonparent) VUID-vkQueueBindSparse-commonparent
@@ -2118,6 +2118,8 @@ Host Synchronization
 
 * 
 Host access to `queue` **must** be externally synchronized
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
 
 * 
 Host access to `fence` **must** be externally synchronized
@@ -2132,24 +2134,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkBindSparseInfo` structure is defined as:
 
@@ -2224,13 +2226,23 @@ completed execution.
 If semaphores to be signaled are provided, they define a
 [semaphore signal operation](synchronization.html#synchronization-semaphores-signaling).
 
+The first [synchronization scope](synchronization.html#synchronization-dependencies-scopes) of
+each [semaphore signal operation](synchronization.html#synchronization-semaphores-signaling)
+defined by this structure includes all sparse binding operations defined by
+this structure.
+
+The second [synchronization scope](synchronization.html#synchronization-dependencies-scopes) of
+each [semaphore wait operation](synchronization.html#synchronization-semaphores-waiting) defined
+by this structure includes all sparse binding operations defined by this
+structure.
+
 Valid Usage
 
 * 
 [](#VUID-VkBindSparseInfo-pWaitSemaphores-03246) VUID-VkBindSparseInfo-pWaitSemaphores-03246
 
 If any element of `pWaitSemaphores` or `pSignalSemaphores` was
-created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of `VK_SEMAPHORE_TYPE_TIMELINE`
+created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of [VK_SEMAPHORE_TYPE_TIMELINE](synchronization.html#VkSemaphoreTypeKHR)
 then the `pNext` chain **must** include a
 [VkTimelineSemaphoreSubmitInfo](cmdbuffers.html#VkTimelineSemaphoreSubmitInfo) structure
 
@@ -2240,7 +2252,7 @@ then the `pNext` chain **must** include a
 If the `pNext` chain of this structure includes a
 [VkTimelineSemaphoreSubmitInfo](cmdbuffers.html#VkTimelineSemaphoreSubmitInfo) structure and any element of
 `pWaitSemaphores` was created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_TIMELINE` then its `waitSemaphoreValueCount`
+[VK_SEMAPHORE_TYPE_TIMELINE](synchronization.html#VkSemaphoreTypeKHR) then its `waitSemaphoreValueCount`
 member **must** equal `waitSemaphoreCount`
 
 * 
@@ -2249,7 +2261,7 @@ member **must** equal `waitSemaphoreCount`
 If the `pNext` chain of this structure includes a
 [VkTimelineSemaphoreSubmitInfo](cmdbuffers.html#VkTimelineSemaphoreSubmitInfo) structure and any element of
 `pSignalSemaphores` was created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_TIMELINE` then its
+[VK_SEMAPHORE_TYPE_TIMELINE](synchronization.html#VkSemaphoreTypeKHR) then its
 `signalSemaphoreValueCount` member **must** equal
 `signalSemaphoreCount`
 
@@ -2257,7 +2269,7 @@ If the `pNext` chain of this structure includes a
 [](#VUID-VkBindSparseInfo-pSignalSemaphores-03249) VUID-VkBindSparseInfo-pSignalSemaphores-03249
 
 For each element of `pSignalSemaphores` created with a
-[VkSemaphoreType](synchronization.html#VkSemaphoreType) of `VK_SEMAPHORE_TYPE_TIMELINE` the
+[VkSemaphoreType](synchronization.html#VkSemaphoreType) of [VK_SEMAPHORE_TYPE_TIMELINE](synchronization.html#VkSemaphoreTypeKHR) the
 corresponding element of
 [VkTimelineSemaphoreSubmitInfo](cmdbuffers.html#VkTimelineSemaphoreSubmitInfo)::`pSignalSemaphoreValues` **must**
 have a value greater than the current value of the semaphore when the
@@ -2268,7 +2280,7 @@ executed
 [](#VUID-VkBindSparseInfo-pWaitSemaphores-03250) VUID-VkBindSparseInfo-pWaitSemaphores-03250
 
 For each element of `pWaitSemaphores` created with a
-[VkSemaphoreType](synchronization.html#VkSemaphoreType) of `VK_SEMAPHORE_TYPE_TIMELINE` the
+[VkSemaphoreType](synchronization.html#VkSemaphoreType) of [VK_SEMAPHORE_TYPE_TIMELINE](synchronization.html#VkSemaphoreTypeKHR) the
 corresponding element of
 [VkTimelineSemaphoreSubmitInfo](cmdbuffers.html#VkTimelineSemaphoreSubmitInfo)::`pWaitSemaphoreValues` **must**
 have a value which does not differ from the current value of the
@@ -2280,7 +2292,7 @@ operation on that semaphore by more than
 [](#VUID-VkBindSparseInfo-pSignalSemaphores-03251) VUID-VkBindSparseInfo-pSignalSemaphores-03251
 
 For each element of `pSignalSemaphores` created with a
-[VkSemaphoreType](synchronization.html#VkSemaphoreType) of `VK_SEMAPHORE_TYPE_TIMELINE` the
+[VkSemaphoreType](synchronization.html#VkSemaphoreType) of [VK_SEMAPHORE_TYPE_TIMELINE](synchronization.html#VkSemaphoreTypeKHR) the
 corresponding element of
 [VkTimelineSemaphoreSubmitInfo](cmdbuffers.html#VkTimelineSemaphoreSubmitInfo)::`pSignalSemaphoreValues` **must**
 have a value which does not differ from the current value of the
@@ -2293,14 +2305,14 @@ operation on that semaphore by more than
 
 If the `pNext` chain of this structure includes a
 [VkFrameBoundaryTensorsARM](debugging.html#VkFrameBoundaryTensorsARM) structure then it **must** also include a
-[VkFrameBoundaryEXT](debugging.html#VkFrameBoundaryEXT) structure.
+[VkFrameBoundaryEXT](debugging.html#VkFrameBoundaryEXT) structure
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkBindSparseInfo-sType-sType) VUID-VkBindSparseInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_SPARSE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_SPARSE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBindSparseInfo-pNext-pNext) VUID-VkBindSparseInfo-pNext-pNext
@@ -2343,7 +2355,7 @@ Valid Usage (Implicit)
  Both of the elements of `pSignalSemaphores`, and the elements of `pWaitSemaphores` that are valid handles of non-ignored parameters **must** have been created, allocated, or retrieved from the same [VkDevice](devsandqueues.html#VkDevice)
 
 To specify the values to use when waiting for and signaling semaphores
-created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of `VK_SEMAPHORE_TYPE_TIMELINE`,
+created with a [VkSemaphoreType](synchronization.html#VkSemaphoreType) of [VK_SEMAPHORE_TYPE_TIMELINE](synchronization.html#VkSemaphoreTypeKHR),
 add a [VkTimelineSemaphoreSubmitInfo](cmdbuffers.html#VkTimelineSemaphoreSubmitInfo) structure to the `pNext` chain
 of the [VkBindSparseInfo](#VkBindSparseInfo) structure.
 
@@ -2408,4 +2420,4 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceGroupBindSparseInfo-sType-sType) VUID-VkDeviceGroupBindSparseInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO](fundamentals.html#VkStructureType)

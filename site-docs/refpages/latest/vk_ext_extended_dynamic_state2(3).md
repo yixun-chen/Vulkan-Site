@@ -117,28 +117,28 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE_EXT`
+[VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE_EXT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_LOGIC_OP_EXT`
+[VK_DYNAMIC_STATE_LOGIC_OP_EXT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT`
+[VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE_EXT`
+[VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE_EXT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE_EXT`
+[VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE_EXT](VkDynamicState.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_2_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_2_FEATURES_EXT](VkStructureType.html)
 
-The dynamic state enumerants `VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE_EXT`,
-`VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE_EXT`, and
-`VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE_EXT`; and the corresponding
+The dynamic state enumerants [VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE_EXT](VkDynamicState.html),
+[VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE_EXT](VkDynamicState.html), and
+[VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE_EXT](VkDynamicState.html); and the corresponding
 commands in this extension are included in core Vulkan 1.3, with the EXT
 suffix omitted.
 The enumerants and commands for dynamic logic operation and patch control

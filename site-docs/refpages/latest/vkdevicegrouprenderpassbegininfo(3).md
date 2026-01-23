@@ -75,7 +75,7 @@ If `deviceRenderAreaCount` is not zero, then the elements of
 specific to each physical device.
 These render areas serve the same purpose as
 [VkRenderPassBeginInfo](VkRenderPassBeginInfo.html)::`renderArea`, including controlling the
-region of attachments that are cleared by `VK_ATTACHMENT_LOAD_OP_CLEAR`
+region of attachments that are cleared by [VK_ATTACHMENT_LOAD_OP_CLEAR](VkAttachmentLoadOp.html)
 and that are resolved into resolve attachments.
 
 If this structure is not present, the render pass instance’s device mask is
@@ -151,7 +151,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceGroupRenderPassBeginInfo-sType-sType) VUID-VkDeviceGroupRenderPassBeginInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_GROUP_RENDER_PASS_BEGIN_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_GROUP_RENDER_PASS_BEGIN_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceGroupRenderPassBeginInfo-pDeviceRenderAreas-parameter) VUID-VkDeviceGroupRenderPassBeginInfo-pDeviceRenderAreas-parameter

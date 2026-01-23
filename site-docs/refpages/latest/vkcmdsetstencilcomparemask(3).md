@@ -42,7 +42,7 @@ the set of stencil state for which to update the compare mask.
 This command sets the stencil compare mask for subsequent drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK` set in
+[VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkStencilOpState](VkStencilOpState.html)::`compareMask` value used to create the currently
@@ -73,7 +73,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetStencilCompareMask-commandBuffer-cmdpool) VUID-vkCmdSetStencilCompareMask-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetStencilCompareMask-videocoding) VUID-vkCmdSetStencilCompareMask-videocoding

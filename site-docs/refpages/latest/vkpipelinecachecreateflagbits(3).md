@@ -32,7 +32,7 @@ typedef enum VkPipelineCacheCreateFlagBits {
 } VkPipelineCacheCreateFlagBits;
 
 * 
-`VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT` specifies
+[VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT](#) specifies
 that all commands that modify the created [VkPipelineCache](VkPipelineCache.html) will be
 [externally synchronized](../../../../spec/latest/chapters/fundamentals.html#fundamentals-threadingbehavior).
 When set, the implementation **may** skip any unnecessary processing needed
@@ -40,12 +40,12 @@ to support simultaneous modification from multiple threads where
 allowed.
 
 * 
-`VK_PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_BIT_KHR`
+[VK_PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_BIT_KHR](#)
 specifies that when the created [VkPipelineCache](VkPipelineCache.html) is used as the
 `dstCache` parameter of [vkMergePipelineCaches](vkMergePipelineCaches.html), it does not
 need to be [externally synchronized](../../../../spec/latest/chapters/fundamentals.html#fundamentals-threadingbehavior).
 This flag is mutually exclusive with
-`VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT`.
+[VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT](#).
 
 [VK_EXT_pipeline_creation_cache_control](VK_EXT_pipeline_creation_cache_control.html), [VK_KHR_maintenance8](VK_KHR_maintenance8.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), [VkPipelineCacheCreateFlags](VkPipelineCacheCreateFlags.html)
 

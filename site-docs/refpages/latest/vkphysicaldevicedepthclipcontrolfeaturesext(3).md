@@ -42,7 +42,7 @@ structure.
  `depthClipControl` indicates that the
 implementation supports setting
 [VkPipelineViewportDepthClipControlCreateInfoEXT](VkPipelineViewportDepthClipControlCreateInfoEXT.html)::`negativeOneToOne`
-to `VK_TRUE`.
+to [VK_TRUE](VK_TRUE.html).
 
 If the `VkPhysicalDeviceDepthClipControlFeaturesEXT` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -50,7 +50,7 @@ If the `VkPhysicalDeviceDepthClipControlFeaturesEXT` structure is included in th
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceDepthClipControlFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDepthClipControlFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceDepthClipControlFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_CONTROL_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_CONTROL_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_depth_clip_control](VK_EXT_depth_clip_control.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

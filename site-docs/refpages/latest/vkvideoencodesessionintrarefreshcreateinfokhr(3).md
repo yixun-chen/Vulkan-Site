@@ -46,7 +46,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeSessionIntraRefreshCreateInfoKHR-sType-sType) VUID-VkVideoEncodeSessionIntraRefreshCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_INTRA_REFRESH_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_INTRA_REFRESH_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoEncodeSessionIntraRefreshCreateInfoKHR-intraRefreshMode-parameter) VUID-VkVideoEncodeSessionIntraRefreshCreateInfoKHR-intraRefreshMode-parameter

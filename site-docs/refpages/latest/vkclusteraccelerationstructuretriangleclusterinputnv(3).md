@@ -84,7 +84,7 @@ Valid Usage
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-buffer-view-format-features) of
 `vertexFormat` **must** contain
-`VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR`
+[VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-VkClusterAccelerationStructureTriangleClusterInputNV-maxClusterTriangleCount-10440) VUID-VkClusterAccelerationStructureTriangleClusterInputNV-maxClusterTriangleCount-10440
@@ -108,7 +108,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkClusterAccelerationStructureTriangleClusterInputNV-sType-sType) VUID-VkClusterAccelerationStructureTriangleClusterInputNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_TRIANGLE_CLUSTER_INPUT_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_TRIANGLE_CLUSTER_INPUT_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkClusterAccelerationStructureTriangleClusterInputNV-pNext-pNext) VUID-VkClusterAccelerationStructureTriangleClusterInputNV-pNext-pNext

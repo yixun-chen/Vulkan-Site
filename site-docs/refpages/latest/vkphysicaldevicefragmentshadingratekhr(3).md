@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFragmentShadingRateKHR-sType-sType) VUID-VkPhysicalDeviceFragmentShadingRateKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPhysicalDeviceFragmentShadingRateKHR-pNext-pNext) VUID-VkPhysicalDeviceFragmentShadingRateKHR-pNext-pNext

@@ -38,7 +38,7 @@ structure.
 
 * 
 
-`perViewPositionAllComponents` is `VK_TRUE` if the
+`perViewPositionAllComponents` is [VK_TRUE](VK_TRUE.html) if the
 implementation supports per-view position values that differ in
 components other than the X component.
 
@@ -52,7 +52,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX-sType-sType) VUID-VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX](VkStructureType.html)
 
 [VK_NVX_multiview_per_view_attributes](VK_NVX_multiview_per_view_attributes.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

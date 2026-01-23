@@ -40,12 +40,12 @@ structure.
 * 
 `maxOpacity2StateSubdivisionLevel` is the maximum allowed
 `subdivisionLevel` when `format` is
-`VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT`
+[VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT](VkOpacityMicromapFormatEXT.html)
 
 * 
 `maxOpacity4StateSubdivisionLevel` is the maximum allowed
 `subdivisionLevel` when `format` is
-`VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT`
+[VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT](VkOpacityMicromapFormatEXT.html)
 
 If the `VkPhysicalDeviceOpacityMicromapPropertiesEXT` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html) structure passed to
@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceOpacityMicromapPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceOpacityMicromapPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_opacity_micromap](VK_EXT_opacity_micromap.html), [VkStructureType](VkStructureType.html)
 

@@ -25,10 +25,10 @@ make that variable contain the implementation-dependent
 This value **must** be a power-of-two integer.
 
 If the pipeline was created with the
-`VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT` flag
+[VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT](VkPipelineShaderStageCreateFlagBits.html) flag
 set,
 or the shader object was created with the
-`VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT` flag set,
+[VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT](VkShaderCreateFlagBitsEXT.html) flag set,
 or the SPIR-V `module` is at least version 1.6,
 the `SubgroupSize` decorated variable will contain the subgroup size for
 each subgroup that gets dispatched.
@@ -52,11 +52,11 @@ the `SubgroupSize` decorated variable will match
 If
 SPIR-V `module` is less than version 1.6 and
 the pipeline was not created with the
-`VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT` flag
+[VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT](VkPipelineShaderStageCreateFlagBits.html) flag
 set and no [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.html)
 structure was chained,
 and the shader was not created with the
-`VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT` flag set and no
+[VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT](VkShaderCreateFlagBitsEXT.html) flag set and no
 [VkShaderRequiredSubgroupSizeCreateInfoEXT](VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.html) structure was chained,
 the
 variable decorated with `SubgroupSize` will match [`subgroupSize`](../../../../spec/latest/chapters/devsandqueues.html#limits-subgroupSize).
@@ -67,8 +67,8 @@ subgroup is 128.
 |  | The old behavior for `SubgroupSize` is considered legacy as certain
 | --- | --- |
 compute algorithms cannot be easily implemented without the guarantees of
-`VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT` and
-`VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT`. |
+[VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT](VkPipelineShaderStageCreateFlagBits.html) and
+[VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT](VkPipelineShaderStageCreateFlagBits.html). |
 
 Valid Usage
 

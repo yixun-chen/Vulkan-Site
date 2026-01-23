@@ -54,7 +54,7 @@ includes a `VkPipelineCoverageToColorStateCreateInfoNV` structure, then
 that structure controls whether the fragment coverage is substituted for a
 fragment color output and, if so, which output is replaced.
 
-If `coverageToColorEnable` is `VK_TRUE`, the
+If `coverageToColorEnable` is [VK_TRUE](VK_TRUE.html), the
 [coverage mask](../../../../spec/latest/chapters/primsrast.html#primsrast-multisampling-coverage-mask) replaces the first
 component of the color value corresponding to the fragment shader output
 location with `Location` equal to `coverageToColorLocation` and
@@ -64,32 +64,32 @@ low bits of the sample coverage mask are taken without any clamping.
 If the color attachment format has more bits than the coverage mask, the
 high bits of the sample coverage mask are filled with zeros.
 
-If `coverageToColorEnable` is `VK_FALSE`, these operations are
+If `coverageToColorEnable` is [VK_FALSE](VK_FALSE.html), these operations are
 skipped.
 If this structure is not included in the `pNext` chain, it is as if
-`coverageToColorEnable` is `VK_FALSE`.
+`coverageToColorEnable` is [VK_FALSE](VK_FALSE.html).
 
 Valid Usage
 
 * 
 [](#VUID-VkPipelineCoverageToColorStateCreateInfoNV-coverageToColorEnable-01404) VUID-VkPipelineCoverageToColorStateCreateInfoNV-coverageToColorEnable-01404
 
-If `coverageToColorEnable` is `VK_TRUE`, then the render pass
+If `coverageToColorEnable` is [VK_TRUE](VK_TRUE.html), then the render pass
 subpass indicated by
 [VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html)::`renderPass` and
 [VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html)::`subpass` **must** have a color
 attachment at the location selected by `coverageToColorLocation`,
-with a [VkFormat](VkFormat.html) of `VK_FORMAT_R8_UINT`,
-`VK_FORMAT_R8_SINT`, `VK_FORMAT_R16_UINT`,
-`VK_FORMAT_R16_SINT`, `VK_FORMAT_R32_UINT`, or
-`VK_FORMAT_R32_SINT`
+with a [VkFormat](VkFormat.html) of [VK_FORMAT_R8_UINT](VkFormat.html),
+[VK_FORMAT_R8_SINT](VkFormat.html), [VK_FORMAT_R16_UINT](VkFormat.html),
+[VK_FORMAT_R16_SINT](VkFormat.html), [VK_FORMAT_R32_UINT](VkFormat.html), or
+[VK_FORMAT_R32_SINT](VkFormat.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineCoverageToColorStateCreateInfoNV-sType-sType) VUID-VkPipelineCoverageToColorStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineCoverageToColorStateCreateInfoNV-flags-zerobitmask) VUID-VkPipelineCoverageToColorStateCreateInfoNV-flags-zerobitmask

@@ -20,7 +20,7 @@
 VkBindShaderGroupIndirectCommandNV - Structure specifying input data for a single shader group command token
 
 The `VkBindShaderGroupIndirectCommandNV` structure specifies the input
-data for the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV` token.
+data for the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV](VkIndirectCommandsTokenTypeNV.html) token.
 
 // Provided by VK_NV_device_generated_commands
 typedef struct VkBindShaderGroupIndirectCommandNV {
@@ -38,7 +38,7 @@ Valid Usage
 
 The current bound graphics pipeline, as well as the pipelines it may
 reference, **must** have been created with
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV`
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-VkBindShaderGroupIndirectCommandNV-index-02945) VUID-VkBindShaderGroupIndirectCommandNV-index-02945

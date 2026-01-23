@@ -101,7 +101,7 @@ Kevin Matlage, Qualcomm Technologies, Inc.
 This extension adds a new memory heap which allows applications to allocate
 and manage tile memory.
 A tile memory heap is denoted by the new
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property.
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property.
 Memory contents within this heap behave differently than other heaps and
 only persist its memory contents within a command buffer submission batch
 boundary.
@@ -110,9 +110,9 @@ This boundary may be extended to a queue submit boundary by querying
 `VkPhysicalDeviceTileMemoryHeapPropertiesQCOM` structure.
 
 Tile memory from this heap can be bound to VkImages or VkBuffers.
-The following new usage flags `VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM`,
-`VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM`,
-`VK_BUFFER_USAGE_2_TILE_MEMORY_BIT_QCOM` were added for this.
+The following new usage flags [VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM](VkImageUsageFlagBits.html),
+[VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM](VkBufferUsageFlagBits.html),
+[VK_BUFFER_USAGE_2_TILE_MEMORY_BIT_QCOM](VkBufferUsageFlagBits2.html) were added for this.
 A new extended structure is added to get memory requirements for tile memory
 `VkTileMemoryRequirementsQCOM`.
 
@@ -165,43 +165,43 @@ Extending [VkRenderPassCreateInfo](VkRenderPassCreateInfo.html), [VkRenderPassCr
 * 
 Extending [VkBufferUsageFlagBits](VkBufferUsageFlagBits.html):
 
-`VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM`
+[VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM](VkBufferUsageFlagBits.html)
 
 Extending [VkBufferUsageFlagBits2](VkBufferUsageFlagBits2.html):
 
 * 
-`VK_BUFFER_USAGE_2_TILE_MEMORY_BIT_QCOM`
+[VK_BUFFER_USAGE_2_TILE_MEMORY_BIT_QCOM](VkBufferUsageFlagBits2.html)
 
 Extending [VkImageUsageFlagBits](VkImageUsageFlagBits.html):
 
 * 
-`VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM`
+[VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM](VkImageUsageFlagBits.html)
 
 Extending [VkMemoryHeapFlagBits](VkMemoryHeapFlagBits.html):
 
 * 
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM`
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_FEATURES_QCOM`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_FEATURES_QCOM](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_PROPERTIES_QCOM`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_PROPERTIES_QCOM](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_TILE_MEMORY_BIND_INFO_QCOM`
+[VK_STRUCTURE_TYPE_TILE_MEMORY_BIND_INFO_QCOM](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_TILE_MEMORY_REQUIREMENTS_QCOM`
+[VK_STRUCTURE_TYPE_TILE_MEMORY_REQUIREMENTS_QCOM](VkStructureType.html)
 
 If [VK_QCOM_tile_properties](VK_QCOM_tile_properties.html) is supported:
 
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_TILE_MEMORY_SIZE_INFO_QCOM`
+[VK_STRUCTURE_TYPE_TILE_MEMORY_SIZE_INFO_QCOM](VkStructureType.html)
 
 * 
 Revision 1, 2025-03-26 (Patrick Boyle)

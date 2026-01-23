@@ -59,22 +59,22 @@ Valid Usage
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04524) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04524
 
 If `pFragmentShadingRateAttachment` is not `NULL` and its
-`attachment` member is not `VK_ATTACHMENT_UNUSED`, its
-`layout` member **must** be equal to `VK_IMAGE_LAYOUT_GENERAL` or
-`VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR`
+`attachment` member is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html), its
+`layout` member **must** be equal to [VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR](VkImageLayout.html)
 
 * 
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04525) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04525
 
 If `pFragmentShadingRateAttachment` is not `NULL` and its
-`attachment` member is not `VK_ATTACHMENT_UNUSED`,
+`attachment` member is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html),
 `shadingRateAttachmentTexelSize.width` **must** be a power of two value
 
 * 
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04526) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04526
 
 If `pFragmentShadingRateAttachment` is not `NULL` and its
-`attachment` member is not `VK_ATTACHMENT_UNUSED`,
+`attachment` member is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html),
 `shadingRateAttachmentTexelSize.width` **must** be less than or equal
 to [    `maxFragmentShadingRateAttachmentTexelSize.width`](../../../../spec/latest/chapters/limits.html#limits-maxFragmentShadingRateAttachmentTexelSize)
 
@@ -82,7 +82,7 @@ to [    `maxFragmentShadingRateAttachmentTexelSize.width`](../../../../spec/late
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04527) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04527
 
 If `pFragmentShadingRateAttachment` is not `NULL` and its
-`attachment` member is not `VK_ATTACHMENT_UNUSED`,
+`attachment` member is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html),
 `shadingRateAttachmentTexelSize.width` **must** be greater than or
 equal to [    `minFragmentShadingRateAttachmentTexelSize.width`](../../../../spec/latest/chapters/limits.html#limits-minFragmentShadingRateAttachmentTexelSize)
 
@@ -90,7 +90,7 @@ equal to [    `minFragmentShadingRateAttachmentTexelSize.width`](../../../../spe
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04528) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04528
 
 If `pFragmentShadingRateAttachment` is not `NULL` and its
-`attachment` member is not `VK_ATTACHMENT_UNUSED`,
+`attachment` member is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html),
 `shadingRateAttachmentTexelSize.height` **must** be a power of two
 value
 
@@ -98,7 +98,7 @@ value
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04529) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04529
 
 If `pFragmentShadingRateAttachment` is not `NULL` and its
-`attachment` member is not `VK_ATTACHMENT_UNUSED`,
+`attachment` member is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html),
 `shadingRateAttachmentTexelSize.height` **must** be less than or equal
 to [    `maxFragmentShadingRateAttachmentTexelSize.height`](../../../../spec/latest/chapters/limits.html#limits-maxFragmentShadingRateAttachmentTexelSize)
 
@@ -106,7 +106,7 @@ to [    `maxFragmentShadingRateAttachmentTexelSize.height`](../../../../spec/lat
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04530) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04530
 
 If `pFragmentShadingRateAttachment` is not `NULL` and its
-`attachment` member is not `VK_ATTACHMENT_UNUSED`,
+`attachment` member is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html),
 `shadingRateAttachmentTexelSize.height` **must** be greater than or
 equal to [    `minFragmentShadingRateAttachmentTexelSize.height`](../../../../spec/latest/chapters/limits.html#limits-minFragmentShadingRateAttachmentTexelSize)
 
@@ -114,7 +114,7 @@ equal to [    `minFragmentShadingRateAttachmentTexelSize.height`](../../../../sp
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04531) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04531
 
 If `pFragmentShadingRateAttachment` is not `NULL` and its
-`attachment` member is not `VK_ATTACHMENT_UNUSED`, the quotient
+`attachment` member is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html), the quotient
 of `shadingRateAttachmentTexelSize.width` and
 `shadingRateAttachmentTexelSize.height` **must** be less than or equal
 to [    `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`](../../../../spec/latest/chapters/limits.html#limits-maxFragmentShadingRateAttachmentTexelSizeAspectRatio)
@@ -123,7 +123,7 @@ to [    `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`](../../../../spec
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04532) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04532
 
 If `pFragmentShadingRateAttachment` is not `NULL` and its
-`attachment` member is not `VK_ATTACHMENT_UNUSED`, the quotient
+`attachment` member is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html), the quotient
 of `shadingRateAttachmentTexelSize.height` and
 `shadingRateAttachmentTexelSize.width` **must** be less than or equal
 to [    `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`](../../../../spec/latest/chapters/limits.html#limits-maxFragmentShadingRateAttachmentTexelSizeAspectRatio)
@@ -133,7 +133,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-sType-sType) VUID-VkFragmentShadingRateAttachmentInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-parameter) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-parameter

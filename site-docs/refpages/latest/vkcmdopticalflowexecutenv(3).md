@@ -72,7 +72,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdOpticalFlowExecuteNV-commandBuffer-cmdpool) VUID-vkCmdOpticalFlowExecuteNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_OPTICAL_FLOW_BIT_NV` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_OPTICAL_FLOW_BIT_NV](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdOpticalFlowExecuteNV-renderpass) VUID-vkCmdOpticalFlowExecuteNV-renderpass

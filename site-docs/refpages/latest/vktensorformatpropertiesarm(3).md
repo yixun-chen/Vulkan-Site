@@ -45,20 +45,20 @@ structure.
 `linearTilingTensorFeatures` is a bitmask of
 [VkFormatFeatureFlagBits2](VkFormatFeatureFlagBits2.html) specifying features supported by tensors
 created with a `tiling` parameter of
-`VK_TENSOR_TILING_LINEAR_ARM`.
+[VK_TENSOR_TILING_LINEAR_ARM](VkTensorTilingARM.html).
 
 * 
 `optimalTilingTensorFeatures` is a bitmask of
 [VkFormatFeatureFlagBits2](VkFormatFeatureFlagBits2.html) specifying features supported by tensors
 created with a `tiling` parameter of
-`VK_TENSOR_TILING_OPTIMAL_ARM`.
+[VK_TENSOR_TILING_OPTIMAL_ARM](VkTensorTilingARM.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkTensorFormatPropertiesARM-sType-sType) VUID-VkTensorFormatPropertiesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TENSOR_FORMAT_PROPERTIES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TENSOR_FORMAT_PROPERTIES_ARM](VkStructureType.html)
 
 [VK_ARM_tensors](VK_ARM_tensors.html), [VkFormatFeatureFlags2](VkFormatFeatureFlags2.html), [VkStructureType](VkStructureType.html)
 

@@ -47,7 +47,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPrivateDataSlotCreateInfo-sType-sType) VUID-VkPrivateDataSlotCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRIVATE_DATA_SLOT_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRIVATE_DATA_SLOT_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPrivateDataSlotCreateInfo-pNext-pNext) VUID-VkPrivateDataSlotCreateInfo-pNext-pNext

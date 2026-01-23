@@ -43,19 +43,19 @@ typedef enum VkPeerMemoryFeatureFlagBits {
 typedef VkPeerMemoryFeatureFlagBits VkPeerMemoryFeatureFlagBitsKHR;
 
 * 
-`VK_PEER_MEMORY_FEATURE_COPY_SRC_BIT` specifies that the memory **can**
+[VK_PEER_MEMORY_FEATURE_COPY_SRC_BIT](#) specifies that the memory **can**
 be accessed as the source of any `vkCmdCopy*` command.
 
 * 
-`VK_PEER_MEMORY_FEATURE_COPY_DST_BIT` specifies that the memory **can**
+[VK_PEER_MEMORY_FEATURE_COPY_DST_BIT](#) specifies that the memory **can**
 be accessed as the destination of any `vkCmdCopy*` command.
 
 * 
-`VK_PEER_MEMORY_FEATURE_GENERIC_SRC_BIT` specifies that the memory
+[VK_PEER_MEMORY_FEATURE_GENERIC_SRC_BIT](#) specifies that the memory
 **can** be read as any memory access type.
 
 * 
-`VK_PEER_MEMORY_FEATURE_GENERIC_DST_BIT` specifies that the memory
+[VK_PEER_MEMORY_FEATURE_GENERIC_DST_BIT](#) specifies that the memory
 **can** be written as any memory access type.
 Shader atomics are considered to be writes.
 
@@ -63,7 +63,7 @@ Shader atomics are considered to be writes.
 | --- | --- |
 **may** be performed during [image layout transitions](../../../../spec/latest/chapters/synchronization.html#synchronization-image-layout-transitions). |
 
-`VK_PEER_MEMORY_FEATURE_COPY_DST_BIT` **must** be supported for all host
+[VK_PEER_MEMORY_FEATURE_COPY_DST_BIT](#) **must** be supported for all host
 local heaps and for at least one device-local memory heap.
 
 If a device does not support a peer memory feature, it is still valid to use

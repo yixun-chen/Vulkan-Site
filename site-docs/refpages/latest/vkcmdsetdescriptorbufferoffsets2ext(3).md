@@ -37,6 +37,22 @@ offsets will be set.
 Valid Usage
 
 * 
+[](#VUID-vkCmdSetDescriptorBufferOffsets2EXT-commandBuffer-11295) VUID-vkCmdSetDescriptorBufferOffsets2EXT-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdSetDescriptorBufferOffsets2EXT-commandBuffer-11296) VUID-vkCmdSetDescriptorBufferOffsets2EXT-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pResourceHeapBindInfo`
+equal to `NULL`
+
+* 
 [](#VUID-vkCmdSetDescriptorBufferOffsets2EXT-descriptorBuffer-09470) VUID-vkCmdSetDescriptorBufferOffsets2EXT-descriptorBuffer-09470
 
 The [`descriptorBuffer`](../../../../spec/latest/chapters/features.html#features-descriptorBuffer) feature **must**
@@ -69,7 +85,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDescriptorBufferOffsets2EXT-commandBuffer-cmdpool) VUID-vkCmdSetDescriptorBufferOffsets2EXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_DATA_GRAPH_BIT_ARM`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_DATA_GRAPH_BIT_ARM](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetDescriptorBufferOffsets2EXT-videocoding) VUID-vkCmdSetDescriptorBufferOffsets2EXT-videocoding

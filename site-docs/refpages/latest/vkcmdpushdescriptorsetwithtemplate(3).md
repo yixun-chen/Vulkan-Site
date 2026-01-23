@@ -66,6 +66,22 @@ templated update.
 Valid Usage
 
 * 
+[](#VUID-vkCmdPushDescriptorSetWithTemplate-commandBuffer-11295) VUID-vkCmdPushDescriptorSetWithTemplate-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdPushDescriptorSetWithTemplate-commandBuffer-11296) VUID-vkCmdPushDescriptorSetWithTemplate-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pResourceHeapBindInfo`
+equal to `NULL`
+
+* 
 [](#VUID-vkCmdPushDescriptorSetWithTemplate-commandBuffer-00366) VUID-vkCmdPushDescriptorSetWithTemplate-commandBuffer-00366
 
 The `pipelineBindPoint` specified during the creation of the
@@ -92,7 +108,7 @@ by `descriptorUpdateTemplate` when it was created with
 
 `descriptorUpdateTemplate` **must** have been created with a
 `templateType` of
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS`
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](VkDescriptorUpdateTemplateType.html)
 
 * 
 [](#VUID-vkCmdPushDescriptorSetWithTemplate-set-07995) VUID-vkCmdPushDescriptorSetWithTemplate-set-07995
@@ -118,7 +134,7 @@ by `descriptorUpdateTemplate` when it was created with
 
 `set` **must** be the unique set number in the pipeline layout that
 uses a descriptor set layout that was created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](VkDescriptorSetLayoutCreateFlagBits.html)
 
 * 
 [](#VUID-vkCmdPushDescriptorSetWithTemplate-None-10358) VUID-vkCmdPushDescriptorSetWithTemplate-None-10358
@@ -151,7 +167,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdPushDescriptorSetWithTemplate-commandBuffer-cmdpool) VUID-vkCmdPushDescriptorSetWithTemplate-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdPushDescriptorSetWithTemplate-videocoding) VUID-vkCmdPushDescriptorSetWithTemplate-videocoding

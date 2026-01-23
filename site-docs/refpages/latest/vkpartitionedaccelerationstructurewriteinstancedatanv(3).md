@@ -71,7 +71,7 @@ an instance in the PTLAS.
 `partitionIndex` is the index of the partition to which this
 instance belongs.
 [Global partitions](../../../../spec/latest/chapters/accelstructures.html#ptlas-global-partition) are referred to by
-`VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV`.
+[VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV](VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV.html).
 
 * 
 `accelerationStructure` is the device address of the bottom level
@@ -109,7 +109,7 @@ The most significant 8 bits of `instanceContributionToHitGroupIndex`
 
 `explicitAABB` **must** be a valid bounding box if instance was created
 with flag
-`VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_ENABLE_EXPLICIT_BOUNDING_BOX_NV`
+[VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_ENABLE_EXPLICIT_BOUNDING_BOX_NV](VkPartitionedAccelerationStructureInstanceFlagBitsNV.html)
 set
 
 Valid Usage (Implicit)

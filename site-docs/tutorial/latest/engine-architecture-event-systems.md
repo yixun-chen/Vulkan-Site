@@ -537,4 +537,4 @@ Event systems for decoupled communication between subsystems
 
 With these foundations in place, you’re well-equipped to build a robust and flexible rendering engine that can be extended to support a wide range of features and techniques.
 
-[Previous: Rendering Pipeline](05_rendering_pipeline.adoc) | [Next: Conclusion](conclusion.adoc)
+[Previous: Rendering Pipeline](05_rendering_pipeline.html) | [Next: Conclusion](conclusion.html)

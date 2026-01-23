@@ -43,36 +43,36 @@ structure.
 control algorithm **should** use the values specified in
 `gopRemainingIntra`, `gopRemainingPredictive`, and
 `gopRemainingBipredictive`.
-If `useGopRemainingFrames` is `VK_FALSE`, then the values of
+If `useGopRemainingFrames` is [VK_FALSE](VK_FALSE.html), then the values of
 `gopRemainingIntra`, `gopRemainingPredictive`, and
 `gopRemainingBipredictive` are ignored.
 
 * 
 `gopRemainingIntra` specifies the number of frames encoded with
-`VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_INTRA_KHR` the
+[VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_INTRA_KHR](VkVideoEncodeAV1RateControlGroupKHR.html) the
 implementation’s rate control algorithm **should** assume to be remaining
 in the [GOP](../../../../spec/latest/chapters/videocoding.html#encode-av1-gop) prior to executing the next video encode
 operation.
 
 * 
 `gopRemainingPredictive` specifies the number of frames encoded with
-`VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_PREDICTIVE_KHR` the
+[VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_PREDICTIVE_KHR](VkVideoEncodeAV1RateControlGroupKHR.html) the
 implementation’s rate control algorithm **should** assume to be remaining
 in the [GOP](../../../../spec/latest/chapters/videocoding.html#encode-av1-gop) prior to executing the next video encode
 operation.
 
 * 
 `gopRemainingBipredictive` specifies the number of frames encoded
-with `VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_BIPREDICTIVE_KHR` the
+with [VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_BIPREDICTIVE_KHR](VkVideoEncodeAV1RateControlGroupKHR.html) the
 implementation’s rate control algorithm **should** assume to be remaining
 in the [GOP](../../../../spec/latest/chapters/videocoding.html#encode-av1-gop) prior to executing the next video encode
 operation.
 
-Setting `useGopRemainingFrames` to `VK_TRUE` and including this
+Setting `useGopRemainingFrames` to [VK_TRUE](VK_TRUE.html) and including this
 structure in the `pNext` chain of [VkVideoBeginCodingInfoKHR](VkVideoBeginCodingInfoKHR.html) is
 only mandatory if the
 [VkVideoEncodeAV1CapabilitiesKHR](VkVideoEncodeAV1CapabilitiesKHR.html)::`requiresGopRemainingFrames`
-reported for the used [video profile](../../../../spec/latest/chapters/videocoding.html#video-profiles) is `VK_TRUE`.
+reported for the used [video profile](../../../../spec/latest/chapters/videocoding.html#video-profiles) is [VK_TRUE](VK_TRUE.html).
 However, implementations **may** use these remaining frame counts, when
 specified, even when it is not required.
 In particular, when the application does not use a
@@ -95,7 +95,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeAV1GopRemainingFrameInfoKHR-sType-sType) VUID-VkVideoEncodeAV1GopRemainingFrameInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_GOP_REMAINING_FRAME_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_GOP_REMAINING_FRAME_INFO_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_av1](VK_KHR_video_encode_av1.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

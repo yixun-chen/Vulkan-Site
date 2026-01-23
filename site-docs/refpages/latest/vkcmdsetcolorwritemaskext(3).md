@@ -48,7 +48,7 @@ This command sets the color write masks of the specified attachments for
 subsequent drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT` set in
+[VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineColorBlendAttachmentState](VkPipelineColorBlendAttachmentState.html)::`colorWriteMask` values used
@@ -57,7 +57,7 @@ to create the currently active pipeline.
 |  | Formats with bits that are shared between components specified by
 | --- | --- |
 [VkColorComponentFlagBits](VkColorComponentFlagBits.html), such as
-`VK_FORMAT_E5B9G9R9_UFLOAT_PACK32`, cannot have their channels
+[VK_FORMAT_E5B9G9R9_UFLOAT_PACK32](VkFormat.html), cannot have their channels
 individually masked by this functionality; either all components that share
 bits have to be enabled, or none of them. |
 
@@ -94,7 +94,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetColorWriteMaskEXT-commandBuffer-cmdpool) VUID-vkCmdSetColorWriteMaskEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetColorWriteMaskEXT-videocoding) VUID-vkCmdSetColorWriteMaskEXT-videocoding

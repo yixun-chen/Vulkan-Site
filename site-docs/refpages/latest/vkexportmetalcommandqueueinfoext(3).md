@@ -56,7 +56,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMetalCommandQueueInfoEXT-sType-sType) VUID-VkExportMetalCommandQueueInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_METAL_COMMAND_QUEUE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_METAL_COMMAND_QUEUE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkExportMetalCommandQueueInfoEXT-queue-parameter) VUID-VkExportMetalCommandQueueInfoEXT-queue-parameter

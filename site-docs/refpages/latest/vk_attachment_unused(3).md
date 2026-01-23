@@ -17,7 +17,7 @@
 
 VK_ATTACHMENT_UNUSED - Unused attachment sentinel
 
-`VK_ATTACHMENT_UNUSED` is a constant indicating that a render pass
+[VK_ATTACHMENT_UNUSED](#) is a constant indicating that a render pass
 attachment is not used.
 
 #define VK_ATTACHMENT_UNUSED              (~0U)

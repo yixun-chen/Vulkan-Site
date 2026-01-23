@@ -25,7 +25,7 @@ which will be filled with the width and height of the active tile’s apron.
 If [per-tile execution model](../../../../spec/latest/chapters/renderpass.html#renderpass-tile-shading) is enabled for the
 current shader invocation, and is executing in a dynamic render pass or is
 executing in a subpass where
-`VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM` is included in its
+[VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM](VkSubpassDescriptionFlagBits.html) is included in its
 `flags`, x and y components of `TileApronSizeQCOM`
 reflect the with and height of the tile apron corresponding to the shader
 invocation.

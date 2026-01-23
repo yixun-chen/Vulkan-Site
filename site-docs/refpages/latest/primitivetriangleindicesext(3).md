@@ -52,10 +52,18 @@ declared as an array of three component vector 32-bit integer values
 * 
 [](#VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-07057) VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-07057
 
-All index values of the array decorated with
+The index to access the array decorated with
 `PrimitiveTriangleIndicesEXT` **must** be in the range [0, N-1],
-where N is the value specified by the `OutputVertices`
-`Execution` `Mode`
+where N is the value specified by the “Primitive Count” operand
+of `OpSetMeshOutputsEXT`
+
+* 
+[](#VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-12337) VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-12337
+
+All index values written to the array decorated with
+`PrimitiveTriangleIndicesEXT` **must** be in the range [0, N-1],
+where N is the value specified by the “Vertex Count” operand of
+`OpSetMeshOutputsEXT`
 
 * 
 [](#VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-07058) VUID-PrimitiveTriangleIndicesEXT-PrimitiveTriangleIndicesEXT-07058

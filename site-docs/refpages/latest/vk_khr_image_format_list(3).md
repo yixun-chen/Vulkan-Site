@@ -87,9 +87,9 @@ Jeff Leger, Qualcomm
 Neil Henning, Codeplay
 
 On some implementations, setting the
-`VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT` on image creation can cause access
+[VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](VkImageCreateFlagBits.html) on image creation can cause access
 to that image to perform worse than an equivalent image created without
-`VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT` because the implementation does not
+[VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](VkImageCreateFlagBits.html) because the implementation does not
 know what view formats will be paired with the image.
 
 This extension allows an application to provide the list of all formats that
@@ -117,7 +117,7 @@ Extending [VkImageCreateInfo](VkImageCreateInfo.html), [VkSwapchainCreateInfoKHR
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 Revision 1, 2017-03-20 (Faith Ekstrand)

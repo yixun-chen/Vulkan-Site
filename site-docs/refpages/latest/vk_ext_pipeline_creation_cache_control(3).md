@@ -163,18 +163,18 @@ ICD to report back a failure in critical execution paths rather than forcing
 an unexpected wait.
 
 Applications can prevent unexpected compilation by setting
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_EXT` on
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_EXT](VkPipelineCreateFlagBits.html) on
 `Vk*PipelineCreateInfo`::`flags`.
 When set, an ICD must not attempt pipeline or shader compilation to create
 the pipeline object.
 In such a case, if the implementation fails to create a pipeline without
 compilation, the implementation **must** return the result
-`VK_PIPELINE_COMPILE_REQUIRED_EXT` and return [VK_NULL_HANDLE](VK_NULL_HANDLE.html) for
+[VK_PIPELINE_COMPILE_REQUIRED_EXT](VkResult.html) and return [VK_NULL_HANDLE](VK_NULL_HANDLE.html) for
 the pipeline.
 
 By default `vkCreate*Pipelines` calls must attempt to create all
 pipelines before returning.
-Setting `VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT_EXT` on
+Setting [VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT_EXT](VkPipelineCreateFlagBits.html) on
 `Vk*PipelineCreateInfo`::`flags` can be used as an escape hatch for
 batched pipeline creates.
 
@@ -182,7 +182,7 @@ Hidden locks also add to the unpredictability of the cost of pipeline
 creation.
 The most common case of locks inside the `vkCreate*Pipelines` is
 internal synchronization of the [VkPipelineCache](VkPipelineCache.html) object.
-`VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT_EXT` can be set
+[VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT_EXT](VkPipelineCacheCreateFlagBits.html) can be set
 when calling [vkCreatePipelineCache](vkCreatePipelineCache.html) to state the cache is
 [externally synchronized](../../../../spec/latest/chapters/fundamentals.html#fundamentals-threadingbehavior).
 
@@ -207,28 +207,28 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkPipelineCacheCreateFlagBits](VkPipelineCacheCreateFlagBits.html):
 
-`VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT_EXT`
+[VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT_EXT](VkPipelineCacheCreateFlagBits.html)
 
 Extending [VkPipelineCreateFlagBits](VkPipelineCreateFlagBits.html):
 
 * 
-`VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT_EXT`
+[VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT_EXT](VkPipelineCreateFlagBits.html)
 
 * 
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_EXT`
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_EXT](VkPipelineCreateFlagBits.html)
 
 Extending [VkResult](VkResult.html):
 
 * 
-`VK_ERROR_PIPELINE_COMPILE_REQUIRED_EXT`
+[VK_ERROR_PIPELINE_COMPILE_REQUIRED_EXT](VkResult.html)
 
 * 
-`VK_PIPELINE_COMPILE_REQUIRED_EXT`
+[VK_PIPELINE_COMPILE_REQUIRED_EXT](VkResult.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CREATION_CACHE_CONTROL_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CREATION_CACHE_CONTROL_FEATURES_EXT](VkStructureType.html)
 
 Vulkan APIs in this extension are included in core Vulkan 1.3, with the EXT
 suffix omitted.
@@ -250,9 +250,9 @@ Initial public revision
 Revision 3, 2020-03-23 (Tobias Hector)
 
 * 
-Changed `VK_PIPELINE_COMPILE_REQUIRED_EXT` to a success code,
+Changed [VK_PIPELINE_COMPILE_REQUIRED_EXT](VkResult.html) to a success code,
 adding an alias for the original
-`VK_ERROR_PIPELINE_COMPILE_REQUIRED_EXT`.
+[VK_ERROR_PIPELINE_COMPILE_REQUIRED_EXT](VkResult.html).
 Also updated the xml to include these codes as return values.
 
 No cross-references are available

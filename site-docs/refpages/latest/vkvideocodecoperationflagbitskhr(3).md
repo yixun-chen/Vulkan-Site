@@ -42,35 +42,35 @@ typedef enum VkVideoCodecOperationFlagBitsKHR {
 } VkVideoCodecOperationFlagBitsKHR;
 
 * 
-`VK_VIDEO_CODEC_OPERATION_NONE_KHR` specifies that no video codec
+[VK_VIDEO_CODEC_OPERATION_NONE_KHR](#) specifies that no video codec
 operations are supported.
 
 * 
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR` specifies support for
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](#) specifies support for
 [H.264 decode operations](../../../../spec/latest/chapters/videocoding.html#decode-h264).
 
 * 
-`VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR` specifies support for
+[VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](#) specifies support for
 [H.265 decode operations](../../../../spec/latest/chapters/videocoding.html#decode-h265).
 
 * 
-`VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR` specifies support for
+[VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR](#) specifies support for
 [VP9 decode operations](../../../../spec/latest/chapters/videocoding.html#decode-vp9).
 
 * 
-`VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR` specifies support for
+[VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](#) specifies support for
 [AV1 decode operations](../../../../spec/latest/chapters/videocoding.html#decode-av1).
 
 * 
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR` specifies support for
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](#) specifies support for
 [H.264 encode operations](../../../../spec/latest/chapters/videocoding.html#encode-h264).
 
 * 
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR` specifies support for
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](#) specifies support for
 [H.265 encode operations](../../../../spec/latest/chapters/videocoding.html#encode-h265).
 
 * 
-`VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR` specifies support for
+[VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](#) specifies support for
 [AV1 encode operations](../../../../spec/latest/chapters/videocoding.html#encode-av1).
 
 [VK_KHR_video_queue](VK_KHR_video_queue.html), [VkVideoCodecOperationFlagsKHR](VkVideoCodecOperationFlagsKHR.html), [VkVideoProfileInfoKHR](VkVideoProfileInfoKHR.html)

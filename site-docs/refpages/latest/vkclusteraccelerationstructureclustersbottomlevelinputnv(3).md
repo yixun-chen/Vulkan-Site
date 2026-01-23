@@ -51,7 +51,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkClusterAccelerationStructureClustersBottomLevelInputNV-sType-sType) VUID-VkClusterAccelerationStructureClustersBottomLevelInputNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_CLUSTERS_BOTTOM_LEVEL_INPUT_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_CLUSTERS_BOTTOM_LEVEL_INPUT_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkClusterAccelerationStructureClustersBottomLevelInputNV-pNext-pNext) VUID-VkClusterAccelerationStructureClustersBottomLevelInputNV-pNext-pNext

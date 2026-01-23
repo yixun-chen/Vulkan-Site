@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeH265QuantizationMapCapabilitiesKHR-sType-sType) VUID-VkVideoEncodeH265QuantizationMapCapabilitiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_QUANTIZATION_MAP_CAPABILITIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_QUANTIZATION_MAP_CAPABILITIES_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_h265](VK_KHR_video_encode_h265.html), [VK_KHR_video_encode_quantization_map](VK_KHR_video_encode_quantization_map.html), [VkStructureType](VkStructureType.html)
 

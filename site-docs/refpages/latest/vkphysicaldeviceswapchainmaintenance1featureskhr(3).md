@@ -60,7 +60,7 @@ present modes without a need for recreation.
 behavior of the swapchain in presence of window resizing.
 
 * 
-The `VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR` flag,
+The [VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html) flag,
 allowing the implementation to defer the allocation of swapchain image
 memory until first acquisition.
 
@@ -74,7 +74,7 @@ If the `VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR` structure is included 
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -82,7 +82,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR-sType-sType) VUID-VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SWAPCHAIN_MAINTENANCE_1_FEATURES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SWAPCHAIN_MAINTENANCE_1_FEATURES_KHR](VkStructureType.html)
 
 [VK_EXT_swapchain_maintenance1](VK_EXT_swapchain_maintenance1.html), [VK_KHR_swapchain_maintenance1](VK_KHR_swapchain_maintenance1.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

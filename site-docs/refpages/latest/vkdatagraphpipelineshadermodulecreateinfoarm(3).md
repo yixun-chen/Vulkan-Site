@@ -69,13 +69,6 @@ the chained [VkShaderModuleCreateInfo](VkShaderModuleCreateInfo.html).
 Valid Usage
 
 * 
-[](#VUID-VkDataGraphPipelineShaderModuleCreateInfoARM-id-09774) VUID-VkDataGraphPipelineShaderModuleCreateInfoARM-id-09774
-
-The `id` member of all structures in `pConstants` **must** be a
-valid `GraphConstantID` used by a `OpGraphConstantARM` instruction
-in `module`
-
-* 
 [](#VUID-VkDataGraphPipelineShaderModuleCreateInfoARM-dataGraphSpecializationConstants-09849) VUID-VkDataGraphPipelineShaderModuleCreateInfoARM-dataGraphSpecializationConstants-09849
 
 If the [    `dataGraphSpecializationConstants`](../../../../spec/latest/chapters/features.html#features-dataGraphSpecializationConstants) feature is not enabled then
@@ -106,7 +99,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDataGraphPipelineShaderModuleCreateInfoARM-sType-sType) VUID-VkDataGraphPipelineShaderModuleCreateInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SHADER_MODULE_CREATE_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SHADER_MODULE_CREATE_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkDataGraphPipelineShaderModuleCreateInfoARM-module-parameter) VUID-VkDataGraphPipelineShaderModuleCreateInfoARM-module-parameter

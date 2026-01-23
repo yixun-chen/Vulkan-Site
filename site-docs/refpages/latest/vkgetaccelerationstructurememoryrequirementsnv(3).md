@@ -23,9 +23,9 @@ An acceleration structure has memory requirements for the structure object
 itself, scratch space for the build, and scratch space for the update.
 
 Scratch space is allocated as a `VkBuffer`, so for
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV`
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV](VkAccelerationStructureMemoryRequirementsTypeNV.html)
 and
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV`
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV](VkAccelerationStructureMemoryRequirementsTypeNV.html)
 the `pMemoryRequirements->alignment` and
 `pMemoryRequirements->memoryTypeBits` values returned by this call **must**
 be filled with zero, and **should** be ignored by the application.

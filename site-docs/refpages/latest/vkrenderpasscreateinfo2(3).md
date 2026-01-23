@@ -123,7 +123,7 @@ element of `pSubpasses` is bound to a range of a
 `VkDeviceMemory` object that overlaps with any other attachment in
 any subpass (including the same subpass), the
 `VkAttachmentDescription2` structures describing them **must** include
-`VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT` in `flags`
+[VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT](VkAttachmentDescriptionFlagBits.html) in `flags`
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-attachment-03051) VUID-VkRenderPassCreateInfo2-attachment-03051
@@ -132,7 +132,7 @@ If the `attachment` member of any element of
 `pInputAttachments`, `pColorAttachments`,
 `pResolveAttachments` or `pDepthStencilAttachment`, or any
 element of `pPreserveAttachments` in any element of `pSubpasses`
-is not `VK_ATTACHMENT_UNUSED`, then it **must** be less than
+is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html), then it **must** be less than
 `attachmentCount`
 
 * 
@@ -141,7 +141,7 @@ is not `VK_ATTACHMENT_UNUSED`, then it **must** be less than
 If the pNext chain includes a
 [VkRenderPassFragmentDensityMapCreateInfoEXT](VkRenderPassFragmentDensityMapCreateInfoEXT.html) structure and the
 `fragmentDensityMapAttachment` member is not
-`VK_ATTACHMENT_UNUSED`, then `attachment` **must** be less than
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html), then `attachment` **must** be less than
 `attachmentCount`
 
 * 
@@ -149,7 +149,7 @@ If the pNext chain includes a
 
 If the [    `fragmentDensityMapLayered`](../../../../spec/latest/chapters/features.html#features-fragmentDensityMapLayered) feature is not enabled, `flags`
 **must** not contain
-`VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE`
+[VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](VkRenderPassCreateFlagBits.html)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-pSubpasses-06473) VUID-VkRenderPassCreateInfo2-pSubpasses-06473
@@ -157,36 +157,36 @@ If the [    `fragmentDensityMapLayered`](../../../../spec/latest/chapters/featur
 If the `pSubpasses` pNext chain includes a
 [VkSubpassDescriptionDepthStencilResolve](VkSubpassDescriptionDepthStencilResolve.html) structure and the
 `pDepthStencilResolveAttachment` member is not `NULL` and does not
-have the value `VK_ATTACHMENT_UNUSED`, then `attachment` **must**
+have the value [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html), then `attachment` **must**
 be less than `attachmentCount`
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-pAttachments-02522) VUID-VkRenderPassCreateInfo2-pAttachments-02522
 
 For any member of `pAttachments` with a `loadOp` equal to
-`VK_ATTACHMENT_LOAD_OP_CLEAR`, the first use of that attachment
+[VK_ATTACHMENT_LOAD_OP_CLEAR](VkAttachmentLoadOp.html), the first use of that attachment
 **must** not specify a `layout` equal to
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html), or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-pAttachments-02523) VUID-VkRenderPassCreateInfo2-pAttachments-02523
 
 For any member of `pAttachments` with a `stencilLoadOp` equal to
-`VK_ATTACHMENT_LOAD_OP_CLEAR`, the first use of that attachment
+[VK_ATTACHMENT_LOAD_OP_CLEAR](VkAttachmentLoadOp.html), the first use of that attachment
 **must** not specify a `layout` equal to
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html), or
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-pDependencies-03054) VUID-VkRenderPassCreateInfo2-pDependencies-03054
 
 For each element of `pDependencies`, if the `srcSubpass` is not
-`VK_SUBPASS_EXTERNAL`, all stage flags included in the
+[VK_SUBPASS_EXTERNAL](VK_SUBPASS_EXTERNAL.html), all stage flags included in the
 `srcStageMask` member of that dependency **must** be
-`VK_PIPELINE_STAGE_ALL_COMMANDS_BIT` or a pipeline stage supported
+[VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](VkPipelineStageFlagBits.html) or a pipeline stage supported
 by the [pipeline](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages-types) identified by
 the `pipelineBindPoint` member of the source subpass
 
@@ -194,9 +194,9 @@ the `pipelineBindPoint` member of the source subpass
 [](#VUID-VkRenderPassCreateInfo2-pDependencies-03055) VUID-VkRenderPassCreateInfo2-pDependencies-03055
 
 For each element of `pDependencies`, if the `dstSubpass` is not
-`VK_SUBPASS_EXTERNAL`, all stage flags included in the
+[VK_SUBPASS_EXTERNAL](VK_SUBPASS_EXTERNAL.html), all stage flags included in the
 `dstStageMask` member of that dependency **must** be
-`VK_PIPELINE_STAGE_ALL_COMMANDS_BIT` or a pipeline stage supported
+[VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](VkPipelineStageFlagBits.html) or a pipeline stage supported
 by the [pipeline](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages-types) identified by
 the `pipelineBindPoint` member of the destination subpass
 
@@ -226,7 +226,7 @@ of `pSubpasses` **must** either all be `0`, or all not be `0`
 If the [VkSubpassDescription2](VkSubpassDescription2.html)::`viewMask` member of all
 elements of `pSubpasses` is `0`, the `dependencyFlags` member of
 any element of `pDependencies` **must** not include
-`VK_DEPENDENCY_VIEW_LOCAL_BIT`
+[VK_DEPENDENCY_VIEW_LOCAL_BIT](VkDependencyFlagBits.html)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-pDependencies-03060) VUID-VkRenderPassCreateInfo2-pDependencies-03060
@@ -235,14 +235,14 @@ For each element of `pDependencies` where its `srcSubpass`
 member equals its `dstSubpass` member, if the `viewMask` member
 of the corresponding element of `pSubpasses` includes more than one
 bit, its `dependencyFlags` member **must** include
-`VK_DEPENDENCY_VIEW_LOCAL_BIT`
+[VK_DEPENDENCY_VIEW_LOCAL_BIT](VkDependencyFlagBits.html)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-attachment-02525) VUID-VkRenderPassCreateInfo2-attachment-02525
 
 If the `attachment` member of any element of the
 `pInputAttachments` member of any element of `pSubpasses` is not
-`VK_ATTACHMENT_UNUSED`, the `aspectMask` member of that element
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html), the `aspectMask` member of that element
 of `pInputAttachments` **must** only include aspects that are present
 in images of the format specified by the element of `pAttachments`
 specified by `attachment`
@@ -271,17 +271,17 @@ in the render pass
 
 If any element of `pAttachments` is used as a fragment shading rate
 attachment, the `loadOp` for that attachment **must** not be
-`VK_ATTACHMENT_LOAD_OP_CLEAR`
+[VK_ATTACHMENT_LOAD_OP_CLEAR](VkAttachmentLoadOp.html)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-flags-04521) VUID-VkRenderPassCreateInfo2-flags-04521
 
-If `flags` includes `VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM`,
+If `flags` includes [VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM](VkRenderPassCreateFlagBits.html),
 an element of `pSubpasses` includes an instance of
 [VkFragmentShadingRateAttachmentInfoKHR](VkFragmentShadingRateAttachmentInfoKHR.html) in its `pNext` chain,
 and the `pFragmentShadingRateAttachment` member of that structure is
 not equal to `NULL`, the `attachment` member of
-`pFragmentShadingRateAttachment` **must** be `VK_ATTACHMENT_UNUSED`
+`pFragmentShadingRateAttachment` **must** be [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-pAttachments-04586) VUID-VkRenderPassCreateInfo2-pAttachments-04586
@@ -289,16 +289,16 @@ not equal to `NULL`, the `attachment` member of
 If any element of `pAttachments` is used as a fragment shading rate
 attachment in any subpass, it **must** have an image format whose
 [potential format features](../../../../spec/latest/chapters/formats.html#potential-format-features) contain
-`VK_FORMAT_FEATURE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_FORMAT_FEATURE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-attachment-06244) VUID-VkRenderPassCreateInfo2-attachment-06244
 
 If the `attachment` member of the `pDepthStencilAttachment`
 member of an element of `pSubpasses` is not
-`VK_ATTACHMENT_UNUSED`, the `layout` member of that same
-structure is either `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`, and the `pNext` chain
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html), the `layout` member of that same
+structure is either [VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](VkImageLayout.html), and the `pNext` chain
 of that structure does not include a
 [VkAttachmentReferenceStencilLayout](VkAttachmentReferenceStencilLayout.html) structure, then the element of
 `pAttachments` with an index equal to `attachment` **must** not
@@ -309,9 +309,9 @@ have a `format` that includes both depth and stencil components
 
 If the `attachment` member of the `pDepthStencilAttachment`
 member of an element of `pSubpasses` is not
-`VK_ATTACHMENT_UNUSED` and the `layout` member of that same
-structure is either `VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`, then the element of
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html) and the `layout` member of that same
+structure is either [VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html), then the element of
 `pAttachments` with an index equal to `attachment` **must** have a
 `format` that includes only a stencil component
 
@@ -320,9 +320,9 @@ structure is either `VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
 
 If the `attachment` member of the `pDepthStencilAttachment`
 member of an element of `pSubpasses` is not
-`VK_ATTACHMENT_UNUSED` and the `layout` member of that same
-structure is either `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`, then the element of
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html) and the `layout` member of that same
+structure is either [VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](VkImageLayout.html), then the element of
 `pAttachments` with an index equal to `attachment` **must** not
 have a `format` that includes only a stencil component
 
@@ -331,17 +331,17 @@ have a `format` that includes only a stencil component
 
 If any element of `pResolveAttachments` of any element of
 `pSubpasses` references an attachment description with a format of
-`VK_FORMAT_UNDEFINED`,
+[VK_FORMAT_UNDEFINED](VkFormat.html),
 [VkRenderPassFragmentDensityMapCreateInfoEXT](VkRenderPassFragmentDensityMapCreateInfoEXT.html)::`fragmentDensityMapAttachment->attachment`
-**must** be `VK_ATTACHMENT_UNUSED`
+**must** be [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-pResolveAttachments-10650) VUID-VkRenderPassCreateInfo2-pResolveAttachments-10650
 
 If any element of `pResolveAttachments` of any element of
 `pSubpasses` references an attachment description with a format of
-`VK_FORMAT_UNDEFINED`,
-`VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` **must** not be included
+[VK_FORMAT_UNDEFINED](VkFormat.html),
+[VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](VkTileShadingRenderPassFlagBitsQCOM.html) **must** not be included
 in [VkRenderPassTileShadingCreateInfoQCOM](VkRenderPassTileShadingCreateInfoQCOM.html)::`flags`
 
 * 
@@ -349,8 +349,8 @@ in [VkRenderPassTileShadingCreateInfoQCOM](VkRenderPassTileShadingCreateInfoQCOM
 
 If
 [VkRenderPassFragmentDensityMapCreateInfoEXT](VkRenderPassFragmentDensityMapCreateInfoEXT.html)::`fragmentDensityMapAttachment`
-is not `VK_ATTACHMENT_UNUSED`,
-`VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` **must** not be included
+is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html),
+[VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](VkTileShadingRenderPassFlagBitsQCOM.html) **must** not be included
 in [VkRenderPassTileShadingCreateInfoQCOM](VkRenderPassTileShadingCreateInfoQCOM.html)::`flags`
 
 * 
@@ -364,7 +364,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassCreateInfo2-sType-sType) VUID-VkRenderPassCreateInfo2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO_2](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-pNext-pNext) VUID-VkRenderPassCreateInfo2-pNext-pNext

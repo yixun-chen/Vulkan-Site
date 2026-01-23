@@ -99,51 +99,51 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkFormat](VkFormat.html):
 
-`VK_FORMAT_ASTC_10x10_SFLOAT_BLOCK_EXT`
+[VK_FORMAT_ASTC_10x10_SFLOAT_BLOCK_EXT](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_10x5_SFLOAT_BLOCK_EXT`
+[VK_FORMAT_ASTC_10x5_SFLOAT_BLOCK_EXT](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_10x6_SFLOAT_BLOCK_EXT`
+[VK_FORMAT_ASTC_10x6_SFLOAT_BLOCK_EXT](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_10x8_SFLOAT_BLOCK_EXT`
+[VK_FORMAT_ASTC_10x8_SFLOAT_BLOCK_EXT](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK_EXT`
+[VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK_EXT](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK_EXT`
+[VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK_EXT](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK_EXT`
+[VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK_EXT](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK_EXT`
+[VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK_EXT](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_5x5_SFLOAT_BLOCK_EXT`
+[VK_FORMAT_ASTC_5x5_SFLOAT_BLOCK_EXT](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_6x5_SFLOAT_BLOCK_EXT`
+[VK_FORMAT_ASTC_6x5_SFLOAT_BLOCK_EXT](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_6x6_SFLOAT_BLOCK_EXT`
+[VK_FORMAT_ASTC_6x6_SFLOAT_BLOCK_EXT](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_8x5_SFLOAT_BLOCK_EXT`
+[VK_FORMAT_ASTC_8x5_SFLOAT_BLOCK_EXT](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_8x6_SFLOAT_BLOCK_EXT`
+[VK_FORMAT_ASTC_8x6_SFLOAT_BLOCK_EXT](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_8x8_SFLOAT_BLOCK_EXT`
+[VK_FORMAT_ASTC_8x8_SFLOAT_BLOCK_EXT](VkFormat.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_HDR_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_HDR_FEATURES_EXT](VkStructureType.html)
 
 Vulkan APIs in this extension are included in core Vulkan 1.3, with the EXT
 suffix omitted.
@@ -168,14 +168,14 @@ optional core feature in the future.
 
 Yes.
 Vulkan 1.0 describes the ASTC format enums as UNORM, e.g.
-`VK_FORMAT_ASTC_4x4_UNORM_BLOCK`, so it is confusing to make these
+[VK_FORMAT_ASTC_4x4_UNORM_BLOCK](VkFormat.html), so it is confusing to make these
 contain HDR data.
 Note that the OpenGL (ES) extensions did not make this distinction because a
 single ASTC HDR texture may contain both unorm and float blocks.
 Implementations **may** not be able to distinguish between LDR and HDR ASTC
 textures internally and just treat them as the same format, i.e. if this
 extension is supported then sampling from a
-`VK_FORMAT_ASTC_4x4_UNORM_BLOCK` image format **may** return HDR results.
+[VK_FORMAT_ASTC_4x4_UNORM_BLOCK](VkFormat.html) image format **may** return HDR results.
 Applications **can** get predictable results by using the appropriate image
 format.
 

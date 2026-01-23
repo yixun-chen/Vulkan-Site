@@ -17,7 +17,7 @@
 
 VK_MAX_PHYSICAL_DEVICE_NAME_SIZE - Length of a physical device name string
 
-`VK_MAX_PHYSICAL_DEVICE_NAME_SIZE` is the length in `char` values of
+[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE](#) is the length in `char` values of
 an array containing a physical device name string, as returned in
 [VkPhysicalDeviceProperties](VkPhysicalDeviceProperties.html)::`deviceName`.
 

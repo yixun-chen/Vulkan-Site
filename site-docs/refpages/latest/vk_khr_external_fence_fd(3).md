@@ -110,10 +110,10 @@ fence payload from POSIX file descriptors.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_FENCE_GET_FD_INFO_KHR`
+[VK_STRUCTURE_TYPE_FENCE_GET_FD_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_IMPORT_FENCE_FD_INFO_KHR`
+[VK_STRUCTURE_TYPE_IMPORT_FENCE_FD_INFO_KHR](VkStructureType.html)
 
 This extension borrows concepts, semantics, and language from
 `[VK_KHR_external_semaphore_fd](VK_KHR_external_semaphore_fd.html)`.

@@ -74,11 +74,11 @@ for the build.
 
 Accesses to `dst`, `src`, and `scratch` **must** be
 [synchronized](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies) with the
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits.html)
 [pipeline stage](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages) and an
 [access type](../../../../spec/latest/chapters/synchronization.html#synchronization-access-types) of
-`VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR` or
-`VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR`.
+[VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR](VkAccessFlagBits.html) or
+[VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR](VkAccessFlagBits.html).
 
 Valid Usage
 
@@ -104,40 +104,40 @@ greater than or equal to the number of vertices, indices, and AABBs
 * 
 [](#VUID-vkCmdBuildAccelerationStructureNV-update-02489) VUID-vkCmdBuildAccelerationStructureNV-update-02489
 
-If `update` is `VK_TRUE`, `src` **must** not be
+If `update` is [VK_TRUE](VK_TRUE.html), `src` **must** not be
 [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
 * 
 [](#VUID-vkCmdBuildAccelerationStructureNV-update-02490) VUID-vkCmdBuildAccelerationStructureNV-update-02490
 
-If `update` is `VK_TRUE`, `src` **must** have previously been
+If `update` is [VK_TRUE](VK_TRUE.html), `src` **must** have previously been
 constructed with
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_NV` set in
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_NV](VkBuildAccelerationStructureFlagBitsKHR.html) set in
 [VkAccelerationStructureInfoNV](VkAccelerationStructureInfoNV.html)::`flags` in the original build
 
 * 
 [](#VUID-vkCmdBuildAccelerationStructureNV-update-02491) VUID-vkCmdBuildAccelerationStructureNV-update-02491
 
-If `update` is `VK_FALSE`, the `size` member of the
+If `update` is [VK_FALSE](VK_FALSE.html), the `size` member of the
 [VkMemoryRequirements](VkMemoryRequirements.html) structure returned from a call to
 [vkGetAccelerationStructureMemoryRequirementsNV](vkGetAccelerationStructureMemoryRequirementsNV.html) with
 [VkAccelerationStructureMemoryRequirementsInfoNV](VkAccelerationStructureMemoryRequirementsInfoNV.html)::`accelerationStructure`
 set to `dst` and
 [VkAccelerationStructureMemoryRequirementsInfoNV](VkAccelerationStructureMemoryRequirementsInfoNV.html)::`type` set to
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV`
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV](VkAccelerationStructureMemoryRequirementsTypeNV.html)
 **must** be less than or equal to the size of `scratch` minus
 `scratchOffset`
 
 * 
 [](#VUID-vkCmdBuildAccelerationStructureNV-update-02492) VUID-vkCmdBuildAccelerationStructureNV-update-02492
 
-If `update` is `VK_TRUE`, the `size` member of the
+If `update` is [VK_TRUE](VK_TRUE.html), the `size` member of the
 [VkMemoryRequirements](VkMemoryRequirements.html) structure returned from a call to
 [vkGetAccelerationStructureMemoryRequirementsNV](vkGetAccelerationStructureMemoryRequirementsNV.html) with
 [VkAccelerationStructureMemoryRequirementsInfoNV](VkAccelerationStructureMemoryRequirementsInfoNV.html)::`accelerationStructure`
 set to `dst` and
 [VkAccelerationStructureMemoryRequirementsInfoNV](VkAccelerationStructureMemoryRequirementsInfoNV.html)::`type` set to
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV`
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV](VkAccelerationStructureMemoryRequirementsTypeNV.html)
 **must** be less than or equal to the size of `scratch` minus
 `scratchOffset`
 
@@ -145,41 +145,42 @@ set to `dst` and
 [](#VUID-vkCmdBuildAccelerationStructureNV-scratch-03522) VUID-vkCmdBuildAccelerationStructureNV-scratch-03522
 
 `scratch` **must** have been created with the
-`VK_BUFFER_USAGE_RAY_TRACING_BIT_NV` usage flag set
+[VK_BUFFER_USAGE_RAY_TRACING_BIT_NV](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdBuildAccelerationStructureNV-instanceData-03523) VUID-vkCmdBuildAccelerationStructureNV-instanceData-03523
 
 If `instanceData` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `instanceData`
 **must** have been created with the
-`VK_BUFFER_USAGE_RAY_TRACING_BIT_NV` usage flag set
+[VK_BUFFER_USAGE_RAY_TRACING_BIT_NV](VkBufferUsageFlagBits.html) usage flag set
 
 * 
-[](#VUID-vkCmdBuildAccelerationStructureNV-accelerationStructureReference-03786) VUID-vkCmdBuildAccelerationStructureNV-accelerationStructureReference-03786
+[](#VUID-vkCmdBuildAccelerationStructureNV-accelerationStructureReference-12264) VUID-vkCmdBuildAccelerationStructureNV-accelerationStructureReference-12264
 
 Each
 [VkAccelerationStructureInstanceKHR](VkAccelerationStructureInstanceKHR.html)::`accelerationStructureReference`
 value in `instanceData` **must** be a value obtained from
-[vkGetAccelerationStructureHandleNV](vkGetAccelerationStructureHandleNV.html)
+[vkGetAccelerationStructureHandleNV](vkGetAccelerationStructureHandleNV.html) for a bottom level acceleration
+structure
 
 * 
 [](#VUID-vkCmdBuildAccelerationStructureNV-update-03524) VUID-vkCmdBuildAccelerationStructureNV-update-03524
 
-If `update` is `VK_TRUE`, then objects that were previously
+If `update` is [VK_TRUE](VK_TRUE.html), then objects that were previously
 active **must** not be made inactive as per
 [Inactive Primitives and Instances](../../../../spec/latest/chapters/accelstructures.html#acceleration-structure-inactive-prims)
 
 * 
 [](#VUID-vkCmdBuildAccelerationStructureNV-update-03525) VUID-vkCmdBuildAccelerationStructureNV-update-03525
 
-If `update` is `VK_TRUE`, then objects that were previously
+If `update` is [VK_TRUE](VK_TRUE.html), then objects that were previously
 inactive **must** not be made active as per
 [Inactive Primitives and Instances](../../../../spec/latest/chapters/accelstructures.html#acceleration-structure-inactive-prims)
 
 * 
 [](#VUID-vkCmdBuildAccelerationStructureNV-update-03526) VUID-vkCmdBuildAccelerationStructureNV-update-03526
 
-If `update` is `VK_TRUE`, the `src` and `dst` objects
+If `update` is [VK_TRUE](VK_TRUE.html), the `src` and `dst` objects
 **must** either be the same object or not have any
 [memory aliasing](../../../../spec/latest/chapters/resources.html#resources-memory-aliasing)
 
@@ -230,7 +231,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBuildAccelerationStructureNV-commandBuffer-cmdpool) VUID-vkCmdBuildAccelerationStructureNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBuildAccelerationStructureNV-renderpass) VUID-vkCmdBuildAccelerationStructureNV-renderpass

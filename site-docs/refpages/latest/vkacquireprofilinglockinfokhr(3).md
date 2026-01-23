@@ -48,7 +48,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAcquireProfilingLockInfoKHR-sType-sType) VUID-VkAcquireProfilingLockInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACQUIRE_PROFILING_LOCK_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACQUIRE_PROFILING_LOCK_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkAcquireProfilingLockInfoKHR-pNext-pNext) VUID-VkAcquireProfilingLockInfoKHR-pNext-pNext

@@ -29,14 +29,14 @@ typedef enum VkAntiLagModeAMD {
 } VkAntiLagModeAMD;
 
 * 
-`VK_ANTI_LAG_MODE_DRIVER_CONTROL_AMD` specifies that anti-lag will
+[VK_ANTI_LAG_MODE_DRIVER_CONTROL_AMD](#) specifies that anti-lag will
 be enabled or disabled depending on driver settings.
 
 * 
-`VK_ANTI_LAG_MODE_ON_AMD` specifies that anti-lag will be enabled.
+[VK_ANTI_LAG_MODE_ON_AMD](#) specifies that anti-lag will be enabled.
 
 * 
-`VK_ANTI_LAG_MODE_OFF_AMD` specifies that anti-lag will be disabled.
+[VK_ANTI_LAG_MODE_OFF_AMD](#) specifies that anti-lag will be disabled.
 
 [VK_AMD_anti_lag](VK_AMD_anti_lag.html), [VkAntiLagDataAMD](VkAntiLagDataAMD.html)
 

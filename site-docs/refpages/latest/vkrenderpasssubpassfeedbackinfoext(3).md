@@ -32,12 +32,12 @@ typedef struct VkRenderPassSubpassFeedbackInfoEXT {
 } VkRenderPassSubpassFeedbackInfoEXT;
 
 * 
-`subpassMergeStatus` is a `VkSubpassMergeStatusEXT` value
+`subpassMergeStatus` is a [VkSubpassMergeStatusEXT](VkSubpassMergeStatusEXT.html) value
 specifying information about whether the subpass is merged with the
 previous subpass and the reason why it is not merged.
 
 * 
-`description` is an array of `VK_MAX_DESCRIPTION_SIZE` `char`
+`description` is an array of [VK_MAX_DESCRIPTION_SIZE](VK_MAX_DESCRIPTION_SIZE.html) `char`
 containing a null-terminated UTF-8 string which provides additional
 details.
 

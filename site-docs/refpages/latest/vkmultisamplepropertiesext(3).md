@@ -44,7 +44,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMultisamplePropertiesEXT-sType-sType) VUID-VkMultisamplePropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MULTISAMPLE_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MULTISAMPLE_PROPERTIES_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkMultisamplePropertiesEXT-pNext-pNext) VUID-VkMultisamplePropertiesEXT-pNext-pNext

@@ -28,7 +28,7 @@ typedef VkFlags64 VkDataGraphPipelineSessionCreateFlagBitsARM;
 static const VkDataGraphPipelineSessionCreateFlagBitsARM VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_PROTECTED_BIT_ARM = 0x00000001ULL;
 
 * 
-`VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_PROTECTED_BIT_ARM` specifies
+[VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_PROTECTED_BIT_ARM](#) specifies
 that the data graph pipeline session is backed by protected memory.
 
 [VK_ARM_data_graph](VK_ARM_data_graph.html), [VkDataGraphPipelineSessionCreateFlagsARM](VkDataGraphPipelineSessionCreateFlagsARM.html)

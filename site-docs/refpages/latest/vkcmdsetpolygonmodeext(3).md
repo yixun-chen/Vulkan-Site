@@ -36,7 +36,7 @@ recorded.
 This command sets the polygon mode for subsequent drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_POLYGON_MODE_EXT` set in
+[VK_DYNAMIC_STATE_POLYGON_MODE_EXT](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationStateCreateInfo](VkPipelineRasterizationStateCreateInfo.html)::`polygonMode` value used
@@ -58,13 +58,13 @@ The [`shaderObject`](../../../../spec/latest/chapters/features.html#features-sha
 [](#VUID-vkCmdSetPolygonModeEXT-fillModeNonSolid-07424) VUID-vkCmdSetPolygonModeEXT-fillModeNonSolid-07424
 
     If the [`fillModeNonSolid`](../../../../spec/latest/chapters/features.html#features-fillModeNonSolid) feature is
-    not enabled, `polygonMode` **must** be `VK_POLYGON_MODE_FILL`
-or `VK_POLYGON_MODE_FILL_RECTANGLE_NV`
+    not enabled, `polygonMode` **must** be [VK_POLYGON_MODE_FILL](VkPolygonMode.html)
+or [VK_POLYGON_MODE_FILL_RECTANGLE_NV](VkPolygonMode.html)
 
 [](#VUID-vkCmdSetPolygonModeEXT-polygonMode-07425) VUID-vkCmdSetPolygonModeEXT-polygonMode-07425
 
 If the `[VK_NV_fill_rectangle](VK_NV_fill_rectangle.html)` extension is not enabled,
-`polygonMode` **must** not be `VK_POLYGON_MODE_FILL_RECTANGLE_NV`
+`polygonMode` **must** not be [VK_POLYGON_MODE_FILL_RECTANGLE_NV](VkPolygonMode.html)
 
 Valid Usage (Implicit)
 
@@ -86,7 +86,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetPolygonModeEXT-commandBuffer-cmdpool) VUID-vkCmdSetPolygonModeEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetPolygonModeEXT-videocoding) VUID-vkCmdSetPolygonModeEXT-videocoding

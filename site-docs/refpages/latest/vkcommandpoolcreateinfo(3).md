@@ -52,7 +52,7 @@ Valid Usage
 [](#VUID-VkCommandPoolCreateInfo-flags-02860) VUID-VkCommandPoolCreateInfo-flags-02860
 
 If the [`protectedMemory`](../../../../spec/latest/chapters/features.html#features-protectedMemory) feature is
-not enabled, the `VK_COMMAND_POOL_CREATE_PROTECTED_BIT` bit of
+not enabled, the [VK_COMMAND_POOL_CREATE_PROTECTED_BIT](VkCommandPoolCreateFlagBits.html) bit of
 `flags` **must** not be set
 
 * 
@@ -61,7 +61,7 @@ not enabled, the `VK_COMMAND_POOL_CREATE_PROTECTED_BIT` bit of
 If the `pNext` chain includes a
 [VkDataGraphProcessingEngineCreateInfoARM](VkDataGraphProcessingEngineCreateInfoARM.html) structure, then
 `queueFamilyIndex` **must** designate a queue family that supports
-`VK_QUEUE_DATA_GRAPH_BIT_ARM`
+[VK_QUEUE_DATA_GRAPH_BIT_ARM](VkQueueFlagBits.html)
 
 * 
 [](#VUID-VkCommandPoolCreateInfo-pNext-09909) VUID-VkCommandPoolCreateInfo-pNext-09909
@@ -78,23 +78,23 @@ create `device`
 [](#VUID-VkCommandPoolCreateInfo-queueFamilyIndex-11830) VUID-VkCommandPoolCreateInfo-queueFamilyIndex-11830
 
 If `queueFamilyIndex` designates a queue family that supports
-`VK_QUEUE_DATA_GRAPH_BIT_ARM` and enumerates a foreign engine
+[VK_QUEUE_DATA_GRAPH_BIT_ARM](VkQueueFlagBits.html) and enumerates a foreign engine
 through [vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM](vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM.html) with
 type
-`VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_NEURAL_QCOM`
+[VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_NEURAL_QCOM](VkPhysicalDeviceDataGraphProcessingEngineTypeARM.html)
 or
-`VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_COMPUTE_QCOM`,
+[VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_COMPUTE_QCOM](VkPhysicalDeviceDataGraphProcessingEngineTypeARM.html),
 the `pNext` chain must include
 [VkDataGraphProcessingEngineCreateInfoARM](VkDataGraphProcessingEngineCreateInfoARM.html) with
 [VkPhysicalDeviceDataGraphProcessingEngineARM](VkPhysicalDeviceDataGraphProcessingEngineARM.html)::`isForeign` set
-to `VK_TRUE` for all elements of `pProcessingEngines`
+to [VK_TRUE](VK_TRUE.html) for all elements of `pProcessingEngines`
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkCommandPoolCreateInfo-sType-sType) VUID-VkCommandPoolCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkCommandPoolCreateInfo-pNext-pNext) VUID-VkCommandPoolCreateInfo-pNext-pNext

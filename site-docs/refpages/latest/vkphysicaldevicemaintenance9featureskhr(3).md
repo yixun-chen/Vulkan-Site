@@ -51,7 +51,7 @@ attribute is defined by way of the
 
 * 
 A new
-[VkQueryPoolCreateFlagBits](VkQueryPoolCreateFlagBits.html)::`VK_QUERY_POOL_CREATE_RESET_BIT_KHR`
+[VkQueryPoolCreateFlagBits](VkQueryPoolCreateFlagBits.html)::[VK_QUERY_POOL_CREATE_RESET_BIT_KHR](VkQueryPoolCreateFlagBits.html)
 flag **can** be used to initialize all queries in query pool to the reset
 state on creation.
 
@@ -61,7 +61,7 @@ src stage mask.
 
 * 
 The effects of image memory barriers and image layout transitions on 3D
-images created with `VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` are
+images created with [VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](VkImageCreateFlagBits.html) are
 limited to only those slices specified in `VkImageSubresourceRange`
 
 * 
@@ -73,7 +73,7 @@ filling pipeline caches.
 Queue family ownership transfers are no longer required for buffers and
 linear images.
 For optimally tiled images, a new physical device query is added to
-check if resources created with `VK_SHARING_MODE_EXCLUSIVE` **can**
+check if resources created with [VK_SHARING_MODE_EXCLUSIVE](VkSharingMode.html) **can**
 automatically transfer ownership between two queue families.
 
 * 
@@ -86,7 +86,7 @@ If the `VkPhysicalDeviceMaintenance9FeaturesKHR` structure is included in the `p
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceMaintenance9FeaturesKHR`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -94,7 +94,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMaintenance9FeaturesKHR-sType-sType) VUID-VkPhysicalDeviceMaintenance9FeaturesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_FEATURES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_FEATURES_KHR](VkStructureType.html)
 
 [VK_KHR_maintenance9](VK_KHR_maintenance9.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

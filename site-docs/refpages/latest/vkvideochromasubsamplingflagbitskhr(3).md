@@ -30,22 +30,22 @@ typedef enum VkVideoChromaSubsamplingFlagBitsKHR {
 } VkVideoChromaSubsamplingFlagBitsKHR;
 
 * 
-`VK_VIDEO_CHROMA_SUBSAMPLING_MONOCHROME_BIT_KHR` specifies that the
+[VK_VIDEO_CHROMA_SUBSAMPLING_MONOCHROME_BIT_KHR](#) specifies that the
 format is monochrome.
 
 * 
-`VK_VIDEO_CHROMA_SUBSAMPLING_420_BIT_KHR` specified that the format
+[VK_VIDEO_CHROMA_SUBSAMPLING_420_BIT_KHR](#) specified that the format
 is 4:2:0 chroma subsampled, i.e. the two chroma components are sampled
 horizontally and vertically at half the sample rate of the luma
 component.
 
 * 
-`VK_VIDEO_CHROMA_SUBSAMPLING_422_BIT_KHR` - the format is 4:2:2
+[VK_VIDEO_CHROMA_SUBSAMPLING_422_BIT_KHR](#) - the format is 4:2:2
 chroma subsampled, i.e. the two chroma components are sampled
 horizontally at half the sample rate of luma component.
 
 * 
-`VK_VIDEO_CHROMA_SUBSAMPLING_444_BIT_KHR` - the format is 4:4:4
+[VK_VIDEO_CHROMA_SUBSAMPLING_444_BIT_KHR](#) - the format is 4:4:4
 chroma sampled, i.e. all three components of the Y′CBCR format are
 sampled at the same rate, thus there is no chroma subsampling.
 

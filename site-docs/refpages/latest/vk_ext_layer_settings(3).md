@@ -139,7 +139,7 @@ Extending [VkInstanceCreateInfo](VkInstanceCreateInfo.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT](VkStructureType.html)
 
 One example usage of `VK_EXT_layer_settings` is as implemented by the Vulkan
 Profiles layer.

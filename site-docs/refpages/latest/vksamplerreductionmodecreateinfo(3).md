@@ -48,14 +48,14 @@ If the `pNext` chain of [VkSamplerCreateInfo](VkSamplerCreateInfo.html) includes
 includes a mode controlling how texture filtering combines texel values.
 
 If this structure is not present, `reductionMode` is considered to be
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`.
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](VkSamplerReductionMode.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSamplerReductionModeCreateInfo-sType-sType) VUID-VkSamplerReductionModeCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkSamplerReductionModeCreateInfo-reductionMode-parameter) VUID-VkSamplerReductionModeCreateInfo-reductionMode-parameter

@@ -57,8 +57,8 @@ on return the variable is overwritten with the number of values actually
 written to `pTimeDomains`.
 If the value of `pTimeDomainCount` is less than the number of
 calibrateable time domains supported, at most `pTimeDomainCount` values
-will be written to `pTimeDomains`, and `VK_INCOMPLETE` will be
-returned instead of `VK_SUCCESS`, to indicate that not all the available
+will be written to `pTimeDomains`, and [VK_INCOMPLETE](VkResult.html) will be
+returned instead of [VK_SUCCESS](VkResult.html), to indicate that not all the available
 time domains were returned.
 
 Valid Usage (Implicit)
@@ -83,24 +83,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_EXT_calibrated_timestamps](VK_EXT_calibrated_timestamps.html), [VK_KHR_calibrated_timestamps](VK_KHR_calibrated_timestamps.html), [VkPhysicalDevice](VkPhysicalDevice.html), [VkTimeDomainKHR](VkTimeDomainKHR.html)
 

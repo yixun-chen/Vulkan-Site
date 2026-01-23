@@ -76,7 +76,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryGetWin32HandleInfoKHR-sType-sType) VUID-VkMemoryGetWin32HandleInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkMemoryGetWin32HandleInfoKHR-pNext-pNext) VUID-VkMemoryGetWin32HandleInfoKHR-pNext-pNext

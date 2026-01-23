@@ -49,7 +49,7 @@ If the `VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE` structure is inc
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE-sType-sType) VUID-VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_FEATURES_VALVE`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_FEATURES_VALVE](VkStructureType.html)
 
 [VK_VALVE_fragment_density_map_layered](VK_VALVE_fragment_density_map_layered.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

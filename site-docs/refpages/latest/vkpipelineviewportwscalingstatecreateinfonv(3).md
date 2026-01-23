@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineViewportWScalingStateCreateInfoNV-sType-sType) VUID-VkPipelineViewportWScalingStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineViewportWScalingStateCreateInfoNV-viewportCount-arraylength) VUID-VkPipelineViewportWScalingStateCreateInfoNV-viewportCount-arraylength

@@ -52,7 +52,7 @@ Valid Usage
 [](#VUID-VkWriteDescriptorSetAccelerationStructureNV-pAccelerationStructures-03748) VUID-VkWriteDescriptorSetAccelerationStructureNV-pAccelerationStructures-03748
 
 Each acceleration structure in `pAccelerationStructures` **must** have
-been created with `VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR`
+been created with [VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR](VkAccelerationStructureTypeKHR.html)
 
 * 
 [](#VUID-VkWriteDescriptorSetAccelerationStructureNV-pAccelerationStructures-03749) VUID-VkWriteDescriptorSetAccelerationStructureNV-pAccelerationStructures-03749
@@ -66,7 +66,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkWriteDescriptorSetAccelerationStructureNV-sType-sType) VUID-VkWriteDescriptorSetAccelerationStructureNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkWriteDescriptorSetAccelerationStructureNV-pAccelerationStructures-parameter) VUID-VkWriteDescriptorSetAccelerationStructureNV-pAccelerationStructures-parameter

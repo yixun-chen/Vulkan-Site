@@ -57,15 +57,15 @@ buffer, in bytes, pointed to by `pPipelineBinaryData`, and on return
 bytes, that is required to store the binary.
 If `pPipelineBinaryDataSize` is less than the size that is required to
 store the binary, nothing is written to `pPipelineBinaryData` and
-`VK_ERROR_NOT_ENOUGH_SPACE_KHR` will be returned, instead of
-`VK_SUCCESS`.
+[VK_ERROR_NOT_ENOUGH_SPACE_KHR](VkResult.html) will be returned, instead of
+[VK_SUCCESS](VkResult.html).
 
 If the call returns one of the success return codes, the pipeline binary key
 is written to `pPipelineBinaryKey`, regardless of whether
 `pPipelineBinaryData` is `NULL` or not.
 
 If [pipelineBinaryCompressedData](../../../../spec/latest/chapters/limits.html#limits-pipelineBinaryCompressedData) is
-`VK_FALSE`, implementations **should** not return compressed pipeline
+[VK_FALSE](VK_FALSE.html), implementations **should** not return compressed pipeline
 binary data to the application.
 
 Valid Usage (Implicit)
@@ -100,24 +100,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_NOT_ENOUGH_SPACE_KHR`
+[VK_ERROR_NOT_ENOUGH_SPACE_KHR](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_pipeline_binary](VK_KHR_pipeline_binary.html), [VkDevice](VkDevice.html), [VkPipelineBinaryDataInfoKHR](VkPipelineBinaryDataInfoKHR.html), [VkPipelineBinaryKeyKHR](VkPipelineBinaryKeyKHR.html)
 

@@ -122,18 +122,18 @@ Extending [VkSurfaceCapabilities2KHR](VkSurfaceCapabilities2KHR.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_ID_2_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_ID_2_FEATURES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PRESENT_ID_2_KHR`
+[VK_STRUCTURE_TYPE_PRESENT_ID_2_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_ID_2_KHR`
+[VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_ID_2_KHR](VkStructureType.html)
 
 Extending [VkSwapchainCreateFlagBitsKHR](VkSwapchainCreateFlagBitsKHR.html):
 
 * 
-`VK_SWAPCHAIN_CREATE_PRESENT_ID_2_BIT_KHR`
+[VK_SWAPCHAIN_CREATE_PRESENT_ID_2_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html)
 
 None.
 

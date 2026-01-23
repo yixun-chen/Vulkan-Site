@@ -54,7 +54,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceImageProcessing2PropertiesQCOM-sType-sType) VUID-VkPhysicalDeviceImageProcessing2PropertiesQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_2_PROPERTIES_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_2_PROPERTIES_QCOM](VkStructureType.html)
 
 [VK_QCOM_image_processing2](VK_QCOM_image_processing2.html), [VkExtent2D](VkExtent2D.html), [VkStructureType](VkStructureType.html)
 

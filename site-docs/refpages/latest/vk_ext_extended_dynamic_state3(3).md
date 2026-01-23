@@ -328,169 +328,169 @@ Extending [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html):
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT`
+[VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT`
+[VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT`
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT`
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT`
+[VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT`
+[VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT`
+[VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_POLYGON_MODE_EXT`
+[VK_DYNAMIC_STATE_POLYGON_MODE_EXT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT`
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_SAMPLE_MASK_EXT`
+[VK_DYNAMIC_STATE_SAMPLE_MASK_EXT](VkDynamicState.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_PROPERTIES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_PROPERTIES_EXT](VkStructureType.html)
 
 If [VK_EXT_blend_operation_advanced](VK_EXT_blend_operation_advanced.html) is supported:
 
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT`
+[VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](VkDynamicState.html)
 
 If [VK_EXT_conservative_rasterization](VK_EXT_conservative_rasterization.html) is supported:
 
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_CONSERVATIVE_RASTERIZATION_MODE_EXT`
+[VK_DYNAMIC_STATE_CONSERVATIVE_RASTERIZATION_MODE_EXT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_EXTRA_PRIMITIVE_OVERESTIMATION_SIZE_EXT`
+[VK_DYNAMIC_STATE_EXTRA_PRIMITIVE_OVERESTIMATION_SIZE_EXT](VkDynamicState.html)
 
 If [VK_EXT_depth_clip_control](VK_EXT_depth_clip_control.html) is supported:
 
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_DEPTH_CLIP_NEGATIVE_ONE_TO_ONE_EXT`
+[VK_DYNAMIC_STATE_DEPTH_CLIP_NEGATIVE_ONE_TO_ONE_EXT](VkDynamicState.html)
 
 If [VK_EXT_depth_clip_enable](VK_EXT_depth_clip_enable.html) is supported:
 
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT`
+[VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT](VkDynamicState.html)
 
 If [VK_EXT_line_rasterization](VK_EXT_line_rasterization.html) is supported:
 
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT`
+[VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT`
+[VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT](VkDynamicState.html)
 
 If [VK_EXT_provoking_vertex](VK_EXT_provoking_vertex.html) is supported:
 
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_PROVOKING_VERTEX_MODE_EXT`
+[VK_DYNAMIC_STATE_PROVOKING_VERTEX_MODE_EXT](VkDynamicState.html)
 
 If [VK_EXT_sample_locations](VK_EXT_sample_locations.html) is supported:
 
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT`
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT](VkDynamicState.html)
 
 If [VK_EXT_transform_feedback](VK_EXT_transform_feedback.html) is supported:
 
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT`
+[VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT](VkDynamicState.html)
 
 If [VK_KHR_maintenance2](VK_KHR_maintenance2.html) or [Vulkan Version 1.1](../../../../spec/latest/appendices/versions.html#versions-1.1) is supported:
 
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_TESSELLATION_DOMAIN_ORIGIN_EXT`
+[VK_DYNAMIC_STATE_TESSELLATION_DOMAIN_ORIGIN_EXT](VkDynamicState.html)
 
 If [VK_NV_clip_space_w_scaling](VK_NV_clip_space_w_scaling.html) is supported:
 
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_ENABLE_NV`
+[VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_ENABLE_NV](VkDynamicState.html)
 
 If [VK_NV_coverage_reduction_mode](VK_NV_coverage_reduction_mode.html) is supported:
 
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV`
+[VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV](VkDynamicState.html)
 
 If [VK_NV_fragment_coverage_to_color](VK_NV_fragment_coverage_to_color.html) is supported:
 
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_ENABLE_NV`
+[VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_ENABLE_NV](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_LOCATION_NV`
+[VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_LOCATION_NV](VkDynamicState.html)
 
 If [VK_NV_framebuffer_mixed_samples](VK_NV_framebuffer_mixed_samples.html) is supported:
 
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_MODE_NV`
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_MODE_NV](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_ENABLE_NV`
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_ENABLE_NV](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_NV`
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_NV](VkDynamicState.html)
 
 If [VK_NV_representative_fragment_test](VK_NV_representative_fragment_test.html) is supported:
 
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_REPRESENTATIVE_FRAGMENT_TEST_ENABLE_NV`
+[VK_DYNAMIC_STATE_REPRESENTATIVE_FRAGMENT_TEST_ENABLE_NV](VkDynamicState.html)
 
 If [VK_NV_shading_rate_image](VK_NV_shading_rate_image.html) is supported:
 
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_SHADING_RATE_IMAGE_ENABLE_NV`
+[VK_DYNAMIC_STATE_SHADING_RATE_IMAGE_ENABLE_NV](VkDynamicState.html)
 
 If [VK_NV_viewport_swizzle](VK_NV_viewport_swizzle.html) is supported:
 
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV`
+[VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV](VkDynamicState.html)
 
 1) What about the VkPipelineMultisampleStateCreateInfo state
 `sampleShadingEnable` and `minSampleShading`?

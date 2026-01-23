@@ -56,21 +56,21 @@ Valid Usage
 [](#VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-imageView-06157) VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-imageView-06157
 
 If `imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `imageLayout` **must**
-be `VK_IMAGE_LAYOUT_GENERAL` or
-`VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT`
+be [VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT](VkImageLayout.html)
 
 * 
 [](#VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-imageView-06158) VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-imageView-06158
 
 If `imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), it **must** have been
-created with the `VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT` usage
+created with the [VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT](VkImageUsageFlagBits.html) usage
 flag set_EXT
 
 * 
 [](#VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-imageView-06159) VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-imageView-06159
 
 If `imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), it **must** not have been
-created with `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`
+created with [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](VkImageCreateFlagBits.html)
 
 * 
 [](#VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-apiVersion-07908) VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-apiVersion-07908
@@ -87,7 +87,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-sType-sType) VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-imageView-parameter) VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-imageView-parameter

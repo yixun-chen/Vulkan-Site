@@ -48,7 +48,7 @@ structure.
 
 * 
 `format` is the Vulkan format corresponding to the Android hardware
-buffer’s format, or `VK_FORMAT_UNDEFINED` if there is not an
+buffer’s format, or [VK_FORMAT_UNDEFINED](VkFormat.html) if there is not an
 equivalent Vulkan format.
 
 * 
@@ -83,22 +83,22 @@ when used with an image bound to memory imported from `buffer`.
 If the Android hardware buffer has one of the formats listed in the
 [Format Equivalence table](../../../../spec/latest/chapters/memory.html#memory-external-android-hardware-buffer-formats), then `format` **must** have the equivalent Vulkan format listed in
 the table.
-Otherwise, `format` **may** be `VK_FORMAT_UNDEFINED`, indicating the
+Otherwise, `format` **may** be [VK_FORMAT_UNDEFINED](VkFormat.html), indicating the
 Android hardware buffer **can** only be used with an external format.
 
 The `formatFeatures` member **must** include
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT` and at least one of
-`VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT` or
-`VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT`, and **should** include
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT` and
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT`.
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](VkFormatFeatureFlagBits.html) and at least one of
+[VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT](VkFormatFeatureFlagBits.html) or
+[VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT](VkFormatFeatureFlagBits.html), and **should** include
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](VkFormatFeatureFlagBits.html) and
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT](VkFormatFeatureFlagBits.html).
 
 |  | The `formatFeatures` member only indicates the features available when
 | --- | --- |
 using an
 [external-format image](../../../../spec/latest/chapters/memory.html#memory-external-android-hardware-buffer-external-formats) created from the Android hardware buffer.
 Images from Android hardware buffers with a format other than
-`VK_FORMAT_UNDEFINED` are subject to the format capabilities obtained
+[VK_FORMAT_UNDEFINED](VkFormat.html) are subject to the format capabilities obtained
 from [vkGetPhysicalDeviceFormatProperties2](vkGetPhysicalDeviceFormatProperties2.html), and
 [vkGetPhysicalDeviceImageFormatProperties2](vkGetPhysicalDeviceImageFormatProperties2.html) with appropriate parameters.
 These sets of features are independent of each other, e.g. the external
@@ -107,13 +107,13 @@ format does not, and rendering directly to the external format will not be
 supported even if the non-external format does support this. |
 
 Android hardware buffers with the same external format **must** have the same
-support for `VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`,
-`VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT`,
-`VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT`,
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT`,
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT`,
+support for [VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](VkFormatFeatureFlagBits.html),
+[VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT](VkFormatFeatureFlagBits.html),
+[VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT](VkFormatFeatureFlagBits.html),
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT](VkFormatFeatureFlagBits.html),
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT](VkFormatFeatureFlagBits.html),
 and
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT`.
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT](VkFormatFeatureFlagBits.html).
 in `formatFeatures`.
 Other format features **may** differ between Android hardware buffers that have
 the same external format.
@@ -121,11 +121,11 @@ This allows applications to use the same [VkSamplerYcbcrConversion](VkSamplerYcb
 object (and samplers and pipelines created from them) for any Android
 hardware buffers that have the same external format.
 
-If `format` is not `VK_FORMAT_UNDEFINED`, then the value of
+If `format` is not [VK_FORMAT_UNDEFINED](VkFormat.html), then the value of
 `samplerYcbcrConversionComponents` **must** be valid when used as the
 `components` member of [VkSamplerYcbcrConversionCreateInfo](VkSamplerYcbcrConversionCreateInfo.html) with
 that format.
-If `format` is `VK_FORMAT_UNDEFINED`, all members of
+If `format` is [VK_FORMAT_UNDEFINED](VkFormat.html), all members of
 `samplerYcbcrConversionComponents` **must** be the
 [identity swizzle](../../../../spec/latest/chapters/resources.html#resources-image-views-identity-mappings).
 
@@ -153,7 +153,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAndroidHardwareBufferFormatPropertiesANDROID-sType-sType) VUID-VkAndroidHardwareBufferFormatPropertiesANDROID-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID](VkStructureType.html)
 
 [VK_ANDROID_external_memory_android_hardware_buffer](VK_ANDROID_external_memory_android_hardware_buffer.html), [VkChromaLocation](VkChromaLocation.html), [VkComponentMapping](VkComponentMapping.html), [VkFormat](VkFormat.html), [VkFormatFeatureFlags](VkFormatFeatureFlags.html), [VkSamplerYcbcrModelConversion](VkSamplerYcbcrModelConversion.html), [VkSamplerYcbcrRange](VkSamplerYcbcrRange.html), [VkStructureType](VkStructureType.html)
 

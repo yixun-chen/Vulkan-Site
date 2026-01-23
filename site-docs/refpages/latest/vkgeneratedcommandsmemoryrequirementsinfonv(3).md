@@ -66,25 +66,25 @@ Valid Usage
 [](#VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-pipelineBindPoint-09075) VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-pipelineBindPoint-09075
 
 If `pipelineBindPoint` is of type
-`VK_PIPELINE_BIND_POINT_GRAPHICS`, then `pipeline` **must** be a
+[VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html), then `pipeline` **must** be a
 valid [VkPipeline](VkPipeline.html) handle
 
 * 
 [](#VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-pipelineBindPoint-09076) VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-pipelineBindPoint-09076
 
 If `pipelineBindPoint` is of type
-`VK_PIPELINE_BIND_POINT_COMPUTE`, and the
+[VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html), and the
 `indirectCommandsLayout` was not created with a
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV` token, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV](VkIndirectCommandsTokenTypeNV.html) token, then the
 `pipeline` **must** be a valid [VkPipeline](VkPipeline.html) handle
 
 * 
 [](#VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-pipelineBindPoint-09077) VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-pipelineBindPoint-09077
 
 If `pipelineBindPoint` is of type
-`VK_PIPELINE_BIND_POINT_COMPUTE`, and the
+[VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html), and the
 `indirectCommandsLayout` contains a
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV` token, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV](VkIndirectCommandsTokenTypeNV.html) token, then the
 `pipeline` **must** be [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
 Valid Usage (Implicit)
@@ -92,7 +92,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-sType-sType) VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-pNext-pNext) VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-pNext-pNext

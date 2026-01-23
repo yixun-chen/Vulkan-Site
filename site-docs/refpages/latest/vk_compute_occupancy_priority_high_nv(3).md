@@ -17,7 +17,7 @@
 
 VK_COMPUTE_OCCUPANCY_PRIORITY_HIGH_NV - High occupancy priority constant
 
-`VK_COMPUTE_OCCUPANCY_PRIORITY_HIGH_NV` is a constant value that can be
+[VK_COMPUTE_OCCUPANCY_PRIORITY_HIGH_NV](#) is a constant value that can be
 used for
 [VkComputeOccupancyPriorityParametersNV](VkComputeOccupancyPriorityParametersNV.html)::`occupancyPriority` to
 specify a high priority level.

@@ -67,7 +67,7 @@ The `decompressionMethod` **must** have a single bit set
 [](#VUID-VkDecompressMemoryInfoEXT-decompressionMethod-11762) VUID-VkDecompressMemoryInfoEXT-decompressionMethod-11762
 
 If `decompressionMethod` is
-`VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_EXT`, then for each
+[VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_EXT](VkMemoryDecompressionMethodFlagBitsEXT.html), then for each
 element of `pRegions`, `decompressedSize` **must** be less than or
 equal to 65536 bytes
 
@@ -82,7 +82,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDecompressMemoryInfoEXT-sType-sType) VUID-VkDecompressMemoryInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DECOMPRESS_MEMORY_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DECOMPRESS_MEMORY_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDecompressMemoryInfoEXT-pNext-pNext) VUID-VkDecompressMemoryInfoEXT-pNext-pNext

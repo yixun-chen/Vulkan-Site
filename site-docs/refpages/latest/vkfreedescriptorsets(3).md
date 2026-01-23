@@ -65,7 +65,7 @@ which **must** either be a valid handle or [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 [](#VUID-vkFreeDescriptorSets-descriptorPool-00312) VUID-vkFreeDescriptorSets-descriptorPool-00312
 
 `descriptorPool` **must** have been created with the
-`VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT` flag
+[VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT](VkDescriptorPoolCreateFlagBits.html) flag
 
 Valid Usage (Implicit)
 
@@ -107,15 +107,15 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkDescriptorPool](VkDescriptorPool.html), [VkDescriptorSet](VkDescriptorSet.html), [VkDevice](VkDevice.html)
 

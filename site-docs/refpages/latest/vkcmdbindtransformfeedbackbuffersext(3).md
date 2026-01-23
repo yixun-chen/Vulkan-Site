@@ -54,7 +54,7 @@ state is updated by the command.
 buffer sizes, specifying the maximum number of bytes to capture to the
 corresponding transform feedback buffer.
 If `pSizes` is `NULL`, it is equivalent to setting a `pSizes`
-array where every element is `VK_WHOLE_SIZE`.
+array where every element is [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html).
 
 The values taken from elements i of `pBuffers`, `pOffsets` and
 `pSizes` replace the current state for the transform feedback binding
@@ -63,7 +63,7 @@ The values taken from elements i of `pBuffers`, `pOffsets` and
 The transform feedback binding is updated to start at the offset indicated
 by `pOffsets`[i] from the start of the buffer `pBuffers`[i].
 
-When an element of `pSizes`[i] is `VK_WHOLE_SIZE`, or `pSizes`
+When an element of `pSizes`[i] is [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), or `pSizes`
 is `NULL`, the effective range is calculated by taking the size of
 `pBuffers`[i] minus `pOffsets`[i].
 Otherwise, the effective range is equal to the element in `pSizes`[i].
@@ -104,7 +104,7 @@ All elements of `pOffsets` **must** be a multiple of 4
 [](#VUID-vkCmdBindTransformFeedbackBuffersEXT-pBuffers-02360) VUID-vkCmdBindTransformFeedbackBuffersEXT-pBuffers-02360
 
 All elements of `pBuffers` **must** have been created with the
-`VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT` usage flag set
+[VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdBindTransformFeedbackBuffersEXT-pOffsets-02363) VUID-vkCmdBindTransformFeedbackBuffersEXT-pOffsets-02363
@@ -151,7 +151,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindTransformFeedbackBuffersEXT-commandBuffer-cmdpool) VUID-vkCmdBindTransformFeedbackBuffersEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBindTransformFeedbackBuffersEXT-videocoding) VUID-vkCmdBindTransformFeedbackBuffersEXT-videocoding

@@ -39,13 +39,13 @@ each viewport.
 * 
 `pDepthClampRange` sets the depth clamp range for all viewports if
 `depthClampMode` is
-`VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT`.
+[VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT](VkDepthClampModeEXT.html).
 
 This command sets the viewport depth clamp range for subsequent drawing
 commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT` set in
+[VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineViewportDepthClampControlCreateInfoEXT](VkPipelineViewportDepthClampControlCreateInfoEXT.html)::`depthClampMode`
@@ -57,7 +57,7 @@ Valid Usage
 [](#VUID-vkCmdSetDepthClampRangeEXT-pDepthClampRange-09647) VUID-vkCmdSetDepthClampRangeEXT-pDepthClampRange-09647
 
 If `depthClampMode` is
-`VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT`, then
+[VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT](VkDepthClampModeEXT.html), then
 `pDepthClampRange` must be a valid pointer to a valid
 `VkDepthClampRangeEXT` structure
 
@@ -86,7 +86,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDepthClampRangeEXT-commandBuffer-cmdpool) VUID-vkCmdSetDepthClampRangeEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetDepthClampRangeEXT-videocoding) VUID-vkCmdSetDepthClampRangeEXT-videocoding

@@ -48,7 +48,7 @@ Valid Usage
 * 
 [](#VUID-VkDrawMeshTasksIndirectCommandEXT-TaskEXT-07322) VUID-VkDrawMeshTasksIndirectCommandEXT-TaskEXT-07322
 
-If the current pipeline bound to `VK_PIPELINE_BIND_POINT_GRAPHICS`
+If the current pipeline bound to [VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html)
 contains a shader using the `TaskEXT` `Execution` `Model`,
 `groupCountX` **must** be less than or equal to
 `VkPhysicalDeviceMeshShaderPropertiesEXT`::`maxTaskWorkGroupCount`[0]
@@ -56,7 +56,7 @@ contains a shader using the `TaskEXT` `Execution` `Model`,
 * 
 [](#VUID-VkDrawMeshTasksIndirectCommandEXT-TaskEXT-07323) VUID-VkDrawMeshTasksIndirectCommandEXT-TaskEXT-07323
 
-If the current pipeline bound to `VK_PIPELINE_BIND_POINT_GRAPHICS`
+If the current pipeline bound to [VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html)
 contains a shader using the `TaskEXT` `Execution` `Model`,
 `groupCountY` **must** be less than or equal to
 `VkPhysicalDeviceMeshShaderPropertiesEXT`::`maxTaskWorkGroupCount`[1]
@@ -64,7 +64,7 @@ contains a shader using the `TaskEXT` `Execution` `Model`,
 * 
 [](#VUID-VkDrawMeshTasksIndirectCommandEXT-TaskEXT-07324) VUID-VkDrawMeshTasksIndirectCommandEXT-TaskEXT-07324
 
-If the current pipeline bound to `VK_PIPELINE_BIND_POINT_GRAPHICS`
+If the current pipeline bound to [VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html)
 contains a shader using the `TaskEXT` `Execution` `Model`,
 `groupCountZ` **must** be less than or equal to
 `VkPhysicalDeviceMeshShaderPropertiesEXT`::`maxTaskWorkGroupCount`[2]
@@ -72,7 +72,7 @@ contains a shader using the `TaskEXT` `Execution` `Model`,
 * 
 [](#VUID-VkDrawMeshTasksIndirectCommandEXT-TaskEXT-07325) VUID-VkDrawMeshTasksIndirectCommandEXT-TaskEXT-07325
 
-If the current pipeline bound to `VK_PIPELINE_BIND_POINT_GRAPHICS`
+If the current pipeline bound to [VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html)
 contains a shader using the `TaskEXT` `Execution` `Model`, The product
 of `groupCountX`, `groupCountY` and `groupCountZ` **must** be
 less than or equal to
@@ -81,7 +81,7 @@ less than or equal to
 * 
 [](#VUID-VkDrawMeshTasksIndirectCommandEXT-TaskEXT-07326) VUID-VkDrawMeshTasksIndirectCommandEXT-TaskEXT-07326
 
-If the current pipeline bound to `VK_PIPELINE_BIND_POINT_GRAPHICS`
+If the current pipeline bound to [VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html)
 does not contain a shader using the `TaskEXT` `Execution` `Model`,
 `groupCountX` **must** be less than or equal to
 `VkPhysicalDeviceMeshShaderPropertiesEXT`::`maxMeshWorkGroupCount`[0]
@@ -89,7 +89,7 @@ does not contain a shader using the `TaskEXT` `Execution` `Model`,
 * 
 [](#VUID-VkDrawMeshTasksIndirectCommandEXT-TaskEXT-07327) VUID-VkDrawMeshTasksIndirectCommandEXT-TaskEXT-07327
 
-If the current pipeline bound to `VK_PIPELINE_BIND_POINT_GRAPHICS`
+If the current pipeline bound to [VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html)
 does not contain a shader using the `TaskEXT` `Execution` `Model`,
 `groupCountY` **must** be less than or equal to
 `VkPhysicalDeviceMeshShaderPropertiesEXT`::`maxMeshWorkGroupCount`[1]
@@ -97,7 +97,7 @@ does not contain a shader using the `TaskEXT` `Execution` `Model`,
 * 
 [](#VUID-VkDrawMeshTasksIndirectCommandEXT-TaskEXT-07328) VUID-VkDrawMeshTasksIndirectCommandEXT-TaskEXT-07328
 
-If the current pipeline bound to `VK_PIPELINE_BIND_POINT_GRAPHICS`
+If the current pipeline bound to [VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html)
 does not contain a shader using the `TaskEXT` `Execution` `Model`,
 `groupCountZ` **must** be less than or equal to
 `VkPhysicalDeviceMeshShaderPropertiesEXT`::`maxMeshWorkGroupCount`[2]
@@ -105,7 +105,7 @@ does not contain a shader using the `TaskEXT` `Execution` `Model`,
 * 
 [](#VUID-VkDrawMeshTasksIndirectCommandEXT-TaskEXT-07329) VUID-VkDrawMeshTasksIndirectCommandEXT-TaskEXT-07329
 
-If the current pipeline bound to `VK_PIPELINE_BIND_POINT_GRAPHICS`
+If the current pipeline bound to [VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html)
 does not contain a shader using the `TaskEXT` `Execution` `Model`, The
 product of `groupCountX`, `groupCountY` and `groupCountZ`
 **must** be less than or equal to

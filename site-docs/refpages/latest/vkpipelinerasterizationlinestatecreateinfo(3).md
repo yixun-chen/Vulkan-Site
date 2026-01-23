@@ -65,7 +65,7 @@ rasterization.
 `lineStipplePattern` is the bit pattern used in stippled line
 rasterization.
 
-If `stippledLineEnable` is `VK_FALSE`, the values of
+If `stippledLineEnable` is [VK_FALSE](VK_FALSE.html), the values of
 `lineStippleFactor` and `lineStipplePattern` are ignored.
 
 Valid Usage
@@ -74,7 +74,7 @@ Valid Usage
 [](#VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02768) VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02768
 
 If `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR`, then the
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR](VkLineRasterizationMode.html), then the
 [`rectangularLines`](../../../../spec/latest/chapters/features.html#features-rectangularLines) feature **must** be
 enabled
 
@@ -82,7 +82,7 @@ enabled
 [](#VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02769) VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02769
 
 If `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_BRESENHAM`, then the
+[VK_LINE_RASTERIZATION_MODE_BRESENHAM](VkLineRasterizationMode.html), then the
 [`bresenhamLines`](../../../../spec/latest/chapters/features.html#features-bresenhamLines) feature **must** be
 enabled
 
@@ -90,50 +90,50 @@ enabled
 [](#VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02770) VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02770
 
 If `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH`, then the
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH](VkLineRasterizationMode.html), then the
 [`smoothLines`](../../../../spec/latest/chapters/features.html#features-smoothLines) feature **must** be enabled
 
 * 
 [](#VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02771) VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02771
 
-If `stippledLineEnable` is `VK_TRUE` and
+If `stippledLineEnable` is [VK_TRUE](VK_TRUE.html) and
 `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR`, then the
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR](VkLineRasterizationMode.html), then the
 [`stippledRectangularLines`](../../../../spec/latest/chapters/features.html#features-stippledRectangularLines)
 feature **must** be enabled
 
 * 
 [](#VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02772) VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02772
 
-If `stippledLineEnable` is `VK_TRUE` and
+If `stippledLineEnable` is [VK_TRUE](VK_TRUE.html) and
 `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_BRESENHAM`, then the
+[VK_LINE_RASTERIZATION_MODE_BRESENHAM](VkLineRasterizationMode.html), then the
 [`stippledBresenhamLines`](../../../../spec/latest/chapters/features.html#features-stippledBresenhamLines)
 feature **must** be enabled
 
 * 
 [](#VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02773) VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02773
 
-If `stippledLineEnable` is `VK_TRUE` and
+If `stippledLineEnable` is [VK_TRUE](VK_TRUE.html) and
 `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH`, then the
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH](VkLineRasterizationMode.html), then the
 [`stippledSmoothLines`](../../../../spec/latest/chapters/features.html#features-stippledSmoothLines) feature
 **must** be enabled
 
 * 
 [](#VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02774) VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02774
 
-If `stippledLineEnable` is `VK_TRUE` and
-`lineRasterizationMode` is `VK_LINE_RASTERIZATION_MODE_DEFAULT`,
+If `stippledLineEnable` is [VK_TRUE](VK_TRUE.html) and
+`lineRasterizationMode` is [VK_LINE_RASTERIZATION_MODE_DEFAULT](VkLineRasterizationMode.html),
 then the [    `stippledRectangularLines`](../../../../spec/latest/chapters/features.html#features-stippledRectangularLines) feature **must** be enabled and
-[VkPhysicalDeviceLimits](VkPhysicalDeviceLimits.html)::`strictLines` **must** be `VK_TRUE`
+[VkPhysicalDeviceLimits](VkPhysicalDeviceLimits.html)::`strictLines` **must** be [VK_TRUE](VK_TRUE.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineRasterizationLineStateCreateInfo-sType-sType) VUID-VkPipelineRasterizationLineStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-parameter) VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-parameter

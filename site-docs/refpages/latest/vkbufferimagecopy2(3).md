@@ -113,7 +113,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferImageCopy2-sType-sType) VUID-VkBufferImageCopy2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_IMAGE_COPY_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_IMAGE_COPY_2](VkStructureType.html)
 
 * 
 [](#VUID-VkBufferImageCopy2-pNext-pNext) VUID-VkBufferImageCopy2-pNext-pNext

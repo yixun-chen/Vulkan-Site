@@ -56,8 +56,8 @@ The handle types supported by `handleType` are:
 
 | Handle Type | Transference | Permanence Supported |
 | --- | --- | --- |
-| `VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT` | Reference | Temporary,Permanent |
-| `VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT` | Copy | Temporary |
+| [VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT](VkExternalFenceHandleTypeFlagBits.html) | Reference | Temporary,Permanent |
+| [VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT](VkExternalFenceHandleTypeFlagBits.html) | Copy | Temporary |
 
 Valid Usage
 
@@ -78,9 +78,9 @@ Valid Usage
 
 If `handleType` refers to a handle type with copy payload
 transference semantics, `flags` **must** contain
-`VK_FENCE_IMPORT_TEMPORARY_BIT`
+[VK_FENCE_IMPORT_TEMPORARY_BIT](VkFenceImportFlagBits.html)
 
-If `handleType` is `VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT`, the
+If `handleType` is [VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT](VkExternalFenceHandleTypeFlagBits.html), the
 special value `-1` for `fd` is treated like a valid sync file descriptor
 referring to an object that has already signaled.
 The import operation will succeed and the `VkFence` will have a
@@ -93,7 +93,7 @@ easier interoperability with other system APIs which use the convention that
 an invalid sync file descriptor represents work that has already completed
 and does not need to be waited for.
 It is consistent with the option for implementations to return a `-1` file
-descriptor when exporting a `VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT`
+descriptor when exporting a [VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT](VkExternalFenceHandleTypeFlagBits.html)
 from a `VkFence` which is signaled. |
 
 Valid Usage (Implicit)
@@ -101,7 +101,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportFenceFdInfoKHR-sType-sType) VUID-VkImportFenceFdInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_FENCE_FD_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_FENCE_FD_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkImportFenceFdInfoKHR-pNext-pNext) VUID-VkImportFenceFdInfoKHR-pNext-pNext

@@ -44,9 +44,9 @@ recorded.
 * 
 `imageLayout` specifies the current layout of the image subresource
 ranges to be cleared, and **must** be
-`VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`,
-`VK_IMAGE_LAYOUT_GENERAL` or
-`VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL`.
+[VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](resources.html#VkImageLayout).
 
 * 
 `pColor` is a pointer to a [VkClearColorValue](#VkClearColorValue) structure
@@ -71,13 +71,13 @@ Valid Usage
 [](#VUID-vkCmdClearColorImage-image-01993) VUID-vkCmdClearColorImage-image-01993
 
 The [format features](resources.html#resources-image-format-features) of `image`
-**must** contain `VK_FORMAT_FEATURE_TRANSFER_DST_BIT`
+**must** contain [VK_FORMAT_FEATURE_TRANSFER_DST_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdClearColorImage-image-00002) VUID-vkCmdClearColorImage-image-00002
 
 `image` **must** have been created with the
-`VK_IMAGE_USAGE_TRANSFER_DST_BIT` usage flag set
+[VK_IMAGE_USAGE_TRANSFER_DST_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdClearColorImage-image-01545) VUID-vkCmdClearColorImage-image-01545
@@ -102,16 +102,16 @@ command is executed on a `VkDevice`
 [](#VUID-vkCmdClearColorImage-imageLayout-01394) VUID-vkCmdClearColorImage-imageLayout-01394
 
 `imageLayout` **must** be
-`VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`,
-`VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL` or
-`VK_IMAGE_LAYOUT_GENERAL`
+[VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-vkCmdClearColorImage-aspectMask-02498) VUID-vkCmdClearColorImage-aspectMask-02498
 
 The [VkImageSubresourceRange](resources.html#VkImageSubresourceRange)::`aspectMask` members of the
 elements of the `pRanges` array **must** each only include
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-vkCmdClearColorImage-baseMipLevel-01470) VUID-vkCmdClearColorImage-baseMipLevel-01470
@@ -125,7 +125,7 @@ was created
 [](#VUID-vkCmdClearColorImage-pRanges-01692) VUID-vkCmdClearColorImage-pRanges-01692
 
 For each [VkImageSubresourceRange](resources.html#VkImageSubresourceRange) element of `pRanges`, if the
-`levelCount` member is not `VK_REMAINING_MIP_LEVELS`, then
+`levelCount` member is not [VK_REMAINING_MIP_LEVELS](resources.html#VK_REMAINING_MIP_LEVELS), then
 `baseMipLevel` +  `levelCount` **must** be less than or
 equal to the `mipLevels` specified in [VkImageCreateInfo](resources.html#VkImageCreateInfo) when
 `image` was created
@@ -142,7 +142,7 @@ was created
 [](#VUID-vkCmdClearColorImage-pRanges-01693) VUID-vkCmdClearColorImage-pRanges-01693
 
 For each [VkImageSubresourceRange](resources.html#VkImageSubresourceRange) element of `pRanges`, if the
-`layerCount` member is not `VK_REMAINING_ARRAY_LAYERS`, then
+`layerCount` member is not [VK_REMAINING_ARRAY_LAYERS](resources.html#VK_REMAINING_ARRAY_LAYERS), then
 `baseArrayLayer` +  `layerCount` **must** be less than or
 equal to the `arrayLayers` specified in [VkImageCreateInfo](resources.html#VkImageCreateInfo) when
 `image` was created
@@ -207,7 +207,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdClearColorImage-commandBuffer-cmdpool) VUID-vkCmdClearColorImage-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdClearColorImage-renderpass) VUID-vkCmdClearColorImage-renderpass
@@ -275,8 +275,8 @@ recorded.
 
 * 
 `imageLayout` specifies the current layout of the image subresource
-ranges to be cleared, and **must** be `VK_IMAGE_LAYOUT_GENERAL` or
-`VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL`.
+ranges to be cleared, and **must** be [VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](resources.html#VkImageLayout).
 
 * 
 `pDepthStencil` is a pointer to a [VkClearDepthStencilValue](#VkClearDepthStencilValue)
@@ -298,33 +298,33 @@ Valid Usage
 [](#VUID-vkCmdClearDepthStencilImage-image-01994) VUID-vkCmdClearDepthStencilImage-image-01994
 
 The [format features](resources.html#resources-image-format-features) of `image`
-**must** contain `VK_FORMAT_FEATURE_TRANSFER_DST_BIT`
+**must** contain [VK_FORMAT_FEATURE_TRANSFER_DST_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdClearDepthStencilImage-pRanges-02658) VUID-vkCmdClearDepthStencilImage-pRanges-02658
 
 If the `aspect` member of any element of `pRanges` includes
-`VK_IMAGE_ASPECT_STENCIL_BIT`, and `image` was created with
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits), and `image` was created with
 [separate stencil usage](resources.html#VkImageStencilUsageCreateInfo), it must have
-been created with the `VK_IMAGE_USAGE_TRANSFER_DST_BIT` usage flag
+been created with the [VK_IMAGE_USAGE_TRANSFER_DST_BIT](resources.html#VkImageUsageFlagBits) usage flag
 set
 
 * 
 [](#VUID-vkCmdClearDepthStencilImage-pRanges-02659) VUID-vkCmdClearDepthStencilImage-pRanges-02659
 
 If the `aspect` member of any element of `pRanges` includes
-`VK_IMAGE_ASPECT_STENCIL_BIT`,
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits),
 and `image` was not created with
 [separate stencil usage](resources.html#VkImageStencilUsageCreateInfo),
-the `VK_IMAGE_USAGE_TRANSFER_DST_BIT` usage flag **must** have been set
+the [VK_IMAGE_USAGE_TRANSFER_DST_BIT](resources.html#VkImageUsageFlagBits) usage flag **must** have been set
 in the [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`usage` used to create `image`
 
 * 
 [](#VUID-vkCmdClearDepthStencilImage-pRanges-02660) VUID-vkCmdClearDepthStencilImage-pRanges-02660
 
 If the `aspect` member of any element of `pRanges` includes
-`VK_IMAGE_ASPECT_DEPTH_BIT`, `image` **must** have been created
-with the `VK_IMAGE_USAGE_TRANSFER_DST_BIT` usage flag set
+[VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits), `image` **must** have been created
+with the [VK_IMAGE_USAGE_TRANSFER_DST_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdClearDepthStencilImage-image-00010) VUID-vkCmdClearDepthStencilImage-image-00010
@@ -343,15 +343,15 @@ command is executed on a `VkDevice`
 [](#VUID-vkCmdClearDepthStencilImage-imageLayout-00012) VUID-vkCmdClearDepthStencilImage-imageLayout-00012
 
 `imageLayout` **must** be either of
-`VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL` or
-`VK_IMAGE_LAYOUT_GENERAL`
+[VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-vkCmdClearDepthStencilImage-aspectMask-02824) VUID-vkCmdClearDepthStencilImage-aspectMask-02824
 
 The [VkImageSubresourceRange](resources.html#VkImageSubresourceRange)::`aspectMask` member of each
 element of the `pRanges` array **must** not include bits other than
-`VK_IMAGE_ASPECT_DEPTH_BIT` or `VK_IMAGE_ASPECT_STENCIL_BIT`
+[VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits) or [VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-vkCmdClearDepthStencilImage-image-02825) VUID-vkCmdClearDepthStencilImage-image-02825
@@ -359,7 +359,7 @@ element of the `pRanges` array **must** not include bits other than
 If the `image`’s format does not have a stencil component, then the
 [VkImageSubresourceRange](resources.html#VkImageSubresourceRange)::`aspectMask` member of each element
 of the `pRanges` array **must** not include the
-`VK_IMAGE_ASPECT_STENCIL_BIT` bit
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits) bit
 
 * 
 [](#VUID-vkCmdClearDepthStencilImage-image-02826) VUID-vkCmdClearDepthStencilImage-image-02826
@@ -367,7 +367,7 @@ of the `pRanges` array **must** not include the
 If the `image`’s format does not have a depth component, then the
 [VkImageSubresourceRange](resources.html#VkImageSubresourceRange)::`aspectMask` member of each element
 of the `pRanges` array **must** not include the
-`VK_IMAGE_ASPECT_DEPTH_BIT` bit
+[VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits) bit
 
 * 
 [](#VUID-vkCmdClearDepthStencilImage-baseMipLevel-01474) VUID-vkCmdClearDepthStencilImage-baseMipLevel-01474
@@ -381,7 +381,7 @@ was created
 [](#VUID-vkCmdClearDepthStencilImage-pRanges-01694) VUID-vkCmdClearDepthStencilImage-pRanges-01694
 
 For each [VkImageSubresourceRange](resources.html#VkImageSubresourceRange) element of `pRanges`, if the
-`levelCount` member is not `VK_REMAINING_MIP_LEVELS`, then
+`levelCount` member is not [VK_REMAINING_MIP_LEVELS](resources.html#VK_REMAINING_MIP_LEVELS), then
 `baseMipLevel` +  `levelCount` **must** be less than or
 equal to the `mipLevels` specified in [VkImageCreateInfo](resources.html#VkImageCreateInfo) when
 `image` was created
@@ -398,7 +398,7 @@ was created
 [](#VUID-vkCmdClearDepthStencilImage-pRanges-01695) VUID-vkCmdClearDepthStencilImage-pRanges-01695
 
 For each [VkImageSubresourceRange](resources.html#VkImageSubresourceRange) element of `pRanges`, if the
-`layerCount` member is not `VK_REMAINING_ARRAY_LAYERS`, then
+`layerCount` member is not [VK_REMAINING_ARRAY_LAYERS](resources.html#VK_REMAINING_ARRAY_LAYERS), then
 `baseArrayLayer` +  `layerCount` **must** be less than or
 equal to the `arrayLayers` specified in [VkImageCreateInfo](resources.html#VkImageCreateInfo) when
 `image` was created
@@ -457,7 +457,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdClearDepthStencilImage-commandBuffer-cmdpool) VUID-vkCmdClearDepthStencilImage-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdClearDepthStencilImage-renderpass) VUID-vkCmdClearDepthStencilImage-renderpass
@@ -548,27 +548,27 @@ Unlike other [clear commands](#clears), [vkCmdClearAttachments](#vkCmdClearAttac
 transfer command.
 It performs its operations in [rasterization order](primsrast.html#primsrast-order).
 For color attachments, the operations are executed as color attachment
-writes, by the `VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT` stage.
+writes, by the [VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](synchronization.html#VkPipelineStageFlagBits) stage.
 For depth/stencil attachments, the operations are executed as
 [depth writes](fragops.html#fragops-depth) and [stencil writes](fragops.html#fragops-stencil) by
-the `VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT` and
-`VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT` stages.
+the [VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT](synchronization.html#VkPipelineStageFlagBits) and
+[VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT](synchronization.html#VkPipelineStageFlagBits) stages.
 
 `vkCmdClearAttachments` is not affected by the bound pipeline state.
 
 |  | It is generally preferable to clear attachments by using the
 | --- | --- |
-`VK_ATTACHMENT_LOAD_OP_CLEAR` load operation at the start of rendering,
+[VK_ATTACHMENT_LOAD_OP_CLEAR](renderpass.html#VkAttachmentLoadOp) load operation at the start of rendering,
 as it is more efficient on some implementations. |
 
 If any attachment’s `aspectMask` to be cleared is not backed by an image
 view, the clear has no effect on that aspect.
 
 If an attachment being cleared refers to an image view created with an
-`aspectMask` equal to one of `VK_IMAGE_ASPECT_PLANE_0_BIT`,
-`VK_IMAGE_ASPECT_PLANE_1_BIT` or `VK_IMAGE_ASPECT_PLANE_2_BIT`, it
-is considered to be `VK_IMAGE_ASPECT_COLOR_BIT` for purposes of this
-command, and **must** be cleared with the `VK_IMAGE_ASPECT_COLOR_BIT`
+`aspectMask` equal to one of [VK_IMAGE_ASPECT_PLANE_0_BIT](resources.html#VkImageAspectFlagBits),
+[VK_IMAGE_ASPECT_PLANE_1_BIT](resources.html#VkImageAspectFlagBits) or [VK_IMAGE_ASPECT_PLANE_2_BIT](resources.html#VkImageAspectFlagBits), it
+is considered to be [VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits) for purposes of this
+command, and **must** be cleared with the [VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits)
 aspect as specified by [image view creation](resources.html#image-views-plane-promotion).
 
 Valid Usage
@@ -579,8 +579,8 @@ Valid Usage
 If
 the current render pass instance does not use dynamic rendering, and
 the `aspectMask` member of any element of `pAttachments`
-contains `VK_IMAGE_ASPECT_DEPTH_BIT`, the current subpass instance’s
-depth-stencil attachment **must** be either `VK_ATTACHMENT_UNUSED` or
+contains [VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits), the current subpass instance’s
+depth-stencil attachment **must** be either [VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED) or
 the attachment `format` **must** contain a depth component
 
 * 
@@ -589,16 +589,16 @@ the attachment `format` **must** contain a depth component
 If
 the current render pass instance does not use dynamic rendering, and
 the `aspectMask` member of any element of `pAttachments`
-contains `VK_IMAGE_ASPECT_STENCIL_BIT`, the current subpass
+contains [VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits), the current subpass
 instance’s depth-stencil attachment **must** be either
-`VK_ATTACHMENT_UNUSED` or the attachment `format` **must** contain
+[VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED) or the attachment `format` **must** contain
 a stencil component
 
 * 
 [](#VUID-vkCmdClearAttachments-aspectMask-07271) VUID-vkCmdClearAttachments-aspectMask-07271
 
 If the `aspectMask` member of any element of `pAttachments`
-contains `VK_IMAGE_ASPECT_COLOR_BIT`, the `colorAttachment`
+contains [VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits), the `colorAttachment`
 **must** be a valid color attachment index in the current render pass
 instance
 
@@ -660,7 +660,7 @@ If the render pass instance this is recorded in uses multiview, then
 
 The `colorAttachment` member of each element of `pAttachments`
 **must** not identify a color attachment that is currently mapped to
-`VK_ATTACHMENT_UNUSED` in `commandBuffer` via
+[VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED) in `commandBuffer` via
 [VkRenderingAttachmentLocationInfo](interfaces.html#VkRenderingAttachmentLocationInfo)
 
 * 
@@ -708,7 +708,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdClearAttachments-commandBuffer-cmdpool) VUID-vkCmdClearAttachments-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdClearAttachments-renderpass) VUID-vkCmdClearAttachments-renderpass
@@ -791,7 +791,7 @@ aspects of the attachment to be cleared.
 
 * 
 `colorAttachment` is only meaningful if
-`VK_IMAGE_ASPECT_COLOR_BIT` is set in `aspectMask`, in which
+[VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits) is set in `aspectMask`, in which
 case it is an index into the bound color attachments.
 
 * 
@@ -803,14 +803,14 @@ Valid Usage
 * 
 [](#VUID-VkClearAttachment-aspectMask-00019) VUID-VkClearAttachment-aspectMask-00019
 
-If `aspectMask` includes `VK_IMAGE_ASPECT_COLOR_BIT`, it **must**
-not include `VK_IMAGE_ASPECT_DEPTH_BIT` or
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+If `aspectMask` includes [VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits), it **must**
+not include [VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits) or
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkClearAttachment-aspectMask-00020) VUID-VkClearAttachment-aspectMask-00020
 
-`aspectMask` **must** not include `VK_IMAGE_ASPECT_METADATA_BIT`
+`aspectMask` **must** not include [VK_IMAGE_ASPECT_METADATA_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkClearAttachment-aspectMask-02246) VUID-VkClearAttachment-aspectMask-02246
@@ -951,9 +951,9 @@ filling, and **must** be a multiple of 4.
 
 * 
 `size` is the number of bytes to fill, and **must** be either a
-multiple of 4, or `VK_WHOLE_SIZE` to fill the range from
+multiple of 4, or [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE) to fill the range from
 `offset` to the end of the buffer.
-If `VK_WHOLE_SIZE` is used and the remaining size of the buffer is
+If [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE) is used and the remaining size of the buffer is
 not a multiple of 4, then the nearest smaller multiple is used.
 
 * 
@@ -964,7 +964,7 @@ The data word is written to memory according to the host endianness.
 `vkCmdFillBuffer` is treated as a “transfer” operation for the
 purposes of synchronization barriers.
 It is only compatible with buffers created with the
-`VK_BUFFER_USAGE_TRANSFER_DST_BIT` usage flag set.
+[VK_BUFFER_USAGE_TRANSFER_DST_BIT](resources.html#VkBufferUsageFlagBits) usage flag set.
 
 Valid Usage
 
@@ -981,26 +981,26 @@ Valid Usage
 * 
 [](#VUID-vkCmdFillBuffer-size-00026) VUID-vkCmdFillBuffer-size-00026
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be
+If `size` is not equal to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), `size` **must** be
 greater than `0`
 
 * 
 [](#VUID-vkCmdFillBuffer-size-00027) VUID-vkCmdFillBuffer-size-00027
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be
+If `size` is not equal to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), `size` **must** be
 less than or equal to the size of `dstBuffer` minus `dstOffset`
 
 * 
 [](#VUID-vkCmdFillBuffer-size-00028) VUID-vkCmdFillBuffer-size-00028
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be a
+If `size` is not equal to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), `size` **must** be a
 multiple of `4`
 
 * 
 [](#VUID-vkCmdFillBuffer-dstBuffer-00029) VUID-vkCmdFillBuffer-dstBuffer-00029
 
 `dstBuffer` **must** have been created with the
-`VK_BUFFER_USAGE_TRANSFER_DST_BIT` usage flag set
+[VK_BUFFER_USAGE_TRANSFER_DST_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdFillBuffer-apiVersion-07894) VUID-vkCmdFillBuffer-apiVersion-07894
@@ -1051,7 +1051,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdFillBuffer-commandBuffer-cmdpool) VUID-vkCmdFillBuffer-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, or `VK_QUEUE_TRANSFER_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdFillBuffer-renderpass) VUID-vkCmdFillBuffer-renderpass
@@ -1148,7 +1148,7 @@ command is called.
 `vkCmdUpdateBuffer` is only allowed outside of a render pass.
 This command is treated as a “transfer” operation for the purposes of
 synchronization barriers.
-The `VK_BUFFER_USAGE_TRANSFER_DST_BIT` **must** be specified in `usage`
+The [VK_BUFFER_USAGE_TRANSFER_DST_BIT](resources.html#VkBufferUsageFlagBits) **must** be specified in `usage`
 of [VkBufferCreateInfo](resources.html#VkBufferCreateInfo) in order for the buffer to be compatible with
 `vkCmdUpdateBuffer`.
 
@@ -1169,7 +1169,7 @@ Valid Usage
 [](#VUID-vkCmdUpdateBuffer-dstBuffer-00034) VUID-vkCmdUpdateBuffer-dstBuffer-00034
 
 `dstBuffer` **must** have been created with the
-`VK_BUFFER_USAGE_TRANSFER_DST_BIT` usage flag set
+[VK_BUFFER_USAGE_TRANSFER_DST_BIT](resources.html#VkBufferUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdUpdateBuffer-dstBuffer-00035) VUID-vkCmdUpdateBuffer-dstBuffer-00035
@@ -1231,7 +1231,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdUpdateBuffer-commandBuffer-cmdpool) VUID-vkCmdUpdateBuffer-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, or `VK_QUEUE_TRANSFER_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdUpdateBuffer-renderpass) VUID-vkCmdUpdateBuffer-renderpass

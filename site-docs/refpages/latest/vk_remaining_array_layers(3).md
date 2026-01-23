@@ -17,7 +17,7 @@
 
 VK_REMAINING_ARRAY_LAYERS - Sentinel for all remaining array layers
 
-`VK_REMAINING_ARRAY_LAYERS` is a special constant value used for image
+[VK_REMAINING_ARRAY_LAYERS](#) is a special constant value used for image
 views to indicate that all remaining array layers in an image after the base
 layer should be included in the view.
 

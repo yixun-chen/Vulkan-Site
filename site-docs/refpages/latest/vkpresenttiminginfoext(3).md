@@ -64,15 +64,15 @@ timing information for.
 interpret `targetTime`.
 
 If `targetTime` is not zero, the implementation attempts to align the
-`VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_VISIBLE_BIT_EXT` present stage of
+[VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_VISIBLE_BIT_EXT](VkPresentStageFlagBitsEXT.html) present stage of
 that presentation request with the time specified in `targetTime`
 according to the time domain used.
-If `VK_PRESENT_TIMING_INFO_PRESENT_AT_NEAREST_REFRESH_CYCLE_BIT_EXT` is
+If [VK_PRESENT_TIMING_INFO_PRESENT_AT_NEAREST_REFRESH_CYCLE_BIT_EXT](VkPresentTimingInfoFlagBitsEXT.html) is
 not set in `flags`, it indicates that the application would strictly
 prefer the image to not be visible before `targetTime` has lapsed.
 
 If `targetTime` is not zero and `timeDomainId` is associated with a
-`VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT` time domain,
+[VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT](VkTimeDomainKHR.html) time domain,
 `targetTimeDomainPresentStage` is used to specify which present stage’s
 time domain `targetTime` is specified for.
 Otherwise, `targetTimeDomainPresentStage` is ignored.
@@ -87,7 +87,7 @@ improved animation quality.
 As such, the [`presentAtAbsoluteTime`](../../../../spec/latest/chapters/features.html#features-presentAtAbsoluteTime)
 and [`presentAtRelativeTime`](../../../../spec/latest/chapters/features.html#features-presentAtRelativeTime) features
 do not provide a strict guarantee regarding the completion of the
-`VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_VISIBLE_BIT_EXT` present stage
+[VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_VISIBLE_BIT_EXT](VkPresentStageFlagBitsEXT.html) present stage
 relative to the `targetTime`, and implementations **must** strive to make
 it as consistent and accurate as possible. |
 
@@ -98,7 +98,7 @@ their calculations for their next target time on the feedback from
 errors or potential clock drift.
 It is recommended that when targeting the time of a vertical blanking
 period, applications set
-`VK_PRESENT_TIMING_INFO_PRESENT_AT_NEAREST_REFRESH_CYCLE_BIT_EXT` to
+[VK_PRESENT_TIMING_INFO_PRESENT_AT_NEAREST_REFRESH_CYCLE_BIT_EXT](VkPresentTimingInfoFlagBitsEXT.html) to
 allow the implementation to compensate for small precision errors that may
 cause an image to be displayed one refresh cycle later than intended. |
 
@@ -108,23 +108,29 @@ Valid Usage
 [](#VUID-VkPresentTimingInfoEXT-targetTime-12236) VUID-VkPresentTimingInfoEXT-targetTime-12236
 
 If `targetTime` is not zero and `flags` does not contain
-`VK_PRESENT_TIMING_INFO_PRESENT_AT_RELATIVE_TIME_BIT_EXT`, the
+[VK_PRESENT_TIMING_INFO_PRESENT_AT_RELATIVE_TIME_BIT_EXT](VkPresentTimingInfoFlagBitsEXT.html), the
 [`presentAtAbsoluteTime`](../../../../spec/latest/chapters/features.html#features-presentAtAbsoluteTime) feature
-**must** be enabled
+**must** be enabled and the `presentAtAbsoluteTimeSupported` member of
+the `VkPresentTimingSurfaceCapabilitiesEXT` returned by
+`vkGetPhysicalDeviceSurfaceCapabilities2KHR` for the surface
+associated with the swapchain **must** be [VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-VkPresentTimingInfoEXT-targetTime-12237) VUID-VkPresentTimingInfoEXT-targetTime-12237
 
 If `targetTime` is not zero and `flags` contains
-`VK_PRESENT_TIMING_INFO_PRESENT_AT_RELATIVE_TIME_BIT_EXT`, the
+[VK_PRESENT_TIMING_INFO_PRESENT_AT_RELATIVE_TIME_BIT_EXT](VkPresentTimingInfoFlagBitsEXT.html), the
 [`presentAtRelativeTime`](../../../../spec/latest/chapters/features.html#features-presentAtRelativeTime) feature
-**must** be enabled
+**must** be enabled and the `presentAtRelativeTimeSupported` member of
+the `VkPresentTimingSurfaceCapabilitiesEXT` returned by
+`vkGetPhysicalDeviceSurfaceCapabilities2KHR` for the surface
+associated with the swapchain **must** be [VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-VkPresentTimingInfoEXT-timeDomainId-12238) VUID-VkPresentTimingInfoEXT-timeDomainId-12238
 
 If `timeDomainId` is associated with a
-`VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT` time domain, and
+[VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT](VkTimeDomainKHR.html) time domain, and
 `targetTime` is not zero, `targetTimeDomainPresentStage` **must**
 be a single `VkPresentStageFlagsEXT` value
 
@@ -133,7 +139,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPresentTimingInfoEXT-sType-sType) VUID-VkPresentTimingInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_TIMING_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_TIMING_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkPresentTimingInfoEXT-pNext-pNext) VUID-VkPresentTimingInfoEXT-pNext-pNext

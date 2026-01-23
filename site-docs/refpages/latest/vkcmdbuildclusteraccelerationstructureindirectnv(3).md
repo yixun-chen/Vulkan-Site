@@ -44,30 +44,30 @@ builds.
 Accesses to the acceleration structure scratch memory as identified by the
 [VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`scratchData` **must**
 be [synchronized](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies) with the
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits.html)
 [pipeline stage](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages) and an
 [access type](../../../../spec/latest/chapters/synchronization.html#synchronization-access-types) of
-(`VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR` |
-`VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR`).
+([VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR](VkAccessFlagBits.html) |
+[VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR](VkAccessFlagBits.html)).
 
 Accesses to each
 [VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`dstImplicitData`,
 [VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`dstAddressesArray`
 and [VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`dstSizesArray`
 **must** be [synchronized](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies) with the
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits.html)
 [pipeline stage](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages) and an
 [access type](../../../../spec/latest/chapters/synchronization.html#synchronization-access-types) of
-`VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR`.
+[VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR](VkAccessFlagBits.html).
 
 Accesses to memory with input data as identified by any used values of
 [VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`srcInfosArray` and
 [VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`srcInfosCount`
 **must** be [synchronized](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies) with the
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits.html)
 [pipeline stage](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages) and an
 [access type](../../../../spec/latest/chapters/synchronization.html#synchronization-access-types) of
-`VK_ACCESS_INDIRECT_COMMAND_READ_BIT`.
+[VK_ACCESS_INDIRECT_COMMAND_READ_BIT](VkAccessFlagBits.html).
 
 Valid Usage
 
@@ -94,18 +94,30 @@ than or equal to the value used in
 memory requirements for the build operation
 
 * 
-[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-scratchData-10446) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-scratchData-10446
+[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-scratchData-12300) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-scratchData-12300
 
 The scratch memory of the cluster acceleration structure specified in
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`scratchData`,
+or the memory indirectly referenced in
 [VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`scratchData`
+when
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`addressResolutionFlags`
+contains
+[VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SCRATCH_DATA_BIT_NV](VkClusterAccelerationStructureAddressResolutionFlagBitsNV.html),
 **must** be larger than or equal to the scratch size queried with
 [vkGetClusterAccelerationStructureBuildSizesNV](vkGetClusterAccelerationStructureBuildSizesNV.html)
 
 * 
-[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-scratchData-10447) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-scratchData-10447
+[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-scratchData-12301) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-scratchData-12301
 
 The scratch address of the cluster acceleration structure specified in
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`scratchData`,
+or the address indirectly referenced in
 [VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`scratchData`
+when
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`addressResolutionFlags`
+contains
+[VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SCRATCH_DATA_BIT_NV](VkClusterAccelerationStructureAddressResolutionFlagBitsNV.html),
 **must** be aligned based on the cluster acceleration structure type and
 its alignment properties as queried with
 [VkPhysicalDeviceClusterAccelerationStructurePropertiesNV](VkPhysicalDeviceClusterAccelerationStructurePropertiesNV.html)
@@ -114,7 +126,7 @@ its alignment properties as queried with
 [](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10448) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10448
 
 If `pCommandInfos->input.opType` is
-`VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_MOVE_OBJECTS_NV`,
+[VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_MOVE_OBJECTS_NV](VkClusterAccelerationStructureOpTypeNV.html),
 `pCommandInfos->srcInfosArray` **must** be an array of
 [VkClusterAccelerationStructureMoveObjectsInfoNV](VkClusterAccelerationStructureMoveObjectsInfoNV.html) structures
 
@@ -122,7 +134,7 @@ If `pCommandInfos->input.opType` is
 [](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10449) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10449
 
 If `pCommandInfos->input.opType` is
-`VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_CLUSTERS_BOTTOM_LEVEL_NV`,
+[VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_CLUSTERS_BOTTOM_LEVEL_NV](VkClusterAccelerationStructureOpTypeNV.html),
 `pCommandInfos->srcInfosArray` **must** be an array of
 [VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV](VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV.html)
 structures
@@ -131,7 +143,7 @@ structures
 [](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10450) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10450
 
 If `pCommandInfos->input.opType` is
-`VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_NV`,
+[VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_NV](VkClusterAccelerationStructureOpTypeNV.html),
 `pCommandInfos->srcInfosArray` **must** be an array of
 [VkClusterAccelerationStructureBuildTriangleClusterInfoNV](VkClusterAccelerationStructureBuildTriangleClusterInfoNV.html)
 structures
@@ -140,7 +152,7 @@ structures
 [](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10451) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10451
 
 If `pCommandInfos->input.opType` is
-`VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_TEMPLATE_NV`,
+[VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_TEMPLATE_NV](VkClusterAccelerationStructureOpTypeNV.html),
 `pCommandInfos->srcInfosArray` **must** be an array of
 [VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV](VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV.html)
 structures
@@ -149,7 +161,7 @@ structures
 [](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10452) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10452
 
 If `pCommandInfos->input.opType` is
-`VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_INSTANTIATE_TRIANGLE_CLUSTER_NV`,
+[VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_INSTANTIATE_TRIANGLE_CLUSTER_NV](VkClusterAccelerationStructureOpTypeNV.html),
 `pCommandInfos->srcInfosArray` **must** be an array of
 [VkClusterAccelerationStructureInstantiateClusterInfoNV](VkClusterAccelerationStructureInstantiateClusterInfoNV.html) structures
 
@@ -157,7 +169,7 @@ If `pCommandInfos->input.opType` is
 [](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10832) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10832
 
 If `pCommandInfos->input.opType` is
-`VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_GET_CLUSTER_TEMPLATE_INDICES_NV`,
+[VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_GET_CLUSTER_TEMPLATE_INDICES_NV](VkClusterAccelerationStructureOpTypeNV.html),
 `pCommandInfos->srcInfosArray` **must** be an array of
 [VkClusterAccelerationStructureGetTemplateIndicesInfoNV](VkClusterAccelerationStructureGetTemplateIndicesInfoNV.html) structures
 
@@ -174,58 +186,113 @@ The number of inputs specified in `pCommandInfos->srcInfosArray`
 **must** be greater than or equal to `pCommandInfos->srcInfosCount`
 
 * 
-[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-dstAddressesArray-10455) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-dstAddressesArray-10455
+[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-dstAddressesArray-12302) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-dstAddressesArray-12302
 
 The memory regions specified in
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`dstAddressesArray`,
+or the memory indirectly referenced in
 [VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`dstAddressesArray`
+when
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`addressResolutionFlags`
+contains
+[VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_ADDRESS_ARRAY_BIT_NV](VkClusterAccelerationStructureAddressResolutionFlagBitsNV.html),
 **must** not overlap with each other or with
-`pCommandInfos->scratchData`
+`pCommandInfos->scratchData`, or the memory indirectly referenced in
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`scratchData`
+when
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`addressResolutionFlags`
+contains
+[VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SCRATCH_DATA_BIT_NV](VkClusterAccelerationStructureAddressResolutionFlagBitsNV.html)
 
 * 
-[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-dstImplicitData-10456) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-dstImplicitData-10456
+[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-dstImplicitData-12303) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-dstImplicitData-12303
 
 The memory region specified in
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`dstImplicitData`,
+or the memory indirectly referenced in
 [VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`dstImplicitData`
+when
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`addressResolutionFlags`
+contains
+[VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_IMPLICIT_DATA_BIT_NV](VkClusterAccelerationStructureAddressResolutionFlagBitsNV.html),
 for multiple acceleration structure builds **must** not overlap with
-`pCommandInfos->scratchData`
+`pCommandInfos->scratchData`, or the memory indirectly referenced in
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`scratchData`
+when
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`addressResolutionFlags`
+contains
+[VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SCRATCH_DATA_BIT_NV](VkClusterAccelerationStructureAddressResolutionFlagBitsNV.html)
 
 * 
-[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10457) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10457
+[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12304) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12304
 
-`pCommandInfos->scratchData` **must** be a device address allocated to
-the application from a buffer created with the
-`VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage flag set
+`pCommandInfos->scratchData`, or the address indirectly referenced
+in [VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`scratchData`
+when
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`addressResolutionFlags`
+contains
+[VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SCRATCH_DATA_BIT_NV](VkClusterAccelerationStructureAddressResolutionFlagBitsNV.html),
+**must** be a device address allocated to the application from a buffer
+created with the [VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
-[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10458) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10458
+[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12305) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12305
 
-`pCommandInfos->srcInfosArray` **must** be a device address range
-allocated to application from a buffer created with the
-`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR`
+`pCommandInfos->srcInfosArray`, or the address indirectly referenced
+in
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`srcInfosArray`
+when
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`addressResolutionFlags`
+contains
+[VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SRC_INFOS_ARRAY_BIT_NV](VkClusterAccelerationStructureAddressResolutionFlagBitsNV.html),
+**must** be a device address range allocated to the application from a
+buffer created with the
+[VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR](VkBufferUsageFlagBits.html)
 usage flag set
 
 * 
-[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12246) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12246
+[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12306) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12306
 
-`pCommandInfos->srcInfosCount` **must** be a device address allocated
-to application from a buffer created with the
-`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR`
+`pCommandInfos->srcInfosCount`, or the address indirectly referenced
+in
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`srcInfosCount`
+when
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`addressResolutionFlags`
+contains
+[VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SRC_INFOS_COUNT_BIT_NV](VkClusterAccelerationStructureAddressResolutionFlagBitsNV.html),
+**must** be a device address allocated to the application from a buffer
+created with the
+[VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR](VkBufferUsageFlagBits.html)
 usage flag set
 
 * 
-[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10459) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10459
+[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12307) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12307
 
-`pCommandInfos->dstAddressesArray` **must** be a device address range
-allocated to the application from a buffer created with the
-`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR` usage flag
+`pCommandInfos->dstAddressesArray`, or the address indirectly
+referenced in
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`dstAddressesArray`
+when
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`addressResolutionFlags`
+contains
+[VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_ADDRESS_ARRAY_BIT_NV](VkClusterAccelerationStructureAddressResolutionFlagBitsNV.html),
+**must** be a device address range allocated to the application from a
+buffer created with the
+[VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR](VkBufferUsageFlagBits.html) usage flag
 set
 
 * 
-[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12247) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12247
+[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12308) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12308
 
-`pCommandInfos->dstImplicitData` **must** be a device address allocated
-to the application from a buffer created with the
-`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR` usage flag
+`pCommandInfos->dstImplicitData`, or the address indirectly
+referenced in
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`dstImplicitData`
+when
+[VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html)::`addressResolutionFlags`
+contains
+[VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_IMPLICIT_DATA_BIT_NV](VkClusterAccelerationStructureAddressResolutionFlagBitsNV.html),
+**must** be a device address allocated to the application from a buffer
+created with the
+[VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR](VkBufferUsageFlagBits.html) usage flag
 set
 
 Valid Usage (Implicit)
@@ -248,7 +315,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-commandBuffer-cmdpool) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-renderpass) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-renderpass

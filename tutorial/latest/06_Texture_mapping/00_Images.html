@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:tutorial" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -337,6 +337,294 @@
   <li class="nav-item" data-depth="1">
     <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Tutorial" target="_blank" rel="noopener">GitHub Repository</a></span>
   </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Building a Simple Engine</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../Building_a_Simple_Engine/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Engine Architecture</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Engine_Architecture/01_introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Engine_Architecture/02_architectural_patterns.html">Architectural patterns</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Engine_Architecture/03_component_systems.html">Component systems</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Engine_Architecture/04_resource_management.html">Resource management</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Engine_Architecture/05_rendering_pipeline.html">Rendering pipeline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Engine_Architecture/06_event_systems.html">Event systems</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Engine_Architecture/conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Camera Transformations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Camera_Transformations/01_introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Camera_Transformations/02_math_foundations.html">Math foundations</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Camera_Transformations/03_transformation_matrices.html">Transformation matrices</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Camera_Transformations/04_camera_implementation.html">Camera implementation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Camera_Transformations/05_vulkan_integration.html">Vulkan integration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Camera_Transformations/06_conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lighting &amp; Materials</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Lighting_Materials/01_introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Lighting_Materials/02_lighting_models.html">Lighting models</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Lighting_Materials/03_push_constants.html">Push constants</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Lighting_Materials/04_lighting_implementation.html">Lighting implementation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Lighting_Materials/05_vulkan_integration.html">Vulkan integration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Lighting_Materials/07_shadows.html">Shadows</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Lighting_Materials/06_conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">GUI</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/GUI/01_introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/GUI/02_imgui_setup.html">ImGui setup</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/GUI/03_input_handling.html">Input handling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/GUI/04_ui_elements.html">UI elements</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/GUI/05_vulkan_integration.html">Vulkan integration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/GUI/06_conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Loading Models</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Loading_Models/01_introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Loading_Models/02_project_setup.html">Project setup</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Loading_Models/03_model_system.html">Model system</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Loading_Models/04_loading_gltf.html">Loading glTF</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Loading_Models/05_pbr_rendering.html">PBR rendering</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Loading_Models/06_multiple_objects.html">Multiple objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Loading_Models/07_scene_rendering.html">Scene rendering</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Loading_Models/08_animations.html">Animations</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Loading_Models/09_conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Subsystems</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Subsystems/01_introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Subsystems/02_audio_basics.html">Audio basics</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Subsystems/03_vulkan_audio.html">Vulkan audio</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Subsystems/04_physics_basics.html">Physics basics</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Subsystems/05_vulkan_physics.html">Vulkan physics</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Subsystems/06_conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tooling</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Tooling/01_introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Tooling/02_cicd.html">CI/CD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Tooling/03_debugging_and_renderdoc.html">Debugging &amp; RenderDoc</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Tooling/04_crash_minidump.html">Crash minidumps</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Tooling/05_extensions.html">Extensions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Tooling/06_packaging_and_distribution.html">Packaging &amp; distribution</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Tooling/07_conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Mobile Development</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Mobile_Development/01_introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Mobile_Development/02_platform_considerations.html">Platform considerations</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Mobile_Development/03_performance_optimizations.html">Performance optimizations</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Mobile_Development/04_rendering_approaches.html">Rendering approaches</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Mobile_Development/05_vulkan_extensions.html">Vulkan extensions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Mobile_Development/06_conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Advanced Topics</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Advanced_Topics/01_introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Advanced_Topics/Rendering_Pipeline_Overview.html">Rendering pipeline overview</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Advanced_Topics/Forward_ForwardPlus_Deferred.html">Forward vs Forward+ vs Deferred</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Advanced_Topics/ForwardPlus_Rendering.html">Forward+ rendering</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Advanced_Topics/Culling.html">Culling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Advanced_Topics/Mipmaps_and_LOD.html">Mipmaps &amp; LOD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Advanced_Topics/Push_Constants_Per_Object.html">Push constants per object</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Advanced_Topics/Synchronization_and_Streaming.html">Synchronization &amp; streaming</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Advanced_Topics/Synchronization_2_Frame_Pacing.html">Synchronization2 &amp; frame pacing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Advanced_Topics/Descriptor_Indexing_UpdateAfterBind.html">Descriptor indexing (UpdateAfterBind)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Advanced_Topics/Separate_Image_Sampler_Descriptors.html">Separate image/sampler descriptors</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Advanced_Topics/Shader_Tile_Image.html">Shader tile image</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Advanced_Topics/GLTF_Animation.html">glTF animation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Advanced_Topics/Planar_Reflections.html">Planar reflections</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Advanced_Topics/Ray_Query_Rendering.html">Ray query rendering</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Advanced_Topics/Ray_Query_Reflections_and_Transparency.html">Ray query: reflections &amp; transparency</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Advanced_Topics/Dynamic_Rendering_Local_Read.html">Dynamic rendering local read</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Advanced_Topics/Robustness2.html">Robustness2</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../Building_a_Simple_Engine/Appendix/appendix.html">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
 </ul>
   </li>
 </ul>
@@ -456,10 +744,10 @@ This will also allow us to load and draw basic 3D models in a future chapter.</p
 <div class="paragraph">
 <p>We&#8217;ve already worked with image objects before, but those were automatically created by the swap chain extension.
 This time we&#8217;ll have to create one by ourselves.
-Creating an image and filling it with data is similar to vertex buffer creation.
+Creating an image and filling it with data is similar to vertex buffer creation but with some added complexity due to how GPUs handle images.
 We&#8217;ll start by creating a staging resource and filling it with pixel data and then we copy this to the final image object that we&#8217;ll use for rendering.
-Although it is possible to create a staging image for this purpose, Vulkan also allows you to copy pixels from a <code>VkBuffer</code> to an image and the API for this is actually <a href="https://developer.nvidia.com/vulkan-memory-management">faster on some hardware</a>.
-We&#8217;ll first create this buffer and fill it with pixel values, and then we&#8217;ll create an image to copy the pixels to.
+Although it is possible to create a staging image for this purpose, Vulkan also allows you to directly copy pixels from a buffer to an image. That&#8217;s less verbose, less limited and usually <a href="https://developer.nvidia.com/vulkan-memory-management">faster</a>.
+For that we&#8217;ll first create such a buffer that is accessible by the host and fill it with pixel values, and then we&#8217;ll create an image to copy the pixels to.
 Creating an image is not very different from creating buffers.
 It involves querying the memory requirements, allocating device memory and binding it, just like we&#8217;ve seen before.</p>
 </div>
@@ -473,19 +761,19 @@ We&#8217;ve actually already seen some of these layouts when we specified the re
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_IMAGE_LAYOUT_PRESENT_SRC_KHR</code>: Optimal for presentation</p>
+<p><code>vk::ImageLayout::ePresentSrcKHR</code>: Optimal for presentation</p>
 </li>
 <li>
-<p><code>VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL</code>: Optimal as attachment for writing colors from the fragment shader</p>
+<p><code>vk::ImageLayout::eColorAttachmentOptimal</code>: Optimal as attachment for writing colors from the fragment shader</p>
 </li>
 <li>
-<p><code>VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL</code>: Optimal as source in a transfer operation, like <code>vkCmdCopyImageToBuffer</code></p>
+<p><code>vk::ImageLayout::eTransferSrcOptimal</code>: Optimal as source in a transfer operation, like <code>vkCmdCopyImageToBuffer</code></p>
 </li>
 <li>
-<p><code>VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL</code>: Optimal as destination in a transfer operation, like <code>vkCmdCopyBufferToImage</code></p>
+<p><code>vk::ImageLayout::eTransferDstOptimal</code>: Optimal as destination in a transfer operation, like <code>vkCmdCopyBufferToImage</code></p>
 </li>
 <li>
-<p><code>VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL</code>: Optimal for sampling from a shader</p>
+<p><code>vk::ImageLayout::eShaderReadOnlyOptimal</code>: Optimal for sampling from a shader</p>
 </li>
 </ul>
 </div>
@@ -493,7 +781,7 @@ We&#8217;ve actually already seen some of these layouts when we specified the re
 <p>One of the most common ways to transition the layout of an image is a <em>pipeline barrier</em>.
 Pipeline barriers are primarily used for synchronizing access to resources, like making sure that an image was written to before it is read, but they can also be used to transition layouts.
 In this chapter we&#8217;ll see how pipeline barriers are used for this purpose.
-Barriers can additionally be used to transfer queue family ownership when using <code>VK_SHARING_MODE_EXCLUSIVE</code>.</p>
+Barriers can additionally be used to transfer queue family ownership when using <code>vk::SharingMode::eExclusive</code>.</p>
 </div>
 </div>
 </div>
@@ -574,8 +862,22 @@ The pixels are laid out row by row with 4 bytes per pixel in the case of <code>S
 <h2 id="_staging_buffer"><a class="anchor" href="#_staging_buffer"></a>Staging buffer</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>We&#8217;re now going to create a buffer in host visible memory so that we can use <code>vkMapMemory</code> and copy the pixels to it.
-Add variables for this temporary buffer to the <code>createTextureImage</code> function:</p>
+<p>Next we need to upload the image to the GPU for optimal access during shader reads. For that we&#8217;re going to create a buffer in host visible memory that we can map to copy the pixels to. This buffer will be the source for copying that data to the GPU.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Images should always reside in GPU memory. Leaving them in host only visible memory would require the GPU to read data via the PCI interface for each frame, which has a much smaller bandwidth than the GPU&#8217;s memory. That would cause a big performance impact. Staging is the process of getting image data into the GPU&#8217;s memory. It is not always required, as devices may offer a memory type that&#8217;s both host visible and device local. It&#8217;s possible to skip staging on such configurations.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Add variables for this temporary buffer to the <code>createTextureImage</code> function:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -584,7 +886,7 @@ vk::raii::DeviceMemory stagingBufferMemory({});</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The buffer should be in host visible memory so that we can map it, and it should be usable as a transfer source so that we can copy it to an image later on:</p>
+<p>The buffer should be in host visible memory (<code>eHostVisible</code>) so that we can map it. It should also be host coherent (<code>eHostCoherent</code>), to ensure the data written to it is immediately available (and not cached in some way). And it should be usable as a transfer source ('eTransferSrc') so that we can copy it to an image later on:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -627,7 +929,7 @@ vk::raii::DeviceMemory textureImageMemory = nullptr;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The parameters for an image are specified in a <code>VkImageCreateInfo</code> struct:</p>
+<p>The parameters for an image are specified in a <code>vk::ImageCreateInfo</code> struct:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -648,23 +950,32 @@ Our texture will not be an array and we won&#8217;t be using mipmapping for now.
 <p>Vulkan supports many possible image formats, but we should use the same format for the texels as the pixels in the buffer, otherwise the copy operation will fail.</p>
 </div>
 <div class="paragraph">
-<p>The <code>tiling</code> field can have one of two values:</p>
+<p>The <code>tiling</code> file specifies how texels are arranged in memory. Vulkan supports two fundamentally different modes for this:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_IMAGE_TILING_LINEAR</code>: Texels are laid out in row-major order like our <code>pixels</code> array</p>
+<p><code>vk::ImageTiling::eOptimal</code>: Texels are laid out in an implementation-dependent arrangement. This results in a more efficient memory access.</p>
 </li>
 <li>
-<p><code>VK_IMAGE_TILING_OPTIMAL</code>: Texels are laid out in an implementation defined order for optimal access</p>
+<p><code>vk::ImageTiling::eLinear</code>: Texels are laid out in memory in row-major order, possibly with some padding on each row.</p>
 </li>
 </ul>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Linear tiled images are very limited. They e.g. may only work for 2D images, can&#8217;t be used for depth/stencil, can&#8217;t have multiple mip levels or layers. GPU access is also much slower than for optimal tiled images. So there are very little use cases for them.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>Unlike the layout of an image, the tiling mode cannot be changed at a later time.
-If you want to be able to directly access texels in the memory of the image, then you must use <code>VK_IMAGE_TILING_LINEAR</code>.
-We will be using a staging buffer instead of a staging image, so this won&#8217;t be necessary.
-We will be using <code>VK_IMAGE_TILING_OPTIMAL</code> for efficient access from the shader.</p>
+<p>Thus, we will be using <code>vk::ImageTiling::eOptimal</code> for efficient access from the shader.</p>
 </div>
 <div class="paragraph">
 <p>There are only two possible values for the <code>initialLayout</code> of an image:</p>
@@ -672,23 +983,25 @@ We will be using <code>VK_IMAGE_TILING_OPTIMAL</code> for efficient access from 
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_IMAGE_LAYOUT_UNDEFINED</code>: Not usable by the GPU and the very first transition will discard the texels.</p>
+<p><code>vk::ImageLayout::eUndefined</code>: Not usable by the GPU and the very first transition will discard the texels.</p>
 </li>
 <li>
-<p><code>VK_IMAGE_LAYOUT_PREINITIALIZED</code>: Not usable by the GPU, but the first transition will preserve the texels.</p>
+<p><code>vk::ImageLayout::ePreinitialized</code>: Not usable by the GPU, but the first transition will preserve the texels.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>There are few situations where it is necessary for the texels to be preserved during the first transition.
-One example, however, would be if you wanted to use an image as a staging image in combination with the <code>VK_IMAGE_TILING_LINEAR</code> layout.
-In that case, you&#8217;d want to upload the texel data to it and then transition the image to be a transfer source without losing the data.
-In our case, however, we&#8217;re first going to transition the image to be a transfer destination and then copy texel data to it from a buffer object, so we don&#8217;t need this property and can safely use <code>VK_IMAGE_LAYOUT_UNDEFINED</code>.</p>
+<p>There are very few situations where it is necessary for the texels to be preserved during the first transition.
+One example, however, would be if you wanted to use an linear tiled image as a staging image.
+In that case, you&#8217;d want to upload the texel data to it and then transition the image to be a transfer source without losing the data.</p>
+</div>
+<div class="paragraph">
+<p>In our case, however, we&#8217;re first going to transition the image to be a transfer destination and then copy texel data to it from a buffer object, so we don&#8217;t need this property and can safely use <code>vk::ImageLayout::eUndefined</code>.</p>
 </div>
 <div class="paragraph">
 <p>The <code>usage</code> field has the same semantics as the one during buffer creation.
 The image is going to be used as destination for the buffer copy, so it should be set up as a transfer destination.
-We also want to be able to access the image from the shader to color our mesh, so the usage should include <code>VK_IMAGE_USAGE_SAMPLED_BIT</code>.</p>
+We also want to be able to access the image from the shader to color our mesh, so the usage should include <code>vk::ImageUsageFlagBits::eSampled</code>.</p>
 </div>
 <div class="paragraph">
 <p>The image will only be used by one queue family: the one that supports graphics (and therefore also) transfer operations.</p>
@@ -703,12 +1016,12 @@ We won&#8217;t be using it in this tutorial, so leave it to its default value of
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">image = vk::raii::Image( device, imageInfo );</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">image = vk::raii::Image(device, imageInfo);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The image is created using <code>vkCreateImage</code>, which doesn&#8217;t have any particularly noteworthy parameters.
-It is possible that the <code>VK_FORMAT_R8G8B8A8_SRGB</code> format is not supported by the graphics hardware.
+<p>The image is created using the <code>vk::raii::Image</code> constructor, which doesn&#8217;t have any particularly noteworthy parameters.
+It is possible that the <code>vk::Format::eR8G8B8A8Srgb,</code> format is not supported by the graphics hardware.
 You should have a list of acceptable alternatives and go with the best one that is supported.
 However, support for this particular format is so widespread that we&#8217;ll skip this step.
 Using different formats would also require annoying conversions.
@@ -717,14 +1030,15 @@ We will get back to this in the depth buffer chapter, where we&#8217;ll implemen
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::MemoryRequirements memRequirements = image.getMemoryRequirements();
-vk::MemoryAllocateInfo allocInfo( memRequirements.size, findMemoryType(memRequirements.memoryTypeBits, properties) );
-imageMemory = vk::raii::DeviceMemory( device, allocInfo );
-image.bindMemory(*imageMemory, 0);</code></pre>
+vk::MemoryAllocateInfo allocInfo{.allocationSize  = memRequirements.size,
+                                    .memoryTypeIndex = findMemoryType(memRequirements.memoryTypeBits, properties)};
+imageMemory = vk::raii::DeviceMemory(device, allocInfo);
+image.bindMemory(imageMemory, 0);</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Allocating memory for an image works in exactly the same way as allocating memory for a buffer.
-Use <code>vkGetImageMemoryRequirements</code> instead of <code>vkGetBufferMemoryRequirements</code>, and use <code>vkBindImageMemory</code> instead of <code>vkBindBufferMemory</code>.</p>
+Use the default <code>vk::raii::DeviceMemory</code> constructor, and use <code>bindMemory</code> on the <code>image</code>.</p>
 </div>
 <div class="paragraph">
 <p>This function is already getting quite large and there&#8217;ll be a need to create more images in later chapters, so we should abstract image creation into a <code>createImage</code> function, like we did for buffers.
@@ -738,12 +1052,12 @@ Create the function and move the image object creation and memory allocation to 
         .samples = vk::SampleCountFlagBits::e1, .tiling = tiling,
         .usage = usage, .sharingMode = vk::SharingMode::eExclusive };
 
-    image = vk::raii::Image( device, imageInfo );
+    image = vk::raii::Image(device, imageInfo);
 
     vk::MemoryRequirements memRequirements = image.getMemoryRequirements();
     vk::MemoryAllocateInfo allocInfo{ .allocationSize = memRequirements.size,
                                         .memoryTypeIndex = findMemoryType(memRequirements.memoryTypeBits, properties) };
-    imageMemory = vk::raii::DeviceMemory( device, allocInfo );
+    imageMemory = vk::raii::DeviceMemory(device, allocInfo);
     image.bindMemory(imageMemory, 0);
 }</code></pre>
 </div>
@@ -838,7 +1152,7 @@ You can now simplify that function to:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If we were still using buffers, then we could now write a function to record and execute <code>vkCmdCopyBufferToImage</code> to finish the job, but this command requires the image to be in the right layout first.
+<p>If we were still using buffers, then we could now write a function to record and execute <code>copyBufferToImage</code> to finish the job, but this command requires the image to be in the right layout first.
 Create a new function to handle layout transitions:</p>
 </div>
 <div class="listingblock">
@@ -852,7 +1166,7 @@ Create a new function to handle layout transitions:</p>
 </div>
 <div class="paragraph">
 <p>One of the most common ways to perform layout transitions is using an <em>image memory barrier</em>.
-A pipeline barrier like that is generally used to synchronize access to resources, like ensuring that a write to a buffer completes before reading from it, but it can also be used to transition image layouts and transfer queue family ownership when <code>VK_SHARING_MODE_EXCLUSIVE</code> is used.
+A pipeline barrier like that is generally used to synchronize access to resources, like ensuring that a write to a buffer completes before reading from it, but it can also be used to transition image layouts and transfer queue family ownership when <code>vk::SharingMode::eExclusive</code> is used.
 There is an equivalent <em>buffer memory barrier</em> to do this for buffers.</p>
 </div>
 <div class="listingblock">
@@ -862,7 +1176,7 @@ There is an equivalent <em>buffer memory barrier</em> to do this for buffers.</p
 </div>
 <div class="paragraph">
 <p><code>oldLayout</code> and <code>newLayout</code> specify the the layout transition.
-It is possible to use <code>VK_IMAGE_LAYOUT_UNDEFINED</code> as <code>oldLayout</code> if you don&#8217;t care about the existing contents of the image.</p>
+It is possible to use <code>vk::ImageLayout::eUndefined</code> as <code>oldLayout</code> if you don&#8217;t care about the existing contents of the image.</p>
 </div>
 <div class="paragraph">
 <p>If you are using the barrier to transfer queue family ownership, then <code>oldLayout</code> and <code>newLayout</code> fields should be the indices of the queue families.
@@ -874,12 +1188,12 @@ Our image is not an array and does not have mipmapping levels, so only one level
 </div>
 <div class="paragraph">
 <p>Barriers are primarily used for synchronization purposes, so you must specify which types of operations that involve the resource must happen before the barrier, and which operations that involve the resource must wait on the barrier.
-We need to do that despite already using <code>vkQueueWaitIdle</code> to manually synchronize.
+We need to do that despite already using <code>queue.waitIdle()</code> to manually synchronize.
 The right values depend on the old and new layout, so we&#8217;ll get back to this once we&#8217;ve figured out which transitions we&#8217;re going to use.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffer.pipelineBarrier( sourceStage, destinationStage, {}, {}, nullptr, barrier );</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffer.pipelineBarrier(sourceStage, destinationStage, {}, {}, nullptr, barrier);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -888,11 +1202,11 @@ The first parameter after the command buffer specifies in which pipeline stage t
 The second parameter specifies the pipeline stage in which operations will wait on the barrier.
 The pipeline stages that you are allowed to specify before and after the barrier depend on how you use the resource before and after the barrier.
 The allowed values are listed in <a href="https://docs.vulkan.org/spec/latest/chapters/synchronization.html#synchronization-access-types-supported">this table</a> of the specification.
-For example, if you&#8217;re going to read from a uniform after the barrier, you would specify a usage of <code>VK_ACCESS_UNIFORM_READ_BIT</code> and the earliest shader that will read from the uniform as pipeline stage, for example <code>VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT</code>.
+For example, if you&#8217;re going to read from a uniform after the barrier, you would specify a usage of <code>vk::AccessFlagBits::eUniformRead</code> and the earliest shader that will read from the uniform as pipeline stage, for example <code>vk::PipelineStageFlagBits::eFragmentShader</code>.
 It would not make sense to specify a non-shader pipeline stage for this type of usage and the validation layers will warn you when you specify a pipeline stage that does not match the type of usage.</p>
 </div>
 <div class="paragraph">
-<p>The third parameter is either <code>0</code> or <code>VK_DEPENDENCY_BY_REGION_BIT</code>.
+<p>The third parameter is either <code>0</code> or <code>vk::DependencyFlagBits::eByRegion</code>.
 The latter turns the barrier into a per-region condition.
 That means that the implementation is allowed to already begin reading from the parts of a resource that were written so far, for example.</p>
 </div>
@@ -919,7 +1233,7 @@ Note that we&#8217;re not using the <code>VkFormat</code> parameter yet, but we&
 </div>
 <div class="paragraph">
 <p>Just like with buffer copies, you need to specify which part of the buffer is going to be copied to which part of the image.
-This happens through <code>VkBufferImageCopy</code> structs:</p>
+This happens through <code>vk::BufferImageCopy</code> structs:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -940,13 +1254,15 @@ The <code>imageSubresource</code>, <code>imageOffset</code> and <code>imageExten
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffer.copyBufferToImage(buffer, image, vk::ImageLayout::eTransferDstOptimal, {region});</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffer.copyBufferToImage(buffer, image, vk::ImageLayout::eTransferDstOptimal, {region});
+// Submit the buffer copy to the graphics queue
+endSingleTimeCommands(*commandBuffer);</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The fourth parameter indicates which layout the image is currently using.
 I&#8217;m assuming here that the image has already been transitioned to the layout that is optimal for copying pixels to.
-Right now we&#8217;re only copying one chunk of pixels to the whole image, but it&#8217;s possible to specify an array of <code>VkBufferImageCopy</code> to perform many different copies from this buffer to the image in one operation.</p>
+Right now we&#8217;re only copying one chunk of pixels to the whole image, but it&#8217;s possible to specify an array of <code>vk::BufferImageCopy</code> to perform many different copies from this buffer to the image in one operation.</p>
 </div>
 </div>
 </div>
@@ -962,7 +1278,7 @@ This involves two steps:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Transition the texture image to <code>VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL</code></p>
+<p>Transition the texture image to <code>vk::ImageLayout::eTransferDstOptimal</code></p>
 </li>
 <li>
 <p>Execute the buffer to image copy operation</p>
@@ -979,7 +1295,7 @@ copyBufferToImage(stagingBuffer, textureImage, static_cast&lt;uint32_t&gt;(texWi
 </div>
 </div>
 <div class="paragraph">
-<p>The image was created with the <code>VK_IMAGE_LAYOUT_UNDEFINED</code> layout, so that one should be specified as old layout when transitioning <code>textureImage</code>.
+<p>The image was created with the <code>vk::ImageLayout::eUndefined</code> layout, so that one should be specified as old layout when transitioning <code>textureImage</code>.
 Remember that we can do this because we don&#8217;t care about its contents before performing the copy operation.</p>
 </div>
 <div class="paragraph">
@@ -1036,13 +1352,14 @@ if (oldLayout == vk::ImageLayout::eUndefined &amp;&amp; newLayout == vk::ImageLa
     throw std::invalid_argument("unsupported layout transition!");
 }
 
-commandBuffer.pipelineBarrier( sourceStage, destinationStage, {}, {}, nullptr, barrier );</code></pre>
+commandBuffer.pipelineBarrier(sourceStage, destinationStage, {}, {}, nullptr, barrier);
+endSingleTimeCommands(*commandBuffer);</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>As you can see in the aforementioned table, transfer writes must occur in the pipeline transfer stage.
-Since the writings don&#8217;t have to wait on anything, you may specify an empty access mask and the earliest possible pipeline stage <code>VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT</code> for the pre-barrier operations.
-It should be noted that <code>VK_PIPELINE_STAGE_TRANSFER_BIT</code> is not a <em>real</em> stage within the graphics and compute pipelines.
+Since the writings don&#8217;t have to wait on anything, you may specify an empty access mask and the earliest possible pipeline stage <code>vk::PipelineStageFlagBits::eTopOfPipe</code> for the pre-barrier operations.
+It should be noted that <code>vk::PipelineStageFlagBits::eTransfer</code> is not a <em>real</em> stage within the graphics and compute pipelines.
 It is more of a pseudo-stage where transfers happen.
 See <a href="https://docs.vulkan.org/spec/latest/chapters/synchronization.html#VkPipelineStageFlagBits">the documentation</a> for more information and other examples of pseudo-stages.</p>
 </div>
@@ -1054,13 +1371,13 @@ See <a href="https://docs.vulkan.org/spec/latest/chapters/synchronization.html#V
 The application should now run successfully, although there are of course no visual changes yet.</p>
 </div>
 <div class="paragraph">
-<p>One thing to note is that command buffer submission results in implicit <code>VK_ACCESS_HOST_WRITE_BIT</code> synchronization at the beginning.
-Since the <code>transitionImageLayout</code> function executes a command buffer with only a single command, you could use this implicit synchronization and set <code>srcAccessMask</code> to <code>0</code> if you ever needed a <code>VK_ACCESS_HOST_WRITE_BIT</code> dependency in a layout transition.
+<p>One thing to note is that command buffer submission results in implicit <code>vk::AccessFlagBits::eHostWrite</code> synchronization at the beginning.
+Since the <code>transitionImageLayout</code> function executes a command buffer with only a single command, you could use this implicit synchronization and set <code>srcAccessMask</code> to <code>0</code> if you ever needed a <code>vk::AccessFlagBits::eHostWrite</code> dependency in a layout transition.
 It&#8217;s up to you if you want to be explicit about it or not, but I&#8217;m personally not a fan of relying on these OpenGL-like "hidden" operations.</p>
 </div>
 <div class="paragraph">
-<p>There is actually a special type of image layout that supports all operations, <code>VK_IMAGE_LAYOUT_GENERAL</code>.
-The problem with it, of course, is that it doesn&#8217;t necessarily offer the best performance for any operation.
+<p>There is actually a special type of image layout that supports all operations, <code>vk::ImageLayout::eGeneral</code>.
+But unless using certain extensions, which we don&#8217;t do in the tutorial, using the general layout might come with a performance penalty as it may disable certain optimizations on some GPUs.
 It is required for some special cases, like using an image as both input and output, or for reading an image after it has left the preinitialized layout.</p>
 </div>
 <div class="paragraph">

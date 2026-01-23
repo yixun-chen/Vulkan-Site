@@ -47,15 +47,15 @@ typedef enum VkDescriptorSetLayoutCreateFlagBits {
 } VkDescriptorSetLayoutCreateFlagBits;
 
 * 
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT` specifies that
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](#) specifies that
 descriptor sets **must** not be allocated using this layout, and
 descriptors are instead pushed by [vkCmdPushDescriptorSet](vkCmdPushDescriptorSet.html).
 
 * 
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](#)
 specifies that descriptor sets using this layout **must** be allocated from
 a descriptor pool created with the
-`VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT` bit set.
+[VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](VkDescriptorPoolCreateFlagBits.html) bit set.
 Descriptor set layouts created with this bit set have alternate limits
 for the maximum number of descriptors per-stage and per-pipeline layout.
 The non-UpdateAfterBind limits only count descriptors in sets created
@@ -64,28 +64,28 @@ The UpdateAfterBind limits count all descriptors, but the limits **may** be
 higher than the non-UpdateAfterBind limits.
 
 * 
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_INDIRECT_BINDABLE_BIT_NV` specifies
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_INDIRECT_BINDABLE_BIT_NV](#) specifies
 that descriptor sets using this layout allows them to be bound with
 compute pipelines that are created with
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV` flag set to be used in
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](VkPipelineCreateFlagBits.html) flag set to be used in
 [Device-Generated Commands](../../../../spec/latest/chapters/device_generated_commands/generatedcommands.html#device-generated-commands).
 
 * 
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](#)
 specifies that this layout **must** only be used with descriptor buffers.
 
 * 
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](#)
 specifies that this is a layout only containing immutable samplers that
 **can** be bound by [vkCmdBindDescriptorBufferEmbeddedSamplersEXT](vkCmdBindDescriptorBufferEmbeddedSamplersEXT.html).
 Unlike normal immutable samplers, embedded immutable samplers do not
 require the application to provide them in a descriptor buffer.
 
 * 
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT` specifies
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT](#) specifies
 that descriptor sets using this layout **must** be allocated from a
 descriptor pool created with the
-`VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT` bit set.
+[VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT](VkDescriptorPoolCreateFlagBits.html) bit set.
 Descriptor set layouts created with this bit have no expressible limit
 for maximum number of descriptors per-stage.
 Host descriptor sets are limited only by available host memory, but **may**
@@ -95,7 +95,7 @@ UpdateAfterBind limits or non-UpdateAfterBind limits, whichever is
 larger.
 
 * 
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV` specifies that
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV](#) specifies that
 binding numbers in descriptor sets using this layout **may** represent
 different resources and/or types of resources in each stage.
 

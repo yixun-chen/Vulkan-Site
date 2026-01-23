@@ -30,22 +30,22 @@ typedef enum VkExternalMemoryHandleTypeFlagBitsNV {
 } VkExternalMemoryHandleTypeFlagBitsNV;
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_NV` specifies a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_NV](#) specifies a
 handle to memory returned by [vkGetMemoryWin32HandleNV](vkGetMemoryWin32HandleNV.html).
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV` specifies a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV](#) specifies a
 handle to memory returned by [vkGetMemoryWin32HandleNV](vkGetMemoryWin32HandleNV.html), or one
 duplicated from such a handle using `DuplicateHandle()`.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_BIT_NV` specifies a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_BIT_NV](#) specifies a
 valid NT handle to memory returned by
 `IDXGIResource1::CreateSharedHandle`, or a handle duplicated from such a
 handle using `DuplicateHandle()`.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_KMT_BIT_NV` specifies a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_KMT_BIT_NV](#) specifies a
 handle to memory returned by `IDXGIResource::GetSharedHandle()`.
 
 [VK_NV_external_memory_capabilities](VK_NV_external_memory_capabilities.html), [VkExternalMemoryHandleTypeFlagsNV](VkExternalMemoryHandleTypeFlagsNV.html)

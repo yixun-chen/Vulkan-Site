@@ -40,7 +40,7 @@ typedef enum VkFenceImportFlagBits {
 typedef VkFenceImportFlagBits VkFenceImportFlagBitsKHR;
 
 * 
-`VK_FENCE_IMPORT_TEMPORARY_BIT` specifies that the fence payload
+[VK_FENCE_IMPORT_TEMPORARY_BIT](#) specifies that the fence payload
 will be imported only temporarily, as described in
 [Importing Fence Payloads](../../../../spec/latest/chapters/synchronization.html#synchronization-fences-importing),
 regardless of the permanence of `handleType`.

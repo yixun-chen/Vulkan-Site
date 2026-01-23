@@ -165,7 +165,7 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_FOOTPRINT_FEATURES_NV`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_FOOTPRINT_FEATURES_NV](VkStructureType.html)
 
 * 
 [`ImageFootprintNV`](../../../../spec/latest/appendices/spirvenv.html#spirvenv-capabilities-table-ImageFootprintNV)

@@ -498,73 +498,73 @@ Extending [VkPipelineShaderStageCreateInfo](VkPipelineShaderStageCreateInfo.html
 * 
 Extending [VkObjectType](VkObjectType.html):
 
-`VK_OBJECT_TYPE_SHADER_EXT`
+[VK_OBJECT_TYPE_SHADER_EXT](VkObjectType.html)
 
 Extending [VkResult](VkResult.html):
 
 * 
-`VK_ERROR_INCOMPATIBLE_SHADER_BINARY_EXT`
+[VK_ERROR_INCOMPATIBLE_SHADER_BINARY_EXT](VkResult.html)
 
 * 
-`VK_INCOMPATIBLE_SHADER_BINARY_EXT`
+[VK_INCOMPATIBLE_SHADER_BINARY_EXT](VkResult.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_FEATURES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SHADER_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_SHADER_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SHADER_REQUIRED_SUBGROUP_SIZE_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_SHADER_REQUIRED_SUBGROUP_SIZE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_VERTEX_INPUT_ATTRIBUTE_DESCRIPTION_2_EXT`
+[VK_STRUCTURE_TYPE_VERTEX_INPUT_ATTRIBUTE_DESCRIPTION_2_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_VERTEX_INPUT_BINDING_DESCRIPTION_2_EXT`
+[VK_STRUCTURE_TYPE_VERTEX_INPUT_BINDING_DESCRIPTION_2_EXT](VkStructureType.html)
 
 If [VK_EXT_fragment_density_map](VK_EXT_fragment_density_map.html) is supported:
 
 * 
 Extending [VkShaderCreateFlagBitsEXT](VkShaderCreateFlagBitsEXT.html):
 
-`VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT`
+[VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT](VkShaderCreateFlagBitsEXT.html)
 
 If [VK_EXT_mesh_shader](VK_EXT_mesh_shader.html) or [VK_NV_mesh_shader](VK_NV_mesh_shader.html) is supported:
 
 * 
 Extending [VkShaderCreateFlagBitsEXT](VkShaderCreateFlagBitsEXT.html):
 
-`VK_SHADER_CREATE_NO_TASK_SHADER_BIT_EXT`
+[VK_SHADER_CREATE_NO_TASK_SHADER_BIT_EXT](VkShaderCreateFlagBitsEXT.html)
 
 If [VK_EXT_subgroup_size_control](VK_EXT_subgroup_size_control.html) or [Vulkan Version 1.3](../../../../spec/latest/appendices/versions.html#versions-1.3) is supported:
 
 * 
 Extending [VkShaderCreateFlagBitsEXT](VkShaderCreateFlagBitsEXT.html):
 
-`VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT`
+[VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT](VkShaderCreateFlagBitsEXT.html)
 
 * 
-`VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT`
+[VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT](VkShaderCreateFlagBitsEXT.html)
 
 If [VK_KHR_device_group](VK_KHR_device_group.html) or [Vulkan Version 1.1](../../../../spec/latest/appendices/versions.html#versions-1.1) is supported:
 
 * 
 Extending [VkShaderCreateFlagBitsEXT](VkShaderCreateFlagBitsEXT.html):
 
-`VK_SHADER_CREATE_DISPATCH_BASE_BIT_EXT`
+[VK_SHADER_CREATE_DISPATCH_BASE_BIT_EXT](VkShaderCreateFlagBitsEXT.html)
 
 If [VK_KHR_fragment_shading_rate](VK_KHR_fragment_shading_rate.html) is supported:
 
 * 
 Extending [VkShaderCreateFlagBitsEXT](VkShaderCreateFlagBitsEXT.html):
 
-`VK_SHADER_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_EXT`
+[VK_SHADER_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_EXT](VkShaderCreateFlagBitsEXT.html)
 
 **Example 1**
 

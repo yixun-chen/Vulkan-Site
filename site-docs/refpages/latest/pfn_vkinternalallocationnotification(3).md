@@ -22,7 +22,7 @@ PFN_vkInternalAllocationNotification - Application-defined memory allocation not
 The type of `pfnInternalAllocation` is:
 
 // Provided by VK_VERSION_1_0
-typedef void (VKAPI_PTR *PFN_vkInternalAllocationNotification)(
+typedef void (*PFN_vkInternalAllocationNotification)(
     void*                                       pUserData,
     size_t                                      size,
     VkInternalAllocationType                    allocationType,

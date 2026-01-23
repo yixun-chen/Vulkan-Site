@@ -110,10 +110,10 @@ Extending [VkDisplaySurfaceCreateInfoKHR](VkDisplaySurfaceCreateInfoKHR.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_DISPLAY_MODE_STEREO_PROPERTIES_NV`
+[VK_STRUCTURE_TYPE_DISPLAY_MODE_STEREO_PROPERTIES_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV`
+[VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV](VkStructureType.html)
 
 * 
 Revision 1, 2024-11-20 (Russell Chou)

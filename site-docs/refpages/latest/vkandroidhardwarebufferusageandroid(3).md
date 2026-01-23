@@ -66,7 +66,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAndroidHardwareBufferUsageANDROID-sType-sType) VUID-VkAndroidHardwareBufferUsageANDROID-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_USAGE_ANDROID`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_USAGE_ANDROID](VkStructureType.html)
 
 [VK_ANDROID_external_memory_android_hardware_buffer](VK_ANDROID_external_memory_android_hardware_buffer.html), [VkStructureType](VkStructureType.html)
 

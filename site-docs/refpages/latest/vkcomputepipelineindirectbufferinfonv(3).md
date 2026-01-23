@@ -72,7 +72,7 @@ feature **must** be enabled
 
 The pipeline creation flags in
 [VkComputePipelineCreateInfo](VkComputePipelineCreateInfo.html)::`flags` **must** include
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV`
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-VkComputePipelineIndirectBufferInfoNV-deviceAddress-09011) VUID-VkComputePipelineIndirectBufferInfoNV-deviceAddress-09011
@@ -85,8 +85,8 @@ returned by [vkGetPipelineIndirectMemoryRequirementsNV](vkGetPipelineIndirectMem
 [](#VUID-VkComputePipelineIndirectBufferInfoNV-deviceAddress-09012) VUID-VkComputePipelineIndirectBufferInfoNV-deviceAddress-09012
 
 `deviceAddress` **must** have been allocated from a buffer that was
-created with both the `VK_BUFFER_USAGE_TRANSFER_DST_BIT` and
-`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage flags set
+created with both the [VK_BUFFER_USAGE_TRANSFER_DST_BIT](VkBufferUsageFlagBits.html) and
+[VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flags set
 
 * 
 [](#VUID-VkComputePipelineIndirectBufferInfoNV-size-09013) VUID-VkComputePipelineIndirectBufferInfoNV-size-09013
@@ -107,7 +107,7 @@ feature **must** be enabled
 
 If `pipelineDeviceAddressCaptureReplay` is non-zero then that
 address **must** have been allocated with flag
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkMemoryAllocateFlagBits.html) set
 
 * 
 [](#VUID-VkComputePipelineIndirectBufferInfoNV-pipelineDeviceAddressCaptureReplay-09016) VUID-VkComputePipelineIndirectBufferInfoNV-pipelineDeviceAddressCaptureReplay-09016
@@ -127,7 +127,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkComputePipelineIndirectBufferInfoNV-sType-sType) VUID-VkComputePipelineIndirectBufferInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_INDIRECT_BUFFER_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_INDIRECT_BUFFER_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkComputePipelineIndirectBufferInfoNV-deviceAddress-parameter) VUID-VkComputePipelineIndirectBufferInfoNV-deviceAddress-parameter

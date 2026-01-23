@@ -45,7 +45,7 @@ One conversion is performed for each of the `infoCount` elements of
 `pInfos`.
 
 This command’s execution is synchronized using
-`VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV`.
+[VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](VkPipelineStageFlagBits2.html).
 
 Valid Usage
 
@@ -114,7 +114,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdConvertCooperativeVectorMatrixNV-commandBuffer-cmdpool) VUID-vkCmdConvertCooperativeVectorMatrixNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdConvertCooperativeVectorMatrixNV-renderpass) VUID-vkCmdConvertCooperativeVectorMatrixNV-renderpass

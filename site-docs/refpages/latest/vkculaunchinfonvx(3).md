@@ -46,7 +46,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCuLaunchInfoNVX-sType-sType) VUID-VkCuLaunchInfoNVX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CU_LAUNCH_INFO_NVX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CU_LAUNCH_INFO_NVX](VkStructureType.html)
 
 * 
 [](#VUID-VkCuLaunchInfoNVX-pNext-pNext) VUID-VkCuLaunchInfoNVX-pNext-pNext

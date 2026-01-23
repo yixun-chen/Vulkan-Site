@@ -15,6 +15,8 @@
 - [Validation and Profiling Playbook](#_validation_and_profiling_playbook)
 - [Validation_and_Profiling_Playbook](#_validation_and_profiling_playbook)
 - [Next Steps](#_next_steps)
+- [Explore Advanced Topics (Simple Engine Tutorials)](#_explore_advanced_topics_simple_engine_tutorials)
+- [Explore_Advanced_Topics_(Simple_Engine_Tutorials)](#_explore_advanced_topics_simple_engine_tutorials)
 - [Code Examples](#_code_examples)
 
 ## Content
@@ -218,11 +220,22 @@ Add automated startup probes that dump device/feature info to logs for field tel
 * 
 Expand the regression scene suite to cover TBR‑sensitive and bandwidth‑heavy paths.
 
+The following short, focused tutorials build directly on the Simple Engine and are great next steps:
+
+* 
+[Tutorials Index — browse all topics](../Advanced_Topics/01_introduction.html)
+
+* 
+[Mipmaps and LOD](../Advanced_Topics/Mipmaps_and_LOD.html) — practical guidance on stable texture sampling and anisotropy.
+
+* 
+[Dynamic Rendering Local Read](../Advanced_Topics/Dynamic_Rendering_Local_Read.html) — optimize same‑pass reads via tile/local memory when supported.
+
 The complete code for this chapter can be found in the following files:
 
-[Mobile Platform Integration C++ code](../../attachments/simple_engine/36_mobile_platform_integration.cpp)
-[Mobile Optimizations C++ code](../../attachments/simple_engine/37_mobile_optimizations.cpp)
-[TBR Optimizations C++ code](../../attachments/simple_engine/38_tbr_optimizations.cpp)
-[Mobile Extensions C++ code](../../attachments/simple_engine/39_mobile_extensions.cpp)
+[Mobile Platform Integration C++ code](../../_attachments/simple_engine/36_mobile_platform_integration.cpp)
+[Mobile Optimizations C++ code](../../_attachments/simple_engine/37_mobile_optimizations.cpp)
+[TBR Optimizations C++ code](../../_attachments/simple_engine/38_tbr_optimizations.cpp)
+[Mobile Extensions C++ code](../../_attachments/simple_engine/39_mobile_extensions.cpp)
 
-[Previous: Vulkan Extensions for Mobile](#05_vulkan_extensions.adoc) | [Back to Building a Simple Engine](../index.html)
+[Previous: Vulkan Extensions for Mobile](05_vulkan_extensions.html) | [Back to Building a Simple Engine](../../00_Introduction.html)

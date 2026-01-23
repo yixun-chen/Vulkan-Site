@@ -54,7 +54,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCommandBufferAllocateInfo-sType-sType) VUID-VkCommandBufferAllocateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkCommandBufferAllocateInfo-pNext-pNext) VUID-VkCommandBufferAllocateInfo-pNext-pNext

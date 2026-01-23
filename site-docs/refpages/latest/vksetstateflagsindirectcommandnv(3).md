@@ -20,7 +20,7 @@
 VkSetStateFlagsIndirectCommandNV - Structure specifying input data for a single state flag command token
 
 The `VkSetStateFlagsIndirectCommandNV` structure specifies the input
-data for the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV` token.
+data for the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV](VkIndirectCommandsTokenTypeNV.html) token.
 Which state is changed depends on the [VkIndirectStateFlagBitsNV](VkIndirectStateFlagBitsNV.html)
 specified at `VkIndirectCommandsLayoutNV` creation time.
 
@@ -32,8 +32,8 @@ typedef struct VkSetStateFlagsIndirectCommandNV {
 * 
 `data` encodes packed state that this command alters.
 
-Bit `0`: If set represents `VK_FRONT_FACE_CLOCKWISE`, otherwise
-`VK_FRONT_FACE_COUNTER_CLOCKWISE`
+Bit `0`: If set represents [VK_FRONT_FACE_CLOCKWISE](VkFrontFace.html), otherwise
+[VK_FRONT_FACE_COUNTER_CLOCKWISE](VkFrontFace.html)
 
 [VK_NV_device_generated_commands](VK_NV_device_generated_commands.html)
 

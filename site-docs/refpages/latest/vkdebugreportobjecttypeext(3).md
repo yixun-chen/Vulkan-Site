@@ -87,45 +87,45 @@ typedef enum VkDebugReportObjectTypeEXT {
 
 | [VkDebugReportObjectTypeEXT](#) | Vulkan Handle Type |
 | --- | --- |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT` | Unknown/Undefined Handle |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_INSTANCE_EXT` | [VkInstance](VkInstance.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_PHYSICAL_DEVICE_EXT` | [VkPhysicalDevice](VkPhysicalDevice.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_EXT` | [VkDevice](VkDevice.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_QUEUE_EXT` | [VkQueue](VkQueue.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_SEMAPHORE_EXT` | [VkSemaphore](VkSemaphore.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_BUFFER_EXT` | [VkCommandBuffer](VkCommandBuffer.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_FENCE_EXT` | [VkFence](VkFence.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_MEMORY_EXT` | [VkDeviceMemory](VkDeviceMemory.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_EXT` | [VkBuffer](VkBuffer.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_EXT` | [VkImage](VkImage.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_EVENT_EXT` | [VkEvent](VkEvent.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_QUERY_POOL_EXT` | [VkQueryPool](VkQueryPool.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_VIEW_EXT` | [VkBufferView](VkBufferView.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_VIEW_EXT` | [VkImageView](VkImageView.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_SHADER_MODULE_EXT` | [VkShaderModule](VkShaderModule.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_CACHE_EXT` | [VkPipelineCache](VkPipelineCache.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_LAYOUT_EXT` | [VkPipelineLayout](VkPipelineLayout.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_RENDER_PASS_EXT` | [VkRenderPass](VkRenderPass.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_EXT` | [VkPipeline](VkPipeline.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT_EXT` | [VkDescriptorSetLayout](VkDescriptorSetLayout.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_EXT` | [VkSampler](VkSampler.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_POOL_EXT` | [VkDescriptorPool](VkDescriptorPool.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_EXT` | [VkDescriptorSet](VkDescriptorSet.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_FRAMEBUFFER_EXT` | [VkFramebuffer](VkFramebuffer.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_POOL_EXT` | [VkCommandPool](VkCommandPool.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_SURFACE_KHR_EXT` | [VkSurfaceKHR](VkSurfaceKHR.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_SWAPCHAIN_KHR_EXT` | [VkSwapchainKHR](VkSwapchainKHR.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT` | [VkDebugReportCallbackEXT](VkDebugReportCallbackEXT.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_KHR_EXT` | [VkDisplayKHR](VkDisplayKHR.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_MODE_KHR_EXT` | [VkDisplayModeKHR](VkDisplayModeKHR.html) |
-| `VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_EXT` | [VkDescriptorUpdateTemplate](VkDescriptorUpdateTemplate.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT](#) | Unknown/Undefined Handle |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_INSTANCE_EXT](#) | [VkInstance](VkInstance.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_PHYSICAL_DEVICE_EXT](#) | [VkPhysicalDevice](VkPhysicalDevice.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_EXT](#) | [VkDevice](VkDevice.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_QUEUE_EXT](#) | [VkQueue](VkQueue.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_SEMAPHORE_EXT](#) | [VkSemaphore](VkSemaphore.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_BUFFER_EXT](#) | [VkCommandBuffer](VkCommandBuffer.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_FENCE_EXT](#) | [VkFence](VkFence.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_MEMORY_EXT](#) | [VkDeviceMemory](VkDeviceMemory.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_EXT](#) | [VkBuffer](VkBuffer.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_EXT](#) | [VkImage](VkImage.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_EVENT_EXT](#) | [VkEvent](VkEvent.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_QUERY_POOL_EXT](#) | [VkQueryPool](VkQueryPool.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_VIEW_EXT](#) | [VkBufferView](VkBufferView.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_VIEW_EXT](#) | [VkImageView](VkImageView.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_SHADER_MODULE_EXT](#) | [VkShaderModule](VkShaderModule.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_CACHE_EXT](#) | [VkPipelineCache](VkPipelineCache.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_LAYOUT_EXT](#) | [VkPipelineLayout](VkPipelineLayout.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_RENDER_PASS_EXT](#) | [VkRenderPass](VkRenderPass.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_EXT](#) | [VkPipeline](VkPipeline.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT_EXT](#) | [VkDescriptorSetLayout](VkDescriptorSetLayout.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_EXT](#) | [VkSampler](VkSampler.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_POOL_EXT](#) | [VkDescriptorPool](VkDescriptorPool.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_EXT](#) | [VkDescriptorSet](VkDescriptorSet.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_FRAMEBUFFER_EXT](#) | [VkFramebuffer](VkFramebuffer.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_POOL_EXT](#) | [VkCommandPool](VkCommandPool.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_SURFACE_KHR_EXT](#) | [VkSurfaceKHR](VkSurfaceKHR.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_SWAPCHAIN_KHR_EXT](#) | [VkSwapchainKHR](VkSwapchainKHR.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT](#) | [VkDebugReportCallbackEXT](VkDebugReportCallbackEXT.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_KHR_EXT](#) | [VkDisplayKHR](VkDisplayKHR.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_MODE_KHR_EXT](#) | [VkDisplayModeKHR](VkDisplayModeKHR.html) |
+| [VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_EXT](#) | [VkDescriptorUpdateTemplate](VkDescriptorUpdateTemplate.html) |
 
-|  | The primary expected use of `VK_ERROR_VALIDATION_FAILED_EXT` is for
+|  | The primary expected use of [VK_ERROR_VALIDATION_FAILED_EXT](VkResult.html) is for
 | --- | --- |
 validation layer testing to prevent invalid commands from reaching the ICD.
 It is not expected that an application would see this error code during
 normal use of the validation layers.
-If an application returns `VK_TRUE` in
+If an application returns [VK_TRUE](VK_TRUE.html) in
 [VkDebugUtilsMessengerCallbackDataEXT](VkDebugUtilsMessengerCallbackDataEXT.html), the validation layers will
 return this error code instead of passing the command down the dispatch
 chain. |

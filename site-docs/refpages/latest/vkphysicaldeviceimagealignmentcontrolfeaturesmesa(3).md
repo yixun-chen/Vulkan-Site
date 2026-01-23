@@ -49,7 +49,7 @@ If the `VkPhysicalDeviceImageAlignmentControlFeaturesMESA` structure is included
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceImageAlignmentControlFeaturesMESA`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceImageAlignmentControlFeaturesMESA-sType-sType) VUID-VkPhysicalDeviceImageAlignmentControlFeaturesMESA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA](VkStructureType.html)
 
 [VK_MESA_image_alignment_control](VK_MESA_image_alignment_control.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

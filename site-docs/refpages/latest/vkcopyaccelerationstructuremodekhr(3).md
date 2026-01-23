@@ -40,7 +40,7 @@ typedef enum VkCopyAccelerationStructureModeKHR {
 typedef VkCopyAccelerationStructureModeKHR VkCopyAccelerationStructureModeNV;
 
 * 
-`VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_KHR` creates a direct
+[VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_KHR](#) creates a direct
 copy of the acceleration structure specified in `src` into the one
 specified by `dst`.
 The `dst` acceleration structure **must** have been created with the
@@ -49,7 +49,7 @@ If `src` contains references to other acceleration structures,
 `dst` will reference the same acceleration structures.
 
 * 
-`VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR` creates a more
+[VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR](#) creates a more
     compact version of an acceleration structure `src` into `dst`.
     The acceleration structure `dst` **must** have been created with a size
     at least as large as that returned by
@@ -62,12 +62,12 @@ If `src` contains references to other acceleration structures,
     `dst` will reference the same acceleration structures.
 
 * 
-`VK_COPY_ACCELERATION_STRUCTURE_MODE_SERIALIZE_KHR` serializes the
+[VK_COPY_ACCELERATION_STRUCTURE_MODE_SERIALIZE_KHR](#) serializes the
 acceleration structure to a semi-opaque format which can be reloaded on
 a compatible implementation.
 
 * 
-`VK_COPY_ACCELERATION_STRUCTURE_MODE_DESERIALIZE_KHR` deserializes
+[VK_COPY_ACCELERATION_STRUCTURE_MODE_DESERIALIZE_KHR](#) deserializes
 the semi-opaque serialization format in the buffer to the acceleration
 structure.
 

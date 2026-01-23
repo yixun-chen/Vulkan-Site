@@ -96,7 +96,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeRateControlLayerInfoKHR-sType-sType) VUID-VkVideoEncodeRateControlLayerInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_RATE_CONTROL_LAYER_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_RATE_CONTROL_LAYER_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoEncodeRateControlLayerInfoKHR-pNext-pNext) VUID-VkVideoEncodeRateControlLayerInfoKHR-pNext-pNext

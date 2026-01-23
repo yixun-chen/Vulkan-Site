@@ -44,7 +44,7 @@ structure.
  `pipelineBinaryInternalCache`
 specifies that the implementation maintains a pipeline cache internal to
 the implementation.
-If this is `VK_TRUE`, applications **can** create pipeline binaries
+If this is [VK_TRUE](VK_TRUE.html), applications **can** create pipeline binaries
 with only a pipeline create info, and in this case, an implementation
 **may** be able to create a pipeline binary directly without application
 needing to capture the binary itself.
@@ -53,7 +53,7 @@ needing to capture the binary itself.
 
 `pipelineBinaryInternalCacheControl` specifies whether the driver’s
 internal cache **can** be disabled.
-If this property is `VK_TRUE`
+If this property is [VK_TRUE](VK_TRUE.html)
 [VkDevicePipelineBinaryInternalCacheControlKHR](VkDevicePipelineBinaryInternalCacheControlKHR.html)::`disableInternalCache`
 **can** be used to disable the driver’s internal cache, allowing an
 application to take full control of both memory and disk usage.
@@ -105,7 +105,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePipelineBinaryPropertiesKHR-sType-sType) VUID-VkPhysicalDevicePipelineBinaryPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_BINARY_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_BINARY_PROPERTIES_KHR](VkStructureType.html)
 
 [VK_KHR_pipeline_binary](VK_KHR_pipeline_binary.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

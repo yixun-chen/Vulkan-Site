@@ -41,8 +41,8 @@ structure.
 * 
  `externalMemoryRDMA` indicates
 whether the implementation has support for the
-`VK_MEMORY_PROPERTY_RDMA_CAPABLE_BIT_NV` memory property and the
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_RDMA_ADDRESS_BIT_NV` external memory
+[VK_MEMORY_PROPERTY_RDMA_CAPABLE_BIT_NV](VkMemoryPropertyFlagBits.html) memory property and the
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_RDMA_ADDRESS_BIT_NV](VkExternalMemoryHandleTypeFlagBits.html) external memory
 handle type.
 
 If the `VkPhysicalDeviceExternalMemoryRDMAFeaturesNV` structure is included in the `pNext` chain of the
@@ -51,7 +51,7 @@ If the `VkPhysicalDeviceExternalMemoryRDMAFeaturesNV` structure is included in t
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceExternalMemoryRDMAFeaturesNV`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -59,7 +59,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExternalMemoryRDMAFeaturesNV-sType-sType) VUID-VkPhysicalDeviceExternalMemoryRDMAFeaturesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_RDMA_FEATURES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_RDMA_FEATURES_NV](VkStructureType.html)
 
 [VK_NV_external_memory_rdma](VK_NV_external_memory_rdma.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

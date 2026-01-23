@@ -27,7 +27,7 @@ typedef enum VkIndirectStateFlagBitsNV {
 } VkIndirectStateFlagBitsNV;
 
 * 
-`VK_INDIRECT_STATE_FLAG_FRONTFACE_BIT_NV` allows to toggle the
+[VK_INDIRECT_STATE_FLAG_FRONTFACE_BIT_NV](#) allows to toggle the
 [VkFrontFace](VkFrontFace.html) rasterization state for subsequent drawing commands.
 
 [VK_NV_device_generated_commands](VK_NV_device_generated_commands.html), [VkIndirectStateFlagsNV](VkIndirectStateFlagsNV.html)

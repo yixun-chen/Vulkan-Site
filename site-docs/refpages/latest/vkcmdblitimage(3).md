@@ -127,8 +127,8 @@ a = aoffset +  `baseArrayCount`src
 
 These coordinates are used to sample from the source image, as described in
 [Image Operations chapter](../../../../spec/latest/chapters/textures.html#textures), with the filter mode equal to that
-of `filter`, a mipmap mode of `VK_SAMPLER_MIPMAP_MODE_NEAREST` and
-an address mode of `VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE`.
+of `filter`, a mipmap mode of [VK_SAMPLER_MIPMAP_MODE_NEAREST](VkSamplerMipmapMode.html) and
+an address mode of [VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](VkSamplerAddressMode.html).
 Implementations **must** clamp at the edge of the source image, and **may**
 additionally clamp to the edge of the source region.
 
@@ -148,10 +148,10 @@ When blitting 3D textures, slices in the destination region bounded by
 `dstOffsets`[0].z and `dstOffsets`[1].z are sampled from slices in
 the source region bounded by `srcOffsets`[0].z and
 `srcOffsets`[1].z.
-If the `filter` parameter is `VK_FILTER_LINEAR` then the value
+If the `filter` parameter is [VK_FILTER_LINEAR](VkFilter.html) then the value
 sampled from the source image is taken by doing linear filtering using the
 interpolated **z** coordinate represented by **w** in the previous equations.
-If the `filter` parameter is `VK_FILTER_NEAREST` then the value
+If the `filter` parameter is [VK_FILTER_NEAREST](VkFilter.html) then the value
 sampled from the source image is taken from the single nearest slice, with
 an implementation-dependent arithmetic rounding mode.
 
@@ -217,7 +217,7 @@ sampled during the blit operation
 [](#VUID-vkCmdBlitImage-srcImage-01999) VUID-vkCmdBlitImage-srcImage-01999
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of
-`srcImage` **must** contain `VK_FORMAT_FEATURE_BLIT_SRC_BIT`
+`srcImage` **must** contain [VK_FORMAT_FEATURE_BLIT_SRC_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-vkCmdBlitImage-srcImage-06421) VUID-vkCmdBlitImage-srcImage-06421
@@ -229,7 +229,7 @@ The [format features](../../../../spec/latest/chapters/resources.html#resources-
 [](#VUID-vkCmdBlitImage-srcImage-00219) VUID-vkCmdBlitImage-srcImage-00219
 
 `srcImage` **must** have been created with the
-`VK_IMAGE_USAGE_TRANSFER_SRC_BIT` usage flag set
+[VK_IMAGE_USAGE_TRANSFER_SRC_BIT](VkImageUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdBlitImage-srcImage-00220) VUID-vkCmdBlitImage-srcImage-00220
@@ -247,9 +247,9 @@ is executed on a `VkDevice`
 * 
 [](#VUID-vkCmdBlitImage-srcImageLayout-01398) VUID-vkCmdBlitImage-srcImageLayout-01398
 
-`srcImageLayout` **must** be `VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`,
-`VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL` or
-`VK_IMAGE_LAYOUT_GENERAL`
+`srcImageLayout` **must** be [VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html)
 
 * 
 [](#VUID-vkCmdBlitImage-srcImage-09459) VUID-vkCmdBlitImage-srcImage-09459
@@ -258,14 +258,14 @@ If `srcImage` and `dstImage` are the same, and an elements of
 `pRegions` contains the `srcSubresource` and
 `dstSubresource` with matching `mipLevel` and overlapping array
 layers, then the `srcImageLayout` and `dstImageLayout` **must** be
-`VK_IMAGE_LAYOUT_GENERAL`
-or `VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`
+[VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html)
+or [VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](VkImageLayout.html)
 
 * 
 [](#VUID-vkCmdBlitImage-dstImage-02000) VUID-vkCmdBlitImage-dstImage-02000
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of
-`dstImage` **must** contain `VK_FORMAT_FEATURE_BLIT_DST_BIT`
+`dstImage` **must** contain [VK_FORMAT_FEATURE_BLIT_DST_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-vkCmdBlitImage-dstImage-06422) VUID-vkCmdBlitImage-dstImage-06422
@@ -277,7 +277,7 @@ The [format features](../../../../spec/latest/chapters/resources.html#resources-
 [](#VUID-vkCmdBlitImage-dstImage-00224) VUID-vkCmdBlitImage-dstImage-00224
 
 `dstImage` **must** have been created with the
-`VK_IMAGE_USAGE_TRANSFER_DST_BIT` usage flag set
+[VK_IMAGE_USAGE_TRANSFER_DST_BIT](VkImageUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdBlitImage-dstImage-00225) VUID-vkCmdBlitImage-dstImage-00225
@@ -295,9 +295,9 @@ is executed on a `VkDevice`
 * 
 [](#VUID-vkCmdBlitImage-dstImageLayout-01399) VUID-vkCmdBlitImage-dstImageLayout-01399
 
-`dstImageLayout` **must** be `VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`,
-`VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL` or
-`VK_IMAGE_LAYOUT_GENERAL`
+`dstImageLayout` **must** be [VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html)
 
 * 
 [](#VUID-vkCmdBlitImage-srcImage-00229) VUID-vkCmdBlitImage-srcImage-00229
@@ -323,39 +323,39 @@ depth/stencil format, the other **must** have exactly the same format
 [](#VUID-vkCmdBlitImage-srcImage-00232) VUID-vkCmdBlitImage-srcImage-00232
 
 If `srcImage` was created with a depth/stencil format, `filter`
-**must** be `VK_FILTER_NEAREST`
+**must** be [VK_FILTER_NEAREST](VkFilter.html)
 
 * 
 [](#VUID-vkCmdBlitImage-srcImage-00233) VUID-vkCmdBlitImage-srcImage-00233
 
 `srcImage` **must** have been created with a `samples` value of
-`VK_SAMPLE_COUNT_1_BIT`
+[VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html)
 
 * 
 [](#VUID-vkCmdBlitImage-dstImage-00234) VUID-vkCmdBlitImage-dstImage-00234
 
 `dstImage` **must** have been created with a `samples` value of
-`VK_SAMPLE_COUNT_1_BIT`
+[VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html)
 
 * 
 [](#VUID-vkCmdBlitImage-filter-02001) VUID-vkCmdBlitImage-filter-02001
 
-If `filter` is `VK_FILTER_LINEAR`, then the
+If `filter` is [VK_FILTER_LINEAR](VkFilter.html), then the
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of `srcImage`
-**must** contain `VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`
+**must** contain [VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-vkCmdBlitImage-filter-02002) VUID-vkCmdBlitImage-filter-02002
 
-If `filter` is `VK_FILTER_CUBIC_EXT`, then the
+If `filter` is [VK_FILTER_CUBIC_EXT](VkFilter.html), then the
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of `srcImage`
-**must** contain `VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT`
+**must** contain [VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-vkCmdBlitImage-filter-00237) VUID-vkCmdBlitImage-filter-00237
 
-If `filter` is `VK_FILTER_CUBIC_EXT`, `srcImage` **must** be of
-type `VK_IMAGE_TYPE_2D`
+If `filter` is [VK_FILTER_CUBIC_EXT](VkFilter.html), `srcImage` **must** be of
+type [VK_IMAGE_TYPE_2D](VkImageType.html)
 
 * 
 [](#VUID-vkCmdBlitImage-srcSubresource-01705) VUID-vkCmdBlitImage-srcSubresource-01705
@@ -375,7 +375,7 @@ The `dstSubresource.mipLevel` member of each element of
 [](#VUID-vkCmdBlitImage-srcSubresource-01707) VUID-vkCmdBlitImage-srcSubresource-01707
 
 If `srcSubresource.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`,
+[VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html),
 `srcSubresource.baseArrayLayer` + 
 `srcSubresource.layerCount` of each element of `pRegions` **must**
 be less than or equal to the `arrayLayers` specified in
@@ -385,7 +385,7 @@ be less than or equal to the `arrayLayers` specified in
 [](#VUID-vkCmdBlitImage-dstSubresource-01708) VUID-vkCmdBlitImage-dstSubresource-01708
 
 If `dstSubresource.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`,
+[VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html),
 `dstSubresource.baseArrayLayer` + 
 `dstSubresource.layerCount` of each element of `pRegions` **must**
 be less than or equal to the `arrayLayers` specified in
@@ -395,13 +395,13 @@ be less than or equal to the `arrayLayers` specified in
 [](#VUID-vkCmdBlitImage-dstImage-02545) VUID-vkCmdBlitImage-dstImage-02545
 
 `dstImage` and `srcImage` **must** not have been created with
-`flags` containing `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`
+`flags` containing [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](VkImageCreateFlagBits.html)
 
 * 
 [](#VUID-vkCmdBlitImage-maintenance8-10207) VUID-vkCmdBlitImage-maintenance8-10207
 
 If the [`maintenance8`](../../../../spec/latest/chapters/features.html#features-maintenance8) feature is enabled
-and `srcImage` is of type `VK_IMAGE_TYPE_3D`, then for each
+and `srcImage` is of type [VK_IMAGE_TYPE_3D](VkImageType.html), then for each
 element of `pRegions`, `srcSubresource.baseArrayLayer` **must** be
 `0`, and `srcSubresource.layerCount` and
 `dstSubresource.layerCount` **must** each be `1`
@@ -410,7 +410,7 @@ element of `pRegions`, `srcSubresource.baseArrayLayer` **must** be
 [](#VUID-vkCmdBlitImage-maintenance8-10208) VUID-vkCmdBlitImage-maintenance8-10208
 
 If the [`maintenance8`](../../../../spec/latest/chapters/features.html#features-maintenance8) feature is enabled
-and `dstImage` is of type `VK_IMAGE_TYPE_3D`, then for each
+and `dstImage` is of type [VK_IMAGE_TYPE_3D](VkImageType.html), then for each
 element of `pRegions`, `dstSubresource.baseArrayLayer` **must** be
 `0`, and `srcSubresource.layerCount` and
 `dstSubresource.layerCount` **must** each be `1`
@@ -419,8 +419,8 @@ element of `pRegions`, `dstSubresource.baseArrayLayer` **must** be
 [](#VUID-vkCmdBlitImage-maintenance8-10579) VUID-vkCmdBlitImage-maintenance8-10579
 
 If the [`maintenance8`](../../../../spec/latest/chapters/features.html#features-maintenance8) feature is enabled,
-`dstImage` is `VK_IMAGE_TYPE_3D`, and `srcImage` is not of
-type `VK_IMAGE_TYPE_3D`, then for each element of `pRegions`,
+`dstImage` is [VK_IMAGE_TYPE_3D](VkImageType.html), and `srcImage` is not of
+type [VK_IMAGE_TYPE_3D](VkImageType.html), then for each element of `pRegions`,
 the absolute difference of the `z` member of each member of
 `dstOffsets` **must** equal `srcSubresource.layerCount`
 
@@ -428,8 +428,8 @@ the absolute difference of the `z` member of each member of
 [](#VUID-vkCmdBlitImage-maintenance8-10580) VUID-vkCmdBlitImage-maintenance8-10580
 
 If the [`maintenance8`](../../../../spec/latest/chapters/features.html#features-maintenance8) feature is enabled,
-`srcImage` is `VK_IMAGE_TYPE_3D`, and `dstImage` is not of
-type `VK_IMAGE_TYPE_3D`, then for each element of `pRegions`,
+`srcImage` is [VK_IMAGE_TYPE_3D](VkImageType.html), and `dstImage` is not of
+type [VK_IMAGE_TYPE_3D](VkImageType.html), then for each element of `pRegions`,
 the absolute difference of the `z` member of each member of
 `srcOffsets` **must** equal `dstSubresource.layerCount`
 
@@ -439,7 +439,7 @@ the absolute difference of the `z` member of each member of
     If
 the [`maintenance8`](../../../../spec/latest/chapters/features.html#features-maintenance8) feature is not enabled and
     either `srcImage` or `dstImage` is of type
-    `VK_IMAGE_TYPE_3D`, then for each element of `pRegions`,
+    [VK_IMAGE_TYPE_3D](VkImageType.html), then for each element of `pRegions`,
     `srcSubresource.baseArrayLayer` and
     `dstSubresource.baseArrayLayer` **must** each be `0`, and
     `srcSubresource.layerCount` and `dstSubresource.layerCount`
@@ -476,7 +476,7 @@ of `srcImage`
 * 
 [](#VUID-vkCmdBlitImage-srcImage-00245) VUID-vkCmdBlitImage-srcImage-00245
 
-If `srcImage` is of type `VK_IMAGE_TYPE_1D`, then for each
+If `srcImage` is of type [VK_IMAGE_TYPE_1D](VkImageType.html), then for each
 element of `pRegions`, `srcOffsets`[0].y **must** be `0` and
 `srcOffsets`[1].y **must** be `1`
 
@@ -491,8 +491,8 @@ less than or equal to the depth of the specified `srcSubresource` of
 * 
 [](#VUID-vkCmdBlitImage-srcImage-00247) VUID-vkCmdBlitImage-srcImage-00247
 
-If `srcImage` is of type `VK_IMAGE_TYPE_1D` or
-`VK_IMAGE_TYPE_2D`, then for each element of `pRegions`,
+If `srcImage` is of type [VK_IMAGE_TYPE_1D](VkImageType.html) or
+[VK_IMAGE_TYPE_2D](VkImageType.html), then for each element of `pRegions`,
 `srcOffsets`[0].z **must** be `0` and `srcOffsets`[1].z **must** be
 `1`
 
@@ -515,7 +515,7 @@ of `dstImage`
 * 
 [](#VUID-vkCmdBlitImage-dstImage-00250) VUID-vkCmdBlitImage-dstImage-00250
 
-If `dstImage` is of type `VK_IMAGE_TYPE_1D`, then for each
+If `dstImage` is of type [VK_IMAGE_TYPE_1D](VkImageType.html), then for each
 element of `pRegions`, `dstOffsets`[0].y **must** be `0` and
 `dstOffsets`[1].y **must** be `1`
 
@@ -530,8 +530,8 @@ less than or equal to the depth of the specified `dstSubresource` of
 * 
 [](#VUID-vkCmdBlitImage-dstImage-00252) VUID-vkCmdBlitImage-dstImage-00252
 
-If `dstImage` is of type `VK_IMAGE_TYPE_1D` or
-`VK_IMAGE_TYPE_2D`, then for each element of `pRegions`,
+If `dstImage` is of type [VK_IMAGE_TYPE_1D](VkImageType.html) or
+[VK_IMAGE_TYPE_2D](VkImageType.html), then for each element of `pRegions`,
 `dstOffsets`[0].z **must** be `0` and `dstOffsets`[1].z **must** be
 `1`
 
@@ -580,7 +580,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBlitImage-commandBuffer-cmdpool) VUID-vkCmdBlitImage-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBlitImage-renderpass) VUID-vkCmdBlitImage-renderpass

@@ -45,7 +45,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueryLowLatencySupportNV-sType-sType) VUID-VkQueryLowLatencySupportNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUERY_LOW_LATENCY_SUPPORT_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUERY_LOW_LATENCY_SUPPORT_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkQueryLowLatencySupportNV-pQueriedLowLatencyData-parameter) VUID-VkQueryLowLatencySupportNV-pQueriedLowLatencyData-parameter

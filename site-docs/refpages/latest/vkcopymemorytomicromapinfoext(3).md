@@ -59,7 +59,7 @@ serialized using [vkCmdCopyMicromapToMemoryEXT](vkCmdCopyMicromapToMemoryEXT.htm
 * 
 [](#VUID-VkCopyMemoryToMicromapInfoEXT-mode-07548) VUID-VkCopyMemoryToMicromapInfoEXT-mode-07548
 
-`mode` **must** be `VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT`
+`mode` **must** be [VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT](VkCopyMicromapModeEXT.html)
 
 * 
 [](#VUID-VkCopyMemoryToMicromapInfoEXT-src-07549) VUID-VkCopyMemoryToMicromapInfoEXT-src-07549
@@ -79,7 +79,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCopyMemoryToMicromapInfoEXT-sType-sType) VUID-VkCopyMemoryToMicromapInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COPY_MEMORY_TO_MICROMAP_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COPY_MEMORY_TO_MICROMAP_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkCopyMemoryToMicromapInfoEXT-pNext-pNext) VUID-VkCopyMemoryToMicromapInfoEXT-pNext-pNext

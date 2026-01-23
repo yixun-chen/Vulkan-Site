@@ -90,54 +90,54 @@ equal to
 * 
 [](#VUID-VkAccelerationStructureInfoNV-type-02425) VUID-VkAccelerationStructureInfoNV-type-02425
 
-If `type` is `VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NV` then
+If `type` is [VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NV](VkAccelerationStructureTypeKHR.html) then
 `geometryCount` **must** be `0`
 
 * 
 [](#VUID-VkAccelerationStructureInfoNV-type-02426) VUID-VkAccelerationStructureInfoNV-type-02426
 
-If `type` is `VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV`
+If `type` is [VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV](VkAccelerationStructureTypeKHR.html)
 then `instanceCount` **must** be `0`
 
 * 
 [](#VUID-VkAccelerationStructureInfoNV-type-02786) VUID-VkAccelerationStructureInfoNV-type-02786
 
-If `type` is `VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV`
+If `type` is [VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV](VkAccelerationStructureTypeKHR.html)
 then the `geometryType` member of each geometry in `pGeometries`
 **must** be the same
 
 * 
 [](#VUID-VkAccelerationStructureInfoNV-type-04623) VUID-VkAccelerationStructureInfoNV-type-04623
 
-`type` **must** not be `VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR`
+`type` **must** not be [VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](VkAccelerationStructureTypeKHR.html)
 
 * 
 [](#VUID-VkAccelerationStructureInfoNV-flags-02592) VUID-VkAccelerationStructureInfoNV-flags-02592
 
 If `flags` has the
-`VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_NV` bit set,
+[VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_NV](VkBuildAccelerationStructureFlagBitsKHR.html) bit set,
 then it **must** not have the
-`VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_NV` bit set
+[VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_NV](VkBuildAccelerationStructureFlagBitsKHR.html) bit set
 
 * 
 [](#VUID-VkAccelerationStructureInfoNV-scratch-02781) VUID-VkAccelerationStructureInfoNV-scratch-02781
 
 `scratch` **must** have been created with the
-`VK_BUFFER_USAGE_RAY_TRACING_BIT_NV` usage flag set
+[VK_BUFFER_USAGE_RAY_TRACING_BIT_NV](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-VkAccelerationStructureInfoNV-instanceData-02782) VUID-VkAccelerationStructureInfoNV-instanceData-02782
 
 If `instanceData` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `instanceData`
 **must** have been created with the
-`VK_BUFFER_USAGE_RAY_TRACING_BIT_NV` usage flag set
+[VK_BUFFER_USAGE_RAY_TRACING_BIT_NV](VkBufferUsageFlagBits.html) usage flag set
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkAccelerationStructureInfoNV-sType-sType) VUID-VkAccelerationStructureInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkAccelerationStructureInfoNV-pNext-pNext) VUID-VkAccelerationStructureInfoNV-pNext-pNext

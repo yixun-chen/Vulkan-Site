@@ -52,7 +52,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeProfileRgbConversionInfoVALVE-sType-sType) VUID-VkVideoEncodeProfileRgbConversionInfoVALVE-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_PROFILE_RGB_CONVERSION_INFO_VALVE`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_PROFILE_RGB_CONVERSION_INFO_VALVE](VkStructureType.html)
 
 [VK_VALVE_video_encode_rgb_conversion](VK_VALVE_video_encode_rgb_conversion.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

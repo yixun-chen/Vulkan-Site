@@ -42,7 +42,7 @@ structure.
 * 
  `provokingVertexLast` indicates
 whether the implementation supports the
-`VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT`
+[VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT](VkProvokingVertexModeEXT.html)
 [provoking vertex mode](../../../../spec/latest/chapters/vertexpostproc.html#VkProvokingVertexModeEXT) for flat shading.
 
 * 
@@ -52,8 +52,8 @@ of vertices within each primitive written by transform feedback will
 preserve the provoking vertex.
 This does not apply to triangle fan primitives when
 [    `transformFeedbackPreservesTriangleFanProvokingVertex`](../../../../spec/latest/chapters/limits.html#limits-transformFeedbackPreservesTriangleFanProvokingVertex) is
-`VK_FALSE`.
-`transformFeedbackPreservesProvokingVertex` **must** be `VK_FALSE`
+[VK_FALSE](VK_FALSE.html).
+`transformFeedbackPreservesProvokingVertex` **must** be [VK_FALSE](VK_FALSE.html)
 when the `[VK_EXT_transform_feedback](VK_EXT_transform_feedback.html)` extension is not supported.
 
 If the `VkPhysicalDeviceProvokingVertexFeaturesEXT` structure is included in the `pNext` chain of the
@@ -62,7 +62,7 @@ If the `VkPhysicalDeviceProvokingVertexFeaturesEXT` structure is included in the
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceProvokingVertexFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 When `VkPhysicalDeviceProvokingVertexFeaturesEXT` is in the `pNext`
@@ -74,7 +74,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceProvokingVertexFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceProvokingVertexFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROVOKING_VERTEX_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROVOKING_VERTEX_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_provoking_vertex](VK_EXT_provoking_vertex.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

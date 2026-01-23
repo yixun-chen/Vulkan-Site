@@ -47,7 +47,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueryPoolVideoEncodeFeedbackCreateInfoKHR-sType-sType) VUID-VkQueryPoolVideoEncodeFeedbackCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUERY_POOL_VIDEO_ENCODE_FEEDBACK_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUERY_POOL_VIDEO_ENCODE_FEEDBACK_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkQueryPoolVideoEncodeFeedbackCreateInfoKHR-encodeFeedbackFlags-parameter) VUID-VkQueryPoolVideoEncodeFeedbackCreateInfoKHR-encodeFeedbackFlags-parameter

@@ -21,7 +21,7 @@ VkRenderPassSampleLocationsBeginInfoEXT - Structure specifying sample locations 
 
 The image layout of the depth aspect of a depth/stencil attachment referring
 to an image created with
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT` is dependent
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](VkImageCreateFlagBits.html) is dependent
 on the last sample locations used to render to the image subresource, thus
 preserving the contents of such depth/stencil attachments across subpass
 boundaries requires the application to specify these sample locations
@@ -84,11 +84,11 @@ or to the final layout of the attachment in case the specified subpass
 is the last subpass using that attachment.
 In addition, if
 [VkPhysicalDeviceSampleLocationsPropertiesEXT](VkPhysicalDeviceSampleLocationsPropertiesEXT.html)::`variableSampleLocations`
-is `VK_FALSE`, each element of `pPostSubpassSampleLocations`
+is [VK_FALSE](VK_FALSE.html), each element of `pPostSubpassSampleLocations`
 **must** specify the sample location state that matches the sample
 locations used by all pipelines that will be bound to a command buffer
 during the specified subpass.
-If `variableSampleLocations` is `VK_TRUE`, the sample locations
+If `variableSampleLocations` is [VK_TRUE](VK_TRUE.html), the sample locations
 used for rasterization do not depend on
 `pPostSubpassSampleLocations`.
 
@@ -97,7 +97,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassSampleLocationsBeginInfoEXT-sType-sType) VUID-VkRenderPassSampleLocationsBeginInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderPassSampleLocationsBeginInfoEXT-pAttachmentInitialSampleLocations-parameter) VUID-VkRenderPassSampleLocationsBeginInfoEXT-pAttachmentInitialSampleLocations-parameter

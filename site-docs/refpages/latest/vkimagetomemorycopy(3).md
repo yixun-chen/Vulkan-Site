@@ -129,7 +129,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageToMemoryCopy-sType-sType) VUID-VkImageToMemoryCopy-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_TO_MEMORY_COPY`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_TO_MEMORY_COPY](VkStructureType.html)
 
 * 
 [](#VUID-VkImageToMemoryCopy-pNext-pNext) VUID-VkImageToMemoryCopy-pNext-pNext

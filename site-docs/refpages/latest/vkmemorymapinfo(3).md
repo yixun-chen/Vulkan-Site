@@ -55,7 +55,7 @@ memory object.
 
 * 
 `size` is the size of the memory range to map, or
-`VK_WHOLE_SIZE` to map from `offset` to the end of the
+[VK_WHOLE_SIZE](VK_WHOLE_SIZE.html) to map from `offset` to the end of the
 allocation.
 
 Valid Usage
@@ -73,20 +73,20 @@ Valid Usage
 * 
 [](#VUID-VkMemoryMapInfo-size-07960) VUID-VkMemoryMapInfo-size-07960
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be
+If `size` is not equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), `size` **must** be
 greater than `0`
 
 * 
 [](#VUID-VkMemoryMapInfo-size-07961) VUID-VkMemoryMapInfo-size-07961
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be
+If `size` is not equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), `size` **must** be
 less than or equal to the size of the `memory` minus `offset`
 
 * 
 [](#VUID-VkMemoryMapInfo-memory-07962) VUID-VkMemoryMapInfo-memory-07962
 
 `memory` **must** have been created with a memory type that reports
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT`
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
 [](#VUID-VkMemoryMapInfo-memory-07963) VUID-VkMemoryMapInfo-memory-07963
@@ -96,14 +96,14 @@ less than or equal to the size of the `memory` minus `offset`
 * 
 [](#VUID-VkMemoryMapInfo-flags-09569) VUID-VkMemoryMapInfo-flags-09569
 
-If `VK_MEMORY_MAP_PLACED_BIT_EXT` is set in `flags`, the
+If [VK_MEMORY_MAP_PLACED_BIT_EXT](VkMemoryMapFlagBits.html) is set in `flags`, the
 [`memoryMapPlaced`](../../../../spec/latest/chapters/features.html#features-memoryMapPlaced) feature **must** be
 enabled
 
 * 
 [](#VUID-VkMemoryMapInfo-flags-09570) VUID-VkMemoryMapInfo-flags-09570
 
-If `VK_MEMORY_MAP_PLACED_BIT_EXT` is set in `flags`, the
+If [VK_MEMORY_MAP_PLACED_BIT_EXT](VkMemoryMapFlagBits.html) is set in `flags`, the
 `pNext` chain **must** include a [VkMemoryMapPlacedInfoEXT](VkMemoryMapPlacedInfoEXT.html)
 structure and `VkMemoryMapPlacedInfoEXT`::`pPlacedAddress` **must**
 not be `NULL`
@@ -111,22 +111,22 @@ not be `NULL`
 * 
 [](#VUID-VkMemoryMapInfo-flags-09571) VUID-VkMemoryMapInfo-flags-09571
 
-If `VK_MEMORY_MAP_PLACED_BIT_EXT` is set in `flags` and the
+If [VK_MEMORY_MAP_PLACED_BIT_EXT](VkMemoryMapFlagBits.html) is set in `flags` and the
 [`memoryMapRangePlaced`](../../../../spec/latest/chapters/features.html#features-memoryMapRangePlaced) feature is
 not enabled, `offset` **must** be zero
 
 * 
 [](#VUID-VkMemoryMapInfo-flags-09572) VUID-VkMemoryMapInfo-flags-09572
 
-If `VK_MEMORY_MAP_PLACED_BIT_EXT` is set in `flags` and the
+If [VK_MEMORY_MAP_PLACED_BIT_EXT](VkMemoryMapFlagBits.html) is set in `flags` and the
 [`memoryMapRangePlaced`](../../../../spec/latest/chapters/features.html#features-memoryMapRangePlaced) feature is
-not enabled, `size` **must** be `VK_WHOLE_SIZE` or
+not enabled, `size` **must** be [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html) or
 `VkMemoryAllocateInfo`::`allocationSize`
 
 * 
 [](#VUID-VkMemoryMapInfo-flags-09573) VUID-VkMemoryMapInfo-flags-09573
 
-If `VK_MEMORY_MAP_PLACED_BIT_EXT` is set in `flags` and the
+If [VK_MEMORY_MAP_PLACED_BIT_EXT](VkMemoryMapFlagBits.html) is set in `flags` and the
 [`memoryMapRangePlaced`](../../../../spec/latest/chapters/features.html#features-memoryMapRangePlaced) feature is
 enabled, `offset` **must** be aligned to an integer multiple of
 `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT`::`minPlacedMemoryMapAlignment`
@@ -134,16 +134,16 @@ enabled, `offset` **must** be aligned to an integer multiple of
 * 
 [](#VUID-VkMemoryMapInfo-flags-09574) VUID-VkMemoryMapInfo-flags-09574
 
-If `VK_MEMORY_MAP_PLACED_BIT_EXT` is set in `flags` and
-`size` is not `VK_WHOLE_SIZE`, `size` **must** be aligned to an
+If [VK_MEMORY_MAP_PLACED_BIT_EXT](VkMemoryMapFlagBits.html) is set in `flags` and
+`size` is not [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), `size` **must** be aligned to an
 integer multiple of
 `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT`::`minPlacedMemoryMapAlignment`
 
 * 
 [](#VUID-VkMemoryMapInfo-flags-09651) VUID-VkMemoryMapInfo-flags-09651
 
-If `VK_MEMORY_MAP_PLACED_BIT_EXT` is set in `flags` and
-`size` is `VK_WHOLE_SIZE`,
+If [VK_MEMORY_MAP_PLACED_BIT_EXT](VkMemoryMapFlagBits.html) is set in `flags` and
+`size` is [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html),
 `VkMemoryAllocateInfo`::`allocationSize` **must** be aligned to an
 integer multiple of
 `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT`::`minPlacedMemoryMapAlignment`
@@ -151,17 +151,17 @@ integer multiple of
 * 
 [](#VUID-VkMemoryMapInfo-flags-09575) VUID-VkMemoryMapInfo-flags-09575
 
-If `VK_MEMORY_MAP_PLACED_BIT_EXT` is set in `flags`, the memory
+If [VK_MEMORY_MAP_PLACED_BIT_EXT](VkMemoryMapFlagBits.html) is set in `flags`, the memory
 object **must** not have been imported from a handle type of
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkMemoryMapInfo-sType-sType) VUID-VkMemoryMapInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_MAP_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_MAP_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkMemoryMapInfo-pNext-pNext) VUID-VkMemoryMapInfo-pNext-pNext

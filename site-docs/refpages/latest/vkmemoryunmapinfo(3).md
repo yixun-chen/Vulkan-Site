@@ -57,24 +57,24 @@ Valid Usage
 * 
 [](#VUID-VkMemoryUnmapInfo-flags-09579) VUID-VkMemoryUnmapInfo-flags-09579
 
-If `VK_MEMORY_UNMAP_RESERVE_BIT_EXT` is set in `flags`, the
+If [VK_MEMORY_UNMAP_RESERVE_BIT_EXT](VkMemoryUnmapFlagBits.html) is set in `flags`, the
 [`memoryUnmapReserve`](../../../../spec/latest/chapters/features.html#features-memoryUnmapReserve) **must** be
 enabled
 
 * 
 [](#VUID-VkMemoryUnmapInfo-flags-09580) VUID-VkMemoryUnmapInfo-flags-09580
 
-If `VK_MEMORY_UNMAP_RESERVE_BIT_EXT` is set in `flags`, the
+If [VK_MEMORY_UNMAP_RESERVE_BIT_EXT](VkMemoryUnmapFlagBits.html) is set in `flags`, the
 memory object **must** not have been imported from a handle type of
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](VkExternalMemoryHandleTypeFlagBits.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkMemoryUnmapInfo-sType-sType) VUID-VkMemoryUnmapInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkMemoryUnmapInfo-pNext-pNext) VUID-VkMemoryUnmapInfo-pNext-pNext

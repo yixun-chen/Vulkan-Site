@@ -64,7 +64,7 @@ variable-sized descriptor binding in the corresponding descriptor set
 layout.
 If the variable-sized descriptor binding in the corresponding descriptor set
 layout has a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) then
 `pDescriptorCounts`[i] specifies the binding’s capacity in bytes.
 If [VkDescriptorSetAllocateInfo](VkDescriptorSetAllocateInfo.html)::`pSetLayouts`[i] does not include
 a variable-sized descriptor binding, then `pDescriptorCounts`[i] is
@@ -83,7 +83,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDescriptorSetVariableDescriptorCountAllocateInfo-sType-sType) VUID-VkDescriptorSetVariableDescriptorCountAllocateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkDescriptorSetVariableDescriptorCountAllocateInfo-pDescriptorCounts-parameter) VUID-VkDescriptorSetVariableDescriptorCountAllocateInfo-pDescriptorCounts-parameter

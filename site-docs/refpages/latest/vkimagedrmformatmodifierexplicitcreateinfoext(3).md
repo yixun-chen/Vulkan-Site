@@ -74,7 +74,7 @@ chain, produce a valid image.
 (This validation is necessarily implementation-dependent and outside the
 scope of Vulkan, and therefore not described by valid usage requirements).
 If this validation fails, then [vkCreateImage](vkCreateImage.html) returns
-`VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT`.
+[VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT](VkResult.html).
 
 Valid Usage
 
@@ -117,7 +117,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageDrmFormatModifierExplicitCreateInfoEXT-sType-sType) VUID-VkImageDrmFormatModifierExplicitCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkImageDrmFormatModifierExplicitCreateInfoEXT-pPlaneLayouts-parameter) VUID-VkImageDrmFormatModifierExplicitCreateInfoEXT-pPlaneLayouts-parameter

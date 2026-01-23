@@ -53,8 +53,8 @@ Valid Usage
 [](#VUID-VkCopyAccelerationStructureInfoKHR-mode-03410) VUID-VkCopyAccelerationStructureInfoKHR-mode-03410
 
 `mode` **must** be
-`VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR` or
-`VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_KHR`
+[VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR](VkCopyAccelerationStructureModeKHR.html) or
+[VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_KHR](VkCopyAccelerationStructureModeKHR.html)
 
 * 
 [](#VUID-VkCopyAccelerationStructureInfoKHR-src-04963) VUID-VkCopyAccelerationStructureInfoKHR-src-04963
@@ -65,9 +65,9 @@ prior to the execution of this command
 * 
 [](#VUID-VkCopyAccelerationStructureInfoKHR-src-03411) VUID-VkCopyAccelerationStructureInfoKHR-src-03411
 
-If `mode` is `VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR`,
+If `mode` is [VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR](VkCopyAccelerationStructureModeKHR.html),
 `src` **must** have been constructed with
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR` in the
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR](VkBuildAccelerationStructureFlagBitsKHR.html) in the
 build
 
 * 
@@ -94,7 +94,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCopyAccelerationStructureInfoKHR-sType-sType) VUID-VkCopyAccelerationStructureInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COPY_ACCELERATION_STRUCTURE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COPY_ACCELERATION_STRUCTURE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkCopyAccelerationStructureInfoKHR-pNext-pNext) VUID-VkCopyAccelerationStructureInfoKHR-pNext-pNext

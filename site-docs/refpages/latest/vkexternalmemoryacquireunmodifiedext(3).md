@@ -43,12 +43,12 @@ typedef struct VkExternalMemoryAcquireUnmodifiedEXT {
 structure.
 
 * 
-`acquireUnmodifiedMemory` specifies, if `VK_TRUE`, that no range
+`acquireUnmodifiedMemory` specifies, if [VK_TRUE](VK_TRUE.html), that no range
 of [VkDeviceMemory](VkDeviceMemory.html) bound to the resource of the memory barrier’s
 subresource range was modified at any time since the resource’s most
 recent release of ownership to the queue family specified by the memory
 barrier’s `srcQueueFamilyIndex`.
-If `VK_FALSE`, it specifies nothing.
+If [VK_FALSE](VK_FALSE.html), it specifies nothing.
 
 If the application releases ownership of the subresource range to one of the
 special queue families reserved for external memory ownership transfers with
@@ -61,8 +61,8 @@ the *release operation* and the *acquire operation*, then the application
 because this **may** reduce the performance penalty.
 
 This structure is ignored if `acquireUnmodifiedMemory` is
-`VK_FALSE`.
-In particular, `VK_FALSE` does *not* specify that memory was modified.
+[VK_FALSE](VK_FALSE.html).
+In particular, [VK_FALSE](VK_FALSE.html) does *not* specify that memory was modified.
 
 This structure is ignored if the memory barrier’s `srcQueueFamilyIndex`
 is not a special queue family reserved for external memory ownership
@@ -90,7 +90,7 @@ Valid Usage
 * 
 [](#VUID-VkExternalMemoryAcquireUnmodifiedEXT-acquireUnmodifiedMemory-08922) VUID-VkExternalMemoryAcquireUnmodifiedEXT-acquireUnmodifiedMemory-08922
 
-If `acquireUnmodifiedMemory` is `VK_TRUE`, and the memory
+If `acquireUnmodifiedMemory` is [VK_TRUE](VK_TRUE.html), and the memory
 barrier’s `srcQueueFamilyIndex` is a special queue family reserved
 for external memory ownership transfers (as described in
 [Queue Family Ownership Transfer](../../../../spec/latest/chapters/synchronization.html#synchronization-queue-transfers)), then each range of
@@ -103,7 +103,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalMemoryAcquireUnmodifiedEXT-sType-sType) VUID-VkExternalMemoryAcquireUnmodifiedEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_EXT](VkStructureType.html)
 
 [VK_EXT_external_memory_acquire_unmodified](VK_EXT_external_memory_acquire_unmodified.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

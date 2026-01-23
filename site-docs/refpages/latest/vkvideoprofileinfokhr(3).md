@@ -76,7 +76,7 @@ When this structure is specified as an input parameter to
 indicate specific causes of the failure of the query operation:
 
 * 
-`VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR` specifies that the
+[VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR](VkResult.html) specifies that the
 requested video picture layout
 (e.g. through the `pictureLayout` member of a
 [VkVideoDecodeH264ProfileInfoKHR](VkVideoDecodeH264ProfileInfoKHR.html) structure included in the
@@ -84,17 +84,17 @@ requested video picture layout
 is not supported.
 
 * 
-`VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR` specifies that
+[VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR](VkResult.html) specifies that
 a video profile operation specified by `videoCodecOperation` is not
 supported.
 
 * 
-`VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR` specifies that
+[VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR](VkResult.html) specifies that
 video format parameters specified by `chromaSubsampling`,
 `lumaBitDepth`, or `chromaBitDepth` are not supported.
 
 * 
-`VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR` specifies that the
+[VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR](VkResult.html) specifies that the
 codec-specific parameters corresponding to the video codec operation are
 not supported.
 
@@ -114,56 +114,56 @@ Valid Usage
 [](#VUID-VkVideoProfileInfoKHR-chromaSubsampling-07015) VUID-VkVideoProfileInfoKHR-chromaSubsampling-07015
 
 If `chromaSubsampling` is not
-`VK_VIDEO_CHROMA_SUBSAMPLING_MONOCHROME_BIT_KHR`, then
+[VK_VIDEO_CHROMA_SUBSAMPLING_MONOCHROME_BIT_KHR](VkVideoChromaSubsamplingFlagBitsKHR.html), then
 `chromaBitDepth` **must** have a single bit set
 
 * 
 [](#VUID-VkVideoProfileInfoKHR-videoCodecOperation-07179) VUID-VkVideoProfileInfoKHR-videoCodecOperation-07179
 
 If `videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain **must** include a [VkVideoDecodeH264ProfileInfoKHR](VkVideoDecodeH264ProfileInfoKHR.html) structure
 
 * 
 [](#VUID-VkVideoProfileInfoKHR-videoCodecOperation-07180) VUID-VkVideoProfileInfoKHR-videoCodecOperation-07180
 
 If `videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain **must** include a [VkVideoDecodeH265ProfileInfoKHR](VkVideoDecodeH265ProfileInfoKHR.html) structure
 
 * 
 [](#VUID-VkVideoProfileInfoKHR-videoCodecOperation-10791) VUID-VkVideoProfileInfoKHR-videoCodecOperation-10791
 
 If `videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain **must** include a [VkVideoDecodeVP9ProfileInfoKHR](VkVideoDecodeVP9ProfileInfoKHR.html) structure
 
 * 
 [](#VUID-VkVideoProfileInfoKHR-videoCodecOperation-09256) VUID-VkVideoProfileInfoKHR-videoCodecOperation-09256
 
 If `videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain **must** include a [VkVideoDecodeAV1ProfileInfoKHR](VkVideoDecodeAV1ProfileInfoKHR.html) structure
 
 * 
 [](#VUID-VkVideoProfileInfoKHR-videoCodecOperation-07181) VUID-VkVideoProfileInfoKHR-videoCodecOperation-07181
 
 If `videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain **must** include a [VkVideoEncodeH264ProfileInfoKHR](VkVideoEncodeH264ProfileInfoKHR.html) structure
 
 * 
 [](#VUID-VkVideoProfileInfoKHR-videoCodecOperation-07182) VUID-VkVideoProfileInfoKHR-videoCodecOperation-07182
 
 If `videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain **must** include a [VkVideoEncodeH265ProfileInfoKHR](VkVideoEncodeH265ProfileInfoKHR.html) structure
 
 * 
 [](#VUID-VkVideoProfileInfoKHR-videoCodecOperation-10262) VUID-VkVideoProfileInfoKHR-videoCodecOperation-10262
 
 If `videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain **must** include a [VkVideoEncodeAV1ProfileInfoKHR](VkVideoEncodeAV1ProfileInfoKHR.html) structure
 
 Valid Usage (Implicit)
@@ -171,7 +171,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoProfileInfoKHR-sType-sType) VUID-VkVideoProfileInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_PROFILE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_PROFILE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoProfileInfoKHR-videoCodecOperation-parameter) VUID-VkVideoProfileInfoKHR-videoCodecOperation-parameter

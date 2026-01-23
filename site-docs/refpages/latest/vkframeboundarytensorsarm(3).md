@@ -48,7 +48,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFrameBoundaryTensorsARM-sType-sType) VUID-VkFrameBoundaryTensorsARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FRAME_BOUNDARY_TENSORS_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FRAME_BOUNDARY_TENSORS_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkFrameBoundaryTensorsARM-pTensors-parameter) VUID-VkFrameBoundaryTensorsARM-pTensors-parameter

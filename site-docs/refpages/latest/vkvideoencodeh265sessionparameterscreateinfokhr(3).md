@@ -21,7 +21,7 @@ VkVideoEncodeH265SessionParametersCreateInfoKHR - Structure specifies H.265 enco
 
 When a [video session parameters](../../../../spec/latest/chapters/videocoding.html#video-session-parameters) object is
 created with the codec operation
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR`, the
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), the
 [VkVideoSessionParametersCreateInfoKHR](VkVideoSessionParametersCreateInfoKHR.html)::`pNext` chain **must** include
 a `VkVideoEncodeH265SessionParametersCreateInfoKHR` structure specifying
 the capacity and initial contents of the object.
@@ -68,7 +68,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeH265SessionParametersCreateInfoKHR-sType-sType) VUID-VkVideoEncodeH265SessionParametersCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoEncodeH265SessionParametersCreateInfoKHR-pParametersAddInfo-parameter) VUID-VkVideoEncodeH265SessionParametersCreateInfoKHR-pParametersAddInfo-parameter

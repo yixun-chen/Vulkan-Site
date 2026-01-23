@@ -18,7 +18,7 @@
 
 VkDeviceAddressBindingTypeEXT - Enum describing a change in device address bindings
 
-The `VkDeviceAddressBindingTypeEXT` enum is defined as:
+The [VkDeviceAddressBindingTypeEXT](#) enum is defined as:
 
 // Provided by VK_EXT_device_address_binding_report
 typedef enum VkDeviceAddressBindingTypeEXT {
@@ -27,11 +27,11 @@ typedef enum VkDeviceAddressBindingTypeEXT {
 } VkDeviceAddressBindingTypeEXT;
 
 * 
-`VK_DEVICE_ADDRESS_BINDING_TYPE_BIND_EXT` specifies that a new
+[VK_DEVICE_ADDRESS_BINDING_TYPE_BIND_EXT](#) specifies that a new
 GPU-accessible virtual address range has been bound.
 
 * 
-`VK_DEVICE_ADDRESS_BINDING_TYPE_UNBIND_EXT` specifies that a
+[VK_DEVICE_ADDRESS_BINDING_TYPE_UNBIND_EXT](#) specifies that a
 GPU-accessible virtual address range has been unbound.
 
 [VK_EXT_device_address_binding_report](VK_EXT_device_address_binding_report.html), [VkDeviceAddressBindingCallbackDataEXT](VkDeviceAddressBindingCallbackDataEXT.html)

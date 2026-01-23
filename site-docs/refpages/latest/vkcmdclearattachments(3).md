@@ -61,27 +61,27 @@ Unlike other [clear commands](../../../../spec/latest/chapters/clears.html#clear
 transfer command.
 It performs its operations in [rasterization order](../../../../spec/latest/chapters/primsrast.html#primsrast-order).
 For color attachments, the operations are executed as color attachment
-writes, by the `VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT` stage.
+writes, by the [VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](VkPipelineStageFlagBits.html) stage.
 For depth/stencil attachments, the operations are executed as
 [depth writes](../../../../spec/latest/chapters/fragops.html#fragops-depth) and [stencil writes](../../../../spec/latest/chapters/fragops.html#fragops-stencil) by
-the `VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT` and
-`VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT` stages.
+the [VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT](VkPipelineStageFlagBits.html) and
+[VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT](VkPipelineStageFlagBits.html) stages.
 
 `vkCmdClearAttachments` is not affected by the bound pipeline state.
 
 |  | It is generally preferable to clear attachments by using the
 | --- | --- |
-`VK_ATTACHMENT_LOAD_OP_CLEAR` load operation at the start of rendering,
+[VK_ATTACHMENT_LOAD_OP_CLEAR](VkAttachmentLoadOp.html) load operation at the start of rendering,
 as it is more efficient on some implementations. |
 
 If any attachment’s `aspectMask` to be cleared is not backed by an image
 view, the clear has no effect on that aspect.
 
 If an attachment being cleared refers to an image view created with an
-`aspectMask` equal to one of `VK_IMAGE_ASPECT_PLANE_0_BIT`,
-`VK_IMAGE_ASPECT_PLANE_1_BIT` or `VK_IMAGE_ASPECT_PLANE_2_BIT`, it
-is considered to be `VK_IMAGE_ASPECT_COLOR_BIT` for purposes of this
-command, and **must** be cleared with the `VK_IMAGE_ASPECT_COLOR_BIT`
+`aspectMask` equal to one of [VK_IMAGE_ASPECT_PLANE_0_BIT](VkImageAspectFlagBits.html),
+[VK_IMAGE_ASPECT_PLANE_1_BIT](VkImageAspectFlagBits.html) or [VK_IMAGE_ASPECT_PLANE_2_BIT](VkImageAspectFlagBits.html), it
+is considered to be [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html) for purposes of this
+command, and **must** be cleared with the [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html)
 aspect as specified by [image view creation](../../../../spec/latest/chapters/resources.html#image-views-plane-promotion).
 
 Valid Usage
@@ -92,8 +92,8 @@ Valid Usage
 If
 the current render pass instance does not use dynamic rendering, and
 the `aspectMask` member of any element of `pAttachments`
-contains `VK_IMAGE_ASPECT_DEPTH_BIT`, the current subpass instance’s
-depth-stencil attachment **must** be either `VK_ATTACHMENT_UNUSED` or
+contains [VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html), the current subpass instance’s
+depth-stencil attachment **must** be either [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html) or
 the attachment `format` **must** contain a depth component
 
 * 
@@ -102,16 +102,16 @@ the attachment `format` **must** contain a depth component
 If
 the current render pass instance does not use dynamic rendering, and
 the `aspectMask` member of any element of `pAttachments`
-contains `VK_IMAGE_ASPECT_STENCIL_BIT`, the current subpass
+contains [VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html), the current subpass
 instance’s depth-stencil attachment **must** be either
-`VK_ATTACHMENT_UNUSED` or the attachment `format` **must** contain
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html) or the attachment `format` **must** contain
 a stencil component
 
 * 
 [](#VUID-vkCmdClearAttachments-aspectMask-07271) VUID-vkCmdClearAttachments-aspectMask-07271
 
 If the `aspectMask` member of any element of `pAttachments`
-contains `VK_IMAGE_ASPECT_COLOR_BIT`, the `colorAttachment`
+contains [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html), the `colorAttachment`
 **must** be a valid color attachment index in the current render pass
 instance
 
@@ -173,7 +173,7 @@ If the render pass instance this is recorded in uses multiview, then
 
 The `colorAttachment` member of each element of `pAttachments`
 **must** not identify a color attachment that is currently mapped to
-`VK_ATTACHMENT_UNUSED` in `commandBuffer` via
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html) in `commandBuffer` via
 [VkRenderingAttachmentLocationInfo](VkRenderingAttachmentLocationInfo.html)
 
 * 
@@ -221,7 +221,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdClearAttachments-commandBuffer-cmdpool) VUID-vkCmdClearAttachments-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdClearAttachments-renderpass) VUID-vkCmdClearAttachments-renderpass

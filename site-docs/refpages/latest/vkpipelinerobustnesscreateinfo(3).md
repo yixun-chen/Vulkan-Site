@@ -46,28 +46,28 @@ structure.
 `storageBuffers` sets the behavior of out of bounds accesses made to
 resources bound as:
 
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html)
 
 * 
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html)
 
 * 
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html)
 
 `uniformBuffers` describes the behavior of out of bounds accesses
 made to resources bound as:
 
 * 
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html)
 
 * 
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html)
 
 * 
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC`
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html)
 
 * 
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html)
 
 `vertexInputs` describes the behavior of out of bounds accesses made
 to vertex input attributes
@@ -76,12 +76,12 @@ to vertex input attributes
 resources bound as:
 
 * 
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html)
 
 * 
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html)
 
-Resources bound as `VK_DESCRIPTOR_TYPE_MUTABLE_EXT` will have the
+Resources bound as [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html) will have the
 robustness behavior that covers its active descriptor type.
 
 The scope of the effect of `VkPipelineRobustnessCreateInfo` depends on
@@ -122,102 +122,102 @@ Valid Usage
 
 If the [`pipelineRobustness`](../../../../spec/latest/chapters/features.html#features-pipelineRobustness) feature
 is not enabled, `storageBuffers` **must** be
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT`
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT](VkPipelineRobustnessBufferBehavior.html)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-pipelineRobustness-06927) VUID-VkPipelineRobustnessCreateInfo-pipelineRobustness-06927
 
 If the [`pipelineRobustness`](../../../../spec/latest/chapters/features.html#features-pipelineRobustness) feature
 is not enabled, `uniformBuffers` **must** be
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT`
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT](VkPipelineRobustnessBufferBehavior.html)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-pipelineRobustness-06928) VUID-VkPipelineRobustnessCreateInfo-pipelineRobustness-06928
 
 If the [`pipelineRobustness`](../../../../spec/latest/chapters/features.html#features-pipelineRobustness) feature
 is not enabled, `vertexInputs` **must** be
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT`
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT](VkPipelineRobustnessBufferBehavior.html)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-pipelineRobustness-06929) VUID-VkPipelineRobustnessCreateInfo-pipelineRobustness-06929
 
 If the [`pipelineRobustness`](../../../../spec/latest/chapters/features.html#features-pipelineRobustness) feature
 is not enabled, `images` **must** be
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DEVICE_DEFAULT`
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DEVICE_DEFAULT](VkPipelineRobustnessImageBehavior.html)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-robustImageAccess-06930) VUID-VkPipelineRobustnessCreateInfo-robustImageAccess-06930
 
 If the [`robustImageAccess`](../../../../spec/latest/chapters/features.html#features-robustImageAccess) feature
 is not supported, `images` **must** not be
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS`
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS](VkPipelineRobustnessImageBehavior.html)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-robustBufferAccess2-06931) VUID-VkPipelineRobustnessCreateInfo-robustBufferAccess2-06931
 
 If the [`robustBufferAccess2`](../../../../spec/latest/chapters/features.html#features-robustBufferAccess2)
 feature is not supported, `storageBuffers` **must** not be
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2`
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](VkPipelineRobustnessBufferBehavior.html)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-robustBufferAccess2-06932) VUID-VkPipelineRobustnessCreateInfo-robustBufferAccess2-06932
 
 If the [`robustBufferAccess2`](../../../../spec/latest/chapters/features.html#features-robustBufferAccess2)
 feature is not supported, `uniformBuffers` **must** not be
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2`
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](VkPipelineRobustnessBufferBehavior.html)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-robustBufferAccess2-06933) VUID-VkPipelineRobustnessCreateInfo-robustBufferAccess2-06933
 
 If the [`robustBufferAccess2`](../../../../spec/latest/chapters/features.html#features-robustBufferAccess2)
 feature is not supported, `vertexInputs` **must** not be
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2`
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](VkPipelineRobustnessBufferBehavior.html)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-robustImageAccess2-06934) VUID-VkPipelineRobustnessCreateInfo-robustImageAccess2-06934
 
 If the [`robustImageAccess2`](../../../../spec/latest/chapters/features.html#features-robustImageAccess2) feature
 is not supported, `images` **must** not be
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2`
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2](VkPipelineRobustnessImageBehavior.html)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-storageBuffers-10636) VUID-VkPipelineRobustnessCreateInfo-storageBuffers-10636
 
 If `storageBuffers` is
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2`, and
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](VkPipelineRobustnessBufferBehavior.html) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](VkPipelineRobustnessBufferBehavior.html), and
 either the [    `descriptorBindingStorageBufferUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingStorageBufferUpdateAfterBind) feature or the
 [    `descriptorBindingStorageTexelBufferUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingStorageTexelBufferUpdateAfterBind) feature is
-enabled on the device, [    `robustBufferAccessUpdateAfterBind`](../../../../spec/latest/chapters/devsandqueues.html#limits-robustBufferAccessUpdateAfterBind) **must** be `VK_TRUE`
+enabled on the device, [    `robustBufferAccessUpdateAfterBind`](../../../../spec/latest/chapters/devsandqueues.html#limits-robustBufferAccessUpdateAfterBind) **must** be [VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-uniformBuffers-10637) VUID-VkPipelineRobustnessCreateInfo-uniformBuffers-10637
 
 If `uniformBuffers` is
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2`, and
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](VkPipelineRobustnessBufferBehavior.html) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](VkPipelineRobustnessBufferBehavior.html), and
 either
 the [    `descriptorBindingInlineUniformBlockUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingInlineUniformBlockUpdateAfterBind) feature,
 the [    `descriptorBindingUniformBufferUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingUniformBufferUpdateAfterBind) feature, or the
 [    `descriptorBindingUniformTexelBufferUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingUniformTexelBufferUpdateAfterBind) feature is
-enabled on the device, [    `robustBufferAccessUpdateAfterBind`](../../../../spec/latest/chapters/devsandqueues.html#limits-robustBufferAccessUpdateAfterBind) **must** be `VK_TRUE`
+enabled on the device, [    `robustBufferAccessUpdateAfterBind`](../../../../spec/latest/chapters/devsandqueues.html#limits-robustBufferAccessUpdateAfterBind) **must** be [VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-images-10638) VUID-VkPipelineRobustnessCreateInfo-images-10638
 
 If `images` is
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2`, and
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS](VkPipelineRobustnessImageBehavior.html) or
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2](VkPipelineRobustnessImageBehavior.html), and
 either the [    `descriptorBindingStorageImageUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingStorageImageUpdateAfterBind) feature or the
 [    `descriptorBindingSampledImageUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-descriptorBindingSampledImageUpdateAfterBind) feature is enabled
-on the device, [    `robustBufferAccessUpdateAfterBind`](../../../../spec/latest/chapters/devsandqueues.html#limits-robustBufferAccessUpdateAfterBind) **must** be `VK_TRUE`
+on the device, [    `robustBufferAccessUpdateAfterBind`](../../../../spec/latest/chapters/devsandqueues.html#limits-robustBufferAccessUpdateAfterBind) **must** be [VK_TRUE](VK_TRUE.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-sType-sType) VUID-VkPipelineRobustnessCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_ROBUSTNESS_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_ROBUSTNESS_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineRobustnessCreateInfo-storageBuffers-parameter) VUID-VkPipelineRobustnessCreateInfo-storageBuffers-parameter

@@ -61,7 +61,7 @@ specifying the type of operation to perform.
 `srcAccelerationStructure` is a pointer to an existing acceleration
 structure that is to be used to update the
 `dstAccelerationStructure` acceleration structure when `mode` is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`.
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html).
 
 * 
 `dstAccelerationStructure` is a pointer to the target acceleration
@@ -96,18 +96,18 @@ The geometry index is available in ray shaders via the
 The geometry index is available to ray queries via the
 `OpRayQueryGetIntersectionGeometryIndexKHR` instruction.
 
-Setting `VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV` in `flags`
+Setting [VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV](VkBuildAccelerationStructureFlagBitsKHR.html) in `flags`
 indicates that this build is a motion top level acceleration structure.
 A motion top level uses instances of format
 [VkAccelerationStructureMotionInstanceNV](VkAccelerationStructureMotionInstanceNV.html) if
 [VkAccelerationStructureGeometryInstancesDataKHR](VkAccelerationStructureGeometryInstancesDataKHR.html)::`arrayOfPointers`
-is `VK_FALSE`.
+is [VK_FALSE](VK_FALSE.html).
 
 If
 [VkAccelerationStructureGeometryInstancesDataKHR](VkAccelerationStructureGeometryInstancesDataKHR.html)::`arrayOfPointers`
-is `VK_TRUE`, the pointer for each element of the array of instance
+is [VK_TRUE](VK_TRUE.html), the pointer for each element of the array of instance
 pointers consists of 4 bits of
-`VkAccelerationStructureMotionInstanceTypeNV` in the low 4 bits of the
+[VkAccelerationStructureMotionInstanceTypeNV](VkAccelerationStructureMotionInstanceTypeNV.html) in the low 4 bits of the
 pointer identifying the type of structure at the pointer.
 The device address accessed is the value in the array with the low 4 bits
 set to zero.
@@ -119,11 +119,11 @@ value encoded in the low 4 bits.
 
 A top level acceleration structure with either motion instances or vertex
 motion in its instances **must** set
-`VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV` in `flags`.
+[VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV](VkBuildAccelerationStructureFlagBitsKHR.html) in `flags`.
 
 Members `srcAccelerationStructure` and `dstAccelerationStructure`
 **may** be the same or different for an update operation (when `mode` is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`).
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](VkBuildAccelerationStructureModeKHR.html)).
 If they are the same, the update happens in-place.
 Otherwise, the target acceleration structure is updated and the source is
 not modified.
@@ -133,7 +133,7 @@ Valid Usage
 * 
 [](#VUID-VkAccelerationStructureBuildGeometryInfoKHR-type-03654) VUID-VkAccelerationStructureBuildGeometryInfoKHR-type-03654
 
-`type` **must** not be `VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR`
+`type` **must** not be [VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](VkAccelerationStructureTypeKHR.html)
 
 * 
 [](#VUID-VkAccelerationStructureBuildGeometryInfoKHR-pGeometries-03788) VUID-VkAccelerationStructureBuildGeometryInfoKHR-pGeometries-03788
@@ -144,61 +144,61 @@ If `geometryCount` is not `0`, exactly one of `pGeometries` or
 * 
 [](#VUID-VkAccelerationStructureBuildGeometryInfoKHR-type-03789) VUID-VkAccelerationStructureBuildGeometryInfoKHR-type-03789
 
-If `type` is `VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR`, the
+If `type` is [VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR](VkAccelerationStructureTypeKHR.html), the
 `geometryType` member of elements of either `pGeometries` or
-`ppGeometries` **must** be `VK_GEOMETRY_TYPE_INSTANCES_KHR`
+`ppGeometries` **must** be [VK_GEOMETRY_TYPE_INSTANCES_KHR](VkGeometryTypeKHR.html)
 
 * 
 [](#VUID-VkAccelerationStructureBuildGeometryInfoKHR-type-03790) VUID-VkAccelerationStructureBuildGeometryInfoKHR-type-03790
 
-If `type` is `VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR`,
+If `type` is [VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR](VkAccelerationStructureTypeKHR.html),
 `geometryCount` **must** be `1`
 
 * 
 [](#VUID-VkAccelerationStructureBuildGeometryInfoKHR-type-03791) VUID-VkAccelerationStructureBuildGeometryInfoKHR-type-03791
 
-If `type` is `VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR`
+If `type` is [VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR](VkAccelerationStructureTypeKHR.html)
 the `geometryType` member of elements of either `pGeometries` or
-`ppGeometries` **must** not be `VK_GEOMETRY_TYPE_INSTANCES_KHR`
+`ppGeometries` **must** not be [VK_GEOMETRY_TYPE_INSTANCES_KHR](VkGeometryTypeKHR.html)
 
 * 
 [](#VUID-VkAccelerationStructureBuildGeometryInfoKHR-type-03792) VUID-VkAccelerationStructureBuildGeometryInfoKHR-type-03792
 
-If `type` is `VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR`
+If `type` is [VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR](VkAccelerationStructureTypeKHR.html)
 then the `geometryType` member of each geometry in either
 `pGeometries` or `ppGeometries` **must** be the same
 
 * 
 [](#VUID-VkAccelerationStructureBuildGeometryInfoKHR-type-03793) VUID-VkAccelerationStructureBuildGeometryInfoKHR-type-03793
 
-If `type` is `VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR`
+If `type` is [VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR](VkAccelerationStructureTypeKHR.html)
 then `geometryCount` **must** be less than or equal to
 [VkPhysicalDeviceAccelerationStructurePropertiesKHR](VkPhysicalDeviceAccelerationStructurePropertiesKHR.html)::`maxGeometryCount`
 
 * 
 [](#VUID-VkAccelerationStructureBuildGeometryInfoKHR-type-10884) VUID-VkAccelerationStructureBuildGeometryInfoKHR-type-10884
 
-If `type` is `VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR`
+If `type` is [VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR](VkAccelerationStructureTypeKHR.html)
 and the `geometryType` member of either `pGeometries` or
 `ppGeometries` is
-`VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`, then
+[VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](VkGeometryTypeKHR.html), then
 `geometryCount` **must** be `1`
 
 * 
 [](#VUID-VkAccelerationStructureBuildGeometryInfoKHR-type-03794) VUID-VkAccelerationStructureBuildGeometryInfoKHR-type-03794
 
-If `type` is `VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR`
+If `type` is [VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR](VkAccelerationStructureTypeKHR.html)
 and the `geometryType` member of either `pGeometries` or
-`ppGeometries` is `VK_GEOMETRY_TYPE_AABBS_KHR`, the total number
+`ppGeometries` is [VK_GEOMETRY_TYPE_AABBS_KHR](VkGeometryTypeKHR.html), the total number
 of AABBs in all geometries **must** be less than or equal to
 [VkPhysicalDeviceAccelerationStructurePropertiesKHR](VkPhysicalDeviceAccelerationStructurePropertiesKHR.html)::`maxPrimitiveCount`
 
 * 
 [](#VUID-VkAccelerationStructureBuildGeometryInfoKHR-type-03795) VUID-VkAccelerationStructureBuildGeometryInfoKHR-type-03795
 
-If `type` is `VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR`
+If `type` is [VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR](VkAccelerationStructureTypeKHR.html)
 and the `geometryType` member of either `pGeometries` or
-`ppGeometries` is `VK_GEOMETRY_TYPE_TRIANGLES_KHR`, the total
+`ppGeometries` is [VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), the total
 number of triangles in all geometries **must** be less than or equal to
 [VkPhysicalDeviceAccelerationStructurePropertiesKHR](VkPhysicalDeviceAccelerationStructurePropertiesKHR.html)::`maxPrimitiveCount`
 
@@ -206,41 +206,41 @@ number of triangles in all geometries **must** be less than or equal to
 [](#VUID-VkAccelerationStructureBuildGeometryInfoKHR-flags-03796) VUID-VkAccelerationStructureBuildGeometryInfoKHR-flags-03796
 
 If `flags` has the
-`VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_KHR` bit set,
+[VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_KHR](VkBuildAccelerationStructureFlagBitsKHR.html) bit set,
 then it **must** not have the
-`VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_KHR` bit set
+[VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_KHR](VkBuildAccelerationStructureFlagBitsKHR.html) bit set
 
 * 
 [](#VUID-VkAccelerationStructureBuildGeometryInfoKHR-dstAccelerationStructure-04927) VUID-VkAccelerationStructureBuildGeometryInfoKHR-dstAccelerationStructure-04927
 
 If `dstAccelerationStructure` was created with
-`VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV` set in
+[VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV](VkAccelerationStructureCreateFlagBitsKHR.html) set in
 [VkAccelerationStructureCreateInfoKHR](VkAccelerationStructureCreateInfoKHR.html)::`createFlags`,
-`VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV` **must** be set in
+[VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV](VkBuildAccelerationStructureFlagBitsKHR.html) **must** be set in
 `flags`
 
 * 
 [](#VUID-VkAccelerationStructureBuildGeometryInfoKHR-flags-04928) VUID-VkAccelerationStructureBuildGeometryInfoKHR-flags-04928
 
-If `VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV` is set in
+If [VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV](VkBuildAccelerationStructureFlagBitsKHR.html) is set in
 `flags`, `dstAccelerationStructure` **must** have been created with
-`VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV` set in
+[VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV](VkAccelerationStructureCreateFlagBitsKHR.html) set in
 [VkAccelerationStructureCreateInfoKHR](VkAccelerationStructureCreateInfoKHR.html)::`createFlags`
 
 * 
 [](#VUID-VkAccelerationStructureBuildGeometryInfoKHR-flags-04929) VUID-VkAccelerationStructureBuildGeometryInfoKHR-flags-04929
 
-If `VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV` is set in
+If [VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV](VkBuildAccelerationStructureFlagBitsKHR.html) is set in
 `flags`, `type` **must** not be
-`VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR`
+[VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR](VkAccelerationStructureTypeKHR.html)
 
 * 
 [](#VUID-VkAccelerationStructureBuildGeometryInfoKHR-flags-07334) VUID-VkAccelerationStructureBuildGeometryInfoKHR-flags-07334
 
 If `flags` has the
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_UPDATE_BIT_EXT`
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_UPDATE_BIT_EXT](VkBuildAccelerationStructureFlagBitsKHR.html)
 bit set then it **must** not have the
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_DATA_UPDATE_BIT_EXT`
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_DATA_UPDATE_BIT_EXT](VkBuildAccelerationStructureFlagBitsKHR.html)
 bit set
 
 Valid Usage (Implicit)
@@ -248,7 +248,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureBuildGeometryInfoKHR-sType-sType) VUID-VkAccelerationStructureBuildGeometryInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkAccelerationStructureBuildGeometryInfoKHR-pNext-pNext) VUID-VkAccelerationStructureBuildGeometryInfoKHR-pNext-pNext

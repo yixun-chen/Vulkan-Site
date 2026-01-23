@@ -55,7 +55,7 @@ allowed, even if there is a concurrent update in progress adding some new
 entries to the object. |
 
 If `videoSessionParameters` was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR` and the
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and the
 `pUpdateInfo->pNext` chain includes a
 [VkVideoDecodeH264SessionParametersAddInfoKHR](VkVideoDecodeH264SessionParametersAddInfoKHR.html) structure, then this
 command adds the following parameter entries to
@@ -70,7 +70,7 @@ The [H.264 PPS](../../../../spec/latest/chapters/videocoding.html#decode-h264-pp
 [VkVideoDecodeH264SessionParametersAddInfoKHR](VkVideoDecodeH264SessionParametersAddInfoKHR.html)::`pStdPPSs`.
 
 If `videoSessionParameters` was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR` and the
+[VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and the
 `pUpdateInfo->pNext` chain includes a
 [VkVideoDecodeH265SessionParametersAddInfoKHR](VkVideoDecodeH265SessionParametersAddInfoKHR.html) structure, then this
 command adds the following parameter entries to
@@ -89,7 +89,7 @@ The [H.265 PPS](../../../../spec/latest/chapters/videocoding.html#decode-h265-pp
 [VkVideoDecodeH265SessionParametersAddInfoKHR](VkVideoDecodeH265SessionParametersAddInfoKHR.html)::`pStdPPSs`.
 
 If `videoSessionParameters` was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR` and the
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and the
 `pUpdateInfo->pNext` chain includes a
 [VkVideoEncodeH264SessionParametersAddInfoKHR](VkVideoEncodeH264SessionParametersAddInfoKHR.html) structure, then this
 command adds the following parameter entries to
@@ -104,7 +104,7 @@ The [H.264 PPS](../../../../spec/latest/chapters/videocoding.html#encode-h264-pp
 [VkVideoEncodeH264SessionParametersAddInfoKHR](VkVideoEncodeH264SessionParametersAddInfoKHR.html)::`pStdPPSs`.
 
 If `videoSessionParameters` was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR` and the
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and the
 `pUpdateInfo->pNext` chain includes a
 [VkVideoEncodeH265SessionParametersAddInfoKHR](VkVideoEncodeH265SessionParametersAddInfoKHR.html) structure, then this
 command adds the following parameter entries to
@@ -124,7 +124,7 @@ The [H.265 PPS](../../../../spec/latest/chapters/videocoding.html#encode-h265-pp
 
 In case of video session parameters objects created with a video encode
 operation, implementations **may** return the
-`VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR` error if any of the
+[VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR](VkResult.html) error if any of the
 specified Video Std parameters do not adhere to the syntactic or semantic
 requirements of the used video compression standard, or if values derived
 from parameters according to the rules defined by the used video compression
@@ -133,7 +133,7 @@ or the implementation.
 
 |  | Applications **should** not rely on the
 | --- | --- |
-`VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR` error being returned by any
+[VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR](VkResult.html) error being returned by any
 command as a means to verify Video Std parameters, as implementations are
 not required to report the error in any specific set of cases. |
 
@@ -150,7 +150,7 @@ Valid Usage
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07216) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07216
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR` and the
+operation [VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and the
 `pNext` chain of `pUpdateInfo` includes a
 [VkVideoDecodeH264SessionParametersAddInfoKHR](VkVideoDecodeH264SessionParametersAddInfoKHR.html) structure, then
 `videoSessionParameters` **must** not already contain a
@@ -162,7 +162,7 @@ operation `VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR` and the
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07217) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07217
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR`, then the
+operation [VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 number of `StdVideoH264SequenceParameterSet` entries already stored
 in it plus the value of the `stdSPSCount` member of the
 [VkVideoDecodeH264SessionParametersAddInfoKHR](VkVideoDecodeH264SessionParametersAddInfoKHR.html) structure included in
@@ -174,7 +174,7 @@ the `pUpdateInfo->pNext` chain **must** be less than or equal to the
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07218) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07218
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR` and the
+operation [VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and the
 `pNext` chain of `pUpdateInfo` includes a
 [VkVideoDecodeH264SessionParametersAddInfoKHR](VkVideoDecodeH264SessionParametersAddInfoKHR.html) structure, then
 `videoSessionParameters` **must** not already contain a
@@ -187,7 +187,7 @@ of the elements of
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07219) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07219
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR`, then the
+operation [VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 number of `StdVideoH264PictureParameterSet` entries already stored in
 it plus the value of the `stdPPSCount` member of the
 [VkVideoDecodeH264SessionParametersAddInfoKHR](VkVideoDecodeH264SessionParametersAddInfoKHR.html) structure included in
@@ -199,7 +199,7 @@ the `pUpdateInfo->pNext` chain **must** be less than or equal to the
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07220) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07220
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR` and the
+operation [VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and the
 `pNext` chain of `pUpdateInfo` includes a
 [VkVideoDecodeH265SessionParametersAddInfoKHR](VkVideoDecodeH265SessionParametersAddInfoKHR.html) structure, then
 `videoSessionParameters` **must** not already contain a
@@ -211,7 +211,7 @@ operation `VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR` and the
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07221) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07221
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR`, then the
+operation [VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 number of `StdVideoH265VideoParameterSet` entries already stored in
 it plus the value of the `stdVPSCount` member of the
 [VkVideoDecodeH265SessionParametersAddInfoKHR](VkVideoDecodeH265SessionParametersAddInfoKHR.html) structure included in
@@ -223,7 +223,7 @@ the `pUpdateInfo->pNext` chain **must** be less than or equal to the
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07222) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07222
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR` and the
+operation [VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and the
 `pNext` chain of `pUpdateInfo` includes a
 [VkVideoDecodeH265SessionParametersAddInfoKHR](VkVideoDecodeH265SessionParametersAddInfoKHR.html) structure, then
 `videoSessionParameters` **must** not already contain a
@@ -236,7 +236,7 @@ matching any of the elements of
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07223) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07223
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR`, then the
+operation [VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 number of `StdVideoH265SequenceParameterSet` entries already stored
 in it plus the value of the `stdSPSCount` member of the
 [VkVideoDecodeH265SessionParametersAddInfoKHR](VkVideoDecodeH265SessionParametersAddInfoKHR.html) structure included in
@@ -248,7 +248,7 @@ the `pUpdateInfo->pNext` chain **must** be less than or equal to the
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07224) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07224
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR` and the
+operation [VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and the
 `pNext` chain of `pUpdateInfo` includes a
 [VkVideoDecodeH265SessionParametersAddInfoKHR](VkVideoDecodeH265SessionParametersAddInfoKHR.html) structure, then
 `videoSessionParameters` **must** not already contain a
@@ -261,7 +261,7 @@ operation `VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR` and the
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07225) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07225
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR`, then the
+operation [VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 number of `StdVideoH265PictureParameterSet` entries already stored in
 it plus the value of the `stdPPSCount` member of the
 [VkVideoDecodeH265SessionParametersAddInfoKHR](VkVideoDecodeH265SessionParametersAddInfoKHR.html) structure included in
@@ -273,13 +273,13 @@ the `pUpdateInfo->pNext` chain **must** be less than or equal to the
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-09260) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-09260
 
 `videoSessionParameters` **must** not have been created with the video
-codec operation `VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR`
+codec operation [VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html)
 
 * 
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07226) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07226
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR` and the
+operation [VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and the
 `pNext` chain of `pUpdateInfo` includes a
 [VkVideoEncodeH264SessionParametersAddInfoKHR](VkVideoEncodeH264SessionParametersAddInfoKHR.html) structure, then
 `videoSessionParameters` **must** not already contain a
@@ -291,7 +291,7 @@ operation `VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR` and the
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-06441) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-06441
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR`, then the
+operation [VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 number of `StdVideoH264SequenceParameterSet` entries already stored
 in it plus the value of the `stdSPSCount` member of the
 [VkVideoEncodeH264SessionParametersAddInfoKHR](VkVideoEncodeH264SessionParametersAddInfoKHR.html) structure included in
@@ -303,7 +303,7 @@ the `pUpdateInfo->pNext` chain **must** be less than or equal to the
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07227) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07227
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR` and the
+operation [VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and the
 `pNext` chain of `pUpdateInfo` includes a
 [VkVideoEncodeH264SessionParametersAddInfoKHR](VkVideoEncodeH264SessionParametersAddInfoKHR.html) structure, then
 `videoSessionParameters` **must** not already contain a
@@ -316,7 +316,7 @@ of the elements of
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-06442) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-06442
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR`, then the
+operation [VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 number of `StdVideoH264PictureParameterSet` entries already stored in
 it plus the value of the `stdPPSCount` member of the
 [VkVideoEncodeH264SessionParametersAddInfoKHR](VkVideoEncodeH264SessionParametersAddInfoKHR.html) structure included in
@@ -328,7 +328,7 @@ the `pUpdateInfo->pNext` chain **must** be less than or equal to the
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07228) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07228
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR` and the
+operation [VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and the
 `pNext` chain of `pUpdateInfo` includes a
 [VkVideoEncodeH265SessionParametersAddInfoKHR](VkVideoEncodeH265SessionParametersAddInfoKHR.html) structure, then
 `videoSessionParameters` **must** not already contain a
@@ -340,7 +340,7 @@ operation `VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR` and the
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-06443) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-06443
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR`, then the
+operation [VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 number of `StdVideoH265VideoParameterSet` entries already stored in
 it plus the value of the `stdVPSCount` member of the
 [VkVideoEncodeH265SessionParametersAddInfoKHR](VkVideoEncodeH265SessionParametersAddInfoKHR.html) structure included in
@@ -352,7 +352,7 @@ the `pUpdateInfo->pNext` chain **must** be less than or equal to the
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07229) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07229
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR` and the
+operation [VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and the
 `pNext` chain of `pUpdateInfo` includes a
 [VkVideoEncodeH265SessionParametersAddInfoKHR](VkVideoEncodeH265SessionParametersAddInfoKHR.html) structure, then
 `videoSessionParameters` **must** not already contain a
@@ -365,7 +365,7 @@ matching any of the elements of
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-06444) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-06444
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR`, then the
+operation [VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 number of `StdVideoH265SequenceParameterSet` entries already stored
 in it plus the value of the `stdSPSCount` member of the
 [VkVideoEncodeH265SessionParametersAddInfoKHR](VkVideoEncodeH265SessionParametersAddInfoKHR.html) structure included in
@@ -377,7 +377,7 @@ the `pUpdateInfo->pNext` chain **must** be less than or equal to the
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07230) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-07230
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR` and the
+operation [VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and the
 `pNext` chain of `pUpdateInfo` includes a
 [VkVideoEncodeH265SessionParametersAddInfoKHR](VkVideoEncodeH265SessionParametersAddInfoKHR.html) structure, then
 `videoSessionParameters` **must** not already contain a
@@ -390,7 +390,7 @@ operation `VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR` and the
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-06445) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-06445
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR`, then the
+operation [VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 number of `StdVideoH265PictureParameterSet` entries already stored in
 it plus the value of the `stdPPSCount` member of the
 [VkVideoEncodeH265SessionParametersAddInfoKHR](VkVideoEncodeH265SessionParametersAddInfoKHR.html) structure included in
@@ -402,7 +402,7 @@ the `pUpdateInfo->pNext` chain **must** be less than or equal to the
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-08321) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-08321
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR` and the
+operation [VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and the
 `pNext` chain of `pUpdateInfo` includes a
 [VkVideoEncodeH265SessionParametersAddInfoKHR](VkVideoEncodeH265SessionParametersAddInfoKHR.html) structure, then
 `num_tile_columns_minus1` **must** be less than
@@ -415,7 +415,7 @@ of [VkVideoEncodeH265SessionParametersAddInfoKHR](VkVideoEncodeH265SessionParame
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-08322) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-08322
 
 If `videoSessionParameters` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR` and the
+operation [VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and the
 `pNext` chain of `pUpdateInfo` includes a
 [VkVideoEncodeH265SessionParametersAddInfoKHR](VkVideoEncodeH265SessionParametersAddInfoKHR.html) structure, then
 `num_tile_rows_minus1` **must** be less than
@@ -428,7 +428,7 @@ of [VkVideoEncodeH265SessionParametersAddInfoKHR](VkVideoEncodeH265SessionParame
 [](#VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-10281) VUID-vkUpdateVideoSessionParametersKHR-videoSessionParameters-10281
 
 `videoSessionParameters` **must** not have been created with the video
-codec operation `VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR`
+codec operation [VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html)
 
 Valid Usage (Implicit)
 
@@ -457,24 +457,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR`
+[VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_video_queue](VK_KHR_video_queue.html), [VkDevice](VkDevice.html), [VkVideoSessionParametersKHR](VkVideoSessionParametersKHR.html), [VkVideoSessionParametersUpdateInfoKHR](VkVideoSessionParametersUpdateInfoKHR.html)
 

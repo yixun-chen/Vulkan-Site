@@ -123,12 +123,12 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkImageCreateFlagBits](VkImageCreateFlagBits.html):
 
-`VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT`
+[VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT](VkImageCreateFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_2D_VIEW_OF_3D_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_2D_VIEW_OF_3D_FEATURES_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2022-03-25 (Mike Blumenkrantz)

@@ -41,29 +41,30 @@ typedef enum VkDependencyFlagBits {
 } VkDependencyFlagBits;
 
 * 
-`VK_DEPENDENCY_BY_REGION_BIT` specifies that dependencies will be
-[framebuffer-local](../../../../spec/latest/chapters/synchronization.html#synchronization-framebuffer-regions).
+[VK_DEPENDENCY_BY_REGION_BIT](#) specifies that dependencies will be
+split into multiple [    framebuffer-local regions](../../../../spec/latest/chapters/synchronization.html#synchronization-framebuffer-regions) according to the (x,y,layer,sample)
+coordinates.
 
 * 
-`VK_DEPENDENCY_VIEW_LOCAL_BIT` specifies that dependencies will be
-[view-local](../../../../spec/latest/chapters/synchronization.html#synchronization-view-local-dependencies).
+[VK_DEPENDENCY_VIEW_LOCAL_BIT](#) specifies that dependencies will be
+split into multiple [    framebuffer-local regions](../../../../spec/latest/chapters/synchronization.html#synchronization-framebuffer-regions) according to the view.
 
 * 
-`VK_DEPENDENCY_DEVICE_GROUP_BIT` specifies that dependencies are
+[VK_DEPENDENCY_DEVICE_GROUP_BIT](#) specifies that dependencies are
 [non-device-local](../../../../spec/latest/chapters/synchronization.html#synchronization-device-local-dependencies).
 
 * 
-`VK_DEPENDENCY_FEEDBACK_LOOP_BIT_EXT` specifies that the render pass
+[VK_DEPENDENCY_FEEDBACK_LOOP_BIT_EXT](#) specifies that the render pass
 will write to and read from the same image with
 [feedback loop enabled](../../../../spec/latest/chapters/renderpass.html#renderpass-feedbackloop).
 
 * 
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](#)
 specifies that source and destination stages are not ignored when
 performing a [queue family ownership    transfer](../../../../spec/latest/chapters/synchronization.html#synchronization-queue-transfers).
 
 * 
-`VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR` specifies that
+[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](#) specifies that
 [vkCmdSetEvent2](vkCmdSetEvent2.html) **must** only include the
 [source stage mask](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages-masks) of the
 first synchronization scope, and that [vkCmdWaitEvents2](vkCmdWaitEvents2.html) **must**

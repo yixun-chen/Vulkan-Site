@@ -29,12 +29,12 @@ typedef enum VkProvokingVertexModeEXT {
 } VkProvokingVertexModeEXT;
 
 * 
-`VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT` specifies that the
+[VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT](#) specifies that the
 provoking vertex is the first non-adjacency vertex in the list of
 vertices used by a primitive.
 
 * 
-`VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT` specifies that the
+[VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT](#) specifies that the
 provoking vertex is the last non-adjacency vertex in the list of
 vertices used by a primitive.
 

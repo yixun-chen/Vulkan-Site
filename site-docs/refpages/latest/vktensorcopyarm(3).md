@@ -73,7 +73,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTensorCopyARM-sType-sType) VUID-VkTensorCopyARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TENSOR_COPY_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TENSOR_COPY_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkTensorCopyARM-pNext-pNext) VUID-VkTensorCopyARM-pNext-pNext

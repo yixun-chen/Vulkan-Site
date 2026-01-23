@@ -56,7 +56,7 @@ Valid Usage
 [](#VUID-vkSubmitDebugUtilsMessageEXT-objectType-02591) VUID-vkSubmitDebugUtilsMessageEXT-objectType-02591
 
 The `objectType` member of each element of
-`pCallbackData->pObjects` **must** not be `VK_OBJECT_TYPE_UNKNOWN`
+`pCallbackData->pObjects` **must** not be [VK_OBJECT_TYPE_UNKNOWN](VkObjectType.html)
 
 Valid Usage (Implicit)
 

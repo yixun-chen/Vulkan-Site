@@ -47,7 +47,7 @@ In this chapter, we’ll explore the fundamentals of lighting and materials in 3
 
 This chapter serves as the foundation for understanding how light interacts with different materials in a physically accurate way. The concepts you’ll learn here will be applied in later chapters, including the Loading_Models chapter where we’ll use this knowledge to render glTF models with PBR materials.
 
-Throughout our engine implementation, we’ll be using vk::raii dynamic rendering and C20 modules. The vk::raii namespace provides Resource Acquisition Is Initialization (RAII) wrappers for Vulkan objects, which helps with resource management and makes the code cleaner. Dynamic rendering simplifies the rendering process by eliminating the need for explicit render passes and framebuffers. C20 modules improve code organization, compilation times, and encapsulation compared to traditional header files.
+Throughout our engine implementation, we’ll be using vk::raii dynamic rendering and C++20 modules. The vk::raii namespace provides Resource Acquisition Is Initialization (RAII) wrappers for Vulkan objects, which helps with resource management and makes the code cleaner. Dynamic rendering simplifies the rendering process by eliminating the need for explicit render passes and framebuffers. C++20 modules improve code organization, compilation times, and encapsulation compared to traditional header files.
 
 Lighting in computer graphics serves several important purposes:
 
@@ -164,8 +164,12 @@ The simplest diffuse BRDF is the Lambertian model:
 f_diffuse = albedo / π
 
 Where:
-* albedo is the base color of the surface
-* π is a normalization factor
+
+* 
+albedo is the base color of the surface
+
+* 
+π is a normalization factor
 
 More advanced models like Disney’s diffuse or Oren-Nayar can be used for increased realism, especially for rough surfaces.
 
@@ -174,17 +178,35 @@ For the specular component, PBR typically uses a microfacet BRDF:
 f_specular = D * F * G / (4 * (n·ωo) * (n·ωi))
 
 Where:
-* D is the Normal Distribution Function (NDF)
-* F is the Fresnel term
-* G is the Geometry term
-* n is the surface normal
-* ωo is the outgoing (view) direction
-* ωi is the incoming (light) direction
+
+* 
+D is the Normal Distribution Function (NDF)
+
+* 
+F is the Fresnel term
+
+* 
+G is the Geometry term
+
+* 
+n is the surface normal
+
+* 
+ωo is the outgoing (view) direction
+
+* 
+ωi is the incoming (light) direction
 
 Popular implementations include:
-* **D**: GGX (Trowbridge-Reitz) distribution
-* **F**: Schlick’s approximation
-* **G**: Smith shadowing-masking function
+
+* 
+**D**: GGX (Trowbridge-Reitz) distribution
+
+* 
+**F**: Schlick’s approximation
+
+* 
+**G**: Smith shadowing-masking function
 
 Materials define how surfaces interact with light. Different materials reflect, absorb, and transmit light in different ways. Understanding materials is crucial for creating realistic renderings.
 
@@ -247,4 +269,4 @@ How to integrate PBR lighting with Vulkan
 
 Let’s get started by exploring the principles of Physically Based Rendering in more detail.
 
-[Previous: Camera Transformations - Conclusion](../Camera_Transformations/06_conclusion.adoc) | [Next: Lighting Models](02_lighting_models.adoc)
+[Previous: Camera Transformations - Conclusion](../Camera_Transformations/06_conclusion.html) | [Next: Lighting Models](02_lighting_models.html)

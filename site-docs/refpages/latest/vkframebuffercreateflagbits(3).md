@@ -30,7 +30,7 @@ typedef enum VkFramebufferCreateFlagBits {
 } VkFramebufferCreateFlagBits;
 
 * 
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT` specifies that image views are
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#) specifies that image views are
 not specified, and only attachment compatibility information will be
 provided via a [VkFramebufferAttachmentImageInfo](VkFramebufferAttachmentImageInfo.html) structure.
 

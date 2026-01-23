@@ -111,55 +111,55 @@ created with the queried
 [vkGetPhysicalDeviceFormatProperties](vkGetPhysicalDeviceFormatProperties.html)::`format`:
 
 * 
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT` specifies that an image view
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](#) specifies that an image view
 **can** be [sampled from](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-sampledimage).
 
 * 
-`VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT` specifies that an image view
+[VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT](#) specifies that an image view
 **can** be used as a [storage image](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-storageimage).
 
 * 
-`VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT` specifies that an image
+[VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT](#) specifies that an image
 view **can** be used as storage image that supports atomic operations.
 
 * 
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT` specifies that an image
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](#) specifies that an image
 view **can** be used as a framebuffer color attachment and as an input
 attachment.
 
 * 
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT` specifies that an
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT](#) specifies that an
 image view **can** be used as a framebuffer color attachment that supports
 blending.
 
 * 
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT` specifies that an
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](#) specifies that an
 image view **can** be used as a framebuffer depth/stencil attachment and as
 an input attachment.
 
 * 
-`VK_FORMAT_FEATURE_BLIT_SRC_BIT` specifies that an image **can** be
+[VK_FORMAT_FEATURE_BLIT_SRC_BIT](#) specifies that an image **can** be
 used as `srcImage` for the
 `vkCmdBlitImage2` and `vkCmdBlitImage` commands.
 
 * 
-`VK_FORMAT_FEATURE_BLIT_DST_BIT` specifies that an image **can** be
+[VK_FORMAT_FEATURE_BLIT_DST_BIT](#) specifies that an image **can** be
 used as `dstImage` for the
 `vkCmdBlitImage2` and `vkCmdBlitImage` commands.
 
 * 
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT` specifies that
-if `VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT` is also set, an image view
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](#) specifies that
+if [VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](#) is also set, an image view
 **can** be used with a sampler that has either of `magFilter` or
-`minFilter` set to `VK_FILTER_LINEAR`, or `mipmapMode` set
-to `VK_SAMPLER_MIPMAP_MODE_LINEAR`.
-If `VK_FORMAT_FEATURE_BLIT_SRC_BIT` is also set, an image can be
+`minFilter` set to [VK_FILTER_LINEAR](VkFilter.html), or `mipmapMode` set
+to [VK_SAMPLER_MIPMAP_MODE_LINEAR](VkSamplerMipmapMode.html).
+If [VK_FORMAT_FEATURE_BLIT_SRC_BIT](#) is also set, an image can be
 used as the `srcImage` to
 `vkCmdBlitImage2` and `vkCmdBlitImage`
-with a `filter` of `VK_FILTER_LINEAR`.
+with a `filter` of [VK_FILTER_LINEAR](VkFilter.html).
 This bit **must** only be exposed for formats that also support the
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT` or
-`VK_FORMAT_FEATURE_BLIT_SRC_BIT`.
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](#) or
+[VK_FORMAT_FEATURE_BLIT_SRC_BIT](#).
 
 If the format being queried is a depth/stencil format, this bit only
 specifies that the depth aspect (not the stencil aspect) of an image of this
@@ -174,106 +174,106 @@ proportional to, or a weighted average of, the number of comparison passes
 or failures.
 
 * 
-`VK_FORMAT_FEATURE_TRANSFER_SRC_BIT` specifies that an image **can** be
+[VK_FORMAT_FEATURE_TRANSFER_SRC_BIT](#) specifies that an image **can** be
 used as a source image for [copy commands](../../../../spec/latest/chapters/copies.html#copies).
 If the application `apiVersion` is Vulkan 1.0 and
 `[VK_KHR_maintenance1](VK_KHR_maintenance1.html)` is not supported,
-`VK_FORMAT_FEATURE_TRANSFER_SRC_BIT` is implied to be set when the
+[VK_FORMAT_FEATURE_TRANSFER_SRC_BIT](#) is implied to be set when the
 format feature flag is not 0.
 
 * 
-`VK_FORMAT_FEATURE_TRANSFER_DST_BIT` specifies that an image **can** be
+[VK_FORMAT_FEATURE_TRANSFER_DST_BIT](#) specifies that an image **can** be
 used as a destination image for [copy commands](../../../../spec/latest/chapters/copies.html#copies) and [    clear commands](../../../../spec/latest/chapters/clears.html#clears).
 If the application `apiVersion` is Vulkan 1.0 and
 `[VK_KHR_maintenance1](VK_KHR_maintenance1.html)` is not supported,
-`VK_FORMAT_FEATURE_TRANSFER_DST_BIT` is implied to be set when the
+[VK_FORMAT_FEATURE_TRANSFER_DST_BIT](#) is implied to be set when the
 format feature flag is not 0.
 
 * 
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT` specifies
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT](#) specifies
 `VkImage` **can** be used as a sampled image with a min or max
 [VkSamplerReductionMode](VkSamplerReductionMode.html).
 This bit **must** only be exposed for formats that also support the
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT`.
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](#).
 
 * 
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT` specifies
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT](#) specifies
 that `VkImage` **can** be used with a sampler that has either of
-`magFilter` or `minFilter` set to `VK_FILTER_CUBIC_EXT`, or
+`magFilter` or `minFilter` set to [VK_FILTER_CUBIC_EXT](VkFilter.html), or
 be the source image for a blit with `filter` set to
-`VK_FILTER_CUBIC_EXT`.
+[VK_FILTER_CUBIC_EXT](VkFilter.html).
 This bit **must** only be exposed for formats that also support the
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT`.
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](#).
 If the format being queried is a depth/stencil format, this only
 specifies that the depth aspect is cubic filterable.
 
 * 
-`VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT` specifies that an
+[VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT](#) specifies that an
 application **can** define a [sampler Y′CBCR    conversion](../../../../spec/latest/chapters/samplers.html#samplers-YCbCr-conversion) using this format as a source, and that an image of this
 format **can** be used with a [VkSamplerYcbcrConversionCreateInfo](VkSamplerYcbcrConversionCreateInfo.html)
 `xChromaOffset` and/or `yChromaOffset` of
-`VK_CHROMA_LOCATION_MIDPOINT`.
+[VK_CHROMA_LOCATION_MIDPOINT](VkChromaLocation.html).
 Otherwise both `xChromaOffset` and `yChromaOffset` **must** be
-`VK_CHROMA_LOCATION_COSITED_EVEN`.
+[VK_CHROMA_LOCATION_COSITED_EVEN](VkChromaLocation.html).
 If a format does not incorporate chroma downsampling (it is not a
 “422” or “420” format) but the implementation supports sampler
 Y′CBCR conversion for this format, the implementation **must** set
-`VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT`.
+[VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT](#).
 
 * 
-`VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT` specifies that an
+[VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT](#) specifies that an
 application **can** define a [sampler Y′CBCR    conversion](../../../../spec/latest/chapters/samplers.html#samplers-YCbCr-conversion) using this format as a source, and that an image of this
 format **can** be used with a [VkSamplerYcbcrConversionCreateInfo](VkSamplerYcbcrConversionCreateInfo.html)
 `xChromaOffset` and/or `yChromaOffset` of
-`VK_CHROMA_LOCATION_COSITED_EVEN`.
+[VK_CHROMA_LOCATION_COSITED_EVEN](VkChromaLocation.html).
 Otherwise both `xChromaOffset` and `yChromaOffset` **must** be
-`VK_CHROMA_LOCATION_MIDPOINT`.
-If neither `VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT` nor
-`VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT` is set, the
+[VK_CHROMA_LOCATION_MIDPOINT](VkChromaLocation.html).
+If neither [VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT](#) nor
+[VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT](#) is set, the
 application **must** not define a [sampler    Y′CBCR conversion](../../../../spec/latest/chapters/samplers.html#samplers-YCbCr-conversion) using this format as a source.
 
 * 
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT](#)
 specifies that an application **can** define a
 [sampler Y′CBCR conversion](../../../../spec/latest/chapters/samplers.html#samplers-YCbCr-conversion) using this
 format as a source with `chromaFilter` set to
-`VK_FILTER_LINEAR`.
+[VK_FILTER_LINEAR](VkFilter.html).
 
 * 
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT](#)
 specifies that the format can have different chroma, min, and mag
 filters.
 
 * 
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT](#)
 specifies that reconstruction is explicit, as described in
 [Chroma Reconstruction](../../../../spec/latest/chapters/textures.html#textures-chroma-reconstruction).
 If this bit is not present, reconstruction is implicit by default.
 
 * 
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT](#)
 specifies that reconstruction **can** be forcibly made explicit by setting
 [VkSamplerYcbcrConversionCreateInfo](VkSamplerYcbcrConversionCreateInfo.html)::`forceExplicitReconstruction`
-to `VK_TRUE`.
+to [VK_TRUE](VK_TRUE.html).
 If the format being queried supports
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT](#)
 it **must** also support
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT`.
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT](#).
 
 * 
-`VK_FORMAT_FEATURE_DISJOINT_BIT` specifies that a multi-planar image
-**can** have the `VK_IMAGE_CREATE_DISJOINT_BIT` set during image
+[VK_FORMAT_FEATURE_DISJOINT_BIT](#) specifies that a multi-planar image
+**can** have the [VK_IMAGE_CREATE_DISJOINT_BIT](VkImageCreateFlagBits.html) set during image
 creation.
-An implementation **must** not set `VK_FORMAT_FEATURE_DISJOINT_BIT` for
+An implementation **must** not set [VK_FORMAT_FEATURE_DISJOINT_BIT](#) for
 *single-plane formats*.
 
 * 
-`VK_FORMAT_FEATURE_FRAGMENT_DENSITY_MAP_BIT_EXT` specifies that an
+[VK_FORMAT_FEATURE_FRAGMENT_DENSITY_MAP_BIT_EXT](#) specifies that an
 image view **can** be used as a
 [fragment density map    attachment](../../../../spec/latest/chapters/renderpass.html#renderpass-fragmentdensitymapattachment).
 
 * 
-`VK_FORMAT_FEATURE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_FORMAT_FEATURE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#)
 specifies that an image view **can** be used as a
 [fragment shading rate    attachment](../../../../spec/latest/chapters/primsrast.html#primsrast-fragment-shading-rate-attachment).
 An implementation **must** not set this feature for formats with a
@@ -281,19 +281,19 @@ An implementation **must** not set this feature for formats with a
 it as a buffer feature.
 
 * 
-`VK_FORMAT_FEATURE_VIDEO_DECODE_OUTPUT_BIT_KHR` specifies that an
+[VK_FORMAT_FEATURE_VIDEO_DECODE_OUTPUT_BIT_KHR](#) specifies that an
 image view with this format **can** be used as a [    decode output picture](../../../../spec/latest/chapters/videocoding.html#decode-output-picture) in [video decode    operations](../../../../spec/latest/chapters/videocoding.html#video-decode-operations).
 
 * 
-`VK_FORMAT_FEATURE_VIDEO_DECODE_DPB_BIT_KHR` specifies that an image
+[VK_FORMAT_FEATURE_VIDEO_DECODE_DPB_BIT_KHR](#) specifies that an image
 view with this format **can** be used as an output [    reconstructed picture](../../../../spec/latest/chapters/videocoding.html#reconstructed-picture) or an input [reference    picture](../../../../spec/latest/chapters/videocoding.html#reference-picture) in [video decode operations](../../../../spec/latest/chapters/videocoding.html#video-decode-operations).
 
 * 
-`VK_FORMAT_FEATURE_VIDEO_ENCODE_INPUT_BIT_KHR` specifies that an
+[VK_FORMAT_FEATURE_VIDEO_ENCODE_INPUT_BIT_KHR](#) specifies that an
 image view with this format **can** be used as an [    encode input picture](../../../../spec/latest/chapters/videocoding.html#encode-input-picture) in [video encode    operations](../../../../spec/latest/chapters/videocoding.html#video-encode-operations).
 
 * 
-`VK_FORMAT_FEATURE_VIDEO_ENCODE_DPB_BIT_KHR` specifies that an image
+[VK_FORMAT_FEATURE_VIDEO_ENCODE_DPB_BIT_KHR](#) specifies that an image
 view with this format **can** be used as an output [    reconstructed picture](../../../../spec/latest/chapters/videocoding.html#reconstructed-picture) or an input [reference    picture](../../../../spec/latest/chapters/videocoding.html#reference-picture) in [video encode operations](../../../../spec/latest/chapters/videocoding.html#video-encode-operations).
 
 |  | Specific [video profiles](../../../../spec/latest/chapters/videocoding.html#video-profiles) **may** have additional restrictions
@@ -307,27 +307,27 @@ features are supported by [buffers](../../../../spec/latest/chapters/resources.h
 [vkGetPhysicalDeviceFormatProperties](vkGetPhysicalDeviceFormatProperties.html)::`format`:
 
 * 
-`VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT` specifies that the
+[VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT](#) specifies that the
 format **can** be used to create a buffer view that **can** be bound to a
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` descriptor.
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html) descriptor.
 
 * 
-`VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT` specifies that the
+[VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT](#) specifies that the
 format **can** be used to create a buffer view that **can** be bound to a
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` descriptor.
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html) descriptor.
 
 * 
-`VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT` specifies that
+[VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT](#) specifies that
 atomic operations are supported on
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` with this format.
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html) with this format.
 
 * 
-`VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT` specifies that the format **can**
+[VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT](#) specifies that the format **can**
 be used as a vertex attribute format
 (`VkVertexInputAttributeDescription`::`format`).
 
 * 
-`VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR`
+[VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR](#)
 specifies that the format **can** be used as the vertex format when
 creating an [acceleration structure](../../../../spec/latest/chapters/accelstructures.html#acceleration-structure)
 (`VkAccelerationStructureGeometryTrianglesDataKHR`::`vertexFormat`).
@@ -335,9 +335,9 @@ This format **can** also be used as the vertex format in host memory when
 doing [host acceleration structure](../../../../spec/latest/chapters/accelstructures.html#host-acceleration-structure)
 builds.
 
-|  | `VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT` and
+|  | [VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT](#) and
 | --- | --- |
-`VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT` are only intended to
+[VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT](#) are only intended to
 be advertised for single-component formats, since SPIR-V atomic operations
 require a scalar type. |
 

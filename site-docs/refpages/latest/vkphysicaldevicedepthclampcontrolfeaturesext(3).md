@@ -42,7 +42,7 @@ structure.
  `depthClampControl` indicates that
 the implementation supports setting
 [VkPipelineViewportDepthClampControlCreateInfoEXT](VkPipelineViewportDepthClampControlCreateInfoEXT.html)::`depthClampMode`
-to `VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT`.
+to [VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT](VkDepthClampModeEXT.html).
 
 If the `VkPhysicalDeviceDepthClampControlFeaturesEXT` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -50,7 +50,7 @@ If the `VkPhysicalDeviceDepthClampControlFeaturesEXT` structure is included in t
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceDepthClampControlFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDepthClampControlFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceDepthClampControlFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_depth_clamp_control](VK_EXT_depth_clamp_control.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

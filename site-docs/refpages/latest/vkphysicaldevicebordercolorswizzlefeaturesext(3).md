@@ -42,10 +42,10 @@ structure.
 * 
  `borderColorSwizzle` indicates that
 defined values are returned by sampled image operations when used with a
-sampler that uses a `VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK`,
-`VK_BORDER_COLOR_INT_OPAQUE_BLACK`,
-`VK_BORDER_COLOR_FLOAT_CUSTOM_EXT`, or
-`VK_BORDER_COLOR_INT_CUSTOM_EXT` `borderColor` and an image view
+sampler that uses a [VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK](VkBorderColor.html),
+[VK_BORDER_COLOR_INT_OPAQUE_BLACK](VkBorderColor.html),
+[VK_BORDER_COLOR_FLOAT_CUSTOM_EXT](VkBorderColor.html), or
+[VK_BORDER_COLOR_INT_CUSTOM_EXT](VkBorderColor.html) `borderColor` and an image view
 that uses a non-[identity    component mapping](../../../../spec/latest/chapters/resources.html#resources-image-views-identity-mappings), when either `borderColorSwizzleFromImage` is
 enabled or the [VkSamplerBorderColorComponentMappingCreateInfoEXT](VkSamplerBorderColorComponentMappingCreateInfoEXT.html)
 is specified.
@@ -71,7 +71,7 @@ If the `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT` structure is included in 
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -79,7 +79,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceBorderColorSwizzleFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceBorderColorSwizzleFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BORDER_COLOR_SWIZZLE_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BORDER_COLOR_SWIZZLE_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_border_color_swizzle](VK_EXT_border_color_swizzle.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

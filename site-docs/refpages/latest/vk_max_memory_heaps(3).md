@@ -17,7 +17,7 @@
 
 VK_MAX_MEMORY_HEAPS - Length of an array of memory heaps
 
-`VK_MAX_MEMORY_HEAPS` is the length of an array of [VkMemoryHeap](VkMemoryHeap.html)
+[VK_MAX_MEMORY_HEAPS](#) is the length of an array of [VkMemoryHeap](VkMemoryHeap.html)
 structures describing memory heaps, as returned in
 [VkPhysicalDeviceMemoryProperties](VkPhysicalDeviceMemoryProperties.html)::`memoryHeaps`.
 

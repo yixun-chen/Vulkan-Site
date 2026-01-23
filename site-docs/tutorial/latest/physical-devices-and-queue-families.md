@@ -146,11 +146,7 @@ Because we’re just starting out, Vulkan 1.3 support is the only thing we need,
  going to be demonstrating:
 
 std::vector deviceExtensions = {
-    vk::KHRSwapchainExtensionName,
-    vk::KHRSpirv14ExtensionName,
-    vk::KHRSynchronization2ExtensionName,
-    vk::KHRCreateRenderpass2ExtensionName
-};
+    vk::KHRSwapchainExtensionName};
 
 void pickPhysicalDevice() {
     std::vector devices = instance.enumeratePhysicalDevices();

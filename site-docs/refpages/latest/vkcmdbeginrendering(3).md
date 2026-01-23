@@ -43,7 +43,7 @@ specifying details of the render pass instance to begin.
 After beginning a render pass instance, the command buffer is ready to
 record [draw commands](../../../../spec/latest/chapters/drawing.html#drawing).
 
-If `pRenderingInfo->flags` includes `VK_RENDERING_RESUMING_BIT` then
+If `pRenderingInfo->flags` includes [VK_RENDERING_RESUMING_BIT](VkRenderingFlagBits.html) then
 this render pass is resumed from a render pass instance that has been
 suspended earlier in [submission order](../../../../spec/latest/chapters/synchronization.html#synchronization-submission-order).
 
@@ -65,13 +65,13 @@ If `commandBuffer` is a secondary command buffer,
 and the [`nestedCommandBuffer`](../../../../spec/latest/chapters/features.html#features-nestedCommandBuffer)
 feature is not enabled,
 `pRenderingInfo->flags` **must** not include
-`VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT`
+[VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT](VkRenderingFlagBits.html)
 
 * 
 [](#VUID-vkCmdBeginRendering-commandBuffer-10914) VUID-vkCmdBeginRendering-commandBuffer-10914
 
 If `commandBuffer` is a secondary command buffer,
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT` **must** not have
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](VkCommandBufferUsageFlagBits.html) **must** not have
 been set in [VkCommandBufferBeginInfo](VkCommandBufferBeginInfo.html)::`flags` when
 `commandBuffer` began
 
@@ -80,8 +80,9 @@ been set in [VkCommandBufferBeginInfo](VkCommandBufferBeginInfo.html)::`flags` w
 
 If `pRenderingInfo->pDepthAttachment` is not `NULL` and
 `pRenderingInfo->pDepthAttachment→imageView` is not
-[VK_NULL_HANDLE](VK_NULL_HANDLE.html), `pRenderingInfo->pDepthAttachment→imageView`
-**must** be in the layout specified by
+[VK_NULL_HANDLE](VK_NULL_HANDLE.html), when
+`pRenderingInfo->pDepthAttachment→imageView` is accessed it **must**
+be in the layout specified by
 `pRenderingInfo->pDepthAttachment→imageLayout`
 
 * 
@@ -91,7 +92,7 @@ If `pRenderingInfo->pDepthAttachment` is not `NULL`,
 `pRenderingInfo->pDepthAttachment→imageView` is not
 [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 `pRenderingInfo->pDepthAttachment→imageResolveMode` is not
-`VK_RESOLVE_MODE_NONE`, and
+[VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html), and
 `pRenderingInfo->pDepthAttachment→resolveImageView` is not
 [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 `pRenderingInfo->pDepthAttachment→resolveImageView` **must** be in the
@@ -103,9 +104,9 @@ layout specified by
 
 If `pRenderingInfo->pStencilAttachment` is not `NULL` and
 `pRenderingInfo->pStencilAttachment→imageView` is not
-[VK_NULL_HANDLE](VK_NULL_HANDLE.html),
-`pRenderingInfo->pStencilAttachment→imageView` **must** be in the
-layout specified by
+[VK_NULL_HANDLE](VK_NULL_HANDLE.html), when
+`pRenderingInfo->pStencilAttachment→imageView` is accessed it **must**
+be in the layout specified by
 `pRenderingInfo->pStencilAttachment→imageLayout`
 
 * 
@@ -115,7 +116,7 @@ If `pRenderingInfo->pStencilAttachment` is not `NULL`,
 `pRenderingInfo->pStencilAttachment→imageView` is not
 [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 `pRenderingInfo->pStencilAttachment→imageResolveMode` is not
-`VK_RESOLVE_MODE_NONE`, and
+[VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html), and
 `pRenderingInfo->pStencilAttachment→resolveImageView` is not
 [VK_NULL_HANDLE](VK_NULL_HANDLE.html),
 `pRenderingInfo->pStencilAttachment→resolveImageView` **must** be in
@@ -126,48 +127,66 @@ the layout specified by
 [](#VUID-vkCmdBeginRendering-pRenderingInfo-09592) VUID-vkCmdBeginRendering-pRenderingInfo-09592
 
 For each element of `pRenderingInfo->pColorAttachments`, if
-`imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), that image view **must** be in
-the layout specified by `imageLayout`
+`imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), when that image view is
+accessed it **must** be in the layout specified by the `imageLayout`
+member of that same element of `pRenderingInfo->pColorAttachments`
 
 * 
 [](#VUID-vkCmdBeginRendering-pRenderingInfo-09593) VUID-vkCmdBeginRendering-pRenderingInfo-09593
 
 For each element of `pRenderingInfo->pColorAttachments`, if
 either `imageResolveMode` is
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`, or
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](VkResolveModeFlagBits.html), or
 `imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html) and `resolveMode` is not
-`VK_RESOLVE_MODE_NONE`, and `resolveImageView` is not
+[VK_RESOLVE_MODE_NONE](VkResolveModeFlagBits.html), and `resolveImageView` is not
 [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `resolveImageView` **must** be in the layout
 specified by `resolveImageLayout`
 
 * 
 [](#VUID-vkCmdBeginRendering-flags-10641) VUID-vkCmdBeginRendering-flags-10641
 
-If `VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` is included in
+If [VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](VkTileShadingRenderPassFlagBitsQCOM.html) is included in
 [VkRenderPassTileShadingCreateInfoQCOM](VkRenderPassTileShadingCreateInfoQCOM.html)::`flags`,
 `commandBuffer` **must** not have been recorded with
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT`
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](VkCommandBufferUsageFlagBits.html)
 
 * 
 [](#VUID-vkCmdBeginRendering-flags-10642) VUID-vkCmdBeginRendering-flags-10642
 
 [VkRenderPassTileShadingCreateInfoQCOM](VkRenderPassTileShadingCreateInfoQCOM.html)::`flags` **must** not
-include `VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM`
+include [VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM](VkTileShadingRenderPassFlagBitsQCOM.html)
 
 * 
 [](#VUID-vkCmdBeginRendering-pRenderingInfo-11750) VUID-vkCmdBeginRendering-pRenderingInfo-11750
 
 If `pRenderingInfo->flags` contains
-`VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR`,
+[VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR](VkRenderingFlagBits.html),
 [`maintenance10`](../../../../spec/latest/chapters/features.html#features-maintenance10) **must** be enabled
 
 * 
 [](#VUID-vkCmdBeginRendering-pRenderingInfo-11751) VUID-vkCmdBeginRendering-pRenderingInfo-11751
 
 If `pRenderingInfo->flags` does not contain
-`VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR`,
+[VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR](VkRenderingFlagBits.html),
 attachments **must** not specify
-`VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR`
+[VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR](VkRenderingAttachmentFlagBitsKHR.html)
+
+* 
+[](#VUID-vkCmdBeginRendering-imageView-12276) VUID-vkCmdBeginRendering-imageView-12276
+
+If [VkRenderingFragmentDensityMapAttachmentInfoEXT](VkRenderingFragmentDensityMapAttachmentInfoEXT.html)::`imageView`
+is not equal to [VK_NULL_HANDLE](VK_NULL_HANDLE.html), when `imageView` is accessed
+it **must** be in the layout specified by
+[VkRenderingFragmentDensityMapAttachmentInfoEXT](VkRenderingFragmentDensityMapAttachmentInfoEXT.html)::`imageLayout`
+
+* 
+[](#VUID-vkCmdBeginRendering-imageView-12277) VUID-vkCmdBeginRendering-imageView-12277
+
+If
+[VkRenderingFragmentShadingRateAttachmentInfoKHR](VkRenderingFragmentShadingRateAttachmentInfoKHR.html)::`imageView`
+is not equal to [VK_NULL_HANDLE](VK_NULL_HANDLE.html), when `imageView` is accessed
+it **must** be in the layout specified by
+[VkRenderingFragmentShadingRateAttachmentInfoKHR](VkRenderingFragmentShadingRateAttachmentInfoKHR.html)::`imageLayout`
 
 Valid Usage (Implicit)
 
@@ -189,7 +208,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBeginRendering-commandBuffer-cmdpool) VUID-vkCmdBeginRendering-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBeginRendering-renderpass) VUID-vkCmdBeginRendering-renderpass

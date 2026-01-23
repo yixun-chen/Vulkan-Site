@@ -76,7 +76,7 @@ actual number of sequences generated.
 `preprocessBuffer` is the [VkBuffer](VkBuffer.html) that is used for
 preprocessing the input data for execution.
 If this structure is used with [vkCmdExecuteGeneratedCommandsNV](vkCmdExecuteGeneratedCommandsNV.html)
-with its `isPreprocessed` set to `VK_TRUE`, then the
+with its `isPreprocessed` set to [VK_TRUE](VK_TRUE.html), then the
 preprocessing step is skipped and data in this buffer will not be
 modified.
 The contents and the layout of this buffer are opaque to applications
@@ -120,23 +120,23 @@ time
 [](#VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-02913) VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-02913
 
 If the `indirectCommandsLayout` uses a token of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV`, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV](VkIndirectCommandsTokenTypeNV.html), then the
 `pipeline` **must** have been created with multiple shader groups
 
 * 
 [](#VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-02914) VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-02914
 
 If the `indirectCommandsLayout` uses a token of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV`, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV](VkIndirectCommandsTokenTypeNV.html), then the
 `pipeline` **must** have been created with
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV` set in
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](VkPipelineCreateFlagBits.html) set in
 `VkGraphicsPipelineCreateInfo`::`flags`
 
 * 
 [](#VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-02915) VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-02915
 
 If the `indirectCommandsLayout` uses a token of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV`, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](VkIndirectCommandsTokenTypeNV.html), then the
 `pipeline`’s `VkPipelineLayout` **must** match the
 [VkIndirectCommandsLayoutTokenNV](VkIndirectCommandsLayoutTokenNV.html)::`pushconstantPipelineLayout`
 
@@ -150,15 +150,15 @@ If the `indirectCommandsLayout` uses a token of
 [](#VUID-VkGeneratedCommandsInfoNV-pipelineBindPoint-09084) VUID-VkGeneratedCommandsInfoNV-pipelineBindPoint-09084
 
 If `pipelineBindPoint` is of type
-`VK_PIPELINE_BIND_POINT_COMPUTE`, then the `pipeline` **must** have
+[VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html), then the `pipeline` **must** have
 been created with the flag
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV`
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-VkGeneratedCommandsInfoNV-pipelineBindPoint-09085) VUID-VkGeneratedCommandsInfoNV-pipelineBindPoint-09085
 
 If `pipelineBindPoint` is of type
-`VK_PIPELINE_BIND_POINT_COMPUTE`, then the `pipeline` **must** have
+[VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html), then the `pipeline` **must** have
 been created with a [VkComputePipelineIndirectBufferInfoNV](VkComputePipelineIndirectBufferInfoNV.html)
 structure specifying a valid address where its metadata will be saved
 
@@ -166,7 +166,7 @@ structure specifying a valid address where its metadata will be saved
 [](#VUID-VkGeneratedCommandsInfoNV-pipelineBindPoint-09086) VUID-VkGeneratedCommandsInfoNV-pipelineBindPoint-09086
 
 If `pipelineBindPoint` is of type
-`VK_PIPELINE_BIND_POINT_COMPUTE`, then
+[VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html), then
 [vkCmdUpdatePipelineIndirectBufferNV](vkCmdUpdatePipelineIndirectBufferNV.html) **must** have been called on that
 pipeline to save its metadata to a device address
 
@@ -174,8 +174,8 @@ pipeline to save its metadata to a device address
 [](#VUID-VkGeneratedCommandsInfoNV-pipelineBindPoint-09087) VUID-VkGeneratedCommandsInfoNV-pipelineBindPoint-09087
 
 If `pipelineBindPoint` is of type
-`VK_PIPELINE_BIND_POINT_COMPUTE`, and if
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV` is used, then
+[VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html), and if
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV](VkIndirectCommandsTokenTypeNV.html) is used, then
 `pipeline` **must** be [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
 * 
@@ -191,7 +191,7 @@ that was used to determine the `preprocessSize`
 [](#VUID-VkGeneratedCommandsInfoNV-preprocessBuffer-02918) VUID-VkGeneratedCommandsInfoNV-preprocessBuffer-02918
 
 `preprocessBuffer` **must** have the
-`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` bit set in its usage flag
+[VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](VkBufferUsageFlagBits.html) bit set in its usage flag
 
 * 
 [](#VUID-VkGeneratedCommandsInfoNV-preprocessOffset-02919) VUID-VkGeneratedCommandsInfoNV-preprocessOffset-02919
@@ -224,7 +224,7 @@ In that case the `sequencesCount` serves as upper bound
 [](#VUID-VkGeneratedCommandsInfoNV-sequencesCountBuffer-02922) VUID-VkGeneratedCommandsInfoNV-sequencesCountBuffer-02922
 
 If `sequencesCountBuffer` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), its usage
-flag **must** have the `VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` bit set
+flag **must** have the [VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](VkBufferUsageFlagBits.html) bit set
 
 * 
 [](#VUID-VkGeneratedCommandsInfoNV-sequencesCountBuffer-02923) VUID-VkGeneratedCommandsInfoNV-sequencesCountBuffer-02923
@@ -244,7 +244,7 @@ single `VkDeviceMemory` object
 [](#VUID-VkGeneratedCommandsInfoNV-sequencesIndexBuffer-02924) VUID-VkGeneratedCommandsInfoNV-sequencesIndexBuffer-02924
 
 If `indirectCommandsLayout`’s
-`VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NV` is set,
+[VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NV](VkIndirectCommandsLayoutUsageFlagBitsNV.html) is set,
 `sequencesIndexBuffer` **must** be set otherwise it **must** be
 [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
@@ -252,7 +252,7 @@ If `indirectCommandsLayout`’s
 [](#VUID-VkGeneratedCommandsInfoNV-sequencesIndexBuffer-02925) VUID-VkGeneratedCommandsInfoNV-sequencesIndexBuffer-02925
 
 If `sequencesIndexBuffer` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), its usage
-flag **must** have the `VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` bit set
+flag **must** have the [VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](VkBufferUsageFlagBits.html) bit set
 
 * 
 [](#VUID-VkGeneratedCommandsInfoNV-sequencesIndexBuffer-02926) VUID-VkGeneratedCommandsInfoNV-sequencesIndexBuffer-02926
@@ -272,7 +272,7 @@ single `VkDeviceMemory` object
 [](#VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-07078) VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-07078
 
 If the `indirectCommandsLayout` uses a token of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_TASKS_NV`, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_TASKS_NV](VkIndirectCommandsTokenTypeNV.html), then the
 `pipeline` **must** contain a shader stage using the `MeshNV`
 `Execution` `Model`
 
@@ -280,7 +280,7 @@ If the `indirectCommandsLayout` uses a token of
 [](#VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-07079) VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-07079
 
 If the `indirectCommandsLayout` uses a token of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV`, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV](VkIndirectCommandsTokenTypeNV.html), then the
 `pipeline` **must** contain a shader stage using the `MeshEXT`
 `Execution` `Model`
 
@@ -289,7 +289,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGeneratedCommandsInfoNV-sType-sType) VUID-VkGeneratedCommandsInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkGeneratedCommandsInfoNV-pNext-pNext) VUID-VkGeneratedCommandsInfoNV-pNext-pNext

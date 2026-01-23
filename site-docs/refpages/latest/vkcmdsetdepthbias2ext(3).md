@@ -59,7 +59,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDepthBias2EXT-commandBuffer-cmdpool) VUID-vkCmdSetDepthBias2EXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetDepthBias2EXT-videocoding) VUID-vkCmdSetDepthBias2EXT-videocoding

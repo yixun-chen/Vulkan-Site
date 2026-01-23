@@ -118,13 +118,13 @@ wait or signal operation on that semaphore by more than
 * 
 [](#VUID-VkSubmitInfo2-flags-03886) VUID-VkSubmitInfo2-flags-03886
 
-If `flags` includes `VK_SUBMIT_PROTECTED_BIT`, all elements of
+If `flags` includes [VK_SUBMIT_PROTECTED_BIT](VkSubmitFlagBits.html), all elements of
 `pCommandBuffers` **must** be protected command buffers
 
 * 
 [](#VUID-VkSubmitInfo2-flags-03887) VUID-VkSubmitInfo2-flags-03887
 
-If `flags` does not include `VK_SUBMIT_PROTECTED_BIT`, each
+If `flags` does not include [VK_SUBMIT_PROTECTED_BIT](VkSubmitFlagBits.html), each
 element of `pCommandBuffers` **must** not be a protected command buffer
 
 * 
@@ -171,7 +171,7 @@ on, **must** use the same sample locations
 
 If the `pNext` chain of this structure includes a
 [VkFrameBoundaryTensorsARM](VkFrameBoundaryTensorsARM.html) structure then it **must** also include a
-[VkFrameBoundaryEXT](VkFrameBoundaryEXT.html) structure.
+[VkFrameBoundaryEXT](VkFrameBoundaryEXT.html) structure
 
 * 
 [](#VUID-VkSubmitInfo2-pCommandBufferInfos-09933) VUID-VkSubmitInfo2-pCommandBufferInfos-09933
@@ -198,7 +198,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSubmitInfo2-sType-sType) VUID-VkSubmitInfo2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SUBMIT_INFO_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SUBMIT_INFO_2](VkStructureType.html)
 
 * 
 [](#VUID-VkSubmitInfo2-pNext-pNext) VUID-VkSubmitInfo2-pNext-pNext

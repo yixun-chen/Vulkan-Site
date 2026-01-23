@@ -83,7 +83,7 @@ the rate control configuration of the bound video session.
 
 Including this structure in the `pNext` chain of
 [VkVideoCodingControlInfoKHR](VkVideoCodingControlInfoKHR.html) and including
-`VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR` in
+[VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR](VkVideoCodingControlFlagBitsKHR.html) in
 [VkVideoCodingControlInfoKHR](VkVideoCodingControlInfoKHR.html)::`flags` enables updating the rate
 control configuration of the bound video session.
 This replaces the entire rate control configuration of the bound video
@@ -98,19 +98,19 @@ identified by the index of the corresponding element of `pLayer`.
 
 * 
 If the video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR`, then this index
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then this index
 specifies the H.264 temporal layer ID of the video coding layer the rate
 control layer is applied to.
 
 * 
 If the video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR`, then this index
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then this index
 specifies the H.265 temporal ID of the video coding layer the rate
 control layer is applied to.
 
 * 
 If the video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR`, then this index
+[VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then this index
 specifies the AV1 temporal ID of the temporal layer the rate control
 layer is applied to.
 
@@ -142,23 +142,23 @@ Valid Usage
 [](#VUID-VkVideoEncodeRateControlInfoKHR-rateControlMode-08248) VUID-VkVideoEncodeRateControlInfoKHR-rateControlMode-08248
 
 If `rateControlMode` is
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR` or
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR`, then
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html) or
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html), then
 `layerCount` **must** be `0`
 
 * 
 [](#VUID-VkVideoEncodeRateControlInfoKHR-rateControlMode-08275) VUID-VkVideoEncodeRateControlInfoKHR-rateControlMode-08275
 
 If `rateControlMode` is
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR` or
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR`, then
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html) or
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html), then
 `layerCount` **must** be greater than `0`
 
 * 
 [](#VUID-VkVideoEncodeRateControlInfoKHR-rateControlMode-08244) VUID-VkVideoEncodeRateControlInfoKHR-rateControlMode-08244
 
 If `rateControlMode` is not
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR`, then it **must**
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html), then it **must**
 specify one of the bits included in
 [VkVideoEncodeCapabilitiesKHR](VkVideoEncodeCapabilitiesKHR.html)::`rateControlModes`, as returned
 by [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the used video
@@ -192,7 +192,7 @@ video profile
 [](#VUID-VkVideoEncodeRateControlInfoKHR-rateControlMode-08356) VUID-VkVideoEncodeRateControlInfoKHR-rateControlMode-08356
 
 If `rateControlMode` is
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR`, then for each
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html), then for each
 element of `pLayers`, its `averageBitrate` member **must** equal
 its `maxBitrate` member
 
@@ -200,7 +200,7 @@ its `maxBitrate` member
 [](#VUID-VkVideoEncodeRateControlInfoKHR-rateControlMode-08278) VUID-VkVideoEncodeRateControlInfoKHR-rateControlMode-08278
 
 If `rateControlMode` is
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR`, then for each
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html), then for each
 element of `pLayers`, its `averageBitrate` member **must** be less
 than or equal to its `maxBitrate` member
 
@@ -220,7 +220,7 @@ If `layerCount` is not zero, then `initialVirtualBufferSizeInMs`
 [](#VUID-VkVideoEncodeRateControlInfoKHR-videoCodecOperation-07022) VUID-VkVideoEncodeRateControlInfoKHR-videoCodecOperation-07022
 
 If the `videoCodecOperation` of the used video profile is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR`, the `pNext`
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), the `pNext`
 chain this structure is included in also includes an instance of the
 [VkVideoEncodeH264RateControlInfoKHR](VkVideoEncodeH264RateControlInfoKHR.html) structure, and
 `layerCount` is greater than `1`, then `layerCount` **must** equal
@@ -230,7 +230,7 @@ chain this structure is included in also includes an instance of the
 [](#VUID-VkVideoEncodeRateControlInfoKHR-videoCodecOperation-07025) VUID-VkVideoEncodeRateControlInfoKHR-videoCodecOperation-07025
 
 If the `videoCodecOperation` of the used video profile is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR`, the `pNext`
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), the `pNext`
 chain this structure is included in also includes an instance of the
 [VkVideoEncodeH265RateControlInfoKHR](VkVideoEncodeH265RateControlInfoKHR.html) structure, and
 `layerCount` is greater than `1`, then `layerCount` **must** equal
@@ -240,7 +240,7 @@ chain this structure is included in also includes an instance of the
 [](#VUID-VkVideoEncodeRateControlInfoKHR-videoCodecOperation-10351) VUID-VkVideoEncodeRateControlInfoKHR-videoCodecOperation-10351
 
 If the `videoCodecOperation` of the used video profile is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR`, the `pNext` chain
+[VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), the `pNext` chain
 this structure is included in also includes an instance of the
 [VkVideoEncodeAV1RateControlInfoKHR](VkVideoEncodeAV1RateControlInfoKHR.html) structure, and `layerCount`
 is greater than `1`, then `layerCount` **must** equal
@@ -251,7 +251,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeRateControlInfoKHR-sType-sType) VUID-VkVideoEncodeRateControlInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_RATE_CONTROL_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_RATE_CONTROL_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoEncodeRateControlInfoKHR-flags-zerobitmask) VUID-VkVideoEncodeRateControlInfoKHR-flags-zerobitmask

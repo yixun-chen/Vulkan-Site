@@ -32,11 +32,11 @@ typedef enum VkDebugReportFlagBitsEXT {
 } VkDebugReportFlagBitsEXT;
 
 * 
-`VK_DEBUG_REPORT_ERROR_BIT_EXT` specifies that the application has
+[VK_DEBUG_REPORT_ERROR_BIT_EXT](#) specifies that the application has
 violated a valid usage condition of the specification.
 
 * 
-`VK_DEBUG_REPORT_WARNING_BIT_EXT` specifies use of Vulkan that **may**
+[VK_DEBUG_REPORT_WARNING_BIT_EXT](#) specifies use of Vulkan that **may**
 expose an application bug.
 Such cases may not be immediately harmful, such as a fragment shader
 outputting to a location with no attachment.
@@ -46,19 +46,19 @@ In general if you see a warning but you know that the behavior is
 intended/desired, then simply ignore the warning.
 
 * 
-`VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT` specifies a
+[VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT](#) specifies a
 potentially non-optimal use of Vulkan, e.g. using
 [vkCmdClearColorImage](vkCmdClearColorImage.html) when setting
 [VkAttachmentDescription](VkAttachmentDescription.html)::`loadOp` to
-`VK_ATTACHMENT_LOAD_OP_CLEAR` would have worked.
+[VK_ATTACHMENT_LOAD_OP_CLEAR](VkAttachmentLoadOp.html) would have worked.
 
 * 
-`VK_DEBUG_REPORT_INFORMATION_BIT_EXT` specifies an informational
+[VK_DEBUG_REPORT_INFORMATION_BIT_EXT](#) specifies an informational
 message such as resource details that may be handy when debugging an
 application.
 
 * 
-`VK_DEBUG_REPORT_DEBUG_BIT_EXT` specifies diagnostic information
+[VK_DEBUG_REPORT_DEBUG_BIT_EXT](#) specifies diagnostic information
 from the implementation and layers.
 
 [VK_EXT_debug_report](VK_EXT_debug_report.html), [VkDebugReportFlagsEXT](VkDebugReportFlagsEXT.html)

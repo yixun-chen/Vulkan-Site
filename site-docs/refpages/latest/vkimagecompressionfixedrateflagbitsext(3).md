@@ -52,66 +52,66 @@ typedef enum VkImageCompressionFixedRateFlagBitsEXT {
 } VkImageCompressionFixedRateFlagBitsEXT;
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_NONE_EXT` specifies that fixed-rate
+[VK_IMAGE_COMPRESSION_FIXED_RATE_NONE_EXT](#) specifies that fixed-rate
 compression **must** not be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_1BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_1BPC_BIT_EXT](#) specifies that
 fixed-rate compression with a bitrate of [1,2) bits per component
 **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_2BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_2BPC_BIT_EXT](#) specifies that
 fixed-rate compression with a bitrate of [2,3) bits per component
 **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_3BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_3BPC_BIT_EXT](#) specifies that
 fixed-rate compression with a bitrate of [3,4) bits per component
 **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_4BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_4BPC_BIT_EXT](#) specifies that
 fixed-rate compression with a bitrate of [4,5) bits per component
 **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_5BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_5BPC_BIT_EXT](#) specifies that
 fixed-rate compression with a bitrate of [5,6) bits per component
 **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_6BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_6BPC_BIT_EXT](#) specifies that
 fixed-rate compression with a bitrate of [6,7) bits per component
 **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_7BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_7BPC_BIT_EXT](#) specifies that
 fixed-rate compression with a bitrate of [7,8) bits per component
 **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_8BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_8BPC_BIT_EXT](#) specifies that
 fixed-rate compression with a bitrate of [8,9) bits per component
 **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_9BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_9BPC_BIT_EXT](#) specifies that
 fixed-rate compression with a bitrate of [9,10) bits per component
 **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_10BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_10BPC_BIT_EXT](#) specifies that
 fixed-rate compression with a bitrate of [10,11) bits per
 component **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_11BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_11BPC_BIT_EXT](#) specifies that
 fixed-rate compression with a bitrate of [11,12) bits per
 component **may** be used.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_12BPC_BIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_12BPC_BIT_EXT](#) specifies that
 fixed-rate compression with a bitrate of at least 12 bits per component
 **may** be used.
 
@@ -119,12 +119,12 @@ If the format has a different bit rate for different components,
 [VkImageCompressionControlEXT](VkImageCompressionControlEXT.html)::`pFixedRateFlags` describes the rate
 of the component with the largest number of bits assigned to it, scaled pro
 rata.
-For example, to request that a `VK_FORMAT_A2R10G10B10_UNORM_PACK32`
+For example, to request that a [VK_FORMAT_A2R10G10B10_UNORM_PACK32](VkFormat.html)
 format be stored at a rate of 8 bits per pixel, use
-`VK_IMAGE_COMPRESSION_FIXED_RATE_2BPC_BIT_EXT` (10 bits for the largest
+[VK_IMAGE_COMPRESSION_FIXED_RATE_2BPC_BIT_EXT](#) (10 bits for the largest
 component, stored at quarter the original size, 2.5 bits, rounded down).
 
-If `flags` includes `VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT`,
+If `flags` includes [VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT](VkImageCompressionFlagBitsEXT.html),
 and multiple bits are set in
 [VkImageCompressionControlEXT](VkImageCompressionControlEXT.html)::`pFixedRateFlags` for a plane,
 implementations **should** apply the lowest allowed bitrate that is supported.
@@ -133,12 +133,12 @@ implementations **should** apply the lowest allowed bitrate that is supported.
 | --- | --- |
 compression rate describes the same degree of compression applied to formats
 that differ only in the number of components.
-For example, `VK_FORMAT_R8G8_UNORM` compressed to half its original size
+For example, [VK_FORMAT_R8G8_UNORM](VkFormat.html) compressed to half its original size
 is a rate of 4 bits per component, 8 bits per pixel.
-`VK_FORMAT_R8G8B8A8_UNORM` compressed to half *its* original size is 4
+[VK_FORMAT_R8G8B8A8_UNORM](VkFormat.html) compressed to half *its* original size is 4
 bits per component, 16 bits per pixel.
 Both of these cases can be requested with
-`VK_IMAGE_COMPRESSION_FIXED_RATE_4BPC_BIT_EXT`. |
+[VK_IMAGE_COMPRESSION_FIXED_RATE_4BPC_BIT_EXT](#). |
 
 [VK_EXT_image_compression_control](VK_EXT_image_compression_control.html), [VkImageCompressionFixedRateFlagsEXT](VkImageCompressionFixedRateFlagsEXT.html)
 

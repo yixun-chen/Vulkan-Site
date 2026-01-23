@@ -48,7 +48,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSparseImageMemoryRequirements2-sType-sType) VUID-VkSparseImageMemoryRequirements2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2](VkStructureType.html)
 
 * 
 [](#VUID-VkSparseImageMemoryRequirements2-pNext-pNext) VUID-VkSparseImageMemoryRequirements2-pNext-pNext

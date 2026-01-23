@@ -53,8 +53,8 @@ that are underneath the top-most Vulkan physical device (i.e. the one
 returned by [vkGetPhysicalDeviceProperties2](vkGetPhysicalDeviceProperties2.html)) is returned in
 `layeredApiCount`.
 Otherwise, `layeredApiCount` **must** be set by the application to the
-number of elements in the `pLayeredApis` array, and on return the
-variable is overwritten with the number of values actually written to
+number of elements in the `pLayeredApis` array, and on return is
+overwritten with the number of values actually written to
 `pLayeredApis`.
 If the value of `layeredApiCount` is less than the number of layered
 implementations underneath the Vulkan physical device, at most
@@ -79,7 +79,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceLayeredApiPropertiesListKHR-sType-sType) VUID-VkPhysicalDeviceLayeredApiPropertiesListKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPhysicalDeviceLayeredApiPropertiesListKHR-pLayeredApis-parameter) VUID-VkPhysicalDeviceLayeredApiPropertiesListKHR-pLayeredApis-parameter

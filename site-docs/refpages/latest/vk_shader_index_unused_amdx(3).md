@@ -17,7 +17,7 @@
 
 VK_SHADER_INDEX_UNUSED_AMDX - Sentinel for an unused shader index
 
-`VK_SHADER_INDEX_UNUSED_AMDX` is a special shader index used to indicate
+[VK_SHADER_INDEX_UNUSED_AMDX](#) is a special shader index used to indicate
 that the created node does not override the index.
 In this case, the shader index is determined through other means.
 It is defined as:

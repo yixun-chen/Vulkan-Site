@@ -38,19 +38,19 @@ typedef enum VkPresentGravityFlagBitsKHR {
 typedef VkPresentGravityFlagBitsKHR VkPresentGravityFlagBitsEXT;
 
 * 
-`VK_PRESENT_GRAVITY_MIN_BIT_KHR` means that the pixels will
+[VK_PRESENT_GRAVITY_MIN_BIT_KHR](#) means that the pixels will
 gravitate towards the top or left side of the surface.
 
 * 
-`VK_PRESENT_GRAVITY_MAX_BIT_KHR` means that the pixels will
+[VK_PRESENT_GRAVITY_MAX_BIT_KHR](#) means that the pixels will
 gravitate towards the bottom or right side of the surface.
 
 * 
-`VK_PRESENT_GRAVITY_CENTERED_BIT_KHR` means that the pixels will be
+[VK_PRESENT_GRAVITY_CENTERED_BIT_KHR](#) means that the pixels will be
 centered in the surface.
 
 If the value in [VkSurfaceCapabilitiesKHR](VkSurfaceCapabilitiesKHR.html)::`currentTransform` is
-not `VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR`, it is
+not [VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html), it is
 implementation-defined whether the gravity configuration applies to the
 presented image before or after transformation.
 

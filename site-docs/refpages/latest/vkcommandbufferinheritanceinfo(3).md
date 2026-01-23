@@ -65,19 +65,19 @@ time. |
 `occlusionQueryEnable` specifies whether the command buffer **can** be
 executed while an occlusion query is active in the primary command
 buffer.
-If this is `VK_TRUE`, then this command buffer **can** be executed
+If this is [VK_TRUE](VK_TRUE.html), then this command buffer **can** be executed
 whether the primary command buffer has an occlusion query active or not.
-If this is `VK_FALSE`, then the primary command buffer **must** not
+If this is [VK_FALSE](VK_FALSE.html), then the primary command buffer **must** not
 have an occlusion query active.
 
 * 
 `queryFlags` specifies the query flags that **can** be used by an
 active occlusion query in the primary command buffer when this secondary
 command buffer is executed.
-If this value includes the `VK_QUERY_CONTROL_PRECISE_BIT` bit, then
+If this value includes the [VK_QUERY_CONTROL_PRECISE_BIT](VkQueryControlFlagBits.html) bit, then
 the active query **can** return boolean results or actual sample counts.
 If this bit is not set, then the active query **must** not use the
-`VK_QUERY_CONTROL_PRECISE_BIT` bit.
+[VK_QUERY_CONTROL_PRECISE_BIT](VkQueryControlFlagBits.html) bit.
 
 * 
 `pipelineStatistics` is a bitmask of
@@ -101,7 +101,7 @@ Valid Usage
 [](#VUID-VkCommandBufferInheritanceInfo-occlusionQueryEnable-00056) VUID-VkCommandBufferInheritanceInfo-occlusionQueryEnable-00056
 
 If the [`inheritedQueries`](../../../../spec/latest/chapters/features.html#features-inheritedQueries) feature is
-not enabled, `occlusionQueryEnable` **must** be `VK_FALSE`
+not enabled, `occlusionQueryEnable` **must** be [VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-VkCommandBufferInheritanceInfo-queryFlags-00057) VUID-VkCommandBufferInheritanceInfo-queryFlags-00057
@@ -134,12 +134,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCommandBufferInheritanceInfo-sType-sType) VUID-VkCommandBufferInheritanceInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkCommandBufferInheritanceInfo-pNext-pNext) VUID-VkCommandBufferInheritanceInfo-pNext-pNext
 
- Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkAttachmentSampleCountInfoAMD](VkAttachmentSampleCountInfoAMD.html), [VkCommandBufferInheritanceConditionalRenderingInfoEXT](VkCommandBufferInheritanceConditionalRenderingInfoEXT.html), [VkCommandBufferInheritanceRenderPassTransformInfoQCOM](VkCommandBufferInheritanceRenderPassTransformInfoQCOM.html), [VkCommandBufferInheritanceRenderingInfo](VkCommandBufferInheritanceRenderingInfo.html), [VkCommandBufferInheritanceViewportScissorInfoNV](VkCommandBufferInheritanceViewportScissorInfoNV.html), [VkCustomResolveCreateInfoEXT](VkCustomResolveCreateInfoEXT.html), [VkExternalFormatANDROID](VkExternalFormatANDROID.html), [VkExternalFormatOHOS](VkExternalFormatOHOS.html), [VkMultiviewPerViewAttributesInfoNVX](VkMultiviewPerViewAttributesInfoNVX.html), [VkRenderPassTileShadingCreateInfoQCOM](VkRenderPassTileShadingCreateInfoQCOM.html), [VkRenderingAttachmentLocationInfo](VkRenderingAttachmentLocationInfo.html), [VkRenderingInputAttachmentIndexInfo](VkRenderingInputAttachmentIndexInfo.html), or [VkTileMemoryBindInfoQCOM](VkTileMemoryBindInfoQCOM.html)
+ Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkAttachmentSampleCountInfoAMD](VkAttachmentSampleCountInfoAMD.html), [VkCommandBufferInheritanceConditionalRenderingInfoEXT](VkCommandBufferInheritanceConditionalRenderingInfoEXT.html), [VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html), [VkCommandBufferInheritanceRenderPassTransformInfoQCOM](VkCommandBufferInheritanceRenderPassTransformInfoQCOM.html), [VkCommandBufferInheritanceRenderingInfo](VkCommandBufferInheritanceRenderingInfo.html), [VkCommandBufferInheritanceViewportScissorInfoNV](VkCommandBufferInheritanceViewportScissorInfoNV.html), [VkCustomResolveCreateInfoEXT](VkCustomResolveCreateInfoEXT.html), [VkExternalFormatANDROID](VkExternalFormatANDROID.html), [VkExternalFormatOHOS](VkExternalFormatOHOS.html), [VkMultiviewPerViewAttributesInfoNVX](VkMultiviewPerViewAttributesInfoNVX.html), [VkRenderPassTileShadingCreateInfoQCOM](VkRenderPassTileShadingCreateInfoQCOM.html), [VkRenderingAttachmentLocationInfo](VkRenderingAttachmentLocationInfo.html), [VkRenderingInputAttachmentIndexInfo](VkRenderingInputAttachmentIndexInfo.html), or [VkTileMemoryBindInfoQCOM](VkTileMemoryBindInfoQCOM.html)
 
 * 
 [](#VUID-VkCommandBufferInheritanceInfo-sType-unique) VUID-VkCommandBufferInheritanceInfo-sType-unique

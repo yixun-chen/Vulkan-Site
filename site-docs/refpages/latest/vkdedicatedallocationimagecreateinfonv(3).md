@@ -53,18 +53,18 @@ Valid Usage
 * 
 [](#VUID-VkDedicatedAllocationImageCreateInfoNV-dedicatedAllocation-00994) VUID-VkDedicatedAllocationImageCreateInfoNV-dedicatedAllocation-00994
 
-If `dedicatedAllocation` is `VK_TRUE`,
+If `dedicatedAllocation` is [VK_TRUE](VK_TRUE.html),
 [VkImageCreateInfo](VkImageCreateInfo.html)::`flags` **must** not include
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT`,
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`, or
-`VK_IMAGE_CREATE_SPARSE_ALIASED_BIT`
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](VkImageCreateFlagBits.html),
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](VkImageCreateFlagBits.html), or
+[VK_IMAGE_CREATE_SPARSE_ALIASED_BIT](VkImageCreateFlagBits.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDedicatedAllocationImageCreateInfoNV-sType-sType) VUID-VkDedicatedAllocationImageCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV](VkStructureType.html)
 
 [VK_NV_dedicated_allocation](VK_NV_dedicated_allocation.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

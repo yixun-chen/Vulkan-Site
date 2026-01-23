@@ -53,7 +53,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM-sType-sType) VUID-VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_YCBCR_DEGAMMA_CREATE_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_YCBCR_DEGAMMA_CREATE_INFO_QCOM](VkStructureType.html)
 
 [VK_QCOM_ycbcr_degamma](VK_QCOM_ycbcr_degamma.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

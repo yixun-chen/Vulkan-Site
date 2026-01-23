@@ -40,19 +40,19 @@ structure.
 
 * 
  `ycbcr2plane444Formats` indicates
-that the implementation supports the following 2-plane 444 Y′CBCR
-formats:
+that the implementation supports querying format features for, and
+using, the following 2-plane 444 Y′CBCR formats:
 
-`VK_FORMAT_G8_B8R8_2PLANE_444_UNORM`
-
-* 
-`VK_FORMAT_G10X6_B10X6R10X6_2PLANE_444_UNORM_3PACK16`
+[VK_FORMAT_G8_B8R8_2PLANE_444_UNORM](VkFormat.html)
 
 * 
-`VK_FORMAT_G12X4_B12X4R12X4_2PLANE_444_UNORM_3PACK16`
+[VK_FORMAT_G10X6_B10X6R10X6_2PLANE_444_UNORM_3PACK16](VkFormat.html)
 
 * 
-`VK_FORMAT_G16_B16R16_2PLANE_444_UNORM`
+[VK_FORMAT_G12X4_B12X4R12X4_2PLANE_444_UNORM_3PACK16](VkFormat.html)
+
+* 
+[VK_FORMAT_G16_B16R16_2PLANE_444_UNORM](VkFormat.html)
 
 If the `VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -60,7 +60,7 @@ If the `VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT` structure is included 
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -68,7 +68,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_2_PLANE_444_FORMATS_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_2_PLANE_444_FORMATS_FEATURES_EXT](VkStructureType.html)
 
 |  | Although the formats defined by the `[VK_EXT_ycbcr_2plane_444_formats](VK_EXT_ycbcr_2plane_444_formats.html)`
 | --- | --- |

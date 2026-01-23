@@ -22,7 +22,7 @@ Chaining LSS primitives **can** be achieved by specifying an index buffer in
 [VkAccelerationStructureGeometryLinearSweptSpheresDataNV](VkAccelerationStructureGeometryLinearSweptSpheresDataNV.html)::`indexData`
 and setting
 [VkAccelerationStructureGeometryLinearSweptSpheresDataNV](VkAccelerationStructureGeometryLinearSweptSpheresDataNV.html)::`indexingMode`
-to one of `VkRayTracingLssIndexingModeNV` values:
+to one of [VkRayTracingLssIndexingModeNV](#) values:
 
 // Provided by VK_NV_ray_tracing_linear_swept_spheres
 typedef enum VkRayTracingLssIndexingModeNV {
@@ -31,12 +31,12 @@ typedef enum VkRayTracingLssIndexingModeNV {
 } VkRayTracingLssIndexingModeNV;
 
 * 
-`VK_RAY_TRACING_LSS_INDEXING_MODE_LIST_NV` specifies that a list of
+[VK_RAY_TRACING_LSS_INDEXING_MODE_LIST_NV](#) specifies that a list of
 indices is provided where each consecutive pair of indices define a LSS
 primitive.
 
 * 
-`VK_RAY_TRACING_LSS_INDEXING_MODE_SUCCESSIVE_NV` specifies a
+[VK_RAY_TRACING_LSS_INDEXING_MODE_SUCCESSIVE_NV](#) specifies a
 successive implicit indexing format, in which each LSS primitive is
 defined by two successive positions and radii, (k, k + 1), where
 k is a single index provided in the index buffer.

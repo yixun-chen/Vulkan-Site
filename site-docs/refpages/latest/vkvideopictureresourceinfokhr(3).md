@@ -97,7 +97,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoPictureResourceInfoKHR-sType-sType) VUID-VkVideoPictureResourceInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_PICTURE_RESOURCE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_PICTURE_RESOURCE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoPictureResourceInfoKHR-pNext-pNext) VUID-VkVideoPictureResourceInfoKHR-pNext-pNext

@@ -163,7 +163,7 @@ constructed from
 `StdVideoDecodeH265PictureInfo`::`pps_pic_parameter_set_id`.
 
 If the bound video session was created with
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR` and any of
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html) and any of
 the active parameter sets are specified
 [inline](../../../../spec/latest/chapters/videocoding.html#decode-h265-inline-parameter-sets), then the corresponding inline
 parameter set is used.
@@ -175,7 +175,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoDecodeH265PictureInfoKHR-sType-sType) VUID-VkVideoDecodeH265PictureInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_PICTURE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_PICTURE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoDecodeH265PictureInfoKHR-pStdPictureInfo-parameter) VUID-VkVideoDecodeH265PictureInfoKHR-pStdPictureInfo-parameter

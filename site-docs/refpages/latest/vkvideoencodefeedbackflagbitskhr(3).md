@@ -30,7 +30,7 @@ typedef enum VkVideoEncodeFeedbackFlagBitsKHR {
 } VkVideoEncodeFeedbackFlagBitsKHR;
 
 * 
-`VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR` specifies
+[VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR](#) specifies
 that queries managed by the pool will capture the byte offset of the
 bitstream data written by the video encode operation to the bitstream
 buffer specified in [VkVideoEncodeInfoKHR](VkVideoEncodeInfoKHR.html)::`dstBuffer` relative
@@ -44,13 +44,13 @@ the offset specified in
 [VkVideoEncodeInfoKHR](VkVideoEncodeInfoKHR.html)::`dstBufferOffset`.
 
 * 
-`VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR` specifies
+[VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR](#) specifies
 that queries managed by the pool will capture the number of bytes
 written by the video encode operation to the bitstream buffer specified
 in [VkVideoEncodeInfoKHR](VkVideoEncodeInfoKHR.html)::`dstBuffer`.
 
 * 
-`VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR` specifies
+[VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR](#) specifies
 that queries managed by the pool will capture a boolean value indicating
 that the data written to the bitstream buffer specified in
 [VkVideoEncodeInfoKHR](VkVideoEncodeInfoKHR.html)::`dstBuffer` contains
@@ -59,13 +59,13 @@ that the data written to the bitstream buffer specified in
 When retrieving the results of video encode feedback queries, the values
 corresponding to each enabled video encode feedback are written in the order
 of the bits defined above, followed by an optional value indicating
-availability or result status if `VK_QUERY_RESULT_WITH_AVAILABILITY_BIT`
-or `VK_QUERY_RESULT_WITH_STATUS_BIT_KHR` is specified, respectively.
+availability or result status if [VK_QUERY_RESULT_WITH_AVAILABILITY_BIT](VkQueryResultFlagBits.html)
+or [VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](VkQueryResultFlagBits.html) is specified, respectively.
 
 If the result status of a video encode feedback query is negative, then the
 results of all enabled video encode feedback values will be **undefined**.
 
-|  | Applications should always specify `VK_QUERY_RESULT_WITH_STATUS_BIT_KHR`
+|  | Applications should always specify [VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](VkQueryResultFlagBits.html)
 | --- | --- |
 when retrieving the results of video encode feedback queries and ignore such
 **undefined** video encode feedback values for any

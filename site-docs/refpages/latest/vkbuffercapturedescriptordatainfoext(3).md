@@ -46,7 +46,7 @@ Valid Usage
 [](#VUID-VkBufferCaptureDescriptorDataInfoEXT-buffer-08075) VUID-VkBufferCaptureDescriptorDataInfoEXT-buffer-08075
 
 `buffer` **must** have been created with
-`VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` set in
+[VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](VkBufferCreateFlagBits.html) set in
 [VkBufferCreateInfo](VkBufferCreateInfo.html)::`flags`
 
 Valid Usage (Implicit)
@@ -54,7 +54,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferCaptureDescriptorDataInfoEXT-sType-sType) VUID-VkBufferCaptureDescriptorDataInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_CAPTURE_DESCRIPTOR_DATA_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_CAPTURE_DESCRIPTOR_DATA_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkBufferCaptureDescriptorDataInfoEXT-pNext-pNext) VUID-VkBufferCaptureDescriptorDataInfoEXT-pNext-pNext

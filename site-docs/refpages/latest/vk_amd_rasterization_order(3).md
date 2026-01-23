@@ -119,8 +119,8 @@ space.
 
 * 
 If depth testing is used with a comparison operator of
-`VK_COMPARE_OP_LESS`, `VK_COMPARE_OP_LESS_OR_EQUAL`,
-`VK_COMPARE_OP_GREATER`, or `VK_COMPARE_OP_GREATER_OR_EQUAL`,
+[VK_COMPARE_OP_LESS](VkCompareOp.html), [VK_COMPARE_OP_LESS_OR_EQUAL](VkCompareOp.html),
+[VK_COMPARE_OP_GREATER](VkCompareOp.html), or [VK_COMPARE_OP_GREATER_OR_EQUAL](VkCompareOp.html),
 and the primitives rendered are known to not overlap in clip space.
 
 * 
@@ -144,7 +144,7 @@ Extending [VkPipelineRasterizationStateCreateInfo](VkPipelineRasterizationStateC
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD`
+[VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD](VkStructureType.html)
 
 1) How is this extension useful to application developers?
 

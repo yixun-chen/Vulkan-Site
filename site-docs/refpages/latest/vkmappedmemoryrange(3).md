@@ -45,7 +45,7 @@ structure.
 memory object.
 
 * 
-`size` is either the size of range, or `VK_WHOLE_SIZE` to affect
+`size` is either the size of range, or [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html) to affect
 the range from `offset` to the end of the current mapping of the
 allocation.
 
@@ -59,14 +59,14 @@ Valid Usage
 * 
 [](#VUID-VkMappedMemoryRange-size-00685) VUID-VkMappedMemoryRange-size-00685
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `offset` and
+If `size` is not equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), `offset` and
 `size` **must** specify a range contained within the currently mapped
 range of `memory`
 
 * 
 [](#VUID-VkMappedMemoryRange-size-00686) VUID-VkMappedMemoryRange-size-00686
 
-If `size` is equal to `VK_WHOLE_SIZE`, `offset` **must** be
+If `size` is equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), `offset` **must** be
 within the currently mapped range of `memory`
 
 * 
@@ -78,7 +78,7 @@ within the currently mapped range of `memory`
 * 
 [](#VUID-VkMappedMemoryRange-size-01389) VUID-VkMappedMemoryRange-size-01389
 
-If `size` is equal to `VK_WHOLE_SIZE`, the end of the current
+If `size` is equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), the end of the current
 mapping of `memory` **must** either be a multiple of
 [VkPhysicalDeviceLimits](VkPhysicalDeviceLimits.html)::`nonCoherentAtomSize` bytes from the
 beginning of the memory object, or be equal to the end of the memory
@@ -87,7 +87,7 @@ object
 * 
 [](#VUID-VkMappedMemoryRange-size-01390) VUID-VkMappedMemoryRange-size-01390
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must**
+If `size` is not equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), `size` **must**
 either be a multiple of
 [VkPhysicalDeviceLimits](VkPhysicalDeviceLimits.html)::`nonCoherentAtomSize`, or `offset`
 plus `size` **must** equal the size of `memory`
@@ -97,7 +97,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMappedMemoryRange-sType-sType) VUID-VkMappedMemoryRange-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE](VkStructureType.html)
 
 * 
 [](#VUID-VkMappedMemoryRange-pNext-pNext) VUID-VkMappedMemoryRange-pNext-pNext

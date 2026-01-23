@@ -100,7 +100,7 @@ Extending [VkBufferMemoryBarrier](VkBufferMemoryBarrier.html), [VkBufferMemoryBa
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_EXT`
+[VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2023-03-09 (Lina Versace)

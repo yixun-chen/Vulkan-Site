@@ -52,26 +52,26 @@ memories or scratch memories being used by any of the builds. |
 Accesses to the micromap scratch buffers as identified by the
 [VkMicromapBuildInfoEXT](VkMicromapBuildInfoEXT.html)::`scratchData` buffer device addresses
 **must** be [synchronized](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies) with the
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](VkPipelineStageFlagBits2.html)
 [pipeline stage](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages) and an
 [access type](../../../../spec/latest/chapters/synchronization.html#synchronization-access-types) of
-(`VK_ACCESS_2_MICROMAP_READ_BIT_EXT` |
-`VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT`).
+([VK_ACCESS_2_MICROMAP_READ_BIT_EXT](VkAccessFlagBits2.html) |
+[VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT](VkAccessFlagBits2.html)).
 Accesses to [VkMicromapBuildInfoEXT](VkMicromapBuildInfoEXT.html)::`dstMicromap` **must** be
 [synchronized](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies) with the
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](VkPipelineStageFlagBits2.html)
 [pipeline stage](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages) and an
 [access type](../../../../spec/latest/chapters/synchronization.html#synchronization-access-types) of
-`VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT`.
+[VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT](VkAccessFlagBits2.html).
 
 Accesses to other input buffers as identified by any used values of
 [VkMicromapBuildInfoEXT](VkMicromapBuildInfoEXT.html)::`data` or
 [VkMicromapBuildInfoEXT](VkMicromapBuildInfoEXT.html)::`triangleArray` **must** be
 [synchronized](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies) with the
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](VkPipelineStageFlagBits2.html)
 [pipeline stage](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages) and an
 [access type](../../../../spec/latest/chapters/synchronization.html#synchronization-access-types) of
-`VK_ACCESS_SHADER_READ_BIT`.
+[VK_ACCESS_SHADER_READ_BIT](VkAccessFlagBits.html).
 
 Valid Usage
 
@@ -137,7 +137,7 @@ For each element of `pInfos`, the `buffer` used to create its
 * 
 [](#VUID-vkCmdBuildMicromapsEXT-pInfos-07509) VUID-vkCmdBuildMicromapsEXT-pInfos-07509
 
-If `pInfos`[i].`mode` is `VK_BUILD_MICROMAP_MODE_BUILD_EXT`,
+If `pInfos`[i].`mode` is [VK_BUILD_MICROMAP_MODE_BUILD_EXT](VkBuildMicromapModeEXT.html),
 all addresses between `pInfos`[i].`scratchData.deviceAddress`
 and `pInfos`[i].`scratchData.deviceAddress` +  N - 1 **must**
 be in the buffer device address range of the same buffer, where N is
@@ -152,7 +152,7 @@ given by the `buildScratchSize` member of the
 The buffers from which the buffer device addresses for all of the
 `data` and `triangleArray` members of all `pInfos`[i] are
 queried **must** have been created with the
-`VK_BUFFER_USAGE_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT` usage flag
+[VK_BUFFER_USAGE_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT](VkBufferUsageFlagBits.html) usage flag
 set
 
 * 
@@ -161,7 +161,7 @@ set
 For each element of `pInfos`[i] the buffer from which the buffer
 device address `pInfos`[i].`scratchData.deviceAddress` is
 queried **must** have been created with the
-`VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdBuildMicromapsEXT-pInfos-07512) VUID-vkCmdBuildMicromapsEXT-pInfos-07512
@@ -218,7 +218,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBuildMicromapsEXT-commandBuffer-cmdpool) VUID-vkCmdBuildMicromapsEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBuildMicromapsEXT-renderpass) VUID-vkCmdBuildMicromapsEXT-renderpass

@@ -47,7 +47,7 @@ Valid Usage
 
 If `tensorView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html) then `tensorView`
 **must** have been created with
-`VK_TENSOR_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM` set
+[VK_TENSOR_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM](VkTensorViewCreateFlagBitsARM.html) set
 in [VkTensorViewCreateInfoARM](VkTensorViewCreateInfoARM.html)::`flags`
 
 Valid Usage (Implicit)
@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTensorViewCaptureDescriptorDataInfoARM-sType-sType) VUID-VkTensorViewCaptureDescriptorDataInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TENSOR_VIEW_CAPTURE_DESCRIPTOR_DATA_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TENSOR_VIEW_CAPTURE_DESCRIPTOR_DATA_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkTensorViewCaptureDescriptorDataInfoARM-pNext-pNext) VUID-VkTensorViewCaptureDescriptorDataInfoARM-pNext-pNext

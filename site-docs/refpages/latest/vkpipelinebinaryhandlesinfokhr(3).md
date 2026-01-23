@@ -53,8 +53,8 @@ Otherwise, `pipelineBinaryCount` **must** be the number of entries in the
 with the number of handles actually written to `pPipelineBinaries`.
 If the value of `pipelineBinaryCount` is less than the number of
 binaries that would have been created, at most `pipelineBinaryCount`
-handles will be written to `pPipelineBinaries` and `VK_INCOMPLETE`
-will be returned instead of `VK_SUCCESS`, to indicate that
+handles will be written to `pPipelineBinaries` and [VK_INCOMPLETE](VkResult.html)
+will be returned instead of [VK_SUCCESS](VkResult.html), to indicate that
 `pPipelineBinaries` was not large enough to create all the binaries.
 
 Valid Usage (Implicit)
@@ -62,7 +62,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineBinaryHandlesInfoKHR-sType-sType) VUID-VkPipelineBinaryHandlesInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_BINARY_HANDLES_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_BINARY_HANDLES_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineBinaryHandlesInfoKHR-pNext-pNext) VUID-VkPipelineBinaryHandlesInfoKHR-pNext-pNext

@@ -92,7 +92,7 @@ sample is covered.
 This is the default mode.
 
 * 
-Truncate: When there are more raster samples (N) than color samples(M),
+Truncate: When there are more raster samples (N) than color samples (M),
 there is one to one association of the first M raster samples to the M
 color samples; other raster samples are ignored.
 
@@ -138,13 +138,13 @@ Extending [VkPipelineMultisampleStateCreateInfo](VkPipelineMultisampleStateCreat
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_FRAMEBUFFER_MIXED_SAMPLES_COMBINATION_NV`
+[VK_STRUCTURE_TYPE_FRAMEBUFFER_MIXED_SAMPLES_COMBINATION_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COVERAGE_REDUCTION_MODE_FEATURES_NV`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COVERAGE_REDUCTION_MODE_FEATURES_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV`
+[VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV](VkStructureType.html)
 
 * 
 Revision 1, 2019-01-29 (Kedarnath Thangudu)

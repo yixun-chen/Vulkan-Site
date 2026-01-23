@@ -176,35 +176,35 @@ Valid Usage
 [](#VUID-VkPipelineRasterizationStateCreateInfo-depthClampEnable-00782) VUID-VkPipelineRasterizationStateCreateInfo-depthClampEnable-00782
 
 If the [`depthClamp`](features.html#features-depthClamp) feature is not enabled,
-`depthClampEnable` **must** be `VK_FALSE`
+`depthClampEnable` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkPipelineRasterizationStateCreateInfo-polygonMode-01507) VUID-VkPipelineRasterizationStateCreateInfo-polygonMode-01507
 
     If the [`fillModeNonSolid`](features.html#features-fillModeNonSolid) feature is
-    not enabled, `polygonMode` **must** be `VK_POLYGON_MODE_FILL`
-or `VK_POLYGON_MODE_FILL_RECTANGLE_NV`
+    not enabled, `polygonMode` **must** be [VK_POLYGON_MODE_FILL](#VkPolygonMode)
+or [VK_POLYGON_MODE_FILL_RECTANGLE_NV](#VkPolygonMode)
 
 * 
 [](#VUID-VkPipelineRasterizationStateCreateInfo-polygonMode-01414) VUID-VkPipelineRasterizationStateCreateInfo-polygonMode-01414
 
 If the `[VK_NV_fill_rectangle](../appendices/extensions.html#VK_NV_fill_rectangle)` extension is not enabled,
-`polygonMode` **must** not be `VK_POLYGON_MODE_FILL_RECTANGLE_NV`
+`polygonMode` **must** not be [VK_POLYGON_MODE_FILL_RECTANGLE_NV](#VkPolygonMode)
 
 * 
 [](#VUID-VkPipelineRasterizationStateCreateInfo-pointPolygons-04458) VUID-VkPipelineRasterizationStateCreateInfo-pointPolygons-04458
 
 If the `[VK_KHR_portability_subset](../appendices/extensions.html#VK_KHR_portability_subset)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR)::`pointPolygons`
-is `VK_FALSE`, and `rasterizerDiscardEnable` is `VK_FALSE`,
-`polygonMode` **must** not be `VK_POLYGON_MODE_POINT`
+is [VK_FALSE](fundamentals.html#VK_FALSE), and `rasterizerDiscardEnable` is [VK_FALSE](fundamentals.html#VK_FALSE),
+`polygonMode` **must** not be [VK_POLYGON_MODE_POINT](#VkPolygonMode)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineRasterizationStateCreateInfo-sType-sType) VUID-VkPipelineRasterizationStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineRasterizationStateCreateInfo-pNext-pNext) VUID-VkPipelineRasterizationStateCreateInfo-pNext-pNext
@@ -277,7 +277,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineRasterizationDepthClipStateCreateInfoEXT-sType-sType) VUID-VkPipelineRasterizationDepthClipStateCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineRasterizationDepthClipStateCreateInfoEXT-flags-zerobitmask) VUID-VkPipelineRasterizationDepthClipStateCreateInfoEXT-flags-zerobitmask
@@ -320,8 +320,8 @@ structure.
 specifying the number of samples used in rasterization.
 This value is ignored for the purposes of setting the number of samples
 used in rasterization if the pipeline is created with the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` dynamic state set, but
-if `VK_DYNAMIC_STATE_SAMPLE_MASK_EXT` dynamic state is not set, it
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](pipelines.html#VkDynamicState) dynamic state set, but
+if [VK_DYNAMIC_STATE_SAMPLE_MASK_EXT](pipelines.html#VkDynamicState) dynamic state is not set, it
 is still used to define the size of the `pSampleMask` array as
 described below.
 
@@ -331,7 +331,7 @@ described below.
 
 * 
 `minSampleShading` specifies a minimum fraction of sample shading if
-`sampleShadingEnable` is `VK_TRUE`.
+`sampleShadingEnable` is [VK_TRUE](fundamentals.html#VK_TRUE).
 
 * 
 `pSampleMask` is a pointer to an array of `VkSampleMask`
@@ -365,13 +365,13 @@ Valid Usage
 [](#VUID-VkPipelineMultisampleStateCreateInfo-sampleShadingEnable-00784) VUID-VkPipelineMultisampleStateCreateInfo-sampleShadingEnable-00784
 
 If the [`sampleRateShading`](features.html#features-sampleRateShading) feature
-is not enabled, `sampleShadingEnable` **must** be `VK_FALSE`
+is not enabled, `sampleShadingEnable` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkPipelineMultisampleStateCreateInfo-alphaToOneEnable-00785) VUID-VkPipelineMultisampleStateCreateInfo-alphaToOneEnable-00785
 
 If the [`alphaToOne`](features.html#features-alphaToOne) feature is not enabled,
-`alphaToOneEnable` **must** be `VK_FALSE`
+`alphaToOneEnable` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkPipelineMultisampleStateCreateInfo-minSampleShading-00786) VUID-VkPipelineMultisampleStateCreateInfo-minSampleShading-00786
@@ -386,7 +386,7 @@ and the [`coverageReductionMode`](features.html#features-coverageReductionMode)
 feature is not enabled, or the `pNext` chain does not contain
 `VkPipelineCoverageReductionStateCreateInfoNV`, or
 `VkPipelineCoverageReductionStateCreateInfoNV`::`coverageReductionMode`
-is not set to `VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV`,
+is not set to [VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV](fragops.html#VkCoverageReductionModeNV),
 and the subpass has any color attachments, and
 `rasterizationSamples` is greater than the number of color samples,
 then [sample shading](#primsrast-sampleshading) **must** not be enabled
@@ -396,7 +396,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineMultisampleStateCreateInfo-sType-sType) VUID-VkPipelineMultisampleStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineMultisampleStateCreateInfo-pNext-pNext) VUID-VkPipelineMultisampleStateCreateInfo-pNext-pNext
@@ -473,7 +473,7 @@ immediately before the rasterization stage.
 This command sets the discard enable for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE` set in
+[VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationStateCreateInfo](#VkPipelineRasterizationStateCreateInfo)::`rasterizerDiscardEnable`
@@ -512,7 +512,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetRasterizerDiscardEnable-commandBuffer-cmdpool) VUID-vkCmdSetRasterizerDiscardEnable-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetRasterizerDiscardEnable-videocoding) VUID-vkCmdSetRasterizerDiscardEnable-videocoding
@@ -634,14 +634,14 @@ Valid Usage
 
 `rasterizationStream` **must** be zero if
 `VkPhysicalDeviceTransformFeedbackPropertiesEXT`::`transformFeedbackRasterizationStreamSelect`
-is `VK_FALSE`
+is [VK_FALSE](fundamentals.html#VK_FALSE)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineRasterizationStateStreamCreateInfoEXT-sType-sType) VUID-VkPipelineRasterizationStateStreamCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineRasterizationStateStreamCreateInfoEXT-flags-zerobitmask) VUID-VkPipelineRasterizationStateStreamCreateInfoEXT-flags-zerobitmask
@@ -673,7 +673,7 @@ This command sets the `rasterizationStream` state for subsequent drawing
 commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT` set in
+[VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationStateStreamCreateInfoEXT](#VkPipelineRasterizationStateStreamCreateInfoEXT)::`rasterizationStream`
@@ -706,7 +706,7 @@ The [`transformFeedback`](features.html#features-transformFeedback) feature
 
 `rasterizationStream` **must** be zero if
 `VkPhysicalDeviceTransformFeedbackPropertiesEXT`::`transformFeedbackRasterizationStreamSelect`
-is `VK_FALSE`
+is [VK_FALSE](fundamentals.html#VK_FALSE)
 
 Valid Usage (Implicit)
 
@@ -723,7 +723,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetRasterizationStreamEXT-commandBuffer-cmdpool) VUID-vkCmdSetRasterizationStreamEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetRasterizationStreamEXT-videocoding) VUID-vkCmdSetRasterizationStreamEXT-videocoding
@@ -792,7 +792,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineRasterizationStateRasterizationOrderAMD-sType-sType) VUID-VkPipelineRasterizationStateRasterizationOrderAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineRasterizationStateRasterizationOrderAMD-rasterizationOrder-parameter) VUID-VkPipelineRasterizationStateRasterizationOrderAMD-rasterizationOrder-parameter
@@ -803,7 +803,7 @@ If the `[VK_AMD_rasterization_order](../appendices/extensions.html#VK_AMD_raster
 or the application does not request a particular rasterization order through
 specifying a `VkPipelineRasterizationStateRasterizationOrderAMD`
 structure then the rasterization order used by the graphics pipeline
-defaults to `VK_RASTERIZATION_ORDER_STRICT_AMD`.
+defaults to [VK_RASTERIZATION_ORDER_STRICT_AMD](#VkRasterizationOrderAMD).
 
 Possible values of
 [VkPipelineRasterizationStateRasterizationOrderAMD](#VkPipelineRasterizationStateRasterizationOrderAMD)::`rasterizationOrder`,
@@ -816,11 +816,11 @@ typedef enum VkRasterizationOrderAMD {
 } VkRasterizationOrderAMD;
 
 * 
-`VK_RASTERIZATION_ORDER_STRICT_AMD` specifies that operations for
+[VK_RASTERIZATION_ORDER_STRICT_AMD](#VkRasterizationOrderAMD) specifies that operations for
 each primitive in a subpass **must** occur in [    primitive order](drawing.html#drawing-primitive-order).
 
 * 
-`VK_RASTERIZATION_ORDER_RELAXED_AMD` specifies that operations for
+[VK_RASTERIZATION_ORDER_RELAXED_AMD](#VkRasterizationOrderAMD) specifies that operations for
 each primitive in a subpass **may** not occur in [    primitive order](drawing.html#drawing-primitive-order).
 
 Multisampling is a mechanism to antialias all Vulkan primitives: points,
@@ -905,7 +905,7 @@ This command sets the `rasterizationSamples` for subsequent drawing
 commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` set in
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineMultisampleStateCreateInfo](#VkPipelineMultisampleStateCreateInfo)::`rasterizationSamples` value
@@ -944,7 +944,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetRasterizationSamplesEXT-commandBuffer-cmdpool) VUID-vkCmdSetRasterizationSamplesEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetRasterizationSamplesEXT-videocoding) VUID-vkCmdSetRasterizationSamplesEXT-videocoding
@@ -1021,30 +1021,30 @@ Bit b in coverage mask word w is `1` if the sample with coverage
 index j = 32×w + b is covered, and `0` otherwise.
 
 If the `standardSampleLocations` member of [VkPhysicalDeviceLimits](limits.html#VkPhysicalDeviceLimits)
-is `VK_TRUE`, then the sample counts `VK_SAMPLE_COUNT_1_BIT`,
-`VK_SAMPLE_COUNT_2_BIT`, `VK_SAMPLE_COUNT_4_BIT`,
-`VK_SAMPLE_COUNT_8_BIT`, and `VK_SAMPLE_COUNT_16_BIT` have sample
+is [VK_TRUE](fundamentals.html#VK_TRUE), then the sample counts [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits),
+[VK_SAMPLE_COUNT_2_BIT](limits.html#VkSampleCountFlagBits), [VK_SAMPLE_COUNT_4_BIT](limits.html#VkSampleCountFlagBits),
+[VK_SAMPLE_COUNT_8_BIT](limits.html#VkSampleCountFlagBits), and [VK_SAMPLE_COUNT_16_BIT](limits.html#VkSampleCountFlagBits) have sample
 locations as listed in the following table, with the ith entry in
 the table corresponding to sample index i.
-`VK_SAMPLE_COUNT_32_BIT` and `VK_SAMPLE_COUNT_64_BIT` do not have
+[VK_SAMPLE_COUNT_32_BIT](limits.html#VkSampleCountFlagBits) and [VK_SAMPLE_COUNT_64_BIT](limits.html#VkSampleCountFlagBits) do not have
 standard sample locations.
 Locations are defined relative to an origin in the upper left corner of the
 fragment.
 
 | Sample count | Sample Locations |
 | --- | --- |
-| `VK_SAMPLE_COUNT_1_BIT` | (0.5,0.5) | ![sample count 1](../_images/sample_count_1.svg) |
-| `VK_SAMPLE_COUNT_2_BIT` | (0.75,0.75)
+| [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits) | (0.5,0.5) | ![sample count 1](../_images/sample_count_1.svg) |
+| [VK_SAMPLE_COUNT_2_BIT](limits.html#VkSampleCountFlagBits) | (0.75,0.75)
 
       (0.25,0.25) | ![sample count 2](../_images/sample_count_2.svg) |
-| `VK_SAMPLE_COUNT_4_BIT` | (0.375, 0.125)
+| [VK_SAMPLE_COUNT_4_BIT](limits.html#VkSampleCountFlagBits) | (0.375, 0.125)
 
       (0.875, 0.375)
 
       (0.125, 0.625)
 
       (0.625, 0.875) | ![sample count 4](../_images/sample_count_4.svg) |
-| `VK_SAMPLE_COUNT_8_BIT` | (0.5625, 0.3125)
+| [VK_SAMPLE_COUNT_8_BIT](limits.html#VkSampleCountFlagBits) | (0.5625, 0.3125)
 
       (0.4375, 0.6875)
 
@@ -1059,7 +1059,7 @@ fragment.
       (0.6875, 0.9375)
 
       (0.9375, 0.0625) | ![sample count 8](../_images/sample_count_8.svg) |
-| `VK_SAMPLE_COUNT_16_BIT` | (0.5625, 0.5625)
+| [VK_SAMPLE_COUNT_16_BIT](limits.html#VkSampleCountFlagBits) | (0.5625, 0.5625)
 
       (0.4375, 0.3125)
 
@@ -1140,22 +1140,22 @@ structure.
 * 
 `sampleLocationsEnable` controls whether custom sample locations are
 used.
-If `sampleLocationsEnable` is `VK_FALSE`, the default sample
+If `sampleLocationsEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), the default sample
 locations are used and the values specified in `sampleLocationsInfo`
 are ignored.
 
 * 
 `sampleLocationsInfo` is the sample locations to use during
-rasterization if `sampleLocationsEnable` is `VK_TRUE` and the
+rasterization if `sampleLocationsEnable` is [VK_TRUE](fundamentals.html#VK_TRUE) and the
 graphics pipeline is not created with
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT`.
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](pipelines.html#VkDynamicState).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineSampleLocationsStateCreateInfoEXT-sType-sType) VUID-VkPipelineSampleLocationsStateCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineSampleLocationsStateCreateInfoEXT-sampleLocationsInfo-parameter) VUID-VkPipelineSampleLocationsStateCreateInfoEXT-sampleLocationsInfo-parameter
@@ -1201,7 +1201,7 @@ This structure **can** be used either to specify the sample locations to be
 used for rendering or to specify the set of sample locations an image
 subresource has been last rendered with for the purposes of layout
 transitions of depth/stencil images created with
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT`.
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](resources.html#VkImageCreateFlagBits).
 
 The sample locations in `pSampleLocations` specify
 `sampleLocationsPerPixel` number of sample locations for each pixel in
@@ -1237,7 +1237,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSampleLocationsInfoEXT-sType-sType) VUID-VkSampleLocationsInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSampleLocationsInfoEXT-pSampleLocations-parameter) VUID-VkSampleLocationsInfoEXT-pSampleLocations-parameter
@@ -1287,7 +1287,7 @@ This command sets the `sampleLocationsEnable` state for subsequent
 drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT` set in
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineSampleLocationsStateCreateInfoEXT](#VkPipelineSampleLocationsStateCreateInfoEXT)::`sampleLocationsEnable`
@@ -1321,7 +1321,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetSampleLocationsEnableEXT-commandBuffer-cmdpool) VUID-vkCmdSetSampleLocationsEnableEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetSampleLocationsEnableEXT-videocoding) VUID-vkCmdSetSampleLocationsEnableEXT-videocoding
@@ -1366,10 +1366,10 @@ This command sets the custom sample locations for subsequent drawing
 commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` set in
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`, and when the
 [VkPipelineSampleLocationsStateCreateInfoEXT](#VkPipelineSampleLocationsStateCreateInfoEXT)::`sampleLocationsEnable`
-property of the bound graphics pipeline is `VK_TRUE`.
+property of the bound graphics pipeline is [VK_TRUE](fundamentals.html#VK_TRUE).
 Otherwise, this state is specified by the
 [VkPipelineSampleLocationsStateCreateInfoEXT](#VkPipelineSampleLocationsStateCreateInfoEXT)::`sampleLocationsInfo`
 values used to create the currently active pipeline.
@@ -1381,7 +1381,7 @@ Valid Usage
 
 If
 [VkPhysicalDeviceSampleLocationsPropertiesEXT](limits.html#VkPhysicalDeviceSampleLocationsPropertiesEXT)::`variableSampleLocations`
-is `VK_FALSE` then the current render pass **must** have been begun by
+is [VK_FALSE](fundamentals.html#VK_FALSE) then the current render pass **must** have been begun by
 specifying a [VkRenderPassSampleLocationsBeginInfoEXT](renderpass.html#VkRenderPassSampleLocationsBeginInfoEXT) structure
 whose `pPostSubpassSampleLocations` member contains an element with
 a `subpassIndex` matching the current subpass index and the
@@ -1408,7 +1408,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetSampleLocationsEXT-commandBuffer-cmdpool) VUID-vkCmdSetSampleLocationsEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetSampleLocationsEXT-videocoding) VUID-vkCmdSetSampleLocationsEXT-videocoding
@@ -1471,8 +1471,8 @@ array, and on return the variable is overwritten with the number of
 structures actually written to `pFragmentShadingRates`.
 If `pFragmentShadingRateCount` is less than the number of fragment
 shading rates available, at most `pFragmentShadingRateCount` structures
-will be written, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available fragment shading
+will be written, and [VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead of
+[VK_SUCCESS](fundamentals.html#VkResult), to indicate that not all the available fragment shading
 rates were returned.
 
 The returned array of fragment shading rates **must** be ordered from largest
@@ -1519,12 +1519,12 @@ Implementations **must** support at least the following shading rates:
 
 | `sampleCounts` | `fragmentSize` |
 | --- | --- |
-| `VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT` | {2,2} |
-| `VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT` | {2,1} |
+| [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits) \| [VK_SAMPLE_COUNT_4_BIT](limits.html#VkSampleCountFlagBits) | {2,2} |
+| [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits) \| [VK_SAMPLE_COUNT_4_BIT](limits.html#VkSampleCountFlagBits) | {2,1} |
 | ~0 | {1,1} |
 
-If [`framebufferColorSampleCounts`](limits.html#limits-framebufferColorSampleCounts), includes `VK_SAMPLE_COUNT_2_BIT`,
-the required rates **must** also include `VK_SAMPLE_COUNT_2_BIT`.
+If [`framebufferColorSampleCounts`](limits.html#limits-framebufferColorSampleCounts), includes [VK_SAMPLE_COUNT_2_BIT](limits.html#VkSampleCountFlagBits),
+the required rates **must** also include [VK_SAMPLE_COUNT_2_BIT](limits.html#VkSampleCountFlagBits).
 
 |  | Including the {1,1} fragment size is done for completeness; it has no actual
 | --- | --- |
@@ -1536,15 +1536,15 @@ are supported for this rate. |
 The returned set of fragment shading rates **must** be returned in the native
 (rotated) coordinate system.
 For rasterization using render pass `transform` not equal to
-`VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR`, the application **must** transform
+[VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR), the application **must** transform
 the returned fragment shading rates into the current (unrotated) coordinate
 system to get the supported rates for that transform.
 
 |  | For example, consider an implementation returning support for 4x2, but not
 | --- | --- |
 2x4 in the set of supported fragment shading rates.
-This means that for transforms `VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR`
-and `VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR`, 2x4 is a supported rate,
+This means that for transforms [VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR](VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR)
+and [VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR](VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR), 2x4 is a supported rate,
 but 4x2 is an unsupported rate. |
 
 Valid Usage (Implicit)
@@ -1569,21 +1569,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkPhysicalDeviceFragmentShadingRateKHR` structure is defined as
 
@@ -1615,7 +1615,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFragmentShadingRateKHR-sType-sType) VUID-VkPhysicalDeviceFragmentShadingRateKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPhysicalDeviceFragmentShadingRateKHR-pNext-pNext) VUID-VkPhysicalDeviceFragmentShadingRateKHR-pNext-pNext
@@ -1668,14 +1668,14 @@ rate.
 
 If this structure is not present, `fragmentSize` is considered to be
 equal to (1,1), and both elements of `combinerOps` are considered
-to be equal to `VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR`.
+to be equal to [VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](#VkFragmentShadingRateCombinerOpKHR).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineFragmentShadingRateStateCreateInfoKHR-sType-sType) VUID-VkPipelineFragmentShadingRateStateCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_STATE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_STATE_CREATE_INFO_KHR](fundamentals.html#VkStructureType)
 
 To [dynamically set](pipelines.html#pipelines-dynamic-state) the pipeline fragment
 shading rate and combiner operation, call:
@@ -1707,7 +1707,7 @@ This command sets the pipeline fragment shading rate and combiner operation
 for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` set in
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](#VkPipelineFragmentShadingRateStateCreateInfoKHR) values used to create
@@ -1739,22 +1739,22 @@ One of the [    `pipelineFragmentShadingRate`](features.html#features-pipelineFr
 
 If the [    `primitiveFragmentShadingRate`](features.html#features-primitiveFragmentShadingRate) feature is not enabled,
 `combinerOps`[0] **must** be
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR`
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](#VkFragmentShadingRateCombinerOpKHR)
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateKHR-attachmentFragmentShadingRate-04511) VUID-vkCmdSetFragmentShadingRateKHR-attachmentFragmentShadingRate-04511
 
 If the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) feature is not enabled,
 `combinerOps`[1] **must** be
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR`
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](#VkFragmentShadingRateCombinerOpKHR)
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateKHR-fragmentSizeNonTrivialCombinerOps-04512) VUID-vkCmdSetFragmentShadingRateKHR-fragmentSizeNonTrivialCombinerOps-04512
 
 If the [    `fragmentSizeNonTrivialCombinerOps`](limits.html#limits-fragmentShadingRateNonTrivialCombinerOps) limit is not supported,
 elements of `combinerOps` **must** be either
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR` or
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR`
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](#VkFragmentShadingRateCombinerOpKHR) or
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR](#VkFragmentShadingRateCombinerOpKHR)
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateKHR-pFragmentSize-04513) VUID-vkCmdSetFragmentShadingRateKHR-pFragmentSize-04513
@@ -1811,7 +1811,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetFragmentShadingRateKHR-commandBuffer-cmdpool) VUID-vkCmdSetFragmentShadingRateKHR-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateKHR-videocoding) VUID-vkCmdSetFragmentShadingRateKHR-videocoding
@@ -1928,7 +1928,7 @@ built-in.
 The [    `fragmentShadingRateWithConservativeRasterization`](limits.html#limits-fragmentShadingRateWithConservativeRasterization) limit is not
 supported, and
 [VkPipelineRasterizationConservativeStateCreateInfoEXT](#VkPipelineRasterizationConservativeStateCreateInfoEXT)::`conservativeRasterizationMode`
-is not `VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT`.
+is not [VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT](#VkConservativeRasterizationModeEXT).
 
 * 
 The [    `fragmentShadingRateWithFragmentShaderInterlock`](limits.html#limits-fragmentShadingRateWithFragmentShaderInterlock) limit is not
@@ -1939,7 +1939,7 @@ supported, and the fragment shader declares any of the
 The [    `fragmentShadingRateWithCustomSampleLocations`](limits.html#limits-fragmentShadingRateWithCustomSampleLocations) limit is not
 supported, and
 [VkPipelineSampleLocationsStateCreateInfoEXT](#VkPipelineSampleLocationsStateCreateInfoEXT)::`sampleLocationsEnable`
-is `VK_TRUE`.
+is [VK_TRUE](fundamentals.html#VK_TRUE).
 
 * 
 The fragment shader declares any of the
@@ -1956,7 +1956,7 @@ between the result of that and the
 [attachment shading rate](#primsrast-fragment-shading-rate-attachment).
 
 The equation used for each combiner operation is defined by
-`VkFragmentShadingRateCombinerOpKHR`:
+[VkFragmentShadingRateCombinerOpKHR](#VkFragmentShadingRateCombinerOpKHR):
 
 // Provided by VK_KHR_fragment_shading_rate
 typedef enum VkFragmentShadingRateCombinerOpKHR {
@@ -1968,30 +1968,30 @@ typedef enum VkFragmentShadingRateCombinerOpKHR {
 } VkFragmentShadingRateCombinerOpKHR;
 
 * 
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR` specifies a combiner
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](#VkFragmentShadingRateCombinerOpKHR) specifies a combiner
 operation of combine(Axy,Bxy) = Axy.
 
 * 
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR` specifies a
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR](#VkFragmentShadingRateCombinerOpKHR) specifies a
 combiner operation of combine(Axy,Bxy) = Bxy.
 
 * 
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR` specifies a combiner
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR](#VkFragmentShadingRateCombinerOpKHR) specifies a combiner
 operation of combine(Axy,Bxy) = min(Axy,Bxy).
 
 * 
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR` specifies a combiner
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR](#VkFragmentShadingRateCombinerOpKHR) specifies a combiner
 operation of combine(Axy,Bxy) = max(Axy,Bxy).
 
 * 
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR` specifies a combiner
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR](#VkFragmentShadingRateCombinerOpKHR) specifies a combiner
 operation of combine(Axy,Bxy) = Axy*Bxy.
 
 where combine(Axy,Bxy) is the combine operation, and Axy
 and Bxy are the inputs to the operation.
 
-If [`fragmentShadingRateStrictMultiplyCombiner`](limits.html#limits-fragmentShadingRateStrictMultiplyCombiner) is `VK_FALSE`, using
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR` with values of 1 for both
+If [`fragmentShadingRateStrictMultiplyCombiner`](limits.html#limits-fragmentShadingRateStrictMultiplyCombiner) is [VK_FALSE](fundamentals.html#VK_FALSE), using
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR](#VkFragmentShadingRateCombinerOpKHR) with values of 1 for both
 A and B in the same dimension results in the value 2 being produced for that
 dimension.
 See the definition of [`fragmentShadingRateStrictMultiplyCombiner`](limits.html#limits-fragmentShadingRateStrictMultiplyCombiner) for more information.
@@ -2020,7 +2020,7 @@ Implementations **should** clamp the inputs to the combiner operations
 Axy and Bxy, and **must**
 do so if
 `VkPhysicalDeviceMaintenance6Properties`::`fragmentShadingRateClampCombinerInputs`
-is `VK_TRUE`.
+is [VK_TRUE](fundamentals.html#VK_TRUE).
 All implementations **must**
 clamp the result of the second combiner operation.
 
@@ -2081,66 +2081,66 @@ typedef enum VkFragmentShadingRateNV {
 } VkFragmentShadingRateNV;
 
 * 
-`VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV` specifies a
+[VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV](#VkFragmentShadingRateNV) specifies a
 fragment size of 1x1 pixels.
 
 * 
-`VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_1X2_PIXELS_NV` specifies
+[VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_1X2_PIXELS_NV](#VkFragmentShadingRateNV) specifies
 a fragment size of 1x2 pixels.
 
 * 
-`VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X1_PIXELS_NV` specifies
+[VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X1_PIXELS_NV](#VkFragmentShadingRateNV) specifies
 a fragment size of 2x1 pixels.
 
 * 
-`VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X2_PIXELS_NV` specifies
+[VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X2_PIXELS_NV](#VkFragmentShadingRateNV) specifies
 a fragment size of 2x2 pixels.
 
 * 
-`VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X4_PIXELS_NV` specifies
+[VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X4_PIXELS_NV](#VkFragmentShadingRateNV) specifies
 a fragment size of 2x4 pixels.
 
 * 
-`VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_4X2_PIXELS_NV` specifies
+[VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_4X2_PIXELS_NV](#VkFragmentShadingRateNV) specifies
 a fragment size of 4x2 pixels.
 
 * 
-`VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_4X4_PIXELS_NV` specifies
+[VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_4X4_PIXELS_NV](#VkFragmentShadingRateNV) specifies
 a fragment size of 4x4 pixels.
 
 * 
-`VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV` specifies a
+[VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV](#VkFragmentShadingRateNV) specifies a
 fragment size of 1x1 pixels, with two fragment shader invocations per
 fragment.
 
 * 
-`VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV` specifies a
+[VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV](#VkFragmentShadingRateNV) specifies a
 fragment size of 1x1 pixels, with four fragment shader invocations per
 fragment.
 
 * 
-`VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV` specifies a
+[VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV](#VkFragmentShadingRateNV) specifies a
 fragment size of 1x1 pixels, with eight fragment shader invocations per
 fragment.
 
 * 
-`VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV` specifies a
+[VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV](#VkFragmentShadingRateNV) specifies a
 fragment size of 1x1 pixels, with sixteen fragment shader invocations
 per fragment.
 
 * 
-`VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV` specifies that any
+[VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV](#VkFragmentShadingRateNV) specifies that any
 portions of a primitive that use that shading rate should be discarded
 without invoking any fragment shader.
 
 To use the shading rates
-`VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV`,
-`VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV`,
-`VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV`, and
-`VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV` as a pipeline,
+[VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV](#VkFragmentShadingRateNV),
+[VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV](#VkFragmentShadingRateNV),
+[VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV](#VkFragmentShadingRateNV), and
+[VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV](#VkFragmentShadingRateNV) as a pipeline,
 primitive, or attachment shading rate, the
 [`supersampleFragmentShadingRates`](features.html#features-supersampleFragmentShadingRates) feature **must** be enabled.
-To use the shading rate `VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV` as
+To use the shading rate [VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV](#VkFragmentShadingRateNV) as
 a pipeline, primitive, or attachment shading rate, the
 [`noInvocationFragmentShadingRates`](features.html#features-noInvocationFragmentShadingRates) feature **must** be enabled.
 
@@ -2191,18 +2191,18 @@ that structure includes parameters controlling the pipeline fragment shading
 rate.
 
 If this structure is not present, `shadingRateType` is considered to be
-equal to `VK_FRAGMENT_SHADING_RATE_TYPE_FRAGMENT_SIZE_NV`,
+equal to [VK_FRAGMENT_SHADING_RATE_TYPE_FRAGMENT_SIZE_NV](#VkFragmentShadingRateTypeNV),
 `shadingRate` is considered to be equal to
-`VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV`, and both elements
+[VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV](#VkFragmentShadingRateNV), and both elements
 of `combinerOps` are considered to be equal to
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR`.
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](#VkFragmentShadingRateCombinerOpKHR).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineFragmentShadingRateEnumStateCreateInfoNV-sType-sType) VUID-VkPipelineFragmentShadingRateEnumStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 The [VkFragmentShadingRateTypeNV](#VkFragmentShadingRateTypeNV) enumerated type specifies whether a
 graphics pipeline gets its pipeline fragment shading rates and combiners
@@ -2216,7 +2216,7 @@ typedef enum VkFragmentShadingRateTypeNV {
 } VkFragmentShadingRateTypeNV;
 
 * 
-`VK_FRAGMENT_SHADING_RATE_TYPE_FRAGMENT_SIZE_NV` specifies that a
+[VK_FRAGMENT_SHADING_RATE_TYPE_FRAGMENT_SIZE_NV](#VkFragmentShadingRateTypeNV) specifies that a
 graphics pipeline should obtain its pipeline fragment shading rate and
 shading rate combiner state from the
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](#VkPipelineFragmentShadingRateStateCreateInfoKHR) structure and that
@@ -2225,7 +2225,7 @@ any state specified by the
 should be ignored.
 
 * 
-`VK_FRAGMENT_SHADING_RATE_TYPE_ENUMS_NV` specifies that a graphics
+[VK_FRAGMENT_SHADING_RATE_TYPE_ENUMS_NV](#VkFragmentShadingRateTypeNV) specifies that a graphics
 pipeline should obtain its pipeline fragment shading rate and shading
 rate combiner state from the
 [VkPipelineFragmentShadingRateEnumStateCreateInfoNV](#VkPipelineFragmentShadingRateEnumStateCreateInfoNV) structure and
@@ -2264,7 +2264,7 @@ This command sets the pipeline fragment shading rate and combiner operation
 for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` set in
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineFragmentShadingRateEnumStateCreateInfoNV](#VkPipelineFragmentShadingRateEnumStateCreateInfoNV) values used to
@@ -2283,24 +2283,24 @@ Valid Usage
 
 If the [    `pipelineFragmentShadingRate`](features.html#features-pipelineFragmentShadingRate) feature is not enabled,
 `shadingRate` **must** be
-`VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV`
+[VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV](#VkFragmentShadingRateNV)
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateEnumNV-supersampleFragmentShadingRates-04577) VUID-vkCmdSetFragmentShadingRateEnumNV-supersampleFragmentShadingRates-04577
 
 If the [    `supersampleFragmentShadingRates`](features.html#features-supersampleFragmentShadingRates) feature is not enabled,
 `shadingRate` **must** not be
-`VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV`,
-`VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV`,
-`VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV`, or
-`VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV`
+[VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV](#VkFragmentShadingRateNV),
+[VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV](#VkFragmentShadingRateNV),
+[VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV](#VkFragmentShadingRateNV), or
+[VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV](#VkFragmentShadingRateNV)
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateEnumNV-noInvocationFragmentShadingRates-04578) VUID-vkCmdSetFragmentShadingRateEnumNV-noInvocationFragmentShadingRates-04578
 
 If the [    `noInvocationFragmentShadingRates`](features.html#features-noInvocationFragmentShadingRates) feature is not enabled,
 `shadingRate` **must** not be
-`VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV`
+[VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV](#VkFragmentShadingRateNV)
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateEnumNV-fragmentShadingRateEnums-04579) VUID-vkCmdSetFragmentShadingRateEnumNV-fragmentShadingRateEnums-04579
@@ -2319,22 +2319,22 @@ One of the [    `pipelineFragmentShadingRate`](features.html#features-pipelineFr
 
 If the [    `primitiveFragmentShadingRate`](features.html#features-primitiveFragmentShadingRate) feature is not enabled,
 `combinerOps`[0] **must** be
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR`
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](#VkFragmentShadingRateCombinerOpKHR)
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateEnumNV-attachmentFragmentShadingRate-04582) VUID-vkCmdSetFragmentShadingRateEnumNV-attachmentFragmentShadingRate-04582
 
 If the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) feature is not enabled,
 `combinerOps`[1] **must** be
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR`
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](#VkFragmentShadingRateCombinerOpKHR)
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateEnumNV-fragmentSizeNonTrivialCombinerOps-04583) VUID-vkCmdSetFragmentShadingRateEnumNV-fragmentSizeNonTrivialCombinerOps-04583
 
 If the [    `fragmentSizeNonTrivialCombinerOps`](limits.html#limits-fragmentShadingRateNonTrivialCombinerOps) limit is not supported,
 elements of `combinerOps` **must** be either
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR` or
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR`
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](#VkFragmentShadingRateCombinerOpKHR) or
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR](#VkFragmentShadingRateCombinerOpKHR)
 
 Valid Usage (Implicit)
 
@@ -2361,7 +2361,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetFragmentShadingRateEnumNV-commandBuffer-cmdpool) VUID-vkCmdSetFragmentShadingRateEnumNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetFragmentShadingRateEnumNV-videocoding) VUID-vkCmdSetFragmentShadingRateEnumNV-videocoding
@@ -2396,31 +2396,31 @@ Primitive and attachment shading rate values are interpreted as
 modified as follows:
 
 * 
-For `VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR`,
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR`, and
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR`, if either
+For [VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR](#VkFragmentShadingRateCombinerOpKHR),
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR](#VkFragmentShadingRateCombinerOpKHR), and
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR](#VkFragmentShadingRateCombinerOpKHR), if either
 Axy or Bxy is
-`VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV`,
+[VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV](#VkFragmentShadingRateNV),
 combine(Axy,Bxy) produces a shading rate of
-`VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV`, regardless of the
+[VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV](#VkFragmentShadingRateNV), regardless of the
 other input shading rate.
 
 * 
-For `VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR`,
+For [VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR](#VkFragmentShadingRateCombinerOpKHR),
 combine(Axy,Bxy) produces a shading rate whose fragment size
 is the smaller of the fragment sizes of Axy and Bxy and
 whose invocation count is the larger of the invocation counts of
 Axy and Bxy.
 
 * 
-For `VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR`,
+For [VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR](#VkFragmentShadingRateCombinerOpKHR),
 combine(Axy,Bxy) produces a shading rate whose fragment size
 is the larger of the fragment sizes of Axy and Bxy and
 whose invocation count is the smaller of the invocation counts of
 Axy and Bxy.
 
 * 
-For `VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR`,
+For [VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR](#VkFragmentShadingRateCombinerOpKHR),
 combine(Axy,Bxy) produces a shading rate whose fragment size
 and invocation count is the product of the fragment sizes and invocation
 counts, respectively, of Axy and Bxy.
@@ -2429,7 +2429,7 @@ invocations per fragment, an implementation **may** adjust the shading rate
 by reducing both the pixel and invocation counts.
 
 If the final shading rate from the combiners is
-`VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV`, no fragments will be
+[VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV](#VkFragmentShadingRateNV), no fragments will be
 generated for any portion of a primitive using that shading rate.
 
 If the final shading rate from the combiners specifies multiple fragment
@@ -2489,7 +2489,7 @@ viewport.
 If the shading rate palette state is dynamic, this member is ignored.
 
 If this structure is not present, `shadingRateImageEnable` is considered
-to be `VK_FALSE`, and the shading rate image and palettes are not used.
+to be [VK_FALSE](fundamentals.html#VK_FALSE), and the shading rate image and palettes are not used.
 
 Valid Usage
 
@@ -2508,7 +2508,7 @@ enabled, `viewportCount` **must** be `0` or `1`
 * 
 [](#VUID-VkPipelineViewportShadingRateImageStateCreateInfoNV-shadingRateImageEnable-02056) VUID-VkPipelineViewportShadingRateImageStateCreateInfoNV-shadingRateImageEnable-02056
 
-If `shadingRateImageEnable` is `VK_TRUE`, `viewportCount`
+If `shadingRateImageEnable` is [VK_TRUE](fundamentals.html#VK_TRUE), `viewportCount`
 **must** be greater or equal to the `viewportCount` member of
 [VkPipelineViewportStateCreateInfo](vertexpostproc.html#VkPipelineViewportStateCreateInfo)
 
@@ -2517,7 +2517,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineViewportShadingRateImageStateCreateInfoNV-sType-sType) VUID-VkPipelineViewportShadingRateImageStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 When shading rate image usage is enabled in the bound pipeline, the pipeline
 uses a shading rate image specified by the command:
@@ -2554,20 +2554,20 @@ be enabled
 [](#VUID-vkCmdBindShadingRateImageNV-imageView-02059) VUID-vkCmdBindShadingRateImageNV-imageView-02059
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), it **must** be a valid
-[VkImageView](resources.html#VkImageView) handle of type `VK_IMAGE_VIEW_TYPE_2D` or
-`VK_IMAGE_VIEW_TYPE_2D_ARRAY`
+[VkImageView](resources.html#VkImageView) handle of type [VK_IMAGE_VIEW_TYPE_2D](resources.html#VkImageViewType) or
+[VK_IMAGE_VIEW_TYPE_2D_ARRAY](resources.html#VkImageViewType)
 
 * 
 [](#VUID-vkCmdBindShadingRateImageNV-imageView-02060) VUID-vkCmdBindShadingRateImageNV-imageView-02060
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), it **must** have a format
-of `VK_FORMAT_R8_UINT`
+of [VK_FORMAT_R8_UINT](formats.html#VkFormat)
 
 * 
 [](#VUID-vkCmdBindShadingRateImageNV-imageView-02061) VUID-vkCmdBindShadingRateImageNV-imageView-02061
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), it **must** have been
-created with the `VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV` usage
+created with the [VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV](resources.html#VkImageUsageFlagBits) usage
 flag set
 
 * 
@@ -2581,8 +2581,8 @@ match the actual [VkImageLayout](resources.html#VkImageLayout) of each subresour
 [](#VUID-vkCmdBindShadingRateImageNV-imageLayout-02063) VUID-vkCmdBindShadingRateImageNV-imageLayout-02063
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `imageLayout` **must**
-be `VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV` or
-`VK_IMAGE_LAYOUT_GENERAL`
+be [VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout)
 
 Valid Usage (Implicit)
 
@@ -2609,7 +2609,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindShadingRateImageNV-commandBuffer-cmdpool) VUID-vkCmdBindShadingRateImageNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBindShadingRateImageNV-videocoding) VUID-vkCmdBindShadingRateImageNV-videocoding
@@ -2644,14 +2644,14 @@ When the shading rate image is enabled in the current pipeline, rasterizing
 a primitive covering the pixel with coordinates (*x*,*y*) will fetch a
 shading rate index value from the shading rate image bound by
 `vkCmdBindShadingRateImageNV`.
-If the shading rate image view has a type of `VK_IMAGE_VIEW_TYPE_2D`,
+If the shading rate image view has a type of [VK_IMAGE_VIEW_TYPE_2D](resources.html#VkImageViewType),
 the lookup will use texel coordinates (*u*,*v*) where \(u =
 \left\lfloor \frac{x}{twidth} \right\rfloor\), \(v = \left\lfloor
 \frac{y}{theight} \right\rfloor\), and    and
    are the width and height of the implementation-dependent
 [shading rate texel size](limits.html#limits-shadingRateTexelSize).
 If the shading rate image view has a type of
-`VK_IMAGE_VIEW_TYPE_2D_ARRAY`, the lookup will use texel coordinates
+[VK_IMAGE_VIEW_TYPE_2D_ARRAY](resources.html#VkImageViewType), the lookup will use texel coordinates
 (*u*,*v*) to extract a texel from the layer *l*, where *l* is the layer of
 the framebuffer being rendered to.
 If *l* is greater than or equal to the number of layers in the image view,
@@ -2694,7 +2694,7 @@ This command sets the `shadingRateImageEnable` state for subsequent
 drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_SHADING_RATE_IMAGE_ENABLE_NV` set in
+[VK_DYNAMIC_STATE_SHADING_RATE_IMAGE_ENABLE_NV](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineViewportShadingRateImageStateCreateInfoNV](#VkPipelineViewportShadingRateImageStateCreateInfoNV)::`shadingRateImageEnable`
@@ -2728,7 +2728,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetShadingRateImageEnableNV-commandBuffer-cmdpool) VUID-vkCmdSetShadingRateImageEnableNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetShadingRateImageEnableNV-videocoding) VUID-vkCmdSetShadingRateImageEnableNV-videocoding
@@ -2785,7 +2785,7 @@ This command sets the per-viewport shading rate image palettes for
 subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV` set in
+[VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineViewportShadingRateImageStateCreateInfoNV](#VkPipelineViewportShadingRateImageStateCreateInfoNV)::`pShadingRatePalettes`
@@ -2837,7 +2837,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetViewportShadingRatePaletteNV-commandBuffer-cmdpool) VUID-vkCmdSetViewportShadingRatePaletteNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetViewportShadingRatePaletteNV-videocoding) VUID-vkCmdSetViewportShadingRatePaletteNV-videocoding
@@ -2936,26 +2936,26 @@ The following table indicates the width and height (in pixels) of each
 fragment generated using the indicated shading rate, as well as the maximum
 number of fragment shader invocations launched for each fragment.
 When processing regions of a primitive that have a shading rate of
-`VK_SHADING_RATE_PALETTE_ENTRY_NO_INVOCATIONS_NV`, no fragments will be
+[VK_SHADING_RATE_PALETTE_ENTRY_NO_INVOCATIONS_NV](#VkShadingRatePaletteEntryNV), no fragments will be
 generated in that region.
 
 | Shading Rate | Width | Height | Invocations |
 | --- | --- | --- | --- |
-| `VK_SHADING_RATE_PALETTE_ENTRY_NO_INVOCATIONS_NV` | 0 | 0 | 0 |
-| `VK_SHADING_RATE_PALETTE_ENTRY_16_INVOCATIONS_PER_PIXEL_NV` | 1 | 1 | 16 |
-| `VK_SHADING_RATE_PALETTE_ENTRY_8_INVOCATIONS_PER_PIXEL_NV` | 1 | 1 | 8 |
-| `VK_SHADING_RATE_PALETTE_ENTRY_4_INVOCATIONS_PER_PIXEL_NV` | 1 | 1 | 4 |
-| `VK_SHADING_RATE_PALETTE_ENTRY_2_INVOCATIONS_PER_PIXEL_NV` | 1 | 1 | 2 |
-| `VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_PIXEL_NV` | 1 | 1 | 1 |
-| `VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X1_PIXELS_NV` | 2 | 1 | 1 |
-| `VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_1X2_PIXELS_NV` | 1 | 2 | 1 |
-| `VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X2_PIXELS_NV` | 2 | 2 | 1 |
-| `VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_4X2_PIXELS_NV` | 4 | 2 | 1 |
-| `VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X4_PIXELS_NV` | 2 | 4 | 1 |
-| `VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_4X4_PIXELS_NV` | 4 | 4 | 1 |
+| [VK_SHADING_RATE_PALETTE_ENTRY_NO_INVOCATIONS_NV](#VkShadingRatePaletteEntryNV) | 0 | 0 | 0 |
+| [VK_SHADING_RATE_PALETTE_ENTRY_16_INVOCATIONS_PER_PIXEL_NV](#VkShadingRatePaletteEntryNV) | 1 | 1 | 16 |
+| [VK_SHADING_RATE_PALETTE_ENTRY_8_INVOCATIONS_PER_PIXEL_NV](#VkShadingRatePaletteEntryNV) | 1 | 1 | 8 |
+| [VK_SHADING_RATE_PALETTE_ENTRY_4_INVOCATIONS_PER_PIXEL_NV](#VkShadingRatePaletteEntryNV) | 1 | 1 | 4 |
+| [VK_SHADING_RATE_PALETTE_ENTRY_2_INVOCATIONS_PER_PIXEL_NV](#VkShadingRatePaletteEntryNV) | 1 | 1 | 2 |
+| [VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_PIXEL_NV](#VkShadingRatePaletteEntryNV) | 1 | 1 | 1 |
+| [VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X1_PIXELS_NV](#VkShadingRatePaletteEntryNV) | 2 | 1 | 1 |
+| [VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_1X2_PIXELS_NV](#VkShadingRatePaletteEntryNV) | 1 | 2 | 1 |
+| [VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X2_PIXELS_NV](#VkShadingRatePaletteEntryNV) | 2 | 2 | 1 |
+| [VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_4X2_PIXELS_NV](#VkShadingRatePaletteEntryNV) | 4 | 2 | 1 |
+| [VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X4_PIXELS_NV](#VkShadingRatePaletteEntryNV) | 2 | 4 | 1 |
+| [VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_4X4_PIXELS_NV](#VkShadingRatePaletteEntryNV) | 4 | 4 | 1 |
 
 When the shading rate image is disabled, a shading rate of
-`VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_PIXEL_NV` will be used
+[VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_PIXEL_NV](#VkShadingRatePaletteEntryNV) will be used
 as the base shading rate.
 
 Once a base shading rate has been established, it is adjusted to produce a
@@ -3057,15 +3057,15 @@ structures, each structure specifying the coverage sample order for a
 single combination of fragment area and coverage sample count.
 
 If this structure is not present, `sampleOrderType` is considered to be
-`VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV`.
+[VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV](#VkCoarseSampleOrderTypeNV).
 
-If `sampleOrderType` is `VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV`, the
+If `sampleOrderType` is [VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV](#VkCoarseSampleOrderTypeNV), the
 coverage sample order used for any combination of fragment area and coverage
 sample count not enumerated in `pCustomSampleOrders` will be identical
-to that used for `VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV`.
+to that used for [VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV](#VkCoarseSampleOrderTypeNV).
 
 If the pipeline was created with
-`VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV`, the contents of this
+[VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV](pipelines.html#VkDynamicState), the contents of this
 structure (if present) are ignored, and the coverage sample order is instead
 specified by [vkCmdSetCoarseSampleOrderNV](#vkCmdSetCoarseSampleOrderNV).
 
@@ -3075,7 +3075,7 @@ Valid Usage
 [](#VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sampleOrderType-02072) VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sampleOrderType-02072
 
 If `sampleOrderType` is not
-`VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV`,
+[VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV](#VkCoarseSampleOrderTypeNV),
 `customSamplerOrderCount` **must** be `0`
 
 * 
@@ -3090,7 +3090,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sType-sType) VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sampleOrderType-parameter) VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sampleOrderType-parameter
@@ -3115,30 +3115,30 @@ typedef enum VkCoarseSampleOrderTypeNV {
 } VkCoarseSampleOrderTypeNV;
 
 * 
-`VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV` specifies that coverage
+[VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV](#VkCoarseSampleOrderTypeNV) specifies that coverage
 samples will be ordered in an implementation-dependent manner.
 
 * 
-`VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV` specifies that coverage
+[VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV](#VkCoarseSampleOrderTypeNV) specifies that coverage
 samples will be ordered according to the array of custom orderings
 provided in either the `pCustomSampleOrders` member of
 `VkPipelineViewportCoarseSampleOrderStateCreateInfoNV` or the
 `pCustomSampleOrders` member of [vkCmdSetCoarseSampleOrderNV](#vkCmdSetCoarseSampleOrderNV).
 
 * 
-`VK_COARSE_SAMPLE_ORDER_TYPE_PIXEL_MAJOR_NV` specifies that coverage
+[VK_COARSE_SAMPLE_ORDER_TYPE_PIXEL_MAJOR_NV](#VkCoarseSampleOrderTypeNV) specifies that coverage
 samples will be ordered sequentially, sorted first by pixel coordinate
 (in row-major order) and then by
 [sample index](#primsrast-multisampling-coverage-mask).
 
 * 
-`VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV` specifies that
+[VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV](#VkCoarseSampleOrderTypeNV) specifies that
 coverage samples will be ordered sequentially, sorted first by
 [sample index](#primsrast-multisampling-coverage-mask) and then by
 pixel coordinate (in row-major order).
 
 When using a coarse sample order of
-`VK_COARSE_SAMPLE_ORDER_TYPE_PIXEL_MAJOR_NV` for a fragment with an
+[VK_COARSE_SAMPLE_ORDER_TYPE_PIXEL_MAJOR_NV](#VkCoarseSampleOrderTypeNV) for a fragment with an
 upper-left corner of    with a width of \(fw
 \times fh\) and    samples per pixel,
 [coverage index](#primsrast-multisampling-coverage-mask)    of
@@ -3149,7 +3149,7 @@ the fragment will be assigned to [sample index](#primsrast-multisampling-coverag
   
 
 When using a coarse sample order of
-`VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV`,
+[VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV](#VkCoarseSampleOrderTypeNV),
 [coverage index](#primsrast-multisampling-coverage-mask)   
 will be assigned as follows:
 
@@ -3186,7 +3186,7 @@ the custom ordering.
 each sample in the custom ordering.
 
 The `VkCoarseSampleOrderCustomNV` structure is used with a coverage
-sample ordering type of `VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV` to
+sample ordering type of [VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV](#VkCoarseSampleOrderTypeNV) to
 specify the order of coverage samples for one combination of fragment width,
 fragment height, and coverage sample count.
 
@@ -3318,16 +3318,16 @@ orderings to use when ordering coverage samples.
 the coverage sample order for a single combination of fragment area and
 coverage sample count.
 
-If `sampleOrderType` is `VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV`, the
+If `sampleOrderType` is [VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV](#VkCoarseSampleOrderTypeNV), the
 coverage sample order used for any combination of fragment area and coverage
 sample count not enumerated in `pCustomSampleOrders` will be identical
-to that used for `VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV`.
+to that used for [VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV](#VkCoarseSampleOrderTypeNV).
 
 This command sets the order of coverage samples for subsequent drawing
 commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV` set in
+[VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineViewportCoarseSampleOrderStateCreateInfoNV](#VkPipelineViewportCoarseSampleOrderStateCreateInfoNV) values used to
@@ -3339,7 +3339,7 @@ Valid Usage
 [](#VUID-vkCmdSetCoarseSampleOrderNV-sampleOrderType-02081) VUID-vkCmdSetCoarseSampleOrderNV-sampleOrderType-02081
 
 If `sampleOrderType` is not
-`VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV`,
+[VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV](#VkCoarseSampleOrderTypeNV),
 `customSamplerOrderCount` **must** be `0`
 
 * 
@@ -3374,7 +3374,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetCoarseSampleOrderNV-commandBuffer-cmdpool) VUID-vkCmdSetCoarseSampleOrderNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetCoarseSampleOrderNV-videocoding) VUID-vkCmdSetCoarseSampleOrderNV-videocoding
@@ -3428,7 +3428,7 @@ shader at least max(⌈
 [VkPipelineMultisampleStateCreateInfo](#VkPipelineMultisampleStateCreateInfo)::`rasterizationSamples`
 ⌉, 1) times per fragment.
 If [VkPipelineMultisampleStateCreateInfo](#VkPipelineMultisampleStateCreateInfo)::`sampleShadingEnable` is
-`VK_TRUE`, sample shading is enabled.
+[VK_TRUE](fundamentals.html#VK_TRUE), sample shading is enabled.
 
 If a fragment shader entry point [statically uses](shaders.html#shaders-staticuse) an
 input variable decorated with a `BuiltIn` of `SampleId` or
@@ -3485,40 +3485,40 @@ the point, line, and triangle primitives produced by the draw call are
 numbered with consecutive integers beginning with zero, the following table
 indicates the original vertex numbers used
 when the [provoking vertex mode](vertexpostproc.html#vertexpostproc-flatshading) is
-`VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT`
+[VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT](vertexpostproc.html#VkProvokingVertexModeEXT)
 for index values of 0, 1, and 2.
 If an input decorated with `PerVertexKHR` is accessed with any other
 vertex index value, or is accessed while rasterizing a polygon when the
 [VkPipelineRasterizationStateCreateInfo](#VkPipelineRasterizationStateCreateInfo)::`polygonMode` property of
-the currently active pipeline is not `VK_POLYGON_MODE_FILL`, an
+the currently active pipeline is not [VK_POLYGON_MODE_FILL](#VkPolygonMode), an
 **undefined** value is returned.
 
 | Primitive Topology | Vertex 0 | Vertex 1 | Vertex 2 |
 | --- | --- | --- | --- |
-| `VK_PRIMITIVE_TOPOLOGY_POINT_LIST` | i | i | i |
-| `VK_PRIMITIVE_TOPOLOGY_LINE_LIST` | 2i | 2i+1 | 2i+1 |
-| `VK_PRIMITIVE_TOPOLOGY_LINE_STRIP` | i | i+1 | i+1 |
-| `VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST` | 3i | 3i+1 | 3i+2 |
-| `VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP` (even) | i | i+1 | i+2 |
-| `VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP` (odd) | i | i+2 | i+1 |
-| `VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN` | i+1 | i+2 | 0 |
-| `VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY` | 4i+1 | 4i+2 | 4i+2 |
-| `VK_PRIMITIVE_TOPOLOGY_LINE_STRIP_WITH_ADJACENCY` | i+1 | i+2 | i+2 |
-| `VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY` | 6i | 6i+2 | 6i+4 |
-| `VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY` (even) | 2i | 2i+2 | 2i+4 |
-| `VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY` (odd) | 2i | 2i+4 | 2i+2 |
+| [VK_PRIMITIVE_TOPOLOGY_POINT_LIST](drawing.html#VkPrimitiveTopology) | i | i | i |
+| [VK_PRIMITIVE_TOPOLOGY_LINE_LIST](drawing.html#VkPrimitiveTopology) | 2i | 2i+1 | 2i+1 |
+| [VK_PRIMITIVE_TOPOLOGY_LINE_STRIP](drawing.html#VkPrimitiveTopology) | i | i+1 | i+1 |
+| [VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST](drawing.html#VkPrimitiveTopology) | 3i | 3i+1 | 3i+2 |
+| [VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP](drawing.html#VkPrimitiveTopology) (even) | i | i+1 | i+2 |
+| [VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP](drawing.html#VkPrimitiveTopology) (odd) | i | i+2 | i+1 |
+| [VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN](drawing.html#VkPrimitiveTopology) | i+1 | i+2 | 0 |
+| [VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY](drawing.html#VkPrimitiveTopology) | 4i+1 | 4i+2 | 4i+2 |
+| [VK_PRIMITIVE_TOPOLOGY_LINE_STRIP_WITH_ADJACENCY](drawing.html#VkPrimitiveTopology) | i+1 | i+2 | i+2 |
+| [VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY](drawing.html#VkPrimitiveTopology) | 6i | 6i+2 | 6i+4 |
+| [VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY](drawing.html#VkPrimitiveTopology) (even) | 2i | 2i+2 | 2i+4 |
+| [VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY](drawing.html#VkPrimitiveTopology) (odd) | 2i | 2i+4 | 2i+2 |
 
 When the provoking vertex mode is
-`VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT`, the original vertex numbers
+[VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT](vertexpostproc.html#VkProvokingVertexModeEXT), the original vertex numbers
 used are the same as above except as indicated in the table below.
 
 | Primitive Topology | Vertex 0 | Vertex 1 | Vertex 2 |
 | --- | --- | --- | --- |
-| `VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP` (odd, and
+| [VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP](drawing.html#VkPrimitiveTopology) (odd, and
 `triStripVertexOrderIndependentOfProvokingVertex` of
-[VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR](limits.html#VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR) is `VK_FALSE`) | i+1 | i | i+2 |
-| `VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN` | 0 | i+1 | i+2 |
-| `VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY` (odd) | 2i+2 | 2i | 2i+4 |
+[VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR](limits.html#VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR) is [VK_FALSE](fundamentals.html#VK_FALSE)) | i+1 | i | i+2 |
+| [VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN](drawing.html#VkPrimitiveTopology) | 0 | i+1 | i+2 |
+| [VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY](drawing.html#VkPrimitiveTopology) (odd) | 2i+2 | 2i | 2i+4 |
 
 When geometry
 or mesh
@@ -3558,7 +3558,7 @@ interpolation.
 The values of `BaryCoordKHR` and `BaryCoordNoPerspKHR` are **undefined**
 while rasterizing a polygon when the
 [VkPipelineRasterizationStateCreateInfo](#VkPipelineRasterizationStateCreateInfo)::`polygonMode` property of
-the currently active pipeline is not `VK_POLYGON_MODE_FILL`.
+the currently active pipeline is not [VK_POLYGON_MODE_FILL](#VkPolygonMode).
 
 A point is drawn by generating a set of fragments in the shape of a square
 centered around the vertex of the point.
@@ -3675,7 +3675,7 @@ rasterization.
 `lineStipplePattern` is the bit pattern used in stippled line
 rasterization.
 
-If `stippledLineEnable` is `VK_FALSE`, the values of
+If `stippledLineEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), the values of
 `lineStippleFactor` and `lineStipplePattern` are ignored.
 
 Valid Usage
@@ -3684,7 +3684,7 @@ Valid Usage
 [](#VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02768) VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02768
 
 If `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR`, then the
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR](#VkLineRasterizationModeEXT), then the
 [`rectangularLines`](features.html#features-rectangularLines) feature **must** be
 enabled
 
@@ -3692,7 +3692,7 @@ enabled
 [](#VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02769) VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02769
 
 If `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_BRESENHAM`, then the
+[VK_LINE_RASTERIZATION_MODE_BRESENHAM](#VkLineRasterizationModeEXT), then the
 [`bresenhamLines`](features.html#features-bresenhamLines) feature **must** be
 enabled
 
@@ -3700,50 +3700,50 @@ enabled
 [](#VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02770) VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02770
 
 If `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH`, then the
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH](#VkLineRasterizationModeEXT), then the
 [`smoothLines`](features.html#features-smoothLines) feature **must** be enabled
 
 * 
 [](#VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02771) VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02771
 
-If `stippledLineEnable` is `VK_TRUE` and
+If `stippledLineEnable` is [VK_TRUE](fundamentals.html#VK_TRUE) and
 `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR`, then the
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR](#VkLineRasterizationModeEXT), then the
 [`stippledRectangularLines`](features.html#features-stippledRectangularLines)
 feature **must** be enabled
 
 * 
 [](#VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02772) VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02772
 
-If `stippledLineEnable` is `VK_TRUE` and
+If `stippledLineEnable` is [VK_TRUE](fundamentals.html#VK_TRUE) and
 `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_BRESENHAM`, then the
+[VK_LINE_RASTERIZATION_MODE_BRESENHAM](#VkLineRasterizationModeEXT), then the
 [`stippledBresenhamLines`](features.html#features-stippledBresenhamLines)
 feature **must** be enabled
 
 * 
 [](#VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02773) VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02773
 
-If `stippledLineEnable` is `VK_TRUE` and
+If `stippledLineEnable` is [VK_TRUE](fundamentals.html#VK_TRUE) and
 `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH`, then the
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH](#VkLineRasterizationModeEXT), then the
 [`stippledSmoothLines`](features.html#features-stippledSmoothLines) feature
 **must** be enabled
 
 * 
 [](#VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02774) VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02774
 
-If `stippledLineEnable` is `VK_TRUE` and
-`lineRasterizationMode` is `VK_LINE_RASTERIZATION_MODE_DEFAULT`,
+If `stippledLineEnable` is [VK_TRUE](fundamentals.html#VK_TRUE) and
+`lineRasterizationMode` is [VK_LINE_RASTERIZATION_MODE_DEFAULT](#VkLineRasterizationModeEXT),
 then the [    `stippledRectangularLines`](features.html#features-stippledRectangularLines) feature **must** be enabled and
-[VkPhysicalDeviceLimits](limits.html#VkPhysicalDeviceLimits)::`strictLines` **must** be `VK_TRUE`
+[VkPhysicalDeviceLimits](limits.html#VkPhysicalDeviceLimits)::`strictLines` **must** be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineRasterizationLineStateCreateInfo-sType-sType) VUID-VkPipelineRasterizationLineStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-parameter) VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-parameter
@@ -3787,23 +3787,23 @@ typedef VkLineRasterizationMode VkLineRasterizationModeKHR;
 typedef VkLineRasterizationMode VkLineRasterizationModeEXT;
 
 * 
-`VK_LINE_RASTERIZATION_MODE_DEFAULT` is equivalent to
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR` if
-[VkPhysicalDeviceLimits](limits.html#VkPhysicalDeviceLimits)::`strictLines` is `VK_TRUE`,
+[VK_LINE_RASTERIZATION_MODE_DEFAULT](#VkLineRasterizationModeEXT) is equivalent to
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR](#VkLineRasterizationModeEXT) if
+[VkPhysicalDeviceLimits](limits.html#VkPhysicalDeviceLimits)::`strictLines` is [VK_TRUE](fundamentals.html#VK_TRUE),
 otherwise lines are drawn as non-`strictLines` parallelograms.
 Both of these modes are defined in [Basic Line    Segment Rasterization](#primsrast-lines-basic).
 
 * 
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR` specifies lines drawn as if
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR](#VkLineRasterizationModeEXT) specifies lines drawn as if
 they were rectangles extruded from the line
 
 * 
-`VK_LINE_RASTERIZATION_MODE_BRESENHAM` specifies lines drawn by
+[VK_LINE_RASTERIZATION_MODE_BRESENHAM](#VkLineRasterizationModeEXT) specifies lines drawn by
 determining which pixel diamonds the line intersects and exits, as
 defined in [Bresenham Line Segment    Rasterization](#primsrast-lines-bresenham).
 
 * 
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH` specifies lines
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH](#VkLineRasterizationModeEXT) specifies lines
 drawn if they were rectangles extruded from the line, with alpha
 falloff, as defined in [Smooth Lines](#primsrast-lines-smooth).
 
@@ -3827,7 +3827,7 @@ This command sets the `lineRasterizationMode` state for subsequent
 drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT` set in
+[VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationLineStateCreateInfo](#VkPipelineRasterizationLineStateCreateInfo)::`lineRasterizationMode`
@@ -3849,21 +3849,21 @@ The [`shaderObject`](features.html#features-shaderObject) feature is enabled
 [](#VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07418) VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07418
 
 If `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR`, then the
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR](#VkLineRasterizationModeEXT), then the
 [`rectangularLines`](features.html#features-rectangularLines) feature **must** be
 enabled
 
 [](#VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07419) VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07419
 
 If `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_BRESENHAM`, then the
+[VK_LINE_RASTERIZATION_MODE_BRESENHAM](#VkLineRasterizationModeEXT), then the
 [`bresenhamLines`](features.html#features-bresenhamLines) feature **must** be
 enabled
 
 [](#VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07420) VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07420
 
 If `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH`, then the
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH](#VkLineRasterizationModeEXT), then the
 [`smoothLines`](features.html#features-smoothLines) feature **must** be enabled
 
 Valid Usage (Implicit)
@@ -3886,7 +3886,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetLineRasterizationModeEXT-commandBuffer-cmdpool) VUID-vkCmdSetLineRasterizationModeEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetLineRasterizationModeEXT-videocoding) VUID-vkCmdSetLineRasterizationModeEXT-videocoding
@@ -3931,7 +3931,7 @@ This command sets the `stippledLineEnable` state for subsequent drawing
 commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT` set in
+[VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationLineStateCreateInfo](#VkPipelineRasterizationLineStateCreateInfo)::`stippledLineEnable`
@@ -3965,7 +3965,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetLineStippleEnableEXT-commandBuffer-cmdpool) VUID-vkCmdSetLineStippleEnableEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetLineStippleEnableEXT-videocoding) VUID-vkCmdSetLineStippleEnableEXT-videocoding
@@ -4007,7 +4007,7 @@ recorded.
 
 This command sets the line width for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
-when the graphics pipeline is created with `VK_DYNAMIC_STATE_LINE_WIDTH`
+when the graphics pipeline is created with [VK_DYNAMIC_STATE_LINE_WIDTH](pipelines.html#VkDynamicState)
 set in [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationStateCreateInfo](#VkPipelineRasterizationStateCreateInfo)::`lineWidth` value used to
@@ -4036,7 +4036,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetLineWidth-commandBuffer-cmdpool) VUID-vkCmdSetLineWidth-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetLineWidth-videocoding) VUID-vkCmdSetLineWidth-videocoding
@@ -4079,7 +4079,7 @@ width or height.
 
 If the `lineRasterizationMode` member of
 [VkPipelineRasterizationLineStateCreateInfo](#VkPipelineRasterizationLineStateCreateInfo) is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR`, rasterized
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR](#VkLineRasterizationModeEXT), rasterized
 line segments produce fragments which intersect a rectangle centered on the
 line segment.
 Two of the edges are parallel to the specified line segment; each is at a
@@ -4096,7 +4096,7 @@ Let **p**r = (xd, yd) be the framebuffer coordinates at which
 associated data are evaluated.
 This **may** be the center of a fragment or the location of a sample within the
 fragment.
-When `rasterizationSamples` is `VK_SAMPLE_COUNT_1_BIT`, the fragment
+When `rasterizationSamples` is [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits), the fragment
 center **must** be used.
 Let **p**a = (xa, ya) and **p**b = (xb,yb) be
 initial and final endpoints of the line segment, respectively.
@@ -4111,7 +4111,7 @@ Also note that this calculation projects the vector from **p**a to
 **p**r onto the line, and thus computes the normalized distance of
 the fragment along the line.)
 
-If [`strictLines`](limits.html#limits-strictLines) is `VK_TRUE`, line segments
+If [`strictLines`](limits.html#limits-strictLines) is [VK_TRUE](fundamentals.html#VK_TRUE), line segments
 are rasterized using perspective or linear interpolation.
 
 *Perspective interpolation* for a line segment interpolates two values in a
@@ -4145,14 +4145,14 @@ Interpolation of fragment shader input values are determined by
 
 The above description documents the preferred method of line rasterization,
 and **must** be used when
-`lineRasterizationMode` is `VK_LINE_RASTERIZATION_MODE_RECTANGULAR`.
+`lineRasterizationMode` is [VK_LINE_RASTERIZATION_MODE_RECTANGULAR](#VkLineRasterizationModeEXT).
 
 By default, when
-`strictLines` is `VK_FALSE`,
+`strictLines` is [VK_FALSE](fundamentals.html#VK_FALSE),
 or the [`relaxedLineRasterization`](features.html#features-relaxedLineRasterization)
 feature is enabled,
 and when the `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_DEFAULT`,
+[VK_LINE_RASTERIZATION_MODE_DEFAULT](#VkLineRasterizationModeEXT),
 the edges of the lines are generated as a parallelogram surrounding the
 original line.
 The major axis is chosen by noting the axis in which there is the greatest
@@ -4179,10 +4179,10 @@ attributes.
 Figure 2. Non strict lines
 
 When
-`strictLines` is `VK_FALSE`
+`strictLines` is [VK_FALSE](fundamentals.html#VK_FALSE)
 or when the [`relaxedLineRasterization`](features.html#features-relaxedLineRasterization) feature is enabled,
 and `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT`
+[VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT](#VkLineRasterizationModeEXT)
 implementations **may** deviate from the non-strict line algorithm described
 above in the following ways:
 
@@ -4198,24 +4198,24 @@ performed using the rules defined in
 
 If
 `VkPhysicalDeviceMaintenance5Properties`::`nonStrictSinglePixelWideLinesUseParallelogram`
-is `VK_TRUE`,
+is [VK_TRUE](fundamentals.html#VK_TRUE),
 the `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT`,
-and `strictLines` is `VK_FALSE`, non-strict lines of width 1.0 are
+[VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT](#VkLineRasterizationModeEXT),
+and `strictLines` is [VK_FALSE](fundamentals.html#VK_FALSE), non-strict lines of width 1.0 are
 rasterized as parallelograms, otherwise they are rasterized using
 Bresenham’s algorithm.
 
 If
 `VkPhysicalDeviceMaintenance5Properties`::`nonStrictWideLinesUseParallelogram`
-is `VK_TRUE`,
+is [VK_TRUE](fundamentals.html#VK_TRUE),
 the `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT`,
-and `strictLines` is `VK_FALSE`, non-strict lines of width greater
+[VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT](#VkLineRasterizationModeEXT),
+and `strictLines` is [VK_FALSE](fundamentals.html#VK_FALSE), non-strict lines of width greater
 than 1.0 are rasterized as parallelograms, otherwise they are rasterized
 using Bresenham’s algorithm.
 
 If `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_BRESENHAM`, then the following rules replace
+[VK_LINE_RASTERIZATION_MODE_BRESENHAM](#VkLineRasterizationModeEXT), then the following rules replace
 the line rasterization rules defined in [Basic Line Segment Rasterization](#primsrast-lines-basic).
 
 Non-strict lines **may** also follow these rasterization rules for
@@ -4224,7 +4224,7 @@ non-antialiased lines.
 If the [`relaxedLineRasterization`](features.html#features-relaxedLineRasterization)
 feature is enabled,
 and `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT`
+[VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT](#VkLineRasterizationModeEXT)
 implementations **must** follow these rasterization rules for non-antialised
 lines of width 1.0.
 
@@ -4346,7 +4346,7 @@ regardless of the number of rasterization samples, and cover all samples in
 those pixels (unless masked out or killed). |
 
 If the `stippledLineEnable` member of
-[VkPipelineRasterizationLineStateCreateInfo](#VkPipelineRasterizationLineStateCreateInfo) is `VK_TRUE`, then
+[VkPipelineRasterizationLineStateCreateInfo](#VkPipelineRasterizationLineStateCreateInfo) is [VK_TRUE](fundamentals.html#VK_TRUE), then
 lines are rasterized with a *line stipple* determined by
 `lineStippleFactor` and `lineStipplePattern`.
 `lineStipplePattern` is an unsigned 16-bit integer that determines which
@@ -4372,12 +4372,12 @@ The bits of *p* are numbered with 0 being the least significant and 15 being
 the most significant.
 
 The initial value of *s* is zero.
-For `VK_LINE_RASTERIZATION_MODE_BRESENHAM` lines, *s* is incremented
+For [VK_LINE_RASTERIZATION_MODE_BRESENHAM](#VkLineRasterizationModeEXT) lines, *s* is incremented
 after production of each fragment of a line segment (fragments are produced
 in order, beginning at the starting point and working towards the ending
 point).
-For `VK_LINE_RASTERIZATION_MODE_RECTANGULAR` and
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH` lines, the rectangular
+For [VK_LINE_RASTERIZATION_MODE_RECTANGULAR](#VkLineRasterizationModeEXT) and
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH](#VkLineRasterizationModeEXT) lines, the rectangular
 region is subdivided into adjacent unit-length rectangles, and s is
 incremented once for each rectangle.
 Rectangles with a value of *s* such that the *b*'th bit of *p* is zero are
@@ -4431,7 +4431,7 @@ rasterization.
 This command sets the line stipple state for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_LINE_STIPPLE` set in
+[VK_DYNAMIC_STATE_LINE_STIPPLE](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationLineStateCreateInfo](#VkPipelineRasterizationLineStateCreateInfo)::`lineStippleFactor`
@@ -4461,7 +4461,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetLineStipple-commandBuffer-cmdpool) VUID-vkCmdSetLineStipple-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetLineStipple-videocoding) VUID-vkCmdSetLineStipple-videocoding
@@ -4489,9 +4489,9 @@ vkCmdSetLineStipple is not affected by [conditional rendering](drawing.html#draw
 
 If the `lineRasterizationMode` member of
 [VkPipelineRasterizationLineStateCreateInfo](#VkPipelineRasterizationLineStateCreateInfo) is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH`, then lines are
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH](#VkLineRasterizationModeEXT), then lines are
 considered to be rectangles using the same geometry as for
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR` lines.
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR](#VkLineRasterizationModeEXT) lines.
 The rules for determining which pixels are covered are
 implementation-dependent, and **may** include nearby pixels where no sample
 locations are covered or where the rectangle does not intersect the pixel at
@@ -4540,11 +4540,11 @@ typedef enum VkFrontFace {
 } VkFrontFace;
 
 * 
-`VK_FRONT_FACE_COUNTER_CLOCKWISE` specifies that a triangle with
+[VK_FRONT_FACE_COUNTER_CLOCKWISE](#VkFrontFace) specifies that a triangle with
 positive area is considered front-facing.
 
 * 
-`VK_FRONT_FACE_CLOCKWISE` specifies that a triangle with negative
+[VK_FRONT_FACE_CLOCKWISE](#VkFrontFace) specifies that a triangle with negative
 area is considered front-facing.
 
 Any triangle which is not front-facing is back-facing, including zero-area
@@ -4574,7 +4574,7 @@ triangle orientation to be used for culling.
 
 This command sets the front face orientation for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
-when the graphics pipeline is created with `VK_DYNAMIC_STATE_FRONT_FACE`
+when the graphics pipeline is created with [VK_DYNAMIC_STATE_FRONT_FACE](pipelines.html#VkDynamicState)
 set in [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationStateCreateInfo](#VkPipelineRasterizationStateCreateInfo)::`frontFace` value used to
@@ -4618,7 +4618,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetFrontFace-commandBuffer-cmdpool) VUID-vkCmdSetFrontFace-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetFrontFace-videocoding) VUID-vkCmdSetFrontFace-videocoding
@@ -4658,18 +4658,18 @@ typedef enum VkCullModeFlagBits {
 } VkCullModeFlagBits;
 
 * 
-`VK_CULL_MODE_NONE` specifies that no triangles are discarded
+[VK_CULL_MODE_NONE](#VkCullModeFlagBits) specifies that no triangles are discarded
 
 * 
-`VK_CULL_MODE_FRONT_BIT` specifies that front-facing triangles are
+[VK_CULL_MODE_FRONT_BIT](#VkCullModeFlagBits) specifies that front-facing triangles are
 discarded
 
 * 
-`VK_CULL_MODE_BACK_BIT` specifies that back-facing triangles are
+[VK_CULL_MODE_BACK_BIT](#VkCullModeFlagBits) specifies that back-facing triangles are
 discarded
 
 * 
-`VK_CULL_MODE_FRONT_AND_BACK` specifies that all triangles are
+[VK_CULL_MODE_FRONT_AND_BACK](#VkCullModeFlagBits) specifies that all triangles are
 discarded.
 
 Following culling, fragments are produced for any triangles which have not
@@ -4703,7 +4703,7 @@ recorded.
 
 This command sets the cull mode for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
-when the graphics pipeline is created with `VK_DYNAMIC_STATE_CULL_MODE`
+when the graphics pipeline is created with [VK_DYNAMIC_STATE_CULL_MODE](pipelines.html#VkDynamicState)
 set in [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationStateCreateInfo](#VkPipelineRasterizationStateCreateInfo)::`cullMode` value used to
@@ -4747,7 +4747,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetCullMode-commandBuffer-cmdpool) VUID-vkCmdSetCullMode-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetCullMode-videocoding) VUID-vkCmdSetCullMode-videocoding
@@ -4883,19 +4883,19 @@ typedef enum VkPolygonMode {
 } VkPolygonMode;
 
 * 
-`VK_POLYGON_MODE_POINT` specifies that polygon vertices are drawn as
+[VK_POLYGON_MODE_POINT](#VkPolygonMode) specifies that polygon vertices are drawn as
 points.
 
 * 
-`VK_POLYGON_MODE_LINE` specifies that polygon edges are drawn as
+[VK_POLYGON_MODE_LINE](#VkPolygonMode) specifies that polygon edges are drawn as
 line segments.
 
 * 
-`VK_POLYGON_MODE_FILL` specifies that polygons are rendered using
+[VK_POLYGON_MODE_FILL](#VkPolygonMode) specifies that polygons are rendered using
 the polygon rasterization rules in this section.
 
 * 
-`VK_POLYGON_MODE_FILL_RECTANGLE_NV` specifies that polygons are
+[VK_POLYGON_MODE_FILL_RECTANGLE_NV](#VkPolygonMode) specifies that polygons are
 rendered using polygon rasterization rules, modified to consider a
 sample within the primitive if the sample location is inside the
 axis-aligned bounding box of the triangle after projection.
@@ -4908,26 +4908,26 @@ In such a case, if two rectangles lie on either side of a common edge
 one of the triangles **must** produce a fragment that covers that sample
 during rasterization.
 
-Polygons rendered in `VK_POLYGON_MODE_FILL_RECTANGLE_NV` mode **may** be
+Polygons rendered in [VK_POLYGON_MODE_FILL_RECTANGLE_NV](#VkPolygonMode) mode **may** be
 clipped by the frustum or by user clip planes.
 If clipping is applied, the triangle is culled rather than clipped.
 
 Area calculation and facingness are determined for
-`VK_POLYGON_MODE_FILL_RECTANGLE_NV` mode using the triangle’s vertices.
+[VK_POLYGON_MODE_FILL_RECTANGLE_NV](#VkPolygonMode) mode using the triangle’s vertices.
 
 These modes affect only the final rasterization of polygons: in particular,
 a polygon’s vertices are shaded and the polygon is clipped and possibly
 culled before these modes are applied.
 
 If `VkPhysicalDeviceMaintenance5Properties`::`polygonModePointSize`
-is `VK_TRUE`, the point size of the final rasterization of polygons is
+is [VK_TRUE](fundamentals.html#VK_TRUE), the point size of the final rasterization of polygons is
 taken from `PointSize` when [polygon mode](#primsrast-polygonmode) is
-`VK_POLYGON_MODE_POINT`.
+[VK_POLYGON_MODE_POINT](#VkPolygonMode).
 
 Otherwise, if
 `VkPhysicalDeviceMaintenance5Properties`::`polygonModePointSize` is
-`VK_FALSE`, the point size of the final rasterization of polygons is 1.0
-when [polygon mode](#primsrast-polygonmode) is `VK_POLYGON_MODE_POINT`.
+[VK_FALSE](fundamentals.html#VK_FALSE), the point size of the final rasterization of polygons is 1.0
+when [polygon mode](#primsrast-polygonmode) is [VK_POLYGON_MODE_POINT](#VkPolygonMode).
 
 To [dynamically set](pipelines.html#pipelines-dynamic-state) the polygon mode, call:
 
@@ -4946,7 +4946,7 @@ recorded.
 This command sets the polygon mode for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_POLYGON_MODE_EXT` set in
+[VK_DYNAMIC_STATE_POLYGON_MODE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationStateCreateInfo](#VkPipelineRasterizationStateCreateInfo)::`polygonMode` value used
@@ -4968,13 +4968,13 @@ The [`shaderObject`](features.html#features-shaderObject) feature is enabled
 [](#VUID-vkCmdSetPolygonModeEXT-fillModeNonSolid-07424) VUID-vkCmdSetPolygonModeEXT-fillModeNonSolid-07424
 
     If the [`fillModeNonSolid`](features.html#features-fillModeNonSolid) feature is
-    not enabled, `polygonMode` **must** be `VK_POLYGON_MODE_FILL`
-or `VK_POLYGON_MODE_FILL_RECTANGLE_NV`
+    not enabled, `polygonMode` **must** be [VK_POLYGON_MODE_FILL](#VkPolygonMode)
+or [VK_POLYGON_MODE_FILL_RECTANGLE_NV](#VkPolygonMode)
 
 [](#VUID-vkCmdSetPolygonModeEXT-polygonMode-07425) VUID-vkCmdSetPolygonModeEXT-polygonMode-07425
 
 If the `[VK_NV_fill_rectangle](../appendices/extensions.html#VK_NV_fill_rectangle)` extension is not enabled,
-`polygonMode` **must** not be `VK_POLYGON_MODE_FILL_RECTANGLE_NV`
+`polygonMode` **must** not be [VK_POLYGON_MODE_FILL_RECTANGLE_NV](#VkPolygonMode)
 
 Valid Usage (Implicit)
 
@@ -4996,7 +4996,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetPolygonModeEXT-commandBuffer-cmdpool) VUID-vkCmdSetPolygonModeEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetPolygonModeEXT-videocoding) VUID-vkCmdSetPolygonModeEXT-videocoding
@@ -5032,7 +5032,7 @@ and `vkCmdSetDepthBiasEnableEXT`,
 or the corresponding
 [VkPipelineRasterizationStateCreateInfo](#VkPipelineRasterizationStateCreateInfo)::`depthBiasEnable` value
 used to create the currently active pipeline.
-If the depth bias enable is `VK_FALSE`, no bias is applied and the
+If the depth bias enable is [VK_FALSE](fundamentals.html#VK_FALSE), no bias is applied and the
 fragment’s depth values are unchanged.
 
 To [dynamically enable](pipelines.html#pipelines-dynamic-state) whether to bias fragment
@@ -5059,7 +5059,7 @@ recorded.
 This command sets the depth bias enable for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE` set in
+[VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationStateCreateInfo](#VkPipelineRasterizationStateCreateInfo)::`depthBiasEnable` value
@@ -5098,7 +5098,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDepthBiasEnable-commandBuffer-cmdpool) VUID-vkCmdSetDepthBiasEnable-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetDepthBiasEnable-videocoding) VUID-vkCmdSetDepthBiasEnable-videocoding
@@ -5158,7 +5158,7 @@ m **may** be approximated as
   
 
 In a pipeline with a depth bias representation of
-`VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT`, r, for the given
+[VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT](#VkDepthBiasRepresentationEXT), r, for the given
 primitive is defined as
 
 r = 1
@@ -5167,7 +5167,7 @@ Otherwise
 r is the minimum resolvable difference that depends on the depth
 attachment representation.
 If `VkDepthBiasRepresentationInfoEXT`::`depthBiasExact` is
-`VK_FALSE` it
+[VK_FALSE](fundamentals.html#VK_FALSE) it
 is the smallest difference in a sample’s depth zf values that is
 guaranteed to remain distinct throughout polygon rasterization and in the
 depth attachment.
@@ -5177,10 +5177,10 @@ will have distinct depth values.
 
 For fixed-point depth attachment representations,
 or in a pipeline with a depth bias representation of
-`VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT`,
+[VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT](#VkDepthBiasRepresentationEXT),
 r is constant throughout the range of the entire depth attachment.
 If `VkDepthBiasRepresentationInfoEXT`::`depthBiasExact` is
-`VK_TRUE`, then its value **must** be
+[VK_TRUE](fundamentals.html#VK_TRUE), then its value **must** be
 
 r = 2-n
 
@@ -5204,7 +5204,7 @@ resolvable difference, r, for the given primitive is defined as
 r = 2e-n
 
 If a triangle is rasterized using the
-`VK_POLYGON_MODE_FILL_RECTANGLE_NV` polygon mode, then this minimum
+[VK_POLYGON_MODE_FILL_RECTANGLE_NV](#VkPolygonMode) polygon mode, then this minimum
 resolvable difference **may** not be resolvable for samples outside of the
 triangle, where the depth is extrapolated.
 
@@ -5254,7 +5254,7 @@ slope in depth bias calculations.
 
 This command sets the depth bias parameters for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
-when the graphics pipeline is created with `VK_DYNAMIC_STATE_DEPTH_BIAS`
+when the graphics pipeline is created with [VK_DYNAMIC_STATE_DEPTH_BIAS](pipelines.html#VkDynamicState)
 set in [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the corresponding
 [VkPipelineRasterizationStateCreateInfo](#VkPipelineRasterizationStateCreateInfo)::`depthBiasConstantFactor`,
@@ -5288,7 +5288,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDepthBias-commandBuffer-cmdpool) VUID-vkCmdSetDepthBias-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetDepthBias-videocoding) VUID-vkCmdSetDepthBias-videocoding
@@ -5346,27 +5346,27 @@ Valid Usage
 
 If the [    `leastRepresentableValueForceUnormRepresentation`](features.html#features-leastRepresentableValueForceUnormRepresentation) feature is not
 enabled, `depthBiasRepresentation` **must** not be
-`VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT`
+[VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT](#VkDepthBiasRepresentationEXT)
 
 * 
 [](#VUID-VkDepthBiasRepresentationInfoEXT-floatRepresentation-08948) VUID-VkDepthBiasRepresentationInfoEXT-floatRepresentation-08948
 
 If the [`floatRepresentation`](features.html#features-floatRepresentation)
 feature is not enabled, `depthBiasRepresentation` **must** not be
-`VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT`
+[VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT](#VkDepthBiasRepresentationEXT)
 
 * 
 [](#VUID-VkDepthBiasRepresentationInfoEXT-depthBiasExact-08949) VUID-VkDepthBiasRepresentationInfoEXT-depthBiasExact-08949
 
 If the [`depthBiasExact`](features.html#features-depthBiasExact) feature is not
-enabled, `depthBiasExact` **must** be `VK_FALSE`
+enabled, `depthBiasExact` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDepthBiasRepresentationInfoEXT-sType-sType) VUID-VkDepthBiasRepresentationInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEPTH_BIAS_REPRESENTATION_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEPTH_BIAS_REPRESENTATION_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDepthBiasRepresentationInfoEXT-depthBiasRepresentation-parameter) VUID-VkDepthBiasRepresentationInfoEXT-depthBiasRepresentation-parameter
@@ -5385,18 +5385,18 @@ typedef enum VkDepthBiasRepresentationEXT {
 } VkDepthBiasRepresentationEXT;
 
 * 
-`VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORMAT_EXT`
+[VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORMAT_EXT](#VkDepthBiasRepresentationEXT)
 specifies that the depth bias representation is a factor of the format’s
 r as described in [Depth Bias Computation](#primsrast-depthbias-computation).
 
 * 
-`VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT`
+[VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT](#VkDepthBiasRepresentationEXT)
 specifies that the depth bias representation is a factor of a constant
 r defined by the bit-size or mantissa of the format as described
 in [Depth Bias Computation](#primsrast-depthbias-computation).
 
 * 
-`VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT` specifies that the depth
+[VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT](#VkDepthBiasRepresentationEXT) specifies that the depth
 bias representation is a factor of constant r equal to 1.
 
 The `VkDepthBiasInfoEXT` structure is defined as:
@@ -5432,8 +5432,8 @@ slope in depth bias calculations.
 If `pNext` does not contain a [VkDepthBiasRepresentationInfoEXT](#VkDepthBiasRepresentationInfoEXT)
 structure, then this command is equivalent to including a
 [VkDepthBiasRepresentationInfoEXT](#VkDepthBiasRepresentationInfoEXT) with `depthBiasExact` set to
-`VK_FALSE` and `depthBiasRepresentation` set to
-`VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORMAT_EXT`.
+[VK_FALSE](fundamentals.html#VK_FALSE) and `depthBiasRepresentation` set to
+[VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORMAT_EXT](#VkDepthBiasRepresentationEXT).
 
 Valid Usage
 
@@ -5448,7 +5448,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDepthBiasInfoEXT-sType-sType) VUID-VkDepthBiasInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEPTH_BIAS_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEPTH_BIAS_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDepthBiasInfoEXT-pNext-pNext) VUID-VkDepthBiasInfoEXT-pNext-pNext
@@ -5500,7 +5500,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDepthBias2EXT-commandBuffer-cmdpool) VUID-vkCmdSetDepthBias2EXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetDepthBias2EXT-videocoding) VUID-vkCmdSetDepthBias2EXT-videocoding
@@ -5563,18 +5563,18 @@ each of its edges in `X` and `Y` equally in screen space beyond the base
 overestimation specified in
 `VkPhysicalDeviceConservativeRasterizationPropertiesEXT`::`primitiveOverestimationSize`.
 If `conservativeRasterizationMode` is not
-`VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT`, this value is
+[VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT](#VkConservativeRasterizationModeEXT), this value is
 ignored.
 
 If this structure is not included in the `pNext` chain,
 `conservativeRasterizationMode` is considered to be
-`VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT`, and conservative
+[VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT](#VkConservativeRasterizationModeEXT), and conservative
 rasterization is disabled.
 
 Polygon rasterization **can** be made conservative by setting
 `conservativeRasterizationMode` to
-`VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT` or
-`VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT` in
+[VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT](#VkConservativeRasterizationModeEXT) or
+[VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT](#VkConservativeRasterizationModeEXT) in
 `VkPipelineRasterizationConservativeStateCreateInfoEXT`.
 
 |  | If [`conservativePointAndLineRasterization`](limits.html#limits-conservativePointAndLineRasterization) is supported, conservative
@@ -5596,7 +5596,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineRasterizationConservativeStateCreateInfoEXT-sType-sType) VUID-VkPipelineRasterizationConservativeStateCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineRasterizationConservativeStateCreateInfoEXT-flags-zerobitmask) VUID-VkPipelineRasterizationConservativeStateCreateInfoEXT-flags-zerobitmask
@@ -5626,16 +5626,16 @@ typedef enum VkConservativeRasterizationModeEXT {
 } VkConservativeRasterizationModeEXT;
 
 * 
-`VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT` specifies that
+[VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT](#VkConservativeRasterizationModeEXT) specifies that
 conservative rasterization is disabled and rasterization proceeds as
 normal.
 
 * 
-`VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT` specifies that
+[VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT](#VkConservativeRasterizationModeEXT) specifies that
 conservative rasterization is enabled in overestimation mode.
 
 * 
-`VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT` specifies
+[VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT](#VkConservativeRasterizationModeEXT) specifies
 that conservative rasterization is enabled in underestimation mode.
 
 To [dynamically set](pipelines.html#pipelines-dynamic-state) the
@@ -5658,7 +5658,7 @@ This command sets the `conservativeRasterizationMode` state for
 subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_CONSERVATIVE_RASTERIZATION_MODE_EXT` set in
+[VK_DYNAMIC_STATE_CONSERVATIVE_RASTERIZATION_MODE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationConservativeStateCreateInfoEXT](#VkPipelineRasterizationConservativeStateCreateInfoEXT)::`conservativeRasterizationMode`
@@ -5697,7 +5697,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetConservativeRasterizationModeEXT-commandBuffer-cmdpool) VUID-vkCmdSetConservativeRasterizationModeEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetConservativeRasterizationModeEXT-videocoding) VUID-vkCmdSetConservativeRasterizationModeEXT-videocoding
@@ -5743,7 +5743,7 @@ This command sets the `extraPrimitiveOverestimationSize` for subsequent
 drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_EXTRA_PRIMITIVE_OVERESTIMATION_SIZE_EXT` set in
+[VK_DYNAMIC_STATE_EXTRA_PRIMITIVE_OVERESTIMATION_SIZE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationConservativeStateCreateInfoEXT](#VkPipelineRasterizationConservativeStateCreateInfoEXT)::`extraPrimitiveOverestimationSize`
@@ -5783,7 +5783,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetExtraPrimitiveOverestimationSizeEXT-commandBuffer-cmdpool) VUID-vkCmdSetExtraPrimitiveOverestimationSizeEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetExtraPrimitiveOverestimationSizeEXT-videocoding) VUID-vkCmdSetExtraPrimitiveOverestimationSizeEXT-videocoding
@@ -5843,7 +5843,7 @@ Implementations **may** especially vary these approximations when the render
 pass has a fragment density map and the fragment area covers multiple
 pixels.
 
-For triangles if `VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT`
+For triangles if [VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT](#VkConservativeRasterizationModeEXT)
 is enabled, fragments will be generated if the primitive area covers any
 portion of any pixel inside the fragment area, including their edges or
 corners.
@@ -5853,32 +5853,32 @@ Degenerate triangles that evaluate to zero area after rasterization, even
 for pixels containing a vertex or edge of the zero-area polygon, will be
 culled if
 `VkPhysicalDeviceConservativeRasterizationPropertiesEXT`::`degenerateTrianglesRasterized`
-is `VK_FALSE` or will generate fragments if
-`degenerateTrianglesRasterized` is `VK_TRUE`.
+is [VK_FALSE](fundamentals.html#VK_FALSE) or will generate fragments if
+`degenerateTrianglesRasterized` is [VK_TRUE](fundamentals.html#VK_TRUE).
 The fragment input values for these degenerate triangles take their
 attribute and depth values from the provoking vertex.
 Degenerate triangles are considered backfacing and the application **can**
 enable backface culling if desired.
 Triangles that are zero area before rasterization **may** be culled regardless.
 
-For lines if `VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT` is
+For lines if [VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT](#VkConservativeRasterizationModeEXT) is
 enabled, and the implementation sets
 `VkPhysicalDeviceConservativeRasterizationPropertiesEXT`::`conservativePointAndLineRasterization`
-to `VK_TRUE`, fragments will be generated if the line covers any portion
+to [VK_TRUE](fundamentals.html#VK_TRUE), fragments will be generated if the line covers any portion
 of any pixel inside the fragment area, including their edges or corners.
 Degenerate lines that evaluate to zero length after rasterization will be
 culled if
 `VkPhysicalDeviceConservativeRasterizationPropertiesEXT`::`degenerateLinesRasterized`
-is `VK_FALSE` or will generate fragments if
-`degenerateLinesRasterized` is `VK_TRUE`.
+is [VK_FALSE](fundamentals.html#VK_FALSE) or will generate fragments if
+`degenerateLinesRasterized` is [VK_TRUE](fundamentals.html#VK_TRUE).
 The fragments input values for these degenerate lines take their attribute
 and depth values from the provoking vertex.
 Lines that are zero length before rasterization **may** be culled regardless.
 
-For points if `VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT` is
+For points if [VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT](#VkConservativeRasterizationModeEXT) is
 enabled, and the implementation sets
 `VkPhysicalDeviceConservativeRasterizationPropertiesEXT`::`conservativePointAndLineRasterization`
-to `VK_TRUE`, fragments will be generated if the point square covers any
+to [VK_TRUE](fundamentals.html#VK_TRUE), fragments will be generated if the point square covers any
 portion of any pixel inside the fragment area, including their edges or
 corners.
 
@@ -5896,28 +5896,28 @@ If the render pass has a fragment density map attachment and any pixel
 inside the fragment area is not considered covered, then the fragment is
 discarded even if some pixels are considered covered.
 
-For triangles, if `VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT`
+For triangles, if [VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT](#VkConservativeRasterizationModeEXT)
 is enabled, fragments will only be generated if any pixel inside the
 fragment area is fully covered by the generating primitive, including its
 edges and corners.
 
-For lines, if `VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT` is
+For lines, if [VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT](#VkConservativeRasterizationModeEXT) is
 enabled, fragments will be generated if any pixel inside the fragment area,
 including its edges and corners, are entirely covered by the line.
 
-For points, if `VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT` is
+For points, if [VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT](#VkConservativeRasterizationModeEXT) is
 enabled, fragments will only be generated if the point square covers the
 entirety of any pixel square inside the fragment area, including its edges
 or corners.
 
 If the render pass has a fragment density map and
-`VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT` is enabled,
+[VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT](#VkConservativeRasterizationModeEXT) is enabled,
 fragments will only be generated if the entirety of all pixels inside the
 fragment area are covered by the generating primitive, line, or point.
 
 For both overestimate and underestimate conservative rasterization modes a
 fragment has all of its pixel squares fully covered by the generating
-primitive **must** set `FullyCoveredEXT` to `VK_TRUE` if the
+primitive **must** set `FullyCoveredEXT` to [VK_TRUE](fundamentals.html#VK_TRUE) if the
 implementation enables the
 `VkPhysicalDeviceConservativeRasterizationPropertiesEXT`::`fullyCoveredFragmentShaderInputVariable`
 feature.

@@ -35,7 +35,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC-sType-sType) VUID-VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CACHE_INCREMENTAL_MODE_FEATURES_SEC`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CACHE_INCREMENTAL_MODE_FEATURES_SEC](VkStructureType.html)
 
 [VK_SEC_pipeline_cache_incremental_mode](VK_SEC_pipeline_cache_incremental_mode.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

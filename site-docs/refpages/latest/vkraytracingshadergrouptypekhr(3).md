@@ -18,7 +18,7 @@
 
 VkRayTracingShaderGroupTypeKHR - Shader group types
 
-The `VkRayTracingShaderGroupTypeKHR` enumeration is defined as:
+The [VkRayTracingShaderGroupTypeKHR](#) enumeration is defined as:
 
 // Provided by VK_KHR_ray_tracing_pipeline
 typedef enum VkRayTracingShaderGroupTypeKHR {
@@ -38,18 +38,18 @@ typedef enum VkRayTracingShaderGroupTypeKHR {
 typedef VkRayTracingShaderGroupTypeKHR VkRayTracingShaderGroupTypeNV;
 
 * 
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR` specifies that a
-shader group with a single `VK_SHADER_STAGE_RAYGEN_BIT_KHR`,
-`VK_SHADER_STAGE_MISS_BIT_KHR`, or
-`VK_SHADER_STAGE_CALLABLE_BIT_KHR` shader in it.
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR](#) specifies that a
+shader group with a single [VK_SHADER_STAGE_RAYGEN_BIT_KHR](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_MISS_BIT_KHR](VkShaderStageFlagBits.html), or
+[VK_SHADER_STAGE_CALLABLE_BIT_KHR](VkShaderStageFlagBits.html) shader in it.
 
 * 
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR` specifies
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR](#) specifies
 that a shader group that only hits triangles and **must** not contain an
 intersection shader, only closest hit and any-hit shaders.
 
 * 
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR`
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR](#)
 specifies that a shader group that only intersects with custom geometry
 and **must** contain an intersection shader and **may** contain closest hit
 and any-hit shaders.

@@ -73,22 +73,22 @@ remaining to allocate the descriptor sets of the specified layouts
 [](#VUID-VkDescriptorSetAllocateInfo-pSetLayouts-00308) VUID-VkDescriptorSetAllocateInfo-pSetLayouts-00308
 
 Each element of `pSetLayouts` **must** not have been created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT` set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](VkDescriptorSetLayoutCreateFlagBits.html) set
 
 * 
 [](#VUID-VkDescriptorSetAllocateInfo-pSetLayouts-03044) VUID-VkDescriptorSetAllocateInfo-pSetLayouts-03044
 
 If any element of `pSetLayouts` was created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set, `descriptorPool` **must** have been created with the
-`VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT` flag set
+[VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](VkDescriptorPoolCreateFlagBits.html) flag set
 
 * 
 [](#VUID-VkDescriptorSetAllocateInfo-pSetLayouts-09380) VUID-VkDescriptorSetAllocateInfo-pSetLayouts-09380
 
 If `pSetLayouts`[i] was created with an element of
 `pBindingFlags` that includes
-`VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT`, and
+[VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](VkDescriptorBindingFlagBits.html), and
 [VkDescriptorSetVariableDescriptorCountAllocateInfo](VkDescriptorSetVariableDescriptorCountAllocateInfo.html) is included in
 the `pNext` chain, and
 `VkDescriptorSetVariableDescriptorCountAllocateInfo`::`descriptorSetCount`
@@ -102,22 +102,22 @@ corresponding binding used to create `pSetLayouts`[i]
 [](#VUID-VkDescriptorSetAllocateInfo-pSetLayouts-04610) VUID-VkDescriptorSetAllocateInfo-pSetLayouts-04610
 
 If any element of `pSetLayouts` was created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT` bit set,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html) bit set,
 `descriptorPool` **must** have been created with the
-`VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT` flag set
+[VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT](VkDescriptorPoolCreateFlagBits.html) flag set
 
 * 
 [](#VUID-VkDescriptorSetAllocateInfo-pSetLayouts-08009) VUID-VkDescriptorSetAllocateInfo-pSetLayouts-08009
 
 Each element of `pSetLayouts` **must** not have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDescriptorSetAllocateInfo-sType-sType) VUID-VkDescriptorSetAllocateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkDescriptorSetAllocateInfo-pNext-pNext) VUID-VkDescriptorSetAllocateInfo-pNext-pNext

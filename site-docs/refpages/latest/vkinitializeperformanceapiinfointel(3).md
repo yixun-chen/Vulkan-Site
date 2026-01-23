@@ -43,7 +43,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkInitializePerformanceApiInfoINTEL-sType-sType) VUID-VkInitializePerformanceApiInfoINTEL-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_INITIALIZE_PERFORMANCE_API_INFO_INTEL`
+ `sType` **must** be [VK_STRUCTURE_TYPE_INITIALIZE_PERFORMANCE_API_INFO_INTEL](VkStructureType.html)
 
 * 
 [](#VUID-VkInitializePerformanceApiInfoINTEL-pNext-pNext) VUID-VkInitializePerformanceApiInfoINTEL-pNext-pNext

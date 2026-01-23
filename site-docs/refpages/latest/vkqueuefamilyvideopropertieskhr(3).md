@@ -50,7 +50,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueueFamilyVideoPropertiesKHR-sType-sType) VUID-VkQueueFamilyVideoPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUEUE_FAMILY_VIDEO_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_VIDEO_PROPERTIES_KHR](VkStructureType.html)
 
 [VK_KHR_video_queue](VK_KHR_video_queue.html), [VkStructureType](VkStructureType.html), [VkVideoCodecOperationFlagsKHR](VkVideoCodecOperationFlagsKHR.html)
 

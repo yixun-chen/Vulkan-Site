@@ -52,7 +52,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkLatencySubmissionPresentIdNV-sType-sType) VUID-VkLatencySubmissionPresentIdNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_LATENCY_SUBMISSION_PRESENT_ID_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_LATENCY_SUBMISSION_PRESENT_ID_NV](VkStructureType.html)
 
 [VK_NV_low_latency2](VK_NV_low_latency2.html), [VkStructureType](VkStructureType.html)
 

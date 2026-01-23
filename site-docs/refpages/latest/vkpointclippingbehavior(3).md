@@ -38,12 +38,12 @@ typedef enum VkPointClippingBehavior {
 typedef VkPointClippingBehavior VkPointClippingBehaviorKHR;
 
 * 
-`VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES` specifies that the
+[VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES](#) specifies that the
 primitive is discarded if the vertex lies outside any clip plane,
 including the planes bounding the view volume.
 
 * 
-`VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY` specifies that
+[VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY](#) specifies that
 the primitive is discarded only if the vertex lies outside any user clip
 plane.
 

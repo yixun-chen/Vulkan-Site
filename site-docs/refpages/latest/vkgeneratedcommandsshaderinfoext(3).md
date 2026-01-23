@@ -53,7 +53,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGeneratedCommandsShaderInfoEXT-sType-sType) VUID-VkGeneratedCommandsShaderInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GENERATED_COMMANDS_SHADER_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GENERATED_COMMANDS_SHADER_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkGeneratedCommandsShaderInfoEXT-pShaders-parameter) VUID-VkGeneratedCommandsShaderInfoEXT-pShaders-parameter

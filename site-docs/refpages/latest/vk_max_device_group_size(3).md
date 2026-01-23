@@ -17,7 +17,7 @@
 
 VK_MAX_DEVICE_GROUP_SIZE - Length of a physical device handle array
 
-`VK_MAX_DEVICE_GROUP_SIZE` is the length of an array containing
+[VK_MAX_DEVICE_GROUP_SIZE](#) is the length of an array containing
 [VkPhysicalDevice](VkPhysicalDevice.html) handle values representing all physical devices in a
 group, as returned in
 [VkPhysicalDeviceGroupProperties](VkPhysicalDeviceGroupProperties.html)::`physicalDevices`.

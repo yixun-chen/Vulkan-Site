@@ -51,7 +51,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkLayerSettingsCreateInfoEXT-sType-sType) VUID-VkLayerSettingsCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkLayerSettingsCreateInfoEXT-pSettings-parameter) VUID-VkLayerSettingsCreateInfoEXT-pSettings-parameter

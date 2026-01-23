@@ -68,8 +68,8 @@ The second [access scope](../../../../spec/latest/chapters/synchronization.html#
 empty.
 
 The access scope for buffer marker writes falls under the
-`VK_ACCESS_TRANSFER_WRITE_BIT` flag, and is performed by either
-`pipelineStage` or `VK_PIPELINE_STAGE_TRANSFER_BIT`.
+[VK_ACCESS_TRANSFER_WRITE_BIT](VkAccessFlagBits.html) flag, and is performed by either
+`pipelineStage` or [VK_PIPELINE_STAGE_TRANSFER_BIT](VkPipelineStageFlagBits.html).
 [Synchronization commands](../../../../spec/latest/chapters/synchronization.html#synchronization) should specify this access
 flag and both pipeline stages when defining dependencies with this command.
 
@@ -98,50 +98,50 @@ was allocated from
 
 If the [`geometryShader`](../../../../spec/latest/chapters/features.html#features-geometryShader) feature is not
 enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteBufferMarkerAMD-pipelineStage-04076) VUID-vkCmdWriteBufferMarkerAMD-pipelineStage-04076
 
 If the [`tessellationShader`](../../../../spec/latest/chapters/features.html#features-tessellationShader) feature
 is not enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](VkPipelineStageFlagBits.html) or
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteBufferMarkerAMD-pipelineStage-04077) VUID-vkCmdWriteBufferMarkerAMD-pipelineStage-04077
 
 If the [`conditionalRendering`](../../../../spec/latest/chapters/features.html#features-conditionalRendering)
 feature is not enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteBufferMarkerAMD-pipelineStage-04078) VUID-vkCmdWriteBufferMarkerAMD-pipelineStage-04078
 
 If the [`fragmentDensityMap`](../../../../spec/latest/chapters/features.html#features-fragmentDensityMap) feature
 is not enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteBufferMarkerAMD-pipelineStage-04079) VUID-vkCmdWriteBufferMarkerAMD-pipelineStage-04079
 
 If the [`transformFeedback`](../../../../spec/latest/chapters/features.html#features-transformFeedback) feature
 is not enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteBufferMarkerAMD-pipelineStage-04080) VUID-vkCmdWriteBufferMarkerAMD-pipelineStage-04080
 
 If the [`meshShader`](../../../../spec/latest/chapters/features.html#features-meshShader) feature is not enabled,
 `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteBufferMarkerAMD-pipelineStage-07077) VUID-vkCmdWriteBufferMarkerAMD-pipelineStage-07077
 
 If the [`taskShader`](../../../../spec/latest/chapters/features.html#features-taskShader) feature is not enabled,
 `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteBufferMarkerAMD-shadingRateImage-07314) VUID-vkCmdWriteBufferMarkerAMD-shadingRateImage-07314
@@ -149,14 +149,14 @@ If the [`taskShader`](../../../../spec/latest/chapters/features.html#features-ta
 If neither of the [`shadingRateImage`](../../../../spec/latest/chapters/features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](../../../../spec/latest/chapters/features.html#features-attachmentFragmentShadingRate) features are enabled,
 `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteBufferMarkerAMD-synchronization2-06489) VUID-vkCmdWriteBufferMarkerAMD-synchronization2-06489
 
 If the [`synchronization2`](../../../../spec/latest/chapters/features.html#features-synchronization2) feature is
 not enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_NONE`
+[VK_PIPELINE_STAGE_NONE](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteBufferMarkerAMD-rayTracingPipeline-07943) VUID-vkCmdWriteBufferMarkerAMD-rayTracingPipeline-07943
@@ -164,7 +164,7 @@ not enabled, `pipelineStage` **must** not be
 If neither of the [VK_NV_ray_tracing](VK_NV_ray_tracing.html) extension or the
 [`rayTracingPipeline`](../../../../spec/latest/chapters/features.html#features-rayTracingPipeline) feature are
 enabled, `pipelineStage` **must** not be
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdWriteBufferMarkerAMD-dstOffset-01798) VUID-vkCmdWriteBufferMarkerAMD-dstOffset-01798
@@ -176,7 +176,7 @@ enabled, `pipelineStage` **must** not be
 [](#VUID-vkCmdWriteBufferMarkerAMD-dstBuffer-01799) VUID-vkCmdWriteBufferMarkerAMD-dstBuffer-01799
 
 `dstBuffer` **must** have been created with the
-`VK_BUFFER_USAGE_TRANSFER_DST_BIT` usage flag set
+[VK_BUFFER_USAGE_TRANSFER_DST_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdWriteBufferMarkerAMD-dstBuffer-01800) VUID-vkCmdWriteBufferMarkerAMD-dstBuffer-01800
@@ -214,7 +214,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdWriteBufferMarkerAMD-commandBuffer-cmdpool) VUID-vkCmdWriteBufferMarkerAMD-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, or `VK_QUEUE_TRANSFER_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html), or [VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdWriteBufferMarkerAMD-suspended) VUID-vkCmdWriteBufferMarkerAMD-suspended

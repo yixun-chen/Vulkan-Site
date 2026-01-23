@@ -56,7 +56,7 @@ floating-point values.
 Within those formats, the implementation may only support blending on some
 subset of them.
 Which formats support blending is indicated by
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT`. |
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT](formats.html#VkFormatFeatureFlagBits). |
 
 The pipeline blend state is included in the
 `VkPipelineColorBlendStateCreateInfo` structure during graphics pipeline
@@ -99,10 +99,10 @@ color blending information.
 [VkPipelineColorBlendAttachmentState](#VkPipelineColorBlendAttachmentState) elements in
 `pAttachments`.
 It is ignored if the pipeline is created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT`,
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT`, and
-`VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT` dynamic states set, and
-either `VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT` set or the
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](pipelines.html#VkDynamicState),
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](pipelines.html#VkDynamicState), and
+[VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](pipelines.html#VkDynamicState) dynamic states set, and
+either [VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](pipelines.html#VkDynamicState) set or the
 [advancedBlendCoherentOperations](features.html#features-advancedBlendCoherentOperations)
 feature is not enabled.
 
@@ -111,10 +111,10 @@ feature is not enabled.
 [VkPipelineColorBlendAttachmentState](#VkPipelineColorBlendAttachmentState) structures defining blend
 state for each color attachment.
 It is ignored if the pipeline is created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT`,
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT`, and
-`VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT` dynamic states set, and
-either `VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT` set or the
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](pipelines.html#VkDynamicState),
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](pipelines.html#VkDynamicState), and
+[VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](pipelines.html#VkDynamicState) dynamic states set, and
+either [VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](pipelines.html#VkDynamicState) set or the
 [advancedBlendCoherentOperations](features.html#features-advancedBlendCoherentOperations)
 feature is not enabled.
 
@@ -135,12 +135,12 @@ not enabled, all elements of `pAttachments` **must** be identical
 [](#VUID-VkPipelineColorBlendStateCreateInfo-logicOpEnable-00606) VUID-VkPipelineColorBlendStateCreateInfo-logicOpEnable-00606
 
 If the [`logicOp`](features.html#features-logicOp) feature is not enabled,
-`logicOpEnable` **must** be `VK_FALSE`
+`logicOpEnable` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-VkPipelineColorBlendStateCreateInfo-logicOpEnable-00607) VUID-VkPipelineColorBlendStateCreateInfo-logicOpEnable-00607
 
-If `logicOpEnable` is `VK_TRUE`, `logicOp` **must** be a valid
+If `logicOpEnable` is [VK_TRUE](fundamentals.html#VK_TRUE), `logicOp` **must** be a valid
 [VkLogicOp](#VkLogicOp) value
 
 * 
@@ -148,16 +148,16 @@ If `logicOpEnable` is `VK_TRUE`, `logicOp` **must** be a valid
 
 If the [    `rasterizationOrderColorAttachmentAccess`](features.html#features-rasterizationOrderColorAttachmentAccess) feature is not enabled,
 `flags` **must** not include
-`VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT`
+[VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT](#VkPipelineColorBlendStateCreateFlagBits)
 
 * 
 [](#VUID-VkPipelineColorBlendStateCreateInfo-pAttachments-07353) VUID-VkPipelineColorBlendStateCreateInfo-pAttachments-07353
 
 If `attachmentCount` is not `0`
-, and any of `VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT`,
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT`,
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT`, or
-`VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT` are not set,
+, and any of [VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](pipelines.html#VkDynamicState),
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](pipelines.html#VkDynamicState),
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](pipelines.html#VkDynamicState), or
+[VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](pipelines.html#VkDynamicState) are not set,
 `pAttachments` **must** be a valid pointer to an array of
 `attachmentCount` valid [VkPipelineColorBlendAttachmentState](#VkPipelineColorBlendAttachmentState)
 structures
@@ -167,7 +167,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineColorBlendStateCreateInfo-sType-sType) VUID-VkPipelineColorBlendStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineColorBlendStateCreateInfo-pNext-pNext) VUID-VkPipelineColorBlendStateCreateInfo-pNext-pNext
@@ -207,27 +207,27 @@ typedef enum VkPipelineColorBlendStateCreateFlagBits {
 } VkPipelineColorBlendStateCreateFlagBits;
 
 * 
-`VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT`
+[VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT](#VkPipelineColorBlendStateCreateFlagBits)
 specifies that access to color and input attachments will have implicit
 framebuffer-local memory dependencies, allowing applications to express
 custom blending operations in a fragment shader.
 
 When
-`VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT`
+[VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT](#VkPipelineColorBlendStateCreateFlagBits)
 is included in a pipeline, it forms a framebuffer-local memory dependency
 for each fragment generated by draw commands for that pipeline with the
 following scopes:
 
 * 
 The first [synchronization scope](synchronization.html#synchronization-dependencies-scopes)
-includes the `VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT`
+includes the [VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](synchronization.html#VkPipelineStageFlagBits)
 pipeline stage executed by all previous fragments (as defined by
 [primitive order](drawing.html#drawing-primitive-order)) in the corresponding
 [framebuffer regions](synchronization.html#synchronization-framebuffer-regions) including
 those generated by the same draw command.
 
 * 
-The second [synchronization    scope](synchronization.html#synchronization-dependencies-scopes) includes the `VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT`
+The second [synchronization    scope](synchronization.html#synchronization-dependencies-scopes) includes the [VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits)
 pipeline stage executed by the generated fragment.
 
 * 
@@ -294,40 +294,40 @@ Valid Usage
 
 If the [`dualSrcBlend`](features.html#features-dualSrcBlend) feature is not
 enabled, `srcColorBlendFactor` **must** not be
-`VK_BLEND_FACTOR_SRC1_COLOR`,
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR`,
-`VK_BLEND_FACTOR_SRC1_ALPHA`, or
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA`
+[VK_BLEND_FACTOR_SRC1_COLOR](#VkBlendFactor),
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR](#VkBlendFactor),
+[VK_BLEND_FACTOR_SRC1_ALPHA](#VkBlendFactor), or
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA](#VkBlendFactor)
 
 * 
 [](#VUID-VkPipelineColorBlendAttachmentState-dstColorBlendFactor-00609) VUID-VkPipelineColorBlendAttachmentState-dstColorBlendFactor-00609
 
 If the [`dualSrcBlend`](features.html#features-dualSrcBlend) feature is not
 enabled, `dstColorBlendFactor` **must** not be
-`VK_BLEND_FACTOR_SRC1_COLOR`,
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR`,
-`VK_BLEND_FACTOR_SRC1_ALPHA`, or
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA`
+[VK_BLEND_FACTOR_SRC1_COLOR](#VkBlendFactor),
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR](#VkBlendFactor),
+[VK_BLEND_FACTOR_SRC1_ALPHA](#VkBlendFactor), or
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA](#VkBlendFactor)
 
 * 
 [](#VUID-VkPipelineColorBlendAttachmentState-srcAlphaBlendFactor-00610) VUID-VkPipelineColorBlendAttachmentState-srcAlphaBlendFactor-00610
 
 If the [`dualSrcBlend`](features.html#features-dualSrcBlend) feature is not
 enabled, `srcAlphaBlendFactor` **must** not be
-`VK_BLEND_FACTOR_SRC1_COLOR`,
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR`,
-`VK_BLEND_FACTOR_SRC1_ALPHA`, or
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA`
+[VK_BLEND_FACTOR_SRC1_COLOR](#VkBlendFactor),
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR](#VkBlendFactor),
+[VK_BLEND_FACTOR_SRC1_ALPHA](#VkBlendFactor), or
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA](#VkBlendFactor)
 
 * 
 [](#VUID-VkPipelineColorBlendAttachmentState-dstAlphaBlendFactor-00611) VUID-VkPipelineColorBlendAttachmentState-dstAlphaBlendFactor-00611
 
 If the [`dualSrcBlend`](features.html#features-dualSrcBlend) feature is not
 enabled, `dstAlphaBlendFactor` **must** not be
-`VK_BLEND_FACTOR_SRC1_COLOR`,
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR`,
-`VK_BLEND_FACTOR_SRC1_ALPHA`, or
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA`
+[VK_BLEND_FACTOR_SRC1_COLOR](#VkBlendFactor),
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR](#VkBlendFactor),
+[VK_BLEND_FACTOR_SRC1_ALPHA](#VkBlendFactor), or
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA](#VkBlendFactor)
 
 * 
 [](#VUID-VkPipelineColorBlendAttachmentState-colorBlendOp-01406) VUID-VkPipelineColorBlendAttachmentState-colorBlendOp-01406
@@ -341,7 +341,7 @@ If either of `colorBlendOp` or `alphaBlendOp` is an
 
 If
 [VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT](limits.html#VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT)::`advancedBlendIndependentBlend`
-is `VK_FALSE` and `colorBlendOp` is an
+is [VK_FALSE](fundamentals.html#VK_FALSE) and `colorBlendOp` is an
 [advanced blend operation](#framebuffer-blend-advanced), then
 `colorBlendOp` **must** be the same for all attachments
 
@@ -350,7 +350,7 @@ is `VK_FALSE` and `colorBlendOp` is an
 
 If
 [VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT](limits.html#VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT)::`advancedBlendIndependentBlend`
-is `VK_FALSE` and `alphaBlendOp` is an
+is [VK_FALSE](fundamentals.html#VK_FALSE) and `alphaBlendOp` is an
 [advanced blend operation](#framebuffer-blend-advanced), then
 `alphaBlendOp` **must** be the same for all attachments
 
@@ -359,23 +359,23 @@ is `VK_FALSE` and `alphaBlendOp` is an
 
 If
 [VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT](limits.html#VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT)::`advancedBlendAllOperations`
-is `VK_FALSE`, then `colorBlendOp` **must** not be
-`VK_BLEND_OP_ZERO_EXT`, `VK_BLEND_OP_SRC_EXT`,
-`VK_BLEND_OP_DST_EXT`, `VK_BLEND_OP_SRC_OVER_EXT`,
-`VK_BLEND_OP_DST_OVER_EXT`, `VK_BLEND_OP_SRC_IN_EXT`,
-`VK_BLEND_OP_DST_IN_EXT`, `VK_BLEND_OP_SRC_OUT_EXT`,
-`VK_BLEND_OP_DST_OUT_EXT`, `VK_BLEND_OP_SRC_ATOP_EXT`,
-`VK_BLEND_OP_DST_ATOP_EXT`, `VK_BLEND_OP_XOR_EXT`,
-`VK_BLEND_OP_INVERT_EXT`, `VK_BLEND_OP_INVERT_RGB_EXT`,
-`VK_BLEND_OP_LINEARDODGE_EXT`, `VK_BLEND_OP_LINEARBURN_EXT`,
-`VK_BLEND_OP_VIVIDLIGHT_EXT`, `VK_BLEND_OP_LINEARLIGHT_EXT`,
-`VK_BLEND_OP_PINLIGHT_EXT`, `VK_BLEND_OP_HARDMIX_EXT`,
-`VK_BLEND_OP_PLUS_EXT`, `VK_BLEND_OP_PLUS_CLAMPED_EXT`,
-`VK_BLEND_OP_PLUS_CLAMPED_ALPHA_EXT`,
-`VK_BLEND_OP_PLUS_DARKER_EXT`, `VK_BLEND_OP_MINUS_EXT`,
-`VK_BLEND_OP_MINUS_CLAMPED_EXT`, `VK_BLEND_OP_CONTRAST_EXT`,
-`VK_BLEND_OP_INVERT_OVG_EXT`, `VK_BLEND_OP_RED_EXT`,
-`VK_BLEND_OP_GREEN_EXT`, or `VK_BLEND_OP_BLUE_EXT`
+is [VK_FALSE](fundamentals.html#VK_FALSE), then `colorBlendOp` **must** not be
+[VK_BLEND_OP_ZERO_EXT](#VkBlendOp), [VK_BLEND_OP_SRC_EXT](#VkBlendOp),
+[VK_BLEND_OP_DST_EXT](#VkBlendOp), [VK_BLEND_OP_SRC_OVER_EXT](#VkBlendOp),
+[VK_BLEND_OP_DST_OVER_EXT](#VkBlendOp), [VK_BLEND_OP_SRC_IN_EXT](#VkBlendOp),
+[VK_BLEND_OP_DST_IN_EXT](#VkBlendOp), [VK_BLEND_OP_SRC_OUT_EXT](#VkBlendOp),
+[VK_BLEND_OP_DST_OUT_EXT](#VkBlendOp), [VK_BLEND_OP_SRC_ATOP_EXT](#VkBlendOp),
+[VK_BLEND_OP_DST_ATOP_EXT](#VkBlendOp), [VK_BLEND_OP_XOR_EXT](#VkBlendOp),
+[VK_BLEND_OP_INVERT_EXT](#VkBlendOp), [VK_BLEND_OP_INVERT_RGB_EXT](#VkBlendOp),
+[VK_BLEND_OP_LINEARDODGE_EXT](#VkBlendOp), [VK_BLEND_OP_LINEARBURN_EXT](#VkBlendOp),
+[VK_BLEND_OP_VIVIDLIGHT_EXT](#VkBlendOp), [VK_BLEND_OP_LINEARLIGHT_EXT](#VkBlendOp),
+[VK_BLEND_OP_PINLIGHT_EXT](#VkBlendOp), [VK_BLEND_OP_HARDMIX_EXT](#VkBlendOp),
+[VK_BLEND_OP_PLUS_EXT](#VkBlendOp), [VK_BLEND_OP_PLUS_CLAMPED_EXT](#VkBlendOp),
+[VK_BLEND_OP_PLUS_CLAMPED_ALPHA_EXT](#VkBlendOp),
+[VK_BLEND_OP_PLUS_DARKER_EXT](#VkBlendOp), [VK_BLEND_OP_MINUS_EXT](#VkBlendOp),
+[VK_BLEND_OP_MINUS_CLAMPED_EXT](#VkBlendOp), [VK_BLEND_OP_CONTRAST_EXT](#VkBlendOp),
+[VK_BLEND_OP_INVERT_OVG_EXT](#VkBlendOp), [VK_BLEND_OP_RED_EXT](#VkBlendOp),
+[VK_BLEND_OP_GREEN_EXT](#VkBlendOp), or [VK_BLEND_OP_BLUE_EXT](#VkBlendOp)
 
 * 
 [](#VUID-VkPipelineColorBlendAttachmentState-colorBlendOp-01410) VUID-VkPipelineColorBlendAttachmentState-colorBlendOp-01410
@@ -391,18 +391,18 @@ against **must** be less than or equal to
 
 If the `[VK_KHR_portability_subset](../appendices/extensions.html#VK_KHR_portability_subset)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR)::`constantAlphaColorBlendFactors`
-is `VK_FALSE`, `srcColorBlendFactor` **must** not be
-`VK_BLEND_FACTOR_CONSTANT_ALPHA` or
-`VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA`
+is [VK_FALSE](fundamentals.html#VK_FALSE), `srcColorBlendFactor` **must** not be
+[VK_BLEND_FACTOR_CONSTANT_ALPHA](#VkBlendFactor) or
+[VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA](#VkBlendFactor)
 
 * 
 [](#VUID-VkPipelineColorBlendAttachmentState-constantAlphaColorBlendFactors-04455) VUID-VkPipelineColorBlendAttachmentState-constantAlphaColorBlendFactors-04455
 
 If the `[VK_KHR_portability_subset](../appendices/extensions.html#VK_KHR_portability_subset)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR)::`constantAlphaColorBlendFactors`
-is `VK_FALSE`, `dstColorBlendFactor` **must** not be
-`VK_BLEND_FACTOR_CONSTANT_ALPHA` or
-`VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA`
+is [VK_FALSE](fundamentals.html#VK_FALSE), `dstColorBlendFactor` **must** not be
+[VK_BLEND_FACTOR_CONSTANT_ALPHA](#VkBlendFactor) or
+[VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA](#VkBlendFactor)
 
 Valid Usage (Implicit)
 
@@ -470,7 +470,7 @@ This command sets the color blending enable of the specified color
 attachments for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT` set in
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineColorBlendAttachmentState](#VkPipelineColorBlendAttachmentState)::`blendEnable` values used to
@@ -509,7 +509,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetColorBlendEnableEXT-commandBuffer-cmdpool) VUID-vkCmdSetColorBlendEnableEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetColorBlendEnableEXT-videocoding) VUID-vkCmdSetColorBlendEnableEXT-videocoding
@@ -571,7 +571,7 @@ This command sets the color blending factors and operations of the specified
 attachments for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT` set in
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineColorBlendAttachmentState](#VkPipelineColorBlendAttachmentState)::`srcColorBlendFactor`,
@@ -615,7 +615,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetColorBlendEquationEXT-commandBuffer-cmdpool) VUID-vkCmdSetColorBlendEquationEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetColorBlendEquationEXT-videocoding) VUID-vkCmdSetColorBlendEquationEXT-videocoding
@@ -689,87 +689,87 @@ Valid Usage
 
 If the [`dualSrcBlend`](features.html#features-dualSrcBlend) feature is not
 enabled, `srcColorBlendFactor` **must** not be
-`VK_BLEND_FACTOR_SRC1_COLOR`,
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR`,
-`VK_BLEND_FACTOR_SRC1_ALPHA`, or
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA`
+[VK_BLEND_FACTOR_SRC1_COLOR](#VkBlendFactor),
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR](#VkBlendFactor),
+[VK_BLEND_FACTOR_SRC1_ALPHA](#VkBlendFactor), or
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA](#VkBlendFactor)
 
 * 
 [](#VUID-VkColorBlendEquationEXT-dualSrcBlend-07358) VUID-VkColorBlendEquationEXT-dualSrcBlend-07358
 
 If the [`dualSrcBlend`](features.html#features-dualSrcBlend) feature is not
 enabled, `dstColorBlendFactor` **must** not be
-`VK_BLEND_FACTOR_SRC1_COLOR`,
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR`,
-`VK_BLEND_FACTOR_SRC1_ALPHA`, or
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA`
+[VK_BLEND_FACTOR_SRC1_COLOR](#VkBlendFactor),
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR](#VkBlendFactor),
+[VK_BLEND_FACTOR_SRC1_ALPHA](#VkBlendFactor), or
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA](#VkBlendFactor)
 
 * 
 [](#VUID-VkColorBlendEquationEXT-dualSrcBlend-07359) VUID-VkColorBlendEquationEXT-dualSrcBlend-07359
 
 If the [`dualSrcBlend`](features.html#features-dualSrcBlend) feature is not
 enabled, `srcAlphaBlendFactor` **must** not be
-`VK_BLEND_FACTOR_SRC1_COLOR`,
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR`,
-`VK_BLEND_FACTOR_SRC1_ALPHA`, or
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA`
+[VK_BLEND_FACTOR_SRC1_COLOR](#VkBlendFactor),
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR](#VkBlendFactor),
+[VK_BLEND_FACTOR_SRC1_ALPHA](#VkBlendFactor), or
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA](#VkBlendFactor)
 
 * 
 [](#VUID-VkColorBlendEquationEXT-dualSrcBlend-07360) VUID-VkColorBlendEquationEXT-dualSrcBlend-07360
 
 If the [`dualSrcBlend`](features.html#features-dualSrcBlend) feature is not
 enabled, `dstAlphaBlendFactor` **must** not be
-`VK_BLEND_FACTOR_SRC1_COLOR`,
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR`,
-`VK_BLEND_FACTOR_SRC1_ALPHA`, or
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA`
+[VK_BLEND_FACTOR_SRC1_COLOR](#VkBlendFactor),
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR](#VkBlendFactor),
+[VK_BLEND_FACTOR_SRC1_ALPHA](#VkBlendFactor), or
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA](#VkBlendFactor)
 
 * 
 [](#VUID-VkColorBlendEquationEXT-colorBlendOp-07361) VUID-VkColorBlendEquationEXT-colorBlendOp-07361
 
 `colorBlendOp` and `alphaBlendOp` **must** not be
-`VK_BLEND_OP_ZERO_EXT`, `VK_BLEND_OP_SRC_EXT`,
-`VK_BLEND_OP_DST_EXT`, `VK_BLEND_OP_SRC_OVER_EXT`,
-`VK_BLEND_OP_DST_OVER_EXT`, `VK_BLEND_OP_SRC_IN_EXT`,
-`VK_BLEND_OP_DST_IN_EXT`, `VK_BLEND_OP_SRC_OUT_EXT`,
-`VK_BLEND_OP_DST_OUT_EXT`, `VK_BLEND_OP_SRC_ATOP_EXT`,
-`VK_BLEND_OP_DST_ATOP_EXT`, `VK_BLEND_OP_XOR_EXT`,
-`VK_BLEND_OP_MULTIPLY_EXT`, `VK_BLEND_OP_SCREEN_EXT`,
-`VK_BLEND_OP_OVERLAY_EXT`, `VK_BLEND_OP_DARKEN_EXT`,
-`VK_BLEND_OP_LIGHTEN_EXT`, `VK_BLEND_OP_COLORDODGE_EXT`,
-`VK_BLEND_OP_COLORBURN_EXT`, `VK_BLEND_OP_HARDLIGHT_EXT`,
-`VK_BLEND_OP_SOFTLIGHT_EXT`, `VK_BLEND_OP_DIFFERENCE_EXT`,
-`VK_BLEND_OP_EXCLUSION_EXT`, `VK_BLEND_OP_INVERT_EXT`,
-`VK_BLEND_OP_INVERT_RGB_EXT`, `VK_BLEND_OP_LINEARDODGE_EXT`,
-`VK_BLEND_OP_LINEARBURN_EXT`, `VK_BLEND_OP_VIVIDLIGHT_EXT`,
-`VK_BLEND_OP_LINEARLIGHT_EXT`, `VK_BLEND_OP_PINLIGHT_EXT`,
-`VK_BLEND_OP_HARDMIX_EXT`, `VK_BLEND_OP_HSL_HUE_EXT`,
-`VK_BLEND_OP_HSL_SATURATION_EXT`, `VK_BLEND_OP_HSL_COLOR_EXT`,
-`VK_BLEND_OP_HSL_LUMINOSITY_EXT`, `VK_BLEND_OP_PLUS_EXT`,
-`VK_BLEND_OP_PLUS_CLAMPED_EXT`,
-`VK_BLEND_OP_PLUS_CLAMPED_ALPHA_EXT`,
-`VK_BLEND_OP_PLUS_DARKER_EXT`, `VK_BLEND_OP_MINUS_EXT`,
-`VK_BLEND_OP_MINUS_CLAMPED_EXT`, `VK_BLEND_OP_CONTRAST_EXT`,
-`VK_BLEND_OP_INVERT_OVG_EXT`, `VK_BLEND_OP_RED_EXT`,
-`VK_BLEND_OP_GREEN_EXT`, or `VK_BLEND_OP_BLUE_EXT`
+[VK_BLEND_OP_ZERO_EXT](#VkBlendOp), [VK_BLEND_OP_SRC_EXT](#VkBlendOp),
+[VK_BLEND_OP_DST_EXT](#VkBlendOp), [VK_BLEND_OP_SRC_OVER_EXT](#VkBlendOp),
+[VK_BLEND_OP_DST_OVER_EXT](#VkBlendOp), [VK_BLEND_OP_SRC_IN_EXT](#VkBlendOp),
+[VK_BLEND_OP_DST_IN_EXT](#VkBlendOp), [VK_BLEND_OP_SRC_OUT_EXT](#VkBlendOp),
+[VK_BLEND_OP_DST_OUT_EXT](#VkBlendOp), [VK_BLEND_OP_SRC_ATOP_EXT](#VkBlendOp),
+[VK_BLEND_OP_DST_ATOP_EXT](#VkBlendOp), [VK_BLEND_OP_XOR_EXT](#VkBlendOp),
+[VK_BLEND_OP_MULTIPLY_EXT](#VkBlendOp), [VK_BLEND_OP_SCREEN_EXT](#VkBlendOp),
+[VK_BLEND_OP_OVERLAY_EXT](#VkBlendOp), [VK_BLEND_OP_DARKEN_EXT](#VkBlendOp),
+[VK_BLEND_OP_LIGHTEN_EXT](#VkBlendOp), [VK_BLEND_OP_COLORDODGE_EXT](#VkBlendOp),
+[VK_BLEND_OP_COLORBURN_EXT](#VkBlendOp), [VK_BLEND_OP_HARDLIGHT_EXT](#VkBlendOp),
+[VK_BLEND_OP_SOFTLIGHT_EXT](#VkBlendOp), [VK_BLEND_OP_DIFFERENCE_EXT](#VkBlendOp),
+[VK_BLEND_OP_EXCLUSION_EXT](#VkBlendOp), [VK_BLEND_OP_INVERT_EXT](#VkBlendOp),
+[VK_BLEND_OP_INVERT_RGB_EXT](#VkBlendOp), [VK_BLEND_OP_LINEARDODGE_EXT](#VkBlendOp),
+[VK_BLEND_OP_LINEARBURN_EXT](#VkBlendOp), [VK_BLEND_OP_VIVIDLIGHT_EXT](#VkBlendOp),
+[VK_BLEND_OP_LINEARLIGHT_EXT](#VkBlendOp), [VK_BLEND_OP_PINLIGHT_EXT](#VkBlendOp),
+[VK_BLEND_OP_HARDMIX_EXT](#VkBlendOp), [VK_BLEND_OP_HSL_HUE_EXT](#VkBlendOp),
+[VK_BLEND_OP_HSL_SATURATION_EXT](#VkBlendOp), [VK_BLEND_OP_HSL_COLOR_EXT](#VkBlendOp),
+[VK_BLEND_OP_HSL_LUMINOSITY_EXT](#VkBlendOp), [VK_BLEND_OP_PLUS_EXT](#VkBlendOp),
+[VK_BLEND_OP_PLUS_CLAMPED_EXT](#VkBlendOp),
+[VK_BLEND_OP_PLUS_CLAMPED_ALPHA_EXT](#VkBlendOp),
+[VK_BLEND_OP_PLUS_DARKER_EXT](#VkBlendOp), [VK_BLEND_OP_MINUS_EXT](#VkBlendOp),
+[VK_BLEND_OP_MINUS_CLAMPED_EXT](#VkBlendOp), [VK_BLEND_OP_CONTRAST_EXT](#VkBlendOp),
+[VK_BLEND_OP_INVERT_OVG_EXT](#VkBlendOp), [VK_BLEND_OP_RED_EXT](#VkBlendOp),
+[VK_BLEND_OP_GREEN_EXT](#VkBlendOp), or [VK_BLEND_OP_BLUE_EXT](#VkBlendOp)
 
 * 
 [](#VUID-VkColorBlendEquationEXT-constantAlphaColorBlendFactors-07362) VUID-VkColorBlendEquationEXT-constantAlphaColorBlendFactors-07362
 
 If the `[VK_KHR_portability_subset](../appendices/extensions.html#VK_KHR_portability_subset)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR)::`constantAlphaColorBlendFactors`
-is `VK_FALSE`, `srcColorBlendFactor` **must** not be
-`VK_BLEND_FACTOR_CONSTANT_ALPHA` or
-`VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA`
+is [VK_FALSE](fundamentals.html#VK_FALSE), `srcColorBlendFactor` **must** not be
+[VK_BLEND_FACTOR_CONSTANT_ALPHA](#VkBlendFactor) or
+[VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA](#VkBlendFactor)
 
 * 
 [](#VUID-VkColorBlendEquationEXT-constantAlphaColorBlendFactors-07363) VUID-VkColorBlendEquationEXT-constantAlphaColorBlendFactors-07363
 
 If the `[VK_KHR_portability_subset](../appendices/extensions.html#VK_KHR_portability_subset)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR)::`constantAlphaColorBlendFactors`
-is `VK_FALSE`, `dstColorBlendFactor` **must** not be
-`VK_BLEND_FACTOR_CONSTANT_ALPHA` or
-`VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA`
+is [VK_FALSE](fundamentals.html#VK_FALSE), `dstColorBlendFactor` **must** not be
+[VK_BLEND_FACTOR_CONSTANT_ALPHA](#VkBlendFactor) or
+[VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA](#VkBlendFactor)
 
 Valid Usage (Implicit)
 
@@ -832,7 +832,7 @@ This command sets the color write masks of the specified attachments for
 subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT` set in
+[VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineColorBlendAttachmentState](#VkPipelineColorBlendAttachmentState)::`colorWriteMask` values used
@@ -841,7 +841,7 @@ to create the currently active pipeline.
 |  | Formats with bits that are shared between components specified by
 | --- | --- |
 [VkColorComponentFlagBits](#VkColorComponentFlagBits), such as
-`VK_FORMAT_E5B9G9R9_UFLOAT_PACK32`, cannot have their channels
+[VK_FORMAT_E5B9G9R9_UFLOAT_PACK32](formats.html#VkFormat), cannot have their channels
 individually masked by this functionality; either all components that share
 bits have to be enabled, or none of them. |
 
@@ -878,7 +878,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetColorWriteMaskEXT-commandBuffer-cmdpool) VUID-vkCmdSetColorWriteMaskEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetColorWriteMaskEXT-videocoding) VUID-vkCmdSetColorWriteMaskEXT-videocoding
@@ -939,25 +939,25 @@ The semantics of the enum values are described in the table below:
 
 | [VkBlendFactor](#VkBlendFactor) | RGB Blend Factors (Sr,Sg,Sb) or (Dr,Dg,Db) | Alpha Blend Factor (Sa or Da) |
 | --- | --- | --- |
-| `VK_BLEND_FACTOR_ZERO` | (0,0,0) | 0 |
-| `VK_BLEND_FACTOR_ONE` | (1,1,1) | 1 |
-| `VK_BLEND_FACTOR_SRC_COLOR` | (Rs0,Gs0,Bs0) | As0 |
-| `VK_BLEND_FACTOR_ONE_MINUS_SRC_COLOR` | (1-Rs0,1-Gs0,1-Bs0) | 1-As0 |
-| `VK_BLEND_FACTOR_DST_COLOR` | (Rd,Gd,Bd) | Ad |
-| `VK_BLEND_FACTOR_ONE_MINUS_DST_COLOR` | (1-Rd,1-Gd,1-Bd) | 1-Ad |
-| `VK_BLEND_FACTOR_SRC_ALPHA` | (As0,As0,As0) | As0 |
-| `VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA` | (1-As0,1-As0,1-As0) | 1-As0 |
-| `VK_BLEND_FACTOR_DST_ALPHA` | (Ad,Ad,Ad) | Ad |
-| `VK_BLEND_FACTOR_ONE_MINUS_DST_ALPHA` | (1-Ad,1-Ad,1-Ad) | 1-Ad |
-| `VK_BLEND_FACTOR_CONSTANT_COLOR` | (Rc,Gc,Bc) | Ac |
-| `VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR` | (1-Rc,1-Gc,1-Bc) | 1-Ac |
-| `VK_BLEND_FACTOR_CONSTANT_ALPHA` | (Ac,Ac,Ac) | Ac |
-| `VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA` | (1-Ac,1-Ac,1-Ac) | 1-Ac |
-| `VK_BLEND_FACTOR_SRC_ALPHA_SATURATE` | (f,f,f); f = min(As0,1-Ad) | 1 |
-| `VK_BLEND_FACTOR_SRC1_COLOR` | (Rs1,Gs1,Bs1) | As1 |
-| `VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR` | (1-Rs1,1-Gs1,1-Bs1) | 1-As1 |
-| `VK_BLEND_FACTOR_SRC1_ALPHA` | (As1,As1,As1) | As1 |
-| `VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA` | (1-As1,1-As1,1-As1) | 1-As1 |
+| [VK_BLEND_FACTOR_ZERO](#VkBlendFactor) | (0,0,0) | 0 |
+| [VK_BLEND_FACTOR_ONE](#VkBlendFactor) | (1,1,1) | 1 |
+| [VK_BLEND_FACTOR_SRC_COLOR](#VkBlendFactor) | (Rs0,Gs0,Bs0) | As0 |
+| [VK_BLEND_FACTOR_ONE_MINUS_SRC_COLOR](#VkBlendFactor) | (1-Rs0,1-Gs0,1-Bs0) | 1-As0 |
+| [VK_BLEND_FACTOR_DST_COLOR](#VkBlendFactor) | (Rd,Gd,Bd) | Ad |
+| [VK_BLEND_FACTOR_ONE_MINUS_DST_COLOR](#VkBlendFactor) | (1-Rd,1-Gd,1-Bd) | 1-Ad |
+| [VK_BLEND_FACTOR_SRC_ALPHA](#VkBlendFactor) | (As0,As0,As0) | As0 |
+| [VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA](#VkBlendFactor) | (1-As0,1-As0,1-As0) | 1-As0 |
+| [VK_BLEND_FACTOR_DST_ALPHA](#VkBlendFactor) | (Ad,Ad,Ad) | Ad |
+| [VK_BLEND_FACTOR_ONE_MINUS_DST_ALPHA](#VkBlendFactor) | (1-Ad,1-Ad,1-Ad) | 1-Ad |
+| [VK_BLEND_FACTOR_CONSTANT_COLOR](#VkBlendFactor) | (Rc,Gc,Bc) | Ac |
+| [VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR](#VkBlendFactor) | (1-Rc,1-Gc,1-Bc) | 1-Ac |
+| [VK_BLEND_FACTOR_CONSTANT_ALPHA](#VkBlendFactor) | (Ac,Ac,Ac) | Ac |
+| [VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA](#VkBlendFactor) | (1-Ac,1-Ac,1-Ac) | 1-Ac |
+| [VK_BLEND_FACTOR_SRC_ALPHA_SATURATE](#VkBlendFactor) | (f,f,f); f = min(As0,1-Ad) | 1 |
+| [VK_BLEND_FACTOR_SRC1_COLOR](#VkBlendFactor) | (Rs1,Gs1,Bs1) | As1 |
+| [VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR](#VkBlendFactor) | (1-Rs1,1-Gs1,1-Bs1) | 1-As1 |
+| [VK_BLEND_FACTOR_SRC1_ALPHA](#VkBlendFactor) | (As1,As1,As1) | As1 |
+| [VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA](#VkBlendFactor) | (1-As1,1-As1,1-As1) | 1-As1 |
 
 In this table, the following conventions are used:
 
@@ -1002,7 +1002,7 @@ blend constant color used in blending, depending on the
 
 This command sets blend constants for subsequent drawing commands when
 when drawing using [shader objects](shaders.html#shaders-objects), or
-the graphics pipeline is created with `VK_DYNAMIC_STATE_BLEND_CONSTANTS`
+the graphics pipeline is created with [VK_DYNAMIC_STATE_BLEND_CONSTANTS](pipelines.html#VkDynamicState)
 set in [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineColorBlendStateCreateInfo](#VkPipelineColorBlendStateCreateInfo)::`blendConstants` values used
@@ -1023,7 +1023,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetBlendConstants-commandBuffer-cmdpool) VUID-vkCmdSetBlendConstants-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetBlendConstants-videocoding) VUID-vkCmdSetBlendConstants-videocoding
@@ -1050,10 +1050,10 @@ Conditional Rendering
 vkCmdSetBlendConstants is not affected by [conditional rendering](drawing.html#drawing-conditional-rendering)
 
 Blend factors that use the secondary color input
-(Rs1,Gs1,Bs1,As1) (`VK_BLEND_FACTOR_SRC1_COLOR`,
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR`,
-`VK_BLEND_FACTOR_SRC1_ALPHA`, and
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA`) **may** consume implementation
+(Rs1,Gs1,Bs1,As1) ([VK_BLEND_FACTOR_SRC1_COLOR](#VkBlendFactor),
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR](#VkBlendFactor),
+[VK_BLEND_FACTOR_SRC1_ALPHA](#VkBlendFactor), and
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA](#VkBlendFactor)) **may** consume implementation
 resources that could otherwise be used for rendering to multiple color
 attachments.
 Therefore, the number of color attachments that **can** be used in a
@@ -1185,27 +1185,27 @@ below:
 
 | [VkBlendOp](#VkBlendOp) | RGB Components | Alpha Component |
 | --- | --- | --- |
-| `VK_BLEND_OP_ADD` | R = Rs0 × Sr +  Rd × Dr
+| [VK_BLEND_OP_ADD](#VkBlendOp) | R = Rs0 × Sr +  Rd × Dr
 
   G = Gs0 × Sg +  Gd × Dg
 
   B = Bs0 × Sb +  Bd × Db | A = As0 × Sa +  Ad × Da |
-| `VK_BLEND_OP_SUBTRACT` | R = Rs0 × Sr - Rd × Dr
+| [VK_BLEND_OP_SUBTRACT](#VkBlendOp) | R = Rs0 × Sr - Rd × Dr
 
   G = Gs0 × Sg - Gd × Dg
 
   B = Bs0 × Sb - Bd × Db | A = As0 × Sa - Ad × Da |
-| `VK_BLEND_OP_REVERSE_SUBTRACT` | R = Rd × Dr - Rs0 × Sr
+| [VK_BLEND_OP_REVERSE_SUBTRACT](#VkBlendOp) | R = Rd × Dr - Rs0 × Sr
 
   G = Gd × Dg - Gs0 × Sg
 
   B = Bd × Db - Bs0 × Sb | A = Ad × Da - As0 × Sa |
-| `VK_BLEND_OP_MIN` | R = min(Rs0,Rd)
+| [VK_BLEND_OP_MIN](#VkBlendOp) | R = min(Rs0,Rd)
 
   G = min(Gs0,Gd)
 
   B = min(Bs0,Bd) | A = min(As0,Ad) |
-| `VK_BLEND_OP_MAX` | R = max(Rs0,Rd)
+| [VK_BLEND_OP_MAX](#VkBlendOp) | R = max(Rs0,Rd)
 
   G = max(Gs0,Gd)
 
@@ -1264,7 +1264,7 @@ and B are unmodified.
 The value of A is never sRGB encoded.
 That is, the alpha component is always stored in memory as linear.
 
-If the framebuffer color attachment is `VK_ATTACHMENT_UNUSED`, no writes
+If the framebuffer color attachment is [VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED), no writes
 are performed through that attachment.
 Writes are not performed to framebuffer color attachments greater than or
 equal to the `VkSubpassDescription`::`colorAttachmentCount`
@@ -1313,9 +1313,9 @@ blend operation is treated as premultiplied.
 source and destination sample’s coverage is correlated.
 
 If this structure is not present, `srcPremultiplied` and
-`dstPremultiplied` are both considered to be `VK_TRUE`, and
+`dstPremultiplied` are both considered to be [VK_TRUE](fundamentals.html#VK_TRUE), and
 `blendOverlap` is considered to be
-`VK_BLEND_OVERLAP_UNCORRELATED_EXT`.
+[VK_BLEND_OVERLAP_UNCORRELATED_EXT](#VkBlendOverlapEXT).
 
 Valid Usage
 
@@ -1323,27 +1323,27 @@ Valid Usage
 [](#VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-srcPremultiplied-01424) VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-srcPremultiplied-01424
 
 If the [non-premultiplied    source color](limits.html#limits-advancedBlendNonPremultipliedSrcColor) property is not supported, `srcPremultiplied` **must**
-be `VK_TRUE`
+be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-dstPremultiplied-01425) VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-dstPremultiplied-01425
 
 If the [non-premultiplied    destination color](limits.html#limits-advancedBlendNonPremultipliedDstColor) property is not supported, `dstPremultiplied`
-**must** be `VK_TRUE`
+**must** be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-blendOverlap-01426) VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-blendOverlap-01426
 
 If the [correlated overlap](limits.html#limits-advancedBlendCorrelatedOverlap)
 property is not supported, `blendOverlap` **must** be
-`VK_BLEND_OVERLAP_UNCORRELATED_EXT`
+[VK_BLEND_OVERLAP_UNCORRELATED_EXT](#VkBlendOverlapEXT)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-sType-sType) VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-blendOverlap-parameter) VUID-VkPipelineColorBlendAdvancedStateCreateInfoEXT-blendOverlap-parameter
@@ -1381,7 +1381,7 @@ This command sets the advanced blend operation parameters of the specified
 attachments for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT` set in
+[VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineColorBlendAdvancedStateCreateInfoEXT](#VkPipelineColorBlendAdvancedStateCreateInfoEXT)::`srcPremultiplied`,
@@ -1422,7 +1422,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetColorBlendAdvancedEXT-commandBuffer-cmdpool) VUID-vkCmdSetColorBlendAdvancedEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetColorBlendAdvancedEXT-videocoding) VUID-vkCmdSetColorBlendAdvancedEXT-videocoding
@@ -1491,20 +1491,20 @@ Valid Usage
 [](#VUID-VkColorBlendAdvancedEXT-srcPremultiplied-07505) VUID-VkColorBlendAdvancedEXT-srcPremultiplied-07505
 
 If the [non-premultiplied    source color](limits.html#limits-advancedBlendNonPremultipliedSrcColor) property is not supported, `srcPremultiplied` **must**
-be `VK_TRUE`
+be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkColorBlendAdvancedEXT-dstPremultiplied-07506) VUID-VkColorBlendAdvancedEXT-dstPremultiplied-07506
 
 If the [non-premultiplied    destination color](limits.html#limits-advancedBlendNonPremultipliedDstColor) property is not supported, `dstPremultiplied`
-**must** be `VK_TRUE`
+**must** be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkColorBlendAdvancedEXT-blendOverlap-07507) VUID-VkColorBlendAdvancedEXT-blendOverlap-07507
 
 If the [correlated overlap](limits.html#limits-advancedBlendCorrelatedOverlap)
 property is not supported, `blendOverlap` **must** be
-`VK_BLEND_OVERLAP_UNCORRELATED_EXT`
+[VK_BLEND_OVERLAP_UNCORRELATED_EXT](#VkBlendOverlapEXT)
 
 Valid Usage (Implicit)
 
@@ -1530,7 +1530,7 @@ equations:
 where the function f and terms X, Y, and Z are specified in the table.
 The R, G, and B components of the source color used for blending are derived
 according to `srcPremultiplied`.
-If `srcPremultiplied` is `VK_TRUE`, the fragment color components
+If `srcPremultiplied` is [VK_TRUE](fundamentals.html#VK_TRUE), the fragment color components
 are considered to have been premultiplied by the A component prior to
 blending.
 The base source color (Rs',Gs',Bs') is obtained by dividing
@@ -1540,7 +1540,7 @@ through by the A component:
 
   
 
-If `srcPremultiplied` is `VK_FALSE`, the fragment color components
+If `srcPremultiplied` is [VK_FALSE](fundamentals.html#VK_FALSE), the fragment color components
 are used as the base color:
 
   
@@ -1549,7 +1549,7 @@ are used as the base color:
 
 The R, G, and B components of the destination color used for blending are
 derived according to `dstPremultiplied`.
-If `dstPremultiplied` is `VK_TRUE`, the destination components are
+If `dstPremultiplied` is [VK_TRUE](fundamentals.html#VK_TRUE), the destination components are
 considered to have been premultiplied by the A component prior to blending.
 The base destination color (Rd',Gd',Bd') is obtained by dividing
 through by the A component:
@@ -1558,7 +1558,7 @@ through by the A component:
 
   
 
-If `dstPremultiplied` is `VK_FALSE`, the destination color
+If `dstPremultiplied` is [VK_FALSE](fundamentals.html#VK_FALSE), the destination color
 components are used as the base color:
 
   
@@ -1575,7 +1575,7 @@ corresponding component of the blend result is **undefined**.
 
 All of the advanced blend operation formulas in this chapter compute the
 result as a premultiplied color.
-If `dstPremultiplied` is `VK_FALSE`, that result color’s R, G, and B
+If `dstPremultiplied` is [VK_FALSE](fundamentals.html#VK_FALSE), that result color’s R, G, and B
 components are divided by the A component before being written to the
 framebuffer.
 If any R, G, or B component of the color is non-zero and the A component is
@@ -1610,56 +1610,56 @@ typedef enum VkBlendOverlapEXT {
 } VkBlendOverlapEXT;
 
 * 
-`VK_BLEND_OVERLAP_UNCORRELATED_EXT` specifies that there is no
+[VK_BLEND_OVERLAP_UNCORRELATED_EXT](#VkBlendOverlapEXT) specifies that there is no
 correlation between the source and destination coverage.
 
 * 
-`VK_BLEND_OVERLAP_CONJOINT_EXT` specifies that the source and
+[VK_BLEND_OVERLAP_CONJOINT_EXT](#VkBlendOverlapEXT) specifies that the source and
 destination coverage are considered to have maximal overlap.
 
 * 
-`VK_BLEND_OVERLAP_DISJOINT_EXT` specifies that the source and
+[VK_BLEND_OVERLAP_DISJOINT_EXT](#VkBlendOverlapEXT) specifies that the source and
 destination coverage are considered to have minimal overlap.
 
 | Overlap Mode | Weighting Equations |
 | --- | --- |
-| `VK_BLEND_OVERLAP_UNCORRELATED_EXT` |  |
-| `VK_BLEND_OVERLAP_CONJOINT_EXT` |  |
-| `VK_BLEND_OVERLAP_DISJOINT_EXT` |  |
+| [VK_BLEND_OVERLAP_UNCORRELATED_EXT](#VkBlendOverlapEXT) |  |
+| [VK_BLEND_OVERLAP_CONJOINT_EXT](#VkBlendOverlapEXT) |  |
+| [VK_BLEND_OVERLAP_DISJOINT_EXT](#VkBlendOverlapEXT) |  |
 
 | Mode | Blend Coefficients |
 | --- | --- |
-| `VK_BLEND_OP_ZERO_EXT` |  |
-| `VK_BLEND_OP_SRC_EXT` |  |
-| `VK_BLEND_OP_DST_EXT` |  |
-| `VK_BLEND_OP_SRC_OVER_EXT` |  |
-| `VK_BLEND_OP_DST_OVER_EXT` |  |
-| `VK_BLEND_OP_SRC_IN_EXT` |  |
-| `VK_BLEND_OP_DST_IN_EXT` |  |
-| `VK_BLEND_OP_SRC_OUT_EXT` |  |
-| `VK_BLEND_OP_DST_OUT_EXT` |  |
-| `VK_BLEND_OP_SRC_ATOP_EXT` |  |
-| `VK_BLEND_OP_DST_ATOP_EXT` |  |
-| `VK_BLEND_OP_XOR_EXT` |  |
-| `VK_BLEND_OP_MULTIPLY_EXT` |  |
-| `VK_BLEND_OP_SCREEN_EXT` |  |
-| `VK_BLEND_OP_OVERLAY_EXT` |  |
-| `VK_BLEND_OP_DARKEN_EXT` |  |
-| `VK_BLEND_OP_LIGHTEN_EXT` |  |
-| `VK_BLEND_OP_COLORDODGE_EXT` |  |
-| `VK_BLEND_OP_COLORBURN_EXT` |  |
-| `VK_BLEND_OP_HARDLIGHT_EXT` |  |
-| `VK_BLEND_OP_SOFTLIGHT_EXT` |  |
-| `VK_BLEND_OP_DIFFERENCE_EXT` |  |
-| `VK_BLEND_OP_EXCLUSION_EXT` |  |
-| `VK_BLEND_OP_INVERT_EXT` |  |
-| `VK_BLEND_OP_INVERT_RGB_EXT` |  |
-| `VK_BLEND_OP_LINEARDODGE_EXT` |  |
-| `VK_BLEND_OP_LINEARBURN_EXT` |  |
-| `VK_BLEND_OP_VIVIDLIGHT_EXT` |  |
-| `VK_BLEND_OP_LINEARLIGHT_EXT` |  |
-| `VK_BLEND_OP_PINLIGHT_EXT` |  |
-| `VK_BLEND_OP_HARDMIX_EXT` |  |
+| [VK_BLEND_OP_ZERO_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_SRC_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_DST_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_SRC_OVER_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_DST_OVER_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_SRC_IN_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_DST_IN_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_SRC_OUT_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_DST_OUT_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_SRC_ATOP_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_DST_ATOP_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_XOR_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_MULTIPLY_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_SCREEN_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_OVERLAY_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_DARKEN_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_LIGHTEN_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_COLORDODGE_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_COLORBURN_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_HARDLIGHT_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_SOFTLIGHT_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_DIFFERENCE_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_EXCLUSION_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_INVERT_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_INVERT_RGB_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_LINEARDODGE_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_LINEARBURN_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_VIVIDLIGHT_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_LINEARLIGHT_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_PINLIGHT_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_HARDMIX_EXT](#VkBlendOp) |  |
 
 When using one of the HSL blend operations in table
 [Hue-Saturation-Luminosity Advanced Blend Operations](#framebuffer-blend-advanced-hsl-modes) as the blend operation, the RGB color components produced
@@ -1729,10 +1729,10 @@ following pseudocode:
 
 | Mode | Result |
 | --- | --- |
-| `VK_BLEND_OP_HSL_HUE_EXT` |  |
-| `VK_BLEND_OP_HSL_SATURATION_EXT` |  |
-| `VK_BLEND_OP_HSL_COLOR_EXT` |  |
-| `VK_BLEND_OP_HSL_LUMINOSITY_EXT` |  |
+| [VK_BLEND_OP_HSL_HUE_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_HSL_SATURATION_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_HSL_COLOR_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_HSL_LUMINOSITY_EXT](#VkBlendOp) |  |
 
 When using one of the operations in table
 [Additional RGB Blend Operations](#framebuffer-blend-advanced-additional-rgb) as the blend operation, the source and destination colors used
@@ -1748,17 +1748,17 @@ by the corresponding A component.
 
 | Mode | Result |
 | --- | --- |
-| `VK_BLEND_OP_PLUS_EXT` |  |
-| `VK_BLEND_OP_PLUS_CLAMPED_EXT` |  |
-| `VK_BLEND_OP_PLUS_CLAMPED_ALPHA_EXT` |  |
-| `VK_BLEND_OP_PLUS_DARKER_EXT` |  |
-| `VK_BLEND_OP_MINUS_EXT` |  |
-| `VK_BLEND_OP_MINUS_CLAMPED_EXT` |  |
-| `VK_BLEND_OP_CONTRAST_EXT` |  |
-| `VK_BLEND_OP_INVERT_OVG_EXT` |  |
-| `VK_BLEND_OP_RED_EXT` |  |
-| `VK_BLEND_OP_GREEN_EXT` |  |
-| `VK_BLEND_OP_BLUE_EXT` |  |
+| [VK_BLEND_OP_PLUS_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_PLUS_CLAMPED_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_PLUS_CLAMPED_ALPHA_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_PLUS_DARKER_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_MINUS_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_MINUS_CLAMPED_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_CONTRAST_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_INVERT_OVG_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_RED_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_GREEN_EXT](#VkBlendOp) |  |
+| [VK_BLEND_OP_BLUE_EXT](#VkBlendOp) |  |
 
 The application **can** enable a *logical operation* between the fragment’s
 color values and the existing value in the framebuffer attachment.
@@ -1773,12 +1773,12 @@ Logical operations are controlled by the `logicOpEnable` and
 `logicOp` members of [VkPipelineColorBlendStateCreateInfo](#VkPipelineColorBlendStateCreateInfo).
 The `logicOpEnable` state can also be controlled by
 [vkCmdSetLogicOpEnableEXT](#vkCmdSetLogicOpEnableEXT) if graphics pipeline is created with
-`VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT` set in
+[VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 The `logicOp` state can also be controlled by [vkCmdSetLogicOpEXT](#vkCmdSetLogicOpEXT)
-if graphics pipeline is created with `VK_DYNAMIC_STATE_LOGIC_OP_EXT` set
+if graphics pipeline is created with [VK_DYNAMIC_STATE_LOGIC_OP_EXT](pipelines.html#VkDynamicState) set
 in [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
-If `logicOpEnable` is `VK_TRUE`, then a logical operation selected
+If `logicOpEnable` is [VK_TRUE](fundamentals.html#VK_TRUE), then a logical operation selected
 by `logicOp` is applied between each color attachment and the fragment’s
 corresponding output value, and blending of all attachments is treated as if
 it were disabled.
@@ -1834,22 +1834,22 @@ value:
 
 | Mode | Operation |
 | --- | --- |
-| `VK_LOGIC_OP_CLEAR` | 0 |
-| `VK_LOGIC_OP_AND` | s ∧ d |
-| `VK_LOGIC_OP_AND_REVERSE` | s ∧ ¬ d |
-| `VK_LOGIC_OP_COPY` | s |
-| `VK_LOGIC_OP_AND_INVERTED` | ¬ s ∧ d |
-| `VK_LOGIC_OP_NO_OP` | d |
-| `VK_LOGIC_OP_XOR` | s ⊕ d |
-| `VK_LOGIC_OP_OR` | s ∨ d |
-| `VK_LOGIC_OP_NOR` | ¬ (s ∨ d) |
-| `VK_LOGIC_OP_EQUIVALENT` | ¬ (s ⊕ d) |
-| `VK_LOGIC_OP_INVERT` | ¬ d |
-| `VK_LOGIC_OP_OR_REVERSE` | s ∨ ¬ d |
-| `VK_LOGIC_OP_COPY_INVERTED` | ¬ s |
-| `VK_LOGIC_OP_OR_INVERTED` | ¬ s ∨ d |
-| `VK_LOGIC_OP_NAND` | ¬ (s ∧ d) |
-| `VK_LOGIC_OP_SET` | all 1s |
+| [VK_LOGIC_OP_CLEAR](#VkLogicOp) | 0 |
+| [VK_LOGIC_OP_AND](#VkLogicOp) | s ∧ d |
+| [VK_LOGIC_OP_AND_REVERSE](#VkLogicOp) | s ∧ ¬ d |
+| [VK_LOGIC_OP_COPY](#VkLogicOp) | s |
+| [VK_LOGIC_OP_AND_INVERTED](#VkLogicOp) | ¬ s ∧ d |
+| [VK_LOGIC_OP_NO_OP](#VkLogicOp) | d |
+| [VK_LOGIC_OP_XOR](#VkLogicOp) | s ⊕ d |
+| [VK_LOGIC_OP_OR](#VkLogicOp) | s ∨ d |
+| [VK_LOGIC_OP_NOR](#VkLogicOp) | ¬ (s ∨ d) |
+| [VK_LOGIC_OP_EQUIVALENT](#VkLogicOp) | ¬ (s ⊕ d) |
+| [VK_LOGIC_OP_INVERT](#VkLogicOp) | ¬ d |
+| [VK_LOGIC_OP_OR_REVERSE](#VkLogicOp) | s ∨ ¬ d |
+| [VK_LOGIC_OP_COPY_INVERTED](#VkLogicOp) | ¬ s |
+| [VK_LOGIC_OP_OR_INVERTED](#VkLogicOp) | ¬ s ∨ d |
+| [VK_LOGIC_OP_NAND](#VkLogicOp) | ¬ (s ∧ d) |
+| [VK_LOGIC_OP_SET](#VkLogicOp) | all 1s |
 
 The result of the logical operation is then written to the color attachment
 as controlled by the component write mask, described in
@@ -1874,7 +1874,7 @@ This command sets whether logical operations are enabled for subsequent
 drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT` set in
+[VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineColorBlendStateCreateInfo](#VkPipelineColorBlendStateCreateInfo)::`logicOpEnable` value used to
@@ -1896,7 +1896,7 @@ The [`shaderObject`](features.html#features-shaderObject) feature is enabled
 [](#VUID-vkCmdSetLogicOpEnableEXT-logicOp-07366) VUID-vkCmdSetLogicOpEnableEXT-logicOp-07366
 
 If the [`logicOp`](features.html#features-logicOp) feature is not enabled,
-`logicOpEnable` **must** be `VK_FALSE`
+`logicOpEnable` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 Valid Usage (Implicit)
 
@@ -1913,7 +1913,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetLogicOpEnableEXT-commandBuffer-cmdpool) VUID-vkCmdSetLogicOpEnableEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetLogicOpEnableEXT-videocoding) VUID-vkCmdSetLogicOpEnableEXT-videocoding
@@ -1958,7 +1958,7 @@ This command sets the logical operation for blend state for subsequent
 drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_LOGIC_OP_EXT` set in
+[VK_DYNAMIC_STATE_LOGIC_OP_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineColorBlendStateCreateInfo](#VkPipelineColorBlendStateCreateInfo)::`logicOp` value used to
@@ -1997,7 +1997,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetLogicOpEXT-commandBuffer-cmdpool) VUID-vkCmdSetLogicOpEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetLogicOpEXT-videocoding) VUID-vkCmdSetLogicOpEXT-videocoding
@@ -2037,22 +2037,22 @@ typedef enum VkColorComponentFlagBits {
 } VkColorComponentFlagBits;
 
 * 
-`VK_COLOR_COMPONENT_R_BIT` specifies that the R value is
+[VK_COLOR_COMPONENT_R_BIT](#VkColorComponentFlagBits) specifies that the R value is
 written to the color attachment for the appropriate sample.
 Otherwise, the value in memory is unmodified.
 
 * 
-`VK_COLOR_COMPONENT_G_BIT` specifies that the G value is
+[VK_COLOR_COMPONENT_G_BIT](#VkColorComponentFlagBits) specifies that the G value is
 written to the color attachment for the appropriate sample.
 Otherwise, the value in memory is unmodified.
 
 * 
-`VK_COLOR_COMPONENT_B_BIT` specifies that the B value is
+[VK_COLOR_COMPONENT_B_BIT](#VkColorComponentFlagBits) specifies that the B value is
 written to the color attachment for the appropriate sample.
 Otherwise, the value in memory is unmodified.
 
 * 
-`VK_COLOR_COMPONENT_A_BIT` specifies that the A value is
+[VK_COLOR_COMPONENT_A_BIT](#VkColorComponentFlagBits) specifies that the A value is
 written to the color attachment for the appropriate sample.
 Otherwise, the value in memory is unmodified.
 
@@ -2103,21 +2103,21 @@ write state.
 If this structure is not included in the `pNext` chain, it is equivalent
 to specifying this structure with `attachmentCount` equal to the
 `attachmentCount` member of [VkPipelineColorBlendStateCreateInfo](#VkPipelineColorBlendStateCreateInfo),
-and `pColorWriteEnables` pointing to an array of as many `VK_TRUE`
+and `pColorWriteEnables` pointing to an array of as many [VK_TRUE](fundamentals.html#VK_TRUE)
 values.
 
 If the [`colorWriteEnable`](features.html#features-colorWriteEnable) feature is not
 enabled, all `VkBool32` elements in the `pColorWriteEnables`
-array **must** be `VK_TRUE`.
+array **must** be [VK_TRUE](fundamentals.html#VK_TRUE).
 
 Color Write Enable interacts with the [Color Write Mask](#framebuffer-color-write-mask) as follows:
 
 * 
-If `colorWriteEnable` is `VK_TRUE`, writes to the attachment are
+If `colorWriteEnable` is [VK_TRUE](fundamentals.html#VK_TRUE), writes to the attachment are
 determined by the `colorWriteMask`.
 
 * 
-If `colorWriteEnable` is `VK_FALSE`, the `colorWriteMask` is
+If `colorWriteEnable` is [VK_FALSE](fundamentals.html#VK_FALSE), the `colorWriteMask` is
 ignored and writes to all components of the attachment are disabled.
 This is equivalent to specifying a `colorWriteMask` of 0.
 
@@ -2128,16 +2128,16 @@ Valid Usage
 
 If the [`colorWriteEnable`](features.html#features-colorWriteEnable) feature is
 not enabled, all elements of `pColorWriteEnables` **must** be
-`VK_TRUE`
+[VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkPipelineColorWriteCreateInfoEXT-attachmentCount-07608) VUID-VkPipelineColorWriteCreateInfoEXT-attachmentCount-07608
 
 If the pipeline is being created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT`,
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT`,
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT`, or
-`VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT` dynamic states not set,
+[VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](pipelines.html#VkDynamicState),
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](pipelines.html#VkDynamicState),
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](pipelines.html#VkDynamicState), or
+[VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](pipelines.html#VkDynamicState) dynamic states not set,
 `attachmentCount` **must** be equal to the `attachmentCount` member
 of the `VkPipelineColorBlendStateCreateInfo` structure specified
 during pipeline creation
@@ -2153,7 +2153,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineColorWriteCreateInfoEXT-sType-sType) VUID-VkPipelineColorWriteCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_COLOR_WRITE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_COLOR_WRITE_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineColorWriteCreateInfoEXT-pColorWriteEnables-parameter) VUID-VkPipelineColorWriteCreateInfoEXT-pColorWriteEnables-parameter
@@ -2164,7 +2164,7 @@ To [dynamically enable or disable](pipelines.html#pipelines-dynamic-state) write
 color attachment, call:
 
 // Provided by VK_EXT_color_write_enable
-void                                    vkCmdSetColorWriteEnableEXT(
+void vkCmdSetColorWriteEnableEXT(
     VkCommandBuffer                             commandBuffer,
     uint32_t                                    attachmentCount,
     const VkBool32*                             pColorWriteEnables);
@@ -2185,7 +2185,7 @@ for the given attachment.
 This command sets the color write enables for subsequent drawing commands
 when drawing using [shader objects](shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT` set in
+[VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineColorWriteCreateInfoEXT](#VkPipelineColorWriteCreateInfoEXT)::`pColorWriteEnables` values
@@ -2225,7 +2225,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetColorWriteEnableEXT-commandBuffer-cmdpool) VUID-vkCmdSetColorWriteEnableEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetColorWriteEnableEXT-videocoding) VUID-vkCmdSetColorWriteEnableEXT-videocoding
@@ -2287,7 +2287,7 @@ return the variable is overwritten with the number of properties actually
 written to `pProperties`.
 If `pPropertiesCount` is less than the number of tile properties
 available, at most `pPropertiesCount` structures will be written, and
-`VK_INCOMPLETE` will be returned instead of `VK_SUCCESS`, to
+[VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead of [VK_SUCCESS](fundamentals.html#VkResult), to
 indicate that not all the available properties were returned.
 
 The number of tile properties available is determined by the number of
@@ -2331,15 +2331,15 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)

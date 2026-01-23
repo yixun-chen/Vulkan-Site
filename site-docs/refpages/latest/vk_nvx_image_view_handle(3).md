@@ -39,7 +39,7 @@ Device extension
 
 **Revision**
 
-3
+4
 
 **Ratification Status**
 
@@ -56,7 +56,7 @@ Eric Werness [ewerness-nv](https://github.com/KhronosGroup/Vulkan-Docs/issues/ne
 
 **Last Modified Date**
 
-2024-11-04
+2025-12-03
 
 **Contributors**
 
@@ -72,9 +72,15 @@ Daniel Koch, NVIDIA
 * 
 Liam Middlebrook, NVIDIA
 
+* 
+Rodrigo Locatti, NVIDIA
+
 This extension allows applications to query an opaque handle from an image
 view for use as a sampled image or storage image.
 This provides no direct functionality itself.
+
+* 
+[vkGetDeviceCombinedImageSamplerIndexNVX](vkGetDeviceCombinedImageSamplerIndexNVX.html)
 
 * 
 [vkGetImageViewAddressNVX](vkGetImageViewAddressNVX.html)
@@ -100,14 +106,19 @@ This provides no direct functionality itself.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_IMAGE_VIEW_ADDRESS_PROPERTIES_NVX`
+[VK_STRUCTURE_TYPE_IMAGE_VIEW_ADDRESS_PROPERTIES_NVX](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX`
+[VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX](VkStructureType.html)
 
 * 
+Revision 4, 2025-12-03 (Rodrigo Locatti)
+
+Add [vkGetDeviceCombinedImageSamplerIndexNVX](vkGetDeviceCombinedImageSamplerIndexNVX.html)
+
 Revision 3, 2024-11-04 (Liam Middlebrook)
 
+* 
 Add [vkGetImageViewHandle64NVX](vkGetImageViewHandle64NVX.html)
 
 Revision 2, 2020-04-03 (Piers Daniell)

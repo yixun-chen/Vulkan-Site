@@ -162,36 +162,36 @@ Extending [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html):
 * 
 Extending [VkPipelineStageFlagBits](VkPipelineStageFlagBits.html):
 
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_NV`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_NV](VkPipelineStageFlagBits.html)
 
 * 
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_NV`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_NV](VkPipelineStageFlagBits.html)
 
 Extending [VkShaderStageFlagBits](VkShaderStageFlagBits.html):
 
 * 
-`VK_SHADER_STAGE_MESH_BIT_NV`
+[VK_SHADER_STAGE_MESH_BIT_NV](VkShaderStageFlagBits.html)
 
 * 
-`VK_SHADER_STAGE_TASK_BIT_NV`
+[VK_SHADER_STAGE_TASK_BIT_NV](VkShaderStageFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV](VkStructureType.html)
 
 If [VK_EXT_device_generated_commands](VK_EXT_device_generated_commands.html) is supported:
 
 * 
 Extending [VkIndirectCommandsTokenTypeEXT](VkIndirectCommandsTokenTypeEXT.html):
 
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT](VkIndirectCommandsTokenTypeEXT.html)
 
 * 
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT](VkIndirectCommandsTokenTypeEXT.html)
 
 * 
 [TaskCountNV](../../../../spec/latest/chapters/interfaces.html#interfaces-builtin-variables-taskcount)

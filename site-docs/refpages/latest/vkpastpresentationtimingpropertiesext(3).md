@@ -62,11 +62,11 @@ When calling [vkGetPastPresentationTimingEXT](vkGetPastPresentationTimingEXT.htm
 records for the given `swapchain` is returned in
 `presentationTimingCount`.
 Otherwise, `presentationTimingCount` **must** specify the number of
-elements in the `pPresentationTimings` array, and on return the variable
-is overwritten with the number of structures actually written to
+elements in the `pPresentationTimings` array, and on return is
+overwritten with the number of structures actually written to
 `pPresentationTimings`.
 
-if `VK_PAST_PRESENTATION_TIMING_ALLOW_PARTIAL_RESULTS_BIT_EXT` is
+if [VK_PAST_PRESENTATION_TIMING_ALLOW_PARTIAL_RESULTS_BIT_EXT](VkPastPresentationTimingFlagBitsEXT.html) is
 specified in [VkPastPresentationTimingInfoEXT](VkPastPresentationTimingInfoEXT.html)::`flags`,
 `vkGetPastPresentationTimingEXT` **may** return incomplete results,
 containing only information for a subset of the requested present stages.
@@ -84,22 +84,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPastPresentationTimingPropertiesEXT-sType-sType) VUID-VkPastPresentationTimingPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_PROPERTIES_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkPastPresentationTimingPropertiesEXT-pNext-pNext) VUID-VkPastPresentationTimingPropertiesEXT-pNext-pNext
 
  `pNext` **must** be `NULL`
-
-* 
-[](#VUID-VkPastPresentationTimingPropertiesEXT-pPresentationTimings-parameter) VUID-VkPastPresentationTimingPropertiesEXT-pPresentationTimings-parameter
-
- `pPresentationTimings` **must** be a valid pointer to an array of `presentationTimingCount` [VkPastPresentationTimingEXT](VkPastPresentationTimingEXT.html) structures
-
-* 
-[](#VUID-VkPastPresentationTimingPropertiesEXT-presentationTimingCount-arraylength) VUID-VkPastPresentationTimingPropertiesEXT-presentationTimingCount-arraylength
-
- `presentationTimingCount` **must** be greater than `0`
 
 [VK_EXT_present_timing](VK_EXT_present_timing.html), [VkPastPresentationTimingEXT](VkPastPresentationTimingEXT.html), [VkStructureType](VkStructureType.html), [vkGetPastPresentationTimingEXT](vkGetPastPresentationTimingEXT.html)
 

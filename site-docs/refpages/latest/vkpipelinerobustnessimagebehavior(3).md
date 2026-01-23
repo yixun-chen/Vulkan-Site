@@ -42,22 +42,22 @@ typedef enum VkPipelineRobustnessImageBehavior {
 typedef VkPipelineRobustnessImageBehavior VkPipelineRobustnessImageBehaviorEXT;
 
 * 
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DEVICE_DEFAULT` specifies
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DEVICE_DEFAULT](#) specifies
 that [out of bounds](../../../../spec/latest/chapters/shaders.html#shaders-execution-memory-access-bounds) image
 accesses follow the behavior of robust image access features enabled for
 the device.
 
 * 
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DISABLED` specifies that
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DISABLED](#) specifies that
 image accesses **must** not be [    out of bounds](../../../../spec/latest/chapters/shaders.html#shaders-execution-memory-access-bounds).
 
 * 
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS`
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS](#)
 specifies that image accesses conform to [Robust Image Access](../../../../spec/latest/chapters/shaders.html#shaders-robust-image-access)
 guarantees.
 
 * 
-`VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2`
+[VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2](#)
 specifies that image accesses conform to
 [Robust Image Access 2](../../../../spec/latest/chapters/shaders.html#shaders-robust-image-access2) guarantees.
 

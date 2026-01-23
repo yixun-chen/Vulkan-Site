@@ -49,7 +49,7 @@ If the `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV` structure is includ
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV-sType-sType) VUID-VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV](VkStructureType.html)
 
 [VK_NV_shader_atomic_float16_vector](VK_NV_shader_atomic_float16_vector.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -31,24 +31,24 @@ typedef enum VkCoarseSampleOrderTypeNV {
 } VkCoarseSampleOrderTypeNV;
 
 * 
-`VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV` specifies that coverage
+[VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV](#) specifies that coverage
 samples will be ordered in an implementation-dependent manner.
 
 * 
-`VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV` specifies that coverage
+[VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV](#) specifies that coverage
 samples will be ordered according to the array of custom orderings
 provided in either the `pCustomSampleOrders` member of
 `VkPipelineViewportCoarseSampleOrderStateCreateInfoNV` or the
 `pCustomSampleOrders` member of [vkCmdSetCoarseSampleOrderNV](vkCmdSetCoarseSampleOrderNV.html).
 
 * 
-`VK_COARSE_SAMPLE_ORDER_TYPE_PIXEL_MAJOR_NV` specifies that coverage
+[VK_COARSE_SAMPLE_ORDER_TYPE_PIXEL_MAJOR_NV](#) specifies that coverage
 samples will be ordered sequentially, sorted first by pixel coordinate
 (in row-major order) and then by
 [sample index](../../../../spec/latest/chapters/primsrast.html#primsrast-multisampling-coverage-mask).
 
 * 
-`VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV` specifies that
+[VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV](#) specifies that
 coverage samples will be ordered sequentially, sorted first by
 [sample index](../../../../spec/latest/chapters/primsrast.html#primsrast-multisampling-coverage-mask) and then by
 pixel coordinate (in row-major order).

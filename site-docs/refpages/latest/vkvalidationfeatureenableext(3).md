@@ -32,14 +32,14 @@ typedef enum VkValidationFeatureEnableEXT {
 } VkValidationFeatureEnableEXT;
 
 * 
-`VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT` specifies that
+[VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT](#) specifies that
 GPU-assisted validation is enabled.
 Activating this feature instruments shader programs to generate
 additional diagnostic data.
 This feature is disabled by default.
 
 * 
-`VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT`
+[VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT](#)
 specifies that the validation layers reserve a descriptor set binding
 slot for their own use.
 The layer reports a value for
@@ -50,7 +50,7 @@ validation layer does not perform GPU-assisted validation.
 This feature is disabled by default.
 
 * 
-`VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT` specifies that
+[VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT](#) specifies that
 Vulkan best-practices validation is enabled.
 Activating this feature enables the output of warnings related to common
 misuse of the API, but which are not explicitly prohibited by the
@@ -58,13 +58,13 @@ specification.
 This feature is disabled by default.
 
 * 
-`VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT` specifies that the
+[VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT](#) specifies that the
 layers will process `debugPrintfEXT` operations in shaders and send
 the resulting output to the debug callback.
 This feature is disabled by default.
 
 * 
-`VK_VALIDATION_FEATURE_ENABLE_SYNCHRONIZATION_VALIDATION_EXT`
+[VK_VALIDATION_FEATURE_ENABLE_SYNCHRONIZATION_VALIDATION_EXT](#)
 specifies that Vulkan synchronization validation is enabled.
 This feature reports resource access conflicts due to missing or
 incorrect synchronization operations between actions (Draw, Copy,

@@ -52,14 +52,14 @@ Valid Usage
 [](#VUID-VkBufferDeviceAddressInfo-buffer-02601) VUID-VkBufferDeviceAddressInfo-buffer-02601
 
 `buffer` **must** have been created with the
-`VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT` usage flag set
+[VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkBufferDeviceAddressInfo-sType-sType) VUID-VkBufferDeviceAddressInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkBufferDeviceAddressInfo-pNext-pNext) VUID-VkBufferDeviceAddressInfo-pNext-pNext

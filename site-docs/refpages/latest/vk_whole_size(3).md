@@ -17,7 +17,7 @@
 
 VK_WHOLE_SIZE - Sentinel value to use entire remaining array length
 
-`VK_WHOLE_SIZE` is a special value indicating that the entire remaining
+[VK_WHOLE_SIZE](#) is a special value indicating that the entire remaining
 length of a buffer or allocation following a given `offset` should be
 used.
 It **can** be specified for [VkBufferMemoryBarrier](VkBufferMemoryBarrier.html)::`size`,

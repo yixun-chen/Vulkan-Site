@@ -67,14 +67,14 @@ the handle type.
 
 For handles of the following types:
 
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT`
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT](VkExternalSemaphoreHandleTypeFlagBits.html)
 
 The implementation **must** ensure the access rights allow both signal and wait
 operations on the semaphore.
 
 For handles of the following types:
 
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT`
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT](VkExternalSemaphoreHandleTypeFlagBits.html)
 
 The access rights **must** be:
 
@@ -90,8 +90,8 @@ Valid Usage
 [](#VUID-VkExportSemaphoreWin32HandleInfoKHR-handleTypes-01125) VUID-VkExportSemaphoreWin32HandleInfoKHR-handleTypes-01125
 
 If [VkExportSemaphoreCreateInfo](VkExportSemaphoreCreateInfo.html)::`handleTypes` does not include
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT` or
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT`,
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT](VkExternalSemaphoreHandleTypeFlagBits.html) or
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT](VkExternalSemaphoreHandleTypeFlagBits.html),
 `VkExportSemaphoreWin32HandleInfoKHR` **must** not be included in the
 `pNext` chain of [VkSemaphoreCreateInfo](VkSemaphoreCreateInfo.html)
 
@@ -100,7 +100,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportSemaphoreWin32HandleInfoKHR-sType-sType) VUID-VkExportSemaphoreWin32HandleInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkExportSemaphoreWin32HandleInfoKHR-pAttributes-parameter) VUID-VkExportSemaphoreWin32HandleInfoKHR-pAttributes-parameter

@@ -54,7 +54,7 @@ typedef enum VkSubpassDescriptionFlagBits {
 } VkSubpassDescriptionFlagBits;
 
 * 
-`VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX` specifies that
+[VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX](#) specifies that
 shaders compiled for this subpass write the attributes for all views in
 a single invocation of each
 [pre-rasterization shader    stage](../../../../spec/latest/chapters/pipelines.html#pipelines-graphics-subsets-pre-rasterization).
@@ -63,44 +63,44 @@ write per-view attributes to the `*PerViewNV[]` shader outputs, in
 addition to the non-per-view (e.g. `Position`) outputs.
 
 * 
-`VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX` specifies
+[VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX](#) specifies
 that shaders compiled for this subpass use per-view positions which only
 differ in value in the x component.
 Per-view viewport mask **can** also be used.
 
 * 
-`VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT` specifies that the
+[VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT](#) specifies that the
 framebuffer region is the fragment region, that is, the minimum region
 dependencies are by pixel rather than by sample, such that any fragment
 shader invocation **can** access any sample associated with that fragment
 shader invocation.
 
 * 
-`VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT` specifies that the
+[VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT](#) specifies that the
 subpass performs shader resolve operations.
 
 * 
-`VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_COLOR_ACCESS_BIT_EXT`
+[VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_COLOR_ACCESS_BIT_EXT](#)
 specifies that this subpass supports pipelines created with
-`VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT`.
+[VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT](VkPipelineColorBlendStateCreateFlagBits.html).
 
 * 
-`VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT`
+[VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT](#)
 specifies that this subpass supports pipelines created with
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT`.
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT](VkPipelineDepthStencilStateCreateFlagBits.html).
 
 * 
-`VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT`
+[VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT](#)
 specifies that this subpass supports pipelines created with
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT`.
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT](VkPipelineDepthStencilStateCreateFlagBits.html).
 
 * 
-`VK_SUBPASS_DESCRIPTION_ENABLE_LEGACY_DITHERING_BIT_EXT` specifies
+[VK_SUBPASS_DESCRIPTION_ENABLE_LEGACY_DITHERING_BIT_EXT](#) specifies
 that [Legacy Dithering](../../../../spec/latest/chapters/interfaces.html#interfaces-legacy-dithering) is enabled for
 this subpass.
 
 * 
-`VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM` specifies that
+[VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM](#) specifies that
 [apron regions](../../../../spec/latest/chapters/renderpass.html#renderpass-tile-shading-aprons) **can** be read within
 this subpass when [tile shading is enabled](../../../../spec/latest/chapters/renderpass.html#renderpass-tile-shading).
 

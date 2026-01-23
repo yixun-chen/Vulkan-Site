@@ -127,7 +127,7 @@ Extending [VkImageFormatProperties2](VkImageFormatProperties2.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD`
+[VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD](VkStructureType.html)
 
 * 
 [    `ImageGatherBiasLodAMD`](../../../../spec/latest/appendices/spirvenv.html#spirvenv-capabilities-table-ImageGatherBiasLodAMD)

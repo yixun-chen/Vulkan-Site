@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDirectDriverLoadingListLUNARG-sType-sType) VUID-VkDirectDriverLoadingListLUNARG-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_LIST_LUNARG`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_LIST_LUNARG](VkStructureType.html)
 
 * 
 [](#VUID-VkDirectDriverLoadingListLUNARG-mode-parameter) VUID-VkDirectDriverLoadingListLUNARG-mode-parameter

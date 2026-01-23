@@ -35,11 +35,11 @@ typedef enum VkValidationFeatureDisableEXT {
 } VkValidationFeatureDisableEXT;
 
 * 
-`VK_VALIDATION_FEATURE_DISABLE_ALL_EXT` specifies that all
+[VK_VALIDATION_FEATURE_DISABLE_ALL_EXT](#) specifies that all
 validation checks are disabled.
 
 * 
-`VK_VALIDATION_FEATURE_DISABLE_SHADERS_EXT` specifies that shader
+[VK_VALIDATION_FEATURE_DISABLE_SHADERS_EXT](#) specifies that shader
 validation, both runtime and standalone, is disabled.
 This validation occurs inside
 [VkShaderCreateInfoEXT](VkShaderCreateInfoEXT.html) and
@@ -47,35 +47,35 @@ This validation occurs inside
 This feature is enabled by default.
 
 * 
-`VK_VALIDATION_FEATURE_DISABLE_THREAD_SAFETY_EXT` specifies that
+[VK_VALIDATION_FEATURE_DISABLE_THREAD_SAFETY_EXT](#) specifies that
 thread safety validation is disabled.
 This feature is enabled by default.
 
 * 
-`VK_VALIDATION_FEATURE_DISABLE_API_PARAMETERS_EXT` specifies that
+[VK_VALIDATION_FEATURE_DISABLE_API_PARAMETERS_EXT](#) specifies that
 stateless parameter validation is disabled.
 This feature is enabled by default.
 
 * 
-`VK_VALIDATION_FEATURE_DISABLE_OBJECT_LIFETIMES_EXT` specifies that
+[VK_VALIDATION_FEATURE_DISABLE_OBJECT_LIFETIMES_EXT](#) specifies that
 object lifetime validation is disabled.
 This feature is enabled by default.
 
 * 
-`VK_VALIDATION_FEATURE_DISABLE_CORE_CHECKS_EXT` specifies that core
+[VK_VALIDATION_FEATURE_DISABLE_CORE_CHECKS_EXT](#) specifies that core
 validation checks are disabled.
 This feature is enabled by default.
 If this feature is disabled,
-`VK_VALIDATION_FEATURE_DISABLE_SHADERS_EXT` is implied.
+[VK_VALIDATION_FEATURE_DISABLE_SHADERS_EXT](#) is implied.
 
 * 
-`VK_VALIDATION_FEATURE_DISABLE_UNIQUE_HANDLES_EXT` specifies that
+[VK_VALIDATION_FEATURE_DISABLE_UNIQUE_HANDLES_EXT](#) specifies that
 protection against duplicate non-dispatchable object handles is
 disabled.
 This feature is enabled by default.
 
 * 
-`VK_VALIDATION_FEATURE_DISABLE_SHADER_VALIDATION_CACHE_EXT`
+[VK_VALIDATION_FEATURE_DISABLE_SHADER_VALIDATION_CACHE_EXT](#)
 specifies that there will be no caching of shader validation results and
 every shader will be validated on every application execution.
 Shader validation caching is enabled by default.

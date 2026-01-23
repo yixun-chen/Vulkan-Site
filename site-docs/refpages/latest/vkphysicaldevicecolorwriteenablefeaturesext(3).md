@@ -41,7 +41,7 @@ structure.
 * 
  `colorWriteEnable` indicates that the
 implementation supports the dynamic state
-`VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT`.
+[VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT](VkDynamicState.html).
 
 If the `VkPhysicalDeviceColorWriteEnableFeaturesEXT` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -49,7 +49,7 @@ If the `VkPhysicalDeviceColorWriteEnableFeaturesEXT` structure is included in th
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceColorWriteEnableFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceColorWriteEnableFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceColorWriteEnableFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COLOR_WRITE_ENABLE_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COLOR_WRITE_ENABLE_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_color_write_enable](VK_EXT_color_write_enable.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

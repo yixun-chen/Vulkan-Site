@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:spec" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -174,6 +174,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/descriptorsets.html">Resource Descriptors</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../chapters/descriptorheaps.html">Descriptor Heaps</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/interfaces.html">Shader Interfaces</a>
@@ -813,7 +816,8 @@ the <a href="../chapters/devsandqueues.html#VkDevice" class="xref page">VkDevice
 &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <a href="../chapters/devsandqueues.html#limits-subgroupSupportedOperations" class="xref page">VK_SUBGROUP_FEATURE_QUAD_BIT</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="spirvenv-capabilities-table-GroupNonUniformPartitionedNV"></a><code>GroupNonUniformPartitionedNV</code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="spirvenv-capabilities-table-GroupNonUniformPartitionedEXT"></a><code>GroupNonUniformPartitionedEXT</code><br>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <a href="../chapters/features.html#features-shaderSubgroupPartitioned" class="xref page"><code>VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT</code>::<code>shaderSubgroupPartitioned</code></a><br>
 &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <a href="../chapters/devsandqueues.html#limits-subgroupSupportedOperations" class="xref page">VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV</a></p></td>
 </tr>
 <tr>
@@ -1214,6 +1218,10 @@ the <a href="../chapters/devsandqueues.html#VkDevice" class="xref page">VkDevice
 &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <a href="../chapters/features.html#features-cooperativeVectorTraining" class="xref page"><code>VkPhysicalDeviceCooperativeVectorFeaturesNV</code>::<code>cooperativeVectorTraining</code></a></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="spirvenv-capabilities-table-PushConstantBanksNV"></a><code>PushConstantBanksNV</code><br>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <a href="../chapters/features.html#features-pushConstantBank" class="xref page"><code>VkPhysicalDevicePushConstantBankFeaturesNV</code>::<code>pushConstantBank</code></a></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="spirvenv-capabilities-table-ShaderInvocationReorderEXT"></a><code>ShaderInvocationReorderEXT</code><br>
 &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <code><a href="extensions.html#VK_EXT_ray_tracing_invocation_reorder" class="xref page">VK_EXT_ray_tracing_invocation_reorder</a></code></p></td>
 </tr>
@@ -1258,6 +1266,14 @@ the <a href="../chapters/devsandqueues.html#VkDevice" class="xref page">VkDevice
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="spirvenv-capabilities-table-Shader64BitIndexingEXT"></a><code>Shader64BitIndexingEXT</code><br>
 &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <a href="../chapters/features.html#features-shader64BitIndexing" class="xref page"><code>VkPhysicalDeviceShader64BitIndexingFeaturesEXT</code>::<code>shader64BitIndexing</code></a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="spirvenv-capabilities-table-LongVectorEXT"></a><code>LongVectorEXT</code><br>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <a href="../chapters/features.html#features-longVector" class="xref page"><code>VkPhysicalDeviceShaderLongVectorFeaturesEXT</code>::<code>longVector</code></a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="spirvenv-capabilities-table-DescriptorHeapEXT"></a><code>DescriptorHeapEXT</code><br>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <a href="../chapters/features.html#features-descriptorHeap" class="xref page"><code>VkPhysicalDeviceDescriptorHeapFeaturesEXT</code>::<code>descriptorHeap</code></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -1420,7 +1436,12 @@ parameter of <a href="../chapters/shaders.html#vkCreateShaderModule" class="xref
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPV_NV_shader_subgroup_partitioned</code><br>
-&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <code><a href="extensions.html#VK_NV_shader_subgroup_partitioned" class="xref page">VK_NV_shader_subgroup_partitioned</a></code></p></td>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <code><a href="extensions.html#VK_NV_shader_subgroup_partitioned" class="xref page">VK_NV_shader_subgroup_partitioned</a></code><br>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <code><a href="extensions.html#VK_EXT_shader_subgroup_partitioned" class="xref page">VK_EXT_shader_subgroup_partitioned</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPV_EXT_shader_subgroup_partitioned</code><br>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <code><a href="extensions.html#VK_EXT_shader_subgroup_partitioned" class="xref page">VK_EXT_shader_subgroup_partitioned</a></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPV_NV_shader_invocation_reorder</code><br>
@@ -1700,6 +1721,10 @@ parameter of <a href="../chapters/shaders.html#vkCreateShaderModule" class="xref
 &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <code><a href="extensions.html#VK_NV_cooperative_vector" class="xref page">VK_NV_cooperative_vector</a></code></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPV_NV_push_constant_bank</code><br>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <code><a href="extensions.html#VK_NV_push_constant_bank" class="xref page">VK_NV_push_constant_bank</a></code></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPV_EXT_shader_invocation_reorder</code><br>
 &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <code><a href="extensions.html#VK_EXT_ray_tracing_invocation_reorder" class="xref page">VK_EXT_ray_tracing_invocation_reorder</a></code></p></td>
 </tr>
@@ -1726,6 +1751,14 @@ parameter of <a href="../chapters/shaders.html#vkCreateShaderModule" class="xref
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPV_EXT_shader_64bit_indexing</code><br>
 &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <code><a href="extensions.html#VK_EXT_shader_64bit_indexing" class="xref page">VK_EXT_shader_64bit_indexing</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPV_EXT_long_vector</code><br>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <code><a href="extensions.html#VK_EXT_shader_long_vector" class="xref page">VK_EXT_shader_long_vector</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPV_EXT_descriptor_heap</code><br>
+&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <code><a href="extensions.html#VK_EXT_descriptor_heap" class="xref page">VK_EXT_descriptor_heap</a></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -2052,6 +2085,13 @@ an image format of <code>R64i</code>, <code>R64ui</code>, <code>R32f</code>, <co
 <code>R32ui</code></p>
 </li>
 <li>
+<p><a id="VUID-StandaloneSpirv-OpUntypedImageTexelPointerEXT-11416" href="#VUID-StandaloneSpirv-OpUntypedImageTexelPointerEXT-11416"></a> <span class="vuid">VUID-StandaloneSpirv-OpUntypedImageTexelPointerEXT-11416</span><br>
+
+If an <code>OpUntypedImageTexelPointerEXT</code> instruction is used in an
+atomic operation, the image type operand <strong>must</strong> have an image format of
+<code>R64i</code>, <code>R64ui</code>, <code>R32f</code>, <code>R32i</code>, or <code>R32ui</code></p>
+</li>
+<li>
 <p><a id="VUID-StandaloneSpirv-OpImageQuerySizeLod-04659" href="#VUID-StandaloneSpirv-OpImageQuerySizeLod-04659"></a> <span class="vuid">VUID-StandaloneSpirv-OpImageQuerySizeLod-04659</span><br>
 
 <code>OpImageQuerySizeLod</code>, <code>OpImageQueryLod</code>, and
@@ -2112,7 +2152,14 @@ is 3D</p>
 <li>
 <p><a id="VUID-StandaloneSpirv-None-04667" href="#VUID-StandaloneSpirv-None-04667"></a> <span class="vuid">VUID-StandaloneSpirv-None-04667</span><br>
 
-Structure types <strong>must</strong> not contain opaque types</p>
+If the <code>DescriptorHeapEXT</code> capability is not declared, structure
+types <strong>must</strong> not contain opaque types</p>
+</li>
+<li>
+<p><a id="VUID-StandaloneSpirv-DescriptorHeapEXT-11482" href="#VUID-StandaloneSpirv-DescriptorHeapEXT-11482"></a> <span class="vuid">VUID-StandaloneSpirv-DescriptorHeapEXT-11482</span><br>
+
+If the <code>DescriptorHeapEXT</code> capability is declared, structure types
+<strong>must</strong> not contain opaque types other than descriptors</p>
 </li>
 <li>
 <p><a id="VUID-StandaloneSpirv-BuiltIn-04668" href="#VUID-StandaloneSpirv-BuiltIn-04668"></a> <span class="vuid">VUID-StandaloneSpirv-BuiltIn-04668</span><br>
@@ -2185,19 +2232,18 @@ The <code>Component</code> decoration value <strong>must</strong> not be greater
 <li>
 <p><a id="VUID-StandaloneSpirv-Component-04921" href="#VUID-StandaloneSpirv-Component-04921"></a> <span class="vuid">VUID-StandaloneSpirv-Component-04921</span><br>
 
-If the <code>Component</code> decoration is used on a variable that has a
-<code>OpTypeVector</code> type with a <code>Component</code> <code>Type</code> with a <code>Width</code>
-that is less than or equal to 32, the sum of its <code>Component</code>
-<code>Count</code> and the <code>Component</code> decoration value <strong>must</strong> be less than or
-equal to 4</p>
+If the <code>Component</code> decoration is used on a variable that has a vector
+type with a <code>Component</code> <code>Type</code> with a <code>Width</code> that is less than
+or equal to 32, the sum of its <code>Component</code> <code>Count</code> and the
+<code>Component</code> decoration value <strong>must</strong> be less than or equal to 4</p>
 </li>
 <li>
 <p><a id="VUID-StandaloneSpirv-Component-04922" href="#VUID-StandaloneSpirv-Component-04922"></a> <span class="vuid">VUID-StandaloneSpirv-Component-04922</span><br>
 
-If the <code>Component</code> decoration is used on a variable that has a
-<code>OpTypeVector</code> type with a <code>Component</code> <code>Type</code> with a <code>Width</code>
-that is equal to 64, the sum of two times its <code>Component</code> <code>Count</code>
-and the <code>Component</code> decoration value <strong>must</strong> be less than or equal to 4</p>
+If the <code>Component</code> decoration is used on a variable that has a vector
+type with a <code>Component</code> <code>Type</code> with a <code>Width</code> that is equal to
+64, the sum of two times its <code>Component</code> <code>Count</code> and the
+<code>Component</code> decoration value <strong>must</strong> be less than or equal to 4</p>
 </li>
 <li>
 <p><a id="VUID-StandaloneSpirv-Component-04923" href="#VUID-StandaloneSpirv-Component-04923"></a> <span class="vuid">VUID-StandaloneSpirv-Component-04923</span><br>
@@ -2438,6 +2484,17 @@ variable with an additional level of arrayness,
 <a href="../chapters/interfaces.html#interfaces-iointerfaces-matching" class="xref page">as described in interface    matching</a>, and <em>T</em> is the member type of the array type <em>T2</em></p>
 </li>
 <li>
+<p><a id="VUID-StandaloneSpirv-Function-12294" href="#VUID-StandaloneSpirv-Function-12294"></a> <span class="vuid">VUID-StandaloneSpirv-Function-12294</span><br>
+
+A type <em>T</em> that is a vector sized with a specialization constant <strong>must</strong>
+neither be, nor be contained in, the type <em>T2</em> of a variable <em>V</em>, unless
+either: a) <em>T</em> is equal to <em>T2</em>, b) <em>V</em> is declared in the
+<code>Function</code>, or <code>Private</code> <code>Storage</code> <code>Class</code>, c) <em>V</em> is a non-Block
+variable in the <code>Workgroup</code> <code>Storage</code> <code>Class</code>, or d) <em>V</em> is an interface
+variable with an additional level of arrayness,
+<a href="../chapters/interfaces.html#interfaces-iointerfaces-matching" class="xref page">as described in interface    matching</a>, and <em>T</em> is the member type of the array type <em>T2</em></p>
+</li>
+<li>
 <p><a id="VUID-StandaloneSpirv-OpControlBarrier-04682" href="#VUID-StandaloneSpirv-OpControlBarrier-04682"></a> <span class="vuid">VUID-StandaloneSpirv-OpControlBarrier-04682</span><br>
 
 If <code>OpControlBarrier</code> is used in ray generation, intersection,
@@ -2656,8 +2713,15 @@ capability <strong>must</strong> be declared</p>
 <li>
 <p><a id="VUID-StandaloneSpirv-OpUntypedVariableKHR-11167" href="#VUID-StandaloneSpirv-OpUntypedVariableKHR-11167"></a> <span class="vuid">VUID-StandaloneSpirv-OpUntypedVariableKHR-11167</span><br>
 
-Any <code>OpUntypedVariableKHR</code> <strong>must</strong> have a <code>Data</code> <code>Type</code> operand
-specified</p>
+Any <code>OpUntypedVariableKHR</code> with a <code>Storage</code> <code>Class</code> other than
+<code>UniformConstant</code> <strong>must</strong> have a <code>Data</code> <code>Type</code> operand specified</p>
+</li>
+<li>
+<p><a id="VUID-StandaloneSpirv-OpUntypedVariableKHR-11347" href="#VUID-StandaloneSpirv-OpUntypedVariableKHR-11347"></a> <span class="vuid">VUID-StandaloneSpirv-OpUntypedVariableKHR-11347</span><br>
+
+Any <code>OpUntypedVariableKHR</code> in the <code>UniformConstant</code> storage class
+without a <code>Data</code> <code>Type</code> <strong>must</strong> be decorated with
+<code>SamplerHeapEXT</code> or <code>ResourceHeapEXT</code></p>
 </li>
 <li>
 <p><a id="VUID-StandaloneSpirv-PhysicalStorageBuffer64-04708" href="#VUID-StandaloneSpirv-PhysicalStorageBuffer64-04708"></a> <span class="vuid">VUID-StandaloneSpirv-PhysicalStorageBuffer64-04708</span><br>
@@ -2749,8 +2813,9 @@ Any variable in the <code>Uniform</code> <code>Storage</code> <code>Class</code>
 <p><a id="VUID-StandaloneSpirv-UniformConstant-06677" href="#VUID-StandaloneSpirv-UniformConstant-06677"></a> <span class="vuid">VUID-StandaloneSpirv-UniformConstant-06677</span><br>
 
 Any variable in the <code>UniformConstant</code>, <code>StorageBuffer</code>, or
-<code>Uniform</code> <code>Storage</code> <code>Class</code> <strong>must</strong> be decorated with <code>DescriptorSet</code>
-and <code>Binding</code></p>
+<code>Uniform</code> <code>Storage</code> <code>Class</code> <strong>must</strong> be decorated with <code>DescriptorSet</code>,
+<code>Binding</code>, or <code>BuiltIn</code> with <code>SamplerHeapEXT</code> or
+<code>ResourceHeapEXT</code></p>
 </li>
 <li>
 <p><a id="VUID-StandaloneSpirv-InputAttachmentIndex-06678" href="#VUID-StandaloneSpirv-InputAttachmentIndex-06678"></a> <span class="vuid">VUID-StandaloneSpirv-InputAttachmentIndex-06678</span><br>
@@ -3016,6 +3081,45 @@ The <code>InputIndex</code> and <code>ElementIndex</code> operands to
 The <code>OutputIndex</code> and <code>ElementIndex</code> operands to
 <code>OpGraphSetOutputARM</code> <strong>must</strong> be the &lt;id&gt; of a constant instruction</p>
 </li>
+<li>
+<p><a id="VUID-StandaloneSpirv-Result-11336" href="#VUID-StandaloneSpirv-Result-11336"></a> <span class="vuid">VUID-StandaloneSpirv-Result-11336</span><br>
+
+If the <code>Result</code> <code>Type</code> operand of <code>OpLoad</code> is
+<code>OpTypeSampler</code>, <code>Pointer</code> <strong>must</strong> be derived from a variable
+decorated with <code>Binding</code> and <code>DescriptorSet</code>, or decorated with
+<code>BuiltIn</code> and <code>SamplerHeapEXT</code></p>
+</li>
+<li>
+<p><a id="VUID-StandaloneSpirv-Result-11337" href="#VUID-StandaloneSpirv-Result-11337"></a> <span class="vuid">VUID-StandaloneSpirv-Result-11337</span><br>
+
+If the <code>Result</code> <code>Type</code> operand of <code>OpLoad</code> is <code>OpTypeImage</code>,
+<code>Pointer</code> <strong>must</strong> be derived from a variable decorated with
+<code>Binding</code> and <code>DescriptorSet</code>, or decorated with <code>BuiltIn</code> and
+<code>ResourceHeapEXT</code></p>
+</li>
+<li>
+<p><a id="VUID-StandaloneSpirv-Result-11339" href="#VUID-StandaloneSpirv-Result-11339"></a> <span class="vuid">VUID-StandaloneSpirv-Result-11339</span><br>
+
+If the <code>Result</code> <code>Type</code> operand of <code>OpLoad</code> is
+<code>OpTypeAccelerationStructureKHR</code>, and <code>Pointer</code> is not in the
+<code>Private</code> or <code>Function</code> <code>Storage</code> <code>Class</code>, <code>Pointer</code> <strong>must</strong> be
+derived from a variable decorated with <code>Binding</code> and
+<code>DescriptorSet</code>, or decorated with <code>BuiltIn</code> and
+<code>ResourceHeapEXT</code></p>
+</li>
+<li>
+<p><a id="VUID-StandaloneSpirv-Result-11346" href="#VUID-StandaloneSpirv-Result-11346"></a> <span class="vuid">VUID-StandaloneSpirv-Result-11346</span><br>
+
+The <code>Result</code> <code>Type</code> operand of <code>OpBufferPointerEXT</code> <strong>must</strong> have
+a <code>Type</code> operand that is <a href="../chapters/interfaces.html#interfaces-resources-layout" class="xref page">explicitly    laid out</a></p>
+</li>
+<li>
+<p><a id="VUID-StandaloneSpirv-OpTypeUntypedPointerKHR-11417" href="#VUID-StandaloneSpirv-OpTypeUntypedPointerKHR-11417"></a> <span class="vuid">VUID-StandaloneSpirv-OpTypeUntypedPointerKHR-11417</span><br>
+
+The <code>Storage</code> <code>Class</code> of <code>OpTypeUntypedPointerKHR</code> <strong>must</strong> be <code>Image</code>,
+<code>UniformConstant</code>,<code>Workgroup</code>, <code>StorageBuffer</code>, <code>Uniform</code>,
+<code>PushConstant</code>, or <code>PhysicalStorageBuffer</code></p>
+</li>
 </ul>
 </div>
 </div>
@@ -3260,6 +3364,7 @@ accessed <strong>must</strong> be dynamically uniform within the invocation grou
 
 If an instruction accesses memory through any resource,
 the <a href="../chapters/interfaces.html#interfaces-builtin-variables-sgs" class="xref page">effective subgroup size</a> is 1,
+the <code>DescriptorHeapEXT</code> capability is not declared,
 and the resource through which that memory is accessed is not uniform
 within the invocation group, then the operand corresponding to that
 resource (e.g. the pointer or sampled image operand) <strong>must</strong> be decorated
@@ -3270,11 +3375,12 @@ with <code>NonUniform</code></p>
 
 If an instruction accesses memory through any resource, the
 <a href="../chapters/interfaces.html#interfaces-builtin-variables-sgs" class="xref page">effective subgroup size</a> is greater
-than 1, and the resource through which that memory is accessed is not
-uniform within the invocation group, and not uniform within the
-subgroup, then the operand corresponding to that resource (e.g. the
-pointer or sampled image operand) <strong>must</strong> be decorated with
-<code>NonUniform</code></p>
+than 1,
+the <code>DescriptorHeapEXT</code> capability is not declared,
+and the resource through which that memory is accessed is not uniform
+within the invocation group, and not uniform within the subgroup, then
+the operand corresponding to that resource (e.g. the pointer or sampled
+image operand) <strong>must</strong> be decorated with <code>NonUniform</code></p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-None-06275" href="#VUID-RuntimeSpirv-None-06275"></a> <span class="vuid">VUID-RuntimeSpirv-None-06275</span><br>
@@ -3287,7 +3393,7 @@ these types</p>
 <li>
 <p><a id="VUID-RuntimeSpirv-subgroupBroadcastDynamicId-06276" href="#VUID-RuntimeSpirv-subgroupBroadcastDynamicId-06276"></a> <span class="vuid">VUID-RuntimeSpirv-subgroupBroadcastDynamicId-06276</span><br>
 
-If <a href="../chapters/features.html#features-subgroupBroadcastDynamicId" class="xref page">    <code>subgroupBroadcastDynamicId</code></a> is <code>VK_TRUE</code>, and the shader
+If <a href="../chapters/features.html#features-subgroupBroadcastDynamicId" class="xref page">    <code>subgroupBroadcastDynamicId</code></a> is <a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, and the shader
 module version is 1.5 or higher, the &#8220;Index&#8221; for
 <code>OpGroupNonUniformQuadBroadcast</code> <strong>must</strong> be dynamically uniform within
 the derivative group.
@@ -3296,7 +3402,7 @@ Otherwise, &#8220;Index&#8221; <strong>must</strong> be a constant</p>
 <li>
 <p><a id="VUID-RuntimeSpirv-subgroupBroadcastDynamicId-06277" href="#VUID-RuntimeSpirv-subgroupBroadcastDynamicId-06277"></a> <span class="vuid">VUID-RuntimeSpirv-subgroupBroadcastDynamicId-06277</span><br>
 
-If <a href="../chapters/features.html#features-subgroupBroadcastDynamicId" class="xref page">    <code>subgroupBroadcastDynamicId</code></a> is <code>VK_TRUE</code>, and the shader
+If <a href="../chapters/features.html#features-subgroupBroadcastDynamicId" class="xref page">    <code>subgroupBroadcastDynamicId</code></a> is <a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, and the shader
 module version is 1.5 or higher, the &#8220;Id&#8221; for
 <code>OpGroupNonUniformBroadcast</code> <strong>must</strong> be dynamically uniform within the
 subgroup.
@@ -3377,7 +3483,7 @@ a <em>Pointer</em> with a <code>Storage</code> <code>Class</code> of <code>Image
 <p><a id="VUID-RuntimeSpirv-denormBehaviorIndependence-06289" href="#VUID-RuntimeSpirv-denormBehaviorIndependence-06289"></a> <span class="vuid">VUID-RuntimeSpirv-denormBehaviorIndependence-06289</span><br>
 
 If <a href="../chapters/devsandqueues.html#features-denormBehaviorIndependence" class="xref page">    <code>denormBehaviorIndependence</code></a> is
-<code>VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_32_BIT_ONLY</code>, then the entry
+<a href="../chapters/limits.html#VkShaderFloatControlsIndependenceKHR" class="xref page">VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_32_BIT_ONLY</a>, then the entry
 point <strong>must</strong> use the same denormals <code>Execution</code> <code>Mode</code> for both 16-bit and
 64-bit floating-point types</p>
 </li>
@@ -3385,7 +3491,7 @@ point <strong>must</strong> use the same denormals <code>Execution</code> <code>
 <p><a id="VUID-RuntimeSpirv-denormBehaviorIndependence-06290" href="#VUID-RuntimeSpirv-denormBehaviorIndependence-06290"></a> <span class="vuid">VUID-RuntimeSpirv-denormBehaviorIndependence-06290</span><br>
 
 If <a href="../chapters/devsandqueues.html#features-denormBehaviorIndependence" class="xref page">    <code>denormBehaviorIndependence</code></a> is
-<code>VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_NONE</code>, then the entry point
+<a href="../chapters/limits.html#VkShaderFloatControlsIndependenceKHR" class="xref page">VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_NONE</a>, then the entry point
 <strong>must</strong> use the same denormals <code>Execution</code> <code>Mode</code> for all floating-point
 types</p>
 </li>
@@ -3393,7 +3499,7 @@ types</p>
 <p><a id="VUID-RuntimeSpirv-roundingModeIndependence-06291" href="#VUID-RuntimeSpirv-roundingModeIndependence-06291"></a> <span class="vuid">VUID-RuntimeSpirv-roundingModeIndependence-06291</span><br>
 
 If <a href="../chapters/devsandqueues.html#features-roundingModeIndependence" class="xref page"><code>roundingModeIndependence</code></a>
-is <code>VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_32_BIT_ONLY</code>, then the
+is <a href="../chapters/limits.html#VkShaderFloatControlsIndependenceKHR" class="xref page">VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_32_BIT_ONLY</a>, then the
 entry point <strong>must</strong> use the same rounding <code>Execution</code> <code>Mode</code> for both 16-bit
 and 64-bit floating-point types</p>
 </li>
@@ -3401,114 +3507,114 @@ and 64-bit floating-point types</p>
 <p><a id="VUID-RuntimeSpirv-roundingModeIndependence-06292" href="#VUID-RuntimeSpirv-roundingModeIndependence-06292"></a> <span class="vuid">VUID-RuntimeSpirv-roundingModeIndependence-06292</span><br>
 
 If <a href="../chapters/devsandqueues.html#features-roundingModeIndependence" class="xref page"><code>roundingModeIndependence</code></a>
-is <code>VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_NONE</code>, then the entry
+is <a href="../chapters/limits.html#VkShaderFloatControlsIndependenceKHR" class="xref page">VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_NONE</a>, then the entry
 point <strong>must</strong> use the same rounding <code>Execution</code> <code>Mode</code> for all floating-point
 types</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat16-06293" href="#VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat16-06293"></a> <span class="vuid">VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat16-06293</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat16" class="xref page">    <code>shaderSignedZeroInfNanPreserveFloat16</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat16" class="xref page">    <code>shaderSignedZeroInfNanPreserveFloat16</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 <code>SignedZeroInfNanPreserve</code> for 16-bit floating-point type <strong>must</strong> not
 be used</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat32-06294" href="#VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat32-06294"></a> <span class="vuid">VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat32-06294</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat32" class="xref page">    <code>shaderSignedZeroInfNanPreserveFloat32</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat32" class="xref page">    <code>shaderSignedZeroInfNanPreserveFloat32</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 <code>SignedZeroInfNanPreserve</code> for 32-bit floating-point type <strong>must</strong> not
 be used</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat64-06295" href="#VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat64-06295"></a> <span class="vuid">VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat64-06295</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat64" class="xref page">    <code>shaderSignedZeroInfNanPreserveFloat64</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat64" class="xref page">    <code>shaderSignedZeroInfNanPreserveFloat64</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 <code>SignedZeroInfNanPreserve</code> for 64-bit floating-point type <strong>must</strong> not
 be used</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderDenormPreserveFloat16-06296" href="#VUID-RuntimeSpirv-shaderDenormPreserveFloat16-06296"></a> <span class="vuid">VUID-RuntimeSpirv-shaderDenormPreserveFloat16-06296</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderDenormPreserveFloat16" class="xref page">    <code>shaderDenormPreserveFloat16</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/devsandqueues.html#limits-shaderDenormPreserveFloat16" class="xref page">    <code>shaderDenormPreserveFloat16</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 <code>DenormPreserve</code> for 16-bit floating-point type <strong>must</strong> not be used</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderDenormPreserveFloat32-06297" href="#VUID-RuntimeSpirv-shaderDenormPreserveFloat32-06297"></a> <span class="vuid">VUID-RuntimeSpirv-shaderDenormPreserveFloat32-06297</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderDenormPreserveFloat32" class="xref page">    <code>shaderDenormPreserveFloat32</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/devsandqueues.html#limits-shaderDenormPreserveFloat32" class="xref page">    <code>shaderDenormPreserveFloat32</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 <code>DenormPreserve</code> for 32-bit floating-point type <strong>must</strong> not be used</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderDenormPreserveFloat64-06298" href="#VUID-RuntimeSpirv-shaderDenormPreserveFloat64-06298"></a> <span class="vuid">VUID-RuntimeSpirv-shaderDenormPreserveFloat64-06298</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderDenormPreserveFloat64" class="xref page">    <code>shaderDenormPreserveFloat64</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/devsandqueues.html#limits-shaderDenormPreserveFloat64" class="xref page">    <code>shaderDenormPreserveFloat64</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 <code>DenormPreserve</code> for 64-bit floating-point type <strong>must</strong> not be used</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderDenormFlushToZeroFloat16-06299" href="#VUID-RuntimeSpirv-shaderDenormFlushToZeroFloat16-06299"></a> <span class="vuid">VUID-RuntimeSpirv-shaderDenormFlushToZeroFloat16-06299</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderDenormFlushToZeroFloat16" class="xref page">    <code>shaderDenormFlushToZeroFloat16</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/devsandqueues.html#limits-shaderDenormFlushToZeroFloat16" class="xref page">    <code>shaderDenormFlushToZeroFloat16</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 <code>DenormFlushToZero</code> for 16-bit floating-point type <strong>must</strong> not be used</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderDenormFlushToZeroFloat32-06300" href="#VUID-RuntimeSpirv-shaderDenormFlushToZeroFloat32-06300"></a> <span class="vuid">VUID-RuntimeSpirv-shaderDenormFlushToZeroFloat32-06300</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderDenormFlushToZeroFloat32" class="xref page">    <code>shaderDenormFlushToZeroFloat32</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/devsandqueues.html#limits-shaderDenormFlushToZeroFloat32" class="xref page">    <code>shaderDenormFlushToZeroFloat32</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 <code>DenormFlushToZero</code> for 32-bit floating-point type <strong>must</strong> not be used</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderDenormFlushToZeroFloat64-06301" href="#VUID-RuntimeSpirv-shaderDenormFlushToZeroFloat64-06301"></a> <span class="vuid">VUID-RuntimeSpirv-shaderDenormFlushToZeroFloat64-06301</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderDenormFlushToZeroFloat64" class="xref page">    <code>shaderDenormFlushToZeroFloat64</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/devsandqueues.html#limits-shaderDenormFlushToZeroFloat64" class="xref page">    <code>shaderDenormFlushToZeroFloat64</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 <code>DenormFlushToZero</code> for 64-bit floating-point type <strong>must</strong> not be used</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderRoundingModeRTEFloat16-06302" href="#VUID-RuntimeSpirv-shaderRoundingModeRTEFloat16-06302"></a> <span class="vuid">VUID-RuntimeSpirv-shaderRoundingModeRTEFloat16-06302</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderRoundingModeRTEFloat16" class="xref page">    <code>shaderRoundingModeRTEFloat16</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/devsandqueues.html#limits-shaderRoundingModeRTEFloat16" class="xref page">    <code>shaderRoundingModeRTEFloat16</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 <code>RoundingModeRTE</code> for 16-bit floating-point type <strong>must</strong> not be used</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderRoundingModeRTEFloat32-06303" href="#VUID-RuntimeSpirv-shaderRoundingModeRTEFloat32-06303"></a> <span class="vuid">VUID-RuntimeSpirv-shaderRoundingModeRTEFloat32-06303</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderRoundingModeRTEFloat32" class="xref page">    <code>shaderRoundingModeRTEFloat32</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/devsandqueues.html#limits-shaderRoundingModeRTEFloat32" class="xref page">    <code>shaderRoundingModeRTEFloat32</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 <code>RoundingModeRTE</code> for 32-bit floating-point type <strong>must</strong> not be used</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderRoundingModeRTEFloat64-06304" href="#VUID-RuntimeSpirv-shaderRoundingModeRTEFloat64-06304"></a> <span class="vuid">VUID-RuntimeSpirv-shaderRoundingModeRTEFloat64-06304</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderRoundingModeRTEFloat64" class="xref page">    <code>shaderRoundingModeRTEFloat64</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/devsandqueues.html#limits-shaderRoundingModeRTEFloat64" class="xref page">    <code>shaderRoundingModeRTEFloat64</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 <code>RoundingModeRTE</code> for 64-bit floating-point type <strong>must</strong> not be used</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderRoundingModeRTZFloat16-06305" href="#VUID-RuntimeSpirv-shaderRoundingModeRTZFloat16-06305"></a> <span class="vuid">VUID-RuntimeSpirv-shaderRoundingModeRTZFloat16-06305</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderRoundingModeRTZFloat16" class="xref page">    <code>shaderRoundingModeRTZFloat16</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/devsandqueues.html#limits-shaderRoundingModeRTZFloat16" class="xref page">    <code>shaderRoundingModeRTZFloat16</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 <code>RoundingModeRTZ</code> for 16-bit floating-point type <strong>must</strong> not be used</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderRoundingModeRTZFloat32-06306" href="#VUID-RuntimeSpirv-shaderRoundingModeRTZFloat32-06306"></a> <span class="vuid">VUID-RuntimeSpirv-shaderRoundingModeRTZFloat32-06306</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderRoundingModeRTZFloat32" class="xref page">    <code>shaderRoundingModeRTZFloat32</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/devsandqueues.html#limits-shaderRoundingModeRTZFloat32" class="xref page">    <code>shaderRoundingModeRTZFloat32</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 <code>RoundingModeRTZ</code> for 32-bit floating-point type <strong>must</strong> not be used</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderRoundingModeRTZFloat64-06307" href="#VUID-RuntimeSpirv-shaderRoundingModeRTZFloat64-06307"></a> <span class="vuid">VUID-RuntimeSpirv-shaderRoundingModeRTZFloat64-06307</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderRoundingModeRTZFloat64" class="xref page">    <code>shaderRoundingModeRTZFloat64</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/devsandqueues.html#limits-shaderRoundingModeRTZFloat64" class="xref page">    <code>shaderRoundingModeRTZFloat64</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 <code>RoundingModeRTZ</code> for 64-bit floating-point type <strong>must</strong> not be used</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat16-09559" href="#VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat16-09559"></a> <span class="vuid">VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat16-09559</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat16" class="xref page">    <code>shaderSignedZeroInfNanPreserveFloat16</code></a> is <code>VK_FALSE</code> then any
+If <a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat16" class="xref page">    <code>shaderSignedZeroInfNanPreserveFloat16</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a> then any
 <code>FPFastMathDefault</code> execution mode with a type of 16-bit float <strong>must</strong>
 include the <code>NSZ</code>, <code>NotInf</code>, and <code>NotNaN</code> flags</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat16-09560" href="#VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat16-09560"></a> <span class="vuid">VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat16-09560</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat16" class="xref page">    <code>shaderSignedZeroInfNanPreserveFloat16</code></a> is <code>VK_FALSE</code> then any
+If <a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat16" class="xref page">    <code>shaderSignedZeroInfNanPreserveFloat16</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a> then any
 <code>FPFastMathMode</code> decoration on an instruction with result type or any
 operand type that includes a 16-bit float <strong>must</strong> include the <code>NSZ</code>,
 <code>NotInf</code>, and <code>NotNaN</code> flags</p>
@@ -3516,14 +3622,14 @@ operand type that includes a 16-bit float <strong>must</strong> include the <cod
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat32-09561" href="#VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat32-09561"></a> <span class="vuid">VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat32-09561</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat32" class="xref page">    <code>shaderSignedZeroInfNanPreserveFloat32</code></a> is <code>VK_FALSE</code> then any
+If <a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat32" class="xref page">    <code>shaderSignedZeroInfNanPreserveFloat32</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a> then any
 <code>FPFastMathDefault</code> execution mode with a type of 32-bit float <strong>must</strong>
 include the <code>NSZ</code>, <code>NotInf</code>, and <code>NotNaN</code> flags</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat32-09562" href="#VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat32-09562"></a> <span class="vuid">VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat32-09562</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat32" class="xref page">    <code>shaderSignedZeroInfNanPreserveFloat32</code></a> is <code>VK_FALSE</code> then any
+If <a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat32" class="xref page">    <code>shaderSignedZeroInfNanPreserveFloat32</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a> then any
 <code>FPFastMathMode</code> decoration on an instruction with result type or any
 operand type that includes a 32-bit float <strong>must</strong> include the <code>NSZ</code>,
 <code>NotInf</code>, and <code>NotNaN</code> flags</p>
@@ -3531,14 +3637,14 @@ operand type that includes a 32-bit float <strong>must</strong> include the <cod
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat64-09563" href="#VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat64-09563"></a> <span class="vuid">VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat64-09563</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat64" class="xref page">    <code>shaderSignedZeroInfNanPreserveFloat64</code></a> is <code>VK_FALSE</code> then any
+If <a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat64" class="xref page">    <code>shaderSignedZeroInfNanPreserveFloat64</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a> then any
 <code>FPFastMathDefault</code> execution mode with a type of 64-bit float <strong>must</strong>
 include the <code>NSZ</code>, <code>NotInf</code>, and <code>NotNaN</code> flags</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat64-09564" href="#VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat64-09564"></a> <span class="vuid">VUID-RuntimeSpirv-shaderSignedZeroInfNanPreserveFloat64-09564</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat64" class="xref page">    <code>shaderSignedZeroInfNanPreserveFloat64</code></a> is <code>VK_FALSE</code> then any
+If <a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat64" class="xref page">    <code>shaderSignedZeroInfNanPreserveFloat64</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a> then any
 <code>FPFastMathMode</code> decoration on an instruction with result type or any
 operand type that includes a 64-bit float <strong>must</strong> include the <code>NSZ</code>,
 <code>NotInf</code>, and <code>NotNaN</code> flags</p>
@@ -3595,7 +3701,7 @@ The Stream value to <code>OpEmitStreamVertex</code> and
 
 If the geometry shader emits to more than one vertex stream and
 <a href="../chapters/limits.html#VkPhysicalDeviceTransformFeedbackPropertiesEXT" class="xref page">VkPhysicalDeviceTransformFeedbackPropertiesEXT</a>::<code>transformFeedbackStreamsLinesTriangles</code>
-is <code>VK_FALSE</code>, then <code>Execution</code> <code>Mode</code> <strong>must</strong> be <code>OutputPoints</code></p>
+is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then <code>Execution</code> <code>Mode</code> <strong>must</strong> be <code>OutputPoints</code></p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-Stream-06312" href="#VUID-RuntimeSpirv-Stream-06312"></a> <span class="vuid">VUID-RuntimeSpirv-Stream-06312</span><br>
@@ -3622,7 +3728,7 @@ aligned as specified by the <code>Aligned</code> memory access operand</p>
 If the <code>PhysicalStorageBuffer64</code> addressing model is enabled the
 pointer value of a memory access instruction in the
 <code>PhysicalStorageBuffer</code> <code>Storage</code> <code>Class</code> <strong>must</strong> reference a buffer
-created with the <code>VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT</code> usage
+created with the <a href="../chapters/resources.html#VkBufferUsageFlagBits" class="xref page">VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT</a> usage
 flag set</p>
 </li>
 <li>
@@ -3669,7 +3775,7 @@ supported <a href="../chapters/shaders.html#VkCooperativeMatrixPropertiesNV" cla
 </li>
 <li>
 <p>The scope of all cooperative matrix operands <strong>must</strong> be
-<a href="../chapters/shaders.html#VkScopeNV" class="xref page">VkScopeNV</a>::<code>VK_SCOPE_SUBGROUP_NV</code>.</p>
+<a href="../chapters/shaders.html#VkScopeNV" class="xref page">VkScopeNV</a>::<a href="../chapters/shaders.html#VkScopeNV" class="xref page">VK_SCOPE_SUBGROUP_NV</a>.</p>
 </li>
 <li>
 <p>If <code>ComponentType</code> of <code>A</code>, <code>B</code>, <code>C</code>, or <code>Result</code> is a
@@ -3783,12 +3889,12 @@ used.</p>
 <li>
 <p>If and only if
 <a href="../chapters/shaders.html#VkCooperativeMatrixPropertiesKHR" class="xref page">VkCooperativeMatrixPropertiesKHR</a>::<code>saturatingAccumulation</code> is
-<code>VK_TRUE</code>, <code>SaturatingAccumulationKHR</code> <strong>must</strong> be used.</p>
+<a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, <code>SaturatingAccumulationKHR</code> <strong>must</strong> be used.</p>
 </li>
 <li>
 <p>If and only if
 <a href="../chapters/shaders.html#VkCooperativeMatrixPropertiesKHR" class="xref page">VkCooperativeMatrixPropertiesKHR</a>::<code>saturatingAccumulation</code> is
-<code>VK_FALSE</code>, <code>SaturatingAccumulationKHR</code> <strong>must</strong> not be used.</p>
+<a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, <code>SaturatingAccumulationKHR</code> <strong>must</strong> not be used.</p>
 </li>
 <li>
 <p>The scope of all cooperative matrix operands <strong>must</strong> match
@@ -3802,7 +3908,7 @@ used.</p>
 
 If the <a href="../chapters/features.html#features-cooperativeMatrixWorkgroupScope" class="xref page">    <code>cooperativeMatrixWorkgroupScope</code></a> feature is not enabled, the
 scope of all <code>OpTypeCooperativeMatrixKHR</code> <strong>must</strong> not be
-<a href="../chapters/shaders.html#VkScopeKHR" class="xref page">VkScopeKHR</a>::<code>VK_SCOPE_WORKGROUP_KHR</code></p>
+<a href="../chapters/shaders.html#VkScopeKHR" class="xref page">VkScopeKHR</a>::<a href="../chapters/shaders.html#VkScopeNV" class="xref page">VK_SCOPE_WORKGROUP_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-cooperativeMatrixFlexibleDimensions-10165" href="#VUID-RuntimeSpirv-cooperativeMatrixFlexibleDimensions-10165"></a> <span class="vuid">VUID-RuntimeSpirv-cooperativeMatrixFlexibleDimensions-10165</span><br>
@@ -3841,7 +3947,7 @@ and the type <strong>must</strong> match
 <a href="../chapters/shaders.html#VkCooperativeMatrixFlexibleDimensionsPropertiesNV" class="xref page">VkCooperativeMatrixFlexibleDimensionsPropertiesNV</a>::<code>ResultType</code></p>
 </li>
 <li>
-<p>if the scope is <code>VK_SCOPE_WORKGROUP_KHR</code>, the number of invocations
+<p>if the scope is <a href="../chapters/shaders.html#VkScopeNV" class="xref page">VK_SCOPE_WORKGROUP_KHR</a>, the number of invocations
 in the local workgroup <strong>must</strong> match
 <a href="../chapters/shaders.html#VkCooperativeMatrixFlexibleDimensionsPropertiesNV" class="xref page">VkCooperativeMatrixFlexibleDimensionsPropertiesNV</a>::<code>workgroupInvocations</code></p>
 </li>
@@ -3915,19 +4021,19 @@ used.</p>
 <li>
 <p>If and only if
 <a href="../chapters/shaders.html#VkCooperativeMatrixFlexibleDimensionsPropertiesNV" class="xref page">VkCooperativeMatrixFlexibleDimensionsPropertiesNV</a>::<code>saturatingAccumulation</code>
-is <code>VK_TRUE</code>, <code>SaturatingAccumulationKHR</code> <strong>must</strong> be used.</p>
+is <a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, <code>SaturatingAccumulationKHR</code> <strong>must</strong> be used.</p>
 </li>
 <li>
 <p>If and only if
 <a href="../chapters/shaders.html#VkCooperativeMatrixFlexibleDimensionsPropertiesNV" class="xref page">VkCooperativeMatrixFlexibleDimensionsPropertiesNV</a>::<code>saturatingAccumulation</code>
-is <code>VK_FALSE</code>, <code>SaturatingAccumulationKHR</code> <strong>must</strong> not be used.</p>
+is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, <code>SaturatingAccumulationKHR</code> <strong>must</strong> not be used.</p>
 </li>
 <li>
 <p>The scope of all cooperative matrix operands <strong>must</strong> match
 <a href="../chapters/shaders.html#VkCooperativeMatrixFlexibleDimensionsPropertiesNV" class="xref page">VkCooperativeMatrixFlexibleDimensionsPropertiesNV</a>::<code>scope</code>.</p>
 </li>
 <li>
-<p>If the scope is <code>VK_SCOPE_WORKGROUP_KHR</code>, the number of invocations
+<p>If the scope is <a href="../chapters/shaders.html#VkScopeNV" class="xref page">VK_SCOPE_WORKGROUP_KHR</a>, the number of invocations
 in the local workgroup <strong>must</strong> match
 <a href="../chapters/shaders.html#VkCooperativeMatrixFlexibleDimensionsPropertiesNV" class="xref page">VkCooperativeMatrixFlexibleDimensionsPropertiesNV</a>::<code>workgroupInvocations</code></p>
 </li>
@@ -3964,7 +4070,7 @@ instructions <strong>must</strong> not be used in shader stages not included in
 
 Any pipeline containing a shader with <code>OpTypeCooperativeMatrixKHR</code> or
 <code>OpCooperativeMatrix*KHR</code> instructions <strong>must</strong> be created with the
-<code>VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT</code> flag or
+<a href="../chapters/pipelines.html#VkPipelineShaderStageCreateFlagBits" class="xref page">VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT</a> flag or
 the shader module must be version 1.6 or greater</p>
 </li>
 <li>
@@ -3972,7 +4078,7 @@ the shader module must be version 1.6 or greater</p>
 
 Any shader object containing <code>OpTypeCooperativeMatrixKHR</code> or
 <code>OpCooperativeMatrix*KHR</code> instructions <strong>must</strong> be created with the
-<code>VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT</code> flag or the shader
+<a href="../chapters/shaders.html#VkShaderCreateFlagBitsEXT" class="xref page">VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT</a> flag or the shader
 module must be version 1.6 or greater</p>
 </li>
 <li>
@@ -4018,7 +4124,7 @@ returned by <a href="../chapters/shaders.html#vkGetPhysicalDeviceCooperativeVect
 <li>
 <p>If <code>Transpose</code> is true,
 <a href="../chapters/shaders.html#VkCooperativeVectorPropertiesNV" class="xref page">VkCooperativeVectorPropertiesNV</a>::<code>transpose</code> <strong>must</strong> be
-<code>VK_TRUE</code></p>
+<a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a></p>
 </li>
 </ul>
 </div>
@@ -4028,10 +4134,10 @@ returned by <a href="../chapters/shaders.html#vkGetPhysicalDeviceCooperativeVect
 
 For <code>OpCooperativeVectorMatrixMulNV</code> and
 <code>OpCooperativeVectorMatrixMulAddNV</code>, if <code>MatrixInterpretation</code> is
-either <code>VK_COMPONENT_TYPE_FLOAT_E4M3_NV</code> or
-<code>VK_COMPONENT_TYPE_FLOAT_E5M2_NV</code> then <code>MemoryLayout</code> <strong>must</strong> be
-either <code>VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_INFERENCING_OPTIMAL_NV</code>
-or <code>VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_TRAINING_OPTIMAL_NV</code></p>
+either <a href="../chapters/shaders.html#VkComponentTypeNV" class="xref page">VK_COMPONENT_TYPE_FLOAT_E4M3_NV</a> or
+<a href="../chapters/shaders.html#VkComponentTypeNV" class="xref page">VK_COMPONENT_TYPE_FLOAT_E5M2_NV</a> then <code>MemoryLayout</code> <strong>must</strong> be
+either <a href="../chapters/shaders.html#VkCooperativeVectorMatrixLayoutNV" class="xref page">VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_INFERENCING_OPTIMAL_NV</a>
+or <a href="../chapters/shaders.html#VkCooperativeVectorMatrixLayoutNV" class="xref page">VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_TRAINING_OPTIMAL_NV</a></p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-cooperativeVectorSupportedStages-10091" href="#VUID-RuntimeSpirv-cooperativeVectorSupportedStages-10091"></a> <span class="vuid">VUID-RuntimeSpirv-cooperativeVectorSupportedStages-10091</span><br>
@@ -4072,15 +4178,15 @@ For <code>OpCooperativeVectorOuterProductAccumulateNV</code>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>MatrixInterpretation</code> must be <code>VK_COMPONENT_TYPE_FLOAT16_KHR</code>
-or <code>VK_COMPONENT_TYPE_FLOAT32_KHR</code></p>
+<p><code>MatrixInterpretation</code> must be <a href="../chapters/shaders.html#VkComponentTypeNV" class="xref page">VK_COMPONENT_TYPE_FLOAT16_KHR</a>
+or <a href="../chapters/shaders.html#VkComponentTypeNV" class="xref page">VK_COMPONENT_TYPE_FLOAT32_KHR</a></p>
 </li>
 <li>
-<p>If <code>MatrixInterpretation</code> is <code>VK_COMPONENT_TYPE_FLOAT16_KHR</code>,
+<p>If <code>MatrixInterpretation</code> is <a href="../chapters/shaders.html#VkComponentTypeNV" class="xref page">VK_COMPONENT_TYPE_FLOAT16_KHR</a>,
 <a href="../chapters/limits.html#limits-cooperativeVectorTrainingFloat16Accumulation" class="xref page">     <code>cooperativeVectorTrainingFloat16Accumulation</code></a> <strong>must</strong> be supported</p>
 </li>
 <li>
-<p>If <code>MatrixInterpretation</code> is <code>VK_COMPONENT_TYPE_FLOAT32_KHR</code>,
+<p>If <code>MatrixInterpretation</code> is <a href="../chapters/shaders.html#VkComponentTypeNV" class="xref page">VK_COMPONENT_TYPE_FLOAT32_KHR</a>,
 <a href="../chapters/limits.html#limits-cooperativeVectorTrainingFloat32Accumulation" class="xref page">     <code>cooperativeVectorTrainingFloat32Accumulation</code></a> <strong>must</strong> be supported</p>
 </li>
 <li>
@@ -4153,6 +4259,14 @@ equal to
 For mesh shaders using the <code>MeshEXT</code> <code>Execution</code> <code>Model</code> the &#8220;Primitive
 Count&#8221; operand of <code>OpSetMeshOutputsEXT</code> <strong>must</strong> be less than or equal
 to <code>OutputPrimitivesEXT</code> <code>OpExecutionMode</code></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-MeshEXT-12333" href="#VUID-RuntimeSpirv-MeshEXT-12333"></a> <span class="vuid">VUID-RuntimeSpirv-MeshEXT-12333</span><br>
+
+For mesh shaders using the <code>MeshEXT</code> <code>Execution</code> <code>Model</code> the index into
+the array of any variable decorated with the <code>PerPrimitiveEXT</code>
+decoration <strong>must</strong> be less than the &#8220;Primitive Count&#8221; operand of
+<code>OpSetMeshOutputsEXT</code></p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-TaskEXT-07117" href="#VUID-RuntimeSpirv-TaskEXT-07117"></a> <span class="vuid">VUID-RuntimeSpirv-TaskEXT-07117</span><br>
@@ -4377,7 +4491,7 @@ For <code>OpCooperativeVectorOuterProductAccumulateNV</code> instructions, the
 
 If the <code><a href="extensions.html#VK_KHR_portability_subset" class="xref page">VK_KHR_portability_subset</a></code> extension is enabled, and
 <a href="../chapters/features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR" class="xref page">VkPhysicalDevicePortabilitySubsetFeaturesKHR</a>::<code>shaderSampleRateInterpolationFunctions</code>
-is <code>VK_FALSE</code>, then <code>GLSL.std.450</code> fragment interpolation functions
+is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then <code>GLSL.std.450</code> fragment interpolation functions
 are not supported by the implementation and <code>OpCapability</code> <strong>must</strong> not
 be <code>InterpolationFunction</code></p>
 </li>
@@ -4388,7 +4502,7 @@ If the <a href="../chapters/features.html#features-tessellationShader" class="xr
 is enabled, and the <code><a href="extensions.html#VK_KHR_portability_subset" class="xref page">VK_KHR_portability_subset</a></code> extension is
 enabled, and
 <a href="../chapters/features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR" class="xref page">VkPhysicalDevicePortabilitySubsetFeaturesKHR</a>::<code>tessellationIsolines</code>
-is <code>VK_FALSE</code>, then <code>OpExecutionMode</code> <strong>must</strong> not be <code>IsoLines</code></p>
+is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then <code>OpExecutionMode</code> <strong>must</strong> not be <code>IsoLines</code></p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-tessellationShader-06327" href="#VUID-RuntimeSpirv-tessellationShader-06327"></a> <span class="vuid">VUID-RuntimeSpirv-tessellationShader-06327</span><br>
@@ -4397,24 +4511,24 @@ If the <a href="../chapters/features.html#features-tessellationShader" class="xr
 is enabled, and the <code><a href="extensions.html#VK_KHR_portability_subset" class="xref page">VK_KHR_portability_subset</a></code> extension is
 enabled, and
 <a href="../chapters/features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR" class="xref page">VkPhysicalDevicePortabilitySubsetFeaturesKHR</a>::<code>tessellationPointMode</code>
-is <code>VK_FALSE</code>, then <code>OpExecutionMode</code> <strong>must</strong> not be <code>PointMode</code></p>
+is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then <code>OpExecutionMode</code> <strong>must</strong> not be <code>PointMode</code></p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-storageBuffer8BitAccess-06328" href="#VUID-RuntimeSpirv-storageBuffer8BitAccess-06328"></a> <span class="vuid">VUID-RuntimeSpirv-storageBuffer8BitAccess-06328</span><br>
 
 If <a href="../chapters/features.html#features-storageBuffer8BitAccess" class="xref page"><code>storageBuffer8BitAccess</code></a>
-is <code>VK_FALSE</code>, then objects containing an 8-bit integer element
+is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then objects containing an 8-bit integer element
 <strong>must</strong> not have <code>Storage</code> <code>Class</code> of <code>StorageBuffer</code>,
 <code>ShaderRecordBufferKHR</code>, or <code>PhysicalStorageBuffer</code>
 unless <a href="../chapters/features.html#features-shaderUntypedPointers" class="xref page"><code>shaderUntypedPointers</code></a>
-is <code>VK_TRUE</code> and they are accessed in:</p>
+is <a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a> and they are accessed in:</p>
 <div class="ulist">
 <ul>
 <li>
 <p>32-bit multiples, or</p>
 </li>
 <li>
-<p>16-bit multiples if <a href="../chapters/features.html#features-storageBuffer16BitAccess" class="xref page">     <code>storageBuffer16BitAccess</code></a> is <code>VK_TRUE</code>.</p>
+<p>16-bit multiples if <a href="../chapters/features.html#features-storageBuffer16BitAccess" class="xref page">     <code>storageBuffer16BitAccess</code></a> is <a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>.</p>
 </li>
 </ul>
 </div>
@@ -4422,18 +4536,18 @@ is <code>VK_TRUE</code> and they are accessed in:</p>
 <li>
 <p><a id="VUID-RuntimeSpirv-uniformAndStorageBuffer8BitAccess-06329" href="#VUID-RuntimeSpirv-uniformAndStorageBuffer8BitAccess-06329"></a> <span class="vuid">VUID-RuntimeSpirv-uniformAndStorageBuffer8BitAccess-06329</span><br>
 
-If <a href="../chapters/features.html#features-uniformAndStorageBuffer8BitAccess" class="xref page">    <code>uniformAndStorageBuffer8BitAccess</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/features.html#features-uniformAndStorageBuffer8BitAccess" class="xref page">    <code>uniformAndStorageBuffer8BitAccess</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 objects in the <code>Uniform</code> <code>Storage</code> <code>Class</code> with the <code>Block</code>
 decoration <strong>must</strong> not have an 8-bit integer member
 unless <a href="../chapters/features.html#features-shaderUntypedPointers" class="xref page"><code>shaderUntypedPointers</code></a>
-is <code>VK_TRUE</code> and they are accessed in:</p>
+is <a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a> and they are accessed in:</p>
 <div class="ulist">
 <ul>
 <li>
 <p>32-bit multiples, or</p>
 </li>
 <li>
-<p>16-bit multiples if <a href="../chapters/features.html#features-uniformAndStorageBuffer16BitAccess" class="xref page">     <code>uniformAndStorageBuffer16BitAccess</code></a> is <code>VK_TRUE</code>.</p>
+<p>16-bit multiples if <a href="../chapters/features.html#features-uniformAndStorageBuffer16BitAccess" class="xref page">     <code>uniformAndStorageBuffer16BitAccess</code></a> is <a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>.</p>
 </li>
 </ul>
 </div>
@@ -4442,17 +4556,17 @@ is <code>VK_TRUE</code> and they are accessed in:</p>
 <p><a id="VUID-RuntimeSpirv-storagePushConstant8-06330" href="#VUID-RuntimeSpirv-storagePushConstant8-06330"></a> <span class="vuid">VUID-RuntimeSpirv-storagePushConstant8-06330</span><br>
 
 If <a href="../chapters/features.html#features-storagePushConstant8" class="xref page"><code>storagePushConstant8</code></a> is
-<code>VK_FALSE</code>, then objects containing an 8-bit integer element <strong>must</strong>
+<a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then objects containing an 8-bit integer element <strong>must</strong>
 not have <code>Storage</code> <code>Class</code> of <code>PushConstant</code>
 unless <a href="../chapters/features.html#features-shaderUntypedPointers" class="xref page"><code>shaderUntypedPointers</code></a>
-is <code>VK_TRUE</code> and they are accessed in:</p>
+is <a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a> and they are accessed in:</p>
 <div class="ulist">
 <ul>
 <li>
 <p>32-bit multiples, or</p>
 </li>
 <li>
-<p>16-bit multiples if <a href="../chapters/features.html#features-storagePushConstant16" class="xref page">     <code>storagePushConstant16</code></a> is <code>VK_TRUE</code>.</p>
+<p>16-bit multiples if <a href="../chapters/features.html#features-storagePushConstant16" class="xref page">     <code>storagePushConstant16</code></a> is <a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>.</p>
 </li>
 </ul>
 </div>
@@ -4460,11 +4574,11 @@ is <code>VK_TRUE</code> and they are accessed in:</p>
 <li>
 <p><a id="VUID-RuntimeSpirv-workgroupMemoryExplicitLayout8BitAccess-10756" href="#VUID-RuntimeSpirv-workgroupMemoryExplicitLayout8BitAccess-10756"></a> <span class="vuid">VUID-RuntimeSpirv-workgroupMemoryExplicitLayout8BitAccess-10756</span><br>
 
-If <a href="../chapters/features.html#features-workgroupMemoryExplicitLayout8BitAccess" class="xref page">    <code>workgroupMemoryExplicitLayout8BitAccess</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/features.html#features-workgroupMemoryExplicitLayout8BitAccess" class="xref page">    <code>workgroupMemoryExplicitLayout8BitAccess</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 objects in the <code>Workgroup</code> <code>Storage</code> <code>Class</code> with the <code>Block</code>
 decoration <strong>must</strong> not have an 8-bit integer element
 unless <a href="../chapters/features.html#features-shaderUntypedPointers" class="xref page"><code>shaderUntypedPointers</code></a>
-is <code>VK_TRUE</code> and they are accessed in:</p>
+is <a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a> and they are accessed in:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -4472,7 +4586,7 @@ is <code>VK_TRUE</code> and they are accessed in:</p>
 </li>
 <li>
 <p>16-bit multiples if
-<a href="../chapters/features.html#features-workgroupMemoryExplicitLayout16BitAccess" class="xref page">     <code>workgroupMemoryExplicitLayout16BitAccess</code></a> is <code>VK_TRUE</code></p>
+<a href="../chapters/features.html#features-workgroupMemoryExplicitLayout16BitAccess" class="xref page">     <code>workgroupMemoryExplicitLayout16BitAccess</code></a> is <a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a></p>
 </li>
 </ul>
 </div>
@@ -4481,7 +4595,7 @@ is <code>VK_TRUE</code> and they are accessed in:</p>
 <p><a id="VUID-RuntimeSpirv-storageBuffer16BitAccess-11161" href="#VUID-RuntimeSpirv-storageBuffer16BitAccess-11161"></a> <span class="vuid">VUID-RuntimeSpirv-storageBuffer16BitAccess-11161</span><br>
 
 If <a href="../chapters/features.html#features-storageBuffer16BitAccess" class="xref page"><code>storageBuffer16BitAccess</code></a>
-is <code>VK_FALSE</code>, then objects containing 16-bit integer or 16-bit
+is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then objects containing 16-bit integer or 16-bit
 floating-point elements <strong>must</strong> not have <code>Storage</code> <code>Class</code> of
 <code>StorageBuffer</code>, <code>ShaderRecordBufferKHR</code>, or
 <code>PhysicalStorageBuffer</code>
@@ -4490,12 +4604,12 @@ unless:</p>
 <ul>
 <li>
 <p><a href="../chapters/features.html#features-storageBuffer8BitAccess" class="xref page"><code>storageBuffer8BitAccess</code></a> is
-<code>VK_TRUE</code>, or</p>
+<a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, or</p>
 </li>
 <li>
 <p>the elements are accessed in 32-bit multiples if
 <a href="../chapters/features.html#features-shaderUntypedPointers" class="xref page"><code>shaderUntypedPointers</code></a> is
-<code>VK_TRUE</code>.</p>
+<a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>.</p>
 </li>
 </ul>
 </div>
@@ -4503,7 +4617,7 @@ unless:</p>
 <li>
 <p><a id="VUID-RuntimeSpirv-uniformAndStorageBuffer16BitAccess-06332" href="#VUID-RuntimeSpirv-uniformAndStorageBuffer16BitAccess-06332"></a> <span class="vuid">VUID-RuntimeSpirv-uniformAndStorageBuffer16BitAccess-06332</span><br>
 
-If <a href="../chapters/features.html#features-uniformAndStorageBuffer16BitAccess" class="xref page">    <code>uniformAndStorageBuffer16BitAccess</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/features.html#features-uniformAndStorageBuffer16BitAccess" class="xref page">    <code>uniformAndStorageBuffer16BitAccess</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 objects in the <code>Uniform</code> <code>Storage</code> <code>Class</code> with the <code>Block</code>
 decoration <strong>must</strong> not have 16-bit integer or 16-bit floating-point
 members
@@ -4511,12 +4625,12 @@ unless:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../chapters/features.html#features-uniformAndStorageBuffer8BitAccess" class="xref page">     <code>uniformAndStorageBuffer8BitAccess</code></a> is <code>VK_TRUE</code>, or</p>
+<p><a href="../chapters/features.html#features-uniformAndStorageBuffer8BitAccess" class="xref page">     <code>uniformAndStorageBuffer8BitAccess</code></a> is <a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, or</p>
 </li>
 <li>
 <p>members are accessed in 32-bit multiples and
 <a href="../chapters/features.html#features-shaderUntypedPointers" class="xref page"><code>shaderUntypedPointers</code></a> is
-<code>VK_TRUE</code></p>
+<a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a></p>
 </li>
 </ul>
 </div>
@@ -4525,7 +4639,7 @@ unless:</p>
 <p><a id="VUID-RuntimeSpirv-storagePushConstant16-06333" href="#VUID-RuntimeSpirv-storagePushConstant16-06333"></a> <span class="vuid">VUID-RuntimeSpirv-storagePushConstant16-06333</span><br>
 
 If <a href="../chapters/features.html#features-storagePushConstant16" class="xref page"><code>storagePushConstant16</code></a> is
-<code>VK_FALSE</code>, then objects containing 16-bit integer or 16-bit
+<a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then objects containing 16-bit integer or 16-bit
 floating-point elements <strong>must</strong> not have <code>Storage</code> <code>Class</code> of
 <code>PushConstant</code>
 unless:</p>
@@ -4533,12 +4647,12 @@ unless:</p>
 <ul>
 <li>
 <p><a href="../chapters/features.html#features-storagePushConstant8" class="xref page"><code>StoragePushConstant8</code></a> is
-<code>VK_TRUE</code>, or</p>
+<a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, or</p>
 </li>
 <li>
 <p>elements are accessed in 32-bit multiples if
 <a href="../chapters/features.html#features-shaderUntypedPointers" class="xref page"><code>shaderUntypedPointers</code></a> is
-<code>VK_TRUE</code></p>
+<a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a></p>
 </li>
 </ul>
 </div>
@@ -4547,7 +4661,7 @@ unless:</p>
 <p><a id="VUID-RuntimeSpirv-storageInputOutput16-11162" href="#VUID-RuntimeSpirv-storageInputOutput16-11162"></a> <span class="vuid">VUID-RuntimeSpirv-storageInputOutput16-11162</span><br>
 
 If <a href="../chapters/features.html#features-storageInputOutput16" class="xref page"><code>storageInputOutput16</code></a> is
-<code>VK_FALSE</code>, then objects containing 16-bit integer or 16-bit
+<a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then objects containing 16-bit integer or 16-bit
 floating-point elements <strong>must</strong> not have storage class of <strong>Input</strong> or
 <strong>Output</strong></p>
 </li>
@@ -4560,7 +4674,7 @@ not have storage class of <strong>Input</strong> or <strong>Output</strong></p>
 <li>
 <p><a id="VUID-RuntimeSpirv-workgroupMemoryExplicitLayout16BitAccess-10757" href="#VUID-RuntimeSpirv-workgroupMemoryExplicitLayout16BitAccess-10757"></a> <span class="vuid">VUID-RuntimeSpirv-workgroupMemoryExplicitLayout16BitAccess-10757</span><br>
 
-If <a href="../chapters/features.html#features-workgroupMemoryExplicitLayout16BitAccess" class="xref page">    <code>workgroupMemoryExplicitLayout16BitAccess</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/features.html#features-workgroupMemoryExplicitLayout16BitAccess" class="xref page">    <code>workgroupMemoryExplicitLayout16BitAccess</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 objects in the <code>Workgroup</code> <code>Storage</code> <code>Class</code> with the <code>Block</code>
 decoration <strong>must</strong> not have an 16-bit integer or 16-bit floating-point
 elements
@@ -4568,12 +4682,12 @@ unless:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../chapters/features.html#features-workgroupMemoryExplicitLayout8BitAccess" class="xref page">     <code>workgroupMemoryExplicitLayout8BitAccess</code></a> is <code>VK_TRUE</code>, or</p>
+<p><a href="../chapters/features.html#features-workgroupMemoryExplicitLayout8BitAccess" class="xref page">     <code>workgroupMemoryExplicitLayout8BitAccess</code></a> is <a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, or</p>
 </li>
 <li>
 <p>elements are accessed in 32-bit multiples if
 <a href="../chapters/features.html#features-shaderUntypedPointers" class="xref page"><code>shaderUntypedPointers</code></a> is
-<code>VK_TRUE</code></p>
+<a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a></p>
 </li>
 </ul>
 </div>
@@ -4639,7 +4753,7 @@ vertex, tessellation, and geometry stages <strong>must</strong> be decorated wit
 <li>
 <p><a id="VUID-RuntimeSpirv-None-06342" href="#VUID-RuntimeSpirv-None-06342"></a> <span class="vuid">VUID-RuntimeSpirv-None-06342</span><br>
 
-If <a href="../chapters/devsandqueues.html#limits-subgroupQuadOperationsInAllStages" class="xref page">    <code>subgroupQuadOperationsInAllStages</code></a> is <code>VK_FALSE</code>, then
+If <a href="../chapters/devsandqueues.html#limits-subgroupQuadOperationsInAllStages" class="xref page">    <code>subgroupQuadOperationsInAllStages</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then
 <a href="../chapters/limits.html#features-subgroup-quad" class="xref page">quad subgroup operations</a> <strong>must</strong> not be used
 except for in fragment and compute stages</p>
 </li>
@@ -4752,14 +4866,14 @@ for the current committed intersection with the same ray query object</p>
 
 For <code>OpRayQueryGenerateIntersectionKHR</code> instructions,
 <code>Acceleration</code> <code>Structure</code> <strong>must</strong> not be built with
-<code>VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV</code> in <code>flags</code></p>
+<a href="../chapters/resources.html#VkBuildAccelerationStructureFlagBitsNV" class="xref page">VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV</a> in <code>flags</code></p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-flags-08761" href="#VUID-RuntimeSpirv-flags-08761"></a> <span class="vuid">VUID-RuntimeSpirv-flags-08761</span><br>
 
 For <code>OpRayQueryGetIntersectionTriangleVertexPositionsKHR</code>
 instructions, <code>Acceleration</code> <code>Structure</code> <strong>must</strong> have been built
-with <code>VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR</code> in
+with <a href="../chapters/resources.html#VkBuildAccelerationStructureFlagBitsNV" class="xref page">VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR</a> in
 <code>flags</code></p>
 </li>
 <li>
@@ -4800,14 +4914,14 @@ contain more than one of <code>OpaqueKHR</code>, <code>NoOpaqueKHR</code>,
 
 For <code>OpTraceRayKHR</code> instructions, if the <code>Rayflags</code> operand
 contains <code>SkipTrianglesKHR</code>, the pipeline <strong>must</strong> not have been created
-with <code>VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR</code> set</p>
+with <a href="../chapters/pipelines.html#VkPipelineCreateFlagBits" class="xref page">VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR</a> set</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-OpTraceRayKHR-06554" href="#VUID-RuntimeSpirv-OpTraceRayKHR-06554"></a> <span class="vuid">VUID-RuntimeSpirv-OpTraceRayKHR-06554</span><br>
 
 For <code>OpTraceRayKHR</code> instructions, if the <code>Rayflags</code> operand
 contains <code>SkipAABBsKHR</code>, the pipeline <strong>must</strong> not have been created
-with <code>VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR</code> set</p>
+with <a href="../chapters/pipelines.html#VkPipelineCreateFlagBits" class="xref page">VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR</a> set</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-OpTraceRayKHR-06357" href="#VUID-RuntimeSpirv-OpTraceRayKHR-06357"></a> <span class="vuid">VUID-RuntimeSpirv-OpTraceRayKHR-06357</span><br>
@@ -4848,9 +4962,9 @@ or <code>OpTraceRayMotionNV</code>
 <p><a id="VUID-RuntimeSpirv-OpTraceRayKHR-06360" href="#VUID-RuntimeSpirv-OpTraceRayKHR-06360"></a> <span class="vuid">VUID-RuntimeSpirv-OpTraceRayKHR-06360</span><br>
 
 For <code>OpTraceRayKHR</code> instructions, if <code>Acceleration</code> <code>Structure</code>
-was built with <code>VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV</code> in
+was built with <a href="../chapters/resources.html#VkBuildAccelerationStructureFlagBitsNV" class="xref page">VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV</a> in
 <code>flags</code>, the pipeline <strong>must</strong> have been created with
-<code>VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV</code> set</p>
+<a href="../chapters/pipelines.html#VkPipelineCreateFlagBits" class="xref page">VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV</a> set</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-OpTraceRayMotionNV-06361" href="#VUID-RuntimeSpirv-OpTraceRayMotionNV-06361"></a> <span class="vuid">VUID-RuntimeSpirv-OpTraceRayMotionNV-06361</span><br>
@@ -4884,7 +4998,7 @@ contain NaNs</p>
 For <code>OpTraceRayMotionNV</code> instructions, <code>Acceleration</code>
 <code>Structure</code> <strong>must</strong> be an acceleration structure built as a
 <a href="../chapters/accelstructures.html#acceleration-structure-top-level" class="xref page">top-level acceleration structure</a>
-with <code>VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV</code> in <code>flags</code></p>
+with <a href="../chapters/resources.html#VkBuildAccelerationStructureFlagBitsNV" class="xref page">VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV</a> in <code>flags</code></p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-OpTraceRayMotionNV-06366" href="#VUID-RuntimeSpirv-OpTraceRayMotionNV-06366"></a> <span class="vuid">VUID-RuntimeSpirv-OpTraceRayMotionNV-06366</span><br>
@@ -4896,7 +5010,7 @@ between 0.0 and 1.0</p>
 <p><a id="VUID-RuntimeSpirv-OpTraceRayMotionNV-06367" href="#VUID-RuntimeSpirv-OpTraceRayMotionNV-06367"></a> <span class="vuid">VUID-RuntimeSpirv-OpTraceRayMotionNV-06367</span><br>
 
 For <code>OpTraceRayMotionNV</code> instructions the pipeline <strong>must</strong> have been
-created with <code>VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV</code>
+created with <a href="../chapters/pipelines.html#VkPipelineCreateFlagBits" class="xref page">VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV</a>
 set</p>
 </li>
 <li>
@@ -4904,9 +5018,9 @@ set</p>
 
 For <code>OpHitObjectTraceRayMotionNV</code> instructions, if <code>Acceleration</code>
 <code>Structure</code> was built with
-<code>VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV</code> in <code>flags</code>, the
+<a href="../chapters/resources.html#VkBuildAccelerationStructureFlagBitsNV" class="xref page">VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV</a> in <code>flags</code>, the
 pipeline <strong>must</strong> have been created with
-<code>VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV</code> set</p>
+<a href="../chapters/pipelines.html#VkPipelineCreateFlagBits" class="xref page">VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV</a> set</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-OpHitObjectTraceRayNV-07705" href="#VUID-RuntimeSpirv-OpHitObjectTraceRayNV-07705"></a> <span class="vuid">VUID-RuntimeSpirv-OpHitObjectTraceRayNV-07705</span><br>
@@ -4942,7 +5056,7 @@ instructions, <code>RayOrigin</code>, <code>RayDirection</code>, <code>RayTmin</
 For <code>OpHitObjectTraceRayMotionNV</code> instructions, <code>Acceleration</code>
 <code>Structure</code> <strong>must</strong> be an acceleration structure built as a
 <a href="../chapters/accelstructures.html#acceleration-structure-top-level" class="xref page">top-level acceleration structure</a>
-with <code>VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV</code> in <code>flags</code></p>
+with <a href="../chapters/resources.html#VkBuildAccelerationStructureFlagBitsNV" class="xref page">VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV</a> in <code>flags</code></p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-OpHitObjectTraceRayNV-07710" href="#VUID-RuntimeSpirv-OpHitObjectTraceRayNV-07710"></a> <span class="vuid">VUID-RuntimeSpirv-OpHitObjectTraceRayNV-07710</span><br>
@@ -4955,7 +5069,7 @@ instructions the <code>time</code> operand <strong>must</strong> be between 0.0 
 
 For <code>OpHitObjectTraceRayMotionNV</code> instructions the pipeline <strong>must</strong>
 have been created with
-<code>VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV</code> set</p>
+<a href="../chapters/pipelines.html#VkPipelineCreateFlagBits" class="xref page">VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV</a> set</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-OpHitObjectTraceRayNV-07712" href="#VUID-RuntimeSpirv-OpHitObjectTraceRayNV-07712"></a> <span class="vuid">VUID-RuntimeSpirv-OpHitObjectTraceRayNV-07712</span><br>
@@ -4986,7 +5100,7 @@ of <code>OpaqueKHR</code>, <code>NoOpaqueKHR</code>, <code>CullOpaqueKHR</code>,
 For <code>OpHitObjectTraceRayNV</code> and <code>OpHitObjectTraceRayMotionNV</code>
 instructions, if the <code>Rayflags</code> operand contains
 <code>SkipTrianglesKHR</code>, the pipeline <strong>must</strong> not have been created with
-<code>VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR</code> set</p>
+<a href="../chapters/pipelines.html#VkPipelineCreateFlagBits" class="xref page">VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR</a> set</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-OpHitObjectTraceRayNV-07716" href="#VUID-RuntimeSpirv-OpHitObjectTraceRayNV-07716"></a> <span class="vuid">VUID-RuntimeSpirv-OpHitObjectTraceRayNV-07716</span><br>
@@ -4994,7 +5108,7 @@ instructions, if the <code>Rayflags</code> operand contains
 For <code>OpHitObjectTraceRayNV</code> and <code>OpHitObjectTraceRayMotionNV</code>
 instructions, if the <code>Rayflags</code> operand contains <code>SkipAABBsKHR</code>,
 the pipeline <strong>must</strong> not have been created with
-<code>VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR</code> set</p>
+<a href="../chapters/pipelines.html#VkPipelineCreateFlagBits" class="xref page">VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR</a> set</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-flags-11875" href="#VUID-RuntimeSpirv-flags-11875"></a> <span class="vuid">VUID-RuntimeSpirv-flags-11875</span><br>
@@ -5002,9 +5116,9 @@ the pipeline <strong>must</strong> not have been created with
 For <code>OpHitObjectTraceRayMotionEXT</code> and
 <code>OpHitObjectTraceMotionReorderExecuteEXT</code> instructions, if
 <code>Acceleration</code> <code>Structure</code> was built with
-<code>VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV</code> in <code>flags</code>, the
+<a href="../chapters/resources.html#VkBuildAccelerationStructureFlagBitsNV" class="xref page">VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV</a> in <code>flags</code>, the
 pipeline <strong>must</strong> have been created with
-<code>VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV</code> set</p>
+<a href="../chapters/pipelines.html#VkPipelineCreateFlagBits" class="xref page">VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV</a> set</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-flags-11876" href="#VUID-RuntimeSpirv-flags-11876"></a> <span class="vuid">VUID-RuntimeSpirv-flags-11876</span><br>
@@ -5012,7 +5126,7 @@ pipeline <strong>must</strong> have been created with
 For <code>OpHitObjectTraceRayMotionEXT</code> and
 <code>OpHitObjectTraceMotionReorderExecuteEXT</code> instructions,
 <code>Acceleration</code> <code>Structure</code> <strong>must</strong> be an acceleration structure
-built as a <a href="../chapters/accelstructures.html#acceleration-structure-top-level" class="xref page">top-level acceleration    structure</a> with <code>VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV</code> in
+built as a <a href="../chapters/accelstructures.html#acceleration-structure-top-level" class="xref page">top-level acceleration    structure</a> with <a href="../chapters/resources.html#VkBuildAccelerationStructureFlagBitsNV" class="xref page">VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV</a> in
 <code>flags</code></p>
 </li>
 <li>
@@ -5021,7 +5135,7 @@ built as a <a href="../chapters/accelstructures.html#acceleration-structure-top-
 For <code>OpHitObjectTraceRayMotionEXT</code> and
 <code>OpHitObjectTraceMotionReorderExecuteEXT</code> instructions, the pipeline
 <strong>must</strong> have been created with
-<code>VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV</code> set</p>
+<a href="../chapters/pipelines.html#VkPipelineCreateFlagBits" class="xref page">VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV</a> set</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-OpHitObjectTraceRayEXT-11878" href="#VUID-RuntimeSpirv-OpHitObjectTraceRayEXT-11878"></a> <span class="vuid">VUID-RuntimeSpirv-OpHitObjectTraceRayEXT-11878</span><br>
@@ -5112,7 +5226,7 @@ For <code>OpHitObjectTraceRayEXT</code>,
 and <code>OpHitObjectTraceReorderExecuteEXT</code> instructions, if the
 <code>Rayflags</code> operand contains <code>SkipTrianglesKHR</code>, the pipeline <strong>must</strong>
 not have been created with
-<code>VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR</code> set</p>
+<a href="../chapters/pipelines.html#VkPipelineCreateFlagBits" class="xref page">VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR</a> set</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-OpHitObjectTraceRayEXT-11887" href="#VUID-RuntimeSpirv-OpHitObjectTraceRayEXT-11887"></a> <span class="vuid">VUID-RuntimeSpirv-OpHitObjectTraceRayEXT-11887</span><br>
@@ -5123,7 +5237,7 @@ For <code>OpHitObjectTraceRayEXT</code>,
 and <code>OpHitObjectTraceReorderExecuteEXT</code> instructions, if the
 <code>Rayflags</code> operand contains <code>SkipAABBsKHR</code>, the pipeline <strong>must</strong> not
 have been created with
-<code>VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR</code> set</p>
+<a href="../chapters/pipelines.html#VkPipelineCreateFlagBits" class="xref page">VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR</a> set</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-x-06429" href="#VUID-RuntimeSpirv-x-06429"></a> <span class="vuid">VUID-RuntimeSpirv-x-06429</span><br>
@@ -5163,9 +5277,9 @@ If <code>Execution</code> <code>Mode</code> <code>LocalSizeId</code> is used, <a
 <p><a id="VUID-RuntimeSpirv-maintenance4-06817" href="#VUID-RuntimeSpirv-maintenance4-06817"></a> <span class="vuid">VUID-RuntimeSpirv-maintenance4-06817</span><br>
 
 If the <a href="../chapters/features.html#features-maintenance4" class="xref page"><code>maintenance4</code></a> feature is not
-enabled, any <code>OpTypeVector</code> output interface variables <strong>must</strong> not have
-a higher <code>Component</code> <code>Count</code> than a matching <code>OpTypeVector</code>
-input interface variable</p>
+enabled, any vector type output interface variables <strong>must</strong> not have a
+higher <code>Component</code> <code>Count</code> than a matching vector type input
+interface variable</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-OpEntryPoint-08743" href="#VUID-RuntimeSpirv-OpEntryPoint-08743"></a> <span class="vuid">VUID-RuntimeSpirv-OpEntryPoint-08743</span><br>
@@ -5277,20 +5391,20 @@ than or equal to <a href="../chapters/limits.html#limits-maxTexelGatherOffset" c
 
 If an <code>OpTypeImage</code> has an <code>MS</code> operand 0, its bound image <strong>must</strong>
 have been created with <a href="../chapters/resources.html#VkImageCreateInfo" class="xref page">VkImageCreateInfo</a>::<code>samples</code> as
-<code>VK_SAMPLE_COUNT_1_BIT</code></p>
+<a href="../chapters/limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_1_BIT</a></p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-samples-08726" href="#VUID-RuntimeSpirv-samples-08726"></a> <span class="vuid">VUID-RuntimeSpirv-samples-08726</span><br>
 
 If an <code>OpTypeImage</code> has an <code>MS</code> operand 1, its bound image <strong>must</strong>
 not have been created with <a href="../chapters/resources.html#VkImageCreateInfo" class="xref page">VkImageCreateInfo</a>::<code>samples</code> as
-<code>VK_SAMPLE_COUNT_1_BIT</code></p>
+<a href="../chapters/limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_1_BIT</a></p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-SampleRateShading-06378" href="#VUID-RuntimeSpirv-SampleRateShading-06378"></a> <span class="vuid">VUID-RuntimeSpirv-SampleRateShading-06378</span><br>
 
 If the subpass description contains
-<code>VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT</code>, then the SPIR-V
+<a href="../chapters/renderpass.html#VkSubpassDescriptionFlagBits" class="xref page">VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT</a>, then the SPIR-V
 fragment shader Capability <code>SampleRateShading</code> <strong>must</strong> not be enabled</p>
 </li>
 <li>
@@ -5346,24 +5460,24 @@ If the <a href="../chapters/features.html#features-shaderEarlyAndLateFragmentTes
 <code>StencilRefLessBackEXT</code> <code>Execution</code> <code>Mode</code> <strong>must</strong> not be used</p>
 </li>
 <li>
-<p><a id="VUID-RuntimeSpirv-OpImageWeightedSampleQCOM-06979" href="#VUID-RuntimeSpirv-OpImageWeightedSampleQCOM-06979"></a> <span class="vuid">VUID-RuntimeSpirv-OpImageWeightedSampleQCOM-06979</span><br>
+<p><a id="VUID-RuntimeSpirv-OpImageSampleWeightedQCOM-06979" href="#VUID-RuntimeSpirv-OpImageSampleWeightedQCOM-06979"></a> <span class="vuid">VUID-RuntimeSpirv-OpImageSampleWeightedQCOM-06979</span><br>
 
-If an <code>OpImageWeightedSampleQCOM</code> operation is used, then the
+If an <code>OpImageSampleWeightedQCOM</code> operation is used, then the
 <code>Texture</code> <code>Sampled</code> <code>Image</code> and <code>Weight</code> <code>Image</code>
 parameters <strong>must</strong> both be <em>dynamically uniform</em> for the quad</p>
 </li>
 <li>
-<p><a id="VUID-RuntimeSpirv-OpImageWeightedSampleQCOM-06980" href="#VUID-RuntimeSpirv-OpImageWeightedSampleQCOM-06980"></a> <span class="vuid">VUID-RuntimeSpirv-OpImageWeightedSampleQCOM-06980</span><br>
+<p><a id="VUID-RuntimeSpirv-OpImageSampleWeightedQCOM-06980" href="#VUID-RuntimeSpirv-OpImageSampleWeightedQCOM-06980"></a> <span class="vuid">VUID-RuntimeSpirv-OpImageSampleWeightedQCOM-06980</span><br>
 
-If an <code>OpImageWeightedSampleQCOM</code> operation is used, then the
+If an <code>OpImageSampleWeightedQCOM</code> operation is used, then the
 <code>Weight</code> <code>Image</code> parameter <strong>must</strong> be of <code>Storage</code> <code>Class</code>
 <code>UniformConstant</code> and type <code>OpTypeImage</code> with <code>Depth</code>=0,
 <code>Dim</code>=<code>2D</code>, <code>Arrayed</code>=1, <code>MS</code>=0, and <code>Sampled</code>=1</p>
 </li>
 <li>
-<p><a id="VUID-RuntimeSpirv-OpImageWeightedSampleQCOM-06981" href="#VUID-RuntimeSpirv-OpImageWeightedSampleQCOM-06981"></a> <span class="vuid">VUID-RuntimeSpirv-OpImageWeightedSampleQCOM-06981</span><br>
+<p><a id="VUID-RuntimeSpirv-OpImageSampleWeightedQCOM-06981" href="#VUID-RuntimeSpirv-OpImageSampleWeightedQCOM-06981"></a> <span class="vuid">VUID-RuntimeSpirv-OpImageSampleWeightedQCOM-06981</span><br>
 
-If an <code>OpImageWeightedSampleQCOM</code> operation is used, then the
+If an <code>OpImageSampleWeightedQCOM</code> operation is used, then the
 <code>Weight</code> <code>Image</code> parameter <strong>must</strong> be decorated with
 <code>WeightTextureQCOM</code></p>
 </li>
@@ -5407,7 +5521,7 @@ If an <code>OpImageBlockMatchSSDQCOM</code> or <code>OpImageBlockMatchSADQCOM</c
 operation is used, then <code>target</code> <code>sampled</code> <code>image</code> and
 <code>reference</code> <code>sampled</code> <code>image</code> parameters <strong>must</strong> have been
 created with a sampler object with <code>unnormalizedCoordinates</code> equal
-to <code>VK_TRUE</code></p>
+to <a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a></p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-OpImageBlockMatchSSDQCOM-06987" href="#VUID-RuntimeSpirv-OpImageBlockMatchSSDQCOM-06987"></a> <span class="vuid">VUID-RuntimeSpirv-OpImageBlockMatchSSDQCOM-06987</span><br>
@@ -5416,7 +5530,7 @@ If an <code>OpImageBlockMatchSSDQCOM</code> or <code>OpImageBlockMatchSADQCOM</c
 operation is used, then <code>target</code> <code>sampled</code> <code>image</code> and
 <code>reference</code> <code>sampled</code> <code>image</code> parameters <strong>must</strong> have been
 created with a sampler object with <code>unnormalizedCoordinates</code> equal
-to <code>VK_TRUE</code></p>
+to <a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a></p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-OpImageBlockMatchSSDQCOM-06988" href="#VUID-RuntimeSpirv-OpImageBlockMatchSSDQCOM-06988"></a> <span class="vuid">VUID-RuntimeSpirv-OpImageBlockMatchSSDQCOM-06988</span><br>
@@ -5583,7 +5697,7 @@ If a <code>OpImageBlockMatchWindow*QCOM</code> or
 <code>OpImageBlockMatchGather*QCOM</code> operation is used, then <code>target</code>
 <code>sampled</code> <code>image</code> and <code>reference</code> <code>sampled</code> <code>image</code>
 parameters <strong>must</strong> have been created with a sampler object with
-<code>unnormalizedCoordinates</code> equal to <code>VK_TRUE</code></p>
+<code>unnormalizedCoordinates</code> equal to <a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a></p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-OpImageBlockMatchWindow-09224" href="#VUID-RuntimeSpirv-OpImageBlockMatchWindow-09224"></a> <span class="vuid">VUID-RuntimeSpirv-OpImageBlockMatchWindow-09224</span><br>
@@ -5592,7 +5706,7 @@ If a <code>OpImageBlockMatchWindow*QCOM</code> or
 <code>OpImageBlockMatchGather*QCOM</code> operation is used, then <code>target</code>
 <code>sampled</code> <code>image</code> and <code>reference</code> <code>sampled</code> <code>image</code>
 parameters <strong>must</strong> have been created with sampler object with
-<code>unnormalizedCoordinates</code> equal to <code>VK_TRUE</code></p>
+<code>unnormalizedCoordinates</code> equal to <a href="../chapters/fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a></p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-maxBlockMatchRegion-09225" href="#VUID-RuntimeSpirv-maxBlockMatchRegion-09225"></a> <span class="vuid">VUID-RuntimeSpirv-maxBlockMatchRegion-09225</span><br>
@@ -5619,7 +5733,7 @@ an entry point unless the entry point does not execute any
 <li>
 <p><a id="VUID-RuntimeSpirv-shaderSubgroupRotateClustered-09566" href="#VUID-RuntimeSpirv-shaderSubgroupRotateClustered-09566"></a> <span class="vuid">VUID-RuntimeSpirv-shaderSubgroupRotateClustered-09566</span><br>
 
-If <a href="../chapters/features.html#features-shaderSubgroupRotateClustered" class="xref page">    <code>shaderSubgroupRotateClustered</code></a> is <code>VK_FALSE</code>, then the
+If <a href="../chapters/features.html#features-shaderSubgroupRotateClustered" class="xref page">    <code>shaderSubgroupRotateClustered</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, then the
 <code>ClusterSize</code> operand to <code>OpGroupNonUniformRotateKHR</code> <strong>must</strong> not be
 used</p>
 </li>
@@ -5633,7 +5747,7 @@ if the buffer being accessed is <a href="../chapters/memory.html#memory-protecte
 <li>
 <p><a id="VUID-RuntimeSpirv-meshAndTaskShaderDerivatives-10153" href="#VUID-RuntimeSpirv-meshAndTaskShaderDerivatives-10153"></a> <span class="vuid">VUID-RuntimeSpirv-meshAndTaskShaderDerivatives-10153</span><br>
 
-If <a href="../chapters/limits.html#limits-meshAndTaskShaderDerivatives" class="xref page">    <code>meshAndTaskShaderDerivatives</code></a> is <code>VK_FALSE</code>, the
+If <a href="../chapters/limits.html#limits-meshAndTaskShaderDerivatives" class="xref page">    <code>meshAndTaskShaderDerivatives</code></a> is <a href="../chapters/fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, the
 <code>DerivativeGroupLinearKHR</code> and <code>DerivativeGroupQuadsKHR</code> execution
 modes <strong>must</strong> not be used in the <code>MeshEXT</code>, <code>MeshNV</code>, <code>TaskEXT</code>,
 or <code>TaskNV</code> <code>Execution</code> <code>Model</code></p>
@@ -5698,9 +5812,10 @@ In compute shaders that enables SPIR-V capability <code>TileShadingQCOM</code>,
 <p><a id="VUID-RuntimeSpirv-OpImage-10706" href="#VUID-RuntimeSpirv-OpImage-10706"></a> <span class="vuid">VUID-RuntimeSpirv-OpImage-10706</span><br>
 
 An <code>OpImage</code> with <code>Storage</code> <code>Class</code> <code>TileAttachmentQCOM</code>
-<strong>must</strong> not be consumed by <code>OpImageTexelPointer</code> unless the
-<a href="../chapters/features.html#features-tileShadingFragmentStage" class="xref page">tileShadingAtomicOps</a> feature is
-enabled</p>
+<strong>must</strong> not be consumed by <code>OpImageTexelPointer</code>
+or <code>OpUntypedImageTexelPointerEXT</code>
+unless the <a href="../chapters/features.html#features-tileShadingFragmentStage" class="xref page">tileShadingAtomicOps</a>
+feature is enabled</p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-OpTypeImage-10707" href="#VUID-RuntimeSpirv-OpTypeImage-10707"></a> <span class="vuid">VUID-RuntimeSpirv-OpTypeImage-10707</span><br>
@@ -5772,11 +5887,13 @@ operations,
 <p><a id="VUID-RuntimeSpirv-Coordinate-10713" href="#VUID-RuntimeSpirv-Coordinate-10713"></a> <span class="vuid">VUID-RuntimeSpirv-Coordinate-10713</span><br>
 
 The <code>Coordinate</code> operand of any <code>OpImageRead</code>,
-<code>OpImageSparseRead</code>, <code>OpImageWrite</code>, or <code>OpImageTexelPointer</code>
-instruction that consumes an <code>OpTypeImage</code> with an image <code>Storage</code>
-<code>Class</code> <code>TileAttachmentQCOM</code> <strong>must</strong> not result in any texels
-accessed outside the boundaries of the current tile, computed as
-described in <a href="../chapters/renderpass.html#renderpass-tile-shading-offset-validation" class="xref page">Tile    Attachments</a></p>
+<code>OpImageSparseRead</code>, <code>OpImageWrite</code>,
+<code>OpUntypedImageTexelPointerEXT</code>
+or <code>OpImageTexelPointer</code> instruction that consumes an
+<code>OpTypeImage</code> with an image <code>Storage</code> <code>Class</code>
+<code>TileAttachmentQCOM</code> <strong>must</strong> not result in any texels accessed outside
+the boundaries of the current tile, computed as described in
+<a href="../chapters/renderpass.html#renderpass-tile-shading-offset-validation" class="xref page">Tile Attachments</a></p>
 </li>
 <li>
 <p><a id="VUID-RuntimeSpirv-Coordinate-10714" href="#VUID-RuntimeSpirv-Coordinate-10714"></a> <span class="vuid">VUID-RuntimeSpirv-Coordinate-10714</span><br>
@@ -6023,9 +6140,7 @@ decoration applied to the <code>OpVariable</code></p>
 applied to the <code>OpVariable</code></p>
 </li>
 <li>
-<p>its <code>arrayElement</code> member <strong>must</strong> be zero if <code>OpVariable</code> is not a
-<code>OpTypeArray</code> or if <code>OpVariable</code> is a <code>OpTypeArray</code> of
-<code>OpTypeTensorARM</code> with <code>Shape</code> present</p>
+<p>its <code>arrayElement</code> member <strong>must</strong> be zero</p>
 </li>
 <li>
 <p>its <code>pNext</code> chain <strong>must</strong> include a <a href="../chapters/resources.html#VkTensorDescriptionARM" class="xref page">VkTensorDescriptionARM</a>
@@ -6065,8 +6180,8 @@ or equal to
 <a href="#spirvenv-buffer-indexing">Buffer indexing calculations</a> <strong>must</strong> not wrap
 32 bits
 if the pipeline or shader was not created with the
-<code>VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT</code> or
-<code>VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT</code> flags and the entry point
+<a href="../chapters/pipelines.html#VkPipelineCreateFlagBits2KHR" class="xref page">VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT</a> or
+<a href="../chapters/shaders.html#VkShaderCreateFlagBitsEXT" class="xref page">VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT</a> flags and the entry point
 does not set the <code>Shader64BitIndexingEXT</code> execution mode</p>
 </li>
 <li>
@@ -6076,8 +6191,17 @@ does not set the <code>Shader64BitIndexingEXT</code> execution mode</p>
 and <code>OpUntypedArrayLengthKHR</code>
 result type <strong>must</strong> be a 32-bit integer type
 if the pipeline or shader was not compiled with the
-<code>VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT</code> or
-<code>VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT</code> flags and the entry point
+<a href="../chapters/pipelines.html#VkPipelineCreateFlagBits2KHR" class="xref page">VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT</a> or
+<a href="../chapters/shaders.html#VkShaderCreateFlagBitsEXT" class="xref page">VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT</a> flags and the entry point
+does not set the <code>Shader64BitIndexingEXT</code> execution mode</p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-OpConstantSizeOfEXT-11475" href="#VUID-RuntimeSpirv-OpConstantSizeOfEXT-11475"></a> <span class="vuid">VUID-RuntimeSpirv-OpConstantSizeOfEXT-11475</span><br>
+
+The result type of <code>OpConstantSizeOfEXT</code> <strong>must</strong> not be a 64-bit
+integer type if the pipeline or shader was not compiled with the
+<a href="../chapters/pipelines.html#VkPipelineCreateFlagBits2KHR" class="xref page">VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT</a> or
+<a href="../chapters/shaders.html#VkShaderCreateFlagBitsEXT" class="xref page">VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT</a> flags and the entry point
 does not set the <code>Shader64BitIndexingEXT</code> execution mode</p>
 </li>
 <li>
@@ -6087,8 +6211,8 @@ does not set the <code>Shader64BitIndexingEXT</code> execution mode</p>
 <code>OpCooperativeVectorMatrixMulNV</code> <code>MatrixOffset</code> and
 <code>BiasOffset</code> parameters <strong>must</strong> be 32-bit integer types
 if the pipeline or shader was not compiled with the
-<code>VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT</code> or
-<code>VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT</code> flags and the entry point
+<a href="../chapters/pipelines.html#VkPipelineCreateFlagBits2KHR" class="xref page">VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT</a> or
+<a href="../chapters/shaders.html#VkShaderCreateFlagBitsEXT" class="xref page">VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT</a> flags and the entry point
 does not set the <code>Shader64BitIndexingEXT</code> execution mode</p>
 </li>
 <li>
@@ -6099,9 +6223,232 @@ does not set the <code>Shader64BitIndexingEXT</code> execution mode</p>
 <code>OpCooperativeVectorReduceSumAccumulateNV</code> <code>Offset</code> parameters
 <strong>must</strong> be 32-bit integer types
 if the pipeline or shader was not compiled with the
-<code>VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT</code> or
-<code>VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT</code> flags and the entry point
+<a href="../chapters/pipelines.html#VkPipelineCreateFlagBits2KHR" class="xref page">VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT</a> or
+<a href="../chapters/shaders.html#VkShaderCreateFlagBitsEXT" class="xref page">VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT</a> flags and the entry point
 does not set the <code>Shader64BitIndexingEXT</code> execution mode</p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-None-12295" href="#VUID-RuntimeSpirv-None-12295"></a> <span class="vuid">VUID-RuntimeSpirv-None-12295</span><br>
+
+
+If the <a href="../chapters/features.html#features-longVector" class="xref page"><code>longVector</code></a> feature is not enabled,
+the <code>Component</code> <code>Count</code> of any vector type <strong>must</strong> be less than or
+equal to <code>4</code> and greater than <code>1</code></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-longVector-12296" href="#VUID-RuntimeSpirv-longVector-12296"></a> <span class="vuid">VUID-RuntimeSpirv-longVector-12296</span><br>
+
+If the <a href="../chapters/features.html#features-longVector" class="xref page"><code>longVector</code></a> feature is enabled, the
+<code>Component</code> <code>Count</code> of any vector type <strong>must</strong> be less than or equal
+to <a href="../chapters/limits.html#limits-maxVectorComponents" class="xref page"><code>maxVectorComponents</code></a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-Type-12297" href="#VUID-RuntimeSpirv-Type-12297"></a> <span class="vuid">VUID-RuntimeSpirv-Type-12297</span><br>
+
+Any pointer type whose <code>Type</code> parameter is a vector type with more
+than four components (or an aggregate containing such a type) <strong>must</strong> have
+<code>Storage</code> <code>Class</code> of <code>Function</code>, <code>Private</code>, <code>Uniform</code>,
+<code>Workgroup</code>, <code>StorageBuffer</code>, <code>PhysicalStorageBuffer</code>,
+<code>PushConstant</code>, or <code>ShaderRecordBufferKHR</code>.</p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-samplerDescriptorAlignment-11348" href="#VUID-RuntimeSpirv-samplerDescriptorAlignment-11348"></a> <span class="vuid">VUID-RuntimeSpirv-samplerDescriptorAlignment-11348</span><br>
+
+If the <code>Result</code> <code>Type</code> operand of <code>OpLoad</code> is
+<code>OpTypeSampler</code>, and <code>Pointer</code> is derived from a variable
+decorated with <code>SamplerHeapEXT</code>, it <strong>must</strong> be at an offset from the
+base that is a multiple of <a href="../chapters/limits.html#limits-samplerDescriptorAlignment" class="xref page">    <code>samplerDescriptorAlignment</code></a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-imageDescriptorAlignment-11349" href="#VUID-RuntimeSpirv-imageDescriptorAlignment-11349"></a> <span class="vuid">VUID-RuntimeSpirv-imageDescriptorAlignment-11349</span><br>
+
+If the <code>Result</code> <code>Type</code> operand of <code>OpLoad</code> is <code>OpTypeImage</code>,
+and <code>Pointer</code> is derived from a variable decorated with
+<code>ResourceHeapEXT</code>, it <strong>must</strong> be at an offset from the base that is a
+multiple of <a href="../chapters/limits.html#limits-imageDescriptorAlignment" class="xref page">    <code>imageDescriptorAlignment</code></a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-imageDescriptorAlignment-11383" href="#VUID-RuntimeSpirv-imageDescriptorAlignment-11383"></a> <span class="vuid">VUID-RuntimeSpirv-imageDescriptorAlignment-11383</span><br>
+
+If the <code>Image</code> operand of <code>OpImageTexelPointer</code>
+or <code>OpUntypedImageTexelPointerEXT</code>
+is derived from a variable decorated with <code>ResourceHeapEXT</code>, it <strong>must</strong>
+be at an offset from the base that is a multiple of
+<a href="../chapters/limits.html#limits-imageDescriptorAlignment" class="xref page"><code>imageDescriptorAlignment</code></a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-Result-11350" href="#VUID-RuntimeSpirv-Result-11350"></a> <span class="vuid">VUID-RuntimeSpirv-Result-11350</span><br>
+
+If the <code>Result</code> <code>Type</code> operand of <code>OpLoad</code> is
+<code>OpTypeAccelerationStructureKHR</code> and <code>Pointer</code> is derived from a
+variable decorated with <code>ResourceHeapEXT</code>, it <strong>must</strong> be at an offset
+from the base that is a multiple of <a href="../chapters/limits.html#limits-bufferDescriptorAlignment" class="xref page">    <code>bufferDescriptorAlignment</code></a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-bufferDescriptorAlignment-11384" href="#VUID-RuntimeSpirv-bufferDescriptorAlignment-11384"></a> <span class="vuid">VUID-RuntimeSpirv-bufferDescriptorAlignment-11384</span><br>
+
+The <code>Buffer</code> operand of <code>OpBufferPointerEXT</code> <strong>must</strong> be at an offset
+from the base of the <code>ResourceHeapEXT</code> that is a multiple of
+<a href="../chapters/limits.html#limits-bufferDescriptorAlignment" class="xref page"><code>bufferDescriptorAlignment</code></a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-tensorDescriptorAlignment-11481" href="#VUID-RuntimeSpirv-tensorDescriptorAlignment-11481"></a> <span class="vuid">VUID-RuntimeSpirv-tensorDescriptorAlignment-11481</span><br>
+
+If the <code>Result</code> <code>Type</code> operand of <code>OpLoad</code> is
+<code>OpTypeTensorARM</code> and <code>Pointer</code> is derived from a variable
+decorated with <code>ResourceHeapEXT</code>, it <strong>must</strong> be at an offset from the
+base that is a multiple of <a href="../chapters/limits.html#limits-tensorDescriptorAlignment" class="xref page">    <code>tensorDescriptorAlignment</code></a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-samplerDescriptorAlignment-11476" href="#VUID-RuntimeSpirv-samplerDescriptorAlignment-11476"></a> <span class="vuid">VUID-RuntimeSpirv-samplerDescriptorAlignment-11476</span><br>
+
+If a <code>OpTypeSampler</code> member of a struct is decorated with <code>Offset</code>
+or <code>OffsetIdEXT</code>, the <code>Byte</code> <code>Offset</code> value must be a multiple
+of
+<a href="../chapters/limits.html#limits-samplerDescriptorAlignment" class="xref page"><code>samplerDescriptorAlignment</code></a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-imageDescriptorAlignment-11477" href="#VUID-RuntimeSpirv-imageDescriptorAlignment-11477"></a> <span class="vuid">VUID-RuntimeSpirv-imageDescriptorAlignment-11477</span><br>
+
+If a <code>OpTypeImage</code> member of a struct is decorated with <code>Offset</code>
+or <code>OffsetIdEXT</code>, the <code>Byte</code> <code>Offset</code> value must be a multiple
+of <a href="../chapters/limits.html#limits-imageDescriptorAlignment" class="xref page"><code>imageDescriptorAlignment</code></a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-bufferDescriptorAlignment-11478" href="#VUID-RuntimeSpirv-bufferDescriptorAlignment-11478"></a> <span class="vuid">VUID-RuntimeSpirv-bufferDescriptorAlignment-11478</span><br>
+
+If a <code>OpTypeBufferEXT</code> member of a struct is decorated with
+<code>Offset</code> or <code>OffsetIdEXT</code>, the <code>Byte</code> <code>Offset</code> value must be
+a multiple of
+<a href="../chapters/limits.html#limits-bufferDescriptorAlignment" class="xref page"><code>bufferDescriptorAlignment</code></a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-bufferDescriptorAlignment-11479" href="#VUID-RuntimeSpirv-bufferDescriptorAlignment-11479"></a> <span class="vuid">VUID-RuntimeSpirv-bufferDescriptorAlignment-11479</span><br>
+
+If a <code>OpTypeAccelerationStructureKHR</code> member of a struct is decorated
+with <code>Offset</code> or <code>OffsetIdEXT</code>, the <code>Byte</code> <code>Offset</code> value
+must be a multiple of <a href="../chapters/limits.html#limits-bufferDescriptorAlignment" class="xref page">    <code>bufferDescriptorAlignment</code></a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-tensorDescriptorAlignment-11480" href="#VUID-RuntimeSpirv-tensorDescriptorAlignment-11480"></a> <span class="vuid">VUID-RuntimeSpirv-tensorDescriptorAlignment-11480</span><br>
+
+If a <code>OpTypeTensorARM</code> member of a struct is decorated with
+<code>Offset</code> or <code>OffsetIdEXT</code>, the <code>Byte</code> <code>Offset</code> value must be
+a multiple of <a href="../chapters/limits.html#limits-tensorDescriptorAlignment" class="xref page">    <code>tensorDescriptorAlignment</code></a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-DescriptorSet-11385" href="#VUID-RuntimeSpirv-DescriptorSet-11385"></a> <span class="vuid">VUID-RuntimeSpirv-DescriptorSet-11385</span><br>
+
+If an instruction accesses memory through any resource with a
+<code>DescriptorSet</code> and <code>Binding</code> that are <a href="../chapters/descriptorheaps.html#descriptorheaps-bindings" class="xref page">    mapped</a> using <a href="../chapters/descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_DATA_EXT</a>,
+<a href="../chapters/descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT</a>,
+<a href="../chapters/descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_DATA_EXT</a>,
+<a href="../chapters/descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT</a>,
+<a href="../chapters/descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT</a>, or
+<a href="../chapters/descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_RESOURCE_HEAP_DATA_EXT</a>, the resource
+through which that memory is accessed <strong>must</strong> be determined by
+<a href="glossary.html#glossary-constant-integral-expression" class="xref page">constant integral expressions</a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-source-11387" href="#VUID-RuntimeSpirv-source-11387"></a> <span class="vuid">VUID-RuntimeSpirv-source-11387</span><br>
+
+All possible values of a variable pointer to a resource that are not
+<code>OpConstantNull</code> <strong>must</strong> either all be pointers to resources with
+<code>DescriptorSet</code> and <code>Binding</code> decorations with the same
+<a href="../chapters/descriptorheaps.html#descriptorheaps-bindings" class="xref page">mapping types</a> as specified by
+<a href="../chapters/descriptorheaps.html#VkDescriptorSetAndBindingMappingEXT" class="xref page">VkDescriptorSetAndBindingMappingEXT</a>::<code>source</code>, or all be
+pointers to resources without <code>DescriptorSet</code> and <code>Binding</code>
+decorations</p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-DescriptorSet-11388" href="#VUID-RuntimeSpirv-DescriptorSet-11388"></a> <span class="vuid">VUID-RuntimeSpirv-DescriptorSet-11388</span><br>
+
+All possible values of a variable pointer to a resource <strong>must</strong> not be
+resources with a <code>DescriptorSet</code> and <code>Binding</code> that are
+<a href="../chapters/descriptorheaps.html#descriptorheaps-bindings" class="xref page">mapped</a> using
+<a href="../chapters/descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_DATA_EXT</a>,
+<a href="../chapters/descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT</a>,
+<a href="../chapters/descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_DATA_EXT</a>,
+<a href="../chapters/descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT</a>,
+<a href="../chapters/descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT</a>, or
+<a href="../chapters/descriptorheaps.html#VkDescriptorMappingSourceEXT" class="xref page">VK_DESCRIPTOR_MAPPING_SOURCE_RESOURCE_HEAP_DATA_EXT</a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-Result-11340" href="#VUID-RuntimeSpirv-Result-11340"></a> <span class="vuid">VUID-RuntimeSpirv-Result-11340</span><br>
+
+If the <code>Result</code> <code>Type</code> operand of <code>OpLoad</code> is
+<code>OpTypeSampler</code>, and <code>Pointer</code> is derived from a variable
+decorated with <code>SamplerHeapEXT</code>, it <strong>must</strong> correspond to loading a
+descriptor matching one of the descriptor types listed in
+<a href="../chapters/interfaces.html#interfaces-resources-heap-type-correspondence" class="xref page">Heap Resource Type    Correspondence</a> for <code>OpTypeSampler</code></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-Result-11341" href="#VUID-RuntimeSpirv-Result-11341"></a> <span class="vuid">VUID-RuntimeSpirv-Result-11341</span><br>
+
+If the <code>Result</code> <code>Type</code> operand of <code>OpLoad</code> is <code>OpTypeImage</code>,
+and <code>Pointer</code> is derived from a variable decorated with
+<code>ResourceHeapEXT</code>, it <strong>must</strong> correspond to loading a descriptor
+matching one of the descriptor types listed in
+<a href="../chapters/interfaces.html#interfaces-resources-heap-type-correspondence" class="xref page">Heap Resource Type    Correspondence</a> for <code>OpTypeImage</code></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-Result-11342" href="#VUID-RuntimeSpirv-Result-11342"></a> <span class="vuid">VUID-RuntimeSpirv-Result-11342</span><br>
+
+The <code>Buffer</code> operand of <code>OpBufferPointerEXT</code> <strong>must</strong> correspond to
+accessing a descriptor matching one of the descriptor types listed in
+<a href="../chapters/interfaces.html#interfaces-resources-heap-type-correspondence" class="xref page">Heap Resource Type    Correspondence</a> for <code>OpTypePointer</code></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-Result-11343" href="#VUID-RuntimeSpirv-Result-11343"></a> <span class="vuid">VUID-RuntimeSpirv-Result-11343</span><br>
+
+If the <code>Result</code> <code>Type</code> operand of <code>OpLoad</code> is <code>OpTypeImage</code>,
+and <code>Pointer</code> is derived from a variable decorated with
+<code>ResourceHeapEXT</code>, the <code>Image</code> <code>Format</code> and <code>Sampled</code>
+<code>Type</code> of that <code>OpTypeImage</code> <strong>must</strong> correspond to a descriptor with
+a <a href="../chapters/formats.html#VkFormat" class="xref page">VkFormat</a> that matches as described by <a href="#spirvenv-image-formats">    Compatibility Between SPIR-V Image Formats and Vulkan Formats</a> and
+<a href="#spirvenv-format-type-matching">Image Format and Type Matching</a>
+Between SPIR-V Image Formats and Vulkan Formats&gt;&gt;</p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-Result-11345" href="#VUID-RuntimeSpirv-Result-11345"></a> <span class="vuid">VUID-RuntimeSpirv-Result-11345</span><br>
+
+If the <code>Result</code> <code>Type</code> operand of <code>OpLoad</code> is <code>OpTypeImage</code>,
+and <code>Pointer</code> is derived from a variable decorated with
+<code>ResourceHeapEXT</code>, the operands of that <code>OpTypeImage</code> <strong>must</strong>
+correspond to a descriptor with operands that match as described by
+<a href="../chapters/interfaces.html#interfaces-resources-heap-image-operand-correspondence" class="xref page">Heap Image    Operand Correspondence</a> and
+<a href="../chapters/interfaces.html#interfaces-resources-heap-image-dim-correspondence" class="xref page">Heap Image View    Type Dimensionality</a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-Image-11379" href="#VUID-RuntimeSpirv-Image-11379"></a> <span class="vuid">VUID-RuntimeSpirv-Image-11379</span><br>
+
+If the <code>Image</code> operand of <code>OpImageTexelPointer</code>
+or <code>OpUntypedImageTexelPointerEXT</code>
+is derived from a variable decorated with <code>ResourceHeapEXT</code>, it <strong>must</strong>
+correspond to accessing a descriptor matching one of the descriptor
+types listed in <a href="../chapters/interfaces.html#interfaces-resources-heap-type-correspondence" class="xref page">Heap    Resource Type Correspondence</a> for the <code>OpTypeImage</code> pointed to</p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-Image-11380" href="#VUID-RuntimeSpirv-Image-11380"></a> <span class="vuid">VUID-RuntimeSpirv-Image-11380</span><br>
+
+If the <code>Image</code> operand of <code>OpImageTexelPointer</code>
+or <code>OpUntypedImageTexelPointerEXT</code>
+is derived from a variable decorated with <code>ResourceHeapEXT</code>, the
+<code>Image</code> <code>Format</code> and <code>Sampled</code> <code>Type</code> of the
+<code>OpTypeImage</code> pointed to <strong>must</strong> correspond to a descriptor with a
+<a href="../chapters/formats.html#VkFormat" class="xref page">VkFormat</a> that matches as described by <a href="#spirvenv-image-formats">    Compatibility Between SPIR-V Image Formats and Vulkan Formats</a> and
+<a href="#spirvenv-format-type-matching">Image Format and Type Matching</a></p>
+</li>
+<li>
+<p><a id="VUID-RuntimeSpirv-Image-11382" href="#VUID-RuntimeSpirv-Image-11382"></a> <span class="vuid">VUID-RuntimeSpirv-Image-11382</span><br>
+
+If the <code>Image</code> operand of <code>OpImageTexelPointer</code>
+or <code>OpUntypedImageTexelPointerEXT</code>
+is derived from a variable decorated with <code>ResourceHeapEXT</code>, the
+operands of that <code>OpTypeImage</code> <strong>must</strong> correspond to a descriptor with
+operands that match as described by
+<a href="../chapters/interfaces.html#interfaces-resources-heap-image-operand-correspondence" class="xref page">Heap Image    Operand Correspondence</a> and
+<a href="../chapters/interfaces.html#interfaces-resources-heap-image-dim-correspondence" class="xref page">Heap Image View    Type Dimensionality</a></p>
 </li>
 </ul>
 </div>
@@ -6960,10 +7307,10 @@ implementation-dependent order and internal precision.</p>
 implementation-dependent order and internal precision.</p>
 </div>
 <div class="paragraph">
-<p>When <code>inputType</code> is <code>VK_COMPONENT_TYPE_FLOAT16_KHR</code> and
+<p>When <code>inputType</code> is <a href="../chapters/shaders.html#VkComponentTypeNV" class="xref page">VK_COMPONENT_TYPE_FLOAT16_KHR</a> and
 <code>inputInterpretation</code> is a lower-precision floating-point type (e.g.
-<code>VK_COMPONENT_TYPE_FLOAT_E4M3_NV</code> or
-<code>VK_COMPONENT_TYPE_FLOAT_E5M2_NV</code>), the input vector <strong>should</strong> be
+<a href="../chapters/shaders.html#VkComponentTypeNV" class="xref page">VK_COMPONENT_TYPE_FLOAT_E4M3_NV</a> or
+<a href="../chapters/shaders.html#VkComponentTypeNV" class="xref page">VK_COMPONENT_TYPE_FLOAT_E5M2_NV</a>), the input vector <strong>should</strong> be
 converted to the lower-precision type before performing the matrix-vector
 multiply, but <strong>may</strong> keep the full 16 bits of precision.</p>
 </div>
@@ -7034,8 +7381,8 @@ an offset based on offset, row, and stride parameters.</p>
 <h3 id="spirvenv-64bindexing"><a class="anchor" href="#spirvenv-64bindexing"></a>64-Bit Indexing</h3>
 <div class="paragraph">
 <p>The application <strong>can</strong> enable 64-bit indexing either by setting the flags
-<code>VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT</code> or
-<code>VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT</code> or by setting the
+<a href="../chapters/pipelines.html#VkPipelineCreateFlagBits2KHR" class="xref page">VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT</a> or
+<a href="../chapters/shaders.html#VkShaderCreateFlagBitsEXT" class="xref page">VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT</a> or by setting the
 <code>Execution</code> <code>Mode</code> <code>Shader64BitIndexingEXT</code> on the entry point,
 which will cause the implementation to use 64 bits of range for those
 addressing calculations.</p>
@@ -7377,19 +7724,19 @@ Type-Declaration Instruction, Bit Width, and Signedness from above.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1D</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_IMAGE_VIEW_TYPE_1D</code>, <code>VK_IMAGE_VIEW_TYPE_1D_ARRAY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/resources.html#VkImageViewType" class="xref page">VK_IMAGE_VIEW_TYPE_1D</a>, <a href="../chapters/resources.html#VkImageViewType" class="xref page">VK_IMAGE_VIEW_TYPE_1D_ARRAY</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2D</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_IMAGE_VIEW_TYPE_2D</code>, <code>VK_IMAGE_VIEW_TYPE_2D_ARRAY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/resources.html#VkImageViewType" class="xref page">VK_IMAGE_VIEW_TYPE_2D</a>, <a href="../chapters/resources.html#VkImageViewType" class="xref page">VK_IMAGE_VIEW_TYPE_2D_ARRAY</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3D</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_IMAGE_VIEW_TYPE_3D</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/resources.html#VkImageViewType" class="xref page">VK_IMAGE_VIEW_TYPE_3D</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cube</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_IMAGE_VIEW_TYPE_CUBE</code>, <code>VK_IMAGE_VIEW_TYPE_CUBE_ARRAY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/resources.html#VkImageViewType" class="xref page">VK_IMAGE_VIEW_TYPE_CUBE</a>, <a href="../chapters/resources.html#VkImageViewType" class="xref page">VK_IMAGE_VIEW_TYPE_CUBE_ARRAY</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -7421,167 +7768,167 @@ values as defined below:</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>R8</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R8_UNORM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R8_UNORM</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>R8Snorm</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R8_SNORM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R8_SNORM</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>R8ui</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R8_UINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R8_UINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>R8i</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R8_SINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R8_SINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rg8</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R8G8_UNORM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R8G8_UNORM</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rg8Snorm</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R8G8_SNORM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R8G8_SNORM</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rg8ui</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R8G8_UINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R8G8_UINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rg8i</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R8G8_SINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R8G8_SINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rgba8</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R8G8B8A8_UNORM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R8G8B8A8_UNORM</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rgba8Snorm</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R8G8B8A8_SNORM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R8G8B8A8_SNORM</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rgba8ui</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R8G8B8A8_UINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R8G8B8A8_UINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rgba8i</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R8G8B8A8_SINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R8G8B8A8_SINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rgb10A2</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_A2B10G10R10_UNORM_PACK32</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_A2B10G10R10_UNORM_PACK32</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rgb10a2ui</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_A2B10G10R10_UINT_PACK32</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_A2B10G10R10_UINT_PACK32</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>R16</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R16_UNORM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16_UNORM</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>R16Snorm</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R16_SNORM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16_SNORM</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>R16ui</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R16_UINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16_UINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>R16i</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R16_SINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16_SINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>R16f</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R16_SFLOAT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16_SFLOAT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rg16</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R16G16_UNORM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16G16_UNORM</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rg16Snorm</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R16G16_SNORM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16G16_SNORM</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rg16ui</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R16G16_UINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16G16_UINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rg16i</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R16G16_SINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16G16_SINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rg16f</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R16G16_SFLOAT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16G16_SFLOAT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rgba16</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R16G16B16A16_UNORM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16G16B16A16_UNORM</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rgba16Snorm</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R16G16B16A16_SNORM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16G16B16A16_SNORM</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rgba16ui</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R16G16B16A16_UINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16G16B16A16_UINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rgba16i</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R16G16B16A16_SINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16G16B16A16_SINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rgba16f</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R16G16B16A16_SFLOAT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16G16B16A16_SFLOAT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>R32ui</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R32_UINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R32_UINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>R32i</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R32_SINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R32_SINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>R32f</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R32_SFLOAT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R32_SFLOAT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rg32ui</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R32G32_UINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R32G32_UINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rg32i</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R32G32_SINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R32G32_SINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rg32f</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R32G32_SFLOAT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R32G32_SFLOAT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rgba32ui</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R32G32B32A32_UINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R32G32B32A32_UINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rgba32i</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R32G32B32A32_SINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R32G32B32A32_SINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rgba32f</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R32G32B32A32_SFLOAT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R32G32B32A32_SFLOAT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>R64ui</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R64_UINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R64_UINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>R64i</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R64_SINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R64_SINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>R11fG11fB10f</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_B10G11R11_UFLOAT_PACK32</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_B10G11R11_UFLOAT_PACK32</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -7622,51 +7969,51 @@ matrix multiplication.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeBool</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R8_BOOL_ARM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R8_BOOL_ARM</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeFloat 16</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R16_SFLOAT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16_SFLOAT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeFloat 32</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R32_SFLOAT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R32_SFLOAT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeFloat 64</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R64_SFLOAT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R64_SFLOAT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeInt 8 0</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R8_UINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R8_UINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeInt 8 1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R8_SINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R8_SINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeInt 16 0</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R16_UINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16_UINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeInt 16 1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R16_SINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R16_SINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeInt 32 0</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R32_UINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R32_UINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeInt 32 1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R32_SINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R32_SINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeInt 64 0</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R64_UINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R64_UINT</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeInt 64 1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_FORMAT_R64_SINT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../chapters/formats.html#VkFormat" class="xref page">VK_FORMAT_R64_SINT</a></p></td>
 </tr>
 </tbody>
 </table>

@@ -88,7 +88,7 @@ allowed in the `memoryTypeBits` member of the
 [](#VUID-VkBindBufferMemoryInfo-None-10739) VUID-VkBindBufferMemoryInfo-None-10739
 
 If `memory` was not allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set,
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property set,
 `memoryOffset` **must** be an integer multiple of the `alignment`
 member of the `VkMemoryRequirements` structure returned from a call
 to `vkGetBufferMemoryRequirements` with `buffer`
@@ -97,7 +97,7 @@ to `vkGetBufferMemoryRequirements` with `buffer`
 [](#VUID-VkBindBufferMemoryInfo-memory-10740) VUID-VkBindBufferMemoryInfo-memory-10740
 
 If `memory` was allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set,
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property set,
 `memoryOffset` **must** be an integer multiple of the `alignment`
 member of the `VkTileMemoryRequirementsQCOM` structure returned from
 a call to `vkGetBufferMemoryRequirements` with `buffer`
@@ -106,7 +106,7 @@ a call to `vkGetBufferMemoryRequirements` with `buffer`
 [](#VUID-VkBindBufferMemoryInfo-None-10741) VUID-VkBindBufferMemoryInfo-None-10741
 
 If `memory` was not allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set,
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property set,
 `size` member of the `VkMemoryRequirements` structure returned
 from a call to `vkGetBufferMemoryRequirements` with `buffer`
 **must** be less than or equal to the size of `memory` minus
@@ -116,7 +116,7 @@ from a call to `vkGetBufferMemoryRequirements` with `buffer`
 [](#VUID-VkBindBufferMemoryInfo-memory-10742) VUID-VkBindBufferMemoryInfo-memory-10742
 
 If `memory` was allocated from a memory heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property set, `size`
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property set, `size`
 member of the `VkTileMemoryRequirementsQCOM` structure returned from
 a call to `vkGetBufferMemoryRequirements` with `buffer` **must** be
 less than or equal to the size of `memory` minus `memoryOffset`
@@ -153,24 +153,24 @@ its `pNext` chain, [VkMemoryDedicatedAllocateInfo](VkMemoryDedicatedAllocateInfo
 [](#VUID-VkBindBufferMemoryInfo-None-01898) VUID-VkBindBufferMemoryInfo-None-01898
 
 If `buffer` was created with the
-`VK_BUFFER_CREATE_PROTECTED_BIT` bit set, the buffer **must** be bound
+[VK_BUFFER_CREATE_PROTECTED_BIT](VkBufferCreateFlagBits.html) bit set, the buffer **must** be bound
 to a memory object allocated with a memory type that reports
-`VK_MEMORY_PROPERTY_PROTECTED_BIT`
+[VK_MEMORY_PROPERTY_PROTECTED_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
 [](#VUID-VkBindBufferMemoryInfo-None-01899) VUID-VkBindBufferMemoryInfo-None-01899
 
 If `buffer` was created with the
-`VK_BUFFER_CREATE_PROTECTED_BIT` bit not set, the buffer **must** not
+[VK_BUFFER_CREATE_PROTECTED_BIT](VkBufferCreateFlagBits.html) bit not set, the buffer **must** not
 be bound to a memory object allocated with a memory type that reports
-`VK_MEMORY_PROPERTY_PROTECTED_BIT`
+[VK_MEMORY_PROPERTY_PROTECTED_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
 [](#VUID-VkBindBufferMemoryInfo-buffer-01038) VUID-VkBindBufferMemoryInfo-buffer-01038
 
 If `buffer` was created with
 [VkDedicatedAllocationBufferCreateInfoNV](VkDedicatedAllocationBufferCreateInfoNV.html)::`dedicatedAllocation`
-equal to `VK_TRUE`, `memory` **must** have been allocated with
+equal to [VK_TRUE](VK_TRUE.html), `memory` **must** have been allocated with
 [VkDedicatedAllocationMemoryAllocateInfoNV](VkDedicatedAllocationMemoryAllocateInfoNV.html)::`buffer` equal to a
 buffer handle created with identical creation parameters to `buffer`
 and `memoryOffset` **must** be zero
@@ -185,7 +185,7 @@ and `memoryOffset` **must** be zero
 and
     `buffer` was not created with
     [VkDedicatedAllocationBufferCreateInfoNV](VkDedicatedAllocationBufferCreateInfoNV.html)::`dedicatedAllocation`
-    equal to `VK_TRUE`, `memory` **must** not have been allocated
+    equal to [VK_TRUE](VK_TRUE.html), `memory` **must** not have been allocated
     dedicated for a specific buffer or image
 
 * 
@@ -213,7 +213,7 @@ in [VkExternalMemoryBufferCreateInfo](VkExternalMemoryBufferCreateInfo.html)::`h
 If `memory` was allocated with the
 [VkImportAndroidHardwareBufferInfoANDROID](VkImportAndroidHardwareBufferInfoANDROID.html) memory import operation
 with a non-`NULL` `buffer` value,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](VkExternalMemoryHandleTypeFlagBits.html)
 **must** also have been set in
 [VkExternalMemoryBufferCreateInfo](VkExternalMemoryBufferCreateInfo.html)::`handleTypes` when
 `buffer` was created
@@ -224,9 +224,9 @@ with a non-`NULL` `buffer` value,
 If the
 [VkPhysicalDeviceBufferDeviceAddressFeatures](VkPhysicalDeviceBufferDeviceAddressFeatures.html)::`bufferDeviceAddress`
 feature is enabled and `buffer` was created with the
-`VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT` usage flag set,
+[VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](VkBufferUsageFlagBits.html) usage flag set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](VkMemoryAllocateFlagBits.html) bit set
 
 * 
 [](#VUID-VkBindBufferMemoryInfo-bufferDeviceAddressCaptureReplay-09200) VUID-VkBindBufferMemoryInfo-bufferDeviceAddressCaptureReplay-09200
@@ -234,9 +234,9 @@ feature is enabled and `buffer` was created with the
 If the
 [VkPhysicalDeviceBufferDeviceAddressFeatures](VkPhysicalDeviceBufferDeviceAddressFeatures.html)::`bufferDeviceAddressCaptureReplay`
 feature is enabled and `buffer` was created with the
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` bit set,
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkBufferCreateFlagBits.html) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkMemoryAllocateFlagBits.html) bit set
 
 * 
 [](#VUID-VkBindBufferMemoryInfo-buffer-06408) VUID-VkBindBufferMemoryInfo-buffer-06408
@@ -251,17 +251,26 @@ with a [VkImportMemoryBufferCollectionFUCHSIA](VkImportMemoryBufferCollectionFUC
 [](#VUID-VkBindBufferMemoryInfo-descriptorBufferCaptureReplay-08112) VUID-VkBindBufferMemoryInfo-descriptorBufferCaptureReplay-08112
 
 If the `buffer` was created with the
-`VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` bit set,
+[VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](VkBufferCreateFlagBits.html) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](VkMemoryAllocateFlagBits.html) bit set
 
 * 
 [](#VUID-VkBindBufferMemoryInfo-buffer-09201) VUID-VkBindBufferMemoryInfo-buffer-09201
 
 If the `buffer` was created with the
-`VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` bit set,
+[VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](VkBufferCreateFlagBits.html) bit set,
 `memory` **must** have been allocated with the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` bit set
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkMemoryAllocateFlagBits.html) bit set
+
+* 
+[](#VUID-VkBindBufferMemoryInfo-buffer-11408) VUID-VkBindBufferMemoryInfo-buffer-11408
+
+If the `buffer` was created with the
+[VK_BUFFER_USAGE_DESCRIPTOR_HEAP_BIT_EXT](VkBufferUsageFlagBits.html) or
+[VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT](VkBufferUsageFlagBits2.html) bit set, `memory`
+**must** have been allocated with the
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](VkMemoryAllocateFlagBits.html) bit set
 
 * 
 [](#VUID-VkBindBufferMemoryInfo-pNext-01605) VUID-VkBindBufferMemoryInfo-pNext-01605
@@ -277,7 +286,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindBufferMemoryInfo-sType-sType) VUID-VkBindBufferMemoryInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkBindBufferMemoryInfo-pNext-pNext) VUID-VkBindBufferMemoryInfo-pNext-pNext

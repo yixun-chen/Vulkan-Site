@@ -55,7 +55,7 @@ available to the host.
 Before this copy command can be called, a memory barrier for this image
 **must** have been issued on the device with the second
 [synchronization scope](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-scopes) including
-`VK_PIPELINE_STAGE_HOST_BIT` and `VK_ACCESS_HOST_READ_BIT`.
+[VK_PIPELINE_STAGE_HOST_BIT](VkPipelineStageFlagBits.html) and [VK_ACCESS_HOST_READ_BIT](VkAccessFlagBits.html).
 
 Because queue submissions [automatically make host memory visible to the device](../../../../spec/latest/chapters/synchronization.html#synchronization-submission-host-writes), there would not be a
 need for a memory barrier before using the results of this copy operation in
@@ -78,27 +78,27 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](VkResult.html)
 
 * 
-`VK_ERROR_MEMORY_MAP_FAILED`
+[VK_ERROR_MEMORY_MAP_FAILED](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_EXT_host_image_copy](VK_EXT_host_image_copy.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), [VkCopyImageToImageInfo](VkCopyImageToImageInfo.html), [VkDevice](VkDevice.html)
 

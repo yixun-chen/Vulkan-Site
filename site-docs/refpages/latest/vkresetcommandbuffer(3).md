@@ -54,7 +54,7 @@ Valid Usage
 [](#VUID-vkResetCommandBuffer-commandBuffer-00046) VUID-vkResetCommandBuffer-commandBuffer-00046
 
 `commandBuffer` **must** have been allocated from a pool that was
-created with the `VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT`
+created with the [VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT](VkCommandPoolCreateFlagBits.html)
 
 Valid Usage (Implicit)
 
@@ -81,18 +81,18 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkCommandBuffer](VkCommandBuffer.html), [VkCommandBufferResetFlags](VkCommandBufferResetFlags.html)
 

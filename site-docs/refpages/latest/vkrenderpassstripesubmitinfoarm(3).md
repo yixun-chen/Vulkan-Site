@@ -60,7 +60,7 @@ all views in the view mask.
 In a render pass instance with `layerCount` greater than 1, the stripe
 includes all layers.
 
-Render pass instances that specify the `VK_RENDERING_RESUMING_BIT` will
+Render pass instances that specify the [VK_RENDERING_RESUMING_BIT](VkRenderingFlagBits.html) will
 not have any elements of `pStripeSemaphoreInfos` mapped to them.
 Instead, for suspending and resuming render pass instances, this mapping is
 done for the first suspending render pass instance, and the per-stripe
@@ -73,14 +73,14 @@ Valid Usage
 
 The `semaphore` member of each element of
 `pStripeSemaphoreInfos` **must** have been created with a
-[VkSemaphoreType](VkSemaphoreType.html) of `VK_SEMAPHORE_TYPE_BINARY`
+[VkSemaphoreType](VkSemaphoreType.html) of [VK_SEMAPHORE_TYPE_BINARY](VkSemaphoreType.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkRenderPassStripeSubmitInfoARM-sType-sType) VUID-VkRenderPassStripeSubmitInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_SUBMIT_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_SUBMIT_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderPassStripeSubmitInfoARM-pStripeSemaphoreInfos-parameter) VUID-VkRenderPassStripeSubmitInfoARM-pStripeSemaphoreInfos-parameter

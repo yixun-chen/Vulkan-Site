@@ -52,7 +52,7 @@ Valid Usage
 [](#VUID-VkSemaphoreSignalInfo-semaphore-03257) VUID-VkSemaphoreSignalInfo-semaphore-03257
 
 `semaphore` **must** have been created with a [VkSemaphoreType](VkSemaphoreType.html) of
-`VK_SEMAPHORE_TYPE_TIMELINE`
+[VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html)
 
 * 
 [](#VUID-VkSemaphoreSignalInfo-value-03258) VUID-VkSemaphoreSignalInfo-value-03258
@@ -79,7 +79,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSemaphoreSignalInfo-sType-sType) VUID-VkSemaphoreSignalInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SEMAPHORE_SIGNAL_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SEMAPHORE_SIGNAL_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkSemaphoreSignalInfo-pNext-pNext) VUID-VkSemaphoreSignalInfo-pNext-pNext

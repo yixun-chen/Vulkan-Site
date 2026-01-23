@@ -50,7 +50,7 @@ If the `VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT` structure i
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_image_compression_control_swapchain](VK_EXT_image_compression_control_swapchain.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

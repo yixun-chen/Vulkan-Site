@@ -47,7 +47,7 @@ structure.
 
 * 
 `referenceNameSlotIndices` is an array of seven
-(`VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR`, which is equal to the
+([VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR](VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR.html), which is equal to the
 Video Std definition `STD_VIDEO_AV1_REFS_PER_FRAME`) signed integer
 values specifying the index of the [DPB slot](../../../../spec/latest/chapters/videocoding.html#dpb-slot) or a negative
 integer value for each [AV1 reference name](../../../../spec/latest/chapters/videocoding.html#decode-av1-reference-names)
@@ -263,7 +263,7 @@ resource in [VkVideoDecodeInfoKHR](VkVideoDecodeInfoKHR.html)::`dstPictureResour
 the reconstructed picture specified in
 [VkVideoDecodeInfoKHR](VkVideoDecodeInfoKHR.html)::`pSetupReferenceSlot->pPictureResource` even
 if the implementation does not report support for
-`VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR` in
+[VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR](VkVideoDecodeCapabilityFlagBitsKHR.html) in
 [VkVideoDecodeCapabilitiesKHR](VkVideoDecodeCapabilitiesKHR.html)::`flags` for the video decode
 profile.
 
@@ -280,7 +280,7 @@ Active Parameter Sets
 
 The *active sequence header* is the [AV1 sequence header](../../../../spec/latest/chapters/videocoding.html#decode-av1-sequence-header) stored in the bound video session parameters object
 , unless the bound video session was created with
-`VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR` and the
+[VK_VIDEO_SESSION_CREATE_INLINE_SESSION_PARAMETERS_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html) and the
 active sequence header is specified
 [inline](../../../../spec/latest/chapters/videocoding.html#decode-av1-inline-parameter-sets).
 .
@@ -290,7 +290,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoDecodeAV1PictureInfoKHR-sType-sType) VUID-VkVideoDecodeAV1PictureInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_PICTURE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_PICTURE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoDecodeAV1PictureInfoKHR-pStdPictureInfo-parameter) VUID-VkVideoDecodeAV1PictureInfoKHR-pStdPictureInfo-parameter

@@ -27,7 +27,7 @@ typedef enum VkSparseMemoryBindFlagBits {
 } VkSparseMemoryBindFlagBits;
 
 * 
-`VK_SPARSE_MEMORY_BIND_METADATA_BIT` specifies that the memory being
+[VK_SPARSE_MEMORY_BIND_METADATA_BIT](#) specifies that the memory being
 bound is only for the metadata aspect.
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkSparseMemoryBindFlags](VkSparseMemoryBindFlags.html)

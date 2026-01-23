@@ -43,19 +43,19 @@ surface is able to make use of exclusive full-screen access.
 This structure **can** be included in the `pNext` chain of
 [VkSurfaceCapabilities2KHR](VkSurfaceCapabilities2KHR.html) to determine support for exclusive
 full-screen access.
-If `fullScreenExclusiveSupported` is `VK_FALSE`, it indicates that
+If `fullScreenExclusiveSupported` is [VK_FALSE](VK_FALSE.html), it indicates that
 exclusive full-screen access is not obtainable for this surface.
 
 Applications **must** not attempt to create swapchains with
-`VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT` set if
-`fullScreenExclusiveSupported` is `VK_FALSE`.
+[VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT](VkFullScreenExclusiveEXT.html) set if
+`fullScreenExclusiveSupported` is [VK_FALSE](VK_FALSE.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSurfaceCapabilitiesFullScreenExclusiveEXT-sType-sType) VUID-VkSurfaceCapabilitiesFullScreenExclusiveEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_FULL_SCREEN_EXCLUSIVE_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_FULL_SCREEN_EXCLUSIVE_EXT](VkStructureType.html)
 
 [VK_EXT_full_screen_exclusive](VK_EXT_full_screen_exclusive.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

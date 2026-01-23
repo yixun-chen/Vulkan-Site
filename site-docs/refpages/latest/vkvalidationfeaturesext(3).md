@@ -64,17 +64,17 @@ Valid Usage
 [](#VUID-VkValidationFeaturesEXT-pEnabledValidationFeatures-02967) VUID-VkValidationFeaturesEXT-pEnabledValidationFeatures-02967
 
 If the `pEnabledValidationFeatures` array contains
-`VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT`,
+[VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT](VkValidationFeatureEnableEXT.html),
 then it **must** also contain
-`VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT` or
-`VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT`
+[VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT](VkValidationFeatureEnableEXT.html) or
+[VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT](VkValidationFeatureEnableEXT.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkValidationFeaturesEXT-sType-sType) VUID-VkValidationFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkValidationFeaturesEXT-pEnabledValidationFeatures-parameter) VUID-VkValidationFeaturesEXT-pEnabledValidationFeatures-parameter

@@ -115,20 +115,20 @@ Extending [VkMemoryAllocateInfo](VkMemoryAllocateInfo.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR`
+[VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR`
+[VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR`
+[VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_MEMORY_WIN32_HANDLE_PROPERTIES_KHR`
+[VK_STRUCTURE_TYPE_MEMORY_WIN32_HANDLE_PROPERTIES_KHR](VkStructureType.html)
 
 1) Do applications need to call `CloseHandle`() on the values returned
 from [vkGetMemoryWin32HandleKHR](vkGetMemoryWin32HandleKHR.html) when `handleType` is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR`?
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR](VkExternalMemoryHandleTypeFlagBits.html)?
 
 **RESOLVED**: Yes.
 A successful get call transfers ownership of the handle to the application.

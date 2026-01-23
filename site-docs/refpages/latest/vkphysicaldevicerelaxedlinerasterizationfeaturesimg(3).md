@@ -49,7 +49,7 @@ If the `VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG` structure is includ
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG-sType-sType) VUID-VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RELAXED_LINE_RASTERIZATION_FEATURES_IMG`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RELAXED_LINE_RASTERIZATION_FEATURES_IMG](VkStructureType.html)
 
 [VK_IMG_relaxed_line_rasterization](VK_IMG_relaxed_line_rasterization.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

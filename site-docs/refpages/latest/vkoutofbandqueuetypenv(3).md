@@ -30,11 +30,11 @@ The members of the [VkOutOfBandQueueTypeNV](#) are used to describe the
 queue type in [VkOutOfBandQueueTypeInfoNV](VkOutOfBandQueueTypeInfoNV.html) as described below:
 
 * 
-`VK_OUT_OF_BAND_QUEUE_TYPE_RENDER_NV` specifies that work will be
+[VK_OUT_OF_BAND_QUEUE_TYPE_RENDER_NV](#) specifies that work will be
 submitted to this queue.
 
 * 
-`VK_OUT_OF_BAND_QUEUE_TYPE_PRESENT_NV` specifies that this queue
+[VK_OUT_OF_BAND_QUEUE_TYPE_PRESENT_NV](#) specifies that this queue
 will be presented from.
 
 [VK_NV_low_latency2](VK_NV_low_latency2.html), [VkOutOfBandQueueTypeInfoNV](VkOutOfBandQueueTypeInfoNV.html)

@@ -33,25 +33,25 @@ typedef enum VkQueryResultFlagBits {
 } VkQueryResultFlagBits;
 
 * 
-`VK_QUERY_RESULT_64_BIT` specifies the results will be written as an
+[VK_QUERY_RESULT_64_BIT](#) specifies the results will be written as an
 array of 64-bit unsigned integer values.
 If this bit is not set, the results will be written as an array of
 32-bit unsigned integer values.
 
 * 
-`VK_QUERY_RESULT_WAIT_BIT` specifies that Vulkan will wait for each
+[VK_QUERY_RESULT_WAIT_BIT](#) specifies that Vulkan will wait for each
 query’s status to become available before retrieving its results.
 
 * 
-`VK_QUERY_RESULT_WITH_AVAILABILITY_BIT` specifies that the
+[VK_QUERY_RESULT_WITH_AVAILABILITY_BIT](#) specifies that the
 availability status accompanies the results.
 
 * 
-`VK_QUERY_RESULT_PARTIAL_BIT` specifies that returning partial
+[VK_QUERY_RESULT_PARTIAL_BIT](#) specifies that returning partial
 results is acceptable.
 
 * 
-`VK_QUERY_RESULT_WITH_STATUS_BIT_KHR` specifies that the last value
+[VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](#) specifies that the last value
 returned in the query is a [VkQueryResultStatusKHR](VkQueryResultStatusKHR.html) value.
 See [result status query](../../../../spec/latest/chapters/queries.html#queries-result-status-only) for information
 on how an application can determine whether the use of this flag bit is

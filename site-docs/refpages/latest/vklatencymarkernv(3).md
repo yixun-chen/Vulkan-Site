@@ -40,40 +40,40 @@ The members of the [VkLatencyMarkerNV](#) are used as arguments for
 [vkSetLatencyMarkerNV](vkSetLatencyMarkerNV.html) in the use cases described below:
 
 * 
-`VK_LATENCY_MARKER_SIMULATION_START_NV` **should** be called at the
+[VK_LATENCY_MARKER_SIMULATION_START_NV](#) **should** be called at the
 start of the simulation execution each frame, but after the call to
 `vkLatencySleepNV`.
 
 * 
-`VK_LATENCY_MARKER_SIMULATION_END_NV` **should** be called at the end
+[VK_LATENCY_MARKER_SIMULATION_END_NV](#) **should** be called at the end
 of the simulation execution each frame.
 
 * 
-`VK_LATENCY_MARKER_RENDERSUBMIT_START_NV` **should** be called at the
+[VK_LATENCY_MARKER_RENDERSUBMIT_START_NV](#) **should** be called at the
 beginning of the render submission execution each frame.
 This **should** be wherever Vulkan API calls are made and **must** not span
 into asynchronous rendering.
 
 * 
-`VK_LATENCY_MARKER_RENDERSUBMIT_END_NV` **should** be called at the end
+[VK_LATENCY_MARKER_RENDERSUBMIT_END_NV](#) **should** be called at the end
 of the render submission execution each frame.
 
 * 
-`VK_LATENCY_MARKER_PRESENT_START_NV` **should** be called just before
+[VK_LATENCY_MARKER_PRESENT_START_NV](#) **should** be called just before
 `vkQueuePresentKHR`.
 
 * 
-`VK_LATENCY_MARKER_PRESENT_END_NV` **should** be called when
+[VK_LATENCY_MARKER_PRESENT_END_NV](#) **should** be called when
 `vkQueuePresentKHR` returns.
 
 * 
-`VK_LATENCY_MARKER_INPUT_SAMPLE_NV` **should** be called just before
+[VK_LATENCY_MARKER_INPUT_SAMPLE_NV](#) **should** be called just before
 the application gathers input data.
 
 * 
-`VK_LATENCY_MARKER_TRIGGER_FLASH_NV` **should** be called anywhere
-between `VK_LATENCY_MARKER_SIMULATION_START_NV` and
-`VK_LATENCY_MARKER_SIMULATION_END_NV` whenever a left mouse click
+[VK_LATENCY_MARKER_TRIGGER_FLASH_NV](#) **should** be called anywhere
+between [VK_LATENCY_MARKER_SIMULATION_START_NV](#) and
+[VK_LATENCY_MARKER_SIMULATION_END_NV](#) whenever a left mouse click
 occurs.
 
 [VK_NV_low_latency2](VK_NV_low_latency2.html), [VkSetLatencyMarkerInfoNV](VkSetLatencyMarkerInfoNV.html)

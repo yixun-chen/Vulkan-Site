@@ -120,7 +120,7 @@ multiplied by the size of the local workgroup plus the
 [VkRenderPassBeginInfo](VkRenderPassBeginInfo.html)::`renderArea`.
 
 This extension allows a subpass’s pipeline bind point to be
-`VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI`.
+[VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI](VkPipelineBindPoint.html).
 
 * 
 [vkCmdSubpassShadingHUAWEI](vkCmdSubpassShadingHUAWEI.html)
@@ -152,31 +152,31 @@ Extending [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html):
 * 
 Extending [VkPipelineBindPoint](VkPipelineBindPoint.html):
 
-`VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI`
+[VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI](VkPipelineBindPoint.html)
 
 Extending [VkPipelineStageFlagBits2](VkPipelineStageFlagBits2.html):
 
 * 
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADING_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADING_BIT_HUAWEI](VkPipelineStageFlagBits2.html)
 
 Extending [VkShaderStageFlagBits](VkShaderStageFlagBits.html):
 
 * 
-`VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI`
+[VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI](VkShaderStageFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBPASS_SHADING_FEATURES_HUAWEI`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBPASS_SHADING_FEATURES_HUAWEI](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBPASS_SHADING_PROPERTIES_HUAWEI`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBPASS_SHADING_PROPERTIES_HUAWEI](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SUBPASS_SHADING_PIPELINE_CREATE_INFO_HUAWEI`
+[VK_STRUCTURE_TYPE_SUBPASS_SHADING_PIPELINE_CREATE_INFO_HUAWEI](VkStructureType.html)
 
 Example of subpass shading in a GLSL shader
 

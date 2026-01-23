@@ -46,14 +46,14 @@ Including this structure in the `pNext` chain of [VkBlitImageInfo2](VkBlitImageI
 defines a rotation to be performed when blitting between two images.
 If this structure is not specified in either case, the implementation
 behaves as if it was specified with a `transform` equal to
-`VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR`.
+[VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html).
 
 Specifying a transform for a copy between an image and a buffer
 [rotates the region accessed in the image around the offset](../../../../spec/latest/chapters/copies.html#copies-buffers-images-rotation-addressing).
 Specifying a transform for a blit performs a similar transform as described
 in [Image Blits with Scaling and Rotation](../../../../spec/latest/chapters/copies.html#copies-images-scaling-rotation).
 
-Rotations other than `VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR` **can** only
+Rotations other than [VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html) **can** only
 be specified for single-plane 2D images with a 1x1x1
 [texel block extent](../../../../spec/latest/chapters/formats.html#formats-compatibility-classes).
 
@@ -62,17 +62,17 @@ Valid Usage
 * 
 [](#VUID-VkCopyCommandTransformInfoQCOM-transform-04560) VUID-VkCopyCommandTransformInfoQCOM-transform-04560
 
-`transform` **must** be `VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR`,
-`VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR`,
-`VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR`, or
-`VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR`
+`transform` **must** be [VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html),
+[VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html),
+[VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html), or
+[VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkCopyCommandTransformInfoQCOM-sType-sType) VUID-VkCopyCommandTransformInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COPY_COMMAND_TRANSFORM_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COPY_COMMAND_TRANSFORM_INFO_QCOM](VkStructureType.html)
 
 [VK_QCOM_rotated_copy_commands](VK_QCOM_rotated_copy_commands.html), [VkStructureType](VkStructureType.html), [VkSurfaceTransformFlagBitsKHR](VkSurfaceTransformFlagBitsKHR.html)
 

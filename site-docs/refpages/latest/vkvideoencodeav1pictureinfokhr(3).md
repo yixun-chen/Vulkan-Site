@@ -47,14 +47,14 @@ structure.
 * 
 `rateControlGroup` specifies the [AV1    rate control group](../../../../spec/latest/chapters/videocoding.html#encode-av1-rate-control-group) to use for the encoded frame when the current
 [rate control mode](../../../../spec/latest/chapters/videocoding.html#encode-rate-control-modes) is not
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR`.
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html).
 Otherwise it is ignored.
 
 * 
 `constantQIndex` is the quantizer index to use for the encoded frame
 if the current [rate control mode](../../../../spec/latest/chapters/videocoding.html#encode-rate-control-modes)
 configured for the video session is
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR`.
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html).
 
 * 
 `pStdPictureInfo` is a pointer to a
@@ -63,7 +63,7 @@ configured for the video session is
 
 * 
 `referenceNameSlotIndices` is an array of seven
-(`VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR`, which is equal to the
+([VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR](VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR.html), which is equal to the
 Video Std definition `STD_VIDEO_AV1_REFS_PER_FRAME`) signed integer
 values specifying the index of the [DPB slot](../../../../spec/latest/chapters/videocoding.html#dpb-slot) or a negative
 integer value for each [AV1 reference name](../../../../spec/latest/chapters/videocoding.html#encode-av1-reference-names)
@@ -77,7 +77,7 @@ is specified in `referenceNameSlotIndices`[`frame` -
 frame indicated by the value of `pStdPictureInfo->primary_ref_frame`
 is used only for CDF data reference, as defined in sections 6.8.2 of the
 [AV1 Specification](../../../../spec/latest/chapters/introduction.html#aomedia-av1).
-If set to `VK_TRUE`, then the primary reference frame’s picture data
+If set to [VK_TRUE](VK_TRUE.html), then the primary reference frame’s picture data
 will not be used for sample prediction.
 
 * 
@@ -199,7 +199,7 @@ and `spatial_id` members specify the temporal and spatial layer ID of
 the reference frame, respectively (these IDs are encoded into the OBU
 extension header if
 [VkVideoEncodeAV1PictureInfoKHR](#)::`generateObuExtensionHeader`
-is set to `VK_TRUE` for the encode operation);
+is set to [VK_TRUE](VK_TRUE.html) for the encode operation);
 
 if `flags.buffer_removal_time_present_flag` is set, then
 `pBufferRemovalTimes` is a pointer to an array of N number of
@@ -305,21 +305,21 @@ Valid Usage
 If [VkVideoEncodeAV1CapabilitiesKHR](VkVideoEncodeAV1CapabilitiesKHR.html)::`flags`, as returned by
 [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the used video
 profile, does not include
-`VK_VIDEO_ENCODE_AV1_CAPABILITY_PRIMARY_REFERENCE_CDF_ONLY_BIT_KHR`,
-then `primaryReferenceCdfOnly` **must** be `VK_FALSE`
+[VK_VIDEO_ENCODE_AV1_CAPABILITY_PRIMARY_REFERENCE_CDF_ONLY_BIT_KHR](VkVideoEncodeAV1CapabilityFlagBitsKHR.html),
+then `primaryReferenceCdfOnly` **must** be [VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-VkVideoEncodeAV1PictureInfoKHR-primaryReferenceCdfOnly-10290) VUID-VkVideoEncodeAV1PictureInfoKHR-primaryReferenceCdfOnly-10290
 
-If `primaryReferenceCdfOnly` is set to `VK_TRUE`, then
+If `primaryReferenceCdfOnly` is set to [VK_TRUE](VK_TRUE.html), then
 `pStdPictureInfo->primary_ref_frame` **must** be less than
-`VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR`
+[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR](VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR.html)
 
 * 
 [](#VUID-VkVideoEncodeAV1PictureInfoKHR-pStdPictureInfo-10291) VUID-VkVideoEncodeAV1PictureInfoKHR-pStdPictureInfo-10291
 
 If `pStdPictureInfo->primary_ref_frame` is less than
-`VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR`, then
+[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR](VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR.html), then
 `referenceNameSlotIndices`[`pStdPictureInfo->primary_ref_frame`]
 **must** not be negative
 
@@ -329,13 +329,13 @@ If `pStdPictureInfo->primary_ref_frame` is less than
 If [VkVideoEncodeAV1CapabilitiesKHR](VkVideoEncodeAV1CapabilitiesKHR.html)::`flags`, as returned by
 [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the used video
 profile, does not include
-`VK_VIDEO_ENCODE_AV1_CAPABILITY_GENERATE_OBU_EXTENSION_HEADER_BIT_KHR`,
-then `generateObuExtensionHeader` **must** be `VK_FALSE`
+[VK_VIDEO_ENCODE_AV1_CAPABILITY_GENERATE_OBU_EXTENSION_HEADER_BIT_KHR](VkVideoEncodeAV1CapabilityFlagBitsKHR.html),
+then `generateObuExtensionHeader` **must** be [VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-VkVideoEncodeAV1PictureInfoKHR-generateObuExtensionHeader-10293) VUID-VkVideoEncodeAV1PictureInfoKHR-generateObuExtensionHeader-10293
 
-If `generateObuExtensionHeader` is set to `VK_TRUE`, then
+If `generateObuExtensionHeader` is set to [VK_TRUE](VK_TRUE.html), then
 `pStdPictureInfo->pExtensionHeader` **must** not be `NULL`
 
 Valid Usage (Implicit)
@@ -343,7 +343,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeAV1PictureInfoKHR-sType-sType) VUID-VkVideoEncodeAV1PictureInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_PICTURE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_PICTURE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoEncodeAV1PictureInfoKHR-predictionMode-parameter) VUID-VkVideoEncodeAV1PictureInfoKHR-predictionMode-parameter

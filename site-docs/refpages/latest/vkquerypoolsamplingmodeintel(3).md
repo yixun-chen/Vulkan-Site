@@ -28,7 +28,7 @@ typedef enum VkQueryPoolSamplingModeINTEL {
 } VkQueryPoolSamplingModeINTEL;
 
 * 
-`VK_QUERY_POOL_SAMPLING_MODE_MANUAL_INTEL` is the default mode in
+[VK_QUERY_POOL_SAMPLING_MODE_MANUAL_INTEL](#) is the default mode in
 which the application calls [vkCmdBeginQuery](vkCmdBeginQuery.html) and
 [vkCmdEndQuery](vkCmdEndQuery.html) to record performance data.
 

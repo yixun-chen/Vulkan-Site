@@ -57,65 +57,65 @@ typedef enum VkQueryType {
 } VkQueryType;
 
 * 
-`VK_QUERY_TYPE_OCCLUSION` specifies an [    occlusion query](../../../../spec/latest/chapters/queries.html#queries-occlusion).
+[VK_QUERY_TYPE_OCCLUSION](#) specifies an [    occlusion query](../../../../spec/latest/chapters/queries.html#queries-occlusion).
 
 * 
-`VK_QUERY_TYPE_PIPELINE_STATISTICS` specifies a [    pipeline statistics query](../../../../spec/latest/chapters/queries.html#queries-pipestats).
+[VK_QUERY_TYPE_PIPELINE_STATISTICS](#) specifies a [    pipeline statistics query](../../../../spec/latest/chapters/queries.html#queries-pipestats).
 
 * 
-`VK_QUERY_TYPE_TIMESTAMP` specifies a [    timestamp query](../../../../spec/latest/chapters/queries.html#queries-timestamps).
+[VK_QUERY_TYPE_TIMESTAMP](#) specifies a [    timestamp query](../../../../spec/latest/chapters/queries.html#queries-timestamps).
 
 * 
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR` specifies a
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](#) specifies a
 [performance query](../../../../spec/latest/chapters/queries.html#queries-performance).
 
 * 
-`VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT` specifies a
+[VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](#) specifies a
 [transform feedback query](../../../../spec/latest/chapters/queries.html#queries-transform-feedback).
 
 * 
-`VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT` specifies a
+[VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](#) specifies a
 [primitives generated query](../../../../spec/latest/chapters/queries.html#queries-primitives-generated).
 
 * 
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR` specifies
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR](#) specifies
 a [acceleration structure size query](../../../../spec/latest/chapters/accelstructures.html#acceleration-structure-copying)
 for use with [vkCmdWriteAccelerationStructuresPropertiesKHR](vkCmdWriteAccelerationStructuresPropertiesKHR.html) or
 [vkWriteAccelerationStructuresPropertiesKHR](vkWriteAccelerationStructuresPropertiesKHR.html).
 
 * 
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR](#)
 specifies a [serialization acceleration    structure size query](../../../../spec/latest/chapters/accelstructures.html#acceleration-structure-copying).
 
 * 
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR` specifies an
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR](#) specifies an
 [acceleration structure size query](../../../../spec/latest/chapters/accelstructures.html#acceleration-structure-copying)
 for use with [vkCmdWriteAccelerationStructuresPropertiesKHR](vkCmdWriteAccelerationStructuresPropertiesKHR.html) or
 [vkWriteAccelerationStructuresPropertiesKHR](vkWriteAccelerationStructuresPropertiesKHR.html).
 
 * 
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR](#)
 specifies a [serialization acceleration structure    pointer count query](../../../../spec/latest/chapters/accelstructures.html#serialized-as-header).
 
 * 
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV` specifies
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV](#) specifies
 an [acceleration structure size query](../../../../spec/latest/chapters/accelstructures.html#acceleration-structure-copying)
 for use with [vkCmdWriteAccelerationStructuresPropertiesNV](vkCmdWriteAccelerationStructuresPropertiesNV.html).
 
 * 
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL` specifies a
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL](#) specifies a
 [Intel performance query](../../../../spec/latest/chapters/queries.html#queries-performance-intel).
 
 * 
-`VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR` specifies a
+[VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR](#) specifies a
 [result status query](../../../../spec/latest/chapters/queries.html#queries-result-status-only).
 
 * 
-`VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR` specifies a
+[VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR](#) specifies a
 [video encode feedback query](../../../../spec/latest/chapters/queries.html#queries-video-encode-feedback).
 
 * 
-`VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT` specifies a
+[VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT](#) specifies a
 [generated mesh primitives query](../../../../spec/latest/chapters/queries.html#queries-mesh-shader).
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkQueryPoolCreateInfo](VkQueryPoolCreateInfo.html), [vkCmdWriteAccelerationStructuresPropertiesKHR](vkCmdWriteAccelerationStructuresPropertiesKHR.html), [vkCmdWriteAccelerationStructuresPropertiesNV](vkCmdWriteAccelerationStructuresPropertiesNV.html), [vkCmdWriteMicromapsPropertiesEXT](vkCmdWriteMicromapsPropertiesEXT.html), [vkWriteAccelerationStructuresPropertiesKHR](vkWriteAccelerationStructuresPropertiesKHR.html), [vkWriteMicromapsPropertiesEXT](vkWriteMicromapsPropertiesEXT.html)

@@ -58,7 +58,7 @@ mode of the tensor when it will be accessed by multiple queue families.
 * 
 `pQueueFamilyIndices` is a list of queue families that will access
 this tensor (ignored if `sharingMode` is not
-`VK_SHARING_MODE_CONCURRENT`).
+[VK_SHARING_MODE_CONCURRENT](VkSharingMode.html)).
 
 To determine the set of valid `usage` bits for a given tensor format,
 call [vkGetPhysicalDeviceFormatProperties2](vkGetPhysicalDeviceFormatProperties2.html) with
@@ -85,7 +85,7 @@ Valid Usage
 * 
 [](#VUID-VkTensorCreateInfoARM-pDescription-09720) VUID-VkTensorCreateInfoARM-pDescription-09720
 
-If `pDescription->tiling` is `VK_TENSOR_TILING_OPTIMAL_ARM`,
+If `pDescription->tiling` is [VK_TENSOR_TILING_OPTIMAL_ARM](VkTensorTilingARM.html),
 `pDescription->pStrides` **must** be `NULL`
 
 * 
@@ -98,20 +98,20 @@ If `pDescription->tiling` is `VK_TENSOR_TILING_OPTIMAL_ARM`,
 * 
 [](#VUID-VkTensorCreateInfoARM-sharingMode-09722) VUID-VkTensorCreateInfoARM-sharingMode-09722
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`,
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](VkSharingMode.html),
 `pQueueFamilyIndices` **must** be a valid pointer to an array of
 `queueFamilyIndexCount` `uint32_t` values
 
 * 
 [](#VUID-VkTensorCreateInfoARM-sharingMode-09723) VUID-VkTensorCreateInfoARM-sharingMode-09723
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`,
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](VkSharingMode.html),
 `queueFamilyIndexCount` **must** be greater than `1`
 
 * 
 [](#VUID-VkTensorCreateInfoARM-sharingMode-09725) VUID-VkTensorCreateInfoARM-sharingMode-09725
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`, each element
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](VkSharingMode.html), each element
 of `pQueueFamilyIndices` **must** be unique and **must** be less than
 `pQueueFamilyPropertyCount` returned by either
 [vkGetPhysicalDeviceQueueFamilyProperties](vkGetPhysicalDeviceQueueFamilyProperties.html) or
@@ -134,7 +134,7 @@ types specified in
 [](#VUID-VkTensorCreateInfoARM-flags-09726) VUID-VkTensorCreateInfoARM-flags-09726
 
 If `flags` includes
-`VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM`, the
+[VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM](VkTensorCreateFlagBitsARM.html), the
 [`descriptorBufferCaptureReplay`](../../../../spec/latest/chapters/features.html#features-descriptorBufferCaptureReplay)
 feature **must** be enabled
 
@@ -144,7 +144,7 @@ feature **must** be enabled
 If the `pNext` chain includes a
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](VkOpaqueCaptureDescriptorDataCreateInfoEXT.html) structure, `flags`
 **must** contain
-`VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM`
+[VK_TENSOR_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM](VkTensorCreateFlagBitsARM.html)
 
 * 
 [](#VUID-VkTensorCreateInfoARM-pDescription-09728) VUID-VkTensorCreateInfoARM-pDescription-09728
@@ -156,28 +156,41 @@ contain the format feature flags required by the `usage` flags for
 `pDescription->format` as indicated in the
 [Format Feature Dependent Usage Flags](../../../../spec/latest/chapters/formats.html#format-feature-dependent-usage-flags) section
 
-`VK_TENSOR_USAGE_SHADER_BIT_ARM`
+[VK_TENSOR_USAGE_SHADER_BIT_ARM](VkTensorUsageFlagBitsARM.html)
 
 * 
-`VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM`
+[VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM](VkTensorUsageFlagBitsARM.html)
 
 [](#VUID-VkTensorCreateInfoARM-protectedMemory-09729) VUID-VkTensorCreateInfoARM-protectedMemory-09729
 
 If the [`protectedMemory`](../../../../spec/latest/chapters/features.html#features-protectedMemory) feature is not
 enabled, `flags` **must** not contain
-`VK_TENSOR_CREATE_PROTECTED_BIT_ARM`
+[VK_TENSOR_CREATE_PROTECTED_BIT_ARM](VkTensorCreateFlagBitsARM.html)
+
+[](#VUID-VkTensorCreateInfoARM-flags-11395) VUID-VkTensorCreateInfoARM-flags-11395
+
+If [VkOpaqueCaptureDataCreateInfoEXT](VkOpaqueCaptureDataCreateInfoEXT.html)::pData is not `NULL`,
+`flags` **must** contain
+[VK_TENSOR_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_ARM](VkTensorCreateFlagBitsARM.html)
+
+[](#VUID-VkTensorCreateInfoARM-flags-11396) VUID-VkTensorCreateInfoARM-flags-11396
+
+If `flags` contains
+[VK_TENSOR_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_ARM](VkTensorCreateFlagBitsARM.html),
+[VkOpaqueCaptureDataCreateInfoEXT](VkOpaqueCaptureDataCreateInfoEXT.html)::`pData->size` **must** be equal
+to [    `imageCaptureReplayOpaqueDataSize`](../../../../spec/latest/chapters/limits.html#limits-imageCaptureReplayOpaqueDataSize)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkTensorCreateInfoARM-sType-sType) VUID-VkTensorCreateInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TENSOR_CREATE_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TENSOR_CREATE_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkTensorCreateInfoARM-pNext-pNext) VUID-VkTensorCreateInfoARM-pNext-pNext
 
- Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkExternalMemoryTensorCreateInfoARM](VkExternalMemoryTensorCreateInfoARM.html) or [VkOpaqueCaptureDescriptorDataCreateInfoEXT](VkOpaqueCaptureDescriptorDataCreateInfoEXT.html)
+ Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkExternalMemoryTensorCreateInfoARM](VkExternalMemoryTensorCreateInfoARM.html), [VkOpaqueCaptureDataCreateInfoEXT](VkOpaqueCaptureDataCreateInfoEXT.html), or [VkOpaqueCaptureDescriptorDataCreateInfoEXT](VkOpaqueCaptureDescriptorDataCreateInfoEXT.html)
 
 * 
 [](#VUID-VkTensorCreateInfoARM-sType-unique) VUID-VkTensorCreateInfoARM-sType-unique

@@ -30,14 +30,14 @@ typedef enum VkCommandPoolCreateFlagBits {
 } VkCommandPoolCreateFlagBits;
 
 * 
-`VK_COMMAND_POOL_CREATE_TRANSIENT_BIT` specifies that command
+[VK_COMMAND_POOL_CREATE_TRANSIENT_BIT](#) specifies that command
 buffers allocated from the pool will be short-lived, meaning that they
 will be reset or freed in a relatively short timeframe.
 This flag **may** be used by the implementation to control memory
 allocation behavior within the pool.
 
 * 
-`VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT` allows any command
+[VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT](#) allows any command
 buffer allocated from a pool to be individually reset to the
 [initial state](../../../../spec/latest/chapters/cmdbuffers.html#commandbuffers-lifecycle); either by calling
 [vkResetCommandBuffer](vkResetCommandBuffer.html), or via the implicit reset when calling
@@ -46,7 +46,7 @@ If this flag is not set on a pool, then `vkResetCommandBuffer` **must**
 not be called for any command buffer allocated from that pool.
 
 * 
-`VK_COMMAND_POOL_CREATE_PROTECTED_BIT` specifies that command
+[VK_COMMAND_POOL_CREATE_PROTECTED_BIT](#) specifies that command
 buffers allocated from the pool are protected command buffers.
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkCommandPoolCreateFlags](VkCommandPoolCreateFlags.html)

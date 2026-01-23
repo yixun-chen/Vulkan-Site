@@ -105,7 +105,7 @@ Some implementations **may** not support multiview in conjunction with
 [mesh shaders](../../../../spec/latest/chapters/features.html#features-multiviewMeshShader),
 [geometry shaders](../../../../spec/latest/chapters/features.html#features-multiview-gs) or [tessellation shaders](../../../../spec/latest/chapters/features.html#features-multiview-tess).
 
-When multiview is enabled, the `VK_DEPENDENCY_VIEW_LOCAL_BIT` bit in a
+When multiview is enabled, the [VK_DEPENDENCY_VIEW_LOCAL_BIT](VkDependencyFlagBits.html) bit in a
 dependency **can** be used to express a view-local dependency, meaning that
 each view in the destination subpass depends on a single view in the source
 subpass.
@@ -136,7 +136,7 @@ relevant dynamic state or push constants **must** be set before they are used.
 
 A multiview subpass **can** declare that its shaders will write per-view
 attributes for all views in a single invocation, by setting the
-`VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX` bit in the subpass
+[VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX](VkSubpassDescriptionFlagBits.html) bit in the subpass
 description.
 The only supported per-view attributes are position and viewport mask, and
 per-view position and viewport masks are written to output array variables
@@ -166,7 +166,7 @@ on `ViewIndex`.
 
 Per-view attributes are all-or-nothing for a subpass.
 That is, all pipelines compiled against a subpass that includes the
-`VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX` bit **must** write
+[VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX](VkSubpassDescriptionFlagBits.html) bit **must** write
 per-view attributes to the `*PerViewNV[]` shader outputs, in addition to the
 non-per-view (e.g. `Position`) outputs.
 Pipelines compiled against a subpass that does not include this bit **must**
@@ -197,7 +197,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassMultiviewCreateInfo-sType-sType) VUID-VkRenderPassMultiviewCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderPassMultiviewCreateInfo-pViewMasks-parameter) VUID-VkRenderPassMultiviewCreateInfo-pViewMasks-parameter

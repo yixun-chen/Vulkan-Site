@@ -45,7 +45,7 @@ SPIR-V is used as the shader name.
 * 
 `index` is the shader index to use when creating a node in an
 execution graph.
-If `index` is `VK_SHADER_INDEX_UNUSED_AMDX` then the original
+If `index` is [VK_SHADER_INDEX_UNUSED_AMDX](VK_SHADER_INDEX_UNUSED_AMDX.html) then the original
 index is used, either as specified by the `ShaderIndexAMDX` execution
 mode, or `0` if that too is not specified.
 
@@ -72,7 +72,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineShaderStageNodeCreateInfoAMDX-sType-sType) VUID-VkPipelineShaderStageNodeCreateInfoAMDX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_NODE_CREATE_INFO_AMDX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_NODE_CREATE_INFO_AMDX](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineShaderStageNodeCreateInfoAMDX-pName-parameter) VUID-VkPipelineShaderStageNodeCreateInfoAMDX-pName-parameter

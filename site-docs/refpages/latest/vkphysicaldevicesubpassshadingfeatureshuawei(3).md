@@ -48,7 +48,7 @@ If the `VkPhysicalDeviceSubpassShadingFeaturesHUAWEI` structure is included in t
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceSubpassShadingFeaturesHUAWEI`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -56,7 +56,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceSubpassShadingFeaturesHUAWEI-sType-sType) VUID-VkPhysicalDeviceSubpassShadingFeaturesHUAWEI-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBPASS_SHADING_FEATURES_HUAWEI`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBPASS_SHADING_FEATURES_HUAWEI](VkStructureType.html)
 
 [VK_HUAWEI_subpass_shading](VK_HUAWEI_subpass_shading.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

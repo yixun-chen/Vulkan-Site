@@ -105,20 +105,20 @@ Extending [VkDeviceCreateInfo](VkDeviceCreateInfo.html):
 `VK_KHR_DEVICE_GROUP_CREATION_SPEC_VERSION`
 
 * 
-`VK_MAX_DEVICE_GROUP_SIZE_KHR`
+[VK_MAX_DEVICE_GROUP_SIZE_KHR](VK_MAX_DEVICE_GROUP_SIZE.html)
 
 * 
 Extending [VkMemoryHeapFlagBits](VkMemoryHeapFlagBits.html):
 
-`VK_MEMORY_HEAP_MULTI_INSTANCE_BIT_KHR`
+[VK_MEMORY_HEAP_MULTI_INSTANCE_BIT_KHR](VkMemoryHeapFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_DEVICE_GROUP_DEVICE_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_DEVICE_GROUP_DEVICE_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GROUP_PROPERTIES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GROUP_PROPERTIES_KHR](VkStructureType.html)
 
     VkDeviceCreateInfo devCreateInfo = { VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO };
     // (not shown) fill out devCreateInfo as usual.

@@ -101,7 +101,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderEnqueuePropertiesAMDX-sType-sType) VUID-VkPhysicalDeviceShaderEnqueuePropertiesAMDX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_PROPERTIES_AMDX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_PROPERTIES_AMDX](VkStructureType.html)
 
 [VK_AMDX_shader_enqueue](VK_AMDX_shader_enqueue.html), [VkStructureType](VkStructureType.html)
 

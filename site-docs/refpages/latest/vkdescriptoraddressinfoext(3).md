@@ -19,10 +19,10 @@
 
 VkDescriptorAddressInfoEXT - Structure specifying descriptor buffer address info
 
-Data describing a `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`,
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`,
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`, or
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` descriptor is passed in a
+Data describing a [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html), or
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html) descriptor is passed in a
 `VkDescriptorAddressInfoEXT` structure:
 
 // Provided by VK_EXT_descriptor_buffer
@@ -61,9 +61,9 @@ Valid Usage
 
 If
 `address` is not zero, and
-the descriptor is of type `VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`
-or `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`, then `format`
-**must** not be `VK_FORMAT_UNDEFINED`
+the descriptor is of type [VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html)
+or [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html), then `format`
+**must** not be [VK_FORMAT_UNDEFINED](VkFormat.html)
 
 * 
 [](#VUID-VkDescriptorAddressInfoEXT-address-08043) VUID-VkDescriptorAddressInfoEXT-address-08043
@@ -75,32 +75,44 @@ enabled,
 * 
 [](#VUID-VkDescriptorAddressInfoEXT-nullDescriptor-08938) VUID-VkDescriptorAddressInfoEXT-nullDescriptor-08938
 
-If `address` is zero, `range` **must** be `VK_WHOLE_SIZE`
+If `address` is zero, `range` **must** be [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html)
 
 * 
 [](#VUID-VkDescriptorAddressInfoEXT-nullDescriptor-08939) VUID-VkDescriptorAddressInfoEXT-nullDescriptor-08939
 
 If `address` is not zero,
-`range` **must** not be `VK_WHOLE_SIZE`
+`range` **must** not be [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html)
 
 * 
 [](#VUID-VkDescriptorAddressInfoEXT-range-08045) VUID-VkDescriptorAddressInfoEXT-range-08045
 
-`range` **must** be less than or equal to the size of the buffer
-containing `address` minus the offset of `address` from the base
-address of the buffer
+If `address` is not zero, then `range` **must** be less than or
+equal to the size of the buffer containing `address` minus the
+offset of `address` from the base address of the buffer
 
 * 
 [](#VUID-VkDescriptorAddressInfoEXT-range-08940) VUID-VkDescriptorAddressInfoEXT-range-08940
 
 `range` **must** not be zero
 
+* 
+[](#VUID-VkDescriptorAddressInfoEXT-None-12271) VUID-VkDescriptorAddressInfoEXT-None-12271
+
+    If
+Vulkan 1.3 is not supported and
+    the [`ycbcr2plane444Formats`](../../../../spec/latest/chapters/features.html#features-ycbcr2plane444Formats)
+    feature is not enabled, `format` **must** not be
+    [VK_FORMAT_G8_B8R8_2PLANE_444_UNORM](VkFormat.html),
+    [VK_FORMAT_G10X6_B10X6R10X6_2PLANE_444_UNORM_3PACK16](VkFormat.html),
+    [VK_FORMAT_G12X4_B12X4R12X4_2PLANE_444_UNORM_3PACK16](VkFormat.html), or
+    [VK_FORMAT_G16_B16R16_2PLANE_444_UNORM](VkFormat.html)
+
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDescriptorAddressInfoEXT-sType-sType) VUID-VkDescriptorAddressInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_ADDRESS_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_ADDRESS_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDescriptorAddressInfoEXT-pNext-pNext) VUID-VkDescriptorAddressInfoEXT-pNext-pNext

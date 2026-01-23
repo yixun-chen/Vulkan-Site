@@ -49,7 +49,7 @@ views.
 
 * 
 `tensorDescriptorSize` indicates the size in bytes of a
-`VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor.
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html) descriptor.
 
 If the `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html) structure passed to
@@ -61,7 +61,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDescriptorBufferTensorPropertiesARM-sType-sType) VUID-VkPhysicalDeviceDescriptorBufferTensorPropertiesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_TENSOR_PROPERTIES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_TENSOR_PROPERTIES_ARM](VkStructureType.html)
 
 [VK_ARM_tensors](VK_ARM_tensors.html), [VK_EXT_descriptor_buffer](VK_EXT_descriptor_buffer.html), [VkStructureType](VkStructureType.html)
 

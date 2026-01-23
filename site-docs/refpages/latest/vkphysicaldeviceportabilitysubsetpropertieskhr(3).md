@@ -54,7 +54,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePortabilitySubsetPropertiesKHR-sType-sType) VUID-VkPhysicalDevicePortabilitySubsetPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PORTABILITY_SUBSET_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PORTABILITY_SUBSET_PROPERTIES_KHR](VkStructureType.html)
 
 [VK_KHR_portability_subset](VK_KHR_portability_subset.html), [VkStructureType](VkStructureType.html)
 

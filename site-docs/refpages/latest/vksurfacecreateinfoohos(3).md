@@ -48,7 +48,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSurfaceCreateInfoOHOS-sType-sType) VUID-VkSurfaceCreateInfoOHOS-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS](VkStructureType.html)
 
 * 
 [](#VUID-VkSurfaceCreateInfoOHOS-pNext-pNext) VUID-VkSurfaceCreateInfoOHOS-pNext-pNext

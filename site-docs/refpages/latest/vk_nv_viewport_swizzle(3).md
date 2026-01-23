@@ -113,7 +113,7 @@ Extending [VkPipelineViewportStateCreateInfo](VkPipelineViewportStateCreateInfo.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV`
+[VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV](VkStructureType.html)
 
 1) Where does viewport swizzling occur in the pipeline?
 
@@ -250,7 +250,7 @@ Y, and Z by 256.
 Adjust depth testing to reflect the fact that 1/W values are large
 near the eye and small away from the eye.
 Clear the depth buffer to zero (infinitely far away) and use a depth
-test of `VK_COMPARE_OP_GREATER` instead of `VK_COMPARE_OP_LESS`.
+test of [VK_COMPARE_OP_GREATER](VkCompareOp.html) instead of [VK_COMPARE_OP_LESS](VkCompareOp.html).
 
 * 
 Revision 1, 2016-12-22 (Piers Daniell)

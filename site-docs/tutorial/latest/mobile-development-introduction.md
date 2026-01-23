@@ -30,7 +30,7 @@ Finally, we’ll explore the Vulkan extensions specifically designed for mobile 
 
 This chapter represents the culmination of everything we’ve built throughout the previous chapters, as mobile development requires deep integration with all engine systems. You’ll need solid mastery of Vulkan fundamentals and the engine architecture we’ve developed, since mobile optimization often requires fine-tuning at every level—from resource management and rendering pipelines to memory allocation and synchronization.
 
-Modern C expertise becomes particularly valuable in mobile development, where performance constraints demand efficient code and careful resource management. C17 and C++20 features like constexpr, structured bindings, and concepts help create mobile-optimized code that performs well under strict power and thermal limitations.
+Modern C++ expertise becomes particularly valuable in mobile development, where performance constraints demand efficient code and careful resource management. C++17 and C++20 features like constexpr, structured bindings, and concepts help create mobile-optimized code that performs well under strict power and thermal limitations.
 
 Understanding basic mobile development concepts will provide crucial context for the platform-specific decisions we’ll make. Mobile applications operate under constraints that desktop applications rarely face—app lifecycle events, varying screen densities, touch input paradigms, and the need to preserve battery life all influence how we design and implement our Vulkan engine for mobile platforms.
 
@@ -52,4 +52,4 @@ Basic Vulkan concepts:
 
 Let’s begin by exploring the platform considerations for Android and iOS.
 
-[Previous: Tooling Conclusion](../Tooling/07_conclusion.adoc) | [Next: Platform Considerations for Android and iOS](02_platform_considerations.adoc)
+[Previous: Tooling Conclusion](../Tooling/07_conclusion.html) | [Next: Platform Considerations for Android and iOS](02_platform_considerations.html)

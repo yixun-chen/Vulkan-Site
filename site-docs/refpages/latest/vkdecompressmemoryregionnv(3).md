@@ -108,7 +108,7 @@ The memory range defined by `srcAddress` and `compressedSize`
 [](#VUID-VkDecompressMemoryRegionNV-decompressionMethod-09395) VUID-VkDecompressMemoryRegionNV-decompressionMethod-09395
 
 If `decompressionMethod` is
-`VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_EXT`, then
+[VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_EXT](VkMemoryDecompressionMethodFlagBitsEXT.html), then
 `decompressedSize` **must** be less than or equal to 65536 bytes
 
 * 

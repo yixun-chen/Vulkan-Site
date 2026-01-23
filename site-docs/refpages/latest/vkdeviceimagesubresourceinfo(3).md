@@ -74,37 +74,37 @@ The `arrayLayer` member of `pSubresource` **must** be less than the
 If `format` of the `image` is a color format
 that is not a [multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar),
 and `tiling` of the `pCreateInfo` is
-`VK_IMAGE_TILING_LINEAR` or `VK_IMAGE_TILING_OPTIMAL`, the
+[VK_IMAGE_TILING_LINEAR](VkImageTiling.html) or [VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html), the
 `aspectMask` member of `pSubresource` **must** be
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkDeviceImageSubresourceInfo-format-04462) VUID-VkDeviceImageSubresourceInfo-format-04462
 
 If `format` of the `pCreateInfo` has a depth component, the
 `aspectMask` member of `pSubresource` **must** contain
-`VK_IMAGE_ASPECT_DEPTH_BIT`
+[VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkDeviceImageSubresourceInfo-format-04463) VUID-VkDeviceImageSubresourceInfo-format-04463
 
 If `format` of the `pCreateInfo` has a stencil component, the
 `aspectMask` member of `pSubresource` **must** contain
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkDeviceImageSubresourceInfo-format-04464) VUID-VkDeviceImageSubresourceInfo-format-04464
 
 If `format` of the `pCreateInfo` does not contain a stencil or
 depth component, the `aspectMask` member of `pSubresource` **must**
-not contain `VK_IMAGE_ASPECT_DEPTH_BIT` or
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+not contain [VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) or
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkDeviceImageSubresourceInfo-tiling-08717) VUID-VkDeviceImageSubresourceInfo-tiling-08717
 
 If the `tiling` of the `pCreateInfo` is
-`VK_IMAGE_TILING_LINEAR` and has a [    multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar), then the `aspectMask` member of
+[VK_IMAGE_TILING_LINEAR](VkImageTiling.html) and has a [    multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar), then the `aspectMask` member of
 `pSubresource` **must** be a single valid
 [multi-planar aspect mask](../../../../spec/latest/chapters/formats.html#formats-multiplanar-image-aspect) bit
 
@@ -113,7 +113,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceImageSubresourceInfo-sType-sType) VUID-VkDeviceImageSubresourceInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_IMAGE_SUBRESOURCE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_IMAGE_SUBRESOURCE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceImageSubresourceInfo-pNext-pNext) VUID-VkDeviceImageSubresourceInfo-pNext-pNext

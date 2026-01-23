@@ -30,16 +30,16 @@ typedef enum VkDeviceDiagnosticsConfigFlagBitsNV {
 } VkDeviceDiagnosticsConfigFlagBitsNV;
 
 * 
-`VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_DEBUG_INFO_BIT_NV`
+[VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_DEBUG_INFO_BIT_NV](#)
 enables the generation of debug information for shaders.
 
 * 
-`VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_RESOURCE_TRACKING_BIT_NV`
+[VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_RESOURCE_TRACKING_BIT_NV](#)
 enables driver side tracking of resources (images, buffers, etc.) used
 to augment the device fault information.
 
 * 
-`VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_AUTOMATIC_CHECKPOINTS_BIT_NV`
+[VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_AUTOMATIC_CHECKPOINTS_BIT_NV](#)
 enables automatic insertion of [    diagnostic checkpoints](../../../../spec/latest/chapters/debugging.html#device-diagnostic-checkpoints) for draw calls, dispatches,
 trace rays,
 and copies.
@@ -47,7 +47,7 @@ The CPU call stack at the time of the command will be associated as the
 marker data for the automatically inserted checkpoints.
 
 * 
-`VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_ERROR_REPORTING_BIT_NV`
+[VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_ERROR_REPORTING_BIT_NV](#)
 enables shader error reporting.
 
 [VK_NV_device_diagnostics_config](VK_NV_device_diagnostics_config.html), [VkDeviceDiagnosticsConfigFlagsNV](VkDeviceDiagnosticsConfigFlagsNV.html)

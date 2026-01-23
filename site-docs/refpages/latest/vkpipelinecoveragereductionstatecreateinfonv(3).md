@@ -51,12 +51,12 @@ follows:
 * 
 If the `[VK_NV_framebuffer_mixed_samples](VK_NV_framebuffer_mixed_samples.html)` extension is enabled,
 then it is as if the `coverageReductionMode` is
-`VK_COVERAGE_REDUCTION_MODE_MERGE_NV`.
+[VK_COVERAGE_REDUCTION_MODE_MERGE_NV](VkCoverageReductionModeNV.html).
 
 * 
 If the `[VK_AMD_mixed_attachment_samples](VK_AMD_mixed_attachment_samples.html)` extension is enabled,
 then it is as if the `coverageReductionMode` is
-`VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV`.
+[VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV](VkCoverageReductionModeNV.html).
 
 * 
 If both `[VK_NV_framebuffer_mixed_samples](VK_NV_framebuffer_mixed_samples.html)` and
@@ -68,7 +68,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineCoverageReductionStateCreateInfoNV-sType-sType) VUID-VkPipelineCoverageReductionStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineCoverageReductionStateCreateInfoNV-flags-zerobitmask) VUID-VkPipelineCoverageReductionStateCreateInfoNV-flags-zerobitmask

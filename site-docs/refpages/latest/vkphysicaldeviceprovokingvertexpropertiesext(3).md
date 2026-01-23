@@ -59,7 +59,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceProvokingVertexPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceProvokingVertexPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROVOKING_VERTEX_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROVOKING_VERTEX_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_provoking_vertex](VK_EXT_provoking_vertex.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

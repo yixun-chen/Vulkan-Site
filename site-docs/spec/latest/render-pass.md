@@ -78,7 +78,7 @@ specifying details of the render pass instance to begin.
 After beginning a render pass instance, the command buffer is ready to
 record [draw commands](drawing.html#drawing).
 
-If `pRenderingInfo->flags` includes `VK_RENDERING_RESUMING_BIT` then
+If `pRenderingInfo->flags` includes [VK_RENDERING_RESUMING_BIT](#VkRenderingFlagBitsKHR) then
 this render pass is resumed from a render pass instance that has been
 suspended earlier in [submission order](synchronization.html#synchronization-submission-order).
 
@@ -100,13 +100,13 @@ If `commandBuffer` is a secondary command buffer,
 and the [`nestedCommandBuffer`](features.html#features-nestedCommandBuffer)
 feature is not enabled,
 `pRenderingInfo->flags` **must** not include
-`VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT`
+[VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT](#VkRenderingFlagBitsKHR)
 
 * 
 [](#VUID-vkCmdBeginRendering-commandBuffer-10914) VUID-vkCmdBeginRendering-commandBuffer-10914
 
 If `commandBuffer` is a secondary command buffer,
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT` **must** not have
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](cmdbuffers.html#VkCommandBufferUsageFlagBits) **must** not have
 been set in [VkCommandBufferBeginInfo](cmdbuffers.html#VkCommandBufferBeginInfo)::`flags` when
 `commandBuffer` began
 
@@ -115,8 +115,9 @@ been set in [VkCommandBufferBeginInfo](cmdbuffers.html#VkCommandBufferBeginInfo)
 
 If `pRenderingInfo->pDepthAttachment` is not `NULL` and
 `pRenderingInfo->pDepthAttachment→imageView` is not
-[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `pRenderingInfo->pDepthAttachment→imageView`
-**must** be in the layout specified by
+[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), when
+`pRenderingInfo->pDepthAttachment→imageView` is accessed it **must**
+be in the layout specified by
 `pRenderingInfo->pDepthAttachment→imageLayout`
 
 * 
@@ -126,7 +127,7 @@ If `pRenderingInfo->pDepthAttachment` is not `NULL`,
 `pRenderingInfo->pDepthAttachment→imageView` is not
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 `pRenderingInfo->pDepthAttachment→imageResolveMode` is not
-`VK_RESOLVE_MODE_NONE`, and
+[VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), and
 `pRenderingInfo->pDepthAttachment→resolveImageView` is not
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 `pRenderingInfo->pDepthAttachment→resolveImageView` **must** be in the
@@ -138,9 +139,9 @@ layout specified by
 
 If `pRenderingInfo->pStencilAttachment` is not `NULL` and
 `pRenderingInfo->pStencilAttachment→imageView` is not
-[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
-`pRenderingInfo->pStencilAttachment→imageView` **must** be in the
-layout specified by
+[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), when
+`pRenderingInfo->pStencilAttachment→imageView` is accessed it **must**
+be in the layout specified by
 `pRenderingInfo->pStencilAttachment→imageLayout`
 
 * 
@@ -150,7 +151,7 @@ If `pRenderingInfo->pStencilAttachment` is not `NULL`,
 `pRenderingInfo->pStencilAttachment→imageView` is not
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 `pRenderingInfo->pStencilAttachment→imageResolveMode` is not
-`VK_RESOLVE_MODE_NONE`, and
+[VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), and
 `pRenderingInfo->pStencilAttachment→resolveImageView` is not
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 `pRenderingInfo->pStencilAttachment→resolveImageView` **must** be in
@@ -161,48 +162,66 @@ the layout specified by
 [](#VUID-vkCmdBeginRendering-pRenderingInfo-09592) VUID-vkCmdBeginRendering-pRenderingInfo-09592
 
 For each element of `pRenderingInfo->pColorAttachments`, if
-`imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), that image view **must** be in
-the layout specified by `imageLayout`
+`imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), when that image view is
+accessed it **must** be in the layout specified by the `imageLayout`
+member of that same element of `pRenderingInfo->pColorAttachments`
 
 * 
 [](#VUID-vkCmdBeginRendering-pRenderingInfo-09593) VUID-vkCmdBeginRendering-pRenderingInfo-09593
 
 For each element of `pRenderingInfo->pColorAttachments`, if
 either `imageResolveMode` is
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`, or
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR), or
 `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and `resolveMode` is not
-`VK_RESOLVE_MODE_NONE`, and `resolveImageView` is not
+[VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), and `resolveImageView` is not
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `resolveImageView` **must** be in the layout
 specified by `resolveImageLayout`
 
 * 
 [](#VUID-vkCmdBeginRendering-flags-10641) VUID-vkCmdBeginRendering-flags-10641
 
-If `VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` is included in
+If [VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](#VkTileShadingRenderPassFlagBitsQCOM) is included in
 [VkRenderPassTileShadingCreateInfoQCOM](#VkRenderPassTileShadingCreateInfoQCOM)::`flags`,
 `commandBuffer` **must** not have been recorded with
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT`
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](cmdbuffers.html#VkCommandBufferUsageFlagBits)
 
 * 
 [](#VUID-vkCmdBeginRendering-flags-10642) VUID-vkCmdBeginRendering-flags-10642
 
 [VkRenderPassTileShadingCreateInfoQCOM](#VkRenderPassTileShadingCreateInfoQCOM)::`flags` **must** not
-include `VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM`
+include [VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM](#VkTileShadingRenderPassFlagBitsQCOM)
 
 * 
 [](#VUID-vkCmdBeginRendering-pRenderingInfo-11750) VUID-vkCmdBeginRendering-pRenderingInfo-11750
 
 If `pRenderingInfo->flags` contains
-`VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR`,
+[VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR](#VkRenderingFlagBitsKHR),
 [`maintenance10`](features.html#features-maintenance10) **must** be enabled
 
 * 
 [](#VUID-vkCmdBeginRendering-pRenderingInfo-11751) VUID-vkCmdBeginRendering-pRenderingInfo-11751
 
 If `pRenderingInfo->flags` does not contain
-`VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR`,
+[VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR](#VkRenderingFlagBitsKHR),
 attachments **must** not specify
-`VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR`
+[VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR](#VkRenderingAttachmentFlagBitsKHR)
+
+* 
+[](#VUID-vkCmdBeginRendering-imageView-12276) VUID-vkCmdBeginRendering-imageView-12276
+
+If [VkRenderingFragmentDensityMapAttachmentInfoEXT](#VkRenderingFragmentDensityMapAttachmentInfoEXT)::`imageView`
+is not equal to [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), when `imageView` is accessed
+it **must** be in the layout specified by
+[VkRenderingFragmentDensityMapAttachmentInfoEXT](#VkRenderingFragmentDensityMapAttachmentInfoEXT)::`imageLayout`
+
+* 
+[](#VUID-vkCmdBeginRendering-imageView-12277) VUID-vkCmdBeginRendering-imageView-12277
+
+If
+[VkRenderingFragmentShadingRateAttachmentInfoKHR](#VkRenderingFragmentShadingRateAttachmentInfoKHR)::`imageView`
+is not equal to [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), when `imageView` is accessed
+it **must** be in the layout specified by
+[VkRenderingFragmentShadingRateAttachmentInfoKHR](#VkRenderingFragmentShadingRateAttachmentInfoKHR)::`imageLayout`
 
 Valid Usage (Implicit)
 
@@ -224,7 +243,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBeginRendering-commandBuffer-cmdpool) VUID-vkCmdBeginRendering-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBeginRendering-renderpass) VUID-vkCmdBeginRendering-renderpass
@@ -345,15 +364,15 @@ provided in `pColorAttachments`[**X**].
 If the `imageView` member of any element of `pColorAttachments` is
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 and `resolveMode` is not
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`,
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR),
 writes to the corresponding location by a fragment are discarded.
 
 The `aspectMask` of any image view specified for `pDepthAttachment`
 or `pStencilAttachment` is ignored.
 Instead, depth attachments are automatically treated as if
-`VK_IMAGE_ASPECT_DEPTH_BIT` was specified for their aspect masks, and
+[VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits) was specified for their aspect masks, and
 stencil attachments are automatically treated as if
-`VK_IMAGE_ASPECT_STENCIL_BIT` was specified for their aspect masks.
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits) was specified for their aspect masks.
 
 Valid Usage
 
@@ -365,11 +384,7 @@ If `viewMask` is `0`, `layerCount` **must** not be `0`
 * 
 [](#VUID-VkRenderingInfo-multisampledRenderToSingleSampled-06857) VUID-VkRenderingInfo-multisampledRenderToSingleSampled-06857
 
-`imageView` members of `pDepthAttachment`,
-`pStencilAttachment`, and elements of `pColorAttachments` that
-are not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) **must** have been created with the same
-`sampleCount`
-, if none of the following are enabled:
+If none of the following are enabled:
 
 The `[VK_AMD_mixed_attachment_samples](../appendices/extensions.html#VK_AMD_mixed_attachment_samples)` extension
 
@@ -377,7 +392,11 @@ The `[VK_AMD_mixed_attachment_samples](../appendices/extensions.html#VK_AMD_mixe
 The `[VK_NV_framebuffer_mixed_samples](../appendices/extensions.html#VK_NV_framebuffer_mixed_samples)` extension
 
 * 
-The [     `multisampledRenderToSingleSampled`](features.html#features-multisampledRenderToSingleSampled) feature,
+The [     `multisampledRenderToSingleSampled`](features.html#features-multisampledRenderToSingleSampled) feature
+
+`imageView` members of `pDepthAttachment`, `pStencilAttachment`,
+and elements of `pColorAttachments` that are not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
+**must** have been created with the same `sampleCount`
 
 [](#VUID-VkRenderingInfo-imageView-09429) VUID-VkRenderingInfo-imageView-09429
 
@@ -405,7 +424,7 @@ If
 is enabled, then all attachments referenced by `imageView` members
 of `pDepthAttachment`, `pStencilAttachment`, and elements of
 `pColorAttachments` that are not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) **must** have a
-sample count that is either `VK_SAMPLE_COUNT_1_BIT` or equal to
+sample count that is either [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits) or equal to
 [VkMultisampledRenderToSingleSampledInfoEXT](#VkMultisampledRenderToSingleSampledInfoEXT)::`rasterizationSamples`
 
 [](#VUID-VkRenderingInfo-imageView-06859) VUID-VkRenderingInfo-imageView-06859
@@ -415,8 +434,8 @@ If
 is enabled, then all attachments referenced by `imageView` members
 of `pDepthAttachment`, `pStencilAttachment`, and elements of
 `pColorAttachments` that are not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and have a
-sample count of `VK_SAMPLE_COUNT_1_BIT` **must** have been created with
-`VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT` in
+sample count of [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits) **must** have been created with
+[VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT](resources.html#VkImageCreateFlagBits) in
 their [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`flags`
 
 [](#VUID-VkRenderingInfo-pNext-06077) VUID-VkRenderingInfo-pNext-06077
@@ -504,7 +523,7 @@ be the same
 
 If neither `pDepthAttachment` or `pStencilAttachment` are
 `NULL`, and the `resolveMode` member of each is not
-`VK_RESOLVE_MODE_NONE`, the `resolveImageView` member of each
+[VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), the `resolveImageView` member of each
 structure **must** be the same
 
 [](#VUID-VkRenderingInfo-colorAttachmentCount-06087) VUID-VkRenderingInfo-colorAttachmentCount-06087
@@ -512,19 +531,19 @@ structure **must** be the same
 If `colorAttachmentCount` is not `0` and the `imageView` member
 of an element of `pColorAttachments` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 that `imageView` **must** have been created with the
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 [](#VUID-VkRenderingInfo-colorAttachmentCount-09476) VUID-VkRenderingInfo-colorAttachmentCount-09476
 
 If `colorAttachmentCount` is not `0` and there is an element of
 `pColorAttachments` with
 either its `resolveMode` member set to
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`, or
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR), or
 its `imageView` member not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and its
-`resolveMode` member not set to `VK_RESOLVE_MODE_NONE`, the
+`resolveMode` member not set to [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), the
 `resolveImageView` member of that element of `pColorAttachments`
 **must** have been created with the
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 [](#VUID-VkRenderingInfo-pDepthAttachment-06547) VUID-VkRenderingInfo-pDepthAttachment-06547
 
@@ -538,14 +557,14 @@ that includes a depth component
 If `pDepthAttachment` is not `NULL` and
 `pDepthAttachment->imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 `pDepthAttachment->imageView` **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 [](#VUID-VkRenderingInfo-pDepthAttachment-09477) VUID-VkRenderingInfo-pDepthAttachment-09477
 
 If `pDepthAttachment` is not `NULL` and
-`pDepthAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pDepthAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR),
 `pDepthAttachment->resolveImageView` **must** have been created with
-the `VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+the [VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 [](#VUID-VkRenderingInfo-pStencilAttachment-06548) VUID-VkRenderingInfo-pStencilAttachment-06548
 
@@ -559,81 +578,81 @@ format that includes a stencil aspect
 If `pStencilAttachment` is not `NULL` and
 `pStencilAttachment->imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 `pStencilAttachment->imageView` **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 [](#VUID-VkRenderingInfo-pStencilAttachment-09478) VUID-VkRenderingInfo-pStencilAttachment-09478
 
 If `pStencilAttachment` is not `NULL` and
-`pStencilAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pStencilAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR),
 `pStencilAttachment->resolveImageView` **must** have been created with
-the `VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+the [VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 [](#VUID-VkRenderingInfo-colorAttachmentCount-06090) VUID-VkRenderingInfo-colorAttachmentCount-06090
 
 If `colorAttachmentCount` is not `0` and the `imageView` member
 of an element of `pColorAttachments` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 the `layout` member of that element of `pColorAttachments` **must**
-not be `VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`
+not be [VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingInfo-colorAttachmentCount-06091) VUID-VkRenderingInfo-colorAttachmentCount-06091
 
 If `colorAttachmentCount` is not `0` and the `imageView` member
 of an element of `pColorAttachments` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), if
 the `resolveMode` member of that element of `pColorAttachments`
-is not `VK_RESOLVE_MODE_NONE`, its `resolveImageLayout` member
-**must** not be `VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`
+is not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), its `resolveImageLayout` member
+**must** not be [VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingInfo-pDepthAttachment-06092) VUID-VkRenderingInfo-pDepthAttachment-06092
 
 If `pDepthAttachment` is not `NULL` and
 `pDepthAttachment->imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 `pDepthAttachment->layout` **must** not be
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingInfo-pDepthAttachment-06093) VUID-VkRenderingInfo-pDepthAttachment-06093
 
 If `pDepthAttachment` is not `NULL`,
 `pDepthAttachment->imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and
-`pDepthAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pDepthAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR),
 `pDepthAttachment->resolveImageLayout` **must** not be
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingInfo-pStencilAttachment-06094) VUID-VkRenderingInfo-pStencilAttachment-06094
 
 If `pStencilAttachment` is not `NULL` and
 `pStencilAttachment->imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 `pStencilAttachment->layout` **must** not be
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingInfo-flags-11514) VUID-VkRenderingInfo-flags-11514
 
-If `flags` contains `VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT` or
-`VK_RENDERING_FRAGMENT_REGION_BIT_EXT`, then the
+If `flags` contains [VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT](#VkRenderingFlagBitsKHR) or
+[VK_RENDERING_FRAGMENT_REGION_BIT_EXT](#VkRenderingFlagBitsKHR), then the
 [`customResolve`](features.html#features-customResolve) feature **must** enabled
 
 [](#VUID-VkRenderingInfo-pColorAttachments-11515) VUID-VkRenderingInfo-pColorAttachments-11515
 
 For any element of `pColorAttachments`, `pDepthAttachment`, or
 `pStencilAttachment`, if `resolveMode` contains
-`VK_RESOLVE_MODE_CUSTOM_BIT_EXT`, then `flags` **must** contain
-`VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT`
+[VK_RESOLVE_MODE_CUSTOM_BIT_EXT](#VkResolveModeFlagBitsKHR), then `flags` **must** contain
+[VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT](#VkRenderingFlagBitsKHR)
 
 [](#VUID-VkRenderingInfo-flags-11516) VUID-VkRenderingInfo-flags-11516
 
-If `flags` contains `VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT`, then
+If `flags` contains [VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT](#VkRenderingFlagBitsKHR), then
 for any element of `pColorAttachments`, `pDepthAttachment`, or
 `pStencilAttachment`, `resolveMode` **must** be
-`VK_RESOLVE_MODE_CUSTOM_BIT_EXT` or `VK_RESOLVE_MODE_NONE`
+[VK_RESOLVE_MODE_CUSTOM_BIT_EXT](#VkResolveModeFlagBitsKHR) or [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR)
 
 [](#VUID-VkRenderingInfo-pStencilAttachment-06095) VUID-VkRenderingInfo-pStencilAttachment-06095
 
 If `pStencilAttachment` is not `NULL`,
 `pStencilAttachment->imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and
-`pStencilAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pStencilAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR),
 `pStencilAttachment->resolveImageLayout` **must** not be
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingInfo-layerCount-07817) VUID-VkRenderingInfo-layerCount-07817
 
@@ -666,89 +685,89 @@ or equal to `VkRenderingInfo`::`layerCount`
 If `colorAttachmentCount` is not `0` and the `imageView` member
 of an element of `pColorAttachments` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 the `layout` member of that element of `pColorAttachments` **must**
-not be `VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
-or `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`
+not be [VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
+or [VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingInfo-colorAttachmentCount-06097) VUID-VkRenderingInfo-colorAttachmentCount-06097
 
 If `colorAttachmentCount` is not `0` and the `imageView` member
 of an element of `pColorAttachments` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), if
 the `resolveMode` member of that element of `pColorAttachments`
-is not `VK_RESOLVE_MODE_NONE`, its `resolveImageLayout` member
+is not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), its `resolveImageLayout` member
 **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingInfo-pDepthAttachment-06098) VUID-VkRenderingInfo-pDepthAttachment-06098
 
 If `pDepthAttachment` is not `NULL`,
 `pDepthAttachment->imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and
-`pDepthAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pDepthAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR),
 `pDepthAttachment->resolveImageLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingInfo-pStencilAttachment-06099) VUID-VkRenderingInfo-pStencilAttachment-06099
 
 If `pStencilAttachment` is not `NULL`,
 `pStencilAttachment->imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and
-`pStencilAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pStencilAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR),
 `pStencilAttachment->resolveImageLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingInfo-colorAttachmentCount-06100) VUID-VkRenderingInfo-colorAttachmentCount-06100
 
 If `colorAttachmentCount` is not `0` and the `imageView` member
 of an element of `pColorAttachments` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 the `layout` member of that element of `pColorAttachments` **must**
-not be `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+not be [VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingInfo-colorAttachmentCount-06101) VUID-VkRenderingInfo-colorAttachmentCount-06101
 
 If `colorAttachmentCount` is not `0` and the `imageView` member
 of an element of `pColorAttachments` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), if
 the `resolveMode` member of that element of `pColorAttachments`
-is not `VK_RESOLVE_MODE_NONE`, its `resolveImageLayout` member
-**must** not be `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+is not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), its `resolveImageLayout` member
+**must** not be [VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingInfo-pDepthAttachment-07732) VUID-VkRenderingInfo-pDepthAttachment-07732
 
 If `pDepthAttachment` is not `NULL` and
 `pDepthAttachment->imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 `pDepthAttachment->layout` **must** not be
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingInfo-pDepthAttachment-07733) VUID-VkRenderingInfo-pDepthAttachment-07733
 
 If `pDepthAttachment` is not `NULL`,
 `pDepthAttachment->imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and
-`pDepthAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pDepthAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR),
 `pDepthAttachment->resolveImageLayout` **must** not be
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingInfo-pStencilAttachment-07734) VUID-VkRenderingInfo-pStencilAttachment-07734
 
 If `pStencilAttachment` is not `NULL` and
 `pStencilAttachment->imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 `pStencilAttachment->layout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingInfo-pStencilAttachment-07735) VUID-VkRenderingInfo-pStencilAttachment-07735
 
 If `pStencilAttachment` is not `NULL`,
 `pStencilAttachment->imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and
-`pStencilAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pStencilAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR),
 `pStencilAttachment->resolveImageLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingInfo-pDepthAttachment-06102) VUID-VkRenderingInfo-pDepthAttachment-06102
 
@@ -771,7 +790,7 @@ If `pDepthAttachment` or `pStencilAttachment` are both not
 `pStencilAttachment->imageView` are both not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 and
 [VkPhysicalDeviceDepthStencilResolveProperties](limits.html#VkPhysicalDeviceDepthStencilResolveProperties)::`independentResolveNone`
-is `VK_FALSE`, the `resolveMode` of both structures **must** be the
+is [VK_FALSE](fundamentals.html#VK_FALSE), the `resolveMode` of both structures **must** be the
 same value
 
 [](#VUID-VkRenderingInfo-pDepthAttachment-06105) VUID-VkRenderingInfo-pDepthAttachment-06105
@@ -780,8 +799,8 @@ If `pDepthAttachment` or `pStencilAttachment` are both not
 `NULL`, `pDepthAttachment->imageView` and
 `pStencilAttachment->imageView` are both not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 [VkPhysicalDeviceDepthStencilResolveProperties](limits.html#VkPhysicalDeviceDepthStencilResolveProperties)::`independentResolve`
-is `VK_FALSE`, and the `resolveMode` of neither structure is
-`VK_RESOLVE_MODE_NONE`, the `resolveMode` of both structures
+is [VK_FALSE](fundamentals.html#VK_FALSE), and the `resolveMode` of neither structure is
+[VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), the `resolveMode` of both structures
 **must** be the same value
 
 [](#VUID-VkRenderingInfo-colorAttachmentCount-06106) VUID-VkRenderingInfo-colorAttachmentCount-06106
@@ -798,7 +817,7 @@ in the `pNext` chain is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_N
 valid `imageView` and `resolveImageView` members of
 `pDepthAttachment`, `pStencilAttachment`, and each element of
 `pColorAttachments` **must** be a [VkImageView](resources.html#VkImageView) created with
-`VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`
+[VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](resources.html#VkImageCreateFlagBits)
 
 [](#VUID-VkRenderingInfo-imageView-06108) VUID-VkRenderingInfo-imageView-06108
 
@@ -873,7 +892,7 @@ equal to the `imageView` or `resolveImageView` member of
 [](#VUID-VkRenderingInfo-flags-10826) VUID-VkRenderingInfo-flags-10826
 
 If `flags` contains
-`VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE`, then
+[VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](#VkRenderingFlagBitsKHR), then
 `layerCount` **must** be less than or equal to
 [    `maxFragmentDensityMapLayers`](limits.html#limits-maxFragmentDensityMapLayers)
 
@@ -881,14 +900,14 @@ If `flags` contains
 
 If the [    `fragmentDensityMapLayered`](features.html#features-fragmentDensityMapLayered) feature is not enabled, `flags`
 **must** not contain
-`VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE`
+[VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](#VkRenderingFlagBitsKHR)
 
 [](#VUID-VkRenderingInfo-pNext-06119) VUID-VkRenderingInfo-pNext-06119
 
 If
 the [`maintenance7`](features.html#features-maintenance7) feature is not enabled
 or the [    `robustFragmentShadingRateAttachmentAccess`](limits.html#limits-robustFragmentShadingRateAttachmentAccess) limit is
-`VK_FALSE` or the `imageView` member of a
+[VK_FALSE](fundamentals.html#VK_FALSE) or the `imageView` member of a
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](#VkRenderingFragmentShadingRateAttachmentInfoKHR) structure was
 created with [VkImageSubresourceRange](resources.html#VkImageSubresourceRange)::`baseMipLevel` greater
 than 0,
@@ -906,7 +925,7 @@ in the `pNext` chain is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_N
 If
 the [`maintenance7`](features.html#features-maintenance7) feature is not enabled
 or the [    `robustFragmentShadingRateAttachmentAccess`](limits.html#limits-robustFragmentShadingRateAttachmentAccess) limit is
-`VK_FALSE` or the `imageView` member of a
+[VK_FALSE](fundamentals.html#VK_FALSE) or the `imageView` member of a
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](#VkRenderingFragmentShadingRateAttachmentInfoKHR) structure was
 created with [VkImageSubresourceRange](resources.html#VkImageSubresourceRange)::`baseMipLevel` greater
 than 0,
@@ -924,7 +943,7 @@ in the `pNext` chain is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_N
 If
 the [`maintenance7`](features.html#features-maintenance7) feature is not enabled
 or the [    `robustFragmentShadingRateAttachmentAccess`](limits.html#limits-robustFragmentShadingRateAttachmentAccess) limit is
-`VK_FALSE` or the `imageView` member of a
+[VK_FALSE](fundamentals.html#VK_FALSE) or the `imageView` member of a
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](#VkRenderingFragmentShadingRateAttachmentInfoKHR) structure was
 created with [VkImageSubresourceRange](resources.html#VkImageSubresourceRange)::`baseMipLevel` greater
 than 0,
@@ -942,7 +961,7 @@ for each element of `pDeviceRenderAreas`
 If
 the [`maintenance7`](features.html#features-maintenance7) feature is not enabled
 or the [    `robustFragmentShadingRateAttachmentAccess`](limits.html#limits-robustFragmentShadingRateAttachmentAccess) limit is
-`VK_FALSE` or the `imageView` member of a
+[VK_FALSE](fundamentals.html#VK_FALSE) or the `imageView` member of a
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](#VkRenderingFragmentShadingRateAttachmentInfoKHR) structure was
 created with [VkImageSubresourceRange](resources.html#VkImageSubresourceRange)::`baseMipLevel` greater
 than 0,
@@ -1024,7 +1043,7 @@ by this structure
 
 [](#VUID-VkRenderingInfo-flags-10012) VUID-VkRenderingInfo-flags-10012
 
-If `flags` includes `VK_RENDERING_CONTENTS_INLINE_BIT_KHR` then
+If `flags` includes [VK_RENDERING_CONTENTS_INLINE_BIT_KHR](#VkRenderingFlagBitsKHR) then
 at least one of the following features **must** be enabled
 
 * 
@@ -1036,30 +1055,30 @@ at least one of the following features **must** be enabled
 [](#VUID-VkRenderingInfo-pDepthAttachment-09318) VUID-VkRenderingInfo-pDepthAttachment-09318
 
 `pDepthAttachment->resolveMode` **must** not be
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR)
 
 [](#VUID-VkRenderingInfo-pStencilAttachment-09319) VUID-VkRenderingInfo-pStencilAttachment-09319
 
 `pStencilAttachment->resolveMode` **must** not be
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR)
 
 [](#VUID-VkRenderingInfo-colorAttachmentCount-09320) VUID-VkRenderingInfo-colorAttachmentCount-09320
 
 If `colorAttachmentCount` is not `1`, the `resolveMode` member
 of any element of `pColorAttachments` **must** not be
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR)
 
 [](#VUID-VkRenderingInfo-resolveMode-09321) VUID-VkRenderingInfo-resolveMode-09321
 
 If the `resolveMode` of any element of `pColorAttachments` is
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`,
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR),
 [VkRenderingFragmentDensityMapAttachmentInfoEXT](#VkRenderingFragmentDensityMapAttachmentInfoEXT)::`imageView`
 **must** be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 [](#VUID-VkRenderingInfo-resolveMode-09322) VUID-VkRenderingInfo-resolveMode-09322
 
 If the `resolveMode` of any element of `pColorAttachments` is
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`,
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR),
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](#VkRenderingFragmentShadingRateAttachmentInfoKHR)::`imageView`
 **must** be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
@@ -1082,9 +1101,9 @@ that `imageView` **must** have been created with the
 If `colorAttachmentCount` is not `0`, and there is an element of
 `pColorAttachments` with
 either its `resolveMode` member set to
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`, or
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR), or
 its `imageView` member not set to [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and its
-`resolveMode` member not set to `VK_RESOLVE_MODE_NONE`, the
+`resolveMode` member not set to [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), the
 `resolveImageView` member of that element of `pColorAttachments`
 **must** have been created with the
 [identity swizzle](resources.html#resources-image-views-identity-mappings)
@@ -1100,7 +1119,7 @@ If `pDepthAttachment` is not `NULL` and
 
 If `pDepthAttachment` is not `NULL`,
 `pDepthAttachment->imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and
-`pDepthAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pDepthAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR),
 `pDepthAttachment->resolveImageView` **must** have been created with
 the [identity swizzle](resources.html#resources-image-views-identity-mappings)
 
@@ -1115,7 +1134,7 @@ If `pStencilAttachment` is not `NULL` and
 
 If `pStencilAttachment` is not `NULL`,
 `pStencilAttachment->imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and
-`pStencilAttachment->resolveMode` is not `VK_RESOLVE_MODE_NONE`,
+`pStencilAttachment->resolveMode` is not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR),
 `pStencilAttachment->resolveImageView` **must** have been created with
 the [identity swizzle](resources.html#resources-image-views-identity-mappings)
 
@@ -1138,14 +1157,14 @@ created with the [identity    swizzle](resources.html#resources-image-views-iden
 If the `imageView` member of a
 [VkRenderingFragmentDensityMapAttachmentInfoEXT](#VkRenderingFragmentDensityMapAttachmentInfoEXT) structure included
 in the `pNext` chain is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
-`VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` **must** not be included
+[VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](#VkTileShadingRenderPassFlagBitsQCOM) **must** not be included
 in [VkRenderPassTileShadingCreateInfoQCOM](#VkRenderPassTileShadingCreateInfoQCOM)::`flags`
 
 [](#VUID-VkRenderingInfo-resolveMode-10644) VUID-VkRenderingInfo-resolveMode-10644
 
 If the `resolveMode` of any element of `pColorAttachments` is
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`,
-`VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` **must** not be included
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR),
+[VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](#VkTileShadingRenderPassFlagBitsQCOM) **must** not be included
 in [VkRenderPassTileShadingCreateInfoQCOM](#VkRenderPassTileShadingCreateInfoQCOM)::`flags`
 
 Valid Usage (Implicit)
@@ -1153,7 +1172,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderingInfo-sType-sType) VUID-VkRenderingInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDERING_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDERING_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderingInfo-pNext-pNext) VUID-VkRenderingInfo-pNext-pNext
@@ -1220,7 +1239,7 @@ typedef enum VkRenderingFlagBits {
 typedef VkRenderingFlagBits VkRenderingFlagBitsKHR;
 
 * 
-`VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT` specifies that
+[VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT](#VkRenderingFlagBitsKHR) specifies that
 draw calls for the render pass instance will be recorded in secondary
 command buffers.
 If the [`nestedCommandBuffer`](features.html#features-nestedCommandBuffer)
@@ -1228,51 +1247,51 @@ feature is enabled, the draw calls **can** come from both inline and
 [vkCmdExecuteCommands](cmdbuffers.html#vkCmdExecuteCommands).
 
 * 
-`VK_RENDERING_RESUMING_BIT` specifies that the render pass instance
+[VK_RENDERING_RESUMING_BIT](#VkRenderingFlagBitsKHR) specifies that the render pass instance
 is resuming an earlier suspended render pass instance.
 
 * 
-`VK_RENDERING_SUSPENDING_BIT` specifies that the render pass
+[VK_RENDERING_SUSPENDING_BIT](#VkRenderingFlagBitsKHR) specifies that the render pass
 instance will be suspended.
 
 * 
-`VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT` specifies that
+[VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT](#VkRenderingFlagBitsKHR) specifies that
 [Legacy Dithering](interfaces.html#interfaces-legacy-dithering) is enabled for the
 render pass instance.
 
 * 
-`VK_RENDERING_CONTENTS_INLINE_BIT_KHR` specifies that draw calls for
+[VK_RENDERING_CONTENTS_INLINE_BIT_KHR](#VkRenderingFlagBitsKHR) specifies that draw calls for
 the render pass instance **can** be recorded inline within the current
 command buffer.
 This **can** be combined with the
-`VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT` bit to allow
+[VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT](#VkRenderingFlagBitsKHR) bit to allow
 draw calls to be recorded both inline and in secondary command buffers.
 
 * 
-`VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE` specifies that
+[VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](#VkRenderingFlagBitsKHR) specifies that
 the render pass **can** be used with layered fragment density maps.
 
 * 
-`VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR`
+[VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR](#VkRenderingFlagBitsKHR)
 specifies that
-`VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR` will
+[VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR](#VkRenderingAttachmentFlagBitsKHR) will
 always be specified for any attachment which invokes the behavior
 described by [that    flag](#rendering-attachment-input-attachment-feedback).
 
 * 
-`VK_RENDERING_FRAGMENT_REGION_BIT_EXT` specifies that the render
+[VK_RENDERING_FRAGMENT_REGION_BIT_EXT](#VkRenderingFlagBitsKHR) specifies that the render
 pass **can** access samples which are not covered in its `SampleMask`.
 
 * 
-`VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT` specifies that the render pass
+[VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT](#VkRenderingFlagBitsKHR) specifies that the render pass
 contains a custom resolve.
 When this bit is set, [vkCmdBeginCustomResolveEXT](#vkCmdBeginCustomResolveEXT) **can** be called.
 
 The contents of `pRenderingInfo` **must** match between suspended render
 pass instances and the render pass instances that resume them, other than
-the presence or absence of the `VK_RENDERING_RESUMING_BIT`,
-`VK_RENDERING_SUSPENDING_BIT`, and
-`VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT` flags.
+the presence or absence of the [VK_RENDERING_RESUMING_BIT](#VkRenderingFlagBitsKHR),
+[VK_RENDERING_SUSPENDING_BIT](#VkRenderingFlagBitsKHR), and
+[VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT](#VkRenderingFlagBitsKHR) flags.
 No action or synchronization commands, or other render pass instances, are
 allowed between suspending and resuming render pass instances.
 
@@ -1344,7 +1363,7 @@ be in during rendering.
 * 
 `clearValue` is a [VkClearValue](clears.html#VkClearValue) structure defining values used
 to clear `imageView` when `loadOp` is
-`VK_ATTACHMENT_LOAD_OP_CLEAR`.
+[VK_ATTACHMENT_LOAD_OP_CLEAR](#VkAttachmentLoadOp).
 
 Values in `imageView` are loaded and stored according to the values of
 `loadOp` and `storeOp`, within the render area
@@ -1352,20 +1371,20 @@ for each device
 specified in [VkRenderingInfo](#VkRenderingInfo).
 If `imageView` is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 and `resolveMode` is not
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`,
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR),
 other members of this structure are ignored; writes to this attachment will
 be discarded, and no [load](#renderpass-load-operations),
 [store](#renderpass-store-operations), or [multisample resolve](#renderpass-resolve-operations) operations will be performed.
 
-If `resolveMode` is `VK_RESOLVE_MODE_NONE`, then
+If `resolveMode` is [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), then
 `resolveImageView` is ignored.
-If `resolveMode` is not `VK_RESOLVE_MODE_NONE`, and
+If `resolveMode` is not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), and
 `resolveImageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), a
 [render pass multisample resolve operation](#renderpass-resolve-operations)
 is defined for the attachment subresource.
 If `resolveMode` is
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`, and the
-[`nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) limit is `VK_TRUE`,
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR), and the
+[`nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) limit is [VK_TRUE](fundamentals.html#VK_TRUE),
 values are only **undefined** once [load operations](#renderpass-load-operations) have completed.
 
 The contents of a resolve attachment within the render area become
@@ -1373,14 +1392,14 @@ The contents of a resolve attachment within the render area become
 the following conditions are true:
 
 * 
-`VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT` is set.
+[VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT](#VkRenderingFlagBitsKHR) is set.
 
 * 
 The attachment sets `resolveMode` to
-`VK_RESOLVE_MODE_CUSTOM_BIT_EXT`.
+[VK_RESOLVE_MODE_CUSTOM_BIT_EXT](#VkResolveModeFlagBitsKHR).
 
 This affects color, depth, and stencil attachments.
-In addition, there is an implicit [store operation](#renderpass-store-operations) of `VK_ATTACHMENT_STORE_OP_STORE` for these attachments.
+In addition, there is an implicit [store operation](#renderpass-store-operations) of [VK_ATTACHMENT_STORE_OP_STORE](#VkAttachmentStoreOp) for these attachments.
 
 |  | The resolve mode and store operation are independent; it is valid to write
 | --- | --- |
@@ -1388,22 +1407,22 @@ both resolved and unresolved values, and equally valid to discard the
 unresolved values while writing the resolved ones. |
 
 Store and resolve operations are only performed at the end of a render pass
-instance that does not specify the `VK_RENDERING_SUSPENDING_BIT_KHR`
+instance that does not specify the [VK_RENDERING_SUSPENDING_BIT_KHR](#VkRenderingFlagBitsKHR)
 flag.
-If the `VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT` is specified and an
-attachment uses the `VK_RESOLVE_MODE_CUSTOM_BIT_EXT` resolve mode, the
+If the [VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT](#VkRenderingFlagBitsKHR) is specified and an
+attachment uses the [VK_RESOLVE_MODE_CUSTOM_BIT_EXT](#VkResolveModeFlagBitsKHR) resolve mode, the
 resolve attachment will only be written by draws recorded following a call
 to [vkCmdBeginCustomResolveEXT](#vkCmdBeginCustomResolveEXT).
 
 Load operations are only performed at the beginning of a render pass
-instance that does not specify the `VK_RENDERING_RESUMING_BIT_KHR` flag.
+instance that does not specify the [VK_RENDERING_RESUMING_BIT_KHR](#VkRenderingFlagBitsKHR) flag.
 
 Image contents at the end of a suspended render pass instance remain defined
 for access by a resuming render pass instance.
 
-If the [`nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) limit is `VK_TRUE`,
+If the [`nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) limit is [VK_TRUE](fundamentals.html#VK_TRUE),
 and `resolveMode` is
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`, values in the
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR), values in the
 color attachment will be loaded from the resolve attachment at the start of
 rendering, and **may** also be reloaded any time after a resolve occurs or the
 resolve attachment is written to; if this occurs it **must** happen-before any
@@ -1418,61 +1437,63 @@ Valid Usage
 [](#VUID-VkRenderingAttachmentInfo-imageView-06129) VUID-VkRenderingAttachmentInfo-imageView-06129
 
     If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and has a non-integer
-    color format, `resolveMode` **must** be `VK_RESOLVE_MODE_NONE` or
-`VK_RESOLVE_MODE_CUSTOM_BIT_EXT` or
-    `VK_RESOLVE_MODE_AVERAGE_BIT`
+    color format, `resolveMode` **must** be [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR) or
+[VK_RESOLVE_MODE_CUSTOM_BIT_EXT](#VkResolveModeFlagBitsKHR) or
+    [VK_RESOLVE_MODE_AVERAGE_BIT](#VkResolveModeFlagBitsKHR)
 
 * 
 [](#VUID-VkRenderingAttachmentInfo-imageView-06130) VUID-VkRenderingAttachmentInfo-imageView-06130
 
     If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and has an integer color
-    format, `resolveMode` **must** be `VK_RESOLVE_MODE_NONE` or
-`VK_RESOLVE_MODE_CUSTOM_BIT_EXT` or
-    `VK_RESOLVE_MODE_SAMPLE_ZERO_BIT`
+    format, `resolveMode` **must** be [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR) or
+[VK_RESOLVE_MODE_CUSTOM_BIT_EXT](#VkResolveModeFlagBitsKHR) or
+    [VK_RESOLVE_MODE_SAMPLE_ZERO_BIT](#VkResolveModeFlagBitsKHR)
 
 * 
 [](#VUID-VkRenderingAttachmentInfo-imageView-06861) VUID-VkRenderingAttachmentInfo-imageView-06861
 
-`imageView` **must** not have a sample count of
-`VK_SAMPLE_COUNT_1_BIT` if all of the following hold:
+If all of the following are true:
 
 `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
-`resolveMode` is not `VK_RESOLVE_MODE_NONE`
+`resolveMode` is not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR)
 
 * 
 the `pNext` chain of [VkRenderingInfo](#VkRenderingInfo) does not include a
 [VkMultisampledRenderToSingleSampledInfoEXT](#VkMultisampledRenderToSingleSampledInfoEXT) structure with the
 `multisampledRenderToSingleSampledEnable` field equal to
-`VK_TRUE`
+[VK_TRUE](fundamentals.html#VK_TRUE)
+
+`imageView` **must** not have a sample count of [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 [](#VUID-VkRenderingAttachmentInfo-imageView-06862) VUID-VkRenderingAttachmentInfo-imageView-06862
 
-`resolveImageView` **must** not be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) if all of the
-following hold:
+If all of the following are true:
 
 * 
 `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
-`resolveMode` is not `VK_RESOLVE_MODE_NONE`
+`resolveMode` is not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR)
 
 * 
 the `pNext` chain of [VkRenderingInfo](#VkRenderingInfo) does not include a
 [VkMultisampledRenderToSingleSampledInfoEXT](#VkMultisampledRenderToSingleSampledInfoEXT) structure with the
 `multisampledRenderToSingleSampledEnable` field equal to
-`VK_TRUE`
+[VK_TRUE](fundamentals.html#VK_TRUE)
+
+`resolveImageView` **must** not be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 [](#VUID-VkRenderingAttachmentInfo-imageView-06863) VUID-VkRenderingAttachmentInfo-imageView-06863
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `resolveMode` is not
-`VK_RESOLVE_MODE_NONE`, the `pNext` chain of
+[VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), the `pNext` chain of
 [VkRenderingInfo](#VkRenderingInfo) includes a
 [VkMultisampledRenderToSingleSampledInfoEXT](#VkMultisampledRenderToSingleSampledInfoEXT) structure with the
 `multisampledRenderToSingleSampledEnable` field equal to
-`VK_TRUE`, and `imageView` has a sample count of
-`VK_SAMPLE_COUNT_1_BIT`, `resolveImageView` **must** be
+[VK_TRUE](fundamentals.html#VK_TRUE), and `imageView` has a sample count of
+[VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits), `resolveImageView` **must** be
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 [](#VUID-VkRenderingAttachmentInfo-None-12256) VUID-VkRenderingAttachmentInfo-None-12256
@@ -1483,175 +1504,175 @@ If all of the following are true:
 `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
-`imageView` has a sample count of `VK_SAMPLE_COUNT_1_BIT`
+`imageView` has a sample count of [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
 the `pNext` chain of [VkRenderingInfo](#VkRenderingInfo) includes a
 [VkMultisampledRenderToSingleSampledInfoEXT](#VkMultisampledRenderToSingleSampledInfoEXT) structure with the
 `multisampledRenderToSingleSampledEnable` field equal to
-`VK_TRUE`
+[VK_TRUE](fundamentals.html#VK_TRUE)
 
-then `resolveMode` **must** not be `VK_RESOLVE_MODE_NONE`
+then `resolveMode` **must** not be [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR)
 
 [](#VUID-VkRenderingAttachmentInfo-imageView-06864) VUID-VkRenderingAttachmentInfo-imageView-06864
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `resolveImageView`
 is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and `resolveMode` is not
-`VK_RESOLVE_MODE_NONE`, `resolveImageView` **must** have a sample
-count of `VK_SAMPLE_COUNT_1_BIT`
+[VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), `resolveImageView` **must** have a sample
+count of [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 [](#VUID-VkRenderingAttachmentInfo-imageView-06865) VUID-VkRenderingAttachmentInfo-imageView-06865
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `resolveImageView`
 is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), and `resolveMode` is
-neither `VK_RESOLVE_MODE_CUSTOM_BIT_EXT` nor
-`VK_RESOLVE_MODE_NONE`, `imageView` and `resolveImageView`
+neither [VK_RESOLVE_MODE_CUSTOM_BIT_EXT](#VkResolveModeFlagBitsKHR) nor
+[VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), `imageView` and `resolveImageView`
 **must** have the same [VkFormat](formats.html#VkFormat)
 
 [](#VUID-VkRenderingAttachmentInfo-imageView-06135) VUID-VkRenderingAttachmentInfo-imageView-06135
 
     If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `imageLayout` **must**
-    not be `VK_IMAGE_LAYOUT_UNDEFINED`,
-    `VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`,
-    `VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL`,
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`,
-    `VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL`, or
-    `VK_IMAGE_LAYOUT_PREINITIALIZED`
+    not be [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout),
+    [VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+    [VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](resources.html#VkImageLayout),
+    [VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](resources.html#VkImageLayout), or
+    [VK_IMAGE_LAYOUT_PREINITIALIZED](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingAttachmentInfo-imageView-06136) VUID-VkRenderingAttachmentInfo-imageView-06136
 
     If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and `resolveMode` is
-    not `VK_RESOLVE_MODE_NONE`, `resolveImageLayout` **must** not be
-    `VK_IMAGE_LAYOUT_UNDEFINED`,
-    `VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`,
-    `VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`,
-    `VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL`,
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`,
-    `VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL`, or
-    `VK_IMAGE_LAYOUT_PREINITIALIZED`
+    not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), `resolveImageLayout` **must** not be
+    [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout),
+    [VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+    [VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+    [VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](resources.html#VkImageLayout),
+    [VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](resources.html#VkImageLayout), or
+    [VK_IMAGE_LAYOUT_PREINITIALIZED](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingAttachmentInfo-imageView-06137) VUID-VkRenderingAttachmentInfo-imageView-06137
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and `resolveMode` is
-not `VK_RESOLVE_MODE_NONE`, `resolveImageLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), `resolveImageLayout` **must** not be
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingAttachmentInfo-imageView-06138) VUID-VkRenderingAttachmentInfo-imageView-06138
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `imageLayout` **must**
-not be `VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV`
+not be [VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingAttachmentInfo-imageView-06139) VUID-VkRenderingAttachmentInfo-imageView-06139
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and `resolveMode` is
-not `VK_RESOLVE_MODE_NONE`, `resolveImageLayout` **must** not be
-`VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV`
+not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), `resolveImageLayout` **must** not be
+[VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingAttachmentInfo-imageView-06140) VUID-VkRenderingAttachmentInfo-imageView-06140
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `imageLayout` **must**
-not be `VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT`
+not be [VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingAttachmentInfo-imageView-06141) VUID-VkRenderingAttachmentInfo-imageView-06141
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and `resolveMode` is
-not `VK_RESOLVE_MODE_NONE`, `resolveImageLayout` **must** not be
-`VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT`
+not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), `resolveImageLayout` **must** not be
+[VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingAttachmentInfo-imageView-06142) VUID-VkRenderingAttachmentInfo-imageView-06142
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and `resolveMode` is
-not `VK_RESOLVE_MODE_NONE`, `resolveImageLayout` **must** not be
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), `resolveImageLayout` **must** not be
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingAttachmentInfo-imageView-06143) VUID-VkRenderingAttachmentInfo-imageView-06143
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `imageLayout` **must**
 not be
-`VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingAttachmentInfo-imageView-06144) VUID-VkRenderingAttachmentInfo-imageView-06144
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and `resolveMode` is
-not `VK_RESOLVE_MODE_NONE`, `resolveImageLayout` **must** not be
-`VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR`
+not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), `resolveImageLayout` **must** not be
+[VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingAttachmentInfo-imageView-10780) VUID-VkRenderingAttachmentInfo-imageView-10780
 
 If [feedback loop is enabled](#renderpass-feedbackloop) for the
 attachment identified by `imageView`, then `imageView` **must**
 have been created with a `usage` value including
-`VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT`, either
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`, and either
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_SAMPLED_BIT`
+[VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](resources.html#VkImageUsageFlagBits), either
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits), and either
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits)
 
 [](#VUID-VkRenderingAttachmentInfo-imageView-06145) VUID-VkRenderingAttachmentInfo-imageView-06145
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `imageLayout` **must**
-not be `VK_IMAGE_LAYOUT_PRESENT_SRC_KHR`
+not be [VK_IMAGE_LAYOUT_PRESENT_SRC_KHR](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingAttachmentInfo-imageView-06146) VUID-VkRenderingAttachmentInfo-imageView-06146
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and `resolveMode` is
-not `VK_RESOLVE_MODE_NONE`, `resolveImageLayout` **must** not be
-`VK_IMAGE_LAYOUT_PRESENT_SRC_KHR`
+not [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR), `resolveImageLayout` **must** not be
+[VK_IMAGE_LAYOUT_PRESENT_SRC_KHR](resources.html#VkImageLayout)
 
 [](#VUID-VkRenderingAttachmentInfo-externalFormatResolve-09323) VUID-VkRenderingAttachmentInfo-externalFormatResolve-09323
 
 If the [`externalFormatResolve`](features.html#features-externalFormatResolve)
 feature is not enabled, `resolveMode` **must** not be
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR)
 
 [](#VUID-VkRenderingAttachmentInfo-resolveMode-09324) VUID-VkRenderingAttachmentInfo-resolveMode-09324
 
 If `resolveMode` is
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`,
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR),
 `resolveImageView` **must** be a valid image view
 
 [](#VUID-VkRenderingAttachmentInfo-nullColorAttachmentWithExternalFormatResolve-09325) VUID-VkRenderingAttachmentInfo-nullColorAttachmentWithExternalFormatResolve-09325
 
 If the [    `nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) property is
-`VK_TRUE` and `resolveMode` is
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`,
+[VK_TRUE](fundamentals.html#VK_TRUE) and `resolveMode` is
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR),
 `resolveImageView` **must** have been created with an image with a
-`samples` value of `VK_SAMPLE_COUNT_1_BIT`
+`samples` value of [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 [](#VUID-VkRenderingAttachmentInfo-resolveMode-09326) VUID-VkRenderingAttachmentInfo-resolveMode-09326
 
 If `resolveMode` is
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`,
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR),
 `resolveImageView` **must** have been created with an external format
 specified by [VkExternalFormatANDROID](resources.html#VkExternalFormatANDROID)
 
 [](#VUID-VkRenderingAttachmentInfo-resolveMode-09327) VUID-VkRenderingAttachmentInfo-resolveMode-09327
 
 If `resolveMode` is
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`,
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR),
 `resolveImageView` **must** have been created with a
 `subresourceRange.layerCount` of `1`
 
 [](#VUID-VkRenderingAttachmentInfo-resolveMode-09328) VUID-VkRenderingAttachmentInfo-resolveMode-09328
 
 If `resolveMode` is
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID` and
-[    `nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) is `VK_TRUE`,
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR) and
+[    `nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) is [VK_TRUE](fundamentals.html#VK_TRUE),
 `imageView` **must** be [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 [](#VUID-VkRenderingAttachmentInfo-resolveMode-09329) VUID-VkRenderingAttachmentInfo-resolveMode-09329
 
 If `resolveMode` is
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID` and
-[    `nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) is `VK_FALSE`,
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR) and
+[    `nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) is [VK_FALSE](fundamentals.html#VK_FALSE),
 `imageView` **must** be a valid [VkImageView](resources.html#VkImageView)
 
 [](#VUID-VkRenderingAttachmentInfo-resolveMode-09330) VUID-VkRenderingAttachmentInfo-resolveMode-09330
 
 If `resolveMode` is
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID` and
-[    `nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) is `VK_FALSE`,
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR) and
+[    `nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) is [VK_FALSE](fundamentals.html#VK_FALSE),
 `imageView` **must** have a format equal to the value of
 [VkAndroidHardwareBufferFormatResolvePropertiesANDROID](memory.html#VkAndroidHardwareBufferFormatResolvePropertiesANDROID)::`colorAttachmentFormat`
 as returned by a call to
@@ -1663,15 +1684,15 @@ hardware buffer that was used to create `resolveImageView`
 If `resolveImageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the underlying
 resource must not be bound to a `VkDeviceMemory` object allocated
 from a `VkMemoryHeap` with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property.
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property
 
 [](#VUID-VkRenderingAttachmentInfo-pNext-11752) VUID-VkRenderingAttachmentInfo-pNext-11752
 
 If the `pNext` chain includes a
 [VkRenderingAttachmentFlagsInfoKHR](#VkRenderingAttachmentFlagsInfoKHR) structure, and `flags`
 includes
-`VK_RENDERING_ATTACHMENT_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR` or
-`VK_RENDERING_ATTACHMENT_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`,
+[VK_RENDERING_ATTACHMENT_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#VkRenderingAttachmentFlagBitsKHR) or
+[VK_RENDERING_ATTACHMENT_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#VkRenderingAttachmentFlagBitsKHR),
 `imageView` **must** have a format using sRGB encoding
 
 [](#VUID-VkRenderingAttachmentInfo-pNext-11753) VUID-VkRenderingAttachmentInfo-pNext-11753
@@ -1679,25 +1700,25 @@ includes
 If the `pNext` chain includes a
 [VkRenderingAttachmentFlagsInfoKHR](#VkRenderingAttachmentFlagsInfoKHR) structure, and `flags`
 includes
-`VK_RENDERING_ATTACHMENT_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR` or
-`VK_RENDERING_ATTACHMENT_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`,
-`resolveMode` **must** be equal to `VK_RESOLVE_MODE_AVERAGE_BIT`
+[VK_RENDERING_ATTACHMENT_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#VkRenderingAttachmentFlagBitsKHR) or
+[VK_RENDERING_ATTACHMENT_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#VkRenderingAttachmentFlagBitsKHR),
+`resolveMode` **must** be equal to [VK_RESOLVE_MODE_AVERAGE_BIT](#VkResolveModeFlagBitsKHR)
 
 [](#VUID-VkRenderingAttachmentInfo-pNext-11754) VUID-VkRenderingAttachmentInfo-pNext-11754
 
 If the `pNext` chain includes a
 [VkRenderingAttachmentFlagsInfoKHR](#VkRenderingAttachmentFlagsInfoKHR) structure, and `flags`
 includes
-`VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR`,
+[VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR](#VkRenderingAttachmentFlagBitsKHR),
 `imageView` **must** have an image that was created with the
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkRenderingAttachmentInfo-sType-sType) VUID-VkRenderingAttachmentInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderingAttachmentInfo-pNext-pNext) VUID-VkRenderingAttachmentInfo-pNext-pNext
@@ -1783,7 +1804,7 @@ Valid Usage
 [](#VUID-VkRenderingAttachmentFlagsInfoKHR-flags-11755) VUID-VkRenderingAttachmentFlagsInfoKHR-flags-11755
 
 `flags` **must** not include
-`VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR`
+[VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR](#VkRenderingAttachmentFlagBitsKHR)
 if the
 [`dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead)
 feature is not enabled
@@ -1792,25 +1813,25 @@ feature is not enabled
 [](#VUID-VkRenderingAttachmentFlagsInfoKHR-flags-11756) VUID-VkRenderingAttachmentFlagsInfoKHR-flags-11756
 
 If `flags` includes
-`VK_RENDERING_ATTACHMENT_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`,
+[VK_RENDERING_ATTACHMENT_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#VkRenderingAttachmentFlagBitsKHR),
 `flags` **must** not include
-`VK_RENDERING_ATTACHMENT_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`
+[VK_RENDERING_ATTACHMENT_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#VkRenderingAttachmentFlagBitsKHR)
 
 * 
 [](#VUID-VkRenderingAttachmentFlagsInfoKHR-flags-11757) VUID-VkRenderingAttachmentFlagsInfoKHR-flags-11757
 
 If `flags` includes
-`VK_RENDERING_ATTACHMENT_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR` or
-`VK_RENDERING_ATTACHMENT_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`,
+[VK_RENDERING_ATTACHMENT_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#VkRenderingAttachmentFlagBitsKHR) or
+[VK_RENDERING_ATTACHMENT_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#VkRenderingAttachmentFlagBitsKHR),
 [`resolveSrgbFormatSupportsTransferFunctionControl`](limits.html#limits-resolveSrgbFormatSupportsTransferFunctionControl)
-**must** be `VK_TRUE`
+**must** be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkRenderingAttachmentFlagsInfoKHR-sType-sType) VUID-VkRenderingAttachmentFlagsInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_FLAGS_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_FLAGS_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderingAttachmentFlagsInfoKHR-flags-parameter) VUID-VkRenderingAttachmentFlagsInfoKHR-flags-parameter
@@ -1832,39 +1853,39 @@ typedef enum VkRenderingAttachmentFlagBitsKHR {
 } VkRenderingAttachmentFlagBitsKHR;
 
 * 
-`VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR`
+[VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR](#VkRenderingAttachmentFlagBitsKHR)
 specifies that the attachment **can** be used concurrently as both an input
 attachment and a write-only attachment during the render pass, creating
 a feedback loop while processing a fragment, and without a
-`VK_DEPENDENCY_BY_REGION_BIT` barrier separating the write
+[VK_DEPENDENCY_BY_REGION_BIT](synchronization.html#VkDependencyFlagBits) barrier separating the write
 attachment and input attachment usage.
 Using this flag does not remove the general requirement to use a
-`VK_DEPENDENCY_BY_REGION_BIT` barrier to resolve hazards when two
+[VK_DEPENDENCY_BY_REGION_BIT](synchronization.html#VkDependencyFlagBits) barrier to resolve hazards when two
 different fragments accesses a particular attachment region, where one
 of them performs an attachment write, and a subsequent fragment performs
 an input attachment read.
-If `VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR` is
+If [VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR](#VkRenderingFlagBitsKHR) is
 specified in the rendering info, this flag **must** be set for an
 attachment to be used concurrently as an input attachment and a write
 attachment in this manner.
-If `VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR` is
+If [VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR](#VkRenderingFlagBitsKHR) is
 not specified in the rendering info, this flag is implied to be set for
 any attachment which has a combination of image layouts and image view
 usage flags which support input attachment usage.
 
 * 
-`VK_RENDERING_ATTACHMENT_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`
+[VK_RENDERING_ATTACHMENT_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#VkRenderingAttachmentFlagBitsKHR)
 specifies that resolve operations happening to an sRGB encoded
 attachment **must** not convert samples from nonlinear to linear before
 averaging.
 
 * 
-`VK_RENDERING_ATTACHMENT_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`
+[VK_RENDERING_ATTACHMENT_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#VkRenderingAttachmentFlagBitsKHR)
 specifies that resolve operations happening to an sRGB encoded
 attachment **must** convert samples from nonlinear to linear before
 averaging.
 
-|  | `VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR` is intended
+|  | [VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR](#VkRenderingAttachmentFlagBitsKHR) is intended
 | --- | --- |
 to give implementations similar information as a subpass where an attachment
 could be used as both a color attachment and input attachment.
@@ -1876,7 +1897,7 @@ The primary use case for this flag is to enable feedback loops inside a
 single shader.
 
 Applications are encouraged to use
-`VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR` if
+[VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR](#VkRenderingFlagBitsKHR) if
 [`maintenance10`](features.html#features-maintenance10) is available and they use
 feedback loops with [VK_KHR_dynamic_rendering_local_read](../appendices/extensions.html#VK_KHR_dynamic_rendering_local_read).
 Feedback loops are still allowed when not using the rendering flag, but the
@@ -1925,14 +1946,14 @@ Valid Usage
 [](#VUID-VkAttachmentFeedbackLoopInfoEXT-unifiedImageLayouts-10782) VUID-VkAttachmentFeedbackLoopInfoEXT-unifiedImageLayouts-10782
 
 If the [`unifiedImageLayouts`](features.html#features-unifiedImageLayouts)
-feature is not enabled, `feedbackLoopEnable` **must** be `VK_FALSE`
+feature is not enabled, `feedbackLoopEnable` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkAttachmentFeedbackLoopInfoEXT-sType-sType) VUID-VkAttachmentFeedbackLoopInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ATTACHMENT_FEEDBACK_LOOP_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ATTACHMENT_FEEDBACK_LOOP_INFO_EXT](fundamentals.html#VkStructureType)
 
 The `VkRenderingFragmentShadingRateAttachmentInfoKHR` structure is
 defined as:
@@ -1978,15 +1999,15 @@ Valid Usage
 [](#VUID-VkRenderingFragmentShadingRateAttachmentInfoKHR-imageView-06147) VUID-VkRenderingFragmentShadingRateAttachmentInfoKHR-imageView-06147
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `layout` **must** be
-`VK_IMAGE_LAYOUT_GENERAL` or
-`VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkRenderingFragmentShadingRateAttachmentInfoKHR-imageView-06148) VUID-VkRenderingFragmentShadingRateAttachmentInfoKHR-imageView-06148
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), it **must** have been
 created with the
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR` usage flag
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](resources.html#VkImageUsageFlagBits) usage flag
 set_KHR
 
 * 
@@ -2051,7 +2072,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderingFragmentShadingRateAttachmentInfoKHR-sType-sType) VUID-VkRenderingFragmentShadingRateAttachmentInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderingFragmentShadingRateAttachmentInfoKHR-imageView-parameter) VUID-VkRenderingFragmentShadingRateAttachmentInfoKHR-imageView-parameter
@@ -2100,21 +2121,21 @@ Valid Usage
 [](#VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-imageView-06157) VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-imageView-06157
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `imageLayout` **must**
-be `VK_IMAGE_LAYOUT_GENERAL` or
-`VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT`
+be [VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-imageView-06158) VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-imageView-06158
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), it **must** have been
-created with the `VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT` usage
+created with the [VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT](resources.html#VkImageUsageFlagBits) usage
 flag set_EXT
 
 * 
 [](#VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-imageView-06159) VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-imageView-06159
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), it **must** not have been
-created with `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`
+created with [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](resources.html#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-apiVersion-07908) VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-apiVersion-07908
@@ -2131,7 +2152,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-sType-sType) VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-imageView-parameter) VUID-VkRenderingFragmentDensityMapAttachmentInfoEXT-imageView-parameter
@@ -2260,7 +2281,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderingAreaInfo-sType-sType) VUID-VkRenderingAreaInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDERING_AREA_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDERING_AREA_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderingAreaInfo-pNext-pNext) VUID-VkRenderingAreaInfo-pNext-pNext
@@ -2317,7 +2338,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassStripeBeginInfoARM-sType-sType) VUID-VkRenderPassStripeBeginInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_BEGIN_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_BEGIN_INFO_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderPassStripeBeginInfoARM-pStripeInfos-parameter) VUID-VkRenderPassStripeBeginInfoARM-pStripeInfos-parameter
@@ -2390,7 +2411,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassStripeInfoARM-sType-sType) VUID-VkRenderPassStripeInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_INFO_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderPassStripeInfoARM-pNext-pNext) VUID-VkRenderPassStripeInfoARM-pNext-pNext
@@ -2443,7 +2464,7 @@ to enable in this render pass instance.
 Performance counters values are written to each element of
 `pCounterAddresses` in an implementation-dependent manner.
 These writes execute in the
-`VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT` pipeline stage.
+[VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](synchronization.html#VkPipelineStageFlagBits2KHR) pipeline stage.
 
 The index into this array is calculated as:
 
@@ -2471,7 +2492,7 @@ in [VkRenderPassSubpassFeedbackInfoEXT](#VkRenderPassSubpassFeedbackInfoEXT). |
 Within each element of `pCounterAddresses`, counter values are written
 in framebuffer-space order if
 [VkPhysicalDevicePerformanceCountersByRegionPropertiesARM](limits.html#VkPhysicalDevicePerformanceCountersByRegionPropertiesARM)::`identityTransformOrder`
-is `VK_TRUE`.
+is [VK_TRUE](fundamentals.html#VK_TRUE).
 
 Each counter value is written as an unsigned 32-bit integer value.
 
@@ -2529,7 +2550,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-sType-sType) VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_PERFORMANCE_COUNTERS_BY_REGION_BEGIN_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_PERFORMANCE_COUNTERS_BY_REGION_BEGIN_INFO_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-pCounterAddresses-parameter) VUID-VkRenderPassPerformanceCountersByRegionBeginInfoARM-pCounterAddresses-parameter
@@ -2557,7 +2578,7 @@ command.
 functionality.
 
 Following this call, any `resolveImageView` with `resolveMode` set
-to `VK_RESOLVE_MODE_CUSTOM_BIT_EXT` will be written by outputs which
+to [VK_RESOLVE_MODE_CUSTOM_BIT_EXT](#VkResolveModeFlagBitsKHR) will be written by outputs which
 would otherwise have written to the `imageView` image until the end of
 the current render pass instance.
 
@@ -2569,13 +2590,21 @@ containing the smaller fragment.
 Reads of input attachments not mapped to a color, depth, or stencil
 attachment use the new fragment area.
 
-|  | Shader resolve operations allow for custom resolve operations, but
+|  | Because the content of any depth/stencil resolve attachment as well as any
 | --- | --- |
-overdrawing pixels **may** have a performance and/or power cost.
-Furthermore, since the content of any depth/stencil resolve attachment as
-well as any color resolve attachment is **undefined** at the beginning of a
-resolve operation, any depth testing, stencil testing, or blending operation
-which sources these **undefined** values also has **undefined** result value. |
+color resolve attachment is **undefined** at the beginning of a resolve
+operation, any depth testing, stencil testing, or blending operation which
+sources these **undefined** values also has **undefined** result value. |
+
+During a custom resolve pass, multiple fragment invocations writing to the
+same (x, y, layer,
+view,
+sample) coordinate, i.e. overdraw, will produce **undefined** behavior.
+
+|  | Implementations are allowed to implement custom resolve attachment writes
+| --- | --- |
+through other mechanisms than framebuffer attachment writes, which would
+normally obey rules of rasterization order. |
 
 Valid Usage
 
@@ -2595,13 +2624,13 @@ the current render pass instance
 [](#VUID-vkCmdBeginCustomResolveEXT-None-11519) VUID-vkCmdBeginCustomResolveEXT-None-11519
 
 The current render pass instance **must** have specified
-`VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT`
+[VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT](#VkRenderingFlagBitsKHR)
 
 * 
 [](#VUID-vkCmdBeginCustomResolveEXT-None-11520) VUID-vkCmdBeginCustomResolveEXT-None-11520
 
 The current render pass instance **must** not have specified
-`VK_RENDERING_SUSPENDING_BIT`
+[VK_RENDERING_SUSPENDING_BIT](#VkRenderingFlagBitsKHR)
 
 Valid Usage (Implicit)
 
@@ -2623,7 +2652,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBeginCustomResolveEXT-commandBuffer-cmdpool) VUID-vkCmdBeginCustomResolveEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBeginCustomResolveEXT-renderpass) VUID-vkCmdBeginCustomResolveEXT-renderpass
@@ -2679,7 +2708,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBeginCustomResolveInfoEXT-sType-sType) VUID-VkBeginCustomResolveInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BEGIN_CUSTOM_RESOLVE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BEGIN_CUSTOM_RESOLVE_INFO_EXT](fundamentals.html#VkStructureType)
 
 To end a render pass instance, call:
 
@@ -2697,7 +2726,7 @@ void vkCmdEndRenderingKHR(
 command.
 
 If the value of `pRenderingInfo->flags` used to begin this render pass
-instance included `VK_RENDERING_SUSPENDING_BIT`, then this render pass
+instance included [VK_RENDERING_SUSPENDING_BIT](#VkRenderingFlagBitsKHR), then this render pass
 is suspended and will be resumed later in
 [submission order](synchronization.html#synchronization-submission-order).
 
@@ -2773,7 +2802,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdEndRendering-commandBuffer-cmdpool) VUID-vkCmdEndRendering-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdEndRendering-renderpass) VUID-vkCmdEndRendering-renderpass
@@ -2834,7 +2863,7 @@ command.
 the render pass will be ended.
 
 If the value of `pRenderingInfo->flags` used to begin this render pass
-instance included `VK_RENDERING_SUSPENDING_BIT`, then this render pass
+instance included [VK_RENDERING_SUSPENDING_BIT](#VkRenderingFlagBitsKHR), then this render pass
 is suspended and will be resumed later in
 [submission order](synchronization.html#synchronization-submission-order).
 
@@ -2908,7 +2937,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdEndRendering2KHR-commandBuffer-cmdpool) VUID-vkCmdEndRendering2KHR-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdEndRendering2KHR-renderpass) VUID-vkCmdEndRendering2KHR-renderpass
@@ -2970,7 +2999,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderingEndInfoKHR-sType-sType) VUID-VkRenderingEndInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDERING_END_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDERING_END_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderingEndInfoKHR-pNext-pNext) VUID-VkRenderingEndInfoKHR-pNext-pNext
@@ -3032,7 +3061,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTilePropertiesQCOM-sType-sType) VUID-VkTilePropertiesQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TILE_PROPERTIES_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TILE_PROPERTIES_QCOM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkTilePropertiesQCOM-pNext-pNext) VUID-VkTilePropertiesQCOM-pNext-pNext
@@ -3080,15 +3109,15 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 A render pass object represents a collection of attachments, subpasses, and
 dependencies between the subpasses, and describes how the attachments are
@@ -3189,7 +3218,7 @@ commands, whilst still respecting [pipeline order](synchronization.html#synchron
 However for a given (x,y,layer,sample) sample location, certain per-sample
 operations are performed in [rasterization order](primsrast.html#primsrast-order).
 
-`VK_ATTACHMENT_UNUSED` is a constant indicating that a render pass
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) is a constant indicating that a render pass
 attachment is not used.
 
 #define VK_ATTACHMENT_UNUSED              (~0U)
@@ -3227,13 +3256,13 @@ Valid Usage
 [](#VUID-vkCreateRenderPass-device-10000) VUID-vkCreateRenderPass-device-10000
 
 `device` **must** support at least one queue family with the
-`VK_QUEUE_GRAPHICS_BIT` capability
+[VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) capability
 
 * 
 [](#VUID-vkCreateRenderPass-flags-10646) VUID-vkCreateRenderPass-flags-10646
 
 [VkRenderPassTileShadingCreateInfoQCOM](#VkRenderPassTileShadingCreateInfoQCOM)::`flags` **must** not
-include `VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM`
+include [VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM](#VkTileShadingRenderPassFlagBitsQCOM)
 
 Valid Usage (Implicit)
 
@@ -3262,21 +3291,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkRenderPassCreateInfo` structure is defined as:
 
@@ -3345,7 +3374,7 @@ If the `attachment` member of any element of
 `pInputAttachments`, `pColorAttachments`,
 `pResolveAttachments` or `pDepthStencilAttachment`, or any
 element of `pPreserveAttachments` in any element of `pSubpasses`
-is not `VK_ATTACHMENT_UNUSED`, then it **must** be less than
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), then it **must** be less than
 `attachmentCount`
 
 * 
@@ -3354,7 +3383,7 @@ is not `VK_ATTACHMENT_UNUSED`, then it **must** be less than
 If the pNext chain includes a
 [VkRenderPassFragmentDensityMapCreateInfoEXT](#VkRenderPassFragmentDensityMapCreateInfoEXT) structure and the
 `fragmentDensityMapAttachment` member is not
-`VK_ATTACHMENT_UNUSED`, then `attachment` **must** be less than
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), then `attachment` **must** be less than
 `attachmentCount`
 
 * 
@@ -3362,41 +3391,41 @@ If the pNext chain includes a
 
 If the [    `fragmentDensityMapLayered`](features.html#features-fragmentDensityMapLayered) feature is not enabled, `flags`
 **must** not contain
-`VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE`
+[VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](#VkRenderPassCreateFlagBits)
 
 * 
 [](#VUID-VkRenderPassCreateInfo-pAttachments-00836) VUID-VkRenderPassCreateInfo-pAttachments-00836
 
 For any member of `pAttachments` with a `loadOp` equal to
-`VK_ATTACHMENT_LOAD_OP_CLEAR`, the first use of that attachment
+[VK_ATTACHMENT_LOAD_OP_CLEAR](#VkAttachmentLoadOp), the first use of that attachment
 **must** not specify a `layout` equal to
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkRenderPassCreateInfo-pAttachments-02511) VUID-VkRenderPassCreateInfo-pAttachments-02511
 
 For any member of `pAttachments` with a `stencilLoadOp` equal to
-`VK_ATTACHMENT_LOAD_OP_CLEAR`, the first use of that attachment
+[VK_ATTACHMENT_LOAD_OP_CLEAR](#VkAttachmentLoadOp), the first use of that attachment
 **must** not specify a `layout` equal to
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkRenderPassCreateInfo-pAttachments-01566) VUID-VkRenderPassCreateInfo-pAttachments-01566
 
 For any member of `pAttachments` with a `loadOp` equal to
-`VK_ATTACHMENT_LOAD_OP_CLEAR`, the first use of that attachment
+[VK_ATTACHMENT_LOAD_OP_CLEAR](#VkAttachmentLoadOp), the first use of that attachment
 **must** not specify a `layout` equal to
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkRenderPassCreateInfo-pAttachments-01567) VUID-VkRenderPassCreateInfo-pAttachments-01567
 
 For any member of `pAttachments` with a `stencilLoadOp` equal to
-`VK_ATTACHMENT_LOAD_OP_CLEAR`, the first use of that attachment
+[VK_ATTACHMENT_LOAD_OP_CLEAR](#VkAttachmentLoadOp), the first use of that attachment
 **must** not specify a `layout` equal to
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkRenderPassCreateInfo-pNext-01926) VUID-VkRenderPassCreateInfo-pNext-01926
@@ -3423,7 +3452,7 @@ If the `pNext` chain includes a
 [VkRenderPassInputAttachmentAspectCreateInfo](#VkRenderPassInputAttachmentAspectCreateInfo) structure, for any
 element of the `pInputAttachments` member of any element of
 `pSubpasses` where the `attachment` member is not
-`VK_ATTACHMENT_UNUSED`, the `aspectMask` member of the
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), the `aspectMask` member of the
 corresponding element of
 [VkRenderPassInputAttachmentAspectCreateInfo](#VkRenderPassInputAttachmentAspectCreateInfo)::`pAspectReferences`
 **must** only include aspects that are present in images of the format
@@ -3459,7 +3488,7 @@ members of `pDependencies` at the same index **must** not be equal
 If the `pNext` chain includes a
 [VkRenderPassMultiviewCreateInfo](#VkRenderPassMultiviewCreateInfo) structure, for each element of
 `pDependencies` with a `dependencyFlags` member that does not
-include `VK_DEPENDENCY_VIEW_LOCAL_BIT`, the corresponding element of
+include [VK_DEPENDENCY_VIEW_LOCAL_BIT](synchronization.html#VkDependencyFlagBits), the corresponding element of
 the `pViewOffsets` member of that
 [VkRenderPassMultiviewCreateInfo](#VkRenderPassMultiviewCreateInfo) instance **must** be `0`
 
@@ -3477,7 +3506,7 @@ If the `pNext` chain includes a
 [VkRenderPassMultiviewCreateInfo](#VkRenderPassMultiviewCreateInfo) structure, and each element of its
 `pViewMasks` member is `0`, the `dependencyFlags` member of each
 element of `pDependencies` **must** not include
-`VK_DEPENDENCY_VIEW_LOCAL_BIT`
+[VK_DEPENDENCY_VIEW_LOCAL_BIT](synchronization.html#VkDependencyFlagBits)
 
 * 
 [](#VUID-VkRenderPassCreateInfo-pNext-02515) VUID-VkRenderPassCreateInfo-pNext-02515
@@ -3491,9 +3520,9 @@ If the `pNext` chain includes a
 [](#VUID-VkRenderPassCreateInfo-pDependencies-00837) VUID-VkRenderPassCreateInfo-pDependencies-00837
 
 For each element of `pDependencies`, if the `srcSubpass` is not
-`VK_SUBPASS_EXTERNAL`, all stage flags included in the
+[VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL), all stage flags included in the
 `srcStageMask` member of that dependency **must** be
-`VK_PIPELINE_STAGE_ALL_COMMANDS_BIT` or a pipeline stage supported
+[VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](synchronization.html#VkPipelineStageFlagBits) or a pipeline stage supported
 by the [pipeline](synchronization.html#synchronization-pipeline-stages-types) identified by
 the `pipelineBindPoint` member of the source subpass
 
@@ -3501,9 +3530,9 @@ the `pipelineBindPoint` member of the source subpass
 [](#VUID-VkRenderPassCreateInfo-pDependencies-00838) VUID-VkRenderPassCreateInfo-pDependencies-00838
 
 For each element of `pDependencies`, if the `dstSubpass` is not
-`VK_SUBPASS_EXTERNAL`, all stage flags included in the
+[VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL), all stage flags included in the
 `dstStageMask` member of that dependency **must** be
-`VK_PIPELINE_STAGE_ALL_COMMANDS_BIT` or a pipeline stage supported
+[VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](synchronization.html#VkPipelineStageFlagBits) or a pipeline stage supported
 by the [pipeline](synchronization.html#synchronization-pipeline-stages-types) identified by
 the `pipelineBindPoint` member of the destination subpass
 
@@ -3511,21 +3540,21 @@ the `pipelineBindPoint` member of the destination subpass
 [](#VUID-VkRenderPassCreateInfo-pDependencies-06866) VUID-VkRenderPassCreateInfo-pDependencies-06866
 
 For each element of `pDependencies`, if its `srcSubpass` is not
-`VK_SUBPASS_EXTERNAL`, it **must** be less than `subpassCount`
+[VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL), it **must** be less than `subpassCount`
 
 * 
 [](#VUID-VkRenderPassCreateInfo-pDependencies-06867) VUID-VkRenderPassCreateInfo-pDependencies-06867
 
 For each element of `pDependencies`, if its `dstSubpass` is not
-`VK_SUBPASS_EXTERNAL`, it **must** be less than `subpassCount`
+[VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL), it **must** be less than `subpassCount`
 
 * 
 [](#VUID-VkRenderPassCreateInfo-pResolveAttachments-10647) VUID-VkRenderPassCreateInfo-pResolveAttachments-10647
 
 If any element of `pResolveAttachments` of any element of
 `pSubpasses` references an attachment description with a format of
-`VK_FORMAT_UNDEFINED`,
-`VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` **must** not be included
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat),
+[VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](#VkTileShadingRenderPassFlagBitsQCOM) **must** not be included
 in [VkRenderPassTileShadingCreateInfoQCOM](#VkRenderPassTileShadingCreateInfoQCOM)::`flags`
 
 * 
@@ -3533,8 +3562,8 @@ in [VkRenderPassTileShadingCreateInfoQCOM](#VkRenderPassTileShadingCreateInfoQCO
 
 If
 [VkRenderPassFragmentDensityMapCreateInfoEXT](#VkRenderPassFragmentDensityMapCreateInfoEXT)::`fragmentDensityMapAttachment`
-is not `VK_ATTACHMENT_UNUSED`,
-`VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` **must** not be included
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED),
+[VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](#VkTileShadingRenderPassFlagBitsQCOM) **must** not be included
 in [VkRenderPassTileShadingCreateInfoQCOM](#VkRenderPassTileShadingCreateInfoQCOM)::`flags`
 
 * 
@@ -3548,7 +3577,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassCreateInfo-sType-sType) VUID-VkRenderPassCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderPassCreateInfo-pNext-pNext) VUID-VkRenderPassCreateInfo-pNext-pNext
@@ -3597,12 +3626,12 @@ typedef enum VkRenderPassCreateFlagBits {
 } VkRenderPassCreateFlagBits;
 
 * 
-`VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM` specifies that the
+[VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM](#VkRenderPassCreateFlagBits) specifies that the
 created render pass is compatible with
 [render pass transform](vertexpostproc.html#vertexpostproc-renderpass-transform).
 
 * 
-`VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE`
+[VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](#VkRenderPassCreateFlagBits)
 specifies that the created render pass is usable with layered fragment
 density maps.
 
@@ -3701,7 +3730,7 @@ Some implementations **may** not support multiview in conjunction with
 [mesh shaders](features.html#features-multiviewMeshShader),
 [geometry shaders](features.html#features-multiview-gs) or [tessellation shaders](features.html#features-multiview-tess).
 
-When multiview is enabled, the `VK_DEPENDENCY_VIEW_LOCAL_BIT` bit in a
+When multiview is enabled, the [VK_DEPENDENCY_VIEW_LOCAL_BIT](synchronization.html#VkDependencyFlagBits) bit in a
 dependency **can** be used to express a view-local dependency, meaning that
 each view in the destination subpass depends on a single view in the source
 subpass.
@@ -3732,7 +3761,7 @@ relevant dynamic state or push constants **must** be set before they are used.
 
 A multiview subpass **can** declare that its shaders will write per-view
 attributes for all views in a single invocation, by setting the
-`VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX` bit in the subpass
+[VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX](#VkSubpassDescriptionFlagBits) bit in the subpass
 description.
 The only supported per-view attributes are position and viewport mask, and
 per-view position and viewport masks are written to output array variables
@@ -3762,7 +3791,7 @@ on `ViewIndex`.
 
 Per-view attributes are all-or-nothing for a subpass.
 That is, all pipelines compiled against a subpass that includes the
-`VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX` bit **must** write
+[VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX](#VkSubpassDescriptionFlagBits) bit **must** write
 per-view attributes to the `*PerViewNV[]` shader outputs, in addition to the
 non-per-view (e.g. `Position`) outputs.
 Pipelines compiled against a subpass that does not include this bit **must**
@@ -3793,7 +3822,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassMultiviewCreateInfo-sType-sType) VUID-VkRenderPassMultiviewCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderPassMultiviewCreateInfo-pViewMasks-parameter) VUID-VkRenderPassMultiviewCreateInfo-pViewMasks-parameter
@@ -3842,8 +3871,8 @@ component.
 Per-view viewport mask **can** also be used.
 
 When dynamic render pass instances are being used, instead of specifying
-`VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX` or
-`VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX` in the subpass
+[VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX](#VkSubpassDescriptionFlagBits) or
+[VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX](#VkSubpassDescriptionFlagBits) in the subpass
 description flags, the per-attribute properties of the render pass instance
 **must** be specified by the `VkMultiviewPerViewAttributesInfoNVX`
 structure Include the `VkMultiviewPerViewAttributesInfoNVX` structure in
@@ -3858,7 +3887,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMultiviewPerViewAttributesInfoNVX-sType-sType) VUID-VkMultiviewPerViewAttributesInfoNVX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_ATTRIBUTES_INFO_NVX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_ATTRIBUTES_INFO_NVX](fundamentals.html#VkStructureType)
 
 If the [VkRenderPassCreateInfo](#VkRenderPassCreateInfo)::`pNext` chain includes a
 `VkRenderPassFragmentDensityMapCreateInfoEXT` structure, then that
@@ -3893,12 +3922,12 @@ the following constraints determined by the attachment’s image view
 `flags`:
 
 * 
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT`
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT](resources.html#VkImageViewCreateFlagBits)
 specifies that the fragment density map will be read by the device
-during `VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+during [VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT`
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT](resources.html#VkImageViewCreateFlagBits)
 specifies that the fragment density map will be read by the host during
 [vkEndCommandBuffer](cmdbuffers.html#vkEndCommandBuffer) of the primary command buffer that the render
 pass is recorded into
@@ -3908,17 +3937,17 @@ Otherwise the fragment density map will be read by the host during
 [vkCmdBeginRenderPass](#vkCmdBeginRenderPass)
 
 The fragment density map **may** additionally be read by the device during
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT` for any mode.
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](synchronization.html#VkPipelineStageFlagBits) for any mode.
 
 If this structure is not present, it is as if
-`fragmentDensityMapAttachment` was given as `VK_ATTACHMENT_UNUSED`.
+`fragmentDensityMapAttachment` was given as [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED).
 
 Valid Usage
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-02548) VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-02548
 
-If `fragmentDensityMapAttachment` is not `VK_ATTACHMENT_UNUSED`,
+If `fragmentDensityMapAttachment` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED),
 `fragmentDensityMapAttachment` **must** not be an element of
 `VkSubpassDescription`::`pInputAttachments`,
 `VkSubpassDescription`::`pColorAttachments`,
@@ -3929,32 +3958,32 @@ If `fragmentDensityMapAttachment` is not `VK_ATTACHMENT_UNUSED`,
 * 
 [](#VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-02549) VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-02549
 
-If `fragmentDensityMapAttachment` is not `VK_ATTACHMENT_UNUSED`,
+If `fragmentDensityMapAttachment` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED),
 `layout` **must** be equal to
-`VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT`, or
-`VK_IMAGE_LAYOUT_GENERAL`
+[VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-02550) VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-02550
 
-If `fragmentDensityMapAttachment` is not `VK_ATTACHMENT_UNUSED`,
+If `fragmentDensityMapAttachment` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED),
 `fragmentDensityMapAttachment` **must** reference an attachment with a
-`loadOp` equal to `VK_ATTACHMENT_LOAD_OP_LOAD` or
-`VK_ATTACHMENT_LOAD_OP_DONT_CARE`
+`loadOp` equal to [VK_ATTACHMENT_LOAD_OP_LOAD](#VkAttachmentLoadOp) or
+[VK_ATTACHMENT_LOAD_OP_DONT_CARE](#VkAttachmentLoadOp)
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-02551) VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-02551
 
-If `fragmentDensityMapAttachment` is not `VK_ATTACHMENT_UNUSED`,
+If `fragmentDensityMapAttachment` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED),
 `fragmentDensityMapAttachment` **must** reference an attachment with a
-`storeOp` equal to `VK_ATTACHMENT_STORE_OP_DONT_CARE`
+`storeOp` equal to [VK_ATTACHMENT_STORE_OP_DONT_CARE](#VkAttachmentStoreOp)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-sType-sType) VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-parameter) VUID-VkRenderPassFragmentDensityMapCreateInfoEXT-fragmentDensityMapAttachment-parameter
@@ -4034,7 +4063,7 @@ attachment, and no load or store ops will be performed.
 However, any transition specified by `initialLayout` and
 `finalLayout` will still be executed.
 
-If `flags` includes `VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT`, then
+If `flags` includes [VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT](#VkAttachmentDescriptionFlagBits), then
 the attachment is treated as if it shares physical memory with another
 attachment in the same render pass.
 This information limits the ability of the implementation to reorder certain
@@ -4045,7 +4074,7 @@ This is described in more detail below.
 
 If a render pass uses multiple attachments that alias the same device
 memory, those attachments **must** each include the
-`VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT` bit in their attachment
+[VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT](#VkAttachmentDescriptionFlagBits) bit in their attachment
 description flags.
 Attachments aliasing the same memory occurs in multiple ways:
 
@@ -4067,7 +4096,7 @@ subpass dependency chain) between any two subpasses that operate on the same
 attachment or aliasing attachments and those subpass dependencies **must**
 include execution and memory dependencies separating uses of the aliases, if
 at least one of those subpasses writes to one of the aliases.
-These dependencies **must** not include the `VK_DEPENDENCY_BY_REGION_BIT`
+These dependencies **must** not include the [VK_DEPENDENCY_BY_REGION_BIT](synchronization.html#VkDependencyFlagBits)
 if the aliases are views of distinct image subresources which overlap in
 memory. |
 
@@ -4083,7 +4112,7 @@ or depth/stencil attachments nor as resolve or preserve attachments.
 
 If a set of attachments alias each other, then all except the first to be
 used in the render pass **must** use an `initialLayout` of
-`VK_IMAGE_LAYOUT_UNDEFINED`, since the earlier uses of the other aliases
+[VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout), since the earlier uses of the other aliases
 make their contents **undefined**.
 Once an alias has been used and a different alias has been used after it,
 the first alias **must** not be used in any later subpasses.
@@ -4091,11 +4120,11 @@ However, an application **can** assign the same image view to multiple aliasing
 attachment indices, which allows that image view to be used multiple times
 even if other aliases are used in between.
 
-|  | Once an attachment needs the `VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT`
+|  | Once an attachment needs the [VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT](#VkAttachmentDescriptionFlagBits)
 | --- | --- |
 bit, there **should** be no additional cost of introducing additional aliases,
 and using these additional aliases **may** allow more efficient clearing of the
-attachments on multiple uses via `VK_ATTACHMENT_LOAD_OP_CLEAR`. |
+attachments on multiple uses via [VK_ATTACHMENT_LOAD_OP_CLEAR](#VkAttachmentLoadOp). |
 
 Valid Usage
 
@@ -4103,155 +4132,155 @@ Valid Usage
 [](#VUID-VkAttachmentDescription-format-06699) VUID-VkAttachmentDescription-format-06699
 
 If `format` includes a color or depth component and `loadOp` is
-`VK_ATTACHMENT_LOAD_OP_LOAD`, then `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_UNDEFINED`
+[VK_ATTACHMENT_LOAD_OP_LOAD](#VkAttachmentLoadOp), then `initialLayout` **must** not be
+[VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-finalLayout-00843) VUID-VkAttachmentDescription-finalLayout-00843
 
-    `finalLayout` **must** not be `VK_IMAGE_LAYOUT_UNDEFINED` or
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT` or
-    `VK_IMAGE_LAYOUT_PREINITIALIZED`
+    `finalLayout` **must** not be [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](resources.html#VkImageLayout) or
+    [VK_IMAGE_LAYOUT_PREINITIALIZED](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-format-03280) VUID-VkAttachmentDescription-format-03280
 
 If `format` is a color format, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-format-03281) VUID-VkAttachmentDescription-format-03281
 
 If `format` is a depth/stencil format, `initialLayout` **must** not
-be `VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`
+be [VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-format-03282) VUID-VkAttachmentDescription-format-03282
 
 If `format` is a color format, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-format-03283) VUID-VkAttachmentDescription-format-03283
 
 If `format` is a depth/stencil format, `finalLayout` **must** not
-be `VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`
+be [VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-format-06487) VUID-VkAttachmentDescription-format-06487
 
 If `format` is a color format, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-format-06488) VUID-VkAttachmentDescription-format-06488
 
 If `format` is a color format, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-separateDepthStencilLayouts-03284) VUID-VkAttachmentDescription-separateDepthStencilLayouts-03284
 
 If the [    `separateDepthStencilLayouts`](features.html#features-separateDepthStencilLayouts) feature is not enabled,
 `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`,
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
 
 * 
 [](#VUID-VkAttachmentDescription-separateDepthStencilLayouts-03285) VUID-VkAttachmentDescription-separateDepthStencilLayouts-03285
 
 If the [    `separateDepthStencilLayouts`](features.html#features-separateDepthStencilLayouts) feature is not enabled,
 `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`,
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
 
 * 
 [](#VUID-VkAttachmentDescription-format-03286) VUID-VkAttachmentDescription-format-03286
 
 If `format` is a color format, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-format-03287) VUID-VkAttachmentDescription-format-03287
 
 If `format` is a color format, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-format-06906) VUID-VkAttachmentDescription-format-06906
 
 If `format` is a depth/stencil format which includes both depth and
 stencil components, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-format-06907) VUID-VkAttachmentDescription-format-06907
 
 If `format` is a depth/stencil format which includes both depth and
 stencil components, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-format-03290) VUID-VkAttachmentDescription-format-03290
 
 If `format` is a depth/stencil format which includes only the depth
 component, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-format-03291) VUID-VkAttachmentDescription-format-03291
 
 If `format` is a depth/stencil format which includes only the depth
 component, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-synchronization2-06908) VUID-VkAttachmentDescription-synchronization2-06908
 
 If the [`synchronization2`](features.html#features-synchronization2) feature is
 not enabled, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR` or
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-synchronization2-06909) VUID-VkAttachmentDescription-synchronization2-06909
 
 If the [`synchronization2`](features.html#features-synchronization2) feature is
 not enabled, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR` or
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-attachmentFeedbackLoopLayout-07309) VUID-VkAttachmentDescription-attachmentFeedbackLoopLayout-07309
 
 If the [    `attachmentFeedbackLoopLayout`](features.html#features-attachmentFeedbackLoopLayout) feature is not enabled,
 `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT`
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-attachmentFeedbackLoopLayout-07310) VUID-VkAttachmentDescription-attachmentFeedbackLoopLayout-07310
 
 If the [    `attachmentFeedbackLoopLayout`](features.html#features-attachmentFeedbackLoopLayout) feature is not enabled,
 `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT`
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-samples-08745) VUID-VkAttachmentDescription-samples-08745
@@ -4266,59 +4295,59 @@ set in `imageCreateSampleCounts` (as defined in
 
 If the [    `dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead) feature is not enabled,
 `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+[VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-dynamicRenderingLocalRead-09545) VUID-VkAttachmentDescription-dynamicRenderingLocalRead-09545
 
 If the [    `dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead) feature is not enabled,
 `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+[VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-flags-11773) VUID-VkAttachmentDescription-flags-11773
 
 If `flags` includes
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`,
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits),
 `flags` **must** not include
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits)
 
 * 
 [](#VUID-VkAttachmentDescription-flags-11774) VUID-VkAttachmentDescription-flags-11774
 
 If `flags` includes
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits)
 or
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`,
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits),
 [`resolveSrgbFormatSupportsTransferFunctionControl`](limits.html#limits-resolveSrgbFormatSupportsTransferFunctionControl)
-**must** be `VK_TRUE`
+**must** be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkAttachmentDescription-flags-11775) VUID-VkAttachmentDescription-flags-11775
 
 If `flags` includes
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits)
 or
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`,
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits),
 [`maintenance10`](features.html#features-maintenance10) **must** be enabled
 
 * 
 [](#VUID-VkAttachmentDescription-flags-11776) VUID-VkAttachmentDescription-flags-11776
 
 If `flags` includes
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits)
 or
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`,
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits),
 `format` **must** use sRGB encoding
 
 * 
 [](#VUID-VkAttachmentDescription-flags-11777) VUID-VkAttachmentDescription-flags-11777
 
 If `flags` includes
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits)
 or
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`,
-`samples` **must** be `VK_SAMPLE_COUNT_1_BIT`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits),
+`samples` **must** be [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
 [](#VUID-VkAttachmentDescription-format-06698) VUID-VkAttachmentDescription-format-06698
@@ -4329,40 +4358,40 @@ or
 [](#VUID-VkAttachmentDescription-format-06700) VUID-VkAttachmentDescription-format-06700
 
 If `format` includes a stencil component and `stencilLoadOp` is
-`VK_ATTACHMENT_LOAD_OP_LOAD`, then `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_UNDEFINED`
+[VK_ATTACHMENT_LOAD_OP_LOAD](#VkAttachmentLoadOp), then `initialLayout` **must** not be
+[VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-format-03292) VUID-VkAttachmentDescription-format-03292
 
 If `format` is a depth/stencil format which includes only the
 stencil component, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-format-03293) VUID-VkAttachmentDescription-format-03293
 
 If `format` is a depth/stencil format which includes only the
 stencil component, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-format-06242) VUID-VkAttachmentDescription-format-06242
 
 If `format` is a depth/stencil format which includes both depth and
 stencil components, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription-format-06243) VUID-VkAttachmentDescription-format-06243
 
 If `format` is a depth/stencil format which includes both depth and
 stencil components, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 Valid Usage (Implicit)
 
@@ -4424,17 +4453,17 @@ typedef enum VkAttachmentDescriptionFlagBits {
 } VkAttachmentDescriptionFlagBits;
 
 * 
-`VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT` specifies that the
+[VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT](#VkAttachmentDescriptionFlagBits) specifies that the
 attachment aliases the same device memory as other attachments.
 
 * 
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits)
 specifies that resolve operations happening to an sRGB encoded
 attachment **must** not convert samples from nonlinear to linear before
 averaging.
 
 * 
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits)
 specifies that resolve operations happening to an sRGB encoded
 attachment **must** convert samples from nonlinear to linear before
 averaging.
@@ -4497,7 +4526,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassInputAttachmentAspectCreateInfo-sType-sType) VUID-VkRenderPassInputAttachmentAspectCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderPassInputAttachmentAspectCreateInfo-pAspectReferences-parameter) VUID-VkRenderPassInputAttachmentAspectCreateInfo-pAspectReferences-parameter
@@ -4549,7 +4578,7 @@ Valid Usage
 * 
 [](#VUID-VkInputAttachmentAspectReference-aspectMask-01964) VUID-VkInputAttachmentAspectReference-aspectMask-01964
 
-`aspectMask` **must** not include `VK_IMAGE_ASPECT_METADATA_BIT`
+`aspectMask` **must** not include [VK_IMAGE_ASPECT_METADATA_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkInputAttachmentAspectReference-aspectMask-02250) VUID-VkInputAttachmentAspectReference-aspectMask-02250
@@ -4637,7 +4666,7 @@ variable decorated with a `InputAttachmentIndex` value of **X**, then it
 uses the attachment provided in `pInputAttachments`[**X**].
 Input attachments **must** also be bound to the pipeline in a descriptor set.
 If the `attachment` member of any element of `pInputAttachments` is
-`VK_ATTACHMENT_UNUSED`, the application **must** not read from the
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), the application **must** not read from the
 corresponding input attachment index.
 Fragment shaders **can** use subpass input variables to access the contents of
 an input attachment at the fragment’s (xf,yf) framebuffer
@@ -4650,7 +4679,7 @@ location in the shader, i.e. if the shader declares an output variable
 decorated with a `Location` value of **X**, then it uses the attachment
 provided in `pColorAttachments`[**X**].
 If the `attachment` member of any element of `pColorAttachments` is
-`VK_ATTACHMENT_UNUSED`,
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED),
 or if [Color Write Enable](framebuffer.html#framebuffer-color-write-enable) has been
 disabled for the corresponding attachment index,
 then writes to the corresponding location by a fragment shader are
@@ -4658,17 +4687,17 @@ discarded.
 
 If
 `flags` does not include
-`VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT`, and if
+[VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT](#VkSubpassDescriptionFlagBits), and if
 `pResolveAttachments` is not `NULL`, each of its elements corresponds to
 a color attachment (the element in `pColorAttachments` at the same
 index), and a [multisample resolve operation](#renderpass-resolve-operations) is defined for each attachment unless the resolve attachment
-index is `VK_ATTACHMENT_UNUSED`.
+index is [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED).
 
 Similarly, if
 `flags` does not include
-`VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT`, and
+[VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT](#VkSubpassDescriptionFlagBits), and
 [VkSubpassDescriptionDepthStencilResolve](#VkSubpassDescriptionDepthStencilResolve)::`pDepthStencilResolveAttachment`
-is not `NULL` and does not have the value `VK_ATTACHMENT_UNUSED`, it
+is not `NULL` and does not have the value [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), it
 corresponds to the depth/stencil attachment in
 `pDepthStencilAttachment`, and
 [multisample resolve operation](#renderpass-resolve-operations) for depth
@@ -4677,17 +4706,17 @@ and stencil are defined by
 [VkSubpassDescriptionDepthStencilResolve](#VkSubpassDescriptionDepthStencilResolve)::`stencilResolveMode`,
 respectively.
 If [VkSubpassDescriptionDepthStencilResolve](#VkSubpassDescriptionDepthStencilResolve)::`depthResolveMode` is
-`VK_RESOLVE_MODE_NONE` or the `pDepthStencilResolveAttachment` does
+[VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR) or the `pDepthStencilResolveAttachment` does
 not have a depth aspect, no resolve operation is performed for the depth
 attachment.
 If [VkSubpassDescriptionDepthStencilResolve](#VkSubpassDescriptionDepthStencilResolve)::`stencilResolveMode`
-is `VK_RESOLVE_MODE_NONE` or the `pDepthStencilResolveAttachment`
+is [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR) or the `pDepthStencilResolveAttachment`
 does not have a stencil aspect, no resolve operation is performed for the
 stencil attachment.
 
 If the image subresource range referenced by the depth/stencil attachment is
 created with
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT`, then the
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](resources.html#VkImageCreateFlagBits), then the
 [multisample resolve operation](#renderpass-resolve-operations) uses the
 sample locations state specified in the `sampleLocationsInfo` member of
 the element of the
@@ -4695,7 +4724,7 @@ the element of the
 for the subpass.
 
 If `pDepthStencilAttachment` is `NULL`, or if its attachment index is
-`VK_ATTACHMENT_UNUSED`, it indicates that no depth/stencil attachment
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), it indicates that no depth/stencil attachment
 will be used in the subpass.
 
 Following this call, if the [`customResolve`](features.html#features-customResolve)
@@ -4724,22 +4753,22 @@ In addition, the contents of an attachment within the render area become
 are true:
 
 * 
-`VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT` is set.
+[VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT](#VkSubpassDescriptionFlagBits) is set.
 
 * 
 The attachment is used as a color or depth/stencil in the subpass.
 
 For color attachments, this operation will be performed in the
-`VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT` pipeline stage, with any
-image accesses performed via `VK_ACCESS_INPUT_ATTACHMENT_READ_BIT`,
-`VK_ACCESS_COLOR_ATTACHMENT_READ_BIT`, and
-`VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT`.
+[VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](synchronization.html#VkPipelineStageFlagBits) pipeline stage, with any
+image accesses performed via [VK_ACCESS_INPUT_ATTACHMENT_READ_BIT](synchronization.html#VkAccessFlagBits),
+[VK_ACCESS_COLOR_ATTACHMENT_READ_BIT](synchronization.html#VkAccessFlagBits), and
+[VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT](synchronization.html#VkAccessFlagBits).
 For depth/stencil attachments, this operation **may** be performed in either
-the `VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT` or
-`VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT` pipeline stage, with any
-image accesses performed via `VK_ACCESS_INPUT_ATTACHMENT_READ_BIT`,
-`VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT`, and
-`VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT`.
+the [VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT](synchronization.html#VkPipelineStageFlagBits) or
+[VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT](synchronization.html#VkPipelineStageFlagBits) pipeline stage, with any
+image accesses performed via [VK_ACCESS_INPUT_ATTACHMENT_READ_BIT](synchronization.html#VkAccessFlagBits),
+[VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT](synchronization.html#VkAccessFlagBits), and
+[VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](synchronization.html#VkAccessFlagBits).
 
 Once the contents of an attachment become **undefined** in subpass **S**, they
 remain **undefined** for subpasses in subpass dependency chains starting with
@@ -4759,132 +4788,123 @@ Valid Usage
 [](#VUID-VkSubpassDescription-attachment-06912) VUID-VkSubpassDescription-attachment-06912
 
 If the `attachment` member of an element of `pInputAttachments`
-is not `VK_ATTACHMENT_UNUSED`, its `layout` member **must** not be
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL`
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its `layout` member **must** not be
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription-attachment-06913) VUID-VkSubpassDescription-attachment-06913
 
 If the `attachment` member of an element of `pColorAttachments`
-is not `VK_ATTACHMENT_UNUSED`, its `layout` member **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its `layout` member **must** not be
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription-attachment-06914) VUID-VkSubpassDescription-attachment-06914
 
 If the `attachment` member of an element of
-`pResolveAttachments` is not `VK_ATTACHMENT_UNUSED`, its
+`pResolveAttachments` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its
 `layout` member **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription-attachment-06915) VUID-VkSubpassDescription-attachment-06915
 
 If the `attachment` member of `pDepthStencilAttachment` is not
-`VK_ATTACHMENT_UNUSED`, its `layout` member **must** not be
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its `layout` member **must** not be
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription-attachment-06916) VUID-VkSubpassDescription-attachment-06916
 
 If the `attachment` member of an element of `pColorAttachments`
-is not `VK_ATTACHMENT_UNUSED`, its `layout` member **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its `layout` member **must** not be
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription-attachment-06917) VUID-VkSubpassDescription-attachment-06917
 
 If the `attachment` member of an element of
-`pResolveAttachments` is not `VK_ATTACHMENT_UNUSED`, its
+`pResolveAttachments` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its
 `layout` member **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription-attachment-06918) VUID-VkSubpassDescription-attachment-06918
 
 If the `attachment` member of an element of `pInputAttachments`
-is not `VK_ATTACHMENT_UNUSED`, its `layout` member **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its `layout` member **must** not be
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription-attachment-06919) VUID-VkSubpassDescription-attachment-06919
 
 If the `attachment` member of an element of `pColorAttachments`
-is not `VK_ATTACHMENT_UNUSED`, its `layout` member **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its `layout` member **must** not be
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription-attachment-06920) VUID-VkSubpassDescription-attachment-06920
 
 If the `attachment` member of an element of
-`pResolveAttachments` is not `VK_ATTACHMENT_UNUSED`, its
+`pResolveAttachments` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its
 `layout` member **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription-attachment-06921) VUID-VkSubpassDescription-attachment-06921
 
 If the `attachment` member of an element of `pInputAttachments`
-is not `VK_ATTACHMENT_UNUSED`, its `layout` member **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR`
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its `layout` member **must** not be
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription-attachment-06922) VUID-VkSubpassDescription-attachment-06922
 
 If the `attachment` member of an element of `pColorAttachments`
-is not `VK_ATTACHMENT_UNUSED`, its `layout` member **must** not be
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its `layout` member **must** not be
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription-attachment-06923) VUID-VkSubpassDescription-attachment-06923
 
 If the `attachment` member of an element of
-`pResolveAttachments` is not `VK_ATTACHMENT_UNUSED`, its
+`pResolveAttachments` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its
 `layout` member **must** not be
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
-
-* 
-[](#VUID-VkSubpassDescription-attachment-10755) VUID-VkSubpassDescription-attachment-10755
-
-If the `attachment` member of an element of
-`pResolveAttachments` is not `VK_ATTACHMENT_UNUSED`, the
-underlying resource must not be bound to a `VkDeviceMemory` object
-allocated from a `VkMemoryHeap` with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property.
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription-flags-10683) VUID-VkSubpassDescription-flags-10683
 
 If `flags` includes
-`VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM`, the render
+[VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM](#VkSubpassDescriptionFlagBits), the render
 pass **must** have been created with a
 [VkRenderPassTileShadingCreateInfoQCOM](#VkRenderPassTileShadingCreateInfoQCOM)::`tileApronSize` greater
 than `(0,0)`
 
 * 
-[](#VUID-VkSubpassDescription-pipelineBindPoint-04952) VUID-VkSubpassDescription-pipelineBindPoint-04952
+[](#VUID-VkSubpassDescription-inputAttachmentCount-12293) VUID-VkSubpassDescription-inputAttachmentCount-12293
 
-`pipelineBindPoint` **must** be `VK_PIPELINE_BIND_POINT_GRAPHICS`
-or `VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI`
+`inputAttachmentCount` **must** be less than or equal to
+[    `maxPerStageDescriptorInputAttachments`](limits.html#limits-maxPerStageDescriptorInputAttachments)
 
 * 
 [](#VUID-VkSubpassDescription-colorAttachmentCount-00845) VUID-VkSubpassDescription-colorAttachmentCount-00845
 
 `colorAttachmentCount` **must** be less than or equal to
-`VkPhysicalDeviceLimits`::`maxColorAttachments`
+[`maxColorAttachments`](limits.html#limits-maxColorAttachments)
 
 * 
 [](#VUID-VkSubpassDescription-loadOp-00846) VUID-VkSubpassDescription-loadOp-00846
@@ -4892,104 +4912,110 @@ or `VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI`
 If the first use of an attachment in this render pass is as an input
 attachment, and the attachment is not also used as a color or
 depth/stencil attachment in the same subpass, then `loadOp` **must**
-not be `VK_ATTACHMENT_LOAD_OP_CLEAR`
+not be [VK_ATTACHMENT_LOAD_OP_CLEAR](#VkAttachmentLoadOp)
+
+* 
+[](#VUID-VkSubpassDescription-pipelineBindPoint-04952) VUID-VkSubpassDescription-pipelineBindPoint-04952
+
+`pipelineBindPoint` **must** be [VK_PIPELINE_BIND_POINT_GRAPHICS](pipelines.html#VkPipelineBindPoint)
+or [VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI](pipelines.html#VkPipelineBindPoint)
 
 * 
 [](#VUID-VkSubpassDescription-pResolveAttachments-00847) VUID-VkSubpassDescription-pResolveAttachments-00847
 
 If `pResolveAttachments` is not `NULL`, for each resolve attachment
-that is not `VK_ATTACHMENT_UNUSED`, the corresponding color
-attachment **must** not be `VK_ATTACHMENT_UNUSED`
+that is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), the corresponding color
+attachment **must** not be [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
 
 * 
 [](#VUID-VkSubpassDescription-pResolveAttachments-00848) VUID-VkSubpassDescription-pResolveAttachments-00848
 
 If `pResolveAttachments` is not `NULL`, for each resolve attachment
-that is not `VK_ATTACHMENT_UNUSED`, the corresponding color
-attachment **must** not have a sample count of `VK_SAMPLE_COUNT_1_BIT`
+that is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), the corresponding color
+attachment **must** not have a sample count of [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
 [](#VUID-VkSubpassDescription-pResolveAttachments-00849) VUID-VkSubpassDescription-pResolveAttachments-00849
 
 If `pResolveAttachments` is not `NULL`, each resolve attachment that
-is not `VK_ATTACHMENT_UNUSED` **must** have a sample count of
-`VK_SAMPLE_COUNT_1_BIT`
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) **must** have a sample count of
+[VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
 [](#VUID-VkSubpassDescription-pResolveAttachments-00850) VUID-VkSubpassDescription-pResolveAttachments-00850
 
 If `pResolveAttachments` is not `NULL`, each resolve attachment that
-is not `VK_ATTACHMENT_UNUSED` **must** have the same [VkFormat](formats.html#VkFormat) as
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) **must** have the same [VkFormat](formats.html#VkFormat) as
 its corresponding color attachment
 
 * 
 [](#VUID-VkSubpassDescription-pColorAttachments-09430) VUID-VkSubpassDescription-pColorAttachments-09430
 
 All attachments in `pColorAttachments` that are not
-`VK_ATTACHMENT_UNUSED` **must** have the same sample count
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) **must** have the same sample count
 
 * 
 [](#VUID-VkSubpassDescription-pInputAttachments-02647) VUID-VkSubpassDescription-pInputAttachments-02647
 
 All attachments in `pInputAttachments` that are not
-`VK_ATTACHMENT_UNUSED` **must** have image formats whose
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) **must** have image formats whose
 [potential format features](formats.html#potential-format-features) contain at
-least `VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT` or
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+least [VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits) or
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkSubpassDescription-pColorAttachments-02648) VUID-VkSubpassDescription-pColorAttachments-02648
 
 All attachments in `pColorAttachments` that are not
-`VK_ATTACHMENT_UNUSED` **must** have image formats whose
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) **must** have image formats whose
 [potential format features](formats.html#potential-format-features) contain
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkSubpassDescription-pResolveAttachments-02649) VUID-VkSubpassDescription-pResolveAttachments-02649
 
 All attachments in `pResolveAttachments` that are not
-`VK_ATTACHMENT_UNUSED` **must** have image formats whose
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) **must** have image formats whose
 [potential format features](formats.html#potential-format-features) contain
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkSubpassDescription-pDepthStencilAttachment-02650) VUID-VkSubpassDescription-pDepthStencilAttachment-02650
 
 If `pDepthStencilAttachment` is not `NULL` and the attachment is not
-`VK_ATTACHMENT_UNUSED` then it **must** have an image format whose
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) then it **must** have an image format whose
 [potential format features](formats.html#potential-format-features) contain
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkSubpassDescription-linearColorAttachment-06496) VUID-VkSubpassDescription-linearColorAttachment-06496
 
 If the [`linearColorAttachment`](features.html#features-linearColorAttachment)
 feature is enabled and the image is created with
-`VK_IMAGE_TILING_LINEAR`, all attachments in `pInputAttachments`
-that are not `VK_ATTACHMENT_UNUSED` **must** have image formats whose
+[VK_IMAGE_TILING_LINEAR](resources.html#VkImageTiling), all attachments in `pInputAttachments`
+that are not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) **must** have image formats whose
 [potential format features](formats.html#potential-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV`
+[VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-VkSubpassDescription-linearColorAttachment-06497) VUID-VkSubpassDescription-linearColorAttachment-06497
 
 If the [`linearColorAttachment`](features.html#features-linearColorAttachment)
 feature is enabled and the image is created with
-`VK_IMAGE_TILING_LINEAR`, all attachments in `pColorAttachments`
-that are not `VK_ATTACHMENT_UNUSED` **must** have image formats whose
+[VK_IMAGE_TILING_LINEAR](resources.html#VkImageTiling), all attachments in `pColorAttachments`
+that are not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) **must** have image formats whose
 [potential format features](formats.html#potential-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV`
+[VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-VkSubpassDescription-linearColorAttachment-06498) VUID-VkSubpassDescription-linearColorAttachment-06498
 
 If the [`linearColorAttachment`](features.html#features-linearColorAttachment)
 feature is enabled and the image is created with
-`VK_IMAGE_TILING_LINEAR`, all attachments in
-`pResolveAttachments` that are not `VK_ATTACHMENT_UNUSED` **must**
+[VK_IMAGE_TILING_LINEAR](resources.html#VkImageTiling), all attachments in
+`pResolveAttachments` that are not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) **must**
 have image formats whose [potential format    features](formats.html#potential-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV`
+[VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-VkSubpassDescription-None-09431) VUID-VkSubpassDescription-None-09431
@@ -5002,16 +5028,13 @@ The `[VK_AMD_mixed_attachment_samples](../appendices/extensions.html#VK_AMD_mixe
 The `[VK_NV_framebuffer_mixed_samples](../appendices/extensions.html#VK_NV_framebuffer_mixed_samples)` extension
 
 all attachments in `pColorAttachments` that are not
-`VK_ATTACHMENT_UNUSED` **must** have a sample count that is smaller than or
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) **must** have a sample count that is smaller than or
 equal to the sample count of `pDepthStencilAttachment` if it is not
-`VK_ATTACHMENT_UNUSED`
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
 
 [](#VUID-VkSubpassDescription-pDepthStencilAttachment-01418) VUID-VkSubpassDescription-pDepthStencilAttachment-01418
 
-If `pDepthStencilAttachment` is not `VK_ATTACHMENT_UNUSED` and
-any attachments in `pColorAttachments` are not
-`VK_ATTACHMENT_UNUSED`, they **must** have the same sample count
-, if none of the following are enabled:
+If none of the following are enabled:
 
 * 
 The `[VK_AMD_mixed_attachment_samples](../appendices/extensions.html#VK_AMD_mixed_attachment_samples)` extension
@@ -5019,10 +5042,13 @@ The `[VK_AMD_mixed_attachment_samples](../appendices/extensions.html#VK_AMD_mixe
 * 
 The `[VK_NV_framebuffer_mixed_samples](../appendices/extensions.html#VK_NV_framebuffer_mixed_samples)` extension
 
+all attachments in `pDepthStencilAttachment` and `pColorAttachments`
+that are not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) **must** have the same sample count
+
 [](#VUID-VkSubpassDescription-attachment-00853) VUID-VkSubpassDescription-attachment-00853
 
 Each element of `pPreserveAttachments` **must** not be
-`VK_ATTACHMENT_UNUSED`
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
 
 [](#VUID-VkSubpassDescription-pPreserveAttachments-00854) VUID-VkSubpassDescription-pPreserveAttachments-00854
 
@@ -5037,27 +5063,27 @@ member, then each use **must** use the same `layout`
 [](#VUID-VkSubpassDescription-flags-00856) VUID-VkSubpassDescription-flags-00856
 
 If `flags` includes
-`VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX`, it **must**
-also include `VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX`
+[VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX](#VkSubpassDescriptionFlagBits), it **must**
+also include [VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX](#VkSubpassDescriptionFlagBits)
 
 [](#VUID-VkSubpassDescription-flags-03341) VUID-VkSubpassDescription-flags-03341
 
 If `flags` includes
-`VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT`, and if
+[VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT](#VkSubpassDescriptionFlagBits), and if
 `pResolveAttachments` is not `NULL`, then each resolve attachment
-**must** be `VK_ATTACHMENT_UNUSED`
+**must** be [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
 
 [](#VUID-VkSubpassDescription-flags-03343) VUID-VkSubpassDescription-flags-03343
 
 If `flags` includes
-`VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT`, then the subpass
+[VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT](#VkSubpassDescriptionFlagBits), then the subpass
 **must** be the last subpass in a subpass dependency chain
 
 [](#VUID-VkSubpassDescription-pInputAttachments-02868) VUID-VkSubpassDescription-pInputAttachments-02868
 
 If the render pass is created with
-`VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM` each of the elements of
-`pInputAttachments` **must** be `VK_ATTACHMENT_UNUSED`
+[VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM](#VkRenderPassCreateFlagBits) each of the elements of
+`pInputAttachments` **must** be [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
 
 [](#VUID-VkSubpassDescription-pDepthStencilAttachment-04438) VUID-VkSubpassDescription-pDepthStencilAttachment-04438
 
@@ -5137,7 +5163,7 @@ typedef enum VkSubpassDescriptionFlagBits {
 } VkSubpassDescriptionFlagBits;
 
 * 
-`VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX` specifies that
+[VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX](#VkSubpassDescriptionFlagBits) specifies that
 shaders compiled for this subpass write the attributes for all views in
 a single invocation of each
 [pre-rasterization shader    stage](pipelines.html#pipelines-graphics-subsets-pre-rasterization).
@@ -5146,44 +5172,44 @@ write per-view attributes to the `*PerViewNV[]` shader outputs, in
 addition to the non-per-view (e.g. `Position`) outputs.
 
 * 
-`VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX` specifies
+[VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX](#VkSubpassDescriptionFlagBits) specifies
 that shaders compiled for this subpass use per-view positions which only
 differ in value in the x component.
 Per-view viewport mask **can** also be used.
 
 * 
-`VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT` specifies that the
+[VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT](#VkSubpassDescriptionFlagBits) specifies that the
 framebuffer region is the fragment region, that is, the minimum region
 dependencies are by pixel rather than by sample, such that any fragment
 shader invocation **can** access any sample associated with that fragment
 shader invocation.
 
 * 
-`VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT` specifies that the
+[VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT](#VkSubpassDescriptionFlagBits) specifies that the
 subpass performs shader resolve operations.
 
 * 
-`VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_COLOR_ACCESS_BIT_EXT`
+[VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_COLOR_ACCESS_BIT_EXT](#VkSubpassDescriptionFlagBits)
 specifies that this subpass supports pipelines created with
-`VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT`.
+[VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT](framebuffer.html#VkPipelineColorBlendStateCreateFlagBits).
 
 * 
-`VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT`
+[VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT](#VkSubpassDescriptionFlagBits)
 specifies that this subpass supports pipelines created with
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT`.
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT](fragops.html#VkPipelineDepthStencilStateCreateFlagBits).
 
 * 
-`VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT`
+[VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT](#VkSubpassDescriptionFlagBits)
 specifies that this subpass supports pipelines created with
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT`.
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT](fragops.html#VkPipelineDepthStencilStateCreateFlagBits).
 
 * 
-`VK_SUBPASS_DESCRIPTION_ENABLE_LEGACY_DITHERING_BIT_EXT` specifies
+[VK_SUBPASS_DESCRIPTION_ENABLE_LEGACY_DITHERING_BIT_EXT](#VkSubpassDescriptionFlagBits) specifies
 that [Legacy Dithering](interfaces.html#interfaces-legacy-dithering) is enabled for
 this subpass.
 
 * 
-`VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM` specifies that
+[VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM](#VkSubpassDescriptionFlagBits) specifies that
 [apron regions](#renderpass-tile-shading-aprons) **can** be read within
 this subpass when [tile shading is enabled](#renderpass-tile-shading).
 
@@ -5219,7 +5245,7 @@ typedef struct VkAttachmentReference {
 `attachment` is either an integer value identifying an attachment at
 the corresponding index in
 [VkRenderPassCreateInfo](#VkRenderPassCreateInfo)::`pAttachments`, or
-`VK_ATTACHMENT_UNUSED` to signify that this attachment is not used.
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) to signify that this attachment is not used.
 
 * 
 `layout` is a [VkImageLayout](resources.html#VkImageLayout) value specifying the layout the
@@ -5230,42 +5256,42 @@ Valid Usage
 * 
 [](#VUID-VkAttachmentReference-layout-03077) VUID-VkAttachmentReference-layout-03077
 
-    If `attachment` is not `VK_ATTACHMENT_UNUSED`, `layout`
-    **must** not be `VK_IMAGE_LAYOUT_UNDEFINED`,
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`,
-    `VK_IMAGE_LAYOUT_PREINITIALIZED`, or
-    `VK_IMAGE_LAYOUT_PRESENT_SRC_KHR`
+    If `attachment` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), `layout`
+    **must** not be [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](resources.html#VkImageLayout),
+    [VK_IMAGE_LAYOUT_PREINITIALIZED](resources.html#VkImageLayout), or
+    [VK_IMAGE_LAYOUT_PRESENT_SRC_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentReference-separateDepthStencilLayouts-03313) VUID-VkAttachmentReference-separateDepthStencilLayouts-03313
 
 If the [    `separateDepthStencilLayouts`](features.html#features-separateDepthStencilLayouts) feature is not enabled, and
-`attachment` is not `VK_ATTACHMENT_UNUSED`, `layout` **must**
-not be `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`,
+`attachment` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), `layout` **must**
+not be [VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
 
 * 
 [](#VUID-VkAttachmentReference-synchronization2-06910) VUID-VkAttachmentReference-synchronization2-06910
 
 If the [`synchronization2`](features.html#features-synchronization2) feature is
 not enabled, `layout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR` or
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentReference-attachmentFeedbackLoopLayout-07311) VUID-VkAttachmentReference-attachmentFeedbackLoopLayout-07311
 
 If the [    `attachmentFeedbackLoopLayout`](features.html#features-attachmentFeedbackLoopLayout) feature is not enabled,
 `layout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT`
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentReference-dynamicRenderingLocalRead-09546) VUID-VkAttachmentReference-dynamicRenderingLocalRead-09546
 
 If the [    `dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead) feature is not enabled, `layout`
-**must** not be `VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+**must** not be [VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout)
 
 Valid Usage (Implicit)
 
@@ -5274,7 +5300,7 @@ Valid Usage (Implicit)
 
  `layout` **must** be a valid [VkImageLayout](resources.html#VkImageLayout) value
 
-`VK_SUBPASS_EXTERNAL` is a special subpass index value expanding
+[VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL) is a special subpass index value expanding
 synchronization scope outside a subpass.
 It is described in more detail by [VkSubpassDependency](#VkSubpassDependency).
 
@@ -5298,22 +5324,22 @@ typedef struct VkSubpassDependency {
 
 * 
 `srcSubpass` is the subpass index of the first subpass in the
-dependency, or `VK_SUBPASS_EXTERNAL`.
+dependency, or [VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL).
 
 * 
 `dstSubpass` is the subpass index of the second subpass in the
-dependency, or `VK_SUBPASS_EXTERNAL`.
+dependency, or [VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL).
 
 * 
 `srcStageMask` is a bitmask of [VkPipelineStageFlagBits](synchronization.html#VkPipelineStageFlagBits)
 specifying the [source stage    mask](synchronization.html#synchronization-pipeline-stages-masks).
-If set to `VK_PIPELINE_STAGE_ALL_COMMANDS_BIT`, it is equivalent to
-setting it to `VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT`.
+If set to [VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](synchronization.html#VkPipelineStageFlagBits), it is equivalent to
+setting it to [VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT](synchronization.html#VkPipelineStageFlagBits).
 
 * 
 `dstStageMask` is a bitmask of [VkPipelineStageFlagBits](synchronization.html#VkPipelineStageFlagBits)
-specifying the [destination    stage mask](synchronization.html#synchronization-pipeline-stages-masks) If set to `VK_PIPELINE_STAGE_ALL_COMMANDS_BIT`, it is
-equivalent to setting it to `VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT`.
+specifying the [destination    stage mask](synchronization.html#synchronization-pipeline-stages-masks) If set to [VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](synchronization.html#VkPipelineStageFlagBits), it is
+equivalent to setting it to [VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT](synchronization.html#VkPipelineStageFlagBits).
 
 * 
 `srcAccessMask` is a bitmask of [VkAccessFlagBits](synchronization.html#VkAccessFlagBits) specifying a
@@ -5336,17 +5362,17 @@ Subpass dependencies specified in this way that include
 [framebuffer-space stages](synchronization.html#synchronization-framebuffer-regions) in the
 `srcStageMask` **must** only include
 [framebuffer-space stages](synchronization.html#synchronization-framebuffer-regions) in
-`dstStageMask`, and **must** include `VK_DEPENDENCY_BY_REGION_BIT`.
+`dstStageMask`, and **must** include [VK_DEPENDENCY_BY_REGION_BIT](synchronization.html#VkDependencyFlagBits).
 When a subpass dependency is specified in this way for a subpass that has
 more than one view in its view mask, its `dependencyFlags` **must** include
-`VK_DEPENDENCY_VIEW_LOCAL_BIT`.
+[VK_DEPENDENCY_VIEW_LOCAL_BIT](synchronization.html#VkDependencyFlagBits).
 
 If `srcSubpass` and `dstSubpass` are not equal, when a render pass
 instance which includes a subpass dependency is submitted to a queue, it
 defines a [dependency](synchronization.html#synchronization-dependencies) between the subpasses
 identified by `srcSubpass` and `dstSubpass`.
 
-If `srcSubpass` is equal to `VK_SUBPASS_EXTERNAL`, the first
+If `srcSubpass` is equal to [VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL), the first
 [synchronization scope](synchronization.html#synchronization-dependencies-scopes) includes
 commands that occur earlier in [submission order](synchronization.html#synchronization-submission-order) than the [vkCmdBeginRenderPass](#vkCmdBeginRenderPass) used to begin the render pass
 instance.
@@ -5359,7 +5385,7 @@ the pipeline stages determined by the
 [source stage mask](synchronization.html#synchronization-pipeline-stages-masks) specified by
 `srcStageMask`.
 
-If `dstSubpass` is equal to `VK_SUBPASS_EXTERNAL`, the second
+If `dstSubpass` is equal to [VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL), the second
 [synchronization scope](synchronization.html#synchronization-dependencies-scopes) includes
 commands that occur later in [submission order](synchronization.html#synchronization-submission-order) than the [vkCmdEndRenderPass](#vkCmdEndRenderPass) used to end the render pass
 instance.
@@ -5399,7 +5425,7 @@ subpasses rather than potentially affecting everything before and after.
 
 For attachments however, subpass dependencies work more like a
 [VkImageMemoryBarrier](synchronization.html#VkImageMemoryBarrier) defined similarly to the [VkMemoryBarrier](synchronization.html#VkMemoryBarrier)
-above, the queue family indices set to `VK_QUEUE_FAMILY_IGNORED`, and
+above, the queue family indices set to [VK_QUEUE_FAMILY_IGNORED](synchronization.html#VK_QUEUE_FAMILY_IGNORED), and
 layouts as follows:
 
 * 
@@ -5417,50 +5443,50 @@ Valid Usage
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-srcStageMask-04091) VUID-VkSubpassDependency-srcStageMask-04091
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits) or
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-srcStageMask-04092) VUID-VkSubpassDependency-srcStageMask-04092
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-srcStageMask-04093) VUID-VkSubpassDependency-srcStageMask-04093
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-srcStageMask-04094) VUID-VkSubpassDependency-srcStageMask-04094
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-srcStageMask-04095) VUID-VkSubpassDependency-srcStageMask-04095
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-srcStageMask-04096) VUID-VkSubpassDependency-srcStageMask-04096
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-srcStageMask-07318) VUID-VkSubpassDependency-srcStageMask-07318
@@ -5468,7 +5494,7 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-srcStageMask-03937) VUID-VkSubpassDependency-srcStageMask-03937
@@ -5482,64 +5508,64 @@ not enabled, `srcStageMask` **must** not be `0`
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-srcStageMask-10754) VUID-VkSubpassDependency-srcStageMask-10754
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-dstStageMask-04090) VUID-VkSubpassDependency-dstStageMask-04090
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-dstStageMask-04091) VUID-VkSubpassDependency-dstStageMask-04091
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits) or
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-dstStageMask-04092) VUID-VkSubpassDependency-dstStageMask-04092
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-dstStageMask-04093) VUID-VkSubpassDependency-dstStageMask-04093
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-dstStageMask-04094) VUID-VkSubpassDependency-dstStageMask-04094
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-dstStageMask-04095) VUID-VkSubpassDependency-dstStageMask-04095
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-dstStageMask-04096) VUID-VkSubpassDependency-dstStageMask-04096
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-dstStageMask-07318) VUID-VkSubpassDependency-dstStageMask-07318
@@ -5547,7 +5573,7 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-dstStageMask-03937) VUID-VkSubpassDependency-dstStageMask-03937
@@ -5561,27 +5587,27 @@ not enabled, `dstStageMask` **must** not be `0`
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-dstStageMask-10754) VUID-VkSubpassDependency-dstStageMask-10754
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-srcSubpass-00864) VUID-VkSubpassDependency-srcSubpass-00864
 
 `srcSubpass` **must** be less than or equal to `dstSubpass`, unless
-one of them is `VK_SUBPASS_EXTERNAL`, to avoid cyclic dependencies
+one of them is [VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL), to avoid cyclic dependencies
 and ensure a valid execution order
 
 * 
 [](#VUID-VkSubpassDependency-srcSubpass-00865) VUID-VkSubpassDependency-srcSubpass-00865
 
 `srcSubpass` and `dstSubpass` **must** not both be equal to
-`VK_SUBPASS_EXTERNAL`
+[VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL)
 
 * 
 [](#VUID-VkSubpassDependency-srcSubpass-06809) VUID-VkSubpassDependency-srcSubpass-06809
@@ -5610,32 +5636,32 @@ one of the pipeline stages in `dstStageMask`, as specified in the
 If `srcSubpass` equals `dstSubpass`, and `srcStageMask` and
 `dstStageMask` both include a
 [framebuffer-space stage](synchronization.html#synchronization-framebuffer-regions), then
-`dependencyFlags` **must** include `VK_DEPENDENCY_BY_REGION_BIT`
+`dependencyFlags` **must** include [VK_DEPENDENCY_BY_REGION_BIT](synchronization.html#VkDependencyFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-dependencyFlags-02520) VUID-VkSubpassDependency-dependencyFlags-02520
 
-If `dependencyFlags` includes `VK_DEPENDENCY_VIEW_LOCAL_BIT`,
-`srcSubpass` **must** not be equal to `VK_SUBPASS_EXTERNAL`
+If `dependencyFlags` includes [VK_DEPENDENCY_VIEW_LOCAL_BIT](synchronization.html#VkDependencyFlagBits),
+`srcSubpass` **must** not be equal to [VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL)
 
 * 
 [](#VUID-VkSubpassDependency-dependencyFlags-02521) VUID-VkSubpassDependency-dependencyFlags-02521
 
-If `dependencyFlags` includes `VK_DEPENDENCY_VIEW_LOCAL_BIT`,
-`dstSubpass` **must** not be equal to `VK_SUBPASS_EXTERNAL`
+If `dependencyFlags` includes [VK_DEPENDENCY_VIEW_LOCAL_BIT](synchronization.html#VkDependencyFlagBits),
+`dstSubpass` **must** not be equal to [VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL)
 
 * 
 [](#VUID-VkSubpassDependency-srcSubpass-00872) VUID-VkSubpassDependency-srcSubpass-00872
 
 If `srcSubpass` equals `dstSubpass` and that subpass has more
 than one bit set in the view mask, then `dependencyFlags` **must**
-include `VK_DEPENDENCY_VIEW_LOCAL_BIT`
+include [VK_DEPENDENCY_VIEW_LOCAL_BIT](synchronization.html#VkDependencyFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency-dependencyFlags-10203) VUID-VkSubpassDependency-dependencyFlags-10203
 
 `dependencyFlags` **must** not include
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](synchronization.html#VkDependencyFlagBits)
 
 Valid Usage (Implicit)
 
@@ -5668,7 +5694,7 @@ When multiview is enabled, the execution of the multiple views of one
 subpass **may** not occur simultaneously or even back-to-back, and rather **may**
 be interleaved with the execution of other subpasses.
 The load and store operations apply to attachments on a per-view basis.
-For example, an attachment using `VK_ATTACHMENT_LOAD_OP_CLEAR` will have
+For example, an attachment using [VK_ATTACHMENT_LOAD_OP_CLEAR](#VkAttachmentLoadOp) will have
 each view cleared on first use, but the first use of one view may be
 temporally distant from the first use of another view.
 
@@ -5698,9 +5724,9 @@ If any two subpasses of a render pass activate transform feedback to the
 same bound transform feedback buffers, a subpass dependency **must** be
 included (either directly or via some intermediate subpasses) between them.
 
-If there is no subpass dependency from `VK_SUBPASS_EXTERNAL` to the
+If there is no subpass dependency from [VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL) to the
 first subpass that uses an attachment, then an implicit subpass dependency
-exists from `VK_SUBPASS_EXTERNAL` to the first subpass it is used in.
+exists from [VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL) to the first subpass it is used in.
 The implicit subpass dependency only exists if there exists an automatic
 layout transition away from `initialLayout`.
 The subpass dependency operates as if defined with the following parameters:
@@ -5720,9 +5746,9 @@ VkSubpassDependency implicitDependency = {
 };
 
 Similarly, if there is no subpass dependency from the last subpass that uses
-an attachment to `VK_SUBPASS_EXTERNAL`, then an implicit subpass
+an attachment to [VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL), then an implicit subpass
 dependency exists from the last subpass it is used in to
-`VK_SUBPASS_EXTERNAL`.
+[VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL).
 The implicit subpass dependency only exists if there exists an automatic
 layout transition into `finalLayout`.
 The subpass dependency operates as if defined with the following parameters:
@@ -5780,34 +5806,34 @@ the visibility operations for all dependencies with that subpass as the
 
 Automatic layout transitions away from `initialLayout` happen-after the
 availability operations for all dependencies with a `srcSubpass` equal
-to `VK_SUBPASS_EXTERNAL`, where `dstSubpass` uses the attachment
+to [VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL), where `dstSubpass` uses the attachment
 that will be transitioned.
-For attachments created with `VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT`,
+For attachments created with [VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT](#VkAttachmentDescriptionFlagBits),
 automatic layout transitions away from `initialLayout` happen-after the
 availability operations for all dependencies with a `srcSubpass` equal
-to `VK_SUBPASS_EXTERNAL`, where `dstSubpass` uses any aliased
+to [VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL), where `dstSubpass` uses any aliased
 attachment.
 
 Automatic layout transitions into `finalLayout` happen-before the
 visibility operations for all dependencies with a `dstSubpass` equal to
-`VK_SUBPASS_EXTERNAL`, where `srcSubpass` uses the attachment that
+[VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL), where `srcSubpass` uses the attachment that
 will be transitioned.
-For attachments created with `VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT`,
+For attachments created with [VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT](#VkAttachmentDescriptionFlagBits),
 automatic layout transitions into `finalLayout` happen-before the
 visibility operations for all dependencies with a `dstSubpass` equal to
-`VK_SUBPASS_EXTERNAL`, where `srcSubpass` uses any aliased
+[VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL), where `srcSubpass` uses any aliased
 attachment.
 
 The image layout of the depth aspect of a depth/stencil attachment referring
 to an image created with
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT` is dependent
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](resources.html#VkImageCreateFlagBits) is dependent
 on the last sample locations used to render to the attachment, thus
 automatic layout transitions use the sample locations state specified in
 [VkRenderPassSampleLocationsBeginInfoEXT](#VkRenderPassSampleLocationsBeginInfoEXT).
 
 Automatic layout transitions of an attachment referring to a depth/stencil
 image created with
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT` use the
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](resources.html#VkImageCreateFlagBits) use the
 sample locations the image subresource range referenced by the attachment
 was last rendered with.
 If the current render pass does not use the attachment as a depth/stencil
@@ -5826,10 +5852,10 @@ is specified.
 
 If no sample locations state has been specified for an automatic layout
 transition performed on an attachment referring to a depth/stencil image
-created with `VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT`
+created with [VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](resources.html#VkImageCreateFlagBits)
 the contents of the depth aspect of the depth/stencil attachment become
 **undefined** as if the layout of the attachment was transitioned from the
-`VK_IMAGE_LAYOUT_UNDEFINED` layout.
+[VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout) layout.
 
 If two subpasses use the same attachment, and both subpasses use the
 attachment in a read-only layout, no subpass dependency needs to be
@@ -5861,7 +5887,7 @@ When
 drawing using [shader objects](shaders.html#shaders-objects),
 or when
 the graphics pipeline is created with
-`VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT` set in
+[VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT](pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`, the
 application **must** specify which types of attachments that are written to
 during a render pass will also be accessed as non-attachments in the render
@@ -5900,15 +5926,15 @@ The [    `attachmentFeedbackLoopDynamicState`](features.html#features-attachment
 * 
 [](#VUID-vkCmdSetAttachmentFeedbackLoopEnableEXT-aspectMask-08863) VUID-vkCmdSetAttachmentFeedbackLoopEnableEXT-aspectMask-08863
 
-`aspectMask` **must** only include `VK_IMAGE_ASPECT_NONE`,
-`VK_IMAGE_ASPECT_COLOR_BIT`, `VK_IMAGE_ASPECT_DEPTH_BIT`, and
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+`aspectMask` **must** only include [VK_IMAGE_ASPECT_NONE](resources.html#VkImageAspectFlagBits),
+[VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits), [VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits), and
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-vkCmdSetAttachmentFeedbackLoopEnableEXT-attachmentFeedbackLoopLayout-08864) VUID-vkCmdSetAttachmentFeedbackLoopEnableEXT-attachmentFeedbackLoopLayout-08864
 
 If the [    `attachmentFeedbackLoopLayout`](features.html#features-attachmentFeedbackLoopLayout) feature is not enabled,
-`aspectMask` **must** be `VK_IMAGE_ASPECT_NONE`
+`aspectMask` **must** be [VK_IMAGE_ASPECT_NONE](resources.html#VkImageAspectFlagBits)
 
 Valid Usage (Implicit)
 
@@ -5930,7 +5956,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetAttachmentFeedbackLoopEnableEXT-commandBuffer-cmdpool) VUID-vkCmdSetAttachmentFeedbackLoopEnableEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetAttachmentFeedbackLoopEnableEXT-videocoding) VUID-vkCmdSetAttachmentFeedbackLoopEnableEXT-videocoding
@@ -6003,13 +6029,13 @@ Valid Usage
 [](#VUID-vkCreateRenderPass2-device-10001) VUID-vkCreateRenderPass2-device-10001
 
 `device` **must** support at least one queue family with the
-`VK_QUEUE_GRAPHICS_BIT` capability
+[VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) capability
 
 * 
 [](#VUID-vkCreateRenderPass2-flags-10649) VUID-vkCreateRenderPass2-flags-10649
 
 [VkRenderPassTileShadingCreateInfoQCOM](#VkRenderPassTileShadingCreateInfoQCOM)::`flags` **must** not
-include `VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM`
+include [VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM](#VkTileShadingRenderPassFlagBitsQCOM)
 
 Valid Usage (Implicit)
 
@@ -6038,21 +6064,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkRenderPassCreateInfo2` structure is defined as:
 
@@ -6158,7 +6184,7 @@ element of `pSubpasses` is bound to a range of a
 `VkDeviceMemory` object that overlaps with any other attachment in
 any subpass (including the same subpass), the
 `VkAttachmentDescription2` structures describing them **must** include
-`VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT` in `flags`
+[VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT](#VkAttachmentDescriptionFlagBits) in `flags`
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-attachment-03051) VUID-VkRenderPassCreateInfo2-attachment-03051
@@ -6167,7 +6193,7 @@ If the `attachment` member of any element of
 `pInputAttachments`, `pColorAttachments`,
 `pResolveAttachments` or `pDepthStencilAttachment`, or any
 element of `pPreserveAttachments` in any element of `pSubpasses`
-is not `VK_ATTACHMENT_UNUSED`, then it **must** be less than
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), then it **must** be less than
 `attachmentCount`
 
 * 
@@ -6176,7 +6202,7 @@ is not `VK_ATTACHMENT_UNUSED`, then it **must** be less than
 If the pNext chain includes a
 [VkRenderPassFragmentDensityMapCreateInfoEXT](#VkRenderPassFragmentDensityMapCreateInfoEXT) structure and the
 `fragmentDensityMapAttachment` member is not
-`VK_ATTACHMENT_UNUSED`, then `attachment` **must** be less than
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), then `attachment` **must** be less than
 `attachmentCount`
 
 * 
@@ -6184,7 +6210,7 @@ If the pNext chain includes a
 
 If the [    `fragmentDensityMapLayered`](features.html#features-fragmentDensityMapLayered) feature is not enabled, `flags`
 **must** not contain
-`VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE`
+[VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](#VkRenderPassCreateFlagBits)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-pSubpasses-06473) VUID-VkRenderPassCreateInfo2-pSubpasses-06473
@@ -6192,36 +6218,36 @@ If the [    `fragmentDensityMapLayered`](features.html#features-fragmentDensityM
 If the `pSubpasses` pNext chain includes a
 [VkSubpassDescriptionDepthStencilResolve](#VkSubpassDescriptionDepthStencilResolve) structure and the
 `pDepthStencilResolveAttachment` member is not `NULL` and does not
-have the value `VK_ATTACHMENT_UNUSED`, then `attachment` **must**
+have the value [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), then `attachment` **must**
 be less than `attachmentCount`
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-pAttachments-02522) VUID-VkRenderPassCreateInfo2-pAttachments-02522
 
 For any member of `pAttachments` with a `loadOp` equal to
-`VK_ATTACHMENT_LOAD_OP_CLEAR`, the first use of that attachment
+[VK_ATTACHMENT_LOAD_OP_CLEAR](#VkAttachmentLoadOp), the first use of that attachment
 **must** not specify a `layout` equal to
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-pAttachments-02523) VUID-VkRenderPassCreateInfo2-pAttachments-02523
 
 For any member of `pAttachments` with a `stencilLoadOp` equal to
-`VK_ATTACHMENT_LOAD_OP_CLEAR`, the first use of that attachment
+[VK_ATTACHMENT_LOAD_OP_CLEAR](#VkAttachmentLoadOp), the first use of that attachment
 **must** not specify a `layout` equal to
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-pDependencies-03054) VUID-VkRenderPassCreateInfo2-pDependencies-03054
 
 For each element of `pDependencies`, if the `srcSubpass` is not
-`VK_SUBPASS_EXTERNAL`, all stage flags included in the
+[VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL), all stage flags included in the
 `srcStageMask` member of that dependency **must** be
-`VK_PIPELINE_STAGE_ALL_COMMANDS_BIT` or a pipeline stage supported
+[VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](synchronization.html#VkPipelineStageFlagBits) or a pipeline stage supported
 by the [pipeline](synchronization.html#synchronization-pipeline-stages-types) identified by
 the `pipelineBindPoint` member of the source subpass
 
@@ -6229,9 +6255,9 @@ the `pipelineBindPoint` member of the source subpass
 [](#VUID-VkRenderPassCreateInfo2-pDependencies-03055) VUID-VkRenderPassCreateInfo2-pDependencies-03055
 
 For each element of `pDependencies`, if the `dstSubpass` is not
-`VK_SUBPASS_EXTERNAL`, all stage flags included in the
+[VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL), all stage flags included in the
 `dstStageMask` member of that dependency **must** be
-`VK_PIPELINE_STAGE_ALL_COMMANDS_BIT` or a pipeline stage supported
+[VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](synchronization.html#VkPipelineStageFlagBits) or a pipeline stage supported
 by the [pipeline](synchronization.html#synchronization-pipeline-stages-types) identified by
 the `pipelineBindPoint` member of the destination subpass
 
@@ -6261,7 +6287,7 @@ of `pSubpasses` **must** either all be `0`, or all not be `0`
 If the [VkSubpassDescription2](#VkSubpassDescription2)::`viewMask` member of all
 elements of `pSubpasses` is `0`, the `dependencyFlags` member of
 any element of `pDependencies` **must** not include
-`VK_DEPENDENCY_VIEW_LOCAL_BIT`
+[VK_DEPENDENCY_VIEW_LOCAL_BIT](synchronization.html#VkDependencyFlagBits)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-pDependencies-03060) VUID-VkRenderPassCreateInfo2-pDependencies-03060
@@ -6270,14 +6296,14 @@ For each element of `pDependencies` where its `srcSubpass`
 member equals its `dstSubpass` member, if the `viewMask` member
 of the corresponding element of `pSubpasses` includes more than one
 bit, its `dependencyFlags` member **must** include
-`VK_DEPENDENCY_VIEW_LOCAL_BIT`
+[VK_DEPENDENCY_VIEW_LOCAL_BIT](synchronization.html#VkDependencyFlagBits)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-attachment-02525) VUID-VkRenderPassCreateInfo2-attachment-02525
 
 If the `attachment` member of any element of the
 `pInputAttachments` member of any element of `pSubpasses` is not
-`VK_ATTACHMENT_UNUSED`, the `aspectMask` member of that element
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), the `aspectMask` member of that element
 of `pInputAttachments` **must** only include aspects that are present
 in images of the format specified by the element of `pAttachments`
 specified by `attachment`
@@ -6306,17 +6332,17 @@ in the render pass
 
 If any element of `pAttachments` is used as a fragment shading rate
 attachment, the `loadOp` for that attachment **must** not be
-`VK_ATTACHMENT_LOAD_OP_CLEAR`
+[VK_ATTACHMENT_LOAD_OP_CLEAR](#VkAttachmentLoadOp)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-flags-04521) VUID-VkRenderPassCreateInfo2-flags-04521
 
-If `flags` includes `VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM`,
+If `flags` includes [VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM](#VkRenderPassCreateFlagBits),
 an element of `pSubpasses` includes an instance of
 [VkFragmentShadingRateAttachmentInfoKHR](#VkFragmentShadingRateAttachmentInfoKHR) in its `pNext` chain,
 and the `pFragmentShadingRateAttachment` member of that structure is
 not equal to `NULL`, the `attachment` member of
-`pFragmentShadingRateAttachment` **must** be `VK_ATTACHMENT_UNUSED`
+`pFragmentShadingRateAttachment` **must** be [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-pAttachments-04586) VUID-VkRenderPassCreateInfo2-pAttachments-04586
@@ -6324,16 +6350,16 @@ not equal to `NULL`, the `attachment` member of
 If any element of `pAttachments` is used as a fragment shading rate
 attachment in any subpass, it **must** have an image format whose
 [potential format features](formats.html#potential-format-features) contain
-`VK_FORMAT_FEATURE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_FORMAT_FEATURE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-attachment-06244) VUID-VkRenderPassCreateInfo2-attachment-06244
 
 If the `attachment` member of the `pDepthStencilAttachment`
 member of an element of `pSubpasses` is not
-`VK_ATTACHMENT_UNUSED`, the `layout` member of that same
-structure is either `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`, and the `pNext` chain
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), the `layout` member of that same
+structure is either [VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout), and the `pNext` chain
 of that structure does not include a
 [VkAttachmentReferenceStencilLayout](#VkAttachmentReferenceStencilLayout) structure, then the element of
 `pAttachments` with an index equal to `attachment` **must** not
@@ -6344,9 +6370,9 @@ have a `format` that includes both depth and stencil components
 
 If the `attachment` member of the `pDepthStencilAttachment`
 member of an element of `pSubpasses` is not
-`VK_ATTACHMENT_UNUSED` and the `layout` member of that same
-structure is either `VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`, then the element of
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) and the `layout` member of that same
+structure is either [VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout), then the element of
 `pAttachments` with an index equal to `attachment` **must** have a
 `format` that includes only a stencil component
 
@@ -6355,9 +6381,9 @@ structure is either `VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
 
 If the `attachment` member of the `pDepthStencilAttachment`
 member of an element of `pSubpasses` is not
-`VK_ATTACHMENT_UNUSED` and the `layout` member of that same
-structure is either `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`, then the element of
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) and the `layout` member of that same
+structure is either [VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout), then the element of
 `pAttachments` with an index equal to `attachment` **must** not
 have a `format` that includes only a stencil component
 
@@ -6366,17 +6392,17 @@ have a `format` that includes only a stencil component
 
 If any element of `pResolveAttachments` of any element of
 `pSubpasses` references an attachment description with a format of
-`VK_FORMAT_UNDEFINED`,
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat),
 [VkRenderPassFragmentDensityMapCreateInfoEXT](#VkRenderPassFragmentDensityMapCreateInfoEXT)::`fragmentDensityMapAttachment->attachment`
-**must** be `VK_ATTACHMENT_UNUSED`
+**must** be [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-pResolveAttachments-10650) VUID-VkRenderPassCreateInfo2-pResolveAttachments-10650
 
 If any element of `pResolveAttachments` of any element of
 `pSubpasses` references an attachment description with a format of
-`VK_FORMAT_UNDEFINED`,
-`VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` **must** not be included
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat),
+[VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](#VkTileShadingRenderPassFlagBitsQCOM) **must** not be included
 in [VkRenderPassTileShadingCreateInfoQCOM](#VkRenderPassTileShadingCreateInfoQCOM)::`flags`
 
 * 
@@ -6384,8 +6410,8 @@ in [VkRenderPassTileShadingCreateInfoQCOM](#VkRenderPassTileShadingCreateInfoQCO
 
 If
 [VkRenderPassFragmentDensityMapCreateInfoEXT](#VkRenderPassFragmentDensityMapCreateInfoEXT)::`fragmentDensityMapAttachment`
-is not `VK_ATTACHMENT_UNUSED`,
-`VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` **must** not be included
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED),
+[VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](#VkTileShadingRenderPassFlagBitsQCOM) **must** not be included
 in [VkRenderPassTileShadingCreateInfoQCOM](#VkRenderPassTileShadingCreateInfoQCOM)::`flags`
 
 * 
@@ -6399,7 +6425,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassCreateInfo2-sType-sType) VUID-VkRenderPassCreateInfo2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderPassCreateInfo2-pNext-pNext) VUID-VkRenderPassCreateInfo2-pNext-pNext
@@ -6543,7 +6569,7 @@ attachments.
 No access to the shading rate attachment is performed in `loadOp` and
 `storeOp`.
 Instead, access to
-`VK_ACCESS_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR` is performed
+[VK_ACCESS_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR](synchronization.html#VkAccessFlagBits) is performed
 as fragments are rasterized.
 
 Valid Usage
@@ -6552,155 +6578,155 @@ Valid Usage
 [](#VUID-VkAttachmentDescription2-format-06699) VUID-VkAttachmentDescription2-format-06699
 
 If `format` includes a color or depth component and `loadOp` is
-`VK_ATTACHMENT_LOAD_OP_LOAD`, then `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_UNDEFINED`
+[VK_ATTACHMENT_LOAD_OP_LOAD](#VkAttachmentLoadOp), then `initialLayout` **must** not be
+[VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-finalLayout-00843) VUID-VkAttachmentDescription2-finalLayout-00843
 
-    `finalLayout` **must** not be `VK_IMAGE_LAYOUT_UNDEFINED` or
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT` or
-    `VK_IMAGE_LAYOUT_PREINITIALIZED`
+    `finalLayout` **must** not be [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](resources.html#VkImageLayout) or
+    [VK_IMAGE_LAYOUT_PREINITIALIZED](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-format-03280) VUID-VkAttachmentDescription2-format-03280
 
 If `format` is a color format, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-format-03281) VUID-VkAttachmentDescription2-format-03281
 
 If `format` is a depth/stencil format, `initialLayout` **must** not
-be `VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`
+be [VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-format-03282) VUID-VkAttachmentDescription2-format-03282
 
 If `format` is a color format, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-format-03283) VUID-VkAttachmentDescription2-format-03283
 
 If `format` is a depth/stencil format, `finalLayout` **must** not
-be `VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`
+be [VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-format-06487) VUID-VkAttachmentDescription2-format-06487
 
 If `format` is a color format, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-format-06488) VUID-VkAttachmentDescription2-format-06488
 
 If `format` is a color format, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-separateDepthStencilLayouts-03284) VUID-VkAttachmentDescription2-separateDepthStencilLayouts-03284
 
 If the [    `separateDepthStencilLayouts`](features.html#features-separateDepthStencilLayouts) feature is not enabled,
 `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`,
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
 
 * 
 [](#VUID-VkAttachmentDescription2-separateDepthStencilLayouts-03285) VUID-VkAttachmentDescription2-separateDepthStencilLayouts-03285
 
 If the [    `separateDepthStencilLayouts`](features.html#features-separateDepthStencilLayouts) feature is not enabled,
 `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`,
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
 
 * 
 [](#VUID-VkAttachmentDescription2-format-03286) VUID-VkAttachmentDescription2-format-03286
 
 If `format` is a color format, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-format-03287) VUID-VkAttachmentDescription2-format-03287
 
 If `format` is a color format, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-format-06906) VUID-VkAttachmentDescription2-format-06906
 
 If `format` is a depth/stencil format which includes both depth and
 stencil components, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-format-06907) VUID-VkAttachmentDescription2-format-06907
 
 If `format` is a depth/stencil format which includes both depth and
 stencil components, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-format-03290) VUID-VkAttachmentDescription2-format-03290
 
 If `format` is a depth/stencil format which includes only the depth
 component, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-format-03291) VUID-VkAttachmentDescription2-format-03291
 
 If `format` is a depth/stencil format which includes only the depth
 component, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-synchronization2-06908) VUID-VkAttachmentDescription2-synchronization2-06908
 
 If the [`synchronization2`](features.html#features-synchronization2) feature is
 not enabled, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR` or
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-synchronization2-06909) VUID-VkAttachmentDescription2-synchronization2-06909
 
 If the [`synchronization2`](features.html#features-synchronization2) feature is
 not enabled, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR` or
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-attachmentFeedbackLoopLayout-07309) VUID-VkAttachmentDescription2-attachmentFeedbackLoopLayout-07309
 
 If the [    `attachmentFeedbackLoopLayout`](features.html#features-attachmentFeedbackLoopLayout) feature is not enabled,
 `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT`
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-attachmentFeedbackLoopLayout-07310) VUID-VkAttachmentDescription2-attachmentFeedbackLoopLayout-07310
 
 If the [    `attachmentFeedbackLoopLayout`](features.html#features-attachmentFeedbackLoopLayout) feature is not enabled,
 `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT`
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-samples-08745) VUID-VkAttachmentDescription2-samples-08745
@@ -6715,59 +6741,59 @@ set in `imageCreateSampleCounts` (as defined in
 
 If the [    `dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead) feature is not enabled,
 `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+[VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-dynamicRenderingLocalRead-09545) VUID-VkAttachmentDescription2-dynamicRenderingLocalRead-09545
 
 If the [    `dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead) feature is not enabled,
 `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+[VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-flags-11773) VUID-VkAttachmentDescription2-flags-11773
 
 If `flags` includes
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`,
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits),
 `flags` **must** not include
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits)
 
 * 
 [](#VUID-VkAttachmentDescription2-flags-11774) VUID-VkAttachmentDescription2-flags-11774
 
 If `flags` includes
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits)
 or
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`,
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits),
 [`resolveSrgbFormatSupportsTransferFunctionControl`](limits.html#limits-resolveSrgbFormatSupportsTransferFunctionControl)
-**must** be `VK_TRUE`
+**must** be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkAttachmentDescription2-flags-11775) VUID-VkAttachmentDescription2-flags-11775
 
 If `flags` includes
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits)
 or
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`,
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits),
 [`maintenance10`](features.html#features-maintenance10) **must** be enabled
 
 * 
 [](#VUID-VkAttachmentDescription2-flags-11776) VUID-VkAttachmentDescription2-flags-11776
 
 If `flags` includes
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits)
 or
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`,
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits),
 `format` **must** use sRGB encoding
 
 * 
 [](#VUID-VkAttachmentDescription2-flags-11777) VUID-VkAttachmentDescription2-flags-11777
 
 If `flags` includes
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits)
 or
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`,
-`samples` **must** be `VK_SAMPLE_COUNT_1_BIT`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits),
+`samples` **must** be [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
 [](#VUID-VkAttachmentDescription2-pNext-06704) VUID-VkAttachmentDescription2-pNext-06704
@@ -6776,8 +6802,8 @@ If
 the `pNext` chain does not include a
 [VkAttachmentDescriptionStencilLayout](#VkAttachmentDescriptionStencilLayout) structure,
 `format` includes a stencil component, and `stencilLoadOp` is
-`VK_ATTACHMENT_LOAD_OP_LOAD`, then `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_UNDEFINED`
+[VK_ATTACHMENT_LOAD_OP_LOAD](#VkAttachmentLoadOp), then `initialLayout` **must** not be
+[VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-pNext-06705) VUID-VkAttachmentDescription2-pNext-06705
@@ -6785,17 +6811,17 @@ the `pNext` chain does not include a
 If the `pNext` chain includes a
 [VkAttachmentDescriptionStencilLayout](#VkAttachmentDescriptionStencilLayout) structure, `format`
 includes a stencil component, and `stencilLoadOp` is
-`VK_ATTACHMENT_LOAD_OP_LOAD`, then
+[VK_ATTACHMENT_LOAD_OP_LOAD](#VkAttachmentLoadOp), then
 [VkAttachmentDescriptionStencilLayout](#VkAttachmentDescriptionStencilLayout)::`stencilInitialLayout`
-**must** not be `VK_IMAGE_LAYOUT_UNDEFINED`
+**must** not be [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-format-06249) VUID-VkAttachmentDescription2-format-06249
 
 If `format` is a depth/stencil format which includes both depth and
 stencil components, and `initialLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`, the `pNext` chain
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout), the `pNext` chain
 **must** include a [VkAttachmentDescriptionStencilLayout](#VkAttachmentDescriptionStencilLayout) structure
 
 * 
@@ -6803,8 +6829,8 @@ stencil components, and `initialLayout` is
 
 If `format` is a depth/stencil format which includes both depth and
 stencil components, and `finalLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`, the `pNext` chain
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout), the `pNext` chain
 **must** include a [VkAttachmentDescriptionStencilLayout](#VkAttachmentDescriptionStencilLayout) structure
 
 * 
@@ -6813,8 +6839,8 @@ stencil components, and `finalLayout` is
 If the `pNext` chain does not include a
 [VkAttachmentDescriptionStencilLayout](#VkAttachmentDescriptionStencilLayout) structure and `format`
 only includes a stencil component, `initialLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-format-06248) VUID-VkAttachmentDescription2-format-06248
@@ -6822,20 +6848,20 @@ only includes a stencil component, `initialLayout` **must** not be
 If the `pNext` chain does not include a
 [VkAttachmentDescriptionStencilLayout](#VkAttachmentDescriptionStencilLayout) structure and `format`
 only includes a stencil component, `finalLayout` **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescription2-format-09332) VUID-VkAttachmentDescription2-format-09332
 
 If the [`externalFormatResolve`](features.html#features-externalFormatResolve)
 feature is not enabled,
-`format` **must** not be `VK_FORMAT_UNDEFINED`
+`format` **must** not be [VK_FORMAT_UNDEFINED](formats.html#VkFormat)
 
 * 
 [](#VUID-VkAttachmentDescription2-format-09334) VUID-VkAttachmentDescription2-format-09334
 
-If `format` is `VK_FORMAT_UNDEFINED`, there **must** be a
+If `format` is [VK_FORMAT_UNDEFINED](formats.html#VkFormat), there **must** be a
 [VkExternalFormatANDROID](resources.html#VkExternalFormatANDROID) structure in the `pNext` chain with a
 `externalFormat` that is not equal to `0`
 
@@ -6844,7 +6870,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAttachmentDescription2-sType-sType) VUID-VkAttachmentDescription2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkAttachmentDescription2-pNext-pNext) VUID-VkAttachmentDescription2-pNext-pNext
@@ -6941,39 +6967,39 @@ Valid Usage
 [](#VUID-VkAttachmentDescriptionStencilLayout-stencilInitialLayout-03308) VUID-VkAttachmentDescriptionStencilLayout-stencilInitialLayout-03308
 
 `stencilInitialLayout` **must** not be
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescriptionStencilLayout-stencilFinalLayout-03309) VUID-VkAttachmentDescriptionStencilLayout-stencilFinalLayout-03309
 
 `stencilFinalLayout` **must** not be
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentDescriptionStencilLayout-stencilFinalLayout-03310) VUID-VkAttachmentDescriptionStencilLayout-stencilFinalLayout-03310
 
-    `stencilFinalLayout` **must** not be `VK_IMAGE_LAYOUT_UNDEFINED` or
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT` or
-    `VK_IMAGE_LAYOUT_PREINITIALIZED`
+    `stencilFinalLayout` **must** not be [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](resources.html#VkImageLayout) or
+    [VK_IMAGE_LAYOUT_PREINITIALIZED](resources.html#VkImageLayout)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkAttachmentDescriptionStencilLayout-sType-sType) VUID-VkAttachmentDescriptionStencilLayout-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_STENCIL_LAYOUT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_STENCIL_LAYOUT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkAttachmentDescriptionStencilLayout-stencilInitialLayout-parameter) VUID-VkAttachmentDescriptionStencilLayout-stencilInitialLayout-parameter
@@ -7074,16 +7100,16 @@ corresponding subpass.
 
 If a [VkFragmentShadingRateAttachmentInfoKHR](#VkFragmentShadingRateAttachmentInfoKHR) structure is included in
 the `pNext` chain, `pFragmentShadingRateAttachment` is not `NULL`,
-and its `attachment` member is not `VK_ATTACHMENT_UNUSED`, the
+and its `attachment` member is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), the
 identified attachment defines a fragment shading rate attachment for that
 subpass.
 
 If any element of `pResolveAttachments` is an image specified with an
 [VkExternalFormatANDROID](resources.html#VkExternalFormatANDROID), values in the corresponding color attachment
 will be resolved to the resolve attachment in the same manner as specified
-for [`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`](#VkResolveModeFlagBits).
+for [](#VkResolveModeFlagBits)[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR).
 
-If the [`nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) limit is `VK_TRUE`,
+If the [`nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) limit is [VK_TRUE](fundamentals.html#VK_TRUE),
 values in the color attachment will be loaded from the resolve attachment at
 the start of rendering, and **may** also be reloaded any time after a resolve
 occurs or the resolve attachment is written to; if this occurs it **must**
@@ -7094,13 +7120,13 @@ read from the nearest sample in the image when they are loaded.
 If the color attachment is also used as an input attachment, the same
 behavior applies.
 
-Setting the color attachment to `VK_ATTACHMENT_UNUSED` when an external
+Setting the color attachment to [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) when an external
 resolve attachment is used and the
-[`nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) limit is `VK_TRUE`
+[`nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) limit is [VK_TRUE](fundamentals.html#VK_TRUE)
 will not result in color attachment writes to be discarded for that
 attachment.
 
-When [`nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) is `VK_TRUE`, the
+When [`nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) is [VK_TRUE](fundamentals.html#VK_TRUE), the
 color output from the subpass can still be read via an input attachment; but
 the application cannot bind an image view for the color attachment as there
 is no such image view bound.
@@ -7132,9 +7158,9 @@ VkSamplerYcbcrConversionCreateInfo createInfo = {
 where `properties` is equal to
 [VkPhysicalDeviceExternalFormatResolvePropertiesANDROID](limits.html#VkPhysicalDeviceExternalFormatResolvePropertiesANDROID) returned by the
 device and `forceExplicitReconstruction` is effectively ignored as the
-`VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY` model is used.
+[VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY](samplers.html#VkSamplerYcbcrModelConversionKHR) model is used.
 The applied swizzle is the same effective swizzle that would be applied by
-the `VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY` model, but no
+the [VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY](samplers.html#VkSamplerYcbcrModelConversionKHR) model, but no
 range expansion is applied.
 
 Valid Usage
@@ -7143,157 +7169,154 @@ Valid Usage
 [](#VUID-VkSubpassDescription2-attachment-06912) VUID-VkSubpassDescription2-attachment-06912
 
 If the `attachment` member of an element of `pInputAttachments`
-is not `VK_ATTACHMENT_UNUSED`, its `layout` member **must** not be
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL`
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its `layout` member **must** not be
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription2-attachment-06913) VUID-VkSubpassDescription2-attachment-06913
 
 If the `attachment` member of an element of `pColorAttachments`
-is not `VK_ATTACHMENT_UNUSED`, its `layout` member **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its `layout` member **must** not be
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription2-attachment-06914) VUID-VkSubpassDescription2-attachment-06914
 
 If the `attachment` member of an element of
-`pResolveAttachments` is not `VK_ATTACHMENT_UNUSED`, its
+`pResolveAttachments` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its
 `layout` member **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription2-attachment-06915) VUID-VkSubpassDescription2-attachment-06915
 
 If the `attachment` member of `pDepthStencilAttachment` is not
-`VK_ATTACHMENT_UNUSED`, its `layout` member **must** not be
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its `layout` member **must** not be
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription2-attachment-06916) VUID-VkSubpassDescription2-attachment-06916
 
 If the `attachment` member of an element of `pColorAttachments`
-is not `VK_ATTACHMENT_UNUSED`, its `layout` member **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its `layout` member **must** not be
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription2-attachment-06917) VUID-VkSubpassDescription2-attachment-06917
 
 If the `attachment` member of an element of
-`pResolveAttachments` is not `VK_ATTACHMENT_UNUSED`, its
+`pResolveAttachments` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its
 `layout` member **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription2-attachment-06918) VUID-VkSubpassDescription2-attachment-06918
 
 If the `attachment` member of an element of `pInputAttachments`
-is not `VK_ATTACHMENT_UNUSED`, its `layout` member **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its `layout` member **must** not be
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription2-attachment-06919) VUID-VkSubpassDescription2-attachment-06919
 
 If the `attachment` member of an element of `pColorAttachments`
-is not `VK_ATTACHMENT_UNUSED`, its `layout` member **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its `layout` member **must** not be
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription2-attachment-06920) VUID-VkSubpassDescription2-attachment-06920
 
 If the `attachment` member of an element of
-`pResolveAttachments` is not `VK_ATTACHMENT_UNUSED`, its
+`pResolveAttachments` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its
 `layout` member **must** not be
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription2-attachment-06921) VUID-VkSubpassDescription2-attachment-06921
 
 If the `attachment` member of an element of `pInputAttachments`
-is not `VK_ATTACHMENT_UNUSED`, its `layout` member **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR`
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its `layout` member **must** not be
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription2-attachment-06922) VUID-VkSubpassDescription2-attachment-06922
 
 If the `attachment` member of an element of `pColorAttachments`
-is not `VK_ATTACHMENT_UNUSED`, its `layout` member **must** not be
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its `layout` member **must** not be
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription2-attachment-06923) VUID-VkSubpassDescription2-attachment-06923
 
 If the `attachment` member of an element of
-`pResolveAttachments` is not `VK_ATTACHMENT_UNUSED`, its
+`pResolveAttachments` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its
 `layout` member **must** not be
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
-
-* 
-[](#VUID-VkSubpassDescription2-attachment-10755) VUID-VkSubpassDescription2-attachment-10755
-
-If the `attachment` member of an element of
-`pResolveAttachments` is not `VK_ATTACHMENT_UNUSED`, the
-underlying resource must not be bound to a `VkDeviceMemory` object
-allocated from a `VkMemoryHeap` with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property.
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkSubpassDescription2-flags-10683) VUID-VkSubpassDescription2-flags-10683
 
 If `flags` includes
-`VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM`, the render
+[VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM](#VkSubpassDescriptionFlagBits), the render
 pass **must** have been created with a
 [VkRenderPassTileShadingCreateInfoQCOM](#VkRenderPassTileShadingCreateInfoQCOM)::`tileApronSize` greater
 than `(0,0)`
 
 * 
-[](#VUID-VkSubpassDescription2-attachment-06251) VUID-VkSubpassDescription2-attachment-06251
+[](#VUID-VkSubpassDescription2-inputAttachmentCount-12293) VUID-VkSubpassDescription2-inputAttachmentCount-12293
 
-If the `attachment` member of `pDepthStencilAttachment` is not
-`VK_ATTACHMENT_UNUSED` and its `pNext` chain includes a
-[VkAttachmentReferenceStencilLayout](#VkAttachmentReferenceStencilLayout) structure, the `layout`
-member of `pDepthStencilAttachment` **must** not be
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+`inputAttachmentCount` **must** be less than or equal to
+[    `maxPerStageDescriptorInputAttachments`](limits.html#limits-maxPerStageDescriptorInputAttachments)
 
 * 
-[](#VUID-VkSubpassDescription2-pipelineBindPoint-04953) VUID-VkSubpassDescription2-pipelineBindPoint-04953
-
-`pipelineBindPoint` **must** be `VK_PIPELINE_BIND_POINT_GRAPHICS`
-or `VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI`
-
-* 
-[](#VUID-VkSubpassDescription2-colorAttachmentCount-03063) VUID-VkSubpassDescription2-colorAttachmentCount-03063
+[](#VUID-VkSubpassDescription2-colorAttachmentCount-00845) VUID-VkSubpassDescription2-colorAttachmentCount-00845
 
 `colorAttachmentCount` **must** be less than or equal to
-`VkPhysicalDeviceLimits`::`maxColorAttachments`
+[`maxColorAttachments`](limits.html#limits-maxColorAttachments)
 
 * 
-[](#VUID-VkSubpassDescription2-loadOp-03064) VUID-VkSubpassDescription2-loadOp-03064
+[](#VUID-VkSubpassDescription2-loadOp-00846) VUID-VkSubpassDescription2-loadOp-00846
 
 If the first use of an attachment in this render pass is as an input
 attachment, and the attachment is not also used as a color or
 depth/stencil attachment in the same subpass, then `loadOp` **must**
-not be `VK_ATTACHMENT_LOAD_OP_CLEAR`
+not be [VK_ATTACHMENT_LOAD_OP_CLEAR](#VkAttachmentLoadOp)
+
+* 
+[](#VUID-VkSubpassDescription2-attachment-06251) VUID-VkSubpassDescription2-attachment-06251
+
+If the `attachment` member of `pDepthStencilAttachment` is not
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) and its `pNext` chain includes a
+[VkAttachmentReferenceStencilLayout](#VkAttachmentReferenceStencilLayout) structure, the `layout`
+member of `pDepthStencilAttachment` **must** not be
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
+
+* 
+[](#VUID-VkSubpassDescription2-pipelineBindPoint-04953) VUID-VkSubpassDescription2-pipelineBindPoint-04953
+
+`pipelineBindPoint` **must** be [VK_PIPELINE_BIND_POINT_GRAPHICS](pipelines.html#VkPipelineBindPoint)
+or [VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI](pipelines.html#VkPipelineBindPoint)
 
 * 
 [](#VUID-VkSubpassDescription2-pResolveAttachments-03067) VUID-VkSubpassDescription2-pResolveAttachments-03067
 
 If `pResolveAttachments` is not `NULL`, each resolve attachment that
-is not `VK_ATTACHMENT_UNUSED` **must** have a sample count of
-`VK_SAMPLE_COUNT_1_BIT`
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) **must** have a sample count of
+[VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
 [](#VUID-VkSubpassDescription2-externalFormatResolve-09335) VUID-VkSubpassDescription2-externalFormatResolve-09335
@@ -7301,35 +7324,35 @@ is not `VK_ATTACHMENT_UNUSED` **must** have a sample count of
 If the [`externalFormatResolve`](features.html#features-externalFormatResolve)
 feature is not enabled and `pResolveAttachments` is not `NULL`, for
 each resolve attachment that does not have the value
-`VK_ATTACHMENT_UNUSED`, the corresponding color attachment **must** not
-have the value `VK_ATTACHMENT_UNUSED`
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), the corresponding color attachment **must** not
+have the value [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
 
 * 
 [](#VUID-VkSubpassDescription2-nullColorAttachmentWithExternalFormatResolve-09336) VUID-VkSubpassDescription2-nullColorAttachmentWithExternalFormatResolve-09336
 
 If the [    `nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) property is
-`VK_FALSE` and `pResolveAttachments` is not `NULL`, for each
-resolve attachment that has a format of `VK_FORMAT_UNDEFINED`, the
+[VK_FALSE](fundamentals.html#VK_FALSE) and `pResolveAttachments` is not `NULL`, for each
+resolve attachment that has a format of [VK_FORMAT_UNDEFINED](formats.html#VkFormat), the
 corresponding color attachment **must** not have the value
-`VK_ATTACHMENT_UNUSED`
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
 
 * 
 [](#VUID-VkSubpassDescription2-nullColorAttachmentWithExternalFormatResolve-09337) VUID-VkSubpassDescription2-nullColorAttachmentWithExternalFormatResolve-09337
 
 If the [    `nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) property is
-`VK_TRUE` and `pResolveAttachments` is not `NULL`, for each
-resolve attachment that has a format of `VK_FORMAT_UNDEFINED`, the
+[VK_TRUE](fundamentals.html#VK_TRUE) and `pResolveAttachments` is not `NULL`, for each
+resolve attachment that has a format of [VK_FORMAT_UNDEFINED](formats.html#VkFormat), the
 corresponding color attachment **must** have the value
-`VK_ATTACHMENT_UNUSED`
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
 
 * 
 [](#VUID-VkSubpassDescription2-externalFormatResolve-09338) VUID-VkSubpassDescription2-externalFormatResolve-09338
 
 If the [`externalFormatResolve`](features.html#features-externalFormatResolve)
 feature is not enabled and `pResolveAttachments` is not `NULL`, for
-each resolve attachment that is not `VK_ATTACHMENT_UNUSED`, the
+each resolve attachment that is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), the
 corresponding color attachment **must** not have a sample count of
-`VK_SAMPLE_COUNT_1_BIT`
+[VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
 [](#VUID-VkSubpassDescription2-externalFormatResolve-09339) VUID-VkSubpassDescription2-externalFormatResolve-09339
@@ -7343,13 +7366,13 @@ have the same [VkFormat](formats.html#VkFormat) as its corresponding color attac
 
 If the [    `multisampledRenderToSingleSampled`](features.html#features-multisampledRenderToSingleSampled) feature is not enabled, all
 attachments in `pColorAttachments` that are not
-`VK_ATTACHMENT_UNUSED` **must** have the same sample count
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) **must** have the same sample count
 
 * 
 [](#VUID-VkSubpassDescription2-pInputAttachments-02897) VUID-VkSubpassDescription2-pInputAttachments-02897
 
 All attachments in `pInputAttachments` that are not
-`VK_ATTACHMENT_UNUSED`
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
 and any of the following is true:
 
 the [`externalFormatResolve`](features.html#features-externalFormatResolve)
@@ -7357,63 +7380,63 @@ feature is not enabled
 
 * 
 the [     `nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) property is
-`VK_FALSE`
+[VK_FALSE](fundamentals.html#VK_FALSE)
 
 * 
 does not have a non-zero value of
 [VkExternalFormatANDROID](resources.html#VkExternalFormatANDROID)::`externalFormat`
 
-**must** have image formats whose [potential format features](formats.html#potential-format-features) contain at least `VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT` or
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+**must** have image formats whose [potential format features](formats.html#potential-format-features) contain at least [VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits) or
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
 
 [](#VUID-VkSubpassDescription2-pColorAttachments-02898) VUID-VkSubpassDescription2-pColorAttachments-02898
 
 All attachments in `pColorAttachments` that are not
-`VK_ATTACHMENT_UNUSED` **must** have image formats whose
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) **must** have image formats whose
 [potential format features](formats.html#potential-format-features) contain
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
 
 [](#VUID-VkSubpassDescription2-pResolveAttachments-09343) VUID-VkSubpassDescription2-pResolveAttachments-09343
 
 All attachments in `pResolveAttachments` that are not
-`VK_ATTACHMENT_UNUSED` and do not have an image format of
-`VK_FORMAT_UNDEFINED` **must** have image formats whose
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) and do not have an image format of
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat) **must** have image formats whose
 [potential format features](formats.html#potential-format-features) contain
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
 
 [](#VUID-VkSubpassDescription2-pDepthStencilAttachment-02900) VUID-VkSubpassDescription2-pDepthStencilAttachment-02900
 
 If `pDepthStencilAttachment` is not `NULL` and the attachment is not
-`VK_ATTACHMENT_UNUSED` then it **must** have an image format whose
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) then it **must** have an image format whose
 [potential format features](formats.html#potential-format-features) contain
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
 
 [](#VUID-VkSubpassDescription2-linearColorAttachment-06499) VUID-VkSubpassDescription2-linearColorAttachment-06499
 
 If the [`linearColorAttachment`](features.html#features-linearColorAttachment)
 feature is enabled and the image is created with
-`VK_IMAGE_TILING_LINEAR`, all attachments in `pInputAttachments`
-that are not `VK_ATTACHMENT_UNUSED` **must** have image formats whose
+[VK_IMAGE_TILING_LINEAR](resources.html#VkImageTiling), all attachments in `pInputAttachments`
+that are not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) **must** have image formats whose
 [potential format features](formats.html#potential-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV`
+[VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](formats.html#VkFormatFeatureFlagBits2KHR)
 
 [](#VUID-VkSubpassDescription2-linearColorAttachment-06500) VUID-VkSubpassDescription2-linearColorAttachment-06500
 
 If the [`linearColorAttachment`](features.html#features-linearColorAttachment)
 feature is enabled and the image is created with
-`VK_IMAGE_TILING_LINEAR`, all attachments in `pColorAttachments`
-that are not `VK_ATTACHMENT_UNUSED` **must** have image formats whose
+[VK_IMAGE_TILING_LINEAR](resources.html#VkImageTiling), all attachments in `pColorAttachments`
+that are not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) **must** have image formats whose
 [potential format features](formats.html#potential-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV`
+[VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](formats.html#VkFormatFeatureFlagBits2KHR)
 
 [](#VUID-VkSubpassDescription2-linearColorAttachment-06501) VUID-VkSubpassDescription2-linearColorAttachment-06501
 
 If the [`linearColorAttachment`](features.html#features-linearColorAttachment)
 feature is enabled and the image is created with
-`VK_IMAGE_TILING_LINEAR`, all attachments in
-`pResolveAttachments` that are not `VK_ATTACHMENT_UNUSED` **must**
+[VK_IMAGE_TILING_LINEAR](resources.html#VkImageTiling), all attachments in
+`pResolveAttachments` that are not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) **must**
 have image formats whose [potential format    features](formats.html#potential-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV`
+[VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](formats.html#VkFormatFeatureFlagBits2KHR)
 
 [](#VUID-VkSubpassDescription2-None-09456) VUID-VkSubpassDescription2-None-09456
 
@@ -7426,18 +7449,18 @@ The `[VK_AMD_mixed_attachment_samples](../appendices/extensions.html#VK_AMD_mixe
 The `[VK_NV_framebuffer_mixed_samples](../appendices/extensions.html#VK_NV_framebuffer_mixed_samples)` extension
 
 all attachments in `pColorAttachments` that are not
-`VK_ATTACHMENT_UNUSED` **must** have a sample count that is smaller than or
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) **must** have a sample count that is smaller than or
 equal to the sample count of `pDepthStencilAttachment` if it is not
-`VK_ATTACHMENT_UNUSED`
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
 
 [](#VUID-VkSubpassDescription2-pNext-06870) VUID-VkSubpassDescription2-pNext-06870
 
 If the `pNext` chain includes a
 [VkMultisampledRenderToSingleSampledInfoEXT](#VkMultisampledRenderToSingleSampledInfoEXT) structure with
-`multisampledRenderToSingleSampledEnable` equal to `VK_TRUE`,
+`multisampledRenderToSingleSampledEnable` equal to [VK_TRUE](fundamentals.html#VK_TRUE),
 then all attachments in `pColorAttachments` and
-`pDepthStencilAttachment` that are not `VK_ATTACHMENT_UNUSED`
-**must** have a sample count that is either `VK_SAMPLE_COUNT_1_BIT` or
+`pDepthStencilAttachment` that are not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
+**must** have a sample count that is either [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits) or
 equal to
 [VkMultisampledRenderToSingleSampledInfoEXT](#VkMultisampledRenderToSingleSampledInfoEXT)::`rasterizationSamples`
 
@@ -7445,20 +7468,17 @@ equal to
 
 If the `pNext` chain includes a
 [VkMultisampledRenderToSingleSampledInfoEXT](#VkMultisampledRenderToSingleSampledInfoEXT) structure with
-`multisampledRenderToSingleSampledEnable` equal to `VK_TRUE`,
+`multisampledRenderToSingleSampledEnable` equal to [VK_TRUE](fundamentals.html#VK_TRUE),
 and `pDepthStencilAttachment` is not `NULL`, does not have the value
-`VK_ATTACHMENT_UNUSED`, and has a sample count of
-`VK_SAMPLE_COUNT_1_BIT`, the `pNext` chain **must** also include a
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), and has a sample count of
+[VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits), the `pNext` chain **must** also include a
 [VkSubpassDescriptionDepthStencilResolve](#VkSubpassDescriptionDepthStencilResolve) structure with
 `pDepthStencilResolveAttachment` that is either `NULL` or has the
-value `VK_ATTACHMENT_UNUSED`
+value [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
 
 [](#VUID-VkSubpassDescription2-multisampledRenderToSingleSampled-06872) VUID-VkSubpassDescription2-multisampledRenderToSingleSampled-06872
 
-All attachments in `pDepthStencilAttachment` or
-`pColorAttachments` that are not `VK_ATTACHMENT_UNUSED` **must**
-have the same sample count
-, if none of the following are enabled:
+If none of the following are enabled:
 
 * 
 The `[VK_AMD_mixed_attachment_samples](../appendices/extensions.html#VK_AMD_mixed_attachment_samples)` extension
@@ -7467,12 +7487,15 @@ The `[VK_AMD_mixed_attachment_samples](../appendices/extensions.html#VK_AMD_mixe
 The `[VK_NV_framebuffer_mixed_samples](../appendices/extensions.html#VK_NV_framebuffer_mixed_samples)` extension
 
 * 
-The [     `multisampledRenderToSingleSampled`](features.html#features-multisampledRenderToSingleSampled) feature,
+The [     `multisampledRenderToSingleSampled`](features.html#features-multisampledRenderToSingleSampled) feature
+
+all attachments in `pDepthStencilAttachment` and `pColorAttachments`
+that are not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) **must** have the same sample count
 
 [](#VUID-VkSubpassDescription2-attachment-03073) VUID-VkSubpassDescription2-attachment-03073
 
 Each element of `pPreserveAttachments` **must** not be
-`VK_ATTACHMENT_UNUSED`
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
 
 [](#VUID-VkSubpassDescription2-pPreserveAttachments-03074) VUID-VkSubpassDescription2-pPreserveAttachments-03074
 
@@ -7487,31 +7510,31 @@ member, then each use **must** use the same `layout`
 [](#VUID-VkSubpassDescription2-flags-03076) VUID-VkSubpassDescription2-flags-03076
 
 If `flags` includes
-`VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX`, it **must**
-also include `VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX`
+[VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX](#VkSubpassDescriptionFlagBits), it **must**
+also include [VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX](#VkSubpassDescriptionFlagBits)
 
 [](#VUID-VkSubpassDescription2-attachment-02799) VUID-VkSubpassDescription2-attachment-02799
 
 If the `attachment` member of any element of `pInputAttachments`
-is not `VK_ATTACHMENT_UNUSED`, then the `aspectMask` member
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), then the `aspectMask` member
 **must** be a valid combination of [VkImageAspectFlagBits](resources.html#VkImageAspectFlagBits)
 
 [](#VUID-VkSubpassDescription2-attachment-02800) VUID-VkSubpassDescription2-attachment-02800
 
 If the `attachment` member of any element of `pInputAttachments`
-is not `VK_ATTACHMENT_UNUSED`, then the `aspectMask` member
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), then the `aspectMask` member
 **must** not be `0`
 
 [](#VUID-VkSubpassDescription2-attachment-02801) VUID-VkSubpassDescription2-attachment-02801
 
 If the `attachment` member of any element of `pInputAttachments`
-is not `VK_ATTACHMENT_UNUSED`, then the `aspectMask` member
-**must** not include `VK_IMAGE_ASPECT_METADATA_BIT`
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), then the `aspectMask` member
+**must** not include [VK_IMAGE_ASPECT_METADATA_BIT](resources.html#VkImageAspectFlagBits)
 
 [](#VUID-VkSubpassDescription2-attachment-04563) VUID-VkSubpassDescription2-attachment-04563
 
 If the `attachment` member of any element of `pInputAttachments`
-is not `VK_ATTACHMENT_UNUSED`, then the `aspectMask` member
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), then the `aspectMask` member
 **must** not include `VK_IMAGE_ASPECT_MEMORY_PLANE*_i_*BIT_EXT` for
 any index *i*
 
@@ -7535,42 +7558,42 @@ than [`maxMultiviewViewCount`](devsandqueues.html#limits-maxMultiviewViewCount)
 If the [`externalFormatResolve`](features.html#features-externalFormatResolve)
 feature is enabled, `pResolveAttachments` is not `NULL`, and
 `colorAttachmentCount` is not `1`, any element of
-`pResolveAttachments` that is not `VK_ATTACHMENT_UNUSED`, **must**
-not have a format of `VK_FORMAT_UNDEFINED`
+`pResolveAttachments` that is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), **must**
+not have a format of [VK_FORMAT_UNDEFINED](formats.html#VkFormat)
 
 [](#VUID-VkSubpassDescription2-externalFormatResolve-09345) VUID-VkSubpassDescription2-externalFormatResolve-09345
 
 If the [`externalFormatResolve`](features.html#features-externalFormatResolve)
 feature is enabled, `pResolveAttachments` is not `NULL`, any element
-of `pResolveAttachments` is not `VK_ATTACHMENT_UNUSED` and has a
-format of `VK_FORMAT_UNDEFINED`, and the corresponding element of
-`pColorAttachments` is not `VK_ATTACHMENT_UNUSED`, the color
+of `pResolveAttachments` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) and has a
+format of [VK_FORMAT_UNDEFINED](formats.html#VkFormat), and the corresponding element of
+`pColorAttachments` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), the color
 attachment **must** have a `samples` value of `1`
 
 [](#VUID-VkSubpassDescription2-externalFormatResolve-09346) VUID-VkSubpassDescription2-externalFormatResolve-09346
 
 If the [`externalFormatResolve`](features.html#features-externalFormatResolve)
 feature is enabled, `pResolveAttachments` is not `NULL`, and any
-element of `pResolveAttachments` is not `VK_ATTACHMENT_UNUSED`
-and has a format of `VK_FORMAT_UNDEFINED`, `viewMask` **must** be
+element of `pResolveAttachments` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
+and has a format of [VK_FORMAT_UNDEFINED](formats.html#VkFormat), `viewMask` **must** be
 `0`
 
 [](#VUID-VkSubpassDescription2-externalFormatResolve-09347) VUID-VkSubpassDescription2-externalFormatResolve-09347
 
 If the [`externalFormatResolve`](features.html#features-externalFormatResolve)
 feature is enabled, `pResolveAttachments` is not `NULL`, and any
-element of `pResolveAttachments` is not `VK_ATTACHMENT_UNUSED`
-and has a format of `VK_FORMAT_UNDEFINED`,
+element of `pResolveAttachments` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
+and has a format of [VK_FORMAT_UNDEFINED](formats.html#VkFormat),
 [VkFragmentShadingRateAttachmentInfoKHR](#VkFragmentShadingRateAttachmentInfoKHR)::`pFragmentShadingRateAttachment`
 **must** either be `NULL` or a [VkAttachmentReference2](#VkAttachmentReference2) structure with
-an `attachment` value of `VK_ATTACHMENT_UNUSED`
+an `attachment` value of [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
 
 [](#VUID-VkSubpassDescription2-externalFormatResolve-09348) VUID-VkSubpassDescription2-externalFormatResolve-09348
 
 If the [`externalFormatResolve`](features.html#features-externalFormatResolve)
 feature is enabled, `pResolveAttachments` is not `NULL`, and any
-element of `pResolveAttachments` is not `VK_ATTACHMENT_UNUSED`
-and has a format of `VK_FORMAT_UNDEFINED`, elements of
+element of `pResolveAttachments` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
+and has a format of [VK_FORMAT_UNDEFINED](formats.html#VkFormat), elements of
 `pInputAttachments` referencing either a color attachment or resolve
 attachment used in this subpass **must** not include
 `VK_IMAGE_ASPECT_PLANE*_i_*BIT` for any index *i* in its
@@ -7579,21 +7602,21 @@ attachment used in this subpass **must** not include
 [](#VUID-VkSubpassDescription2-flags-04907) VUID-VkSubpassDescription2-flags-04907
 
 If `flags` includes
-`VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT`, and if
+[VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT](#VkSubpassDescriptionFlagBits), and if
 `pResolveAttachments` is not `NULL`, then each resolve attachment
-**must** be `VK_ATTACHMENT_UNUSED`
+**must** be [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
 
 [](#VUID-VkSubpassDescription2-flags-04908) VUID-VkSubpassDescription2-flags-04908
 
 If `flags` includes
-`VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT`, and if
+[VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT](#VkSubpassDescriptionFlagBits), and if
 `pDepthStencilResolveAttachment` is not `NULL`, then the
-depth/stencil resolve attachment **must** be `VK_ATTACHMENT_UNUSED`
+depth/stencil resolve attachment **must** be [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
 
 [](#VUID-VkSubpassDescription2-flags-04909) VUID-VkSubpassDescription2-flags-04909
 
 If `flags` includes
-`VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT`, then the subpass
+[VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT](#VkSubpassDescriptionFlagBits), then the subpass
 **must** be the last subpass in a subpass dependency chain
 
 Valid Usage (Implicit)
@@ -7601,7 +7624,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSubpassDescription2-sType-sType) VUID-VkSubpassDescription2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSubpassDescription2-pNext-pNext) VUID-VkSubpassDescription2-pNext-pNext
@@ -7693,7 +7716,7 @@ for the depth/stencil attachment in a subpass.
 If this structure is not included in the `pNext` chain of
 [VkSubpassDescription2](#VkSubpassDescription2), or if it is and either
 `pDepthStencilResolveAttachment` is `NULL` or its attachment index is
-`VK_ATTACHMENT_UNUSED`, it indicates that no depth/stencil resolve
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), it indicates that no depth/stencil resolve
 attachment will be used in the subpass.
 
 Valid Usage
@@ -7702,37 +7725,37 @@ Valid Usage
 [](#VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-03177) VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-03177
 
 If `pDepthStencilResolveAttachment` is not `NULL` and does not have
-the value `VK_ATTACHMENT_UNUSED`, `pDepthStencilAttachment`
-**must** not be `NULL` or have the value `VK_ATTACHMENT_UNUSED`
+the value [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), `pDepthStencilAttachment`
+**must** not be `NULL` or have the value [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED)
 
 * 
 [](#VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-03179) VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-03179
 
 If `pDepthStencilResolveAttachment` is not `NULL` and does not have
-the value `VK_ATTACHMENT_UNUSED`, `pDepthStencilAttachment`
-**must** not have a sample count of `VK_SAMPLE_COUNT_1_BIT`
+the value [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), `pDepthStencilAttachment`
+**must** not have a sample count of [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
 [](#VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-03180) VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-03180
 
 If `pDepthStencilResolveAttachment` is not `NULL` and does not have
-the value `VK_ATTACHMENT_UNUSED`,
+the value [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED),
 `pDepthStencilResolveAttachment` **must** have a sample count of
-`VK_SAMPLE_COUNT_1_BIT`
+[VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
 [](#VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-02651) VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-02651
 
 If `pDepthStencilResolveAttachment` is not `NULL` and does not have
-the value `VK_ATTACHMENT_UNUSED` then it **must** have an image format
+the value [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) then it **must** have an image format
 whose [potential format features](formats.html#potential-format-features) contain
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-03181) VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-03181
 
 If `pDepthStencilResolveAttachment` is not `NULL` and does not have
-the value `VK_ATTACHMENT_UNUSED` and [VkFormat](formats.html#VkFormat) of
+the value [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) and [VkFormat](formats.html#VkFormat) of
 `pDepthStencilResolveAttachment` has a depth component, then the
 [VkFormat](formats.html#VkFormat) of `pDepthStencilAttachment` **must** have a depth
 component with the same number of bits and [    numeric format](formats.html#formats-numericformat)
@@ -7741,7 +7764,7 @@ component with the same number of bits and [    numeric format](formats.html#for
 [](#VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-03182) VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-03182
 
 If `pDepthStencilResolveAttachment` is not `NULL` and does not have
-the value `VK_ATTACHMENT_UNUSED`, and [VkFormat](formats.html#VkFormat) of
+the value [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), and [VkFormat](formats.html#VkFormat) of
 `pDepthStencilResolveAttachment` has a stencil component, then the
 [VkFormat](formats.html#VkFormat) of `pDepthStencilAttachment` **must** have a stencil
 component with the same number of bits and [    numeric format](formats.html#formats-numericformat)
@@ -7750,105 +7773,105 @@ component with the same number of bits and [    numeric format](formats.html#for
 [](#VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-03178) VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-03178
 
 If `pDepthStencilResolveAttachment` is not `NULL` and does not have
-the value `VK_ATTACHMENT_UNUSED`, `depthResolveMode` and
-`stencilResolveMode` **must** not both be `VK_RESOLVE_MODE_NONE`
+the value [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), `depthResolveMode` and
+`stencilResolveMode` **must** not both be [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR)
 
 * 
 [](#VUID-VkSubpassDescriptionDepthStencilResolve-depthResolveMode-03183) VUID-VkSubpassDescriptionDepthStencilResolve-depthResolveMode-03183
 
 If `pDepthStencilResolveAttachment` is not `NULL` and does not have
-the value `VK_ATTACHMENT_UNUSED` and the [VkFormat](formats.html#VkFormat) of
+the value [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) and the [VkFormat](formats.html#VkFormat) of
 `pDepthStencilResolveAttachment` has a depth component, then the
 value of `depthResolveMode` **must** be one of the bits set in
 [VkPhysicalDeviceDepthStencilResolveProperties](limits.html#VkPhysicalDeviceDepthStencilResolveProperties)::`supportedDepthResolveModes`
-or `VK_RESOLVE_MODE_NONE`
+or [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR)
 
 * 
 [](#VUID-VkSubpassDescriptionDepthStencilResolve-stencilResolveMode-03184) VUID-VkSubpassDescriptionDepthStencilResolve-stencilResolveMode-03184
 
 If `pDepthStencilResolveAttachment` is not `NULL` and does not have
-the value `VK_ATTACHMENT_UNUSED` and the [VkFormat](formats.html#VkFormat) of
+the value [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) and the [VkFormat](formats.html#VkFormat) of
 `pDepthStencilResolveAttachment` has a stencil component, then the
 value of `stencilResolveMode` **must** be one of the bits set in
 [VkPhysicalDeviceDepthStencilResolveProperties](limits.html#VkPhysicalDeviceDepthStencilResolveProperties)::`supportedStencilResolveModes`
-or `VK_RESOLVE_MODE_NONE`
+or [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR)
 
 * 
 [](#VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-03185) VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-03185
 
 If `pDepthStencilResolveAttachment` is not `NULL` and does not have
-the value `VK_ATTACHMENT_UNUSED`, the [VkFormat](formats.html#VkFormat) of
+the value [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), the [VkFormat](formats.html#VkFormat) of
 `pDepthStencilResolveAttachment` has both depth and stencil
 components,
 [VkPhysicalDeviceDepthStencilResolveProperties](limits.html#VkPhysicalDeviceDepthStencilResolveProperties)::`independentResolve`
-is `VK_FALSE`, and
+is [VK_FALSE](fundamentals.html#VK_FALSE), and
 [VkPhysicalDeviceDepthStencilResolveProperties](limits.html#VkPhysicalDeviceDepthStencilResolveProperties)::`independentResolveNone`
-is `VK_FALSE`, then the values of `depthResolveMode` and
+is [VK_FALSE](fundamentals.html#VK_FALSE), then the values of `depthResolveMode` and
 `stencilResolveMode` **must** be identical
 
 * 
 [](#VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-03186) VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-03186
 
 If `pDepthStencilResolveAttachment` is not `NULL` and does not have
-the value `VK_ATTACHMENT_UNUSED`, the [VkFormat](formats.html#VkFormat) of
+the value [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), the [VkFormat](formats.html#VkFormat) of
 `pDepthStencilResolveAttachment` has both depth and stencil
 components,
 [VkPhysicalDeviceDepthStencilResolveProperties](limits.html#VkPhysicalDeviceDepthStencilResolveProperties)::`independentResolve`
-is `VK_FALSE` and
+is [VK_FALSE](fundamentals.html#VK_FALSE) and
 [VkPhysicalDeviceDepthStencilResolveProperties](limits.html#VkPhysicalDeviceDepthStencilResolveProperties)::`independentResolveNone`
-is `VK_TRUE`, then the values of `depthResolveMode` and
+is [VK_TRUE](fundamentals.html#VK_TRUE), then the values of `depthResolveMode` and
 `stencilResolveMode` **must** be identical or one of them **must** be
-`VK_RESOLVE_MODE_NONE`
+[VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR)
 
 * 
 [](#VUID-VkSubpassDescriptionDepthStencilResolve-pNext-06873) VUID-VkSubpassDescriptionDepthStencilResolve-pNext-06873
 
 If the `pNext` chain of [VkSubpassDescription2](#VkSubpassDescription2) includes a
 `VkMultisampledRenderToSingleSampledInfoEXT` structure, the
-`multisampledRenderToSingleSampledEnable` field is `VK_TRUE`,
+`multisampledRenderToSingleSampledEnable` field is [VK_TRUE](fundamentals.html#VK_TRUE),
 and `pDepthStencilAttachment` is not `NULL` and does not have the
-value `VK_ATTACHMENT_UNUSED`, `depthResolveMode` and
-`stencilResolveMode` **must** not both be `VK_RESOLVE_MODE_NONE`
+value [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), `depthResolveMode` and
+`stencilResolveMode` **must** not both be [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR)
 
 * 
 [](#VUID-VkSubpassDescriptionDepthStencilResolve-pNext-06874) VUID-VkSubpassDescriptionDepthStencilResolve-pNext-06874
 
 If the `pNext` chain of [VkSubpassDescription2](#VkSubpassDescription2) includes a
 `VkMultisampledRenderToSingleSampledInfoEXT` structure whose
-`multisampledRenderToSingleSampledEnable` field is `VK_TRUE`,
+`multisampledRenderToSingleSampledEnable` field is [VK_TRUE](fundamentals.html#VK_TRUE),
 and `pDepthStencilAttachment` is not `NULL`, does not have the value
-`VK_ATTACHMENT_UNUSED`, and has a [VkFormat](formats.html#VkFormat) that has a depth
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), and has a [VkFormat](formats.html#VkFormat) that has a depth
 component, then the value of `depthResolveMode` **must** be one of the
 bits set in
 [VkPhysicalDeviceDepthStencilResolveProperties](limits.html#VkPhysicalDeviceDepthStencilResolveProperties)::`supportedDepthResolveModes`
-or `VK_RESOLVE_MODE_NONE`
+or [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR)
 
 * 
 [](#VUID-VkSubpassDescriptionDepthStencilResolve-pNext-06875) VUID-VkSubpassDescriptionDepthStencilResolve-pNext-06875
 
 If the `pNext` chain of [VkSubpassDescription2](#VkSubpassDescription2) includes a
 `VkMultisampledRenderToSingleSampledInfoEXT` structure whose
-`multisampledRenderToSingleSampledEnable` field is `VK_TRUE`,
+`multisampledRenderToSingleSampledEnable` field is [VK_TRUE](fundamentals.html#VK_TRUE),
 and `pDepthStencilAttachment` is not `NULL`, does not have the value
-`VK_ATTACHMENT_UNUSED`, and has a [VkFormat](formats.html#VkFormat) with a stencil
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), and has a [VkFormat](formats.html#VkFormat) with a stencil
 component, then the value of `stencilResolveMode` **must** be one of
 the bits set in
 [VkPhysicalDeviceDepthStencilResolveProperties](limits.html#VkPhysicalDeviceDepthStencilResolveProperties)::`supportedStencilResolveModes`
-or `VK_RESOLVE_MODE_NONE`
+or [VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR)
 
 * 
 [](#VUID-VkSubpassDescriptionDepthStencilResolve-pNext-06876) VUID-VkSubpassDescriptionDepthStencilResolve-pNext-06876
 
 If the `pNext` chain of [VkSubpassDescription2](#VkSubpassDescription2) includes a
 `VkMultisampledRenderToSingleSampledInfoEXT` structure whose
-`multisampledRenderToSingleSampledEnable` field is `VK_TRUE`,
+`multisampledRenderToSingleSampledEnable` field is [VK_TRUE](fundamentals.html#VK_TRUE),
 `pDepthStencilAttachment` is not `NULL`, does not have the value
-`VK_ATTACHMENT_UNUSED`, and has a [VkFormat](formats.html#VkFormat) with both depth and
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), and has a [VkFormat](formats.html#VkFormat) with both depth and
 stencil components, and both
 [VkPhysicalDeviceDepthStencilResolveProperties](limits.html#VkPhysicalDeviceDepthStencilResolveProperties)::`independentResolve`
 and
 [VkPhysicalDeviceDepthStencilResolveProperties](limits.html#VkPhysicalDeviceDepthStencilResolveProperties)::`independentResolveNone`
-are `VK_FALSE`, then the values of `depthResolveMode` and
+are [VK_FALSE](fundamentals.html#VK_FALSE), then the values of `depthResolveMode` and
 `stencilResolveMode` **must** be identical
 
 * 
@@ -7856,23 +7879,23 @@ are `VK_FALSE`, then the values of `depthResolveMode` and
 
 If the `pNext` chain of [VkSubpassDescription2](#VkSubpassDescription2) includes a
 `VkMultisampledRenderToSingleSampledInfoEXT` structure whose
-`multisampledRenderToSingleSampledEnable` field is `VK_TRUE`,
+`multisampledRenderToSingleSampledEnable` field is [VK_TRUE](fundamentals.html#VK_TRUE),
 `pDepthStencilAttachment` is not `NULL`, does not have the value
-`VK_ATTACHMENT_UNUSED`, and has a [VkFormat](formats.html#VkFormat) with both depth and
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), and has a [VkFormat](formats.html#VkFormat) with both depth and
 stencil components,
 [VkPhysicalDeviceDepthStencilResolveProperties](limits.html#VkPhysicalDeviceDepthStencilResolveProperties)::`independentResolve`
-is `VK_FALSE`, and
+is [VK_FALSE](fundamentals.html#VK_FALSE), and
 [VkPhysicalDeviceDepthStencilResolveProperties](limits.html#VkPhysicalDeviceDepthStencilResolveProperties)::`independentResolveNone`
-is `VK_TRUE`, then the values of `depthResolveMode` and
+is [VK_TRUE](fundamentals.html#VK_TRUE), then the values of `depthResolveMode` and
 `stencilResolveMode` **must** be identical or one of them **must** be
-`VK_RESOLVE_MODE_NONE`
+[VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSubpassDescriptionDepthStencilResolve-sType-sType) VUID-VkSubpassDescriptionDepthStencilResolve-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-parameter) VUID-VkSubpassDescriptionDepthStencilResolve-pDepthStencilResolveAttachment-parameter
@@ -7919,22 +7942,22 @@ Valid Usage
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04524) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04524
 
 If `pFragmentShadingRateAttachment` is not `NULL` and its
-`attachment` member is not `VK_ATTACHMENT_UNUSED`, its
-`layout` member **must** be equal to `VK_IMAGE_LAYOUT_GENERAL` or
-`VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR`
+`attachment` member is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), its
+`layout` member **must** be equal to [VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04525) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04525
 
 If `pFragmentShadingRateAttachment` is not `NULL` and its
-`attachment` member is not `VK_ATTACHMENT_UNUSED`,
+`attachment` member is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED),
 `shadingRateAttachmentTexelSize.width` **must** be a power of two value
 
 * 
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04526) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04526
 
 If `pFragmentShadingRateAttachment` is not `NULL` and its
-`attachment` member is not `VK_ATTACHMENT_UNUSED`,
+`attachment` member is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED),
 `shadingRateAttachmentTexelSize.width` **must** be less than or equal
 to [    `maxFragmentShadingRateAttachmentTexelSize.width`](limits.html#limits-maxFragmentShadingRateAttachmentTexelSize)
 
@@ -7942,7 +7965,7 @@ to [    `maxFragmentShadingRateAttachmentTexelSize.width`](limits.html#limits-ma
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04527) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04527
 
 If `pFragmentShadingRateAttachment` is not `NULL` and its
-`attachment` member is not `VK_ATTACHMENT_UNUSED`,
+`attachment` member is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED),
 `shadingRateAttachmentTexelSize.width` **must** be greater than or
 equal to [    `minFragmentShadingRateAttachmentTexelSize.width`](limits.html#limits-minFragmentShadingRateAttachmentTexelSize)
 
@@ -7950,7 +7973,7 @@ equal to [    `minFragmentShadingRateAttachmentTexelSize.width`](limits.html#lim
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04528) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04528
 
 If `pFragmentShadingRateAttachment` is not `NULL` and its
-`attachment` member is not `VK_ATTACHMENT_UNUSED`,
+`attachment` member is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED),
 `shadingRateAttachmentTexelSize.height` **must** be a power of two
 value
 
@@ -7958,7 +7981,7 @@ value
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04529) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04529
 
 If `pFragmentShadingRateAttachment` is not `NULL` and its
-`attachment` member is not `VK_ATTACHMENT_UNUSED`,
+`attachment` member is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED),
 `shadingRateAttachmentTexelSize.height` **must** be less than or equal
 to [    `maxFragmentShadingRateAttachmentTexelSize.height`](limits.html#limits-maxFragmentShadingRateAttachmentTexelSize)
 
@@ -7966,7 +7989,7 @@ to [    `maxFragmentShadingRateAttachmentTexelSize.height`](limits.html#limits-m
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04530) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04530
 
 If `pFragmentShadingRateAttachment` is not `NULL` and its
-`attachment` member is not `VK_ATTACHMENT_UNUSED`,
+`attachment` member is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED),
 `shadingRateAttachmentTexelSize.height` **must** be greater than or
 equal to [    `minFragmentShadingRateAttachmentTexelSize.height`](limits.html#limits-minFragmentShadingRateAttachmentTexelSize)
 
@@ -7974,7 +7997,7 @@ equal to [    `minFragmentShadingRateAttachmentTexelSize.height`](limits.html#li
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04531) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04531
 
 If `pFragmentShadingRateAttachment` is not `NULL` and its
-`attachment` member is not `VK_ATTACHMENT_UNUSED`, the quotient
+`attachment` member is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), the quotient
 of `shadingRateAttachmentTexelSize.width` and
 `shadingRateAttachmentTexelSize.height` **must** be less than or equal
 to [    `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`](limits.html#limits-maxFragmentShadingRateAttachmentTexelSizeAspectRatio)
@@ -7983,7 +8006,7 @@ to [    `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`](limits.html#limi
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04532) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-04532
 
 If `pFragmentShadingRateAttachment` is not `NULL` and its
-`attachment` member is not `VK_ATTACHMENT_UNUSED`, the quotient
+`attachment` member is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), the quotient
 of `shadingRateAttachmentTexelSize.height` and
 `shadingRateAttachmentTexelSize.width` **must** be less than or equal
 to [    `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`](limits.html#limits-maxFragmentShadingRateAttachmentTexelSizeAspectRatio)
@@ -7993,7 +8016,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-sType-sType) VUID-VkFragmentShadingRateAttachmentInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-parameter) VUID-VkFragmentShadingRateAttachmentInfoKHR-pFragmentShadingRateAttachment-parameter
@@ -8039,7 +8062,7 @@ Valid Usage
 [](#VUID-VkMultisampledRenderToSingleSampledInfoEXT-rasterizationSamples-06878) VUID-VkMultisampledRenderToSingleSampledInfoEXT-rasterizationSamples-06878
 
 The value of `rasterizationSamples` **must** not be
-`VK_SAMPLE_COUNT_1_BIT`
+[VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits)
 
 * 
 [](#VUID-VkMultisampledRenderToSingleSampledInfoEXT-pNext-06880) VUID-VkMultisampledRenderToSingleSampledInfoEXT-pNext-06880
@@ -8057,7 +8080,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMultisampledRenderToSingleSampledInfoEXT-sType-sType) VUID-VkMultisampledRenderToSingleSampledInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMultisampledRenderToSingleSampledInfoEXT-rasterizationSamples-parameter) VUID-VkMultisampledRenderToSingleSampledInfoEXT-rasterizationSamples-parameter
@@ -8067,13 +8090,13 @@ Valid Usage (Implicit)
 If the `pNext` chain of [VkSubpassDescription2](#VkSubpassDescription2)
 or [VkRenderingInfo](#VkRenderingInfo)
 includes a [VkMultisampledRenderToSingleSampledInfoEXT](#VkMultisampledRenderToSingleSampledInfoEXT) structure whose
-`multisampledRenderToSingleSampledEnable` field is `VK_TRUE`, the
+`multisampledRenderToSingleSampledEnable` field is [VK_TRUE](fundamentals.html#VK_TRUE), the
 graphics pipelines **must** have
 [VkGraphicsPipelineCreateInfo](pipelines.html#VkGraphicsPipelineCreateInfo)::`rasterizationSamples` equal to
 [VkMultisampledRenderToSingleSampledInfoEXT](#VkMultisampledRenderToSingleSampledInfoEXT)::`rasterizationSamples`,
 and the subpass attachments **can** have a sample count of
-`VK_SAMPLE_COUNT_1_BIT`.
-For attachments with a sample count of `VK_SAMPLE_COUNT_1_BIT`,
+[VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits).
+For attachments with a sample count of [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits),
 multisampled rendering is performed to an intermediate multisampled image
 with
 [VkMultisampledRenderToSingleSampledInfoEXT](#VkMultisampledRenderToSingleSampledInfoEXT)::`rasterizationSamples`
@@ -8082,25 +8105,25 @@ subpass.
 For such attachments:
 
 * 
-If `loadOp` equals to `VK_ATTACHMENT_LOAD_OP_LOAD`, samples of
+If `loadOp` equals to [VK_ATTACHMENT_LOAD_OP_LOAD](#VkAttachmentLoadOp), samples of
 the implicit image are initialized by replicating the value from the
 corresponding pixel in the attachment.
 
 * 
 If `storeOp` or `stencilStoreOp` is equal to
-`VK_ATTACHMENT_STORE_OP_STORE`, the implicit image is implicitly
+[VK_ATTACHMENT_STORE_OP_STORE](#VkAttachmentStoreOp), the implicit image is implicitly
 resolved prior to storage in the attachment.
 
 Memory constraints due to high primitive counts **may** result in an implicit
 split of the subpass.
 This is the equivalent of partial rasterization of geometry in a render pass
 that ends in `storeOp` and `stencilStoreOp` equal to
-`VK_ATTACHMENT_STORE_OP_STORE`, followed by another render pass with
+[VK_ATTACHMENT_STORE_OP_STORE](#VkAttachmentStoreOp), followed by another render pass with
 `loadOp` and `stencilLoadOp` equal to
-`VK_ATTACHMENT_LOAD_OP_LOAD` with appropriate barriers in between.
+[VK_ATTACHMENT_LOAD_OP_LOAD](#VkAttachmentLoadOp) with appropriate barriers in between.
 When [VkMultisampledRenderToSingleSampledInfoEXT](#VkMultisampledRenderToSingleSampledInfoEXT) is used, the
 implementation is allowed to resolve attachments with a sample count of
-`VK_SAMPLE_COUNT_1_BIT` and lose multisampled data on such splits.
+[VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits) and lose multisampled data on such splits.
 The implementation **may** similarly split the render pass at subpass
 boundaries even if they use the same value for
 [VkMultisampledRenderToSingleSampledInfoEXT](#VkMultisampledRenderToSingleSampledInfoEXT)::`rasterizationSamples`.
@@ -8134,7 +8157,7 @@ structure.
 `attachment` is either an integer value identifying an attachment at
 the corresponding index in
 [VkRenderPassCreateInfo2](#VkRenderPassCreateInfo2)::`pAttachments`, or
-`VK_ATTACHMENT_UNUSED` to signify that this attachment is not used.
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) to signify that this attachment is not used.
 
 * 
 `layout` is a [VkImageLayout](resources.html#VkImageLayout) value specifying the layout the
@@ -8165,49 +8188,49 @@ Valid Usage
 * 
 [](#VUID-VkAttachmentReference2-layout-03077) VUID-VkAttachmentReference2-layout-03077
 
-    If `attachment` is not `VK_ATTACHMENT_UNUSED`, `layout`
-    **must** not be `VK_IMAGE_LAYOUT_UNDEFINED`,
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`,
-    `VK_IMAGE_LAYOUT_PREINITIALIZED`, or
-    `VK_IMAGE_LAYOUT_PRESENT_SRC_KHR`
+    If `attachment` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), `layout`
+    **must** not be [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](resources.html#VkImageLayout),
+    [VK_IMAGE_LAYOUT_PREINITIALIZED](resources.html#VkImageLayout), or
+    [VK_IMAGE_LAYOUT_PRESENT_SRC_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentReference2-separateDepthStencilLayouts-03313) VUID-VkAttachmentReference2-separateDepthStencilLayouts-03313
 
 If the [    `separateDepthStencilLayouts`](features.html#features-separateDepthStencilLayouts) feature is not enabled, and
-`attachment` is not `VK_ATTACHMENT_UNUSED`, `layout` **must**
-not be `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`,
+`attachment` is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED), `layout` **must**
+not be [VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
 
 * 
 [](#VUID-VkAttachmentReference2-synchronization2-06910) VUID-VkAttachmentReference2-synchronization2-06910
 
 If the [`synchronization2`](features.html#features-synchronization2) feature is
 not enabled, `layout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR` or
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentReference2-attachmentFeedbackLoopLayout-07311) VUID-VkAttachmentReference2-attachmentFeedbackLoopLayout-07311
 
 If the [    `attachmentFeedbackLoopLayout`](features.html#features-attachmentFeedbackLoopLayout) feature is not enabled,
 `layout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT`
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkAttachmentReference2-dynamicRenderingLocalRead-09546) VUID-VkAttachmentReference2-dynamicRenderingLocalRead-09546
 
 If the [    `dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead) feature is not enabled, `layout`
-**must** not be `VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+**must** not be [VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkAttachmentReference2-sType-sType) VUID-VkAttachmentReference2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkAttachmentReference2-pNext-pNext) VUID-VkAttachmentReference2-pNext-pNext
@@ -8253,23 +8276,23 @@ Valid Usage
 * 
 [](#VUID-VkAttachmentReferenceStencilLayout-stencilLayout-03318) VUID-VkAttachmentReferenceStencilLayout-stencilLayout-03318
 
-`stencilLayout` **must** not be `VK_IMAGE_LAYOUT_UNDEFINED`,
-`VK_IMAGE_LAYOUT_PREINITIALIZED`,
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_PRESENT_SRC_KHR`
+`stencilLayout` **must** not be [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_PREINITIALIZED](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_PRESENT_SRC_KHR](resources.html#VkImageLayout)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkAttachmentReferenceStencilLayout-sType-sType) VUID-VkAttachmentReferenceStencilLayout-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_STENCIL_LAYOUT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_STENCIL_LAYOUT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkAttachmentReferenceStencilLayout-stencilLayout-parameter) VUID-VkAttachmentReferenceStencilLayout-stencilLayout-parameter
@@ -8308,22 +8331,22 @@ structure.
 
 * 
 `srcSubpass` is the subpass index of the first subpass in the
-dependency, or `VK_SUBPASS_EXTERNAL`.
+dependency, or [VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL).
 
 * 
 `dstSubpass` is the subpass index of the second subpass in the
-dependency, or `VK_SUBPASS_EXTERNAL`.
+dependency, or [VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL).
 
 * 
 `srcStageMask` is a bitmask of [VkPipelineStageFlagBits](synchronization.html#VkPipelineStageFlagBits)
 specifying the [source stage    mask](synchronization.html#synchronization-pipeline-stages-masks).
-If set to `VK_PIPELINE_STAGE_ALL_COMMANDS_BIT`, it is equivalent to
-setting it to `VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT`.
+If set to [VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](synchronization.html#VkPipelineStageFlagBits), it is equivalent to
+setting it to [VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT](synchronization.html#VkPipelineStageFlagBits).
 
 * 
 `dstStageMask` is a bitmask of [VkPipelineStageFlagBits](synchronization.html#VkPipelineStageFlagBits)
-specifying the [destination    stage mask](synchronization.html#synchronization-pipeline-stages-masks) If set to `VK_PIPELINE_STAGE_ALL_COMMANDS_BIT`, it is
-equivalent to setting it to `VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT`.
+specifying the [destination    stage mask](synchronization.html#synchronization-pipeline-stages-masks) If set to [VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](synchronization.html#VkPipelineStageFlagBits), it is
+equivalent to setting it to [VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT](synchronization.html#VkPipelineStageFlagBits).
 
 * 
 `srcAccessMask` is a bitmask of [VkAccessFlagBits](synchronization.html#VkAccessFlagBits) specifying a
@@ -8353,8 +8376,8 @@ If a [VkMemoryBarrier2](synchronization.html#VkMemoryBarrier2) is included in th
 The synchronization and access scopes instead are defined by the parameters
 of [VkMemoryBarrier2](synchronization.html#VkMemoryBarrier2).
 If either `srcStageMask` or `dstStageMask` are set to
-`VK_PIPELINE_STAGE_ALL_COMMANDS_BIT`, it is equivalent to setting
-`VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT`.
+[VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](synchronization.html#VkPipelineStageFlagBits), it is equivalent to setting
+[VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT](synchronization.html#VkPipelineStageFlagBits).
 
 Valid Usage
 
@@ -8363,50 +8386,50 @@ Valid Usage
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-srcStageMask-04091) VUID-VkSubpassDependency2-srcStageMask-04091
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits) or
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-srcStageMask-04092) VUID-VkSubpassDependency2-srcStageMask-04092
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-srcStageMask-04093) VUID-VkSubpassDependency2-srcStageMask-04093
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-srcStageMask-04094) VUID-VkSubpassDependency2-srcStageMask-04094
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-srcStageMask-04095) VUID-VkSubpassDependency2-srcStageMask-04095
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-srcStageMask-04096) VUID-VkSubpassDependency2-srcStageMask-04096
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-srcStageMask-07318) VUID-VkSubpassDependency2-srcStageMask-07318
@@ -8414,7 +8437,7 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-srcStageMask-03937) VUID-VkSubpassDependency2-srcStageMask-03937
@@ -8428,64 +8451,64 @@ not enabled, `srcStageMask` **must** not be `0`
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-srcStageMask-10754) VUID-VkSubpassDependency2-srcStageMask-10754
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-dstStageMask-04090) VUID-VkSubpassDependency2-dstStageMask-04090
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-dstStageMask-04091) VUID-VkSubpassDependency2-dstStageMask-04091
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits) or
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-dstStageMask-04092) VUID-VkSubpassDependency2-dstStageMask-04092
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-dstStageMask-04093) VUID-VkSubpassDependency2-dstStageMask-04093
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-dstStageMask-04094) VUID-VkSubpassDependency2-dstStageMask-04094
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-dstStageMask-04095) VUID-VkSubpassDependency2-dstStageMask-04095
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-dstStageMask-04096) VUID-VkSubpassDependency2-dstStageMask-04096
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-dstStageMask-07318) VUID-VkSubpassDependency2-dstStageMask-07318
@@ -8493,7 +8516,7 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-dstStageMask-03937) VUID-VkSubpassDependency2-dstStageMask-03937
@@ -8507,27 +8530,27 @@ not enabled, `dstStageMask` **must** not be `0`
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-dstStageMask-10754) VUID-VkSubpassDependency2-dstStageMask-10754
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](synchronization.html#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-srcSubpass-03084) VUID-VkSubpassDependency2-srcSubpass-03084
 
 `srcSubpass` **must** be less than or equal to `dstSubpass`, unless
-one of them is `VK_SUBPASS_EXTERNAL`, to avoid cyclic dependencies
+one of them is [VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL), to avoid cyclic dependencies
 and ensure a valid execution order
 
 * 
 [](#VUID-VkSubpassDependency2-srcSubpass-03085) VUID-VkSubpassDependency2-srcSubpass-03085
 
 `srcSubpass` and `dstSubpass` **must** not both be equal to
-`VK_SUBPASS_EXTERNAL`
+[VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL)
 
 * 
 [](#VUID-VkSubpassDependency2-srcSubpass-06810) VUID-VkSubpassDependency2-srcSubpass-06810
@@ -8553,14 +8576,14 @@ one of the pipeline stages in `dstStageMask`, as specified in the
 * 
 [](#VUID-VkSubpassDependency2-dependencyFlags-03090) VUID-VkSubpassDependency2-dependencyFlags-03090
 
-If `dependencyFlags` includes `VK_DEPENDENCY_VIEW_LOCAL_BIT`,
-`srcSubpass` **must** not be equal to `VK_SUBPASS_EXTERNAL`
+If `dependencyFlags` includes [VK_DEPENDENCY_VIEW_LOCAL_BIT](synchronization.html#VkDependencyFlagBits),
+`srcSubpass` **must** not be equal to [VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL)
 
 * 
 [](#VUID-VkSubpassDependency2-dependencyFlags-03091) VUID-VkSubpassDependency2-dependencyFlags-03091
 
-If `dependencyFlags` includes `VK_DEPENDENCY_VIEW_LOCAL_BIT`,
-`dstSubpass` **must** not be equal to `VK_SUBPASS_EXTERNAL`
+If `dependencyFlags` includes [VK_DEPENDENCY_VIEW_LOCAL_BIT](synchronization.html#VkDependencyFlagBits),
+`dstSubpass` **must** not be equal to [VK_SUBPASS_EXTERNAL](#VK_SUBPASS_EXTERNAL)
 
 * 
 [](#VUID-VkSubpassDependency2-srcSubpass-02245) VUID-VkSubpassDependency2-srcSubpass-02245
@@ -8568,7 +8591,7 @@ If `dependencyFlags` includes `VK_DEPENDENCY_VIEW_LOCAL_BIT`,
 If `srcSubpass` equals `dstSubpass`, and `srcStageMask` and
 `dstStageMask` both include a
 [framebuffer-space stage](synchronization.html#synchronization-framebuffer-regions), then
-`dependencyFlags` **must** include `VK_DEPENDENCY_BY_REGION_BIT`
+`dependencyFlags` **must** include [VK_DEPENDENCY_BY_REGION_BIT](synchronization.html#VkDependencyFlagBits)
 
 * 
 [](#VUID-VkSubpassDependency2-viewOffset-02530) VUID-VkSubpassDependency2-viewOffset-02530
@@ -8580,20 +8603,20 @@ equal to `dstSubpass`
 [](#VUID-VkSubpassDependency2-dependencyFlags-03092) VUID-VkSubpassDependency2-dependencyFlags-03092
 
 If `dependencyFlags` does not include
-`VK_DEPENDENCY_VIEW_LOCAL_BIT`, `viewOffset` **must** be `0`
+[VK_DEPENDENCY_VIEW_LOCAL_BIT](synchronization.html#VkDependencyFlagBits), `viewOffset` **must** be `0`
 
 * 
 [](#VUID-VkSubpassDependency2-dependencyFlags-10204) VUID-VkSubpassDependency2-dependencyFlags-10204
 
 `dependencyFlags` **must** not include
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](synchronization.html#VkDependencyFlagBits)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSubpassDependency2-sType-sType) VUID-VkSubpassDependency2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SUBPASS_DEPENDENCY_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SUBPASS_DEPENDENCY_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSubpassDependency2-pNext-pNext) VUID-VkSubpassDependency2-pNext-pNext
@@ -8704,14 +8727,14 @@ They **must** only be used with that render pass object, or one compatible with
 it.
 
 Two attachment references are compatible if they have matching format and
-sample count, or are both `VK_ATTACHMENT_UNUSED`.
+sample count, or are both [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED).
 
 Two arrays of attachment references are compatible if all corresponding
 pairs of attachments are compatible.
 If the arrays are of different lengths, attachment references not present in
-the smaller array are treated as `VK_ATTACHMENT_UNUSED`.
+the smaller array are treated as [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED).
 If the pointer that would contain the reference is `NULL`, the attachment
-reference is treated as `VK_ATTACHMENT_UNUSED`.
+reference is treated as [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED).
 
 Two render passes are compatible if their corresponding color, input,
 resolve, and depth/stencil attachment references are compatible and if they
@@ -8728,11 +8751,11 @@ Image layout in attachment references
 
 * 
 The inclusion of
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits)
 
 * 
 The inclusion of
-`VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`
+[VK_ATTACHMENT_DESCRIPTION_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#VkAttachmentDescriptionFlagBits)
 
 As an additional special case, if two render passes have a single subpass,
 the resolve attachment reference
@@ -8787,13 +8810,13 @@ Valid Usage
 [](#VUID-vkCreateFramebuffer-device-10002) VUID-vkCreateFramebuffer-device-10002
 
 `device` **must** support at least one queue family with the
-`VK_QUEUE_GRAPHICS_BIT` capability
+[VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) capability
 
 * 
 [](#VUID-vkCreateFramebuffer-pCreateInfo-02777) VUID-vkCreateFramebuffer-pCreateInfo-02777
 
 If `pCreateInfo->flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, and `attachmentCount` is
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), and `attachmentCount` is
 not `0`, each element of `pCreateInfo->pAttachments` **must** have been
 created on `device`
 
@@ -8829,21 +8852,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkFramebufferCreateInfo` structure is defined as:
 
@@ -8887,7 +8910,7 @@ of the command this structure is passed to.
 `pAttachments` is a pointer to an array of [VkImageView](resources.html#VkImageView)
 handles, each of which will be used as the corresponding attachment in a
 render pass instance.
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, this
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), this
 parameter is ignored.
 
 * 
@@ -8906,7 +8929,7 @@ the `aspectMask` is ignored.
 
 It is legal for a subpass to use no color or depth/stencil attachments,
 either because it has no attachment references or because all of them are
-`VK_ATTACHMENT_UNUSED`.
+[VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED).
 This kind of subpass **can** use shader side effects such as image stores and
 atomics to produce an output.
 In this case, the subpass continues to use the `width`, `height`,
@@ -8915,7 +8938,7 @@ rendering area, and the `rasterizationSamples` from each pipeline’s
 [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo) to define the number of samples
 used in rasterization; however, if
 [VkPhysicalDeviceFeatures](features.html#VkPhysicalDeviceFeatures)::`variableMultisampleRate` is
-`VK_FALSE`, then all pipelines to be bound with the subpass **must** have
+[VK_FALSE](fundamentals.html#VK_FALSE), then all pipelines to be bound with the subpass **must** have
 the same value for
 [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo)::`rasterizationSamples`.
 In all such cases, `rasterizationSamples` **must** be a valid
@@ -8934,7 +8957,7 @@ in `renderPass`
 [](#VUID-VkFramebufferCreateInfo-flags-02778) VUID-VkFramebufferCreateInfo-flags-02778
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT` and `attachmentCount` is
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits) and `attachmentCount` is
 not `0`, `pAttachments` **must** be a valid pointer to an array of
 `attachmentCount` valid [VkImageView](resources.html#VkImageView) handles
 
@@ -8942,44 +8965,44 @@ not `0`, `pAttachments` **must** be a valid pointer to an array of
 [](#VUID-VkFramebufferCreateInfo-pAttachments-00877) VUID-VkFramebufferCreateInfo-pAttachments-00877
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of
 `pAttachments` that is used as a color attachment or resolve
 attachment by `renderPass` **must** have been created with the
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkFramebufferCreateInfo-pAttachments-02633) VUID-VkFramebufferCreateInfo-pAttachments-02633
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of
 `pAttachments` that is used as a depth/stencil attachment by
 `renderPass` **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkFramebufferCreateInfo-pAttachments-02634) VUID-VkFramebufferCreateInfo-pAttachments-02634
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of
 `pAttachments` that is used as a depth/stencil resolve attachment by
 `renderPass` **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkFramebufferCreateInfo-pAttachments-00879) VUID-VkFramebufferCreateInfo-pAttachments-00879
 
 If `renderpass` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `flags` does not
-include `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+include [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of
 `pAttachments` that is used as an input attachment by
 `renderPass` **must** have been created with the
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkFramebufferCreateInfo-pAttachments-02552) VUID-VkFramebufferCreateInfo-pAttachments-02552
 
 Each element of `pAttachments` that is used as a fragment density
 map attachment by `renderPass` **must** not have been created with a
-`flags` value including `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`
+`flags` value including [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](resources.html#VkImageCreateFlagBits)
 
 * 
 [](#VUID-VkFramebufferCreateInfo-renderPass-02553) VUID-VkFramebufferCreateInfo-renderPass-02553
@@ -8987,22 +9010,31 @@ map attachment by `renderPass` **must** not have been created with a
 If `renderPass` has a fragment density map attachment and the
 [    `fragmentDensityMapNonSubsampledImages`](features.html#features-fragmentDensityMapNonSubsampledImages) feature is not enabled,
 each element of `pAttachments` **must** have been created with a
-`flags` value including `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`
+`flags` value including [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](resources.html#VkImageCreateFlagBits)
 unless that element is the fragment density map attachment
 
 * 
 [](#VUID-VkFramebufferCreateInfo-renderPass-10830) VUID-VkFramebufferCreateInfo-renderPass-10830
 
 If `renderPass` was created with
-`VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE`, then
+[VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](#VkRenderPassCreateFlagBits), then
 `layers` **must** be less than or equal to
 [    `maxFragmentDensityMapLayers`](limits.html#limits-maxFragmentDensityMapLayers)
+
+* 
+[](#VUID-VkFramebufferCreateInfo-pAttachments-12327) VUID-VkFramebufferCreateInfo-pAttachments-12327
+
+If flags does not include VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT, then each
+element of `pAttachments` that is used as a resolve attachment by
+`renderPass` **must** not be bound to a `VkDeviceMemory` object
+allocated from a `VkMemoryHeap` with the
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property
 
 * 
 [](#VUID-VkFramebufferCreateInfo-pAttachments-00880) VUID-VkFramebufferCreateInfo-pAttachments-00880
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of
 `pAttachments` **must** have been created with a [VkFormat](formats.html#VkFormat) value
 that matches the [VkFormat](formats.html#VkFormat) specified by the corresponding
 `VkAttachmentDescription` in `renderPass`
@@ -9011,7 +9043,7 @@ that matches the [VkFormat](formats.html#VkFormat) specified by the correspondin
 [](#VUID-VkFramebufferCreateInfo-pAttachments-00881) VUID-VkFramebufferCreateInfo-pAttachments-00881
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of
 `pAttachments` **must** have been created with a `samples` value
 that matches the `samples` value specified by the corresponding
 `VkAttachmentDescription` in `renderPass`
@@ -9020,7 +9052,7 @@ that matches the `samples` value specified by the corresponding
 [](#VUID-VkFramebufferCreateInfo-flags-04533) VUID-VkFramebufferCreateInfo-flags-04533
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of
 `pAttachments` that is used as an input, color, resolve, or
 depth/stencil attachment by `renderPass` **must** have been created
 with a [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`extent.width` greater than or equal
@@ -9030,7 +9062,7 @@ to `width`
 [](#VUID-VkFramebufferCreateInfo-flags-04534) VUID-VkFramebufferCreateInfo-flags-04534
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of
 `pAttachments` that is used as an input, color, resolve, or
 depth/stencil attachment by `renderPass` **must** have been created
 with a [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`extent.height` greater than or
@@ -9040,7 +9072,7 @@ equal to `height`
 [](#VUID-VkFramebufferCreateInfo-flags-04535) VUID-VkFramebufferCreateInfo-flags-04535
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of
 `pAttachments` that is used as an input, color, resolve, or
 depth/stencil attachment by `renderPass` **must** have been created
 with a [VkImageViewCreateInfo](resources.html#VkImageViewCreateInfo)::`subresourceRange.layerCount`
@@ -9069,7 +9101,7 @@ masks
 [](#VUID-VkFramebufferCreateInfo-pAttachments-02555) VUID-VkFramebufferCreateInfo-pAttachments-02555
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, an element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), an element of
 `pAttachments` that is referenced by
 `fragmentDensityMapAttachment` **must** have a width at least as large
 as
@@ -9079,7 +9111,7 @@ as
 [](#VUID-VkFramebufferCreateInfo-pAttachments-02556) VUID-VkFramebufferCreateInfo-pAttachments-02556
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, an element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), an element of
 `pAttachments` that is referenced by
 `fragmentDensityMapAttachment` **must** have a height at least as large
 as
@@ -9089,7 +9121,7 @@ as
 [](#VUID-VkFramebufferCreateInfo-flags-04537) VUID-VkFramebufferCreateInfo-flags-04537
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, and `renderPass` was
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), and `renderPass` was
 specified with non-zero view masks, each element of `pAttachments`
 that is used as a [fragment    shading rate attachment](primsrast.html#primsrast-fragment-shading-rate-attachment) by `renderPass` **must** have a
 `layerCount` that is either `1`, or greater than the index of the
@@ -9099,7 +9131,7 @@ most significant bit set in any of those view masks
 [](#VUID-VkFramebufferCreateInfo-flags-04538) VUID-VkFramebufferCreateInfo-flags-04538
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, and `renderPass` was not
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), and `renderPass` was not
 specified with non-zero view masks, each element of `pAttachments`
 that is used as a [fragment    shading rate attachment](primsrast.html#primsrast-fragment-shading-rate-attachment) by `renderPass` **must** have a
 `layerCount` that is either `1`, or greater than `layers`
@@ -9110,11 +9142,11 @@ that is used as a [fragment    shading rate attachment](primsrast.html#primsrast
 If
 the [`maintenance7`](features.html#features-maintenance7) feature is not enabled
 or the [    `robustFragmentShadingRateAttachmentAccess`](limits.html#limits-robustFragmentShadingRateAttachmentAccess) limit is
-`VK_FALSE` or the `imageView` member of a
+[VK_FALSE](fundamentals.html#VK_FALSE) or the `imageView` member of a
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](#VkRenderingFragmentShadingRateAttachmentInfoKHR) structure was
 created with [VkImageSubresourceRange](resources.html#VkImageSubresourceRange)::`baseMipLevel` greater
 than 0,
-`flags` does not include `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`,
+`flags` does not include [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits),
 an element of `pAttachments` that is used as a
 [fragment shading rate    attachment](primsrast.html#primsrast-fragment-shading-rate-attachment) **must** have a width at least as large as
 ⌈`width` / `texelWidth`⌉, where `texelWidth`
@@ -9128,11 +9160,11 @@ attachment
 If
 the [`maintenance7`](features.html#features-maintenance7) feature is not enabled
 or the [    `robustFragmentShadingRateAttachmentAccess`](limits.html#limits-robustFragmentShadingRateAttachmentAccess) limit is
-`VK_FALSE` or the `imageView` member of a
+[VK_FALSE](fundamentals.html#VK_FALSE) or the `imageView` member of a
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](#VkRenderingFragmentShadingRateAttachmentInfoKHR) structure was
 created with [VkImageSubresourceRange](resources.html#VkImageSubresourceRange)::`baseMipLevel` greater
 than 0,
-`flags` does not include `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`,
+`flags` does not include [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits),
 an element of `pAttachments` that is used as a
 [fragment shading rate    attachment](primsrast.html#primsrast-fragment-shading-rate-attachment) **must** have a height at least as large as
 ⌈`height` / `texelHeight`⌉, where
@@ -9145,14 +9177,14 @@ attachment
 [](#VUID-VkFramebufferCreateInfo-pAttachments-00883) VUID-VkFramebufferCreateInfo-pAttachments-00883
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of
 `pAttachments` **must** only specify a single mip level
 
 * 
 [](#VUID-VkFramebufferCreateInfo-pAttachments-00884) VUID-VkFramebufferCreateInfo-pAttachments-00884
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of
 `pAttachments` **must** have been created with the identity swizzle
 
 * 
@@ -9197,7 +9229,7 @@ If `renderPass` was specified with non-zero view masks, `layers`
 [](#VUID-VkFramebufferCreateInfo-pAttachments-00891) VUID-VkFramebufferCreateInfo-pAttachments-00891
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of
 `pAttachments` that is a 2D or 2D array image view taken from a 3D
 image **must** not be a depth/stencil format
 
@@ -9206,19 +9238,19 @@ image **must** not be a depth/stencil format
 
 If the [`imagelessFramebuffer`](features.html#features-imagelessFramebuffer)
 feature is not enabled, `flags` **must** not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits)
 
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-03190) VUID-VkFramebufferCreateInfo-flags-03190
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), the
 `pNext` chain **must** include a
 [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo) structure
 
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-03191) VUID-VkFramebufferCreateInfo-flags-03191
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), the
 `attachmentImageInfoCount` member of a
 [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo) structure in the `pNext`
 chain **must** be equal to either zero or `attachmentCount`
@@ -9226,7 +9258,7 @@ chain **must** be equal to either zero or `attachmentCount`
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-04541) VUID-VkFramebufferCreateInfo-flags-04541
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), the
 `width` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo) structure in the
 `pNext` chain that is used as an input, color, resolve or
@@ -9236,7 +9268,7 @@ equal to `width`
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-04542) VUID-VkFramebufferCreateInfo-flags-04542
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), the
 `height` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo) structure in the
 `pNext` chain that is used as an input, color, resolve or
@@ -9246,7 +9278,7 @@ equal to `height`
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-03196) VUID-VkFramebufferCreateInfo-flags-03196
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), the
 `width` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo) structure in the
 `pNext` chain that is referenced by
@@ -9257,7 +9289,7 @@ in `renderPass` **must** be greater than or equal to
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-03197) VUID-VkFramebufferCreateInfo-flags-03197
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), the
 `height` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo) structure included
 in the `pNext` chain that is referenced by
@@ -9271,11 +9303,11 @@ in `renderPass` **must** be greater than or equal to
 If
 the [`maintenance7`](features.html#features-maintenance7) feature is not enabled
 or the [    `robustFragmentShadingRateAttachmentAccess`](limits.html#limits-robustFragmentShadingRateAttachmentAccess) limit is
-`VK_FALSE` or the `imageView` member of a
+[VK_FALSE](fundamentals.html#VK_FALSE) or the `imageView` member of a
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](#VkRenderingFragmentShadingRateAttachmentInfoKHR) structure was
 created with [VkImageSubresourceRange](resources.html#VkImageSubresourceRange)::`baseMipLevel` greater
 than 0, and
-`flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+`flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), the
 `width` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo) structure in the
 `pNext` chain that is used as a
@@ -9291,11 +9323,11 @@ attachment
 If
 the [`maintenance7`](features.html#features-maintenance7) feature is not enabled
 or the [    `robustFragmentShadingRateAttachmentAccess`](limits.html#limits-robustFragmentShadingRateAttachmentAccess) limit is
-`VK_FALSE` or the `imageView` member of a
+[VK_FALSE](fundamentals.html#VK_FALSE) or the `imageView` member of a
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](#VkRenderingFragmentShadingRateAttachmentInfoKHR) structure was
 created with [VkImageSubresourceRange](resources.html#VkImageSubresourceRange)::`baseMipLevel` greater
 than 0, and
-`flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+`flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), the
 `height` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo) structure in the
 `pNext` chain that is used as a
@@ -9308,7 +9340,7 @@ attachment
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-04545) VUID-VkFramebufferCreateInfo-flags-04545
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), the
 `layerCount` member of any element of the
 `pAttachmentImageInfos` member of a
 [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo) structure in the `pNext`
@@ -9318,7 +9350,7 @@ or equal to `layers`
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-04587) VUID-VkFramebufferCreateInfo-flags-04587
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT` and
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits) and
 `renderPass` was specified with non-zero view masks, the
 `layerCount` member of any element of the
 `pAttachmentImageInfos` member of a
@@ -9330,7 +9362,7 @@ the index of the most significant bit set in any of those view masks
 [](#VUID-VkFramebufferCreateInfo-renderPass-03198) VUID-VkFramebufferCreateInfo-renderPass-03198
 
 If multiview is enabled for `renderPass` and `flags` includes
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the `layerCount` member
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), the `layerCount` member
 of any element of the `pAttachmentImageInfos` member of a
 [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo) structure included in the
 `pNext` chain used as an input, color, resolve, or depth/stencil
@@ -9343,7 +9375,7 @@ index set in the view mask in the subpasses in which it is used in
 
 If
 multiview is not enabled for `renderPass` and
-`flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+`flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), the
 `layerCount` member of any element of the
 `pAttachmentImageInfos` member of a
 [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo) structure included in the
@@ -9354,47 +9386,47 @@ attachment in `renderPass` **must** be greater than or equal to
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-03201) VUID-VkFramebufferCreateInfo-flags-03201
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), the
 `usage` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo) structure included
 in the `pNext` chain that refers to an attachment used as a color
 attachment or resolve attachment by `renderPass` **must** include
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT`
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits)
 
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-03202) VUID-VkFramebufferCreateInfo-flags-03202
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), the
 `usage` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo) structure included
 in the `pNext` chain that refers to an attachment used as a
 depth/stencil attachment by `renderPass` **must** include
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits)
 
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-03203) VUID-VkFramebufferCreateInfo-flags-03203
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), the
 `usage` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo) structure included
 in the `pNext` chain that refers to an attachment used as a
 depth/stencil resolve attachment by `renderPass` **must** include
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits)
 
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-03204) VUID-VkFramebufferCreateInfo-flags-03204
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), the
 `usage` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo) structure included
 in the `pNext` chain that refers to an attachment used as an input
 attachment by `renderPass` **must** include
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits)
 
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-03205) VUID-VkFramebufferCreateInfo-flags-03205
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, at
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), at
 least one element of the `pViewFormats` member of any element of the
 `pAttachmentImageInfos` member of a
 [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo) structure included in the
@@ -9406,30 +9438,30 @@ least one element of the `pViewFormats` member of any element of the
 [](#VUID-VkFramebufferCreateInfo-flags-04113) VUID-VkFramebufferCreateInfo-flags-04113
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of
 `pAttachments` **must** have been created with
 [VkImageViewCreateInfo](resources.html#VkImageViewCreateInfo)::`viewType` not equal to
-`VK_IMAGE_VIEW_TYPE_3D`
+[VK_IMAGE_VIEW_TYPE_3D](resources.html#VkImageViewType)
 
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-04548) VUID-VkFramebufferCreateInfo-flags-04548
 
 If `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of
 `pAttachments` that is used as a fragment shading rate attachment by
 `renderPass` **must** have been created with the
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR` usage flag
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](resources.html#VkImageUsageFlagBits) usage flag
 set
 
 * 
 [](#VUID-VkFramebufferCreateInfo-flags-04549) VUID-VkFramebufferCreateInfo-flags-04549
 
-If `flags` includes `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the
+If `flags` includes [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), the
 `usage` member of any element of the `pAttachmentImageInfos`
 member of a [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo) structure included
 in the `pNext` chain that refers to an attachment used as a fragment
 shading rate attachment by `renderPass` **must** include
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](resources.html#VkImageUsageFlagBits)
 
 * 
 [](#VUID-VkFramebufferCreateInfo-samples-06881) VUID-VkFramebufferCreateInfo-samples-06881
@@ -9440,8 +9472,8 @@ is enabled for any subpass, all color, depth/stencil and input
 attachments used in that subpass which have
 `VkAttachmentDescription`::`samples` or
 `VkAttachmentDescription2`::`samples` equal to
-`VK_SAMPLE_COUNT_1_BIT` **must** have been created with
-`VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT` in
+[VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits) **must** have been created with
+[VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT](resources.html#VkImageCreateFlagBits) in
 their [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`flags`
 
 * 
@@ -9453,16 +9485,16 @@ is enabled for any subpass, all color, depth/stencil and input
 attachments used in that subpass which have
 `VkAttachmentDescription`::`samples` or
 `VkAttachmentDescription2`::`samples` equal to
-`VK_SAMPLE_COUNT_1_BIT` **must** have a format that supports the sample
+[VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits) **must** have a format that supports the sample
 count specified in
 [VkMultisampledRenderToSingleSampledInfoEXT](#VkMultisampledRenderToSingleSampledInfoEXT)::`rasterizationSamples`
 
 * 
 [](#VUID-VkFramebufferCreateInfo-nullColorAttachmentWithExternalFormatResolve-09349) VUID-VkFramebufferCreateInfo-nullColorAttachmentWithExternalFormatResolve-09349
 
-If the [    `nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) is `VK_FALSE`,
+If the [    `nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) is [VK_FALSE](fundamentals.html#VK_FALSE),
 and `flags` does not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`,
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits),
 the format of the color attachment for each subpass in `renderPass`
 that includes an external format image as a resolve attachment **must**
 have a format equal to the value of
@@ -9476,10 +9508,10 @@ resolve attachment
 [](#VUID-VkFramebufferCreateInfo-pAttachments-09350) VUID-VkFramebufferCreateInfo-pAttachments-09350
 
 If
-`flags` does not include `VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`,
+`flags` does not include [VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits),
 then if
 an element of `pAttachments` has a format of
-`VK_FORMAT_UNDEFINED`, it **must** have been created with a
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat), it **must** have been created with a
 [VkExternalFormatANDROID](resources.html#VkExternalFormatANDROID)::`externalFormat` value identical to
 that provided in the [VkExternalFormatANDROID](resources.html#VkExternalFormatANDROID)::`externalFormat`
 specified by the corresponding [VkAttachmentDescription2](#VkAttachmentDescription2) in
@@ -9490,7 +9522,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFramebufferCreateInfo-sType-sType) VUID-VkFramebufferCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkFramebufferCreateInfo-pNext-pNext) VUID-VkFramebufferCreateInfo-pNext-pNext
@@ -9556,7 +9588,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFramebufferAttachmentsCreateInfo-sType-sType) VUID-VkFramebufferAttachmentsCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENTS_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENTS_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkFramebufferAttachmentsCreateInfo-pAttachmentImageInfos-parameter) VUID-VkFramebufferAttachmentsCreateInfo-pAttachmentImageInfos-parameter
@@ -9638,14 +9670,14 @@ If `viewFormatCount` is not 0,
 and the render pass is not being used with an external format resolve
 attachment,
 each element of `pViewFormats` **must** not be
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkFramebufferAttachmentImageInfo-sType-sType) VUID-VkFramebufferAttachmentImageInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENT_IMAGE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENT_IMAGE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkFramebufferAttachmentImageInfo-pNext-pNext) VUID-VkFramebufferAttachmentImageInfo-pNext-pNext
@@ -9684,7 +9716,7 @@ typedef enum VkFramebufferCreateFlagBits {
 } VkFramebufferCreateFlagBits;
 
 * 
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT` specifies that image views are
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits) specifies that image views are
 not specified, and only attachment compatibility information will be
 provided via a [VkFramebufferAttachmentImageInfo](#VkFramebufferAttachmentImageInfo) structure.
 
@@ -9769,9 +9801,9 @@ Render pass load operations define the initial values of an attachment
 during a render pass instance.
 
 Load operations for attachments with a depth/stencil format execute in the
-`VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT` pipeline stage.
+[VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT](synchronization.html#VkPipelineStageFlagBits) pipeline stage.
 Load operations for attachments with a color format execute in the
-`VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT` pipeline stage.
+[VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](synchronization.html#VkPipelineStageFlagBits) pipeline stage.
 The load operation for each sample in an attachment happens-before any
 recorded command which accesses the sample in that render pass instance via
 that attachment or an alias.
@@ -9782,7 +9814,7 @@ operations are performed in the first subpass which uses an attachment.
 | --- | --- |
 attachment access only needs to synchronize the load operations with
 previous commands; not the operations within the render pass instance.
-This does not apply when using `VK_ATTACHMENT_LOAD_OP_NONE`. |
+This does not apply when using [VK_ATTACHMENT_LOAD_OP_NONE](#VkAttachmentLoadOp). |
 
 Load operations only update values within the defined render area for the
 render pass instance.
@@ -9792,7 +9824,7 @@ within the image subresource bound for that attachment.
 For depth/stencil images,
 if the [maintenance7](features.html#features-maintenance7) feature is not enabled or
 [`separateDepthStencilAttachmentAccess`](limits.html#limits-separateDepthStencilAttachmentAccess)
-is `VK_FALSE`,
+is [VK_FALSE](fundamentals.html#VK_FALSE),
 writes to one aspect **may** also result in read-modify-write operations for
 the other aspect.
 If the subresource is bound to an attachment with
@@ -9820,34 +9852,34 @@ typedef enum VkAttachmentLoadOp {
 } VkAttachmentLoadOp;
 
 * 
-`VK_ATTACHMENT_LOAD_OP_LOAD` specifies that the previous contents of
+[VK_ATTACHMENT_LOAD_OP_LOAD](#VkAttachmentLoadOp) specifies that the previous contents of
 the image within the render area will be preserved as the initial
 values.
 For attachments with a depth/stencil format, this uses the access type
-`VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT`.
+[VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT](synchronization.html#VkAccessFlagBits).
 For attachments with a color format, this uses the access type
-`VK_ACCESS_COLOR_ATTACHMENT_READ_BIT`.
+[VK_ACCESS_COLOR_ATTACHMENT_READ_BIT](synchronization.html#VkAccessFlagBits).
 
 * 
-`VK_ATTACHMENT_LOAD_OP_CLEAR` specifies that the contents within the
+[VK_ATTACHMENT_LOAD_OP_CLEAR](#VkAttachmentLoadOp) specifies that the contents within the
 render area will be cleared to a uniform value, which is specified when
 a render pass instance is begun.
 For attachments with a depth/stencil format, this uses the access type
-`VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT`.
+[VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](synchronization.html#VkAccessFlagBits).
 For attachments with a color format, this uses the access type
-`VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT`.
+[VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT](synchronization.html#VkAccessFlagBits).
 
 * 
-`VK_ATTACHMENT_LOAD_OP_DONT_CARE` specifies that the previous
+[VK_ATTACHMENT_LOAD_OP_DONT_CARE](#VkAttachmentLoadOp) specifies that the previous
 contents within the area need not be preserved; the contents of the
 attachment will be **undefined** inside the render area.
 For attachments with a depth/stencil format, this uses the access type
-`VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT`.
+[VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](synchronization.html#VkAccessFlagBits).
 For attachments with a color format, this uses the access type
-`VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT`.
+[VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT](synchronization.html#VkAccessFlagBits).
 
 * 
-`VK_ATTACHMENT_LOAD_OP_NONE` specifies that the previous contents of
+[VK_ATTACHMENT_LOAD_OP_NONE](#VkAttachmentLoadOp) specifies that the previous contents of
 the image will be **undefined** inside the render pass.
 No access type is used as the image is not accessed.
 
@@ -9868,9 +9900,9 @@ Render pass store operations define how values written to an attachment
 during a render pass instance are stored to memory.
 
 Store operations for attachments with a depth/stencil format execute in the
-`VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT` pipeline stage.
+[VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT](synchronization.html#VkPipelineStageFlagBits) pipeline stage.
 Store operations for attachments with a color format execute in the
-`VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT` pipeline stage.
+[VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](synchronization.html#VkPipelineStageFlagBits) pipeline stage.
 The store operation for each sample in an attachment happens-after any
 recorded command which accesses the sample via that attachment or an alias.
 In a render pass object with multiple [subpasses](#renderpass-subpass),
@@ -9881,7 +9913,7 @@ store operations are performed in the last subpass which uses an attachment.
 instance, external synchronization with attachment access in an earlier
 render pass only needs to synchronize with the store operations; not the
 operations within the render pass instance.
-This does not apply when using `VK_ATTACHMENT_STORE_OP_NONE`. |
+This does not apply when using [VK_ATTACHMENT_STORE_OP_NONE](#VkAttachmentStoreOp). |
 
 Store operations only update values within the defined render area for the
 render pass instance.
@@ -9891,7 +9923,7 @@ within the image subresource bound for that attachment.
 For depth/stencil images,
 if
 [`separateDepthStencilAttachmentAccess`](limits.html#limits-separateDepthStencilAttachmentAccess)
-is `VK_FALSE`,
+is [VK_FALSE](fundamentals.html#VK_FALSE),
 writes to one aspect **may** also result in read-modify-write operations for
 the other aspect.
 If the subresource is bound to an attachment with
@@ -9923,31 +9955,31 @@ typedef enum VkAttachmentStoreOp {
 } VkAttachmentStoreOp;
 
 * 
-`VK_ATTACHMENT_STORE_OP_STORE` specifies the contents generated
+[VK_ATTACHMENT_STORE_OP_STORE](#VkAttachmentStoreOp) specifies the contents generated
 during the render pass and within the render area are written to memory.
 For attachments with a depth/stencil format, this uses the access type
-`VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT`.
+[VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](synchronization.html#VkAccessFlagBits).
 For attachments with a color format, this uses the access type
-`VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT`.
+[VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT](synchronization.html#VkAccessFlagBits).
 
 * 
-`VK_ATTACHMENT_STORE_OP_DONT_CARE` specifies the contents within the
+[VK_ATTACHMENT_STORE_OP_DONT_CARE](#VkAttachmentStoreOp) specifies the contents within the
 render area are not needed after rendering, and **may** be discarded; the
 contents of the attachment will be **undefined** inside the render area.
 For attachments with a depth/stencil format, this uses the access type
-`VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT`.
+[VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](synchronization.html#VkAccessFlagBits).
 For attachments with a color format, this uses the access type
-`VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT`.
+[VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT](synchronization.html#VkAccessFlagBits).
 
 * 
-`VK_ATTACHMENT_STORE_OP_NONE` specifies the contents within the
+[VK_ATTACHMENT_STORE_OP_NONE](#VkAttachmentStoreOp) specifies the contents within the
 render area are not accessed by the store operation as long as no values
 are written to the attachment during the render pass.
 If values are written during the render pass, this behaves identically
-to `VK_ATTACHMENT_STORE_OP_DONT_CARE` and with matching access
+to [VK_ATTACHMENT_STORE_OP_DONT_CARE](#VkAttachmentStoreOp) and with matching access
 semantics.
 
-|  | `VK_ATTACHMENT_STORE_OP_DONT_CARE` **can** cause contents generated during
+|  | [VK_ATTACHMENT_STORE_OP_DONT_CARE](#VkAttachmentStoreOp) **can** cause contents generated during
 | --- | --- |
 previous render passes to be discarded before reaching memory, even if no
 write to the attachment occurs during the current render pass. |
@@ -9956,14 +9988,14 @@ Fixed-function render pass multisample resolve operations combine sample
 values from a single pixel in a multisample attachment and store the result
 to the corresponding pixel in a single sample attachment.
 
-|  | Because `VK_RESOLVE_MODE_CUSTOM_BIT_EXT` specifies that the attachment
+|  | Because [VK_RESOLVE_MODE_CUSTOM_BIT_EXT](#VkResolveModeFlagBitsKHR) specifies that the attachment
 | --- | --- |
 will be resolved by shaders in the render pass instead of fixed-function
-operations, resolve operations with `VK_RESOLVE_MODE_CUSTOM_BIT_EXT` do
+operations, resolve operations with [VK_RESOLVE_MODE_CUSTOM_BIT_EXT](#VkResolveModeFlagBitsKHR) do
 not count as fixed-function multisample resolve operations. |
 
 Fixed-function multisample resolve operations for attachments execute in the
-`VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT` pipeline stage.
+[VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](synchronization.html#VkPipelineStageFlagBits) pipeline stage.
 A final resolve operation for all pixels in the render area happens-after
 any recorded command which writes a pixel via the multisample attachment to
 be resolved or an explicit alias of it in the subpass that it is specified.
@@ -9971,10 +10003,10 @@ Any single sample attachment specified for use in a fixed-function
 multisample resolve operation **may** have its contents modified at any point
 once rendering begins for the render pass instance.
 Reads from the multisample attachment can be synchronized with
-`VK_ACCESS_COLOR_ATTACHMENT_READ_BIT`.
+[VK_ACCESS_COLOR_ATTACHMENT_READ_BIT](synchronization.html#VkAccessFlagBits).
 Access to the single sample attachment can be synchronized with
-`VK_ACCESS_COLOR_ATTACHMENT_READ_BIT` and
-`VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT`.
+[VK_ACCESS_COLOR_ATTACHMENT_READ_BIT](synchronization.html#VkAccessFlagBits) and
+[VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT](synchronization.html#VkAccessFlagBits).
 These pipeline stage and access types are used whether the attachments are
 color or depth/stencil attachments.
 
@@ -9992,7 +10024,7 @@ locations within the image subresource bound for that attachment.
 For depth/stencil images,
 if
 [`separateDepthStencilAttachmentAccess`](limits.html#limits-separateDepthStencilAttachmentAccess)
-is `VK_FALSE`,
+is [VK_FALSE](fundamentals.html#VK_FALSE),
 writes to one aspect **may** also result in read-modify-write operations for
 the other aspect.
 If the subresource is bound to an attachment with
@@ -10039,26 +10071,26 @@ typedef enum VkResolveModeFlagBits {
 typedef VkResolveModeFlagBits VkResolveModeFlagBitsKHR;
 
 * 
-`VK_RESOLVE_MODE_NONE` specifies that no resolve operation is done.
+[VK_RESOLVE_MODE_NONE](#VkResolveModeFlagBitsKHR) specifies that no resolve operation is done.
 
 * 
-`VK_RESOLVE_MODE_SAMPLE_ZERO_BIT` specifies that result of the
+[VK_RESOLVE_MODE_SAMPLE_ZERO_BIT](#VkResolveModeFlagBitsKHR) specifies that result of the
 resolve operation is equal to the value of sample 0.
 
 * 
-`VK_RESOLVE_MODE_AVERAGE_BIT` specifies that result of the resolve
+[VK_RESOLVE_MODE_AVERAGE_BIT](#VkResolveModeFlagBitsKHR) specifies that result of the resolve
 operation is the average of the sample values.
 
 * 
-`VK_RESOLVE_MODE_MIN_BIT` specifies that result of the resolve
+[VK_RESOLVE_MODE_MIN_BIT](#VkResolveModeFlagBitsKHR) specifies that result of the resolve
 operation is the minimum of the sample values.
 
 * 
-`VK_RESOLVE_MODE_MAX_BIT` specifies that result of the resolve
+[VK_RESOLVE_MODE_MAX_BIT](#VkResolveModeFlagBitsKHR) specifies that result of the resolve
 operation is the maximum of the sample values.
 
 * 
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID` specifies
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR) specifies
 that rather than a multisample resolve, a single sampled color
 attachment will be downsampled into a Y′CBCR format image specified by
 an external Android format.
@@ -10077,14 +10109,14 @@ according to
 and the chroma sample rate of the resolved image.
 
 * 
-`VK_RESOLVE_MODE_CUSTOM_BIT_EXT` specifies that the attachment will
+[VK_RESOLVE_MODE_CUSTOM_BIT_EXT](#VkResolveModeFlagBitsKHR) specifies that the attachment will
 be resolved by shaders in the render pass instead of fixed-function
 operations.
 
-If no resolve mode is otherwise specified, `VK_RESOLVE_MODE_AVERAGE_BIT`
+If no resolve mode is otherwise specified, [VK_RESOLVE_MODE_AVERAGE_BIT](#VkResolveModeFlagBitsKHR)
 is used.
 
-If `VK_RESOLVE_MODE_AVERAGE_BIT` is used, and the source format is a
+If [VK_RESOLVE_MODE_AVERAGE_BIT](#VkResolveModeFlagBitsKHR) is used, and the source format is a
 floating-point or normalized type, the sample values for each pixel are
 resolved with implementation-defined numerical precision.
 
@@ -10103,10 +10135,10 @@ This behavior **can** be overridden with appropriate
 
 |  | No range compression or Y′CBCR model conversion is performed by
 | --- | --- |
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`; applications
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](#VkResolveModeFlagBitsKHR); applications
 have to do these conversions themselves.
 Value outputs are expected to match those that would be read through a
-[Y′CBCR sampler using `VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY`](textures.html#textures-sampler-YCbCr-conversion-modelconversion).
+[Y′CBCR sampler using ](textures.html#textures-sampler-YCbCr-conversion-modelconversion)[VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY](samplers.html#VkSamplerYcbcrModelConversionKHR).
 The color space that the values should be in is defined by the platform and
 is not exposed via Vulkan. |
 
@@ -10161,11 +10193,11 @@ If any of the `initialLayout` or `finalLayout` member of the
 `VkAttachmentDescription` structures or the `layout` member of
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
-`pRenderPassBegin` is `VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`
+`pRenderPassBegin` is [VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 then the corresponding attachment image view of the framebuffer
 specified in the `framebuffer` member of `pRenderPassBegin`
 **must** have been created with the
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdBeginRenderPass-initialLayout-01758) VUID-vkCmdBeginRenderPass-initialLayout-01758
@@ -10175,13 +10207,13 @@ If any of the `initialLayout` or `finalLayout` member of the
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
 `pRenderPassBegin` is
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL` then the
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then the
 corresponding attachment image view of the framebuffer specified in the
 `framebuffer` member of `pRenderPassBegin` **must** have been
-created with the `VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage
+created with the [VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage
 flag set
 
 * 
@@ -10192,13 +10224,13 @@ If any of the `initialLayout` or `finalLayout` member of the
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
 `pRenderPassBegin` is
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL` then the corresponding
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then the corresponding
 attachment image view of the framebuffer specified in the
 `framebuffer` member of `pRenderPassBegin` **must** have been
-created with the `VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage
+created with the [VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage
 flag set
 
 * 
@@ -10210,11 +10242,11 @@ the `stencilLayout` member of the
 `VkAttachmentReferenceStencilLayout` structures specified when
 creating the render pass specified in the `renderPass` member of
 `pRenderPassBegin` is
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL` then the corresponding
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then the corresponding
 attachment image view of the framebuffer specified in the
 `framebuffer` member of `pRenderPassBegin` **must** have been
-created with the `VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage
+created with the [VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage
 flag set
 
 * 
@@ -10224,11 +10256,11 @@ If any of the `initialLayout` or `finalLayout` member of the
 `VkAttachmentDescription` structures or the `layout` member of
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
-`pRenderPassBegin` is `VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`
+`pRenderPassBegin` is [VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 then the corresponding attachment image view of the framebuffer
 specified in the `framebuffer` member of `pRenderPassBegin`
-**must** have been created with the `VK_IMAGE_USAGE_SAMPLED_BIT` or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flags set
+**must** have been created with the [VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-vkCmdBeginRenderPass-initialLayout-00898) VUID-vkCmdBeginRenderPass-initialLayout-00898
@@ -10237,10 +10269,10 @@ If any of the `initialLayout` or `finalLayout` member of the
 `VkAttachmentDescription` structures or the `layout` member of
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
-`pRenderPassBegin` is `VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL`
+`pRenderPassBegin` is [VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL](resources.html#VkImageLayout)
 then the corresponding attachment image view of the framebuffer
 specified in the `framebuffer` member of `pRenderPassBegin`
-**must** have been created with the `VK_IMAGE_USAGE_TRANSFER_SRC_BIT`
+**must** have been created with the [VK_IMAGE_USAGE_TRANSFER_SRC_BIT](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
@@ -10250,10 +10282,10 @@ If any of the `initialLayout` or `finalLayout` member of the
 `VkAttachmentDescription` structures or the `layout` member of
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
-`pRenderPassBegin` is `VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL`
+`pRenderPassBegin` is [VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](resources.html#VkImageLayout)
 then the corresponding attachment image view of the framebuffer
 specified in the `framebuffer` member of `pRenderPassBegin`
-**must** have been created with the `VK_IMAGE_USAGE_TRANSFER_DST_BIT`
+**must** have been created with the [VK_IMAGE_USAGE_TRANSFER_DST_BIT](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
@@ -10262,7 +10294,7 @@ usage flag set
 If the `initialLayout` member of any of the
 `VkAttachmentDescription` structures specified when creating the
 render pass specified in the `renderPass` member of
-`pRenderPassBegin` is not `VK_IMAGE_LAYOUT_UNDEFINED`, then each
+`pRenderPassBegin` is not [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout), then each
 such `initialLayout` **must** be equal to the current layout of the
 corresponding attachment image subresource of the framebuffer specified
 in the `framebuffer` member of `pRenderPassBegin`
@@ -10294,7 +10326,7 @@ For any attachment in `framebuffer` that is used by `renderPass`
 and is bound to memory locations that are also bound to another
 attachment used by `renderPass`, and if at least one of those uses
 causes either attachment to be written to, both attachments **must** have
-had the `VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT` set
+had the [VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT](#VkAttachmentDescriptionFlagBits) set
 
 * 
 [](#VUID-vkCmdBeginRenderPass-framebuffer-09045) VUID-vkCmdBeginRenderPass-framebuffer-09045
@@ -10312,13 +10344,13 @@ If any of the `initialLayout` or `finalLayout` member of the
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
 `pRenderPassBegin` is
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` then the
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout) then the
 corresponding attachment image view of the framebuffer specified in the
 `framebuffer` member of `pRenderPassBegin` **must** have been
-created with either the `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flags set, and
-either the `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_SAMPLED_BIT` usage flags set
+created with either the [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set, and
+either the [VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-vkCmdBeginRenderPass-initialLayout-07001) VUID-vkCmdBeginRenderPass-initialLayout-07001
@@ -10328,10 +10360,10 @@ If any of the `initialLayout` or `finalLayout` member of the
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
 `pRenderPassBegin` is
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` then the
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout) then the
 corresponding attachment image view of the framebuffer specified in the
 `framebuffer` member of `pRenderPassBegin` **must** have been
-created with the `VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT`
+created with the [VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
@@ -10341,19 +10373,19 @@ If any of the `initialLayout` or `finalLayout` member of the
 `VkAttachmentDescription` structures or the `layout` member of
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
-`pRenderPassBegin` is `VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+`pRenderPassBegin` is [VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout)
 then the corresponding attachment image view of the framebuffer
 specified in the `framebuffer` member of `pRenderPassBegin`
-**must** have been created with either the `VK_IMAGE_USAGE_STORAGE_BIT`
-usage flag set, or both the `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`
-and either of `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flags set
+**must** have been created with either the [VK_IMAGE_USAGE_STORAGE_BIT](resources.html#VkImageUsageFlagBits)
+usage flag set, or both the [VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits)
+and either of [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-vkCmdBeginRenderPass-contents-09640) VUID-vkCmdBeginRenderPass-contents-09640
 
 If `contents` is
-`VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR`, then
+[VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR](#VkSubpassContents), then
 at least one of the following features **must** be enabled:
 
 [`maintenance7`](features.html#features-maintenance7)
@@ -10386,7 +10418,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBeginRenderPass-commandBuffer-cmdpool) VUID-vkCmdBeginRenderPass-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBeginRenderPass-renderpass) VUID-vkCmdBeginRenderPass-renderpass
@@ -10483,11 +10515,11 @@ If any of the `initialLayout` or `finalLayout` member of the
 `VkAttachmentDescription` structures or the `layout` member of
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
-`pRenderPassBegin` is `VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`
+`pRenderPassBegin` is [VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout)
 then the corresponding attachment image view of the framebuffer
 specified in the `framebuffer` member of `pRenderPassBegin`
 **must** have been created with the
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-vkCmdBeginRenderPass2-initialLayout-03096) VUID-vkCmdBeginRenderPass2-initialLayout-03096
@@ -10497,13 +10529,13 @@ If any of the `initialLayout` or `finalLayout` member of the
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
 `pRenderPassBegin` is
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL` then the
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then the
 corresponding attachment image view of the framebuffer specified in the
 `framebuffer` member of `pRenderPassBegin` **must** have been
-created with the `VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage
+created with the [VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage
 flag set
 
 * 
@@ -10514,13 +10546,13 @@ If any of the `initialLayout` or `finalLayout` member of the
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
 `pRenderPassBegin` is
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL` then the corresponding
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then the corresponding
 attachment image view of the framebuffer specified in the
 `framebuffer` member of `pRenderPassBegin` **must** have been
-created with the `VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage
+created with the [VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage
 flag set
 
 * 
@@ -10532,11 +10564,11 @@ the `stencilLayout` member of the
 `VkAttachmentReferenceStencilLayout` structures specified when
 creating the render pass specified in the `renderPass` member of
 `pRenderPassBegin` is
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL` then the corresponding
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then the corresponding
 attachment image view of the framebuffer specified in the
 `framebuffer` member of `pRenderPassBegin` **must** have been
-created with the `VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage
+created with the [VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage
 flag set
 
 * 
@@ -10546,11 +10578,11 @@ If any of the `initialLayout` or `finalLayout` member of the
 `VkAttachmentDescription` structures or the `layout` member of
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
-`pRenderPassBegin` is `VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`
+`pRenderPassBegin` is [VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 then the corresponding attachment image view of the framebuffer
 specified in the `framebuffer` member of `pRenderPassBegin`
-**must** have been created with the `VK_IMAGE_USAGE_SAMPLED_BIT` or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flags set
+**must** have been created with the [VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-vkCmdBeginRenderPass2-initialLayout-03098) VUID-vkCmdBeginRenderPass2-initialLayout-03098
@@ -10559,10 +10591,10 @@ If any of the `initialLayout` or `finalLayout` member of the
 `VkAttachmentDescription` structures or the `layout` member of
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
-`pRenderPassBegin` is `VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL`
+`pRenderPassBegin` is [VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL](resources.html#VkImageLayout)
 then the corresponding attachment image view of the framebuffer
 specified in the `framebuffer` member of `pRenderPassBegin`
-**must** have been created with the `VK_IMAGE_USAGE_TRANSFER_SRC_BIT`
+**must** have been created with the [VK_IMAGE_USAGE_TRANSFER_SRC_BIT](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
@@ -10572,10 +10604,10 @@ If any of the `initialLayout` or `finalLayout` member of the
 `VkAttachmentDescription` structures or the `layout` member of
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
-`pRenderPassBegin` is `VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL`
+`pRenderPassBegin` is [VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](resources.html#VkImageLayout)
 then the corresponding attachment image view of the framebuffer
 specified in the `framebuffer` member of `pRenderPassBegin`
-**must** have been created with the `VK_IMAGE_USAGE_TRANSFER_DST_BIT`
+**must** have been created with the [VK_IMAGE_USAGE_TRANSFER_DST_BIT](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
@@ -10584,7 +10616,7 @@ usage flag set
 If the `initialLayout` member of any of the
 `VkAttachmentDescription` structures specified when creating the
 render pass specified in the `renderPass` member of
-`pRenderPassBegin` is not `VK_IMAGE_LAYOUT_UNDEFINED`, then each
+`pRenderPassBegin` is not [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout), then each
 such `initialLayout` **must** be equal to the current layout of the
 corresponding attachment image subresource of the framebuffer specified
 in the `framebuffer` member of `pRenderPassBegin`
@@ -10616,7 +10648,7 @@ For any attachment in `framebuffer` that is used by `renderPass`
 and is bound to memory locations that are also bound to another
 attachment used by `renderPass`, and if at least one of those uses
 causes either attachment to be written to, both attachments **must** have
-had the `VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT` set
+had the [VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT](#VkAttachmentDescriptionFlagBits) set
 
 * 
 [](#VUID-vkCmdBeginRenderPass2-framebuffer-09046) VUID-vkCmdBeginRenderPass2-framebuffer-09046
@@ -10634,13 +10666,13 @@ If any of the `initialLayout` or `finalLayout` member of the
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
 `pRenderPassBegin` is
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` then the
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout) then the
 corresponding attachment image view of the framebuffer specified in the
 `framebuffer` member of `pRenderPassBegin` **must** have been
-created with either the `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flags set, and
-either the `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_SAMPLED_BIT` usage flags set
+created with either the [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set, and
+either the [VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-vkCmdBeginRenderPass2-initialLayout-07003) VUID-vkCmdBeginRenderPass2-initialLayout-07003
@@ -10650,10 +10682,10 @@ If any of the `initialLayout` or `finalLayout` member of the
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
 `pRenderPassBegin` is
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` then the
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout) then the
 corresponding attachment image view of the framebuffer specified in the
 `framebuffer` member of `pRenderPassBegin` **must** have been
-created with the `VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT`
+created with the [VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
@@ -10663,21 +10695,21 @@ If any of the `initialLayout` or `finalLayout` member of the
 `VkAttachmentDescription` structures or the `layout` member of
 the `VkAttachmentReference` structures specified when creating the
 render pass specified in the `renderPass` member of
-`pRenderPassBegin` is `VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+`pRenderPassBegin` is [VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout)
 then the corresponding attachment image view of the framebuffer
 specified in the `framebuffer` member of `pRenderPassBegin`
-**must** have been created with either the `VK_IMAGE_USAGE_STORAGE_BIT`
-usage flag set, or both the `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`
-and either of the `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flags set
+**must** have been created with either the [VK_IMAGE_USAGE_STORAGE_BIT](resources.html#VkImageUsageFlagBits)
+usage flag set, or both the [VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits)
+and either of the [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-vkCmdBeginRenderPass2-flags-10652) VUID-vkCmdBeginRenderPass2-flags-10652
 
-If `VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` was included in the
+If [VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](#VkTileShadingRenderPassFlagBitsQCOM) was included in the
 [VkRenderPassTileShadingCreateInfoQCOM](#VkRenderPassTileShadingCreateInfoQCOM)::`flags` used to create
 the `renderPass`, `commandBuffer` **must** not have been recorded
-with `VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT`
+with [VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](cmdbuffers.html#VkCommandBufferUsageFlagBits)
 
 Valid Usage (Implicit)
 
@@ -10704,7 +10736,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBeginRenderPass2-commandBuffer-cmdpool) VUID-vkCmdBeginRenderPass2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBeginRenderPass2-renderpass) VUID-vkCmdBeginRenderPass2-renderpass
@@ -10788,9 +10820,9 @@ instance, and is described in more detail below.
 `pClearValues` is a pointer to an array of `clearValueCount`
 [VkClearValue](clears.html#VkClearValue) structures containing clear values for each
 attachment, if the attachment uses a `loadOp` value of
-`VK_ATTACHMENT_LOAD_OP_CLEAR` or if the attachment has a
+[VK_ATTACHMENT_LOAD_OP_CLEAR](#VkAttachmentLoadOp) or if the attachment has a
 depth/stencil format and uses a `stencilLoadOp` value of
-`VK_ATTACHMENT_LOAD_OP_CLEAR`.
+[VK_ATTACHMENT_LOAD_OP_CLEAR](#VkAttachmentLoadOp).
 The array is indexed by attachment number.
 Only elements corresponding to cleared attachments are used.
 Other elements of `pClearValues` are ignored.
@@ -10841,7 +10873,7 @@ Valid Usage
 `clearValueCount` **must** be greater than the largest attachment index
 in `renderPass` specifying a `loadOp` (or `stencilLoadOp`,
 if the attachment has a depth/stencil format) of
-`VK_ATTACHMENT_LOAD_OP_CLEAR`
+[VK_ATTACHMENT_LOAD_OP_CLEAR](#VkAttachmentLoadOp)
 
 * 
 [](#VUID-VkRenderPassBeginInfo-clearValueCount-04962) VUID-VkRenderPassBeginInfo-clearValueCount-04962
@@ -10933,7 +10965,7 @@ be less than or equal to [VkFramebufferCreateInfo](#VkFramebufferCreateInfo)::`h
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](#VkFramebufferCreateInfo)::`flags` value that did not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, and the `pNext` chain
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), and the `pNext` chain
 includes a [VkRenderPassAttachmentBeginInfo](#VkRenderPassAttachmentBeginInfo) structure, its
 `attachmentCount` **must** be zero
 
@@ -10942,7 +10974,7 @@ includes a [VkRenderPassAttachmentBeginInfo](#VkRenderPassAttachmentBeginInfo) s
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](#VkFramebufferCreateInfo)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the `attachmentCount` of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), the `attachmentCount` of
 a [VkRenderPassAttachmentBeginInfo](#VkRenderPassAttachmentBeginInfo) structure included in the
 `pNext` chain **must** be equal to the value of
 [VkFramebufferAttachmentsCreateInfo](#VkFramebufferAttachmentsCreateInfo)::`attachmentImageInfoCount`
@@ -10953,7 +10985,7 @@ used to create `framebuffer`
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](#VkFramebufferCreateInfo)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](#VkRenderPassAttachmentBeginInfo)
 structure included in the `pNext` chain **must** have been created on
 the same [VkDevice](devsandqueues.html#VkDevice) as `framebuffer` and `renderPass`
@@ -10963,7 +10995,7 @@ the same [VkDevice](devsandqueues.html#VkDevice) as `framebuffer` and `renderPas
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](#VkFramebufferCreateInfo)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](#VkRenderPassAttachmentBeginInfo)
 structure included in the `pNext` chain **must** be a [VkImageView](resources.html#VkImageView)
 of an image created with a value of [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`flags`
@@ -10972,11 +11004,22 @@ equal to the `flags` member of the corresponding element of
 used to create `framebuffer`
 
 * 
+[](#VUID-VkRenderPassBeginInfo-framebuffer-12328) VUID-VkRenderPassBeginInfo-framebuffer-12328
+
+If `framebuffer` was created with a
+[VkFramebufferCreateInfo](#VkFramebufferCreateInfo)::`flags` value that included
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each `pAttachments`
+member of [VkRenderPassAttachmentBeginInfo](#VkRenderPassAttachmentBeginInfo) that is used as a
+resolve attachment by `renderPass` **must** not be bound to a
+`VkDeviceMemory` object allocated from a `VkMemoryHeap` with the
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property
+
+* 
 [](#VUID-VkRenderPassBeginInfo-framebuffer-04627) VUID-VkRenderPassBeginInfo-framebuffer-04627
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](#VkFramebufferCreateInfo)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](#VkRenderPassAttachmentBeginInfo)
 structure included in the `pNext` chain **must** be a [VkImageView](resources.html#VkImageView)
 with [an inherited usage](resources.html#resources-image-inherited-usage) equal to
@@ -10989,7 +11032,7 @@ used to create `framebuffer`
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](#VkFramebufferCreateInfo)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](#VkRenderPassAttachmentBeginInfo)
 structure included in the `pNext` chain **must** be a [VkImageView](resources.html#VkImageView)
 with a width equal to the `width` member of the corresponding
@@ -11002,7 +11045,7 @@ used to create `framebuffer`
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](#VkFramebufferCreateInfo)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](#VkRenderPassAttachmentBeginInfo)
 structure included in the `pNext` chain **must** be a [VkImageView](resources.html#VkImageView)
 with a height equal to the `height` member of the corresponding
@@ -11015,7 +11058,7 @@ used to create `framebuffer`
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](#VkFramebufferCreateInfo)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](#VkRenderPassAttachmentBeginInfo)
 structure included in the `pNext` chain **must** be a [VkImageView](resources.html#VkImageView)
 of an image created with a value of
@@ -11029,7 +11072,7 @@ used to create `framebuffer`
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](#VkFramebufferCreateInfo)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](#VkRenderPassAttachmentBeginInfo)
 structure included in the `pNext` chain **must** be a [VkImageView](resources.html#VkImageView)
 of an image created with a value of
@@ -11043,7 +11086,7 @@ used to create `framebuffer`
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](#VkFramebufferCreateInfo)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](#VkRenderPassAttachmentBeginInfo)
 structure included in the `pNext` chain **must** be a [VkImageView](resources.html#VkImageView)
 of an image created with a set of elements in
@@ -11058,7 +11101,7 @@ used to create `framebuffer`
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](#VkFramebufferCreateInfo)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](#VkRenderPassAttachmentBeginInfo)
 structure included in the `pNext` chain **must** be a [VkImageView](resources.html#VkImageView)
 of an image created with a value of
@@ -11070,8 +11113,8 @@ value of [VkAttachmentDescription](#VkAttachmentDescription)::`format` in `rende
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](#VkFramebufferCreateInfo)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, and the
-[    `nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) is `VK_FALSE`,
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), and the
+[    `nullColorAttachmentWithExternalFormatResolve`](limits.html#limits-nullColorAttachmentWithExternalFormatResolve) is [VK_FALSE](fundamentals.html#VK_FALSE),
 the format of the color attachment for each subpass that includes an
 external format image as a resolve attachment **must** have a format equal
 to the value of
@@ -11086,7 +11129,7 @@ resolve attachment
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](#VkFramebufferCreateInfo)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](#VkRenderPassAttachmentBeginInfo)
 structure included in the `pNext` chain **must** be a [VkImageView](resources.html#VkImageView)
 of an image created with a value of
@@ -11100,16 +11143,16 @@ to create `renderPass`
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](#VkFramebufferCreateInfo)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](#VkFramebufferCreateFlagBits), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](#VkRenderPassAttachmentBeginInfo)
 structure included in the `pNext` chain **must** be a [VkImageView](resources.html#VkImageView)
 of an image created with a value of
 [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`samples` equal to the corresponding value
 of [VkAttachmentDescription](#VkAttachmentDescription)::`samples` in `renderPass`
-, or `VK_SAMPLE_COUNT_1_BIT` if `renderPass` was created with
+, or [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits) if `renderPass` was created with
 [VkMultisampledRenderToSingleSampledInfoEXT](#VkMultisampledRenderToSingleSampledInfoEXT) structure in the
 `pNext` chain with `multisampledRenderToSingleSampledEnable`
-equal to `VK_TRUE`
+equal to [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkRenderPassBeginInfo-pNext-02869) VUID-VkRenderPassBeginInfo-pNext-02869
@@ -11156,7 +11199,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassBeginInfo-sType-sType) VUID-VkRenderPassBeginInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderPassBeginInfo-pNext-pNext) VUID-VkRenderPassBeginInfo-pNext-pNext
@@ -11185,7 +11228,7 @@ Valid Usage (Implicit)
 
 The image layout of the depth aspect of a depth/stencil attachment referring
 to an image created with
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT` is dependent
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](resources.html#VkImageCreateFlagBits) is dependent
 on the last sample locations used to render to the image subresource, thus
 preserving the contents of such depth/stencil attachments across subpass
 boundaries requires the application to specify these sample locations
@@ -11248,11 +11291,11 @@ or to the final layout of the attachment in case the specified subpass
 is the last subpass using that attachment.
 In addition, if
 [VkPhysicalDeviceSampleLocationsPropertiesEXT](limits.html#VkPhysicalDeviceSampleLocationsPropertiesEXT)::`variableSampleLocations`
-is `VK_FALSE`, each element of `pPostSubpassSampleLocations`
+is [VK_FALSE](fundamentals.html#VK_FALSE), each element of `pPostSubpassSampleLocations`
 **must** specify the sample location state that matches the sample
 locations used by all pipelines that will be bound to a command buffer
 during the specified subpass.
-If `variableSampleLocations` is `VK_TRUE`, the sample locations
+If `variableSampleLocations` is [VK_TRUE](fundamentals.html#VK_TRUE), the sample locations
 used for rasterization do not depend on
 `pPostSubpassSampleLocations`.
 
@@ -11261,7 +11304,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassSampleLocationsBeginInfoEXT-sType-sType) VUID-VkRenderPassSampleLocationsBeginInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderPassSampleLocationsBeginInfoEXT-pAttachmentInitialSampleLocations-parameter) VUID-VkRenderPassSampleLocationsBeginInfoEXT-pAttachmentInitialSampleLocations-parameter
@@ -11296,7 +11339,7 @@ subpass using it.
 
 If the image referenced by the framebuffer attachment at index
 `attachmentIndex` was not created with
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT` then the
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](resources.html#VkImageCreateFlagBits) then the
 values specified in `sampleLocationsInfo` are ignored.
 
 Valid Usage
@@ -11338,10 +11381,10 @@ layout the attachment is used with in the subpass specified in
 
 If the image referenced by the depth/stencil attachment used in the subpass
 identified by `subpassIndex` was not created with
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT` or if the
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](resources.html#VkImageCreateFlagBits) or if the
 subpass does not use a depth/stencil attachment, and
 [VkPhysicalDeviceSampleLocationsPropertiesEXT](limits.html#VkPhysicalDeviceSampleLocationsPropertiesEXT)::`variableSampleLocations`
-is `VK_TRUE` then the values specified in `sampleLocationsInfo` are
+is [VK_TRUE](fundamentals.html#VK_TRUE) then the values specified in `sampleLocationsInfo` are
 ignored.
 
 Valid Usage
@@ -11390,24 +11433,24 @@ Valid Usage
 * 
 [](#VUID-VkRenderPassTransformBeginInfoQCOM-transform-02871) VUID-VkRenderPassTransformBeginInfoQCOM-transform-02871
 
-`transform` **must** be `VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR`,
-`VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR`,
-`VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR`, or
-`VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR`
+`transform` **must** be [VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR),
+[VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR](VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR),
+[VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR](VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR), or
+[VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR](VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR)
 
 * 
 [](#VUID-VkRenderPassTransformBeginInfoQCOM-flags-02872) VUID-VkRenderPassTransformBeginInfoQCOM-flags-02872
 
 The `renderpass` **must** have been created with
 [VkRenderPassCreateInfo](#VkRenderPassCreateInfo)::`flags` containing
-`VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM`
+[VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM](#VkRenderPassCreateFlagBits)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkRenderPassTransformBeginInfoQCOM-sType-sType) VUID-VkRenderPassTransformBeginInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_TRANSFORM_BEGIN_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_TRANSFORM_BEGIN_INFO_QCOM](fundamentals.html#VkStructureType)
 
 The tile properties queried using [VK_QCOM_tile_properties](../appendices/extensions.html#VK_QCOM_tile_properties) depend on
 the size of the reserved tile memory by the application.
@@ -11462,14 +11505,14 @@ Valid Usage
 [](#VUID-VkTileMemorySizeInfoQCOM-size-10729) VUID-VkTileMemorySizeInfoQCOM-size-10729
 
 `size` must be less than or equal to the largest size memory heap
-with the `VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property
+with the [VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](memory.html#VkMemoryHeapFlagBits) property
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkTileMemorySizeInfoQCOM-sType-sType) VUID-VkTileMemorySizeInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TILE_MEMORY_SIZE_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TILE_MEMORY_SIZE_INFO_QCOM](fundamentals.html#VkStructureType)
 
 The `VkSubpassBeginInfo` structure is defined as:
 
@@ -11504,7 +11547,7 @@ Valid Usage
 [](#VUID-VkSubpassBeginInfo-contents-09382) VUID-VkSubpassBeginInfo-contents-09382
 
 If `contents` is
-`VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR`, then
+[VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR](#VkSubpassContents), then
 at least one of the following features **must** be enabled:
 
 [`maintenance7`](features.html#features-maintenance7)
@@ -11517,7 +11560,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSubpassBeginInfo-sType-sType) VUID-VkSubpassBeginInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSubpassBeginInfo-pNext-pNext) VUID-VkSubpassBeginInfo-pNext-pNext
@@ -11543,19 +11586,19 @@ typedef enum VkSubpassContents {
 } VkSubpassContents;
 
 * 
-`VK_SUBPASS_CONTENTS_INLINE` specifies that the contents of the
+[VK_SUBPASS_CONTENTS_INLINE](#VkSubpassContents) specifies that the contents of the
 subpass will be recorded inline in the primary command buffer, and
 secondary command buffers **must** not be executed within the subpass.
 
 * 
-`VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS` specifies that the
+[VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS](#VkSubpassContents) specifies that the
 contents are recorded in secondary command buffers that will be called
 from the primary command buffer, and [vkCmdExecuteCommands](cmdbuffers.html#vkCmdExecuteCommands) is the
 only valid command in the command buffer until [vkCmdNextSubpass](#vkCmdNextSubpass) or
 [vkCmdEndRenderPass](#vkCmdEndRenderPass).
 
 * 
-`VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR`
+[VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR](#VkSubpassContents)
 specifies that the contents of the subpass **can** be recorded both inline
 and in secondary command buffers executed from this command buffer with
 [vkCmdExecuteCommands](cmdbuffers.html#vkCmdExecuteCommands).
@@ -11616,7 +11659,7 @@ If `deviceRenderAreaCount` is not zero, then the elements of
 specific to each physical device.
 These render areas serve the same purpose as
 [VkRenderPassBeginInfo](#VkRenderPassBeginInfo)::`renderArea`, including controlling the
-region of attachments that are cleared by `VK_ATTACHMENT_LOAD_OP_CLEAR`
+region of attachments that are cleared by [VK_ATTACHMENT_LOAD_OP_CLEAR](#VkAttachmentLoadOp)
 and that are resolved into resolve attachments.
 
 If this structure is not present, the render pass instance’s device mask is
@@ -11692,7 +11735,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceGroupRenderPassBeginInfo-sType-sType) VUID-VkDeviceGroupRenderPassBeginInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_GROUP_RENDER_PASS_BEGIN_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_GROUP_RENDER_PASS_BEGIN_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceGroupRenderPassBeginInfo-pDeviceRenderAreas-parameter) VUID-VkDeviceGroupRenderPassBeginInfo-pDeviceRenderAreas-parameter
@@ -11749,7 +11792,7 @@ Each element of `pAttachments` **must** have been created with the
 
 Each element of `pAttachments` **must** have been created with
 [VkImageViewCreateInfo](resources.html#VkImageViewCreateInfo)::`viewType` not equal to
-`VK_IMAGE_VIEW_TYPE_3D`
+[VK_IMAGE_VIEW_TYPE_3D](resources.html#VkImageViewType)
 
 * 
 [](#VUID-VkRenderPassAttachmentBeginInfo-pAttachments-07010) VUID-VkRenderPassAttachmentBeginInfo-pAttachments-07010
@@ -11757,7 +11800,7 @@ Each element of `pAttachments` **must** have been created with
 If
 [multisampled-render-to-single-sampled](#subpass-multisampledrendertosinglesampled)
 is enabled for any subpass, all element of `pAttachments` which have
-a sample count equal to `VK_SAMPLE_COUNT_1_BIT` **must** have a format
+a sample count equal to [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits) **must** have a format
 that supports the sample count specified in
 [VkMultisampledRenderToSingleSampledInfoEXT](#VkMultisampledRenderToSingleSampledInfoEXT)::`rasterizationSamples`
 
@@ -11766,7 +11809,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassAttachmentBeginInfo-sType-sType) VUID-VkRenderPassAttachmentBeginInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderPassAttachmentBeginInfo-pAttachments-parameter) VUID-VkRenderPassAttachmentBeginInfo-pAttachments-parameter
@@ -11885,7 +11928,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM-sType-sType) VUID-VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM-pPerViewRenderAreas-parameter) VUID-VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM-pPerViewRenderAreas-parameter
@@ -12025,7 +12068,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdNextSubpass-commandBuffer-cmdpool) VUID-vkCmdNextSubpass-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdNextSubpass-renderpass) VUID-vkCmdNextSubpass-renderpass
@@ -12142,7 +12185,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdNextSubpass2-commandBuffer-cmdpool) VUID-vkCmdNextSubpass2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdNextSubpass2-renderpass) VUID-vkCmdNextSubpass2-renderpass
@@ -12274,7 +12317,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdEndRenderPass-commandBuffer-cmdpool) VUID-vkCmdEndRenderPass-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdEndRenderPass-renderpass) VUID-vkCmdEndRenderPass-renderpass
@@ -12415,7 +12458,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdEndRenderPass2-commandBuffer-cmdpool) VUID-vkCmdEndRenderPass2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdEndRenderPass2-renderpass) VUID-vkCmdEndRenderPass2-renderpass
@@ -12485,7 +12528,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSubpassEndInfo-sType-sType) VUID-VkSubpassEndInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SUBPASS_END_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SUBPASS_END_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSubpassEndInfo-pNext-pNext) VUID-VkSubpassEndInfo-pNext-pNext
@@ -12561,8 +12604,8 @@ density map is not enabled in the render pass,
 
 If
 [VkRenderPassFragmentDensityMapCreateInfoEXT](#VkRenderPassFragmentDensityMapCreateInfoEXT)::`fragmentDensityMapAttachment`
-is not `VK_ATTACHMENT_UNUSED` and was not created with
-`VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT`,
+is not [VK_ATTACHMENT_UNUSED](#VK_ATTACHMENT_UNUSED) and was not created with
+[VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT](resources.html#VkImageCreateFlagBits),
 `fragmentDensityOffsetCount` **must** equal `0`
 
 * 
@@ -12570,35 +12613,35 @@ is not `VK_ATTACHMENT_UNUSED` and was not created with
 
 If the depth or stencil attachments for the render pass are used and
 were not created with
-`VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT`,
+[VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT](resources.html#VkImageCreateFlagBits),
 `fragmentDensityOffsetCount` **must** equal `0`
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pInputAttachments-06506) VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pInputAttachments-06506
 
 If any used input attachments for the render pass were not created with
-`VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT`,
+[VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT](resources.html#VkImageCreateFlagBits),
 `fragmentDensityOffsetCount` **must** equal `0`
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pColorAttachments-06507) VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pColorAttachments-06507
 
 If any used color attachments for the render pass were not created with
-`VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT`,
+[VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT](resources.html#VkImageCreateFlagBits),
 `fragmentDensityOffsetCount` **must** equal `0`
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pResolveAttachments-06508) VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pResolveAttachments-06508
 
 If any used resolve attachments for the render pass were not created
-with `VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT`,
+with [VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT](resources.html#VkImageCreateFlagBits),
 `fragmentDensityOffsetCount` **must** equal `0`
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pPreserveAttachments-06509) VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pPreserveAttachments-06509
 
 If any used preserve attachments for the render pass were not created
-with `VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT`,
+with [VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT](resources.html#VkImageCreateFlagBits),
 `fragmentDensityOffsetCount` **must** equal `0`
 
 * 
@@ -12641,7 +12684,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-sType-sType) VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_OFFSET_END_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_OFFSET_END_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pFragmentDensityOffsets-parameter) VUID-VkRenderPassFragmentDensityMapOffsetEndInfoEXT-pFragmentDensityOffsets-parameter
@@ -12676,11 +12719,11 @@ merging will be disabled.
 
 If a `VkRenderPassCreationControlEXT` structure is included in the
 `pNext` chain of [VkRenderPassCreateInfo2](#VkRenderPassCreateInfo2) and its value of
-`disallowMerging` is `VK_TRUE`, the implementation will disable
+`disallowMerging` is [VK_TRUE](fundamentals.html#VK_TRUE), the implementation will disable
 subpass merging for the entire render pass.
 If a `VkRenderPassCreationControlEXT` structure is included in the
 `pNext` chain of [VkSubpassDescription2](#VkSubpassDescription2) and its value of
-`disallowMerging` is `VK_TRUE`, the implementation will disable
+`disallowMerging` is [VK_TRUE](fundamentals.html#VK_TRUE), the implementation will disable
 merging the described subpass with previous subpasses in the render pass.
 
 Valid Usage (Implicit)
@@ -12688,7 +12731,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassCreationControlEXT-sType-sType) VUID-VkRenderPassCreationControlEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_CREATION_CONTROL_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_CREATION_CONTROL_EXT](fundamentals.html#VkStructureType)
 
 To obtain feedback about the creation of a render pass, include a
 `VkRenderPassCreationFeedbackCreateInfoEXT` structure in the `pNext`
@@ -12722,7 +12765,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassCreationFeedbackCreateInfoEXT-sType-sType) VUID-VkRenderPassCreationFeedbackCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_CREATION_FEEDBACK_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_CREATION_FEEDBACK_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderPassCreationFeedbackCreateInfoEXT-pRenderPassFeedback-parameter) VUID-VkRenderPassCreationFeedbackCreateInfoEXT-pRenderPassFeedback-parameter
@@ -12774,7 +12817,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassSubpassFeedbackCreateInfoEXT-sType-sType) VUID-VkRenderPassSubpassFeedbackCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_SUBPASS_FEEDBACK_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_SUBPASS_FEEDBACK_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderPassSubpassFeedbackCreateInfoEXT-pSubpassFeedback-parameter) VUID-VkRenderPassSubpassFeedbackCreateInfoEXT-pSubpassFeedback-parameter
@@ -12794,12 +12837,12 @@ typedef struct VkRenderPassSubpassFeedbackInfoEXT {
 } VkRenderPassSubpassFeedbackInfoEXT;
 
 * 
-`subpassMergeStatus` is a `VkSubpassMergeStatusEXT` value
+`subpassMergeStatus` is a [VkSubpassMergeStatusEXT](#VkSubpassMergeStatusEXT) value
 specifying information about whether the subpass is merged with the
 previous subpass and the reason why it is not merged.
 
 * 
-`description` is an array of `VK_MAX_DESCRIPTION_SIZE` `char`
+`description` is an array of [VK_MAX_DESCRIPTION_SIZE](extensions.html#VK_MAX_DESCRIPTION_SIZE) `char`
 containing a null-terminated UTF-8 string which provides additional
 details.
 
@@ -12828,11 +12871,11 @@ typedef enum VkSubpassMergeStatusEXT {
 } VkSubpassMergeStatusEXT;
 
 * 
-`VK_SUBPASS_MERGE_STATUS_MERGED_EXT` specifies that the subpass is
+[VK_SUBPASS_MERGE_STATUS_MERGED_EXT](#VkSubpassMergeStatusEXT) specifies that the subpass is
 merged with a previous subpass.
 
 * 
-`VK_SUBPASS_MERGE_STATUS_DISALLOWED_EXT` specifies that the subpass
+[VK_SUBPASS_MERGE_STATUS_DISALLOWED_EXT](#VkSubpassMergeStatusEXT) specifies that the subpass
 is not merged because merging was disabled using
 [VkRenderPassCreationControlEXT](#VkRenderPassCreationControlEXT).
 If the render pass does not allow subpass merging, then all subpass
@@ -12841,63 +12884,63 @@ If a subpass description does not allow subpass merging, then only that
 subpass’s status is set to this value.
 
 * 
-`VK_SUBPASS_MERGE_STATUS_NOT_MERGED_SIDE_EFFECTS_EXT` specifies that
+[VK_SUBPASS_MERGE_STATUS_NOT_MERGED_SIDE_EFFECTS_EXT](#VkSubpassMergeStatusEXT) specifies that
 the subpass is not merged because it contains side effects.
 
 * 
-`VK_SUBPASS_MERGE_STATUS_NOT_MERGED_SAMPLES_MISMATCH_EXT` specifies
+[VK_SUBPASS_MERGE_STATUS_NOT_MERGED_SAMPLES_MISMATCH_EXT](#VkSubpassMergeStatusEXT) specifies
 that the subpass is not merged because sample count is not compatible
 with the previous subpass.
 
 * 
-`VK_SUBPASS_MERGE_STATUS_NOT_MERGED_VIEWS_MISMATCH_EXT` specifies
+[VK_SUBPASS_MERGE_STATUS_NOT_MERGED_VIEWS_MISMATCH_EXT](#VkSubpassMergeStatusEXT) specifies
 that the subpass is not merged because view masks do not match with
 previous subpass.
 
 * 
-`VK_SUBPASS_MERGE_STATUS_NOT_MERGED_ALIASING_EXT` specifies that the
+[VK_SUBPASS_MERGE_STATUS_NOT_MERGED_ALIASING_EXT](#VkSubpassMergeStatusEXT) specifies that the
 subpass is not merged because of attachments aliasing between them.
 
 * 
-`VK_SUBPASS_MERGE_STATUS_NOT_MERGED_DEPENDENCIES_EXT` specifies that
+[VK_SUBPASS_MERGE_STATUS_NOT_MERGED_DEPENDENCIES_EXT](#VkSubpassMergeStatusEXT) specifies that
 the subpass is not merged because subpass dependencies do not allow
 merging.
 
 * 
-`VK_SUBPASS_MERGE_STATUS_NOT_MERGED_INCOMPATIBLE_INPUT_ATTACHMENT_EXT`
+[VK_SUBPASS_MERGE_STATUS_NOT_MERGED_INCOMPATIBLE_INPUT_ATTACHMENT_EXT](#VkSubpassMergeStatusEXT)
 specifies that the subpass is not merged because input attachment is not
 a color attachment from previous subpass or the formats are
 incompatible.
 
 * 
-`VK_SUBPASS_MERGE_STATUS_NOT_MERGED_TOO_MANY_ATTACHMENTS_EXT`
+[VK_SUBPASS_MERGE_STATUS_NOT_MERGED_TOO_MANY_ATTACHMENTS_EXT](#VkSubpassMergeStatusEXT)
 specifies that the subpass is not merged because of too many
 attachments.
 
 * 
-`VK_SUBPASS_MERGE_STATUS_NOT_MERGED_INSUFFICIENT_STORAGE_EXT`
+[VK_SUBPASS_MERGE_STATUS_NOT_MERGED_INSUFFICIENT_STORAGE_EXT](#VkSubpassMergeStatusEXT)
 specifies that the subpass is not merged because of insufficient memory.
 
 * 
-`VK_SUBPASS_MERGE_STATUS_NOT_MERGED_DEPTH_STENCIL_COUNT_EXT`
+[VK_SUBPASS_MERGE_STATUS_NOT_MERGED_DEPTH_STENCIL_COUNT_EXT](#VkSubpassMergeStatusEXT)
 specifies that the subpass is not merged because of too many
 depth/stencil attachments.
 
 * 
-`VK_SUBPASS_MERGE_STATUS_NOT_MERGED_RESOLVE_ATTACHMENT_REUSE_EXT`
+[VK_SUBPASS_MERGE_STATUS_NOT_MERGED_RESOLVE_ATTACHMENT_REUSE_EXT](#VkSubpassMergeStatusEXT)
 specifies that the subpass is not merged because a resolve attachment is
 reused as an input attachment in a subsequent subpass.
 
 * 
-`VK_SUBPASS_MERGE_STATUS_NOT_MERGED_SINGLE_SUBPASS_EXT` specifies
+[VK_SUBPASS_MERGE_STATUS_NOT_MERGED_SINGLE_SUBPASS_EXT](#VkSubpassMergeStatusEXT) specifies
 that the subpass is not merged because the render pass has only one
 subpass.
 
 * 
-`VK_SUBPASS_MERGE_STATUS_NOT_MERGED_UNSPECIFIED_EXT` specifies that
+[VK_SUBPASS_MERGE_STATUS_NOT_MERGED_UNSPECIFIED_EXT](#VkSubpassMergeStatusEXT) specifies that
 the subpass is not merged for unspecified reasons.
 Implementations **should** return this value when no other
-`VkSubpassMergeStatusEXT` value is appropriate.
+[VkSubpassMergeStatusEXT](#VkSubpassMergeStatusEXT) value is appropriate.
 
 Due to the complexity of how rendering is performed, there are several ways
 an application can accidentally introduce a data race, usually by doing
@@ -12909,8 +12952,8 @@ Vulkan includes read-only layouts for depth/stencil images, that allow the
 images to be both read during a render pass for the purposes of
 depth/stencil tests, and read as a non-attachment.
 
-However, because `VK_ATTACHMENT_STORE_OP_STORE` and
-`VK_ATTACHMENT_STORE_OP_DONT_CARE` may perform write operations, even if
+However, because [VK_ATTACHMENT_STORE_OP_STORE](#VkAttachmentStoreOp) and
+[VK_ATTACHMENT_STORE_OP_DONT_CARE](#VkAttachmentStoreOp) may perform write operations, even if
 no recorded command writes to an attachment, reading from an image while
 also using it as an attachment with these store operations can result in a
 data race.
@@ -12926,7 +12969,7 @@ In practice, many applications have shipped reading samples outside of the
 covered fragment without any observable issue, but there is no guarantee
 that this will always work, and it is not advisable to rely on this in new
 or re-worked code bases.
-As `VK_ATTACHMENT_STORE_OP_NONE` is guaranteed to perform no writes,
+As [VK_ATTACHMENT_STORE_OP_NONE](#VkAttachmentStoreOp) is guaranteed to perform no writes,
 applications wishing to read an image as both an attachment and a
 non-attachment should make use of this store operation, coupled with a load
 operation that also performs no writes.
@@ -12946,18 +12989,41 @@ Feedback loop is enabled for an attachment if either of the following
 conditions are satisfied:
 
 * 
-The corresponding image is in the
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` layout
+The corresponding attachment is in the
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout) layout
 
 * 
 For the attachment identified by
 [VkRenderingAttachmentInfo](#VkRenderingAttachmentInfo)::`imageView`,
 [VkAttachmentFeedbackLoopInfoEXT](#VkAttachmentFeedbackLoopInfoEXT)::`feedbackLoopEnable` is
-`VK_TRUE`
+[VK_TRUE](fundamentals.html#VK_TRUE)
 
 In that case the overlap is defined to occur at a per-pixel granularity, and
 applications can read data from pixels outside the render area without
 introducing a data race.
+
+In addition to the attachment layout requirements, extra state **must** be set
+for non-attachment uses to be valid.
+For every image aspect accessed with feedback loops, one of the following
+conditions **must** be satisfied:
+
+* 
+The feedback loop attachment is a color attachment, and the bound
+pipeline was created with
+[VK_PIPELINE_CREATE_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits).
+
+* 
+The feedback loop attachment is a depth-stencil attachment, and the
+bound pipeline was created with
+[VK_PIPELINE_CREATE_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](pipelines.html#VkPipelineCreateFlagBits).
+
+* 
+
+There is no bound pipeline or the bound pipeline was created with
+[VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT](pipelines.html#VkDynamicState) and the
+`aspectMask` state in [vkCmdSetAttachmentFeedbackLoopEnableEXT](#vkCmdSetAttachmentFeedbackLoopEnableEXT)
+has been set and not subsequently [    invalidated](pipelines.html#dynamic-state-lifetime) in the current command buffer, and `aspectMask`
+includes all aspects which require feedback loop.
 
 When rendering to only the depth OR stencil aspect of an image, an input
 attachment accessing the other aspect will
@@ -12965,11 +13031,11 @@ not cause a data race only under very specific conditions.
 To avoid a data race, the aspect not being written **must** be in a read-only
 layout, and writes to it **must** be disabled in the draw state.
 For example, to read from stencil while writing depth, the attachment **must**
-be in `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL` (or
+be in [VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) (or
 equivalent), and the stencil write mask **must** be 0.
 Similarly to read from depth while writing stencil, the attachment **must** be
-in `VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL` (or
-equivalent), and depth write enable **must** be `VK_FALSE`.
+in [VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) (or
+equivalent), and depth write enable **must** be [VK_FALSE](fundamentals.html#VK_FALSE).
 
 There are several synchronization options available to synchronize between
 accesses to resources within a render pass.
@@ -12992,17 +13058,17 @@ attachment writes in the subpass with subsequent non-attachment reads if
 * 
 If a subresource is used as a color and input attachment, and the
 pipeline performing the read was created with
-`VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT`
+[VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT](framebuffer.html#VkPipelineColorBlendStateCreateFlagBits)
 
 * 
 If a subresource is used as a depth and input attachment, and the
 pipeline performing the read was created with
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT`
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT](fragops.html#VkPipelineDepthStencilStateCreateFlagBits)
 
 * 
 If a subresource is used as a stencil and input attachment, and the
 pipeline performing the read was created with
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT`
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT](fragops.html#VkPipelineDepthStencilStateCreateFlagBits)
 
 * 
 If a subresource is used as two separate non-attachment resources,
@@ -13058,25 +13124,25 @@ Valid Usage
 [](#VUID-VkRenderPassTileShadingCreateInfoQCOM-tileShading-10658) VUID-VkRenderPassTileShadingCreateInfoQCOM-tileShading-10658
 
 If the [`tileShading`](features.html#features-tileShading) feature is not
-enabled, `VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` **must** not be
+enabled, [VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](#VkTileShadingRenderPassFlagBitsQCOM) **must** not be
 included in `flags`
 
 * 
 [](#VUID-VkRenderPassTileShadingCreateInfoQCOM-flags-10659) VUID-VkRenderPassTileShadingCreateInfoQCOM-flags-10659
 
-If `VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` is not included in
+If [VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](#VkTileShadingRenderPassFlagBitsQCOM) is not included in
 `flags` or the [`tileShadingApron`](features.html#features-tileShadingApron)
 feature is not enabled, `tileApronSize` **must** be `(0,0)`
 
 * 
 [](#VUID-VkRenderPassTileShadingCreateInfoQCOM-flags-10660) VUID-VkRenderPassTileShadingCreateInfoQCOM-flags-10660
 
-If `VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` is not included in
+If [VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](#VkTileShadingRenderPassFlagBitsQCOM) is not included in
 `flags`, or neither the
 [tileShadingPerTileDispatch](features.html#features-tileShadingPerTileDispatch) and
 [tileShadingPerTileDraw](features.html#features-tileShadingPerTileDraw) features are
 enabled, `flags` **must** not include
-`VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM`
+[VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM](#VkTileShadingRenderPassFlagBitsQCOM)
 
 * 
 [](#VUID-VkRenderPassTileShadingCreateInfoQCOM-tileShadingAnisotropicApron-10661) VUID-VkRenderPassTileShadingCreateInfoQCOM-tileShadingAnisotropicApron-10661
@@ -13101,7 +13167,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassTileShadingCreateInfoQCOM-sType-sType) VUID-VkRenderPassTileShadingCreateInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkRenderPassTileShadingCreateInfoQCOM-flags-parameter) VUID-VkRenderPassTileShadingCreateInfoQCOM-flags-parameter
@@ -13119,11 +13185,11 @@ typedef enum VkTileShadingRenderPassFlagBitsQCOM {
 } VkTileShadingRenderPassFlagBitsQCOM;
 
 * 
-`VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` specifies that the
+[VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](#VkTileShadingRenderPassFlagBitsQCOM) specifies that the
 render pass has tile shading enabled.
 
 * 
-`VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM` specifies
+[VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM](#VkTileShadingRenderPassFlagBitsQCOM) specifies
 that the secondary command buffer will be executed within a
 [per-tile execution block](#renderpass-per-tile-execution-model).
 
@@ -13147,7 +13213,7 @@ In a render pass that [enables](#renderpass-tile-shading) tile shading, a
 [VkRenderPassTileShadingCreateInfoQCOM](#VkRenderPassTileShadingCreateInfoQCOM)::`tileApronSize` to a value
 other than (0,0).
 Additionally, subpass `flags` **must** include
-`VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM`
+[VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM](#VkSubpassDescriptionFlagBits)
 if the render pass is not a dynamic render pass
 or the apron size for that subpass will be (0,0).
 The tile apron enables shader invocations to load from tile attachment
@@ -13168,16 +13234,17 @@ few pixels of the adjacent tiles.
 Those pixels that are outside the original tile extents, but within the
 apron extents are “apron pixels”.
 In a render pass that enables tile shading, apron pixels will be initialized
-by the `VkAttachmentLoadOp`, and **may** be updated by any draw within the
+by the [VkAttachmentLoadOp](#VkAttachmentLoadOp), and **may** be updated by any draw within the
 render pass, but are always discarded and never written by
-`VkAttachmentStoreOp`.
+[VkAttachmentStoreOp](#VkAttachmentStoreOp).
 Apron pixels **can** be read as a result of using `OpImageRead`,
 `OpImageSparseRead`, `OpImageSample*`, `OpImageSparseSample*`,
 `OpImage*Gather`, `OpImageSparse*Gather`,
 `OpImageSampleWeightedQCOM`, OpImageBoxFilterQCOM,
 OpImageBlockMatch*QCOM,
 `OpImageFetch`, or `OpImageSparseFetch` but **cannot** be written using
-`OpImageWrite` or with atomic operations using `OpImageTexelPointer`.
+`OpImageWrite` or with atomic operations using
+`OpImageTexelPointer`.
 
 For image processing use cases, the tiling apron allows fragment and compute
 shader invocations to read or sample color attachment pixels within the
@@ -13271,7 +13338,7 @@ In practice, this may require that the coordinates are clamped in the shader
 code. |
 
 If *tile shading* is [enabled](#renderpass-tile-shading) for a render pass
-instance, then [framebuffer-local dependencies](synchronization.html#synchronization-framebuffer-regions) defined using `VK_DEPENDENCY_BY_REGION_BIT` specify a
+instance, then [framebuffer-local dependencies](synchronization.html#synchronization-framebuffer-regions) defined using [VK_DEPENDENCY_BY_REGION_BIT](synchronization.html#VkDependencyFlagBits) specify a
 [framebuffer region](synchronization.html#synchronization-framebuffer-regions) equal to the
 region covered by the *active tile*.
 
@@ -13285,7 +13352,7 @@ Otherwise, the extent of the *active tile* is defined by the tile exposed by
 `[VK_QCOM_tile_properties](../appendices/extensions.html#VK_QCOM_tile_properties)` that contains the framebuffer coordinate
    of the fragment being processed.
 
-|  | Without tile shading the [*framebuffer region*](synchronization.html#synchronization-framebuffer-regions) described by `VK_DEPENDENCY_BY_REGION_BIT` must be assumed by
+|  | Without tile shading the [*framebuffer region*](synchronization.html#synchronization-framebuffer-regions) described by [VK_DEPENDENCY_BY_REGION_BIT](synchronization.html#VkDependencyFlagBits) must be assumed by
 | --- | --- |
 applications to be no larger than a single pixel or single sample.
 
@@ -13360,7 +13427,7 @@ recorded
 
 * 
 Access of an attachment with layout
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` as provided
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout) as provided
 by `[VK_EXT_attachment_feedback_loop_layout](../appendices/extensions.html#VK_EXT_attachment_feedback_loop_layout)` is disallowed
 
 * 
@@ -13412,7 +13479,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBeginPerTileExecutionQCOM-commandBuffer-cmdpool) VUID-vkCmdBeginPerTileExecutionQCOM-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBeginPerTileExecutionQCOM-renderpass) VUID-vkCmdBeginPerTileExecutionQCOM-renderpass
@@ -13462,7 +13529,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPerTileBeginInfoQCOM-sType-sType) VUID-VkPerTileBeginInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PER_TILE_BEGIN_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PER_TILE_BEGIN_INFO_QCOM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPerTileBeginInfoQCOM-pNext-pNext) VUID-VkPerTileBeginInfoQCOM-pNext-pNext
@@ -13520,7 +13587,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdEndPerTileExecutionQCOM-commandBuffer-cmdpool) VUID-vkCmdEndPerTileExecutionQCOM-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdEndPerTileExecutionQCOM-renderpass) VUID-vkCmdEndPerTileExecutionQCOM-renderpass
@@ -13570,7 +13637,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPerTileEndInfoQCOM-sType-sType) VUID-VkPerTileEndInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PER_TILE_END_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PER_TILE_END_INFO_QCOM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPerTileEndInfoQCOM-pNext-pNext) VUID-VkPerTileEndInfoQCOM-pNext-pNext

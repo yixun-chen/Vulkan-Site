@@ -63,7 +63,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkScreenSurfaceCreateInfoQNX-sType-sType) VUID-VkScreenSurfaceCreateInfoQNX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SCREEN_SURFACE_CREATE_INFO_QNX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SCREEN_SURFACE_CREATE_INFO_QNX](VkStructureType.html)
 
 * 
 [](#VUID-VkScreenSurfaceCreateInfoQNX-pNext-pNext) VUID-VkScreenSurfaceCreateInfoQNX-pNext-pNext

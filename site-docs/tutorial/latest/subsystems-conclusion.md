@@ -172,7 +172,7 @@ The complete code for this chapter can be found in the following files:
 * 
 `simple_engine/31_physics_subsystem.cpp`: Implementation of the physics subsystem with Vulkan acceleration
 
-[Audio Subsystem C++ code](../../attachments/simple_engine/30_audio_subsystem.cpp)
-[Physics Subsystem C++ code](../../attachments/simple_engine/31_physics_subsystem.cpp)
+[Audio Subsystem C++ code](../../_attachments/simple_engine/30_audio_subsystem.cpp)
+[Physics Subsystem C++ code](../../_attachments/simple_engine/31_physics_subsystem.cpp)
 
-[Previous: Vulkan for Physics Simulation](#05_vulkan_physics.adoc) | [Next: Tooling](#../Tooling/01_introduction.adoc) | [Back to Building a Simple Engine](../index.html)
+[Previous: Vulkan for Physics Simulation](05_vulkan_physics.html) | [Next: Tooling](../Tooling/01_introduction.html) | [Back to Building a Simple Engine](../../00_Introduction.html)

@@ -52,6 +52,8 @@ recalculating it.
 Any shader module identifiers, shader modules, or chained
 [VkShaderModuleCreateInfo](VkShaderModuleCreateInfo.html) structures declared in
 [VkPipelineShaderStageCreateInfo](VkPipelineShaderStageCreateInfo.html) instances, are ignored.
+Any [VkShaderDescriptorSetAndBindingMappingInfoEXT](VkShaderDescriptorSetAndBindingMappingInfoEXT.html) in the `pNext`
+chains of [VkPipelineShaderStageCreateInfo](VkPipelineShaderStageCreateInfo.html) instances are ignored.
 
 If this structure is not included in the `pNext` chain, it is equivalent
 to specifying this structure with a `binaryCount` of `0`.
@@ -66,7 +68,7 @@ Valid Usage
 [vkCreatePipelineBinariesKHR](vkCreatePipelineBinariesKHR.html) for the matching
 `Vk*PipelineCreateInfo` structure and its `pNext` chain,
 ignoring the presence of the `VkPipelineBinaryInfoKHR` structure,
-the presence of the `VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR`
+the presence of the [VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](VkPipelineCreateFlagBits2.html)
 flag, and absence of any shader module identifiers, shader modules, or
 `VkShaderModuleCreateInfo` structures, for the same
 [global pipeline key](../../../../spec/latest/chapters/pipelines.html#global-pipeline-key), from either:
@@ -81,7 +83,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineBinaryInfoKHR-sType-sType) VUID-VkPipelineBinaryInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_BINARY_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_BINARY_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineBinaryInfoKHR-pPipelineBinaries-parameter) VUID-VkPipelineBinaryInfoKHR-pPipelineBinaries-parameter

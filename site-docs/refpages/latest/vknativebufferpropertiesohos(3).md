@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkNativeBufferPropertiesOHOS-sType-sType) VUID-VkNativeBufferPropertiesOHOS-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_NATIVE_BUFFER_PROPERTIES_OHOS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_NATIVE_BUFFER_PROPERTIES_OHOS](VkStructureType.html)
 
 * 
 [](#VUID-VkNativeBufferPropertiesOHOS-pNext-pNext) VUID-VkNativeBufferPropertiesOHOS-pNext-pNext

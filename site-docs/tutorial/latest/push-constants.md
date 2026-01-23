@@ -126,4 +126,4 @@ For our PBR implementation, we’ll use push constants for material properties a
 
 In the next section, we’ll implement a basic lighting shader that uses push constants for material properties.
 
-[Previous: Lighting Models](02_lighting_models.adoc) | [Next: Lighting Implementation](04_lighting_implementation.adoc)
+[Previous: Lighting Models](02_lighting_models.html) | [Next: Lighting Implementation](04_lighting_implementation.html)

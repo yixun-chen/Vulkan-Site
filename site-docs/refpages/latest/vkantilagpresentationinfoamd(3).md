@@ -42,10 +42,10 @@ application stage.
 
 * 
 `frameIndex` is set just before the application processes input data
-(`VK_ANTI_LAG_STAGE_INPUT_AMD`).
+([VK_ANTI_LAG_STAGE_INPUT_AMD](VkAntiLagStageAMD.html)).
 The same `frameIndex` value **should** be set before the frame with
 current input data will be presented by [vkQueuePresentKHR](vkQueuePresentKHR.html)
-(`VK_ANTI_LAG_STAGE_PRESENT_AMD`).
+([VK_ANTI_LAG_STAGE_PRESENT_AMD](VkAntiLagStageAMD.html)).
 This **should** be done for each frame.
 
 This structure specifies information about the presentation stage for which
@@ -56,7 +56,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAntiLagPresentationInfoAMD-sType-sType) VUID-VkAntiLagPresentationInfoAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD](VkStructureType.html)
 
 * 
 [](#VUID-VkAntiLagPresentationInfoAMD-stage-parameter) VUID-VkAntiLagPresentationInfoAMD-stage-parameter

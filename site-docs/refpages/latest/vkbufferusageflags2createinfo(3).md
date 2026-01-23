@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferUsageFlags2CreateInfo-sType-sType) VUID-VkBufferUsageFlags2CreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkBufferUsageFlags2CreateInfo-usage-parameter) VUID-VkBufferUsageFlags2CreateInfo-usage-parameter

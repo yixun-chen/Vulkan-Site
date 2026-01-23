@@ -27,7 +27,7 @@ typedef enum VkDeviceFaultVendorBinaryHeaderVersionEXT {
 } VkDeviceFaultVendorBinaryHeaderVersionEXT;
 
 * 
-`VK_DEVICE_FAULT_VENDOR_BINARY_HEADER_VERSION_ONE_EXT` specifies
+[VK_DEVICE_FAULT_VENDOR_BINARY_HEADER_VERSION_ONE_EXT](#) specifies
 version one of the binary crash dump header.
 
 [VK_EXT_device_fault](VK_EXT_device_fault.html), [VkDeviceFaultVendorBinaryHeaderVersionOneEXT](VkDeviceFaultVendorBinaryHeaderVersionOneEXT.html), [vkGetDeviceFaultInfoEXT](vkGetDeviceFaultInfoEXT.html)

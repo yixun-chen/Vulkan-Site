@@ -82,7 +82,7 @@ by this structure include only operations and memory accesses specified by
 Both [access scopes](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-access-scopes) are
 limited to only memory accesses to `tensor`.
 
-If `tensor` was created with `VK_SHARING_MODE_EXCLUSIVE`, and
+If `tensor` was created with [VK_SHARING_MODE_EXCLUSIVE](VkSharingMode.html), and
 `srcQueueFamilyIndex` is not equal to `dstQueueFamilyIndex`, this
 memory barrier defines a [queue family transfer operation](../../../../spec/latest/chapters/synchronization.html#synchronization-queue-transfers).
 When executed on a queue in the family identified by
@@ -110,24 +110,24 @@ Valid Usage
 [](#VUID-VkTensorMemoryBarrierARM-tensor-09755) VUID-VkTensorMemoryBarrierARM-tensor-09755
 
 If `tensor` was created with a sharing mode of
-`VK_SHARING_MODE_CONCURRENT`, `srcQueueFamilyIndex` and
-`dstQueueFamilyIndex` **must** both be `VK_QUEUE_FAMILY_IGNORED`
+[VK_SHARING_MODE_CONCURRENT](VkSharingMode.html), `srcQueueFamilyIndex` and
+`dstQueueFamilyIndex` **must** both be [VK_QUEUE_FAMILY_IGNORED](VK_QUEUE_FAMILY_IGNORED.html)
 
 * 
 [](#VUID-VkTensorMemoryBarrierARM-tensor-09756) VUID-VkTensorMemoryBarrierARM-tensor-09756
 
 If `tensor` was created with a sharing mode of
-`VK_SHARING_MODE_EXCLUSIVE`, `srcQueueFamilyIndex` and
+[VK_SHARING_MODE_EXCLUSIVE](VkSharingMode.html), `srcQueueFamilyIndex` and
 `dstQueueFamilyIndex` **must** both be either
-`VK_QUEUE_FAMILY_IGNORED`, or a valid queue family (see
+[VK_QUEUE_FAMILY_IGNORED](VK_QUEUE_FAMILY_IGNORED.html), or a valid queue family (see
 [Queue Family Properties](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-queueprops))
 
 * 
 [](#VUID-VkTensorMemoryBarrierARM-tensor-09757) VUID-VkTensorMemoryBarrierARM-tensor-09757
 
 If `tensor` was created with a sharing mode of
-`VK_SHARING_MODE_EXCLUSIVE`, and `srcQueueFamilyIndex` and
-`dstQueueFamilyIndex` are not `VK_QUEUE_FAMILY_IGNORED`, at
+[VK_SHARING_MODE_EXCLUSIVE](VkSharingMode.html), and `srcQueueFamilyIndex` and
+`dstQueueFamilyIndex` are not [VK_QUEUE_FAMILY_IGNORED](VK_QUEUE_FAMILY_IGNORED.html), at
 least one of them **must** be the same as the family of the queue that will
 execute this barrier
 
@@ -142,7 +142,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTensorMemoryBarrierARM-sType-sType) VUID-VkTensorMemoryBarrierARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TENSOR_MEMORY_BARRIER_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TENSOR_MEMORY_BARRIER_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkTensorMemoryBarrierARM-srcStageMask-parameter) VUID-VkTensorMemoryBarrierARM-srcStageMask-parameter

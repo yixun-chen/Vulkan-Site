@@ -84,13 +84,13 @@ them for the purposes of constructing the derived object. |
 Video session parameters objects are only compatible with
 [quantization maps](../../../../spec/latest/chapters/videocoding.html#encode-quantization-map) if they are created with
 `pCreateInfo->flags` including
-`VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR`.
+[VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR](VkVideoSessionParametersCreateFlagBitsKHR.html).
 
 Video session parameters objects created with
-`VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR`
+[VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR](VkVideoSessionParametersCreateFlagBitsKHR.html)
 against a video session object that was created with
-`VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR` or
-`VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP_BIT_KHR` are created
+[VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html) or
+[VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html) are created
 with a specific compatible [quantization map texel size](../../../../spec/latest/chapters/videocoding.html#encode-quantization-map-texel-size) specified in the `quantizationMapTexelSize` member of
 the [VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR](VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR.html)
 structure included in the `pNext` chain of `pCreateInfo`.
@@ -106,11 +106,11 @@ the [parameter overrides](../../../../spec/latest/chapters/videocoding.html#enco
 perform and thus the final values of the used codec-specific parameters. |
 
 For video session parameters objects created with
-`VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR`,
+[VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR](VkVideoSessionParametersCreateFlagBitsKHR.html),
 the template object specified in
 `pCreateInfo->videoSessionParametersTemplate` **must** also have been
 created with
-`VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR`
+[VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR](VkVideoSessionParametersCreateFlagBitsKHR.html)
 and the same compatible [quantization map texel size](../../../../spec/latest/chapters/videocoding.html#encode-quantization-map-texel-size) specified in
 [VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR](VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR.html)::`quantizationMapTexelSize`.
 
@@ -124,14 +124,14 @@ applied [parameter overrides](../../../../spec/latest/chapters/videocoding.html#
 available in them for the purposes of constructing the derived object. |
 
 For video session parameters objects created without
-`VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR`,
+[VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR](VkVideoSessionParametersCreateFlagBitsKHR.html),
 the template object specified in
 `pCreateInfo->videoSessionParametersTemplate` **must** also have been
 created without
-`VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR`.
+[VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR](VkVideoSessionParametersCreateFlagBitsKHR.html).
 
 If `pCreateInfo->videoSession` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR`, then the
+operation [VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 created video session parameters object will initially contain the following
 sets of parameter entries:
 
@@ -171,7 +171,7 @@ with the same `seq_parameter_set_id` and
 `pic_parameter_set_id`.
 
 If `pCreateInfo->videoSession` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR`, then the
+operation [VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 created video session parameters object will initially contain the following
 sets of parameter entries:
 
@@ -229,7 +229,7 @@ with the same `sps_video_parameter_set_id`,
 `pps_seq_parameter_set_id`, and `pps_pic_parameter_set_id`.
 
 If `pCreateInfo->videoSession` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR`, then the
+operation [VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 created video session parameters object will contain a single
 [AV1 sequence header](../../../../spec/latest/chapters/videocoding.html#decode-av1-sequence-header) represented by a
 `StdVideoAV1SequenceHeader` structure specified through the
@@ -242,7 +242,7 @@ use a previously created object as a template or subsequently update the
 created video session parameters object.
 
 If `pCreateInfo->videoSession` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR`, then the
+operation [VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 created video session parameters object will initially contain the following
 sets of parameter entries:
 
@@ -282,7 +282,7 @@ with the same `seq_parameter_set_id` and
 `pic_parameter_set_id`.
 
 If `pCreateInfo->videoSession` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR`, then the
+operation [VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 created video session parameters object will initially contain the following
 sets of parameter entries:
 
@@ -340,7 +340,7 @@ with the same `sps_video_parameter_set_id`,
 `pps_seq_parameter_set_id`, and `pps_pic_parameter_set_id`.
 
 If `pCreateInfo->videoSession` was created with the video codec
-operation `VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR`, then the
+operation [VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 created video session parameters object will contain a single
 [AV1 sequence header](../../../../spec/latest/chapters/videocoding.html#encode-av1-sequence-header) specified through the
 members of the [VkVideoEncodeAV1SessionParametersCreateInfoKHR](VkVideoEncodeAV1SessionParametersCreateInfoKHR.html)
@@ -352,7 +352,7 @@ created video session parameters object.
 
 In case of video session parameters objects created with a video encode
 operation, implementations **may** return the
-`VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR` error if any of the
+[VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR](VkResult.html) error if any of the
 specified Video Std parameters do not adhere to the syntactic or semantic
 requirements of the used video compression standard, or if values derived
 from parameters according to the rules defined by the used video compression
@@ -361,7 +361,7 @@ or the implementation.
 
 |  | Applications **should** not rely on the
 | --- | --- |
-`VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR` error being returned by any
+[VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR](VkResult.html) error being returned by any
 command as a means to verify Video Std parameters, as implementations are
 not required to report the error in any specific set of cases. |
 
@@ -397,27 +397,27 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](VkResult.html)
 
 * 
-`VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR`
+[VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_video_queue](VK_KHR_video_queue.html), [VkAllocationCallbacks](VkAllocationCallbacks.html), [VkDevice](VkDevice.html), [VkVideoSessionParametersCreateInfoKHR](VkVideoSessionParametersCreateInfoKHR.html), [VkVideoSessionParametersKHR](VkVideoSessionParametersKHR.html)
 

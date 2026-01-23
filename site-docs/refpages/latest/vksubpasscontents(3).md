@@ -32,19 +32,19 @@ typedef enum VkSubpassContents {
 } VkSubpassContents;
 
 * 
-`VK_SUBPASS_CONTENTS_INLINE` specifies that the contents of the
+[VK_SUBPASS_CONTENTS_INLINE](#) specifies that the contents of the
 subpass will be recorded inline in the primary command buffer, and
 secondary command buffers **must** not be executed within the subpass.
 
 * 
-`VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS` specifies that the
+[VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS](#) specifies that the
 contents are recorded in secondary command buffers that will be called
 from the primary command buffer, and [vkCmdExecuteCommands](vkCmdExecuteCommands.html) is the
 only valid command in the command buffer until [vkCmdNextSubpass](vkCmdNextSubpass.html) or
 [vkCmdEndRenderPass](vkCmdEndRenderPass.html).
 
 * 
-`VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR`
+[VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR](#)
 specifies that the contents of the subpass **can** be recorded both inline
 and in secondary command buffers executed from this command buffer with
 [vkCmdExecuteCommands](vkCmdExecuteCommands.html).

@@ -62,9 +62,9 @@ The handle types supported by `handleType` are:
 
 | Handle Type | Transference | Permanence Supported |
 | --- | --- | --- |
-| `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT` | Reference | Temporary,Permanent |
-| `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT` | Reference | Temporary,Permanent |
-| `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT` | Reference | Temporary,Permanent |
+| [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT](VkExternalSemaphoreHandleTypeFlagBits.html) | Reference | Temporary,Permanent |
+| [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](VkExternalSemaphoreHandleTypeFlagBits.html) | Reference | Temporary,Permanent |
+| [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT](VkExternalSemaphoreHandleTypeFlagBits.html) | Reference | Temporary,Permanent |
 
 Valid Usage
 
@@ -78,8 +78,8 @@ Valid Usage
 [](#VUID-VkImportSemaphoreWin32HandleInfoKHR-handleType-01466) VUID-VkImportSemaphoreWin32HandleInfoKHR-handleType-01466
 
 If `handleType` is not
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT` or
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT`, `name`
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT](VkExternalSemaphoreHandleTypeFlagBits.html) or
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT](VkExternalSemaphoreHandleTypeFlagBits.html), `name`
 **must** be `NULL`
 
 * 
@@ -117,8 +117,8 @@ If `name` is not `NULL`, it **must** obey any requirements listed for
 [](#VUID-VkImportSemaphoreWin32HandleInfoKHR-handleType-03261) VUID-VkImportSemaphoreWin32HandleInfoKHR-handleType-03261
 
 If `handleType` is
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT` or
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT`, the
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT](VkExternalSemaphoreHandleTypeFlagBits.html) or
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](VkExternalSemaphoreHandleTypeFlagBits.html), the
 [VkSemaphoreCreateInfo](VkSemaphoreCreateInfo.html)::`flags` field **must** match that of the
 semaphore from which `handle` or `name` was exported
 
@@ -126,25 +126,25 @@ semaphore from which `handle` or `name` was exported
 [](#VUID-VkImportSemaphoreWin32HandleInfoKHR-handleType-03262) VUID-VkImportSemaphoreWin32HandleInfoKHR-handleType-03262
 
 If `handleType` is
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT` or
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT`, the
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT](VkExternalSemaphoreHandleTypeFlagBits.html) or
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](VkExternalSemaphoreHandleTypeFlagBits.html), the
 [VkSemaphoreTypeCreateInfo](VkSemaphoreTypeCreateInfo.html)::`semaphoreType` field **must** match
 that of the semaphore from which `handle` or `name` was exported
 
 * 
 [](#VUID-VkImportSemaphoreWin32HandleInfoKHR-flags-03322) VUID-VkImportSemaphoreWin32HandleInfoKHR-flags-03322
 
-If `flags` contains `VK_SEMAPHORE_IMPORT_TEMPORARY_BIT`, the
+If `flags` contains [VK_SEMAPHORE_IMPORT_TEMPORARY_BIT](VkSemaphoreImportFlagBits.html), the
 [VkSemaphoreTypeCreateInfo](VkSemaphoreTypeCreateInfo.html)::`semaphoreType` field of the
 semaphore from which `handle` or `name` was exported **must** not
-be `VK_SEMAPHORE_TYPE_TIMELINE`
+be [VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkImportSemaphoreWin32HandleInfoKHR-sType-sType) VUID-VkImportSemaphoreWin32HandleInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkImportSemaphoreWin32HandleInfoKHR-pNext-pNext) VUID-VkImportSemaphoreWin32HandleInfoKHR-pNext-pNext

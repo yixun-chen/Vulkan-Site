@@ -105,12 +105,12 @@ swapchain.
 * 
 `queueFamilyIndexCount` is the number of queue families having
 access to the image(s) of the swapchain when `imageSharingMode` is
-`VK_SHARING_MODE_CONCURRENT`.
+[VK_SHARING_MODE_CONCURRENT](VkSharingMode.html).
 
 * 
 `pQueueFamilyIndices` is a pointer to an array of queue family
 indices having access to the images(s) of the swapchain when
-`imageSharingMode` is `VK_SHARING_MODE_CONCURRENT`.
+`imageSharingMode` is [VK_SHARING_MODE_CONCURRENT](VkSharingMode.html).
 
 * 
 `preTransform` is a [VkSurfaceTransformFlagBitsKHR](VkSurfaceTransformFlagBitsKHR.html) value
@@ -135,7 +135,7 @@ be processed and queued internally.
 discard rendering operations that affect regions of the surface that are
 not visible.
 
-If `clipped` is `VK_TRUE`, the presentable images associated
+If `clipped` is [VK_TRUE](VK_TRUE.html), the presentable images associated
 with the swapchain **may** not own all of their pixels.
 Pixels in the presentable images that correspond to regions of the
 target surface obscured by another window on the desktop, or subject to
@@ -143,15 +143,15 @@ some other clipping mechanism will have **undefined** content when read
 back.
 Fragment shaders **may** not execute for these pixels, and thus any side
 effects they would have had will not occur.
-Setting `VK_TRUE` does not guarantee any clipping will occur, but
+Setting [VK_TRUE](VK_TRUE.html) does not guarantee any clipping will occur, but
 allows more efficient presentation methods to be used on some
 platforms.
 
 * 
-If `clipped` is `VK_FALSE`, presentable images associated with
+If `clipped` is [VK_FALSE](VK_FALSE.html), presentable images associated with
 the swapchain will own all of the pixels they contain.
 
-|  | Applications **should** set this value to `VK_TRUE` if they do not expect
+|  | Applications **should** set this value to [VK_TRUE](VK_TRUE.html) if they do not expect
 | --- | --- |
 to read back the content of presentable images before presenting them or
 after reacquiring them, and if their fragment shaders do not have any side
@@ -187,12 +187,12 @@ After `oldSwapchain` is retired, the application **can** pass to
 E.g., an application may present an image from the old swapchain before an
 image from the new swapchain is ready to be presented.
 As usual, [vkQueuePresentKHR](vkQueuePresentKHR.html) **may** fail if `oldSwapchain` has
-entered a state that causes `VK_ERROR_OUT_OF_DATE_KHR` to be returned.
+entered a state that causes [VK_ERROR_OUT_OF_DATE_KHR](VkResult.html) to be returned.
 
 The application **can** continue to use a shared presentable image obtained
 from `oldSwapchain` until a presentable image is acquired from the new
 swapchain, as long as it has not entered a state that causes it to return
-`VK_ERROR_OUT_OF_DATE_KHR`. |
+[VK_ERROR_OUT_OF_DATE_KHR](VkResult.html). |
 
 Valid Usage
 
@@ -221,8 +221,8 @@ feature is not enabled, then the `pNext` chain **must** not include a
 [](#VUID-VkSwapchainCreateInfoKHR-presentMode-02839) VUID-VkSwapchainCreateInfoKHR-presentMode-02839
 
 If `presentMode` is not
-`VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR` nor
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`, then
+[VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](VkPresentModeKHR.html) nor
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](VkPresentModeKHR.html), then
 `minImageCount` **must** be greater than or equal to the value returned
 in the `minImageCount` member of the `VkSurfaceCapabilitiesKHR`
 structure returned by [vkGetPhysicalDeviceSurfaceCapabilitiesKHR](vkGetPhysicalDeviceSurfaceCapabilitiesKHR.html)
@@ -232,8 +232,8 @@ for the surface
 [](#VUID-VkSwapchainCreateInfoKHR-minImageCount-01383) VUID-VkSwapchainCreateInfoKHR-minImageCount-01383
 
 `minImageCount` **must** be `1` if `presentMode` is either
-`VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR` or
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`
+[VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](VkPresentModeKHR.html) or
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](VkPresentModeKHR.html)
 
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-imageFormat-01273) VUID-VkSwapchainCreateInfoKHR-imageFormat-01273
@@ -274,7 +274,7 @@ surface and `presentMode`
 
 If the [`swapchainMaintenance1`](../../../../spec/latest/chapters/features.html#features-swapchainMaintenance1)
 feature is not enabled, then `flags` **must** not include
-`VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR`
+[VK_SWAPCHAIN_CREATE_DEFERRED_MEMORY_ALLOCATION_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html)
 
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-imageExtent-01689) VUID-VkSwapchainCreateInfoKHR-imageExtent-01689
@@ -294,10 +294,10 @@ to the `maxImageArrayLayers` member of the
 [](#VUID-VkSwapchainCreateInfoKHR-presentMode-01427) VUID-VkSwapchainCreateInfoKHR-presentMode-01427
 
 If `presentMode` is
-`VK_PRESENT_MODE_FIFO_LATEST_READY_KHR`,
-`VK_PRESENT_MODE_IMMEDIATE_KHR`, `VK_PRESENT_MODE_MAILBOX_KHR`,
-`VK_PRESENT_MODE_FIFO_KHR` or
-`VK_PRESENT_MODE_FIFO_RELAXED_KHR`, `imageUsage` **must** be a
+[VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](VkPresentModeKHR.html),
+[VK_PRESENT_MODE_IMMEDIATE_KHR](VkPresentModeKHR.html), [VK_PRESENT_MODE_MAILBOX_KHR](VkPresentModeKHR.html),
+[VK_PRESENT_MODE_FIFO_KHR](VkPresentModeKHR.html) or
+[VK_PRESENT_MODE_FIFO_RELAXED_KHR](VkPresentModeKHR.html), `imageUsage` **must** be a
 subset of the supported usage flags present in the
 `supportedUsageFlags` member of the [VkSurfaceCapabilitiesKHR](VkSurfaceCapabilitiesKHR.html)
 structure returned by [vkGetPhysicalDeviceSurfaceCapabilitiesKHR](vkGetPhysicalDeviceSurfaceCapabilitiesKHR.html)
@@ -306,8 +306,8 @@ for `surface`
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-imageUsage-01384) VUID-VkSwapchainCreateInfoKHR-imageUsage-01384
 
-If `presentMode` is `VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR`
-or `VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`, `imageUsage`
+If `presentMode` is [VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](VkPresentModeKHR.html)
+or [VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](VkPresentModeKHR.html), `imageUsage`
 **must** be a subset of the supported usage flags present in the
 `sharedPresentSupportedUsageFlags` member of the
 [VkSharedPresentSurfaceCapabilitiesKHR](VkSharedPresentSurfaceCapabilitiesKHR.html) structure returned by
@@ -316,20 +316,20 @@ or `VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`, `imageUsage`
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-imageSharingMode-01277) VUID-VkSwapchainCreateInfoKHR-imageSharingMode-01277
 
-If `imageSharingMode` is `VK_SHARING_MODE_CONCURRENT`,
+If `imageSharingMode` is [VK_SHARING_MODE_CONCURRENT](VkSharingMode.html),
 `pQueueFamilyIndices` **must** be a valid pointer to an array of
 `queueFamilyIndexCount` `uint32_t` values
 
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-imageSharingMode-01278) VUID-VkSwapchainCreateInfoKHR-imageSharingMode-01278
 
-If `imageSharingMode` is `VK_SHARING_MODE_CONCURRENT`,
+If `imageSharingMode` is [VK_SHARING_MODE_CONCURRENT](VkSharingMode.html),
 `queueFamilyIndexCount` **must** be greater than `1`
 
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-imageSharingMode-01428) VUID-VkSwapchainCreateInfoKHR-imageSharingMode-01428
 
-If `imageSharingMode` is `VK_SHARING_MODE_CONCURRENT`, each
+If `imageSharingMode` is [VK_SHARING_MODE_CONCURRENT](VkSharingMode.html), each
 element of `pQueueFamilyIndices` **must** be unique and **must** be less
 than `pQueueFamilyPropertyCount` returned by either
 [vkGetPhysicalDeviceQueueFamilyProperties](vkGetPhysicalDeviceQueueFamilyProperties.html)
@@ -364,7 +364,7 @@ surface
 
 If the [    `presentModeFifoLatestReady`](../../../../spec/latest/chapters/features.html#features-presentModeFifoLatestReady) feature is not enabled,
 `presentMode` **must** not be
-`VK_PRESENT_MODE_FIFO_LATEST_READY_KHR`
+[VK_PRESENT_MODE_FIFO_LATEST_READY_KHR](VkPresentModeKHR.html)
 
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-physicalDeviceCount-01429) VUID-VkSwapchainCreateInfoKHR-physicalDeviceCount-01429
@@ -373,7 +373,7 @@ If the logical device was created with
 [VkDeviceGroupDeviceCreateInfo](VkDeviceGroupDeviceCreateInfo.html)::`physicalDeviceCount` equal to
 1,
 `flags` **must** not contain
-`VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR`
+[VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html)
 
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-oldSwapchain-01933) VUID-VkSwapchainCreateInfoKHR-oldSwapchain-01933
@@ -391,7 +391,7 @@ The [implied image creation    parameters](../../../../spec/latest/chapters/VK_K
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-flags-03168) VUID-VkSwapchainCreateInfoKHR-flags-03168
 
-If `flags` contains `VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR`
+If `flags` contains [VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html)
 then the `pNext` chain **must** include a
 [VkImageFormatListCreateInfo](VkImageFormatListCreateInfo.html) structure with a `viewFormatCount`
 greater than zero and `pViewFormats` **must** have an element equal to
@@ -412,7 +412,7 @@ compatible with the `format` as described in the
 [](#VUID-VkSwapchainCreateInfoKHR-flags-04100) VUID-VkSwapchainCreateInfoKHR-flags-04100
 
 If `flags` does not contain
-`VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR` and the `pNext`
+[VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html) and the `pNext`
 chain include a [VkImageFormatListCreateInfo](VkImageFormatListCreateInfo.html) structure then
 [VkImageFormatListCreateInfo](VkImageFormatListCreateInfo.html)::`viewFormatCount` **must** be `0` or
 `1`
@@ -420,9 +420,9 @@ chain include a [VkImageFormatListCreateInfo](VkImageFormatListCreateInfo.html) 
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-flags-03187) VUID-VkSwapchainCreateInfoKHR-flags-03187
 
-If `flags` contains `VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR`,
+If `flags` contains [VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html),
 then `VkSurfaceProtectedCapabilitiesKHR`::`supportsProtected`
-**must** be `VK_TRUE` in the [VkSurfaceProtectedCapabilitiesKHR](VkSurfaceProtectedCapabilitiesKHR.html)
+**must** be [VK_TRUE](VK_TRUE.html) in the [VkSurfaceProtectedCapabilitiesKHR](VkSurfaceProtectedCapabilitiesKHR.html)
 structure returned by [vkGetPhysicalDeviceSurfaceCapabilities2KHR](vkGetPhysicalDeviceSurfaceCapabilities2KHR.html)
 for `surface`
 
@@ -432,7 +432,7 @@ for `surface`
 If the `pNext` chain includes a
 [VkSurfaceFullScreenExclusiveInfoEXT](VkSurfaceFullScreenExclusiveInfoEXT.html) structure with its
 `fullScreenExclusive` member set to
-`VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT`, and
+[VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT](VkFullScreenExclusiveEXT.html), and
 `surface` was created using [vkCreateWin32SurfaceKHR](vkCreateWin32SurfaceKHR.html), a
 [VkSurfaceFullScreenExclusiveWin32InfoEXT](VkSurfaceFullScreenExclusiveWin32InfoEXT.html) structure **must** be
 included in the `pNext` chain
@@ -451,14 +451,14 @@ If none of the [`presentTiming`](../../../../spec/latest/chapters/features.html#
 [`presentAtAbsoluteTime`](../../../../spec/latest/chapters/features.html#features-presentAtAbsoluteTime), or
 [`presentAtRelativeTime`](../../../../spec/latest/chapters/features.html#features-presentAtRelativeTime) features
 are enabled, `flags` **must** not contain
-`VK_SWAPCHAIN_CREATE_PRESENT_TIMING_BIT_EXT`
+[VK_SWAPCHAIN_CREATE_PRESENT_TIMING_BIT_EXT](VkSwapchainCreateFlagBitsKHR.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-sType-sType) VUID-VkSwapchainCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkSwapchainCreateInfoKHR-pNext-pNext) VUID-VkSwapchainCreateInfoKHR-pNext-pNext

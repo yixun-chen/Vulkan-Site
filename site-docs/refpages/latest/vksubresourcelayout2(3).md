@@ -52,7 +52,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSubresourceLayout2-sType-sType) VUID-VkSubresourceLayout2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SUBRESOURCE_LAYOUT_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SUBRESOURCE_LAYOUT_2](VkStructureType.html)
 
 * 
 [](#VUID-VkSubresourceLayout2-pNext-pNext) VUID-VkSubresourceLayout2-pNext-pNext

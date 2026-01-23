@@ -38,10 +38,10 @@ This command sets the custom sample locations for subsequent drawing
 commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` set in
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`, and when the
 [VkPipelineSampleLocationsStateCreateInfoEXT](VkPipelineSampleLocationsStateCreateInfoEXT.html)::`sampleLocationsEnable`
-property of the bound graphics pipeline is `VK_TRUE`.
+property of the bound graphics pipeline is [VK_TRUE](VK_TRUE.html).
 Otherwise, this state is specified by the
 [VkPipelineSampleLocationsStateCreateInfoEXT](VkPipelineSampleLocationsStateCreateInfoEXT.html)::`sampleLocationsInfo`
 values used to create the currently active pipeline.
@@ -53,7 +53,7 @@ Valid Usage
 
 If
 [VkPhysicalDeviceSampleLocationsPropertiesEXT](VkPhysicalDeviceSampleLocationsPropertiesEXT.html)::`variableSampleLocations`
-is `VK_FALSE` then the current render pass **must** have been begun by
+is [VK_FALSE](VK_FALSE.html) then the current render pass **must** have been begun by
 specifying a [VkRenderPassSampleLocationsBeginInfoEXT](VkRenderPassSampleLocationsBeginInfoEXT.html) structure
 whose `pPostSubpassSampleLocations` member contains an element with
 a `subpassIndex` matching the current subpass index and the
@@ -80,7 +80,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetSampleLocationsEXT-commandBuffer-cmdpool) VUID-vkCmdSetSampleLocationsEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetSampleLocationsEXT-videocoding) VUID-vkCmdSetSampleLocationsEXT-videocoding

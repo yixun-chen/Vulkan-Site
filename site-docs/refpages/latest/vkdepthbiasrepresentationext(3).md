@@ -30,18 +30,18 @@ typedef enum VkDepthBiasRepresentationEXT {
 } VkDepthBiasRepresentationEXT;
 
 * 
-`VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORMAT_EXT`
+[VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORMAT_EXT](#)
 specifies that the depth bias representation is a factor of the format’s
 r as described in [Depth Bias Computation](../../../../spec/latest/chapters/primsrast.html#primsrast-depthbias-computation).
 
 * 
-`VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT`
+[VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT](#)
 specifies that the depth bias representation is a factor of a constant
 r defined by the bit-size or mantissa of the format as described
 in [Depth Bias Computation](../../../../spec/latest/chapters/primsrast.html#primsrast-depthbias-computation).
 
 * 
-`VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT` specifies that the depth
+[VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT](#) specifies that the depth
 bias representation is a factor of constant r equal to 1.
 
 [VK_EXT_depth_bias_control](VK_EXT_depth_bias_control.html), [VkDepthBiasRepresentationInfoEXT](VkDepthBiasRepresentationInfoEXT.html)

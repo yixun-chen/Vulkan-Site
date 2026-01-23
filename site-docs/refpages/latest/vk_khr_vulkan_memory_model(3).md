@@ -140,7 +140,7 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES_KHR](VkStructureType.html)
 
 * 
 [    `VulkanMemoryModelKHR`](../../../../spec/latest/appendices/spirvenv.html#spirvenv-capabilities-table-VulkanMemoryModel)

@@ -439,4 +439,4 @@ Remember that the goal of packaging is to make installation and updates as seaml
 
 In the next and final section, we’ll summarize what we’ve learned throughout this chapter on tooling for Vulkan applications.
 
-[Previous: Vulkan Extensions for Robustness](05_extensions.adoc) | [Next: Conclusion](07_conclusion.adoc)
+[Previous: Vulkan Extensions for Robustness](05_extensions.html) | [Next: Conclusion](07_conclusion.html)

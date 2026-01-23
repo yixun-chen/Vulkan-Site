@@ -50,7 +50,7 @@ If the `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR` structure is in
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR-sType-sType) VUID-VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_EXECUTABLE_PROPERTIES_FEATURES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_EXECUTABLE_PROPERTIES_FEATURES_KHR](VkStructureType.html)
 
 [VK_KHR_pipeline_executable_properties](VK_KHR_pipeline_executable_properties.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

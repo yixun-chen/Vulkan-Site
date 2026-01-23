@@ -121,23 +121,23 @@ Extending [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html):
 * 
 Extending [VkMemoryMapFlagBits](VkMemoryMapFlagBits.html):
 
-`VK_MEMORY_MAP_PLACED_BIT_EXT`
+[VK_MEMORY_MAP_PLACED_BIT_EXT](VkMemoryMapFlagBits.html)
 
 Extending [VkMemoryUnmapFlagBits](VkMemoryUnmapFlagBits.html):
 
 * 
-`VK_MEMORY_UNMAP_RESERVE_BIT_EXT`
+[VK_MEMORY_UNMAP_RESERVE_BIT_EXT](VkMemoryUnmapFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_MEMORY_MAP_PLACED_INFO_EXT`
+[VK_STRUCTURE_TYPE_MEMORY_MAP_PLACED_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_FEATURES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_PROPERTIES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_PROPERTIES_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2024-01-14 (Faith Ekstrand)

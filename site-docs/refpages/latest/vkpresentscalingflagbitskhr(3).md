@@ -37,14 +37,14 @@ typedef enum VkPresentScalingFlagBitsKHR {
 typedef VkPresentScalingFlagBitsKHR VkPresentScalingFlagBitsEXT;
 
 * 
-`VK_PRESENT_SCALING_ONE_TO_ONE_BIT_KHR` specifies that no scaling
+[VK_PRESENT_SCALING_ONE_TO_ONE_BIT_KHR](#) specifies that no scaling
 occurs, and pixels in the swapchain image are mapped to one and only one
 pixel in the surface.
 The mapping between pixels is defined by the chosen presentation
 gravity.
 
 * 
-`VK_PRESENT_SCALING_ASPECT_RATIO_STRETCH_BIT_KHR` specifies that the
+[VK_PRESENT_SCALING_ASPECT_RATIO_STRETCH_BIT_KHR](#) specifies that the
 swapchain image will be minified or magnified such that at least one of
 the resulting width or height is equal to the corresponding surface
 dimension, and the other resulting dimension is less than or equal to
@@ -52,7 +52,7 @@ the corresponding surface dimension, with the aspect ratio of the
 resulting image being identical to that of the original swapchain image.
 
 * 
-`VK_PRESENT_SCALING_STRETCH_BIT_KHR` specifies that the swapchain
+[VK_PRESENT_SCALING_STRETCH_BIT_KHR](#) specifies that the swapchain
 image will be minified or magnified such that the resulting image
 dimensions are equal to those of the surface.
 

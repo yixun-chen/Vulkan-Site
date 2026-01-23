@@ -127,13 +127,13 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROPERTIES_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROPERTIES_FEATURES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_INFO_EXT`
+[VK_STRUCTURE_TYPE_PIPELINE_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_PROPERTIES_IDENTIFIER_EXT`
+[VK_STRUCTURE_TYPE_PIPELINE_PROPERTIES_IDENTIFIER_EXT](VkStructureType.html)
 
 (1) This extension does not make sense on a strict Vulkan SC implementation.
 It may however be of potential use in a non-strict Vulkan SC implementation.

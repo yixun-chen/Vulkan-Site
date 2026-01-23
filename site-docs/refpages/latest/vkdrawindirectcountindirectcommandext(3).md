@@ -48,7 +48,7 @@ Valid Usage
 [](#VUID-VkDrawIndirectCountIndirectCommandEXT-None-11122) VUID-VkDrawIndirectCountIndirectCommandEXT-None-11122
 
 The buffer’s usage flag from which the address was acquired **must** have
-the `VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` bit set
+the [VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](VkBufferUsageFlagBits.html) bit set
 
 Valid Usage (Implicit)
 

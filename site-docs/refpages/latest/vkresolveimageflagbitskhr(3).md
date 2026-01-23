@@ -30,12 +30,12 @@ typedef enum VkResolveImageFlagBitsKHR {
 } VkResolveImageFlagBitsKHR;
 
 * 
-`VK_RESOLVE_IMAGE_SKIP_TRANSFER_FUNCTION_BIT_KHR` specifies that
+[VK_RESOLVE_IMAGE_SKIP_TRANSFER_FUNCTION_BIT_KHR](#) specifies that
 resolve operations happening to an sRGB encoded image **must** not convert
 samples from nonlinear to linear before averaging.
 
 * 
-`VK_RESOLVE_IMAGE_ENABLE_TRANSFER_FUNCTION_BIT_KHR` specifies that
+[VK_RESOLVE_IMAGE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](#) specifies that
 resolve operations happening to an sRGB encoded image **must** convert
 samples from nonlinear to linear before averaging.
 

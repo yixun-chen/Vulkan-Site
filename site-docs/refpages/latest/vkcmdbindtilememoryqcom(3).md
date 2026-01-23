@@ -36,8 +36,7 @@ bound to.
 bound.
 
 Calling [vkCmdBindTileMemoryQCOM](#) when `pTileMemoryBindInfo` is
-[VK_NULL_HANDLE](VK_NULL_HANDLE.html) is equivalent to binding no tile memory to the command
-buffer.
+`NULL` is equivalent to binding no tile memory to the command buffer.
 
 Valid Usage (Implicit)
 
@@ -59,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindTileMemoryQCOM-commandBuffer-cmdpool) VUID-vkCmdBindTileMemoryQCOM-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBindTileMemoryQCOM-renderpass) VUID-vkCmdBindTileMemoryQCOM-renderpass

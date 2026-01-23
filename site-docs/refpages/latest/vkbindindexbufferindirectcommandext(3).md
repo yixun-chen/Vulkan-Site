@@ -20,7 +20,7 @@
 VkBindIndexBufferIndirectCommandEXT - Structure specifying input data for a single index buffer command token
 
 The `VkBindIndexBufferIndirectCommandEXT` structure specifies the input
-data for the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT` token.
+data for the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT](VkIndirectCommandsTokenTypeEXT.html) token.
 
 // Provided by VK_EXT_device_generated_commands
 typedef struct VkBindIndexBufferIndirectCommandEXT {
@@ -47,7 +47,7 @@ Valid Usage
 [](#VUID-VkBindIndexBufferIndirectCommandEXT-None-11117) VUID-VkBindIndexBufferIndirectCommandEXT-None-11117
 
 The buffer’s usage flags from which the address was acquired **must** have
-the `VK_BUFFER_USAGE_INDEX_BUFFER_BIT` bit set
+the [VK_BUFFER_USAGE_INDEX_BUFFER_BIT](VkBufferUsageFlagBits.html) bit set
 
 * 
 [](#VUID-VkBindIndexBufferIndirectCommandEXT-bufferAddress-11118) VUID-VkBindIndexBufferIndirectCommandEXT-bufferAddress-11118

@@ -38,12 +38,12 @@ typedef enum VkDescriptorUpdateTemplateType {
 typedef VkDescriptorUpdateTemplateType VkDescriptorUpdateTemplateTypeKHR;
 
 * 
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET` specifies that
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET](#) specifies that
 the descriptor update template will be used for descriptor set updates
 only.
 
 * 
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS` specifies that
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](#) specifies that
 the descriptor update template will be used for push descriptor updates
 only.
 

@@ -19,10 +19,10 @@
 
 VkSamplerBorderColorComponentMappingCreateInfoEXT - Structure specifying the component mapping of the border color
 
-If the sampler is created with `VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK`,
-`VK_BORDER_COLOR_INT_OPAQUE_BLACK`,
-`VK_BORDER_COLOR_FLOAT_CUSTOM_EXT`, or
-`VK_BORDER_COLOR_INT_CUSTOM_EXT` `borderColor`, and that sampler
+If the sampler is created with [VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK](VkBorderColor.html),
+[VK_BORDER_COLOR_INT_OPAQUE_BLACK](VkBorderColor.html),
+[VK_BORDER_COLOR_FLOAT_CUSTOM_EXT](VkBorderColor.html), or
+[VK_BORDER_COLOR_INT_CUSTOM_EXT](VkBorderColor.html) `borderColor`, and that sampler
 will be combined with an image view that does not have an
 [identity swizzle](../../../../spec/latest/chapters/resources.html#resources-image-views-identity-mappings), and
 [VkPhysicalDeviceBorderColorSwizzleFeaturesEXT](VkPhysicalDeviceBorderColorSwizzleFeaturesEXT.html)::`borderColorSwizzleFromImage`
@@ -74,7 +74,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSamplerBorderColorComponentMappingCreateInfoEXT-sType-sType) VUID-VkSamplerBorderColorComponentMappingCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_BORDER_COLOR_COMPONENT_MAPPING_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_BORDER_COLOR_COMPONENT_MAPPING_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkSamplerBorderColorComponentMappingCreateInfoEXT-components-parameter) VUID-VkSamplerBorderColorComponentMappingCreateInfoEXT-components-parameter

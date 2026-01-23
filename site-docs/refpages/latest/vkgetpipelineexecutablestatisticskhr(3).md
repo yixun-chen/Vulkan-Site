@@ -57,8 +57,8 @@ return the variable is overwritten with the number of structures actually
 written to `pStatistics`.
 If `pStatisticCount` is less than the number of statistics associated
 with the pipeline executable, at most `pStatisticCount` structures will
-be written, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available statistics were
+be written, and [VK_INCOMPLETE](VkResult.html) will be returned instead of
+[VK_SUCCESS](VkResult.html), to indicate that not all the available statistics were
 returned.
 
 Valid Usage
@@ -79,7 +79,7 @@ created with `device`
 [](#VUID-vkGetPipelineExecutableStatisticsKHR-pipeline-03274) VUID-vkGetPipelineExecutableStatisticsKHR-pipeline-03274
 
 The `pipeline` member of `pExecutableInfo` **must** have been
-created with `VK_PIPELINE_CREATE_CAPTURE_STATISTICS_BIT_KHR`
+created with [VK_PIPELINE_CREATE_CAPTURE_STATISTICS_BIT_KHR](VkPipelineCreateFlagBits.html)
 
 Valid Usage (Implicit)
 
@@ -108,24 +108,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_pipeline_executable_properties](VK_KHR_pipeline_executable_properties.html), [VkDevice](VkDevice.html), [VkPipelineExecutableInfoKHR](VkPipelineExecutableInfoKHR.html), [VkPipelineExecutableStatisticKHR](VkPipelineExecutableStatisticKHR.html)
 

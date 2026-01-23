@@ -28,7 +28,7 @@ typedef enum VkVideoSessionParametersCreateFlagBitsKHR {
 } VkVideoSessionParametersCreateFlagBitsKHR;
 
 * 
-`VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR`
+[VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR](#)
 specifies that the created video session parameters object **can** be used
 with [quantization maps](../../../../spec/latest/chapters/videocoding.html#encode-quantization-map).
 

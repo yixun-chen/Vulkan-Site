@@ -144,14 +144,14 @@ sampling operations.
 
 Layout transitions have been simplified as well; rather than requiring a
 different set of layouts for depth/stencil/color attachments, there are
-generic `VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR` and
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR` layouts which are contextually
+generic [VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR](VkImageLayout.html) and
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](VkImageLayout.html) layouts which are contextually
 applied based on the image format.
 For example, for a depth format image,
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR` is equivalent to
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL_KHR`.
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR` also functionally replaces
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`.
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](VkImageLayout.html) is equivalent to
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL_KHR](VkImageLayout.html).
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](VkImageLayout.html) also functionally replaces
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](VkImageLayout.html).
 
 Events are now more efficient, because they include memory dependency
 information when you set them on the device.
@@ -178,7 +178,7 @@ Image memory barriers that do not perform an image layout transition can
 be specified by setting `oldLayout` equal to `newLayout`.
 
 E.g. the old and new layout can both be set to
-`VK_IMAGE_LAYOUT_UNDEFINED`, without discarding data in the image.
+[VK_IMAGE_LAYOUT_UNDEFINED](VkImageLayout.html), without discarding data in the image.
 
 Queue family ownership transfer parameters are simplified in some cases.
 
@@ -190,7 +190,7 @@ The new event and barrier interfaces are now more extensible for future
 changes.
 
 Relevant pipeline stage masks can now be specified as empty with the new
-`VK_PIPELINE_STAGE_NONE_KHR` and `VK_PIPELINE_STAGE_2_NONE_KHR`
+[VK_PIPELINE_STAGE_NONE_KHR](VkPipelineStageFlagBits.html) and [VK_PIPELINE_STAGE_2_NONE_KHR](VkPipelineStageFlagBits2.html)
 values.
 
 [VkMemoryBarrier2KHR](VkMemoryBarrier2.html) can be chained to [VkSubpassDependency2](VkSubpassDependency2.html),
@@ -272,364 +272,364 @@ Extending [VkSubpassDependency2](VkSubpassDependency2.html):
 * 
 Extending [VkAccessFlagBits](VkAccessFlagBits.html):
 
-`VK_ACCESS_NONE_KHR`
+[VK_ACCESS_NONE_KHR](VkAccessFlagBits.html)
 
 Extending [VkAccessFlagBits2](VkAccessFlagBits2.html):
 
 * 
-`VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT_KHR`
+[VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT_KHR`
+[VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT_KHR`
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT_KHR`
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_HOST_READ_BIT_KHR`
+[VK_ACCESS_2_HOST_READ_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_HOST_WRITE_BIT_KHR`
+[VK_ACCESS_2_HOST_WRITE_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_INDEX_READ_BIT_KHR`
+[VK_ACCESS_2_INDEX_READ_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT_KHR`
+[VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT_KHR`
+[VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_MEMORY_READ_BIT_KHR`
+[VK_ACCESS_2_MEMORY_READ_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_MEMORY_WRITE_BIT_KHR`
+[VK_ACCESS_2_MEMORY_WRITE_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_NONE_KHR`
+[VK_ACCESS_2_NONE_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_SHADER_READ_BIT_KHR`
+[VK_ACCESS_2_SHADER_READ_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_SHADER_SAMPLED_READ_BIT_KHR`
+[VK_ACCESS_2_SHADER_SAMPLED_READ_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_SHADER_STORAGE_READ_BIT_KHR`
+[VK_ACCESS_2_SHADER_STORAGE_READ_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT_KHR`
+[VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_SHADER_WRITE_BIT_KHR`
+[VK_ACCESS_2_SHADER_WRITE_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_TRANSFER_READ_BIT_KHR`
+[VK_ACCESS_2_TRANSFER_READ_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_TRANSFER_WRITE_BIT_KHR`
+[VK_ACCESS_2_TRANSFER_WRITE_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_UNIFORM_READ_BIT_KHR`
+[VK_ACCESS_2_UNIFORM_READ_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT_KHR`
+[VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT_KHR](VkAccessFlagBits2.html)
 
 Extending [VkEventCreateFlagBits](VkEventCreateFlagBits.html):
 
 * 
-`VK_EVENT_CREATE_DEVICE_ONLY_BIT_KHR`
+[VK_EVENT_CREATE_DEVICE_ONLY_BIT_KHR](VkEventCreateFlagBits.html)
 
 Extending [VkImageLayout](VkImageLayout.html):
 
 * 
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR](VkImageLayout.html)
 
 * 
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](VkImageLayout.html)
 
 Extending [VkPipelineStageFlagBits](VkPipelineStageFlagBits.html):
 
 * 
-`VK_PIPELINE_STAGE_NONE_KHR`
+[VK_PIPELINE_STAGE_NONE_KHR](VkPipelineStageFlagBits.html)
 
 Extending [VkPipelineStageFlagBits2](VkPipelineStageFlagBits2.html):
 
 * 
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_BLIT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_BLIT_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_BOTTOM_OF_PIPE_BIT_KHR`
+[VK_PIPELINE_STAGE_2_BOTTOM_OF_PIPE_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_CLEAR_BIT_KHR`
+[VK_PIPELINE_STAGE_2_CLEAR_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_COPY_BIT_KHR`
+[VK_PIPELINE_STAGE_2_COPY_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT_KHR`
+[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_HOST_BIT_KHR`
+[VK_PIPELINE_STAGE_2_HOST_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT_KHR`
+[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_NONE_KHR`
+[VK_PIPELINE_STAGE_2_NONE_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_PRE_RASTERIZATION_SHADERS_BIT_KHR`
+[VK_PIPELINE_STAGE_2_PRE_RASTERIZATION_SHADERS_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_RESOLVE_BIT_KHR`
+[VK_PIPELINE_STAGE_2_RESOLVE_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_TOP_OF_PIPE_BIT_KHR`
+[VK_PIPELINE_STAGE_2_TOP_OF_PIPE_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_TRANSFER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_TRANSFER_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER_2_KHR`
+[VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER_2_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_COMMAND_BUFFER_SUBMIT_INFO_KHR`
+[VK_STRUCTURE_TYPE_COMMAND_BUFFER_SUBMIT_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_DEPENDENCY_INFO_KHR`
+[VK_STRUCTURE_TYPE_DEPENDENCY_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER_2_KHR`
+[VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER_2_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_MEMORY_BARRIER_2_KHR`
+[VK_STRUCTURE_TYPE_MEMORY_BARRIER_2_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SYNCHRONIZATION_2_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SYNCHRONIZATION_2_FEATURES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SEMAPHORE_SUBMIT_INFO_KHR`
+[VK_STRUCTURE_TYPE_SEMAPHORE_SUBMIT_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SUBMIT_INFO_2_KHR`
+[VK_STRUCTURE_TYPE_SUBMIT_INFO_2_KHR](VkStructureType.html)
 
 Extending [VkSubmitFlagBits](VkSubmitFlagBits.html):
 
 * 
-`VK_SUBMIT_PROTECTED_BIT_KHR`
+[VK_SUBMIT_PROTECTED_BIT_KHR](VkSubmitFlagBits.html)
 
 If [VK_EXT_blend_operation_advanced](VK_EXT_blend_operation_advanced.html) is supported:
 
 * 
 Extending [VkAccessFlagBits2](VkAccessFlagBits2.html):
 
-`VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT`
+[VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT](VkAccessFlagBits2.html)
 
 If [VK_EXT_conditional_rendering](VK_EXT_conditional_rendering.html) is supported:
 
 * 
 Extending [VkAccessFlagBits2](VkAccessFlagBits2.html):
 
-`VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT`
+[VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT](VkAccessFlagBits2.html)
 
 Extending [VkPipelineStageFlagBits2](VkPipelineStageFlagBits2.html):
 
 * 
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](VkPipelineStageFlagBits2.html)
 
 If [VK_EXT_device_generated_commands](VK_EXT_device_generated_commands.html) is supported:
 
 * 
 Extending [VkAccessFlagBits2](VkAccessFlagBits2.html):
 
-`VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_EXT`
+[VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_EXT](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_EXT`
+[VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_EXT](VkAccessFlagBits2.html)
 
 Extending [VkPipelineStageFlagBits2](VkPipelineStageFlagBits2.html):
 
 * 
-`VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT](VkPipelineStageFlagBits2.html)
 
 If [VK_EXT_fragment_density_map](VK_EXT_fragment_density_map.html) is supported:
 
 * 
 Extending [VkAccessFlagBits2](VkAccessFlagBits2.html):
 
-`VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT`
+[VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT](VkAccessFlagBits2.html)
 
 Extending [VkPipelineStageFlagBits2](VkPipelineStageFlagBits2.html):
 
 * 
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](VkPipelineStageFlagBits2.html)
 
 If [VK_EXT_mesh_shader](VK_EXT_mesh_shader.html) is supported:
 
 * 
 Extending [VkPipelineStageFlagBits2](VkPipelineStageFlagBits2.html):
 
-`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](VkPipelineStageFlagBits2.html)
 
 If [VK_EXT_transform_feedback](VK_EXT_transform_feedback.html) is supported:
 
 * 
 Extending [VkAccessFlagBits2](VkAccessFlagBits2.html):
 
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT`
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT`
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT`
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT](VkAccessFlagBits2.html)
 
 Extending [VkPipelineStageFlagBits2](VkPipelineStageFlagBits2.html):
 
 * 
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](VkPipelineStageFlagBits2.html)
 
 If [VK_KHR_acceleration_structure](VK_KHR_acceleration_structure.html) is supported:
 
 * 
 Extending [VkAccessFlagBits2](VkAccessFlagBits2.html):
 
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR`
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR`
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR](VkAccessFlagBits2.html)
 
 Extending [VkPipelineStageFlagBits2](VkPipelineStageFlagBits2.html):
 
 * 
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 If [VK_KHR_fragment_shading_rate](VK_KHR_fragment_shading_rate.html) is supported:
 
 * 
 Extending [VkAccessFlagBits2](VkAccessFlagBits2.html):
 
-`VK_ACCESS_2_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR`
+[VK_ACCESS_2_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR](VkAccessFlagBits2.html)
 
 Extending [VkPipelineStageFlagBits2](VkPipelineStageFlagBits2.html):
 
 * 
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 If [VK_KHR_ray_tracing_pipeline](VK_KHR_ray_tracing_pipeline.html) is supported:
 
 * 
 Extending [VkPipelineStageFlagBits2](VkPipelineStageFlagBits2.html):
 
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](VkPipelineStageFlagBits2.html)
 
 If [VK_NV_device_generated_commands](VK_NV_device_generated_commands.html) is supported:
 
 * 
 Extending [VkAccessFlagBits2](VkAccessFlagBits2.html):
 
-`VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_NV`
+[VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_NV](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_NV`
+[VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_NV](VkAccessFlagBits2.html)
 
 Extending [VkPipelineStageFlagBits2](VkPipelineStageFlagBits2.html):
 
 * 
-`VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV`
+[VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV](VkPipelineStageFlagBits2.html)
 
 If [VK_NV_mesh_shader](VK_NV_mesh_shader.html) is supported:
 
 * 
 Extending [VkPipelineStageFlagBits2](VkPipelineStageFlagBits2.html):
 
-`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_NV`
+[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_NV](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_NV`
+[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_NV](VkPipelineStageFlagBits2.html)
 
 If [VK_NV_ray_tracing](VK_NV_ray_tracing.html) is supported:
 
 * 
 Extending [VkAccessFlagBits2](VkAccessFlagBits2.html):
 
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_NV`
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_NV](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_NV`
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_NV](VkAccessFlagBits2.html)
 
 Extending [VkPipelineStageFlagBits2](VkPipelineStageFlagBits2.html):
 
 * 
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_NV`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_NV](VkPipelineStageFlagBits2.html)
 
 * 
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_NV`
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_NV](VkPipelineStageFlagBits2.html)
 
 If [VK_NV_shading_rate_image](VK_NV_shading_rate_image.html) is supported:
 
 * 
 Extending [VkAccessFlagBits2](VkAccessFlagBits2.html):
 
-`VK_ACCESS_2_SHADING_RATE_IMAGE_READ_BIT_NV`
+[VK_ACCESS_2_SHADING_RATE_IMAGE_READ_BIT_NV](VkAccessFlagBits2.html)
 
 Extending [VkPipelineStageFlagBits2](VkPipelineStageFlagBits2.html):
 
 * 
-`VK_PIPELINE_STAGE_2_SHADING_RATE_IMAGE_BIT_NV`
+[VK_PIPELINE_STAGE_2_SHADING_RATE_IMAGE_BIT_NV](VkPipelineStageFlagBits2.html)
 
 Vulkan APIs in this extension are included in core Vulkan 1.3, with the KHR
 suffix omitted.

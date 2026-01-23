@@ -52,10 +52,10 @@ returned.
 If `pPresentModes` is `NULL`, then the number of present modes that are
 compatible with the one specified in [VkSurfacePresentModeKHR](VkSurfacePresentModeKHR.html) is
 returned in `presentModeCount`.
-Otherwise, `presentModeCount` **must** point to a variable set by the
-application to the number of elements in the `pPresentModes` array, and
-on return the variable is overwritten with the number of values actually
-written to `pPresentModes`.
+Otherwise, `presentModeCount` **must** be set by the application to the
+number of elements in the `pPresentModes` array, and on return is
+overwritten with the number of values actually written to
+`pPresentModes`.
 If the value of `presentModeCount` is less than the number of compatible
 present modes that are supported, at most `presentModeCount` values will
 be written to `pPresentModes`.
@@ -76,7 +76,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSurfacePresentModeCompatibilityKHR-sType-sType) VUID-VkSurfacePresentModeCompatibilityKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_COMPATIBILITY_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_COMPATIBILITY_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkSurfacePresentModeCompatibilityKHR-pPresentModes-parameter) VUID-VkSurfacePresentModeCompatibilityKHR-pPresentModes-parameter

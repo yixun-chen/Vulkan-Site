@@ -96,7 +96,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPresentIdKHR-sType-sType) VUID-VkPresentIdKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_ID_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_ID_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPresentIdKHR-pPresentIds-parameter) VUID-VkPresentIdKHR-pPresentIds-parameter

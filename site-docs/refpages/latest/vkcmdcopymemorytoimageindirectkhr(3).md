@@ -40,7 +40,7 @@ array of [VkCopyMemoryToImageIndirectCommandKHR](VkCopyMemoryToImageIndirectComm
 Each region specified in the memory referenced by
 `pCopyMemoryToImageIndirectInfo->copyAddressRange` is copied from the
 source region to an image region in the destination image.
-If the destination image is of type `VK_IMAGE_TYPE_3D`, the starting
+If the destination image is of type [VK_IMAGE_TYPE_3D](VkImageType.html), the starting
 slice and number of slices to copy are specified in
 `pImageSubresources->baseArrayLayer` and
 `pImageSubresources->layerCount` respectively as `imageOffset` and
@@ -88,7 +88,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdCopyMemoryToImageIndirectKHR-commandBuffer-cmdpool) VUID-vkCmdCopyMemoryToImageIndirectKHR-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, or `VK_QUEUE_TRANSFER_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html), or [VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdCopyMemoryToImageIndirectKHR-renderpass) VUID-vkCmdCopyMemoryToImageIndirectKHR-renderpass

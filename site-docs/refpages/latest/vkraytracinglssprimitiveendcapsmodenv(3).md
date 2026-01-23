@@ -31,12 +31,12 @@ typedef enum VkRayTracingLssPrimitiveEndCapsModeNV {
 } VkRayTracingLssPrimitiveEndCapsModeNV;
 
 * 
-`VK_RAY_TRACING_LSS_PRIMITIVE_END_CAPS_MODE_NONE_NV` disables all
+[VK_RAY_TRACING_LSS_PRIMITIVE_END_CAPS_MODE_NONE_NV](#) disables all
 endcaps and the chain boundaries have no influence.
 
 * 
-`VK_RAY_TRACING_LSS_PRIMITIVE_END_CAPS_MODE_CHAINED_NV` specifies
-that when `VK_RAY_TRACING_LSS_INDEXING_MODE_SUCCESSIVE_NV` is used
+[VK_RAY_TRACING_LSS_PRIMITIVE_END_CAPS_MODE_CHAINED_NV](#) specifies
+that when [VK_RAY_TRACING_LSS_INDEXING_MODE_SUCCESSIVE_NV](VkRayTracingLssIndexingModeNV.html) is used
 as indexing mode for the LSS primitive, the first primitive in each
 chain will have both endcaps enabled, and every following primitive in
 the chain only has endcaps at the trailing position enabled.

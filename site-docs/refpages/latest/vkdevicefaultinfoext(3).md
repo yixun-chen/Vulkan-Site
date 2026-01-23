@@ -39,7 +39,7 @@ typedef struct VkDeviceFaultInfoEXT {
 structure.
 
 * 
-`description` is an array of `VK_MAX_DESCRIPTION_SIZE` `char`
+`description` is an array of [VK_MAX_DESCRIPTION_SIZE](VK_MAX_DESCRIPTION_SIZE.html) `char`
 containing a null-terminated UTF-8 string which is a human readable
 description of the fault.
 
@@ -96,7 +96,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceFaultInfoEXT-sType-sType) VUID-VkDeviceFaultInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_FAULT_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_FAULT_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceFaultInfoEXT-pNext-pNext) VUID-VkDeviceFaultInfoEXT-pNext-pNext

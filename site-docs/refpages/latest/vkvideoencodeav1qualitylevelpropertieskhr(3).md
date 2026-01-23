@@ -21,7 +21,7 @@ VkVideoEncodeAV1QualityLevelPropertiesKHR - Structure describing the AV1 encode 
 
 When calling [vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR](vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR.html)
 with `pVideoProfile->videoCodecOperation` specified as
-`VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR`, the
+[VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), the
 [VkVideoEncodeAV1QualityLevelPropertiesKHR](#) structure **must** be included
 in the `pNext` chain of the [VkVideoEncodeQualityLevelPropertiesKHR](VkVideoEncodeQualityLevelPropertiesKHR.html)
 structure to retrieve additional video encode quality level properties
@@ -84,7 +84,7 @@ for [VkVideoEncodeAV1RateControlInfoKHR](VkVideoEncodeAV1RateControlInfoKHR.html
 `preferredConstantQIndex` indicates the preferred value to use for
 [VkVideoEncodeAV1PictureInfoKHR](VkVideoEncodeAV1PictureInfoKHR.html)::`constantQIndex` when using
 [rate control mode](../../../../spec/latest/chapters/videocoding.html#encode-rate-control-modes)
-`VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR`.
+[VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR](VkVideoEncodeRateControlModeFlagBitsKHR.html).
 
 * 
 `preferredMaxSingleReferenceCount` indicates the preferred maximum
@@ -149,7 +149,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeAV1QualityLevelPropertiesKHR-sType-sType) VUID-VkVideoEncodeAV1QualityLevelPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_QUALITY_LEVEL_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_QUALITY_LEVEL_PROPERTIES_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_av1](VK_KHR_video_encode_av1.html), [VkStructureType](VkStructureType.html), [VkVideoEncodeAV1QIndexKHR](VkVideoEncodeAV1QIndexKHR.html), [VkVideoEncodeAV1RateControlFlagsKHR](VkVideoEncodeAV1RateControlFlagsKHR.html)
 

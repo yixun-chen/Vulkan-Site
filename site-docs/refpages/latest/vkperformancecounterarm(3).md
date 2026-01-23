@@ -43,7 +43,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPerformanceCounterARM-sType-sType) VUID-VkPerformanceCounterARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkPerformanceCounterARM-pNext-pNext) VUID-VkPerformanceCounterARM-pNext-pNext

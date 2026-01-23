@@ -56,7 +56,7 @@ individual memory binding operations.
 * 
 [VkPhysicalDeviceMaintenance6Properties](VkPhysicalDeviceMaintenance6Properties.html)::`blockTexelViewCompatibleMultipleLayers`
 property to indicate that the implementation supports creating image
-views with `VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT` where
+views with [VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](VkImageCreateFlagBits.html) where
 the `layerCount` member of `subresourceRange` is greater than
 `1`.
 
@@ -77,7 +77,7 @@ If the `VkPhysicalDeviceMaintenance6Features` structure is included in the `pNex
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceMaintenance6Features`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -85,7 +85,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMaintenance6Features-sType-sType) VUID-VkPhysicalDeviceMaintenance6Features-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_FEATURES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_FEATURES](VkStructureType.html)
 
 [VK_KHR_maintenance6](VK_KHR_maintenance6.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -48,50 +48,50 @@ Valid Usage
 
 If the [`geometryShader`](../../../../spec/latest/chapters/features.html#features-geometryShader) feature is not
 enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-04091) VUID-vkCmdResetEvent-stageMask-04091
 
 If the [`tessellationShader`](../../../../spec/latest/chapters/features.html#features-tessellationShader) feature
 is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](VkPipelineStageFlagBits.html) or
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-04092) VUID-vkCmdResetEvent-stageMask-04092
 
 If the [`conditionalRendering`](../../../../spec/latest/chapters/features.html#features-conditionalRendering)
 feature is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-04093) VUID-vkCmdResetEvent-stageMask-04093
 
 If the [`fragmentDensityMap`](../../../../spec/latest/chapters/features.html#features-fragmentDensityMap) feature
 is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-04094) VUID-vkCmdResetEvent-stageMask-04094
 
 If the [`transformFeedback`](../../../../spec/latest/chapters/features.html#features-transformFeedback) feature
 is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-04095) VUID-vkCmdResetEvent-stageMask-04095
 
 If the [`meshShader`](../../../../spec/latest/chapters/features.html#features-meshShader) feature is not enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-04096) VUID-vkCmdResetEvent-stageMask-04096
 
 If the [`taskShader`](../../../../spec/latest/chapters/features.html#features-taskShader) feature is not enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-07318) VUID-vkCmdResetEvent-stageMask-07318
@@ -99,7 +99,7 @@ If the [`taskShader`](../../../../spec/latest/chapters/features.html#features-ta
 If neither of the [`shadingRateImage`](../../../../spec/latest/chapters/features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](../../../../spec/latest/chapters/features.html#features-attachmentFragmentShadingRate) features are enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-03937) VUID-vkCmdResetEvent-stageMask-03937
@@ -113,14 +113,14 @@ not enabled, `stageMask` **must** not be `0`
 If neither the [VK_NV_ray_tracing](VK_NV_ray_tracing.html) extension or the
 [`rayTracingPipeline`](../../../../spec/latest/chapters/features.html#features-rayTracingPipeline) feature are
 enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-10754) VUID-vkCmdResetEvent-stageMask-10754
 
 If the [`accelerationStructure`](../../../../spec/latest/chapters/features.html#features-accelerationStructure)
 feature is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-06458) VUID-vkCmdResetEvent-stageMask-06458
@@ -134,7 +134,7 @@ from, as specified in the [    table of supported pipeline stages](../../../../s
 * 
 [](#VUID-vkCmdResetEvent-stageMask-01153) VUID-vkCmdResetEvent-stageMask-01153
 
-`stageMask` **must** not include `VK_PIPELINE_STAGE_HOST_BIT`
+`stageMask` **must** not include [VK_PIPELINE_STAGE_HOST_BIT](VkPipelineStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdResetEvent-event-03834) VUID-vkCmdResetEvent-event-03834
@@ -181,7 +181,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdResetEvent-commandBuffer-cmdpool) VUID-vkCmdResetEvent-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](VkQueueFlagBits.html), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdResetEvent-renderpass) VUID-vkCmdResetEvent-renderpass

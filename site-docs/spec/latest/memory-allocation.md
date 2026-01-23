@@ -171,7 +171,7 @@ If either of `pfnInternalAllocation` or `pfnInternalFree` is not
 The type of `pfnAllocation` is:
 
 // Provided by VK_VERSION_1_0
-typedef void* (VKAPI_PTR *PFN_vkAllocationFunction)(
+typedef void* (*PFN_vkAllocationFunction)(
     void*                                       pUserData,
     size_t                                      size,
     size_t                                      alignment,
@@ -215,18 +215,18 @@ properly via other means (e.g. process termination). |
 If `pfnAllocation` returns `NULL`, and if the implementation is unable
 to continue correct processing of the current command without the requested
 allocation, it **must** treat this as a runtime error, and generate
-`VK_ERROR_OUT_OF_HOST_MEMORY` at the appropriate time for the command in
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult) at the appropriate time for the command in
 which the condition was detected, as described in [Return Codes](fundamentals.html#fundamentals-errorcodes).
 
 If the implementation is able to continue correct processing of the current
 command without the requested allocation, then it **may** do so, and **must** not
-generate `VK_ERROR_OUT_OF_HOST_MEMORY` as a result of this failed
+generate [VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult) as a result of this failed
 allocation.
 
 The type of `pfnReallocation` is:
 
 // Provided by VK_VERSION_1_0
-typedef void* (VKAPI_PTR *PFN_vkReallocationFunction)(
+typedef void* (*PFN_vkReallocationFunction)(
     void*                                       pUserData,
     void*                                       pOriginal,
     size_t                                      size,
@@ -285,7 +285,7 @@ If this function fails and `pOriginal` is non-`NULL` the application
 The type of `pfnFree` is:
 
 // Provided by VK_VERSION_1_0
-typedef void (VKAPI_PTR *PFN_vkFreeFunction)(
+typedef void (*PFN_vkFreeFunction)(
     void*                                       pUserData,
     void*                                       pMemory);
 
@@ -305,7 +305,7 @@ The application **should** free this memory.
 The type of `pfnInternalAllocation` is:
 
 // Provided by VK_VERSION_1_0
-typedef void (VKAPI_PTR *PFN_vkInternalAllocationNotification)(
+typedef void (*PFN_vkInternalAllocationNotification)(
     void*                                       pUserData,
     size_t                                      size,
     VkInternalAllocationType                    allocationType,
@@ -333,7 +333,7 @@ This is a purely informational callback.
 The type of `pfnInternalFree` is:
 
 // Provided by VK_VERSION_1_0
-typedef void (VKAPI_PTR *PFN_vkInternalFreeNotification)(
+typedef void (*PFN_vkInternalFreeNotification)(
     void*                                       pUserData,
     size_t                                      size,
     VkInternalAllocationType                    allocationType,
@@ -372,33 +372,33 @@ typedef enum VkSystemAllocationScope {
 } VkSystemAllocationScope;
 
 * 
-`VK_SYSTEM_ALLOCATION_SCOPE_COMMAND` specifies that the allocation
+[VK_SYSTEM_ALLOCATION_SCOPE_COMMAND](#VkSystemAllocationScope) specifies that the allocation
 is scoped to the duration of the Vulkan command.
 
 * 
-`VK_SYSTEM_ALLOCATION_SCOPE_OBJECT` specifies that the allocation is
+[VK_SYSTEM_ALLOCATION_SCOPE_OBJECT](#VkSystemAllocationScope) specifies that the allocation is
 scoped to the lifetime of the Vulkan object that is being created or
 used.
 
 * 
-`VK_SYSTEM_ALLOCATION_SCOPE_CACHE` specifies that the allocation is
+[VK_SYSTEM_ALLOCATION_SCOPE_CACHE](#VkSystemAllocationScope) specifies that the allocation is
 scoped to the lifetime of a `VkPipelineCache`
 or `VkValidationCacheEXT`
 object.
 
 * 
-`VK_SYSTEM_ALLOCATION_SCOPE_DEVICE` specifies that the allocation is
+[VK_SYSTEM_ALLOCATION_SCOPE_DEVICE](#VkSystemAllocationScope) specifies that the allocation is
 scoped to the lifetime of the Vulkan device.
 
 * 
-`VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE` specifies that the allocation
+[VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE](#VkSystemAllocationScope) specifies that the allocation
 is scoped to the lifetime of the Vulkan instance.
 
 Most Vulkan commands operate on a single object, or there is a sole object
 that is being created or manipulated.
 When an allocation uses an allocation scope of
-`VK_SYSTEM_ALLOCATION_SCOPE_OBJECT` or
-`VK_SYSTEM_ALLOCATION_SCOPE_CACHE`, the allocation is scoped to the
+[VK_SYSTEM_ALLOCATION_SCOPE_OBJECT](#VkSystemAllocationScope) or
+[VK_SYSTEM_ALLOCATION_SCOPE_CACHE](#VkSystemAllocationScope), the allocation is scoped to the
 object being created or manipulated.
 
 When an implementation requires host memory, it will make callbacks to the
@@ -407,7 +407,7 @@ available:
 
 * 
 If an allocation is scoped to the duration of a command, the allocator
-will use the `VK_SYSTEM_ALLOCATION_SCOPE_COMMAND` allocation scope.
+will use the [VK_SYSTEM_ALLOCATION_SCOPE_COMMAND](#VkSystemAllocationScope) allocation scope.
 The most specific allocator available is used: if the object being
 created or manipulated has an allocator, that object’s allocator will be
 used, else if the parent `VkDevice` has an allocator it will be
@@ -419,7 +419,7 @@ Else,
 If an allocation is associated with a
 `VkValidationCacheEXT` or
 `VkPipelineCache` object, the allocator will use the
-`VK_SYSTEM_ALLOCATION_SCOPE_CACHE` allocation scope.
+[VK_SYSTEM_ALLOCATION_SCOPE_CACHE](#VkSystemAllocationScope) allocation scope.
 The most specific allocator available is used (cache, else device, else
 instance).
 Else,
@@ -428,21 +428,21 @@ Else,
 If an allocation is scoped to the lifetime of an object, that object is
 being created or manipulated by the command, and that object’s type is
 not `VkDevice` or `VkInstance`, the allocator will use an
-allocation scope of `VK_SYSTEM_ALLOCATION_SCOPE_OBJECT`.
+allocation scope of [VK_SYSTEM_ALLOCATION_SCOPE_OBJECT](#VkSystemAllocationScope).
 The most specific allocator available is used (object, else device, else
 instance).
 Else,
 
 * 
 If an allocation is scoped to the lifetime of a device, the allocator
-will use an allocation scope of `VK_SYSTEM_ALLOCATION_SCOPE_DEVICE`.
+will use an allocation scope of [VK_SYSTEM_ALLOCATION_SCOPE_DEVICE](#VkSystemAllocationScope).
 The most specific allocator available is used (device, else instance).
 Else,
 
 * 
 If the allocation is scoped to the lifetime of an instance and the
 instance has an allocator, its allocator will be used with an allocation
-scope of `VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE`.
+scope of [VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE](#VkSystemAllocationScope).
 
 * 
 Otherwise an implementation will allocate memory through an alternative
@@ -473,7 +473,7 @@ typedef enum VkInternalAllocationType {
 } VkInternalAllocationType;
 
 * 
-`VK_INTERNAL_ALLOCATION_TYPE_EXECUTABLE` specifies that the
+[VK_INTERNAL_ALLOCATION_TYPE_EXECUTABLE](#VkInternalAllocationType) specifies that the
 allocation is intended for execution by the host.
 
 An implementation **must** only make calls into an application-provided
@@ -511,7 +511,7 @@ both `pfnInternalAllocation` and `pfnInternalFree` to `NULL`.
 
 If `pfnAllocation` or `pfnReallocation` fail, the implementation
 **may** fail object creation and/or generate a
-`VK_ERROR_OUT_OF_HOST_MEMORY` error, as appropriate.
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult) error, as appropriate.
 
 Allocation callbacks **must** not call any Vulkan commands.
 
@@ -679,7 +679,7 @@ typedef struct VkPhysicalDeviceMemoryProperties {
 `memoryTypes` array.
 
 * 
-`memoryTypes` is an array of `VK_MAX_MEMORY_TYPES`
+`memoryTypes` is an array of [VK_MAX_MEMORY_TYPES](#VK_MAX_MEMORY_TYPES)
 [VkMemoryType](#VkMemoryType) structures describing the *memory types* that **can** be
 used to access memory allocated from the heaps specified by
 `memoryHeaps`.
@@ -689,7 +689,7 @@ used to access memory allocated from the heaps specified by
 `memoryHeaps` array.
 
 * 
-`memoryHeaps` is an array of `VK_MAX_MEMORY_HEAPS`
+`memoryHeaps` is an array of [VK_MAX_MEMORY_HEAPS](#VK_MAX_MEMORY_HEAPS)
 [VkMemoryHeap](#VkMemoryHeap) structures describing the *memory heaps* from which
 memory **can** be allocated.
 
@@ -707,27 +707,27 @@ memory resources while allowing the memory to be used with a variety of
 different properties.
 
 The number of memory heaps is given by `memoryHeapCount` and is less
-than or equal to `VK_MAX_MEMORY_HEAPS`.
+than or equal to [VK_MAX_MEMORY_HEAPS](#VK_MAX_MEMORY_HEAPS).
 Each heap is described by an element of the `memoryHeaps` array as a
 [VkMemoryHeap](#VkMemoryHeap) structure.
 The number of memory types available across all memory heaps is given by
 `memoryTypeCount` and is less than or equal to
-`VK_MAX_MEMORY_TYPES`.
+[VK_MAX_MEMORY_TYPES](#VK_MAX_MEMORY_TYPES).
 Each memory type is described by an element of the `memoryTypes` array
 as a [VkMemoryType](#VkMemoryType) structure.
 
-At least one heap **must** include `VK_MEMORY_HEAP_DEVICE_LOCAL_BIT` in
+At least one heap **must** include [VK_MEMORY_HEAP_DEVICE_LOCAL_BIT](#VkMemoryHeapFlagBits) in
 [VkMemoryHeap](#VkMemoryHeap)::`flags`.
 If there are multiple heaps that all have similar performance
 characteristics, they **may** all include
-`VK_MEMORY_HEAP_DEVICE_LOCAL_BIT`.
+[VK_MEMORY_HEAP_DEVICE_LOCAL_BIT](#VkMemoryHeapFlagBits).
 In a unified memory architecture (UMA) system there is often only a single
 memory heap which is considered to be equally “local” to the host and to
 the device, and such an implementation **must** advertise the heap as
 device-local.
 
 Memory contents within a tile memory heap, denoted by
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM`, are only visible across the
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](#VkMemoryHeapFlagBits), are only visible across the
 command buffers executed in a single command buffer submission batch within
 a [vkQueueSubmit](cmdbuffers.html#vkQueueSubmit) or [vkQueueSubmit2](cmdbuffers.html#vkQueueSubmit2) call.
 If the
@@ -761,167 +761,167 @@ have its `propertyFlags` set to one of the following values:
 0
 
 * 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) |
 
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT`
-
-* 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT`
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits)
 
 * 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) |
 
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT`
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](#VkMemoryPropertyFlagBits)
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT`
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits)
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT`
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](#VkMemoryPropertyFlagBits)
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](#VkMemoryPropertyFlagBits) |
 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) |
 
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT`
-
-* 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT`
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits)
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](#VkMemoryPropertyFlagBits) |
 
-`VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT`
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) |
 
-* 
-`VK_MEMORY_PROPERTY_PROTECTED_BIT`
-
-* 
-`VK_MEMORY_PROPERTY_PROTECTED_BIT` |
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT`
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](#VkMemoryPropertyFlagBits)
 
 * 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](#VkMemoryPropertyFlagBits) |
 
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` |
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) |
 
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD`
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](#VkMemoryPropertyFlagBits) |
 
-* 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` |
-
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD`
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits)
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](#VkMemoryPropertyFlagBits) |
 
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD`
-
-* 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` |
-
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD`
+[VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT](#VkMemoryPropertyFlagBits)
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` |
-
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD`
+[VK_MEMORY_PROPERTY_PROTECTED_BIT](#VkMemoryPropertyFlagBits)
 
 * 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` |
-
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD` |
-
-`VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD`
+[VK_MEMORY_PROPERTY_PROTECTED_BIT](#VkMemoryPropertyFlagBits) |
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](#VkMemoryPropertyFlagBits)
 
 * 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) |
 
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT` |
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits) |
 
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` |
-
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD` |
-
-`VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD`
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](#VkMemoryPropertyFlagBits)
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) |
 
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD` |
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](#VkMemoryPropertyFlagBits) |
 
-`VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD`
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits) |
 
-* 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` |
-
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD` |
-
-`VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD`
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](#VkMemoryPropertyFlagBits)
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](#VkMemoryPropertyFlagBits) |
 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT` |
-
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` |
-
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD` |
-
-`VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD`
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](#VkMemoryPropertyFlagBits)
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` |
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](#VkMemoryPropertyFlagBits) |
 
-`VK_MEMORY_PROPERTY_RDMA_CAPABLE_BIT_NV`
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](#VkMemoryPropertyFlagBits)
+
+* 
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](#VkMemoryPropertyFlagBits)
+
+* 
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD](#VkMemoryPropertyFlagBits)
+
+* 
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD](#VkMemoryPropertyFlagBits)
+
+* 
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD](#VkMemoryPropertyFlagBits)
+
+* 
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD](#VkMemoryPropertyFlagBits)
+
+* 
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD](#VkMemoryPropertyFlagBits)
+
+* 
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](#VkMemoryPropertyFlagBits) |
+
+[VK_MEMORY_PROPERTY_RDMA_CAPABLE_BIT_NV](#VkMemoryPropertyFlagBits)
 
 There **must** be at least one memory type with both the
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` and
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` bits set in its
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) and
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits) bits set in its
 `propertyFlags`.
 There **must** be at least one memory type with the
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` bit set in its
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](#VkMemoryPropertyFlagBits) bit set in its
 `propertyFlags`.
 If the [`deviceCoherentMemory`](features.html#features-deviceCoherentMemory) feature
 is enabled, there **must** be at least one memory type with the
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD` bit set in its
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](#VkMemoryPropertyFlagBits) bit set in its
 `propertyFlags`.
 
 For each pair of elements **X** and **Y** returned in `memoryTypes`, **X**
@@ -940,8 +940,8 @@ implementation-specific manner)
 
 * 
 the `propertyFlags` members of **Y** includes
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD` or
-`VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD` and **X** does not
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](#VkMemoryPropertyFlagBits) or
+[VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD](#VkMemoryPropertyFlagBits) and **X** does not
 
 |  | There is no ordering requirement between **X** and **Y** elements for the case
 | --- | --- |
@@ -949,9 +949,9 @@ their `propertyFlags` members are not in a subset relation.
 That potentially allows more than one possible way to order the same set of
 memory types.
 Notice that the [list of all allowed memory property flag combinations](#memory-device-bitmask-list) is written in a valid order.
-But if instead `VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` was before
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` \|
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT`, the list would still be in a
+But if instead [VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](#VkMemoryPropertyFlagBits) was before
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) \|
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits), the list would still be in a
 valid order.
 
 There may be a performance penalty for using device coherent or uncached
@@ -993,13 +993,13 @@ if (memoryType == -1) // not found; try fallback properties
     memoryType =
         findProperties(&memoryProperties, memoryRequirements.memoryTypeBits, requiredProperties);
 
-`VK_MAX_MEMORY_TYPES` is the length of an array of [VkMemoryType](#VkMemoryType)
+[VK_MAX_MEMORY_TYPES](#VK_MAX_MEMORY_TYPES) is the length of an array of [VkMemoryType](#VkMemoryType)
 structures describing memory types, as returned in
 [VkPhysicalDeviceMemoryProperties](#VkPhysicalDeviceMemoryProperties)::`memoryTypes`.
 
 #define VK_MAX_MEMORY_TYPES               32U
 
-`VK_MAX_MEMORY_HEAPS` is the length of an array of [VkMemoryHeap](#VkMemoryHeap)
+[VK_MAX_MEMORY_HEAPS](#VK_MAX_MEMORY_HEAPS) is the length of an array of [VkMemoryHeap](#VkMemoryHeap)
 structures describing memory heaps, as returned in
 [VkPhysicalDeviceMemoryProperties](#VkPhysicalDeviceMemoryProperties)::`memoryHeaps`.
 
@@ -1072,7 +1072,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMemoryProperties2-sType-sType) VUID-VkPhysicalDeviceMemoryProperties2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PROPERTIES_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PROPERTIES_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPhysicalDeviceMemoryProperties2-pNext-pNext) VUID-VkPhysicalDeviceMemoryProperties2-pNext-pNext
@@ -1114,20 +1114,20 @@ typedef enum VkMemoryHeapFlagBits {
 } VkMemoryHeapFlagBits;
 
 * 
-`VK_MEMORY_HEAP_DEVICE_LOCAL_BIT` specifies that the heap
+[VK_MEMORY_HEAP_DEVICE_LOCAL_BIT](#VkMemoryHeapFlagBits) specifies that the heap
 corresponds to device-local memory.
 Device-local memory **may** have different performance characteristics than
 host-local memory, and **may** support different memory property flags.
 
 * 
-`VK_MEMORY_HEAP_MULTI_INSTANCE_BIT` specifies that in a logical
+[VK_MEMORY_HEAP_MULTI_INSTANCE_BIT](#VkMemoryHeapFlagBits) specifies that in a logical
 device representing more than one physical device, there is a
 per-physical device instance of the heap memory.
 By default, an allocation from such a heap will be replicated to each
 physical device’s instance of the heap.
 
 * 
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` bit specifies that the heap
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](#VkMemoryHeapFlagBits) bit specifies that the heap
 corresponds to tile memory.
 
 // Provided by VK_VERSION_1_0
@@ -1174,66 +1174,66 @@ typedef enum VkMemoryPropertyFlagBits {
 } VkMemoryPropertyFlagBits;
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT` bit specifies that memory
+[VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT](#VkMemoryPropertyFlagBits) bit specifies that memory
 allocated with this type is the most efficient for device access.
 This property will be set if and only if the memory type belongs to a
-heap with the `VK_MEMORY_HEAP_DEVICE_LOCAL_BIT` set.
+heap with the [VK_MEMORY_HEAP_DEVICE_LOCAL_BIT](#VkMemoryHeapFlagBits) set.
 
 * 
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` bit specifies that memory
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) bit specifies that memory
 allocated with this type **can** be mapped for host access using
 [vkMapMemory](#vkMapMemory).
 
 * 
- `VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` bit
+ [VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits) bit
 specifies that the host cache management commands
 [vkFlushMappedMemoryRanges](#vkFlushMappedMemoryRanges) and [vkInvalidateMappedMemoryRanges](#vkInvalidateMappedMemoryRanges)
 are not needed to manage
 [availability and    visibility](synchronization.html#synchronization-dependencies-available-and-visible) on the host.
 
 * 
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT` bit specifies that memory
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](#VkMemoryPropertyFlagBits) bit specifies that memory
 allocated with this type is cached on the host.
 Host memory accesses to uncached memory are slower than to cached
 memory, however uncached memory is always host coherent.
 
 * 
-`VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT` bit specifies that the
+[VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT](#VkMemoryPropertyFlagBits) bit specifies that the
 memory type only allows device access to the memory.
 Memory types **must** not have both
-`VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT` and
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` set.
+[VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT](#VkMemoryPropertyFlagBits) and
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) set.
 Additionally, the object’s backing memory **may** be provided by the
 implementation lazily as specified in [    Lazily Allocated Memory](#memory-device-lazy_allocation).
 
 * 
-`VK_MEMORY_PROPERTY_PROTECTED_BIT` bit specifies that the memory
+[VK_MEMORY_PROPERTY_PROTECTED_BIT](#VkMemoryPropertyFlagBits) bit specifies that the memory
 type only allows device access to the memory, and allows protected queue
 operations to access the memory.
-Memory types **must** not have `VK_MEMORY_PROPERTY_PROTECTED_BIT` set
-and any of `VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` set, or
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` set, or
-`VK_MEMORY_PROPERTY_HOST_CACHED_BIT` set.
+Memory types **must** not have [VK_MEMORY_PROPERTY_PROTECTED_BIT](#VkMemoryPropertyFlagBits) set
+and any of [VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) set, or
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits) set, or
+[VK_MEMORY_PROPERTY_HOST_CACHED_BIT](#VkMemoryPropertyFlagBits) set.
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD` bit specifies that
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](#VkMemoryPropertyFlagBits) bit specifies that
 device accesses to allocations of this memory type are automatically
 made [available and    visible](synchronization.html#synchronization-dependencies-available-and-visible) on the device.
-If paired with `VK_MEMORY_PROPERTY_HOST_COHERENT_BIT`,
+If paired with [VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits),
 [memory domain    operations](synchronization.html#synchronization-dependencies-available-and-visible) are also performed automatically between host and device.
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD` bit specifies that
+[VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD](#VkMemoryPropertyFlagBits) bit specifies that
 memory allocated with this type is not cached on the device.
 Uncached device memory is always device coherent.
 
 * 
-`VK_MEMORY_PROPERTY_RDMA_CAPABLE_BIT_NV` bit specifies that external
+[VK_MEMORY_PROPERTY_RDMA_CAPABLE_BIT_NV](#VkMemoryPropertyFlagBits) bit specifies that external
 devices can access this memory directly.
 
 For any memory allocated with both the
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` and the
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD`, host or device accesses
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits) and the
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](#VkMemoryPropertyFlagBits), host or device accesses
 also perform automatic memory domain transfer operations, such that writes
 are always automatically available and visible to both host and device
 memory domains.
@@ -1278,7 +1278,7 @@ typedef struct VkPhysicalDeviceMemoryBudgetPropertiesEXT {
 structure.
 
 * 
-`heapBudget` is an array of `VK_MAX_MEMORY_HEAPS`
+`heapBudget` is an array of [VK_MAX_MEMORY_HEAPS](#VK_MAX_MEMORY_HEAPS)
 `VkDeviceSize` values in which memory budgets are returned, with
 one element for each memory heap.
 A heap’s budget is a rough estimate of how much memory the process **can**
@@ -1287,7 +1287,7 @@ performance degradation.
 The budget includes any currently allocated device memory.
 
 * 
-`heapUsage` is an array of `VK_MAX_MEMORY_HEAPS`
+`heapUsage` is an array of [VK_MAX_MEMORY_HEAPS](#VK_MAX_MEMORY_HEAPS)
 `VkDeviceSize` values in which memory usages are returned, with
 one element for each memory heap.
 A heap’s usage is an estimate of how much memory the process is
@@ -1307,7 +1307,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMemoryBudgetPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceMemoryBudgetPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 A Vulkan device operates on data in device memory via memory objects that
 are represented in the API by a `VkDeviceMemory` handle:
@@ -1371,7 +1371,7 @@ before encountering these internal limits.
 
 |  | For historical reasons, if `maxMemoryAllocationCount` is exceeded, some
 | --- | --- |
-implementations may return `VK_ERROR_TOO_MANY_OBJECTS`.
+implementations may return [VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult).
 Exceeding this limit will result in **undefined** behavior, and an application
 should not rely on the use of the returned error code in order to identify
 when the limit is reached. |
@@ -1380,7 +1380,7 @@ when the limit is reached. |
 | --- | --- |
 software support, and often have additional and much lower limits on the
 number of simultaneous protected memory allocations (from memory types with
-the `VK_MEMORY_PROPERTY_PROTECTED_BIT` property) than for non-protected
+the [VK_MEMORY_PROPERTY_PROTECTED_BIT](#VkMemoryPropertyFlagBits) property) than for non-protected
 memory allocations.
 These limits can be system-wide, and depend on a variety of factors outside
 of the Vulkan implementation, so they cannot be queried in Vulkan.
@@ -1396,7 +1396,7 @@ Some platforms **may** have a limit on the maximum size of a single allocation.
 For example, certain systems **may** fail to create allocations with a size
 greater than or equal to 4GB.
 Such a limit is implementation-dependent, and if such a failure occurs then
-the error `VK_ERROR_OUT_OF_DEVICE_MEMORY` **must** be returned.
+the error [VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult) **must** be returned.
 This limit is advertised in
 [VkPhysicalDeviceMaintenance3Properties](limits.html#VkPhysicalDeviceMaintenance3Properties)::`maxMemoryAllocationSize`.
 
@@ -1409,7 +1409,7 @@ The overallocation behavior **can** be specified through the
 `[VK_AMD_memory_overallocation_behavior](../appendices/extensions.html#VK_AMD_memory_overallocation_behavior)` extension.
 
 If the `memoryTypeIndex` belongs to a heap with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` bit included in its properties,
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](#VkMemoryHeapFlagBits) bit included in its properties,
 this allocation is backed by tile memory, which is an on device cache.
 Unlike other heaps, allocations out of the tile memory will always have a
 starting address at the start of the heap and its contents are aliased with
@@ -1419,7 +1419,7 @@ executing within the same [*tile memory scope*](#memory-tile-heaps).
 If the
 [VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT](features.html#VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT)::`pageableDeviceLocalMemory`
 feature is enabled, memory allocations made from a heap that includes
-`VK_MEMORY_HEAP_DEVICE_LOCAL_BIT` in [VkMemoryHeap](#VkMemoryHeap)::`flags`
+[VK_MEMORY_HEAP_DEVICE_LOCAL_BIT](#VkMemoryHeapFlagBits) in [VkMemoryHeap](#VkMemoryHeap)::`flags`
 **may** be transparently moved to host-local memory allowing multiple
 applications to share device-local memory.
 If there is no space left in device-local memory when this new allocation is
@@ -1433,7 +1433,7 @@ and adjust it as necessary with [vkSetDeviceMemoryPriorityEXT](#vkSetDeviceMemor
 Higher priority allocations will moved to device-local memory first.
 
 Memory allocations made on heaps without the
-`VK_MEMORY_HEAP_DEVICE_LOCAL_BIT` property will not be transparently
+[VK_MEMORY_HEAP_DEVICE_LOCAL_BIT](#VkMemoryHeapFlagBits) property will not be transparently
 promoted to device-local memory by the operating system.
 
 Valid Usage
@@ -1462,7 +1462,7 @@ returned by [vkGetPhysicalDeviceMemoryProperties](#vkGetPhysicalDeviceMemoryProp
 If the [`deviceCoherentMemory`](features.html#features-deviceCoherentMemory)
 feature is not enabled, `pAllocateInfo->memoryTypeIndex` **must** not
 identify a memory type supporting
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD`
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](#VkMemoryPropertyFlagBits)
 
 * 
 [](#VUID-vkAllocateMemory-maxMemoryAllocationCount-04101) VUID-vkAllocateMemory-maxMemoryAllocationCount-04101
@@ -1477,7 +1477,7 @@ memory allocations currently allocated on the device
 If the [`tileMemoryHeap`](features.html#features-tileMemoryHeap) feature is not
 enabled, `pAllocateInfo->memoryTypeIndex` **must** not identify a
 memory type that corresponds to a [VkMemoryHeap](#VkMemoryHeap) with the
-`VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](#VkMemoryHeapFlagBits) property
 
 Valid Usage (Implicit)
 
@@ -1511,27 +1511,27 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR`
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkMemoryAllocateInfo` structure is defined as:
 
@@ -1597,14 +1597,14 @@ value
 value
 
 If the parameters define an import operation and the external handle type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT`, or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR), or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
 `allocationSize` is ignored.
 The implementation **must** query the size of these allocations from the OS.
 
 If the parameters define an import operation and the external handle type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
 `allocationSize` is ignored.
 The implementation **must** query the size of these allocations from the OS.
 
@@ -1646,9 +1646,9 @@ or corruption of other resources when used as allowed according to its
 allocation parameters.
 If the external handle provided does not meet these requirements, the
 implementation **must** fail the memory import operation with the error code
-`VK_ERROR_INVALID_EXTERNAL_HANDLE`.
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](fundamentals.html#VkResult).
 If the parameters define an export operation and the external handle type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
 implementations **should** not strictly follow `memoryTypeIndex`.
 Instead, they **should** modify the allocation internally to use the required
 memory type for the application’s given usage.
@@ -1674,7 +1674,7 @@ The parameters **must** not define more than one
 
 If the parameters define an export operation
 and the handle type is not
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 , `allocationSize` **must** be greater than `0`
 
 * 
@@ -1801,7 +1801,7 @@ If the `pNext` chain includes a
 
 If the parameters define an import operation, the external handle
 specified was created by the Vulkan API, and the external handle type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT`, then the values of
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR), then the values of
 `allocationSize` and `memoryTypeIndex` **must** match those
 specified when the payload being imported was created
 
@@ -1835,8 +1835,8 @@ the value of `memoryTypeIndex` **must** be one of those returned by
 
 If the parameters define an import operation, the external handle was
 created by the Vulkan API, and the external handle type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT`, then the
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR), then the
 values of `allocationSize` and `memoryTypeIndex` **must** match
 those specified when the payload being imported was created
 
@@ -1844,7 +1844,7 @@ those specified when the payload being imported was created
 [](#VUID-VkMemoryAllocateInfo-allocationSize-00647) VUID-VkMemoryAllocateInfo-allocationSize-00647
 
 If the parameters define an import operation and the external handle
-type is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT`,
+type is [VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
 `allocationSize` **must** match the size specified when creating the
 Direct3D 12 heap from which the payload was extracted
 
@@ -1862,7 +1862,7 @@ a POSIX file descriptor created outside of the Vulkan API, the value of
 If the [`protectedMemory`](features.html#features-protectedMemory) feature is
 not enabled, the `VkMemoryAllocateInfo`::`memoryTypeIndex` **must**
 not indicate a memory type that reports
-`VK_MEMORY_PROPERTY_PROTECTED_BIT`
+[VK_MEMORY_PROPERTY_PROTECTED_BIT](#VkMemoryPropertyFlagBits)
 
 * 
 [](#VUID-VkMemoryAllocateInfo-memoryTypeIndex-01744) VUID-VkMemoryAllocateInfo-memoryTypeIndex-01744
@@ -1901,7 +1901,7 @@ a host pointer, the `pNext` chain **must** not include a
 
 If the parameters define an import operation and the external handle
 type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
 `allocationSize` **must** be the size returned by
 [vkGetAndroidHardwareBufferPropertiesANDROID](#vkGetAndroidHardwareBufferPropertiesANDROID) for the Android
 hardware buffer
@@ -1911,7 +1911,7 @@ hardware buffer
 
 If the parameters define an import operation and the external handle
 type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
 and the `pNext` chain does not include a
 [VkMemoryDedicatedAllocateInfo](#VkMemoryDedicatedAllocateInfo) structure or
 [VkMemoryDedicatedAllocateInfo](#VkMemoryDedicatedAllocateInfo)::`image` is
@@ -1926,7 +1926,7 @@ and the `pNext` chain does not include a
 
 If the parameters define an import operation and the external handle
 type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
 `memoryTypeIndex` **must** be one of those returned by
 [vkGetAndroidHardwareBufferPropertiesANDROID](#vkGetAndroidHardwareBufferPropertiesANDROID) for the Android
 hardware buffer
@@ -1936,7 +1936,7 @@ hardware buffer
 
 If the parameters do not define an import operation, and the `pNext`
 chain includes a `VkExportMemoryAllocateInfo` structure with
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 included in its `handleTypes` member, and the `pNext` chain
 includes a [VkMemoryDedicatedAllocateInfo](#VkMemoryDedicatedAllocateInfo) structure with
 `image` not equal to [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), then `allocationSize`
@@ -1946,7 +1946,7 @@ includes a [VkMemoryDedicatedAllocateInfo](#VkMemoryDedicatedAllocateInfo) struc
 [](#VUID-VkMemoryAllocateInfo-pNext-07900) VUID-VkMemoryAllocateInfo-pNext-07900
 
 If the parameters define an export operation, the handle type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
 and the `pNext` does not include a
 [VkMemoryDedicatedAllocateInfo](#VkMemoryDedicatedAllocateInfo) structure, `allocationSize`
 **must** be greater than `0`
@@ -1955,7 +1955,7 @@ and the `pNext` does not include a
 [](#VUID-VkMemoryAllocateInfo-pNext-07901) VUID-VkMemoryAllocateInfo-pNext-07901
 
 If the parameters define an export operation, the handle type is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
 and the `pNext` chain includes a [VkMemoryDedicatedAllocateInfo](#VkMemoryDedicatedAllocateInfo)
 structure with `buffer` set to a valid [VkBuffer](resources.html#VkBuffer) object,
 `allocationSize` **must** be greater than `0`
@@ -1979,7 +1979,7 @@ If the parameters define an import operation, the external handle is an
 Android hardware buffer, and the `pNext` chain includes a
 [VkMemoryDedicatedAllocateInfo](#VkMemoryDedicatedAllocateInfo) with `image` that is not
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the format of `image` **must** be
-`VK_FORMAT_UNDEFINED` or the format returned by
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat) or the format returned by
 [vkGetAndroidHardwareBufferPropertiesANDROID](#vkGetAndroidHardwareBufferPropertiesANDROID) in
 [VkAndroidHardwareBufferFormatPropertiesANDROID](#VkAndroidHardwareBufferFormatPropertiesANDROID)::`format` for
 the Android hardware buffer
@@ -2032,7 +2032,7 @@ Android hardware buffer’s `AHardwareBuffer_Desc`::`usage`
 [](#VUID-VkMemoryAllocateInfo-screenBufferImport-08941) VUID-VkMemoryAllocateInfo-screenBufferImport-08941
 
 If the parameters define an import operation and the external handle
-type is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX`,
+type is [VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
 [VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX](features.html#VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX)::`screenBufferImport`
 **must** be enabled
 
@@ -2040,7 +2040,7 @@ type is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX`,
 [](#VUID-VkMemoryAllocateInfo-allocationSize-08942) VUID-VkMemoryAllocateInfo-allocationSize-08942
 
 If the parameters define an import operation and the external handle
-type is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX`,
+type is [VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
 `allocationSize` **must** be the size returned by
 [vkGetScreenBufferPropertiesQNX](#vkGetScreenBufferPropertiesQNX) for the QNX Screen buffer
 
@@ -2048,7 +2048,7 @@ type is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX`,
 [](#VUID-VkMemoryAllocateInfo-memoryTypeIndex-08943) VUID-VkMemoryAllocateInfo-memoryTypeIndex-08943
 
 If the parameters define an import operation and the external handle
-type is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX`,
+type is [VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
 `memoryTypeIndex` **must** be one of those returned by
 [vkGetScreenBufferPropertiesQNX](#vkGetScreenBufferPropertiesQNX) for the QNX Screen buffer
 
@@ -2068,7 +2068,7 @@ If the parameters define an import operation, the external handle is an
 QNX Screen buffer, and the `pNext` chain includes a
 [VkMemoryDedicatedAllocateInfo](#VkMemoryDedicatedAllocateInfo) with `image` that is not
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the format of `image` **must** be
-`VK_FORMAT_UNDEFINED` or the format returned by
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat) or the format returned by
 [vkGetScreenBufferPropertiesQNX](#vkGetScreenBufferPropertiesQNX) in
 [VkScreenBufferFormatPropertiesQNX](#VkScreenBufferFormatPropertiesQNX)::`format` for the QNX Screen
 buffer
@@ -2087,7 +2087,7 @@ identical
 [](#VUID-VkMemoryAllocateInfo-pNext-10395) VUID-VkMemoryAllocateInfo-pNext-10395
 
 If the parameters define an import operation and the external handle is
-a `VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT`, then
+a [VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR), then
 `pNext` **must** include a [VkMemoryDedicatedAllocateInfo](#VkMemoryDedicatedAllocateInfo) with
 `image` that is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
@@ -2115,20 +2115,20 @@ not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `allocation
 If
 [VkMemoryOpaqueCaptureAddressAllocateInfo](#VkMemoryOpaqueCaptureAddressAllocateInfo)::`opaqueCaptureAddress`
 is not zero, `VkMemoryAllocateFlagsInfo`::`flags` **must** include
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT`
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#VkMemoryAllocateFlagBitsKHR)
 
 * 
 [](#VUID-VkMemoryAllocateInfo-flags-03330) VUID-VkMemoryAllocateInfo-flags-03330
 
 If `VkMemoryAllocateFlagsInfo`::`flags` includes
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT`, the
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#VkMemoryAllocateFlagBitsKHR), the
 [    `bufferDeviceAddressCaptureReplay`](features.html#features-bufferDeviceAddressCaptureReplay) feature **must** be enabled
 
 * 
 [](#VUID-VkMemoryAllocateInfo-flags-03331) VUID-VkMemoryAllocateInfo-flags-03331
 
 If `VkMemoryAllocateFlagsInfo`::`flags` includes
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT`, the
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](#VkMemoryAllocateFlagBitsKHR), the
 [`bufferDeviceAddress`](features.html#features-bufferDeviceAddress) feature
 **must** be enabled
 
@@ -2151,7 +2151,7 @@ If the parameters define an import operation,
 [](#VUID-VkMemoryAllocateInfo-None-04749) VUID-VkMemoryAllocateInfo-None-04749
 
 If the parameters define an import operation and the external handle
-type is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA`, the
+type is [VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR), the
 value of `memoryTypeIndex` **must** be an index identifying a memory
 type from the `memoryTypeBits` field of the
 [VkMemoryZirconHandlePropertiesFUCHSIA](#VkMemoryZirconHandlePropertiesFUCHSIA) structure populated by a
@@ -2161,14 +2161,14 @@ call to [vkGetMemoryZirconHandlePropertiesFUCHSIA](#vkGetMemoryZirconHandlePrope
 [](#VUID-VkMemoryAllocateInfo-allocationSize-07902) VUID-VkMemoryAllocateInfo-allocationSize-07902
 
 If the parameters define an import operation and the external handle
-type is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA`, the
+type is [VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR), the
 value of `allocationSize` **must** be greater than `0`
 
 * 
 [](#VUID-VkMemoryAllocateInfo-allocationSize-07903) VUID-VkMemoryAllocateInfo-allocationSize-07903
 
 If the parameters define an import operation and the external handle
-type is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA`, the
+type is [VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR), the
 value of `allocationSize` **must** be less than or equal to the size of
 the VMO as determined by `zx_vmo_get_size`(`handle`) where
 `handle` is the VMO handle to the imported external memory
@@ -2179,14 +2179,14 @@ the VMO as determined by `zx_vmo_get_size`(`handle`) where
 If the `pNext` chain includes a
 [VkExportMetalObjectCreateInfoEXT](#VkExportMetalObjectCreateInfoEXT) structure, its
 `exportObjectType` member **must** be
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT`
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT](#VkExportMetalObjectTypeFlagBitsEXT)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkMemoryAllocateInfo-sType-sType) VUID-VkMemoryAllocateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryAllocateInfo-pNext-pNext) VUID-VkMemoryAllocateInfo-pNext-pNext
@@ -2254,7 +2254,7 @@ QNX Screen buffer
 [](#VUID-VkMemoryDedicatedAllocateInfo-image-01434) VUID-VkMemoryDedicatedAllocateInfo-image-01434
 
 If `image` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `image` **must** have been
-created without `VK_IMAGE_CREATE_SPARSE_BINDING_BIT` set in
+created without [VK_IMAGE_CREATE_SPARSE_BINDING_BIT](resources.html#VkImageCreateFlagBits) set in
 [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`flags`
 
 * 
@@ -2272,7 +2272,7 @@ QNX Screen buffer
 [](#VUID-VkMemoryDedicatedAllocateInfo-buffer-01436) VUID-VkMemoryDedicatedAllocateInfo-buffer-01436
 
 If `buffer` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `buffer` **must** have
-been created without `VK_BUFFER_CREATE_SPARSE_BINDING_BIT` set in
+been created without [VK_BUFFER_CREATE_SPARSE_BINDING_BIT](resources.html#VkBufferCreateFlagBits) set in
 [VkBufferCreateInfo](resources.html#VkBufferCreateInfo)::`flags`
 
 * 
@@ -2280,12 +2280,12 @@ been created without `VK_BUFFER_CREATE_SPARSE_BINDING_BIT` set in
 
 If `image` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and
 [VkMemoryAllocateInfo](#VkMemoryAllocateInfo) defines a memory import operation with handle
-type `VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT`, or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT`, and the
+type [VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR), or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR), and the
 external handle was created by the Vulkan API, then the memory being
 imported **must** also be a dedicated image allocation and `image`
 **must** be identical to the image associated with the imported memory
@@ -2295,12 +2295,12 @@ imported **must** also be a dedicated image allocation and `image`
 
 If `buffer` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and
 [VkMemoryAllocateInfo](#VkMemoryAllocateInfo) defines a memory import operation with handle
-type `VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT`, or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT`, and the
+type [VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR), or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR), and the
 external handle was created by the Vulkan API, then the memory being
 imported **must** also be a dedicated buffer allocation and `buffer`
 **must** be identical to the buffer associated with the imported memory
@@ -2310,7 +2310,7 @@ imported **must** also be a dedicated buffer allocation and `buffer`
 
 If `image` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and
 [VkMemoryAllocateInfo](#VkMemoryAllocateInfo) defines a memory import operation with handle
-type `VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT`, the memory
+type [VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR), the memory
 being imported **must** also be a dedicated image allocation and
 `image` **must** be identical to the image associated with the imported
 memory
@@ -2320,7 +2320,7 @@ memory
 
 If `buffer` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and
 [VkMemoryAllocateInfo](#VkMemoryAllocateInfo) defines a memory import operation with handle
-type `VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT`, the memory
+type [VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR), the memory
 being imported **must** also be a dedicated buffer allocation and
 `buffer` **must** be identical to the buffer associated with the
 imported memory
@@ -2329,7 +2329,7 @@ imported memory
 [](#VUID-VkMemoryDedicatedAllocateInfo-image-01797) VUID-VkMemoryDedicatedAllocateInfo-image-01797
 
 If `image` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `image` **must** not have
-been created with `VK_IMAGE_CREATE_DISJOINT_BIT` set in
+been created with [VK_IMAGE_CREATE_DISJOINT_BIT](resources.html#VkImageCreateFlagBits) set in
 [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`flags`
 
 * 
@@ -2337,7 +2337,7 @@ been created with `VK_IMAGE_CREATE_DISJOINT_BIT` set in
 
 If `image` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and
 [VkMemoryAllocateInfo](#VkMemoryAllocateInfo) defines a memory import operation with handle
-type `VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA`, the
+type [VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR), the
 memory being imported **must** also be a dedicated image allocation and
 `image` **must** be identical to the image associated with the imported
 memory
@@ -2347,7 +2347,7 @@ memory
 
 If `buffer` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) and
 [VkMemoryAllocateInfo](#VkMemoryAllocateInfo) defines a memory import operation with handle
-type `VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA`, the
+type [VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR), the
 memory being imported **must** also be a dedicated buffer allocation and
 `buffer` **must** be identical to the buffer associated with the
 imported memory
@@ -2357,7 +2357,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryDedicatedAllocateInfo-sType-sType) VUID-VkMemoryDedicatedAllocateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryDedicatedAllocateInfo-image-parameter) VUID-VkMemoryDedicatedAllocateInfo-image-parameter
@@ -2391,8 +2391,7 @@ bound to.
 bound.
 
 Calling [vkCmdBindTileMemoryQCOM](#vkCmdBindTileMemoryQCOM) when `pTileMemoryBindInfo` is
-[VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE) is equivalent to binding no tile memory to the command
-buffer.
+`NULL` is equivalent to binding no tile memory to the command buffer.
 
 Valid Usage (Implicit)
 
@@ -2414,7 +2413,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindTileMemoryQCOM-commandBuffer-cmdpool) VUID-vkCmdBindTileMemoryQCOM-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdBindTileMemoryQCOM-renderpass) VUID-vkCmdBindTileMemoryQCOM-renderpass
@@ -2479,14 +2478,14 @@ Valid Usage
 [](#VUID-VkTileMemoryBindInfoQCOM-memory-10726) VUID-VkTileMemoryBindInfoQCOM-memory-10726
 
 `memory` **must** have been allocated from a [VkMemoryHeap](#VkMemoryHeap) with
-the `VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property
+the [VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](#VkMemoryHeapFlagBits) property
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkTileMemoryBindInfoQCOM-sType-sType) VUID-VkTileMemoryBindInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TILE_MEMORY_BIND_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TILE_MEMORY_BIND_INFO_QCOM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkTileMemoryBindInfoQCOM-memory-parameter) VUID-VkTileMemoryBindInfoQCOM-memory-parameter
@@ -2529,7 +2528,7 @@ Valid Usage
 [](#VUID-VkMemoryDedicatedAllocateInfoTensorARM-tensor-09859) VUID-VkMemoryDedicatedAllocateInfoTensorARM-tensor-09859
 
 If [VkMemoryAllocateInfo](#VkMemoryAllocateInfo) defines a memory import operation with
-handle type `VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT`, the
+handle type [VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR), the
 memory being imported **must** also be a dedicated tensor allocation and
 `tensor` **must** be identical to the tensor associated with the
 imported memory
@@ -2539,7 +2538,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryDedicatedAllocateInfoTensorARM-sType-sType) VUID-VkMemoryDedicatedAllocateInfoTensorARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO_TENSOR_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO_TENSOR_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryDedicatedAllocateInfoTensorARM-tensor-parameter) VUID-VkMemoryDedicatedAllocateInfoTensorARM-tensor-parameter
@@ -2590,7 +2589,7 @@ At least one of `image` and `buffer` **must** be
 If `image` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the image **must** have been
 created with
 [VkDedicatedAllocationImageCreateInfoNV](resources.html#VkDedicatedAllocationImageCreateInfoNV)::`dedicatedAllocation`
-equal to `VK_TRUE`
+equal to [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkDedicatedAllocationMemoryAllocateInfoNV-buffer-00651) VUID-VkDedicatedAllocationMemoryAllocateInfoNV-buffer-00651
@@ -2598,7 +2597,7 @@ equal to `VK_TRUE`
 If `buffer` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the buffer **must** have been
 created with
 [VkDedicatedAllocationBufferCreateInfoNV](resources.html#VkDedicatedAllocationBufferCreateInfoNV)::`dedicatedAllocation`
-equal to `VK_TRUE`
+equal to [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkDedicatedAllocationMemoryAllocateInfoNV-image-00652) VUID-VkDedicatedAllocationMemoryAllocateInfoNV-image-00652
@@ -2637,7 +2636,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDedicatedAllocationMemoryAllocateInfoNV-sType-sType) VUID-VkDedicatedAllocationMemoryAllocateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDedicatedAllocationMemoryAllocateInfoNV-image-parameter) VUID-VkDedicatedAllocationMemoryAllocateInfoNV-image-parameter
@@ -2697,7 +2696,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryPriorityAllocateInfoEXT-sType-sType) VUID-VkMemoryPriorityAllocateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 To modify the priority of an existing memory allocation, call:
 
@@ -2795,7 +2794,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMemoryAllocateInfo-sType-sType) VUID-VkExportMemoryAllocateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExportMemoryAllocateInfo-handleTypes-parameter) VUID-VkExportMemoryAllocateInfo-handleTypes-parameter
@@ -2836,7 +2835,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMemoryAllocateInfoNV-sType-sType) VUID-VkExportMemoryAllocateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExportMemoryAllocateInfoNV-handleTypes-parameter) VUID-VkExportMemoryAllocateInfoNV-handleTypes-parameter
@@ -2891,7 +2890,7 @@ the handle type.
 For handles of the following types:
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 The implementation **must** ensure the access rights allow read and write
 access to the memory.
@@ -2906,7 +2905,7 @@ Valid Usage
 [](#VUID-VkExportMemoryWin32HandleInfoKHR-handleTypes-00657) VUID-VkExportMemoryWin32HandleInfoKHR-handleTypes-00657
 
 If [VkExportMemoryAllocateInfo](#VkExportMemoryAllocateInfo)::`handleTypes` does not include
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT`, a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR), a
 `VkExportMemoryWin32HandleInfoKHR` structure **must** not be included
 in the `pNext` chain of [VkMemoryAllocateInfo](#VkMemoryAllocateInfo)
 
@@ -2915,7 +2914,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMemoryWin32HandleInfoKHR-sType-sType) VUID-VkExportMemoryWin32HandleInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExportMemoryWin32HandleInfoKHR-pAttributes-parameter) VUID-VkExportMemoryWin32HandleInfoKHR-pAttributes-parameter
@@ -3003,10 +3002,10 @@ global share handle
 [](#VUID-VkImportMemoryWin32HandleInfoKHR-handleType-01439) VUID-VkImportMemoryWin32HandleInfoKHR-handleType-01439
 
 If `handleType` is not
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT`, or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT`, `name`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR), or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR), `name`
 **must** be `NULL`
 
 * 
@@ -3046,7 +3045,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMemoryWin32HandleInfoKHR-sType-sType) VUID-VkImportMemoryWin32HandleInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImportMemoryWin32HandleInfoKHR-handleType-parameter) VUID-VkImportMemoryWin32HandleInfoKHR-handleType-parameter
@@ -3108,21 +3107,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkMemoryGetWin32HandleInfoKHR` structure is defined as:
 
@@ -3181,7 +3180,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryGetWin32HandleInfoKHR-sType-sType) VUID-VkMemoryGetWin32HandleInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryGetWin32HandleInfoKHR-pNext-pNext) VUID-VkMemoryGetWin32HandleInfoKHR-pNext-pNext
@@ -3259,21 +3258,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkMemoryWin32HandlePropertiesKHR` structure returned is defined as:
 
@@ -3300,7 +3299,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryWin32HandlePropertiesKHR-sType-sType) VUID-VkMemoryWin32HandlePropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_WIN32_HANDLE_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_WIN32_HANDLE_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryWin32HandlePropertiesKHR-pNext-pNext) VUID-VkMemoryWin32HandlePropertiesKHR-pNext-pNext
@@ -3308,7 +3307,7 @@ Valid Usage (Implicit)
  `pNext` **must** be `NULL`
 
 When [VkExportMemoryAllocateInfoNV](#VkExportMemoryAllocateInfoNV)::`handleTypes` includes
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV`, add a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV](#VkExternalMemoryHandleTypeFlagBitsNV), add a
 `VkExportMemoryWin32HandleInfoNV` structure to the `pNext` chain of
 the [VkExportMemoryAllocateInfoNV](#VkExportMemoryAllocateInfoNV) structure to specify security
 attributes and access rights for the memory object’s external handle.
@@ -3354,7 +3353,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMemoryWin32HandleInfoNV-sType-sType) VUID-VkExportMemoryWin32HandleInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExportMemoryWin32HandleInfoNV-pAttributes-parameter) VUID-VkExportMemoryWin32HandleInfoNV-pAttributes-parameter
@@ -3411,7 +3410,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMemoryWin32HandleInfoNV-sType-sType) VUID-VkImportMemoryWin32HandleInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImportMemoryWin32HandleInfoNV-handleType-parameter) VUID-VkImportMemoryWin32HandleInfoNV-handleType-parameter
@@ -3432,22 +3431,22 @@ typedef enum VkExternalMemoryHandleTypeFlagBitsNV {
 } VkExternalMemoryHandleTypeFlagBitsNV;
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_NV` specifies a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_NV](#VkExternalMemoryHandleTypeFlagBitsNV) specifies a
 handle to memory returned by [vkGetMemoryWin32HandleNV](#vkGetMemoryWin32HandleNV).
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV` specifies a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV](#VkExternalMemoryHandleTypeFlagBitsNV) specifies a
 handle to memory returned by [vkGetMemoryWin32HandleNV](#vkGetMemoryWin32HandleNV), or one
 duplicated from such a handle using `DuplicateHandle()`.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_BIT_NV` specifies a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_BIT_NV](#VkExternalMemoryHandleTypeFlagBitsNV) specifies a
 valid NT handle to memory returned by
 `IDXGIResource1::CreateSharedHandle`, or a handle duplicated from such a
 handle using `DuplicateHandle()`.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_KMT_BIT_NV` specifies a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_KMT_BIT_NV](#VkExternalMemoryHandleTypeFlagBitsNV) specifies a
 handle to memory returned by `IDXGIResource::GetSharedHandle()`.
 
 // Provided by VK_NV_external_memory_capabilities
@@ -3458,8 +3457,8 @@ of zero or more [VkExternalMemoryHandleTypeFlagBitsNV](#VkExternalMemoryHandleTy
 
 To retrieve the handle corresponding to a device memory object created with
 [VkExportMemoryAllocateInfoNV](#VkExportMemoryAllocateInfoNV)::`handleTypes` set to include
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_NV`, call:
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV](#VkExternalMemoryHandleTypeFlagBitsNV) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_NV](#VkExternalMemoryHandleTypeFlagBitsNV), call:
 
 // Provided by VK_NV_external_memory_win32
 VkResult vkGetMemoryWin32HandleNV(
@@ -3529,21 +3528,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To import memory from a POSIX file descriptor handle, add a
 [VkImportMemoryFdInfoKHR](#VkImportMemoryFdInfoKHR) structure to the `pNext` chain of the
@@ -3605,8 +3604,8 @@ the same underlying physical device as `device`
 [](#VUID-VkImportMemoryFdInfoKHR-handleType-00669) VUID-VkImportMemoryFdInfoKHR-handleType-00669
 
 If `handleType` is not `0`, it **must** be
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 * 
 [](#VUID-VkImportMemoryFdInfoKHR-handleType-00670) VUID-VkImportMemoryFdInfoKHR-handleType-00670
@@ -3633,7 +3632,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMemoryFdInfoKHR-sType-sType) VUID-VkImportMemoryFdInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImportMemoryFdInfoKHR-handleType-parameter) VUID-VkImportMemoryFdInfoKHR-handleType-parameter
@@ -3693,21 +3692,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkMemoryGetFdInfoKHR` structure is defined as:
 
@@ -3742,7 +3741,7 @@ properties of the defined external memory handle types.
 |  | The size of the exported file **may** be larger than the size requested by
 | --- | --- |
 [VkMemoryAllocateInfo](#VkMemoryAllocateInfo)::`allocationSize`.
-If `handleType` is `VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT`,
+If `handleType` is [VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
 then the application **can** query the file’s actual size with
 [`lseek`](https://man7.org/linux/man-pages/man2/lseek.2.html). |
 
@@ -3759,15 +3758,15 @@ was created
 [](#VUID-VkMemoryGetFdInfoKHR-handleType-00672) VUID-VkMemoryGetFdInfoKHR-handleType-00672
 
 `handleType` **must** be
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkMemoryGetFdInfoKHR-sType-sType) VUID-VkMemoryGetFdInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_GET_FD_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_GET_FD_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryGetFdInfoKHR-pNext-pNext) VUID-VkMemoryGetFdInfoKHR-pNext-pNext
@@ -3823,7 +3822,7 @@ Valid Usage
 [](#VUID-vkGetMemoryFdPropertiesKHR-handleType-00674) VUID-vkGetMemoryFdPropertiesKHR-handleType-00674
 
 `handleType` **must** not be
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 Valid Usage (Implicit)
 
@@ -3847,21 +3846,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkMemoryFdPropertiesKHR` structure returned is defined as:
 
@@ -3888,7 +3887,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryFdPropertiesKHR-sType-sType) VUID-VkMemoryFdPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_FD_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_FD_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryFdPropertiesKHR-pNext-pNext) VUID-VkMemoryFdPropertiesKHR-pNext-pNext
@@ -3937,7 +3936,7 @@ into a given physical device due to platform constraints.
 Importing memory from a particular host pointer **may** not be possible due to
 additional platform-specific restrictions beyond the scope of this
 specification in which case the implementation **must** fail the memory import
-operation with the error code `VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR`.
+operation with the error code [VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR](fundamentals.html#VkResult).
 
 Whether device memory objects imported from a host pointer hold a reference
 to their payload is **undefined**.
@@ -3974,8 +3973,8 @@ reported in [VkExternalMemoryProperties](capabilities.html#VkExternalMemoryPrope
 [](#VUID-VkImportMemoryHostPointerInfoEXT-handleType-01748) VUID-VkImportMemoryHostPointerInfoEXT-handleType-01748
 
 If `handleType` is not `0`, it **must** be
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 * 
 [](#VUID-VkImportMemoryHostPointerInfoEXT-pHostPointer-01749) VUID-VkImportMemoryHostPointerInfoEXT-pHostPointer-01749
@@ -3987,7 +3986,7 @@ If `handleType` is not `0`, it **must** be
 [](#VUID-VkImportMemoryHostPointerInfoEXT-handleType-01750) VUID-VkImportMemoryHostPointerInfoEXT-handleType-01750
 
 If `handleType` is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
 `pHostPointer` **must** be a pointer to `allocationSize` number of
 bytes of host memory, where `allocationSize` is the member of the
 `VkMemoryAllocateInfo` structure this structure is chained to
@@ -3996,7 +3995,7 @@ bytes of host memory, where `allocationSize` is the member of the
 [](#VUID-VkImportMemoryHostPointerInfoEXT-handleType-01751) VUID-VkImportMemoryHostPointerInfoEXT-handleType-01751
 
 If `handleType` is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
 `pHostPointer` **must** be a pointer to `allocationSize` number of
 bytes of host mapped foreign memory, where `allocationSize` is the
 member of the `VkMemoryAllocateInfo` structure this structure is
@@ -4007,7 +4006,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMemoryHostPointerInfoEXT-sType-sType) VUID-VkImportMemoryHostPointerInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImportMemoryHostPointerInfoEXT-handleType-parameter) VUID-VkImportMemoryHostPointerInfoEXT-handleType-parameter
@@ -4051,8 +4050,8 @@ Valid Usage
 [](#VUID-vkGetMemoryHostPointerPropertiesEXT-handleType-01752) VUID-vkGetMemoryHostPointerPropertiesEXT-handleType-01752
 
 `handleType` **must** be
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 * 
 [](#VUID-vkGetMemoryHostPointerPropertiesEXT-pHostPointer-01753) VUID-vkGetMemoryHostPointerPropertiesEXT-pHostPointer-01753
@@ -4064,14 +4063,14 @@ Valid Usage
 [](#VUID-vkGetMemoryHostPointerPropertiesEXT-handleType-01754) VUID-vkGetMemoryHostPointerPropertiesEXT-handleType-01754
 
 If `handleType` is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
 `pHostPointer` **must** be a pointer to host memory
 
 * 
 [](#VUID-vkGetMemoryHostPointerPropertiesEXT-handleType-01755) VUID-vkGetMemoryHostPointerPropertiesEXT-handleType-01755
 
 If `handleType` is
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT`,
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
 `pHostPointer` **must** be a pointer to host mapped foreign memory
 
 Valid Usage (Implicit)
@@ -4101,21 +4100,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkMemoryHostPointerPropertiesEXT` structure is defined as:
 
@@ -4149,7 +4148,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryHostPointerPropertiesEXT-sType-sType) VUID-VkMemoryHostPointerPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_HOST_POINTER_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_HOST_POINTER_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryHostPointerPropertiesEXT-pNext-pNext) VUID-VkMemoryHostPointerPropertiesEXT-pNext-pNext
@@ -4207,7 +4206,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportAndroidHardwareBufferInfoANDROID-sType-sType) VUID-VkImportAndroidHardwareBufferInfoANDROID-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImportAndroidHardwareBufferInfoANDROID-buffer-parameter) VUID-VkImportAndroidHardwareBufferInfoANDROID-buffer-parameter
@@ -4271,21 +4270,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkMemoryGetAndroidHardwareBufferInfoANDROID` structure is defined
 as:
@@ -4313,7 +4312,7 @@ Valid Usage
 * 
 [](#VUID-VkMemoryGetAndroidHardwareBufferInfoANDROID-handleTypes-01882) VUID-VkMemoryGetAndroidHardwareBufferInfoANDROID-handleTypes-01882
 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 **must** have been included in
 [VkExportMemoryAllocateInfo](#VkExportMemoryAllocateInfo)::`handleTypes` when `memory`
 was created
@@ -4331,7 +4330,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryGetAndroidHardwareBufferInfoANDROID-sType-sType) VUID-VkMemoryGetAndroidHardwareBufferInfoANDROID-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_GET_ANDROID_HARDWARE_BUFFER_INFO_ANDROID`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_GET_ANDROID_HARDWARE_BUFFER_INFO_ANDROID](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryGetAndroidHardwareBufferInfoANDROID-pNext-pNext) VUID-VkMemoryGetAndroidHardwareBufferInfoANDROID-pNext-pNext
@@ -4394,21 +4393,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkAndroidHardwareBufferPropertiesANDROID` structure returned is
 defined as:
@@ -4441,7 +4440,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAndroidHardwareBufferPropertiesANDROID-sType-sType) VUID-VkAndroidHardwareBufferPropertiesANDROID-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_PROPERTIES_ANDROID`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_PROPERTIES_ANDROID](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkAndroidHardwareBufferPropertiesANDROID-pNext-pNext) VUID-VkAndroidHardwareBufferPropertiesANDROID-pNext-pNext
@@ -4482,7 +4481,7 @@ structure.
 
 * 
 `format` is the Vulkan format corresponding to the Android hardware
-buffer’s format, or `VK_FORMAT_UNDEFINED` if there is not an
+buffer’s format, or [VK_FORMAT_UNDEFINED](formats.html#VkFormat) if there is not an
 equivalent Vulkan format.
 
 * 
@@ -4517,22 +4516,22 @@ when used with an image bound to memory imported from `buffer`.
 If the Android hardware buffer has one of the formats listed in the
 [Format Equivalence table](#memory-external-android-hardware-buffer-formats), then `format` **must** have the equivalent Vulkan format listed in
 the table.
-Otherwise, `format` **may** be `VK_FORMAT_UNDEFINED`, indicating the
+Otherwise, `format` **may** be [VK_FORMAT_UNDEFINED](formats.html#VkFormat), indicating the
 Android hardware buffer **can** only be used with an external format.
 
 The `formatFeatures` member **must** include
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT` and at least one of
-`VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT` or
-`VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT`, and **should** include
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT` and
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT`.
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](formats.html#VkFormatFeatureFlagBits) and at least one of
+[VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT](formats.html#VkFormatFeatureFlagBits) or
+[VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT](formats.html#VkFormatFeatureFlagBits), and **should** include
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](formats.html#VkFormatFeatureFlagBits) and
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT](formats.html#VkFormatFeatureFlagBits).
 
 |  | The `formatFeatures` member only indicates the features available when
 | --- | --- |
 using an
 [external-format image](#memory-external-android-hardware-buffer-external-formats) created from the Android hardware buffer.
 Images from Android hardware buffers with a format other than
-`VK_FORMAT_UNDEFINED` are subject to the format capabilities obtained
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat) are subject to the format capabilities obtained
 from [vkGetPhysicalDeviceFormatProperties2](formats.html#vkGetPhysicalDeviceFormatProperties2), and
 [vkGetPhysicalDeviceImageFormatProperties2](capabilities.html#vkGetPhysicalDeviceImageFormatProperties2) with appropriate parameters.
 These sets of features are independent of each other, e.g. the external
@@ -4541,13 +4540,13 @@ format does not, and rendering directly to the external format will not be
 supported even if the non-external format does support this. |
 
 Android hardware buffers with the same external format **must** have the same
-support for `VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`,
-`VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT`,
-`VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT`,
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT`,
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT`,
+support for [VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](formats.html#VkFormatFeatureFlagBits),
+[VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT](formats.html#VkFormatFeatureFlagBits),
+[VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT](formats.html#VkFormatFeatureFlagBits),
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT](formats.html#VkFormatFeatureFlagBits),
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT](formats.html#VkFormatFeatureFlagBits),
 and
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT`.
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT](formats.html#VkFormatFeatureFlagBits).
 in `formatFeatures`.
 Other format features **may** differ between Android hardware buffers that have
 the same external format.
@@ -4555,11 +4554,11 @@ This allows applications to use the same [VkSamplerYcbcrConversion](samplers.htm
 object (and samplers and pipelines created from them) for any Android
 hardware buffers that have the same external format.
 
-If `format` is not `VK_FORMAT_UNDEFINED`, then the value of
+If `format` is not [VK_FORMAT_UNDEFINED](formats.html#VkFormat), then the value of
 `samplerYcbcrConversionComponents` **must** be valid when used as the
 `components` member of [VkSamplerYcbcrConversionCreateInfo](samplers.html#VkSamplerYcbcrConversionCreateInfo) with
 that format.
-If `format` is `VK_FORMAT_UNDEFINED`, all members of
+If `format` is [VK_FORMAT_UNDEFINED](formats.html#VkFormat), all members of
 `samplerYcbcrConversionComponents` **must** be the
 [identity swizzle](resources.html#resources-image-views-identity-mappings).
 
@@ -4587,7 +4586,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAndroidHardwareBufferFormatPropertiesANDROID-sType-sType) VUID-VkAndroidHardwareBufferFormatPropertiesANDROID-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID](fundamentals.html#VkStructureType)
 
 The format properties of an Android hardware buffer **can** be obtained by
 including a `VkAndroidHardwareBufferFormatProperties2ANDROID` structure
@@ -4619,7 +4618,7 @@ structure.
 
 * 
 `format` is the Vulkan format corresponding to the Android hardware
-buffer’s format, or `VK_FORMAT_UNDEFINED` if there is not an
+buffer’s format, or [VK_FORMAT_UNDEFINED](formats.html#VkFormat) if there is not an
 equivalent Vulkan format.
 
 * 
@@ -4660,7 +4659,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAndroidHardwareBufferFormatProperties2ANDROID-sType-sType) VUID-VkAndroidHardwareBufferFormatProperties2ANDROID-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID](fundamentals.html#VkStructureType)
 
 The [VkAndroidHardwareBufferFormatResolvePropertiesANDROID](#VkAndroidHardwareBufferFormatResolvePropertiesANDROID) structure is
 defined as:
@@ -4685,24 +4684,24 @@ color attachment images that **must** be used for color attachments when
 resolving to the specified external format.
 If the implementation supports external format resolves for the
 specified external format, this value will be a color format supporting
-the `VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT` in
+the [VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits) in
 [VkFormatProperties](formats.html#VkFormatProperties)::`optimalTilingFeatures` as returned by
 [vkGetPhysicalDeviceFormatProperties](formats.html#vkGetPhysicalDeviceFormatProperties) with `format` equal to
 `colorAttachmentFormat` If external format resolves are not
-supported, this value will be `VK_FORMAT_UNDEFINED`.
+supported, this value will be [VK_FORMAT_UNDEFINED](formats.html#VkFormat).
 
 Any Android hardware buffer created with the `GRALLOC_USAGE_HW_RENDER`
 flag **must** be renderable in some way in Vulkan, either:
 
 * 
 [VkAndroidHardwareBufferFormatPropertiesANDROID](#VkAndroidHardwareBufferFormatPropertiesANDROID)::`format` **must**
-be a format that supports `VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT`
-or `VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT` in
+be a format that supports [VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits)
+or [VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits) in
 [VkFormatProperties](formats.html#VkFormatProperties)::`optimalTilingFeatures`; or
 
 * 
 `colorAttachmentFormat` **must** be a format that supports
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT` in
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits) in
 [VkFormatProperties](formats.html#VkFormatProperties)::`optimalTilingFeatures`.
 
 Valid Usage (Implicit)
@@ -4710,7 +4709,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAndroidHardwareBufferFormatResolvePropertiesANDROID-sType-sType) VUID-VkAndroidHardwareBufferFormatResolvePropertiesANDROID-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_RESOLVE_PROPERTIES_ANDROID`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_RESOLVE_PROPERTIES_ANDROID](fundamentals.html#VkStructureType)
 
 To export an address representing the payload of a Vulkan device memory
 object accessible by remote devices, call:
@@ -4762,18 +4761,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkMemoryGetRemoteAddressInfoNV` structure is defined as:
 
@@ -4813,7 +4812,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryGetRemoteAddressInfoNV-sType-sType) VUID-VkMemoryGetRemoteAddressInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_GET_REMOTE_ADDRESS_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_GET_REMOTE_ADDRESS_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryGetRemoteAddressInfoNV-pNext-pNext) VUID-VkMemoryGetRemoteAddressInfoNV-pNext-pNext
@@ -4891,7 +4890,7 @@ Valid Usage
 [](#VUID-VkImportMemoryZirconHandleInfoFUCHSIA-handleType-04771) VUID-VkImportMemoryZirconHandleInfoFUCHSIA-handleType-04771
 
 `handleType` **must** be
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 * 
 [](#VUID-VkImportMemoryZirconHandleInfoFUCHSIA-handle-04772) VUID-VkImportMemoryZirconHandleInfoFUCHSIA-handle-04772
@@ -4903,7 +4902,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMemoryZirconHandleInfoFUCHSIA-sType-sType) VUID-VkImportMemoryZirconHandleInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImportMemoryZirconHandleInfoFUCHSIA-handleType-parameter) VUID-VkImportMemoryZirconHandleInfoFUCHSIA-handleType-parameter
@@ -4942,7 +4941,7 @@ Valid Usage
 [](#VUID-vkGetMemoryZirconHandlePropertiesFUCHSIA-handleType-04773) VUID-vkGetMemoryZirconHandlePropertiesFUCHSIA-handleType-04773
 
 `handleType` **must** be
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 * 
 [](#VUID-vkGetMemoryZirconHandlePropertiesFUCHSIA-zirconHandle-04774) VUID-vkGetMemoryZirconHandlePropertiesFUCHSIA-zirconHandle-04774
@@ -4971,18 +4970,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkMemoryZirconHandlePropertiesFUCHSIA` structure is defined as:
 
@@ -5009,7 +5008,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryZirconHandlePropertiesFUCHSIA-sType-sType) VUID-VkMemoryZirconHandlePropertiesFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_ZIRCON_HANDLE_PROPERTIES_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_ZIRCON_HANDLE_PROPERTIES_FUCHSIA](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryZirconHandlePropertiesFUCHSIA-pNext-pNext) VUID-VkMemoryZirconHandlePropertiesFUCHSIA-pNext-pNext
@@ -5070,21 +5069,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 `VkMemoryGetZirconHandleInfoFUCHSIA` is defined as:
 
@@ -5117,7 +5116,7 @@ Valid Usage
 [](#VUID-VkMemoryGetZirconHandleInfoFUCHSIA-handleType-04775) VUID-VkMemoryGetZirconHandleInfoFUCHSIA-handleType-04775
 
 `handleType` **must** be
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 * 
 [](#VUID-VkMemoryGetZirconHandleInfoFUCHSIA-handleType-04776) VUID-VkMemoryGetZirconHandleInfoFUCHSIA-handleType-04776
@@ -5131,7 +5130,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryGetZirconHandleInfoFUCHSIA-sType-sType) VUID-VkMemoryGetZirconHandleInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_GET_ZIRCON_HANDLE_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_GET_ZIRCON_HANDLE_INFO_FUCHSIA](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryGetZirconHandleInfoFUCHSIA-pNext-pNext) VUID-VkMemoryGetZirconHandleInfoFUCHSIA-pNext-pNext
@@ -5210,7 +5209,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMetalObjectCreateInfoEXT-sType-sType) VUID-VkExportMetalObjectCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECT_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECT_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExportMetalObjectCreateInfoEXT-exportObjectType-parameter) VUID-VkExportMetalObjectCreateInfoEXT-exportObjectType-parameter
@@ -5231,27 +5230,27 @@ typedef enum VkExportMetalObjectTypeFlagBitsEXT {
 } VkExportMetalObjectTypeFlagBitsEXT;
 
 * 
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT` specifies that a
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT](#VkExportMetalObjectTypeFlagBitsEXT) specifies that a
 Metal `MTLDevice` may be exported.
 
 * 
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT` specifies
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT](#VkExportMetalObjectTypeFlagBitsEXT) specifies
 that a Metal `MTLCommandQueue` may be exported.
 
 * 
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT` specifies that a
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT](#VkExportMetalObjectTypeFlagBitsEXT) specifies that a
 Metal `MTLBuffer` may be exported.
 
 * 
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT` specifies that a
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT](#VkExportMetalObjectTypeFlagBitsEXT) specifies that a
 Metal `MTLTexture` may be exported.
 
 * 
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT` specifies that
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT](#VkExportMetalObjectTypeFlagBitsEXT) specifies that
 a Metal `IOSurface` may be exported.
 
 * 
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT` specifies
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT](#VkExportMetalObjectTypeFlagBitsEXT) specifies
 that a Metal `MTLSharedEvent` may be exported.
 
 // Provided by VK_EXT_metal_objects
@@ -5310,7 +5309,7 @@ Valid Usage
 
 If the `pNext` chain includes a [VkExportMetalDeviceInfoEXT](#VkExportMetalDeviceInfoEXT)
 structure, the [VkInstance](initialization.html#VkInstance) **must** have been created with
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT` in the
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT](#VkExportMetalObjectTypeFlagBitsEXT) in the
 `exportObjectType` member of a
 [VkExportMetalObjectCreateInfoEXT](#VkExportMetalObjectCreateInfoEXT) structure in the `pNext`
 chain of the [VkInstanceCreateInfo](initialization.html#VkInstanceCreateInfo) structure in the
@@ -5322,7 +5321,7 @@ chain of the [VkInstanceCreateInfo](initialization.html#VkInstanceCreateInfo) st
 If the `pNext` chain includes a
 [VkExportMetalCommandQueueInfoEXT](#VkExportMetalCommandQueueInfoEXT) structure, the [VkInstance](initialization.html#VkInstance)
 **must** have been created with
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT` in the
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT](#VkExportMetalObjectTypeFlagBitsEXT) in the
 `exportObjectType` member of a
 [VkExportMetalObjectCreateInfoEXT](#VkExportMetalObjectCreateInfoEXT) structure in the `pNext`
 chain of the [VkInstanceCreateInfo](initialization.html#VkInstanceCreateInfo) structure in the
@@ -5334,7 +5333,7 @@ chain of the [VkInstanceCreateInfo](initialization.html#VkInstanceCreateInfo) st
 If the `pNext` chain includes a [VkExportMetalBufferInfoEXT](#VkExportMetalBufferInfoEXT)
 structure, the [VkDeviceMemory](#VkDeviceMemory) in its `memory` member **must**
 have been allocated with
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT` in the
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT](#VkExportMetalObjectTypeFlagBitsEXT) in the
 `exportObjectType` member of a
 [VkExportMetalObjectCreateInfoEXT](#VkExportMetalObjectCreateInfoEXT) structure in the `pNext`
 chain of the [VkMemoryAllocateInfo](#VkMemoryAllocateInfo) structure in the
@@ -5353,7 +5352,7 @@ structure, exactly one of its `image`, `imageView`, or
 If the `pNext` chain includes a [VkExportMetalTextureInfoEXT](#VkExportMetalTextureInfoEXT)
 structure, and its `image` member is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the
 [VkImage](resources.html#VkImage) in its `image` member **must** have been created with
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT` in the
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT](#VkExportMetalObjectTypeFlagBitsEXT) in the
 `exportObjectType` member of a
 [VkExportMetalObjectCreateInfoEXT](#VkExportMetalObjectCreateInfoEXT) structure in the `pNext`
 chain of the [VkImageCreateInfo](resources.html#VkImageCreateInfo) structure in the
@@ -5365,7 +5364,7 @@ chain of the [VkImageCreateInfo](resources.html#VkImageCreateInfo) structure in 
 If the `pNext` chain includes a [VkExportMetalTextureInfoEXT](#VkExportMetalTextureInfoEXT)
 structure, and its `imageView` member is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 the [VkImageView](resources.html#VkImageView) in its `imageView` member **must** have been
-created with `VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT` in
+created with [VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT](#VkExportMetalObjectTypeFlagBitsEXT) in
 the `exportObjectType` member of a
 [VkExportMetalObjectCreateInfoEXT](#VkExportMetalObjectCreateInfoEXT) structure in the `pNext`
 chain of the [VkImageViewCreateInfo](resources.html#VkImageViewCreateInfo) structure in the
@@ -5377,7 +5376,7 @@ chain of the [VkImageViewCreateInfo](resources.html#VkImageViewCreateInfo) struc
 If the `pNext` chain includes a [VkExportMetalTextureInfoEXT](#VkExportMetalTextureInfoEXT)
 structure, and its `bufferView` member is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE),
 the [VkBufferView](resources.html#VkBufferView) in its `bufferView` member **must** have been
-created with `VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT` in
+created with [VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT](#VkExportMetalObjectTypeFlagBitsEXT) in
 the `exportObjectType` member of a
 [VkExportMetalObjectCreateInfoEXT](#VkExportMetalObjectCreateInfoEXT) structure in the `pNext`
 chain of the [VkBufferViewCreateInfo](resources.html#VkBufferViewCreateInfo) structure in the
@@ -5389,8 +5388,8 @@ chain of the [VkBufferViewCreateInfo](resources.html#VkBufferViewCreateInfo) str
 If the `pNext` chain includes a [VkExportMetalTextureInfoEXT](#VkExportMetalTextureInfoEXT)
 structure, and if either its `image` or `imageView` member is
 not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), then `plane` **must** be
-`VK_IMAGE_ASPECT_PLANE_0_BIT`, `VK_IMAGE_ASPECT_PLANE_1_BIT`, or
-`VK_IMAGE_ASPECT_PLANE_2_BIT`
+[VK_IMAGE_ASPECT_PLANE_0_BIT](resources.html#VkImageAspectFlagBits), [VK_IMAGE_ASPECT_PLANE_1_BIT](resources.html#VkImageAspectFlagBits), or
+[VK_IMAGE_ASPECT_PLANE_2_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkExportMetalObjectsInfoEXT-pNext-06799) VUID-VkExportMetalObjectsInfoEXT-pNext-06799
@@ -5398,7 +5397,7 @@ not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), then `plane
 If the `pNext` chain includes a [VkExportMetalTextureInfoEXT](#VkExportMetalTextureInfoEXT)
 structure, and if the [VkImage](resources.html#VkImage) in its `image` member does not
 have a [multi-planar format](formats.html#formats-multiplanar), then its
-`plane` member **must** be `VK_IMAGE_ASPECT_PLANE_0_BIT`
+`plane` member **must** be [VK_IMAGE_ASPECT_PLANE_0_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkExportMetalObjectsInfoEXT-pNext-06800) VUID-VkExportMetalObjectsInfoEXT-pNext-06800
@@ -5406,7 +5405,7 @@ have a [multi-planar format](formats.html#formats-multiplanar), then its
 If the `pNext` chain includes a [VkExportMetalTextureInfoEXT](#VkExportMetalTextureInfoEXT)
 structure, and if the [VkImage](resources.html#VkImage) in its `image` member has a
 [multi-planar format](formats.html#formats-multiplanar) with only two planes, then
-its `plane` member **must** not be `VK_IMAGE_ASPECT_PLANE_2_BIT`
+its `plane` member **must** not be [VK_IMAGE_ASPECT_PLANE_2_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkExportMetalObjectsInfoEXT-pNext-06801) VUID-VkExportMetalObjectsInfoEXT-pNext-06801
@@ -5414,7 +5413,7 @@ its `plane` member **must** not be `VK_IMAGE_ASPECT_PLANE_2_BIT`
 If the `pNext` chain includes a [VkExportMetalTextureInfoEXT](#VkExportMetalTextureInfoEXT)
 structure, and if the [VkImageView](resources.html#VkImageView) in its `imageView` member
 does not have a [multi-planar format](formats.html#formats-multiplanar), then its
-`plane` member **must** be `VK_IMAGE_ASPECT_PLANE_0_BIT`
+`plane` member **must** be [VK_IMAGE_ASPECT_PLANE_0_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkExportMetalObjectsInfoEXT-pNext-06802) VUID-VkExportMetalObjectsInfoEXT-pNext-06802
@@ -5423,14 +5422,14 @@ If the `pNext` chain includes a [VkExportMetalTextureInfoEXT](#VkExportMetalText
 structure, and if the [VkImageView](resources.html#VkImageView) in its `imageView` member
 has a [multi-planar format](formats.html#formats-multiplanar) with only two planes,
 then its `plane` member **must** not be
-`VK_IMAGE_ASPECT_PLANE_2_BIT`
+[VK_IMAGE_ASPECT_PLANE_2_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkExportMetalObjectsInfoEXT-pNext-06803) VUID-VkExportMetalObjectsInfoEXT-pNext-06803
 
 If the `pNext` chain includes a [VkExportMetalIOSurfaceInfoEXT](#VkExportMetalIOSurfaceInfoEXT)
 structure, the [VkImage](resources.html#VkImage) in its `image` member **must** have been
-created with `VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT`
+created with [VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT](#VkExportMetalObjectTypeFlagBitsEXT)
 in the `exportObjectType` member of a
 [VkExportMetalObjectCreateInfoEXT](#VkExportMetalObjectCreateInfoEXT) structure in the `pNext`
 chain of the [VkImageCreateInfo](resources.html#VkImageCreateInfo) structure in the
@@ -5450,7 +5449,7 @@ If the `pNext` chain includes a
 [VkExportMetalSharedEventInfoEXT](#VkExportMetalSharedEventInfoEXT) structure, and its `semaphore`
 member is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the [VkSemaphore](synchronization.html#VkSemaphore) in its
 `semaphore` member **must** have been created with
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT` in the
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT](#VkExportMetalObjectTypeFlagBitsEXT) in the
 `exportObjectType` member of a
 [VkExportMetalObjectCreateInfoEXT](#VkExportMetalObjectCreateInfoEXT) structure in the `pNext`
 chain of the [VkSemaphoreCreateInfo](synchronization.html#VkSemaphoreCreateInfo) structure in the
@@ -5463,7 +5462,7 @@ If the `pNext` chain includes a
 [VkExportMetalSharedEventInfoEXT](#VkExportMetalSharedEventInfoEXT) structure, and its `event`
 member is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the [VkEvent](synchronization.html#VkEvent) in its `event`
 member **must** have been created with
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT` in the
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT](#VkExportMetalObjectTypeFlagBitsEXT) in the
 `exportObjectType` member of a
 [VkExportMetalObjectCreateInfoEXT](#VkExportMetalObjectCreateInfoEXT) structure in the `pNext`
 chain of the [VkEventCreateInfo](synchronization.html#VkEventCreateInfo) structure in the
@@ -5474,7 +5473,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMetalObjectsInfoEXT-sType-sType) VUID-VkExportMetalObjectsInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECTS_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECTS_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExportMetalObjectsInfoEXT-pNext-pNext) VUID-VkExportMetalObjectsInfoEXT-pNext-pNext
@@ -5520,7 +5519,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMetalDeviceInfoEXT-sType-sType) VUID-VkExportMetalDeviceInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_METAL_DEVICE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_METAL_DEVICE_INFO_EXT](fundamentals.html#VkStructureType)
 
 The type `id` is defined in Apple’s Metal framework, but to
 remove an unnecessary compile time dependency, an incomplete type definition
@@ -5571,7 +5570,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMetalCommandQueueInfoEXT-sType-sType) VUID-VkExportMetalCommandQueueInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_METAL_COMMAND_QUEUE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_METAL_COMMAND_QUEUE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExportMetalCommandQueueInfoEXT-queue-parameter) VUID-VkExportMetalCommandQueueInfoEXT-queue-parameter
@@ -5627,7 +5626,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMetalBufferInfoEXT-sType-sType) VUID-VkExportMetalBufferInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_METAL_BUFFER_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_METAL_BUFFER_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExportMetalBufferInfoEXT-memory-parameter) VUID-VkExportMetalBufferInfoEXT-memory-parameter
@@ -5668,7 +5667,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMetalBufferInfoEXT-sType-sType) VUID-VkImportMetalBufferInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_METAL_BUFFER_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_METAL_BUFFER_INFO_EXT](fundamentals.html#VkStructureType)
 
 The type `id` is defined in Apple’s Metal framework, but to
 remove an unnecessary compile time dependency, an incomplete type definition
@@ -5735,7 +5734,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMetalTextureInfoEXT-sType-sType) VUID-VkExportMetalTextureInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_METAL_TEXTURE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_METAL_TEXTURE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExportMetalTextureInfoEXT-image-parameter) VUID-VkExportMetalTextureInfoEXT-image-parameter
@@ -5809,7 +5808,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMetalTextureInfoEXT-sType-sType) VUID-VkImportMetalTextureInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_METAL_TEXTURE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_METAL_TEXTURE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImportMetalTextureInfoEXT-plane-parameter) VUID-VkImportMetalTextureInfoEXT-plane-parameter
@@ -5865,7 +5864,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMetalIOSurfaceInfoEXT-sType-sType) VUID-VkExportMetalIOSurfaceInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_METAL_IO_SURFACE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_METAL_IO_SURFACE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExportMetalIOSurfaceInfoEXT-image-parameter) VUID-VkExportMetalIOSurfaceInfoEXT-image-parameter
@@ -5912,7 +5911,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMetalIOSurfaceInfoEXT-sType-sType) VUID-VkImportMetalIOSurfaceInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_METAL_IO_SURFACE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_METAL_IO_SURFACE_INFO_EXT](fundamentals.html#VkStructureType)
 
 The type `IOSurfaceRef` is defined in Apple’s CoreGraphics framework,
 but to remove an unnecessary compile time dependency, an incomplete type
@@ -5964,7 +5963,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMetalSharedEventInfoEXT-sType-sType) VUID-VkExportMetalSharedEventInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_METAL_SHARED_EVENT_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_METAL_SHARED_EVENT_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExportMetalSharedEventInfoEXT-semaphore-parameter) VUID-VkExportMetalSharedEventInfoEXT-semaphore-parameter
@@ -6018,7 +6017,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMetalSharedEventInfoEXT-sType-sType) VUID-VkImportMetalSharedEventInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_METAL_SHARED_EVENT_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_METAL_SHARED_EVENT_INFO_EXT](fundamentals.html#VkStructureType)
 
 The type `id` is defined in Apple’s Metal framework, but to
 remove an unnecessary compile time dependency, an incomplete type definition
@@ -6081,7 +6080,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportScreenBufferInfoQNX-sType-sType) VUID-VkImportScreenBufferInfoQNX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_SCREEN_BUFFER_INFO_QNX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_SCREEN_BUFFER_INFO_QNX](fundamentals.html#VkStructureType)
 
 To determine the memory parameters to use when importing a QNX Screen
 buffer, call:
@@ -6131,21 +6130,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkScreenBufferPropertiesQNX` structure returned is defined as:
 
@@ -6176,7 +6175,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkScreenBufferPropertiesQNX-sType-sType) VUID-VkScreenBufferPropertiesQNX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SCREEN_BUFFER_PROPERTIES_QNX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SCREEN_BUFFER_PROPERTIES_QNX](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkScreenBufferPropertiesQNX-pNext-pNext) VUID-VkScreenBufferPropertiesQNX-pNext-pNext
@@ -6218,7 +6217,7 @@ structure.
 
 * 
 `format` is the Vulkan format corresponding to the Screen buffer’s
-format or `VK_FORMAT_UNDEFINED` if there is not an equivalent Vulkan
+format or [VK_FORMAT_UNDEFINED](formats.html#VkFormat) if there is not an equivalent Vulkan
 format.
 
 * 
@@ -6257,19 +6256,19 @@ when used with an image bound to memory imported from `buffer`.
 If the QNX Screen buffer has one of the formats listed in the
 [QNX Screen Format Equivalence table](#memory-external-qnx-screen-buffer-formats), then `format` **must** have the equivalent Vulkan format listed in
 the table.
-Otherwise, `format` **may** be `VK_FORMAT_UNDEFINED`, indicating the
+Otherwise, `format` **may** be [VK_FORMAT_UNDEFINED](formats.html#VkFormat), indicating the
 QNX Screen buffer **can** only be used with an external format.
 The `formatFeatures` member **must** include
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT` and **should** include
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT` and
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT`.
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](formats.html#VkFormatFeatureFlagBits) and **should** include
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](formats.html#VkFormatFeatureFlagBits) and
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT](formats.html#VkFormatFeatureFlagBits).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkScreenBufferFormatPropertiesQNX-sType-sType) VUID-VkScreenBufferFormatPropertiesQNX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SCREEN_BUFFER_FORMAT_PROPERTIES_QNX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SCREEN_BUFFER_FORMAT_PROPERTIES_QNX](fundamentals.html#VkStructureType)
 
 To import memory from a Metal handle, add a
 [VkImportMemoryMetalHandleInfoEXT](#VkImportMemoryMetalHandleInfoEXT) structure to the `pNext` chain of
@@ -6327,9 +6326,9 @@ on the same underlying physical device as `device`
 [](#VUID-VkImportMemoryMetalHandleInfoEXT-handleType-10410) VUID-VkImportMemoryMetalHandleInfoEXT-handleType-10410
 
 If `handleType` is not `0`, it **must** be
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLBUFFER_BIT_EXT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLHEAP_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLBUFFER_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLHEAP_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 * 
 [](#VUID-VkImportMemoryMetalHandleInfoEXT-handleType-10411) VUID-VkImportMemoryMetalHandleInfoEXT-handleType-10411
@@ -6348,7 +6347,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMemoryMetalHandleInfoEXT-sType-sType) VUID-VkImportMemoryMetalHandleInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_MEMORY_METAL_HANDLE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_MEMORY_METAL_HANDLE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImportMemoryMetalHandleInfoEXT-handleType-parameter) VUID-VkImportMemoryMetalHandleInfoEXT-handleType-parameter
@@ -6402,21 +6401,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkMemoryGetMetalHandleInfoEXT` structure is defined as:
 
@@ -6467,16 +6466,16 @@ was created
 [](#VUID-VkMemoryGetMetalHandleInfoEXT-handleType-10415) VUID-VkMemoryGetMetalHandleInfoEXT-handleType-10415
 
 `handleType` **must** be
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLBUFFER_BIT_EXT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLHEAP_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLBUFFER_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLHEAP_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkMemoryGetMetalHandleInfoEXT-sType-sType) VUID-VkMemoryGetMetalHandleInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_GET_METAL_HANDLE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_GET_METAL_HANDLE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryGetMetalHandleInfoEXT-pNext-pNext) VUID-VkMemoryGetMetalHandleInfoEXT-pNext-pNext
@@ -6532,9 +6531,9 @@ id
 [](#VUID-vkGetMemoryMetalHandlePropertiesEXT-handleType-10417) VUID-vkGetMemoryMetalHandlePropertiesEXT-handleType-10417
 
 `handleType` **must** be
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLBUFFER_BIT_EXT`,
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLHEAP_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLBUFFER_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR),
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLHEAP_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 Valid Usage (Implicit)
 
@@ -6563,21 +6562,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkMemoryMetalHandlePropertiesEXT` structure returned is defined as:
 
@@ -6604,7 +6603,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryMetalHandlePropertiesEXT-sType-sType) VUID-VkMemoryMetalHandlePropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_METAL_HANDLE_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_METAL_HANDLE_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryMetalHandlePropertiesEXT-pNext-pNext) VUID-VkMemoryMetalHandlePropertiesEXT-pNext-pNext
@@ -6644,22 +6643,22 @@ the allocation.
 * 
 `deviceMask` is a mask of physical devices in the logical device,
 indicating that memory **must** be allocated on each device in the mask, if
-`VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT` is set in `flags`.
+[VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT](#VkMemoryAllocateFlagBitsKHR) is set in `flags`.
 
-If `VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT` is not set, the number of
+If [VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT](#VkMemoryAllocateFlagBitsKHR) is not set, the number of
 instances allocated depends on whether
-`VK_MEMORY_HEAP_MULTI_INSTANCE_BIT` is set in the memory heap.
-If `VK_MEMORY_HEAP_MULTI_INSTANCE_BIT` is set, then memory is allocated
+[VK_MEMORY_HEAP_MULTI_INSTANCE_BIT](#VkMemoryHeapFlagBits) is set in the memory heap.
+If [VK_MEMORY_HEAP_MULTI_INSTANCE_BIT](#VkMemoryHeapFlagBits) is set, then memory is allocated
 for every physical device in the logical device (as if `deviceMask` has
 bits set for all device indices).
-If `VK_MEMORY_HEAP_MULTI_INSTANCE_BIT` is not set, then a single
+If [VK_MEMORY_HEAP_MULTI_INSTANCE_BIT](#VkMemoryHeapFlagBits) is not set, then a single
 instance of memory is allocated (as if `deviceMask` is set to one).
 
 On some implementations, allocations from a multi-instance heap **may** consume
 memory on all physical devices even if the `deviceMask` excludes some
 devices.
 If [VkPhysicalDeviceGroupProperties](devsandqueues.html#VkPhysicalDeviceGroupProperties)::`subsetAllocation` is
-`VK_TRUE`, then memory is only consumed for the devices in the device
+[VK_TRUE](fundamentals.html#VK_TRUE), then memory is only consumed for the devices in the device
 mask.
 
 |  | In practice, most allocations on a multi-instance heap will be allocated
@@ -6673,13 +6672,13 @@ Valid Usage
 * 
 [](#VUID-VkMemoryAllocateFlagsInfo-deviceMask-00675) VUID-VkMemoryAllocateFlagsInfo-deviceMask-00675
 
-If `VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT` is set, `deviceMask`
+If [VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT](#VkMemoryAllocateFlagBitsKHR) is set, `deviceMask`
 **must** be a valid device mask
 
 * 
 [](#VUID-VkMemoryAllocateFlagsInfo-deviceMask-00676) VUID-VkMemoryAllocateFlagsInfo-deviceMask-00676
 
-If `VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT` is set, `deviceMask`
+If [VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT](#VkMemoryAllocateFlagBitsKHR) is set, `deviceMask`
 **must** not be zero
 
 * 
@@ -6687,20 +6686,20 @@ If `VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT` is set, `deviceMask`
 
 If the allocation is performing a memory import operation, then
 `flags` **must** not contain
-`VK_MEMORY_ALLOCATE_ZERO_INITIALIZE_BIT_EXT`
+[VK_MEMORY_ALLOCATE_ZERO_INITIALIZE_BIT_EXT](#VkMemoryAllocateFlagBitsKHR)
 
 * 
 [](#VUID-VkMemoryAllocateFlagsInfo-flags-10761) VUID-VkMemoryAllocateFlagsInfo-flags-10761
 
 If the allocation uses protected memory, then `flags` **must** not
-contain `VK_MEMORY_ALLOCATE_ZERO_INITIALIZE_BIT_EXT`
+contain [VK_MEMORY_ALLOCATE_ZERO_INITIALIZE_BIT_EXT](#VkMemoryAllocateFlagBitsKHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkMemoryAllocateFlagsInfo-sType-sType) VUID-VkMemoryAllocateFlagsInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryAllocateFlagsInfo-flags-parameter) VUID-VkMemoryAllocateFlagsInfo-flags-parameter
@@ -6732,25 +6731,25 @@ typedef enum VkMemoryAllocateFlagBits {
 typedef VkMemoryAllocateFlagBits VkMemoryAllocateFlagBitsKHR;
 
 * 
-`VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT` specifies that memory will be
+[VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT](#VkMemoryAllocateFlagBitsKHR) specifies that memory will be
 allocated for the devices in
 [VkMemoryAllocateFlagsInfo](#VkMemoryAllocateFlagsInfo)::`deviceMask`.
 
 * 
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT` specifies that the memory
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](#VkMemoryAllocateFlagBitsKHR) specifies that the memory
 **can** be attached to a buffer object created with the
-`VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT` usage flag set, and that
-the memory handle **can** be used to retrieve an opaque address via
-[vkGetDeviceMemoryOpaqueCaptureAddress](#vkGetDeviceMemoryOpaqueCaptureAddress).
+[VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](resources.html#VkBufferUsageFlagBits) usage flag set.
 
 * 
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` specifies
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#VkMemoryAllocateFlagBitsKHR) specifies
 that the memory’s address **can** be saved and reused on a subsequent run
 (e.g. for trace capture and replay), see
 [VkBufferOpaqueCaptureAddressCreateInfo](resources.html#VkBufferOpaqueCaptureAddressCreateInfo) for more detail.
+If this bit is set, [VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](#VkMemoryAllocateFlagBitsKHR) **must**
+also be set.
 
 * 
-`VK_MEMORY_ALLOCATE_ZERO_INITIALIZE_BIT_EXT` specifies that the
+[VK_MEMORY_ALLOCATE_ZERO_INITIALIZE_BIT_EXT](#VkMemoryAllocateFlagBitsKHR) specifies that the
 memory will be zeroed automatically by the implementation before
 application is able to access it.
 
@@ -6802,7 +6801,7 @@ created memory allocation on the same implementation.
 address retrieved from [vkGetDeviceMemoryOpaqueCaptureAddress](#vkGetDeviceMemoryOpaqueCaptureAddress) on an
 identically created memory allocation.
 If this is not the case, it is likely that
-`VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS` errors will occur.
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS](fundamentals.html#VkResult) errors will occur.
 
 This is, however, not a strict requirement because trace capture/replay
 tools may need to adjust memory allocation parameters for imported memory. |
@@ -6815,7 +6814,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryOpaqueCaptureAddressAllocateInfo-sType-sType) VUID-VkMemoryOpaqueCaptureAddressAllocateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO](fundamentals.html#VkStructureType)
 
 To free a memory object, call:
 
@@ -6899,7 +6898,7 @@ Memory objects created with [vkAllocateMemory](#vkAllocateMemory) are not direct
 accessible.
 
 Memory objects created with the memory property
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` are considered *mappable*.
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits) are considered *mappable*.
 Memory objects **must** be mappable in order to be successfully mapped on the
 host.
 
@@ -6927,7 +6926,7 @@ memory object.
 
 * 
 `size` is the size of the memory range to map, or
-`VK_WHOLE_SIZE` to map from `offset` to the end of the
+[VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE) to map from `offset` to the end of the
 allocation.
 
 * 
@@ -6953,7 +6952,7 @@ is already *host mapped*. |
 appropriately sized contiguous virtual address range, e.g. due to virtual
 address space fragmentation or platform limits.
 In such cases, `vkMapMemory` **must** return
-`VK_ERROR_MEMORY_MAP_FAILED`.
+[VK_ERROR_MEMORY_MAP_FAILED](fundamentals.html#VkResult).
 The application **can** improve the likelihood of success by reducing the size
 of the mapped range and/or removing unneeded mappings using
 [vkUnmapMemory](#vkUnmapMemory). |
@@ -6967,7 +6966,7 @@ range has completed before the host writes to that region (see
 [here](synchronization.html#synchronization-submission-host-writes) for details on fulfilling
 such a guarantee).
 If the device memory was allocated without the
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` set, these guarantees **must** be
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits) set, these guarantees **must** be
 made for an extended range: the application **must** round down the start of
 the range to the nearest multiple of
 [VkPhysicalDeviceLimits](limits.html#VkPhysicalDeviceLimits)::`nonCoherentAtomSize`, and round the end
@@ -7002,20 +7001,20 @@ Valid Usage
 * 
 [](#VUID-vkMapMemory-size-00680) VUID-vkMapMemory-size-00680
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be
+If `size` is not equal to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), `size` **must** be
 greater than `0`
 
 * 
 [](#VUID-vkMapMemory-size-00681) VUID-vkMapMemory-size-00681
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be
+If `size` is not equal to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), `size` **must** be
 less than or equal to the size of the `memory` minus `offset`
 
 * 
 [](#VUID-vkMapMemory-memory-00682) VUID-vkMapMemory-memory-00682
 
 `memory` **must** have been created with a memory type that reports
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT`
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits)
 
 * 
 [](#VUID-vkMapMemory-memory-00683) VUID-vkMapMemory-memory-00683
@@ -7025,7 +7024,7 @@ less than or equal to the size of the `memory` minus `offset`
 * 
 [](#VUID-vkMapMemory-flags-09568) VUID-vkMapMemory-flags-09568
 
-`VK_MEMORY_MAP_PLACED_BIT_EXT` **must** not be set in `flags`
+[VK_MEMORY_MAP_PLACED_BIT_EXT](#VkMemoryMapFlagBits) **must** not be set in `flags`
 
 Valid Usage (Implicit)
 
@@ -7064,24 +7063,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_MEMORY_MAP_FAILED`
+[VK_ERROR_MEMORY_MAP_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 Bits which **can** be set in [vkMapMemory](#vkMapMemory)::`flags` and
 [VkMemoryMapInfo](#VkMemoryMapInfo)::`flags`, specifying additional properties of a
@@ -7094,7 +7093,7 @@ typedef enum VkMemoryMapFlagBits {
 } VkMemoryMapFlagBits;
 
 * 
-`VK_MEMORY_MAP_PLACED_BIT_EXT` requests that the implementation
+[VK_MEMORY_MAP_PLACED_BIT_EXT](#VkMemoryMapFlagBits) requests that the implementation
 place the memory map at the virtual address specified by the application
 via [VkMemoryMapPlacedInfoEXT](#VkMemoryMapPlacedInfoEXT)::`pPlacedAddress`, replacing any
 existing mapping at that address.
@@ -7162,24 +7161,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_MEMORY_MAP_FAILED`
+[VK_ERROR_MEMORY_MAP_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkMemoryMapInfo` structure is defined as:
 
@@ -7217,7 +7216,7 @@ memory object.
 
 * 
 `size` is the size of the memory range to map, or
-`VK_WHOLE_SIZE` to map from `offset` to the end of the
+[VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE) to map from `offset` to the end of the
 allocation.
 
 Valid Usage
@@ -7235,20 +7234,20 @@ Valid Usage
 * 
 [](#VUID-VkMemoryMapInfo-size-07960) VUID-VkMemoryMapInfo-size-07960
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be
+If `size` is not equal to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), `size` **must** be
 greater than `0`
 
 * 
 [](#VUID-VkMemoryMapInfo-size-07961) VUID-VkMemoryMapInfo-size-07961
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be
+If `size` is not equal to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), `size` **must** be
 less than or equal to the size of the `memory` minus `offset`
 
 * 
 [](#VUID-VkMemoryMapInfo-memory-07962) VUID-VkMemoryMapInfo-memory-07962
 
 `memory` **must** have been created with a memory type that reports
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT`
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](#VkMemoryPropertyFlagBits)
 
 * 
 [](#VUID-VkMemoryMapInfo-memory-07963) VUID-VkMemoryMapInfo-memory-07963
@@ -7258,14 +7257,14 @@ less than or equal to the size of the `memory` minus `offset`
 * 
 [](#VUID-VkMemoryMapInfo-flags-09569) VUID-VkMemoryMapInfo-flags-09569
 
-If `VK_MEMORY_MAP_PLACED_BIT_EXT` is set in `flags`, the
+If [VK_MEMORY_MAP_PLACED_BIT_EXT](#VkMemoryMapFlagBits) is set in `flags`, the
 [`memoryMapPlaced`](features.html#features-memoryMapPlaced) feature **must** be
 enabled
 
 * 
 [](#VUID-VkMemoryMapInfo-flags-09570) VUID-VkMemoryMapInfo-flags-09570
 
-If `VK_MEMORY_MAP_PLACED_BIT_EXT` is set in `flags`, the
+If [VK_MEMORY_MAP_PLACED_BIT_EXT](#VkMemoryMapFlagBits) is set in `flags`, the
 `pNext` chain **must** include a [VkMemoryMapPlacedInfoEXT](#VkMemoryMapPlacedInfoEXT)
 structure and `VkMemoryMapPlacedInfoEXT`::`pPlacedAddress` **must**
 not be `NULL`
@@ -7273,22 +7272,22 @@ not be `NULL`
 * 
 [](#VUID-VkMemoryMapInfo-flags-09571) VUID-VkMemoryMapInfo-flags-09571
 
-If `VK_MEMORY_MAP_PLACED_BIT_EXT` is set in `flags` and the
+If [VK_MEMORY_MAP_PLACED_BIT_EXT](#VkMemoryMapFlagBits) is set in `flags` and the
 [`memoryMapRangePlaced`](features.html#features-memoryMapRangePlaced) feature is
 not enabled, `offset` **must** be zero
 
 * 
 [](#VUID-VkMemoryMapInfo-flags-09572) VUID-VkMemoryMapInfo-flags-09572
 
-If `VK_MEMORY_MAP_PLACED_BIT_EXT` is set in `flags` and the
+If [VK_MEMORY_MAP_PLACED_BIT_EXT](#VkMemoryMapFlagBits) is set in `flags` and the
 [`memoryMapRangePlaced`](features.html#features-memoryMapRangePlaced) feature is
-not enabled, `size` **must** be `VK_WHOLE_SIZE` or
+not enabled, `size` **must** be [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE) or
 `VkMemoryAllocateInfo`::`allocationSize`
 
 * 
 [](#VUID-VkMemoryMapInfo-flags-09573) VUID-VkMemoryMapInfo-flags-09573
 
-If `VK_MEMORY_MAP_PLACED_BIT_EXT` is set in `flags` and the
+If [VK_MEMORY_MAP_PLACED_BIT_EXT](#VkMemoryMapFlagBits) is set in `flags` and the
 [`memoryMapRangePlaced`](features.html#features-memoryMapRangePlaced) feature is
 enabled, `offset` **must** be aligned to an integer multiple of
 `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT`::`minPlacedMemoryMapAlignment`
@@ -7296,16 +7295,16 @@ enabled, `offset` **must** be aligned to an integer multiple of
 * 
 [](#VUID-VkMemoryMapInfo-flags-09574) VUID-VkMemoryMapInfo-flags-09574
 
-If `VK_MEMORY_MAP_PLACED_BIT_EXT` is set in `flags` and
-`size` is not `VK_WHOLE_SIZE`, `size` **must** be aligned to an
+If [VK_MEMORY_MAP_PLACED_BIT_EXT](#VkMemoryMapFlagBits) is set in `flags` and
+`size` is not [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), `size` **must** be aligned to an
 integer multiple of
 `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT`::`minPlacedMemoryMapAlignment`
 
 * 
 [](#VUID-VkMemoryMapInfo-flags-09651) VUID-VkMemoryMapInfo-flags-09651
 
-If `VK_MEMORY_MAP_PLACED_BIT_EXT` is set in `flags` and
-`size` is `VK_WHOLE_SIZE`,
+If [VK_MEMORY_MAP_PLACED_BIT_EXT](#VkMemoryMapFlagBits) is set in `flags` and
+`size` is [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE),
 `VkMemoryAllocateInfo`::`allocationSize` **must** be aligned to an
 integer multiple of
 `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT`::`minPlacedMemoryMapAlignment`
@@ -7313,17 +7312,17 @@ integer multiple of
 * 
 [](#VUID-VkMemoryMapInfo-flags-09575) VUID-VkMemoryMapInfo-flags-09575
 
-If `VK_MEMORY_MAP_PLACED_BIT_EXT` is set in `flags`, the memory
+If [VK_MEMORY_MAP_PLACED_BIT_EXT](#VkMemoryMapFlagBits) is set in `flags`, the memory
 object **must** not have been imported from a handle type of
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkMemoryMapInfo-sType-sType) VUID-VkMemoryMapInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_MAP_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_MAP_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryMapInfo-pNext-pNext) VUID-VkMemoryMapInfo-pNext-pNext
@@ -7350,7 +7349,7 @@ Host Synchronization
 * 
 Host access to `memory` **must** be externally synchronized
 
-If `VK_MEMORY_MAP_PLACED_BIT_EXT` is set in
+If [VK_MEMORY_MAP_PLACED_BIT_EXT](#VkMemoryMapFlagBits) is set in
 `VkMemoryMapInfo`::`flags` and the `pNext` chain of
 [VkMemoryMapInfo](#VkMemoryMapInfo) includes a `VkMemoryMapPlacedInfoEXT` structure,
 then that structure specifies the placement address of the memory map.
@@ -7362,10 +7361,10 @@ Instead, the application **must** ensure no other Vulkan memory objects are
 mapped anywhere in the specified virtual address range.
 If successful, `ppData` will be set to the same value as
 `VkMemoryMapPlacedInfoEXT`::`pPlacedAddress` and `vkMapMemory2`
-will return `VK_SUCCESS`.
+will return [VK_SUCCESS](fundamentals.html#VkResult).
 If it cannot place the map at the requested address for any reason, the
 memory object is left unmapped and `vkMapMemory2` will return
-`VK_ERROR_MEMORY_MAP_FAILED`.
+[VK_ERROR_MEMORY_MAP_FAILED](fundamentals.html#VkResult).
 
 The `VkMemoryMapPlacedInfoEXT` structure is defined as:
 
@@ -7387,16 +7386,9 @@ structure.
 `pPlacedAddress` is the virtual address at which to place the
 address.
 If `VkMemoryMapInfo`::`flags` does not contain
-`VK_MEMORY_MAP_PLACED_BIT_EXT`, this value is ignored.
+[VK_MEMORY_MAP_PLACED_BIT_EXT](#VkMemoryMapFlagBits), this value is ignored.
 
 Valid Usage
-
-* 
-[](#VUID-VkMemoryMapPlacedInfoEXT-flags-09576) VUID-VkMemoryMapPlacedInfoEXT-flags-09576
-
-If `VkMemoryMapInfo`::`flags` contains
-`VK_MEMORY_MAP_PLACED_BIT_EXT`, `pPlacedAddress` **must** not be
-`NULL`
 
 * 
 [](#VUID-VkMemoryMapPlacedInfoEXT-pPlacedAddress-09577) VUID-VkMemoryMapPlacedInfoEXT-pPlacedAddress-09577
@@ -7416,7 +7408,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryMapPlacedInfoEXT-sType-sType) VUID-VkMemoryMapPlacedInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_MAP_PLACED_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_MAP_PLACED_INFO_EXT](fundamentals.html#VkStructureType)
 
 Two commands are provided to enable applications to work with non-coherent
 memory allocations: `vkFlushMappedMemoryRanges` and
@@ -7424,7 +7416,7 @@ memory allocations: `vkFlushMappedMemoryRanges` and
 
 |  | If the memory object was created with the
 | --- | --- |
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` set,
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](#VkMemoryPropertyFlagBits) set,
 `vkFlushMappedMemoryRanges` and `vkInvalidateMappedMemoryRanges` are
 unnecessary and **may** have a performance cost.
 However, [availability and visibility operations](synchronization.html#synchronization-dependencies-available-and-visible) still need to be managed on the device.
@@ -7432,8 +7424,8 @@ See the description of [host access types](synchronization.html#synchronization-
 
 |  | While memory objects imported from a handle type of
 | --- | --- |
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT` are
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) are
 inherently mapped to host address space, they are not considered to be host
 mapped device memory unless they are explicitly host mapped using
 [vkMapMemory](#vkMapMemory).
@@ -7473,7 +7465,7 @@ flush.
 `vkFlushMappedMemoryRanges` guarantees that host writes to the memory
 ranges described by `pMemoryRanges` are made available to the host
 memory domain, such that they **can** be made available to the device memory
-domain via [memory domain operations](synchronization.html#synchronization-dependencies-available-and-visible) using the `VK_ACCESS_HOST_WRITE_BIT`
+domain via [memory domain operations](synchronization.html#synchronization-dependencies-available-and-visible) using the [VK_ACCESS_HOST_WRITE_BIT](synchronization.html#VkAccessFlagBits)
 [access type](synchronization.html#synchronization-access-types).
 
 The first [synchronization scope](synchronization.html#synchronization-dependencies-scopes)
@@ -7540,21 +7532,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To invalidate ranges of non-coherent memory from the host caches, call:
 
@@ -7577,8 +7569,8 @@ invalidate.
 
 `vkInvalidateMappedMemoryRanges` guarantees that device writes to the
 memory ranges described by `pMemoryRanges`, which have been made
-available to the host memory domain using the `VK_ACCESS_HOST_WRITE_BIT`
-and `VK_ACCESS_HOST_READ_BIT` [access types](synchronization.html#synchronization-access-types), are made visible to the host.
+available to the host memory domain using the [VK_ACCESS_HOST_WRITE_BIT](synchronization.html#VkAccessFlagBits)
+and [VK_ACCESS_HOST_READ_BIT](synchronization.html#VkAccessFlagBits) [access types](synchronization.html#synchronization-access-types), are made visible to the host.
 If a range of non-coherent memory is written by the host and then
 invalidated without first being flushed, its contents are **undefined**.
 
@@ -7649,21 +7641,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkMappedMemoryRange` structure is defined as:
 
@@ -7691,7 +7683,7 @@ structure.
 memory object.
 
 * 
-`size` is either the size of range, or `VK_WHOLE_SIZE` to affect
+`size` is either the size of range, or [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE) to affect
 the range from `offset` to the end of the current mapping of the
 allocation.
 
@@ -7705,14 +7697,14 @@ Valid Usage
 * 
 [](#VUID-VkMappedMemoryRange-size-00685) VUID-VkMappedMemoryRange-size-00685
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `offset` and
+If `size` is not equal to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), `offset` and
 `size` **must** specify a range contained within the currently mapped
 range of `memory`
 
 * 
 [](#VUID-VkMappedMemoryRange-size-00686) VUID-VkMappedMemoryRange-size-00686
 
-If `size` is equal to `VK_WHOLE_SIZE`, `offset` **must** be
+If `size` is equal to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), `offset` **must** be
 within the currently mapped range of `memory`
 
 * 
@@ -7724,7 +7716,7 @@ within the currently mapped range of `memory`
 * 
 [](#VUID-VkMappedMemoryRange-size-01389) VUID-VkMappedMemoryRange-size-01389
 
-If `size` is equal to `VK_WHOLE_SIZE`, the end of the current
+If `size` is equal to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), the end of the current
 mapping of `memory` **must** either be a multiple of
 [VkPhysicalDeviceLimits](limits.html#VkPhysicalDeviceLimits)::`nonCoherentAtomSize` bytes from the
 beginning of the memory object, or be equal to the end of the memory
@@ -7733,7 +7725,7 @@ object
 * 
 [](#VUID-VkMappedMemoryRange-size-01390) VUID-VkMappedMemoryRange-size-01390
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must**
+If `size` is not equal to [VK_WHOLE_SIZE](synchronization.html#VK_WHOLE_SIZE), `size` **must**
 either be a multiple of
 [VkPhysicalDeviceLimits](limits.html#VkPhysicalDeviceLimits)::`nonCoherentAtomSize`, or `offset`
 plus `size` **must** equal the size of `memory`
@@ -7743,7 +7735,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMappedMemoryRange-sType-sType) VUID-VkMappedMemoryRange-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMappedMemoryRange-pNext-pNext) VUID-VkMappedMemoryRange-pNext-pNext
@@ -7843,18 +7835,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_MEMORY_MAP_FAILED`
+[VK_ERROR_MEMORY_MAP_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkMemoryUnmapInfo` structure is defined as:
 
@@ -7894,24 +7886,24 @@ Valid Usage
 * 
 [](#VUID-VkMemoryUnmapInfo-flags-09579) VUID-VkMemoryUnmapInfo-flags-09579
 
-If `VK_MEMORY_UNMAP_RESERVE_BIT_EXT` is set in `flags`, the
+If [VK_MEMORY_UNMAP_RESERVE_BIT_EXT](#VkMemoryUnmapFlagBitsKHR) is set in `flags`, the
 [`memoryUnmapReserve`](features.html#features-memoryUnmapReserve) **must** be
 enabled
 
 * 
 [](#VUID-VkMemoryUnmapInfo-flags-09580) VUID-VkMemoryUnmapInfo-flags-09580
 
-If `VK_MEMORY_UNMAP_RESERVE_BIT_EXT` is set in `flags`, the
+If [VK_MEMORY_UNMAP_RESERVE_BIT_EXT](#VkMemoryUnmapFlagBitsKHR) is set in `flags`, the
 memory object **must** not have been imported from a handle type of
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT` or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkMemoryUnmapInfo-sType-sType) VUID-VkMemoryUnmapInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryUnmapInfo-pNext-pNext) VUID-VkMemoryUnmapInfo-pNext-pNext
@@ -7947,19 +7939,19 @@ typedef enum VkMemoryUnmapFlagBits {
 typedef VkMemoryUnmapFlagBits VkMemoryUnmapFlagBitsKHR;
 
 * 
-`VK_MEMORY_UNMAP_RESERVE_BIT_EXT` requests that virtual address
+[VK_MEMORY_UNMAP_RESERVE_BIT_EXT](#VkMemoryUnmapFlagBitsKHR) requests that virtual address
 range currently occupied by the memory map remain reserved after the
 [vkUnmapMemory2](#vkUnmapMemory2) call completes.
 Future system memory map operations or calls to [vkMapMemory](#vkMapMemory) or
 [vkMapMemory2](#vkMapMemory2) will not return addresses in that range unless the
 range has since been unreserved by the client or the mapping is
 explicitly placed in that range by calling [vkMapMemory2](#vkMapMemory2) with
-`VK_MEMORY_MAP_PLACED_BIT_EXT`, or doing the system memory map
+[VK_MEMORY_MAP_PLACED_BIT_EXT](#VkMemoryMapFlagBits), or doing the system memory map
 equivalent.
-When `VK_MEMORY_UNMAP_RESERVE_BIT_EXT` is set, the memory unmap
+When [VK_MEMORY_UNMAP_RESERVE_BIT_EXT](#VkMemoryUnmapFlagBitsKHR) is set, the memory unmap
 operation **may** fail, in which case the memory object will remain host
 mapped and [vkUnmapMemory2](#vkUnmapMemory2) will return
-`VK_ERROR_MEMORY_MAP_FAILED`.
+[VK_ERROR_MEMORY_MAP_FAILED](fundamentals.html#VkResult).
 
 // Provided by VK_VERSION_1_4
 typedef VkFlags VkMemoryUnmapFlags;
@@ -7972,7 +7964,7 @@ typedef VkMemoryUnmapFlags VkMemoryUnmapFlagsKHR;
 more [VkMemoryUnmapFlagBits](#VkMemoryUnmapFlagBits).
 
 If the memory object is allocated from a heap with the
-`VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT` bit set, that object’s backing
+[VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT](#VkMemoryPropertyFlagBits) bit set, that object’s backing
 memory **may** be provided by the implementation lazily.
 The actual committed size of the memory **may** initially be as small as zero
 (or as large as the requested size), and monotonically increases as
@@ -7980,7 +7972,7 @@ additional memory is needed.
 
 A memory type with this flag set is only allowed to be bound to a
 `VkImage` whose usage flags include
-`VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT`.
+[VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits).
 
 |  | Using lazily allocated memory objects for framebuffer attachments that are
 | --- | --- |
@@ -8020,7 +8012,7 @@ Valid Usage
 [](#VUID-vkGetDeviceMemoryCommitment-memory-00690) VUID-vkGetDeviceMemoryCommitment-memory-00690
 
 `memory` **must** have been created with a memory type that reports
-`VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT`
+[VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT](#VkMemoryPropertyFlagBits)
 
 Valid Usage (Implicit)
 
@@ -8115,13 +8107,13 @@ enabled, all pipelines **may** be recorded in either protected or unprotected
 command buffers (or both), which may incur an extra cost on some
 implementations.
 This **can** be mitigated by enabling the [`pipelineProtectedAccess`](features.html#features-pipelineProtectedAccess) feature, in which case pipelines created
-with `VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT` may only be recorded
+with [VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](pipelines.html#VkPipelineCreateFlagBits) may only be recorded
 in protected command buffers, and pipelines created with
-`VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT` may only be recorded in
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](pipelines.html#VkPipelineCreateFlagBits) may only be recorded in
 unprotected command buffers. |
 
 If [VkPhysicalDeviceProtectedMemoryProperties](limits.html#VkPhysicalDeviceProtectedMemoryProperties)::`protectedNoFault`
-is `VK_FALSE`, applications **must** not perform any of the following
+is [VK_FALSE](fundamentals.html#VK_FALSE), applications **must** not perform any of the following
 operations:
 
 * 
@@ -8129,14 +8121,16 @@ Write to unprotected memory within protected queue operations.
 
 * 
 Access protected memory within protected queue operations other than in
-framebuffer-space pipeline stages, the compute shader stage, or the
-transfer stage.
+framebuffer-space pipeline stages, the compute shader stage,
+in video decode operations,
+in video encode operations,
+or the transfer stage.
 
 * 
 Perform a query within protected queue operations.
 
 If [VkPhysicalDeviceProtectedMemoryProperties](limits.html#VkPhysicalDeviceProtectedMemoryProperties)::`protectedNoFault`
-is `VK_TRUE`, these operations are valid, but reads will return
+is [VK_TRUE](fundamentals.html#VK_TRUE), these operations are valid, but reads will return
 **undefined** values, and writes will either be dropped or store **undefined**
 values.
 
@@ -8162,7 +8156,7 @@ An [VkImage](resources.html#VkImage) or [VkBuffer](resources.html#VkBuffer)
 or [VkTensorARM](resources.html#VkTensorARM)
 **can** be bound to the imported or exported [VkDeviceMemory](#VkDeviceMemory) object if it
 is created with
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`.
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR).
 
 To remove an unnecessary compile time dependency, an incomplete type
 definition of `AHardwareBuffer` is provided in the Vulkan headers:
@@ -8251,7 +8245,7 @@ Y′CBCR conversion enabled.
 
 Images that will be backed by an Android hardware buffer **can** use an
 external format by setting [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`format` to
-`VK_FORMAT_UNDEFINED` and including a [VkExternalFormatANDROID](resources.html#VkExternalFormatANDROID)
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat) and including a [VkExternalFormatANDROID](resources.html#VkExternalFormatANDROID)
 structure in the `pNext` chain.
 Images **can** be created with an external format even if the Android hardware
 buffer has a format which has an
@@ -8269,9 +8263,9 @@ Android hardware buffers have intrinsic width, height, format, and usage
 properties, so Vulkan images bound to memory imported from an Android
 hardware buffer **must** use dedicated allocations:
 `VkMemoryDedicatedRequirements`::`requiresDedicatedAllocation` **must**
-be `VK_TRUE` for images created with
+be [VK_TRUE](fundamentals.html#VK_TRUE) for images created with
 [VkExternalMemoryImageCreateInfo](resources.html#VkExternalMemoryImageCreateInfo)::`handleTypes` that includes
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`.
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR).
 When creating an image that will be bound to an imported Android hardware
 buffer, the image creation parameters **must** be equivalent to the
 `AHardwareBuffer` properties as described by the valid usage of
@@ -8315,7 +8309,7 @@ non-external images.
 Support for a given set of parameters **can** be determined by passing
 [VkExternalImageFormatProperties](capabilities.html#VkExternalImageFormatProperties) to
 [vkGetPhysicalDeviceImageFormatProperties2](capabilities.html#vkGetPhysicalDeviceImageFormatProperties2) with `handleType` set to
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`.
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR).
 Any Android hardware buffer successfully allocated outside Vulkan with usage
 that includes `AHARDWAREBUFFER_USAGE_GPU_*` **must** be supported when using
 equivalent Vulkan image parameters.
@@ -8325,46 +8319,46 @@ Android hardware buffer.
 
 | AHardwareBuffer Format | Vulkan Format |
 | --- | --- |
-| `AHARDWAREBUFFER_FORMAT_R8G8B8A8_UNORM` | `VK_FORMAT_R8G8B8A8_UNORM` |
-| `AHARDWAREBUFFER_FORMAT_R8G8B8X8_UNORM` 1 | `VK_FORMAT_R8G8B8A8_UNORM` |
-| `AHARDWAREBUFFER_FORMAT_R8G8B8_UNORM` | `VK_FORMAT_R8G8B8_UNORM` |
-| `AHARDWAREBUFFER_FORMAT_R5G6B5_UNORM` | `VK_FORMAT_R5G6B5_UNORM_PACK16` |
-| `AHARDWAREBUFFER_FORMAT_R16G16B16A16_FLOAT` | `VK_FORMAT_R16G16B16A16_SFLOAT` |
-| `AHARDWAREBUFFER_FORMAT_R10G10B10A2_UNORM` | `VK_FORMAT_A2B10G10R10_UNORM_PACK32` |
-| `AHARDWAREBUFFER_FORMAT_D16_UNORM` | `VK_FORMAT_D16_UNORM` |
-| `AHARDWAREBUFFER_FORMAT_D24_UNORM` | `VK_FORMAT_X8_D24_UNORM_PACK32` |
-| `AHARDWAREBUFFER_FORMAT_D24_UNORM_S8_UINT` | `VK_FORMAT_D24_UNORM_S8_UINT` |
-| `AHARDWAREBUFFER_FORMAT_D32_FLOAT` | `VK_FORMAT_D32_SFLOAT` |
-| `AHARDWAREBUFFER_FORMAT_D32_FLOAT_S8_UINT` | `VK_FORMAT_D32_SFLOAT_S8_UINT` |
-| `AHARDWAREBUFFER_FORMAT_S8_UINT` | `VK_FORMAT_S8_UINT` |
+| `AHARDWAREBUFFER_FORMAT_R8G8B8A8_UNORM` | [VK_FORMAT_R8G8B8A8_UNORM](formats.html#VkFormat) |
+| `AHARDWAREBUFFER_FORMAT_R8G8B8X8_UNORM` 1 | [VK_FORMAT_R8G8B8A8_UNORM](formats.html#VkFormat) |
+| `AHARDWAREBUFFER_FORMAT_R8G8B8_UNORM` | [VK_FORMAT_R8G8B8_UNORM](formats.html#VkFormat) |
+| `AHARDWAREBUFFER_FORMAT_R5G6B5_UNORM` | [VK_FORMAT_R5G6B5_UNORM_PACK16](formats.html#VkFormat) |
+| `AHARDWAREBUFFER_FORMAT_R16G16B16A16_FLOAT` | [VK_FORMAT_R16G16B16A16_SFLOAT](formats.html#VkFormat) |
+| `AHARDWAREBUFFER_FORMAT_R10G10B10A2_UNORM` | [VK_FORMAT_A2B10G10R10_UNORM_PACK32](formats.html#VkFormat) |
+| `AHARDWAREBUFFER_FORMAT_D16_UNORM` | [VK_FORMAT_D16_UNORM](formats.html#VkFormat) |
+| `AHARDWAREBUFFER_FORMAT_D24_UNORM` | [VK_FORMAT_X8_D24_UNORM_PACK32](formats.html#VkFormat) |
+| `AHARDWAREBUFFER_FORMAT_D24_UNORM_S8_UINT` | [VK_FORMAT_D24_UNORM_S8_UINT](formats.html#VkFormat) |
+| `AHARDWAREBUFFER_FORMAT_D32_FLOAT` | [VK_FORMAT_D32_SFLOAT](formats.html#VkFormat) |
+| `AHARDWAREBUFFER_FORMAT_D32_FLOAT_S8_UINT` | [VK_FORMAT_D32_SFLOAT_S8_UINT](formats.html#VkFormat) |
+| `AHARDWAREBUFFER_FORMAT_S8_UINT` | [VK_FORMAT_S8_UINT](formats.html#VkFormat) |
 
 | AHardwareBuffer Usage | Vulkan Usage or Creation Flag |
 | --- | --- |
-| None | `VK_IMAGE_USAGE_TRANSFER_SRC_BIT` |
-| None | `VK_IMAGE_USAGE_TRANSFER_DST_BIT` |
-| `AHARDWAREBUFFER_USAGE_GPU_SAMPLED_IMAGE` | `VK_IMAGE_USAGE_SAMPLED_BIT` |
-| `AHARDWAREBUFFER_USAGE_GPU_SAMPLED_IMAGE` | `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` |
-| `AHARDWAREBUFFER_USAGE_GPU_FRAMEBUFFER` 3 | `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` |
-| `AHARDWAREBUFFER_USAGE_GPU_FRAMEBUFFER` 3 | `VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` |
-| `AHARDWAREBUFFER_USAGE_GPU_CUBE_MAP` | `VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT` |
+| None | [VK_IMAGE_USAGE_TRANSFER_SRC_BIT](resources.html#VkImageUsageFlagBits) |
+| None | [VK_IMAGE_USAGE_TRANSFER_DST_BIT](resources.html#VkImageUsageFlagBits) |
+| `AHARDWAREBUFFER_USAGE_GPU_SAMPLED_IMAGE` | [VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits) |
+| `AHARDWAREBUFFER_USAGE_GPU_SAMPLED_IMAGE` | [VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) |
+| `AHARDWAREBUFFER_USAGE_GPU_FRAMEBUFFER` 3 | [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) |
+| `AHARDWAREBUFFER_USAGE_GPU_FRAMEBUFFER` 3 | [VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) |
+| `AHARDWAREBUFFER_USAGE_GPU_CUBE_MAP` | [VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) |
 | `AHARDWAREBUFFER_USAGE_GPU_MIPMAP_COMPLETE` | None 2 |
-| `AHARDWAREBUFFER_USAGE_PROTECTED_CONTENT` | `VK_IMAGE_CREATE_PROTECTED_BIT` |
-| None | `VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT` |
-| None | `VK_IMAGE_CREATE_EXTENDED_USAGE_BIT` |
-| `AHARDWAREBUFFER_USAGE_GPU_DATA_BUFFER` 4 | `VK_IMAGE_USAGE_STORAGE_BIT` |
+| `AHARDWAREBUFFER_USAGE_PROTECTED_CONTENT` | [VK_IMAGE_CREATE_PROTECTED_BIT](resources.html#VkImageCreateFlagBits) |
+| None | [VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](resources.html#VkImageCreateFlagBits) |
+| None | [VK_IMAGE_CREATE_EXTENDED_USAGE_BIT](resources.html#VkImageCreateFlagBits) |
+| `AHARDWAREBUFFER_USAGE_GPU_DATA_BUFFER` 4 | [VK_IMAGE_USAGE_STORAGE_BIT](resources.html#VkImageUsageFlagBits) |
 
 1
 
 Vulkan does not differentiate between
 `AHARDWAREBUFFER_FORMAT_R8G8B8A8_UNORM` and
 `AHARDWAREBUFFER_FORMAT_R8G8B8X8_UNORM`: they both behave as
-`VK_FORMAT_R8G8B8A8_UNORM`.
+[VK_FORMAT_R8G8B8A8_UNORM](formats.html#VkFormat).
 After an external entity writes to a
 `AHARDWAREBUFFER_FORMAT_R8G8B8X8_UNORM` Android hardware buffer, the
 values read by Vulkan from the X/A component are **undefined**.
 To emulate the traditional behavior of the X component during sampling
-or blending, applications **should** use `VK_COMPONENT_SWIZZLE_ONE` in
-image view component mappings and `VK_BLEND_FACTOR_ONE` in color
+or blending, applications **should** use [VK_COMPONENT_SWIZZLE_ONE](resources.html#VkComponentSwizzle) in
+image view component mappings and [VK_BLEND_FACTOR_ONE](framebuffer.html#VkBlendFactor) in color
 blend factors.
 There is no way to avoid copying these **undefined** values when copying
 from such an image to another image or buffer.
@@ -8383,13 +8377,13 @@ Only image usages valid for the format are valid.
 It would be invalid to take a Android Hardware Buffer with a format of
 `AHARDWAREBUFFER_FORMAT_R8G8B8A8_UNORM` that has a
 `AHARDWAREBUFFER_USAGE_GPU_FRAMEBUFFER` usage and try to create an
-image with `VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`.
+image with [VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits).
 
 4
 
 In combination with a hardware buffer format other than `BLOB`.
 
-|  | When using `VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT` with Android hardware
+|  | When using [VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](resources.html#VkImageCreateFlagBits) with Android hardware
 | --- | --- |
 buffer images, applications **should** use [VkImageFormatListCreateInfo](resources.html#VkImageFormatListCreateInfo) to
 inform the implementation which view formats will be used with the image.
@@ -8420,7 +8414,7 @@ These QNX Screen buffer objects **may** be imported into [VkDeviceMemory](#VkDev
 objects for access via Vulkan.
 An [VkImage](resources.html#VkImage) or [VkBuffer](resources.html#VkBuffer) **can** be bound to the imported
 [VkDeviceMemory](#VkDeviceMemory) object if it is created with
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX`.
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR).
 
 `struct` `_screen_buffer` is strongly typed, so naming the handle type
 is redundant.
@@ -8465,7 +8459,7 @@ enabled, and **must** have optimal tiling.
 
 Images that will be backed by a QNX Screen buffer **can** use an external
 format by setting [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`format` to
-`VK_FORMAT_UNDEFINED` and including a [VkExternalFormatQNX](resources.html#VkExternalFormatQNX)
+[VK_FORMAT_UNDEFINED](formats.html#VkFormat) and including a [VkExternalFormatQNX](resources.html#VkExternalFormatQNX)
 structure in the `pNext` chain.
 Images **can** be created with an external format even if the QNX Screen buffer
 has a format which has an
@@ -8480,39 +8474,39 @@ QNX Screen buffers have intrinsic width, height, format, and usage
 properties, so Vulkan images bound to memory imported from a QNX Screen
 buffer **must** use dedicated allocations:
 `VkMemoryDedicatedRequirements`::`requiresDedicatedAllocation` **must**
-be `VK_TRUE` for images created with
+be [VK_TRUE](fundamentals.html#VK_TRUE) for images created with
 [VkExternalMemoryImageCreateInfo](resources.html#VkExternalMemoryImageCreateInfo)::`handleTypes` that includes
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX`.
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR).
 When creating an image that will be bound to an imported QNX Screen buffer,
 the image creation parameters **must** be equivalent to the `_screen_buffer`
 properties as described by the valid usage of [VkMemoryAllocateInfo](#VkMemoryAllocateInfo).
 
 | QNX Screen Format | Vulkan Format |
 | --- | --- |
-| `SCREEN_FORMAT_RGBA8888` | `VK_FORMAT_B8G8R8A8_UNORM` |
-| `SCREEN_FORMAT_RGBX8888` 1 | `VK_FORMAT_B8G8R8A8_UNORM` |
-| `SCREEN_FORMAT_BGRA8888` | `VK_FORMAT_R8G8B8A8_UNORM` |
-| `SCREEN_FORMAT_BGRX8888` 1 | `VK_FORMAT_R8G8B8A8_UNORM` |
-| `SCREEN_FORMAT_RGBA1010102` | `VK_FORMAT_A2R10G10B10_UNORM_PACK32` |
-| `SCREEN_FORMAT_RGBX1010102` 1 | `VK_FORMAT_A2R10G10B10_UNORM_PACK32` |
-| `SCREEN_FORMAT_BGRA1010102` | `VK_FORMAT_A2B10G10R10_UNORM_PACK32` |
-| `SCREEN_FORMAT_BGRX1010102` 1 | `VK_FORMAT_A2B10G10R10_UNORM_PACK32` |
-| `SCREEN_FORMAT_RGBA5551` | `VK_FORMAT_A1R5G5B5_UNORM_PACK16` |
-| `SCREEN_FORMAT_RGBX5551` 1 | `VK_FORMAT_A1R5G5B5_UNORM_PACK16` |
-| `SCREEN_FORMAT_RGB565` | `VK_FORMAT_R5G6B5_UNORM_PACK16` |
-| `SCREEN_FORMAT_RGB888` | `VK_FORMAT_R8G8B8_UNORM` |
+| `SCREEN_FORMAT_RGBA8888` | [VK_FORMAT_B8G8R8A8_UNORM](formats.html#VkFormat) |
+| `SCREEN_FORMAT_RGBX8888` 1 | [VK_FORMAT_B8G8R8A8_UNORM](formats.html#VkFormat) |
+| `SCREEN_FORMAT_BGRA8888` | [VK_FORMAT_R8G8B8A8_UNORM](formats.html#VkFormat) |
+| `SCREEN_FORMAT_BGRX8888` 1 | [VK_FORMAT_R8G8B8A8_UNORM](formats.html#VkFormat) |
+| `SCREEN_FORMAT_RGBA1010102` | [VK_FORMAT_A2R10G10B10_UNORM_PACK32](formats.html#VkFormat) |
+| `SCREEN_FORMAT_RGBX1010102` 1 | [VK_FORMAT_A2R10G10B10_UNORM_PACK32](formats.html#VkFormat) |
+| `SCREEN_FORMAT_BGRA1010102` | [VK_FORMAT_A2B10G10R10_UNORM_PACK32](formats.html#VkFormat) |
+| `SCREEN_FORMAT_BGRX1010102` 1 | [VK_FORMAT_A2B10G10R10_UNORM_PACK32](formats.html#VkFormat) |
+| `SCREEN_FORMAT_RGBA5551` | [VK_FORMAT_A1R5G5B5_UNORM_PACK16](formats.html#VkFormat) |
+| `SCREEN_FORMAT_RGBX5551` 1 | [VK_FORMAT_A1R5G5B5_UNORM_PACK16](formats.html#VkFormat) |
+| `SCREEN_FORMAT_RGB565` | [VK_FORMAT_R5G6B5_UNORM_PACK16](formats.html#VkFormat) |
+| `SCREEN_FORMAT_RGB888` | [VK_FORMAT_R8G8B8_UNORM](formats.html#VkFormat) |
 
 1
 
 Vulkan does not differentiate between `SCREEN_FORMAT_RGBA8888` and
 `SCREEN_FORMAT_RGBX8888`: they both behave as
-`VK_FORMAT_R8G8B8A8_UNORM`.
+[VK_FORMAT_R8G8B8A8_UNORM](formats.html#VkFormat).
 After an external entity writes to a `SCREEN_FORMAT_RGBX8888` QNX
 Screen buffer, the values read by Vulkan from the X/A component are
 **undefined**.
 To emulate the traditional behavior of the X component during sampling
-or blending, applications **should** use `VK_COMPONENT_SWIZZLE_ONE` in
-image view component mappings and `VK_BLEND_FACTOR_ONE` in color
+or blending, applications **should** use [VK_COMPONENT_SWIZZLE_ONE](resources.html#VkComponentSwizzle) in
+image view component mappings and [VK_BLEND_FACTOR_ONE](framebuffer.html#VkBlendFactor) in color
 blend factors.
 There is no way to avoid copying these **undefined** values when copying
 from such an image to another image or buffer.
@@ -8627,19 +8621,19 @@ typedef enum VkPeerMemoryFeatureFlagBits {
 typedef VkPeerMemoryFeatureFlagBits VkPeerMemoryFeatureFlagBitsKHR;
 
 * 
-`VK_PEER_MEMORY_FEATURE_COPY_SRC_BIT` specifies that the memory **can**
+[VK_PEER_MEMORY_FEATURE_COPY_SRC_BIT](#VkPeerMemoryFeatureFlagBitsKHR) specifies that the memory **can**
 be accessed as the source of any `vkCmdCopy*` command.
 
 * 
-`VK_PEER_MEMORY_FEATURE_COPY_DST_BIT` specifies that the memory **can**
+[VK_PEER_MEMORY_FEATURE_COPY_DST_BIT](#VkPeerMemoryFeatureFlagBitsKHR) specifies that the memory **can**
 be accessed as the destination of any `vkCmdCopy*` command.
 
 * 
-`VK_PEER_MEMORY_FEATURE_GENERIC_SRC_BIT` specifies that the memory
+[VK_PEER_MEMORY_FEATURE_GENERIC_SRC_BIT](#VkPeerMemoryFeatureFlagBitsKHR) specifies that the memory
 **can** be read as any memory access type.
 
 * 
-`VK_PEER_MEMORY_FEATURE_GENERIC_DST_BIT` specifies that the memory
+[VK_PEER_MEMORY_FEATURE_GENERIC_DST_BIT](#VkPeerMemoryFeatureFlagBitsKHR) specifies that the memory
 **can** be written as any memory access type.
 Shader atomics are considered to be writes.
 
@@ -8647,7 +8641,7 @@ Shader atomics are considered to be writes.
 | --- | --- |
 **may** be performed during [image layout transitions](synchronization.html#synchronization-image-layout-transitions). |
 
-`VK_PEER_MEMORY_FEATURE_COPY_DST_BIT` **must** be supported for all host
+[VK_PEER_MEMORY_FEATURE_COPY_DST_BIT](#VkPeerMemoryFeatureFlagBitsKHR) **must** be supported for all host
 local heaps and for at least one device-local memory heap.
 
 If a device does not support a peer memory feature, it is still valid to use
@@ -8714,7 +8708,7 @@ The [`bufferDeviceAddress`](features.html#features-bufferDeviceAddress) and
 [](#VUID-vkGetDeviceMemoryOpaqueCaptureAddress-pInfo-10727) VUID-vkGetDeviceMemoryOpaqueCaptureAddress-pInfo-10727
 
 `pInfo->memory` **must** have been allocated using the
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` flag
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](#VkMemoryAllocateFlagBitsKHR) flag
 
 * 
 [](#VUID-vkGetDeviceMemoryOpaqueCaptureAddress-device-03335) VUID-vkGetDeviceMemoryOpaqueCaptureAddress-device-03335
@@ -8763,14 +8757,14 @@ Valid Usage
 [](#VUID-VkDeviceMemoryOpaqueCaptureAddressInfo-memory-03336) VUID-VkDeviceMemoryOpaqueCaptureAddressInfo-memory-03336
 
 `memory` **must** have been allocated with
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT`
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](#VkMemoryAllocateFlagBitsKHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDeviceMemoryOpaqueCaptureAddressInfo-sType-sType) VUID-VkDeviceMemoryOpaqueCaptureAddressInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceMemoryOpaqueCaptureAddressInfo-pNext-pNext) VUID-VkDeviceMemoryOpaqueCaptureAddressInfo-pNext-pNext

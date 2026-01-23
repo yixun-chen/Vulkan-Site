@@ -129,34 +129,34 @@ Extending [VkCuModuleCreateInfoNVX](VkCuModuleCreateInfoNVX.html):
 * 
 Extending [VkObjectType](VkObjectType.html):
 
-`VK_OBJECT_TYPE_CU_FUNCTION_NVX`
+[VK_OBJECT_TYPE_CU_FUNCTION_NVX](VkObjectType.html)
 
 * 
-`VK_OBJECT_TYPE_CU_MODULE_NVX`
+[VK_OBJECT_TYPE_CU_MODULE_NVX](VkObjectType.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_CU_FUNCTION_CREATE_INFO_NVX`
+[VK_STRUCTURE_TYPE_CU_FUNCTION_CREATE_INFO_NVX](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_CU_LAUNCH_INFO_NVX`
+[VK_STRUCTURE_TYPE_CU_LAUNCH_INFO_NVX](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_CU_MODULE_CREATE_INFO_NVX`
+[VK_STRUCTURE_TYPE_CU_MODULE_CREATE_INFO_NVX](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_CU_MODULE_TEXTURING_MODE_CREATE_INFO_NVX`
+[VK_STRUCTURE_TYPE_CU_MODULE_TEXTURING_MODE_CREATE_INFO_NVX](VkStructureType.html)
 
 If [VK_EXT_debug_report](VK_EXT_debug_report.html) is supported:
 
 * 
 Extending [VkDebugReportObjectTypeEXT](VkDebugReportObjectTypeEXT.html):
 
-`VK_DEBUG_REPORT_OBJECT_TYPE_CU_FUNCTION_NVX_EXT`
+[VK_DEBUG_REPORT_OBJECT_TYPE_CU_FUNCTION_NVX_EXT](VkDebugReportObjectTypeEXT.html)
 
 * 
-`VK_DEBUG_REPORT_OBJECT_TYPE_CU_MODULE_NVX_EXT`
+[VK_DEBUG_REPORT_OBJECT_TYPE_CU_MODULE_NVX_EXT](VkDebugReportObjectTypeEXT.html)
 
 * 
 Revision 2, 2024-11-04 (Liam Middlebrook)

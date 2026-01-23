@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCheckpointData2NV-sType-sType) VUID-VkCheckpointData2NV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CHECKPOINT_DATA_2_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CHECKPOINT_DATA_2_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkCheckpointData2NV-pNext-pNext) VUID-VkCheckpointData2NV-pNext-pNext

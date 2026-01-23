@@ -72,7 +72,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDebugReportCallbackCreateInfoEXT-sType-sType) VUID-VkDebugReportCallbackCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDebugReportCallbackCreateInfoEXT-flags-parameter) VUID-VkDebugReportCallbackCreateInfoEXT-flags-parameter

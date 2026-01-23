@@ -40,23 +40,23 @@ typedef enum VkPipelineBindPoint {
 } VkPipelineBindPoint;
 
 * 
-`VK_PIPELINE_BIND_POINT_COMPUTE` specifies binding as a compute
+[VK_PIPELINE_BIND_POINT_COMPUTE](#) specifies binding as a compute
 pipeline.
 
 * 
-`VK_PIPELINE_BIND_POINT_GRAPHICS` specifies binding as a graphics
+[VK_PIPELINE_BIND_POINT_GRAPHICS](#) specifies binding as a graphics
 pipeline.
 
 * 
-`VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR` specifies binding as a ray
+[VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR](#) specifies binding as a ray
 tracing pipeline.
 
 * 
-`VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI` specifies binding as
+[VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI](#) specifies binding as
 a subpass shading pipeline.
 
 * 
-`VK_PIPELINE_BIND_POINT_EXECUTION_GRAPH_AMDX` specifies binding as
+[VK_PIPELINE_BIND_POINT_EXECUTION_GRAPH_AMDX](#) specifies binding as
 an [execution graph pipeline](../../../../spec/latest/chapters/executiongraphs.html#executiongraphs).
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkDescriptorUpdateTemplateCreateInfo](VkDescriptorUpdateTemplateCreateInfo.html), [VkGeneratedCommandsInfoNV](VkGeneratedCommandsInfoNV.html), [VkGeneratedCommandsMemoryRequirementsInfoNV](VkGeneratedCommandsMemoryRequirementsInfoNV.html), [VkIndirectCommandsLayoutCreateInfoNV](VkIndirectCommandsLayoutCreateInfoNV.html), [VkPipelineIndirectDeviceAddressInfoNV](VkPipelineIndirectDeviceAddressInfoNV.html), [VkSubpassDescription](VkSubpassDescription.html), [VkSubpassDescription2](VkSubpassDescription2.html), [vkCmdBindDescriptorBufferEmbeddedSamplersEXT](vkCmdBindDescriptorBufferEmbeddedSamplersEXT.html), [vkCmdBindDescriptorSets](vkCmdBindDescriptorSets.html), [vkCmdBindPipeline](vkCmdBindPipeline.html), [vkCmdBindPipelineShaderGroupNV](vkCmdBindPipelineShaderGroupNV.html), [vkCmdPushDescriptorSet](vkCmdPushDescriptorSet.html), [vkCmdPushDescriptorSet](vkCmdPushDescriptorSet.html), [vkCmdSetDescriptorBufferOffsetsEXT](vkCmdSetDescriptorBufferOffsetsEXT.html), [vkCmdUpdatePipelineIndirectBufferNV](vkCmdUpdatePipelineIndirectBufferNV.html)

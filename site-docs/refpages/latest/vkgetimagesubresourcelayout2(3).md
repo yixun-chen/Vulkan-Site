@@ -64,13 +64,13 @@ inputs via chained input structures, and to return extended information via
 chained output structures.
 
 It is legal to call `vkGetImageSubresourceLayout2` with an `image`
-created with `tiling` equal to `VK_IMAGE_TILING_OPTIMAL`, but the
+created with `tiling` equal to [VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html), but the
 members of [VkSubresourceLayout2](VkSubresourceLayout2.html)::`subresourceLayout` will have
 **undefined** values in this case.
 
 |  | Structures chained from [VkImageSubresource2](VkImageSubresource2.html)::`pNext` will also be
 | --- | --- |
-updated when `tiling` is equal to `VK_IMAGE_TILING_OPTIMAL`. |
+updated when `tiling` is equal to [VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html). |
 
 Valid Usage
 
@@ -98,37 +98,37 @@ The `arrayLayer` member of `pSubresource` **must** be less than the
 If `format` of the `image` is a color format
 that is not a [multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar),
 and `tiling` of the `image` is
-`VK_IMAGE_TILING_LINEAR` or `VK_IMAGE_TILING_OPTIMAL`, the
+[VK_IMAGE_TILING_LINEAR](VkImageTiling.html) or [VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html), the
 `aspectMask` member of `pSubresource` **must** be
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-vkGetImageSubresourceLayout2-format-04462) VUID-vkGetImageSubresourceLayout2-format-04462
 
 If `format` of the `image` has a depth component, the
 `aspectMask` member of `pSubresource` **must** contain
-`VK_IMAGE_ASPECT_DEPTH_BIT`
+[VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-vkGetImageSubresourceLayout2-format-04463) VUID-vkGetImageSubresourceLayout2-format-04463
 
 If `format` of the `image` has a stencil component, the
 `aspectMask` member of `pSubresource` **must** contain
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-vkGetImageSubresourceLayout2-format-04464) VUID-vkGetImageSubresourceLayout2-format-04464
 
 If `format` of the `image` does not contain a stencil or
 depth component, the `aspectMask` member of `pSubresource` **must**
-not contain `VK_IMAGE_ASPECT_DEPTH_BIT` or
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+not contain [VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) or
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-vkGetImageSubresourceLayout2-tiling-08717) VUID-vkGetImageSubresourceLayout2-tiling-08717
 
 If the `tiling` of the `image` is
-`VK_IMAGE_TILING_LINEAR` and has a [    multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar), then the `aspectMask` member of
+[VK_IMAGE_TILING_LINEAR](VkImageTiling.html) and has a [    multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar), then the `aspectMask` member of
 `pSubresource` **must** be a single valid
 [multi-planar aspect mask](../../../../spec/latest/chapters/formats.html#formats-multiplanar-image-aspect) bit
 
@@ -136,14 +136,14 @@ If the `tiling` of the `image` is
 [](#VUID-vkGetImageSubresourceLayout2-image-09434) VUID-vkGetImageSubresourceLayout2-image-09434
 
 If `image` was created with the
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](VkExternalMemoryHandleTypeFlagBits.html)
 external memory handle type, then `image` **must** be bound to memory
 
 * 
 [](#VUID-vkGetImageSubresourceLayout2-tiling-09435) VUID-vkGetImageSubresourceLayout2-tiling-09435
 
 If the `tiling` of the `image` is
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then the `aspectMask`
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html), then the `aspectMask`
 member of `pSubresource` **must** be
 `VK_IMAGE_ASPECT_MEMORY_PLANE*_i_*BIT_EXT` and the index *i* **must**
 be less than the

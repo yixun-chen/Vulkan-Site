@@ -95,7 +95,7 @@ Screen compositor.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_SCREEN_SURFACE_CREATE_INFO_QNX`
+[VK_STRUCTURE_TYPE_SCREEN_SURFACE_CREATE_INFO_QNX](VkStructureType.html)
 
 * 
 Revision 1, 2021-01-11 (Mike Gorchak)

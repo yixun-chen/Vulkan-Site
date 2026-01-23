@@ -80,7 +80,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassStripeInfoARM-sType-sType) VUID-VkRenderPassStripeInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderPassStripeInfoARM-pNext-pNext) VUID-VkRenderPassStripeInfoARM-pNext-pNext

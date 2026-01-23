@@ -64,11 +64,11 @@ submit a debug message with the following properties:
 
 * 
 `messageSeverity` equal to
-`VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT`
+[VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT](VkDebugUtilsMessageSeverityFlagBitsEXT.html)
 
 * 
 `messageTypes` equal to
-`VK_DEBUG_UTILS_MESSAGE_TYPE_DEVICE_ADDRESS_BINDING_BIT_EXT`
+[VK_DEBUG_UTILS_MESSAGE_TYPE_DEVICE_ADDRESS_BINDING_BIT_EXT](VkDebugUtilsMessageTypeFlagBitsEXT.html)
 
 * 
 `VkDebugUtilsMessengerCallbackDataEXT`::`pObjects` **must**
@@ -89,7 +89,7 @@ an application via other Vulkan commands.
 For example, object creation functions **may** report binding events that occur
 during an objects creation.
 In such cases, `VkDeviceAddressBindingCallbackDataEXT`::`flags`
-**must** include `VK_DEVICE_ADDRESS_BINDING_INTERNAL_OBJECT_BIT_EXT`.
+**must** include [VK_DEVICE_ADDRESS_BINDING_INTERNAL_OBJECT_BIT_EXT](VkDeviceAddressBindingFlagBitsEXT.html).
 
 Object handles reported in this manner are not
 [valid object handles](../../../../spec/latest/chapters/fundamentals.html#fundamentals-validusage-handles), and **must** not be
@@ -104,7 +104,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceAddressBindingCallbackDataEXT-sType-sType) VUID-VkDeviceAddressBindingCallbackDataEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_ADDRESS_BINDING_CALLBACK_DATA_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_ADDRESS_BINDING_CALLBACK_DATA_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceAddressBindingCallbackDataEXT-flags-parameter) VUID-VkDeviceAddressBindingCallbackDataEXT-flags-parameter

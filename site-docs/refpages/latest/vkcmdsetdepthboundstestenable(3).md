@@ -44,7 +44,7 @@ enabled.
 This command sets the depth bounds enable for subsequent drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE` set in
+[VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineDepthStencilStateCreateInfo](VkPipelineDepthStencilStateCreateInfo.html)::`depthBoundsTestEnable`
@@ -71,7 +71,7 @@ equal to Version 1.3
 [](#VUID-vkCmdSetDepthBoundsTestEnable-depthBounds-10010) VUID-vkCmdSetDepthBoundsTestEnable-depthBounds-10010
 
 If the [`depthBounds`](../../../../spec/latest/chapters/features.html#features-depthBounds) feature is not
-enabled, `depthBoundsTestEnable` **must** be `VK_FALSE`
+enabled, `depthBoundsTestEnable` **must** be [VK_FALSE](VK_FALSE.html)
 
 Valid Usage (Implicit)
 
@@ -88,7 +88,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDepthBoundsTestEnable-commandBuffer-cmdpool) VUID-vkCmdSetDepthBoundsTestEnable-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetDepthBoundsTestEnable-videocoding) VUID-vkCmdSetDepthBoundsTestEnable-videocoding

@@ -28,15 +28,15 @@ typedef enum VkPresentTimingInfoFlagBitsEXT {
 } VkPresentTimingInfoFlagBitsEXT;
 
 * 
-`VK_PRESENT_TIMING_INFO_PRESENT_AT_RELATIVE_TIME_BIT_EXT` specifies
+[VK_PRESENT_TIMING_INFO_PRESENT_AT_RELATIVE_TIME_BIT_EXT](#) specifies
 that `VkPresentTimingInfoEXT`::`targetTime` is to be interpreted
 as a relative time from the previous presentation’s
-`VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_VISIBLE_BIT_EXT` stage.
+[VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_VISIBLE_BIT_EXT](VkPresentStageFlagBitsEXT.html) stage.
 If the `swapchain` has never been used to present an image, the
 provided `targetTime` is ignored.
 
 * 
-`VK_PRESENT_TIMING_INFO_PRESENT_AT_NEAREST_REFRESH_CYCLE_BIT_EXT`
+[VK_PRESENT_TIMING_INFO_PRESENT_AT_NEAREST_REFRESH_CYCLE_BIT_EXT](#)
 specifies that the application would prefer the image to be presented
 earlier than the time specified in
 `VkPresentTimingInfoEXT`::`targetTime` if that time falls within

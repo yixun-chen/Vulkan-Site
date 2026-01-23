@@ -57,13 +57,13 @@ the following properties:
 
 * 
 The build command is a host build command, and `buildType` is
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_KHR` or
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR`
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_KHR](VkAccelerationStructureBuildTypeKHR.html) or
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR](VkAccelerationStructureBuildTypeKHR.html)
 
 * 
 The build command is a device build command, and `buildType` is
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_DEVICE_KHR` or
-`VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR`
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_DEVICE_KHR](VkAccelerationStructureBuildTypeKHR.html) or
+[VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_OR_DEVICE_KHR](VkAccelerationStructureBuildTypeKHR.html)
 
 * 
 For [VkMicromapBuildInfoEXT](VkMicromapBuildInfoEXT.html):
@@ -77,7 +77,7 @@ The sum of usage information in either `pUsageCounts` or
 `pBuildInfo->pUsageCounts` or `pBuildInfo->ppUsageCounts`.
 
 Similarly, the `buildScratchSize` value will support any build command
-specifying the `VK_BUILD_MICROMAP_MODE_BUILD_EXT` `mode` under the
+specifying the [VK_BUILD_MICROMAP_MODE_BUILD_EXT](VkBuildMicromapModeEXT.html) `mode` under the
 above conditions.
 
 Valid Usage

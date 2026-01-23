@@ -20,7 +20,7 @@
 VkSparseImageOpaqueMemoryBindInfo - Structure specifying sparse image opaque memory bind information
 
 Memory is bound to opaque regions of `VkImage` objects created with the
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT` flag using the following structure:
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](VkImageCreateFlagBits.html) flag using the following structure:
 
 // Provided by VK_VERSION_1_0
 typedef struct VkSparseImageOpaqueMemoryBindInfo {
@@ -47,7 +47,7 @@ However, it **can** also be used to bind memory for the entire binding range of
 partially resident images.
 
 If the `pBinds`[i].flags of an element *i* of `pBinds` does not
-contain `VK_SPARSE_MEMORY_BIND_METADATA_BIT`, the `resourceOffset`
+contain [VK_SPARSE_MEMORY_BIND_METADATA_BIT](VkSparseMemoryBindFlagBits.html), the `resourceOffset`
 is in the range [0, [VkMemoryRequirements](VkMemoryRequirements.html)::`size`), This
 range includes data from all aspects of the image, including metadata.
 For most implementations this will probably mean that the
@@ -58,7 +58,7 @@ However, the application would not know what part of the image the memory is
 used for, or if any range is being used for metadata.
 
 If the `pBinds`[i].flags of an element *i* of `pBinds` contains
-`VK_SPARSE_MEMORY_BIND_METADATA_BIT`, the binding range specified **must**
+[VK_SPARSE_MEMORY_BIND_METADATA_BIT](VkSparseMemoryBindFlagBits.html), the binding range specified **must**
 be within the mip tail region of the metadata aspect.
 In this case the `resourceOffset` is not **required** to be a simple device
 address offset within the resource.
@@ -74,7 +74,7 @@ Valid Usage
 [](#VUID-VkSparseImageOpaqueMemoryBindInfo-pBinds-01103) VUID-VkSparseImageOpaqueMemoryBindInfo-pBinds-01103
 
 If the `flags` member of any element of `pBinds` contains
-`VK_SPARSE_MEMORY_BIND_METADATA_BIT`, the binding range defined
+[VK_SPARSE_MEMORY_BIND_METADATA_BIT](VkSparseMemoryBindFlagBits.html), the binding range defined
 **must** be within the mip tail region of the metadata aspect of
 `image`
 

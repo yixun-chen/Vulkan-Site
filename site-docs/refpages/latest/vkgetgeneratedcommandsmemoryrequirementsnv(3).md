@@ -53,7 +53,7 @@ feature **must** be enabled
 [](#VUID-vkGetGeneratedCommandsMemoryRequirementsNV-pInfo-09074) VUID-vkGetGeneratedCommandsMemoryRequirementsNV-pInfo-09074
 
 If `pInfo->pipelineBindPoint` is of type
-`VK_PIPELINE_BIND_POINT_COMPUTE`, then the
+[VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html), then the
 [    `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV`::`deviceGeneratedCompute`](../../../../spec/latest/chapters/features.html#features-deviceGeneratedCompute)
 feature **must** be enabled
 

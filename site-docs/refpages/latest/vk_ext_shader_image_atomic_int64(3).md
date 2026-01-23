@@ -104,7 +104,7 @@ manner to quickly improve performance with only relatively minor code
 changes.
 
 64-bit integer atomic support is guaranteed for optimally tiled images with
-the `VK_FORMAT_R64_UINT` and `VK_FORMAT_R64_SINT` formats.
+the [VK_FORMAT_R64_UINT](VkFormat.html) and [VK_FORMAT_R64_SINT](VkFormat.html) formats.
 
 * 
 Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDeviceCreateInfo](VkDeviceCreateInfo.html):
@@ -120,7 +120,7 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_ATOMIC_INT64_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_ATOMIC_INT64_FEATURES_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2020-07-14 (Tobias Hector)

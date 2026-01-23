@@ -75,9 +75,9 @@ If non-`NULL`, each entry in `pResults` will be set to the
 index in `pSwapchains`.
 
 Before an application **can** present an image, the image’s layout **must** be
-transitioned to the `VK_IMAGE_LAYOUT_PRESENT_SRC_KHR`
+transitioned to the [VK_IMAGE_LAYOUT_PRESENT_SRC_KHR](VkImageLayout.html)
 layout, or for a shared presentable image the
-`VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR` layout.
+[VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](VkImageLayout.html) layout.
 
 |  | When transitioning the image to the appropriate layout, there is no need to
 | --- | --- |
@@ -85,7 +85,12 @@ delay subsequent processing, or perform any visibility operations (as
 [vkQueuePresentKHR](vkQueuePresentKHR.html) performs automatic visibility operations).
 To achieve this, the `dstAccessMask` member of the
 [VkImageMemoryBarrier](VkImageMemoryBarrier.html) **should** be `0`, and the `dstStageMask`
-parameter **should** be `VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT`. |
+parameter **should** be [VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT](VkPipelineStageFlagBits.html). |
+
+The second [synchronization scope](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-scopes) of
+each [semaphore wait operation](../../../../spec/latest/chapters/synchronization.html#synchronization-semaphores-waiting) defined
+by this structure includes presentation of each image indicated by
+`pSwapchains` and `pImageIndices`.
 
 Valid Usage
 
@@ -100,8 +105,8 @@ Elements of `pSwapchain` **must** be unique
 Each element of `pImageIndices` **must** be the index of a presentable
 image acquired from the swapchain specified by the corresponding element
 of the `pSwapchains` array, and the presented image subresource
-**must** be in the `VK_IMAGE_LAYOUT_PRESENT_SRC_KHR`
-or `VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`
+**must** be in the [VK_IMAGE_LAYOUT_PRESENT_SRC_KHR](VkImageLayout.html)
+or [VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](VkImageLayout.html)
 layout at the time the operation is executed on a `VkDevice`
 
 * 
@@ -130,7 +135,7 @@ array **must** be created with [VkSwapchainPresentModesCreateInfoKHR](VkSwapchai
 
 If the `pNext` chain of this structure includes a
 [VkFrameBoundaryTensorsARM](VkFrameBoundaryTensorsARM.html) structure then it **must** also include a
-[VkFrameBoundaryEXT](VkFrameBoundaryEXT.html) structure.
+[VkFrameBoundaryEXT](VkFrameBoundaryEXT.html) structure
 
 * 
 [](#VUID-VkPresentInfoKHR-pNext-10821) VUID-VkPresentInfoKHR-pNext-10821
@@ -143,7 +148,7 @@ enabled, each `presentIds` entry in that structure **must** be zero
 [](#VUID-VkPresentInfoKHR-presentId2Supported-10822) VUID-VkPresentInfoKHR-presentId2Supported-10822
 
 If a [VkPresentId2KHR](VkPresentId2KHR.html) structure is included and contains non-zero
-presentIds, `presentId2Supported` **must** be `VK_TRUE` in the
+presentIds, `presentId2Supported` **must** be [VK_TRUE](VK_TRUE.html) in the
 [VkSurfaceCapabilitiesPresentId2KHR](VkSurfaceCapabilitiesPresentId2KHR.html) structure returned by
 [vkGetPhysicalDeviceSurfaceCapabilities2KHR](vkGetPhysicalDeviceSurfaceCapabilities2KHR.html) for the `surface`
 
@@ -152,7 +157,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPresentInfoKHR-sType-sType) VUID-VkPresentInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPresentInfoKHR-pNext-pNext) VUID-VkPresentInfoKHR-pNext-pNext

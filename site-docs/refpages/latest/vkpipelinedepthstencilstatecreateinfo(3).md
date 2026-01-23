@@ -54,9 +54,9 @@ depth/stencil state information.
 is enabled.
 
 * 
-`depthWriteEnable` controls whether [depth    writes](../../../../spec/latest/chapters/fragops.html#fragops-depth-write) are enabled when `depthTestEnable` is `VK_TRUE`.
+`depthWriteEnable` controls whether [depth    writes](../../../../spec/latest/chapters/fragops.html#fragops-depth-write) are enabled when `depthTestEnable` is [VK_TRUE](VK_TRUE.html).
 Depth writes are always disabled when `depthTestEnable` is
-`VK_FALSE`.
+[VK_FALSE](VK_FALSE.html).
 
 * 
 `depthCompareOp` is a [VkCompareOp](VkCompareOp.html) value specifying the
@@ -86,18 +86,18 @@ Valid Usage
 [](#VUID-VkPipelineDepthStencilStateCreateInfo-depthBoundsTestEnable-00598) VUID-VkPipelineDepthStencilStateCreateInfo-depthBoundsTestEnable-00598
 
 If the [`depthBounds`](../../../../spec/latest/chapters/features.html#features-depthBounds) feature is not
-enabled, `depthBoundsTestEnable` **must** be `VK_FALSE`
+enabled, `depthBoundsTestEnable` **must** be [VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-VkPipelineDepthStencilStateCreateInfo-separateStencilMaskRef-04453) VUID-VkPipelineDepthStencilStateCreateInfo-separateStencilMaskRef-04453
 
 If the `[VK_KHR_portability_subset](VK_KHR_portability_subset.html)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](VkPhysicalDevicePortabilitySubsetFeaturesKHR.html)::`separateStencilMaskRef`
-is `VK_FALSE`, and the value of
+is [VK_FALSE](VK_FALSE.html), and the value of
 [VkPipelineDepthStencilStateCreateInfo](#)::`stencilTestEnable` is
-`VK_TRUE`, and the value of
+[VK_TRUE](VK_TRUE.html), and the value of
 [VkPipelineRasterizationStateCreateInfo](VkPipelineRasterizationStateCreateInfo.html)::`cullMode` is
-`VK_CULL_MODE_NONE`, the value of `reference` in each of the
+[VK_CULL_MODE_NONE](VkCullModeFlagBits.html), the value of `reference` in each of the
 [VkStencilOpState](VkStencilOpState.html) structs in `front` and `back` **must** be
 the same
 
@@ -106,21 +106,21 @@ the same
 
 If the [    `rasterizationOrderDepthAttachmentAccess`](../../../../spec/latest/chapters/features.html#features-rasterizationOrderDepthAttachmentAccess) feature is not enabled,
 `flags` **must** not include
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT`
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT](VkPipelineDepthStencilStateCreateFlagBits.html)
 
 * 
 [](#VUID-VkPipelineDepthStencilStateCreateInfo-rasterizationOrderStencilAttachmentAccess-06464) VUID-VkPipelineDepthStencilStateCreateInfo-rasterizationOrderStencilAttachmentAccess-06464
 
 If the [    `rasterizationOrderStencilAttachmentAccess`](../../../../spec/latest/chapters/features.html#features-rasterizationOrderStencilAttachmentAccess) feature is not
 enabled, `flags` **must** not include
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT`
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT](VkPipelineDepthStencilStateCreateFlagBits.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineDepthStencilStateCreateInfo-sType-sType) VUID-VkPipelineDepthStencilStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineDepthStencilStateCreateInfo-pNext-pNext) VUID-VkPipelineDepthStencilStateCreateInfo-pNext-pNext

@@ -28,12 +28,12 @@ typedef enum VkAccelerationStructureCompatibilityKHR {
 } VkAccelerationStructureCompatibilityKHR;
 
 * 
-`VK_ACCELERATION_STRUCTURE_COMPATIBILITY_COMPATIBLE_KHR` if the
+[VK_ACCELERATION_STRUCTURE_COMPATIBILITY_COMPATIBLE_KHR](#) if the
 `pVersionData` version acceleration structure is compatible with
 `device`.
 
 * 
-`VK_ACCELERATION_STRUCTURE_COMPATIBILITY_INCOMPATIBLE_KHR` if the
+[VK_ACCELERATION_STRUCTURE_COMPATIBILITY_INCOMPATIBLE_KHR](#) if the
 `pVersionData` version acceleration structure is not compatible with
 `device`.
 

@@ -40,11 +40,11 @@ typedef enum VkRayTracingInvocationReorderModeEXT {
 typedef VkRayTracingInvocationReorderModeEXT VkRayTracingInvocationReorderModeNV;
 
 * 
-`VK_RAY_TRACING_INVOCATION_REORDER_MODE_NONE_EXT` specifies that the
+[VK_RAY_TRACING_INVOCATION_REORDER_MODE_NONE_EXT](#) specifies that the
 implementation does not reorder at reorder calls.
 
 * 
-`VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_EXT` specifies that
+[VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_EXT](#) specifies that
 the implementation **may** reorder at reorder calls.
 
 [VK_EXT_ray_tracing_invocation_reorder](VK_EXT_ray_tracing_invocation_reorder.html), [VK_NV_ray_tracing_invocation_reorder](VK_NV_ray_tracing_invocation_reorder.html), [VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT](VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT.html), [VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV](VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV.html)

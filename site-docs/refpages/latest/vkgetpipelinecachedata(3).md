@@ -49,8 +49,8 @@ return the variable is overwritten with the amount of data actually written
 to `pData`.
 If `pDataSize` is less than the maximum size that **can** be retrieved by
 the pipeline cache, at most `pDataSize` bytes will be written to
-`pData`, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all of the pipeline cache was
+`pData`, and [VK_INCOMPLETE](VkResult.html) will be returned instead of
+[VK_SUCCESS](VkResult.html), to indicate that not all of the pipeline cache was
 returned.
 
 Any data written to `pData` is valid and **can** be provided as the
@@ -75,8 +75,8 @@ reasons.
 
 If the amount of data available is larger than the passed `pDataSize`,
 the query returns up to the size of the passed buffer, and signals overflow
-with a `VK_INCOMPLETE` success status instead of returning a
-`VK_ERROR_NOT_ENOUGH_SPACE_KHR` error status. |
+with a [VK_INCOMPLETE](VkResult.html) success status instead of returning a
+[VK_ERROR_NOT_ENOUGH_SPACE_KHR](VkResult.html) error status. |
 
 Valid Usage
 
@@ -86,7 +86,7 @@ Valid Usage
 `pipelineCache` **must** not have been created with the
 `headerVersion` member of
 [VkPipelineCacheCreateInfo](VkPipelineCacheCreateInfo.html)::`pInitialData` equal to
-`VK_PIPELINE_CACHE_HEADER_VERSION_DATA_GRAPH_QCOM`
+[VK_PIPELINE_CACHE_HEADER_VERSION_DATA_GRAPH_QCOM](VkPipelineCacheHeaderVersion.html)
 
 Valid Usage (Implicit)
 
@@ -120,24 +120,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkDevice](VkDevice.html), [VkPipelineCache](VkPipelineCache.html)
 

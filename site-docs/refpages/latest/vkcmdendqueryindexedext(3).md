@@ -92,8 +92,8 @@ queries in `queryPool`
 [](#VUID-vkCmdEndQueryIndexedEXT-queryType-06694) VUID-vkCmdEndQueryIndexedEXT-queryType-06694
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT`
-or `VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT`,
+[VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](VkQueryType.html)
+or [VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](VkQueryType.html),
 the `index` parameter **must** be less than
 `VkPhysicalDeviceTransformFeedbackPropertiesEXT`::`maxTransformFeedbackStreams`
 
@@ -101,16 +101,16 @@ the `index` parameter **must** be less than
 [](#VUID-vkCmdEndQueryIndexedEXT-queryType-06695) VUID-vkCmdEndQueryIndexedEXT-queryType-06695
 
 If the `queryType` used to create `queryPool` was not
-`VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT`
-and not `VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT`,
+[VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](VkQueryType.html)
+and not [VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](VkQueryType.html),
 the `index` **must** be zero
 
 * 
 [](#VUID-vkCmdEndQueryIndexedEXT-queryType-06696) VUID-vkCmdEndQueryIndexedEXT-queryType-06696
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT`
-or `VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT`,
+[VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](VkQueryType.html)
+or [VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](VkQueryType.html),
 `index` **must** equal the `index` used to begin the query
 
 * 
@@ -147,7 +147,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdEndQueryIndexedEXT-commandBuffer-cmdpool) VUID-vkCmdEndQueryIndexedEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](VkQueueFlagBits.html), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdEndQueryIndexedEXT-suspended) VUID-vkCmdEndQueryIndexedEXT-suspended

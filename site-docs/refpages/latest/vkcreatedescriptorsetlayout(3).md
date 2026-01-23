@@ -54,7 +54,7 @@ If the descriptor layout exceeds the limits reported through the
 [physical device limits](../../../../spec/latest/chapters/limits.html#limits), then
 [vkGetDescriptorSetLayoutSupport](vkGetDescriptorSetLayoutSupport.html) **must** have returned
 [VkDescriptorSetLayoutSupport](VkDescriptorSetLayoutSupport.html) with `support` equal to
-`VK_TRUE` for `pCreateInfo`
+[VK_TRUE](VK_TRUE.html) for `pCreateInfo`
 
 Valid Usage (Implicit)
 
@@ -83,21 +83,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkAllocationCallbacks](VkAllocationCallbacks.html), [VkDescriptorSetLayout](VkDescriptorSetLayout.html), [VkDescriptorSetLayoutCreateInfo](VkDescriptorSetLayoutCreateInfo.html), [VkDevice](VkDevice.html)
 

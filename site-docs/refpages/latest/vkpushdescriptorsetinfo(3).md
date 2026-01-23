@@ -73,10 +73,10 @@ more pipeline bind points, the binding operation still affects all stages
 corresponding to the given pipeline bind point(s) as if the equivalent
 original version of this command had been called with the same parameters.
 For example, specifying a `stageFlags` value of
-`VK_SHADER_STAGE_VERTEX_BIT` | `VK_SHADER_STAGE_FRAGMENT_BIT` |
-`VK_SHADER_STAGE_COMPUTE_BIT` is equivalent to calling the original
-version of this command once with `VK_PIPELINE_BIND_POINT_GRAPHICS` and
-once with `VK_PIPELINE_BIND_POINT_COMPUTE`.
+[VK_SHADER_STAGE_VERTEX_BIT](VkShaderStageFlagBits.html) | [VK_SHADER_STAGE_FRAGMENT_BIT](VkShaderStageFlagBits.html) |
+[VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html) is equivalent to calling the original
+version of this command once with [VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html) and
+once with [VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html).
 
 Valid Usage
 
@@ -92,18 +92,18 @@ Valid Usage
 
 `set` **must** be the unique set number in the pipeline layout that
 uses a descriptor set layout that was created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](VkDescriptorSetLayoutCreateFlagBits.html)
 
 * 
 [](#VUID-VkPushDescriptorSetInfo-pDescriptorWrites-06494) VUID-VkPushDescriptorSetInfo-pDescriptorWrites-06494
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`,
+[VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html), or
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html),
 `pDescriptorWrites`[i].`pImageInfo` **must** be a valid pointer to
 an array of `pDescriptorWrites`[i].`descriptorCount` valid
 `VkDescriptorImageInfo` structures
@@ -126,7 +126,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPushDescriptorSetInfo-sType-sType) VUID-VkPushDescriptorSetInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPushDescriptorSetInfo-pNext-pNext) VUID-VkPushDescriptorSetInfo-pNext-pNext

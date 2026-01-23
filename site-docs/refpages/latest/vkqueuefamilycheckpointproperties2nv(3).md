@@ -48,7 +48,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueueFamilyCheckpointProperties2NV-sType-sType) VUID-VkQueueFamilyCheckpointProperties2NV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV](VkStructureType.html)
 
 [VK_KHR_synchronization2](VK_KHR_synchronization2.html), [VK_NV_device_diagnostic_checkpoints](VK_NV_device_diagnostic_checkpoints.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), [VkPipelineStageFlags2](VkPipelineStageFlags2.html), [VkStructureType](VkStructureType.html)
 

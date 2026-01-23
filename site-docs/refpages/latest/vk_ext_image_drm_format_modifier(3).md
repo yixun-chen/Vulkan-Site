@@ -239,7 +239,7 @@ In this pattern, the application receives from an external source the
 image’s memory and its creation parameters, which are often the result of
 the negotiation described above.
 Some image creation parameters are implicitly defined by the external
-source; for example, `VK_IMAGE_TYPE_2D` is often assumed.
+source; for example, [VK_IMAGE_TYPE_2D](VkImageType.html) is often assumed.
 Some image creation parameters are usually explicit, such as the image’s
 `format`, `drmFormatModifier`, and `extent`; and each plane’s
 `offset` and `rowPitch`.
@@ -373,50 +373,50 @@ Extending [VkFormatProperties2](VkFormatProperties2.html):
 * 
 Extending [VkImageAspectFlagBits](VkImageAspectFlagBits.html):
 
-`VK_IMAGE_ASPECT_MEMORY_PLANE_0_BIT_EXT`
+[VK_IMAGE_ASPECT_MEMORY_PLANE_0_BIT_EXT](VkImageAspectFlagBits.html)
 
 * 
-`VK_IMAGE_ASPECT_MEMORY_PLANE_1_BIT_EXT`
+[VK_IMAGE_ASPECT_MEMORY_PLANE_1_BIT_EXT](VkImageAspectFlagBits.html)
 
 * 
-`VK_IMAGE_ASPECT_MEMORY_PLANE_2_BIT_EXT`
+[VK_IMAGE_ASPECT_MEMORY_PLANE_2_BIT_EXT](VkImageAspectFlagBits.html)
 
 * 
-`VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT`
+[VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT](VkImageAspectFlagBits.html)
 
 Extending [VkImageTiling](VkImageTiling.html):
 
 * 
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html)
 
 Extending [VkResult](VkResult.html):
 
 * 
-`VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT`
+[VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT](VkResult.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_EXT`
+[VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_PROPERTIES_EXT`
+[VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_PROPERTIES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT](VkStructureType.html)
 
 If [VK_KHR_format_feature_flags2](VK_KHR_format_feature_flags2.html) or [Vulkan Version 1.3](../../../../spec/latest/appendices/versions.html#versions-1.3) is supported:
 
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_2_EXT`
+[VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_2_EXT](VkStructureType.html)
 
 1) Should this extension define a single DRM format modifier per
 `VkImage`? Or define one per plane?
@@ -480,7 +480,7 @@ practice this is likely due to under-specification rather than
 intentional omission.
 In contrast, `VK_EXT_image_drm_format_modifier` permits, but does not
 require, the implementation to require dedicated allocations for images
-created with `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`.
+created with [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html).
 
 * 
 **Separation of image creation and memory allocation.** When importing a
@@ -512,7 +512,7 @@ which requires a non-trivial calculation to determine its size.
 
 * 
 **Mipmapped, array, and 3D images.** The implementation may support
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT` for images whose
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html) for images whose
 `mipLevels`, `arrayLayers`, or `depth` is greater than 1.
 For such images with certain *modifiers*, the calculation of each
 plane’s size may be non-trivial.
@@ -522,7 +522,7 @@ problems.
 
 For simplicity, consider an external image with a single memory plane.
 The implementation is obviously capable calculating the image’s size when
-its tiling is `VK_IMAGE_TILING_OPTIMAL`.
+its tiling is [VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html).
 Likewise, any reasonable implementation is capable of calculating the
 image’s size when its tiling uses a supported *modifier*.
 
@@ -535,7 +535,7 @@ and recognize its inability to comprehend the external image’s layout
 refinement of the tiling layout indicated by the *modifier*, which is
 strongly discouraged).
 The implementation would observe the conflict, and reject image creation
-with `VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT`.
+with [VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT](VkResult.html).
 On the other hand, if the application did not provide the external image’s
 size to [vkCreateImage](vkCreateImage.html), then the application would observe after
 calling [vkGetImageMemoryRequirements](vkGetImageMemoryRequirements.html) that the external image’s size is
@@ -553,7 +553,7 @@ image data residing in the extra size.
 The implementation, however, must assume that image data resides in the
 entire size provided by the application.
 The implementation would observe the conflict and reject image creation with
-`VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT`.
+[VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT](VkResult.html).
 On the other hand, if the application did not provide the external image’s
 size to [vkCreateImage](vkCreateImage.html), then the application would observe after
 calling [vkGetImageMemoryRequirements](vkGetImageMemoryRequirements.html) that the external image’s size is

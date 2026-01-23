@@ -90,11 +90,11 @@ It **must** be 0 if the [    `attachmentFragmentShadingRate`](../../../../spec/l
 
     `primitiveFragmentShadingRateWithMultipleViewports` specifies
     whether the [primitive    fragment shading rate](../../../../spec/latest/chapters/primsrast.html#primsrast-fragment-shading-rate-primitive) **can** be used when multiple viewports are used.
-    If this value is `VK_FALSE`, only a single viewport **must** be used,
+    If this value is [VK_FALSE](VK_FALSE.html), only a single viewport **must** be used,
     and applications **must** not write to the
     `ViewportMaskNV` or
     `ViewportIndex` built-in when setting `PrimitiveShadingRateKHR`.
-    It **must** be `VK_FALSE` if
+    It **must** be [VK_FALSE](VK_FALSE.html) if
     the [    `shaderOutputViewportIndex`](../../../../spec/latest/chapters/features.html#features-shaderOutputViewportIndex) feature,
     the `[VK_EXT_shader_viewport_index_layer](VK_EXT_shader_viewport_index_layer.html)` extension,
 or
@@ -105,11 +105,11 @@ or
 
     `layeredShadingRateAttachments` specifies whether a shading rate
     attachment image view **can** be created with multiple layers.
-    If this value is `VK_FALSE`, when creating an image view with a
+    If this value is [VK_FALSE](VK_FALSE.html), when creating an image view with a
     `usage` that includes
-    `VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`,
+    [VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](VkImageUsageFlagBits.html),
     `layerCount` **must** be `1`.
-    It **must** be `VK_FALSE` if
+    It **must** be [VK_FALSE](VK_FALSE.html) if
     the [`multiview`](../../../../spec/latest/chapters/features.html#features-multiview) feature,
     the [    `shaderOutputViewportIndex`](../../../../spec/latest/chapters/features.html#features-shaderOutputViewportIndex) feature,
     the `[VK_EXT_shader_viewport_index_layer](VK_EXT_shader_viewport_index_layer.html)` extension,
@@ -121,9 +121,9 @@ or
 
 `fragmentShadingRateNonTrivialCombinerOps` specifies whether
 [VkFragmentShadingRateCombinerOpKHR](VkFragmentShadingRateCombinerOpKHR.html) enums other than
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR` or
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR` **can** be used.
-It **must** be `VK_FALSE` unless either the
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](VkFragmentShadingRateCombinerOpKHR.html) or
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR](VkFragmentShadingRateCombinerOpKHR.html) **can** be used.
+It **must** be [VK_FALSE](VK_FALSE.html) unless either the
 [    `primitiveFragmentShadingRate`](../../../../spec/latest/chapters/features.html#features-primitiveFragmentShadingRate) or
 [    `attachmentFragmentShadingRate`](../../../../spec/latest/chapters/features.html#features-attachmentFragmentShadingRate) feature is supported.
 
@@ -168,7 +168,7 @@ This limit is purely informational, and is not validated.
 the implementation supports writing `FragDepth`
 or `FragStencilRefEXT`
 from a fragment shader for multi-pixel fragments.
-If this value is `VK_FALSE`, writing to those built-ins will clamp
+If this value is [VK_FALSE](VK_FALSE.html), writing to those built-ins will clamp
 the fragment shading rate to (1,1).
 
 * 
@@ -177,7 +177,7 @@ the fragment shading rate to (1,1).
 implementation supports setting valid bits of
 [VkPipelineMultisampleStateCreateInfo](VkPipelineMultisampleStateCreateInfo.html)::`pSampleMask` to `0` for
 multi-pixel fragments.
-If this value is `VK_FALSE`, zeroing valid bits in the sample mask
+If this value is [VK_FALSE](VK_FALSE.html), zeroing valid bits in the sample mask
 will clamp the fragment shading rate to (1,1).
 
 * 
@@ -185,25 +185,25 @@ will clamp the fragment shading rate to (1,1).
 `fragmentShadingRateWithShaderSampleMask` specifies whether the
 implementation supports reading or writing `SampleMask` for
 multi-pixel fragments.
-If this value is `VK_FALSE`, using that built-in will clamp the
+If this value is [VK_FALSE](VK_FALSE.html), using that built-in will clamp the
 fragment shading rate to (1,1).
 
 * 
 
 `fragmentShadingRateWithConservativeRasterization`
 specifies whether [conservative    rasterization](../../../../spec/latest/chapters/primsrast.html#primsrast-conservativeraster) is supported for multi-pixel fragments.
-It **must** be `VK_FALSE` if `[VK_EXT_conservative_rasterization](VK_EXT_conservative_rasterization.html)`
+It **must** be [VK_FALSE](VK_FALSE.html) if `[VK_EXT_conservative_rasterization](VK_EXT_conservative_rasterization.html)`
 is not supported.
-If this value is `VK_FALSE`, using [    conservative rasterization](../../../../spec/latest/chapters/primsrast.html#primsrast-conservativeraster) will clamp the fragment shading rate to
+If this value is [VK_FALSE](VK_FALSE.html), using [    conservative rasterization](../../../../spec/latest/chapters/primsrast.html#primsrast-conservativeraster) will clamp the fragment shading rate to
 (1,1).
 
 * 
 
 `fragmentShadingRateWithFragmentShaderInterlock`
 specifies whether [fragment shader    interlock](../../../../spec/latest/chapters/fragops.html#fragops-shader-interlock) is supported for multi-pixel fragments.
-It **must** be `VK_FALSE` if `[VK_EXT_fragment_shader_interlock](VK_EXT_fragment_shader_interlock.html)`
+It **must** be [VK_FALSE](VK_FALSE.html) if `[VK_EXT_fragment_shader_interlock](VK_EXT_fragment_shader_interlock.html)`
 is not supported.
-If this value is `VK_FALSE`, using [    fragment shader interlock](../../../../spec/latest/chapters/fragops.html#fragops-shader-interlock) will clamp the fragment shading rate to
+If this value is [VK_FALSE](VK_FALSE.html), using [    fragment shader interlock](../../../../spec/latest/chapters/fragops.html#fragops-shader-interlock) will clamp the fragment shading rate to
 (1,1).
 
 * 
@@ -211,22 +211,22 @@ If this value is `VK_FALSE`, using [    fragment shader interlock](../../../../s
 `fragmentShadingRateWithCustomSampleLocations`
 specifies whether [custom sample locations](../../../../spec/latest/chapters/primsrast.html#primsrast-samplelocations)
 are supported for multi-pixel fragments.
-It **must** be `VK_FALSE` if `[VK_EXT_sample_locations](VK_EXT_sample_locations.html)` is not
+It **must** be [VK_FALSE](VK_FALSE.html) if `[VK_EXT_sample_locations](VK_EXT_sample_locations.html)` is not
 supported.
-If this value is `VK_FALSE`, using [    custom sample locations](../../../../spec/latest/chapters/primsrast.html#primsrast-samplelocations) will clamp the fragment shading rate to
+If this value is [VK_FALSE](VK_FALSE.html), using [    custom sample locations](../../../../spec/latest/chapters/primsrast.html#primsrast-samplelocations) will clamp the fragment shading rate to
 (1,1).
 
 * 
 
 `fragmentShadingRateStrictMultiplyCombiner` specifies whether
-`VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR` accurately performs a
+[VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR](VkFragmentShadingRateCombinerOpKHR.html) accurately performs a
 multiplication or not.
-Implementations where this value is `VK_FALSE` will instead combine
+Implementations where this value is [VK_FALSE](VK_FALSE.html) will instead combine
 rates with an addition.
-If `fragmentShadingRateNonTrivialCombinerOps` is `VK_FALSE`,
-implementations **must** report this as `VK_FALSE`.
-If `fragmentShadingRateNonTrivialCombinerOps` is `VK_TRUE`,
-implementations **should** report this as `VK_TRUE`.
+If `fragmentShadingRateNonTrivialCombinerOps` is [VK_FALSE](VK_FALSE.html),
+implementations **must** report this as [VK_FALSE](VK_FALSE.html).
+If `fragmentShadingRateNonTrivialCombinerOps` is [VK_TRUE](VK_TRUE.html),
+implementations **should** report this as [VK_TRUE](VK_TRUE.html).
 
 |  | Multiplication of the combiner rates using the fragment width/height in
 | --- | --- |
@@ -254,7 +254,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFragmentShadingRatePropertiesKHR-sType-sType) VUID-VkPhysicalDeviceFragmentShadingRatePropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_PROPERTIES_KHR](VkStructureType.html)
 
 [VK_KHR_fragment_shading_rate](VK_KHR_fragment_shading_rate.html), `VkBool32`, [VkExtent2D](VkExtent2D.html), [VkSampleCountFlagBits](VkSampleCountFlagBits.html), [VkStructureType](VkStructureType.html)
 

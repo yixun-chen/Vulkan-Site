@@ -99,15 +99,15 @@ Each `presentIds` entry **must** be greater than any previous
 [](#VUID-VkPresentId2KHR-None-10820) VUID-VkPresentId2KHR-None-10820
 
 The swapchain must have been created with
-`VK_SWAPCHAIN_CREATE_PRESENT_ID_2_BIT_KHR` bit set in the
-`VkSwapchainCreateFlagBitsKHR` field
+[VK_SWAPCHAIN_CREATE_PRESENT_ID_2_BIT_KHR](VkSwapchainCreateFlagBitsKHR.html) bit set in the
+[VkSwapchainCreateFlagBitsKHR](VkSwapchainCreateFlagBitsKHR.html) field
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPresentId2KHR-sType-sType) VUID-VkPresentId2KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_ID_2_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_ID_2_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPresentId2KHR-pPresentIds-parameter) VUID-VkPresentId2KHR-pPresentIds-parameter

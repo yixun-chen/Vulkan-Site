@@ -34,35 +34,35 @@ typedef enum VkLayerSettingTypeEXT {
 } VkLayerSettingTypeEXT;
 
 * 
-`VK_LAYER_SETTING_TYPE_BOOL32_EXT` specifies that the layer
+[VK_LAYER_SETTING_TYPE_BOOL32_EXT](#) specifies that the layer
 setting’s type is `VkBool32`.
 
 * 
-`VK_LAYER_SETTING_TYPE_INT32_EXT` specifies that the layer setting’s
+[VK_LAYER_SETTING_TYPE_INT32_EXT](#) specifies that the layer setting’s
 type is signed 32-bit integer.
 
 * 
-`VK_LAYER_SETTING_TYPE_INT64_EXT` specifies that the layer setting’s
+[VK_LAYER_SETTING_TYPE_INT64_EXT](#) specifies that the layer setting’s
 type is signed 64-bit integer.
 
 * 
-`VK_LAYER_SETTING_TYPE_UINT32_EXT` specifies that the layer
+[VK_LAYER_SETTING_TYPE_UINT32_EXT](#) specifies that the layer
 setting’s type is unsigned 32-bit integer.
 
 * 
-`VK_LAYER_SETTING_TYPE_UINT64_EXT` specifies that the layer
+[VK_LAYER_SETTING_TYPE_UINT64_EXT](#) specifies that the layer
 setting’s type is unsigned 64-bit integer.
 
 * 
-`VK_LAYER_SETTING_TYPE_FLOAT32_EXT` specifies that the layer
+[VK_LAYER_SETTING_TYPE_FLOAT32_EXT](#) specifies that the layer
 setting’s type is 32-bit floating-point.
 
 * 
-`VK_LAYER_SETTING_TYPE_FLOAT64_EXT` specifies that the layer
+[VK_LAYER_SETTING_TYPE_FLOAT64_EXT](#) specifies that the layer
 setting’s type is 64-bit floating-point.
 
 * 
-`VK_LAYER_SETTING_TYPE_STRING_EXT` specifies that the layer
+[VK_LAYER_SETTING_TYPE_STRING_EXT](#) specifies that the layer
 setting’s type is a pointer to a null-terminated UTF-8 string.
 
 [VK_EXT_layer_settings](VK_EXT_layer_settings.html), [VkLayerSettingEXT](VkLayerSettingEXT.html)

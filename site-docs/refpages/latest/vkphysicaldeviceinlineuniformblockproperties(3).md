@@ -55,9 +55,9 @@ structure.
 inline uniform block bindings that **can** be accessible to a single shader
 stage in a pipeline layout.
 Descriptor bindings with a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` count against this limit.
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) count against this limit.
 Only descriptor bindings in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 
 * 
@@ -65,7 +65,7 @@ count against this limit.
 `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks`
 is similar to `maxPerStageDescriptorInlineUniformBlocks` but counts
 descriptor bindings from descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -75,9 +75,9 @@ inline uniform block bindings that **can** be included in descriptor
 bindings in a pipeline layout across all pipeline shader stages and
 descriptor set numbers.
 Descriptor bindings with a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` count against this limit.
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) count against this limit.
 Only descriptor bindings in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 
 * 
@@ -85,7 +85,7 @@ count against this limit.
 `maxDescriptorSetUpdateAfterBindInlineUniformBlocks`
 is similar to `maxDescriptorSetInlineUniformBlocks` but counts
 descriptor bindings from descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 If the `VkPhysicalDeviceInlineUniformBlockProperties` structure is included in the `pNext` chain of the
@@ -98,7 +98,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceInlineUniformBlockProperties-sType-sType) VUID-VkPhysicalDeviceInlineUniformBlockProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES](VkStructureType.html)
 
 [VK_EXT_inline_uniform_block](VK_EXT_inline_uniform_block.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), [VkStructureType](VkStructureType.html)
 

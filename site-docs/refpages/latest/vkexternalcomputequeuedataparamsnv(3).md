@@ -45,7 +45,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalComputeQueueDataParamsNV-sType-sType) VUID-VkExternalComputeQueueDataParamsNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_DATA_PARAMS_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_DATA_PARAMS_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkExternalComputeQueueDataParamsNV-pNext-pNext) VUID-VkExternalComputeQueueDataParamsNV-pNext-pNext

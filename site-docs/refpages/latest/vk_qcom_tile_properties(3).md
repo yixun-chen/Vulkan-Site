@@ -124,10 +124,10 @@ If [VK_KHR_dynamic_rendering](VK_KHR_dynamic_rendering.html) or [Vulkan Version 
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_PROPERTIES_FEATURES_QCOM`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_PROPERTIES_FEATURES_QCOM](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_TILE_PROPERTIES_QCOM`
+[VK_STRUCTURE_TYPE_TILE_PROPERTIES_QCOM](VkStructureType.html)
 
 * 
 Revision 1, 2022-07-11 (Arpit Agarwal)

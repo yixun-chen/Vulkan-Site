@@ -25,12 +25,13 @@ To create a sampler with Y′CBCR conversion enabled, add a
 To create a sampler Y′CBCR conversion, the
 [`samplerYcbcrConversion`](../../../../spec/latest/chapters/features.html#features-samplerYcbcrConversion) feature
 **must** be enabled.
-Conversion **must** be fixed at pipeline creation time, through use of a
-combined image sampler with an immutable sampler in
+Conversion **must** be fixed at pipeline creation time, through use of
+a combined [embedded sampler and image mapping](../../../../spec/latest/chapters/descriptorheaps.html#VkDescriptorSetAndBindingMappingEXT) if using descriptor heaps, or
+a combined image sampler with an immutable sampler in
 `VkDescriptorSetLayoutBinding`.
 
 A [VkSamplerYcbcrConversionInfo](#) **must** be provided for samplers to be
-used with image views that access `VK_IMAGE_ASPECT_COLOR_BIT` if the
+used with image views that access [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html) if the
 format is one of the [formats that require a sampler Y′CBCR conversion](../../../../spec/latest/chapters/formats.html#formats-requiring-sampler-ycbcr-conversion)
 , or if the image view has an
 [external format](../../../../spec/latest/chapters/memory.html#memory-external-android-hardware-buffer-external-formats)
@@ -65,7 +66,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSamplerYcbcrConversionInfo-sType-sType) VUID-VkSamplerYcbcrConversionInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkSamplerYcbcrConversionInfo-conversion-parameter) VUID-VkSamplerYcbcrConversionInfo-conversion-parameter

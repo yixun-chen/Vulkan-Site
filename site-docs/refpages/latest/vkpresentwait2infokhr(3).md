@@ -51,7 +51,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPresentWait2InfoKHR-sType-sType) VUID-VkPresentWait2InfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_WAIT_2_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_WAIT_2_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPresentWait2InfoKHR-pNext-pNext) VUID-VkPresentWait2InfoKHR-pNext-pNext

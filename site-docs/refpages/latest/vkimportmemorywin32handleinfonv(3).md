@@ -69,7 +69,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMemoryWin32HandleInfoNV-sType-sType) VUID-VkImportMemoryWin32HandleInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkImportMemoryWin32HandleInfoNV-handleType-parameter) VUID-VkImportMemoryWin32HandleInfoNV-handleType-parameter

@@ -136,7 +136,7 @@ contiguously to a single `VkDeviceMemory` object
 [](#VUID-vkCmdResolveImage-srcImage-00257) VUID-vkCmdResolveImage-srcImage-00257
 
 `srcImage` **must** have a sample count equal to any valid sample count
-value other than `VK_SAMPLE_COUNT_1_BIT`
+value other than [VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html)
 
 * 
 [](#VUID-vkCmdResolveImage-dstImage-00258) VUID-vkCmdResolveImage-dstImage-00258
@@ -148,7 +148,7 @@ contiguously to a single `VkDeviceMemory` object
 [](#VUID-vkCmdResolveImage-dstImage-00259) VUID-vkCmdResolveImage-dstImage-00259
 
 `dstImage` **must** have a sample count equal to
-`VK_SAMPLE_COUNT_1_BIT`
+[VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html)
 
 * 
 [](#VUID-vkCmdResolveImage-srcImageLayout-00260) VUID-vkCmdResolveImage-srcImageLayout-00260
@@ -161,9 +161,9 @@ is executed on a `VkDevice`
 [](#VUID-vkCmdResolveImage-srcImageLayout-01400) VUID-vkCmdResolveImage-srcImageLayout-01400
 
 `srcImageLayout` **must** be
-`VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`,
-`VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL` or
-`VK_IMAGE_LAYOUT_GENERAL`
+[VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html)
 
 * 
 [](#VUID-vkCmdResolveImage-dstImageLayout-00262) VUID-vkCmdResolveImage-dstImageLayout-00262
@@ -176,9 +176,9 @@ is executed on a `VkDevice`
 [](#VUID-vkCmdResolveImage-dstImageLayout-01401) VUID-vkCmdResolveImage-dstImageLayout-01401
 
 `dstImageLayout` **must** be
-`VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`,
-`VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL` or
-`VK_IMAGE_LAYOUT_GENERAL`
+[VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html)
 
 * 
 [](#VUID-vkCmdResolveImage-maintenance10-11799) VUID-vkCmdResolveImage-maintenance10-11799
@@ -186,15 +186,15 @@ is executed on a `VkDevice`
 If the [`maintenance10`](../../../../spec/latest/chapters/features.html#features-maintenance10) feature is
 enabled, the [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of
 `dstImage` **must** contain
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT` or
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](VkFormatFeatureFlagBits.html) or
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-vkCmdResolveImage-dstImage-02003) VUID-vkCmdResolveImage-dstImage-02003
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of
 `dstImage` **must** contain
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](VkFormatFeatureFlagBits.html)
 if the [`maintenance10`](../../../../spec/latest/chapters/features.html#features-maintenance10) feature is not
 enabled
 
@@ -203,9 +203,9 @@ enabled
 
 If the [`linearColorAttachment`](../../../../spec/latest/chapters/features.html#features-linearColorAttachment)
 feature is enabled and the image is created with
-`VK_IMAGE_TILING_LINEAR`, the
+[VK_IMAGE_TILING_LINEAR](VkImageTiling.html), the
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of `dstImage`
-**must** contain `VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV`
+**must** contain [VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-vkCmdResolveImage-srcImage-01386) VUID-vkCmdResolveImage-srcImage-01386
@@ -231,7 +231,7 @@ The `dstSubresource.mipLevel` member of each element of
 [](#VUID-vkCmdResolveImage-srcSubresource-01711) VUID-vkCmdResolveImage-srcSubresource-01711
 
 If `srcSubresource.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`,
+[VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html),
 `srcSubresource.baseArrayLayer` + 
 `srcSubresource.layerCount` of each element of `pRegions` **must**
 be less than or equal to the `arrayLayers` specified in
@@ -241,7 +241,7 @@ be less than or equal to the `arrayLayers` specified in
 [](#VUID-vkCmdResolveImage-dstSubresource-01712) VUID-vkCmdResolveImage-dstSubresource-01712
 
 If `dstSubresource.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`,
+[VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html),
 `dstSubresource.baseArrayLayer` + 
 `dstSubresource.layerCount` of each element of `pRegions` **must**
 be less than or equal to the `arrayLayers` specified in
@@ -251,18 +251,18 @@ be less than or equal to the `arrayLayers` specified in
 [](#VUID-vkCmdResolveImage-dstImage-02546) VUID-vkCmdResolveImage-dstImage-02546
 
 `dstImage` and `srcImage` **must** not have been created with
-`flags` containing `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`
+`flags` containing [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](VkImageCreateFlagBits.html)
 
 * 
 [](#VUID-vkCmdResolveImage-srcImage-04446) VUID-vkCmdResolveImage-srcImage-04446
 
-If `dstImage` is of type `VK_IMAGE_TYPE_3D`, then for each
+If `dstImage` is of type [VK_IMAGE_TYPE_3D](VkImageType.html), then for each
 element of `pRegions`, `srcSubresource.layerCount` **must** be `1`
 
 * 
 [](#VUID-vkCmdResolveImage-srcImage-04447) VUID-vkCmdResolveImage-srcImage-04447
 
-If `dstImage` is of type `VK_IMAGE_TYPE_3D`, then for each
+If `dstImage` is of type [VK_IMAGE_TYPE_3D](VkImageType.html), then for each
 element of `pRegions`, `dstSubresource.baseArrayLayer` **must** be
 `0` and `dstSubresource.layerCount` **must** be `1`
 
@@ -285,7 +285,7 @@ specified `srcSubresource` of `srcImage`
 * 
 [](#VUID-vkCmdResolveImage-srcImage-00271) VUID-vkCmdResolveImage-srcImage-00271
 
-If `srcImage` is of type `VK_IMAGE_TYPE_1D`, then for each
+If `srcImage` is of type [VK_IMAGE_TYPE_1D](VkImageType.html), then for each
 element of `pRegions`, `srcOffset.y` **must** be `0` and
 `extent.height` **must** be `1`
 
@@ -300,8 +300,8 @@ specified `srcSubresource` of `srcImage`
 * 
 [](#VUID-vkCmdResolveImage-srcImage-00273) VUID-vkCmdResolveImage-srcImage-00273
 
-If `srcImage` is of type `VK_IMAGE_TYPE_1D` or
-`VK_IMAGE_TYPE_2D`, then for each element of `pRegions`,
+If `srcImage` is of type [VK_IMAGE_TYPE_1D](VkImageType.html) or
+[VK_IMAGE_TYPE_2D](VkImageType.html), then for each element of `pRegions`,
 `srcOffset.z` **must** be `0` and `extent.depth` **must** be `1`
 
 * 
@@ -323,7 +323,7 @@ specified `dstSubresource` of `dstImage`
 * 
 [](#VUID-vkCmdResolveImage-dstImage-00276) VUID-vkCmdResolveImage-dstImage-00276
 
-If `dstImage` is of type `VK_IMAGE_TYPE_1D`, then for each
+If `dstImage` is of type [VK_IMAGE_TYPE_1D](VkImageType.html), then for each
 element of `pRegions`, `dstOffset.y` **must** be `0` and
 `extent.height` **must** be `1`
 
@@ -338,33 +338,33 @@ specified `dstSubresource` of `dstImage`
 * 
 [](#VUID-vkCmdResolveImage-dstImage-00278) VUID-vkCmdResolveImage-dstImage-00278
 
-If `dstImage` is of type `VK_IMAGE_TYPE_1D` or
-`VK_IMAGE_TYPE_2D`, then for each element of `pRegions`,
+If `dstImage` is of type [VK_IMAGE_TYPE_1D](VkImageType.html) or
+[VK_IMAGE_TYPE_2D](VkImageType.html), then for each element of `pRegions`,
 `dstOffset.z` **must** be `0` and `extent.depth` **must** be `1`
 
 * 
 [](#VUID-vkCmdResolveImage-srcImage-06762) VUID-vkCmdResolveImage-srcImage-06762
 
 `srcImage` **must** have been created with the
-`VK_IMAGE_USAGE_TRANSFER_SRC_BIT` usage flag set
+[VK_IMAGE_USAGE_TRANSFER_SRC_BIT](VkImageUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdResolveImage-srcImage-06763) VUID-vkCmdResolveImage-srcImage-06763
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of
-`srcImage` **must** contain `VK_FORMAT_FEATURE_TRANSFER_SRC_BIT`
+`srcImage` **must** contain [VK_FORMAT_FEATURE_TRANSFER_SRC_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-vkCmdResolveImage-dstImage-06764) VUID-vkCmdResolveImage-dstImage-06764
 
 `dstImage` **must** have been created with the
-`VK_IMAGE_USAGE_TRANSFER_DST_BIT` usage flag set
+[VK_IMAGE_USAGE_TRANSFER_DST_BIT](VkImageUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdResolveImage-dstImage-06765) VUID-vkCmdResolveImage-dstImage-06765
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of
-`dstImage` **must** contain `VK_FORMAT_FEATURE_TRANSFER_DST_BIT`
+`dstImage` **must** contain [VK_FORMAT_FEATURE_TRANSFER_DST_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-vkCmdResolveImage-srcSubresource-11800) VUID-vkCmdResolveImage-srcSubresource-11800
@@ -426,7 +426,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdResolveImage-commandBuffer-cmdpool) VUID-vkCmdResolveImage-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdResolveImage-renderpass) VUID-vkCmdResolveImage-renderpass

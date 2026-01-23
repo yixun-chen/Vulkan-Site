@@ -30,15 +30,15 @@ typedef enum VkVideoEncodeH265CtbSizeFlagBitsKHR {
 } VkVideoEncodeH265CtbSizeFlagBitsKHR;
 
 * 
-`VK_VIDEO_ENCODE_H265_CTB_SIZE_16_BIT_KHR` specifies that a CTB size
+[VK_VIDEO_ENCODE_H265_CTB_SIZE_16_BIT_KHR](#) specifies that a CTB size
 of 16x16 is supported.
 
 * 
-`VK_VIDEO_ENCODE_H265_CTB_SIZE_32_BIT_KHR` specifies that a CTB size
+[VK_VIDEO_ENCODE_H265_CTB_SIZE_32_BIT_KHR](#) specifies that a CTB size
 of 32x32 is supported.
 
 * 
-`VK_VIDEO_ENCODE_H265_CTB_SIZE_64_BIT_KHR` specifies that a CTB size
+[VK_VIDEO_ENCODE_H265_CTB_SIZE_64_BIT_KHR](#) specifies that a CTB size
 of 64x64 is supported.
 
 [VK_KHR_video_encode_h265](VK_KHR_video_encode_h265.html), [VkVideoEncodeH265CtbSizeFlagsKHR](VkVideoEncodeH265CtbSizeFlagsKHR.html)

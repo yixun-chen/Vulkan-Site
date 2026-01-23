@@ -28,7 +28,7 @@ typedef enum VkDeviceAddressBindingFlagBitsEXT {
 } VkDeviceAddressBindingFlagBitsEXT;
 
 * 
-`VK_DEVICE_ADDRESS_BINDING_INTERNAL_OBJECT_BIT_EXT` specifies that
+[VK_DEVICE_ADDRESS_BINDING_INTERNAL_OBJECT_BIT_EXT](#) specifies that
 [VkDeviceAddressBindingCallbackDataEXT](VkDeviceAddressBindingCallbackDataEXT.html) describes a Vulkan object
 that has not been made visible to the application via a Vulkan command.
 

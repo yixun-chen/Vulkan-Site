@@ -54,9 +54,8 @@ When calling [vkGetSwapchainTimeDomainPropertiesEXT](vkGetSwapchainTimeDomainPro
 number of time domains supported for the given `swapchain` is returned
 in `timeDomainCount`.
 Otherwise, `timeDomainCount` **must** specify the number of elements in the
-`pTimeDomains`, `pTimeDomainIds`, or both arrays, and on return the
-variable is overwritten with the number of values actually written to either
-array.
+`pTimeDomains`, `pTimeDomainIds`, or both arrays, and on return is
+overwritten with the number of values actually written to either array.
 
 |  | Due to the dynamic nature of their underlying `VkSurfaceKHR` properties,
 | --- | --- |
@@ -71,27 +70,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSwapchainTimeDomainPropertiesEXT-sType-sType) VUID-VkSwapchainTimeDomainPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_TIME_DOMAIN_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_TIME_DOMAIN_PROPERTIES_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkSwapchainTimeDomainPropertiesEXT-pNext-pNext) VUID-VkSwapchainTimeDomainPropertiesEXT-pNext-pNext
 
  `pNext` **must** be `NULL`
-
-* 
-[](#VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomains-parameter) VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomains-parameter
-
- If `pTimeDomains` is not `NULL`, `pTimeDomains` **must** be a valid pointer to an array of `timeDomainCount` [VkTimeDomainKHR](VkTimeDomainKHR.html) values
-
-* 
-[](#VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomainIds-parameter) VUID-VkSwapchainTimeDomainPropertiesEXT-pTimeDomainIds-parameter
-
- If `pTimeDomainIds` is not `NULL`, `pTimeDomainIds` **must** be a valid pointer to an array of `timeDomainCount` `uint64_t` values
-
-* 
-[](#VUID-VkSwapchainTimeDomainPropertiesEXT-timeDomainCount-arraylength) VUID-VkSwapchainTimeDomainPropertiesEXT-timeDomainCount-arraylength
-
- `timeDomainCount` **must** be greater than `0`
 
 [VK_EXT_present_timing](VK_EXT_present_timing.html), [VkStructureType](VkStructureType.html), [VkTimeDomainKHR](VkTimeDomainKHR.html), [vkGetSwapchainTimeDomainPropertiesEXT](vkGetSwapchainTimeDomainPropertiesEXT.html)
 

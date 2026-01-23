@@ -47,7 +47,7 @@ table record index allowed to be passed in to
 `OpHitObjectSetShaderBindingTableRecordIndexEXT`
 
 If `rayTracingInvocationReorderReorderingHint` is
-`VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_EXT` there **must** exist
+[VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_EXT](VkRayTracingInvocationReorderModeEXT.html) there **must** exist
 conditions under which the ordered set of invocations before a reorder
 instruction is different than the ordered set of invocations after the
 reorder instruction.
@@ -87,7 +87,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_ray_tracing_invocation_reorder](VK_EXT_ray_tracing_invocation_reorder.html), [VkRayTracingInvocationReorderModeEXT](VkRayTracingInvocationReorderModeEXT.html), [VkStructureType](VkStructureType.html)
 

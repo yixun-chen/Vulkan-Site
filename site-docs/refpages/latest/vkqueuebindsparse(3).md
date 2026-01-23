@@ -100,7 +100,7 @@ waiting on the same semaphore
 
 All elements of the `pWaitSemaphores` member of all elements of
 `pBindInfo` referring to a semaphore
-created with a [VkSemaphoreType](VkSemaphoreType.html) of `VK_SEMAPHORE_TYPE_BINARY`
+created with a [VkSemaphoreType](VkSemaphoreType.html) of [VK_SEMAPHORE_TYPE_BINARY](VkSemaphoreType.html)
 **must** reference a semaphore signal operation that has been submitted for
 execution and any [semaphore    signal operations](../../../../spec/latest/chapters/synchronization.html#synchronization-semaphores-signaling) on which it depends **must** have also been submitted
 for execution
@@ -125,7 +125,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkQueueBindSparse-queuetype) VUID-vkQueueBindSparse-queuetype
 
- The `queue` **must** support `VK_QUEUE_SPARSE_BINDING_BIT` operations
+ The `queue` **must** support [VK_QUEUE_SPARSE_BINDING_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkQueueBindSparse-commonparent) VUID-vkQueueBindSparse-commonparent
@@ -136,6 +136,8 @@ Host Synchronization
 
 * 
 Host access to `queue` **must** be externally synchronized
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](VkDeviceQueueCreateFlagBits.html)
 
 * 
 Host access to `fence` **must** be externally synchronized
@@ -150,24 +152,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkBindSparseInfo](VkBindSparseInfo.html), [VkFence](VkFence.html), [VkQueue](VkQueue.html)
 

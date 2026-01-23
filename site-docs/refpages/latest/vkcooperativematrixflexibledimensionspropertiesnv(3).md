@@ -80,9 +80,9 @@ The columns **must** be an integer multiple of this value.
 `saturatingAccumulation` indicates whether the
 `SaturatingAccumulation` operand to `OpCooperativeMatrixMulAddKHR`
 **must** be present or not.
-If it is `VK_TRUE`, the `SaturatingAccumulation` operand **must** be
+If it is [VK_TRUE](VK_TRUE.html), the `SaturatingAccumulation` operand **must** be
 present.
-If it is `VK_FALSE`, the `SaturatingAccumulation` operand **must**
+If it is [VK_FALSE](VK_FALSE.html), the `SaturatingAccumulation` operand **must**
 not be present.
 
 * 
@@ -119,7 +119,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCooperativeMatrixFlexibleDimensionsPropertiesNV-sType-sType) VUID-VkCooperativeMatrixFlexibleDimensionsPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_FLEXIBLE_DIMENSIONS_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_FLEXIBLE_DIMENSIONS_PROPERTIES_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkCooperativeMatrixFlexibleDimensionsPropertiesNV-pNext-pNext) VUID-VkCooperativeMatrixFlexibleDimensionsPropertiesNV-pNext-pNext

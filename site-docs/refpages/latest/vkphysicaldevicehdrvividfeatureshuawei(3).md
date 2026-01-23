@@ -45,7 +45,7 @@ If the `VkPhysicalDeviceHdrVividFeaturesHUAWEI` structure is included in the `pN
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceHdrVividFeaturesHUAWEI`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -53,7 +53,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceHdrVividFeaturesHUAWEI-sType-sType) VUID-VkPhysicalDeviceHdrVividFeaturesHUAWEI-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI](VkStructureType.html)
 
 [VK_HUAWEI_hdr_vivid](VK_HUAWEI_hdr_vivid.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -219,9 +219,9 @@ The complete code for this chapter can be found in the following files:
 * 
 `simple_engine/35_robustness_extensions.cpp`: Implementation of Vulkan extensions for robustness
 
-[CI/CD Setup C++ code](../../attachments/simple_engine/32_cicd_setup.cpp)
-[Debug Utils C++ code](../../attachments/simple_engine/33_debug_utils.cpp)
-[Crash Handling C++ code](../../attachments/simple_engine/34_crash_handling.cpp)
-[Robustness Extensions C++ code](../../attachments/simple_engine/35_robustness_extensions.cpp)
+[CI/CD Setup C++ code](../../_attachments/simple_engine/32_cicd_setup.cpp)
+[Debug Utils C++ code](../../_attachments/simple_engine/33_debug_utils.cpp)
+[Crash Handling C++ code](../../_attachments/simple_engine/34_crash_handling.cpp)
+[Robustness Extensions C++ code](../../_attachments/simple_engine/35_robustness_extensions.cpp)
 
-[Previous: Packaging and Distribution](#06_packaging_and_distribution.adoc) | [Next: Mobile Development](#../Mobile_Development/01_introduction.adoc)
+[Previous: Packaging and Distribution](06_packaging_and_distribution.html) | [Next: Mobile Development](../Mobile_Development/01_introduction.html)

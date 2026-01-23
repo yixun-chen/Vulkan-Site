@@ -20,7 +20,7 @@
 vkGetImageMemoryRequirements - Returns the memory requirements for specified Vulkan object
 
 To determine the memory requirements for an image resource which is not
-created with the `VK_IMAGE_CREATE_DISJOINT_BIT` flag set, call:
+created with the [VK_IMAGE_CREATE_DISJOINT_BIT](VkImageCreateFlagBits.html) flag set, call:
 
 // Provided by VK_VERSION_1_0
 void vkGetImageMemoryRequirements(
@@ -45,20 +45,20 @@ Valid Usage
 [](#VUID-vkGetImageMemoryRequirements-image-01588) VUID-vkGetImageMemoryRequirements-image-01588
 
 `image` **must** not have been created with the
-`VK_IMAGE_CREATE_DISJOINT_BIT` flag set
+[VK_IMAGE_CREATE_DISJOINT_BIT](VkImageCreateFlagBits.html) flag set
 
 * 
 [](#VUID-vkGetImageMemoryRequirements-image-04004) VUID-vkGetImageMemoryRequirements-image-04004
 
 If `image` was created with the
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](VkExternalMemoryHandleTypeFlagBits.html)
 external memory handle type, then `image` **must** be bound to memory
 
 * 
 [](#VUID-vkGetImageMemoryRequirements-image-08960) VUID-vkGetImageMemoryRequirements-image-08960
 
 If `image` was created with the
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX` external
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](VkExternalMemoryHandleTypeFlagBits.html) external
 memory handle type, then `image` **must** be bound to memory
 
 Valid Usage (Implicit)

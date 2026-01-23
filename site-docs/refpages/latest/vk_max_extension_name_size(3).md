@@ -17,7 +17,7 @@
 
 VK_MAX_EXTENSION_NAME_SIZE - Maximum length of a layer of extension name string
 
-`VK_MAX_EXTENSION_NAME_SIZE` is the length in `char` values of an
+[VK_MAX_EXTENSION_NAME_SIZE](#) is the length in `char` values of an
 array containing a layer or extension name string, as returned in
 [VkLayerProperties](VkLayerProperties.html)::`layerName`,
 [VkExtensionProperties](VkExtensionProperties.html)::`extensionName`, and other queries.

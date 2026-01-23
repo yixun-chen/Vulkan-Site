@@ -20,7 +20,7 @@
 VkIndirectCommandsExecutionSetTokenEXT - Structure specifying input data for a single execution set command token
 
 The `VkIndirectCommandsExecutionSetTokenEXT` structure specifies the
-input data for the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT`
+input data for the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](VkIndirectCommandsTokenTypeEXT.html)
 token.
 
 // Provided by VK_EXT_device_generated_commands

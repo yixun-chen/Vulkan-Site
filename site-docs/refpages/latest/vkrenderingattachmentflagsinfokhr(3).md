@@ -48,7 +48,7 @@ Valid Usage
 [](#VUID-VkRenderingAttachmentFlagsInfoKHR-flags-11755) VUID-VkRenderingAttachmentFlagsInfoKHR-flags-11755
 
 `flags` **must** not include
-`VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR`
+[VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR](VkRenderingAttachmentFlagBitsKHR.html)
 if the
 [`dynamicRenderingLocalRead`](../../../../spec/latest/chapters/features.html#features-dynamicRenderingLocalRead)
 feature is not enabled
@@ -57,25 +57,25 @@ feature is not enabled
 [](#VUID-VkRenderingAttachmentFlagsInfoKHR-flags-11756) VUID-VkRenderingAttachmentFlagsInfoKHR-flags-11756
 
 If `flags` includes
-`VK_RENDERING_ATTACHMENT_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR`,
+[VK_RENDERING_ATTACHMENT_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](VkRenderingAttachmentFlagBitsKHR.html),
 `flags` **must** not include
-`VK_RENDERING_ATTACHMENT_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`
+[VK_RENDERING_ATTACHMENT_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](VkRenderingAttachmentFlagBitsKHR.html)
 
 * 
 [](#VUID-VkRenderingAttachmentFlagsInfoKHR-flags-11757) VUID-VkRenderingAttachmentFlagsInfoKHR-flags-11757
 
 If `flags` includes
-`VK_RENDERING_ATTACHMENT_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR` or
-`VK_RENDERING_ATTACHMENT_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR`,
+[VK_RENDERING_ATTACHMENT_RESOLVE_SKIP_TRANSFER_FUNCTION_BIT_KHR](VkRenderingAttachmentFlagBitsKHR.html) or
+[VK_RENDERING_ATTACHMENT_RESOLVE_ENABLE_TRANSFER_FUNCTION_BIT_KHR](VkRenderingAttachmentFlagBitsKHR.html),
 [`resolveSrgbFormatSupportsTransferFunctionControl`](../../../../spec/latest/chapters/limits.html#limits-resolveSrgbFormatSupportsTransferFunctionControl)
-**must** be `VK_TRUE`
+**must** be [VK_TRUE](VK_TRUE.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkRenderingAttachmentFlagsInfoKHR-sType-sType) VUID-VkRenderingAttachmentFlagsInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_FLAGS_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_FLAGS_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderingAttachmentFlagsInfoKHR-flags-parameter) VUID-VkRenderingAttachmentFlagsInfoKHR-flags-parameter

@@ -52,8 +52,8 @@ Valid Usage
 * 
 [](#VUID-VkCopyMicromapInfoEXT-mode-07531) VUID-VkCopyMicromapInfoEXT-mode-07531
 
-`mode` **must** be `VK_COPY_MICROMAP_MODE_COMPACT_EXT` or
-`VK_COPY_MICROMAP_MODE_CLONE_EXT`
+`mode` **must** be [VK_COPY_MICROMAP_MODE_COMPACT_EXT](VkCopyMicromapModeEXT.html) or
+[VK_COPY_MICROMAP_MODE_CLONE_EXT](VkCopyMicromapModeEXT.html)
 
 * 
 [](#VUID-VkCopyMicromapInfoEXT-src-07532) VUID-VkCopyMicromapInfoEXT-src-07532
@@ -64,9 +64,9 @@ prior to the execution of this command
 * 
 [](#VUID-VkCopyMicromapInfoEXT-mode-07533) VUID-VkCopyMicromapInfoEXT-mode-07533
 
-If `mode` is `VK_COPY_MICROMAP_MODE_COMPACT_EXT`, `src`
+If `mode` is [VK_COPY_MICROMAP_MODE_COMPACT_EXT](VkCopyMicromapModeEXT.html), `src`
 **must** have been constructed with
-`VK_BUILD_MICROMAP_ALLOW_COMPACTION_BIT_EXT` in the build
+[VK_BUILD_MICROMAP_ALLOW_COMPACTION_BIT_EXT](VkBuildMicromapFlagBitsEXT.html) in the build
 
 * 
 [](#VUID-VkCopyMicromapInfoEXT-buffer-07534) VUID-VkCopyMicromapInfoEXT-buffer-07534
@@ -85,7 +85,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCopyMicromapInfoEXT-sType-sType) VUID-VkCopyMicromapInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COPY_MICROMAP_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COPY_MICROMAP_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkCopyMicromapInfoEXT-pNext-pNext) VUID-VkCopyMicromapInfoEXT-pNext-pNext

@@ -72,7 +72,7 @@ Any results written for a query are written according to
 Results for any query in `queryPool` identified by `firstQuery` and
 `queryCount` that is available are copied to `dstBuffer`.
 
-If `VK_QUERY_RESULT_WITH_AVAILABILITY_BIT` is set, results for all
+If [VK_QUERY_RESULT_WITH_AVAILABILITY_BIT](VkQueryResultFlagBits.html) is set, results for all
 queries in `queryPool` identified by `firstQuery` and
 `queryCount` are copied to `dstBuffer`, along with an extra
 availability value written directly after the results of each query and
@@ -80,7 +80,7 @@ interpreted as an unsigned integer.
 A value of zero indicates that the results are not yet available, otherwise
 the query is complete and results are available.
 
-If `VK_QUERY_RESULT_WITH_STATUS_BIT_KHR` is set, results for all queries
+If [VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](VkQueryResultFlagBits.html) is set, results for all queries
 in `queryPool` identified by `firstQuery` and `queryCount` are
 copied to `dstBuffer`, along with an extra status value written directly
 after the results of each query and interpreted as a signed integer.
@@ -100,16 +100,16 @@ results of the used query type.
 
 Results for any available query written by this command are final and
 represent the final result of the query.
-If `VK_QUERY_RESULT_PARTIAL_BIT` is set, then for any query that is
+If [VK_QUERY_RESULT_PARTIAL_BIT](VkQueryResultFlagBits.html) is set, then for any query that is
 unavailable, an intermediate result between zero and the final result value
 is written for that query.
 Otherwise, any result written by this command is **undefined**.
 
-If `VK_QUERY_RESULT_64_BIT` is set, results and availability
+If [VK_QUERY_RESULT_64_BIT](VkQueryResultFlagBits.html) is set, results and availability
 or status
 values for all queries are written as an array of 64-bit values.
 If the `queryPool` was created with
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, results for each query are
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](VkQueryType.html), results for each query are
 written as an array of the type indicated by
 [VkPerformanceCounterKHR](VkPerformanceCounterKHR.html)::`storage` for the counter being queried.
 Otherwise, results and availability
@@ -132,7 +132,7 @@ The first [synchronization scope](../../../../spec/latest/chapters/synchronizati
 includes all commands which reference the queries in `queryPool`
 indicated by `query` that occur earlier in
 [submission order](../../../../spec/latest/chapters/synchronization.html#synchronization-submission-order).
-If `flags` does not include `VK_QUERY_RESULT_WAIT_BIT`,
+If `flags` does not include [VK_QUERY_RESULT_WAIT_BIT](VkQueryResultFlagBits.html),
 [vkCmdEndQuery](vkCmdEndQuery.html),
 [vkCmdEndQueryIndexedEXT](vkCmdEndQueryIndexedEXT.html),
 [vkCmdWriteAccelerationStructuresPropertiesKHR](vkCmdWriteAccelerationStructuresPropertiesKHR.html),
@@ -151,7 +151,7 @@ before the second scope.
 
 `vkCmdCopyQueryPoolResults` is considered to be a transfer operation,
 and its writes to buffer memory **must** be synchronized using
-`VK_PIPELINE_STAGE_TRANSFER_BIT` and `VK_ACCESS_TRANSFER_WRITE_BIT`
+[VK_PIPELINE_STAGE_TRANSFER_BIT](VkPipelineStageFlagBits.html) and [VK_ACCESS_TRANSFER_WRITE_BIT](VkAccessFlagBits.html)
 before using the results.
 
 Valid Usage
@@ -177,23 +177,23 @@ If `queryCount` is greater than 1, `stride` **must** not be zero
 [](#VUID-vkCmdCopyQueryPoolResults-queryType-09439) VUID-vkCmdCopyQueryPoolResults-queryType-09439
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_TIMESTAMP`, `flags` **must** not contain
-`VK_QUERY_RESULT_PARTIAL_BIT`
+[VK_QUERY_TYPE_TIMESTAMP](VkQueryType.html), `flags` **must** not contain
+[VK_QUERY_RESULT_PARTIAL_BIT](VkQueryResultFlagBits.html)
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-queryType-09440) VUID-vkCmdCopyQueryPoolResults-queryType-09440
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, `flags` **must** not contain
-`VK_QUERY_RESULT_WITH_AVAILABILITY_BIT`,
-`VK_QUERY_RESULT_WITH_STATUS_BIT_KHR`,
-`VK_QUERY_RESULT_PARTIAL_BIT`, or `VK_QUERY_RESULT_64_BIT`
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](VkQueryType.html), `flags` **must** not contain
+[VK_QUERY_RESULT_WITH_AVAILABILITY_BIT](VkQueryResultFlagBits.html),
+[VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](VkQueryResultFlagBits.html),
+[VK_QUERY_RESULT_PARTIAL_BIT](VkQueryResultFlagBits.html), or [VK_QUERY_RESULT_64_BIT](VkQueryResultFlagBits.html)
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-queryType-09441) VUID-vkCmdCopyQueryPoolResults-queryType-09441
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, the `queryPool` **must**
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](VkQueryType.html), the `queryPool` **must**
 have been recorded once for each pass as retrieved via a call to
 [vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR](vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR.html)
 
@@ -201,23 +201,23 @@ have been recorded once for each pass as retrieved via a call to
 [](#VUID-vkCmdCopyQueryPoolResults-queryType-11874) VUID-vkCmdCopyQueryPoolResults-queryType-11874
 
 If the `queryType` used to create `queryPool` was not
-`VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR`
-or `VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR`,
+[VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR](VkQueryType.html)
+or [VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR](VkQueryType.html),
 then `flags` **must** not include
-`VK_QUERY_RESULT_WITH_STATUS_BIT_KHR`
+[VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](VkQueryResultFlagBits.html)
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-queryType-09442) VUID-vkCmdCopyQueryPoolResults-queryType-09442
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR`, then `flags` **must**
-include `VK_QUERY_RESULT_WITH_STATUS_BIT_KHR`
+[VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR](VkQueryType.html), then `flags` **must**
+include [VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](VkQueryResultFlagBits.html)
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-flags-09443) VUID-vkCmdCopyQueryPoolResults-flags-09443
 
-If `flags` includes `VK_QUERY_RESULT_WITH_STATUS_BIT_KHR`, then
-it **must** not include `VK_QUERY_RESULT_WITH_AVAILABILITY_BIT`
+If `flags` includes [VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](VkQueryResultFlagBits.html), then
+it **must** not include [VK_QUERY_RESULT_WITH_AVAILABILITY_BIT](VkQueryResultFlagBits.html)
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-None-09402) VUID-vkCmdCopyQueryPoolResults-None-09402
@@ -233,25 +233,25 @@ command is executed
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-flags-00822) VUID-vkCmdCopyQueryPoolResults-flags-00822
 
-If `VK_QUERY_RESULT_64_BIT` is not set in `flags` then
+If [VK_QUERY_RESULT_64_BIT](VkQueryResultFlagBits.html) is not set in `flags` then
 `dstOffset` **must** be a multiple of `4`
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-queryCount-12254) VUID-vkCmdCopyQueryPoolResults-queryCount-12254
 
-If `queryCount` is greater than 1 and `VK_QUERY_RESULT_64_BIT`
+If `queryCount` is greater than 1 and [VK_QUERY_RESULT_64_BIT](VkQueryResultFlagBits.html)
 is not set in `flags` then `stride` **must** be a multiple of `4`
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-flags-00823) VUID-vkCmdCopyQueryPoolResults-flags-00823
 
-If `VK_QUERY_RESULT_64_BIT` is set in `flags` then
+If [VK_QUERY_RESULT_64_BIT](VkQueryResultFlagBits.html) is set in `flags` then
 `dstOffset` **must** be a multiple of `8`
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-queryCount-12255) VUID-vkCmdCopyQueryPoolResults-queryCount-12255
 
-If `queryCount` is greater than 1 and `VK_QUERY_RESULT_64_BIT`
+If `queryCount` is greater than 1 and [VK_QUERY_RESULT_64_BIT](VkQueryResultFlagBits.html)
 is set in `flags` then `stride` **must** be a multiple of `8`
 
 * 
@@ -265,7 +265,7 @@ contain the result of each query, as described
 [](#VUID-vkCmdCopyQueryPoolResults-dstBuffer-00825) VUID-vkCmdCopyQueryPoolResults-dstBuffer-00825
 
 `dstBuffer` **must** have been created with the
-`VK_BUFFER_USAGE_TRANSFER_DST_BIT` usage flag set
+[VK_BUFFER_USAGE_TRANSFER_DST_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-dstBuffer-00826) VUID-vkCmdCopyQueryPoolResults-dstBuffer-00826
@@ -277,16 +277,16 @@ contiguously to a single `VkDeviceMemory` object
 [](#VUID-vkCmdCopyQueryPoolResults-queryType-03232) VUID-vkCmdCopyQueryPoolResults-queryType-03232
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`,
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](VkQueryType.html),
 [VkPhysicalDevicePerformanceQueryPropertiesKHR](VkPhysicalDevicePerformanceQueryPropertiesKHR.html)::`allowCommandBufferQueryCopies`
-**must** be `VK_TRUE`
+**must** be [VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-queryType-02734) VUID-vkCmdCopyQueryPoolResults-queryType-02734
 
 [vkCmdCopyQueryPoolResults](#) **must** not be called if the
 `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL`
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL](VkQueryType.html)
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-None-07429) VUID-vkCmdCopyQueryPoolResults-None-07429
@@ -329,7 +329,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-commandBuffer-cmdpool) VUID-vkCmdCopyQueryPoolResults-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-renderpass) VUID-vkCmdCopyQueryPoolResults-renderpass

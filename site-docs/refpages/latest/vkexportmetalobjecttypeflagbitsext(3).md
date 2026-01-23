@@ -32,27 +32,27 @@ typedef enum VkExportMetalObjectTypeFlagBitsEXT {
 } VkExportMetalObjectTypeFlagBitsEXT;
 
 * 
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT` specifies that a
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT](#) specifies that a
 Metal `MTLDevice` may be exported.
 
 * 
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT` specifies
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT](#) specifies
 that a Metal `MTLCommandQueue` may be exported.
 
 * 
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT` specifies that a
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT](#) specifies that a
 Metal `MTLBuffer` may be exported.
 
 * 
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT` specifies that a
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT](#) specifies that a
 Metal `MTLTexture` may be exported.
 
 * 
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT` specifies that
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT](#) specifies that
 a Metal `IOSurface` may be exported.
 
 * 
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT` specifies
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT](#) specifies
 that a Metal `MTLSharedEvent` may be exported.
 
 [VK_EXT_metal_objects](VK_EXT_metal_objects.html), [VkExportMetalObjectCreateInfoEXT](VkExportMetalObjectCreateInfoEXT.html), [VkExportMetalObjectTypeFlagsEXT](VkExportMetalObjectTypeFlagsEXT.html)

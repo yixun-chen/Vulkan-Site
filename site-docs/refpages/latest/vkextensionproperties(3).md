@@ -28,7 +28,7 @@ typedef struct VkExtensionProperties {
 } VkExtensionProperties;
 
 * 
-`extensionName` is an array of `VK_MAX_EXTENSION_NAME_SIZE`
+`extensionName` is an array of [VK_MAX_EXTENSION_NAME_SIZE](VK_MAX_EXTENSION_NAME_SIZE.html)
 `char` containing a null-terminated UTF-8 string which is the name of
 the extension.
 

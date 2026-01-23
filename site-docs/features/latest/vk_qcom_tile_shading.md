@@ -806,7 +806,7 @@ Each tile will have dimensions that are a multiple of this granularity in width 
 The `maxTileShadingRate` property defines the maximum value that the `TileShadingRateQCOM`
 specified in the shader can be, and must be a power of 2.
 
-No, we propose the following restrictions for specific attachment types and shader stages:
+**RESOLVED**: No, we propose the following restrictions for specific attachment types and shader stages:
 
 * 
 Compute and fragment shaders must not store to depth/stencil attachments, resolve attachments,
@@ -824,7 +824,7 @@ color attachment do not seem useful and could be difficult to synchronize with
 fragment output writes. For those reasons, the above cases are disallowed
 in this extension.
 
-Yes, this is allowed, because it can be useful for certain use cases.
+**RESOLVED**: Yes, this is allowed, because it can be useful for certain use cases.
 
 Without this extension, a TBDR GPU can "distribute" the draw call across the tiles.
 As the GPU processes each tile, if a draw command includes primitives that do not
@@ -848,7 +848,7 @@ DRAW_INDIRECT stage.
 
 Other than such GPU-driven use cases, the use of per-tile draws is discouraged.
 
-Yes, this has been included in the current proposal, but
+**RESOLVED**: Yes, this has been included in the current proposal, but
 guarded by feature bit `tileShadingSampledAttachments`.
 
 * 
@@ -875,7 +875,7 @@ shader. The implementation is not required to clamp the coordinates to a valid
 range. Applications will need to guarantee that the filter does not result in
 reading locations outside the tile+apron boundary.
 
-Yes, the granularity is guaranteed.
+**RESOLVED**: Yes, the granularity is guaranteed.
 
 [VK_QCOM_tile_properties](https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_QCOM_tile_properties) reports
 tile dimensions but does not provide any guarantees on the granularity of the tile
@@ -884,10 +884,10 @@ size of known dimensions.
 
 An extension property `tileGranularity` is exposed to provide this.
 
-Yes, the atomic operations on tile attachments are supported but
+**RESOLVED**: Yes, the atomic operations on tile attachments are supported but
 the functionality is currently guarded by a feature bit.
 
-Yes, this is supported.
+**RESOLVED**: Yes, this is supported.
 
 Without this extension, implementations may implement multiview
 rendering as single-pass rendering to a multi-layered attachment, or multi-pass
@@ -898,16 +898,16 @@ most application use cases for tile shading. `VK_QCOM_tile_properties` exposes
 the number of layers in the tile, allowing the application to handle either
 implementation style.
 
-Yes, this is supported. The existing `VK_QCOM_tile_properties`
+**RESOLVED**: Yes, this is supported. The existing `VK_QCOM_tile_properties`
 extension exposes support for multi-layered tiles.
 
-No, this is not allowed.
+**RESOLVED**: No, this is not allowed.
 
 There are no known use cases, for stores to the apron pixels
 and supporting this may come at a performance cost on some
 TBDRs.
 
-Yes, since this extension builds upon
+**RESOLVED**: Yes, since this extension builds upon
 [VK_KHR_dynamic_rendering_local_read](https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_KHR_dynamic_rendering_local_read),
 the functionality and performance is expected to be equivalent.
 
@@ -915,9 +915,9 @@ Earlier versions of this extension that were not based on
 VK_KHR_dynamic_rendering_local_read resulted in far less functionality
 for dynamic render passes.
 
-No, there is no change to the behavior.
+**RESOLVED**: No, there is no change to the behavior.
 
-Yes, if a render pass enables tile shading but not the
+**RESOLVED**: Yes, if a render pass enables tile shading but not the
 [per-tile execution model](https://docs.vulkan.org/spec/latest/chapters/renderpass.html#renderpass-per-tile-execution-model), then
 fragment shader invocations can load pixel values from tile attachment
 variables.
@@ -926,7 +926,7 @@ This includes loading the pixel value of the fragment coordinate
 (aka "framebuffer fetch") as well as the ability to load pixel values
 of other fragments within the tile and/or the apron region.
 
-No, while such a feature is desirable for many TBDR GPUs and is related
+**RESOLVED**: No, while such a feature is desirable for many TBDR GPUs and is related
 to this extension, but was considered beyond the scope of this extension.
 
 Use-cases such as deferred shading and deferred lighting are often implemented with multiple
@@ -938,7 +938,7 @@ the same block of tile memory to be interpreted as multiple layouts or formats.
 Such reinterpretation of framebuffer pixels can be useful even if tile shading is not
 used. Therefore, it may be best handled as a completely separate extension.
 
-Yes, on some Adreno ™ GPUs and for some use cases, the tile-sized
+**RESOLVED**: Yes, on some Adreno ™ GPUs and for some use cases, the tile-sized
 dispatch can improve GPU efficiency and has been incorporated into this extension.
 
 `vkCmdDispatchTileQCOM` provides a "tile-sized dispatch" where
@@ -947,7 +947,7 @@ where the GPU can construct workgroups that are aligned to implementation specif
 micro-tiles and assign those workgroups to the shader core that is able to
 most optimally perform load/store operations for the micro tile’s pixels.
 
-No. In this proposal, a created graphics pipeline can be used in a render
+**RESOLVED**: No. In this proposal, a created graphics pipeline can be used in a render
 pass regardless whether the render pass enables tile shading, and regardless whether
 [per-tile execution mode](https://docs.vulkan.org/spec/latest/chapters/renderpass.html#renderpass-per-tile-execution-model) is enabled. Similarly,
 a created compute pipelines can now be used inside or outside a render pass. We decided
@@ -956,11 +956,11 @@ to developers and because we do not anticipate implementations will require this
 We do specify that the new shader built-ins (e.g., TileDimensionQCOM, TileOffsetQCOM, etc.) contain
 the value `0` if the shader is invoked when per-tile execution mode is disabled.
 
-No. Similar to above, we believe that limiting
+**RESOLVED**: No. Similar to above, we believe that limiting
 compute pipelines to a single renderpass/subpass would be a burden to developers
 and we do not anticipate that implementations need this information.
 
-The functionality of this extension is a superset of `VK_EXT_shader_tile_image`.
+**RESOLVED**: The functionality of this extension is a superset of `VK_EXT_shader_tile_image`.
 
 VK_EXT_shader_tile_image is limited to bringing the functionality of
 GL_EXT_shader_framebuffer_fetch to Vulkan dynamic render passes. The
@@ -970,7 +970,7 @@ fragment location for only color/depth/stencil attachments. This extension
 is a superset of the functionality in VK_EXT_shader_tile_image with
 the exception of descriptor-less access.
 
-Possibly in a future extension. This extension requires that sampling
+**RESOLVED**: Possibly in a future extension. This extension requires that sampling
 and load/store tile attachment access must use an offset/coordinate that is within
 the boundary of the tile (plus any apron). Out-of-bounds access will result in
 undefined behavior. For many use cases, this will require the
@@ -987,7 +987,7 @@ For example, a robust out-of-bounds tile access might return 0, or the coordinat
 be clamped to the tile’s boundaries.
 In this initial proposal, we have elected to simply ban out-of-bounds tile access.
 
-The functionality VK_QCOM_image_processing and VK_QCOM_image_processing2 are
+**RESOLVED**: The functionality VK_QCOM_image_processing and VK_QCOM_image_processing2 are
 available with tile shading with an optional feature bit `tileShadingImageProcessing`.
 
 VK_QCOM_image_processing and VK_QCOM_image_processing2 adds several new "high order" SPIR-V texture filtering operations

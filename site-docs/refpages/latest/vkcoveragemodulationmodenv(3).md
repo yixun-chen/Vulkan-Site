@@ -31,19 +31,19 @@ typedef enum VkCoverageModulationModeNV {
 } VkCoverageModulationModeNV;
 
 * 
-`VK_COVERAGE_MODULATION_MODE_NONE_NV` specifies that no components
+[VK_COVERAGE_MODULATION_MODE_NONE_NV](#) specifies that no components
 are multiplied by the modulation factor.
 
 * 
-`VK_COVERAGE_MODULATION_MODE_RGB_NV` specifies that the red, green,
+[VK_COVERAGE_MODULATION_MODE_RGB_NV](#) specifies that the red, green,
 and blue components are multiplied by the modulation factor.
 
 * 
-`VK_COVERAGE_MODULATION_MODE_ALPHA_NV` specifies that the alpha
+[VK_COVERAGE_MODULATION_MODE_ALPHA_NV](#) specifies that the alpha
 component is multiplied by the modulation factor.
 
 * 
-`VK_COVERAGE_MODULATION_MODE_RGBA_NV` specifies that all components
+[VK_COVERAGE_MODULATION_MODE_RGBA_NV](#) specifies that all components
 are multiplied by the modulation factor.
 
 [VK_NV_framebuffer_mixed_samples](VK_NV_framebuffer_mixed_samples.html), [VkPipelineCoverageModulationStateCreateInfoNV](VkPipelineCoverageModulationStateCreateInfoNV.html), [vkCmdSetCoverageModulationModeNV](vkCmdSetCoverageModulationModeNV.html)

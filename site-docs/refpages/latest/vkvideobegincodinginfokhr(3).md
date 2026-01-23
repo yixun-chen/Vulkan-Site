@@ -74,7 +74,7 @@ of `codedOffsetGranularity` are `0`.
 
 If `videoSession` was created with an [H.264     decode profile](../../../../spec/latest/chapters/videocoding.html#decode-h264-profile) with a
 [VkVideoDecodeH264ProfileInfoKHR](VkVideoDecodeH264ProfileInfoKHR.html)::`pictureLayout` of
-`VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES_BIT_KHR`,
+[VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES_BIT_KHR](VkVideoDecodeH264PictureLayoutFlagBitsKHR.html),
 then `codedOffsetGranularity` is equal to
 [VkVideoDecodeH264CapabilitiesKHR](VkVideoDecodeH264CapabilitiesKHR.html)::`fieldOffsetGranularity`,
 as returned by [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for that
@@ -142,7 +142,7 @@ inclusive, `videoSession` was created with
 [](#VUID-VkVideoBeginCodingInfoKHR-flags-07244) VUID-VkVideoBeginCodingInfoKHR-flags-07244
 
 If [VkVideoCapabilitiesKHR](VkVideoCapabilitiesKHR.html)::`flags` does not include
-`VK_VIDEO_CAPABILITY_SEPARATE_REFERENCE_IMAGES_BIT_KHR`, as returned
+[VK_VIDEO_CAPABILITY_SEPARATE_REFERENCE_IMAGES_BIT_KHR](VkVideoCapabilityFlagBitsKHR.html), as returned
 by [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the video profile
 `videoSession` was created with, then
 `pPictureResource->imageViewBinding` of all elements of
@@ -156,7 +156,7 @@ If `videoSession` was created with a decode operation and the
 `slotIndex` member of any element of `pReferenceSlots` is not
 negative, then the image view specified in
 `pPictureResource->imageViewBinding` for that element **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR`
+been created with the [VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](VkImageUsageFlagBits.html)
 usage flag set
 
 * 
@@ -166,14 +166,14 @@ If `videoSession` was created with an encode operation and the
 `slotIndex` member of any element of `pReferenceSlots` is not
 negative, then the image view specified in
 `pPictureResource->imageViewBinding` for that element **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR`
+been created with the [VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR](VkImageUsageFlagBits.html)
 usage flag set
 
 * 
 [](#VUID-VkVideoBeginCodingInfoKHR-videoSession-07247) VUID-VkVideoBeginCodingInfoKHR-videoSession-07247
 
 If `videoSession` was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR`, then
+[VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then
 `videoSessionParameters` **must** not be `VK_NULL_HANDLE`
 , unless the [`videoMaintenance2`](../../../../spec/latest/chapters/features.html#features-videoMaintenance2)
 feature is enabled
@@ -182,7 +182,7 @@ feature is enabled
 [](#VUID-VkVideoBeginCodingInfoKHR-videoSession-07248) VUID-VkVideoBeginCodingInfoKHR-videoSession-07248
 
 If `videoSession` was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR`, then
+[VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then
 `videoSessionParameters` **must** not be `VK_NULL_HANDLE`
 , unless the [`videoMaintenance2`](../../../../spec/latest/chapters/features.html#features-videoMaintenance2)
 feature is enabled
@@ -191,7 +191,7 @@ feature is enabled
 [](#VUID-VkVideoBeginCodingInfoKHR-videoSession-09261) VUID-VkVideoBeginCodingInfoKHR-videoSession-09261
 
 If `videoSession` was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR`, then
+[VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then
 `videoSessionParameters` **must** not be `VK_NULL_HANDLE`
 , unless the [`videoMaintenance2`](../../../../spec/latest/chapters/features.html#features-videoMaintenance2)
 feature is enabled
@@ -200,21 +200,21 @@ feature is enabled
 [](#VUID-VkVideoBeginCodingInfoKHR-videoSession-07249) VUID-VkVideoBeginCodingInfoKHR-videoSession-07249
 
 If `videoSession` was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR`, then
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then
 `videoSessionParameters` **must** not be `VK_NULL_HANDLE`
 
 * 
 [](#VUID-VkVideoBeginCodingInfoKHR-videoSession-07250) VUID-VkVideoBeginCodingInfoKHR-videoSession-07250
 
 If `videoSession` was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR`, then
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then
 `videoSessionParameters` **must** not be `VK_NULL_HANDLE`
 
 * 
 [](#VUID-VkVideoBeginCodingInfoKHR-videoSession-10283) VUID-VkVideoBeginCodingInfoKHR-videoSession-10283
 
 If `videoSession` was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR`, then
+[VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then
 `videoSessionParameters` **must** not be `VK_NULL_HANDLE`
 
 * 
@@ -229,7 +229,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoBeginCodingInfoKHR-sType-sType) VUID-VkVideoBeginCodingInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_BEGIN_CODING_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_BEGIN_CODING_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoBeginCodingInfoKHR-pNext-pNext) VUID-VkVideoBeginCodingInfoKHR-pNext-pNext

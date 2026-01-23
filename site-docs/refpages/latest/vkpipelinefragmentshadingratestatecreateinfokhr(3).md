@@ -58,14 +58,14 @@ rate.
 
 If this structure is not present, `fragmentSize` is considered to be
 equal to (1,1), and both elements of `combinerOps` are considered
-to be equal to `VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR`.
+to be equal to [VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR](VkFragmentShadingRateCombinerOpKHR.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineFragmentShadingRateStateCreateInfoKHR-sType-sType) VUID-VkPipelineFragmentShadingRateStateCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_STATE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_STATE_CREATE_INFO_KHR](VkStructureType.html)
 
 [VK_KHR_fragment_shading_rate](VK_KHR_fragment_shading_rate.html), [VkExtent2D](VkExtent2D.html), [VkFragmentShadingRateCombinerOpKHR](VkFragmentShadingRateCombinerOpKHR.html), [VkStructureType](VkStructureType.html)
 

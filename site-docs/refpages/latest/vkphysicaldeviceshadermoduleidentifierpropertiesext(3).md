@@ -35,7 +35,7 @@ structure describe the following:
 * 
 
 `shaderModuleIdentifierAlgorithmUUID` is an array of
-`VK_UUID_SIZE` `uint8_t` values which uniquely represents the
+[VK_UUID_SIZE](VK_UUID_SIZE.html) `uint8_t` values which uniquely represents the
 algorithm used to compute an identifier in
 [vkGetShaderModuleIdentifierEXT](vkGetShaderModuleIdentifierEXT.html) and
 [vkGetShaderModuleCreateInfoIdentifierEXT](vkGetShaderModuleCreateInfoIdentifierEXT.html).
@@ -68,7 +68,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MODULE_IDENTIFIER_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MODULE_IDENTIFIER_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_shader_module_identifier](VK_EXT_shader_module_identifier.html), [VkStructureType](VkStructureType.html)
 

@@ -100,15 +100,31 @@ Each element of `pDescriptorWrites` is interpreted as in
 To push an immutable sampler, use a [VkWriteDescriptorSet](VkWriteDescriptorSet.html) with
 `dstBinding` and `dstArrayElement` selecting the immutable sampler’s
 binding.
-If the descriptor type is `VK_DESCRIPTOR_TYPE_SAMPLER`, the
+If the descriptor type is [VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html), the
 `pImageInfo` parameter is ignored and the immutable sampler is taken
 from the push descriptor set layout in the pipeline layout.
-If the descriptor type is `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
+If the descriptor type is [VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html),
 the `sampler` member of the `pImageInfo` parameter is ignored and
 the immutable sampler is taken from the push descriptor set layout in the
 pipeline layout.
 
 Valid Usage
+
+* 
+[](#VUID-vkCmdPushDescriptorSet-commandBuffer-11295) VUID-vkCmdPushDescriptorSet-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdPushDescriptorSet-commandBuffer-11296) VUID-vkCmdPushDescriptorSet-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pResourceHeapBindInfo`
+equal to `NULL`
 
 * 
 [](#VUID-vkCmdPushDescriptorSet-set-00364) VUID-vkCmdPushDescriptorSet-set-00364
@@ -122,18 +138,18 @@ Valid Usage
 
 `set` **must** be the unique set number in the pipeline layout that
 uses a descriptor set layout that was created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](VkDescriptorSetLayoutCreateFlagBits.html)
 
 * 
 [](#VUID-vkCmdPushDescriptorSet-pDescriptorWrites-06494) VUID-vkCmdPushDescriptorSet-pDescriptorWrites-06494
 
 For each element i where
 `pDescriptorWrites`[i].`descriptorType` is
-`VK_DESCRIPTOR_TYPE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`,
+[VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html), or
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html),
 `pDescriptorWrites`[i].`pImageInfo` **must** be a valid pointer to
 an array of `pDescriptorWrites`[i].`descriptorCount` valid
 `VkDescriptorImageInfo` structures
@@ -180,7 +196,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdPushDescriptorSet-commandBuffer-cmdpool) VUID-vkCmdPushDescriptorSet-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdPushDescriptorSet-videocoding) VUID-vkCmdPushDescriptorSet-videocoding

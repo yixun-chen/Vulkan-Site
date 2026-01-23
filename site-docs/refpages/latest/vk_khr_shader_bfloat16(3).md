@@ -133,14 +133,14 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_BFLOAT16_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_BFLOAT16_FEATURES_KHR](VkStructureType.html)
 
 If [VK_KHR_cooperative_matrix](VK_KHR_cooperative_matrix.html) is supported:
 
 * 
 Extending [VkComponentTypeKHR](VkComponentTypeKHR.html):
 
-`VK_COMPONENT_TYPE_BFLOAT16_KHR`
+[VK_COMPONENT_TYPE_BFLOAT16_KHR](VkComponentTypeKHR.html)
 
 * 
 [BFloat16TypeKHR](../../../../spec/latest/appendices/spirvenv.html#spirvenv-capabilities-table-BFloat16TypeKHR)

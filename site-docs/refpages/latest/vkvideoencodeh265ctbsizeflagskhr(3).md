@@ -25,7 +25,7 @@ typedef VkFlags VkVideoEncodeH265CtbSizeFlagsKHR;
 of zero or more [VkVideoEncodeH265CtbSizeFlagBitsKHR](VkVideoEncodeH265CtbSizeFlagBitsKHR.html).
 
 Implementations **must** support at least one of
-`VkVideoEncodeH265CtbSizeFlagBitsKHR`.
+[VkVideoEncodeH265CtbSizeFlagBitsKHR](VkVideoEncodeH265CtbSizeFlagBitsKHR.html).
 
 [VK_KHR_video_encode_h265](VK_KHR_video_encode_h265.html), `VkFlags`, [VkVideoEncodeH265CapabilitiesKHR](VkVideoEncodeH265CapabilitiesKHR.html), [VkVideoEncodeH265CtbSizeFlagBitsKHR](VkVideoEncodeH265CtbSizeFlagBitsKHR.html), [VkVideoFormatH265QuantizationMapPropertiesKHR](VkVideoFormatH265QuantizationMapPropertiesKHR.html)
 

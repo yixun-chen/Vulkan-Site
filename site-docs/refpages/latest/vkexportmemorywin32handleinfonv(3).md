@@ -20,7 +20,7 @@
 VkExportMemoryWin32HandleInfoNV - Specify security attributes and access rights for Win32 memory handles
 
 When [VkExportMemoryAllocateInfoNV](VkExportMemoryAllocateInfoNV.html)::`handleTypes` includes
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV`, add a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV](VkExternalMemoryHandleTypeFlagBitsNV.html), add a
 `VkExportMemoryWin32HandleInfoNV` structure to the `pNext` chain of
 the [VkExportMemoryAllocateInfoNV](VkExportMemoryAllocateInfoNV.html) structure to specify security
 attributes and access rights for the memory object’s external handle.
@@ -66,7 +66,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMemoryWin32HandleInfoNV-sType-sType) VUID-VkExportMemoryWin32HandleInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkExportMemoryWin32HandleInfoNV-pAttributes-parameter) VUID-VkExportMemoryWin32HandleInfoNV-pAttributes-parameter

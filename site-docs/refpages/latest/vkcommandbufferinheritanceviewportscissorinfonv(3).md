@@ -45,7 +45,7 @@ inherited.
 * 
 `viewportDepthCount` specifies the maximum number of viewports to
 inherit.
-When `viewportScissor2D` is `VK_FALSE`, the behavior is as if
+When `viewportScissor2D` is [VK_FALSE](VK_FALSE.html), the behavior is as if
 this value is zero.
 
 * 
@@ -58,35 +58,35 @@ structure controls whether a command buffer **can** inherit the following state
 from other command buffers:
 
 * 
-`VK_DYNAMIC_STATE_SCISSOR`
+[VK_DYNAMIC_STATE_SCISSOR](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT`
+[VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT`
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT`
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT`
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT](VkDynamicState.html)
 
 as well as the following state, with restrictions on inherited depth values
 and viewport count:
 
 * 
-`VK_DYNAMIC_STATE_VIEWPORT`
+[VK_DYNAMIC_STATE_VIEWPORT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT`
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](VkDynamicState.html)
 
-If `viewportScissor2D` is `VK_FALSE`, then the command buffer does
+If `viewportScissor2D` is [VK_FALSE](VK_FALSE.html), then the command buffer does
 not inherit the listed dynamic state, and **should** set this state itself.
 If this structure is not present, the behavior is as if
-`viewportScissor2D` is `VK_FALSE`.
+`viewportScissor2D` is [VK_FALSE](VK_FALSE.html).
 
-If `viewportScissor2D` is `VK_TRUE`, then the listed dynamic state
+If `viewportScissor2D` is [VK_TRUE](VK_TRUE.html), then the listed dynamic state
 is inherited, and the command buffer **must** not set this
 state, except that the viewport and scissor count **may** be set by binding a
 graphics pipeline that does not specify this state as dynamic.
@@ -143,25 +143,25 @@ Valid Usage
 [](#VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04782) VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04782
 
 If the [    `inheritedViewportScissor2D`](../../../../spec/latest/chapters/features.html#features-inheritedViewportScissor2D) feature is not enabled,
-`viewportScissor2D` **must** be `VK_FALSE`
+`viewportScissor2D` **must** be [VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04783) VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04783
 
 If the [`multiViewport`](../../../../spec/latest/chapters/features.html#features-multiViewport) feature is not
-enabled and `viewportScissor2D` is `VK_TRUE`, then
+enabled and `viewportScissor2D` is [VK_TRUE](VK_TRUE.html), then
 `viewportDepthCount` **must** be `1`
 
 * 
 [](#VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04784) VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04784
 
-If `viewportScissor2D` is `VK_TRUE`, then
+If `viewportScissor2D` is [VK_TRUE](VK_TRUE.html), then
 `viewportDepthCount` **must** be greater than `0`
 
 * 
 [](#VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04785) VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04785
 
-If `viewportScissor2D` is `VK_TRUE`, then `pViewportDepths`
+If `viewportScissor2D` is [VK_TRUE](VK_TRUE.html), then `pViewportDepths`
 **must** be a valid pointer to an array of `viewportDepthCount` valid
 `VkViewport` structures, except any requirements on `x`, `y`,
 `width`, and `height` do not apply
@@ -169,16 +169,16 @@ If `viewportScissor2D` is `VK_TRUE`, then `pViewportDepths`
 * 
 [](#VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04786) VUID-VkCommandBufferInheritanceViewportScissorInfoNV-viewportScissor2D-04786
 
-If `viewportScissor2D` is `VK_TRUE`, then the command buffer
+If `viewportScissor2D` is [VK_TRUE](VK_TRUE.html), then the command buffer
 **must** be recorded with the
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](VkCommandBufferUsageFlagBits.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkCommandBufferInheritanceViewportScissorInfoNV-sType-sType) VUID-VkCommandBufferInheritanceViewportScissorInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_VIEWPORT_SCISSOR_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_VIEWPORT_SCISSOR_INFO_NV](VkStructureType.html)
 
 [VK_NV_inherited_viewport_scissor](VK_NV_inherited_viewport_scissor.html), `VkBool32`, [VkStructureType](VkStructureType.html), [VkViewport](VkViewport.html)
 

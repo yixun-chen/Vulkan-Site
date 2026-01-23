@@ -21,7 +21,7 @@ VkVideoDecodeAV1SessionParametersCreateInfoKHR - Structure specifies AV1 decoder
 
 When a [video session parameters](../../../../spec/latest/chapters/videocoding.html#video-session-parameters) object is
 created with the codec operation
-`VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR`, the
+[VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), the
 [VkVideoSessionParametersCreateInfoKHR](VkVideoSessionParametersCreateInfoKHR.html)::`pNext` chain **must** include
 a `VkVideoDecodeAV1SessionParametersCreateInfoKHR` structure specifying
 the contents of the object.
@@ -63,7 +63,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoDecodeAV1SessionParametersCreateInfoKHR-sType-sType) VUID-VkVideoDecodeAV1SessionParametersCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoDecodeAV1SessionParametersCreateInfoKHR-pStdSequenceHeader-parameter) VUID-VkVideoDecodeAV1SessionParametersCreateInfoKHR-pStdSequenceHeader-parameter

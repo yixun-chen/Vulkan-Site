@@ -191,15 +191,15 @@ Extending [VkRenderPassBeginInfo](VkRenderPassBeginInfo.html):
 * 
 Extending [VkRenderPassCreateFlagBits](VkRenderPassCreateFlagBits.html):
 
-`VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM`
+[VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM](VkRenderPassCreateFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDER_PASS_TRANSFORM_INFO_QCOM`
+[VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDER_PASS_TRANSFORM_INFO_QCOM](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_RENDER_PASS_TRANSFORM_BEGIN_INFO_QCOM`
+[VK_STRUCTURE_TYPE_RENDER_PASS_TRANSFORM_BEGIN_INFO_QCOM](VkStructureType.html)
 
 1) Some early Adreno drivers (October 2019 through March 2020) advertised
 support for this extension but expected VK_STRUCTURE_TYPE values different

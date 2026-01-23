@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoDecodeUsageInfoKHR-sType-sType) VUID-VkVideoDecodeUsageInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_DECODE_USAGE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_USAGE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoDecodeUsageInfoKHR-videoUsageHints-parameter) VUID-VkVideoDecodeUsageInfoKHR-videoUsageHints-parameter

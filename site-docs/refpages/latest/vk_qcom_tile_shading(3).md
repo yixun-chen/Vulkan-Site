@@ -56,10 +56,6 @@ Not ratified
 
 [VK_QCOM_tile_properties](VK_QCOM_tile_properties.html)
 
-or
-
-[VK_KHR_get_physical_device_properties2](VK_KHR_get_physical_device_properties2.html)
-
 **SPIR-V Dependencies**
 
 * 
@@ -247,35 +243,35 @@ Extending [VkRenderPassCreateInfo](VkRenderPassCreateInfo.html), [VkRenderPassCr
 * 
 Extending [VkAccessFlagBits2](VkAccessFlagBits2.html):
 
-`VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM`
+[VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM](VkAccessFlagBits2.html)
 
 * 
-`VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM`
+[VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM](VkAccessFlagBits2.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_DISPATCH_TILE_INFO_QCOM`
+[VK_STRUCTURE_TYPE_DISPATCH_TILE_INFO_QCOM](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PER_TILE_BEGIN_INFO_QCOM`
+[VK_STRUCTURE_TYPE_PER_TILE_BEGIN_INFO_QCOM](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PER_TILE_END_INFO_QCOM`
+[VK_STRUCTURE_TYPE_PER_TILE_END_INFO_QCOM](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_FEATURES_QCOM`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_FEATURES_QCOM](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_PROPERTIES_QCOM`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_PROPERTIES_QCOM](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM`
+[VK_STRUCTURE_TYPE_RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM](VkStructureType.html)
 
 Extending [VkSubpassDescriptionFlagBits](VkSubpassDescriptionFlagBits.html):
 
 * 
-`VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM`
+[VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM](VkSubpassDescriptionFlagBits.html)
 
 * 
 [`TileOffsetQCOM`](../../../../spec/latest/chapters/interfaces.html#interfaces-builtin-variables-tileoffset)

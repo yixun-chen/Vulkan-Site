@@ -34,7 +34,7 @@ aspects of the attachment to be cleared.
 
 * 
 `colorAttachment` is only meaningful if
-`VK_IMAGE_ASPECT_COLOR_BIT` is set in `aspectMask`, in which
+[VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html) is set in `aspectMask`, in which
 case it is an index into the bound color attachments.
 
 * 
@@ -46,14 +46,14 @@ Valid Usage
 * 
 [](#VUID-VkClearAttachment-aspectMask-00019) VUID-VkClearAttachment-aspectMask-00019
 
-If `aspectMask` includes `VK_IMAGE_ASPECT_COLOR_BIT`, it **must**
-not include `VK_IMAGE_ASPECT_DEPTH_BIT` or
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+If `aspectMask` includes [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html), it **must**
+not include [VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) or
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkClearAttachment-aspectMask-00020) VUID-VkClearAttachment-aspectMask-00020
 
-`aspectMask` **must** not include `VK_IMAGE_ASPECT_METADATA_BIT`
+`aspectMask` **must** not include [VK_IMAGE_ASPECT_METADATA_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkClearAttachment-aspectMask-02246) VUID-VkClearAttachment-aspectMask-02246

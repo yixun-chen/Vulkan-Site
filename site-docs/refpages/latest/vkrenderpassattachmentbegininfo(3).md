@@ -69,7 +69,7 @@ Each element of `pAttachments` **must** have been created with the
 
 Each element of `pAttachments` **must** have been created with
 [VkImageViewCreateInfo](VkImageViewCreateInfo.html)::`viewType` not equal to
-`VK_IMAGE_VIEW_TYPE_3D`
+[VK_IMAGE_VIEW_TYPE_3D](VkImageViewType.html)
 
 * 
 [](#VUID-VkRenderPassAttachmentBeginInfo-pAttachments-07010) VUID-VkRenderPassAttachmentBeginInfo-pAttachments-07010
@@ -77,7 +77,7 @@ Each element of `pAttachments` **must** have been created with
 If
 [multisampled-render-to-single-sampled](../../../../spec/latest/chapters/renderpass.html#subpass-multisampledrendertosinglesampled)
 is enabled for any subpass, all element of `pAttachments` which have
-a sample count equal to `VK_SAMPLE_COUNT_1_BIT` **must** have a format
+a sample count equal to [VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) **must** have a format
 that supports the sample count specified in
 [VkMultisampledRenderToSingleSampledInfoEXT](VkMultisampledRenderToSingleSampledInfoEXT.html)::`rasterizationSamples`
 
@@ -86,7 +86,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassAttachmentBeginInfo-sType-sType) VUID-VkRenderPassAttachmentBeginInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderPassAttachmentBeginInfo-pAttachments-parameter) VUID-VkRenderPassAttachmentBeginInfo-pAttachments-parameter

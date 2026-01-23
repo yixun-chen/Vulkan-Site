@@ -42,7 +42,7 @@ structure.
 `useGopRemainingFrames` indicates whether the implementation’s rate
 control algorithm **should** use the values specified in
 `gopRemainingI`, `gopRemainingP`, and `gopRemainingB`.
-If `useGopRemainingFrames` is `VK_FALSE`, then the values of
+If `useGopRemainingFrames` is [VK_FALSE](VK_FALSE.html), then the values of
 `gopRemainingI`, `gopRemainingP`, and `gopRemainingB` are
 ignored.
 
@@ -61,11 +61,11 @@ encode operation.
 be remaining in the [GOP](../../../../spec/latest/chapters/videocoding.html#encode-h265-gop) prior to executing the video
 encode operation.
 
-Setting `useGopRemainingFrames` to `VK_TRUE` and including this
+Setting `useGopRemainingFrames` to [VK_TRUE](VK_TRUE.html) and including this
 structure in the `pNext` chain of [VkVideoBeginCodingInfoKHR](VkVideoBeginCodingInfoKHR.html) is
 only mandatory if the
 [VkVideoEncodeH265CapabilitiesKHR](VkVideoEncodeH265CapabilitiesKHR.html)::`requiresGopRemainingFrames`
-reported for the used [video profile](../../../../spec/latest/chapters/videocoding.html#video-profiles) is `VK_TRUE`.
+reported for the used [video profile](../../../../spec/latest/chapters/videocoding.html#video-profiles) is [VK_TRUE](VK_TRUE.html).
 However, implementations **may** use these remaining frame counts, when
 specified, even when it is not required.
 In particular, when the application does not use a
@@ -88,7 +88,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeH265GopRemainingFrameInfoKHR-sType-sType) VUID-VkVideoEncodeH265GopRemainingFrameInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_GOP_REMAINING_FRAME_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_GOP_REMAINING_FRAME_INFO_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_h265](VK_KHR_video_encode_h265.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

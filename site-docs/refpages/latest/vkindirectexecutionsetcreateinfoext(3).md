@@ -56,14 +56,14 @@ is zero
 or the [`shaderObject`](../../../../spec/latest/chapters/features.html#features-shaderObject) feature is not
 enabled
 `type` **must** not be
-`VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT`
+[VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT](VkIndirectExecutionSetInfoTypeEXT.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkIndirectExecutionSetCreateInfoEXT-sType-sType) VUID-VkIndirectExecutionSetCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkIndirectExecutionSetCreateInfoEXT-type-parameter) VUID-VkIndirectExecutionSetCreateInfoEXT-type-parameter
@@ -73,12 +73,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkIndirectExecutionSetCreateInfoEXT-pPipelineInfo-parameter) VUID-VkIndirectExecutionSetCreateInfoEXT-pPipelineInfo-parameter
 
- If `type` is `VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT`, the `pPipelineInfo` member of `info` **must** be a valid pointer to a valid [VkIndirectExecutionSetPipelineInfoEXT](VkIndirectExecutionSetPipelineInfoEXT.html) structure
+ If `type` is [VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT](VkIndirectExecutionSetInfoTypeEXT.html), the `pPipelineInfo` member of `info` **must** be a valid pointer to a valid [VkIndirectExecutionSetPipelineInfoEXT](VkIndirectExecutionSetPipelineInfoEXT.html) structure
 
 * 
 [](#VUID-VkIndirectExecutionSetCreateInfoEXT-pShaderInfo-parameter) VUID-VkIndirectExecutionSetCreateInfoEXT-pShaderInfo-parameter
 
- If `type` is `VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT`, the `pShaderInfo` member of `info` **must** be a valid pointer to a valid [VkIndirectExecutionSetShaderInfoEXT](VkIndirectExecutionSetShaderInfoEXT.html) structure
+ If `type` is [VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT](VkIndirectExecutionSetInfoTypeEXT.html), the `pShaderInfo` member of `info` **must** be a valid pointer to a valid [VkIndirectExecutionSetShaderInfoEXT](VkIndirectExecutionSetShaderInfoEXT.html) structure
 
 [VK_EXT_device_generated_commands](VK_EXT_device_generated_commands.html), [VkIndirectExecutionSetInfoEXT](VkIndirectExecutionSetInfoEXT.html), [VkIndirectExecutionSetInfoTypeEXT](VkIndirectExecutionSetInfoTypeEXT.html), [VkStructureType](VkStructureType.html), [vkCreateIndirectExecutionSetEXT](vkCreateIndirectExecutionSetEXT.html)
 

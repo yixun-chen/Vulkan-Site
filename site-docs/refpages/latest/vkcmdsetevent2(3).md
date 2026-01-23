@@ -69,12 +69,12 @@ defined by `pDependencyInfo`.
 The second [access scope](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-access-scopes)
 includes only [queue family ownership transfers](../../../../spec/latest/chapters/synchronization.html#synchronization-queue-transfers) and [image layout transitions](../../../../spec/latest/chapters/synchronization.html#synchronization-image-layout-transitions).
 
-If `VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR` is not set in
+If [VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](VkDependencyFlagBits.html) is not set in
 `pDependencyInfo->dependencyFlags`, future
 [vkCmdWaitEvents2](vkCmdWaitEvents2.html) commands rely on all values of each element in
 `pDependencyInfo` matching exactly with those used to signal the
 corresponding event.
-If `VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR` is set, `vkCmdSetEvent2`
+If [VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](VkDependencyFlagBits.html) is set, `vkCmdSetEvent2`
 **must** only include the [source stage mask](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages-masks) of the first synchronization scope in
 `pDependencyInfo->pMemoryBarriers`[0].`srcStageMask`.
 [vkCmdWaitEvents](vkCmdWaitEvents.html) **must** not be used to wait on the result of a signal
@@ -104,7 +104,7 @@ be enabled
 [](#VUID-vkCmdSetEvent2-dependencyFlags-03825) VUID-vkCmdSetEvent2-dependencyFlags-03825
 
     The `dependencyFlags` member of `pDependencyInfo` **must** be `0`
-or `VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR`
+or [VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](VkDependencyFlagBits.html)
 
 * 
 [](#VUID-vkCmdSetEvent2-srcStageMask-09391) VUID-vkCmdSetEvent2-srcStageMask-09391
@@ -112,7 +112,7 @@ or `VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR`
 The `srcStageMask` member of any element of the
 `pMemoryBarriers`, `pBufferMemoryBarriers`, or
 `pImageMemoryBarriers` members of `pDependencyInfo` **must** not
-include `VK_PIPELINE_STAGE_2_HOST_BIT`
+include [VK_PIPELINE_STAGE_2_HOST_BIT](VkPipelineStageFlagBits2.html)
 
 * 
 [](#VUID-vkCmdSetEvent2-dstStageMask-09392) VUID-vkCmdSetEvent2-dstStageMask-09392
@@ -120,7 +120,7 @@ include `VK_PIPELINE_STAGE_2_HOST_BIT`
 The `dstStageMask` member of any element of the
 `pMemoryBarriers`, `pBufferMemoryBarriers`, or
 `pImageMemoryBarriers` members of `pDependencyInfo` **must** not
-include `VK_PIPELINE_STAGE_2_HOST_BIT`
+include [VK_PIPELINE_STAGE_2_HOST_BIT](VkPipelineStageFlagBits2.html)
 
 * 
 [](#VUID-vkCmdSetEvent2-commandBuffer-03826) VUID-vkCmdSetEvent2-commandBuffer-03826
@@ -150,7 +150,7 @@ create the command pool that `commandBuffer` was allocated from
 [](#VUID-vkCmdSetEvent2-dependencyFlags-10785) VUID-vkCmdSetEvent2-dependencyFlags-10785
 
 If the `dependencyFlags` member of `pDependencyInfo` includes
-`VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR`, the
+[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](VkDependencyFlagBits.html), the
 `bufferMemoryBarrierCount` and `imageMemoryBarrierCount` members
 of `pDependencyInfo` **must** be `0`
 
@@ -158,14 +158,14 @@ of `pDependencyInfo` **must** be `0`
 [](#VUID-vkCmdSetEvent2-dependencyFlags-10786) VUID-vkCmdSetEvent2-dependencyFlags-10786
 
 If the `dependencyFlags` member of `pDependencyInfo` includes
-`VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR`, the
+[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](VkDependencyFlagBits.html), the
 `memoryBarrierCount` member of `pDependencyInfo` **must** be `1`
 
 * 
 [](#VUID-vkCmdSetEvent2-dependencyFlags-10787) VUID-vkCmdSetEvent2-dependencyFlags-10787
 
 If the `dependencyFlags` member of `pDependencyInfo` includes
-`VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR`, the `srcAccessMask`,
+[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](VkDependencyFlagBits.html), the `srcAccessMask`,
 `dstStageMask`, and `dstAccessMask` members of
 `pDependencyInfo->pMemoryBarriers`[0] **must** be `0`
 
@@ -194,7 +194,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetEvent2-commandBuffer-cmdpool) VUID-vkCmdSetEvent2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](VkQueueFlagBits.html), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetEvent2-renderpass) VUID-vkCmdSetEvent2-renderpass

@@ -63,7 +63,7 @@ If the `VkPhysicalDeviceRobustness2FeaturesKHR` structure is included in the `pN
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceRobustness2FeaturesKHR`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage
@@ -80,7 +80,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceRobustness2FeaturesKHR-sType-sType) VUID-VkPhysicalDeviceRobustness2FeaturesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_KHR](VkStructureType.html)
 
 [VK_EXT_robustness2](VK_EXT_robustness2.html), [VK_KHR_robustness2](VK_KHR_robustness2.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -13,6 +13,8 @@
 - [Other Extension Metadata](#_other_extension_metadata)
 - [Other_Extension_Metadata](#_other_extension_metadata)
 - [Description](#_description)
+- [Promotion to VK_EXT_shader_subgroup_partitioned](#_promotion_to_vk_ext_shader_subgroup_partitioned)
+- [Promotion_to_VK_EXT_shader_subgroup_partitioned](#_promotion_to_vk_ext_shader_subgroup_partitioned)
 - [New Enum Constants](#_new_enum_constants)
 - [New_Enum_Constants](#_new_enum_constants)
 - [Version History](#_version_history)
@@ -52,6 +54,13 @@ Not ratified
 * 
 [SPV_NV_shader_subgroup_partitioned](https://github.khronos.org/SPIRV-Registry/extensions/NV/SPV_NV_shader_subgroup_partitioned.html)
 
+**Deprecation State**
+
+* 
+*Promoted* to
+[VK_EXT_shader_subgroup_partitioned](VK_EXT_shader_subgroup_partitioned.html)
+extension
+
 **Contact**
 
 * 
@@ -59,7 +68,7 @@ Jeff Bolz [jeffbolznv](https://github.com/KhronosGroup/Vulkan-Docs/issues/new?bo
 
 **Last Modified Date**
 
-2018-03-17
+2025-11-12
 
 **Interactions and External Dependencies**
 
@@ -79,9 +88,14 @@ GLSL extension and
 [`SPV_NV_shader_subgroup_partitioned`](https://github.khronos.org/SPIRV-Registry/extensions/NV/SPV_NV_shader_subgroup_partitioned.html)
 SPIR-V extension.
 Support for these new operations is advertised via the
-`VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV` bit.
+[VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV](VkSubgroupFeatureFlagBits.html) bit.
 
 This extension requires Vulkan 1.1, for general subgroup support.
+
+All functionality in this extension is included in
+`[VK_EXT_shader_subgroup_partitioned](VK_EXT_shader_subgroup_partitioned.html)`, with the suffix changed to EXT.
+The original type, enum, and command names are still available as aliases of
+the core functionality.
 
 * 
 `VK_NV_SHADER_SUBGROUP_PARTITIONED_EXTENSION_NAME`
@@ -92,7 +106,7 @@ This extension requires Vulkan 1.1, for general subgroup support.
 * 
 Extending [VkSubgroupFeatureFlagBits](VkSubgroupFeatureFlagBits.html):
 
-`VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV`
+[VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV](VkSubgroupFeatureFlagBits.html)
 
 * 
 Revision 1, 2018-03-17 (Jeff Bolz)

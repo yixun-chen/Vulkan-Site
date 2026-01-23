@@ -45,38 +45,38 @@ structure.
 * 
  `mutableDescriptorType` indicates
 that the implementation **must** support using the [VkDescriptorType](VkDescriptorType.html)
-of `VK_DESCRIPTOR_TYPE_MUTABLE_EXT` with at least the following
+of [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html) with at least the following
 descriptor types, where any combination of the types **must** be supported:
 
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html)
 
 * 
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html)
 
 * 
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html)
 
 * 
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html)
 
 * 
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html)
 
 * 
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html)
 
 * 
 Additionally, `mutableDescriptorType` indicates that:
 
 Non-uniform descriptor indexing **must** be supported if all descriptor
 types in a [VkMutableDescriptorTypeListEXT](VkMutableDescriptorTypeListEXT.html) for
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT` have the corresponding non-uniform
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html) have the corresponding non-uniform
 indexing features enabled in
 [VkPhysicalDeviceDescriptorIndexingFeatures](VkPhysicalDeviceDescriptorIndexingFeatures.html).
 
 * 
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` with
-`descriptorType` of `VK_DESCRIPTOR_TYPE_MUTABLE_EXT` relaxes
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html) with
+`descriptorType` of [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html) relaxes
 the list of required descriptor types to the descriptor types which
 have the corresponding update-after-bind feature enabled in
 [VkPhysicalDeviceDescriptorIndexingFeatures](VkPhysicalDeviceDescriptorIndexingFeatures.html).
@@ -84,15 +84,15 @@ have the corresponding update-after-bind feature enabled in
 * 
 Dynamically uniform descriptor indexing **must** be supported if all
 descriptor types in a [VkMutableDescriptorTypeListEXT](VkMutableDescriptorTypeListEXT.html) for
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT` have the corresponding dynamic
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html) have the corresponding dynamic
 indexing features enabled.
 
 * 
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT` **must** be
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html) **must** be
 supported.
 
 * 
-`VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT` **must** be supported.
+[VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT](VkDescriptorPoolCreateFlagBits.html) **must** be supported.
 
 If the `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -100,7 +100,7 @@ If the `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT` structure is included 
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -108,7 +108,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MUTABLE_DESCRIPTOR_TYPE_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MUTABLE_DESCRIPTOR_TYPE_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_mutable_descriptor_type](VK_EXT_mutable_descriptor_type.html), [VK_VALVE_mutable_descriptor_type](VK_VALVE_mutable_descriptor_type.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

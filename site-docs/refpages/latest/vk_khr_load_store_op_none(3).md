@@ -79,8 +79,8 @@ Bill Licea-Kane, Qualcomm Technologies, Inc.
 * 
 Tobias Hector, AMD
 
-This extension provides `VK_ATTACHMENT_LOAD_OP_NONE_KHR` and
-`VK_ATTACHMENT_STORE_OP_NONE_KHR`, which are identically promoted from
+This extension provides [VK_ATTACHMENT_LOAD_OP_NONE_KHR](VkAttachmentLoadOp.html) and
+[VK_ATTACHMENT_STORE_OP_NONE_KHR](VkAttachmentStoreOp.html), which are identically promoted from
 the `[VK_EXT_load_store_op_none](VK_EXT_load_store_op_none.html)` extension.
 
 * 
@@ -92,19 +92,19 @@ the `[VK_EXT_load_store_op_none](VK_EXT_load_store_op_none.html)` extension.
 * 
 Extending [VkAttachmentLoadOp](VkAttachmentLoadOp.html):
 
-`VK_ATTACHMENT_LOAD_OP_NONE_KHR`
+[VK_ATTACHMENT_LOAD_OP_NONE_KHR](VkAttachmentLoadOp.html)
 
 Extending [VkAttachmentStoreOp](VkAttachmentStoreOp.html):
 
 * 
-`VK_ATTACHMENT_STORE_OP_NONE_KHR`
+[VK_ATTACHMENT_STORE_OP_NONE_KHR](VkAttachmentStoreOp.html)
 
 Functionality in this extension is included in core Vulkan 1.4 with the KHR
 suffix omitted.
 The original type, enum and command names are still available as aliases of
 the core functionality.
 
-|  | While `VK_ATTACHMENT_STORE_OP_NONE` is part of Vulkan 1.3, this
+|  | While [VK_ATTACHMENT_STORE_OP_NONE](VkAttachmentStoreOp.html) is part of Vulkan 1.3, this
 | --- | --- |
 extension was not promoted to core Vulkan 1.3 either in whole or in part.
 This functionality was promoted from `[VK_KHR_dynamic_rendering](VK_KHR_dynamic_rendering.html)`. |

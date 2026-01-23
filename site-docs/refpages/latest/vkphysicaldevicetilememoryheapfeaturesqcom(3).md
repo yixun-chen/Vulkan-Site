@@ -48,7 +48,7 @@ If the `VkPhysicalDeviceTileMemoryHeapFeaturesQCOM` structure is included in the
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceTileMemoryHeapFeaturesQCOM`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -56,7 +56,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceTileMemoryHeapFeaturesQCOM-sType-sType) VUID-VkPhysicalDeviceTileMemoryHeapFeaturesQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_FEATURES_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_FEATURES_QCOM](VkStructureType.html)
 
 [VK_QCOM_tile_memory_heap](VK_QCOM_tile_memory_heap.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

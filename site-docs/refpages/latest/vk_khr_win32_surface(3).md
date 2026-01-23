@@ -143,7 +143,7 @@ well as a query to determine support for rendering to the windows desktop.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR](VkStructureType.html)
 
 1) Does Win32 need a way to query for compatibility between a particular
 physical device and a specific screen? Compatibility between a physical

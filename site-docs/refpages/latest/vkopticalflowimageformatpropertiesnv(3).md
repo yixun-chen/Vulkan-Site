@@ -45,7 +45,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkOpticalFlowImageFormatPropertiesNV-sType-sType) VUID-VkOpticalFlowImageFormatPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_OPTICAL_FLOW_IMAGE_FORMAT_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_OPTICAL_FLOW_IMAGE_FORMAT_PROPERTIES_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkOpticalFlowImageFormatPropertiesNV-pNext-pNext) VUID-VkOpticalFlowImageFormatPropertiesNV-pNext-pNext

@@ -48,7 +48,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalComputeQueueCreateInfoNV-sType-sType) VUID-VkExternalComputeQueueCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_CREATE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkExternalComputeQueueCreateInfoNV-pNext-pNext) VUID-VkExternalComputeQueueCreateInfoNV-pNext-pNext

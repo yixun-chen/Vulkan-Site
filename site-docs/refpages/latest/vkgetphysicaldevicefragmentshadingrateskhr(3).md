@@ -48,8 +48,8 @@ array, and on return the variable is overwritten with the number of
 structures actually written to `pFragmentShadingRates`.
 If `pFragmentShadingRateCount` is less than the number of fragment
 shading rates available, at most `pFragmentShadingRateCount` structures
-will be written, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available fragment shading
+will be written, and [VK_INCOMPLETE](VkResult.html) will be returned instead of
+[VK_SUCCESS](VkResult.html), to indicate that not all the available fragment shading
 rates were returned.
 
 The returned array of fragment shading rates **must** be ordered from largest
@@ -96,12 +96,12 @@ Implementations **must** support at least the following shading rates:
 
 | `sampleCounts` | `fragmentSize` |
 | --- | --- |
-| `VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT` | {2,2} |
-| `VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT` | {2,1} |
+| [VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) \| [VK_SAMPLE_COUNT_4_BIT](VkSampleCountFlagBits.html) | {2,2} |
+| [VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) \| [VK_SAMPLE_COUNT_4_BIT](VkSampleCountFlagBits.html) | {2,1} |
 | ~0 | {1,1} |
 
-If [`framebufferColorSampleCounts`](../../../../spec/latest/chapters/limits.html#limits-framebufferColorSampleCounts), includes `VK_SAMPLE_COUNT_2_BIT`,
-the required rates **must** also include `VK_SAMPLE_COUNT_2_BIT`.
+If [`framebufferColorSampleCounts`](../../../../spec/latest/chapters/limits.html#limits-framebufferColorSampleCounts), includes [VK_SAMPLE_COUNT_2_BIT](VkSampleCountFlagBits.html),
+the required rates **must** also include [VK_SAMPLE_COUNT_2_BIT](VkSampleCountFlagBits.html).
 
 |  | Including the {1,1} fragment size is done for completeness; it has no actual
 | --- | --- |
@@ -113,15 +113,15 @@ are supported for this rate. |
 The returned set of fragment shading rates **must** be returned in the native
 (rotated) coordinate system.
 For rasterization using render pass `transform` not equal to
-`VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR`, the application **must** transform
+[VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html), the application **must** transform
 the returned fragment shading rates into the current (unrotated) coordinate
 system to get the supported rates for that transform.
 
 |  | For example, consider an implementation returning support for 4x2, but not
 | --- | --- |
 2x4 in the set of supported fragment shading rates.
-This means that for transforms `VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR`
-and `VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR`, 2x4 is a supported rate,
+This means that for transforms [VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html)
+and [VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html), 2x4 is a supported rate,
 but 4x2 is an unsupported rate. |
 
 Valid Usage (Implicit)
@@ -146,21 +146,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_fragment_shading_rate](VK_KHR_fragment_shading_rate.html), [VkPhysicalDevice](VkPhysicalDevice.html), [VkPhysicalDeviceFragmentShadingRateKHR](VkPhysicalDeviceFragmentShadingRateKHR.html)
 

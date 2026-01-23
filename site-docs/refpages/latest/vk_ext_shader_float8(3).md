@@ -113,17 +113,17 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT8_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT8_FEATURES_EXT](VkStructureType.html)
 
 If [VK_KHR_cooperative_matrix](VK_KHR_cooperative_matrix.html) is supported:
 
 * 
 Extending [VkComponentTypeKHR](VkComponentTypeKHR.html):
 
-`VK_COMPONENT_TYPE_FLOAT8_E4M3_EXT`
+[VK_COMPONENT_TYPE_FLOAT8_E4M3_EXT](VkComponentTypeKHR.html)
 
 * 
-`VK_COMPONENT_TYPE_FLOAT8_E5M2_EXT`
+[VK_COMPONENT_TYPE_FLOAT8_E5M2_EXT](VkComponentTypeKHR.html)
 
 * 
 [Float8EXT](../../../../spec/latest/appendices/spirvenv.html#spirvenv-capabilities-table-Float8EXT)

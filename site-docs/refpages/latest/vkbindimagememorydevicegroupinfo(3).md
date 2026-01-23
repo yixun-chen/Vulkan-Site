@@ -83,7 +83,7 @@ block at (0,0) corresponds to memory starting at `memoryOffset`.
 
 If `splitInstanceBindRegionCount` and `deviceIndexCount` are zero
 and the memory comes from a memory heap with the
-`VK_MEMORY_HEAP_MULTI_INSTANCE_BIT` bit set, then it is as if
+[VK_MEMORY_HEAP_MULTI_INSTANCE_BIT](VkMemoryHeapFlagBits.html) bit set, then it is as if
 `pDeviceIndices` contains consecutive indices from zero to the number of
 physical devices in the logical device, minus one.
 In other words, by default each physical device attaches to its own instance
@@ -91,7 +91,7 @@ of the memory.
 
 If `splitInstanceBindRegionCount` and `deviceIndexCount` are zero
 and the memory comes from a memory heap without the
-`VK_MEMORY_HEAP_MULTI_INSTANCE_BIT` bit set, then it is as if
+[VK_MEMORY_HEAP_MULTI_INSTANCE_BIT](VkMemoryHeapFlagBits.html) bit set, then it is as if
 `pDeviceIndices` contains an array of zeros.
 In other words, by default each physical device attaches to instance zero.
 
@@ -167,7 +167,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindImageMemoryDeviceGroupInfo-sType-sType) VUID-VkBindImageMemoryDeviceGroupInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkBindImageMemoryDeviceGroupInfo-pDeviceIndices-parameter) VUID-VkBindImageMemoryDeviceGroupInfo-pDeviceIndices-parameter

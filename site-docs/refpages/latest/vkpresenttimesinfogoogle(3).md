@@ -75,7 +75,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPresentTimesInfoGOOGLE-sType-sType) VUID-VkPresentTimesInfoGOOGLE-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE](VkStructureType.html)
 
 * 
 [](#VUID-VkPresentTimesInfoGOOGLE-pTimes-parameter) VUID-VkPresentTimesInfoGOOGLE-pTimes-parameter

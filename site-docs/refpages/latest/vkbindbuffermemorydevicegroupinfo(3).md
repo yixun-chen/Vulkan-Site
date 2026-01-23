@@ -57,14 +57,14 @@ the buffer is attached to the instance of `memory` on the physical
 device with device index `pDeviceIndices`[i].
 
 If `deviceIndexCount` is zero and `memory` comes from a memory heap
-with the `VK_MEMORY_HEAP_MULTI_INSTANCE_BIT` bit set, then it is as if
+with the [VK_MEMORY_HEAP_MULTI_INSTANCE_BIT](VkMemoryHeapFlagBits.html) bit set, then it is as if
 `pDeviceIndices` contains consecutive indices from zero to the number of
 physical devices in the logical device, minus one.
 In other words, by default each physical device attaches to its own instance
 of `memory`.
 
 If `deviceIndexCount` is zero and `memory` comes from a memory heap
-without the `VK_MEMORY_HEAP_MULTI_INSTANCE_BIT` bit set, then it is as
+without the [VK_MEMORY_HEAP_MULTI_INSTANCE_BIT](VkMemoryHeapFlagBits.html) bit set, then it is as
 if `pDeviceIndices` contains an array of zeros.
 In other words, by default each physical device attaches to instance zero.
 
@@ -86,7 +86,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindBufferMemoryDeviceGroupInfo-sType-sType) VUID-VkBindBufferMemoryDeviceGroupInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkBindBufferMemoryDeviceGroupInfo-pDeviceIndices-parameter) VUID-VkBindBufferMemoryDeviceGroupInfo-pDeviceIndices-parameter

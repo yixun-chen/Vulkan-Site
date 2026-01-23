@@ -30,7 +30,7 @@ typedef enum VkFragmentShadingRateTypeNV {
 } VkFragmentShadingRateTypeNV;
 
 * 
-`VK_FRAGMENT_SHADING_RATE_TYPE_FRAGMENT_SIZE_NV` specifies that a
+[VK_FRAGMENT_SHADING_RATE_TYPE_FRAGMENT_SIZE_NV](#) specifies that a
 graphics pipeline should obtain its pipeline fragment shading rate and
 shading rate combiner state from the
 [VkPipelineFragmentShadingRateStateCreateInfoKHR](VkPipelineFragmentShadingRateStateCreateInfoKHR.html) structure and that
@@ -39,7 +39,7 @@ any state specified by the
 should be ignored.
 
 * 
-`VK_FRAGMENT_SHADING_RATE_TYPE_ENUMS_NV` specifies that a graphics
+[VK_FRAGMENT_SHADING_RATE_TYPE_ENUMS_NV](#) specifies that a graphics
 pipeline should obtain its pipeline fragment shading rate and shading
 rate combiner state from the
 [VkPipelineFragmentShadingRateEnumStateCreateInfoNV](VkPipelineFragmentShadingRateEnumStateCreateInfoNV.html) structure and

@@ -40,6 +40,24 @@ update will be recorded.
 `pPushConstantsInfo` is a pointer to a [VkPushConstantsInfo](VkPushConstantsInfo.html)
 structure.
 
+Valid Usage
+
+* 
+[](#VUID-vkCmdPushConstants2-commandBuffer-11295) VUID-vkCmdPushConstants2-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdPushConstants2-commandBuffer-11296) VUID-vkCmdPushConstants2-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pResourceHeapBindInfo`
+equal to `NULL`
+
 Valid Usage (Implicit)
 
 * 
@@ -60,7 +78,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdPushConstants2-commandBuffer-cmdpool) VUID-vkCmdPushConstants2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdPushConstants2-videocoding) VUID-vkCmdPushConstants2-videocoding

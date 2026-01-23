@@ -86,7 +86,7 @@ If the `attachment` member of any element of
 `pInputAttachments`, `pColorAttachments`,
 `pResolveAttachments` or `pDepthStencilAttachment`, or any
 element of `pPreserveAttachments` in any element of `pSubpasses`
-is not `VK_ATTACHMENT_UNUSED`, then it **must** be less than
+is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html), then it **must** be less than
 `attachmentCount`
 
 * 
@@ -95,7 +95,7 @@ is not `VK_ATTACHMENT_UNUSED`, then it **must** be less than
 If the pNext chain includes a
 [VkRenderPassFragmentDensityMapCreateInfoEXT](VkRenderPassFragmentDensityMapCreateInfoEXT.html) structure and the
 `fragmentDensityMapAttachment` member is not
-`VK_ATTACHMENT_UNUSED`, then `attachment` **must** be less than
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html), then `attachment` **must** be less than
 `attachmentCount`
 
 * 
@@ -103,41 +103,41 @@ If the pNext chain includes a
 
 If the [    `fragmentDensityMapLayered`](../../../../spec/latest/chapters/features.html#features-fragmentDensityMapLayered) feature is not enabled, `flags`
 **must** not contain
-`VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE`
+[VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](VkRenderPassCreateFlagBits.html)
 
 * 
 [](#VUID-VkRenderPassCreateInfo-pAttachments-00836) VUID-VkRenderPassCreateInfo-pAttachments-00836
 
 For any member of `pAttachments` with a `loadOp` equal to
-`VK_ATTACHMENT_LOAD_OP_CLEAR`, the first use of that attachment
+[VK_ATTACHMENT_LOAD_OP_CLEAR](VkAttachmentLoadOp.html), the first use of that attachment
 **must** not specify a `layout` equal to
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkRenderPassCreateInfo-pAttachments-02511) VUID-VkRenderPassCreateInfo-pAttachments-02511
 
 For any member of `pAttachments` with a `stencilLoadOp` equal to
-`VK_ATTACHMENT_LOAD_OP_CLEAR`, the first use of that attachment
+[VK_ATTACHMENT_LOAD_OP_CLEAR](VkAttachmentLoadOp.html), the first use of that attachment
 **must** not specify a `layout` equal to
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkRenderPassCreateInfo-pAttachments-01566) VUID-VkRenderPassCreateInfo-pAttachments-01566
 
 For any member of `pAttachments` with a `loadOp` equal to
-`VK_ATTACHMENT_LOAD_OP_CLEAR`, the first use of that attachment
+[VK_ATTACHMENT_LOAD_OP_CLEAR](VkAttachmentLoadOp.html), the first use of that attachment
 **must** not specify a `layout` equal to
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkRenderPassCreateInfo-pAttachments-01567) VUID-VkRenderPassCreateInfo-pAttachments-01567
 
 For any member of `pAttachments` with a `stencilLoadOp` equal to
-`VK_ATTACHMENT_LOAD_OP_CLEAR`, the first use of that attachment
+[VK_ATTACHMENT_LOAD_OP_CLEAR](VkAttachmentLoadOp.html), the first use of that attachment
 **must** not specify a `layout` equal to
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html)
 
 * 
 [](#VUID-VkRenderPassCreateInfo-pNext-01926) VUID-VkRenderPassCreateInfo-pNext-01926
@@ -164,7 +164,7 @@ If the `pNext` chain includes a
 [VkRenderPassInputAttachmentAspectCreateInfo](VkRenderPassInputAttachmentAspectCreateInfo.html) structure, for any
 element of the `pInputAttachments` member of any element of
 `pSubpasses` where the `attachment` member is not
-`VK_ATTACHMENT_UNUSED`, the `aspectMask` member of the
+[VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html), the `aspectMask` member of the
 corresponding element of
 [VkRenderPassInputAttachmentAspectCreateInfo](VkRenderPassInputAttachmentAspectCreateInfo.html)::`pAspectReferences`
 **must** only include aspects that are present in images of the format
@@ -200,7 +200,7 @@ members of `pDependencies` at the same index **must** not be equal
 If the `pNext` chain includes a
 [VkRenderPassMultiviewCreateInfo](VkRenderPassMultiviewCreateInfo.html) structure, for each element of
 `pDependencies` with a `dependencyFlags` member that does not
-include `VK_DEPENDENCY_VIEW_LOCAL_BIT`, the corresponding element of
+include [VK_DEPENDENCY_VIEW_LOCAL_BIT](VkDependencyFlagBits.html), the corresponding element of
 the `pViewOffsets` member of that
 [VkRenderPassMultiviewCreateInfo](VkRenderPassMultiviewCreateInfo.html) instance **must** be `0`
 
@@ -218,7 +218,7 @@ If the `pNext` chain includes a
 [VkRenderPassMultiviewCreateInfo](VkRenderPassMultiviewCreateInfo.html) structure, and each element of its
 `pViewMasks` member is `0`, the `dependencyFlags` member of each
 element of `pDependencies` **must** not include
-`VK_DEPENDENCY_VIEW_LOCAL_BIT`
+[VK_DEPENDENCY_VIEW_LOCAL_BIT](VkDependencyFlagBits.html)
 
 * 
 [](#VUID-VkRenderPassCreateInfo-pNext-02515) VUID-VkRenderPassCreateInfo-pNext-02515
@@ -232,9 +232,9 @@ If the `pNext` chain includes a
 [](#VUID-VkRenderPassCreateInfo-pDependencies-00837) VUID-VkRenderPassCreateInfo-pDependencies-00837
 
 For each element of `pDependencies`, if the `srcSubpass` is not
-`VK_SUBPASS_EXTERNAL`, all stage flags included in the
+[VK_SUBPASS_EXTERNAL](VK_SUBPASS_EXTERNAL.html), all stage flags included in the
 `srcStageMask` member of that dependency **must** be
-`VK_PIPELINE_STAGE_ALL_COMMANDS_BIT` or a pipeline stage supported
+[VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](VkPipelineStageFlagBits.html) or a pipeline stage supported
 by the [pipeline](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages-types) identified by
 the `pipelineBindPoint` member of the source subpass
 
@@ -242,9 +242,9 @@ the `pipelineBindPoint` member of the source subpass
 [](#VUID-VkRenderPassCreateInfo-pDependencies-00838) VUID-VkRenderPassCreateInfo-pDependencies-00838
 
 For each element of `pDependencies`, if the `dstSubpass` is not
-`VK_SUBPASS_EXTERNAL`, all stage flags included in the
+[VK_SUBPASS_EXTERNAL](VK_SUBPASS_EXTERNAL.html), all stage flags included in the
 `dstStageMask` member of that dependency **must** be
-`VK_PIPELINE_STAGE_ALL_COMMANDS_BIT` or a pipeline stage supported
+[VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](VkPipelineStageFlagBits.html) or a pipeline stage supported
 by the [pipeline](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages-types) identified by
 the `pipelineBindPoint` member of the destination subpass
 
@@ -252,21 +252,21 @@ the `pipelineBindPoint` member of the destination subpass
 [](#VUID-VkRenderPassCreateInfo-pDependencies-06866) VUID-VkRenderPassCreateInfo-pDependencies-06866
 
 For each element of `pDependencies`, if its `srcSubpass` is not
-`VK_SUBPASS_EXTERNAL`, it **must** be less than `subpassCount`
+[VK_SUBPASS_EXTERNAL](VK_SUBPASS_EXTERNAL.html), it **must** be less than `subpassCount`
 
 * 
 [](#VUID-VkRenderPassCreateInfo-pDependencies-06867) VUID-VkRenderPassCreateInfo-pDependencies-06867
 
 For each element of `pDependencies`, if its `dstSubpass` is not
-`VK_SUBPASS_EXTERNAL`, it **must** be less than `subpassCount`
+[VK_SUBPASS_EXTERNAL](VK_SUBPASS_EXTERNAL.html), it **must** be less than `subpassCount`
 
 * 
 [](#VUID-VkRenderPassCreateInfo-pResolveAttachments-10647) VUID-VkRenderPassCreateInfo-pResolveAttachments-10647
 
 If any element of `pResolveAttachments` of any element of
 `pSubpasses` references an attachment description with a format of
-`VK_FORMAT_UNDEFINED`,
-`VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` **must** not be included
+[VK_FORMAT_UNDEFINED](VkFormat.html),
+[VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](VkTileShadingRenderPassFlagBitsQCOM.html) **must** not be included
 in [VkRenderPassTileShadingCreateInfoQCOM](VkRenderPassTileShadingCreateInfoQCOM.html)::`flags`
 
 * 
@@ -274,8 +274,8 @@ in [VkRenderPassTileShadingCreateInfoQCOM](VkRenderPassTileShadingCreateInfoQCOM
 
 If
 [VkRenderPassFragmentDensityMapCreateInfoEXT](VkRenderPassFragmentDensityMapCreateInfoEXT.html)::`fragmentDensityMapAttachment`
-is not `VK_ATTACHMENT_UNUSED`,
-`VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` **must** not be included
+is not [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html),
+[VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](VkTileShadingRenderPassFlagBitsQCOM.html) **must** not be included
 in [VkRenderPassTileShadingCreateInfoQCOM](VkRenderPassTileShadingCreateInfoQCOM.html)::`flags`
 
 * 
@@ -289,7 +289,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassCreateInfo-sType-sType) VUID-VkRenderPassCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderPassCreateInfo-pNext-pNext) VUID-VkRenderPassCreateInfo-pNext-pNext

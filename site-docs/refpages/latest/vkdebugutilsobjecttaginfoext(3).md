@@ -66,7 +66,7 @@ Valid Usage
 * 
 [](#VUID-VkDebugUtilsObjectTagInfoEXT-objectType-01908) VUID-VkDebugUtilsObjectTagInfoEXT-objectType-01908
 
-`objectType` **must** not be `VK_OBJECT_TYPE_UNKNOWN`
+`objectType` **must** not be [VK_OBJECT_TYPE_UNKNOWN](VkObjectType.html)
 
 * 
 [](#VUID-VkDebugUtilsObjectTagInfoEXT-objectHandle-01910) VUID-VkDebugUtilsObjectTagInfoEXT-objectHandle-01910
@@ -79,7 +79,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDebugUtilsObjectTagInfoEXT-sType-sType) VUID-VkDebugUtilsObjectTagInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_TAG_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_TAG_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDebugUtilsObjectTagInfoEXT-pNext-pNext) VUID-VkDebugUtilsObjectTagInfoEXT-pNext-pNext

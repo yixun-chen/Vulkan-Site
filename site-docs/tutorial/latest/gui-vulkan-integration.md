@@ -718,37 +718,25 @@ private:
     // End single-time commands
     static void endSingleTimeCommands(vk::raii::CommandBuffer& commandBuffer);
 
-    // Vulkan objects
-    static vk::raii::Instance* instance;
-    static vk::raii::PhysicalDevice* physicalDevice;
-    static vk::raii::Device* device;
-    static uint32_t queueFamily;
-    static vk::raii::Queue* queue;
-    static vk::raii::DescriptorPool descriptorPool;
-    static vk::raii::CommandPool commandPool;
-    static vk::PipelineRenderingCreateInfo renderingInfo;
+    // Vulkan objects - using inline static initialization (C++17)
+    inline static vk::raii::Instance* instance = nullptr;
+    inline static vk::raii::PhysicalDevice* physicalDevice = nullptr;
+    inline static vk::raii::Device* device = nullptr;
+    inline static uint32_t queueFamily = 0;
+    inline static vk::raii::Queue* queue = nullptr;
+    inline static vk::raii::DescriptorPool descriptorPool = nullptr;
+    inline static vk::raii::CommandPool commandPool = nullptr;
+    inline static vk::PipelineRenderingCreateInfo renderingInfo{};
 
     // Input callback
-    static std::function inputCallback;
+    inline static std::function inputCallback = nullptr;
 
     // Initialization state
-    static bool initialized;
+    inline static bool initialized = false;
 };
 
 // ImGuiUtil.cpp
 #include "ImGuiUtil.h"
-
-// Static member initialization
-vk::raii::Instance* ImGuiUtil::instance = nullptr;
-vk::raii::PhysicalDevice* ImGuiUtil::physicalDevice = nullptr;
-vk::raii::Device* ImGuiUtil::device = nullptr;
-uint32_t ImGuiUtil::queueFamily = 0;
-vk::raii::Queue* ImGuiUtil::queue = nullptr;
-vk::raii::DescriptorPool ImGuiUtil::descriptorPool = nullptr;
-vk::raii::CommandPool ImGuiUtil::commandPool = nullptr;
-vk::PipelineRenderingCreateInfo ImGuiUtil::renderingInfo{};
-std::function ImGuiUtil::inputCallback = nullptr;
-bool ImGuiUtil::initialized = false;
 
 void ImGuiUtil::Init(
     vk::raii::Instance& instance,
@@ -959,4 +947,4 @@ With this knowledge, you can create a robust GUI system for your Vulkan applicat
 
 In the next section, we’ll wrap up with a conclusion and discuss potential improvements to our GUI system.
 
-[Previous: UI Elements](04_ui_elements.adoc) | [Next: Conclusion](06_conclusion.adoc)
+[Previous: UI Elements](04_ui_elements.html) | [Next: Conclusion](06_conclusion.html)

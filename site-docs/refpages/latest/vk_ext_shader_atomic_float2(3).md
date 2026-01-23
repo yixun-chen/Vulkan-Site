@@ -113,13 +113,13 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_2_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_2_FEATURES_EXT](VkStructureType.html)
 
 1) Should this extension add support for 16-bit image atomics?
 
 **RESOLVED**: No.
 While Vulkan supports creating storage images with
-`VK_FORMAT_R16_SFLOAT` and doing load and store on them, the data in the
+[VK_FORMAT_R16_SFLOAT](VkFormat.html) and doing load and store on them, the data in the
 shader has a 32-bit representation.
 Vulkan currently has no facility for even basic reading or writing such
 images using 16-bit float values in the shader.

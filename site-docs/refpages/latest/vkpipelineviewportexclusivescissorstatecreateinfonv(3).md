@@ -45,7 +45,7 @@ rectangles.
 `pExclusiveScissors` is a pointer to an array of [VkRect2D](VkRect2D.html)
 structures defining exclusive scissor rectangles.
 
-If the `VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV` dynamic state is enabled
+If the [VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV](VkDynamicState.html) dynamic state is enabled
 for a pipeline, the `pExclusiveScissors` member is ignored.
 
 When this structure is included in the `pNext` chain of
@@ -79,7 +79,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineViewportExclusiveScissorStateCreateInfoNV-sType-sType) VUID-VkPipelineViewportExclusiveScissorStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV](VkStructureType.html)
 
 [VK_NV_scissor_exclusive](VK_NV_scissor_exclusive.html), [VkRect2D](VkRect2D.html), [VkStructureType](VkStructureType.html)
 

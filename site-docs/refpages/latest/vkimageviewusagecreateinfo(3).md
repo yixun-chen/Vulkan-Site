@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageViewUsageCreateInfo-sType-sType) VUID-VkImageViewUsageCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkImageViewUsageCreateInfo-usage-parameter) VUID-VkImageViewUsageCreateInfo-usage-parameter

@@ -17,7 +17,7 @@
 
 VK_QUEUE_FAMILY_IGNORED - Ignored queue family index sentinel
 
-The special queue family index `VK_QUEUE_FAMILY_IGNORED` indicates that
+The special queue family index [VK_QUEUE_FAMILY_IGNORED](#) indicates that
 a queue family parameter or member is ignored.
 
 #define VK_QUEUE_FAMILY_IGNORED           (~0U)

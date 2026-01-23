@@ -35,7 +35,7 @@ To keep the flow concrete and avoid repeating earlier theory, use this quick roa
 3) Record draws: bind PBR pipeline, bind geometry, and push per-material constants per mesh
 4) Clean up via RAII (no special teardown required)
 
-|  | We won’t re-explain PBR theory or push-constant fundamentals here. See Lighting_Materials/03_push_constants.adoc for push constants and Lighting_Materials/01_introduction.adoc (and 05_pbr_rendering.adoc) for PBR concepts. |
+|  | We won’t re-explain PBR theory or push-constant fundamentals here. See [push constants](03_push_constants.html), and [Introduction](01_introduction.html) (and [PBR Rendering](../Loading_Models/05_pbr_rendering.html)) for PBR concepts. |
 | --- | --- |
 
 The PBR pass slots into the graphics pipeline as shown below:
@@ -140,7 +140,7 @@ void Renderer::recordCommandBuffer(vk::CommandBuffer commandBuffer, uint32_t ima
     // ... rest of command buffer recording code ...
 }
 
-This chapter reuses the exact PBR shader defined in the previous section to avoid duplication and drift. Please refer to [Implementing the PBR Shader](04_lighting_implementation.adoc) for the full pbr.slang source and detailed explanations. Here we focus strictly on Vulkan integration: pipeline layout, descriptor bindings, push constants, and draw submission.
+This chapter reuses the exact PBR shader defined in the previous section to avoid duplication and drift. Please refer to [Implementing the PBR Shader](04_lighting_implementation.html) for the full pbr.slang source and detailed explanations. Here we focus strictly on Vulkan integration: pipeline layout, descriptor bindings, push constants, and draw submission.
 
 After creating the shader file, we need to compile it using slangc. This is typically done as part of the build process, but we can also do it manually:
 
@@ -197,6 +197,6 @@ In this section, we’ve integrated our PBR implementation with the rest of the 
 
 This approach provides a solid foundation for rendering physically accurate materials, which we’ll apply in the Loading_Models chapter when we load and render glTF models. It also gives us the flexibility to modify and extend the material properties as needed for our specific rendering requirements.
 
-In the next section, we’ll wrap up this chapter with a conclusion and discuss potential improvements and extensions to our lighting system.
+In the next section, we’ll explore how to add high-quality shadows using Vulkan Ray Query.
 
-[Previous: Lighting Implementation](04_lighting_implementation.adoc) | [Next: Conclusion](06_conclusion.adoc)
+[Previous: Lighting Implementation](04_lighting_implementation.html) | [Next: Shadows](07_shadows.html)

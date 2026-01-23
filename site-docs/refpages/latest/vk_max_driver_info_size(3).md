@@ -17,7 +17,7 @@
 
 VK_MAX_DRIVER_INFO_SIZE - Length of a physical device driver information string
 
-`VK_MAX_DRIVER_INFO_SIZE` is the length in `char` values of an array
+[VK_MAX_DRIVER_INFO_SIZE](#) is the length in `char` values of an array
 containing a driver information string, as returned in
 [VkPhysicalDeviceDriverProperties](VkPhysicalDeviceDriverProperties.html)::`driverInfo`.
 

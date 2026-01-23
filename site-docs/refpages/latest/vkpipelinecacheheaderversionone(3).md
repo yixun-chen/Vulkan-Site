@@ -75,7 +75,7 @@ Valid Usage
 * 
 [](#VUID-VkPipelineCacheHeaderVersionOne-headerVersion-04968) VUID-VkPipelineCacheHeaderVersionOne-headerVersion-04968
 
-`headerVersion` **must** be `VK_PIPELINE_CACHE_HEADER_VERSION_ONE`
+`headerVersion` **must** be [VK_PIPELINE_CACHE_HEADER_VERSION_ONE](VkPipelineCacheHeaderVersion.html)
 
 * 
 [](#VUID-VkPipelineCacheHeaderVersionOne-headerSize-08990) VUID-VkPipelineCacheHeaderVersionOne-headerSize-08990

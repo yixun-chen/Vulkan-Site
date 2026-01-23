@@ -84,25 +84,25 @@ each capture of vertex data to the buffer.
 
 * 
  `transformFeedbackQueries` is
-`VK_TRUE` if the implementation supports the
-`VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT` query type.
-`transformFeedbackQueries` is `VK_FALSE` if queries of this type
+[VK_TRUE](VK_TRUE.html) if the implementation supports the
+[VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT](VkQueryType.html) query type.
+`transformFeedbackQueries` is [VK_FALSE](VK_FALSE.html) if queries of this type
 **cannot** be created.
 
 * 
 
-`transformFeedbackStreamsLinesTriangles` is `VK_TRUE` if the
+`transformFeedbackStreamsLinesTriangles` is [VK_TRUE](VK_TRUE.html) if the
 implementation supports the geometry shader `OpExecutionMode` of
 `OutputLineStrip` and `OutputTriangleStrip` in addition to
 `OutputPoints` when more than one vertex stream is output.
-If `transformFeedbackStreamsLinesTriangles` is `VK_FALSE` the
+If `transformFeedbackStreamsLinesTriangles` is [VK_FALSE](VK_FALSE.html) the
 implementation only supports an `OpExecutionMode` of
 `OutputPoints` when more than one vertex stream is output from the
 geometry shader.
 
 * 
 
-`transformFeedbackRasterizationStreamSelect` is `VK_TRUE` if the
+`transformFeedbackRasterizationStreamSelect` is [VK_TRUE](VK_TRUE.html) if the
 implementation supports the `GeometryStreams` SPIR-V capability and
 the application can use
 [VkPipelineRasterizationStateStreamCreateInfoEXT](VkPipelineRasterizationStateStreamCreateInfoEXT.html) to modify which
@@ -111,7 +111,7 @@ Otherwise vertex stream `0` **must** always be used for rasterization.
 
 * 
  `transformFeedbackDraw` is
-`VK_TRUE` if the implementation supports the
+[VK_TRUE](VK_TRUE.html) if the implementation supports the
 [vkCmdDrawIndirectByteCountEXT](vkCmdDrawIndirectByteCountEXT.html) function otherwise the function
 **must** not be called.
 
@@ -125,7 +125,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceTransformFeedbackPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceTransformFeedbackPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_transform_feedback](VK_EXT_transform_feedback.html), `VkBool32`, `VkDeviceSize`, [VkStructureType](VkStructureType.html)
 

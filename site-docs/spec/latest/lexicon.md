@@ -163,7 +163,7 @@ Binary Semaphore
 A semaphore with a boolean payload indicating whether the semaphore is
 signaled or unsignaled.
 Represented by a [VkSemaphore](../chapters/synchronization.html#VkSemaphore) object
-created with a semaphore type of `VK_SEMAPHORE_TYPE_BINARY`
+created with a semaphore type of [VK_SEMAPHORE_TYPE_BINARY](../chapters/synchronization.html#VkSemaphoreTypeKHR)
 .
 
 Binding (Memory)
@@ -255,7 +255,7 @@ The *fragment mask* will contain indices to the *color fragment*.
 
 Color Renderable Format
 
-A [VkFormat](../chapters/formats.html#VkFormat) where `VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT` is
+A [VkFormat](../chapters/formats.html#VkFormat) where [VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](../chapters/formats.html#VkFormatFeatureFlagBits) is
 set in one of the following, depending on the image’s tiling:
 
 * 
@@ -264,7 +264,7 @@ set in one of the following, depending on the image’s tiling:
 * 
 [VkFormatProperties](../chapters/formats.html#VkFormatProperties)::`optimalTilingFeatures`
 or a [VkFormat](../chapters/formats.html#VkFormat) where
-`VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV` is set in
+[VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](../chapters/formats.html#VkFormatFeatureFlagBits2KHR) is set in
 [VkFormatProperties](../chapters/formats.html#VkFormatProperties)::`linearTilingFeatures`
 
 * 
@@ -363,7 +363,7 @@ Corner-Sampled Image
 
 A [VkImage](../chapters/resources.html#VkImage) where unnormalized texel coordinates are centered on
 integer values instead of half-integer values.
-Specified by setting the `VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV` bit
+Specified by setting the [VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV](../chapters/resources.html#VkImageCreateFlagBits) bit
 on [VkImageCreateInfo](../chapters/resources.html#VkImageCreateInfo)::`flags` at image creation.
 
 Coverage Index
@@ -555,7 +555,7 @@ Disjoint
 independently.
 
 A *disjoint image* consists of multiple *disjoint planes*, and is
-created with the `VK_IMAGE_CREATE_DISJOINT_BIT` bit set.
+created with the [VK_IMAGE_CREATE_DISJOINT_BIT](../chapters/resources.html#VkImageCreateFlagBits) bit set.
 
 Dispatchable Command
 
@@ -815,8 +815,9 @@ operations.
 
 Framebuffer Region
 
-A framebuffer region is a set of sample (x, y, layer, sample)
-coordinates that is a subset of the entire framebuffer.
+A framebuffer region is a set of sample (x, y, layer,
+view,
+sample) coordinates that is a subset of the entire framebuffer.
 
 Frame Rate
 
@@ -894,7 +895,7 @@ structures.
 Host-Accessible Subresource
 
 A buffer, or a linear image subresource in either the
-`VK_IMAGE_LAYOUT_PREINITIALIZED` or `VK_IMAGE_LAYOUT_GENERAL`
+[VK_IMAGE_LAYOUT_PREINITIALIZED](../chapters/resources.html#VkImageLayout) or [VK_IMAGE_LAYOUT_GENERAL](../chapters/resources.html#VkImageLayout)
 layout.
 Host-accessible subresources have a well-defined addressing scheme which
 can be used by the host.
@@ -1166,11 +1167,11 @@ A resource is *linear* if it is one of the following:
 a [VkBuffer](../chapters/resources.html#VkBuffer)
 
 * 
-a [VkImage](../chapters/resources.html#VkImage) created with `VK_IMAGE_TILING_LINEAR`
+a [VkImage](../chapters/resources.html#VkImage) created with [VK_IMAGE_TILING_LINEAR](../chapters/resources.html#VkImageTiling)
 
 * 
 a [VkImage](../chapters/resources.html#VkImage) created with
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT` and whose
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](../chapters/resources.html#VkImageTiling) and whose
 [Linux DRM format modifier](#glossary-drm-format-modifier) is
 `DRM_FORMAT_MOD_LINEAR`
 
@@ -1182,21 +1183,21 @@ However, the [VkBuffer](../chapters/resources.html#VkBuffer) on which a [VkAccel
 resource is placed is a linear resource.
 
 * 
-a [VkTensorARM](../chapters/resources.html#VkTensorARM) created with `VK_TENSOR_TILING_LINEAR_ARM`
+a [VkTensorARM](../chapters/resources.html#VkTensorARM) created with [VK_TENSOR_TILING_LINEAR_ARM](../chapters/resources.html#VkTensorTilingARM)
 
 A resource is *non-linear* if it is one of the following:
 
 * 
-a [VkImage](../chapters/resources.html#VkImage) created with `VK_IMAGE_TILING_OPTIMAL`
+a [VkImage](../chapters/resources.html#VkImage) created with [VK_IMAGE_TILING_OPTIMAL](../chapters/resources.html#VkImageTiling)
 
 * 
 a [VkImage](../chapters/resources.html#VkImage) created with
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT` and whose
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](../chapters/resources.html#VkImageTiling) and whose
 [Linux DRM format modifier](#glossary-drm-format-modifier) is not
 `DRM_FORMAT_MOD_LINEAR`
 
 * 
-a [VkTensorARM](../chapters/resources.html#VkTensorARM) created with `VK_TENSOR_TILING_OPTIMAL_ARM`
+a [VkTensorARM](../chapters/resources.html#VkTensorARM) created with [VK_TENSOR_TILING_OPTIMAL_ARM](../chapters/resources.html#VkTensorTilingARM)
 
 Linux DRM Format Modifier
 
@@ -1205,7 +1206,7 @@ vendor-specific details of an image’s memory layout.
 In Linux graphics APIs, *modifiers* are commonly used to specify the
 memory layout of externally shared images.
 An image has a *modifier* if and only if it is created with `tiling`
-equal to `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`.
+equal to [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](../chapters/resources.html#VkImageTiling).
 For more details, refer to the appendix for extension
 `[VK_EXT_image_drm_format_modifier](extensions.html#VK_EXT_image_drm_format_modifier)`.
 
@@ -1359,6 +1360,14 @@ Opaque Capture Address
 A 64-bit value representing the device address of a buffer or memory
 object that is expected to be used by trace capture/replay tools in
 combination with the [    `bufferDeviceAddress`](../chapters/features.html#features-bufferDeviceAddress) feature.
+
+Overdraw
+
+Happens when more than one fragment invocation writes to the same (x, y,
+layer, view, sample) coordinate during a render pass instance.
+Usually refers to the performance impact of either rendering too much
+transparent geometry or redundantly rendering opaque geometry which is
+replaced by future fragments.
 
 Overlapped Range (Aliased Range)
 
@@ -1530,7 +1539,7 @@ components across multiple image planes.
 The host-accessible properties of each image plane are accessible for a
 linear layout using [vkGetImageSubresourceLayout](../chapters/resources.html#vkGetImageSubresourceLayout).
 If a multi-planar image is created with the
-`VK_IMAGE_CREATE_DISJOINT_BIT` bit set, the image is described as
+[VK_IMAGE_CREATE_DISJOINT_BIT](../chapters/resources.html#VkImageCreateFlagBits) bit set, the image is described as
 *disjoint*, and its planes are therefore bound to memory independently.
 
 Point Sampling (Rasterization)
@@ -1875,8 +1884,8 @@ framebuffer region.
 Shared presentable image
 
 A presentable image created from a swapchain with [VkPresentModeKHR](../chapters/VK_KHR_surface/wsi.html#VkPresentModeKHR)
-set to either `VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR` or
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`.
+set to either [VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](../chapters/VK_KHR_surface/wsi.html#VkPresentModeKHR) or
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](../chapters/VK_KHR_surface/wsi.html#VkPresentModeKHR).
 
 Side Effect
 
@@ -2054,7 +2063,7 @@ A semaphore with a strictly increasing 64-bit unsigned integer payload
 indicating whether the semaphore is signaled with respect to a
 particular reference value.
 Represented by a [VkSemaphore](../chapters/synchronization.html#VkSemaphore) object created with a semaphore type
-of `VK_SEMAPHORE_TYPE_TIMELINE`.
+of [VK_SEMAPHORE_TYPE_TIMELINE](../chapters/synchronization.html#VkSemaphoreTypeKHR).
 
 Uniform Texel Buffer
 
@@ -2105,6 +2114,12 @@ User-Defined Variable Interface
 
 A shader entry point’s variables with `Input` or `Output` storage
 class that are not built-in variables.
+
+Vector Type
+
+A SPIR-V `OpTypeVector`
+or `OpTypeVectorIdEXT`
+.
 
 Vertex Input Attribute
 

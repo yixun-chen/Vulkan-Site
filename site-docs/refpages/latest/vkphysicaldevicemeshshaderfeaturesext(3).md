@@ -42,15 +42,15 @@ structure.
 * 
  `taskShader` specifies whether task shaders
 are supported.
-If this feature is not enabled, the `VK_SHADER_STAGE_TASK_BIT_EXT`
-and `VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT` enum values **must** not be
+If this feature is not enabled, the [VK_SHADER_STAGE_TASK_BIT_EXT](VkShaderStageFlagBits.html)
+and [VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](VkPipelineStageFlagBits.html) enum values **must** not be
 used.
 
 * 
  `meshShader` specifies whether mesh shaders
 are supported.
-If this feature is not enabled, the `VK_SHADER_STAGE_MESH_BIT_EXT`
-and `VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT` enum values **must** not be
+If this feature is not enabled, the [VK_SHADER_STAGE_MESH_BIT_EXT](VkShaderStageFlagBits.html)
+and [VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](VkPipelineStageFlagBits.html) enum values **must** not be
 used.
 
 * 
@@ -67,10 +67,10 @@ implementation supports the [    primitive fragment shading rate](../../../../sp
 * 
  `meshShaderQueries` indicates that
 the implementation supports creating query pools using the
-`VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT` query type and
+[VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT](VkQueryType.html) query type and
 statistic queries containing the
-`VK_QUERY_PIPELINE_STATISTIC_TASK_SHADER_INVOCATIONS_BIT_EXT` and
-`VK_QUERY_PIPELINE_STATISTIC_MESH_SHADER_INVOCATIONS_BIT_EXT` flags
+[VK_QUERY_PIPELINE_STATISTIC_TASK_SHADER_INVOCATIONS_BIT_EXT](VkQueryPipelineStatisticFlagBits.html) and
+[VK_QUERY_PIPELINE_STATISTIC_MESH_SHADER_INVOCATIONS_BIT_EXT](VkQueryPipelineStatisticFlagBits.html) flags
 
 If the `VkPhysicalDeviceMeshShaderFeaturesEXT` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -78,7 +78,7 @@ If the `VkPhysicalDeviceMeshShaderFeaturesEXT` structure is included in the `pNe
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceMeshShaderFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 The corresponding features of the `VkPhysicalDeviceMeshShaderFeaturesNV`
@@ -105,7 +105,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMeshShaderFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceMeshShaderFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_mesh_shader](VK_EXT_mesh_shader.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

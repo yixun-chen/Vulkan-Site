@@ -46,7 +46,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSubpassEndInfo-sType-sType) VUID-VkSubpassEndInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SUBPASS_END_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SUBPASS_END_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkSubpassEndInfo-pNext-pNext) VUID-VkSubpassEndInfo-pNext-pNext

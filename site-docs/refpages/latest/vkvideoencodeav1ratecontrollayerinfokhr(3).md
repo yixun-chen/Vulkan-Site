@@ -49,7 +49,7 @@ quantizer index values specified in `minQIndex`.
 `minQIndex` specifies the lower bounds on the quantizer index
 values, for each [rate control group](../../../../spec/latest/chapters/videocoding.html#encode-av1-rate-control-group),
 that the implementation’s rate control algorithm will use when
-`useMinQIndex` is set to `VK_TRUE`.
+`useMinQIndex` is set to [VK_TRUE](VK_TRUE.html).
 
 * 
 `useMaxQIndex` indicates whether the quantizer index values
@@ -60,7 +60,7 @@ quantizer index values specified in `maxQIndex`.
 `maxQIndex` specifies the upper bounds on the quantizer index
 values, for each [rate control group](../../../../spec/latest/chapters/videocoding.html#encode-av1-rate-control-group),
 that the implementation’s rate control algorithm will use when
-`useMaxQIndex` is set to `VK_TRUE`.
+`useMaxQIndex` is set to [VK_TRUE](VK_TRUE.html).
 
 * 
 `useMaxFrameSize` indicates whether the implementation’s rate
@@ -71,7 +71,7 @@ as the upper bounds on the encoded frame size for each
 * 
 `maxFrameSize` specifies the upper bounds on the encoded frame size,
 for each [rate control group](../../../../spec/latest/chapters/videocoding.html#encode-av1-rate-control-group), when
-`useMaxFrameSize` is set to `VK_TRUE`.
+`useMaxFrameSize` is set to [VK_TRUE](VK_TRUE.html).
 
 When used, the values in `minQIndex` and `maxQIndex` guarantee that
 the effective quantizer index values used by the implementation will respect
@@ -106,9 +106,9 @@ elements of the `pLayers` array member of the
 [VkVideoEncodeRateControlInfoKHR](VkVideoEncodeRateControlInfoKHR.html) structure passed to the
 [vkCmdControlVideoCodingKHR](vkCmdControlVideoCodingKHR.html) command,
 [VkVideoCodingControlInfoKHR](VkVideoCodingControlInfoKHR.html)::`flags` includes
-`VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR`, and the bound
+[VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR](VkVideoCodingControlFlagBitsKHR.html), and the bound
 video session was created with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR`, it specifies the
+[VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), it specifies the
 AV1-specific rate control parameters of the rate control layer corresponding
 to that element of `pLayers`.
 
@@ -117,7 +117,7 @@ Valid Usage
 * 
 [](#VUID-VkVideoEncodeAV1RateControlLayerInfoKHR-useMinQIndex-10300) VUID-VkVideoEncodeAV1RateControlLayerInfoKHR-useMinQIndex-10300
 
-If `useMinQIndex` is `VK_TRUE`, then the `intraQIndex`,
+If `useMinQIndex` is [VK_TRUE](VK_TRUE.html), then the `intraQIndex`,
 `predictiveQIndex`, and `bipredictiveQIndex` members of
 `minQIndex` **must** all be between
 [VkVideoEncodeAV1CapabilitiesKHR](VkVideoEncodeAV1CapabilitiesKHR.html)::`minQIndex` and
@@ -127,11 +127,11 @@ If `useMinQIndex` is `VK_TRUE`, then the `intraQIndex`,
 * 
 [](#VUID-VkVideoEncodeAV1RateControlLayerInfoKHR-useMinQIndex-10301) VUID-VkVideoEncodeAV1RateControlLayerInfoKHR-useMinQIndex-10301
 
-If `useMinQIndex` is `VK_TRUE` and
+If `useMinQIndex` is [VK_TRUE](VK_TRUE.html) and
 [VkVideoEncodeAV1CapabilitiesKHR](VkVideoEncodeAV1CapabilitiesKHR.html)::`flags`, as returned by
 [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the used video
 profile, does not include
-`VK_VIDEO_ENCODE_AV1_CAPABILITY_PER_RATE_CONTROL_GROUP_MIN_MAX_Q_INDEX_BIT_KHR`,
+[VK_VIDEO_ENCODE_AV1_CAPABILITY_PER_RATE_CONTROL_GROUP_MIN_MAX_Q_INDEX_BIT_KHR](VkVideoEncodeAV1CapabilityFlagBitsKHR.html),
 then the `intraQIndex`, `predictiveQIndex`, and
 `bipredictiveQIndex` members of `minQIndex` **must** all specify
 the same value
@@ -139,7 +139,7 @@ the same value
 * 
 [](#VUID-VkVideoEncodeAV1RateControlLayerInfoKHR-useMaxQIndex-10302) VUID-VkVideoEncodeAV1RateControlLayerInfoKHR-useMaxQIndex-10302
 
-If `useMaxQIndex` is `VK_TRUE`, then the `intraQIndex`,
+If `useMaxQIndex` is [VK_TRUE](VK_TRUE.html), then the `intraQIndex`,
 `predictiveQIndex`, and `bipredictiveQIndex` members of
 `maxQIndex` **must** all be between
 [VkVideoEncodeAV1CapabilitiesKHR](VkVideoEncodeAV1CapabilitiesKHR.html)::`minQIndex` and
@@ -149,11 +149,11 @@ If `useMaxQIndex` is `VK_TRUE`, then the `intraQIndex`,
 * 
 [](#VUID-VkVideoEncodeAV1RateControlLayerInfoKHR-useMaxQIndex-10303) VUID-VkVideoEncodeAV1RateControlLayerInfoKHR-useMaxQIndex-10303
 
-If `useMaxQIndex` is `VK_TRUE` and
+If `useMaxQIndex` is [VK_TRUE](VK_TRUE.html) and
 [VkVideoEncodeAV1CapabilitiesKHR](VkVideoEncodeAV1CapabilitiesKHR.html)::`flags`, as returned by
 [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the used video
 profile, does not include
-`VK_VIDEO_ENCODE_AV1_CAPABILITY_PER_RATE_CONTROL_GROUP_MIN_MAX_Q_INDEX_BIT_KHR`,
+[VK_VIDEO_ENCODE_AV1_CAPABILITY_PER_RATE_CONTROL_GROUP_MIN_MAX_Q_INDEX_BIT_KHR](VkVideoEncodeAV1CapabilityFlagBitsKHR.html),
 then the `intraQIndex`, `predictiveQIndex`, and
 `bipredictiveQIndex` members of `maxQIndex` **must** all specify
 the same value
@@ -161,7 +161,7 @@ the same value
 * 
 [](#VUID-VkVideoEncodeAV1RateControlLayerInfoKHR-useMinQIndex-10304) VUID-VkVideoEncodeAV1RateControlLayerInfoKHR-useMinQIndex-10304
 
-If `useMinQIndex` and `useMaxQIndex` are both `VK_TRUE`,
+If `useMinQIndex` and `useMaxQIndex` are both [VK_TRUE](VK_TRUE.html),
 then the `intraQIndex`, `predictiveQIndex`, and
 `bipredictiveQIndex` members of `minQIndex` **must** all be less
 than or equal to the respective members of `maxQIndex`
@@ -171,7 +171,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeAV1RateControlLayerInfoKHR-sType-sType) VUID-VkVideoEncodeAV1RateControlLayerInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_RATE_CONTROL_LAYER_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_RATE_CONTROL_LAYER_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoEncodeAV1RateControlLayerInfoKHR-minQIndex-parameter) VUID-VkVideoEncodeAV1RateControlLayerInfoKHR-minQIndex-parameter

@@ -51,7 +51,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSysmemColorSpaceFUCHSIA-sType-sType) VUID-VkSysmemColorSpaceFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SYSMEM_COLOR_SPACE_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SYSMEM_COLOR_SPACE_FUCHSIA](VkStructureType.html)
 
 * 
 [](#VUID-VkSysmemColorSpaceFUCHSIA-pNext-pNext) VUID-VkSysmemColorSpaceFUCHSIA-pNext-pNext

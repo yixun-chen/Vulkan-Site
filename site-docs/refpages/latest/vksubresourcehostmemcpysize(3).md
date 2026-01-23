@@ -21,7 +21,7 @@ VkSubresourceHostMemcpySize - Memory size needed to copy to or from an image on 
 
 To query the memory size needed to copy to or from an image using
 [vkCopyMemoryToImage](vkCopyMemoryToImage.html) or [vkCopyImageToMemory](vkCopyImageToMemory.html) when the
-`VK_HOST_IMAGE_COPY_MEMCPY_BIT` flag is specified, add a
+[VK_HOST_IMAGE_COPY_MEMCPY_BIT](VkHostImageCopyFlagBits.html) flag is specified, add a
 [VkSubresourceHostMemcpySize](#) structure to the `pNext` chain of the
 [VkSubresourceLayout2](VkSubresourceLayout2.html) structure in a call to
 [vkGetImageSubresourceLayout2](vkGetImageSubresourceLayout2.html).
@@ -54,7 +54,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSubresourceHostMemcpySize-sType-sType) VUID-VkSubresourceHostMemcpySize-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SUBRESOURCE_HOST_MEMCPY_SIZE`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SUBRESOURCE_HOST_MEMCPY_SIZE](VkStructureType.html)
 
 [VK_EXT_host_image_copy](VK_EXT_host_image_copy.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), `VkDeviceSize`, [VkStructureType](VkStructureType.html)
 

@@ -96,15 +96,15 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkMemoryPropertyFlagBits](VkMemoryPropertyFlagBits.html):
 
-`VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD`
+[VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD](VkMemoryPropertyFlagBits.html)
 
 * 
-`VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD`
+[VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD](VkMemoryPropertyFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COHERENT_MEMORY_FEATURES_AMD`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COHERENT_MEMORY_FEATURES_AMD](VkStructureType.html)
 
 * 
 Revision 1, 2019-02-04 (Tobias Hector)

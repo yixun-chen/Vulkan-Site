@@ -52,7 +52,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDebugMarkerMarkerInfoEXT-sType-sType) VUID-VkDebugMarkerMarkerInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEBUG_MARKER_MARKER_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEBUG_MARKER_MARKER_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDebugMarkerMarkerInfoEXT-pNext-pNext) VUID-VkDebugMarkerMarkerInfoEXT-pNext-pNext

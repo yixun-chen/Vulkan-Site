@@ -39,12 +39,12 @@ typedef struct VkPipelineExecutableStatisticKHR {
 structure.
 
 * 
-`name` is an array of `VK_MAX_DESCRIPTION_SIZE` `char`
+`name` is an array of [VK_MAX_DESCRIPTION_SIZE](VK_MAX_DESCRIPTION_SIZE.html) `char`
 containing a null-terminated UTF-8 string which is a short human
 readable name for this statistic.
 
 * 
-`description` is an array of `VK_MAX_DESCRIPTION_SIZE` `char`
+`description` is an array of [VK_MAX_DESCRIPTION_SIZE](VK_MAX_DESCRIPTION_SIZE.html) `char`
 containing a null-terminated UTF-8 string which is a human readable
 description for this statistic.
 
@@ -60,7 +60,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineExecutableStatisticKHR-sType-sType) VUID-VkPipelineExecutableStatisticKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_STATISTIC_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_STATISTIC_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineExecutableStatisticKHR-pNext-pNext) VUID-VkPipelineExecutableStatisticKHR-pNext-pNext

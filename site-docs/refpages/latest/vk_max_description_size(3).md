@@ -17,7 +17,7 @@
 
 VK_MAX_DESCRIPTION_SIZE - Length of a driver name string
 
-`VK_MAX_DESCRIPTION_SIZE` is the length in `char` values of an array
+[VK_MAX_DESCRIPTION_SIZE](#) is the length in `char` values of an array
 containing a string with additional descriptive information about a query,
 as returned in [VkLayerProperties](VkLayerProperties.html)::`description` and other queries.
 

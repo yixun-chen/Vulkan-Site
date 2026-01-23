@@ -42,9 +42,9 @@ filling, and **must** be a multiple of 4.
 
 * 
 `size` is the number of bytes to fill, and **must** be either a
-multiple of 4, or `VK_WHOLE_SIZE` to fill the range from
+multiple of 4, or [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html) to fill the range from
 `offset` to the end of the buffer.
-If `VK_WHOLE_SIZE` is used and the remaining size of the buffer is
+If [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html) is used and the remaining size of the buffer is
 not a multiple of 4, then the nearest smaller multiple is used.
 
 * 
@@ -55,7 +55,7 @@ The data word is written to memory according to the host endianness.
 `vkCmdFillBuffer` is treated as a “transfer” operation for the
 purposes of synchronization barriers.
 It is only compatible with buffers created with the
-`VK_BUFFER_USAGE_TRANSFER_DST_BIT` usage flag set.
+[VK_BUFFER_USAGE_TRANSFER_DST_BIT](VkBufferUsageFlagBits.html) usage flag set.
 
 Valid Usage
 
@@ -72,26 +72,26 @@ Valid Usage
 * 
 [](#VUID-vkCmdFillBuffer-size-00026) VUID-vkCmdFillBuffer-size-00026
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be
+If `size` is not equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), `size` **must** be
 greater than `0`
 
 * 
 [](#VUID-vkCmdFillBuffer-size-00027) VUID-vkCmdFillBuffer-size-00027
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be
+If `size` is not equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), `size` **must** be
 less than or equal to the size of `dstBuffer` minus `dstOffset`
 
 * 
 [](#VUID-vkCmdFillBuffer-size-00028) VUID-vkCmdFillBuffer-size-00028
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be a
+If `size` is not equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), `size` **must** be a
 multiple of `4`
 
 * 
 [](#VUID-vkCmdFillBuffer-dstBuffer-00029) VUID-vkCmdFillBuffer-dstBuffer-00029
 
 `dstBuffer` **must** have been created with the
-`VK_BUFFER_USAGE_TRANSFER_DST_BIT` usage flag set
+[VK_BUFFER_USAGE_TRANSFER_DST_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdFillBuffer-apiVersion-07894) VUID-vkCmdFillBuffer-apiVersion-07894
@@ -142,7 +142,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdFillBuffer-commandBuffer-cmdpool) VUID-vkCmdFillBuffer-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, or `VK_QUEUE_TRANSFER_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html), or [VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdFillBuffer-renderpass) VUID-vkCmdFillBuffer-renderpass

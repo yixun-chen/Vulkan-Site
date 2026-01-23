@@ -95,12 +95,12 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkIndexType](VkIndexType.html):
 
-`VK_INDEX_TYPE_UINT8_KHR`
+[VK_INDEX_TYPE_UINT8_KHR](VkIndexType.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES_KHR](VkStructureType.html)
 
 Functionality in this extension is included in core Vulkan 1.4 with the KHR
 suffix omitted.

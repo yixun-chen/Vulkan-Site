@@ -55,26 +55,26 @@ enabled
 [](#VUID-vkCmdBindInvocationMaskHUAWEI-imageView-04977) VUID-vkCmdBindInvocationMaskHUAWEI-imageView-04977
 
 If `imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), it **must** be a valid
-[VkImageView](VkImageView.html) handle of type `VK_IMAGE_VIEW_TYPE_2D`
+[VkImageView](VkImageView.html) handle of type [VK_IMAGE_VIEW_TYPE_2D](VkImageViewType.html)
 
 * 
 [](#VUID-vkCmdBindInvocationMaskHUAWEI-imageView-04978) VUID-vkCmdBindInvocationMaskHUAWEI-imageView-04978
 
 If `imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), it **must** have a format
-of `VK_FORMAT_R8_UINT`
+of [VK_FORMAT_R8_UINT](VkFormat.html)
 
 * 
 [](#VUID-vkCmdBindInvocationMaskHUAWEI-imageView-04979) VUID-vkCmdBindInvocationMaskHUAWEI-imageView-04979
 
 If `imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), it **must** have been
-created with the `VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI` usage
+created with the [VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI](VkImageUsageFlagBits.html) usage
 flag set
 
 * 
 [](#VUID-vkCmdBindInvocationMaskHUAWEI-imageView-04980) VUID-vkCmdBindInvocationMaskHUAWEI-imageView-04980
 
 If `imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `imageLayout` **must**
-be `VK_IMAGE_LAYOUT_GENERAL`
+be [VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html)
 
 * 
 [](#VUID-vkCmdBindInvocationMaskHUAWEI-width-04981) VUID-vkCmdBindInvocationMaskHUAWEI-width-04981
@@ -119,7 +119,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindInvocationMaskHUAWEI-commandBuffer-cmdpool) VUID-vkCmdBindInvocationMaskHUAWEI-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBindInvocationMaskHUAWEI-renderpass) VUID-vkCmdBindInvocationMaskHUAWEI-renderpass

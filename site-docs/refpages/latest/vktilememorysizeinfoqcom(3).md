@@ -72,14 +72,14 @@ Valid Usage
 [](#VUID-VkTileMemorySizeInfoQCOM-size-10729) VUID-VkTileMemorySizeInfoQCOM-size-10729
 
 `size` must be less than or equal to the largest size memory heap
-with the `VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property
+with the [VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkTileMemorySizeInfoQCOM-sType-sType) VUID-VkTileMemorySizeInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TILE_MEMORY_SIZE_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TILE_MEMORY_SIZE_INFO_QCOM](VkStructureType.html)
 
 [VK_QCOM_tile_memory_heap](VK_QCOM_tile_memory_heap.html), [VK_QCOM_tile_properties](VK_QCOM_tile_properties.html), `VkDeviceSize`, [VkStructureType](VkStructureType.html)
 

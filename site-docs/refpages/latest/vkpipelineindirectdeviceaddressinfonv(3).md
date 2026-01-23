@@ -50,13 +50,13 @@ Valid Usage
 [](#VUID-VkPipelineIndirectDeviceAddressInfoNV-pipelineBindPoint-09079) VUID-VkPipelineIndirectDeviceAddressInfoNV-pipelineBindPoint-09079
 
 The provided `pipelineBindPoint` **must** be of type
-`VK_PIPELINE_BIND_POINT_COMPUTE`
+[VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html)
 
 * 
 [](#VUID-VkPipelineIndirectDeviceAddressInfoNV-pipeline-09080) VUID-VkPipelineIndirectDeviceAddressInfoNV-pipeline-09080
 
 `pipeline` **must** have been created with flag
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV` set
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](VkPipelineCreateFlagBits.html) set
 
 * 
 [](#VUID-VkPipelineIndirectDeviceAddressInfoNV-pipeline-09081) VUID-VkPipelineIndirectDeviceAddressInfoNV-pipeline-09081
@@ -70,7 +70,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineIndirectDeviceAddressInfoNV-sType-sType) VUID-VkPipelineIndirectDeviceAddressInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_INDIRECT_DEVICE_ADDRESS_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_INDIRECT_DEVICE_ADDRESS_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineIndirectDeviceAddressInfoNV-pNext-pNext) VUID-VkPipelineIndirectDeviceAddressInfoNV-pNext-pNext

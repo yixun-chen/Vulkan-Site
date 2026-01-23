@@ -67,7 +67,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSwapchainTimingPropertiesEXT-sType-sType) VUID-VkSwapchainTimingPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_TIMING_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_TIMING_PROPERTIES_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkSwapchainTimingPropertiesEXT-pNext-pNext) VUID-VkSwapchainTimingPropertiesEXT-pNext-pNext

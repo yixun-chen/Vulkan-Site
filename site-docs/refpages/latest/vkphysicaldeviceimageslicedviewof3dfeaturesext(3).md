@@ -35,7 +35,7 @@ structure describe the following features:
 * 
  `imageSlicedViewOf3D` indicates
 that the implementation supports using a sliced view of a 3D image in a
-descriptor of type `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE` by using a
+descriptor of type [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html) by using a
 [VkImageViewSlicedCreateInfoEXT](VkImageViewSlicedCreateInfoEXT.html) structure when creating the view.
 
 If the `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT` structure is included in the `pNext` chain of the
@@ -44,7 +44,7 @@ If the `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT` structure is included in
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -52,7 +52,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_SLICED_VIEW_OF_3D_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_SLICED_VIEW_OF_3D_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_image_sliced_view_of_3d](VK_EXT_image_sliced_view_of_3d.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

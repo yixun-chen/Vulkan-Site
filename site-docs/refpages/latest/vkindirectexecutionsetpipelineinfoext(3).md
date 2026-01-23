@@ -57,25 +57,25 @@ Valid Usage
 [](#VUID-VkIndirectExecutionSetPipelineInfoEXT-supportedIndirectCommandsShaderStagesPipelineBinding-11015) VUID-VkIndirectExecutionSetPipelineInfoEXT-supportedIndirectCommandsShaderStagesPipelineBinding-11015
 
 If [](../../../../spec/latest/chapters/limits.html#limits-supportedIndirectCommandsShaderStagesPipelineBinding)[VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT](VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.html)::`supportedIndirectCommandsShaderStagesPipelineBinding`
-does not contain `VK_SHADER_STAGE_COMPUTE_BIT`, the
-`VkPipelineBindPoint` of `initialPipeline` **must** not be
-`VK_PIPELINE_BIND_POINT_COMPUTE`
+does not contain [VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html), the
+[VkPipelineBindPoint](VkPipelineBindPoint.html) of `initialPipeline` **must** not be
+[VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html)
 
 * 
 [](#VUID-VkIndirectExecutionSetPipelineInfoEXT-supportedIndirectCommandsShaderStagesPipelineBinding-11016) VUID-VkIndirectExecutionSetPipelineInfoEXT-supportedIndirectCommandsShaderStagesPipelineBinding-11016
 
 If [](../../../../spec/latest/chapters/limits.html#limits-supportedIndirectCommandsShaderStagesPipelineBinding)[VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT](VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.html)::`supportedIndirectCommandsShaderStagesPipelineBinding`
-does not contain `VK_SHADER_STAGE_FRAGMENT_BIT`, the
-`VkPipelineBindPoint` of `initialPipeline` **must** not be
-`VK_PIPELINE_BIND_POINT_GRAPHICS`
+does not contain [VK_SHADER_STAGE_FRAGMENT_BIT](VkShaderStageFlagBits.html), the
+[VkPipelineBindPoint](VkPipelineBindPoint.html) of `initialPipeline` **must** not be
+[VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html)
 
 * 
 [](#VUID-VkIndirectExecutionSetPipelineInfoEXT-supportedIndirectCommandsShaderStagesPipelineBinding-11017) VUID-VkIndirectExecutionSetPipelineInfoEXT-supportedIndirectCommandsShaderStagesPipelineBinding-11017
 
 If [](../../../../spec/latest/chapters/limits.html#limits-supportedIndirectCommandsShaderStagesPipelineBinding)[VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT](VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.html)::`supportedIndirectCommandsShaderStagesPipelineBinding`
-does not contain ray tracing stages, the `VkPipelineBindPoint` of
+does not contain ray tracing stages, the [VkPipelineBindPoint](VkPipelineBindPoint.html) of
 `initialPipeline` **must** not be
-`VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR`
+[VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR](VkPipelineBindPoint.html)
 
 * 
 [](#VUID-VkIndirectExecutionSetPipelineInfoEXT-maxPipelineCount-11018) VUID-VkIndirectExecutionSetPipelineInfoEXT-maxPipelineCount-11018
@@ -87,21 +87,21 @@ does not contain ray tracing stages, the `VkPipelineBindPoint` of
 [](#VUID-VkIndirectExecutionSetPipelineInfoEXT-initialPipeline-11019) VUID-VkIndirectExecutionSetPipelineInfoEXT-initialPipeline-11019
 
 `initialPipeline` **must** not use descriptors of type
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html)
 
 * 
 [](#VUID-VkIndirectExecutionSetPipelineInfoEXT-initialPipeline-11153) VUID-VkIndirectExecutionSetPipelineInfoEXT-initialPipeline-11153
 
 `initialPipeline` **must** have been created with
-`VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT`
+[VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT](VkPipelineCreateFlagBits2.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkIndirectExecutionSetPipelineInfoEXT-sType-sType) VUID-VkIndirectExecutionSetPipelineInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_PIPELINE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_PIPELINE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkIndirectExecutionSetPipelineInfoEXT-initialPipeline-parameter) VUID-VkIndirectExecutionSetPipelineInfoEXT-initialPipeline-parameter

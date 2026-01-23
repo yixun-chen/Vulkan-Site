@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExternalTensorInfoARM-sType-sType) VUID-VkPhysicalDeviceExternalTensorInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_TENSOR_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_TENSOR_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkPhysicalDeviceExternalTensorInfoARM-pNext-pNext) VUID-VkPhysicalDeviceExternalTensorInfoARM-pNext-pNext

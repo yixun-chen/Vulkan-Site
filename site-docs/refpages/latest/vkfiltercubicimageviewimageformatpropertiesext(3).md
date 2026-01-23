@@ -54,7 +54,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFilterCubicImageViewImageFormatPropertiesEXT-sType-sType) VUID-VkFilterCubicImageViewImageFormatPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT](VkStructureType.html)
 
 Valid Usage
 

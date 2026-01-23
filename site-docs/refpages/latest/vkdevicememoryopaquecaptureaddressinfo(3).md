@@ -48,14 +48,14 @@ Valid Usage
 [](#VUID-VkDeviceMemoryOpaqueCaptureAddressInfo-memory-03336) VUID-VkDeviceMemoryOpaqueCaptureAddressInfo-memory-03336
 
 `memory` **must** have been allocated with
-`VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT`
+[VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT](VkMemoryAllocateFlagBits.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDeviceMemoryOpaqueCaptureAddressInfo-sType-sType) VUID-VkDeviceMemoryOpaqueCaptureAddressInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceMemoryOpaqueCaptureAddressInfo-pNext-pNext) VUID-VkDeviceMemoryOpaqueCaptureAddressInfo-pNext-pNext

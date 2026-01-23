@@ -103,4 +103,4 @@ Basic Vulkan concepts:
 
 Let’s begin by exploring how to implement a basic audio subsystem and then enhance it with Vulkan’s computational capabilities.
 
-[Previous: Loading Models Conclusion](../Loading_Models/09_conclusion.adoc) | [Next: Audio Basics](02_audio_basics.adoc)
+[Previous: Loading Models Conclusion](../Loading_Models/09_conclusion.html) | [Next: Audio Basics](02_audio_basics.html)

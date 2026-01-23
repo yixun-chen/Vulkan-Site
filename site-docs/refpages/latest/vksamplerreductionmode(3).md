@@ -41,25 +41,25 @@ typedef enum VkSamplerReductionMode {
 typedef VkSamplerReductionMode VkSamplerReductionModeEXT;
 
 * 
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE` specifies that texel
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](#) specifies that texel
 values are combined by computing a weighted average of values in the
 footprint, using weights as specified in
 [the image operations chapter](../../../../spec/latest/chapters/textures.html#textures-unnormalized-to-integer).
 
 * 
-`VK_SAMPLER_REDUCTION_MODE_MIN` specifies that texel values are
+[VK_SAMPLER_REDUCTION_MODE_MIN](#) specifies that texel values are
 combined by taking the component-wise minimum of values in the footprint
 with non-zero weights.
 
 * 
-`VK_SAMPLER_REDUCTION_MODE_MAX` specifies that texel values are
+[VK_SAMPLER_REDUCTION_MODE_MAX](#) specifies that texel values are
 combined by taking the component-wise maximum of values in the footprint
 with non-zero weights.
 
 * 
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM`
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](#)
 specifies values are combined as described by
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`, followed by a
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](#), followed by a
 [texel range clamp](../../../../spec/latest/chapters/textures.html#textures-texel-range-clamp).
 
 [VK_EXT_sampler_filter_minmax](VK_EXT_sampler_filter_minmax.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), [VkSamplerReductionModeCreateInfo](VkSamplerReductionModeCreateInfo.html)

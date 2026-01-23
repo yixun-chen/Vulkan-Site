@@ -16,7 +16,6 @@
 - [Access Types](#synchronization-access-types)
 - [Framebuffer Region Dependencies](#synchronization-framebuffer-regions)
 - [Framebuffer_Region_Dependencies](#synchronization-framebuffer-regions)
-- [View-Local Dependencies](#synchronization-view-local-dependencies)
 - [Device-Local Dependencies](#synchronization-device-local-dependencies)
 - [Implicit Synchronization Guarantees](#synchronization-implicit)
 - [Implicit_Synchronization_Guarantees](#synchronization-implicit)
@@ -289,14 +288,14 @@ writes performed by a layout transition are automatically made available.
 
 Layout transitions always apply to a particular image subresource range, and
 specify both an old layout and new layout.
-The old layout **must** either be `VK_IMAGE_LAYOUT_UNDEFINED`, or match the
+The old layout **must** either be [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout), or match the
 current layout of the image subresource range.
 If the old layout matches the current layout of the image subresource range,
 the transition preserves the contents of that range.
-If the old layout is `VK_IMAGE_LAYOUT_UNDEFINED`, the contents of that
+If the old layout is [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout), the contents of that
 range **may** be discarded.
 
-|  | Image layout transitions with `VK_IMAGE_LAYOUT_UNDEFINED` allow the
+|  | Image layout transitions with [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout) allow the
 | --- | --- |
 implementation to discard the image subresource range, which can provide
 performance or power benefits.
@@ -306,14 +305,14 @@ reinitialize frame buffer compression state, or similar.
 
 If the contents of an attachment are not needed after a render pass
 completes, then applications **should** use
-`VK_ATTACHMENT_STORE_OP_DONT_CARE`. |
+[VK_ATTACHMENT_STORE_OP_DONT_CARE](renderpass.html#VkAttachmentStoreOp). |
 
 As image layout transitions **may** perform read and write accesses on the
 memory bound to the image, if the image subresource affected by the layout
 transition is bound to peer memory for any device in the current device mask
 then the memory heap the bound memory comes from **must** support the
-`VK_PEER_MEMORY_FEATURE_GENERIC_SRC_BIT` and
-`VK_PEER_MEMORY_FEATURE_GENERIC_DST_BIT` capabilities as returned by
+[VK_PEER_MEMORY_FEATURE_GENERIC_SRC_BIT](memory.html#VkPeerMemoryFeatureFlagBitsKHR) and
+[VK_PEER_MEMORY_FEATURE_GENERIC_DST_BIT](memory.html#VkPeerMemoryFeatureFlagBitsKHR) capabilities as returned by
 [vkGetDeviceGroupPeerMemoryFeatures](memory.html#vkGetDeviceGroupPeerMemoryFeatures).
 
 |  | Applications **must** ensure that layout transitions happen-after all
@@ -336,7 +335,7 @@ An application **must** not rely on ordering of image layout transitions to
 influence ordering of other commands.
 
 The image layout of each image subresource of a depth/stencil image created
-with `VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT` is
+with [VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](resources.html#VkImageCreateFlagBits) is
 dependent on the last sample locations used to render to the image
 subresource as a depth/stencil attachment, thus when the `image` member
 of an [image memory barrier](#synchronization-image-memory-barriers) is an
@@ -351,7 +350,7 @@ location state last used to render to the image subresource range specified
 by `subresourceRange`, or if no `VkSampleLocationsInfoEXT` structure
 is present, then the contents of the given image subresource range becomes
 **undefined** as if `oldLayout` would equal
-`VK_IMAGE_LAYOUT_UNDEFINED`.
+[VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout).
 
 The work performed by an [action command](fundamentals.html#fundamentals-queueoperation-command-types) consists of multiple operations, which are performed as a sequence
 of logically independent steps known as *pipeline stages*.
@@ -526,10 +525,10 @@ static const VkPipelineStageFlagBits2 VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_B
 typedef VkPipelineStageFlagBits2 VkPipelineStageFlagBits2KHR;
 
 * 
-`VK_PIPELINE_STAGE_2_NONE` specifies no stages of execution.
+[VK_PIPELINE_STAGE_2_NONE](#VkPipelineStageFlagBits2KHR) specifies no stages of execution.
 
 * 
-`VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT` specifies the stage of the
+[VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR) specifies the stage of the
 pipeline where indirect command parameters are consumed.
 This stage also includes reading commands written by
 [vkCmdPreprocessGeneratedCommandsNV](device_generated_commands/generatedcommands.html#vkCmdPreprocessGeneratedCommandsNV).
@@ -537,82 +536,82 @@ This stage also includes reading commands written by
 [vkCmdPreprocessGeneratedCommandsEXT](device_generated_commands/generatedcommands.html#vkCmdPreprocessGeneratedCommandsEXT).
 
 * 
-`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT` specifies the task shader
+[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR) specifies the task shader
 stage.
 
 * 
-`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT` specifies the mesh shader
+[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR) specifies the mesh shader
 stage.
 
 * 
-`VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT` specifies the stage of the
+[VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR) specifies the stage of the
 pipeline where index buffers are consumed.
 
 * 
-`VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT` specifies the stage
+[VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT](#VkPipelineStageFlagBits2KHR) specifies the stage
 of the pipeline where vertex buffers are consumed.
 
 * 
-`VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT` is equivalent to the logical
+[VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR) is equivalent to the logical
 OR of:
 
-`VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT`
+[VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT`
+[VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT](#VkPipelineStageFlagBits2KHR)
 
-`VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT` specifies the vertex shader
+[VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](#VkPipelineStageFlagBits2KHR) specifies the vertex shader
 stage.
 
-`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT` specifies the
+[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR) specifies the
 tessellation control shader stage.
 
-`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT` specifies
+[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR) specifies
 the tessellation evaluation shader stage.
 
-`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT` specifies the geometry
+[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR) specifies the geometry
 shader stage.
 
-`VK_PIPELINE_STAGE_2_PRE_RASTERIZATION_SHADERS_BIT` is equivalent to
+[VK_PIPELINE_STAGE_2_PRE_RASTERIZATION_SHADERS_BIT](#VkPipelineStageFlagBits2KHR) is equivalent to
 specifying all supported
 [pre-rasterization shader    stages](pipelines.html#pipelines-graphics-subsets-pre-rasterization):
 
 * 
-`VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT` specifies the fragment
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR) specifies the fragment
 shader stage.
 
-`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT` specifies the stage
+[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR) specifies the stage
 of the pipeline where early fragment tests (depth and stencil tests
 before fragment shading) are performed.
 This stage also includes [render pass load    operations](renderpass.html#renderpass-load-operations) for framebuffer attachments with a depth/stencil format.
 
-`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT` specifies the stage of
+[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR) specifies the stage of
 the pipeline where late fragment tests (depth and stencil tests after
 fragment shading) are performed.
 This stage also includes [render pass    store operations](renderpass.html#renderpass-store-operations) for framebuffer attachments with a depth/stencil
 format.
 
-`VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT` specifies the
+[VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR) specifies the
 stage of the pipeline where final color values are output from the
 pipeline.
 This stage includes [blending](framebuffer.html#framebuffer-blending),
@@ -620,136 +619,136 @@ This stage includes [blending](framebuffer.html#framebuffer-blending),
 [load](renderpass.html#renderpass-load-operations) and [    store](renderpass.html#renderpass-store-operations) operations for color attachments,
 [render pass multisample resolve    operations](renderpass.html#renderpass-resolve-operations), and [vkCmdClearAttachments](clears.html#vkCmdClearAttachments).
 
-`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT` specifies the compute
+[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR) specifies the compute
 shader stage.
 
-`VK_PIPELINE_STAGE_2_HOST_BIT` specifies a pseudo-stage indicating
+[VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR) specifies a pseudo-stage indicating
 execution on the host of reads/writes of device memory.
 This stage is not invoked by any commands recorded in a command buffer.
 
-`VK_PIPELINE_STAGE_2_COPY_BIT` specifies the execution of all
+[VK_PIPELINE_STAGE_2_COPY_BIT](#VkPipelineStageFlagBits2KHR) specifies the execution of all
 [copy commands](copies.html#copies), including [vkCmdCopyQueryPoolResults](queries.html#vkCmdCopyQueryPoolResults).
 
-`VK_PIPELINE_STAGE_2_BLIT_BIT` specifies the execution of
+[VK_PIPELINE_STAGE_2_BLIT_BIT](#VkPipelineStageFlagBits2KHR) specifies the execution of
 [vkCmdBlitImage](copies.html#vkCmdBlitImage).
 
-`VK_PIPELINE_STAGE_2_RESOLVE_BIT` specifies the execution of
+[VK_PIPELINE_STAGE_2_RESOLVE_BIT](#VkPipelineStageFlagBits2KHR) specifies the execution of
 [vkCmdResolveImage](copies.html#vkCmdResolveImage).
 
-`VK_PIPELINE_STAGE_2_CLEAR_BIT` specifies the execution of
+[VK_PIPELINE_STAGE_2_CLEAR_BIT](#VkPipelineStageFlagBits2KHR) specifies the execution of
 [clear commands](clears.html#clears), with the exception of
 [vkCmdClearAttachments](clears.html#vkCmdClearAttachments).
 
-`VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT` is equivalent to specifying
+[VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](#VkPipelineStageFlagBits2KHR) is equivalent to specifying
 all of:
 
 * 
-`VK_PIPELINE_STAGE_2_COPY_BIT`
+[VK_PIPELINE_STAGE_2_COPY_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_BLIT_BIT`
+[VK_PIPELINE_STAGE_2_BLIT_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_RESOLVE_BIT`
+[VK_PIPELINE_STAGE_2_RESOLVE_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_CLEAR_BIT`
+[VK_PIPELINE_STAGE_2_CLEAR_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR` specifies the
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR) specifies the
 execution of the ray tracing shader stages.
 
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR` specifies
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR) specifies
 the execution of [acceleration structure    commands](accelstructures.html#acceleration-structure) or [acceleration structure    copy commands](accelstructures.html#acceleration-structure-copying).
 
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR` specifies
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR) specifies
 the execution of [acceleration    structure copy commands](accelstructures.html#acceleration-structure-copying).
 
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT` specifies the execution of
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR) specifies the execution of
 all graphics pipeline stages, and is equivalent to the logical OR of:
 
 * 
-`VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`
+[VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT`
+[VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT`
+[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT`
+[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
+[VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT` specifies all operations
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR) specifies all operations
 performed by all commands supported on the queue it is used with.
 
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT` specifies the
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits2KHR) specifies the
 stage of the pipeline where the predicate of conditional rendering is
 consumed.
 
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT` specifies the stage
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR) specifies the stage
 of the pipeline where vertex attribute output values are written to the
 transform feedback buffers.
 
-`VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV` specifies the stage
+[VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV](#VkPipelineStageFlagBits2KHR) specifies the stage
 of the pipeline where device-side generation of commands via
 [vkCmdPreprocessGeneratedCommandsNV](device_generated_commands/generatedcommands.html#vkCmdPreprocessGeneratedCommandsNV) is handled.
 
-`VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT` specifies the stage
+[VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR) specifies the stage
 of the pipeline where device-side generation of commands via
 [vkCmdPreprocessGeneratedCommandsEXT](device_generated_commands/generatedcommands.html#vkCmdPreprocessGeneratedCommandsEXT) is handled.
 
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits2KHR)
     specifies the stage of the pipeline where the
     [fragment shading rate    attachment](primsrast.html#primsrast-fragment-shading-rate-attachment)
 or
@@ -757,54 +756,54 @@ or
     is read to determine the fragment shading rate for portions of a
     rasterized primitive.
 
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT` specifies the
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR) specifies the
 stage of the pipeline where the fragment density map is read to
 [generate the fragment areas](fragmentdensitymapops.html#fragmentdensitymapops).
 
-`VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI` specifies the stage
+[VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) specifies the stage
 of the pipeline where the invocation mask image is read by the
 implementation to optimize the ray dispatch.
 
-`VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR` specifies the execution
+[VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](#VkPipelineStageFlagBits2KHR) specifies the execution
 of [video decode operations](videocoding.html#video-decode-operations).
 
-`VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR` specifies the execution
+[VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](#VkPipelineStageFlagBits2KHR) specifies the execution
 of [video encode operations](videocoding.html#video-encode-operations).
 
-`VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV` specifies the stage of the
+[VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV](#VkPipelineStageFlagBits2KHR) specifies the stage of the
 pipeline where [optical flow operation](VK_NV_optical_flow/optical_flow.html#opticalflow-operations) are
 performed.
 
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI` specifies the
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) specifies the
 subpass shading shader stage.
 
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT` specifies the execution
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR) specifies the execution
 of [micromap commands](VK_EXT_opacity_micromap/micromaps.html#micromap).
 
-`VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI` specifies
+[VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) specifies
 the cluster culling shader stage.
 
-`VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV`
+[VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](#VkPipelineStageFlagBits2KHR)
 specifies the execution of [vkCmdConvertCooperativeVectorMatrixNV](shaders.html#vkCmdConvertCooperativeVectorMatrixNV).
 
-`VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR` specifies the stage of
+[VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR](#VkPipelineStageFlagBits2KHR) specifies the stage of
 the pipeline where indirect copy commands (vkCmdCopyMemoryIndirect* and
 vkCmdCopyMemoryToImageIndirect*) parameters are consumed.
 
-`VK_PIPELINE_STAGE_2_TOP_OF_PIPE_BIT` is equivalent to
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT` with [VkAccessFlags2](#VkAccessFlags2) set
+[VK_PIPELINE_STAGE_2_TOP_OF_PIPE_BIT](#VkPipelineStageFlagBits2KHR) is equivalent to
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR) with [VkAccessFlags2](#VkAccessFlags2) set
 to `0` when specified in the second synchronization scope, but
-equivalent to `VK_PIPELINE_STAGE_2_NONE` in the first scope.
+equivalent to [VK_PIPELINE_STAGE_2_NONE](#VkPipelineStageFlagBits2KHR) in the first scope.
 
-`VK_PIPELINE_STAGE_2_BOTTOM_OF_PIPE_BIT` is equivalent to
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT` with [VkAccessFlags2](#VkAccessFlags2) set
+[VK_PIPELINE_STAGE_2_BOTTOM_OF_PIPE_BIT](#VkPipelineStageFlagBits2KHR) is equivalent to
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR) with [VkAccessFlags2](#VkAccessFlags2) set
 to `0` when specified in the first synchronization scope, but equivalent
-to `VK_PIPELINE_STAGE_2_NONE` in the second scope.
+to [VK_PIPELINE_STAGE_2_NONE](#VkPipelineStageFlagBits2KHR) in the second scope.
 
 |  | The `TOP` and `BOTTOM` pipeline stages are legacy, and applications
 | --- | --- |
-should prefer `VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT` and
-`VK_PIPELINE_STAGE_2_NONE`. |
+should prefer [VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR) and
+[VK_PIPELINE_STAGE_2_NONE](#VkPipelineStageFlagBits2KHR). |
 
 |  | The `VkPipelineStageFlags2` bitmask goes beyond the 31 individual bit
 | --- | --- |
@@ -884,10 +883,10 @@ These values all have the same meaning as the equivalently named values for
 [VkPipelineStageFlags2](#VkPipelineStageFlags2).
 
 * 
-`VK_PIPELINE_STAGE_NONE` specifies no stages of execution.
+[VK_PIPELINE_STAGE_NONE](#VkPipelineStageFlagBits) specifies no stages of execution.
 
 * 
-`VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT` specifies the stage of the
+[VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits) specifies the stage of the
 pipeline where `VkDrawIndirect*` / `VkDispatchIndirect*` /
 `VkTraceRaysIndirect*` data structures are consumed.
 This stage also includes reading commands written by
@@ -896,52 +895,52 @@ This stage also includes reading commands written by
 [vkCmdExecuteGeneratedCommandsEXT](device_generated_commands/generatedcommands.html#vkCmdExecuteGeneratedCommandsEXT).
 
 * 
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT` specifies the task shader
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits) specifies the task shader
 stage.
 
 * 
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT` specifies the mesh shader
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits) specifies the mesh shader
 stage.
 
 * 
-`VK_PIPELINE_STAGE_VERTEX_INPUT_BIT` specifies the stage of the
+[VK_PIPELINE_STAGE_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits) specifies the stage of the
 pipeline where vertex and index buffers are consumed.
 
 * 
-`VK_PIPELINE_STAGE_VERTEX_SHADER_BIT` specifies the vertex shader
+[VK_PIPELINE_STAGE_VERTEX_SHADER_BIT](#VkPipelineStageFlagBits) specifies the vertex shader
 stage.
 
 * 
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT` specifies the
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits) specifies the
 tessellation control shader stage.
 
 * 
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT` specifies the
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits) specifies the
 tessellation evaluation shader stage.
 
 * 
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT` specifies the geometry
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits) specifies the geometry
 shader stage.
 
 * 
-`VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT` specifies the fragment
+[VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits) specifies the fragment
 shader stage.
 
 * 
-`VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT` specifies the stage of
+[VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits) specifies the stage of
 the pipeline where early fragment tests (depth and stencil tests before
 fragment shading) are performed.
 This stage also includes [render pass load    operations](renderpass.html#renderpass-load-operations) for framebuffer attachments with a depth/stencil format.
 
 * 
-`VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT` specifies the stage of
+[VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits) specifies the stage of
 the pipeline where late fragment tests (depth and stencil tests after
 fragment shading) are performed.
 This stage also includes [render pass    store operations](renderpass.html#renderpass-store-operations) for framebuffer attachments with a depth/stencil
 format.
 
 * 
-`VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT` specifies the stage
+[VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits) specifies the stage
 of the pipeline after blending where the final color values are output
 from the pipeline.
 This stage includes [blending](framebuffer.html#framebuffer-blending),
@@ -950,12 +949,12 @@ This stage includes [blending](framebuffer.html#framebuffer-blending),
 [render pass multisample resolve    operations](renderpass.html#renderpass-resolve-operations), and [vkCmdClearAttachments](clears.html#vkCmdClearAttachments).
 
 * 
-`VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT` specifies the execution of a
+[VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits) specifies the execution of a
 compute shader.
 
 * 
 
-`VK_PIPELINE_STAGE_TRANSFER_BIT` specifies the following commands:
+[VK_PIPELINE_STAGE_TRANSFER_BIT](#VkPipelineStageFlagBits) specifies the following commands:
 
 All [copy commands](copies.html#copies), including [vkCmdCopyQueryPoolResults](queries.html#vkCmdCopyQueryPoolResults)
 
@@ -969,11 +968,11 @@ All [copy commands](copies.html#copies), including [vkCmdCopyQueryPoolResults](q
 All [clear commands](clears.html#clears), with the exception of
 [vkCmdClearAttachments](clears.html#vkCmdClearAttachments)
 
-`VK_PIPELINE_STAGE_HOST_BIT` specifies a pseudo-stage indicating
+[VK_PIPELINE_STAGE_HOST_BIT](#VkPipelineStageFlagBits) specifies a pseudo-stage indicating
 execution on the host of reads/writes of device memory.
 This stage is not invoked by any commands recorded in a command buffer.
 
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR` specifies
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits) specifies
     the execution of
     [vkCmdBuildAccelerationStructureNV](accelstructures.html#vkCmdBuildAccelerationStructureNV),
     [vkCmdCopyAccelerationStructureNV](accelstructures.html#vkCmdCopyAccelerationStructureNV),
@@ -986,87 +985,87 @@ This stage is not invoked by any commands recorded in a command buffer.
     [vkCmdCopyMemoryToAccelerationStructureKHR](accelstructures.html#vkCmdCopyMemoryToAccelerationStructureKHR), and
     [vkCmdWriteAccelerationStructuresPropertiesKHR](accelstructures.html#vkCmdWriteAccelerationStructuresPropertiesKHR).
 
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR` specifies the
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits) specifies the
     execution of the ray tracing shader stages, via
 [vkCmdTraceRaysNV](raytracing.html#vkCmdTraceRaysNV)
 ,
 [vkCmdTraceRaysKHR](raytracing.html#vkCmdTraceRaysKHR), or [vkCmdTraceRaysIndirectKHR](raytracing.html#vkCmdTraceRaysIndirectKHR)
 
-`VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` specifies the
+[VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkPipelineStageFlagBits2KHR) specifies the
 execution of decompression commands with [vkCmdDecompressMemoryEXT](memory_decompression.html#vkCmdDecompressMemoryEXT)
 and [vkCmdDecompressMemoryIndirectCountEXT](memory_decompression.html#vkCmdDecompressMemoryIndirectCountEXT).
 
-`VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT` specifies the execution of all
+[VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits) specifies the execution of all
 graphics pipeline stages, and is equivalent to the logical OR of:
 
 * 
-`VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT`
+[VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits)
 
 * 
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
-`VK_PIPELINE_STAGE_VERTEX_INPUT_BIT`
+[VK_PIPELINE_STAGE_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits)
 
 * 
-`VK_PIPELINE_STAGE_VERTEX_SHADER_BIT`
+[VK_PIPELINE_STAGE_VERTEX_SHADER_BIT](#VkPipelineStageFlagBits)
 
 * 
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits)
 
 * 
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits)
 
 * 
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits)
 
 * 
-`VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits)
 
 * 
-`VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT`
+[VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits)
 
 * 
-`VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT`
+[VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits)
 
 * 
-`VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT`
+[VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits)
 
 * 
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits)
 
-`VK_PIPELINE_STAGE_ALL_COMMANDS_BIT` specifies all operations
+[VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits) specifies all operations
 performed by all commands supported on the queue it is used with.
 
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT` specifies the
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits) specifies the
 stage of the pipeline where the predicate of conditional rendering is
 consumed.
 
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT` specifies the stage
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits) specifies the stage
 of the pipeline where vertex attribute output values are written to the
 transform feedback buffers.
 
-`VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV` specifies the stage of
+[VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV](#VkPipelineStageFlagBits) specifies the stage of
 the pipeline where device-side preprocessing for generated commands via
 [vkCmdPreprocessGeneratedCommandsNV](device_generated_commands/generatedcommands.html#vkCmdPreprocessGeneratedCommandsNV) is handled.
 
-`VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_EXT` specifies the stage
+[VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_EXT](#VkPipelineStageFlagBits) specifies the stage
 of the pipeline where device-side preprocessing for generated commands
 via [vkCmdPreprocessGeneratedCommandsEXT](device_generated_commands/generatedcommands.html#vkCmdPreprocessGeneratedCommandsEXT) is handled.
 
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits)
     specifies the stage of the pipeline where the
     [fragment shading rate    attachment](primsrast.html#primsrast-fragment-shading-rate-attachment)
 or
@@ -1074,17 +1073,17 @@ or
     is read to determine the fragment shading rate for portions of a
     rasterized primitive.
 
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT` specifies the
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits) specifies the
 stage of the pipeline where the fragment density map is read to
 [generate the fragment areas](fragmentdensitymapops.html#fragmentdensitymapops).
 
-`VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT` is equivalent to
-`VK_PIPELINE_STAGE_ALL_COMMANDS_BIT` with [VkAccessFlags](#VkAccessFlags) set to
+[VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT](#VkPipelineStageFlagBits) is equivalent to
+[VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits) with [VkAccessFlags](#VkAccessFlags) set to
 `0` when specified in the second synchronization scope, but specifies no
 stage of execution when specified in the first scope.
 
-`VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT` is equivalent to
-`VK_PIPELINE_STAGE_ALL_COMMANDS_BIT` with [VkAccessFlags](#VkAccessFlags) set to
+[VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT](#VkPipelineStageFlagBits) is equivalent to
+[VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits) with [VkAccessFlags](#VkAccessFlags) set to
 `0` when specified in the first synchronization scope, but specifies no
 stage of execution when specified in the second scope.
 
@@ -1129,52 +1128,52 @@ and [Queues](devsandqueues.html#devsandqueues-queues).
 
 | Pipeline stage flag | Required queue capability flag |
 | --- | --- |
-| `VK_PIPELINE_STAGE_2_NONE` | None required |
-| `VK_PIPELINE_STAGE_2_TOP_OF_PIPE_BIT` | None required |
-| `VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT` | `VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT` |
-| `VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR` | `VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT` or `VK_QUEUE_TRANSFER_BIT` |
-| `VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT` | `VK_QUEUE_COMPUTE_BIT` |
-| `VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT` | `VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT` or `VK_QUEUE_TRANSFER_BIT` |
-| `VK_PIPELINE_STAGE_2_BOTTOM_OF_PIPE_BIT` | None required |
-| `VK_PIPELINE_STAGE_2_HOST_BIT` | None required |
-| `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT` | None required |
-| `VK_PIPELINE_STAGE_2_COPY_BIT` | `VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT` or `VK_QUEUE_TRANSFER_BIT` |
-| `VK_PIPELINE_STAGE_2_RESOLVE_BIT` | `VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT` or `VK_QUEUE_TRANSFER_BIT` |
-| `VK_PIPELINE_STAGE_2_BLIT_BIT` | `VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT` or `VK_QUEUE_TRANSFER_BIT` |
-| `VK_PIPELINE_STAGE_2_CLEAR_BIT` | `VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT` or `VK_QUEUE_TRANSFER_BIT` |
-| `VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_PRE_RASTERIZATION_SHADERS_BIT` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR` | `VK_QUEUE_VIDEO_DECODE_BIT_KHR` |
-| `VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR` | `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` |
-| `VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT` | `VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT` |
-| `VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT` | `VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT` |
-| `VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` | `VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT` |
-| `VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR` | `VK_QUEUE_COMPUTE_BIT` |
-| `VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR` | `VK_QUEUE_COMPUTE_BIT` |
-| `VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR` | `VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT` or `VK_QUEUE_TRANSFER_BIT` |
-| `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT` | `VK_QUEUE_COMPUTE_BIT` |
-| `VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI` | `VK_QUEUE_GRAPHICS_BIT` |
-| `VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV` | `VK_QUEUE_OPTICAL_FLOW_BIT_NV` |
-| `VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV` | `VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT` or `VK_QUEUE_TRANSFER_BIT` |
-| `VK_PIPELINE_STAGE_2_DATA_GRAPH_BIT_ARM` | `VK_QUEUE_DATA_GRAPH_BIT_ARM` |
+| [VK_PIPELINE_STAGE_2_NONE](#VkPipelineStageFlagBits2KHR) | None required |
+| [VK_PIPELINE_STAGE_2_TOP_OF_PIPE_BIT](#VkPipelineStageFlagBits2KHR) | None required |
+| [VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_BOTTOM_OF_PIPE_BIT](#VkPipelineStageFlagBits2KHR) | None required |
+| [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR) | None required |
+| [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR) | None required |
+| [VK_PIPELINE_STAGE_2_COPY_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_RESOLVE_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_BLIT_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_CLEAR_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_PRE_RASTERIZATION_SHADERS_BIT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_OPTICAL_FLOW_BIT_NV](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits) or [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits) |
+| [VK_PIPELINE_STAGE_2_DATA_GRAPH_BIT_ARM](#VkPipelineStageFlagBits2KHR) | [VK_QUEUE_DATA_GRAPH_BIT_ARM](devsandqueues.html#VkQueueFlagBits) |
 
 Pipeline stages that execute as a result of a command logically complete
 execution in a specific order, such that completion of a logically later
@@ -1209,9 +1208,9 @@ semantics of execution or memory dependencies or image and buffer memory
 barriers. |
 
 [Graphics pipelines](pipelines.html#pipelines-graphics) are executable on queues
-supporting `VK_QUEUE_GRAPHICS_BIT`.
+supporting [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits).
 Stages executed by graphics pipelines **can** only be specified in commands
-recorded for queues supporting `VK_QUEUE_GRAPHICS_BIT`.
+recorded for queues supporting [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits).
 
 The graphics
 primitive
@@ -1219,101 +1218,101 @@ pipeline executes the following stages, with the logical ordering of the
 stages matching the order specified here:
 
 * 
-`VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`
+[VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT`
+[VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT`
+[VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT`
+[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT`
+[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
+[VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
 
 The graphics mesh pipeline executes the following stages, with the logical
 ordering of the stages matching the order specified here:
 
 * 
-`VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`
+[VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT`
+[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT`
+[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
+[VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
 
 For the compute pipeline, the following stages occur in this order:
 
 * 
-`VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`
+[VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 For the subpass shading pipeline, the following stages occur in this order:
 
 * 
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 For graphics pipeline commands executing in a render pass with a fragment
 density map attachment, the following pipeline stage where the fragment
 density map read happens has no particular order relative to the other
 stages, except that it is logically earlier than
-`VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT`:
+[VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits):
 
 * 
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
-`VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT`
+[VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits)
 
 The conditional rendering stage is formally part of both the graphics, and
 the compute pipeline.
@@ -1321,73 +1320,73 @@ The pipeline stage where the predicate read happens has unspecified order
 relative to other stages of these pipelines:
 
 * 
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits)
 
 For the transfer pipeline, the following stages occur in this order:
 
 * 
-`VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_TRANSFER_BIT`
+[VK_PIPELINE_STAGE_2_TRANSFER_BIT](#VkPipelineStageFlagBits2KHR)
 
 For host operations, only one pipeline stage occurs, so no order is
 guaranteed:
 
 * 
-`VK_PIPELINE_STAGE_2_HOST_BIT`
+[VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR)
 
 For the command preprocessing pipeline, the following stages occur in this
 order:
 
 * 
-`VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 For the decompression pipeline, the following stages occur in this order:
 
 * 
-`VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 For acceleration structure build operations, only one pipeline stage occurs,
 so no order is guaranteed:
 
 * 
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 For acceleration structure copy operations, only one pipeline stage occurs,
 so no order is guaranteed:
 
 * 
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 For opacity micromap build operations, only one pipeline stage occurs, so no
 order is guaranteed:
 
 * 
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 For the ray tracing pipeline, the following stages occur in this order:
 
 * 
-`VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`
+[VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 For the video decode pipeline, the following stages occur in this order:
 
 * 
-`VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR`
+[VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 For the video encode pipeline, the following stages occur in this order:
 
 * 
-`VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR`
+[VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 For the data graph pipeline, the following stages occur in this order:
 
 * 
-`VK_PIPELINE_STAGE_2_DATA_GRAPH_BIT_ARM`
+[VK_PIPELINE_STAGE_2_DATA_GRAPH_BIT_ARM](#VkPipelineStageFlagBits2KHR)
 
 Memory in Vulkan **can** be accessed from within shader invocations and via
 some fixed-function stages of the pipeline.
@@ -1435,6 +1434,10 @@ static const VkAccessFlagBits2 VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT = 0x40000000
 static const VkAccessFlagBits2 VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR = 0x800000000ULL;
 // Provided by VK_KHR_video_decode_queue
 static const VkAccessFlagBits2 VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR = 0x1000000000ULL;
+// Provided by VK_EXT_descriptor_heap
+static const VkAccessFlagBits2 VK_ACCESS_2_SAMPLER_HEAP_READ_BIT_EXT = 0x200000000000000ULL;
+// Provided by VK_EXT_descriptor_heap
+static const VkAccessFlagBits2 VK_ACCESS_2_RESOURCE_HEAP_READ_BIT_EXT = 0x400000000000000ULL;
 // Provided by VK_KHR_video_encode_queue
 static const VkAccessFlagBits2 VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR = 0x2000000000ULL;
 // Provided by VK_KHR_video_encode_queue
@@ -1545,67 +1548,67 @@ static const VkAccessFlagBits2 VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT = 
 typedef VkAccessFlagBits2 VkAccessFlagBits2KHR;
 
 * 
-`VK_ACCESS_2_NONE` specifies no accesses.
+[VK_ACCESS_2_NONE](#VkAccessFlagBits2KHR) specifies no accesses.
 
 * 
-`VK_ACCESS_2_MEMORY_READ_BIT` specifies all read accesses.
+[VK_ACCESS_2_MEMORY_READ_BIT](#VkAccessFlagBits2KHR) specifies all read accesses.
 It is always valid in any access mask, and is treated as equivalent to
 setting all `READ` access flags that are valid where it is used.
 
 * 
-`VK_ACCESS_2_MEMORY_WRITE_BIT` specifies all write accesses.
+[VK_ACCESS_2_MEMORY_WRITE_BIT](#VkAccessFlagBits2KHR) specifies all write accesses.
 It is always valid in any access mask, and is treated as equivalent to
 setting all `WRITE` access flags that are valid where it is used.
 
 * 
-`VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT` specifies read access to
+[VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT](#VkAccessFlagBits2KHR) specifies read access to
     command data read from indirect buffers as part of an indirect
 build,
 trace,
     drawing or dispatch command.
-    Such access occurs in the `VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`
+    Such access occurs in the [VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR)
     pipeline stage.
     It also specifies read access to command data read from indirect buffers
     as part of a copy command with access occurring in the
-    `VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR` pipeline stage.
+    [VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
 * 
-`VK_ACCESS_2_INDEX_READ_BIT` specifies read access to an index
+[VK_ACCESS_2_INDEX_READ_BIT](#VkAccessFlagBits2KHR) specifies read access to an index
     buffer as part of an indexed drawing command, bound by
 [vkCmdBindIndexBuffer2](drawing.html#vkCmdBindIndexBuffer2) and
     [vkCmdBindIndexBuffer](drawing.html#vkCmdBindIndexBuffer).
-    Such access occurs in the `VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT`
+    Such access occurs in the [VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR)
     pipeline stage.
 
 * 
-`VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT` specifies read access to a
+[VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT](#VkAccessFlagBits2KHR) specifies read access to a
 vertex buffer as part of a drawing command, bound by
 [vkCmdBindVertexBuffers](fxvertex.html#vkCmdBindVertexBuffers).
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT` pipeline stage.
+[VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
 * 
-`VK_ACCESS_2_UNIFORM_READ_BIT` specifies read access to a
+[VK_ACCESS_2_UNIFORM_READ_BIT](#VkAccessFlagBits2KHR) specifies read access to a
 [uniform buffer](descriptorsets.html#descriptorsets-uniformbuffer) in any shader pipeline
 stage.
 
 * 
-`VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT` specifies read access to an
+[VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR) specifies read access to an
 [input attachment](renderpass.html#renderpass) within a render pass during
 subpass shading or
 fragment shading.
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI` or
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT` pipeline stage.
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
 * 
-`VK_ACCESS_2_SHADER_SAMPLED_READ_BIT` specifies read access to a
+[VK_ACCESS_2_SHADER_SAMPLED_READ_BIT](#VkAccessFlagBits2KHR) specifies read access to a
 [uniform texel buffer](descriptorsets.html#descriptorsets-uniformtexelbuffer) or
 [sampled image](descriptorsets.html#descriptorsets-sampledimage) in any shader pipeline
 stage.
 
 * 
-`VK_ACCESS_2_SHADER_STORAGE_READ_BIT` specifies read access to a
+[VK_ACCESS_2_SHADER_STORAGE_READ_BIT](#VkAccessFlagBits2KHR) specifies read access to a
 [storage buffer](descriptorsets.html#descriptorsets-storagebuffer),
 [physical storage buffer](descriptorsets.html#descriptorsets-physical-storage-buffer),
 [storage texel buffer](descriptorsets.html#descriptorsets-storagetexelbuffer), or
@@ -1613,266 +1616,272 @@ stage.
 stage.
 
 * 
-`VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR` specifies read
+[VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR](#VkAccessFlagBits2KHR) specifies read
 access to a [shader binding table](raytracing.html#shader-binding-table) in any shader
 pipeline stage.
 
 * 
-`VK_ACCESS_2_SHADER_READ_BIT`
+[VK_ACCESS_2_SHADER_READ_BIT](#VkAccessFlagBits2KHR)
 is equivalent to the logical OR of:
 
-`VK_ACCESS_2_SHADER_SAMPLED_READ_BIT`
+[VK_ACCESS_2_SHADER_SAMPLED_READ_BIT](#VkAccessFlagBits2KHR)
 
 * 
-`VK_ACCESS_2_SHADER_STORAGE_READ_BIT`
+[VK_ACCESS_2_SHADER_STORAGE_READ_BIT](#VkAccessFlagBits2KHR)
 
 * 
-`VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR`
+[VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR](#VkAccessFlagBits2KHR)
 
 * 
-`VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM`
+[VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM](#VkAccessFlagBits2KHR)
 
-`VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT` specifies write access to a
+[VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT](#VkAccessFlagBits2KHR) specifies write access to a
 [storage buffer](descriptorsets.html#descriptorsets-storagebuffer),
 [physical storage buffer](descriptorsets.html#descriptorsets-physical-storage-buffer),
 [storage texel buffer](descriptorsets.html#descriptorsets-storagetexelbuffer), or
 [storage image](descriptorsets.html#descriptorsets-storageimage) in any shader pipeline
 stage.
 
-`VK_ACCESS_2_SHADER_WRITE_BIT` is equivalent to
-`VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT`.
+[VK_ACCESS_2_SHADER_WRITE_BIT](#VkAccessFlagBits2KHR) is equivalent to
+[VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT](#VkAccessFlagBits2KHR).
 
-`VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT` specifies read access to a
+[VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR) specifies read access to a
 [color attachment](renderpass.html#renderpass), such as via
 [blending](framebuffer.html#framebuffer-blending) (other than
 [advanced blend operations](framebuffer.html#framebuffer-blend-advanced)),
 [logic operations](framebuffer.html#framebuffer-logicop) or certain
 [render pass load operations](renderpass.html#renderpass-load-operations) in the
-`VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT` pipeline stage or
+[VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR) pipeline stage or
 via [fragment shader tile image reads](fragops.html#fragops-shader-tileimage-reads)
-in the `VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT` pipeline stage.
+in the [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
-`VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT` specifies write access to a
+[VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR) specifies write access to a
 [color attachment](renderpass.html#renderpass) during a [render pass](renderpass.html#renderpass) or
 via certain render pass [load](renderpass.html#renderpass-load-operations),
 [store](renderpass.html#renderpass-store-operations), and
 [multisample resolve](renderpass.html#renderpass-resolve-operations) operations.
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT` pipeline stage.
+[VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT` specifies read
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR) specifies read
 access to a [depth/stencil attachment](renderpass.html#renderpass), via
 [depth or stencil operations](fragops.html#fragops-ds-state) or certain
 [render pass load operations](renderpass.html#renderpass-load-operations) in the
-`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT` or
-`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT` pipeline stages or via
+[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR) pipeline stages or via
 [fragment shader tile image reads](fragops.html#fragops-shader-tileimage-reads) in
-the `VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT` pipeline stage.
+the [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT` specifies write
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR) specifies write
 access to a [depth/stencil attachment](renderpass.html#renderpass), via
 [depth or stencil operations](fragops.html#fragops-ds-state) or certain render pass
 [load](renderpass.html#renderpass-load-operations) and [    store](renderpass.html#renderpass-store-operations) operations.
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT` or
-`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT` pipeline stages.
+[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR) pipeline stages.
 
-`VK_ACCESS_2_TRANSFER_READ_BIT` specifies read access to an image or
+[VK_ACCESS_2_TRANSFER_READ_BIT](#VkAccessFlagBits2KHR) specifies read access to an image or
 buffer in a [copy](copies.html#copies) operation.
-Such access occurs in the `VK_PIPELINE_STAGE_2_COPY_BIT`,
-`VK_PIPELINE_STAGE_2_BLIT_BIT`, or
-`VK_PIPELINE_STAGE_2_RESOLVE_BIT` pipeline stages.
+Such access occurs in the [VK_PIPELINE_STAGE_2_COPY_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_BLIT_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_RESOLVE_BIT](#VkPipelineStageFlagBits2KHR) pipeline stages.
 
-`VK_ACCESS_2_TRANSFER_WRITE_BIT` specifies write access to an image
+[VK_ACCESS_2_TRANSFER_WRITE_BIT](#VkAccessFlagBits2KHR) specifies write access to an image
 or buffer in a [clear](clears.html#clears) or [copy](copies.html#copies) operation.
-Such access occurs in the `VK_PIPELINE_STAGE_2_COPY_BIT`,
-`VK_PIPELINE_STAGE_2_BLIT_BIT`, `VK_PIPELINE_STAGE_2_CLEAR_BIT`,
-or `VK_PIPELINE_STAGE_2_RESOLVE_BIT` pipeline stages.
+Such access occurs in the [VK_PIPELINE_STAGE_2_COPY_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_BLIT_BIT](#VkPipelineStageFlagBits2KHR), [VK_PIPELINE_STAGE_2_CLEAR_BIT](#VkPipelineStageFlagBits2KHR),
+or [VK_PIPELINE_STAGE_2_RESOLVE_BIT](#VkPipelineStageFlagBits2KHR) pipeline stages.
 
-`VK_ACCESS_2_HOST_READ_BIT` specifies read access by a host
+[VK_ACCESS_2_HOST_READ_BIT](#VkAccessFlagBits2KHR) specifies read access by a host
 operation.
 Accesses of this type are not performed through a resource, but directly
 on memory.
-Such access occurs in the `VK_PIPELINE_STAGE_2_HOST_BIT` pipeline
+Such access occurs in the [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR) pipeline
 stage.
 
-`VK_ACCESS_2_HOST_WRITE_BIT` specifies write access by a host
+[VK_ACCESS_2_HOST_WRITE_BIT](#VkAccessFlagBits2KHR) specifies write access by a host
 operation.
 Accesses of this type are not performed through a resource, but directly
 on memory.
-Such access occurs in the `VK_PIPELINE_STAGE_2_HOST_BIT` pipeline
+Such access occurs in the [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR) pipeline
 stage.
 
-`VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT` specifies read
+[VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT](#VkAccessFlagBits2KHR) specifies read
 access to a predicate as part of conditional rendering.
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT` pipeline stage.
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT` specifies write
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT](#VkAccessFlagBits2KHR) specifies write
 access to a transform feedback buffer made when transform feedback is
 active.
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT` pipeline stage.
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT` specifies read
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT](#VkAccessFlagBits2KHR) specifies read
 access to a transform feedback counter buffer which is read when
 [vkCmdBeginTransformFeedbackEXT](vertexpostproc.html#vkCmdBeginTransformFeedbackEXT) executes.
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT` pipeline stage.
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT` specifies
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT](#VkAccessFlagBits2KHR) specifies
 write access to a transform feedback counter buffer which is written
 when [vkCmdEndTransformFeedbackEXT](vertexpostproc.html#vkCmdEndTransformFeedbackEXT) executes.
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT` pipeline stage.
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
-`VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_NV` specifies reads from
+[VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_NV](#VkAccessFlagBits2KHR) specifies reads from
 buffer inputs to [vkCmdPreprocessGeneratedCommandsNV](device_generated_commands/generatedcommands.html#vkCmdPreprocessGeneratedCommandsNV).
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV` pipeline stage.
+[VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
-`VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_NV` specifies writes to
+[VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_NV](#VkAccessFlagBits2KHR) specifies writes to
 the target command buffer preprocess outputs.
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV` pipeline stage.
+[VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
-`VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_EXT` specifies reads from
+[VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_EXT](#VkAccessFlagBits2KHR) specifies reads from
 buffer inputs to [vkCmdPreprocessGeneratedCommandsEXT](device_generated_commands/generatedcommands.html#vkCmdPreprocessGeneratedCommandsEXT).
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT` pipeline stage.
+[VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
-`VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_EXT` specifies writes to
+[VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_EXT](#VkAccessFlagBits2KHR) specifies writes to
 the target command buffer preprocess outputs.
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT` pipeline stage.
+[VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
-`VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT` specifies read
+[VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT](#VkAccessFlagBits2KHR) specifies read
 access to memory in decompression commands
 [vkCmdDecompressMemoryEXT](memory_decompression.html#vkCmdDecompressMemoryEXT) and
 [vkCmdDecompressMemoryIndirectCountEXT](memory_decompression.html#vkCmdDecompressMemoryIndirectCountEXT).
 Such access occurs in
-`VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` pipeline stage.
+[VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
-`VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT` specifies write
+[VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT](#VkAccessFlagBits2KHR) specifies write
 access to memory in decompression commands
 [vkCmdDecompressMemoryEXT](memory_decompression.html#vkCmdDecompressMemoryEXT) and
 [vkCmdDecompressMemoryIndirectCountEXT](memory_decompression.html#vkCmdDecompressMemoryIndirectCountEXT).
 Such access occurs in
-`VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` pipeline stage.
+[VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
-`VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT` specifies
+[VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT](#VkAccessFlagBits2KHR) specifies
 read access to [color attachments](renderpass.html#renderpass), including
 [advanced blend operations](framebuffer.html#framebuffer-blend-advanced).
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT` pipeline stage.
+[VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
-`VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI` specifies read access
+[VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI](#VkAccessFlagBits2KHR) specifies read access
 to an invocation mask image in the
-`VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI` pipeline stage.
+[VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR` specifies read
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR](#VkAccessFlagBits2KHR) specifies read
 access to an acceleration structure as part of a trace, build, or copy
 command, or to an [acceleration    structure scratch buffer](accelstructures.html#acceleration-structure-scratch) as part of a build command.
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR` pipeline stage or
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR` pipeline
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR) pipeline stage or
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR) pipeline
 stage.
 
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR` specifies write
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR) specifies write
 access to an acceleration structure or [    acceleration structure scratch buffer](accelstructures.html#acceleration-structure-scratch) as part of a build or copy
 command.
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR` pipeline
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR) pipeline
 stage.
 
-`VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT` specifies read
+[VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT](#VkAccessFlagBits2KHR) specifies read
 access to a [fragment density    map attachment](renderpass.html#renderpass-fragmentdensitymapattachment) during dynamic [fragment    density map operations](fragmentdensitymapops.html#fragmentdensitymapops).
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT` pipeline
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR) pipeline
 stage.
 
-`VK_ACCESS_2_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR`
+[VK_ACCESS_2_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR](#VkAccessFlagBits2KHR)
 specifies read access to a fragment shading rate attachment during
 rasterization.
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 pipeline stage.
 
-`VK_ACCESS_2_SHADING_RATE_IMAGE_READ_BIT_NV` specifies read access
+[VK_ACCESS_2_SHADING_RATE_IMAGE_READ_BIT_NV](#VkAccessFlagBits2KHR) specifies read access
 to a shading rate image during rasterization.
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_SHADING_RATE_IMAGE_BIT_NV` pipeline stage.
+[VK_PIPELINE_STAGE_2_SHADING_RATE_IMAGE_BIT_NV](#VkPipelineStageFlagBits2KHR) pipeline stage.
 It is equivalent to
-`VK_ACCESS_2_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR`.
+[VK_ACCESS_2_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR](#VkAccessFlagBits2KHR).
 
-`VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR` specifies read access to an
+[VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR](#VkAccessFlagBits2KHR) specifies read access to an
 image or buffer resource in a [video decode    operation](videocoding.html#video-decode-operations).
-Such access occurs in the `VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR`
+Such access occurs in the [VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 pipeline stage.
 
-`VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR` specifies write access to
+[VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR) specifies write access to
 an image or buffer resource in a [video decode    operation](videocoding.html#video-decode-operations).
-Such access occurs in the `VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR`
+Such access occurs in the [VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 pipeline stage.
 
-`VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR` specifies read access to an
+[VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR](#VkAccessFlagBits2KHR) specifies read access to an
 image or buffer resource in a [video encode    operation](videocoding.html#video-encode-operations).
-Such access occurs in the `VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR`
+Such access occurs in the [VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 pipeline stage.
 
-`VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR` specifies write access to
+[VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR) specifies write access to
 an image or buffer resource in a [video encode    operation](videocoding.html#video-encode-operations).
-Such access occurs in the `VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR`
+Such access occurs in the [VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 pipeline stage.
 
-`VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT` specifies read access
+[VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT](#VkAccessFlagBits2KHR) specifies read access
 to a [descriptor buffer](descriptorsets.html#descriptorbuffers) in any shader pipeline
 stage.
 
-`VK_ACCESS_2_OPTICAL_FLOW_READ_BIT_NV` specifies read access to an
+[VK_ACCESS_2_OPTICAL_FLOW_READ_BIT_NV](#VkAccessFlagBits2KHR) specifies read access to an
 image or buffer resource as part of a [optical    flow operation](VK_NV_optical_flow/optical_flow.html#opticalflow-operations).
-Such access occurs in the `VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV`
+Such access occurs in the [VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV](#VkPipelineStageFlagBits2KHR)
 pipeline stage.
 
-`VK_ACCESS_2_OPTICAL_FLOW_WRITE_BIT_NV` specifies write access to an
+[VK_ACCESS_2_OPTICAL_FLOW_WRITE_BIT_NV](#VkAccessFlagBits2KHR) specifies write access to an
 image or buffer resource as part of a [optical    flow operation](VK_NV_optical_flow/optical_flow.html#opticalflow-operations).
-Such access occurs in the `VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV`
+Such access occurs in the [VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV](#VkPipelineStageFlagBits2KHR)
 pipeline stage.
 
-`VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT` specifies write access to a
+[VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT](#VkAccessFlagBits2KHR) specifies write access to a
 micromap object.
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT` pipeline stage.
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
-`VK_ACCESS_2_MICROMAP_READ_BIT_EXT` specifies read access to a
+[VK_ACCESS_2_MICROMAP_READ_BIT_EXT](#VkAccessFlagBits2KHR) specifies read access to a
 micromap object.
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT` and
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR` pipeline
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR) and
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR) pipeline
 stages.
 
-`VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM` specifies read
+[VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM](#VkAccessFlagBits2KHR) specifies read
 access to a [tile    attachment](renderpass.html#renderpass-tile-shading-attachment-access).
-Such access occurs in the `VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`
-or `VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT` pipeline stages.
+Such access occurs in the [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
+or [VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR) pipeline stages.
 
-`VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM` specifies write
+[VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM](#VkAccessFlagBits2KHR) specifies write
 access to a [tile    attachment](renderpass.html#renderpass-tile-shading-attachment-access).
-Such access occurs in the `VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`
-or `VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT` pipeline stages.
+Such access occurs in the [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
+or [VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR) pipeline stages.
 
-`VK_ACCESS_2_DATA_GRAPH_READ_BIT_ARM` specifies read access to
-resources in the `VK_PIPELINE_STAGE_2_DATA_GRAPH_BIT_ARM` pipeline
+[VK_ACCESS_2_DATA_GRAPH_READ_BIT_ARM](#VkAccessFlagBits2KHR) specifies read access to
+resources in the [VK_PIPELINE_STAGE_2_DATA_GRAPH_BIT_ARM](#VkPipelineStageFlagBits2KHR) pipeline
 stage.
 
-`VK_ACCESS_2_DATA_GRAPH_WRITE_BIT_ARM` specifies write access to
-resources in the `VK_PIPELINE_STAGE_2_DATA_GRAPH_BIT_ARM` pipeline
+[VK_ACCESS_2_DATA_GRAPH_WRITE_BIT_ARM](#VkAccessFlagBits2KHR) specifies write access to
+resources in the [VK_PIPELINE_STAGE_2_DATA_GRAPH_BIT_ARM](#VkPipelineStageFlagBits2KHR) pipeline
 stage.
+
+[VK_ACCESS_2_SAMPLER_HEAP_READ_BIT_EXT](#VkAccessFlagBits2KHR) specifies read access to a
+sampler heap in any shader pipeline stage.
+
+[VK_ACCESS_2_RESOURCE_HEAP_READ_BIT_EXT](#VkAccessFlagBits2KHR) specifies read access to a
+resource heap in any shader pipeline stage.
 
 |  | In situations where an application wishes to select all access types for a
 | --- | --- |
-given set of pipeline stages, `VK_ACCESS_2_MEMORY_READ_BIT` or
-`VK_ACCESS_2_MEMORY_WRITE_BIT` can be used.
+given set of pipeline stages, [VK_ACCESS_2_MEMORY_READ_BIT](#VkAccessFlagBits2KHR) or
+[VK_ACCESS_2_MEMORY_WRITE_BIT](#VkAccessFlagBits2KHR) can be used.
 This is particularly useful when specifying stages that only have a single
 access type. |
 
@@ -1926,7 +1935,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryBarrierAccessFlags3KHR-sType-sType) VUID-VkMemoryBarrierAccessFlags3KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_BARRIER_ACCESS_FLAGS_3_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_BARRIER_ACCESS_FLAGS_3_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryBarrierAccessFlags3KHR-srcAccessMask3-parameter) VUID-VkMemoryBarrierAccessFlags3KHR-srcAccessMask3-parameter
@@ -1948,7 +1957,7 @@ typedef VkFlags64 VkAccessFlagBits3KHR;
 static const VkAccessFlagBits3KHR VK_ACCESS_3_NONE_KHR = 0ULL;
 
 * 
-`VK_ACCESS_3_NONE_KHR` specifies no additional accesses.
+[VK_ACCESS_3_NONE_KHR](#VkAccessFlagBits3KHR) specifies no additional accesses.
 
 `VkAccessFlags3KHR` is a bitmask type for setting a mask of zero or more
 [VkAccessFlagBits3KHR](#VkAccessFlagBits3KHR):
@@ -2039,58 +2048,58 @@ These values all have the same meaning as the equivalently named values for
 [VkAccessFlags2](#VkAccessFlags2).
 
 * 
-`VK_ACCESS_NONE` specifies no accesses.
+[VK_ACCESS_NONE](#VkAccessFlagBits) specifies no accesses.
 
 * 
-`VK_ACCESS_MEMORY_READ_BIT` specifies all read accesses.
+[VK_ACCESS_MEMORY_READ_BIT](#VkAccessFlagBits) specifies all read accesses.
 It is always valid in any access mask, and is treated as equivalent to
 setting all `READ` access flags that are valid where it is used.
 
 * 
-`VK_ACCESS_MEMORY_WRITE_BIT` specifies all write accesses.
+[VK_ACCESS_MEMORY_WRITE_BIT](#VkAccessFlagBits) specifies all write accesses.
 It is always valid in any access mask, and is treated as equivalent to
 setting all `WRITE` access flags that are valid where it is used.
 
 * 
-`VK_ACCESS_INDIRECT_COMMAND_READ_BIT` specifies read access to
+[VK_ACCESS_INDIRECT_COMMAND_READ_BIT](#VkAccessFlagBits) specifies read access to
     indirect command data read as part of an indirect
 build,
 trace,
     drawing or dispatching command.
-    Such access occurs in the `VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT`
+    Such access occurs in the [VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits)
     pipeline stage.
 
 * 
-`VK_ACCESS_INDEX_READ_BIT` specifies read access to an index buffer
+[VK_ACCESS_INDEX_READ_BIT](#VkAccessFlagBits) specifies read access to an index buffer
     as part of an indexed drawing command, bound by
 [vkCmdBindIndexBuffer2](drawing.html#vkCmdBindIndexBuffer2) and
     [vkCmdBindIndexBuffer](drawing.html#vkCmdBindIndexBuffer).
-    Such access occurs in the `VK_PIPELINE_STAGE_VERTEX_INPUT_BIT`
+    Such access occurs in the [VK_PIPELINE_STAGE_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits)
     pipeline stage.
 
 * 
-`VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT` specifies read access to a
+[VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT](#VkAccessFlagBits) specifies read access to a
 vertex buffer as part of a drawing command, bound by
 [vkCmdBindVertexBuffers](fxvertex.html#vkCmdBindVertexBuffers).
-Such access occurs in the `VK_PIPELINE_STAGE_VERTEX_INPUT_BIT`
+Such access occurs in the [VK_PIPELINE_STAGE_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits)
 pipeline stage.
 
 * 
-`VK_ACCESS_UNIFORM_READ_BIT` specifies read access to a
+[VK_ACCESS_UNIFORM_READ_BIT](#VkAccessFlagBits) specifies read access to a
 [uniform buffer](descriptorsets.html#descriptorsets-uniformbuffer) in any shader pipeline
 stage.
 
 * 
-`VK_ACCESS_INPUT_ATTACHMENT_READ_BIT` specifies read access to an
+[VK_ACCESS_INPUT_ATTACHMENT_READ_BIT](#VkAccessFlagBits) specifies read access to an
 [input attachment](renderpass.html#renderpass) within a render pass during
 subpass shading or
 fragment shading.
 Such access occurs in the
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI` or
-`VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT` pipeline stage.
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits) pipeline stage.
 
 * 
-`VK_ACCESS_SHADER_READ_BIT` specifies read access to a
+[VK_ACCESS_SHADER_READ_BIT](#VkAccessFlagBits) specifies read access to a
 [uniform texel buffer](descriptorsets.html#descriptorsets-uniformtexelbuffer),
 [sampled image](descriptorsets.html#descriptorsets-sampledimage),
 [storage buffer](descriptorsets.html#descriptorsets-storagebuffer),
@@ -2102,7 +2111,7 @@ Such access occurs in the
 stage.
 
 * 
-`VK_ACCESS_SHADER_WRITE_BIT` specifies write access to a
+[VK_ACCESS_SHADER_WRITE_BIT](#VkAccessFlagBits) specifies write access to a
 [storage buffer](descriptorsets.html#descriptorsets-storagebuffer),
 [physical storage buffer](descriptorsets.html#descriptorsets-physical-storage-buffer),
 [storage tensor](descriptorsets.html#descriptorsets-storagetensor),
@@ -2111,171 +2120,171 @@ stage.
 stage.
 
 * 
-`VK_ACCESS_COLOR_ATTACHMENT_READ_BIT` specifies read access to a
+[VK_ACCESS_COLOR_ATTACHMENT_READ_BIT](#VkAccessFlagBits) specifies read access to a
 [color attachment](renderpass.html#renderpass), such as via
 [blending](framebuffer.html#framebuffer-blending) (other than
 [advanced blend operations](framebuffer.html#framebuffer-blend-advanced)),
 [logic operations](framebuffer.html#framebuffer-logicop) or certain
 [render pass load operations](renderpass.html#renderpass-load-operations) in the
-`VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT` pipeline stage or
+[VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits) pipeline stage or
 via [fragment shader tile image reads](fragops.html#fragops-shader-tileimage-reads)
-in the `VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT` pipeline stage.
+in the [VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits) pipeline stage.
 
 * 
-`VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT` specifies write access to a
+[VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits) specifies write access to a
 [color, resolve, or depth/stencil resolve attachment](renderpass.html#renderpass)
 during a [render pass](renderpass.html#renderpass) or via certain render pass
 [load](renderpass.html#renderpass-load-operations) and [    store](renderpass.html#renderpass-store-operations) operations.
 Such access occurs in the
-`VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT` pipeline stage.
+[VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits) pipeline stage.
 
 * 
-`VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT` specifies read access
+[VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT](#VkAccessFlagBits) specifies read access
 to a [depth/stencil attachment](renderpass.html#renderpass), via [    depth or stencil operations](fragops.html#fragops-ds-state) or certain
 [render pass load operations](renderpass.html#renderpass-load-operations) in the
-`VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT` or
-`VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT` pipeline stages or via
+[VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits) or
+[VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits) pipeline stages or via
 [fragment shader tile image reads](fragops.html#fragops-shader-tileimage-reads) in
-the `VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT` pipeline stage.
+the [VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits) pipeline stage.
 
 * 
-`VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT` specifies write
+[VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits) specifies write
 access to a [depth/stencil attachment](renderpass.html#renderpass), via
 [depth or stencil operations](fragops.html#fragops-ds-state) or certain render pass
 [load](renderpass.html#renderpass-load-operations) and [    store](renderpass.html#renderpass-store-operations) operations.
 Such access occurs in the
-`VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT` or
-`VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT` pipeline stages.
+[VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits) or
+[VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits) pipeline stages.
 
 * 
-`VK_ACCESS_TRANSFER_READ_BIT` specifies read access to an
+[VK_ACCESS_TRANSFER_READ_BIT](#VkAccessFlagBits) specifies read access to an
 image, tensor,
 or buffer in a [copy](copies.html#copies) operation.
-Such access occurs in the `VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT`
+Such access occurs in the [VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](#VkPipelineStageFlagBits2KHR)
 pipeline stage.
 
 * 
-`VK_ACCESS_TRANSFER_WRITE_BIT` specifies write access to an
+[VK_ACCESS_TRANSFER_WRITE_BIT](#VkAccessFlagBits) specifies write access to an
 image, tensor,
 or buffer in a [clear](clears.html#clears) or [copy](copies.html#copies) operation.
-Such access occurs in the `VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT`
+Such access occurs in the [VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](#VkPipelineStageFlagBits2KHR)
 pipeline stage.
 
 * 
-`VK_ACCESS_HOST_READ_BIT` specifies read access by a host operation.
+[VK_ACCESS_HOST_READ_BIT](#VkAccessFlagBits) specifies read access by a host operation.
 Accesses of this type are not performed through a resource, but directly
 on memory.
-Such access occurs in the `VK_PIPELINE_STAGE_HOST_BIT` pipeline
+Such access occurs in the [VK_PIPELINE_STAGE_HOST_BIT](#VkPipelineStageFlagBits) pipeline
 stage.
 
 * 
-`VK_ACCESS_HOST_WRITE_BIT` specifies write access by a host
+[VK_ACCESS_HOST_WRITE_BIT](#VkAccessFlagBits) specifies write access by a host
 operation.
 Accesses of this type are not performed through a resource, but directly
 on memory.
-Such access occurs in the `VK_PIPELINE_STAGE_HOST_BIT` pipeline
+Such access occurs in the [VK_PIPELINE_STAGE_HOST_BIT](#VkPipelineStageFlagBits) pipeline
 stage.
 
 * 
-`VK_ACCESS_CONDITIONAL_RENDERING_READ_BIT_EXT` specifies read access
+[VK_ACCESS_CONDITIONAL_RENDERING_READ_BIT_EXT](#VkAccessFlagBits) specifies read access
 to a predicate as part of conditional rendering.
 Such access occurs in the
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT` pipeline stage.
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits) pipeline stage.
 
 * 
-`VK_ACCESS_TRANSFORM_FEEDBACK_WRITE_BIT_EXT` specifies write access
+[VK_ACCESS_TRANSFORM_FEEDBACK_WRITE_BIT_EXT](#VkAccessFlagBits) specifies write access
 to a transform feedback buffer made when transform feedback is active.
 Such access occurs in the
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT` pipeline stage.
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits) pipeline stage.
 
 * 
-`VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT` specifies read
+[VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT](#VkAccessFlagBits) specifies read
 access to a transform feedback counter buffer which is read when
 `vkCmdBeginTransformFeedbackEXT` executes.
 Such access occurs in the
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT` pipeline stage.
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits) pipeline stage.
 
 * 
-`VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT` specifies write
+[VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT](#VkAccessFlagBits) specifies write
 access to a transform feedback counter buffer which is written when
 `vkCmdEndTransformFeedbackEXT` executes.
 Such access occurs in the
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT` pipeline stage.
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits) pipeline stage.
 
 * 
-`VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_NV` specifies reads from
+[VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_NV](#VkAccessFlagBits) specifies reads from
 buffer inputs to [vkCmdPreprocessGeneratedCommandsNV](device_generated_commands/generatedcommands.html#vkCmdPreprocessGeneratedCommandsNV).
 Such access occurs in the
-`VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV` pipeline stage.
+[VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV](#VkPipelineStageFlagBits) pipeline stage.
 
 * 
-`VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_NV` specifies writes to the
+[VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_NV](#VkAccessFlagBits) specifies writes to the
 target command buffer preprocess outputs in
 [vkCmdPreprocessGeneratedCommandsNV](device_generated_commands/generatedcommands.html#vkCmdPreprocessGeneratedCommandsNV).
 Such access occurs in the
-`VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV` pipeline stage.
+[VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV](#VkPipelineStageFlagBits) pipeline stage.
 
 * 
-`VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_EXT` specifies reads from
+[VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_EXT](#VkAccessFlagBits) specifies reads from
 buffer inputs to [vkCmdPreprocessGeneratedCommandsEXT](device_generated_commands/generatedcommands.html#vkCmdPreprocessGeneratedCommandsEXT).
 Such access occurs in the
-`VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_EXT` pipeline stage.
+[VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_EXT](#VkPipelineStageFlagBits) pipeline stage.
 
 * 
-`VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_EXT` specifies writes to the
+[VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_EXT](#VkAccessFlagBits) specifies writes to the
 target command buffer preprocess outputs in
 [vkCmdPreprocessGeneratedCommandsEXT](device_generated_commands/generatedcommands.html#vkCmdPreprocessGeneratedCommandsEXT).
 Such access occurs in the
-`VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_EXT` pipeline stage.
+[VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_EXT](#VkPipelineStageFlagBits) pipeline stage.
 
 * 
-`VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT` specifies read
+[VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT](#VkAccessFlagBits) specifies read
 access to [color attachments](renderpass.html#renderpass), including
 [advanced blend operations](framebuffer.html#framebuffer-blend-advanced).
 Such access occurs in the
-`VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT` pipeline stage.
+[VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits) pipeline stage.
 
 * 
-`VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI` specifies read access
+[VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI](#VkAccessFlagBits2KHR) specifies read access
 to an invocation mask image in the
-`VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI` pipeline stage.
+[VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) pipeline stage.
 
 * 
-`VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR` specifies read
+[VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR](#VkAccessFlagBits) specifies read
 access to an acceleration structure as part of a trace, build, or copy
 command, or to an [acceleration    structure scratch buffer](accelstructures.html#acceleration-structure-scratch) as part of a build command.
 Such access occurs in the
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR` pipeline stage or
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR` pipeline
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits) pipeline stage or
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits) pipeline
 stage.
 
 * 
-`VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR` specifies write
+[VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR](#VkAccessFlagBits) specifies write
 access to an acceleration structure or [    acceleration structure scratch buffer](accelstructures.html#acceleration-structure-scratch) as part of a build or copy
 command.
 Such access occurs in the
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR` pipeline
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits) pipeline
 stage.
 
 * 
-`VK_ACCESS_FRAGMENT_DENSITY_MAP_READ_BIT_EXT` specifies read access
+[VK_ACCESS_FRAGMENT_DENSITY_MAP_READ_BIT_EXT](#VkAccessFlagBits) specifies read access
 to a [fragment density map    attachment](renderpass.html#renderpass-fragmentdensitymapattachment) during dynamic [fragment density    map operations](fragmentdensitymapops.html#fragmentdensitymapops) Such access occurs in the
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT` pipeline stage.
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits) pipeline stage.
 
 * 
-`VK_ACCESS_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR` specifies
+[VK_ACCESS_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR](#VkAccessFlagBits) specifies
 read access to a fragment shading rate attachment during rasterization.
 Such access occurs in the
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits)
 pipeline stage.
 
 * 
-`VK_ACCESS_SHADING_RATE_IMAGE_READ_BIT_NV` specifies read access to
+[VK_ACCESS_SHADING_RATE_IMAGE_READ_BIT_NV](#VkAccessFlagBits) specifies read access to
 a shading rate image during rasterization.
 Such access occurs in the
-`VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV` pipeline stage.
+[VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV](#VkPipelineStageFlagBits) pipeline stage.
 It is equivalent to
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`.
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits).
 
 Certain access types are only performed by a subset of pipeline stages.
 Any synchronization command that takes both stage masks and access masks
@@ -2289,178 +2298,200 @@ perform that type of access.
 
 | Access flag | Supported pipeline stages |
 | --- | --- |
-| `VK_ACCESS_2_NONE` | Any |
-| `VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT` | `VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`,
-	`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-	`VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR` |
-| `VK_ACCESS_2_INDEX_READ_BIT` | `VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT`,
-	`VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT` |
-| `VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT` | `VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT`,
-	`VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT` |
-| `VK_ACCESS_2_UNIFORM_READ_BIT` | `VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`,
-	`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`,
-	`VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI` |
-| `VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT` | `VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI` |
-| `VK_ACCESS_2_SHADER_READ_BIT` | `VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-	`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`,
-	`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`,
-	`VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI` |
-| `VK_ACCESS_2_SHADER_WRITE_BIT` | `VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`,
-	`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`,
-	`VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI` |
-| `VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT` | `VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT` |
-| `VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT` | `VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT` |
-| `VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT` | `VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT`,
-	`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT` |
-| `VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT` | `VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT`,
-	`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT` |
-| `VK_ACCESS_2_TRANSFER_READ_BIT` | `VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT`,
-	`VK_PIPELINE_STAGE_2_COPY_BIT`,
-	`VK_PIPELINE_STAGE_2_RESOLVE_BIT`,
-	`VK_PIPELINE_STAGE_2_BLIT_BIT`,
-	`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-	`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-	`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV` |
-| `VK_ACCESS_2_TRANSFER_WRITE_BIT` | `VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT`,
-	`VK_PIPELINE_STAGE_2_COPY_BIT`,
-	`VK_PIPELINE_STAGE_2_RESOLVE_BIT`,
-	`VK_PIPELINE_STAGE_2_BLIT_BIT`,
-	`VK_PIPELINE_STAGE_2_CLEAR_BIT`,
-	`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-	`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-	`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV` |
-| `VK_ACCESS_2_HOST_READ_BIT` | `VK_PIPELINE_STAGE_2_HOST_BIT` |
-| `VK_ACCESS_2_HOST_WRITE_BIT` | `VK_PIPELINE_STAGE_2_HOST_BIT` |
-| `VK_ACCESS_2_MEMORY_READ_BIT` | Any |
-| `VK_ACCESS_2_MEMORY_WRITE_BIT` | Any |
-| `VK_ACCESS_2_SHADER_SAMPLED_READ_BIT` | `VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`,
-	`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`,
-	`VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI` |
-| `VK_ACCESS_2_SHADER_STORAGE_READ_BIT` | `VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`,
-	`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`,
-	`VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI` |
-| `VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT` | `VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`,
-	`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`,
-	`VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI` |
-| `VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR` | `VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR` |
-| `VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR` | `VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR` |
-| `VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR` | `VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR` |
-| `VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR` | `VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR` |
-| `VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT` | `VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT` |
-| `VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT` | `VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`,
-	`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT` |
-| `VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT` | `VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT` |
-| `VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT` | `VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT` |
-| `VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_EXT` | `VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT` |
-| `VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_EXT` | `VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT` |
-| `VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT` | `VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` |
-| `VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT` | `VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` |
-| `VK_ACCESS_2_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR` | `VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR` |
-| `VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR` | `VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`,
-	`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI`,
-	`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-	`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-	`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI` |
-| `VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR` | `VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-	`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR` |
-| `VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT` | `VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT` |
-| `VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT` | `VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT` |
-| `VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT` | `VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`,
-	`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`,
-	`VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI` |
-| `VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI` | `VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI` |
-| `VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR` | `VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`,
-	`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`,
-	`VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI` |
-| `VK_ACCESS_2_MICROMAP_READ_BIT_EXT` | `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`,
-	`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR` |
-| `VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT` | `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT` |
-| `VK_ACCESS_2_OPTICAL_FLOW_READ_BIT_NV` | `VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV` |
-| `VK_ACCESS_2_OPTICAL_FLOW_WRITE_BIT_NV` | `VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV` |
-| `VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM` | `VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT` |
-| `VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM` | `VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-	`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT` |
-| `VK_ACCESS_2_DATA_GRAPH_READ_BIT_ARM` | `VK_PIPELINE_STAGE_2_DATA_GRAPH_BIT_ARM` |
-| `VK_ACCESS_2_DATA_GRAPH_WRITE_BIT_ARM` | `VK_PIPELINE_STAGE_2_DATA_GRAPH_BIT_ARM` |
+| [VK_ACCESS_2_NONE](#VkAccessFlagBits2KHR) | Any |
+| [VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_INDEX_READ_BIT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_UNIFORM_READ_BIT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_SHADER_READ_BIT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_SHADER_WRITE_BIT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_TRANSFER_READ_BIT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_COPY_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_RESOLVE_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_BLIT_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_TRANSFER_WRITE_BIT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_COPY_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_RESOLVE_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_BLIT_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_CLEAR_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_HOST_READ_BIT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_HOST_WRITE_BIT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_MEMORY_READ_BIT](#VkAccessFlagBits2KHR) | Any |
+| [VK_ACCESS_2_MEMORY_WRITE_BIT](#VkAccessFlagBits2KHR) | Any |
+| [VK_ACCESS_2_SHADER_SAMPLED_READ_BIT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_SHADER_STORAGE_READ_BIT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_EXT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_EXT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_MICROMAP_READ_BIT_EXT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_OPTICAL_FLOW_READ_BIT_NV](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_OPTICAL_FLOW_WRITE_BIT_NV](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_DATA_GRAPH_READ_BIT_ARM](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_DATA_GRAPH_BIT_ARM](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_DATA_GRAPH_WRITE_BIT_ARM](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_DATA_GRAPH_BIT_ARM](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_SAMPLER_HEAP_READ_BIT_EXT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) |
+| [VK_ACCESS_2_RESOURCE_HEAP_READ_BIT_EXT](#VkAccessFlagBits2KHR) | [VK_PIPELINE_STAGE_2_VERTEX_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR),
+	[VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR) |
 
 // Provided by VK_VERSION_1_0
 typedef VkFlags VkAccessFlags;
@@ -2469,7 +2500,7 @@ typedef VkFlags VkAccessFlags;
 [VkAccessFlagBits](#VkAccessFlagBits).
 
 If a memory object does not have the
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` property, then
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](memory.html#VkMemoryPropertyFlagBits) property, then
 [vkFlushMappedMemoryRanges](memory.html#vkFlushMappedMemoryRanges) **must** be called in order to guarantee that
 writes to the memory object from the host are made available to the host
 domain, where they **can** be further made available to the device domain via a
@@ -2479,7 +2510,7 @@ that writes which are available to the host domain are made visible to host
 operations.
 
 If the memory object does have the
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` property flag, writes to the
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](memory.html#VkMemoryPropertyFlagBits) property flag, writes to the
 memory object from the host are automatically made available to the host
 domain.
 Similarly, writes made available to the host domain are automatically made
@@ -2499,21 +2530,21 @@ pipeline stages.
 These stages are:
 
 * 
-`VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits)
 
 * 
-`VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT`
+[VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits)
 
 * 
-`VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT`
+[VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits)
 
 * 
-`VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT`
+[VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits)
 
 For commands recorded where the
 [per-tile execution model](renderpass.html#renderpass-per-tile-execution-model) is enabled,
-the `VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT` and
-`VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT` are included as framebuffer-space
+the [VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits) and
+[VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits) are included as framebuffer-space
 pipeline stages.
 
 For these pipeline stages, an execution or memory dependency from the first
@@ -2523,103 +2554,54 @@ dependencies.
 A dependency with non-framebuffer-space pipeline stages is neither
 framebuffer-global nor framebuffer-local.
 
-A *framebuffer region* is a subset of the entire framebuffer, and **can**
-either be:
-
-* 
-A *sample region*, which is set of sample (x, y, layer, sample)
-coordinates that is a subset of the entire framebuffer, or
-
-* 
-A *fragment region*, which is a set of fragment (x, y, layer)
-coordinates that is a subset of the entire framebuffer.
-
-Both [synchronization scopes](#synchronization-dependencies-scopes) of a
-framebuffer-local dependency include only the operations performed within
-corresponding framebuffer regions (as defined below).
-No ordering guarantees are made between different framebuffer regions for a
-framebuffer-local dependency.
-
-Both [synchronization scopes](#synchronization-dependencies-scopes) of a
-framebuffer-global dependency include operations on all framebuffer-regions.
-
-If the first synchronization scope includes operations on pixels/fragments
-with N samples and the second synchronization scope includes operations on
-pixels/fragments with M samples, where N does not equal M, then a
-framebuffer region containing all samples at a given (x, y, layer)
-coordinate in the first synchronization scope corresponds to a region
-containing all samples at the same coordinate in the second synchronization
-scope.
-In other words, the framebuffer region is a fragment region and it is a
-pixel granularity dependency.
-If N equals M,
-and if the
-`VkRenderingInfo`::`flags` does not specify the
-`VK_RENDERING_FRAGMENT_REGION_BIT_EXT` flag or the
-`VkSubpassDescription`::`flags` does not specify the
-`VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT` flag,
-then a framebuffer region containing a single (x, y, layer, sample)
-coordinate in the first synchronization scope corresponds to a region
-containing the same sample at the same coordinate in the second
+Framebuffer-global dependencies require synchronization from all framebuffer
+operations in the first [synchronization scope](#synchronization-dependencies-scopes) to all framebuffer operations in the second
 synchronization scope.
-In other words, the framebuffer region is a sample region and it is a sample
-granularity dependency.
 
-If the pipeline performing the operation was created with
-`VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT`,
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT`,
+Framebuffer-local dependencies instead partition the framebuffer operations
+into *framebuffer regions*, and dependencies are only formed between
+framebuffer regions with overlapping (x, y, layer,
+view,
+sample) coordinates.
+How a framebuffer-local dependency is partitioned depends on the nature of
+the dependency and what is being synchronized, as outlined below.
+
+* 
+If the [VK_DEPENDENCY_BY_REGION_BIT](#VkDependencyFlagBits) flag is specified in a
+synchronization command, each region in that dependency covers a single
+(x,y,layer) position.
+
+If the dependency is between two operations where the sample counts
+match,
+[VK_RENDERING_FRAGMENT_REGION_BIT_EXT](renderpass.html#VkRenderingFlagBitsKHR) is not also specified,
+and the operations are not both in subpasses specified with
+[VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT](renderpass.html#VkSubpassDescriptionFlagBits),
+the regions are further split to only cover a single sample.
+
+* 
+If the dependency is between commands that enable
+[tile shading](renderpass.html#renderpass-tile-shading), instead of a single
+(x,y) position, each region covers multiple (x,y) positions
+according to the tile size and the specified apron.
+
+If the [VK_DEPENDENCY_VIEW_LOCAL_BIT](#VkDependencyFlagBits) flag is specified in a
+synchronization command, each region covers a single (view).
+
+Each region in an automatic framebuffer-local dependency inserted
+between framebuffer-space operations performed by pipelines created with
+[VK_PIPELINE_COLOR_BLEND_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT](framebuffer.html#VkPipelineColorBlendStateCreateFlagBits),
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT](fragops.html#VkPipelineDepthStencilStateCreateFlagBits),
 or
-`VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT`,
-the framebuffer region is a fragment region and it is a pixel granularity
-dependency.
+[VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT](fragops.html#VkPipelineDepthStencilStateCreateFlagBits),
+covers a single (x,y,layer,sample) position.
 
-For commands recorded within a render pass that enables
-[tile shading](renderpass.html#renderpass-tile-shading), the framebuffer region is a tile
-region and it is a tile granularity dependency.
-
-|  | For commands recorded within a render pass instance that enables
-| --- | --- |
-[tile shading](renderpass.html#renderpass-tile-shading), the fragment shader invocations
-for a given tile will be grouped together, but the tiles do not run in any
-particular order, and the fragment shader invocations within a tile do not
-run in any particular order.
-Otherwise,
-fragment shader invocations are not specified to run in any particular
-groupings, the size of a framebuffer region is implementation-dependent, not
-known to the application, and **must** be assumed to be no larger than
-specified above. |
-
-|  | Practically, the pixel vs. sample granularity dependency means that if an
-| --- | --- |
-input attachment has a different number of samples than the pipeline’s
-`rasterizationSamples`, then a fragment **can** access any sample in the
-input attachment’s pixel even if it only uses framebuffer-local
-dependencies.
-If the input attachment has the same number of samples, then the fragment
-**can** only access the covered samples in its input `SampleMask` (i.e. the
-fragment operations happen-after a framebuffer-local dependency for each
-sample the fragment covers).
-To access samples that are not covered,
-the `VK_RENDERING_FRAGMENT_REGION_BIT_EXT` flag, or
-the `VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT` flag, or
-a framebuffer-global dependency is required.
-
-For a tile granularity dependency, a fragment shader **can** use
-[tile attachment variables](renderpass.html#renderpass-tile-shading-attachment-access) to
-access any pixel or sample within the *active tile* for color, depth/stencil
-or input attachments even if only framebuffer-local dependencies are used. |
-
-If a synchronization command includes a `dependencyFlags` parameter, and
-specifies the `VK_DEPENDENCY_BY_REGION_BIT` flag, then it defines
-framebuffer-local dependencies for the framebuffer-space pipeline stages in
-that synchronization command, for all framebuffer regions.
-If no `dependencyFlags` parameter is included, or the
-`VK_DEPENDENCY_BY_REGION_BIT` flag is not specified, then a
-framebuffer-global dependency is specified for those stages.
-The `VK_DEPENDENCY_BY_REGION_BIT` flag does not affect the dependencies
-between non-framebuffer-space pipeline stages, nor does it affect the
-dependencies between framebuffer-space and non-framebuffer-space pipeline
-stages.
+If none of the above conditions partitions the regions across one of the
+x, y, layer,
+view,
+or sample dimensions, all coordinates for that dimension are included
+in each region.
+If this is true for all of those dimensions, the dependency is
+framebuffer-global.
 
 |  | Framebuffer-local dependencies are more efficient for most architectures;
 | --- | --- |
@@ -2630,23 +2612,10 @@ Including a framebuffer-global dependency in your rendering will usually
 force all implementations to flush data to memory, or to a higher level
 cache, breaking any potential locality optimizations. |
 
-In a render pass instance that has [multiview](renderpass.html#renderpass-multiview)
-enabled, dependencies **can** be either view-local or view-global.
-
-A view-local dependency only includes operations from a single
-[source view](renderpass.html#renderpass-multiview-view-local) from the source subpass in
-the first synchronization scope, and only includes operations from a single
-[destination view](renderpass.html#renderpass-multiview-view-local) from the destination
-subpass in the second synchronization scope.
-A view-global dependency includes all views in the view mask of the source
-and destination subpasses in the corresponding synchronization scopes.
-
-If a synchronization command includes a `dependencyFlags` parameter and
-specifies the `VK_DEPENDENCY_VIEW_LOCAL_BIT` flag, then it defines
-view-local dependencies for that synchronization command, for all views.
-If no `dependencyFlags` parameter is included or the
-`VK_DEPENDENCY_VIEW_LOCAL_BIT` flag is not specified, then a view-global
-dependency is specified.
+|  | It does not matter whether a framebuffer local dependency is within a single
+| --- | --- |
+render pass or between two different render passes - the dependencies are
+always between regions with overlapping framebuffer coordinates. |
 
 Dependencies **can** be either device-local or non-device-local.
 A device-local dependency acts as multiple separate dependencies, one for
@@ -2662,10 +2631,10 @@ dependency, and for pipeline barriers all physical devices that are set in
 the command buffer’s current device mask participate in the dependency.
 
 If a synchronization command includes a `dependencyFlags` parameter and
-specifies the `VK_DEPENDENCY_DEVICE_GROUP_BIT` flag, then it defines a
+specifies the [VK_DEPENDENCY_DEVICE_GROUP_BIT](#VkDependencyFlagBits) flag, then it defines a
 non-device-local dependency for that synchronization command.
 If no `dependencyFlags` parameter is included or the
-`VK_DEPENDENCY_DEVICE_GROUP_BIT` flag is not specified, then it defines
+[VK_DEPENDENCY_DEVICE_GROUP_BIT](#VkDependencyFlagBits) flag is not specified, then it defines
 device-local dependencies for that synchronization command, for all
 participating physical devices.
 
@@ -2884,21 +2853,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkFenceCreateInfo` structure is defined as:
 
@@ -2925,7 +2894,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFenceCreateInfo-sType-sType) VUID-VkFenceCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FENCE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FENCE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkFenceCreateInfo-pNext-pNext) VUID-VkFenceCreateInfo-pNext-pNext
@@ -2948,7 +2917,7 @@ typedef enum VkFenceCreateFlagBits {
 } VkFenceCreateFlagBits;
 
 * 
-`VK_FENCE_CREATE_SIGNALED_BIT` specifies that the fence object is
+[VK_FENCE_CREATE_SIGNALED_BIT](#VkFenceCreateFlagBits) specifies that the fence object is
 created in the signaled state.
 Otherwise, it is created in the unsignaled state.
 
@@ -3000,7 +2969,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportFenceCreateInfo-sType-sType) VUID-VkExportFenceCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExportFenceCreateInfo-handleTypes-parameter) VUID-VkExportFenceCreateInfo-handleTypes-parameter
@@ -3056,7 +3025,7 @@ Further, if the structure is not present, the access rights will be
 
 for handles of the following types:
 
-`VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT`
+[VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT](capabilities.html#VkExternalFenceHandleTypeFlagBitsKHR)
 
 1
 
@@ -3068,7 +3037,7 @@ Valid Usage
 [](#VUID-VkExportFenceWin32HandleInfoKHR-handleTypes-01447) VUID-VkExportFenceWin32HandleInfoKHR-handleTypes-01447
 
 If [VkExportFenceCreateInfo](#VkExportFenceCreateInfo)::`handleTypes` does not include
-`VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT`, a
+[VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT](capabilities.html#VkExternalFenceHandleTypeFlagBitsKHR), a
 `VkExportFenceWin32HandleInfoKHR` structure **must** not be included in
 the `pNext` chain of [VkFenceCreateInfo](#VkFenceCreateInfo)
 
@@ -3077,7 +3046,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportFenceWin32HandleInfoKHR-sType-sType) VUID-VkExportFenceWin32HandleInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExportFenceWin32HandleInfoKHR-pAttributes-parameter) VUID-VkExportFenceWin32HandleInfoKHR-pAttributes-parameter
@@ -3136,21 +3105,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkFenceGetWin32HandleInfoKHR` structure is defined as:
 
@@ -3226,7 +3195,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFenceGetWin32HandleInfoKHR-sType-sType) VUID-VkFenceGetWin32HandleInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FENCE_GET_WIN32_HANDLE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FENCE_GET_WIN32_HANDLE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkFenceGetWin32HandleInfoKHR-pNext-pNext) VUID-VkFenceGetWin32HandleInfoKHR-pNext-pNext
@@ -3275,7 +3244,7 @@ or transfer ownership back to Vulkan by using the file descriptor to import
 a fence payload. |
 
 If `pGetFdInfo->handleType` is
-`VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT` and the fence is signaled at
+[VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT](capabilities.html#VkExternalFenceHandleTypeFlagBitsKHR) and the fence is signaled at
 the time `vkGetFenceFdKHR` is called, `pFd` **may** return the value
 `-1` instead of a valid file descriptor.
 
@@ -3309,21 +3278,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkFenceGetFdInfoKHR` structure is defined as:
 
@@ -3391,7 +3360,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFenceGetFdInfoKHR-sType-sType) VUID-VkFenceGetFdInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FENCE_GET_FD_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FENCE_GET_FD_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkFenceGetFdInfoKHR-pNext-pNext) VUID-VkFenceGetFdInfoKHR-pNext-pNext
@@ -3491,9 +3460,9 @@ with the following return codes:
 
 | Status | Meaning |
 | --- | --- |
-| `VK_SUCCESS` | The fence specified by `fence` is signaled. |
-| `VK_NOT_READY` | The fence specified by `fence` is unsignaled. |
-| `VK_ERROR_DEVICE_LOST` | The device has been lost.  See [Lost Device](devsandqueues.html#devsandqueues-lost-device). |
+| [VK_SUCCESS](fundamentals.html#VkResult) | The fence specified by `fence` is signaled. |
+| [VK_NOT_READY](fundamentals.html#VkResult) | The fence specified by `fence` is unsignaled. |
+| [VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult) | The device has been lost.  See [Lost Device](devsandqueues.html#devsandqueues-lost-device). |
 
 If a [queue submission](devsandqueues.html#devsandqueues-submission) command is pending
 execution, then the value returned by this command **may** immediately be out
@@ -3502,8 +3471,8 @@ of date.
 If the device has been lost (see [Lost Device](devsandqueues.html#devsandqueues-lost-device)),
 `vkGetFenceStatus` **may** return any of the above status codes.
 If the device has been lost and `vkGetFenceStatus` is called repeatedly,
-it will eventually return either `VK_SUCCESS` or
-`VK_ERROR_DEVICE_LOST`.
+it will eventually return either [VK_SUCCESS](fundamentals.html#VkResult) or
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult).
 
 Valid Usage (Implicit)
 
@@ -3527,27 +3496,27 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_NOT_READY`
+[VK_NOT_READY](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To set the state of fences to unsignaled from the host, call:
 
@@ -3620,18 +3589,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 When a fence is submitted to a queue as part of a
 [queue submission](devsandqueues.html#devsandqueues-submission) command, it defines a memory
@@ -3685,7 +3654,7 @@ handles.
 * 
 `waitAll` is the condition that **must** be satisfied to successfully
 unblock the wait.
-If `waitAll` is `VK_TRUE`, then the condition is that all fences
+If `waitAll` is [VK_TRUE](fundamentals.html#VK_TRUE), then the condition is that all fences
 in `pFences` are signaled.
 Otherwise, the condition is that at least one fence in `pFences` is
 signaled.
@@ -3705,17 +3674,17 @@ is satisfied or the `timeout` has expired, whichever is sooner.
 
 If `timeout` is zero, then `vkWaitForFences` does not wait, but
 simply returns the current state of the fences.
-`VK_TIMEOUT` will be returned in this case if the condition is not
+[VK_TIMEOUT](fundamentals.html#VkResult) will be returned in this case if the condition is not
 satisfied, even though no actual wait was performed.
 
 If the condition is satisfied before the `timeout` has expired,
-`vkWaitForFences` returns `VK_SUCCESS`.
-Otherwise, `vkWaitForFences` returns `VK_TIMEOUT` after the
+`vkWaitForFences` returns [VK_SUCCESS](fundamentals.html#VkResult).
+Otherwise, `vkWaitForFences` returns [VK_TIMEOUT](fundamentals.html#VkResult) after the
 `timeout` has expired.
 
 If device loss occurs (see [Lost Device](devsandqueues.html#devsandqueues-lost-device)) before
 the timeout has expired, `vkWaitForFences` **must** return in finite time
-with either `VK_SUCCESS` or `VK_ERROR_DEVICE_LOST`.
+with either [VK_SUCCESS](fundamentals.html#VkResult) or [VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult).
 
 |  | While we guarantee that `vkWaitForFences` **must** return in finite time,
 | --- | --- |
@@ -3751,27 +3720,27 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 * 
-`VK_TIMEOUT`
+[VK_TIMEOUT](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 An execution dependency is defined by waiting for a fence to become
 signaled, either via [vkWaitForFences](#vkWaitForFences) or by polling on
@@ -3848,18 +3817,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkDeviceEventInfoEXT` structure is defined as:
 
@@ -3886,7 +3855,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceEventInfoEXT-sType-sType) VUID-VkDeviceEventInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_EVENT_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_EVENT_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceEventInfoEXT-pNext-pNext) VUID-VkDeviceEventInfoEXT-pNext-pNext
@@ -3907,7 +3876,7 @@ typedef enum VkDeviceEventTypeEXT {
 } VkDeviceEventTypeEXT;
 
 * 
-`VK_DEVICE_EVENT_TYPE_DISPLAY_HOTPLUG_EXT` specifies that the fence
+[VK_DEVICE_EVENT_TYPE_DISPLAY_HOTPLUG_EXT](#VkDeviceEventTypeEXT) specifies that the fence
 is signaled when a display is plugged into or unplugged from the
 specified device.
 Applications **can** use this notification to determine when they need to
@@ -3979,18 +3948,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkDisplayEventInfoEXT` structure is defined as:
 
@@ -4017,7 +3986,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDisplayEventInfoEXT-sType-sType) VUID-VkDisplayEventInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_EVENT_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_EVENT_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDisplayEventInfoEXT-pNext-pNext) VUID-VkDisplayEventInfoEXT-pNext-pNext
@@ -4038,7 +4007,7 @@ typedef enum VkDisplayEventTypeEXT {
 } VkDisplayEventTypeEXT;
 
 * 
-`VK_DISPLAY_EVENT_TYPE_FIRST_PIXEL_OUT_EXT` specifies that the fence
+[VK_DISPLAY_EVENT_TYPE_FIRST_PIXEL_OUT_EXT](#VkDisplayEventTypeEXT) specifies that the fence
 is signaled when the first pixel of the next display refresh cycle
 leaves the display engine for the display.
 
@@ -4132,7 +4101,7 @@ execution.
 * 
 In the preceding cases, any of the devices associated with the fences
 sharing the payload **may** be lost, or any of the queue submission or
-fence reset commands **may** return `VK_ERROR_INITIALIZATION_FAILED`.
+fence reset commands **may** return [VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult).
 
 Other than these non-deterministic results, behavior is well defined.
 In particular:
@@ -4184,7 +4153,7 @@ corruption of other resources when used as allowed according to its import
 parameters.
 If the external handle provided does not meet these requirements, the
 implementation **must** fail the fence payload import operation with the error
-code `VK_ERROR_INVALID_EXTERNAL_HANDLE`.
+code [VK_ERROR_INVALID_EXTERNAL_HANDLE](fundamentals.html#VkResult).
 
 To import a fence payload from a Windows handle, call:
 
@@ -4236,21 +4205,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkImportFenceWin32HandleInfoKHR` structure is defined as:
 
@@ -4294,8 +4263,8 @@ The handle types supported by `handleType` are:
 
 | Handle Type | Transference | Permanence Supported |
 | --- | --- | --- |
-| `VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT` | Reference | Temporary,Permanent |
-| `VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT` | Reference | Temporary,Permanent |
+| [VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT](capabilities.html#VkExternalFenceHandleTypeFlagBitsKHR) | Reference | Temporary,Permanent |
+| [VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](capabilities.html#VkExternalFenceHandleTypeFlagBitsKHR) | Reference | Temporary,Permanent |
 
 Valid Usage
 
@@ -4309,7 +4278,7 @@ Valid Usage
 [](#VUID-VkImportFenceWin32HandleInfoKHR-handleType-01459) VUID-VkImportFenceWin32HandleInfoKHR-handleType-01459
 
 If `handleType` is not
-`VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT`, `name` **must**
+[VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT](capabilities.html#VkExternalFenceHandleTypeFlagBitsKHR), `name` **must**
 be `NULL`
 
 * 
@@ -4346,7 +4315,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportFenceWin32HandleInfoKHR-sType-sType) VUID-VkImportFenceWin32HandleInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_FENCE_WIN32_HANDLE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_FENCE_WIN32_HANDLE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImportFenceWin32HandleInfoKHR-pNext-pNext) VUID-VkImportFenceWin32HandleInfoKHR-pNext-pNext
@@ -4416,21 +4385,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkImportFenceFdInfoKHR` structure is defined as:
 
@@ -4469,8 +4438,8 @@ The handle types supported by `handleType` are:
 
 | Handle Type | Transference | Permanence Supported |
 | --- | --- | --- |
-| `VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT` | Reference | Temporary,Permanent |
-| `VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT` | Copy | Temporary |
+| [VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT](capabilities.html#VkExternalFenceHandleTypeFlagBitsKHR) | Reference | Temporary,Permanent |
+| [VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT](capabilities.html#VkExternalFenceHandleTypeFlagBitsKHR) | Copy | Temporary |
 
 Valid Usage
 
@@ -4491,9 +4460,9 @@ Valid Usage
 
 If `handleType` refers to a handle type with copy payload
 transference semantics, `flags` **must** contain
-`VK_FENCE_IMPORT_TEMPORARY_BIT`
+[VK_FENCE_IMPORT_TEMPORARY_BIT](#VkFenceImportFlagBitsKHR)
 
-If `handleType` is `VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT`, the
+If `handleType` is [VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT](capabilities.html#VkExternalFenceHandleTypeFlagBitsKHR), the
 special value `-1` for `fd` is treated like a valid sync file descriptor
 referring to an object that has already signaled.
 The import operation will succeed and the `VkFence` will have a
@@ -4506,7 +4475,7 @@ easier interoperability with other system APIs which use the convention that
 an invalid sync file descriptor represents work that has already completed
 and does not need to be waited for.
 It is consistent with the option for implementations to return a `-1` file
-descriptor when exporting a `VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT`
+descriptor when exporting a [VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT](capabilities.html#VkExternalFenceHandleTypeFlagBitsKHR)
 from a `VkFence` which is signaled. |
 
 Valid Usage (Implicit)
@@ -4514,7 +4483,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportFenceFdInfoKHR-sType-sType) VUID-VkImportFenceFdInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_FENCE_FD_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_FENCE_FD_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImportFenceFdInfoKHR-pNext-pNext) VUID-VkImportFenceFdInfoKHR-pNext-pNext
@@ -4563,7 +4532,7 @@ typedef enum VkFenceImportFlagBits {
 typedef VkFenceImportFlagBits VkFenceImportFlagBitsKHR;
 
 * 
-`VK_FENCE_IMPORT_TEMPORARY_BIT` specifies that the fence payload
+[VK_FENCE_IMPORT_TEMPORARY_BIT](#VkFenceImportFlagBitsKHR) specifies that the fence payload
 will be imported only temporarily, as described in
 [Importing Fence Payloads](#synchronization-fences-importing),
 regardless of the permanence of `handleType`.
@@ -4664,21 +4633,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkSemaphoreCreateInfo` structure is defined as:
 
@@ -4707,14 +4676,14 @@ Valid Usage
 If the `pNext` chain includes a
 [VkExportMetalObjectCreateInfoEXT](memory.html#VkExportMetalObjectCreateInfoEXT) structure, its
 `exportObjectType` member **must** be
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT`
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT](memory.html#VkExportMetalObjectTypeFlagBitsEXT)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSemaphoreCreateInfo-sType-sType) VUID-VkSemaphoreCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSemaphoreCreateInfo-pNext-pNext) VUID-VkSemaphoreCreateInfo-pNext-pNext
@@ -4764,7 +4733,7 @@ of the semaphore.
 
 * 
 `initialValue` is the initial payload value if `semaphoreType`
-is `VK_SEMAPHORE_TYPE_TIMELINE`.
+is [VK_SEMAPHORE_TYPE_TIMELINE](#VkSemaphoreTypeKHR).
 
 To create a semaphore of a specific type, add a
 `VkSemaphoreTypeCreateInfo` structure to the
@@ -4772,7 +4741,7 @@ To create a semaphore of a specific type, add a
 
 If no `VkSemaphoreTypeCreateInfo` structure is included in the
 `pNext` chain of [VkSemaphoreCreateInfo](#VkSemaphoreCreateInfo), then the created semaphore
-will have a default [VkSemaphoreType](#VkSemaphoreType) of `VK_SEMAPHORE_TYPE_BINARY`.
+will have a default [VkSemaphoreType](#VkSemaphoreType) of [VK_SEMAPHORE_TYPE_BINARY](#VkSemaphoreTypeKHR).
 
 Valid Usage
 
@@ -4781,12 +4750,12 @@ Valid Usage
 
 If the [`timelineSemaphore`](features.html#features-timelineSemaphore) feature
 is not enabled, `semaphoreType` **must** not equal
-`VK_SEMAPHORE_TYPE_TIMELINE`
+[VK_SEMAPHORE_TYPE_TIMELINE](#VkSemaphoreTypeKHR)
 
 * 
 [](#VUID-VkSemaphoreTypeCreateInfo-semaphoreType-03279) VUID-VkSemaphoreTypeCreateInfo-semaphoreType-03279
 
-If `semaphoreType` is `VK_SEMAPHORE_TYPE_BINARY`,
+If `semaphoreType` is [VK_SEMAPHORE_TYPE_BINARY](#VkSemaphoreTypeKHR),
 `initialValue` **must** be zero
 
 Valid Usage (Implicit)
@@ -4794,7 +4763,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSemaphoreTypeCreateInfo-sType-sType) VUID-VkSemaphoreTypeCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SEMAPHORE_TYPE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SEMAPHORE_TYPE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSemaphoreTypeCreateInfo-semaphoreType-parameter) VUID-VkSemaphoreTypeCreateInfo-semaphoreType-parameter
@@ -4819,13 +4788,13 @@ typedef enum VkSemaphoreType {
 typedef VkSemaphoreType VkSemaphoreTypeKHR;
 
 * 
-`VK_SEMAPHORE_TYPE_BINARY` specifies a *binary semaphore* type that
+[VK_SEMAPHORE_TYPE_BINARY](#VkSemaphoreTypeKHR) specifies a *binary semaphore* type that
 has a boolean payload indicating whether the semaphore is currently
 signaled or unsignaled.
 When created, the semaphore is in the unsignaled state.
 
 * 
-`VK_SEMAPHORE_TYPE_TIMELINE` specifies a *timeline semaphore* type
+[VK_SEMAPHORE_TYPE_TIMELINE](#VkSemaphoreTypeKHR) specifies a *timeline semaphore* type
 that has a strictly increasing 64-bit unsigned integer payload
 indicating whether the semaphore is signaled with respect to a
 particular reference value.
@@ -4876,7 +4845,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportSemaphoreCreateInfo-sType-sType) VUID-VkExportSemaphoreCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExportSemaphoreCreateInfo-handleTypes-parameter) VUID-VkExportSemaphoreCreateInfo-handleTypes-parameter
@@ -4931,14 +4900,14 @@ the handle type.
 
 For handles of the following types:
 
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT`
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR)
 
 The implementation **must** ensure the access rights allow both signal and wait
 operations on the semaphore.
 
 For handles of the following types:
 
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT`
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR)
 
 The access rights **must** be:
 
@@ -4954,8 +4923,8 @@ Valid Usage
 [](#VUID-VkExportSemaphoreWin32HandleInfoKHR-handleTypes-01125) VUID-VkExportSemaphoreWin32HandleInfoKHR-handleTypes-01125
 
 If [VkExportSemaphoreCreateInfo](#VkExportSemaphoreCreateInfo)::`handleTypes` does not include
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT` or
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT`,
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR) or
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR),
 `VkExportSemaphoreWin32HandleInfoKHR` **must** not be included in the
 `pNext` chain of [VkSemaphoreCreateInfo](#VkSemaphoreCreateInfo)
 
@@ -4964,7 +4933,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportSemaphoreWin32HandleInfoKHR-sType-sType) VUID-VkExportSemaphoreWin32HandleInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExportSemaphoreWin32HandleInfoKHR-pAttributes-parameter) VUID-VkExportSemaphoreWin32HandleInfoKHR-pAttributes-parameter
@@ -5023,21 +4992,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkSemaphoreGetWin32HandleInfoKHR` structure is defined as:
 
@@ -5120,7 +5089,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSemaphoreGetWin32HandleInfoKHR-sType-sType) VUID-VkSemaphoreGetWin32HandleInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSemaphoreGetWin32HandleInfoKHR-pNext-pNext) VUID-VkSemaphoreGetWin32HandleInfoKHR-pNext-pNext
@@ -5163,7 +5132,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueryLowLatencySupportNV-sType-sType) VUID-VkQueryLowLatencySupportNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUERY_LOW_LATENCY_SUPPORT_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUERY_LOW_LATENCY_SUPPORT_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkQueryLowLatencySupportNV-pQueriedLowLatencyData-parameter) VUID-VkQueryLowLatencySupportNV-pQueriedLowLatencyData-parameter
@@ -5232,21 +5201,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkSemaphoreGetFdInfoKHR` structure is defined as:
 
@@ -5321,7 +5290,7 @@ associated [semaphore signal    operation](#synchronization-semaphores-signaling
 
 If `handleType` refers to a handle type with copy payload
 transference semantics, `semaphore` **must** have been created with a
-[VkSemaphoreType](#VkSemaphoreType) of `VK_SEMAPHORE_TYPE_BINARY`
+[VkSemaphoreType](#VkSemaphoreType) of [VK_SEMAPHORE_TYPE_BINARY](#VkSemaphoreTypeKHR)
 
 * 
 [](#VUID-VkSemaphoreGetFdInfoKHR-handleType-03254) VUID-VkSemaphoreGetFdInfoKHR-handleType-03254
@@ -5337,7 +5306,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSemaphoreGetFdInfoKHR-sType-sType) VUID-VkSemaphoreGetFdInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SEMAPHORE_GET_FD_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SEMAPHORE_GET_FD_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSemaphoreGetFdInfoKHR-pNext-pNext) VUID-VkSemaphoreGetFdInfoKHR-pNext-pNext
@@ -5413,21 +5382,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkSemaphoreGetZirconHandleInfoFUCHSIA` structure is defined as:
 
@@ -5501,14 +5470,14 @@ associated [semaphore signal    operation](#synchronization-semaphores-signaling
 [](#VUID-VkSemaphoreGetZirconHandleInfoFUCHSIA-semaphore-04763) VUID-VkSemaphoreGetZirconHandleInfoFUCHSIA-semaphore-04763
 
 `semaphore` **must** have been created with a [VkSemaphoreType](#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_BINARY`
+[VK_SEMAPHORE_TYPE_BINARY](#VkSemaphoreTypeKHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSemaphoreGetZirconHandleInfoFUCHSIA-sType-sType) VUID-VkSemaphoreGetZirconHandleInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SEMAPHORE_GET_ZIRCON_HANDLE_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SEMAPHORE_GET_ZIRCON_HANDLE_INFO_FUCHSIA](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSemaphoreGetZirconHandleInfoFUCHSIA-pNext-pNext) VUID-VkSemaphoreGetZirconHandleInfoFUCHSIA-pNext-pNext
@@ -5596,25 +5565,12 @@ dependency on the batch, and defines *semaphore signal operations* which set
 the semaphores to the signaled state.
 
 In case of semaphores created with a [VkSemaphoreType](#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_TIMELINE` the semaphore is considered signaled with
+[VK_SEMAPHORE_TYPE_TIMELINE](#VkSemaphoreTypeKHR) the semaphore is considered signaled with
 respect to the counter value set to be signaled as specified in
 [VkTimelineSemaphoreSubmitInfo](cmdbuffers.html#VkTimelineSemaphoreSubmitInfo) or [VkSemaphoreSignalInfo](#VkSemaphoreSignalInfo).
 
-The first [synchronization scope](#synchronization-dependencies-scopes)
-includes every command submitted in the same batch.
-In the case of [vkQueueSubmit2](cmdbuffers.html#vkQueueSubmit2), the first synchronization scope is
-limited to the pipeline stage specified by
-[VkSemaphoreSubmitInfo](cmdbuffers.html#VkSemaphoreSubmitInfo)::`stageMask`.
-Semaphore signal operations that are defined by [vkQueueSubmit](cmdbuffers.html#vkQueueSubmit)
-or [vkQueueSubmit2](cmdbuffers.html#vkQueueSubmit2)
-additionally include all commands that occur earlier in
-[submission order](#synchronization-submission-order).
-Semaphore signal operations that are defined by [vkQueueSubmit](cmdbuffers.html#vkQueueSubmit)
-or [vkQueueSubmit2](cmdbuffers.html#vkQueueSubmit2)
-or [vkQueueBindSparse](sparsemem.html#vkQueueBindSparse)
-additionally include in the first synchronization scope any semaphore and
-fence signal operations that occur earlier in
-[signal operation order](#synchronization-signal-operation-order).
+The first [synchronization scope](#synchronization-dependencies-scopes) of
+a semaphore signal operation is defined by the command which defines it.
 
 The second [synchronization scope](#synchronization-dependencies-scopes)
 includes only the semaphore signal operation.
@@ -5630,18 +5586,20 @@ memory dependency between prior semaphore signal operations and the batch,
 and defines *semaphore wait operations*.
 
 Such semaphore wait operations set the semaphores
-created with a [VkSemaphoreType](#VkSemaphoreType) of `VK_SEMAPHORE_TYPE_BINARY`
+created with a [VkSemaphoreType](#VkSemaphoreType) of [VK_SEMAPHORE_TYPE_BINARY](#VkSemaphoreTypeKHR)
 to the unsignaled state.
 In case of semaphores created with a [VkSemaphoreType](#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_TIMELINE` a prior semaphore signal operation defines
+[VK_SEMAPHORE_TYPE_TIMELINE](#VkSemaphoreTypeKHR) a prior semaphore signal operation defines
 a memory dependency with a semaphore wait operation if the value the
 semaphore is signaled with is greater than or equal to the value the
 semaphore is waited with, thus the semaphore will continue to be considered
 signaled with respect to the counter value waited on as specified in
 [VkTimelineSemaphoreSubmitInfo](cmdbuffers.html#VkTimelineSemaphoreSubmitInfo).
 
-The first [synchronization scope](#synchronization-dependencies-scopes)
-includes one [semaphore signal operation](#synchronization-semaphores-signaling) for each semaphore waited on by this batch.
+The first [synchronization scope](#synchronization-dependencies-scopes) of
+any wait semaphore operation includes one
+[semaphore signal operation](#synchronization-semaphores-signaling) for each
+semaphore waited on by this batch.
 The specific signal operation waited on for each semaphore **must** meet the
 following criteria:
 
@@ -5673,20 +5631,8 @@ operations **may** be included in the first
 When waiting on a binary semaphore, applications **must** ensure that exactly
 one semaphore signal operation meets these criteria.
 
-The second [synchronization scope](#synchronization-dependencies-scopes)
-includes every command submitted in the same batch.
-In the case of [vkQueueSubmit](cmdbuffers.html#vkQueueSubmit), the second synchronization scope is
-limited to operations on the pipeline stages determined by the
-[destination stage mask](#synchronization-pipeline-stages-masks) specified
-by the corresponding element of `pWaitDstStageMask`.
-In the case of [vkQueueSubmit2](cmdbuffers.html#vkQueueSubmit2), the second synchronization scope is
-limited to the pipeline stage specified by
-[VkSemaphoreSubmitInfo](cmdbuffers.html#VkSemaphoreSubmitInfo)::`stageMask`.
-Also, in the case of
-either [vkQueueSubmit2](cmdbuffers.html#vkQueueSubmit2) or
-[vkQueueSubmit](cmdbuffers.html#vkQueueSubmit), the second synchronization scope additionally includes
-all commands that occur later in
-[submission order](#synchronization-submission-order).
+The second [synchronization scope](#synchronization-dependencies-scopes) of
+a wait operation is defined by each command.
 
 The first [access scope](#synchronization-dependencies-access-scopes) is
 empty.
@@ -5707,59 +5653,6 @@ Applications **must** ensure that between two such wait operations, the
 semaphore is signaled again, with execution dependencies used to ensure
 these occur in order.
 Binary semaphore waits and signals should thus occur in discrete 1:1 pairs. |
-
-|  | A common scenario for using `pWaitDstStageMask` with values other than
-| --- | --- |
-`VK_PIPELINE_STAGE_ALL_COMMANDS_BIT` is when synchronizing a window
-system presentation operation against subsequent command buffers which
-render the next frame.
-In this case, a presentation image **must** not be overwritten until the
-presentation operation completes, but other pipeline stages **can** execute
-without waiting.
-A mask of `VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT` prevents
-subsequent color attachment writes from executing until the semaphore
-signals.
-Some implementations **may** be able to execute transfer operations and/or
-pre-rasterization work before the semaphore is signaled.
-
-If an image layout transition needs to be performed on a presentable image
-before it is used in a framebuffer, that **can** be performed as the first
-operation submitted to the queue after acquiring the image, and **should** not
-prevent other work from overlapping with the presentation operation.
-For example, a `VkImageMemoryBarrier` could use:
-
-* 
-`srcStageMask` = `VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT`
-
-* 
-`srcAccessMask` = 0
-
-* 
-`dstStageMask` = `VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT`
-
-* 
-`dstAccessMask` = `VK_ACCESS_COLOR_ATTACHMENT_READ_BIT` \|
-`VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT`.
-
-* 
-`oldLayout` = `VK_IMAGE_LAYOUT_PRESENT_SRC_KHR`
-
-* 
-`newLayout` = `VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`
-
-Alternatively, `oldLayout` **can** be `VK_IMAGE_LAYOUT_UNDEFINED`, if
-the image’s contents need not be preserved.
-
-This barrier accomplishes a dependency chain between previous presentation
-operations and subsequent color attachment output operations, with the
-layout transition performed in between, and does not introduce a dependency
-between previous work and any
-[pre-rasterization shader stage](pipelines.html#pipelines-graphics-subsets-pre-rasterization)s.
-More precisely, the semaphore signals after the presentation operation
-completes, the semaphore wait stalls the
-`VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT` stage, and there is a
-dependency from that same stage to itself with the layout transition
-performed in between. |
 
 Before waiting on a semaphore, the application **must** ensure the semaphore is
 in a valid state for a wait operation.
@@ -5795,7 +5688,7 @@ Signal the semaphore with a particular counter value from the host using
 the [vkSignalSemaphore](#vkSignalSemaphore) command.
 
 To query the current counter value of a semaphore created with a
-[VkSemaphoreType](#VkSemaphoreType) of `VK_SEMAPHORE_TYPE_TIMELINE` from the host,
+[VkSemaphoreType](#VkSemaphoreType) of [VK_SEMAPHORE_TYPE_TIMELINE](#VkSemaphoreTypeKHR) from the host,
 call:
 
 // Provided by VK_VERSION_1_2
@@ -5832,7 +5725,7 @@ Valid Usage
 [](#VUID-vkGetSemaphoreCounterValue-semaphore-03255) VUID-vkGetSemaphoreCounterValue-semaphore-03255
 
 `semaphore` **must** have been created with a [VkSemaphoreType](#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_TIMELINE`
+[VK_SEMAPHORE_TYPE_TIMELINE](#VkSemaphoreTypeKHR)
 
 Valid Usage (Implicit)
 
@@ -5861,27 +5754,27 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To wait for a set of semaphores created with a [VkSemaphoreType](#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_TIMELINE` to reach particular counter values on the
+[VK_SEMAPHORE_TYPE_TIMELINE](#VkSemaphoreTypeKHR) to reach particular counter values on the
 host, call:
 
 // Provided by VK_VERSION_1_2
@@ -5919,17 +5812,17 @@ is satisfied or the `timeout` has expired, whichever is sooner.
 
 If `timeout` is zero, then `vkWaitSemaphores` does not wait, but
 simply returns information about the current state of the semaphores.
-`VK_TIMEOUT` will be returned in this case if the condition is not
+[VK_TIMEOUT](fundamentals.html#VkResult) will be returned in this case if the condition is not
 satisfied, even though no actual wait was performed.
 
 If the condition is satisfied before the `timeout` has expired,
-`vkWaitSemaphores` returns `VK_SUCCESS`.
-Otherwise, `vkWaitSemaphores` returns `VK_TIMEOUT` after the
+`vkWaitSemaphores` returns [VK_SUCCESS](fundamentals.html#VkResult).
+Otherwise, `vkWaitSemaphores` returns [VK_TIMEOUT](fundamentals.html#VkResult) after the
 `timeout` has expired.
 
 If device loss occurs (see [Lost Device](devsandqueues.html#devsandqueues-lost-device)) before
 the timeout has expired, `vkWaitSemaphores` **must** return in finite time
-with either `VK_SUCCESS` or `VK_ERROR_DEVICE_LOST`.
+with either [VK_SUCCESS](fundamentals.html#VkResult) or [VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult).
 
 Valid Usage (Implicit)
 
@@ -5948,27 +5841,27 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 * 
-`VK_TIMEOUT`
+[VK_TIMEOUT](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkSemaphoreWaitInfo` structure is defined as:
 
@@ -6015,14 +5908,14 @@ Valid Usage
 
 All of the elements of `pSemaphores` **must** reference a semaphore
 that was created with a [VkSemaphoreType](#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_TIMELINE`
+[VK_SEMAPHORE_TYPE_TIMELINE](#VkSemaphoreTypeKHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSemaphoreWaitInfo-sType-sType) VUID-VkSemaphoreWaitInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SEMAPHORE_WAIT_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SEMAPHORE_WAIT_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSemaphoreWaitInfo-pNext-pNext) VUID-VkSemaphoreWaitInfo-pNext-pNext
@@ -6064,12 +5957,12 @@ typedef enum VkSemaphoreWaitFlagBits {
 typedef VkSemaphoreWaitFlagBits VkSemaphoreWaitFlagBitsKHR;
 
 * 
-`VK_SEMAPHORE_WAIT_ANY_BIT` specifies that the semaphore wait
+[VK_SEMAPHORE_WAIT_ANY_BIT](#VkSemaphoreWaitFlagBitsKHR) specifies that the semaphore wait
 condition is that at least one of the semaphores in
 `VkSemaphoreWaitInfo`::`pSemaphores` has reached the value
 specified by the corresponding element of
 `VkSemaphoreWaitInfo`::`pValues`.
-If `VK_SEMAPHORE_WAIT_ANY_BIT` is not set, the semaphore wait
+If [VK_SEMAPHORE_WAIT_ANY_BIT](#VkSemaphoreWaitFlagBitsKHR) is not set, the semaphore wait
 condition is that all of the semaphores in
 `VkSemaphoreWaitInfo`::`pSemaphores` have reached the value
 specified by the corresponding element of
@@ -6086,7 +5979,7 @@ typedef VkSemaphoreWaitFlags VkSemaphoreWaitFlagsKHR;
 more [VkSemaphoreWaitFlagBits](#VkSemaphoreWaitFlagBits).
 
 To signal a semaphore created with a [VkSemaphoreType](#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_TIMELINE` with a particular counter value, on the
+[VK_SEMAPHORE_TYPE_TIMELINE](#VkSemaphoreTypeKHR) with a particular counter value, on the
 host, call:
 
 // Provided by VK_VERSION_1_2
@@ -6133,21 +6026,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkSemaphoreSignalInfo` structure is defined as:
 
@@ -6182,7 +6075,7 @@ Valid Usage
 [](#VUID-VkSemaphoreSignalInfo-semaphore-03257) VUID-VkSemaphoreSignalInfo-semaphore-03257
 
 `semaphore` **must** have been created with a [VkSemaphoreType](#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_TIMELINE`
+[VK_SEMAPHORE_TYPE_TIMELINE](#VkSemaphoreTypeKHR)
 
 * 
 [](#VUID-VkSemaphoreSignalInfo-value-03258) VUID-VkSemaphoreSignalInfo-value-03258
@@ -6209,7 +6102,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSemaphoreSignalInfo-sType-sType) VUID-VkSemaphoreSignalInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SEMAPHORE_SIGNAL_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SEMAPHORE_SIGNAL_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSemaphoreSignalInfo-pNext-pNext) VUID-VkSemaphoreSignalInfo-pNext-pNext
@@ -6297,12 +6190,12 @@ already signaled or has a pending signal operation, effects **must** be limited
 to one or more of the following:
 
 * 
-Returning `VK_ERROR_INITIALIZATION_FAILED` from the command which
+Returning [VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult) from the command which
 resulted in the violation.
 
 * 
 Losing the logical device on which the violation occurred immediately or
-at a future time, resulting in a `VK_ERROR_DEVICE_LOST` error from
+at a future time, resulting in a [VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult) error from
 subsequent commands, including the one causing the violation.
 
 * 
@@ -6357,23 +6250,23 @@ excepting those side effects allowed for violations of the
 [valid semaphore state for wait operations](#synchronization-semaphores-waiting-state) rules.
 If the external handle provided does not meet these requirements, the
 implementation **must** fail the semaphore payload import operation with the
-error code `VK_ERROR_INVALID_EXTERNAL_HANDLE`.
+error code [VK_ERROR_INVALID_EXTERNAL_HANDLE](fundamentals.html#VkResult).
 
 In addition, when importing a semaphore payload that is not compatible with
 the payload type corresponding to the [VkSemaphoreType](#VkSemaphoreType) the semaphore
 was created with, the implementation **may** fail the semaphore payload import
-operation with the error code `VK_ERROR_INVALID_EXTERNAL_HANDLE`.
+operation with the error code [VK_ERROR_INVALID_EXTERNAL_HANDLE](fundamentals.html#VkResult).
 
 |  | As the introduction of the external semaphore handle type
 | --- | --- |
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT` predates that of
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR) predates that of
 timeline semaphores, support for importing semaphore payloads from external
 handles of that type into semaphores created (implicitly or explicitly) with
-a [VkSemaphoreType](#VkSemaphoreType) of `VK_SEMAPHORE_TYPE_BINARY` is preserved for
+a [VkSemaphoreType](#VkSemaphoreType) of [VK_SEMAPHORE_TYPE_BINARY](#VkSemaphoreTypeKHR) is preserved for
 backwards compatibility.
 However, applications **should** prefer importing such handle types into
 semaphores created with a [VkSemaphoreType](#VkSemaphoreType) of
-`VK_SEMAPHORE_TYPE_TIMELINE`. |
+[VK_SEMAPHORE_TYPE_TIMELINE](#VkSemaphoreTypeKHR). |
 
 To import a semaphore payload from a Windows handle, call:
 
@@ -6417,21 +6310,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkImportSemaphoreWin32HandleInfoKHR` structure is defined as:
 
@@ -6476,9 +6369,9 @@ The handle types supported by `handleType` are:
 
 | Handle Type | Transference | Permanence Supported |
 | --- | --- | --- |
-| `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT` | Reference | Temporary,Permanent |
-| `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT` | Reference | Temporary,Permanent |
-| `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT` | Reference | Temporary,Permanent |
+| [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR) | Reference | Temporary,Permanent |
+| [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR) | Reference | Temporary,Permanent |
+| [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR) | Reference | Temporary,Permanent |
 
 Valid Usage
 
@@ -6492,8 +6385,8 @@ Valid Usage
 [](#VUID-VkImportSemaphoreWin32HandleInfoKHR-handleType-01466) VUID-VkImportSemaphoreWin32HandleInfoKHR-handleType-01466
 
 If `handleType` is not
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT` or
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT`, `name`
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR) or
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR), `name`
 **must** be `NULL`
 
 * 
@@ -6531,8 +6424,8 @@ If `name` is not `NULL`, it **must** obey any requirements listed for
 [](#VUID-VkImportSemaphoreWin32HandleInfoKHR-handleType-03261) VUID-VkImportSemaphoreWin32HandleInfoKHR-handleType-03261
 
 If `handleType` is
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT` or
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT`, the
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR) or
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR), the
 [VkSemaphoreCreateInfo](#VkSemaphoreCreateInfo)::`flags` field **must** match that of the
 semaphore from which `handle` or `name` was exported
 
@@ -6540,25 +6433,25 @@ semaphore from which `handle` or `name` was exported
 [](#VUID-VkImportSemaphoreWin32HandleInfoKHR-handleType-03262) VUID-VkImportSemaphoreWin32HandleInfoKHR-handleType-03262
 
 If `handleType` is
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT` or
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT`, the
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR) or
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR), the
 [VkSemaphoreTypeCreateInfo](#VkSemaphoreTypeCreateInfo)::`semaphoreType` field **must** match
 that of the semaphore from which `handle` or `name` was exported
 
 * 
 [](#VUID-VkImportSemaphoreWin32HandleInfoKHR-flags-03322) VUID-VkImportSemaphoreWin32HandleInfoKHR-flags-03322
 
-If `flags` contains `VK_SEMAPHORE_IMPORT_TEMPORARY_BIT`, the
+If `flags` contains [VK_SEMAPHORE_IMPORT_TEMPORARY_BIT](#VkSemaphoreImportFlagBitsKHR), the
 [VkSemaphoreTypeCreateInfo](#VkSemaphoreTypeCreateInfo)::`semaphoreType` field of the
 semaphore from which `handle` or `name` was exported **must** not
-be `VK_SEMAPHORE_TYPE_TIMELINE`
+be [VK_SEMAPHORE_TYPE_TIMELINE](#VkSemaphoreTypeKHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkImportSemaphoreWin32HandleInfoKHR-sType-sType) VUID-VkImportSemaphoreWin32HandleInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImportSemaphoreWin32HandleInfoKHR-pNext-pNext) VUID-VkImportSemaphoreWin32HandleInfoKHR-pNext-pNext
@@ -6629,21 +6522,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkImportSemaphoreFdInfoKHR` structure is defined as:
 
@@ -6683,8 +6576,8 @@ The handle types supported by `handleType` are:
 
 | Handle Type | Transference | Permanence Supported |
 | --- | --- | --- |
-| `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT` | Reference | Temporary,Permanent |
-| `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT` | Copy | Temporary |
+| [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR) | Reference | Temporary,Permanent |
+| [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR) | Copy | Temporary |
 
 Valid Usage
 
@@ -6704,7 +6597,7 @@ Valid Usage
 [](#VUID-VkImportSemaphoreFdInfoKHR-handleType-03263) VUID-VkImportSemaphoreFdInfoKHR-handleType-03263
 
 If `handleType` is
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT`, the
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR), the
 [VkSemaphoreCreateInfo](#VkSemaphoreCreateInfo)::`flags` field **must** match that of the
 semaphore from which `fd` was exported
 
@@ -6713,25 +6606,25 @@ semaphore from which `fd` was exported
 
 If `handleType` refers to a handle type with copy payload
 transference semantics, `flags` **must** contain
-`VK_SEMAPHORE_IMPORT_TEMPORARY_BIT`
+[VK_SEMAPHORE_IMPORT_TEMPORARY_BIT](#VkSemaphoreImportFlagBitsKHR)
 
 * 
 [](#VUID-VkImportSemaphoreFdInfoKHR-handleType-03264) VUID-VkImportSemaphoreFdInfoKHR-handleType-03264
 
 If `handleType` is
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT`, the
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR), the
 [VkSemaphoreTypeCreateInfo](#VkSemaphoreTypeCreateInfo)::`semaphoreType` field **must** match
 that of the semaphore from which `fd` was exported
 
 * 
 [](#VUID-VkImportSemaphoreFdInfoKHR-flags-03323) VUID-VkImportSemaphoreFdInfoKHR-flags-03323
 
-If `flags` contains `VK_SEMAPHORE_IMPORT_TEMPORARY_BIT`, the
+If `flags` contains [VK_SEMAPHORE_IMPORT_TEMPORARY_BIT](#VkSemaphoreImportFlagBitsKHR), the
 [VkSemaphoreTypeCreateInfo](#VkSemaphoreTypeCreateInfo)::`semaphoreType` field of the
 semaphore from which `fd` was exported **must** not be
-`VK_SEMAPHORE_TYPE_TIMELINE`
+[VK_SEMAPHORE_TYPE_TIMELINE](#VkSemaphoreTypeKHR)
 
-If `handleType` is `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT`,
+If `handleType` is [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR),
 the special value `-1` for `fd` is treated like a valid sync file
 descriptor referring to an object that has already signaled.
 The import operation will succeed and the `VkSemaphore` will have a
@@ -6745,7 +6638,7 @@ an invalid sync file descriptor represents work that has already completed
 and does not need to be waited for.
 It is consistent with the option for implementations to return a `-1` file
 descriptor when exporting a
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT` from a `VkSemaphore`
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR) from a `VkSemaphore`
 which is signaled. |
 
 Valid Usage (Implicit)
@@ -6753,7 +6646,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportSemaphoreFdInfoKHR-sType-sType) VUID-VkImportSemaphoreFdInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_FD_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_FD_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImportSemaphoreFdInfoKHR-pNext-pNext) VUID-VkImportSemaphoreFdInfoKHR-pNext-pNext
@@ -6829,21 +6722,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkImportSemaphoreZirconHandleInfoFUCHSIA` structure is defined as:
 
@@ -6883,7 +6776,7 @@ The handle types supported by `handleType` are:
 
 | Handle Type | Transference | Permanence Supported |
 | --- | --- | --- |
-| `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_ZIRCON_EVENT_BIT_FUCHSIA` | Reference | Temporary,Permanent |
+| [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_ZIRCON_EVENT_BIT_FUCHSIA](capabilities.html#VkExternalSemaphoreHandleTypeFlagBitsKHR) | Reference | Temporary,Permanent |
 
 Valid Usage
 
@@ -6910,14 +6803,14 @@ Valid Usage
 [](#VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-semaphoreType-04768) VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-semaphoreType-04768
 
 The [VkSemaphoreTypeCreateInfo](#VkSemaphoreTypeCreateInfo)::`semaphoreType` field **must** not
-be `VK_SEMAPHORE_TYPE_TIMELINE`
+be [VK_SEMAPHORE_TYPE_TIMELINE](#VkSemaphoreTypeKHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-sType-sType) VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_ZIRCON_HANDLE_INFO_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_ZIRCON_HANDLE_INFO_FUCHSIA](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-pNext-pNext) VUID-VkImportSemaphoreZirconHandleInfoFUCHSIA-pNext-pNext
@@ -6971,7 +6864,7 @@ typedef VkSemaphoreImportFlagBits VkSemaphoreImportFlagBitsKHR;
 These bits have the following meanings:
 
 * 
-`VK_SEMAPHORE_IMPORT_TEMPORARY_BIT` specifies that the semaphore
+[VK_SEMAPHORE_IMPORT_TEMPORARY_BIT](#VkSemaphoreImportFlagBitsKHR) specifies that the semaphore
 payload will be imported only temporarily, as described in
 [Importing Semaphore Payloads](#synchronization-semaphores-importing),
 regardless of the permanence of `handleType`.
@@ -7036,16 +6929,16 @@ Valid Usage
 [](#VUID-vkCreateEvent-device-09672) VUID-vkCreateEvent-device-09672
 
 `device` **must** support at least one queue family with one of the
-`VK_QUEUE_VIDEO_ENCODE_BIT_KHR`,
-`VK_QUEUE_VIDEO_DECODE_BIT_KHR`,
-`VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` capabilities
+[VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits),
+[VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits),
+[VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits) capabilities
 
 * 
 [](#VUID-vkCreateEvent-events-04468) VUID-vkCreateEvent-events-04468
 
 If the `[VK_KHR_portability_subset](../appendices/extensions.html#VK_KHR_portability_subset)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR)::`events` is
-`VK_FALSE`, then the implementation does not support
+[VK_FALSE](fundamentals.html#VK_FALSE), then the implementation does not support
 [events](#synchronization-events), and [vkCreateEvent](#vkCreateEvent) **must** not be
 used
 
@@ -7081,21 +6974,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkEventCreateInfo` structure is defined as:
 
@@ -7125,14 +7018,14 @@ Valid Usage
 If the `pNext` chain includes a
 [VkExportMetalObjectCreateInfoEXT](memory.html#VkExportMetalObjectCreateInfoEXT) structure, its
 `exportObjectType` member **must** be
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT`
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT](memory.html#VkExportMetalObjectTypeFlagBitsEXT)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkEventCreateInfo-sType-sType) VUID-VkEventCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EVENT_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EVENT_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkEventCreateInfo-pNext-pNext) VUID-VkEventCreateInfo-pNext-pNext
@@ -7158,7 +7051,7 @@ typedef enum VkEventCreateFlagBits {
 } VkEventCreateFlagBits;
 
 * 
-`VK_EVENT_CREATE_DEVICE_ONLY_BIT` specifies that host event commands
+[VK_EVENT_CREATE_DEVICE_ONLY_BIT](#VkEventCreateFlagBits) specifies that host event commands
 will not be used with this event.
 
 // Provided by VK_VERSION_1_0
@@ -7250,8 +7143,8 @@ with the following return codes:
 
 | Status | Meaning |
 | --- | --- |
-| `VK_EVENT_SET` | The event specified by `event` is signaled. |
-| `VK_EVENT_RESET` | The event specified by `event` is unsignaled. |
+| [VK_EVENT_SET](fundamentals.html#VkResult) | The event specified by `event` is signaled. |
+| [VK_EVENT_RESET](fundamentals.html#VkResult) | The event specified by `event` is unsignaled. |
 
 If a `vkCmdSetEvent` or `vkCmdResetEvent` command is in a command
 buffer that is in the [pending state](cmdbuffers.html#commandbuffers-lifecycle), then the
@@ -7269,7 +7162,7 @@ Valid Usage
 [](#VUID-vkGetEventStatus-event-03940) VUID-vkGetEventStatus-event-03940
 
 `event` **must** not have been created with
-`VK_EVENT_CREATE_DEVICE_ONLY_BIT`
+[VK_EVENT_CREATE_DEVICE_ONLY_BIT](#VkEventCreateFlagBits)
 
 Valid Usage (Implicit)
 
@@ -7293,27 +7186,27 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_EVENT_RESET`
+[VK_EVENT_RESET](fundamentals.html#VkResult)
 
 * 
-`VK_EVENT_SET`
+[VK_EVENT_SET](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To set the state of an event to signaled from the host, call:
 
@@ -7346,7 +7239,7 @@ Valid Usage
 [](#VUID-vkSetEvent-event-03941) VUID-vkSetEvent-event-03941
 
 `event` **must** not have been created with
-`VK_EVENT_CREATE_DEVICE_ONLY_BIT`
+[VK_EVENT_CREATE_DEVICE_ONLY_BIT](#VkEventCreateFlagBits)
 
 * 
 [](#VUID-vkSetEvent-event-09543) VUID-vkSetEvent-event-09543
@@ -7381,21 +7274,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To set the state of an event to unsignaled from the host, call:
 
@@ -7437,7 +7330,7 @@ its `pEvents` parameter
 [](#VUID-vkResetEvent-event-03823) VUID-vkResetEvent-event-03823
 
 `event` **must** not have been created with
-`VK_EVENT_CREATE_DEVICE_ONLY_BIT`
+[VK_EVENT_CREATE_DEVICE_ONLY_BIT](#VkEventCreateFlagBits)
 
 Valid Usage (Implicit)
 
@@ -7466,18 +7359,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The state of an event **can** also be updated on the device by commands
 inserted in command buffers.
@@ -7532,12 +7425,12 @@ defined by `pDependencyInfo`.
 The second [access scope](#synchronization-dependencies-access-scopes)
 includes only [queue family ownership transfers](#synchronization-queue-transfers) and [image layout transitions](#synchronization-image-layout-transitions).
 
-If `VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR` is not set in
+If [VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](#VkDependencyFlagBits) is not set in
 `pDependencyInfo->dependencyFlags`, future
 [vkCmdWaitEvents2](#vkCmdWaitEvents2) commands rely on all values of each element in
 `pDependencyInfo` matching exactly with those used to signal the
 corresponding event.
-If `VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR` is set, `vkCmdSetEvent2`
+If [VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](#VkDependencyFlagBits) is set, `vkCmdSetEvent2`
 **must** only include the [source stage mask](#synchronization-pipeline-stages-masks) of the first synchronization scope in
 `pDependencyInfo->pMemoryBarriers`[0].`srcStageMask`.
 [vkCmdWaitEvents](#vkCmdWaitEvents) **must** not be used to wait on the result of a signal
@@ -7567,7 +7460,7 @@ be enabled
 [](#VUID-vkCmdSetEvent2-dependencyFlags-03825) VUID-vkCmdSetEvent2-dependencyFlags-03825
 
     The `dependencyFlags` member of `pDependencyInfo` **must** be `0`
-or `VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR`
+or [VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](#VkDependencyFlagBits)
 
 * 
 [](#VUID-vkCmdSetEvent2-srcStageMask-09391) VUID-vkCmdSetEvent2-srcStageMask-09391
@@ -7575,7 +7468,7 @@ or `VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR`
 The `srcStageMask` member of any element of the
 `pMemoryBarriers`, `pBufferMemoryBarriers`, or
 `pImageMemoryBarriers` members of `pDependencyInfo` **must** not
-include `VK_PIPELINE_STAGE_2_HOST_BIT`
+include [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdSetEvent2-dstStageMask-09392) VUID-vkCmdSetEvent2-dstStageMask-09392
@@ -7583,7 +7476,7 @@ include `VK_PIPELINE_STAGE_2_HOST_BIT`
 The `dstStageMask` member of any element of the
 `pMemoryBarriers`, `pBufferMemoryBarriers`, or
 `pImageMemoryBarriers` members of `pDependencyInfo` **must** not
-include `VK_PIPELINE_STAGE_2_HOST_BIT`
+include [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdSetEvent2-commandBuffer-03826) VUID-vkCmdSetEvent2-commandBuffer-03826
@@ -7613,7 +7506,7 @@ create the command pool that `commandBuffer` was allocated from
 [](#VUID-vkCmdSetEvent2-dependencyFlags-10785) VUID-vkCmdSetEvent2-dependencyFlags-10785
 
 If the `dependencyFlags` member of `pDependencyInfo` includes
-`VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR`, the
+[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](#VkDependencyFlagBits), the
 `bufferMemoryBarrierCount` and `imageMemoryBarrierCount` members
 of `pDependencyInfo` **must** be `0`
 
@@ -7621,14 +7514,14 @@ of `pDependencyInfo` **must** be `0`
 [](#VUID-vkCmdSetEvent2-dependencyFlags-10786) VUID-vkCmdSetEvent2-dependencyFlags-10786
 
 If the `dependencyFlags` member of `pDependencyInfo` includes
-`VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR`, the
+[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](#VkDependencyFlagBits), the
 `memoryBarrierCount` member of `pDependencyInfo` **must** be `1`
 
 * 
 [](#VUID-vkCmdSetEvent2-dependencyFlags-10787) VUID-vkCmdSetEvent2-dependencyFlags-10787
 
 If the `dependencyFlags` member of `pDependencyInfo` includes
-`VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR`, the `srcAccessMask`,
+[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](#VkDependencyFlagBits), the `srcAccessMask`,
 `dstStageMask`, and `dstAccessMask` members of
 `pDependencyInfo->pMemoryBarriers`[0] **must** be `0`
 
@@ -7657,7 +7550,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetEvent2-commandBuffer-cmdpool) VUID-vkCmdSetEvent2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetEvent2-renderpass) VUID-vkCmdSetEvent2-renderpass
@@ -7790,7 +7683,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDependencyInfo-sType-sType) VUID-VkDependencyInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEPENDENCY_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEPENDENCY_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDependencyInfo-pNext-pNext) VUID-VkDependencyInfo-pNext-pNext
@@ -7852,50 +7745,50 @@ Valid Usage
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdSetEvent-stageMask-04091) VUID-vkCmdSetEvent-stageMask-04091
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits) or
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdSetEvent-stageMask-04092) VUID-vkCmdSetEvent-stageMask-04092
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdSetEvent-stageMask-04093) VUID-vkCmdSetEvent-stageMask-04093
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdSetEvent-stageMask-04094) VUID-vkCmdSetEvent-stageMask-04094
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdSetEvent-stageMask-04095) VUID-vkCmdSetEvent-stageMask-04095
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdSetEvent-stageMask-04096) VUID-vkCmdSetEvent-stageMask-04096
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdSetEvent-stageMask-07318) VUID-vkCmdSetEvent-stageMask-07318
@@ -7903,7 +7796,7 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdSetEvent-stageMask-03937) VUID-vkCmdSetEvent-stageMask-03937
@@ -7917,14 +7810,14 @@ not enabled, `stageMask` **must** not be `0`
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdSetEvent-stageMask-10754) VUID-vkCmdSetEvent-stageMask-10754
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdSetEvent-stageMask-06457) VUID-vkCmdSetEvent-stageMask-06457
@@ -7938,7 +7831,7 @@ from, as specified in the [    table of supported pipeline stages](#synchronizat
 * 
 [](#VUID-vkCmdSetEvent-stageMask-01149) VUID-vkCmdSetEvent-stageMask-01149
 
-`stageMask` **must** not include `VK_PIPELINE_STAGE_HOST_BIT`
+`stageMask` **must** not include [VK_PIPELINE_STAGE_HOST_BIT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdSetEvent-commandBuffer-01152) VUID-vkCmdSetEvent-commandBuffer-01152
@@ -7971,7 +7864,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetEvent-commandBuffer-cmdpool) VUID-vkCmdSetEvent-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdSetEvent-renderpass) VUID-vkCmdSetEvent-renderpass
@@ -8065,50 +7958,50 @@ Valid Usage
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-03930) VUID-vkCmdResetEvent2-stageMask-03930
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-03931) VUID-vkCmdResetEvent2-stageMask-03931
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-03932) VUID-vkCmdResetEvent2-stageMask-03932
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-03933) VUID-vkCmdResetEvent2-stageMask-03933
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-03934) VUID-vkCmdResetEvent2-stageMask-03934
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-03935) VUID-vkCmdResetEvent2-stageMask-03935
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-07316) VUID-vkCmdResetEvent2-stageMask-07316
@@ -8116,21 +8009,21 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-04957) VUID-vkCmdResetEvent2-stageMask-04957
 
 If the [`subpassShading`](features.html#features-subpassShading) feature is not
 enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-04995) VUID-vkCmdResetEvent2-stageMask-04995
 
 If the [`invocationMask`](features.html#features-invocationMask) feature is not
 enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-07946) VUID-vkCmdResetEvent2-stageMask-07946
@@ -8138,28 +8031,28 @@ enabled, `stageMask` **must** not contain
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-10751) VUID-vkCmdResetEvent2-stageMask-10751
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-10752) VUID-vkCmdResetEvent2-stageMask-10752
 
 If the [`rayTracingMaintenance1`](features.html#features-rayTracingMaintenance1)
 feature is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-10753) VUID-vkCmdResetEvent2-stageMask-10753
 
 If the [`micromap`](features.html#features-micromap) feature is not enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdResetEvent2-synchronization2-03829) VUID-vkCmdResetEvent2-synchronization2-03829
@@ -8170,7 +8063,7 @@ be enabled
 * 
 [](#VUID-vkCmdResetEvent2-stageMask-03830) VUID-vkCmdResetEvent2-stageMask-03830
 
-`stageMask` **must** not include `VK_PIPELINE_STAGE_2_HOST_BIT`
+`stageMask` **must** not include [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdResetEvent2-event-03831) VUID-vkCmdResetEvent2-event-03831
@@ -8217,7 +8110,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdResetEvent2-commandBuffer-cmdpool) VUID-vkCmdResetEvent2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdResetEvent2-renderpass) VUID-vkCmdResetEvent2-renderpass
@@ -8288,50 +8181,50 @@ Valid Usage
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-04091) VUID-vkCmdResetEvent-stageMask-04091
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits) or
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-04092) VUID-vkCmdResetEvent-stageMask-04092
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-04093) VUID-vkCmdResetEvent-stageMask-04093
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-04094) VUID-vkCmdResetEvent-stageMask-04094
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-04095) VUID-vkCmdResetEvent-stageMask-04095
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-04096) VUID-vkCmdResetEvent-stageMask-04096
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-07318) VUID-vkCmdResetEvent-stageMask-07318
@@ -8339,7 +8232,7 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-03937) VUID-vkCmdResetEvent-stageMask-03937
@@ -8353,14 +8246,14 @@ not enabled, `stageMask` **must** not be `0`
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-10754) VUID-vkCmdResetEvent-stageMask-10754
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `stageMask` **must** not contain
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdResetEvent-stageMask-06458) VUID-vkCmdResetEvent-stageMask-06458
@@ -8374,7 +8267,7 @@ from, as specified in the [    table of supported pipeline stages](#synchronizat
 * 
 [](#VUID-vkCmdResetEvent-stageMask-01153) VUID-vkCmdResetEvent-stageMask-01153
 
-`stageMask` **must** not include `VK_PIPELINE_STAGE_HOST_BIT`
+`stageMask` **must** not include [VK_PIPELINE_STAGE_HOST_BIT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdResetEvent-event-03834) VUID-vkCmdResetEvent-event-03834
@@ -8421,7 +8314,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdResetEvent-commandBuffer-cmdpool) VUID-vkCmdResetEvent-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdResetEvent-renderpass) VUID-vkCmdResetEvent-renderpass
@@ -8520,10 +8413,10 @@ earlier in [submission order](#synchronization-submission-order) with a
 `pDependencyInfos` at index i ; or
 
 * 
-The event was created without `VK_EVENT_CREATE_DEVICE_ONLY_BIT`, and
+The event was created without [VK_EVENT_CREATE_DEVICE_ONLY_BIT](#VkEventCreateFlagBits), and
 the first [synchronization scope](#synchronization-dependencies-scopes)
 defined by the element of `pDependencyInfos` at index i only
-includes host operations (`VK_PIPELINE_STAGE_2_HOST_BIT`).
+includes host operations ([VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR)).
 
 The second [synchronization scope](#synchronization-dependencies-scopes)
 and [access scope](#synchronization-dependencies-access-scopes) of each
@@ -8543,7 +8436,7 @@ two **may** execute unhindered. |
 There is no direct ordering guarantee between `vkCmdSetEvent2` and
 [vkCmdResetEvent2](#vkCmdResetEvent2), [vkCmdResetEvent](#vkCmdResetEvent), or [vkCmdSetEvent](#vkCmdSetEvent).
 Another execution dependency (e.g. a pipeline barrier or semaphore with
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`) is needed to prevent such a race
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)) is needed to prevent such a race
 condition. |
 
 Valid Usage
@@ -8566,7 +8459,7 @@ Members of `pEvents` **must** not have been signaled by
 For each element i of `pEvents`,
 if the `dependencyFlags` member of the ith element of
 `pDependencyInfos` does not include
-`VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR`, and
+[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](#VkDependencyFlagBits), and
 if that event is signaled by [vkCmdSetEvent2](#vkCmdSetEvent2), that command’s
 `dependencyInfo` parameter **must** be exactly equal to the ith
 element of `pDependencyInfos`
@@ -8576,16 +8469,16 @@ element of `pDependencyInfos`
 
 For each element i of `pEvents`, if the `dependencyFlags`
 member of the ith element of `pDependencyInfos` includes
-`VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR`, that event **must** be
+[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](#VkDependencyFlagBits), that event **must** be
 signaled by [vkCmdSetEvent2](#vkCmdSetEvent2) with
-`VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR`
+[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](#VkDependencyFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents2-pEvents-10790) VUID-vkCmdWaitEvents2-pEvents-10790
 
 For each element i of `pEvents`, if the `dependencyFlags`
 member of the ith element of `pDependencyInfos` includes
-`VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR`, the union of
+[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](#VkDependencyFlagBits), the union of
 `srcStageMask` members of all elements of `pMemoryBarriers`,
 `pBufferMemoryBarriers`, and `pImageMemoryBarriers` of the
 ith element of `pDependencyInfos` **must** equal
@@ -8641,23 +8534,23 @@ create the command pool that `commandBuffer` was allocated from
 The `dependencyFlags` member of any element of `pDependencyInfo`
 **must** not include any of the following bits:
 
-`VK_DEPENDENCY_BY_REGION_BIT`
+[VK_DEPENDENCY_BY_REGION_BIT](#VkDependencyFlagBits)
 
 * 
-`VK_DEPENDENCY_DEVICE_GROUP_BIT`
+[VK_DEPENDENCY_DEVICE_GROUP_BIT](#VkDependencyFlagBits)
 
 * 
-`VK_DEPENDENCY_VIEW_LOCAL_BIT`
+[VK_DEPENDENCY_VIEW_LOCAL_BIT](#VkDependencyFlagBits)
 
 * 
-`VK_DEPENDENCY_FEEDBACK_LOOP_BIT_EXT`
+[VK_DEPENDENCY_FEEDBACK_LOOP_BIT_EXT](#VkDependencyFlagBits)
 
 [](#VUID-vkCmdWaitEvents2-maintenance8-10205) VUID-vkCmdWaitEvents2-maintenance8-10205
 
 If the [`maintenance8`](features.html#features-maintenance8) feature is not
 enabled, the `dependencyFlags` members of any element of
 `pDependencyInfos` **must** not include
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](#VkDependencyFlagBits)
 
 [](#VUID-vkCmdWaitEvents2-dependencyFlags-03844) VUID-vkCmdWaitEvents2-dependencyFlags-03844
 
@@ -8665,7 +8558,7 @@ If this command is called inside a render pass instance, the
 `srcStageMask` member of any element of the `pMemoryBarriers`,
 `pBufferMemoryBarriers`, or `pImageMemoryBarriers` members of
 `pDependencyInfos` **must** not include
-`VK_PIPELINE_STAGE_2_HOST_BIT`
+[VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR)
 
 [](#VUID-vkCmdWaitEvents2-commandBuffer-03846) VUID-vkCmdWaitEvents2-commandBuffer-03846
 
@@ -8703,7 +8596,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdWaitEvents2-commandBuffer-cmdpool) VUID-vkCmdWaitEvents2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdWaitEvents2-suspended) VUID-vkCmdWaitEvents2-suspended
@@ -8833,7 +8726,7 @@ first synchronization scope, if the [logically latest](#synchronization-pipeline
 to the [logically latest](#synchronization-pipeline-stages-order) pipeline
 stage in `srcStageMask`.
 Event signal operations performed by [vkSetEvent](#vkSetEvent) are only included in
-the first synchronization scope if `VK_PIPELINE_STAGE_HOST_BIT` is
+the first synchronization scope if [VK_PIPELINE_STAGE_HOST_BIT](#VkPipelineStageFlagBits) is
 included in `srcStageMask`.
 
 The second [synchronization scope](#synchronization-dependencies-scopes)
@@ -8871,50 +8764,50 @@ Valid Usage
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-srcStageMask-04091) VUID-vkCmdWaitEvents-srcStageMask-04091
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits) or
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-srcStageMask-04092) VUID-vkCmdWaitEvents-srcStageMask-04092
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-srcStageMask-04093) VUID-vkCmdWaitEvents-srcStageMask-04093
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-srcStageMask-04094) VUID-vkCmdWaitEvents-srcStageMask-04094
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-srcStageMask-04095) VUID-vkCmdWaitEvents-srcStageMask-04095
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-srcStageMask-04096) VUID-vkCmdWaitEvents-srcStageMask-04096
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-srcStageMask-07318) VUID-vkCmdWaitEvents-srcStageMask-07318
@@ -8922,7 +8815,7 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-srcStageMask-03937) VUID-vkCmdWaitEvents-srcStageMask-03937
@@ -8936,14 +8829,14 @@ not enabled, `srcStageMask` **must** not be `0`
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-srcStageMask-10754) VUID-vkCmdWaitEvents-srcStageMask-10754
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-srcAccessMask-06257) VUID-vkCmdWaitEvents-srcAccessMask-06257
@@ -8951,60 +8844,60 @@ feature is not enabled, `srcStageMask` **must** not contain
 If
 the [`rayQuery`](features.html#features-rayQuery) feature is not enabled and
 a memory barrier `srcAccessMask` includes
-`VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR`,
+[VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR](#VkAccessFlagBits),
 `srcStageMask` **must** not include any of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
-except `VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+except [VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-dstStageMask-04090) VUID-vkCmdWaitEvents-dstStageMask-04090
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-dstStageMask-04091) VUID-vkCmdWaitEvents-dstStageMask-04091
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits) or
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-dstStageMask-04092) VUID-vkCmdWaitEvents-dstStageMask-04092
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-dstStageMask-04093) VUID-vkCmdWaitEvents-dstStageMask-04093
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-dstStageMask-04094) VUID-vkCmdWaitEvents-dstStageMask-04094
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-dstStageMask-04095) VUID-vkCmdWaitEvents-dstStageMask-04095
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-dstStageMask-04096) VUID-vkCmdWaitEvents-dstStageMask-04096
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-dstStageMask-07318) VUID-vkCmdWaitEvents-dstStageMask-07318
@@ -9012,7 +8905,7 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-dstStageMask-03937) VUID-vkCmdWaitEvents-dstStageMask-03937
@@ -9026,14 +8919,14 @@ not enabled, `dstStageMask` **must** not be `0`
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-dstStageMask-10754) VUID-vkCmdWaitEvents-dstStageMask-10754
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-dstAccessMask-06257) VUID-vkCmdWaitEvents-dstAccessMask-06257
@@ -9041,10 +8934,10 @@ feature is not enabled, `dstStageMask` **must** not contain
 If
 the [`rayQuery`](features.html#features-rayQuery) feature is not enabled and
 a memory barrier `dstAccessMask` includes
-`VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR`,
+[VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR](#VkAccessFlagBits),
 `dstStageMask` **must** not include any of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
-except `VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+except [VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-srcAccessMask-02815) VUID-vkCmdWaitEvents-srcAccessMask-02815
@@ -9135,14 +9028,14 @@ structure that was used to create the `VkCommandPool` that
 
 `srcStageMask` **must** be the bitwise OR of the `stageMask`
 parameter used in previous calls to `vkCmdSetEvent` with any of the
-elements of `pEvents` and `VK_PIPELINE_STAGE_HOST_BIT` if any of
+elements of `pEvents` and [VK_PIPELINE_STAGE_HOST_BIT](#VkPipelineStageFlagBits) if any of
 the elements of `pEvents` was set using `vkSetEvent`
 
 * 
 [](#VUID-vkCmdWaitEvents-srcStageMask-07308) VUID-vkCmdWaitEvents-srcStageMask-07308
 
 If this command is called inside a render pass instance,
-`srcStageMask` **must** not include `VK_PIPELINE_STAGE_HOST_BIT`
+`srcStageMask` **must** not include [VK_PIPELINE_STAGE_HOST_BIT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdWaitEvents-srcQueueFamilyIndex-02803) VUID-vkCmdWaitEvents-srcQueueFamilyIndex-02803
@@ -9215,7 +9108,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdWaitEvents-commandBuffer-cmdpool) VUID-vkCmdWaitEvents-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdWaitEvents-suspended) VUID-vkCmdWaitEvents-suspended
@@ -9305,8 +9198,8 @@ If `vkCmdPipelineBarrier2` is called within a render pass instance using a
 [VkRenderPass](renderpass.html#VkRenderPass) object, the render pass **must** have been created with
 at least one subpass dependency that expresses a dependency from the
 current subpass to itself, does not include
-`VK_DEPENDENCY_BY_REGION_BIT` if this command does not, does not
-include `VK_DEPENDENCY_VIEW_LOCAL_BIT` if this command does not, and
+[VK_DEPENDENCY_BY_REGION_BIT](#VkDependencyFlagBits) if this command does not, does not
+include [VK_DEPENDENCY_VIEW_LOCAL_BIT](#VkDependencyFlagBits) if this command does not, and
 has [synchronization scopes](#synchronization-dependencies-scopes) and
 [access scopes](#synchronization-dependencies-access-scopes) that are
 all supersets of the scopes defined in this command
@@ -9334,7 +9227,7 @@ or depth/stencil attachment
 If `vkCmdPipelineBarrier2` is called within a render pass instance using a
 [VkRenderPass](renderpass.html#VkRenderPass) object, and the `image` member of any image
 memory barrier is a color resolve attachment, the corresponding color
-attachment **must** be `VK_ATTACHMENT_UNUSED`
+attachment **must** be [VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED)
 
 * 
 [](#VUID-vkCmdPipelineBarrier2-image-09374) VUID-vkCmdPipelineBarrier2-image-09374
@@ -9374,7 +9267,7 @@ destination stage masks of all memory barriers **must** only include
 If `vkCmdPipelineBarrier2` is called within a render pass instance, and the
 source stage masks of any memory barriers include
 [framebuffer-space stages](#synchronization-framebuffer-regions), then
-`dependencyFlags` **must** include `VK_DEPENDENCY_BY_REGION_BIT`
+`dependencyFlags` **must** include [VK_DEPENDENCY_BY_REGION_BIT](#VkDependencyFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier2-None-07892) VUID-vkCmdPipelineBarrier2-None-07892
@@ -9387,14 +9280,14 @@ graphics pipeline stages
 [](#VUID-vkCmdPipelineBarrier2-dependencyFlags-01186) VUID-vkCmdPipelineBarrier2-dependencyFlags-01186
 
 If `vkCmdPipelineBarrier2` is called outside of a render pass instance, the
-dependency flags **must** not include `VK_DEPENDENCY_VIEW_LOCAL_BIT`
+dependency flags **must** not include [VK_DEPENDENCY_VIEW_LOCAL_BIT](#VkDependencyFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier2-None-07893) VUID-vkCmdPipelineBarrier2-None-07893
 
 If `vkCmdPipelineBarrier2` is called inside a render pass instance, and there is
 more than one view in the current subpass, dependency flags **must**
-include `VK_DEPENDENCY_VIEW_LOCAL_BIT`
+include [VK_DEPENDENCY_VIEW_LOCAL_BIT](#VkDependencyFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier2-None-09553) VUID-vkCmdPipelineBarrier2-None-09553
@@ -9425,10 +9318,10 @@ If
 the [    `dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead) feature is not enabled, and
 `vkCmdPipelineBarrier2` is called within a render pass instance started with
 [vkCmdBeginRendering](renderpass.html#vkCmdBeginRendering), memory barriers specified by this command
-**must** only include `VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT`,
-`VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT`,
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT`, or
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT` in their access
+**must** only include [VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR),
+[VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR),
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR), or
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR) in their access
 masks
 
 * 
@@ -9437,8 +9330,8 @@ masks
 If `vkCmdPipelineBarrier2` is called within a render pass instance started with
 [vkCmdBeginRendering](renderpass.html#vkCmdBeginRendering), and the `image` member of any image
 memory barrier is used as an attachment in the current render pass
-instance, it **must** be in the `VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
-or `VK_IMAGE_LAYOUT_GENERAL` layout
+instance, it **must** be in the [VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout)
+or [VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout) layout
 
 * 
 [](#VUID-vkCmdPipelineBarrier2-srcStageMask-09556) VUID-vkCmdPipelineBarrier2-srcStageMask-09556
@@ -9476,7 +9369,7 @@ command pool that `commandBuffer` was allocated from
 If a buffer or image memory barrier does not specify an
 [acquire operation](#synchronization-queue-transfers-acquire),
 or if it does but `pDependencyInfo->dependencyFlags` includes
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`,
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](#VkDependencyFlagBits),
 the respective `srcStageMask` member of the element of the
 `pBufferMemoryBarriers` or `pImageMemoryBarriers` members of
 `pDependencyInfo` **must** only include pipeline stages valid for the
@@ -9489,7 +9382,7 @@ queue family that was used to create the command pool that
 If a buffer or image memory barrier does not specify an
 [release operation](#synchronization-queue-transfers-release),
 or if it does but `pDependencyInfo->dependencyFlags` includes
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`,
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](#VkDependencyFlagBits),
 the respective `dstStageMask` member of the element of the
 `pBufferMemoryBarriers` or `pImageMemoryBarriers` members of
 `pDependencyInfo` **must** only include pipeline stages valid for the
@@ -9527,7 +9420,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdPipelineBarrier2-commandBuffer-cmdpool) VUID-vkCmdPipelineBarrier2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_TRANSFER_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdPipelineBarrier2-suspended) VUID-vkCmdPipelineBarrier2-suspended
@@ -9672,7 +9565,7 @@ each define a set of [memory barriers](#synchronization-memory-barriers).
 If no memory barriers are specified, then the second access scope includes
 no accesses.
 
-If `dependencyFlags` includes `VK_DEPENDENCY_BY_REGION_BIT`, then
+If `dependencyFlags` includes [VK_DEPENDENCY_BY_REGION_BIT](#VkDependencyFlagBits), then
 any dependency between [framebuffer-space](#synchronization-framebuffer-regions) pipeline stages is
 [framebuffer-local](#synchronization-framebuffer-regions) - otherwise it is
 [framebuffer-global](#synchronization-framebuffer-regions).
@@ -9684,50 +9577,50 @@ Valid Usage
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-srcStageMask-04091) VUID-vkCmdPipelineBarrier-srcStageMask-04091
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits) or
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-srcStageMask-04092) VUID-vkCmdPipelineBarrier-srcStageMask-04092
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-srcStageMask-04093) VUID-vkCmdPipelineBarrier-srcStageMask-04093
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-srcStageMask-04094) VUID-vkCmdPipelineBarrier-srcStageMask-04094
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-srcStageMask-04095) VUID-vkCmdPipelineBarrier-srcStageMask-04095
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-srcStageMask-04096) VUID-vkCmdPipelineBarrier-srcStageMask-04096
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-srcStageMask-07318) VUID-vkCmdPipelineBarrier-srcStageMask-07318
@@ -9735,7 +9628,7 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-srcStageMask-03937) VUID-vkCmdPipelineBarrier-srcStageMask-03937
@@ -9749,14 +9642,14 @@ not enabled, `srcStageMask` **must** not be `0`
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-srcStageMask-10754) VUID-vkCmdPipelineBarrier-srcStageMask-10754
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-srcAccessMask-06257) VUID-vkCmdPipelineBarrier-srcAccessMask-06257
@@ -9764,60 +9657,60 @@ feature is not enabled, `srcStageMask` **must** not contain
 If
 the [`rayQuery`](features.html#features-rayQuery) feature is not enabled and
 a memory barrier `srcAccessMask` includes
-`VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR`,
+[VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR](#VkAccessFlagBits),
 `srcStageMask` **must** not include any of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
-except `VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+except [VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-dstStageMask-04090) VUID-vkCmdPipelineBarrier-dstStageMask-04090
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-dstStageMask-04091) VUID-vkCmdPipelineBarrier-dstStageMask-04091
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits) or
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-dstStageMask-04092) VUID-vkCmdPipelineBarrier-dstStageMask-04092
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-dstStageMask-04093) VUID-vkCmdPipelineBarrier-dstStageMask-04093
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-dstStageMask-04094) VUID-vkCmdPipelineBarrier-dstStageMask-04094
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-dstStageMask-04095) VUID-vkCmdPipelineBarrier-dstStageMask-04095
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-dstStageMask-04096) VUID-vkCmdPipelineBarrier-dstStageMask-04096
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-dstStageMask-07318) VUID-vkCmdPipelineBarrier-dstStageMask-07318
@@ -9825,7 +9718,7 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-dstStageMask-03937) VUID-vkCmdPipelineBarrier-dstStageMask-03937
@@ -9839,14 +9732,14 @@ not enabled, `dstStageMask` **must** not be `0`
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-dstStageMask-10754) VUID-vkCmdPipelineBarrier-dstStageMask-10754
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-dstAccessMask-06257) VUID-vkCmdPipelineBarrier-dstAccessMask-06257
@@ -9854,10 +9747,10 @@ feature is not enabled, `dstStageMask` **must** not contain
 If
 the [`rayQuery`](features.html#features-rayQuery) feature is not enabled and
 a memory barrier `dstAccessMask` includes
-`VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR`,
+[VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR](#VkAccessFlagBits),
 `dstStageMask` **must** not include any of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
-except `VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR`
+except [VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-srcAccessMask-02815) VUID-vkCmdPipelineBarrier-srcAccessMask-02815
@@ -9930,8 +9823,8 @@ If `vkCmdPipelineBarrier` is called within a render pass instance using a
 [VkRenderPass](renderpass.html#VkRenderPass) object, the render pass **must** have been created with
 at least one subpass dependency that expresses a dependency from the
 current subpass to itself, does not include
-`VK_DEPENDENCY_BY_REGION_BIT` if this command does not, does not
-include `VK_DEPENDENCY_VIEW_LOCAL_BIT` if this command does not, and
+[VK_DEPENDENCY_BY_REGION_BIT](#VkDependencyFlagBits) if this command does not, does not
+include [VK_DEPENDENCY_VIEW_LOCAL_BIT](#VkDependencyFlagBits) if this command does not, and
 has [synchronization scopes](#synchronization-dependencies-scopes) and
 [access scopes](#synchronization-dependencies-access-scopes) that are
 all supersets of the scopes defined in this command
@@ -9959,7 +9852,7 @@ or depth/stencil attachment
 If `vkCmdPipelineBarrier` is called within a render pass instance using a
 [VkRenderPass](renderpass.html#VkRenderPass) object, and the `image` member of any image
 memory barrier is a color resolve attachment, the corresponding color
-attachment **must** be `VK_ATTACHMENT_UNUSED`
+attachment **must** be [VK_ATTACHMENT_UNUSED](renderpass.html#VK_ATTACHMENT_UNUSED)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-image-09374) VUID-vkCmdPipelineBarrier-image-09374
@@ -9999,7 +9892,7 @@ destination stage masks of all memory barriers **must** only include
 If `vkCmdPipelineBarrier` is called within a render pass instance, and the
 source stage masks of any memory barriers include
 [framebuffer-space stages](#synchronization-framebuffer-regions), then
-`dependencyFlags` **must** include `VK_DEPENDENCY_BY_REGION_BIT`
+`dependencyFlags` **must** include [VK_DEPENDENCY_BY_REGION_BIT](#VkDependencyFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-None-07892) VUID-vkCmdPipelineBarrier-None-07892
@@ -10012,14 +9905,14 @@ graphics pipeline stages
 [](#VUID-vkCmdPipelineBarrier-dependencyFlags-01186) VUID-vkCmdPipelineBarrier-dependencyFlags-01186
 
 If `vkCmdPipelineBarrier` is called outside of a render pass instance, the
-dependency flags **must** not include `VK_DEPENDENCY_VIEW_LOCAL_BIT`
+dependency flags **must** not include [VK_DEPENDENCY_VIEW_LOCAL_BIT](#VkDependencyFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-None-07893) VUID-vkCmdPipelineBarrier-None-07893
 
 If `vkCmdPipelineBarrier` is called inside a render pass instance, and there is
 more than one view in the current subpass, dependency flags **must**
-include `VK_DEPENDENCY_VIEW_LOCAL_BIT`
+include [VK_DEPENDENCY_VIEW_LOCAL_BIT](#VkDependencyFlagBits)
 
 * 
 [](#VUID-vkCmdPipelineBarrier-None-09553) VUID-vkCmdPipelineBarrier-None-09553
@@ -10050,10 +9943,10 @@ If
 the [    `dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead) feature is not enabled, and
 `vkCmdPipelineBarrier` is called within a render pass instance started with
 [vkCmdBeginRendering](renderpass.html#vkCmdBeginRendering), memory barriers specified by this command
-**must** only include `VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT`,
-`VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT`,
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT`, or
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT` in their access
+**must** only include [VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR),
+[VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR),
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR), or
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR) in their access
 masks
 
 * 
@@ -10062,8 +9955,8 @@ masks
 If `vkCmdPipelineBarrier` is called within a render pass instance started with
 [vkCmdBeginRendering](renderpass.html#vkCmdBeginRendering), and the `image` member of any image
 memory barrier is used as an attachment in the current render pass
-instance, it **must** be in the `VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
-or `VK_IMAGE_LAYOUT_GENERAL` layout
+instance, it **must** be in the [VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout)
+or [VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout) layout
 
 * 
 [](#VUID-vkCmdPipelineBarrier-srcStageMask-09556) VUID-vkCmdPipelineBarrier-srcStageMask-09556
@@ -10113,7 +10006,7 @@ structure that was used to create the `VkCommandPool` that
 [](#VUID-vkCmdPipelineBarrier-srcStageMask-09633) VUID-vkCmdPipelineBarrier-srcStageMask-09633
 
 If either `srcStageMask` or `dstStageMask` includes
-`VK_PIPELINE_STAGE_HOST_BIT`, for each element of
+[VK_PIPELINE_STAGE_HOST_BIT](#VkPipelineStageFlagBits), for each element of
 `pImageMemoryBarriers`, `srcQueueFamilyIndex` and
 `dstQueueFamilyIndex` **must** be equal
 
@@ -10121,7 +10014,7 @@ If either `srcStageMask` or `dstStageMask` includes
 [](#VUID-vkCmdPipelineBarrier-srcStageMask-09634) VUID-vkCmdPipelineBarrier-srcStageMask-09634
 
 If either `srcStageMask` or `dstStageMask` includes
-`VK_PIPELINE_STAGE_HOST_BIT`, for each element of
+[VK_PIPELINE_STAGE_HOST_BIT](#VkPipelineStageFlagBits), for each element of
 `pBufferMemoryBarriers`, `srcQueueFamilyIndex` and
 `dstQueueFamilyIndex` **must** be equal
 
@@ -10139,7 +10032,7 @@ from **must** be equal
 
 If the [`maintenance8`](features.html#features-maintenance8) feature is not
 enabled, `dependencyFlags` **must** not include
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](#VkDependencyFlagBits)
 
 Valid Usage (Implicit)
 
@@ -10186,7 +10079,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdPipelineBarrier-commandBuffer-cmdpool) VUID-vkCmdPipelineBarrier-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_TRANSFER_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_GRAPHICS_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_TRANSFER_BIT](devsandqueues.html#VkQueueFlagBits), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdPipelineBarrier-suspended) VUID-vkCmdPipelineBarrier-suspended
@@ -10243,29 +10136,30 @@ typedef enum VkDependencyFlagBits {
 } VkDependencyFlagBits;
 
 * 
-`VK_DEPENDENCY_BY_REGION_BIT` specifies that dependencies will be
-[framebuffer-local](#synchronization-framebuffer-regions).
+[VK_DEPENDENCY_BY_REGION_BIT](#VkDependencyFlagBits) specifies that dependencies will be
+split into multiple [    framebuffer-local regions](#synchronization-framebuffer-regions) according to the (x,y,layer,sample)
+coordinates.
 
 * 
-`VK_DEPENDENCY_VIEW_LOCAL_BIT` specifies that dependencies will be
-[view-local](#synchronization-view-local-dependencies).
+[VK_DEPENDENCY_VIEW_LOCAL_BIT](#VkDependencyFlagBits) specifies that dependencies will be
+split into multiple [    framebuffer-local regions](#synchronization-framebuffer-regions) according to the view.
 
 * 
-`VK_DEPENDENCY_DEVICE_GROUP_BIT` specifies that dependencies are
+[VK_DEPENDENCY_DEVICE_GROUP_BIT](#VkDependencyFlagBits) specifies that dependencies are
 [non-device-local](#synchronization-device-local-dependencies).
 
 * 
-`VK_DEPENDENCY_FEEDBACK_LOOP_BIT_EXT` specifies that the render pass
+[VK_DEPENDENCY_FEEDBACK_LOOP_BIT_EXT](#VkDependencyFlagBits) specifies that the render pass
 will write to and read from the same image with
 [feedback loop enabled](renderpass.html#renderpass-feedbackloop).
 
 * 
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](#VkDependencyFlagBits)
 specifies that source and destination stages are not ignored when
 performing a [queue family ownership    transfer](#synchronization-queue-transfers).
 
 * 
-`VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR` specifies that
+[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](#VkDependencyFlagBits) specifies that
 [vkCmdSetEvent2](#vkCmdSetEvent2) **must** only include the
 [source stage mask](#synchronization-pipeline-stages-masks) of the
 first synchronization scope, and that [vkCmdWaitEvents2](#vkCmdWaitEvents2) **must**
@@ -10348,50 +10242,50 @@ Valid Usage
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcStageMask-03930) VUID-VkMemoryBarrier2-srcStageMask-03930
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcStageMask-03931) VUID-VkMemoryBarrier2-srcStageMask-03931
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcStageMask-03932) VUID-VkMemoryBarrier2-srcStageMask-03932
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcStageMask-03933) VUID-VkMemoryBarrier2-srcStageMask-03933
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcStageMask-03934) VUID-VkMemoryBarrier2-srcStageMask-03934
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcStageMask-03935) VUID-VkMemoryBarrier2-srcStageMask-03935
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcStageMask-07316) VUID-VkMemoryBarrier2-srcStageMask-07316
@@ -10399,21 +10293,21 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcStageMask-04957) VUID-VkMemoryBarrier2-srcStageMask-04957
 
 If the [`subpassShading`](features.html#features-subpassShading) feature is not
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcStageMask-04995) VUID-VkMemoryBarrier2-srcStageMask-04995
 
 If the [`invocationMask`](features.html#features-invocationMask) feature is not
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcStageMask-07946) VUID-VkMemoryBarrier2-srcStageMask-07946
@@ -10421,318 +10315,318 @@ enabled, `srcStageMask` **must** not contain
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcStageMask-10751) VUID-VkMemoryBarrier2-srcStageMask-10751
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcStageMask-10752) VUID-VkMemoryBarrier2-srcStageMask-10752
 
 If the [`rayTracingMaintenance1`](features.html#features-rayTracingMaintenance1)
 feature is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcStageMask-10753) VUID-VkMemoryBarrier2-srcStageMask-10753
 
 If the [`micromap`](features.html#features-micromap) feature is not enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03900) VUID-VkMemoryBarrier2-srcAccessMask-03900
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03901) VUID-VkMemoryBarrier2-srcAccessMask-03901
 
-If `srcAccessMask` includes `VK_ACCESS_2_INDEX_READ_BIT`,
+If `srcAccessMask` includes [VK_ACCESS_2_INDEX_READ_BIT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03902) VUID-VkMemoryBarrier2-srcAccessMask-03902
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03903) VUID-VkMemoryBarrier2-srcAccessMask-03903
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03904) VUID-VkMemoryBarrier2-srcAccessMask-03904
 
-If `srcAccessMask` includes `VK_ACCESS_2_UNIFORM_READ_BIT`,
+If `srcAccessMask` includes [VK_ACCESS_2_UNIFORM_READ_BIT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03905) VUID-VkMemoryBarrier2-srcAccessMask-03905
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADER_SAMPLED_READ_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_ACCESS_2_SHADER_SAMPLED_READ_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03906) VUID-VkMemoryBarrier2-srcAccessMask-03906
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADER_STORAGE_READ_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_ACCESS_2_SHADER_STORAGE_READ_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03907) VUID-VkMemoryBarrier2-srcAccessMask-03907
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-07454) VUID-VkMemoryBarrier2-srcAccessMask-07454
 
-If `srcAccessMask` includes `VK_ACCESS_2_SHADER_READ_BIT`,
+If `srcAccessMask` includes [VK_ACCESS_2_SHADER_READ_BIT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`,
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR),
 or one of the `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03909) VUID-VkMemoryBarrier2-srcAccessMask-03909
 
-If `srcAccessMask` includes `VK_ACCESS_2_SHADER_WRITE_BIT`,
+If `srcAccessMask` includes [VK_ACCESS_2_SHADER_WRITE_BIT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03910) VUID-VkMemoryBarrier2-srcAccessMask-03910
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03911) VUID-VkMemoryBarrier2-srcAccessMask-03911
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03912) VUID-VkMemoryBarrier2-srcAccessMask-03912
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT`,
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03913) VUID-VkMemoryBarrier2-srcAccessMask-03913
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT`,
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03914) VUID-VkMemoryBarrier2-srcAccessMask-03914
 
-If `srcAccessMask` includes `VK_ACCESS_2_TRANSFER_READ_BIT`,
-`srcStageMask` **must** include `VK_PIPELINE_STAGE_2_COPY_BIT`,
-`VK_PIPELINE_STAGE_2_BLIT_BIT`,
-`VK_PIPELINE_STAGE_2_RESOLVE_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV`,
-or `VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+If `srcAccessMask` includes [VK_ACCESS_2_TRANSFER_READ_BIT](#VkAccessFlagBits2KHR),
+`srcStageMask` **must** include [VK_PIPELINE_STAGE_2_COPY_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_BLIT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_RESOLVE_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](#VkPipelineStageFlagBits2KHR),
+or [VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03915) VUID-VkMemoryBarrier2-srcAccessMask-03915
 
-If `srcAccessMask` includes `VK_ACCESS_2_TRANSFER_WRITE_BIT`,
-`srcStageMask` **must** include `VK_PIPELINE_STAGE_2_COPY_BIT`,
-`VK_PIPELINE_STAGE_2_BLIT_BIT`,
-`VK_PIPELINE_STAGE_2_RESOLVE_BIT`,
-`VK_PIPELINE_STAGE_2_CLEAR_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV`,
-or `VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+If `srcAccessMask` includes [VK_ACCESS_2_TRANSFER_WRITE_BIT](#VkAccessFlagBits2KHR),
+`srcStageMask` **must** include [VK_PIPELINE_STAGE_2_COPY_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_BLIT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_RESOLVE_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_CLEAR_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](#VkPipelineStageFlagBits2KHR),
+or [VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03916) VUID-VkMemoryBarrier2-srcAccessMask-03916
 
-If `srcAccessMask` includes `VK_ACCESS_2_HOST_READ_BIT`,
-`srcStageMask` **must** include `VK_PIPELINE_STAGE_2_HOST_BIT`
+If `srcAccessMask` includes [VK_ACCESS_2_HOST_READ_BIT](#VkAccessFlagBits2KHR),
+`srcStageMask` **must** include [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03917) VUID-VkMemoryBarrier2-srcAccessMask-03917
 
-If `srcAccessMask` includes `VK_ACCESS_2_HOST_WRITE_BIT`,
-`srcStageMask` **must** include `VK_PIPELINE_STAGE_2_HOST_BIT`
+If `srcAccessMask` includes [VK_ACCESS_2_HOST_WRITE_BIT](#VkAccessFlagBits2KHR),
+`srcStageMask` **must** include [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03918) VUID-VkMemoryBarrier2-srcAccessMask-03918
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT`,
+[VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03919) VUID-VkMemoryBarrier2-srcAccessMask-03919
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT`,
+[VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03920) VUID-VkMemoryBarrier2-srcAccessMask-03920
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT`,
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-04747) VUID-VkMemoryBarrier2-srcAccessMask-04747
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT`,
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`,
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03922) VUID-VkMemoryBarrier2-srcAccessMask-03922
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT`,
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03923) VUID-VkMemoryBarrier2-srcAccessMask-03923
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADING_RATE_IMAGE_READ_BIT_NV`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_SHADING_RATE_IMAGE_BIT_NV`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_SHADING_RATE_IMAGE_READ_BIT_NV](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_SHADING_RATE_IMAGE_BIT_NV](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-04994) VUID-VkMemoryBarrier2-srcAccessMask-04994
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI`
+[VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03924) VUID-VkMemoryBarrier2-srcAccessMask-03924
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_NV`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV` or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_NV](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03925) VUID-VkMemoryBarrier2-srcAccessMask-03925
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_NV`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV` or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_NV](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03926) VUID-VkMemoryBarrier2-srcAccessMask-03926
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT`,
+[VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03927) VUID-VkMemoryBarrier2-srcAccessMask-03927
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR`,
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-03928) VUID-VkMemoryBarrier2-srcAccessMask-03928
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR`,
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR` or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-06256) VUID-VkMemoryBarrier2-srcAccessMask-06256
@@ -10740,169 +10634,179 @@ If `srcAccessMask` includes
 If
 the [`rayQuery`](features.html#features-rayQuery) feature is not enabled and
 `srcAccessMask` includes
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR`,
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** not include any of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
-except `VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+except [VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-07272) VUID-VkMemoryBarrier2-srcAccessMask-07272
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR`,
+[VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT` or
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-04858) VUID-VkMemoryBarrier2-srcAccessMask-04858
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-04859) VUID-VkMemoryBarrier2-srcAccessMask-04859
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-04860) VUID-VkMemoryBarrier2-srcAccessMask-04860
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-04861) VUID-VkMemoryBarrier2-srcAccessMask-04861
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-07455) VUID-VkMemoryBarrier2-srcAccessMask-07455
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_OPTICAL_FLOW_READ_BIT_NV`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV`
+[VK_ACCESS_2_OPTICAL_FLOW_READ_BIT_NV](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-07456) VUID-VkMemoryBarrier2-srcAccessMask-07456
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_OPTICAL_FLOW_WRITE_BIT_NV`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV`
+[VK_ACCESS_2_OPTICAL_FLOW_WRITE_BIT_NV](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-07457) VUID-VkMemoryBarrier2-srcAccessMask-07457
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-07458) VUID-VkMemoryBarrier2-srcAccessMask-07458
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_MICROMAP_READ_BIT_EXT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT` or
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_ACCESS_2_MICROMAP_READ_BIT_EXT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-08118) VUID-VkMemoryBarrier2-srcAccessMask-08118
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of
+[VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-10670) VUID-VkMemoryBarrier2-srcAccessMask-10670
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM`,
+[VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-10671) VUID-VkMemoryBarrier2-srcAccessMask-10671
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM`,
+[VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-11771) VUID-VkMemoryBarrier2-srcAccessMask-11771
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT`,
+[VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcAccessMask-11772) VUID-VkMemoryBarrier2-srcAccessMask-11772
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT`,
+[VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkPipelineStageFlagBits2KHR)
+
+* 
+[](#VUID-VkMemoryBarrier2-srcAccessMask-11294) VUID-VkMemoryBarrier2-srcAccessMask-11294
+
+If `srcAccessMask` includes
+[VK_ACCESS_2_SAMPLER_HEAP_READ_BIT_EXT](#VkAccessFlagBits2KHR) or
+[VK_ACCESS_2_RESOURCE_HEAP_READ_BIT_EXT](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of
+`VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkMemoryBarrier2-dstStageMask-03929) VUID-VkMemoryBarrier2-dstStageMask-03929
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstStageMask-03930) VUID-VkMemoryBarrier2-dstStageMask-03930
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstStageMask-03931) VUID-VkMemoryBarrier2-dstStageMask-03931
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstStageMask-03932) VUID-VkMemoryBarrier2-dstStageMask-03932
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstStageMask-03933) VUID-VkMemoryBarrier2-dstStageMask-03933
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstStageMask-03934) VUID-VkMemoryBarrier2-dstStageMask-03934
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstStageMask-03935) VUID-VkMemoryBarrier2-dstStageMask-03935
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstStageMask-07316) VUID-VkMemoryBarrier2-dstStageMask-07316
@@ -10910,21 +10814,21 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstStageMask-04957) VUID-VkMemoryBarrier2-dstStageMask-04957
 
 If the [`subpassShading`](features.html#features-subpassShading) feature is not
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstStageMask-04995) VUID-VkMemoryBarrier2-dstStageMask-04995
 
 If the [`invocationMask`](features.html#features-invocationMask) feature is not
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstStageMask-07946) VUID-VkMemoryBarrier2-dstStageMask-07946
@@ -10932,318 +10836,318 @@ enabled, `dstStageMask` **must** not contain
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstStageMask-10751) VUID-VkMemoryBarrier2-dstStageMask-10751
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstStageMask-10752) VUID-VkMemoryBarrier2-dstStageMask-10752
 
 If the [`rayTracingMaintenance1`](features.html#features-rayTracingMaintenance1)
 feature is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstStageMask-10753) VUID-VkMemoryBarrier2-dstStageMask-10753
 
 If the [`micromap`](features.html#features-micromap) feature is not enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03900) VUID-VkMemoryBarrier2-dstAccessMask-03900
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03901) VUID-VkMemoryBarrier2-dstAccessMask-03901
 
-If `dstAccessMask` includes `VK_ACCESS_2_INDEX_READ_BIT`,
+If `dstAccessMask` includes [VK_ACCESS_2_INDEX_READ_BIT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03902) VUID-VkMemoryBarrier2-dstAccessMask-03902
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03903) VUID-VkMemoryBarrier2-dstAccessMask-03903
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03904) VUID-VkMemoryBarrier2-dstAccessMask-03904
 
-If `dstAccessMask` includes `VK_ACCESS_2_UNIFORM_READ_BIT`,
+If `dstAccessMask` includes [VK_ACCESS_2_UNIFORM_READ_BIT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03905) VUID-VkMemoryBarrier2-dstAccessMask-03905
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADER_SAMPLED_READ_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_ACCESS_2_SHADER_SAMPLED_READ_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03906) VUID-VkMemoryBarrier2-dstAccessMask-03906
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADER_STORAGE_READ_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_ACCESS_2_SHADER_STORAGE_READ_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03907) VUID-VkMemoryBarrier2-dstAccessMask-03907
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-07454) VUID-VkMemoryBarrier2-dstAccessMask-07454
 
-If `dstAccessMask` includes `VK_ACCESS_2_SHADER_READ_BIT`,
+If `dstAccessMask` includes [VK_ACCESS_2_SHADER_READ_BIT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`,
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR),
 or one of the `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03909) VUID-VkMemoryBarrier2-dstAccessMask-03909
 
-If `dstAccessMask` includes `VK_ACCESS_2_SHADER_WRITE_BIT`,
+If `dstAccessMask` includes [VK_ACCESS_2_SHADER_WRITE_BIT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03910) VUID-VkMemoryBarrier2-dstAccessMask-03910
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03911) VUID-VkMemoryBarrier2-dstAccessMask-03911
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03912) VUID-VkMemoryBarrier2-dstAccessMask-03912
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT`,
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03913) VUID-VkMemoryBarrier2-dstAccessMask-03913
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT`,
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03914) VUID-VkMemoryBarrier2-dstAccessMask-03914
 
-If `dstAccessMask` includes `VK_ACCESS_2_TRANSFER_READ_BIT`,
-`dstStageMask` **must** include `VK_PIPELINE_STAGE_2_COPY_BIT`,
-`VK_PIPELINE_STAGE_2_BLIT_BIT`,
-`VK_PIPELINE_STAGE_2_RESOLVE_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV`,
-or `VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+If `dstAccessMask` includes [VK_ACCESS_2_TRANSFER_READ_BIT](#VkAccessFlagBits2KHR),
+`dstStageMask` **must** include [VK_PIPELINE_STAGE_2_COPY_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_BLIT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_RESOLVE_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](#VkPipelineStageFlagBits2KHR),
+or [VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03915) VUID-VkMemoryBarrier2-dstAccessMask-03915
 
-If `dstAccessMask` includes `VK_ACCESS_2_TRANSFER_WRITE_BIT`,
-`dstStageMask` **must** include `VK_PIPELINE_STAGE_2_COPY_BIT`,
-`VK_PIPELINE_STAGE_2_BLIT_BIT`,
-`VK_PIPELINE_STAGE_2_RESOLVE_BIT`,
-`VK_PIPELINE_STAGE_2_CLEAR_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV`,
-or `VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+If `dstAccessMask` includes [VK_ACCESS_2_TRANSFER_WRITE_BIT](#VkAccessFlagBits2KHR),
+`dstStageMask` **must** include [VK_PIPELINE_STAGE_2_COPY_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_BLIT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_RESOLVE_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_CLEAR_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](#VkPipelineStageFlagBits2KHR),
+or [VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03916) VUID-VkMemoryBarrier2-dstAccessMask-03916
 
-If `dstAccessMask` includes `VK_ACCESS_2_HOST_READ_BIT`,
-`dstStageMask` **must** include `VK_PIPELINE_STAGE_2_HOST_BIT`
+If `dstAccessMask` includes [VK_ACCESS_2_HOST_READ_BIT](#VkAccessFlagBits2KHR),
+`dstStageMask` **must** include [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03917) VUID-VkMemoryBarrier2-dstAccessMask-03917
 
-If `dstAccessMask` includes `VK_ACCESS_2_HOST_WRITE_BIT`,
-`dstStageMask` **must** include `VK_PIPELINE_STAGE_2_HOST_BIT`
+If `dstAccessMask` includes [VK_ACCESS_2_HOST_WRITE_BIT](#VkAccessFlagBits2KHR),
+`dstStageMask` **must** include [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03918) VUID-VkMemoryBarrier2-dstAccessMask-03918
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT`,
+[VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03919) VUID-VkMemoryBarrier2-dstAccessMask-03919
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT`,
+[VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03920) VUID-VkMemoryBarrier2-dstAccessMask-03920
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT`,
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-04747) VUID-VkMemoryBarrier2-dstAccessMask-04747
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT`,
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`,
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03922) VUID-VkMemoryBarrier2-dstAccessMask-03922
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT`,
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03923) VUID-VkMemoryBarrier2-dstAccessMask-03923
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADING_RATE_IMAGE_READ_BIT_NV`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_SHADING_RATE_IMAGE_BIT_NV`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_SHADING_RATE_IMAGE_READ_BIT_NV](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_SHADING_RATE_IMAGE_BIT_NV](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-04994) VUID-VkMemoryBarrier2-dstAccessMask-04994
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI`
+[VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03924) VUID-VkMemoryBarrier2-dstAccessMask-03924
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_NV`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV` or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_NV](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03925) VUID-VkMemoryBarrier2-dstAccessMask-03925
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_NV`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV` or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_NV](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03926) VUID-VkMemoryBarrier2-dstAccessMask-03926
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT`,
+[VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03927) VUID-VkMemoryBarrier2-dstAccessMask-03927
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR`,
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-03928) VUID-VkMemoryBarrier2-dstAccessMask-03928
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR`,
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR` or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-06256) VUID-VkMemoryBarrier2-dstAccessMask-06256
@@ -11251,126 +11155,136 @@ If `dstAccessMask` includes
 If
 the [`rayQuery`](features.html#features-rayQuery) feature is not enabled and
 `dstAccessMask` includes
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR`,
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** not include any of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
-except `VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+except [VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-07272) VUID-VkMemoryBarrier2-dstAccessMask-07272
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR`,
+[VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT` or
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-04858) VUID-VkMemoryBarrier2-dstAccessMask-04858
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-04859) VUID-VkMemoryBarrier2-dstAccessMask-04859
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-04860) VUID-VkMemoryBarrier2-dstAccessMask-04860
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-04861) VUID-VkMemoryBarrier2-dstAccessMask-04861
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-07455) VUID-VkMemoryBarrier2-dstAccessMask-07455
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_OPTICAL_FLOW_READ_BIT_NV`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV`
+[VK_ACCESS_2_OPTICAL_FLOW_READ_BIT_NV](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-07456) VUID-VkMemoryBarrier2-dstAccessMask-07456
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_OPTICAL_FLOW_WRITE_BIT_NV`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV`
+[VK_ACCESS_2_OPTICAL_FLOW_WRITE_BIT_NV](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-07457) VUID-VkMemoryBarrier2-dstAccessMask-07457
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-07458) VUID-VkMemoryBarrier2-dstAccessMask-07458
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_MICROMAP_READ_BIT_EXT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT` or
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_ACCESS_2_MICROMAP_READ_BIT_EXT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-08118) VUID-VkMemoryBarrier2-dstAccessMask-08118
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of
+[VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-10670) VUID-VkMemoryBarrier2-dstAccessMask-10670
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM`,
+[VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-10671) VUID-VkMemoryBarrier2-dstAccessMask-10671
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM`,
+[VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-11771) VUID-VkMemoryBarrier2-dstAccessMask-11771
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT`,
+[VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkMemoryBarrier2-dstAccessMask-11772) VUID-VkMemoryBarrier2-dstAccessMask-11772
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT`,
+[VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkPipelineStageFlagBits2KHR)
+
+* 
+[](#VUID-VkMemoryBarrier2-dstAccessMask-11294) VUID-VkMemoryBarrier2-dstAccessMask-11294
+
+If `dstAccessMask` includes
+[VK_ACCESS_2_SAMPLER_HEAP_READ_BIT_EXT](#VkAccessFlagBits2KHR) or
+[VK_ACCESS_2_RESOURCE_HEAP_READ_BIT_EXT](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of
+`VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkMemoryBarrier2-sType-sType) VUID-VkMemoryBarrier2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_BARRIER_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_BARRIER_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryBarrier2-srcStageMask-parameter) VUID-VkMemoryBarrier2-srcStageMask-parameter
@@ -11432,7 +11346,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryBarrier-sType-sType) VUID-VkMemoryBarrier-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_BARRIER`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_BARRIER](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkMemoryBarrier-pNext-pNext) VUID-VkMemoryBarrier-pNext-pNext
@@ -11521,7 +11435,7 @@ by the barrier.
 
 * 
 `size` is a size in bytes of the affected area of backing memory for
-`buffer`, or `VK_WHOLE_SIZE` to use the range from `offset`
+`buffer`, or [VK_WHOLE_SIZE](#VK_WHOLE_SIZE) to use the range from `offset`
 to the end of the buffer.
 
 This structure defines a [memory dependency](#synchronization-dependencies-memory) limited to a range of a buffer, and **can** define a
@@ -11541,7 +11455,7 @@ Both [access scopes](#synchronization-dependencies-access-scopes) are
 limited to only memory accesses to `buffer` in the range defined by
 `offset` and `size`.
 
-If `buffer` was created with `VK_SHARING_MODE_EXCLUSIVE`, and
+If `buffer` was created with [VK_SHARING_MODE_EXCLUSIVE](resources.html#VkSharingMode), and
 `srcQueueFamilyIndex` is not equal to `dstQueueFamilyIndex`, this
 memory barrier defines a [queue family ownership transfer operation](#synchronization-queue-transfers).
 When executed on a queue in the family identified by
@@ -11549,14 +11463,14 @@ When executed on a queue in the family identified by
 [queue family release operation](#synchronization-queue-transfers-release)
 for the specified buffer range, and
 if [VkDependencyInfoKHR](#VkDependencyInfoKHR)::`dependencyFlags` did not include
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`,
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](#VkDependencyFlagBits),
 the second synchronization scope does not apply to this operation.
 When executed on a queue in the family identified by
 `dstQueueFamilyIndex`, this barrier defines a
 [queue family acquire operation](#synchronization-queue-transfers-acquire)
 for the specified buffer range, and
 if [VkDependencyInfoKHR](#VkDependencyInfoKHR)::`dependencyFlags` did not include
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`,
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](#VkDependencyFlagBits),
 the first synchronization scope does not apply to this operation.
 
 A [queue family ownership transfer operation](#synchronization-queue-transfers) is also defined if the values are not equal, and either is one
@@ -11573,50 +11487,50 @@ Valid Usage
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcStageMask-03930) VUID-VkBufferMemoryBarrier2-srcStageMask-03930
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcStageMask-03931) VUID-VkBufferMemoryBarrier2-srcStageMask-03931
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcStageMask-03932) VUID-VkBufferMemoryBarrier2-srcStageMask-03932
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcStageMask-03933) VUID-VkBufferMemoryBarrier2-srcStageMask-03933
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcStageMask-03934) VUID-VkBufferMemoryBarrier2-srcStageMask-03934
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcStageMask-03935) VUID-VkBufferMemoryBarrier2-srcStageMask-03935
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcStageMask-07316) VUID-VkBufferMemoryBarrier2-srcStageMask-07316
@@ -11624,21 +11538,21 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcStageMask-04957) VUID-VkBufferMemoryBarrier2-srcStageMask-04957
 
 If the [`subpassShading`](features.html#features-subpassShading) feature is not
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcStageMask-04995) VUID-VkBufferMemoryBarrier2-srcStageMask-04995
 
 If the [`invocationMask`](features.html#features-invocationMask) feature is not
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcStageMask-07946) VUID-VkBufferMemoryBarrier2-srcStageMask-07946
@@ -11646,318 +11560,318 @@ enabled, `srcStageMask` **must** not contain
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcStageMask-10751) VUID-VkBufferMemoryBarrier2-srcStageMask-10751
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcStageMask-10752) VUID-VkBufferMemoryBarrier2-srcStageMask-10752
 
 If the [`rayTracingMaintenance1`](features.html#features-rayTracingMaintenance1)
 feature is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcStageMask-10753) VUID-VkBufferMemoryBarrier2-srcStageMask-10753
 
 If the [`micromap`](features.html#features-micromap) feature is not enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03900) VUID-VkBufferMemoryBarrier2-srcAccessMask-03900
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03901) VUID-VkBufferMemoryBarrier2-srcAccessMask-03901
 
-If `srcAccessMask` includes `VK_ACCESS_2_INDEX_READ_BIT`,
+If `srcAccessMask` includes [VK_ACCESS_2_INDEX_READ_BIT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03902) VUID-VkBufferMemoryBarrier2-srcAccessMask-03902
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03903) VUID-VkBufferMemoryBarrier2-srcAccessMask-03903
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03904) VUID-VkBufferMemoryBarrier2-srcAccessMask-03904
 
-If `srcAccessMask` includes `VK_ACCESS_2_UNIFORM_READ_BIT`,
+If `srcAccessMask` includes [VK_ACCESS_2_UNIFORM_READ_BIT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03905) VUID-VkBufferMemoryBarrier2-srcAccessMask-03905
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADER_SAMPLED_READ_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_ACCESS_2_SHADER_SAMPLED_READ_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03906) VUID-VkBufferMemoryBarrier2-srcAccessMask-03906
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADER_STORAGE_READ_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_ACCESS_2_SHADER_STORAGE_READ_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03907) VUID-VkBufferMemoryBarrier2-srcAccessMask-03907
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-07454) VUID-VkBufferMemoryBarrier2-srcAccessMask-07454
 
-If `srcAccessMask` includes `VK_ACCESS_2_SHADER_READ_BIT`,
+If `srcAccessMask` includes [VK_ACCESS_2_SHADER_READ_BIT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`,
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR),
 or one of the `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03909) VUID-VkBufferMemoryBarrier2-srcAccessMask-03909
 
-If `srcAccessMask` includes `VK_ACCESS_2_SHADER_WRITE_BIT`,
+If `srcAccessMask` includes [VK_ACCESS_2_SHADER_WRITE_BIT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03910) VUID-VkBufferMemoryBarrier2-srcAccessMask-03910
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03911) VUID-VkBufferMemoryBarrier2-srcAccessMask-03911
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03912) VUID-VkBufferMemoryBarrier2-srcAccessMask-03912
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT`,
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03913) VUID-VkBufferMemoryBarrier2-srcAccessMask-03913
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT`,
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03914) VUID-VkBufferMemoryBarrier2-srcAccessMask-03914
 
-If `srcAccessMask` includes `VK_ACCESS_2_TRANSFER_READ_BIT`,
-`srcStageMask` **must** include `VK_PIPELINE_STAGE_2_COPY_BIT`,
-`VK_PIPELINE_STAGE_2_BLIT_BIT`,
-`VK_PIPELINE_STAGE_2_RESOLVE_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV`,
-or `VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+If `srcAccessMask` includes [VK_ACCESS_2_TRANSFER_READ_BIT](#VkAccessFlagBits2KHR),
+`srcStageMask` **must** include [VK_PIPELINE_STAGE_2_COPY_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_BLIT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_RESOLVE_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](#VkPipelineStageFlagBits2KHR),
+or [VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03915) VUID-VkBufferMemoryBarrier2-srcAccessMask-03915
 
-If `srcAccessMask` includes `VK_ACCESS_2_TRANSFER_WRITE_BIT`,
-`srcStageMask` **must** include `VK_PIPELINE_STAGE_2_COPY_BIT`,
-`VK_PIPELINE_STAGE_2_BLIT_BIT`,
-`VK_PIPELINE_STAGE_2_RESOLVE_BIT`,
-`VK_PIPELINE_STAGE_2_CLEAR_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV`,
-or `VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+If `srcAccessMask` includes [VK_ACCESS_2_TRANSFER_WRITE_BIT](#VkAccessFlagBits2KHR),
+`srcStageMask` **must** include [VK_PIPELINE_STAGE_2_COPY_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_BLIT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_RESOLVE_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_CLEAR_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](#VkPipelineStageFlagBits2KHR),
+or [VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03916) VUID-VkBufferMemoryBarrier2-srcAccessMask-03916
 
-If `srcAccessMask` includes `VK_ACCESS_2_HOST_READ_BIT`,
-`srcStageMask` **must** include `VK_PIPELINE_STAGE_2_HOST_BIT`
+If `srcAccessMask` includes [VK_ACCESS_2_HOST_READ_BIT](#VkAccessFlagBits2KHR),
+`srcStageMask` **must** include [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03917) VUID-VkBufferMemoryBarrier2-srcAccessMask-03917
 
-If `srcAccessMask` includes `VK_ACCESS_2_HOST_WRITE_BIT`,
-`srcStageMask` **must** include `VK_PIPELINE_STAGE_2_HOST_BIT`
+If `srcAccessMask` includes [VK_ACCESS_2_HOST_WRITE_BIT](#VkAccessFlagBits2KHR),
+`srcStageMask` **must** include [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03918) VUID-VkBufferMemoryBarrier2-srcAccessMask-03918
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT`,
+[VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03919) VUID-VkBufferMemoryBarrier2-srcAccessMask-03919
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT`,
+[VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03920) VUID-VkBufferMemoryBarrier2-srcAccessMask-03920
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT`,
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-04747) VUID-VkBufferMemoryBarrier2-srcAccessMask-04747
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT`,
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`,
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03922) VUID-VkBufferMemoryBarrier2-srcAccessMask-03922
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT`,
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03923) VUID-VkBufferMemoryBarrier2-srcAccessMask-03923
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADING_RATE_IMAGE_READ_BIT_NV`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_SHADING_RATE_IMAGE_BIT_NV`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_SHADING_RATE_IMAGE_READ_BIT_NV](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_SHADING_RATE_IMAGE_BIT_NV](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-04994) VUID-VkBufferMemoryBarrier2-srcAccessMask-04994
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI`
+[VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03924) VUID-VkBufferMemoryBarrier2-srcAccessMask-03924
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_NV`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV` or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_NV](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03925) VUID-VkBufferMemoryBarrier2-srcAccessMask-03925
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_NV`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV` or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_NV](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03926) VUID-VkBufferMemoryBarrier2-srcAccessMask-03926
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT`,
+[VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03927) VUID-VkBufferMemoryBarrier2-srcAccessMask-03927
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR`,
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-03928) VUID-VkBufferMemoryBarrier2-srcAccessMask-03928
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR`,
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR` or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-06256) VUID-VkBufferMemoryBarrier2-srcAccessMask-06256
@@ -11965,169 +11879,179 @@ If `srcAccessMask` includes
 If
 the [`rayQuery`](features.html#features-rayQuery) feature is not enabled and
 `srcAccessMask` includes
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR`,
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** not include any of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
-except `VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+except [VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-07272) VUID-VkBufferMemoryBarrier2-srcAccessMask-07272
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR`,
+[VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT` or
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-04858) VUID-VkBufferMemoryBarrier2-srcAccessMask-04858
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-04859) VUID-VkBufferMemoryBarrier2-srcAccessMask-04859
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-04860) VUID-VkBufferMemoryBarrier2-srcAccessMask-04860
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-04861) VUID-VkBufferMemoryBarrier2-srcAccessMask-04861
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-07455) VUID-VkBufferMemoryBarrier2-srcAccessMask-07455
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_OPTICAL_FLOW_READ_BIT_NV`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV`
+[VK_ACCESS_2_OPTICAL_FLOW_READ_BIT_NV](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-07456) VUID-VkBufferMemoryBarrier2-srcAccessMask-07456
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_OPTICAL_FLOW_WRITE_BIT_NV`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV`
+[VK_ACCESS_2_OPTICAL_FLOW_WRITE_BIT_NV](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-07457) VUID-VkBufferMemoryBarrier2-srcAccessMask-07457
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-07458) VUID-VkBufferMemoryBarrier2-srcAccessMask-07458
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_MICROMAP_READ_BIT_EXT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT` or
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_ACCESS_2_MICROMAP_READ_BIT_EXT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-08118) VUID-VkBufferMemoryBarrier2-srcAccessMask-08118
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of
+[VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-10670) VUID-VkBufferMemoryBarrier2-srcAccessMask-10670
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM`,
+[VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-10671) VUID-VkBufferMemoryBarrier2-srcAccessMask-10671
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM`,
+[VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-11771) VUID-VkBufferMemoryBarrier2-srcAccessMask-11771
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT`,
+[VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcAccessMask-11772) VUID-VkBufferMemoryBarrier2-srcAccessMask-11772
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT`,
+[VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkPipelineStageFlagBits2KHR)
+
+* 
+[](#VUID-VkBufferMemoryBarrier2-srcAccessMask-11294) VUID-VkBufferMemoryBarrier2-srcAccessMask-11294
+
+If `srcAccessMask` includes
+[VK_ACCESS_2_SAMPLER_HEAP_READ_BIT_EXT](#VkAccessFlagBits2KHR) or
+[VK_ACCESS_2_RESOURCE_HEAP_READ_BIT_EXT](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of
+`VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstStageMask-03929) VUID-VkBufferMemoryBarrier2-dstStageMask-03929
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstStageMask-03930) VUID-VkBufferMemoryBarrier2-dstStageMask-03930
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstStageMask-03931) VUID-VkBufferMemoryBarrier2-dstStageMask-03931
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstStageMask-03932) VUID-VkBufferMemoryBarrier2-dstStageMask-03932
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstStageMask-03933) VUID-VkBufferMemoryBarrier2-dstStageMask-03933
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstStageMask-03934) VUID-VkBufferMemoryBarrier2-dstStageMask-03934
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstStageMask-03935) VUID-VkBufferMemoryBarrier2-dstStageMask-03935
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstStageMask-07316) VUID-VkBufferMemoryBarrier2-dstStageMask-07316
@@ -12135,21 +12059,21 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstStageMask-04957) VUID-VkBufferMemoryBarrier2-dstStageMask-04957
 
 If the [`subpassShading`](features.html#features-subpassShading) feature is not
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstStageMask-04995) VUID-VkBufferMemoryBarrier2-dstStageMask-04995
 
 If the [`invocationMask`](features.html#features-invocationMask) feature is not
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstStageMask-07946) VUID-VkBufferMemoryBarrier2-dstStageMask-07946
@@ -12157,318 +12081,318 @@ enabled, `dstStageMask` **must** not contain
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstStageMask-10751) VUID-VkBufferMemoryBarrier2-dstStageMask-10751
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstStageMask-10752) VUID-VkBufferMemoryBarrier2-dstStageMask-10752
 
 If the [`rayTracingMaintenance1`](features.html#features-rayTracingMaintenance1)
 feature is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstStageMask-10753) VUID-VkBufferMemoryBarrier2-dstStageMask-10753
 
 If the [`micromap`](features.html#features-micromap) feature is not enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03900) VUID-VkBufferMemoryBarrier2-dstAccessMask-03900
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03901) VUID-VkBufferMemoryBarrier2-dstAccessMask-03901
 
-If `dstAccessMask` includes `VK_ACCESS_2_INDEX_READ_BIT`,
+If `dstAccessMask` includes [VK_ACCESS_2_INDEX_READ_BIT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03902) VUID-VkBufferMemoryBarrier2-dstAccessMask-03902
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03903) VUID-VkBufferMemoryBarrier2-dstAccessMask-03903
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03904) VUID-VkBufferMemoryBarrier2-dstAccessMask-03904
 
-If `dstAccessMask` includes `VK_ACCESS_2_UNIFORM_READ_BIT`,
+If `dstAccessMask` includes [VK_ACCESS_2_UNIFORM_READ_BIT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03905) VUID-VkBufferMemoryBarrier2-dstAccessMask-03905
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADER_SAMPLED_READ_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_ACCESS_2_SHADER_SAMPLED_READ_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03906) VUID-VkBufferMemoryBarrier2-dstAccessMask-03906
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADER_STORAGE_READ_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_ACCESS_2_SHADER_STORAGE_READ_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03907) VUID-VkBufferMemoryBarrier2-dstAccessMask-03907
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-07454) VUID-VkBufferMemoryBarrier2-dstAccessMask-07454
 
-If `dstAccessMask` includes `VK_ACCESS_2_SHADER_READ_BIT`,
+If `dstAccessMask` includes [VK_ACCESS_2_SHADER_READ_BIT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`,
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR),
 or one of the `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03909) VUID-VkBufferMemoryBarrier2-dstAccessMask-03909
 
-If `dstAccessMask` includes `VK_ACCESS_2_SHADER_WRITE_BIT`,
+If `dstAccessMask` includes [VK_ACCESS_2_SHADER_WRITE_BIT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03910) VUID-VkBufferMemoryBarrier2-dstAccessMask-03910
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03911) VUID-VkBufferMemoryBarrier2-dstAccessMask-03911
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03912) VUID-VkBufferMemoryBarrier2-dstAccessMask-03912
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT`,
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03913) VUID-VkBufferMemoryBarrier2-dstAccessMask-03913
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT`,
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03914) VUID-VkBufferMemoryBarrier2-dstAccessMask-03914
 
-If `dstAccessMask` includes `VK_ACCESS_2_TRANSFER_READ_BIT`,
-`dstStageMask` **must** include `VK_PIPELINE_STAGE_2_COPY_BIT`,
-`VK_PIPELINE_STAGE_2_BLIT_BIT`,
-`VK_PIPELINE_STAGE_2_RESOLVE_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV`,
-or `VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+If `dstAccessMask` includes [VK_ACCESS_2_TRANSFER_READ_BIT](#VkAccessFlagBits2KHR),
+`dstStageMask` **must** include [VK_PIPELINE_STAGE_2_COPY_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_BLIT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_RESOLVE_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](#VkPipelineStageFlagBits2KHR),
+or [VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03915) VUID-VkBufferMemoryBarrier2-dstAccessMask-03915
 
-If `dstAccessMask` includes `VK_ACCESS_2_TRANSFER_WRITE_BIT`,
-`dstStageMask` **must** include `VK_PIPELINE_STAGE_2_COPY_BIT`,
-`VK_PIPELINE_STAGE_2_BLIT_BIT`,
-`VK_PIPELINE_STAGE_2_RESOLVE_BIT`,
-`VK_PIPELINE_STAGE_2_CLEAR_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV`,
-or `VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+If `dstAccessMask` includes [VK_ACCESS_2_TRANSFER_WRITE_BIT](#VkAccessFlagBits2KHR),
+`dstStageMask` **must** include [VK_PIPELINE_STAGE_2_COPY_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_BLIT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_RESOLVE_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_CLEAR_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](#VkPipelineStageFlagBits2KHR),
+or [VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03916) VUID-VkBufferMemoryBarrier2-dstAccessMask-03916
 
-If `dstAccessMask` includes `VK_ACCESS_2_HOST_READ_BIT`,
-`dstStageMask` **must** include `VK_PIPELINE_STAGE_2_HOST_BIT`
+If `dstAccessMask` includes [VK_ACCESS_2_HOST_READ_BIT](#VkAccessFlagBits2KHR),
+`dstStageMask` **must** include [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03917) VUID-VkBufferMemoryBarrier2-dstAccessMask-03917
 
-If `dstAccessMask` includes `VK_ACCESS_2_HOST_WRITE_BIT`,
-`dstStageMask` **must** include `VK_PIPELINE_STAGE_2_HOST_BIT`
+If `dstAccessMask` includes [VK_ACCESS_2_HOST_WRITE_BIT](#VkAccessFlagBits2KHR),
+`dstStageMask` **must** include [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03918) VUID-VkBufferMemoryBarrier2-dstAccessMask-03918
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT`,
+[VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03919) VUID-VkBufferMemoryBarrier2-dstAccessMask-03919
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT`,
+[VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03920) VUID-VkBufferMemoryBarrier2-dstAccessMask-03920
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT`,
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-04747) VUID-VkBufferMemoryBarrier2-dstAccessMask-04747
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT`,
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`,
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03922) VUID-VkBufferMemoryBarrier2-dstAccessMask-03922
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT`,
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03923) VUID-VkBufferMemoryBarrier2-dstAccessMask-03923
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADING_RATE_IMAGE_READ_BIT_NV`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_SHADING_RATE_IMAGE_BIT_NV`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_SHADING_RATE_IMAGE_READ_BIT_NV](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_SHADING_RATE_IMAGE_BIT_NV](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-04994) VUID-VkBufferMemoryBarrier2-dstAccessMask-04994
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI`
+[VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03924) VUID-VkBufferMemoryBarrier2-dstAccessMask-03924
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_NV`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV` or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_NV](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03925) VUID-VkBufferMemoryBarrier2-dstAccessMask-03925
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_NV`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV` or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_NV](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03926) VUID-VkBufferMemoryBarrier2-dstAccessMask-03926
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT`,
+[VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03927) VUID-VkBufferMemoryBarrier2-dstAccessMask-03927
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR`,
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-03928) VUID-VkBufferMemoryBarrier2-dstAccessMask-03928
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR`,
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR` or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-06256) VUID-VkBufferMemoryBarrier2-dstAccessMask-06256
@@ -12476,119 +12400,129 @@ If `dstAccessMask` includes
 If
 the [`rayQuery`](features.html#features-rayQuery) feature is not enabled and
 `dstAccessMask` includes
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR`,
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** not include any of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
-except `VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+except [VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-07272) VUID-VkBufferMemoryBarrier2-dstAccessMask-07272
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR`,
+[VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT` or
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-04858) VUID-VkBufferMemoryBarrier2-dstAccessMask-04858
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-04859) VUID-VkBufferMemoryBarrier2-dstAccessMask-04859
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-04860) VUID-VkBufferMemoryBarrier2-dstAccessMask-04860
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-04861) VUID-VkBufferMemoryBarrier2-dstAccessMask-04861
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-07455) VUID-VkBufferMemoryBarrier2-dstAccessMask-07455
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_OPTICAL_FLOW_READ_BIT_NV`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV`
+[VK_ACCESS_2_OPTICAL_FLOW_READ_BIT_NV](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-07456) VUID-VkBufferMemoryBarrier2-dstAccessMask-07456
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_OPTICAL_FLOW_WRITE_BIT_NV`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV`
+[VK_ACCESS_2_OPTICAL_FLOW_WRITE_BIT_NV](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-07457) VUID-VkBufferMemoryBarrier2-dstAccessMask-07457
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-07458) VUID-VkBufferMemoryBarrier2-dstAccessMask-07458
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_MICROMAP_READ_BIT_EXT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT` or
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_ACCESS_2_MICROMAP_READ_BIT_EXT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-08118) VUID-VkBufferMemoryBarrier2-dstAccessMask-08118
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of
+[VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-10670) VUID-VkBufferMemoryBarrier2-dstAccessMask-10670
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM`,
+[VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-10671) VUID-VkBufferMemoryBarrier2-dstAccessMask-10671
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM`,
+[VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-11771) VUID-VkBufferMemoryBarrier2-dstAccessMask-11771
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT`,
+[VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstAccessMask-11772) VUID-VkBufferMemoryBarrier2-dstAccessMask-11772
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT`,
+[VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkPipelineStageFlagBits2KHR)
+
+* 
+[](#VUID-VkBufferMemoryBarrier2-dstAccessMask-11294) VUID-VkBufferMemoryBarrier2-dstAccessMask-11294
+
+If `dstAccessMask` includes
+[VK_ACCESS_2_SAMPLER_HEAP_READ_BIT_EXT](#VkAccessFlagBits2KHR) or
+[VK_ACCESS_2_RESOURCE_HEAP_READ_BIT_EXT](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of
+`VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-offset-01187) VUID-VkBufferMemoryBarrier2-offset-01187
@@ -12598,13 +12532,13 @@ If `dstAccessMask` includes
 * 
 [](#VUID-VkBufferMemoryBarrier2-size-01188) VUID-VkBufferMemoryBarrier2-size-01188
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be
+If `size` is not equal to [VK_WHOLE_SIZE](#VK_WHOLE_SIZE), `size` **must** be
 greater than `0`
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-size-01189) VUID-VkBufferMemoryBarrier2-size-01189
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be
+If `size` is not equal to [VK_WHOLE_SIZE](#VK_WHOLE_SIZE), `size` **must** be
 less than or equal to than the size of `buffer` minus `offset`
 
 * 
@@ -12617,11 +12551,11 @@ contiguously to a single `VkDeviceMemory` object
 [](#VUID-VkBufferMemoryBarrier2-buffer-09095) VUID-VkBufferMemoryBarrier2-buffer-09095
 
 If `buffer` was created with a sharing mode of
-`VK_SHARING_MODE_EXCLUSIVE`, and `srcQueueFamilyIndex` and
+[VK_SHARING_MODE_EXCLUSIVE](resources.html#VkSharingMode), and `srcQueueFamilyIndex` and
 `dstQueueFamilyIndex` are not equal, `srcQueueFamilyIndex` **must**
 be
-`VK_QUEUE_FAMILY_EXTERNAL`,
-`VK_QUEUE_FAMILY_FOREIGN_EXT`,
+[VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL),
+[VK_QUEUE_FAMILY_FOREIGN_EXT](#VK_QUEUE_FAMILY_FOREIGN_EXT),
 or
 a valid queue family
 
@@ -12629,11 +12563,11 @@ a valid queue family
 [](#VUID-VkBufferMemoryBarrier2-buffer-09096) VUID-VkBufferMemoryBarrier2-buffer-09096
 
 If `buffer` was created with a sharing mode of
-`VK_SHARING_MODE_EXCLUSIVE`, and `srcQueueFamilyIndex` and
+[VK_SHARING_MODE_EXCLUSIVE](resources.html#VkSharingMode), and `srcQueueFamilyIndex` and
 `dstQueueFamilyIndex` are not equal, `dstQueueFamilyIndex` **must**
 be
-`VK_QUEUE_FAMILY_EXTERNAL`,
-`VK_QUEUE_FAMILY_FOREIGN_EXT`,
+[VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL),
+[VK_QUEUE_FAMILY_FOREIGN_EXT](#VK_QUEUE_FAMILY_FOREIGN_EXT),
 or
 a valid queue family
 
@@ -12646,7 +12580,7 @@ If
 and
     the value of [VkApplicationInfo](initialization.html#VkApplicationInfo)::`apiVersion` used to create
     the [VkInstance](initialization.html#VkInstance) is not greater than or equal to Version 1.1,
-    `srcQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_EXTERNAL`
+    `srcQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-None-09098) VUID-VkBufferMemoryBarrier2-None-09098
@@ -12657,25 +12591,25 @@ If
 and
     the value of [VkApplicationInfo](initialization.html#VkApplicationInfo)::`apiVersion` used to create
     the [VkInstance](initialization.html#VkInstance) is not greater than or equal to Version 1.1,
-    `dstQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_EXTERNAL`
+    `dstQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcQueueFamilyIndex-09099) VUID-VkBufferMemoryBarrier2-srcQueueFamilyIndex-09099
 
 If the [VK_EXT_queue_family_foreign](../appendices/extensions.html#VK_EXT_queue_family_foreign) extension is not enabled
-`srcQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_FOREIGN_EXT`
+`srcQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_FOREIGN_EXT](#VK_QUEUE_FAMILY_FOREIGN_EXT)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-dstQueueFamilyIndex-09100) VUID-VkBufferMemoryBarrier2-dstQueueFamilyIndex-09100
 
 If the [VK_EXT_queue_family_foreign](../appendices/extensions.html#VK_EXT_queue_family_foreign) extension is not enabled
-`dstQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_FOREIGN_EXT`
+`dstQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_FOREIGN_EXT](#VK_QUEUE_FAMILY_FOREIGN_EXT)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-srcStageMask-03851) VUID-VkBufferMemoryBarrier2-srcStageMask-03851
 
 If either `srcStageMask` or `dstStageMask` includes
-`VK_PIPELINE_STAGE_2_HOST_BIT`, `srcQueueFamilyIndex` and
+[VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR), `srcQueueFamilyIndex` and
 `dstQueueFamilyIndex` **must** be equal
 
 Valid Usage (Implicit)
@@ -12683,7 +12617,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBufferMemoryBarrier2-sType-sType) VUID-VkBufferMemoryBarrier2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBufferMemoryBarrier2-pNext-pNext) VUID-VkBufferMemoryBarrier2-pNext-pNext
@@ -12769,7 +12703,7 @@ by the barrier.
 
 * 
 `size` is a size in bytes of the affected area of backing memory for
-`buffer`, or `VK_WHOLE_SIZE` to use the range from `offset`
+`buffer`, or [VK_WHOLE_SIZE](#VK_WHOLE_SIZE) to use the range from `offset`
 to the end of the buffer.
 
 The first [access scope](#synchronization-dependencies-access-scopes) is
@@ -12778,7 +12712,7 @@ types in the [source access mask](#synchronization-access-masks) specified
 by
 `srcAccessMask` and, if a [VkMemoryBarrierAccessFlags3KHR](#VkMemoryBarrierAccessFlags3KHR) is passed
 in `pNext`, `srcAccessMask3`.
-If the source access mask includes `VK_ACCESS_HOST_WRITE_BIT`, a
+If the source access mask includes [VK_ACCESS_HOST_WRITE_BIT](#VkAccessFlagBits), a
 [memory domain operation](#synchronization-dependencies-available-and-visible) is performed where available memory in the host domain is also
 made available to the device domain.
 
@@ -12788,28 +12722,28 @@ types in the [destination access mask](#synchronization-access-masks)
 specified by
 `dstAccessMask` and, if a [VkMemoryBarrierAccessFlags3KHR](#VkMemoryBarrierAccessFlags3KHR) is passed
 in `pNext`, `dstAccessMask3`.
-If the destination access mask includes `VK_ACCESS_HOST_WRITE_BIT` or
-`VK_ACCESS_HOST_READ_BIT`, a
+If the destination access mask includes [VK_ACCESS_HOST_WRITE_BIT](#VkAccessFlagBits) or
+[VK_ACCESS_HOST_READ_BIT](#VkAccessFlagBits), a
 [memory domain operation](#synchronization-dependencies-available-and-visible) is performed where available memory in the device domain is also
 made available to the host domain.
 
 |  | Host writes to device memory that was allocated without
 | --- | --- |
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` have to be flushed with
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](memory.html#VkMemoryPropertyFlagBits) have to be flushed with
 [vkFlushMappedMemoryRanges](memory.html#vkFlushMappedMemoryRanges) before they can be accessed safely on the
 device.
 Similarly, device writes to such memory have to be invalidated with
 [vkInvalidateMappedMemoryRanges](memory.html#vkInvalidateMappedMemoryRanges) before they can be accessed safely on
 the host.
 
-Memory allocated with `VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` does not
+Memory allocated with [VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](memory.html#VkMemoryPropertyFlagBits) does not
 need to have these additional operations performed. |
 
 If `srcQueueFamilyIndex` is not equal to `dstQueueFamilyIndex`, and
 `srcQueueFamilyIndex` is equal to the current queue family, then the
 memory barrier defines a [queue family release operation](#synchronization-queue-transfers-release) for the specified buffer range, and
 if `dependencyFlags` did not include
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`,
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](#VkDependencyFlagBits),
 the second synchronization scope of the calling command does not apply to
 this operation.
 
@@ -12817,7 +12751,7 @@ If `dstQueueFamilyIndex` is not equal to `srcQueueFamilyIndex`, and
 `dstQueueFamilyIndex` is equal to the current queue family, then the
 memory barrier defines a [queue family acquire operation](#synchronization-queue-transfers-acquire) for the specified buffer range, and
 if `dependencyFlags` did not include
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`,
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](#VkDependencyFlagBits),
 the first synchronization scope of the calling command does not apply to
 this operation.
 
@@ -12831,13 +12765,13 @@ Valid Usage
 * 
 [](#VUID-VkBufferMemoryBarrier-size-01188) VUID-VkBufferMemoryBarrier-size-01188
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be
+If `size` is not equal to [VK_WHOLE_SIZE](#VK_WHOLE_SIZE), `size` **must** be
 greater than `0`
 
 * 
 [](#VUID-VkBufferMemoryBarrier-size-01189) VUID-VkBufferMemoryBarrier-size-01189
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be
+If `size` is not equal to [VK_WHOLE_SIZE](#VK_WHOLE_SIZE), `size` **must** be
 less than or equal to than the size of `buffer` minus `offset`
 
 * 
@@ -12850,11 +12784,11 @@ contiguously to a single `VkDeviceMemory` object
 [](#VUID-VkBufferMemoryBarrier-buffer-09095) VUID-VkBufferMemoryBarrier-buffer-09095
 
 If `buffer` was created with a sharing mode of
-`VK_SHARING_MODE_EXCLUSIVE`, and `srcQueueFamilyIndex` and
+[VK_SHARING_MODE_EXCLUSIVE](resources.html#VkSharingMode), and `srcQueueFamilyIndex` and
 `dstQueueFamilyIndex` are not equal, `srcQueueFamilyIndex` **must**
 be
-`VK_QUEUE_FAMILY_EXTERNAL`,
-`VK_QUEUE_FAMILY_FOREIGN_EXT`,
+[VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL),
+[VK_QUEUE_FAMILY_FOREIGN_EXT](#VK_QUEUE_FAMILY_FOREIGN_EXT),
 or
 a valid queue family
 
@@ -12862,11 +12796,11 @@ a valid queue family
 [](#VUID-VkBufferMemoryBarrier-buffer-09096) VUID-VkBufferMemoryBarrier-buffer-09096
 
 If `buffer` was created with a sharing mode of
-`VK_SHARING_MODE_EXCLUSIVE`, and `srcQueueFamilyIndex` and
+[VK_SHARING_MODE_EXCLUSIVE](resources.html#VkSharingMode), and `srcQueueFamilyIndex` and
 `dstQueueFamilyIndex` are not equal, `dstQueueFamilyIndex` **must**
 be
-`VK_QUEUE_FAMILY_EXTERNAL`,
-`VK_QUEUE_FAMILY_FOREIGN_EXT`,
+[VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL),
+[VK_QUEUE_FAMILY_FOREIGN_EXT](#VK_QUEUE_FAMILY_FOREIGN_EXT),
 or
 a valid queue family
 
@@ -12879,7 +12813,7 @@ If
 and
     the value of [VkApplicationInfo](initialization.html#VkApplicationInfo)::`apiVersion` used to create
     the [VkInstance](initialization.html#VkInstance) is not greater than or equal to Version 1.1,
-    `srcQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_EXTERNAL`
+    `srcQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL)
 
 * 
 [](#VUID-VkBufferMemoryBarrier-None-09098) VUID-VkBufferMemoryBarrier-None-09098
@@ -12890,19 +12824,19 @@ If
 and
     the value of [VkApplicationInfo](initialization.html#VkApplicationInfo)::`apiVersion` used to create
     the [VkInstance](initialization.html#VkInstance) is not greater than or equal to Version 1.1,
-    `dstQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_EXTERNAL`
+    `dstQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL)
 
 * 
 [](#VUID-VkBufferMemoryBarrier-srcQueueFamilyIndex-09099) VUID-VkBufferMemoryBarrier-srcQueueFamilyIndex-09099
 
 If the [VK_EXT_queue_family_foreign](../appendices/extensions.html#VK_EXT_queue_family_foreign) extension is not enabled
-`srcQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_FOREIGN_EXT`
+`srcQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_FOREIGN_EXT](#VK_QUEUE_FAMILY_FOREIGN_EXT)
 
 * 
 [](#VUID-VkBufferMemoryBarrier-dstQueueFamilyIndex-09100) VUID-VkBufferMemoryBarrier-dstQueueFamilyIndex-09100
 
 If the [VK_EXT_queue_family_foreign](../appendices/extensions.html#VK_EXT_queue_family_foreign) extension is not enabled
-`dstQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_FOREIGN_EXT`
+`dstQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_FOREIGN_EXT](#VK_QUEUE_FAMILY_FOREIGN_EXT)
 
 * 
 [](#VUID-VkBufferMemoryBarrier-None-09049) VUID-VkBufferMemoryBarrier-None-09049
@@ -12911,9 +12845,9 @@ If
 the [`synchronization2`](features.html#features-synchronization2) feature is not
 enabled, and
 `buffer` was created with a sharing mode of
-`VK_SHARING_MODE_CONCURRENT`, at least one of
+[VK_SHARING_MODE_CONCURRENT](resources.html#VkSharingMode), at least one of
 `srcQueueFamilyIndex` and `dstQueueFamilyIndex` **must** be
-`VK_QUEUE_FAMILY_IGNORED`
+[VK_QUEUE_FAMILY_IGNORED](#VK_QUEUE_FAMILY_IGNORED)
 
 * 
 [](#VUID-VkBufferMemoryBarrier-None-09050) VUID-VkBufferMemoryBarrier-None-09050
@@ -12922,9 +12856,9 @@ If
 the [`synchronization2`](features.html#features-synchronization2) feature is not
 enabled, and
 `buffer` was created with a sharing mode of
-`VK_SHARING_MODE_CONCURRENT`, `srcQueueFamilyIndex` **must** be
-`VK_QUEUE_FAMILY_IGNORED`
-or `VK_QUEUE_FAMILY_EXTERNAL`
+[VK_SHARING_MODE_CONCURRENT](resources.html#VkSharingMode), `srcQueueFamilyIndex` **must** be
+[VK_QUEUE_FAMILY_IGNORED](#VK_QUEUE_FAMILY_IGNORED)
+or [VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL)
 
 * 
 [](#VUID-VkBufferMemoryBarrier-None-09051) VUID-VkBufferMemoryBarrier-None-09051
@@ -12933,16 +12867,16 @@ If
 the [`synchronization2`](features.html#features-synchronization2) feature is not
 enabled, and
 `buffer` was created with a sharing mode of
-`VK_SHARING_MODE_CONCURRENT`, `dstQueueFamilyIndex` **must** be
-`VK_QUEUE_FAMILY_IGNORED`
-or `VK_QUEUE_FAMILY_EXTERNAL`
+[VK_SHARING_MODE_CONCURRENT](resources.html#VkSharingMode), `dstQueueFamilyIndex` **must** be
+[VK_QUEUE_FAMILY_IGNORED](#VK_QUEUE_FAMILY_IGNORED)
+or [VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkBufferMemoryBarrier-sType-sType) VUID-VkBufferMemoryBarrier-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkBufferMemoryBarrier-pNext-pNext) VUID-VkBufferMemoryBarrier-pNext-pNext
@@ -12959,7 +12893,7 @@ Valid Usage (Implicit)
 
  `buffer` **must** be a valid [VkBuffer](resources.html#VkBuffer) handle
 
-`VK_WHOLE_SIZE` is a special value indicating that the entire remaining
+[VK_WHOLE_SIZE](#VK_WHOLE_SIZE) is a special value indicating that the entire remaining
 length of a buffer or allocation following a given `offset` should be
 used.
 It **can** be specified for [VkBufferMemoryBarrier](#VkBufferMemoryBarrier)::`size`,
@@ -13061,7 +12995,7 @@ Both [access scopes](#synchronization-dependencies-access-scopes) are
 limited to only memory accesses to `image` in the subresource range
 defined by `subresourceRange`.
 
-If `image` was created with `VK_SHARING_MODE_EXCLUSIVE`, and
+If `image` was created with [VK_SHARING_MODE_EXCLUSIVE](resources.html#VkSharingMode), and
 `srcQueueFamilyIndex` is not equal to `dstQueueFamilyIndex`, this
 memory barrier defines a [queue family ownership transfer operation](#synchronization-queue-transfers).
 When executed on a queue in the family identified by
@@ -13069,14 +13003,14 @@ When executed on a queue in the family identified by
 [queue family release operation](#synchronization-queue-transfers-release)
 for the specified image subresource range, and
 if [VkDependencyInfoKHR](#VkDependencyInfoKHR)::`dependencyFlags` did not include
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`,
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](#VkDependencyFlagBits),
 the second synchronization scope does not apply to this operation.
 When executed on a queue in the family identified by
 `dstQueueFamilyIndex`, this barrier defines a
 [queue family acquire operation](#synchronization-queue-transfers-acquire)
 for the specified image subresource range, and
 if [VkDependencyInfoKHR](#VkDependencyInfoKHR)::`dependencyFlags` did not include
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`,
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](#VkDependencyFlagBits),
 the first synchronization scope does not apply to this operation.
 
 A [queue family ownership transfer operation](#synchronization-queue-transfers) is also defined if the values are not equal, and either is one
@@ -13097,7 +13031,7 @@ ignored and the image contents are preserved regardless of the values of
 `oldLayout`, `newLayout`, and the current layout of the image.
 
 If `image` is a 3D image created with
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` and the
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) and the
 [`maintenance9`](features.html#features-maintenance9) feature is enabled, the
 `baseArrayLayer` and `layerCount` members of `subresourceRange`
 specify the subset of slices of the 3D image affected by the memory barrier,
@@ -13108,7 +13042,7 @@ affected by the memory barrier and remain in their existing layout.
 |  | Enabling the [`maintenance9`](features.html#features-maintenance9) feature modifies
 | --- | --- |
 the behavior of image barriers targeting 3D images created with
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT`.
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits).
 Previously, a `layerCount` equal to 1 would cover the entire 3D image,
 but this has a different meaning when the `maintenance9` feature is
 enabled.
@@ -13117,7 +13051,7 @@ caused an unintended break in forward-compatibility.
 Validation layers are expected to flag a warning for the scenario where the
 `maintenance9` feature is not enabled, and the application uses
 `layerCount` equal to 1 on this kind of 3D image.
-`layerCount` can be set to `VK_REMAINING_ARRAY_LAYERS` instead,
+`layerCount` can be set to [VK_REMAINING_ARRAY_LAYERS](resources.html#VK_REMAINING_ARRAY_LAYERS) instead,
 which has the same semantics with or without the extension.
 This validation check should make it feasible for software to avoid any
 breaking changes should the `maintenance9` feature be enabled in the
@@ -13125,10 +13059,10 @@ future, either explicitly by application or by a layer outside the control
 of the application. |
 
 If `image` has a [multi-planar format](formats.html#formats-multiplanar) and the
-image is *disjoint*, then including `VK_IMAGE_ASPECT_COLOR_BIT` in the
+image is *disjoint*, then including [VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits) in the
 `aspectMask` member of `subresourceRange` is equivalent to including
-`VK_IMAGE_ASPECT_PLANE_0_BIT`, `VK_IMAGE_ASPECT_PLANE_1_BIT`, and
-(for three-plane formats only) `VK_IMAGE_ASPECT_PLANE_2_BIT`.
+[VK_IMAGE_ASPECT_PLANE_0_BIT](resources.html#VkImageAspectFlagBits), [VK_IMAGE_ASPECT_PLANE_1_BIT](resources.html#VkImageAspectFlagBits), and
+(for three-plane formats only) [VK_IMAGE_ASPECT_PLANE_2_BIT](resources.html#VkImageAspectFlagBits).
 
 Valid Usage
 
@@ -13137,50 +13071,50 @@ Valid Usage
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcStageMask-03930) VUID-VkImageMemoryBarrier2-srcStageMask-03930
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcStageMask-03931) VUID-VkImageMemoryBarrier2-srcStageMask-03931
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcStageMask-03932) VUID-VkImageMemoryBarrier2-srcStageMask-03932
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcStageMask-03933) VUID-VkImageMemoryBarrier2-srcStageMask-03933
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcStageMask-03934) VUID-VkImageMemoryBarrier2-srcStageMask-03934
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcStageMask-03935) VUID-VkImageMemoryBarrier2-srcStageMask-03935
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcStageMask-07316) VUID-VkImageMemoryBarrier2-srcStageMask-07316
@@ -13188,21 +13122,21 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcStageMask-04957) VUID-VkImageMemoryBarrier2-srcStageMask-04957
 
 If the [`subpassShading`](features.html#features-subpassShading) feature is not
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcStageMask-04995) VUID-VkImageMemoryBarrier2-srcStageMask-04995
 
 If the [`invocationMask`](features.html#features-invocationMask) feature is not
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcStageMask-07946) VUID-VkImageMemoryBarrier2-srcStageMask-07946
@@ -13210,318 +13144,318 @@ enabled, `srcStageMask` **must** not contain
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcStageMask-10751) VUID-VkImageMemoryBarrier2-srcStageMask-10751
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcStageMask-10752) VUID-VkImageMemoryBarrier2-srcStageMask-10752
 
 If the [`rayTracingMaintenance1`](features.html#features-rayTracingMaintenance1)
 feature is not enabled, `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcStageMask-10753) VUID-VkImageMemoryBarrier2-srcStageMask-10753
 
 If the [`micromap`](features.html#features-micromap) feature is not enabled,
 `srcStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03900) VUID-VkImageMemoryBarrier2-srcAccessMask-03900
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03901) VUID-VkImageMemoryBarrier2-srcAccessMask-03901
 
-If `srcAccessMask` includes `VK_ACCESS_2_INDEX_READ_BIT`,
+If `srcAccessMask` includes [VK_ACCESS_2_INDEX_READ_BIT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03902) VUID-VkImageMemoryBarrier2-srcAccessMask-03902
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03903) VUID-VkImageMemoryBarrier2-srcAccessMask-03903
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03904) VUID-VkImageMemoryBarrier2-srcAccessMask-03904
 
-If `srcAccessMask` includes `VK_ACCESS_2_UNIFORM_READ_BIT`,
+If `srcAccessMask` includes [VK_ACCESS_2_UNIFORM_READ_BIT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03905) VUID-VkImageMemoryBarrier2-srcAccessMask-03905
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADER_SAMPLED_READ_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_ACCESS_2_SHADER_SAMPLED_READ_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03906) VUID-VkImageMemoryBarrier2-srcAccessMask-03906
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADER_STORAGE_READ_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_ACCESS_2_SHADER_STORAGE_READ_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03907) VUID-VkImageMemoryBarrier2-srcAccessMask-03907
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-07454) VUID-VkImageMemoryBarrier2-srcAccessMask-07454
 
-If `srcAccessMask` includes `VK_ACCESS_2_SHADER_READ_BIT`,
+If `srcAccessMask` includes [VK_ACCESS_2_SHADER_READ_BIT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`,
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR),
 or one of the `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03909) VUID-VkImageMemoryBarrier2-srcAccessMask-03909
 
-If `srcAccessMask` includes `VK_ACCESS_2_SHADER_WRITE_BIT`,
+If `srcAccessMask` includes [VK_ACCESS_2_SHADER_WRITE_BIT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03910) VUID-VkImageMemoryBarrier2-srcAccessMask-03910
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03911) VUID-VkImageMemoryBarrier2-srcAccessMask-03911
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03912) VUID-VkImageMemoryBarrier2-srcAccessMask-03912
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT`,
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03913) VUID-VkImageMemoryBarrier2-srcAccessMask-03913
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT`,
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03914) VUID-VkImageMemoryBarrier2-srcAccessMask-03914
 
-If `srcAccessMask` includes `VK_ACCESS_2_TRANSFER_READ_BIT`,
-`srcStageMask` **must** include `VK_PIPELINE_STAGE_2_COPY_BIT`,
-`VK_PIPELINE_STAGE_2_BLIT_BIT`,
-`VK_PIPELINE_STAGE_2_RESOLVE_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV`,
-or `VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+If `srcAccessMask` includes [VK_ACCESS_2_TRANSFER_READ_BIT](#VkAccessFlagBits2KHR),
+`srcStageMask` **must** include [VK_PIPELINE_STAGE_2_COPY_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_BLIT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_RESOLVE_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](#VkPipelineStageFlagBits2KHR),
+or [VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03915) VUID-VkImageMemoryBarrier2-srcAccessMask-03915
 
-If `srcAccessMask` includes `VK_ACCESS_2_TRANSFER_WRITE_BIT`,
-`srcStageMask` **must** include `VK_PIPELINE_STAGE_2_COPY_BIT`,
-`VK_PIPELINE_STAGE_2_BLIT_BIT`,
-`VK_PIPELINE_STAGE_2_RESOLVE_BIT`,
-`VK_PIPELINE_STAGE_2_CLEAR_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV`,
-or `VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+If `srcAccessMask` includes [VK_ACCESS_2_TRANSFER_WRITE_BIT](#VkAccessFlagBits2KHR),
+`srcStageMask` **must** include [VK_PIPELINE_STAGE_2_COPY_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_BLIT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_RESOLVE_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_CLEAR_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](#VkPipelineStageFlagBits2KHR),
+or [VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03916) VUID-VkImageMemoryBarrier2-srcAccessMask-03916
 
-If `srcAccessMask` includes `VK_ACCESS_2_HOST_READ_BIT`,
-`srcStageMask` **must** include `VK_PIPELINE_STAGE_2_HOST_BIT`
+If `srcAccessMask` includes [VK_ACCESS_2_HOST_READ_BIT](#VkAccessFlagBits2KHR),
+`srcStageMask` **must** include [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03917) VUID-VkImageMemoryBarrier2-srcAccessMask-03917
 
-If `srcAccessMask` includes `VK_ACCESS_2_HOST_WRITE_BIT`,
-`srcStageMask` **must** include `VK_PIPELINE_STAGE_2_HOST_BIT`
+If `srcAccessMask` includes [VK_ACCESS_2_HOST_WRITE_BIT](#VkAccessFlagBits2KHR),
+`srcStageMask` **must** include [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03918) VUID-VkImageMemoryBarrier2-srcAccessMask-03918
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT`,
+[VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03919) VUID-VkImageMemoryBarrier2-srcAccessMask-03919
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT`,
+[VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03920) VUID-VkImageMemoryBarrier2-srcAccessMask-03920
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT`,
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-04747) VUID-VkImageMemoryBarrier2-srcAccessMask-04747
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT`,
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`,
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03922) VUID-VkImageMemoryBarrier2-srcAccessMask-03922
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT`,
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03923) VUID-VkImageMemoryBarrier2-srcAccessMask-03923
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADING_RATE_IMAGE_READ_BIT_NV`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_SHADING_RATE_IMAGE_BIT_NV`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_SHADING_RATE_IMAGE_READ_BIT_NV](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_SHADING_RATE_IMAGE_BIT_NV](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-04994) VUID-VkImageMemoryBarrier2-srcAccessMask-04994
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI`
+[VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03924) VUID-VkImageMemoryBarrier2-srcAccessMask-03924
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_NV`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV` or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_NV](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03925) VUID-VkImageMemoryBarrier2-srcAccessMask-03925
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_NV`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV` or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_NV](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03926) VUID-VkImageMemoryBarrier2-srcAccessMask-03926
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT`,
+[VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03927) VUID-VkImageMemoryBarrier2-srcAccessMask-03927
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR`,
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-03928) VUID-VkImageMemoryBarrier2-srcAccessMask-03928
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR`,
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR` or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-06256) VUID-VkImageMemoryBarrier2-srcAccessMask-06256
@@ -13529,169 +13463,179 @@ If `srcAccessMask` includes
 If
 the [`rayQuery`](features.html#features-rayQuery) feature is not enabled and
 `srcAccessMask` includes
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR`,
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** not include any of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
-except `VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+except [VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-07272) VUID-VkImageMemoryBarrier2-srcAccessMask-07272
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR`,
+[VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT` or
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-04858) VUID-VkImageMemoryBarrier2-srcAccessMask-04858
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-04859) VUID-VkImageMemoryBarrier2-srcAccessMask-04859
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-04860) VUID-VkImageMemoryBarrier2-srcAccessMask-04860
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-04861) VUID-VkImageMemoryBarrier2-srcAccessMask-04861
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-07455) VUID-VkImageMemoryBarrier2-srcAccessMask-07455
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_OPTICAL_FLOW_READ_BIT_NV`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV`
+[VK_ACCESS_2_OPTICAL_FLOW_READ_BIT_NV](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-07456) VUID-VkImageMemoryBarrier2-srcAccessMask-07456
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_OPTICAL_FLOW_WRITE_BIT_NV`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV`
+[VK_ACCESS_2_OPTICAL_FLOW_WRITE_BIT_NV](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-07457) VUID-VkImageMemoryBarrier2-srcAccessMask-07457
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-07458) VUID-VkImageMemoryBarrier2-srcAccessMask-07458
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_MICROMAP_READ_BIT_EXT`, `srcStageMask` **must**
-include `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT` or
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_ACCESS_2_MICROMAP_READ_BIT_EXT](#VkAccessFlagBits2KHR), `srcStageMask` **must**
+include [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-08118) VUID-VkImageMemoryBarrier2-srcAccessMask-08118
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT`, `srcStageMask`
-**must** include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of
+[VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-10670) VUID-VkImageMemoryBarrier2-srcAccessMask-10670
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM`,
+[VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-10671) VUID-VkImageMemoryBarrier2-srcAccessMask-10671
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM`,
+[VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-11771) VUID-VkImageMemoryBarrier2-srcAccessMask-11771
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT`,
+[VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcAccessMask-11772) VUID-VkImageMemoryBarrier2-srcAccessMask-11772
 
 If `srcAccessMask` includes
-`VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT`,
+[VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT](#VkAccessFlagBits2KHR),
 `srcStageMask` **must** include
-`VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkPipelineStageFlagBits2KHR)
+
+* 
+[](#VUID-VkImageMemoryBarrier2-srcAccessMask-11294) VUID-VkImageMemoryBarrier2-srcAccessMask-11294
+
+If `srcAccessMask` includes
+[VK_ACCESS_2_SAMPLER_HEAP_READ_BIT_EXT](#VkAccessFlagBits2KHR) or
+[VK_ACCESS_2_RESOURCE_HEAP_READ_BIT_EXT](#VkAccessFlagBits2KHR), `srcStageMask`
+**must** include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of
+`VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstStageMask-03929) VUID-VkImageMemoryBarrier2-dstStageMask-03929
 
 If the [`geometryShader`](features.html#features-geometryShader) feature is not
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstStageMask-03930) VUID-VkImageMemoryBarrier2-dstStageMask-03930
 
 If the [`tessellationShader`](features.html#features-tessellationShader) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstStageMask-03931) VUID-VkImageMemoryBarrier2-dstStageMask-03931
 
 If the [`conditionalRendering`](features.html#features-conditionalRendering)
 feature is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstStageMask-03932) VUID-VkImageMemoryBarrier2-dstStageMask-03932
 
 If the [`fragmentDensityMap`](features.html#features-fragmentDensityMap) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstStageMask-03933) VUID-VkImageMemoryBarrier2-dstStageMask-03933
 
 If the [`transformFeedback`](features.html#features-transformFeedback) feature
 is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstStageMask-03934) VUID-VkImageMemoryBarrier2-dstStageMask-03934
 
 If the [`meshShader`](features.html#features-meshShader) feature is not enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstStageMask-03935) VUID-VkImageMemoryBarrier2-dstStageMask-03935
 
 If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT`
+[VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstStageMask-07316) VUID-VkImageMemoryBarrier2-dstStageMask-07316
@@ -13699,21 +13643,21 @@ If the [`taskShader`](features.html#features-taskShader) feature is not enabled,
 If neither of the [`shadingRateImage`](features.html#features-shadingRateImage)
 or the [    `attachmentFragmentShadingRate`](features.html#features-attachmentFragmentShadingRate) features are enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstStageMask-04957) VUID-VkImageMemoryBarrier2-dstStageMask-04957
 
 If the [`subpassShading`](features.html#features-subpassShading) feature is not
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstStageMask-04995) VUID-VkImageMemoryBarrier2-dstStageMask-04995
 
 If the [`invocationMask`](features.html#features-invocationMask) feature is not
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI`
+[VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstStageMask-07946) VUID-VkImageMemoryBarrier2-dstStageMask-07946
@@ -13721,318 +13665,318 @@ enabled, `dstStageMask` **must** not contain
 If neither the [VK_NV_ray_tracing](../appendices/extensions.html#VK_NV_ray_tracing) extension or the
 [`rayTracingPipeline`](features.html#features-rayTracingPipeline) feature are
 enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstStageMask-10751) VUID-VkImageMemoryBarrier2-dstStageMask-10751
 
 If the [`accelerationStructure`](features.html#features-accelerationStructure)
 feature is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstStageMask-10752) VUID-VkImageMemoryBarrier2-dstStageMask-10752
 
 If the [`rayTracingMaintenance1`](features.html#features-rayTracingMaintenance1)
 feature is not enabled, `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstStageMask-10753) VUID-VkImageMemoryBarrier2-dstStageMask-10753
 
 If the [`micromap`](features.html#features-micromap) feature is not enabled,
 `dstStageMask` **must** not contain
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03900) VUID-VkImageMemoryBarrier2-dstAccessMask-03900
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03901) VUID-VkImageMemoryBarrier2-dstAccessMask-03901
 
-If `dstAccessMask` includes `VK_ACCESS_2_INDEX_READ_BIT`,
+If `dstAccessMask` includes [VK_ACCESS_2_INDEX_READ_BIT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_INDEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03902) VUID-VkImageMemoryBarrier2-dstAccessMask-03902
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_VERTEX_ATTRIBUTE_READ_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_VERTEX_ATTRIBUTE_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_VERTEX_INPUT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03903) VUID-VkImageMemoryBarrier2-dstAccessMask-03903
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT`,
-`VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_INPUT_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03904) VUID-VkImageMemoryBarrier2-dstAccessMask-03904
 
-If `dstAccessMask` includes `VK_ACCESS_2_UNIFORM_READ_BIT`,
+If `dstAccessMask` includes [VK_ACCESS_2_UNIFORM_READ_BIT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03905) VUID-VkImageMemoryBarrier2-dstAccessMask-03905
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADER_SAMPLED_READ_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_ACCESS_2_SHADER_SAMPLED_READ_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03906) VUID-VkImageMemoryBarrier2-dstAccessMask-03906
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADER_STORAGE_READ_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_ACCESS_2_SHADER_STORAGE_READ_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03907) VUID-VkImageMemoryBarrier2-dstAccessMask-03907
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-07454) VUID-VkImageMemoryBarrier2-dstAccessMask-07454
 
-If `dstAccessMask` includes `VK_ACCESS_2_SHADER_READ_BIT`,
+If `dstAccessMask` includes [VK_ACCESS_2_SHADER_READ_BIT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`,
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR),
 or one of the `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03909) VUID-VkImageMemoryBarrier2-dstAccessMask-03909
 
-If `dstAccessMask` includes `VK_ACCESS_2_SHADER_WRITE_BIT`,
+If `dstAccessMask` includes [VK_ACCESS_2_SHADER_WRITE_BIT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03910) VUID-VkImageMemoryBarrier2-dstAccessMask-03910
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03911) VUID-VkImageMemoryBarrier2-dstAccessMask-03911
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03912) VUID-VkImageMemoryBarrier2-dstAccessMask-03912
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT`,
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03913) VUID-VkImageMemoryBarrier2-dstAccessMask-03913
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT`,
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_LATE_FRAGMENT_TESTS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03914) VUID-VkImageMemoryBarrier2-dstAccessMask-03914
 
-If `dstAccessMask` includes `VK_ACCESS_2_TRANSFER_READ_BIT`,
-`dstStageMask` **must** include `VK_PIPELINE_STAGE_2_COPY_BIT`,
-`VK_PIPELINE_STAGE_2_BLIT_BIT`,
-`VK_PIPELINE_STAGE_2_RESOLVE_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV`,
-or `VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+If `dstAccessMask` includes [VK_ACCESS_2_TRANSFER_READ_BIT](#VkAccessFlagBits2KHR),
+`dstStageMask` **must** include [VK_PIPELINE_STAGE_2_COPY_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_BLIT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_RESOLVE_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](#VkPipelineStageFlagBits2KHR),
+or [VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03915) VUID-VkImageMemoryBarrier2-dstAccessMask-03915
 
-If `dstAccessMask` includes `VK_ACCESS_2_TRANSFER_WRITE_BIT`,
-`dstStageMask` **must** include `VK_PIPELINE_STAGE_2_COPY_BIT`,
-`VK_PIPELINE_STAGE_2_BLIT_BIT`,
-`VK_PIPELINE_STAGE_2_RESOLVE_BIT`,
-`VK_PIPELINE_STAGE_2_CLEAR_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV`,
-or `VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+If `dstAccessMask` includes [VK_ACCESS_2_TRANSFER_WRITE_BIT](#VkAccessFlagBits2KHR),
+`dstStageMask` **must** include [VK_PIPELINE_STAGE_2_COPY_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_BLIT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_RESOLVE_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_CLEAR_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_TRANSFER_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV](#VkPipelineStageFlagBits2KHR),
+or [VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03916) VUID-VkImageMemoryBarrier2-dstAccessMask-03916
 
-If `dstAccessMask` includes `VK_ACCESS_2_HOST_READ_BIT`,
-`dstStageMask` **must** include `VK_PIPELINE_STAGE_2_HOST_BIT`
+If `dstAccessMask` includes [VK_ACCESS_2_HOST_READ_BIT](#VkAccessFlagBits2KHR),
+`dstStageMask` **must** include [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03917) VUID-VkImageMemoryBarrier2-dstAccessMask-03917
 
-If `dstAccessMask` includes `VK_ACCESS_2_HOST_WRITE_BIT`,
-`dstStageMask` **must** include `VK_PIPELINE_STAGE_2_HOST_BIT`
+If `dstAccessMask` includes [VK_ACCESS_2_HOST_WRITE_BIT](#VkAccessFlagBits2KHR),
+`dstStageMask` **must** include [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03918) VUID-VkImageMemoryBarrier2-dstAccessMask-03918
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT`,
+[VK_ACCESS_2_CONDITIONAL_RENDERING_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03919) VUID-VkImageMemoryBarrier2-dstAccessMask-03919
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT`,
+[VK_ACCESS_2_FRAGMENT_DENSITY_MAP_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03920) VUID-VkImageMemoryBarrier2-dstAccessMask-03920
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT`,
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-04747) VUID-VkImageMemoryBarrier2-dstAccessMask-04747
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT`,
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT`,
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03922) VUID-VkImageMemoryBarrier2-dstAccessMask-03922
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT`,
+[VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03923) VUID-VkImageMemoryBarrier2-dstAccessMask-03923
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADING_RATE_IMAGE_READ_BIT_NV`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_SHADING_RATE_IMAGE_BIT_NV`,
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_SHADING_RATE_IMAGE_READ_BIT_NV](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_SHADING_RATE_IMAGE_BIT_NV](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-04994) VUID-VkImageMemoryBarrier2-dstAccessMask-04994
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI`
+[VK_ACCESS_2_INVOCATION_MASK_READ_BIT_HUAWEI](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03924) VUID-VkImageMemoryBarrier2-dstAccessMask-03924
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_NV`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV` or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COMMAND_PREPROCESS_READ_BIT_NV](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03925) VUID-VkImageMemoryBarrier2-dstAccessMask-03925
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_NV`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV` or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_ACCESS_2_COMMAND_PREPROCESS_WRITE_BIT_NV](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_COMMAND_PREPROCESS_BIT_NV](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03926) VUID-VkImageMemoryBarrier2-dstAccessMask-03926
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT`,
+[VK_ACCESS_2_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT`
-`VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`, or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT](#VkPipelineStageFlagBits2KHR)
+[VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR), or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03927) VUID-VkImageMemoryBarrier2-dstAccessMask-03927
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR`,
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of the
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-03928) VUID-VkImageMemoryBarrier2-dstAccessMask-03928
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR`,
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`,
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR` or
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-06256) VUID-VkImageMemoryBarrier2-dstAccessMask-06256
@@ -14040,144 +13984,154 @@ If `dstAccessMask` includes
 If
 the [`rayQuery`](features.html#features-rayQuery) feature is not enabled and
 `dstAccessMask` includes
-`VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR`,
+[VK_ACCESS_2_ACCELERATION_STRUCTURE_READ_BIT_KHR](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** not include any of the
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
-except `VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+except [VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-07272) VUID-VkImageMemoryBarrier2-dstAccessMask-07272
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR`,
+[VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT` or
-`VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-04858) VUID-VkImageMemoryBarrier2-dstAccessMask-04858
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_DECODE_READ_BIT_KHR](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-04859) VUID-VkImageMemoryBarrier2-dstAccessMask-04859
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_VIDEO_DECODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-04860) VUID-VkImageMemoryBarrier2-dstAccessMask-04860
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-04861) VUID-VkImageMemoryBarrier2-dstAccessMask-04861
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR`
+[VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_VIDEO_ENCODE_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-07455) VUID-VkImageMemoryBarrier2-dstAccessMask-07455
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_OPTICAL_FLOW_READ_BIT_NV`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV`
+[VK_ACCESS_2_OPTICAL_FLOW_READ_BIT_NV](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-07456) VUID-VkImageMemoryBarrier2-dstAccessMask-07456
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_OPTICAL_FLOW_WRITE_BIT_NV`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV`
+[VK_ACCESS_2_OPTICAL_FLOW_WRITE_BIT_NV](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-07457) VUID-VkImageMemoryBarrier2-dstAccessMask-07457
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT`
+[VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-07458) VUID-VkImageMemoryBarrier2-dstAccessMask-07458
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_MICROMAP_READ_BIT_EXT`, `dstStageMask` **must**
-include `VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT` or
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_ACCESS_2_MICROMAP_READ_BIT_EXT](#VkAccessFlagBits2KHR), `dstStageMask` **must**
+include [VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-08118) VUID-VkImageMemoryBarrier2-dstAccessMask-08118
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT`, `dstStageMask`
-**must** include `VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT`,
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`, or one of
+[VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of
 `VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-10670) VUID-VkImageMemoryBarrier2-dstAccessMask-10670
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM`,
+[VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-10671) VUID-VkImageMemoryBarrier2-dstAccessMask-10671
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM`,
+[VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT` or
-`VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT`
+[VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT](#VkPipelineStageFlagBits2KHR) or
+[VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-11771) VUID-VkImageMemoryBarrier2-dstAccessMask-11771
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT`,
+[VK_ACCESS_2_MEMORY_DECOMPRESSION_READ_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkPipelineStageFlagBits2KHR)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstAccessMask-11772) VUID-VkImageMemoryBarrier2-dstAccessMask-11772
 
 If `dstAccessMask` includes
-`VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT`,
+[VK_ACCESS_2_MEMORY_DECOMPRESSION_WRITE_BIT_EXT](#VkAccessFlagBits2KHR),
 `dstStageMask` **must** include
-`VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT`
+[VK_PIPELINE_STAGE_2_MEMORY_DECOMPRESSION_BIT_EXT](#VkPipelineStageFlagBits2KHR)
+
+* 
+[](#VUID-VkImageMemoryBarrier2-dstAccessMask-11294) VUID-VkImageMemoryBarrier2-dstAccessMask-11294
+
+If `dstAccessMask` includes
+[VK_ACCESS_2_SAMPLER_HEAP_READ_BIT_EXT](#VkAccessFlagBits2KHR) or
+[VK_ACCESS_2_RESOURCE_HEAP_READ_BIT_EXT](#VkAccessFlagBits2KHR), `dstStageMask`
+**must** include [VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT](#VkPipelineStageFlagBits2KHR),
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits2KHR), or one of
+`VK_PIPELINE_STAGE_*_SHADER_BIT` stages
 
 * 
 [](#VUID-VkImageMemoryBarrier2-oldLayout-01197) VUID-VkImageMemoryBarrier2-oldLayout-01197
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` **must** be
-`VK_IMAGE_LAYOUT_UNDEFINED` or the current layout of the image
+[VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout) or the current layout of the image
 subresources affected by the barrier
 
 * 
 [](#VUID-VkImageMemoryBarrier2-newLayout-01198) VUID-VkImageMemoryBarrier2-newLayout-01198
 
     If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `newLayout` **must** not be
-    `VK_IMAGE_LAYOUT_UNDEFINED` or
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT` or
-    `VK_IMAGE_LAYOUT_PREINITIALIZED`
+    [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](resources.html#VkImageLayout) or
+    [VK_IMAGE_LAYOUT_PREINITIALIZED](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-image-09117) VUID-VkImageMemoryBarrier2-image-09117
 
 If `image` was created with a sharing mode of
-`VK_SHARING_MODE_EXCLUSIVE`, and `srcQueueFamilyIndex` and
+[VK_SHARING_MODE_EXCLUSIVE](resources.html#VkSharingMode), and `srcQueueFamilyIndex` and
 `dstQueueFamilyIndex` are not equal, `srcQueueFamilyIndex` **must**
 be
-`VK_QUEUE_FAMILY_EXTERNAL`,
-`VK_QUEUE_FAMILY_FOREIGN_EXT`,
+[VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL),
+[VK_QUEUE_FAMILY_FOREIGN_EXT](#VK_QUEUE_FAMILY_FOREIGN_EXT),
 or
 a valid queue family
 
@@ -14185,11 +14139,11 @@ a valid queue family
 [](#VUID-VkImageMemoryBarrier2-image-09118) VUID-VkImageMemoryBarrier2-image-09118
 
 If `image` was created with a sharing mode of
-`VK_SHARING_MODE_EXCLUSIVE`, and `srcQueueFamilyIndex` and
+[VK_SHARING_MODE_EXCLUSIVE](resources.html#VkSharingMode), and `srcQueueFamilyIndex` and
 `dstQueueFamilyIndex` are not equal, `dstQueueFamilyIndex` **must**
 be
-`VK_QUEUE_FAMILY_EXTERNAL`,
-`VK_QUEUE_FAMILY_FOREIGN_EXT`,
+[VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL),
+[VK_QUEUE_FAMILY_FOREIGN_EXT](#VK_QUEUE_FAMILY_FOREIGN_EXT),
 or
 a valid queue family
 
@@ -14202,7 +14156,7 @@ If
 and
     the value of [VkApplicationInfo](initialization.html#VkApplicationInfo)::`apiVersion` used to create
     the [VkInstance](initialization.html#VkInstance) is not greater than or equal to Version 1.1,
-    `srcQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_EXTERNAL`
+    `srcQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-None-09120) VUID-VkImageMemoryBarrier2-None-09120
@@ -14213,19 +14167,19 @@ If
 and
     the value of [VkApplicationInfo](initialization.html#VkApplicationInfo)::`apiVersion` used to create
     the [VkInstance](initialization.html#VkInstance) is not greater than or equal to Version 1.1,
-    `dstQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_EXTERNAL`
+    `dstQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-09121) VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-09121
 
 If the [VK_EXT_queue_family_foreign](../appendices/extensions.html#VK_EXT_queue_family_foreign) extension is not enabled
-`srcQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_FOREIGN_EXT`
+`srcQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_FOREIGN_EXT](#VK_QUEUE_FAMILY_FOREIGN_EXT)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dstQueueFamilyIndex-09122) VUID-VkImageMemoryBarrier2-dstQueueFamilyIndex-09122
 
 If the [VK_EXT_queue_family_foreign](../appendices/extensions.html#VK_EXT_queue_family_foreign) extension is not enabled
-`dstQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_FOREIGN_EXT`
+`dstQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_FOREIGN_EXT](#VK_QUEUE_FAMILY_FOREIGN_EXT)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-subresourceRange-01486) VUID-VkImageMemoryBarrier2-subresourceRange-01486
@@ -14238,7 +14192,7 @@ was created
 [](#VUID-VkImageMemoryBarrier2-subresourceRange-01724) VUID-VkImageMemoryBarrier2-subresourceRange-01724
 
 If `subresourceRange.levelCount` is not
-`VK_REMAINING_MIP_LEVELS`, `subresourceRange.baseMipLevel`
+[VK_REMAINING_MIP_LEVELS](resources.html#VK_REMAINING_MIP_LEVELS), `subresourceRange.baseMipLevel`
 +  `subresourceRange.levelCount` **must** be less than or equal to
 the `mipLevels` specified in [VkImageCreateInfo](resources.html#VkImageCreateInfo) when
 `image` was created
@@ -14247,7 +14201,7 @@ the `mipLevels` specified in [VkImageCreateInfo](resources.html#VkImageCreateInf
 [](#VUID-VkImageMemoryBarrier2-subresourceRange-01488) VUID-VkImageMemoryBarrier2-subresourceRange-01488
 
 If `image` is not a 3D image or was created without
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set, or the
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) set, or the
 [`maintenance9`](features.html#features-maintenance9) feature is not enabled,
 `subresourceRange.baseArrayLayer` **must** be less than the
 `arrayLayers` specified in [VkImageCreateInfo](resources.html#VkImageCreateInfo) when `image`
@@ -14258,7 +14212,7 @@ was created
 
 If the [`maintenance9`](features.html#features-maintenance9) feature is enabled
 and `image` is a 3D image created with
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set,
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) set,
 `subresourceRange.baseArrayLayer` **must** be less than the depth
 computed from `baseMipLevel` and `extent.depth` specified in
 [VkImageCreateInfo](resources.html#VkImageCreateInfo) when `image` was created, according to the
@@ -14269,10 +14223,10 @@ formula defined in [Image Mip Level    Sizing](resources.html#resources-image-mi
 
 If the [`maintenance9`](features.html#features-maintenance9) feature is enabled
 and `image` is a 3D image created with
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set and either
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) set and either
 `subresourceRange.baseArrayLayer` is not equal to 0 or
 `subresourceRange.layerCount` is not equal to
-`VK_REMAINING_ARRAY_LAYERS`, `subresourceRange.levelCount` **must**
+[VK_REMAINING_ARRAY_LAYERS](resources.html#VK_REMAINING_ARRAY_LAYERS), `subresourceRange.levelCount` **must**
 be 1
 
 * 
@@ -14280,11 +14234,11 @@ be 1
 
 If
 `image` is not a 3D image or was created without
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set, or the
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) set, or the
 [`maintenance9`](features.html#features-maintenance9) feature is not enabled,
 and
 `subresourceRange.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`,
+[VK_REMAINING_ARRAY_LAYERS](resources.html#VK_REMAINING_ARRAY_LAYERS),
 `subresourceRange.baseArrayLayer` + 
 `subresourceRange.layerCount` **must** be less than or equal to the
 `arrayLayers` specified in [VkImageCreateInfo](resources.html#VkImageCreateInfo) when `image`
@@ -14295,8 +14249,8 @@ was created
 
 If the [`maintenance9`](features.html#features-maintenance9) feature is enabled,
 `subresourceRange.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`, and `image` is a 3D image created
-with `VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set,
+[VK_REMAINING_ARRAY_LAYERS](resources.html#VK_REMAINING_ARRAY_LAYERS), and `image` is a 3D image created
+with [VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) set,
 `subresourceRange.baseArrayLayer` + 
 `subresourceRange.layerCount` **must** be less than or equal to the
 depth computed from `baseMipLevel` and `extent.depth` specified
@@ -14317,14 +14271,14 @@ or each specified *disjoint* plane
 If `image` has a color format
 that is single-plane,
 then the `aspectMask` member of `subresourceRange` **must** be
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-image-09242) VUID-VkImageMemoryBarrier2-image-09242
 
 If `image` has a color format and is not *disjoint*, then the
 `aspectMask` member of `subresourceRange` **must** be
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-image-01672) VUID-VkImageMemoryBarrier2-image-01672
@@ -14333,7 +14287,7 @@ If `image` has a [multi-planar format](formats.html#formats-multiplanar) and
 the image is *disjoint*, then the `aspectMask` member of
 `subresourceRange` **must** include at least one
 [multi-planar aspect mask](formats.html#formats-multiplanar-image-aspect) bit or
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-image-03320) VUID-VkImageMemoryBarrier2-image-03320
@@ -14341,8 +14295,8 @@ the image is *disjoint*, then the `aspectMask` member of
 If `image` has a depth/stencil format with both depth and stencil
 and the [    `separateDepthStencilLayouts`](features.html#features-separateDepthStencilLayouts) feature is not enabled,
 then the `aspectMask` member of `subresourceRange` **must** include
-both `VK_IMAGE_ASPECT_DEPTH_BIT` and
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+both [VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits) and
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-image-03319) VUID-VkImageMemoryBarrier2-image-03319
@@ -14350,37 +14304,37 @@ both `VK_IMAGE_ASPECT_DEPTH_BIT` and
 If `image` has a depth/stencil format with both depth and stencil
 and the [    `separateDepthStencilLayouts`](features.html#features-separateDepthStencilLayouts) feature is enabled, then the
 `aspectMask` member of `subresourceRange` **must** include either
-or both `VK_IMAGE_ASPECT_DEPTH_BIT` and
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+or both [VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits) and
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-image-10749) VUID-VkImageMemoryBarrier2-image-10749
 
 If `image` has a depth-only format then the `aspectMask` member
-of `subresourceRange` **must** be `VK_IMAGE_ASPECT_DEPTH_BIT`
+of `subresourceRange` **must** be [VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-image-10750) VUID-VkImageMemoryBarrier2-image-10750
 
 If `image` has a stencil-only format then the `aspectMask`
 member of `subresourceRange` **must** be
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-aspectMask-08702) VUID-VkImageMemoryBarrier2-aspectMask-08702
 
 If the `aspectMask` member of `subresourceRange` includes
-`VK_IMAGE_ASPECT_DEPTH_BIT`, `oldLayout` and `newLayout`
-**must** not be one of `VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits), `oldLayout` and `newLayout`
+**must** not be one of [VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-aspectMask-08703) VUID-VkImageMemoryBarrier2-aspectMask-08703
 
 If the `aspectMask` member of `subresourceRange` includes
-`VK_IMAGE_ASPECT_STENCIL_BIT`, `oldLayout` and `newLayout`
-**must** not be one of `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits), `oldLayout` and `newLayout`
+**must** not be one of [VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-subresourceRange-09601) VUID-VkImageMemoryBarrier2-subresourceRange-09601
@@ -14392,280 +14346,280 @@ the `image` was created with
 [](#VUID-VkImageMemoryBarrier2-oldLayout-01208) VUID-VkImageMemoryBarrier2-oldLayout-01208
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL` then `image` **must**
-have been created with the `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT`
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) then `image` **must**
+have been created with the [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-oldLayout-01209) VUID-VkImageMemoryBarrier2-oldLayout-01209
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` then `image`
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) then `image`
 **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-oldLayout-01210) VUID-VkImageMemoryBarrier2-oldLayout-01210
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL` then `image`
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then `image`
 **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-oldLayout-01211) VUID-VkImageMemoryBarrier2-oldLayout-01211
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL` then `image` **must**
-have been created with the `VK_IMAGE_USAGE_SAMPLED_BIT` or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then `image` **must**
+have been created with the [VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-oldLayout-01212) VUID-VkImageMemoryBarrier2-oldLayout-01212
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_TRANSFER_SRC_BIT` usage flag
+[VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_TRANSFER_SRC_BIT](resources.html#VkImageUsageFlagBits) usage flag
 set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-oldLayout-01213) VUID-VkImageMemoryBarrier2-oldLayout-01213
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_TRANSFER_DST_BIT` usage flag
+[VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_TRANSFER_DST_BIT](resources.html#VkImageUsageFlagBits) usage flag
 set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-oldLayout-10767) VUID-VkImageMemoryBarrier2-oldLayout-10767
 
 If the [    zeroInitializeDeviceMemory](features.html#features-zeroInitializeDeviceMemory) feature is not enabled, `oldLayout`
-**must** not be `VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`
+**must** not be [VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-oldLayout-10768) VUID-VkImageMemoryBarrier2-oldLayout-10768
 
-If `oldLayout` is `VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`, then
+If `oldLayout` is [VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](resources.html#VkImageLayout), then
 all subresources **must** be included in the barrier
 
 * 
 [](#VUID-VkImageMemoryBarrier2-oldLayout-01658) VUID-VkImageMemoryBarrier2-oldLayout-01658
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL` then
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) then
 `image` **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-oldLayout-01659) VUID-VkImageMemoryBarrier2-oldLayout-01659
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL` then
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then
 `image` **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-04065) VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-04065
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL` then `image` **must**
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then `image` **must**
 have been created with at least one of the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`,
-`VK_IMAGE_USAGE_SAMPLED_BIT`, or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flags set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits), or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-04066) VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-04066
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` then `image` **must**
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) then `image` **must**
 have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-04067) VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-04067
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL` then `image` **must**
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then `image` **must**
 have been created with at least one of the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`,
-`VK_IMAGE_USAGE_SAMPLED_BIT`, or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flags set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits), or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-04068) VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-04068
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` then `image` **must**
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) then `image` **must**
 have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-synchronization2-07793) VUID-VkImageMemoryBarrier2-synchronization2-07793
 
 If the [`synchronization2`](features.html#features-synchronization2) feature is
 not enabled, `oldLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR` or
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-synchronization2-07794) VUID-VkImageMemoryBarrier2-synchronization2-07794
 
 If the [`synchronization2`](features.html#features-synchronization2) feature is
 not enabled, `newLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR` or
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-03938) VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-03938
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL`, `image` **must** have been
-created with the `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), `image` **must** have been
+created with the [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-03939) VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-03939
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL`, `image` **must** have been
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL](resources.html#VkImageLayout), `image` **must** have been
 created with at least one of the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`,
-`VK_IMAGE_USAGE_SAMPLED_BIT`, or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flags set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits), or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-oldLayout-02088) VUID-VkImageMemoryBarrier2-oldLayout-02088
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR` then
+[VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout) then
 `image` **must** have been created with the
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR` usage flag
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](resources.html#VkImageUsageFlagBits) usage flag
 set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-07120) VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-07120
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_SRC_KHR` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_SRC_KHR](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-07121) VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-07121
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-07122) VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-07122
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-07123) VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-07123
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-07124) VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-07124
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_DST_KHR` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_DST_KHR](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-07125) VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-07125
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-10287) VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-10287
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR` then `image`
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR](resources.html#VkImageLayout) then `image`
 **must** have been created with the
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR` or
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR` usage flags set
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-07006) VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-07006
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` then
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout) then
 `image` **must** have been created with either the
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flags set, and
-the `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_SAMPLED_BIT` usage flags set, and the
-`VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT` usage flag set
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set, and
+the [VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits) usage flags set, and the
+[VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-attachmentFeedbackLoopLayout-07313) VUID-VkImageMemoryBarrier2-attachmentFeedbackLoopLayout-07313
 
 If the [    `attachmentFeedbackLoopLayout`](features.html#features-attachmentFeedbackLoopLayout) feature is not enabled,
 `newLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT`
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-09550) VUID-VkImageMemoryBarrier2-srcQueueFamilyIndex-09550
 
 If [layouts are not ignored](#synchronization-image-barrier2-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ` then `image` **must** have
-been created with either the `VK_IMAGE_USAGE_STORAGE_BIT` usage flag
-set, or with both the `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage
-flag and either of the `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flags set
+[VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout) then `image` **must** have
+been created with either the [VK_IMAGE_USAGE_STORAGE_BIT](resources.html#VkImageUsageFlagBits) usage flag
+set, or with both the [VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage
+flag and either of the [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dynamicRenderingLocalRead-09551) VUID-VkImageMemoryBarrier2-dynamicRenderingLocalRead-09551
 
 If the [    `dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead) feature is not enabled,
-`oldLayout` **must** not be `VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+`oldLayout` **must** not be [VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-dynamicRenderingLocalRead-09552) VUID-VkImageMemoryBarrier2-dynamicRenderingLocalRead-09552
 
 If the [    `dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead) feature is not enabled,
-`newLayout` **must** not be `VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+`newLayout` **must** not be [VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcStageMask-03854) VUID-VkImageMemoryBarrier2-srcStageMask-03854
 
 If either `srcStageMask` or `dstStageMask` includes
-`VK_PIPELINE_STAGE_2_HOST_BIT`, `srcQueueFamilyIndex` and
+[VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR), `srcQueueFamilyIndex` and
 `dstQueueFamilyIndex` **must** be equal
 
 * 
 [](#VUID-VkImageMemoryBarrier2-srcStageMask-03855) VUID-VkImageMemoryBarrier2-srcStageMask-03855
 
-    If `srcStageMask` includes `VK_PIPELINE_STAGE_2_HOST_BIT`, and
+    If `srcStageMask` includes [VK_PIPELINE_STAGE_2_HOST_BIT](#VkPipelineStageFlagBits2KHR), and
     `srcQueueFamilyIndex` and `dstQueueFamilyIndex` define a
     [queue family ownership transfer](#synchronization-queue-transfers) or
     `oldLayout` and `newLayout` define an
     [image layout transition](#synchronization-image-layout-transitions),
-    `oldLayout` **must** be one of `VK_IMAGE_LAYOUT_PREINITIALIZED`,
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`,
-    `VK_IMAGE_LAYOUT_UNDEFINED`, or `VK_IMAGE_LAYOUT_GENERAL`
+    `oldLayout` **must** be one of [VK_IMAGE_LAYOUT_PREINITIALIZED](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](resources.html#VkImageLayout),
+    [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout), or [VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-sType-sType) VUID-VkImageMemoryBarrier2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageMemoryBarrier2-pNext-pNext) VUID-VkImageMemoryBarrier2-pNext-pNext
@@ -14774,15 +14728,15 @@ The first [access scope](#synchronization-dependencies-access-scopes) is
 limited to access to memory through the specified image subresource range,
 via access types in the [source access mask](#synchronization-access-masks)
 specified by `srcAccessMask`.
-If `srcAccessMask` includes `VK_ACCESS_HOST_WRITE_BIT`, memory
+If `srcAccessMask` includes [VK_ACCESS_HOST_WRITE_BIT](#VkAccessFlagBits), memory
 writes performed by that access type are also made visible, as that access
 type is not performed through a resource.
 
 The second [access scope](#synchronization-dependencies-access-scopes) is
 limited to access to memory through the specified image subresource range,
 via access types in the [destination access mask](#synchronization-access-masks) specified by `dstAccessMask`.
-If `dstAccessMask` includes `VK_ACCESS_HOST_WRITE_BIT` or
-`VK_ACCESS_HOST_READ_BIT`, available memory writes are also made visible
+If `dstAccessMask` includes [VK_ACCESS_HOST_WRITE_BIT](#VkAccessFlagBits) or
+[VK_ACCESS_HOST_READ_BIT](#VkAccessFlagBits), available memory writes are also made visible
 to accesses of those types, as those access types are not performed through
 a resource.
 
@@ -14790,7 +14744,7 @@ If `srcQueueFamilyIndex` is not equal to `dstQueueFamilyIndex`, and
 `srcQueueFamilyIndex` is equal to the current queue family, then the
 memory barrier defines a [queue family release operation](#synchronization-queue-transfers-release) for the specified image subresource range, and
 if `dependencyFlags` did not include
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`,
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](#VkDependencyFlagBits),
 the second synchronization scope of the calling command does not apply to
 this operation.
 
@@ -14798,7 +14752,7 @@ If `dstQueueFamilyIndex` is not equal to `srcQueueFamilyIndex`, and
 `dstQueueFamilyIndex` is equal to the current queue family, then the
 memory barrier defines a [queue family acquire operation](#synchronization-queue-transfers-acquire) for the specified image subresource range, and
 if `dependencyFlags` did not include
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`,
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](#VkDependencyFlagBits),
 the first synchronization scope of the calling command does not apply to
 this operation.
 
@@ -14815,7 +14769,7 @@ are ignored and the image contents are preserved regardless of the values of
 `oldLayout`, `newLayout`, and the current layout of the image.
 
 If `image` is a 3D image created with
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` and the
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) and the
 [`maintenance9`](features.html#features-maintenance9) feature is enabled, the
 `baseArrayLayer` and `layerCount` members of `subresourceRange`
 specify the subset of slices of the 3D image affected by the memory barrier,
@@ -14824,10 +14778,10 @@ Any slices of a 3D image not included in `subresourceRange` are not
 affected by the memory barrier and remain in their existing layout.
 
 If `image` has a [multi-planar format](formats.html#formats-multiplanar) and the
-image is *disjoint*, then including `VK_IMAGE_ASPECT_COLOR_BIT` in the
+image is *disjoint*, then including [VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits) in the
 `aspectMask` member of `subresourceRange` is equivalent to including
-`VK_IMAGE_ASPECT_PLANE_0_BIT`, `VK_IMAGE_ASPECT_PLANE_1_BIT`, and
-(for three-plane formats only) `VK_IMAGE_ASPECT_PLANE_2_BIT`.
+[VK_IMAGE_ASPECT_PLANE_0_BIT](resources.html#VkImageAspectFlagBits), [VK_IMAGE_ASPECT_PLANE_1_BIT](resources.html#VkImageAspectFlagBits), and
+(for three-plane formats only) [VK_IMAGE_ASPECT_PLANE_2_BIT](resources.html#VkImageAspectFlagBits).
 
 Valid Usage
 
@@ -14835,26 +14789,26 @@ Valid Usage
 [](#VUID-VkImageMemoryBarrier-oldLayout-01197) VUID-VkImageMemoryBarrier-oldLayout-01197
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` **must** be
-`VK_IMAGE_LAYOUT_UNDEFINED` or the current layout of the image
+[VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout) or the current layout of the image
 subresources affected by the barrier
 
 * 
 [](#VUID-VkImageMemoryBarrier-newLayout-01198) VUID-VkImageMemoryBarrier-newLayout-01198
 
     If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `newLayout` **must** not be
-    `VK_IMAGE_LAYOUT_UNDEFINED` or
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT` or
-    `VK_IMAGE_LAYOUT_PREINITIALIZED`
+    [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](resources.html#VkImageLayout) or
+    [VK_IMAGE_LAYOUT_PREINITIALIZED](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkImageMemoryBarrier-image-09117) VUID-VkImageMemoryBarrier-image-09117
 
 If `image` was created with a sharing mode of
-`VK_SHARING_MODE_EXCLUSIVE`, and `srcQueueFamilyIndex` and
+[VK_SHARING_MODE_EXCLUSIVE](resources.html#VkSharingMode), and `srcQueueFamilyIndex` and
 `dstQueueFamilyIndex` are not equal, `srcQueueFamilyIndex` **must**
 be
-`VK_QUEUE_FAMILY_EXTERNAL`,
-`VK_QUEUE_FAMILY_FOREIGN_EXT`,
+[VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL),
+[VK_QUEUE_FAMILY_FOREIGN_EXT](#VK_QUEUE_FAMILY_FOREIGN_EXT),
 or
 a valid queue family
 
@@ -14862,11 +14816,11 @@ a valid queue family
 [](#VUID-VkImageMemoryBarrier-image-09118) VUID-VkImageMemoryBarrier-image-09118
 
 If `image` was created with a sharing mode of
-`VK_SHARING_MODE_EXCLUSIVE`, and `srcQueueFamilyIndex` and
+[VK_SHARING_MODE_EXCLUSIVE](resources.html#VkSharingMode), and `srcQueueFamilyIndex` and
 `dstQueueFamilyIndex` are not equal, `dstQueueFamilyIndex` **must**
 be
-`VK_QUEUE_FAMILY_EXTERNAL`,
-`VK_QUEUE_FAMILY_FOREIGN_EXT`,
+[VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL),
+[VK_QUEUE_FAMILY_FOREIGN_EXT](#VK_QUEUE_FAMILY_FOREIGN_EXT),
 or
 a valid queue family
 
@@ -14879,7 +14833,7 @@ If
 and
     the value of [VkApplicationInfo](initialization.html#VkApplicationInfo)::`apiVersion` used to create
     the [VkInstance](initialization.html#VkInstance) is not greater than or equal to Version 1.1,
-    `srcQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_EXTERNAL`
+    `srcQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL)
 
 * 
 [](#VUID-VkImageMemoryBarrier-None-09120) VUID-VkImageMemoryBarrier-None-09120
@@ -14890,19 +14844,19 @@ If
 and
     the value of [VkApplicationInfo](initialization.html#VkApplicationInfo)::`apiVersion` used to create
     the [VkInstance](initialization.html#VkInstance) is not greater than or equal to Version 1.1,
-    `dstQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_EXTERNAL`
+    `dstQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL)
 
 * 
 [](#VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-09121) VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-09121
 
 If the [VK_EXT_queue_family_foreign](../appendices/extensions.html#VK_EXT_queue_family_foreign) extension is not enabled
-`srcQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_FOREIGN_EXT`
+`srcQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_FOREIGN_EXT](#VK_QUEUE_FAMILY_FOREIGN_EXT)
 
 * 
 [](#VUID-VkImageMemoryBarrier-dstQueueFamilyIndex-09122) VUID-VkImageMemoryBarrier-dstQueueFamilyIndex-09122
 
 If the [VK_EXT_queue_family_foreign](../appendices/extensions.html#VK_EXT_queue_family_foreign) extension is not enabled
-`dstQueueFamilyIndex` **must** not be `VK_QUEUE_FAMILY_FOREIGN_EXT`
+`dstQueueFamilyIndex` **must** not be [VK_QUEUE_FAMILY_FOREIGN_EXT](#VK_QUEUE_FAMILY_FOREIGN_EXT)
 
 * 
 [](#VUID-VkImageMemoryBarrier-subresourceRange-01486) VUID-VkImageMemoryBarrier-subresourceRange-01486
@@ -14915,7 +14869,7 @@ was created
 [](#VUID-VkImageMemoryBarrier-subresourceRange-01724) VUID-VkImageMemoryBarrier-subresourceRange-01724
 
 If `subresourceRange.levelCount` is not
-`VK_REMAINING_MIP_LEVELS`, `subresourceRange.baseMipLevel`
+[VK_REMAINING_MIP_LEVELS](resources.html#VK_REMAINING_MIP_LEVELS), `subresourceRange.baseMipLevel`
 +  `subresourceRange.levelCount` **must** be less than or equal to
 the `mipLevels` specified in [VkImageCreateInfo](resources.html#VkImageCreateInfo) when
 `image` was created
@@ -14924,7 +14878,7 @@ the `mipLevels` specified in [VkImageCreateInfo](resources.html#VkImageCreateInf
 [](#VUID-VkImageMemoryBarrier-subresourceRange-01488) VUID-VkImageMemoryBarrier-subresourceRange-01488
 
 If `image` is not a 3D image or was created without
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set, or the
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) set, or the
 [`maintenance9`](features.html#features-maintenance9) feature is not enabled,
 `subresourceRange.baseArrayLayer` **must** be less than the
 `arrayLayers` specified in [VkImageCreateInfo](resources.html#VkImageCreateInfo) when `image`
@@ -14935,7 +14889,7 @@ was created
 
 If the [`maintenance9`](features.html#features-maintenance9) feature is enabled
 and `image` is a 3D image created with
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set,
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) set,
 `subresourceRange.baseArrayLayer` **must** be less than the depth
 computed from `baseMipLevel` and `extent.depth` specified in
 [VkImageCreateInfo](resources.html#VkImageCreateInfo) when `image` was created, according to the
@@ -14946,10 +14900,10 @@ formula defined in [Image Mip Level    Sizing](resources.html#resources-image-mi
 
 If the [`maintenance9`](features.html#features-maintenance9) feature is enabled
 and `image` is a 3D image created with
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set and either
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) set and either
 `subresourceRange.baseArrayLayer` is not equal to 0 or
 `subresourceRange.layerCount` is not equal to
-`VK_REMAINING_ARRAY_LAYERS`, `subresourceRange.levelCount` **must**
+[VK_REMAINING_ARRAY_LAYERS](resources.html#VK_REMAINING_ARRAY_LAYERS), `subresourceRange.levelCount` **must**
 be 1
 
 * 
@@ -14957,11 +14911,11 @@ be 1
 
 If
 `image` is not a 3D image or was created without
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set, or the
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) set, or the
 [`maintenance9`](features.html#features-maintenance9) feature is not enabled,
 and
 `subresourceRange.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`,
+[VK_REMAINING_ARRAY_LAYERS](resources.html#VK_REMAINING_ARRAY_LAYERS),
 `subresourceRange.baseArrayLayer` + 
 `subresourceRange.layerCount` **must** be less than or equal to the
 `arrayLayers` specified in [VkImageCreateInfo](resources.html#VkImageCreateInfo) when `image`
@@ -14972,8 +14926,8 @@ was created
 
 If the [`maintenance9`](features.html#features-maintenance9) feature is enabled,
 `subresourceRange.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`, and `image` is a 3D image created
-with `VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set,
+[VK_REMAINING_ARRAY_LAYERS](resources.html#VK_REMAINING_ARRAY_LAYERS), and `image` is a 3D image created
+with [VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) set,
 `subresourceRange.baseArrayLayer` + 
 `subresourceRange.layerCount` **must** be less than or equal to the
 depth computed from `baseMipLevel` and `extent.depth` specified
@@ -14994,14 +14948,14 @@ or each specified *disjoint* plane
 If `image` has a color format
 that is single-plane,
 then the `aspectMask` member of `subresourceRange` **must** be
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkImageMemoryBarrier-image-09242) VUID-VkImageMemoryBarrier-image-09242
 
 If `image` has a color format and is not *disjoint*, then the
 `aspectMask` member of `subresourceRange` **must** be
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkImageMemoryBarrier-image-01672) VUID-VkImageMemoryBarrier-image-01672
@@ -15010,7 +14964,7 @@ If `image` has a [multi-planar format](formats.html#formats-multiplanar) and
 the image is *disjoint*, then the `aspectMask` member of
 `subresourceRange` **must** include at least one
 [multi-planar aspect mask](formats.html#formats-multiplanar-image-aspect) bit or
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkImageMemoryBarrier-image-03320) VUID-VkImageMemoryBarrier-image-03320
@@ -15018,8 +14972,8 @@ the image is *disjoint*, then the `aspectMask` member of
 If `image` has a depth/stencil format with both depth and stencil
 and the [    `separateDepthStencilLayouts`](features.html#features-separateDepthStencilLayouts) feature is not enabled,
 then the `aspectMask` member of `subresourceRange` **must** include
-both `VK_IMAGE_ASPECT_DEPTH_BIT` and
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+both [VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits) and
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkImageMemoryBarrier-image-03319) VUID-VkImageMemoryBarrier-image-03319
@@ -15027,37 +14981,37 @@ both `VK_IMAGE_ASPECT_DEPTH_BIT` and
 If `image` has a depth/stencil format with both depth and stencil
 and the [    `separateDepthStencilLayouts`](features.html#features-separateDepthStencilLayouts) feature is enabled, then the
 `aspectMask` member of `subresourceRange` **must** include either
-or both `VK_IMAGE_ASPECT_DEPTH_BIT` and
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+or both [VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits) and
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkImageMemoryBarrier-image-10749) VUID-VkImageMemoryBarrier-image-10749
 
 If `image` has a depth-only format then the `aspectMask` member
-of `subresourceRange` **must** be `VK_IMAGE_ASPECT_DEPTH_BIT`
+of `subresourceRange` **must** be [VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkImageMemoryBarrier-image-10750) VUID-VkImageMemoryBarrier-image-10750
 
 If `image` has a stencil-only format then the `aspectMask`
 member of `subresourceRange` **must** be
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkImageMemoryBarrier-aspectMask-08702) VUID-VkImageMemoryBarrier-aspectMask-08702
 
 If the `aspectMask` member of `subresourceRange` includes
-`VK_IMAGE_ASPECT_DEPTH_BIT`, `oldLayout` and `newLayout`
-**must** not be one of `VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits), `oldLayout` and `newLayout`
+**must** not be one of [VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkImageMemoryBarrier-aspectMask-08703) VUID-VkImageMemoryBarrier-aspectMask-08703
 
 If the `aspectMask` member of `subresourceRange` includes
-`VK_IMAGE_ASPECT_STENCIL_BIT`, `oldLayout` and `newLayout`
-**must** not be one of `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits), `oldLayout` and `newLayout`
+**must** not be one of [VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkImageMemoryBarrier-subresourceRange-09601) VUID-VkImageMemoryBarrier-subresourceRange-09601
@@ -15069,254 +15023,254 @@ the `image` was created with
 [](#VUID-VkImageMemoryBarrier-oldLayout-01208) VUID-VkImageMemoryBarrier-oldLayout-01208
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL` then `image` **must**
-have been created with the `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT`
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) then `image` **must**
+have been created with the [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier-oldLayout-01209) VUID-VkImageMemoryBarrier-oldLayout-01209
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` then `image`
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) then `image`
 **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier-oldLayout-01210) VUID-VkImageMemoryBarrier-oldLayout-01210
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL` then `image`
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then `image`
 **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier-oldLayout-01211) VUID-VkImageMemoryBarrier-oldLayout-01211
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL` then `image` **must**
-have been created with the `VK_IMAGE_USAGE_SAMPLED_BIT` or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then `image` **must**
+have been created with the [VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier-oldLayout-01212) VUID-VkImageMemoryBarrier-oldLayout-01212
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_TRANSFER_SRC_BIT` usage flag
+[VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_TRANSFER_SRC_BIT](resources.html#VkImageUsageFlagBits) usage flag
 set
 
 * 
 [](#VUID-VkImageMemoryBarrier-oldLayout-01213) VUID-VkImageMemoryBarrier-oldLayout-01213
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_TRANSFER_DST_BIT` usage flag
+[VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_TRANSFER_DST_BIT](resources.html#VkImageUsageFlagBits) usage flag
 set
 
 * 
 [](#VUID-VkImageMemoryBarrier-oldLayout-10767) VUID-VkImageMemoryBarrier-oldLayout-10767
 
 If the [    zeroInitializeDeviceMemory](features.html#features-zeroInitializeDeviceMemory) feature is not enabled, `oldLayout`
-**must** not be `VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`
+**must** not be [VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkImageMemoryBarrier-oldLayout-10768) VUID-VkImageMemoryBarrier-oldLayout-10768
 
-If `oldLayout` is `VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`, then
+If `oldLayout` is [VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](resources.html#VkImageLayout), then
 all subresources **must** be included in the barrier
 
 * 
 [](#VUID-VkImageMemoryBarrier-oldLayout-01658) VUID-VkImageMemoryBarrier-oldLayout-01658
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL` then
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) then
 `image` **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier-oldLayout-01659) VUID-VkImageMemoryBarrier-oldLayout-01659
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL` then
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then
 `image` **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-04065) VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-04065
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL` then `image` **must**
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then `image` **must**
 have been created with at least one of the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`,
-`VK_IMAGE_USAGE_SAMPLED_BIT`, or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flags set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits), or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-04066) VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-04066
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` then `image` **must**
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) then `image` **must**
 have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-04067) VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-04067
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL` then `image` **must**
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then `image` **must**
 have been created with at least one of the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`,
-`VK_IMAGE_USAGE_SAMPLED_BIT`, or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flags set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits), or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-04068) VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-04068
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` then `image` **must**
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) then `image` **must**
 have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier-synchronization2-07793) VUID-VkImageMemoryBarrier-synchronization2-07793
 
 If the [`synchronization2`](features.html#features-synchronization2) feature is
 not enabled, `oldLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR` or
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkImageMemoryBarrier-synchronization2-07794) VUID-VkImageMemoryBarrier-synchronization2-07794
 
 If the [`synchronization2`](features.html#features-synchronization2) feature is
 not enabled, `newLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR` or
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-03938) VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-03938
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL`, `image` **must** have been
-created with the `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), `image` **must** have been
+created with the [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-03939) VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-03939
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL`, `image` **must** have been
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL](resources.html#VkImageLayout), `image` **must** have been
 created with at least one of the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`,
-`VK_IMAGE_USAGE_SAMPLED_BIT`, or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flags set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits), or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-VkImageMemoryBarrier-oldLayout-02088) VUID-VkImageMemoryBarrier-oldLayout-02088
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR` then
+[VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout) then
 `image` **must** have been created with the
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR` usage flag
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](resources.html#VkImageUsageFlagBits) usage flag
 set
 
 * 
 [](#VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-07120) VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-07120
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_SRC_KHR` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_SRC_KHR](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-07121) VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-07121
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-07122) VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-07122
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-07123) VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-07123
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-07124) VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-07124
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_DST_KHR` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_DST_KHR](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-07125) VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-07125
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-10287) VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-10287
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR` then `image`
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR](resources.html#VkImageLayout) then `image`
 **must** have been created with the
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR` or
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR` usage flags set
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-07006) VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-07006
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` then
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout) then
 `image` **must** have been created with either the
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flags set, and
-the `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_SAMPLED_BIT` usage flags set, and the
-`VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT` usage flag set
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set, and
+the [VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits) usage flags set, and the
+[VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkImageMemoryBarrier-attachmentFeedbackLoopLayout-07313) VUID-VkImageMemoryBarrier-attachmentFeedbackLoopLayout-07313
 
 If the [    `attachmentFeedbackLoopLayout`](features.html#features-attachmentFeedbackLoopLayout) feature is not enabled,
 `newLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT`
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-09550) VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-09550
 
 If [layouts are not ignored](#synchronization-image-barrier-ignored-layout), `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ` then `image` **must** have
-been created with either the `VK_IMAGE_USAGE_STORAGE_BIT` usage flag
-set, or with both the `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage
-flag and either of the `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flags set
+[VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout) then `image` **must** have
+been created with either the [VK_IMAGE_USAGE_STORAGE_BIT](resources.html#VkImageUsageFlagBits) usage flag
+set, or with both the [VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage
+flag and either of the [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-VkImageMemoryBarrier-dynamicRenderingLocalRead-09551) VUID-VkImageMemoryBarrier-dynamicRenderingLocalRead-09551
 
 If the [    `dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead) feature is not enabled,
-`oldLayout` **must** not be `VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+`oldLayout` **must** not be [VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkImageMemoryBarrier-dynamicRenderingLocalRead-09552) VUID-VkImageMemoryBarrier-dynamicRenderingLocalRead-09552
 
 If the [    `dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead) feature is not enabled,
-`newLayout` **must** not be `VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+`newLayout` **must** not be [VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkImageMemoryBarrier-None-09052) VUID-VkImageMemoryBarrier-None-09052
@@ -15325,9 +15279,9 @@ If
 the [`synchronization2`](features.html#features-synchronization2) feature is not
 enabled, and
 `image` was created with a sharing mode of
-`VK_SHARING_MODE_CONCURRENT`, at least one of
+[VK_SHARING_MODE_CONCURRENT](resources.html#VkSharingMode), at least one of
 `srcQueueFamilyIndex` and `dstQueueFamilyIndex` **must** be
-`VK_QUEUE_FAMILY_IGNORED`
+[VK_QUEUE_FAMILY_IGNORED](#VK_QUEUE_FAMILY_IGNORED)
 
 * 
 [](#VUID-VkImageMemoryBarrier-None-09053) VUID-VkImageMemoryBarrier-None-09053
@@ -15336,9 +15290,9 @@ If
 the [`synchronization2`](features.html#features-synchronization2) feature is not
 enabled, and
 `image` was created with a sharing mode of
-`VK_SHARING_MODE_CONCURRENT`, `srcQueueFamilyIndex` **must** be
-`VK_QUEUE_FAMILY_IGNORED`
-or `VK_QUEUE_FAMILY_EXTERNAL`
+[VK_SHARING_MODE_CONCURRENT](resources.html#VkSharingMode), `srcQueueFamilyIndex` **must** be
+[VK_QUEUE_FAMILY_IGNORED](#VK_QUEUE_FAMILY_IGNORED)
+or [VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL)
 
 * 
 [](#VUID-VkImageMemoryBarrier-None-09054) VUID-VkImageMemoryBarrier-None-09054
@@ -15347,16 +15301,37 @@ If
 the [`synchronization2`](features.html#features-synchronization2) feature is not
 enabled, and
 `image` was created with a sharing mode of
-`VK_SHARING_MODE_CONCURRENT`, `dstQueueFamilyIndex` **must** be
-`VK_QUEUE_FAMILY_IGNORED`
-or `VK_QUEUE_FAMILY_EXTERNAL`
+[VK_SHARING_MODE_CONCURRENT](resources.html#VkSharingMode), `dstQueueFamilyIndex` **must** be
+[VK_QUEUE_FAMILY_IGNORED](#VK_QUEUE_FAMILY_IGNORED)
+or [VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL)
+
+* 
+[](#VUID-VkImageMemoryBarrier-dstQueueFamilyIndex-12331) VUID-VkImageMemoryBarrier-dstQueueFamilyIndex-12331
+
+If `dstQueueFamilyIndex` is [VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL) and
+`image` was created with
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) in
+[VkExternalMemoryImageCreateInfo](resources.html#VkExternalMemoryImageCreateInfo)::`handleTypes`,
+`newLayout` **must** be [VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout)
+
+* 
+[](#VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-12332) VUID-VkImageMemoryBarrier-srcQueueFamilyIndex-12332
+
+If `srcQueueFamilyIndex` is [VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL) and
+`image` was created with
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT](capabilities.html#VkExternalMemoryHandleTypeFlagBitsKHR) in
+[VkExternalMemoryImageCreateInfo](resources.html#VkExternalMemoryImageCreateInfo)::`handleTypes`,
+`oldLayout` **must** be [VK_IMAGE_LAYOUT_GENERAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkImageMemoryBarrier-sType-sType) VUID-VkImageMemoryBarrier-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageMemoryBarrier-pNext-pNext) VUID-VkImageMemoryBarrier-pNext-pNext
@@ -15442,27 +15417,27 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_MEMORY_MAP_FAILED`
+[VK_ERROR_MEMORY_MAP_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkHostImageLayoutTransitionInfo` structure is defined as:
 
@@ -15511,7 +15486,7 @@ performs the layout transition.
 The memory of `image` is accessed by the host as if [coherent](memory.html#memory-coherent).
 
 If `image` is a 3D image created with
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` and the
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) and the
 [`maintenance9`](features.html#features-maintenance9) feature is enabled, the
 `baseArrayLayer` and `layerCount` members of `subresourceRange`
 specify the subset of slices of the 3D image affected by the memory barrier,
@@ -15530,7 +15505,7 @@ available to the host.
 Before this command can be called, a memory barrier for this image **must**
 have been issued on the device with the second
 [synchronization scope](#synchronization-dependencies-scopes) including
-`VK_PIPELINE_STAGE_HOST_BIT` and `VK_ACCESS_HOST_READ_BIT`.
+[VK_PIPELINE_STAGE_HOST_BIT](#VkPipelineStageFlagBits) and [VK_ACCESS_HOST_READ_BIT](#VkAccessFlagBits).
 
 Because queue submissions [automatically make host memory visible to the device](#synchronization-submission-host-writes), there would not be a
 need for a memory barrier before using the results of this layout transition
@@ -15542,7 +15517,7 @@ Valid Usage
 [](#VUID-VkHostImageLayoutTransitionInfo-image-09055) VUID-VkHostImageLayoutTransitionInfo-image-09055
 
 `image` **must** have been created with the
-`VK_IMAGE_USAGE_HOST_TRANSFER_BIT` usage flag set
+[VK_IMAGE_USAGE_HOST_TRANSFER_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-subresourceRange-01486) VUID-VkHostImageLayoutTransitionInfo-subresourceRange-01486
@@ -15555,7 +15530,7 @@ was created
 [](#VUID-VkHostImageLayoutTransitionInfo-subresourceRange-01724) VUID-VkHostImageLayoutTransitionInfo-subresourceRange-01724
 
 If `subresourceRange.levelCount` is not
-`VK_REMAINING_MIP_LEVELS`, `subresourceRange.baseMipLevel`
+[VK_REMAINING_MIP_LEVELS](resources.html#VK_REMAINING_MIP_LEVELS), `subresourceRange.baseMipLevel`
 +  `subresourceRange.levelCount` **must** be less than or equal to
 the `mipLevels` specified in [VkImageCreateInfo](resources.html#VkImageCreateInfo) when
 `image` was created
@@ -15564,7 +15539,7 @@ the `mipLevels` specified in [VkImageCreateInfo](resources.html#VkImageCreateInf
 [](#VUID-VkHostImageLayoutTransitionInfo-subresourceRange-01488) VUID-VkHostImageLayoutTransitionInfo-subresourceRange-01488
 
 If `image` is not a 3D image or was created without
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set, or the
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) set, or the
 [`maintenance9`](features.html#features-maintenance9) feature is not enabled,
 `subresourceRange.baseArrayLayer` **must** be less than the
 `arrayLayers` specified in [VkImageCreateInfo](resources.html#VkImageCreateInfo) when `image`
@@ -15575,7 +15550,7 @@ was created
 
 If the [`maintenance9`](features.html#features-maintenance9) feature is enabled
 and `image` is a 3D image created with
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set,
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) set,
 `subresourceRange.baseArrayLayer` **must** be less than the depth
 computed from `baseMipLevel` and `extent.depth` specified in
 [VkImageCreateInfo](resources.html#VkImageCreateInfo) when `image` was created, according to the
@@ -15586,10 +15561,10 @@ formula defined in [Image Mip Level    Sizing](resources.html#resources-image-mi
 
 If the [`maintenance9`](features.html#features-maintenance9) feature is enabled
 and `image` is a 3D image created with
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set and either
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) set and either
 `subresourceRange.baseArrayLayer` is not equal to 0 or
 `subresourceRange.layerCount` is not equal to
-`VK_REMAINING_ARRAY_LAYERS`, `subresourceRange.levelCount` **must**
+[VK_REMAINING_ARRAY_LAYERS](resources.html#VK_REMAINING_ARRAY_LAYERS), `subresourceRange.levelCount` **must**
 be 1
 
 * 
@@ -15597,11 +15572,11 @@ be 1
 
 If
 `image` is not a 3D image or was created without
-`VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set, or the
+[VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) set, or the
 [`maintenance9`](features.html#features-maintenance9) feature is not enabled,
 and
 `subresourceRange.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`,
+[VK_REMAINING_ARRAY_LAYERS](resources.html#VK_REMAINING_ARRAY_LAYERS),
 `subresourceRange.baseArrayLayer` + 
 `subresourceRange.layerCount` **must** be less than or equal to the
 `arrayLayers` specified in [VkImageCreateInfo](resources.html#VkImageCreateInfo) when `image`
@@ -15612,8 +15587,8 @@ was created
 
 If the [`maintenance9`](features.html#features-maintenance9) feature is enabled,
 `subresourceRange.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`, and `image` is a 3D image created
-with `VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT` set,
+[VK_REMAINING_ARRAY_LAYERS](resources.html#VK_REMAINING_ARRAY_LAYERS), and `image` is a 3D image created
+with [VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) set,
 `subresourceRange.baseArrayLayer` + 
 `subresourceRange.layerCount` **must** be less than or equal to the
 depth computed from `baseMipLevel` and `extent.depth` specified
@@ -15634,14 +15609,14 @@ or each specified *disjoint* plane
 If `image` has a color format
 that is single-plane,
 then the `aspectMask` member of `subresourceRange` **must** be
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-image-09242) VUID-VkHostImageLayoutTransitionInfo-image-09242
 
 If `image` has a color format and is not *disjoint*, then the
 `aspectMask` member of `subresourceRange` **must** be
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-image-01672) VUID-VkHostImageLayoutTransitionInfo-image-01672
@@ -15650,7 +15625,7 @@ If `image` has a [multi-planar format](formats.html#formats-multiplanar) and
 the image is *disjoint*, then the `aspectMask` member of
 `subresourceRange` **must** include at least one
 [multi-planar aspect mask](formats.html#formats-multiplanar-image-aspect) bit or
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-image-03320) VUID-VkHostImageLayoutTransitionInfo-image-03320
@@ -15658,8 +15633,8 @@ the image is *disjoint*, then the `aspectMask` member of
 If `image` has a depth/stencil format with both depth and stencil
 and the [    `separateDepthStencilLayouts`](features.html#features-separateDepthStencilLayouts) feature is not enabled,
 then the `aspectMask` member of `subresourceRange` **must** include
-both `VK_IMAGE_ASPECT_DEPTH_BIT` and
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+both [VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits) and
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-image-03319) VUID-VkHostImageLayoutTransitionInfo-image-03319
@@ -15667,37 +15642,37 @@ both `VK_IMAGE_ASPECT_DEPTH_BIT` and
 If `image` has a depth/stencil format with both depth and stencil
 and the [    `separateDepthStencilLayouts`](features.html#features-separateDepthStencilLayouts) feature is enabled, then the
 `aspectMask` member of `subresourceRange` **must** include either
-or both `VK_IMAGE_ASPECT_DEPTH_BIT` and
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+or both [VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits) and
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-image-10749) VUID-VkHostImageLayoutTransitionInfo-image-10749
 
 If `image` has a depth-only format then the `aspectMask` member
-of `subresourceRange` **must** be `VK_IMAGE_ASPECT_DEPTH_BIT`
+of `subresourceRange` **must** be [VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-image-10750) VUID-VkHostImageLayoutTransitionInfo-image-10750
 
 If `image` has a stencil-only format then the `aspectMask`
 member of `subresourceRange` **must** be
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits)
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-aspectMask-08702) VUID-VkHostImageLayoutTransitionInfo-aspectMask-08702
 
 If the `aspectMask` member of `subresourceRange` includes
-`VK_IMAGE_ASPECT_DEPTH_BIT`, `oldLayout` and `newLayout`
-**must** not be one of `VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+[VK_IMAGE_ASPECT_DEPTH_BIT](resources.html#VkImageAspectFlagBits), `oldLayout` and `newLayout`
+**must** not be one of [VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-aspectMask-08703) VUID-VkHostImageLayoutTransitionInfo-aspectMask-08703
 
 If the `aspectMask` member of `subresourceRange` includes
-`VK_IMAGE_ASPECT_STENCIL_BIT`, `oldLayout` and `newLayout`
-**must** not be one of `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+[VK_IMAGE_ASPECT_STENCIL_BIT](resources.html#VkImageAspectFlagBits), `oldLayout` and `newLayout`
+**must** not be one of [VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-subresourceRange-09601) VUID-VkHostImageLayoutTransitionInfo-subresourceRange-09601
@@ -15709,268 +15684,268 @@ the `image` was created with
 [](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-01208) VUID-VkHostImageLayoutTransitionInfo-oldLayout-01208
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL` then `image` **must**
-have been created with the `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT`
+[VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) then `image` **must**
+have been created with the [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-01209) VUID-VkHostImageLayoutTransitionInfo-oldLayout-01209
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` then `image`
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) then `image`
 **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-01210) VUID-VkHostImageLayoutTransitionInfo-oldLayout-01210
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL` then `image`
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then `image`
 **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-01211) VUID-VkHostImageLayoutTransitionInfo-oldLayout-01211
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL` then `image` **must**
-have been created with the `VK_IMAGE_USAGE_SAMPLED_BIT` or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then `image` **must**
+have been created with the [VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-01212) VUID-VkHostImageLayoutTransitionInfo-oldLayout-01212
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_TRANSFER_SRC_BIT` usage flag
+[VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_TRANSFER_SRC_BIT](resources.html#VkImageUsageFlagBits) usage flag
 set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-01213) VUID-VkHostImageLayoutTransitionInfo-oldLayout-01213
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_TRANSFER_DST_BIT` usage flag
+[VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_TRANSFER_DST_BIT](resources.html#VkImageUsageFlagBits) usage flag
 set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-10767) VUID-VkHostImageLayoutTransitionInfo-oldLayout-10767
 
 If the [    zeroInitializeDeviceMemory](features.html#features-zeroInitializeDeviceMemory) feature is not enabled, `oldLayout`
-**must** not be `VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`
+**must** not be [VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-10768) VUID-VkHostImageLayoutTransitionInfo-oldLayout-10768
 
-If `oldLayout` is `VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`, then
+If `oldLayout` is [VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](resources.html#VkImageLayout), then
 all subresources **must** be included in the barrier
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-01658) VUID-VkHostImageLayoutTransitionInfo-oldLayout-01658
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL` then
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) then
 `image` **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-01659) VUID-VkHostImageLayoutTransitionInfo-oldLayout-01659
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL` then
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then
 `image` **must** have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-04065) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-04065
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL` then `image` **must**
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then `image` **must**
 have been created with at least one of the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`,
-`VK_IMAGE_USAGE_SAMPLED_BIT`, or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flags set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits), or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-04066) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-04066
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` then `image` **must**
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) then `image` **must**
 have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-04067) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-04067
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL` then `image` **must**
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](resources.html#VkImageLayout) then `image` **must**
 have been created with at least one of the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`,
-`VK_IMAGE_USAGE_SAMPLED_BIT`, or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flags set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits), or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-04068) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-04068
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` then `image` **must**
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout) then `image` **must**
 have been created with the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-synchronization2-07793) VUID-VkHostImageLayoutTransitionInfo-synchronization2-07793
 
 If the [`synchronization2`](features.html#features-synchronization2) feature is
 not enabled, `oldLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR` or
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-synchronization2-07794) VUID-VkHostImageLayoutTransitionInfo-synchronization2-07794
 
 If the [`synchronization2`](features.html#features-synchronization2) feature is
 not enabled, `newLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR` or
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout) or
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-03938) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-03938
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL`, `image` **must** have been
-created with the `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+[VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL](resources.html#VkImageLayout), `image` **must** have been
+created with the [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-03939) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-03939
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL`, `image` **must** have been
+[VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL](resources.html#VkImageLayout), `image` **must** have been
 created with at least one of the
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`,
-`VK_IMAGE_USAGE_SAMPLED_BIT`, or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flags set
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits),
+[VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits), or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-02088) VUID-VkHostImageLayoutTransitionInfo-oldLayout-02088
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR` then
+[VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR](resources.html#VkImageLayout) then
 `image` **must** have been created with the
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR` usage flag
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](resources.html#VkImageUsageFlagBits) usage flag
 set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07120) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07120
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_SRC_KHR` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_SRC_KHR](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07121) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07121
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07122) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07122
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07123) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07123
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07124) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07124
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_DST_KHR` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_DST_KHR](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07125) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07125
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR` then `image` **must** have
-been created with the `VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR`
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR](resources.html#VkImageLayout) then `image` **must** have
+been created with the [VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR](resources.html#VkImageUsageFlagBits)
 usage flag set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-10287) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-10287
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR` then `image`
+[VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR](resources.html#VkImageLayout) then `image`
 **must** have been created with the
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR` or
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR` usage flags set
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07006) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07006
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` then
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout) then
 `image` **must** have been created with either the
-`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flags set, and
-the `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_SAMPLED_BIT` usage flags set, and the
-`VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT` usage flag set
+[VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set, and
+the [VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits) usage flags set, and the
+[VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT](resources.html#VkImageUsageFlagBits) usage flag set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-attachmentFeedbackLoopLayout-07313) VUID-VkHostImageLayoutTransitionInfo-attachmentFeedbackLoopLayout-07313
 
 If the [    `attachmentFeedbackLoopLayout`](features.html#features-attachmentFeedbackLoopLayout) feature is not enabled,
 `newLayout` **must** not be
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT`
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-09550) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-09550
 
 If  `oldLayout` or `newLayout` is
-`VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ` then `image` **must** have
-been created with either the `VK_IMAGE_USAGE_STORAGE_BIT` usage flag
-set, or with both the `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage
-flag and either of the `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flags set
+[VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout) then `image` **must** have
+been created with either the [VK_IMAGE_USAGE_STORAGE_BIT](resources.html#VkImageUsageFlagBits) usage flag
+set, or with both the [VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage
+flag and either of the [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) or
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) usage flags set
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-dynamicRenderingLocalRead-09551) VUID-VkHostImageLayoutTransitionInfo-dynamicRenderingLocalRead-09551
 
 If the [    `dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead) feature is not enabled,
-`oldLayout` **must** not be `VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+`oldLayout` **must** not be [VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-dynamicRenderingLocalRead-09552) VUID-VkHostImageLayoutTransitionInfo-dynamicRenderingLocalRead-09552
 
 If the [    `dynamicRenderingLocalRead`](features.html#features-dynamicRenderingLocalRead) feature is not enabled,
-`newLayout` **must** not be `VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+`newLayout` **must** not be [VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](resources.html#VkImageLayout)
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-09229) VUID-VkHostImageLayoutTransitionInfo-oldLayout-09229
 
-`oldLayout` **must** be either `VK_IMAGE_LAYOUT_UNDEFINED` or the
+`oldLayout` **must** be either [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout) or the
 current layout of the image subresources as specified in
 `subresourceRange`
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-09230) VUID-VkHostImageLayoutTransitionInfo-oldLayout-09230
 
-    If `oldLayout` is not `VK_IMAGE_LAYOUT_UNDEFINED`,
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`,
-    or `VK_IMAGE_LAYOUT_PREINITIALIZED`, it **must** be one of the layouts
+    If `oldLayout` is not [VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout),
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](resources.html#VkImageLayout),
+    or [VK_IMAGE_LAYOUT_PREINITIALIZED](resources.html#VkImageLayout), it **must** be one of the layouts
     in [VkPhysicalDeviceHostImageCopyProperties](limits.html#VkPhysicalDeviceHostImageCopyProperties)::`pCopySrcLayouts`
 
 * 
@@ -15984,7 +15959,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-sType-sType) VUID-VkHostImageLayoutTransitionInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_HOST_IMAGE_LAYOUT_TRANSITION_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_HOST_IMAGE_LAYOUT_TRANSITION_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkHostImageLayoutTransitionInfo-pNext-pNext) VUID-VkHostImageLayoutTransitionInfo-pNext-pNext
@@ -16083,7 +16058,7 @@ by this structure include only operations and memory accesses specified by
 Both [access scopes](#synchronization-dependencies-access-scopes) are
 limited to only memory accesses to `tensor`.
 
-If `tensor` was created with `VK_SHARING_MODE_EXCLUSIVE`, and
+If `tensor` was created with [VK_SHARING_MODE_EXCLUSIVE](resources.html#VkSharingMode), and
 `srcQueueFamilyIndex` is not equal to `dstQueueFamilyIndex`, this
 memory barrier defines a [queue family transfer operation](#synchronization-queue-transfers).
 When executed on a queue in the family identified by
@@ -16111,24 +16086,24 @@ Valid Usage
 [](#VUID-VkTensorMemoryBarrierARM-tensor-09755) VUID-VkTensorMemoryBarrierARM-tensor-09755
 
 If `tensor` was created with a sharing mode of
-`VK_SHARING_MODE_CONCURRENT`, `srcQueueFamilyIndex` and
-`dstQueueFamilyIndex` **must** both be `VK_QUEUE_FAMILY_IGNORED`
+[VK_SHARING_MODE_CONCURRENT](resources.html#VkSharingMode), `srcQueueFamilyIndex` and
+`dstQueueFamilyIndex` **must** both be [VK_QUEUE_FAMILY_IGNORED](#VK_QUEUE_FAMILY_IGNORED)
 
 * 
 [](#VUID-VkTensorMemoryBarrierARM-tensor-09756) VUID-VkTensorMemoryBarrierARM-tensor-09756
 
 If `tensor` was created with a sharing mode of
-`VK_SHARING_MODE_EXCLUSIVE`, `srcQueueFamilyIndex` and
+[VK_SHARING_MODE_EXCLUSIVE](resources.html#VkSharingMode), `srcQueueFamilyIndex` and
 `dstQueueFamilyIndex` **must** both be either
-`VK_QUEUE_FAMILY_IGNORED`, or a valid queue family (see
+[VK_QUEUE_FAMILY_IGNORED](#VK_QUEUE_FAMILY_IGNORED), or a valid queue family (see
 [Queue Family Properties](devsandqueues.html#devsandqueues-queueprops))
 
 * 
 [](#VUID-VkTensorMemoryBarrierARM-tensor-09757) VUID-VkTensorMemoryBarrierARM-tensor-09757
 
 If `tensor` was created with a sharing mode of
-`VK_SHARING_MODE_EXCLUSIVE`, and `srcQueueFamilyIndex` and
-`dstQueueFamilyIndex` are not `VK_QUEUE_FAMILY_IGNORED`, at
+[VK_SHARING_MODE_EXCLUSIVE](resources.html#VkSharingMode), and `srcQueueFamilyIndex` and
+`dstQueueFamilyIndex` are not [VK_QUEUE_FAMILY_IGNORED](#VK_QUEUE_FAMILY_IGNORED), at
 least one of them **must** be the same as the family of the queue that will
 execute this barrier
 
@@ -16143,7 +16118,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTensorMemoryBarrierARM-sType-sType) VUID-VkTensorMemoryBarrierARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TENSOR_MEMORY_BARRIER_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TENSOR_MEMORY_BARRIER_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkTensorMemoryBarrierARM-srcStageMask-parameter) VUID-VkTensorMemoryBarrierARM-srcStageMask-parameter
@@ -16201,7 +16176,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTensorDependencyInfoARM-sType-sType) VUID-VkTensorDependencyInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TENSOR_DEPENDENCY_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TENSOR_DEPENDENCY_INFO_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkTensorDependencyInfoARM-pTensorMemoryBarriers-parameter) VUID-VkTensorDependencyInfoARM-pTensorMemoryBarriers-parameter
@@ -16209,11 +16184,11 @@ Valid Usage (Implicit)
  `pTensorMemoryBarriers` **must** be a valid pointer to a valid [VkTensorMemoryBarrierARM](#VkTensorMemoryBarrierARM) structure
 
 Resources created with a [VkSharingMode](resources.html#VkSharingMode) of
-`VK_SHARING_MODE_EXCLUSIVE` **must** have their ownership explicitly
+[VK_SHARING_MODE_EXCLUSIVE](resources.html#VkSharingMode) **must** have their ownership explicitly
 transferred from one queue family to another in order to access their
 content in a well-defined manner on a queue in a different queue family.
 
-The special queue family index `VK_QUEUE_FAMILY_IGNORED` indicates that
+The special queue family index [VK_QUEUE_FAMILY_IGNORED](#VK_QUEUE_FAMILY_IGNORED) indicates that
 a queue family parameter or member is ignored.
 
 #define VK_QUEUE_FAMILY_IGNORED           (~0U)
@@ -16223,7 +16198,7 @@ also explicitly manage ownership transfers between local and external queues
 (or equivalent constructs in external APIs) regardless of the
 [VkSharingMode](resources.html#VkSharingMode) specified when creating them.
 
-The special queue family index `VK_QUEUE_FAMILY_EXTERNAL` represents any
+The special queue family index [VK_QUEUE_FAMILY_EXTERNAL](#VK_QUEUE_FAMILY_EXTERNAL) represents any
 queue external to the resource’s current Vulkan instance, as long as the
 queue uses the same underlying
 device group or
@@ -16236,7 +16211,7 @@ physical device, and the same driver version as the resource’s
 
 #define VK_QUEUE_FAMILY_EXTERNAL_KHR      VK_QUEUE_FAMILY_EXTERNAL
 
-The special queue family index `VK_QUEUE_FAMILY_FOREIGN_EXT` represents
+The special queue family index [VK_QUEUE_FAMILY_FOREIGN_EXT](#VK_QUEUE_FAMILY_FOREIGN_EXT) represents
 any queue external to the resource’s current Vulkan instance, regardless of
 the queue’s underlying physical device or driver version.
 This includes, for example, queues for fixed-function image processing
@@ -16260,8 +16235,8 @@ transfer **should** be skipped. |
 
 |  | Applications should expect transfers to/from
 | --- | --- |
-`VK_QUEUE_FAMILY_FOREIGN_EXT` to be more expensive than transfers
-to/from `VK_QUEUE_FAMILY_EXTERNAL_KHR`. |
+[VK_QUEUE_FAMILY_FOREIGN_EXT](#VK_QUEUE_FAMILY_FOREIGN_EXT) to be more expensive than transfers
+to/from [VK_QUEUE_FAMILY_EXTERNAL_KHR](#VK_QUEUE_FAMILY_EXTERNAL_KHR). |
 
 A queue family ownership transfer consists of two distinct parts:
 
@@ -16287,7 +16262,7 @@ visibility operation is executed - the value of this mask does not affect
 the validity of the barrier.
 The release operation happens-after the availability operation.
 If `dependencyFlags` does not include
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`,
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](#VkDependencyFlagBits),
 `dstStageMask` is also ignored for such a barrier as defined by
 [buffer memory ownership transfer](#buffer-memory-barrier-ownership-transfer) and [image memory ownership transfer](#image-memory-barrier-ownership-transfer).
 After a release operation is performed, the contents and image layout (if
@@ -16299,7 +16274,7 @@ operation is performed.
 simply start using the resource on any queue (even the releasing queue), but
 the contents should be reinitialized before being read.
 In the case of images, an image layout transition away from
-`VK_IMAGE_LAYOUT_UNDEFINED` is also required.
+[VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout) is also required.
 Executing an acquire operation after this without another release is
 invalid. |
 
@@ -16320,7 +16295,7 @@ availability operation is executed - the value of this mask does not affect
 the validity of the barrier.
 The acquire operation happens-before the visibility operation.
 If `dependencyFlags` does not include
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`,
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](#VkDependencyFlagBits),
 `srcStageMask` is also ignored for such a barrier as defined by
 [buffer memory ownership transfer](#buffer-memory-barrier-ownership-transfer) and [image memory ownership transfer](#image-memory-barrier-ownership-transfer).
 Applications **must** not execute an acquire operation on any resource where it
@@ -16345,12 +16320,12 @@ operation must happen-before the acquire operation.
 Often, semaphores are used for this directly, with the semaphore signaling
 after a release and then waiting before an acquire.
 Prior to the introduction of
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`,
-`VK_PIPELINE_STAGE_ALL_COMMANDS_BIT` is the only valid stage to wait on
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](#VkDependencyFlagBits),
+[VK_PIPELINE_STAGE_ALL_COMMANDS_BIT](#VkPipelineStageFlagBits) is the only valid stage to wait on
 or wait for these operations, as the acquire and release operations do not
 occur in a defined stage.
 When
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](#VkDependencyFlagBits)
 is specified however, these can be synchronized with the stages which would
 otherwise be ignored, as these stages now synchronize the acquire and
 release operations, providing a way to avoid full pipeline stalls. |
@@ -16368,7 +16343,7 @@ operation* and happens-before the *acquire operation*.
 
 If the values of `srcQueueFamilyIndex` and `dstQueueFamilyIndex` are
 equal, no ownership transfer is performed, and the barrier operates as if
-they were both set to `VK_QUEUE_FAMILY_IGNORED`.
+they were both set to [VK_QUEUE_FAMILY_IGNORED](#VK_QUEUE_FAMILY_IGNORED).
 
 Queue family ownership transfers **may** perform read and write accesses on all
 memory bound to the image subresource or buffer range, so applications **must**
@@ -16380,7 +16355,7 @@ acquire operations, and writes performed by those operations are
 automatically made available.
 
 Once a queue family has acquired ownership of a buffer range or image
-subresource range of a `VK_SHARING_MODE_EXCLUSIVE` resource, its
+subresource range of a [VK_SHARING_MODE_EXCLUSIVE](resources.html#VkSharingMode) resource, its
 contents are **undefined** to other queue families unless ownership is
 transferred.
 The contents of any portion of another resource which aliases memory that is
@@ -16418,12 +16393,12 @@ typedef struct VkExternalMemoryAcquireUnmodifiedEXT {
 structure.
 
 * 
-`acquireUnmodifiedMemory` specifies, if `VK_TRUE`, that no range
+`acquireUnmodifiedMemory` specifies, if [VK_TRUE](fundamentals.html#VK_TRUE), that no range
 of [VkDeviceMemory](memory.html#VkDeviceMemory) bound to the resource of the memory barrier’s
 subresource range was modified at any time since the resource’s most
 recent release of ownership to the queue family specified by the memory
 barrier’s `srcQueueFamilyIndex`.
-If `VK_FALSE`, it specifies nothing.
+If [VK_FALSE](fundamentals.html#VK_FALSE), it specifies nothing.
 
 If the application releases ownership of the subresource range to one of the
 special queue families reserved for external memory ownership transfers with
@@ -16436,8 +16411,8 @@ the *release operation* and the *acquire operation*, then the application
 because this **may** reduce the performance penalty.
 
 This structure is ignored if `acquireUnmodifiedMemory` is
-`VK_FALSE`.
-In particular, `VK_FALSE` does *not* specify that memory was modified.
+[VK_FALSE](fundamentals.html#VK_FALSE).
+In particular, [VK_FALSE](fundamentals.html#VK_FALSE) does *not* specify that memory was modified.
 
 This structure is ignored if the memory barrier’s `srcQueueFamilyIndex`
 is not a special queue family reserved for external memory ownership
@@ -16465,7 +16440,7 @@ Valid Usage
 * 
 [](#VUID-VkExternalMemoryAcquireUnmodifiedEXT-acquireUnmodifiedMemory-08922) VUID-VkExternalMemoryAcquireUnmodifiedEXT-acquireUnmodifiedMemory-08922
 
-If `acquireUnmodifiedMemory` is `VK_TRUE`, and the memory
+If `acquireUnmodifiedMemory` is [VK_TRUE](fundamentals.html#VK_TRUE), and the memory
 barrier’s `srcQueueFamilyIndex` is a special queue family reserved
 for external memory ownership transfers (as described in
 [Queue Family Ownership Transfer](#synchronization-queue-transfers)), then each range of
@@ -16478,7 +16453,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalMemoryAcquireUnmodifiedEXT-sType-sType) VUID-VkExternalMemoryAcquireUnmodifiedEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_EXT](fundamentals.html#VkStructureType)
 
 To wait on the host for the completion of outstanding queue operations for a
 given queue, call:
@@ -16493,7 +16468,7 @@ VkResult vkQueueWaitIdle(
 `vkQueueWaitIdle` is equivalent to having submitted a valid fence to
 every previously executed [queue submission command](devsandqueues.html#devsandqueues-submission) that accepts a fence, then waiting for all of those fences to
 signal using [vkWaitForFences](#vkWaitForFences) with an infinite timeout and
-`waitAll` set to `VK_TRUE`.
+`waitAll` set to [VK_TRUE](fundamentals.html#VK_TRUE).
 
 |  | Even though [vkQueuePresentKHR](VK_KHR_surface/wsi.html#vkQueuePresentKHR) does not have a fence parameter, it does
 | --- | --- |
@@ -16510,6 +16485,8 @@ Host Synchronization
 
 * 
 Host access to `queue` **must** be externally synchronized
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
 
 Command Properties
 | [Command Buffer Levels](cmdbuffers.html#VkCommandBufferLevel) | [Render Pass Scope](renderpass.html#vkCmdBeginRenderPass) | [Video Coding Scope](videocoding.html#vkCmdBeginVideoCodingKHR) | [Supported Queue Types](devsandqueues.html#VkQueueFlagBits) | [Command Type](fundamentals.html#fundamentals-queueoperation-command-types) |
@@ -16521,24 +16498,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To wait on the host for the completion of outstanding queue operations for
 all queues on a given logical device, call:
@@ -16563,31 +16540,34 @@ Valid Usage (Implicit)
 Host Synchronization
 
 * 
-Host access to all `VkQueue` objects created from `device` **must** be externally synchronized
+Host access to all `VkQueue` objects created from `device`
+that are not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](devsandqueues.html#VkDeviceQueueCreateFlagBits)
+             **must** be externally synchronized
 
 Return Codes
 
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 When batches of command buffers are submitted to a queue via a
 [queue submission command](devsandqueues.html#devsandqueues-submission), it defines a memory
@@ -16735,21 +16715,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkCalibratedTimestampInfoKHR` structure is defined as:
 
@@ -16786,16 +16766,16 @@ returned by [vkGetPhysicalDeviceCalibrateableTimeDomainsKHR](capabilities.html#v
 * 
 [](#VUID-VkCalibratedTimestampInfoKHR-timeDomain-12227) VUID-VkCalibratedTimestampInfoKHR-timeDomain-12227
 
-If `timeDomain` is `VK_TIME_DOMAIN_SWAPCHAIN_LOCAL_EXT` or
-`VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT`, the `pNext` chain
-**must** include a [VkSwapchainCalibratedTimestampInfoEXT](#VkSwapchainCalibratedTimestampInfoEXT) structure.
+If `timeDomain` is [VK_TIME_DOMAIN_SWAPCHAIN_LOCAL_EXT](#VkTimeDomainEXT) or
+[VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT](#VkTimeDomainEXT), the `pNext` chain
+**must** include a [VkSwapchainCalibratedTimestampInfoEXT](#VkSwapchainCalibratedTimestampInfoEXT) structure
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkCalibratedTimestampInfoKHR-sType-sType) VUID-VkCalibratedTimestampInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkCalibratedTimestampInfoKHR-pNext-pNext) VUID-VkCalibratedTimestampInfoKHR-pNext-pNext
@@ -16839,7 +16819,7 @@ typedef enum VkTimeDomainKHR {
 typedef VkTimeDomainKHR VkTimeDomainEXT;
 
 * 
-`VK_TIME_DOMAIN_DEVICE_KHR` specifies the device time domain.
+[VK_TIME_DOMAIN_DEVICE_KHR](#VkTimeDomainEXT) specifies the device time domain.
 Timestamp values in this time domain use the same units and are
 comparable with device timestamp values captured using
 [vkCmdWriteTimestamp](queries.html#vkCmdWriteTimestamp)
@@ -16848,20 +16828,20 @@ and are defined to be incrementing according to the
 [`timestampPeriod`](limits.html#limits-timestampPeriod) of the device.
 
 * 
-`VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT` specifies a time domain
+[VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT](#VkTimeDomainEXT) specifies a time domain
 unique to a particular swapchain and a specific present stage.
 Timestamp values in this time domain are in units of nanosecond and are
 comparable only with other values from the same swapchain and present
 stage.
 
 * 
-`VK_TIME_DOMAIN_SWAPCHAIN_LOCAL_EXT` specifies a time domain unique
+[VK_TIME_DOMAIN_SWAPCHAIN_LOCAL_EXT](#VkTimeDomainEXT) specifies a time domain unique
 to a particular swapchain.
 Timestamp values in this time domain are in units of nanosecond and are
 comparable only with other values from the same swapchain.
 
 * 
-`VK_TIME_DOMAIN_CLOCK_MONOTONIC_KHR` specifies the CLOCK_MONOTONIC
+[VK_TIME_DOMAIN_CLOCK_MONOTONIC_KHR](#VkTimeDomainEXT) specifies the CLOCK_MONOTONIC
 time domain available on POSIX platforms.
 Timestamp values in this time domain are in units of nanoseconds and are
 comparable with platform timestamp values captured using the POSIX
@@ -16873,7 +16853,7 @@ clock_gettime API as computed by this example:
 or
 `[VK_EXT_calibrated_timestamps](../appendices/extensions.html#VK_EXT_calibrated_timestamps)`
 will use the same time domain for all its [VkQueue](devsandqueues.html#VkQueue) so that timestamp
-values reported for `VK_TIME_DOMAIN_DEVICE_KHR` can be matched to any
+values reported for [VK_TIME_DOMAIN_DEVICE_KHR](#VkTimeDomainEXT) can be matched to any
 timestamp captured through [vkCmdWriteTimestamp](queries.html#vkCmdWriteTimestamp)
 or [vkCmdWriteTimestamp2](queries.html#vkCmdWriteTimestamp2)
 . |
@@ -16883,7 +16863,7 @@ clock_gettime(CLOCK_MONOTONIC, &tv);
 return tv.tv_nsec + tv.tv_sec*1000000000ull;
 
 * 
-`VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_KHR` specifies the
+[VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_KHR](#VkTimeDomainEXT) specifies the
 CLOCK_MONOTONIC_RAW time domain available on POSIX platforms.
 Timestamp values in this time domain are in units of nanoseconds and are
 comparable with platform timestamp values captured using the POSIX
@@ -16894,7 +16874,7 @@ clock_gettime(CLOCK_MONOTONIC_RAW, &tv);
 return tv.tv_nsec + tv.tv_sec*1000000000ull;
 
 * 
-`VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_KHR` specifies the
+[VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_KHR](#VkTimeDomainEXT) specifies the
 performance counter (QPC) time domain available on Windows.
 Timestamp values in this time domain are in the same units as those
 provided by the Windows QueryPerformanceCounter API and are comparable
@@ -16930,7 +16910,7 @@ timestamp from.
 * 
 `presentStage` is zero or a [VkPresentStageFlagsEXT](VK_KHR_surface/wsi.html#VkPresentStageFlagsEXT) value used
 to identify a single present stage when calibrating a timestamp in the
-`VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT` time domain.
+[VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT](#VkTimeDomainEXT) time domain.
 
 * 
 `timeDomainId` is the id for the opaque time domain being
@@ -16948,7 +16928,7 @@ Valid Usage
 
 If the `timeDomain` member of the [VkCalibratedTimestampInfoKHR](#VkCalibratedTimestampInfoKHR)
 structure in this structure’s `pNext` chain is
-`VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT`, `presentStage` **must**
+[VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT](#VkTimeDomainEXT), `presentStage` **must**
 specify one and only one present stage
 
 Valid Usage (Implicit)
@@ -16956,7 +16936,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSwapchainCalibratedTimestampInfoEXT-sType-sType) VUID-VkSwapchainCalibratedTimestampInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_CALIBRATED_TIMESTAMP_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_CALIBRATED_TIMESTAMP_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkSwapchainCalibratedTimestampInfoEXT-swapchain-parameter) VUID-VkSwapchainCalibratedTimestampInfoEXT-swapchain-parameter

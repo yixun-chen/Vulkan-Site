@@ -48,7 +48,7 @@ pipelines **can** be used.
 specifies whether data graph pipelines **can** be created with a
 [VkPipelineLayout](VkPipelineLayout.html) that uses one or more [VkDescriptorSetLayout](VkDescriptorSetLayout.html)
 objects created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -71,7 +71,7 @@ If the `VkPhysicalDeviceDataGraphFeaturesARM` structure is included in the `pNex
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceDataGraphFeaturesARM`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -79,7 +79,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDataGraphFeaturesARM-sType-sType) VUID-VkPhysicalDeviceDataGraphFeaturesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_FEATURES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_FEATURES_ARM](VkStructureType.html)
 
 [VK_ARM_data_graph](VK_ARM_data_graph.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

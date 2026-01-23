@@ -48,7 +48,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryRequirements2-sType-sType) VUID-VkMemoryRequirements2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2](VkStructureType.html)
 
 * 
 [](#VUID-VkMemoryRequirements2-pNext-pNext) VUID-VkMemoryRequirements2-pNext-pNext

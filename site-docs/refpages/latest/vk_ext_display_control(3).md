@@ -132,16 +132,16 @@ Extending [VkSwapchainCreateInfoKHR](VkSwapchainCreateInfoKHR.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_DEVICE_EVENT_INFO_EXT`
+[VK_STRUCTURE_TYPE_DEVICE_EVENT_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_DISPLAY_EVENT_INFO_EXT`
+[VK_STRUCTURE_TYPE_DISPLAY_EVENT_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_DISPLAY_POWER_INFO_EXT`
+[VK_STRUCTURE_TYPE_DISPLAY_POWER_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT](VkStructureType.html)
 
 1) Should this extension add an explicit “WaitForVsync” API or a fence
 signaled at vsync that the application can wait on?

@@ -82,10 +82,10 @@ more pipeline bind points, the binding operation still affects all stages
 corresponding to the given pipeline bind point(s) as if the equivalent
 original version of this command had been called with the same parameters.
 For example, specifying a `stageFlags` value of
-`VK_SHADER_STAGE_VERTEX_BIT` | `VK_SHADER_STAGE_FRAGMENT_BIT` |
-`VK_SHADER_STAGE_COMPUTE_BIT` is equivalent to calling the original
-version of this command once with `VK_PIPELINE_BIND_POINT_GRAPHICS` and
-once with `VK_PIPELINE_BIND_POINT_COMPUTE`.
+[VK_SHADER_STAGE_VERTEX_BIT](VkShaderStageFlagBits.html) | [VK_SHADER_STAGE_FRAGMENT_BIT](VkShaderStageFlagBits.html) |
+[VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html) is equivalent to calling the original
+version of this command once with [VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html) and
+once with [VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html).
 
 Valid Usage
 
@@ -116,7 +116,7 @@ provided when `layout` was created
 [](#VUID-VkBindDescriptorSetsInfo-pDynamicOffsets-01971) VUID-VkBindDescriptorSetsInfo-pDynamicOffsets-01971
 
 Each element of `pDynamicOffsets` which corresponds to a descriptor
-binding with type `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` **must**
+binding with type [VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) **must**
 be a multiple of
 `VkPhysicalDeviceLimits`::`minUniformBufferOffsetAlignment`
 
@@ -124,7 +124,7 @@ be a multiple of
 [](#VUID-VkBindDescriptorSetsInfo-pDynamicOffsets-01972) VUID-VkBindDescriptorSetsInfo-pDynamicOffsets-01972
 
 Each element of `pDynamicOffsets` which corresponds to a descriptor
-binding with type `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` **must**
+binding with type [VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html) **must**
 be a multiple of
 `VkPhysicalDeviceLimits`::`minStorageBufferOffsetAlignment`
 
@@ -139,7 +139,7 @@ equal to the size of the buffer
 [](#VUID-VkBindDescriptorSetsInfo-pDescriptorSets-06715) VUID-VkBindDescriptorSetsInfo-pDescriptorSets-06715
 
 For each dynamic uniform or storage buffer binding in
-`pDescriptorSets`, if the range was set with `VK_WHOLE_SIZE`
+`pDescriptorSets`, if the range was set with [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html)
 then `pDynamicOffsets` which corresponds to the descriptor binding
 **must** be 0
 
@@ -148,7 +148,7 @@ then `pDynamicOffsets` which corresponds to the descriptor binding
 
 Each element of `pDescriptorSets` **must** not have been allocated from
 a `VkDescriptorPool` with the
-`VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT` flag set
+[VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT](VkDescriptorPoolCreateFlagBits.html) flag set
 
 * 
 [](#VUID-VkBindDescriptorSetsInfo-pDescriptorSets-06563) VUID-VkBindDescriptorSetsInfo-pDescriptorSets-06563
@@ -161,7 +161,7 @@ element of `pDescriptorSets` **must** be a valid [VkDescriptorSet](VkDescriptorS
 
 Each element of `pDescriptorSets` **must** have been allocated with a
 `VkDescriptorSetLayout` which was not created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html)
 
 * 
 [](#VUID-VkBindDescriptorSetsInfo-pDescriptorSets-09914) VUID-VkBindDescriptorSetsInfo-pDescriptorSets-09914
@@ -208,7 +208,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBindDescriptorSetsInfo-sType-sType) VUID-VkBindDescriptorSetsInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_SETS_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_SETS_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkBindDescriptorSetsInfo-pNext-pNext) VUID-VkBindDescriptorSetsInfo-pNext-pNext

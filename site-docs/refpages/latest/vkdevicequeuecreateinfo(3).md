@@ -68,10 +68,10 @@ they did not enable.
 
 For example, [sparse memory management operations](../../../../spec/latest/chapters/sparsemem.html#sparsememory) **can** be
 performed on queues from queue families exposing the
-`VK_QUEUE_SPARSE_BINDING_BIT` bit, provided the
+[VK_QUEUE_SPARSE_BINDING_BIT](VkQueueFlagBits.html) bit, provided the
 [sparseBinding](../../../../spec/latest/chapters/features.html#features-sparseBinding) feature is enabled.
-If a queue family supports both the `VK_QUEUE_SPARSE_BINDING_BIT` and
-`VK_QUEUE_TRANSFER_BIT` bits, applications **may** create a queue from this
+If a queue family supports both the [VK_QUEUE_SPARSE_BINDING_BIT](VkQueueFlagBits.html) and
+[VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html) bits, applications **may** create a queue from this
 family and issue transfer operations without enabling the
 [sparseBinding](../../../../spec/latest/chapters/features.html#features-sparseBinding) feature.
 
@@ -102,15 +102,15 @@ inclusive
 [](#VUID-VkDeviceQueueCreateInfo-flags-02861) VUID-VkDeviceQueueCreateInfo-flags-02861
 
 If the [`protectedMemory`](../../../../spec/latest/chapters/features.html#features-protectedMemory) feature is
-not enabled, the `VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT` bit of
+not enabled, the [VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT](VkDeviceQueueCreateFlagBits.html) bit of
 `flags` **must** not be set
 
 * 
 [](#VUID-VkDeviceQueueCreateInfo-flags-06449) VUID-VkDeviceQueueCreateInfo-flags-06449
 
-If `flags` includes `VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT`,
+If `flags` includes [VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT](VkDeviceQueueCreateFlagBits.html),
 `queueFamilyIndex` **must** be the index of a queue family that
-includes the `VK_QUEUE_PROTECTED_BIT` capability
+includes the [VK_QUEUE_PROTECTED_BIT](VkQueueFlagBits.html) capability
 
 * 
 [](#VUID-VkDeviceQueueCreateInfo-pNext-09398) VUID-VkDeviceQueueCreateInfo-pNext-09398
@@ -119,14 +119,21 @@ If the `pNext` chain includes a
 [VkDeviceQueueShaderCoreControlCreateInfoARM](VkDeviceQueueShaderCoreControlCreateInfoARM.html) structure then
 [VkPhysicalDeviceSchedulingControlsPropertiesARM](VkPhysicalDeviceSchedulingControlsPropertiesARM.html)::`schedulingControlsFlags`
 **must** contain
-`VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM`
+[VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM](VkPhysicalDeviceSchedulingControlsFlagBitsARM.html)
+
+* 
+[](#VUID-VkDeviceQueueCreateInfo-internallySynchronizedQueues-12348) VUID-VkDeviceQueueCreateInfo-internallySynchronizedQueues-12348
+
+If the [    `internallySynchronizedQueues`](../../../../spec/latest/chapters/features.html#features-internallySynchronizedQueues) feature is not enabled, `flags`
+**must** not include
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](VkDeviceQueueCreateFlagBits.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDeviceQueueCreateInfo-sType-sType) VUID-VkDeviceQueueCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceQueueCreateInfo-pNext-pNext) VUID-VkDeviceQueueCreateInfo-pNext-pNext

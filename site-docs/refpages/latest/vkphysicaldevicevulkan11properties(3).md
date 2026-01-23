@@ -50,16 +50,16 @@ typedef struct VkPhysicalDeviceVulkan11Properties {
 structure.
 
 * 
-`deviceUUID` is an array of `VK_UUID_SIZE` `uint8_t` values
+`deviceUUID` is an array of [VK_UUID_SIZE](VK_UUID_SIZE.html) `uint8_t` values
 representing a universally unique identifier for the device.
 
 * 
-`driverUUID` is an array of `VK_UUID_SIZE` `uint8_t` values
+`driverUUID` is an array of [VK_UUID_SIZE](VK_UUID_SIZE.html) `uint8_t` values
 representing a universally unique identifier for the driver build in use
 by the device.
 
 * 
-`deviceLUID` is an array of `VK_LUID_SIZE` `uint8_t` values
+`deviceLUID` is an array of [VK_LUID_SIZE](VK_LUID_SIZE.html) `uint8_t` values
 representing a locally unique identifier for the device.
 
 * 
@@ -67,15 +67,15 @@ representing a locally unique identifier for the device.
 within a linked device adapter corresponding to the device.
 
 * 
-`deviceLUIDValid` is a boolean value that will be `VK_TRUE` if
+`deviceLUIDValid` is a boolean value that will be [VK_TRUE](VK_TRUE.html) if
 `deviceLUID` contains a valid LUID and `deviceNodeMask` contains
-a valid node mask, and `VK_FALSE` if they do not.
+a valid node mask, and [VK_FALSE](VK_FALSE.html) if they do not.
 
 * 
  `subgroupSize` is the default
 number of invocations in each subgroup.
 `subgroupSize` is at least 1 if any of the physical device’s queues
-support `VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT`.
+support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) or [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html).
 `subgroupSize` is a power-of-two.
 
 * 
@@ -83,9 +83,9 @@ support `VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT`.
 `subgroupSupportedStages` is a bitfield of [VkShaderStageFlagBits](VkShaderStageFlagBits.html)
 describing the shader stages that [group    operations](../../../../spec/latest/chapters/shaders.html#shaders-group-operations) with [subgroup scope](../../../../spec/latest/chapters/shaders.html#shaders-scope-subgroup) are
 supported in.
-`subgroupSupportedStages` will have the `VK_SHADER_STAGE_COMPUTE_BIT`
+`subgroupSupportedStages` will have the [VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html)
 bit set if any of the physical device’s queues support
-`VK_QUEUE_COMPUTE_BIT`.
+[VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html).
 
 * 
 
@@ -94,9 +94,9 @@ bit set if any of the physical device’s queues support
 [group operations](../../../../spec/latest/chapters/shaders.html#shaders-group-operations) with
 [subgroup scope](../../../../spec/latest/chapters/shaders.html#shaders-scope-subgroup) supported on this device.
 `subgroupSupportedOperations` will have the
-`VK_SUBGROUP_FEATURE_BASIC_BIT` bit set if any of the physical
-device’s queues support `VK_QUEUE_GRAPHICS_BIT` or
-`VK_QUEUE_COMPUTE_BIT`.
+[VK_SUBGROUP_FEATURE_BASIC_BIT](VkSubgroupFeatureFlagBits.html) bit set if any of the physical
+device’s queues support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) or
+[VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html).
 
 * 
 
@@ -126,10 +126,10 @@ specifies how an implementation behaves when an application attempts to
 write to unprotected memory in a protected queue operation, read from
 protected memory in an unprotected queue operation, or perform a query
 in a protected queue operation.
-If this limit is `VK_TRUE`, such writes will be discarded or have
+If this limit is [VK_TRUE](VK_TRUE.html), such writes will be discarded or have
 **undefined** values written, reads and queries will return **undefined**
 values.
-If this limit is `VK_FALSE`, applications **must** not perform these
+If this limit is [VK_FALSE](VK_FALSE.html), applications **must** not perform these
 operations.
 See [Protected Memory Access Rules](../../../../spec/latest/chapters/memory.html#memory-protected-access-rules) for more information.
 
@@ -147,7 +147,7 @@ limit is supported using [vkGetDescriptorSetLayoutSupport](vkGetDescriptorSetLay
 `maxMemoryAllocationSize` is the maximum size of a memory allocation
 that **can** be created, even if there is more space available in the heap.
 If [VkMemoryAllocateInfo](VkMemoryAllocateInfo.html)::`allocationSize` is larger the error
-`VK_ERROR_OUT_OF_DEVICE_MEMORY` **may** be returned.
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html) **may** be returned.
 
 If the `VkPhysicalDeviceVulkan11Properties` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html) structure passed to
@@ -178,7 +178,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVulkan11Properties-sType-sType) VUID-VkPhysicalDeviceVulkan11Properties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_PROPERTIES](VkStructureType.html)
 
 [VK_VERSION_1_2](VK_VERSION_1_2.html), `VkBool32`, `VkDeviceSize`, [VkPointClippingBehavior](VkPointClippingBehavior.html), [VkShaderStageFlags](VkShaderStageFlags.html), [VkStructureType](VkStructureType.html), [VkSubgroupFeatureFlags](VkSubgroupFeatureFlags.html)
 

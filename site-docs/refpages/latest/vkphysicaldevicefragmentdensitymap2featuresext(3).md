@@ -43,7 +43,7 @@ structure.
 specifies whether the implementation supports deferred reads of fragment
 density map image views.
 If this feature is not enabled,
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT` **must**
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DEFERRED_BIT_EXT](VkImageViewCreateFlagBits.html) **must**
 not be included in `VkImageViewCreateInfo`::`flags`.
 
 If the `VkPhysicalDeviceFragmentDensityMap2FeaturesEXT` structure is included in the `pNext` chain of the
@@ -52,7 +52,7 @@ If the `VkPhysicalDeviceFragmentDensityMap2FeaturesEXT` structure is included in
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceFragmentDensityMap2FeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -60,7 +60,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFragmentDensityMap2FeaturesEXT-sType-sType) VUID-VkPhysicalDeviceFragmentDensityMap2FeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_fragment_density_map2](VK_EXT_fragment_density_map2.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -33,34 +33,34 @@ typedef enum VkComponentSwizzle {
 } VkComponentSwizzle;
 
 * 
-`VK_COMPONENT_SWIZZLE_IDENTITY` specifies that the component is set
+[VK_COMPONENT_SWIZZLE_IDENTITY](#) specifies that the component is set
 to the identity swizzle.
 
 * 
-`VK_COMPONENT_SWIZZLE_ZERO` specifies that the component is set to
+[VK_COMPONENT_SWIZZLE_ZERO](#) specifies that the component is set to
 zero.
 
 * 
-`VK_COMPONENT_SWIZZLE_ONE` specifies that the component is set to
+[VK_COMPONENT_SWIZZLE_ONE](#) specifies that the component is set to
 either 1 or 1.0, depending on whether the type of the image view format
 is integer or floating-point respectively, as determined by the
 [Format Definition](../../../../spec/latest/chapters/formats.html#formats-definition) section for each
 [VkFormat](VkFormat.html).
 
 * 
-`VK_COMPONENT_SWIZZLE_R` specifies that the component is set to the
+[VK_COMPONENT_SWIZZLE_R](#) specifies that the component is set to the
 value of the R component of the image.
 
 * 
-`VK_COMPONENT_SWIZZLE_G` specifies that the component is set to the
+[VK_COMPONENT_SWIZZLE_G](#) specifies that the component is set to the
 value of the G component of the image.
 
 * 
-`VK_COMPONENT_SWIZZLE_B` specifies that the component is set to the
+[VK_COMPONENT_SWIZZLE_B](#) specifies that the component is set to the
 value of the B component of the image.
 
 * 
-`VK_COMPONENT_SWIZZLE_A` specifies that the component is set to the
+[VK_COMPONENT_SWIZZLE_A](#) specifies that the component is set to the
 value of the A component of the image.
 
 Setting the identity swizzle on a component is equivalent to setting the
@@ -69,10 +69,10 @@ That is:
 
 | Component | Identity Mapping |
 | --- | --- |
-| `components.r` | `VK_COMPONENT_SWIZZLE_R` |
-| `components.g` | `VK_COMPONENT_SWIZZLE_G` |
-| `components.b` | `VK_COMPONENT_SWIZZLE_B` |
-| `components.a` | `VK_COMPONENT_SWIZZLE_A` |
+| `components.r` | [VK_COMPONENT_SWIZZLE_R](#) |
+| `components.g` | [VK_COMPONENT_SWIZZLE_G](#) |
+| `components.b` | [VK_COMPONENT_SWIZZLE_B](#) |
+| `components.a` | [VK_COMPONENT_SWIZZLE_A](#) |
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkComponentMapping](VkComponentMapping.html)
 

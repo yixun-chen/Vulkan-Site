@@ -69,11 +69,11 @@ maximum requested at video session creation time in
 `partitionIndependentIntraRefreshRegions` specifies whether the
 implementation supports intra refresh regions that are independent of
 the picture partitioning used during encoding.
-If it is `VK_TRUE`, then pictures **can** be encoded with multiple
+If it is [VK_TRUE](VK_TRUE.html), then pictures **can** be encoded with multiple
 picture partitions, independent of the used intra refresh mode.
 Otherwise, pictures **cannot** be encoded with multiple picture partitions
 with any intra refresh mode other than
-`VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR`.
+[VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR](VkVideoEncodeIntraRefreshModeFlagBitsKHR.html).
 
 |  | This capability is only indicative for [AV1 encode profiles](../../../../spec/latest/chapters/videocoding.html#encode-av1-profile) and does not impose any restrictions on the application as
 | --- | --- |
@@ -94,7 +94,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeIntraRefreshCapabilitiesKHR-sType-sType) VUID-VkVideoEncodeIntraRefreshCapabilitiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_INTRA_REFRESH_CAPABILITIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_INTRA_REFRESH_CAPABILITIES_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_intra_refresh](VK_KHR_video_encode_intra_refresh.html), `VkBool32`, [VkStructureType](VkStructureType.html), [VkVideoEncodeIntraRefreshModeFlagsKHR](VkVideoEncodeIntraRefreshModeFlagsKHR.html)
 

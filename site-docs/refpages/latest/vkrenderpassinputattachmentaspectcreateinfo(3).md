@@ -68,7 +68,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassInputAttachmentAspectCreateInfo-sType-sType) VUID-VkRenderPassInputAttachmentAspectCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderPassInputAttachmentAspectCreateInfo-pAspectReferences-parameter) VUID-VkRenderPassInputAttachmentAspectCreateInfo-pAspectReferences-parameter

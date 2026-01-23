@@ -17,7 +17,7 @@
 
 VK_REMAINING_3D_SLICES_EXT - Sentinel for all remaining 3D slices
 
-`VK_REMAINING_3D_SLICES_EXT` is a special constant value used for
+[VK_REMAINING_3D_SLICES_EXT](#) is a special constant value used for
 [VkImageViewSlicedCreateInfoEXT](VkImageViewSlicedCreateInfoEXT.html)::`sliceCount` to indicate that all
 remaining 3D slices in an image after the first slice offset specified
 should be included in the view.

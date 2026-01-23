@@ -43,7 +43,7 @@ handles.
 * 
 `waitAll` is the condition that **must** be satisfied to successfully
 unblock the wait.
-If `waitAll` is `VK_TRUE`, then the condition is that all fences
+If `waitAll` is [VK_TRUE](VK_TRUE.html), then the condition is that all fences
 in `pFences` are signaled.
 Otherwise, the condition is that at least one fence in `pFences` is
 signaled.
@@ -63,17 +63,17 @@ is satisfied or the `timeout` has expired, whichever is sooner.
 
 If `timeout` is zero, then `vkWaitForFences` does not wait, but
 simply returns the current state of the fences.
-`VK_TIMEOUT` will be returned in this case if the condition is not
+[VK_TIMEOUT](VkResult.html) will be returned in this case if the condition is not
 satisfied, even though no actual wait was performed.
 
 If the condition is satisfied before the `timeout` has expired,
-`vkWaitForFences` returns `VK_SUCCESS`.
-Otherwise, `vkWaitForFences` returns `VK_TIMEOUT` after the
+`vkWaitForFences` returns [VK_SUCCESS](VkResult.html).
+Otherwise, `vkWaitForFences` returns [VK_TIMEOUT](VkResult.html) after the
 `timeout` has expired.
 
 If device loss occurs (see [Lost Device](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-lost-device)) before
 the timeout has expired, `vkWaitForFences` **must** return in finite time
-with either `VK_SUCCESS` or `VK_ERROR_DEVICE_LOST`.
+with either [VK_SUCCESS](VkResult.html) or [VK_ERROR_DEVICE_LOST](VkResult.html).
 
 |  | While we guarantee that `vkWaitForFences` **must** return in finite time,
 | --- | --- |
@@ -109,27 +109,27 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 * 
-`VK_TIMEOUT`
+[VK_TIMEOUT](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), `VkBool32`, [VkDevice](VkDevice.html), [VkFence](VkFence.html)
 

@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:tutorial" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -336,6 +336,294 @@
   </li>
   <li class="nav-item" data-depth="1">
     <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Tutorial" target="_blank" rel="noopener">GitHub Repository</a></span>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Building a Simple Engine</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Engine Architecture</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Engine_Architecture/01_introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Engine_Architecture/02_architectural_patterns.html">Architectural patterns</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Engine_Architecture/03_component_systems.html">Component systems</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Engine_Architecture/04_resource_management.html">Resource management</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Engine_Architecture/05_rendering_pipeline.html">Rendering pipeline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Engine_Architecture/06_event_systems.html">Event systems</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Engine_Architecture/conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Camera Transformations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Camera_Transformations/01_introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Camera_Transformations/02_math_foundations.html">Math foundations</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Camera_Transformations/03_transformation_matrices.html">Transformation matrices</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Camera_Transformations/04_camera_implementation.html">Camera implementation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Camera_Transformations/05_vulkan_integration.html">Vulkan integration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Camera_Transformations/06_conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Lighting &amp; Materials</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Lighting_Materials/01_introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Lighting_Materials/02_lighting_models.html">Lighting models</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Lighting_Materials/03_push_constants.html">Push constants</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Lighting_Materials/04_lighting_implementation.html">Lighting implementation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Lighting_Materials/05_vulkan_integration.html">Vulkan integration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Lighting_Materials/07_shadows.html">Shadows</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Lighting_Materials/06_conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">GUI</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/GUI/01_introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/GUI/02_imgui_setup.html">ImGui setup</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/GUI/03_input_handling.html">Input handling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/GUI/04_ui_elements.html">UI elements</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/GUI/05_vulkan_integration.html">Vulkan integration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/GUI/06_conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Loading Models</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Loading_Models/01_introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Loading_Models/02_project_setup.html">Project setup</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Loading_Models/03_model_system.html">Model system</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Loading_Models/04_loading_gltf.html">Loading glTF</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Loading_Models/05_pbr_rendering.html">PBR rendering</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Loading_Models/06_multiple_objects.html">Multiple objects</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Loading_Models/07_scene_rendering.html">Scene rendering</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Loading_Models/08_animations.html">Animations</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Loading_Models/09_conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Subsystems</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Subsystems/01_introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Subsystems/02_audio_basics.html">Audio basics</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Subsystems/03_vulkan_audio.html">Vulkan audio</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Subsystems/04_physics_basics.html">Physics basics</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Subsystems/05_vulkan_physics.html">Vulkan physics</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Subsystems/06_conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tooling</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Tooling/01_introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Tooling/02_cicd.html">CI/CD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Tooling/03_debugging_and_renderdoc.html">Debugging &amp; RenderDoc</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Tooling/04_crash_minidump.html">Crash minidumps</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Tooling/05_extensions.html">Extensions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Tooling/06_packaging_and_distribution.html">Packaging &amp; distribution</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Tooling/07_conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Mobile Development</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Mobile_Development/01_introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Mobile_Development/02_platform_considerations.html">Platform considerations</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Mobile_Development/03_performance_optimizations.html">Performance optimizations</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Mobile_Development/04_rendering_approaches.html">Rendering approaches</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Mobile_Development/05_vulkan_extensions.html">Vulkan extensions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Mobile_Development/06_conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Advanced Topics</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Advanced_Topics/01_introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Advanced_Topics/Rendering_Pipeline_Overview.html">Rendering pipeline overview</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Advanced_Topics/Forward_ForwardPlus_Deferred.html">Forward vs Forward+ vs Deferred</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Advanced_Topics/ForwardPlus_Rendering.html">Forward+ rendering</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Advanced_Topics/Culling.html">Culling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Advanced_Topics/Mipmaps_and_LOD.html">Mipmaps &amp; LOD</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Advanced_Topics/Push_Constants_Per_Object.html">Push constants per object</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Advanced_Topics/Synchronization_and_Streaming.html">Synchronization &amp; streaming</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Advanced_Topics/Synchronization_2_Frame_Pacing.html">Synchronization2 &amp; frame pacing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Advanced_Topics/Descriptor_Indexing_UpdateAfterBind.html">Descriptor indexing (UpdateAfterBind)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Advanced_Topics/Separate_Image_Sampler_Descriptors.html">Separate image/sampler descriptors</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Advanced_Topics/Shader_Tile_Image.html">Shader tile image</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Advanced_Topics/GLTF_Animation.html">glTF animation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Advanced_Topics/Planar_Reflections.html">Planar reflections</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Advanced_Topics/Ray_Query_Rendering.html">Ray query rendering</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Advanced_Topics/Ray_Query_Reflections_and_Transparency.html">Ray query: reflections &amp; transparency</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Advanced_Topics/Dynamic_Rendering_Local_Read.html">Dynamic rendering local read</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Advanced_Topics/Robustness2.html">Robustness2</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendix</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../Building_a_Simple_Engine/Appendix/appendix.html">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
   </li>
 </ul>
   </li>
@@ -676,7 +964,7 @@ void createSyncObjects() {
 </div>
 </div>
 <div class="paragraph">
-<p>Creating semaphores requires filling in the <code>VkSemaphoreCreateInfo</code>, but in the current version of the API it doesn&#8217;t actually have any required fields besides <code>sType</code>:</p>
+<p>Creating semaphores requires filling in the <code>vk::SemaphoreCreateInfo</code>, but in the current version of the API it doesn&#8217;t actually have any fields relevant to the tutorial:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -700,38 +988,47 @@ void createSyncObjects() {
 <div class="sectionbody">
 <div class="paragraph">
 <p>At the start of the frame, we want to wait until the previous frame has finished, so that the command buffer and semaphores are available to use.
-To do that, we call <code>vkWaitForFences</code>:</p>
+To do that, we call <code>device.waitForFences</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void drawFrame() {
-   auto [result, imageIndex] = swapChain.acquireNextImage( UINT64_MAX, *presentCompleteSemaphore, nullptr );
+    auto fenceResult = device.waitForFences(*drawFence, vk::True, UINT64_MAX);
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>First, let&#8217;s grab an image from the framebuffer after the previous frame has
-finished.
-The first two parameters of <code>vkAcquireNextImageKHR</code> are the logical device and the swap chain from which we wish to acquire an image.
-The third parameter specifies a timeout in nanoseconds for an image to become available.
+<p>The <code>waitForFences</code> function takes an array of fences and waits on the host for either any or all of the fences to be signaled before returning.
+The <code>vk::True</code> we pass here indicates that we want to wait for all fences, but in the case of a single one it doesn&#8217;t matter.
+This function also has a timeout parameter that we set to the maximum value of a 64 bit unsigned integer, <code>UINT64_MAX</code>, which effectively disables the timeout.</p>
+</div>
+<div class="paragraph">
+<p>Next, let&#8217;s grab an image from the framebuffer after the previous frame has
+finished:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void drawFrame() {
+    ...
+    auto [result, imageIndex] = swapChain.acquireNextImage(UINT64_MAX, *presentCompleteSemaphores[frameIndex], nullptr);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first parameter specifies a timeout in nanoseconds for an image to become available.
 Using the maximum value of a 64-bit unsigned integer means we effectively disable the timeout.</p>
 </div>
 <div class="paragraph">
 <p>The next two parameters specify synchronization objects that are to be signaled when the presentation engine is finished using the image.
 That&#8217;s the point in time where we can start drawing to it.
 It is possible to specify a semaphore, fence or both.
-We&#8217;re going to use our <code>imageAvailableSemaphore</code> for that purpose here.</p>
+We&#8217;re going to use our <code>presentCompleteSemaphores</code> for that purpose here.</p>
 </div>
 <div class="paragraph">
 <p>The last parameter specifies a variable to output the index of the swap chain image that has become available.
 The index refers to the <code>VkImage</code> in our <code>swapChainImages</code> array.
 We&#8217;re going to use that index to pick the <code>VkFrameBuffer</code>. Then we&#8217;ll record
 into that framebuffer.</p>
-</div>
-<div class="paragraph">
-<p>The <code>vkWaitForFences</code> function takes an array of fences and waits on the host for either any or all of the fences to be signaled before returning.
-The <code>VK_TRUE</code> we pass here indicates that we want to wait for all fences, but in the case of a single one it doesn&#8217;t matter.
-This function also has a timeout parameter that we set to the maximum value of a 64 bit unsigned integer, <code>UINT64_MAX</code>, which effectively disables the timeout.</p>
 </div>
 </div>
 </div>
@@ -753,7 +1050,7 @@ already happened, so we know to wait on it later.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">device.resetFences(  *drawFence );</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">device.resetFences(*drawFence);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -765,12 +1062,19 @@ already happened, so we know to wait on it later.</p>
 <h2 id="_submitting_the_command_buffer"><a class="anchor" href="#_submitting_the_command_buffer"></a>Submitting the command buffer</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Queue submission and synchronization is configured through parameters in the <code>VkSubmitInfo</code> structure.</p>
+<p>Queue submission and synchronization is configured through parameters in the <code>vk::SubmitInfo</code> structure.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::PipelineStageFlags waitDestinationStageMask( vk::PipelineStageFlagBits::eColorAttachmentOutput );
-const vk::SubmitInfo submitInfo( **presentCompleteSemaphore, waitDestinationStageMask, **commandBuffer, **renderFinishedSemaphore );</code></pre>
+const vk::SubmitInfo submitInfo{
+    .waitSemaphoreCount = 1,
+    .pWaitSemaphores = &amp;*presentCompleteSemaphore,
+    .pWaitDstStageMask = &amp;waitDestinationStageMask,
+    .commandBufferCount = 1,
+    .pCommandBuffers = &amp;*commandBuffer,
+    .signalSemaphoreCount = 1,
+    .pSignalSemaphores = &amp;*renderFinishedSemaphore};</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -794,18 +1098,10 @@ In our case we&#8217;re using the <code>renderFinishedSemaphore</code> for that 
 </div>
 </div>
 <div class="paragraph">
-<p>We can now submit the command buffer to the graphics queue using <code>vkQueueSubmit</code>.
-The function takes an array of <code>VkSubmitInfo</code> structures as argument for efficiency when the workload is much larger.
+<p>We can now submit the command buffer to the graphics queue using <code>submit</code>.
+The function takes an array of <code>vk::SubmitInfo</code> structures as argument for efficiency when the workload is much larger.
 The last parameter references an optional fence that will be signaled when the command buffers finish execution.
-This allows us to know when it is safe for the command buffer to be reused, thus we want to give it <code>drawFence</code>.
-Now we want the CPU to wait while the GPU finishes rendering that frame we
-just submitted:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">while ( vk::Result::eTimeout == device.waitForFences( *drawFence, vk::True, UINT64_MAX ) )
-            ;</code></pre>
-</div>
+This allows us to know when it is safe for the command buffer to be reused, thus we want to give it <code>drawFence</code>, which is waited on in the next frame.</p>
 </div>
 </div>
 </div>
@@ -880,15 +1176,20 @@ renderPassInfo.pDependencies = &amp;dependency;</code></pre>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The last step of drawing a frame is submitting the result back to the swap chain to have it eventually show up on the screen.
-Presentation is configured through a <code>VkPresentInfoKHR</code> structure at the end of the <code>drawFrame</code> function.</p>
+Presentation is configured through a <code>vk::PresentInfoKHR</code> structure at the end of the <code>drawFrame</code> function.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">const vk::PresentInfoKHR presentInfoKHR( **renderFinishedSemaphore, **swapChain, imageIndex );</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">const vk::PresentInfoKHR presentInfoKHR{
+    .waitSemaphoreCount = 1,
+    .pWaitSemaphores = &amp;*renderFinishedSemaphore,
+    .swapchainCount = 1,
+    .pSwapchains = &amp;*swapChain,
+    .pImageIndices = &amp;imageIndex};</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The first two parameters specify which semaphores to wait on before presentation can happen, just like <code>VkSubmitInfo</code>.
+<p>The first two parameters specify which semaphores to wait on before presentation can happen, just like <code>vk::SubmitInfo</code>.
 Since we want to wait on the command buffer to finish execution, thus our triangle being drawn, we take the semaphores which will be signaled and wait on them, thus we use <code>signalSemaphores</code>.</p>
 </div>
 <div class="paragraph">
@@ -902,17 +1203,17 @@ This will almost always be single.</p>
 </div>
 <div class="paragraph">
 <p>There is one last optional parameter called <code>pResults</code>.
-It allows you to specify an array of <code>VkResult</code> values to check for every swap chain if presentation was successful.
+It allows you to specify an array of <code>vk::Result</code> values to check for every swap chain if presentation was successful.
 It&#8217;s not necessary if you&#8217;re only using a single swap chain, because you can use the return value of the present function.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">result = presentQueue.presentKHR( presentInfoKHR );</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">result = presentQueue.presentKHR(presentInfoKHR);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>vkQueuePresentKHR</code> function submits the request to present an image to the swap chain.
-We&#8217;ll add error handling for both <code>vkAcquireNextImageKHR</code> and <code>vkQueuePresentKHR</code> in the next chapter, because their failure does not necessarily mean that the program should terminate, unlike the functions we&#8217;ve seen so far.</p>
+<p>The <code>presentKHR</code> function submits the request to present an image to the swap chain.
+We&#8217;ll add error handling for both <code>swapChain.acquireNextImage</code> and <code>queue.presentKHR</code> in the next chapter, because their failure does not necessarily mean that the program should terminate, unlike the functions we&#8217;ve seen so far.</p>
 </div>
 <div class="paragraph">
 <p>If you did everything correctly up to this point, then you should now see something resembling the following when you run your program:</p>

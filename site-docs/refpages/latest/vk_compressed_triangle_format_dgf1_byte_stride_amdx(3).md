@@ -17,7 +17,7 @@
 
 VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_STRIDE_AMDX - Alignment requirement for DGF1 compressed data
 
-`VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_STRIDE_AMDX` is the stride
+[VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_STRIDE_AMDX](#) is the stride
 requirement in bytes for compressed triangle data as specified in
 [VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX](VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX.html)::`dataSize`.
 

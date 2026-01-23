@@ -61,7 +61,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceQueueShaderCoreControlCreateInfoARM-sType-sType) VUID-VkDeviceQueueShaderCoreControlCreateInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_QUEUE_SHADER_CORE_CONTROL_CREATE_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_QUEUE_SHADER_CORE_CONTROL_CREATE_INFO_ARM](VkStructureType.html)
 
 [VK_ARM_scheduling_controls](VK_ARM_scheduling_controls.html), [VkStructureType](VkStructureType.html)
 

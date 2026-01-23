@@ -40,9 +40,9 @@ recorded.
 * 
 `imageLayout` specifies the current layout of the image subresource
 ranges to be cleared, and **must** be
-`VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`,
-`VK_IMAGE_LAYOUT_GENERAL` or
-`VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL`.
+[VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](VkImageLayout.html).
 
 * 
 `pColor` is a pointer to a [VkClearColorValue](VkClearColorValue.html) structure
@@ -67,13 +67,13 @@ Valid Usage
 [](#VUID-vkCmdClearColorImage-image-01993) VUID-vkCmdClearColorImage-image-01993
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of `image`
-**must** contain `VK_FORMAT_FEATURE_TRANSFER_DST_BIT`
+**must** contain [VK_FORMAT_FEATURE_TRANSFER_DST_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-vkCmdClearColorImage-image-00002) VUID-vkCmdClearColorImage-image-00002
 
 `image` **must** have been created with the
-`VK_IMAGE_USAGE_TRANSFER_DST_BIT` usage flag set
+[VK_IMAGE_USAGE_TRANSFER_DST_BIT](VkImageUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdClearColorImage-image-01545) VUID-vkCmdClearColorImage-image-01545
@@ -98,16 +98,16 @@ command is executed on a `VkDevice`
 [](#VUID-vkCmdClearColorImage-imageLayout-01394) VUID-vkCmdClearColorImage-imageLayout-01394
 
 `imageLayout` **must** be
-`VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`,
-`VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL` or
-`VK_IMAGE_LAYOUT_GENERAL`
+[VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html)
 
 * 
 [](#VUID-vkCmdClearColorImage-aspectMask-02498) VUID-vkCmdClearColorImage-aspectMask-02498
 
 The [VkImageSubresourceRange](VkImageSubresourceRange.html)::`aspectMask` members of the
 elements of the `pRanges` array **must** each only include
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-vkCmdClearColorImage-baseMipLevel-01470) VUID-vkCmdClearColorImage-baseMipLevel-01470
@@ -121,7 +121,7 @@ was created
 [](#VUID-vkCmdClearColorImage-pRanges-01692) VUID-vkCmdClearColorImage-pRanges-01692
 
 For each [VkImageSubresourceRange](VkImageSubresourceRange.html) element of `pRanges`, if the
-`levelCount` member is not `VK_REMAINING_MIP_LEVELS`, then
+`levelCount` member is not [VK_REMAINING_MIP_LEVELS](VK_REMAINING_MIP_LEVELS.html), then
 `baseMipLevel` +  `levelCount` **must** be less than or
 equal to the `mipLevels` specified in [VkImageCreateInfo](VkImageCreateInfo.html) when
 `image` was created
@@ -138,7 +138,7 @@ was created
 [](#VUID-vkCmdClearColorImage-pRanges-01693) VUID-vkCmdClearColorImage-pRanges-01693
 
 For each [VkImageSubresourceRange](VkImageSubresourceRange.html) element of `pRanges`, if the
-`layerCount` member is not `VK_REMAINING_ARRAY_LAYERS`, then
+`layerCount` member is not [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), then
 `baseArrayLayer` +  `layerCount` **must** be less than or
 equal to the `arrayLayers` specified in [VkImageCreateInfo](VkImageCreateInfo.html) when
 `image` was created
@@ -203,7 +203,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdClearColorImage-commandBuffer-cmdpool) VUID-vkCmdClearColorImage-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdClearColorImage-renderpass) VUID-vkCmdClearColorImage-renderpass

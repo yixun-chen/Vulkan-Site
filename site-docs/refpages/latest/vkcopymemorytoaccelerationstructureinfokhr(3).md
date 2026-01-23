@@ -63,7 +63,7 @@ described in that command
 [](#VUID-VkCopyMemoryToAccelerationStructureInfoKHR-mode-03413) VUID-VkCopyMemoryToAccelerationStructureInfoKHR-mode-03413
 
 `mode` **must** be
-`VK_COPY_ACCELERATION_STRUCTURE_MODE_DESERIALIZE_KHR`
+[VK_COPY_ACCELERATION_STRUCTURE_MODE_DESERIALIZE_KHR](VkCopyAccelerationStructureModeKHR.html)
 
 * 
 [](#VUID-VkCopyMemoryToAccelerationStructureInfoKHR-pInfo-03414) VUID-VkCopyMemoryToAccelerationStructureInfoKHR-pInfo-03414
@@ -83,7 +83,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCopyMemoryToAccelerationStructureInfoKHR-sType-sType) VUID-VkCopyMemoryToAccelerationStructureInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COPY_MEMORY_TO_ACCELERATION_STRUCTURE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COPY_MEMORY_TO_ACCELERATION_STRUCTURE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkCopyMemoryToAccelerationStructureInfoKHR-pNext-pNext) VUID-VkCopyMemoryToAccelerationStructureInfoKHR-pNext-pNext

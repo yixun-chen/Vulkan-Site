@@ -44,27 +44,27 @@ typedef enum VkGeometryTypeKHR {
 typedef VkGeometryTypeKHR VkGeometryTypeNV;
 
 * 
-`VK_GEOMETRY_TYPE_TRIANGLES_KHR` specifies a geometry type
+[VK_GEOMETRY_TYPE_TRIANGLES_KHR](#) specifies a geometry type
 consisting of [triangles](../../../../spec/latest/chapters/accelstructures.html#ray-tracing-triangle-primitive).
 
 * 
-`VK_GEOMETRY_TYPE_AABBS_KHR` specifies a geometry type consisting of
+[VK_GEOMETRY_TYPE_AABBS_KHR](#) specifies a geometry type consisting of
 [axis-aligned bounding boxes](../../../../spec/latest/chapters/accelstructures.html#aabb-primitive).
 
 * 
-`VK_GEOMETRY_TYPE_INSTANCES_KHR` specifies a geometry type
+[VK_GEOMETRY_TYPE_INSTANCES_KHR](#) specifies a geometry type
 consisting of acceleration structure instances.
 
 * 
-`VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX` specifies a
+[VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](#) specifies a
 geometry type consisting of triangles from compressed data.
 
 * 
-`VK_GEOMETRY_TYPE_SPHERES_NV` specifies a geometry type consisting
+[VK_GEOMETRY_TYPE_SPHERES_NV](#) specifies a geometry type consisting
 of [spheres](../../../../spec/latest/chapters/accelstructures.html#sphere-primitive).
 
 * 
-`VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV` specifies a geometry type
+[VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV](#) specifies a geometry type
 consisting of [linear swept spheres](../../../../spec/latest/chapters/accelstructures.html#linear-swept-sphere-primitive).
 
 [VK_KHR_acceleration_structure](VK_KHR_acceleration_structure.html), [VK_NV_ray_tracing](VK_NV_ray_tracing.html), [VkAccelerationStructureGeometryKHR](VkAccelerationStructureGeometryKHR.html), [VkGeometryNV](VkGeometryNV.html)

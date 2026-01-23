@@ -20,7 +20,7 @@
 vkGetQueueCheckpointDataNV - Retrieve diagnostic checkpoint data
 
 If the device encounters an error during execution, the implementation will
-return a `VK_ERROR_DEVICE_LOST` error to the application at a certain
+return a [VK_ERROR_DEVICE_LOST](VkResult.html) error to the application at a certain
 point during host execution.
 When this happens, the application **can** call
 [vkGetQueueCheckpointDataNV](#) to retrieve information on the most recent

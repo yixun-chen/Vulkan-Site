@@ -114,7 +114,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFrameBoundaryEXT-sType-sType) VUID-VkFrameBoundaryEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkFrameBoundaryEXT-flags-parameter) VUID-VkFrameBoundaryEXT-flags-parameter

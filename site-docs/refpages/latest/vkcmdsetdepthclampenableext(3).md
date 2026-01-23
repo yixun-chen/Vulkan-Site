@@ -38,14 +38,14 @@ This command sets whether depth clamping is enabled or disabled for
 subsequent drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT` set in
+[VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineRasterizationStateCreateInfo](VkPipelineRasterizationStateCreateInfo.html)::`depthClampEnable` value
 used to create the currently active pipeline.
 
 If the depth clamping state is changed dynamically, and the pipeline was not
-created with `VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT` enabled, then
+created with [VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT](VkDynamicState.html) enabled, then
 depth clipping is enabled when depth clamping is disabled and vice versa.
 
 Valid Usage
@@ -64,7 +64,7 @@ The [`shaderObject`](../../../../spec/latest/chapters/features.html#features-sha
 [](#VUID-vkCmdSetDepthClampEnableEXT-depthClamp-07449) VUID-vkCmdSetDepthClampEnableEXT-depthClamp-07449
 
 If the [`depthClamp`](../../../../spec/latest/chapters/features.html#features-depthClamp) feature is not enabled,
-`depthClampEnable` **must** be `VK_FALSE`
+`depthClampEnable` **must** be [VK_FALSE](VK_FALSE.html)
 
 Valid Usage (Implicit)
 
@@ -81,7 +81,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDepthClampEnableEXT-commandBuffer-cmdpool) VUID-vkCmdSetDepthClampEnableEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetDepthClampEnableEXT-videocoding) VUID-vkCmdSetDepthClampEnableEXT-videocoding

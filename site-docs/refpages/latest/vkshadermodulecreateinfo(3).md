@@ -128,7 +128,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkShaderModuleCreateInfo-sType-sType) VUID-VkShaderModuleCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkShaderModuleCreateInfo-flags-zerobitmask) VUID-VkShaderModuleCreateInfo-flags-zerobitmask

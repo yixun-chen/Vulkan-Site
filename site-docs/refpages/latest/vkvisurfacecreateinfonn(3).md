@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkViSurfaceCreateInfoNN-sType-sType) VUID-VkViSurfaceCreateInfoNN-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VI_SURFACE_CREATE_INFO_NN`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VI_SURFACE_CREATE_INFO_NN](VkStructureType.html)
 
 * 
 [](#VUID-VkViSurfaceCreateInfoNN-pNext-pNext) VUID-VkViSurfaceCreateInfoNN-pNext-pNext

@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceNestedCommandBufferPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceNestedCommandBufferPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_nested_command_buffer](VK_EXT_nested_command_buffer.html), [VkStructureType](VkStructureType.html)
 

@@ -34,6 +34,10 @@ typedef enum VkIndirectCommandsTokenTypeEXT {
     VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_COUNT_EXT = 7,
     VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_COUNT_EXT = 8,
     VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT = 9,
+  // Provided by VK_EXT_descriptor_heap with VK_EXT_device_generated_commands
+    VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT = 1000135000,
+  // Provided by VK_EXT_descriptor_heap with VK_EXT_device_generated_commands
+    VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT = 1000135001,
   // Provided by VK_EXT_device_generated_commands with VK_NV_mesh_shader
     VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT = 1000202002,
   // Provided by VK_EXT_device_generated_commands with VK_NV_mesh_shader
@@ -48,26 +52,28 @@ typedef enum VkIndirectCommandsTokenTypeEXT {
 
 | **Common Tokens** | **Command Data** |
 | --- | --- |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT` | `u32[]` array of indices into the indirect execution set |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT` | `u32[]` raw data |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT` | `u32` placeholder data (not accessed by shader) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#) | `u32[]` array of indices into the indirect execution set |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](#) | `u32[]` raw data |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT](#) | `u8[]` raw data |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](#) | `u32` placeholder data (not accessed by shader) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT](#) | `u32` placeholder data (not accessed by shader) |
 | **Compute Tokens** |  |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT` | [VkDispatchIndirectCommand](VkDispatchIndirectCommand.html) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT](#) | [VkDispatchIndirectCommand](VkDispatchIndirectCommand.html) |
 | **Ray Tracing Tokens** |  |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT` | [VkTraceRaysIndirectCommand2KHR](VkTraceRaysIndirectCommand2KHR.html) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT](#) | [VkTraceRaysIndirectCommand2KHR](VkTraceRaysIndirectCommand2KHR.html) |
 | **Graphics State Tokens** |  |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT` | [VkBindIndexBufferIndirectCommandEXT](VkBindIndexBufferIndirectCommandEXT.html) |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT` | [VkBindVertexBufferIndirectCommandEXT](VkBindVertexBufferIndirectCommandEXT.html) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT](#) | [VkBindIndexBufferIndirectCommandEXT](VkBindIndexBufferIndirectCommandEXT.html) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT](#) | [VkBindVertexBufferIndirectCommandEXT](VkBindVertexBufferIndirectCommandEXT.html) |
 | **Graphics Draw Tokens** |  |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_EXT` | [VkDrawIndexedIndirectCommand](VkDrawIndexedIndirectCommand.html) |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_EXT` | [VkDrawIndirectCommand](VkDrawIndirectCommand.html) |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT` | [VkDrawMeshTasksIndirectCommandEXT](VkDrawMeshTasksIndirectCommandEXT.html) |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT` | [VkDrawMeshTasksIndirectCommandNV](VkDrawMeshTasksIndirectCommandNV.html) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_EXT](#) | [VkDrawIndexedIndirectCommand](VkDrawIndexedIndirectCommand.html) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_EXT](#) | [VkDrawIndirectCommand](VkDrawIndirectCommand.html) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT](#) | [VkDrawMeshTasksIndirectCommandEXT](VkDrawMeshTasksIndirectCommandEXT.html) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT](#) | [VkDrawMeshTasksIndirectCommandNV](VkDrawMeshTasksIndirectCommandNV.html) |
 | **Graphics Draw Count Tokens** |  |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_COUNT_EXT` | [VkDrawIndirectCountIndirectCommandEXT](VkDrawIndirectCountIndirectCommandEXT.html) with VkDrawIndexedIndirectCommand |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_COUNT_EXT` | [VkDrawIndirectCountIndirectCommandEXT](VkDrawIndirectCountIndirectCommandEXT.html) with VkDrawIndirectCommand |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT` | [VkDrawIndirectCountIndirectCommandEXT](VkDrawIndirectCountIndirectCommandEXT.html) with VkDrawMeshTasksIndirectCommandEXT |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT` | [VkDrawIndirectCountIndirectCommandEXT](VkDrawIndirectCountIndirectCommandEXT.html) with VkDrawMeshTasksIndirectCommandNV |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_COUNT_EXT](#) | [VkDrawIndirectCountIndirectCommandEXT](VkDrawIndirectCountIndirectCommandEXT.html) with VkDrawIndexedIndirectCommand |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_COUNT_EXT](#) | [VkDrawIndirectCountIndirectCommandEXT](VkDrawIndirectCountIndirectCommandEXT.html) with VkDrawIndirectCommand |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT](#) | [VkDrawIndirectCountIndirectCommandEXT](VkDrawIndirectCountIndirectCommandEXT.html) with VkDrawMeshTasksIndirectCommandEXT |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT](#) | [VkDrawIndirectCountIndirectCommandEXT](VkDrawIndirectCountIndirectCommandEXT.html) with VkDrawMeshTasksIndirectCommandNV |
 
 [VK_EXT_device_generated_commands](VK_EXT_device_generated_commands.html), [VkIndirectCommandsLayoutTokenEXT](VkIndirectCommandsLayoutTokenEXT.html)
 

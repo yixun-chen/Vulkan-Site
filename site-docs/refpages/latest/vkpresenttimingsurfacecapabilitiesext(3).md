@@ -65,17 +65,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPresentTimingSurfaceCapabilitiesEXT-sType-sType) VUID-VkPresentTimingSurfaceCapabilitiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PRESENT_TIMING_SURFACE_CAPABILITIES_EXT`
-
-* 
-[](#VUID-VkPresentTimingSurfaceCapabilitiesEXT-presentStageQueries-parameter) VUID-VkPresentTimingSurfaceCapabilitiesEXT-presentStageQueries-parameter
-
- `presentStageQueries` **must** be a valid combination of [VkPresentStageFlagBitsEXT](VkPresentStageFlagBitsEXT.html) values
-
-* 
-[](#VUID-VkPresentTimingSurfaceCapabilitiesEXT-presentStageQueries-requiredbitmask) VUID-VkPresentTimingSurfaceCapabilitiesEXT-presentStageQueries-requiredbitmask
-
- `presentStageQueries` **must** not be `0`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PRESENT_TIMING_SURFACE_CAPABILITIES_EXT](VkStructureType.html)
 
 [VK_EXT_present_timing](VK_EXT_present_timing.html), `VkBool32`, [VkPresentStageFlagsEXT](VkPresentStageFlagsEXT.html), [VkStructureType](VkStructureType.html)
 

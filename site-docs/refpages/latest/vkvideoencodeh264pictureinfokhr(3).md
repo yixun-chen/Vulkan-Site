@@ -219,8 +219,8 @@ used video profile
 If [VkVideoEncodeH264CapabilitiesKHR](VkVideoEncodeH264CapabilitiesKHR.html)::`flags`, as returned by
 [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the used video
 profile, does not include
-`VK_VIDEO_ENCODE_H264_CAPABILITY_GENERATE_PREFIX_NALU_BIT_KHR`, then
-`generatePrefixNalu` **must** be `VK_FALSE`
+[VK_VIDEO_ENCODE_H264_CAPABILITY_GENERATE_PREFIX_NALU_BIT_KHR](VkVideoEncodeH264CapabilityFlagBitsKHR.html), then
+`generatePrefixNalu` **must** be [VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-VkVideoEncodeH264PictureInfoKHR-flags-08314) VUID-VkVideoEncodeH264PictureInfoKHR-flags-08314
@@ -228,7 +228,7 @@ profile, does not include
 If [VkVideoEncodeH264CapabilitiesKHR](VkVideoEncodeH264CapabilitiesKHR.html)::`flags`, as returned by
 [vkGetPhysicalDeviceVideoCapabilitiesKHR](vkGetPhysicalDeviceVideoCapabilitiesKHR.html) for the used video
 profile, does not include
-`VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_KHR`
+[VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_KHR](VkVideoEncodeH264CapabilityFlagBitsKHR.html)
 and the slice corresponding to any element of `pNaluSliceEntries`
 uses [explicit weighted sample prediction](../../../../spec/latest/chapters/videocoding.html#encode-h264-weighted-pred),
 then
@@ -240,7 +240,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeH264PictureInfoKHR-sType-sType) VUID-VkVideoEncodeH264PictureInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_PICTURE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_PICTURE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoEncodeH264PictureInfoKHR-pNaluSliceEntries-parameter) VUID-VkVideoEncodeH264PictureInfoKHR-pNaluSliceEntries-parameter

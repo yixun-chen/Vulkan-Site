@@ -99,12 +99,12 @@ Extending [VkPresentInfoKHR](VkPresentInfoKHR.html):
 * 
 Extending [VkResult](VkResult.html):
 
-`VK_ERROR_INCOMPATIBLE_DISPLAY_KHR`
+[VK_ERROR_INCOMPATIBLE_DISPLAY_KHR](VkResult.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR`
+[VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR](VkStructureType.html)
 
 1) Should swapchains sharing images each hold a reference to the images, or
 should it be up to the application to destroy the swapchains and images in

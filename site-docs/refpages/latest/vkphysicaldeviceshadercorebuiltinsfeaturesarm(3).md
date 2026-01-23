@@ -49,7 +49,7 @@ If the `VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM` structure is included in 
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM-sType-sType) VUID-VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_FEATURES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_FEATURES_ARM](VkStructureType.html)
 
 [VK_ARM_shader_core_builtins](VK_ARM_shader_core_builtins.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

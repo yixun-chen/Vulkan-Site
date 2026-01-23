@@ -71,14 +71,14 @@ Valid Usage
 
 `rasterizationStream` **must** be zero if
 `VkPhysicalDeviceTransformFeedbackPropertiesEXT`::`transformFeedbackRasterizationStreamSelect`
-is `VK_FALSE`
+is [VK_FALSE](VK_FALSE.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineRasterizationStateStreamCreateInfoEXT-sType-sType) VUID-VkPipelineRasterizationStateStreamCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineRasterizationStateStreamCreateInfoEXT-flags-zerobitmask) VUID-VkPipelineRasterizationStateStreamCreateInfoEXT-flags-zerobitmask

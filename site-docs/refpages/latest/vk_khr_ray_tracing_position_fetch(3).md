@@ -123,7 +123,7 @@ positions in the shader from a hit triangle as stored in the acceleration
 structure.
 
 An application adds
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR` to the
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR](VkBuildAccelerationStructureFlagBitsKHR.html) to the
 acceleration structure at build time.
 Then, if the hit is a triangle geometry, the shader (any-hit or closest hit
 for ray pipelines or using ray query) **can** fetch the three, three-component
@@ -143,15 +143,15 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkBuildAccelerationStructureFlagBitsKHR](VkBuildAccelerationStructureFlagBitsKHR.html):
 
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR`
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR](VkBuildAccelerationStructureFlagBitsKHR.html)
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_KHR`
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_KHR](VkBuildAccelerationStructureFlagBitsKHR.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_POSITION_FETCH_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_POSITION_FETCH_FEATURES_KHR](VkStructureType.html)
 
 * 
 [`HitTriangleVertexPositionsKHR`](../../../../spec/latest/chapters/interfaces.html#interfaces-builtin-variables-hittrianglevertexpositions)

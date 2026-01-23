@@ -24,11 +24,11 @@ The prototype for the
 implemented by the application is:
 
 // Provided by VK_EXT_debug_utils
-typedef VkBool32 (VKAPI_PTR *PFN_vkDebugUtilsMessengerCallbackEXT)(
-    VkDebugUtilsMessageSeverityFlagBitsEXT           messageSeverity,
-    VkDebugUtilsMessageTypeFlagsEXT                  messageTypes,
-    const VkDebugUtilsMessengerCallbackDataEXT*      pCallbackData,
-    void*                                            pUserData);
+typedef VkBool32 (*PFN_vkDebugUtilsMessengerCallbackEXT)(
+    VkDebugUtilsMessageSeverityFlagBitsEXT      messageSeverity,
+    VkDebugUtilsMessageTypeFlagsEXT             messageTypes,
+    const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
+    void*                                       pUserData);
 
 * 
 `messageSeverity` specifies the
@@ -51,8 +51,8 @@ specified when the [VkDebugUtilsMessengerEXT](VkDebugUtilsMessengerEXT.html) obj
 
 The callback returns a `VkBool32`, which is interpreted in a
 layer-specified manner.
-The application **should** always return `VK_FALSE`.
-The `VK_TRUE` value is reserved for use in layer development.
+The application **should** always return [VK_FALSE](VK_FALSE.html).
+The [VK_TRUE](VK_TRUE.html) value is reserved for use in layer development.
 
 Valid Usage
 
@@ -61,7 +61,7 @@ Valid Usage
 
 The callback **must** not make calls to any Vulkan commands
 
-[VK_EXT_debug_utils](VK_EXT_debug_utils.html), [VkDebugUtilsMessageSeverityFlagBitsEXT](VkDebugUtilsMessageSeverityFlagBitsEXT.html), [VkDebugUtilsMessageTypeFlagsEXT](VkDebugUtilsMessageTypeFlagsEXT.html), [VkDebugUtilsMessengerCallbackDataEXT](VkDebugUtilsMessengerCallbackDataEXT.html), [VkDebugUtilsMessengerCreateInfoEXT](VkDebugUtilsMessengerCreateInfoEXT.html)
+[VK_EXT_debug_utils](VK_EXT_debug_utils.html), `VkBool32`, [VkDebugUtilsMessageSeverityFlagBitsEXT](VkDebugUtilsMessageSeverityFlagBitsEXT.html), [VkDebugUtilsMessageTypeFlagsEXT](VkDebugUtilsMessageTypeFlagsEXT.html), [VkDebugUtilsMessengerCallbackDataEXT](VkDebugUtilsMessengerCallbackDataEXT.html), [VkDebugUtilsMessengerCreateInfoEXT](VkDebugUtilsMessengerCreateInfoEXT.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/debugging.html#PFN_vkDebugUtilsMessengerCallbackEXT).
 

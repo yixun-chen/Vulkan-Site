@@ -111,7 +111,7 @@ be unique
 [](#VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-11154) VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-11154
 
 Each member of `pInitialShaders` **must** have been created with
-`VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT`
+[VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT](VkShaderCreateFlagBitsEXT.html)
 
 * 
 [](#VUID-VkIndirectExecutionSetShaderInfoEXT-pSetLayoutInfos-10929) VUID-VkIndirectExecutionSetShaderInfoEXT-pSetLayoutInfos-10929
@@ -120,12 +120,35 @@ If `pSetLayoutInfos` is not `NULL`, the descriptor layout values
 specified **must** be compatible with the descriptor set layouts defined at
 the creation of the shader object
 
+* 
+[](#VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-11321) VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-11321
+
+If any element of `pInitialShaders` was created with
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](VkShaderCreateFlagBitsEXT.html), all elements of
+`pInitialShaders` **must** have been created with
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](VkShaderCreateFlagBitsEXT.html)
+
+* 
+[](#VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-11322) VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-11322
+
+If any element of `pInitialShaders` was created without
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](VkShaderCreateFlagBitsEXT.html), all elements of
+`pInitialShaders` **must** have been created without
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](VkShaderCreateFlagBitsEXT.html)
+
+* 
+[](#VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-11323) VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-11323
+
+If elements of `pInitialShaders` were created with
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](VkShaderCreateFlagBitsEXT.html), `pSetLayoutInfos`
+**must** be `NULL`
+
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkIndirectExecutionSetShaderInfoEXT-sType-sType) VUID-VkIndirectExecutionSetShaderInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_SHADER_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_SHADER_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-parameter) VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-parameter

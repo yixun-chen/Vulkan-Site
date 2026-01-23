@@ -66,11 +66,11 @@ specified in [Image Mip Level Sizing](../../../../spec/latest/chapters/resources
 
 Shader access to this image view is only affected by
 `VkImageViewSlicedCreateInfoEXT` if it uses a descriptor of type
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`.
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html).
 For access using any other descriptor type, the contents of
 `VkImageViewSlicedCreateInfoEXT` are ignored; instead, `sliceOffset`
 is treated as being equal to 0, and `sliceCount` is treated as being
-equal to `VK_REMAINING_3D_SLICES_EXT`.
+equal to [VK_REMAINING_3D_SLICES_EXT](VK_REMAINING_3D_SLICES_EXT.html).
 
 Valid Usage
 
@@ -83,7 +83,7 @@ specified in [Image Mip Level Sizing](../../../../spec/latest/chapters/resources
 * 
 [](#VUID-VkImageViewSlicedCreateInfoEXT-sliceCount-07868) VUID-VkImageViewSlicedCreateInfoEXT-sliceCount-07868
 
-If `sliceCount` is not `VK_REMAINING_3D_SLICES_EXT`, it **must** be
+If `sliceCount` is not [VK_REMAINING_3D_SLICES_EXT](VK_REMAINING_3D_SLICES_EXT.html), it **must** be
 non-zero and `sliceOffset` +  `sliceCount` **must** be
 less than or equal to the effective view depth as specified in
 [Image Mip Level Sizing](../../../../spec/latest/chapters/resources.html#resources-image-mip-level-sizing)
@@ -92,12 +92,12 @@ less than or equal to the effective view depth as specified in
 [](#VUID-VkImageViewSlicedCreateInfoEXT-image-07869) VUID-VkImageViewSlicedCreateInfoEXT-image-07869
 
 `image` **must** have been created with `imageType` equal to
-`VK_IMAGE_TYPE_3D`
+[VK_IMAGE_TYPE_3D](VkImageType.html)
 
 * 
 [](#VUID-VkImageViewSlicedCreateInfoEXT-viewType-07909) VUID-VkImageViewSlicedCreateInfoEXT-viewType-07909
 
-`viewType` **must** be `VK_IMAGE_VIEW_TYPE_3D`
+`viewType` **must** be [VK_IMAGE_VIEW_TYPE_3D](VkImageViewType.html)
 
 * 
 [](#VUID-VkImageViewSlicedCreateInfoEXT-None-07870) VUID-VkImageViewSlicedCreateInfoEXT-None-07870
@@ -115,7 +115,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageViewSlicedCreateInfoEXT-sType-sType) VUID-VkImageViewSlicedCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_VIEW_SLICED_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_SLICED_CREATE_INFO_EXT](VkStructureType.html)
 
 [VK_EXT_image_sliced_view_of_3d](VK_EXT_image_sliced_view_of_3d.html), [VkStructureType](VkStructureType.html)
 

@@ -63,7 +63,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdDecompressMemoryEXT-commandBuffer-cmdpool) VUID-vkCmdDecompressMemoryEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdDecompressMemoryEXT-renderpass) VUID-vkCmdDecompressMemoryEXT-renderpass

@@ -39,7 +39,7 @@ structure.
 * 
 `underlyingAPI` is a [VkLayeredDriverUnderlyingApiMSFT](VkLayeredDriverUnderlyingApiMSFT.html) value
 indicating which underlying API is used to implement the layered driver,
-or `VK_LAYERED_DRIVER_UNDERLYING_API_NONE_MSFT` if the driver is not
+or [VK_LAYERED_DRIVER_UNDERLYING_API_NONE_MSFT](VkLayeredDriverUnderlyingApiMSFT.html) if the driver is not
 layered.
 
 These are properties of the driver layering information of a physical
@@ -50,7 +50,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceLayeredDriverPropertiesMSFT-sType-sType) VUID-VkPhysicalDeviceLayeredDriverPropertiesMSFT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT](VkStructureType.html)
 
 [VK_MSFT_layered_driver](VK_MSFT_layered_driver.html), [VkLayeredDriverUnderlyingApiMSFT](VkLayeredDriverUnderlyingApiMSFT.html), [VkStructureType](VkStructureType.html)
 

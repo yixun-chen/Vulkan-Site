@@ -44,7 +44,7 @@ recorded to execute in the primary command buffer in the order they are
 listed in the array.
 
 If any element of `pCommandBuffers` was not recorded with the
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT` flag, and it was recorded
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](VkCommandBufferUsageFlagBits.html) flag, and it was recorded
 into any other primary command buffer which is currently in the
 [executable or recording state](../../../../spec/latest/chapters/cmdbuffers.html#commandbuffers-lifecycle), that primary
 command buffer becomes [invalid](../../../../spec/latest/chapters/cmdbuffers.html#commandbuffers-lifecycle).
@@ -59,7 +59,7 @@ Valid Usage
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-00088) VUID-vkCmdExecuteCommands-pCommandBuffers-00088
 
 Each element of `pCommandBuffers` **must** have been allocated with a
-`level` of `VK_COMMAND_BUFFER_LEVEL_SECONDARY`
+`level` of [VK_COMMAND_BUFFER_LEVEL_SECONDARY](VkCommandBufferLevel.html)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-00089) VUID-vkCmdExecuteCommands-pCommandBuffers-00089
@@ -71,21 +71,21 @@ Each element of `pCommandBuffers` **must** be in the
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-00091) VUID-vkCmdExecuteCommands-pCommandBuffers-00091
 
 If any element of `pCommandBuffers` was not recorded with the
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT` flag, it **must** not be
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](VkCommandBufferUsageFlagBits.html) flag, it **must** not be
 in the [pending state](../../../../spec/latest/chapters/cmdbuffers.html#commandbuffers-lifecycle)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-00092) VUID-vkCmdExecuteCommands-pCommandBuffers-00092
 
 If any element of `pCommandBuffers` was not recorded with the
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT` flag, it **must** not
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](VkCommandBufferUsageFlagBits.html) flag, it **must** not
 have already been recorded to `commandBuffer`
 
 * 
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-00093) VUID-vkCmdExecuteCommands-pCommandBuffers-00093
 
 If any element of `pCommandBuffers` was not recorded with the
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT` flag, it **must** not
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](VkCommandBufferUsageFlagBits.html) flag, it **must** not
 appear more than once in `pCommandBuffers`
 
 * 
@@ -100,7 +100,7 @@ Each element of `pCommandBuffers` **must** have been allocated from a
 
 If this command is called within a render pass instance, each element of
 `pCommandBuffers` **must** have been recorded with the
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](VkCommandBufferUsageFlagBits.html)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-00099) VUID-vkCmdExecuteCommands-pCommandBuffers-00099
@@ -118,8 +118,8 @@ of `pCommandBuffers` was recorded with
     [vkCmdBeginRenderPass](vkCmdBeginRenderPass.html), and [vkCmdNextSubpass](vkCmdNextSubpass.html) has not been
     called in the current render pass instance, the `contents` parameter
     of [vkCmdBeginRenderPass](vkCmdBeginRenderPass.html) **must** have been
-    `VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS`
-, or `VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT`
+    [VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS](VkSubpassContents.html)
+, or [VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT](VkSubpassContents.html)
 
 * 
 [](#VUID-vkCmdExecuteCommands-None-09681) VUID-vkCmdExecuteCommands-None-09681
@@ -128,8 +128,8 @@ of `pCommandBuffers` was recorded with
     [vkCmdBeginRenderPass](vkCmdBeginRenderPass.html), and [vkCmdNextSubpass](vkCmdNextSubpass.html) has been called
     in the current render pass instance, the `contents` parameter of the
     last call to [vkCmdNextSubpass](vkCmdNextSubpass.html) **must** have been
-    `VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS`
-, or `VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR`
+    [VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS](VkSubpassContents.html)
+, or [VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR](VkSubpassContents.html)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-06019) VUID-vkCmdExecuteCommands-pCommandBuffers-06019
@@ -185,7 +185,7 @@ identical to [VkRenderPassBeginInfo](VkRenderPassBeginInfo.html)::`renderArea`
 
 If `vkCmdExecuteCommands` is not being called within a render pass
 instance, each element of `pCommandBuffers` **must** not have been
-recorded with the `VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`
+recorded with the [VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](VkCommandBufferUsageFlagBits.html)
 
 * 
 [](#VUID-vkCmdExecuteCommands-commandBuffer-00101) VUID-vkCmdExecuteCommands-commandBuffer-00101
@@ -197,16 +197,16 @@ not enabled, `commandBuffer` **must** not have any queries
 * 
 [](#VUID-vkCmdExecuteCommands-commandBuffer-00102) VUID-vkCmdExecuteCommands-commandBuffer-00102
 
-If `commandBuffer` has a `VK_QUERY_TYPE_OCCLUSION` query
+If `commandBuffer` has a [VK_QUERY_TYPE_OCCLUSION](VkQueryType.html) query
 [active](../../../../spec/latest/chapters/queries.html#queries-operation-active), then each element of
 `pCommandBuffers` **must** have been recorded with
 `VkCommandBufferInheritanceInfo`::`occlusionQueryEnable` set to
-`VK_TRUE`
+[VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-vkCmdExecuteCommands-commandBuffer-00103) VUID-vkCmdExecuteCommands-commandBuffer-00103
 
-If `commandBuffer` has a `VK_QUERY_TYPE_OCCLUSION` query
+If `commandBuffer` has a [VK_QUERY_TYPE_OCCLUSION](VkQueryType.html) query
 [active](../../../../spec/latest/chapters/queries.html#queries-operation-active), then each element of
 `pCommandBuffers` **must** have been recorded with
 `VkCommandBufferInheritanceInfo`::`queryFlags` having all bits
@@ -215,7 +215,7 @@ set that are set for the query
 * 
 [](#VUID-vkCmdExecuteCommands-commandBuffer-00104) VUID-vkCmdExecuteCommands-commandBuffer-00104
 
-If `commandBuffer` has a `VK_QUERY_TYPE_PIPELINE_STATISTICS`
+If `commandBuffer` has a [VK_QUERY_TYPE_PIPELINE_STATISTICS](VkQueryType.html)
 query [active](../../../../spec/latest/chapters/queries.html#queries-operation-active), then each element of
 `pCommandBuffers` **must** have been recorded with
 `VkCommandBufferInheritanceInfo`::`pipelineStatistics` having
@@ -231,8 +231,8 @@ that are [active](../../../../spec/latest/chapters/queries.html#queries-operatio
 [](#VUID-vkCmdExecuteCommands-commandBuffer-07594) VUID-vkCmdExecuteCommands-commandBuffer-07594
 
 `commandBuffer` **must** not have any queries other than
-`VK_QUERY_TYPE_OCCLUSION` and
-`VK_QUERY_TYPE_PIPELINE_STATISTICS`
+[VK_QUERY_TYPE_OCCLUSION](VkQueryType.html) and
+[VK_QUERY_TYPE_PIPELINE_STATISTICS](VkQueryType.html)
 [active](../../../../spec/latest/chapters/queries.html#queries-operation-active)
 
 * 
@@ -322,7 +322,7 @@ locations
 If this command is called within a render pass instance begun with
 [vkCmdBeginRendering](vkCmdBeginRendering.html), its [VkRenderingInfo](VkRenderingInfo.html)::`flags`
 parameter **must** have included
-`VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT`
+[VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT](VkRenderingFlagBits.html)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pBeginInfo-06025) VUID-vkCmdExecuteCommands-pBeginInfo-06025
@@ -344,7 +344,7 @@ If this command is called within a render pass instance begun with
 recording each element of `pCommandBuffers` **must** be equal to the
 [VkRenderingInfo](VkRenderingInfo.html)::`flags` parameter to
 [vkCmdBeginRendering](vkCmdBeginRendering.html), excluding
-`VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT`
+[VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT](VkRenderingFlagBits.html)
 
 * 
 [](#VUID-vkCmdExecuteCommands-colorAttachmentCount-06027) VUID-vkCmdExecuteCommands-colorAttachmentCount-06027
@@ -384,7 +384,7 @@ element of the `pColorAttachmentFormats` member of the
 `pNext` chain of
 [VkCommandBufferBeginInfo](VkCommandBufferBeginInfo.html)::`pInheritanceInfo` used to begin
 recording each element of `pCommandBuffers` **must** be
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](VkFormat.html)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pDepthAttachment-06029) VUID-vkCmdExecuteCommands-pDepthAttachment-06029
@@ -426,7 +426,7 @@ If this command is called within a render pass instance begun with
 `pNext` chain of
 [VkCommandBufferBeginInfo](VkCommandBufferBeginInfo.html)::`pInheritanceInfo` used to begin
 recording each element of `pCommandBuffers` **must** be
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](VkFormat.html)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pStencilAttachment-06775) VUID-vkCmdExecuteCommands-pStencilAttachment-06775
@@ -440,7 +440,7 @@ If this command is called within a render pass instance begun with
 `pNext` chain of
 [VkCommandBufferBeginInfo](VkCommandBufferBeginInfo.html)::`pInheritanceInfo` used to begin
 recording each element of `pCommandBuffers` **must** be
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](VkFormat.html)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-11500) VUID-vkCmdExecuteCommands-pCommandBuffers-11500
@@ -467,7 +467,7 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](vkCmdBeginRendering.html) and [vkCmdBeginCustomResolveEXT](vkCmdBeginCustomResolveEXT.html) has been
 recorded in the render pass instance, then each element of
 `pCommandBuffers` **must** have been recorded with
-[VkCustomResolveCreateInfoEXT](VkCustomResolveCreateInfoEXT.html)::`customResolve` as `VK_TRUE`
+[VkCustomResolveCreateInfoEXT](VkCustomResolveCreateInfoEXT.html)::`customResolve` as [VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-11503) VUID-vkCmdExecuteCommands-pCommandBuffers-11503
@@ -478,7 +478,7 @@ If the current render pass instance was begun with
 pass instance, then each element of `pCommandBuffers` **must** have
 been recorded with
 [VkCustomResolveCreateInfoEXT](VkCustomResolveCreateInfoEXT.html)::`customResolve` as
-`VK_FALSE`
+[VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-vkCmdExecuteCommands-colorAttachmentCount-11532) VUID-vkCmdExecuteCommands-colorAttachmentCount-11532
@@ -518,7 +518,7 @@ element of the `pColorAttachmentFormats` member of the
 [VkCustomResolveCreateInfoEXT](VkCustomResolveCreateInfoEXT.html) structure included in the `pNext`
 chain of [VkCommandBufferBeginInfo](VkCommandBufferBeginInfo.html)::`pInheritanceInfo` used to
 begin recording each element of `pCommandBuffers` **must** be
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](VkFormat.html)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pDepthAttachment-11535) VUID-vkCmdExecuteCommands-pDepthAttachment-11535
@@ -558,7 +558,7 @@ value of the `depthAttachmentFormat` member of the
 [VkCustomResolveCreateInfoEXT](VkCustomResolveCreateInfoEXT.html) structure included in the `pNext`
 chain of [VkCommandBufferBeginInfo](VkCommandBufferBeginInfo.html)::`pInheritanceInfo` used to
 begin recording each element of `pCommandBuffers` **must** be
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](VkFormat.html)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pStencilAttachment-11538) VUID-vkCmdExecuteCommands-pStencilAttachment-11538
@@ -571,7 +571,7 @@ value of the `stencilAttachmentFormat` member of the
 [VkCustomResolveCreateInfoEXT](VkCustomResolveCreateInfoEXT.html) structure included in the `pNext`
 chain of [VkCommandBufferBeginInfo](VkCommandBufferBeginInfo.html)::`pInheritanceInfo` used to
 begin recording each element of `pCommandBuffers` **must** be
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](VkFormat.html)
 
 * 
 [](#VUID-vkCmdExecuteCommands-resolveImageView-11526) VUID-vkCmdExecuteCommands-resolveImageView-11526
@@ -727,7 +727,7 @@ sample count used to create that image view
 
 If this command is called within a render pass instance begun with
 [vkCmdBeginRendering](vkCmdBeginRendering.html), with any color attachment using a resolve
-mode of `VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`,
+mode of [VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](VkResolveModeFlagBits.html),
 the `pNext` chain of [VkCommandBufferInheritanceInfo](VkCommandBufferInheritanceInfo.html) used to
 create each element of `pCommandBuffers` **must** include a
 [VkExternalFormatANDROID](VkExternalFormatANDROID.html) structure with an `externalFormat`
@@ -738,12 +738,12 @@ matching that used to create the resolve attachment in the render pass
 
 If this command is called within a render pass instance begun with
 [vkCmdBeginRendering](vkCmdBeginRendering.html) with any color attachment using a resolve mode
-of `VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`, and the
+of [VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](VkResolveModeFlagBits.html), and the
 `pNext` chain of [VkCommandBufferInheritanceInfo](VkCommandBufferInheritanceInfo.html) does not
 include a [VkAttachmentSampleCountInfoAMD](VkAttachmentSampleCountInfoAMD.html) or
 [VkAttachmentSampleCountInfoNV](VkAttachmentSampleCountInfoAMD.html) structure, the value of
 [VkCommandBufferInheritanceRenderingInfo](VkCommandBufferInheritanceRenderingInfo.html)::`rasterizationSamples`
-**must** be `VK_SAMPLE_COUNT_1_BIT`
+**must** be [VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html)
 
 * 
 [](#VUID-vkCmdExecuteCommands-commandBuffer-09375) VUID-vkCmdExecuteCommands-commandBuffer-09375
@@ -766,7 +766,7 @@ element of `pCommandBuffers` **must** be less than
 If the [    `nestedCommandBufferRendering`](../../../../spec/latest/chapters/features.html#features-nestedCommandBufferRendering) feature is not enabled, and
 `commandBuffer` is a [secondary command buffer](../../../../spec/latest/appendices/glossary.html#glossary),
 `commandBuffer` **must** not have been recorded with
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](VkCommandBufferUsageFlagBits.html)
 
 * 
 [](#VUID-vkCmdExecuteCommands-nestedCommandBufferSimultaneousUse-09378) VUID-vkCmdExecuteCommands-nestedCommandBufferSimultaneousUse-09378
@@ -774,7 +774,7 @@ If the [    `nestedCommandBufferRendering`](../../../../spec/latest/chapters/fea
 If the [    `nestedCommandBufferSimultaneousUse`](../../../../spec/latest/chapters/features.html#features-nestedCommandBufferSimultaneousUse) feature is not enabled, and
 `commandBuffer` is a [secondary command buffer](../../../../spec/latest/appendices/glossary.html#glossary), each
 element of `pCommandBuffers` **must** not have been recorded with
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT`
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](VkCommandBufferUsageFlagBits.html)
 
 * 
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-09504) VUID-vkCmdExecuteCommands-pCommandBuffers-09504
@@ -811,7 +811,7 @@ active bound [bound tile memory object](../../../../spec/latest/chapters/memory.
 If this command is being recorded within a render pass instance with
 [tile shading](../../../../spec/latest/chapters/renderpass.html#renderpass-tile-shading) enabled, all elements of
 `pCommandBuffers` **must** have been recorded with
-`VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` included in
+[VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](VkTileShadingRenderPassFlagBitsQCOM.html) included in
 [VkRenderPassTileShadingCreateInfoQCOM](VkRenderPassTileShadingCreateInfoQCOM.html)::`flags`
 
 * 
@@ -820,7 +820,7 @@ If this command is being recorded within a render pass instance with
 If the [per-tile execution model](../../../../spec/latest/chapters/renderpass.html#renderpass-per-tile-execution-model)
 is enabled, all elements of `pCommandBuffers` **must** have been
 recorded with
-`VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM` included
+[VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM](VkTileShadingRenderPassFlagBitsQCOM.html) included
 in [VkRenderPassTileShadingCreateInfoQCOM](VkRenderPassTileShadingCreateInfoQCOM.html)::`flags`
 
 * 
@@ -835,7 +835,7 @@ used to record all elements of `pCommandBuffers`
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-10623) VUID-vkCmdExecuteCommands-pCommandBuffers-10623
 
 If any element of `pCommandBuffers` was recorded with
-`VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` included in
+[VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](VkTileShadingRenderPassFlagBitsQCOM.html) included in
 [VkRenderPassTileShadingCreateInfoQCOM](VkRenderPassTileShadingCreateInfoQCOM.html)::`flags`, this command
 **must** be recorded in a render pass that has tile shading enabled
 
@@ -843,7 +843,7 @@ If any element of `pCommandBuffers` was recorded with
 [](#VUID-vkCmdExecuteCommands-pCommandBuffers-10624) VUID-vkCmdExecuteCommands-pCommandBuffers-10624
 
 If any element of `pCommandBuffers` was recorded with
-`VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM` included
+[VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM](VkTileShadingRenderPassFlagBitsQCOM.html) included
 in [VkRenderPassTileShadingCreateInfoQCOM](VkRenderPassTileShadingCreateInfoQCOM.html)::`flags`,
 [per-tile execution model](../../../../spec/latest/chapters/renderpass.html#renderpass-per-tile-execution-model) **must**
 be enabled
@@ -855,6 +855,44 @@ If this command is not being recorded into a render pass instance, the
 [VkRenderPassTileShadingCreateInfoQCOM](VkRenderPassTileShadingCreateInfoQCOM.html)::`tileApronSize` that
 was recorded into all elements of `pCommandBuffers` **must** equal
 `(0,0)`
+
+* 
+[](#VUID-vkCmdExecuteCommands-commandBuffer-11351) VUID-vkCmdExecuteCommands-commandBuffer-11351
+
+If there is a sampler descriptor heap bound to `commandBuffer`, each
+element of `pCommandBuffers` **must** have been recorded with a value
+of
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pSamplerHeapBindInfo`
+that is either `NULL` or a pointer to a bind info that is identical to
+that set via the last call to [vkCmdBindSamplerHeapEXT](vkCmdBindSamplerHeapEXT.html)
+
+* 
+[](#VUID-vkCmdExecuteCommands-commandBuffer-11352) VUID-vkCmdExecuteCommands-commandBuffer-11352
+
+If there is a resource descriptor heap bound to `commandBuffer`,
+each element of `pCommandBuffers` **must** have been recorded with a
+value of
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pResourceHeapBindInfo`
+that is either `NULL` or a pointer to a bind info that is identical to
+that set via the last call to [vkCmdBindResourceHeapEXT](vkCmdBindResourceHeapEXT.html)
+
+* 
+[](#VUID-vkCmdExecuteCommands-commandBuffer-11473) VUID-vkCmdExecuteCommands-commandBuffer-11473
+
+If there is no sampler descriptor heap bound to `commandBuffer`,
+each element of `pCommandBuffers` **must** have been recorded with a
+value of
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pSamplerHeapBindInfo`
+set to `NULL`
+
+* 
+[](#VUID-vkCmdExecuteCommands-commandBuffer-11474) VUID-vkCmdExecuteCommands-commandBuffer-11474
+
+If there is no resource descriptor heap bound to `commandBuffer`,
+each element of `pCommandBuffers` **must** have been recorded with a
+value of
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pResourceHeapBindInfo`
+set to `NULL`
 
 Valid Usage (Implicit)
 
@@ -876,7 +914,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdExecuteCommands-commandBuffer-cmdpool) VUID-vkCmdExecuteCommands-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, or `VK_QUEUE_TRANSFER_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html), or [VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdExecuteCommands-videocoding) VUID-vkCmdExecuteCommands-videocoding

@@ -61,7 +61,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkWaylandSurfaceCreateInfoKHR-sType-sType) VUID-VkWaylandSurfaceCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkWaylandSurfaceCreateInfoKHR-pNext-pNext) VUID-VkWaylandSurfaceCreateInfoKHR-pNext-pNext

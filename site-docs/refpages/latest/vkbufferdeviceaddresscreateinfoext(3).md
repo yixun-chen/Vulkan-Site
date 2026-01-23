@@ -52,14 +52,14 @@ If this structure is not present, it is as if `deviceAddress` is zero.
 
 Applications **should** avoid creating buffers with application-provided
 addresses and implementation-provided addresses in the same process, to
-reduce the likelihood of `VK_ERROR_INVALID_DEVICE_ADDRESS_EXT` errors.
+reduce the likelihood of [VK_ERROR_INVALID_DEVICE_ADDRESS_EXT](VkResult.html) errors.
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkBufferDeviceAddressCreateInfoEXT-sType-sType) VUID-VkBufferDeviceAddressCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkBufferDeviceAddressCreateInfoEXT-deviceAddress-parameter) VUID-VkBufferDeviceAddressCreateInfoEXT-deviceAddress-parameter

@@ -57,10 +57,10 @@ structure.
 * 
 `imageCompressionFlags` returns a value describing the compression
 controls that apply to the image.
-The value will be either `VK_IMAGE_COMPRESSION_DEFAULT_EXT` to
+The value will be either [VK_IMAGE_COMPRESSION_DEFAULT_EXT](VkImageCompressionFlagBitsEXT.html) to
 indicate no fixed-rate compression,
-`VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT` to indicate
-fixed-rate compression, or `VK_IMAGE_COMPRESSION_DISABLED_EXT` to
+[VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT](VkImageCompressionFlagBitsEXT.html) to indicate
+fixed-rate compression, or [VK_IMAGE_COMPRESSION_DISABLED_EXT](VkImageCompressionFlagBitsEXT.html) to
 indicate no compression.
 
 * 
@@ -73,7 +73,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageCompressionPropertiesEXT-sType-sType) VUID-VkImageCompressionPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_image_compression_control](VK_EXT_image_compression_control.html), [VkImageCompressionFixedRateFlagsEXT](VkImageCompressionFixedRateFlagsEXT.html), [VkImageCompressionFlagsEXT](VkImageCompressionFlagsEXT.html), [VkStructureType](VkStructureType.html)
 

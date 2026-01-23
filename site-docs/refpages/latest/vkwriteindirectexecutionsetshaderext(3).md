@@ -59,7 +59,7 @@ Valid Usage
 [](#VUID-VkWriteIndirectExecutionSetShaderEXT-shader-11032) VUID-VkWriteIndirectExecutionSetShaderEXT-shader-11032
 
 `shader` **must** have been created with
-`VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT`
+[VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT](VkShaderCreateFlagBitsEXT.html)
 
 * 
 [](#VUID-VkWriteIndirectExecutionSetShaderEXT-pInitialShaders-11033) VUID-VkWriteIndirectExecutionSetShaderEXT-pInitialShaders-11033
@@ -78,7 +78,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkWriteIndirectExecutionSetShaderEXT-sType-sType) VUID-VkWriteIndirectExecutionSetShaderEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_SHADER_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_SHADER_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkWriteIndirectExecutionSetShaderEXT-shader-parameter) VUID-VkWriteIndirectExecutionSetShaderEXT-shader-parameter

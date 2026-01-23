@@ -43,7 +43,7 @@ described above for [vkCmdSetStencilCompareMask](vkCmdSetStencilCompareMask.html
 This command sets the stencil write mask for subsequent drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_STENCIL_WRITE_MASK` set in
+[VK_DYNAMIC_STATE_STENCIL_WRITE_MASK](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the `writeMask` value used to
 create the currently active pipeline, for both
@@ -75,7 +75,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetStencilWriteMask-commandBuffer-cmdpool) VUID-vkCmdSetStencilWriteMask-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetStencilWriteMask-videocoding) VUID-vkCmdSetStencilWriteMask-videocoding

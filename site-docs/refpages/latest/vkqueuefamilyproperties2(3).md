@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueueFamilyProperties2-sType-sType) VUID-VkQueueFamilyProperties2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUEUE_FAMILY_PROPERTIES_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_PROPERTIES_2](VkStructureType.html)
 
 * 
 [](#VUID-VkQueueFamilyProperties2-pNext-pNext) VUID-VkQueueFamilyProperties2-pNext-pNext

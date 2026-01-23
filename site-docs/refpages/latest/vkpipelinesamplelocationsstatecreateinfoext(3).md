@@ -48,22 +48,22 @@ structure.
 * 
 `sampleLocationsEnable` controls whether custom sample locations are
 used.
-If `sampleLocationsEnable` is `VK_FALSE`, the default sample
+If `sampleLocationsEnable` is [VK_FALSE](VK_FALSE.html), the default sample
 locations are used and the values specified in `sampleLocationsInfo`
 are ignored.
 
 * 
 `sampleLocationsInfo` is the sample locations to use during
-rasterization if `sampleLocationsEnable` is `VK_TRUE` and the
+rasterization if `sampleLocationsEnable` is [VK_TRUE](VK_TRUE.html) and the
 graphics pipeline is not created with
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT`.
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](VkDynamicState.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineSampleLocationsStateCreateInfoEXT-sType-sType) VUID-VkPipelineSampleLocationsStateCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineSampleLocationsStateCreateInfoEXT-sampleLocationsInfo-parameter) VUID-VkPipelineSampleLocationsStateCreateInfoEXT-sampleLocationsInfo-parameter

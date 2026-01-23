@@ -55,12 +55,21 @@ During replay, opaque descriptor capture data **can** be specified by adding a
 [VkAccelerationStructureCreateInfoNV](VkAccelerationStructureCreateInfoNV.html) or
 [VkAccelerationStructureCreateInfoKHR](VkAccelerationStructureCreateInfoKHR.html) structure.
 
+When providing opaque capture data for an image, if the `pNext` chain of
+[VkImageCreateInfo](VkImageCreateInfo.html)
+or [VkTensorCreateInfoARM](VkTensorCreateInfoARM.html)
+contains an instance of both this structure and
+[VkOpaqueCaptureDataCreateInfoEXT](VkOpaqueCaptureDataCreateInfoEXT.html), they **should** both specify data from
+the same original resource.
+If they have capture data from different original resources, resource
+creation is much more likely to fail.
+
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkOpaqueCaptureDescriptorDataCreateInfoEXT-sType-sType) VUID-VkOpaqueCaptureDescriptorDataCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_OPAQUE_CAPTURE_DESCRIPTOR_DATA_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_OPAQUE_CAPTURE_DESCRIPTOR_DATA_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkOpaqueCaptureDescriptorDataCreateInfoEXT-opaqueCaptureDescriptorData-parameter) VUID-VkOpaqueCaptureDescriptorDataCreateInfoEXT-opaqueCaptureDescriptorData-parameter

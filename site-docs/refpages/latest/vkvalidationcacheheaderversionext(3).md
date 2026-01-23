@@ -28,7 +28,7 @@ typedef enum VkValidationCacheHeaderVersionEXT {
 } VkValidationCacheHeaderVersionEXT;
 
 * 
-`VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT` specifies version one
+[VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT](#) specifies version one
 of the validation cache.
 
 [VK_EXT_validation_cache](VK_EXT_validation_cache.html), [vkCreateValidationCacheEXT](vkCreateValidationCacheEXT.html), [vkGetValidationCacheDataEXT](vkGetValidationCacheDataEXT.html)

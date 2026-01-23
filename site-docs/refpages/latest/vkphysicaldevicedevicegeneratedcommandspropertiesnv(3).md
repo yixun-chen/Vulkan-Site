@@ -94,7 +94,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV-sType-sType) VUID-VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_NV](VkStructureType.html)
 
 [VK_NV_device_generated_commands](VK_NV_device_generated_commands.html), [VkStructureType](VkStructureType.html)
 

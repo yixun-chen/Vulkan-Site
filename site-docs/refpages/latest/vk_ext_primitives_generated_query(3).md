@@ -98,12 +98,12 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkQueryType](VkQueryType.html):
 
-`VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT`
+[VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](VkQueryType.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVES_GENERATED_QUERY_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVES_GENERATED_QUERY_FEATURES_EXT](VkStructureType.html)
 
 1) Can the query from `VK_EXT_transform_feedback` be used instead?
 

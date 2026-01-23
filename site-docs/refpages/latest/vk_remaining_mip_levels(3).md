@@ -17,7 +17,7 @@
 
 VK_REMAINING_MIP_LEVELS - Sentinel for all remaining mipmap levels
 
-`VK_REMAINING_MIP_LEVELS` is a special constant value used for image
+[VK_REMAINING_MIP_LEVELS](#) is a special constant value used for image
 views to indicate that all remaining mipmap levels in an image after the
 base level should be included in the view.
 

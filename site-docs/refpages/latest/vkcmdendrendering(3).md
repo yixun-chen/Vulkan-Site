@@ -35,7 +35,7 @@ void vkCmdEndRenderingKHR(
 command.
 
 If the value of `pRenderingInfo->flags` used to begin this render pass
-instance included `VK_RENDERING_SUSPENDING_BIT`, then this render pass
+instance included [VK_RENDERING_SUSPENDING_BIT](VkRenderingFlagBits.html), then this render pass
 is suspended and will be resumed later in
 [submission order](../../../../spec/latest/chapters/synchronization.html#synchronization-submission-order).
 
@@ -111,7 +111,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdEndRendering-commandBuffer-cmdpool) VUID-vkCmdEndRendering-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdEndRendering-renderpass) VUID-vkCmdEndRendering-renderpass

@@ -17,7 +17,7 @@
 
 VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV - Sentinel for global acceleration structure partitions
 
-`VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV` is a
+[VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV](#) is a
 special constant value used for partitioned acceleration structures to
 specify global partitions.
 

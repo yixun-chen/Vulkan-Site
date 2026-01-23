@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:spec" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -174,6 +174,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="descriptorsets.html">Resource Descriptors</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="descriptorheaps.html">Descriptor Heaps</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="interfaces.html">Shader Interfaces</a>
@@ -485,14 +488,14 @@ single contiguous range of memory corresponds to an identical offset
 within that range of memory.</p>
 </li>
 <li>
-<p>Requested via the <code>VK_IMAGE_CREATE_SPARSE_BINDING_BIT</code> and
-<code>VK_BUFFER_CREATE_SPARSE_BINDING_BIT</code> bits.</p>
+<p>Requested via the <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_BINDING_BIT</a> and
+<a href="resources.html#VkBufferCreateFlagBits" class="xref page">VK_BUFFER_CREATE_SPARSE_BINDING_BIT</a> bits.</p>
 </li>
 <li>
-<p>A sparse image created using <code>VK_IMAGE_CREATE_SPARSE_BINDING_BIT</code>
-(but not <code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code>) supports all
+<p>A sparse image created using <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_BINDING_BIT</a>
+(but not <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a>) supports all
 formats that non-sparse usage supports, and supports both
-<code>VK_IMAGE_TILING_OPTIMAL</code> and <code>VK_IMAGE_TILING_LINEAR</code> tiling.</p>
+<a href="resources.html#VkImageTiling" class="xref page">VK_IMAGE_TILING_OPTIMAL</a> and <a href="resources.html#VkImageTiling" class="xref page">VK_IMAGE_TILING_LINEAR</a> tiling.</p>
 </li>
 </ul>
 </div>
@@ -523,8 +526,8 @@ When this property is absent, accesses are considered safe, but reads
 will return <strong>undefined</strong> values.</p>
 </li>
 <li>
-<p>Requested via the <code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code> and
-<code>VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT</code> bits.</p>
+<p>Requested via the <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a> and
+<a href="resources.html#VkBufferCreateFlagBits" class="xref page">VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT</a> bits.</p>
 </li>
 <li>
 <p><a id="features-sparseResidency"></a> Sparse residency support is advertised on
@@ -534,37 +537,37 @@ a finer grain via the following features:</p>
 <li>
 <p>The <a href="features.html#features-sparseResidencyBuffer" class="xref page"><code>sparseResidencyBuffer</code></a>
 feature provides support for creating <code>VkBuffer</code> objects with the
-<code>VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT</code>.</p>
+<a href="resources.html#VkBufferCreateFlagBits" class="xref page">VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT</a>.</p>
 </li>
 <li>
 <p>The <a href="features.html#features-sparseResidencyImage2D" class="xref page"><code>sparseResidencyImage2D</code></a>
 feature provides support for creating 2D single-sampled <code>VkImage</code>
-objects with <code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code>.</p>
+objects with <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a>.</p>
 </li>
 <li>
 <p>The <a href="features.html#features-sparseResidencyImage3D" class="xref page"><code>sparseResidencyImage3D</code></a>
 feature provides support for creating 3D <code>VkImage</code> objects with
-<code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code>.</p>
+<a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a>.</p>
 </li>
 <li>
 <p>The <a href="features.html#features-sparseResidency2Samples" class="xref page">      <code>sparseResidency2Samples</code></a> feature provides support for creating
 2D <code>VkImage</code> objects with 2 samples and
-<code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code>.</p>
+<a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a>.</p>
 </li>
 <li>
 <p>The <a href="features.html#features-sparseResidency4Samples" class="xref page">      <code>sparseResidency4Samples</code></a> feature provides support for creating
 2D <code>VkImage</code> objects with 4 samples and
-<code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code>.</p>
+<a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a>.</p>
 </li>
 <li>
 <p>The <a href="features.html#features-sparseResidency8Samples" class="xref page">      <code>sparseResidency8Samples</code></a> feature provides support for creating
 2D <code>VkImage</code> objects with 8 samples and
-<code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code>.</p>
+<a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a>.</p>
 </li>
 <li>
 <p>The <a href="features.html#features-sparseResidency16Samples" class="xref page">      <code>sparseResidency16Samples</code></a> feature provides support for creating
 2D <code>VkImage</code> objects with 16 samples and
-<code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code>.</p>
+<a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a>.</p>
 <div class="paragraph">
 <p>Implementations supporting <code>sparseResidencyImage2D</code> are only <strong>required</strong>
 to support sparse 2D, single-sampled images.
@@ -578,12 +581,12 @@ Support for sparse 3D and MSAA images is <strong>optional</strong> and <strong>c
 </div>
 </li>
 <li>
-<p>A sparse image created using <code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code>
+<p>A sparse image created using <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a>
 supports all non-compressed color formats with power-of-two element
 size that non-sparse usage supports.
 Additional formats <strong>may</strong> also be supported and <strong>can</strong> be queried via
 <a href="#vkGetPhysicalDeviceSparseImageFormatProperties">vkGetPhysicalDeviceSparseImageFormatProperties</a>.
-<code>VK_IMAGE_TILING_LINEAR</code> tiling is not supported.</p>
+<a href="resources.html#VkImageTiling" class="xref page">VK_IMAGE_TILING_LINEAR</a> tiling is not supported.</p>
 </li>
 </ul>
 </div>
@@ -616,16 +619,16 @@ information.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Both <code>VkBuffer</code> and <code>VkImage</code> objects created with the
-<code>VK_IMAGE_CREATE_SPARSE_BINDING_BIT</code> or
-<code>VK_BUFFER_CREATE_SPARSE_BINDING_BIT</code> bits <strong>can</strong> be thought of as a
+<a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_BINDING_BIT</a> or
+<a href="resources.html#VkBufferCreateFlagBits" class="xref page">VK_BUFFER_CREATE_SPARSE_BINDING_BIT</a> bits <strong>can</strong> be thought of as a
 linear region of address space.
-In the <code>VkImage</code> case if <code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code> is
+In the <code>VkImage</code> case if <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a> is
 not used, this linear region is entirely opaque, meaning that there is no
 application-visible mapping between texel location and memory offset.</p>
 </div>
 <div class="paragraph">
-<p>Unless <code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code> or
-<code>VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT</code> are also used, the entire
+<p>Unless <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a> or
+<a href="resources.html#VkBufferCreateFlagBits" class="xref page">VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT</a> are also used, the entire
 resource <strong>must</strong> be bound to one or more <code>VkDeviceMemory</code> objects before
 use.</p>
 </div>
@@ -645,15 +648,15 @@ binding granularity (in bytes) for sparse resources.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><code>VkBuffer</code> objects created with the
-<code>VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT</code> bit allow the buffer to be made
+<a href="resources.html#VkBufferCreateFlagBits" class="xref page">VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT</a> bit allow the buffer to be made
 only partially resident.
 Partially resident <code>VkBuffer</code> objects are allocated and bound
 identically to <code>VkBuffer</code> objects using only the
-<code>VK_BUFFER_CREATE_SPARSE_BINDING_BIT</code> feature.
+<a href="resources.html#VkBufferCreateFlagBits" class="xref page">VK_BUFFER_CREATE_SPARSE_BINDING_BIT</a> feature.
 The only difference is the ability for some regions of the buffer to be
 unbound during device use.
 After creating a <code>VkBuffer</code> with
-<code>VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT</code>, the entire buffer region is
+<a href="resources.html#VkBufferCreateFlagBits" class="xref page">VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT</a>, the entire buffer region is
 considered unbound.</p>
 </div>
 </div>
@@ -663,7 +666,7 @@ considered unbound.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><code>VkImage</code> objects created with the
-<code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code> bit allow specific rectangular
+<a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a> bit allow specific rectangular
 regions of the image called sparse image blocks to be bound to specific
 ranges of memory.
 This allows the application to manage residency at either image subresource
@@ -672,7 +675,7 @@ Each image subresource (outside of the <a href="#sparsememory-miptail">mip tail<
 starts on a sparse block boundary and has dimensions that are integer
 multiples of the corresponding dimensions of the sparse image block.
 After creating a <code>VkImage</code> with
-<code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code>, all image subresources are
+<a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a>, all image subresources are
 considered unbound.</p>
 </div>
 <div class="admonitionblock note">
@@ -733,7 +736,7 @@ component.</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Example: Reading the alpha component of an unbacked <code>VK_FORMAT_R8_UNORM</code>
+<p>Example: Reading the alpha component of an unbacked <a href="formats.html#VkFormat" class="xref page">VK_FORMAT_R8_UNORM</a>
 image will return a value of <span class="eq">1.0f</span>.</p>
 </div>
 </div>
@@ -769,12 +772,12 @@ far the simplest.</p>
 <div class="sect2">
 <h3 id="sparsememory-miptail"><a class="anchor" href="#sparsememory-miptail"></a>Mip Tail Regions</h3>
 <div class="paragraph">
-<p>Sparse images created using <code>VK_IMAGE_CREATE_SPARSE_BINDING_BIT</code>
-(without also using <code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code>) have no
+<p>Sparse images created using <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_BINDING_BIT</a>
+(without also using <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a>) have no
 specific mapping of image region or image subresource to memory offset
 defined, so the entire image <strong>can</strong> be thought of as a linear opaque address
 region.
-However, images created with <code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code> do
+However, images created with <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a> do
 have a prescribed sparse image block layout, and hence each image
 subresource <strong>must</strong> start on a sparse block boundary.
 Within each array layer, the set of mip levels that have a smaller size than
@@ -782,7 +785,7 @@ the sparse block size in bytes are grouped together into a <em>mip tail
 region</em>.</p>
 </div>
 <div class="paragraph">
-<p>If the <code>VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT</code> flag is present in
+<p>If the <a href="#VkSparseImageFormatFlagBits">VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT</a> flag is present in
 the <code>flags</code> member of <code>VkSparseImageFormatProperties</code>, for the
 image&#8217;s <code>format</code>, then any mip level which has dimensions that are not
 integer multiples of the corresponding dimensions of the sparse image block,
@@ -810,13 +813,13 @@ in bytes.</p>
 <p>An implementation <strong>may</strong> choose to allow each array-layer&#8217;s mip tail region to
 be bound to memory independently or require that all array-layer&#8217;s mip tail
 regions be treated as one.
-This is dictated by <code>VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</code> in
+This is dictated by <a href="#VkSparseImageFormatFlagBits">VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</a> in
 <code>VkSparseImageMemoryRequirements</code>::<code>flags</code>.</p>
 </div>
 <div class="paragraph">
 <p>The following diagrams depict how
-<code>VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT</code> and
-<code>VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</code> alter memory usage and
+<a href="#VkSparseImageFormatFlagBits">VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT</a> and
+<a href="#VkSparseImageFormatFlagBits">VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</a> alter memory usage and
 requirements.</p>
 </div>
 <div class="imageblock text-center">
@@ -826,8 +829,8 @@ requirements.</p>
 <div class="title">Figure 1. Sparse Image</div>
 </div>
 <div class="paragraph">
-<p>In the absence of <code>VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT</code> and
-<code>VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</code>, each array layer contains a
+<p>In the absence of <a href="#VkSparseImageFormatFlagBits">VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT</a> and
+<a href="#VkSparseImageFormatFlagBits">VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</a>, each array layer contains a
 mip tail region containing texel data for all mip levels smaller than the
 sparse image block in any dimension.</p>
 </div>
@@ -846,7 +849,7 @@ block size in bytes allocated in memory.</p>
 <div class="title">Figure 2. Sparse Image with Single Mip Tail</div>
 </div>
 <div class="paragraph">
-<p>When <code>VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</code> is present all array
+<p>When <a href="#VkSparseImageFormatFlagBits">VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</a> is present all array
 layers will share a single mip tail region.</p>
 </div>
 <div class="imageblock text-center">
@@ -874,7 +877,7 @@ sparse blocks.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>When <code>VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT</code> is present the first
+<p>When <a href="#VkSparseImageFormatFlagBits">VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT</a> is present the first
 mip level that would contain partially used sparse blocks begins the mip
 tail region.
 This level and all subsequent levels are placed in the mip tail.
@@ -907,8 +910,8 @@ sparse blocks.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>When both <code>VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT</code> and
-<code>VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</code> are present the constraints
+<p>When both <a href="#VkSparseImageFormatFlagBits">VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT</a> and
+<a href="#VkSparseImageFormatFlagBits">VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</a> are present the constraints
 from each of these flags are in effect.</p>
 </div>
 </div>
@@ -922,7 +925,7 @@ implementation-dependent.
 All currently defined standard sparse image block shapes are 64 KB in size.</p>
 </div>
 <div class="paragraph">
-<p>For block-compressed formats (e.g. <code>VK_FORMAT_BC5_UNORM_BLOCK</code>), the
+<p>For block-compressed formats (e.g. <a href="formats.html#VkFormat" class="xref page">VK_FORMAT_BC5_UNORM_BLOCK</a>), the
 texel size is the size of the compressed texel block (e.g. 128-bit for
 <code>BC5</code>) thus the dimensions of the standard sparse image block shapes
 apply in terms of compressed texel blocks.</p>
@@ -1166,8 +1169,8 @@ See <a href="resources.html#resources-memory-aliasing" class="xref page">Memory 
 </div>
 <div class="paragraph">
 <p><code>VkDevice</code> objects that have the <a href="features.html#features-sparseResidencyAliased" class="xref page"><code>sparseResidencyAliased</code></a> feature enabled are able to use the
-<code>VK_BUFFER_CREATE_SPARSE_ALIASED_BIT</code> and
-<code>VK_IMAGE_CREATE_SPARSE_ALIASED_BIT</code> flags for resource creation.
+<a href="resources.html#VkBufferCreateFlagBits" class="xref page">VK_BUFFER_CREATE_SPARSE_ALIASED_BIT</a> and
+<a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_ALIASED_BIT</a> flags for resource creation.
 These flags allow resources to access physical memory bound into multiple
 locations within one or more sparse resources in a <em>data consistent</em>
 fashion.
@@ -1191,8 +1194,8 @@ aliased memory.</p>
 <ul>
 <li>
 <p>All sparse resources that are bound to aliased physical memory <strong>must</strong> be
-created with the <code>VK_BUFFER_CREATE_SPARSE_ALIASED_BIT</code> /
-<code>VK_IMAGE_CREATE_SPARSE_ALIASED_BIT</code> flag.</p>
+created with the <a href="resources.html#VkBufferCreateFlagBits" class="xref page">VK_BUFFER_CREATE_SPARSE_ALIASED_BIT</a> /
+<a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_ALIASED_BIT</a> flag.</p>
 </li>
 <li>
 <p>All resources that access aliased physical memory <strong>must</strong> interpret the
@@ -1290,41 +1293,41 @@ features.</p>
 <ul>
 <li>
 <p><code>sparseBinding</code>: Support for creating <a href="resources.html#VkBuffer" class="xref page">VkBuffer</a> and
-<code>VkImage</code> objects with the <code>VK_BUFFER_CREATE_SPARSE_BINDING_BIT</code>
-and <code>VK_IMAGE_CREATE_SPARSE_BINDING_BIT</code> flags, respectively.</p>
+<code>VkImage</code> objects with the <a href="resources.html#VkBufferCreateFlagBits" class="xref page">VK_BUFFER_CREATE_SPARSE_BINDING_BIT</a>
+and <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_BINDING_BIT</a> flags, respectively.</p>
 </li>
 <li>
 <p><code>sparseResidencyBuffer</code>: Support for creating <a href="resources.html#VkBuffer" class="xref page">VkBuffer</a> objects
-with the <code>VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT</code> flag.</p>
+with the <a href="resources.html#VkBufferCreateFlagBits" class="xref page">VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT</a> flag.</p>
 </li>
 <li>
 <p><code>sparseResidencyImage2D</code>: Support for creating 2D single-sampled
-<code>VkImage</code> objects with <code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code>.</p>
+<code>VkImage</code> objects with <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a>.</p>
 </li>
 <li>
 <p><code>sparseResidencyImage3D</code>: Support for creating 3D <a href="resources.html#VkImage" class="xref page">VkImage</a>
-objects with <code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code>.</p>
+objects with <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a>.</p>
 </li>
 <li>
 <p><code>sparseResidency2Samples</code>: Support for creating 2D <a href="resources.html#VkImage" class="xref page">VkImage</a>
-objects with 2 samples and <code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code>.</p>
+objects with 2 samples and <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a>.</p>
 </li>
 <li>
 <p><code>sparseResidency4Samples</code>: Support for creating 2D <a href="resources.html#VkImage" class="xref page">VkImage</a>
-objects with 4 samples and <code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code>.</p>
+objects with 4 samples and <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a>.</p>
 </li>
 <li>
 <p><code>sparseResidency8Samples</code>: Support for creating 2D <a href="resources.html#VkImage" class="xref page">VkImage</a>
-objects with 8 samples and <code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code>.</p>
+objects with 8 samples and <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a>.</p>
 </li>
 <li>
 <p><code>sparseResidency16Samples</code>: Support for creating 2D <a href="resources.html#VkImage" class="xref page">VkImage</a>
-objects with 16 samples and <code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code>.</p>
+objects with 16 samples and <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a>.</p>
 </li>
 <li>
 <p><code>sparseResidencyAliased</code>: Support for creating <a href="resources.html#VkBuffer" class="xref page">VkBuffer</a> and
-<code>VkImage</code> objects with the <code>VK_BUFFER_CREATE_SPARSE_ALIASED_BIT</code>
-and <code>VK_IMAGE_CREATE_SPARSE_ALIASED_BIT</code> flags, respectively.</p>
+<code>VkImage</code> objects with the <a href="resources.html#VkBufferCreateFlagBits" class="xref page">VK_BUFFER_CREATE_SPARSE_ALIASED_BIT</a>
+and <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_ALIASED_BIT</a> flags, respectively.</p>
 </li>
 </ul>
 </div>
@@ -1361,7 +1364,7 @@ typedef struct VkPhysicalDeviceSparseProperties {
 <ul>
 <li>
 <p><code>residencyStandard2DBlockShape</code>
-is <code>VK_TRUE</code> if the physical device will access all single-sample 2D
+is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a> if the physical device will access all single-sample 2D
 sparse resources using the standard sparse image block shapes (based on
 image format), as described in the
 <a href="#sparsememory-sparseblockshapessingle">Standard Sparse Image Block    Shapes (Single Sample)</a> table.
@@ -1372,7 +1375,7 @@ standard sparse image block dimensions listed in the table.</p>
 </li>
 <li>
 <p><code>residencyStandard2DMultisampleBlockShape</code>
-is <code>VK_TRUE</code> if the physical device will access all multisample 2D
+is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a> if the physical device will access all multisample 2D
 sparse resources using the standard sparse image block shapes (based on
 image format), as described in the
 <a href="#sparsememory-sparseblockshapesmsaa">Standard Sparse Image Block Shapes    (MSAA)</a> table.
@@ -1383,7 +1386,7 @@ standard sparse image block dimensions listed in the table.</p>
 </li>
 <li>
 <p><code>residencyStandard3DBlockShape</code>
-is <code>VK_TRUE</code> if the physical device will access all 3D sparse
+is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a> if the physical device will access all 3D sparse
 resources using the standard sparse image block shapes (based on image
 format), as described in the
 <a href="#sparsememory-sparseblockshapessingle">Standard Sparse Image Block    Shapes (Single Sample)</a> table.
@@ -1394,7 +1397,7 @@ image block dimensions listed in the table.</p>
 </li>
 <li>
 <p><code>residencyAlignedMipSize</code>
-is <code>VK_TRUE</code> if images with mip level dimensions that are not
+is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a> if images with mip level dimensions that are not
 integer multiples of the corresponding dimensions of the sparse image
 block <strong>may</strong> be placed in the mip tail.
 If this property is not reported, only mip levels with dimensions
@@ -1402,7 +1405,7 @@ smaller than the <code>imageGranularity</code> member of the
 <code>VkSparseImageFormatProperties</code> structure will be placed in the mip
 tail.
 If this property is reported the implementation is allowed to return
-<code>VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT</code> in the <code>flags</code>
+<a href="#VkSparseImageFormatFlagBits">VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT</a> in the <code>flags</code>
 member of <code>VkSparseImageFormatProperties</code>, indicating that mip level
 dimensions that are not integer multiples of the corresponding
 dimensions of the sparse image block will be placed in the mip tail.</p>
@@ -1411,7 +1414,7 @@ dimensions of the sparse image block will be placed in the mip tail.</p>
 <p><code>residencyNonResidentStrict</code>
 specifies whether the physical device <strong>can</strong> consistently access
 non-resident regions of a resource.
-If this property is <code>VK_TRUE</code>, access to non-resident regions of
+If this property is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, access to non-resident regions of
 resources will be guaranteed to return values as if the resource was
 populated with 0; writes to non-resident regions will be discarded.</p>
 </li>
@@ -1484,17 +1487,17 @@ typedef enum VkSparseImageFormatFlagBits {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</code> specifies that the image
+<p><a href="#VkSparseImageFormatFlagBits">VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</a> specifies that the image
 uses a single mip tail region for all array layers.</p>
 </li>
 <li>
-<p><code>VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT</code> specifies that the
+<p><a href="#VkSparseImageFormatFlagBits">VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT</a> specifies that the
 first mip level whose dimensions are not integer multiples of the
 corresponding dimensions of the sparse image block begins the mip tail
 region.</p>
 </li>
 <li>
-<p><code>VK_SPARSE_IMAGE_FORMAT_NONSTANDARD_BLOCK_SIZE_BIT</code> specifies that
+<p><a href="#VkSparseImageFormatFlagBits">VK_SPARSE_IMAGE_FORMAT_NONSTANDARD_BLOCK_SIZE_BIT</a> specifies that
 the image uses non-standard sparse image block dimensions, and the
 <code>imageGranularity</code> values do not match the standard sparse image
 block dimensions for the given format.</p>
@@ -1598,7 +1601,7 @@ If <code>pPropertyCount</code> is less than the number of sparse format properti
 available, at most <code>pPropertyCount</code> structures will be written.</p>
 </div>
 <div class="paragraph">
-<p>If <code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code> is not supported for the given
+<p>If <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a> is not supported for the given
 arguments, <code>pPropertyCount</code> will be zero upon return, and no data will
 be written to <code>pProperties</code>.</p>
 </div>
@@ -1611,8 +1614,8 @@ The depth and stencil data planes each have unique
 <div class="paragraph">
 <p>Depth/stencil images with depth and stencil data interleaved into a single
 plane will return a single <code>VkSparseImageFormatProperties</code> structure
-with the <code>aspectMask</code> set to <code>VK_IMAGE_ASPECT_DEPTH_BIT</code> |
-<code>VK_IMAGE_ASPECT_STENCIL_BIT</code>.</p>
+with the <code>aspectMask</code> set to <a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_DEPTH_BIT</a> |
+<a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_STENCIL_BIT</a>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1842,7 +1845,7 @@ set in <code>VkImageFormatProperties</code>::<code>sampleCounts</code> returned 
 <ul>
 <li>
 <p><a id="VUID-VkPhysicalDeviceSparseImageFormatInfo2-sType-sType" href="#VUID-VkPhysicalDeviceSparseImageFormatInfo2-sType-sType"></a> <span class="vuid">VUID-VkPhysicalDeviceSparseImageFormatInfo2-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SPARSE_IMAGE_FORMAT_INFO_2</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SPARSE_IMAGE_FORMAT_INFO_2</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPhysicalDeviceSparseImageFormatInfo2-pNext-pNext" href="#VUID-VkPhysicalDeviceSparseImageFormatInfo2-pNext-pNext"></a> <span class="vuid">VUID-VkPhysicalDeviceSparseImageFormatInfo2-pNext-pNext</span><br>
@@ -1923,7 +1926,7 @@ which is populated with the same values as in
 <ul>
 <li>
 <p><a id="VUID-VkSparseImageFormatProperties2-sType-sType" href="#VUID-VkSparseImageFormatProperties2-sType-sType"></a> <span class="vuid">VUID-VkSparseImageFormatProperties2-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_SPARSE_IMAGE_FORMAT_PROPERTIES_2</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_SPARSE_IMAGE_FORMAT_PROPERTIES_2</a></p>
 </li>
 <li>
 <p><a id="VUID-VkSparseImageFormatProperties2-pNext-pNext" href="#VUID-VkSparseImageFormatProperties2-pNext-pNext"></a> <span class="vuid">VUID-VkSparseImageFormatProperties2-pNext-pNext</span><br>
@@ -1958,10 +1961,10 @@ creation APIs.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Specifying <code>VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT</code> or
-<code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code> requires specifying
-<code>VK_BUFFER_CREATE_SPARSE_BINDING_BIT</code> or
-<code>VK_IMAGE_CREATE_SPARSE_BINDING_BIT</code>, respectively, as well.
+<p>Specifying <a href="resources.html#VkBufferCreateFlagBits" class="xref page">VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT</a> or
+<a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a> requires specifying
+<a href="resources.html#VkBufferCreateFlagBits" class="xref page">VK_BUFFER_CREATE_SPARSE_BINDING_BIT</a> or
+<a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_BINDING_BIT</a>, respectively, as well.
 This means that resources <strong>must</strong> be created with the appropriate
 <code>*_SPARSE_BINDING_BIT</code> to be used with the sparse binding command
 (<code>vkQueueBindSparse</code>).</p>
@@ -2006,7 +2009,7 @@ aspects of the image.</p>
 </div>
 <div class="paragraph">
 <p>The sparse image <strong>must</strong> have been created using the
-<code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code> flag to retrieve valid sparse
+<a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a> flag to retrieve valid sparse
 image memory requirements.</p>
 </div>
 </div>
@@ -2043,7 +2046,7 @@ subresources are included in the mip tail region.</p>
 <p><code>imageMipTailSize</code> is the memory size (in bytes) of the mip tail
 region.
 If <code>formatProperties.flags</code> contains
-<code>VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</code>, this is the size of the
+<a href="#VkSparseImageFormatFlagBits">VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</a>, this is the size of the
 whole mip tail, otherwise this is the size of the mip tail of a single
 array layer.
 This value is guaranteed to be a multiple of the sparse block size in
@@ -2056,7 +2059,7 @@ bytes.</p>
 <li>
 <p><code>imageMipTailStride</code> is the offset stride between each array-layer&#8217;s
 mip tail, if <code>formatProperties.flags</code> does not contain
-<code>VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</code> (otherwise the value is
+<a href="#VkSparseImageFormatFlagBits">VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</a> (otherwise the value is
 <strong>undefined</strong>).</p>
 </li>
 </ul>
@@ -2112,7 +2115,7 @@ memory requirements available, at most <code>pSparseMemoryRequirementCount</code
 structures will be written.</p>
 </div>
 <div class="paragraph">
-<p>If the image was not created with <code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code>
+<p>If the image was not created with <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a>
 then <code>pSparseMemoryRequirementCount</code> will be zero and
 <code>pSparseMemoryRequirements</code> will not be written to.</p>
 </div>
@@ -2358,7 +2361,7 @@ structure.</p>
 <ul>
 <li>
 <p><a id="VUID-VkImageSparseMemoryRequirementsInfo2-sType-sType" href="#VUID-VkImageSparseMemoryRequirementsInfo2-sType-sType"></a> <span class="vuid">VUID-VkImageSparseMemoryRequirementsInfo2-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2</a></p>
 </li>
 <li>
 <p><a id="VUID-VkImageSparseMemoryRequirementsInfo2-pNext-pNext" href="#VUID-VkImageSparseMemoryRequirementsInfo2-pNext-pNext"></a> <span class="vuid">VUID-VkImageSparseMemoryRequirementsInfo2-pNext-pNext</span><br>
@@ -2418,7 +2421,7 @@ structure describing the memory requirements of the sparse image.</p>
 <ul>
 <li>
 <p><a id="VUID-VkSparseImageMemoryRequirements2-sType-sType" href="#VUID-VkSparseImageMemoryRequirements2-sType-sType"></a> <span class="vuid">VUID-VkSparseImageMemoryRequirements2-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2</a></p>
 </li>
 <li>
 <p><a id="VUID-VkSparseImageMemoryRequirements2-pNext-pNext" href="#VUID-VkSparseImageMemoryRequirements2-pNext-pNext"></a> <span class="vuid">VUID-VkSparseImageMemoryRequirements2-pNext-pNext</span><br>
@@ -2460,7 +2463,7 @@ Applications <strong>must</strong> not access resources bound to memory that has
 </div>
 <div class="paragraph">
 <p>Sparse memory bindings execute on a queue that includes the
-<code>VK_QUEUE_SPARSE_BINDING_BIT</code> bit.
+<a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_SPARSE_BINDING_BIT</a> bit.
 Applications <strong>must</strong> use <a href="synchronization.html#synchronization" class="xref page">synchronization primitives</a> to
 guarantee that other queues do not access ranges of memory concurrently with
 a binding change.
@@ -2485,34 +2488,34 @@ corrupt the system.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>While some implementations <strong>may</strong> include <code>VK_QUEUE_SPARSE_BINDING_BIT</code>
+<p>While some implementations <strong>may</strong> include <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_SPARSE_BINDING_BIT</a>
 support in queue families that also include graphics and compute support,
 other implementations <strong>may</strong> only expose a
-<code>VK_QUEUE_SPARSE_BINDING_BIT</code>-only queue family.
+<a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_SPARSE_BINDING_BIT</a>-only queue family.
 In either case, applications <strong>must</strong> use <a href="synchronization.html#synchronization" class="xref page">synchronization primitives</a> to explicitly request any ordering dependencies between sparse
 memory binding operations and other graphics/compute/transfer operations, as
 sparse binding operations are not automatically ordered against command
 buffer execution, even within a single queue.</p>
 </div>
 <div class="paragraph">
-<p>When binding memory explicitly for the <code>VK_IMAGE_ASPECT_METADATA_BIT</code>
-the application <strong>must</strong> use the <code>VK_SPARSE_MEMORY_BIND_METADATA_BIT</code> in
+<p>When binding memory explicitly for the <a href="resources.html#VkImageAspectFlagBits" class="xref page">VK_IMAGE_ASPECT_METADATA_BIT</a>
+the application <strong>must</strong> use the <a href="#VkSparseMemoryBindFlagBits">VK_SPARSE_MEMORY_BIND_METADATA_BIT</a> in
 the <code>VkSparseMemoryBind</code>::<code>flags</code> field when binding memory.
 Binding memory for metadata is done the same way as binding memory for the
-mip tail, with the addition of the <code>VK_SPARSE_MEMORY_BIND_METADATA_BIT</code>
+mip tail, with the addition of the <a href="#VkSparseMemoryBindFlagBits">VK_SPARSE_MEMORY_BIND_METADATA_BIT</a>
 flag.</p>
 </div>
 <div class="paragraph">
 <p>Binding the mip tail for any aspect <strong>must</strong> only be performed using
 <a href="#VkSparseImageOpaqueMemoryBindInfo">VkSparseImageOpaqueMemoryBindInfo</a>.
 If <code>formatProperties.flags</code> contains
-<code>VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</code>, then it <strong>can</strong> be bound with
+<a href="#VkSparseImageFormatFlagBits">VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</a>, then it <strong>can</strong> be bound with
 a single <a href="#VkSparseMemoryBind">VkSparseMemoryBind</a> structure, with <code>resourceOffset</code> =
 <code>imageMipTailOffset</code> and <code>size</code> = <code>imageMipTailSize</code>.</p>
 </div>
 <div class="paragraph">
 <p>If <code>formatProperties.flags</code> does not contain
-<code>VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</code> then the offset for the mip
+<a href="#VkSparseImageFormatFlagBits">VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</a> then the offset for the mip
 tail in each array layer is given as:</p>
 </div>
 <div class="listingblock">
@@ -2575,7 +2578,7 @@ usage of the binding operation.</p>
 <div class="paragraph">
 <p>The <em>binding range</em> <span class="eq">[<code>resourceOffset</code>, <code>resourceOffset</code> + 
 <code>size</code>)</span> has different constraints based on <code>flags</code>.
-If <code>flags</code> contains <code>VK_SPARSE_MEMORY_BIND_METADATA_BIT</code>, the
+If <code>flags</code> contains <a href="#VkSparseMemoryBindFlagBits">VK_SPARSE_MEMORY_BIND_METADATA_BIT</a>, the
 binding range <strong>must</strong> be within the mip tail region of the metadata aspect.
 This metadata region is defined by:</p>
 </div>
@@ -2602,10 +2605,10 @@ of the image, and <span class="eq">n</span> is a valid array layer index for the
 <div class="paragraph">
 <p><code>imageMipTailStride</code> is considered to be zero for aspects where
 <code>VkSparseImageMemoryRequirements</code>::<code>formatProperties.flags</code> contains
-<code>VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</code>.</p>
+<a href="#VkSparseImageFormatFlagBits">VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</a>.</p>
 </div>
 <div class="paragraph">
-<p>If <code>flags</code> does not contain <code>VK_SPARSE_MEMORY_BIND_METADATA_BIT</code>,
+<p>If <code>flags</code> does not contain <a href="#VkSparseMemoryBindFlagBits">VK_SPARSE_MEMORY_BIND_METADATA_BIT</a>,
 the binding range <strong>must</strong> be within the range
 <span class="eq">[0,<a href="resources.html#VkMemoryRequirements" class="xref page">VkMemoryRequirements</a>::<code>size</code>)</span>.</p>
 </div>
@@ -2643,7 +2646,7 @@ of the <a href="resources.html#VkMemoryRequirements" class="xref page">VkMemoryR
 
 If <code>memory</code> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, <code>memory</code> <strong>must</strong> not have
 been created with a memory type that reports
-<code>VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT</code> bit set</p>
+<a href="memory.html#VkMemoryPropertyFlagBits" class="xref page">VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT</a> bit set</p>
 </li>
 <li>
 <p><a id="VUID-VkSparseMemoryBind-size-01098" href="#VUID-VkSparseMemoryBind-size-01098"></a> <span class="vuid">VUID-VkSparseMemoryBind-size-01098</span><br>
@@ -2731,7 +2734,7 @@ typedef enum VkSparseMemoryBindFlagBits {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SPARSE_MEMORY_BIND_METADATA_BIT</code> specifies that the memory being
+<p><a href="#VkSparseMemoryBindFlagBits">VK_SPARSE_MEMORY_BIND_METADATA_BIT</a> specifies that the memory being
 bound is only for the metadata aspect.</p>
 </li>
 </ul>
@@ -2756,7 +2759,7 @@ or more <a href="#VkSparseMemoryBindFlagBits">VkSparseMemoryBindFlagBits</a>.</p
 <div class="content">
 <div class="paragraph">
 <p>Memory is bound to <code>VkBuffer</code> objects created with the
-<code>VK_BUFFER_CREATE_SPARSE_BINDING_BIT</code> flag using the following
+<a href="resources.html#VkBufferCreateFlagBits" class="xref page">VK_BUFFER_CREATE_SPARSE_BINDING_BIT</a> flag using the following
 structure:</p>
 </div>
 <div id="VkSparseBufferMemoryBindInfo" class="listingblock">
@@ -2811,7 +2814,7 @@ structures.</p>
 <div class="content">
 <div class="paragraph">
 <p>Memory is bound to opaque regions of <code>VkImage</code> objects created with the
-<code>VK_IMAGE_CREATE_SPARSE_BINDING_BIT</code> flag using the following structure:</p>
+<a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_BINDING_BIT</a> flag using the following structure:</p>
 </div>
 <div id="VkSparseImageOpaqueMemoryBindInfo" class="listingblock">
 <div class="content">
@@ -2853,7 +2856,7 @@ partially resident images.</p>
 </div>
 <div class="paragraph">
 <p>If the <code>pBinds</code>[i].flags of an element <em>i</em> of <code>pBinds</code> does not
-contain <code>VK_SPARSE_MEMORY_BIND_METADATA_BIT</code>, the <code>resourceOffset</code>
+contain <a href="#VkSparseMemoryBindFlagBits">VK_SPARSE_MEMORY_BIND_METADATA_BIT</a>, the <code>resourceOffset</code>
 is in the range <span class="eq">[0, <a href="resources.html#VkMemoryRequirements" class="xref page">VkMemoryRequirements</a>::<code>size</code>)</span>, This
 range includes data from all aspects of the image, including metadata.
 For most implementations this will probably mean that the
@@ -2865,7 +2868,7 @@ used for, or if any range is being used for metadata.</p>
 </div>
 <div class="paragraph">
 <p>If the <code>pBinds</code>[i].flags of an element <em>i</em> of <code>pBinds</code> contains
-<code>VK_SPARSE_MEMORY_BIND_METADATA_BIT</code>, the binding range specified <strong>must</strong>
+<a href="#VkSparseMemoryBindFlagBits">VK_SPARSE_MEMORY_BIND_METADATA_BIT</a>, the binding range specified <strong>must</strong>
 be within the mip tail region of the metadata aspect.
 In this case the <code>resourceOffset</code> is not <strong>required</strong> to be a simple device
 address offset within the resource.
@@ -2888,7 +2891,7 @@ this flag present.</p>
 <p><a id="VUID-VkSparseImageOpaqueMemoryBindInfo-pBinds-01103" href="#VUID-VkSparseImageOpaqueMemoryBindInfo-pBinds-01103"></a> <span class="vuid">VUID-VkSparseImageOpaqueMemoryBindInfo-pBinds-01103</span><br>
 
 If the <code>flags</code> member of any element of <code>pBinds</code> contains
-<code>VK_SPARSE_MEMORY_BIND_METADATA_BIT</code>, the binding range defined
+<a href="#VkSparseMemoryBindFlagBits">VK_SPARSE_MEMORY_BIND_METADATA_BIT</a>, the binding range defined
 <strong>must</strong> be within the mip tail region of the metadata aspect of
 <code>image</code></p>
 </li>
@@ -2923,7 +2926,7 @@ If the <code>flags</code> member of any element of <code>pBinds</code> contains
 <div class="content">
 <div class="paragraph">
 <p>Memory <strong>can</strong> be bound to sparse image blocks of <code>VkImage</code> objects created
-with the <code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code> flag using the following
+with the <a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a> flag using the following
 structure:</p>
 </div>
 <div id="VkSparseImageMemoryBindInfo" class="listingblock">
@@ -2981,7 +2984,7 @@ when <code>image</code> was created</p>
 <p><a id="VUID-VkSparseImageMemoryBindInfo-image-02901" href="#VUID-VkSparseImageMemoryBindInfo-image-02901"></a> <span class="vuid">VUID-VkSparseImageMemoryBindInfo-image-02901</span><br>
 
 <code>image</code> <strong>must</strong> have been created with
-<code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code> set</p>
+<a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a> set</p>
 </li>
 </ul>
 </div>
@@ -3281,7 +3284,7 @@ waiting on the same semaphore</p>
 
 All elements of the <code>pWaitSemaphores</code> member of all elements of
 <code>pBindInfo</code> referring to a semaphore
-created with a <a href="synchronization.html#VkSemaphoreType" class="xref page">VkSemaphoreType</a> of <code>VK_SEMAPHORE_TYPE_BINARY</code>
+created with a <a href="synchronization.html#VkSemaphoreType" class="xref page">VkSemaphoreType</a> of <a href="synchronization.html#VkSemaphoreTypeKHR" class="xref page">VK_SEMAPHORE_TYPE_BINARY</a>
 <strong>must</strong> reference a semaphore signal operation that has been submitted for
 execution and any <a href="synchronization.html#synchronization-semaphores-signaling" class="xref page">semaphore    signal operations</a> on which it depends <strong>must</strong> have also been submitted
 for execution</p>
@@ -3309,7 +3312,7 @@ for execution</p>
 </li>
 <li>
 <p><a id="VUID-vkQueueBindSparse-queuetype" href="#VUID-vkQueueBindSparse-queuetype"></a> <span class="vuid">VUID-vkQueueBindSparse-queuetype</span><br>
- The <code>queue</code> <strong>must</strong> support <code>VK_QUEUE_SPARSE_BINDING_BIT</code> operations</p>
+ The <code>queue</code> <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_SPARSE_BINDING_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkQueueBindSparse-commonparent" href="#VUID-vkQueueBindSparse-commonparent"></a> <span class="vuid">VUID-vkQueueBindSparse-commonparent</span><br>
@@ -3325,7 +3328,9 @@ for execution</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Host access to <code>queue</code> <strong>must</strong> be externally synchronized</p>
+<p>Host access to <code>queue</code> <strong>must</strong> be externally synchronized
+if it was not created with
+<a href="devsandqueues.html#VkDeviceQueueCreateFlagBits" class="xref page">VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR</a></p>
 </li>
 <li>
 <p>Host access to <code>fence</code> <strong>must</strong> be externally synchronized</p>
@@ -3376,7 +3381,7 @@ for execution</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a></p>
 </li>
 </ul>
 </div>
@@ -3386,19 +3391,19 @@ for execution</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_DEVICE_LOST</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_DEVICE_LOST</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_DEVICE_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_HOST_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_UNKNOWN</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_UNKNOWN</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_VALIDATION_FAILED</a></p>
 </li>
 </ul>
 </div>
@@ -3492,6 +3497,18 @@ If semaphores to be signaled are provided, they define a
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>The first <a href="synchronization.html#synchronization-dependencies-scopes" class="xref page">synchronization scope</a> of
+each <a href="synchronization.html#synchronization-semaphores-signaling" class="xref page">semaphore signal operation</a>
+defined by this structure includes all sparse binding operations defined by
+this structure.</p>
+</div>
+<div class="paragraph">
+<p>The second <a href="synchronization.html#synchronization-dependencies-scopes" class="xref page">synchronization scope</a> of
+each <a href="synchronization.html#synchronization-semaphores-waiting" class="xref page">semaphore wait operation</a> defined
+by this structure includes all sparse binding operations defined by this
+structure.</p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage</div>
@@ -3501,7 +3518,7 @@ If semaphores to be signaled are provided, they define a
 <p><a id="VUID-VkBindSparseInfo-pWaitSemaphores-03246" href="#VUID-VkBindSparseInfo-pWaitSemaphores-03246"></a> <span class="vuid">VUID-VkBindSparseInfo-pWaitSemaphores-03246</span><br>
 
 If any element of <code>pWaitSemaphores</code> or <code>pSignalSemaphores</code> was
-created with a <a href="synchronization.html#VkSemaphoreType" class="xref page">VkSemaphoreType</a> of <code>VK_SEMAPHORE_TYPE_TIMELINE</code>
+created with a <a href="synchronization.html#VkSemaphoreType" class="xref page">VkSemaphoreType</a> of <a href="synchronization.html#VkSemaphoreTypeKHR" class="xref page">VK_SEMAPHORE_TYPE_TIMELINE</a>
 then the <code>pNext</code> chain <strong>must</strong> include a
 <a href="cmdbuffers.html#VkTimelineSemaphoreSubmitInfo" class="xref page">VkTimelineSemaphoreSubmitInfo</a> structure</p>
 </li>
@@ -3511,7 +3528,7 @@ then the <code>pNext</code> chain <strong>must</strong> include a
 If the <code>pNext</code> chain of this structure includes a
 <a href="cmdbuffers.html#VkTimelineSemaphoreSubmitInfo" class="xref page">VkTimelineSemaphoreSubmitInfo</a> structure and any element of
 <code>pWaitSemaphores</code> was created with a <a href="synchronization.html#VkSemaphoreType" class="xref page">VkSemaphoreType</a> of
-<code>VK_SEMAPHORE_TYPE_TIMELINE</code> then its <code>waitSemaphoreValueCount</code>
+<a href="synchronization.html#VkSemaphoreTypeKHR" class="xref page">VK_SEMAPHORE_TYPE_TIMELINE</a> then its <code>waitSemaphoreValueCount</code>
 member <strong>must</strong> equal <code>waitSemaphoreCount</code></p>
 </li>
 <li>
@@ -3520,7 +3537,7 @@ member <strong>must</strong> equal <code>waitSemaphoreCount</code></p>
 If the <code>pNext</code> chain of this structure includes a
 <a href="cmdbuffers.html#VkTimelineSemaphoreSubmitInfo" class="xref page">VkTimelineSemaphoreSubmitInfo</a> structure and any element of
 <code>pSignalSemaphores</code> was created with a <a href="synchronization.html#VkSemaphoreType" class="xref page">VkSemaphoreType</a> of
-<code>VK_SEMAPHORE_TYPE_TIMELINE</code> then its
+<a href="synchronization.html#VkSemaphoreTypeKHR" class="xref page">VK_SEMAPHORE_TYPE_TIMELINE</a> then its
 <code>signalSemaphoreValueCount</code> member <strong>must</strong> equal
 <code>signalSemaphoreCount</code></p>
 </li>
@@ -3528,7 +3545,7 @@ If the <code>pNext</code> chain of this structure includes a
 <p><a id="VUID-VkBindSparseInfo-pSignalSemaphores-03249" href="#VUID-VkBindSparseInfo-pSignalSemaphores-03249"></a> <span class="vuid">VUID-VkBindSparseInfo-pSignalSemaphores-03249</span><br>
 
 For each element of <code>pSignalSemaphores</code> created with a
-<a href="synchronization.html#VkSemaphoreType" class="xref page">VkSemaphoreType</a> of <code>VK_SEMAPHORE_TYPE_TIMELINE</code> the
+<a href="synchronization.html#VkSemaphoreType" class="xref page">VkSemaphoreType</a> of <a href="synchronization.html#VkSemaphoreTypeKHR" class="xref page">VK_SEMAPHORE_TYPE_TIMELINE</a> the
 corresponding element of
 <a href="cmdbuffers.html#VkTimelineSemaphoreSubmitInfo" class="xref page">VkTimelineSemaphoreSubmitInfo</a>::<code>pSignalSemaphoreValues</code> <strong>must</strong>
 have a value greater than the current value of the semaphore when the
@@ -3539,7 +3556,7 @@ executed</p>
 <p><a id="VUID-VkBindSparseInfo-pWaitSemaphores-03250" href="#VUID-VkBindSparseInfo-pWaitSemaphores-03250"></a> <span class="vuid">VUID-VkBindSparseInfo-pWaitSemaphores-03250</span><br>
 
 For each element of <code>pWaitSemaphores</code> created with a
-<a href="synchronization.html#VkSemaphoreType" class="xref page">VkSemaphoreType</a> of <code>VK_SEMAPHORE_TYPE_TIMELINE</code> the
+<a href="synchronization.html#VkSemaphoreType" class="xref page">VkSemaphoreType</a> of <a href="synchronization.html#VkSemaphoreTypeKHR" class="xref page">VK_SEMAPHORE_TYPE_TIMELINE</a> the
 corresponding element of
 <a href="cmdbuffers.html#VkTimelineSemaphoreSubmitInfo" class="xref page">VkTimelineSemaphoreSubmitInfo</a>::<code>pWaitSemaphoreValues</code> <strong>must</strong>
 have a value which does not differ from the current value of the
@@ -3551,7 +3568,7 @@ operation on that semaphore by more than
 <p><a id="VUID-VkBindSparseInfo-pSignalSemaphores-03251" href="#VUID-VkBindSparseInfo-pSignalSemaphores-03251"></a> <span class="vuid">VUID-VkBindSparseInfo-pSignalSemaphores-03251</span><br>
 
 For each element of <code>pSignalSemaphores</code> created with a
-<a href="synchronization.html#VkSemaphoreType" class="xref page">VkSemaphoreType</a> of <code>VK_SEMAPHORE_TYPE_TIMELINE</code> the
+<a href="synchronization.html#VkSemaphoreType" class="xref page">VkSemaphoreType</a> of <a href="synchronization.html#VkSemaphoreTypeKHR" class="xref page">VK_SEMAPHORE_TYPE_TIMELINE</a> the
 corresponding element of
 <a href="cmdbuffers.html#VkTimelineSemaphoreSubmitInfo" class="xref page">VkTimelineSemaphoreSubmitInfo</a>::<code>pSignalSemaphoreValues</code> <strong>must</strong>
 have a value which does not differ from the current value of the
@@ -3564,7 +3581,7 @@ operation on that semaphore by more than
 
 If the <code>pNext</code> chain of this structure includes a
 <a href="debugging.html#VkFrameBoundaryTensorsARM" class="xref page">VkFrameBoundaryTensorsARM</a> structure then it <strong>must</strong> also include a
-<a href="debugging.html#VkFrameBoundaryEXT" class="xref page">VkFrameBoundaryEXT</a> structure.</p>
+<a href="debugging.html#VkFrameBoundaryEXT" class="xref page">VkFrameBoundaryEXT</a> structure</p>
 </li>
 </ul>
 </div>
@@ -3577,7 +3594,7 @@ If the <code>pNext</code> chain of this structure includes a
 <ul>
 <li>
 <p><a id="VUID-VkBindSparseInfo-sType-sType" href="#VUID-VkBindSparseInfo-sType-sType"></a> <span class="vuid">VUID-VkBindSparseInfo-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_BIND_SPARSE_INFO</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_BIND_SPARSE_INFO</a></p>
 </li>
 <li>
 <p><a id="VUID-VkBindSparseInfo-pNext-pNext" href="#VUID-VkBindSparseInfo-pNext-pNext"></a> <span class="vuid">VUID-VkBindSparseInfo-pNext-pNext</span><br>
@@ -3619,7 +3636,7 @@ If the <code>pNext</code> chain of this structure includes a
 </div>
 <div class="paragraph">
 <p>To specify the values to use when waiting for and signaling semaphores
-created with a <a href="synchronization.html#VkSemaphoreType" class="xref page">VkSemaphoreType</a> of <code>VK_SEMAPHORE_TYPE_TIMELINE</code>,
+created with a <a href="synchronization.html#VkSemaphoreType" class="xref page">VkSemaphoreType</a> of <a href="synchronization.html#VkSemaphoreTypeKHR" class="xref page">VK_SEMAPHORE_TYPE_TIMELINE</a>,
 add a <a href="cmdbuffers.html#VkTimelineSemaphoreSubmitInfo" class="xref page">VkTimelineSemaphoreSubmitInfo</a> structure to the <code>pNext</code> chain
 of the <a href="#VkBindSparseInfo">VkBindSparseInfo</a> structure.</p>
 </div>
@@ -3709,7 +3726,7 @@ instance for <code>memoryDeviceIndex</code></p>
 <ul>
 <li>
 <p><a id="VUID-VkDeviceGroupBindSparseInfo-sType-sType" href="#VUID-VkDeviceGroupBindSparseInfo-sType-sType"></a> <span class="vuid">VUID-VkDeviceGroupBindSparseInfo-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO</a></p>
 </li>
 </ul>
 </div>

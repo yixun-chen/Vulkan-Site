@@ -30,7 +30,7 @@ typedef enum VkSurfaceCounterFlagBitsEXT {
 } VkSurfaceCounterFlagBitsEXT;
 
 * 
-`VK_SURFACE_COUNTER_VBLANK_BIT_EXT` specifies a counter incrementing
+[VK_SURFACE_COUNTER_VBLANK_BIT_EXT](#) specifies a counter incrementing
 once every time a vertical blanking period occurs on the display
 associated with the surface.
 

@@ -41,7 +41,7 @@ until a subsequent call to this command with the same video session bound
 changes the corresponding control parameters.
 
 A newly created video session **must** be reset before performing video coding
-operations using it by including `VK_VIDEO_CODING_CONTROL_RESET_BIT_KHR`
+operations using it by including [VK_VIDEO_CODING_CONTROL_RESET_BIT_KHR](VkVideoCodingControlFlagBitsKHR.html)
 in `pCodingControlInfo->flags`.
 The reset operation also returns all DPB slots of the video session to the
 [inactive state](../../../../spec/latest/chapters/videocoding.html#dpb-slot-states).
@@ -59,14 +59,14 @@ This **can** be used, for example, when different video sequences are needed to
 be processed with the same video session object.
 
 If `pCodingControlInfo->flags` includes
-`VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR`, then the command
+[VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR](VkVideoCodingControlFlagBitsKHR.html), then the command
 replaces the [rate control](../../../../spec/latest/chapters/videocoding.html#encode-rate-control) configuration maintained
 by the video session with the configuration specified in the
 [VkVideoEncodeRateControlInfoKHR](VkVideoEncodeRateControlInfoKHR.html) structure included in the
 `pCodingControlInfo->pNext` chain.
 
 If `pCodingControlInfo->flags` includes
-`VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR`, then the command
+[VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR](VkVideoCodingControlFlagBitsKHR.html), then the command
 changes the current [video encode quality level](../../../../spec/latest/chapters/videocoding.html#encode-quality-level) to
 the value specified in the `qualityLevel` member of the
 [VkVideoEncodeQualityLevelInfoKHR](VkVideoEncodeQualityLevelInfoKHR.html) structure included in the
@@ -78,7 +78,7 @@ Valid Usage
 [](#VUID-vkCmdControlVideoCodingKHR-flags-07017) VUID-vkCmdControlVideoCodingKHR-flags-07017
 
 If `pCodingControlInfo->flags` does not include
-`VK_VIDEO_CODING_CONTROL_RESET_BIT_KHR`, then the bound video
+[VK_VIDEO_CODING_CONTROL_RESET_BIT_KHR](VkVideoCodingControlFlagBitsKHR.html), then the bound video
 session **must** not be in [uninitialized](../../../../spec/latest/chapters/videocoding.html#video-session-uninitialized)
 state at the time the command is executed on the device
 
@@ -87,8 +87,8 @@ state at the time the command is executed on the device
 
 If the bound video session was not created with an encode operation,
 then `pCodingControlInfo->flags` **must** not include
-`VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR` or
-`VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR`
+[VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR](VkVideoCodingControlFlagBitsKHR.html) or
+[VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR](VkVideoCodingControlFlagBitsKHR.html)
 
 Valid Usage (Implicit)
 
@@ -110,7 +110,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdControlVideoCodingKHR-commandBuffer-cmdpool) VUID-vkCmdControlVideoCodingKHR-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_VIDEO_DECODE_BIT_KHR](VkQueueFlagBits.html), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdControlVideoCodingKHR-renderpass) VUID-vkCmdControlVideoCodingKHR-renderpass

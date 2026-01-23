@@ -81,10 +81,10 @@ The identifier allows an implementation to look up a pipeline without
 consuming a valid SPIR-V module.
 If a pipeline is not found, pipeline compilation is not possible and the
 implementation **must** fail as specified by
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT`.
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](VkPipelineCreateFlagBits.html).
 
 When an identifier is used in lieu of a shader module, implementations **may**
-fail pipeline compilation with `VK_PIPELINE_COMPILE_REQUIRED` for any
+fail pipeline compilation with [VK_PIPELINE_COMPILE_REQUIRED](VkResult.html) for any
 reason.
 
 |  | The rationale for the relaxed requirement on implementations to return a
@@ -96,55 +96,135 @@ ICDs are not expected to fail pipeline compilation if the pipeline exists in
 a cache somewhere. |
 
 Applications **can** use identifiers when creating pipelines with
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`.
-When creating such pipelines, `VK_SUCCESS` **may** be returned, but
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](VkPipelineCreateFlagBits.html).
+When creating such pipelines, [VK_SUCCESS](VkResult.html) **may** be returned, but
 subsequently fail when referencing the pipeline in a
 [VkPipelineLibraryCreateInfoKHR](VkPipelineLibraryCreateInfoKHR.html) struct.
 Applications **must** allow pipeline compilation to fail during link steps with
-`VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT` as it **may**
+[VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](VkPipelineCreateFlagBits.html) as it **may**
 not be possible to determine if a pipeline **can** be created from identifiers
 until the link step.
 
 Valid Usage
 
 * 
+[](#VUID-VkPipelineShaderStageCreateInfo-descriptorHeap-11314) VUID-VkPipelineShaderStageCreateInfo-descriptorHeap-11314
+
+If the [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) feature is not
+enabled,
+[VkShaderDescriptorSetAndBindingMappingInfoEXT](VkShaderDescriptorSetAndBindingMappingInfoEXT.html)::`mappingCount`
+**must** be 0
+
+* 
+[](#VUID-VkPipelineShaderStageCreateInfo-pNext-11315) VUID-VkPipelineShaderStageCreateInfo-pNext-11315
+
+If the `pNext` chain specifies a [    descriptor mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_DATA_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_DATA_EXT](VkDescriptorMappingSourceEXT.html),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_RESOURCE_HEAP_DATA_EXT](VkDescriptorMappingSourceEXT.html), the mapped
+resource in the shader **must** be a variable with a structure type
+decorated with `Block` in the `Uniform` `Storage` `Class`
+
+* 
+[](#VUID-VkPipelineShaderStageCreateInfo-pNext-11316) VUID-VkPipelineShaderStageCreateInfo-pNext-11316
+
+If the `pNext` chain specifies a [    descriptor mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_DATA_EXT](VkDescriptorMappingSourceEXT.html), the mapped structure
+**must** not be larger than the sum of `pushDataOffset` used in the
+mapping and [`maxPushDataSize`](../../../../spec/latest/chapters/limits.html#limits-maxPushDataSize)
+
+* 
+[](#VUID-VkPipelineShaderStageCreateInfo-pNext-11317) VUID-VkPipelineShaderStageCreateInfo-pNext-11317
+
+If the `pNext` chain specifies a [    descriptor mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_DATA_EXT](VkDescriptorMappingSourceEXT.html), the sum of
+mapped structure size and `shaderRecordDataOffset` used in the
+mapping **must** not be larger than
+[`maxShaderGroupStride`](../../../../spec/latest/chapters/limits.html#limits-maxShaderGroupStride)
+
+* 
+[](#VUID-VkPipelineShaderStageCreateInfo-pNext-11318) VUID-VkPipelineShaderStageCreateInfo-pNext-11318
+
+If the `pNext` chain specifies a [    descriptor mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html), the mapped resource
+in the shader **must** be one of:
+
+A variable with a structure type decorated with `Block` in the
+`Uniform` `Storage` `Class`
+
+* 
+A variable with a structure type decorated with `BufferBlock` in the
+`Uniform` `Storage` `Class`
+
+* 
+A variable with a structure type decorated with `Block` in the
+`StorageBuffer` `Storage` `Class`
+
+* 
+A `OpTypeAccelerationStructureKHR` variable
+
+* 
+A `OpTypeAccelerationStructureNV` variable
+
+[](#VUID-VkPipelineShaderStageCreateInfo-pNext-11378) VUID-VkPipelineShaderStageCreateInfo-pNext-11378
+
+If the `pNext` chain specifies a [    descriptor mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html), the
+`OpArrayLength` instruction **must** not be used on that resource
+
+[](#VUID-VkPipelineShaderStageCreateInfo-pNext-11399) VUID-VkPipelineShaderStageCreateInfo-pNext-11399
+
+If the `pNext` chain specifies a [    descriptor mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_CONSTANT_OFFSET_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](VkDescriptorMappingSourceEXT.html), or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](VkDescriptorMappingSourceEXT.html),
+and the mapped resource declaration is an array, the
+`pEmbeddedSampler` member of the corresponding mapping structure
+**must** be `NULL`
+
+* 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-00704) VUID-VkPipelineShaderStageCreateInfo-stage-00704
 
 If the [`geometryShader`](../../../../spec/latest/chapters/features.html#features-geometryShader) feature is not
-enabled, `stage` **must** not be `VK_SHADER_STAGE_GEOMETRY_BIT`
+enabled, `stage` **must** not be [VK_SHADER_STAGE_GEOMETRY_BIT](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-00705) VUID-VkPipelineShaderStageCreateInfo-stage-00705
 
 If the [`tessellationShader`](../../../../spec/latest/chapters/features.html#features-tessellationShader) feature
 is not enabled, `stage` **must** not be
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` or
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](VkShaderStageFlagBits.html) or
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-02091) VUID-VkPipelineShaderStageCreateInfo-stage-02091
 
 If the [`meshShaders`](../../../../spec/latest/chapters/features.html#features-meshShader) feature is not
-enabled, `stage` **must** not be `VK_SHADER_STAGE_MESH_BIT_EXT`
+enabled, `stage` **must** not be [VK_SHADER_STAGE_MESH_BIT_EXT](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-02092) VUID-VkPipelineShaderStageCreateInfo-stage-02092
 
 If the [`taskShaders`](../../../../spec/latest/chapters/features.html#features-taskShader) feature is not
-enabled, `stage` **must** not be `VK_SHADER_STAGE_TASK_BIT_EXT`
+enabled, `stage` **must** not be [VK_SHADER_STAGE_TASK_BIT_EXT](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-clustercullingShader-07813) VUID-VkPipelineShaderStageCreateInfo-clustercullingShader-07813
 
 If the [`clustercullingShader`](../../../../spec/latest/chapters/features.html#features-clustercullingShader)
 feature is not enabled, `stage` **must** not be
-`VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI`
+[VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-00706) VUID-VkPipelineShaderStageCreateInfo-stage-00706
 
-`stage` **must** not be `VK_SHADER_STAGE_ALL_GRAPHICS`, or
-`VK_SHADER_STAGE_ALL`
+`stage` **must** not be [VK_SHADER_STAGE_ALL_GRAPHICS](VkShaderStageFlagBits.html), or
+[VK_SHADER_STAGE_ALL](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-pName-00707) VUID-VkPipelineShaderStageCreateInfo-pName-00707
@@ -189,8 +269,8 @@ variable **must** not have an array size greater than
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-00713) VUID-VkPipelineShaderStageCreateInfo-stage-00713
 
-If `stage` is `VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` or
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`, and the identified
+If `stage` is [VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](VkShaderStageFlagBits.html) or
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](VkShaderStageFlagBits.html), and the identified
 entry point has an `OpExecutionMode` instruction specifying a patch
 size with `OutputVertices`, the patch size **must** be greater than `0`
 and less than or equal to
@@ -199,7 +279,7 @@ and less than or equal to
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-00714) VUID-VkPipelineShaderStageCreateInfo-stage-00714
 
-If `stage` is `VK_SHADER_STAGE_GEOMETRY_BIT`, the identified
+If `stage` is [VK_SHADER_STAGE_GEOMETRY_BIT](VkShaderStageFlagBits.html), the identified
 entry point **must** have an `OpExecutionMode` instruction specifying a
 maximum output vertex count that is greater than `0` and less than or
 equal to `VkPhysicalDeviceLimits`::`maxGeometryOutputVertices`
@@ -207,7 +287,7 @@ equal to `VkPhysicalDeviceLimits`::`maxGeometryOutputVertices`
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-00715) VUID-VkPipelineShaderStageCreateInfo-stage-00715
 
-If `stage` is `VK_SHADER_STAGE_GEOMETRY_BIT`, the identified
+If `stage` is [VK_SHADER_STAGE_GEOMETRY_BIT](VkShaderStageFlagBits.html), the identified
 entry point **must** have an `OpExecutionMode` instruction specifying an
 invocation count that is greater than `0` and less than or equal to
 `VkPhysicalDeviceLimits`::`maxGeometryShaderInvocations`
@@ -215,27 +295,27 @@ invocation count that is greater than `0` and less than or equal to
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-02596) VUID-VkPipelineShaderStageCreateInfo-stage-02596
 
-If `stage` is either `VK_SHADER_STAGE_VERTEX_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`, or
-`VK_SHADER_STAGE_GEOMETRY_BIT`, and the identified entry point
+If `stage` is either [VK_SHADER_STAGE_VERTEX_BIT](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](VkShaderStageFlagBits.html), or
+[VK_SHADER_STAGE_GEOMETRY_BIT](VkShaderStageFlagBits.html), and the identified entry point
 writes to `Layer` for any primitive, it **must** write the same value to
 `Layer` for all vertices of a given primitive
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-02597) VUID-VkPipelineShaderStageCreateInfo-stage-02597
 
-If `stage` is either `VK_SHADER_STAGE_VERTEX_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`, or
-`VK_SHADER_STAGE_GEOMETRY_BIT`, and the identified entry point
+If `stage` is either [VK_SHADER_STAGE_VERTEX_BIT](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](VkShaderStageFlagBits.html), or
+[VK_SHADER_STAGE_GEOMETRY_BIT](VkShaderStageFlagBits.html), and the identified entry point
 writes to `ViewportIndex` for any primitive, it **must** write the same
 value to `ViewportIndex` for all vertices of a given primitive
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-06685) VUID-VkPipelineShaderStageCreateInfo-stage-06685
 
-If `stage` is `VK_SHADER_STAGE_FRAGMENT_BIT`, and the identified
+If `stage` is [VK_SHADER_STAGE_FRAGMENT_BIT](VkShaderStageFlagBits.html), and the identified
 entry point writes to `FragDepth` in any execution path, all
 execution paths that are not exclusive to helper invocations **must**
 either discard the fragment, or write or initialize the value of
@@ -244,7 +324,7 @@ either discard the fragment, or write or initialize the value of
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-stage-06686) VUID-VkPipelineShaderStageCreateInfo-stage-06686
 
-If `stage` is `VK_SHADER_STAGE_FRAGMENT_BIT`, and the identified
+If `stage` is [VK_SHADER_STAGE_FRAGMENT_BIT](VkShaderStageFlagBits.html), and the identified
 entry point writes to `FragStencilRefEXT` in any execution path, all
 execution paths that are not exclusive to helper invocations **must**
 either discard the fragment, or write or initialize the value of
@@ -254,14 +334,14 @@ either discard the fragment, or write or initialize the value of
 [](#VUID-VkPipelineShaderStageCreateInfo-flags-02784) VUID-VkPipelineShaderStageCreateInfo-flags-02784
 
 If `flags` has the
-`VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT`
+[VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT](VkPipelineShaderStageCreateFlagBits.html)
 flag set, the [    `subgroupSizeControl`](../../../../spec/latest/chapters/features.html#features-subgroupSizeControl) feature **must** be enabled
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-flags-02785) VUID-VkPipelineShaderStageCreateInfo-flags-02785
 
 If `flags` has the
-`VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT` flag
+[VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT](VkPipelineShaderStageCreateFlagBits.html) flag
 set, the [`computeFullSubgroups`](../../../../spec/latest/chapters/features.html#features-computeFullSubgroups)
 feature **must** be enabled
 
@@ -269,18 +349,18 @@ feature **must** be enabled
 [](#VUID-VkPipelineShaderStageCreateInfo-flags-08988) VUID-VkPipelineShaderStageCreateInfo-flags-08988
 
 If `flags` includes
-`VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT`,
+[VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT](VkPipelineShaderStageCreateFlagBits.html),
 `stage` **must** be
-one of `VK_SHADER_STAGE_MESH_BIT_EXT`,
-`VK_SHADER_STAGE_TASK_BIT_EXT`, or
-`VK_SHADER_STAGE_COMPUTE_BIT`
+one of [VK_SHADER_STAGE_MESH_BIT_EXT](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_TASK_BIT_EXT](VkShaderStageFlagBits.html), or
+[VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-pNext-02754) VUID-VkPipelineShaderStageCreateInfo-pNext-02754
 
 If a [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.html) structure
 is included in the `pNext` chain, `flags` **must** not have the
-`VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT`
+[VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT](VkPipelineShaderStageCreateFlagBits.html)
 flag set
 
 * 
@@ -297,8 +377,8 @@ is included in the `pNext` chain, the
 
     If a [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.html) structure
     is included in the `pNext` chain and `stage` is
-    `VK_SHADER_STAGE_COMPUTE_BIT`,
-`VK_SHADER_STAGE_MESH_BIT_EXT`, or `VK_SHADER_STAGE_TASK_BIT_EXT`,
+    [VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_MESH_BIT_EXT](VkShaderStageFlagBits.html), or [VK_SHADER_STAGE_TASK_BIT_EXT](VkShaderStageFlagBits.html),
     the local workgroup size of the shader **must** be less than or equal to
     the product of
     [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.html)::`requiredSubgroupSize`
@@ -309,7 +389,7 @@ is included in the `pNext` chain, the
 
 If a [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.html) structure
 is included in the `pNext` chain, and `flags` has the
-`VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT` flag
+[VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT](VkPipelineShaderStageCreateFlagBits.html) flag
 set, the local workgroup size in the X dimension of the pipeline **must**
 be a multiple of
 [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.html)::`requiredSubgroupSize`
@@ -318,8 +398,8 @@ be a multiple of
 [](#VUID-VkPipelineShaderStageCreateInfo-flags-02758) VUID-VkPipelineShaderStageCreateInfo-flags-02758
 
 If `flags` has both the
-`VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT` and
-`VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT`
+[VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT](VkPipelineShaderStageCreateFlagBits.html) and
+[VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT](VkPipelineShaderStageCreateFlagBits.html)
 flags set, the local workgroup size in the X dimension of the pipeline
 **must** be a multiple of [`maxSubgroupSize`](../../../../spec/latest/chapters/devsandqueues.html#limits-maxSubgroupSize)
 
@@ -327,9 +407,9 @@ flags set, the local workgroup size in the X dimension of the pipeline
 [](#VUID-VkPipelineShaderStageCreateInfo-flags-02759) VUID-VkPipelineShaderStageCreateInfo-flags-02759
 
 If `flags` has the
-`VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT` flag
+[VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT](VkPipelineShaderStageCreateFlagBits.html) flag
 set and `flags` does not have the
-`VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT`
+[VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT](VkPipelineShaderStageCreateFlagBits.html)
 flag set and no
 [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.html) structure is
 included in the `pNext` chain, the local workgroup size in the X
@@ -341,7 +421,7 @@ dimension of the pipeline **must** be a multiple of [    `subgroupSize`](../../.
 If `module` uses the `OpTypeCooperativeMatrixKHR` instruction
 with a `Scope` equal to `Subgroup`, then the local workgroup size
 in the X dimension of the pipeline **must** be a multiple of the
-[effective subgroup size](../../../../spec/latest/chapters/interfaces.html#interfaces-builtin-variables-sgs).
+[effective subgroup size](../../../../spec/latest/chapters/interfaces.html#interfaces-builtin-variables-sgs)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-module-10169) VUID-VkPipelineShaderStageCreateInfo-module-10169
@@ -404,12 +484,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-sType-sType) VUID-VkPipelineShaderStageCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-pNext-pNext) VUID-VkPipelineShaderStageCreateInfo-pNext-pNext
 
- Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkDebugUtilsObjectNameInfoEXT](VkDebugUtilsObjectNameInfoEXT.html), [VkPipelineRobustnessCreateInfo](VkPipelineRobustnessCreateInfo.html), [VkPipelineShaderStageModuleIdentifierCreateInfoEXT](VkPipelineShaderStageModuleIdentifierCreateInfoEXT.html), [VkPipelineShaderStageNodeCreateInfoAMDX](VkPipelineShaderStageNodeCreateInfoAMDX.html), [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.html), [VkShaderModuleCreateInfo](VkShaderModuleCreateInfo.html), or [VkShaderModuleValidationCacheCreateInfoEXT](VkShaderModuleValidationCacheCreateInfoEXT.html)
+ Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkDebugUtilsObjectNameInfoEXT](VkDebugUtilsObjectNameInfoEXT.html), [VkPipelineRobustnessCreateInfo](VkPipelineRobustnessCreateInfo.html), [VkPipelineShaderStageModuleIdentifierCreateInfoEXT](VkPipelineShaderStageModuleIdentifierCreateInfoEXT.html), [VkPipelineShaderStageNodeCreateInfoAMDX](VkPipelineShaderStageNodeCreateInfoAMDX.html), [VkPipelineShaderStageRequiredSubgroupSizeCreateInfo](VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.html), [VkShaderDescriptorSetAndBindingMappingInfoEXT](VkShaderDescriptorSetAndBindingMappingInfoEXT.html), [VkShaderModuleCreateInfo](VkShaderModuleCreateInfo.html), or [VkShaderModuleValidationCacheCreateInfoEXT](VkShaderModuleValidationCacheCreateInfoEXT.html)
 
 * 
 [](#VUID-VkPipelineShaderStageCreateInfo-sType-unique) VUID-VkPipelineShaderStageCreateInfo-sType-unique

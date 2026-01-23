@@ -100,7 +100,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDebugUtilsMessengerCreateInfoEXT-sType-sType) VUID-VkDebugUtilsMessengerCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDebugUtilsMessengerCreateInfoEXT-flags-zerobitmask) VUID-VkDebugUtilsMessengerCreateInfoEXT-flags-zerobitmask

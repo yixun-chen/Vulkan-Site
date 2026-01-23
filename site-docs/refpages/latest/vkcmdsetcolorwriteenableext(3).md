@@ -23,7 +23,7 @@ To [dynamically enable or disable](../../../../spec/latest/chapters/pipelines.ht
 color attachment, call:
 
 // Provided by VK_EXT_color_write_enable
-void                                    vkCmdSetColorWriteEnableEXT(
+void vkCmdSetColorWriteEnableEXT(
     VkCommandBuffer                             commandBuffer,
     uint32_t                                    attachmentCount,
     const VkBool32*                             pColorWriteEnables);
@@ -44,7 +44,7 @@ for the given attachment.
 This command sets the color write enables for subsequent drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT` set in
+[VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineColorWriteCreateInfoEXT](VkPipelineColorWriteCreateInfoEXT.html)::`pColorWriteEnables` values
@@ -84,7 +84,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetColorWriteEnableEXT-commandBuffer-cmdpool) VUID-vkCmdSetColorWriteEnableEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetColorWriteEnableEXT-videocoding) VUID-vkCmdSetColorWriteEnableEXT-videocoding

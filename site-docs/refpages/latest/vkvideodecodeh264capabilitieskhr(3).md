@@ -53,14 +53,14 @@ maximum H.264 level supported by the profile, where enum constant
 [VkVideoPictureResourceInfoKHR](VkVideoPictureResourceInfoKHR.html)::`codedOffset` specified for a
 [video picture resource](../../../../spec/latest/chapters/videocoding.html#video-picture-resources) when using the
 picture layout
-`VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES_BIT_KHR`.
+[VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES_BIT_KHR](VkVideoDecodeH264PictureLayoutFlagBitsKHR.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkVideoDecodeH264CapabilitiesKHR-sType-sType) VUID-VkVideoDecodeH264CapabilitiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_CAPABILITIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_CAPABILITIES_KHR](VkStructureType.html)
 
 [VK_KHR_video_decode_h264](VK_KHR_video_decode_h264.html), [VkOffset2D](VkOffset2D.html), [VkStructureType](VkStructureType.html)
 

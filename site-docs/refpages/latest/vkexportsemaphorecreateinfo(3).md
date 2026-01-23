@@ -63,7 +63,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportSemaphoreCreateInfo-sType-sType) VUID-VkExportSemaphoreCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkExportSemaphoreCreateInfo-handleTypes-parameter) VUID-VkExportSemaphoreCreateInfo-handleTypes-parameter

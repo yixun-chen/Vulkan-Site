@@ -75,7 +75,7 @@ specified in the `pNext` chain of
 [video session parameters](../../../../spec/latest/chapters/videocoding.html#video-session-parameters) object.
 In this case, if the video codec operation the video session parameters
 object is created with is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR`, then it defines the
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then it defines the
 set of initial parameters to add to the created object (see
 [Creating Video Session    Parameters](../../../../spec/latest/chapters/videocoding.html#creating-video-session-parameters)).
 
@@ -84,7 +84,7 @@ In the `pNext` chain of [VkVideoSessionParametersUpdateInfoKHR](VkVideoSessionPa
 In this case, if the video codec operation the
 [video session parameters](../../../../spec/latest/chapters/videocoding.html#video-session-parameters) object to be
 updated was created with is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR`, then it defines the
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then it defines the
 set of parameters to add to it (see
 [Updating Video Session Parameters](../../../../spec/latest/chapters/videocoding.html#video-session-parameters-update)).
 
@@ -93,7 +93,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeH265SessionParametersAddInfoKHR-sType-sType) VUID-VkVideoEncodeH265SessionParametersAddInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_ADD_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_ADD_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoEncodeH265SessionParametersAddInfoKHR-pStdVPSs-parameter) VUID-VkVideoEncodeH265SessionParametersAddInfoKHR-pStdVPSs-parameter

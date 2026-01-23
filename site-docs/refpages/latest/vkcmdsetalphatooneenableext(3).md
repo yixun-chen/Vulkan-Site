@@ -38,7 +38,7 @@ This command sets the `alphaToOneEnable` state for subsequent drawing
 commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT` set in
+[VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineMultisampleStateCreateInfo](VkPipelineMultisampleStateCreateInfo.html)::`alphaToOneEnable` value
@@ -60,7 +60,7 @@ The [`shaderObject`](../../../../spec/latest/chapters/features.html#features-sha
 [](#VUID-vkCmdSetAlphaToOneEnableEXT-alphaToOne-07607) VUID-vkCmdSetAlphaToOneEnableEXT-alphaToOne-07607
 
 If the [`alphaToOne`](../../../../spec/latest/chapters/features.html#features-alphaToOne) feature is not enabled,
-`alphaToOneEnable` **must** be `VK_FALSE`
+`alphaToOneEnable` **must** be [VK_FALSE](VK_FALSE.html)
 
 Valid Usage (Implicit)
 
@@ -77,7 +77,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetAlphaToOneEnableEXT-commandBuffer-cmdpool) VUID-vkCmdSetAlphaToOneEnableEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetAlphaToOneEnableEXT-videocoding) VUID-vkCmdSetAlphaToOneEnableEXT-videocoding

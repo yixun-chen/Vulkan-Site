@@ -65,7 +65,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkWin32SurfaceCreateInfoKHR-sType-sType) VUID-VkWin32SurfaceCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkWin32SurfaceCreateInfoKHR-pNext-pNext) VUID-VkWin32SurfaceCreateInfoKHR-pNext-pNext

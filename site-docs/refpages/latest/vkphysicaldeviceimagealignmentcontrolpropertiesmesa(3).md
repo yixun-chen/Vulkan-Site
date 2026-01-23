@@ -35,7 +35,7 @@ structure describe the following:
 * 
  `supportedImageAlignmentMask`
 is a bitwise-or of all potentially supported image alignments for a
-given physical device when using `VK_IMAGE_TILING_OPTIMAL`.
+given physical device when using [VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html).
 If a given alignment is supported, the application **can** request an image
 to have that alignment.
 A given set of image creation parameters **may** support a subset of these
@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceImageAlignmentControlPropertiesMESA-sType-sType) VUID-VkPhysicalDeviceImageAlignmentControlPropertiesMESA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA](VkStructureType.html)
 
 [VK_MESA_image_alignment_control](VK_MESA_image_alignment_control.html), [VkStructureType](VkStructureType.html)
 

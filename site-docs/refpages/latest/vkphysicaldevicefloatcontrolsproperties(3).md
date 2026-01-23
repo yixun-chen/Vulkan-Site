@@ -197,7 +197,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFloatControlsProperties-sType-sType) VUID-VkPhysicalDeviceFloatControlsProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES](VkStructureType.html)
 
 [VK_KHR_shader_float_controls](VK_KHR_shader_float_controls.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), `VkBool32`, [VkShaderFloatControlsIndependence](VkShaderFloatControlsIndependence.html), [VkStructureType](VkStructureType.html)
 

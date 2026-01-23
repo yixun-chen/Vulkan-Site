@@ -46,7 +46,7 @@ Valid Usage
 [](#VUID-VkSamplerCaptureDescriptorDataInfoEXT-sampler-08087) VUID-VkSamplerCaptureDescriptorDataInfoEXT-sampler-08087
 
 `sampler` **must** have been created with
-`VK_SAMPLER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT` set in
+[VK_SAMPLER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](VkSamplerCreateFlagBits.html) set in
 [VkSamplerCreateInfo](VkSamplerCreateInfo.html)::`flags`
 
 Valid Usage (Implicit)
@@ -54,7 +54,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSamplerCaptureDescriptorDataInfoEXT-sType-sType) VUID-VkSamplerCaptureDescriptorDataInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_CAPTURE_DESCRIPTOR_DATA_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_CAPTURE_DESCRIPTOR_DATA_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkSamplerCaptureDescriptorDataInfoEXT-pNext-pNext) VUID-VkSamplerCaptureDescriptorDataInfoEXT-pNext-pNext

@@ -131,28 +131,28 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkAccessFlagBits](VkAccessFlagBits.html):
 
-`VK_ACCESS_CONDITIONAL_RENDERING_READ_BIT_EXT`
+[VK_ACCESS_CONDITIONAL_RENDERING_READ_BIT_EXT](VkAccessFlagBits.html)
 
 Extending [VkBufferUsageFlagBits](VkBufferUsageFlagBits.html):
 
 * 
-`VK_BUFFER_USAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_BUFFER_USAGE_CONDITIONAL_RENDERING_BIT_EXT](VkBufferUsageFlagBits.html)
 
 Extending [VkPipelineStageFlagBits](VkPipelineStageFlagBits.html):
 
 * 
-`VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT](VkPipelineStageFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT`
+[VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_CONDITIONAL_RENDERING_BEGIN_INFO_EXT`
+[VK_STRUCTURE_TYPE_CONDITIONAL_RENDERING_BEGIN_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONDITIONAL_RENDERING_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONDITIONAL_RENDERING_FEATURES_EXT](VkStructureType.html)
 
 1) Should conditional rendering affect copy and blit commands?
 
@@ -163,9 +163,9 @@ rendering is active in the primary command buffer?
 
 **RESOLVED**: The rendering commands in secondary command buffer will be
 affected by an active conditional rendering in primary command buffer if the
-`conditionalRenderingEnable` is set to `VK_TRUE`.
+`conditionalRenderingEnable` is set to [VK_TRUE](VK_TRUE.html).
 Conditional rendering **must** not be active in the primary command buffer if
-`conditionalRenderingEnable` is `VK_FALSE`.
+`conditionalRenderingEnable` is [VK_FALSE](VK_FALSE.html).
 
 None.
 

@@ -115,7 +115,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceQueueInfo2-sType-sType) VUID-VkDeviceQueueInfo2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_QUEUE_INFO_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_QUEUE_INFO_2](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceQueueInfo2-pNext-pNext) VUID-VkDeviceQueueInfo2-pNext-pNext

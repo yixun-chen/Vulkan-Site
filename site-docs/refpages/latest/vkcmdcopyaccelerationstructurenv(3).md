@@ -44,13 +44,13 @@ recorded.
 specifying additional operations to perform during the copy.
 
 Accesses to `src` and `dst` **must** be [synchronized](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies) with the
-`VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR`
+[VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR](VkPipelineStageFlagBits2.html)
 [pipeline stage](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages) or the
-`VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR`
+[VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR](VkPipelineStageFlagBits.html)
 [pipeline stage](../../../../spec/latest/chapters/synchronization.html#synchronization-pipeline-stages), and an
 [access type](../../../../spec/latest/chapters/synchronization.html#synchronization-access-types) of
-`VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR` or
-`VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR` as appropriate.
+[VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR](VkAccessFlagBits.html) or
+[VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR](VkAccessFlagBits.html) as appropriate.
 
 Valid Usage
 
@@ -58,8 +58,8 @@ Valid Usage
 [](#VUID-vkCmdCopyAccelerationStructureNV-mode-03410) VUID-vkCmdCopyAccelerationStructureNV-mode-03410
 
 `mode` **must** be
-`VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR` or
-`VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_KHR`
+[VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR](VkCopyAccelerationStructureModeKHR.html) or
+[VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_KHR](VkCopyAccelerationStructureModeKHR.html)
 
 * 
 [](#VUID-vkCmdCopyAccelerationStructureNV-src-04963) VUID-vkCmdCopyAccelerationStructureNV-src-04963
@@ -70,9 +70,9 @@ prior to the execution of this command
 * 
 [](#VUID-vkCmdCopyAccelerationStructureNV-src-03411) VUID-vkCmdCopyAccelerationStructureNV-src-03411
 
-If `mode` is `VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR`,
+If `mode` is [VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR](VkCopyAccelerationStructureModeKHR.html),
 `src` **must** have been constructed with
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR` in the
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR](VkBuildAccelerationStructureFlagBitsKHR.html) in the
 build
 
 * 
@@ -131,7 +131,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdCopyAccelerationStructureNV-commandBuffer-cmdpool) VUID-vkCmdCopyAccelerationStructureNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdCopyAccelerationStructureNV-renderpass) VUID-vkCmdCopyAccelerationStructureNV-renderpass

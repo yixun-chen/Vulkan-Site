@@ -59,7 +59,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdCudaLaunchKernelNV-commandBuffer-cmdpool) VUID-vkCmdCudaLaunchKernelNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdCudaLaunchKernelNV-suspended) VUID-vkCmdCudaLaunchKernelNV-suspended

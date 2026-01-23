@@ -25,7 +25,7 @@ descriptor pool **must** be created with specifying the inline uniform block
 binding capacity of the descriptor pool, in addition to the total inline
 uniform data capacity in bytes which is specified through a
 [VkDescriptorPoolSize](VkDescriptorPoolSize.html) structure with a `descriptorType` value of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`.
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html).
 This **can** be done by adding a
 `VkDescriptorPoolInlineUniformBlockCreateInfo` structure to the
 `pNext` chain of [VkDescriptorPoolCreateInfo](VkDescriptorPoolCreateInfo.html).
@@ -60,7 +60,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDescriptorPoolInlineUniformBlockCreateInfo-sType-sType) VUID-VkDescriptorPoolInlineUniformBlockCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO](VkStructureType.html)
 
 [VK_EXT_inline_uniform_block](VK_EXT_inline_uniform_block.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), [VkStructureType](VkStructureType.html)
 

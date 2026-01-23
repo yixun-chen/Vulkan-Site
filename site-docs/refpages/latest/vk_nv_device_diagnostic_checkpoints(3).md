@@ -133,20 +133,20 @@ Extending [VkQueueFamilyProperties2](VkQueueFamilyProperties2.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_CHECKPOINT_DATA_NV`
+[VK_STRUCTURE_TYPE_CHECKPOINT_DATA_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV`
+[VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV](VkStructureType.html)
 
 If [Vulkan Version 1.3](../../../../spec/latest/appendices/versions.html#versions-1.3) or [VK_KHR_synchronization2](VK_KHR_synchronization2.html) is supported:
 
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_CHECKPOINT_DATA_2_NV`
+[VK_STRUCTURE_TYPE_CHECKPOINT_DATA_2_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV`
+[VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV](VkStructureType.html)
 
 * 
 Revision 1, 2018-07-16 (Nuno Subtil)

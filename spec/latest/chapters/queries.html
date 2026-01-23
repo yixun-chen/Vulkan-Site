@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:spec" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -174,6 +174,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="descriptorsets.html">Resource Descriptors</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="descriptorheaps.html">Descriptor Heaps</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="interfaces.html">Shader Interfaces</a>
@@ -535,9 +538,9 @@ resulting query pool object is returned.</p>
 <p><a id="VUID-vkCreateQueryPool-device-09663" href="#VUID-vkCreateQueryPool-device-09663"></a> <span class="vuid">VUID-vkCreateQueryPool-device-09663</span><br>
 
 <code>device</code> <strong>must</strong> support at least one queue family with one of the
-<code>VK_QUEUE_VIDEO_ENCODE_BIT_KHR</code>,
-<code>VK_QUEUE_VIDEO_DECODE_BIT_KHR</code>,
-<code>VK_QUEUE_COMPUTE_BIT</code>, or <code>VK_QUEUE_GRAPHICS_BIT</code> capabilities</p>
+<a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_VIDEO_ENCODE_BIT_KHR</a>,
+<a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_VIDEO_DECODE_BIT_KHR</a>,
+<a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_COMPUTE_BIT</a>, or <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> capabilities</p>
 </li>
 </ul>
 </div>
@@ -582,7 +585,7 @@ resulting query pool object is returned.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a></p>
 </li>
 </ul>
 </div>
@@ -592,16 +595,16 @@ resulting query pool object is returned.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_DEVICE_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_HOST_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_UNKNOWN</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_UNKNOWN</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_VALIDATION_FAILED</a></p>
 </li>
 </ul>
 </div>
@@ -655,7 +658,7 @@ is a bitmask of <a href="#VkQueryPipelineStatisticFlagBits">VkQueryPipelineStati
 counters will be returned in queries on the new pool, as described below
 in <a href="#queries-pipestats">Pipeline Statistics Queries</a>.
 <code>pipelineStatistics</code> is ignored if <code>queryType</code> is not
-<code>VK_QUERY_TYPE_PIPELINE_STATISTICS</code>.</p>
+<a href="#VkQueryType">VK_QUERY_TYPE_PIPELINE_STATISTICS</a>.</p>
 </li>
 </ul>
 </div>
@@ -668,42 +671,42 @@ in <a href="#queries-pipestats">Pipeline Statistics Queries</a>.
 <p><a id="VUID-VkQueryPoolCreateInfo-queryType-00791" href="#VUID-VkQueryPoolCreateInfo-queryType-00791"></a> <span class="vuid">VUID-VkQueryPoolCreateInfo-queryType-00791</span><br>
 
 If the <a href="features.html#features-pipelineStatisticsQuery" class="xref page">    <code>pipelineStatisticsQuery</code></a> feature is not enabled, <code>queryType</code>
-<strong>must</strong> not be <code>VK_QUERY_TYPE_PIPELINE_STATISTICS</code></p>
+<strong>must</strong> not be <a href="#VkQueryType">VK_QUERY_TYPE_PIPELINE_STATISTICS</a></p>
 </li>
 <li>
 <p><a id="VUID-VkQueryPoolCreateInfo-meshShaderQueries-07068" href="#VUID-VkQueryPoolCreateInfo-meshShaderQueries-07068"></a> <span class="vuid">VUID-VkQueryPoolCreateInfo-meshShaderQueries-07068</span><br>
 
 If the <a href="features.html#features-meshShaderQueries" class="xref page"><code>meshShaderQueries</code></a> feature
 is not enabled, <code>queryType</code> <strong>must</strong> not be
-<code>VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT</code></p>
+<a href="#VkQueryType">VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-VkQueryPoolCreateInfo-meshShaderQueries-07069" href="#VUID-VkQueryPoolCreateInfo-meshShaderQueries-07069"></a> <span class="vuid">VUID-VkQueryPoolCreateInfo-meshShaderQueries-07069</span><br>
 
 If the <a href="features.html#features-meshShaderQueries" class="xref page"><code>meshShaderQueries</code></a> feature
 is not enabled, and <code>queryType</code> is
-<code>VK_QUERY_TYPE_PIPELINE_STATISTICS</code>, <code>pipelineStatistics</code> <strong>must</strong>
+<a href="#VkQueryType">VK_QUERY_TYPE_PIPELINE_STATISTICS</a>, <code>pipelineStatistics</code> <strong>must</strong>
 not contain
-<code>VK_QUERY_PIPELINE_STATISTIC_TASK_SHADER_INVOCATIONS_BIT_EXT</code> or
-<code>VK_QUERY_PIPELINE_STATISTIC_MESH_SHADER_INVOCATIONS_BIT_EXT</code></p>
+<a href="#VkQueryPipelineStatisticFlagBits">VK_QUERY_PIPELINE_STATISTIC_TASK_SHADER_INVOCATIONS_BIT_EXT</a> or
+<a href="#VkQueryPipelineStatisticFlagBits">VK_QUERY_PIPELINE_STATISTIC_MESH_SHADER_INVOCATIONS_BIT_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-VkQueryPoolCreateInfo-queryType-00792" href="#VUID-VkQueryPoolCreateInfo-queryType-00792"></a> <span class="vuid">VUID-VkQueryPoolCreateInfo-queryType-00792</span><br>
 
-If <code>queryType</code> is <code>VK_QUERY_TYPE_PIPELINE_STATISTICS</code>,
+If <code>queryType</code> is <a href="#VkQueryType">VK_QUERY_TYPE_PIPELINE_STATISTICS</a>,
 <code>pipelineStatistics</code> <strong>must</strong> be a valid combination of
 <a href="#VkQueryPipelineStatisticFlagBits">VkQueryPipelineStatisticFlagBits</a> values</p>
 </li>
 <li>
 <p><a id="VUID-VkQueryPoolCreateInfo-queryType-09534" href="#VUID-VkQueryPoolCreateInfo-queryType-09534"></a> <span class="vuid">VUID-VkQueryPoolCreateInfo-queryType-09534</span><br>
 
-If <code>queryType</code> is <code>VK_QUERY_TYPE_PIPELINE_STATISTICS</code>,
+If <code>queryType</code> is <a href="#VkQueryType">VK_QUERY_TYPE_PIPELINE_STATISTICS</a>,
 <code>pipelineStatistics</code> <strong>must</strong> not be zero</p>
 </li>
 <li>
 <p><a id="VUID-VkQueryPoolCreateInfo-queryType-03222" href="#VUID-VkQueryPoolCreateInfo-queryType-03222"></a> <span class="vuid">VUID-VkQueryPoolCreateInfo-queryType-03222</span><br>
 
-If <code>queryType</code> is <code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, the
+If <code>queryType</code> is <a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>, the
 <code>pNext</code> chain <strong>must</strong> include a
 <a href="#VkQueryPoolPerformanceCreateInfoKHR">VkQueryPoolPerformanceCreateInfoKHR</a> structure</p>
 </li>
@@ -715,7 +718,7 @@ If <code>queryType</code> is <code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, t
 <li>
 <p><a id="VUID-VkQueryPoolCreateInfo-queryType-11839" href="#VUID-VkQueryPoolCreateInfo-queryType-11839"></a> <span class="vuid">VUID-VkQueryPoolCreateInfo-queryType-11839</span><br>
 
-If <code>queryType</code> is <code>VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</code>, then
+If <code>queryType</code> is <a href="#VkQueryType">VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</a>, then
 at least one of the queue families of the device <strong>must</strong> support
 <a href="#queries-result-status-only">result status queries</a>, as indicated by
 <a href="devsandqueues.html#VkQueueFamilyQueryResultStatusPropertiesKHR" class="xref page">VkQueueFamilyQueryResultStatusPropertiesKHR</a>::<code>queryResultStatusSupport</code></p>
@@ -725,28 +728,28 @@ at least one of the queue families of the device <strong>must</strong> support
 
 If the <code>pNext</code> chain includes a <a href="videocoding.html#VkVideoProfileInfoKHR" class="xref page">VkVideoProfileInfoKHR</a>
 structure and its <code>videoCodecOperation</code> member is
-<code>VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR</code>, then the
+<a href="videocoding.html#VkVideoCodecOperationFlagBitsKHR" class="xref page">VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR</a>, then the
 <a href="features.html#features-videoDecodeVP9" class="xref page"><code>videoDecodeVP9</code></a> feature <strong>must</strong> be
 enabled</p>
 </li>
 <li>
 <p><a id="VUID-VkQueryPoolCreateInfo-queryType-07133" href="#VUID-VkQueryPoolCreateInfo-queryType-07133"></a> <span class="vuid">VUID-VkQueryPoolCreateInfo-queryType-07133</span><br>
 
-If <code>queryType</code> is <code>VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</code>,
+If <code>queryType</code> is <a href="#VkQueryType">VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</a>,
 then the <code>pNext</code> chain <strong>must</strong> include a <a href="videocoding.html#VkVideoProfileInfoKHR" class="xref page">VkVideoProfileInfoKHR</a>
 structure with <code>videoCodecOperation</code> specifying an encode operation</p>
 </li>
 <li>
 <p><a id="VUID-VkQueryPoolCreateInfo-queryType-07906" href="#VUID-VkQueryPoolCreateInfo-queryType-07906"></a> <span class="vuid">VUID-VkQueryPoolCreateInfo-queryType-07906</span><br>
 
-If <code>queryType</code> is <code>VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</code>,
+If <code>queryType</code> is <a href="#VkQueryType">VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</a>,
 then the <code>pNext</code> chain <strong>must</strong> include a
 <a href="#VkQueryPoolVideoEncodeFeedbackCreateInfoKHR">VkQueryPoolVideoEncodeFeedbackCreateInfoKHR</a> structure</p>
 </li>
 <li>
 <p><a id="VUID-VkQueryPoolCreateInfo-queryType-07907" href="#VUID-VkQueryPoolCreateInfo-queryType-07907"></a> <span class="vuid">VUID-VkQueryPoolCreateInfo-queryType-07907</span><br>
 
-If <code>queryType</code> is <code>VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</code>, and
+If <code>queryType</code> is <a href="#VkQueryType">VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</a>, and
 the <code>pNext</code> chain includes a <a href="videocoding.html#VkVideoProfileInfoKHR" class="xref page">VkVideoProfileInfoKHR</a> structure
 and a <a href="#VkQueryPoolVideoEncodeFeedbackCreateInfoKHR">VkQueryPoolVideoEncodeFeedbackCreateInfoKHR</a> structure, then
 <a href="#VkQueryPoolVideoEncodeFeedbackCreateInfoKHR">VkQueryPoolVideoEncodeFeedbackCreateInfoKHR</a>::<code>encodeFeedbackFlags</code>
@@ -761,7 +764,7 @@ as returned by <a href="videocoding.html#vkGetPhysicalDeviceVideoCapabilitiesKHR
 
 If the <code>pNext</code> chain includes a <a href="videocoding.html#VkVideoProfileInfoKHR" class="xref page">VkVideoProfileInfoKHR</a>
 structure and its <code>videoCodecOperation</code> member is
-<code>VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</code>, then the
+<a href="videocoding.html#VkVideoCodecOperationFlagBitsKHR" class="xref page">VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR</a>, then the
 <a href="features.html#features-videoEncodeAV1" class="xref page"><code>videoEncodeAV1</code></a> feature <strong>must</strong> be
 enabled</p>
 </li>
@@ -784,7 +787,7 @@ feature <strong>must</strong> be enabled</p>
 <ul>
 <li>
 <p><a id="VUID-VkQueryPoolCreateInfo-sType-sType" href="#VUID-VkQueryPoolCreateInfo-sType-sType"></a> <span class="vuid">VUID-VkQueryPoolCreateInfo-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO</a></p>
 </li>
 <li>
 <p><a id="VUID-VkQueryPoolCreateInfo-pNext-pNext" href="#VUID-VkQueryPoolCreateInfo-pNext-pNext"></a> <span class="vuid">VUID-VkQueryPoolCreateInfo-pNext-pNext</span><br>
@@ -826,7 +829,7 @@ typedef enum VkQueryPoolCreateFlagBits {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_QUERY_POOL_CREATE_RESET_BIT_KHR</code> specifies that queries in the
+<p><a href="#VkQueryPoolCreateFlagBits">VK_QUERY_POOL_CREATE_RESET_BIT_KHR</a> specifies that queries in the
 query pool are initialized on creation and do not need to be reset
 before first use.</p>
 </li>
@@ -923,7 +926,7 @@ for the queue family specified in <code>queueFamilyIndex</code></p>
 <ul>
 <li>
 <p><a id="VUID-VkQueryPoolPerformanceCreateInfoKHR-sType-sType" href="#VUID-VkQueryPoolPerformanceCreateInfoKHR-sType-sType"></a> <span class="vuid">VUID-VkQueryPoolPerformanceCreateInfoKHR-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-VkQueryPoolPerformanceCreateInfoKHR-pCounterIndices-parameter" href="#VUID-VkQueryPoolPerformanceCreateInfoKHR-pCounterIndices-parameter"></a> <span class="vuid">VUID-VkQueryPoolPerformanceCreateInfoKHR-pCounterIndices-parameter</span><br>
@@ -1068,7 +1071,7 @@ created, <code>pAllocator</code> <strong>must</strong> be <code>NULL</code></p>
 <div class="paragraph">
 <p>Applications <strong>can</strong> verify that <code>queryPool</code> <strong>can</strong> be destroyed by checking
 that <code>vkGetQueryPoolResults</code>() without the
-<code>VK_QUERY_RESULT_PARTIAL_BIT</code> flag returns <code>VK_SUCCESS</code> for all
+<a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_PARTIAL_BIT</a> flag returns <a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a> for all
 queries that are used in command buffers submitted for execution.</p>
 </div>
 </td>
@@ -1161,65 +1164,65 @@ typedef enum VkQueryType {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_QUERY_TYPE_OCCLUSION</code> specifies an <a href="#queries-occlusion">    occlusion query</a>.</p>
+<p><a href="#VkQueryType">VK_QUERY_TYPE_OCCLUSION</a> specifies an <a href="#queries-occlusion">    occlusion query</a>.</p>
 </li>
 <li>
-<p><code>VK_QUERY_TYPE_PIPELINE_STATISTICS</code> specifies a <a href="#queries-pipestats">    pipeline statistics query</a>.</p>
+<p><a href="#VkQueryType">VK_QUERY_TYPE_PIPELINE_STATISTICS</a> specifies a <a href="#queries-pipestats">    pipeline statistics query</a>.</p>
 </li>
 <li>
-<p><code>VK_QUERY_TYPE_TIMESTAMP</code> specifies a <a href="#queries-timestamps">    timestamp query</a>.</p>
+<p><a href="#VkQueryType">VK_QUERY_TYPE_TIMESTAMP</a> specifies a <a href="#queries-timestamps">    timestamp query</a>.</p>
 </li>
 <li>
-<p><code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code> specifies a
+<p><a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a> specifies a
 <a href="#queries-performance">performance query</a>.</p>
 </li>
 <li>
-<p><code>VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</code> specifies a
+<p><a href="#VkQueryType">VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</a> specifies a
 <a href="#queries-transform-feedback">transform feedback query</a>.</p>
 </li>
 <li>
-<p><code>VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</code> specifies a
+<p><a href="#VkQueryType">VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</a> specifies a
 <a href="#queries-primitives-generated">primitives generated query</a>.</p>
 </li>
 <li>
-<p><code>VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR</code> specifies
+<p><a href="#VkQueryType">VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR</a> specifies
 a <a href="accelstructures.html#acceleration-structure-copying" class="xref page">acceleration structure size query</a>
 for use with <a href="accelstructures.html#vkCmdWriteAccelerationStructuresPropertiesKHR" class="xref page">vkCmdWriteAccelerationStructuresPropertiesKHR</a> or
 <a href="accelstructures.html#vkWriteAccelerationStructuresPropertiesKHR" class="xref page">vkWriteAccelerationStructuresPropertiesKHR</a>.</p>
 </li>
 <li>
-<p><code>VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR</code>
+<p><a href="#VkQueryType">VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR</a>
 specifies a <a href="accelstructures.html#acceleration-structure-copying" class="xref page">serialization acceleration    structure size query</a>.</p>
 </li>
 <li>
-<p><code>VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR</code> specifies an
+<p><a href="#VkQueryType">VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR</a> specifies an
 <a href="accelstructures.html#acceleration-structure-copying" class="xref page">acceleration structure size query</a>
 for use with <a href="accelstructures.html#vkCmdWriteAccelerationStructuresPropertiesKHR" class="xref page">vkCmdWriteAccelerationStructuresPropertiesKHR</a> or
 <a href="accelstructures.html#vkWriteAccelerationStructuresPropertiesKHR" class="xref page">vkWriteAccelerationStructuresPropertiesKHR</a>.</p>
 </li>
 <li>
-<p><code>VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR</code>
+<p><a href="#VkQueryType">VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR</a>
 specifies a <a href="accelstructures.html#serialized-as-header" class="xref page">serialization acceleration structure    pointer count query</a>.</p>
 </li>
 <li>
-<p><code>VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV</code> specifies
+<p><a href="#VkQueryType">VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV</a> specifies
 an <a href="accelstructures.html#acceleration-structure-copying" class="xref page">acceleration structure size query</a>
 for use with <a href="accelstructures.html#vkCmdWriteAccelerationStructuresPropertiesNV" class="xref page">vkCmdWriteAccelerationStructuresPropertiesNV</a>.</p>
 </li>
 <li>
-<p><code>VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL</code> specifies a
+<p><a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL</a> specifies a
 <a href="#queries-performance-intel">Intel performance query</a>.</p>
 </li>
 <li>
-<p><code>VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</code> specifies a
+<p><a href="#VkQueryType">VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</a> specifies a
 <a href="#queries-result-status-only">result status query</a>.</p>
 </li>
 <li>
-<p><code>VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</code> specifies a
+<p><a href="#VkQueryType">VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</a> specifies a
 <a href="#queries-video-encode-feedback">video encode feedback query</a>.</p>
 </li>
 <li>
-<p><code>VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT</code> specifies a
+<p><a href="#VkQueryType">VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT</a> specifies a
 <a href="#queries-mesh-shader">generated mesh primitives query</a>.</p>
 </li>
 </ul>
@@ -1268,7 +1271,7 @@ calling either <a href="#vkGetQueryPoolResults">vkGetQueryPoolResults</a> or
 </div>
 <div class="paragraph">
 <p>After query pool creation,
-where <code>VK_QUERY_POOL_CREATE_RESET_BIT_KHR</code> was not set in
+where <a href="#VkQueryPoolCreateFlagBits">VK_QUERY_POOL_CREATE_RESET_BIT_KHR</a> was not set in
 <a href="#VkQueryPoolCreateInfo">VkQueryPoolCreateInfo</a>::<code>flags</code>
 each query is in an uninitialized state and <strong>must</strong> be reset before it is
 used.
@@ -1340,7 +1343,7 @@ before the second scope.</p>
 </div>
 <div class="paragraph">
 <p>If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, this command sets the status of
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>, this command sets the status of
 query indices <span class="eq">[<code>firstQuery</code>, <code>firstQuery</code> + 
 <code>queryCount</code> - 1]</span> to unavailable for each pass of <code>queryPool</code>, as
 indicated by a call to
@@ -1356,7 +1359,7 @@ indicated by a call to
 <div class="paragraph">
 <p>Because <code>vkCmdResetQueryPool</code> resets all the passes of the indicated
 queries, applications must not record a <code>vkCmdResetQueryPool</code> command
-for a <code>queryPool</code> created with <code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>
+for a <code>queryPool</code> created with <a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>
 in a command buffer that needs to be submitted multiple times as indicated
 by a call to <a href="#vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR">vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR</a>.
 Otherwise applications will never be able to complete the recorded queries.</p>
@@ -1395,7 +1398,7 @@ All queries used by the command <strong>must</strong> not be active</p>
 <p><a id="VUID-vkCmdResetQueryPool-firstQuery-02862" href="#VUID-vkCmdResetQueryPool-firstQuery-02862"></a> <span class="vuid">VUID-vkCmdResetQueryPool-firstQuery-02862</span><br>
 
 If <code>queryPool</code> was created with
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, this command <strong>must</strong> not be
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>, this command <strong>must</strong> not be
 recorded in a command buffer that, either directly or through secondary
 command buffers, also contains begin commands for a query from the set
 of queries <span class="eq">[<code>firstQuery</code>, <code>firstQuery</code> + 
@@ -1424,7 +1427,7 @@ of queries <span class="eq">[<code>firstQuery</code>, <code>firstQuery</code> +
 </li>
 <li>
 <p><a id="VUID-vkCmdResetQueryPool-commandBuffer-cmdpool" href="#VUID-vkCmdResetQueryPool-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdResetQueryPool-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, <code>VK_QUEUE_GRAPHICS_BIT</code>, <code>VK_QUEUE_OPTICAL_FLOW_BIT_NV</code>, <code>VK_QUEUE_VIDEO_DECODE_BIT_KHR</code>, or <code>VK_QUEUE_VIDEO_ENCODE_BIT_KHR</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_COMPUTE_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_OPTICAL_FLOW_BIT_NV</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_VIDEO_DECODE_BIT_KHR</a>, or <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_VIDEO_ENCODE_BIT_KHR</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdResetQueryPool-renderpass" href="#VUID-vkCmdResetQueryPool-renderpass"></a> <span class="vuid">VUID-vkCmdResetQueryPool-renderpass</span><br>
@@ -1556,7 +1559,7 @@ being reset.</p>
 <code>firstQuery</code> +  <code>queryCount</code> - 1]</span> to unavailable.</p>
 </div>
 <div class="paragraph">
-<p>If <code>queryPool</code> is <code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code> this command
+<p>If <code>queryPool</code> is <a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a> this command
 sets the status of query indices <span class="eq">[<code>firstQuery</code>, <code>firstQuery</code>
 +  <code>queryCount</code> - 1]</span> to unavailable for each pass.</p>
 </div>
@@ -1712,8 +1715,8 @@ constraints on the types of queries that <strong>can</strong> be performed.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>If the <code>queryType</code> of the pool is <code>VK_QUERY_TYPE_OCCLUSION</code> and
-<code>flags</code> contains <code>VK_QUERY_CONTROL_PRECISE_BIT</code>, an implementation
+<p>If the <code>queryType</code> of the pool is <a href="#VkQueryType">VK_QUERY_TYPE_OCCLUSION</a> and
+<code>flags</code> contains <a href="#VkQueryControlFlagBits">VK_QUERY_CONTROL_PRECISE_BIT</a>, an implementation
 <strong>must</strong> return a result that matches the actual number of samples passed.
 This is described in more detail in <a href="#queries-occlusion">Occlusion Queries</a>.</p>
 </div>
@@ -1800,35 +1803,35 @@ All queries used by the command <strong>must</strong> be <em>unavailable</em></p
 <p><a id="VUID-vkCmdBeginQuery-queryType-02804" href="#VUID-vkCmdBeginQuery-queryType-02804"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryType-02804</span><br>
 
 The <code>queryType</code> used to create <code>queryPool</code> <strong>must</strong> not be
-<code>VK_QUERY_TYPE_TIMESTAMP</code></p>
+<a href="#VkQueryType">VK_QUERY_TYPE_TIMESTAMP</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQuery-queryType-04728" href="#VUID-vkCmdBeginQuery-queryType-04728"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryType-04728</span><br>
 
 The <code>queryType</code> used to create <code>queryPool</code> <strong>must</strong> not be
-<code>VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR</code> or
-<code>VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR</code></p>
+<a href="#VkQueryType">VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR</a> or
+<a href="#VkQueryType">VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQuery-queryType-06741" href="#VUID-vkCmdBeginQuery-queryType-06741"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryType-06741</span><br>
 
 The <code>queryType</code> used to create <code>queryPool</code> <strong>must</strong> not be
-<code>VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR</code> or
-<code>VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR</code></p>
+<a href="#VkQueryType">VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR</a> or
+<a href="#VkQueryType">VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQuery-queryType-04729" href="#VUID-vkCmdBeginQuery-queryType-04729"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryType-04729</span><br>
 
 The <code>queryType</code> used to create <code>queryPool</code> <strong>must</strong> not be
-<code>VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV</code></p>
+<a href="#VkQueryType">VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQuery-queryType-00800" href="#VUID-vkCmdBeginQuery-queryType-00800"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryType-00800</span><br>
 
 If the <a href="features.html#features-occlusionQueryPrecise" class="xref page"><code>occlusionQueryPrecise</code></a>
 feature is not enabled, or the <code>queryType</code> used to create
-<code>queryPool</code> was not <code>VK_QUERY_TYPE_OCCLUSION</code>, <code>flags</code> <strong>must</strong>
-not contain <code>VK_QUERY_CONTROL_PRECISE_BIT</code></p>
+<code>queryPool</code> was not <a href="#VkQueryType">VK_QUERY_TYPE_OCCLUSION</a>, <code>flags</code> <strong>must</strong>
+not contain <a href="#VkQueryControlFlagBits">VK_QUERY_CONTROL_PRECISE_BIT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQuery-query-00802" href="#VUID-vkCmdBeginQuery-query-00802"></a> <span class="vuid">VUID-vkCmdBeginQuery-query-00802</span><br>
@@ -1839,14 +1842,14 @@ not contain <code>VK_QUERY_CONTROL_PRECISE_BIT</code></p>
 <p><a id="VUID-vkCmdBeginQuery-queryType-00803" href="#VUID-vkCmdBeginQuery-queryType-00803"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryType-00803</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_OCCLUSION</code>, the <code>VkCommandPool</code> that
+<a href="#VkQueryType">VK_QUERY_TYPE_OCCLUSION</a>, the <code>VkCommandPool</code> that
 <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQuery-queryType-00804" href="#VUID-vkCmdBeginQuery-queryType-00804"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryType-00804</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PIPELINE_STATISTICS</code> and any of the
+<a href="#VkQueryType">VK_QUERY_TYPE_PIPELINE_STATISTICS</a> and any of the
 <code>pipelineStatistics</code> indicate graphics operations, the
 <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong>
 support graphics operations</p>
@@ -1855,7 +1858,7 @@ support graphics operations</p>
 <p><a id="VUID-vkCmdBeginQuery-queryType-00805" href="#VUID-vkCmdBeginQuery-queryType-00805"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryType-00805</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PIPELINE_STATISTICS</code> and any of the
+<a href="#VkQueryType">VK_QUERY_TYPE_PIPELINE_STATISTICS</a> and any of the
 <code>pipelineStatistics</code> indicate compute operations, the
 <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong>
 support compute operations</p>
@@ -1876,7 +1879,7 @@ or equal to the number of queries in <code>queryPool</code></p>
 <p><a id="VUID-vkCmdBeginQuery-queryType-07126" href="#VUID-vkCmdBeginQuery-queryType-07126"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryType-07126</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</code>, then the <code>VkCommandPool</code>
+<a href="#VkQueryType">VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</a>, then the <code>VkCommandPool</code>
 that <code>commandBuffer</code> was allocated from <strong>must</strong> have been created with
 a queue family index that supports <a href="#queries-result-status-only">result    status queries</a>, as indicated by
 <a href="devsandqueues.html#VkQueueFamilyQueryResultStatusPropertiesKHR" class="xref page">VkQueueFamilyQueryResultStatusPropertiesKHR</a>::<code>queryResultStatusSupport</code></p>
@@ -1891,13 +1894,13 @@ If there is a bound video session, then there <strong>must</strong> be no
 <p><a id="VUID-vkCmdBeginQuery-None-08370" href="#VUID-vkCmdBeginQuery-None-08370"></a> <span class="vuid">VUID-vkCmdBeginQuery-None-08370</span><br>
 
 If there is a bound video session, then it <strong>must</strong> not have been created
-with <code>VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR</code></p>
+with <a href="videocoding.html#VkVideoSessionCreateFlagBitsKHR" class="xref page">VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQuery-queryType-07128" href="#VUID-vkCmdBeginQuery-queryType-07128"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryType-07128</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</code> and there is a bound video
+<a href="#VkQueryType">VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</a> and there is a bound video
 session, then <code>queryPool</code> <strong>must</strong> have been created with a
 <a href="videocoding.html#VkVideoProfileInfoKHR" class="xref page">VkVideoProfileInfoKHR</a> structure included in the <code>pNext</code> chain
 of <a href="#VkQueryPoolCreateInfo">VkQueryPoolCreateInfo</a> identical to the one specified in
@@ -1908,14 +1911,14 @@ session was created with</p>
 <p><a id="VUID-vkCmdBeginQuery-queryType-07129" href="#VUID-vkCmdBeginQuery-queryType-07129"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryType-07129</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</code>, then there <strong>must</strong> be a
+<a href="#VkQueryType">VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</a>, then there <strong>must</strong> be a
 bound video session</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQuery-queryType-07130" href="#VUID-vkCmdBeginQuery-queryType-07130"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryType-07130</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</code> and there is a bound video
+<a href="#VkQueryType">VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</a> and there is a bound video
 session, then <code>queryPool</code> <strong>must</strong> have been created with a
 <a href="videocoding.html#VkVideoProfileInfoKHR" class="xref page">VkVideoProfileInfoKHR</a> structure included in the <code>pNext</code> chain
 of <a href="#VkQueryPoolCreateInfo">VkQueryPoolCreateInfo</a> identical to the one specified in
@@ -1926,8 +1929,8 @@ session was created with</p>
 <p><a id="VUID-vkCmdBeginQuery-queryType-07131" href="#VUID-vkCmdBeginQuery-queryType-07131"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryType-07131</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was not
-<code>VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</code>
-or <code>VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</code>,
+<a href="#VkQueryType">VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</a>
+or <a href="#VkQueryType">VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</a>,
 then there <strong>must</strong> be no bound video session</p>
 </li>
 <li>
@@ -1948,7 +1951,7 @@ differs from that of any queries that are
 <p><a id="VUID-vkCmdBeginQuery-queryType-07070" href="#VUID-vkCmdBeginQuery-queryType-07070"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryType-07070</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT</code> the
+<a href="#VkQueryType">VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT</a> the
 <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong>
 support graphics operations</p>
 </li>
@@ -1956,7 +1959,7 @@ support graphics operations</p>
 <p><a id="VUID-vkCmdBeginQuery-queryType-02327" href="#VUID-vkCmdBeginQuery-queryType-02327"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryType-02327</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</code> the
+<a href="#VkQueryType">VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</a> the
 <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong>
 support graphics operations</p>
 </li>
@@ -1964,7 +1967,7 @@ support graphics operations</p>
 <p><a id="VUID-vkCmdBeginQuery-queryType-02328" href="#VUID-vkCmdBeginQuery-queryType-02328"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryType-02328</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</code> then
+<a href="#VkQueryType">VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</a> then
 <code>VkPhysicalDeviceTransformFeedbackPropertiesEXT</code>::<code>transformFeedbackQueries</code>
 <strong>must</strong> be supported</p>
 </li>
@@ -1972,7 +1975,7 @@ If the <code>queryType</code> used to create <code>queryPool</code> was
 <p><a id="VUID-vkCmdBeginQuery-queryType-06687" href="#VUID-vkCmdBeginQuery-queryType-06687"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryType-06687</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</code> the <code>VkCommandPool</code>
+<a href="#VkQueryType">VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</a> the <code>VkCommandPool</code>
 that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics
 operations</p>
 </li>
@@ -1980,7 +1983,7 @@ operations</p>
 <p><a id="VUID-vkCmdBeginQuery-queryType-06688" href="#VUID-vkCmdBeginQuery-queryType-06688"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryType-06688</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</code> then
+<a href="#VkQueryType">VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</a> then
 <a href="features.html#features-primitivesGeneratedQuery" class="xref page"><code>primitivesGeneratedQuery</code></a>
 <strong>must</strong> be enabled</p>
 </li>
@@ -1992,7 +1995,7 @@ If the <code>queryType</code> used to create <code>queryPool</code> was
 <p><a id="VUID-vkCmdBeginQuery-queryPool-07289" href="#VUID-vkCmdBeginQuery-queryPool-07289"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryPool-07289</span><br>
 
 If <code>queryPool</code> was created with a <code>queryType</code> of
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, then the
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>, then the
 <a href="#VkQueryPoolPerformanceCreateInfoKHR">VkQueryPoolPerformanceCreateInfoKHR</a>::<code>queueFamilyIndex</code>
 <code>queryPool</code> was created with <strong>must</strong> equal the queue family index of
 the <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from</p>
@@ -2001,33 +2004,33 @@ the <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated fro
 <p><a id="VUID-vkCmdBeginQuery-queryPool-03223" href="#VUID-vkCmdBeginQuery-queryPool-03223"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryPool-03223</span><br>
 
 If <code>queryPool</code> was created with a <code>queryType</code> of
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, the <a href="#profiling-lock">    profiling lock</a> <strong>must</strong> have been held before <a href="cmdbuffers.html#vkBeginCommandBuffer" class="xref page">vkBeginCommandBuffer</a>
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>, the <a href="#profiling-lock">    profiling lock</a> <strong>must</strong> have been held before <a href="cmdbuffers.html#vkBeginCommandBuffer" class="xref page">vkBeginCommandBuffer</a>
 was called on <code>commandBuffer</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQuery-queryPool-03224" href="#VUID-vkCmdBeginQuery-queryPool-03224"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryPool-03224</span><br>
 
 If <code>queryPool</code> was created with a <code>queryType</code> of
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code> and one of the counters used
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a> and one of the counters used
 to create <code>queryPool</code> was
-<code>VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR</code>, the query begin
+<a href="devsandqueues.html#VkPerformanceCounterScopeKHR" class="xref page">VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR</a>, the query begin
 <strong>must</strong> be the first recorded command in <code>commandBuffer</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQuery-queryPool-03225" href="#VUID-vkCmdBeginQuery-queryPool-03225"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryPool-03225</span><br>
 
 If <code>queryPool</code> was created with a <code>queryType</code> of
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code> and one of the counters used
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a> and one of the counters used
 to create <code>queryPool</code> was
-<code>VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR</code>, the begin command
+<a href="devsandqueues.html#VkPerformanceCounterScopeKHR" class="xref page">VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR</a>, the begin command
 <strong>must</strong> not be recorded within a render pass instance</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQuery-queryPool-03226" href="#VUID-vkCmdBeginQuery-queryPool-03226"></a> <span class="vuid">VUID-vkCmdBeginQuery-queryPool-03226</span><br>
 
 If <code>queryPool</code> was created with a <code>queryType</code> of
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code> and another query pool with a
-<code>queryType</code> <code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code> has been used
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a> and another query pool with a
+<code>queryType</code> <a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a> has been used
 within <code>commandBuffer</code>, its parent primary command buffer or
 secondary command buffer recorded within the same parent primary command
 buffer as <code>commandBuffer</code>, the
@@ -2037,7 +2040,7 @@ buffer as <code>commandBuffer</code>, the
 <p><a id="VUID-vkCmdBeginQuery-None-02863" href="#VUID-vkCmdBeginQuery-None-02863"></a> <span class="vuid">VUID-vkCmdBeginQuery-None-02863</span><br>
 
 If <code>queryPool</code> was created with a <code>queryType</code> of
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, this command <strong>must</strong> not be
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>, this command <strong>must</strong> not be
 recorded in a command buffer that, either directly or through secondary
 command buffers, also contains a <code>vkCmdResetQueryPool</code> command
 affecting the same query</p>
@@ -2069,7 +2072,7 @@ affecting the same query</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQuery-commandBuffer-cmdpool" href="#VUID-vkCmdBeginQuery-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdBeginQuery-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, <code>VK_QUEUE_GRAPHICS_BIT</code>, <code>VK_QUEUE_VIDEO_DECODE_BIT_KHR</code>, or <code>VK_QUEUE_VIDEO_ENCODE_BIT_KHR</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_COMPUTE_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_VIDEO_DECODE_BIT_KHR</a>, or <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_VIDEO_ENCODE_BIT_KHR</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQuery-suspended" href="#VUID-vkCmdBeginQuery-suspended"></a> <span class="vuid">VUID-vkCmdBeginQuery-suspended</span><br>
@@ -2181,8 +2184,8 @@ constraints on the types of queries that <strong>can</strong> be performed.</p>
 </li>
 <li>
 <p><code>index</code> is the query type specific index.
-When the query type is <code>VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</code>
-or <code>VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</code>,
+When the query type is <a href="#VkQueryType">VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</a>
+or <a href="#VkQueryType">VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</a>,
 the index represents the vertex stream.</p>
 </li>
 </ul>
@@ -2226,35 +2229,35 @@ All queries used by the command <strong>must</strong> be <em>unavailable</em></p
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-02804" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-02804"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-02804</span><br>
 
 The <code>queryType</code> used to create <code>queryPool</code> <strong>must</strong> not be
-<code>VK_QUERY_TYPE_TIMESTAMP</code></p>
+<a href="#VkQueryType">VK_QUERY_TYPE_TIMESTAMP</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-04728" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-04728"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-04728</span><br>
 
 The <code>queryType</code> used to create <code>queryPool</code> <strong>must</strong> not be
-<code>VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR</code> or
-<code>VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR</code></p>
+<a href="#VkQueryType">VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR</a> or
+<a href="#VkQueryType">VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-06741" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-06741"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-06741</span><br>
 
 The <code>queryType</code> used to create <code>queryPool</code> <strong>must</strong> not be
-<code>VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR</code> or
-<code>VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR</code></p>
+<a href="#VkQueryType">VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR</a> or
+<a href="#VkQueryType">VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-04729" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-04729"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-04729</span><br>
 
 The <code>queryType</code> used to create <code>queryPool</code> <strong>must</strong> not be
-<code>VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV</code></p>
+<a href="#VkQueryType">VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-00800" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-00800"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-00800</span><br>
 
 If the <a href="features.html#features-occlusionQueryPrecise" class="xref page"><code>occlusionQueryPrecise</code></a>
 feature is not enabled, or the <code>queryType</code> used to create
-<code>queryPool</code> was not <code>VK_QUERY_TYPE_OCCLUSION</code>, <code>flags</code> <strong>must</strong>
-not contain <code>VK_QUERY_CONTROL_PRECISE_BIT</code></p>
+<code>queryPool</code> was not <a href="#VkQueryType">VK_QUERY_TYPE_OCCLUSION</a>, <code>flags</code> <strong>must</strong>
+not contain <a href="#VkQueryControlFlagBits">VK_QUERY_CONTROL_PRECISE_BIT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-query-00802" href="#VUID-vkCmdBeginQueryIndexedEXT-query-00802"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-query-00802</span><br>
@@ -2265,14 +2268,14 @@ not contain <code>VK_QUERY_CONTROL_PRECISE_BIT</code></p>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-00803" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-00803"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-00803</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_OCCLUSION</code>, the <code>VkCommandPool</code> that
+<a href="#VkQueryType">VK_QUERY_TYPE_OCCLUSION</a>, the <code>VkCommandPool</code> that
 <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-00804" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-00804"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-00804</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PIPELINE_STATISTICS</code> and any of the
+<a href="#VkQueryType">VK_QUERY_TYPE_PIPELINE_STATISTICS</a> and any of the
 <code>pipelineStatistics</code> indicate graphics operations, the
 <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong>
 support graphics operations</p>
@@ -2281,7 +2284,7 @@ support graphics operations</p>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-00805" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-00805"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-00805</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PIPELINE_STATISTICS</code> and any of the
+<a href="#VkQueryType">VK_QUERY_TYPE_PIPELINE_STATISTICS</a> and any of the
 <code>pipelineStatistics</code> indicate compute operations, the
 <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong>
 support compute operations</p>
@@ -2302,7 +2305,7 @@ or equal to the number of queries in <code>queryPool</code></p>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-07126" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-07126"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-07126</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</code>, then the <code>VkCommandPool</code>
+<a href="#VkQueryType">VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</a>, then the <code>VkCommandPool</code>
 that <code>commandBuffer</code> was allocated from <strong>must</strong> have been created with
 a queue family index that supports <a href="#queries-result-status-only">result    status queries</a>, as indicated by
 <a href="devsandqueues.html#VkQueueFamilyQueryResultStatusPropertiesKHR" class="xref page">VkQueueFamilyQueryResultStatusPropertiesKHR</a>::<code>queryResultStatusSupport</code></p>
@@ -2317,13 +2320,13 @@ If there is a bound video session, then there <strong>must</strong> be no
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-None-08370" href="#VUID-vkCmdBeginQueryIndexedEXT-None-08370"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-None-08370</span><br>
 
 If there is a bound video session, then it <strong>must</strong> not have been created
-with <code>VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR</code></p>
+with <a href="videocoding.html#VkVideoSessionCreateFlagBitsKHR" class="xref page">VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-07128" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-07128"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-07128</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</code> and there is a bound video
+<a href="#VkQueryType">VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</a> and there is a bound video
 session, then <code>queryPool</code> <strong>must</strong> have been created with a
 <a href="videocoding.html#VkVideoProfileInfoKHR" class="xref page">VkVideoProfileInfoKHR</a> structure included in the <code>pNext</code> chain
 of <a href="#VkQueryPoolCreateInfo">VkQueryPoolCreateInfo</a> identical to the one specified in
@@ -2334,14 +2337,14 @@ session was created with</p>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-07129" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-07129"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-07129</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</code>, then there <strong>must</strong> be a
+<a href="#VkQueryType">VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</a>, then there <strong>must</strong> be a
 bound video session</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-07130" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-07130"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-07130</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</code> and there is a bound video
+<a href="#VkQueryType">VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</a> and there is a bound video
 session, then <code>queryPool</code> <strong>must</strong> have been created with a
 <a href="videocoding.html#VkVideoProfileInfoKHR" class="xref page">VkVideoProfileInfoKHR</a> structure included in the <code>pNext</code> chain
 of <a href="#VkQueryPoolCreateInfo">VkQueryPoolCreateInfo</a> identical to the one specified in
@@ -2352,8 +2355,8 @@ session was created with</p>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-07131" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-07131"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-07131</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was not
-<code>VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</code>
-or <code>VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</code>,
+<a href="#VkQueryType">VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</a>
+or <a href="#VkQueryType">VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</a>,
 then there <strong>must</strong> be no bound video session</p>
 </li>
 <li>
@@ -2375,7 +2378,7 @@ the active query</p>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-02338" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-02338"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-02338</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</code> the
+<a href="#VkQueryType">VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</a> the
 <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong>
 support graphics operations</p>
 </li>
@@ -2383,7 +2386,7 @@ support graphics operations</p>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-02339" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-02339"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-02339</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</code> the <code>index</code>
+<a href="#VkQueryType">VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</a> the <code>index</code>
 parameter <strong>must</strong> be less than
 <code>VkPhysicalDeviceTransformFeedbackPropertiesEXT</code>::<code>maxTransformFeedbackStreams</code></p>
 </li>
@@ -2391,15 +2394,15 @@ parameter <strong>must</strong> be less than
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-06692" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-06692"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-06692</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was not
-<code>VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</code>
-and not <code>VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</code>,
+<a href="#VkQueryType">VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</a>
+and not <a href="#VkQueryType">VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</a>,
 the <code>index</code> <strong>must</strong> be zero</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-06689" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-06689"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-06689</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</code> the <code>VkCommandPool</code>
+<a href="#VkQueryType">VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</a> the <code>VkCommandPool</code>
 that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics
 operations</p>
 </li>
@@ -2407,7 +2410,7 @@ operations</p>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-06690" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-06690"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-06690</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</code> the <code>index</code> parameter
+<a href="#VkQueryType">VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</a> the <code>index</code> parameter
 <strong>must</strong> be less than
 <code>VkPhysicalDeviceTransformFeedbackPropertiesEXT</code>::<code>maxTransformFeedbackStreams</code></p>
 </li>
@@ -2415,7 +2418,7 @@ If the <code>queryType</code> used to create <code>queryPool</code> was
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-06691" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-06691"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-06691</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</code> and the
+<a href="#VkQueryType">VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</a> and the
 <a href="features.html#features-primitivesGeneratedQueryWithNonZeroStreams" class="xref page">    <code>primitivesGeneratedQueryWithNonZeroStreams</code></a> feature is not
 enabled, the <code>index</code> parameter <strong>must</strong> be zero</p>
 </li>
@@ -2423,7 +2426,7 @@ enabled, the <code>index</code> parameter <strong>must</strong> be zero</p>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-06693" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-06693"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-06693</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</code> then
+<a href="#VkQueryType">VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</a> then
 <a href="features.html#features-primitivesGeneratedQuery" class="xref page"><code>primitivesGeneratedQuery</code></a>
 <strong>must</strong> be enabled</p>
 </li>
@@ -2431,7 +2434,7 @@ If the <code>queryType</code> used to create <code>queryPool</code> was
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-02341" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-02341"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-02341</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</code> then
+<a href="#VkQueryType">VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</a> then
 <code>VkPhysicalDeviceTransformFeedbackPropertiesEXT</code>::<code>transformFeedbackQueries</code>
 <strong>must</strong> be supported</p>
 </li>
@@ -2439,7 +2442,7 @@ If the <code>queryType</code> used to create <code>queryPool</code> was
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryType-07071" href="#VUID-vkCmdBeginQueryIndexedEXT-queryType-07071"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryType-07071</span><br>
 
 The <code>queryType</code> used to create <code>queryPool</code> <strong>must</strong> not be
-<code>VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT</code></p>
+<a href="#VkQueryType">VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT</a></p>
 </li>
 </ul>
 </div>
@@ -2449,7 +2452,7 @@ The <code>queryType</code> used to create <code>queryPool</code> <strong>must</s
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryPool-07289" href="#VUID-vkCmdBeginQueryIndexedEXT-queryPool-07289"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryPool-07289</span><br>
 
 If <code>queryPool</code> was created with a <code>queryType</code> of
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, then the
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>, then the
 <a href="#VkQueryPoolPerformanceCreateInfoKHR">VkQueryPoolPerformanceCreateInfoKHR</a>::<code>queueFamilyIndex</code>
 <code>queryPool</code> was created with <strong>must</strong> equal the queue family index of
 the <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from</p>
@@ -2458,33 +2461,33 @@ the <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated fro
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryPool-03223" href="#VUID-vkCmdBeginQueryIndexedEXT-queryPool-03223"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryPool-03223</span><br>
 
 If <code>queryPool</code> was created with a <code>queryType</code> of
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, the <a href="#profiling-lock">    profiling lock</a> <strong>must</strong> have been held before <a href="cmdbuffers.html#vkBeginCommandBuffer" class="xref page">vkBeginCommandBuffer</a>
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>, the <a href="#profiling-lock">    profiling lock</a> <strong>must</strong> have been held before <a href="cmdbuffers.html#vkBeginCommandBuffer" class="xref page">vkBeginCommandBuffer</a>
 was called on <code>commandBuffer</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryPool-03224" href="#VUID-vkCmdBeginQueryIndexedEXT-queryPool-03224"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryPool-03224</span><br>
 
 If <code>queryPool</code> was created with a <code>queryType</code> of
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code> and one of the counters used
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a> and one of the counters used
 to create <code>queryPool</code> was
-<code>VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR</code>, the query begin
+<a href="devsandqueues.html#VkPerformanceCounterScopeKHR" class="xref page">VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR</a>, the query begin
 <strong>must</strong> be the first recorded command in <code>commandBuffer</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryPool-03225" href="#VUID-vkCmdBeginQueryIndexedEXT-queryPool-03225"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryPool-03225</span><br>
 
 If <code>queryPool</code> was created with a <code>queryType</code> of
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code> and one of the counters used
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a> and one of the counters used
 to create <code>queryPool</code> was
-<code>VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR</code>, the begin command
+<a href="devsandqueues.html#VkPerformanceCounterScopeKHR" class="xref page">VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR</a>, the begin command
 <strong>must</strong> not be recorded within a render pass instance</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-queryPool-03226" href="#VUID-vkCmdBeginQueryIndexedEXT-queryPool-03226"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-queryPool-03226</span><br>
 
 If <code>queryPool</code> was created with a <code>queryType</code> of
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code> and another query pool with a
-<code>queryType</code> <code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code> has been used
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a> and another query pool with a
+<code>queryType</code> <a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a> has been used
 within <code>commandBuffer</code>, its parent primary command buffer or
 secondary command buffer recorded within the same parent primary command
 buffer as <code>commandBuffer</code>, the
@@ -2494,7 +2497,7 @@ buffer as <code>commandBuffer</code>, the
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-None-02863" href="#VUID-vkCmdBeginQueryIndexedEXT-None-02863"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-None-02863</span><br>
 
 If <code>queryPool</code> was created with a <code>queryType</code> of
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, this command <strong>must</strong> not be
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>, this command <strong>must</strong> not be
 recorded in a command buffer that, either directly or through secondary
 command buffers, also contains a <code>vkCmdResetQueryPool</code> command
 affecting the same query</p>
@@ -2526,7 +2529,7 @@ affecting the same query</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-commandBuffer-cmdpool" href="#VUID-vkCmdBeginQueryIndexedEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, <code>VK_QUEUE_GRAPHICS_BIT</code>, <code>VK_QUEUE_VIDEO_DECODE_BIT_KHR</code>, or <code>VK_QUEUE_VIDEO_ENCODE_BIT_KHR</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_COMPUTE_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_VIDEO_DECODE_BIT_KHR</a>, or <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_VIDEO_ENCODE_BIT_KHR</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBeginQueryIndexedEXT-suspended" href="#VUID-vkCmdBeginQueryIndexedEXT-suspended"></a> <span class="vuid">VUID-vkCmdBeginQueryIndexedEXT-suspended</span><br>
@@ -2623,7 +2626,7 @@ typedef enum VkQueryControlFlagBits {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_QUERY_CONTROL_PRECISE_BIT</code> specifies the precision of
+<p><a href="#VkQueryControlFlagBits">VK_QUERY_CONTROL_PRECISE_BIT</a> specifies the precision of
 <a href="#queries-occlusion">occlusion queries</a>.</p>
 </li>
 </ul>
@@ -2729,9 +2732,9 @@ mask <strong>must</strong> be less than or equal to the number of queries in
 <p><a id="VUID-vkCmdEndQuery-queryPool-03227" href="#VUID-vkCmdEndQuery-queryPool-03227"></a> <span class="vuid">VUID-vkCmdEndQuery-queryPool-03227</span><br>
 
 If <code>queryPool</code> was created with a <code>queryType</code> of
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code> and one or more of the
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a> and one or more of the
 counters used to create <code>queryPool</code> was
-<code>VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR</code>, the
+<a href="devsandqueues.html#VkPerformanceCounterScopeKHR" class="xref page">VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR</a>, the
 <a href="#vkCmdEndQuery">vkCmdEndQuery</a> <strong>must</strong> be the last recorded command in
 <code>commandBuffer</code></p>
 </li>
@@ -2739,9 +2742,9 @@ counters used to create <code>queryPool</code> was
 <p><a id="VUID-vkCmdEndQuery-queryPool-03228" href="#VUID-vkCmdEndQuery-queryPool-03228"></a> <span class="vuid">VUID-vkCmdEndQuery-queryPool-03228</span><br>
 
 If <code>queryPool</code> was created with a <code>queryType</code> of
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code> and one or more of the
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a> and one or more of the
 counters used to create <code>queryPool</code> was
-<code>VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR</code>, the
+<a href="devsandqueues.html#VkPerformanceCounterScopeKHR" class="xref page">VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR</a>, the
 <a href="#vkCmdEndQuery">vkCmdEndQuery</a> <strong>must</strong> not be recorded within a render pass instance</p>
 </li>
 </ul>
@@ -2785,7 +2788,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEndQuery-commandBuffer-cmdpool" href="#VUID-vkCmdEndQuery-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdEndQuery-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, <code>VK_QUEUE_GRAPHICS_BIT</code>, <code>VK_QUEUE_VIDEO_DECODE_BIT_KHR</code>, or <code>VK_QUEUE_VIDEO_ENCODE_BIT_KHR</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_COMPUTE_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_VIDEO_DECODE_BIT_KHR</a>, or <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_VIDEO_ENCODE_BIT_KHR</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEndQuery-suspended" href="#VUID-vkCmdEndQuery-suspended"></a> <span class="vuid">VUID-vkCmdEndQuery-suspended</span><br>
@@ -2952,8 +2955,8 @@ queries in <code>queryPool</code></p>
 <p><a id="VUID-vkCmdEndQueryIndexedEXT-queryType-06694" href="#VUID-vkCmdEndQueryIndexedEXT-queryType-06694"></a> <span class="vuid">VUID-vkCmdEndQueryIndexedEXT-queryType-06694</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</code>
-or <code>VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</code>,
+<a href="#VkQueryType">VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</a>
+or <a href="#VkQueryType">VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</a>,
 the <code>index</code> parameter <strong>must</strong> be less than
 <code>VkPhysicalDeviceTransformFeedbackPropertiesEXT</code>::<code>maxTransformFeedbackStreams</code></p>
 </li>
@@ -2961,16 +2964,16 @@ the <code>index</code> parameter <strong>must</strong> be less than
 <p><a id="VUID-vkCmdEndQueryIndexedEXT-queryType-06695" href="#VUID-vkCmdEndQueryIndexedEXT-queryType-06695"></a> <span class="vuid">VUID-vkCmdEndQueryIndexedEXT-queryType-06695</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was not
-<code>VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</code>
-and not <code>VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</code>,
+<a href="#VkQueryType">VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</a>
+and not <a href="#VkQueryType">VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</a>,
 the <code>index</code> <strong>must</strong> be zero</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEndQueryIndexedEXT-queryType-06696" href="#VUID-vkCmdEndQueryIndexedEXT-queryType-06696"></a> <span class="vuid">VUID-vkCmdEndQueryIndexedEXT-queryType-06696</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</code>
-or <code>VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</code>,
+<a href="#VkQueryType">VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT</a>
+or <a href="#VkQueryType">VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT</a>,
 <code>index</code> <strong>must</strong> equal the <code>index</code> used to begin the query</p>
 </li>
 </ul>
@@ -3014,7 +3017,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEndQueryIndexedEXT-commandBuffer-cmdpool" href="#VUID-vkCmdEndQueryIndexedEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdEndQueryIndexedEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, <code>VK_QUEUE_GRAPHICS_BIT</code>, <code>VK_QUEUE_VIDEO_DECODE_BIT_KHR</code>, or <code>VK_QUEUE_VIDEO_ENCODE_BIT_KHR</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_COMPUTE_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_VIDEO_DECODE_BIT_KHR</a>, or <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_VIDEO_ENCODE_BIT_KHR</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdEndQueryIndexedEXT-suspended" href="#VUID-vkCmdEndQueryIndexedEXT-suspended"></a> <span class="vuid">VUID-vkCmdEndQueryIndexedEXT-suspended</span><br>
@@ -3164,13 +3167,13 @@ order starting from the least significant bit, as described
 </div>
 </li>
 <li>
-<p>If <code>VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</code> is specified, an
+<p>If <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</a> is specified, an
 additional unsigned integer result value is written indicating whether
 the query&#8217;s result is available, with any non-zero value indicating that
 it is available.</p>
 </li>
 <li>
-<p>If <code>VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</code> is specified, an additional
+<p>If <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</a> is specified, an additional
 signed integer result value is written indicating the status of the
 query result.
 Positive values indicate success, negative values indicate failure, and
@@ -3256,7 +3259,7 @@ Behavior when not all queries are available is described
 <a href="#queries-wait-bit-not-set">below</a>.</p>
 </div>
 <div class="paragraph">
-<p>If <code>VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</code> is set, results for all
+<p>If <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</a> is set, results for all
 queries in <code>queryPool</code> identified by <code>firstQuery</code> and
 <code>queryCount</code> are copied to <code>pData</code>, along with an extra availability
 or status
@@ -3266,11 +3269,11 @@ A value of zero indicates that the results are not yet available, otherwise
 the query is complete and results are available.
 The size of the availability
 or status
-values is 64 bits if <code>VK_QUERY_RESULT_64_BIT</code> is set in <code>flags</code>.
+values is 64 bits if <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_64_BIT</a> is set in <code>flags</code>.
 Otherwise, it is 32 bits.</p>
 </div>
 <div class="paragraph">
-<p>If <code>VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</code> is set, results for all queries
+<p>If <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</a> is set, results for all queries
 in <code>queryPool</code> identified by <code>firstQuery</code> and <code>queryCount</code> are
 copied to <code>pData</code>, along with an extra status value written directly
 after the results of each query and interpreted as a signed integer.
@@ -3298,8 +3301,8 @@ results of the used query type.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If <code>VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</code>
-or <code>VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</code>
+<p>If <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</a>
+or <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</a>
 is set, the layout of data in the buffer is a <em>(result,availability)</em>
 or <em>(result,status)</em>
 pair for each query returned, and <code>stride</code> is the stride between each
@@ -3312,18 +3315,18 @@ pair.</p>
 <div class="paragraph">
 <p>Results for any available query written by this command are final and
 represent the final result of the query.
-If <code>VK_QUERY_RESULT_PARTIAL_BIT</code> is set, then for any query that is
+If <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_PARTIAL_BIT</a> is set, then for any query that is
 unavailable, an intermediate result between zero and the final result value
 is written for that query.
 Otherwise, any result written by this command is <strong>undefined</strong>.</p>
 </div>
 <div class="paragraph">
-<p>If <code>VK_QUERY_RESULT_64_BIT</code> is set, results and, if returned,
+<p>If <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_64_BIT</a> is set, results and, if returned,
 availability
 or status
 values for all queries are written as an array of 64-bit values.
 If the <code>queryPool</code> was created with
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, results for each query are
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>, results for each query are
 written as an array of the type indicated by
 <a href="devsandqueues.html#VkPerformanceCounterKHR" class="xref page">VkPerformanceCounterKHR</a>::<code>storage</code> for the counter being queried.
 Otherwise, results and availability
@@ -3340,7 +3343,7 @@ If a floating-point query&#8217;s value is not representable as the result type,
 the value is <strong>undefined</strong>.</p>
 </div>
 <div class="paragraph">
-<p>If <code>VK_QUERY_RESULT_WAIT_BIT</code> is set, this command defines an execution
+<p>If <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WAIT_BIT</a> is set, this command defines an execution
 dependency with any earlier commands that writes one of the identified
 queries.
 The first <a href="synchronization.html#synchronization-dependencies-scopes" class="xref page">synchronization scope</a>
@@ -3356,8 +3359,8 @@ The second <a href="synchronization.html#synchronization-dependencies-scopes" cl
 includes the host operations of this command.</p>
 </div>
 <div id="queries-wait-bit-not-set" class="paragraph">
-<p>If <code>VK_QUERY_RESULT_WAIT_BIT</code> is not set, <code>vkGetQueryPoolResults</code>
-<strong>may</strong> return <code>VK_NOT_READY</code> if there are queries in the unavailable
+<p>If <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WAIT_BIT</a> is not set, <code>vkGetQueryPoolResults</code>
+<strong>may</strong> return <a href="fundamentals.html#VkResult" class="xref page">VK_NOT_READY</a> if there are queries in the unavailable
 state.</p>
 </div>
 <div class="admonitionblock note">
@@ -3369,7 +3372,7 @@ state.</p>
 <td class="content">
 <div class="paragraph">
 <p>Applications <strong>must</strong> take care to ensure that use of the
-<code>VK_QUERY_RESULT_WAIT_BIT</code> bit has the desired effect.</p>
+<a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WAIT_BIT</a> bit has the desired effect.</p>
 </div>
 <div class="paragraph">
 <p>For example, if a query has been used previously and a command buffer
@@ -3383,8 +3386,8 @@ been reset before checking for its results or availability status.
 Otherwise, a stale value could be returned from a previous use of the query.</p>
 </div>
 <div class="paragraph">
-<p>The above also applies when <code>VK_QUERY_RESULT_WAIT_BIT</code> is used in
-combination with <code>VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</code>.
+<p>The above also applies when <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WAIT_BIT</a> is used in
+combination with <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</a>.
 In this case, the returned availability status <strong>may</strong> reflect the result of a
 previous use of the query unless
 <code>vkResetQueryPool</code> is called or
@@ -3393,7 +3396,7 @@ of the query.</p>
 </div>
 <div class="paragraph">
 <p>A similar situation can arise with the
-<code>VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</code> flag.</p>
+<a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</a> flag.</p>
 </div>
 </td>
 </tr>
@@ -3444,23 +3447,23 @@ If <code>queryCount</code> is greater than 1, <code>stride</code> <strong>must</
 <p><a id="VUID-vkGetQueryPoolResults-queryType-09439" href="#VUID-vkGetQueryPoolResults-queryType-09439"></a> <span class="vuid">VUID-vkGetQueryPoolResults-queryType-09439</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_TIMESTAMP</code>, <code>flags</code> <strong>must</strong> not contain
-<code>VK_QUERY_RESULT_PARTIAL_BIT</code></p>
+<a href="#VkQueryType">VK_QUERY_TYPE_TIMESTAMP</a>, <code>flags</code> <strong>must</strong> not contain
+<a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_PARTIAL_BIT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkGetQueryPoolResults-queryType-09440" href="#VUID-vkGetQueryPoolResults-queryType-09440"></a> <span class="vuid">VUID-vkGetQueryPoolResults-queryType-09440</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, <code>flags</code> <strong>must</strong> not contain
-<code>VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</code>,
-<code>VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</code>,
-<code>VK_QUERY_RESULT_PARTIAL_BIT</code>, or <code>VK_QUERY_RESULT_64_BIT</code></p>
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>, <code>flags</code> <strong>must</strong> not contain
+<a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</a>,
+<a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</a>,
+<a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_PARTIAL_BIT</a>, or <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_64_BIT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkGetQueryPoolResults-queryType-09441" href="#VUID-vkGetQueryPoolResults-queryType-09441"></a> <span class="vuid">VUID-vkGetQueryPoolResults-queryType-09441</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, the <code>queryPool</code> <strong>must</strong>
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>, the <code>queryPool</code> <strong>must</strong>
 have been recorded once for each pass as retrieved via a call to
 <a href="#vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR">vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR</a></p>
 </li>
@@ -3468,23 +3471,23 @@ have been recorded once for each pass as retrieved via a call to
 <p><a id="VUID-vkGetQueryPoolResults-queryType-11874" href="#VUID-vkGetQueryPoolResults-queryType-11874"></a> <span class="vuid">VUID-vkGetQueryPoolResults-queryType-11874</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was not
-<code>VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</code>
-or <code>VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</code>,
+<a href="#VkQueryType">VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</a>
+or <a href="#VkQueryType">VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</a>,
 then <code>flags</code> <strong>must</strong> not include
-<code>VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</code></p>
+<a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkGetQueryPoolResults-queryType-09442" href="#VUID-vkGetQueryPoolResults-queryType-09442"></a> <span class="vuid">VUID-vkGetQueryPoolResults-queryType-09442</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</code>, then <code>flags</code> <strong>must</strong>
-include <code>VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</code></p>
+<a href="#VkQueryType">VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</a>, then <code>flags</code> <strong>must</strong>
+include <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkGetQueryPoolResults-flags-09443" href="#VUID-vkGetQueryPoolResults-flags-09443"></a> <span class="vuid">VUID-vkGetQueryPoolResults-flags-09443</span><br>
 
-If <code>flags</code> includes <code>VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</code>, then
-it <strong>must</strong> not include <code>VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</code></p>
+If <code>flags</code> includes <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</a>, then
+it <strong>must</strong> not include <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</a></p>
 </li>
 </ul>
 </div>
@@ -3498,37 +3501,37 @@ All queries used by the command <strong>must</strong> not be uninitialized</p>
 <li>
 <p><a id="VUID-vkGetQueryPoolResults-flags-02828" href="#VUID-vkGetQueryPoolResults-flags-02828"></a> <span class="vuid">VUID-vkGetQueryPoolResults-flags-02828</span><br>
 
-If <code>VK_QUERY_RESULT_64_BIT</code> is not set in <code>flags</code>
+If <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_64_BIT</a> is not set in <code>flags</code>
 and the <code>queryType</code> used to create <code>queryPool</code> was not
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>,
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>,
 then <code>pData</code> <strong>must</strong> be aligned to a multiple of <code>4</code></p>
 </li>
 <li>
 <p><a id="VUID-vkGetQueryPoolResults-queryCount-12251" href="#VUID-vkGetQueryPoolResults-queryCount-12251"></a> <span class="vuid">VUID-vkGetQueryPoolResults-queryCount-12251</span><br>
 
-If <code>queryCount</code> is greater than 1, <code>VK_QUERY_RESULT_64_BIT</code> is
+If <code>queryCount</code> is greater than 1, <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_64_BIT</a> is
 not set in <code>flags</code>
 and the <code>queryType</code> used to create <code>queryPool</code> was not
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>,
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>,
 then <code>stride</code> <strong>must</strong> be a multiple of <code>4</code></p>
 </li>
 <li>
 <p><a id="VUID-vkGetQueryPoolResults-flags-00815" href="#VUID-vkGetQueryPoolResults-flags-00815"></a> <span class="vuid">VUID-vkGetQueryPoolResults-flags-00815</span><br>
 
-If <code>VK_QUERY_RESULT_64_BIT</code> is set in <code>flags</code> then <code>pData</code>
+If <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_64_BIT</a> is set in <code>flags</code> then <code>pData</code>
 <strong>must</strong> be aligned to a multiple of <code>8</code></p>
 </li>
 <li>
 <p><a id="VUID-vkGetQueryPoolResults-queryCount-12252" href="#VUID-vkGetQueryPoolResults-queryCount-12252"></a> <span class="vuid">VUID-vkGetQueryPoolResults-queryCount-12252</span><br>
 
-If <code>queryCount</code> is greater than 1 and <code>VK_QUERY_RESULT_64_BIT</code>
+If <code>queryCount</code> is greater than 1 and <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_64_BIT</a>
 is set in <code>flags</code>, then <code>stride</code> <strong>must</strong> be a multiple of <code>8</code></p>
 </li>
 <li>
 <p><a id="VUID-vkGetQueryPoolResults-stride-08993" href="#VUID-vkGetQueryPoolResults-stride-08993"></a> <span class="vuid">VUID-vkGetQueryPoolResults-stride-08993</span><br>
 
     If <code>queryCount</code> is greater than 1 and
-    <code>VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</code> is set, <code>stride</code> <strong>must</strong>
+    <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</a> is set, <code>stride</code> <strong>must</strong>
     be large enough to contain the unsigned integer representing
     availability
 or status
@@ -3538,14 +3541,14 @@ or status
 <p><a id="VUID-vkGetQueryPoolResults-queryType-03229" href="#VUID-vkGetQueryPoolResults-queryType-03229"></a> <span class="vuid">VUID-vkGetQueryPoolResults-queryType-03229</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, then <code>pData</code> <strong>must</strong> be
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>, then <code>pData</code> <strong>must</strong> be
 aligned to a multiple of the size of <a href="#VkPerformanceCounterResultKHR">VkPerformanceCounterResultKHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkGetQueryPoolResults-queryCount-12253" href="#VUID-vkGetQueryPoolResults-queryCount-12253"></a> <span class="vuid">VUID-vkGetQueryPoolResults-queryCount-12253</span><br>
 
 If <code>queryCount</code> is greater than 1 and the <code>queryType</code> used to
-create <code>queryPool</code> was <code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>,
+create <code>queryPool</code> was <a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>,
 then <code>stride</code> <strong>must</strong> be a multiple of the size of
 <a href="#VkPerformanceCounterResultKHR">VkPerformanceCounterResultKHR</a></p>
 </li>
@@ -3553,7 +3556,7 @@ then <code>stride</code> <strong>must</strong> be a multiple of the size of
 <p><a id="VUID-vkGetQueryPoolResults-queryType-04519" href="#VUID-vkGetQueryPoolResults-queryType-04519"></a> <span class="vuid">VUID-vkGetQueryPoolResults-queryType-04519</span><br>
 
 If <code>queryCount</code> is greater than 1 and the <code>queryType</code> used to
-create <code>queryPool</code> was <code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>,
+create <code>queryPool</code> was <a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>,
 then <code>stride</code> <strong>must</strong> be large enough to contain the
 <a href="#VkQueryPoolPerformanceCreateInfoKHR">VkQueryPoolPerformanceCreateInfoKHR</a>::<code>counterIndexCount</code> used
 to create <code>queryPool</code> times the size of
@@ -3612,10 +3615,10 @@ query, as described <a href="#queries-operation-memorylayout">here</a></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_NOT_READY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_NOT_READY</a></p>
 </li>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a></p>
 </li>
 </ul>
 </div>
@@ -3625,19 +3628,19 @@ query, as described <a href="#queries-operation-memorylayout">here</a></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_DEVICE_LOST</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_DEVICE_LOST</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_DEVICE_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_HOST_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_UNKNOWN</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_UNKNOWN</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_VALIDATION_FAILED</a></p>
 </li>
 </ul>
 </div>
@@ -3671,25 +3674,25 @@ typedef enum VkQueryResultFlagBits {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_QUERY_RESULT_64_BIT</code> specifies the results will be written as an
+<p><a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_64_BIT</a> specifies the results will be written as an
 array of 64-bit unsigned integer values.
 If this bit is not set, the results will be written as an array of
 32-bit unsigned integer values.</p>
 </li>
 <li>
-<p><code>VK_QUERY_RESULT_WAIT_BIT</code> specifies that Vulkan will wait for each
+<p><a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WAIT_BIT</a> specifies that Vulkan will wait for each
 query&#8217;s status to become available before retrieving its results.</p>
 </li>
 <li>
-<p><code>VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</code> specifies that the
+<p><a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</a> specifies that the
 availability status accompanies the results.</p>
 </li>
 <li>
-<p><code>VK_QUERY_RESULT_PARTIAL_BIT</code> specifies that returning partial
+<p><a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_PARTIAL_BIT</a> specifies that returning partial
 results is acceptable.</p>
 </li>
 <li>
-<p><code>VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</code> specifies that the last value
+<p><a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</a> specifies that the last value
 returned in the query is a <a href="#VkQueryResultStatusKHR">VkQueryResultStatusKHR</a> value.
 See <a href="#queries-result-status-only">result status query</a> for information
 on how an application can determine whether the use of this flag bit is
@@ -3733,19 +3736,19 @@ typedef enum VkQueryResultStatusKHR {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_QUERY_RESULT_STATUS_NOT_READY_KHR</code> specifies that the query
+<p><a href="#VkQueryResultStatusKHR">VK_QUERY_RESULT_STATUS_NOT_READY_KHR</a> specifies that the query
 result is not yet available.</p>
 </li>
 <li>
-<p><code>VK_QUERY_RESULT_STATUS_ERROR_KHR</code> specifies that operations did not
+<p><a href="#VkQueryResultStatusKHR">VK_QUERY_RESULT_STATUS_ERROR_KHR</a> specifies that operations did not
 complete successfully.</p>
 </li>
 <li>
-<p><code>VK_QUERY_RESULT_STATUS_COMPLETE_KHR</code> specifies that operations
+<p><a href="#VkQueryResultStatusKHR">VK_QUERY_RESULT_STATUS_COMPLETE_KHR</a> specifies that operations
 completed successfully and the query result is available.</p>
 </li>
 <li>
-<p><code>VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR</code>
+<p><a href="#VkQueryResultStatusKHR">VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR</a>
 specifies that a video encode operation did not complete successfully
 due to the destination video bitstream buffer range not being
 sufficiently large to fit the encoded bitstream data.</p>
@@ -3820,7 +3823,7 @@ and when results are returned.</p>
 <code>queryCount</code> that is available are copied to <code>dstBuffer</code>.</p>
 </div>
 <div class="paragraph">
-<p>If <code>VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</code> is set, results for all
+<p>If <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</a> is set, results for all
 queries in <code>queryPool</code> identified by <code>firstQuery</code> and
 <code>queryCount</code> are copied to <code>dstBuffer</code>, along with an extra
 availability value written directly after the results of each query and
@@ -3829,7 +3832,7 @@ A value of zero indicates that the results are not yet available, otherwise
 the query is complete and results are available.</p>
 </div>
 <div class="paragraph">
-<p>If <code>VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</code> is set, results for all queries
+<p>If <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</a> is set, results for all queries
 in <code>queryPool</code> identified by <code>firstQuery</code> and <code>queryCount</code> are
 copied to <code>dstBuffer</code>, along with an extra status value written directly
 after the results of each query and interpreted as a signed integer.
@@ -3852,17 +3855,17 @@ results of the used query type.</p>
 <div class="paragraph">
 <p>Results for any available query written by this command are final and
 represent the final result of the query.
-If <code>VK_QUERY_RESULT_PARTIAL_BIT</code> is set, then for any query that is
+If <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_PARTIAL_BIT</a> is set, then for any query that is
 unavailable, an intermediate result between zero and the final result value
 is written for that query.
 Otherwise, any result written by this command is <strong>undefined</strong>.</p>
 </div>
 <div class="paragraph">
-<p>If <code>VK_QUERY_RESULT_64_BIT</code> is set, results and availability
+<p>If <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_64_BIT</a> is set, results and availability
 or status
 values for all queries are written as an array of 64-bit values.
 If the <code>queryPool</code> was created with
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, results for each query are
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>, results for each query are
 written as an array of the type indicated by
 <a href="devsandqueues.html#VkPerformanceCounterKHR" class="xref page">VkPerformanceCounterKHR</a>::<code>storage</code> for the counter being queried.
 Otherwise, results and availability
@@ -3887,7 +3890,7 @@ that reference the same query.</p>
 includes all commands which reference the queries in <code>queryPool</code>
 indicated by <code>query</code> that occur earlier in
 <a href="synchronization.html#synchronization-submission-order" class="xref page">submission order</a>.
-If <code>flags</code> does not include <code>VK_QUERY_RESULT_WAIT_BIT</code>,
+If <code>flags</code> does not include <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WAIT_BIT</a>,
 <a href="#vkCmdEndQuery">vkCmdEndQuery</a>,
 <a href="#vkCmdEndQueryIndexedEXT">vkCmdEndQueryIndexedEXT</a>,
 <a href="accelstructures.html#vkCmdWriteAccelerationStructuresPropertiesKHR" class="xref page">vkCmdWriteAccelerationStructuresPropertiesKHR</a>,
@@ -3909,7 +3912,7 @@ before the second scope.</p>
 <div class="paragraph">
 <p><code>vkCmdCopyQueryPoolResults</code> is considered to be a transfer operation,
 and its writes to buffer memory <strong>must</strong> be synchronized using
-<code>VK_PIPELINE_STAGE_TRANSFER_BIT</code> and <code>VK_ACCESS_TRANSFER_WRITE_BIT</code>
+<a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_TRANSFER_BIT</a> and <a href="synchronization.html#VkAccessFlagBits" class="xref page">VK_ACCESS_TRANSFER_WRITE_BIT</a>
 before using the results.</p>
 </div>
 <div class="sidebarblock">
@@ -3942,23 +3945,23 @@ If <code>queryCount</code> is greater than 1, <code>stride</code> <strong>must</
 <p><a id="VUID-vkCmdCopyQueryPoolResults-queryType-09439" href="#VUID-vkCmdCopyQueryPoolResults-queryType-09439"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-queryType-09439</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_TIMESTAMP</code>, <code>flags</code> <strong>must</strong> not contain
-<code>VK_QUERY_RESULT_PARTIAL_BIT</code></p>
+<a href="#VkQueryType">VK_QUERY_TYPE_TIMESTAMP</a>, <code>flags</code> <strong>must</strong> not contain
+<a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_PARTIAL_BIT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdCopyQueryPoolResults-queryType-09440" href="#VUID-vkCmdCopyQueryPoolResults-queryType-09440"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-queryType-09440</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, <code>flags</code> <strong>must</strong> not contain
-<code>VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</code>,
-<code>VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</code>,
-<code>VK_QUERY_RESULT_PARTIAL_BIT</code>, or <code>VK_QUERY_RESULT_64_BIT</code></p>
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>, <code>flags</code> <strong>must</strong> not contain
+<a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</a>,
+<a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</a>,
+<a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_PARTIAL_BIT</a>, or <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_64_BIT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdCopyQueryPoolResults-queryType-09441" href="#VUID-vkCmdCopyQueryPoolResults-queryType-09441"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-queryType-09441</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, the <code>queryPool</code> <strong>must</strong>
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>, the <code>queryPool</code> <strong>must</strong>
 have been recorded once for each pass as retrieved via a call to
 <a href="#vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR">vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR</a></p>
 </li>
@@ -3966,23 +3969,23 @@ have been recorded once for each pass as retrieved via a call to
 <p><a id="VUID-vkCmdCopyQueryPoolResults-queryType-11874" href="#VUID-vkCmdCopyQueryPoolResults-queryType-11874"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-queryType-11874</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was not
-<code>VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</code>
-or <code>VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</code>,
+<a href="#VkQueryType">VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</a>
+or <a href="#VkQueryType">VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</a>,
 then <code>flags</code> <strong>must</strong> not include
-<code>VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</code></p>
+<a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdCopyQueryPoolResults-queryType-09442" href="#VUID-vkCmdCopyQueryPoolResults-queryType-09442"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-queryType-09442</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</code>, then <code>flags</code> <strong>must</strong>
-include <code>VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</code></p>
+<a href="#VkQueryType">VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</a>, then <code>flags</code> <strong>must</strong>
+include <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdCopyQueryPoolResults-flags-09443" href="#VUID-vkCmdCopyQueryPoolResults-flags-09443"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-flags-09443</span><br>
 
-If <code>flags</code> includes <code>VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</code>, then
-it <strong>must</strong> not include <code>VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</code></p>
+If <code>flags</code> includes <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</a>, then
+it <strong>must</strong> not include <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</a></p>
 </li>
 </ul>
 </div>
@@ -4002,25 +4005,25 @@ command is executed</p>
 <li>
 <p><a id="VUID-vkCmdCopyQueryPoolResults-flags-00822" href="#VUID-vkCmdCopyQueryPoolResults-flags-00822"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-flags-00822</span><br>
 
-If <code>VK_QUERY_RESULT_64_BIT</code> is not set in <code>flags</code> then
+If <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_64_BIT</a> is not set in <code>flags</code> then
 <code>dstOffset</code> <strong>must</strong> be a multiple of <code>4</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdCopyQueryPoolResults-queryCount-12254" href="#VUID-vkCmdCopyQueryPoolResults-queryCount-12254"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-queryCount-12254</span><br>
 
-If <code>queryCount</code> is greater than 1 and <code>VK_QUERY_RESULT_64_BIT</code>
+If <code>queryCount</code> is greater than 1 and <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_64_BIT</a>
 is not set in <code>flags</code> then <code>stride</code> <strong>must</strong> be a multiple of <code>4</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdCopyQueryPoolResults-flags-00823" href="#VUID-vkCmdCopyQueryPoolResults-flags-00823"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-flags-00823</span><br>
 
-If <code>VK_QUERY_RESULT_64_BIT</code> is set in <code>flags</code> then
+If <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_64_BIT</a> is set in <code>flags</code> then
 <code>dstOffset</code> <strong>must</strong> be a multiple of <code>8</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdCopyQueryPoolResults-queryCount-12255" href="#VUID-vkCmdCopyQueryPoolResults-queryCount-12255"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-queryCount-12255</span><br>
 
-If <code>queryCount</code> is greater than 1 and <code>VK_QUERY_RESULT_64_BIT</code>
+If <code>queryCount</code> is greater than 1 and <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_64_BIT</a>
 is set in <code>flags</code> then <code>stride</code> <strong>must</strong> be a multiple of <code>8</code></p>
 </li>
 <li>
@@ -4034,7 +4037,7 @@ contain the result of each query, as described
 <p><a id="VUID-vkCmdCopyQueryPoolResults-dstBuffer-00825" href="#VUID-vkCmdCopyQueryPoolResults-dstBuffer-00825"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-dstBuffer-00825</span><br>
 
 <code>dstBuffer</code> <strong>must</strong> have been created with the
-<code>VK_BUFFER_USAGE_TRANSFER_DST_BIT</code> usage flag set</p>
+<a href="resources.html#VkBufferUsageFlagBits" class="xref page">VK_BUFFER_USAGE_TRANSFER_DST_BIT</a> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdCopyQueryPoolResults-dstBuffer-00826" href="#VUID-vkCmdCopyQueryPoolResults-dstBuffer-00826"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-dstBuffer-00826</span><br>
@@ -4046,16 +4049,16 @@ contiguously to a single <code>VkDeviceMemory</code> object</p>
 <p><a id="VUID-vkCmdCopyQueryPoolResults-queryType-03232" href="#VUID-vkCmdCopyQueryPoolResults-queryType-03232"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-queryType-03232</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>,
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</a>,
 <a href="limits.html#VkPhysicalDevicePerformanceQueryPropertiesKHR" class="xref page">VkPhysicalDevicePerformanceQueryPropertiesKHR</a>::<code>allowCommandBufferQueryCopies</code>
-<strong>must</strong> be <code>VK_TRUE</code></p>
+<strong>must</strong> be <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdCopyQueryPoolResults-queryType-02734" href="#VUID-vkCmdCopyQueryPoolResults-queryType-02734"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-queryType-02734</span><br>
 
 <a href="#vkCmdCopyQueryPoolResults">vkCmdCopyQueryPoolResults</a> <strong>must</strong> not be called if the
 <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL</code></p>
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdCopyQueryPoolResults-None-07429" href="#VUID-vkCmdCopyQueryPoolResults-None-07429"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-None-07429</span><br>
@@ -4099,7 +4102,7 @@ prior executed commands</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdCopyQueryPoolResults-commandBuffer-cmdpool" href="#VUID-vkCmdCopyQueryPoolResults-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, or <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_COMPUTE_BIT</a>, or <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdCopyQueryPoolResults-renderpass" href="#VUID-vkCmdCopyQueryPoolResults-renderpass"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-renderpass</span><br>
@@ -4206,7 +4209,7 @@ When an occlusion query begins, the count of passing samples always starts
 at zero.
 For each drawing command, the count is incremented as described in
 <a href="fragops.html#fragops-samplecount" class="xref page">Sample Counting</a>.
-If <code>flags</code> does not contain <code>VK_QUERY_CONTROL_PRECISE_BIT</code> an
+If <code>flags</code> does not contain <a href="#VkQueryControlFlagBits">VK_QUERY_CONTROL_PRECISE_BIT</a> an
 implementation <strong>may</strong> generate any non-zero result value for the query if the
 count of passing samples is non-zero.</p>
 </div>
@@ -4218,14 +4221,14 @@ count of passing samples is non-zero.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Not setting <code>VK_QUERY_CONTROL_PRECISE_BIT</code> mode <strong>may</strong> be more efficient
+<p>Not setting <a href="#VkQueryControlFlagBits">VK_QUERY_CONTROL_PRECISE_BIT</a> mode <strong>may</strong> be more efficient
 on some implementations, and <strong>should</strong> be used where it is sufficient to know
 a boolean result on whether any samples passed the per-fragment tests.
 In this case, some implementations <strong>may</strong> only return zero or one, regardless
 of the actual number of samples passing the per-fragment tests.</p>
 </div>
 <div class="paragraph">
-<p>Setting <code>VK_QUERY_CONTROL_PRECISE_BIT</code> does not guarantee that different
+<p>Setting <a href="#VkQueryControlFlagBits">VK_QUERY_CONTROL_PRECISE_BIT</a> does not guarantee that different
 implementations return the same number of samples in an occlusion query.
 Some implementations may kill fragments in the
 <a href="pipelines.html#pipelines-graphics-subsets-pre-rasterization" class="xref page">pre-rasterization shader stage</a>, and these killed fragments do not contribute to the final result of
@@ -4330,14 +4333,14 @@ typedef enum VkQueryPipelineStatisticFlagBits {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_VERTICES_BIT</code> specifies
+<p><a href="#VkQueryPipelineStatisticFlagBits">VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_VERTICES_BIT</a> specifies
 that queries managed by the pool will count the number of vertices
 processed by the <a href="drawing.html#drawing" class="xref page">input assembly</a> stage.
 Vertices corresponding to incomplete primitives <strong>may</strong> contribute to the
 count.</p>
 </li>
 <li>
-<p><code>VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_PRIMITIVES_BIT</code>
+<p><a href="#VkQueryPipelineStatisticFlagBits">VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_PRIMITIVES_BIT</a>
 specifies that queries managed by the pool will count the number of
 primitives processed by the <a href="drawing.html#drawing" class="xref page">input assembly</a> stage.
 If primitive restart is enabled, restarting the primitive topology has
@@ -4345,14 +4348,14 @@ no effect on the count.
 Incomplete primitives <strong>may</strong> be counted.</p>
 </li>
 <li>
-<p><code>VK_QUERY_PIPELINE_STATISTIC_VERTEX_SHADER_INVOCATIONS_BIT</code>
+<p><a href="#VkQueryPipelineStatisticFlagBits">VK_QUERY_PIPELINE_STATISTIC_VERTEX_SHADER_INVOCATIONS_BIT</a>
 specifies that queries managed by the pool will count the number of
 vertex shader invocations.
 This counter&#8217;s value is incremented each time a vertex shader is
 <a href="shaders.html#shaders-vertex-execution" class="xref page">invoked</a>.</p>
 </li>
 <li>
-<p><code>VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_INVOCATIONS_BIT</code>
+<p><a href="#VkQueryPipelineStatisticFlagBits">VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_INVOCATIONS_BIT</a>
 specifies that queries managed by the pool will count the number of
 geometry shader invocations.
 This counter&#8217;s value is incremented each time a geometry shader is
@@ -4362,7 +4365,7 @@ geometry shader invocations count is incremented for each separate
 instanced invocation.</p>
 </li>
 <li>
-<p><code>VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_PRIMITIVES_BIT</code>
+<p><a href="#VkQueryPipelineStatisticFlagBits">VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_PRIMITIVES_BIT</a>
 specifies that queries managed by the pool will count the number of
 primitives generated by geometry shader invocations.
 The counter&#8217;s value is incremented each time the geometry shader emits a
@@ -4372,7 +4375,7 @@ Restarting primitive topology using the SPIR-V instructions
 geometry shader output primitives count.</p>
 </li>
 <li>
-<p><code>VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT</code> specifies
+<p><a href="#VkQueryPipelineStatisticFlagBits">VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT</a> specifies
 that queries managed by the pool will count the number of primitives
 processed by the <a href="vertexpostproc.html#vertexpostproc-clipping" class="xref page">Primitive Clipping</a> stage of
 the pipeline.
@@ -4380,7 +4383,7 @@ The counter&#8217;s value is incremented each time a primitive reaches the
 primitive clipping stage.</p>
 </li>
 <li>
-<p><code>VK_QUERY_PIPELINE_STATISTIC_CLIPPING_PRIMITIVES_BIT</code> specifies that
+<p><a href="#VkQueryPipelineStatisticFlagBits">VK_QUERY_PIPELINE_STATISTIC_CLIPPING_PRIMITIVES_BIT</a> specifies that
 queries managed by the pool will count the number of primitives output
 by the <a href="vertexpostproc.html#vertexpostproc-clipping" class="xref page">Primitive Clipping</a> stage of the
 pipeline.
@@ -4402,14 +4405,14 @@ volume, the counter is incremented by one or more.</p>
 </div>
 </li>
 <li>
-<p><code>VK_QUERY_PIPELINE_STATISTIC_FRAGMENT_SHADER_INVOCATIONS_BIT</code>
+<p><a href="#VkQueryPipelineStatisticFlagBits">VK_QUERY_PIPELINE_STATISTIC_FRAGMENT_SHADER_INVOCATIONS_BIT</a>
 specifies that queries managed by the pool will count the number of
 fragment shader invocations.
 The counter&#8217;s value is incremented each time the fragment shader is
 <a href="fragops.html#fragops-shader" class="xref page">invoked</a>.</p>
 </li>
 <li>
-<p><code>VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_CONTROL_SHADER_PATCHES_BIT</code>
+<p><a href="#VkQueryPipelineStatisticFlagBits">VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_CONTROL_SHADER_PATCHES_BIT</a>
 specifies that queries managed by the pool will count the number of
 patches processed by the tessellation control shader.
 The counter&#8217;s value is incremented once for each patch for which a
@@ -4417,14 +4420,14 @@ tessellation control shader is
 <a href="shaders.html#shaders-tessellation-control-execution" class="xref page">invoked</a>.</p>
 </li>
 <li>
-<p><code>VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_EVALUATION_SHADER_INVOCATIONS_BIT</code>
+<p><a href="#VkQueryPipelineStatisticFlagBits">VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_EVALUATION_SHADER_INVOCATIONS_BIT</a>
 specifies that queries managed by the pool will count the number of
 invocations of the tessellation evaluation shader.
 The counter&#8217;s value is incremented each time the tessellation evaluation
 shader is <a href="shaders.html#shaders-tessellation-evaluation-execution" class="xref page">invoked</a>.</p>
 </li>
 <li>
-<p><code>VK_QUERY_PIPELINE_STATISTIC_COMPUTE_SHADER_INVOCATIONS_BIT</code>
+<p><a href="#VkQueryPipelineStatisticFlagBits">VK_QUERY_PIPELINE_STATISTIC_COMPUTE_SHADER_INVOCATIONS_BIT</a>
 specifies that queries managed by the pool will count the number of
 compute shader invocations.
 The counter&#8217;s value is incremented every time the compute shader is
@@ -4435,14 +4438,14 @@ implementation-dependent reasons as long as the results of rendering
 otherwise remain unchanged.</p>
 </li>
 <li>
-<p><code>VK_QUERY_PIPELINE_STATISTIC_TASK_SHADER_INVOCATIONS_BIT_EXT</code>
+<p><a href="#VkQueryPipelineStatisticFlagBits">VK_QUERY_PIPELINE_STATISTIC_TASK_SHADER_INVOCATIONS_BIT_EXT</a>
 specifies that queries managed by the pool will count the number of task
 shader invocations.
 The counter&#8217;s value is incremented every time the task shader is
 invoked.</p>
 </li>
 <li>
-<p><code>VK_QUERY_PIPELINE_STATISTIC_MESH_SHADER_INVOCATIONS_BIT_EXT</code>
+<p><a href="#VkQueryPipelineStatisticFlagBits">VK_QUERY_PIPELINE_STATISTIC_MESH_SHADER_INVOCATIONS_BIT_EXT</a>
 specifies that queries managed by the pool will count the number of mesh
 shader invocations.
 The counter&#8217;s value is incremented every time the mesh shader is
@@ -4529,7 +4532,7 @@ host (using <a href="#vkGetQueryPoolResults">vkGetQueryPoolResults</a>) or copy 
 queue on which the timestamp is written.
 Timestamps are supported on any queue which reports a non-zero value for
 <code>timestampValidBits</code> via <a href="devsandqueues.html#vkGetPhysicalDeviceQueueFamilyProperties" class="xref page">vkGetPhysicalDeviceQueueFamilyProperties</a>.
-If the <a href="limits.html#limits-timestampComputeAndGraphics" class="xref page"><code>timestampComputeAndGraphics</code></a> limit is <code>VK_TRUE</code>, timestamps are
+If the <a href="limits.html#limits-timestampComputeAndGraphics" class="xref page"><code>timestampComputeAndGraphics</code></a> limit is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, timestamps are
 supported by every queue family that supports either graphics or compute
 operations (see <a href="devsandqueues.html#VkQueueFamilyProperties" class="xref page">VkQueueFamilyProperties</a>).</p>
 </div>
@@ -4628,7 +4631,7 @@ same logical device: any timestamp write that
 have a lower value unless its value overflows the maximum supported integer
 bit width of the query.
 Timestamps written by this command <strong>must</strong> be in the
-<code>VK_TIME_DOMAIN_DEVICE_KHR</code>
+<a href="synchronization.html#VkTimeDomainEXT" class="xref page">VK_TIME_DOMAIN_DEVICE_KHR</a>
 <a href="synchronization.html#VkTimeDomainKHR" class="xref page">time domain</a>.
 If an overflow occurs, the timestamp value <strong>must</strong> wrap back to zero.</p>
 </div>
@@ -4671,50 +4674,50 @@ overflows the maximum supported integer bit width of the query.</p>
 
 If the <a href="features.html#features-geometryShader" class="xref page"><code>geometryShader</code></a> feature is not
 enabled, <code>stage</code> <strong>must</strong> not contain
-<code>VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits2KHR" class="xref page">VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp2-stage-03930" href="#VUID-vkCmdWriteTimestamp2-stage-03930"></a> <span class="vuid">VUID-vkCmdWriteTimestamp2-stage-03930</span><br>
 
 If the <a href="features.html#features-tessellationShader" class="xref page"><code>tessellationShader</code></a> feature
 is not enabled, <code>stage</code> <strong>must</strong> not contain
-<code>VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT</code> or
-<code>VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits2KHR" class="xref page">VK_PIPELINE_STAGE_2_TESSELLATION_CONTROL_SHADER_BIT</a> or
+<a href="synchronization.html#VkPipelineStageFlagBits2KHR" class="xref page">VK_PIPELINE_STAGE_2_TESSELLATION_EVALUATION_SHADER_BIT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp2-stage-03931" href="#VUID-vkCmdWriteTimestamp2-stage-03931"></a> <span class="vuid">VUID-vkCmdWriteTimestamp2-stage-03931</span><br>
 
 If the <a href="features.html#features-conditionalRendering" class="xref page"><code>conditionalRendering</code></a>
 feature is not enabled, <code>stage</code> <strong>must</strong> not contain
-<code>VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits2KHR" class="xref page">VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp2-stage-03932" href="#VUID-vkCmdWriteTimestamp2-stage-03932"></a> <span class="vuid">VUID-vkCmdWriteTimestamp2-stage-03932</span><br>
 
 If the <a href="features.html#features-fragmentDensityMap" class="xref page"><code>fragmentDensityMap</code></a> feature
 is not enabled, <code>stage</code> <strong>must</strong> not contain
-<code>VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits2KHR" class="xref page">VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp2-stage-03933" href="#VUID-vkCmdWriteTimestamp2-stage-03933"></a> <span class="vuid">VUID-vkCmdWriteTimestamp2-stage-03933</span><br>
 
 If the <a href="features.html#features-transformFeedback" class="xref page"><code>transformFeedback</code></a> feature
 is not enabled, <code>stage</code> <strong>must</strong> not contain
-<code>VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits2KHR" class="xref page">VK_PIPELINE_STAGE_2_TRANSFORM_FEEDBACK_BIT_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp2-stage-03934" href="#VUID-vkCmdWriteTimestamp2-stage-03934"></a> <span class="vuid">VUID-vkCmdWriteTimestamp2-stage-03934</span><br>
 
 If the <a href="features.html#features-meshShader" class="xref page"><code>meshShader</code></a> feature is not enabled,
 <code>stage</code> <strong>must</strong> not contain
-<code>VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits2KHR" class="xref page">VK_PIPELINE_STAGE_2_MESH_SHADER_BIT_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp2-stage-03935" href="#VUID-vkCmdWriteTimestamp2-stage-03935"></a> <span class="vuid">VUID-vkCmdWriteTimestamp2-stage-03935</span><br>
 
 If the <a href="features.html#features-taskShader" class="xref page"><code>taskShader</code></a> feature is not enabled,
 <code>stage</code> <strong>must</strong> not contain
-<code>VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits2KHR" class="xref page">VK_PIPELINE_STAGE_2_TASK_SHADER_BIT_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp2-stage-07316" href="#VUID-vkCmdWriteTimestamp2-stage-07316"></a> <span class="vuid">VUID-vkCmdWriteTimestamp2-stage-07316</span><br>
@@ -4722,21 +4725,21 @@ If the <a href="features.html#features-taskShader" class="xref page"><code>taskS
 If neither of the <a href="features.html#features-shadingRateImage" class="xref page"><code>shadingRateImage</code></a>
 or the <a href="features.html#features-attachmentFragmentShadingRate" class="xref page">    <code>attachmentFragmentShadingRate</code></a> features are enabled,
 <code>stage</code> <strong>must</strong> not contain
-<code>VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits2KHR" class="xref page">VK_PIPELINE_STAGE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp2-stage-04957" href="#VUID-vkCmdWriteTimestamp2-stage-04957"></a> <span class="vuid">VUID-vkCmdWriteTimestamp2-stage-04957</span><br>
 
 If the <a href="features.html#features-subpassShading" class="xref page"><code>subpassShading</code></a> feature is not
 enabled, <code>stage</code> <strong>must</strong> not contain
-<code>VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits2KHR" class="xref page">VK_PIPELINE_STAGE_2_SUBPASS_SHADER_BIT_HUAWEI</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp2-stage-04995" href="#VUID-vkCmdWriteTimestamp2-stage-04995"></a> <span class="vuid">VUID-vkCmdWriteTimestamp2-stage-04995</span><br>
 
 If the <a href="features.html#features-invocationMask" class="xref page"><code>invocationMask</code></a> feature is not
 enabled, <code>stage</code> <strong>must</strong> not contain
-<code>VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits2KHR" class="xref page">VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp2-stage-07946" href="#VUID-vkCmdWriteTimestamp2-stage-07946"></a> <span class="vuid">VUID-vkCmdWriteTimestamp2-stage-07946</span><br>
@@ -4744,28 +4747,28 @@ enabled, <code>stage</code> <strong>must</strong> not contain
 If neither the <a href="../appendices/extensions.html#VK_NV_ray_tracing" class="xref page">VK_NV_ray_tracing</a> extension or the
 <a href="features.html#features-rayTracingPipeline" class="xref page"><code>rayTracingPipeline</code></a> feature are
 enabled, <code>stage</code> <strong>must</strong> not contain
-<code>VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits2KHR" class="xref page">VK_PIPELINE_STAGE_2_RAY_TRACING_SHADER_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp2-stage-10751" href="#VUID-vkCmdWriteTimestamp2-stage-10751"></a> <span class="vuid">VUID-vkCmdWriteTimestamp2-stage-10751</span><br>
 
 If the <a href="features.html#features-accelerationStructure" class="xref page"><code>accelerationStructure</code></a>
 feature is not enabled, <code>stage</code> <strong>must</strong> not contain
-<code>VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits2KHR" class="xref page">VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp2-stage-10752" href="#VUID-vkCmdWriteTimestamp2-stage-10752"></a> <span class="vuid">VUID-vkCmdWriteTimestamp2-stage-10752</span><br>
 
 If the <a href="features.html#features-rayTracingMaintenance1" class="xref page"><code>rayTracingMaintenance1</code></a>
 feature is not enabled, <code>stage</code> <strong>must</strong> not contain
-<code>VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits2KHR" class="xref page">VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp2-stage-10753" href="#VUID-vkCmdWriteTimestamp2-stage-10753"></a> <span class="vuid">VUID-vkCmdWriteTimestamp2-stage-10753</span><br>
 
 If the <a href="features.html#features-micromap" class="xref page"><code>micromap</code></a> feature is not enabled,
 <code>stage</code> <strong>must</strong> not contain
-<code>VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits2KHR" class="xref page">VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp2-synchronization2-03858" href="#VUID-vkCmdWriteTimestamp2-synchronization2-03858"></a> <span class="vuid">VUID-vkCmdWriteTimestamp2-synchronization2-03858</span><br>
@@ -4789,7 +4792,7 @@ allocated from</p>
 <p><a id="VUID-vkCmdWriteTimestamp2-queryPool-03861" href="#VUID-vkCmdWriteTimestamp2-queryPool-03861"></a> <span class="vuid">VUID-vkCmdWriteTimestamp2-queryPool-03861</span><br>
 
 <code>queryPool</code> <strong>must</strong> have been created with a <code>queryType</code> of
-<code>VK_QUERY_TYPE_TIMESTAMP</code></p>
+<a href="#VkQueryType">VK_QUERY_TYPE_TIMESTAMP</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp2-timestampValidBits-03863" href="#VUID-vkCmdWriteTimestamp2-timestampValidBits-03863"></a> <span class="vuid">VUID-vkCmdWriteTimestamp2-timestampValidBits-03863</span><br>
@@ -4849,7 +4852,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp2-commandBuffer-cmdpool" href="#VUID-vkCmdWriteTimestamp2-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdWriteTimestamp2-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, <code>VK_QUEUE_GRAPHICS_BIT</code>, <code>VK_QUEUE_TRANSFER_BIT</code>, <code>VK_QUEUE_VIDEO_DECODE_BIT_KHR</code>, or <code>VK_QUEUE_VIDEO_ENCODE_BIT_KHR</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_COMPUTE_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_TRANSFER_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_VIDEO_DECODE_BIT_KHR</a>, or <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_VIDEO_ENCODE_BIT_KHR</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp2-suspended" href="#VUID-vkCmdWriteTimestamp2-suspended"></a> <span class="vuid">VUID-vkCmdWriteTimestamp2-suspended</span><br>
@@ -5004,7 +5007,7 @@ same logical device: any timestamp write that
 have a lower value unless its value overflows the maximum supported integer
 bit width of the query.
 Timestamps written by this command <strong>must</strong> be in the
-<code>VK_TIME_DOMAIN_DEVICE_KHR</code>
+<a href="synchronization.html#VkTimeDomainEXT" class="xref page">VK_TIME_DOMAIN_DEVICE_KHR</a>
 <a href="synchronization.html#VkTimeDomainKHR" class="xref page">time domain</a>.
 If an overflow occurs, the timestamp value <strong>must</strong> wrap back to zero.</p>
 </div>
@@ -5055,50 +5058,50 @@ was allocated from</p>
 
 If the <a href="features.html#features-geometryShader" class="xref page"><code>geometryShader</code></a> feature is not
 enabled, <code>pipelineStage</code> <strong>must</strong> not be
-<code>VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp-pipelineStage-04076" href="#VUID-vkCmdWriteTimestamp-pipelineStage-04076"></a> <span class="vuid">VUID-vkCmdWriteTimestamp-pipelineStage-04076</span><br>
 
 If the <a href="features.html#features-tessellationShader" class="xref page"><code>tessellationShader</code></a> feature
 is not enabled, <code>pipelineStage</code> <strong>must</strong> not be
-<code>VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT</code> or
-<code>VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT</a> or
+<a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp-pipelineStage-04077" href="#VUID-vkCmdWriteTimestamp-pipelineStage-04077"></a> <span class="vuid">VUID-vkCmdWriteTimestamp-pipelineStage-04077</span><br>
 
 If the <a href="features.html#features-conditionalRendering" class="xref page"><code>conditionalRendering</code></a>
 feature is not enabled, <code>pipelineStage</code> <strong>must</strong> not be
-<code>VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp-pipelineStage-04078" href="#VUID-vkCmdWriteTimestamp-pipelineStage-04078"></a> <span class="vuid">VUID-vkCmdWriteTimestamp-pipelineStage-04078</span><br>
 
 If the <a href="features.html#features-fragmentDensityMap" class="xref page"><code>fragmentDensityMap</code></a> feature
 is not enabled, <code>pipelineStage</code> <strong>must</strong> not be
-<code>VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp-pipelineStage-04079" href="#VUID-vkCmdWriteTimestamp-pipelineStage-04079"></a> <span class="vuid">VUID-vkCmdWriteTimestamp-pipelineStage-04079</span><br>
 
 If the <a href="features.html#features-transformFeedback" class="xref page"><code>transformFeedback</code></a> feature
 is not enabled, <code>pipelineStage</code> <strong>must</strong> not be
-<code>VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp-pipelineStage-04080" href="#VUID-vkCmdWriteTimestamp-pipelineStage-04080"></a> <span class="vuid">VUID-vkCmdWriteTimestamp-pipelineStage-04080</span><br>
 
 If the <a href="features.html#features-meshShader" class="xref page"><code>meshShader</code></a> feature is not enabled,
 <code>pipelineStage</code> <strong>must</strong> not be
-<code>VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp-pipelineStage-07077" href="#VUID-vkCmdWriteTimestamp-pipelineStage-07077"></a> <span class="vuid">VUID-vkCmdWriteTimestamp-pipelineStage-07077</span><br>
 
 If the <a href="features.html#features-taskShader" class="xref page"><code>taskShader</code></a> feature is not enabled,
 <code>pipelineStage</code> <strong>must</strong> not be
-<code>VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp-shadingRateImage-07314" href="#VUID-vkCmdWriteTimestamp-shadingRateImage-07314"></a> <span class="vuid">VUID-vkCmdWriteTimestamp-shadingRateImage-07314</span><br>
@@ -5106,14 +5109,14 @@ If the <a href="features.html#features-taskShader" class="xref page"><code>taskS
 If neither of the <a href="features.html#features-shadingRateImage" class="xref page"><code>shadingRateImage</code></a>
 or the <a href="features.html#features-attachmentFragmentShadingRate" class="xref page">    <code>attachmentFragmentShadingRate</code></a> features are enabled,
 <code>pipelineStage</code> <strong>must</strong> not be
-<code>VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp-synchronization2-06489" href="#VUID-vkCmdWriteTimestamp-synchronization2-06489"></a> <span class="vuid">VUID-vkCmdWriteTimestamp-synchronization2-06489</span><br>
 
 If the <a href="features.html#features-synchronization2" class="xref page"><code>synchronization2</code></a> feature is
 not enabled, <code>pipelineStage</code> <strong>must</strong> not be
-<code>VK_PIPELINE_STAGE_NONE</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_NONE</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp-rayTracingPipeline-07943" href="#VUID-vkCmdWriteTimestamp-rayTracingPipeline-07943"></a> <span class="vuid">VUID-vkCmdWriteTimestamp-rayTracingPipeline-07943</span><br>
@@ -5121,13 +5124,13 @@ not enabled, <code>pipelineStage</code> <strong>must</strong> not be
 If neither of the <a href="../appendices/extensions.html#VK_NV_ray_tracing" class="xref page">VK_NV_ray_tracing</a> extension or the
 <a href="features.html#features-rayTracingPipeline" class="xref page"><code>rayTracingPipeline</code></a> feature are
 enabled, <code>pipelineStage</code> <strong>must</strong> not be
-<code>VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR</code></p>
+<a href="synchronization.html#VkPipelineStageFlagBits" class="xref page">VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp-queryPool-01416" href="#VUID-vkCmdWriteTimestamp-queryPool-01416"></a> <span class="vuid">VUID-vkCmdWriteTimestamp-queryPool-01416</span><br>
 
 <code>queryPool</code> <strong>must</strong> have been created with a <code>queryType</code> of
-<code>VK_QUERY_TYPE_TIMESTAMP</code></p>
+<a href="#VkQueryType">VK_QUERY_TYPE_TIMESTAMP</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp-timestampValidBits-00829" href="#VUID-vkCmdWriteTimestamp-timestampValidBits-00829"></a> <span class="vuid">VUID-vkCmdWriteTimestamp-timestampValidBits-00829</span><br>
@@ -5187,7 +5190,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp-commandBuffer-cmdpool" href="#VUID-vkCmdWriteTimestamp-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdWriteTimestamp-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, <code>VK_QUEUE_GRAPHICS_BIT</code>, <code>VK_QUEUE_OPTICAL_FLOW_BIT_NV</code>, <code>VK_QUEUE_TRANSFER_BIT</code>, <code>VK_QUEUE_VIDEO_DECODE_BIT_KHR</code>, or <code>VK_QUEUE_VIDEO_ENCODE_BIT_KHR</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_COMPUTE_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_OPTICAL_FLOW_BIT_NV</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_TRANSFER_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_VIDEO_DECODE_BIT_KHR</a>, or <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_VIDEO_ENCODE_BIT_KHR</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdWriteTimestamp-suspended" href="#VUID-vkCmdWriteTimestamp-suspended"></a> <span class="vuid">VUID-vkCmdWriteTimestamp-suspended</span><br>
@@ -5322,10 +5325,10 @@ queried via a call to
 <td class="content">
 <div class="paragraph">
 <p>Command buffers recorded with
-<code>VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT</code> <strong>must</strong> not be re-submitted.
+<a href="cmdbuffers.html#VkCommandBufferUsageFlagBits" class="xref page">VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT</a> <strong>must</strong> not be re-submitted.
 Changing command buffer usage bits <strong>may</strong> affect performance.
 To avoid this, the application <strong>should</strong> re-record any command buffers with
-the <code>VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT</code> when multiple counter
+the <a href="cmdbuffers.html#VkCommandBufferUsageFlagBits" class="xref page">VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT</a> when multiple counter
 passes are required.</p>
 </div>
 </td>
@@ -5451,7 +5454,7 @@ concurrently.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a></p>
 </li>
 </ul>
 </div>
@@ -5461,16 +5464,16 @@ concurrently.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_HOST_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_UNKNOWN</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_UNKNOWN</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_VALIDATION_FAILED</a></p>
 </li>
 <li>
-<p><code>VK_TIMEOUT</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_TIMEOUT</a></p>
 </li>
 </ul>
 </div>
@@ -5522,7 +5525,7 @@ the profiling lock is not available.</p>
 <ul>
 <li>
 <p><a id="VUID-VkAcquireProfilingLockInfoKHR-sType-sType" href="#VUID-VkAcquireProfilingLockInfoKHR-sType-sType"></a> <span class="vuid">VUID-VkAcquireProfilingLockInfoKHR-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_ACQUIRE_PROFILING_LOCK_INFO_KHR</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_ACQUIRE_PROFILING_LOCK_INFO_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-VkAcquireProfilingLockInfoKHR-pNext-pNext" href="#VUID-VkAcquireProfilingLockInfoKHR-pNext-pNext"></a> <span class="vuid">VUID-VkAcquireProfilingLockInfoKHR-pNext-pNext</span><br>
@@ -5689,10 +5692,10 @@ The application <strong>can</strong> then either copy the result to a buffer (vi
 <td class="content">
 <div class="paragraph">
 <p>The result of this query is typically identical to
-<code>VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT</code>, but the
+<a href="#VkQueryPipelineStatisticFlagBits">VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT</a>, but the
 primitives generated query is deterministic, i.e. it must be identical to
 the number of primitives processed.
-<code>VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT</code> may vary for
+<a href="#VkQueryPipelineStatisticFlagBits">VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT</a> may vary for
 implementation-dependent reasons, e.g. the same primitive may be processed
 multiple times for purposes of clipping.</p>
 </div>
@@ -5784,7 +5787,7 @@ initialization parameters.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a></p>
 </li>
 </ul>
 </div>
@@ -5794,16 +5797,16 @@ initialization parameters.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_HOST_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_TOO_MANY_OBJECTS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_TOO_MANY_OBJECTS</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_UNKNOWN</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_UNKNOWN</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_VALIDATION_FAILED</a></p>
 </li>
 </ul>
 </div>
@@ -5850,7 +5853,7 @@ structure.</p>
 <ul>
 <li>
 <p><a id="VUID-VkInitializePerformanceApiInfoINTEL-sType-sType" href="#VUID-VkInitializePerformanceApiInfoINTEL-sType-sType"></a> <span class="vuid">VUID-VkInitializePerformanceApiInfoINTEL-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_INITIALIZE_PERFORMANCE_API_INFO_INTEL</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_INITIALIZE_PERFORMANCE_API_INFO_INTEL</a></p>
 </li>
 <li>
 <p><a id="VUID-VkInitializePerformanceApiInfoINTEL-pNext-pNext" href="#VUID-VkInitializePerformanceApiInfoINTEL-pNext-pNext"></a> <span class="vuid">VUID-VkInitializePerformanceApiInfoINTEL-pNext-pNext</span><br>
@@ -5956,7 +5959,7 @@ in which the type and value of the parameter are returned.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a></p>
 </li>
 </ul>
 </div>
@@ -5966,16 +5969,16 @@ in which the type and value of the parameter are returned.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_HOST_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_TOO_MANY_OBJECTS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_TOO_MANY_OBJECTS</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_UNKNOWN</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_UNKNOWN</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_VALIDATION_FAILED</a></p>
 </li>
 </ul>
 </div>
@@ -6004,11 +6007,11 @@ typedef enum VkPerformanceParameterTypeINTEL {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_PERFORMANCE_PARAMETER_TYPE_HW_COUNTERS_SUPPORTED_INTEL</code> has a
+<p><a href="#VkPerformanceParameterTypeINTEL">VK_PERFORMANCE_PARAMETER_TYPE_HW_COUNTERS_SUPPORTED_INTEL</a> has a
 boolean result which tells whether hardware counters can be captured.</p>
 </li>
 <li>
-<p><code>VK_PERFORMANCE_PARAMETER_TYPE_STREAM_MARKER_VALID_BITS_INTEL</code> has a
+<p><a href="#VkPerformanceParameterTypeINTEL">VK_PERFORMANCE_PARAMETER_TYPE_STREAM_MARKER_VALID_BITS_INTEL</a> has a
 32 bits integer result which tells how many bits can be written into the
 <code>VkPerformanceValueINTEL</code> value.</p>
 </li>
@@ -6053,23 +6056,23 @@ type of the data returned in <a href="#VkPerformanceValueINTEL">VkPerformanceVal
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_PERFORMANCE_VALUE_TYPE_UINT32_INTEL</code> specifies that unsigned
+<p><a href="#VkPerformanceValueTypeINTEL">VK_PERFORMANCE_VALUE_TYPE_UINT32_INTEL</a> specifies that unsigned
 32-bit integer data is returned in <code>data.value32</code>.</p>
 </li>
 <li>
-<p><code>VK_PERFORMANCE_VALUE_TYPE_UINT64_INTEL</code> specifies that unsigned
+<p><a href="#VkPerformanceValueTypeINTEL">VK_PERFORMANCE_VALUE_TYPE_UINT64_INTEL</a> specifies that unsigned
 64-bit integer data is returned in <code>data.value64</code>.</p>
 </li>
 <li>
-<p><code>VK_PERFORMANCE_VALUE_TYPE_FLOAT_INTEL</code> specifies that
+<p><a href="#VkPerformanceValueTypeINTEL">VK_PERFORMANCE_VALUE_TYPE_FLOAT_INTEL</a> specifies that
 floating-point data is returned in <code>data.valueFloat</code>.</p>
 </li>
 <li>
-<p><code>VK_PERFORMANCE_VALUE_TYPE_BOOL_INTEL</code> specifies that
+<p><a href="#VkPerformanceValueTypeINTEL">VK_PERFORMANCE_VALUE_TYPE_BOOL_INTEL</a> specifies that
 <code>VkBool32</code> data is returned in <code>data.valueBool</code>.</p>
 </li>
 <li>
-<p><code>VK_PERFORMANCE_VALUE_TYPE_STRING_INTEL</code> specifies that a pointer to
+<p><a href="#VkPerformanceValueTypeINTEL">VK_PERFORMANCE_VALUE_TYPE_STRING_INTEL</a> specifies that a pointer to
 a null-terminated UTF-8 string is returned in <code>data.valueString</code>.
 The pointer is valid for the lifetime of the <code>device</code> parameter
 passed to <a href="#vkGetPerformanceParameterINTEL">vkGetPerformanceParameterINTEL</a>.</p>
@@ -6159,7 +6162,7 @@ typedef VkQueryPoolPerformanceQueryCreateInfoINTEL VkQueryPoolCreateInfoINTEL;</
 <div class="paragraph">
 <p>To create a pool for Intel performance queries, set
 <a href="#VkQueryPoolCreateInfo">VkQueryPoolCreateInfo</a>::<code>queryType</code> to
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL</code> and add a
+<a href="#VkQueryType">VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL</a> and add a
 <code>VkQueryPoolPerformanceQueryCreateInfoINTEL</code> structure to the
 <code>pNext</code> chain of the <a href="#VkQueryPoolCreateInfo">VkQueryPoolCreateInfo</a> structure.</p>
 </div>
@@ -6185,7 +6188,7 @@ should be captured.</p>
 <ul>
 <li>
 <p><a id="VUID-VkQueryPoolPerformanceQueryCreateInfoINTEL-sType-sType" href="#VUID-VkQueryPoolPerformanceQueryCreateInfoINTEL-sType-sType"></a> <span class="vuid">VUID-VkQueryPoolPerformanceQueryCreateInfoINTEL-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_QUERY_CREATE_INFO_INTEL</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_QUERY_CREATE_INFO_INTEL</a></p>
 </li>
 <li>
 <p><a id="VUID-VkQueryPoolPerformanceQueryCreateInfoINTEL-performanceCountersSampling-parameter" href="#VUID-VkQueryPoolPerformanceQueryCreateInfoINTEL-performanceCountersSampling-parameter"></a> <span class="vuid">VUID-VkQueryPoolPerformanceQueryCreateInfoINTEL-performanceCountersSampling-parameter</span><br>
@@ -6215,7 +6218,7 @@ typedef enum VkQueryPoolSamplingModeINTEL {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_QUERY_POOL_SAMPLING_MODE_MANUAL_INTEL</code> is the default mode in
+<p><a href="#VkQueryPoolSamplingModeINTEL">VK_QUERY_POOL_SAMPLING_MODE_MANUAL_INTEL</a> is the default mode in
 which the application calls <a href="#vkCmdBeginQuery">vkCmdBeginQuery</a> and
 <a href="#vkCmdEndQuery">vkCmdEndQuery</a> to record performance data.</p>
 </li>
@@ -6261,7 +6264,7 @@ part of the query result.</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetPerformanceMarkerINTEL-commandBuffer-cmdpool" href="#VUID-vkCmdSetPerformanceMarkerINTEL-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetPerformanceMarkerINTEL-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, <code>VK_QUEUE_GRAPHICS_BIT</code>, or <code>VK_QUEUE_TRANSFER_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_COMPUTE_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a>, or <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_TRANSFER_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetPerformanceMarkerINTEL-suspended" href="#VUID-vkCmdSetPerformanceMarkerINTEL-suspended"></a> <span class="vuid">VUID-vkCmdSetPerformanceMarkerINTEL-suspended</span><br>
@@ -6344,7 +6347,7 @@ State</p></td>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a></p>
 </li>
 </ul>
 </div>
@@ -6354,16 +6357,16 @@ State</p></td>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_HOST_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_TOO_MANY_OBJECTS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_TOO_MANY_OBJECTS</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_UNKNOWN</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_UNKNOWN</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_VALIDATION_FAILED</a></p>
 </li>
 </ul>
 </div>
@@ -6411,7 +6414,7 @@ query results.</p>
 <ul>
 <li>
 <p><a id="VUID-VkPerformanceMarkerInfoINTEL-sType-sType" href="#VUID-VkPerformanceMarkerInfoINTEL-sType-sType"></a> <span class="vuid">VUID-VkPerformanceMarkerInfoINTEL-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PERFORMANCE_MARKER_INFO_INTEL</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PERFORMANCE_MARKER_INFO_INTEL</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPerformanceMarkerInfoINTEL-pNext-pNext" href="#VUID-VkPerformanceMarkerInfoINTEL-pNext-pNext"></a> <span class="vuid">VUID-VkPerformanceMarkerInfoINTEL-pNext-pNext</span><br>
@@ -6472,7 +6475,7 @@ to insert.</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetPerformanceStreamMarkerINTEL-commandBuffer-cmdpool" href="#VUID-vkCmdSetPerformanceStreamMarkerINTEL-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetPerformanceStreamMarkerINTEL-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, <code>VK_QUEUE_GRAPHICS_BIT</code>, or <code>VK_QUEUE_TRANSFER_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_COMPUTE_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a>, or <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_TRANSFER_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetPerformanceStreamMarkerINTEL-suspended" href="#VUID-vkCmdSetPerformanceStreamMarkerINTEL-suspended"></a> <span class="vuid">VUID-vkCmdSetPerformanceStreamMarkerINTEL-suspended</span><br>
@@ -6555,7 +6558,7 @@ State</p></td>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a></p>
 </li>
 </ul>
 </div>
@@ -6565,16 +6568,16 @@ State</p></td>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_HOST_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_TOO_MANY_OBJECTS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_TOO_MANY_OBJECTS</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_UNKNOWN</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_UNKNOWN</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_VALIDATION_FAILED</a></p>
 </li>
 </ul>
 </div>
@@ -6625,7 +6628,7 @@ consumed by an external application.</p>
 
 The value written by the application into <code>marker</code> <strong>must</strong> only used
 the valid bits as reported by <a href="#vkGetPerformanceParameterINTEL">vkGetPerformanceParameterINTEL</a> with
-the <code>VK_PERFORMANCE_PARAMETER_TYPE_STREAM_MARKER_VALID_BITS_INTEL</code></p>
+the <a href="#VkPerformanceParameterTypeINTEL">VK_PERFORMANCE_PARAMETER_TYPE_STREAM_MARKER_VALID_BITS_INTEL</a></p>
 </li>
 </ul>
 </div>
@@ -6638,7 +6641,7 @@ the <code>VK_PERFORMANCE_PARAMETER_TYPE_STREAM_MARKER_VALID_BITS_INTEL</code></p
 <ul>
 <li>
 <p><a id="VUID-VkPerformanceStreamMarkerInfoINTEL-sType-sType" href="#VUID-VkPerformanceStreamMarkerInfoINTEL-sType-sType"></a> <span class="vuid">VUID-VkPerformanceStreamMarkerInfoINTEL-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PERFORMANCE_STREAM_MARKER_INFO_INTEL</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PERFORMANCE_STREAM_MARKER_INFO_INTEL</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPerformanceStreamMarkerInfoINTEL-pNext-pNext" href="#VUID-VkPerformanceStreamMarkerInfoINTEL-pNext-pNext"></a> <span class="vuid">VUID-VkPerformanceStreamMarkerInfoINTEL-pNext-pNext</span><br>
@@ -6713,7 +6716,7 @@ to override.</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetPerformanceOverrideINTEL-commandBuffer-cmdpool" href="#VUID-vkCmdSetPerformanceOverrideINTEL-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetPerformanceOverrideINTEL-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, <code>VK_QUEUE_GRAPHICS_BIT</code>, or <code>VK_QUEUE_TRANSFER_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_COMPUTE_BIT</a>, <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a>, or <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_TRANSFER_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetPerformanceOverrideINTEL-videocoding" href="#VUID-vkCmdSetPerformanceOverrideINTEL-videocoding"></a> <span class="vuid">VUID-vkCmdSetPerformanceOverrideINTEL-videocoding</span><br>
@@ -6791,7 +6794,7 @@ VK_QUEUE_TRANSFER_BIT</p></td>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a></p>
 </li>
 </ul>
 </div>
@@ -6801,16 +6804,16 @@ VK_QUEUE_TRANSFER_BIT</p></td>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_HOST_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_TOO_MANY_OBJECTS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_TOO_MANY_OBJECTS</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_UNKNOWN</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_UNKNOWN</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_VALIDATION_FAILED</a></p>
 </li>
 </ul>
 </div>
@@ -6866,7 +6869,7 @@ set.</p>
 <ul>
 <li>
 <p><a id="VUID-VkPerformanceOverrideInfoINTEL-sType-sType" href="#VUID-VkPerformanceOverrideInfoINTEL-sType-sType"></a> <span class="vuid">VUID-VkPerformanceOverrideInfoINTEL-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PERFORMANCE_OVERRIDE_INFO_INTEL</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PERFORMANCE_OVERRIDE_INFO_INTEL</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPerformanceOverrideInfoINTEL-pNext-pNext" href="#VUID-VkPerformanceOverrideInfoINTEL-pNext-pNext"></a> <span class="vuid">VUID-VkPerformanceOverrideInfoINTEL-pNext-pNext</span><br>
@@ -6900,11 +6903,11 @@ typedef enum VkPerformanceOverrideTypeINTEL {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_PERFORMANCE_OVERRIDE_TYPE_NULL_HARDWARE_INTEL</code> turns all
+<p><a href="#VkPerformanceOverrideTypeINTEL">VK_PERFORMANCE_OVERRIDE_TYPE_NULL_HARDWARE_INTEL</a> turns all
 rendering operations into noop.</p>
 </li>
 <li>
-<p><code>VK_PERFORMANCE_OVERRIDE_TYPE_FLUSH_GPU_CACHES_INTEL</code> stalls the
+<p><a href="#VkPerformanceOverrideTypeINTEL">VK_PERFORMANCE_OVERRIDE_TYPE_FLUSH_GPU_CACHES_INTEL</a> stalls the
 stream of commands until all previously emitted commands have completed
 and all caches been flushed and invalidated.</p>
 </li>
@@ -6992,7 +6995,7 @@ configuration object is returned.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a></p>
 </li>
 </ul>
 </div>
@@ -7002,16 +7005,16 @@ configuration object is returned.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_HOST_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_TOO_MANY_OBJECTS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_TOO_MANY_OBJECTS</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_UNKNOWN</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_UNKNOWN</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_VALIDATION_FAILED</a></p>
 </li>
 </ul>
 </div>
@@ -7060,7 +7063,7 @@ of performance configuration that will be acquired.</p>
 <ul>
 <li>
 <p><a id="VUID-VkPerformanceConfigurationAcquireInfoINTEL-sType-sType" href="#VUID-VkPerformanceConfigurationAcquireInfoINTEL-sType-sType"></a> <span class="vuid">VUID-VkPerformanceConfigurationAcquireInfoINTEL-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PERFORMANCE_CONFIGURATION_ACQUIRE_INFO_INTEL</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PERFORMANCE_CONFIGURATION_ACQUIRE_INFO_INTEL</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPerformanceConfigurationAcquireInfoINTEL-pNext-pNext" href="#VUID-VkPerformanceConfigurationAcquireInfoINTEL-pNext-pNext"></a> <span class="vuid">VUID-VkPerformanceConfigurationAcquireInfoINTEL-pNext-pNext</span><br>
@@ -7143,7 +7146,9 @@ VkResult vkQueueSetPerformanceConfigurationINTEL(
 <div class="ulist">
 <ul>
 <li>
-<p>Host access to <code>queue</code> <strong>must</strong> be externally synchronized</p>
+<p>Host access to <code>queue</code> <strong>must</strong> be externally synchronized
+if it was not created with
+<a href="devsandqueues.html#VkDeviceQueueCreateFlagBits" class="xref page">VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR</a></p>
 </li>
 </ul>
 </div>
@@ -7191,7 +7196,7 @@ VkResult vkQueueSetPerformanceConfigurationINTEL(
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a></p>
 </li>
 </ul>
 </div>
@@ -7201,16 +7206,16 @@ VkResult vkQueueSetPerformanceConfigurationINTEL(
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_HOST_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_TOO_MANY_OBJECTS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_TOO_MANY_OBJECTS</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_UNKNOWN</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_UNKNOWN</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_VALIDATION_FAILED</a></p>
 </li>
 </ul>
 </div>
@@ -7304,7 +7309,7 @@ submitted while the configuration was set are in
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a></p>
 </li>
 </ul>
 </div>
@@ -7314,16 +7319,16 @@ submitted while the configuration was set are in
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_HOST_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_TOO_MANY_OBJECTS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_TOO_MANY_OBJECTS</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_UNKNOWN</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_UNKNOWN</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_VALIDATION_FAILED</a></p>
 </li>
 </ul>
 </div>
@@ -7343,7 +7348,7 @@ submitted while the configuration was set are in
 <p>Result status queries serve a single purpose: allowing the application to
 determine whether a set of operations have completed successfully or not, as
 indicated by the <a href="#VkQueryResultStatusKHR">VkQueryResultStatusKHR</a> value written when retrieving
-the result of a query using the <code>VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</code>
+the result of a query using the <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</a>
 flag.</p>
 </div>
 <div class="paragraph">
@@ -7419,7 +7424,7 @@ pool.</p>
 <ul>
 <li>
 <p><a id="VUID-VkQueryPoolVideoEncodeFeedbackCreateInfoKHR-sType-sType" href="#VUID-VkQueryPoolVideoEncodeFeedbackCreateInfoKHR-sType-sType"></a> <span class="vuid">VUID-VkQueryPoolVideoEncodeFeedbackCreateInfoKHR-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_QUERY_POOL_VIDEO_ENCODE_FEEDBACK_CREATE_INFO_KHR</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_QUERY_POOL_VIDEO_ENCODE_FEEDBACK_CREATE_INFO_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-VkQueryPoolVideoEncodeFeedbackCreateInfoKHR-encodeFeedbackFlags-parameter" href="#VUID-VkQueryPoolVideoEncodeFeedbackCreateInfoKHR-encodeFeedbackFlags-parameter"></a> <span class="vuid">VUID-VkQueryPoolVideoEncodeFeedbackCreateInfoKHR-encodeFeedbackFlags-parameter</span><br>
@@ -7455,7 +7460,7 @@ typedef enum VkVideoEncodeFeedbackFlagBitsKHR {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR</code> specifies
+<p><a href="#VkVideoEncodeFeedbackFlagBitsKHR">VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR</a> specifies
 that queries managed by the pool will capture the byte offset of the
 bitstream data written by the video encode operation to the bitstream
 buffer specified in <a href="videocoding.html#VkVideoEncodeInfoKHR" class="xref page">VkVideoEncodeInfoKHR</a>::<code>dstBuffer</code> relative
@@ -7469,13 +7474,13 @@ the offset specified in
 <a href="videocoding.html#VkVideoEncodeInfoKHR" class="xref page">VkVideoEncodeInfoKHR</a>::<code>dstBufferOffset</code>.</p>
 </li>
 <li>
-<p><code>VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR</code> specifies
+<p><a href="#VkVideoEncodeFeedbackFlagBitsKHR">VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR</a> specifies
 that queries managed by the pool will capture the number of bytes
 written by the video encode operation to the bitstream buffer specified
 in <a href="videocoding.html#VkVideoEncodeInfoKHR" class="xref page">VkVideoEncodeInfoKHR</a>::<code>dstBuffer</code>.</p>
 </li>
 <li>
-<p><code>VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR</code> specifies
+<p><a href="#VkVideoEncodeFeedbackFlagBitsKHR">VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR</a> specifies
 that queries managed by the pool will capture a boolean value indicating
 that the data written to the bitstream buffer specified in
 <a href="videocoding.html#VkVideoEncodeInfoKHR" class="xref page">VkVideoEncodeInfoKHR</a>::<code>dstBuffer</code> contains
@@ -7487,8 +7492,8 @@ that the data written to the bitstream buffer specified in
 <p>When retrieving the results of video encode feedback queries, the values
 corresponding to each enabled video encode feedback are written in the order
 of the bits defined above, followed by an optional value indicating
-availability or result status if <code>VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</code>
-or <code>VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</code> is specified, respectively.</p>
+availability or result status if <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</a>
+or <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</a> is specified, respectively.</p>
 </div>
 <div class="paragraph">
 <p>If the result status of a video encode feedback query is negative, then the
@@ -7502,7 +7507,7 @@ results of all enabled video encode feedback values will be <strong>undefined</s
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Applications should always specify <code>VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</code>
+<p>Applications should always specify <a href="#VkQueryResultFlagBits">VK_QUERY_RESULT_WITH_STATUS_BIT_KHR</a>
 when retrieving the results of video encode feedback queries and ignore such
 <strong>undefined</strong> video encode feedback values for any
 <a href="videocoding.html#encode-unsuccessful" class="xref page">unsuccessfully</a> completed video encode operations.</p>

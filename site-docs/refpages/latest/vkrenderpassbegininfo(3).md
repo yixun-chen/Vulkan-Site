@@ -60,9 +60,9 @@ instance, and is described in more detail below.
 `pClearValues` is a pointer to an array of `clearValueCount`
 [VkClearValue](VkClearValue.html) structures containing clear values for each
 attachment, if the attachment uses a `loadOp` value of
-`VK_ATTACHMENT_LOAD_OP_CLEAR` or if the attachment has a
+[VK_ATTACHMENT_LOAD_OP_CLEAR](VkAttachmentLoadOp.html) or if the attachment has a
 depth/stencil format and uses a `stencilLoadOp` value of
-`VK_ATTACHMENT_LOAD_OP_CLEAR`.
+[VK_ATTACHMENT_LOAD_OP_CLEAR](VkAttachmentLoadOp.html).
 The array is indexed by attachment number.
 Only elements corresponding to cleared attachments are used.
 Other elements of `pClearValues` are ignored.
@@ -113,7 +113,7 @@ Valid Usage
 `clearValueCount` **must** be greater than the largest attachment index
 in `renderPass` specifying a `loadOp` (or `stencilLoadOp`,
 if the attachment has a depth/stencil format) of
-`VK_ATTACHMENT_LOAD_OP_CLEAR`
+[VK_ATTACHMENT_LOAD_OP_CLEAR](VkAttachmentLoadOp.html)
 
 * 
 [](#VUID-VkRenderPassBeginInfo-clearValueCount-04962) VUID-VkRenderPassBeginInfo-clearValueCount-04962
@@ -205,7 +205,7 @@ be less than or equal to [VkFramebufferCreateInfo](VkFramebufferCreateInfo.html)
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](VkFramebufferCreateInfo.html)::`flags` value that did not include
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, and the `pNext` chain
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), and the `pNext` chain
 includes a [VkRenderPassAttachmentBeginInfo](VkRenderPassAttachmentBeginInfo.html) structure, its
 `attachmentCount` **must** be zero
 
@@ -214,7 +214,7 @@ includes a [VkRenderPassAttachmentBeginInfo](VkRenderPassAttachmentBeginInfo.htm
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](VkFramebufferCreateInfo.html)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, the `attachmentCount` of
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), the `attachmentCount` of
 a [VkRenderPassAttachmentBeginInfo](VkRenderPassAttachmentBeginInfo.html) structure included in the
 `pNext` chain **must** be equal to the value of
 [VkFramebufferAttachmentsCreateInfo](VkFramebufferAttachmentsCreateInfo.html)::`attachmentImageInfoCount`
@@ -225,7 +225,7 @@ used to create `framebuffer`
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](VkFramebufferCreateInfo.html)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](VkRenderPassAttachmentBeginInfo.html)
 structure included in the `pNext` chain **must** have been created on
 the same [VkDevice](VkDevice.html) as `framebuffer` and `renderPass`
@@ -235,7 +235,7 @@ the same [VkDevice](VkDevice.html) as `framebuffer` and `renderPass`
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](VkFramebufferCreateInfo.html)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](VkRenderPassAttachmentBeginInfo.html)
 structure included in the `pNext` chain **must** be a [VkImageView](VkImageView.html)
 of an image created with a value of [VkImageCreateInfo](VkImageCreateInfo.html)::`flags`
@@ -244,11 +244,22 @@ equal to the `flags` member of the corresponding element of
 used to create `framebuffer`
 
 * 
+[](#VUID-VkRenderPassBeginInfo-framebuffer-12328) VUID-VkRenderPassBeginInfo-framebuffer-12328
+
+If `framebuffer` was created with a
+[VkFramebufferCreateInfo](VkFramebufferCreateInfo.html)::`flags` value that included
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each `pAttachments`
+member of [VkRenderPassAttachmentBeginInfo](VkRenderPassAttachmentBeginInfo.html) that is used as a
+resolve attachment by `renderPass` **must** not be bound to a
+`VkDeviceMemory` object allocated from a `VkMemoryHeap` with the
+[VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property
+
+* 
 [](#VUID-VkRenderPassBeginInfo-framebuffer-04627) VUID-VkRenderPassBeginInfo-framebuffer-04627
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](VkFramebufferCreateInfo.html)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](VkRenderPassAttachmentBeginInfo.html)
 structure included in the `pNext` chain **must** be a [VkImageView](VkImageView.html)
 with [an inherited usage](../../../../spec/latest/chapters/resources.html#resources-image-inherited-usage) equal to
@@ -261,7 +272,7 @@ used to create `framebuffer`
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](VkFramebufferCreateInfo.html)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](VkRenderPassAttachmentBeginInfo.html)
 structure included in the `pNext` chain **must** be a [VkImageView](VkImageView.html)
 with a width equal to the `width` member of the corresponding
@@ -274,7 +285,7 @@ used to create `framebuffer`
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](VkFramebufferCreateInfo.html)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](VkRenderPassAttachmentBeginInfo.html)
 structure included in the `pNext` chain **must** be a [VkImageView](VkImageView.html)
 with a height equal to the `height` member of the corresponding
@@ -287,7 +298,7 @@ used to create `framebuffer`
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](VkFramebufferCreateInfo.html)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](VkRenderPassAttachmentBeginInfo.html)
 structure included in the `pNext` chain **must** be a [VkImageView](VkImageView.html)
 of an image created with a value of
@@ -301,7 +312,7 @@ used to create `framebuffer`
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](VkFramebufferCreateInfo.html)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](VkRenderPassAttachmentBeginInfo.html)
 structure included in the `pNext` chain **must** be a [VkImageView](VkImageView.html)
 of an image created with a value of
@@ -315,7 +326,7 @@ used to create `framebuffer`
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](VkFramebufferCreateInfo.html)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](VkRenderPassAttachmentBeginInfo.html)
 structure included in the `pNext` chain **must** be a [VkImageView](VkImageView.html)
 of an image created with a set of elements in
@@ -330,7 +341,7 @@ used to create `framebuffer`
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](VkFramebufferCreateInfo.html)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](VkRenderPassAttachmentBeginInfo.html)
 structure included in the `pNext` chain **must** be a [VkImageView](VkImageView.html)
 of an image created with a value of
@@ -342,8 +353,8 @@ value of [VkAttachmentDescription](VkAttachmentDescription.html)::`format` in `r
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](VkFramebufferCreateInfo.html)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, and the
-[    `nullColorAttachmentWithExternalFormatResolve`](../../../../spec/latest/chapters/limits.html#limits-nullColorAttachmentWithExternalFormatResolve) is `VK_FALSE`,
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), and the
+[    `nullColorAttachmentWithExternalFormatResolve`](../../../../spec/latest/chapters/limits.html#limits-nullColorAttachmentWithExternalFormatResolve) is [VK_FALSE](VK_FALSE.html),
 the format of the color attachment for each subpass that includes an
 external format image as a resolve attachment **must** have a format equal
 to the value of
@@ -358,7 +369,7 @@ resolve attachment
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](VkFramebufferCreateInfo.html)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](VkRenderPassAttachmentBeginInfo.html)
 structure included in the `pNext` chain **must** be a [VkImageView](VkImageView.html)
 of an image created with a value of
@@ -372,16 +383,16 @@ to create `renderPass`
 
 If `framebuffer` was created with a
 [VkFramebufferCreateInfo](VkFramebufferCreateInfo.html)::`flags` value that included
-`VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT`, each element of the
+[VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT](VkFramebufferCreateFlagBits.html), each element of the
 `pAttachments` member of a [VkRenderPassAttachmentBeginInfo](VkRenderPassAttachmentBeginInfo.html)
 structure included in the `pNext` chain **must** be a [VkImageView](VkImageView.html)
 of an image created with a value of
 [VkImageCreateInfo](VkImageCreateInfo.html)::`samples` equal to the corresponding value
 of [VkAttachmentDescription](VkAttachmentDescription.html)::`samples` in `renderPass`
-, or `VK_SAMPLE_COUNT_1_BIT` if `renderPass` was created with
+, or [VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) if `renderPass` was created with
 [VkMultisampledRenderToSingleSampledInfoEXT](VkMultisampledRenderToSingleSampledInfoEXT.html) structure in the
 `pNext` chain with `multisampledRenderToSingleSampledEnable`
-equal to `VK_TRUE`
+equal to [VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-VkRenderPassBeginInfo-pNext-02869) VUID-VkRenderPassBeginInfo-pNext-02869
@@ -428,7 +439,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassBeginInfo-sType-sType) VUID-VkRenderPassBeginInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderPassBeginInfo-pNext-pNext) VUID-VkRenderPassBeginInfo-pNext-pNext

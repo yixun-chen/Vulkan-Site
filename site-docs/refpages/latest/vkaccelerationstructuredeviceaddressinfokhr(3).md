@@ -45,7 +45,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureDeviceAddressInfoKHR-sType-sType) VUID-VkAccelerationStructureDeviceAddressInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_DEVICE_ADDRESS_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_DEVICE_ADDRESS_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkAccelerationStructureDeviceAddressInfoKHR-pNext-pNext) VUID-VkAccelerationStructureDeviceAddressInfoKHR-pNext-pNext

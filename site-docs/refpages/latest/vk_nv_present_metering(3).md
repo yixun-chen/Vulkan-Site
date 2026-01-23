@@ -103,10 +103,10 @@ Extending [VkPresentInfoKHR](VkPresentInfoKHR.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_METERING_FEATURES_NV`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_METERING_FEATURES_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SET_PRESENT_CONFIG_NV`
+[VK_STRUCTURE_TYPE_SET_PRESENT_CONFIG_NV](VkStructureType.html)
 
 * 
 Revision 1, 2025-01-08 (Charles Hansen)

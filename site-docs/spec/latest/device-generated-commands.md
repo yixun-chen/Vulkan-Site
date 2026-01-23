@@ -149,21 +149,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkIndirectCommandsLayoutCreateInfoEXT` structure is defined as:
 
@@ -205,7 +205,10 @@ in this layout use.
 If the [    `dynamicGeneratedPipelineLayout`](../features.html#features-dynamicGeneratedPipelineLayout) feature is enabled,
 `pipelineLayout` **can** be [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE) and the layout **must**
 be specified by chaining the [VkPipelineLayoutCreateInfo](../descriptorsets.html#VkPipelineLayoutCreateInfo) structure
-off the `pNext`
+off the `pNext`.
+If the [`descriptorHeap`](../features.html#features-descriptorHeap) feature is
+enabled, `pipelineLayout` **can** be [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE) without
+providing a [VkPipelineLayoutCreateInfo](../descriptorsets.html#VkPipelineLayoutCreateInfo) structure.
 
 * 
 `tokenCount` is the length of the individual command sequence.
@@ -251,29 +254,30 @@ Valid Usage
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11093) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11093
 
 The number of tokens in the `pTokens` array with `type` equal to
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT` **must** be less
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT) **must** be less
 than or equal to `1`
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11145) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11145
 
 The number of tokens in the `pTokens` array with `type` equal to
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT` **must** be less
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT) **must** be less
 than or equal to `1`
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11094) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11094
 
-The number of tokens in the `pTokens` array with `type` equal to
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT` **must** be less
-than or equal to `1`
+    The number of tokens in the `pTokens` array with `type` equal to
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT)
+or [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT)
+    **must** be less than or equal to `1`
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11095) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11095
 
 If the action command token in the `pTokens` array is not an indexed
 draw token, then `pTokens` **must** not contain a member with
-`type` set to `VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT`
+`type` set to [VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT](#VkIndirectCommandsTokenTypeEXT)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11096) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11096
@@ -281,13 +285,13 @@ draw token, then `pTokens` **must** not contain a member with
 If the action command token in the `pTokens` array is not a non-mesh
 draw token, then `pTokens` **must** not contain a member with
 `type` set to
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT](#VkIndirectCommandsTokenTypeEXT)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11097) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11097
 
 If the `pTokens` array contains multiple tokens with `type`
-equal to `VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT`, then
+equal to [VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT](#VkIndirectCommandsTokenTypeEXT), then
 there **must** be no duplicate
 [VkIndirectCommandsVertexBufferTokenEXT](#VkIndirectCommandsVertexBufferTokenEXT)::`vertexBindingUnit`
 values
@@ -295,10 +299,11 @@ values
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11099) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11099
 
-For all `VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT` and
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT` type tokens in
-`pTokens`, there **must** be no overlapping ranges between any
-specified push constant ranges
+    For all [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](#VkIndirectCommandsTokenTypeEXT),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT](#VkIndirectCommandsTokenTypeEXT), [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT),
+    and [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT) type tokens
+    in `pTokens`, there **must** be no overlapping ranges between any
+    specified push constant ranges
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11100) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11100
@@ -310,15 +315,15 @@ array
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11139) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11139
 
 If the `pTokens` array contains a
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT` token, then this
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT) token, then this
 token **must** be the first token in the array
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11101) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11101
 
 For any element of `pTokens`, if `type` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT` or
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT` and the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](#VkIndirectCommandsTokenTypeEXT) or
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT) and the
 [    `dynamicGeneratedPipelineLayout`](../features.html#features-dynamicGeneratedPipelineLayout) feature is not enabled, then the
 `pipelineLayout` **must** not be [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE)
 
@@ -326,8 +331,8 @@ For any element of `pTokens`, if `type` is
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11102) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11102
 
 For any element of `pTokens`, if `type` is either
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT` or
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT` and
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](#VkIndirectCommandsTokenTypeEXT) or
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT) and
 `pipelineLayout` is [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), then the `pNext` chain
 **must** include a [VkPipelineLayoutCreateInfo](../descriptorsets.html#VkPipelineLayoutCreateInfo) struct
 
@@ -341,46 +346,46 @@ or equal to the `offset` member of the previous tokens
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11104) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11104
 
 For any element of `pTokens`, if `type` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_COUNT_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_COUNT_EXT`, or
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_EXT`, then `shaderStages`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT](#VkIndirectCommandsTokenTypeEXT),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT](#VkIndirectCommandsTokenTypeEXT),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT](#VkIndirectCommandsTokenTypeEXT),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT](#VkIndirectCommandsTokenTypeEXT),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT](#VkIndirectCommandsTokenTypeEXT),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT](#VkIndirectCommandsTokenTypeEXT),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_COUNT_EXT](#VkIndirectCommandsTokenTypeEXT),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_EXT](#VkIndirectCommandsTokenTypeEXT),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_COUNT_EXT](#VkIndirectCommandsTokenTypeEXT), or
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_EXT](#VkIndirectCommandsTokenTypeEXT), then `shaderStages`
 **must** contain graphics stages
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11105) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11105
 
 For any element of `pTokens`, if `type` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT`, then
-`shaderStages` **must** be `VK_SHADER_STAGE_COMPUTE_BIT`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT](#VkIndirectCommandsTokenTypeEXT), then
+`shaderStages` **must** be [VK_SHADER_STAGE_COMPUTE_BIT](../pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11106) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11106
 
 For any element of `pTokens`, if `type` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT` or
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT`, then
-`shaderStages` **must** contain `VK_SHADER_STAGE_MESH_BIT_EXT`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT](#VkIndirectCommandsTokenTypeEXT) or
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT](#VkIndirectCommandsTokenTypeEXT), then
+`shaderStages` **must** contain [VK_SHADER_STAGE_MESH_BIT_EXT](../pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11107) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11107
 
 For any element of `pTokens`, if `type` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT` or
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT`, then
-the `shaderStages` **must** contain `VK_SHADER_STAGE_MESH_BIT_NV`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT](#VkIndirectCommandsTokenTypeEXT) or
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT](#VkIndirectCommandsTokenTypeEXT), then
+the `shaderStages` **must** contain [VK_SHADER_STAGE_MESH_BIT_NV](../pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11108) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pTokens-11108
 
 For any element of `pTokens`, if `type` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT`, then
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT](#VkIndirectCommandsTokenTypeEXT), then
 `shaderStages` **must** contain ray tracing stages
 
 * 
@@ -388,28 +393,30 @@ For any element of `pTokens`, if `type` is
 
     If `shaderStages` contains graphics stages then the state tokens in
     `pTokens` **must** not include
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT`,
-    `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT](#VkIndirectCommandsTokenTypeEXT),
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT](#VkIndirectCommandsTokenTypeEXT)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-shaderStages-11110) VUID-VkIndirectCommandsLayoutCreateInfoEXT-shaderStages-11110
 
-If `shaderStages` is `VK_SHADER_STAGE_COMPUTE_BIT` then the
-state tokens in `pTokens` **must** only include
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT`, or
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT`
+    If `shaderStages` is [VK_SHADER_STAGE_COMPUTE_BIT](../pipelines.html#VkShaderStageFlagBits) then the
+    state tokens in `pTokens` **must** only include
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT](#VkIndirectCommandsTokenTypeEXT),
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT),
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](#VkIndirectCommandsTokenTypeEXT),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT](#VkIndirectCommandsTokenTypeEXT), [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT),
+    or [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-shaderStages-11111) VUID-VkIndirectCommandsLayoutCreateInfoEXT-shaderStages-11111
 
-If `shaderStages` contains ray tracing stages then the state tokens
-in `pTokens` **must** only include
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT`, or
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT`
+    If `shaderStages` contains ray tracing stages then the state tokens
+    in `pTokens` **must** only include
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT](#VkIndirectCommandsTokenTypeEXT),
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT),
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](#VkIndirectCommandsTokenTypeEXT),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT](#VkIndirectCommandsTokenTypeEXT), [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT),
+    or [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-shaderStages-11112) VUID-VkIndirectCommandsLayoutCreateInfoEXT-shaderStages-11112
@@ -417,29 +424,32 @@ in `pTokens` **must** only include
 The `shaderStages` **must** only contain stages from one of the
 following:
 
+[VK_SHADER_STAGE_ALL](../pipelines.html#VkShaderStageFlagBits) (if the [     `descriptorHeap`](../features.html#features-descriptorHeap) feature is enabled)
+
+* 
 graphics stages
 
 * 
-`VK_SHADER_STAGE_COMPUTE_BIT`
+[VK_SHADER_STAGE_COMPUTE_BIT](../pipelines.html#VkShaderStageFlagBits)
 
 * 
-mesh stages and `VK_SHADER_STAGE_FRAGMENT_BIT`
+mesh stages and [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits)
 
 * 
 ray tracing stages
 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-shaderStages-11113) VUID-VkIndirectCommandsLayoutCreateInfoEXT-shaderStages-11113
 
-If `shaderStages` contains `VK_SHADER_STAGE_FRAGMENT_BIT`, then
-`shaderStages` **must** also contain `VK_SHADER_STAGE_VERTEX_BIT`
-or `VK_SHADER_STAGE_MESH_BIT_EXT`
+If `shaderStages` contains [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits), then
+`shaderStages` **must** also contain [VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits)
+or [VK_SHADER_STAGE_MESH_BIT_EXT](../pipelines.html#VkShaderStageFlagBits)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-sType-sType) VUID-VkIndirectCommandsLayoutCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoEXT-pNext-pNext) VUID-VkIndirectCommandsLayoutCreateInfoEXT-pNext-pNext
@@ -492,19 +502,19 @@ typedef enum VkIndirectCommandsLayoutUsageFlagBitsEXT {
 } VkIndirectCommandsLayoutUsageFlagBitsEXT;
 
 * 
-`VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_EXT`
+[VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_EXT](#VkIndirectCommandsLayoutUsageFlagBitsEXT)
 specifies that the layout is always used with the manual preprocessing
 step through calling [vkCmdPreprocessGeneratedCommandsEXT](#vkCmdPreprocessGeneratedCommandsEXT) and
 executed by [vkCmdExecuteGeneratedCommandsEXT](#vkCmdExecuteGeneratedCommandsEXT) with
-`isPreprocessed` set to `VK_TRUE`.
+`isPreprocessed` set to [VK_TRUE](../fundamentals.html#VK_TRUE).
 
 * 
-`VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_EXT`
+[VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_EXT](#VkIndirectCommandsLayoutUsageFlagBitsEXT)
 specifies that the processing of sequences will happen at an
 implementation-dependent order, which is not guaranteed to be
 deterministic using the same input data.
 This flag is ignored when the `shaderStages` is
-`VK_SHADER_STAGE_COMPUTE_BIT` as it is implied that the dispatch
+[VK_SHADER_STAGE_COMPUTE_BIT](../pipelines.html#VkShaderStageFlagBits) as it is implied that the dispatch
 sequence is always unordered.
 
 // Provided by VK_EXT_device_generated_commands
@@ -649,21 +659,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkIndirectCommandsLayoutCreateInfoNV` structure is defined as:
 
@@ -737,8 +747,8 @@ Valid Usage
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-pipelineBindPoint-02930) VUID-VkIndirectCommandsLayoutCreateInfoNV-pipelineBindPoint-02930
 
 The `pipelineBindPoint` **must** be
-`VK_PIPELINE_BIND_POINT_GRAPHICS`
-or `VK_PIPELINE_BIND_POINT_COMPUTE`
+[VK_PIPELINE_BIND_POINT_GRAPHICS](../pipelines.html#VkPipelineBindPoint)
+or [VK_PIPELINE_BIND_POINT_COMPUTE](../pipelines.html#VkPipelineBindPoint)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-tokenCount-02931) VUID-VkIndirectCommandsLayoutCreateInfoNV-tokenCount-02931
@@ -750,7 +760,7 @@ or `VK_PIPELINE_BIND_POINT_COMPUTE`
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-pTokens-02932) VUID-VkIndirectCommandsLayoutCreateInfoNV-pTokens-02932
 
 If `pTokens` contains an entry of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV` it **must** be the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV](#VkIndirectCommandsTokenTypeNV) it **must** be the
 first element of the array and there **must** be only a single element of
 such token type
 
@@ -758,7 +768,7 @@ such token type
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-pTokens-09585) VUID-VkIndirectCommandsLayoutCreateInfoNV-pTokens-09585
 
 If `pTokens` contains an entry of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV` it **must** be the first
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV](#VkIndirectCommandsTokenTypeNV) it **must** be the first
 element of the array and there **must** be only a single element of such
 token type
 
@@ -766,18 +776,18 @@ token type
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-pTokens-02933) VUID-VkIndirectCommandsLayoutCreateInfoNV-pTokens-02933
 
 If `pTokens` contains an entry of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV` there **must** be only
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV](#VkIndirectCommandsTokenTypeNV) there **must** be only
 a single element of such token type
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-pTokens-02934) VUID-VkIndirectCommandsLayoutCreateInfoNV-pTokens-02934
 
 All state tokens in `pTokens` **must** occur before any action command
-tokens (`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_NV`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NV`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_TASKS_NV`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV`
-, `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NV`
+tokens ([VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_NV](#VkIndirectCommandsTokenTypeNV),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NV](#VkIndirectCommandsTokenTypeNV),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_TASKS_NV](#VkIndirectCommandsTokenTypeNV),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV](#VkIndirectCommandsTokenTypeNV)
+, [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NV](#VkIndirectCommandsTokenTypeNV)
 )
 
 * 
@@ -803,25 +813,26 @@ Furthermore the alignment of each token input **must** be ensured
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-pipelineBindPoint-09088) VUID-VkIndirectCommandsLayoutCreateInfoNV-pipelineBindPoint-09088
 
-If `pipelineBindPoint` is `VK_PIPELINE_BIND_POINT_COMPUTE` then
+If `pipelineBindPoint` is [VK_PIPELINE_BIND_POINT_COMPUTE](../pipelines.html#VkPipelineBindPoint) then
 the [    `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV`::`deviceGeneratedCompute`](../features.html#features-deviceGeneratedCompute)
 feature **must** be enabled
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-pipelineBindPoint-09089) VUID-VkIndirectCommandsLayoutCreateInfoNV-pipelineBindPoint-09089
 
-If `pipelineBindPoint` is `VK_PIPELINE_BIND_POINT_COMPUTE` then
+If `pipelineBindPoint` is [VK_PIPELINE_BIND_POINT_COMPUTE](../pipelines.html#VkPipelineBindPoint) then
 the state tokens in `pTokens` **must** only include
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NV`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV`, or
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NV](#VkIndirectCommandsTokenTypeNV),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV](#VkIndirectCommandsTokenTypeNV),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_NV](#VkIndirectCommandsTokenTypeNV),
+or [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](#VkIndirectCommandsTokenTypeNV)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-pipelineBindPoint-09090) VUID-VkIndirectCommandsLayoutCreateInfoNV-pipelineBindPoint-09090
 
-If `pipelineBindPoint` is `VK_PIPELINE_BIND_POINT_COMPUTE` and
+If `pipelineBindPoint` is [VK_PIPELINE_BIND_POINT_COMPUTE](../pipelines.html#VkPipelineBindPoint) and
 `pTokens` includes
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV`, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV](#VkIndirectCommandsTokenTypeNV), then the
 [    `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV`::`deviceGeneratedComputePipelines`](../features.html#features-deviceGeneratedComputePipelines)
 feature **must** be enabled
 
@@ -830,7 +841,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-sType-sType) VUID-VkIndirectCommandsLayoutCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NV](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutCreateInfoNV-pNext-pNext) VUID-VkIndirectCommandsLayoutCreateInfoNV-pNext-pNext
@@ -879,25 +890,25 @@ typedef enum VkIndirectCommandsLayoutUsageFlagBitsNV {
 } VkIndirectCommandsLayoutUsageFlagBitsNV;
 
 * 
-`VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_NV`
+[VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_NV](#VkIndirectCommandsLayoutUsageFlagBitsNV)
 specifies that the layout is always used with the manual preprocessing
 step through calling [vkCmdPreprocessGeneratedCommandsNV](#vkCmdPreprocessGeneratedCommandsNV) and
 executed by [vkCmdExecuteGeneratedCommandsNV](#vkCmdExecuteGeneratedCommandsNV) with
-`isPreprocessed` set to `VK_TRUE`.
+`isPreprocessed` set to [VK_TRUE](../fundamentals.html#VK_TRUE).
 
 * 
-`VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NV`
+[VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NV](#VkIndirectCommandsLayoutUsageFlagBitsNV)
 specifies that the input data for the sequences is not implicitly
 indexed from 0..sequencesUsed, but an application-provided
 `VkBuffer` encoding the index is provided.
 
 * 
-`VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_NV`
+[VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_NV](#VkIndirectCommandsLayoutUsageFlagBitsNV)
 specifies that the processing of sequences **can** happen at an
 implementation-dependent order, which is not guaranteed to be coherent
 using the same input data.
 This flag is ignored when the `pipelineBindPoint` is
-`VK_PIPELINE_BIND_POINT_COMPUTE` as it is implied that the dispatch
+[VK_PIPELINE_BIND_POINT_COMPUTE](../pipelines.html#VkPipelineBindPoint) as it is implied that the dispatch
 sequence is always unordered.
 
 // Provided by VK_NV_device_generated_commands
@@ -1008,7 +1019,7 @@ or additional commands as listed below.
 How the data is used is described in the next section.
 
 The `VkBindIndexBufferIndirectCommandEXT` structure specifies the input
-data for the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT` token.
+data for the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT](#VkIndirectCommandsTokenTypeEXT) token.
 
 // Provided by VK_EXT_device_generated_commands
 typedef struct VkBindIndexBufferIndirectCommandEXT {
@@ -1035,7 +1046,7 @@ Valid Usage
 [](#VUID-VkBindIndexBufferIndirectCommandEXT-None-11117) VUID-VkBindIndexBufferIndirectCommandEXT-None-11117
 
 The buffer’s usage flags from which the address was acquired **must** have
-the `VK_BUFFER_USAGE_INDEX_BUFFER_BIT` bit set
+the [VK_BUFFER_USAGE_INDEX_BUFFER_BIT](../resources.html#VkBufferUsageFlagBits) bit set
 
 * 
 [](#VUID-VkBindIndexBufferIndirectCommandEXT-bufferAddress-11118) VUID-VkBindIndexBufferIndirectCommandEXT-bufferAddress-11118
@@ -1056,7 +1067,7 @@ Valid Usage (Implicit)
  `indexType` **must** be a valid [VkIndexType](../drawing.html#VkIndexType) value
 
 The `VkBindVertexBufferIndirectCommandEXT` structure specifies the input
-data for the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT` token.
+data for the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT](#VkIndirectCommandsTokenTypeEXT) token.
 
 // Provided by VK_EXT_device_generated_commands
 typedef struct VkBindVertexBufferIndirectCommandEXT {
@@ -1083,7 +1094,7 @@ Valid Usage
 [](#VUID-VkBindVertexBufferIndirectCommandEXT-None-11120) VUID-VkBindVertexBufferIndirectCommandEXT-None-11120
 
 The buffer’s usage flag from which the address was acquired **must** have
-the `VK_BUFFER_USAGE_VERTEX_BUFFER_BIT` bit set
+the [VK_BUFFER_USAGE_VERTEX_BUFFER_BIT](../resources.html#VkBufferUsageFlagBits) bit set
 
 Valid Usage (Implicit)
 
@@ -1121,7 +1132,7 @@ Valid Usage
 [](#VUID-VkDrawIndirectCountIndirectCommandEXT-None-11122) VUID-VkDrawIndirectCountIndirectCommandEXT-None-11122
 
 The buffer’s usage flag from which the address was acquired **must** have
-the `VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` bit set
+the [VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](../resources.html#VkBufferUsageFlagBits) bit set
 
 Valid Usage (Implicit)
 
@@ -1154,7 +1165,7 @@ Valid Usage
 [](#VUID-VkIndirectCommandsStreamNV-buffer-02942) VUID-VkIndirectCommandsStreamNV-buffer-02942
 
 The `buffer`’s usage flag **must** have the
-`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` bit set
+[VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](../resources.html#VkBufferUsageFlagBits) bit set
 
 * 
 [](#VUID-VkIndirectCommandsStreamNV-offset-02943) VUID-VkIndirectCommandsStreamNV-offset-02943
@@ -1197,7 +1208,7 @@ or additional commands as listed below.
 How the data is used is described in the next section.
 
 The `VkBindShaderGroupIndirectCommandNV` structure specifies the input
-data for the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV` token.
+data for the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV](#VkIndirectCommandsTokenTypeNV) token.
 
 // Provided by VK_NV_device_generated_commands
 typedef struct VkBindShaderGroupIndirectCommandNV {
@@ -1215,7 +1226,7 @@ Valid Usage
 
 The current bound graphics pipeline, as well as the pipelines it may
 reference, **must** have been created with
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV`
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](../pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkBindShaderGroupIndirectCommandNV-index-02945) VUID-VkBindShaderGroupIndirectCommandNV-index-02945
@@ -1225,7 +1236,7 @@ the current bound graphics pipeline.
 See [vkCmdBindPipelineShaderGroupNV](../pipelines.html#vkCmdBindPipelineShaderGroupNV) for further details
 
 The `VkBindIndexBufferIndirectCommandNV` structure specifies the input
-data for the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_NV` token.
+data for the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_NV](#VkIndirectCommandsTokenTypeNV) token.
 
 // Provided by VK_NV_device_generated_commands
 typedef struct VkBindIndexBufferIndirectCommandNV {
@@ -1256,7 +1267,7 @@ Valid Usage
 [](#VUID-VkBindIndexBufferIndirectCommandNV-None-02946) VUID-VkBindIndexBufferIndirectCommandNV-None-02946
 
 The buffer’s usage flag from which the address was acquired **must** have
-the `VK_BUFFER_USAGE_INDEX_BUFFER_BIT` bit set
+the [VK_BUFFER_USAGE_INDEX_BUFFER_BIT](../resources.html#VkBufferUsageFlagBits) bit set
 
 * 
 [](#VUID-VkBindIndexBufferIndirectCommandNV-bufferAddress-02947) VUID-VkBindIndexBufferIndirectCommandNV-bufferAddress-02947
@@ -1276,7 +1287,7 @@ Valid Usage (Implicit)
  `indexType` **must** be a valid [VkIndexType](../drawing.html#VkIndexType) value
 
 The `VkBindVertexBufferIndirectCommandNV` structure specifies the input
-data for the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NV` token.
+data for the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NV](#VkIndirectCommandsTokenTypeNV) token.
 
 // Provided by VK_NV_device_generated_commands
 typedef struct VkBindVertexBufferIndirectCommandNV {
@@ -1307,7 +1318,7 @@ Valid Usage
 [](#VUID-VkBindVertexBufferIndirectCommandNV-None-02949) VUID-VkBindVertexBufferIndirectCommandNV-None-02949
 
 The buffer’s usage flag from which the address was acquired **must** have
-the `VK_BUFFER_USAGE_VERTEX_BUFFER_BIT` bit set
+the [VK_BUFFER_USAGE_VERTEX_BUFFER_BIT](../resources.html#VkBufferUsageFlagBits) bit set
 
 Valid Usage (Implicit)
 
@@ -1317,7 +1328,7 @@ Valid Usage (Implicit)
  `bufferAddress` **must** be a valid `VkDeviceAddress` value
 
 The `VkSetStateFlagsIndirectCommandNV` structure specifies the input
-data for the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV` token.
+data for the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV](#VkIndirectCommandsTokenTypeNV) token.
 Which state is changed depends on the [VkIndirectStateFlagBitsNV](#VkIndirectStateFlagBitsNV)
 specified at `VkIndirectCommandsLayoutNV` creation time.
 
@@ -1329,8 +1340,8 @@ typedef struct VkSetStateFlagsIndirectCommandNV {
 * 
 `data` encodes packed state that this command alters.
 
-Bit `0`: If set represents `VK_FRONT_FACE_CLOCKWISE`, otherwise
-`VK_FRONT_FACE_COUNTER_CLOCKWISE`
+Bit `0`: If set represents [VK_FRONT_FACE_CLOCKWISE](../primsrast.html#VkFrontFace), otherwise
+[VK_FRONT_FACE_COUNTER_CLOCKWISE](../primsrast.html#VkFrontFace)
 
 A subset of the graphics pipeline state **can** be altered using indirect state
 flags:
@@ -1341,7 +1352,7 @@ typedef enum VkIndirectStateFlagBitsNV {
 } VkIndirectStateFlagBitsNV;
 
 * 
-`VK_INDIRECT_STATE_FLAG_FRONTFACE_BIT_NV` allows to toggle the
+[VK_INDIRECT_STATE_FLAG_FRONTFACE_BIT_NV](#VkIndirectStateFlagBitsNV) allows to toggle the
 [VkFrontFace](../primsrast.html#VkFrontFace) rasterization state for subsequent drawing commands.
 
 // Provided by VK_NV_device_generated_commands
@@ -1351,7 +1362,7 @@ typedef VkFlags VkIndirectStateFlagsNV;
 more [VkIndirectStateFlagBitsNV](#VkIndirectStateFlagBitsNV).
 
 The `VkBindPipelineIndirectCommandNV` structure specifies the input data
-for the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV` token.
+for the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV](#VkIndirectCommandsTokenTypeNV) token.
 
 // Provided by VK_NV_device_generated_commands_compute
 typedef struct VkBindPipelineIndirectCommandNV {
@@ -1374,7 +1385,7 @@ feature **must** be enabled
 [](#VUID-VkBindPipelineIndirectCommandNV-None-09092) VUID-VkBindPipelineIndirectCommandNV-None-09092
 
 The referenced pipeline **must** have been created with
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV`
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](../pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkBindPipelineIndirectCommandNV-None-09093) VUID-VkBindPipelineIndirectCommandNV-None-09093
@@ -1430,6 +1441,10 @@ typedef enum VkIndirectCommandsTokenTypeEXT {
     VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_COUNT_EXT = 7,
     VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_COUNT_EXT = 8,
     VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT = 9,
+  // Provided by VK_EXT_descriptor_heap with VK_EXT_device_generated_commands
+    VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT = 1000135000,
+  // Provided by VK_EXT_descriptor_heap with VK_EXT_device_generated_commands
+    VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT = 1000135001,
   // Provided by VK_EXT_device_generated_commands with VK_NV_mesh_shader
     VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT = 1000202002,
   // Provided by VK_EXT_device_generated_commands with VK_NV_mesh_shader
@@ -1444,26 +1459,28 @@ typedef enum VkIndirectCommandsTokenTypeEXT {
 
 | **Common Tokens** | **Command Data** |
 | --- | --- |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT` | `u32[]` array of indices into the indirect execution set |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT` | `u32[]` raw data |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT` | `u32` placeholder data (not accessed by shader) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT) | `u32[]` array of indices into the indirect execution set |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](#VkIndirectCommandsTokenTypeEXT) | `u32[]` raw data |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT](#VkIndirectCommandsTokenTypeEXT) | `u8[]` raw data |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT) | `u32` placeholder data (not accessed by shader) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT) | `u32` placeholder data (not accessed by shader) |
 | **Compute Tokens** |  |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT` | [VkDispatchIndirectCommand](../dispatch.html#VkDispatchIndirectCommand) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT](#VkIndirectCommandsTokenTypeEXT) | [VkDispatchIndirectCommand](../dispatch.html#VkDispatchIndirectCommand) |
 | **Ray Tracing Tokens** |  |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT` | [VkTraceRaysIndirectCommand2KHR](../raytracing.html#VkTraceRaysIndirectCommand2KHR) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT](#VkIndirectCommandsTokenTypeEXT) | [VkTraceRaysIndirectCommand2KHR](../raytracing.html#VkTraceRaysIndirectCommand2KHR) |
 | **Graphics State Tokens** |  |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT` | [VkBindIndexBufferIndirectCommandEXT](#VkBindIndexBufferIndirectCommandEXT) |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT` | [VkBindVertexBufferIndirectCommandEXT](#VkBindVertexBufferIndirectCommandEXT) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT](#VkIndirectCommandsTokenTypeEXT) | [VkBindIndexBufferIndirectCommandEXT](#VkBindIndexBufferIndirectCommandEXT) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT](#VkIndirectCommandsTokenTypeEXT) | [VkBindVertexBufferIndirectCommandEXT](#VkBindVertexBufferIndirectCommandEXT) |
 | **Graphics Draw Tokens** |  |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_EXT` | [VkDrawIndexedIndirectCommand](../drawing.html#VkDrawIndexedIndirectCommand) |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_EXT` | [VkDrawIndirectCommand](../drawing.html#VkDrawIndirectCommand) |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT` | [VkDrawMeshTasksIndirectCommandEXT](../drawing.html#VkDrawMeshTasksIndirectCommandEXT) |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT` | [VkDrawMeshTasksIndirectCommandNV](../drawing.html#VkDrawMeshTasksIndirectCommandNV) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_EXT](#VkIndirectCommandsTokenTypeEXT) | [VkDrawIndexedIndirectCommand](../drawing.html#VkDrawIndexedIndirectCommand) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_EXT](#VkIndirectCommandsTokenTypeEXT) | [VkDrawIndirectCommand](../drawing.html#VkDrawIndirectCommand) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT](#VkIndirectCommandsTokenTypeEXT) | [VkDrawMeshTasksIndirectCommandEXT](../drawing.html#VkDrawMeshTasksIndirectCommandEXT) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT](#VkIndirectCommandsTokenTypeEXT) | [VkDrawMeshTasksIndirectCommandNV](../drawing.html#VkDrawMeshTasksIndirectCommandNV) |
 | **Graphics Draw Count Tokens** |  |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_COUNT_EXT` | [VkDrawIndirectCountIndirectCommandEXT](#VkDrawIndirectCountIndirectCommandEXT) with VkDrawIndexedIndirectCommand |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_COUNT_EXT` | [VkDrawIndirectCountIndirectCommandEXT](#VkDrawIndirectCountIndirectCommandEXT) with VkDrawIndirectCommand |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT` | [VkDrawIndirectCountIndirectCommandEXT](#VkDrawIndirectCountIndirectCommandEXT) with VkDrawMeshTasksIndirectCommandEXT |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT` | [VkDrawIndirectCountIndirectCommandEXT](#VkDrawIndirectCountIndirectCommandEXT) with VkDrawMeshTasksIndirectCommandNV |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_COUNT_EXT](#VkIndirectCommandsTokenTypeEXT) | [VkDrawIndirectCountIndirectCommandEXT](#VkDrawIndirectCountIndirectCommandEXT) with VkDrawIndexedIndirectCommand |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_COUNT_EXT](#VkIndirectCommandsTokenTypeEXT) | [VkDrawIndirectCountIndirectCommandEXT](#VkDrawIndirectCountIndirectCommandEXT) with VkDrawIndirectCommand |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT](#VkIndirectCommandsTokenTypeEXT) | [VkDrawIndirectCountIndirectCommandEXT](#VkDrawIndirectCountIndirectCommandEXT) with VkDrawMeshTasksIndirectCommandEXT |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT](#VkIndirectCommandsTokenTypeEXT) | [VkDrawIndirectCountIndirectCommandEXT](#VkDrawIndirectCountIndirectCommandEXT) with VkDrawMeshTasksIndirectCommandNV |
 
 The `VkIndirectCommandsLayoutTokenEXT` structure specifies details to
 the function arguments that need to be known at layout creation time:
@@ -1517,46 +1534,62 @@ Valid Usage
 [](#VUID-VkIndirectCommandsLayoutTokenEXT-meshShader-11126) VUID-VkIndirectCommandsLayoutTokenEXT-meshShader-11126
 
 If [`meshShader`](../features.html#features-meshShader) or [    `taskShader`](../features.html#features-taskShader) are not enabled, `type` **must** not be
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT`
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT`,
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT` or
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT](#VkIndirectCommandsTokenTypeEXT)
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT](#VkIndirectCommandsTokenTypeEXT),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT](#VkIndirectCommandsTokenTypeEXT) or
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT](#VkIndirectCommandsTokenTypeEXT)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenEXT-rayTracingMaintenance1-11128) VUID-VkIndirectCommandsLayoutTokenEXT-rayTracingMaintenance1-11128
 
 If the [`rayTracingMaintenance1`](../features.html#features-rayTracingMaintenance1)
 feature is not enabled, `type` **must** not be
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT](#VkIndirectCommandsTokenTypeEXT)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenEXT-deviceGeneratedCommandsMultiDrawIndirectCount-11129) VUID-VkIndirectCommandsLayoutTokenEXT-deviceGeneratedCommandsMultiDrawIndirectCount-11129
 
 If [](../limits.html#limits-deviceGeneratedCommandsMultiDrawIndirectCount)[VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT](../limits.html#VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT)::`deviceGeneratedCommandsMultiDrawIndirectCount`
 is not supported, `type` **must** not be
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_COUNT_EXT` or
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_COUNT_EXT`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_COUNT_EXT](#VkIndirectCommandsTokenTypeEXT) or
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_COUNT_EXT](#VkIndirectCommandsTokenTypeEXT)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenEXT-deviceGeneratedCommandsMultiDrawIndirectCount-11130) VUID-VkIndirectCommandsLayoutTokenEXT-deviceGeneratedCommandsMultiDrawIndirectCount-11130
 
 If [](../limits.html#limits-deviceGeneratedCommandsMultiDrawIndirectCount)[VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT](../limits.html#VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT)::`deviceGeneratedCommandsMultiDrawIndirectCount`
 is not supported, `type` **must** not be
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT](#VkIndirectCommandsTokenTypeEXT)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenEXT-deviceGeneratedCommandsMultiDrawIndirectCount-11131) VUID-VkIndirectCommandsLayoutTokenEXT-deviceGeneratedCommandsMultiDrawIndirectCount-11131
 
 If [](../limits.html#limits-deviceGeneratedCommandsMultiDrawIndirectCount)[VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT](../limits.html#VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT)::`deviceGeneratedCommandsMultiDrawIndirectCount`
 is not supported, `type` **must** not be
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT`
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT](#VkIndirectCommandsTokenTypeEXT)
+
+* 
+[](#VUID-VkIndirectCommandsLayoutTokenEXT-descriptorHeap-11332) VUID-VkIndirectCommandsLayoutTokenEXT-descriptorHeap-11332
+
+If the [`descriptorHeap`](../features.html#features-descriptorHeap) feature is not
+enabled, `type` **must** not be
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT](#VkIndirectCommandsTokenTypeEXT) or
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT)
+
+* 
+[](#VUID-VkIndirectCommandsLayoutTokenEXT-type-11333) VUID-VkIndirectCommandsLayoutTokenEXT-type-11333
+
+If `type` is [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT](#VkIndirectCommandsTokenTypeEXT) or
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT)
+[VkIndirectCommandsPushConstantTokenEXT](#VkIndirectCommandsPushConstantTokenEXT)::`updateRange.shaderStages`
+**must** be [VK_SHADER_STAGE_ALL](../pipelines.html#VkShaderStageFlagBits)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenEXT-sType-sType) VUID-VkIndirectCommandsLayoutTokenEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenEXT-type-parameter) VUID-VkIndirectCommandsLayoutTokenEXT-type-parameter
@@ -1566,22 +1599,22 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenEXT-pPushConstant-parameter) VUID-VkIndirectCommandsLayoutTokenEXT-pPushConstant-parameter
 
- If `type` is `VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT` or `VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT`, the `pPushConstant` member of `data` **must** be a valid pointer to a valid [VkIndirectCommandsPushConstantTokenEXT](#VkIndirectCommandsPushConstantTokenEXT) structure
+ If `type` is [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](#VkIndirectCommandsTokenTypeEXT), [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT), [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT](#VkIndirectCommandsTokenTypeEXT), or [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT), the `pPushConstant` member of `data` **must** be a valid pointer to a valid [VkIndirectCommandsPushConstantTokenEXT](#VkIndirectCommandsPushConstantTokenEXT) structure
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenEXT-pVertexBuffer-parameter) VUID-VkIndirectCommandsLayoutTokenEXT-pVertexBuffer-parameter
 
- If `type` is `VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT`, the `pVertexBuffer` member of `data` **must** be a valid pointer to a valid [VkIndirectCommandsVertexBufferTokenEXT](#VkIndirectCommandsVertexBufferTokenEXT) structure
+ If `type` is [VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT](#VkIndirectCommandsTokenTypeEXT), the `pVertexBuffer` member of `data` **must** be a valid pointer to a valid [VkIndirectCommandsVertexBufferTokenEXT](#VkIndirectCommandsVertexBufferTokenEXT) structure
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenEXT-pIndexBuffer-parameter) VUID-VkIndirectCommandsLayoutTokenEXT-pIndexBuffer-parameter
 
- If `type` is `VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT`, the `pIndexBuffer` member of `data` **must** be a valid pointer to a valid [VkIndirectCommandsIndexBufferTokenEXT](#VkIndirectCommandsIndexBufferTokenEXT) structure
+ If `type` is [VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT](#VkIndirectCommandsTokenTypeEXT), the `pIndexBuffer` member of `data` **must** be a valid pointer to a valid [VkIndirectCommandsIndexBufferTokenEXT](#VkIndirectCommandsIndexBufferTokenEXT) structure
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenEXT-pExecutionSet-parameter) VUID-VkIndirectCommandsLayoutTokenEXT-pExecutionSet-parameter
 
- If `type` is `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT`, the `pExecutionSet` member of `data` **must** be a valid pointer to a valid [VkIndirectCommandsExecutionSetTokenEXT](#VkIndirectCommandsExecutionSetTokenEXT) structure
+ If `type` is [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT), the `pExecutionSet` member of `data` **must** be a valid pointer to a valid [VkIndirectCommandsExecutionSetTokenEXT](#VkIndirectCommandsExecutionSetTokenEXT) structure
 
 The `VkIndirectCommandsTokenDataEXT` structure provides token-specific
 details used to generate the indirect execution layout.
@@ -1596,24 +1629,25 @@ typedef union VkIndirectCommandsTokenDataEXT {
 
 * 
 `pPushConstant` is a pointer to a
-[VkIndirectCommandsPushConstantTokenEXT](#VkIndirectCommandsPushConstantTokenEXT) structure needed for
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT` and
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT` tokens
+    [VkIndirectCommandsPushConstantTokenEXT](#VkIndirectCommandsPushConstantTokenEXT) structure needed for
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](#VkIndirectCommandsTokenTypeEXT),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT](#VkIndirectCommandsTokenTypeEXT), [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT),
+    and [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT) tokens
 
 * 
 `pVertexBuffer` is a pointer to a
 [VkIndirectCommandsVertexBufferTokenEXT](#VkIndirectCommandsVertexBufferTokenEXT) structure needed for
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT` tokens
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT](#VkIndirectCommandsTokenTypeEXT) tokens
 
 * 
 `pIndexBuffer` is a pointer to a
 [VkIndirectCommandsIndexBufferTokenEXT](#VkIndirectCommandsIndexBufferTokenEXT) structure needed for
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT` tokens
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT](#VkIndirectCommandsTokenTypeEXT) tokens
 
 * 
 `pExecutionSet` is a pointer to a
 [VkIndirectCommandsExecutionSetTokenEXT](#VkIndirectCommandsExecutionSetTokenEXT) structure needed for
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT` tokens
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT) tokens
 
 The appropriate member of the union **must** be set for each token.
 
@@ -1663,6 +1697,23 @@ void cmdProcessSequence(cmd, indirectExecutionSet, indirectCommandsLayout, indir
       vkCmdPushConstants2KHR(cmd, &info);
       break;
 
+    case VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT:
+
+      VkHostAddressRangeConstEXT addressRange = {
+        token->token.pushConstant.updateRange.data.size,
+        input
+      };
+
+      VkPushDataInfoEXT info = {
+        VK_STRUCTURE_TYPE_PUSH_DATA_INFO_EXT,
+        NULL,
+        token->token.pushConstant.updateRange.offset,
+        addressRange
+      };
+
+      vkCmdPushDataEXT(cmd, &info);
+      break;
+
     case VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT:
       VkPushConstantsInfoKHR info = {
         VK_STRUCTURE_TYPE_PUSH_CONSTANTS_INFO_KHR,
@@ -1677,6 +1728,25 @@ void cmdProcessSequence(cmd, indirectExecutionSet, indirectCommandsLayout, indir
       };
 
       vkCmdPushConstants2KHR(cmd, &info);
+      break;
+
+    case VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT:
+
+      VkHostAddressRangeConstEXT addressRange = {
+        // this must be 4
+        token->token.pushConstant.updateRange.data.size,
+        // this just updates the sequence index
+        &s
+      };
+
+      VkPushDataInfoEXT info = {
+        VK_STRUCTURE_TYPE_PUSH_DATA_INFO_EXT,
+        NULL,
+        token->token.pushConstant.updateRange.offset,
+        addressRange
+      };
+
+      vkCmdPushDataEXT(cmd, &info);
       break;
 
     case VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT:
@@ -1778,8 +1848,10 @@ The input size is different for each token.
 
 The `VkIndirectCommandsPushConstantTokenEXT` structure specifies the
 layout token info for
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT` and
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT` tokens.
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](#VkIndirectCommandsTokenTypeEXT),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT](#VkIndirectCommandsTokenTypeEXT),
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT),
+and [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT) tokens.
 
 // Provided by VK_EXT_device_generated_commands
 typedef struct VkIndirectCommandsPushConstantTokenEXT {
@@ -1797,15 +1869,19 @@ Valid Usage
 * 
 [](#VUID-VkIndirectCommandsPushConstantTokenEXT-updateRange-11132) VUID-VkIndirectCommandsPushConstantTokenEXT-updateRange-11132
 
+If the token type is
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](#VkIndirectCommandsTokenTypeEXT) or
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT),
 `updateRange` **must** be contained within the push constant info used
 by [VkIndirectCommandsLayoutCreateInfoEXT](#VkIndirectCommandsLayoutCreateInfoEXT)
 
 * 
 [](#VUID-VkIndirectCommandsPushConstantTokenEXT-size-11133) VUID-VkIndirectCommandsPushConstantTokenEXT-size-11133
 
-If the token type is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT`, the `size`
-member of `updateRange` **must** be 4
+    If the token type is
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT) or
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT), the `size`
+    member of `updateRange` **must** be 4
 
 Valid Usage (Implicit)
 
@@ -1816,7 +1892,7 @@ Valid Usage (Implicit)
 
 The `VkIndirectCommandsVertexBufferTokenEXT` structure specifies the
 layout token info for the
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT` token.
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT](#VkIndirectCommandsTokenTypeEXT) token.
 
 // Provided by VK_EXT_device_generated_commands
 typedef struct VkIndirectCommandsVertexBufferTokenEXT {
@@ -1836,7 +1912,7 @@ input bindings in use by the current graphics state
 
 The `VkIndirectCommandsIndexBufferTokenEXT` structure specifies the
 layout token info for the
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT` token.
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT](#VkIndirectCommandsTokenTypeEXT) token.
 
 // Provided by VK_EXT_device_generated_commands
 typedef struct VkIndirectCommandsIndexBufferTokenEXT {
@@ -1847,7 +1923,7 @@ typedef struct VkIndirectCommandsIndexBufferTokenEXT {
 `mode` specifies the mode to use with this token.
 
 This allows for easy layering of Vulkan atop other APIs.
-When `VK_INDIRECT_COMMANDS_INPUT_MODE_DXGI_INDEX_BUFFER_EXT` is
+When [VK_INDIRECT_COMMANDS_INPUT_MODE_DXGI_INDEX_BUFFER_EXT](#VkIndirectCommandsInputModeFlagBitsEXT) is
 specified, the indirect buffer can contain a `D3D12_INDEX_BUFFER_VIEW`
 instead of [VkBindIndexBufferIndirectCommandEXT](#VkBindIndexBufferIndirectCommandEXT) as D3D’s DXGI format
 value is mapped to the [VkIndexType](../drawing.html#VkIndexType).
@@ -1884,12 +1960,12 @@ typedef enum VkIndirectCommandsInputModeFlagBitsEXT {
 } VkIndirectCommandsInputModeFlagBitsEXT;
 
 * 
-`VK_INDIRECT_COMMANDS_INPUT_MODE_VULKAN_INDEX_BUFFER_EXT` specifies
+[VK_INDIRECT_COMMANDS_INPUT_MODE_VULKAN_INDEX_BUFFER_EXT](#VkIndirectCommandsInputModeFlagBitsEXT) specifies
 that the indirect buffer contains
 [VkBindIndexBufferIndirectCommandEXT](#VkBindIndexBufferIndirectCommandEXT).
 
 * 
-`VK_INDIRECT_COMMANDS_INPUT_MODE_DXGI_INDEX_BUFFER_EXT` specifies
+[VK_INDIRECT_COMMANDS_INPUT_MODE_DXGI_INDEX_BUFFER_EXT](#VkIndirectCommandsInputModeFlagBitsEXT) specifies
 that the indirect buffer contains `D3D12_INDEX_BUFFER_VIEW`.
 
 // Provided by VK_EXT_device_generated_commands
@@ -1899,7 +1975,7 @@ typedef VkFlags VkIndirectCommandsInputModeFlagsEXT;
 mask of zero or more [VkIndirectCommandsInputModeFlagBitsEXT](#VkIndirectCommandsInputModeFlagBitsEXT).
 
 The `VkIndirectCommandsExecutionSetTokenEXT` structure specifies the
-input data for the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT`
+input data for the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT)
 token.
 
 // Provided by VK_EXT_device_generated_commands
@@ -1955,6 +2031,8 @@ typedef enum VkIndirectCommandsTokenTypeNV {
     VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NV = 5,
     VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_NV = 6,
     VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_TASKS_NV = 7,
+  // Provided by VK_EXT_descriptor_heap with VK_NV_device_generated_commands
+    VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_NV = 1000135000,
   // Provided by VK_EXT_mesh_shader with VK_NV_device_generated_commands
     VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV = 1000328000,
   // Provided by VK_NV_device_generated_commands_compute
@@ -1965,17 +2043,18 @@ typedef enum VkIndirectCommandsTokenTypeNV {
 
 | Token type | Equivalent command |
 | --- | --- |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV` | [vkCmdBindPipelineShaderGroupNV](../pipelines.html#vkCmdBindPipelineShaderGroupNV) |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV` | - |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_NV` | [vkCmdBindIndexBuffer](../drawing.html#vkCmdBindIndexBuffer) |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NV` | [vkCmdBindVertexBuffers](../fxvertex.html#vkCmdBindVertexBuffers) |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV` | [vkCmdPushConstants](../descriptorsets.html#vkCmdPushConstants) |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NV` | [vkCmdDrawIndexedIndirect](../drawing.html#vkCmdDrawIndexedIndirect) |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_NV` | [vkCmdDrawIndirect](../drawing.html#vkCmdDrawIndirect) |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_TASKS_NV` | [vkCmdDrawMeshTasksIndirectNV](../drawing.html#vkCmdDrawMeshTasksIndirectNV) |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV` | [vkCmdDrawMeshTasksIndirectEXT](../drawing.html#vkCmdDrawMeshTasksIndirectEXT) |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV` | [vkCmdBindPipeline](../pipelines.html#vkCmdBindPipeline) |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NV` | [vkCmdDispatchIndirect](../dispatch.html#vkCmdDispatchIndirect) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV](#VkIndirectCommandsTokenTypeNV) | [vkCmdBindPipelineShaderGroupNV](../pipelines.html#vkCmdBindPipelineShaderGroupNV) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV](#VkIndirectCommandsTokenTypeNV) | - |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_NV](#VkIndirectCommandsTokenTypeNV) | [vkCmdBindIndexBuffer](../drawing.html#vkCmdBindIndexBuffer) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NV](#VkIndirectCommandsTokenTypeNV) | [vkCmdBindVertexBuffers](../fxvertex.html#vkCmdBindVertexBuffers) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](#VkIndirectCommandsTokenTypeNV) | [vkCmdPushConstants](../descriptorsets.html#vkCmdPushConstants) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_NV](#VkIndirectCommandsTokenTypeNV) | [vkCmdPushDataEXT](../descriptorheaps.html#vkCmdPushDataEXT) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NV](#VkIndirectCommandsTokenTypeNV) | [vkCmdDrawIndexedIndirect](../drawing.html#vkCmdDrawIndexedIndirect) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_NV](#VkIndirectCommandsTokenTypeNV) | [vkCmdDrawIndirect](../drawing.html#vkCmdDrawIndirect) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_TASKS_NV](#VkIndirectCommandsTokenTypeNV) | [vkCmdDrawMeshTasksIndirectNV](../drawing.html#vkCmdDrawMeshTasksIndirectNV) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV](#VkIndirectCommandsTokenTypeNV) | [vkCmdDrawMeshTasksIndirectEXT](../drawing.html#vkCmdDrawMeshTasksIndirectEXT) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV](#VkIndirectCommandsTokenTypeNV) | [vkCmdBindPipeline](../pipelines.html#vkCmdBindPipeline) |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NV](#VkIndirectCommandsTokenTypeNV) | [vkCmdDispatchIndirect](../dispatch.html#vkCmdDispatchIndirect) |
 
 The `VkIndirectCommandsLayoutTokenNV` structure specifies details to the
 function arguments that need to be known at layout creation time:
@@ -2079,7 +2158,7 @@ or `minIndirectCommandsBufferOffsetAlignment`, whichever is lower
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02976) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02976
 
 If `tokenType` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NV`,
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NV](#VkIndirectCommandsTokenTypeNV),
 `vertexBindingUnit` **must** stay within device supported limits for
 the appropriate commands
 
@@ -2087,28 +2166,28 @@ the appropriate commands
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02977) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02977
 
 If `tokenType` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV`,
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](#VkIndirectCommandsTokenTypeNV),
 `pushconstantPipelineLayout` **must** be valid
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02978) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02978
 
 If `tokenType` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV`,
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](#VkIndirectCommandsTokenTypeNV),
 `pushconstantOffset` **must** be a multiple of `4`
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02979) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02979
 
 If `tokenType` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV`,
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](#VkIndirectCommandsTokenTypeNV),
 `pushconstantSize` **must** be a multiple of `4`
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02980) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02980
 
 If `tokenType` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV`,
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](#VkIndirectCommandsTokenTypeNV),
 `pushconstantOffset` **must** be less than
 `VkPhysicalDeviceLimits`::`maxPushConstantsSize`
 
@@ -2116,7 +2195,7 @@ If `tokenType` is
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02981) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02981
 
 If `tokenType` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV`,
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](#VkIndirectCommandsTokenTypeNV),
 `pushconstantSize` **must** be less than or equal to
 `VkPhysicalDeviceLimits`::`maxPushConstantsSize` minus
 `pushconstantOffset`
@@ -2125,7 +2204,7 @@ If `tokenType` is
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02982) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02982
 
 If `tokenType` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV`, for each byte in
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](#VkIndirectCommandsTokenTypeNV), for each byte in
 the range specified by `pushconstantOffset` and
 `pushconstantSize` and for each shader stage in
 `pushconstantShaderStageFlags`, there **must** be a push constant range
@@ -2136,7 +2215,7 @@ stage
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02983) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02983
 
 If `tokenType` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV`, for each byte in
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](#VkIndirectCommandsTokenTypeNV), for each byte in
 the range specified by `pushconstantOffset` and
 `pushconstantSize` and for each push constant range that overlaps
 that byte, `pushconstantShaderStageFlags` **must** include all stages
@@ -2147,20 +2226,33 @@ in that push constant range’s
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02984) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-02984
 
 If `tokenType` is
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV`,
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV](#VkIndirectCommandsTokenTypeNV),
 `indirectStateFlags` **must** not be `0`
+
+* 
+[](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-11334) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-11334
+
+If `tokenType` is
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_NV](#VkIndirectCommandsTokenTypeNV),
+[VkIndirectCommandsLayoutPushDataTokenNV](#VkIndirectCommandsLayoutPushDataTokenNV)::`pushDataSize` **must**
+be greater than `0`
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenNV-sType-sType) VUID-VkIndirectCommandsLayoutTokenNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_NV](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenNV-pNext-pNext) VUID-VkIndirectCommandsLayoutTokenNV-pNext-pNext
 
- `pNext` **must** be `NULL`
+ `pNext` **must** be `NULL` or a pointer to a valid instance of [VkIndirectCommandsLayoutPushDataTokenNV](#VkIndirectCommandsLayoutPushDataTokenNV)
+
+* 
+[](#VUID-VkIndirectCommandsLayoutTokenNV-sType-unique) VUID-VkIndirectCommandsLayoutTokenNV-sType-unique
+
+ The `sType` value of each structure in the `pNext` chain **must** be unique
 
 * 
 [](#VUID-VkIndirectCommandsLayoutTokenNV-tokenType-parameter) VUID-VkIndirectCommandsLayoutTokenNV-tokenType-parameter
@@ -2191,6 +2283,64 @@ Valid Usage (Implicit)
 [](#VUID-VkIndirectCommandsLayoutTokenNV-pIndexTypeValues-parameter) VUID-VkIndirectCommandsLayoutTokenNV-pIndexTypeValues-parameter
 
  If `indexTypeCount` is not `0`, `pIndexTypeValues` **must** be a valid pointer to an array of `indexTypeCount` `uint32_t` values
+
+The `VkIndirectCommandsLayoutTokenNV` structure specifies details to the
+function arguments that need to be known at layout creation time:
+
+// Provided by VK_EXT_descriptor_heap with VK_NV_device_generated_commands
+typedef struct VkIndirectCommandsLayoutPushDataTokenNV {
+    VkStructureType    sType;
+    const void*        pNext;
+    uint32_t           pushDataOffset;
+    uint32_t           pushDataSize;
+} VkIndirectCommandsLayoutPushDataTokenNV;
+
+* 
+`sType` is a [VkStructureType](../fundamentals.html#VkStructureType) value identifying this structure.
+
+* 
+`pNext` is `NULL` or a pointer to a structure extending this
+structure.
+
+* 
+`pushDataOffset` is the offset used for the push data command.
+
+* 
+`pushDataSize` is the size used for the push data command.
+
+If this structure is in the `pNext` chain of
+[VkIndirectCommandsLayoutTokenNV](#VkIndirectCommandsLayoutTokenNV), and
+[VkIndirectCommandsLayoutTokenNV](#VkIndirectCommandsLayoutTokenNV)::`tokenType` is set to
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_NV](#VkIndirectCommandsTokenTypeNV), this structure defines a
+push data command layout token.
+
+If this structure is not provided, it is equivalent to setting
+`pushDataOffset` and `pushDataSize` to 0.
+
+Valid Usage
+
+* 
+[](#VUID-VkIndirectCommandsLayoutPushDataTokenNV-pushDataOffset-11335) VUID-VkIndirectCommandsLayoutPushDataTokenNV-pushDataOffset-11335
+
+The sum of `pushDataOffset` and `pushDataSize` **must** be less
+than [`maxPushDataSize`](../limits.html#limits-maxPushDataSize)
+
+* 
+[](#VUID-VkIndirectCommandsLayoutPushDataTokenNV-pushDataOffset-11420) VUID-VkIndirectCommandsLayoutPushDataTokenNV-pushDataOffset-11420
+
+`pushDataOffset` **must** be a multiple of 4
+
+* 
+[](#VUID-VkIndirectCommandsLayoutPushDataTokenNV-pushDataSize-11421) VUID-VkIndirectCommandsLayoutPushDataTokenNV-pushDataSize-11421
+
+`pushDataSize` **must** be a multiple of 4
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkIndirectCommandsLayoutPushDataTokenNV-sType-sType) VUID-VkIndirectCommandsLayoutPushDataTokenNV-sType-sType
+
+ `sType` **must** be [VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_PUSH_DATA_TOKEN_NV](../fundamentals.html#VkStructureType)
 
 The following code provides detailed information on how an individual
 sequence is processed.
@@ -2353,14 +2503,14 @@ Valid Usage
 [](#VUID-VkGeneratedCommandsMemoryRequirementsInfoEXT-indirectCommandsLayout-11010) VUID-VkGeneratedCommandsMemoryRequirementsInfoEXT-indirectCommandsLayout-11010
 
 If `indirectCommandsLayout` was created with a token sequence that
-contained the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT`
+contained the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT)
 token, `indirectExecutionSet` **must** not be [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
 [](#VUID-VkGeneratedCommandsMemoryRequirementsInfoEXT-indirectCommandsLayout-11151) VUID-VkGeneratedCommandsMemoryRequirementsInfoEXT-indirectCommandsLayout-11151
 
 If `indirectCommandsLayout` was created with a token sequence that
-contained the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT`
+contained the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT)
 token, the shader stages used to create the initial shader state of
 `indirectExecutionSet` **must** equal the
 [VkIndirectCommandsExecutionSetTokenEXT](#VkIndirectCommandsExecutionSetTokenEXT)::`shaderStages` used to
@@ -2371,7 +2521,7 @@ create `indirectCommandsLayout`
 
 If `indirectCommandsLayout` was not created with a token sequence
 that contained the
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT` token,
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT) token,
 `indirectExecutionSet` **must** be [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
@@ -2394,7 +2544,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGeneratedCommandsMemoryRequirementsInfoEXT-sType-sType) VUID-VkGeneratedCommandsMemoryRequirementsInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkGeneratedCommandsMemoryRequirementsInfoEXT-pNext-pNext) VUID-VkGeneratedCommandsMemoryRequirementsInfoEXT-pNext-pNext
@@ -2443,7 +2593,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGeneratedCommandsPipelineInfoEXT-sType-sType) VUID-VkGeneratedCommandsPipelineInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GENERATED_COMMANDS_PIPELINE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GENERATED_COMMANDS_PIPELINE_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkGeneratedCommandsPipelineInfoEXT-pipeline-parameter) VUID-VkGeneratedCommandsPipelineInfoEXT-pipeline-parameter
@@ -2484,7 +2634,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGeneratedCommandsShaderInfoEXT-sType-sType) VUID-VkGeneratedCommandsShaderInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GENERATED_COMMANDS_SHADER_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GENERATED_COMMANDS_SHADER_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkGeneratedCommandsShaderInfoEXT-pShaders-parameter) VUID-VkGeneratedCommandsShaderInfoEXT-pShaders-parameter
@@ -2530,7 +2680,7 @@ feature **must** be enabled
 [](#VUID-vkGetGeneratedCommandsMemoryRequirementsNV-pInfo-09074) VUID-vkGetGeneratedCommandsMemoryRequirementsNV-pInfo-09074
 
 If `pInfo->pipelineBindPoint` is of type
-`VK_PIPELINE_BIND_POINT_COMPUTE`, then the
+[VK_PIPELINE_BIND_POINT_COMPUTE](../pipelines.html#VkPipelineBindPoint), then the
 [    `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV`::`deviceGeneratedCompute`](../features.html#features-deviceGeneratedCompute)
 feature **must** be enabled
 
@@ -2598,25 +2748,25 @@ Valid Usage
 [](#VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-pipelineBindPoint-09075) VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-pipelineBindPoint-09075
 
 If `pipelineBindPoint` is of type
-`VK_PIPELINE_BIND_POINT_GRAPHICS`, then `pipeline` **must** be a
+[VK_PIPELINE_BIND_POINT_GRAPHICS](../pipelines.html#VkPipelineBindPoint), then `pipeline` **must** be a
 valid [VkPipeline](../pipelines.html#VkPipeline) handle
 
 * 
 [](#VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-pipelineBindPoint-09076) VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-pipelineBindPoint-09076
 
 If `pipelineBindPoint` is of type
-`VK_PIPELINE_BIND_POINT_COMPUTE`, and the
+[VK_PIPELINE_BIND_POINT_COMPUTE](../pipelines.html#VkPipelineBindPoint), and the
 `indirectCommandsLayout` was not created with a
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV` token, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV](#VkIndirectCommandsTokenTypeNV) token, then the
 `pipeline` **must** be a valid [VkPipeline](../pipelines.html#VkPipeline) handle
 
 * 
 [](#VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-pipelineBindPoint-09077) VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-pipelineBindPoint-09077
 
 If `pipelineBindPoint` is of type
-`VK_PIPELINE_BIND_POINT_COMPUTE`, and the
+[VK_PIPELINE_BIND_POINT_COMPUTE](../pipelines.html#VkPipelineBindPoint), and the
 `indirectCommandsLayout` contains a
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV` token, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV](#VkIndirectCommandsTokenTypeNV) token, then the
 `pipeline` **must** be [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 Valid Usage (Implicit)
@@ -2624,7 +2774,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-sType-sType) VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_NV](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-pNext-pNext) VUID-VkGeneratedCommandsMemoryRequirementsInfoNV-pNext-pNext
@@ -2721,13 +2871,13 @@ Valid Usage
 [](#VUID-VkPipelineIndirectDeviceAddressInfoNV-pipelineBindPoint-09079) VUID-VkPipelineIndirectDeviceAddressInfoNV-pipelineBindPoint-09079
 
 The provided `pipelineBindPoint` **must** be of type
-`VK_PIPELINE_BIND_POINT_COMPUTE`
+[VK_PIPELINE_BIND_POINT_COMPUTE](../pipelines.html#VkPipelineBindPoint)
 
 * 
 [](#VUID-VkPipelineIndirectDeviceAddressInfoNV-pipeline-09080) VUID-VkPipelineIndirectDeviceAddressInfoNV-pipeline-09080
 
 `pipeline` **must** have been created with flag
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV` set
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](../pipelines.html#VkPipelineCreateFlagBits) set
 
 * 
 [](#VUID-VkPipelineIndirectDeviceAddressInfoNV-pipeline-09081) VUID-VkPipelineIndirectDeviceAddressInfoNV-pipeline-09081
@@ -2741,7 +2891,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineIndirectDeviceAddressInfoNV-sType-sType) VUID-VkPipelineIndirectDeviceAddressInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_INDIRECT_DEVICE_ADDRESS_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_INDIRECT_DEVICE_ADDRESS_INFO_NV](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPipelineIndirectDeviceAddressInfoNV-pNext-pNext) VUID-VkPipelineIndirectDeviceAddressInfoNV-pNext-pNext
@@ -2796,7 +2946,7 @@ feature **must** be enabled
 [](#VUID-vkGetPipelineIndirectMemoryRequirementsNV-pCreateInfo-09083) VUID-vkGetPipelineIndirectMemoryRequirementsNV-pCreateInfo-09083
 
 `pCreateInfo->flags` **must** include
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV`
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](../pipelines.html#VkPipelineCreateFlagBits)
 
 Valid Usage (Implicit)
 
@@ -2892,21 +3042,21 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 The `VkIndirectExecutionSetCreateInfoEXT` structure is defined as:
 
@@ -2945,14 +3095,14 @@ is zero
 or the [`shaderObject`](../features.html#features-shaderObject) feature is not
 enabled
 `type` **must** not be
-`VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT`
+[VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT](#VkIndirectExecutionSetInfoTypeEXT)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkIndirectExecutionSetCreateInfoEXT-sType-sType) VUID-VkIndirectExecutionSetCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_CREATE_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkIndirectExecutionSetCreateInfoEXT-type-parameter) VUID-VkIndirectExecutionSetCreateInfoEXT-type-parameter
@@ -2962,12 +3112,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkIndirectExecutionSetCreateInfoEXT-pPipelineInfo-parameter) VUID-VkIndirectExecutionSetCreateInfoEXT-pPipelineInfo-parameter
 
- If `type` is `VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT`, the `pPipelineInfo` member of `info` **must** be a valid pointer to a valid [VkIndirectExecutionSetPipelineInfoEXT](#VkIndirectExecutionSetPipelineInfoEXT) structure
+ If `type` is [VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT](#VkIndirectExecutionSetInfoTypeEXT), the `pPipelineInfo` member of `info` **must** be a valid pointer to a valid [VkIndirectExecutionSetPipelineInfoEXT](#VkIndirectExecutionSetPipelineInfoEXT) structure
 
 * 
 [](#VUID-VkIndirectExecutionSetCreateInfoEXT-pShaderInfo-parameter) VUID-VkIndirectExecutionSetCreateInfoEXT-pShaderInfo-parameter
 
- If `type` is `VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT`, the `pShaderInfo` member of `info` **must** be a valid pointer to a valid [VkIndirectExecutionSetShaderInfoEXT](#VkIndirectExecutionSetShaderInfoEXT) structure
+ If `type` is [VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT](#VkIndirectExecutionSetInfoTypeEXT), the `pShaderInfo` member of `info` **must** be a valid pointer to a valid [VkIndirectExecutionSetShaderInfoEXT](#VkIndirectExecutionSetShaderInfoEXT) structure
 
 Values which **can** be set in
 [VkIndirectExecutionSetCreateInfoEXT](#VkIndirectExecutionSetCreateInfoEXT)::`type`, specifying contents
@@ -2980,11 +3130,11 @@ typedef enum VkIndirectExecutionSetInfoTypeEXT {
 } VkIndirectExecutionSetInfoTypeEXT;
 
 * 
-`VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT` specifies that
+[VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT](#VkIndirectExecutionSetInfoTypeEXT) specifies that
 the indirect execution set contains [VkPipeline](../pipelines.html#VkPipeline) objects.
 
 * 
-`VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT` specifies
+[VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT](#VkIndirectExecutionSetInfoTypeEXT) specifies
 that the indirect execution set contains [VkShaderEXT](../shaders.html#VkShaderEXT) objects.
 
 The `VkIndirectExecutionSetInfoEXT` union is defined as:
@@ -3043,25 +3193,25 @@ Valid Usage
 [](#VUID-VkIndirectExecutionSetPipelineInfoEXT-supportedIndirectCommandsShaderStagesPipelineBinding-11015) VUID-VkIndirectExecutionSetPipelineInfoEXT-supportedIndirectCommandsShaderStagesPipelineBinding-11015
 
 If [](../limits.html#limits-supportedIndirectCommandsShaderStagesPipelineBinding)[VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT](../limits.html#VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT)::`supportedIndirectCommandsShaderStagesPipelineBinding`
-does not contain `VK_SHADER_STAGE_COMPUTE_BIT`, the
-`VkPipelineBindPoint` of `initialPipeline` **must** not be
-`VK_PIPELINE_BIND_POINT_COMPUTE`
+does not contain [VK_SHADER_STAGE_COMPUTE_BIT](../pipelines.html#VkShaderStageFlagBits), the
+[VkPipelineBindPoint](../pipelines.html#VkPipelineBindPoint) of `initialPipeline` **must** not be
+[VK_PIPELINE_BIND_POINT_COMPUTE](../pipelines.html#VkPipelineBindPoint)
 
 * 
 [](#VUID-VkIndirectExecutionSetPipelineInfoEXT-supportedIndirectCommandsShaderStagesPipelineBinding-11016) VUID-VkIndirectExecutionSetPipelineInfoEXT-supportedIndirectCommandsShaderStagesPipelineBinding-11016
 
 If [](../limits.html#limits-supportedIndirectCommandsShaderStagesPipelineBinding)[VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT](../limits.html#VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT)::`supportedIndirectCommandsShaderStagesPipelineBinding`
-does not contain `VK_SHADER_STAGE_FRAGMENT_BIT`, the
-`VkPipelineBindPoint` of `initialPipeline` **must** not be
-`VK_PIPELINE_BIND_POINT_GRAPHICS`
+does not contain [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits), the
+[VkPipelineBindPoint](../pipelines.html#VkPipelineBindPoint) of `initialPipeline` **must** not be
+[VK_PIPELINE_BIND_POINT_GRAPHICS](../pipelines.html#VkPipelineBindPoint)
 
 * 
 [](#VUID-VkIndirectExecutionSetPipelineInfoEXT-supportedIndirectCommandsShaderStagesPipelineBinding-11017) VUID-VkIndirectExecutionSetPipelineInfoEXT-supportedIndirectCommandsShaderStagesPipelineBinding-11017
 
 If [](../limits.html#limits-supportedIndirectCommandsShaderStagesPipelineBinding)[VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT](../limits.html#VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT)::`supportedIndirectCommandsShaderStagesPipelineBinding`
-does not contain ray tracing stages, the `VkPipelineBindPoint` of
+does not contain ray tracing stages, the [VkPipelineBindPoint](../pipelines.html#VkPipelineBindPoint) of
 `initialPipeline` **must** not be
-`VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR`
+[VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR](../pipelines.html#VkPipelineBindPoint)
 
 * 
 [](#VUID-VkIndirectExecutionSetPipelineInfoEXT-maxPipelineCount-11018) VUID-VkIndirectExecutionSetPipelineInfoEXT-maxPipelineCount-11018
@@ -3073,21 +3223,21 @@ does not contain ray tracing stages, the `VkPipelineBindPoint` of
 [](#VUID-VkIndirectExecutionSetPipelineInfoEXT-initialPipeline-11019) VUID-VkIndirectExecutionSetPipelineInfoEXT-initialPipeline-11019
 
 `initialPipeline` **must** not use descriptors of type
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](../descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](../descriptorsets.html#VkDescriptorType)
 
 * 
 [](#VUID-VkIndirectExecutionSetPipelineInfoEXT-initialPipeline-11153) VUID-VkIndirectExecutionSetPipelineInfoEXT-initialPipeline-11153
 
 `initialPipeline` **must** have been created with
-`VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT`
+[VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkIndirectExecutionSetPipelineInfoEXT-sType-sType) VUID-VkIndirectExecutionSetPipelineInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_PIPELINE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_PIPELINE_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkIndirectExecutionSetPipelineInfoEXT-initialPipeline-parameter) VUID-VkIndirectExecutionSetPipelineInfoEXT-initialPipeline-parameter
@@ -3186,7 +3336,7 @@ be unique
 [](#VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-11154) VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-11154
 
 Each member of `pInitialShaders` **must** have been created with
-`VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT`
+[VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT)
 
 * 
 [](#VUID-VkIndirectExecutionSetShaderInfoEXT-pSetLayoutInfos-10929) VUID-VkIndirectExecutionSetShaderInfoEXT-pSetLayoutInfos-10929
@@ -3195,12 +3345,35 @@ If `pSetLayoutInfos` is not `NULL`, the descriptor layout values
 specified **must** be compatible with the descriptor set layouts defined at
 the creation of the shader object
 
+* 
+[](#VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-11321) VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-11321
+
+If any element of `pInitialShaders` was created with
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT), all elements of
+`pInitialShaders` **must** have been created with
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT)
+
+* 
+[](#VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-11322) VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-11322
+
+If any element of `pInitialShaders` was created without
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT), all elements of
+`pInitialShaders` **must** have been created without
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT)
+
+* 
+[](#VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-11323) VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-11323
+
+If elements of `pInitialShaders` were created with
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT), `pSetLayoutInfos`
+**must** be `NULL`
+
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkIndirectExecutionSetShaderInfoEXT-sType-sType) VUID-VkIndirectExecutionSetShaderInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_SHADER_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_SHADER_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-parameter) VUID-VkIndirectExecutionSetShaderInfoEXT-pInitialShaders-parameter
@@ -3255,15 +3428,15 @@ Valid Usage
 [](#VUID-VkIndirectExecutionSetShaderLayoutInfoEXT-pSetLayouts-11024) VUID-VkIndirectExecutionSetShaderLayoutInfoEXT-pSetLayouts-11024
 
 All members of `pSetLayouts` **must** not contain descriptors of type
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC`
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](../descriptorsets.html#VkDescriptorType) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](../descriptorsets.html#VkDescriptorType)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkIndirectExecutionSetShaderLayoutInfoEXT-sType-sType) VUID-VkIndirectExecutionSetShaderLayoutInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_SHADER_LAYOUT_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_SHADER_LAYOUT_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkIndirectExecutionSetShaderLayoutInfoEXT-pSetLayouts-parameter) VUID-VkIndirectExecutionSetShaderLayoutInfoEXT-pSetLayouts-parameter
@@ -3359,7 +3532,7 @@ to create the set
 [](#VUID-VkWriteIndirectExecutionSetPipelineEXT-pipeline-11027) VUID-VkWriteIndirectExecutionSetPipelineEXT-pipeline-11027
 
 `pipeline` **must** have been created with
-`VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT`
+[VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR)
 
 * 
 [](#VUID-VkWriteIndirectExecutionSetPipelineEXT-index-11029) VUID-VkWriteIndirectExecutionSetPipelineEXT-index-11029
@@ -3377,7 +3550,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkWriteIndirectExecutionSetPipelineEXT-sType-sType) VUID-VkWriteIndirectExecutionSetPipelineEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_PIPELINE_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_PIPELINE_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkWriteIndirectExecutionSetPipelineEXT-pipeline-parameter) VUID-VkWriteIndirectExecutionSetPipelineEXT-pipeline-parameter
@@ -3424,7 +3597,7 @@ Valid Usage
 [](#VUID-VkWriteIndirectExecutionSetShaderEXT-shader-11032) VUID-VkWriteIndirectExecutionSetShaderEXT-shader-11032
 
 `shader` **must** have been created with
-`VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT`
+[VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT)
 
 * 
 [](#VUID-VkWriteIndirectExecutionSetShaderEXT-pInitialShaders-11033) VUID-VkWriteIndirectExecutionSetShaderEXT-pInitialShaders-11033
@@ -3443,7 +3616,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkWriteIndirectExecutionSetShaderEXT-sType-sType) VUID-VkWriteIndirectExecutionSetShaderEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_SHADER_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_SHADER_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkWriteIndirectExecutionSetShaderEXT-shader-parameter) VUID-VkWriteIndirectExecutionSetShaderEXT-shader-parameter
@@ -3480,7 +3653,7 @@ Valid Usage
 [](#VUID-vkUpdateIndirectExecutionSetPipelineEXT-indirectExecutionSet-11035) VUID-vkUpdateIndirectExecutionSetPipelineEXT-indirectExecutionSet-11035
 
 `indirectExecutionSet` **must** have been created with type
-`VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT`
+[VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT](#VkIndirectExecutionSetInfoTypeEXT)
 
 * 
 [](#VUID-vkUpdateIndirectExecutionSetPipelineEXT-executionSetWriteCount-11037) VUID-vkUpdateIndirectExecutionSetPipelineEXT-executionSetWriteCount-11037
@@ -3501,9 +3674,27 @@ Each member of the Indirect Execution Set referenced by the update
 command **must** not be in use by the device
 
 * 
+[](#VUID-vkUpdateIndirectExecutionSetPipelineEXT-initialPipeline-11324) VUID-vkUpdateIndirectExecutionSetPipelineEXT-initialPipeline-11324
+
+If `initialPipeline` was created without
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR), each pipeline in
+`pExecutionSetWrites` **must** also have been created without
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR)
+
+* 
+[](#VUID-vkUpdateIndirectExecutionSetPipelineEXT-initialPipeline-11325) VUID-vkUpdateIndirectExecutionSetPipelineEXT-initialPipeline-11325
+
+If `initialPipeline` was created with
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR), each pipeline in
+`pExecutionSetWrites` **must** also have been created with
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR)
+
+* 
 [](#VUID-vkUpdateIndirectExecutionSetPipelineEXT-None-11039) VUID-vkUpdateIndirectExecutionSetPipelineEXT-None-11039
 
-The layout of each pipeline in `pExecutionSetWrites` **must** be
+If `initialPipeline` was created without
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR), the
+layout of each pipeline in `pExecutionSetWrites` **must** be
 [compatible](../descriptorsets.html#descriptorsets-compatibility) with the
 `initialPipeline` used to create the Indirect Execution Set
 
@@ -3612,7 +3803,7 @@ Valid Usage
 [](#VUID-vkUpdateIndirectExecutionSetShaderEXT-indirectExecutionSet-11041) VUID-vkUpdateIndirectExecutionSetShaderEXT-indirectExecutionSet-11041
 
 `indirectExecutionSet` **must** have been created with type
-`VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT`
+[VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT](#VkIndirectExecutionSetInfoTypeEXT)
 
 * 
 [](#VUID-vkUpdateIndirectExecutionSetShaderEXT-pExecutionSetWrites-11043) VUID-vkUpdateIndirectExecutionSetShaderEXT-pExecutionSetWrites-11043
@@ -3627,11 +3818,29 @@ Each member of the Indirect Execution Set referenced by the update
 command **must** not be in use by the device
 
 * 
+[](#VUID-vkUpdateIndirectExecutionSetShaderEXT-pInitialShaders-11326) VUID-vkUpdateIndirectExecutionSetShaderEXT-pInitialShaders-11326
+
+If the shaders in `pInitialShaders` were created without
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT), each shader in
+`pExecutionSetWrites` **must** also have been created without
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT)
+
+* 
+[](#VUID-vkUpdateIndirectExecutionSetShaderEXT-pInitialShaders-11327) VUID-vkUpdateIndirectExecutionSetShaderEXT-pInitialShaders-11327
+
+If the shaders in `pInitialShaders` were created with
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT), each pipeline in
+`pExecutionSetWrites` **must** also have been created with
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT)
+
+* 
 [](#VUID-vkUpdateIndirectExecutionSetShaderEXT-pExecutionSetWrites-11140) VUID-vkUpdateIndirectExecutionSetShaderEXT-pExecutionSetWrites-11140
 
-The descriptor layout of each shader in `pExecutionSetWrites` **must**
-be [compatible](../descriptorsets.html#descriptorsets-compatibility) with the initial layout
-info used to create the Indirect Execution Set
+If the shaders in `pInitialShaders` were created without
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT), the
+descriptor layout of each shader in `pExecutionSetWrites` **must** be
+[compatible](../descriptorsets.html#descriptorsets-compatibility) with the initial layout info
+used to create the Indirect Execution Set
 
 * 
 [](#VUID-vkUpdateIndirectExecutionSetShaderEXT-None-11148) VUID-vkUpdateIndirectExecutionSetShaderEXT-None-11148
@@ -3723,7 +3932,7 @@ recorded.
 * 
 `isPreprocessed` represents whether the input data has already been
 preprocessed on the device.
-If it is `VK_FALSE` this command will implicitly trigger the
+If it is [VK_FALSE](../fundamentals.html#VK_FALSE) this command will implicitly trigger the
 preprocessing step, otherwise not.
 
 * 
@@ -3731,7 +3940,7 @@ preprocessing step, otherwise not.
 [VkGeneratedCommandsInfoNV](#VkGeneratedCommandsInfoNV) structure containing parameters
 affecting the generation of commands.
 
-If the `VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_NV`
+If the [VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_NV](#VkIndirectCommandsLayoutUsageFlagBitsNV)
 flag was used to create the
 [VkGeneratedCommandsInfoNV](#VkGeneratedCommandsInfoNV)::`indirectCommandsLayout` then the order
 of execution of individual draws through this command **may** execute in any
@@ -3748,53 +3957,53 @@ Valid Usage
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-magFilter-04553) VUID-vkCmdExecuteGeneratedCommandsNV-magFilter-04553
 
 If a [VkSampler](../samplers.html#VkSampler) created with `magFilter` or `minFilter`
-equal to `VK_FILTER_LINEAR`,
+equal to [VK_FILTER_LINEAR](../samplers.html#VkFilter),
 `reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`,
-and `compareEnable` equal to `VK_FALSE` is used to sample a
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](../samplers.html#VkSamplerReductionModeEXT),
+and `compareEnable` equal to [VK_FALSE](../fundamentals.html#VK_FALSE) is used to sample a
 [VkImageView](../resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](../formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-magFilter-09598) VUID-vkCmdExecuteGeneratedCommandsNV-magFilter-09598
 
 If a [VkSampler](../samplers.html#VkSampler) created with `magFilter` or `minFilter`
-equal to `VK_FILTER_LINEAR` and `reductionMode` equal to either
-`VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` is used to sample a
+equal to [VK_FILTER_LINEAR](../samplers.html#VkFilter) and `reductionMode` equal to either
+[VK_SAMPLER_REDUCTION_MODE_MIN](../samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](../samplers.html#VkSamplerReductionModeEXT) is used to sample a
 [VkImageView](../resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT](../formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-mipmapMode-04770) VUID-vkCmdExecuteGeneratedCommandsNV-mipmapMode-04770
 
 If a [VkSampler](../samplers.html#VkSampler) created with `mipmapMode` equal to
-`VK_SAMPLER_MIPMAP_MODE_LINEAR`,
+[VK_SAMPLER_MIPMAP_MODE_LINEAR](../samplers.html#VkSamplerMipmapMode),
 `reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`,
-and `compareEnable` equal to `VK_FALSE` is used to sample a
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](../samplers.html#VkSamplerReductionModeEXT),
+and `compareEnable` equal to [VK_FALSE](../fundamentals.html#VK_FALSE) is used to sample a
 [VkImageView](../resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](../formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-mipmapMode-09599) VUID-vkCmdExecuteGeneratedCommandsNV-mipmapMode-09599
 
 If a [VkSampler](../samplers.html#VkSampler) created with `mipmapMode` equal to
-`VK_SAMPLER_MIPMAP_MODE_LINEAR` and `reductionMode` equal to
-either `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` is used to sample a
+[VK_SAMPLER_MIPMAP_MODE_LINEAR](../samplers.html#VkSamplerMipmapMode) and `reductionMode` equal to
+either [VK_SAMPLER_REDUCTION_MODE_MIN](../samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](../samplers.html#VkSamplerReductionModeEXT) is used to sample a
 [VkImageView](../resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT](../formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-unnormalizedCoordinates-09635) VUID-vkCmdExecuteGeneratedCommandsNV-unnormalizedCoordinates-09635
 
 If a [VkSampler](../samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](../resources.html#VkImageView) as a result of this
+[VK_TRUE](../fundamentals.html#VK_TRUE) is used to sample a [VkImageView](../resources.html#VkImageView) as a result of this
 command, then the image view’s `levelCount` and `layerCount`
 **must** be 1
 
@@ -3802,15 +4011,15 @@ command, then the image view’s `levelCount` and `layerCount`
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08609) VUID-vkCmdExecuteGeneratedCommandsNV-None-08609
 
 If a [VkSampler](../samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](../resources.html#VkImageView) as a result of this
+[VK_TRUE](../fundamentals.html#VK_TRUE) is used to sample a [VkImageView](../resources.html#VkImageView) as a result of this
 command, then the image view’s `viewType` **must** be
-`VK_IMAGE_VIEW_TYPE_1D` or `VK_IMAGE_VIEW_TYPE_2D`
+[VK_IMAGE_VIEW_TYPE_1D](../resources.html#VkImageViewType) or [VK_IMAGE_VIEW_TYPE_2D](../resources.html#VkImageViewType)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08610) VUID-vkCmdExecuteGeneratedCommandsNV-None-08610
 
 If a [VkSampler](../samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](../resources.html#VkImageView) as a result of this
+[VK_TRUE](../fundamentals.html#VK_TRUE) is used to sample a [VkImageView](../resources.html#VkImageView) as a result of this
 command, then the sampler **must** not be used with any of the SPIR-V
 `OpImageSample*` or `OpImageSparseSample*` instructions with
 `ImplicitLod`, `Dref` or `Proj` in their name
@@ -3819,7 +4028,7 @@ command, then the sampler **must** not be used with any of the SPIR-V
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08611) VUID-vkCmdExecuteGeneratedCommandsNV-None-08611
 
 If a [VkSampler](../samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](../resources.html#VkImageView) as a result of this
+[VK_TRUE](../fundamentals.html#VK_TRUE) is used to sample a [VkImageView](../resources.html#VkImageView) as a result of this
 command, then the sampler **must** not be used with any of the SPIR-V
 `OpImageSample*` or `OpImageSparseSample*` instructions that includes a
 LOD bias or any offset values
@@ -3830,7 +4039,7 @@ LOD bias or any offset values
 If a [VkImageView](../resources.html#VkImageView) is sampled with
 [depth comparison](../textures.html#textures-depth-compare-operation), the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT`
+[VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-02691) VUID-vkCmdExecuteGeneratedCommandsNV-None-02691
@@ -3838,38 +4047,38 @@ If a [VkImageView](../resources.html#VkImageView) is sampled with
 If a [VkImageView](../resources.html#VkImageView) is accessed using atomic operations as a result
 of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT`
+[VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT](../formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07888) VUID-vkCmdExecuteGeneratedCommandsNV-None-07888
 
-If a `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` descriptor is
+If a [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](../descriptorsets.html#VkDescriptorType) descriptor is
 accessed using atomic operations as a result of this command, then the
 storage texel buffer’s [format    features](../resources.html#resources-buffer-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT`
+[VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT](../formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-02692) VUID-vkCmdExecuteGeneratedCommandsNV-None-02692
 
-If a [VkImageView](../resources.html#VkImageView) is sampled with `VK_FILTER_CUBIC_EXT` as a
+If a [VkImageView](../resources.html#VkImageView) is sampled with [VK_FILTER_CUBIC_EXT](../samplers.html#VkFilter) as a
 result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT](../formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-02693) VUID-vkCmdExecuteGeneratedCommandsNV-None-02693
 
 If
 the [VK_EXT_filter_cubic](../../appendices/extensions.html#VK_EXT_filter_cubic) extension is not enabled and
-any [VkImageView](../resources.html#VkImageView) is sampled with `VK_FILTER_CUBIC_EXT` as a
+any [VkImageView](../resources.html#VkImageView) is sampled with [VK_FILTER_CUBIC_EXT](../samplers.html#VkFilter) as a
 result of this command, it **must** not have a [VkImageViewType](../resources.html#VkImageViewType) of
-`VK_IMAGE_VIEW_TYPE_3D`, `VK_IMAGE_VIEW_TYPE_CUBE`, or
-`VK_IMAGE_VIEW_TYPE_CUBE_ARRAY`
+[VK_IMAGE_VIEW_TYPE_3D](../resources.html#VkImageViewType), [VK_IMAGE_VIEW_TYPE_CUBE](../resources.html#VkImageViewType), or
+[VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](../resources.html#VkImageViewType)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-filterCubic-02694) VUID-vkCmdExecuteGeneratedCommandsNV-filterCubic-02694
 
-Any [VkImageView](../resources.html#VkImageView) being sampled with `VK_FILTER_CUBIC_EXT` as a
+Any [VkImageView](../resources.html#VkImageView) being sampled with [VK_FILTER_CUBIC_EXT](../samplers.html#VkFilter) as a
 result of this command **must** have a [VkImageViewType](../resources.html#VkImageViewType) and format
 that supports cubic filtering, as specified by
 [VkFilterCubicImageViewImageFormatPropertiesEXT](../capabilities.html#VkFilterCubicImageViewImageFormatPropertiesEXT)::`filterCubic`
@@ -3878,9 +4087,9 @@ returned by [vkGetPhysicalDeviceImageFormatProperties2](../capabilities.html#vkG
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-filterCubicMinmax-02695) VUID-vkCmdExecuteGeneratedCommandsNV-filterCubicMinmax-02695
 
-Any [VkImageView](../resources.html#VkImageView) being sampled with `VK_FILTER_CUBIC_EXT` with
-a reduction mode of either `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` as a result of this command **must**
+Any [VkImageView](../resources.html#VkImageView) being sampled with [VK_FILTER_CUBIC_EXT](../samplers.html#VkFilter) with
+a reduction mode of either [VK_SAMPLER_REDUCTION_MODE_MIN](../samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](../samplers.html#VkSamplerReductionModeEXT) as a result of this command **must**
 have a [VkImageViewType](../resources.html#VkImageViewType) and format that supports cubic filtering
 together with minmax filtering, as specified by
 [VkFilterCubicImageViewImageFormatPropertiesEXT](../capabilities.html#VkFilterCubicImageViewImageFormatPropertiesEXT)::`filterCubicMinmax`
@@ -3891,35 +4100,35 @@ returned by [vkGetPhysicalDeviceImageFormatProperties2](../capabilities.html#vkG
 
 If the [`cubicRangeClamp`](../features.html#features-cubicRangeClamp) feature is
 not enabled, then any [VkImageView](../resources.html#VkImageView) being sampled with
-`VK_FILTER_CUBIC_EXT` as a result of this command **must** not have a
+[VK_FILTER_CUBIC_EXT](../samplers.html#VkFilter) as a result of this command **must** not have a
 [VkSamplerReductionModeCreateInfo](../samplers.html#VkSamplerReductionModeCreateInfo)::`reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM`
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](../samplers.html#VkSamplerReductionModeEXT)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-reductionMode-09213) VUID-vkCmdExecuteGeneratedCommandsNV-reductionMode-09213
 
 Any [VkImageView](../resources.html#VkImageView) being sampled with a
 [VkSamplerReductionModeCreateInfo](../samplers.html#VkSamplerReductionModeCreateInfo)::`reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM` as a
-result of this command **must** sample with `VK_FILTER_CUBIC_EXT`
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](../samplers.html#VkSamplerReductionModeEXT) as a
+result of this command **must** sample with [VK_FILTER_CUBIC_EXT](../samplers.html#VkFilter)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-selectableCubicWeights-09214) VUID-vkCmdExecuteGeneratedCommandsNV-selectableCubicWeights-09214
 
 If the [`selectableCubicWeights`](../features.html#features-selectableCubicWeights)
 feature is not enabled, then any [VkImageView](../resources.html#VkImageView) being sampled with
-`VK_FILTER_CUBIC_EXT` as a result of this command **must** have
+[VK_FILTER_CUBIC_EXT](../samplers.html#VkFilter) as a result of this command **must** have
 [VkSamplerCubicWeightsCreateInfoQCOM](../samplers.html#VkSamplerCubicWeightsCreateInfoQCOM)::`cubicWeights` equal to
-`VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM`
+[VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM](../samplers.html#VkCubicFilterWeightsQCOM)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-flags-02696) VUID-vkCmdExecuteGeneratedCommandsNV-flags-02696
 
 Any [VkImage](../resources.html#VkImage) created with a [VkImageCreateInfo](../resources.html#VkImageCreateInfo)::`flags`
-containing `VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV` sampled as a
+containing [VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV](../resources.html#VkImageCreateFlagBits) sampled as a
 result of this command **must** only be sampled using a
 [VkSamplerAddressMode](../samplers.html#VkSamplerAddressMode) of
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE`
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](../samplers.html#VkSamplerAddressMode)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-OpTypeImage-07027) VUID-vkCmdExecuteGeneratedCommandsNV-OpTypeImage-07027
@@ -3927,7 +4136,7 @@ result of this command **must** only be sampled using a
 For any [VkImageView](../resources.html#VkImageView) being written as a storage image where the
 image format field of the `OpTypeImage` is `Unknown`, the view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-OpTypeImage-07028) VUID-vkCmdExecuteGeneratedCommandsNV-OpTypeImage-07028
@@ -3935,7 +4144,7 @@ image format field of the `OpTypeImage` is `Unknown`, the view’s
 For any [VkImageView](../resources.html#VkImageView) being read as a storage image where the image
 format field of the `OpTypeImage` is `Unknown`, the view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-OpTypeImage-07029) VUID-vkCmdExecuteGeneratedCommandsNV-OpTypeImage-07029
@@ -3943,7 +4152,7 @@ format field of the `OpTypeImage` is `Unknown`, the view’s
 For any [VkBufferView](../resources.html#VkBufferView) being written as a storage texel buffer where
 the image format field of the `OpTypeImage` is `Unknown`, the
 view’s [buffer features](../formats.html#VkFormatProperties3) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-OpTypeImage-07030) VUID-vkCmdExecuteGeneratedCommandsNV-OpTypeImage-07030
@@ -3951,15 +4160,21 @@ view’s [buffer features](../formats.html#VkFormatProperties3) **must** contain
 Any [VkBufferView](../resources.html#VkBufferView) being read as a storage texel buffer where the
 image format field of the `OpTypeImage` is `Unknown` then the
 view’s [buffer features](../formats.html#VkFormatProperties3) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08600) VUID-vkCmdExecuteGeneratedCommandsNV-None-08600
 
-For each set *n* that is statically used by [a bound    shader](../shaders.html#shaders-binding), a descriptor set **must** have been bound to *n* at the same
-pipeline bind point, with a [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) that is compatible
-for set *n*, with the [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) used to create the current
-[VkPipeline](../pipelines.html#VkPipeline)
+If a [a bound shader](../shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](../shaders.html#VkShaderEXT) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a set *n*, a descriptor set **must** have been bound to *n*
+at the same pipeline bind point, with a [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) that is
+compatible for set *n*, with the [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) used to create
+the current [VkPipeline](../pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](../descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](../shaders.html#VkShaderEXT)
 , as described in [Pipeline Layout Compatibility](../descriptorsets.html#descriptorsets-compatibility)
@@ -3967,13 +4182,18 @@ or the [VkDescriptorSetLayout](../descriptorsets.html#VkDescriptorSetLayout) arr
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08601) VUID-vkCmdExecuteGeneratedCommandsNV-None-08601
 
-For each push constant that is statically used by [a    bound shader](../shaders.html#shaders-binding), a push constant value **must** have been set for the same
-pipeline bind point, with a [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) that is compatible
-for push constants, with the [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) used to create the
-current [VkPipeline](../pipelines.html#VkPipeline)
+If a [a bound shader](../shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](../shaders.html#VkShaderEXT) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a push constant value, that value **must** have been set
+for the same pipeline bind point, with a [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) that is
+[compatible for push constants](../descriptorsets.html#descriptorsets-compatibility) with the
+[VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](../pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](../descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](../shaders.html#VkShaderEXT)
-, as described in [Pipeline Layout Compatibility](../descriptorsets.html#descriptorsets-compatibility)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-10068) VUID-vkCmdExecuteGeneratedCommandsNV-None-10068
@@ -3985,26 +4205,28 @@ sets used by this command
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-maintenance4-08602) VUID-vkCmdExecuteGeneratedCommandsNV-maintenance4-08602
 
-If the [`maintenance4`](../features.html#features-maintenance4) feature is not
-enabled, then for each push constant that is statically used by
-[a bound shader](../shaders.html#shaders-binding), a push constant value **must** have
-been set for the same pipeline bind point, with a [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout)
-that is compatible for push constants, with the [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout)
-used to create the current [VkPipeline](../pipelines.html#VkPipeline)
+If a [a bound shader](../shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](../shaders.html#VkShaderEXT) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a push constant value, that value **must** have been set
+for the same pipeline bind point, with a [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) that is
+[compatible for push constants](../descriptorsets.html#descriptorsets-compatibility) with the
+[VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](../pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](../descriptorsets.html#VkDescriptorSetLayout) and [VkPushConstantRange](../descriptorsets.html#VkPushConstantRange) arrays
 used to create the current [VkShaderEXT](../shaders.html#VkShaderEXT)
-, as described in [Pipeline Layout Compatibility](../descriptorsets.html#descriptorsets-compatibility)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08114) VUID-vkCmdExecuteGeneratedCommandsNV-None-08114
 
 Descriptors in each bound descriptor set, specified via
-[vkCmdBindDescriptorSets](../descriptorsets.html#vkCmdBindDescriptorSets), **must** be valid as described by
-[descriptor validity](../descriptorsets.html#descriptor-validity) if they are statically used
-by
+[vkCmdBindDescriptorSets](../descriptorsets.html#vkCmdBindDescriptorSets), **must** be valid if they are accessed as
+described by [descriptor validity](../descriptorsets.html#descriptor-validity) by
 the [VkPipeline](../pipelines.html#VkPipeline) bound to the pipeline bind point used by this
 command and the bound [VkPipeline](../pipelines.html#VkPipeline) was not created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-imageLayout-00344) VUID-vkCmdExecuteGeneratedCommandsNV-imageLayout-00344
@@ -4019,7 +4241,7 @@ defined by the [image layout    matching rules](../resources.html#resources-imag
 If the descriptors used by the [VkPipeline](../pipelines.html#VkPipeline) bound to the pipeline
 bind point were specified via [vkCmdBindDescriptorSets](../descriptorsets.html#vkCmdBindDescriptorSets), the bound
 [VkPipeline](../pipelines.html#VkPipeline) **must** have been created without
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08116) VUID-vkCmdExecuteGeneratedCommandsNV-None-08116
@@ -4028,7 +4250,7 @@ Descriptors in bound descriptor buffers, specified via
 [vkCmdSetDescriptorBufferOffsetsEXT](../descriptorsets.html#vkCmdSetDescriptorBufferOffsetsEXT), **must** be valid if they are
 dynamically used by the [VkPipeline](../pipelines.html#VkPipeline) bound to the pipeline bind
 point used by this command and the bound [VkPipeline](../pipelines.html#VkPipeline) was created
-with `VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+with [VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08604) VUID-vkCmdExecuteGeneratedCommandsNV-None-08604
@@ -4044,13 +4266,13 @@ to the pipeline bind point used by this command
 If the descriptors used by the [VkPipeline](../pipelines.html#VkPipeline) bound to the pipeline
 bind point were specified via [vkCmdSetDescriptorBufferOffsetsEXT](../descriptorsets.html#vkCmdSetDescriptorBufferOffsetsEXT),
 the bound [VkPipeline](../pipelines.html#VkPipeline) **must** have been created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08119) VUID-vkCmdExecuteGeneratedCommandsNV-None-08119
 
 If a descriptor is dynamically used with a [VkPipeline](../pipelines.html#VkPipeline) created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, the descriptor
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits), the descriptor
 memory **must** be resident
 
 * 
@@ -4058,7 +4280,7 @@ memory **must** be resident
 
 If a descriptor is dynamically used with a [VkShaderEXT](../shaders.html#VkShaderEXT) created
 with a `VkDescriptorSetLayout` that was created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, the
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](../descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits), the
 descriptor memory **must** be resident
 
 * 
@@ -4084,8 +4306,8 @@ pipeline bind point used by this command, since that pipeline was bound
 If any stage of the [VkPipeline](../pipelines.html#VkPipeline) object bound to the pipeline bind
 point used by this command accesses a uniform buffer,
 and that stage was created without enabling either
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2` for
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](../pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](../pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
 `uniformBuffers`,
 and the [`robustBufferAccess`](../features.html#features-robustBufferAccess)
 feature is not enabled, that stage **must** not access values outside of
@@ -4107,8 +4329,8 @@ specified in the descriptor set bound to the same pipeline bind point
 If any stage of the [VkPipeline](../pipelines.html#VkPipeline) object bound to the pipeline bind
 point used by this command accesses a storage buffer,
 and that stage was created without enabling either
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2` for
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](../pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](../pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
 `storageBuffers`,
 and the [`robustBufferAccess`](../features.html#features-robustBufferAccess)
 feature is not enabled, that stage **must** not access values outside of
@@ -4151,7 +4373,7 @@ view’s `format` and the `Sampled` `Type` operand of the
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-OpImageWrite-08795) VUID-vkCmdExecuteGeneratedCommandsNV-OpImageWrite-08795
 
 If a [VkImageView](../resources.html#VkImageView)
-created with a format other than `VK_FORMAT_A8_UNORM`
+created with a format other than [VK_FORMAT_A8_UNORM](../formats.html#VkFormat)
 is accessed using `OpImageWrite` as a result of this command, then
 the `Type` of the `Texel` operand of that instruction **must** have
 at least as many components as the image view’s format
@@ -4159,7 +4381,7 @@ at least as many components as the image view’s format
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-OpImageWrite-08796) VUID-vkCmdExecuteGeneratedCommandsNV-OpImageWrite-08796
 
-If a [VkImageView](../resources.html#VkImageView) created with the format `VK_FORMAT_A8_UNORM`
+If a [VkImageView](../resources.html#VkImageView) created with the format [VK_FORMAT_A8_UNORM](../formats.html#VkFormat)
 is accessed using `OpImageWrite` as a result of this command, then
 the `Type` of the `Texel` operand of that instruction **must** have
 four components
@@ -4208,7 +4430,7 @@ less than 64-bit is accessed as a result of this command, the
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-sparseImageInt64Atomics-04474) VUID-vkCmdExecuteGeneratedCommandsNV-sparseImageInt64Atomics-04474
 
 If the [    `sparseImageInt64Atomics`](../features.html#features-sparseImageInt64Atomics) feature is not enabled, [VkImage](../resources.html#VkImage)
-objects created with the `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` flag
+objects created with the [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](../resources.html#VkImageCreateFlagBits) flag
 **must** not be accessed by atomic instructions through an `OpTypeImage`
 with a `SampledType` with a `Width` of 64 by this command
 
@@ -4216,26 +4438,26 @@ with a `SampledType` with a `Width` of 64 by this command
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-sparseImageInt64Atomics-04475) VUID-vkCmdExecuteGeneratedCommandsNV-sparseImageInt64Atomics-04475
 
 If the [    `sparseImageInt64Atomics`](../features.html#features-sparseImageInt64Atomics) feature is not enabled, [VkBuffer](../resources.html#VkBuffer)
-objects created with the `VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`
+objects created with the [VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](../resources.html#VkBufferCreateFlagBits)
 flag **must** not be accessed by atomic instructions through an
 `OpTypeImage` with a `SampledType` with a `Width` of 64 by this
 command
 
 * 
-[](#VUID-vkCmdExecuteGeneratedCommandsNV-OpImageWeightedSampleQCOM-06971) VUID-vkCmdExecuteGeneratedCommandsNV-OpImageWeightedSampleQCOM-06971
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-OpImageSampleWeightedQCOM-06971) VUID-vkCmdExecuteGeneratedCommandsNV-OpImageSampleWeightedQCOM-06971
 
-If `OpImageWeightedSampleQCOM` is used to sample a [VkImageView](../resources.html#VkImageView)
+If `OpImageSampleWeightedQCOM` is used to sample a [VkImageView](../resources.html#VkImageView)
 as a result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
-[](#VUID-vkCmdExecuteGeneratedCommandsNV-OpImageWeightedSampleQCOM-06972) VUID-vkCmdExecuteGeneratedCommandsNV-OpImageWeightedSampleQCOM-06972
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-OpImageSampleWeightedQCOM-06972) VUID-vkCmdExecuteGeneratedCommandsNV-OpImageSampleWeightedQCOM-06972
 
-If `OpImageWeightedSampleQCOM` uses a [VkImageView](../resources.html#VkImageView) as a sample
+If `OpImageSampleWeightedQCOM` uses a [VkImageView](../resources.html#VkImageView) as a sample
 weight image as a result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-OpImageBoxFilterQCOM-06973) VUID-vkCmdExecuteGeneratedCommandsNV-OpImageBoxFilterQCOM-06973
@@ -4243,7 +4465,7 @@ weight image as a result of this command, then the image view’s
 If `OpImageBoxFilterQCOM` is used to sample a [VkImageView](../resources.html#VkImageView) as a
 result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BOX_FILTER_SAMPLED_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BOX_FILTER_SAMPLED_BIT_QCOM](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-OpImageBlockMatchSSDQCOM-06974) VUID-vkCmdExecuteGeneratedCommandsNV-OpImageBlockMatchSSDQCOM-06974
@@ -4251,7 +4473,7 @@ result of this command, then the image view’s
 If `OpImageBlockMatchSSDQCOM` is used to read from an
 [VkImageView](../resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-OpImageBlockMatchSADQCOM-06975) VUID-vkCmdExecuteGeneratedCommandsNV-OpImageBlockMatchSADQCOM-06975
@@ -4259,7 +4481,7 @@ If `OpImageBlockMatchSSDQCOM` is used to read from an
 If `OpImageBlockMatchSADQCOM` is used to read from an
 [VkImageView](../resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-OpImageBlockMatchSADQCOM-06976) VUID-vkCmdExecuteGeneratedCommandsNV-OpImageBlockMatchSADQCOM-06976
@@ -4270,21 +4492,21 @@ specified reference coordinates **must** not fail
 [integer texel coordinate    validation](../textures.html#textures-integer-coordinate-validation)
 
 * 
-[](#VUID-vkCmdExecuteGeneratedCommandsNV-OpImageWeightedSampleQCOM-06977) VUID-vkCmdExecuteGeneratedCommandsNV-OpImageWeightedSampleQCOM-06977
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-OpImageSampleWeightedQCOM-06977) VUID-vkCmdExecuteGeneratedCommandsNV-OpImageSampleWeightedQCOM-06977
 
-If `OpImageWeightedSampleQCOM`, `OpImageBoxFilterQCOM`,
+If `OpImageSampleWeightedQCOM`, `OpImageBoxFilterQCOM`,
 `OpImageBlockMatchWindowSSDQCOM`,
 `OpImageBlockMatchWindowSADQCOM`,
 `OpImageBlockMatchGatherSSDQCOM`,
 `OpImageBlockMatchGatherSADQCOM`,
 `OpImageBlockMatchSSDQCOM`, or `OpImageBlockMatchSADQCOM` uses a
 [VkSampler](../samplers.html#VkSampler) as a result of this command, then the sampler **must** have
-been created with `VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`
+been created with [VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](../samplers.html#VkSamplerCreateFlagBits)
 
 * 
-[](#VUID-vkCmdExecuteGeneratedCommandsNV-OpImageWeightedSampleQCOM-06978) VUID-vkCmdExecuteGeneratedCommandsNV-OpImageWeightedSampleQCOM-06978
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-OpImageSampleWeightedQCOM-06978) VUID-vkCmdExecuteGeneratedCommandsNV-OpImageSampleWeightedQCOM-06978
 
-If any command other than `OpImageWeightedSampleQCOM`,
+If any command other than `OpImageSampleWeightedQCOM`,
 `OpImageBoxFilterQCOM`,
 `OpImageBlockMatchWindowSSDQCOM`,
 `OpImageBlockMatchWindowSADQCOM`,
@@ -4292,7 +4514,7 @@ If any command other than `OpImageWeightedSampleQCOM`,
 `OpImageBlockMatchGatherSADQCOM`,
 `OpImageBlockMatchSSDQCOM`, or `OpImageBlockMatchSADQCOM` uses a
 [VkSampler](../samplers.html#VkSampler) as a result of this command, then the sampler **must** not
-have been created with `VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`
+have been created with [VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](../samplers.html#VkSamplerCreateFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-OpImageBlockMatchWindow-09215) VUID-vkCmdExecuteGeneratedCommandsNV-OpImageBlockMatchWindow-09215
@@ -4301,7 +4523,7 @@ If a `OpImageBlockMatchWindow*QCOM` or
 `OpImageBlockMatchGather*QCOM` instruction is used to read from an
 [VkImageView](../resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-OpImageBlockMatchWindow-09216) VUID-vkCmdExecuteGeneratedCommandsNV-OpImageBlockMatchWindow-09216
@@ -4329,11 +4551,11 @@ Any shader invocation executed by this command **must**
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-09600) VUID-vkCmdExecuteGeneratedCommandsNV-None-09600
 
 If a descriptor with type equal to any of
-`VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM`,
-`VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` is accessed as a result of
+[VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](../descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](../descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](../descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](../descriptorsets.html#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](../descriptorsets.html#VkDescriptorType) is accessed as a result of
 this command, all image subresources identified by that descriptor **must**
 be in the image layout identified when the descriptor was written
 
@@ -4341,7 +4563,7 @@ be in the image layout identified when the descriptor was written
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-commandBuffer-10746) VUID-vkCmdExecuteGeneratedCommandsNV-commandBuffer-10746
 
 The `VkDeviceMemory` object allocated from a `VkMemoryHeap` with
-the `VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property that is bound to
+the [VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](../memory.html#VkMemoryHeapFlagBits) property that is bound to
 a resource accessed as a result of this command **must** be the active
 bound [bound tile memory object](../memory.html#memory-bind-tile-memory) in
 `commandBuffer`
@@ -4351,8 +4573,8 @@ bound [bound tile memory object](../memory.html#memory-bind-tile-memory) in
 
 If this command is recorded inside a [tile    shading render pass](../renderpass.html#renderpass-tile-shading) instance, the stages corresponding to the pipeline
 bind point used by this command **must** only include
-`VK_SHADER_STAGE_VERTEX_BIT`, `VK_SHADER_STAGE_FRAGMENT_BIT`,
-and/or `VK_SHADER_STAGE_COMPUTE_BIT`
+[VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits), [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits),
+and/or [VK_SHADER_STAGE_COMPUTE_BIT](../pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-10679) VUID-vkCmdExecuteGeneratedCommandsNV-None-10679
@@ -4361,21 +4583,20 @@ If this command is recorded where
 [per-tile execution model](../renderpass.html#renderpass-per-tile-execution-model) is
 enabled, there **must** be no access to any image while the image was be
 transitioned to the
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` layout
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](../resources.html#VkImageLayout) layout
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-pDescription-09900) VUID-vkCmdExecuteGeneratedCommandsNV-pDescription-09900
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](../descriptorsets.html#VkDescriptorType) descriptor is accessed as a
 result of this command, then the underlying [VkTensorARM](../resources.html#VkTensorARM) object
-**must** have been created with a
-[VkTensorCreateInfoARM](../resources.html#VkTensorCreateInfoARM)::`pDescription` whose `usage` member
-contained `VK_TENSOR_USAGE_SHADER_BIT_ARM`
+**must** have been created with the [VK_TENSOR_USAGE_SHADER_BIT_ARM](../resources.html#VkTensorUsageFlagBitsARM)
+usage flag set
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-dimensionCount-09905) VUID-vkCmdExecuteGeneratedCommandsNV-dimensionCount-09905
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](../descriptorsets.html#VkDescriptorType) descriptor is accessed as a
 result of this command, then the `Rank` of the `OpTypeTensorARM`
 of the tensor resource variable **must** be equal to the
 `dimensionCount` provided via
@@ -4385,11 +4606,347 @@ underlying [VkTensorARM](../resources.html#VkTensorARM) object
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-OpTypeTensorARM-09906) VUID-vkCmdExecuteGeneratedCommandsNV-OpTypeTensorARM-09906
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](../descriptorsets.html#VkDescriptorType) descriptor is accessed as a
 result of this command, then the element type of the
 `OpTypeTensorARM` of the tensor resource variable **must** be
 [compatible](../../appendices/spirvenv.html#spirvenv-tensor-formats) with the [VkFormat](../formats.html#VkFormat) of the
 [VkTensorViewARM](../resources.html#VkTensorViewARM) used for the access
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11297) VUID-vkCmdExecuteGeneratedCommandsNV-None-11297
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses a `OpTypeStruct` decorated with `Block` or
+`BufferBlock` using that mapping, the calculated offset for the
+resource heap **must** be a multiple of [    `bufferDescriptorAlignment`](../limits.html#limits-bufferDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11298) VUID-vkCmdExecuteGeneratedCommandsNV-None-11298
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses an `OpTypeImage` or `OpTypeSampledImage` using
+that mapping, the calculated offset for the resource heap **must** be
+a multiple of [    `imageDescriptorAlignment`](../limits.html#limits-imageDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11299) VUID-vkCmdExecuteGeneratedCommandsNV-None-11299
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses an `OpTypeSampler` or `OpTypeSampledImage` using
+that mapping, the calculated offset for the sampler heap **must** be
+a multiple of [    `samplerDescriptorAlignment`](../limits.html#limits-samplerDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11397) VUID-vkCmdExecuteGeneratedCommandsNV-None-11397
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses an `OpTypeTensorARM` using that mapping, the
+calculated offset for the resource heap **must** be a multiple of
+[`tensorDescriptorAlignment`](../limits.html#limits-tensorDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11300) VUID-vkCmdExecuteGeneratedCommandsNV-None-11300
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and a
+shader accesses a resource using that mapping, the value of the address
+at the expected location in push data **must** be a multiple of 4
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11301) VUID-vkCmdExecuteGeneratedCommandsNV-None-11301
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and a
+shader accesses a resource using that mapping, the value of the address
+at the expected location in push data **must** be a valid
+`VkDeviceAddress` backed by physical memory at every offset
+specified by each mapping
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11302) VUID-vkCmdExecuteGeneratedCommandsNV-None-11302
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a valid
+`VkDeviceAddress`
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11304) VUID-vkCmdExecuteGeneratedCommandsNV-None-11304
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a multiple of 8
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11305) VUID-vkCmdExecuteGeneratedCommandsNV-None-11305
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a valid
+`VkDeviceAddress` backed by physical memory at every offset
+specified by each mapping
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11306) VUID-vkCmdExecuteGeneratedCommandsNV-None-11306
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and a shader accesses a resource using that mapping, the value of the
+address pointed to by the address in push data **must** be a valid
+`VkDeviceAddress`
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11308) VUID-vkCmdExecuteGeneratedCommandsNV-None-11308
+
+For each [descriptor heap](../descriptorheaps.html#descriptorheaps) that is statically used by
+[a bound shader](../shaders.html#shaders-binding), either directly or via a
+[descriptor mapping](../descriptorheaps.html#descriptorheaps-bindings), a valid descriptor heap
+**must** be bound
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11309) VUID-vkCmdExecuteGeneratedCommandsNV-None-11309
+
+If a [bound shader](../shaders.html#shaders-binding) was created
+as a [VkShaderEXT](../shaders.html#VkShaderEXT) with the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline with the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR) flag, execution of
+this command **must** not result in any descriptor read accessing data
+outside of the user range of the respective heap bound by
+`vkCmdBind*HeapEXT` commands
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11372) VUID-vkCmdExecuteGeneratedCommandsNV-None-11372
+
+If any stage of the [VkPipeline](../pipelines.html#VkPipeline) object bound to the pipeline bind
+point used by this command accesses a uniform buffer or uniform texel
+buffer through a descriptor in the bound resource heap,
+that stage was created without enabling either
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](../pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](../pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
+`uniformBuffers`,
+the [`robustBufferAccess2`](../features.html#features-robustBufferAccess2) feature
+is not enabled,
+and the [`robustBufferAccess`](../features.html#features-robustBufferAccess)
+feature is not enabled, that stage **must** not access values outside of
+the range of the descriptor specified via [VkDeviceAddressRangeEXT](../fundamentals.html#VkDeviceAddressRangeEXT)
+when the descriptor was written
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11373) VUID-vkCmdExecuteGeneratedCommandsNV-None-11373
+
+If any stage of the [VkPipeline](../pipelines.html#VkPipeline) object bound to the pipeline bind
+point used by this command accesses a storage buffer or storage texel
+buffer through a descriptor in the bound resource heap,
+that stage was created without enabling either
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](../pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](../pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
+`storageBuffers`,
+the [`robustBufferAccess2`](../features.html#features-robustBufferAccess2) feature
+is not enabled,
+and the [`robustBufferAccess`](../features.html#features-robustBufferAccess)
+feature is not enabled, that stage **must** not access values outside of
+the range of the descriptor specified by [VkDeviceAddressRangeEXT](../fundamentals.html#VkDeviceAddressRangeEXT)
+when the descriptor was written
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11374) VUID-vkCmdExecuteGeneratedCommandsNV-None-11374
+
+If
+the [`robustBufferAccess2`](../features.html#features-robustBufferAccess2) feature
+is not enabled,
+the [`robustBufferAccess`](../features.html#features-robustBufferAccess) feature is
+not enabled, and any [VkShaderEXT](../shaders.html#VkShaderEXT) bound to a stage corresponding to
+the pipeline bind point used by this command accesses a uniform buffer,
+uniform texel buffer, storage buffer, or storage texel buffer, that
+shader **must** not access values outside of the range of the buffer as
+specified by [VkDeviceAddressRangeEXT](../fundamentals.html#VkDeviceAddressRangeEXT) when the descriptor was
+written
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-pBindInfo-11375) VUID-vkCmdExecuteGeneratedCommandsNV-pBindInfo-11375
+
+If any [bound shader](../shaders.html#shaders-binding) uses an embedded sampler via a
+[descriptor mapping](../descriptorheaps.html#descriptorheaps-bindings), the value of
+`pBindInfo->reservedRangeSize` set for [vkCmdBindSamplerHeapEXT](../descriptorheaps.html#vkCmdBindSamplerHeapEXT)
+**must** be greater than or equal to
+[    `minSamplerHeapReservedRangeWithEmbedded`](../limits.html#limits-minSamplerHeapReservedRangeWithEmbedded)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11376) VUID-vkCmdExecuteGeneratedCommandsNV-None-11376
+
+If a [bound shader](../shaders.html#shaders-binding) was created
+as a [VkShaderEXT](../shaders.html#VkShaderEXT) with the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline with the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a push constant value, that value **must** have been set by
+[vkCmdPushDataEXT](../descriptorheaps.html#vkCmdPushDataEXT)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11398) VUID-vkCmdExecuteGeneratedCommandsNV-None-11398
+
+If a [bound shader](../shaders.html#shaders-binding) was created with a
+[descriptor mapping](../descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_DATA_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_DATA_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_RESOURCE_HEAP_DATA_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), or
+[VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a resource using that mapping, the access **must** not be
+[out of bounds](../shaders.html#shaders-execution-memory-access-bounds)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11437) VUID-vkCmdExecuteGeneratedCommandsNV-None-11437
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), or
+[VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a resource using that mapping, the buffer from which the
+address in push data was queried **must** have been created with the
+[VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](../resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11438) VUID-vkCmdExecuteGeneratedCommandsNV-None-11438
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a uniform buffer using that mapping, the address that the
+uniform buffer is mapped to **must** have been queried from a buffer
+created with the [VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](../resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11441) VUID-vkCmdExecuteGeneratedCommandsNV-None-11441
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a uniform buffer using that mapping, the address that the
+uniform buffer is mapped to **must** be aligned to
+[    `minUniformBufferOffsetAlignment`](../limits.html#limits-minUniformBufferOffsetAlignment)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11439) VUID-vkCmdExecuteGeneratedCommandsNV-None-11439
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a storage buffer using that mapping, the address that the
+storage buffer is mapped to **must** have been queried from a buffer
+created with the [VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](../resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11442) VUID-vkCmdExecuteGeneratedCommandsNV-None-11442
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a storage buffer using that mapping, the address that the
+storage buffer is mapped to **must** be aligned to
+[    `minStorageBufferOffsetAlignment`](../limits.html#limits-minStorageBufferOffsetAlignment)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11485) VUID-vkCmdExecuteGeneratedCommandsNV-None-11485
+
+    If a pipeline is bound to the pipeline bind point used by this command,
+    or shader is bound to a shader stage used by this command,
+    and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+    [VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+    or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+    accesses an acceleration structure using that mapping, the address that
+    the acceleration structure is mapped to **must** be an acceleration
+    structure
+    address retrieved from a [VkAccelerationStructureKHR](../resources.html#VkAccelerationStructureKHR) object via
+    [vkGetAccelerationStructureDeviceAddressKHR](../resources.html#vkGetAccelerationStructureDeviceAddressKHR)
+or
+    handle retrieved from a [VkAccelerationStructureNV](../resources.html#VkAccelerationStructureNV) object via
+    [vkGetAccelerationStructureHandleNV](../resources.html#vkGetAccelerationStructureHandleNV)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-index-11450) VUID-vkCmdExecuteGeneratedCommandsNV-index-11450
+
+If a shader uses a sampler descriptor to sample an image as a result of
+this command, and that sampler descriptor uses a custom border color
+with an index defined by
+[VkSamplerCustomBorderColorIndexCreateInfoEXT](../samplers.html#VkSamplerCustomBorderColorIndexCreateInfoEXT), the value of
+[VkSamplerCustomBorderColorIndexCreateInfoEXT](../samplers.html#VkSamplerCustomBorderColorIndexCreateInfoEXT)::`index` **must**
+have been registered before this command was recorded, and still be
+registered during the sampling operation, with an identically defined
+color
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-protectedNoFault-11455) VUID-vkCmdExecuteGeneratedCommandsNV-protectedNoFault-11455
+
+If [`protectedNoFault`](../devsandqueues.html#limits-protectedNoFault) is not supported,
+a pipeline is bound to the pipeline bind point used by this command,
+or a shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), the address
+that the resource is mapped to **must** have been queried from a buffer
+created without the [VK_BUFFER_CREATE_PROTECTED_BIT](../resources.html#VkBufferCreateFlagBits) create flag set
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-protectedNoFault-11456) VUID-vkCmdExecuteGeneratedCommandsNV-protectedNoFault-11456
+
+If [`protectedNoFault`](../devsandqueues.html#limits-protectedNoFault) is not supported,
+a pipeline is bound to the pipeline bind point used by this command,
+or a shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+the address of the indirect memory **must** have been queried from a buffer
+created without the [VK_BUFFER_CREATE_PROTECTED_BIT](../resources.html#VkBufferCreateFlagBits) create flag set
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-renderPass-02684) VUID-vkCmdExecuteGeneratedCommandsNV-renderPass-02684
@@ -4397,7 +4954,7 @@ result of this command, then the element type of the
 The current render pass **must** be [compatible](../renderpass.html#renderpass-compatibility)
 with the `renderPass` member of the
 `VkGraphicsPipelineCreateInfo` structure specified when creating the
-`VkPipeline` bound to `VK_PIPELINE_BIND_POINT_GRAPHICS`
+`VkPipeline` bound to [VK_PIPELINE_BIND_POINT_GRAPHICS](../pipelines.html#VkPipelineBindPoint)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-subpass-02685) VUID-vkCmdExecuteGeneratedCommandsNV-subpass-02685
@@ -4405,13 +4962,7 @@ with the `renderPass` member of the
 The subpass index of the current render pass **must** be equal to the
 `subpass` member of the `VkGraphicsPipelineCreateInfo` structure
 specified when creating the `VkPipeline` bound to
-`VK_PIPELINE_BIND_POINT_GRAPHICS`
-
-* 
-[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07748) VUID-vkCmdExecuteGeneratedCommandsNV-None-07748
-
-If any shader statically accesses an input attachment, a valid
-descriptor **must** be bound to the pipeline via a descriptor set
+[VK_PIPELINE_BIND_POINT_GRAPHICS](../pipelines.html#VkPipelineBindPoint)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-OpTypeImage-07468) VUID-vkCmdExecuteGeneratedCommandsNV-OpTypeImage-07468
@@ -4439,9 +4990,9 @@ Input attachment views accessed in a dynamic render pass with a
 `InputAttachmentIndex` referenced by
 [VkRenderingInputAttachmentIndexInfo](../interfaces.html#VkRenderingInputAttachmentIndexInfo), or no
 `InputAttachmentIndex` if
-[VkRenderingInputAttachmentIndexInfo](../interfaces.html#VkRenderingInputAttachmentIndexInfo):`pDepthInputAttachmentIndex`
+[VkRenderingInputAttachmentIndexInfo](../interfaces.html#VkRenderingInputAttachmentIndexInfo)::`pDepthInputAttachmentIndex`
 or
-[VkRenderingInputAttachmentIndexInfo](../interfaces.html#VkRenderingInputAttachmentIndexInfo):`pStencilInputAttachmentIndex`
+[VkRenderingInputAttachmentIndexInfo](../interfaces.html#VkRenderingInputAttachmentIndexInfo)::`pStencilInputAttachmentIndex`
 are `NULL`, **must** be created with a [VkImageView](../resources.html#VkImageView) that is compatible
 with the corresponding color, depth, or stencil attachment in
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)
@@ -4451,9 +5002,9 @@ with the corresponding color, depth, or stencil attachment in
 
 Input attachment views accessed in a dynamic render pass via a shader
 object **must** have an `InputAttachmentIndex` if both
-[VkRenderingInputAttachmentIndexInfo](../interfaces.html#VkRenderingInputAttachmentIndexInfo):`pDepthInputAttachmentIndex`
+[VkRenderingInputAttachmentIndexInfo](../interfaces.html#VkRenderingInputAttachmentIndexInfo)::`pDepthInputAttachmentIndex`
 and
-[VkRenderingInputAttachmentIndexInfo](../interfaces.html#VkRenderingInputAttachmentIndexInfo):`pStencilInputAttachmentIndex`
+[VkRenderingInputAttachmentIndexInfo](../interfaces.html#VkRenderingInputAttachmentIndexInfo)::`pStencilInputAttachmentIndex`
 are non-`NULL`
 
 * 
@@ -4476,80 +5027,62 @@ by this command
 
 If a color attachment is written by any prior command in this subpass or
 by the load, store, or resolve operations for this subpass,
-[feedback loop](../renderpass.html#renderpass-feedbackloop) is not enabled for it, and
-either:
-
-the `VK_PIPELINE_CREATE_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT` is
-set on the bound pipeline
-or
-
-* 
-the last call to [vkCmdSetAttachmentFeedbackLoopEnableEXT](../renderpass.html#vkCmdSetAttachmentFeedbackLoopEnableEXT) included
-`VK_IMAGE_ASPECT_COLOR_BIT` and
-
-there is no bound graphics pipeline or
-
-* 
-the bound graphics pipeline was created with
-`VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT`
-
+and [feedback loop](../renderpass.html#renderpass-feedbackloop) is not enabled for
+[VK_IMAGE_ASPECT_COLOR_BIT](../resources.html#VkImageAspectFlagBits) on that attachment,
 it **must** not be accessed in any way other than as an attachment by this
 command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-10796) VUID-vkCmdExecuteGeneratedCommandsNV-None-10796
 
 If a depth attachment is written by any prior command in this subpass or
 by the load, store, or resolve operations for this subpass,
-[feedback loop](../renderpass.html#renderpass-feedbackloop) is not enabled for it, and
-either:
-
-* 
-
-the
-`VK_PIPELINE_CREATE_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT`
-is set on the bound pipeline
-or
-
-* 
-the last call to [vkCmdSetAttachmentFeedbackLoopEnableEXT](../renderpass.html#vkCmdSetAttachmentFeedbackLoopEnableEXT) included
-`VK_IMAGE_ASPECT_DEPTH_BIT` and
-
-there is no bound graphics pipeline or
-
-* 
-the bound graphics pipeline was created with
-`VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT`
-
+and [feedback loop](../renderpass.html#renderpass-feedbackloop) is not enabled for
+[VK_IMAGE_ASPECT_DEPTH_BIT](../resources.html#VkImageAspectFlagBits) on that attachment,
 it **must** not be accessed in any way other than as an attachment by this
 command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-10797) VUID-vkCmdExecuteGeneratedCommandsNV-None-10797
 
 If a stencil attachment is written by any prior command in this subpass
 or by the load, store, or resolve operations for this subpass,
-[feedback loop](../renderpass.html#renderpass-feedbackloop) is not enabled for it, and
-either:
-
-* 
-
-the
-`VK_PIPELINE_CREATE_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT`
-is set on the bound pipeline
-or
-
-* 
-the last call to [vkCmdSetAttachmentFeedbackLoopEnableEXT](../renderpass.html#vkCmdSetAttachmentFeedbackLoopEnableEXT) included
-`VK_IMAGE_ASPECT_STENCIL_BIT` and
-
-there is no bound graphics pipeline or
-
-* 
-the bound graphics pipeline was created with
-`VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT`
-
+and [feedback loop](../renderpass.html#renderpass-feedbackloop) is not enabled for
+[VK_IMAGE_ASPECT_STENCIL_BIT](../resources.html#VkImageAspectFlagBits) on that attachment,
 it **must** not be accessed in any way other than as an attachment by this
 command
 
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-12338) VUID-vkCmdExecuteGeneratedCommandsNV-None-12338
+
+If a color attachment is read in this command in any way other than as
+an attachment, or has been read by any prior command in this subpass as
+a non-attachment,
+and [feedback loop](../renderpass.html#renderpass-feedbackloop) is not enabled for
+[VK_IMAGE_ASPECT_COLOR_BIT](../resources.html#VkImageAspectFlagBits) on that attachment,
+the color attachment **must** not be written to by this command
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-12339) VUID-vkCmdExecuteGeneratedCommandsNV-None-12339
+
+If a depth attachment is read in this command in any way other than as
+an attachment, or has been read by any prior command in this subpass as
+a non-attachment,
+and [feedback loop](../renderpass.html#renderpass-feedbackloop) is not enabled for
+[VK_IMAGE_ASPECT_DEPTH_BIT](../resources.html#VkImageAspectFlagBits) on that attachment,
+the depth attachment **must** not be written to by this command
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-12340) VUID-vkCmdExecuteGeneratedCommandsNV-None-12340
+
+If a stencil attachment is read in this command in any way other than as
+an attachment, or has been read by any prior command in this subpass as
+a non-attachment,
+and [feedback loop](../renderpass.html#renderpass-feedbackloop) is not enabled for
+[VK_IMAGE_ASPECT_STENCIL_BIT](../resources.html#VkImageAspectFlagBits) on that attachment,
+the stencil attachment **must** not be written to by this command
+
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-09003) VUID-vkCmdExecuteGeneratedCommandsNV-None-09003
 
 If an attachment is written by any prior command in this subpass or by
@@ -4557,413 +5090,440 @@ the load, store, or resolve operations for this subpass, it **must** not be
 accessed in any way other than as an attachment, storage image, or
 sampled image by this command
 
-[](#VUID-vkCmdExecuteGeneratedCommandsNV-None-06539) VUID-vkCmdExecuteGeneratedCommandsNV-None-06539
-
-If any previously recorded command in the current subpass accessed an
-image subresource used as an attachment in this subpass in any way other
-than as an attachment, this command **must** not write to that image
-subresource as an attachment
-
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-06886) VUID-vkCmdExecuteGeneratedCommandsNV-None-06886
 
 If the current render pass instance uses a depth/stencil attachment with
 a read-only layout for the depth aspect, [depth    writes](../fragops.html#fragops-depth-write) **must** be disabled
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-06887) VUID-vkCmdExecuteGeneratedCommandsNV-None-06887
 
 If the current render pass instance uses a depth/stencil attachment with
 a read-only layout for the stencil aspect, both front and back
 `writeMask` are not zero, and stencil test is enabled,
-[all stencil ops](../fragops.html#fragops-stencil) **must** be `VK_STENCIL_OP_KEEP`
+[all stencil ops](../fragops.html#fragops-stencil) **must** be [VK_STENCIL_OP_KEEP](../fragops.html#VkStencilOp)
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07831) VUID-vkCmdExecuteGeneratedCommandsNV-None-07831
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_VIEWPORT` dynamic state enabled then
+[VK_DYNAMIC_STATE_VIEWPORT](../pipelines.html#VkDynamicState) dynamic state enabled then
 [vkCmdSetViewport](../vertexpostproc.html#vkCmdSetViewport) **must** have been called and not subsequently
 [invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer
 prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07832) VUID-vkCmdExecuteGeneratedCommandsNV-None-07832
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SCISSOR` dynamic state enabled then
+[VK_DYNAMIC_STATE_SCISSOR](../pipelines.html#VkDynamicState) dynamic state enabled then
 [vkCmdSetScissor](../fragops.html#vkCmdSetScissor) **must** have been called and not subsequently
 [invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer
 prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08617) VUID-vkCmdExecuteGeneratedCommandsNV-None-08617
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_LINE_WIDTH` dynamic state enabled, the
+[VK_DYNAMIC_STATE_LINE_WIDTH](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [effective rasterization input    topology](../drawing.html#drawing-rasterization-input-topology) is in line topology class, then [vkCmdSetLineWidth](../primsrast.html#vkCmdSetLineWidth) **must**
 have been called and not subsequently [    invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer prior to this drawing
 command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07834) VUID-vkCmdExecuteGeneratedCommandsNV-None-07834
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_BIAS` dynamic state enabled, the
+[VK_DYNAMIC_STATE_DEPTH_BIAS](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of `depthBiasEnable`
-is `VK_TRUE`, then [vkCmdSetDepthBias](../primsrast.html#vkCmdSetDepthBias)
+is [VK_TRUE](../fundamentals.html#VK_TRUE), then [vkCmdSetDepthBias](../primsrast.html#vkCmdSetDepthBias)
 or [vkCmdSetDepthBias2EXT](../primsrast.html#vkCmdSetDepthBias2EXT)
 **must** have been called and not subsequently [    invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer prior to this drawing
 command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07835) VUID-vkCmdExecuteGeneratedCommandsNV-None-07835
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_BLEND_CONSTANTS` dynamic state enabled, the
+[VK_DYNAMIC_STATE_BLEND_CONSTANTS](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and an active color
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and an active color
 attachment [current value](../pipelines.html#dynamic-state-current-value) of
-`blendEnable` is `VK_TRUE` with a blend equations where any
-[VkBlendFactor](../framebuffer.html#VkBlendFactor) member is `VK_BLEND_FACTOR_CONSTANT_COLOR`,
-`VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR`,
-`VK_BLEND_FACTOR_CONSTANT_ALPHA`, or
-`VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA`, then
+`blendEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE) with a blend equations where any
+[VkBlendFactor](../framebuffer.html#VkBlendFactor) member is [VK_BLEND_FACTOR_CONSTANT_COLOR](../framebuffer.html#VkBlendFactor),
+[VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR](../framebuffer.html#VkBlendFactor),
+[VK_BLEND_FACTOR_CONSTANT_ALPHA](../framebuffer.html#VkBlendFactor), or
+[VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA](../framebuffer.html#VkBlendFactor), then
 [vkCmdSetBlendConstants](../framebuffer.html#vkCmdSetBlendConstants) **must** have been called and not subsequently
 [invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer
 prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07836) VUID-vkCmdExecuteGeneratedCommandsNV-None-07836
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_BOUNDS` dynamic state enabled, the
+[VK_DYNAMIC_STATE_DEPTH_BOUNDS](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`depthBoundsTestEnable` is `VK_TRUE`, then
+`depthBoundsTestEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetDepthBounds](../fragops.html#vkCmdSetDepthBounds) **must** have been called and not subsequently
 [invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer
 prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07837) VUID-vkCmdExecuteGeneratedCommandsNV-None-07837
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK` dynamic state enabled, the
+[VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`stencilTestEnable` is `VK_TRUE`, then
+`stencilTestEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetStencilCompareMask](../fragops.html#vkCmdSetStencilCompareMask) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07838) VUID-vkCmdExecuteGeneratedCommandsNV-None-07838
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_STENCIL_WRITE_MASK` dynamic state enabled, the
+[VK_DYNAMIC_STATE_STENCIL_WRITE_MASK](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`stencilTestEnable` is `VK_TRUE`, then
+`stencilTestEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetStencilWriteMask](../fragops.html#vkCmdSetStencilWriteMask) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07839) VUID-vkCmdExecuteGeneratedCommandsNV-None-07839
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_STENCIL_REFERENCE` dynamic state enabled, the
+[VK_DYNAMIC_STATE_STENCIL_REFERENCE](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of and
-`rasterizerDiscardEnable` is `VK_FALSE`, the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`stencilTestEnable` is `VK_TRUE`, then
+`stencilTestEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetStencilReference](../fragops.html#vkCmdSetStencilReference) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-maxMultiviewInstanceIndex-02688) VUID-vkCmdExecuteGeneratedCommandsNV-maxMultiviewInstanceIndex-02688
 
 If the draw is recorded in a render pass instance with multiview
 enabled, the maximum instance index **must** be less than or equal to
 [VkPhysicalDeviceMultiviewProperties](../limits.html#VkPhysicalDeviceMultiviewProperties)::`maxMultiviewInstanceIndex`
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsEnable-02689) VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsEnable-02689
 
 If the bound graphics pipeline was created with
 [VkPipelineSampleLocationsStateCreateInfoEXT](../primsrast.html#VkPipelineSampleLocationsStateCreateInfoEXT)::`sampleLocationsEnable`
-set to `VK_TRUE`, then the active depth attachment **must** have been
+set to [VK_TRUE](../fundamentals.html#VK_TRUE), then the active depth attachment **must** have been
 created with the
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT` bit set
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](../resources.html#VkImageCreateFlagBits) bit set
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07634) VUID-vkCmdExecuteGeneratedCommandsNV-None-07634
 
 If the `[VK_EXT_sample_locations](../../appendices/extensions.html#VK_EXT_sample_locations)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT` dynamic state
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state
 enabled, and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetSampleLocationsEnableEXT](../primsrast.html#vkCmdSetSampleLocationsEnableEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-06666) VUID-vkCmdExecuteGeneratedCommandsNV-None-06666
 
 If the `[VK_EXT_sample_locations](../../appendices/extensions.html#VK_EXT_sample_locations)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` dynamic state enabled, the
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`sampleLocationsEnable` is `VK_TRUE`, then
+`sampleLocationsEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetSampleLocationsEXT](../primsrast.html#vkCmdSetSampleLocationsEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07840) VUID-vkCmdExecuteGeneratedCommandsNV-None-07840
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_CULL_MODE` dynamic state enabled, and the
+[VK_DYNAMIC_STATE_CULL_MODE](../pipelines.html#VkDynamicState) dynamic state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetCullMode](../primsrast.html#vkCmdSetCullMode) **must** have been called and not subsequently
 [invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer
 prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07841) VUID-vkCmdExecuteGeneratedCommandsNV-None-07841
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_FRONT_FACE` dynamic state enabled, and the
+[VK_DYNAMIC_STATE_FRONT_FACE](../pipelines.html#VkDynamicState) dynamic state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetFrontFace](../primsrast.html#vkCmdSetFrontFace) **must** have been called and not subsequently
 [invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer
 prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07843) VUID-vkCmdExecuteGeneratedCommandsNV-None-07843
 
  If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE` dynamic state enabled, and the
+[VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE](../pipelines.html#VkDynamicState) dynamic state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`,
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE),
 [vkCmdSetDepthTestEnable](../fragops.html#vkCmdSetDepthTestEnable) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07844) VUID-vkCmdExecuteGeneratedCommandsNV-None-07844
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE` dynamic state enabled, and the
+[VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE](../pipelines.html#VkDynamicState) dynamic state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of `depthTestEnable`
-is `VK_TRUE`, then [vkCmdSetDepthWriteEnable](../fragops.html#vkCmdSetDepthWriteEnable) **must** have been
+is [VK_TRUE](../fundamentals.html#VK_TRUE), then [vkCmdSetDepthWriteEnable](../fragops.html#vkCmdSetDepthWriteEnable) **must** have been
 called and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in
 the current command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07845) VUID-vkCmdExecuteGeneratedCommandsNV-None-07845
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_COMPARE_OP` dynamic state enabled, the
+[VK_DYNAMIC_STATE_DEPTH_COMPARE_OP](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of `depthTestEnable`
-is `VK_TRUE`, then [vkCmdSetDepthCompareOp](../fragops.html#vkCmdSetDepthCompareOp) **must** have been
+is [VK_TRUE](../fundamentals.html#VK_TRUE), then [vkCmdSetDepthCompareOp](../fragops.html#vkCmdSetDepthCompareOp) **must** have been
 called and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in
 the current command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07846) VUID-vkCmdExecuteGeneratedCommandsNV-None-07846
 
 If the [`depthBounds`](../features.html#features-depthBounds) feature is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE` dynamic state enabled,
+[VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetDepthBoundsTestEnable](../fragops.html#vkCmdSetDepthBoundsTestEnable) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07847) VUID-vkCmdExecuteGeneratedCommandsNV-None-07847
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE` dynamic state enabled, and
+[VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE](../pipelines.html#VkDynamicState) dynamic state enabled, and
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetStencilTestEnable](../fragops.html#vkCmdSetStencilTestEnable) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07848) VUID-vkCmdExecuteGeneratedCommandsNV-None-07848
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_STENCIL_OP` dynamic state enabled, the
+[VK_DYNAMIC_STATE_STENCIL_OP](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`stencilTestEnable` is `VK_TRUE`, then [vkCmdSetStencilOp](../fragops.html#vkCmdSetStencilOp)
+`stencilTestEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then [vkCmdSetStencilOp](../fragops.html#vkCmdSetStencilOp)
 **must** have been called and not subsequently [    invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer prior to this drawing
 command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-viewportCount-03417) VUID-vkCmdExecuteGeneratedCommandsNV-viewportCount-03417
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` dynamic state enabled,
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the state is not inherited,
 then [vkCmdSetViewportWithCount](../vertexpostproc.html#vkCmdSetViewportWithCount) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-scissorCount-03418) VUID-vkCmdExecuteGeneratedCommandsNV-scissorCount-03418
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT` dynamic state enabled,
+[VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the state is not inherited,
 then [vkCmdSetScissorWithCount](../vertexpostproc.html#vkCmdSetScissorWithCount) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-viewportCount-03419) VUID-vkCmdExecuteGeneratedCommandsNV-viewportCount-03419
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with both the
-`VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT` and
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` dynamic states enabled,
+[VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](../pipelines.html#VkDynamicState) and
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) dynamic states enabled,
 and the state is not inherited,
 then the `viewportCount` parameter of
 `vkCmdSetViewportWithCount` **must** match the `scissorCount`
 parameter of `vkCmdSetScissorWithCount`
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-viewportCount-04137) VUID-vkCmdExecuteGeneratedCommandsNV-viewportCount-04137
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` dynamic state enabled, but
-not the `VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV` dynamic state
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) dynamic state enabled, but
+not the [VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, then the bound graphics pipeline **must** have been created with
 [VkPipelineViewportWScalingStateCreateInfoNV](../vertexpostproc.html#VkPipelineViewportWScalingStateCreateInfoNV)::`viewportCount`
 greater or equal to the `viewportCount` parameter in the last call
 to [vkCmdSetViewportWithCount](../vertexpostproc.html#vkCmdSetViewportWithCount)
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-viewportCount-04138) VUID-vkCmdExecuteGeneratedCommandsNV-viewportCount-04138
 
 If the `[VK_NV_clip_space_w_scaling](../../appendices/extensions.html#VK_NV_clip_space_w_scaling)` extension is enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` and
-`VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV` dynamic state enabled, the
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) and
+[VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`viewportWScalingEnable` is `VK_TRUE`, then
+`viewportWScalingEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetViewportWScalingNV](../vertexpostproc.html#vkCmdSetViewportWScalingNV) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08636) VUID-vkCmdExecuteGeneratedCommandsNV-None-08636
 
 If the `[VK_NV_clip_space_w_scaling](../../appendices/extensions.html#VK_NV_clip_space_w_scaling)` extension is enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` and
-`VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV` dynamic state enabled, the
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) and
+[VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`viewportWScalingEnable` is `VK_TRUE`, then the
+`viewportWScalingEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then the
 `viewportCount` parameter in the last call to
 [vkCmdSetViewportWScalingNV](../vertexpostproc.html#vkCmdSetViewportWScalingNV) **must** be greater than or equal to the
 `viewportCount` parameter in the last call to
 [vkCmdSetViewportWithCount](../vertexpostproc.html#vkCmdSetViewportWithCount)
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-viewportCount-04139) VUID-vkCmdExecuteGeneratedCommandsNV-viewportCount-04139
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` dynamic state enabled, but
-not the `VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV` dynamic
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) dynamic state enabled, but
+not the [VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV](../pipelines.html#VkDynamicState) dynamic
 state enabled, then the bound graphics pipeline **must** have been created
 with
 [VkPipelineViewportShadingRateImageStateCreateInfoNV](../primsrast.html#VkPipelineViewportShadingRateImageStateCreateInfoNV)::`viewportCount`
 greater or equal to the `viewportCount` parameter in the last call
 to [vkCmdSetViewportWithCount](../vertexpostproc.html#vkCmdSetViewportWithCount)
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-shadingRateImage-09233) VUID-vkCmdExecuteGeneratedCommandsNV-shadingRateImage-09233
 
 If the [`shadingRateImage`](../features.html#features-shadingRateImage) feature is
 enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV` and the
+[VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV](../pipelines.html#VkDynamicState) and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetCoarseSampleOrderNV](../primsrast.html#vkCmdSetCoarseSampleOrderNV) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-shadingRateImage-09234) VUID-vkCmdExecuteGeneratedCommandsNV-shadingRateImage-09234
 
 If the [`shadingRateImage`](../features.html#features-shadingRateImage) feature is
 enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` and
-`VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV` dynamic state
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) and
+[VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`shadingRateImageEnable` is `VK_TRUE`, then
+`shadingRateImageEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetViewportShadingRatePaletteNV](../primsrast.html#vkCmdSetViewportShadingRatePaletteNV) **must** have been called and
 not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08637) VUID-vkCmdExecuteGeneratedCommandsNV-None-08637
 
 If the [`shadingRateImage`](../features.html#features-shadingRateImage) feature is
 enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` and
-`VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV` dynamic state
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) and
+[VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`shadingRateImageEnable` is `VK_TRUE`, then the
+`shadingRateImageEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then the
 `viewportCount` parameter in the last call to
 [vkCmdSetViewportShadingRatePaletteNV](../primsrast.html#vkCmdSetViewportShadingRatePaletteNV) **must** be greater than or
 equal to the `viewportCount` parameter in the last call to
 [vkCmdSetViewportWithCount](../vertexpostproc.html#vkCmdSetViewportWithCount)
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-VkPipelineVieportCreateInfo-04141) VUID-vkCmdExecuteGeneratedCommandsNV-VkPipelineVieportCreateInfo-04141
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` dynamic state enabled and a
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) dynamic state enabled and a
 [VkPipelineViewportSwizzleStateCreateInfoNV](../vertexpostproc.html#VkPipelineViewportSwizzleStateCreateInfoNV) structure chained from
 [VkPipelineViewportStateCreateInfo](../vertexpostproc.html#VkPipelineViewportStateCreateInfo), then the bound graphics
 pipeline **must** have been created with
@@ -4971,10 +5531,11 @@ pipeline **must** have been created with
 greater or equal to the `viewportCount` parameter in the last call
 to [vkCmdSetViewportWithCount](../vertexpostproc.html#vkCmdSetViewportWithCount)
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-VkPipelineVieportCreateInfo-04142) VUID-vkCmdExecuteGeneratedCommandsNV-VkPipelineVieportCreateInfo-04142
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` dynamic state enabled and a
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) dynamic state enabled and a
 [VkPipelineViewportExclusiveScissorStateCreateInfoNV](../fragops.html#VkPipelineViewportExclusiveScissorStateCreateInfoNV) structure
 chained from [VkPipelineViewportStateCreateInfo](../vertexpostproc.html#VkPipelineViewportStateCreateInfo), then the bound
 graphics pipeline **must** have been created with
@@ -4982,70 +5543,76 @@ graphics pipeline **must** have been created with
 greater or equal to the `viewportCount` parameter in the last call
 to [vkCmdSetViewportWithCount](../vertexpostproc.html#vkCmdSetViewportWithCount)
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07878) VUID-vkCmdExecuteGeneratedCommandsNV-None-07878
 
 If the [`exclusiveScissor`](../features.html#features-exclusiveScissor) feature is
 enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV` dynamic state
+[VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, then [vkCmdSetExclusiveScissorEnableNV](../fragops.html#vkCmdSetExclusiveScissorEnableNV) **must** have been
 called and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in
 the current command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07879) VUID-vkCmdExecuteGeneratedCommandsNV-None-07879
 
 If the [`exclusiveScissor`](../features.html#features-exclusiveScissor) feature is
 enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV` dynamic state enabled, and
+[VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV](../pipelines.html#VkDynamicState) dynamic state enabled, and
 the most recent call to [vkCmdSetExclusiveScissorEnableNV](../fragops.html#vkCmdSetExclusiveScissorEnableNV) in the
 current command buffer set any element of `pExclusiveScissorEnables`
-to `VK_TRUE`, then [vkCmdSetExclusiveScissorNV](../fragops.html#vkCmdSetExclusiveScissorNV) **must** have been
+to [VK_TRUE](../fundamentals.html#VK_TRUE), then [vkCmdSetExclusiveScissorNV](../fragops.html#vkCmdSetExclusiveScissorNV) **must** have been
 called and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in
 the current command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-04876) VUID-vkCmdExecuteGeneratedCommandsNV-None-04876
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE` dynamic state enabled,
+[VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE](../pipelines.html#VkDynamicState) dynamic state enabled,
 then [vkCmdSetRasterizerDiscardEnable](../primsrast.html#vkCmdSetRasterizerDiscardEnable) **must** have been called and
 not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-04877) VUID-vkCmdExecuteGeneratedCommandsNV-None-04877
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE` dynamic state enabled, and the
+[VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE](../pipelines.html#VkDynamicState) dynamic state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetDepthBiasEnable](../primsrast.html#vkCmdSetDepthBiasEnable) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-logicOp-04878) VUID-vkCmdExecuteGeneratedCommandsNV-logicOp-04878
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` or
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_LOGIC_OP_EXT` dynamic state enabled, the
+[VK_DYNAMIC_STATE_LOGIC_OP_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of `logicOpEnable` is
-`VK_TRUE`, then [vkCmdSetLogicOpEXT](../framebuffer.html#vkCmdSetLogicOpEXT) **must** have been called and
+[VK_TRUE](../fundamentals.html#VK_TRUE), then [vkCmdSetLogicOpEXT](../framebuffer.html#vkCmdSetLogicOpEXT) **must** have been called and
 not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-primitiveFragmentShadingRateWithMultipleViewports-04552) VUID-vkCmdExecuteGeneratedCommandsNV-primitiveFragmentShadingRateWithMultipleViewports-04552
 
 If the [    `primitiveFragmentShadingRateWithMultipleViewports`](../limits.html#limits-primitiveFragmentShadingRateWithMultipleViewports) limit is not
 supported, the bound graphics pipeline was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` dynamic state enabled, and
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) dynamic state enabled, and
 any of the shader stages of the bound graphics pipeline write to the
 `PrimitiveShadingRateKHR` built-in, then
 [vkCmdSetViewportWithCount](../vertexpostproc.html#vkCmdSetViewportWithCount) **must** have been called in the current
@@ -5053,6 +5620,7 @@ command buffer prior to this drawing command, and the
 `viewportCount` parameter of `vkCmdSetViewportWithCount` **must**
 be `1`
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-primitiveFragmentShadingRateWithMultipleViewports-08642) VUID-vkCmdExecuteGeneratedCommandsNV-primitiveFragmentShadingRateWithMultipleViewports-08642
 
 If the [    `primitiveFragmentShadingRateWithMultipleViewports`](../limits.html#limits-primitiveFragmentShadingRateWithMultipleViewports) limit is not
@@ -5063,29 +5631,30 @@ command buffer prior to this drawing command, and the
 `viewportCount` parameter of `vkCmdSetViewportWithCount` **must**
 be `1`
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-blendEnable-04727) VUID-vkCmdExecuteGeneratedCommandsNV-blendEnable-04727
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT` dynamic state enabled, the
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then for each color
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then for each color
 attachment, if the corresponding image view’s
 [format features](../resources.html#resources-image-view-format-features) do not contain
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT`, then the
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT](../formats.html#VkFormatFeatureFlagBits), then the
 corresponding [current value](../pipelines.html#dynamic-state-current-value) of
-`blendEnable` **must** be `VK_FALSE`
+`blendEnable` **must** be [VK_FALSE](../fundamentals.html#VK_FALSE)
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08644) VUID-vkCmdExecuteGeneratedCommandsNV-None-08644
 
 If
 a shader object is bound to any graphics stage or
-a graphics pipeline is bound, the [current    value](../pipelines.html#dynamic-state-current-value) of `rasterizerDiscardEnable` is `VK_FALSE`,
+a graphics pipeline is bound, the [current    value](../pipelines.html#dynamic-state-current-value) of `rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE),
 and none of the following is enabled:
 
-* 
 the `[VK_AMD_mixed_attachment_samples](../../appendices/extensions.html#VK_AMD_mixed_attachment_samples)` extension
 
 * 
@@ -5109,7 +5678,7 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering), the `imageView` member of
 `pDepthAttachment` is not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), and the `layout`
 member of `pDepthAttachment` is
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`, this command
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](../resources.html#VkImageLayout), this command
 **must** not write any values to the depth attachment
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-imageView-06173) VUID-vkCmdExecuteGeneratedCommandsNV-imageView-06173
@@ -5118,7 +5687,7 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering), the `imageView` member of
 `pStencilAttachment` is not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), and the
 `layout` member of `pStencilAttachment` is
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`, this command
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](../resources.html#VkImageLayout), this command
 **must** not write any values to the stencil attachment
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-imageView-06174) VUID-vkCmdExecuteGeneratedCommandsNV-imageView-06174
@@ -5127,7 +5696,7 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering), the `imageView` member of
 `pDepthAttachment` is not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), and the `layout`
 member of `pDepthAttachment` is
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`, this
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](../resources.html#VkImageLayout), this
 command **must** not write any values to the depth attachment
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-imageView-06175) VUID-vkCmdExecuteGeneratedCommandsNV-imageView-06175
@@ -5136,7 +5705,7 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering), the `imageView` member of
 `pStencilAttachment` is not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), and the
 `layout` member of `pStencilAttachment` is
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`, this
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](../resources.html#VkImageLayout), this
 command **must** not write any values to the stencil attachment
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-imageView-06176) VUID-vkCmdExecuteGeneratedCommandsNV-imageView-06176
@@ -5145,7 +5714,7 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering), the `imageView` member of
 `pDepthAttachment` is not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), and the `layout`
 member of `pDepthAttachment` is
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`, this command **must** not
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](../resources.html#VkImageLayout), this command **must** not
 write any values to the depth attachment
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-imageView-06177) VUID-vkCmdExecuteGeneratedCommandsNV-imageView-06177
@@ -5154,7 +5723,7 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering), the `imageView` member of
 `pStencilAttachment` is not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), and the
 `layout` member of `pStencilAttachment` is
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`, this command **must** not
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](../resources.html#VkImageLayout), this command **must** not
 write any values to the stencil attachment
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-viewMask-06178) VUID-vkCmdExecuteGeneratedCommandsNV-viewMask-06178
@@ -5198,7 +5767,7 @@ each element of the [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pCol
 with an `imageView` equal to [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE) **must** have the
 corresponding element of
 [VkPipelineRenderingCreateInfo](../pipelines.html#VkPipelineRenderingCreateInfo)::`pColorAttachmentFormats` used
-to create the bound pipeline equal to `VK_FORMAT_UNDEFINED`
+to create the bound pipeline equal to [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-dynamicRenderingUnusedAttachments-08911) VUID-vkCmdExecuteGeneratedCommandsNV-dynamicRenderingUnusedAttachments-08911
 
@@ -5212,7 +5781,7 @@ element of
 [VkPipelineRenderingCreateInfo](../pipelines.html#VkPipelineRenderingCreateInfo)::`pColorAttachmentFormats` used
 to create the bound graphics pipeline, or the corresponding element of
 [VkPipelineRenderingCreateInfo](../pipelines.html#VkPipelineRenderingCreateInfo)::`pColorAttachmentFormats`, if
-it exists, **must** be `VK_FORMAT_UNDEFINED`
+it exists, **must** be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-colorAttachmentCount-09362) VUID-vkCmdExecuteGeneratedCommandsNV-colorAttachmentCount-09362
 
@@ -5221,7 +5790,7 @@ If the current render pass instance was begun with
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`colorAttachmentCount` equal to `1`,
 there is no shader object bound to any graphics stage,
 and a color attachment with a resolve mode of
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`, each
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](../renderpass.html#VkResolveModeFlagBitsKHR), each
 element of the [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pColorAttachments` array with
 a `resolveImageView` not equal to [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE) **must** have
 been created with an image created with a
@@ -5237,7 +5806,7 @@ the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering) and a
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`colorAttachmentCount` equal to `1`, and a
 color attachment with a resolve mode of
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`, each
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](../renderpass.html#VkResolveModeFlagBitsKHR), each
 element of the [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pColorAttachments` array with
 a `imageView` not equal to [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE) **must** have been
 created with an image created with a
@@ -5252,9 +5821,9 @@ If the current render pass instance was begun with
 there is no shader object bound to any graphics stage,
 and the bound graphics pipeline was created with a non-zero
 [VkExternalFormatANDROID](../resources.html#VkExternalFormatANDROID)::`externalFormat` value and with the
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT` dynamic state enabled,
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 then [vkCmdSetColorBlendEnableEXT](../framebuffer.html#vkCmdSetColorBlendEnableEXT) **must** have set the blend enable
-to `VK_FALSE` prior to this drawing command
+to [VK_FALSE](../fundamentals.html#VK_FALSE) prior to this drawing command
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-09365) VUID-vkCmdExecuteGeneratedCommandsNV-None-09365
 
@@ -5263,26 +5832,26 @@ If the current render pass instance was begun with
 there is no shader object bound to any graphics stage,
 and the bound graphics pipeline was created with a non-zero
 [VkExternalFormatANDROID](../resources.html#VkExternalFormatANDROID)::`externalFormat` value and with the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` dynamic state enabled,
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 then [vkCmdSetRasterizationSamplesEXT](../primsrast.html#vkCmdSetRasterizationSamplesEXT) **must** have set
-`rasterizationSamples` to `VK_SAMPLE_COUNT_1_BIT` prior to this
+`rasterizationSamples` to [VK_SAMPLE_COUNT_1_BIT](../limits.html#VkSampleCountFlagBits) prior to this
 drawing command
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-09366) VUID-vkCmdExecuteGeneratedCommandsNV-None-09366
 
 If there is a shader object bound to any graphics stage, and the current
 render pass includes a color attachment that uses the
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID` resolve
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](../renderpass.html#VkResolveModeFlagBitsKHR) resolve
 mode, then [vkCmdSetColorBlendEnableEXT](../framebuffer.html#vkCmdSetColorBlendEnableEXT) **must** have set blend enable
-to `VK_FALSE` prior to this drawing command
+to [VK_FALSE](../fundamentals.html#VK_FALSE) prior to this drawing command
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-rasterizationSamples-09367) VUID-vkCmdExecuteGeneratedCommandsNV-rasterizationSamples-09367
 
 If there is a shader object bound to any graphics stage, and the current
 render pass includes a color attachment that uses the
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID` resolve
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](../renderpass.html#VkResolveModeFlagBitsKHR) resolve
 mode, then [vkCmdSetRasterizationSamplesEXT](../primsrast.html#vkCmdSetRasterizationSamplesEXT) **must** have set
-`rasterizationSamples` to `VK_SAMPLE_COUNT_1_BIT` prior to this
+`rasterizationSamples` to [VK_SAMPLE_COUNT_1_BIT](../limits.html#VkSampleCountFlagBits) prior to this
 drawing command
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-09368) VUID-vkCmdExecuteGeneratedCommandsNV-None-09368
@@ -5292,7 +5861,7 @@ If the current render pass instance was begun with
 there is no shader object bound to any graphics stage,
 and the bound graphics pipeline was created with a non-zero
 [VkExternalFormatANDROID](../resources.html#VkExternalFormatANDROID)::`externalFormat` value and with the
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` dynamic state enabled,
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](../pipelines.html#VkDynamicState) dynamic state enabled,
 then [vkCmdSetFragmentShadingRateKHR](../primsrast.html#vkCmdSetFragmentShadingRateKHR) **must** have set
 `pFragmentSize->width` to `1` prior to this drawing command
 
@@ -5303,7 +5872,7 @@ If the current render pass instance was begun with
 there is no shader object bound to any graphics stage,
 and the bound graphics pipeline was created with a non-zero
 [VkExternalFormatANDROID](../resources.html#VkExternalFormatANDROID)::`externalFormat` value and with the
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` dynamic state enabled,
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](../pipelines.html#VkDynamicState) dynamic state enabled,
 then [vkCmdSetFragmentShadingRateKHR](../primsrast.html#vkCmdSetFragmentShadingRateKHR) **must** have set
 `pFragmentSize->height` to `1` prior to this drawing command
 
@@ -5311,7 +5880,7 @@ then [vkCmdSetFragmentShadingRateKHR](../primsrast.html#vkCmdSetFragmentShadingR
 
 If there is a shader object bound to any graphics stage, and the current
 render pass includes a color attachment that uses the
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID` resolve
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](../renderpass.html#VkResolveModeFlagBitsKHR) resolve
 mode, then [vkCmdSetFragmentShadingRateKHR](../primsrast.html#vkCmdSetFragmentShadingRateKHR) **must** have set
 `pFragmentSize->width` to `1` prior to this drawing command
 
@@ -5319,7 +5888,7 @@ mode, then [vkCmdSetFragmentShadingRateKHR](../primsrast.html#vkCmdSetFragmentSh
 
 If there is a shader object bound to any graphics stage, and the current
 render pass includes a color attachment that uses the
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID` resolve
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](../renderpass.html#VkResolveModeFlagBitsKHR) resolve
 mode, then [vkCmdSetFragmentShadingRateKHR](../primsrast.html#vkCmdSetFragmentShadingRateKHR) **must** have set
 `pFragmentSize->height` to `1` prior to this drawing command
 
@@ -5327,12 +5896,12 @@ mode, then [vkCmdSetFragmentShadingRateKHR](../primsrast.html#vkCmdSetFragmentSh
 
 If the [`colorWriteEnable`](../features.html#features-colorWriteEnable) feature is
 enabled,
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT` dynamic state enabled, and
+[VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, and
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetColorWriteEnableEXT](../framebuffer.html#vkCmdSetColorWriteEnableEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -5341,12 +5910,12 @@ command buffer prior to this drawing command
 
 If the [`colorWriteEnable`](../features.html#features-colorWriteEnable) feature is
 enabled,
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT` dynamic state enabled, and
+[VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, and
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then the
 `attachmentCount` parameter of most recent call to
 `vkCmdSetColorWriteEnableEXT` in the current command buffer **must** be
 greater than or equal to the number of active color attachments
@@ -5355,13 +5924,13 @@ greater than or equal to the number of active color attachments
 
 If the `[VK_EXT_discard_rectangles](../../appendices/extensions.html#VK_EXT_discard_rectangles)` extension is enabled, a
 graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT` dynamic state enabled and
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled and
 the `pNext` chain of [VkGraphicsPipelineCreateInfo](../pipelines.html#VkGraphicsPipelineCreateInfo) included a
 [VkPipelineDiscardRectangleStateCreateInfoEXT](../fragops.html#VkPipelineDiscardRectangleStateCreateInfoEXT) structure, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`discardRectangleEnable` is `VK_TRUE`, then
+`discardRectangleEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetDiscardRectangleEXT](../fragops.html#vkCmdSetDiscardRectangleEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command for each discard rectangle
@@ -5373,13 +5942,13 @@ in
 If the `[VK_EXT_discard_rectangles](../../appendices/extensions.html#VK_EXT_discard_rectangles)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT` dynamic state enabled and
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled and
 the `pNext` chain of [VkGraphicsPipelineCreateInfo](../pipelines.html#VkGraphicsPipelineCreateInfo) did not
 include a [VkPipelineDiscardRectangleStateCreateInfoEXT](../fragops.html#VkPipelineDiscardRectangleStateCreateInfoEXT) structure,
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`discardRectangleEnable` is `VK_TRUE`, then
+`discardRectangleEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetDiscardRectangleEXT](../fragops.html#vkCmdSetDiscardRectangleEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command for each discard rectangle
@@ -5391,9 +5960,9 @@ in
 If the `[VK_EXT_discard_rectangles](../../appendices/extensions.html#VK_EXT_discard_rectangles)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT` dynamic state
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state
 enabled, the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetDiscardRectangleEnableEXT](../fragops.html#vkCmdSetDiscardRectangleEnableEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -5403,11 +5972,11 @@ command buffer prior to this drawing command
 If the `[VK_EXT_discard_rectangles](../../appendices/extensions.html#VK_EXT_discard_rectangles)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT` dynamic state enabled,
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`discardRectangleEnable` is `VK_TRUE`, then
+`discardRectangleEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetDiscardRectangleModeEXT](../fragops.html#vkCmdSetDiscardRectangleModeEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -5423,7 +5992,7 @@ and [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pDepthAttachment->im
 [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), the value of
 [VkPipelineRenderingCreateInfo](../pipelines.html#VkPipelineRenderingCreateInfo)::`depthAttachmentFormat` used to
 create the bound graphics pipeline **must** be equal to
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-dynamicRenderingUnusedAttachments-08914) VUID-vkCmdExecuteGeneratedCommandsNV-dynamicRenderingUnusedAttachments-08914
 
@@ -5448,7 +6017,7 @@ If the current render pass instance was begun with
 [VkPipelineRenderingCreateInfo](../pipelines.html#VkPipelineRenderingCreateInfo)::`depthAttachmentFormat` used to
 create the bound graphics pipeline was not equal to the [VkFormat](../formats.html#VkFormat)
 used to create [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pDepthAttachment->imageView`,
-the value of the format **must** be `VK_FORMAT_UNDEFINED`
+the value of the format **must** be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-dynamicRenderingUnusedAttachments-08916) VUID-vkCmdExecuteGeneratedCommandsNV-dynamicRenderingUnusedAttachments-08916
 
@@ -5461,7 +6030,7 @@ and [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pStencilAttachment->
 [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), the value of
 [VkPipelineRenderingCreateInfo](../pipelines.html#VkPipelineRenderingCreateInfo)::`stencilAttachmentFormat` used
 to create the bound graphics pipeline **must** be equal to
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-dynamicRenderingUnusedAttachments-08917) VUID-vkCmdExecuteGeneratedCommandsNV-dynamicRenderingUnusedAttachments-08917
 
@@ -5488,7 +6057,7 @@ If the current render pass instance was begun with
 to create the bound graphics pipeline was not equal to the
 [VkFormat](../formats.html#VkFormat) used to create
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pStencilAttachment->imageView`, the value of
-the format **must** be `VK_FORMAT_UNDEFINED`
+the format **must** be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-imageView-06183) VUID-vkCmdExecuteGeneratedCommandsNV-imageView-06183
 
@@ -5497,7 +6066,7 @@ If the current render pass instance was begun with
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](../renderpass.html#VkRenderingFragmentShadingRateAttachmentInfoKHR)::`imageView`
 was not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), the bound graphics pipeline **must** have
 been created with
-`VK_PIPELINE_CREATE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_CREATE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](../pipelines.html#VkPipelineCreateFlagBits)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-dynamicRenderingLocalRead-11797) VUID-vkCmdExecuteGeneratedCommandsNV-dynamicRenderingLocalRead-11797
 
@@ -5505,13 +6074,13 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering), the
 [`dynamicRenderingLocalRead`](../features.html#features-dynamicRenderingLocalRead)
 feature is enabled, the
-`VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR` flag is
+[VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR](../renderpass.html#VkRenderingFlagBitsKHR) flag is
 specified, and an attachment is being used as a feedback loop as
 specified by
-[`VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR`](../renderpass.html#rendering-attachment-input-attachment-feedback),
+[](../renderpass.html#rendering-attachment-input-attachment-feedback)[VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR](../renderpass.html#VkRenderingAttachmentFlagBitsKHR),
 [VkRenderingAttachmentFlagsInfoKHR](../renderpass.html#VkRenderingAttachmentFlagsInfoKHR)::`flags` for that attachment
 **must** include
-`VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR`
+[VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR](../renderpass.html#VkRenderingAttachmentFlagBitsKHR)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-imageView-06184) VUID-vkCmdExecuteGeneratedCommandsNV-imageView-06184
 
@@ -5520,15 +6089,15 @@ If the current render pass instance was begun with
 [VkRenderingFragmentDensityMapAttachmentInfoEXT](../renderpass.html#VkRenderingFragmentDensityMapAttachmentInfoEXT)::`imageView`
 was not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), the bound graphics pipeline **must** have
 been created with
-`VK_PIPELINE_CREATE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT`
+[VK_PIPELINE_CREATE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-layers-10831) VUID-vkCmdExecuteGeneratedCommandsNV-layers-10831
 
 If the current render pass instance was created with
-`VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE` or
-`VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE`, and
+[VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](../renderpass.html#VkRenderingFlagBitsKHR) or
+[VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](../renderpass.html#VkRenderPassCreateFlagBits), and
 the bound graphics pipeline was created with
-`VK_PIPELINE_CREATE_2_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE`, then
+[VK_PIPELINE_CREATE_2_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](../pipelines.html#VkPipelineCreateFlagBits2KHR), then
 the current render pass instance **must** have a `layers` value less
 than or equal to
 [VkPipelineFragmentDensityMapLayeredCreateInfoVALVE](../pipelines.html#VkPipelineFragmentDensityMapLayeredCreateInfoVALVE)::`maxFragmentDensityMapLayers`
@@ -5632,7 +6201,7 @@ If this command is called inside a render pass instance started with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering), and the `pNext` chain of
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo) includes a
 [VkMultisampledRenderToSingleSampledInfoEXT](../renderpass.html#VkMultisampledRenderToSingleSampledInfoEXT) structure with
-`multisampledRenderToSingleSampledEnable` equal to `VK_TRUE`,
+`multisampledRenderToSingleSampledEnable` equal to [VK_TRUE](../fundamentals.html#VK_TRUE),
 then the value of `rasterizationSamples` for the bound graphics
 pipeline **must** be equal to
 [VkMultisampledRenderToSingleSampledInfoEXT](../renderpass.html#VkMultisampledRenderToSingleSampledInfoEXT)::`rasterizationSamples`
@@ -5656,7 +6225,7 @@ zero, color writes are enabled, and the corresponding element of the
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pColorAttachments->imageView` was not
 [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), then the corresponding element of
 [VkPipelineRenderingCreateInfo](../pipelines.html#VkPipelineRenderingCreateInfo)::`pColorAttachmentFormats` used
-to create the pipeline **must** not be `VK_FORMAT_UNDEFINED`
+to create the pipeline **must** not be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-pColorAttachments-11539) VUID-vkCmdExecuteGeneratedCommandsNV-pColorAttachments-11539
 
@@ -5669,7 +6238,7 @@ corresponding element of the
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pColorAttachments->resolveImageView` was not
 [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), then the corresponding element of
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`pColorAttachmentFormats` used
-to create the pipeline **must** not be `VK_FORMAT_UNDEFINED`
+to create the pipeline **must** not be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-pDepthAttachment-08964) VUID-vkCmdExecuteGeneratedCommandsNV-pDepthAttachment-08964
 
@@ -5681,7 +6250,7 @@ there is a graphics pipeline bound, depth test is enabled, and the
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pDepthAttachment->imageView` was not
 [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), then the
 [VkPipelineRenderingCreateInfo](../pipelines.html#VkPipelineRenderingCreateInfo)::`depthAttachmentFormat` used to
-create the pipeline **must** not be `VK_FORMAT_UNDEFINED`
+create the pipeline **must** not be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-pDepthAttachment-11540) VUID-vkCmdExecuteGeneratedCommandsNV-pDepthAttachment-11540
 
@@ -5692,7 +6261,7 @@ bound, depth test is enabled, and the
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pDepthAttachment->resolveImageView` was not
 [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), then the
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`depthAttachmentFormat` used to
-create the pipeline **must** not be `VK_FORMAT_UNDEFINED`
+create the pipeline **must** not be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-pStencilAttachment-08965) VUID-vkCmdExecuteGeneratedCommandsNV-pStencilAttachment-08965
 
@@ -5704,7 +6273,7 @@ there is a graphics pipeline bound, stencil test is enabled and the
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pStencilAttachment->imageView` was not
 [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), then the
 [VkPipelineRenderingCreateInfo](../pipelines.html#VkPipelineRenderingCreateInfo)::`stencilAttachmentFormat` used
-to create the pipeline **must** not be `VK_FORMAT_UNDEFINED`
+to create the pipeline **must** not be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-pStencilAttachment-11860) VUID-vkCmdExecuteGeneratedCommandsNV-pStencilAttachment-11860
 
@@ -5715,26 +6284,26 @@ bound, stencil test is enabled and the
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pStencilAttachment->resolveImageView` was
 not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), then the
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`stencilAttachmentFormat` used
-to create the pipeline **must** not be `VK_FORMAT_UNDEFINED`
+to create the pipeline **must** not be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-flags-10582) VUID-vkCmdExecuteGeneratedCommandsNV-flags-10582
 
 If the current render pass instance was begun with a
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering) call in `commandBuffer`, its
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`flags` parameter **must** not have
-`VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT` set
-unless `VK_RENDERING_CONTENTS_INLINE_BIT_KHR` is also set
+[VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT](../renderpass.html#VkRenderingFlagBitsKHR) set
+unless [VK_RENDERING_CONTENTS_INLINE_BIT_KHR](../renderpass.html#VkRenderingFlagBitsKHR) is also set
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-primitivesGeneratedQueryWithRasterizerDiscard-06708) VUID-vkCmdExecuteGeneratedCommandsNV-primitivesGeneratedQueryWithRasterizerDiscard-06708
 
 If the [    `primitivesGeneratedQueryWithRasterizerDiscard`](../features.html#features-primitivesGeneratedQueryWithRasterizerDiscard) feature is not
-enabled and the `VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT` query is
+enabled and the [VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](../queries.html#VkQueryType) query is
 active, [rasterization discard](../primsrast.html#primsrast-discard) **must** not be enabled
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-primitivesGeneratedQueryWithNonZeroStreams-06709) VUID-vkCmdExecuteGeneratedCommandsNV-primitivesGeneratedQueryWithNonZeroStreams-06709
 
 If the [    `primitivesGeneratedQueryWithNonZeroStreams`](../features.html#features-primitivesGeneratedQueryWithNonZeroStreams) feature is not
-enabled and the `VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT` query is
+enabled and the [VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](../queries.html#VkQueryType) query is
 active, the bound graphics pipeline **must** not have been created with a
 non-zero value in
 `VkPipelineRasterizationStateStreamCreateInfoEXT`::`rasterizationStream`
@@ -5744,9 +6313,9 @@ non-zero value in
 If the [`depthClamp`](../features.html#features-depthClamp) feature is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT` dynamic state enabled, and
+[VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, and
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetDepthClampEnableEXT](../vertexpostproc.html#vkCmdSetDepthClampEnableEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -5756,9 +6325,9 @@ command buffer prior to this drawing command
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_POLYGON_MODE_EXT` dynamic state enabled, and the
+[VK_DYNAMIC_STATE_POLYGON_MODE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetPolygonModeEXT](../primsrast.html#vkCmdSetPolygonModeEXT) **must** have been called and not subsequently
 [invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer
 prior to this drawing command
@@ -5768,9 +6337,9 @@ prior to this drawing command
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` dynamic state enabled,
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetRasterizationSamplesEXT](../primsrast.html#vkCmdSetRasterizationSamplesEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -5780,9 +6349,9 @@ command buffer prior to this drawing command
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_SAMPLE_MASK_EXT` dynamic state enabled, and the
+[VK_DYNAMIC_STATE_SAMPLE_MASK_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetSampleMaskEXT](../fragops.html#vkCmdSetSampleMaskEXT) **must** have been called and not subsequently
 [invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer
 prior to this drawing command
@@ -5790,8 +6359,8 @@ prior to this drawing command
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-alphaToCoverageEnable-08919) VUID-vkCmdExecuteGeneratedCommandsNV-alphaToCoverageEnable-08919
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT` dynamic state
-enabled, and `alphaToCoverageEnable` was `VK_TRUE` in the last
+[VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state
+enabled, and `alphaToCoverageEnable` was [VK_TRUE](../fundamentals.html#VK_TRUE) in the last
 call to [vkCmdSetAlphaToCoverageEnableEXT](../fragops.html#vkCmdSetAlphaToCoverageEnableEXT), then the
 [Fragment Output Interface](../interfaces.html#interfaces-fragmentoutput) **must** contain a
 variable for the alpha `Component` word in `Location` 0 at
@@ -5801,7 +6370,7 @@ variable for the alpha `Component` word in `Location` 0 at
 
 If a shader object is bound to any graphics stage, and the most recent
 call to [vkCmdSetAlphaToCoverageEnableEXT](../fragops.html#vkCmdSetAlphaToCoverageEnableEXT) in the current command
-buffer set `alphaToCoverageEnable` to `VK_TRUE`, then the
+buffer set `alphaToCoverageEnable` to [VK_TRUE](../fundamentals.html#VK_TRUE), then the
 [Fragment Output Interface](../interfaces.html#interfaces-fragmentoutput) **must** contain a
 variable for the alpha `Component` word in `Location` 0 at
 `Index` 0
@@ -5811,9 +6380,9 @@ variable for the alpha `Component` word in `Location` 0 at
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT` dynamic state
+[VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state
 enabled, and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetAlphaToCoverageEnableEXT](../fragops.html#vkCmdSetAlphaToCoverageEnableEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -5823,9 +6392,9 @@ command buffer prior to this drawing command
 If the [`alphaToOne`](../features.html#features-alphaToOne) feature is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT` dynamic state enabled,
+[VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetAlphaToOneEnableEXT](../fragops.html#vkCmdSetAlphaToOneEnableEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -5833,12 +6402,12 @@ command buffer prior to this drawing command
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07626) VUID-vkCmdExecuteGeneratedCommandsNV-None-07626
 
 If the [`logicOp`](../features.html#features-logicOp) feature is enabled,
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT` dynamic state enabled, and
+[VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, and
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetLogicOpEnableEXT](../framebuffer.html#vkCmdSetLogicOpEnableEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -5846,12 +6415,12 @@ command buffer prior to this drawing command
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07627) VUID-vkCmdExecuteGeneratedCommandsNV-None-07627
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT` dynamic state enabled, the
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and there are color
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and there are color
 attachments bound, then [vkCmdSetColorBlendEnableEXT](../framebuffer.html#vkCmdSetColorBlendEnableEXT) **must** have
 been called and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime)
 in the current command buffer prior to this drawing command
@@ -5859,12 +6428,12 @@ in the current command buffer prior to this drawing command
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07629) VUID-vkCmdExecuteGeneratedCommandsNV-None-07629
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with
-`VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT` dynamic state enabled, the
+[VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and there are color
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and there are color
 attachments bound, then [vkCmdSetColorWriteMaskEXT](../framebuffer.html#vkCmdSetColorWriteMaskEXT) **must** have been
 called and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in
 the current command buffer prior to this drawing command
@@ -5873,11 +6442,11 @@ the current command buffer prior to this drawing command
 
 If the [`geometryStreams`](../features.html#features-geometryStreams) feature is
 enabled, and
-a shader object is bound to the `VK_SHADER_STAGE_GEOMETRY_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_GEOMETRY_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with both a
-`VK_SHADER_STAGE_GEOMETRY_BIT` stage and the
-`VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT` dynamic state enabled,
+[VK_SHADER_STAGE_GEOMETRY_BIT](../pipelines.html#VkShaderStageFlagBits) stage and the
+[VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 then [vkCmdSetRasterizationStreamEXT](../primsrast.html#vkCmdSetRasterizationStreamEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -5887,9 +6456,9 @@ command buffer prior to this drawing command
 If the `[VK_EXT_conservative_rasterization](../../appendices/extensions.html#VK_EXT_conservative_rasterization)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_CONSERVATIVE_RASTERIZATION_MODE_EXT` dynamic state
+[VK_DYNAMIC_STATE_CONSERVATIVE_RASTERIZATION_MODE_EXT](../pipelines.html#VkDynamicState) dynamic state
 enabled, and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetConservativeRasterizationModeEXT](../primsrast.html#vkCmdSetConservativeRasterizationModeEXT) **must** have been called
 and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the
 current command buffer prior to this drawing command
@@ -5899,12 +6468,12 @@ current command buffer prior to this drawing command
 If the `[VK_EXT_conservative_rasterization](../../appendices/extensions.html#VK_EXT_conservative_rasterization)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_EXTRA_PRIMITIVE_OVERESTIMATION_SIZE_EXT` dynamic
+[VK_DYNAMIC_STATE_EXTRA_PRIMITIVE_OVERESTIMATION_SIZE_EXT](../pipelines.html#VkDynamicState) dynamic
 state enabled, the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
 `conservativeRasterizationMode` is
-`VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT`, then
+[VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT](../primsrast.html#VkConservativeRasterizationModeEXT), then
 [vkCmdSetExtraPrimitiveOverestimationSizeEXT](../primsrast.html#vkCmdSetExtraPrimitiveOverestimationSizeEXT) **must** have been called
 and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the
 current command buffer prior to this drawing command
@@ -5914,11 +6483,11 @@ current command buffer prior to this drawing command
 If the `[VK_EXT_conservative_rasterization](../../appendices/extensions.html#VK_EXT_conservative_rasterization)` extension is enabled,
 [    `conservativePointAndLineRasterization`](../limits.html#limits-conservativePointAndLineRasterization) is not supported,
 a shader object is bound to any graphics stage or
-a graphics pipeline is bound, the [current    value](../pipelines.html#dynamic-state-current-value) of `rasterizerDiscardEnable` is `VK_FALSE`, and the
+a graphics pipeline is bound, the [current    value](../pipelines.html#dynamic-state-current-value) of `rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [effective rasterization input    topology](../drawing.html#drawing-rasterization-input-topology) is in line or point topology class, then the
 [current value](../pipelines.html#dynamic-state-current-value) of
 `conservativeRasterizationMode` **must** be
-`VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT`
+[VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT](../primsrast.html#VkConservativeRasterizationModeEXT)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07633) VUID-vkCmdExecuteGeneratedCommandsNV-None-07633
 
@@ -5926,7 +6495,7 @@ If the [`depthClipEnable`](../features.html#features-depthClipEnable) feature is
 enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT` dynamic state, then
+[VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state, then
 [vkCmdSetDepthClipEnableEXT](../vertexpostproc.html#vkCmdSetDepthClipEnableEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -5934,12 +6503,12 @@ command buffer prior to this drawing command
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07636) VUID-vkCmdExecuteGeneratedCommandsNV-None-07636
 
 If the `[VK_EXT_provoking_vertex](../../appendices/extensions.html#VK_EXT_provoking_vertex)` extension is enabled,
-a shader object is bound to the `VK_SHADER_STAGE_VERTEX_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_PROVOKING_VERTEX_MODE_EXT` dynamic state enabled,
+[VK_DYNAMIC_STATE_PROVOKING_VERTEX_MODE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetProvokingVertexModeEXT](../vertexpostproc.html#vkCmdSetProvokingVertexModeEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -5949,9 +6518,9 @@ command buffer prior to this drawing command
 If any of the [    `stippledRectangularLines`](../features.html#features-stippledRectangularLines), [    `stippledBresenhamLines`](../features.html#features-stippledBresenhamLines) or [    `stippledSmoothLines`](../features.html#features-stippledSmoothLines) features are enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT` dynamic state
+[VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT](../pipelines.html#VkDynamicState) dynamic state
 enabled, and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [effective rasterization input    topology](../drawing.html#drawing-rasterization-input-topology) is in line topology class, then
 [vkCmdSetLineRasterizationModeEXT](../primsrast.html#vkCmdSetLineRasterizationModeEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
@@ -5962,9 +6531,9 @@ command buffer prior to this drawing command
 If any of the [    `stippledRectangularLines`](../features.html#features-stippledRectangularLines), [    `stippledBresenhamLines`](../features.html#features-stippledBresenhamLines) or [    `stippledSmoothLines`](../features.html#features-stippledSmoothLines) features are enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT` dynamic state enabled,
+[VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [effective rasterization input    topology](../drawing.html#drawing-rasterization-input-topology) is in line topology class, then
 [vkCmdSetLineStippleEnableEXT](../primsrast.html#vkCmdSetLineStippleEnableEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
@@ -5975,10 +6544,10 @@ command buffer prior to this drawing command
     If any of the [    `stippledRectangularLines`](../features.html#features-stippledRectangularLines), [    `stippledBresenhamLines`](../features.html#features-stippledBresenhamLines) or [    `stippledSmoothLines`](../features.html#features-stippledSmoothLines) features are enabled and
     a shader object is bound to any graphics stage, or
     a bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_LINE_STIPPLE`
-    dynamic state enabled, the [current    value](../pipelines.html#dynamic-state-current-value) of `rasterizerDiscardEnable` is `VK_FALSE`, and the
+[VK_DYNAMIC_STATE_LINE_STIPPLE](../pipelines.html#VkDynamicState)
+    dynamic state enabled, the [current    value](../pipelines.html#dynamic-state-current-value) of `rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
     [current value](../pipelines.html#dynamic-state-current-value) of
-    `stippledLineEnable` is `VK_TRUE`, then
+    `stippledLineEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetLineStipple](../primsrast.html#vkCmdSetLineStipple)
     **must** have been called and not subsequently [    invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer prior to this drawing
     command
@@ -5988,13 +6557,13 @@ command buffer prior to this drawing command
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT` dynamic state
+[VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT](../pipelines.html#VkDynamicState) dynamic state
 enabled, the [effective    rasterization input topology](../drawing.html#drawing-rasterization-input-topology) is in line topology class, and the
 current `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_BRESENHAM` or
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH`, then the current
+[VK_LINE_RASTERIZATION_MODE_BRESENHAM](../primsrast.html#VkLineRasterizationModeEXT) or
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH](../primsrast.html#VkLineRasterizationModeEXT), then the current
 `alphaToCoverageEnable`, `alphaToOneEnable` and
-`sampleShadingEnable` states **must** all be `VK_FALSE`
+`sampleShadingEnable` states **must** all be [VK_FALSE](../fundamentals.html#VK_FALSE)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07639) VUID-vkCmdExecuteGeneratedCommandsNV-None-07639
 
@@ -6002,7 +6571,7 @@ If the [`depthClipControl`](../features.html#features-depthClipControl) feature 
 enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_CLIP_NEGATIVE_ONE_TO_ONE_EXT` dynamic state
+[VK_DYNAMIC_STATE_DEPTH_CLIP_NEGATIVE_ONE_TO_ONE_EXT](../pipelines.html#VkDynamicState) dynamic state
 enabled, then [vkCmdSetDepthClipNegativeOneToOneEXT](../vertexpostproc.html#vkCmdSetDepthClipNegativeOneToOneEXT) **must** have been
 called and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in
 the current command buffer prior to this drawing command
@@ -6013,9 +6582,9 @@ If the [`depthClampControl`](../features.html#features-depthClampControl) featur
 is enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT` dynamic state enabled, and
+[VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, and
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`depthClampEnable` is `VK_TRUE`, then
+`depthClampEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetDepthClampRangeEXT](../fragops.html#vkCmdSetDepthClampRangeEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -6025,7 +6594,7 @@ command buffer prior to this drawing command
 If the `[VK_NV_clip_space_w_scaling](../../appendices/extensions.html#VK_NV_clip_space_w_scaling)` extension is enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_ENABLE_NV` dynamic state
+[VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_ENABLE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, then [vkCmdSetViewportWScalingEnableNV](../vertexpostproc.html#vkCmdSetViewportWScalingEnableNV) **must** have been
 called and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in
 the current command buffer prior to this drawing command
@@ -6035,7 +6604,7 @@ the current command buffer prior to this drawing command
 If the `[VK_NV_viewport_swizzle](../../appendices/extensions.html#VK_NV_viewport_swizzle)` extension is enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV` dynamic state enabled, then
+[VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV](../pipelines.html#VkDynamicState) dynamic state enabled, then
 [vkCmdSetViewportSwizzleNV](../vertexpostproc.html#vkCmdSetViewportSwizzleNV) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -6045,9 +6614,9 @@ command buffer prior to this drawing command
 If the `[VK_NV_fragment_coverage_to_color](../../appendices/extensions.html#VK_NV_fragment_coverage_to_color)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_ENABLE_NV` dynamic state
+[VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_ENABLE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetCoverageToColorEnableNV](../fragops.html#vkCmdSetCoverageToColorEnableNV) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -6057,11 +6626,11 @@ command buffer prior to this drawing command
 If the `[VK_NV_fragment_coverage_to_color](../../appendices/extensions.html#VK_NV_fragment_coverage_to_color)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_LOCATION_NV` dynamic state
+[VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_LOCATION_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`coverageToColorEnable` is `VK_TRUE`, then
+`coverageToColorEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetCoverageToColorLocationNV](../fragops.html#vkCmdSetCoverageToColorLocationNV) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -6071,9 +6640,9 @@ command buffer prior to this drawing command
 If the `[VK_NV_framebuffer_mixed_samples](../../appendices/extensions.html#VK_NV_framebuffer_mixed_samples)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_MODE_NV` dynamic state
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_MODE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetCoverageModulationModeNV](../fragops.html#vkCmdSetCoverageModulationModeNV) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -6083,12 +6652,12 @@ command buffer prior to this drawing command
 If the `[VK_NV_framebuffer_mixed_samples](../../appendices/extensions.html#VK_NV_framebuffer_mixed_samples)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_ENABLE_NV` dynamic state
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_ENABLE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
 `coverageModulationMode` is any value other than
-`VK_COVERAGE_MODULATION_MODE_NONE_NV`, then
+[VK_COVERAGE_MODULATION_MODE_NONE_NV](../fragops.html#VkCoverageModulationModeNV), then
 [vkCmdSetCoverageModulationTableEnableNV](../fragops.html#vkCmdSetCoverageModulationTableEnableNV) **must** have been called and
 not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -6098,11 +6667,11 @@ command buffer prior to this drawing command
 If the `[VK_NV_framebuffer_mixed_samples](../../appendices/extensions.html#VK_NV_framebuffer_mixed_samples)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_NV` dynamic state
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`coverageModulationTableEnable` is `VK_TRUE`, then
+`coverageModulationTableEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetCoverageModulationTableNV](../fragops.html#vkCmdSetCoverageModulationTableNV) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -6113,9 +6682,9 @@ If the [`shadingRateImage`](../features.html#features-shadingRateImage) feature 
 enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_SHADING_RATE_IMAGE_ENABLE_NV` dynamic state
+[VK_DYNAMIC_STATE_SHADING_RATE_IMAGE_ENABLE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetShadingRateImageEnableNV](../primsrast.html#vkCmdSetShadingRateImageEnableNV) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -6125,9 +6694,9 @@ command buffer prior to this drawing command
 If the [    `pipelineFragmentShadingRate`](../features.html#features-pipelineFragmentShadingRate) feature is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` dynamic state enabled,
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetFragmentShadingRateKHR](../primsrast.html#vkCmdSetFragmentShadingRateKHR) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -6137,9 +6706,9 @@ command buffer prior to this drawing command
 If the [    `representativeFragmentTest`](../features.html#features-representativeFragmentTest) feature is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_REPRESENTATIVE_FRAGMENT_TEST_ENABLE_NV` dynamic
+[VK_DYNAMIC_STATE_REPRESENTATIVE_FRAGMENT_TEST_ENABLE_NV](../pipelines.html#VkDynamicState) dynamic
 state enabled, and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetRepresentativeFragmentTestEnableNV](../fragops.html#vkCmdSetRepresentativeFragmentTestEnableNV) **must** have been called
 and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the
 current command buffer prior to this drawing command
@@ -6150,9 +6719,9 @@ If the [`coverageReductionMode`](../features.html#features-coverageReductionMode
 feature is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV` dynamic state enabled,
+[VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetCoverageReductionModeNV](../fragops.html#vkCmdSetCoverageReductionModeNV) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -6160,7 +6729,7 @@ command buffer prior to this drawing command
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-rasterizationSamples-07471) VUID-vkCmdExecuteGeneratedCommandsNV-rasterizationSamples-07471
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` state enabled, and the
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) state enabled, and the
 current subpass does not use any color and/or depth/stencil attachments,
 then the `rasterizationSamples` in the last call to
 [vkCmdSetRasterizationSamplesEXT](../primsrast.html#vkCmdSetRasterizationSamplesEXT) **must** follow the rules for a
@@ -6169,8 +6738,8 @@ then the `rasterizationSamples` in the last call to
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-samples-07472) VUID-vkCmdExecuteGeneratedCommandsNV-samples-07472
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_MASK_EXT` state enabled and the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` state disabled, then
+[VK_DYNAMIC_STATE_SAMPLE_MASK_EXT](../pipelines.html#VkDynamicState) state enabled and the
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) state disabled, then
 the `samples` parameter in the last call to
 [vkCmdSetSampleMaskEXT](../fragops.html#vkCmdSetSampleMaskEXT) **must** be greater or equal to the
 [VkPipelineMultisampleStateCreateInfo](../primsrast.html#VkPipelineMultisampleStateCreateInfo)::`rasterizationSamples`
@@ -6179,8 +6748,8 @@ parameter used to create the bound graphics pipeline
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-samples-07473) VUID-vkCmdExecuteGeneratedCommandsNV-samples-07473
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_MASK_EXT` state and
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` states enabled, then
+[VK_DYNAMIC_STATE_SAMPLE_MASK_EXT](../pipelines.html#VkDynamicState) state and
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) states enabled, then
 the `samples` parameter in the last call to
 [vkCmdSetSampleMaskEXT](../fragops.html#vkCmdSetSampleMaskEXT) **must** be greater or equal to the
 `rasterizationSamples` parameter in the last call to
@@ -6189,7 +6758,7 @@ the `samples` parameter in the last call to
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-rasterizationSamples-07474) VUID-vkCmdExecuteGeneratedCommandsNV-rasterizationSamples-07474
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` state enabled, and
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) state enabled, and
 the [    `multisampledRenderToSingleSampled`](../features.html#features-multisampledRenderToSingleSampled) feature is not enabled, and
 neither the `[VK_AMD_mixed_attachment_samples](../../appendices/extensions.html#VK_AMD_mixed_attachment_samples)` nor the
 `[VK_NV_framebuffer_mixed_samples](../../appendices/extensions.html#VK_NV_framebuffer_mixed_samples)` extensions are enabled, then
@@ -6200,11 +6769,11 @@ subpass color and/or depth/stencil attachments
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-09211) VUID-vkCmdExecuteGeneratedCommandsNV-None-09211
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` state enabled,
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) state enabled,
 or a shader object is bound to any graphics stage,
 and the current render pass instance includes a
 [VkMultisampledRenderToSingleSampledInfoEXT](../renderpass.html#VkMultisampledRenderToSingleSampledInfoEXT) structure with
-`multisampledRenderToSingleSampledEnable` equal to `VK_TRUE`,
+`multisampledRenderToSingleSampledEnable` equal to [VK_TRUE](../fundamentals.html#VK_TRUE),
 then the `rasterizationSamples` in the last call to
 [vkCmdSetRasterizationSamplesEXT](../primsrast.html#vkCmdSetRasterizationSamplesEXT) **must** be the same as the
 `rasterizationSamples` member of that structure
@@ -6212,12 +6781,12 @@ then the `rasterizationSamples` in the last call to
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-firstAttachment-07476) VUID-vkCmdExecuteGeneratedCommandsNV-firstAttachment-07476
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound was created with the
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT` dynamic states enabled,
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic states enabled,
 and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then the last call to
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then the last call to
 [vkCmdSetColorBlendEnableEXT](../framebuffer.html#vkCmdSetColorBlendEnableEXT) in the current command buffer prior to
 this drawing command **must** have set a value for all active color
 attachments
@@ -6225,12 +6794,12 @@ attachments
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-firstAttachment-07478) VUID-vkCmdExecuteGeneratedCommandsNV-firstAttachment-07478
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound was created with the
-`VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT` dynamic states enabled, and
+[VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](../pipelines.html#VkDynamicState) dynamic states enabled, and
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then the last call to
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then the last call to
 [vkCmdSetColorWriteMaskEXT](../framebuffer.html#vkCmdSetColorWriteMaskEXT) in the current command buffer prior to
 this drawing command **must** have set a value for all active color
 attachments
@@ -6238,72 +6807,72 @@ attachments
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-advancedBlendMaxColorAttachments-07480) VUID-vkCmdExecuteGeneratedCommandsNV-advancedBlendMaxColorAttachments-07480
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound was created with the
-`VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT` and
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT` dynamic states enabled,
+[VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](../pipelines.html#VkDynamicState) and
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic states enabled,
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and an active color
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and an active color
 attachment [current value](../pipelines.html#dynamic-state-current-value) of
-`blendEnable` is `VK_TRUE`, then the number of active color
+`blendEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then the number of active color
 attachments **must** not exceed [    `advancedBlendMaxColorAttachments`](../limits.html#limits-advancedBlendMaxColorAttachments)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-10862) VUID-vkCmdExecuteGeneratedCommandsNV-None-10862
 
 If a graphics pipeline is bound was created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT`
-, but not the `VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT`
-dynamic state enabled, and the [current    value](../pipelines.html#dynamic-state-current-value) of `rasterizerDiscardEnable` is `VK_FALSE`, then
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](../pipelines.html#VkDynamicState)
+, but not the [VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](../pipelines.html#VkDynamicState)
+dynamic state enabled, and the [current    value](../pipelines.html#dynamic-state-current-value) of `rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetColorBlendEquationEXT](../framebuffer.html#vkCmdSetColorBlendEquationEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command for all active color
-attachments with the `blendEnable` [    current value](../pipelines.html#dynamic-state-current-value) of `VK_TRUE`
+attachments with the `blendEnable` [    current value](../pipelines.html#dynamic-state-current-value) of [VK_TRUE](../fundamentals.html#VK_TRUE)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-rasterizerDiscardEnable-10863) VUID-vkCmdExecuteGeneratedCommandsNV-rasterizerDiscardEnable-10863
 
 If a graphics pipeline is bound was created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT`, but not the
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT` dynamic state enabled,
+[VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](../pipelines.html#VkDynamicState), but not the
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetColorBlendAdvancedEXT](../framebuffer.html#vkCmdSetColorBlendAdvancedEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command for all active color
-attachments with the `blendEnable` [    current value](../pipelines.html#dynamic-state-current-value) of `VK_TRUE`
+attachments with the `blendEnable` [    current value](../pipelines.html#dynamic-state-current-value) of [VK_TRUE](../fundamentals.html#VK_TRUE)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-10864) VUID-vkCmdExecuteGeneratedCommandsNV-None-10864
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound was created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT` and
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT` dynamic state enabled,
+[VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](../pipelines.html#VkDynamicState) and
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 either [vkCmdSetColorBlendAdvancedEXT](../framebuffer.html#vkCmdSetColorBlendAdvancedEXT) or
 [vkCmdSetColorBlendEquationEXT](../framebuffer.html#vkCmdSetColorBlendEquationEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command for all active color
-attachments with the `blendEnable` [    current value](../pipelines.html#dynamic-state-current-value) of `VK_TRUE`
+attachments with the `blendEnable` [    current value](../pipelines.html#dynamic-state-current-value) of [VK_TRUE](../fundamentals.html#VK_TRUE)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-primitivesGeneratedQueryWithNonZeroStreams-07481) VUID-vkCmdExecuteGeneratedCommandsNV-primitivesGeneratedQueryWithNonZeroStreams-07481
 
 If the [    `primitivesGeneratedQueryWithNonZeroStreams`](../features.html#features-primitivesGeneratedQueryWithNonZeroStreams) feature is not
-enabled and the `VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT` query is
+enabled and the [VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](../queries.html#VkQueryType) query is
 active, and the bound graphics pipeline was created with
-`VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT` state enabled, the last
+[VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT](../pipelines.html#VkDynamicState) state enabled, the last
 call to [vkCmdSetRasterizationStreamEXT](../primsrast.html#vkCmdSetRasterizationStreamEXT) **must** have set the
 `rasterizationStream` to zero
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsPerPixel-07482) VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsPerPixel-07482
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` state enabled and the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` state disabled, and the
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](../pipelines.html#VkDynamicState) state enabled and the
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) state disabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`sampleLocationsEnable` is `VK_TRUE`, then the
+`sampleLocationsEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then the
 `sampleLocationsPerPixel` member of `pSampleLocationsInfo` in
 the last call to [vkCmdSetSampleLocationsEXT](../primsrast.html#vkCmdSetSampleLocationsEXT) **must** equal the
 `rasterizationSamples` member of the
@@ -6313,10 +6882,10 @@ pipeline has been created with
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsPerPixel-07483) VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsPerPixel-07483
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` state enabled and the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` state enabled, and the
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](../pipelines.html#VkDynamicState) state enabled and the
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`sampleLocationsEnable` is `VK_TRUE`, then the
+`sampleLocationsEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then the
 `sampleLocationsPerPixel` member of `pSampleLocationsInfo` in
 the last call to [vkCmdSetSampleLocationsEXT](../primsrast.html#vkCmdSetSampleLocationsEXT) **must** equal the
 `rasterizationSamples` parameter of the last call to
@@ -6325,24 +6894,24 @@ the last call to [vkCmdSetSampleLocationsEXT](../primsrast.html#vkCmdSetSampleLo
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsEnable-07484) VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsEnable-07484
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT`
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits)
 stage, or
 the bound graphics pipeline was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT` state enabled, and
-`sampleLocationsEnable` was `VK_TRUE` in the last call to
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT](../pipelines.html#VkDynamicState) state enabled, and
+`sampleLocationsEnable` was [VK_TRUE](../fundamentals.html#VK_TRUE) in the last call to
 [vkCmdSetSampleLocationsEnableEXT](../primsrast.html#vkCmdSetSampleLocationsEnableEXT) then the current active depth
 attachment **must** have been created with the
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT` bit set
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](../resources.html#VkImageCreateFlagBits) bit set
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsEnable-07485) VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsEnable-07485
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT`
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits)
 stage, or
 the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` state enabled and the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT` state enabled, and if
-`sampleLocationsEnable` was `VK_TRUE` in the last call to
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](../pipelines.html#VkDynamicState) state enabled and the
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT](../pipelines.html#VkDynamicState) state enabled, and if
+`sampleLocationsEnable` was [VK_TRUE](../fundamentals.html#VK_TRUE) in the last call to
 [vkCmdSetSampleLocationsEnableEXT](../primsrast.html#vkCmdSetSampleLocationsEnableEXT), then the
 `sampleLocationsInfo.maxSampleLocationGridSize.width` in the last
 call to [vkCmdSetSampleLocationsEXT](../primsrast.html#vkCmdSetSampleLocationsEXT) **must** evenly divide
@@ -6353,12 +6922,12 @@ as returned by [vkGetPhysicalDeviceMultisamplePropertiesEXT](../limits.html#vkGe
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsEnable-07486) VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsEnable-07486
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT`
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits)
 stage, or
 the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` state enabled and the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT` state enabled, and if
-`sampleLocationsEnable` was `VK_TRUE` in the last call to
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](../pipelines.html#VkDynamicState) state enabled and the
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT](../pipelines.html#VkDynamicState) state enabled, and if
+`sampleLocationsEnable` was [VK_TRUE](../fundamentals.html#VK_TRUE) in the last call to
 [vkCmdSetSampleLocationsEnableEXT](../primsrast.html#vkCmdSetSampleLocationsEnableEXT), then the
 `sampleLocationsInfo.maxSampleLocationGridSize.height` in the last
 call to [vkCmdSetSampleLocationsEXT](../primsrast.html#vkCmdSetSampleLocationsEXT) **must** evenly divide
@@ -6369,21 +6938,21 @@ as returned by [vkGetPhysicalDeviceMultisamplePropertiesEXT](../limits.html#vkGe
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsEnable-07487) VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsEnable-07487
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT`
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits)
 stage, or
 the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT` state enabled, and if
-`sampleLocationsEnable` was `VK_TRUE` in the last call to
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT](../pipelines.html#VkDynamicState) state enabled, and if
+`sampleLocationsEnable` was [VK_TRUE](../fundamentals.html#VK_TRUE) in the last call to
 [vkCmdSetSampleLocationsEnableEXT](../primsrast.html#vkCmdSetSampleLocationsEnableEXT), the fragment shader code **must**
 not statically use the extended instruction `InterpolateAtSample`
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsEnable-07936) VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsEnable-07936
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` state disabled and the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` state enabled, and the
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](../pipelines.html#VkDynamicState) state disabled and the
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`sampleLocationsEnable` is `VK_TRUE`, then
+`sampleLocationsEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 `sampleLocationsInfo.sampleLocationGridSize.width` **must** evenly
 divide
 [VkMultisamplePropertiesEXT](../limits.html#VkMultisamplePropertiesEXT)::`maxSampleLocationGridSize.width`
@@ -6394,10 +6963,10 @@ in the last call to [vkCmdSetRasterizationSamplesEXT](../primsrast.html#vkCmdSet
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsEnable-07937) VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsEnable-07937
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` state disabled and the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` state enabled, and the
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](../pipelines.html#VkDynamicState) state disabled and the
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`sampleLocationsEnable` is `VK_TRUE`, then
+`sampleLocationsEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 `sampleLocationsInfo.sampleLocationGridSize.height` **must** evenly
 divide
 [VkMultisamplePropertiesEXT](../limits.html#VkMultisamplePropertiesEXT)::`maxSampleLocationGridSize.height`
@@ -6408,10 +6977,10 @@ in the last call to [vkCmdSetRasterizationSamplesEXT](../primsrast.html#vkCmdSet
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsEnable-07938) VUID-vkCmdExecuteGeneratedCommandsNV-sampleLocationsEnable-07938
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` state disabled and the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` state enabled, and the
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](../pipelines.html#VkDynamicState) state disabled and the
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`sampleLocationsEnable` is `VK_TRUE`, then
+`sampleLocationsEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 `sampleLocationsInfo.sampleLocationsPerPixel` **must** equal
 `rasterizationSamples` in the last call to
 [vkCmdSetRasterizationSamplesEXT](../primsrast.html#vkCmdSetRasterizationSamplesEXT)
@@ -6421,10 +6990,10 @@ If the bound graphics pipeline state was created with the
 If
 a shader object is bound to any graphics stage or
 the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_ENABLE_NV` state
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_ENABLE_NV](../pipelines.html#VkDynamicState) state
 enabled, and the last call to
 [vkCmdSetCoverageModulationTableEnableNV](../fragops.html#vkCmdSetCoverageModulationTableEnableNV) set
-`coverageModulationTableEnable` to `VK_TRUE`, then the
+`coverageModulationTableEnable` to [VK_TRUE](../fundamentals.html#VK_TRUE), then the
 `coverageModulationTableCount` parameter in the last call to
 [vkCmdSetCoverageModulationTableNV](../fragops.html#vkCmdSetCoverageModulationTableNV) **must** equal the current
 `rasterizationSamples` divided by the number of color samples in the
@@ -6441,31 +7010,31 @@ sample count of the depth/stencil attachment
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-coverageToColorEnable-07490) VUID-vkCmdExecuteGeneratedCommandsNV-coverageToColorEnable-07490
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_ENABLE_NV` state enabled and the
+[VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_ENABLE_NV](../pipelines.html#VkDynamicState) state enabled and the
 last call to [vkCmdSetCoverageToColorEnableNV](../fragops.html#vkCmdSetCoverageToColorEnableNV) set the
-`coverageToColorEnable` to `VK_TRUE`, then there **must** be an
+`coverageToColorEnable` to [VK_TRUE](../fundamentals.html#VK_TRUE), then there **must** be an
 active color attachment at the location selected by the last call to
 [vkCmdSetCoverageToColorLocationNV](../fragops.html#vkCmdSetCoverageToColorLocationNV) `coverageToColorLocation`,
-with a [VkFormat](../formats.html#VkFormat) of `VK_FORMAT_R8_UINT`,
-`VK_FORMAT_R8_SINT`, `VK_FORMAT_R16_UINT`,
-`VK_FORMAT_R16_SINT`, `VK_FORMAT_R32_UINT`, or
-`VK_FORMAT_R32_SINT`
+with a [VkFormat](../formats.html#VkFormat) of [VK_FORMAT_R8_UINT](../formats.html#VkFormat),
+[VK_FORMAT_R8_SINT](../formats.html#VkFormat), [VK_FORMAT_R16_UINT](../formats.html#VkFormat),
+[VK_FORMAT_R16_SINT](../formats.html#VkFormat), [VK_FORMAT_R32_UINT](../formats.html#VkFormat), or
+[VK_FORMAT_R32_SINT](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-rasterizerDiscardEnable-09420) VUID-vkCmdExecuteGeneratedCommandsNV-rasterizerDiscardEnable-09420
 
 If the `[VK_NV_fragment_coverage_to_color](../../appendices/extensions.html#VK_NV_fragment_coverage_to_color)` extension is enabled,
-and a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT`
+and a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits)
 stage, and the most recent call to [vkCmdSetRasterizerDiscardEnable](../primsrast.html#vkCmdSetRasterizerDiscardEnable)
 in the current command buffer set `rasterizerDiscardEnable` to
-`VK_FALSE`, and the last call to
+[VK_FALSE](../fundamentals.html#VK_FALSE), and the last call to
 [vkCmdSetCoverageToColorEnableNV](../fragops.html#vkCmdSetCoverageToColorEnableNV) set the
-`coverageToColorEnable` to `VK_TRUE`, then there **must** be an
+`coverageToColorEnable` to [VK_TRUE](../fundamentals.html#VK_TRUE), then there **must** be an
 active color attachment at the location selected by the last call to
 [vkCmdSetCoverageToColorLocationNV](../fragops.html#vkCmdSetCoverageToColorLocationNV) `coverageToColorLocation`,
-with a [VkFormat](../formats.html#VkFormat) of `VK_FORMAT_R8_UINT`,
-`VK_FORMAT_R8_SINT`, `VK_FORMAT_R16_UINT`,
-`VK_FORMAT_R16_SINT`, `VK_FORMAT_R32_UINT`, or
-`VK_FORMAT_R32_SINT`
+with a [VkFormat](../formats.html#VkFormat) of [VK_FORMAT_R8_UINT](../formats.html#VkFormat),
+[VK_FORMAT_R8_SINT](../formats.html#VkFormat), [VK_FORMAT_R16_UINT](../formats.html#VkFormat),
+[VK_FORMAT_R16_SINT](../formats.html#VkFormat), [VK_FORMAT_R32_UINT](../formats.html#VkFormat), or
+[VK_FORMAT_R32_SINT](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-coverageReductionMode-07491) VUID-vkCmdExecuteGeneratedCommandsNV-coverageReductionMode-07491
 
@@ -6473,8 +7042,8 @@ If the [`coverageReductionMode`](../features.html#features-coverageReductionMode
 feature is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV` or
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` dynamic states enabled,
+[VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV](../pipelines.html#VkDynamicState) or
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) dynamic states enabled,
 then the [current values](../pipelines.html#dynamic-state-current-value) of
 `coverageReductionMode`, `rasterizationSamples`, the sample
 counts for the color and depth/stencil attachments (if the subpass has
@@ -6484,8 +7053,8 @@ them) **must** be a valid combination returned by
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-viewportCount-07492) VUID-vkCmdExecuteGeneratedCommandsNV-viewportCount-07492
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` dynamic state enabled, but
-not the `VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV` dynamic state
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) dynamic state enabled, but
+not the [VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, then the bound graphics pipeline **must** have been created with
 [VkPipelineViewportSwizzleStateCreateInfoNV](../vertexpostproc.html#VkPipelineViewportSwizzleStateCreateInfoNV)::`viewportCount`
 greater or equal to the `viewportCount` parameter in the last call
@@ -6494,8 +7063,8 @@ to [vkCmdSetViewportWithCount](../vertexpostproc.html#vkCmdSetViewportWithCount)
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-viewportCount-07493) VUID-vkCmdExecuteGeneratedCommandsNV-viewportCount-07493
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` and
-`VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV` dynamic states enabled then
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) and
+[VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV](../pipelines.html#VkDynamicState) dynamic states enabled then
 the `viewportCount` parameter in the last call to
 [vkCmdSetViewportSwizzleNV](../vertexpostproc.html#vkCmdSetViewportSwizzleNV) **must** be greater than or equal to the
 `viewportCount` parameter in the last call to
@@ -6515,7 +7084,7 @@ shader object is bound to any graphics stage, then the
 If the `[VK_NV_framebuffer_mixed_samples](../../appendices/extensions.html#VK_NV_framebuffer_mixed_samples)` extension is enabled,
 and the [`coverageReductionMode`](../features.html#features-coverageReductionMode)
 feature is not enabled, or the [current    value](../pipelines.html#dynamic-state-current-value) of `coverageReductionMode` is not
-`VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV`,
+[VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV](../fragops.html#VkCoverageReductionModeNV),
 and the [current value](../pipelines.html#dynamic-state-current-value) of
 `rasterizationSamples` is greater than sample count of the color
 attachment, then [sample shading](../primsrast.html#primsrast-sampleshading) **must** be
@@ -6524,67 +7093,67 @@ disabled
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-stippledLineEnable-07495) VUID-vkCmdExecuteGeneratedCommandsNV-stippledLineEnable-07495
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT` or
-`VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT` dynamic states
+[VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT](../pipelines.html#VkDynamicState) or
+[VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT](../pipelines.html#VkDynamicState) dynamic states
 enabled, and if the current `stippledLineEnable` state is
-`VK_TRUE` and the current `lineRasterizationMode` state is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR`, then the
+[VK_TRUE](../fundamentals.html#VK_TRUE) and the current `lineRasterizationMode` state is
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR](../primsrast.html#VkLineRasterizationModeEXT), then the
 [`stippledRectangularLines`](../features.html#features-stippledRectangularLines)
 feature **must** be enabled
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-stippledLineEnable-07496) VUID-vkCmdExecuteGeneratedCommandsNV-stippledLineEnable-07496
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT` or
-`VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT` dynamic states
+[VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT](../pipelines.html#VkDynamicState) or
+[VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT](../pipelines.html#VkDynamicState) dynamic states
 enabled, and if the current `stippledLineEnable` state is
-`VK_TRUE` and the current `lineRasterizationMode` state is
-`VK_LINE_RASTERIZATION_MODE_BRESENHAM`, then the
+[VK_TRUE](../fundamentals.html#VK_TRUE) and the current `lineRasterizationMode` state is
+[VK_LINE_RASTERIZATION_MODE_BRESENHAM](../primsrast.html#VkLineRasterizationModeEXT), then the
 [`stippledBresenhamLines`](../features.html#features-stippledBresenhamLines)
 feature **must** be enabled
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-stippledLineEnable-07497) VUID-vkCmdExecuteGeneratedCommandsNV-stippledLineEnable-07497
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT` or
-`VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT` dynamic states
+[VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT](../pipelines.html#VkDynamicState) or
+[VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT](../pipelines.html#VkDynamicState) dynamic states
 enabled, and if the current `stippledLineEnable` state is
-`VK_TRUE` and the current `lineRasterizationMode` state is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH`, then the
+[VK_TRUE](../fundamentals.html#VK_TRUE) and the current `lineRasterizationMode` state is
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH](../primsrast.html#VkLineRasterizationModeEXT), then the
 [`stippledSmoothLines`](../features.html#features-stippledSmoothLines) feature
 **must** be enabled
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-stippledLineEnable-07498) VUID-vkCmdExecuteGeneratedCommandsNV-stippledLineEnable-07498
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT` or
-`VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT` dynamic states
+[VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT](../pipelines.html#VkDynamicState) or
+[VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT](../pipelines.html#VkDynamicState) dynamic states
 enabled, and if the current `stippledLineEnable` state is
-`VK_TRUE` and the current `lineRasterizationMode` state is
-`VK_LINE_RASTERIZATION_MODE_DEFAULT`, then the
+[VK_TRUE](../fundamentals.html#VK_TRUE) and the current `lineRasterizationMode` state is
+[VK_LINE_RASTERIZATION_MODE_DEFAULT](../primsrast.html#VkLineRasterizationModeEXT), then the
 [`stippledRectangularLines`](../features.html#features-stippledRectangularLines)
 feature **must** be enabled and
-[VkPhysicalDeviceLimits](../limits.html#VkPhysicalDeviceLimits)::`strictLines` **must** be `VK_TRUE`
+[VkPhysicalDeviceLimits](../limits.html#VkPhysicalDeviceLimits)::`strictLines` **must** be [VK_TRUE](../fundamentals.html#VK_TRUE)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-stage-07073) VUID-vkCmdExecuteGeneratedCommandsNV-stage-07073
 
 If the bound pipeline was created with the
 [VkPipelineShaderStageCreateInfo](../pipelines.html#VkPipelineShaderStageCreateInfo)::`stage` member of an element
 of [VkGraphicsPipelineCreateInfo](../pipelines.html#VkGraphicsPipelineCreateInfo)::`pStages` set to
-`VK_SHADER_STAGE_VERTEX_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT` or
-`VK_SHADER_STAGE_GEOMETRY_BIT`, then [Mesh    Shader Queries](../queries.html#queries-mesh-shader) **must** not be active
+[VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](../pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](../pipelines.html#VkShaderStageFlagBits) or
+[VK_SHADER_STAGE_GEOMETRY_BIT](../pipelines.html#VkShaderStageFlagBits), then [Mesh    Shader Queries](../queries.html#queries-mesh-shader) **must** not be active
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08877) VUID-vkCmdExecuteGeneratedCommandsNV-None-08877
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT` dynamic state
+[VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state
 enabled, and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetAttachmentFeedbackLoopEnableEXT](../renderpass.html#vkCmdSetAttachmentFeedbackLoopEnableEXT) **must** have been called and
 not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -6607,7 +7176,7 @@ stage in the logical pipeline
 
 If there is no bound graphics pipeline, `vkCmdBindShadersEXT` **must**
 have been called in the current command buffer with `pStages` with
-an element of `VK_SHADER_STAGE_VERTEX_BIT`
+an element of [VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08685) VUID-vkCmdExecuteGeneratedCommandsNV-None-08685
 
@@ -6615,7 +7184,7 @@ If there is no bound graphics pipeline, and the
 [`tessellationShader`](../features.html#features-tessellationShader) feature is
 enabled, `vkCmdBindShadersEXT` **must** have been called in the current
 command buffer with `pStages` with an element of
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](../pipelines.html#VkShaderStageFlagBits)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08686) VUID-vkCmdExecuteGeneratedCommandsNV-None-08686
 
@@ -6623,7 +7192,7 @@ If there is no bound graphics pipeline, and the
 [`tessellationShader`](../features.html#features-tessellationShader) feature is
 enabled, `vkCmdBindShadersEXT` **must** have been called in the current
 command buffer with `pStages` with an element of
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](../pipelines.html#VkShaderStageFlagBits)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08687) VUID-vkCmdExecuteGeneratedCommandsNV-None-08687
 
@@ -6631,54 +7200,54 @@ If there is no bound graphics pipeline, and the
 [`geometryShader`](../features.html#features-geometryShader) feature is enabled,
 `vkCmdBindShadersEXT` **must** have been called in the current command
 buffer with `pStages` with an element of
-`VK_SHADER_STAGE_GEOMETRY_BIT`
+[VK_SHADER_STAGE_GEOMETRY_BIT](../pipelines.html#VkShaderStageFlagBits)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08688) VUID-vkCmdExecuteGeneratedCommandsNV-None-08688
 
 If there is no bound graphics pipeline, `vkCmdBindShadersEXT` **must**
 have been called in the current command buffer with `pStages` with
-an element of `VK_SHADER_STAGE_FRAGMENT_BIT`
+an element of [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08689) VUID-vkCmdExecuteGeneratedCommandsNV-None-08689
 
 If there is no bound graphics pipeline, and the [    `taskShader`](../features.html#features-taskShader) feature is enabled, `vkCmdBindShadersEXT` **must**
 have been called in the current command buffer with `pStages` with
-an element of `VK_SHADER_STAGE_TASK_BIT_EXT`
+an element of [VK_SHADER_STAGE_TASK_BIT_EXT](../pipelines.html#VkShaderStageFlagBits)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08690) VUID-vkCmdExecuteGeneratedCommandsNV-None-08690
 
 If there is no bound graphics pipeline, and the [    `meshShader`](../features.html#features-meshShader) feature is enabled, `vkCmdBindShadersEXT` **must**
 have been called in the current command buffer with `pStages` with
-an element of `VK_SHADER_STAGE_MESH_BIT_EXT`
+an element of [VK_SHADER_STAGE_MESH_BIT_EXT](../pipelines.html#VkShaderStageFlagBits)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08693) VUID-vkCmdExecuteGeneratedCommandsNV-None-08693
 
 If there is no bound graphics pipeline, and at least one of the
 [`taskShader`](../features.html#features-taskShader) and [    `meshShader`](../features.html#features-meshShader) features is enabled, one of the
-`VK_SHADER_STAGE_VERTEX_BIT` or `VK_SHADER_STAGE_MESH_BIT_EXT`
+[VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits) or [VK_SHADER_STAGE_MESH_BIT_EXT](../pipelines.html#VkShaderStageFlagBits)
 stages **must** have a valid `VkShaderEXT` bound, and the other **must**
 have no `VkShaderEXT` bound
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08696) VUID-vkCmdExecuteGeneratedCommandsNV-None-08696
 
 If there is no bound graphics pipeline, and a valid `VkShaderEXT` is
-bound to the `VK_SHADER_STAGE_VERTEX_BIT` stage, there **must** be no
-`VkShaderEXT` bound to either the `VK_SHADER_STAGE_TASK_BIT_EXT`
-stage or the `VK_SHADER_STAGE_MESH_BIT_EXT` stage
+bound to the [VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits) stage, there **must** be no
+`VkShaderEXT` bound to either the [VK_SHADER_STAGE_TASK_BIT_EXT](../pipelines.html#VkShaderStageFlagBits)
+stage or the [VK_SHADER_STAGE_MESH_BIT_EXT](../pipelines.html#VkShaderStageFlagBits) stage
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08698) VUID-vkCmdExecuteGeneratedCommandsNV-None-08698
 
 If any graphics shader is bound which was created with the
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT` flag, then all shaders created
-with the `VK_SHADER_CREATE_LINK_STAGE_BIT_EXT` flag in the same
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag, then all shaders created
+with the [VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag in the same
 [vkCreateShadersEXT](../shaders.html#vkCreateShadersEXT) call **must** also be bound
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08699) VUID-vkCmdExecuteGeneratedCommandsNV-None-08699
 
 If any graphics shader is bound which was created with the
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT` flag, any stages in between
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag, any stages in between
 stages whose shaders which did not create a shader with the
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT` flag as part of the same
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag as part of the same
 [vkCreateShadersEXT](../shaders.html#vkCreateShadersEXT) call **must** not have any `VkShaderEXT` bound
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08878) VUID-vkCmdExecuteGeneratedCommandsNV-None-08878
@@ -6689,9 +7258,10 @@ ranges
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08879) VUID-vkCmdExecuteGeneratedCommandsNV-None-08879
 
-All bound graphics shader objects **must** have been created with identical
-or [identically defined](../../appendices/glossary.html#glossary-identically-defined) arrays of
-descriptor set layouts
+All bound graphics shader objects **must** have either been created with
+the [VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag set, or with
+identical or [identically defined](../../appendices/glossary.html#glossary-identically-defined) arrays
+of descriptor set layouts
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-colorAttachmentCount-09372) VUID-vkCmdExecuteGeneratedCommandsNV-colorAttachmentCount-09372
 
@@ -6699,24 +7269,24 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering) and a
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`colorAttachmentCount` equal to `1`, a color
 attachment with a resolve mode of
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`, and a
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](../renderpass.html#VkResolveModeFlagBitsKHR), and a
 fragment shader is bound, it **must** not declare the `DepthReplacing`
 or `StencilRefReplacingEXT` execution modes
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-pDynamicStates-08715) VUID-vkCmdExecuteGeneratedCommandsNV-pDynamicStates-08715
 
 If the bound graphics pipeline state includes a fragment shader stage,
-was created with `VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE` set in
+was created with [VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE](../pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](../pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`, and the
 fragment shader declares the `EarlyFragmentTests` execution mode and
 uses `OpDepthAttachmentReadEXT`, the `depthWriteEnable` parameter
 in the last call to [vkCmdSetDepthWriteEnable](../fragops.html#vkCmdSetDepthWriteEnable) **must** be
-`VK_FALSE`
+[VK_FALSE](../fundamentals.html#VK_FALSE)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-pDynamicStates-08716) VUID-vkCmdExecuteGeneratedCommandsNV-pDynamicStates-08716
 
 If the bound graphics pipeline state includes a fragment shader stage,
-was created with `VK_DYNAMIC_STATE_STENCIL_WRITE_MASK` set in
+was created with [VK_DYNAMIC_STATE_STENCIL_WRITE_MASK](../pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](../pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`, and the
 fragment shader declares the `EarlyFragmentTests` execution mode and
 uses `OpStencilAttachmentReadEXT`, the `writeMask` parameter in
@@ -6728,12 +7298,12 @@ the last call to [vkCmdSetStencilWriteMask](../fragops.html#vkCmdSetStencilWrite
     a shader object is bound to any graphics stage
 or
     the bound graphics pipeline was created with
-    `VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT`,
+    [VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](../pipelines.html#VkDynamicState),
     and the format of any color attachment is
-    `VK_FORMAT_E5B9G9R9_UFLOAT_PACK32`, the corresponding element of the
+    [VK_FORMAT_E5B9G9R9_UFLOAT_PACK32](../formats.html#VkFormat), the corresponding element of the
     `pColorWriteMasks` parameter of [vkCmdSetColorWriteMaskEXT](../framebuffer.html#vkCmdSetColorWriteMaskEXT)
-    **must** either include all of `VK_COLOR_COMPONENT_R_BIT`,
-    `VK_COLOR_COMPONENT_G_BIT`, and `VK_COLOR_COMPONENT_B_BIT`, or
+    **must** either include all of [VK_COLOR_COMPONENT_R_BIT](../framebuffer.html#VkColorComponentFlagBits),
+    [VK_COLOR_COMPONENT_G_BIT](../framebuffer.html#VkColorComponentFlagBits), and [VK_COLOR_COMPONENT_B_BIT](../framebuffer.html#VkColorComponentFlagBits), or
     none of them
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-maxFragmentDualSrcAttachments-09239) VUID-vkCmdExecuteGeneratedCommandsNV-maxFragmentDualSrcAttachments-09239
@@ -6783,16 +7353,16 @@ render pass instance
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-09642) VUID-vkCmdExecuteGeneratedCommandsNV-None-09642
 
 If the current render pass was begun with [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering) with
-the `VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT` flag, the bound
+the [VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT](../renderpass.html#VkRenderingFlagBitsKHR) flag, the bound
 graphics pipeline **must** have been created with
-`VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT`
+[VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-09643) VUID-vkCmdExecuteGeneratedCommandsNV-None-09643
 
 If the bound graphics pipeline was created with
-`VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT`, the current
+[VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR), the current
 render pass **must** have begun with [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering) with the
-`VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT` flag
+[VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT](../renderpass.html#VkRenderingFlagBitsKHR) flag
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-10677) VUID-vkCmdExecuteGeneratedCommandsNV-None-10677
 
@@ -6824,7 +7394,7 @@ the most significant bit in current render pass instance `viewMask`
 
 If current render pass instance was begun with [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering)
 with [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`flags` which includes
-`VK_RENDERING_FRAGMENT_REGION_BIT_EXT`, and if
+[VK_RENDERING_FRAGMENT_REGION_BIT_EXT](../renderpass.html#VkRenderingFlagBitsKHR), and if
 [sample shading](../primsrast.html#primsrast-sampleshading) is enabled (explicitly or
 implicitly), then the minimum fraction for sample shading **must** equal
 0.0
@@ -6851,7 +7421,7 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering) and [vkCmdBeginCustomResolveEXT](../renderpass.html#vkCmdBeginCustomResolveEXT) has been
 recorded in the render pass instance, the graphics pipeline bound **must**
 have been created with
-[VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`customResolve` as `VK_TRUE`
+[VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`customResolve` as [VK_TRUE](../fundamentals.html#VK_TRUE)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-customResolve-11525) VUID-vkCmdExecuteGeneratedCommandsNV-customResolve-11525
 
@@ -6860,7 +7430,7 @@ If the current render pass instance was begun with
 [vkCmdBeginCustomResolveEXT](../renderpass.html#vkCmdBeginCustomResolveEXT) has not been recorded in the render
 pass instance, the graphics pipeline bound **must** have been created with
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`customResolve` as
-`VK_FALSE`
+[VK_FALSE](../fundamentals.html#VK_FALSE)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11861) VUID-vkCmdExecuteGeneratedCommandsNV-None-11861
 
@@ -6897,7 +7467,7 @@ each element of the [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pCol
 with an `resolveImageView` equal to [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE) **must** have
 the corresponding element of
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`pColorAttachmentFormats` used
-to create the bound pipeline equal to `VK_FORMAT_UNDEFINED`
+to create the bound pipeline equal to [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-dynamicRenderingUnusedAttachments-11864) VUID-vkCmdExecuteGeneratedCommandsNV-dynamicRenderingUnusedAttachments-11864
 
@@ -6912,7 +7482,7 @@ element of
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`pColorAttachmentFormats` used
 to create the bound graphics pipeline, or the corresponding element of
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`pColorAttachmentFormats`, if it
-exists, **must** be `VK_FORMAT_UNDEFINED`
+exists, **must** be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11865) VUID-vkCmdExecuteGeneratedCommandsNV-None-11865
 
@@ -6925,7 +7495,7 @@ and [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pDepthAttachment->re
 [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), the value of
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`depthAttachmentFormat` used to
 create the bound graphics pipeline **must** be equal to
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11866) VUID-vkCmdExecuteGeneratedCommandsNV-None-11866
 
@@ -6952,7 +7522,7 @@ If the current render pass instance was begun with
 create the bound graphics pipeline was not equal to the [VkFormat](../formats.html#VkFormat)
 used to create
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pDepthAttachment->resolveImageView`, the
-value of the format **must** be `VK_FORMAT_UNDEFINED`
+value of the format **must** be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11868) VUID-vkCmdExecuteGeneratedCommandsNV-None-11868
 
@@ -6965,7 +7535,7 @@ and [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pStencilAttachment->
 was [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), the value of
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`stencilAttachmentFormat` used
 to create the bound graphics pipeline **must** be equal to
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-11869) VUID-vkCmdExecuteGeneratedCommandsNV-None-11869
 
@@ -6992,7 +7562,7 @@ not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), and the 
 to create the bound graphics pipeline was not equal to the
 [VkFormat](../formats.html#VkFormat) used to create
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pStencilAttachment->resolveImageView`, the
-value of the format **must** be `VK_FORMAT_UNDEFINED`
+value of the format **must** be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-colorAttachmentCount-11871) VUID-vkCmdExecuteGeneratedCommandsNV-colorAttachmentCount-11871
 
@@ -7034,7 +7604,7 @@ pass instance was begun with [vkCmdBeginRendering](../renderpass.html#vkCmdBegin
 density map attachment is active, and [vkCmdBeginCustomResolveEXT](../renderpass.html#vkCmdBeginCustomResolveEXT)
 has been called, then the fragment shader object bound **must** have been
 created with [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`customResolve` as
-`VK_TRUE`
+[VK_TRUE](../fundamentals.html#VK_TRUE)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-customResolve-11530) VUID-vkCmdExecuteGeneratedCommandsNV-customResolve-11530
 
@@ -7044,7 +7614,7 @@ custom resolve, a fragment density map attachment is active, and
 [vkCmdBeginCustomResolveEXT](../renderpass.html#vkCmdBeginCustomResolveEXT) has not yet been called, then the
 fragment shader object bound **must** have been created with
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`customResolve` as
-`VK_FALSE`
+[VK_FALSE](../fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-04007) VUID-vkCmdExecuteGeneratedCommandsNV-None-04007
@@ -7067,7 +7637,7 @@ declared in the vertex shader entry point’s interface **must** not be
 If the [`robustBufferAccess`](../features.html#features-robustBufferAccess) feature
 is not enabled,
 and that pipeline was created without enabling
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS` for
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](../pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
 `vertexInputs`,
 then for a given vertex buffer binding, any attribute data fetched **must**
 be entirely contained within the corresponding vertex buffer binding, as
@@ -7102,11 +7672,11 @@ be a multiple of the [component size of the `format`](../formats.html#formats)
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-07842) VUID-vkCmdExecuteGeneratedCommandsNV-None-07842
 
     If
-    there is a shader object bound to the `VK_SHADER_STAGE_VERTEX_BIT`
+    there is a shader object bound to the [VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits)
     stage
 or
     the bound graphics pipeline state was created with the
-    `VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY` dynamic state enabled
+    [VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY](../pipelines.html#VkDynamicState) dynamic state enabled
     then [vkCmdSetPrimitiveTopology](../drawing.html#vkCmdSetPrimitiveTopology) **must** have been called and not
     subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
     command buffer prior to this drawing command
@@ -7115,8 +7685,8 @@ or
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-dynamicPrimitiveTopologyUnrestricted-07500) VUID-vkCmdExecuteGeneratedCommandsNV-dynamicPrimitiveTopologyUnrestricted-07500
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY` dynamic state enabled
-and the [    `dynamicPrimitiveTopologyUnrestricted`](../limits.html#limits-dynamicPrimitiveTopologyUnrestricted) is `VK_FALSE`,
+[VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY](../pipelines.html#VkDynamicState) dynamic state enabled
+and the [    `dynamicPrimitiveTopologyUnrestricted`](../limits.html#limits-dynamicPrimitiveTopologyUnrestricted) is [VK_FALSE](../fundamentals.html#VK_FALSE),
 then the `primitiveTopology` parameter of
 `vkCmdSetPrimitiveTopology` **must** be of the same
 [topology class](../drawing.html#drawing-primitive-topology-class) as the pipeline
@@ -7125,28 +7695,28 @@ then the `primitiveTopology` parameter of
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-primitiveTopology-10286) VUID-vkCmdExecuteGeneratedCommandsNV-primitiveTopology-10286
 
-If a `VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` stage is bound, then
+If a [VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](../pipelines.html#VkShaderStageFlagBits) stage is bound, then
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`primitiveTopology` **must** be `VK_PRIMITIVE_TOPOLOGY_PATCH_LIST`
+`primitiveTopology` **must** be [VK_PRIMITIVE_TOPOLOGY_PATCH_LIST](../drawing.html#VkPrimitiveTopology)
 prior to this drawing command
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-primitiveTopology-10747) VUID-vkCmdExecuteGeneratedCommandsNV-primitiveTopology-10747
 
 If [vkCmdSetPrimitiveTopology](../drawing.html#vkCmdSetPrimitiveTopology) set `primitiveTopology` to
-`VK_PRIMITIVE_TOPOLOGY_PATCH_LIST` prior to this drawing command,
-then a `VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` stage **must** be
+[VK_PRIMITIVE_TOPOLOGY_PATCH_LIST](../drawing.html#VkPrimitiveTopology) prior to this drawing command,
+then a [VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](../pipelines.html#VkShaderStageFlagBits) stage **must** be
 bound
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-primitiveTopology-10748) VUID-vkCmdExecuteGeneratedCommandsNV-primitiveTopology-10748
 
 If [vkCmdSetPrimitiveTopology](../drawing.html#vkCmdSetPrimitiveTopology) set `primitiveTopology` to
-`VK_PRIMITIVE_TOPOLOGY_POINT_LIST` prior to this drawing command,
+[VK_PRIMITIVE_TOPOLOGY_POINT_LIST](../drawing.html#VkPrimitiveTopology) prior to this drawing command,
 the [`maintenance5`](../features.html#features-maintenance5) feature is not
 enabled,
-both a `VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT` and
-`VK_SHADER_STAGE_GEOMETRY_BIT` stage are not bound, then the
+both a [VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](../pipelines.html#VkShaderStageFlagBits) and
+[VK_SHADER_STAGE_GEOMETRY_BIT](../pipelines.html#VkShaderStageFlagBits) stage are not bound, then the
 `Vertex` `Execution` `Model` **must** have a `PointSize` decorated
 variable that is statically written to
 
@@ -7154,9 +7724,9 @@ variable that is statically written to
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-pStrides-04913) VUID-vkCmdExecuteGeneratedCommandsNV-pStrides-04913
 
 If the bound graphics pipeline was created with the
-`VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE` dynamic state
+[VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE](../pipelines.html#VkDynamicState) dynamic state
 enabled,
-but without the `VK_DYNAMIC_STATE_VERTEX_INPUT_EXT` dynamic state
+but without the [VK_DYNAMIC_STATE_VERTEX_INPUT_EXT](../pipelines.html#VkDynamicState) dynamic state
 enabled,
 then [vkCmdBindVertexBuffers2](../fxvertex.html#vkCmdBindVertexBuffers2) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
@@ -7167,11 +7737,11 @@ parameter of [vkCmdBindVertexBuffers2](../fxvertex.html#vkCmdBindVertexBuffers2)
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-04914) VUID-vkCmdExecuteGeneratedCommandsNV-None-04914
 
     If
-    there is a shader object bound to the `VK_SHADER_STAGE_VERTEX_BIT`
+    there is a shader object bound to the [VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits)
     stage
 or
     the bound graphics pipeline state was created with the
-    `VK_DYNAMIC_STATE_VERTEX_INPUT_EXT` dynamic state enabled
+    [VK_DYNAMIC_STATE_VERTEX_INPUT_EXT](../pipelines.html#VkDynamicState) dynamic state enabled
     then [vkCmdSetVertexInputEXT](../fxvertex.html#vkCmdSetVertexInputEXT) **must** have been called and not
     subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
     command buffer prior to this draw command
@@ -7183,11 +7753,11 @@ or
     the [    `vertexAttributeRobustness`](../features.html#features-vertexAttributeRobustness) feature is not enabled, and
     the [`maintenance9`](../features.html#features-maintenance9) feature is not
     enabled, and
-    there is a shader object bound to the `VK_SHADER_STAGE_VERTEX_BIT`
+    there is a shader object bound to the [VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits)
     stage
 or
     the bound graphics pipeline state was created with the
-    `VK_DYNAMIC_STATE_VERTEX_INPUT_EXT` dynamic state enabled
+    [VK_DYNAMIC_STATE_VERTEX_INPUT_EXT](../pipelines.html#VkDynamicState) dynamic state enabled
     then all variables with the `Input` storage class decorated with
     `Location` in the `Vertex` `Execution` `Model` `OpEntryPoint`
     **must** contain a location in
@@ -7197,11 +7767,11 @@ or
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-Input-08734) VUID-vkCmdExecuteGeneratedCommandsNV-Input-08734
 
     If
-    there is a shader object bound to the `VK_SHADER_STAGE_VERTEX_BIT`
+    there is a shader object bound to the [VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits)
     stage
 or
     the bound graphics pipeline state was created with the
-    `VK_DYNAMIC_STATE_VERTEX_INPUT_EXT` dynamic state enabled
+    [VK_DYNAMIC_STATE_VERTEX_INPUT_EXT](../pipelines.html#VkDynamicState) dynamic state enabled
     and either the [    `legacyVertexAttributes`](../features.html#features-legacyVertexAttributes) feature is not enabled or the SPIR-V Type
     associated with a given `Input` variable of the corresponding
     `Location` in the `Vertex` `Execution` `Model` `OpEntryPoint` is
@@ -7215,11 +7785,11 @@ or
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-format-08936) VUID-vkCmdExecuteGeneratedCommandsNV-format-08936
 
     If
-    there is a shader object bound to the `VK_SHADER_STAGE_VERTEX_BIT`
+    there is a shader object bound to the [VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits)
     stage
 or
     the bound graphics pipeline state was created with the
-    `VK_DYNAMIC_STATE_VERTEX_INPUT_EXT` dynamic state enabled
+    [VK_DYNAMIC_STATE_VERTEX_INPUT_EXT](../pipelines.html#VkDynamicState) dynamic state enabled
     and [VkVertexInputAttributeDescription2EXT](../fxvertex.html#VkVertexInputAttributeDescription2EXT)::`format` has a
     64-bit component, then the scalar width associated with all `Input`
     variables of the corresponding `Location` in the `Vertex`
@@ -7229,11 +7799,11 @@ or
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-format-08937) VUID-vkCmdExecuteGeneratedCommandsNV-format-08937
 
     If
-    there is a shader object bound to the `VK_SHADER_STAGE_VERTEX_BIT`
+    there is a shader object bound to the [VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits)
     stage
 or
     the bound graphics pipeline state was created with the
-    `VK_DYNAMIC_STATE_VERTEX_INPUT_EXT` dynamic state enabled
+    [VK_DYNAMIC_STATE_VERTEX_INPUT_EXT](../pipelines.html#VkDynamicState) dynamic state enabled
     and the scalar width associated with a `Location` decorated
     `Input` variable in the `Vertex` `Execution` `Model`
     `OpEntryPoint` is 64-bit, then the corresponding
@@ -7244,11 +7814,11 @@ or
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-09203) VUID-vkCmdExecuteGeneratedCommandsNV-None-09203
 
     If
-    there is a shader object bound to the `VK_SHADER_STAGE_VERTEX_BIT`
+    there is a shader object bound to the [VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits)
     stage
 or
     the bound graphics pipeline state was created with the
-    `VK_DYNAMIC_STATE_VERTEX_INPUT_EXT` dynamic state enabled
+    [VK_DYNAMIC_STATE_VERTEX_INPUT_EXT](../pipelines.html#VkDynamicState) dynamic state enabled
     and [VkVertexInputAttributeDescription2EXT](../fxvertex.html#VkVertexInputAttributeDescription2EXT)::`format` has a
     64-bit component, then all `Input` variables at the corresponding
     `Location` in the `Vertex` `Execution` `Model` `OpEntryPoint`
@@ -7259,13 +7829,13 @@ or
 
     If
     there is a shader object bound to the
-    `VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` stage
+    [VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
     the bound graphics pipeline state was created with both a
-    `VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` stage and the
-    `VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT` dynamic state enabled,
+    [VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](../pipelines.html#VkShaderStageFlagBits) stage and the
+    [VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
     and the [current value](../pipelines.html#dynamic-state-current-value) of
-    `primitiveTopology` is `VK_PRIMITIVE_TOPOLOGY_PATCH_LIST`, then
+    `primitiveTopology` is [VK_PRIMITIVE_TOPOLOGY_PATCH_LIST](../drawing.html#VkPrimitiveTopology), then
     [vkCmdSetPatchControlPointsEXT](../shaders.html#vkCmdSetPatchControlPointsEXT) **must** have been called and not
     subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
     command buffer prior to this drawing command
@@ -7274,11 +7844,11 @@ or
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-04879) VUID-vkCmdExecuteGeneratedCommandsNV-None-04879
 
     If
-    there is a shader object bound to the `VK_SHADER_STAGE_VERTEX_BIT`
+    there is a shader object bound to the [VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits)
     stage
 or
     the bound graphics pipeline state was created with the
-    `VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE` dynamic state enabled
+    [VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE](../pipelines.html#VkDynamicState) dynamic state enabled
     then [vkCmdSetPrimitiveRestartEnable](../drawing.html#vkCmdSetPrimitiveRestartEnable) **must** have been called and not
     subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
     command buffer prior to this drawing command
@@ -7289,17 +7859,17 @@ or
     If
     the [    `primitiveTopologyListRestart`](../features.html#features-primitiveTopologyListRestart) feature is not enabled,
     the [input assembly](../drawing.html#drawing-vertex-input-assembler-topology) is
-    `VK_PRIMITIVE_TOPOLOGY_POINT_LIST`,
-    `VK_PRIMITIVE_TOPOLOGY_LINE_LIST`,
-    `VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST`,
-    `VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY`, or
-    `VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY`,
-    there is a shader object bound to the `VK_SHADER_STAGE_VERTEX_BIT`
+    [VK_PRIMITIVE_TOPOLOGY_POINT_LIST](../drawing.html#VkPrimitiveTopology),
+    [VK_PRIMITIVE_TOPOLOGY_LINE_LIST](../drawing.html#VkPrimitiveTopology),
+    [VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST](../drawing.html#VkPrimitiveTopology),
+    [VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY](../drawing.html#VkPrimitiveTopology), or
+    [VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY](../drawing.html#VkPrimitiveTopology),
+    there is a shader object bound to the [VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits)
     stage
 or
     the bound graphics pipeline state was created with the
-    `VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE` dynamic state enabled,
-    then [vkCmdSetPrimitiveRestartEnable](../drawing.html#vkCmdSetPrimitiveRestartEnable) **must** be `VK_FALSE`
+    [VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE](../pipelines.html#VkDynamicState) dynamic state enabled,
+    then [vkCmdSetPrimitiveRestartEnable](../drawing.html#vkCmdSetPrimitiveRestartEnable) **must** be [VK_FALSE](../fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-10909) VUID-vkCmdExecuteGeneratedCommandsNV-None-10909
@@ -7307,13 +7877,13 @@ or
     If
     the [    `primitiveTopologyPatchListRestart`](../features.html#features-primitiveTopologyPatchListRestart) feature is not enabled,
     the [input assembly](../drawing.html#drawing-vertex-input-assembler-topology) is
-    `VK_PRIMITIVE_TOPOLOGY_PATCH_LIST`,
+    [VK_PRIMITIVE_TOPOLOGY_PATCH_LIST](../drawing.html#VkPrimitiveTopology),
     there is a shader object bound to the
-    `VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` stage
+    [VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
     the bound graphics pipeline state was created with the
-    `VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE` dynamic state enabled
-    then [vkCmdSetPrimitiveRestartEnable](../drawing.html#vkCmdSetPrimitiveRestartEnable) **must** be `VK_FALSE`
+    [VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE](../pipelines.html#VkDynamicState) dynamic state enabled
+    then [vkCmdSetPrimitiveRestartEnable](../drawing.html#vkCmdSetPrimitiveRestartEnable) **must** be [VK_FALSE](../fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-stage-06481) VUID-vkCmdExecuteGeneratedCommandsNV-stage-06481
@@ -7321,13 +7891,13 @@ or
 The bound graphics pipeline **must** not have been created with the
 [VkPipelineShaderStageCreateInfo](../pipelines.html#VkPipelineShaderStageCreateInfo)::`stage` member of any element
 of [VkGraphicsPipelineCreateInfo](../pipelines.html#VkGraphicsPipelineCreateInfo)::`pStages` set to
-`VK_SHADER_STAGE_TASK_BIT_EXT` or `VK_SHADER_STAGE_MESH_BIT_EXT`
+[VK_SHADER_STAGE_TASK_BIT_EXT](../pipelines.html#VkShaderStageFlagBits) or [VK_SHADER_STAGE_MESH_BIT_EXT](../pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-None-08885) VUID-vkCmdExecuteGeneratedCommandsNV-None-08885
 
 There **must** be no shader object bound to either of the
-`VK_SHADER_STAGE_TASK_BIT_EXT` or `VK_SHADER_STAGE_MESH_BIT_EXT`
+[VK_SHADER_STAGE_TASK_BIT_EXT](../pipelines.html#VkShaderStageFlagBits) or [VK_SHADER_STAGE_MESH_BIT_EXT](../pipelines.html#VkShaderStageFlagBits)
 stages
 
 * 
@@ -7335,10 +7905,10 @@ stages
 
 If
 a shader object is bound to the
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT` stage or
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](../pipelines.html#VkShaderStageFlagBits) stage or
 a graphics pipeline is bound which was created with both a
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT` stage and the
-`VK_DYNAMIC_STATE_TESSELLATION_DOMAIN_ORIGIN_EXT` dynamic state
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](../pipelines.html#VkShaderStageFlagBits) stage and the
+[VK_DYNAMIC_STATE_TESSELLATION_DOMAIN_ORIGIN_EXT](../pipelines.html#VkDynamicState) dynamic state
 enabled, then [vkCmdSetTessellationDomainOriginEXT](../tessellation.html#vkCmdSetTessellationDomainOriginEXT) **must** have been
 called and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in
 the current command buffer prior to this drawing command
@@ -7347,8 +7917,8 @@ the current command buffer prior to this drawing command
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-OpExecutionMode-12239) VUID-vkCmdExecuteGeneratedCommandsNV-OpExecutionMode-12239
 
 If a shader is bound to both the
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` and
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT` stages, and if both
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](../pipelines.html#VkShaderStageFlagBits) and
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](../pipelines.html#VkShaderStageFlagBits) stages, and if both
 stages contain an `OpExecutionMode` instruction specifying the type
 of subdivision, they **must** be the same
 
@@ -7356,8 +7926,8 @@ of subdivision, they **must** be the same
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-OpExecutionMode-12240) VUID-vkCmdExecuteGeneratedCommandsNV-OpExecutionMode-12240
 
 If a shader is bound to both the
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` and
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT` stages, and if both
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](../pipelines.html#VkShaderStageFlagBits) and
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](../pipelines.html#VkShaderStageFlagBits) stages, and if both
 stages contain an `OpExecutionMode` instruction specifying the
 orientation of triangles, they **must** be the same
 
@@ -7365,8 +7935,8 @@ orientation of triangles, they **must** be the same
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-OpExecutionMode-12241) VUID-vkCmdExecuteGeneratedCommandsNV-OpExecutionMode-12241
 
 If a shader is bound to both the
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` and
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT` stages, and if both
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](../pipelines.html#VkShaderStageFlagBits) and
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](../pipelines.html#VkShaderStageFlagBits) stages, and if both
 stages contain an `OpExecutionMode` instruction specifying the
 segment spacing, they **must** be the same
 
@@ -7374,8 +7944,8 @@ segment spacing, they **must** be the same
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-OpExecutionMode-12242) VUID-vkCmdExecuteGeneratedCommandsNV-OpExecutionMode-12242
 
 If a shader is bound to both the
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` and
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT` stages, and if both
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](../pipelines.html#VkShaderStageFlagBits) and
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](../pipelines.html#VkShaderStageFlagBits) stages, and if both
 stages contain an `OpExecutionMode` instruction specifying the output
 patch size, they **must** be the same
 
@@ -7387,14 +7957,14 @@ patch size, they **must** be the same
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-isPreprocessed-02908) VUID-vkCmdExecuteGeneratedCommandsNV-isPreprocessed-02908
 
-If `isPreprocessed` is `VK_TRUE` then
+If `isPreprocessed` is [VK_TRUE](../fundamentals.html#VK_TRUE) then
 [vkCmdPreprocessGeneratedCommandsNV](#vkCmdPreprocessGeneratedCommandsNV) **must** have already been
 executed on the device, using the same `pGeneratedCommandsInfo`
 content as well as the content of the input buffers it references (all
 except [VkGeneratedCommandsInfoNV](#VkGeneratedCommandsInfoNV)::`preprocessBuffer`).
 Furthermore, `pGeneratedCommandsInfo`’s `indirectCommandsLayout`
 **must** have been created with the
-`VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_NV` bit
+[VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_NV](#VkIndirectCommandsLayoutUsageFlagBitsNV) bit
 set
 
 * 
@@ -7435,7 +8005,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-commandBuffer-cmdpool) VUID-vkCmdExecuteGeneratedCommandsNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](../devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](../devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-renderpass) VUID-vkCmdExecuteGeneratedCommandsNV-renderpass
@@ -7532,7 +8102,7 @@ actual number of sequences generated.
 `preprocessBuffer` is the [VkBuffer](../resources.html#VkBuffer) that is used for
 preprocessing the input data for execution.
 If this structure is used with [vkCmdExecuteGeneratedCommandsNV](#vkCmdExecuteGeneratedCommandsNV)
-with its `isPreprocessed` set to `VK_TRUE`, then the
+with its `isPreprocessed` set to [VK_TRUE](../fundamentals.html#VK_TRUE), then the
 preprocessing step is skipped and data in this buffer will not be
 modified.
 The contents and the layout of this buffer are opaque to applications
@@ -7576,23 +8146,23 @@ time
 [](#VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-02913) VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-02913
 
 If the `indirectCommandsLayout` uses a token of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV`, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV](#VkIndirectCommandsTokenTypeNV), then the
 `pipeline` **must** have been created with multiple shader groups
 
 * 
 [](#VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-02914) VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-02914
 
 If the `indirectCommandsLayout` uses a token of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV`, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV](#VkIndirectCommandsTokenTypeNV), then the
 `pipeline` **must** have been created with
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV` set in
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](../pipelines.html#VkPipelineCreateFlagBits) set in
 `VkGraphicsPipelineCreateInfo`::`flags`
 
 * 
 [](#VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-02915) VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-02915
 
 If the `indirectCommandsLayout` uses a token of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV`, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](#VkIndirectCommandsTokenTypeNV), then the
 `pipeline`’s `VkPipelineLayout` **must** match the
 [VkIndirectCommandsLayoutTokenNV](#VkIndirectCommandsLayoutTokenNV)::`pushconstantPipelineLayout`
 
@@ -7606,15 +8176,15 @@ If the `indirectCommandsLayout` uses a token of
 [](#VUID-VkGeneratedCommandsInfoNV-pipelineBindPoint-09084) VUID-VkGeneratedCommandsInfoNV-pipelineBindPoint-09084
 
 If `pipelineBindPoint` is of type
-`VK_PIPELINE_BIND_POINT_COMPUTE`, then the `pipeline` **must** have
+[VK_PIPELINE_BIND_POINT_COMPUTE](../pipelines.html#VkPipelineBindPoint), then the `pipeline` **must** have
 been created with the flag
-`VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV`
+[VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV](../pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-VkGeneratedCommandsInfoNV-pipelineBindPoint-09085) VUID-VkGeneratedCommandsInfoNV-pipelineBindPoint-09085
 
 If `pipelineBindPoint` is of type
-`VK_PIPELINE_BIND_POINT_COMPUTE`, then the `pipeline` **must** have
+[VK_PIPELINE_BIND_POINT_COMPUTE](../pipelines.html#VkPipelineBindPoint), then the `pipeline` **must** have
 been created with a [VkComputePipelineIndirectBufferInfoNV](../pipelines.html#VkComputePipelineIndirectBufferInfoNV)
 structure specifying a valid address where its metadata will be saved
 
@@ -7622,7 +8192,7 @@ structure specifying a valid address where its metadata will be saved
 [](#VUID-VkGeneratedCommandsInfoNV-pipelineBindPoint-09086) VUID-VkGeneratedCommandsInfoNV-pipelineBindPoint-09086
 
 If `pipelineBindPoint` is of type
-`VK_PIPELINE_BIND_POINT_COMPUTE`, then
+[VK_PIPELINE_BIND_POINT_COMPUTE](../pipelines.html#VkPipelineBindPoint), then
 [vkCmdUpdatePipelineIndirectBufferNV](../pipelines.html#vkCmdUpdatePipelineIndirectBufferNV) **must** have been called on that
 pipeline to save its metadata to a device address
 
@@ -7630,8 +8200,8 @@ pipeline to save its metadata to a device address
 [](#VUID-VkGeneratedCommandsInfoNV-pipelineBindPoint-09087) VUID-VkGeneratedCommandsInfoNV-pipelineBindPoint-09087
 
 If `pipelineBindPoint` is of type
-`VK_PIPELINE_BIND_POINT_COMPUTE`, and if
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV` is used, then
+[VK_PIPELINE_BIND_POINT_COMPUTE](../pipelines.html#VkPipelineBindPoint), and if
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV](#VkIndirectCommandsTokenTypeNV) is used, then
 `pipeline` **must** be [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
@@ -7647,7 +8217,7 @@ that was used to determine the `preprocessSize`
 [](#VUID-VkGeneratedCommandsInfoNV-preprocessBuffer-02918) VUID-VkGeneratedCommandsInfoNV-preprocessBuffer-02918
 
 `preprocessBuffer` **must** have the
-`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` bit set in its usage flag
+[VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](../resources.html#VkBufferUsageFlagBits) bit set in its usage flag
 
 * 
 [](#VUID-VkGeneratedCommandsInfoNV-preprocessOffset-02919) VUID-VkGeneratedCommandsInfoNV-preprocessOffset-02919
@@ -7680,7 +8250,7 @@ In that case the `sequencesCount` serves as upper bound
 [](#VUID-VkGeneratedCommandsInfoNV-sequencesCountBuffer-02922) VUID-VkGeneratedCommandsInfoNV-sequencesCountBuffer-02922
 
 If `sequencesCountBuffer` is not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), its usage
-flag **must** have the `VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` bit set
+flag **must** have the [VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](../resources.html#VkBufferUsageFlagBits) bit set
 
 * 
 [](#VUID-VkGeneratedCommandsInfoNV-sequencesCountBuffer-02923) VUID-VkGeneratedCommandsInfoNV-sequencesCountBuffer-02923
@@ -7700,7 +8270,7 @@ single `VkDeviceMemory` object
 [](#VUID-VkGeneratedCommandsInfoNV-sequencesIndexBuffer-02924) VUID-VkGeneratedCommandsInfoNV-sequencesIndexBuffer-02924
 
 If `indirectCommandsLayout`’s
-`VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NV` is set,
+[VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NV](#VkIndirectCommandsLayoutUsageFlagBitsNV) is set,
 `sequencesIndexBuffer` **must** be set otherwise it **must** be
 [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE)
 
@@ -7708,7 +8278,7 @@ If `indirectCommandsLayout`’s
 [](#VUID-VkGeneratedCommandsInfoNV-sequencesIndexBuffer-02925) VUID-VkGeneratedCommandsInfoNV-sequencesIndexBuffer-02925
 
 If `sequencesIndexBuffer` is not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), its usage
-flag **must** have the `VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` bit set
+flag **must** have the [VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](../resources.html#VkBufferUsageFlagBits) bit set
 
 * 
 [](#VUID-VkGeneratedCommandsInfoNV-sequencesIndexBuffer-02926) VUID-VkGeneratedCommandsInfoNV-sequencesIndexBuffer-02926
@@ -7728,7 +8298,7 @@ single `VkDeviceMemory` object
 [](#VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-07078) VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-07078
 
 If the `indirectCommandsLayout` uses a token of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_TASKS_NV`, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_TASKS_NV](#VkIndirectCommandsTokenTypeNV), then the
 `pipeline` **must** contain a shader stage using the `MeshNV`
 `Execution` `Model`
 
@@ -7736,7 +8306,7 @@ If the `indirectCommandsLayout` uses a token of
 [](#VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-07079) VUID-VkGeneratedCommandsInfoNV-indirectCommandsLayout-07079
 
 If the `indirectCommandsLayout` uses a token of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV`, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV](#VkIndirectCommandsTokenTypeNV), then the
 `pipeline` **must** contain a shader stage using the `MeshEXT`
 `Execution` `Model`
 
@@ -7745,7 +8315,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGeneratedCommandsInfoNV-sType-sType) VUID-VkGeneratedCommandsInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_NV](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkGeneratedCommandsInfoNV-pNext-pNext) VUID-VkGeneratedCommandsInfoNV-pNext-pNext
@@ -7844,7 +8414,7 @@ Valid Usage
 
 `pGeneratedCommandsInfo->indirectCommandsLayout` **must** have been
 created with the
-`VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_NV` bit
+[VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_NV](#VkIndirectCommandsLayoutUsageFlagBitsNV) bit
 set
 
 * 
@@ -7873,7 +8443,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdPreprocessGeneratedCommandsNV-commandBuffer-cmdpool) VUID-vkCmdPreprocessGeneratedCommandsNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](../devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](../devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdPreprocessGeneratedCommandsNV-renderpass) VUID-vkCmdPreprocessGeneratedCommandsNV-renderpass
@@ -7920,7 +8490,7 @@ with [vkCmdExecuteGeneratedCommandsNV](#vkCmdExecuteGeneratedCommandsNV).
 
 If push constants for the compute pipeline are also specified in the
 [VkGeneratedCommandsInfoNV](#VkGeneratedCommandsInfoNV)::`indirectCommandsLayout` with
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV` token, then those
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV](#VkIndirectCommandsTokenTypeNV) token, then those
 values override the push constants that were previously pushed for the
 compute pipeline.
 
@@ -7941,7 +8511,7 @@ recorded.
 * 
 `isPreprocessed` represents whether the input data has already been
 preprocessed on the device.
-If it is `VK_FALSE` this command will implicitly trigger the
+If it is [VK_FALSE](../fundamentals.html#VK_FALSE) this command will implicitly trigger the
 preprocessing step, otherwise not.
 
 * 
@@ -7949,14 +8519,14 @@ preprocessing step, otherwise not.
 [VkGeneratedCommandsInfoEXT](#VkGeneratedCommandsInfoEXT) structure containing parameters
 affecting the generation of commands.
 
-If the `VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_EXT`
+If the [VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_EXT](#VkIndirectCommandsLayoutUsageFlagBitsEXT)
 flag was used to create the
 [VkGeneratedCommandsInfoEXT](#VkGeneratedCommandsInfoEXT)::`indirectCommandsLayout` then the
 execution of sequences through this command **may** use implementation-defined
 ordering which is not guaranteed to be coherent using the same input data.
 It does not affect the order of token processing within a sequence.
 This is the implied ordering with
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT`.
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT](#VkIndirectCommandsTokenTypeEXT).
 
 After a call to `vkCmdExecuteGeneratedCommandsEXT`, command buffer state
 will become **undefined** according to the tokens executed.
@@ -7965,11 +8535,13 @@ invalidation.
 
 | **Common Tokens** | **States Invalidated** |
 | --- | --- |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT` | Bound shaders and pipelines |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT` | Push constant data |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT` | Push constant data |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT` | Index buffer |
-| `VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT` | Vertex buffer |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT) | Bound shaders and pipelines |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](#VkIndirectCommandsTokenTypeEXT) | Push constant data |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT) | Push constant data |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT](#VkIndirectCommandsTokenTypeEXT) | Push data |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT) | Push data |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT](#VkIndirectCommandsTokenTypeEXT) | Index buffer |
+| [VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT](#VkIndirectCommandsTokenTypeEXT) | Vertex buffer |
 
 Valid Usage
 
@@ -7977,53 +8549,53 @@ Valid Usage
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-magFilter-04553) VUID-vkCmdExecuteGeneratedCommandsEXT-magFilter-04553
 
 If a [VkSampler](../samplers.html#VkSampler) created with `magFilter` or `minFilter`
-equal to `VK_FILTER_LINEAR`,
+equal to [VK_FILTER_LINEAR](../samplers.html#VkFilter),
 `reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`,
-and `compareEnable` equal to `VK_FALSE` is used to sample a
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](../samplers.html#VkSamplerReductionModeEXT),
+and `compareEnable` equal to [VK_FALSE](../fundamentals.html#VK_FALSE) is used to sample a
 [VkImageView](../resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](../formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-magFilter-09598) VUID-vkCmdExecuteGeneratedCommandsEXT-magFilter-09598
 
 If a [VkSampler](../samplers.html#VkSampler) created with `magFilter` or `minFilter`
-equal to `VK_FILTER_LINEAR` and `reductionMode` equal to either
-`VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` is used to sample a
+equal to [VK_FILTER_LINEAR](../samplers.html#VkFilter) and `reductionMode` equal to either
+[VK_SAMPLER_REDUCTION_MODE_MIN](../samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](../samplers.html#VkSamplerReductionModeEXT) is used to sample a
 [VkImageView](../resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT](../formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-mipmapMode-04770) VUID-vkCmdExecuteGeneratedCommandsEXT-mipmapMode-04770
 
 If a [VkSampler](../samplers.html#VkSampler) created with `mipmapMode` equal to
-`VK_SAMPLER_MIPMAP_MODE_LINEAR`,
+[VK_SAMPLER_MIPMAP_MODE_LINEAR](../samplers.html#VkSamplerMipmapMode),
 `reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`,
-and `compareEnable` equal to `VK_FALSE` is used to sample a
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](../samplers.html#VkSamplerReductionModeEXT),
+and `compareEnable` equal to [VK_FALSE](../fundamentals.html#VK_FALSE) is used to sample a
 [VkImageView](../resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](../formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-mipmapMode-09599) VUID-vkCmdExecuteGeneratedCommandsEXT-mipmapMode-09599
 
 If a [VkSampler](../samplers.html#VkSampler) created with `mipmapMode` equal to
-`VK_SAMPLER_MIPMAP_MODE_LINEAR` and `reductionMode` equal to
-either `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` is used to sample a
+[VK_SAMPLER_MIPMAP_MODE_LINEAR](../samplers.html#VkSamplerMipmapMode) and `reductionMode` equal to
+either [VK_SAMPLER_REDUCTION_MODE_MIN](../samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](../samplers.html#VkSamplerReductionModeEXT) is used to sample a
 [VkImageView](../resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT](../formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-unnormalizedCoordinates-09635) VUID-vkCmdExecuteGeneratedCommandsEXT-unnormalizedCoordinates-09635
 
 If a [VkSampler](../samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](../resources.html#VkImageView) as a result of this
+[VK_TRUE](../fundamentals.html#VK_TRUE) is used to sample a [VkImageView](../resources.html#VkImageView) as a result of this
 command, then the image view’s `levelCount` and `layerCount`
 **must** be 1
 
@@ -8031,15 +8603,15 @@ command, then the image view’s `levelCount` and `layerCount`
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08609) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08609
 
 If a [VkSampler](../samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](../resources.html#VkImageView) as a result of this
+[VK_TRUE](../fundamentals.html#VK_TRUE) is used to sample a [VkImageView](../resources.html#VkImageView) as a result of this
 command, then the image view’s `viewType` **must** be
-`VK_IMAGE_VIEW_TYPE_1D` or `VK_IMAGE_VIEW_TYPE_2D`
+[VK_IMAGE_VIEW_TYPE_1D](../resources.html#VkImageViewType) or [VK_IMAGE_VIEW_TYPE_2D](../resources.html#VkImageViewType)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08610) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08610
 
 If a [VkSampler](../samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](../resources.html#VkImageView) as a result of this
+[VK_TRUE](../fundamentals.html#VK_TRUE) is used to sample a [VkImageView](../resources.html#VkImageView) as a result of this
 command, then the sampler **must** not be used with any of the SPIR-V
 `OpImageSample*` or `OpImageSparseSample*` instructions with
 `ImplicitLod`, `Dref` or `Proj` in their name
@@ -8048,7 +8620,7 @@ command, then the sampler **must** not be used with any of the SPIR-V
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08611) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08611
 
 If a [VkSampler](../samplers.html#VkSampler) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](../resources.html#VkImageView) as a result of this
+[VK_TRUE](../fundamentals.html#VK_TRUE) is used to sample a [VkImageView](../resources.html#VkImageView) as a result of this
 command, then the sampler **must** not be used with any of the SPIR-V
 `OpImageSample*` or `OpImageSparseSample*` instructions that includes a
 LOD bias or any offset values
@@ -8059,7 +8631,7 @@ LOD bias or any offset values
 If a [VkImageView](../resources.html#VkImageView) is sampled with
 [depth comparison](../textures.html#textures-depth-compare-operation), the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT`
+[VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-02691) VUID-vkCmdExecuteGeneratedCommandsEXT-None-02691
@@ -8067,38 +8639,38 @@ If a [VkImageView](../resources.html#VkImageView) is sampled with
 If a [VkImageView](../resources.html#VkImageView) is accessed using atomic operations as a result
 of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT`
+[VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT](../formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07888) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07888
 
-If a `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` descriptor is
+If a [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](../descriptorsets.html#VkDescriptorType) descriptor is
 accessed using atomic operations as a result of this command, then the
 storage texel buffer’s [format    features](../resources.html#resources-buffer-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT`
+[VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT](../formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-02692) VUID-vkCmdExecuteGeneratedCommandsEXT-None-02692
 
-If a [VkImageView](../resources.html#VkImageView) is sampled with `VK_FILTER_CUBIC_EXT` as a
+If a [VkImageView](../resources.html#VkImageView) is sampled with [VK_FILTER_CUBIC_EXT](../samplers.html#VkFilter) as a
 result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT](../formats.html#VkFormatFeatureFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-02693) VUID-vkCmdExecuteGeneratedCommandsEXT-None-02693
 
 If
 the [VK_EXT_filter_cubic](../../appendices/extensions.html#VK_EXT_filter_cubic) extension is not enabled and
-any [VkImageView](../resources.html#VkImageView) is sampled with `VK_FILTER_CUBIC_EXT` as a
+any [VkImageView](../resources.html#VkImageView) is sampled with [VK_FILTER_CUBIC_EXT](../samplers.html#VkFilter) as a
 result of this command, it **must** not have a [VkImageViewType](../resources.html#VkImageViewType) of
-`VK_IMAGE_VIEW_TYPE_3D`, `VK_IMAGE_VIEW_TYPE_CUBE`, or
-`VK_IMAGE_VIEW_TYPE_CUBE_ARRAY`
+[VK_IMAGE_VIEW_TYPE_3D](../resources.html#VkImageViewType), [VK_IMAGE_VIEW_TYPE_CUBE](../resources.html#VkImageViewType), or
+[VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](../resources.html#VkImageViewType)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-filterCubic-02694) VUID-vkCmdExecuteGeneratedCommandsEXT-filterCubic-02694
 
-Any [VkImageView](../resources.html#VkImageView) being sampled with `VK_FILTER_CUBIC_EXT` as a
+Any [VkImageView](../resources.html#VkImageView) being sampled with [VK_FILTER_CUBIC_EXT](../samplers.html#VkFilter) as a
 result of this command **must** have a [VkImageViewType](../resources.html#VkImageViewType) and format
 that supports cubic filtering, as specified by
 [VkFilterCubicImageViewImageFormatPropertiesEXT](../capabilities.html#VkFilterCubicImageViewImageFormatPropertiesEXT)::`filterCubic`
@@ -8107,9 +8679,9 @@ returned by [vkGetPhysicalDeviceImageFormatProperties2](../capabilities.html#vkG
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-filterCubicMinmax-02695) VUID-vkCmdExecuteGeneratedCommandsEXT-filterCubicMinmax-02695
 
-Any [VkImageView](../resources.html#VkImageView) being sampled with `VK_FILTER_CUBIC_EXT` with
-a reduction mode of either `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` as a result of this command **must**
+Any [VkImageView](../resources.html#VkImageView) being sampled with [VK_FILTER_CUBIC_EXT](../samplers.html#VkFilter) with
+a reduction mode of either [VK_SAMPLER_REDUCTION_MODE_MIN](../samplers.html#VkSamplerReductionModeEXT) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](../samplers.html#VkSamplerReductionModeEXT) as a result of this command **must**
 have a [VkImageViewType](../resources.html#VkImageViewType) and format that supports cubic filtering
 together with minmax filtering, as specified by
 [VkFilterCubicImageViewImageFormatPropertiesEXT](../capabilities.html#VkFilterCubicImageViewImageFormatPropertiesEXT)::`filterCubicMinmax`
@@ -8120,35 +8692,35 @@ returned by [vkGetPhysicalDeviceImageFormatProperties2](../capabilities.html#vkG
 
 If the [`cubicRangeClamp`](../features.html#features-cubicRangeClamp) feature is
 not enabled, then any [VkImageView](../resources.html#VkImageView) being sampled with
-`VK_FILTER_CUBIC_EXT` as a result of this command **must** not have a
+[VK_FILTER_CUBIC_EXT](../samplers.html#VkFilter) as a result of this command **must** not have a
 [VkSamplerReductionModeCreateInfo](../samplers.html#VkSamplerReductionModeCreateInfo)::`reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM`
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](../samplers.html#VkSamplerReductionModeEXT)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-reductionMode-09213) VUID-vkCmdExecuteGeneratedCommandsEXT-reductionMode-09213
 
 Any [VkImageView](../resources.html#VkImageView) being sampled with a
 [VkSamplerReductionModeCreateInfo](../samplers.html#VkSamplerReductionModeCreateInfo)::`reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM` as a
-result of this command **must** sample with `VK_FILTER_CUBIC_EXT`
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](../samplers.html#VkSamplerReductionModeEXT) as a
+result of this command **must** sample with [VK_FILTER_CUBIC_EXT](../samplers.html#VkFilter)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-selectableCubicWeights-09214) VUID-vkCmdExecuteGeneratedCommandsEXT-selectableCubicWeights-09214
 
 If the [`selectableCubicWeights`](../features.html#features-selectableCubicWeights)
 feature is not enabled, then any [VkImageView](../resources.html#VkImageView) being sampled with
-`VK_FILTER_CUBIC_EXT` as a result of this command **must** have
+[VK_FILTER_CUBIC_EXT](../samplers.html#VkFilter) as a result of this command **must** have
 [VkSamplerCubicWeightsCreateInfoQCOM](../samplers.html#VkSamplerCubicWeightsCreateInfoQCOM)::`cubicWeights` equal to
-`VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM`
+[VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM](../samplers.html#VkCubicFilterWeightsQCOM)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-flags-02696) VUID-vkCmdExecuteGeneratedCommandsEXT-flags-02696
 
 Any [VkImage](../resources.html#VkImage) created with a [VkImageCreateInfo](../resources.html#VkImageCreateInfo)::`flags`
-containing `VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV` sampled as a
+containing [VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV](../resources.html#VkImageCreateFlagBits) sampled as a
 result of this command **must** only be sampled using a
 [VkSamplerAddressMode](../samplers.html#VkSamplerAddressMode) of
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE`
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](../samplers.html#VkSamplerAddressMode)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpTypeImage-07027) VUID-vkCmdExecuteGeneratedCommandsEXT-OpTypeImage-07027
@@ -8156,7 +8728,7 @@ result of this command **must** only be sampled using a
 For any [VkImageView](../resources.html#VkImageView) being written as a storage image where the
 image format field of the `OpTypeImage` is `Unknown`, the view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpTypeImage-07028) VUID-vkCmdExecuteGeneratedCommandsEXT-OpTypeImage-07028
@@ -8164,7 +8736,7 @@ image format field of the `OpTypeImage` is `Unknown`, the view’s
 For any [VkImageView](../resources.html#VkImageView) being read as a storage image where the image
 format field of the `OpTypeImage` is `Unknown`, the view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpTypeImage-07029) VUID-vkCmdExecuteGeneratedCommandsEXT-OpTypeImage-07029
@@ -8172,7 +8744,7 @@ format field of the `OpTypeImage` is `Unknown`, the view’s
 For any [VkBufferView](../resources.html#VkBufferView) being written as a storage texel buffer where
 the image format field of the `OpTypeImage` is `Unknown`, the
 view’s [buffer features](../formats.html#VkFormatProperties3) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpTypeImage-07030) VUID-vkCmdExecuteGeneratedCommandsEXT-OpTypeImage-07030
@@ -8180,15 +8752,21 @@ view’s [buffer features](../formats.html#VkFormatProperties3) **must** contain
 Any [VkBufferView](../resources.html#VkBufferView) being read as a storage texel buffer where the
 image format field of the `OpTypeImage` is `Unknown` then the
 view’s [buffer features](../formats.html#VkFormatProperties3) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08600) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08600
 
-For each set *n* that is statically used by [a bound    shader](../shaders.html#shaders-binding), a descriptor set **must** have been bound to *n* at the same
-pipeline bind point, with a [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) that is compatible
-for set *n*, with the [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) used to create the current
-[VkPipeline](../pipelines.html#VkPipeline)
+If a [a bound shader](../shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](../shaders.html#VkShaderEXT) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a set *n*, a descriptor set **must** have been bound to *n*
+at the same pipeline bind point, with a [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) that is
+compatible for set *n*, with the [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) used to create
+the current [VkPipeline](../pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](../descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](../shaders.html#VkShaderEXT)
 , as described in [Pipeline Layout Compatibility](../descriptorsets.html#descriptorsets-compatibility)
@@ -8196,13 +8774,18 @@ or the [VkDescriptorSetLayout](../descriptorsets.html#VkDescriptorSetLayout) arr
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08601) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08601
 
-For each push constant that is statically used by [a    bound shader](../shaders.html#shaders-binding), a push constant value **must** have been set for the same
-pipeline bind point, with a [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) that is compatible
-for push constants, with the [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) used to create the
-current [VkPipeline](../pipelines.html#VkPipeline)
+If a [a bound shader](../shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](../shaders.html#VkShaderEXT) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a push constant value, that value **must** have been set
+for the same pipeline bind point, with a [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) that is
+[compatible for push constants](../descriptorsets.html#descriptorsets-compatibility) with the
+[VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](../pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](../descriptorsets.html#VkDescriptorSetLayout) array used to create the current
 [VkShaderEXT](../shaders.html#VkShaderEXT)
-, as described in [Pipeline Layout Compatibility](../descriptorsets.html#descriptorsets-compatibility)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-10068) VUID-vkCmdExecuteGeneratedCommandsEXT-None-10068
@@ -8214,26 +8797,28 @@ sets used by this command
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-maintenance4-08602) VUID-vkCmdExecuteGeneratedCommandsEXT-maintenance4-08602
 
-If the [`maintenance4`](../features.html#features-maintenance4) feature is not
-enabled, then for each push constant that is statically used by
-[a bound shader](../shaders.html#shaders-binding), a push constant value **must** have
-been set for the same pipeline bind point, with a [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout)
-that is compatible for push constants, with the [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout)
-used to create the current [VkPipeline](../pipelines.html#VkPipeline)
+If a [a bound shader](../shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](../shaders.html#VkShaderEXT) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a push constant value, that value **must** have been set
+for the same pipeline bind point, with a [VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) that is
+[compatible for push constants](../descriptorsets.html#descriptorsets-compatibility) with the
+[VkPipelineLayout](../descriptorsets.html#VkPipelineLayout) used to create the current [VkPipeline](../pipelines.html#VkPipeline)
 or the [VkDescriptorSetLayout](../descriptorsets.html#VkDescriptorSetLayout) and [VkPushConstantRange](../descriptorsets.html#VkPushConstantRange) arrays
 used to create the current [VkShaderEXT](../shaders.html#VkShaderEXT)
-, as described in [Pipeline Layout Compatibility](../descriptorsets.html#descriptorsets-compatibility)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08114) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08114
 
 Descriptors in each bound descriptor set, specified via
-[vkCmdBindDescriptorSets](../descriptorsets.html#vkCmdBindDescriptorSets), **must** be valid as described by
-[descriptor validity](../descriptorsets.html#descriptor-validity) if they are statically used
-by
+[vkCmdBindDescriptorSets](../descriptorsets.html#vkCmdBindDescriptorSets), **must** be valid if they are accessed as
+described by [descriptor validity](../descriptorsets.html#descriptor-validity) by
 the [VkPipeline](../pipelines.html#VkPipeline) bound to the pipeline bind point used by this
 command and the bound [VkPipeline](../pipelines.html#VkPipeline) was not created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-imageLayout-00344) VUID-vkCmdExecuteGeneratedCommandsEXT-imageLayout-00344
@@ -8248,7 +8833,7 @@ defined by the [image layout    matching rules](../resources.html#resources-imag
 If the descriptors used by the [VkPipeline](../pipelines.html#VkPipeline) bound to the pipeline
 bind point were specified via [vkCmdBindDescriptorSets](../descriptorsets.html#vkCmdBindDescriptorSets), the bound
 [VkPipeline](../pipelines.html#VkPipeline) **must** have been created without
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08116) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08116
@@ -8257,7 +8842,7 @@ Descriptors in bound descriptor buffers, specified via
 [vkCmdSetDescriptorBufferOffsetsEXT](../descriptorsets.html#vkCmdSetDescriptorBufferOffsetsEXT), **must** be valid if they are
 dynamically used by the [VkPipeline](../pipelines.html#VkPipeline) bound to the pipeline bind
 point used by this command and the bound [VkPipeline](../pipelines.html#VkPipeline) was created
-with `VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+with [VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08604) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08604
@@ -8273,13 +8858,13 @@ to the pipeline bind point used by this command
 If the descriptors used by the [VkPipeline](../pipelines.html#VkPipeline) bound to the pipeline
 bind point were specified via [vkCmdSetDescriptorBufferOffsetsEXT](../descriptorsets.html#vkCmdSetDescriptorBufferOffsetsEXT),
 the bound [VkPipeline](../pipelines.html#VkPipeline) **must** have been created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08119) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08119
 
 If a descriptor is dynamically used with a [VkPipeline](../pipelines.html#VkPipeline) created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, the descriptor
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits), the descriptor
 memory **must** be resident
 
 * 
@@ -8287,7 +8872,7 @@ memory **must** be resident
 
 If a descriptor is dynamically used with a [VkShaderEXT](../shaders.html#VkShaderEXT) created
 with a `VkDescriptorSetLayout` that was created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, the
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](../descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits), the
 descriptor memory **must** be resident
 
 * 
@@ -8313,8 +8898,8 @@ pipeline bind point used by this command, since that pipeline was bound
 If any stage of the [VkPipeline](../pipelines.html#VkPipeline) object bound to the pipeline bind
 point used by this command accesses a uniform buffer,
 and that stage was created without enabling either
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2` for
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](../pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](../pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
 `uniformBuffers`,
 and the [`robustBufferAccess`](../features.html#features-robustBufferAccess)
 feature is not enabled, that stage **must** not access values outside of
@@ -8336,8 +8921,8 @@ specified in the descriptor set bound to the same pipeline bind point
 If any stage of the [VkPipeline](../pipelines.html#VkPipeline) object bound to the pipeline bind
 point used by this command accesses a storage buffer,
 and that stage was created without enabling either
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2` for
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](../pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](../pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
 `storageBuffers`,
 and the [`robustBufferAccess`](../features.html#features-robustBufferAccess)
 feature is not enabled, that stage **must** not access values outside of
@@ -8380,7 +8965,7 @@ view’s `format` and the `Sampled` `Type` operand of the
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageWrite-08795) VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageWrite-08795
 
 If a [VkImageView](../resources.html#VkImageView)
-created with a format other than `VK_FORMAT_A8_UNORM`
+created with a format other than [VK_FORMAT_A8_UNORM](../formats.html#VkFormat)
 is accessed using `OpImageWrite` as a result of this command, then
 the `Type` of the `Texel` operand of that instruction **must** have
 at least as many components as the image view’s format
@@ -8388,7 +8973,7 @@ at least as many components as the image view’s format
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageWrite-08796) VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageWrite-08796
 
-If a [VkImageView](../resources.html#VkImageView) created with the format `VK_FORMAT_A8_UNORM`
+If a [VkImageView](../resources.html#VkImageView) created with the format [VK_FORMAT_A8_UNORM](../formats.html#VkFormat)
 is accessed using `OpImageWrite` as a result of this command, then
 the `Type` of the `Texel` operand of that instruction **must** have
 four components
@@ -8437,7 +9022,7 @@ less than 64-bit is accessed as a result of this command, the
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-sparseImageInt64Atomics-04474) VUID-vkCmdExecuteGeneratedCommandsEXT-sparseImageInt64Atomics-04474
 
 If the [    `sparseImageInt64Atomics`](../features.html#features-sparseImageInt64Atomics) feature is not enabled, [VkImage](../resources.html#VkImage)
-objects created with the `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` flag
+objects created with the [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](../resources.html#VkImageCreateFlagBits) flag
 **must** not be accessed by atomic instructions through an `OpTypeImage`
 with a `SampledType` with a `Width` of 64 by this command
 
@@ -8445,26 +9030,26 @@ with a `SampledType` with a `Width` of 64 by this command
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-sparseImageInt64Atomics-04475) VUID-vkCmdExecuteGeneratedCommandsEXT-sparseImageInt64Atomics-04475
 
 If the [    `sparseImageInt64Atomics`](../features.html#features-sparseImageInt64Atomics) feature is not enabled, [VkBuffer](../resources.html#VkBuffer)
-objects created with the `VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`
+objects created with the [VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](../resources.html#VkBufferCreateFlagBits)
 flag **must** not be accessed by atomic instructions through an
 `OpTypeImage` with a `SampledType` with a `Width` of 64 by this
 command
 
 * 
-[](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageWeightedSampleQCOM-06971) VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageWeightedSampleQCOM-06971
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageSampleWeightedQCOM-06971) VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageSampleWeightedQCOM-06971
 
-If `OpImageWeightedSampleQCOM` is used to sample a [VkImageView](../resources.html#VkImageView)
+If `OpImageSampleWeightedQCOM` is used to sample a [VkImageView](../resources.html#VkImageView)
 as a result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
-[](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageWeightedSampleQCOM-06972) VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageWeightedSampleQCOM-06972
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageSampleWeightedQCOM-06972) VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageSampleWeightedQCOM-06972
 
-If `OpImageWeightedSampleQCOM` uses a [VkImageView](../resources.html#VkImageView) as a sample
+If `OpImageSampleWeightedQCOM` uses a [VkImageView](../resources.html#VkImageView) as a sample
 weight image as a result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageBoxFilterQCOM-06973) VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageBoxFilterQCOM-06973
@@ -8472,7 +9057,7 @@ weight image as a result of this command, then the image view’s
 If `OpImageBoxFilterQCOM` is used to sample a [VkImageView](../resources.html#VkImageView) as a
 result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BOX_FILTER_SAMPLED_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BOX_FILTER_SAMPLED_BIT_QCOM](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageBlockMatchSSDQCOM-06974) VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageBlockMatchSSDQCOM-06974
@@ -8480,7 +9065,7 @@ result of this command, then the image view’s
 If `OpImageBlockMatchSSDQCOM` is used to read from an
 [VkImageView](../resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageBlockMatchSADQCOM-06975) VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageBlockMatchSADQCOM-06975
@@ -8488,7 +9073,7 @@ If `OpImageBlockMatchSSDQCOM` is used to read from an
 If `OpImageBlockMatchSADQCOM` is used to read from an
 [VkImageView](../resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageBlockMatchSADQCOM-06976) VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageBlockMatchSADQCOM-06976
@@ -8499,21 +9084,21 @@ specified reference coordinates **must** not fail
 [integer texel coordinate    validation](../textures.html#textures-integer-coordinate-validation)
 
 * 
-[](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageWeightedSampleQCOM-06977) VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageWeightedSampleQCOM-06977
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageSampleWeightedQCOM-06977) VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageSampleWeightedQCOM-06977
 
-If `OpImageWeightedSampleQCOM`, `OpImageBoxFilterQCOM`,
+If `OpImageSampleWeightedQCOM`, `OpImageBoxFilterQCOM`,
 `OpImageBlockMatchWindowSSDQCOM`,
 `OpImageBlockMatchWindowSADQCOM`,
 `OpImageBlockMatchGatherSSDQCOM`,
 `OpImageBlockMatchGatherSADQCOM`,
 `OpImageBlockMatchSSDQCOM`, or `OpImageBlockMatchSADQCOM` uses a
 [VkSampler](../samplers.html#VkSampler) as a result of this command, then the sampler **must** have
-been created with `VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`
+been created with [VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](../samplers.html#VkSamplerCreateFlagBits)
 
 * 
-[](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageWeightedSampleQCOM-06978) VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageWeightedSampleQCOM-06978
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageSampleWeightedQCOM-06978) VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageSampleWeightedQCOM-06978
 
-If any command other than `OpImageWeightedSampleQCOM`,
+If any command other than `OpImageSampleWeightedQCOM`,
 `OpImageBoxFilterQCOM`,
 `OpImageBlockMatchWindowSSDQCOM`,
 `OpImageBlockMatchWindowSADQCOM`,
@@ -8521,7 +9106,7 @@ If any command other than `OpImageWeightedSampleQCOM`,
 `OpImageBlockMatchGatherSADQCOM`,
 `OpImageBlockMatchSSDQCOM`, or `OpImageBlockMatchSADQCOM` uses a
 [VkSampler](../samplers.html#VkSampler) as a result of this command, then the sampler **must** not
-have been created with `VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`
+have been created with [VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](../samplers.html#VkSamplerCreateFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageBlockMatchWindow-09215) VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageBlockMatchWindow-09215
@@ -8530,7 +9115,7 @@ If a `OpImageBlockMatchWindow*QCOM` or
 `OpImageBlockMatchGather*QCOM` instruction is used to read from an
 [VkImageView](../resources.html#VkImageView) as a result of this command, then the image view’s
 [format features](../resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](../formats.html#VkFormatFeatureFlagBits2KHR)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageBlockMatchWindow-09216) VUID-vkCmdExecuteGeneratedCommandsEXT-OpImageBlockMatchWindow-09216
@@ -8558,11 +9143,11 @@ Any shader invocation executed by this command **must**
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-09600) VUID-vkCmdExecuteGeneratedCommandsEXT-None-09600
 
 If a descriptor with type equal to any of
-`VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM`,
-`VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` is accessed as a result of
+[VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](../descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](../descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](../descriptorsets.html#VkDescriptorType),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](../descriptorsets.html#VkDescriptorType), or
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](../descriptorsets.html#VkDescriptorType) is accessed as a result of
 this command, all image subresources identified by that descriptor **must**
 be in the image layout identified when the descriptor was written
 
@@ -8570,7 +9155,7 @@ be in the image layout identified when the descriptor was written
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-commandBuffer-10746) VUID-vkCmdExecuteGeneratedCommandsEXT-commandBuffer-10746
 
 The `VkDeviceMemory` object allocated from a `VkMemoryHeap` with
-the `VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property that is bound to
+the [VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](../memory.html#VkMemoryHeapFlagBits) property that is bound to
 a resource accessed as a result of this command **must** be the active
 bound [bound tile memory object](../memory.html#memory-bind-tile-memory) in
 `commandBuffer`
@@ -8580,8 +9165,8 @@ bound [bound tile memory object](../memory.html#memory-bind-tile-memory) in
 
 If this command is recorded inside a [tile    shading render pass](../renderpass.html#renderpass-tile-shading) instance, the stages corresponding to the pipeline
 bind point used by this command **must** only include
-`VK_SHADER_STAGE_VERTEX_BIT`, `VK_SHADER_STAGE_FRAGMENT_BIT`,
-and/or `VK_SHADER_STAGE_COMPUTE_BIT`
+[VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits), [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits),
+and/or [VK_SHADER_STAGE_COMPUTE_BIT](../pipelines.html#VkShaderStageFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-10679) VUID-vkCmdExecuteGeneratedCommandsEXT-None-10679
@@ -8590,21 +9175,20 @@ If this command is recorded where
 [per-tile execution model](../renderpass.html#renderpass-per-tile-execution-model) is
 enabled, there **must** be no access to any image while the image was be
 transitioned to the
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` layout
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](../resources.html#VkImageLayout) layout
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-pDescription-09900) VUID-vkCmdExecuteGeneratedCommandsEXT-pDescription-09900
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](../descriptorsets.html#VkDescriptorType) descriptor is accessed as a
 result of this command, then the underlying [VkTensorARM](../resources.html#VkTensorARM) object
-**must** have been created with a
-[VkTensorCreateInfoARM](../resources.html#VkTensorCreateInfoARM)::`pDescription` whose `usage` member
-contained `VK_TENSOR_USAGE_SHADER_BIT_ARM`
+**must** have been created with the [VK_TENSOR_USAGE_SHADER_BIT_ARM](../resources.html#VkTensorUsageFlagBitsARM)
+usage flag set
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-dimensionCount-09905) VUID-vkCmdExecuteGeneratedCommandsEXT-dimensionCount-09905
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](../descriptorsets.html#VkDescriptorType) descriptor is accessed as a
 result of this command, then the `Rank` of the `OpTypeTensorARM`
 of the tensor resource variable **must** be equal to the
 `dimensionCount` provided via
@@ -8614,11 +9198,347 @@ underlying [VkTensorARM](../resources.html#VkTensorARM) object
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpTypeTensorARM-09906) VUID-vkCmdExecuteGeneratedCommandsEXT-OpTypeTensorARM-09906
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](../descriptorsets.html#VkDescriptorType) descriptor is accessed as a
 result of this command, then the element type of the
 `OpTypeTensorARM` of the tensor resource variable **must** be
 [compatible](../../appendices/spirvenv.html#spirvenv-tensor-formats) with the [VkFormat](../formats.html#VkFormat) of the
 [VkTensorViewARM](../resources.html#VkTensorViewARM) used for the access
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11297) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11297
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses a `OpTypeStruct` decorated with `Block` or
+`BufferBlock` using that mapping, the calculated offset for the
+resource heap **must** be a multiple of [    `bufferDescriptorAlignment`](../limits.html#limits-bufferDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11298) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11298
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses an `OpTypeImage` or `OpTypeSampledImage` using
+that mapping, the calculated offset for the resource heap **must** be
+a multiple of [    `imageDescriptorAlignment`](../limits.html#limits-imageDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11299) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11299
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses an `OpTypeSampler` or `OpTypeSampledImage` using
+that mapping, the calculated offset for the sampler heap **must** be
+a multiple of [    `samplerDescriptorAlignment`](../limits.html#limits-samplerDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11397) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11397
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses an `OpTypeTensorARM` using that mapping, the
+calculated offset for the resource heap **must** be a multiple of
+[`tensorDescriptorAlignment`](../limits.html#limits-tensorDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11300) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11300
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and a
+shader accesses a resource using that mapping, the value of the address
+at the expected location in push data **must** be a multiple of 4
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11301) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11301
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and a
+shader accesses a resource using that mapping, the value of the address
+at the expected location in push data **must** be a valid
+`VkDeviceAddress` backed by physical memory at every offset
+specified by each mapping
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11302) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11302
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and
+a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a valid
+`VkDeviceAddress`
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11304) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11304
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a multiple of 8
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11305) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11305
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a valid
+`VkDeviceAddress` backed by physical memory at every offset
+specified by each mapping
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11306) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11306
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+and a shader accesses a resource using that mapping, the value of the
+address pointed to by the address in push data **must** be a valid
+`VkDeviceAddress`
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11308) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11308
+
+For each [descriptor heap](../descriptorheaps.html#descriptorheaps) that is statically used by
+[a bound shader](../shaders.html#shaders-binding), either directly or via a
+[descriptor mapping](../descriptorheaps.html#descriptorheaps-bindings), a valid descriptor heap
+**must** be bound
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11309) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11309
+
+If a [bound shader](../shaders.html#shaders-binding) was created
+as a [VkShaderEXT](../shaders.html#VkShaderEXT) with the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline with the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR) flag, execution of
+this command **must** not result in any descriptor read accessing data
+outside of the user range of the respective heap bound by
+`vkCmdBind*HeapEXT` commands
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11372) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11372
+
+If any stage of the [VkPipeline](../pipelines.html#VkPipeline) object bound to the pipeline bind
+point used by this command accesses a uniform buffer or uniform texel
+buffer through a descriptor in the bound resource heap,
+that stage was created without enabling either
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](../pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](../pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
+`uniformBuffers`,
+the [`robustBufferAccess2`](../features.html#features-robustBufferAccess2) feature
+is not enabled,
+and the [`robustBufferAccess`](../features.html#features-robustBufferAccess)
+feature is not enabled, that stage **must** not access values outside of
+the range of the descriptor specified via [VkDeviceAddressRangeEXT](../fundamentals.html#VkDeviceAddressRangeEXT)
+when the descriptor was written
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11373) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11373
+
+If any stage of the [VkPipeline](../pipelines.html#VkPipeline) object bound to the pipeline bind
+point used by this command accesses a storage buffer or storage texel
+buffer through a descriptor in the bound resource heap,
+that stage was created without enabling either
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](../pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](../pipelines.html#VkPipelineRobustnessBufferBehaviorEXT) for
+`storageBuffers`,
+the [`robustBufferAccess2`](../features.html#features-robustBufferAccess2) feature
+is not enabled,
+and the [`robustBufferAccess`](../features.html#features-robustBufferAccess)
+feature is not enabled, that stage **must** not access values outside of
+the range of the descriptor specified by [VkDeviceAddressRangeEXT](../fundamentals.html#VkDeviceAddressRangeEXT)
+when the descriptor was written
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11374) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11374
+
+If
+the [`robustBufferAccess2`](../features.html#features-robustBufferAccess2) feature
+is not enabled,
+the [`robustBufferAccess`](../features.html#features-robustBufferAccess) feature is
+not enabled, and any [VkShaderEXT](../shaders.html#VkShaderEXT) bound to a stage corresponding to
+the pipeline bind point used by this command accesses a uniform buffer,
+uniform texel buffer, storage buffer, or storage texel buffer, that
+shader **must** not access values outside of the range of the buffer as
+specified by [VkDeviceAddressRangeEXT](../fundamentals.html#VkDeviceAddressRangeEXT) when the descriptor was
+written
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-pBindInfo-11375) VUID-vkCmdExecuteGeneratedCommandsEXT-pBindInfo-11375
+
+If any [bound shader](../shaders.html#shaders-binding) uses an embedded sampler via a
+[descriptor mapping](../descriptorheaps.html#descriptorheaps-bindings), the value of
+`pBindInfo->reservedRangeSize` set for [vkCmdBindSamplerHeapEXT](../descriptorheaps.html#vkCmdBindSamplerHeapEXT)
+**must** be greater than or equal to
+[    `minSamplerHeapReservedRangeWithEmbedded`](../limits.html#limits-minSamplerHeapReservedRangeWithEmbedded)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11376) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11376
+
+If a [bound shader](../shaders.html#shaders-binding) was created
+as a [VkShaderEXT](../shaders.html#VkShaderEXT) with the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag or
+as part of a pipeline with the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR) flag, and that shader
+statically uses a push constant value, that value **must** have been set by
+[vkCmdPushDataEXT](../descriptorheaps.html#vkCmdPushDataEXT)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11398) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11398
+
+If a [bound shader](../shaders.html#shaders-binding) was created with a
+[descriptor mapping](../descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_DATA_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_DATA_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_RESOURCE_HEAP_DATA_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), or
+[VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a resource using that mapping, the access **must** not be
+[out of bounds](../shaders.html#shaders-execution-memory-access-bounds)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11437) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11437
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), or
+[VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a resource using that mapping, the buffer from which the
+address in push data was queried **must** have been created with the
+[VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](../resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11438) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11438
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a uniform buffer using that mapping, the address that the
+uniform buffer is mapped to **must** have been queried from a buffer
+created with the [VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](../resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11441) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11441
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a uniform buffer using that mapping, the address that the
+uniform buffer is mapped to **must** be aligned to
+[    `minUniformBufferOffsetAlignment`](../limits.html#limits-minUniformBufferOffsetAlignment)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11439) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11439
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a storage buffer using that mapping, the address that the
+storage buffer is mapped to **must** have been queried from a buffer
+created with the [VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](../resources.html#VkBufferUsageFlagBits) usage flag set
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11442) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11442
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+accesses a storage buffer using that mapping, the address that the
+storage buffer is mapped to **must** be aligned to
+[    `minStorageBufferOffsetAlignment`](../limits.html#limits-minStorageBufferOffsetAlignment)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11485) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11485
+
+    If a pipeline is bound to the pipeline bind point used by this command,
+    or shader is bound to a shader stage used by this command,
+    and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+    [VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+    or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), and a shader
+    accesses an acceleration structure using that mapping, the address that
+    the acceleration structure is mapped to **must** be an acceleration
+    structure
+    address retrieved from a [VkAccelerationStructureKHR](../resources.html#VkAccelerationStructureKHR) object via
+    [vkGetAccelerationStructureDeviceAddressKHR](../resources.html#vkGetAccelerationStructureDeviceAddressKHR)
+or
+    handle retrieved from a [VkAccelerationStructureNV](../resources.html#VkAccelerationStructureNV) object via
+    [vkGetAccelerationStructureHandleNV](../resources.html#vkGetAccelerationStructureHandleNV)
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-index-11450) VUID-vkCmdExecuteGeneratedCommandsEXT-index-11450
+
+If a shader uses a sampler descriptor to sample an image as a result of
+this command, and that sampler descriptor uses a custom border color
+with an index defined by
+[VkSamplerCustomBorderColorIndexCreateInfoEXT](../samplers.html#VkSamplerCustomBorderColorIndexCreateInfoEXT), the value of
+[VkSamplerCustomBorderColorIndexCreateInfoEXT](../samplers.html#VkSamplerCustomBorderColorIndexCreateInfoEXT)::`index` **must**
+have been registered before this command was recorded, and still be
+registered during the sampling operation, with an identically defined
+color
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-protectedNoFault-11455) VUID-vkCmdExecuteGeneratedCommandsEXT-protectedNoFault-11455
+
+If [`protectedNoFault`](../devsandqueues.html#limits-protectedNoFault) is not supported,
+a pipeline is bound to the pipeline bind point used by this command,
+or a shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT), the address
+that the resource is mapped to **must** have been queried from a buffer
+created without the [VK_BUFFER_CREATE_PROTECTED_BIT](../resources.html#VkBufferCreateFlagBits) create flag set
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-protectedNoFault-11456) VUID-vkCmdExecuteGeneratedCommandsEXT-protectedNoFault-11456
+
+If [`protectedNoFault`](../devsandqueues.html#limits-protectedNoFault) is not supported,
+a pipeline is bound to the pipeline bind point used by this command,
+or a shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](../descriptorheaps.html#VkDescriptorMappingSourceEXT),
+the address of the indirect memory **must** have been queried from a buffer
+created without the [VK_BUFFER_CREATE_PROTECTED_BIT](../resources.html#VkBufferCreateFlagBits) create flag set
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-renderPass-02684) VUID-vkCmdExecuteGeneratedCommandsEXT-renderPass-02684
@@ -8626,7 +9546,7 @@ result of this command, then the element type of the
 The current render pass **must** be [compatible](../renderpass.html#renderpass-compatibility)
 with the `renderPass` member of the
 `VkGraphicsPipelineCreateInfo` structure specified when creating the
-`VkPipeline` bound to `VK_PIPELINE_BIND_POINT_GRAPHICS`
+`VkPipeline` bound to [VK_PIPELINE_BIND_POINT_GRAPHICS](../pipelines.html#VkPipelineBindPoint)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-subpass-02685) VUID-vkCmdExecuteGeneratedCommandsEXT-subpass-02685
@@ -8634,13 +9554,7 @@ with the `renderPass` member of the
 The subpass index of the current render pass **must** be equal to the
 `subpass` member of the `VkGraphicsPipelineCreateInfo` structure
 specified when creating the `VkPipeline` bound to
-`VK_PIPELINE_BIND_POINT_GRAPHICS`
-
-* 
-[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07748) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07748
-
-If any shader statically accesses an input attachment, a valid
-descriptor **must** be bound to the pipeline via a descriptor set
+[VK_PIPELINE_BIND_POINT_GRAPHICS](../pipelines.html#VkPipelineBindPoint)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-OpTypeImage-07468) VUID-vkCmdExecuteGeneratedCommandsEXT-OpTypeImage-07468
@@ -8668,9 +9582,9 @@ Input attachment views accessed in a dynamic render pass with a
 `InputAttachmentIndex` referenced by
 [VkRenderingInputAttachmentIndexInfo](../interfaces.html#VkRenderingInputAttachmentIndexInfo), or no
 `InputAttachmentIndex` if
-[VkRenderingInputAttachmentIndexInfo](../interfaces.html#VkRenderingInputAttachmentIndexInfo):`pDepthInputAttachmentIndex`
+[VkRenderingInputAttachmentIndexInfo](../interfaces.html#VkRenderingInputAttachmentIndexInfo)::`pDepthInputAttachmentIndex`
 or
-[VkRenderingInputAttachmentIndexInfo](../interfaces.html#VkRenderingInputAttachmentIndexInfo):`pStencilInputAttachmentIndex`
+[VkRenderingInputAttachmentIndexInfo](../interfaces.html#VkRenderingInputAttachmentIndexInfo)::`pStencilInputAttachmentIndex`
 are `NULL`, **must** be created with a [VkImageView](../resources.html#VkImageView) that is compatible
 with the corresponding color, depth, or stencil attachment in
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)
@@ -8680,9 +9594,9 @@ with the corresponding color, depth, or stencil attachment in
 
 Input attachment views accessed in a dynamic render pass via a shader
 object **must** have an `InputAttachmentIndex` if both
-[VkRenderingInputAttachmentIndexInfo](../interfaces.html#VkRenderingInputAttachmentIndexInfo):`pDepthInputAttachmentIndex`
+[VkRenderingInputAttachmentIndexInfo](../interfaces.html#VkRenderingInputAttachmentIndexInfo)::`pDepthInputAttachmentIndex`
 and
-[VkRenderingInputAttachmentIndexInfo](../interfaces.html#VkRenderingInputAttachmentIndexInfo):`pStencilInputAttachmentIndex`
+[VkRenderingInputAttachmentIndexInfo](../interfaces.html#VkRenderingInputAttachmentIndexInfo)::`pStencilInputAttachmentIndex`
 are non-`NULL`
 
 * 
@@ -8705,80 +9619,62 @@ by this command
 
 If a color attachment is written by any prior command in this subpass or
 by the load, store, or resolve operations for this subpass,
-[feedback loop](../renderpass.html#renderpass-feedbackloop) is not enabled for it, and
-either:
-
-the `VK_PIPELINE_CREATE_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT` is
-set on the bound pipeline
-or
-
-* 
-the last call to [vkCmdSetAttachmentFeedbackLoopEnableEXT](../renderpass.html#vkCmdSetAttachmentFeedbackLoopEnableEXT) included
-`VK_IMAGE_ASPECT_COLOR_BIT` and
-
-there is no bound graphics pipeline or
-
-* 
-the bound graphics pipeline was created with
-`VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT`
-
+and [feedback loop](../renderpass.html#renderpass-feedbackloop) is not enabled for
+[VK_IMAGE_ASPECT_COLOR_BIT](../resources.html#VkImageAspectFlagBits) on that attachment,
 it **must** not be accessed in any way other than as an attachment by this
 command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-10796) VUID-vkCmdExecuteGeneratedCommandsEXT-None-10796
 
 If a depth attachment is written by any prior command in this subpass or
 by the load, store, or resolve operations for this subpass,
-[feedback loop](../renderpass.html#renderpass-feedbackloop) is not enabled for it, and
-either:
-
-* 
-
-the
-`VK_PIPELINE_CREATE_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT`
-is set on the bound pipeline
-or
-
-* 
-the last call to [vkCmdSetAttachmentFeedbackLoopEnableEXT](../renderpass.html#vkCmdSetAttachmentFeedbackLoopEnableEXT) included
-`VK_IMAGE_ASPECT_DEPTH_BIT` and
-
-there is no bound graphics pipeline or
-
-* 
-the bound graphics pipeline was created with
-`VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT`
-
+and [feedback loop](../renderpass.html#renderpass-feedbackloop) is not enabled for
+[VK_IMAGE_ASPECT_DEPTH_BIT](../resources.html#VkImageAspectFlagBits) on that attachment,
 it **must** not be accessed in any way other than as an attachment by this
 command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-10797) VUID-vkCmdExecuteGeneratedCommandsEXT-None-10797
 
 If a stencil attachment is written by any prior command in this subpass
 or by the load, store, or resolve operations for this subpass,
-[feedback loop](../renderpass.html#renderpass-feedbackloop) is not enabled for it, and
-either:
-
-* 
-
-the
-`VK_PIPELINE_CREATE_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT`
-is set on the bound pipeline
-or
-
-* 
-the last call to [vkCmdSetAttachmentFeedbackLoopEnableEXT](../renderpass.html#vkCmdSetAttachmentFeedbackLoopEnableEXT) included
-`VK_IMAGE_ASPECT_STENCIL_BIT` and
-
-there is no bound graphics pipeline or
-
-* 
-the bound graphics pipeline was created with
-`VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT`
-
+and [feedback loop](../renderpass.html#renderpass-feedbackloop) is not enabled for
+[VK_IMAGE_ASPECT_STENCIL_BIT](../resources.html#VkImageAspectFlagBits) on that attachment,
 it **must** not be accessed in any way other than as an attachment by this
 command
 
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-12338) VUID-vkCmdExecuteGeneratedCommandsEXT-None-12338
+
+If a color attachment is read in this command in any way other than as
+an attachment, or has been read by any prior command in this subpass as
+a non-attachment,
+and [feedback loop](../renderpass.html#renderpass-feedbackloop) is not enabled for
+[VK_IMAGE_ASPECT_COLOR_BIT](../resources.html#VkImageAspectFlagBits) on that attachment,
+the color attachment **must** not be written to by this command
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-12339) VUID-vkCmdExecuteGeneratedCommandsEXT-None-12339
+
+If a depth attachment is read in this command in any way other than as
+an attachment, or has been read by any prior command in this subpass as
+a non-attachment,
+and [feedback loop](../renderpass.html#renderpass-feedbackloop) is not enabled for
+[VK_IMAGE_ASPECT_DEPTH_BIT](../resources.html#VkImageAspectFlagBits) on that attachment,
+the depth attachment **must** not be written to by this command
+
+* 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-12340) VUID-vkCmdExecuteGeneratedCommandsEXT-None-12340
+
+If a stencil attachment is read in this command in any way other than as
+an attachment, or has been read by any prior command in this subpass as
+a non-attachment,
+and [feedback loop](../renderpass.html#renderpass-feedbackloop) is not enabled for
+[VK_IMAGE_ASPECT_STENCIL_BIT](../resources.html#VkImageAspectFlagBits) on that attachment,
+the stencil attachment **must** not be written to by this command
+
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-09003) VUID-vkCmdExecuteGeneratedCommandsEXT-None-09003
 
 If an attachment is written by any prior command in this subpass or by
@@ -8786,413 +9682,440 @@ the load, store, or resolve operations for this subpass, it **must** not be
 accessed in any way other than as an attachment, storage image, or
 sampled image by this command
 
-[](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-06539) VUID-vkCmdExecuteGeneratedCommandsEXT-None-06539
-
-If any previously recorded command in the current subpass accessed an
-image subresource used as an attachment in this subpass in any way other
-than as an attachment, this command **must** not write to that image
-subresource as an attachment
-
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-06886) VUID-vkCmdExecuteGeneratedCommandsEXT-None-06886
 
 If the current render pass instance uses a depth/stencil attachment with
 a read-only layout for the depth aspect, [depth    writes](../fragops.html#fragops-depth-write) **must** be disabled
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-06887) VUID-vkCmdExecuteGeneratedCommandsEXT-None-06887
 
 If the current render pass instance uses a depth/stencil attachment with
 a read-only layout for the stencil aspect, both front and back
 `writeMask` are not zero, and stencil test is enabled,
-[all stencil ops](../fragops.html#fragops-stencil) **must** be `VK_STENCIL_OP_KEEP`
+[all stencil ops](../fragops.html#fragops-stencil) **must** be [VK_STENCIL_OP_KEEP](../fragops.html#VkStencilOp)
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07831) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07831
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_VIEWPORT` dynamic state enabled then
+[VK_DYNAMIC_STATE_VIEWPORT](../pipelines.html#VkDynamicState) dynamic state enabled then
 [vkCmdSetViewport](../vertexpostproc.html#vkCmdSetViewport) **must** have been called and not subsequently
 [invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer
 prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07832) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07832
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SCISSOR` dynamic state enabled then
+[VK_DYNAMIC_STATE_SCISSOR](../pipelines.html#VkDynamicState) dynamic state enabled then
 [vkCmdSetScissor](../fragops.html#vkCmdSetScissor) **must** have been called and not subsequently
 [invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer
 prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08617) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08617
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_LINE_WIDTH` dynamic state enabled, the
+[VK_DYNAMIC_STATE_LINE_WIDTH](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [effective rasterization input    topology](../drawing.html#drawing-rasterization-input-topology) is in line topology class, then [vkCmdSetLineWidth](../primsrast.html#vkCmdSetLineWidth) **must**
 have been called and not subsequently [    invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer prior to this drawing
 command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07834) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07834
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_BIAS` dynamic state enabled, the
+[VK_DYNAMIC_STATE_DEPTH_BIAS](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of `depthBiasEnable`
-is `VK_TRUE`, then [vkCmdSetDepthBias](../primsrast.html#vkCmdSetDepthBias)
+is [VK_TRUE](../fundamentals.html#VK_TRUE), then [vkCmdSetDepthBias](../primsrast.html#vkCmdSetDepthBias)
 or [vkCmdSetDepthBias2EXT](../primsrast.html#vkCmdSetDepthBias2EXT)
 **must** have been called and not subsequently [    invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer prior to this drawing
 command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07835) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07835
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_BLEND_CONSTANTS` dynamic state enabled, the
+[VK_DYNAMIC_STATE_BLEND_CONSTANTS](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and an active color
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and an active color
 attachment [current value](../pipelines.html#dynamic-state-current-value) of
-`blendEnable` is `VK_TRUE` with a blend equations where any
-[VkBlendFactor](../framebuffer.html#VkBlendFactor) member is `VK_BLEND_FACTOR_CONSTANT_COLOR`,
-`VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR`,
-`VK_BLEND_FACTOR_CONSTANT_ALPHA`, or
-`VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA`, then
+`blendEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE) with a blend equations where any
+[VkBlendFactor](../framebuffer.html#VkBlendFactor) member is [VK_BLEND_FACTOR_CONSTANT_COLOR](../framebuffer.html#VkBlendFactor),
+[VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR](../framebuffer.html#VkBlendFactor),
+[VK_BLEND_FACTOR_CONSTANT_ALPHA](../framebuffer.html#VkBlendFactor), or
+[VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA](../framebuffer.html#VkBlendFactor), then
 [vkCmdSetBlendConstants](../framebuffer.html#vkCmdSetBlendConstants) **must** have been called and not subsequently
 [invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer
 prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07836) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07836
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_BOUNDS` dynamic state enabled, the
+[VK_DYNAMIC_STATE_DEPTH_BOUNDS](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`depthBoundsTestEnable` is `VK_TRUE`, then
+`depthBoundsTestEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetDepthBounds](../fragops.html#vkCmdSetDepthBounds) **must** have been called and not subsequently
 [invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer
 prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07837) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07837
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK` dynamic state enabled, the
+[VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`stencilTestEnable` is `VK_TRUE`, then
+`stencilTestEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetStencilCompareMask](../fragops.html#vkCmdSetStencilCompareMask) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07838) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07838
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_STENCIL_WRITE_MASK` dynamic state enabled, the
+[VK_DYNAMIC_STATE_STENCIL_WRITE_MASK](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`stencilTestEnable` is `VK_TRUE`, then
+`stencilTestEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetStencilWriteMask](../fragops.html#vkCmdSetStencilWriteMask) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07839) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07839
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_STENCIL_REFERENCE` dynamic state enabled, the
+[VK_DYNAMIC_STATE_STENCIL_REFERENCE](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of and
-`rasterizerDiscardEnable` is `VK_FALSE`, the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`stencilTestEnable` is `VK_TRUE`, then
+`stencilTestEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetStencilReference](../fragops.html#vkCmdSetStencilReference) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-maxMultiviewInstanceIndex-02688) VUID-vkCmdExecuteGeneratedCommandsEXT-maxMultiviewInstanceIndex-02688
 
 If the draw is recorded in a render pass instance with multiview
 enabled, the maximum instance index **must** be less than or equal to
 [VkPhysicalDeviceMultiviewProperties](../limits.html#VkPhysicalDeviceMultiviewProperties)::`maxMultiviewInstanceIndex`
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsEnable-02689) VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsEnable-02689
 
 If the bound graphics pipeline was created with
 [VkPipelineSampleLocationsStateCreateInfoEXT](../primsrast.html#VkPipelineSampleLocationsStateCreateInfoEXT)::`sampleLocationsEnable`
-set to `VK_TRUE`, then the active depth attachment **must** have been
+set to [VK_TRUE](../fundamentals.html#VK_TRUE), then the active depth attachment **must** have been
 created with the
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT` bit set
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](../resources.html#VkImageCreateFlagBits) bit set
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07634) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07634
 
 If the `[VK_EXT_sample_locations](../../appendices/extensions.html#VK_EXT_sample_locations)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT` dynamic state
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state
 enabled, and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetSampleLocationsEnableEXT](../primsrast.html#vkCmdSetSampleLocationsEnableEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-06666) VUID-vkCmdExecuteGeneratedCommandsEXT-None-06666
 
 If the `[VK_EXT_sample_locations](../../appendices/extensions.html#VK_EXT_sample_locations)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` dynamic state enabled, the
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`sampleLocationsEnable` is `VK_TRUE`, then
+`sampleLocationsEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetSampleLocationsEXT](../primsrast.html#vkCmdSetSampleLocationsEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07840) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07840
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_CULL_MODE` dynamic state enabled, and the
+[VK_DYNAMIC_STATE_CULL_MODE](../pipelines.html#VkDynamicState) dynamic state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetCullMode](../primsrast.html#vkCmdSetCullMode) **must** have been called and not subsequently
 [invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer
 prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07841) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07841
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_FRONT_FACE` dynamic state enabled, and the
+[VK_DYNAMIC_STATE_FRONT_FACE](../pipelines.html#VkDynamicState) dynamic state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetFrontFace](../primsrast.html#vkCmdSetFrontFace) **must** have been called and not subsequently
 [invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer
 prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07843) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07843
 
  If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE` dynamic state enabled, and the
+[VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE](../pipelines.html#VkDynamicState) dynamic state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`,
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE),
 [vkCmdSetDepthTestEnable](../fragops.html#vkCmdSetDepthTestEnable) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07844) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07844
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE` dynamic state enabled, and the
+[VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE](../pipelines.html#VkDynamicState) dynamic state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of `depthTestEnable`
-is `VK_TRUE`, then [vkCmdSetDepthWriteEnable](../fragops.html#vkCmdSetDepthWriteEnable) **must** have been
+is [VK_TRUE](../fundamentals.html#VK_TRUE), then [vkCmdSetDepthWriteEnable](../fragops.html#vkCmdSetDepthWriteEnable) **must** have been
 called and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in
 the current command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07845) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07845
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_COMPARE_OP` dynamic state enabled, the
+[VK_DYNAMIC_STATE_DEPTH_COMPARE_OP](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of `depthTestEnable`
-is `VK_TRUE`, then [vkCmdSetDepthCompareOp](../fragops.html#vkCmdSetDepthCompareOp) **must** have been
+is [VK_TRUE](../fundamentals.html#VK_TRUE), then [vkCmdSetDepthCompareOp](../fragops.html#vkCmdSetDepthCompareOp) **must** have been
 called and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in
 the current command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07846) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07846
 
 If the [`depthBounds`](../features.html#features-depthBounds) feature is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE` dynamic state enabled,
+[VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetDepthBoundsTestEnable](../fragops.html#vkCmdSetDepthBoundsTestEnable) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07847) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07847
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE` dynamic state enabled, and
+[VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE](../pipelines.html#VkDynamicState) dynamic state enabled, and
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetStencilTestEnable](../fragops.html#vkCmdSetStencilTestEnable) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07848) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07848
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_STENCIL_OP` dynamic state enabled, the
+[VK_DYNAMIC_STATE_STENCIL_OP](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`stencilTestEnable` is `VK_TRUE`, then [vkCmdSetStencilOp](../fragops.html#vkCmdSetStencilOp)
+`stencilTestEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then [vkCmdSetStencilOp](../fragops.html#vkCmdSetStencilOp)
 **must** have been called and not subsequently [    invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer prior to this drawing
 command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-viewportCount-03417) VUID-vkCmdExecuteGeneratedCommandsEXT-viewportCount-03417
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` dynamic state enabled,
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the state is not inherited,
 then [vkCmdSetViewportWithCount](../vertexpostproc.html#vkCmdSetViewportWithCount) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-scissorCount-03418) VUID-vkCmdExecuteGeneratedCommandsEXT-scissorCount-03418
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT` dynamic state enabled,
+[VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the state is not inherited,
 then [vkCmdSetScissorWithCount](../vertexpostproc.html#vkCmdSetScissorWithCount) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-viewportCount-03419) VUID-vkCmdExecuteGeneratedCommandsEXT-viewportCount-03419
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with both the
-`VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT` and
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` dynamic states enabled,
+[VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](../pipelines.html#VkDynamicState) and
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) dynamic states enabled,
 and the state is not inherited,
 then the `viewportCount` parameter of
 `vkCmdSetViewportWithCount` **must** match the `scissorCount`
 parameter of `vkCmdSetScissorWithCount`
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-viewportCount-04137) VUID-vkCmdExecuteGeneratedCommandsEXT-viewportCount-04137
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` dynamic state enabled, but
-not the `VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV` dynamic state
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) dynamic state enabled, but
+not the [VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, then the bound graphics pipeline **must** have been created with
 [VkPipelineViewportWScalingStateCreateInfoNV](../vertexpostproc.html#VkPipelineViewportWScalingStateCreateInfoNV)::`viewportCount`
 greater or equal to the `viewportCount` parameter in the last call
 to [vkCmdSetViewportWithCount](../vertexpostproc.html#vkCmdSetViewportWithCount)
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-viewportCount-04138) VUID-vkCmdExecuteGeneratedCommandsEXT-viewportCount-04138
 
 If the `[VK_NV_clip_space_w_scaling](../../appendices/extensions.html#VK_NV_clip_space_w_scaling)` extension is enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` and
-`VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV` dynamic state enabled, the
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) and
+[VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`viewportWScalingEnable` is `VK_TRUE`, then
+`viewportWScalingEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetViewportWScalingNV](../vertexpostproc.html#vkCmdSetViewportWScalingNV) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08636) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08636
 
 If the `[VK_NV_clip_space_w_scaling](../../appendices/extensions.html#VK_NV_clip_space_w_scaling)` extension is enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` and
-`VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV` dynamic state enabled, the
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) and
+[VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`viewportWScalingEnable` is `VK_TRUE`, then the
+`viewportWScalingEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then the
 `viewportCount` parameter in the last call to
 [vkCmdSetViewportWScalingNV](../vertexpostproc.html#vkCmdSetViewportWScalingNV) **must** be greater than or equal to the
 `viewportCount` parameter in the last call to
 [vkCmdSetViewportWithCount](../vertexpostproc.html#vkCmdSetViewportWithCount)
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-viewportCount-04139) VUID-vkCmdExecuteGeneratedCommandsEXT-viewportCount-04139
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` dynamic state enabled, but
-not the `VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV` dynamic
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) dynamic state enabled, but
+not the [VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV](../pipelines.html#VkDynamicState) dynamic
 state enabled, then the bound graphics pipeline **must** have been created
 with
 [VkPipelineViewportShadingRateImageStateCreateInfoNV](../primsrast.html#VkPipelineViewportShadingRateImageStateCreateInfoNV)::`viewportCount`
 greater or equal to the `viewportCount` parameter in the last call
 to [vkCmdSetViewportWithCount](../vertexpostproc.html#vkCmdSetViewportWithCount)
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-shadingRateImage-09233) VUID-vkCmdExecuteGeneratedCommandsEXT-shadingRateImage-09233
 
 If the [`shadingRateImage`](../features.html#features-shadingRateImage) feature is
 enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV` and the
+[VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV](../pipelines.html#VkDynamicState) and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetCoarseSampleOrderNV](../primsrast.html#vkCmdSetCoarseSampleOrderNV) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-shadingRateImage-09234) VUID-vkCmdExecuteGeneratedCommandsEXT-shadingRateImage-09234
 
 If the [`shadingRateImage`](../features.html#features-shadingRateImage) feature is
 enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` and
-`VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV` dynamic state
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) and
+[VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`shadingRateImageEnable` is `VK_TRUE`, then
+`shadingRateImageEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetViewportShadingRatePaletteNV](../primsrast.html#vkCmdSetViewportShadingRatePaletteNV) **must** have been called and
 not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08637) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08637
 
 If the [`shadingRateImage`](../features.html#features-shadingRateImage) feature is
 enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` and
-`VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV` dynamic state
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) and
+[VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`shadingRateImageEnable` is `VK_TRUE`, then the
+`shadingRateImageEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then the
 `viewportCount` parameter in the last call to
 [vkCmdSetViewportShadingRatePaletteNV](../primsrast.html#vkCmdSetViewportShadingRatePaletteNV) **must** be greater than or
 equal to the `viewportCount` parameter in the last call to
 [vkCmdSetViewportWithCount](../vertexpostproc.html#vkCmdSetViewportWithCount)
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-VkPipelineVieportCreateInfo-04141) VUID-vkCmdExecuteGeneratedCommandsEXT-VkPipelineVieportCreateInfo-04141
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` dynamic state enabled and a
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) dynamic state enabled and a
 [VkPipelineViewportSwizzleStateCreateInfoNV](../vertexpostproc.html#VkPipelineViewportSwizzleStateCreateInfoNV) structure chained from
 [VkPipelineViewportStateCreateInfo](../vertexpostproc.html#VkPipelineViewportStateCreateInfo), then the bound graphics
 pipeline **must** have been created with
@@ -9200,10 +10123,11 @@ pipeline **must** have been created with
 greater or equal to the `viewportCount` parameter in the last call
 to [vkCmdSetViewportWithCount](../vertexpostproc.html#vkCmdSetViewportWithCount)
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-VkPipelineVieportCreateInfo-04142) VUID-vkCmdExecuteGeneratedCommandsEXT-VkPipelineVieportCreateInfo-04142
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` dynamic state enabled and a
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) dynamic state enabled and a
 [VkPipelineViewportExclusiveScissorStateCreateInfoNV](../fragops.html#VkPipelineViewportExclusiveScissorStateCreateInfoNV) structure
 chained from [VkPipelineViewportStateCreateInfo](../vertexpostproc.html#VkPipelineViewportStateCreateInfo), then the bound
 graphics pipeline **must** have been created with
@@ -9211,70 +10135,76 @@ graphics pipeline **must** have been created with
 greater or equal to the `viewportCount` parameter in the last call
 to [vkCmdSetViewportWithCount](../vertexpostproc.html#vkCmdSetViewportWithCount)
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07878) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07878
 
 If the [`exclusiveScissor`](../features.html#features-exclusiveScissor) feature is
 enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV` dynamic state
+[VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, then [vkCmdSetExclusiveScissorEnableNV](../fragops.html#vkCmdSetExclusiveScissorEnableNV) **must** have been
 called and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in
 the current command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07879) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07879
 
 If the [`exclusiveScissor`](../features.html#features-exclusiveScissor) feature is
 enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV` dynamic state enabled, and
+[VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV](../pipelines.html#VkDynamicState) dynamic state enabled, and
 the most recent call to [vkCmdSetExclusiveScissorEnableNV](../fragops.html#vkCmdSetExclusiveScissorEnableNV) in the
 current command buffer set any element of `pExclusiveScissorEnables`
-to `VK_TRUE`, then [vkCmdSetExclusiveScissorNV](../fragops.html#vkCmdSetExclusiveScissorNV) **must** have been
+to [VK_TRUE](../fundamentals.html#VK_TRUE), then [vkCmdSetExclusiveScissorNV](../fragops.html#vkCmdSetExclusiveScissorNV) **must** have been
 called and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in
 the current command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-04876) VUID-vkCmdExecuteGeneratedCommandsEXT-None-04876
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE` dynamic state enabled,
+[VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE](../pipelines.html#VkDynamicState) dynamic state enabled,
 then [vkCmdSetRasterizerDiscardEnable](../primsrast.html#vkCmdSetRasterizerDiscardEnable) **must** have been called and
 not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-04877) VUID-vkCmdExecuteGeneratedCommandsEXT-None-04877
 
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE` dynamic state enabled, and the
+[VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE](../pipelines.html#VkDynamicState) dynamic state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetDepthBiasEnable](../primsrast.html#vkCmdSetDepthBiasEnable) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-logicOp-04878) VUID-vkCmdExecuteGeneratedCommandsEXT-logicOp-04878
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` or
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_LOGIC_OP_EXT` dynamic state enabled, the
+[VK_DYNAMIC_STATE_LOGIC_OP_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of `logicOpEnable` is
-`VK_TRUE`, then [vkCmdSetLogicOpEXT](../framebuffer.html#vkCmdSetLogicOpEXT) **must** have been called and
+[VK_TRUE](../fundamentals.html#VK_TRUE), then [vkCmdSetLogicOpEXT](../framebuffer.html#vkCmdSetLogicOpEXT) **must** have been called and
 not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-primitiveFragmentShadingRateWithMultipleViewports-04552) VUID-vkCmdExecuteGeneratedCommandsEXT-primitiveFragmentShadingRateWithMultipleViewports-04552
 
 If the [    `primitiveFragmentShadingRateWithMultipleViewports`](../limits.html#limits-primitiveFragmentShadingRateWithMultipleViewports) limit is not
 supported, the bound graphics pipeline was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` dynamic state enabled, and
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) dynamic state enabled, and
 any of the shader stages of the bound graphics pipeline write to the
 `PrimitiveShadingRateKHR` built-in, then
 [vkCmdSetViewportWithCount](../vertexpostproc.html#vkCmdSetViewportWithCount) **must** have been called in the current
@@ -9282,6 +10212,7 @@ command buffer prior to this drawing command, and the
 `viewportCount` parameter of `vkCmdSetViewportWithCount` **must**
 be `1`
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-primitiveFragmentShadingRateWithMultipleViewports-08642) VUID-vkCmdExecuteGeneratedCommandsEXT-primitiveFragmentShadingRateWithMultipleViewports-08642
 
 If the [    `primitiveFragmentShadingRateWithMultipleViewports`](../limits.html#limits-primitiveFragmentShadingRateWithMultipleViewports) limit is not
@@ -9292,29 +10223,30 @@ command buffer prior to this drawing command, and the
 `viewportCount` parameter of `vkCmdSetViewportWithCount` **must**
 be `1`
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-blendEnable-04727) VUID-vkCmdExecuteGeneratedCommandsEXT-blendEnable-04727
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT` dynamic state enabled, the
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then for each color
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then for each color
 attachment, if the corresponding image view’s
 [format features](../resources.html#resources-image-view-format-features) do not contain
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT`, then the
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT](../formats.html#VkFormatFeatureFlagBits), then the
 corresponding [current value](../pipelines.html#dynamic-state-current-value) of
-`blendEnable` **must** be `VK_FALSE`
+`blendEnable` **must** be [VK_FALSE](../fundamentals.html#VK_FALSE)
 
+* 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08644) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08644
 
 If
 a shader object is bound to any graphics stage or
-a graphics pipeline is bound, the [current    value](../pipelines.html#dynamic-state-current-value) of `rasterizerDiscardEnable` is `VK_FALSE`,
+a graphics pipeline is bound, the [current    value](../pipelines.html#dynamic-state-current-value) of `rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE),
 and none of the following is enabled:
 
-* 
 the `[VK_AMD_mixed_attachment_samples](../../appendices/extensions.html#VK_AMD_mixed_attachment_samples)` extension
 
 * 
@@ -9338,7 +10270,7 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering), the `imageView` member of
 `pDepthAttachment` is not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), and the `layout`
 member of `pDepthAttachment` is
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`, this command
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](../resources.html#VkImageLayout), this command
 **must** not write any values to the depth attachment
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-imageView-06173) VUID-vkCmdExecuteGeneratedCommandsEXT-imageView-06173
@@ -9347,7 +10279,7 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering), the `imageView` member of
 `pStencilAttachment` is not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), and the
 `layout` member of `pStencilAttachment` is
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`, this command
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](../resources.html#VkImageLayout), this command
 **must** not write any values to the stencil attachment
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-imageView-06174) VUID-vkCmdExecuteGeneratedCommandsEXT-imageView-06174
@@ -9356,7 +10288,7 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering), the `imageView` member of
 `pDepthAttachment` is not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), and the `layout`
 member of `pDepthAttachment` is
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`, this
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](../resources.html#VkImageLayout), this
 command **must** not write any values to the depth attachment
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-imageView-06175) VUID-vkCmdExecuteGeneratedCommandsEXT-imageView-06175
@@ -9365,7 +10297,7 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering), the `imageView` member of
 `pStencilAttachment` is not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), and the
 `layout` member of `pStencilAttachment` is
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`, this
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](../resources.html#VkImageLayout), this
 command **must** not write any values to the stencil attachment
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-imageView-06176) VUID-vkCmdExecuteGeneratedCommandsEXT-imageView-06176
@@ -9374,7 +10306,7 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering), the `imageView` member of
 `pDepthAttachment` is not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), and the `layout`
 member of `pDepthAttachment` is
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`, this command **must** not
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](../resources.html#VkImageLayout), this command **must** not
 write any values to the depth attachment
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-imageView-06177) VUID-vkCmdExecuteGeneratedCommandsEXT-imageView-06177
@@ -9383,7 +10315,7 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering), the `imageView` member of
 `pStencilAttachment` is not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), and the
 `layout` member of `pStencilAttachment` is
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`, this command **must** not
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](../resources.html#VkImageLayout), this command **must** not
 write any values to the stencil attachment
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-viewMask-06178) VUID-vkCmdExecuteGeneratedCommandsEXT-viewMask-06178
@@ -9427,7 +10359,7 @@ each element of the [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pCol
 with an `imageView` equal to [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE) **must** have the
 corresponding element of
 [VkPipelineRenderingCreateInfo](../pipelines.html#VkPipelineRenderingCreateInfo)::`pColorAttachmentFormats` used
-to create the bound pipeline equal to `VK_FORMAT_UNDEFINED`
+to create the bound pipeline equal to [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-dynamicRenderingUnusedAttachments-08911) VUID-vkCmdExecuteGeneratedCommandsEXT-dynamicRenderingUnusedAttachments-08911
 
@@ -9441,7 +10373,7 @@ element of
 [VkPipelineRenderingCreateInfo](../pipelines.html#VkPipelineRenderingCreateInfo)::`pColorAttachmentFormats` used
 to create the bound graphics pipeline, or the corresponding element of
 [VkPipelineRenderingCreateInfo](../pipelines.html#VkPipelineRenderingCreateInfo)::`pColorAttachmentFormats`, if
-it exists, **must** be `VK_FORMAT_UNDEFINED`
+it exists, **must** be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-colorAttachmentCount-09362) VUID-vkCmdExecuteGeneratedCommandsEXT-colorAttachmentCount-09362
 
@@ -9450,7 +10382,7 @@ If the current render pass instance was begun with
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`colorAttachmentCount` equal to `1`,
 there is no shader object bound to any graphics stage,
 and a color attachment with a resolve mode of
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`, each
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](../renderpass.html#VkResolveModeFlagBitsKHR), each
 element of the [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pColorAttachments` array with
 a `resolveImageView` not equal to [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE) **must** have
 been created with an image created with a
@@ -9466,7 +10398,7 @@ the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering) and a
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`colorAttachmentCount` equal to `1`, and a
 color attachment with a resolve mode of
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`, each
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](../renderpass.html#VkResolveModeFlagBitsKHR), each
 element of the [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pColorAttachments` array with
 a `imageView` not equal to [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE) **must** have been
 created with an image created with a
@@ -9481,9 +10413,9 @@ If the current render pass instance was begun with
 there is no shader object bound to any graphics stage,
 and the bound graphics pipeline was created with a non-zero
 [VkExternalFormatANDROID](../resources.html#VkExternalFormatANDROID)::`externalFormat` value and with the
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT` dynamic state enabled,
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 then [vkCmdSetColorBlendEnableEXT](../framebuffer.html#vkCmdSetColorBlendEnableEXT) **must** have set the blend enable
-to `VK_FALSE` prior to this drawing command
+to [VK_FALSE](../fundamentals.html#VK_FALSE) prior to this drawing command
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-09365) VUID-vkCmdExecuteGeneratedCommandsEXT-None-09365
 
@@ -9492,26 +10424,26 @@ If the current render pass instance was begun with
 there is no shader object bound to any graphics stage,
 and the bound graphics pipeline was created with a non-zero
 [VkExternalFormatANDROID](../resources.html#VkExternalFormatANDROID)::`externalFormat` value and with the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` dynamic state enabled,
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 then [vkCmdSetRasterizationSamplesEXT](../primsrast.html#vkCmdSetRasterizationSamplesEXT) **must** have set
-`rasterizationSamples` to `VK_SAMPLE_COUNT_1_BIT` prior to this
+`rasterizationSamples` to [VK_SAMPLE_COUNT_1_BIT](../limits.html#VkSampleCountFlagBits) prior to this
 drawing command
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-09366) VUID-vkCmdExecuteGeneratedCommandsEXT-None-09366
 
 If there is a shader object bound to any graphics stage, and the current
 render pass includes a color attachment that uses the
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID` resolve
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](../renderpass.html#VkResolveModeFlagBitsKHR) resolve
 mode, then [vkCmdSetColorBlendEnableEXT](../framebuffer.html#vkCmdSetColorBlendEnableEXT) **must** have set blend enable
-to `VK_FALSE` prior to this drawing command
+to [VK_FALSE](../fundamentals.html#VK_FALSE) prior to this drawing command
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-rasterizationSamples-09367) VUID-vkCmdExecuteGeneratedCommandsEXT-rasterizationSamples-09367
 
 If there is a shader object bound to any graphics stage, and the current
 render pass includes a color attachment that uses the
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID` resolve
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](../renderpass.html#VkResolveModeFlagBitsKHR) resolve
 mode, then [vkCmdSetRasterizationSamplesEXT](../primsrast.html#vkCmdSetRasterizationSamplesEXT) **must** have set
-`rasterizationSamples` to `VK_SAMPLE_COUNT_1_BIT` prior to this
+`rasterizationSamples` to [VK_SAMPLE_COUNT_1_BIT](../limits.html#VkSampleCountFlagBits) prior to this
 drawing command
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-09368) VUID-vkCmdExecuteGeneratedCommandsEXT-None-09368
@@ -9521,7 +10453,7 @@ If the current render pass instance was begun with
 there is no shader object bound to any graphics stage,
 and the bound graphics pipeline was created with a non-zero
 [VkExternalFormatANDROID](../resources.html#VkExternalFormatANDROID)::`externalFormat` value and with the
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` dynamic state enabled,
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](../pipelines.html#VkDynamicState) dynamic state enabled,
 then [vkCmdSetFragmentShadingRateKHR](../primsrast.html#vkCmdSetFragmentShadingRateKHR) **must** have set
 `pFragmentSize->width` to `1` prior to this drawing command
 
@@ -9532,7 +10464,7 @@ If the current render pass instance was begun with
 there is no shader object bound to any graphics stage,
 and the bound graphics pipeline was created with a non-zero
 [VkExternalFormatANDROID](../resources.html#VkExternalFormatANDROID)::`externalFormat` value and with the
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` dynamic state enabled,
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](../pipelines.html#VkDynamicState) dynamic state enabled,
 then [vkCmdSetFragmentShadingRateKHR](../primsrast.html#vkCmdSetFragmentShadingRateKHR) **must** have set
 `pFragmentSize->height` to `1` prior to this drawing command
 
@@ -9540,7 +10472,7 @@ then [vkCmdSetFragmentShadingRateKHR](../primsrast.html#vkCmdSetFragmentShadingR
 
 If there is a shader object bound to any graphics stage, and the current
 render pass includes a color attachment that uses the
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID` resolve
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](../renderpass.html#VkResolveModeFlagBitsKHR) resolve
 mode, then [vkCmdSetFragmentShadingRateKHR](../primsrast.html#vkCmdSetFragmentShadingRateKHR) **must** have set
 `pFragmentSize->width` to `1` prior to this drawing command
 
@@ -9548,7 +10480,7 @@ mode, then [vkCmdSetFragmentShadingRateKHR](../primsrast.html#vkCmdSetFragmentSh
 
 If there is a shader object bound to any graphics stage, and the current
 render pass includes a color attachment that uses the
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID` resolve
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](../renderpass.html#VkResolveModeFlagBitsKHR) resolve
 mode, then [vkCmdSetFragmentShadingRateKHR](../primsrast.html#vkCmdSetFragmentShadingRateKHR) **must** have set
 `pFragmentSize->height` to `1` prior to this drawing command
 
@@ -9556,12 +10488,12 @@ mode, then [vkCmdSetFragmentShadingRateKHR](../primsrast.html#vkCmdSetFragmentSh
 
 If the [`colorWriteEnable`](../features.html#features-colorWriteEnable) feature is
 enabled,
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT` dynamic state enabled, and
+[VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, and
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetColorWriteEnableEXT](../framebuffer.html#vkCmdSetColorWriteEnableEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -9570,12 +10502,12 @@ command buffer prior to this drawing command
 
 If the [`colorWriteEnable`](../features.html#features-colorWriteEnable) feature is
 enabled,
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT` dynamic state enabled, and
+[VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, and
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then the
 `attachmentCount` parameter of most recent call to
 `vkCmdSetColorWriteEnableEXT` in the current command buffer **must** be
 greater than or equal to the number of active color attachments
@@ -9584,13 +10516,13 @@ greater than or equal to the number of active color attachments
 
 If the `[VK_EXT_discard_rectangles](../../appendices/extensions.html#VK_EXT_discard_rectangles)` extension is enabled, a
 graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT` dynamic state enabled and
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled and
 the `pNext` chain of [VkGraphicsPipelineCreateInfo](../pipelines.html#VkGraphicsPipelineCreateInfo) included a
 [VkPipelineDiscardRectangleStateCreateInfoEXT](../fragops.html#VkPipelineDiscardRectangleStateCreateInfoEXT) structure, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`discardRectangleEnable` is `VK_TRUE`, then
+`discardRectangleEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetDiscardRectangleEXT](../fragops.html#vkCmdSetDiscardRectangleEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command for each discard rectangle
@@ -9602,13 +10534,13 @@ in
 If the `[VK_EXT_discard_rectangles](../../appendices/extensions.html#VK_EXT_discard_rectangles)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT` dynamic state enabled and
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled and
 the `pNext` chain of [VkGraphicsPipelineCreateInfo](../pipelines.html#VkGraphicsPipelineCreateInfo) did not
 include a [VkPipelineDiscardRectangleStateCreateInfoEXT](../fragops.html#VkPipelineDiscardRectangleStateCreateInfoEXT) structure,
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`discardRectangleEnable` is `VK_TRUE`, then
+`discardRectangleEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetDiscardRectangleEXT](../fragops.html#vkCmdSetDiscardRectangleEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command for each discard rectangle
@@ -9620,9 +10552,9 @@ in
 If the `[VK_EXT_discard_rectangles](../../appendices/extensions.html#VK_EXT_discard_rectangles)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT` dynamic state
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state
 enabled, the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetDiscardRectangleEnableEXT](../fragops.html#vkCmdSetDiscardRectangleEnableEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -9632,11 +10564,11 @@ command buffer prior to this drawing command
 If the `[VK_EXT_discard_rectangles](../../appendices/extensions.html#VK_EXT_discard_rectangles)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT` dynamic state enabled,
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`discardRectangleEnable` is `VK_TRUE`, then
+`discardRectangleEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetDiscardRectangleModeEXT](../fragops.html#vkCmdSetDiscardRectangleModeEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -9652,7 +10584,7 @@ and [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pDepthAttachment->im
 [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), the value of
 [VkPipelineRenderingCreateInfo](../pipelines.html#VkPipelineRenderingCreateInfo)::`depthAttachmentFormat` used to
 create the bound graphics pipeline **must** be equal to
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-dynamicRenderingUnusedAttachments-08914) VUID-vkCmdExecuteGeneratedCommandsEXT-dynamicRenderingUnusedAttachments-08914
 
@@ -9677,7 +10609,7 @@ If the current render pass instance was begun with
 [VkPipelineRenderingCreateInfo](../pipelines.html#VkPipelineRenderingCreateInfo)::`depthAttachmentFormat` used to
 create the bound graphics pipeline was not equal to the [VkFormat](../formats.html#VkFormat)
 used to create [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pDepthAttachment->imageView`,
-the value of the format **must** be `VK_FORMAT_UNDEFINED`
+the value of the format **must** be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-dynamicRenderingUnusedAttachments-08916) VUID-vkCmdExecuteGeneratedCommandsEXT-dynamicRenderingUnusedAttachments-08916
 
@@ -9690,7 +10622,7 @@ and [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pStencilAttachment->
 [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), the value of
 [VkPipelineRenderingCreateInfo](../pipelines.html#VkPipelineRenderingCreateInfo)::`stencilAttachmentFormat` used
 to create the bound graphics pipeline **must** be equal to
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-dynamicRenderingUnusedAttachments-08917) VUID-vkCmdExecuteGeneratedCommandsEXT-dynamicRenderingUnusedAttachments-08917
 
@@ -9717,7 +10649,7 @@ If the current render pass instance was begun with
 to create the bound graphics pipeline was not equal to the
 [VkFormat](../formats.html#VkFormat) used to create
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pStencilAttachment->imageView`, the value of
-the format **must** be `VK_FORMAT_UNDEFINED`
+the format **must** be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-imageView-06183) VUID-vkCmdExecuteGeneratedCommandsEXT-imageView-06183
 
@@ -9726,7 +10658,7 @@ If the current render pass instance was begun with
 [VkRenderingFragmentShadingRateAttachmentInfoKHR](../renderpass.html#VkRenderingFragmentShadingRateAttachmentInfoKHR)::`imageView`
 was not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), the bound graphics pipeline **must** have
 been created with
-`VK_PIPELINE_CREATE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_PIPELINE_CREATE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](../pipelines.html#VkPipelineCreateFlagBits)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-dynamicRenderingLocalRead-11797) VUID-vkCmdExecuteGeneratedCommandsEXT-dynamicRenderingLocalRead-11797
 
@@ -9734,13 +10666,13 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering), the
 [`dynamicRenderingLocalRead`](../features.html#features-dynamicRenderingLocalRead)
 feature is enabled, the
-`VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR` flag is
+[VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR](../renderpass.html#VkRenderingFlagBitsKHR) flag is
 specified, and an attachment is being used as a feedback loop as
 specified by
-[`VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR`](../renderpass.html#rendering-attachment-input-attachment-feedback),
+[](../renderpass.html#rendering-attachment-input-attachment-feedback)[VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR](../renderpass.html#VkRenderingAttachmentFlagBitsKHR),
 [VkRenderingAttachmentFlagsInfoKHR](../renderpass.html#VkRenderingAttachmentFlagsInfoKHR)::`flags` for that attachment
 **must** include
-`VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR`
+[VK_RENDERING_ATTACHMENT_INPUT_ATTACHMENT_FEEDBACK_BIT_KHR](../renderpass.html#VkRenderingAttachmentFlagBitsKHR)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-imageView-06184) VUID-vkCmdExecuteGeneratedCommandsEXT-imageView-06184
 
@@ -9749,15 +10681,15 @@ If the current render pass instance was begun with
 [VkRenderingFragmentDensityMapAttachmentInfoEXT](../renderpass.html#VkRenderingFragmentDensityMapAttachmentInfoEXT)::`imageView`
 was not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), the bound graphics pipeline **must** have
 been created with
-`VK_PIPELINE_CREATE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT`
+[VK_PIPELINE_CREATE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-layers-10831) VUID-vkCmdExecuteGeneratedCommandsEXT-layers-10831
 
 If the current render pass instance was created with
-`VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE` or
-`VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE`, and
+[VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](../renderpass.html#VkRenderingFlagBitsKHR) or
+[VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](../renderpass.html#VkRenderPassCreateFlagBits), and
 the bound graphics pipeline was created with
-`VK_PIPELINE_CREATE_2_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE`, then
+[VK_PIPELINE_CREATE_2_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](../pipelines.html#VkPipelineCreateFlagBits2KHR), then
 the current render pass instance **must** have a `layers` value less
 than or equal to
 [VkPipelineFragmentDensityMapLayeredCreateInfoVALVE](../pipelines.html#VkPipelineFragmentDensityMapLayeredCreateInfoVALVE)::`maxFragmentDensityMapLayers`
@@ -9861,7 +10793,7 @@ If this command is called inside a render pass instance started with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering), and the `pNext` chain of
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo) includes a
 [VkMultisampledRenderToSingleSampledInfoEXT](../renderpass.html#VkMultisampledRenderToSingleSampledInfoEXT) structure with
-`multisampledRenderToSingleSampledEnable` equal to `VK_TRUE`,
+`multisampledRenderToSingleSampledEnable` equal to [VK_TRUE](../fundamentals.html#VK_TRUE),
 then the value of `rasterizationSamples` for the bound graphics
 pipeline **must** be equal to
 [VkMultisampledRenderToSingleSampledInfoEXT](../renderpass.html#VkMultisampledRenderToSingleSampledInfoEXT)::`rasterizationSamples`
@@ -9885,7 +10817,7 @@ zero, color writes are enabled, and the corresponding element of the
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pColorAttachments->imageView` was not
 [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), then the corresponding element of
 [VkPipelineRenderingCreateInfo](../pipelines.html#VkPipelineRenderingCreateInfo)::`pColorAttachmentFormats` used
-to create the pipeline **must** not be `VK_FORMAT_UNDEFINED`
+to create the pipeline **must** not be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-pColorAttachments-11539) VUID-vkCmdExecuteGeneratedCommandsEXT-pColorAttachments-11539
 
@@ -9898,7 +10830,7 @@ corresponding element of the
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pColorAttachments->resolveImageView` was not
 [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), then the corresponding element of
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`pColorAttachmentFormats` used
-to create the pipeline **must** not be `VK_FORMAT_UNDEFINED`
+to create the pipeline **must** not be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-pDepthAttachment-08964) VUID-vkCmdExecuteGeneratedCommandsEXT-pDepthAttachment-08964
 
@@ -9910,7 +10842,7 @@ there is a graphics pipeline bound, depth test is enabled, and the
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pDepthAttachment->imageView` was not
 [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), then the
 [VkPipelineRenderingCreateInfo](../pipelines.html#VkPipelineRenderingCreateInfo)::`depthAttachmentFormat` used to
-create the pipeline **must** not be `VK_FORMAT_UNDEFINED`
+create the pipeline **must** not be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-pDepthAttachment-11540) VUID-vkCmdExecuteGeneratedCommandsEXT-pDepthAttachment-11540
 
@@ -9921,7 +10853,7 @@ bound, depth test is enabled, and the
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pDepthAttachment->resolveImageView` was not
 [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), then the
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`depthAttachmentFormat` used to
-create the pipeline **must** not be `VK_FORMAT_UNDEFINED`
+create the pipeline **must** not be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-pStencilAttachment-08965) VUID-vkCmdExecuteGeneratedCommandsEXT-pStencilAttachment-08965
 
@@ -9933,7 +10865,7 @@ there is a graphics pipeline bound, stencil test is enabled and the
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pStencilAttachment->imageView` was not
 [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), then the
 [VkPipelineRenderingCreateInfo](../pipelines.html#VkPipelineRenderingCreateInfo)::`stencilAttachmentFormat` used
-to create the pipeline **must** not be `VK_FORMAT_UNDEFINED`
+to create the pipeline **must** not be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-pStencilAttachment-11860) VUID-vkCmdExecuteGeneratedCommandsEXT-pStencilAttachment-11860
 
@@ -9944,26 +10876,26 @@ bound, stencil test is enabled and the
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pStencilAttachment->resolveImageView` was
 not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), then the
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`stencilAttachmentFormat` used
-to create the pipeline **must** not be `VK_FORMAT_UNDEFINED`
+to create the pipeline **must** not be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-flags-10582) VUID-vkCmdExecuteGeneratedCommandsEXT-flags-10582
 
 If the current render pass instance was begun with a
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering) call in `commandBuffer`, its
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`flags` parameter **must** not have
-`VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT` set
-unless `VK_RENDERING_CONTENTS_INLINE_BIT_KHR` is also set
+[VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT](../renderpass.html#VkRenderingFlagBitsKHR) set
+unless [VK_RENDERING_CONTENTS_INLINE_BIT_KHR](../renderpass.html#VkRenderingFlagBitsKHR) is also set
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-primitivesGeneratedQueryWithRasterizerDiscard-06708) VUID-vkCmdExecuteGeneratedCommandsEXT-primitivesGeneratedQueryWithRasterizerDiscard-06708
 
 If the [    `primitivesGeneratedQueryWithRasterizerDiscard`](../features.html#features-primitivesGeneratedQueryWithRasterizerDiscard) feature is not
-enabled and the `VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT` query is
+enabled and the [VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](../queries.html#VkQueryType) query is
 active, [rasterization discard](../primsrast.html#primsrast-discard) **must** not be enabled
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-primitivesGeneratedQueryWithNonZeroStreams-06709) VUID-vkCmdExecuteGeneratedCommandsEXT-primitivesGeneratedQueryWithNonZeroStreams-06709
 
 If the [    `primitivesGeneratedQueryWithNonZeroStreams`](../features.html#features-primitivesGeneratedQueryWithNonZeroStreams) feature is not
-enabled and the `VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT` query is
+enabled and the [VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](../queries.html#VkQueryType) query is
 active, the bound graphics pipeline **must** not have been created with a
 non-zero value in
 `VkPipelineRasterizationStateStreamCreateInfoEXT`::`rasterizationStream`
@@ -9973,9 +10905,9 @@ non-zero value in
 If the [`depthClamp`](../features.html#features-depthClamp) feature is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT` dynamic state enabled, and
+[VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, and
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetDepthClampEnableEXT](../vertexpostproc.html#vkCmdSetDepthClampEnableEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -9985,9 +10917,9 @@ command buffer prior to this drawing command
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_POLYGON_MODE_EXT` dynamic state enabled, and the
+[VK_DYNAMIC_STATE_POLYGON_MODE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetPolygonModeEXT](../primsrast.html#vkCmdSetPolygonModeEXT) **must** have been called and not subsequently
 [invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer
 prior to this drawing command
@@ -9997,9 +10929,9 @@ prior to this drawing command
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` dynamic state enabled,
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetRasterizationSamplesEXT](../primsrast.html#vkCmdSetRasterizationSamplesEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -10009,9 +10941,9 @@ command buffer prior to this drawing command
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_SAMPLE_MASK_EXT` dynamic state enabled, and the
+[VK_DYNAMIC_STATE_SAMPLE_MASK_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetSampleMaskEXT](../fragops.html#vkCmdSetSampleMaskEXT) **must** have been called and not subsequently
 [invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer
 prior to this drawing command
@@ -10019,8 +10951,8 @@ prior to this drawing command
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-alphaToCoverageEnable-08919) VUID-vkCmdExecuteGeneratedCommandsEXT-alphaToCoverageEnable-08919
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT` dynamic state
-enabled, and `alphaToCoverageEnable` was `VK_TRUE` in the last
+[VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state
+enabled, and `alphaToCoverageEnable` was [VK_TRUE](../fundamentals.html#VK_TRUE) in the last
 call to [vkCmdSetAlphaToCoverageEnableEXT](../fragops.html#vkCmdSetAlphaToCoverageEnableEXT), then the
 [Fragment Output Interface](../interfaces.html#interfaces-fragmentoutput) **must** contain a
 variable for the alpha `Component` word in `Location` 0 at
@@ -10030,7 +10962,7 @@ variable for the alpha `Component` word in `Location` 0 at
 
 If a shader object is bound to any graphics stage, and the most recent
 call to [vkCmdSetAlphaToCoverageEnableEXT](../fragops.html#vkCmdSetAlphaToCoverageEnableEXT) in the current command
-buffer set `alphaToCoverageEnable` to `VK_TRUE`, then the
+buffer set `alphaToCoverageEnable` to [VK_TRUE](../fundamentals.html#VK_TRUE), then the
 [Fragment Output Interface](../interfaces.html#interfaces-fragmentoutput) **must** contain a
 variable for the alpha `Component` word in `Location` 0 at
 `Index` 0
@@ -10040,9 +10972,9 @@ variable for the alpha `Component` word in `Location` 0 at
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT` dynamic state
+[VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state
 enabled, and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetAlphaToCoverageEnableEXT](../fragops.html#vkCmdSetAlphaToCoverageEnableEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -10052,9 +10984,9 @@ command buffer prior to this drawing command
 If the [`alphaToOne`](../features.html#features-alphaToOne) feature is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT` dynamic state enabled,
+[VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetAlphaToOneEnableEXT](../fragops.html#vkCmdSetAlphaToOneEnableEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -10062,12 +10994,12 @@ command buffer prior to this drawing command
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07626) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07626
 
 If the [`logicOp`](../features.html#features-logicOp) feature is enabled,
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT` dynamic state enabled, and
+[VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, and
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetLogicOpEnableEXT](../framebuffer.html#vkCmdSetLogicOpEnableEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -10075,12 +11007,12 @@ command buffer prior to this drawing command
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07627) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07627
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT` dynamic state enabled, the
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and there are color
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and there are color
 attachments bound, then [vkCmdSetColorBlendEnableEXT](../framebuffer.html#vkCmdSetColorBlendEnableEXT) **must** have
 been called and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime)
 in the current command buffer prior to this drawing command
@@ -10088,12 +11020,12 @@ in the current command buffer prior to this drawing command
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07629) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07629
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with
-`VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT` dynamic state enabled, the
+[VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and there are color
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and there are color
 attachments bound, then [vkCmdSetColorWriteMaskEXT](../framebuffer.html#vkCmdSetColorWriteMaskEXT) **must** have been
 called and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in
 the current command buffer prior to this drawing command
@@ -10102,11 +11034,11 @@ the current command buffer prior to this drawing command
 
 If the [`geometryStreams`](../features.html#features-geometryStreams) feature is
 enabled, and
-a shader object is bound to the `VK_SHADER_STAGE_GEOMETRY_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_GEOMETRY_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with both a
-`VK_SHADER_STAGE_GEOMETRY_BIT` stage and the
-`VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT` dynamic state enabled,
+[VK_SHADER_STAGE_GEOMETRY_BIT](../pipelines.html#VkShaderStageFlagBits) stage and the
+[VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 then [vkCmdSetRasterizationStreamEXT](../primsrast.html#vkCmdSetRasterizationStreamEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -10116,9 +11048,9 @@ command buffer prior to this drawing command
 If the `[VK_EXT_conservative_rasterization](../../appendices/extensions.html#VK_EXT_conservative_rasterization)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_CONSERVATIVE_RASTERIZATION_MODE_EXT` dynamic state
+[VK_DYNAMIC_STATE_CONSERVATIVE_RASTERIZATION_MODE_EXT](../pipelines.html#VkDynamicState) dynamic state
 enabled, and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetConservativeRasterizationModeEXT](../primsrast.html#vkCmdSetConservativeRasterizationModeEXT) **must** have been called
 and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the
 current command buffer prior to this drawing command
@@ -10128,12 +11060,12 @@ current command buffer prior to this drawing command
 If the `[VK_EXT_conservative_rasterization](../../appendices/extensions.html#VK_EXT_conservative_rasterization)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_EXTRA_PRIMITIVE_OVERESTIMATION_SIZE_EXT` dynamic
+[VK_DYNAMIC_STATE_EXTRA_PRIMITIVE_OVERESTIMATION_SIZE_EXT](../pipelines.html#VkDynamicState) dynamic
 state enabled, the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
 `conservativeRasterizationMode` is
-`VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT`, then
+[VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT](../primsrast.html#VkConservativeRasterizationModeEXT), then
 [vkCmdSetExtraPrimitiveOverestimationSizeEXT](../primsrast.html#vkCmdSetExtraPrimitiveOverestimationSizeEXT) **must** have been called
 and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the
 current command buffer prior to this drawing command
@@ -10143,11 +11075,11 @@ current command buffer prior to this drawing command
 If the `[VK_EXT_conservative_rasterization](../../appendices/extensions.html#VK_EXT_conservative_rasterization)` extension is enabled,
 [    `conservativePointAndLineRasterization`](../limits.html#limits-conservativePointAndLineRasterization) is not supported,
 a shader object is bound to any graphics stage or
-a graphics pipeline is bound, the [current    value](../pipelines.html#dynamic-state-current-value) of `rasterizerDiscardEnable` is `VK_FALSE`, and the
+a graphics pipeline is bound, the [current    value](../pipelines.html#dynamic-state-current-value) of `rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [effective rasterization input    topology](../drawing.html#drawing-rasterization-input-topology) is in line or point topology class, then the
 [current value](../pipelines.html#dynamic-state-current-value) of
 `conservativeRasterizationMode` **must** be
-`VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT`
+[VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT](../primsrast.html#VkConservativeRasterizationModeEXT)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07633) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07633
 
@@ -10155,7 +11087,7 @@ If the [`depthClipEnable`](../features.html#features-depthClipEnable) feature is
 enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT` dynamic state, then
+[VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state, then
 [vkCmdSetDepthClipEnableEXT](../vertexpostproc.html#vkCmdSetDepthClipEnableEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -10163,12 +11095,12 @@ command buffer prior to this drawing command
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07636) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07636
 
 If the `[VK_EXT_provoking_vertex](../../appendices/extensions.html#VK_EXT_provoking_vertex)` extension is enabled,
-a shader object is bound to the `VK_SHADER_STAGE_VERTEX_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_PROVOKING_VERTEX_MODE_EXT` dynamic state enabled,
+[VK_DYNAMIC_STATE_PROVOKING_VERTEX_MODE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetProvokingVertexModeEXT](../vertexpostproc.html#vkCmdSetProvokingVertexModeEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -10178,9 +11110,9 @@ command buffer prior to this drawing command
 If any of the [    `stippledRectangularLines`](../features.html#features-stippledRectangularLines), [    `stippledBresenhamLines`](../features.html#features-stippledBresenhamLines) or [    `stippledSmoothLines`](../features.html#features-stippledSmoothLines) features are enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT` dynamic state
+[VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT](../pipelines.html#VkDynamicState) dynamic state
 enabled, and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [effective rasterization input    topology](../drawing.html#drawing-rasterization-input-topology) is in line topology class, then
 [vkCmdSetLineRasterizationModeEXT](../primsrast.html#vkCmdSetLineRasterizationModeEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
@@ -10191,9 +11123,9 @@ command buffer prior to this drawing command
 If any of the [    `stippledRectangularLines`](../features.html#features-stippledRectangularLines), [    `stippledBresenhamLines`](../features.html#features-stippledBresenhamLines) or [    `stippledSmoothLines`](../features.html#features-stippledSmoothLines) features are enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT` dynamic state enabled,
+[VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [effective rasterization input    topology](../drawing.html#drawing-rasterization-input-topology) is in line topology class, then
 [vkCmdSetLineStippleEnableEXT](../primsrast.html#vkCmdSetLineStippleEnableEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
@@ -10204,10 +11136,10 @@ command buffer prior to this drawing command
     If any of the [    `stippledRectangularLines`](../features.html#features-stippledRectangularLines), [    `stippledBresenhamLines`](../features.html#features-stippledBresenhamLines) or [    `stippledSmoothLines`](../features.html#features-stippledSmoothLines) features are enabled and
     a shader object is bound to any graphics stage, or
     a bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_LINE_STIPPLE`
-    dynamic state enabled, the [current    value](../pipelines.html#dynamic-state-current-value) of `rasterizerDiscardEnable` is `VK_FALSE`, and the
+[VK_DYNAMIC_STATE_LINE_STIPPLE](../pipelines.html#VkDynamicState)
+    dynamic state enabled, the [current    value](../pipelines.html#dynamic-state-current-value) of `rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
     [current value](../pipelines.html#dynamic-state-current-value) of
-    `stippledLineEnable` is `VK_TRUE`, then
+    `stippledLineEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetLineStipple](../primsrast.html#vkCmdSetLineStipple)
     **must** have been called and not subsequently [    invalidated](../pipelines.html#dynamic-state-lifetime) in the current command buffer prior to this drawing
     command
@@ -10217,13 +11149,13 @@ command buffer prior to this drawing command
 If
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT` dynamic state
+[VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT](../pipelines.html#VkDynamicState) dynamic state
 enabled, the [effective    rasterization input topology](../drawing.html#drawing-rasterization-input-topology) is in line topology class, and the
 current `lineRasterizationMode` is
-`VK_LINE_RASTERIZATION_MODE_BRESENHAM` or
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH`, then the current
+[VK_LINE_RASTERIZATION_MODE_BRESENHAM](../primsrast.html#VkLineRasterizationModeEXT) or
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH](../primsrast.html#VkLineRasterizationModeEXT), then the current
 `alphaToCoverageEnable`, `alphaToOneEnable` and
-`sampleShadingEnable` states **must** all be `VK_FALSE`
+`sampleShadingEnable` states **must** all be [VK_FALSE](../fundamentals.html#VK_FALSE)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-07639) VUID-vkCmdExecuteGeneratedCommandsEXT-None-07639
 
@@ -10231,7 +11163,7 @@ If the [`depthClipControl`](../features.html#features-depthClipControl) feature 
 enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_CLIP_NEGATIVE_ONE_TO_ONE_EXT` dynamic state
+[VK_DYNAMIC_STATE_DEPTH_CLIP_NEGATIVE_ONE_TO_ONE_EXT](../pipelines.html#VkDynamicState) dynamic state
 enabled, then [vkCmdSetDepthClipNegativeOneToOneEXT](../vertexpostproc.html#vkCmdSetDepthClipNegativeOneToOneEXT) **must** have been
 called and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in
 the current command buffer prior to this drawing command
@@ -10242,9 +11174,9 @@ If the [`depthClampControl`](../features.html#features-depthClampControl) featur
 is enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT` dynamic state enabled, and
+[VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT](../pipelines.html#VkDynamicState) dynamic state enabled, and
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`depthClampEnable` is `VK_TRUE`, then
+`depthClampEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetDepthClampRangeEXT](../fragops.html#vkCmdSetDepthClampRangeEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -10254,7 +11186,7 @@ command buffer prior to this drawing command
 If the `[VK_NV_clip_space_w_scaling](../../appendices/extensions.html#VK_NV_clip_space_w_scaling)` extension is enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_ENABLE_NV` dynamic state
+[VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_ENABLE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, then [vkCmdSetViewportWScalingEnableNV](../vertexpostproc.html#vkCmdSetViewportWScalingEnableNV) **must** have been
 called and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in
 the current command buffer prior to this drawing command
@@ -10264,7 +11196,7 @@ the current command buffer prior to this drawing command
 If the `[VK_NV_viewport_swizzle](../../appendices/extensions.html#VK_NV_viewport_swizzle)` extension is enabled, and
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV` dynamic state enabled, then
+[VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV](../pipelines.html#VkDynamicState) dynamic state enabled, then
 [vkCmdSetViewportSwizzleNV](../vertexpostproc.html#vkCmdSetViewportSwizzleNV) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -10274,9 +11206,9 @@ command buffer prior to this drawing command
 If the `[VK_NV_fragment_coverage_to_color](../../appendices/extensions.html#VK_NV_fragment_coverage_to_color)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_ENABLE_NV` dynamic state
+[VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_ENABLE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetCoverageToColorEnableNV](../fragops.html#vkCmdSetCoverageToColorEnableNV) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -10286,11 +11218,11 @@ command buffer prior to this drawing command
 If the `[VK_NV_fragment_coverage_to_color](../../appendices/extensions.html#VK_NV_fragment_coverage_to_color)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_LOCATION_NV` dynamic state
+[VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_LOCATION_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`coverageToColorEnable` is `VK_TRUE`, then
+`coverageToColorEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetCoverageToColorLocationNV](../fragops.html#vkCmdSetCoverageToColorLocationNV) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -10300,9 +11232,9 @@ command buffer prior to this drawing command
 If the `[VK_NV_framebuffer_mixed_samples](../../appendices/extensions.html#VK_NV_framebuffer_mixed_samples)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_MODE_NV` dynamic state
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_MODE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetCoverageModulationModeNV](../fragops.html#vkCmdSetCoverageModulationModeNV) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -10312,12 +11244,12 @@ command buffer prior to this drawing command
 If the `[VK_NV_framebuffer_mixed_samples](../../appendices/extensions.html#VK_NV_framebuffer_mixed_samples)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_ENABLE_NV` dynamic state
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_ENABLE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
 `coverageModulationMode` is any value other than
-`VK_COVERAGE_MODULATION_MODE_NONE_NV`, then
+[VK_COVERAGE_MODULATION_MODE_NONE_NV](../fragops.html#VkCoverageModulationModeNV), then
 [vkCmdSetCoverageModulationTableEnableNV](../fragops.html#vkCmdSetCoverageModulationTableEnableNV) **must** have been called and
 not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -10327,11 +11259,11 @@ command buffer prior to this drawing command
 If the `[VK_NV_framebuffer_mixed_samples](../../appendices/extensions.html#VK_NV_framebuffer_mixed_samples)` extension is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_NV` dynamic state
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and the
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`coverageModulationTableEnable` is `VK_TRUE`, then
+`coverageModulationTableEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 [vkCmdSetCoverageModulationTableNV](../fragops.html#vkCmdSetCoverageModulationTableNV) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -10342,9 +11274,9 @@ If the [`shadingRateImage`](../features.html#features-shadingRateImage) feature 
 enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_SHADING_RATE_IMAGE_ENABLE_NV` dynamic state
+[VK_DYNAMIC_STATE_SHADING_RATE_IMAGE_ENABLE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetShadingRateImageEnableNV](../primsrast.html#vkCmdSetShadingRateImageEnableNV) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -10354,9 +11286,9 @@ command buffer prior to this drawing command
 If the [    `pipelineFragmentShadingRate`](../features.html#features-pipelineFragmentShadingRate) feature is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR` dynamic state enabled,
+[VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetFragmentShadingRateKHR](../primsrast.html#vkCmdSetFragmentShadingRateKHR) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -10366,9 +11298,9 @@ command buffer prior to this drawing command
 If the [    `representativeFragmentTest`](../features.html#features-representativeFragmentTest) feature is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_REPRESENTATIVE_FRAGMENT_TEST_ENABLE_NV` dynamic
+[VK_DYNAMIC_STATE_REPRESENTATIVE_FRAGMENT_TEST_ENABLE_NV](../pipelines.html#VkDynamicState) dynamic
 state enabled, and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetRepresentativeFragmentTestEnableNV](../fragops.html#vkCmdSetRepresentativeFragmentTestEnableNV) **must** have been called
 and not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the
 current command buffer prior to this drawing command
@@ -10379,9 +11311,9 @@ If the [`coverageReductionMode`](../features.html#features-coverageReductionMode
 feature is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV` dynamic state enabled,
+[VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetCoverageReductionModeNV](../fragops.html#vkCmdSetCoverageReductionModeNV) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -10389,7 +11321,7 @@ command buffer prior to this drawing command
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-rasterizationSamples-07471) VUID-vkCmdExecuteGeneratedCommandsEXT-rasterizationSamples-07471
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` state enabled, and the
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) state enabled, and the
 current subpass does not use any color and/or depth/stencil attachments,
 then the `rasterizationSamples` in the last call to
 [vkCmdSetRasterizationSamplesEXT](../primsrast.html#vkCmdSetRasterizationSamplesEXT) **must** follow the rules for a
@@ -10398,8 +11330,8 @@ then the `rasterizationSamples` in the last call to
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-samples-07472) VUID-vkCmdExecuteGeneratedCommandsEXT-samples-07472
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_MASK_EXT` state enabled and the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` state disabled, then
+[VK_DYNAMIC_STATE_SAMPLE_MASK_EXT](../pipelines.html#VkDynamicState) state enabled and the
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) state disabled, then
 the `samples` parameter in the last call to
 [vkCmdSetSampleMaskEXT](../fragops.html#vkCmdSetSampleMaskEXT) **must** be greater or equal to the
 [VkPipelineMultisampleStateCreateInfo](../primsrast.html#VkPipelineMultisampleStateCreateInfo)::`rasterizationSamples`
@@ -10408,8 +11340,8 @@ parameter used to create the bound graphics pipeline
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-samples-07473) VUID-vkCmdExecuteGeneratedCommandsEXT-samples-07473
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_MASK_EXT` state and
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` states enabled, then
+[VK_DYNAMIC_STATE_SAMPLE_MASK_EXT](../pipelines.html#VkDynamicState) state and
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) states enabled, then
 the `samples` parameter in the last call to
 [vkCmdSetSampleMaskEXT](../fragops.html#vkCmdSetSampleMaskEXT) **must** be greater or equal to the
 `rasterizationSamples` parameter in the last call to
@@ -10418,7 +11350,7 @@ the `samples` parameter in the last call to
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-rasterizationSamples-07474) VUID-vkCmdExecuteGeneratedCommandsEXT-rasterizationSamples-07474
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` state enabled, and
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) state enabled, and
 the [    `multisampledRenderToSingleSampled`](../features.html#features-multisampledRenderToSingleSampled) feature is not enabled, and
 neither the `[VK_AMD_mixed_attachment_samples](../../appendices/extensions.html#VK_AMD_mixed_attachment_samples)` nor the
 `[VK_NV_framebuffer_mixed_samples](../../appendices/extensions.html#VK_NV_framebuffer_mixed_samples)` extensions are enabled, then
@@ -10429,11 +11361,11 @@ subpass color and/or depth/stencil attachments
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-09211) VUID-vkCmdExecuteGeneratedCommandsEXT-None-09211
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` state enabled,
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) state enabled,
 or a shader object is bound to any graphics stage,
 and the current render pass instance includes a
 [VkMultisampledRenderToSingleSampledInfoEXT](../renderpass.html#VkMultisampledRenderToSingleSampledInfoEXT) structure with
-`multisampledRenderToSingleSampledEnable` equal to `VK_TRUE`,
+`multisampledRenderToSingleSampledEnable` equal to [VK_TRUE](../fundamentals.html#VK_TRUE),
 then the `rasterizationSamples` in the last call to
 [vkCmdSetRasterizationSamplesEXT](../primsrast.html#vkCmdSetRasterizationSamplesEXT) **must** be the same as the
 `rasterizationSamples` member of that structure
@@ -10441,12 +11373,12 @@ then the `rasterizationSamples` in the last call to
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-firstAttachment-07476) VUID-vkCmdExecuteGeneratedCommandsEXT-firstAttachment-07476
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound was created with the
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT` dynamic states enabled,
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic states enabled,
 and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then the last call to
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then the last call to
 [vkCmdSetColorBlendEnableEXT](../framebuffer.html#vkCmdSetColorBlendEnableEXT) in the current command buffer prior to
 this drawing command **must** have set a value for all active color
 attachments
@@ -10454,12 +11386,12 @@ attachments
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-firstAttachment-07478) VUID-vkCmdExecuteGeneratedCommandsEXT-firstAttachment-07478
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound was created with the
-`VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT` dynamic states enabled, and
+[VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](../pipelines.html#VkDynamicState) dynamic states enabled, and
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then the last call to
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then the last call to
 [vkCmdSetColorWriteMaskEXT](../framebuffer.html#vkCmdSetColorWriteMaskEXT) in the current command buffer prior to
 this drawing command **must** have set a value for all active color
 attachments
@@ -10467,72 +11399,72 @@ attachments
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-advancedBlendMaxColorAttachments-07480) VUID-vkCmdExecuteGeneratedCommandsEXT-advancedBlendMaxColorAttachments-07480
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound was created with the
-`VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT` and
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT` dynamic states enabled,
+[VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](../pipelines.html#VkDynamicState) and
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic states enabled,
 the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, and an active color
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), and an active color
 attachment [current value](../pipelines.html#dynamic-state-current-value) of
-`blendEnable` is `VK_TRUE`, then the number of active color
+`blendEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then the number of active color
 attachments **must** not exceed [    `advancedBlendMaxColorAttachments`](../limits.html#limits-advancedBlendMaxColorAttachments)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-10862) VUID-vkCmdExecuteGeneratedCommandsEXT-None-10862
 
 If a graphics pipeline is bound was created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT`
-, but not the `VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT`
-dynamic state enabled, and the [current    value](../pipelines.html#dynamic-state-current-value) of `rasterizerDiscardEnable` is `VK_FALSE`, then
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](../pipelines.html#VkDynamicState)
+, but not the [VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](../pipelines.html#VkDynamicState)
+dynamic state enabled, and the [current    value](../pipelines.html#dynamic-state-current-value) of `rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetColorBlendEquationEXT](../framebuffer.html#vkCmdSetColorBlendEquationEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command for all active color
-attachments with the `blendEnable` [    current value](../pipelines.html#dynamic-state-current-value) of `VK_TRUE`
+attachments with the `blendEnable` [    current value](../pipelines.html#dynamic-state-current-value) of [VK_TRUE](../fundamentals.html#VK_TRUE)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-rasterizerDiscardEnable-10863) VUID-vkCmdExecuteGeneratedCommandsEXT-rasterizerDiscardEnable-10863
 
 If a graphics pipeline is bound was created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT`, but not the
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT` dynamic state enabled,
+[VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](../pipelines.html#VkDynamicState), but not the
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetColorBlendAdvancedEXT](../framebuffer.html#vkCmdSetColorBlendAdvancedEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command for all active color
-attachments with the `blendEnable` [    current value](../pipelines.html#dynamic-state-current-value) of `VK_TRUE`
+attachments with the `blendEnable` [    current value](../pipelines.html#dynamic-state-current-value) of [VK_TRUE](../fundamentals.html#VK_TRUE)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-10864) VUID-vkCmdExecuteGeneratedCommandsEXT-None-10864
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound was created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT` and
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT` dynamic state enabled,
+[VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](../pipelines.html#VkDynamicState) and
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](../pipelines.html#VkDynamicState) dynamic state enabled,
 and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 either [vkCmdSetColorBlendAdvancedEXT](../framebuffer.html#vkCmdSetColorBlendAdvancedEXT) or
 [vkCmdSetColorBlendEquationEXT](../framebuffer.html#vkCmdSetColorBlendEquationEXT) **must** have been called and not
 subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command for all active color
-attachments with the `blendEnable` [    current value](../pipelines.html#dynamic-state-current-value) of `VK_TRUE`
+attachments with the `blendEnable` [    current value](../pipelines.html#dynamic-state-current-value) of [VK_TRUE](../fundamentals.html#VK_TRUE)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-primitivesGeneratedQueryWithNonZeroStreams-07481) VUID-vkCmdExecuteGeneratedCommandsEXT-primitivesGeneratedQueryWithNonZeroStreams-07481
 
 If the [    `primitivesGeneratedQueryWithNonZeroStreams`](../features.html#features-primitivesGeneratedQueryWithNonZeroStreams) feature is not
-enabled and the `VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT` query is
+enabled and the [VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT](../queries.html#VkQueryType) query is
 active, and the bound graphics pipeline was created with
-`VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT` state enabled, the last
+[VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT](../pipelines.html#VkDynamicState) state enabled, the last
 call to [vkCmdSetRasterizationStreamEXT](../primsrast.html#vkCmdSetRasterizationStreamEXT) **must** have set the
 `rasterizationStream` to zero
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsPerPixel-07482) VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsPerPixel-07482
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` state enabled and the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` state disabled, and the
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](../pipelines.html#VkDynamicState) state enabled and the
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) state disabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`sampleLocationsEnable` is `VK_TRUE`, then the
+`sampleLocationsEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then the
 `sampleLocationsPerPixel` member of `pSampleLocationsInfo` in
 the last call to [vkCmdSetSampleLocationsEXT](../primsrast.html#vkCmdSetSampleLocationsEXT) **must** equal the
 `rasterizationSamples` member of the
@@ -10542,10 +11474,10 @@ pipeline has been created with
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsPerPixel-07483) VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsPerPixel-07483
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` state enabled and the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` state enabled, and the
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](../pipelines.html#VkDynamicState) state enabled and the
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`sampleLocationsEnable` is `VK_TRUE`, then the
+`sampleLocationsEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then the
 `sampleLocationsPerPixel` member of `pSampleLocationsInfo` in
 the last call to [vkCmdSetSampleLocationsEXT](../primsrast.html#vkCmdSetSampleLocationsEXT) **must** equal the
 `rasterizationSamples` parameter of the last call to
@@ -10554,24 +11486,24 @@ the last call to [vkCmdSetSampleLocationsEXT](../primsrast.html#vkCmdSetSampleLo
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsEnable-07484) VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsEnable-07484
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT`
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits)
 stage, or
 the bound graphics pipeline was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT` state enabled, and
-`sampleLocationsEnable` was `VK_TRUE` in the last call to
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT](../pipelines.html#VkDynamicState) state enabled, and
+`sampleLocationsEnable` was [VK_TRUE](../fundamentals.html#VK_TRUE) in the last call to
 [vkCmdSetSampleLocationsEnableEXT](../primsrast.html#vkCmdSetSampleLocationsEnableEXT) then the current active depth
 attachment **must** have been created with the
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT` bit set
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](../resources.html#VkImageCreateFlagBits) bit set
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsEnable-07485) VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsEnable-07485
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT`
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits)
 stage, or
 the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` state enabled and the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT` state enabled, and if
-`sampleLocationsEnable` was `VK_TRUE` in the last call to
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](../pipelines.html#VkDynamicState) state enabled and the
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT](../pipelines.html#VkDynamicState) state enabled, and if
+`sampleLocationsEnable` was [VK_TRUE](../fundamentals.html#VK_TRUE) in the last call to
 [vkCmdSetSampleLocationsEnableEXT](../primsrast.html#vkCmdSetSampleLocationsEnableEXT), then the
 `sampleLocationsInfo.maxSampleLocationGridSize.width` in the last
 call to [vkCmdSetSampleLocationsEXT](../primsrast.html#vkCmdSetSampleLocationsEXT) **must** evenly divide
@@ -10582,12 +11514,12 @@ as returned by [vkGetPhysicalDeviceMultisamplePropertiesEXT](../limits.html#vkGe
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsEnable-07486) VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsEnable-07486
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT`
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits)
 stage, or
 the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` state enabled and the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT` state enabled, and if
-`sampleLocationsEnable` was `VK_TRUE` in the last call to
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](../pipelines.html#VkDynamicState) state enabled and the
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT](../pipelines.html#VkDynamicState) state enabled, and if
+`sampleLocationsEnable` was [VK_TRUE](../fundamentals.html#VK_TRUE) in the last call to
 [vkCmdSetSampleLocationsEnableEXT](../primsrast.html#vkCmdSetSampleLocationsEnableEXT), then the
 `sampleLocationsInfo.maxSampleLocationGridSize.height` in the last
 call to [vkCmdSetSampleLocationsEXT](../primsrast.html#vkCmdSetSampleLocationsEXT) **must** evenly divide
@@ -10598,21 +11530,21 @@ as returned by [vkGetPhysicalDeviceMultisamplePropertiesEXT](../limits.html#vkGe
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsEnable-07487) VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsEnable-07487
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT`
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits)
 stage, or
 the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT` state enabled, and if
-`sampleLocationsEnable` was `VK_TRUE` in the last call to
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT](../pipelines.html#VkDynamicState) state enabled, and if
+`sampleLocationsEnable` was [VK_TRUE](../fundamentals.html#VK_TRUE) in the last call to
 [vkCmdSetSampleLocationsEnableEXT](../primsrast.html#vkCmdSetSampleLocationsEnableEXT), the fragment shader code **must**
 not statically use the extended instruction `InterpolateAtSample`
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsEnable-07936) VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsEnable-07936
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` state disabled and the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` state enabled, and the
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](../pipelines.html#VkDynamicState) state disabled and the
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`sampleLocationsEnable` is `VK_TRUE`, then
+`sampleLocationsEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 `sampleLocationsInfo.sampleLocationGridSize.width` **must** evenly
 divide
 [VkMultisamplePropertiesEXT](../limits.html#VkMultisamplePropertiesEXT)::`maxSampleLocationGridSize.width`
@@ -10623,10 +11555,10 @@ in the last call to [vkCmdSetRasterizationSamplesEXT](../primsrast.html#vkCmdSet
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsEnable-07937) VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsEnable-07937
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` state disabled and the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` state enabled, and the
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](../pipelines.html#VkDynamicState) state disabled and the
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`sampleLocationsEnable` is `VK_TRUE`, then
+`sampleLocationsEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 `sampleLocationsInfo.sampleLocationGridSize.height` **must** evenly
 divide
 [VkMultisamplePropertiesEXT](../limits.html#VkMultisamplePropertiesEXT)::`maxSampleLocationGridSize.height`
@@ -10637,10 +11569,10 @@ in the last call to [vkCmdSetRasterizationSamplesEXT](../primsrast.html#vkCmdSet
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsEnable-07938) VUID-vkCmdExecuteGeneratedCommandsEXT-sampleLocationsEnable-07938
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` state disabled and the
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` state enabled, and the
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](../pipelines.html#VkDynamicState) state disabled and the
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) state enabled, and the
 [current value](../pipelines.html#dynamic-state-current-value) of
-`sampleLocationsEnable` is `VK_TRUE`, then
+`sampleLocationsEnable` is [VK_TRUE](../fundamentals.html#VK_TRUE), then
 `sampleLocationsInfo.sampleLocationsPerPixel` **must** equal
 `rasterizationSamples` in the last call to
 [vkCmdSetRasterizationSamplesEXT](../primsrast.html#vkCmdSetRasterizationSamplesEXT)
@@ -10650,10 +11582,10 @@ If the bound graphics pipeline state was created with the
 If
 a shader object is bound to any graphics stage or
 the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_ENABLE_NV` state
+[VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_ENABLE_NV](../pipelines.html#VkDynamicState) state
 enabled, and the last call to
 [vkCmdSetCoverageModulationTableEnableNV](../fragops.html#vkCmdSetCoverageModulationTableEnableNV) set
-`coverageModulationTableEnable` to `VK_TRUE`, then the
+`coverageModulationTableEnable` to [VK_TRUE](../fundamentals.html#VK_TRUE), then the
 `coverageModulationTableCount` parameter in the last call to
 [vkCmdSetCoverageModulationTableNV](../fragops.html#vkCmdSetCoverageModulationTableNV) **must** equal the current
 `rasterizationSamples` divided by the number of color samples in the
@@ -10670,31 +11602,31 @@ sample count of the depth/stencil attachment
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-coverageToColorEnable-07490) VUID-vkCmdExecuteGeneratedCommandsEXT-coverageToColorEnable-07490
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_ENABLE_NV` state enabled and the
+[VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_ENABLE_NV](../pipelines.html#VkDynamicState) state enabled and the
 last call to [vkCmdSetCoverageToColorEnableNV](../fragops.html#vkCmdSetCoverageToColorEnableNV) set the
-`coverageToColorEnable` to `VK_TRUE`, then there **must** be an
+`coverageToColorEnable` to [VK_TRUE](../fundamentals.html#VK_TRUE), then there **must** be an
 active color attachment at the location selected by the last call to
 [vkCmdSetCoverageToColorLocationNV](../fragops.html#vkCmdSetCoverageToColorLocationNV) `coverageToColorLocation`,
-with a [VkFormat](../formats.html#VkFormat) of `VK_FORMAT_R8_UINT`,
-`VK_FORMAT_R8_SINT`, `VK_FORMAT_R16_UINT`,
-`VK_FORMAT_R16_SINT`, `VK_FORMAT_R32_UINT`, or
-`VK_FORMAT_R32_SINT`
+with a [VkFormat](../formats.html#VkFormat) of [VK_FORMAT_R8_UINT](../formats.html#VkFormat),
+[VK_FORMAT_R8_SINT](../formats.html#VkFormat), [VK_FORMAT_R16_UINT](../formats.html#VkFormat),
+[VK_FORMAT_R16_SINT](../formats.html#VkFormat), [VK_FORMAT_R32_UINT](../formats.html#VkFormat), or
+[VK_FORMAT_R32_SINT](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-rasterizerDiscardEnable-09420) VUID-vkCmdExecuteGeneratedCommandsEXT-rasterizerDiscardEnable-09420
 
 If the `[VK_NV_fragment_coverage_to_color](../../appendices/extensions.html#VK_NV_fragment_coverage_to_color)` extension is enabled,
-and a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT`
+and a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits)
 stage, and the most recent call to [vkCmdSetRasterizerDiscardEnable](../primsrast.html#vkCmdSetRasterizerDiscardEnable)
 in the current command buffer set `rasterizerDiscardEnable` to
-`VK_FALSE`, and the last call to
+[VK_FALSE](../fundamentals.html#VK_FALSE), and the last call to
 [vkCmdSetCoverageToColorEnableNV](../fragops.html#vkCmdSetCoverageToColorEnableNV) set the
-`coverageToColorEnable` to `VK_TRUE`, then there **must** be an
+`coverageToColorEnable` to [VK_TRUE](../fundamentals.html#VK_TRUE), then there **must** be an
 active color attachment at the location selected by the last call to
 [vkCmdSetCoverageToColorLocationNV](../fragops.html#vkCmdSetCoverageToColorLocationNV) `coverageToColorLocation`,
-with a [VkFormat](../formats.html#VkFormat) of `VK_FORMAT_R8_UINT`,
-`VK_FORMAT_R8_SINT`, `VK_FORMAT_R16_UINT`,
-`VK_FORMAT_R16_SINT`, `VK_FORMAT_R32_UINT`, or
-`VK_FORMAT_R32_SINT`
+with a [VkFormat](../formats.html#VkFormat) of [VK_FORMAT_R8_UINT](../formats.html#VkFormat),
+[VK_FORMAT_R8_SINT](../formats.html#VkFormat), [VK_FORMAT_R16_UINT](../formats.html#VkFormat),
+[VK_FORMAT_R16_SINT](../formats.html#VkFormat), [VK_FORMAT_R32_UINT](../formats.html#VkFormat), or
+[VK_FORMAT_R32_SINT](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-coverageReductionMode-07491) VUID-vkCmdExecuteGeneratedCommandsEXT-coverageReductionMode-07491
 
@@ -10702,8 +11634,8 @@ If the [`coverageReductionMode`](../features.html#features-coverageReductionMode
 feature is enabled,
 a shader object is bound to any graphics stage or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV` or
-`VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT` dynamic states enabled,
+[VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV](../pipelines.html#VkDynamicState) or
+[VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT](../pipelines.html#VkDynamicState) dynamic states enabled,
 then the [current values](../pipelines.html#dynamic-state-current-value) of
 `coverageReductionMode`, `rasterizationSamples`, the sample
 counts for the color and depth/stencil attachments (if the subpass has
@@ -10713,8 +11645,8 @@ them) **must** be a valid combination returned by
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-viewportCount-07492) VUID-vkCmdExecuteGeneratedCommandsEXT-viewportCount-07492
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` dynamic state enabled, but
-not the `VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV` dynamic state
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) dynamic state enabled, but
+not the [VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV](../pipelines.html#VkDynamicState) dynamic state
 enabled, then the bound graphics pipeline **must** have been created with
 [VkPipelineViewportSwizzleStateCreateInfoNV](../vertexpostproc.html#VkPipelineViewportSwizzleStateCreateInfoNV)::`viewportCount`
 greater or equal to the `viewportCount` parameter in the last call
@@ -10723,8 +11655,8 @@ to [vkCmdSetViewportWithCount](../vertexpostproc.html#vkCmdSetViewportWithCount)
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-viewportCount-07493) VUID-vkCmdExecuteGeneratedCommandsEXT-viewportCount-07493
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` and
-`VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV` dynamic states enabled then
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](../pipelines.html#VkDynamicState) and
+[VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV](../pipelines.html#VkDynamicState) dynamic states enabled then
 the `viewportCount` parameter in the last call to
 [vkCmdSetViewportSwizzleNV](../vertexpostproc.html#vkCmdSetViewportSwizzleNV) **must** be greater than or equal to the
 `viewportCount` parameter in the last call to
@@ -10744,7 +11676,7 @@ shader object is bound to any graphics stage, then the
 If the `[VK_NV_framebuffer_mixed_samples](../../appendices/extensions.html#VK_NV_framebuffer_mixed_samples)` extension is enabled,
 and the [`coverageReductionMode`](../features.html#features-coverageReductionMode)
 feature is not enabled, or the [current    value](../pipelines.html#dynamic-state-current-value) of `coverageReductionMode` is not
-`VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV`,
+[VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV](../fragops.html#VkCoverageReductionModeNV),
 and the [current value](../pipelines.html#dynamic-state-current-value) of
 `rasterizationSamples` is greater than sample count of the color
 attachment, then [sample shading](../primsrast.html#primsrast-sampleshading) **must** be
@@ -10753,67 +11685,67 @@ disabled
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-stippledLineEnable-07495) VUID-vkCmdExecuteGeneratedCommandsEXT-stippledLineEnable-07495
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT` or
-`VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT` dynamic states
+[VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT](../pipelines.html#VkDynamicState) or
+[VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT](../pipelines.html#VkDynamicState) dynamic states
 enabled, and if the current `stippledLineEnable` state is
-`VK_TRUE` and the current `lineRasterizationMode` state is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR`, then the
+[VK_TRUE](../fundamentals.html#VK_TRUE) and the current `lineRasterizationMode` state is
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR](../primsrast.html#VkLineRasterizationModeEXT), then the
 [`stippledRectangularLines`](../features.html#features-stippledRectangularLines)
 feature **must** be enabled
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-stippledLineEnable-07496) VUID-vkCmdExecuteGeneratedCommandsEXT-stippledLineEnable-07496
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT` or
-`VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT` dynamic states
+[VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT](../pipelines.html#VkDynamicState) or
+[VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT](../pipelines.html#VkDynamicState) dynamic states
 enabled, and if the current `stippledLineEnable` state is
-`VK_TRUE` and the current `lineRasterizationMode` state is
-`VK_LINE_RASTERIZATION_MODE_BRESENHAM`, then the
+[VK_TRUE](../fundamentals.html#VK_TRUE) and the current `lineRasterizationMode` state is
+[VK_LINE_RASTERIZATION_MODE_BRESENHAM](../primsrast.html#VkLineRasterizationModeEXT), then the
 [`stippledBresenhamLines`](../features.html#features-stippledBresenhamLines)
 feature **must** be enabled
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-stippledLineEnable-07497) VUID-vkCmdExecuteGeneratedCommandsEXT-stippledLineEnable-07497
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT` or
-`VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT` dynamic states
+[VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT](../pipelines.html#VkDynamicState) or
+[VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT](../pipelines.html#VkDynamicState) dynamic states
 enabled, and if the current `stippledLineEnable` state is
-`VK_TRUE` and the current `lineRasterizationMode` state is
-`VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH`, then the
+[VK_TRUE](../fundamentals.html#VK_TRUE) and the current `lineRasterizationMode` state is
+[VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH](../primsrast.html#VkLineRasterizationModeEXT), then the
 [`stippledSmoothLines`](../features.html#features-stippledSmoothLines) feature
 **must** be enabled
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-stippledLineEnable-07498) VUID-vkCmdExecuteGeneratedCommandsEXT-stippledLineEnable-07498
 
 If the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT` or
-`VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT` dynamic states
+[VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT](../pipelines.html#VkDynamicState) or
+[VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT](../pipelines.html#VkDynamicState) dynamic states
 enabled, and if the current `stippledLineEnable` state is
-`VK_TRUE` and the current `lineRasterizationMode` state is
-`VK_LINE_RASTERIZATION_MODE_DEFAULT`, then the
+[VK_TRUE](../fundamentals.html#VK_TRUE) and the current `lineRasterizationMode` state is
+[VK_LINE_RASTERIZATION_MODE_DEFAULT](../primsrast.html#VkLineRasterizationModeEXT), then the
 [`stippledRectangularLines`](../features.html#features-stippledRectangularLines)
 feature **must** be enabled and
-[VkPhysicalDeviceLimits](../limits.html#VkPhysicalDeviceLimits)::`strictLines` **must** be `VK_TRUE`
+[VkPhysicalDeviceLimits](../limits.html#VkPhysicalDeviceLimits)::`strictLines` **must** be [VK_TRUE](../fundamentals.html#VK_TRUE)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-stage-07073) VUID-vkCmdExecuteGeneratedCommandsEXT-stage-07073
 
 If the bound pipeline was created with the
 [VkPipelineShaderStageCreateInfo](../pipelines.html#VkPipelineShaderStageCreateInfo)::`stage` member of an element
 of [VkGraphicsPipelineCreateInfo](../pipelines.html#VkGraphicsPipelineCreateInfo)::`pStages` set to
-`VK_SHADER_STAGE_VERTEX_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT` or
-`VK_SHADER_STAGE_GEOMETRY_BIT`, then [Mesh    Shader Queries](../queries.html#queries-mesh-shader) **must** not be active
+[VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](../pipelines.html#VkShaderStageFlagBits),
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](../pipelines.html#VkShaderStageFlagBits) or
+[VK_SHADER_STAGE_GEOMETRY_BIT](../pipelines.html#VkShaderStageFlagBits), then [Mesh    Shader Queries](../queries.html#queries-mesh-shader) **must** not be active
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08877) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08877
 
 If
-a shader object is bound to the `VK_SHADER_STAGE_FRAGMENT_BIT` stage
+a shader object is bound to the [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits) stage
 or
 a graphics pipeline is bound which was created with the
-`VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT` dynamic state
+[VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT](../pipelines.html#VkDynamicState) dynamic state
 enabled, and the [current value](../pipelines.html#dynamic-state-current-value) of
-`rasterizerDiscardEnable` is `VK_FALSE`, then
+`rasterizerDiscardEnable` is [VK_FALSE](../fundamentals.html#VK_FALSE), then
 [vkCmdSetAttachmentFeedbackLoopEnableEXT](../renderpass.html#vkCmdSetAttachmentFeedbackLoopEnableEXT) **must** have been called and
 not subsequently [invalidated](../pipelines.html#dynamic-state-lifetime) in the current
 command buffer prior to this drawing command
@@ -10836,7 +11768,7 @@ stage in the logical pipeline
 
 If there is no bound graphics pipeline, `vkCmdBindShadersEXT` **must**
 have been called in the current command buffer with `pStages` with
-an element of `VK_SHADER_STAGE_VERTEX_BIT`
+an element of [VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08685) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08685
 
@@ -10844,7 +11776,7 @@ If there is no bound graphics pipeline, and the
 [`tessellationShader`](../features.html#features-tessellationShader) feature is
 enabled, `vkCmdBindShadersEXT` **must** have been called in the current
 command buffer with `pStages` with an element of
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](../pipelines.html#VkShaderStageFlagBits)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08686) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08686
 
@@ -10852,7 +11784,7 @@ If there is no bound graphics pipeline, and the
 [`tessellationShader`](../features.html#features-tessellationShader) feature is
 enabled, `vkCmdBindShadersEXT` **must** have been called in the current
 command buffer with `pStages` with an element of
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](../pipelines.html#VkShaderStageFlagBits)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08687) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08687
 
@@ -10860,54 +11792,54 @@ If there is no bound graphics pipeline, and the
 [`geometryShader`](../features.html#features-geometryShader) feature is enabled,
 `vkCmdBindShadersEXT` **must** have been called in the current command
 buffer with `pStages` with an element of
-`VK_SHADER_STAGE_GEOMETRY_BIT`
+[VK_SHADER_STAGE_GEOMETRY_BIT](../pipelines.html#VkShaderStageFlagBits)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08688) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08688
 
 If there is no bound graphics pipeline, `vkCmdBindShadersEXT` **must**
 have been called in the current command buffer with `pStages` with
-an element of `VK_SHADER_STAGE_FRAGMENT_BIT`
+an element of [VK_SHADER_STAGE_FRAGMENT_BIT](../pipelines.html#VkShaderStageFlagBits)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08689) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08689
 
 If there is no bound graphics pipeline, and the [    `taskShader`](../features.html#features-taskShader) feature is enabled, `vkCmdBindShadersEXT` **must**
 have been called in the current command buffer with `pStages` with
-an element of `VK_SHADER_STAGE_TASK_BIT_EXT`
+an element of [VK_SHADER_STAGE_TASK_BIT_EXT](../pipelines.html#VkShaderStageFlagBits)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08690) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08690
 
 If there is no bound graphics pipeline, and the [    `meshShader`](../features.html#features-meshShader) feature is enabled, `vkCmdBindShadersEXT` **must**
 have been called in the current command buffer with `pStages` with
-an element of `VK_SHADER_STAGE_MESH_BIT_EXT`
+an element of [VK_SHADER_STAGE_MESH_BIT_EXT](../pipelines.html#VkShaderStageFlagBits)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08693) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08693
 
 If there is no bound graphics pipeline, and at least one of the
 [`taskShader`](../features.html#features-taskShader) and [    `meshShader`](../features.html#features-meshShader) features is enabled, one of the
-`VK_SHADER_STAGE_VERTEX_BIT` or `VK_SHADER_STAGE_MESH_BIT_EXT`
+[VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits) or [VK_SHADER_STAGE_MESH_BIT_EXT](../pipelines.html#VkShaderStageFlagBits)
 stages **must** have a valid `VkShaderEXT` bound, and the other **must**
 have no `VkShaderEXT` bound
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08696) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08696
 
 If there is no bound graphics pipeline, and a valid `VkShaderEXT` is
-bound to the `VK_SHADER_STAGE_VERTEX_BIT` stage, there **must** be no
-`VkShaderEXT` bound to either the `VK_SHADER_STAGE_TASK_BIT_EXT`
-stage or the `VK_SHADER_STAGE_MESH_BIT_EXT` stage
+bound to the [VK_SHADER_STAGE_VERTEX_BIT](../pipelines.html#VkShaderStageFlagBits) stage, there **must** be no
+`VkShaderEXT` bound to either the [VK_SHADER_STAGE_TASK_BIT_EXT](../pipelines.html#VkShaderStageFlagBits)
+stage or the [VK_SHADER_STAGE_MESH_BIT_EXT](../pipelines.html#VkShaderStageFlagBits) stage
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08698) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08698
 
 If any graphics shader is bound which was created with the
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT` flag, then all shaders created
-with the `VK_SHADER_CREATE_LINK_STAGE_BIT_EXT` flag in the same
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag, then all shaders created
+with the [VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag in the same
 [vkCreateShadersEXT](../shaders.html#vkCreateShadersEXT) call **must** also be bound
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08699) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08699
 
 If any graphics shader is bound which was created with the
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT` flag, any stages in between
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag, any stages in between
 stages whose shaders which did not create a shader with the
-`VK_SHADER_CREATE_LINK_STAGE_BIT_EXT` flag as part of the same
+[VK_SHADER_CREATE_LINK_STAGE_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag as part of the same
 [vkCreateShadersEXT](../shaders.html#vkCreateShadersEXT) call **must** not have any `VkShaderEXT` bound
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08878) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08878
@@ -10918,9 +11850,10 @@ ranges
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-08879) VUID-vkCmdExecuteGeneratedCommandsEXT-None-08879
 
-All bound graphics shader objects **must** have been created with identical
-or [identically defined](../../appendices/glossary.html#glossary-identically-defined) arrays of
-descriptor set layouts
+All bound graphics shader objects **must** have either been created with
+the [VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT) flag set, or with
+identical or [identically defined](../../appendices/glossary.html#glossary-identically-defined) arrays
+of descriptor set layouts
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-colorAttachmentCount-09372) VUID-vkCmdExecuteGeneratedCommandsEXT-colorAttachmentCount-09372
 
@@ -10928,24 +11861,24 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering) and a
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`colorAttachmentCount` equal to `1`, a color
 attachment with a resolve mode of
-`VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID`, and a
+[VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID](../renderpass.html#VkResolveModeFlagBitsKHR), and a
 fragment shader is bound, it **must** not declare the `DepthReplacing`
 or `StencilRefReplacingEXT` execution modes
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-pDynamicStates-08715) VUID-vkCmdExecuteGeneratedCommandsEXT-pDynamicStates-08715
 
 If the bound graphics pipeline state includes a fragment shader stage,
-was created with `VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE` set in
+was created with [VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE](../pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](../pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`, and the
 fragment shader declares the `EarlyFragmentTests` execution mode and
 uses `OpDepthAttachmentReadEXT`, the `depthWriteEnable` parameter
 in the last call to [vkCmdSetDepthWriteEnable](../fragops.html#vkCmdSetDepthWriteEnable) **must** be
-`VK_FALSE`
+[VK_FALSE](../fundamentals.html#VK_FALSE)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-pDynamicStates-08716) VUID-vkCmdExecuteGeneratedCommandsEXT-pDynamicStates-08716
 
 If the bound graphics pipeline state includes a fragment shader stage,
-was created with `VK_DYNAMIC_STATE_STENCIL_WRITE_MASK` set in
+was created with [VK_DYNAMIC_STATE_STENCIL_WRITE_MASK](../pipelines.html#VkDynamicState) set in
 [VkPipelineDynamicStateCreateInfo](../pipelines.html#VkPipelineDynamicStateCreateInfo)::`pDynamicStates`, and the
 fragment shader declares the `EarlyFragmentTests` execution mode and
 uses `OpStencilAttachmentReadEXT`, the `writeMask` parameter in
@@ -10957,12 +11890,12 @@ the last call to [vkCmdSetStencilWriteMask](../fragops.html#vkCmdSetStencilWrite
     a shader object is bound to any graphics stage
 or
     the bound graphics pipeline was created with
-    `VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT`,
+    [VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](../pipelines.html#VkDynamicState),
     and the format of any color attachment is
-    `VK_FORMAT_E5B9G9R9_UFLOAT_PACK32`, the corresponding element of the
+    [VK_FORMAT_E5B9G9R9_UFLOAT_PACK32](../formats.html#VkFormat), the corresponding element of the
     `pColorWriteMasks` parameter of [vkCmdSetColorWriteMaskEXT](../framebuffer.html#vkCmdSetColorWriteMaskEXT)
-    **must** either include all of `VK_COLOR_COMPONENT_R_BIT`,
-    `VK_COLOR_COMPONENT_G_BIT`, and `VK_COLOR_COMPONENT_B_BIT`, or
+    **must** either include all of [VK_COLOR_COMPONENT_R_BIT](../framebuffer.html#VkColorComponentFlagBits),
+    [VK_COLOR_COMPONENT_G_BIT](../framebuffer.html#VkColorComponentFlagBits), and [VK_COLOR_COMPONENT_B_BIT](../framebuffer.html#VkColorComponentFlagBits), or
     none of them
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-maxFragmentDualSrcAttachments-09239) VUID-vkCmdExecuteGeneratedCommandsEXT-maxFragmentDualSrcAttachments-09239
@@ -11012,16 +11945,16 @@ render pass instance
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-09642) VUID-vkCmdExecuteGeneratedCommandsEXT-None-09642
 
 If the current render pass was begun with [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering) with
-the `VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT` flag, the bound
+the [VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT](../renderpass.html#VkRenderingFlagBitsKHR) flag, the bound
 graphics pipeline **must** have been created with
-`VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT`
+[VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-09643) VUID-vkCmdExecuteGeneratedCommandsEXT-None-09643
 
 If the bound graphics pipeline was created with
-`VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT`, the current
+[VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR), the current
 render pass **must** have begun with [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering) with the
-`VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT` flag
+[VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT](../renderpass.html#VkRenderingFlagBitsKHR) flag
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-10677) VUID-vkCmdExecuteGeneratedCommandsEXT-None-10677
 
@@ -11053,7 +11986,7 @@ the most significant bit in current render pass instance `viewMask`
 
 If current render pass instance was begun with [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering)
 with [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`flags` which includes
-`VK_RENDERING_FRAGMENT_REGION_BIT_EXT`, and if
+[VK_RENDERING_FRAGMENT_REGION_BIT_EXT](../renderpass.html#VkRenderingFlagBitsKHR), and if
 [sample shading](../primsrast.html#primsrast-sampleshading) is enabled (explicitly or
 implicitly), then the minimum fraction for sample shading **must** equal
 0.0
@@ -11080,7 +12013,7 @@ If the current render pass instance was begun with
 [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering) and [vkCmdBeginCustomResolveEXT](../renderpass.html#vkCmdBeginCustomResolveEXT) has been
 recorded in the render pass instance, the graphics pipeline bound **must**
 have been created with
-[VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`customResolve` as `VK_TRUE`
+[VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`customResolve` as [VK_TRUE](../fundamentals.html#VK_TRUE)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-customResolve-11525) VUID-vkCmdExecuteGeneratedCommandsEXT-customResolve-11525
 
@@ -11089,7 +12022,7 @@ If the current render pass instance was begun with
 [vkCmdBeginCustomResolveEXT](../renderpass.html#vkCmdBeginCustomResolveEXT) has not been recorded in the render
 pass instance, the graphics pipeline bound **must** have been created with
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`customResolve` as
-`VK_FALSE`
+[VK_FALSE](../fundamentals.html#VK_FALSE)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11861) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11861
 
@@ -11126,7 +12059,7 @@ each element of the [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pCol
 with an `resolveImageView` equal to [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE) **must** have
 the corresponding element of
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`pColorAttachmentFormats` used
-to create the bound pipeline equal to `VK_FORMAT_UNDEFINED`
+to create the bound pipeline equal to [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-dynamicRenderingUnusedAttachments-11864) VUID-vkCmdExecuteGeneratedCommandsEXT-dynamicRenderingUnusedAttachments-11864
 
@@ -11141,7 +12074,7 @@ element of
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`pColorAttachmentFormats` used
 to create the bound graphics pipeline, or the corresponding element of
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`pColorAttachmentFormats`, if it
-exists, **must** be `VK_FORMAT_UNDEFINED`
+exists, **must** be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11865) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11865
 
@@ -11154,7 +12087,7 @@ and [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pDepthAttachment->re
 [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), the value of
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`depthAttachmentFormat` used to
 create the bound graphics pipeline **must** be equal to
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11866) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11866
 
@@ -11181,7 +12114,7 @@ If the current render pass instance was begun with
 create the bound graphics pipeline was not equal to the [VkFormat](../formats.html#VkFormat)
 used to create
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pDepthAttachment->resolveImageView`, the
-value of the format **must** be `VK_FORMAT_UNDEFINED`
+value of the format **must** be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11868) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11868
 
@@ -11194,7 +12127,7 @@ and [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pStencilAttachment->
 was [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), the value of
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`stencilAttachmentFormat` used
 to create the bound graphics pipeline **must** be equal to
-`VK_FORMAT_UNDEFINED`
+[VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-None-11869) VUID-vkCmdExecuteGeneratedCommandsEXT-None-11869
 
@@ -11221,7 +12154,7 @@ not [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE), and the 
 to create the bound graphics pipeline was not equal to the
 [VkFormat](../formats.html#VkFormat) used to create
 [VkRenderingInfo](../renderpass.html#VkRenderingInfo)::`pStencilAttachment->resolveImageView`, the
-value of the format **must** be `VK_FORMAT_UNDEFINED`
+value of the format **must** be [VK_FORMAT_UNDEFINED](../formats.html#VkFormat)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-colorAttachmentCount-11871) VUID-vkCmdExecuteGeneratedCommandsEXT-colorAttachmentCount-11871
 
@@ -11263,7 +12196,7 @@ pass instance was begun with [vkCmdBeginRendering](../renderpass.html#vkCmdBegin
 density map attachment is active, and [vkCmdBeginCustomResolveEXT](../renderpass.html#vkCmdBeginCustomResolveEXT)
 has been called, then the fragment shader object bound **must** have been
 created with [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`customResolve` as
-`VK_TRUE`
+[VK_TRUE](../fundamentals.html#VK_TRUE)
 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-customResolve-11530) VUID-vkCmdExecuteGeneratedCommandsEXT-customResolve-11530
 
@@ -11273,7 +12206,7 @@ custom resolve, a fragment density map attachment is active, and
 [vkCmdBeginCustomResolveEXT](../renderpass.html#vkCmdBeginCustomResolveEXT) has not yet been called, then the
 fragment shader object bound **must** have been created with
 [VkCustomResolveCreateInfoEXT](../pipelines.html#VkCustomResolveCreateInfoEXT)::`customResolve` as
-`VK_FALSE`
+[VK_FALSE](../fundamentals.html#VK_FALSE)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-commandBuffer-11045) VUID-vkCmdExecuteGeneratedCommandsEXT-commandBuffer-11045
@@ -11283,7 +12216,7 @@ fragment shader object bound **must** have been created with
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-11046) VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-11046
 
-If `isPreprocessed` is `VK_TRUE` and
+If `isPreprocessed` is [VK_TRUE](../fundamentals.html#VK_TRUE) and
 [vkGetGeneratedCommandsMemoryRequirementsEXT](#vkGetGeneratedCommandsMemoryRequirementsEXT) did not return a
 required size of zero then [vkCmdPreprocessGeneratedCommandsEXT](#vkCmdPreprocessGeneratedCommandsEXT)
 **must** have already been executed on the device before this command
@@ -11295,10 +12228,10 @@ buffers it references (all except
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-11047) VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-11047
 
-If `isPreprocessed` is `VK_TRUE` then the
+If `isPreprocessed` is [VK_TRUE](../fundamentals.html#VK_TRUE) then the
 `indirectCommandsLayout` member of `pGeneratedCommandsInfo`
 **must** have been created with the
-`VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_EXT` bit
+[VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_EXT](#VkIndirectCommandsLayoutUsageFlagBitsEXT) bit
 set
 
 * 
@@ -11306,8 +12239,8 @@ set
 
 If the `indirectCommandsLayout` member of
 `pGeneratedCommandsInfo` was created with the
-`VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_EXT` bit
-set, then `isPreprocessed` **must** be `VK_TRUE`
+[VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_EXT](#VkIndirectCommandsLayoutUsageFlagBitsEXT) bit
+set, then `isPreprocessed` **must** be [VK_TRUE](../fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-preprocessAddress-11142) VUID-vkCmdExecuteGeneratedCommandsEXT-preprocessAddress-11142
@@ -11319,7 +12252,7 @@ record another [vkCmdExecuteGeneratedCommandsEXT](#vkCmdExecuteGeneratedCommands
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-11048) VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-11048
 
-If `isPreprocessed` is `VK_TRUE` then the bound descriptor sets
+If `isPreprocessed` is [VK_TRUE](../fundamentals.html#VK_TRUE) then the bound descriptor sets
 and push constants **must** match identically with those bound during
 recording of the corresponding call to
 [vkCmdPreprocessGeneratedCommandsEXT](#vkCmdPreprocessGeneratedCommandsEXT)
@@ -11327,7 +12260,7 @@ recording of the corresponding call to
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-10198) VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-10198
 
-If `isPreprocessed` is `VK_TRUE` then the conditional render
+If `isPreprocessed` is [VK_TRUE](../fundamentals.html#VK_TRUE) then the conditional render
 state and its predicate value **must** match identically with the state and
 value set during execution of the corresponding call to
 [vkCmdPreprocessGeneratedCommandsEXT](#vkCmdPreprocessGeneratedCommandsEXT)
@@ -11335,7 +12268,7 @@ value set during execution of the corresponding call to
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-11049) VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-11049
 
-If `isPreprocessed` is `VK_TRUE` and the
+If `isPreprocessed` is [VK_TRUE](../fundamentals.html#VK_TRUE) and the
 `indirectCommandsLayout` member of `pGeneratedCommandsInfo`
 contains a draw token, then the graphics state bound on
 `commandBuffer` **must** match identically with the graphics state
@@ -11345,7 +12278,7 @@ bound on the `stateCommandBuffer` passed to
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-11149) VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-11149
 
-If `isPreprocessed` is `VK_TRUE`, then the queue family index of
+If `isPreprocessed` is [VK_TRUE](../fundamentals.html#VK_TRUE), then the queue family index of
 `commandBuffer` **must** be the same as the queue family index used to
 allocate the `stateCommandBuffer` passed to
 [vkCmdPreprocessGeneratedCommandsEXT](#vkCmdPreprocessGeneratedCommandsEXT)
@@ -11353,7 +12286,7 @@ allocate the `stateCommandBuffer` passed to
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-11051) VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-11051
 
-If `isPreprocessed` is `VK_TRUE` and the
+If `isPreprocessed` is [VK_TRUE](../fundamentals.html#VK_TRUE) and the
 `indirectCommandsLayout` member of `pGeneratedCommandsInfo`
 contains a dispatch token, then the compute state bound on
 `commandBuffer` **must** match identically with the compute state bound
@@ -11363,7 +12296,7 @@ on the `stateCommandBuffer` passed to
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-11052) VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-11052
 
-If `isPreprocessed` is `VK_TRUE` and the
+If `isPreprocessed` is [VK_TRUE](../fundamentals.html#VK_TRUE) and the
 `indirectCommandsLayout` member of `pGeneratedCommandsInfo`
 contains a ray tracing token, then the ray tracing state bound on
 `commandBuffer` **must** match identically with the ray tracing state
@@ -11373,7 +12306,7 @@ bound on the `stateCommandBuffer` passed to
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-11150) VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-11150
 
-If `isPreprocessed` is `VK_TRUE` and the
+If `isPreprocessed` is [VK_TRUE](../fundamentals.html#VK_TRUE) and the
 `indirectCommandsLayout` member of `pGeneratedCommandsInfo`
 contains a ray tracing token, the queue family index `commandBuffer`
 was allocated from **must** be the same queue family index used to allocate
@@ -11385,7 +12318,7 @@ the `stateCommandBuffer` passed to
 
 If the token sequence of the passed
 [VkGeneratedCommandsInfoEXT](#VkGeneratedCommandsInfoEXT)::`indirectCommandsLayout` contains
-a `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT` token, the
+a [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT) token, the
 initial shader state of
 [VkGeneratedCommandsInfoEXT](#VkGeneratedCommandsInfoEXT)::`indirectExecutionSet` **must** be
 bound on `commandBuffer`
@@ -11394,10 +12327,10 @@ bound on `commandBuffer`
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-indirectCommandsLayout-11004) VUID-vkCmdExecuteGeneratedCommandsEXT-indirectCommandsLayout-11004
 
 If `indirectCommandsLayout` was created with a token sequence that
-contained the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT`
+contained the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT)
 token and `indirectExecutionSet` was created using
-`VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT`, every
-executed `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT` token
+[VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT](#VkIndirectExecutionSetInfoTypeEXT), every
+executed [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT) token
 **must** bind all the shader stages set in the
 [VkIndirectCommandsExecutionSetTokenEXT](#VkIndirectCommandsExecutionSetTokenEXT)::`shaderStages` used to
 create `indirectCommandsLayout`
@@ -11405,9 +12338,9 @@ create `indirectCommandsLayout`
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-11055) VUID-vkCmdExecuteGeneratedCommandsEXT-isPreprocessed-11055
 
-If `isPreprocessed` is `VK_TRUE` and the token sequence of the
+If `isPreprocessed` is [VK_TRUE](../fundamentals.html#VK_TRUE) and the token sequence of the
 passed [VkGeneratedCommandsInfoEXT](#VkGeneratedCommandsInfoEXT)::`indirectCommandsLayout`
-contains a `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT`
+contains a [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT)
 token, the members of
 [VkGeneratedCommandsInfoEXT](#VkGeneratedCommandsInfoEXT)::`indirectExecutionSet` accessed by
 this command **must** not have been modified since the preprocess buffer
@@ -11461,7 +12394,7 @@ If a rendering pass is currently active, the view mask **must** be `0`
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-commandBuffer-11143) VUID-vkCmdExecuteGeneratedCommandsEXT-commandBuffer-11143
 
 `commandBuffer` **must** not have been recorded with
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT`
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](../cmdbuffers.html#VkCommandBufferUsageFlagBits)
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-indirectCommandsLayout-10769) VUID-vkCmdExecuteGeneratedCommandsEXT-indirectCommandsLayout-10769
@@ -11497,7 +12430,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-commandBuffer-cmdpool) VUID-vkCmdExecuteGeneratedCommandsEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](../devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](../devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-suspended) VUID-vkCmdExecuteGeneratedCommandsEXT-suspended
@@ -11582,7 +12515,7 @@ starting at `indirectAddress`.
 `preprocessAddress` specifies a physical address of the
 `VkBuffer` used for preprocessing the input data for execution.
 If this structure is used with [vkCmdExecuteGeneratedCommandsEXT](#vkCmdExecuteGeneratedCommandsEXT)
-with its `isPreprocessed` set to `VK_TRUE`, then the
+with its `isPreprocessed` set to [VK_TRUE](../fundamentals.html#VK_TRUE), then the
 preprocessing step is skipped but data in this address **may** still be
 modified.
 The contents and the layout of this address are opaque to applications
@@ -11638,7 +12571,7 @@ memory types allowed in the `memoryTypeBits` member of the
 [](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11065) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11065
 
 If the `indirectCommandsLayout` uses a token of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT`, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](#VkIndirectCommandsTokenTypeEXT), then the
 `indirectExecutionSet`’s push constant layout **must** contain the
 `updateRange` specified in
 [VkIndirectCommandsPushConstantTokenEXT](#VkIndirectCommandsPushConstantTokenEXT)
@@ -11647,7 +12580,7 @@ If the `indirectCommandsLayout` uses a token of
 [](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11066) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11066
 
 If the `indirectCommandsLayout` uses a token of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT`, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT), then the
 `indirectExecutionSet`’s push constant layout **must** contain the
 `updateRange` specified in
 [VkIndirectCommandsPushConstantTokenEXT](#VkIndirectCommandsPushConstantTokenEXT)
@@ -11681,25 +12614,73 @@ that was used to determine the `preprocessSize`
 
 `preprocessAddress` **must** be a device address allocated to the
 application from a buffer created with the
-`VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT` usage flag set
+[VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT](../resources.html#VkBufferUsageFlagBits2KHR) usage flag set
 
 * 
 [](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11144) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11144
 
 If the `indirectCommandsLayout` contains a
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT` token, then the
-descriptor and push constant layout info provided either by
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT) token, and there
+is a descriptor and push constant layout info provided either by
 `pipelineLayout` or through a [VkPipelineLayoutCreateInfo](../descriptorsets.html#VkPipelineLayoutCreateInfo) in
 `pNext` of the [VkIndirectCommandsLayoutCreateInfoEXT](#VkIndirectCommandsLayoutCreateInfoEXT) used to
-create `indirectCommandsLayout` **must** be
+create `indirectCommandsLayout`, the pipeline layout **must** be
 [compatible](../descriptorsets.html#descriptorsets-compatibility) with the descriptor and push
 constant layout info used by `indirectExecutionSet`
+
+* 
+[](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11328) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11328
+
+If the `indirectCommandsLayout` contains a
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT) token, and there
+was no descriptor and push constant layout info provided either by
+`pipelineLayout` or through a [VkPipelineLayoutCreateInfo](../descriptorsets.html#VkPipelineLayoutCreateInfo) in
+`pNext` of the [VkIndirectCommandsLayoutCreateInfoEXT](#VkIndirectCommandsLayoutCreateInfoEXT) used to
+create `indirectCommandsLayout`, pipelines in
+`indirectExecutionSet` **must** have been created with
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR)
+
+* 
+[](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11329) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11329
+
+If the `indirectCommandsLayout` contains a
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT) token, and there
+was a descriptor and push constant layout info provided either by
+`pipelineLayout` or through a [VkPipelineLayoutCreateInfo](../descriptorsets.html#VkPipelineLayoutCreateInfo) in
+`pNext` of the [VkIndirectCommandsLayoutCreateInfoEXT](#VkIndirectCommandsLayoutCreateInfoEXT) used to
+create `indirectCommandsLayout`, pipelines in
+`indirectExecutionSet` **must** have been created without
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](../pipelines.html#VkPipelineCreateFlagBits2KHR)
+
+* 
+[](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11330) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11330
+
+If the `indirectCommandsLayout` contains a
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT) token, and there
+was no descriptor and push constant layout info provided either by
+`pipelineLayout` or through a [VkPipelineLayoutCreateInfo](../descriptorsets.html#VkPipelineLayoutCreateInfo) in
+`pNext` of the [VkIndirectCommandsLayoutCreateInfoEXT](#VkIndirectCommandsLayoutCreateInfoEXT) used to
+create `indirectCommandsLayout`, shaders in
+`indirectExecutionSet` **must** have been created with
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT)
+
+* 
+[](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11331) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11331
+
+If the `indirectCommandsLayout` contains a
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT) token, and there
+was a descriptor and push constant layout info provided either by
+`pipelineLayout` or through a [VkPipelineLayoutCreateInfo](../descriptorsets.html#VkPipelineLayoutCreateInfo) in
+`pNext` of the [VkIndirectCommandsLayoutCreateInfoEXT](#VkIndirectCommandsLayoutCreateInfoEXT) used to
+create `indirectCommandsLayout`, shaders in
+`indirectExecutionSet` **must** have been created without
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](../shaders.html#VkShaderCreateFlagBitsEXT)
 
 * 
 [](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11002) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11002
 
 If `indirectCommandsLayout` was created with a token sequence that
-contained the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT`
+contained the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT)
 token, the shader stages used to create the initial shader state of
 `indirectExecutionSet` **must** equal the
 [VkIndirectCommandsExecutionSetTokenEXT](#VkIndirectCommandsExecutionSetTokenEXT)::`shaderStages` used to
@@ -11717,7 +12698,7 @@ inputs (`indirectCommandsLayout`, …​) as within this structure
 [](#VUID-VkGeneratedCommandsInfoEXT-sequenceCountAddress-11072) VUID-VkGeneratedCommandsInfoEXT-sequenceCountAddress-11072
 
 The underlying buffer for `sequenceCountAddress` **must** have the
-`VK_BUFFER_USAGE_2_INDIRECT_BUFFER_BIT_KHR` bit set in its usage
+[VK_BUFFER_USAGE_2_INDIRECT_BUFFER_BIT_KHR](../resources.html#VkBufferUsageFlagBits2KHR) bit set in its usage
 flag
 
 * 
@@ -11746,24 +12727,24 @@ When not ignored, `maxDrawCount` ×
 [](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11079) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11079
 
     If `indirectCommandsLayout` was created using a
-    `VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT` token
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT](#VkIndirectCommandsTokenTypeEXT) token
 and shader objects are not bound
     then the bound graphics pipeline **must** have been created with
-    `VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE` in
+    [VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE](../pipelines.html#VkDynamicState) in
     `pDynamicStates`
 
 * 
 [](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11083) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11083
 
 If the token sequence of the passed `indirectCommandsLayout`
-contains a `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT`
+contains a [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT)
 token, the `indirectExecutionSet` **must** not be [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
 [](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-10241) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-10241
 
 If the token sequence of the passed `indirectCommandsLayout` does
-not contains a `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT`
+not contains a [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT)
 token, the `indirectExecutionSet` **must** be [VK_NULL_HANDLE](../../appendices/boilerplate.html#VK_NULL_HANDLE)
 
 * 
@@ -11779,7 +12760,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGeneratedCommandsInfoEXT-sType-sType) VUID-VkGeneratedCommandsInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_EXT](../fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkGeneratedCommandsInfoEXT-shaderStages-parameter) VUID-VkGeneratedCommandsInfoEXT-shaderStages-parameter
@@ -11886,7 +12867,7 @@ Valid Usage
 
 `pGeneratedCommandsInfo`’s `indirectCommandsLayout` **must** have
 been created with the
-`VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_EXT` bit
+[VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_EXT](#VkIndirectCommandsLayoutUsageFlagBitsEXT) bit
 set
 
 * 
@@ -11894,7 +12875,7 @@ set
 
 If the token sequence of the passed
 [VkGeneratedCommandsInfoEXT](#VkGeneratedCommandsInfoEXT)::`indirectCommandsLayout` contains
-a `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT` token, the
+a [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](#VkIndirectCommandsTokenTypeEXT) token, the
 initial shader state of
 [VkGeneratedCommandsInfoEXT](#VkGeneratedCommandsInfoEXT)::`indirectExecutionSet` **must** be
 bound on `stateCommandBuffer`
@@ -11941,7 +12922,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdPreprocessGeneratedCommandsEXT-commandBuffer-cmdpool) VUID-vkCmdPreprocessGeneratedCommandsEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](../devsandqueues.html#VkQueueFlagBits), or [VK_QUEUE_GRAPHICS_BIT](../devsandqueues.html#VkQueueFlagBits) operations
 
 * 
 [](#VUID-vkCmdPreprocessGeneratedCommandsEXT-renderpass) VUID-vkCmdPreprocessGeneratedCommandsEXT-renderpass
@@ -11999,8 +12980,8 @@ execution of indirect commands with [vkCmdExecuteGeneratedCommandsEXT](#vkCmdExe
 
 If push constants for shader stages are also specified in the
 [VkGeneratedCommandsInfoEXT](#VkGeneratedCommandsInfoEXT)::`indirectCommandsLayout` with a
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT` or
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT` token, then those
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](#VkIndirectCommandsTokenTypeEXT) or
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](#VkIndirectCommandsTokenTypeEXT) token, then those
 values override the push constants that were previously pushed.
 
 All [State-setting commands](../fundamentals.html#fundamentals-queueoperation-command-types)

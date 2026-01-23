@@ -37,9 +37,9 @@ typedef struct VkQueueFamilyQueryResultStatusPropertiesKHR {
 structure.
 
 * 
-`queryResultStatusSupport` reports `VK_TRUE` if query type
-`VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR` and use of
-`VK_QUERY_RESULT_WITH_STATUS_BIT_KHR` are supported.
+`queryResultStatusSupport` reports [VK_TRUE](VK_TRUE.html) if query type
+[VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR](VkQueryType.html) and use of
+[VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](VkQueryResultFlagBits.html) are supported.
 
 If this structure is included in the `pNext` chain of the
 [VkQueueFamilyProperties2](VkQueueFamilyProperties2.html) structure passed to
@@ -51,7 +51,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueueFamilyQueryResultStatusPropertiesKHR-sType-sType) VUID-VkQueueFamilyQueryResultStatusPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUEUE_FAMILY_QUERY_RESULT_STATUS_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_QUERY_RESULT_STATUS_PROPERTIES_KHR](VkStructureType.html)
 
 [VK_KHR_video_queue](VK_KHR_video_queue.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

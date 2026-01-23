@@ -66,7 +66,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoProfileListInfoKHR-sType-sType) VUID-VkVideoProfileListInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_PROFILE_LIST_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_PROFILE_LIST_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoProfileListInfoKHR-pProfiles-parameter) VUID-VkVideoProfileListInfoKHR-pProfiles-parameter

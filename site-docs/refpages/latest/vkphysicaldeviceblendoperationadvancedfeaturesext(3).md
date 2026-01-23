@@ -43,11 +43,11 @@ structure.
 `advancedBlendCoherentOperations` specifies whether blending using
 [advanced blend operations](../../../../spec/latest/chapters/framebuffer.html#framebuffer-blend-advanced) is guaranteed
 to execute atomically and in [primitive    order](../../../../spec/latest/chapters/drawing.html#drawing-primitive-order).
-If this is `VK_TRUE`,
-`VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT` is treated the
-same as `VK_ACCESS_COLOR_ATTACHMENT_READ_BIT`, and advanced blending
+If this is [VK_TRUE](VK_TRUE.html),
+[VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT](VkAccessFlagBits.html) is treated the
+same as [VK_ACCESS_COLOR_ATTACHMENT_READ_BIT](VkAccessFlagBits.html), and advanced blending
 needs no additional synchronization over basic blending.
-If this is `VK_FALSE`, then memory dependencies are required to
+If this is [VK_FALSE](VK_FALSE.html), then memory dependencies are required to
 guarantee order between two advanced blending operations that occur on
 the same sample.
 
@@ -57,7 +57,7 @@ If the `VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT` structure is included
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -65,7 +65,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_blend_operation_advanced](VK_EXT_blend_operation_advanced.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

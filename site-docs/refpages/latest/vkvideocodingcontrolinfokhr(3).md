@@ -45,7 +45,7 @@ Valid Usage
 [](#VUID-VkVideoCodingControlInfoKHR-flags-07018) VUID-VkVideoCodingControlInfoKHR-flags-07018
 
 If `flags` includes
-`VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR`, then the
+[VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR](VkVideoCodingControlFlagBitsKHR.html), then the
 `pNext` chain **must** include a [VkVideoEncodeRateControlInfoKHR](VkVideoEncodeRateControlInfoKHR.html)
 structure
 
@@ -53,7 +53,7 @@ structure
 [](#VUID-VkVideoCodingControlInfoKHR-flags-08349) VUID-VkVideoCodingControlInfoKHR-flags-08349
 
 If `flags` includes
-`VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR`, then the
+[VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR](VkVideoCodingControlFlagBitsKHR.html), then the
 `pNext` chain **must** include a [VkVideoEncodeQualityLevelInfoKHR](VkVideoEncodeQualityLevelInfoKHR.html)
 structure
 
@@ -62,7 +62,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoCodingControlInfoKHR-sType-sType) VUID-VkVideoCodingControlInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_CODING_CONTROL_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_CODING_CONTROL_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoCodingControlInfoKHR-pNext-pNext) VUID-VkVideoCodingControlInfoKHR-pNext-pNext

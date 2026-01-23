@@ -41,11 +41,11 @@ structure.
 * 
  `rgba4OpaqueBlackSwizzled`
 indicates whether correct swizzling is applied to the opaque black
-border color when using either the `VK_FORMAT_B4G4R4A4_UNORM_PACK16`
-or `VK_FORMAT_R4G4B4A4_UNORM_PACK16` format.
-If it is `VK_TRUE`, the implementation will correctly produce an
+border color when using either the [VK_FORMAT_B4G4R4A4_UNORM_PACK16](VkFormat.html)
+or [VK_FORMAT_R4G4B4A4_UNORM_PACK16](VkFormat.html) format.
+If it is [VK_TRUE](VK_TRUE.html), the implementation will correctly produce an
 opaque black border color with these formats.
-If it is `VK_FALSE`, the implementation **may** swap the first channel
+If it is [VK_FALSE](VK_FALSE.html), the implementation **may** swap the first channel
 with the alpha channel for the border color when sampling.
 
 * 
@@ -55,9 +55,9 @@ resolving a multi-sampled sRGB format to single-sampled sRGB by a
 weighted average converts the samples to linear before averaging.
 This applies to both attachment resolves in a render pass and standalone
 resolve commands.
-If `VK_TRUE`, implementation always converts to linear before
+If [VK_TRUE](VK_TRUE.html), implementation always converts to linear before
 averaging unless overridden.
-If `VK_FALSE`, implementation never converts to linear before
+If [VK_FALSE](VK_FALSE.html), implementation never converts to linear before
 averaging unless overridden.
 
 * 
@@ -68,7 +68,7 @@ the implementation supports overriding the default behavior in
 render passes and [vkCmdResolveImage2](vkCmdResolveImage2.html).
 
 Implementations supporting [`maintenance10`](../../../../spec/latest/chapters/features.html#features-maintenance10)
-**should** set `resolveSrgbFormatAppliesTransferFunction` to `VK_TRUE`.
+**should** set `resolveSrgbFormatAppliesTransferFunction` to [VK_TRUE](VK_TRUE.html).
 
 If the `VkPhysicalDeviceMaintenance10PropertiesKHR` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html) structure passed to
@@ -80,7 +80,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMaintenance10PropertiesKHR-sType-sType) VUID-VkPhysicalDeviceMaintenance10PropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_PROPERTIES_KHR](VkStructureType.html)
 
 [VK_KHR_maintenance10](VK_KHR_maintenance10.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

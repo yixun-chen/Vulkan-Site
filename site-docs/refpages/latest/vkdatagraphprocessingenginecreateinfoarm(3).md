@@ -59,22 +59,29 @@ The [`dataGraph`](../../../../spec/latest/chapters/features.html#features-dataGr
 [VkPhysicalDeviceDataGraphProcessingEngineARM](VkPhysicalDeviceDataGraphProcessingEngineARM.html) structures
 
 * 
+[](#VUID-VkDataGraphProcessingEngineCreateInfoARM-pProcessingEngines-09956) VUID-VkDataGraphProcessingEngineCreateInfoARM-pProcessingEngines-09956
+
+For each element of `pProcessingEngines`, its `type` member
+**must** be a valid [VkPhysicalDeviceDataGraphProcessingEngineTypeARM](VkPhysicalDeviceDataGraphProcessingEngineTypeARM.html)
+value
+
+* 
 [](#VUID-VkDataGraphProcessingEngineCreateInfoARM-pProcessingEngines-11843) VUID-VkDataGraphProcessingEngineCreateInfoARM-pProcessingEngines-11843
 
 If any element of `pProcessingEngines` has a `type` of
-`VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_NEURAL_QCOM`
+[VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_NEURAL_QCOM](VkPhysicalDeviceDataGraphProcessingEngineTypeARM.html)
 or
-`VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_COMPUTE_QCOM`
-and `isForeign` set to `VK_TRUE`, `processingEngineCount`
+[VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_COMPUTE_QCOM](VkPhysicalDeviceDataGraphProcessingEngineTypeARM.html)
+and `isForeign` set to [VK_TRUE](VK_TRUE.html), `processingEngineCount`
 **must** equal `1`
 
 * 
 [](#VUID-VkDataGraphProcessingEngineCreateInfoARM-pProcessingEngines-11844) VUID-VkDataGraphProcessingEngineCreateInfoARM-pProcessingEngines-11844
 
 If any element of `pProcessingEngines` has a `type` of
-`VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_NEURAL_QCOM`
+[VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_NEURAL_QCOM](VkPhysicalDeviceDataGraphProcessingEngineTypeARM.html)
 or
-`VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_COMPUTE_QCOM`,
+[VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_COMPUTE_QCOM](VkPhysicalDeviceDataGraphProcessingEngineTypeARM.html),
 the [dataGraphModel](../../../../spec/latest/chapters/features.html#features-dataGraphModelQCOM) feature **must** be
 enabled
 
@@ -83,7 +90,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDataGraphProcessingEngineCreateInfoARM-sType-sType) VUID-VkDataGraphProcessingEngineCreateInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DATA_GRAPH_PROCESSING_ENGINE_CREATE_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DATA_GRAPH_PROCESSING_ENGINE_CREATE_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkDataGraphProcessingEngineCreateInfoARM-pProcessingEngines-parameter) VUID-VkDataGraphProcessingEngineCreateInfoARM-pProcessingEngines-parameter

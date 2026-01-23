@@ -32,23 +32,23 @@ typedef enum VkOpticalFlowUsageFlagBitsNV {
 } VkOpticalFlowUsageFlagBitsNV;
 
 * 
-`VK_OPTICAL_FLOW_USAGE_INPUT_BIT_NV` specifies that the image **can**
+[VK_OPTICAL_FLOW_USAGE_INPUT_BIT_NV](#) specifies that the image **can**
 be used as input or reference frame for an optical flow operation.
 
 * 
-`VK_OPTICAL_FLOW_USAGE_OUTPUT_BIT_NV` specifies that the image **can**
+[VK_OPTICAL_FLOW_USAGE_OUTPUT_BIT_NV](#) specifies that the image **can**
 be used as output flow vector map for an optical flow operation.
 
 * 
-`VK_OPTICAL_FLOW_USAGE_HINT_BIT_NV` specifies that the image **can** be
+[VK_OPTICAL_FLOW_USAGE_HINT_BIT_NV](#) specifies that the image **can** be
 used as hint flow vector map for an optical flow operation.
 
 * 
-`VK_OPTICAL_FLOW_USAGE_COST_BIT_NV` specifies that the image **can** be
+[VK_OPTICAL_FLOW_USAGE_COST_BIT_NV](#) specifies that the image **can** be
 used as output cost map for an optical flow operation.
 
 * 
-`VK_OPTICAL_FLOW_USAGE_GLOBAL_FLOW_BIT_NV` specifies that the image
+[VK_OPTICAL_FLOW_USAGE_GLOBAL_FLOW_BIT_NV](#) specifies that the image
 **can** be used as global flow vector for an optical flow operation.
 
 [VK_NV_optical_flow](VK_NV_optical_flow.html), [VkOpticalFlowUsageFlagsNV](VkOpticalFlowUsageFlagsNV.html)

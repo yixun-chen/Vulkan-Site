@@ -90,7 +90,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoInlineQueryInfoKHR-sType-sType) VUID-VkVideoInlineQueryInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_INLINE_QUERY_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_INLINE_QUERY_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoInlineQueryInfoKHR-queryPool-parameter) VUID-VkVideoInlineQueryInfoKHR-queryPool-parameter

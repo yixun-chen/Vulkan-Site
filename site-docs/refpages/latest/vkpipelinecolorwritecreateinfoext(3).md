@@ -51,21 +51,21 @@ write state.
 If this structure is not included in the `pNext` chain, it is equivalent
 to specifying this structure with `attachmentCount` equal to the
 `attachmentCount` member of [VkPipelineColorBlendStateCreateInfo](VkPipelineColorBlendStateCreateInfo.html),
-and `pColorWriteEnables` pointing to an array of as many `VK_TRUE`
+and `pColorWriteEnables` pointing to an array of as many [VK_TRUE](VK_TRUE.html)
 values.
 
 If the [`colorWriteEnable`](../../../../spec/latest/chapters/features.html#features-colorWriteEnable) feature is not
 enabled, all `VkBool32` elements in the `pColorWriteEnables`
-array **must** be `VK_TRUE`.
+array **must** be [VK_TRUE](VK_TRUE.html).
 
 Color Write Enable interacts with the [Color Write Mask](../../../../spec/latest/chapters/framebuffer.html#framebuffer-color-write-mask) as follows:
 
 * 
-If `colorWriteEnable` is `VK_TRUE`, writes to the attachment are
+If `colorWriteEnable` is [VK_TRUE](VK_TRUE.html), writes to the attachment are
 determined by the `colorWriteMask`.
 
 * 
-If `colorWriteEnable` is `VK_FALSE`, the `colorWriteMask` is
+If `colorWriteEnable` is [VK_FALSE](VK_FALSE.html), the `colorWriteMask` is
 ignored and writes to all components of the attachment are disabled.
 This is equivalent to specifying a `colorWriteMask` of 0.
 
@@ -76,16 +76,16 @@ Valid Usage
 
 If the [`colorWriteEnable`](../../../../spec/latest/chapters/features.html#features-colorWriteEnable) feature is
 not enabled, all elements of `pColorWriteEnables` **must** be
-`VK_TRUE`
+[VK_TRUE](VK_TRUE.html)
 
 * 
 [](#VUID-VkPipelineColorWriteCreateInfoEXT-attachmentCount-07608) VUID-VkPipelineColorWriteCreateInfoEXT-attachmentCount-07608
 
 If the pipeline is being created with
-`VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT`,
-`VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT`,
-`VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT`, or
-`VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT` dynamic states not set,
+[VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT](VkDynamicState.html),
+[VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT](VkDynamicState.html),
+[VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT](VkDynamicState.html), or
+[VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT](VkDynamicState.html) dynamic states not set,
 `attachmentCount` **must** be equal to the `attachmentCount` member
 of the `VkPipelineColorBlendStateCreateInfo` structure specified
 during pipeline creation
@@ -101,7 +101,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineColorWriteCreateInfoEXT-sType-sType) VUID-VkPipelineColorWriteCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_COLOR_WRITE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_COLOR_WRITE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineColorWriteCreateInfoEXT-pColorWriteEnables-parameter) VUID-VkPipelineColorWriteCreateInfoEXT-pColorWriteEnables-parameter

@@ -63,11 +63,13 @@ mode of the buffer when it will be accessed by multiple queue families.
 `pQueueFamilyIndices` is a pointer to an array of queue families
 that will access this buffer.
 It is ignored if `sharingMode` is not
-`VK_SHARING_MODE_CONCURRENT`.
+[VK_SHARING_MODE_CONCURRENT](VkSharingMode.html).
 
+`usage` defines the effective usage flags for the buffer.
 If the `pNext` chain includes a [VkBufferUsageFlags2CreateInfo](VkBufferUsageFlags2CreateInfo.html)
 structure, [VkBufferUsageFlags2CreateInfo](VkBufferUsageFlags2CreateInfo.html)::`usage` from that
-structure is used instead of `usage` from this structure.
+structure is used as the effective usage instead of `usage` from this
+structure.
 
 Valid Usage
 
@@ -94,20 +96,20 @@ If the `pNext` chain does not include a
 * 
 [](#VUID-VkBufferCreateInfo-sharingMode-00913) VUID-VkBufferCreateInfo-sharingMode-00913
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`,
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](VkSharingMode.html),
 `pQueueFamilyIndices` **must** be a valid pointer to an array of
 `queueFamilyIndexCount` `uint32_t` values
 
 * 
 [](#VUID-VkBufferCreateInfo-sharingMode-00914) VUID-VkBufferCreateInfo-sharingMode-00914
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`,
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](VkSharingMode.html),
 `queueFamilyIndexCount` **must** be greater than `1`
 
 * 
 [](#VUID-VkBufferCreateInfo-sharingMode-01419) VUID-VkBufferCreateInfo-sharingMode-01419
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`, each element
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](VkSharingMode.html), each element
 of `pQueueFamilyIndices` **must** be unique and **must** be less than
 `pQueueFamilyPropertyCount` returned by
 either [vkGetPhysicalDeviceQueueFamilyProperties2](vkGetPhysicalDeviceQueueFamilyProperties2.html) or
@@ -119,7 +121,7 @@ either [vkGetPhysicalDeviceQueueFamilyProperties2](vkGetPhysicalDeviceQueueFamil
 
 If the [`sparseBinding`](../../../../spec/latest/chapters/features.html#features-sparseBinding) feature is not
 enabled,
-`flags` **must** not contain `VK_BUFFER_CREATE_SPARSE_BINDING_BIT`
+`flags` **must** not contain [VK_BUFFER_CREATE_SPARSE_BINDING_BIT](VkBufferCreateFlagBits.html)
 
 * 
 [](#VUID-VkBufferCreateInfo-flags-00916) VUID-VkBufferCreateInfo-flags-00916
@@ -127,21 +129,21 @@ enabled,
 If the [`sparseResidencyBuffer`](../../../../spec/latest/chapters/features.html#features-sparseResidencyBuffer)
 feature is not enabled,
 `flags` **must** not contain
-`VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](VkBufferCreateFlagBits.html)
 
 * 
 [](#VUID-VkBufferCreateInfo-flags-00917) VUID-VkBufferCreateInfo-flags-00917
 
 If the [`sparseResidencyAliased`](../../../../spec/latest/chapters/features.html#features-sparseResidencyAliased)
 feature is not enabled,
-`flags` **must** not contain `VK_BUFFER_CREATE_SPARSE_ALIASED_BIT`
+`flags` **must** not contain [VK_BUFFER_CREATE_SPARSE_ALIASED_BIT](VkBufferCreateFlagBits.html)
 
 * 
 [](#VUID-VkBufferCreateInfo-flags-00918) VUID-VkBufferCreateInfo-flags-00918
 
-If `flags` contains `VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT` or
-`VK_BUFFER_CREATE_SPARSE_ALIASED_BIT`, it **must** also contain
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT`
+If `flags` contains [VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](VkBufferCreateFlagBits.html) or
+[VK_BUFFER_CREATE_SPARSE_ALIASED_BIT](VkBufferCreateFlagBits.html), it **must** also contain
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](VkBufferCreateFlagBits.html)
 
 * 
 [](#VUID-VkBufferCreateInfo-pNext-00920) VUID-VkBufferCreateInfo-pNext-00920
@@ -160,15 +162,15 @@ types specified in
 
 If the [`protectedMemory`](../../../../spec/latest/chapters/features.html#features-protectedMemory) feature is
 not enabled, `flags` **must** not contain
-`VK_BUFFER_CREATE_PROTECTED_BIT`
+[VK_BUFFER_CREATE_PROTECTED_BIT](VkBufferCreateFlagBits.html)
 
 * 
 [](#VUID-VkBufferCreateInfo-None-01888) VUID-VkBufferCreateInfo-None-01888
 
-If any of the bits `VK_BUFFER_CREATE_SPARSE_BINDING_BIT`,
-`VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`, or
-`VK_BUFFER_CREATE_SPARSE_ALIASED_BIT` are set,
-`VK_BUFFER_CREATE_PROTECTED_BIT` **must** not also be set
+If any of the bits [VK_BUFFER_CREATE_SPARSE_BINDING_BIT](VkBufferCreateFlagBits.html),
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](VkBufferCreateFlagBits.html), or
+[VK_BUFFER_CREATE_SPARSE_ALIASED_BIT](VkBufferCreateFlagBits.html) are set,
+[VK_BUFFER_CREATE_PROTECTED_BIT](VkBufferCreateFlagBits.html) **must** not also be set
 
 * 
 [](#VUID-VkBufferCreateInfo-pNext-01571) VUID-VkBufferCreateInfo-pNext-01571
@@ -176,17 +178,17 @@ If any of the bits `VK_BUFFER_CREATE_SPARSE_BINDING_BIT`,
 If the `pNext` chain includes a
 [VkDedicatedAllocationBufferCreateInfoNV](VkDedicatedAllocationBufferCreateInfoNV.html) structure, and the
 `dedicatedAllocation` member of the chained structure is
-`VK_TRUE`, then `flags` **must** not include
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT`,
-`VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`, or
-`VK_BUFFER_CREATE_SPARSE_ALIASED_BIT`
+[VK_TRUE](VK_TRUE.html), then `flags` **must** not include
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](VkBufferCreateFlagBits.html),
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](VkBufferCreateFlagBits.html), or
+[VK_BUFFER_CREATE_SPARSE_ALIASED_BIT](VkBufferCreateFlagBits.html)
 
 * 
 [](#VUID-VkBufferCreateInfo-deviceAddress-02604) VUID-VkBufferCreateInfo-deviceAddress-02604
 
 If [VkBufferDeviceAddressCreateInfoEXT](VkBufferDeviceAddressCreateInfoEXT.html)::`deviceAddress` is not
 zero, `flags` **must** include
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT`
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkBufferCreateFlagBits.html)
 
 * 
 [](#VUID-VkBufferCreateInfo-opaqueCaptureAddress-03337) VUID-VkBufferCreateInfo-opaqueCaptureAddress-03337
@@ -194,14 +196,14 @@ zero, `flags` **must** include
 If
 [VkBufferOpaqueCaptureAddressCreateInfo](VkBufferOpaqueCaptureAddressCreateInfo.html)::`opaqueCaptureAddress`
 is not zero, `flags` **must** include
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT`
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkBufferCreateFlagBits.html)
 
 * 
 [](#VUID-VkBufferCreateInfo-flags-03338) VUID-VkBufferCreateInfo-flags-03338
 
     If `flags` includes
-    `VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT`, the
-    [    VkPhysicalDeviceBufferDeviceAddressFeaturesEXT:`bufferDeviceAddressCaptureReplay`](../../../../spec/latest/chapters/features.html#features-bufferDeviceAddressCaptureReplayEXT)
+    [VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkBufferCreateFlagBits.html), the
+    [](../../../../spec/latest/chapters/features.html#features-bufferDeviceAddressCaptureReplayEXT)[VkPhysicalDeviceBufferDeviceAddressFeaturesEXT](VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.html)::`bufferDeviceAddressCaptureReplay`
     feature
 or the
     [    `bufferDeviceAddressCaptureReplay`](../../../../spec/latest/chapters/features.html#features-bufferDeviceAddressCaptureReplay) feature
@@ -210,10 +212,10 @@ or the
 * 
 [](#VUID-VkBufferCreateInfo-usage-04813) VUID-VkBufferCreateInfo-usage-04813
 
-If `usage` includes `VK_BUFFER_USAGE_VIDEO_DECODE_SRC_BIT_KHR`
-or `VK_BUFFER_USAGE_VIDEO_DECODE_DST_BIT_KHR`,
+If `usage` includes [VK_BUFFER_USAGE_VIDEO_DECODE_SRC_BIT_KHR](VkBufferUsageFlagBits.html)
+or [VK_BUFFER_USAGE_VIDEO_DECODE_DST_BIT_KHR](VkBufferUsageFlagBits.html),
 and `flags` does not include
-`VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR`,
+[VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](VkBufferCreateFlagBits.html),
 then the `pNext` chain **must** include a
 [VkVideoProfileListInfoKHR](VkVideoProfileListInfoKHR.html) structure with `profileCount`
 greater than `0` and `pProfiles` including at least one
@@ -223,10 +225,10 @@ member specifying a decode operation
 * 
 [](#VUID-VkBufferCreateInfo-usage-04814) VUID-VkBufferCreateInfo-usage-04814
 
-If `usage` includes `VK_BUFFER_USAGE_VIDEO_ENCODE_SRC_BIT_KHR`
-or `VK_BUFFER_USAGE_VIDEO_ENCODE_DST_BIT_KHR`,
+If `usage` includes [VK_BUFFER_USAGE_VIDEO_ENCODE_SRC_BIT_KHR](VkBufferUsageFlagBits.html)
+or [VK_BUFFER_USAGE_VIDEO_ENCODE_DST_BIT_KHR](VkBufferUsageFlagBits.html),
 and `flags` does not include
-`VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR`,
+[VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](VkBufferCreateFlagBits.html),
 then the `pNext` chain **must** include a
 [VkVideoProfileListInfoKHR](VkVideoProfileListInfoKHR.html) structure with `profileCount`
 greater than `0` and `pProfiles` including at least one
@@ -237,7 +239,7 @@ member specifying an encode operation
 [](#VUID-VkBufferCreateInfo-flags-08325) VUID-VkBufferCreateInfo-flags-08325
 
 If `flags` includes
-`VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR`, then
+[VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](VkBufferCreateFlagBits.html), then
 [`videoMaintenance1`](../../../../spec/latest/chapters/features.html#features-videoMaintenance1) **must** be enabled
 
 * 
@@ -246,7 +248,7 @@ If `flags` includes
 If the `pNext` chain includes a [VkVideoProfileListInfoKHR](VkVideoProfileListInfoKHR.html)
 structure and for any element of its `pProfiles` member
 `videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR`, then the
+[VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 [`videoDecodeVP9`](../../../../spec/latest/chapters/features.html#features-videoDecodeVP9) feature **must** be
 enabled
 
@@ -256,7 +258,7 @@ enabled
 If the `pNext` chain includes a [VkVideoProfileListInfoKHR](VkVideoProfileListInfoKHR.html)
 structure and for any element of its `pProfiles` member
 `videoCodecOperation` is
-`VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR`, then the
+[VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the
 [`videoEncodeAV1`](../../../../spec/latest/chapters/features.html#features-videoEncodeAV1) feature **must** be
 enabled
 
@@ -278,7 +280,7 @@ feature **must** be enabled
 [](#VUID-VkBufferCreateInfo-usage-08097) VUID-VkBufferCreateInfo-usage-08097
 
 If `usage` includes
-`VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT`, creating this
+[VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT](VkBufferUsageFlagBits.html), creating this
 `VkBuffer` **must** not cause the total required space for all
 currently valid buffers using this flag on the device to exceed
 [VkPhysicalDeviceDescriptorBufferPropertiesEXT](VkPhysicalDeviceDescriptorBufferPropertiesEXT.html)::`samplerDescriptorBufferAddressSpaceSize`
@@ -289,7 +291,7 @@ or
 [](#VUID-VkBufferCreateInfo-usage-08098) VUID-VkBufferCreateInfo-usage-08098
 
 If `usage` includes
-`VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT`, creating this
+[VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](VkBufferUsageFlagBits.html), creating this
 `VkBuffer` **must** not cause the total required space for all
 currently valid buffers using this flag on the device to exceed
 [VkPhysicalDeviceDescriptorBufferPropertiesEXT](VkPhysicalDeviceDescriptorBufferPropertiesEXT.html)::`resourceDescriptorBufferAddressSpaceSize`
@@ -300,7 +302,7 @@ or
 [](#VUID-VkBufferCreateInfo-flags-08099) VUID-VkBufferCreateInfo-flags-08099
 
 If `flags` includes
-`VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`, the
+[VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](VkBufferCreateFlagBits.html), the
 [    `descriptorBufferCaptureReplay`](../../../../spec/latest/chapters/features.html#features-descriptorBufferCaptureReplay) feature **must** be enabled
 
 * 
@@ -309,136 +311,134 @@ If `flags` includes
 If the `pNext` chain includes a
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](VkOpaqueCaptureDescriptorDataCreateInfoEXT.html) structure, `flags`
 **must** contain
-`VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`
+[VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](VkBufferCreateFlagBits.html)
 
 * 
 [](#VUID-VkBufferCreateInfo-usage-08101) VUID-VkBufferCreateInfo-usage-08101
 
 If `usage` includes
-`VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT`, the
+[VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT](VkBufferUsageFlagBits.html), the
 [    `descriptorBufferPushDescriptors`](../../../../spec/latest/chapters/features.html#features-descriptorBufferPushDescriptors) feature **must** be enabled
 
 * 
 [](#VUID-VkBufferCreateInfo-usage-08102) VUID-VkBufferCreateInfo-usage-08102
 
 If `usage` includes
-`VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT](VkBufferUsageFlagBits.html)
 [    `VkPhysicalDeviceDescriptorBufferPropertiesEXT`::`bufferlessPushDescriptors`](../../../../spec/latest/chapters/limits.html#limits-bufferlessPushDescriptors)
-**must** be `VK_FALSE`
+**must** be [VK_FALSE](VK_FALSE.html)
 
 * 
 [](#VUID-VkBufferCreateInfo-usage-08103) VUID-VkBufferCreateInfo-usage-08103
 
 If `usage` includes
-`VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT`,
+[VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT](VkBufferUsageFlagBits.html),
 `usage` **must** contain at least one of
-`VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT` or
-`VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT](VkBufferUsageFlagBits.html) or
+[VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT](VkBufferUsageFlagBits.html)
 
 * 
 [](#VUID-VkBufferCreateInfo-tileMemoryHeap-10762) VUID-VkBufferCreateInfo-tileMemoryHeap-10762
 
 If the [`tileMemoryHeap`](../../../../spec/latest/chapters/features.html#features-tileMemoryHeap) feature is not
 enabled, `usage` **must** not include
-`VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM`
+[VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM](VkBufferUsageFlagBits.html)
 
 * 
 [](#VUID-VkBufferCreateInfo-usage-10763) VUID-VkBufferCreateInfo-usage-10763
 
-  If `usage` includes `VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM`, then
+  If `usage` includes [VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM](VkBufferUsageFlagBits.html), then
 `flags` **must** not contain any of the following bits
 
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT`
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](VkBufferCreateFlagBits.html)
 
 * 
-`VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](VkBufferCreateFlagBits.html)
 
 * 
-`VK_BUFFER_CREATE_SPARSE_ALIASED_BIT`
+[VK_BUFFER_CREATE_SPARSE_ALIASED_BIT](VkBufferCreateFlagBits.html)
 
 * 
-`VK_BUFFER_CREATE_PROTECTED_BIT`
+[VK_BUFFER_CREATE_PROTECTED_BIT](VkBufferCreateFlagBits.html)
 
 * 
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT`
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkBufferCreateFlagBits.html)
 
 * 
-`VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`
+[VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT](VkBufferCreateFlagBits.html)
 
 * 
-`VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR`
+[VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](VkBufferCreateFlagBits.html)
 
 [](#VUID-VkBufferCreateInfo-usage-10764) VUID-VkBufferCreateInfo-usage-10764
 
-If `usage` includes `VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM`, then
+If `usage` includes [VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM](VkBufferUsageFlagBits.html), then
 only the following `usages` may be set:
 
 * 
-`VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT`
+[VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits.html)
 
 * 
-`VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT`
+[VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits.html)
 
 * 
-`VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT`
+[VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](VkBufferUsageFlagBits.html)
 
 * 
-`VK_BUFFER_USAGE_STORAGE_BUFFER_BIT`
+[VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](VkBufferUsageFlagBits.html)
 
 * 
-`VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT`
+[VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](VkBufferUsageFlagBits.html)
 
 * 
 and if
 [VkPhysicalDeviceTileMemoryHeapPropertiesQCOM](VkPhysicalDeviceTileMemoryHeapPropertiesQCOM.html)::`tileBufferTransfers`
-is `VK_TRUE` then additionally
-`VK_BUFFER_USAGE_TRANSFER_SRC_BIT` or
-`VK_BUFFER_USAGE_TRANSFER_DST_BIT`
+is [VK_TRUE](VK_TRUE.html) then additionally
+[VK_BUFFER_USAGE_TRANSFER_SRC_BIT](VkBufferUsageFlagBits.html) or
+[VK_BUFFER_USAGE_TRANSFER_DST_BIT](VkBufferUsageFlagBits.html)
 
 [](#VUID-VkBufferCreateInfo-flags-09641) VUID-VkBufferCreateInfo-flags-09641
 
-If `flags` includes `VK_BUFFER_CREATE_PROTECTED_BIT`, then
-`usage` **must** not contain any of the following bits
+If `flags` includes [VK_BUFFER_CREATE_PROTECTED_BIT](VkBufferCreateFlagBits.html), then the
+[effective usage](../../../../spec/latest/chapters/resources.html#resources-effective-buffer-usage) **must** not contain
+bits other than
 
 * 
-`VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_TRANSFER_SRC_BIT](VkBufferUsageFlagBits.html)
 
 * 
-`VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_TRANSFER_DST_BIT](VkBufferUsageFlagBits.html)
 
 * 
-`VK_BUFFER_USAGE_CONDITIONAL_RENDERING_BIT_EXT`
+[VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits.html)
 
 * 
-`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR`
+[VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT](VkBufferUsageFlagBits.html)
 
 * 
-`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR`
+[VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](VkBufferUsageFlagBits.html)
 
 * 
-`VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR`
+[VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](VkBufferUsageFlagBits.html)
 
 * 
-`VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT](VkBufferUsageFlagBits.html)
 
 * 
-`VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_2_VIDEO_DECODE_SRC_BIT_KHR](VkBufferUsageFlagBits2.html)
 
 * 
-`VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_BUFFER_USAGE_2_VIDEO_ENCODE_DST_BIT_KHR](VkBufferUsageFlagBits2.html)
 
 * 
-`VK_BUFFER_USAGE_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT`
-
-* 
-`VK_BUFFER_USAGE_MICROMAP_STORAGE_BIT_EXT`
+[VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT](VkBufferUsageFlagBits2.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkBufferCreateInfo-sType-sType) VUID-VkBufferCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkBufferCreateInfo-pNext-pNext) VUID-VkBufferCreateInfo-pNext-pNext

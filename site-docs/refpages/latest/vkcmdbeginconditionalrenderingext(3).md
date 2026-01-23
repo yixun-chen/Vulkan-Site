@@ -63,7 +63,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBeginConditionalRenderingEXT-commandBuffer-cmdpool) VUID-vkCmdBeginConditionalRenderingEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBeginConditionalRenderingEXT-suspended) VUID-vkCmdBeginConditionalRenderingEXT-suspended

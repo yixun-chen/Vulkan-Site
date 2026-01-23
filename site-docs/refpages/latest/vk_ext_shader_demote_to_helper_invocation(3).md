@@ -116,7 +116,7 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES_EXT](VkStructureType.html)
 
 * 
 [    `DemoteToHelperInvocationEXT`](../../../../spec/latest/appendices/spirvenv.html#spirvenv-capabilities-table-DemoteToHelperInvocation)

@@ -80,7 +80,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceGroupBindSparseInfo-sType-sType) VUID-VkDeviceGroupBindSparseInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO](VkStructureType.html)
 
 [VK_KHR_device_group](VK_KHR_device_group.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkStructureType](VkStructureType.html)
 

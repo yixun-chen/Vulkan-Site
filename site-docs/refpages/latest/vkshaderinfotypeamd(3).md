@@ -29,15 +29,15 @@ typedef enum VkShaderInfoTypeAMD {
 } VkShaderInfoTypeAMD;
 
 * 
-`VK_SHADER_INFO_TYPE_STATISTICS_AMD` specifies that device resources
+[VK_SHADER_INFO_TYPE_STATISTICS_AMD](#) specifies that device resources
 used by a shader will be queried.
 
 * 
-`VK_SHADER_INFO_TYPE_BINARY_AMD` specifies that
+[VK_SHADER_INFO_TYPE_BINARY_AMD](#) specifies that
 implementation-specific information will be queried.
 
 * 
-`VK_SHADER_INFO_TYPE_DISASSEMBLY_AMD` specifies that human-readable
+[VK_SHADER_INFO_TYPE_DISASSEMBLY_AMD](#) specifies that human-readable
 disassembly of a shader.
 
 [VK_AMD_shader_info](VK_AMD_shader_info.html), [vkGetShaderInfoAMD](vkGetShaderInfoAMD.html)

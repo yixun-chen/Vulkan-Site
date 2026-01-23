@@ -99,7 +99,7 @@ Extending [VkImageCreateInfo](VkImageCreateInfo.html), [VkPhysicalDeviceImageFor
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2018-11-08 (Daniel Rakos)

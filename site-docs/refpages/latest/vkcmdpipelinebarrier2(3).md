@@ -67,8 +67,8 @@ If `vkCmdPipelineBarrier2` is called within a render pass instance using a
 [VkRenderPass](VkRenderPass.html) object, the render pass **must** have been created with
 at least one subpass dependency that expresses a dependency from the
 current subpass to itself, does not include
-`VK_DEPENDENCY_BY_REGION_BIT` if this command does not, does not
-include `VK_DEPENDENCY_VIEW_LOCAL_BIT` if this command does not, and
+[VK_DEPENDENCY_BY_REGION_BIT](VkDependencyFlagBits.html) if this command does not, does not
+include [VK_DEPENDENCY_VIEW_LOCAL_BIT](VkDependencyFlagBits.html) if this command does not, and
 has [synchronization scopes](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-scopes) and
 [access scopes](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-access-scopes) that are
 all supersets of the scopes defined in this command
@@ -96,7 +96,7 @@ or depth/stencil attachment
 If `vkCmdPipelineBarrier2` is called within a render pass instance using a
 [VkRenderPass](VkRenderPass.html) object, and the `image` member of any image
 memory barrier is a color resolve attachment, the corresponding color
-attachment **must** be `VK_ATTACHMENT_UNUSED`
+attachment **must** be [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html)
 
 * 
 [](#VUID-vkCmdPipelineBarrier2-image-09374) VUID-vkCmdPipelineBarrier2-image-09374
@@ -136,7 +136,7 @@ destination stage masks of all memory barriers **must** only include
 If `vkCmdPipelineBarrier2` is called within a render pass instance, and the
 source stage masks of any memory barriers include
 [framebuffer-space stages](../../../../spec/latest/chapters/synchronization.html#synchronization-framebuffer-regions), then
-`dependencyFlags` **must** include `VK_DEPENDENCY_BY_REGION_BIT`
+`dependencyFlags` **must** include [VK_DEPENDENCY_BY_REGION_BIT](VkDependencyFlagBits.html)
 
 * 
 [](#VUID-vkCmdPipelineBarrier2-None-07892) VUID-vkCmdPipelineBarrier2-None-07892
@@ -149,14 +149,14 @@ graphics pipeline stages
 [](#VUID-vkCmdPipelineBarrier2-dependencyFlags-01186) VUID-vkCmdPipelineBarrier2-dependencyFlags-01186
 
 If `vkCmdPipelineBarrier2` is called outside of a render pass instance, the
-dependency flags **must** not include `VK_DEPENDENCY_VIEW_LOCAL_BIT`
+dependency flags **must** not include [VK_DEPENDENCY_VIEW_LOCAL_BIT](VkDependencyFlagBits.html)
 
 * 
 [](#VUID-vkCmdPipelineBarrier2-None-07893) VUID-vkCmdPipelineBarrier2-None-07893
 
 If `vkCmdPipelineBarrier2` is called inside a render pass instance, and there is
 more than one view in the current subpass, dependency flags **must**
-include `VK_DEPENDENCY_VIEW_LOCAL_BIT`
+include [VK_DEPENDENCY_VIEW_LOCAL_BIT](VkDependencyFlagBits.html)
 
 * 
 [](#VUID-vkCmdPipelineBarrier2-None-09553) VUID-vkCmdPipelineBarrier2-None-09553
@@ -187,10 +187,10 @@ If
 the [    `dynamicRenderingLocalRead`](../../../../spec/latest/chapters/features.html#features-dynamicRenderingLocalRead) feature is not enabled, and
 `vkCmdPipelineBarrier2` is called within a render pass instance started with
 [vkCmdBeginRendering](vkCmdBeginRendering.html), memory barriers specified by this command
-**must** only include `VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT`,
-`VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT`,
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT`, or
-`VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT` in their access
+**must** only include [VK_ACCESS_2_COLOR_ATTACHMENT_READ_BIT](VkAccessFlagBits2.html),
+[VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT](VkAccessFlagBits2.html),
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_READ_BIT](VkAccessFlagBits2.html), or
+[VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT](VkAccessFlagBits2.html) in their access
 masks
 
 * 
@@ -199,8 +199,8 @@ masks
 If `vkCmdPipelineBarrier2` is called within a render pass instance started with
 [vkCmdBeginRendering](vkCmdBeginRendering.html), and the `image` member of any image
 memory barrier is used as an attachment in the current render pass
-instance, it **must** be in the `VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
-or `VK_IMAGE_LAYOUT_GENERAL` layout
+instance, it **must** be in the [VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ](VkImageLayout.html)
+or [VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html) layout
 
 * 
 [](#VUID-vkCmdPipelineBarrier2-srcStageMask-09556) VUID-vkCmdPipelineBarrier2-srcStageMask-09556
@@ -238,7 +238,7 @@ command pool that `commandBuffer` was allocated from
 If a buffer or image memory barrier does not specify an
 [acquire operation](../../../../spec/latest/chapters/synchronization.html#synchronization-queue-transfers-acquire),
 or if it does but `pDependencyInfo->dependencyFlags` includes
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`,
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](VkDependencyFlagBits.html),
 the respective `srcStageMask` member of the element of the
 `pBufferMemoryBarriers` or `pImageMemoryBarriers` members of
 `pDependencyInfo` **must** only include pipeline stages valid for the
@@ -251,7 +251,7 @@ queue family that was used to create the command pool that
 If a buffer or image memory barrier does not specify an
 [release operation](../../../../spec/latest/chapters/synchronization.html#synchronization-queue-transfers-release),
 or if it does but `pDependencyInfo->dependencyFlags` includes
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`,
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](VkDependencyFlagBits.html),
 the respective `dstStageMask` member of the element of the
 `pBufferMemoryBarriers` or `pImageMemoryBarriers` members of
 `pDependencyInfo` **must** only include pipeline stages valid for the
@@ -289,7 +289,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdPipelineBarrier2-commandBuffer-cmdpool) VUID-vkCmdPipelineBarrier2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_TRANSFER_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html), [VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](VkQueueFlagBits.html), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdPipelineBarrier2-suspended) VUID-vkCmdPipelineBarrier2-suspended

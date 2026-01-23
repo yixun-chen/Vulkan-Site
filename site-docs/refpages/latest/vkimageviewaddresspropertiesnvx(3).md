@@ -47,7 +47,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageViewAddressPropertiesNVX-sType-sType) VUID-VkImageViewAddressPropertiesNVX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_VIEW_ADDRESS_PROPERTIES_NVX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_ADDRESS_PROPERTIES_NVX](VkStructureType.html)
 
 * 
 [](#VUID-VkImageViewAddressPropertiesNVX-pNext-pNext) VUID-VkImageViewAddressPropertiesNVX-pNext-pNext

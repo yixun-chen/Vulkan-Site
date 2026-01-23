@@ -28,12 +28,12 @@ typedef enum VkOpacityMicromapFormatEXT {
 } VkOpacityMicromapFormatEXT;
 
 * 
-`VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT` specifies that the given
+[VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT](#) specifies that the given
 micromap format has one bit per subtriangle encoding either fully opaque
 or fully transparent.
 
 * 
-`VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT` specifies that the given
+[VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT](#) specifies that the given
 micromap format has two bits per subtriangle encoding four modes which
 can be interpreted as described in [ray    traversal](../../../../spec/latest/chapters/raytraversal.html#ray-opacity-micromap).
 

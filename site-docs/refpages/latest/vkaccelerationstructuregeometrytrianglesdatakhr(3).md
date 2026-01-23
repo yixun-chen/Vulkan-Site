@@ -61,7 +61,7 @@ data for this geometry.
 * 
 `indexData` is a device or host address of memory containing index
 data for this geometry.
-When `indexType` is `VK_INDEX_TYPE_NONE_KHR` it **must** be `NULL`.
+When `indexType` is [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html) it **must** be `NULL`.
 
 * 
 `transformData` is a device or host address to memory containing an
@@ -95,20 +95,20 @@ smallest component of `vertexFormat`
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-buffer-view-format-features) of
 `vertexFormat` **must** contain
-`VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR`
+[VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-VkAccelerationStructureGeometryTrianglesDataKHR-indexType-03798) VUID-VkAccelerationStructureGeometryTrianglesDataKHR-indexType-03798
 
-`indexType` **must** be `VK_INDEX_TYPE_UINT16`,
-`VK_INDEX_TYPE_UINT32`, or `VK_INDEX_TYPE_NONE_KHR`
+`indexType` **must** be [VK_INDEX_TYPE_UINT16](VkIndexType.html),
+[VK_INDEX_TYPE_UINT32](VkIndexType.html), or [VK_INDEX_TYPE_NONE_KHR](VkIndexType.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkAccelerationStructureGeometryTrianglesDataKHR-sType-sType) VUID-VkAccelerationStructureGeometryTrianglesDataKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkAccelerationStructureGeometryTrianglesDataKHR-pNext-pNext) VUID-VkAccelerationStructureGeometryTrianglesDataKHR-pNext-pNext

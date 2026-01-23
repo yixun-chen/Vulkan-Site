@@ -49,14 +49,14 @@ included in the `pNext` chain of
 [VkPipelineTessellationStateCreateInfo](VkPipelineTessellationStateCreateInfo.html), it controls the origin of the
 tessellation domain.
 If this structure is not present, it is as if `domainOrigin` was
-`VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT`.
+[VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT](VkTessellationDomainOrigin.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPipelineTessellationDomainOriginStateCreateInfo-sType-sType) VUID-VkPipelineTessellationDomainOriginStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineTessellationDomainOriginStateCreateInfo-domainOrigin-parameter) VUID-VkPipelineTessellationDomainOriginStateCreateInfo-domainOrigin-parameter

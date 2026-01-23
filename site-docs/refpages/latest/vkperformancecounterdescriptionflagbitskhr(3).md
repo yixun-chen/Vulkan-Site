@@ -33,12 +33,12 @@ typedef enum VkPerformanceCounterDescriptionFlagBitsKHR {
 } VkPerformanceCounterDescriptionFlagBitsKHR;
 
 * 
-`VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_BIT_KHR`
+[VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_BIT_KHR](#)
 specifies that recording the counter **may** have a noticeable performance
 impact.
 
 * 
-`VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_BIT_KHR`
+[VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_BIT_KHR](#)
 specifies that concurrently recording the counter while other submitted
 command buffers are running **may** impact the accuracy of the recording.
 

@@ -93,7 +93,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFenceGetWin32HandleInfoKHR-sType-sType) VUID-VkFenceGetWin32HandleInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FENCE_GET_WIN32_HANDLE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FENCE_GET_WIN32_HANDLE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkFenceGetWin32HandleInfoKHR-pNext-pNext) VUID-VkFenceGetWin32HandleInfoKHR-pNext-pNext

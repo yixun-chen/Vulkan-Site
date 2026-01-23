@@ -17,7 +17,7 @@
 
 VK_TRUE - Boolean true value
 
-`VK_TRUE` is a constant representing a `VkBool32` **True** value.
+[VK_TRUE](#) is a constant representing a `VkBool32` **True** value.
 
 #define VK_TRUE                           1U
 

@@ -27,7 +27,7 @@ typedef enum VkMicromapCreateFlagBitsEXT {
 } VkMicromapCreateFlagBitsEXT;
 
 * 
-`VK_MICROMAP_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT` specifies
+[VK_MICROMAP_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT](#) specifies
 that the micromap’s address **can** be saved and reused on a subsequent
 run.
 

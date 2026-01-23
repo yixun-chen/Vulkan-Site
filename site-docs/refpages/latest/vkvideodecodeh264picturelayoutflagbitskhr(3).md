@@ -28,12 +28,12 @@ typedef enum VkVideoDecodeH264PictureLayoutFlagBitsKHR {
 } VkVideoDecodeH264PictureLayoutFlagBitsKHR;
 
 * 
-`VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_PROGRESSIVE_KHR` specifies
+[VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_PROGRESSIVE_KHR](#) specifies
 support for progressive content.
 This flag has the value `0`.
 
 * 
-`VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_INTERLEAVED_LINES_BIT_KHR`
+[VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_INTERLEAVED_LINES_BIT_KHR](#)
 specifies support for or use of a picture layout for interlaced content
 where all lines belonging to the top field are decoded to the
 even-numbered lines within the picture resource, and all lines belonging
@@ -41,7 +41,7 @@ to the bottom field are decoded to the odd-numbered lines within the
 picture resource.
 
 * 
-`VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES_BIT_KHR`
+[VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES_BIT_KHR](#)
 specifies support for or use of a picture layout for interlaced content
 where all lines belonging to a field are grouped together in a single
 image subregion, and the two fields comprising the frame **can** be stored

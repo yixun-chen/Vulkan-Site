@@ -76,7 +76,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGeometryAABBNV-sType-sType) VUID-VkGeometryAABBNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GEOMETRY_AABB_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GEOMETRY_AABB_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkGeometryAABBNV-pNext-pNext) VUID-VkGeometryAABBNV-pNext-pNext

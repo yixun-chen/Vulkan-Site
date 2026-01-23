@@ -40,7 +40,7 @@ typedef enum VkHostImageCopyFlagBits {
 typedef VkHostImageCopyFlagBits VkHostImageCopyFlagBitsEXT;
 
 * 
-`VK_HOST_IMAGE_COPY_MEMCPY_BIT` specifies that no memory layout
+[VK_HOST_IMAGE_COPY_MEMCPY_BIT](#) specifies that no memory layout
 swizzling is to be applied during data copy.
 For copies between memory and images, this flag indicates that image
 data in host memory is swizzled in exactly the same way as the image

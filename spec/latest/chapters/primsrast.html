@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:spec" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -174,6 +174,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="descriptorsets.html">Resource Descriptors</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="descriptorheaps.html">Descriptor Heaps</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="interfaces.html">Shader Interfaces</a>
@@ -560,28 +563,28 @@ rendering with the corresponding graphics pipeline as described in
 <p><a id="VUID-VkPipelineRasterizationStateCreateInfo-depthClampEnable-00782" href="#VUID-VkPipelineRasterizationStateCreateInfo-depthClampEnable-00782"></a> <span class="vuid">VUID-VkPipelineRasterizationStateCreateInfo-depthClampEnable-00782</span><br>
 
 If the <a href="features.html#features-depthClamp" class="xref page"><code>depthClamp</code></a> feature is not enabled,
-<code>depthClampEnable</code> <strong>must</strong> be <code>VK_FALSE</code></p>
+<code>depthClampEnable</code> <strong>must</strong> be <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineRasterizationStateCreateInfo-polygonMode-01507" href="#VUID-VkPipelineRasterizationStateCreateInfo-polygonMode-01507"></a> <span class="vuid">VUID-VkPipelineRasterizationStateCreateInfo-polygonMode-01507</span><br>
 
     If the <a href="features.html#features-fillModeNonSolid" class="xref page"><code>fillModeNonSolid</code></a> feature is
-    not enabled, <code>polygonMode</code> <strong>must</strong> be <code>VK_POLYGON_MODE_FILL</code>
-or <code>VK_POLYGON_MODE_FILL_RECTANGLE_NV</code></p>
+    not enabled, <code>polygonMode</code> <strong>must</strong> be <a href="#VkPolygonMode">VK_POLYGON_MODE_FILL</a>
+or <a href="#VkPolygonMode">VK_POLYGON_MODE_FILL_RECTANGLE_NV</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineRasterizationStateCreateInfo-polygonMode-01414" href="#VUID-VkPipelineRasterizationStateCreateInfo-polygonMode-01414"></a> <span class="vuid">VUID-VkPipelineRasterizationStateCreateInfo-polygonMode-01414</span><br>
 
 If the <code><a href="../appendices/extensions.html#VK_NV_fill_rectangle" class="xref page">VK_NV_fill_rectangle</a></code> extension is not enabled,
-<code>polygonMode</code> <strong>must</strong> not be <code>VK_POLYGON_MODE_FILL_RECTANGLE_NV</code></p>
+<code>polygonMode</code> <strong>must</strong> not be <a href="#VkPolygonMode">VK_POLYGON_MODE_FILL_RECTANGLE_NV</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineRasterizationStateCreateInfo-pointPolygons-04458" href="#VUID-VkPipelineRasterizationStateCreateInfo-pointPolygons-04458"></a> <span class="vuid">VUID-VkPipelineRasterizationStateCreateInfo-pointPolygons-04458</span><br>
 
 If the <code><a href="../appendices/extensions.html#VK_KHR_portability_subset" class="xref page">VK_KHR_portability_subset</a></code> extension is enabled, and
 <a href="features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR" class="xref page">VkPhysicalDevicePortabilitySubsetFeaturesKHR</a>::<code>pointPolygons</code>
-is <code>VK_FALSE</code>, and <code>rasterizerDiscardEnable</code> is <code>VK_FALSE</code>,
-<code>polygonMode</code> <strong>must</strong> not be <code>VK_POLYGON_MODE_POINT</code></p>
+is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, and <code>rasterizerDiscardEnable</code> is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>,
+<code>polygonMode</code> <strong>must</strong> not be <a href="#VkPolygonMode">VK_POLYGON_MODE_POINT</a></p>
 </li>
 </ul>
 </div>
@@ -594,7 +597,7 @@ is <code>VK_FALSE</code>, and <code>rasterizerDiscardEnable</code> is <code>VK_F
 <ul>
 <li>
 <p><a id="VUID-VkPipelineRasterizationStateCreateInfo-sType-sType" href="#VUID-VkPipelineRasterizationStateCreateInfo-sType-sType"></a> <span class="vuid">VUID-VkPipelineRasterizationStateCreateInfo-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineRasterizationStateCreateInfo-pNext-pNext" href="#VUID-VkPipelineRasterizationStateCreateInfo-pNext-pNext"></a> <span class="vuid">VUID-VkPipelineRasterizationStateCreateInfo-pNext-pNext</span><br>
@@ -688,7 +691,7 @@ described in <a href="vertexpostproc.html#vertexpostproc-clipping" class="xref p
 <ul>
 <li>
 <p><a id="VUID-VkPipelineRasterizationDepthClipStateCreateInfoEXT-sType-sType" href="#VUID-VkPipelineRasterizationDepthClipStateCreateInfoEXT-sType-sType"></a> <span class="vuid">VUID-VkPipelineRasterizationDepthClipStateCreateInfoEXT-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineRasterizationDepthClipStateCreateInfoEXT-flags-zerobitmask" href="#VUID-VkPipelineRasterizationDepthClipStateCreateInfoEXT-flags-zerobitmask"></a> <span class="vuid">VUID-VkPipelineRasterizationDepthClipStateCreateInfoEXT-flags-zerobitmask</span><br>
@@ -752,8 +755,8 @@ structure.</p>
 specifying the number of samples used in rasterization.
 This value is ignored for the purposes of setting the number of samples
 used in rasterization if the pipeline is created with the
-<code>VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT</code> dynamic state set, but
-if <code>VK_DYNAMIC_STATE_SAMPLE_MASK_EXT</code> dynamic state is not set, it
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT</a> dynamic state set, but
+if <a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_SAMPLE_MASK_EXT</a> dynamic state is not set, it
 is still used to define the size of the <code>pSampleMask</code> array as
 described below.</p>
 </li>
@@ -763,7 +766,7 @@ described below.</p>
 </li>
 <li>
 <p><code>minSampleShading</code> specifies a minimum fraction of sample shading if
-<code>sampleShadingEnable</code> is <code>VK_TRUE</code>.</p>
+<code>sampleShadingEnable</code> is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>.</p>
 </li>
 <li>
 <p><code>pSampleMask</code> is a pointer to an array of <code>VkSampleMask</code>
@@ -804,13 +807,13 @@ set to <code>1</code>.</p>
 <p><a id="VUID-VkPipelineMultisampleStateCreateInfo-sampleShadingEnable-00784" href="#VUID-VkPipelineMultisampleStateCreateInfo-sampleShadingEnable-00784"></a> <span class="vuid">VUID-VkPipelineMultisampleStateCreateInfo-sampleShadingEnable-00784</span><br>
 
 If the <a href="features.html#features-sampleRateShading" class="xref page"><code>sampleRateShading</code></a> feature
-is not enabled, <code>sampleShadingEnable</code> <strong>must</strong> be <code>VK_FALSE</code></p>
+is not enabled, <code>sampleShadingEnable</code> <strong>must</strong> be <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineMultisampleStateCreateInfo-alphaToOneEnable-00785" href="#VUID-VkPipelineMultisampleStateCreateInfo-alphaToOneEnable-00785"></a> <span class="vuid">VUID-VkPipelineMultisampleStateCreateInfo-alphaToOneEnable-00785</span><br>
 
 If the <a href="features.html#features-alphaToOne" class="xref page"><code>alphaToOne</code></a> feature is not enabled,
-<code>alphaToOneEnable</code> <strong>must</strong> be <code>VK_FALSE</code></p>
+<code>alphaToOneEnable</code> <strong>must</strong> be <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineMultisampleStateCreateInfo-minSampleShading-00786" href="#VUID-VkPipelineMultisampleStateCreateInfo-minSampleShading-00786"></a> <span class="vuid">VUID-VkPipelineMultisampleStateCreateInfo-minSampleShading-00786</span><br>
@@ -825,7 +828,7 @@ and the <a href="features.html#features-coverageReductionMode" class="xref page"
 feature is not enabled, or the <code>pNext</code> chain does not contain
 <code>VkPipelineCoverageReductionStateCreateInfoNV</code>, or
 <code>VkPipelineCoverageReductionStateCreateInfoNV</code>::<code>coverageReductionMode</code>
-is not set to <code>VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV</code>,
+is not set to <a href="fragops.html#VkCoverageReductionModeNV" class="xref page">VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV</a>,
 and the subpass has any color attachments, and
 <code>rasterizationSamples</code> is greater than the number of color samples,
 then <a href="#primsrast-sampleshading">sample shading</a> <strong>must</strong> not be enabled</p>
@@ -841,7 +844,7 @@ then <a href="#primsrast-sampleshading">sample shading</a> <strong>must</strong>
 <ul>
 <li>
 <p><a id="VUID-VkPipelineMultisampleStateCreateInfo-sType-sType" href="#VUID-VkPipelineMultisampleStateCreateInfo-sType-sType"></a> <span class="vuid">VUID-VkPipelineMultisampleStateCreateInfo-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineMultisampleStateCreateInfo-pNext-pNext" href="#VUID-VkPipelineMultisampleStateCreateInfo-pNext-pNext"></a> <span class="vuid">VUID-VkPipelineMultisampleStateCreateInfo-pNext-pNext</span><br>
@@ -958,7 +961,7 @@ immediately before the rasterization stage.</p>
 <p>This command sets the discard enable for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineRasterizationStateCreateInfo">VkPipelineRasterizationStateCreateInfo</a>::<code>rasterizerDiscardEnable</code>
@@ -1009,7 +1012,7 @@ equal to Version 1.3</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRasterizerDiscardEnable-commandBuffer-cmdpool" href="#VUID-vkCmdSetRasterizerDiscardEnable-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetRasterizerDiscardEnable-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRasterizerDiscardEnable-videocoding" href="#VUID-vkCmdSetRasterizerDiscardEnable-videocoding"></a> <span class="vuid">VUID-vkCmdSetRasterizerDiscardEnable-videocoding</span><br>
@@ -1196,7 +1199,7 @@ zero.</p>
 
 <code>rasterizationStream</code> <strong>must</strong> be zero if
 <code>VkPhysicalDeviceTransformFeedbackPropertiesEXT</code>::<code>transformFeedbackRasterizationStreamSelect</code>
-is <code>VK_FALSE</code></p>
+is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a></p>
 </li>
 </ul>
 </div>
@@ -1209,7 +1212,7 @@ is <code>VK_FALSE</code></p>
 <ul>
 <li>
 <p><a id="VUID-VkPipelineRasterizationStateStreamCreateInfoEXT-sType-sType" href="#VUID-VkPipelineRasterizationStateStreamCreateInfoEXT-sType-sType"></a> <span class="vuid">VUID-VkPipelineRasterizationStateStreamCreateInfoEXT-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineRasterizationStateStreamCreateInfoEXT-flags-zerobitmask" href="#VUID-VkPipelineRasterizationStateStreamCreateInfoEXT-flags-zerobitmask"></a> <span class="vuid">VUID-VkPipelineRasterizationStateStreamCreateInfoEXT-flags-zerobitmask</span><br>
@@ -1265,7 +1268,7 @@ recorded.</p>
 commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineRasterizationStateStreamCreateInfoEXT">VkPipelineRasterizationStateStreamCreateInfoEXT</a>::<code>rasterizationStream</code>
@@ -1309,7 +1312,7 @@ The <a href="features.html#features-transformFeedback" class="xref page"><code>t
 
 <code>rasterizationStream</code> <strong>must</strong> be zero if
 <code>VkPhysicalDeviceTransformFeedbackPropertiesEXT</code>::<code>transformFeedbackRasterizationStreamSelect</code>
-is <code>VK_FALSE</code></p>
+is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a></p>
 </li>
 </ul>
 </div>
@@ -1330,7 +1333,7 @@ is <code>VK_FALSE</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRasterizationStreamEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetRasterizationStreamEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetRasterizationStreamEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRasterizationStreamEXT-videocoding" href="#VUID-vkCmdSetRasterizationStreamEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetRasterizationStreamEXT-videocoding</span><br>
@@ -1467,7 +1470,7 @@ specifying the primitive rasterization order to use.</p>
 <ul>
 <li>
 <p><a id="VUID-VkPipelineRasterizationStateRasterizationOrderAMD-sType-sType" href="#VUID-VkPipelineRasterizationStateRasterizationOrderAMD-sType-sType"></a> <span class="vuid">VUID-VkPipelineRasterizationStateRasterizationOrderAMD-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineRasterizationStateRasterizationOrderAMD-rasterizationOrder-parameter" href="#VUID-VkPipelineRasterizationStateRasterizationOrderAMD-rasterizationOrder-parameter"></a> <span class="vuid">VUID-VkPipelineRasterizationStateRasterizationOrderAMD-rasterizationOrder-parameter</span><br>
@@ -1482,7 +1485,7 @@ specifying the primitive rasterization order to use.</p>
 or the application does not request a particular rasterization order through
 specifying a <code>VkPipelineRasterizationStateRasterizationOrderAMD</code>
 structure then the rasterization order used by the graphics pipeline
-defaults to <code>VK_RASTERIZATION_ORDER_STRICT_AMD</code>.</p>
+defaults to <a href="#VkRasterizationOrderAMD">VK_RASTERIZATION_ORDER_STRICT_AMD</a>.</p>
 </div>
 </div>
 </div>
@@ -1505,11 +1508,11 @@ typedef enum VkRasterizationOrderAMD {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_RASTERIZATION_ORDER_STRICT_AMD</code> specifies that operations for
+<p><a href="#VkRasterizationOrderAMD">VK_RASTERIZATION_ORDER_STRICT_AMD</a> specifies that operations for
 each primitive in a subpass <strong>must</strong> occur in <a href="drawing.html#drawing-primitive-order" class="xref page">    primitive order</a>.</p>
 </li>
 <li>
-<p><code>VK_RASTERIZATION_ORDER_RELAXED_AMD</code> specifies that operations for
+<p><a href="#VkRasterizationOrderAMD">VK_RASTERIZATION_ORDER_RELAXED_AMD</a> specifies that operations for
 each primitive in a subpass <strong>may</strong> not occur in <a href="drawing.html#drawing-primitive-order" class="xref page">    primitive order</a>.</p>
 </li>
 </ul>
@@ -1622,7 +1625,7 @@ recorded.</p>
 commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineMultisampleStateCreateInfo">VkPipelineMultisampleStateCreateInfo</a>::<code>rasterizationSamples</code> value
@@ -1672,7 +1675,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRasterizationSamplesEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetRasterizationSamplesEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetRasterizationSamplesEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRasterizationSamplesEXT-videocoding" href="#VUID-vkCmdSetRasterizationSamplesEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetRasterizationSamplesEXT-videocoding</span><br>
@@ -1876,12 +1879,12 @@ index <span class="eq">j = 32×w + b</span> is covered, and <code>0</code> other
 </div>
 <div class="paragraph">
 <p>If the <code>standardSampleLocations</code> member of <a href="limits.html#VkPhysicalDeviceLimits" class="xref page">VkPhysicalDeviceLimits</a>
-is <code>VK_TRUE</code>, then the sample counts <code>VK_SAMPLE_COUNT_1_BIT</code>,
-<code>VK_SAMPLE_COUNT_2_BIT</code>, <code>VK_SAMPLE_COUNT_4_BIT</code>,
-<code>VK_SAMPLE_COUNT_8_BIT</code>, and <code>VK_SAMPLE_COUNT_16_BIT</code> have sample
+is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, then the sample counts <a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_1_BIT</a>,
+<a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_2_BIT</a>, <a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_4_BIT</a>,
+<a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_8_BIT</a>, and <a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_16_BIT</a> have sample
 locations as listed in the following table, with the <span class="eq">i</span>th entry in
 the table corresponding to sample index <span class="eq">i</span>.
-<code>VK_SAMPLE_COUNT_32_BIT</code> and <code>VK_SAMPLE_COUNT_64_BIT</code> do not have
+<a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_32_BIT</a> and <a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_64_BIT</a> do not have
 standard sample locations.
 Locations are defined relative to an origin in the upper left corner of the
 fragment.</p>
@@ -1902,18 +1905,18 @@ fragment.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_SAMPLE_COUNT_1_BIT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_1_BIT</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="eq">(0.5,0.5)</span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../_images/sample_count_1.svg" alt="sample count 1"></span></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_SAMPLE_COUNT_2_BIT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_2_BIT</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="eq">(0.75,0.75)</span><br>
       <span class="eq">(0.25,0.25)</span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../_images/sample_count_2.svg" alt="sample count 2"></span></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_SAMPLE_COUNT_4_BIT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_4_BIT</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="eq">(0.375, 0.125)</span><br>
       <span class="eq">(0.875, 0.375)</span><br>
       <span class="eq">(0.125, 0.625)</span><br>
@@ -1921,7 +1924,7 @@ fragment.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../_images/sample_count_4.svg" alt="sample count 4"></span></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_SAMPLE_COUNT_8_BIT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_8_BIT</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="eq">(0.5625, 0.3125)</span><br>
       <span class="eq">(0.4375, 0.6875)</span><br>
       <span class="eq">(0.8125, 0.5625)</span><br>
@@ -1933,7 +1936,7 @@ fragment.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../_images/sample_count_8.svg" alt="sample count 8"></span></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_SAMPLE_COUNT_16_BIT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_16_BIT</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="eq">(0.5625, 0.5625)</span><br>
       <span class="eq">(0.4375, 0.3125)</span><br>
       <span class="eq">(0.3125, 0.625)</span><br>
@@ -2021,15 +2024,15 @@ structure.</p>
 <li>
 <p><code>sampleLocationsEnable</code> controls whether custom sample locations are
 used.
-If <code>sampleLocationsEnable</code> is <code>VK_FALSE</code>, the default sample
+If <code>sampleLocationsEnable</code> is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, the default sample
 locations are used and the values specified in <code>sampleLocationsInfo</code>
 are ignored.</p>
 </li>
 <li>
 <p><code>sampleLocationsInfo</code> is the sample locations to use during
-rasterization if <code>sampleLocationsEnable</code> is <code>VK_TRUE</code> and the
+rasterization if <code>sampleLocationsEnable</code> is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a> and the
 graphics pipeline is not created with
-<code>VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT</code>.</p>
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT</a>.</p>
 </li>
 </ul>
 </div>
@@ -2040,7 +2043,7 @@ graphics pipeline is not created with
 <ul>
 <li>
 <p><a id="VUID-VkPipelineSampleLocationsStateCreateInfoEXT-sType-sType" href="#VUID-VkPipelineSampleLocationsStateCreateInfoEXT-sType-sType"></a> <span class="vuid">VUID-VkPipelineSampleLocationsStateCreateInfoEXT-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineSampleLocationsStateCreateInfoEXT-sampleLocationsInfo-parameter" href="#VUID-VkPipelineSampleLocationsStateCreateInfoEXT-sampleLocationsInfo-parameter"></a> <span class="vuid">VUID-VkPipelineSampleLocationsStateCreateInfoEXT-sampleLocationsInfo-parameter</span><br>
@@ -2102,7 +2105,7 @@ select custom sample locations for.</p>
 used for rendering or to specify the set of sample locations an image
 subresource has been last rendered with for the purposes of layout
 transitions of depth/stencil images created with
-<code>VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT</code>.</p>
+<a href="resources.html#VkImageCreateFlagBits" class="xref page">VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT</a>.</p>
 </div>
 <div class="paragraph">
 <p>The sample locations in <code>pSampleLocations</code> specify
@@ -2149,7 +2152,7 @@ choose the sample locations for the fragment and the contents of
 <ul>
 <li>
 <p><a id="VUID-VkSampleLocationsInfoEXT-sType-sType" href="#VUID-VkSampleLocationsInfoEXT-sType-sType"></a> <span class="vuid">VUID-VkSampleLocationsInfoEXT-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-VkSampleLocationsInfoEXT-pSampleLocations-parameter" href="#VUID-VkSampleLocationsInfoEXT-pSampleLocations-parameter"></a> <span class="vuid">VUID-VkSampleLocationsInfoEXT-pSampleLocations-parameter</span><br>
@@ -2229,7 +2232,7 @@ state.</p>
 drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineSampleLocationsStateCreateInfoEXT">VkPipelineSampleLocationsStateCreateInfoEXT</a>::<code>sampleLocationsEnable</code>
@@ -2275,7 +2278,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetSampleLocationsEnableEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetSampleLocationsEnableEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetSampleLocationsEnableEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetSampleLocationsEnableEXT-videocoding" href="#VUID-vkCmdSetSampleLocationsEnableEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetSampleLocationsEnableEXT-videocoding</span><br>
@@ -2373,10 +2376,10 @@ recorded.</p>
 commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>, and when the
 <a href="#VkPipelineSampleLocationsStateCreateInfoEXT">VkPipelineSampleLocationsStateCreateInfoEXT</a>::<code>sampleLocationsEnable</code>
-property of the bound graphics pipeline is <code>VK_TRUE</code>.
+property of the bound graphics pipeline is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineSampleLocationsStateCreateInfoEXT">VkPipelineSampleLocationsStateCreateInfoEXT</a>::<code>sampleLocationsInfo</code>
 values used to create the currently active pipeline.</p>
@@ -2391,7 +2394,7 @@ values used to create the currently active pipeline.</p>
 
 If
 <a href="limits.html#VkPhysicalDeviceSampleLocationsPropertiesEXT" class="xref page">VkPhysicalDeviceSampleLocationsPropertiesEXT</a>::<code>variableSampleLocations</code>
-is <code>VK_FALSE</code> then the current render pass <strong>must</strong> have been begun by
+is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a> then the current render pass <strong>must</strong> have been begun by
 specifying a <a href="renderpass.html#VkRenderPassSampleLocationsBeginInfoEXT" class="xref page">VkRenderPassSampleLocationsBeginInfoEXT</a> structure
 whose <code>pPostSubpassSampleLocations</code> member contains an element with
 a <code>subpassIndex</code> matching the current subpass index and the
@@ -2421,7 +2424,7 @@ locations state pointed to by <code>pSampleLocationsInfo</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetSampleLocationsEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetSampleLocationsEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetSampleLocationsEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetSampleLocationsEXT-videocoding" href="#VUID-vkCmdSetSampleLocationsEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetSampleLocationsEXT-videocoding</span><br>
@@ -2544,8 +2547,8 @@ array, and on return the variable is overwritten with the number of
 structures actually written to <code>pFragmentShadingRates</code>.
 If <code>pFragmentShadingRateCount</code> is less than the number of fragment
 shading rates available, at most <code>pFragmentShadingRateCount</code> structures
-will be written, and <code>VK_INCOMPLETE</code> will be returned instead of
-<code>VK_SUCCESS</code>, to indicate that not all the available fragment shading
+will be written, and <a href="fundamentals.html#VkResult" class="xref page">VK_INCOMPLETE</a> will be returned instead of
+<a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a>, to indicate that not all the available fragment shading
 rates were returned.</p>
 </div>
 <div class="paragraph">
@@ -2610,11 +2613,11 @@ equal to <a href="limits.html#limits-maxFragmentShadingRateCoverageSamples" clas
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_SAMPLE_COUNT_1_BIT</code> | <code>VK_SAMPLE_COUNT_4_BIT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_1_BIT</a> | <a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_4_BIT</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">{2,2}</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_SAMPLE_COUNT_1_BIT</code> | <code>VK_SAMPLE_COUNT_4_BIT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_1_BIT</a> | <a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_4_BIT</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">{2,1}</p></td>
 </tr>
 <tr>
@@ -2624,8 +2627,8 @@ equal to <a href="limits.html#limits-maxFragmentShadingRateCoverageSamples" clas
 </tbody>
 </table>
 <div class="paragraph">
-<p>If <a href="limits.html#limits-framebufferColorSampleCounts" class="xref page"><code>framebufferColorSampleCounts</code></a>, includes <code>VK_SAMPLE_COUNT_2_BIT</code>,
-the required rates <strong>must</strong> also include <code>VK_SAMPLE_COUNT_2_BIT</code>.</p>
+<p>If <a href="limits.html#limits-framebufferColorSampleCounts" class="xref page"><code>framebufferColorSampleCounts</code></a>, includes <a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_2_BIT</a>,
+the required rates <strong>must</strong> also include <a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_2_BIT</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2649,7 +2652,7 @@ are supported for this rate.</p>
 <p>The returned set of fragment shading rates <strong>must</strong> be returned in the native
 (rotated) coordinate system.
 For rasterization using render pass <code>transform</code> not equal to
-<code>VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR</code>, the application <strong>must</strong> transform
+<a href="VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR" class="xref page">VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR</a>, the application <strong>must</strong> transform
 the returned fragment shading rates into the current (unrotated) coordinate
 system to get the supported rates for that transform.</p>
 </div>
@@ -2663,8 +2666,8 @@ system to get the supported rates for that transform.</p>
 <div class="paragraph">
 <p>For example, consider an implementation returning support for 4x2, but not
 2x4 in the set of supported fragment shading rates.
-This means that for transforms <code>VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR</code>
-and <code>VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR</code>, 2x4 is a supported rate,
+This means that for transforms <a href="VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR" class="xref page">VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR</a>
+and <a href="VK_KHR_surface/wsi.html#VkSurfaceTransformFlagBitsKHR" class="xref page">VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR</a>, 2x4 is a supported rate,
 but 4x2 is an unsupported rate.</p>
 </div>
 </td>
@@ -2702,10 +2705,10 @@ but 4x2 is an unsupported rate.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_INCOMPLETE</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_INCOMPLETE</a></p>
 </li>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_SUCCESS</a></p>
 </li>
 </ul>
 </div>
@@ -2715,13 +2718,13 @@ but 4x2 is an unsupported rate.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_OUT_OF_HOST_MEMORY</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_UNKNOWN</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_UNKNOWN</a></p>
 </li>
 <li>
-<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+<p><a href="fundamentals.html#VkResult" class="xref page">VK_ERROR_VALIDATION_FAILED</a></p>
 </li>
 </ul>
 </div>
@@ -2774,7 +2777,7 @@ of a supported shading rate.</p>
 <ul>
 <li>
 <p><a id="VUID-VkPhysicalDeviceFragmentShadingRateKHR-sType-sType" href="#VUID-VkPhysicalDeviceFragmentShadingRateKHR-sType-sType"></a> <span class="vuid">VUID-VkPhysicalDeviceFragmentShadingRateKHR-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_KHR</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPhysicalDeviceFragmentShadingRateKHR-pNext-pNext" href="#VUID-VkPhysicalDeviceFragmentShadingRateKHR-pNext-pNext"></a> <span class="vuid">VUID-VkPhysicalDeviceFragmentShadingRateKHR-pNext-pNext</span><br>
@@ -2848,7 +2851,7 @@ rate.</p>
 <div class="paragraph">
 <p>If this structure is not present, <code>fragmentSize</code> is considered to be
 equal to <span class="eq">(1,1)</span>, and both elements of <code>combinerOps</code> are considered
-to be equal to <code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR</code>.</p>
+to be equal to <a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR</a>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -2857,7 +2860,7 @@ to be equal to <code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR</code>.</p>
 <ul>
 <li>
 <p><a id="VUID-VkPipelineFragmentShadingRateStateCreateInfoKHR-sType-sType" href="#VUID-VkPipelineFragmentShadingRateStateCreateInfoKHR-sType-sType"></a> <span class="vuid">VUID-VkPipelineFragmentShadingRateStateCreateInfoKHR-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_STATE_CREATE_INFO_KHR</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_STATE_CREATE_INFO_KHR</a></p>
 </li>
 </ul>
 </div>
@@ -2906,7 +2909,7 @@ generated by subsequent drawing commands.</p>
 for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineFragmentShadingRateStateCreateInfoKHR">VkPipelineFragmentShadingRateStateCreateInfoKHR</a> values used to create
@@ -2941,22 +2944,22 @@ One of the <a href="features.html#features-pipelineFragmentShadingRate" class="x
 
 If the <a href="features.html#features-primitiveFragmentShadingRate" class="xref page">    <code>primitiveFragmentShadingRate</code></a> feature is not enabled,
 <code>combinerOps</code>[0] <strong>must</strong> be
-<code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR</code></p>
+<a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFragmentShadingRateKHR-attachmentFragmentShadingRate-04511" href="#VUID-vkCmdSetFragmentShadingRateKHR-attachmentFragmentShadingRate-04511"></a> <span class="vuid">VUID-vkCmdSetFragmentShadingRateKHR-attachmentFragmentShadingRate-04511</span><br>
 
 If the <a href="features.html#features-attachmentFragmentShadingRate" class="xref page">    <code>attachmentFragmentShadingRate</code></a> feature is not enabled,
 <code>combinerOps</code>[1] <strong>must</strong> be
-<code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR</code></p>
+<a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFragmentShadingRateKHR-fragmentSizeNonTrivialCombinerOps-04512" href="#VUID-vkCmdSetFragmentShadingRateKHR-fragmentSizeNonTrivialCombinerOps-04512"></a> <span class="vuid">VUID-vkCmdSetFragmentShadingRateKHR-fragmentSizeNonTrivialCombinerOps-04512</span><br>
 
 If the <a href="limits.html#limits-fragmentShadingRateNonTrivialCombinerOps" class="xref page">    <code>fragmentSizeNonTrivialCombinerOps</code></a> limit is not supported,
 elements of <code>combinerOps</code> <strong>must</strong> be either
-<code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR</code> or
-<code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR</code></p>
+<a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR</a> or
+<a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFragmentShadingRateKHR-pFragmentSize-04513" href="#VUID-vkCmdSetFragmentShadingRateKHR-pFragmentSize-04513"></a> <span class="vuid">VUID-vkCmdSetFragmentShadingRateKHR-pFragmentSize-04513</span><br>
@@ -3015,7 +3018,7 @@ elements of <code>combinerOps</code> <strong>must</strong> be either
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFragmentShadingRateKHR-commandBuffer-cmdpool" href="#VUID-vkCmdSetFragmentShadingRateKHR-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetFragmentShadingRateKHR-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFragmentShadingRateKHR-videocoding" href="#VUID-vkCmdSetFragmentShadingRateKHR-videocoding"></a> <span class="vuid">VUID-vkCmdSetFragmentShadingRateKHR-videocoding</span><br>
@@ -3211,7 +3214,7 @@ built-in.</p>
 <p>The <a href="limits.html#limits-fragmentShadingRateWithConservativeRasterization" class="xref page">    <code>fragmentShadingRateWithConservativeRasterization</code></a> limit is not
 supported, and
 <a href="#VkPipelineRasterizationConservativeStateCreateInfoEXT">VkPipelineRasterizationConservativeStateCreateInfoEXT</a>::<code>conservativeRasterizationMode</code>
-is not <code>VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT</code>.</p>
+is not <a href="#VkConservativeRasterizationModeEXT">VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT</a>.</p>
 </li>
 <li>
 <p>The <a href="limits.html#limits-fragmentShadingRateWithFragmentShaderInterlock" class="xref page">    <code>fragmentShadingRateWithFragmentShaderInterlock</code></a> limit is not
@@ -3222,7 +3225,7 @@ supported, and the fragment shader declares any of the
 <p>The <a href="limits.html#limits-fragmentShadingRateWithCustomSampleLocations" class="xref page">    <code>fragmentShadingRateWithCustomSampleLocations</code></a> limit is not
 supported, and
 <a href="#VkPipelineSampleLocationsStateCreateInfoEXT">VkPipelineSampleLocationsStateCreateInfoEXT</a>::<code>sampleLocationsEnable</code>
-is <code>VK_TRUE</code>.</p>
+is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>.</p>
 </li>
 <li>
 <p>The fragment shader declares any of the
@@ -3245,7 +3248,7 @@ between the result of that and the
 <div class="content">
 <div class="paragraph">
 <p>The equation used for each combiner operation is defined by
-<code>VkFragmentShadingRateCombinerOpKHR</code>:</p>
+<a href="#VkFragmentShadingRateCombinerOpKHR">VkFragmentShadingRateCombinerOpKHR</a>:</p>
 </div>
 <div id="VkFragmentShadingRateCombinerOpKHR" class="listingblock">
 <div class="content">
@@ -3262,23 +3265,23 @@ typedef enum VkFragmentShadingRateCombinerOpKHR {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR</code> specifies a combiner
+<p><a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR</a> specifies a combiner
 operation of <span class="eq">combine(A<sub>xy</sub>,B<sub>xy</sub>) = A<sub>xy</sub></span>.</p>
 </li>
 <li>
-<p><code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR</code> specifies a
+<p><a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR</a> specifies a
 combiner operation of <span class="eq">combine(A<sub>xy</sub>,B<sub>xy</sub>) = B<sub>xy</sub></span>.</p>
 </li>
 <li>
-<p><code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR</code> specifies a combiner
+<p><a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR</a> specifies a combiner
 operation of <span class="eq">combine(A<sub>xy</sub>,B<sub>xy</sub>) = min(A<sub>xy</sub>,B<sub>xy</sub>)</span>.</p>
 </li>
 <li>
-<p><code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR</code> specifies a combiner
+<p><a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR</a> specifies a combiner
 operation of <span class="eq">combine(A<sub>xy</sub>,B<sub>xy</sub>) = max(A<sub>xy</sub>,B<sub>xy</sub>)</span>.</p>
 </li>
 <li>
-<p><code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR</code> specifies a combiner
+<p><a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR</a> specifies a combiner
 operation of <span class="eq">combine(A<sub>xy</sub>,B<sub>xy</sub>) = A<sub>xy</sub>*B<sub>xy</sub></span>.</p>
 </li>
 </ul>
@@ -3288,8 +3291,8 @@ operation of <span class="eq">combine(A<sub>xy</sub>,B<sub>xy</sub>) = A<sub>xy<
 and <span class="eq">B<sub>xy</sub></span> are the inputs to the operation.</p>
 </div>
 <div class="paragraph">
-<p>If <a href="limits.html#limits-fragmentShadingRateStrictMultiplyCombiner" class="xref page"><code>fragmentShadingRateStrictMultiplyCombiner</code></a> is <code>VK_FALSE</code>, using
-<code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR</code> with values of 1 for both
+<p>If <a href="limits.html#limits-fragmentShadingRateStrictMultiplyCombiner" class="xref page"><code>fragmentShadingRateStrictMultiplyCombiner</code></a> is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, using
+<a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR</a> with values of 1 for both
 A and B in the same dimension results in the value 2 being produced for that
 dimension.
 See the definition of <a href="limits.html#limits-fragmentShadingRateStrictMultiplyCombiner" class="xref page"><code>fragmentShadingRateStrictMultiplyCombiner</code></a> for more information.</p>
@@ -3331,7 +3334,7 @@ rate, reported via the <a href="interfaces.html#interfaces-builtin-variables-pri
 <span class="eq">A<sub>xy</sub></span> and <span class="eq">B<sub>xy</sub></span>, and <strong>must</strong>
 do so if
 <code>VkPhysicalDeviceMaintenance6Properties</code>::<code>fragmentShadingRateClampCombinerInputs</code>
-is <code>VK_TRUE</code>.
+is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>.
 All implementations <strong>must</strong>
 clamp the result of the second combiner operation.</p>
 </div>
@@ -3417,55 +3420,55 @@ typedef enum VkFragmentShadingRateNV {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV</code> specifies a
+<p><a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV</a> specifies a
 fragment size of 1x1 pixels.</p>
 </li>
 <li>
-<p><code>VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_1X2_PIXELS_NV</code> specifies
+<p><a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_1X2_PIXELS_NV</a> specifies
 a fragment size of 1x2 pixels.</p>
 </li>
 <li>
-<p><code>VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X1_PIXELS_NV</code> specifies
+<p><a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X1_PIXELS_NV</a> specifies
 a fragment size of 2x1 pixels.</p>
 </li>
 <li>
-<p><code>VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X2_PIXELS_NV</code> specifies
+<p><a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X2_PIXELS_NV</a> specifies
 a fragment size of 2x2 pixels.</p>
 </li>
 <li>
-<p><code>VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X4_PIXELS_NV</code> specifies
+<p><a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_2X4_PIXELS_NV</a> specifies
 a fragment size of 2x4 pixels.</p>
 </li>
 <li>
-<p><code>VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_4X2_PIXELS_NV</code> specifies
+<p><a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_4X2_PIXELS_NV</a> specifies
 a fragment size of 4x2 pixels.</p>
 </li>
 <li>
-<p><code>VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_4X4_PIXELS_NV</code> specifies
+<p><a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_4X4_PIXELS_NV</a> specifies
 a fragment size of 4x4 pixels.</p>
 </li>
 <li>
-<p><code>VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV</code> specifies a
+<p><a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV</a> specifies a
 fragment size of 1x1 pixels, with two fragment shader invocations per
 fragment.</p>
 </li>
 <li>
-<p><code>VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV</code> specifies a
+<p><a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV</a> specifies a
 fragment size of 1x1 pixels, with four fragment shader invocations per
 fragment.</p>
 </li>
 <li>
-<p><code>VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV</code> specifies a
+<p><a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV</a> specifies a
 fragment size of 1x1 pixels, with eight fragment shader invocations per
 fragment.</p>
 </li>
 <li>
-<p><code>VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV</code> specifies a
+<p><a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV</a> specifies a
 fragment size of 1x1 pixels, with sixteen fragment shader invocations
 per fragment.</p>
 </li>
 <li>
-<p><code>VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV</code> specifies that any
+<p><a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV</a> specifies that any
 portions of a primitive that use that shading rate should be discarded
 without invoking any fragment shader.</p>
 </li>
@@ -3473,13 +3476,13 @@ without invoking any fragment shader.</p>
 </div>
 <div class="paragraph">
 <p>To use the shading rates
-<code>VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV</code>,
-<code>VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV</code>,
-<code>VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV</code>, and
-<code>VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV</code> as a pipeline,
+<a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV</a>,
+<a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV</a>,
+<a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV</a>, and
+<a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV</a> as a pipeline,
 primitive, or attachment shading rate, the
 <a href="features.html#features-supersampleFragmentShadingRates" class="xref page"><code>supersampleFragmentShadingRates</code></a> feature <strong>must</strong> be enabled.
-To use the shading rate <code>VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV</code> as
+To use the shading rate <a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV</a> as
 a pipeline, primitive, or attachment shading rate, the
 <a href="features.html#features-noInvocationFragmentShadingRates" class="xref page"><code>noInvocationFragmentShadingRates</code></a> feature <strong>must</strong> be enabled.</p>
 </div>
@@ -3545,11 +3548,11 @@ rate.</p>
 </div>
 <div class="paragraph">
 <p>If this structure is not present, <code>shadingRateType</code> is considered to be
-equal to <code>VK_FRAGMENT_SHADING_RATE_TYPE_FRAGMENT_SIZE_NV</code>,
+equal to <a href="#VkFragmentShadingRateTypeNV">VK_FRAGMENT_SHADING_RATE_TYPE_FRAGMENT_SIZE_NV</a>,
 <code>shadingRate</code> is considered to be equal to
-<code>VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV</code>, and both elements
+<a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV</a>, and both elements
 of <code>combinerOps</code> are considered to be equal to
-<code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR</code>.</p>
+<a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR</a>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -3558,7 +3561,7 @@ of <code>combinerOps</code> are considered to be equal to
 <ul>
 <li>
 <p><a id="VUID-VkPipelineFragmentShadingRateEnumStateCreateInfoNV-sType-sType" href="#VUID-VkPipelineFragmentShadingRateEnumStateCreateInfoNV-sType-sType"></a> <span class="vuid">VUID-VkPipelineFragmentShadingRateEnumStateCreateInfoNV-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV</a></p>
 </li>
 </ul>
 </div>
@@ -3586,7 +3589,7 @@ typedef enum VkFragmentShadingRateTypeNV {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_FRAGMENT_SHADING_RATE_TYPE_FRAGMENT_SIZE_NV</code> specifies that a
+<p><a href="#VkFragmentShadingRateTypeNV">VK_FRAGMENT_SHADING_RATE_TYPE_FRAGMENT_SIZE_NV</a> specifies that a
 graphics pipeline should obtain its pipeline fragment shading rate and
 shading rate combiner state from the
 <a href="#VkPipelineFragmentShadingRateStateCreateInfoKHR">VkPipelineFragmentShadingRateStateCreateInfoKHR</a> structure and that
@@ -3595,7 +3598,7 @@ any state specified by the
 should be ignored.</p>
 </li>
 <li>
-<p><code>VK_FRAGMENT_SHADING_RATE_TYPE_ENUMS_NV</code> specifies that a graphics
+<p><a href="#VkFragmentShadingRateTypeNV">VK_FRAGMENT_SHADING_RATE_TYPE_ENUMS_NV</a> specifies that a graphics
 pipeline should obtain its pipeline fragment shading rate and shading
 rate combiner state from the
 <a href="#VkPipelineFragmentShadingRateEnumStateCreateInfoNV">VkPipelineFragmentShadingRateEnumStateCreateInfoNV</a> structure and
@@ -3649,7 +3652,7 @@ generated by subsequent drawing commands.</p>
 for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineFragmentShadingRateEnumStateCreateInfoNV">VkPipelineFragmentShadingRateEnumStateCreateInfoNV</a> values used to
@@ -3682,24 +3685,24 @@ For more information, refer to the
 
 If the <a href="features.html#features-pipelineFragmentShadingRate" class="xref page">    <code>pipelineFragmentShadingRate</code></a> feature is not enabled,
 <code>shadingRate</code> <strong>must</strong> be
-<code>VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV</code></p>
+<a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFragmentShadingRateEnumNV-supersampleFragmentShadingRates-04577" href="#VUID-vkCmdSetFragmentShadingRateEnumNV-supersampleFragmentShadingRates-04577"></a> <span class="vuid">VUID-vkCmdSetFragmentShadingRateEnumNV-supersampleFragmentShadingRates-04577</span><br>
 
 If the <a href="features.html#features-supersampleFragmentShadingRates" class="xref page">    <code>supersampleFragmentShadingRates</code></a> feature is not enabled,
 <code>shadingRate</code> <strong>must</strong> not be
-<code>VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV</code>,
-<code>VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV</code>,
-<code>VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV</code>, or
-<code>VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV</code></p>
+<a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV</a>,
+<a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV</a>,
+<a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV</a>, or
+<a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFragmentShadingRateEnumNV-noInvocationFragmentShadingRates-04578" href="#VUID-vkCmdSetFragmentShadingRateEnumNV-noInvocationFragmentShadingRates-04578"></a> <span class="vuid">VUID-vkCmdSetFragmentShadingRateEnumNV-noInvocationFragmentShadingRates-04578</span><br>
 
 If the <a href="features.html#features-noInvocationFragmentShadingRates" class="xref page">    <code>noInvocationFragmentShadingRates</code></a> feature is not enabled,
 <code>shadingRate</code> <strong>must</strong> not be
-<code>VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV</code></p>
+<a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFragmentShadingRateEnumNV-fragmentShadingRateEnums-04579" href="#VUID-vkCmdSetFragmentShadingRateEnumNV-fragmentShadingRateEnums-04579"></a> <span class="vuid">VUID-vkCmdSetFragmentShadingRateEnumNV-fragmentShadingRateEnums-04579</span><br>
@@ -3718,22 +3721,22 @@ One of the <a href="features.html#features-pipelineFragmentShadingRate" class="x
 
 If the <a href="features.html#features-primitiveFragmentShadingRate" class="xref page">    <code>primitiveFragmentShadingRate</code></a> feature is not enabled,
 <code>combinerOps</code>[0] <strong>must</strong> be
-<code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR</code></p>
+<a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFragmentShadingRateEnumNV-attachmentFragmentShadingRate-04582" href="#VUID-vkCmdSetFragmentShadingRateEnumNV-attachmentFragmentShadingRate-04582"></a> <span class="vuid">VUID-vkCmdSetFragmentShadingRateEnumNV-attachmentFragmentShadingRate-04582</span><br>
 
 If the <a href="features.html#features-attachmentFragmentShadingRate" class="xref page">    <code>attachmentFragmentShadingRate</code></a> feature is not enabled,
 <code>combinerOps</code>[1] <strong>must</strong> be
-<code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR</code></p>
+<a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFragmentShadingRateEnumNV-fragmentSizeNonTrivialCombinerOps-04583" href="#VUID-vkCmdSetFragmentShadingRateEnumNV-fragmentSizeNonTrivialCombinerOps-04583"></a> <span class="vuid">VUID-vkCmdSetFragmentShadingRateEnumNV-fragmentSizeNonTrivialCombinerOps-04583</span><br>
 
 If the <a href="limits.html#limits-fragmentShadingRateNonTrivialCombinerOps" class="xref page">    <code>fragmentSizeNonTrivialCombinerOps</code></a> limit is not supported,
 elements of <code>combinerOps</code> <strong>must</strong> be either
-<code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR</code> or
-<code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR</code></p>
+<a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR</a> or
+<a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR</a></p>
 </li>
 </ul>
 </div>
@@ -3762,7 +3765,7 @@ elements of <code>combinerOps</code> <strong>must</strong> be either
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFragmentShadingRateEnumNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetFragmentShadingRateEnumNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetFragmentShadingRateEnumNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFragmentShadingRateEnumNV-videocoding" href="#VUID-vkCmdSetFragmentShadingRateEnumNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetFragmentShadingRateEnumNV-videocoding</span><br>
@@ -3842,31 +3845,31 @@ modified as follows:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>For <code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR</code>,
-<code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR</code>, and
-<code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR</code>, if either
+<p>For <a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR</a>,
+<a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR</a>, and
+<a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR</a>, if either
 <span class="eq">A<sub>xy</sub></span> or <span class="eq">B<sub>xy</sub></span> is
-<code>VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV</code>,
+<a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV</a>,
 <span class="eq">combine(A<sub>xy</sub>,B<sub>xy</sub>)</span> produces a shading rate of
-<code>VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV</code>, regardless of the
+<a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV</a>, regardless of the
 other input shading rate.</p>
 </li>
 <li>
-<p>For <code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR</code>,
+<p>For <a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR</a>,
 <span class="eq">combine(A<sub>xy</sub>,B<sub>xy</sub>)</span> produces a shading rate whose fragment size
 is the smaller of the fragment sizes of <span class="eq">A<sub>xy</sub></span> and <span class="eq">B<sub>xy</sub></span> and
 whose invocation count is the larger of the invocation counts of
 <span class="eq">A<sub>xy</sub></span> and <span class="eq">B<sub>xy</sub></span>.</p>
 </li>
 <li>
-<p>For <code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR</code>,
+<p>For <a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR</a>,
 <span class="eq">combine(A<sub>xy</sub>,B<sub>xy</sub>)</span> produces a shading rate whose fragment size
 is the larger of the fragment sizes of <span class="eq">A<sub>xy</sub></span> and <span class="eq">B<sub>xy</sub></span> and
 whose invocation count is the smaller of the invocation counts of
 <span class="eq">A<sub>xy</sub></span> and <span class="eq">B<sub>xy</sub></span>.</p>
 </li>
 <li>
-<p>For <code>VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR</code>,
+<p>For <a href="#VkFragmentShadingRateCombinerOpKHR">VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR</a>,
 <span class="eq">combine(A<sub>xy</sub>,B<sub>xy</sub>)</span> produces a shading rate whose fragment size
 and invocation count is the product of the fragment sizes and invocation
 counts, respectively, of <span class="eq">A<sub>xy</sub></span> and <span class="eq">B<sub>xy</sub></span>.
@@ -3878,7 +3881,7 @@ by reducing both the pixel and invocation counts.</p>
 </div>
 <div class="paragraph">
 <p>If the final shading rate from the combiners is
-<code>VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV</code>, no fragments will be
+<a href="#VkFragmentShadingRateNV">VK_FRAGMENT_SHADING_RATE_NO_INVOCATIONS_NV</a>, no fragments will be
 generated for any portion of a primitive using that shading rate.</p>
 </div>
 <div class="paragraph">
@@ -3958,7 +3961,7 @@ If the shading rate palette state is dynamic, this member is ignored.</p>
 </div>
 <div class="paragraph">
 <p>If this structure is not present, <code>shadingRateImageEnable</code> is considered
-to be <code>VK_FALSE</code>, and the shading rate image and palettes are not used.</p>
+to be <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, and the shading rate image and palettes are not used.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -3980,7 +3983,7 @@ enabled, <code>viewportCount</code> <strong>must</strong> be <code>0</code> or <
 <li>
 <p><a id="VUID-VkPipelineViewportShadingRateImageStateCreateInfoNV-shadingRateImageEnable-02056" href="#VUID-VkPipelineViewportShadingRateImageStateCreateInfoNV-shadingRateImageEnable-02056"></a> <span class="vuid">VUID-VkPipelineViewportShadingRateImageStateCreateInfoNV-shadingRateImageEnable-02056</span><br>
 
-If <code>shadingRateImageEnable</code> is <code>VK_TRUE</code>, <code>viewportCount</code>
+If <code>shadingRateImageEnable</code> is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, <code>viewportCount</code>
 <strong>must</strong> be greater or equal to the <code>viewportCount</code> member of
 <a href="vertexpostproc.html#VkPipelineViewportStateCreateInfo" class="xref page">VkPipelineViewportStateCreateInfo</a></p>
 </li>
@@ -3995,7 +3998,7 @@ If <code>shadingRateImageEnable</code> is <code>VK_TRUE</code>, <code>viewportCo
 <ul>
 <li>
 <p><a id="VUID-VkPipelineViewportShadingRateImageStateCreateInfoNV-sType-sType" href="#VUID-VkPipelineViewportShadingRateImageStateCreateInfoNV-sType-sType"></a> <span class="vuid">VUID-VkPipelineViewportShadingRateImageStateCreateInfoNV-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV</a></p>
 </li>
 </ul>
 </div>
@@ -4051,20 +4054,20 @@ be enabled</p>
 <p><a id="VUID-vkCmdBindShadingRateImageNV-imageView-02059" href="#VUID-vkCmdBindShadingRateImageNV-imageView-02059"></a> <span class="vuid">VUID-vkCmdBindShadingRateImageNV-imageView-02059</span><br>
 
 If <code>imageView</code> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, it <strong>must</strong> be a valid
-<a href="resources.html#VkImageView" class="xref page">VkImageView</a> handle of type <code>VK_IMAGE_VIEW_TYPE_2D</code> or
-<code>VK_IMAGE_VIEW_TYPE_2D_ARRAY</code></p>
+<a href="resources.html#VkImageView" class="xref page">VkImageView</a> handle of type <a href="resources.html#VkImageViewType" class="xref page">VK_IMAGE_VIEW_TYPE_2D</a> or
+<a href="resources.html#VkImageViewType" class="xref page">VK_IMAGE_VIEW_TYPE_2D_ARRAY</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBindShadingRateImageNV-imageView-02060" href="#VUID-vkCmdBindShadingRateImageNV-imageView-02060"></a> <span class="vuid">VUID-vkCmdBindShadingRateImageNV-imageView-02060</span><br>
 
 If <code>imageView</code> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, it <strong>must</strong> have a format
-of <code>VK_FORMAT_R8_UINT</code></p>
+of <a href="formats.html#VkFormat" class="xref page">VK_FORMAT_R8_UINT</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBindShadingRateImageNV-imageView-02061" href="#VUID-vkCmdBindShadingRateImageNV-imageView-02061"></a> <span class="vuid">VUID-vkCmdBindShadingRateImageNV-imageView-02061</span><br>
 
 If <code>imageView</code> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, it <strong>must</strong> have been
-created with the <code>VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV</code> usage
+created with the <a href="resources.html#VkImageUsageFlagBits" class="xref page">VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV</a> usage
 flag set</p>
 </li>
 <li>
@@ -4078,8 +4081,8 @@ match the actual <a href="resources.html#VkImageLayout" class="xref page">VkImag
 <p><a id="VUID-vkCmdBindShadingRateImageNV-imageLayout-02063" href="#VUID-vkCmdBindShadingRateImageNV-imageLayout-02063"></a> <span class="vuid">VUID-vkCmdBindShadingRateImageNV-imageLayout-02063</span><br>
 
 If <code>imageView</code> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, <code>imageLayout</code> <strong>must</strong>
-be <code>VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV</code> or
-<code>VK_IMAGE_LAYOUT_GENERAL</code></p>
+be <a href="resources.html#VkImageLayout" class="xref page">VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV</a> or
+<a href="resources.html#VkImageLayout" class="xref page">VK_IMAGE_LAYOUT_GENERAL</a></p>
 </li>
 </ul>
 </div>
@@ -4108,7 +4111,7 @@ be <code>VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV</code> or
 </li>
 <li>
 <p><a id="VUID-vkCmdBindShadingRateImageNV-commandBuffer-cmdpool" href="#VUID-vkCmdBindShadingRateImageNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdBindShadingRateImageNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBindShadingRateImageNV-videocoding" href="#VUID-vkCmdBindShadingRateImageNV-videocoding"></a> <span class="vuid">VUID-vkCmdBindShadingRateImageNV-videocoding</span><br>
@@ -4185,14 +4188,14 @@ Secondary</p></td>
 a primitive covering the pixel with coordinates (<em>x</em>,<em>y</em>) will fetch a
 shading rate index value from the shading rate image bound by
 <code>vkCmdBindShadingRateImageNV</code>.
-If the shading rate image view has a type of <code>VK_IMAGE_VIEW_TYPE_2D</code>,
+If the shading rate image view has a type of <a href="resources.html#VkImageViewType" class="xref page">VK_IMAGE_VIEW_TYPE_2D</a>,
 the lookup will use texel coordinates (<em>u</em>,<em>v</em>) where \(u =
 \left\lfloor \frac{x}{twidth} \right\rfloor\), \(v = \left\lfloor
 \frac{y}{theight} \right\rfloor\), and <span class="steminline"> <svg style="vertical-align: -0.025ex; overflow: visible;" xmlns="http://www.w3.org/2000/svg" width="6.514ex" height="1.595ex" role="img" focusable="false" viewBox="0 -694 2879 705"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mi" transform="translate(361,0)"><path data-c="1D464" d="M580 385Q580 406 599 424T641 443Q659 443 674 425T690 368Q690 339 671 253Q656 197 644 161T609 80T554 12T482 -11Q438 -11 404 5T355 48Q354 47 352 44Q311 -11 252 -11Q226 -11 202 -5T155 14T118 53T104 116Q104 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 293 29 315T52 366T96 418T161 441Q204 441 227 416T250 358Q250 340 217 250T184 111Q184 65 205 46T258 26Q301 26 334 87L339 96V119Q339 122 339 128T340 136T341 143T342 152T345 165T348 182T354 206T362 238T373 281Q402 395 406 404Q419 431 449 431Q468 431 475 421T483 402Q483 389 454 274T422 142Q420 131 420 107V100Q420 85 423 71T442 42T487 26Q558 26 600 148Q609 171 620 213T632 273Q632 306 619 325T593 357T580 385Z"></path></g><g data-mml-node="mi" transform="translate(1077,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mi" transform="translate(1422,0)"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path></g><g data-mml-node="mi" transform="translate(1942,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mi" transform="translate(2303,0)"><path data-c="210E" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"></path></g></g></g></svg> </span> and
 <span class="steminline"> <svg style="vertical-align: -0.464ex; overflow: visible;" xmlns="http://www.w3.org/2000/svg" width="7.154ex" height="2.034ex" role="img" focusable="false" viewBox="0 -694 3162 899"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mi" transform="translate(361,0)"><path data-c="210E" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"></path></g><g data-mml-node="mi" transform="translate(937,0)"><path data-c="1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path></g><g data-mml-node="mi" transform="translate(1403,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mi" transform="translate(1748,0)"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path></g><g data-mml-node="mi" transform="translate(2225,0)"><path data-c="210E" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"></path></g><g data-mml-node="mi" transform="translate(2801,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g></g></g></svg> </span> are the width and height of the implementation-dependent
 <a href="limits.html#limits-shadingRateTexelSize" class="xref page">shading rate texel size</a>.
 If the shading rate image view has a type of
-<code>VK_IMAGE_VIEW_TYPE_2D_ARRAY</code>, the lookup will use texel coordinates
+<a href="resources.html#VkImageViewType" class="xref page">VK_IMAGE_VIEW_TYPE_2D_ARRAY</a>, the lookup will use texel coordinates
 (<em>u</em>,<em>v</em>) to extract a texel from the layer <em>l</em>, where <em>l</em> is the layer of
 the framebuffer being rendered to.
 If <em>l</em> is greater than or equal to the number of layers in the image view,
@@ -4248,7 +4251,7 @@ state.</p>
 drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_SHADING_RATE_IMAGE_ENABLE_NV</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_SHADING_RATE_IMAGE_ENABLE_NV</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineViewportShadingRateImageStateCreateInfoNV">VkPipelineViewportShadingRateImageStateCreateInfoNV</a>::<code>shadingRateImageEnable</code>
@@ -4294,7 +4297,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetShadingRateImageEnableNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetShadingRateImageEnableNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetShadingRateImageEnableNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetShadingRateImageEnableNV-videocoding" href="#VUID-vkCmdSetShadingRateImageEnableNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetShadingRateImageEnableNV-videocoding</span><br>
@@ -4404,7 +4407,7 @@ viewport.</p>
 subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineViewportShadingRateImageStateCreateInfoNV">VkPipelineViewportShadingRateImageStateCreateInfoNV</a>::<code>pShadingRatePalettes</code>
@@ -4462,7 +4465,7 @@ enabled, <code>viewportCount</code> <strong>must</strong> be <code>1</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetViewportShadingRatePaletteNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetViewportShadingRatePaletteNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetViewportShadingRatePaletteNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetViewportShadingRatePaletteNV-videocoding" href="#VUID-vkCmdSetViewportShadingRatePaletteNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetViewportShadingRatePaletteNV-videocoding</span><br>
@@ -4634,7 +4637,7 @@ typedef enum VkShadingRatePaletteEntryNV {
 fragment generated using the indicated shading rate, as well as the maximum
 number of fragment shader invocations launched for each fragment.
 When processing regions of a primitive that have a shading rate of
-<code>VK_SHADING_RATE_PALETTE_ENTRY_NO_INVOCATIONS_NV</code>, no fragments will be
+<a href="#VkShadingRatePaletteEntryNV">VK_SHADING_RATE_PALETTE_ENTRY_NO_INVOCATIONS_NV</a>, no fragments will be
 generated in that region.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -4654,73 +4657,73 @@ generated in that region.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_SHADING_RATE_PALETTE_ENTRY_NO_INVOCATIONS_NV</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#VkShadingRatePaletteEntryNV">VK_SHADING_RATE_PALETTE_ENTRY_NO_INVOCATIONS_NV</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_SHADING_RATE_PALETTE_ENTRY_16_INVOCATIONS_PER_PIXEL_NV</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#VkShadingRatePaletteEntryNV">VK_SHADING_RATE_PALETTE_ENTRY_16_INVOCATIONS_PER_PIXEL_NV</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_SHADING_RATE_PALETTE_ENTRY_8_INVOCATIONS_PER_PIXEL_NV</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#VkShadingRatePaletteEntryNV">VK_SHADING_RATE_PALETTE_ENTRY_8_INVOCATIONS_PER_PIXEL_NV</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_SHADING_RATE_PALETTE_ENTRY_4_INVOCATIONS_PER_PIXEL_NV</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#VkShadingRatePaletteEntryNV">VK_SHADING_RATE_PALETTE_ENTRY_4_INVOCATIONS_PER_PIXEL_NV</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_SHADING_RATE_PALETTE_ENTRY_2_INVOCATIONS_PER_PIXEL_NV</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#VkShadingRatePaletteEntryNV">VK_SHADING_RATE_PALETTE_ENTRY_2_INVOCATIONS_PER_PIXEL_NV</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_PIXEL_NV</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#VkShadingRatePaletteEntryNV">VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_PIXEL_NV</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X1_PIXELS_NV</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#VkShadingRatePaletteEntryNV">VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X1_PIXELS_NV</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_1X2_PIXELS_NV</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#VkShadingRatePaletteEntryNV">VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_1X2_PIXELS_NV</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X2_PIXELS_NV</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#VkShadingRatePaletteEntryNV">VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X2_PIXELS_NV</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_4X2_PIXELS_NV</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#VkShadingRatePaletteEntryNV">VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_4X2_PIXELS_NV</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X4_PIXELS_NV</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#VkShadingRatePaletteEntryNV">VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_2X4_PIXELS_NV</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_4X4_PIXELS_NV</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#VkShadingRatePaletteEntryNV">VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_4X4_PIXELS_NV</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
@@ -4731,7 +4734,7 @@ generated in that region.</p>
 </div>
 <div class="paragraph">
 <p>When the shading rate image is disabled, a shading rate of
-<code>VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_PIXEL_NV</code> will be used
+<a href="#VkShadingRatePaletteEntryNV">VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_PIXEL_NV</a> will be used
 as the base shading rate.</p>
 </div>
 <div class="paragraph">
@@ -4853,17 +4856,17 @@ single combination of fragment area and coverage sample count.</p>
 </div>
 <div class="paragraph">
 <p>If this structure is not present, <code>sampleOrderType</code> is considered to be
-<code>VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV</code>.</p>
+<a href="#VkCoarseSampleOrderTypeNV">VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV</a>.</p>
 </div>
 <div class="paragraph">
-<p>If <code>sampleOrderType</code> is <code>VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV</code>, the
+<p>If <code>sampleOrderType</code> is <a href="#VkCoarseSampleOrderTypeNV">VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV</a>, the
 coverage sample order used for any combination of fragment area and coverage
 sample count not enumerated in <code>pCustomSampleOrders</code> will be identical
-to that used for <code>VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV</code>.</p>
+to that used for <a href="#VkCoarseSampleOrderTypeNV">VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV</a>.</p>
 </div>
 <div class="paragraph">
 <p>If the pipeline was created with
-<code>VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV</code>, the contents of this
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV</a>, the contents of this
 structure (if present) are ignored, and the coverage sample order is instead
 specified by <a href="#vkCmdSetCoarseSampleOrderNV">vkCmdSetCoarseSampleOrderNV</a>.</p>
 </div>
@@ -4876,7 +4879,7 @@ specified by <a href="#vkCmdSetCoarseSampleOrderNV">vkCmdSetCoarseSampleOrderNV<
 <p><a id="VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sampleOrderType-02072" href="#VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sampleOrderType-02072"></a> <span class="vuid">VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sampleOrderType-02072</span><br>
 
 If <code>sampleOrderType</code> is not
-<code>VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV</code>,
+<a href="#VkCoarseSampleOrderTypeNV">VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV</a>,
 <code>customSamplerOrderCount</code> <strong>must</strong> be <code>0</code></p>
 </li>
 <li>
@@ -4897,7 +4900,7 @@ with matching values for both the <code>shadingRate</code> and
 <ul>
 <li>
 <p><a id="VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sType-sType" href="#VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sType-sType"></a> <span class="vuid">VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sampleOrderType-parameter" href="#VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sampleOrderType-parameter"></a> <span class="vuid">VUID-VkPipelineViewportCoarseSampleOrderStateCreateInfoNV-sampleOrderType-parameter</span><br>
@@ -4934,24 +4937,24 @@ typedef enum VkCoarseSampleOrderTypeNV {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV</code> specifies that coverage
+<p><a href="#VkCoarseSampleOrderTypeNV">VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV</a> specifies that coverage
 samples will be ordered in an implementation-dependent manner.</p>
 </li>
 <li>
-<p><code>VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV</code> specifies that coverage
+<p><a href="#VkCoarseSampleOrderTypeNV">VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV</a> specifies that coverage
 samples will be ordered according to the array of custom orderings
 provided in either the <code>pCustomSampleOrders</code> member of
 <code>VkPipelineViewportCoarseSampleOrderStateCreateInfoNV</code> or the
 <code>pCustomSampleOrders</code> member of <a href="#vkCmdSetCoarseSampleOrderNV">vkCmdSetCoarseSampleOrderNV</a>.</p>
 </li>
 <li>
-<p><code>VK_COARSE_SAMPLE_ORDER_TYPE_PIXEL_MAJOR_NV</code> specifies that coverage
+<p><a href="#VkCoarseSampleOrderTypeNV">VK_COARSE_SAMPLE_ORDER_TYPE_PIXEL_MAJOR_NV</a> specifies that coverage
 samples will be ordered sequentially, sorted first by pixel coordinate
 (in row-major order) and then by
 <a href="#primsrast-multisampling-coverage-mask">sample index</a>.</p>
 </li>
 <li>
-<p><code>VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV</code> specifies that
+<p><a href="#VkCoarseSampleOrderTypeNV">VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV</a> specifies that
 coverage samples will be ordered sequentially, sorted first by
 <a href="#primsrast-multisampling-coverage-mask">sample index</a> and then by
 pixel coordinate (in row-major order).</p>
@@ -4962,7 +4965,7 @@ pixel coordinate (in row-major order).</p>
 </div>
 <div class="paragraph">
 <p>When using a coarse sample order of
-<code>VK_COARSE_SAMPLE_ORDER_TYPE_PIXEL_MAJOR_NV</code> for a fragment with an
+<a href="#VkCoarseSampleOrderTypeNV">VK_COARSE_SAMPLE_ORDER_TYPE_PIXEL_MAJOR_NV</a> for a fragment with an
 upper-left corner of <span class="steminline"> <svg style="vertical-align: -0.566ex; overflow: visible;" xmlns="http://www.w3.org/2000/svg" width="7.658ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 3384.7 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(389,0)"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g><g data-mml-node="mi" transform="translate(939,0)"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g><g data-mml-node="mo" transform="translate(1511,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mi" transform="translate(1955.7,0)"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g><g data-mml-node="mi" transform="translate(2505.7,0)"><path data-c="1D466" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(2995.7,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg> </span> with a width of \(fw
 \times fh\) and <span class="steminline"> <svg style="vertical-align: -0.464ex; overflow: visible;" xmlns="http://www.w3.org/2000/svg" width="3.285ex" height="2.059ex" role="img" focusable="false" viewBox="0 -705 1452 910"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g><g data-mml-node="mi" transform="translate(550,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="mi" transform="translate(1019,0)"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path></g></g></g></svg> </span> samples per pixel,
 <a href="#primsrast-multisampling-coverage-mask">coverage index</a> <span class="steminline"> <svg style="vertical-align: -0.025ex; overflow: visible;" xmlns="http://www.w3.org/2000/svg" width="2.041ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 902 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path></g><g data-mml-node="mi" transform="translate(433,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g></g></g></svg> </span> of
@@ -4975,7 +4978,7 @@ the fragment will be assigned to <a href="#primsrast-multisampling-coverage-mask
 </div>
 <div class="paragraph">
 <p>When using a coarse sample order of
-<code>VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV</code>,
+<a href="#VkCoarseSampleOrderTypeNV">VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV</a>,
 <a href="#primsrast-multisampling-coverage-mask">coverage index</a> <span class="steminline"> <svg style="vertical-align: -0.025ex; overflow: visible;" xmlns="http://www.w3.org/2000/svg" width="2.041ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 902 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path></g><g data-mml-node="mi" transform="translate(433,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g></g></g></svg> </span>
 will be assigned as follows:</p>
 </div>
@@ -5024,7 +5027,7 @@ each sample in the custom ordering.</p>
 </div>
 <div class="paragraph">
 <p>The <code>VkCoarseSampleOrderCustomNV</code> structure is used with a coverage
-sample ordering type of <code>VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV</code> to
+sample ordering type of <a href="#VkCoarseSampleOrderTypeNV">VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV</a> to
 specify the order of coverage samples for one combination of fragment width,
 fragment height, and coverage sample count.</p>
 </div>
@@ -5200,17 +5203,17 @@ coverage sample count.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>If <code>sampleOrderType</code> is <code>VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV</code>, the
+<p>If <code>sampleOrderType</code> is <a href="#VkCoarseSampleOrderTypeNV">VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV</a>, the
 coverage sample order used for any combination of fragment area and coverage
 sample count not enumerated in <code>pCustomSampleOrders</code> will be identical
-to that used for <code>VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV</code>.</p>
+to that used for <a href="#VkCoarseSampleOrderTypeNV">VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV</a>.</p>
 </div>
 <div class="paragraph">
 <p>This command sets the order of coverage samples for subsequent drawing
 commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineViewportCoarseSampleOrderStateCreateInfoNV">VkPipelineViewportCoarseSampleOrderStateCreateInfoNV</a> values used to
@@ -5225,7 +5228,7 @@ create the currently active pipeline.</p>
 <p><a id="VUID-vkCmdSetCoarseSampleOrderNV-sampleOrderType-02081" href="#VUID-vkCmdSetCoarseSampleOrderNV-sampleOrderType-02081"></a> <span class="vuid">VUID-vkCmdSetCoarseSampleOrderNV-sampleOrderType-02081</span><br>
 
 If <code>sampleOrderType</code> is not
-<code>VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV</code>,
+<a href="#VkCoarseSampleOrderTypeNV">VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV</a>,
 <code>customSamplerOrderCount</code> <strong>must</strong> be <code>0</code></p>
 </li>
 <li>
@@ -5262,7 +5265,7 @@ with matching values for both the <code>shadingRate</code> and
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCoarseSampleOrderNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetCoarseSampleOrderNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetCoarseSampleOrderNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCoarseSampleOrderNV-videocoding" href="#VUID-vkCmdSetCoarseSampleOrderNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetCoarseSampleOrderNV-videocoding</span><br>
@@ -5366,7 +5369,7 @@ shader at least <span class="eq">max(⌈
 <a href="#VkPipelineMultisampleStateCreateInfo">VkPipelineMultisampleStateCreateInfo</a>::<code>rasterizationSamples</code>
 ⌉, 1)</span> times per fragment.
 If <a href="#VkPipelineMultisampleStateCreateInfo">VkPipelineMultisampleStateCreateInfo</a>::<code>sampleShadingEnable</code> is
-<code>VK_TRUE</code>, sample shading is enabled.</p>
+<a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, sample shading is enabled.</p>
 </div>
 <div class="paragraph">
 <p>If a fragment shader entry point <a href="shaders.html#shaders-staticuse" class="xref page">statically uses</a> an
@@ -5443,12 +5446,12 @@ the point, line, and triangle primitives produced by the draw call are
 numbered with consecutive integers beginning with zero, the following table
 indicates the original vertex numbers used
 when the <a href="vertexpostproc.html#vertexpostproc-flatshading" class="xref page">provoking vertex mode</a> is
-<code>VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT</code>
+<a href="vertexpostproc.html#VkProvokingVertexModeEXT" class="xref page">VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT</a>
 for index values of 0, 1, and 2.
 If an input decorated with <code>PerVertexKHR</code> is accessed with any other
 vertex index value, or is accessed while rasterizing a polygon when the
 <a href="#VkPipelineRasterizationStateCreateInfo">VkPipelineRasterizationStateCreateInfo</a>::<code>polygonMode</code> property of
-the currently active pipeline is not <code>VK_POLYGON_MODE_FILL</code>, an
+the currently active pipeline is not <a href="#VkPolygonMode">VK_POLYGON_MODE_FILL</a>, an
 <strong>undefined</strong> value is returned.</p>
 </div>
 <table id="primsrast-barycentric-order-table" class="tableblock frame-all grid-all stretch">
@@ -5468,73 +5471,73 @@ the currently active pipeline is not <code>VK_POLYGON_MODE_FILL</code>, an
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_PRIMITIVE_TOPOLOGY_POINT_LIST</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="drawing.html#VkPrimitiveTopology" class="xref page">VK_PRIMITIVE_TOPOLOGY_POINT_LIST</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_PRIMITIVE_TOPOLOGY_LINE_LIST</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="drawing.html#VkPrimitiveTopology" class="xref page">VK_PRIMITIVE_TOPOLOGY_LINE_LIST</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2i</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2i+1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2i+1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_PRIMITIVE_TOPOLOGY_LINE_STRIP</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="drawing.html#VkPrimitiveTopology" class="xref page">VK_PRIMITIVE_TOPOLOGY_LINE_STRIP</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i+1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i+1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="drawing.html#VkPrimitiveTopology" class="xref page">VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3i</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3i+1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3i+2</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP</code> (even)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="drawing.html#VkPrimitiveTopology" class="xref page">VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP</a> (even)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i+1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i+2</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP</code> (odd)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="drawing.html#VkPrimitiveTopology" class="xref page">VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP</a> (odd)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i+2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i+1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="drawing.html#VkPrimitiveTopology" class="xref page">VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i+1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i+2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="drawing.html#VkPrimitiveTopology" class="xref page">VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4i+1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4i+2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4i+2</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_PRIMITIVE_TOPOLOGY_LINE_STRIP_WITH_ADJACENCY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="drawing.html#VkPrimitiveTopology" class="xref page">VK_PRIMITIVE_TOPOLOGY_LINE_STRIP_WITH_ADJACENCY</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i+1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i+2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i+2</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="drawing.html#VkPrimitiveTopology" class="xref page">VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6i</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6i+2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6i+4</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY</code> (even)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="drawing.html#VkPrimitiveTopology" class="xref page">VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY</a> (even)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2i</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2i+2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2i+4</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY</code> (odd)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="drawing.html#VkPrimitiveTopology" class="xref page">VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY</a> (odd)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2i</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2i+4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2i+2</p></td>
@@ -5543,7 +5546,7 @@ the currently active pipeline is not <code>VK_POLYGON_MODE_FILL</code>, an
 </table>
 <div class="paragraph">
 <p>When the provoking vertex mode is
-<code>VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT</code>, the original vertex numbers
+<a href="vertexpostproc.html#VkProvokingVertexModeEXT" class="xref page">VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT</a>, the original vertex numbers
 used are the same as above except as indicated in the table below.</p>
 </div>
 <table id="primsrast-barycentric-order-table-last-vertex" class="tableblock frame-all grid-all stretch">
@@ -5563,21 +5566,21 @@ used are the same as above except as indicated in the table below.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP</code> (odd, and
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="drawing.html#VkPrimitiveTopology" class="xref page">VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP</a> (odd, and
 <code>triStripVertexOrderIndependentOfProvokingVertex</code> of
-<a href="limits.html#VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR" class="xref page">VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR</a> is <code>VK_FALSE</code>)</p></td>
+<a href="limits.html#VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR" class="xref page">VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR</a> is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i+1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i+2</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="drawing.html#VkPrimitiveTopology" class="xref page">VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i+1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">i+2</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY</code> (odd)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="drawing.html#VkPrimitiveTopology" class="xref page">VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY</a> (odd)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2i+2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2i</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2i+4</p></td>
@@ -5625,7 +5628,7 @@ interpolation.
 The values of <code>BaryCoordKHR</code> and <code>BaryCoordNoPerspKHR</code> are <strong>undefined</strong>
 while rasterizing a polygon when the
 <a href="#VkPipelineRasterizationStateCreateInfo">VkPipelineRasterizationStateCreateInfo</a>::<code>polygonMode</code> property of
-the currently active pipeline is not <code>VK_POLYGON_MODE_FILL</code>.</p>
+the currently active pipeline is not <a href="#VkPolygonMode">VK_POLYGON_MODE_FILL</a>.</p>
 </div>
 </div>
 </div>
@@ -5785,7 +5788,7 @@ rasterization.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>If <code>stippledLineEnable</code> is <code>VK_FALSE</code>, the values of
+<p>If <code>stippledLineEnable</code> is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, the values of
 <code>lineStippleFactor</code> and <code>lineStipplePattern</code> are ignored.</p>
 </div>
 <div class="sidebarblock">
@@ -5797,7 +5800,7 @@ rasterization.</p>
 <p><a id="VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02768" href="#VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02768"></a> <span class="vuid">VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02768</span><br>
 
 If <code>lineRasterizationMode</code> is
-<code>VK_LINE_RASTERIZATION_MODE_RECTANGULAR</code>, then the
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_RECTANGULAR</a>, then the
 <a href="features.html#features-rectangularLines" class="xref page"><code>rectangularLines</code></a> feature <strong>must</strong> be
 enabled</p>
 </li>
@@ -5805,7 +5808,7 @@ enabled</p>
 <p><a id="VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02769" href="#VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02769"></a> <span class="vuid">VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02769</span><br>
 
 If <code>lineRasterizationMode</code> is
-<code>VK_LINE_RASTERIZATION_MODE_BRESENHAM</code>, then the
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_BRESENHAM</a>, then the
 <a href="features.html#features-bresenhamLines" class="xref page"><code>bresenhamLines</code></a> feature <strong>must</strong> be
 enabled</p>
 </li>
@@ -5813,43 +5816,43 @@ enabled</p>
 <p><a id="VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02770" href="#VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02770"></a> <span class="vuid">VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-02770</span><br>
 
 If <code>lineRasterizationMode</code> is
-<code>VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH</code>, then the
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH</a>, then the
 <a href="features.html#features-smoothLines" class="xref page"><code>smoothLines</code></a> feature <strong>must</strong> be enabled</p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02771" href="#VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02771"></a> <span class="vuid">VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02771</span><br>
 
-If <code>stippledLineEnable</code> is <code>VK_TRUE</code> and
+If <code>stippledLineEnable</code> is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a> and
 <code>lineRasterizationMode</code> is
-<code>VK_LINE_RASTERIZATION_MODE_RECTANGULAR</code>, then the
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_RECTANGULAR</a>, then the
 <a href="features.html#features-stippledRectangularLines" class="xref page"><code>stippledRectangularLines</code></a>
 feature <strong>must</strong> be enabled</p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02772" href="#VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02772"></a> <span class="vuid">VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02772</span><br>
 
-If <code>stippledLineEnable</code> is <code>VK_TRUE</code> and
+If <code>stippledLineEnable</code> is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a> and
 <code>lineRasterizationMode</code> is
-<code>VK_LINE_RASTERIZATION_MODE_BRESENHAM</code>, then the
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_BRESENHAM</a>, then the
 <a href="features.html#features-stippledBresenhamLines" class="xref page"><code>stippledBresenhamLines</code></a>
 feature <strong>must</strong> be enabled</p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02773" href="#VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02773"></a> <span class="vuid">VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02773</span><br>
 
-If <code>stippledLineEnable</code> is <code>VK_TRUE</code> and
+If <code>stippledLineEnable</code> is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a> and
 <code>lineRasterizationMode</code> is
-<code>VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH</code>, then the
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH</a>, then the
 <a href="features.html#features-stippledSmoothLines" class="xref page"><code>stippledSmoothLines</code></a> feature
 <strong>must</strong> be enabled</p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02774" href="#VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02774"></a> <span class="vuid">VUID-VkPipelineRasterizationLineStateCreateInfo-stippledLineEnable-02774</span><br>
 
-If <code>stippledLineEnable</code> is <code>VK_TRUE</code> and
-<code>lineRasterizationMode</code> is <code>VK_LINE_RASTERIZATION_MODE_DEFAULT</code>,
+If <code>stippledLineEnable</code> is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a> and
+<code>lineRasterizationMode</code> is <a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_DEFAULT</a>,
 then the <a href="features.html#features-stippledRectangularLines" class="xref page">    <code>stippledRectangularLines</code></a> feature <strong>must</strong> be enabled and
-<a href="limits.html#VkPhysicalDeviceLimits" class="xref page">VkPhysicalDeviceLimits</a>::<code>strictLines</code> <strong>must</strong> be <code>VK_TRUE</code></p>
+<a href="limits.html#VkPhysicalDeviceLimits" class="xref page">VkPhysicalDeviceLimits</a>::<code>strictLines</code> <strong>must</strong> be <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a></p>
 </li>
 </ul>
 </div>
@@ -5862,7 +5865,7 @@ then the <a href="features.html#features-stippledRectangularLines" class="xref p
 <ul>
 <li>
 <p><a id="VUID-VkPipelineRasterizationLineStateCreateInfo-sType-sType" href="#VUID-VkPipelineRasterizationLineStateCreateInfo-sType-sType"></a> <span class="vuid">VUID-VkPipelineRasterizationLineStateCreateInfo-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-parameter" href="#VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-parameter"></a> <span class="vuid">VUID-VkPipelineRasterizationLineStateCreateInfo-lineRasterizationMode-parameter</span><br>
@@ -5925,23 +5928,23 @@ typedef VkLineRasterizationMode VkLineRasterizationModeEXT;</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_LINE_RASTERIZATION_MODE_DEFAULT</code> is equivalent to
-<code>VK_LINE_RASTERIZATION_MODE_RECTANGULAR</code> if
-<a href="limits.html#VkPhysicalDeviceLimits" class="xref page">VkPhysicalDeviceLimits</a>::<code>strictLines</code> is <code>VK_TRUE</code>,
+<p><a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_DEFAULT</a> is equivalent to
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_RECTANGULAR</a> if
+<a href="limits.html#VkPhysicalDeviceLimits" class="xref page">VkPhysicalDeviceLimits</a>::<code>strictLines</code> is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>,
 otherwise lines are drawn as non-<code>strictLines</code> parallelograms.
 Both of these modes are defined in <a href="#primsrast-lines-basic">Basic Line    Segment Rasterization</a>.</p>
 </li>
 <li>
-<p><code>VK_LINE_RASTERIZATION_MODE_RECTANGULAR</code> specifies lines drawn as if
+<p><a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_RECTANGULAR</a> specifies lines drawn as if
 they were rectangles extruded from the line</p>
 </li>
 <li>
-<p><code>VK_LINE_RASTERIZATION_MODE_BRESENHAM</code> specifies lines drawn by
+<p><a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_BRESENHAM</a> specifies lines drawn by
 determining which pixel diamonds the line intersects and exits, as
 defined in <a href="#primsrast-lines-bresenham">Bresenham Line Segment    Rasterization</a>.</p>
 </li>
 <li>
-<p><code>VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH</code> specifies lines
+<p><a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH</a> specifies lines
 drawn if they were rectangles extruded from the line, with alpha
 falloff, as defined in <a href="#primsrast-lines-smooth">Smooth Lines</a>.</p>
 </li>
@@ -5980,7 +5983,7 @@ state.</p>
 drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineRasterizationLineStateCreateInfo">VkPipelineRasterizationLineStateCreateInfo</a>::<code>lineRasterizationMode</code>
@@ -6011,7 +6014,7 @@ enabled</p>
 <p><a id="VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07418" href="#VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07418"></a> <span class="vuid">VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07418</span><br>
 
 If <code>lineRasterizationMode</code> is
-<code>VK_LINE_RASTERIZATION_MODE_RECTANGULAR</code>, then the
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_RECTANGULAR</a>, then the
 <a href="features.html#features-rectangularLines" class="xref page"><code>rectangularLines</code></a> feature <strong>must</strong> be
 enabled</p>
 </li>
@@ -6019,7 +6022,7 @@ enabled</p>
 <p><a id="VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07419" href="#VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07419"></a> <span class="vuid">VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07419</span><br>
 
 If <code>lineRasterizationMode</code> is
-<code>VK_LINE_RASTERIZATION_MODE_BRESENHAM</code>, then the
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_BRESENHAM</a>, then the
 <a href="features.html#features-bresenhamLines" class="xref page"><code>bresenhamLines</code></a> feature <strong>must</strong> be
 enabled</p>
 </li>
@@ -6027,7 +6030,7 @@ enabled</p>
 <p><a id="VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07420" href="#VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07420"></a> <span class="vuid">VUID-vkCmdSetLineRasterizationModeEXT-lineRasterizationMode-07420</span><br>
 
 If <code>lineRasterizationMode</code> is
-<code>VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH</code>, then the
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH</a>, then the
 <a href="features.html#features-smoothLines" class="xref page"><code>smoothLines</code></a> feature <strong>must</strong> be enabled</p>
 </li>
 </ul>
@@ -6053,7 +6056,7 @@ If <code>lineRasterizationMode</code> is
 </li>
 <li>
 <p><a id="VUID-vkCmdSetLineRasterizationModeEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetLineRasterizationModeEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetLineRasterizationModeEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetLineRasterizationModeEXT-videocoding" href="#VUID-vkCmdSetLineRasterizationModeEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetLineRasterizationModeEXT-videocoding</span><br>
@@ -6151,7 +6154,7 @@ recorded.</p>
 commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineRasterizationLineStateCreateInfo">VkPipelineRasterizationLineStateCreateInfo</a>::<code>stippledLineEnable</code>
@@ -6197,7 +6200,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetLineStippleEnableEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetLineStippleEnableEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetLineStippleEnableEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetLineStippleEnableEXT-videocoding" href="#VUID-vkCmdSetLineStippleEnableEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetLineStippleEnableEXT-videocoding</span><br>
@@ -6292,7 +6295,7 @@ recorded.</p>
 <div class="paragraph">
 <p>This command sets the line width for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
-when the graphics pipeline is created with <code>VK_DYNAMIC_STATE_LINE_WIDTH</code>
+when the graphics pipeline is created with <a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_LINE_WIDTH</a>
 set in <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineRasterizationStateCreateInfo">VkPipelineRasterizationStateCreateInfo</a>::<code>lineWidth</code> value used to
@@ -6328,7 +6331,7 @@ If the <a href="features.html#features-wideLines" class="xref page"><code>wideLi
 </li>
 <li>
 <p><a id="VUID-vkCmdSetLineWidth-commandBuffer-cmdpool" href="#VUID-vkCmdSetLineWidth-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetLineWidth-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetLineWidth-videocoding" href="#VUID-vkCmdSetLineWidth-videocoding"></a> <span class="vuid">VUID-vkCmdSetLineWidth-videocoding</span><br>
@@ -6418,7 +6421,7 @@ width or height.</p>
 <div class="paragraph">
 <p>If the <code>lineRasterizationMode</code> member of
 <a href="#VkPipelineRasterizationLineStateCreateInfo">VkPipelineRasterizationLineStateCreateInfo</a> is
-<code>VK_LINE_RASTERIZATION_MODE_RECTANGULAR</code>, rasterized
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_RECTANGULAR</a>, rasterized
 line segments produce fragments which intersect a rectangle centered on the
 line segment.
 Two of the edges are parallel to the specified line segment; each is at a
@@ -6436,7 +6439,7 @@ Let <span class="eq"><strong>p</strong><sub>r</sub> = (x<sub>d</sub>, y<sub>d</s
 associated data are evaluated.
 This <strong>may</strong> be the center of a fragment or the location of a sample within the
 fragment.
-When <code>rasterizationSamples</code> is <code>VK_SAMPLE_COUNT_1_BIT</code>, the fragment
+When <code>rasterizationSamples</code> is <a href="limits.html#VkSampleCountFlagBits" class="xref page">VK_SAMPLE_COUNT_1_BIT</a>, the fragment
 center <strong>must</strong> be used.
 Let <span class="eq"><strong>p</strong><sub>a</sub> = (x<sub>a</sub>, y<sub>a</sub>)</span> and <span class="eq"><strong>p</strong><sub>b</sub> = (x<sub>b</sub>,y<sub>b</sub>)</span> be
 initial and final endpoints of the line segment, respectively.
@@ -6454,7 +6457,7 @@ Also note that this calculation projects the vector from <span class="eq"><stron
 the fragment along the line.)</p>
 </div>
 <div class="paragraph">
-<p>If <a href="limits.html#limits-strictLines" class="xref page"><code>strictLines</code></a> is <code>VK_TRUE</code>, line segments
+<p>If <a href="limits.html#limits-strictLines" class="xref page"><code>strictLines</code></a> is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, line segments
 are rasterized using perspective or linear interpolation.</p>
 </div>
 <div id="line_perspective_interpolation" class="paragraph">
@@ -6501,15 +6504,15 @@ Interpolation of fragment shader input values are determined by
 <div class="paragraph">
 <p>The above description documents the preferred method of line rasterization,
 and <strong>must</strong> be used when
-<code>lineRasterizationMode</code> is <code>VK_LINE_RASTERIZATION_MODE_RECTANGULAR</code>.</p>
+<code>lineRasterizationMode</code> is <a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_RECTANGULAR</a>.</p>
 </div>
 <div class="paragraph">
 <p>By default, when
-<code>strictLines</code> is <code>VK_FALSE</code>,
+<code>strictLines</code> is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>,
 or the <a href="features.html#features-relaxedLineRasterization" class="xref page"><code>relaxedLineRasterization</code></a>
 feature is enabled,
 and when the <code>lineRasterizationMode</code> is
-<code>VK_LINE_RASTERIZATION_MODE_DEFAULT</code>,
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_DEFAULT</a>,
 the edges of the lines are generated as a parallelogram surrounding the
 original line.
 The major axis is chosen by noting the axis in which there is the greatest
@@ -6541,10 +6544,10 @@ attributes.</p>
 </div>
 <div class="paragraph">
 <p>When
-<code>strictLines</code> is <code>VK_FALSE</code>
+<code>strictLines</code> is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>
 or when the <a href="features.html#features-relaxedLineRasterization" class="xref page"><code>relaxedLineRasterization</code></a> feature is enabled,
 and <code>lineRasterizationMode</code> is
-<code>VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT</code>
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT</a>
 implementations <strong>may</strong> deviate from the non-strict line algorithm described
 above in the following ways:</p>
 </div>
@@ -6565,20 +6568,20 @@ performed using the rules defined in
 <div class="paragraph">
 <p>If
 <code>VkPhysicalDeviceMaintenance5Properties</code>::<code>nonStrictSinglePixelWideLinesUseParallelogram</code>
-is <code>VK_TRUE</code>,
+is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>,
 the <code>lineRasterizationMode</code> is
-<code>VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT</code>,
-and <code>strictLines</code> is <code>VK_FALSE</code>, non-strict lines of width 1.0 are
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT</a>,
+and <code>strictLines</code> is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, non-strict lines of width 1.0 are
 rasterized as parallelograms, otherwise they are rasterized using
 Bresenham&#8217;s algorithm.</p>
 </div>
 <div class="paragraph">
 <p>If
 <code>VkPhysicalDeviceMaintenance5Properties</code>::<code>nonStrictWideLinesUseParallelogram</code>
-is <code>VK_TRUE</code>,
+is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>,
 the <code>lineRasterizationMode</code> is
-<code>VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT</code>,
-and <code>strictLines</code> is <code>VK_FALSE</code>, non-strict lines of width greater
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT</a>,
+and <code>strictLines</code> is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, non-strict lines of width greater
 than 1.0 are rasterized as parallelograms, otherwise they are rasterized
 using Bresenham&#8217;s algorithm.</p>
 </div>
@@ -6587,7 +6590,7 @@ using Bresenham&#8217;s algorithm.</p>
 <h3 id="primsrast-lines-bresenham"><a class="anchor" href="#primsrast-lines-bresenham"></a>Bresenham Line Segment Rasterization</h3>
 <div class="paragraph">
 <p>If <code>lineRasterizationMode</code> is
-<code>VK_LINE_RASTERIZATION_MODE_BRESENHAM</code>, then the following rules replace
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_BRESENHAM</a>, then the following rules replace
 the line rasterization rules defined in <a href="#primsrast-lines-basic">Basic Line Segment Rasterization</a>.</p>
 </div>
 <div class="paragraph">
@@ -6598,7 +6601,7 @@ non-antialiased lines.</p>
 <p>If the <a href="features.html#features-relaxedLineRasterization" class="xref page"><code>relaxedLineRasterization</code></a>
 feature is enabled,
 and <code>lineRasterizationMode</code> is
-<code>VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT</code>
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT</a>
 implementations <strong>must</strong> follow these rasterization rules for non-antialised
 lines of width 1.0.</p>
 </div>
@@ -6752,7 +6755,7 @@ those pixels (unless masked out or killed).</p>
 <h3 id="primsrast-lines-stipple"><a class="anchor" href="#primsrast-lines-stipple"></a>Line Stipple</h3>
 <div class="paragraph">
 <p>If the <code>stippledLineEnable</code> member of
-<a href="#VkPipelineRasterizationLineStateCreateInfo">VkPipelineRasterizationLineStateCreateInfo</a> is <code>VK_TRUE</code>, then
+<a href="#VkPipelineRasterizationLineStateCreateInfo">VkPipelineRasterizationLineStateCreateInfo</a> is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, then
 lines are rasterized with a <em>line stipple</em> determined by
 <code>lineStippleFactor</code> and <code>lineStipplePattern</code>.
 <code>lineStipplePattern</code> is an unsigned 16-bit integer that determines which
@@ -6782,12 +6785,12 @@ the most significant.</p>
 </div>
 <div class="paragraph">
 <p>The initial value of <em>s</em> is zero.
-For <code>VK_LINE_RASTERIZATION_MODE_BRESENHAM</code> lines, <em>s</em> is incremented
+For <a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_BRESENHAM</a> lines, <em>s</em> is incremented
 after production of each fragment of a line segment (fragments are produced
 in order, beginning at the starting point and working towards the ending
 point).
-For <code>VK_LINE_RASTERIZATION_MODE_RECTANGULAR</code> and
-<code>VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH</code> lines, the rectangular
+For <a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_RECTANGULAR</a> and
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH</a> lines, the rectangular
 region is subdivided into adjacent unit-length rectangles, and s is
 incremented once for each rectangle.
 Rectangles with a value of <em>s</em> such that the <em>b</em>'th bit of <em>p</em> is zero are
@@ -6860,7 +6863,7 @@ rasterization.</p>
 <p>This command sets the line stipple state for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_LINE_STIPPLE</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_LINE_STIPPLE</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineRasterizationLineStateCreateInfo">VkPipelineRasterizationLineStateCreateInfo</a>::<code>lineStippleFactor</code>
@@ -6897,7 +6900,7 @@ values used to create the currently active pipeline.</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetLineStipple-commandBuffer-cmdpool" href="#VUID-vkCmdSetLineStipple-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetLineStipple-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetLineStipple-videocoding" href="#VUID-vkCmdSetLineStipple-videocoding"></a> <span class="vuid">VUID-vkCmdSetLineStipple-videocoding</span><br>
@@ -6971,9 +6974,9 @@ Secondary</p></td>
 <div class="paragraph">
 <p>If the <code>lineRasterizationMode</code> member of
 <a href="#VkPipelineRasterizationLineStateCreateInfo">VkPipelineRasterizationLineStateCreateInfo</a> is
-<code>VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH</code>, then lines are
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH</a>, then lines are
 considered to be rectangles using the same geometry as for
-<code>VK_LINE_RASTERIZATION_MODE_RECTANGULAR</code> lines.
+<a href="#VkLineRasterizationModeEXT">VK_LINE_RASTERIZATION_MODE_RECTANGULAR</a> lines.
 The rules for determining which pixels are covered are
 implementation-dependent, and <strong>may</strong> include nearby pixels where no sample
 locations are covered or where the rectangle does not intersect the pixel at
@@ -7053,11 +7056,11 @@ typedef enum VkFrontFace {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_FRONT_FACE_COUNTER_CLOCKWISE</code> specifies that a triangle with
+<p><a href="#VkFrontFace">VK_FRONT_FACE_COUNTER_CLOCKWISE</a> specifies that a triangle with
 positive area is considered front-facing.</p>
 </li>
 <li>
-<p><code>VK_FRONT_FACE_CLOCKWISE</code> specifies that a triangle with negative
+<p><a href="#VkFrontFace">VK_FRONT_FACE_CLOCKWISE</a> specifies that a triangle with negative
 area is considered front-facing.</p>
 </li>
 </ul>
@@ -7106,7 +7109,7 @@ triangle orientation to be used for culling.</p>
 <div class="paragraph">
 <p>This command sets the front face orientation for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
-when the graphics pipeline is created with <code>VK_DYNAMIC_STATE_FRONT_FACE</code>
+when the graphics pipeline is created with <a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_FRONT_FACE</a>
 set in <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineRasterizationStateCreateInfo">VkPipelineRasterizationStateCreateInfo</a>::<code>frontFace</code> value used to
@@ -7161,7 +7164,7 @@ equal to Version 1.3</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFrontFace-commandBuffer-cmdpool" href="#VUID-vkCmdSetFrontFace-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetFrontFace-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFrontFace-videocoding" href="#VUID-vkCmdSetFrontFace-videocoding"></a> <span class="vuid">VUID-vkCmdSetFrontFace-videocoding</span><br>
@@ -7251,18 +7254,18 @@ typedef enum VkCullModeFlagBits {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_CULL_MODE_NONE</code> specifies that no triangles are discarded</p>
+<p><a href="#VkCullModeFlagBits">VK_CULL_MODE_NONE</a> specifies that no triangles are discarded</p>
 </li>
 <li>
-<p><code>VK_CULL_MODE_FRONT_BIT</code> specifies that front-facing triangles are
+<p><a href="#VkCullModeFlagBits">VK_CULL_MODE_FRONT_BIT</a> specifies that front-facing triangles are
 discarded</p>
 </li>
 <li>
-<p><code>VK_CULL_MODE_BACK_BIT</code> specifies that back-facing triangles are
+<p><a href="#VkCullModeFlagBits">VK_CULL_MODE_BACK_BIT</a> specifies that back-facing triangles are
 discarded</p>
 </li>
 <li>
-<p><code>VK_CULL_MODE_FRONT_AND_BACK</code> specifies that all triangles are
+<p><a href="#VkCullModeFlagBits">VK_CULL_MODE_FRONT_AND_BACK</a> specifies that all triangles are
 discarded.</p>
 </li>
 </ul>
@@ -7323,7 +7326,7 @@ recorded.</p>
 <div class="paragraph">
 <p>This command sets the cull mode for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
-when the graphics pipeline is created with <code>VK_DYNAMIC_STATE_CULL_MODE</code>
+when the graphics pipeline is created with <a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_CULL_MODE</a>
 set in <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineRasterizationStateCreateInfo">VkPipelineRasterizationStateCreateInfo</a>::<code>cullMode</code> value used to
@@ -7378,7 +7381,7 @@ equal to Version 1.3</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCullMode-commandBuffer-cmdpool" href="#VUID-vkCmdSetCullMode-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetCullMode-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCullMode-videocoding" href="#VUID-vkCmdSetCullMode-videocoding"></a> <span class="vuid">VUID-vkCmdSetCullMode-videocoding</span><br>
@@ -7605,19 +7608,19 @@ typedef enum VkPolygonMode {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_POLYGON_MODE_POINT</code> specifies that polygon vertices are drawn as
+<p><a href="#VkPolygonMode">VK_POLYGON_MODE_POINT</a> specifies that polygon vertices are drawn as
 points.</p>
 </li>
 <li>
-<p><code>VK_POLYGON_MODE_LINE</code> specifies that polygon edges are drawn as
+<p><a href="#VkPolygonMode">VK_POLYGON_MODE_LINE</a> specifies that polygon edges are drawn as
 line segments.</p>
 </li>
 <li>
-<p><code>VK_POLYGON_MODE_FILL</code> specifies that polygons are rendered using
+<p><a href="#VkPolygonMode">VK_POLYGON_MODE_FILL</a> specifies that polygons are rendered using
 the polygon rasterization rules in this section.</p>
 </li>
 <li>
-<p><code>VK_POLYGON_MODE_FILL_RECTANGLE_NV</code> specifies that polygons are
+<p><a href="#VkPolygonMode">VK_POLYGON_MODE_FILL_RECTANGLE_NV</a> specifies that polygons are
 rendered using polygon rasterization rules, modified to consider a
 sample within the primitive if the sample location is inside the
 axis-aligned bounding box of the triangle after projection.
@@ -7630,13 +7633,13 @@ In such a case, if two rectangles lie on either side of a common edge
 one of the triangles <strong>must</strong> produce a fragment that covers that sample
 during rasterization.</p>
 <div class="paragraph">
-<p>Polygons rendered in <code>VK_POLYGON_MODE_FILL_RECTANGLE_NV</code> mode <strong>may</strong> be
+<p>Polygons rendered in <a href="#VkPolygonMode">VK_POLYGON_MODE_FILL_RECTANGLE_NV</a> mode <strong>may</strong> be
 clipped by the frustum or by user clip planes.
 If clipping is applied, the triangle is culled rather than clipped.</p>
 </div>
 <div class="paragraph">
 <p>Area calculation and facingness are determined for
-<code>VK_POLYGON_MODE_FILL_RECTANGLE_NV</code> mode using the triangle&#8217;s vertices.</p>
+<a href="#VkPolygonMode">VK_POLYGON_MODE_FILL_RECTANGLE_NV</a> mode using the triangle&#8217;s vertices.</p>
 </div>
 </li>
 </ul>
@@ -7648,15 +7651,15 @@ culled before these modes are applied.</p>
 </div>
 <div class="paragraph">
 <p>If <code>VkPhysicalDeviceMaintenance5Properties</code>::<code>polygonModePointSize</code>
-is <code>VK_TRUE</code>, the point size of the final rasterization of polygons is
+is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, the point size of the final rasterization of polygons is
 taken from <code>PointSize</code> when <a href="#primsrast-polygonmode">polygon mode</a> is
-<code>VK_POLYGON_MODE_POINT</code>.</p>
+<a href="#VkPolygonMode">VK_POLYGON_MODE_POINT</a>.</p>
 </div>
 <div class="paragraph">
 <p>Otherwise, if
 <code>VkPhysicalDeviceMaintenance5Properties</code>::<code>polygonModePointSize</code> is
-<code>VK_FALSE</code>, the point size of the final rasterization of polygons is 1.0
-when <a href="#primsrast-polygonmode">polygon mode</a> is <code>VK_POLYGON_MODE_POINT</code>.</p>
+<a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, the point size of the final rasterization of polygons is 1.0
+when <a href="#primsrast-polygonmode">polygon mode</a> is <a href="#VkPolygonMode">VK_POLYGON_MODE_POINT</a>.</p>
 </div>
 </div>
 </div>
@@ -7688,7 +7691,7 @@ recorded.</p>
 <p>This command sets the polygon mode for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_POLYGON_MODE_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_POLYGON_MODE_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineRasterizationStateCreateInfo">VkPipelineRasterizationStateCreateInfo</a>::<code>polygonMode</code> value used
@@ -7719,14 +7722,14 @@ enabled</p>
 <p><a id="VUID-vkCmdSetPolygonModeEXT-fillModeNonSolid-07424" href="#VUID-vkCmdSetPolygonModeEXT-fillModeNonSolid-07424"></a> <span class="vuid">VUID-vkCmdSetPolygonModeEXT-fillModeNonSolid-07424</span><br>
 
     If the <a href="features.html#features-fillModeNonSolid" class="xref page"><code>fillModeNonSolid</code></a> feature is
-    not enabled, <code>polygonMode</code> <strong>must</strong> be <code>VK_POLYGON_MODE_FILL</code>
-or <code>VK_POLYGON_MODE_FILL_RECTANGLE_NV</code></p>
+    not enabled, <code>polygonMode</code> <strong>must</strong> be <a href="#VkPolygonMode">VK_POLYGON_MODE_FILL</a>
+or <a href="#VkPolygonMode">VK_POLYGON_MODE_FILL_RECTANGLE_NV</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetPolygonModeEXT-polygonMode-07425" href="#VUID-vkCmdSetPolygonModeEXT-polygonMode-07425"></a> <span class="vuid">VUID-vkCmdSetPolygonModeEXT-polygonMode-07425</span><br>
 
 If the <code><a href="../appendices/extensions.html#VK_NV_fill_rectangle" class="xref page">VK_NV_fill_rectangle</a></code> extension is not enabled,
-<code>polygonMode</code> <strong>must</strong> not be <code>VK_POLYGON_MODE_FILL_RECTANGLE_NV</code></p>
+<code>polygonMode</code> <strong>must</strong> not be <a href="#VkPolygonMode">VK_POLYGON_MODE_FILL_RECTANGLE_NV</a></p>
 </li>
 </ul>
 </div>
@@ -7751,7 +7754,7 @@ If the <code><a href="../appendices/extensions.html#VK_NV_fill_rectangle" class=
 </li>
 <li>
 <p><a id="VUID-vkCmdSetPolygonModeEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetPolygonModeEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetPolygonModeEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetPolygonModeEXT-videocoding" href="#VUID-vkCmdSetPolygonModeEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetPolygonModeEXT-videocoding</span><br>
@@ -7836,7 +7839,7 @@ and <code>vkCmdSetDepthBiasEnableEXT</code>,
 or the corresponding
 <a href="#VkPipelineRasterizationStateCreateInfo">VkPipelineRasterizationStateCreateInfo</a>::<code>depthBiasEnable</code> value
 used to create the currently active pipeline.
-If the depth bias enable is <code>VK_FALSE</code>, no bias is applied and the
+If the depth bias enable is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a>, no bias is applied and the
 fragment&#8217;s depth values are unchanged.</p>
 </div>
 <div class="openblock">
@@ -7877,7 +7880,7 @@ recorded.</p>
 <p>This command sets the depth bias enable for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineRasterizationStateCreateInfo">VkPipelineRasterizationStateCreateInfo</a>::<code>depthBiasEnable</code> value
@@ -7928,7 +7931,7 @@ equal to Version 1.3</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthBiasEnable-commandBuffer-cmdpool" href="#VUID-vkCmdSetDepthBiasEnable-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetDepthBiasEnable-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthBiasEnable-videocoding" href="#VUID-vkCmdSetDepthBiasEnable-videocoding"></a> <span class="vuid">VUID-vkCmdSetDepthBiasEnable-videocoding</span><br>
@@ -8044,7 +8047,7 @@ below.</p>
 </div>
 <div class="paragraph">
 <p>In a pipeline with a depth bias representation of
-<code>VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT</code>, <span class="eq">r</span>, for the given
+<a href="#VkDepthBiasRepresentationEXT">VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT</a>, <span class="eq">r</span>, for the given
 primitive is defined as</p>
 </div>
 <div class="dlist">
@@ -8060,7 +8063,7 @@ primitive is defined as</p>
 <span class="eq">r</span> is the minimum resolvable difference that depends on the depth
 attachment representation.
 If <code>VkDepthBiasRepresentationInfoEXT</code>::<code>depthBiasExact</code> is
-<code>VK_FALSE</code> it
+<a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a> it
 is the smallest difference in a sample&#8217;s depth <span class="eq">z<sub>f</sub></span> values that is
 guaranteed to remain distinct throughout polygon rasterization and in the
 depth attachment.
@@ -8071,10 +8074,10 @@ will have distinct depth values.</p>
 <div class="paragraph">
 <p>For fixed-point depth attachment representations,
 or in a pipeline with a depth bias representation of
-<code>VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT</code>,
+<a href="#VkDepthBiasRepresentationEXT">VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT</a>,
 <span class="eq">r</span> is constant throughout the range of the entire depth attachment.
 If <code>VkDepthBiasRepresentationInfoEXT</code>::<code>depthBiasExact</code> is
-<code>VK_TRUE</code>, then its value <strong>must</strong> be</p>
+<a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, then its value <strong>must</strong> be</p>
 </div>
 <div class="dlist">
 <dl>
@@ -8120,7 +8123,7 @@ resolvable difference, <span class="eq">r</span>, for the given primitive is def
 </div>
 <div class="paragraph">
 <p>If a triangle is rasterized using the
-<code>VK_POLYGON_MODE_FILL_RECTANGLE_NV</code> polygon mode, then this minimum
+<a href="#VkPolygonMode">VK_POLYGON_MODE_FILL_RECTANGLE_NV</a> polygon mode, then this minimum
 resolvable difference <strong>may</strong> not be resolvable for samples outside of the
 triangle, where the depth is extrapolated.</p>
 </div>
@@ -8186,7 +8189,7 @@ slope in depth bias calculations.</p>
 <div class="paragraph">
 <p>This command sets the depth bias parameters for subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
-when the graphics pipeline is created with <code>VK_DYNAMIC_STATE_DEPTH_BIAS</code>
+when the graphics pipeline is created with <a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_DEPTH_BIAS</a>
 set in <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the corresponding
 <a href="#VkPipelineRasterizationStateCreateInfo">VkPipelineRasterizationStateCreateInfo</a>::<code>depthBiasConstantFactor</code>,
@@ -8228,7 +8231,7 @@ enabled, <code>depthBiasClamp</code> <strong>must</strong> be <code>0.0</code></
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthBias-commandBuffer-cmdpool" href="#VUID-vkCmdSetDepthBias-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetDepthBias-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthBias-videocoding" href="#VUID-vkCmdSetDepthBias-videocoding"></a> <span class="vuid">VUID-vkCmdSetDepthBias-videocoding</span><br>
@@ -8341,20 +8344,20 @@ scale the depth bias value to ensure a minimum resolvable distance.</p>
 
 If the <a href="features.html#features-leastRepresentableValueForceUnormRepresentation" class="xref page">    <code>leastRepresentableValueForceUnormRepresentation</code></a> feature is not
 enabled, <code>depthBiasRepresentation</code> <strong>must</strong> not be
-<code>VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT</code></p>
+<a href="#VkDepthBiasRepresentationEXT">VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-VkDepthBiasRepresentationInfoEXT-floatRepresentation-08948" href="#VUID-VkDepthBiasRepresentationInfoEXT-floatRepresentation-08948"></a> <span class="vuid">VUID-VkDepthBiasRepresentationInfoEXT-floatRepresentation-08948</span><br>
 
 If the <a href="features.html#features-floatRepresentation" class="xref page"><code>floatRepresentation</code></a>
 feature is not enabled, <code>depthBiasRepresentation</code> <strong>must</strong> not be
-<code>VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT</code></p>
+<a href="#VkDepthBiasRepresentationEXT">VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-VkDepthBiasRepresentationInfoEXT-depthBiasExact-08949" href="#VUID-VkDepthBiasRepresentationInfoEXT-depthBiasExact-08949"></a> <span class="vuid">VUID-VkDepthBiasRepresentationInfoEXT-depthBiasExact-08949</span><br>
 
 If the <a href="features.html#features-depthBiasExact" class="xref page"><code>depthBiasExact</code></a> feature is not
-enabled, <code>depthBiasExact</code> <strong>must</strong> be <code>VK_FALSE</code></p>
+enabled, <code>depthBiasExact</code> <strong>must</strong> be <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a></p>
 </li>
 </ul>
 </div>
@@ -8367,7 +8370,7 @@ enabled, <code>depthBiasExact</code> <strong>must</strong> be <code>VK_FALSE</co
 <ul>
 <li>
 <p><a id="VUID-VkDepthBiasRepresentationInfoEXT-sType-sType" href="#VUID-VkDepthBiasRepresentationInfoEXT-sType-sType"></a> <span class="vuid">VUID-VkDepthBiasRepresentationInfoEXT-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_DEPTH_BIAS_REPRESENTATION_INFO_EXT</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_DEPTH_BIAS_REPRESENTATION_INFO_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-VkDepthBiasRepresentationInfoEXT-depthBiasRepresentation-parameter" href="#VUID-VkDepthBiasRepresentationInfoEXT-depthBiasRepresentation-parameter"></a> <span class="vuid">VUID-VkDepthBiasRepresentationInfoEXT-depthBiasRepresentation-parameter</span><br>
@@ -8399,18 +8402,18 @@ typedef enum VkDepthBiasRepresentationEXT {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORMAT_EXT</code>
+<p><a href="#VkDepthBiasRepresentationEXT">VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORMAT_EXT</a>
 specifies that the depth bias representation is a factor of the format&#8217;s
 <span class="eq">r</span> as described in <a href="#primsrast-depthbias-computation">Depth Bias Computation</a>.</p>
 </li>
 <li>
-<p><code>VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT</code>
+<p><a href="#VkDepthBiasRepresentationEXT">VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT</a>
 specifies that the depth bias representation is a factor of a constant
 <span class="eq">r</span> defined by the bit-size or mantissa of the format as described
 in <a href="#primsrast-depthbias-computation">Depth Bias Computation</a>.</p>
 </li>
 <li>
-<p><code>VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT</code> specifies that the depth
+<p><a href="#VkDepthBiasRepresentationEXT">VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT</a> specifies that the depth
 bias representation is a factor of constant <span class="eq">r</span> equal to 1.</p>
 </li>
 </ul>
@@ -8461,8 +8464,8 @@ slope in depth bias calculations.</p>
 <p>If <code>pNext</code> does not contain a <a href="#VkDepthBiasRepresentationInfoEXT">VkDepthBiasRepresentationInfoEXT</a>
 structure, then this command is equivalent to including a
 <a href="#VkDepthBiasRepresentationInfoEXT">VkDepthBiasRepresentationInfoEXT</a> with <code>depthBiasExact</code> set to
-<code>VK_FALSE</code> and <code>depthBiasRepresentation</code> set to
-<code>VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORMAT_EXT</code>.</p>
+<a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a> and <code>depthBiasRepresentation</code> set to
+<a href="#VkDepthBiasRepresentationEXT">VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORMAT_EXT</a>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -8486,7 +8489,7 @@ enabled, <code>depthBiasClamp</code> <strong>must</strong> be <code>0.0</code></
 <ul>
 <li>
 <p><a id="VUID-VkDepthBiasInfoEXT-sType-sType" href="#VUID-VkDepthBiasInfoEXT-sType-sType"></a> <span class="vuid">VUID-VkDepthBiasInfoEXT-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_DEPTH_BIAS_INFO_EXT</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_DEPTH_BIAS_INFO_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-VkDepthBiasInfoEXT-pNext-pNext" href="#VUID-VkDepthBiasInfoEXT-pNext-pNext"></a> <span class="vuid">VUID-VkDepthBiasInfoEXT-pNext-pNext</span><br>
@@ -8552,7 +8555,7 @@ parameters, allowing them to be more easily extended.</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthBias2EXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetDepthBias2EXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetDepthBias2EXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthBias2EXT-videocoding" href="#VUID-vkCmdSetDepthBias2EXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetDepthBias2EXT-videocoding</span><br>
@@ -8670,7 +8673,7 @@ each of its edges in <code>X</code> and <code>Y</code> equally in screen space b
 overestimation specified in
 <code>VkPhysicalDeviceConservativeRasterizationPropertiesEXT</code>::<code>primitiveOverestimationSize</code>.
 If <code>conservativeRasterizationMode</code> is not
-<code>VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT</code>, this value is
+<a href="#VkConservativeRasterizationModeEXT">VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT</a>, this value is
 ignored.</p>
 </li>
 </ul>
@@ -8678,14 +8681,14 @@ ignored.</p>
 <div class="paragraph">
 <p>If this structure is not included in the <code>pNext</code> chain,
 <code>conservativeRasterizationMode</code> is considered to be
-<code>VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT</code>, and conservative
+<a href="#VkConservativeRasterizationModeEXT">VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT</a>, and conservative
 rasterization is disabled.</p>
 </div>
 <div class="paragraph">
 <p>Polygon rasterization <strong>can</strong> be made conservative by setting
 <code>conservativeRasterizationMode</code> to
-<code>VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT</code> or
-<code>VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT</code> in
+<a href="#VkConservativeRasterizationModeEXT">VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT</a> or
+<a href="#VkConservativeRasterizationModeEXT">VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT</a> in
 <code>VkPipelineRasterizationConservativeStateCreateInfoEXT</code>.</p>
 </div>
 <div class="admonitionblock note">
@@ -8727,7 +8730,7 @@ inclusive</p>
 <ul>
 <li>
 <p><a id="VUID-VkPipelineRasterizationConservativeStateCreateInfoEXT-sType-sType" href="#VUID-VkPipelineRasterizationConservativeStateCreateInfoEXT-sType-sType"></a> <span class="vuid">VUID-VkPipelineRasterizationConservativeStateCreateInfoEXT-sType-sType</span><br>
- <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT</code></p>
+ <code>sType</code> <strong>must</strong> be <a href="fundamentals.html#VkStructureType" class="xref page">VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT</a></p>
 </li>
 <li>
 <p><a id="VUID-VkPipelineRasterizationConservativeStateCreateInfoEXT-flags-zerobitmask" href="#VUID-VkPipelineRasterizationConservativeStateCreateInfoEXT-flags-zerobitmask"></a> <span class="vuid">VUID-VkPipelineRasterizationConservativeStateCreateInfoEXT-flags-zerobitmask</span><br>
@@ -8777,16 +8780,16 @@ typedef enum VkConservativeRasterizationModeEXT {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT</code> specifies that
+<p><a href="#VkConservativeRasterizationModeEXT">VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT</a> specifies that
 conservative rasterization is disabled and rasterization proceeds as
 normal.</p>
 </li>
 <li>
-<p><code>VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT</code> specifies that
+<p><a href="#VkConservativeRasterizationModeEXT">VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT</a> specifies that
 conservative rasterization is enabled in overestimation mode.</p>
 </li>
 <li>
-<p><code>VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT</code> specifies
+<p><a href="#VkConservativeRasterizationModeEXT">VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT</a> specifies
 that conservative rasterization is enabled in underestimation mode.</p>
 </li>
 </ul>
@@ -8824,7 +8827,7 @@ recorded.</p>
 subsequent drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_CONSERVATIVE_RASTERIZATION_MODE_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_CONSERVATIVE_RASTERIZATION_MODE_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineRasterizationConservativeStateCreateInfoEXT">VkPipelineRasterizationConservativeStateCreateInfoEXT</a>::<code>conservativeRasterizationMode</code>
@@ -8874,7 +8877,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetConservativeRasterizationModeEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetConservativeRasterizationModeEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetConservativeRasterizationModeEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetConservativeRasterizationModeEXT-videocoding" href="#VUID-vkCmdSetConservativeRasterizationModeEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetConservativeRasterizationModeEXT-videocoding</span><br>
@@ -8973,7 +8976,7 @@ recorded.</p>
 drawing commands
 when drawing using <a href="shaders.html#shaders-objects" class="xref page">shader objects</a>, or
 when the graphics pipeline is created with
-<code>VK_DYNAMIC_STATE_EXTRA_PRIMITIVE_OVERESTIMATION_SIZE_EXT</code> set in
+<a href="pipelines.html#VkDynamicState" class="xref page">VK_DYNAMIC_STATE_EXTRA_PRIMITIVE_OVERESTIMATION_SIZE_EXT</a> set in
 <a href="pipelines.html#VkPipelineDynamicStateCreateInfo" class="xref page">VkPipelineDynamicStateCreateInfo</a>::<code>pDynamicStates</code>.
 Otherwise, this state is specified by the
 <a href="#VkPipelineRasterizationConservativeStateCreateInfoEXT">VkPipelineRasterizationConservativeStateCreateInfoEXT</a>::<code>extraPrimitiveOverestimationSize</code>
@@ -9026,7 +9029,7 @@ inclusive</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetExtraPrimitiveOverestimationSizeEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetExtraPrimitiveOverestimationSizeEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetExtraPrimitiveOverestimationSizeEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <a href="devsandqueues.html#VkQueueFlagBits" class="xref page">VK_QUEUE_GRAPHICS_BIT</a> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetExtraPrimitiveOverestimationSizeEXT-videocoding" href="#VUID-vkCmdSetExtraPrimitiveOverestimationSizeEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetExtraPrimitiveOverestimationSizeEXT-videocoding</span><br>
@@ -9133,7 +9136,7 @@ pass has a fragment density map and the fragment area covers multiple
 pixels.</p>
 </div>
 <div class="paragraph">
-<p>For triangles if <code>VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT</code>
+<p>For triangles if <a href="#VkConservativeRasterizationModeEXT">VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT</a>
 is enabled, fragments will be generated if the primitive area covers any
 portion of any pixel inside the fragment area, including their edges or
 corners.
@@ -9143,8 +9146,8 @@ Degenerate triangles that evaluate to zero area after rasterization, even
 for pixels containing a vertex or edge of the zero-area polygon, will be
 culled if
 <code>VkPhysicalDeviceConservativeRasterizationPropertiesEXT</code>::<code>degenerateTrianglesRasterized</code>
-is <code>VK_FALSE</code> or will generate fragments if
-<code>degenerateTrianglesRasterized</code> is <code>VK_TRUE</code>.
+is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a> or will generate fragments if
+<code>degenerateTrianglesRasterized</code> is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>.
 The fragment input values for these degenerate triangles take their
 attribute and depth values from the provoking vertex.
 Degenerate triangles are considered backfacing and the application <strong>can</strong>
@@ -9152,25 +9155,25 @@ enable backface culling if desired.
 Triangles that are zero area before rasterization <strong>may</strong> be culled regardless.</p>
 </div>
 <div class="paragraph">
-<p>For lines if <code>VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT</code> is
+<p>For lines if <a href="#VkConservativeRasterizationModeEXT">VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT</a> is
 enabled, and the implementation sets
 <code>VkPhysicalDeviceConservativeRasterizationPropertiesEXT</code>::<code>conservativePointAndLineRasterization</code>
-to <code>VK_TRUE</code>, fragments will be generated if the line covers any portion
+to <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, fragments will be generated if the line covers any portion
 of any pixel inside the fragment area, including their edges or corners.
 Degenerate lines that evaluate to zero length after rasterization will be
 culled if
 <code>VkPhysicalDeviceConservativeRasterizationPropertiesEXT</code>::<code>degenerateLinesRasterized</code>
-is <code>VK_FALSE</code> or will generate fragments if
-<code>degenerateLinesRasterized</code> is <code>VK_TRUE</code>.
+is <a href="fundamentals.html#VK_FALSE" class="xref page">VK_FALSE</a> or will generate fragments if
+<code>degenerateLinesRasterized</code> is <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>.
 The fragments input values for these degenerate lines take their attribute
 and depth values from the provoking vertex.
 Lines that are zero length before rasterization <strong>may</strong> be culled regardless.</p>
 </div>
 <div class="paragraph">
-<p>For points if <code>VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT</code> is
+<p>For points if <a href="#VkConservativeRasterizationModeEXT">VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT</a> is
 enabled, and the implementation sets
 <code>VkPhysicalDeviceConservativeRasterizationPropertiesEXT</code>::<code>conservativePointAndLineRasterization</code>
-to <code>VK_TRUE</code>, fragments will be generated if the point square covers any
+to <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a>, fragments will be generated if the point square covers any
 portion of any pixel inside the fragment area, including their edges or
 corners.</p>
 </div>
@@ -9190,32 +9193,32 @@ inside the fragment area is not considered covered, then the fragment is
 discarded even if some pixels are considered covered.</p>
 </div>
 <div class="paragraph">
-<p>For triangles, if <code>VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT</code>
+<p>For triangles, if <a href="#VkConservativeRasterizationModeEXT">VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT</a>
 is enabled, fragments will only be generated if any pixel inside the
 fragment area is fully covered by the generating primitive, including its
 edges and corners.</p>
 </div>
 <div class="paragraph">
-<p>For lines, if <code>VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT</code> is
+<p>For lines, if <a href="#VkConservativeRasterizationModeEXT">VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT</a> is
 enabled, fragments will be generated if any pixel inside the fragment area,
 including its edges and corners, are entirely covered by the line.</p>
 </div>
 <div class="paragraph">
-<p>For points, if <code>VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT</code> is
+<p>For points, if <a href="#VkConservativeRasterizationModeEXT">VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT</a> is
 enabled, fragments will only be generated if the point square covers the
 entirety of any pixel square inside the fragment area, including its edges
 or corners.</p>
 </div>
 <div class="paragraph">
 <p>If the render pass has a fragment density map and
-<code>VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT</code> is enabled,
+<a href="#VkConservativeRasterizationModeEXT">VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT</a> is enabled,
 fragments will only be generated if the entirety of all pixels inside the
 fragment area are covered by the generating primitive, line, or point.</p>
 </div>
 <div class="paragraph">
 <p>For both overestimate and underestimate conservative rasterization modes a
 fragment has all of its pixel squares fully covered by the generating
-primitive <strong>must</strong> set <code>FullyCoveredEXT</code> to <code>VK_TRUE</code> if the
+primitive <strong>must</strong> set <code>FullyCoveredEXT</code> to <a href="fundamentals.html#VK_TRUE" class="xref page">VK_TRUE</a> if the
 implementation enables the
 <code>VkPhysicalDeviceConservativeRasterizationPropertiesEXT</code>::<code>fullyCoveredFragmentShaderInputVariable</code>
 feature.</p>

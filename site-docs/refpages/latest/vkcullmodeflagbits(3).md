@@ -32,18 +32,18 @@ typedef enum VkCullModeFlagBits {
 } VkCullModeFlagBits;
 
 * 
-`VK_CULL_MODE_NONE` specifies that no triangles are discarded
+[VK_CULL_MODE_NONE](#) specifies that no triangles are discarded
 
 * 
-`VK_CULL_MODE_FRONT_BIT` specifies that front-facing triangles are
+[VK_CULL_MODE_FRONT_BIT](#) specifies that front-facing triangles are
 discarded
 
 * 
-`VK_CULL_MODE_BACK_BIT` specifies that back-facing triangles are
+[VK_CULL_MODE_BACK_BIT](#) specifies that back-facing triangles are
 discarded
 
 * 
-`VK_CULL_MODE_FRONT_AND_BACK` specifies that all triangles are
+[VK_CULL_MODE_FRONT_AND_BACK](#) specifies that all triangles are
 discarded.
 
 Following culling, fragments are produced for any triangles which have not

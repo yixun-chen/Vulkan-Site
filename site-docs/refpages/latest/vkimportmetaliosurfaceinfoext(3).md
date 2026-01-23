@@ -59,7 +59,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMetalIOSurfaceInfoEXT-sType-sType) VUID-VkImportMetalIOSurfaceInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_METAL_IO_SURFACE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_METAL_IO_SURFACE_INFO_EXT](VkStructureType.html)
 
 [VK_EXT_metal_objects](VK_EXT_metal_objects.html), [VkStructureType](VkStructureType.html)
 

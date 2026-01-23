@@ -56,7 +56,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderCoreProperties2AMD-sType-sType) VUID-VkPhysicalDeviceShaderCoreProperties2AMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_2_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_2_AMD](VkStructureType.html)
 
 [VK_AMD_shader_core_properties2](VK_AMD_shader_core_properties2.html), [VkShaderCorePropertiesFlagsAMD](VkShaderCorePropertiesFlagsAMD.html), [VkStructureType](VkStructureType.html)
 

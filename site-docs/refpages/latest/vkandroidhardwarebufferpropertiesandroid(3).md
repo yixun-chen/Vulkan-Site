@@ -50,7 +50,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAndroidHardwareBufferPropertiesANDROID-sType-sType) VUID-VkAndroidHardwareBufferPropertiesANDROID-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_PROPERTIES_ANDROID`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_PROPERTIES_ANDROID](VkStructureType.html)
 
 * 
 [](#VUID-VkAndroidHardwareBufferPropertiesANDROID-pNext-pNext) VUID-VkAndroidHardwareBufferPropertiesANDROID-pNext-pNext

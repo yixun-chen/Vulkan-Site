@@ -192,7 +192,7 @@ Valid Usage (Implicit)
 The definition of [PFN_vkVoidFunction](#PFN_vkVoidFunction) is:
 
 // Provided by VK_VERSION_1_0
-typedef void (VKAPI_PTR *PFN_vkVoidFunction)(void);
+typedef void (*PFN_vkVoidFunction)(void);
 
 This type is returned from command function pointer queries, and **must** be
 cast to an actual command function pointer before use.
@@ -247,9 +247,9 @@ described in [Version Numbers](extensions.html#extendingvulkan-coreversions-vers
 |  | The intended behavior of [vkEnumerateInstanceVersion](#vkEnumerateInstanceVersion) is that an
 | --- | --- |
 implementation **should** not need to perform memory allocations and **should**
-unconditionally return `VK_SUCCESS`.
+unconditionally return [VK_SUCCESS](fundamentals.html#VkResult).
 The loader, and any enabled layers, **may** return
-`VK_ERROR_OUT_OF_HOST_MEMORY` in the case of a failed memory allocation. |
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult) in the case of a failed memory allocation. |
 
 Valid Usage (Implicit)
 
@@ -263,18 +263,18 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To create an instance object, call:
 
@@ -297,11 +297,11 @@ controlling creation of the instance.
 instance is returned.
 
 `vkCreateInstance` verifies that the requested layers exist.
-If not, `vkCreateInstance` will return `VK_ERROR_LAYER_NOT_PRESENT`.
+If not, `vkCreateInstance` will return [VK_ERROR_LAYER_NOT_PRESENT](fundamentals.html#VkResult).
 Next `vkCreateInstance` verifies that the requested extensions are
 supported (e.g. in the implementation or in any enabled instance layer) and
 if any requested extension is not supported, `vkCreateInstance` **must**
-return `VK_ERROR_EXTENSION_NOT_PRESENT`.
+return [VK_ERROR_EXTENSION_NOT_PRESENT](fundamentals.html#VkResult).
 After verifying and enabling the instance layers and extensions the
 `VkInstance` object is created and returned to the application.
 If a requested extension is only supported by a layer, both the layer and
@@ -339,33 +339,33 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_EXTENSION_NOT_PRESENT`
+[VK_ERROR_EXTENSION_NOT_PRESENT](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_INCOMPATIBLE_DRIVER`
+[VK_ERROR_INCOMPATIBLE_DRIVER](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_LAYER_NOT_PRESENT`
+[VK_ERROR_LAYER_NOT_PRESENT](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkInstanceCreateInfo` structure is defined as:
 
@@ -472,14 +472,14 @@ extensions in `ppEnabledExtensionNames` **must** contain
 If the `pNext` chain includes a
 [VkExportMetalObjectCreateInfoEXT](memory.html#VkExportMetalObjectCreateInfoEXT) structure, its
 `exportObjectType` member **must** be either
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT` or
-`VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT`
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT](memory.html#VkExportMetalObjectTypeFlagBitsEXT) or
+[VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT](memory.html#VkExportMetalObjectTypeFlagBitsEXT)
 
 * 
 [](#VUID-VkInstanceCreateInfo-flags-06559) VUID-VkInstanceCreateInfo-flags-06559
 
 If `flags` has the
-`VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR` bit set, the list
+[VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR](#VkInstanceCreateFlagBits) bit set, the list
 of enabled extensions in `ppEnabledExtensionNames` **must** contain
 `[VK_KHR_portability_enumeration](../appendices/extensions.html#VK_KHR_portability_enumeration)`
 
@@ -520,7 +520,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkInstanceCreateInfo-sType-sType) VUID-VkInstanceCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkInstanceCreateInfo-pNext-pNext) VUID-VkInstanceCreateInfo-pNext-pNext
@@ -559,7 +559,7 @@ typedef enum VkInstanceCreateFlagBits {
 } VkInstanceCreateFlagBits;
 
 * 
-`VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR` specifies that
+[VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR](#VkInstanceCreateFlagBits) specifies that
 the instance will enumerate available Vulkan Portability-compliant
 physical devices and groups in addition to the Vulkan physical devices
 and groups that are enumerated by default.
@@ -603,7 +603,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkValidationFlagsEXT-sType-sType) VUID-VkValidationFlagsEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkValidationFlagsEXT-pDisabledValidationChecks-parameter) VUID-VkValidationFlagsEXT-pDisabledValidationChecks-parameter
@@ -626,11 +626,11 @@ typedef enum VkValidationCheckEXT {
 } VkValidationCheckEXT;
 
 * 
-`VK_VALIDATION_CHECK_ALL_EXT` specifies that all validation checks
+[VK_VALIDATION_CHECK_ALL_EXT](#VkValidationCheckEXT) specifies that all validation checks
 are disabled.
 
 * 
-`VK_VALIDATION_CHECK_SHADERS_EXT` specifies that shader validation
+[VK_VALIDATION_CHECK_SHADERS_EXT](#VkValidationCheckEXT) specifies that shader validation
 is disabled.
 
 When creating a Vulkan instance for which you wish to enable or disable
@@ -678,17 +678,17 @@ Valid Usage
 [](#VUID-VkValidationFeaturesEXT-pEnabledValidationFeatures-02967) VUID-VkValidationFeaturesEXT-pEnabledValidationFeatures-02967
 
 If the `pEnabledValidationFeatures` array contains
-`VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT`,
+[VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT](#VkValidationFeatureEnableEXT),
 then it **must** also contain
-`VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT` or
-`VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT`
+[VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT](#VkValidationFeatureEnableEXT) or
+[VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT](#VkValidationFeatureEnableEXT)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkValidationFeaturesEXT-sType-sType) VUID-VkValidationFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkValidationFeaturesEXT-pEnabledValidationFeatures-parameter) VUID-VkValidationFeaturesEXT-pEnabledValidationFeatures-parameter
@@ -714,14 +714,14 @@ typedef enum VkValidationFeatureEnableEXT {
 } VkValidationFeatureEnableEXT;
 
 * 
-`VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT` specifies that
+[VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT](#VkValidationFeatureEnableEXT) specifies that
 GPU-assisted validation is enabled.
 Activating this feature instruments shader programs to generate
 additional diagnostic data.
 This feature is disabled by default.
 
 * 
-`VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT`
+[VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT](#VkValidationFeatureEnableEXT)
 specifies that the validation layers reserve a descriptor set binding
 slot for their own use.
 The layer reports a value for
@@ -732,7 +732,7 @@ validation layer does not perform GPU-assisted validation.
 This feature is disabled by default.
 
 * 
-`VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT` specifies that
+[VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT](#VkValidationFeatureEnableEXT) specifies that
 Vulkan best-practices validation is enabled.
 Activating this feature enables the output of warnings related to common
 misuse of the API, but which are not explicitly prohibited by the
@@ -740,13 +740,13 @@ specification.
 This feature is disabled by default.
 
 * 
-`VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT` specifies that the
+[VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT](#VkValidationFeatureEnableEXT) specifies that the
 layers will process `debugPrintfEXT` operations in shaders and send
 the resulting output to the debug callback.
 This feature is disabled by default.
 
 * 
-`VK_VALIDATION_FEATURE_ENABLE_SYNCHRONIZATION_VALIDATION_EXT`
+[VK_VALIDATION_FEATURE_ENABLE_SYNCHRONIZATION_VALIDATION_EXT](#VkValidationFeatureEnableEXT)
 specifies that Vulkan synchronization validation is enabled.
 This feature reports resource access conflicts due to missing or
 incorrect synchronization operations between actions (Draw, Copy,
@@ -770,11 +770,11 @@ typedef enum VkValidationFeatureDisableEXT {
 } VkValidationFeatureDisableEXT;
 
 * 
-`VK_VALIDATION_FEATURE_DISABLE_ALL_EXT` specifies that all
+[VK_VALIDATION_FEATURE_DISABLE_ALL_EXT](#VkValidationFeatureDisableEXT) specifies that all
 validation checks are disabled.
 
 * 
-`VK_VALIDATION_FEATURE_DISABLE_SHADERS_EXT` specifies that shader
+[VK_VALIDATION_FEATURE_DISABLE_SHADERS_EXT](#VkValidationFeatureDisableEXT) specifies that shader
 validation, both runtime and standalone, is disabled.
 This validation occurs inside
 [VkShaderCreateInfoEXT](shaders.html#VkShaderCreateInfoEXT) and
@@ -782,35 +782,35 @@ This validation occurs inside
 This feature is enabled by default.
 
 * 
-`VK_VALIDATION_FEATURE_DISABLE_THREAD_SAFETY_EXT` specifies that
+[VK_VALIDATION_FEATURE_DISABLE_THREAD_SAFETY_EXT](#VkValidationFeatureDisableEXT) specifies that
 thread safety validation is disabled.
 This feature is enabled by default.
 
 * 
-`VK_VALIDATION_FEATURE_DISABLE_API_PARAMETERS_EXT` specifies that
+[VK_VALIDATION_FEATURE_DISABLE_API_PARAMETERS_EXT](#VkValidationFeatureDisableEXT) specifies that
 stateless parameter validation is disabled.
 This feature is enabled by default.
 
 * 
-`VK_VALIDATION_FEATURE_DISABLE_OBJECT_LIFETIMES_EXT` specifies that
+[VK_VALIDATION_FEATURE_DISABLE_OBJECT_LIFETIMES_EXT](#VkValidationFeatureDisableEXT) specifies that
 object lifetime validation is disabled.
 This feature is enabled by default.
 
 * 
-`VK_VALIDATION_FEATURE_DISABLE_CORE_CHECKS_EXT` specifies that core
+[VK_VALIDATION_FEATURE_DISABLE_CORE_CHECKS_EXT](#VkValidationFeatureDisableEXT) specifies that core
 validation checks are disabled.
 This feature is enabled by default.
 If this feature is disabled,
-`VK_VALIDATION_FEATURE_DISABLE_SHADERS_EXT` is implied.
+[VK_VALIDATION_FEATURE_DISABLE_SHADERS_EXT](#VkValidationFeatureDisableEXT) is implied.
 
 * 
-`VK_VALIDATION_FEATURE_DISABLE_UNIQUE_HANDLES_EXT` specifies that
+[VK_VALIDATION_FEATURE_DISABLE_UNIQUE_HANDLES_EXT](#VkValidationFeatureDisableEXT) specifies that
 protection against duplicate non-dispatchable object handles is
 disabled.
 This feature is enabled by default.
 
 * 
-`VK_VALIDATION_FEATURE_DISABLE_SHADER_VALIDATION_CACHE_EXT`
+[VK_VALIDATION_FEATURE_DISABLE_SHADER_VALIDATION_CACHE_EXT](#VkValidationFeatureDisableEXT)
 specifies that there will be no caching of shader validation results and
 every shader will be validated on every application execution.
 Shader validation caching is enabled by default.
@@ -858,7 +858,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkLayerSettingsCreateInfoEXT-sType-sType) VUID-VkLayerSettingsCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkLayerSettingsCreateInfoEXT-pSettings-parameter) VUID-VkLayerSettingsCreateInfoEXT-pSettings-parameter
@@ -945,35 +945,35 @@ typedef enum VkLayerSettingTypeEXT {
 } VkLayerSettingTypeEXT;
 
 * 
-`VK_LAYER_SETTING_TYPE_BOOL32_EXT` specifies that the layer
+[VK_LAYER_SETTING_TYPE_BOOL32_EXT](#VkLayerSettingTypeEXT) specifies that the layer
 setting’s type is `VkBool32`.
 
 * 
-`VK_LAYER_SETTING_TYPE_INT32_EXT` specifies that the layer setting’s
+[VK_LAYER_SETTING_TYPE_INT32_EXT](#VkLayerSettingTypeEXT) specifies that the layer setting’s
 type is signed 32-bit integer.
 
 * 
-`VK_LAYER_SETTING_TYPE_INT64_EXT` specifies that the layer setting’s
+[VK_LAYER_SETTING_TYPE_INT64_EXT](#VkLayerSettingTypeEXT) specifies that the layer setting’s
 type is signed 64-bit integer.
 
 * 
-`VK_LAYER_SETTING_TYPE_UINT32_EXT` specifies that the layer
+[VK_LAYER_SETTING_TYPE_UINT32_EXT](#VkLayerSettingTypeEXT) specifies that the layer
 setting’s type is unsigned 32-bit integer.
 
 * 
-`VK_LAYER_SETTING_TYPE_UINT64_EXT` specifies that the layer
+[VK_LAYER_SETTING_TYPE_UINT64_EXT](#VkLayerSettingTypeEXT) specifies that the layer
 setting’s type is unsigned 64-bit integer.
 
 * 
-`VK_LAYER_SETTING_TYPE_FLOAT32_EXT` specifies that the layer
+[VK_LAYER_SETTING_TYPE_FLOAT32_EXT](#VkLayerSettingTypeEXT) specifies that the layer
 setting’s type is 32-bit floating-point.
 
 * 
-`VK_LAYER_SETTING_TYPE_FLOAT64_EXT` specifies that the layer
+[VK_LAYER_SETTING_TYPE_FLOAT64_EXT](#VkLayerSettingTypeEXT) specifies that the layer
 setting’s type is 64-bit floating-point.
 
 * 
-`VK_LAYER_SETTING_TYPE_STRING_EXT` specifies that the layer
+[VK_LAYER_SETTING_TYPE_STRING_EXT](#VkLayerSettingTypeEXT) specifies that the layer
 setting’s type is a pointer to a null-terminated UTF-8 string.
 
 The `VkDirectDriverLoadingListLUNARG` structure is defined as:
@@ -1015,7 +1015,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDirectDriverLoadingListLUNARG-sType-sType) VUID-VkDirectDriverLoadingListLUNARG-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_LIST_LUNARG`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_LIST_LUNARG](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDirectDriverLoadingListLUNARG-mode-parameter) VUID-VkDirectDriverLoadingListLUNARG-mode-parameter
@@ -1061,7 +1061,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDirectDriverLoadingInfoLUNARG-sType-sType) VUID-VkDirectDriverLoadingInfoLUNARG-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_INFO_LUNARG`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_INFO_LUNARG](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDirectDriverLoadingInfoLUNARG-flags-zerobitmask) VUID-VkDirectDriverLoadingInfoLUNARG-flags-zerobitmask
@@ -1078,11 +1078,11 @@ typedef enum VkDirectDriverLoadingModeLUNARG {
 } VkDirectDriverLoadingModeLUNARG;
 
 * 
-`VK_DIRECT_DRIVER_LOADING_MODE_EXCLUSIVE_LUNARG` specifies that the
+[VK_DIRECT_DRIVER_LOADING_MODE_EXCLUSIVE_LUNARG](#VkDirectDriverLoadingModeLUNARG) specifies that the
 provided drivers are used instead of the system-loaded drivers.
 
 * 
-`VK_DIRECT_DRIVER_LOADING_MODE_INCLUSIVE_LUNARG` specifies that the
+[VK_DIRECT_DRIVER_LOADING_MODE_INCLUSIVE_LUNARG](#VkDirectDriverLoadingModeLUNARG) specifies that the
 provided drivers are used in addition to the system-loaded drivers.
 
 // Provided by VK_LUNARG_direct_driver_loading
@@ -1094,8 +1094,9 @@ but is currently reserved for future use.
 The type of [PFN_vkGetInstanceProcAddrLUNARG](#PFN_vkGetInstanceProcAddrLUNARG) is:
 
 // Provided by VK_LUNARG_direct_driver_loading
-typedef PFN_vkVoidFunction (VKAPI_PTR *PFN_vkGetInstanceProcAddrLUNARG)(
-    VkInstance instance, const char* pName);
+typedef PFN_vkVoidFunction (*PFN_vkGetInstanceProcAddrLUNARG)(
+    VkInstance                                  instance,
+    const char*                                 pName);
 
 * 
 `instance` is a [VkInstance](#VkInstance) handle.
@@ -1162,14 +1163,14 @@ The variant version of the instance **must** match that requested in
 `apiVersion`.
 
 Vulkan 1.0 implementations were required to return
-`VK_ERROR_INCOMPATIBLE_DRIVER` if `apiVersion` was larger than 1.0.
+[VK_ERROR_INCOMPATIBLE_DRIVER](fundamentals.html#VkResult) if `apiVersion` was larger than 1.0.
 Implementations that support Vulkan 1.1 or later **must** not return
-`VK_ERROR_INCOMPATIBLE_DRIVER` for any value of `apiVersion`
+[VK_ERROR_INCOMPATIBLE_DRIVER](fundamentals.html#VkResult) for any value of `apiVersion`
 .
 
 |  | Because Vulkan 1.0 implementations **may** fail with
 | --- | --- |
-`VK_ERROR_INCOMPATIBLE_DRIVER`, applications **should** determine the
+[VK_ERROR_INCOMPATIBLE_DRIVER](fundamentals.html#VkResult), applications **should** determine the
 version of Vulkan available before calling [vkCreateInstance](#vkCreateInstance).
 If the [vkGetInstanceProcAddr](#vkGetInstanceProcAddr) returns `NULL` for
 [vkEnumerateInstanceVersion](#vkEnumerateInstanceVersion), it is a Vulkan 1.0 implementation.
@@ -1227,7 +1228,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkApplicationInfo-sType-sType) VUID-VkApplicationInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_APPLICATION_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_APPLICATION_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkApplicationInfo-pNext-pNext) VUID-VkApplicationInfo-pNext-pNext

@@ -60,8 +60,8 @@ return the variable is overwritten with the number of bytes actually written
 to `pData`.
 If `pDataSize` is less than the size of the encoded parameter data that
 **can** be retrieved, then no data will be written to `pData`, zero will be
-written to `pDataSize`, and `VK_INCOMPLETE` will be returned instead
-of `VK_SUCCESS`, to indicate that no encoded parameter data was
+written to `pDataSize`, and [VK_INCOMPLETE](VkResult.html) will be returned instead
+of [VK_SUCCESS](VkResult.html), to indicate that no encoded parameter data was
 returned.
 
 If `pFeedbackInfo` is not `NULL` then the members of the
@@ -74,7 +74,7 @@ this command.
 
 |  | This includes the cases when `pData` is `NULL` or when
 | --- | --- |
-`VK_INCOMPLETE` is returned by the command, and enables the application
+[VK_INCOMPLETE](VkResult.html) is returned by the command, and enables the application
 to determine whether the implementation [overrode](../../../../spec/latest/chapters/videocoding.html#encode-overrides) any of
 the requested video session parameters without actually needing to retrieve
 the encoded parameter data itself. |
@@ -85,8 +85,8 @@ the encoded parameter data itself. |
 reasons.
 
 If the amount of data available is larger than the passed `pDataSize`,
-the query returns a `VK_INCOMPLETE` success status instead of a
-`VK_ERROR_NOT_ENOUGH_SPACE_KHR` error status, and writes zero to
+the query returns a [VK_INCOMPLETE](VkResult.html) success status instead of a
+[VK_ERROR_NOT_ENOUGH_SPACE_KHR](VkResult.html) error status, and writes zero to
 `pDataSize`. |
 
 Valid Usage
@@ -102,7 +102,7 @@ been created with an encode operation
 
 If `pVideoSessionParametersInfo->videoSessionParameters` was created
 with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain of `pVideoSessionParametersInfo` **must** include a
 [VkVideoEncodeH264SessionParametersGetInfoKHR](VkVideoEncodeH264SessionParametersGetInfoKHR.html) structure
 
@@ -111,10 +111,10 @@ chain of `pVideoSessionParametersInfo` **must** include a
 
 If `pVideoSessionParametersInfo->videoSessionParameters` was created
 with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR`, then for the
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then for the
 [VkVideoEncodeH264SessionParametersGetInfoKHR](VkVideoEncodeH264SessionParametersGetInfoKHR.html) structure included in
 the `pNext` chain of `pVideoSessionParametersInfo`, if its
-`writeStdSPS` member is `VK_TRUE`, then
+`writeStdSPS` member is [VK_TRUE](VK_TRUE.html), then
 `pVideoSessionParametersInfo->videoSessionParameters` **must** contain
 a `StdVideoH264SequenceParameterSet` entry with
 `seq_parameter_set_id` matching
@@ -125,10 +125,10 @@ a `StdVideoH264SequenceParameterSet` entry with
 
 If `pVideoSessionParametersInfo->videoSessionParameters` was created
 with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR`, then for the
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then for the
 [VkVideoEncodeH264SessionParametersGetInfoKHR](VkVideoEncodeH264SessionParametersGetInfoKHR.html) structure included in
 the `pNext` chain of `pVideoSessionParametersInfo`, if its
-`writeStdPPS` member is `VK_TRUE`, then
+`writeStdPPS` member is [VK_TRUE](VK_TRUE.html), then
 `pVideoSessionParametersInfo->videoSessionParameters` **must** contain
 a `StdVideoH264PictureParameterSet` entry with
 `seq_parameter_set_id` and `pic_parameter_set_id` matching
@@ -141,7 +141,7 @@ respectively
 
 If `pVideoSessionParametersInfo->videoSessionParameters` was created
 with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR`, then the `pNext`
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then the `pNext`
 chain of `pVideoSessionParametersInfo` **must** include a
 [VkVideoEncodeH265SessionParametersGetInfoKHR](VkVideoEncodeH265SessionParametersGetInfoKHR.html) structure
 
@@ -150,10 +150,10 @@ chain of `pVideoSessionParametersInfo` **must** include a
 
 If `pVideoSessionParametersInfo->videoSessionParameters` was created
 with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR`, then for the
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then for the
 [VkVideoEncodeH265SessionParametersGetInfoKHR](VkVideoEncodeH265SessionParametersGetInfoKHR.html) structure included in
 the `pNext` chain of `pVideoSessionParametersInfo`, if its
-`writeStdVPS` member is `VK_TRUE`, then
+`writeStdVPS` member is [VK_TRUE](VK_TRUE.html), then
 `pVideoSessionParametersInfo->videoSessionParameters` **must** contain
 a `StdVideoH265VideoParameterSet` entry with
 `vps_video_parameter_set_id` matching
@@ -164,10 +164,10 @@ a `StdVideoH265VideoParameterSet` entry with
 
 If `pVideoSessionParametersInfo->videoSessionParameters` was created
 with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR`, then for the
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then for the
 [VkVideoEncodeH265SessionParametersGetInfoKHR](VkVideoEncodeH265SessionParametersGetInfoKHR.html) structure included in
 the `pNext` chain of `pVideoSessionParametersInfo`, if its
-`writeStdSPS` member is `VK_TRUE`, then
+`writeStdSPS` member is [VK_TRUE](VK_TRUE.html), then
 `pVideoSessionParametersInfo->videoSessionParameters` **must** contain
 a `StdVideoH265SequenceParameterSet` entry with
 `sps_video_parameter_set_id` and `sps_seq_parameter_set_id`
@@ -181,10 +181,10 @@ respectively
 
 If `pVideoSessionParametersInfo->videoSessionParameters` was created
 with the video codec operation
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR`, then for the
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html), then for the
 [VkVideoEncodeH265SessionParametersGetInfoKHR](VkVideoEncodeH265SessionParametersGetInfoKHR.html) structure included in
 the `pNext` chain of `pVideoSessionParametersInfo`, if its
-`writeStdPPS` member is `VK_TRUE`, then
+`writeStdPPS` member is [VK_TRUE](VK_TRUE.html), then
 `pVideoSessionParametersInfo->videoSessionParameters` **must** contain
 a `StdVideoH265PictureParameterSet` entry with
 `sps_video_parameter_set_id`, `pps_seq_parameter_set_id`, and
@@ -226,24 +226,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_video_encode_queue](VK_KHR_video_encode_queue.html), [VkDevice](VkDevice.html), [VkVideoEncodeSessionParametersFeedbackInfoKHR](VkVideoEncodeSessionParametersFeedbackInfoKHR.html), [VkVideoEncodeSessionParametersGetInfoKHR](VkVideoEncodeSessionParametersGetInfoKHR.html)
 

@@ -140,7 +140,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeH264CapabilitiesKHR-sType-sType) VUID-VkVideoEncodeH264CapabilitiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_CAPABILITIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_CAPABILITIES_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_h264](VK_KHR_video_encode_h264.html), `VkBool32`, [VkStructureType](VkStructureType.html), [VkVideoEncodeH264CapabilityFlagsKHR](VkVideoEncodeH264CapabilityFlagsKHR.html), [VkVideoEncodeH264StdFlagsKHR](VkVideoEncodeH264StdFlagsKHR.html)
 

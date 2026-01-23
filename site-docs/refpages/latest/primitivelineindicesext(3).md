@@ -52,10 +52,18 @@ declared as an array of two component vector 32-bit integer values
 * 
 [](#VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-07051) VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-07051
 
-All index values of the array decorated with
+The index to access the array decorated with
 `PrimitiveLineIndicesEXT` **must** be in the range [0, N-1], where
-N is the value specified by the `OutputVertices`
-`Execution` `Mode`
+N is the value specified by the “Primitive Count” operand of
+`OpSetMeshOutputsEXT`
+
+* 
+[](#VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-12336) VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-12336
+
+All index values written to the array decorated with
+`PrimitiveLineIndicesEXT` **must** be in the range [0, N-1], where
+N is the value specified by the “Vertex Count” operand of
+`OpSetMeshOutputsEXT`
 
 * 
 [](#VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-07052) VUID-PrimitiveLineIndicesEXT-PrimitiveLineIndicesEXT-07052

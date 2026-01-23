@@ -54,7 +54,7 @@ identify the retrieved H.264 sequence and/or picture parameter set(s).
 * 
 `stdPPSId` specifies the H.264 picture parameter set ID used to
 identify the retrieved H.264 picture parameter set when
-`writeStdPPS` is `VK_TRUE`.
+`writeStdPPS` is [VK_TRUE](VK_TRUE.html).
 
 When this structure is specified in the `pNext` chain of the
 [VkVideoEncodeSessionParametersGetInfoKHR](VkVideoEncodeSessionParametersGetInfoKHR.html) structure passed to
@@ -62,11 +62,11 @@ When this structure is specified in the `pNext` chain of the
 parameter data to the output buffer in the following order:
 
 The [H.264 sequence parameter set](../../../../spec/latest/chapters/videocoding.html#encode-h264-sps) identified by
-`stdSPSId`, if `writeStdSPS` is `VK_TRUE`.
+`stdSPSId`, if `writeStdSPS` is [VK_TRUE](VK_TRUE.html).
 
 The [H.264 picture parameter set](../../../../spec/latest/chapters/videocoding.html#encode-h264-pps) identified by the
 pair constructed from `stdSPSId` and `stdPPSId`, if
-`writeStdPPS` is `VK_TRUE`.
+`writeStdPPS` is [VK_TRUE](VK_TRUE.html).
 
 Valid Usage
 
@@ -74,14 +74,14 @@ Valid Usage
 [](#VUID-VkVideoEncodeH264SessionParametersGetInfoKHR-writeStdSPS-08279) VUID-VkVideoEncodeH264SessionParametersGetInfoKHR-writeStdSPS-08279
 
 At least one of `writeStdSPS` and `writeStdPPS` **must** be
-`VK_TRUE`
+[VK_TRUE](VK_TRUE.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkVideoEncodeH264SessionParametersGetInfoKHR-sType-sType) VUID-VkVideoEncodeH264SessionParametersGetInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_GET_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_GET_INFO_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_h264](VK_KHR_video_encode_h264.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

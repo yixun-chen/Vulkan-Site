@@ -39,7 +39,7 @@ This command sets the `coverageReductionMode` state for subsequent
 drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV` set in
+[VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineCoverageReductionStateCreateInfoNV](VkPipelineCoverageReductionStateCreateInfoNV.html)::`coverageReductionMode`
@@ -78,7 +78,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetCoverageReductionModeNV-commandBuffer-cmdpool) VUID-vkCmdSetCoverageReductionModeNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetCoverageReductionModeNV-videocoding) VUID-vkCmdSetCoverageReductionModeNV-videocoding

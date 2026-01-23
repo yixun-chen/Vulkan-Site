@@ -136,17 +136,17 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkImageLayout](VkImageLayout.html):
 
-`VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`
+[VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT](VkImageLayout.html)
 
 Extending [VkMemoryAllocateFlagBits](VkMemoryAllocateFlagBits.html):
 
 * 
-`VK_MEMORY_ALLOCATE_ZERO_INITIALIZE_BIT_EXT`
+[VK_MEMORY_ALLOCATE_ZERO_INITIALIZE_BIT_EXT](VkMemoryAllocateFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_DEVICE_MEMORY_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_DEVICE_MEMORY_FEATURES_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2025-03-10 (Mike Blumenkrantz)

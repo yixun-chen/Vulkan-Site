@@ -69,7 +69,7 @@ dynamically uniform within
 either the subgroup or
 the invocation group in shader code.
 If this feature is not enabled, resources with a descriptor type of
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` **must** be indexed only by
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html) **must** be indexed only by
 constant integral expressions when aggregated into arrays in shader
 code.
 This also indicates whether shader modules **can** declare the
@@ -83,7 +83,7 @@ that are dynamically uniform within
 either the subgroup or
 the invocation group in shader code.
 If this feature is not enabled, resources with a descriptor type of
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` **must** be indexed only by
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html) **must** be indexed only by
 constant integral expressions when aggregated into arrays in shader
 code.
 This also indicates whether shader modules **can** declare the
@@ -97,7 +97,7 @@ that are dynamically uniform within
 either the subgroup or
 the invocation group in shader code.
 If this feature is not enabled, resources with a descriptor type of
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` **must** be indexed only by
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html) **must** be indexed only by
 constant integral expressions when aggregated into arrays in shader
 code.
 This also indicates whether shader modules **can** declare the
@@ -109,8 +109,8 @@ This also indicates whether shader modules **can** declare the
 arrays of uniform buffers **can** be indexed by non-uniform integer
 expressions in shader code.
 If this feature is not enabled, resources with a descriptor type of
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` or
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` **must** not be indexed by
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) **must** not be indexed by
 non-uniform integer expressions when aggregated into arrays in shader
 code.
 This also indicates whether shader modules **can** declare the
@@ -122,9 +122,9 @@ This also indicates whether shader modules **can** declare the
 of samplers or sampled images **can** be indexed by non-uniform integer
 expressions in shader code.
 If this feature is not enabled, resources with a descriptor type of
-`VK_DESCRIPTOR_TYPE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, or
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE` **must** not be indexed by
+[VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html), or
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html) **must** not be indexed by
 non-uniform integer expressions when aggregated into arrays in shader
 code.
 This also indicates whether shader modules **can** declare the
@@ -136,8 +136,8 @@ This also indicates whether shader modules **can** declare the
 arrays of storage buffers **can** be indexed by non-uniform integer
 expressions in shader code.
 If this feature is not enabled, resources with a descriptor type of
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` **must** not be indexed by
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html) **must** not be indexed by
 non-uniform integer expressions when aggregated into arrays in shader
 code.
 This also indicates whether shader modules **can** declare the
@@ -149,7 +149,7 @@ This also indicates whether shader modules **can** declare the
 of storage images **can** be indexed by non-uniform integer expressions in
 shader code.
 If this feature is not enabled, resources with a descriptor type of
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE` **must** not be indexed by
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html) **must** not be indexed by
 non-uniform integer expressions when aggregated into arrays in shader
 code.
 This also indicates whether shader modules **can** declare the
@@ -161,7 +161,7 @@ This also indicates whether shader modules **can** declare the
 arrays of input attachments **can** be indexed by non-uniform integer
 expressions in shader code.
 If this feature is not enabled, resources with a descriptor type of
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` **must** not be indexed by
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html) **must** not be indexed by
 non-uniform integer expressions when aggregated into arrays in shader
 code.
 This also indicates whether shader modules **can** declare the
@@ -173,7 +173,7 @@ This also indicates whether shader modules **can** declare the
 arrays of uniform texel buffers **can** be indexed by non-uniform integer
 expressions in shader code.
 If this feature is not enabled, resources with a descriptor type of
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER` **must** not be indexed by
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html) **must** not be indexed by
 non-uniform integer expressions when aggregated into arrays in shader
 code.
 This also indicates whether shader modules **can** declare the
@@ -185,7 +185,7 @@ This also indicates whether shader modules **can** declare the
 arrays of storage texel buffers **can** be indexed by non-uniform integer
 expressions in shader code.
 If this feature is not enabled, resources with a descriptor type of
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` **must** not be indexed by
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html) **must** not be indexed by
 non-uniform integer expressions when aggregated into arrays in shader
 code.
 This also indicates whether shader modules **can** declare the
@@ -197,8 +197,8 @@ This also indicates whether shader modules **can** declare the
 the implementation supports updating uniform buffer descriptors after a
 set is bound.
 If this feature is not enabled,
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` **must** not be used with
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`.
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html) **must** not be used with
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html).
 
 * 
 
@@ -206,10 +206,10 @@ If this feature is not enabled,
 implementation supports updating sampled image descriptors after a set
 is bound.
 If this feature is not enabled,
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` **must** not be used with
-`VK_DESCRIPTOR_TYPE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, or
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`.
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html) **must** not be used with
+[VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html), or
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html).
 
 * 
 
@@ -217,8 +217,8 @@ If this feature is not enabled,
 implementation supports updating storage image descriptors after a set
 is bound.
 If this feature is not enabled,
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` **must** not be used with
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`.
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html) **must** not be used with
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html).
 
 * 
 
@@ -226,8 +226,8 @@ If this feature is not enabled,
 the implementation supports updating storage buffer descriptors after a
 set is bound.
 If this feature is not enabled,
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` **must** not be used with
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`.
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html) **must** not be used with
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html).
 
 * 
 
@@ -235,8 +235,8 @@ If this feature is not enabled,
 whether the implementation supports updating uniform texel buffer
 descriptors after a set is bound.
 If this feature is not enabled,
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` **must** not be used with
-`VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER`.
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html) **must** not be used with
+[VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER](VkDescriptorType.html).
 
 * 
 
@@ -244,15 +244,15 @@ If this feature is not enabled,
 whether the implementation supports updating storage texel buffer
 descriptors after a set is bound.
 If this feature is not enabled,
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` **must** not be used with
-`VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER`.
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html) **must** not be used with
+[VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html).
 
 * 
 
 `descriptorBindingUpdateUnusedWhilePending` indicates whether the
 implementation supports updating descriptors while the set is in use.
 If this feature is not enabled,
-`VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT` **must** not be
+[VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT](VkDescriptorBindingFlagBits.html) **must** not be
 used.
 
 * 
@@ -261,7 +261,7 @@ used.
 implementation supports statically using a descriptor set binding in
 which some descriptors are not valid.
 If this feature is not enabled,
-`VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT` **must** not be used.
+[VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT](VkDescriptorBindingFlagBits.html) **must** not be used.
 
 * 
 
@@ -269,7 +269,7 @@ If this feature is not enabled,
 implementation supports descriptor sets with a variable-sized last
 binding.
 If this feature is not enabled,
-`VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT` **must** not be
+[VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](VkDescriptorBindingFlagBits.html) **must** not be
 used.
 
 * 
@@ -285,7 +285,7 @@ If the `VkPhysicalDeviceDescriptorIndexingFeatures` structure is included in the
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceDescriptorIndexingFeatures`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -293,7 +293,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDescriptorIndexingFeatures-sType-sType) VUID-VkPhysicalDeviceDescriptorIndexingFeatures-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES](VkStructureType.html)
 
 [VK_EXT_descriptor_indexing](VK_EXT_descriptor_indexing.html), [VK_VERSION_1_2](VK_VERSION_1_2.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

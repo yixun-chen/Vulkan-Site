@@ -50,7 +50,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineRasterizationStateRasterizationOrderAMD-sType-sType) VUID-VkPipelineRasterizationStateRasterizationOrderAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineRasterizationStateRasterizationOrderAMD-rasterizationOrder-parameter) VUID-VkPipelineRasterizationStateRasterizationOrderAMD-rasterizationOrder-parameter
@@ -61,7 +61,7 @@ If the `[VK_AMD_rasterization_order](VK_AMD_rasterization_order.html)` device ex
 or the application does not request a particular rasterization order through
 specifying a `VkPipelineRasterizationStateRasterizationOrderAMD`
 structure then the rasterization order used by the graphics pipeline
-defaults to `VK_RASTERIZATION_ORDER_STRICT_AMD`.
+defaults to [VK_RASTERIZATION_ORDER_STRICT_AMD](VkRasterizationOrderAMD.html).
 
 [VK_AMD_rasterization_order](VK_AMD_rasterization_order.html), [VkRasterizationOrderAMD](VkRasterizationOrderAMD.html), [VkStructureType](VkStructureType.html)
 

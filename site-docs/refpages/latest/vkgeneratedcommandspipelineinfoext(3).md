@@ -41,7 +41,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGeneratedCommandsPipelineInfoEXT-sType-sType) VUID-VkGeneratedCommandsPipelineInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GENERATED_COMMANDS_PIPELINE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GENERATED_COMMANDS_PIPELINE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkGeneratedCommandsPipelineInfoEXT-pipeline-parameter) VUID-VkGeneratedCommandsPipelineInfoEXT-pipeline-parameter

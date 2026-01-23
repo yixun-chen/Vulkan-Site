@@ -29,7 +29,7 @@ typedef struct VkDeviceFaultVendorInfoEXT {
 } VkDeviceFaultVendorInfoEXT;
 
 * 
-`description` is an array of `VK_MAX_DESCRIPTION_SIZE` `char`
+`description` is an array of [VK_MAX_DESCRIPTION_SIZE](VK_MAX_DESCRIPTION_SIZE.html) `char`
 containing a null-terminated UTF-8 string which is a human readable
 description of the fault.
 

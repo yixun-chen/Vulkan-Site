@@ -30,17 +30,17 @@ typedef enum VkVideoEncodeIntraRefreshModeFlagBitsKHR {
 } VkVideoEncodeIntraRefreshModeFlagBitsKHR;
 
 * 
-`VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_NONE_KHR` specifies that intra
+[VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_NONE_KHR](#) specifies that intra
 refresh **must** not be used.
 
 * 
-`VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR`
+[VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_PER_PICTURE_PARTITION_BIT_KHR](#)
 specifies the use of *per picture partition intra refresh*.
 In this mode each intra refresh region i corresponds to the
 encoded picture partition i.
 
 * 
-`VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_BLOCK_BASED_BIT_KHR` specifies
+[VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_BLOCK_BASED_BIT_KHR](#) specifies
 the use of any *block-based intra refresh*.
 In this mode each intra refresh region encompasses a set of coding
 blocks, independent of encoded picture partitions but without any
@@ -51,13 +51,13 @@ refresh regions and the direction of intra refresh are
 implementation-defined.
 
 * 
-`VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_BLOCK_ROW_BASED_BIT_KHR`
+[VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_BLOCK_ROW_BASED_BIT_KHR](#)
 specifies the use of *block-row-based intra refresh*.
 This mode is a block-based intra refresh mode where each intra refresh
 region encompasses a set of coding block rows.
 
 * 
-`VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_BLOCK_COLUMN_BASED_BIT_KHR`
+[VK_VIDEO_ENCODE_INTRA_REFRESH_MODE_BLOCK_COLUMN_BASED_BIT_KHR](#)
 specifies the use of *block-column-based intra refresh*.
 This mode is a block-based intra refresh mode where each intra refresh
 region encompasses a set of coding block columns.

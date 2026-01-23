@@ -55,7 +55,7 @@ Valid Usage
 [](#VUID-VkMemoryDedicatedAllocateInfoTensorARM-tensor-09859) VUID-VkMemoryDedicatedAllocateInfoTensorARM-tensor-09859
 
 If [VkMemoryAllocateInfo](VkMemoryAllocateInfo.html) defines a memory import operation with
-handle type `VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT`, the
+handle type [VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT](VkExternalMemoryHandleTypeFlagBits.html), the
 memory being imported **must** also be a dedicated tensor allocation and
 `tensor` **must** be identical to the tensor associated with the
 imported memory
@@ -65,7 +65,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryDedicatedAllocateInfoTensorARM-sType-sType) VUID-VkMemoryDedicatedAllocateInfoTensorARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO_TENSOR_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO_TENSOR_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkMemoryDedicatedAllocateInfoTensorARM-tensor-parameter) VUID-VkMemoryDedicatedAllocateInfoTensorARM-tensor-parameter

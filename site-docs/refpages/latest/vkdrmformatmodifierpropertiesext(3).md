@@ -64,11 +64,11 @@ and each `VK_IMAGE_ASPECT_PLANE*_i_*BIT` a *format plane*.
 An image’s set of *format planes* is an ordered partition of the image’s
 **content** into separable groups of format components.
 The ordered partition is encoded in the name of each [VkFormat](VkFormat.html).
-For example, `VK_FORMAT_G8_B8R8_2PLANE_420_UNORM` contains two *format
+For example, [VK_FORMAT_G8_B8R8_2PLANE_420_UNORM](VkFormat.html) contains two *format
 planes*; the first plane contains the green component and the second plane
 contains the blue component and red component.
 If the format name does not contain `PLANE`, then the format contains a
-single plane; for example, `VK_FORMAT_R8G8B8A8_UNORM`.
+single plane; for example, [VK_FORMAT_R8G8B8A8_UNORM](VkFormat.html).
 Some commands, such as [vkCmdCopyBufferToImage](vkCmdCopyBufferToImage.html), do not operate on all
 format components in the image, but instead operate only on the *format
 planes* explicitly chosen by the application and operate on each *format
@@ -93,10 +93,10 @@ of the image’s **memory** into *memory planes* is implementation-specific and
 **may** be unrelated to the partition of the image’s **content** into *format
 planes*.
 For example, consider an image whose `format` is
-`VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM`, `tiling` is
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, whose `drmFormatModifier`
+[VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM](VkFormat.html), `tiling` is
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html), whose `drmFormatModifier`
 is not `DRM_FORMAT_MOD_LINEAR`, and `flags` lacks
-`VK_IMAGE_CREATE_DISJOINT_BIT`.
+[VK_IMAGE_CREATE_DISJOINT_BIT](VkImageCreateFlagBits.html).
 The image has 3 *format planes*, and commands such
 [vkCmdCopyBufferToImage](vkCmdCopyBufferToImage.html) act on each *format plane* independently as if
 the data of each *format plane* were separable from the data of the other

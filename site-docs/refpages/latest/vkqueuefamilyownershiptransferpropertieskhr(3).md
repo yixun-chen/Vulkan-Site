@@ -53,7 +53,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueueFamilyOwnershipTransferPropertiesKHR-sType-sType) VUID-VkQueueFamilyOwnershipTransferPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUEUE_FAMILY_OWNERSHIP_TRANSFER_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_OWNERSHIP_TRANSFER_PROPERTIES_KHR](VkStructureType.html)
 
 [VK_KHR_maintenance9](VK_KHR_maintenance9.html), [VkStructureType](VkStructureType.html)
 

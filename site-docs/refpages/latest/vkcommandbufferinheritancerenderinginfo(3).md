@@ -78,7 +78,7 @@ controls parameters of dynamic render pass instances that the
 [VkCommandBuffer](VkCommandBuffer.html) **can** be executed within.
 If [VkCommandBufferInheritanceInfo](VkCommandBufferInheritanceInfo.html)::`renderPass` is not
 [VK_NULL_HANDLE](VK_NULL_HANDLE.html), or
-`VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT` is not specified in
+[VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT](VkCommandBufferUsageFlagBits.html) is not specified in
 [VkCommandBufferBeginInfo](VkCommandBufferBeginInfo.html)::`flags`, parameters of this structure
 are ignored.
 
@@ -87,7 +87,7 @@ If `colorAttachmentCount` is `0` and the
 is enabled, `rasterizationSamples` is ignored.
 
 If `depthAttachmentFormat`, `stencilAttachmentFormat`, or any
-element of `pColorAttachmentFormats` is `VK_FORMAT_UNDEFINED`, it
+element of `pColorAttachmentFormats` is [VK_FORMAT_UNDEFINED](VkFormat.html), it
 indicates that the corresponding attachment is unused within the render pass
 and writes to those attachments are discarded.
 
@@ -109,45 +109,45 @@ value
 * 
 [](#VUID-VkCommandBufferInheritanceRenderingInfo-depthAttachmentFormat-06540) VUID-VkCommandBufferInheritanceRenderingInfo-depthAttachmentFormat-06540
 
-If `depthAttachmentFormat` is not `VK_FORMAT_UNDEFINED`, it
+If `depthAttachmentFormat` is not [VK_FORMAT_UNDEFINED](VkFormat.html), it
 **must** be a format that includes a depth component
 
 * 
 [](#VUID-VkCommandBufferInheritanceRenderingInfo-depthAttachmentFormat-06007) VUID-VkCommandBufferInheritanceRenderingInfo-depthAttachmentFormat-06007
 
-If `depthAttachmentFormat` is not `VK_FORMAT_UNDEFINED`, it
+If `depthAttachmentFormat` is not [VK_FORMAT_UNDEFINED](VkFormat.html), it
 **must** be a format with [potential format    features](../../../../spec/latest/chapters/formats.html#potential-format-features) that include
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-VkCommandBufferInheritanceRenderingInfo-pColorAttachmentFormats-06492) VUID-VkCommandBufferInheritanceRenderingInfo-pColorAttachmentFormats-06492
 
 If any element of `pColorAttachmentFormats` is not
-`VK_FORMAT_UNDEFINED`, it **must** be a format with
+[VK_FORMAT_UNDEFINED](VkFormat.html), it **must** be a format with
 [potential format features](../../../../spec/latest/chapters/formats.html#potential-format-features) that include
-`VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT`
-, or `VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV` if the
+[VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](VkFormatFeatureFlagBits.html)
+, or [VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV](VkFormatFeatureFlagBits2.html) if the
 [`linearColorAttachment`](../../../../spec/latest/chapters/features.html#features-linearColorAttachment) feature
 is enabled
 
 * 
 [](#VUID-VkCommandBufferInheritanceRenderingInfo-stencilAttachmentFormat-06541) VUID-VkCommandBufferInheritanceRenderingInfo-stencilAttachmentFormat-06541
 
-If `stencilAttachmentFormat` is not `VK_FORMAT_UNDEFINED`, it
+If `stencilAttachmentFormat` is not [VK_FORMAT_UNDEFINED](VkFormat.html), it
 **must** be a format that includes a stencil aspect
 
 * 
 [](#VUID-VkCommandBufferInheritanceRenderingInfo-stencilAttachmentFormat-06199) VUID-VkCommandBufferInheritanceRenderingInfo-stencilAttachmentFormat-06199
 
-If `stencilAttachmentFormat` is not `VK_FORMAT_UNDEFINED`, it
+If `stencilAttachmentFormat` is not [VK_FORMAT_UNDEFINED](VkFormat.html), it
 **must** be a format with [potential format    features](../../../../spec/latest/chapters/formats.html#potential-format-features) that include
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT`
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-VkCommandBufferInheritanceRenderingInfo-depthAttachmentFormat-06200) VUID-VkCommandBufferInheritanceRenderingInfo-depthAttachmentFormat-06200
 
-If `depthAttachmentFormat` is not `VK_FORMAT_UNDEFINED` and
-`stencilAttachmentFormat` is not `VK_FORMAT_UNDEFINED`,
+If `depthAttachmentFormat` is not [VK_FORMAT_UNDEFINED](VkFormat.html) and
+`stencilAttachmentFormat` is not [VK_FORMAT_UNDEFINED](VkFormat.html),
 `depthAttachmentFormat` **must** equal `stencilAttachmentFormat`
 
 * 
@@ -167,7 +167,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCommandBufferInheritanceRenderingInfo-sType-sType) VUID-VkCommandBufferInheritanceRenderingInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDERING_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDERING_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkCommandBufferInheritanceRenderingInfo-flags-parameter) VUID-VkCommandBufferInheritanceRenderingInfo-flags-parameter

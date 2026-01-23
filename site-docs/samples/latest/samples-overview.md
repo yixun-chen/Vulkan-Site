@@ -164,6 +164,8 @@
 - [Dynamic_multisample_rasterization](#_dynamic_multisample_rasterization)
 - [Tensor and Data Graph](#_tensor_and_data_graph)
 - [Tensor_and_Data_Graph](#_tensor_and_data_graph)
+- [Ray Tracing Invocation Reorder](#_ray_tracing_invocation_reorder)
+- [Ray_Tracing_Invocation_Reorder](#_ray_tracing_invocation_reorder)
 - [Tooling Samples](#tooling-samples)
 - [Profiles Library](#_profiles_library)
 
@@ -538,6 +540,10 @@ Demonstrate how to build data graph pipelines and execute neural networks:
 [simple_tensor_and_data_graph](extensions/tensor_and_data_graph/simple_tensor_and_data_graph/README.html)
 
 Explains how to set up and execute a simple neural network using a data graph pipeline.
+
+**Extensions:** [`VK_EXT_ray_tracing_invocation_reorder`](https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_EXT_ray_tracing_invocation_reorder.html)
+
+Demonstrate how to optimize ray tracing pipelines by reordering the invocation order.
 
 The goal of these samples is to demonstrate usage of tooling functions and libraries that are not directly part of the api.
 

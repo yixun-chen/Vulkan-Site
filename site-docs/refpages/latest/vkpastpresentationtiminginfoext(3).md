@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPastPresentationTimingInfoEXT-sType-sType) VUID-VkPastPresentationTimingInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkPastPresentationTimingInfoEXT-pNext-pNext) VUID-VkPastPresentationTimingInfoEXT-pNext-pNext

@@ -48,7 +48,7 @@ If the `VkPhysicalDeviceCopyMemoryIndirectFeaturesNV` structure is included in t
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceCopyMemoryIndirectFeaturesNV`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -56,7 +56,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceCopyMemoryIndirectFeaturesNV-sType-sType) VUID-VkPhysicalDeviceCopyMemoryIndirectFeaturesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_FEATURES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_FEATURES_NV](VkStructureType.html)
 
 [VK_NV_copy_memory_indirect](VK_NV_copy_memory_indirect.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

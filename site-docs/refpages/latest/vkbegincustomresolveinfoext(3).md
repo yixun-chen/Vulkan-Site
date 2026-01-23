@@ -39,7 +39,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBeginCustomResolveInfoEXT-sType-sType) VUID-VkBeginCustomResolveInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_BEGIN_CUSTOM_RESOLVE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_BEGIN_CUSTOM_RESOLVE_INFO_EXT](VkStructureType.html)
 
 [VK_EXT_custom_resolve](VK_EXT_custom_resolve.html), [VK_KHR_dynamic_rendering](VK_KHR_dynamic_rendering.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), [VkStructureType](VkStructureType.html), [vkCmdBeginCustomResolveEXT](vkCmdBeginCustomResolveEXT.html)
 

@@ -55,30 +55,30 @@ as described below.
 
 * 
 `size` is the size of the memory object in bytes.
-If `type` is `VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT`,
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT` or
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATION_FAILED_EXT`,
+If `type` is [VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT](VkDeviceMemoryReportEventTypeEXT.html),
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT](VkDeviceMemoryReportEventTypeEXT.html) or
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATION_FAILED_EXT](VkDeviceMemoryReportEventTypeEXT.html),
 `size` is a valid `VkDeviceSize` value.
 Otherwise, `size` is **undefined**.
 
 * 
 `objectType` is a [VkObjectType](VkObjectType.html) value specifying the type of
 the object associated with this device memory report event.
-If `type` is `VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT`,
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_FREE_EXT`,
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT`,
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_UNIMPORT_EXT` or
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATION_FAILED_EXT`,
+If `type` is [VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT](VkDeviceMemoryReportEventTypeEXT.html),
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_FREE_EXT](VkDeviceMemoryReportEventTypeEXT.html),
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT](VkDeviceMemoryReportEventTypeEXT.html),
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_UNIMPORT_EXT](VkDeviceMemoryReportEventTypeEXT.html) or
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATION_FAILED_EXT](VkDeviceMemoryReportEventTypeEXT.html),
 `objectType` is a valid [VkObjectType](VkObjectType.html) enum.
 Otherwise, `objectType` is **undefined**.
 
 * 
 `objectHandle` is the object this device memory report event is
 attributed to.
-If `type` is `VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT`,
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_FREE_EXT`,
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT` or
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_UNIMPORT_EXT`,
+If `type` is [VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT](VkDeviceMemoryReportEventTypeEXT.html),
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_FREE_EXT](VkDeviceMemoryReportEventTypeEXT.html),
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT](VkDeviceMemoryReportEventTypeEXT.html) or
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_UNIMPORT_EXT](VkDeviceMemoryReportEventTypeEXT.html),
 `objectHandle` is a valid Vulkan handle of the type associated with
 `objectType` as defined in the [    `VkObjectType` and Vulkan Handle Relationship](../../../../spec/latest/chapters/debugging.html#debugging-object-types) table.
 Otherwise, `objectHandle` is **undefined**.
@@ -86,8 +86,8 @@ Otherwise, `objectHandle` is **undefined**.
 * 
 `heapIndex` describes which memory heap this device memory
 allocation is made from.
-If `type` is `VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT`
-or `VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATION_FAILED_EXT`,
+If `type` is [VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT](VkDeviceMemoryReportEventTypeEXT.html)
+or [VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATION_FAILED_EXT](VkDeviceMemoryReportEventTypeEXT.html),
 `heapIndex` corresponds to one of the valid heaps from the
 [VkPhysicalDeviceMemoryProperties](VkPhysicalDeviceMemoryProperties.html) structure.
 Otherwise, `heapIndex` is **undefined**.
@@ -110,8 +110,8 @@ system wide.
 | --- | --- |
 triggered callback.
 
-For `VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT` and
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT` events,
+For [VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT](VkDeviceMemoryReportEventTypeEXT.html) and
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT](VkDeviceMemoryReportEventTypeEXT.html) events,
 `objectHandle` usually will not yet exist when the application or tool
 receives the callback.
 `objectHandle` will only exist when the create or allocate call that
@@ -123,7 +123,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceMemoryReportCallbackDataEXT-sType-sType) VUID-VkDeviceMemoryReportCallbackDataEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_MEMORY_REPORT_CALLBACK_DATA_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_MEMORY_REPORT_CALLBACK_DATA_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceMemoryReportCallbackDataEXT-pNext-pNext) VUID-VkDeviceMemoryReportCallbackDataEXT-pNext-pNext

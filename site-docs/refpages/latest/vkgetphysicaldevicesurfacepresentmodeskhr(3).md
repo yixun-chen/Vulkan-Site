@@ -54,16 +54,16 @@ on return the variable is overwritten with the number of values actually
 written to `pPresentModes`.
 If the value of `pPresentModeCount` is less than the number of
 presentation modes supported, at most `pPresentModeCount` values will be
-written, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available modes were
+written, and [VK_INCOMPLETE](VkResult.html) will be returned instead of
+[VK_SUCCESS](VkResult.html), to indicate that not all the available modes were
 returned.
 
 If the `[VK_GOOGLE_surfaceless_query](VK_GOOGLE_surfaceless_query.html)` extension is enabled and
 `surface` is [VK_NULL_HANDLE](VK_NULL_HANDLE.html), the values returned in
 `pPresentModes` will only indicate support for
-`VK_PRESENT_MODE_FIFO_KHR`,
-`VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR`, and
-`VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR`.
+[VK_PRESENT_MODE_FIFO_KHR](VkPresentModeKHR.html),
+[VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR](VkPresentModeKHR.html), and
+[VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR](VkPresentModeKHR.html).
 To query support for any other present mode, a valid handle **must** be
 provided in `surface`.
 
@@ -115,27 +115,27 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_surface](VK_KHR_surface.html), [VkPhysicalDevice](VkPhysicalDevice.html), [VkPresentModeKHR](VkPresentModeKHR.html), [VkSurfaceKHR](VkSurfaceKHR.html)
 

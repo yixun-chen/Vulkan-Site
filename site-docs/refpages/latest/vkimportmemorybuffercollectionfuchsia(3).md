@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImportMemoryBufferCollectionFUCHSIA-sType-sType) VUID-VkImportMemoryBufferCollectionFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMPORT_MEMORY_BUFFER_COLLECTION_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMPORT_MEMORY_BUFFER_COLLECTION_FUCHSIA](VkStructureType.html)
 
 * 
 [](#VUID-VkImportMemoryBufferCollectionFUCHSIA-collection-parameter) VUID-VkImportMemoryBufferCollectionFUCHSIA-collection-parameter

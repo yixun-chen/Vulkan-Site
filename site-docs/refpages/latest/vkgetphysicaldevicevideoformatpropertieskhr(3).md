@@ -60,7 +60,7 @@ overwritten with the number of values actually written to
 If the value of `pVideoFormatPropertyCount` is less than the number of
 video format properties supported, at most `pVideoFormatPropertyCount`
 values will be written to `pVideoFormatProperties`, and
-`VK_INCOMPLETE` will be returned instead of `VK_SUCCESS`, to
+[VK_INCOMPLETE](VkResult.html) will be returned instead of [VK_SUCCESS](VkResult.html), to
 indicate that not all the available values were returned.
 
 Video format properties are always queried with respect to a specific set of
@@ -81,28 +81,28 @@ this command returns one of the [video-profile-specific error codes](../../../..
 Furthermore, if [VkPhysicalDeviceVideoFormatInfoKHR](VkPhysicalDeviceVideoFormatInfoKHR.html)::`imageUsage`
 includes any image usage flags not supported by the specified video
 profiles, then this command returns
-`VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR`.
+[VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR](VkResult.html).
 
 If the decode capability flags include
-`VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR`, then
+[VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR](VkVideoDecodeCapabilityFlagBitsKHR.html), then
 querying video format properties that support both decode DPB and output
 usage **can** be done by including both
-`VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR` and
-`VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR` in
+[VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](VkImageUsageFlagBits.html) and
+[VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](VkImageUsageFlagBits.html) in
 [VkPhysicalDeviceVideoFormatInfoKHR](VkPhysicalDeviceVideoFormatInfoKHR.html)::`imageUsage`.
 However, even in this case, querying video format properties with
 [VkPhysicalDeviceVideoFormatInfoKHR](VkPhysicalDeviceVideoFormatInfoKHR.html)::`imageUsage` including only
-`VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR` or
-`VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR` will also return formats
+[VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](VkImageUsageFlagBits.html) or
+[VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](VkImageUsageFlagBits.html) will also return formats
 supporting both.
 
 |  | This enables application to be able to query all formats supporting
 | --- | --- |
-`VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR` and/or
-`VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR` by just including one of the
+[VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR](VkImageUsageFlagBits.html) and/or
+[VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR](VkImageUsageFlagBits.html) by just including one of the
 flags, respectively, regardless of whether the implementation supports
-`VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR`,
-`VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR`, or both.
+[VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR](VkVideoDecodeCapabilityFlagBitsKHR.html),
+[VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR](VkVideoDecodeCapabilityFlagBitsKHR.html), or both.
 This makes enumerating decode DPB and output formats simpler and unified. |
 
 The `imageUsage` member of the [VkPhysicalDeviceVideoFormatInfoKHR](VkPhysicalDeviceVideoFormatInfoKHR.html)
@@ -129,8 +129,8 @@ same `format` member with different `componentMapping`,
 `imageType`, or `imageTiling` values, as described later.
 
 If [VkPhysicalDeviceVideoFormatInfoKHR](VkPhysicalDeviceVideoFormatInfoKHR.html)::`imageUsage` includes
-`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR` or
-`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR`, multiple
+[VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR](VkImageUsageFlagBits.html) or
+[VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR](VkImageUsageFlagBits.html), multiple
 `VkVideoFormatPropertiesKHR` entries **may** be returned with the same
 `format`, `componentMapping`, `imageType`, and `imageTiling`
 member values, but different `quantizationMapTexelSize` returned in the
@@ -169,7 +169,7 @@ with `VkVideoFormatPropertiesKHR`::`format`
 
 * 
 If `VkVideoFormatPropertiesKHR`::`imageTiling` is
-`VK_IMAGE_TILING_OPTIMAL`, then the `optimalTilingFeatures`
+[VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html), then the `optimalTilingFeatures`
 returned by [vkGetPhysicalDeviceFormatProperties2](vkGetPhysicalDeviceFormatProperties2.html) **must** include all
 format features required by the image usage flags reported in
 `VkVideoFormatPropertiesKHR`::`imageUsageFlags` for the format,
@@ -177,7 +177,7 @@ as indicated in the [Format    Feature Dependent Usage Flags](../../../../spec/l
 
 * 
 If `VkVideoFormatPropertiesKHR`::`imageTiling` is
-`VK_IMAGE_TILING_LINEAR`, then the `linearTilingFeatures`
+[VK_IMAGE_TILING_LINEAR](VkImageTiling.html), then the `linearTilingFeatures`
 returned by [vkGetPhysicalDeviceFormatProperties2](vkGetPhysicalDeviceFormatProperties2.html) **must** include all
 format features required by the image usage flags reported in
 `VkVideoFormatPropertiesKHR`::`imageUsageFlags` for the format,
@@ -216,7 +216,7 @@ The `componentMapping` member of `VkVideoFormatPropertiesKHR`
 defines the ordering of the Y′CBCR color channels from the perspective of
 the video codec operations specified in [VkVideoProfileListInfoKHR](VkVideoProfileListInfoKHR.html).
 For example, if the implementation produces video decode output with the
-format `VK_FORMAT_G8_B8R8_2PLANE_420_UNORM` where the blue and red
+format [VK_FORMAT_G8_B8R8_2PLANE_420_UNORM](VkFormat.html) where the blue and red
 chrominance channels are swapped then the `componentMapping` member of
 the corresponding `VkVideoFormatPropertiesKHR` structure will have the
 following member values:
@@ -270,39 +270,39 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR`
+[VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 * 
-`VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR](VkResult.html)
 
 * 
-`VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR](VkResult.html)
 
 * 
-`VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR](VkResult.html)
 
 * 
-`VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR](VkResult.html)
 
 [VK_KHR_video_queue](VK_KHR_video_queue.html), [VkPhysicalDevice](VkPhysicalDevice.html), [VkPhysicalDeviceVideoFormatInfoKHR](VkPhysicalDeviceVideoFormatInfoKHR.html), [VkVideoFormatPropertiesKHR](VkVideoFormatPropertiesKHR.html)
 

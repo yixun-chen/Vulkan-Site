@@ -41,7 +41,7 @@ using the *present barrier*.
 
 If the `pNext` chain of [VkSwapchainCreateInfoKHR](VkSwapchainCreateInfoKHR.html) does not include
 this structure, the default value for `presentBarrierEnable` is
-`VK_FALSE`, meaning the swapchain does not request to use the present
+[VK_FALSE](VK_FALSE.html), meaning the swapchain does not request to use the present
 barrier.
 Additionally, when recreating a swapchain that was using the present
 barrier, and the `pNext` chain of [VkSwapchainCreateInfoKHR](VkSwapchainCreateInfoKHR.html) does
@@ -53,7 +53,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSwapchainPresentBarrierCreateInfoNV-sType-sType) VUID-VkSwapchainPresentBarrierCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_BARRIER_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_BARRIER_CREATE_INFO_NV](VkStructureType.html)
 
 [VK_NV_present_barrier](VK_NV_present_barrier.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

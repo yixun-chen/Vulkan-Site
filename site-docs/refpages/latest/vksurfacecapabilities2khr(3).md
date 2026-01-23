@@ -54,14 +54,14 @@ not reflect that of any surface and will instead be as such:
 
 * 
 `currentTransform` will be
-`VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR`
+[VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR](VkSurfaceTransformFlagBitsKHR.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkSurfaceCapabilities2KHR-sType-sType) VUID-VkSurfaceCapabilities2KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkSurfaceCapabilities2KHR-pNext-pNext) VUID-VkSurfaceCapabilities2KHR-pNext-pNext

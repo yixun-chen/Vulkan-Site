@@ -21,7 +21,7 @@ VkTensorViewCreateInfoARM - Structure specifying parameters of a newly created t
 
 The `VkTensorViewCreateInfoARM` structure is defined as:
 
-// Provided by VK_ARM_tensors
+// Provided by VK_EXT_descriptor_heap, VK_ARM_tensors
 typedef struct VkTensorViewCreateInfoARM {
     VkStructureType               sType;
     const void*                   pNext;
@@ -48,7 +48,7 @@ structure.
 interpret elements in the tensor.
 
 If `tensor` was created with the
-`VK_TENSOR_CREATE_MUTABLE_FORMAT_BIT_ARM` flag, `format` **can** be
+[VK_TENSOR_CREATE_MUTABLE_FORMAT_BIT_ARM](VkTensorCreateFlagBitsARM.html) flag, `format` **can** be
 different from the tensor’s format, but if they are not equal they **must** be
 *compatible*.
 Tensor format compatibility is defined in the
@@ -73,14 +73,14 @@ Valid Usage
 [](#VUID-VkTensorViewCreateInfoARM-tensor-09743) VUID-VkTensorViewCreateInfoARM-tensor-09743
 
 If `tensor` was not created with
-`VK_TENSOR_CREATE_MUTABLE_FORMAT_BIT_ARM` flag, `format` **must**
+[VK_TENSOR_CREATE_MUTABLE_FORMAT_BIT_ARM](VkTensorCreateFlagBitsARM.html) flag, `format` **must**
 be identical to the `format` used to create `tensor`
 
 * 
 [](#VUID-VkTensorViewCreateInfoARM-tensor-09744) VUID-VkTensorViewCreateInfoARM-tensor-09744
 
 If `tensor` was created with
-`VK_TENSOR_CREATE_MUTABLE_FORMAT_BIT_ARM` flag, `format` **must**
+[VK_TENSOR_CREATE_MUTABLE_FORMAT_BIT_ARM](VkTensorCreateFlagBitsARM.html) flag, `format` **must**
 be compatible with the `format` used to create `tensor`, as
 defined in [Format Compatibility    Classes](../../../../spec/latest/chapters/formats.html#formats-compatibility-classes)
 
@@ -88,7 +88,7 @@ defined in [Format Compatibility    Classes](../../../../spec/latest/chapters/fo
 [](#VUID-VkTensorViewCreateInfoARM-flags-09745) VUID-VkTensorViewCreateInfoARM-flags-09745
 
 If `flags` includes
-`VK_TENSOR_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM`,
+[VK_TENSOR_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM](VkTensorViewCreateFlagBitsARM.html),
 the
 [`descriptorBufferCaptureReplay`](../../../../spec/latest/chapters/features.html#features-descriptorBufferCaptureReplay)
 feature **must** be enabled
@@ -99,7 +99,7 @@ feature **must** be enabled
 If the `pNext` chain includes a
 [VkOpaqueCaptureDescriptorDataCreateInfoEXT](VkOpaqueCaptureDescriptorDataCreateInfoEXT.html) structure, `flags`
 **must** contain
-`VK_TENSOR_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM`
+[VK_TENSOR_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM](VkTensorViewCreateFlagBitsARM.html)
 
 * 
 [](#VUID-VkTensorViewCreateInfoARM-usage-09747) VUID-VkTensorViewCreateInfoARM-usage-09747
@@ -107,10 +107,10 @@ If the `pNext` chain includes a
 The `usage` flags of `tensor` **must** have at least one of the
 following bits set:
 
-`VK_TENSOR_USAGE_SHADER_BIT_ARM`
+[VK_TENSOR_USAGE_SHADER_BIT_ARM](VkTensorUsageFlagBitsARM.html)
 
 * 
-`VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM`
+[VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM](VkTensorUsageFlagBitsARM.html)
 
 [](#VUID-VkTensorViewCreateInfoARM-usage-09748) VUID-VkTensorViewCreateInfoARM-usage-09748
 
@@ -128,7 +128,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTensorViewCreateInfoARM-sType-sType) VUID-VkTensorViewCreateInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TENSOR_VIEW_CREATE_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TENSOR_VIEW_CREATE_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkTensorViewCreateInfoARM-pNext-pNext) VUID-VkTensorViewCreateInfoARM-pNext-pNext
@@ -155,7 +155,7 @@ Valid Usage (Implicit)
 
  `format` **must** be a valid [VkFormat](VkFormat.html) value
 
-[VK_ARM_tensors](VK_ARM_tensors.html), [VkFormat](VkFormat.html), [VkStructureType](VkStructureType.html), [VkTensorARM](VkTensorARM.html), [VkTensorViewCreateFlagsARM](VkTensorViewCreateFlagsARM.html), [vkCreateTensorViewARM](vkCreateTensorViewARM.html)
+[VK_ARM_tensors](VK_ARM_tensors.html), [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html), [VkFormat](VkFormat.html), [VkResourceDescriptorDataEXT](VkResourceDescriptorDataEXT.html), [VkStructureType](VkStructureType.html), [VkTensorARM](VkTensorARM.html), [VkTensorViewCreateFlagsARM](VkTensorViewCreateFlagsARM.html), [vkCreateTensorViewARM](vkCreateTensorViewARM.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkTensorViewCreateInfoARM).
 

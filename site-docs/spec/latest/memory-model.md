@@ -861,7 +861,7 @@ are system-synchronized-with each other in the order listed.
 An operation that performs a [memory dependency](../chapters/synchronization.html#synchronization-dependencies-memory) generates:
 
 * 
-If the source access mask includes `VK_ACCESS_HOST_WRITE_BIT`, then
+If the source access mask includes [VK_ACCESS_HOST_WRITE_BIT](../chapters/synchronization.html#VkAccessFlagBits), then
 the dependency includes a memory domain operation from host domain to
 device domain.
 
@@ -875,8 +875,8 @@ A visibility operation with source scope of the device domain and
 destination scope of the second access scope of the dependency.
 
 * 
-If the destination access mask includes `VK_ACCESS_HOST_READ_BIT` or
-`VK_ACCESS_HOST_WRITE_BIT`, then the dependency includes a memory
+If the destination access mask includes [VK_ACCESS_HOST_READ_BIT](../chapters/synchronization.html#VkAccessFlagBits) or
+[VK_ACCESS_HOST_WRITE_BIT](../chapters/synchronization.html#VkAccessFlagBits), then the dependency includes a memory
 domain operation from device domain to host domain.
 
 [vkFlushMappedMemoryRanges](../chapters/memory.html#vkFlushMappedMemoryRanges) performs an availability operation, with a
@@ -1016,7 +1016,7 @@ X→rcpoAVC(AX,RX,D,L)→VISC(AY,RY,D,L)→rcpoY
 * 
 If
 [VkPhysicalDeviceVulkanMemoryModelFeatures](../chapters/features.html#VkPhysicalDeviceVulkanMemoryModelFeatures)::`vulkanMemoryModelAvailabilityVisibilityChains`
-is `VK_FALSE`, then AVC and VISC **must** each only have a single
+is [VK_FALSE](../chapters/fundamentals.html#VK_FALSE), then AVC and VISC **must** each only have a single
 element in the chain, in each sub-bullet above.
 
 Let DX and DY each be either the device domain or the host domain,

@@ -18,7 +18,7 @@
 
 VkDiscardRectangleModeEXT - Specify the discard rectangle mode
 
-`VkDiscardRectangleModeEXT` values are:
+[VkDiscardRectangleModeEXT](#) values are:
 
 // Provided by VK_EXT_discard_rectangles
 typedef enum VkDiscardRectangleModeEXT {
@@ -27,11 +27,11 @@ typedef enum VkDiscardRectangleModeEXT {
 } VkDiscardRectangleModeEXT;
 
 * 
-`VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT` specifies that the discard
+[VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT](#) specifies that the discard
 rectangle test is inclusive.
 
 * 
-`VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT` specifies that the discard
+[VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT](#) specifies that the discard
 rectangle test is exclusive.
 
 [VK_EXT_discard_rectangles](VK_EXT_discard_rectangles.html), [VkPipelineDiscardRectangleStateCreateInfoEXT](VkPipelineDiscardRectangleStateCreateInfoEXT.html), [vkCmdSetDiscardRectangleModeEXT](vkCmdSetDiscardRectangleModeEXT.html)

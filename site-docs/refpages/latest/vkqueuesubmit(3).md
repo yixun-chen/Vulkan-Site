@@ -53,20 +53,31 @@ point until this command completes on the device.
 Batches begin execution in the order they appear in `pSubmits`, but **may**
 complete out of order.
 
-Fence and semaphore operations submitted with [vkQueueSubmit](#) have
-additional ordering constraints compared to other submission commands, with
-dependencies involving previous and subsequent queue operations.
-Information about these additional constraints can be found in the
-[semaphore](../../../../spec/latest/chapters/synchronization.html#synchronization-semaphores) and [fence](../../../../spec/latest/chapters/synchronization.html#synchronization-fences) sections of [the synchronization chapter](../../../../spec/latest/chapters/synchronization.html#synchronization).
-
-Details on the interaction of `pWaitDstStageMask` with synchronization
-are described in the [semaphore wait operation](../../../../spec/latest/chapters/synchronization.html#synchronization-semaphores-waiting) section of [the synchronization chapter](../../../../spec/latest/chapters/synchronization.html#synchronization).
-
 The order that batches appear in `pSubmits` is used to determine
 [submission order](../../../../spec/latest/chapters/synchronization.html#synchronization-submission-order), and thus all the
 [implicit ordering guarantees](../../../../spec/latest/chapters/synchronization.html#synchronization-implicit) that respect it.
 Other than these implicit ordering guarantees and any [explicit synchronization primitives](../../../../spec/latest/chapters/synchronization.html#synchronization), these batches **may** overlap or
 otherwise execute out of order.
+
+Fence operations submitted with [vkQueueSubmit](#) have additional ordering
+constraints compared to other submission commands, with dependencies
+involving previous and subsequent queue operations.
+Information about these additional constraints can be found in the
+[fence](../../../../spec/latest/chapters/synchronization.html#synchronization-fences) sections of [the synchronization chapter](../../../../spec/latest/chapters/synchronization.html#synchronization).
+
+The first [synchronization scope](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-scopes) of
+each [semaphore signal operation](../../../../spec/latest/chapters/synchronization.html#synchronization-semaphores-signaling)
+defined by this command includes every command in the same batch that the
+signal operation is defined in, and all commands that occur earlier in
+[submission order](../../../../spec/latest/chapters/synchronization.html#synchronization-submission-order).
+
+The second [synchronization scope](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-scopes) of
+each [semaphore wait operation](../../../../spec/latest/chapters/synchronization.html#synchronization-semaphores-waiting) defined
+by this command includes every command in the same batch that the wait
+operation is defined in, and all commands that occur later in
+[submission order](../../../../spec/latest/chapters/synchronization.html#synchronization-submission-order).
+The scope is limited by the `pWaitDstStageMask` for each batch, as
+described in [VkSubmitInfo](VkSubmitInfo.html).
 
 If any command buffer submitted to this queue is in the
 [executable state](../../../../spec/latest/chapters/cmdbuffers.html#commandbuffers-lifecycle), it is moved to the
@@ -75,18 +86,18 @@ Once execution of all submissions of a command buffer complete, it moves
 from the [pending state](../../../../spec/latest/chapters/cmdbuffers.html#commandbuffers-lifecycle), back to the
 [executable state](../../../../spec/latest/chapters/cmdbuffers.html#commandbuffers-lifecycle).
 If a command buffer was recorded with the
-`VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT` flag, it instead moves to
+[VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT](VkCommandBufferUsageFlagBits.html) flag, it instead moves to
 the [invalid state](../../../../spec/latest/chapters/cmdbuffers.html#commandbuffers-lifecycle).
 
 If `vkQueueSubmit` fails, it **may** return
-`VK_ERROR_OUT_OF_HOST_MEMORY` or `VK_ERROR_OUT_OF_DEVICE_MEMORY`.
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html) or [VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html).
 If it does, the implementation **must** ensure that the state and contents of
 any resources or synchronization primitives referenced by the submitted
 command buffers and any semaphores referenced by `pSubmits` is
 unaffected by the call or its failure.
 If `vkQueueSubmit` fails in such a way that the implementation is unable
 to make that guarantee, the implementation **must** return
-`VK_ERROR_DEVICE_LOST`.
+[VK_ERROR_DEVICE_LOST](VkResult.html).
 See [Lost Device](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-lost-device).
 
 Valid Usage
@@ -142,7 +153,7 @@ waiting on the same semaphore
 
 All elements of the `pWaitSemaphores` member of all elements of
 `pSubmits`
-created with a [VkSemaphoreType](VkSemaphoreType.html) of `VK_SEMAPHORE_TYPE_BINARY`
+created with a [VkSemaphoreType](VkSemaphoreType.html) of [VK_SEMAPHORE_TYPE_BINARY](VkSemaphoreType.html)
 **must** reference a semaphore signal operation that has been submitted for
 execution and any [semaphore    signal operations](../../../../spec/latest/chapters/synchronization.html#synchronization-semaphores-signaling) on which it depends **must** have also been submitted
 for execution
@@ -158,7 +169,7 @@ Each element of the `pCommandBuffers` member of each element of
 
 If any element of the `pCommandBuffers` member of any element of
 `pSubmits` was not recorded with the
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT`, it **must** not be in
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](VkCommandBufferUsageFlagBits.html), it **must** not be in
 the [pending state](../../../../spec/latest/chapters/cmdbuffers.html#commandbuffers-lifecycle)
 
 * 
@@ -174,7 +185,7 @@ into any element of the `pCommandBuffers` member of any element of
 If any [secondary command buffers recorded](../../../../spec/latest/chapters/cmdbuffers.html#commandbuffers-secondary)
 into any element of the `pCommandBuffers` member of any element of
 `pSubmits` was not recorded with the
-`VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT`, it **must** not be in
+[VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT](VkCommandBufferUsageFlagBits.html), it **must** not be in
 the [pending state](../../../../spec/latest/chapters/cmdbuffers.html#commandbuffers-lifecycle)
 
 * 
@@ -208,7 +219,7 @@ acquire operation
 
 If a command recorded into any element of `pCommandBuffers` was a
 [vkCmdBeginQuery](vkCmdBeginQuery.html) whose `queryPool` was created with a
-`queryType` of `VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, the
+`queryType` of [VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](VkQueryType.html), the
 [profiling lock](../../../../spec/latest/chapters/queries.html#profiling-lock) **must** have been held continuously on
 the `VkDevice` that `queue` was retrieved from, throughout
 recording of those command buffers
@@ -216,7 +227,7 @@ recording of those command buffers
 * 
 [](#VUID-vkQueueSubmit-pSubmits-02808) VUID-vkQueueSubmit-pSubmits-02808
 
-Any resource created with `VK_SHARING_MODE_EXCLUSIVE` that is read
+Any resource created with [VK_SHARING_MODE_EXCLUSIVE](VkSharingMode.html) that is read
 by an operation specified by `pSubmits` **must** not be owned by any
 queue family other than the one which `queue` belongs to, at the
 time it is executed
@@ -224,7 +235,7 @@ time it is executed
 * 
 [](#VUID-vkQueueSubmit-pSubmits-04626) VUID-vkQueueSubmit-pSubmits-04626
 
-Any resource created with `VK_SHARING_MODE_CONCURRENT` that is
+Any resource created with [VK_SHARING_MODE_CONCURRENT](VkSharingMode.html) that is
 accessed by an operation specified by `pSubmits` **must** have included
 the queue family of `queue` at resource creation time
 
@@ -232,9 +243,9 @@ the queue family of `queue` at resource creation time
 [](#VUID-vkQueueSubmit-queue-06448) VUID-vkQueueSubmit-queue-06448
 
 If `queue` was not created with
-`VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT`, there **must** be no element of
+[VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT](VkDeviceQueueCreateFlagBits.html), there **must** be no element of
 `pSubmits` that includes a [VkProtectedSubmitInfo](VkProtectedSubmitInfo.html) structure in
-its `pNext` chain with `protectedSubmit` equal to `VK_TRUE`
+its `pNext` chain with `protectedSubmit` equal to [VK_TRUE](VK_TRUE.html)
 
 Valid Usage (Implicit)
 
@@ -262,6 +273,8 @@ Host Synchronization
 
 * 
 Host access to `queue` **must** be externally synchronized
+if it was not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](VkDeviceQueueCreateFlagBits.html)
 
 * 
 Host access to `fence` **must** be externally synchronized
@@ -276,24 +289,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkFence](VkFence.html), [VkQueue](VkQueue.html), [VkSubmitInfo](VkSubmitInfo.html)
 

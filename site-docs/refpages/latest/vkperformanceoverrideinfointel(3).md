@@ -52,7 +52,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPerformanceOverrideInfoINTEL-sType-sType) VUID-VkPerformanceOverrideInfoINTEL-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PERFORMANCE_OVERRIDE_INFO_INTEL`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_OVERRIDE_INFO_INTEL](VkStructureType.html)
 
 * 
 [](#VUID-VkPerformanceOverrideInfoINTEL-pNext-pNext) VUID-VkPerformanceOverrideInfoINTEL-pNext-pNext

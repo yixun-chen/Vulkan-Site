@@ -61,7 +61,7 @@ any member of
 [VkPipelineVertexInputDivisorStateCreateInfo](VkPipelineVertexInputDivisorStateCreateInfo.html)::`pVertexBindingDivisors`
 has a value other than `1` in `divisor`, and
 [VkPhysicalDeviceVertexAttributeDivisorProperties](VkPhysicalDeviceVertexAttributeDivisorProperties.html)::`supportsNonZeroFirstInstance`
-is `VK_FALSE`, then `firstInstance` **must** be `0`
+is [VK_FALSE](VK_FALSE.html), then `firstInstance` **must** be `0`
 
 * 
 [](#VUID-VkDrawIndexedIndirectCommand-None-09462) VUID-VkDrawIndexedIndirectCommand-None-09462
@@ -69,12 +69,12 @@ is `VK_FALSE`, then `firstInstance` **must** be `0`
 If
 [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects) are used for drawing or
 the bound graphics pipeline state was created with the
-`VK_DYNAMIC_STATE_VERTEX_INPUT_EXT` dynamic state enabled, any
+[VK_DYNAMIC_STATE_VERTEX_INPUT_EXT](VkDynamicState.html) dynamic state enabled, any
 member of the `pVertexBindingDescriptions` parameter to the
 [vkCmdSetVertexInputEXT](vkCmdSetVertexInputEXT.html) call that sets this dynamic state has a
 value other than `1` in `divisor`, and
 [VkPhysicalDeviceVertexAttributeDivisorProperties](VkPhysicalDeviceVertexAttributeDivisorProperties.html)::`supportsNonZeroFirstInstance`
-is `VK_FALSE`, then `firstInstance` **must** be `0`
+is [VK_FALSE](VK_FALSE.html), then `firstInstance` **must** be `0`
 
 * 
 [](#VUID-VkDrawIndexedIndirectCommand-robustBufferAccess2-08798) VUID-VkDrawIndexedIndirectCommand-robustBufferAccess2-08798

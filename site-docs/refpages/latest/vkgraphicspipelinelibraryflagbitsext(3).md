@@ -31,22 +31,22 @@ typedef enum VkGraphicsPipelineLibraryFlagBitsEXT {
 } VkGraphicsPipelineLibraryFlagBitsEXT;
 
 * 
-`VK_GRAPHICS_PIPELINE_LIBRARY_VERTEX_INPUT_INTERFACE_BIT_EXT`
+[VK_GRAPHICS_PIPELINE_LIBRARY_VERTEX_INPUT_INTERFACE_BIT_EXT](#)
 specifies that a pipeline will include
 [vertex input interface    state](../../../../spec/latest/chapters/pipelines.html#pipelines-graphics-subsets-vertex-input).
 
 * 
-`VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT`
+[VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT](#)
 specifies that a pipeline will include
 [pre-rasterization shader    state](../../../../spec/latest/chapters/pipelines.html#pipelines-graphics-subsets-pre-rasterization).
 
 * 
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT` specifies
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT](#) specifies
 that a pipeline will include
 [fragment shader state](../../../../spec/latest/chapters/pipelines.html#pipelines-graphics-subsets-fragment-shader).
 
 * 
-`VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT`
+[VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT](#)
 specifies that a pipeline will include
 [fragment output interface    state](../../../../spec/latest/chapters/pipelines.html#pipelines-graphics-subsets-fragment-output).
 

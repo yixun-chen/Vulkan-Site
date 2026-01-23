@@ -50,7 +50,7 @@ If the `VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV` structure is
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV-sType-sType) VUID-VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_FEATURES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_FEATURES_NV](VkStructureType.html)
 
 [VK_NV_partitioned_acceleration_structure](VK_NV_partitioned_acceleration_structure.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

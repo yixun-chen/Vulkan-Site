@@ -45,7 +45,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceTensorMemoryRequirementsARM-sType-sType) VUID-VkDeviceTensorMemoryRequirementsARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_TENSOR_MEMORY_REQUIREMENTS_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_TENSOR_MEMORY_REQUIREMENTS_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceTensorMemoryRequirementsARM-pNext-pNext) VUID-VkDeviceTensorMemoryRequirementsARM-pNext-pNext

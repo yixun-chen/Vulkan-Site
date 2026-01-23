@@ -341,7 +341,7 @@ The dependency analysis represents the mathematical core of the rendergraph syst
 
 The topological sort algorithm ensures that passes execute in dependency order while detecting impossible circular dependencies that would represent logical errors in the rendering pipeline design. This compile-time validation catches many common rendering pipeline bugs before they manifest as runtime GPU synchronization issues.
 
-Next create the GPU synchronization objects needed for correct execution ordering and allocates the actual Vulkan resources for all registered resources.
+Next create the GPU synchronization objects needed for correct execution ordering and allocate the actual Vulkan resources for all registered resources.
 
         // Automatic Synchronization Object Creation
         // Generate semaphores for all dependencies identified during analysis
@@ -1321,7 +1321,7 @@ private:
     }
 };
 
-For detailed information about advanced rendering techniques such as Deferred Rendering, Forward+ Rendering, and Physically Based Rendering (PBR), please refer to the [Advanced Rendering Techniques](../Appendix/appendix.adoc#advanced-rendering-techniques) section in the Appendix. This section includes references to valuable resources for further reading.
+For detailed information about advanced rendering techniques such as Deferred Rendering, Forward+ Rendering, and Physically Based Rendering (PBR), please refer to the [Advanced Rendering Techniques](../Appendix/appendix.html#advanced-rendering-techniques) section in the Appendix. This section includes references to valuable resources for further reading.
 
 A well-designed rendering pipeline is essential for creating a flexible and efficient rendering engine. By implementing the techniques described in this section, you can create a system that:
 
@@ -1335,4 +1335,4 @@ Can be easily extended with new effects and features
 
 In the next section, we’ll explore event systems, which provide a flexible way for different parts of your engine to communicate with each other.
 
-[Previous: Resource Management](04_resource_management.adoc) | [Next: Event Systems](06_event_systems.adoc)
+[Previous: Resource Management](04_resource_management.html) | [Next: Event Systems](06_event_systems.html)

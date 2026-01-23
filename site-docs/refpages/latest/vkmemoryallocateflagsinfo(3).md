@@ -52,22 +52,22 @@ the allocation.
 * 
 `deviceMask` is a mask of physical devices in the logical device,
 indicating that memory **must** be allocated on each device in the mask, if
-`VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT` is set in `flags`.
+[VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT](VkMemoryAllocateFlagBits.html) is set in `flags`.
 
-If `VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT` is not set, the number of
+If [VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT](VkMemoryAllocateFlagBits.html) is not set, the number of
 instances allocated depends on whether
-`VK_MEMORY_HEAP_MULTI_INSTANCE_BIT` is set in the memory heap.
-If `VK_MEMORY_HEAP_MULTI_INSTANCE_BIT` is set, then memory is allocated
+[VK_MEMORY_HEAP_MULTI_INSTANCE_BIT](VkMemoryHeapFlagBits.html) is set in the memory heap.
+If [VK_MEMORY_HEAP_MULTI_INSTANCE_BIT](VkMemoryHeapFlagBits.html) is set, then memory is allocated
 for every physical device in the logical device (as if `deviceMask` has
 bits set for all device indices).
-If `VK_MEMORY_HEAP_MULTI_INSTANCE_BIT` is not set, then a single
+If [VK_MEMORY_HEAP_MULTI_INSTANCE_BIT](VkMemoryHeapFlagBits.html) is not set, then a single
 instance of memory is allocated (as if `deviceMask` is set to one).
 
 On some implementations, allocations from a multi-instance heap **may** consume
 memory on all physical devices even if the `deviceMask` excludes some
 devices.
 If [VkPhysicalDeviceGroupProperties](VkPhysicalDeviceGroupProperties.html)::`subsetAllocation` is
-`VK_TRUE`, then memory is only consumed for the devices in the device
+[VK_TRUE](VK_TRUE.html), then memory is only consumed for the devices in the device
 mask.
 
 |  | In practice, most allocations on a multi-instance heap will be allocated
@@ -81,13 +81,13 @@ Valid Usage
 * 
 [](#VUID-VkMemoryAllocateFlagsInfo-deviceMask-00675) VUID-VkMemoryAllocateFlagsInfo-deviceMask-00675
 
-If `VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT` is set, `deviceMask`
+If [VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT](VkMemoryAllocateFlagBits.html) is set, `deviceMask`
 **must** be a valid device mask
 
 * 
 [](#VUID-VkMemoryAllocateFlagsInfo-deviceMask-00676) VUID-VkMemoryAllocateFlagsInfo-deviceMask-00676
 
-If `VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT` is set, `deviceMask`
+If [VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT](VkMemoryAllocateFlagBits.html) is set, `deviceMask`
 **must** not be zero
 
 * 
@@ -95,20 +95,20 @@ If `VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT` is set, `deviceMask`
 
 If the allocation is performing a memory import operation, then
 `flags` **must** not contain
-`VK_MEMORY_ALLOCATE_ZERO_INITIALIZE_BIT_EXT`
+[VK_MEMORY_ALLOCATE_ZERO_INITIALIZE_BIT_EXT](VkMemoryAllocateFlagBits.html)
 
 * 
 [](#VUID-VkMemoryAllocateFlagsInfo-flags-10761) VUID-VkMemoryAllocateFlagsInfo-flags-10761
 
 If the allocation uses protected memory, then `flags` **must** not
-contain `VK_MEMORY_ALLOCATE_ZERO_INITIALIZE_BIT_EXT`
+contain [VK_MEMORY_ALLOCATE_ZERO_INITIALIZE_BIT_EXT](VkMemoryAllocateFlagBits.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkMemoryAllocateFlagsInfo-sType-sType) VUID-VkMemoryAllocateFlagsInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkMemoryAllocateFlagsInfo-flags-parameter) VUID-VkMemoryAllocateFlagsInfo-flags-parameter

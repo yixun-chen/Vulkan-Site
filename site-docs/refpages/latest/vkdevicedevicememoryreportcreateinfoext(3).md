@@ -64,7 +64,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceDeviceMemoryReportCreateInfoEXT-sType-sType) VUID-VkDeviceDeviceMemoryReportCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceDeviceMemoryReportCreateInfoEXT-flags-zerobitmask) VUID-VkDeviceDeviceMemoryReportCreateInfoEXT-flags-zerobitmask

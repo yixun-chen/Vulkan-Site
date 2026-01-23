@@ -76,8 +76,8 @@ implementation supports host side acceleration structure commands, e.g.
 whether the implementation supports updating acceleration structure
 descriptors after a set is bound.
 If this feature is not enabled,
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT` **must** not be used with
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR`.
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html) **must** not be used with
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](VkDescriptorType.html).
 
 If the `VkPhysicalDeviceAccelerationStructureFeaturesKHR` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -85,7 +85,7 @@ If the `VkPhysicalDeviceAccelerationStructureFeaturesKHR` structure is included 
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceAccelerationStructureFeaturesKHR`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -93,7 +93,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceAccelerationStructureFeaturesKHR-sType-sType) VUID-VkPhysicalDeviceAccelerationStructureFeaturesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_FEATURES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_FEATURES_KHR](VkStructureType.html)
 
 [VK_KHR_acceleration_structure](VK_KHR_acceleration_structure.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

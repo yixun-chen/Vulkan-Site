@@ -60,7 +60,7 @@ created, `pAllocator` **must** be `NULL`
 |  | Applications **can** verify that `queryPool` **can** be destroyed by checking
 | --- | --- |
 that `vkGetQueryPoolResults`() without the
-`VK_QUERY_RESULT_PARTIAL_BIT` flag returns `VK_SUCCESS` for all
+[VK_QUERY_RESULT_PARTIAL_BIT](VkQueryResultFlagBits.html) flag returns [VK_SUCCESS](VkResult.html) for all
 queries that are used in command buffers submitted for execution. |
 
 Valid Usage (Implicit)

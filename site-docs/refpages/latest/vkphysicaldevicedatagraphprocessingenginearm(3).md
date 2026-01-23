@@ -35,13 +35,6 @@ that specifies the type of the processing engine.
 * 
 `isForeign` specifies whether the processing engine is foreign.
 
-Valid Usage (Implicit)
-
-* 
-[](#VUID-VkPhysicalDeviceDataGraphProcessingEngineARM-type-parameter) VUID-VkPhysicalDeviceDataGraphProcessingEngineARM-type-parameter
-
- `type` **must** be a valid [VkPhysicalDeviceDataGraphProcessingEngineTypeARM](VkPhysicalDeviceDataGraphProcessingEngineTypeARM.html) value
-
 [VK_ARM_data_graph](VK_ARM_data_graph.html), `VkBool32`, [VkDataGraphProcessingEngineCreateInfoARM](VkDataGraphProcessingEngineCreateInfoARM.html), [VkPhysicalDeviceDataGraphProcessingEngineTypeARM](VkPhysicalDeviceDataGraphProcessingEngineTypeARM.html), [VkQueueFamilyDataGraphPropertiesARM](VkQueueFamilyDataGraphPropertiesARM.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/VK_ARM_data_graph/graphs.html#VkPhysicalDeviceDataGraphProcessingEngineARM).

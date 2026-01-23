@@ -76,14 +76,14 @@ Valid Usage
 [](#VUID-VkVertexInputAttributeDescription2EXT-format-04805) VUID-VkVertexInputAttributeDescription2EXT-format-04805
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-buffer-view-format-features) of
-`format` **must** contain `VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT`
+`format` **must** contain [VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-VkVertexInputAttributeDescription2EXT-vertexAttributeAccessBeyondStride-04806) VUID-VkVertexInputAttributeDescription2EXT-vertexAttributeAccessBeyondStride-04806
 
 If the `[VK_KHR_portability_subset](VK_KHR_portability_subset.html)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](VkPhysicalDevicePortabilitySubsetFeaturesKHR.html)::`vertexAttributeAccessBeyondStride`
-is `VK_FALSE`, the sum of `offset` plus the size of the vertex
+is [VK_FALSE](VK_FALSE.html), the sum of `offset` plus the size of the vertex
 attribute data described by `format` **must** not be greater than
 `stride` in the [VkVertexInputBindingDescription2EXT](VkVertexInputBindingDescription2EXT.html) referenced
 in `binding`
@@ -93,7 +93,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVertexInputAttributeDescription2EXT-sType-sType) VUID-VkVertexInputAttributeDescription2EXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VERTEX_INPUT_ATTRIBUTE_DESCRIPTION_2_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VERTEX_INPUT_ATTRIBUTE_DESCRIPTION_2_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkVertexInputAttributeDescription2EXT-format-parameter) VUID-VkVertexInputAttributeDescription2EXT-format-parameter

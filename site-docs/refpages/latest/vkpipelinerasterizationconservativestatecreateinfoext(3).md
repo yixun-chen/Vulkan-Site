@@ -56,18 +56,18 @@ each of its edges in `X` and `Y` equally in screen space beyond the base
 overestimation specified in
 `VkPhysicalDeviceConservativeRasterizationPropertiesEXT`::`primitiveOverestimationSize`.
 If `conservativeRasterizationMode` is not
-`VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT`, this value is
+[VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT](VkConservativeRasterizationModeEXT.html), this value is
 ignored.
 
 If this structure is not included in the `pNext` chain,
 `conservativeRasterizationMode` is considered to be
-`VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT`, and conservative
+[VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT](VkConservativeRasterizationModeEXT.html), and conservative
 rasterization is disabled.
 
 Polygon rasterization **can** be made conservative by setting
 `conservativeRasterizationMode` to
-`VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT` or
-`VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT` in
+[VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT](VkConservativeRasterizationModeEXT.html) or
+[VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT](VkConservativeRasterizationModeEXT.html) in
 `VkPipelineRasterizationConservativeStateCreateInfoEXT`.
 
 |  | If [`conservativePointAndLineRasterization`](../../../../spec/latest/chapters/limits.html#limits-conservativePointAndLineRasterization) is supported, conservative
@@ -89,7 +89,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineRasterizationConservativeStateCreateInfoEXT-sType-sType) VUID-VkPipelineRasterizationConservativeStateCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineRasterizationConservativeStateCreateInfoEXT-flags-zerobitmask) VUID-VkPipelineRasterizationConservativeStateCreateInfoEXT-flags-zerobitmask

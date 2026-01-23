@@ -44,7 +44,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryMetalHandlePropertiesEXT-sType-sType) VUID-VkMemoryMetalHandlePropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_METAL_HANDLE_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_METAL_HANDLE_PROPERTIES_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkMemoryMetalHandlePropertiesEXT-pNext-pNext) VUID-VkMemoryMetalHandlePropertiesEXT-pNext-pNext

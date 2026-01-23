@@ -20,7 +20,7 @@
 VkBindIndexBufferIndirectCommandNV - Structure specifying input data for a single index buffer command token
 
 The `VkBindIndexBufferIndirectCommandNV` structure specifies the input
-data for the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_NV` token.
+data for the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_NV](VkIndirectCommandsTokenTypeNV.html) token.
 
 // Provided by VK_NV_device_generated_commands
 typedef struct VkBindIndexBufferIndirectCommandNV {
@@ -51,7 +51,7 @@ Valid Usage
 [](#VUID-VkBindIndexBufferIndirectCommandNV-None-02946) VUID-VkBindIndexBufferIndirectCommandNV-None-02946
 
 The buffer’s usage flag from which the address was acquired **must** have
-the `VK_BUFFER_USAGE_INDEX_BUFFER_BIT` bit set
+the [VK_BUFFER_USAGE_INDEX_BUFFER_BIT](VkBufferUsageFlagBits.html) bit set
 
 * 
 [](#VUID-VkBindIndexBufferIndirectCommandNV-bufferAddress-02947) VUID-VkBindIndexBufferIndirectCommandNV-bufferAddress-02947

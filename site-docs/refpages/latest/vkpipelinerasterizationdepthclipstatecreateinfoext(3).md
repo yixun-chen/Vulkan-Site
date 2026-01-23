@@ -54,7 +54,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineRasterizationDepthClipStateCreateInfoEXT-sType-sType) VUID-VkPipelineRasterizationDepthClipStateCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineRasterizationDepthClipStateCreateInfoEXT-flags-zerobitmask) VUID-VkPipelineRasterizationDepthClipStateCreateInfoEXT-flags-zerobitmask

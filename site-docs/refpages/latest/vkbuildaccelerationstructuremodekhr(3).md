@@ -18,7 +18,7 @@
 
 VkBuildAccelerationStructureModeKHR - Enum specifying the type of build operation to perform
 
-The `VkBuildAccelerationStructureModeKHR` enumeration is defined as:
+The [VkBuildAccelerationStructureModeKHR](#) enumeration is defined as:
 
 // Provided by VK_KHR_acceleration_structure
 typedef enum VkBuildAccelerationStructureModeKHR {
@@ -27,12 +27,12 @@ typedef enum VkBuildAccelerationStructureModeKHR {
 } VkBuildAccelerationStructureModeKHR;
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR` specifies that the
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR](#) specifies that the
 destination acceleration structure will be built using the specified
 geometries.
 
 * 
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR` specifies that the
+[VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR](#) specifies that the
 destination acceleration structure will be built using data in a source
 acceleration structure, updated by the specified geometries.
 

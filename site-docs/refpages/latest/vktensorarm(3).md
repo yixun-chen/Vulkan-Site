@@ -30,10 +30,10 @@ directly specifying them as parameters to certain commands.
 
 Tensors are represented by `VkTensorARM` handles:
 
-// Provided by VK_ARM_tensors
+// Provided by VK_EXT_descriptor_heap, VK_ARM_tensors
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(VkTensorARM)
 
-[VK_ARM_tensors](VK_ARM_tensors.html), [VK_DEFINE_NON_DISPATCHABLE_HANDLE](VK_DEFINE_NON_DISPATCHABLE_HANDLE.html), [VkBindTensorMemoryInfoARM](VkBindTensorMemoryInfoARM.html), [VkCopyTensorInfoARM](VkCopyTensorInfoARM.html), [VkFrameBoundaryTensorsARM](VkFrameBoundaryTensorsARM.html), [VkMemoryDedicatedAllocateInfoTensorARM](VkMemoryDedicatedAllocateInfoTensorARM.html), [VkTensorCaptureDescriptorDataInfoARM](VkTensorCaptureDescriptorDataInfoARM.html), [VkTensorMemoryBarrierARM](VkTensorMemoryBarrierARM.html), [VkTensorMemoryRequirementsInfoARM](VkTensorMemoryRequirementsInfoARM.html), [VkTensorViewCreateInfoARM](VkTensorViewCreateInfoARM.html), [vkCreateTensorARM](vkCreateTensorARM.html), [vkDestroyTensorARM](vkDestroyTensorARM.html)
+[VK_ARM_tensors](VK_ARM_tensors.html), [VK_DEFINE_NON_DISPATCHABLE_HANDLE](VK_DEFINE_NON_DISPATCHABLE_HANDLE.html), [VK_EXT_descriptor_heap](VK_EXT_descriptor_heap.html), [VkBindTensorMemoryInfoARM](VkBindTensorMemoryInfoARM.html), [VkCopyTensorInfoARM](VkCopyTensorInfoARM.html), [VkFrameBoundaryTensorsARM](VkFrameBoundaryTensorsARM.html), [VkMemoryDedicatedAllocateInfoTensorARM](VkMemoryDedicatedAllocateInfoTensorARM.html), [VkTensorCaptureDescriptorDataInfoARM](VkTensorCaptureDescriptorDataInfoARM.html), [VkTensorMemoryBarrierARM](VkTensorMemoryBarrierARM.html), [VkTensorMemoryRequirementsInfoARM](VkTensorMemoryRequirementsInfoARM.html), [VkTensorViewCreateInfoARM](VkTensorViewCreateInfoARM.html), [vkCreateTensorARM](vkCreateTensorARM.html), [vkDestroyTensorARM](vkDestroyTensorARM.html), [vkGetTensorOpaqueCaptureDataARM](vkGetTensorOpaqueCaptureDataARM.html)
 
 For more information, see the [Vulkan Specification](../../../../spec/latest/chapters/resources.html#VkTensorARM).
 

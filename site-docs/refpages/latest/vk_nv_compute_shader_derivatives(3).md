@@ -122,7 +122,7 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV](VkStructureType.html)
 
 * 
 [    `ComputeDerivativeGroupQuadsNV`](../../../../spec/latest/appendices/spirvenv.html#spirvenv-capabilities-table-ComputeDerivativeGroupQuadsKHR)

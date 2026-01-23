@@ -33,12 +33,12 @@ typedef enum VkVideoEncodeRgbChromaOffsetFlagBitsVALVE {
 } VkVideoEncodeRgbChromaOffsetFlagBitsVALVE;
 
 * 
-`VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_COSITED_EVEN_BIT_VALVE` specifies
+[VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_COSITED_EVEN_BIT_VALVE](#) specifies
 that downsampled chroma samples are aligned with luma samples with even
 coordinates.
 
 * 
-`VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_MIDPOINT_BIT_VALVE` specifies
+[VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_MIDPOINT_BIT_VALVE](#) specifies
 that downsampled chroma samples are located half way between each even
 luma sample and the nearest higher odd luma sample.
 

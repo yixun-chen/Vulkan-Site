@@ -65,25 +65,25 @@ Valid Usage
 [](#VUID-VkRenderPassTileShadingCreateInfoQCOM-tileShading-10658) VUID-VkRenderPassTileShadingCreateInfoQCOM-tileShading-10658
 
 If the [`tileShading`](../../../../spec/latest/chapters/features.html#features-tileShading) feature is not
-enabled, `VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` **must** not be
+enabled, [VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](VkTileShadingRenderPassFlagBitsQCOM.html) **must** not be
 included in `flags`
 
 * 
 [](#VUID-VkRenderPassTileShadingCreateInfoQCOM-flags-10659) VUID-VkRenderPassTileShadingCreateInfoQCOM-flags-10659
 
-If `VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` is not included in
+If [VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](VkTileShadingRenderPassFlagBitsQCOM.html) is not included in
 `flags` or the [`tileShadingApron`](../../../../spec/latest/chapters/features.html#features-tileShadingApron)
 feature is not enabled, `tileApronSize` **must** be `(0,0)`
 
 * 
 [](#VUID-VkRenderPassTileShadingCreateInfoQCOM-flags-10660) VUID-VkRenderPassTileShadingCreateInfoQCOM-flags-10660
 
-If `VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM` is not included in
+If [VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM](VkTileShadingRenderPassFlagBitsQCOM.html) is not included in
 `flags`, or neither the
 [tileShadingPerTileDispatch](../../../../spec/latest/chapters/features.html#features-tileShadingPerTileDispatch) and
 [tileShadingPerTileDraw](../../../../spec/latest/chapters/features.html#features-tileShadingPerTileDraw) features are
 enabled, `flags` **must** not include
-`VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM`
+[VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM](VkTileShadingRenderPassFlagBitsQCOM.html)
 
 * 
 [](#VUID-VkRenderPassTileShadingCreateInfoQCOM-tileShadingAnisotropicApron-10661) VUID-VkRenderPassTileShadingCreateInfoQCOM-tileShadingAnisotropicApron-10661
@@ -108,7 +108,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkRenderPassTileShadingCreateInfoQCOM-sType-sType) VUID-VkRenderPassTileShadingCreateInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM](VkStructureType.html)
 
 * 
 [](#VUID-VkRenderPassTileShadingCreateInfoQCOM-flags-parameter) VUID-VkRenderPassTileShadingCreateInfoQCOM-flags-parameter

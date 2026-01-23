@@ -53,7 +53,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineFragmentDensityMapLayeredCreateInfoVALVE-sType-sType) VUID-VkPipelineFragmentDensityMapLayeredCreateInfoVALVE-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_DENSITY_MAP_LAYERED_CREATE_INFO_VALVE`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_DENSITY_MAP_LAYERED_CREATE_INFO_VALVE](VkStructureType.html)
 
 [VK_VALVE_fragment_density_map_layered](VK_VALVE_fragment_density_map_layered.html), [VkStructureType](VkStructureType.html)
 

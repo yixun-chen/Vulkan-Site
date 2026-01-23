@@ -48,20 +48,20 @@ Valid Usage
 * 
 [](#VUID-VkImageViewASTCDecodeModeEXT-decodeMode-02230) VUID-VkImageViewASTCDecodeModeEXT-decodeMode-02230
 
-`decodeMode` **must** be one of `VK_FORMAT_R16G16B16A16_SFLOAT`,
-`VK_FORMAT_R8G8B8A8_UNORM`, or
-`VK_FORMAT_E5B9G9R9_UFLOAT_PACK32`
+`decodeMode` **must** be one of [VK_FORMAT_R16G16B16A16_SFLOAT](VkFormat.html),
+[VK_FORMAT_R8G8B8A8_UNORM](VkFormat.html), or
+[VK_FORMAT_E5B9G9R9_UFLOAT_PACK32](VkFormat.html)
 
 * 
 [](#VUID-VkImageViewASTCDecodeModeEXT-decodeMode-02231) VUID-VkImageViewASTCDecodeModeEXT-decodeMode-02231
 
 If the [    `decodeModeSharedExponent`](../../../../spec/latest/chapters/features.html#features-astc-decodeModeSharedExponent) feature is not enabled,
-`decodeMode` **must** not be `VK_FORMAT_E5B9G9R9_UFLOAT_PACK32`
+`decodeMode` **must** not be [VK_FORMAT_E5B9G9R9_UFLOAT_PACK32](VkFormat.html)
 
 * 
 [](#VUID-VkImageViewASTCDecodeModeEXT-decodeMode-02232) VUID-VkImageViewASTCDecodeModeEXT-decodeMode-02232
 
-If `decodeMode` is `VK_FORMAT_R8G8B8A8_UNORM` the image view
+If `decodeMode` is [VK_FORMAT_R8G8B8A8_UNORM](VkFormat.html) the image view
 **must** not include blocks using any of the ASTC HDR modes
 
 * 
@@ -77,7 +77,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageViewASTCDecodeModeEXT-sType-sType) VUID-VkImageViewASTCDecodeModeEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_VIEW_ASTC_DECODE_MODE_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_ASTC_DECODE_MODE_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkImageViewASTCDecodeModeEXT-decodeMode-parameter) VUID-VkImageViewASTCDecodeModeEXT-decodeMode-parameter

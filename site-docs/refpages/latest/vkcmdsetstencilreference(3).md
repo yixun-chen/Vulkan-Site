@@ -44,7 +44,7 @@ This command sets the stencil reference value for subsequent drawing
 commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_STENCIL_REFERENCE` set in
+[VK_DYNAMIC_STATE_STENCIL_REFERENCE](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineDepthStencilStateCreateInfo](VkPipelineDepthStencilStateCreateInfo.html)::`reference` value used to
@@ -75,7 +75,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetStencilReference-commandBuffer-cmdpool) VUID-vkCmdSetStencilReference-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetStencilReference-videocoding) VUID-vkCmdSetStencilReference-videocoding

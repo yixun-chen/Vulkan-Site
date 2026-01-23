@@ -74,16 +74,16 @@ Valid Usage
 [](#VUID-VkImageStencilUsageCreateInfo-stencilUsage-02539) VUID-VkImageStencilUsageCreateInfo-stencilUsage-02539
 
 If `stencilUsage` includes
-`VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT`, it **must** not include bits
-other than `VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` or
-`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT`
+[VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT](VkImageUsageFlagBits.html), it **must** not include bits
+other than [VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](VkImageUsageFlagBits.html) or
+[VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT](VkImageUsageFlagBits.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkImageStencilUsageCreateInfo-sType-sType) VUID-VkImageStencilUsageCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkImageStencilUsageCreateInfo-stencilUsage-parameter) VUID-VkImageStencilUsageCreateInfo-stencilUsage-parameter

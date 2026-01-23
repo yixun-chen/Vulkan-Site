@@ -181,7 +181,7 @@ context object; it returns a vector of the extensions available, which
 allows us to filter extensions by a specific validation layer, which we’ll
 ignore for now.
 
-auto extension = context.enumerateInstanceExtensionProperties();
+auto extensions = context.enumerateInstanceExtensionProperties();
 
 Each `VkExtensionProperties` struct contains the name and version of an
 extension. We can list them with a simple for loop (`\t` is a tab for

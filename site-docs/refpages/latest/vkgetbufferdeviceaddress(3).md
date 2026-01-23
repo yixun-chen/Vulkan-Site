@@ -80,7 +80,7 @@ Valid Usage
 [](#VUID-vkGetBufferDeviceAddress-bufferDeviceAddress-03324) VUID-vkGetBufferDeviceAddress-bufferDeviceAddress-03324
 
 The [`bufferDeviceAddress`](../../../../spec/latest/chapters/features.html#features-bufferDeviceAddress) feature
-or the [    `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`::`bufferDeviceAddress`](../../../../spec/latest/chapters/features.html#features-bufferDeviceAddressEXT)
+or the [](../../../../spec/latest/chapters/features.html#features-bufferDeviceAddressEXT)[VkPhysicalDeviceBufferDeviceAddressFeaturesEXT](VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.html)::`bufferDeviceAddress`
 feature
 **must** be enabled, and at least one of the following conditions **must** be
 met
@@ -93,15 +93,15 @@ met
 
 * 
 `buffer` was created with the
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT` flag and the
-[     `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`::`bufferDeviceAddress`](../../../../spec/latest/chapters/features.html#features-bufferDeviceAddressEXT)
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT](VkBufferCreateFlagBits.html) flag and the
+[](../../../../spec/latest/chapters/features.html#features-bufferDeviceAddressEXT)[VkPhysicalDeviceBufferDeviceAddressFeaturesEXT](VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.html)::`bufferDeviceAddress`
 feature is enabled on the device
 
 [](#VUID-vkGetBufferDeviceAddress-device-03325) VUID-vkGetBufferDeviceAddress-device-03325
 
 If `device` was created with multiple physical devices, then the
 [    `bufferDeviceAddressMultiDevice`](../../../../spec/latest/chapters/features.html#features-bufferDeviceAddressMultiDevice)
-or [    `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`::`bufferDeviceAddressMultiDevice`](../../../../spec/latest/chapters/features.html#features-bufferDeviceAddressMultiDeviceEXT)
+or [](../../../../spec/latest/chapters/features.html#features-bufferDeviceAddressMultiDeviceEXT)[VkPhysicalDeviceBufferDeviceAddressFeaturesEXT](VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.html)::`bufferDeviceAddressMultiDevice`
 feature **must** be enabled
 
 Valid Usage (Implicit)

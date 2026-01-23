@@ -62,7 +62,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMetalSharedEventInfoEXT-sType-sType) VUID-VkExportMetalSharedEventInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_METAL_SHARED_EVENT_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_METAL_SHARED_EVENT_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkExportMetalSharedEventInfoEXT-semaphore-parameter) VUID-VkExportMetalSharedEventInfoEXT-semaphore-parameter

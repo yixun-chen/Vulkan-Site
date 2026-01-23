@@ -91,7 +91,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkWin32KeyedMutexAcquireReleaseInfoNV-sType-sType) VUID-VkWin32KeyedMutexAcquireReleaseInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkWin32KeyedMutexAcquireReleaseInfoNV-pAcquireSyncs-parameter) VUID-VkWin32KeyedMutexAcquireReleaseInfoNV-pAcquireSyncs-parameter

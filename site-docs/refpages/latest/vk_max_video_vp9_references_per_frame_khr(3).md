@@ -17,7 +17,7 @@
 
 VK_MAX_VIDEO_VP9_REFERENCES_PER_FRAME_KHR - Length of an array of supported queue priorities
 
-`VK_MAX_VIDEO_VP9_REFERENCES_PER_FRAME_KHR` is the length of the array
+[VK_MAX_VIDEO_VP9_REFERENCES_PER_FRAME_KHR](#) is the length of the array
 of DPB slot or VP9 reference names passed in
 [VkVideoDecodeVP9PictureInfoKHR](VkVideoDecodeVP9PictureInfoKHR.html)::`referenceNameSlotIndices`.
 

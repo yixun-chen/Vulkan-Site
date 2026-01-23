@@ -46,8 +46,8 @@ low latency mode with `presentModeCount` entries.
 If `pPresentModes` is `NULL`, then the number of present modes that are
 optimized for use with low latency mode returned in `presentModeCount`.
 Otherwise, `presentModeCount` **must** be set by the application to the
-number of elements in the `pPresentModes` array, and on return the
-variable is overwritten with the number of values actually written to
+number of elements in the `pPresentModes` array, and on return is
+overwritten with the number of values actually written to
 `pPresentModes`.
 If the value of `presentModeCount` is less than the number of optimized
 present modes, at most `presentModeCount` values will be written to
@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkLatencySurfaceCapabilitiesNV-sType-sType) VUID-VkLatencySurfaceCapabilitiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_LATENCY_SURFACE_CAPABILITIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_LATENCY_SURFACE_CAPABILITIES_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkLatencySurfaceCapabilitiesNV-pPresentModes-parameter) VUID-VkLatencySurfaceCapabilitiesNV-pPresentModes-parameter

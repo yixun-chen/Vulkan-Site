@@ -83,7 +83,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCooperativeMatrixPropertiesNV-sType-sType) VUID-VkCooperativeMatrixPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkCooperativeMatrixPropertiesNV-pNext-pNext) VUID-VkCooperativeMatrixPropertiesNV-pNext-pNext

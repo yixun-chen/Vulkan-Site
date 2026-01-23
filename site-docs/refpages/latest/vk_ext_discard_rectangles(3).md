@@ -89,9 +89,9 @@ From zero to an implementation-dependent limit (specified by
 at once.
 When one or more discard rectangles are active, rasterized fragments can
 either survive if the fragment is within any of the operational discard
-rectangles (`VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT` mode) or be
+rectangles ([VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT](VkDiscardRectangleModeEXT.html) mode) or be
 rejected if the fragment is within any of the operational discard rectangles
-(`VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT` mode).
+([VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT](VkDiscardRectangleModeEXT.html) mode).
 
 These discard rectangles operate orthogonally to the existing scissor test
 functionality.
@@ -100,8 +100,8 @@ group by specifying the device mask and setting discard rectangle dynamic
 state.
 
 Version 2 of this extension introduces new dynamic states
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT` and
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT`, and the corresponding
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT](VkDynamicState.html) and
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT](VkDynamicState.html), and the corresponding
 functions [vkCmdSetDiscardRectangleEnableEXT](vkCmdSetDiscardRectangleEnableEXT.html) and
 [vkCmdSetDiscardRectangleModeEXT](vkCmdSetDiscardRectangleModeEXT.html).
 Applications that use these dynamic states must ensure the implementation
@@ -141,21 +141,21 @@ Extending [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html):
 * 
 Extending [VkDynamicState](VkDynamicState.html):
 
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT`
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT`
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](VkDynamicState.html)
 
 * 
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT`
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT](VkDynamicState.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 Revision 2, 2023-01-18 (Piers Daniell)

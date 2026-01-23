@@ -67,14 +67,13 @@ structure.
 
 * 
  `maxTaskWorkGroupTotalCount`
-is the maximum number of total local workgroups that **can** be launched by
-a single mesh tasks drawing command.
-See [Programmable Mesh Shading](../../../../spec/latest/chapters/drawing.html#drawing-mesh-shading).
+is the maximum number of local workgroups that **can** be launched for a
+task shader by a [mesh tasks drawing command](../../../../spec/latest/chapters/drawing.html#drawing-mesh-shading).
 
 * 
  `maxTaskWorkGroupCount`[3] is the
-maximum number of local workgroups that **can** be launched by a single
-mesh tasks drawing command.
+maximum number of local workgroups that **can** be launched for a task
+shader in each dimension by a [mesh tasks drawing    command](../../../../spec/latest/chapters/drawing.html#drawing-mesh-shading).
 These three values represent the maximum number of local workgroups for
 the X, Y, and Z dimensions, respectively.
 The workgroup count parameters to the drawing commands **must** be less
@@ -94,7 +93,7 @@ or `LocalSizeId`
 
 * 
  `maxTaskWorkGroupSize`[3] is the
-    maximum size of a local task workgroup, per dimension.
+    maximum size of a local workgroup for a task shader in each dimension.
     These three values represent the maximum local workgroup size in the X,
     Y, and Z dimensions, respectively.
     The `x`, `y`, and `z` sizes, as specified by the
@@ -125,13 +124,15 @@ modules in the task shader stage.
 
 * 
  `maxMeshWorkGroupTotalCount`
-is the maximum number of local output tasks a single task shader
-workgroup can emit.
+is the maximum number of local workgroups that **can** be launched for a
+mesh shader, either directly by a [mesh tasks    drawing command](../../../../spec/latest/chapters/drawing.html#drawing-mesh-shading), or emitted by a single task shader workgroup.
 
 * 
  `maxMeshWorkGroupCount`[3] is the
-maximum number of local output tasks a single task shader workgroup can
-emit, per dimension.
+maximum number of local workgroups that **can** be launched for a mesh
+shader in each dimension, either directly by a
+[mesh tasks drawing command](../../../../spec/latest/chapters/drawing.html#drawing-mesh-shading), or emitted by a
+single task shader workgroup.
 These three values represent the maximum number of local output tasks
 for the X, Y, and Z dimensions, respectively.
 The workgroup count parameters to the `OpEmitMeshTasksEXT` **must** be
@@ -151,7 +152,7 @@ or `LocalSizeId`
 
 * 
  `maxMeshWorkGroupSize`[3] is the
-    maximum size of a local mesh workgroup, per dimension.
+    maximum size of a local workgroup for a mesh shader in each dimension.
     These three values represent the maximum local workgroup size in the X,
     Y, and Z dimensions, respectively.
     The `x`, `y`, and `z` sizes, as specified by the
@@ -282,7 +283,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMeshShaderPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceMeshShaderPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_mesh_shader](VK_EXT_mesh_shader.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -37,11 +37,11 @@ typedef enum VkExternalFenceFeatureFlagBits {
 typedef VkExternalFenceFeatureFlagBits VkExternalFenceFeatureFlagBitsKHR;
 
 * 
-`VK_EXTERNAL_FENCE_FEATURE_EXPORTABLE_BIT` specifies handles of this
+[VK_EXTERNAL_FENCE_FEATURE_EXPORTABLE_BIT](#) specifies handles of this
 type **can** be exported from Vulkan fence objects.
 
 * 
-`VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT` specifies handles of this
+[VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT](#) specifies handles of this
 type **can** be imported to Vulkan fence objects.
 
 [VK_KHR_external_fence_capabilities](VK_KHR_external_fence_capabilities.html), [VK_VERSION_1_1](VK_VERSION_1_1.html), [VkExternalFenceFeatureFlags](VkExternalFenceFeatureFlags.html)

@@ -79,7 +79,7 @@ written to `pProperties`.
 If `pPropertyCount` is less than the number of sparse format properties
 available, at most `pPropertyCount` structures will be written.
 
-If `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` is not supported for the given
+If [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](VkImageCreateFlagBits.html) is not supported for the given
 arguments, `pPropertyCount` will be zero upon return, and no data will
 be written to `pProperties`.
 
@@ -90,8 +90,8 @@ The depth and stencil data planes each have unique
 
 Depth/stencil images with depth and stencil data interleaved into a single
 plane will return a single `VkSparseImageFormatProperties` structure
-with the `aspectMask` set to `VK_IMAGE_ASPECT_DEPTH_BIT` |
-`VK_IMAGE_ASPECT_STENCIL_BIT`.
+with the `aspectMask` set to [VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) |
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html).
 
 Valid Usage
 

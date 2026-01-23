@@ -46,14 +46,14 @@ structure.
 `conditionalRenderingEnable` specifies whether the command buffer
 **can** be executed while conditional rendering is active in the primary
 command buffer.
-If this is `VK_TRUE`, then this command buffer **can** be executed
+If this is [VK_TRUE](VK_TRUE.html), then this command buffer **can** be executed
 whether the primary command buffer has active conditional rendering or
 not.
-If this is `VK_FALSE`, then the primary command buffer **must** not
+If this is [VK_FALSE](VK_FALSE.html), then the primary command buffer **must** not
 have conditional rendering active.
 
 If this structure is not present, the behavior is as if
-`conditionalRenderingEnable` is `VK_FALSE`.
+`conditionalRenderingEnable` is [VK_FALSE](VK_FALSE.html).
 
 Valid Usage
 
@@ -61,14 +61,14 @@ Valid Usage
 [](#VUID-VkCommandBufferInheritanceConditionalRenderingInfoEXT-conditionalRenderingEnable-01977) VUID-VkCommandBufferInheritanceConditionalRenderingInfoEXT-conditionalRenderingEnable-01977
 
 If the [    `inheritedConditionalRendering`](../../../../spec/latest/chapters/features.html#features-inheritedConditionalRendering) feature is not enabled,
-`conditionalRenderingEnable` **must** be `VK_FALSE`
+`conditionalRenderingEnable` **must** be [VK_FALSE](VK_FALSE.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkCommandBufferInheritanceConditionalRenderingInfoEXT-sType-sType) VUID-VkCommandBufferInheritanceConditionalRenderingInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT](VkStructureType.html)
 
 [VK_EXT_conditional_rendering](VK_EXT_conditional_rendering.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

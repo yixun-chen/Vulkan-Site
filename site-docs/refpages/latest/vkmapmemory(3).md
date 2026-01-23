@@ -43,7 +43,7 @@ memory object.
 
 * 
 `size` is the size of the memory range to map, or
-`VK_WHOLE_SIZE` to map from `offset` to the end of the
+[VK_WHOLE_SIZE](VK_WHOLE_SIZE.html) to map from `offset` to the end of the
 allocation.
 
 * 
@@ -69,7 +69,7 @@ is already *host mapped*. |
 appropriately sized contiguous virtual address range, e.g. due to virtual
 address space fragmentation or platform limits.
 In such cases, `vkMapMemory` **must** return
-`VK_ERROR_MEMORY_MAP_FAILED`.
+[VK_ERROR_MEMORY_MAP_FAILED](VkResult.html).
 The application **can** improve the likelihood of success by reducing the size
 of the mapped range and/or removing unneeded mappings using
 [vkUnmapMemory](vkUnmapMemory.html). |
@@ -83,7 +83,7 @@ range has completed before the host writes to that region (see
 [here](../../../../spec/latest/chapters/synchronization.html#synchronization-submission-host-writes) for details on fulfilling
 such a guarantee).
 If the device memory was allocated without the
-`VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` set, these guarantees **must** be
+[VK_MEMORY_PROPERTY_HOST_COHERENT_BIT](VkMemoryPropertyFlagBits.html) set, these guarantees **must** be
 made for an extended range: the application **must** round down the start of
 the range to the nearest multiple of
 [VkPhysicalDeviceLimits](VkPhysicalDeviceLimits.html)::`nonCoherentAtomSize`, and round the end
@@ -118,20 +118,20 @@ Valid Usage
 * 
 [](#VUID-vkMapMemory-size-00680) VUID-vkMapMemory-size-00680
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be
+If `size` is not equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), `size` **must** be
 greater than `0`
 
 * 
 [](#VUID-vkMapMemory-size-00681) VUID-vkMapMemory-size-00681
 
-If `size` is not equal to `VK_WHOLE_SIZE`, `size` **must** be
+If `size` is not equal to [VK_WHOLE_SIZE](VK_WHOLE_SIZE.html), `size` **must** be
 less than or equal to the size of the `memory` minus `offset`
 
 * 
 [](#VUID-vkMapMemory-memory-00682) VUID-vkMapMemory-memory-00682
 
 `memory` **must** have been created with a memory type that reports
-`VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT`
+[VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT](VkMemoryPropertyFlagBits.html)
 
 * 
 [](#VUID-vkMapMemory-memory-00683) VUID-vkMapMemory-memory-00683
@@ -141,7 +141,7 @@ less than or equal to the size of the `memory` minus `offset`
 * 
 [](#VUID-vkMapMemory-flags-09568) VUID-vkMapMemory-flags-09568
 
-`VK_MEMORY_MAP_PLACED_BIT_EXT` **must** not be set in `flags`
+[VK_MEMORY_MAP_PLACED_BIT_EXT](VkMemoryMapFlagBits.html) **must** not be set in `flags`
 
 Valid Usage (Implicit)
 
@@ -180,24 +180,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_MEMORY_MAP_FAILED`
+[VK_ERROR_MEMORY_MAP_FAILED](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkDevice](VkDevice.html), [VkDeviceMemory](VkDeviceMemory.html), `VkDeviceSize`, [VkMemoryMapFlags](VkMemoryMapFlags.html)
 

@@ -110,15 +110,15 @@ Add a way to query information regarding the underlying devices in
 environments where the Vulkan implementation is provided through layered
 implementations.
 For example, running on Mesa/Venus, driver ID is returned as
-`VK_DRIVER_ID_MESA_VENUS`, but it can be necessary to know what the
+[VK_DRIVER_ID_MESA_VENUS](VkDriverId.html), but it can be necessary to know what the
 real driver under the hood is.
 The new [VkPhysicalDeviceLayeredApiPropertiesKHR](VkPhysicalDeviceLayeredApiPropertiesKHR.html) structure can be
 used to gather information regarding layers underneath the top-level
 physical device.
 
 * 
-Promote `VK_RENDERING_CONTENTS_INLINE_BIT_EXT` and
-`VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT` to
+Promote [VK_RENDERING_CONTENTS_INLINE_BIT_EXT](VkRenderingFlagBits.html) and
+[VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT](VkSubpassContents.html) to
 KHR
 
 * 
@@ -167,29 +167,29 @@ Extending [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html):
 * 
 Extending [VkRenderingFlagBits](VkRenderingFlagBits.html):
 
-`VK_RENDERING_CONTENTS_INLINE_BIT_KHR`
+[VK_RENDERING_CONTENTS_INLINE_BIT_KHR](VkRenderingFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_FEATURES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_PROPERTIES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_PROPERTIES_KHR](VkStructureType.html)
 
 Extending [VkSubpassContents](VkSubpassContents.html):
 
 * 
-`VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR`
+[VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR](VkSubpassContents.html)
 
 None.
 

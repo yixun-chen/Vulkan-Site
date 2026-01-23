@@ -40,17 +40,17 @@ structure.
 
 * 
 `shaderTileImageCoherentReadAccelerated` is a boolean that will be
-`VK_TRUE` if coherent reads of tile image data is accelerated.
+[VK_TRUE](VK_TRUE.html) if coherent reads of tile image data is accelerated.
 
 * 
 `shaderTileImageReadSampleFromPixelRateInvocation` is a boolean that
-will be `VK_TRUE` if reading from samples from a pixel rate fragment
+will be [VK_TRUE](VK_TRUE.html) if reading from samples from a pixel rate fragment
 invocation is supported when
 [VkPipelineMultisampleStateCreateInfo](VkPipelineMultisampleStateCreateInfo.html)::`rasterizationSamples` > 1.
 
 * 
 `shaderTileImageReadFromHelperInvocation` is a boolean that will be
-`VK_TRUE` if reads of tile image data from helper fragment
+[VK_TRUE](VK_TRUE.html) if reads of tile image data from helper fragment
 invocations result in valid values.
 
 If the `VkPhysicalDeviceShaderTileImagePropertiesEXT` structure is included in the `pNext` chain of the
@@ -65,7 +65,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderTileImagePropertiesEXT-sType-sType) VUID-VkPhysicalDeviceShaderTileImagePropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_TILE_IMAGE_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_TILE_IMAGE_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_shader_tile_image](VK_EXT_shader_tile_image.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

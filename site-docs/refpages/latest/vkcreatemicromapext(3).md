@@ -60,9 +60,9 @@ build or micromap copy commands such as [vkCmdBuildMicromapsEXT](vkCmdBuildMicro
 and later deserialize the micromap data using micromap copy commands.
 During capture the tool will use [vkCopyMicromapToMemoryEXT](vkCopyMicromapToMemoryEXT.html) or
 [vkCmdCopyMicromapToMemoryEXT](vkCmdCopyMicromapToMemoryEXT.html) with a `mode` of
-`VK_COPY_MICROMAP_MODE_SERIALIZE_EXT`, and
+[VK_COPY_MICROMAP_MODE_SERIALIZE_EXT](VkCopyMicromapModeEXT.html), and
 [vkCopyMemoryToMicromapEXT](vkCopyMemoryToMicromapEXT.html) or [vkCmdCopyMemoryToMicromapEXT](vkCmdCopyMemoryToMicromapEXT.html) with a
-`mode` of `VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT` during replay. |
+`mode` of [VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT](VkCopyMicromapModeEXT.html) during replay. |
 
 The input buffers passed to micromap build commands will be referenced by
 the implementation for the duration of the command.
@@ -124,21 +124,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR`
+[VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_EXT_opacity_micromap](VK_EXT_opacity_micromap.html), [VkAllocationCallbacks](VkAllocationCallbacks.html), [VkDevice](VkDevice.html), [VkMicromapCreateInfoEXT](VkMicromapCreateInfoEXT.html), [VkMicromapEXT](VkMicromapEXT.html)
 

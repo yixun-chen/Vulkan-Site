@@ -70,66 +70,66 @@ typedef enum VkShaderStageFlagBits {
 } VkShaderStageFlagBits;
 
 * 
-`VK_SHADER_STAGE_VERTEX_BIT` specifies the vertex stage.
+[VK_SHADER_STAGE_VERTEX_BIT](#) specifies the vertex stage.
 
 * 
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT` specifies the
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](#) specifies the
 tessellation control stage.
 
 * 
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT` specifies the
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](#) specifies the
 tessellation evaluation stage.
 
 * 
-`VK_SHADER_STAGE_GEOMETRY_BIT` specifies the geometry stage.
+[VK_SHADER_STAGE_GEOMETRY_BIT](#) specifies the geometry stage.
 
 * 
-`VK_SHADER_STAGE_FRAGMENT_BIT` specifies the fragment stage.
+[VK_SHADER_STAGE_FRAGMENT_BIT](#) specifies the fragment stage.
 
 * 
-`VK_SHADER_STAGE_COMPUTE_BIT` specifies the compute stage.
+[VK_SHADER_STAGE_COMPUTE_BIT](#) specifies the compute stage.
 
 * 
-`VK_SHADER_STAGE_ALL_GRAPHICS` is a combination of bits used as
+[VK_SHADER_STAGE_ALL_GRAPHICS](#) is a combination of bits used as
 shorthand to specify all graphics stages defined above (excluding the
 compute stage).
 
 * 
-`VK_SHADER_STAGE_ALL` is a combination of bits used as shorthand to
+[VK_SHADER_STAGE_ALL](#) is a combination of bits used as shorthand to
 specify all shader stages supported by the device, including all
 additional stages which are introduced by extensions.
 
 * 
-`VK_SHADER_STAGE_TASK_BIT_EXT` specifies the task stage.
+[VK_SHADER_STAGE_TASK_BIT_EXT](#) specifies the task stage.
 
 * 
-`VK_SHADER_STAGE_MESH_BIT_EXT` specifies the mesh stage.
+[VK_SHADER_STAGE_MESH_BIT_EXT](#) specifies the mesh stage.
 
 * 
-`VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI` specifies the cluster
+[VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI](#) specifies the cluster
 culling stage.
 
 * 
-`VK_SHADER_STAGE_RAYGEN_BIT_KHR` specifies the ray generation stage.
+[VK_SHADER_STAGE_RAYGEN_BIT_KHR](#) specifies the ray generation stage.
 
 * 
-`VK_SHADER_STAGE_ANY_HIT_BIT_KHR` specifies the any-hit stage.
+[VK_SHADER_STAGE_ANY_HIT_BIT_KHR](#) specifies the any-hit stage.
 
 * 
-`VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR` specifies the closest hit
+[VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR](#) specifies the closest hit
 stage.
 
 * 
-`VK_SHADER_STAGE_MISS_BIT_KHR` specifies the miss stage.
+[VK_SHADER_STAGE_MISS_BIT_KHR](#) specifies the miss stage.
 
 * 
-`VK_SHADER_STAGE_INTERSECTION_BIT_KHR` specifies the intersection
+[VK_SHADER_STAGE_INTERSECTION_BIT_KHR](#) specifies the intersection
 stage.
 
 * 
-`VK_SHADER_STAGE_CALLABLE_BIT_KHR` specifies the callable stage.
+[VK_SHADER_STAGE_CALLABLE_BIT_KHR](#) specifies the callable stage.
 
-|  | `VK_SHADER_STAGE_ALL_GRAPHICS` only includes the original five graphics
+|  | [VK_SHADER_STAGE_ALL_GRAPHICS](#) only includes the original five graphics
 | --- | --- |
 stages included in Vulkan 1.0, and not any stages added by extensions.
 Thus, it may not have the desired effect in all cases. |

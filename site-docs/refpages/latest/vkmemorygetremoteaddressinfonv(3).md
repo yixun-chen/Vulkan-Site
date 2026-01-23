@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryGetRemoteAddressInfoNV-sType-sType) VUID-VkMemoryGetRemoteAddressInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_GET_REMOTE_ADDRESS_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_GET_REMOTE_ADDRESS_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkMemoryGetRemoteAddressInfoNV-pNext-pNext) VUID-VkMemoryGetRemoteAddressInfoNV-pNext-pNext

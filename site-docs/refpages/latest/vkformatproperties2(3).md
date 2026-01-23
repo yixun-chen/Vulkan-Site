@@ -48,7 +48,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFormatProperties2-sType-sType) VUID-VkFormatProperties2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_2](VkStructureType.html)
 
 * 
 [](#VUID-VkFormatProperties2-pNext-pNext) VUID-VkFormatProperties2-pNext-pNext

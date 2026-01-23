@@ -61,7 +61,7 @@ infinite.
 * 
 `consecutiveBipredictiveFrameCount` is the number of consecutive
 frames encoded with
-`VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_BIPREDICTIVE_KHR` between
+[VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_BIPREDICTIVE_KHR](VkVideoEncodeAV1RateControlGroupKHR.html) between
 frames encoded with other [rate control    groups](../../../../spec/latest/chapters/videocoding.html#encode-av1-rate-control-group) within the [GOP](../../../../spec/latest/chapters/videocoding.html#encode-av1-gop).
 
 * 
@@ -72,7 +72,7 @@ When an instance of this structure is included in the `pNext` chain of
 the [VkVideoCodingControlInfoKHR](VkVideoCodingControlInfoKHR.html) structure passed to the
 [vkCmdControlVideoCodingKHR](vkCmdControlVideoCodingKHR.html) command, and
 [VkVideoCodingControlInfoKHR](VkVideoCodingControlInfoKHR.html)::`flags` includes
-`VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR`, the parameters in
+[VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR](VkVideoCodingControlFlagBitsKHR.html), the parameters in
 this structure are used as guidance for the implementation’s rate control
 algorithm (see [Video Coding Control](../../../../spec/latest/chapters/videocoding.html#video-coding-control)).
 
@@ -82,24 +82,24 @@ Valid Usage
 [](#VUID-VkVideoEncodeAV1RateControlInfoKHR-flags-10294) VUID-VkVideoEncodeAV1RateControlInfoKHR-flags-10294
 
 If `flags` contains
-`VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR` or
-`VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR`,
+[VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR](VkVideoEncodeAV1RateControlFlagBitsKHR.html) or
+[VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR](VkVideoEncodeAV1RateControlFlagBitsKHR.html),
 then it **must** also contain
-`VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REGULAR_GOP_BIT_KHR`
+[VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REGULAR_GOP_BIT_KHR](VkVideoEncodeAV1RateControlFlagBitsKHR.html)
 
 * 
 [](#VUID-VkVideoEncodeAV1RateControlInfoKHR-flags-10295) VUID-VkVideoEncodeAV1RateControlInfoKHR-flags-10295
 
 If `flags` contains
-`VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR`,
+[VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR](VkVideoEncodeAV1RateControlFlagBitsKHR.html),
 then it **must** not also contain
-`VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR`
+[VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR](VkVideoEncodeAV1RateControlFlagBitsKHR.html)
 
 * 
 [](#VUID-VkVideoEncodeAV1RateControlInfoKHR-flags-10296) VUID-VkVideoEncodeAV1RateControlInfoKHR-flags-10296
 
 If `flags` contains
-`VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REGULAR_GOP_BIT_KHR`, then
+[VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REGULAR_GOP_BIT_KHR](VkVideoEncodeAV1RateControlFlagBitsKHR.html), then
 `gopFrameCount` **must** be greater than `0`
 
 * 
@@ -127,7 +127,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeAV1RateControlInfoKHR-sType-sType) VUID-VkVideoEncodeAV1RateControlInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_RATE_CONTROL_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_RATE_CONTROL_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkVideoEncodeAV1RateControlInfoKHR-flags-parameter) VUID-VkVideoEncodeAV1RateControlInfoKHR-flags-parameter

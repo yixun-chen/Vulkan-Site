@@ -25,7 +25,7 @@ typedef VkFlags VkVideoEncodeAV1SuperblockSizeFlagsKHR;
 mask of zero or more [VkVideoEncodeAV1SuperblockSizeFlagBitsKHR](VkVideoEncodeAV1SuperblockSizeFlagBitsKHR.html).
 
 Implementations **must** support at least one of
-`VkVideoEncodeAV1SuperblockSizeFlagBitsKHR`.
+[VkVideoEncodeAV1SuperblockSizeFlagBitsKHR](VkVideoEncodeAV1SuperblockSizeFlagBitsKHR.html).
 
 [VK_KHR_video_encode_av1](VK_KHR_video_encode_av1.html), `VkFlags`, [VkVideoEncodeAV1CapabilitiesKHR](VkVideoEncodeAV1CapabilitiesKHR.html), [VkVideoEncodeAV1SuperblockSizeFlagBitsKHR](VkVideoEncodeAV1SuperblockSizeFlagBitsKHR.html), [VkVideoFormatAV1QuantizationMapPropertiesKHR](VkVideoFormatAV1QuantizationMapPropertiesKHR.html)
 

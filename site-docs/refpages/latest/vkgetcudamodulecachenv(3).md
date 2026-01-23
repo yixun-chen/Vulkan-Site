@@ -49,8 +49,8 @@ to the size of the buffer, in bytes, pointed to by `pCacheData`, and on
 return the variable is overwritten with the amount of data actually written
 to `pCacheData`.
 If `pCacheSize` is less than the size of the binary shader code, nothing
-is written to `pCacheData`, and `VK_INCOMPLETE` will be returned
-instead of `VK_SUCCESS`.
+is written to `pCacheData`, and [VK_INCOMPLETE](VkResult.html) will be returned
+instead of [VK_SUCCESS](VkResult.html).
 
 The returned cache **may** then be used later for further initialization of the
 CUDA module, by sending this cache *instead* of the PTX code when using
@@ -78,8 +78,8 @@ architecture, this cache **may** become invalid. |
 reasons.
 
 If the amount of data available is larger than the passed `pDataSize`,
-the query returns a `VK_INCOMPLETE` success status instead of a
-`VK_ERROR_NOT_ENOUGH_SPACE_KHR` error status. |
+the query returns a [VK_INCOMPLETE](VkResult.html) success status instead of a
+[VK_ERROR_NOT_ENOUGH_SPACE_KHR](VkResult.html) error status. |
 
 Valid Usage (Implicit)
 
@@ -113,21 +113,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_NV_cuda_kernel_launch](VK_NV_cuda_kernel_launch.html), [VkCudaModuleNV](VkCudaModuleNV.html), [VkDevice](VkDevice.html)
 

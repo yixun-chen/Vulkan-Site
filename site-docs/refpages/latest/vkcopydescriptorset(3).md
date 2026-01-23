@@ -46,7 +46,7 @@ structure.
 set, binding, and array element, respectively.
 If the descriptor binding identified by `srcSet` and
 `srcBinding` has a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then `srcArrayElement`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) then `srcArrayElement`
 specifies the starting byte offset within the binding to copy from.
 
 * 
@@ -54,7 +54,7 @@ specifies the starting byte offset within the binding to copy from.
 destination set, binding, and array element, respectively.
 If the descriptor binding identified by `dstSet` and
 `dstBinding` has a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then `dstArrayElement`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) then `dstArrayElement`
 specifies the starting byte offset within the binding to copy to.
 
 * 
@@ -65,17 +65,17 @@ elements in the source or destination binding, those affect consecutive
 bindings in a manner similar to [VkWriteDescriptorSet](VkWriteDescriptorSet.html) above.
 If the descriptor binding identified by `srcSet` and
 `srcBinding` has a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` then `descriptorCount`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html) then `descriptorCount`
 specifies the number of bytes to copy and the remaining array elements
 in the source or destination binding refer to the remaining number of
 bytes in those.
 
 If the `VkDescriptorSetLayoutBinding` for `dstBinding` is
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT` and `srcBinding` is not
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, the new active descriptor type becomes
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html) and `srcBinding` is not
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html), the new active descriptor type becomes
 the descriptor type of `srcBinding`.
 If both `VkDescriptorSetLayoutBinding` for `srcBinding` and
-`dstBinding` are `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, the active
+`dstBinding` are [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html), the active
 descriptor type in each source descriptor is copied into the corresponding
 destination descriptor.
 The active descriptor type **can** be different for each source descriptor.
@@ -132,14 +132,14 @@ destination ranges of descriptors **must** not overlap, where the ranges
 [](#VUID-VkCopyDescriptorSet-srcBinding-02223) VUID-VkCopyDescriptorSet-srcBinding-02223
 
 If the descriptor type of the descriptor set binding specified by
-`srcBinding` is `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`,
+`srcBinding` is [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html),
 `srcArrayElement` **must** be an integer multiple of `4`
 
 * 
 [](#VUID-VkCopyDescriptorSet-dstBinding-02224) VUID-VkCopyDescriptorSet-dstBinding-02224
 
 If the descriptor type of the descriptor set binding specified by
-`dstBinding` is `VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`,
+`dstBinding` is [VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html),
 `dstArrayElement` **must** be an integer multiple of `4`
 
 * 
@@ -147,54 +147,54 @@ If the descriptor type of the descriptor set binding specified by
 
 If the descriptor type of the descriptor set binding specified by either
 `srcBinding` or `dstBinding` is
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK`, `descriptorCount`
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](VkDescriptorType.html), `descriptorCount`
 **must** be an integer multiple of `4`
 
 * 
 [](#VUID-VkCopyDescriptorSet-srcSet-01918) VUID-VkCopyDescriptorSet-srcSet-01918
 
 If `srcSet`’s layout was created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` flag
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) flag
 set, then `dstSet`’s layout **must** also have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` flag
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) flag
 set
 
 * 
 [](#VUID-VkCopyDescriptorSet-srcSet-04885) VUID-VkCopyDescriptorSet-srcSet-04885
 
 If `srcSet`’s layout was created without
-either the `VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT`
+either the [VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html)
 flag or
-the `VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT`
+the [VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html)
 flag set, then `dstSet`’s layout **must** have been created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` flag
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) flag
 set
 
 * 
 [](#VUID-VkCopyDescriptorSet-srcSet-01920) VUID-VkCopyDescriptorSet-srcSet-01920
 
 If the descriptor pool from which `srcSet` was allocated was created
-with the `VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT` flag set,
+with the [VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](VkDescriptorPoolCreateFlagBits.html) flag set,
 then the descriptor pool from which `dstSet` was allocated **must**
 also have been created with the
-`VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT` flag set
+[VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](VkDescriptorPoolCreateFlagBits.html) flag set
 
 * 
 [](#VUID-VkCopyDescriptorSet-srcSet-04887) VUID-VkCopyDescriptorSet-srcSet-04887
 
 If the descriptor pool from which `srcSet` was allocated was created
 without
-either the `VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT` flag or
-the `VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT` flag set, then
+either the [VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT](VkDescriptorPoolCreateFlagBits.html) flag or
+the [VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](VkDescriptorPoolCreateFlagBits.html) flag set, then
 the descriptor pool from which `dstSet` was allocated **must** have
 been created without the
-`VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT` flag set
+[VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](VkDescriptorPoolCreateFlagBits.html) flag set
 
 * 
 [](#VUID-VkCopyDescriptorSet-dstBinding-02753) VUID-VkCopyDescriptorSet-dstBinding-02753
 
 If the descriptor type of the descriptor set binding specified by
-`dstBinding` is `VK_DESCRIPTOR_TYPE_SAMPLER`, then `dstSet`
+`dstBinding` is [VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html), then `dstSet`
 **must** not have been allocated with a layout that included immutable
 samplers for `dstBinding`
 
@@ -202,18 +202,18 @@ samplers for `dstBinding`
 [](#VUID-VkCopyDescriptorSet-dstSet-04612) VUID-VkCopyDescriptorSet-dstSet-04612
 
 If `VkDescriptorSetLayoutBinding` for `dstSet` at
-`dstBinding` is `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, the new active
+`dstBinding` is [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html), the new active
 descriptor type **must** exist in the corresponding
 `pMutableDescriptorTypeLists` list for `dstBinding` if the new
-active descriptor type is not `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+active descriptor type is not [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html)
 
 * 
 [](#VUID-VkCopyDescriptorSet-srcSet-04613) VUID-VkCopyDescriptorSet-srcSet-04613
 
 If `VkDescriptorSetLayoutBinding` for `srcSet` at
-`srcBinding` is `VK_DESCRIPTOR_TYPE_MUTABLE_EXT` and the
+`srcBinding` is [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html) and the
 `VkDescriptorSetLayoutBinding` for `dstSet` at `dstBinding`
-is not `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, the active descriptor type
+is not [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html), the active descriptor type
 for the source descriptor **must** match the descriptor type of
 `dstBinding`
 
@@ -221,8 +221,8 @@ for the source descriptor **must** match the descriptor type of
 [](#VUID-VkCopyDescriptorSet-dstSet-04614) VUID-VkCopyDescriptorSet-dstSet-04614
 
 If `VkDescriptorSetLayoutBinding` for `dstSet` at
-`dstBinding` is `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, and the new
-active descriptor type is `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`, the
+`dstBinding` is [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html), and the new
+active descriptor type is [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html), the
 `pMutableDescriptorTypeLists` for `srcBinding` and
 `dstBinding` **must** match exactly
 
@@ -231,7 +231,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkCopyDescriptorSet-sType-sType) VUID-VkCopyDescriptorSet-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_COPY_DESCRIPTOR_SET`
+ `sType` **must** be [VK_STRUCTURE_TYPE_COPY_DESCRIPTOR_SET](VkStructureType.html)
 
 * 
 [](#VUID-VkCopyDescriptorSet-pNext-pNext) VUID-VkCopyDescriptorSet-pNext-pNext

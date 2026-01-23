@@ -101,7 +101,7 @@ Device loss can be triggered by a variety of issues, including invalid API
 usage, implementation errors, or hardware failures.
 
 This extension introduces a new command: [vkGetDeviceFaultInfoEXT](vkGetDeviceFaultInfoEXT.html),
-which may be called subsequent to a `VK_ERROR_DEVICE_LOST` error code
+which may be called subsequent to a [VK_ERROR_DEVICE_LOST](VkResult.html) error code
 having been returned by the implementation.
 This command allows developers to query for additional information on GPU
 faults which may have caused device loss, and to generate binary crash
@@ -145,13 +145,13 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_DEVICE_FAULT_COUNTS_EXT`
+[VK_STRUCTURE_TYPE_DEVICE_FAULT_COUNTS_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_DEVICE_FAULT_INFO_EXT`
+[VK_STRUCTURE_TYPE_DEVICE_FAULT_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FAULT_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FAULT_FEATURES_EXT](VkStructureType.html)
 
 * 
 Revision 2, 2023-04-05 (Ralph Potter)

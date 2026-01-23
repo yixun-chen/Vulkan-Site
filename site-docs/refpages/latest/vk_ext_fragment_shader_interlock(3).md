@@ -135,7 +135,7 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_INTERLOCK_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_INTERLOCK_FEATURES_EXT](VkStructureType.html)
 
 * 
 [    `FragmentShaderInterlockEXT`](../../../../spec/latest/appendices/spirvenv.html#spirvenv-capabilities-table-FragmentShaderSampleInterlockEXT)

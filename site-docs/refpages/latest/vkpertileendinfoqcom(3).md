@@ -39,7 +39,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPerTileEndInfoQCOM-sType-sType) VUID-VkPerTileEndInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PER_TILE_END_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PER_TILE_END_INFO_QCOM](VkStructureType.html)
 
 * 
 [](#VUID-VkPerTileEndInfoQCOM-pNext-pNext) VUID-VkPerTileEndInfoQCOM-pNext-pNext

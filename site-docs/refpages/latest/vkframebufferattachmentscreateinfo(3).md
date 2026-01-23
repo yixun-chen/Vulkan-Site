@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFramebufferAttachmentsCreateInfo-sType-sType) VUID-VkFramebufferAttachmentsCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENTS_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENTS_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkFramebufferAttachmentsCreateInfo-pAttachmentImageInfos-parameter) VUID-VkFramebufferAttachmentsCreateInfo-pAttachmentImageInfos-parameter

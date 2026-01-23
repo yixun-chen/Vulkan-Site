@@ -145,22 +145,18 @@ The rasterizer takes the geometry shaped by the vertices from the vertex shader 
 It also performs [depth testing](https://en.wikipedia.org/wiki/Z-buffering), [face culling](https://en.wikipedia.org/wiki/Back-face_culling) and the scissor test, and it can be configured to output fragments that fill entire polygons or just the edges (wireframe rendering).
 All this is configured using the `VkPipelineRasterizationStateCreateInfo` structure.
 
-vk::PipelineRasterizationStateCreateInfo rasterizer({}, vk::False);
+vk::PipelineRasterizationStateCreateInfo rasterizer{  .depthClampEnable = vk::False, .rasterizerDiscardEnable = vk::False,
+ .polygonMode = vk::PolygonMode::eFill, .cullMode = vk::CullModeFlagBits::eBack,
+ .frontFace = vk::FrontFace::eClockwise, .depthBiasEnable = vk::False,
+ .depthBiasSlopeFactor = 1.0f, .lineWidth = 1.0f };
 
 If `depthClampEnable` is set to `VK_TRUE`, then fragments that are beyond
 the near and far planes are clamped to them as opposed to discarding them.
 This is useful in some special cases like shadow maps.
 Using this requires enabling a GPU feature.
 
-vk::PipelineRasterizationStateCreateInfo rasterizer({}, vk::False, vk::False);
-
 If `rasterizerDiscardEnable` is set to `VK_TRUE`, then geometry never passes through the rasterizer stage.
 This basically disables any output to the framebuffer.
-
-vk::PipelineRasterizationStateCreateInfo rasterizer{  .depthClampEnable = vk::False, .rasterizerDiscardEnable = vk::False,
- .polygonMode = vk::PolygonMode::eFill, .cullMode = vk::CullModeFlagBits::eBack,
- .frontFace = vk::FrontFace::eClockwise, .depthBiasEnable = vk::False,
- .depthBiasSlopeFactor = 1.0f, .lineWidth = 1.0f };
 
 The `polygonMode` determines how fragments are generated for geometry.
 The following modes are available:
@@ -176,20 +172,12 @@ The following modes are available:
 
 Using any mode other than fill requires enabling a GPU feature.
 
-rasterizer.lineWidth = 1.0f;
-
 The `lineWidth` member is straightforward, it describes the thickness of lines in terms of number of fragments.
 The maximum line width that is supported depends on the hardware and any line thicker than `1.0f` requires you to enable the `wideLines` GPU feature.
-
-vk::PipelineRasterizationStateCreateInfo rasterizer({}, vk::False, vk::False, vk::PolygonMode::eFill,
-        vk::CullModeFlagBits::eBack, vk::FrontFace::eClockwise);
 
 The `cullMode` variable determines the type of face culling to use.
 You can disable culling, cull the front faces, cull the back faces or both.
 The `frontFace` variable specifies the vertex order for the faces to be considered front-facing and can be clockwise or counterclockwise.
-
-vk::PipelineRasterizationStateCreateInfo rasterizer({}, vk::False, vk::False, vk::PolygonMode::eFill,
-        vk::CullModeFlagBits::eBack, vk::FrontFace::eClockwise, vk::False);
 
 The rasterizer can alter the depth values by adding a constant value or biasing them based on a fragment’s slope.
 This is sometimes used for shadow mapping, but we won’t be using it.

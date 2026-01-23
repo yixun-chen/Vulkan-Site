@@ -62,10 +62,10 @@ acceleration structure.
 of acceleration structure bindings that **can** be accessible to a single
 shader stage in a pipeline layout.
 Descriptor bindings with a descriptor type of
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR` count against this
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](VkDescriptorType.html) count against this
 limit.
 Only descriptor bindings in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 
 * 
@@ -73,7 +73,7 @@ count against this limit.
 `maxPerStageDescriptorUpdateAfterBindAccelerationStructures` is
 similar to `maxPerStageDescriptorAccelerationStructures` but counts
 descriptor bindings from descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -83,10 +83,10 @@ acceleration structure descriptors that **can** be included in descriptor
 bindings in a pipeline layout across all pipeline shader stages and
 descriptor set numbers.
 Descriptor bindings with a descriptor type of
-`VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR` count against this
+[VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR](VkDescriptorType.html) count against this
 limit.
 Only descriptor bindings in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 count against this limit.
 
 * 
@@ -94,7 +94,7 @@ count against this limit.
 `maxDescriptorSetUpdateAfterBindAccelerationStructures` is similar
 to `maxDescriptorSetAccelerationStructures` but counts descriptor
 bindings from descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit
 set.
 
 * 
@@ -124,7 +124,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceAccelerationStructurePropertiesKHR-sType-sType) VUID-VkPhysicalDeviceAccelerationStructurePropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR](VkStructureType.html)
 
 [VK_KHR_acceleration_structure](VK_KHR_acceleration_structure.html), [VkStructureType](VkStructureType.html)
 

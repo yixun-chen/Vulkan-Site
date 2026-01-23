@@ -133,7 +133,7 @@ Platform `GgpStreamDescriptor`.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP`
+[VK_STRUCTURE_TYPE_STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP](VkStructureType.html)
 
 * 
 Revision 1, 2018-11-26 (Jean-Francois Roy)

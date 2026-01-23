@@ -48,8 +48,8 @@ to the size of the buffer, in bytes, pointed to by `pData`, and on
 return the variable is overwritten with the amount of data actually written
 to `pData`.
 If `pDataSize` is less than the size of the binary shader code, nothing
-is written to `pData`, and `VK_INCOMPLETE` will be returned instead
-of `VK_SUCCESS`.
+is written to `pData`, and [VK_INCOMPLETE](VkResult.html) will be returned instead
+of [VK_SUCCESS](VkResult.html).
 
 |  | The behavior of this command when `pDataSize` is too small differs from
 | --- | --- |
@@ -64,12 +64,12 @@ This behavior is not consistent with the behavior described in
 reasons.
 
 If the amount of data available is larger than the passed `pDataSize`,
-the query returns a `VK_INCOMPLETE` success status instead of a
-`VK_ERROR_NOT_ENOUGH_SPACE_KHR` error status. |
+the query returns a [VK_INCOMPLETE](VkResult.html) success status instead of a
+[VK_ERROR_NOT_ENOUGH_SPACE_KHR](VkResult.html) error status. |
 
 Binary shader code retrieved using `vkGetShaderBinaryDataEXT` **can** be
 passed to a subsequent call to [vkCreateShadersEXT](vkCreateShadersEXT.html) on a compatible
-physical device by specifying `VK_SHADER_CODE_TYPE_BINARY_EXT` in the
+physical device by specifying [VK_SHADER_CODE_TYPE_BINARY_EXT](VkShaderCodeTypeEXT.html) in the
 `codeType` member of `VkShaderCreateInfoEXT`.
 
 The shader code returned by repeated calls to this function with the same
@@ -121,24 +121,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_EXT_shader_object](VK_EXT_shader_object.html), [VkDevice](VkDevice.html), [VkShaderEXT](VkShaderEXT.html)
 

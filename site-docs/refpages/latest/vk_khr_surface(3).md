@@ -168,15 +168,15 @@ other platform-independent extensions, in particular the
 * 
 Extending [VkObjectType](VkObjectType.html):
 
-`VK_OBJECT_TYPE_SURFACE_KHR`
+[VK_OBJECT_TYPE_SURFACE_KHR](VkObjectType.html)
 
 Extending [VkResult](VkResult.html):
 
 * 
-`VK_ERROR_NATIVE_WINDOW_IN_USE_KHR`
+[VK_ERROR_NATIVE_WINDOW_IN_USE_KHR](VkResult.html)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](VkResult.html)
 
 |  | The example code for the `VK_KHR_surface` and `[VK_KHR_swapchain](VK_KHR_swapchain.html)`
 | --- | --- |

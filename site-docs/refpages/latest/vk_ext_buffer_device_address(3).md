@@ -148,31 +148,31 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkBufferCreateFlagBits](VkBufferCreateFlagBits.html):
 
-`VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT`
+[VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT](VkBufferCreateFlagBits.html)
 
 Extending [VkBufferUsageFlagBits](VkBufferUsageFlagBits.html):
 
 * 
-`VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT_EXT`
+[VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT_EXT](VkBufferUsageFlagBits.html)
 
 Extending [VkResult](VkResult.html):
 
 * 
-`VK_ERROR_INVALID_DEVICE_ADDRESS_EXT`
+[VK_ERROR_INVALID_DEVICE_ADDRESS_EXT](VkResult.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT`
+[VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO_EXT`
+[VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_ADDRESS_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_ADDRESS_FEATURES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_EXT](VkStructureType.html)
 
 * 
 [    `PhysicalStorageBufferAddressesEXT`](../../../../spec/latest/appendices/spirvenv.html#spirvenv-capabilities-table-PhysicalStorageBufferAddresses)
@@ -181,7 +181,7 @@ Extending [VkStructureType](VkStructureType.html):
 and VkPhysicalDeviceBufferAddressFeaturesEXT?
 
 **RESOLVED**: They were renamed as
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_EXT](VkStructureType.html)
 and [VkPhysicalDeviceBufferDeviceAddressFeaturesEXT](VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.html) accordingly for
 consistency.
 Even though, the old names can still be found in the generated header files

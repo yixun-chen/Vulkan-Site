@@ -44,11 +44,11 @@ when one of the following conditions is true, in which case it **may**
 instead be `1`:
 
 `vkGetPhysicalDeviceImageFormatProperties`::`tiling` was
-`VK_IMAGE_TILING_LINEAR`
+[VK_IMAGE_TILING_LINEAR](VkImageTiling.html)
 
 * 
 [VkPhysicalDeviceImageFormatInfo2](VkPhysicalDeviceImageFormatInfo2.html)::`tiling` was
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html)
 
 * 
 the [VkPhysicalDeviceImageFormatInfo2](VkPhysicalDeviceImageFormatInfo2.html)::`pNext` chain included
@@ -61,7 +61,7 @@ image `format` is one of the
 [formats that require a     sampler Y′CBCR conversion](../../../../spec/latest/chapters/formats.html#formats-requiring-sampler-ycbcr-conversion)
 
 * 
-`flags` contains `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`
+`flags` contains [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](VkImageCreateFlagBits.html)
 
 `maxArrayLayers` is the maximum number of array layers.
 `maxArrayLayers` **must** be no less than
@@ -70,17 +70,17 @@ of the following conditions is true, in which case it **may** instead be
 `1`:
 
 * 
-`tiling` is `VK_IMAGE_TILING_LINEAR`
+`tiling` is [VK_IMAGE_TILING_LINEAR](VkImageTiling.html)
 
 * 
-`tiling` is `VK_IMAGE_TILING_OPTIMAL` and `type` is
-`VK_IMAGE_TYPE_3D`
+`tiling` is [VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html) and `type` is
+[VK_IMAGE_TYPE_3D](VkImageType.html)
 
 * 
 `format` is one of the
 [formats that require a     sampler Y′CBCR conversion](../../../../spec/latest/chapters/formats.html#formats-requiring-sampler-ycbcr-conversion)
 
-If `tiling` is `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then
+If `tiling` is [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html), then
 `maxArrayLayers` **must** not be 0.
 
 `sampleCounts` is a bitmask of [VkSampleCountFlagBits](VkSampleCountFlagBits.html)
@@ -98,10 +98,10 @@ resource, which is advertised by this property.
 compare that size against `maxResourceSize`.
 If an application attempts to create an image that exceeds this limit, the
 creation will fail and [vkCreateImage](vkCreateImage.html) will return
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`.
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html).
 While the advertised limit **must** be at least 231, it **may** not be possible
 to create an image that approaches that size, particularly for
-`VK_IMAGE_TYPE_1D`. |
+[VK_IMAGE_TYPE_1D](VkImageType.html). |
 
 If the combination of parameters to
 `vkGetPhysicalDeviceImageFormatProperties` is not supported by the

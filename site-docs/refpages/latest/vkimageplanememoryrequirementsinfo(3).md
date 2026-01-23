@@ -52,15 +52,15 @@ Valid Usage
 * 
 [](#VUID-VkImagePlaneMemoryRequirementsInfo-planeAspect-02281) VUID-VkImagePlaneMemoryRequirementsInfo-planeAspect-02281
 
-If the image’s `tiling` is `VK_IMAGE_TILING_LINEAR` or
-`VK_IMAGE_TILING_OPTIMAL`, then `planeAspect` **must** be a single
+If the image’s `tiling` is [VK_IMAGE_TILING_LINEAR](VkImageTiling.html) or
+[VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html), then `planeAspect` **must** be a single
 valid [multi-planar aspect mask](../../../../spec/latest/chapters/formats.html#formats-multiplanar-image-aspect) bit
 
 * 
 [](#VUID-VkImagePlaneMemoryRequirementsInfo-planeAspect-02282) VUID-VkImagePlaneMemoryRequirementsInfo-planeAspect-02282
 
 If the image’s `tiling` is
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then `planeAspect`
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html), then `planeAspect`
 **must** be a single valid *memory plane* for the image (that is,
 `aspectMask` **must** specify a plane index that is less than the
 [VkDrmFormatModifierPropertiesEXT](VkDrmFormatModifierPropertiesEXT.html)::`drmFormatModifierPlaneCount`
@@ -72,7 +72,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImagePlaneMemoryRequirementsInfo-sType-sType) VUID-VkImagePlaneMemoryRequirementsInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkImagePlaneMemoryRequirementsInfo-planeAspect-parameter) VUID-VkImagePlaneMemoryRequirementsInfo-planeAspect-parameter

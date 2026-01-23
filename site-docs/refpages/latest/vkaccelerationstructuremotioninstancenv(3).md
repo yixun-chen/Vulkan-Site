@@ -67,17 +67,17 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureMotionInstanceNV-staticInstance-parameter) VUID-VkAccelerationStructureMotionInstanceNV-staticInstance-parameter
 
- If `type` is `VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_STATIC_NV`, the `staticInstance` member of `data` **must** be a valid [VkAccelerationStructureInstanceKHR](VkAccelerationStructureInstanceKHR.html) structure
+ If `type` is [VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_STATIC_NV](VkAccelerationStructureMotionInstanceTypeNV.html), the `staticInstance` member of `data` **must** be a valid [VkAccelerationStructureInstanceKHR](VkAccelerationStructureInstanceKHR.html) structure
 
 * 
 [](#VUID-VkAccelerationStructureMotionInstanceNV-matrixMotionInstance-parameter) VUID-VkAccelerationStructureMotionInstanceNV-matrixMotionInstance-parameter
 
- If `type` is `VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_MATRIX_MOTION_NV`, the `matrixMotionInstance` member of `data` **must** be a valid [VkAccelerationStructureMatrixMotionInstanceNV](VkAccelerationStructureMatrixMotionInstanceNV.html) structure
+ If `type` is [VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_MATRIX_MOTION_NV](VkAccelerationStructureMotionInstanceTypeNV.html), the `matrixMotionInstance` member of `data` **must** be a valid [VkAccelerationStructureMatrixMotionInstanceNV](VkAccelerationStructureMatrixMotionInstanceNV.html) structure
 
 * 
 [](#VUID-VkAccelerationStructureMotionInstanceNV-srtMotionInstance-parameter) VUID-VkAccelerationStructureMotionInstanceNV-srtMotionInstance-parameter
 
- If `type` is `VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_SRT_MOTION_NV`, the `srtMotionInstance` member of `data` **must** be a valid [VkAccelerationStructureSRTMotionInstanceNV](VkAccelerationStructureSRTMotionInstanceNV.html) structure
+ If `type` is [VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_SRT_MOTION_NV](VkAccelerationStructureMotionInstanceTypeNV.html), the `srtMotionInstance` member of `data` **must** be a valid [VkAccelerationStructureSRTMotionInstanceNV](VkAccelerationStructureSRTMotionInstanceNV.html) structure
 
 [VK_NV_ray_tracing_motion_blur](VK_NV_ray_tracing_motion_blur.html), [VkAccelerationStructureMotionInstanceDataNV](VkAccelerationStructureMotionInstanceDataNV.html), [VkAccelerationStructureMotionInstanceFlagsNV](VkAccelerationStructureMotionInstanceFlagsNV.html), [VkAccelerationStructureMotionInstanceTypeNV](VkAccelerationStructureMotionInstanceTypeNV.html)
 

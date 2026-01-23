@@ -38,14 +38,14 @@ structure.
 * 
 `hdmi3DSupported` indicates whether this display mode can be used
 for a display surface configured for
-`VK_DISPLAY_SURFACE_STEREO_TYPE_HDMI_3D_NV`.
+[VK_DISPLAY_SURFACE_STEREO_TYPE_HDMI_3D_NV](VkDisplaySurfaceStereoTypeNV.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDisplayModeStereoPropertiesNV-sType-sType) VUID-VkDisplayModeStereoPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_MODE_STEREO_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_MODE_STEREO_PROPERTIES_NV](VkStructureType.html)
 
 [VK_NV_display_stereo](VK_NV_display_stereo.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

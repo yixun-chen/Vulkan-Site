@@ -42,7 +42,7 @@ subresources are included in the mip tail region.
 `imageMipTailSize` is the memory size (in bytes) of the mip tail
 region.
 If `formatProperties.flags` contains
-`VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT`, this is the size of the
+[VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT](VkSparseImageFormatFlagBits.html), this is the size of the
 whole mip tail, otherwise this is the size of the mip tail of a single
 array layer.
 This value is guaranteed to be a multiple of the sparse block size in
@@ -55,7 +55,7 @@ bytes.
 * 
 `imageMipTailStride` is the offset stride between each array-layer’s
 mip tail, if `formatProperties.flags` does not contain
-`VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT` (otherwise the value is
+[VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT](VkSparseImageFormatFlagBits.html) (otherwise the value is
 **undefined**).
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), `VkDeviceSize`, [VkSparseImageFormatProperties](VkSparseImageFormatProperties.html), [VkSparseImageMemoryRequirements2](VkSparseImageMemoryRequirements2.html), [vkGetImageSparseMemoryRequirements](vkGetImageSparseMemoryRequirements.html)

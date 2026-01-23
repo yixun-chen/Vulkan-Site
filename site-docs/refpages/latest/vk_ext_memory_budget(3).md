@@ -109,7 +109,7 @@ Extending [VkPhysicalDeviceMemoryProperties2](VkPhysicalDeviceMemoryProperties2.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2018-10-08 (Jeff Bolz)

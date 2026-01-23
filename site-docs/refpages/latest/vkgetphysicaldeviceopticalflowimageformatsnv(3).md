@@ -58,8 +58,8 @@ array, and on return the variable is overwritten with the number of values
 actually written to `pImageFormatProperties`.
 If the value of `pFormatCount` is less than the number of optical flow
 properties supported, at most `pFormatCount` values will be written to
-`pImageFormatProperties`, and `VK_INCOMPLETE` will be returned
-instead of `VK_SUCCESS`, to indicate that not all the available values
+`pImageFormatProperties`, and [VK_INCOMPLETE](VkResult.html) will be returned
+instead of [VK_SUCCESS](VkResult.html), to indicate that not all the available values
 were returned.
 
 Before creating an image to be used as an optical flow frame, obtain the
@@ -102,44 +102,44 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_EXTENSION_NOT_PRESENT`
+[VK_ERROR_EXTENSION_NOT_PRESENT](VkResult.html)
 
 * 
-`VK_ERROR_FORMAT_NOT_SUPPORTED`
+[VK_ERROR_FORMAT_NOT_SUPPORTED](VkResult.html)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
-|  | `VK_FORMAT_B8G8R8A8_UNORM`, `VK_FORMAT_R8_UNORM` and
+|  | [VK_FORMAT_B8G8R8A8_UNORM](VkFormat.html), [VK_FORMAT_R8_UNORM](VkFormat.html) and
 | --- | --- |
-`VK_FORMAT_G8_B8R8_2PLANE_420_UNORM` are initially supported for images
+[VK_FORMAT_G8_B8R8_2PLANE_420_UNORM](VkFormat.html) are initially supported for images
 with [optical usage](../../../../spec/latest/chapters/VK_NV_optical_flow/optical_flow.html#opticalflow-usage)
-`VK_OPTICAL_FLOW_USAGE_INPUT_BIT_NV`.
+[VK_OPTICAL_FLOW_USAGE_INPUT_BIT_NV](VkOpticalFlowUsageFlagBitsNV.html).
 
-`VK_FORMAT_R16G16_SFIXED5_NV` is initially supported for images with
+[VK_FORMAT_R16G16_SFIXED5_NV](VkFormat.html) is initially supported for images with
 [optical flow usage](../../../../spec/latest/chapters/VK_NV_optical_flow/optical_flow.html#opticalflow-usage)
-`VK_OPTICAL_FLOW_USAGE_OUTPUT_BIT_NV`,
-`VK_OPTICAL_FLOW_USAGE_HINT_BIT_NV` and
-`VK_OPTICAL_FLOW_USAGE_GLOBAL_FLOW_BIT_NV`.
+[VK_OPTICAL_FLOW_USAGE_OUTPUT_BIT_NV](VkOpticalFlowUsageFlagBitsNV.html),
+[VK_OPTICAL_FLOW_USAGE_HINT_BIT_NV](VkOpticalFlowUsageFlagBitsNV.html) and
+[VK_OPTICAL_FLOW_USAGE_GLOBAL_FLOW_BIT_NV](VkOpticalFlowUsageFlagBitsNV.html).
 
-`VK_FORMAT_R8_UINT` and `VK_FORMAT_R32_UINT` are initially supported
+[VK_FORMAT_R8_UINT](VkFormat.html) and [VK_FORMAT_R32_UINT](VkFormat.html) are initially supported
 for images with [optical flow usage](../../../../spec/latest/chapters/VK_NV_optical_flow/optical_flow.html#opticalflow-usage)
-`VK_OPTICAL_FLOW_USAGE_COST_BIT_NV`.
-It is recommended to use `VK_FORMAT_R8_UINT` because of the lower
+[VK_OPTICAL_FLOW_USAGE_COST_BIT_NV](VkOpticalFlowUsageFlagBitsNV.html).
+It is recommended to use [VK_FORMAT_R8_UINT](VkFormat.html) because of the lower
 bandwidth. |
 
 [VK_NV_optical_flow](VK_NV_optical_flow.html), [VkOpticalFlowImageFormatInfoNV](VkOpticalFlowImageFormatInfoNV.html), [VkOpticalFlowImageFormatPropertiesNV](VkOpticalFlowImageFormatPropertiesNV.html), [VkPhysicalDevice](VkPhysicalDevice.html)

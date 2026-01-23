@@ -34,17 +34,17 @@ This specification will refer to such extensions as *deferral extensions*.
 When an application requests an operation deferral, the implementation **may**
 defer the operation.
 When deferral is requested and the implementation defers any operation, the
-implementation **must** return `VK_OPERATION_DEFERRED_KHR` as the success
+implementation **must** return [VK_OPERATION_DEFERRED_KHR](../fundamentals.html#VkResult) as the success
 code if no errors occurred.
 When deferral is requested, the implementation **should** defer the operation
 when the workload is significant, however if the implementation chooses not
 to defer any of the requested operations and instead executes all of them
 immediately, the implementation **must** return
-`VK_OPERATION_NOT_DEFERRED_KHR` as the success code if no errors
+[VK_OPERATION_NOT_DEFERRED_KHR](../fundamentals.html#VkResult) as the success code if no errors
 occurred.
 
 A deferred operation is created *complete* with an initial result value of
-`VK_SUCCESS`.
+[VK_SUCCESS](../fundamentals.html#VkResult).
 The deferred operation becomes *pending* when an operation has been
 successfully deferred with that deferred operation object.
 
@@ -162,18 +162,18 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 To assign a thread to a deferred operation, call:
 
@@ -195,13 +195,13 @@ deferred operation on the calling thread.
 The return value will be one of the following:
 
 * 
-A return value of `VK_SUCCESS` indicates that `operation` is
+A return value of [VK_SUCCESS](../fundamentals.html#VkResult) indicates that `operation` is
 complete.
 The application **should** use [vkGetDeferredOperationResultKHR](#vkGetDeferredOperationResultKHR) to
 retrieve the result of `operation`.
 
 * 
-A return value of `VK_THREAD_DONE_KHR` indicates that the deferred
+A return value of [VK_THREAD_DONE_KHR](../fundamentals.html#VkResult) indicates that the deferred
 operation is not complete, but there is no work remaining to assign to
 threads.
 Future calls to [vkDeferredOperationJoinKHR](#vkDeferredOperationJoinKHR) are not necessary and
@@ -211,12 +211,12 @@ This situation **may** occur when other threads executing
 and the implementation is unable to partition the workload any further.
 
 * 
-A return value of `VK_THREAD_IDLE_KHR` indicates that the deferred
+A return value of [VK_THREAD_IDLE_KHR](../fundamentals.html#VkResult) indicates that the deferred
 operation is not complete, and there is no work for the thread to do at
 the time of the call.
 This situation **may** occur if the operation encounters a temporary
 reduction in parallelism.
-By returning `VK_THREAD_IDLE_KHR`, the implementation is signaling
+By returning [VK_THREAD_IDLE_KHR](../fundamentals.html#VkResult), the implementation is signaling
 that it expects that more opportunities for parallelism will emerge as
 execution progresses, and that future calls to
 [vkDeferredOperationJoinKHR](#vkDeferredOperationJoinKHR) **can** be beneficial.
@@ -228,11 +228,11 @@ invariants:
 
 If only one thread has invoked [vkDeferredOperationJoinKHR](#vkDeferredOperationJoinKHR) on a
 given operation, that thread **must** execute the operation to completion
-and return `VK_SUCCESS`.
+and return [VK_SUCCESS](../fundamentals.html#VkResult).
 
 If multiple threads have concurrently invoked
 [vkDeferredOperationJoinKHR](#vkDeferredOperationJoinKHR) on the same operation, then at least
-one of them **must** complete the operation and return `VK_SUCCESS`.
+one of them **must** complete the operation and return [VK_SUCCESS](../fundamentals.html#VkResult).
 
 Valid Usage (Implicit)
 
@@ -256,27 +256,27 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 * 
-`VK_THREAD_DONE_KHR`
+[VK_THREAD_DONE_KHR](../fundamentals.html#VkResult)
 
 * 
-`VK_THREAD_IDLE_KHR`
+[VK_THREAD_IDLE_KHR](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)
 
 When a deferred operation is completed, the application **can** destroy the
 tracking object by calling:
@@ -364,7 +364,7 @@ This value is intended to be used to better schedule work onto available
 threads.
 Applications **can** join any number of threads to the deferred operation and
 expect it to eventually complete, though excessive joins **may** return
-`VK_THREAD_DONE_KHR` immediately, performing no useful work.
+[VK_THREAD_DONE_KHR](../fundamentals.html#VkResult) immediately, performing no useful work.
 
 If `operation` is complete,
 `vkGetDeferredOperationMaxConcurrencyKHR` returns zero.
@@ -389,7 +389,7 @@ than oversubscribing the machine.
 | --- | --- |
 after deferral, and schedule no more than the specified number of threads to
 join the operation.
-Each time a joined thread receives `VK_THREAD_IDLE_KHR`, the application
+Each time a joined thread receives [VK_THREAD_IDLE_KHR](../fundamentals.html#VkResult), the application
 should schedule an additional join at some point in the future, but is not
 required to do so. |
 
@@ -424,10 +424,10 @@ VkResult vkGetDeferredOperationResultKHR(
 `operation` is the operation whose deferred result is being queried.
 
 If no command has been deferred on `operation`,
-`vkGetDeferredOperationResultKHR` returns `VK_SUCCESS`.
+`vkGetDeferredOperationResultKHR` returns [VK_SUCCESS](../fundamentals.html#VkResult).
 
 If the deferred operation is pending, `vkGetDeferredOperationResultKHR`
-returns `VK_NOT_READY`.
+returns [VK_NOT_READY](../fundamentals.html#VkResult).
 
 If the deferred operation is complete, it returns the appropriate return
 value from the original command.
@@ -456,15 +456,15 @@ Return Codes
 [Success](../fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_NOT_READY`
+[VK_NOT_READY](../fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](../fundamentals.html#VkResult)
 
 [Failure](../fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](../fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](../fundamentals.html#VkResult)

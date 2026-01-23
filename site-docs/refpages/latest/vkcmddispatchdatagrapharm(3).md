@@ -75,7 +75,7 @@ Descriptors in each bound descriptor set, specified via
 by
 the [VkPipeline](VkPipeline.html) bound to the pipeline bind point used by this
 command and the bound [VkPipeline](VkPipeline.html) was not created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-vkCmdDispatchDataGraphARM-None-09936) VUID-vkCmdDispatchDataGraphARM-None-09936
@@ -83,7 +83,7 @@ command and the bound [VkPipeline](VkPipeline.html) was not created with
 If the descriptors used by the [VkPipeline](VkPipeline.html) bound to the pipeline
 bind point were specified via [vkCmdBindDescriptorSets](vkCmdBindDescriptorSets.html), the bound
 [VkPipeline](VkPipeline.html) **must** have been created without
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-vkCmdDispatchDataGraphARM-None-09937) VUID-vkCmdDispatchDataGraphARM-None-09937
@@ -92,7 +92,7 @@ Descriptors in bound descriptor buffers, specified via
 [vkCmdSetDescriptorBufferOffsetsEXT](vkCmdSetDescriptorBufferOffsetsEXT.html), **must** be valid if they are
 dynamically used by the [VkPipeline](VkPipeline.html) bound to the pipeline bind
 point used by this command and the bound [VkPipeline](VkPipeline.html) was created
-with `VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+with [VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-vkCmdDispatchDataGraphARM-None-09938) VUID-vkCmdDispatchDataGraphARM-None-09938
@@ -100,30 +100,30 @@ with `VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
 If the descriptors used by the [VkPipeline](VkPipeline.html) bound to the pipeline
 bind point were specified via [vkCmdSetDescriptorBufferOffsetsEXT](vkCmdSetDescriptorBufferOffsetsEXT.html),
 the bound [VkPipeline](VkPipeline.html) **must** have been created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-vkCmdDispatchDataGraphARM-None-09939) VUID-vkCmdDispatchDataGraphARM-None-09939
 
 If a descriptor is dynamically used with a [VkPipeline](VkPipeline.html) created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, the descriptor
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkPipelineCreateFlagBits.html), the descriptor
 memory **must** be resident
 
 * 
 [](#VUID-vkCmdDispatchDataGraphARM-None-09799) VUID-vkCmdDispatchDataGraphARM-None-09799
 
 A valid data graph pipeline **must** be bound to the
-`VK_PIPELINE_BIND_POINT_DATA_GRAPH_ARM` pipeline bind point used by
+[VK_PIPELINE_BIND_POINT_DATA_GRAPH_ARM](VkPipelineBindPoint.html) pipeline bind point used by
 this command
 
 * 
 [](#VUID-vkCmdDispatchDataGraphARM-pDescription-09930) VUID-vkCmdDispatchDataGraphARM-pDescription-09930
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html) descriptor is accessed as a
 result of this command, then the underlying [VkTensorARM](VkTensorARM.html) object
 **must** have been created with a
 [VkTensorCreateInfoARM](VkTensorCreateInfoARM.html)::`pDescription` whose `usage` member
-contained `VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM`
+contained [VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM](VkTensorUsageFlagBitsARM.html)
 
 * 
 [](#VUID-vkCmdDispatchDataGraphARM-pipeline-09940) VUID-vkCmdDispatchDataGraphARM-pipeline-09940
@@ -134,7 +134,7 @@ command was created with a
 `pNext` chain of [VkDataGraphPipelineCreateInfoARM](VkDataGraphPipelineCreateInfoARM.html) that
 included a foreign data graph processing engine in its
 `pProcessingEngines` member, then all
-`VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptors accessed as a result of
+[VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html) descriptors accessed as a result of
 this command **must** be [VkTensorARM](VkTensorARM.html) objects that have been bound to
 memory allocated with
 [VkExportMemoryAllocateInfo](VkExportMemoryAllocateInfo.html)::`handleTypes` with set bits that
@@ -218,7 +218,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdDispatchDataGraphARM-commandBuffer-cmdpool) VUID-vkCmdDispatchDataGraphARM-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_DATA_GRAPH_BIT_ARM` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_DATA_GRAPH_BIT_ARM](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdDispatchDataGraphARM-renderpass) VUID-vkCmdDispatchDataGraphARM-renderpass

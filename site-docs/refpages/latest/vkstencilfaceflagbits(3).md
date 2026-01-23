@@ -18,7 +18,7 @@
 
 VkStencilFaceFlagBits - Bitmask specifying sets of stencil state for which to update the compare mask
 
-`VkStencilFaceFlagBits` values are:
+[VkStencilFaceFlagBits](#) values are:
 
 // Provided by VK_VERSION_1_0
 typedef enum VkStencilFaceFlagBits {
@@ -30,16 +30,16 @@ typedef enum VkStencilFaceFlagBits {
 } VkStencilFaceFlagBits;
 
 * 
-`VK_STENCIL_FACE_FRONT_BIT` specifies that only the front set of
+[VK_STENCIL_FACE_FRONT_BIT](#) specifies that only the front set of
 stencil state is updated.
 
 * 
-`VK_STENCIL_FACE_BACK_BIT` specifies that only the back set of
+[VK_STENCIL_FACE_BACK_BIT](#) specifies that only the back set of
 stencil state is updated.
 
 * 
-`VK_STENCIL_FACE_FRONT_AND_BACK` is the combination of
-`VK_STENCIL_FACE_FRONT_BIT` and `VK_STENCIL_FACE_BACK_BIT`, and
+[VK_STENCIL_FACE_FRONT_AND_BACK](#) is the combination of
+[VK_STENCIL_FACE_FRONT_BIT](#) and [VK_STENCIL_FACE_BACK_BIT](#), and
 specifies that both sets of stencil state are updated.
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkStencilFaceFlags](VkStencilFaceFlags.html)

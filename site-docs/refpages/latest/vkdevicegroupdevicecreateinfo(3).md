@@ -92,7 +92,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceGroupDeviceCreateInfo-sType-sType) VUID-VkDeviceGroupDeviceCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_GROUP_DEVICE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_GROUP_DEVICE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceGroupDeviceCreateInfo-pPhysicalDevices-parameter) VUID-VkDeviceGroupDeviceCreateInfo-pPhysicalDevices-parameter

@@ -44,7 +44,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDisplayModeProperties2KHR-sType-sType) VUID-VkDisplayModeProperties2KHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_MODE_PROPERTIES_2_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_MODE_PROPERTIES_2_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkDisplayModeProperties2KHR-pNext-pNext) VUID-VkDisplayModeProperties2KHR-pNext-pNext

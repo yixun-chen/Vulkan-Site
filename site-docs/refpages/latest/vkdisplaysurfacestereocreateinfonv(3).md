@@ -45,7 +45,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDisplaySurfaceStereoCreateInfoNV-sType-sType) VUID-VkDisplaySurfaceStereoCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkDisplaySurfaceStereoCreateInfoNV-stereoType-parameter) VUID-VkDisplaySurfaceStereoCreateInfoNV-stereoType-parameter

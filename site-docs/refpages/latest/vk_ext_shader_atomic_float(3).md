@@ -116,7 +116,7 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_FEATURES_EXT](VkStructureType.html)
 
 * 
 [    `AtomicFloat32AddEXT`](../../../../spec/latest/appendices/spirvenv.html#spirvenv-capabilities-table-AtomicFloat32AddEXT)

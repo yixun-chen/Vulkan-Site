@@ -130,7 +130,7 @@ instances without needing to create render pass objects or framebuffers.
 Dynamic render passes can also span across multiple primary command buffers,
 rather than relying on secondary command buffers.
 
-This extension also incorporates `VK_ATTACHMENT_STORE_OP_NONE_KHR` from
+This extension also incorporates [VK_ATTACHMENT_STORE_OP_NONE_KHR](VkAttachmentStoreOp.html) from
 `[VK_QCOM_render_pass_store_ops](VK_QCOM_render_pass_store_ops.html)`, enabling applications to avoid
 unnecessary synchronization when an attachment is not written during a
 render pass.
@@ -177,35 +177,35 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkAttachmentStoreOp](VkAttachmentStoreOp.html):
 
-`VK_ATTACHMENT_STORE_OP_NONE_KHR`
+[VK_ATTACHMENT_STORE_OP_NONE_KHR](VkAttachmentStoreOp.html)
 
 Extending [VkRenderingFlagBits](VkRenderingFlagBits.html):
 
 * 
-`VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT_KHR`
+[VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT_KHR](VkRenderingFlagBits.html)
 
 * 
-`VK_RENDERING_RESUMING_BIT_KHR`
+[VK_RENDERING_RESUMING_BIT_KHR](VkRenderingFlagBits.html)
 
 * 
-`VK_RENDERING_SUSPENDING_BIT_KHR`
+[VK_RENDERING_SUSPENDING_BIT_KHR](VkRenderingFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDERING_INFO_KHR`
+[VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDERING_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_INFO_KHR`
+[VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_RENDERING_INFO_KHR`
+[VK_STRUCTURE_TYPE_RENDERING_INFO_KHR](VkStructureType.html)
 
 Vulkan APIs in this extension are included in core Vulkan 1.3, with the KHR
 suffix omitted.

@@ -28,10 +28,10 @@ typedef enum VkSamplerMipmapMode {
 } VkSamplerMipmapMode;
 
 * 
-`VK_SAMPLER_MIPMAP_MODE_NEAREST` specifies nearest filtering.
+[VK_SAMPLER_MIPMAP_MODE_NEAREST](#) specifies nearest filtering.
 
 * 
-`VK_SAMPLER_MIPMAP_MODE_LINEAR` specifies linear filtering.
+[VK_SAMPLER_MIPMAP_MODE_LINEAR](#) specifies linear filtering.
 
 These modes are described in detail in [Texel Filtering](../../../../spec/latest/chapters/textures.html#textures-texel-filtering).
 

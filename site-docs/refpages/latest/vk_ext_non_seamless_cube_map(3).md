@@ -102,12 +102,12 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkSamplerCreateFlagBits](VkSamplerCreateFlagBits.html):
 
-`VK_SAMPLER_CREATE_NON_SEAMLESS_CUBE_MAP_BIT_EXT`
+[VK_SAMPLER_CREATE_NON_SEAMLESS_CUBE_MAP_BIT_EXT](VkSamplerCreateFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NON_SEAMLESS_CUBE_MAP_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NON_SEAMLESS_CUBE_MAP_FEATURES_EXT](VkStructureType.html)
 
 * 
 Revision 1, 2021-09-04 (Georg Lehmann)

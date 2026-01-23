@@ -44,7 +44,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDataGraphPipelineDispatchInfoARM-sType-sType) VUID-VkDataGraphPipelineDispatchInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_DISPATCH_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_DISPATCH_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkDataGraphPipelineDispatchInfoARM-pNext-pNext) VUID-VkDataGraphPipelineDispatchInfoARM-pNext-pNext

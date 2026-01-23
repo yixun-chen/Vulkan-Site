@@ -47,87 +47,87 @@ structure.
 callable shader from
 [VkRayTracingPipelineCreateInfoNV](VkRayTracingPipelineCreateInfoNV.html)::`pStages` in the group if
 the shader group has `type` of
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV`, and
-`VK_SHADER_UNUSED_NV` otherwise.
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV](VkRayTracingShaderGroupTypeKHR.html), and
+[VK_SHADER_UNUSED_NV](VK_SHADER_UNUSED_KHR.html) otherwise.
 
 * 
 `closestHitShader` is the optional index of the closest hit shader
 from [VkRayTracingPipelineCreateInfoNV](VkRayTracingPipelineCreateInfoNV.html)::`pStages` in the group
 if the shader group has `type` of
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV` or
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV`, and
-`VK_SHADER_UNUSED_NV` otherwise.
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV](VkRayTracingShaderGroupTypeKHR.html) or
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV](VkRayTracingShaderGroupTypeKHR.html), and
+[VK_SHADER_UNUSED_NV](VK_SHADER_UNUSED_KHR.html) otherwise.
 
 * 
 `anyHitShader` is the optional index of the any-hit shader from
 [VkRayTracingPipelineCreateInfoNV](VkRayTracingPipelineCreateInfoNV.html)::`pStages` in the group if
 the shader group has `type` of
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV` or
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV`, and
-`VK_SHADER_UNUSED_NV` otherwise.
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV](VkRayTracingShaderGroupTypeKHR.html) or
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV](VkRayTracingShaderGroupTypeKHR.html), and
+[VK_SHADER_UNUSED_NV](VK_SHADER_UNUSED_KHR.html) otherwise.
 
 * 
 `intersectionShader` is the index of the intersection shader from
 [VkRayTracingPipelineCreateInfoNV](VkRayTracingPipelineCreateInfoNV.html)::`pStages` in the group if
 the shader group has `type` of
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV`, and
-`VK_SHADER_UNUSED_NV` otherwise.
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV](VkRayTracingShaderGroupTypeKHR.html), and
+[VK_SHADER_UNUSED_NV](VK_SHADER_UNUSED_KHR.html) otherwise.
 
 Valid Usage
 
 * 
 [](#VUID-VkRayTracingShaderGroupCreateInfoNV-type-02413) VUID-VkRayTracingShaderGroupCreateInfoNV-type-02413
 
-If `type` is `VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV` then
+If `type` is [VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV](VkRayTracingShaderGroupTypeKHR.html) then
 `generalShader` **must** be a valid index into
 [VkRayTracingPipelineCreateInfoNV](VkRayTracingPipelineCreateInfoNV.html)::`pStages` referring to a
-shader of `VK_SHADER_STAGE_RAYGEN_BIT_NV`,
-`VK_SHADER_STAGE_MISS_BIT_NV`, or
-`VK_SHADER_STAGE_CALLABLE_BIT_NV`
+shader of [VK_SHADER_STAGE_RAYGEN_BIT_NV](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_MISS_BIT_NV](VkShaderStageFlagBits.html), or
+[VK_SHADER_STAGE_CALLABLE_BIT_NV](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-VkRayTracingShaderGroupCreateInfoNV-type-02414) VUID-VkRayTracingShaderGroupCreateInfoNV-type-02414
 
-If `type` is `VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV` then
+If `type` is [VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV](VkRayTracingShaderGroupTypeKHR.html) then
 `closestHitShader`, `anyHitShader`, and `intersectionShader`
-**must** be `VK_SHADER_UNUSED_NV`
+**must** be [VK_SHADER_UNUSED_NV](VK_SHADER_UNUSED_KHR.html)
 
 * 
 [](#VUID-VkRayTracingShaderGroupCreateInfoNV-type-02415) VUID-VkRayTracingShaderGroupCreateInfoNV-type-02415
 
 If `type` is
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV` then
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV](VkRayTracingShaderGroupTypeKHR.html) then
 `intersectionShader` **must** be a valid index into
 [VkRayTracingPipelineCreateInfoNV](VkRayTracingPipelineCreateInfoNV.html)::`pStages` referring to a
-shader of `VK_SHADER_STAGE_INTERSECTION_BIT_NV`
+shader of [VK_SHADER_STAGE_INTERSECTION_BIT_NV](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-VkRayTracingShaderGroupCreateInfoNV-type-02416) VUID-VkRayTracingShaderGroupCreateInfoNV-type-02416
 
 If `type` is
-`VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV` then
-`intersectionShader` **must** be `VK_SHADER_UNUSED_NV`
+[VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV](VkRayTracingShaderGroupTypeKHR.html) then
+`intersectionShader` **must** be [VK_SHADER_UNUSED_NV](VK_SHADER_UNUSED_KHR.html)
 
 * 
 [](#VUID-VkRayTracingShaderGroupCreateInfoNV-closestHitShader-02417) VUID-VkRayTracingShaderGroupCreateInfoNV-closestHitShader-02417
 
-`closestHitShader` **must** be either `VK_SHADER_UNUSED_NV` or a
+`closestHitShader` **must** be either [VK_SHADER_UNUSED_NV](VK_SHADER_UNUSED_KHR.html) or a
 valid index into [VkRayTracingPipelineCreateInfoNV](VkRayTracingPipelineCreateInfoNV.html)::`pStages`
-referring to a shader of `VK_SHADER_STAGE_CLOSEST_HIT_BIT_NV`
+referring to a shader of [VK_SHADER_STAGE_CLOSEST_HIT_BIT_NV](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-VkRayTracingShaderGroupCreateInfoNV-anyHitShader-02418) VUID-VkRayTracingShaderGroupCreateInfoNV-anyHitShader-02418
 
-`anyHitShader` **must** be either `VK_SHADER_UNUSED_NV` or a valid
+`anyHitShader` **must** be either [VK_SHADER_UNUSED_NV](VK_SHADER_UNUSED_KHR.html) or a valid
 index into [VkRayTracingPipelineCreateInfoNV](VkRayTracingPipelineCreateInfoNV.html)::`pStages`
-referring to a shader of `VK_SHADER_STAGE_ANY_HIT_BIT_NV`
+referring to a shader of [VK_SHADER_STAGE_ANY_HIT_BIT_NV](VkShaderStageFlagBits.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkRayTracingShaderGroupCreateInfoNV-sType-sType) VUID-VkRayTracingShaderGroupCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkRayTracingShaderGroupCreateInfoNV-pNext-pNext) VUID-VkRayTracingShaderGroupCreateInfoNV-pNext-pNext

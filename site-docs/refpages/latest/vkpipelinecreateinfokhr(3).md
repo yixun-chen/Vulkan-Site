@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineCreateInfoKHR-sType-sType) VUID-VkPipelineCreateInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_CREATE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_CREATE_INFO_KHR](VkStructureType.html)
 
 [VK_KHR_pipeline_binary](VK_KHR_pipeline_binary.html), [VkPipelineBinaryCreateInfoKHR](VkPipelineBinaryCreateInfoKHR.html), [VkStructureType](VkStructureType.html), [vkGetPipelineKeyKHR](vkGetPipelineKeyKHR.html)
 

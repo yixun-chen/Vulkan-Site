@@ -49,7 +49,7 @@ structure.
 
 * 
 `format` is the Vulkan format corresponding to the Android hardware
-buffer’s format, or `VK_FORMAT_UNDEFINED` if there is not an
+buffer’s format, or [VK_FORMAT_UNDEFINED](VkFormat.html) if there is not an
 equivalent Vulkan format.
 
 * 
@@ -90,7 +90,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAndroidHardwareBufferFormatProperties2ANDROID-sType-sType) VUID-VkAndroidHardwareBufferFormatProperties2ANDROID-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID](VkStructureType.html)
 
 [VK_ANDROID_external_memory_android_hardware_buffer](VK_ANDROID_external_memory_android_hardware_buffer.html), [VK_KHR_format_feature_flags2](VK_KHR_format_feature_flags2.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), [VkChromaLocation](VkChromaLocation.html), [VkComponentMapping](VkComponentMapping.html), [VkFormat](VkFormat.html), [VkFormatFeatureFlags2](VkFormatFeatureFlags2.html), [VkSamplerYcbcrModelConversion](VkSamplerYcbcrModelConversion.html), [VkSamplerYcbcrRange](VkSamplerYcbcrRange.html), [VkStructureType](VkStructureType.html)
 

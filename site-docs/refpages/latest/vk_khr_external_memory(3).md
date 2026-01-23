@@ -151,23 +151,23 @@ Extending [VkMemoryAllocateInfo](VkMemoryAllocateInfo.html):
 `VK_KHR_EXTERNAL_MEMORY_SPEC_VERSION`
 
 * 
-`VK_QUEUE_FAMILY_EXTERNAL_KHR`
+[VK_QUEUE_FAMILY_EXTERNAL_KHR](VK_QUEUE_FAMILY_EXTERNAL.html)
 
 * 
 Extending [VkResult](VkResult.html):
 
-`VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR`
+[VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR](VkResult.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_KHR](VkStructureType.html)
 
 1) How do applications correlate two physical devices across process or
 Vulkan instance boundaries?
@@ -247,12 +247,12 @@ over-engineered solution.
 The access flag bit has the advantage that it can be applied at buffer,
 image, or global granularity, and semantically it maps pretty well to the
 operation being described.
-Additionally, the API already includes `VK_ACCESS_MEMORY_READ_BIT` and
-`VK_ACCESS_MEMORY_WRITE_BIT` which appear to be intended for this
+Additionally, the API already includes [VK_ACCESS_MEMORY_READ_BIT](VkAccessFlagBits.html) and
+[VK_ACCESS_MEMORY_WRITE_BIT](VkAccessFlagBits.html) which appear to be intended for this
 purpose.
 However, there is no obvious pipeline stage that would correspond to an
 external access, and therefore no clear way to use
-`VK_ACCESS_MEMORY_READ_BIT` or `VK_ACCESS_MEMORY_WRITE_BIT`.
+[VK_ACCESS_MEMORY_READ_BIT](VkAccessFlagBits.html) or [VK_ACCESS_MEMORY_WRITE_BIT](VkAccessFlagBits.html).
 [VkDependencyFlags](VkDependencyFlags.html) and [VkPipelineStageFlags](VkPipelineStageFlags.html) operate at command
 granularity rather than image or buffer granularity, which would make an
 entire pipeline barrier an internal→external or external→internal barrier.
@@ -268,11 +268,11 @@ operations ideally include scheduling a barrier on both sides of the
 transition: Both the releasing and the acquiring queue or process.
 Using a special queue family requires adding an additional reserved queue
 family index.
-Reusing `VK_QUEUE_FAMILY_IGNORED` would have left it unclear how to
+Reusing [VK_QUEUE_FAMILY_IGNORED](VK_QUEUE_FAMILY_IGNORED.html) would have left it unclear how to
 transition a concurrent usage resource from one process to another, since
 the semantics would have likely been equivalent to the currently-ignored
 transition of
-`VK_QUEUE_FAMILY_IGNORED` → `VK_QUEUE_FAMILY_IGNORED`.
+[VK_QUEUE_FAMILY_IGNORED](VK_QUEUE_FAMILY_IGNORED.html) → [VK_QUEUE_FAMILY_IGNORED](VK_QUEUE_FAMILY_IGNORED.html).
 Fortunately, creating a new reserved queue family index is not invasive.
 
 Based on the above analysis, the approach of transitioning to a special

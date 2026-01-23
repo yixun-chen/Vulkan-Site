@@ -30,19 +30,19 @@ typedef enum VkQueryResultStatusKHR {
 } VkQueryResultStatusKHR;
 
 * 
-`VK_QUERY_RESULT_STATUS_NOT_READY_KHR` specifies that the query
+[VK_QUERY_RESULT_STATUS_NOT_READY_KHR](#) specifies that the query
 result is not yet available.
 
 * 
-`VK_QUERY_RESULT_STATUS_ERROR_KHR` specifies that operations did not
+[VK_QUERY_RESULT_STATUS_ERROR_KHR](#) specifies that operations did not
 complete successfully.
 
 * 
-`VK_QUERY_RESULT_STATUS_COMPLETE_KHR` specifies that operations
+[VK_QUERY_RESULT_STATUS_COMPLETE_KHR](#) specifies that operations
 completed successfully and the query result is available.
 
 * 
-`VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR`
+[VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR](#)
 specifies that a video encode operation did not complete successfully
 due to the destination video bitstream buffer range not being
 sufficiently large to fit the encoded bitstream data.

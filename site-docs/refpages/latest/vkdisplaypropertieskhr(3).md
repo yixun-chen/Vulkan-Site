@@ -65,7 +65,7 @@ supported by this display.
 * 
 `planeReorderPossible` tells whether the planes on this display **can**
 have their z order changed.
-If this is `VK_TRUE`, the application **can** re-arrange the planes on
+If this is [VK_TRUE](VK_TRUE.html), the application **can** re-arrange the planes on
 this display in any order relative to each other.
 
 * 

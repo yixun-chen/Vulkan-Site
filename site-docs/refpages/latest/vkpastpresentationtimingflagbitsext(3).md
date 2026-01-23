@@ -29,13 +29,13 @@ typedef enum VkPastPresentationTimingFlagBitsEXT {
 } VkPastPresentationTimingFlagBitsEXT;
 
 * 
-`VK_PAST_PRESENTATION_TIMING_ALLOW_PARTIAL_RESULTS_BIT_EXT`
+[VK_PAST_PRESENTATION_TIMING_ALLOW_PARTIAL_RESULTS_BIT_EXT](#)
 specifies that [vkGetPastPresentationTimingEXT](vkGetPastPresentationTimingEXT.html) **may** return partial
 results for presentation requests that have not completed all requested
 present stages.
 
 * 
-`VK_PAST_PRESENTATION_TIMING_ALLOW_OUT_OF_ORDER_RESULTS_BIT_EXT`
+[VK_PAST_PRESENTATION_TIMING_ALLOW_OUT_OF_ORDER_RESULTS_BIT_EXT](#)
 specifies that [vkGetPastPresentationTimingEXT](vkGetPastPresentationTimingEXT.html) **may** return results
 out of order with respect to the presentation order.
 

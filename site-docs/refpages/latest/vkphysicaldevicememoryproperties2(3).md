@@ -49,7 +49,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMemoryProperties2-sType-sType) VUID-VkPhysicalDeviceMemoryProperties2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PROPERTIES_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PROPERTIES_2](VkStructureType.html)
 
 * 
 [](#VUID-VkPhysicalDeviceMemoryProperties2-pNext-pNext) VUID-VkPhysicalDeviceMemoryProperties2-pNext-pNext

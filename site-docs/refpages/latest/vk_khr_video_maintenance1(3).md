@@ -96,18 +96,18 @@ The new features are as follows:
 * 
 Allow creating buffers that can be used in video coding operations,
 independent of the used video profile, using the new buffer creation
-flag `VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR`.
+flag [VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](VkBufferCreateFlagBits.html).
 
 * 
 Allow creating images that can be used as decode output or encode input
 pictures, independent of the used video profile, using the new image
-creation flag `VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR`.
+creation flag [VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](VkImageCreateFlagBits.html).
 
 * 
 Allow specifying queries used by video coding operations as part of the
 video coding command parameters, instead of using begin/end query when
 the video session is created using the new video session creation flag
-`VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR`.
+[VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html).
 
 * 
 Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDeviceCreateInfo](VkDeviceCreateInfo.html):
@@ -128,25 +128,25 @@ Extending [VkVideoDecodeInfoKHR](VkVideoDecodeInfoKHR.html), [VkVideoEncodeInfoK
 * 
 Extending [VkBufferCreateFlagBits](VkBufferCreateFlagBits.html):
 
-`VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR`
+[VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](VkBufferCreateFlagBits.html)
 
 Extending [VkImageCreateFlagBits](VkImageCreateFlagBits.html):
 
 * 
-`VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR`
+[VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR](VkImageCreateFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_MAINTENANCE_1_FEATURES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_MAINTENANCE_1_FEATURES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_VIDEO_INLINE_QUERY_INFO_KHR`
+[VK_STRUCTURE_TYPE_VIDEO_INLINE_QUERY_INFO_KHR](VkStructureType.html)
 
 Extending [VkVideoSessionCreateFlagBitsKHR](VkVideoSessionCreateFlagBitsKHR.html):
 
 * 
-`VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR`
+[VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR](VkVideoSessionCreateFlagBitsKHR.html)
 
 * 
 Revision 1, 2023-07-27 (Daniel Rakos)

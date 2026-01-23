@@ -41,8 +41,8 @@ structure.
  `maintenance7` indicates that the
 implementation supports the following:
 
-The `VK_RENDERING_CONTENTS_INLINE_BIT_KHR` and
-`VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR`
+The [VK_RENDERING_CONTENTS_INLINE_BIT_KHR](VkRenderingFlagBits.html) and
+[VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR](VkSubpassContents.html)
 flags **can** be used to record commands in render pass instances both
 inline and in secondary command buffers executed with
 [vkCmdExecuteCommands](vkCmdExecuteCommands.html) for dynamic rendering and legacy render
@@ -79,7 +79,7 @@ If the `VkPhysicalDeviceMaintenance7FeaturesKHR` structure is included in the `p
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceMaintenance7FeaturesKHR`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -87,7 +87,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceMaintenance7FeaturesKHR-sType-sType) VUID-VkPhysicalDeviceMaintenance7FeaturesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_FEATURES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_7_FEATURES_KHR](VkStructureType.html)
 
 [VK_KHR_maintenance7](VK_KHR_maintenance7.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

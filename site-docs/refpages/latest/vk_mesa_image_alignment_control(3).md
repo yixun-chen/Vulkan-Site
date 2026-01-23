@@ -78,7 +78,7 @@ Hans-Kristian Arntzen, Valve
 This extension allows applications to request a narrower alignment for
 images than an implementation would otherwise require.
 Some implementations internally support multiple image layouts in
-`VK_IMAGE_TILING_OPTIMAL`, each with different alignment requirements
+[VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html), each with different alignment requirements
 and performance trade-offs.
 In some API layering use cases such as D3D12, it is beneficial to be able to
 control the alignment, since certain alignments for placed resources are
@@ -122,13 +122,13 @@ Extending [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA`
+[VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA](VkStructureType.html)
 
 * 
 Revision 1, 2024-04-05 (Hans-Kristian Arntzen)

@@ -147,7 +147,7 @@ the images through a `SurfaceTexture`.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR](VkStructureType.html)
 
 1) Does Android need a way to query for compatibility between a particular
 physical device (and queue family?) and a specific Android display?

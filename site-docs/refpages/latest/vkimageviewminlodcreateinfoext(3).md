@@ -77,7 +77,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageViewMinLodCreateInfoEXT-sType-sType) VUID-VkImageViewMinLodCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_VIEW_MIN_LOD_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_VIEW_MIN_LOD_CREATE_INFO_EXT](VkStructureType.html)
 
 [VK_EXT_image_view_min_lod](VK_EXT_image_view_min_lod.html), [VkStructureType](VkStructureType.html)
 

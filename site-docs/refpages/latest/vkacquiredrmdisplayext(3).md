@@ -42,10 +42,10 @@ instance associated with the provided `physicalDevice` until the display
 is either released or the connector is unplugged.
 The provided `drmFd` **must** correspond to the one owned by the
 `physicalDevice`.
-If not, the error code `VK_ERROR_UNKNOWN` **must** be returned.
+If not, the error code [VK_ERROR_UNKNOWN](VkResult.html) **must** be returned.
 The DRM FD must have DRM mast⁠er permissions.
 If any error is encountered during the acquisition of the display, the call
-**must** return the error code `VK_ERROR_INITIALIZATION_FAILED`.
+**must** return the error code [VK_ERROR_INITIALIZATION_FAILED](VkResult.html).
 
 The provided DRM fd should not be closed before the display is released,
 attempting to do it may result in **undefined** behavior.
@@ -72,18 +72,18 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_EXT_acquire_drm_display](VK_EXT_acquire_drm_display.html), [VkDisplayKHR](VkDisplayKHR.html), [VkPhysicalDevice](VkPhysicalDevice.html)
 

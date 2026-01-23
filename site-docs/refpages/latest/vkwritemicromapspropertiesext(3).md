@@ -73,29 +73,29 @@ the execution of this command
 [](#VUID-vkWriteMicromapsPropertiesEXT-pMicromaps-07502) VUID-vkWriteMicromapsPropertiesEXT-pMicromaps-07502
 
 All micromaps in `pMicromaps` **must** have been constructed with
-`VK_BUILD_MICROMAP_ALLOW_COMPACTION_BIT_EXT` if `queryType` is
-`VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT`
+[VK_BUILD_MICROMAP_ALLOW_COMPACTION_BIT_EXT](VkBuildMicromapFlagBitsEXT.html) if `queryType` is
+[VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT](VkQueryType.html)
 
 * 
 [](#VUID-vkWriteMicromapsPropertiesEXT-queryType-07503) VUID-vkWriteMicromapsPropertiesEXT-queryType-07503
 
-`queryType` **must** be `VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT`
-or `VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT`
+`queryType` **must** be [VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT](VkQueryType.html)
+or [VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT](VkQueryType.html)
 
 * 
 [](#VUID-vkWriteMicromapsPropertiesEXT-queryType-10071) VUID-vkWriteMicromapsPropertiesEXT-queryType-10071
 
 If `queryType` is
-`VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT` or
-`VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT` then `stride` **must**
+[VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT](VkQueryType.html) or
+[VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT](VkQueryType.html) then `stride` **must**
 be a multiple of the size of `VkDeviceSize`
 
 * 
 [](#VUID-vkWriteMicromapsPropertiesEXT-queryType-10072) VUID-vkWriteMicromapsPropertiesEXT-queryType-10072
 
 If `queryType` is
-`VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT` or
-`VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT` then `pData` **must**
+[VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT](VkQueryType.html) or
+[VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT](VkQueryType.html) then `pData` **must**
 point to a `VkDeviceSize`
 
 * 
@@ -164,21 +164,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_EXT_opacity_micromap](VK_EXT_opacity_micromap.html), [VkDevice](VkDevice.html), [VkMicromapEXT](VkMicromapEXT.html), [VkQueryType](VkQueryType.html)
 

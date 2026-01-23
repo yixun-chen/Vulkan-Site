@@ -42,12 +42,12 @@ structure.
  `inheritedViewportScissor2D`
 indicates whether secondary command buffers can inherit most of the
 dynamic state affected by
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT`,
-`VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT`,
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT`,
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT`,
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT`,
-`VK_DYNAMIC_STATE_VIEWPORT` or `VK_DYNAMIC_STATE_SCISSOR`, from
+[VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](VkDynamicState.html),
+[VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](VkDynamicState.html),
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](VkDynamicState.html),
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT](VkDynamicState.html),
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT](VkDynamicState.html),
+[VK_DYNAMIC_STATE_VIEWPORT](VkDynamicState.html) or [VK_DYNAMIC_STATE_SCISSOR](VkDynamicState.html), from
 a primary command buffer.
 
 If the `VkPhysicalDeviceInheritedViewportScissorFeaturesNV` structure is included in the `pNext` chain of the
@@ -56,7 +56,7 @@ If the `VkPhysicalDeviceInheritedViewportScissorFeaturesNV` structure is include
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceInheritedViewportScissorFeaturesNV`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -64,7 +64,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceInheritedViewportScissorFeaturesNV-sType-sType) VUID-VkPhysicalDeviceInheritedViewportScissorFeaturesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INHERITED_VIEWPORT_SCISSOR_FEATURES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INHERITED_VIEWPORT_SCISSOR_FEATURES_NV](VkStructureType.html)
 
 [VK_NV_inherited_viewport_scissor](VK_NV_inherited_viewport_scissor.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

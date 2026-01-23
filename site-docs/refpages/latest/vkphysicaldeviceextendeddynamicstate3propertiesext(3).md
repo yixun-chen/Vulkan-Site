@@ -46,7 +46,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExtendedDynamicState3PropertiesEXT-sType-sType) VUID-VkPhysicalDeviceExtendedDynamicState3PropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_PROPERTIES_EXT](VkStructureType.html)
 
 [VK_EXT_extended_dynamic_state3](VK_EXT_extended_dynamic_state3.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

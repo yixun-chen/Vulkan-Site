@@ -65,7 +65,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineVertexInputDivisorStateCreateInfo-sType-sType) VUID-VkPipelineVertexInputDivisorStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineVertexInputDivisorStateCreateInfo-pVertexBindingDivisors-parameter) VUID-VkPipelineVertexInputDivisorStateCreateInfo-pVertexBindingDivisors-parameter

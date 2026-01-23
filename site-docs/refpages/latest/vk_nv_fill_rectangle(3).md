@@ -78,7 +78,7 @@ drawn, particularly for a user interface.
 * 
 Extending [VkPolygonMode](VkPolygonMode.html):
 
-`VK_POLYGON_MODE_FILL_RECTANGLE_NV`
+[VK_POLYGON_MODE_FILL_RECTANGLE_NV](VkPolygonMode.html)
 
 * 
 Revision 1, 2017-05-22 (Jeff Bolz)

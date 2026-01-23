@@ -24,11 +24,11 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="../../../.."><img class="navbar-item" alt="Vulkan White Label" src="../../../../_/Vulkan_Docs.svg" /></a>
+      <a class="navbar-item" href="../../../.."><img class="navbar-item no-invert" alt="Vulkan White Label" src="../../../../_/Vulkan_Docs.svg" /></a>
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field has-filter">
           <label for="search-input"></label>
-          <input id="search-input" type="text" placeholder="Search the docs">
+          <input id="search-input" type="text" placeholder="Search the docs" aria-label="Search the docs">
           <label class="filter checkbox">
             <input type="checkbox" data-facet-filter="component:refpages" checked> In this component
           </label>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <label class="theme-toggler">
-      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox"/>
+      <input type="checkbox" id="switch-theme-checkbox" name="switch-theme-checkbox" aria-label="Toggle color theme" title="Toggle color theme"/>
       <span class="icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon moon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
         </svg>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sun" class="svg-inline--fa fa-sun sun" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
@@ -150,9 +150,6 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkAcquireFullScreenExclusiveModeEXT.html">vkAcquireFullScreenExclusiveModeEXT</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="vkAcquireImageOHOS.html">vkAcquireImageOHOS</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkAcquireNextImage2KHR.html">vkAcquireNextImage2KHR</a>
@@ -312,6 +309,12 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkCmdBindPipelineShaderGroupNV.html">vkCmdBindPipelineShaderGroupNV</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkCmdBindResourceHeapEXT.html">vkCmdBindResourceHeapEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkCmdBindSamplerHeapEXT.html">vkCmdBindSamplerHeapEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkCmdBindShadersEXT.html">vkCmdBindShadersEXT</a>
@@ -669,6 +672,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkCmdPushConstants2.html">vkCmdPushConstants2KHR</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkCmdPushDataEXT.html">vkCmdPushDataEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkCmdPushDescriptorSet.html">vkCmdPushDescriptorSet</a>
@@ -1712,6 +1718,9 @@
     <a class="nav-link" href="vkGetDeviceBufferMemoryRequirements.html">vkGetDeviceBufferMemoryRequirementsKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkGetDeviceCombinedImageSamplerIndexNVX.html">vkGetDeviceCombinedImageSamplerIndexNVX</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetDeviceFaultInfoEXT.html">vkGetDeviceFaultInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -1841,6 +1850,9 @@
     <a class="nav-link" href="vkGetImageMemoryRequirements2.html">vkGetImageMemoryRequirements2KHR</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkGetImageOpaqueCaptureDataEXT.html">vkGetImageOpaqueCaptureDataEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetImageOpaqueCaptureDescriptorDataEXT.html">vkGetImageOpaqueCaptureDescriptorDataEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -1956,6 +1968,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetPhysicalDeviceCooperativeVectorPropertiesNV.html">vkGetPhysicalDeviceCooperativeVectorPropertiesNV</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkGetPhysicalDeviceDescriptorSizeEXT.html">vkGetPhysicalDeviceDescriptorSizeEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetPhysicalDeviceDirectFBPresentationSupportEXT.html">vkGetPhysicalDeviceDirectFBPresentationSupportEXT</a>
@@ -2243,9 +2258,6 @@
     <a class="nav-link" href="vkGetSwapchainCounterEXT.html">vkGetSwapchainCounterEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="vkGetSwapchainGrallocUsageOHOS.html">vkGetSwapchainGrallocUsageOHOS</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetSwapchainImagesKHR.html">vkGetSwapchainImagesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -2259,6 +2271,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetTensorMemoryRequirementsARM.html">vkGetTensorMemoryRequirementsARM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkGetTensorOpaqueCaptureDataARM.html">vkGetTensorOpaqueCaptureDataARM</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkGetTensorOpaqueCaptureDescriptorDataARM.html">vkGetTensorOpaqueCaptureDescriptorDataARM</a>
@@ -2360,9 +2375,6 @@
     <a class="nav-link" href="vkQueueSetPerformanceConfigurationINTEL.html">vkQueueSetPerformanceConfigurationINTEL</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="vkQueueSignalReleaseImageOHOS.html">vkQueueSignalReleaseImageOHOS</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkQueueSubmit.html">vkQueueSubmit</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -2380,6 +2392,9 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">R</span>
 <ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkRegisterCustomBorderColorEXT.html">vkRegisterCustomBorderColorEXT</a>
+  </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkRegisterDeviceEventEXT.html">vkRegisterDeviceEventEXT</a>
   </li>
@@ -2519,6 +2534,9 @@
     <a class="nav-link" href="vkUnmapMemory2.html">vkUnmapMemory2KHR</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkUnregisterCustomBorderColorEXT.html">vkUnregisterCustomBorderColorEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkUpdateDescriptorSets.html">vkUpdateDescriptorSets</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -2562,6 +2580,12 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="vkWriteMicromapsPropertiesEXT.html">vkWriteMicromapsPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkWriteResourceDescriptorsEXT.html">vkWriteResourceDescriptorsEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="vkWriteSamplerDescriptorsEXT.html">vkWriteSamplerDescriptorsEXT</a>
   </li>
 </ul>
   </li>
@@ -2791,6 +2815,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkBindDescriptorSetsInfo.html">VkBindDescriptorSetsInfoKHR</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkBindHeapInfoEXT.html">VkBindHeapInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkBindImageMemoryDeviceGroupInfo.html">VkBindImageMemoryDeviceGroupInfo</a>
@@ -3037,6 +3064,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkCommandBufferInheritanceConditionalRenderingInfoEXT.html">VkCommandBufferInheritanceConditionalRenderingInfoEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkCommandBufferInheritanceDescriptorHeapInfoEXT.html">VkCommandBufferInheritanceDescriptorHeapInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkCommandBufferInheritanceInfo.html">VkCommandBufferInheritanceInfo</a>
@@ -3351,6 +3381,30 @@
     <a class="nav-link" href="VkDescriptorImageInfo.html">VkDescriptorImageInfo</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceConstantOffsetEXT.html">VkDescriptorMappingSourceConstantOffsetEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceDataEXT.html">VkDescriptorMappingSourceDataEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceHeapDataEXT.html">VkDescriptorMappingSourceHeapDataEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceIndirectAddressEXT.html">VkDescriptorMappingSourceIndirectAddressEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceIndirectIndexArrayEXT.html">VkDescriptorMappingSourceIndirectIndexArrayEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceIndirectIndexEXT.html">VkDescriptorMappingSourceIndirectIndexEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourcePushIndexEXT.html">VkDescriptorMappingSourcePushIndexEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceShaderRecordIndexEXT.html">VkDescriptorMappingSourceShaderRecordIndexEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkDescriptorPoolCreateInfo.html">VkDescriptorPoolCreateInfo</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -3364,6 +3418,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkDescriptorSetAllocateInfo.html">VkDescriptorSetAllocateInfo</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorSetAndBindingMappingEXT.html">VkDescriptorSetAndBindingMappingEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkDescriptorSetBindingReferenceVALVE.html">VkDescriptorSetBindingReferenceVALVE</a>
@@ -3415,6 +3472,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkDeviceAddressBindingCallbackDataEXT.html">VkDeviceAddressBindingCallbackDataEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDeviceAddressRangeEXT.html">VkDeviceAddressRangeEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkDeviceBufferMemoryRequirements.html">VkDeviceBufferMemoryRequirements</a>
@@ -3936,6 +3996,12 @@
     <a class="nav-link" href="VkHeadlessSurfaceCreateInfoEXT.html">VkHeadlessSurfaceCreateInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkHostAddressRangeConstEXT.html">VkHostAddressRangeConstEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkHostAddressRangeEXT.html">VkHostAddressRangeEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkHostImageCopyDevicePerformanceQuery.html">VkHostImageCopyDevicePerformanceQuery</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -3988,6 +4054,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkImageCreateInfo.html">VkImageCreateInfo</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkImageDescriptorInfoEXT.html">VkImageDescriptorInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkImageDrmFormatModifierExplicitCreateInfoEXT.html">VkImageDrmFormatModifierExplicitCreateInfoEXT</a>
@@ -4186,6 +4255,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkIndirectCommandsLayoutCreateInfoNV.html">VkIndirectCommandsLayoutCreateInfoNV</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkIndirectCommandsLayoutPushDataTokenNV.html">VkIndirectCommandsLayoutPushDataTokenNV</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkIndirectCommandsLayoutTokenEXT.html">VkIndirectCommandsLayoutTokenEXT</a>
@@ -4455,9 +4527,6 @@
     <a class="nav-link" href="VkNativeBufferFormatPropertiesOHOS.html">VkNativeBufferFormatPropertiesOHOS</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="VkNativeBufferOHOS.html">VkNativeBufferOHOS</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkNativeBufferPropertiesOHOS.html">VkNativeBufferPropertiesOHOS</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -4474,6 +4543,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkOffset3D.html">VkOffset3D</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkOpaqueCaptureDataCreateInfoEXT.html">VkOpaqueCaptureDataCreateInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkOpaqueCaptureDescriptorDataCreateInfoEXT.html">VkOpaqueCaptureDescriptorDataCreateInfoEXT</a>
@@ -4792,6 +4864,15 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceDescriptorBufferTensorPropertiesARM.html">VkPhysicalDeviceDescriptorBufferTensorPropertiesARM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceDescriptorHeapFeaturesEXT.html">VkPhysicalDeviceDescriptorHeapFeaturesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceDescriptorHeapPropertiesEXT.html">VkPhysicalDeviceDescriptorHeapPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceDescriptorHeapTensorPropertiesARM.html">VkPhysicalDeviceDescriptorHeapTensorPropertiesARM</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceDescriptorIndexingFeatures.html">VkPhysicalDeviceDescriptorIndexingFeatures</a>
@@ -5145,6 +5226,9 @@
     <a class="nav-link" href="VkPhysicalDeviceInlineUniformBlockProperties.html">VkPhysicalDeviceInlineUniformBlockPropertiesEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR.html">VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceInvocationMaskFeaturesHUAWEI.html">VkPhysicalDeviceInvocationMaskFeaturesHUAWEI</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -5442,9 +5526,6 @@
     <a class="nav-link" href="VkPhysicalDevicePortabilitySubsetPropertiesKHR.html">VkPhysicalDevicePortabilitySubsetPropertiesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="VkPhysicalDevicePresentationPropertiesOHOS.html">VkPhysicalDevicePresentationPropertiesOHOS</a>
-  </li>
-  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDevicePresentBarrierFeaturesNV.html">VkPhysicalDevicePresentBarrierFeaturesNV</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -5503,6 +5584,12 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceProvokingVertexPropertiesEXT.html">VkPhysicalDeviceProvokingVertexPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDevicePushConstantBankFeaturesNV.html">VkPhysicalDevicePushConstantBankFeaturesNV</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDevicePushConstantBankPropertiesNV.html">VkPhysicalDevicePushConstantBankPropertiesNV</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDevicePushDescriptorProperties.html">VkPhysicalDevicePushDescriptorProperties</a>
@@ -5727,6 +5814,12 @@
     <a class="nav-link" href="VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.html">VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceShaderLongVectorFeaturesEXT.html">VkPhysicalDeviceShaderLongVectorFeaturesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceShaderLongVectorPropertiesEXT.html">VkPhysicalDeviceShaderLongVectorPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR.html">VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -5761,6 +5854,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures.html">VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT.html">VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceShaderSubgroupRotateFeatures.html">VkPhysicalDeviceShaderSubgroupRotateFeatures</a>
@@ -5857,6 +5953,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceTexelBufferAlignmentProperties.html">VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT.html">VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPhysicalDeviceTextureCompressionASTCHDRFeatures.html">VkPhysicalDeviceTextureCompressionASTCHDRFeatures</a>
@@ -6312,6 +6411,9 @@
     <a class="nav-link" href="VkProtectedSubmitInfo.html">VkProtectedSubmitInfo</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPushConstantBankInfoNV.html">VkPushConstantBankInfoNV</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPushConstantRange.html">VkPushConstantRange</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -6319,6 +6421,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPushConstantsInfo.html">VkPushConstantsInfoKHR</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkPushDataInfoEXT.html">VkPushDataInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkPushDescriptorSetInfo.html">VkPushDescriptorSetInfo</a>
@@ -6563,6 +6668,12 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkResolveImageModeInfoKHR.html">VkResolveImageModeInfoKHR</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkResourceDescriptorDataEXT.html">VkResourceDescriptorDataEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkResourceDescriptorInfoEXT.html">VkResourceDescriptorInfoEXT</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -6592,6 +6703,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSamplerCustomBorderColorCreateInfoEXT.html">VkSamplerCustomBorderColorCreateInfoEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkSamplerCustomBorderColorIndexCreateInfoEXT.html">VkSamplerCustomBorderColorIndexCreateInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSamplerReductionModeCreateInfo.html">VkSamplerReductionModeCreateInfo</a>
@@ -6679,6 +6793,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkShaderCreateInfoEXT.html">VkShaderCreateInfoEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkShaderDescriptorSetAndBindingMappingInfoEXT.html">VkShaderDescriptorSetAndBindingMappingInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkShaderModuleCreateInfo.html">VkShaderModuleCreateInfo</a>
@@ -6837,6 +6954,9 @@
     <a class="nav-link" href="VkSubresourceLayout2.html">VkSubresourceLayout2KHR</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkSubsampledImageFormatPropertiesEXT.html">VkSubsampledImageFormatPropertiesEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSurfaceCapabilities2EXT.html">VkSurfaceCapabilities2EXT</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -6904,9 +7024,6 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSwapchainDisplayNativeHdrCreateInfoAMD.html">VkSwapchainDisplayNativeHdrCreateInfoAMD</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="VkSwapchainImageCreateInfoOHOS.html">VkSwapchainImageCreateInfoOHOS</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSwapchainLatencyCreateInfoNV.html">VkSwapchainLatencyCreateInfoNV</a>
@@ -6982,6 +7099,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkTensorViewCreateInfoARM.html">VkTensorViewCreateInfoARM</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkTexelBufferDescriptorInfoEXT.html">VkTexelBufferDescriptorInfoEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkTextureLODGatherFormatPropertiesAMD.html">VkTextureLODGatherFormatPropertiesAMD</a>
@@ -7729,6 +7849,9 @@
     <a class="nav-link" href="VkDescriptorBindingFlagBits.html">VkDescriptorBindingFlagBitsEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkDescriptorMappingSourceEXT.html">VkDescriptorMappingSourceEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkDescriptorPoolCreateFlagBits.html">VkDescriptorPoolCreateFlagBits</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -8464,6 +8587,9 @@
     <a class="nav-link" href="VkSparseMemoryBindFlagBits.html">VkSparseMemoryBindFlagBits</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkSpirvResourceTypeFlagBitsEXT.html">VkSpirvResourceTypeFlagBitsEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkStencilFaceFlagBits.html">VkStencilFaceFlagBits</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -8498,9 +8624,6 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSwapchainCreateFlagBitsKHR.html">VkSwapchainCreateFlagBitsKHR</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="VkSwapchainImageUsageFlagBitsOHOS.html">VkSwapchainImageUsageFlagBitsOHOS</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSystemAllocationScope.html">VkSystemAllocationScope</a>
@@ -9353,6 +9476,9 @@
     <a class="nav-link" href="VkSparseMemoryBindFlags.html">VkSparseMemoryBindFlags</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VkSpirvResourceTypeFlagsEXT.html">VkSpirvResourceTypeFlagsEXT</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkStencilFaceFlags.html">VkStencilFaceFlags</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -9381,9 +9507,6 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VkSwapchainCreateFlagsKHR.html">VkSwapchainCreateFlagsKHR</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="VkSwapchainImageUsageFlagsOHOS.html">VkSwapchainImageUsageFlagsOHOS</a>
   </li>
 </ul>
   </li>
@@ -9979,9 +10102,6 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">O</span>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="OHBufferHandle.html">OHBufferHandle</a>
-  </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="OHNativeWindow.html">OHNativeWindow</a>
   </li>
@@ -10687,6 +10807,9 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="RayTminKHR.html">RayTminKHR</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ResourceHeapEXT.html">ResourceHeapEXT</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
@@ -10701,6 +10824,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="SamplePosition.html">SamplePosition</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="SamplerHeapEXT.html">SamplerHeapEXT</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="ShaderIndexAMDX.html">ShaderIndexAMDX</a>
@@ -11065,6 +11191,9 @@
     <a class="nav-link" href="VK_EXT_descriptor_buffer.html">VK_EXT_descriptor_buffer</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_EXT_descriptor_heap.html">VK_EXT_descriptor_heap</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_EXT_descriptor_indexing.html">VK_EXT_descriptor_indexing</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -11335,6 +11464,9 @@
     <a class="nav-link" href="VK_EXT_shader_image_atomic_int64.html">VK_EXT_shader_image_atomic_int64</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_EXT_shader_long_vector.html">VK_EXT_shader_long_vector</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_EXT_shader_module_identifier.html">VK_EXT_shader_module_identifier</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -11348,6 +11480,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_EXT_shader_subgroup_ballot.html">VK_EXT_shader_subgroup_ballot</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_EXT_shader_subgroup_partitioned.html">VK_EXT_shader_subgroup_partitioned</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_EXT_shader_subgroup_vote.html">VK_EXT_shader_subgroup_vote</a>
@@ -11378,6 +11513,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_EXT_texel_buffer_alignment.html">VK_EXT_texel_buffer_alignment</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_EXT_texture_compression_astc_3d.html">VK_EXT_texture_compression_astc_3d</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_EXT_texture_compression_astc_hdr.html">VK_EXT_texture_compression_astc_hdr</a>
@@ -11651,6 +11789,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_KHR_index_type_uint8.html">VK_KHR_index_type_uint8</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_KHR_internally_synchronized_queues.html">VK_KHR_internally_synchronized_queues</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_KHR_line_rasterization.html">VK_KHR_line_rasterization</a>
@@ -12109,6 +12250,9 @@
     <a class="nav-link" href="VK_NV_present_metering.html">VK_NV_present_metering</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="VK_NV_push_constant_bank.html">VK_NV_push_constant_bank</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_NV_raw_access_chains.html">VK_NV_raw_access_chains</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -12167,9 +12311,6 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_OHOS_external_memory.html">VK_OHOS_external_memory</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="VK_OHOS_native_buffer.html">VK_OHOS_native_buffer</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="VK_OHOS_surface.html">VK_OHOS_surface</a>
@@ -12512,12 +12653,12 @@ typedef enum VkImageCreateFlagBits {
     VK_IMAGE_CREATE_DISJOINT_BIT = 0x00000200,
   // Provided by VK_NV_corner_sampled_image
     VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV = 0x00002000,
+  // Provided by VK_EXT_descriptor_heap
+    VK_IMAGE_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_EXT = 0x00010000,
   // Provided by VK_EXT_sample_locations
     VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT = 0x00001000,
   // Provided by VK_EXT_fragment_density_map
     VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT = 0x00004000,
-  // Provided by VK_EXT_descriptor_buffer
-    VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT = 0x00010000,
   // Provided by VK_EXT_multisampled_render_to_single_sampled
     VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT = 0x00040000,
   // Provided by VK_EXT_image_2d_view_of_3d
@@ -12538,6 +12679,8 @@ typedef enum VkImageCreateFlagBits {
     VK_IMAGE_CREATE_DISJOINT_BIT_KHR = VK_IMAGE_CREATE_DISJOINT_BIT,
   // Provided by VK_KHR_bind_memory2
     VK_IMAGE_CREATE_ALIAS_BIT_KHR = VK_IMAGE_CREATE_ALIAS_BIT,
+  // Provided by VK_EXT_descriptor_buffer
+    VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT = VK_IMAGE_CREATE_DESCRIPTOR_HEAP_CAPTURE_REPLAY_BIT_EXT,
   // Provided by VK_QCOM_fragment_density_map_offset
     VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_QCOM = VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT,
 } VkImageCreateFlagBits;</code></pre>
@@ -12551,52 +12694,52 @@ typedef enum VkImageCreateFlagBits {
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_IMAGE_CREATE_SPARSE_BINDING_BIT</code> specifies that the image will
+<p><a href="#">VK_IMAGE_CREATE_SPARSE_BINDING_BIT</a> specifies that the image will
 be backed using sparse memory binding.</p>
 </li>
 <li>
-<p><code>VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</code> specifies that the image <strong>can</strong>
+<p><a href="#">VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT</a> specifies that the image <strong>can</strong>
 be partially backed using sparse memory binding.
 Images created with this flag <strong>must</strong> also be created with the
-<code>VK_IMAGE_CREATE_SPARSE_BINDING_BIT</code> flag.</p>
+<a href="#">VK_IMAGE_CREATE_SPARSE_BINDING_BIT</a> flag.</p>
 </li>
 <li>
-<p><code>VK_IMAGE_CREATE_SPARSE_ALIASED_BIT</code> specifies that the image will
+<p><a href="#">VK_IMAGE_CREATE_SPARSE_ALIASED_BIT</a> specifies that the image will
 be backed using sparse memory binding with memory ranges that might also
 simultaneously be backing another image (or another portion of the same
 image).
 Images created with this flag <strong>must</strong> also be created with the
-<code>VK_IMAGE_CREATE_SPARSE_BINDING_BIT</code> flag.</p>
+<a href="#">VK_IMAGE_CREATE_SPARSE_BINDING_BIT</a> flag.</p>
 </li>
 <li>
-<p><code>VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT</code> specifies that the image <strong>can</strong>
+<p><a href="#">VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT</a> specifies that the image <strong>can</strong>
 be used to create a <code>VkImageView</code> with a different format from the
 image.
 For <a href="../../../../spec/latest/chapters/formats.html#formats-multiplanar" class="xref page">multi-planar formats</a>,
-<code>VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT</code> specifies that a
+<a href="#">VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT</a> specifies that a
 <code>VkImageView</code> can be created of a <em>plane</em> of the image.</p>
 </li>
 <li>
-<p><code>VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT</code> specifies that the image <strong>can</strong>
+<p><a href="#">VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT</a> specifies that the image <strong>can</strong>
 be used to create a <code>VkImageView</code> of type
-<code>VK_IMAGE_VIEW_TYPE_CUBE</code> or <code>VK_IMAGE_VIEW_TYPE_CUBE_ARRAY</code>.</p>
+<a href="VkImageViewType.html" class="xref page">VK_IMAGE_VIEW_TYPE_CUBE</a> or <a href="VkImageViewType.html" class="xref page">VK_IMAGE_VIEW_TYPE_CUBE_ARRAY</a>.</p>
 </li>
 <li>
-<p><code>VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT</code> specifies that the image
+<p><a href="#">VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT</a> specifies that the image
 <strong>can</strong> be used to create a <code>VkImageView</code> of type
-<code>VK_IMAGE_VIEW_TYPE_2D</code> or <code>VK_IMAGE_VIEW_TYPE_2D_ARRAY</code>.</p>
+<a href="VkImageViewType.html" class="xref page">VK_IMAGE_VIEW_TYPE_2D</a> or <a href="VkImageViewType.html" class="xref page">VK_IMAGE_VIEW_TYPE_2D_ARRAY</a>.</p>
 </li>
 <li>
-<p><code>VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT</code> specifies that the
+<p><a href="#">VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT</a> specifies that the
 image <strong>can</strong> be used to create a <code>VkImageView</code> of type
-<code>VK_IMAGE_VIEW_TYPE_2D</code>.</p>
+<a href="VkImageViewType.html" class="xref page">VK_IMAGE_VIEW_TYPE_2D</a>.</p>
 </li>
 <li>
-<p><code>VK_IMAGE_CREATE_PROTECTED_BIT</code> specifies that the image is a
+<p><a href="#">VK_IMAGE_CREATE_PROTECTED_BIT</a> specifies that the image is a
 protected image.</p>
 </li>
 <li>
-<p><code>VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT</code> specifies that the
+<p><a href="#">VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT</a> specifies that the
 image <strong>can</strong> be used with a non-zero value of the
 <code>splitInstanceBindRegionCount</code> member of a
 <a href="VkBindImageMemoryDeviceGroupInfo.html" class="xref page">VkBindImageMemoryDeviceGroupInfo</a> structure passed into
@@ -12605,26 +12748,26 @@ This flag also has the effect of making the image use the standard
 sparse image block dimensions.</p>
 </li>
 <li>
-<p><code>VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT</code> specifies that the
+<p><a href="#">VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT</a> specifies that the
 image having a compressed format <strong>can</strong> be used to create a
 <code>VkImageView</code> with an uncompressed format where each texel in the
 image view corresponds to a compressed texel block of the image.</p>
 </li>
 <li>
-<p><code>VK_IMAGE_CREATE_EXTENDED_USAGE_BIT</code> specifies that the image <strong>can</strong>
+<p><a href="#">VK_IMAGE_CREATE_EXTENDED_USAGE_BIT</a> specifies that the image <strong>can</strong>
 be created with usage flags that are not supported for the format the
 image is created with but are supported for at least one format a
 <code>VkImageView</code> created from the image <strong>can</strong> have.</p>
 </li>
 <li>
-<p><code>VK_IMAGE_CREATE_DISJOINT_BIT</code> specifies that an image with a
+<p><a href="#">VK_IMAGE_CREATE_DISJOINT_BIT</a> specifies that an image with a
 <a href="../../../../spec/latest/chapters/formats.html#formats-multiplanar" class="xref page">multi-planar format</a> <strong>must</strong> have each plane
 separately bound to memory, rather than having a single memory binding
 for the whole image; the presence of this bit distinguishes a <em>disjoint
 image</em> from an image without this bit set.</p>
 </li>
 <li>
-<p><code>VK_IMAGE_CREATE_ALIAS_BIT</code> specifies that two images created with
+<p><a href="#">VK_IMAGE_CREATE_ALIAS_BIT</a> specifies that two images created with
     the same creation parameters and aliased to the same memory <strong>can</strong>
     interpret the contents of the memory consistently with each other,
     subject to the rules described in the <a href="../../../../spec/latest/chapters/resources.html#resources-memory-aliasing" class="xref page">Memory    Aliasing</a> section.
@@ -12638,20 +12781,20 @@ image</em> from an image without this bit set.</p>
 or
 <a href="VkExternalMemoryImageCreateInfoNV.html" class="xref page">VkExternalMemoryImageCreateInfoNV</a>
     structure whose <code>handleTypes</code> member is not <code>0</code>, it is as if
-    <code>VK_IMAGE_CREATE_ALIAS_BIT</code> is set.</p>
+    <a href="#">VK_IMAGE_CREATE_ALIAS_BIT</a> is set.</p>
 </li>
 <li>
-<p><code>VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT</code>
+<p><a href="#">VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT</a>
 specifies that an image with a depth or depth/stencil format <strong>can</strong> be
 used with custom sample locations when used as a depth/stencil
 attachment.</p>
 </li>
 <li>
-<p><code>VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV</code> specifies that the image is
+<p><a href="#">VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV</a> specifies that the image is
 a <a href="../../../../spec/latest/chapters/resources.html#resources-images-corner-sampled" class="xref page">corner-sampled image</a>.</p>
 </li>
 <li>
-<p><code>VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT</code> specifies that an image <strong>can</strong> be
+<p><a href="#">VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT</a> specifies that an image <strong>can</strong> be
 in a subsampled format which <strong>may</strong> be more optimal when written as an
 attachment by a render pass that has a fragment density map attachment.
 Accessing a subsampled image has additional considerations:</p>
@@ -12660,7 +12803,8 @@ Accessing a subsampled image has additional considerations:</p>
 <li>
 <p>Image data read as an image sampler will have <strong>undefined</strong> values if the
 sampler was not created with <code>flags</code> containing
-<code>VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT</code> or was not sampled through
+<a href="VkSamplerCreateFlagBits.html" class="xref page">VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT</a> or was not sampled through
+a combined <a href="../../../../spec/latest/chapters/descriptorheaps.html#VkDescriptorSetAndBindingMappingEXT" class="xref page">embedded sampler and     image mapping</a> if using descriptor heaps, or
 the use of a combined image sampler with an immutable sampler in
 <code>VkDescriptorSetLayoutBinding</code>.</p>
 </li>
@@ -12672,16 +12816,16 @@ the same render pass.</p>
 <li>
 <p>Image data read as an image sampler in the fragment shader will be
 additionally be read by the device during
-<code>VK_PIPELINE_STAGE_VERTEX_SHADER_BIT</code> if
+<a href="VkPipelineStageFlagBits.html" class="xref page">VK_PIPELINE_STAGE_VERTEX_SHADER_BIT</a> if
 <a href="../../../../spec/latest/chapters/limits.html#limits-subsampledCoarseReconstructionEarlyAccess" class="xref page">     <code>VkPhysicalDeviceFragmentDensityMap2PropertiesEXT</code>::<code>subsampledCoarseReconstructionEarlyAccess</code></a>
-is <code>VK_TRUE</code> and the sampler was created with <code>flags</code>
+is <a href="VK_TRUE.html" class="xref page">VK_TRUE</a> and the sampler was created with <code>flags</code>
 containing
-<code>VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT</code>.</p>
+<a href="VkSamplerCreateFlagBits.html" class="xref page">VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT</a>.</p>
 </li>
 <li>
 <p>Image data read with load operations are resampled to the fragment
 density of the render pass if <a href="../../../../spec/latest/chapters/limits.html#limits-subsampledLoads" class="xref page">     <code>VkPhysicalDeviceFragmentDensityMap2PropertiesEXT</code>::<code>subsampledLoads</code></a>
-is <code>VK_TRUE</code>.
+is <a href="VK_TRUE.html" class="xref page">VK_TRUE</a>.
 Otherwise, values of image data are <strong>undefined</strong>.</p>
 </li>
 <li>
@@ -12692,27 +12836,27 @@ the image is stored as a render pass attachment.</p>
 </div>
 </li>
 <li>
-<p><code>VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT</code> specifies that
+<p><a href="#">VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT</a> specifies that
 an image <strong>can</strong> be used in a render pass with non-zero
 <a href="../../../../spec/latest/chapters/renderpass.html#renderpass-fragmentdensitymapoffsets" class="xref page">fragment density map offsets</a>.
 In a render pass with non-zero offsets, fragment density map
 attachments, input attachments, color attachments, depth/stencil
 attachment, resolve attachments, and preserve attachments <strong>must</strong> be
-created with <code>VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT</code>.</p>
+created with <a href="#">VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT</a>.</p>
 </li>
 <li>
-<p><code>VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT</code> specifies
+<p><a href="#">VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT</a> specifies
 that the image <strong>can</strong> be used with descriptor buffers when capturing and
 replaying (e.g. for trace capture and replay), see
 <a href="VkOpaqueCaptureDescriptorDataCreateInfoEXT.html" class="xref page">VkOpaqueCaptureDescriptorDataCreateInfoEXT</a> for more detail.</p>
 </li>
 <li>
-<p><code>VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT</code>
+<p><a href="#">VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT</a>
 specifies that an image <strong>can</strong> be used with
 <a href="../../../../spec/latest/chapters/renderpass.html#multisampled-render-to-single-sampled" class="xref page">multisampled rendering as a    single-sampled framebuffer attachment</a></p>
 </li>
 <li>
-<p><code>VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR</code> specifies that
+<p><a href="#">VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR</a> specifies that
 the image <strong>can</strong> be used in <a href="../../../../spec/latest/chapters/videocoding.html#video-coding" class="xref page">video coding operations</a>
 without having to specify at image creation time the set of video
 profiles the image will be used with, except for images used only as
@@ -12744,12 +12888,12 @@ profile used to consume them.</p>
 </div>
 <div class="paragraph">
 <p>This includes images created with both
-<code>VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR</code> and
-<code>VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR</code>, which is necessary to use the
+<a href="VkImageUsageFlagBits.html" class="xref page">VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR</a> and
+<a href="VkImageUsageFlagBits.html" class="xref page">VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR</a>, which is necessary to use the
 same video picture as the <a href="../../../../spec/latest/chapters/videocoding.html#reconstructed-picture" class="xref page">reconstructed picture</a>
 and <a href="../../../../spec/latest/chapters/videocoding.html#decode-output-picture" class="xref page">decode output picture</a> in a video decode
 operation on implementations supporting
-<code>VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR</code>.</p>
+<a href="VkVideoDecodeCapabilityFlagBitsKHR.html" class="xref page">VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR</a>.</p>
 </div>
 <div class="paragraph">
 <p>However, images with only DPB usage remain tied to the video profiles the

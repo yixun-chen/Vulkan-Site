@@ -21,7 +21,7 @@ VkVideoEncodeH264ProfileInfoKHR - Structure specifying H.264 encode-specific vid
 
 A video profile supporting H.264 video encode operations is specified by
 setting [VkVideoProfileInfoKHR](VkVideoProfileInfoKHR.html)::`videoCodecOperation` to
-`VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR` and adding a
+[VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and adding a
 `VkVideoEncodeH264ProfileInfoKHR` structure to the
 [VkVideoProfileInfoKHR](VkVideoProfileInfoKHR.html)::`pNext` chain.
 
@@ -53,7 +53,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeH264ProfileInfoKHR-sType-sType) VUID-VkVideoEncodeH264ProfileInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_PROFILE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_PROFILE_INFO_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_h264](VK_KHR_video_encode_h264.html), [VkStructureType](VkStructureType.html)
 

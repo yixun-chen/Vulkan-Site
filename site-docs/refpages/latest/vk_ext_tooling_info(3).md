@@ -136,48 +136,48 @@ out.
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TOOL_PROPERTIES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TOOL_PROPERTIES_EXT](VkStructureType.html)
 
 Extending [VkToolPurposeFlagBits](VkToolPurposeFlagBits.html):
 
 * 
-`VK_TOOL_PURPOSE_ADDITIONAL_FEATURES_BIT_EXT`
+[VK_TOOL_PURPOSE_ADDITIONAL_FEATURES_BIT_EXT](VkToolPurposeFlagBits.html)
 
 * 
-`VK_TOOL_PURPOSE_MODIFYING_FEATURES_BIT_EXT`
+[VK_TOOL_PURPOSE_MODIFYING_FEATURES_BIT_EXT](VkToolPurposeFlagBits.html)
 
 * 
-`VK_TOOL_PURPOSE_PROFILING_BIT_EXT`
+[VK_TOOL_PURPOSE_PROFILING_BIT_EXT](VkToolPurposeFlagBits.html)
 
 * 
-`VK_TOOL_PURPOSE_TRACING_BIT_EXT`
+[VK_TOOL_PURPOSE_TRACING_BIT_EXT](VkToolPurposeFlagBits.html)
 
 * 
-`VK_TOOL_PURPOSE_VALIDATION_BIT_EXT`
+[VK_TOOL_PURPOSE_VALIDATION_BIT_EXT](VkToolPurposeFlagBits.html)
 
 If [VK_EXT_debug_marker](VK_EXT_debug_marker.html) is supported:
 
 * 
 Extending [VkToolPurposeFlagBits](VkToolPurposeFlagBits.html):
 
-`VK_TOOL_PURPOSE_DEBUG_MARKERS_BIT_EXT`
+[VK_TOOL_PURPOSE_DEBUG_MARKERS_BIT_EXT](VkToolPurposeFlagBits.html)
 
 If [VK_EXT_debug_report](VK_EXT_debug_report.html) is supported:
 
 * 
 Extending [VkToolPurposeFlagBits](VkToolPurposeFlagBits.html):
 
-`VK_TOOL_PURPOSE_DEBUG_REPORTING_BIT_EXT`
+[VK_TOOL_PURPOSE_DEBUG_REPORTING_BIT_EXT](VkToolPurposeFlagBits.html)
 
 If [VK_EXT_debug_utils](VK_EXT_debug_utils.html) is supported:
 
 * 
 Extending [VkToolPurposeFlagBits](VkToolPurposeFlagBits.html):
 
-`VK_TOOL_PURPOSE_DEBUG_MARKERS_BIT_EXT`
+[VK_TOOL_PURPOSE_DEBUG_MARKERS_BIT_EXT](VkToolPurposeFlagBits.html)
 
 * 
-`VK_TOOL_PURPOSE_DEBUG_REPORTING_BIT_EXT`
+[VK_TOOL_PURPOSE_DEBUG_REPORTING_BIT_EXT](VkToolPurposeFlagBits.html)
 
 Vulkan APIs in this extension are included in core Vulkan 1.3, with the EXT
 suffix omitted.

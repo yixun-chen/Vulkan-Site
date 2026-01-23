@@ -35,7 +35,7 @@ and rasterization operations, as with `Position`.
 [pre-rasterization shader stage](../../../../spec/latest/chapters/pipelines.html#pipelines-graphics-subsets-pre-rasterization).
 
 If a shader is compiled against a subpass that has the
-`VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX` bit set, then
+[VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX](VkSubpassDescriptionFlagBits.html) bit set, then
 the position values for each view **must** not differ in any component other
 than the X component.
 If the values do differ, one will be chosen in an implementation-dependent

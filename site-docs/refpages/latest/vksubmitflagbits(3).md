@@ -33,7 +33,7 @@ typedef enum VkSubmitFlagBits {
 typedef VkSubmitFlagBits VkSubmitFlagBitsKHR;
 
 * 
-`VK_SUBMIT_PROTECTED_BIT` specifies that this batch is a protected
+[VK_SUBMIT_PROTECTED_BIT](#) specifies that this batch is a protected
 submission.
 
 [VK_KHR_synchronization2](VK_KHR_synchronization2.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), [VkSubmitFlags](VkSubmitFlags.html)

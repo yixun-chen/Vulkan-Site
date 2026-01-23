@@ -87,12 +87,12 @@ Extending [VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html):
 * 
 Extending [VkPipelineCreateFlagBits](VkPipelineCreateFlagBits.html):
 
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR`
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](VkPipelineCreateFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PIPELINE_LIBRARY_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_PIPELINE_LIBRARY_CREATE_INFO_KHR](VkStructureType.html)
 
 * 
 Revision 1, 2020-01-08 (Christoph Kubisch)

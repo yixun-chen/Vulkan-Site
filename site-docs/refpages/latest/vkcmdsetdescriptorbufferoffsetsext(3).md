@@ -77,7 +77,7 @@ After binding descriptors, applications **can** modify descriptor memory either
 by performing writes on the host or with device commands.
 When descriptor memory is updated with device commands, visibility for the
 shader stage accessing a descriptor is ensured with the
-`VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT` access flag.
+[VK_ACCESS_2_DESCRIPTOR_BUFFER_READ_BIT_EXT](VkAccessFlagBits2.html) access flag.
 Implementations **must** not access resources referenced by these descriptors
 unless they are dynamically accessed by shaders.
 Descriptors bound with this call **can** be **undefined** if they are not
@@ -85,9 +85,9 @@ dynamically accessed by shaders.
 
 Implementations **may** read descriptor data for any statically accessed
 descriptor if the `binding` in `layout` is not declared with the
-`VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT` flag.
+[VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](VkDescriptorBindingFlagBits.html) flag.
 If the `binding` in `layout` is declared with
-`VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT`, implementations
+[VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](VkDescriptorBindingFlagBits.html), implementations
 **must** not read descriptor data that is not dynamically accessed.
 
 Applications **must** ensure that any descriptor which the implementation **may**
@@ -113,12 +113,28 @@ are updated on the device. |
 
 |  | The requirements above imply that all descriptor bindings have been defined
 | --- | --- |
-with the equivalent of `VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`,
-`VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT` and
-`VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT`, but enabling those features
+with the equivalent of [VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](VkDescriptorBindingFlagBits.html),
+[VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT](VkDescriptorBindingFlagBits.html) and
+[VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT](VkDescriptorBindingFlagBits.html), but enabling those features
 is not required to get this behavior. |
 
 Valid Usage
+
+* 
+[](#VUID-vkCmdSetDescriptorBufferOffsetsEXT-commandBuffer-11295) VUID-vkCmdSetDescriptorBufferOffsetsEXT-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdSetDescriptorBufferOffsetsEXT-commandBuffer-11296) VUID-vkCmdSetDescriptorBufferOffsetsEXT-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pResourceHeapBindInfo`
+equal to `NULL`
 
 * 
 [](#VUID-vkCmdSetDescriptorBufferOffsetsEXT-pOffsets-08061) VUID-vkCmdSetDescriptorBufferOffsetsEXT-pOffsets-08061
@@ -131,7 +147,7 @@ The offsets in `pOffsets` **must** be aligned to
 
 The offsets in `pOffsets` **must** be small enough such that any
 descriptor binding referenced by `layout`
-without the `VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT`
+without the [VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT](VkDescriptorBindingFlagBits.html)
 flag
 computes a valid address inside the underlying [VkBuffer](VkBuffer.html)
 
@@ -177,7 +193,7 @@ to [VkPipelineLayoutCreateInfo](VkPipelineLayoutCreateInfo.html)::`setLayoutCoun
 The [VkDescriptorSetLayout](VkDescriptorSetLayout.html) for each set from `firstSet` to
 `firstSet` +  `setCount` when `layout` was created
 **must** have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 
 * 
 [](#VUID-vkCmdSetDescriptorBufferOffsetsEXT-firstSet-11803) VUID-vkCmdSetDescriptorBufferOffsetsEXT-firstSet-11803
@@ -185,7 +201,7 @@ The [VkDescriptorSetLayout](VkDescriptorSetLayout.html) for each set from `first
 The [VkDescriptorSetLayout](VkDescriptorSetLayout.html) for each set from `firstSet` to
 `firstSet` +  `setCount` when `layout` was created
 **must** not have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 
 * 
 [](#VUID-vkCmdSetDescriptorBufferOffsetsEXT-firstSet-11804) VUID-vkCmdSetDescriptorBufferOffsetsEXT-firstSet-11804
@@ -193,7 +209,7 @@ The [VkDescriptorSetLayout](VkDescriptorSetLayout.html) for each set from `first
 The [VkDescriptorSetLayout](VkDescriptorSetLayout.html) for each set from `firstSet` to
 `firstSet` +  `setCount` when `layout` was created
 **must** not have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html)
 bit set
 
 * 
@@ -243,7 +259,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetDescriptorBufferOffsetsEXT-commandBuffer-cmdpool) VUID-vkCmdSetDescriptorBufferOffsetsEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_DATA_GRAPH_BIT_ARM`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_DATA_GRAPH_BIT_ARM](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetDescriptorBufferOffsetsEXT-videocoding) VUID-vkCmdSetDescriptorBufferOffsetsEXT-videocoding

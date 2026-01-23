@@ -52,7 +52,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDebugUtilsLabelEXT-sType-sType) VUID-VkDebugUtilsLabelEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkDebugUtilsLabelEXT-pNext-pNext) VUID-VkDebugUtilsLabelEXT-pNext-pNext

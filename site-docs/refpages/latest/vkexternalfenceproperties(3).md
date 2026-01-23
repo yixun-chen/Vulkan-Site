@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalFenceProperties-sType-sType) VUID-VkExternalFenceProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_FENCE_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_FENCE_PROPERTIES](VkStructureType.html)
 
 * 
 [](#VUID-VkExternalFenceProperties-pNext-pNext) VUID-VkExternalFenceProperties-pNext-pNext

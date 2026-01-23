@@ -21,7 +21,7 @@ VkVideoEncodeAV1ProfileInfoKHR - Structure specifying AV1 encode-specific video 
 
 A video profile supporting AV1 video encode operations is specified by
 setting [VkVideoProfileInfoKHR](VkVideoProfileInfoKHR.html)::`videoCodecOperation` to
-`VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR` and adding a
+[VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR](VkVideoCodecOperationFlagBitsKHR.html) and adding a
 `VkVideoEncodeAV1ProfileInfoKHR` structure to the
 [VkVideoProfileInfoKHR](VkVideoProfileInfoKHR.html)::`pNext` chain.
 
@@ -50,7 +50,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeAV1ProfileInfoKHR-sType-sType) VUID-VkVideoEncodeAV1ProfileInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_PROFILE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_PROFILE_INFO_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_av1](VK_KHR_video_encode_av1.html), [VkStructureType](VkStructureType.html)
 

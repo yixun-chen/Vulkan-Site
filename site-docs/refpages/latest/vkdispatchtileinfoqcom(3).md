@@ -39,7 +39,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDispatchTileInfoQCOM-sType-sType) VUID-VkDispatchTileInfoQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DISPATCH_TILE_INFO_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DISPATCH_TILE_INFO_QCOM](VkStructureType.html)
 
 * 
 [](#VUID-VkDispatchTileInfoQCOM-pNext-pNext) VUID-VkDispatchTileInfoQCOM-pNext-pNext

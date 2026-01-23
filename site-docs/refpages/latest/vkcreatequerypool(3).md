@@ -50,9 +50,9 @@ Valid Usage
 [](#VUID-vkCreateQueryPool-device-09663) VUID-vkCreateQueryPool-device-09663
 
 `device` **must** support at least one queue family with one of the
-`VK_QUEUE_VIDEO_ENCODE_BIT_KHR`,
-`VK_QUEUE_VIDEO_DECODE_BIT_KHR`,
-`VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` capabilities
+[VK_QUEUE_VIDEO_ENCODE_BIT_KHR](VkQueueFlagBits.html),
+[VK_QUEUE_VIDEO_DECODE_BIT_KHR](VkQueueFlagBits.html),
+[VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) capabilities
 
 Valid Usage (Implicit)
 
@@ -86,21 +86,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_VERSION_1_0](VK_VERSION_1_0.html), [VkAllocationCallbacks](VkAllocationCallbacks.html), [VkDevice](VkDevice.html), [VkQueryPool](VkQueryPool.html), [VkQueryPoolCreateInfo](VkQueryPoolCreateInfo.html)
 

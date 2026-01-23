@@ -72,7 +72,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR-sType-sType) VUID-VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR-pNext-pNext) VUID-VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR-pNext-pNext

@@ -43,53 +43,53 @@ Valid Usage
 [](#VUID-vkCmdSubpassShadingHUAWEI-magFilter-04553) VUID-vkCmdSubpassShadingHUAWEI-magFilter-04553
 
 If a [VkSampler](VkSampler.html) created with `magFilter` or `minFilter`
-equal to `VK_FILTER_LINEAR`,
+equal to [VK_FILTER_LINEAR](VkFilter.html),
 `reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`,
-and `compareEnable` equal to `VK_FALSE` is used to sample a
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](VkSamplerReductionMode.html),
+and `compareEnable` equal to [VK_FALSE](VK_FALSE.html) is used to sample a
 [VkImageView](VkImageView.html) as a result of this command, then the image view’s
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-magFilter-09598) VUID-vkCmdSubpassShadingHUAWEI-magFilter-09598
 
 If a [VkSampler](VkSampler.html) created with `magFilter` or `minFilter`
-equal to `VK_FILTER_LINEAR` and `reductionMode` equal to either
-`VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` is used to sample a
+equal to [VK_FILTER_LINEAR](VkFilter.html) and `reductionMode` equal to either
+[VK_SAMPLER_REDUCTION_MODE_MIN](VkSamplerReductionMode.html) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](VkSamplerReductionMode.html) is used to sample a
 [VkImageView](VkImageView.html) as a result of this command, then the image view’s
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-mipmapMode-04770) VUID-vkCmdSubpassShadingHUAWEI-mipmapMode-04770
 
 If a [VkSampler](VkSampler.html) created with `mipmapMode` equal to
-`VK_SAMPLER_MIPMAP_MODE_LINEAR`,
+[VK_SAMPLER_MIPMAP_MODE_LINEAR](VkSamplerMipmapMode.html),
 `reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE`,
-and `compareEnable` equal to `VK_FALSE` is used to sample a
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE](VkSamplerReductionMode.html),
+and `compareEnable` equal to [VK_FALSE](VK_FALSE.html) is used to sample a
 [VkImageView](VkImageView.html) as a result of this command, then the image view’s
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-mipmapMode-09599) VUID-vkCmdSubpassShadingHUAWEI-mipmapMode-09599
 
 If a [VkSampler](VkSampler.html) created with `mipmapMode` equal to
-`VK_SAMPLER_MIPMAP_MODE_LINEAR` and `reductionMode` equal to
-either `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` is used to sample a
+[VK_SAMPLER_MIPMAP_MODE_LINEAR](VkSamplerMipmapMode.html) and `reductionMode` equal to
+either [VK_SAMPLER_REDUCTION_MODE_MIN](VkSamplerReductionMode.html) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](VkSamplerReductionMode.html) is used to sample a
 [VkImageView](VkImageView.html) as a result of this command, then the image view’s
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-unnormalizedCoordinates-09635) VUID-vkCmdSubpassShadingHUAWEI-unnormalizedCoordinates-09635
 
 If a [VkSampler](VkSampler.html) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](VkImageView.html) as a result of this
+[VK_TRUE](VK_TRUE.html) is used to sample a [VkImageView](VkImageView.html) as a result of this
 command, then the image view’s `levelCount` and `layerCount`
 **must** be 1
 
@@ -97,15 +97,15 @@ command, then the image view’s `levelCount` and `layerCount`
 [](#VUID-vkCmdSubpassShadingHUAWEI-None-08609) VUID-vkCmdSubpassShadingHUAWEI-None-08609
 
 If a [VkSampler](VkSampler.html) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](VkImageView.html) as a result of this
+[VK_TRUE](VK_TRUE.html) is used to sample a [VkImageView](VkImageView.html) as a result of this
 command, then the image view’s `viewType` **must** be
-`VK_IMAGE_VIEW_TYPE_1D` or `VK_IMAGE_VIEW_TYPE_2D`
+[VK_IMAGE_VIEW_TYPE_1D](VkImageViewType.html) or [VK_IMAGE_VIEW_TYPE_2D](VkImageViewType.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-None-08610) VUID-vkCmdSubpassShadingHUAWEI-None-08610
 
 If a [VkSampler](VkSampler.html) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](VkImageView.html) as a result of this
+[VK_TRUE](VK_TRUE.html) is used to sample a [VkImageView](VkImageView.html) as a result of this
 command, then the sampler **must** not be used with any of the SPIR-V
 `OpImageSample*` or `OpImageSparseSample*` instructions with
 `ImplicitLod`, `Dref` or `Proj` in their name
@@ -114,7 +114,7 @@ command, then the sampler **must** not be used with any of the SPIR-V
 [](#VUID-vkCmdSubpassShadingHUAWEI-None-08611) VUID-vkCmdSubpassShadingHUAWEI-None-08611
 
 If a [VkSampler](VkSampler.html) created with `unnormalizedCoordinates` equal to
-`VK_TRUE` is used to sample a [VkImageView](VkImageView.html) as a result of this
+[VK_TRUE](VK_TRUE.html) is used to sample a [VkImageView](VkImageView.html) as a result of this
 command, then the sampler **must** not be used with any of the SPIR-V
 `OpImageSample*` or `OpImageSparseSample*` instructions that includes a
 LOD bias or any offset values
@@ -125,7 +125,7 @@ LOD bias or any offset values
 If a [VkImageView](VkImageView.html) is sampled with
 [depth comparison](../../../../spec/latest/chapters/textures.html#textures-depth-compare-operation), the image view’s
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT`
+[VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_DEPTH_COMPARISON_BIT](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-None-02691) VUID-vkCmdSubpassShadingHUAWEI-None-02691
@@ -133,38 +133,38 @@ If a [VkImageView](VkImageView.html) is sampled with
 If a [VkImageView](VkImageView.html) is accessed using atomic operations as a result
 of this command, then the image view’s
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT`
+[VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-None-07888) VUID-vkCmdSubpassShadingHUAWEI-None-07888
 
-If a `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` descriptor is
+If a [VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER](VkDescriptorType.html) descriptor is
 accessed using atomic operations as a result of this command, then the
 storage texel buffer’s [format    features](../../../../spec/latest/chapters/resources.html#resources-buffer-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT`
+[VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-None-02692) VUID-vkCmdSubpassShadingHUAWEI-None-02692
 
-If a [VkImageView](VkImageView.html) is sampled with `VK_FILTER_CUBIC_EXT` as a
+If a [VkImageView](VkImageView.html) is sampled with [VK_FILTER_CUBIC_EXT](VkFilter.html) as a
 result of this command, then the image view’s
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT`
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-None-02693) VUID-vkCmdSubpassShadingHUAWEI-None-02693
 
 If
 the [VK_EXT_filter_cubic](VK_EXT_filter_cubic.html) extension is not enabled and
-any [VkImageView](VkImageView.html) is sampled with `VK_FILTER_CUBIC_EXT` as a
+any [VkImageView](VkImageView.html) is sampled with [VK_FILTER_CUBIC_EXT](VkFilter.html) as a
 result of this command, it **must** not have a [VkImageViewType](VkImageViewType.html) of
-`VK_IMAGE_VIEW_TYPE_3D`, `VK_IMAGE_VIEW_TYPE_CUBE`, or
-`VK_IMAGE_VIEW_TYPE_CUBE_ARRAY`
+[VK_IMAGE_VIEW_TYPE_3D](VkImageViewType.html), [VK_IMAGE_VIEW_TYPE_CUBE](VkImageViewType.html), or
+[VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](VkImageViewType.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-filterCubic-02694) VUID-vkCmdSubpassShadingHUAWEI-filterCubic-02694
 
-Any [VkImageView](VkImageView.html) being sampled with `VK_FILTER_CUBIC_EXT` as a
+Any [VkImageView](VkImageView.html) being sampled with [VK_FILTER_CUBIC_EXT](VkFilter.html) as a
 result of this command **must** have a [VkImageViewType](VkImageViewType.html) and format
 that supports cubic filtering, as specified by
 [VkFilterCubicImageViewImageFormatPropertiesEXT](VkFilterCubicImageViewImageFormatPropertiesEXT.html)::`filterCubic`
@@ -173,9 +173,9 @@ returned by [vkGetPhysicalDeviceImageFormatProperties2](vkGetPhysicalDeviceImage
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-filterCubicMinmax-02695) VUID-vkCmdSubpassShadingHUAWEI-filterCubicMinmax-02695
 
-Any [VkImageView](VkImageView.html) being sampled with `VK_FILTER_CUBIC_EXT` with
-a reduction mode of either `VK_SAMPLER_REDUCTION_MODE_MIN` or
-`VK_SAMPLER_REDUCTION_MODE_MAX` as a result of this command **must**
+Any [VkImageView](VkImageView.html) being sampled with [VK_FILTER_CUBIC_EXT](VkFilter.html) with
+a reduction mode of either [VK_SAMPLER_REDUCTION_MODE_MIN](VkSamplerReductionMode.html) or
+[VK_SAMPLER_REDUCTION_MODE_MAX](VkSamplerReductionMode.html) as a result of this command **must**
 have a [VkImageViewType](VkImageViewType.html) and format that supports cubic filtering
 together with minmax filtering, as specified by
 [VkFilterCubicImageViewImageFormatPropertiesEXT](VkFilterCubicImageViewImageFormatPropertiesEXT.html)::`filterCubicMinmax`
@@ -186,35 +186,35 @@ returned by [vkGetPhysicalDeviceImageFormatProperties2](vkGetPhysicalDeviceImage
 
 If the [`cubicRangeClamp`](../../../../spec/latest/chapters/features.html#features-cubicRangeClamp) feature is
 not enabled, then any [VkImageView](VkImageView.html) being sampled with
-`VK_FILTER_CUBIC_EXT` as a result of this command **must** not have a
+[VK_FILTER_CUBIC_EXT](VkFilter.html) as a result of this command **must** not have a
 [VkSamplerReductionModeCreateInfo](VkSamplerReductionModeCreateInfo.html)::`reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM`
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](VkSamplerReductionMode.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-reductionMode-09213) VUID-vkCmdSubpassShadingHUAWEI-reductionMode-09213
 
 Any [VkImageView](VkImageView.html) being sampled with a
 [VkSamplerReductionModeCreateInfo](VkSamplerReductionModeCreateInfo.html)::`reductionMode` equal to
-`VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM` as a
-result of this command **must** sample with `VK_FILTER_CUBIC_EXT`
+[VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM](VkSamplerReductionMode.html) as a
+result of this command **must** sample with [VK_FILTER_CUBIC_EXT](VkFilter.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-selectableCubicWeights-09214) VUID-vkCmdSubpassShadingHUAWEI-selectableCubicWeights-09214
 
 If the [`selectableCubicWeights`](../../../../spec/latest/chapters/features.html#features-selectableCubicWeights)
 feature is not enabled, then any [VkImageView](VkImageView.html) being sampled with
-`VK_FILTER_CUBIC_EXT` as a result of this command **must** have
+[VK_FILTER_CUBIC_EXT](VkFilter.html) as a result of this command **must** have
 [VkSamplerCubicWeightsCreateInfoQCOM](VkSamplerCubicWeightsCreateInfoQCOM.html)::`cubicWeights` equal to
-`VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM`
+[VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM](VkCubicFilterWeightsQCOM.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-flags-02696) VUID-vkCmdSubpassShadingHUAWEI-flags-02696
 
 Any [VkImage](VkImage.html) created with a [VkImageCreateInfo](VkImageCreateInfo.html)::`flags`
-containing `VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV` sampled as a
+containing [VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV](VkImageCreateFlagBits.html) sampled as a
 result of this command **must** only be sampled using a
 [VkSamplerAddressMode](VkSamplerAddressMode.html) of
-`VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE`
+[VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE](VkSamplerAddressMode.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-OpTypeImage-07027) VUID-vkCmdSubpassShadingHUAWEI-OpTypeImage-07027
@@ -222,7 +222,7 @@ result of this command **must** only be sampled using a
 For any [VkImageView](VkImageView.html) being written as a storage image where the
 image format field of the `OpTypeImage` is `Unknown`, the view’s
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-OpTypeImage-07028) VUID-vkCmdSubpassShadingHUAWEI-OpTypeImage-07028
@@ -230,7 +230,7 @@ image format field of the `OpTypeImage` is `Unknown`, the view’s
 For any [VkImageView](VkImageView.html) being read as a storage image where the image
 format field of the `OpTypeImage` is `Unknown`, the view’s
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-OpTypeImage-07029) VUID-vkCmdSubpassShadingHUAWEI-OpTypeImage-07029
@@ -238,7 +238,7 @@ format field of the `OpTypeImage` is `Unknown`, the view’s
 For any [VkBufferView](VkBufferView.html) being written as a storage texel buffer where
 the image format field of the `OpTypeImage` is `Unknown`, the
 view’s [buffer features](../../../../spec/latest/chapters/formats.html#VkFormatProperties3) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_WRITE_WITHOUT_FORMAT_BIT](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-OpTypeImage-07030) VUID-vkCmdSubpassShadingHUAWEI-OpTypeImage-07030
@@ -246,15 +246,21 @@ view’s [buffer features](../../../../spec/latest/chapters/formats.html#VkForma
 Any [VkBufferView](VkBufferView.html) being read as a storage texel buffer where the
 image format field of the `OpTypeImage` is `Unknown` then the
 view’s [buffer features](../../../../spec/latest/chapters/formats.html#VkFormatProperties3) **must** contain
-`VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT`
+[VK_FORMAT_FEATURE_2_STORAGE_READ_WITHOUT_FORMAT_BIT](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-None-08600) VUID-vkCmdSubpassShadingHUAWEI-None-08600
 
-For each set *n* that is statically used by [a bound    shader](../../../../spec/latest/chapters/shaders.html#shaders-binding), a descriptor set **must** have been bound to *n* at the same
-pipeline bind point, with a [VkPipelineLayout](VkPipelineLayout.html) that is compatible
-for set *n*, with the [VkPipelineLayout](VkPipelineLayout.html) used to create the current
-[VkPipeline](VkPipeline.html)
+If a [a bound shader](../../../../spec/latest/chapters/shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](VkShaderEXT.html) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](VkShaderCreateFlagBitsEXT.html) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2.html) flag, and that shader
+statically uses a set *n*, a descriptor set **must** have been bound to *n*
+at the same pipeline bind point, with a [VkPipelineLayout](VkPipelineLayout.html) that is
+compatible for set *n*, with the [VkPipelineLayout](VkPipelineLayout.html) used to create
+the current [VkPipeline](VkPipeline.html)
 or the [VkDescriptorSetLayout](VkDescriptorSetLayout.html) array used to create the current
 [VkShaderEXT](VkShaderEXT.html)
 , as described in [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility)
@@ -262,13 +268,18 @@ or the [VkDescriptorSetLayout](VkDescriptorSetLayout.html) array used to create 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-None-08601) VUID-vkCmdSubpassShadingHUAWEI-None-08601
 
-For each push constant that is statically used by [a    bound shader](../../../../spec/latest/chapters/shaders.html#shaders-binding), a push constant value **must** have been set for the same
-pipeline bind point, with a [VkPipelineLayout](VkPipelineLayout.html) that is compatible
-for push constants, with the [VkPipelineLayout](VkPipelineLayout.html) used to create the
-current [VkPipeline](VkPipeline.html)
+If a [a bound shader](../../../../spec/latest/chapters/shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](VkShaderEXT.html) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](VkShaderCreateFlagBitsEXT.html) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2.html) flag, and that shader
+statically uses a push constant value, that value **must** have been set
+for the same pipeline bind point, with a [VkPipelineLayout](VkPipelineLayout.html) that is
+[compatible for push constants](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility) with the
+[VkPipelineLayout](VkPipelineLayout.html) used to create the current [VkPipeline](VkPipeline.html)
 or the [VkDescriptorSetLayout](VkDescriptorSetLayout.html) array used to create the current
 [VkShaderEXT](VkShaderEXT.html)
-, as described in [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-None-10068) VUID-vkCmdSubpassShadingHUAWEI-None-10068
@@ -280,26 +291,28 @@ sets used by this command
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-maintenance4-08602) VUID-vkCmdSubpassShadingHUAWEI-maintenance4-08602
 
-If the [`maintenance4`](../../../../spec/latest/chapters/features.html#features-maintenance4) feature is not
-enabled, then for each push constant that is statically used by
-[a bound shader](../../../../spec/latest/chapters/shaders.html#shaders-binding), a push constant value **must** have
-been set for the same pipeline bind point, with a [VkPipelineLayout](VkPipelineLayout.html)
-that is compatible for push constants, with the [VkPipelineLayout](VkPipelineLayout.html)
-used to create the current [VkPipeline](VkPipeline.html)
+If a [a bound shader](../../../../spec/latest/chapters/shaders.html#shaders-binding)
+was created
+as a [VkShaderEXT](VkShaderEXT.html) without the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](VkShaderCreateFlagBitsEXT.html) flag or
+as part of a pipeline without the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2.html) flag, and that shader
+statically uses a push constant value, that value **must** have been set
+for the same pipeline bind point, with a [VkPipelineLayout](VkPipelineLayout.html) that is
+[compatible for push constants](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility) with the
+[VkPipelineLayout](VkPipelineLayout.html) used to create the current [VkPipeline](VkPipeline.html)
 or the [VkDescriptorSetLayout](VkDescriptorSetLayout.html) and [VkPushConstantRange](VkPushConstantRange.html) arrays
 used to create the current [VkShaderEXT](VkShaderEXT.html)
-, as described in [Pipeline Layout Compatibility](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-None-08114) VUID-vkCmdSubpassShadingHUAWEI-None-08114
 
 Descriptors in each bound descriptor set, specified via
-[vkCmdBindDescriptorSets](vkCmdBindDescriptorSets.html), **must** be valid as described by
-[descriptor validity](../../../../spec/latest/chapters/descriptorsets.html#descriptor-validity) if they are statically used
-by
+[vkCmdBindDescriptorSets](vkCmdBindDescriptorSets.html), **must** be valid if they are accessed as
+described by [descriptor validity](../../../../spec/latest/chapters/descriptorsets.html#descriptor-validity) by
 the [VkPipeline](VkPipeline.html) bound to the pipeline bind point used by this
 command and the bound [VkPipeline](VkPipeline.html) was not created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-imageLayout-00344) VUID-vkCmdSubpassShadingHUAWEI-imageLayout-00344
@@ -314,7 +327,7 @@ defined by the [image layout    matching rules](../../../../spec/latest/chapters
 If the descriptors used by the [VkPipeline](VkPipeline.html) bound to the pipeline
 bind point were specified via [vkCmdBindDescriptorSets](vkCmdBindDescriptorSets.html), the bound
 [VkPipeline](VkPipeline.html) **must** have been created without
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-None-08116) VUID-vkCmdSubpassShadingHUAWEI-None-08116
@@ -323,7 +336,7 @@ Descriptors in bound descriptor buffers, specified via
 [vkCmdSetDescriptorBufferOffsetsEXT](vkCmdSetDescriptorBufferOffsetsEXT.html), **must** be valid if they are
 dynamically used by the [VkPipeline](VkPipeline.html) bound to the pipeline bind
 point used by this command and the bound [VkPipeline](VkPipeline.html) was created
-with `VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+with [VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-None-08604) VUID-vkCmdSubpassShadingHUAWEI-None-08604
@@ -339,13 +352,13 @@ to the pipeline bind point used by this command
 If the descriptors used by the [VkPipeline](VkPipeline.html) bound to the pipeline
 bind point were specified via [vkCmdSetDescriptorBufferOffsetsEXT](vkCmdSetDescriptorBufferOffsetsEXT.html),
 the bound [VkPipeline](VkPipeline.html) **must** have been created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-None-08119) VUID-vkCmdSubpassShadingHUAWEI-None-08119
 
 If a descriptor is dynamically used with a [VkPipeline](VkPipeline.html) created with
-`VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, the descriptor
+[VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkPipelineCreateFlagBits.html), the descriptor
 memory **must** be resident
 
 * 
@@ -353,7 +366,7 @@ memory **must** be resident
 
 If a descriptor is dynamically used with a [VkShaderEXT](VkShaderEXT.html) created
 with a `VkDescriptorSetLayout` that was created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT`, the
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html), the
 descriptor memory **must** be resident
 
 * 
@@ -379,8 +392,8 @@ pipeline bind point used by this command, since that pipeline was bound
 If any stage of the [VkPipeline](VkPipeline.html) object bound to the pipeline bind
 point used by this command accesses a uniform buffer,
 and that stage was created without enabling either
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2` for
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](VkPipelineRobustnessBufferBehavior.html) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](VkPipelineRobustnessBufferBehavior.html) for
 `uniformBuffers`,
 and the [`robustBufferAccess`](../../../../spec/latest/chapters/features.html#features-robustBufferAccess)
 feature is not enabled, that stage **must** not access values outside of
@@ -402,8 +415,8 @@ specified in the descriptor set bound to the same pipeline bind point
 If any stage of the [VkPipeline](VkPipeline.html) object bound to the pipeline bind
 point used by this command accesses a storage buffer,
 and that stage was created without enabling either
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS` or
-`VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2` for
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](VkPipelineRobustnessBufferBehavior.html) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](VkPipelineRobustnessBufferBehavior.html) for
 `storageBuffers`,
 and the [`robustBufferAccess`](../../../../spec/latest/chapters/features.html#features-robustBufferAccess)
 feature is not enabled, that stage **must** not access values outside of
@@ -446,7 +459,7 @@ view’s `format` and the `Sampled` `Type` operand of the
 [](#VUID-vkCmdSubpassShadingHUAWEI-OpImageWrite-08795) VUID-vkCmdSubpassShadingHUAWEI-OpImageWrite-08795
 
 If a [VkImageView](VkImageView.html)
-created with a format other than `VK_FORMAT_A8_UNORM`
+created with a format other than [VK_FORMAT_A8_UNORM](VkFormat.html)
 is accessed using `OpImageWrite` as a result of this command, then
 the `Type` of the `Texel` operand of that instruction **must** have
 at least as many components as the image view’s format
@@ -454,7 +467,7 @@ at least as many components as the image view’s format
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-OpImageWrite-08796) VUID-vkCmdSubpassShadingHUAWEI-OpImageWrite-08796
 
-If a [VkImageView](VkImageView.html) created with the format `VK_FORMAT_A8_UNORM`
+If a [VkImageView](VkImageView.html) created with the format [VK_FORMAT_A8_UNORM](VkFormat.html)
 is accessed using `OpImageWrite` as a result of this command, then
 the `Type` of the `Texel` operand of that instruction **must** have
 four components
@@ -503,7 +516,7 @@ less than 64-bit is accessed as a result of this command, the
 [](#VUID-vkCmdSubpassShadingHUAWEI-sparseImageInt64Atomics-04474) VUID-vkCmdSubpassShadingHUAWEI-sparseImageInt64Atomics-04474
 
 If the [    `sparseImageInt64Atomics`](../../../../spec/latest/chapters/features.html#features-sparseImageInt64Atomics) feature is not enabled, [VkImage](VkImage.html)
-objects created with the `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` flag
+objects created with the [VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](VkImageCreateFlagBits.html) flag
 **must** not be accessed by atomic instructions through an `OpTypeImage`
 with a `SampledType` with a `Width` of 64 by this command
 
@@ -511,26 +524,26 @@ with a `SampledType` with a `Width` of 64 by this command
 [](#VUID-vkCmdSubpassShadingHUAWEI-sparseImageInt64Atomics-04475) VUID-vkCmdSubpassShadingHUAWEI-sparseImageInt64Atomics-04475
 
 If the [    `sparseImageInt64Atomics`](../../../../spec/latest/chapters/features.html#features-sparseImageInt64Atomics) feature is not enabled, [VkBuffer](VkBuffer.html)
-objects created with the `VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT`
+objects created with the [VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](VkBufferCreateFlagBits.html)
 flag **must** not be accessed by atomic instructions through an
 `OpTypeImage` with a `SampledType` with a `Width` of 64 by this
 command
 
 * 
-[](#VUID-vkCmdSubpassShadingHUAWEI-OpImageWeightedSampleQCOM-06971) VUID-vkCmdSubpassShadingHUAWEI-OpImageWeightedSampleQCOM-06971
+[](#VUID-vkCmdSubpassShadingHUAWEI-OpImageSampleWeightedQCOM-06971) VUID-vkCmdSubpassShadingHUAWEI-OpImageSampleWeightedQCOM-06971
 
-If `OpImageWeightedSampleQCOM` is used to sample a [VkImageView](VkImageView.html)
+If `OpImageSampleWeightedQCOM` is used to sample a [VkImageView](VkImageView.html)
 as a result of this command, then the image view’s
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM](VkFormatFeatureFlagBits2.html)
 
 * 
-[](#VUID-vkCmdSubpassShadingHUAWEI-OpImageWeightedSampleQCOM-06972) VUID-vkCmdSubpassShadingHUAWEI-OpImageWeightedSampleQCOM-06972
+[](#VUID-vkCmdSubpassShadingHUAWEI-OpImageSampleWeightedQCOM-06972) VUID-vkCmdSubpassShadingHUAWEI-OpImageSampleWeightedQCOM-06972
 
-If `OpImageWeightedSampleQCOM` uses a [VkImageView](VkImageView.html) as a sample
+If `OpImageSampleWeightedQCOM` uses a [VkImageView](VkImageView.html) as a sample
 weight image as a result of this command, then the image view’s
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-OpImageBoxFilterQCOM-06973) VUID-vkCmdSubpassShadingHUAWEI-OpImageBoxFilterQCOM-06973
@@ -538,7 +551,7 @@ weight image as a result of this command, then the image view’s
 If `OpImageBoxFilterQCOM` is used to sample a [VkImageView](VkImageView.html) as a
 result of this command, then the image view’s
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BOX_FILTER_SAMPLED_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BOX_FILTER_SAMPLED_BIT_QCOM](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-OpImageBlockMatchSSDQCOM-06974) VUID-vkCmdSubpassShadingHUAWEI-OpImageBlockMatchSSDQCOM-06974
@@ -546,7 +559,7 @@ result of this command, then the image view’s
 If `OpImageBlockMatchSSDQCOM` is used to read from an
 [VkImageView](VkImageView.html) as a result of this command, then the image view’s
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-OpImageBlockMatchSADQCOM-06975) VUID-vkCmdSubpassShadingHUAWEI-OpImageBlockMatchSADQCOM-06975
@@ -554,7 +567,7 @@ If `OpImageBlockMatchSSDQCOM` is used to read from an
 If `OpImageBlockMatchSADQCOM` is used to read from an
 [VkImageView](VkImageView.html) as a result of this command, then the image view’s
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-OpImageBlockMatchSADQCOM-06976) VUID-vkCmdSubpassShadingHUAWEI-OpImageBlockMatchSADQCOM-06976
@@ -565,21 +578,21 @@ specified reference coordinates **must** not fail
 [integer texel coordinate    validation](../../../../spec/latest/chapters/textures.html#textures-integer-coordinate-validation)
 
 * 
-[](#VUID-vkCmdSubpassShadingHUAWEI-OpImageWeightedSampleQCOM-06977) VUID-vkCmdSubpassShadingHUAWEI-OpImageWeightedSampleQCOM-06977
+[](#VUID-vkCmdSubpassShadingHUAWEI-OpImageSampleWeightedQCOM-06977) VUID-vkCmdSubpassShadingHUAWEI-OpImageSampleWeightedQCOM-06977
 
-If `OpImageWeightedSampleQCOM`, `OpImageBoxFilterQCOM`,
+If `OpImageSampleWeightedQCOM`, `OpImageBoxFilterQCOM`,
 `OpImageBlockMatchWindowSSDQCOM`,
 `OpImageBlockMatchWindowSADQCOM`,
 `OpImageBlockMatchGatherSSDQCOM`,
 `OpImageBlockMatchGatherSADQCOM`,
 `OpImageBlockMatchSSDQCOM`, or `OpImageBlockMatchSADQCOM` uses a
 [VkSampler](VkSampler.html) as a result of this command, then the sampler **must** have
-been created with `VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`
+been created with [VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](VkSamplerCreateFlagBits.html)
 
 * 
-[](#VUID-vkCmdSubpassShadingHUAWEI-OpImageWeightedSampleQCOM-06978) VUID-vkCmdSubpassShadingHUAWEI-OpImageWeightedSampleQCOM-06978
+[](#VUID-vkCmdSubpassShadingHUAWEI-OpImageSampleWeightedQCOM-06978) VUID-vkCmdSubpassShadingHUAWEI-OpImageSampleWeightedQCOM-06978
 
-If any command other than `OpImageWeightedSampleQCOM`,
+If any command other than `OpImageSampleWeightedQCOM`,
 `OpImageBoxFilterQCOM`,
 `OpImageBlockMatchWindowSSDQCOM`,
 `OpImageBlockMatchWindowSADQCOM`,
@@ -587,7 +600,7 @@ If any command other than `OpImageWeightedSampleQCOM`,
 `OpImageBlockMatchGatherSADQCOM`,
 `OpImageBlockMatchSSDQCOM`, or `OpImageBlockMatchSADQCOM` uses a
 [VkSampler](VkSampler.html) as a result of this command, then the sampler **must** not
-have been created with `VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM`
+have been created with [VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM](VkSamplerCreateFlagBits.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-OpImageBlockMatchWindow-09215) VUID-vkCmdSubpassShadingHUAWEI-OpImageBlockMatchWindow-09215
@@ -596,7 +609,7 @@ If a `OpImageBlockMatchWindow*QCOM` or
 `OpImageBlockMatchGather*QCOM` instruction is used to read from an
 [VkImageView](VkImageView.html) as a result of this command, then the image view’s
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-view-format-features) **must** contain
-`VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM`
+[VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-OpImageBlockMatchWindow-09216) VUID-vkCmdSubpassShadingHUAWEI-OpImageBlockMatchWindow-09216
@@ -624,11 +637,11 @@ Any shader invocation executed by this command **must**
 [](#VUID-vkCmdSubpassShadingHUAWEI-None-09600) VUID-vkCmdSubpassShadingHUAWEI-None-09600
 
 If a descriptor with type equal to any of
-`VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM`,
-`VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT` is accessed as a result of
+[VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html), or
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html) is accessed as a result of
 this command, all image subresources identified by that descriptor **must**
 be in the image layout identified when the descriptor was written
 
@@ -636,7 +649,7 @@ be in the image layout identified when the descriptor was written
 [](#VUID-vkCmdSubpassShadingHUAWEI-commandBuffer-10746) VUID-vkCmdSubpassShadingHUAWEI-commandBuffer-10746
 
 The `VkDeviceMemory` object allocated from a `VkMemoryHeap` with
-the `VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM` property that is bound to
+the [VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM](VkMemoryHeapFlagBits.html) property that is bound to
 a resource accessed as a result of this command **must** be the active
 bound [bound tile memory object](../../../../spec/latest/chapters/memory.html#memory-bind-tile-memory) in
 `commandBuffer`
@@ -646,8 +659,8 @@ bound [bound tile memory object](../../../../spec/latest/chapters/memory.html#me
 
 If this command is recorded inside a [tile    shading render pass](../../../../spec/latest/chapters/renderpass.html#renderpass-tile-shading) instance, the stages corresponding to the pipeline
 bind point used by this command **must** only include
-`VK_SHADER_STAGE_VERTEX_BIT`, `VK_SHADER_STAGE_FRAGMENT_BIT`,
-and/or `VK_SHADER_STAGE_COMPUTE_BIT`
+[VK_SHADER_STAGE_VERTEX_BIT](VkShaderStageFlagBits.html), [VK_SHADER_STAGE_FRAGMENT_BIT](VkShaderStageFlagBits.html),
+and/or [VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html)
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-None-10679) VUID-vkCmdSubpassShadingHUAWEI-None-10679
@@ -656,21 +669,20 @@ If this command is recorded where
 [per-tile execution model](../../../../spec/latest/chapters/renderpass.html#renderpass-per-tile-execution-model) is
 enabled, there **must** be no access to any image while the image was be
 transitioned to the
-`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` layout
+[VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT](VkImageLayout.html) layout
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-pDescription-09900) VUID-vkCmdSubpassShadingHUAWEI-pDescription-09900
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html) descriptor is accessed as a
 result of this command, then the underlying [VkTensorARM](VkTensorARM.html) object
-**must** have been created with a
-[VkTensorCreateInfoARM](VkTensorCreateInfoARM.html)::`pDescription` whose `usage` member
-contained `VK_TENSOR_USAGE_SHADER_BIT_ARM`
+**must** have been created with the [VK_TENSOR_USAGE_SHADER_BIT_ARM](VkTensorUsageFlagBitsARM.html)
+usage flag set
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-dimensionCount-09905) VUID-vkCmdSubpassShadingHUAWEI-dimensionCount-09905
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html) descriptor is accessed as a
 result of this command, then the `Rank` of the `OpTypeTensorARM`
 of the tensor resource variable **must** be equal to the
 `dimensionCount` provided via
@@ -680,17 +692,353 @@ underlying [VkTensorARM](VkTensorARM.html) object
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-OpTypeTensorARM-09906) VUID-vkCmdSubpassShadingHUAWEI-OpTypeTensorARM-09906
 
-If a `VK_DESCRIPTOR_TYPE_TENSOR_ARM` descriptor is accessed as a
+If a [VK_DESCRIPTOR_TYPE_TENSOR_ARM](VkDescriptorType.html) descriptor is accessed as a
 result of this command, then the element type of the
 `OpTypeTensorARM` of the tensor resource variable **must** be
 [compatible](../../../../spec/latest/appendices/spirvenv.html#spirvenv-tensor-formats) with the [VkFormat](VkFormat.html) of the
 [VkTensorViewARM](VkTensorViewARM.html) used for the access
 
 * 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11297) VUID-vkCmdSubpassShadingHUAWEI-None-11297
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](VkDescriptorMappingSourceEXT.html),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](VkDescriptorMappingSourceEXT.html), and
+a shader accesses a `OpTypeStruct` decorated with `Block` or
+`BufferBlock` using that mapping, the calculated offset for the
+resource heap **must** be a multiple of [    `bufferDescriptorAlignment`](../../../../spec/latest/chapters/limits.html#limits-bufferDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11298) VUID-vkCmdSubpassShadingHUAWEI-None-11298
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](VkDescriptorMappingSourceEXT.html),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](VkDescriptorMappingSourceEXT.html), and
+a shader accesses an `OpTypeImage` or `OpTypeSampledImage` using
+that mapping, the calculated offset for the resource heap **must** be
+a multiple of [    `imageDescriptorAlignment`](../../../../spec/latest/chapters/limits.html#limits-imageDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11299) VUID-vkCmdSubpassShadingHUAWEI-None-11299
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](VkDescriptorMappingSourceEXT.html),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](VkDescriptorMappingSourceEXT.html), and
+a shader accesses an `OpTypeSampler` or `OpTypeSampledImage` using
+that mapping, the calculated offset for the sampler heap **must** be
+a multiple of [    `samplerDescriptorAlignment`](../../../../spec/latest/chapters/limits.html#limits-samplerDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11397) VUID-vkCmdSubpassShadingHUAWEI-None-11397
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](VkDescriptorMappingSourceEXT.html),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](VkDescriptorMappingSourceEXT.html), and
+a shader accesses an `OpTypeTensorARM` using that mapping, the
+calculated offset for the resource heap **must** be a multiple of
+[`tensorDescriptorAlignment`](../../../../spec/latest/chapters/limits.html#limits-tensorDescriptorAlignment)
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11300) VUID-vkCmdSubpassShadingHUAWEI-None-11300
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](VkDescriptorMappingSourceEXT.html) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](VkDescriptorMappingSourceEXT.html), and a
+shader accesses a resource using that mapping, the value of the address
+at the expected location in push data **must** be a multiple of 4
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11301) VUID-vkCmdSubpassShadingHUAWEI-None-11301
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](VkDescriptorMappingSourceEXT.html) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](VkDescriptorMappingSourceEXT.html), and a
+shader accesses a resource using that mapping, the value of the address
+at the expected location in push data **must** be a valid
+`VkDeviceAddress` backed by physical memory at every offset
+specified by each mapping
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11302) VUID-vkCmdSubpassShadingHUAWEI-None-11302
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html), and
+a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a valid
+`VkDeviceAddress`
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11304) VUID-vkCmdSubpassShadingHUAWEI-None-11304
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+and a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a multiple of 8
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11305) VUID-vkCmdSubpassShadingHUAWEI-None-11305
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+and a shader accesses a resource using that mapping, the value of the
+address at the expected location in push data **must** be a valid
+`VkDeviceAddress` backed by physical memory at every offset
+specified by each mapping
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11306) VUID-vkCmdSubpassShadingHUAWEI-None-11306
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+and a shader accesses a resource using that mapping, the value of the
+address pointed to by the address in push data **must** be a valid
+`VkDeviceAddress`
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11308) VUID-vkCmdSubpassShadingHUAWEI-None-11308
+
+For each [descriptor heap](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps) that is statically used by
+[a bound shader](../../../../spec/latest/chapters/shaders.html#shaders-binding), either directly or via a
+[descriptor mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings), a valid descriptor heap
+**must** be bound
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11309) VUID-vkCmdSubpassShadingHUAWEI-None-11309
+
+If a [bound shader](../../../../spec/latest/chapters/shaders.html#shaders-binding) was created
+as a [VkShaderEXT](VkShaderEXT.html) with the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](VkShaderCreateFlagBitsEXT.html) flag or
+as part of a pipeline with the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2.html) flag, execution of
+this command **must** not result in any descriptor read accessing data
+outside of the user range of the respective heap bound by
+`vkCmdBind*HeapEXT` commands
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11372) VUID-vkCmdSubpassShadingHUAWEI-None-11372
+
+If any stage of the [VkPipeline](VkPipeline.html) object bound to the pipeline bind
+point used by this command accesses a uniform buffer or uniform texel
+buffer through a descriptor in the bound resource heap,
+that stage was created without enabling either
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](VkPipelineRobustnessBufferBehavior.html) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](VkPipelineRobustnessBufferBehavior.html) for
+`uniformBuffers`,
+the [`robustBufferAccess2`](../../../../spec/latest/chapters/features.html#features-robustBufferAccess2) feature
+is not enabled,
+and the [`robustBufferAccess`](../../../../spec/latest/chapters/features.html#features-robustBufferAccess)
+feature is not enabled, that stage **must** not access values outside of
+the range of the descriptor specified via [VkDeviceAddressRangeEXT](VkDeviceAddressRangeEXT.html)
+when the descriptor was written
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11373) VUID-vkCmdSubpassShadingHUAWEI-None-11373
+
+If any stage of the [VkPipeline](VkPipeline.html) object bound to the pipeline bind
+point used by this command accesses a storage buffer or storage texel
+buffer through a descriptor in the bound resource heap,
+that stage was created without enabling either
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS](VkPipelineRobustnessBufferBehavior.html) or
+[VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2](VkPipelineRobustnessBufferBehavior.html) for
+`storageBuffers`,
+the [`robustBufferAccess2`](../../../../spec/latest/chapters/features.html#features-robustBufferAccess2) feature
+is not enabled,
+and the [`robustBufferAccess`](../../../../spec/latest/chapters/features.html#features-robustBufferAccess)
+feature is not enabled, that stage **must** not access values outside of
+the range of the descriptor specified by [VkDeviceAddressRangeEXT](VkDeviceAddressRangeEXT.html)
+when the descriptor was written
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11374) VUID-vkCmdSubpassShadingHUAWEI-None-11374
+
+If
+the [`robustBufferAccess2`](../../../../spec/latest/chapters/features.html#features-robustBufferAccess2) feature
+is not enabled,
+the [`robustBufferAccess`](../../../../spec/latest/chapters/features.html#features-robustBufferAccess) feature is
+not enabled, and any [VkShaderEXT](VkShaderEXT.html) bound to a stage corresponding to
+the pipeline bind point used by this command accesses a uniform buffer,
+uniform texel buffer, storage buffer, or storage texel buffer, that
+shader **must** not access values outside of the range of the buffer as
+specified by [VkDeviceAddressRangeEXT](VkDeviceAddressRangeEXT.html) when the descriptor was
+written
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-pBindInfo-11375) VUID-vkCmdSubpassShadingHUAWEI-pBindInfo-11375
+
+If any [bound shader](../../../../spec/latest/chapters/shaders.html#shaders-binding) uses an embedded sampler via a
+[descriptor mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings), the value of
+`pBindInfo->reservedRangeSize` set for [vkCmdBindSamplerHeapEXT](vkCmdBindSamplerHeapEXT.html)
+**must** be greater than or equal to
+[    `minSamplerHeapReservedRangeWithEmbedded`](../../../../spec/latest/chapters/limits.html#limits-minSamplerHeapReservedRangeWithEmbedded)
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11376) VUID-vkCmdSubpassShadingHUAWEI-None-11376
+
+If a [bound shader](../../../../spec/latest/chapters/shaders.html#shaders-binding) was created
+as a [VkShaderEXT](VkShaderEXT.html) with the
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](VkShaderCreateFlagBitsEXT.html) flag or
+as part of a pipeline with the
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2.html) flag, and that shader
+statically uses a push constant value, that value **must** have been set by
+[vkCmdPushDataEXT](vkCmdPushDataEXT.html)
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11398) VUID-vkCmdSubpassShadingHUAWEI-None-11398
+
+If a [bound shader](../../../../spec/latest/chapters/shaders.html#shaders-binding) was created with a
+[descriptor mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_DATA_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_DATA_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_RESOURCE_HEAP_DATA_EXT](VkDescriptorMappingSourceEXT.html), or
+[VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html), and a shader
+accesses a resource using that mapping, the access **must** not be
+[out of bounds](../../../../spec/latest/chapters/shaders.html#shaders-execution-memory-access-bounds)
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11437) VUID-vkCmdSubpassShadingHUAWEI-None-11437
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](VkDescriptorMappingSourceEXT.html), or
+[VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html), and a shader
+accesses a resource using that mapping, the buffer from which the
+address in push data was queried **must** have been created with the
+[VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11438) VUID-vkCmdSubpassShadingHUAWEI-None-11438
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html), and a shader
+accesses a uniform buffer using that mapping, the address that the
+uniform buffer is mapped to **must** have been queried from a buffer
+created with the [VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11441) VUID-vkCmdSubpassShadingHUAWEI-None-11441
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html), and a shader
+accesses a uniform buffer using that mapping, the address that the
+uniform buffer is mapped to **must** be aligned to
+[    `minUniformBufferOffsetAlignment`](../../../../spec/latest/chapters/limits.html#limits-minUniformBufferOffsetAlignment)
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11439) VUID-vkCmdSubpassShadingHUAWEI-None-11439
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html), and a shader
+accesses a storage buffer using that mapping, the address that the
+storage buffer is mapped to **must** have been queried from a buffer
+created with the [VK_BUFFER_USAGE_STORAGE_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11442) VUID-vkCmdSubpassShadingHUAWEI-None-11442
+
+If a pipeline is bound to the pipeline bind point used by this command,
+or shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html), and a shader
+accesses a storage buffer using that mapping, the address that the
+storage buffer is mapped to **must** be aligned to
+[    `minStorageBufferOffsetAlignment`](../../../../spec/latest/chapters/limits.html#limits-minStorageBufferOffsetAlignment)
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-None-11485) VUID-vkCmdSubpassShadingHUAWEI-None-11485
+
+    If a pipeline is bound to the pipeline bind point used by this command,
+    or shader is bound to a shader stage used by this command,
+    and it was created with a [descriptor    mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+    [VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+    or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html), and a shader
+    accesses an acceleration structure using that mapping, the address that
+    the acceleration structure is mapped to **must** be an acceleration
+    structure
+    address retrieved from a [VkAccelerationStructureKHR](VkAccelerationStructureKHR.html) object via
+    [vkGetAccelerationStructureDeviceAddressKHR](vkGetAccelerationStructureDeviceAddressKHR.html)
+or
+    handle retrieved from a [VkAccelerationStructureNV](VkAccelerationStructureNV.html) object via
+    [vkGetAccelerationStructureHandleNV](vkGetAccelerationStructureHandleNV.html)
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-index-11450) VUID-vkCmdSubpassShadingHUAWEI-index-11450
+
+If a shader uses a sampler descriptor to sample an image as a result of
+this command, and that sampler descriptor uses a custom border color
+with an index defined by
+[VkSamplerCustomBorderColorIndexCreateInfoEXT](VkSamplerCustomBorderColorIndexCreateInfoEXT.html), the value of
+[VkSamplerCustomBorderColorIndexCreateInfoEXT](VkSamplerCustomBorderColorIndexCreateInfoEXT.html)::`index` **must**
+have been registered before this command was recorded, and still be
+registered during the sampling operation, with an identically defined
+color
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-protectedNoFault-11455) VUID-vkCmdSubpassShadingHUAWEI-protectedNoFault-11455
+
+If [`protectedNoFault`](../../../../spec/latest/chapters/devsandqueues.html#limits-protectedNoFault) is not supported,
+a pipeline is bound to the pipeline bind point used by this command,
+or a shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using [VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+[VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html),
+or [VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT](VkDescriptorMappingSourceEXT.html), the address
+that the resource is mapped to **must** have been queried from a buffer
+created without the [VK_BUFFER_CREATE_PROTECTED_BIT](VkBufferCreateFlagBits.html) create flag set
+
+* 
+[](#VUID-vkCmdSubpassShadingHUAWEI-protectedNoFault-11456) VUID-vkCmdSubpassShadingHUAWEI-protectedNoFault-11456
+
+If [`protectedNoFault`](../../../../spec/latest/chapters/devsandqueues.html#limits-protectedNoFault) is not supported,
+a pipeline is bound to the pipeline bind point used by this command,
+or a shader is bound to a shader stage used by this command,
+and it was created with a [descriptor    mapping](../../../../spec/latest/chapters/descriptorheaps.html#descriptorheaps-bindings) using
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT](VkDescriptorMappingSourceEXT.html) or
+[VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT](VkDescriptorMappingSourceEXT.html),
+the address of the indirect memory **must** have been queried from a buffer
+created without the [VK_BUFFER_CREATE_PROTECTED_BIT](VkBufferCreateFlagBits.html) create flag set
+
+* 
 [](#VUID-vkCmdSubpassShadingHUAWEI-None-04931) VUID-vkCmdSubpassShadingHUAWEI-None-04931
 
 This command **must** be called in a subpass with bind point
-`VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI`.
+[VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI](VkPipelineBindPoint.html).
 No draw commands can be called in the same subpass.
 Only one [vkCmdSubpassShadingHUAWEI](#) command can be called in a
 subpass
@@ -710,7 +1058,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-commandBuffer-cmdpool) VUID-vkCmdSubpassShadingHUAWEI-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSubpassShadingHUAWEI-renderpass) VUID-vkCmdSubpassShadingHUAWEI-renderpass

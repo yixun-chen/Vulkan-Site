@@ -44,7 +44,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMemoryZirconHandlePropertiesFUCHSIA-sType-sType) VUID-VkMemoryZirconHandlePropertiesFUCHSIA-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_MEMORY_ZIRCON_HANDLE_PROPERTIES_FUCHSIA`
+ `sType` **must** be [VK_STRUCTURE_TYPE_MEMORY_ZIRCON_HANDLE_PROPERTIES_FUCHSIA](VkStructureType.html)
 
 * 
 [](#VUID-VkMemoryZirconHandlePropertiesFUCHSIA-pNext-pNext) VUID-VkMemoryZirconHandlePropertiesFUCHSIA-pNext-pNext

@@ -65,7 +65,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkClusterAccelerationStructureInputInfoNV-sType-sType) VUID-VkClusterAccelerationStructureInputInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_INPUT_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_INPUT_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkClusterAccelerationStructureInputInfoNV-pNext-pNext) VUID-VkClusterAccelerationStructureInputInfoNV-pNext-pNext
@@ -90,17 +90,17 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkClusterAccelerationStructureInputInfoNV-pClustersBottomLevel-parameter) VUID-VkClusterAccelerationStructureInputInfoNV-pClustersBottomLevel-parameter
 
- If `opType` is `VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_CLUSTERS_BOTTOM_LEVEL_NV`, the `pClustersBottomLevel` member of `opInput` **must** be a valid pointer to a [VkClusterAccelerationStructureClustersBottomLevelInputNV](VkClusterAccelerationStructureClustersBottomLevelInputNV.html) structure
+ If `opType` is [VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_CLUSTERS_BOTTOM_LEVEL_NV](VkClusterAccelerationStructureOpTypeNV.html), the `pClustersBottomLevel` member of `opInput` **must** be a valid pointer to a [VkClusterAccelerationStructureClustersBottomLevelInputNV](VkClusterAccelerationStructureClustersBottomLevelInputNV.html) structure
 
 * 
 [](#VUID-VkClusterAccelerationStructureInputInfoNV-pTriangleClusters-parameter) VUID-VkClusterAccelerationStructureInputInfoNV-pTriangleClusters-parameter
 
- If `opType` is `VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_NV`, `VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_TEMPLATE_NV`, `VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_INSTANTIATE_TRIANGLE_CLUSTER_NV`, or `VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_GET_CLUSTER_TEMPLATE_INDICES_NV`, the `pTriangleClusters` member of `opInput` **must** be a valid pointer to a [VkClusterAccelerationStructureTriangleClusterInputNV](VkClusterAccelerationStructureTriangleClusterInputNV.html) structure
+ If `opType` is [VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_NV](VkClusterAccelerationStructureOpTypeNV.html), [VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_TEMPLATE_NV](VkClusterAccelerationStructureOpTypeNV.html), [VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_INSTANTIATE_TRIANGLE_CLUSTER_NV](VkClusterAccelerationStructureOpTypeNV.html), or [VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_GET_CLUSTER_TEMPLATE_INDICES_NV](VkClusterAccelerationStructureOpTypeNV.html), the `pTriangleClusters` member of `opInput` **must** be a valid pointer to a [VkClusterAccelerationStructureTriangleClusterInputNV](VkClusterAccelerationStructureTriangleClusterInputNV.html) structure
 
 * 
 [](#VUID-VkClusterAccelerationStructureInputInfoNV-pMoveObjects-parameter) VUID-VkClusterAccelerationStructureInputInfoNV-pMoveObjects-parameter
 
- If `opType` is `VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_MOVE_OBJECTS_NV`, the `pMoveObjects` member of `opInput` **must** be a valid pointer to a [VkClusterAccelerationStructureMoveObjectsInputNV](VkClusterAccelerationStructureMoveObjectsInputNV.html) structure
+ If `opType` is [VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_MOVE_OBJECTS_NV](VkClusterAccelerationStructureOpTypeNV.html), the `pMoveObjects` member of `opInput` **must** be a valid pointer to a [VkClusterAccelerationStructureMoveObjectsInputNV](VkClusterAccelerationStructureMoveObjectsInputNV.html) structure
 
 [VK_NV_cluster_acceleration_structure](VK_NV_cluster_acceleration_structure.html), [VkBuildAccelerationStructureFlagsKHR](VkBuildAccelerationStructureFlagsKHR.html), [VkClusterAccelerationStructureCommandsInfoNV](VkClusterAccelerationStructureCommandsInfoNV.html), [VkClusterAccelerationStructureOpInputNV](VkClusterAccelerationStructureOpInputNV.html), [VkClusterAccelerationStructureOpModeNV](VkClusterAccelerationStructureOpModeNV.html), [VkClusterAccelerationStructureOpTypeNV](VkClusterAccelerationStructureOpTypeNV.html), [VkStructureType](VkStructureType.html), [vkGetClusterAccelerationStructureBuildSizesNV](vkGetClusterAccelerationStructureBuildSizesNV.html)
 

@@ -48,7 +48,7 @@ If the `VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT` structure is include
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -56,7 +56,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_graphics_pipeline_library](VK_EXT_graphics_pipeline_library.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

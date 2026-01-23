@@ -29,17 +29,17 @@ typedef enum VkAccelerationStructureMemoryRequirementsTypeNV {
 } VkAccelerationStructureMemoryRequirementsTypeNV;
 
 * 
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV`
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV](#)
 requests the memory requirement for the `VkAccelerationStructureNV`
 backing store.
 
 * 
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV`
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV](#)
 requests the memory requirement for scratch space during the initial
 build.
 
 * 
-`VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV`
+[VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV](#)
 requests the memory requirement for scratch space during an update.
 
 [VK_NV_ray_tracing](VK_NV_ray_tracing.html), [VkAccelerationStructureMemoryRequirementsInfoNV](VkAccelerationStructureMemoryRequirementsInfoNV.html)

@@ -68,7 +68,7 @@ Further, if the structure is not present, the access rights will be
 
 for handles of the following types:
 
-`VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT`
+[VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT](VkExternalFenceHandleTypeFlagBits.html)
 
 1
 
@@ -80,7 +80,7 @@ Valid Usage
 [](#VUID-VkExportFenceWin32HandleInfoKHR-handleTypes-01447) VUID-VkExportFenceWin32HandleInfoKHR-handleTypes-01447
 
 If [VkExportFenceCreateInfo](VkExportFenceCreateInfo.html)::`handleTypes` does not include
-`VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT`, a
+[VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT](VkExternalFenceHandleTypeFlagBits.html), a
 `VkExportFenceWin32HandleInfoKHR` structure **must** not be included in
 the `pNext` chain of [VkFenceCreateInfo](VkFenceCreateInfo.html)
 
@@ -89,7 +89,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportFenceWin32HandleInfoKHR-sType-sType) VUID-VkExportFenceWin32HandleInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkExportFenceWin32HandleInfoKHR-pAttributes-parameter) VUID-VkExportFenceWin32HandleInfoKHR-pAttributes-parameter

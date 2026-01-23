@@ -54,27 +54,27 @@ Valid Usage
 * 
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-00777) VUID-vkCmdBindPipeline-pipelineBindPoint-00777
 
-If `pipelineBindPoint` is `VK_PIPELINE_BIND_POINT_COMPUTE`, the
+If `pipelineBindPoint` is [VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html), the
 `VkCommandPool` that `commandBuffer` was allocated from **must**
 support compute operations
 
 * 
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-00778) VUID-vkCmdBindPipeline-pipelineBindPoint-00778
 
-If `pipelineBindPoint` is `VK_PIPELINE_BIND_POINT_GRAPHICS`, the
+If `pipelineBindPoint` is [VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html), the
 `VkCommandPool` that `commandBuffer` was allocated from **must**
 support graphics operations
 
 * 
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-00779) VUID-vkCmdBindPipeline-pipelineBindPoint-00779
 
-If `pipelineBindPoint` is `VK_PIPELINE_BIND_POINT_COMPUTE`,
+If `pipelineBindPoint` is [VK_PIPELINE_BIND_POINT_COMPUTE](VkPipelineBindPoint.html),
 `pipeline` **must** be a compute pipeline
 
 * 
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-00780) VUID-vkCmdBindPipeline-pipelineBindPoint-00780
 
-If `pipelineBindPoint` is `VK_PIPELINE_BIND_POINT_GRAPHICS`,
+If `pipelineBindPoint` is [VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html),
 `pipeline` **must** be a graphics pipeline
 
 * 
@@ -91,11 +91,11 @@ the previous pipeline
 
 If
 [VkPhysicalDeviceSampleLocationsPropertiesEXT](VkPhysicalDeviceSampleLocationsPropertiesEXT.html)::`variableSampleLocations`
-is `VK_FALSE`, and `pipeline` is a graphics pipeline created
+is [VK_FALSE](VK_FALSE.html), and `pipeline` is a graphics pipeline created
 with a `renderPass` that is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html) and with a
 [VkPipelineSampleLocationsStateCreateInfoEXT](VkPipelineSampleLocationsStateCreateInfoEXT.html) structure having its
-`sampleLocationsEnable` member set to `VK_TRUE` but without
-`VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT` enabled then the current
+`sampleLocationsEnable` member set to [VK_TRUE](VK_TRUE.html) but without
+[VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT](VkDynamicState.html) enabled then the current
 render pass instance **must** have been begun by specifying a
 [VkRenderPassSampleLocationsBeginInfoEXT](VkRenderPassSampleLocationsBeginInfoEXT.html) structure whose
 `pPostSubpassSampleLocations` member contains an element with a
@@ -114,7 +114,7 @@ This command **must** not be recorded when transform feedback is active
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-02391) VUID-vkCmdBindPipeline-pipelineBindPoint-02391
 
 If `pipelineBindPoint` is
-`VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR`, the `VkCommandPool`
+[VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR](VkPipelineBindPoint.html), the `VkCommandPool`
 that `commandBuffer` was allocated from **must** support compute
 operations
 
@@ -122,14 +122,14 @@ operations
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-02392) VUID-vkCmdBindPipeline-pipelineBindPoint-02392
 
 If `pipelineBindPoint` is
-`VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR`, `pipeline` **must** be a
+[VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR](VkPipelineBindPoint.html), `pipeline` **must** be a
 ray tracing pipeline
 
 * 
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-06721) VUID-vkCmdBindPipeline-pipelineBindPoint-06721
 
 If `pipelineBindPoint` is
-`VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR`, `commandBuffer` **must**
+[VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR](VkPipelineBindPoint.html), `commandBuffer` **must**
 not be a protected command buffer
 
 * 
@@ -138,7 +138,7 @@ not be a protected command buffer
 If the [    `pipelineProtectedAccess`](../../../../spec/latest/chapters/features.html#features-pipelineProtectedAccess) feature is enabled, and
 `commandBuffer` is a protected command buffer, `pipeline` **must**
 have been created without
-`VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT`
+[VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-vkCmdBindPipeline-pipelineProtectedAccess-07409) VUID-vkCmdBindPipeline-pipelineProtectedAccess-07409
@@ -146,13 +146,13 @@ have been created without
 If the [    `pipelineProtectedAccess`](../../../../spec/latest/chapters/features.html#features-pipelineProtectedAccess) feature is enabled, and
 `commandBuffer` is not a protected command buffer, `pipeline`
 **must** have been created without
-`VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT`
+[VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-vkCmdBindPipeline-pipeline-03382) VUID-vkCmdBindPipeline-pipeline-03382
 
 `pipeline` **must** not have been created with
-`VK_PIPELINE_CREATE_LIBRARY_BIT_KHR` set
+[VK_PIPELINE_CREATE_LIBRARY_BIT_KHR](VkPipelineCreateFlagBits.html) set
 
 * 
 [](#VUID-vkCmdBindPipeline-commandBuffer-04808) VUID-vkCmdBindPipeline-commandBuffer-04808
@@ -160,11 +160,11 @@ If the [    `pipelineProtectedAccess`](../../../../spec/latest/chapters/features
 If `commandBuffer` is a secondary command buffer with
 [VkCommandBufferInheritanceViewportScissorInfoNV](VkCommandBufferInheritanceViewportScissorInfoNV.html)::`viewportScissor2D`
 enabled and `pipelineBindPoint` is
-`VK_PIPELINE_BIND_POINT_GRAPHICS`, then the `pipeline` **must**
-have been created with `VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` or
-`VK_DYNAMIC_STATE_VIEWPORT`, and
-`VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT` or
-`VK_DYNAMIC_STATE_SCISSOR` enabled
+[VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html), then the `pipeline` **must**
+have been created with [VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT](VkDynamicState.html) or
+[VK_DYNAMIC_STATE_VIEWPORT](VkDynamicState.html), and
+[VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT](VkDynamicState.html) or
+[VK_DYNAMIC_STATE_SCISSOR](VkDynamicState.html) enabled
 
 * 
 [](#VUID-vkCmdBindPipeline-commandBuffer-04809) VUID-vkCmdBindPipeline-commandBuffer-04809
@@ -172,18 +172,18 @@ have been created with `VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT` or
 If `commandBuffer` is a secondary command buffer with
 [VkCommandBufferInheritanceViewportScissorInfoNV](VkCommandBufferInheritanceViewportScissorInfoNV.html)::`viewportScissor2D`
 enabled and `pipelineBindPoint` is
-`VK_PIPELINE_BIND_POINT_GRAPHICS` and `pipeline` was created
+[VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html) and `pipeline` was created
 with [VkPipelineDiscardRectangleStateCreateInfoEXT](VkPipelineDiscardRectangleStateCreateInfoEXT.html) structure and
 its `discardRectangleCount` member is not `0`, or the pipeline was
-created with `VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT`
+created with [VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT](VkDynamicState.html)
 enabled, then the pipeline **must** have been created with
-`VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT` enabled
+[VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT](VkDynamicState.html) enabled
 
 * 
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-04881) VUID-vkCmdBindPipeline-pipelineBindPoint-04881
 
-If `pipelineBindPoint` is `VK_PIPELINE_BIND_POINT_GRAPHICS` and
-the [    `provokingVertexModePerPipeline`](../../../../spec/latest/chapters/limits.html#limits-provokingVertexModePerPipeline) limit is `VK_FALSE`, then
+If `pipelineBindPoint` is [VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html) and
+the [    `provokingVertexModePerPipeline`](../../../../spec/latest/chapters/limits.html#limits-provokingVertexModePerPipeline) limit is [VK_FALSE](VK_FALSE.html), then
 pipeline’s
 [VkPipelineRasterizationProvokingVertexStateCreateInfoEXT](VkPipelineRasterizationProvokingVertexStateCreateInfoEXT.html)::`provokingVertexMode`
 **must** be the same as that of any other pipelines previously bound to
@@ -194,7 +194,7 @@ pipeline already bound when beginning the render pass instance
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-04949) VUID-vkCmdBindPipeline-pipelineBindPoint-04949
 
 If `pipelineBindPoint` is
-`VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI`, the
+[VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI](VkPipelineBindPoint.html), the
 `VkCommandPool` that `commandBuffer` was allocated from **must**
 support compute operations
 
@@ -202,22 +202,22 @@ support compute operations
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-04950) VUID-vkCmdBindPipeline-pipelineBindPoint-04950
 
 If `pipelineBindPoint` is
-`VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI`, `pipeline`
+[VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI](VkPipelineBindPoint.html), `pipeline`
 **must** be a subpass shading pipeline
 
 * 
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-09910) VUID-vkCmdBindPipeline-pipelineBindPoint-09910
 
 If `pipelineBindPoint` is
-`VK_PIPELINE_BIND_POINT_DATA_GRAPH_ARM`, the `VkCommandPool`
+[VK_PIPELINE_BIND_POINT_DATA_GRAPH_ARM](VkPipelineBindPoint.html), the `VkCommandPool`
 that `commandBuffer` was allocated from **must** have been created for
-a queue family that supports `VK_QUEUE_DATA_GRAPH_BIT_ARM`
+a queue family that supports [VK_QUEUE_DATA_GRAPH_BIT_ARM](VkQueueFlagBits.html)
 
 * 
 [](#VUID-vkCmdBindPipeline-pipelineBindPoint-09911) VUID-vkCmdBindPipeline-pipelineBindPoint-09911
 
 If `pipelineBindPoint` is
-`VK_PIPELINE_BIND_POINT_DATA_GRAPH_ARM`, `pipeline` **must** be a
+[VK_PIPELINE_BIND_POINT_DATA_GRAPH_ARM](VkPipelineBindPoint.html), `pipeline` **must** be a
 [data graph pipeline](../../../../spec/latest/chapters/VK_ARM_data_graph/graphs.html#graphs-pipelines)
 
 * 
@@ -270,7 +270,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindPipeline-commandBuffer-cmdpool) VUID-vkCmdBindPipeline-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_DATA_GRAPH_BIT_ARM`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_DATA_GRAPH_BIT_ARM](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBindPipeline-videocoding) VUID-vkCmdBindPipeline-videocoding

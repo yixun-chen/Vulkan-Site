@@ -30,32 +30,32 @@ typedef enum VkImageCompressionFlagBitsEXT {
 } VkImageCompressionFlagBitsEXT;
 
 * 
-`VK_IMAGE_COMPRESSION_DEFAULT_EXT` specifies that the default image
+[VK_IMAGE_COMPRESSION_DEFAULT_EXT](#) specifies that the default image
 compression setting is used.
 Implementations **must** not apply fixed-rate compression.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_DEFAULT_EXT` specifies that the
+[VK_IMAGE_COMPRESSION_FIXED_RATE_DEFAULT_EXT](#) specifies that the
 implementation **may** choose any supported fixed-rate compression setting
 in an implementation-defined manner based on the properties of the
 image.
 
 * 
-`VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT` specifies that
+[VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT](#) specifies that
 fixed-rate compression **may** be used and that the allowed compression
 rates are specified by
 [VkImageCompressionControlEXT](VkImageCompressionControlEXT.html)::`pFixedRateFlags`.
 
 * 
-`VK_IMAGE_COMPRESSION_DISABLED_EXT` specifies that all lossless and
+[VK_IMAGE_COMPRESSION_DISABLED_EXT](#) specifies that all lossless and
 fixed-rate compression **should** be disabled.
 
 If [VkImageCompressionControlEXT](VkImageCompressionControlEXT.html)::`flags` is
-`VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT`, then the `i`th
+[VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT](#), then the `i`th
 member of the `pFixedRateFlags` array specifies the allowed compression
 rates for the image’s `i`th plane.
 
-|  | If `VK_IMAGE_COMPRESSION_DISABLED_EXT` is included in
+|  | If [VK_IMAGE_COMPRESSION_DISABLED_EXT](#) is included in
 | --- | --- |
 [VkImageCompressionControlEXT](VkImageCompressionControlEXT.html)::`flags`, both lossless and
 fixed-rate compression will be disabled.

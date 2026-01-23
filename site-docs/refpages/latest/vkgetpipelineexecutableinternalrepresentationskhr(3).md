@@ -61,7 +61,7 @@ overwritten with the number of structures actually written to
 If `pInternalRepresentationCount` is less than the number of internal
 representations associated with the pipeline executable, at most
 `pInternalRepresentationCount` structures will be written, and
-`VK_INCOMPLETE` will be returned instead of `VK_SUCCESS`, to
+[VK_INCOMPLETE](VkResult.html) will be returned instead of [VK_SUCCESS](VkResult.html), to
 indicate that not all the available representations were returned.
 
 While the details of the internal representations remain
@@ -88,7 +88,7 @@ created with `device`
 
 The `pipeline` member of `pExecutableInfo` **must** have been
 created with
-`VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR`
+[VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR](VkPipelineCreateFlagBits.html)
 
 Valid Usage (Implicit)
 
@@ -117,24 +117,24 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_pipeline_executable_properties](VK_KHR_pipeline_executable_properties.html), [VkDevice](VkDevice.html), [VkPipelineExecutableInfoKHR](VkPipelineExecutableInfoKHR.html), [VkPipelineExecutableInternalRepresentationKHR](VkPipelineExecutableInternalRepresentationKHR.html)
 

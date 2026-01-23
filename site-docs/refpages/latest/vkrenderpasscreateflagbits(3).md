@@ -30,12 +30,12 @@ typedef enum VkRenderPassCreateFlagBits {
 } VkRenderPassCreateFlagBits;
 
 * 
-`VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM` specifies that the
+[VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM](#) specifies that the
 created render pass is compatible with
 [render pass transform](../../../../spec/latest/chapters/vertexpostproc.html#vertexpostproc-renderpass-transform).
 
 * 
-`VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE`
+[VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE](#)
 specifies that the created render pass is usable with layered fragment
 density maps.
 

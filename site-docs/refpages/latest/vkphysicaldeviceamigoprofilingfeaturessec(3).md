@@ -35,7 +35,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceAmigoProfilingFeaturesSEC-sType-sType) VUID-VkPhysicalDeviceAmigoProfilingFeaturesSEC-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_AMIGO_PROFILING_FEATURES_SEC`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_AMIGO_PROFILING_FEATURES_SEC](VkStructureType.html)
 
 [VK_SEC_amigo_profiling](VK_SEC_amigo_profiling.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

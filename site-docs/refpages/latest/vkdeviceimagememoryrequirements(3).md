@@ -49,8 +49,8 @@ containing parameters affecting creation of the image to query.
 aspect corresponding to the image plane to query.
 This parameter is ignored unless
 `pCreateInfo->tiling` is
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, or
-`pCreateInfo->flags` has `VK_IMAGE_CREATE_DISJOINT_BIT` set.
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html), or
+`pCreateInfo->flags` has [VK_IMAGE_CREATE_DISJOINT_BIT](VkImageCreateFlagBits.html) set.
 
 Valid Usage
 
@@ -86,22 +86,22 @@ with non-zero `externalFormat`
 [](#VUID-VkDeviceImageMemoryRequirements-pCreateInfo-06417) VUID-VkDeviceImageMemoryRequirements-pCreateInfo-06417
 
 If `pCreateInfo->format` specifies a *multi-planar* format and
-`pCreateInfo->flags` has `VK_IMAGE_CREATE_DISJOINT_BIT` set then
-`planeAspect` **must** not be `VK_IMAGE_ASPECT_NONE_KHR`
+`pCreateInfo->flags` has [VK_IMAGE_CREATE_DISJOINT_BIT](VkImageCreateFlagBits.html) set then
+`planeAspect` **must** not be [VK_IMAGE_ASPECT_NONE_KHR](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkDeviceImageMemoryRequirements-pCreateInfo-06419) VUID-VkDeviceImageMemoryRequirements-pCreateInfo-06419
 
-If `pCreateInfo->flags` has `VK_IMAGE_CREATE_DISJOINT_BIT` set
-and if the `pCreateInfo->tiling` is `VK_IMAGE_TILING_LINEAR` or
-`VK_IMAGE_TILING_OPTIMAL`, then `planeAspect` **must** be a single
+If `pCreateInfo->flags` has [VK_IMAGE_CREATE_DISJOINT_BIT](VkImageCreateFlagBits.html) set
+and if the `pCreateInfo->tiling` is [VK_IMAGE_TILING_LINEAR](VkImageTiling.html) or
+[VK_IMAGE_TILING_OPTIMAL](VkImageTiling.html), then `planeAspect` **must** be a single
 valid [multi-planar aspect mask](../../../../spec/latest/chapters/formats.html#formats-multiplanar-image-aspect) bit
 
 * 
 [](#VUID-VkDeviceImageMemoryRequirements-pCreateInfo-06420) VUID-VkDeviceImageMemoryRequirements-pCreateInfo-06420
 
 If `pCreateInfo->tiling` is
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then `planeAspect`
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](VkImageTiling.html), then `planeAspect`
 **must** be a single valid *memory plane* for the image (that is,
 `aspectMask` **must** specify a plane index that is less than the
 [VkDrmFormatModifierPropertiesEXT](VkDrmFormatModifierPropertiesEXT.html)::`drmFormatModifierPlaneCount`
@@ -113,7 +113,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceImageMemoryRequirements-sType-sType) VUID-VkDeviceImageMemoryRequirements-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_IMAGE_MEMORY_REQUIREMENTS`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_IMAGE_MEMORY_REQUIREMENTS](VkStructureType.html)
 
 * 
 [](#VUID-VkDeviceImageMemoryRequirements-pNext-pNext) VUID-VkDeviceImageMemoryRequirements-pNext-pNext

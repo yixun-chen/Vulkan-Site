@@ -101,7 +101,7 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT](VkStructureType.html)
 
 * 
 [ReplicatedCompositesEXT](../../../../spec/latest/appendices/spirvenv.html#spirvenv-capabilities-table-ReplicatedCompositesEXT)

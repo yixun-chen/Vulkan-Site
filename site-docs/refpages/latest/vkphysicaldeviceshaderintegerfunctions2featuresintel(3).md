@@ -49,7 +49,7 @@ If the `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTELfeatures`. structure
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTELfeatures`., it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL-sType-sType) VUID-VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL](VkStructureType.html)
 
 [VK_INTEL_shader_integer_functions2](VK_INTEL_shader_integer_functions2.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

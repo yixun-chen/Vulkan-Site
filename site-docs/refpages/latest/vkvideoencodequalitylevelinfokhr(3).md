@@ -67,7 +67,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkVideoEncodeQualityLevelInfoKHR-sType-sType) VUID-VkVideoEncodeQualityLevelInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR](VkStructureType.html)
 
 [VK_KHR_video_encode_queue](VK_KHR_video_encode_queue.html), [VkStructureType](VkStructureType.html)
 

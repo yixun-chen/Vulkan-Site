@@ -122,10 +122,10 @@ This extension additionally allows applications to copy data between images
 on the host.
 
 To support initializing a new image in preparation for a host copy, it is
-now possible to transition a new image to `VK_IMAGE_LAYOUT_GENERAL` or
+now possible to transition a new image to [VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html) or
 other host-copyable layouts via [vkTransitionImageLayoutEXT](vkTransitionImageLayout.html).
 Additionally, it is possible to perform copies that preserve the swizzling
-layout of the image by using the `VK_HOST_IMAGE_COPY_MEMCPY_BIT_EXT`
+layout of the image by using the [VK_HOST_IMAGE_COPY_MEMCPY_BIT_EXT](VkHostImageCopyFlagBits.html)
 flag.
 In that case, the memory size needed for copies to or from a buffer can be
 retrieved by chaining [VkSubresourceHostMemcpySizeEXT](VkSubresourceHostMemcpySize.html) to `pLayout`
@@ -205,52 +205,52 @@ Extending [VkSubresourceLayout2](VkSubresourceLayout2.html):
 * 
 Extending [VkFormatFeatureFlagBits2](VkFormatFeatureFlagBits2.html):
 
-`VK_FORMAT_FEATURE_2_HOST_IMAGE_TRANSFER_BIT_EXT`
+[VK_FORMAT_FEATURE_2_HOST_IMAGE_TRANSFER_BIT_EXT](VkFormatFeatureFlagBits2.html)
 
 Extending [VkHostImageCopyFlagBits](VkHostImageCopyFlagBits.html):
 
 * 
-`VK_HOST_IMAGE_COPY_MEMCPY_BIT_EXT`
+[VK_HOST_IMAGE_COPY_MEMCPY_BIT_EXT](VkHostImageCopyFlagBits.html)
 
 * 
-`VK_HOST_IMAGE_COPY_MEMCPY_EXT`
+[VK_HOST_IMAGE_COPY_MEMCPY_EXT](VkHostImageCopyFlagBits.html)
 
 Extending [VkImageUsageFlagBits](VkImageUsageFlagBits.html):
 
 * 
-`VK_IMAGE_USAGE_HOST_TRANSFER_BIT_EXT`
+[VK_IMAGE_USAGE_HOST_TRANSFER_BIT_EXT](VkImageUsageFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_COPY_IMAGE_TO_IMAGE_INFO_EXT`
+[VK_STRUCTURE_TYPE_COPY_IMAGE_TO_IMAGE_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_COPY_IMAGE_TO_MEMORY_INFO_EXT`
+[VK_STRUCTURE_TYPE_COPY_IMAGE_TO_MEMORY_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_COPY_MEMORY_TO_IMAGE_INFO_EXT`
+[VK_STRUCTURE_TYPE_COPY_MEMORY_TO_IMAGE_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY_EXT`
+[VK_STRUCTURE_TYPE_HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_HOST_IMAGE_LAYOUT_TRANSITION_INFO_EXT`
+[VK_STRUCTURE_TYPE_HOST_IMAGE_LAYOUT_TRANSITION_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_IMAGE_TO_MEMORY_COPY_EXT`
+[VK_STRUCTURE_TYPE_IMAGE_TO_MEMORY_COPY_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_MEMORY_TO_IMAGE_COPY_EXT`
+[VK_STRUCTURE_TYPE_MEMORY_TO_IMAGE_COPY_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_FEATURES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SUBRESOURCE_HOST_MEMCPY_SIZE_EXT`
+[VK_STRUCTURE_TYPE_SUBRESOURCE_HOST_MEMCPY_SIZE_EXT](VkStructureType.html)
 
 Functionality in this extension is included in core Vulkan 1.4, with the EXT
 suffix omitted.
@@ -258,17 +258,17 @@ However, the feature is made optional in Vulkan 1.4.
 The original type, enum and command names are still available as aliases of
 the core functionality.
 
-A Vulkan 1.4 implementation that has a `VK_QUEUE_GRAPHICS_BIT` queue
+A Vulkan 1.4 implementation that has a [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) queue
 must support either:
 
 * 
 the [`hostImageCopy`](../../../../spec/latest/chapters/features.html#features-hostImageCopy) feature; or
 
 * 
-an additional queue that supports `VK_QUEUE_TRANSFER_BIT`.
+an additional queue that supports [VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html).
 
-Additionally, all queues supporting `VK_QUEUE_GRAPHICS_BIT` or
-`VK_QUEUE_COMPUTE_BIT` must also advertise `VK_QUEUE_TRANSFER_BIT`.
+Additionally, all queues supporting [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) or
+[VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html) must also advertise [VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html).
 
 1) When uploading data to an image, the data is usually loaded from disk.
 Why not have the application load the data directly into a `VkDeviceMemory`

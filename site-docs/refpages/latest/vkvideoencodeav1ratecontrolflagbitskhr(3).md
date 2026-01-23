@@ -31,23 +31,23 @@ typedef enum VkVideoEncodeAV1RateControlFlagBitsKHR {
 } VkVideoEncodeAV1RateControlFlagBitsKHR;
 
 * 
-`VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REGULAR_GOP_BIT_KHR` specifies
+[VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REGULAR_GOP_BIT_KHR](#) specifies
 that the application intends to use a [regular    GOP structure](../../../../spec/latest/chapters/videocoding.html#encode-av1-regular-gop) according to the parameters specified in the
 `gopFrameCount` and `keyFramePeriod` members of the
 [VkVideoEncodeAV1RateControlInfoKHR](VkVideoEncodeAV1RateControlInfoKHR.html) structure.
 
 * 
-`VK_VIDEO_ENCODE_AV1_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_KHR`
+[VK_VIDEO_ENCODE_AV1_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_KHR](#)
 specifies that the application intends to follow a
 [dyadic temporal layer pattern](../../../../spec/latest/chapters/videocoding.html#encode-av1-layer-pattern-dyadic).
 
 * 
-`VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR`
+[VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR](#)
 specifies that the application intends to follow a
 [flat reference pattern](../../../../spec/latest/chapters/videocoding.html#encode-av1-ref-pattern-flat) in the GOP.
 
 * 
-`VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR`
+[VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR](#)
 specifies that the application intends to follow a
 [dyadic reference pattern](../../../../spec/latest/chapters/videocoding.html#encode-av1-ref-pattern-dyadic) in the GOP.
 

@@ -54,12 +54,12 @@ devices available from the vendor.
 device.
 
 * 
-`deviceName` is an array of `VK_MAX_PHYSICAL_DEVICE_NAME_SIZE`
+`deviceName` is an array of [VK_MAX_PHYSICAL_DEVICE_NAME_SIZE](VK_MAX_PHYSICAL_DEVICE_NAME_SIZE.html)
 `char` containing a null-terminated UTF-8 string which is the name of
 the device.
 
 * 
-`pipelineCacheUUID` is an array of `VK_UUID_SIZE` `uint8_t`
+`pipelineCacheUUID` is an array of [VK_UUID_SIZE](VK_UUID_SIZE.html) `uint8_t`
 values representing a universally unique identifier for the device.
 
 * 

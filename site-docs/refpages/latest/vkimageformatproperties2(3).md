@@ -65,12 +65,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageFormatProperties2-sType-sType) VUID-VkImageFormatProperties2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_FORMAT_PROPERTIES_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_FORMAT_PROPERTIES_2](VkStructureType.html)
 
 * 
 [](#VUID-VkImageFormatProperties2-pNext-pNext) VUID-VkImageFormatProperties2-pNext-pNext
 
- Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkAndroidHardwareBufferUsageANDROID](VkAndroidHardwareBufferUsageANDROID.html), [VkExternalImageFormatProperties](VkExternalImageFormatProperties.html), [VkFilterCubicImageViewImageFormatPropertiesEXT](VkFilterCubicImageViewImageFormatPropertiesEXT.html), [VkHostImageCopyDevicePerformanceQuery](VkHostImageCopyDevicePerformanceQuery.html), [VkImageCompressionPropertiesEXT](VkImageCompressionPropertiesEXT.html), [VkNativeBufferUsageOHOS](VkNativeBufferUsageOHOS.html), [VkSamplerYcbcrConversionImageFormatProperties](VkSamplerYcbcrConversionImageFormatProperties.html), or [VkTextureLODGatherFormatPropertiesAMD](VkTextureLODGatherFormatPropertiesAMD.html)
+ Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkAndroidHardwareBufferUsageANDROID](VkAndroidHardwareBufferUsageANDROID.html), [VkExternalImageFormatProperties](VkExternalImageFormatProperties.html), [VkFilterCubicImageViewImageFormatPropertiesEXT](VkFilterCubicImageViewImageFormatPropertiesEXT.html), [VkHostImageCopyDevicePerformanceQuery](VkHostImageCopyDevicePerformanceQuery.html), [VkImageCompressionPropertiesEXT](VkImageCompressionPropertiesEXT.html), [VkNativeBufferUsageOHOS](VkNativeBufferUsageOHOS.html), [VkSamplerYcbcrConversionImageFormatProperties](VkSamplerYcbcrConversionImageFormatProperties.html), [VkSubsampledImageFormatPropertiesEXT](VkSubsampledImageFormatPropertiesEXT.html), or [VkTextureLODGatherFormatPropertiesAMD](VkTextureLODGatherFormatPropertiesAMD.html)
 
 * 
 [](#VUID-VkImageFormatProperties2-sType-unique) VUID-VkImageFormatProperties2-sType-unique

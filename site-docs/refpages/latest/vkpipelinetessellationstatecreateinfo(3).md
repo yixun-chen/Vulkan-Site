@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineTessellationStateCreateInfo-sType-sType) VUID-VkPipelineTessellationStateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkPipelineTessellationStateCreateInfo-pNext-pNext) VUID-VkPipelineTessellationStateCreateInfo-pNext-pNext

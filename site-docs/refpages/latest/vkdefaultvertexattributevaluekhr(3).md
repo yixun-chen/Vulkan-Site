@@ -28,11 +28,11 @@ typedef enum VkDefaultVertexAttributeValueKHR {
 } VkDefaultVertexAttributeValueKHR;
 
 * 
-`VK_DEFAULT_VERTEX_ATTRIBUTE_VALUE_ZERO_ZERO_ZERO_ZERO_KHR` - the
+[VK_DEFAULT_VERTEX_ATTRIBUTE_VALUE_ZERO_ZERO_ZERO_ZERO_KHR](#) - the
 value read for an unbound vertex attribute is (0,0,0,0).
 
 * 
-`VK_DEFAULT_VERTEX_ATTRIBUTE_VALUE_ZERO_ZERO_ZERO_ONE_KHR` - the
+[VK_DEFAULT_VERTEX_ATTRIBUTE_VALUE_ZERO_ZERO_ZERO_ONE_KHR](#) - the
 value read for an unbound vertex attribute is (0,0,0,1).
 
 [VK_KHR_maintenance9](VK_KHR_maintenance9.html), [VkPhysicalDeviceMaintenance9PropertiesKHR](VkPhysicalDeviceMaintenance9PropertiesKHR.html)

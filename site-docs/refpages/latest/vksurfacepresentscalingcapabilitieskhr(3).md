@@ -97,7 +97,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSurfacePresentScalingCapabilitiesKHR-sType-sType) VUID-VkSurfacePresentScalingCapabilitiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_PRESENT_SCALING_CAPABILITIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_PRESENT_SCALING_CAPABILITIES_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkSurfacePresentScalingCapabilitiesKHR-supportedPresentScaling-parameter) VUID-VkSurfacePresentScalingCapabilitiesKHR-supportedPresentScaling-parameter

@@ -26,7 +26,7 @@ typedef enum VkFrameBoundaryFlagBitsEXT {
 } VkFrameBoundaryFlagBitsEXT;
 
 * 
-`VK_FRAME_BOUNDARY_FRAME_END_BIT_EXT` specifies that this queue
+[VK_FRAME_BOUNDARY_FRAME_END_BIT_EXT](#) specifies that this queue
 submission is the last one for this frame, i.e. once this queue
 submission has terminated, then the work for this frame is completed.
 

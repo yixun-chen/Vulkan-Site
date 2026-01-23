@@ -51,7 +51,7 @@ swapchain’s internal time domain properties counter.
 If upon return
 [VkSwapchainTimeDomainPropertiesEXT](VkSwapchainTimeDomainPropertiesEXT.html)::`timeDomainCount` is smaller
 than the number of time domains supported for the given `swapchain`,
-`VK_INCOMPLETE` will be returned instead of `VK_SUCCESS` to indicate
+[VK_INCOMPLETE](VkResult.html) will be returned instead of [VK_SUCCESS](VkResult.html) to indicate
 that not all the available values were returned.
 
 Valid Usage (Implicit)
@@ -91,27 +91,27 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](VkResult.html)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_SURFACE_LOST_KHR`
+[VK_ERROR_SURFACE_LOST_KHR](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_EXT_present_timing](VK_EXT_present_timing.html), [VkDevice](VkDevice.html), [VkSwapchainKHR](VkSwapchainKHR.html), [VkSwapchainTimeDomainPropertiesEXT](VkSwapchainTimeDomainPropertiesEXT.html)
 

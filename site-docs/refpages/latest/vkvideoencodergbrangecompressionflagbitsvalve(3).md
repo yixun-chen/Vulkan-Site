@@ -34,7 +34,7 @@ typedef enum VkVideoEncodeRgbRangeCompressionFlagBitsVALVE {
 } VkVideoEncodeRgbRangeCompressionFlagBitsVALVE;
 
 * 
-`VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_FULL_RANGE_BIT_VALVE`
+[VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_FULL_RANGE_BIT_VALVE](#)
 specifies the following transformations are applied:
 
   
@@ -50,7 +50,7 @@ these equations are derived, the formulae used by Vulkan **may** also be
 updated to maintain parity. |
 
 * 
-`VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_NARROW_RANGE_BIT_VALVE`
+[VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_NARROW_RANGE_BIT_VALVE](#)
 specifies the following transformations are applied:
 
   

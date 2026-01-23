@@ -52,7 +52,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkValidationFlagsEXT-sType-sType) VUID-VkValidationFlagsEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkValidationFlagsEXT-pDisabledValidationChecks-parameter) VUID-VkValidationFlagsEXT-pDisabledValidationChecks-parameter

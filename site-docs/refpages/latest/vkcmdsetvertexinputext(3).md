@@ -54,7 +54,7 @@ This command sets the vertex input attribute and vertex input binding
 descriptions state for subsequent drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
 when the graphics pipeline is created with
-`VK_DYNAMIC_STATE_VERTEX_INPUT_EXT` set in
+[VK_DYNAMIC_STATE_VERTEX_INPUT_EXT](VkDynamicState.html) set in
 [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkGraphicsPipelineCreateInfo](VkGraphicsPipelineCreateInfo.html)::`pVertexInputState` values used to
@@ -64,7 +64,7 @@ If
 drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects),
 or if
 the bound pipeline state object was also created with the
-`VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE` dynamic state enabled,
+[VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE](VkDynamicState.html) dynamic state enabled,
 then [vkCmdBindVertexBuffers2](vkCmdBindVertexBuffers2.html) can be used instead of
 `vkCmdSetVertexInputEXT` to dynamically set the stride.
 
@@ -137,7 +137,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetVertexInputEXT-commandBuffer-cmdpool) VUID-vkCmdSetVertexInputEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetVertexInputEXT-videocoding) VUID-vkCmdSetVertexInputEXT-videocoding

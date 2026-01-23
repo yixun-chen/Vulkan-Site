@@ -92,9 +92,9 @@ Matthew Netsch, Qualcomm Technologies, Inc.
 Jarred Davies, Imagination Technologies
 
 With careful usage of resolve attachments, multisampled image memory
-allocated with `VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT`, `loadOp`
-not equal to `VK_ATTACHMENT_LOAD_OP_LOAD` and `storeOp` not equal to
-`VK_ATTACHMENT_STORE_OP_STORE`, a Vulkan application is able to
+allocated with [VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT](VkMemoryPropertyFlagBits.html), `loadOp`
+not equal to [VK_ATTACHMENT_LOAD_OP_LOAD](VkAttachmentLoadOp.html) and `storeOp` not equal to
+[VK_ATTACHMENT_STORE_OP_STORE](VkAttachmentStoreOp.html), a Vulkan application is able to
 efficiently perform multisampled rendering without incurring any additional
 memory penalty on some implementations.
 
@@ -106,7 +106,7 @@ GL_EXT_multisampled_render_to_texture.
 In such cases, the application can use an initial subpass to effectively
 load single-sampled data from the next subpass’s resolve attachment and fill
 in the multisampled attachment which otherwise uses `loadOp` equal to
-`VK_ATTACHMENT_LOAD_OP_DONT_CARE`.
+[VK_ATTACHMENT_LOAD_OP_DONT_CARE](VkAttachmentLoadOp.html).
 However, this is not always possible (for example for stencil in the absence
 of VK_EXT_shader_stencil_export) and has multiple drawbacks.
 
@@ -144,18 +144,18 @@ Extending [VkSubpassDescription2](VkSubpassDescription2.html), [VkRenderingInfo]
 * 
 Extending [VkImageCreateFlagBits](VkImageCreateFlagBits.html):
 
-`VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT`
+[VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT](VkImageCreateFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_INFO_EXT`
+[VK_STRUCTURE_TYPE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_INFO_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_FEATURES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_FEATURES_EXT](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SUBPASS_RESOLVE_PERFORMANCE_QUERY_EXT`
+[VK_STRUCTURE_TYPE_SUBPASS_RESOLVE_PERFORMANCE_QUERY_EXT](VkStructureType.html)
 
 1) Could the multisampled attachment be initialized through some form of
 copy?

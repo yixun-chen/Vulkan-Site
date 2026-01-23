@@ -75,7 +75,7 @@ and on return the variable is overwritten with the number of handles
 actually written to `pPhysicalDevices`.
 If `pPhysicalDeviceCount` is less than the number of physical devices
 available, at most `pPhysicalDeviceCount` structures will be written,
-and `VK_INCOMPLETE` will be returned instead of `VK_SUCCESS`, to
+and [VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead of [VK_SUCCESS](fundamentals.html#VkResult), to
 indicate that not all the available physical devices were returned.
 
 Valid Usage (Implicit)
@@ -100,27 +100,27 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 To query general properties of physical devices once enumerated, call:
 
@@ -187,12 +187,12 @@ devices available from the vendor.
 device.
 
 * 
-`deviceName` is an array of `VK_MAX_PHYSICAL_DEVICE_NAME_SIZE`
+`deviceName` is an array of [VK_MAX_PHYSICAL_DEVICE_NAME_SIZE](#VK_MAX_PHYSICAL_DEVICE_NAME_SIZE)
 `char` containing a null-terminated UTF-8 string which is the name of
 the device.
 
 * 
-`pipelineCacheUUID` is an array of `VK_UUID_SIZE` `uint8_t`
+`pipelineCacheUUID` is an array of [VK_UUID_SIZE](#VK_UUID_SIZE) `uint8_t`
 values representing a universally unique identifier for the device.
 
 * 
@@ -297,7 +297,7 @@ Only Khronos vendor IDs are given symbolic names at present.
 PCI vendor IDs returned by the implementation can be looked up in the
 PCI-SIG database. |
 
-`VK_MAX_PHYSICAL_DEVICE_NAME_SIZE` is the length in `char` values of
+[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE](#VK_MAX_PHYSICAL_DEVICE_NAME_SIZE) is the length in `char` values of
 an array containing a physical device name string, as returned in
 [VkPhysicalDeviceProperties](#VkPhysicalDeviceProperties)::`deviceName`.
 
@@ -316,23 +316,23 @@ typedef enum VkPhysicalDeviceType {
 } VkPhysicalDeviceType;
 
 * 
-`VK_PHYSICAL_DEVICE_TYPE_OTHER` - the device does not match any
+[VK_PHYSICAL_DEVICE_TYPE_OTHER](#VkPhysicalDeviceType) - the device does not match any
 other available types.
 
 * 
-`VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU` - the device is typically
+[VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU](#VkPhysicalDeviceType) - the device is typically
 one embedded in or tightly coupled with the host.
 
 * 
-`VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU` - the device is typically a
+[VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU](#VkPhysicalDeviceType) - the device is typically a
 separate processor connected to the host via an interlink.
 
 * 
-`VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU` - the device is typically a
+[VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU](#VkPhysicalDeviceType) - the device is typically a
 virtual node in a virtualization environment.
 
 * 
-`VK_PHYSICAL_DEVICE_TYPE_CPU` - the device is typically running on
+[VK_PHYSICAL_DEVICE_TYPE_CPU](#VkPhysicalDeviceType) - the device is typically running on
 the same processors as the host.
 
 The physical device type is advertised for informational purposes only, and
@@ -413,12 +413,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceProperties2-sType-sType) VUID-VkPhysicalDeviceProperties2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPhysicalDeviceProperties2-pNext-pNext) VUID-VkPhysicalDeviceProperties2-pNext-pNext
 
- Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkPhysicalDeviceAccelerationStructurePropertiesKHR](limits.html#VkPhysicalDeviceAccelerationStructurePropertiesKHR), [VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT](limits.html#VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT), [VkPhysicalDeviceClusterAccelerationStructurePropertiesNV](limits.html#VkPhysicalDeviceClusterAccelerationStructurePropertiesNV), [VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI](limits.html#VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI), [VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR](limits.html#VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR), [VkPhysicalDeviceConservativeRasterizationPropertiesEXT](limits.html#VkPhysicalDeviceConservativeRasterizationPropertiesEXT), [VkPhysicalDeviceCooperativeMatrix2PropertiesNV](limits.html#VkPhysicalDeviceCooperativeMatrix2PropertiesNV), [VkPhysicalDeviceCooperativeMatrixPropertiesKHR](limits.html#VkPhysicalDeviceCooperativeMatrixPropertiesKHR), [VkPhysicalDeviceCooperativeMatrixPropertiesNV](limits.html#VkPhysicalDeviceCooperativeMatrixPropertiesNV), [VkPhysicalDeviceCooperativeVectorPropertiesNV](limits.html#VkPhysicalDeviceCooperativeVectorPropertiesNV), [VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR](limits.html#VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR), [VkPhysicalDeviceCudaKernelLaunchPropertiesNV](limits.html#VkPhysicalDeviceCudaKernelLaunchPropertiesNV), [VkPhysicalDeviceCustomBorderColorPropertiesEXT](limits.html#VkPhysicalDeviceCustomBorderColorPropertiesEXT), [VkPhysicalDeviceDepthStencilResolveProperties](limits.html#VkPhysicalDeviceDepthStencilResolveProperties), [VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT](limits.html#VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT), [VkPhysicalDeviceDescriptorBufferPropertiesEXT](limits.html#VkPhysicalDeviceDescriptorBufferPropertiesEXT), [VkPhysicalDeviceDescriptorBufferTensorPropertiesARM](limits.html#VkPhysicalDeviceDescriptorBufferTensorPropertiesARM), [VkPhysicalDeviceDescriptorIndexingProperties](limits.html#VkPhysicalDeviceDescriptorIndexingProperties), [VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT](limits.html#VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT), [VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV](limits.html#VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV), [VkPhysicalDeviceDiscardRectanglePropertiesEXT](limits.html#VkPhysicalDeviceDiscardRectanglePropertiesEXT), [VkPhysicalDeviceDisplacementMicromapPropertiesNV](limits.html#VkPhysicalDeviceDisplacementMicromapPropertiesNV), [VkPhysicalDeviceDriverProperties](#VkPhysicalDeviceDriverProperties), [VkPhysicalDeviceDrmPropertiesEXT](#VkPhysicalDeviceDrmPropertiesEXT), [VkPhysicalDeviceExtendedDynamicState3PropertiesEXT](limits.html#VkPhysicalDeviceExtendedDynamicState3PropertiesEXT), [VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV](limits.html#VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV), [VkPhysicalDeviceExternalComputeQueuePropertiesNV](VK_NV_external_compute_queue/VK_NV_external_compute_queue.html#VkPhysicalDeviceExternalComputeQueuePropertiesNV), [VkPhysicalDeviceExternalFormatResolvePropertiesANDROID](limits.html#VkPhysicalDeviceExternalFormatResolvePropertiesANDROID), [VkPhysicalDeviceExternalMemoryHostPropertiesEXT](limits.html#VkPhysicalDeviceExternalMemoryHostPropertiesEXT), [VkPhysicalDeviceFloatControlsProperties](limits.html#VkPhysicalDeviceFloatControlsProperties), [VkPhysicalDeviceFragmentDensityMap2PropertiesEXT](limits.html#VkPhysicalDeviceFragmentDensityMap2PropertiesEXT), [VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE](limits.html#VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE), [VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT](limits.html#VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT), [VkPhysicalDeviceFragmentDensityMapPropertiesEXT](limits.html#VkPhysicalDeviceFragmentDensityMapPropertiesEXT), [VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR](limits.html#VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR), [VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV](limits.html#VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV), [VkPhysicalDeviceFragmentShadingRatePropertiesKHR](limits.html#VkPhysicalDeviceFragmentShadingRatePropertiesKHR), [VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT](limits.html#VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT), [VkPhysicalDeviceHostImageCopyProperties](limits.html#VkPhysicalDeviceHostImageCopyProperties), [VkPhysicalDeviceIDProperties](#VkPhysicalDeviceIDProperties), [VkPhysicalDeviceImageAlignmentControlPropertiesMESA](limits.html#VkPhysicalDeviceImageAlignmentControlPropertiesMESA), [VkPhysicalDeviceImageProcessing2PropertiesQCOM](#VkPhysicalDeviceImageProcessing2PropertiesQCOM), [VkPhysicalDeviceImageProcessingPropertiesQCOM](#VkPhysicalDeviceImageProcessingPropertiesQCOM), [VkPhysicalDeviceInlineUniformBlockProperties](limits.html#VkPhysicalDeviceInlineUniformBlockProperties), [VkPhysicalDeviceLayeredApiPropertiesListKHR](limits.html#VkPhysicalDeviceLayeredApiPropertiesListKHR), [VkPhysicalDeviceLayeredDriverPropertiesMSFT](#VkPhysicalDeviceLayeredDriverPropertiesMSFT), [VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT](limits.html#VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT), [VkPhysicalDeviceLineRasterizationProperties](limits.html#VkPhysicalDeviceLineRasterizationProperties), [VkPhysicalDeviceMaintenance10PropertiesKHR](limits.html#VkPhysicalDeviceMaintenance10PropertiesKHR), [VkPhysicalDeviceMaintenance3Properties](limits.html#VkPhysicalDeviceMaintenance3Properties), [VkPhysicalDeviceMaintenance4Properties](limits.html#VkPhysicalDeviceMaintenance4Properties), [VkPhysicalDeviceMaintenance5Properties](limits.html#VkPhysicalDeviceMaintenance5Properties), [VkPhysicalDeviceMaintenance6Properties](limits.html#VkPhysicalDeviceMaintenance6Properties), [VkPhysicalDeviceMaintenance7PropertiesKHR](limits.html#VkPhysicalDeviceMaintenance7PropertiesKHR), [VkPhysicalDeviceMaintenance9PropertiesKHR](limits.html#VkPhysicalDeviceMaintenance9PropertiesKHR), [VkPhysicalDeviceMapMemoryPlacedPropertiesEXT](limits.html#VkPhysicalDeviceMapMemoryPlacedPropertiesEXT), [VkPhysicalDeviceMemoryDecompressionPropertiesEXT](limits.html#VkPhysicalDeviceMemoryDecompressionPropertiesEXT), [VkPhysicalDeviceMeshShaderPropertiesEXT](limits.html#VkPhysicalDeviceMeshShaderPropertiesEXT), [VkPhysicalDeviceMeshShaderPropertiesNV](limits.html#VkPhysicalDeviceMeshShaderPropertiesNV), [VkPhysicalDeviceMultiDrawPropertiesEXT](limits.html#VkPhysicalDeviceMultiDrawPropertiesEXT), [VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX](limits.html#VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX), [VkPhysicalDeviceMultiviewProperties](limits.html#VkPhysicalDeviceMultiviewProperties), [VkPhysicalDeviceNestedCommandBufferPropertiesEXT](limits.html#VkPhysicalDeviceNestedCommandBufferPropertiesEXT), [VkPhysicalDeviceOpacityMicromapPropertiesEXT](limits.html#VkPhysicalDeviceOpacityMicromapPropertiesEXT), [VkPhysicalDeviceOpticalFlowPropertiesNV](limits.html#VkPhysicalDeviceOpticalFlowPropertiesNV), [VkPhysicalDevicePCIBusInfoPropertiesEXT](#VkPhysicalDevicePCIBusInfoPropertiesEXT), [VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV](limits.html#VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV), [VkPhysicalDevicePerformanceCountersByRegionPropertiesARM](limits.html#VkPhysicalDevicePerformanceCountersByRegionPropertiesARM), [VkPhysicalDevicePerformanceQueryPropertiesKHR](limits.html#VkPhysicalDevicePerformanceQueryPropertiesKHR), [VkPhysicalDevicePipelineBinaryPropertiesKHR](limits.html#VkPhysicalDevicePipelineBinaryPropertiesKHR), [VkPhysicalDevicePipelineRobustnessProperties](limits.html#VkPhysicalDevicePipelineRobustnessProperties), [VkPhysicalDevicePointClippingProperties](limits.html#VkPhysicalDevicePointClippingProperties), [VkPhysicalDevicePortabilitySubsetPropertiesKHR](limits.html#VkPhysicalDevicePortabilitySubsetPropertiesKHR), [VkPhysicalDevicePresentationPropertiesOHOS](resources.html#VkPhysicalDevicePresentationPropertiesOHOS), [VkPhysicalDeviceProtectedMemoryProperties](limits.html#VkPhysicalDeviceProtectedMemoryProperties), [VkPhysicalDeviceProvokingVertexPropertiesEXT](limits.html#VkPhysicalDeviceProvokingVertexPropertiesEXT), [VkPhysicalDevicePushDescriptorProperties](limits.html#VkPhysicalDevicePushDescriptorProperties), [VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT](limits.html#VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT), [VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV](limits.html#VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV), [VkPhysicalDeviceRayTracingPipelinePropertiesKHR](limits.html#VkPhysicalDeviceRayTracingPipelinePropertiesKHR), [VkPhysicalDeviceRayTracingPropertiesNV](limits.html#VkPhysicalDeviceRayTracingPropertiesNV), [VkPhysicalDeviceRenderPassStripedPropertiesARM](limits.html#VkPhysicalDeviceRenderPassStripedPropertiesARM), [VkPhysicalDeviceRobustness2PropertiesKHR](limits.html#VkPhysicalDeviceRobustness2PropertiesKHR), [VkPhysicalDeviceSampleLocationsPropertiesEXT](limits.html#VkPhysicalDeviceSampleLocationsPropertiesEXT), [VkPhysicalDeviceSamplerFilterMinmaxProperties](limits.html#VkPhysicalDeviceSamplerFilterMinmaxProperties), [VkPhysicalDeviceSchedulingControlsPropertiesARM](#VkPhysicalDeviceSchedulingControlsPropertiesARM), [VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM](limits.html#VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM), [VkPhysicalDeviceShaderCoreProperties2AMD](limits.html#VkPhysicalDeviceShaderCoreProperties2AMD), [VkPhysicalDeviceShaderCorePropertiesAMD](limits.html#VkPhysicalDeviceShaderCorePropertiesAMD), [VkPhysicalDeviceShaderCorePropertiesARM](limits.html#VkPhysicalDeviceShaderCorePropertiesARM), [VkPhysicalDeviceShaderEnqueuePropertiesAMDX](limits.html#VkPhysicalDeviceShaderEnqueuePropertiesAMDX), [VkPhysicalDeviceShaderIntegerDotProductProperties](#VkPhysicalDeviceShaderIntegerDotProductProperties), [VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT](limits.html#VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT), [VkPhysicalDeviceShaderObjectPropertiesEXT](limits.html#VkPhysicalDeviceShaderObjectPropertiesEXT), [VkPhysicalDeviceShaderSMBuiltinsPropertiesNV](limits.html#VkPhysicalDeviceShaderSMBuiltinsPropertiesNV), [VkPhysicalDeviceShaderTileImagePropertiesEXT](#VkPhysicalDeviceShaderTileImagePropertiesEXT), [VkPhysicalDeviceShadingRateImagePropertiesNV](limits.html#VkPhysicalDeviceShadingRateImagePropertiesNV), [VkPhysicalDeviceSubgroupProperties](limits.html#VkPhysicalDeviceSubgroupProperties), [VkPhysicalDeviceSubgroupSizeControlProperties](limits.html#VkPhysicalDeviceSubgroupSizeControlProperties), [VkPhysicalDeviceSubpassShadingPropertiesHUAWEI](limits.html#VkPhysicalDeviceSubpassShadingPropertiesHUAWEI), [VkPhysicalDeviceTensorPropertiesARM](limits.html#VkPhysicalDeviceTensorPropertiesARM), [VkPhysicalDeviceTexelBufferAlignmentProperties](limits.html#VkPhysicalDeviceTexelBufferAlignmentProperties), [VkPhysicalDeviceTileMemoryHeapPropertiesQCOM](limits.html#VkPhysicalDeviceTileMemoryHeapPropertiesQCOM), [VkPhysicalDeviceTileShadingPropertiesQCOM](limits.html#VkPhysicalDeviceTileShadingPropertiesQCOM), [VkPhysicalDeviceTimelineSemaphoreProperties](limits.html#VkPhysicalDeviceTimelineSemaphoreProperties), [VkPhysicalDeviceTransformFeedbackPropertiesEXT](limits.html#VkPhysicalDeviceTransformFeedbackPropertiesEXT), [VkPhysicalDeviceVertexAttributeDivisorProperties](limits.html#VkPhysicalDeviceVertexAttributeDivisorProperties), [VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT](limits.html#VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT), [VkPhysicalDeviceVulkan11Properties](#VkPhysicalDeviceVulkan11Properties), [VkPhysicalDeviceVulkan12Properties](#VkPhysicalDeviceVulkan12Properties), [VkPhysicalDeviceVulkan13Properties](#VkPhysicalDeviceVulkan13Properties), or [VkPhysicalDeviceVulkan14Properties](#VkPhysicalDeviceVulkan14Properties)
+ Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkPhysicalDeviceAccelerationStructurePropertiesKHR](limits.html#VkPhysicalDeviceAccelerationStructurePropertiesKHR), [VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT](limits.html#VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT), [VkPhysicalDeviceClusterAccelerationStructurePropertiesNV](limits.html#VkPhysicalDeviceClusterAccelerationStructurePropertiesNV), [VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI](limits.html#VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI), [VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR](limits.html#VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR), [VkPhysicalDeviceConservativeRasterizationPropertiesEXT](limits.html#VkPhysicalDeviceConservativeRasterizationPropertiesEXT), [VkPhysicalDeviceCooperativeMatrix2PropertiesNV](limits.html#VkPhysicalDeviceCooperativeMatrix2PropertiesNV), [VkPhysicalDeviceCooperativeMatrixPropertiesKHR](limits.html#VkPhysicalDeviceCooperativeMatrixPropertiesKHR), [VkPhysicalDeviceCooperativeMatrixPropertiesNV](limits.html#VkPhysicalDeviceCooperativeMatrixPropertiesNV), [VkPhysicalDeviceCooperativeVectorPropertiesNV](limits.html#VkPhysicalDeviceCooperativeVectorPropertiesNV), [VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR](limits.html#VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR), [VkPhysicalDeviceCudaKernelLaunchPropertiesNV](limits.html#VkPhysicalDeviceCudaKernelLaunchPropertiesNV), [VkPhysicalDeviceCustomBorderColorPropertiesEXT](limits.html#VkPhysicalDeviceCustomBorderColorPropertiesEXT), [VkPhysicalDeviceDepthStencilResolveProperties](limits.html#VkPhysicalDeviceDepthStencilResolveProperties), [VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT](limits.html#VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT), [VkPhysicalDeviceDescriptorBufferPropertiesEXT](limits.html#VkPhysicalDeviceDescriptorBufferPropertiesEXT), [VkPhysicalDeviceDescriptorBufferTensorPropertiesARM](limits.html#VkPhysicalDeviceDescriptorBufferTensorPropertiesARM), [VkPhysicalDeviceDescriptorHeapPropertiesEXT](limits.html#VkPhysicalDeviceDescriptorHeapPropertiesEXT), [VkPhysicalDeviceDescriptorHeapTensorPropertiesARM](limits.html#VkPhysicalDeviceDescriptorHeapTensorPropertiesARM), [VkPhysicalDeviceDescriptorIndexingProperties](limits.html#VkPhysicalDeviceDescriptorIndexingProperties), [VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT](limits.html#VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT), [VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV](limits.html#VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV), [VkPhysicalDeviceDiscardRectanglePropertiesEXT](limits.html#VkPhysicalDeviceDiscardRectanglePropertiesEXT), [VkPhysicalDeviceDisplacementMicromapPropertiesNV](limits.html#VkPhysicalDeviceDisplacementMicromapPropertiesNV), [VkPhysicalDeviceDriverProperties](#VkPhysicalDeviceDriverProperties), [VkPhysicalDeviceDrmPropertiesEXT](#VkPhysicalDeviceDrmPropertiesEXT), [VkPhysicalDeviceExtendedDynamicState3PropertiesEXT](limits.html#VkPhysicalDeviceExtendedDynamicState3PropertiesEXT), [VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV](limits.html#VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV), [VkPhysicalDeviceExternalComputeQueuePropertiesNV](VK_NV_external_compute_queue/VK_NV_external_compute_queue.html#VkPhysicalDeviceExternalComputeQueuePropertiesNV), [VkPhysicalDeviceExternalFormatResolvePropertiesANDROID](limits.html#VkPhysicalDeviceExternalFormatResolvePropertiesANDROID), [VkPhysicalDeviceExternalMemoryHostPropertiesEXT](limits.html#VkPhysicalDeviceExternalMemoryHostPropertiesEXT), [VkPhysicalDeviceFloatControlsProperties](limits.html#VkPhysicalDeviceFloatControlsProperties), [VkPhysicalDeviceFragmentDensityMap2PropertiesEXT](limits.html#VkPhysicalDeviceFragmentDensityMap2PropertiesEXT), [VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE](limits.html#VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE), [VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT](limits.html#VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT), [VkPhysicalDeviceFragmentDensityMapPropertiesEXT](limits.html#VkPhysicalDeviceFragmentDensityMapPropertiesEXT), [VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR](limits.html#VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR), [VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV](limits.html#VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV), [VkPhysicalDeviceFragmentShadingRatePropertiesKHR](limits.html#VkPhysicalDeviceFragmentShadingRatePropertiesKHR), [VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT](limits.html#VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT), [VkPhysicalDeviceHostImageCopyProperties](limits.html#VkPhysicalDeviceHostImageCopyProperties), [VkPhysicalDeviceIDProperties](#VkPhysicalDeviceIDProperties), [VkPhysicalDeviceImageAlignmentControlPropertiesMESA](limits.html#VkPhysicalDeviceImageAlignmentControlPropertiesMESA), [VkPhysicalDeviceImageProcessing2PropertiesQCOM](#VkPhysicalDeviceImageProcessing2PropertiesQCOM), [VkPhysicalDeviceImageProcessingPropertiesQCOM](#VkPhysicalDeviceImageProcessingPropertiesQCOM), [VkPhysicalDeviceInlineUniformBlockProperties](limits.html#VkPhysicalDeviceInlineUniformBlockProperties), [VkPhysicalDeviceLayeredApiPropertiesListKHR](limits.html#VkPhysicalDeviceLayeredApiPropertiesListKHR), [VkPhysicalDeviceLayeredDriverPropertiesMSFT](#VkPhysicalDeviceLayeredDriverPropertiesMSFT), [VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT](limits.html#VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT), [VkPhysicalDeviceLineRasterizationProperties](limits.html#VkPhysicalDeviceLineRasterizationProperties), [VkPhysicalDeviceMaintenance10PropertiesKHR](limits.html#VkPhysicalDeviceMaintenance10PropertiesKHR), [VkPhysicalDeviceMaintenance3Properties](limits.html#VkPhysicalDeviceMaintenance3Properties), [VkPhysicalDeviceMaintenance4Properties](limits.html#VkPhysicalDeviceMaintenance4Properties), [VkPhysicalDeviceMaintenance5Properties](limits.html#VkPhysicalDeviceMaintenance5Properties), [VkPhysicalDeviceMaintenance6Properties](limits.html#VkPhysicalDeviceMaintenance6Properties), [VkPhysicalDeviceMaintenance7PropertiesKHR](limits.html#VkPhysicalDeviceMaintenance7PropertiesKHR), [VkPhysicalDeviceMaintenance9PropertiesKHR](limits.html#VkPhysicalDeviceMaintenance9PropertiesKHR), [VkPhysicalDeviceMapMemoryPlacedPropertiesEXT](limits.html#VkPhysicalDeviceMapMemoryPlacedPropertiesEXT), [VkPhysicalDeviceMemoryDecompressionPropertiesEXT](limits.html#VkPhysicalDeviceMemoryDecompressionPropertiesEXT), [VkPhysicalDeviceMeshShaderPropertiesEXT](limits.html#VkPhysicalDeviceMeshShaderPropertiesEXT), [VkPhysicalDeviceMeshShaderPropertiesNV](limits.html#VkPhysicalDeviceMeshShaderPropertiesNV), [VkPhysicalDeviceMultiDrawPropertiesEXT](limits.html#VkPhysicalDeviceMultiDrawPropertiesEXT), [VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX](limits.html#VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX), [VkPhysicalDeviceMultiviewProperties](limits.html#VkPhysicalDeviceMultiviewProperties), [VkPhysicalDeviceNestedCommandBufferPropertiesEXT](limits.html#VkPhysicalDeviceNestedCommandBufferPropertiesEXT), [VkPhysicalDeviceOpacityMicromapPropertiesEXT](limits.html#VkPhysicalDeviceOpacityMicromapPropertiesEXT), [VkPhysicalDeviceOpticalFlowPropertiesNV](limits.html#VkPhysicalDeviceOpticalFlowPropertiesNV), [VkPhysicalDevicePCIBusInfoPropertiesEXT](#VkPhysicalDevicePCIBusInfoPropertiesEXT), [VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV](limits.html#VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV), [VkPhysicalDevicePerformanceCountersByRegionPropertiesARM](limits.html#VkPhysicalDevicePerformanceCountersByRegionPropertiesARM), [VkPhysicalDevicePerformanceQueryPropertiesKHR](limits.html#VkPhysicalDevicePerformanceQueryPropertiesKHR), [VkPhysicalDevicePipelineBinaryPropertiesKHR](limits.html#VkPhysicalDevicePipelineBinaryPropertiesKHR), [VkPhysicalDevicePipelineRobustnessProperties](limits.html#VkPhysicalDevicePipelineRobustnessProperties), [VkPhysicalDevicePointClippingProperties](limits.html#VkPhysicalDevicePointClippingProperties), [VkPhysicalDevicePortabilitySubsetPropertiesKHR](limits.html#VkPhysicalDevicePortabilitySubsetPropertiesKHR), [VkPhysicalDeviceProtectedMemoryProperties](limits.html#VkPhysicalDeviceProtectedMemoryProperties), [VkPhysicalDeviceProvokingVertexPropertiesEXT](limits.html#VkPhysicalDeviceProvokingVertexPropertiesEXT), [VkPhysicalDevicePushConstantBankPropertiesNV](limits.html#VkPhysicalDevicePushConstantBankPropertiesNV), [VkPhysicalDevicePushDescriptorProperties](limits.html#VkPhysicalDevicePushDescriptorProperties), [VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT](limits.html#VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT), [VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV](limits.html#VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV), [VkPhysicalDeviceRayTracingPipelinePropertiesKHR](limits.html#VkPhysicalDeviceRayTracingPipelinePropertiesKHR), [VkPhysicalDeviceRayTracingPropertiesNV](limits.html#VkPhysicalDeviceRayTracingPropertiesNV), [VkPhysicalDeviceRenderPassStripedPropertiesARM](limits.html#VkPhysicalDeviceRenderPassStripedPropertiesARM), [VkPhysicalDeviceRobustness2PropertiesKHR](limits.html#VkPhysicalDeviceRobustness2PropertiesKHR), [VkPhysicalDeviceSampleLocationsPropertiesEXT](limits.html#VkPhysicalDeviceSampleLocationsPropertiesEXT), [VkPhysicalDeviceSamplerFilterMinmaxProperties](limits.html#VkPhysicalDeviceSamplerFilterMinmaxProperties), [VkPhysicalDeviceSchedulingControlsPropertiesARM](#VkPhysicalDeviceSchedulingControlsPropertiesARM), [VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM](limits.html#VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM), [VkPhysicalDeviceShaderCoreProperties2AMD](limits.html#VkPhysicalDeviceShaderCoreProperties2AMD), [VkPhysicalDeviceShaderCorePropertiesAMD](limits.html#VkPhysicalDeviceShaderCorePropertiesAMD), [VkPhysicalDeviceShaderCorePropertiesARM](limits.html#VkPhysicalDeviceShaderCorePropertiesARM), [VkPhysicalDeviceShaderEnqueuePropertiesAMDX](limits.html#VkPhysicalDeviceShaderEnqueuePropertiesAMDX), [VkPhysicalDeviceShaderIntegerDotProductProperties](#VkPhysicalDeviceShaderIntegerDotProductProperties), [VkPhysicalDeviceShaderLongVectorPropertiesEXT](limits.html#VkPhysicalDeviceShaderLongVectorPropertiesEXT), [VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT](limits.html#VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT), [VkPhysicalDeviceShaderObjectPropertiesEXT](limits.html#VkPhysicalDeviceShaderObjectPropertiesEXT), [VkPhysicalDeviceShaderSMBuiltinsPropertiesNV](limits.html#VkPhysicalDeviceShaderSMBuiltinsPropertiesNV), [VkPhysicalDeviceShaderTileImagePropertiesEXT](#VkPhysicalDeviceShaderTileImagePropertiesEXT), [VkPhysicalDeviceShadingRateImagePropertiesNV](limits.html#VkPhysicalDeviceShadingRateImagePropertiesNV), [VkPhysicalDeviceSubgroupProperties](limits.html#VkPhysicalDeviceSubgroupProperties), [VkPhysicalDeviceSubgroupSizeControlProperties](limits.html#VkPhysicalDeviceSubgroupSizeControlProperties), [VkPhysicalDeviceSubpassShadingPropertiesHUAWEI](limits.html#VkPhysicalDeviceSubpassShadingPropertiesHUAWEI), [VkPhysicalDeviceTensorPropertiesARM](limits.html#VkPhysicalDeviceTensorPropertiesARM), [VkPhysicalDeviceTexelBufferAlignmentProperties](limits.html#VkPhysicalDeviceTexelBufferAlignmentProperties), [VkPhysicalDeviceTileMemoryHeapPropertiesQCOM](limits.html#VkPhysicalDeviceTileMemoryHeapPropertiesQCOM), [VkPhysicalDeviceTileShadingPropertiesQCOM](limits.html#VkPhysicalDeviceTileShadingPropertiesQCOM), [VkPhysicalDeviceTimelineSemaphoreProperties](limits.html#VkPhysicalDeviceTimelineSemaphoreProperties), [VkPhysicalDeviceTransformFeedbackPropertiesEXT](limits.html#VkPhysicalDeviceTransformFeedbackPropertiesEXT), [VkPhysicalDeviceVertexAttributeDivisorProperties](limits.html#VkPhysicalDeviceVertexAttributeDivisorProperties), [VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT](limits.html#VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT), [VkPhysicalDeviceVulkan11Properties](#VkPhysicalDeviceVulkan11Properties), [VkPhysicalDeviceVulkan12Properties](#VkPhysicalDeviceVulkan12Properties), [VkPhysicalDeviceVulkan13Properties](#VkPhysicalDeviceVulkan13Properties), or [VkPhysicalDeviceVulkan14Properties](#VkPhysicalDeviceVulkan14Properties)
 
 * 
 [](#VUID-VkPhysicalDeviceProperties2-sType-unique) VUID-VkPhysicalDeviceProperties2-sType-unique
@@ -456,16 +456,16 @@ typedef struct VkPhysicalDeviceVulkan11Properties {
 structure.
 
 * 
-`deviceUUID` is an array of `VK_UUID_SIZE` `uint8_t` values
+`deviceUUID` is an array of [VK_UUID_SIZE](#VK_UUID_SIZE) `uint8_t` values
 representing a universally unique identifier for the device.
 
 * 
-`driverUUID` is an array of `VK_UUID_SIZE` `uint8_t` values
+`driverUUID` is an array of [VK_UUID_SIZE](#VK_UUID_SIZE) `uint8_t` values
 representing a universally unique identifier for the driver build in use
 by the device.
 
 * 
-`deviceLUID` is an array of `VK_LUID_SIZE` `uint8_t` values
+`deviceLUID` is an array of [VK_LUID_SIZE](#VK_LUID_SIZE) `uint8_t` values
 representing a locally unique identifier for the device.
 
 * 
@@ -473,15 +473,15 @@ representing a locally unique identifier for the device.
 within a linked device adapter corresponding to the device.
 
 * 
-`deviceLUIDValid` is a boolean value that will be `VK_TRUE` if
+`deviceLUIDValid` is a boolean value that will be [VK_TRUE](fundamentals.html#VK_TRUE) if
 `deviceLUID` contains a valid LUID and `deviceNodeMask` contains
-a valid node mask, and `VK_FALSE` if they do not.
+a valid node mask, and [VK_FALSE](fundamentals.html#VK_FALSE) if they do not.
 
 * 
  `subgroupSize` is the default
 number of invocations in each subgroup.
 `subgroupSize` is at least 1 if any of the physical device’s queues
-support `VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT`.
+support [VK_QUEUE_GRAPHICS_BIT](#VkQueueFlagBits) or [VK_QUEUE_COMPUTE_BIT](#VkQueueFlagBits).
 `subgroupSize` is a power-of-two.
 
 * 
@@ -489,9 +489,9 @@ support `VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT`.
 `subgroupSupportedStages` is a bitfield of [VkShaderStageFlagBits](pipelines.html#VkShaderStageFlagBits)
 describing the shader stages that [group    operations](shaders.html#shaders-group-operations) with [subgroup scope](shaders.html#shaders-scope-subgroup) are
 supported in.
-`subgroupSupportedStages` will have the `VK_SHADER_STAGE_COMPUTE_BIT`
+`subgroupSupportedStages` will have the [VK_SHADER_STAGE_COMPUTE_BIT](pipelines.html#VkShaderStageFlagBits)
 bit set if any of the physical device’s queues support
-`VK_QUEUE_COMPUTE_BIT`.
+[VK_QUEUE_COMPUTE_BIT](#VkQueueFlagBits).
 
 * 
 
@@ -500,9 +500,9 @@ bit set if any of the physical device’s queues support
 [group operations](shaders.html#shaders-group-operations) with
 [subgroup scope](shaders.html#shaders-scope-subgroup) supported on this device.
 `subgroupSupportedOperations` will have the
-`VK_SUBGROUP_FEATURE_BASIC_BIT` bit set if any of the physical
-device’s queues support `VK_QUEUE_GRAPHICS_BIT` or
-`VK_QUEUE_COMPUTE_BIT`.
+[VK_SUBGROUP_FEATURE_BASIC_BIT](limits.html#VkSubgroupFeatureFlagBits) bit set if any of the physical
+device’s queues support [VK_QUEUE_GRAPHICS_BIT](#VkQueueFlagBits) or
+[VK_QUEUE_COMPUTE_BIT](#VkQueueFlagBits).
 
 * 
 
@@ -532,10 +532,10 @@ specifies how an implementation behaves when an application attempts to
 write to unprotected memory in a protected queue operation, read from
 protected memory in an unprotected queue operation, or perform a query
 in a protected queue operation.
-If this limit is `VK_TRUE`, such writes will be discarded or have
+If this limit is [VK_TRUE](fundamentals.html#VK_TRUE), such writes will be discarded or have
 **undefined** values written, reads and queries will return **undefined**
 values.
-If this limit is `VK_FALSE`, applications **must** not perform these
+If this limit is [VK_FALSE](fundamentals.html#VK_FALSE), applications **must** not perform these
 operations.
 See [Protected Memory Access Rules](memory.html#memory-protected-access-rules) for more information.
 
@@ -553,7 +553,7 @@ limit is supported using [vkGetDescriptorSetLayoutSupport](descriptorsets.html#v
 `maxMemoryAllocationSize` is the maximum size of a memory allocation
 that **can** be created, even if there is more space available in the heap.
 If [VkMemoryAllocateInfo](memory.html#VkMemoryAllocateInfo)::`allocationSize` is larger the error
-`VK_ERROR_OUT_OF_DEVICE_MEMORY` **may** be returned.
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult) **may** be returned.
 
 If the `VkPhysicalDeviceVulkan11Properties` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](#VkPhysicalDeviceProperties2) structure passed to
@@ -584,7 +584,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVulkan11Properties-sType-sType) VUID-VkPhysicalDeviceVulkan11Properties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceVulkan12Properties` structure is defined as:
 
@@ -658,12 +658,12 @@ structure.
 device.
 
 * 
-`driverName` is an array of `VK_MAX_DRIVER_NAME_SIZE` `char`
+`driverName` is an array of [VK_MAX_DRIVER_NAME_SIZE](#VK_MAX_DRIVER_NAME_SIZE) `char`
 containing a null-terminated UTF-8 string which is the name of the
 driver.
 
 * 
-`driverInfo` is an array of `VK_MAX_DRIVER_INFO_SIZE` `char`
+`driverInfo` is an array of [VK_MAX_DRIVER_INFO_SIZE](#VK_MAX_DRIVER_INFO_SIZE) `char`
 containing a null-terminated UTF-8 string with additional information
 about the driver.
 
@@ -809,7 +809,7 @@ be used for 64-bit floating-point types.
 `maxUpdateAfterBindDescriptorsInAllPools` is the maximum number of
 descriptors (summed over all descriptor types) that **can** be created
 across all pools that are created with the
-`VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT` bit set.
+[VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT](descriptorsets.html#VkDescriptorPoolCreateFlagBits) bit set.
 Pool creation **may** fail when this limit is exceeded, or when the space
 this limit represents is unable to satisfy a pool creation due to
 fragmentation.
@@ -819,7 +819,7 @@ fragmentation.
 `shaderUniformBufferArrayNonUniformIndexingNative` is a boolean
 value indicating whether uniform buffer descriptors natively support
 non-uniform indexing.
-If this is `VK_FALSE`, then a single dynamic instance of an
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then a single dynamic instance of an
 instruction that non-uniformly indexes an array of uniform buffers **may**
 execute multiple times in order to access all the descriptors.
 
@@ -828,7 +828,7 @@ execute multiple times in order to access all the descriptors.
 `shaderSampledImageArrayNonUniformIndexingNative` is a boolean value
 indicating whether sampler and image descriptors natively support
 non-uniform indexing.
-If this is `VK_FALSE`, then a single dynamic instance of an
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then a single dynamic instance of an
 instruction that non-uniformly indexes an array of samplers or images
 **may** execute multiple times in order to access all the descriptors.
 
@@ -837,7 +837,7 @@ instruction that non-uniformly indexes an array of samplers or images
 `shaderStorageBufferArrayNonUniformIndexingNative` is a boolean
 value indicating whether storage buffer descriptors natively support
 non-uniform indexing.
-If this is `VK_FALSE`, then a single dynamic instance of an
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then a single dynamic instance of an
 instruction that non-uniformly indexes an array of storage buffers **may**
 execute multiple times in order to access all the descriptors.
 
@@ -846,7 +846,7 @@ execute multiple times in order to access all the descriptors.
 `shaderStorageImageArrayNonUniformIndexingNative` is a boolean value
 indicating whether storage image descriptors natively support
 non-uniform indexing.
-If this is `VK_FALSE`, then a single dynamic instance of an
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then a single dynamic instance of an
 instruction that non-uniformly indexes an array of storage images **may**
 execute multiple times in order to access all the descriptors.
 
@@ -855,7 +855,7 @@ execute multiple times in order to access all the descriptors.
 `shaderInputAttachmentArrayNonUniformIndexingNative` is a boolean
 value indicating whether input attachment descriptors natively support
 non-uniform indexing.
-If this is `VK_FALSE`, then a single dynamic instance of an
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then a single dynamic instance of an
 instruction that non-uniformly indexes an array of input attachments
 **may** execute multiple times in order to access all the descriptors.
 
@@ -868,9 +868,9 @@ be enabled on a device simultaneously with
 `descriptorBindingStorageBufferUpdateAfterBind`,
 `descriptorBindingUniformTexelBufferUpdateAfterBind`, and/or
 `descriptorBindingStorageTexelBufferUpdateAfterBind`.
-If this is `VK_FALSE`, then either `robustBufferAccess` **must** be
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then either `robustBufferAccess` **must** be
 disabled or all of these update-after-bind features **must** be disabled.
-Similarly, if this property is `VK_FALSE`, robustness **must** not be
+Similarly, if this property is [VK_FALSE](fundamentals.html#VK_FALSE), robustness **must** not be
 enabled through the [VkPipelineRobustnessCreateInfo](pipelines.html#VkPipelineRobustnessCreateInfo) mechanism.
 
 * 
@@ -886,7 +886,7 @@ See [Derivative Image    Operations](textures.html#textures-derivative-image-ope
 `maxPerStageDescriptorUpdateAfterBindSamplers` is similar to
 `maxPerStageDescriptorSamplers` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -894,7 +894,7 @@ set.
 `maxPerStageDescriptorUpdateAfterBindUniformBuffers` is similar to
 `maxPerStageDescriptorUniformBuffers` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -902,7 +902,7 @@ set.
 `maxPerStageDescriptorUpdateAfterBindStorageBuffers` is similar to
 `maxPerStageDescriptorStorageBuffers` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -910,7 +910,7 @@ set.
 `maxPerStageDescriptorUpdateAfterBindSampledImages` is similar to
 `maxPerStageDescriptorSampledImages` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -918,7 +918,7 @@ set.
 `maxPerStageDescriptorUpdateAfterBindStorageImages` is similar to
 `maxPerStageDescriptorStorageImages` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -926,7 +926,7 @@ set.
 `maxPerStageDescriptorUpdateAfterBindInputAttachments` is similar to
 `maxPerStageDescriptorInputAttachments` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -934,7 +934,7 @@ set.
 `maxPerStageUpdateAfterBindResources` is similar to
 `maxPerStageResources` but counts descriptors from descriptor sets
 created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -942,7 +942,7 @@ set.
 `maxDescriptorSetUpdateAfterBindSamplers` is similar to
 `maxDescriptorSetSamplers` but counts descriptors from descriptor
 sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -950,7 +950,7 @@ set.
 `maxDescriptorSetUpdateAfterBindUniformBuffers` is similar to
 `maxDescriptorSetUniformBuffers` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -958,21 +958,21 @@ set.
 `maxDescriptorSetUpdateAfterBindUniformBuffersDynamic` is similar to
 `maxDescriptorSetUniformBuffersDynamic` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 While an application **can** allocate dynamic uniform buffer descriptors
 from a pool created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits),
 bindings for these descriptors **must** not be present in any descriptor
 set layout that includes bindings created with
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`.
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](descriptorsets.html#VkDescriptorBindingFlagBitsEXT).
 
 * 
 
 `maxDescriptorSetUpdateAfterBindStorageBuffers` is similar to
 `maxDescriptorSetStorageBuffers` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -980,21 +980,21 @@ set.
 `maxDescriptorSetUpdateAfterBindStorageBuffersDynamic` is similar to
 `maxDescriptorSetStorageBuffersDynamic` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 While an application **can** allocate dynamic storage buffer descriptors
 from a pool created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT`,
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits),
 bindings for these descriptors **must** not be present in any descriptor
 set layout that includes bindings created with
-`VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT`.
+[VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT](descriptorsets.html#VkDescriptorBindingFlagBitsEXT).
 
 * 
 
 `maxDescriptorSetUpdateAfterBindSampledImages` is similar to
 `maxDescriptorSetSampledImages` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -1002,7 +1002,7 @@ set.
 `maxDescriptorSetUpdateAfterBindStorageImages` is similar to
 `maxDescriptorSetStorageImages` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -1010,7 +1010,7 @@ set.
 `maxDescriptorSetUpdateAfterBindInputAttachments` is similar to
 `maxDescriptorSetInputAttachments` but counts descriptors from
 descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -1018,7 +1018,7 @@ set.
 `supportedDepthResolveModes` is a bitmask of
 [VkResolveModeFlagBits](renderpass.html#VkResolveModeFlagBits) indicating the set of supported depth
 resolve modes.
-`VK_RESOLVE_MODE_SAMPLE_ZERO_BIT` **must** be included in the set but
+[VK_RESOLVE_MODE_SAMPLE_ZERO_BIT](renderpass.html#VkResolveModeFlagBitsKHR) **must** be included in the set but
 implementations **may** support additional modes.
 
 * 
@@ -1026,23 +1026,23 @@ implementations **may** support additional modes.
 `supportedStencilResolveModes` is a bitmask of
 [VkResolveModeFlagBits](renderpass.html#VkResolveModeFlagBits) indicating the set of supported stencil
 resolve modes.
-`VK_RESOLVE_MODE_SAMPLE_ZERO_BIT` **must** be included in the set but
+[VK_RESOLVE_MODE_SAMPLE_ZERO_BIT](renderpass.html#VkResolveModeFlagBitsKHR) **must** be included in the set but
 implementations **may** support additional modes.
-`VK_RESOLVE_MODE_AVERAGE_BIT` **must** not be included in the set.
+[VK_RESOLVE_MODE_AVERAGE_BIT](renderpass.html#VkResolveModeFlagBitsKHR) **must** not be included in the set.
 
 * 
 
-`independentResolveNone` is `VK_TRUE` if the implementation
+`independentResolveNone` is [VK_TRUE](fundamentals.html#VK_TRUE) if the implementation
 supports setting the depth and stencil resolve modes to different values
-when one of those modes is `VK_RESOLVE_MODE_NONE`.
+when one of those modes is [VK_RESOLVE_MODE_NONE](renderpass.html#VkResolveModeFlagBitsKHR).
 Otherwise the implementation only supports setting both modes to the
 same value.
 
 * 
  `independentResolve`
-is `VK_TRUE` if the implementation supports all combinations of the
+is [VK_TRUE](fundamentals.html#VK_TRUE) if the implementation supports all combinations of the
 supported depth and stencil resolve modes, including setting either
-depth or stencil resolve mode to `VK_RESOLVE_MODE_NONE`.
+depth or stencil resolve mode to [VK_RESOLVE_MODE_NONE](renderpass.html#VkResolveModeFlagBitsKHR).
 An implementation that supports `independentResolve` **must** also
 support `independentResolveNone`.
 
@@ -1090,7 +1090,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVulkan12Properties-sType-sType) VUID-VkPhysicalDeviceVulkan12Properties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceVulkan13Properties` structure is defined as:
 
@@ -1156,8 +1156,8 @@ structure.
  `minSubgroupSize` is the
 minimum subgroup size supported by this device.
 `minSubgroupSize` is at least one if any of the physical device’s
-queues support `VK_QUEUE_GRAPHICS_BIT` or
-`VK_QUEUE_COMPUTE_BIT`.
+queues support [VK_QUEUE_GRAPHICS_BIT](#VkQueueFlagBits) or
+[VK_QUEUE_COMPUTE_BIT](#VkQueueFlagBits).
 `minSubgroupSize` is a power-of-two.
 `minSubgroupSize` is less than or equal to `maxSubgroupSize`.
 `minSubgroupSize` is less than or equal to [    `subgroupSize`](#limits-subgroupSize).
@@ -1166,8 +1166,8 @@ queues support `VK_QUEUE_GRAPHICS_BIT` or
  `maxSubgroupSize` is the
 maximum subgroup size supported by this device.
 `maxSubgroupSize` is at least one if any of the physical device’s
-queues support `VK_QUEUE_GRAPHICS_BIT` or
-`VK_QUEUE_COMPUTE_BIT`.
+queues support [VK_QUEUE_GRAPHICS_BIT](#VkQueueFlagBits) or
+[VK_QUEUE_COMPUTE_BIT](#VkQueueFlagBits).
 `maxSubgroupSize` is a power-of-two.
 `maxSubgroupSize` is greater than or equal to `minSubgroupSize`.
 `maxSubgroupSize` is greater than or equal to [    `subgroupSize`](#limits-subgroupSize).
@@ -1193,9 +1193,9 @@ support having a required subgroup size specified.
 inline uniform block bindings that **can** be accessible to a single shader
 stage in a pipeline layout.
 Descriptor bindings with a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` count against this limit.
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](descriptorsets.html#VkDescriptorType) count against this limit.
 Only descriptor bindings in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 
 * 
@@ -1203,7 +1203,7 @@ count against this limit.
 `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks`
 is similar to `maxPerStageDescriptorInlineUniformBlocks` but counts
 descriptor bindings from descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -1213,9 +1213,9 @@ inline uniform block bindings that **can** be included in descriptor
 bindings in a pipeline layout across all pipeline shader stages and
 descriptor set numbers.
 Descriptor bindings with a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` count against this limit.
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](descriptorsets.html#VkDescriptorType) count against this limit.
 Only descriptor bindings in descriptor set layouts created without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit set
 count against this limit.
 
 * 
@@ -1223,7 +1223,7 @@ count against this limit.
 `maxDescriptorSetUpdateAfterBindInlineUniformBlocks`
 is similar to `maxDescriptorSetInlineUniformBlocks` but counts
 descriptor bindings from descriptor sets created with or without the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) bit
 set.
 
 * 
@@ -1232,125 +1232,125 @@ set.
 all inline uniform block bindings, across all pipeline shader stages and
 descriptor set numbers, that **can** be included in a pipeline layout.
 Descriptor bindings with a descriptor type of
-`VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK` count against this limit.
+[VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK](descriptorsets.html#VkDescriptorType) count against this limit.
 
 * 
 `integerDotProduct8BitUnsignedAccelerated` is a boolean that will be
-`VK_TRUE` if the support for 8-bit unsigned dot product operations
+[VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit unsigned dot product operations
 using the `OpUDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct8BitSignedAccelerated` is a boolean that will be
-`VK_TRUE` if the support for 8-bit signed dot product operations
+[VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit signed dot product operations
 using the `OpSDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct8BitMixedSignednessAccelerated` is a boolean that
-will be `VK_TRUE` if the support for 8-bit mixed signedness dot
+will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit mixed signedness dot
 product operations using the `OpSUDotKHR` SPIR-V instruction is
 accelerated [as defined    below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct4x8BitPackedUnsignedAccelerated` is a boolean that
-will be `VK_TRUE` if the support for 8-bit unsigned dot product
+will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit unsigned dot product
 operations from operands packed into 32-bit integers using the
 `OpUDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct4x8BitPackedSignedAccelerated` is a boolean that
-will be `VK_TRUE` if the support for 8-bit signed dot product
+will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit signed dot product
 operations from operands packed into 32-bit integers using the
 `OpSDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct4x8BitPackedMixedSignednessAccelerated` is a
-boolean that will be `VK_TRUE` if the support for 8-bit mixed
+boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit mixed
 signedness dot product operations from operands packed into 32-bit
 integers using the `OpSUDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct16BitUnsignedAccelerated` is a boolean that will
-be `VK_TRUE` if the support for 16-bit unsigned dot product
+be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 16-bit unsigned dot product
 operations using the `OpUDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct16BitSignedAccelerated` is a boolean that will be
-`VK_TRUE` if the support for 16-bit signed dot product operations
+[VK_TRUE](fundamentals.html#VK_TRUE) if the support for 16-bit signed dot product operations
 using the `OpSDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct16BitMixedSignednessAccelerated` is a boolean that
-will be `VK_TRUE` if the support for 16-bit mixed signedness dot
+will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 16-bit mixed signedness dot
 product operations using the `OpSUDotKHR` SPIR-V instruction is
 accelerated [as defined    below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct32BitUnsignedAccelerated` is a boolean that will
-be `VK_TRUE` if the support for 32-bit unsigned dot product
+be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 32-bit unsigned dot product
 operations using the `OpUDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct32BitSignedAccelerated` is a boolean that will be
-`VK_TRUE` if the support for 32-bit signed dot product operations
+[VK_TRUE](fundamentals.html#VK_TRUE) if the support for 32-bit signed dot product operations
 using the `OpSDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct32BitMixedSignednessAccelerated` is a boolean that
-will be `VK_TRUE` if the support for 32-bit mixed signedness dot
+will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 32-bit mixed signedness dot
 product operations using the `OpSUDotKHR` SPIR-V instruction is
 accelerated [as defined    below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct64BitUnsignedAccelerated` is a boolean that will
-be `VK_TRUE` if the support for 64-bit unsigned dot product
+be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 64-bit unsigned dot product
 operations using the `OpUDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct64BitSignedAccelerated` is a boolean that will be
-`VK_TRUE` if the support for 64-bit signed dot product operations
+[VK_TRUE](fundamentals.html#VK_TRUE) if the support for 64-bit signed dot product operations
 using the `OpSDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct64BitMixedSignednessAccelerated` is a boolean that
-will be `VK_TRUE` if the support for 64-bit mixed signedness dot
+will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 64-bit mixed signedness dot
 product operations using the `OpSUDotKHR` SPIR-V instruction is
 accelerated [as defined    below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated` is
-a boolean that will be `VK_TRUE` if the support for 8-bit unsigned
+a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit unsigned
 accumulating saturating dot product operations using the
 `OpUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating8BitSignedAccelerated` is a
-boolean that will be `VK_TRUE` if the support for 8-bit signed
+boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit signed
 accumulating saturating dot product operations using the
 `OpSDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 8-bit mixed
+is a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit mixed
 signedness accumulating saturating dot product operations using the
 `OpSUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 8-bit
+is a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit
 unsigned accumulating saturating dot product operations from operands
 packed into 32-bit integers using the `OpUDotAccSatKHR` SPIR-V
 instruction is accelerated
@@ -1358,14 +1358,14 @@ instruction is accelerated
 
 * 
 `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 8-bit signed
+is a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit signed
 accumulating saturating dot product operations from operands packed into
 32-bit integers using the `OpSDotAccSatKHR` SPIR-V instruction is
 accelerated [as defined    below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 8-bit mixed
+is a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit mixed
 signedness accumulating saturating dot product operations from operands
 packed into 32-bit integers using the `OpSUDotAccSatKHR` SPIR-V
 instruction is accelerated
@@ -1373,63 +1373,63 @@ instruction is accelerated
 
 * 
 `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated` is
-a boolean that will be `VK_TRUE` if the support for 16-bit unsigned
+a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 16-bit unsigned
 accumulating saturating dot product operations using the
 `OpUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating16BitSignedAccelerated` is a
-boolean that will be `VK_TRUE` if the support for 16-bit signed
+boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 16-bit signed
 accumulating saturating dot product operations using the
 `OpSDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 16-bit mixed
+is a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 16-bit mixed
 signedness accumulating saturating dot product operations using the
 `OpSUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated` is
-a boolean that will be `VK_TRUE` if the support for 32-bit unsigned
+a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 32-bit unsigned
 accumulating saturating dot product operations using the
 `OpUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating32BitSignedAccelerated` is a
-boolean that will be `VK_TRUE` if the support for 32-bit signed
+boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 32-bit signed
 accumulating saturating dot product operations using the
 `OpSDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 32-bit mixed
+is a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 32-bit mixed
 signedness accumulating saturating dot product operations using the
 `OpSUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated` is
-a boolean that will be `VK_TRUE` if the support for 64-bit unsigned
+a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 64-bit unsigned
 accumulating saturating dot product operations using the
 `OpUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating64BitSignedAccelerated` is a
-boolean that will be `VK_TRUE` if the support for 64-bit signed
+boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 64-bit signed
 accumulating saturating dot product operations using the
 `OpSDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 64-bit mixed
+is a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 64-bit mixed
 signedness accumulating saturating dot product operations using the
 `OpSUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
@@ -1479,7 +1479,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVulkan13Properties-sType-sType) VUID-VkPhysicalDeviceVulkan13Properties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceVulkan14Properties` structure is defined as:
 
@@ -1544,19 +1544,19 @@ is supported when
  `maxPushDescriptors` is
 the maximum number of descriptors that **can** be used in a descriptor set
 layout created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT` set.
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](descriptorsets.html#VkDescriptorSetLayoutCreateFlagBits) set.
 
 * 
 
-`dynamicRenderingLocalReadDepthStencilAttachments` is `VK_TRUE`
+`dynamicRenderingLocalReadDepthStencilAttachments` is [VK_TRUE](fundamentals.html#VK_TRUE)
 if the implementation supports local reads of depth/stencil attachments,
-`VK_FALSE` otherwise.
+[VK_FALSE](fundamentals.html#VK_FALSE) otherwise.
 
 * 
 
-`dynamicRenderingLocalReadMultisampledAttachments` is `VK_TRUE`
+`dynamicRenderingLocalReadMultisampledAttachments` is [VK_TRUE](fundamentals.html#VK_TRUE)
 if the implementation supports local reads of multisampled attachments,
-`VK_FALSE` otherwise.
+[VK_FALSE](fundamentals.html#VK_FALSE) otherwise.
 
 * 
 `earlyFragmentMultisampleCoverageAfterSampleCounting` is a boolean
@@ -1573,13 +1573,13 @@ execution mode.
 
 * 
 `depthStencilSwizzleOneSupport` is a boolean indicating that
-depth/stencil texturing operations with `VK_COMPONENT_SWIZZLE_ONE`
+depth/stencil texturing operations with [VK_COMPONENT_SWIZZLE_ONE](resources.html#VkComponentSwizzle)
 have defined behavior.
 
 * 
 `polygonModePointSize` is a boolean value indicating whether the
 point size of the final rasterization of polygons with
-`VK_POLYGON_MODE_POINT` is controlled by `PointSize`.
+[VK_POLYGON_MODE_POINT](primsrast.html#VkPolygonMode) is controlled by `PointSize`.
 
 * 
 `nonStrictSinglePixelWideLinesUseParallelogram` is a boolean value
@@ -1594,7 +1594,7 @@ parallelograms or using Bresenham’s algorithm.
 * 
 `blockTexelViewCompatibleMultipleLayers` is a boolean value
 indicating that an implementation supports creating image views with
-`VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT` where the
+[VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits) where the
 `layerCount` member of `subresourceRange` is greater than `1`.
 
 * 
@@ -1648,14 +1648,14 @@ which supported image layouts for use with host copy operations to
 images are returned.
 
 * 
-`optimalTilingLayoutUUID` is an array of `VK_UUID_SIZE`
+`optimalTilingLayoutUUID` is an array of [VK_UUID_SIZE](#VK_UUID_SIZE)
 `uint8_t` values representing a universally unique identifier for the
 implementation’s swizzling layout of images created with
-`VK_IMAGE_TILING_OPTIMAL`.
+[VK_IMAGE_TILING_OPTIMAL](resources.html#VkImageTiling).
 
 * 
 `identicalMemoryTypeRequirements` indicates that specifying the
-`VK_IMAGE_USAGE_HOST_TRANSFER_BIT` flag in
+[VK_IMAGE_USAGE_HOST_TRANSFER_BIT](resources.html#VkImageUsageFlagBits) flag in
 [VkImageCreateInfo](resources.html#VkImageCreateInfo)::`usage` does not affect the memory type
 requirements of the image.
 
@@ -1671,7 +1671,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceVulkan14Properties-sType-sType) VUID-VkPhysicalDeviceVulkan14Properties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_4_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_4_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceIDProperties` structure is defined as:
 
@@ -1698,16 +1698,16 @@ typedef VkPhysicalDeviceIDProperties VkPhysicalDeviceIDPropertiesKHR;
 structure.
 
 * 
-`deviceUUID` is an array of `VK_UUID_SIZE` `uint8_t` values
+`deviceUUID` is an array of [VK_UUID_SIZE](#VK_UUID_SIZE) `uint8_t` values
 representing a universally unique identifier for the device.
 
 * 
-`driverUUID` is an array of `VK_UUID_SIZE` `uint8_t` values
+`driverUUID` is an array of [VK_UUID_SIZE](#VK_UUID_SIZE) `uint8_t` values
 representing a universally unique identifier for the driver build in use
 by the device.
 
 * 
-`deviceLUID` is an array of `VK_LUID_SIZE` `uint8_t` values
+`deviceLUID` is an array of [VK_LUID_SIZE](#VK_LUID_SIZE) `uint8_t` values
 representing a locally unique identifier for the device.
 
 * 
@@ -1715,9 +1715,9 @@ representing a locally unique identifier for the device.
 within a linked device adapter corresponding to the device.
 
 * 
-`deviceLUIDValid` is a boolean value that will be `VK_TRUE` if
+`deviceLUIDValid` is a boolean value that will be [VK_TRUE](fundamentals.html#VK_TRUE) if
 `deviceLUID` contains a valid LUID and `deviceNodeMask` contains
-a valid node mask, and `VK_FALSE` if they do not.
+a valid node mask, and [VK_FALSE](fundamentals.html#VK_FALSE) if they do not.
 
 If the `VkPhysicalDeviceIDProperties` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceProperties2](#VkPhysicalDeviceProperties2) structure passed to
@@ -1746,13 +1746,13 @@ particular object type:
 * 
 [External fence handle types    compatibility](capabilities.html#external-fence-handle-types-compatibility)
 
-If `deviceLUIDValid` is `VK_FALSE`, the values of `deviceLUID`
+If `deviceLUIDValid` is [VK_FALSE](fundamentals.html#VK_FALSE), the values of `deviceLUID`
 and `deviceNodeMask` are **undefined**.
-If `deviceLUIDValid` is `VK_TRUE` and Vulkan is running on the
+If `deviceLUIDValid` is [VK_TRUE](fundamentals.html#VK_TRUE) and Vulkan is running on the
 Windows operating system, the contents of `deviceLUID` **can** be cast to
 an `LUID` object and **must** be equal to the locally unique identifier of a
 `IDXGIAdapter1` object that corresponds to `physicalDevice`.
-If `deviceLUIDValid` is `VK_TRUE`, `deviceNodeMask` **must**
+If `deviceLUIDValid` is [VK_TRUE](fundamentals.html#VK_TRUE), `deviceNodeMask` **must**
 contain exactly one bit.
 If Vulkan is running on an operating system that supports the Direct3D 12
 API and `physicalDevice` corresponds to an individual device in a linked
@@ -1816,16 +1816,16 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceIDProperties-sType-sType) VUID-VkPhysicalDeviceIDProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES](fundamentals.html#VkStructureType)
 
-`VK_UUID_SIZE` is the length in `uint8_t` values of an array
+[VK_UUID_SIZE](#VK_UUID_SIZE) is the length in `uint8_t` values of an array
 containing a universally unique device or driver build identifier, as
 returned in [VkPhysicalDeviceIDProperties](#VkPhysicalDeviceIDProperties)::`deviceUUID` and
 [VkPhysicalDeviceIDProperties](#VkPhysicalDeviceIDProperties)::`driverUUID`.
 
 #define VK_UUID_SIZE                      16U
 
-`VK_LUID_SIZE` is the length in `uint8_t` values of an array
+[VK_LUID_SIZE](#VK_LUID_SIZE) is the length in `uint8_t` values of an array
 containing a locally unique device identifier, as returned in
 [VkPhysicalDeviceIDProperties](#VkPhysicalDeviceIDProperties)::`deviceLUID`.
 
@@ -1861,12 +1861,12 @@ structure.
 device.
 
 * 
-`driverName` is an array of `VK_MAX_DRIVER_NAME_SIZE` `char`
+`driverName` is an array of [VK_MAX_DRIVER_NAME_SIZE](#VK_MAX_DRIVER_NAME_SIZE) `char`
 containing a null-terminated UTF-8 string which is the name of the
 driver.
 
 * 
-`driverInfo` is an array of `VK_MAX_DRIVER_INFO_SIZE` `char`
+`driverInfo` is an array of [VK_MAX_DRIVER_INFO_SIZE](#VK_MAX_DRIVER_INFO_SIZE) `char`
 containing a null-terminated UTF-8 string with additional information
 about the driver.
 
@@ -1890,7 +1890,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDriverProperties-sType-sType) VUID-VkPhysicalDeviceDriverProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES](fundamentals.html#VkStructureType)
 
 Khronos driver IDs which **may** be returned in
 [VkPhysicalDeviceDriverProperties](#VkPhysicalDeviceDriverProperties)::`driverID` are:
@@ -1966,7 +1966,7 @@ corresponding `vk.xml` API Registry, and of the corresponding
 Only driver IDs registered with Khronos are given symbolic names.
 There **may** be unregistered driver IDs returned. |
 
-`VK_MAX_DRIVER_NAME_SIZE` is the length in `char` values of an array
+[VK_MAX_DRIVER_NAME_SIZE](#VK_MAX_DRIVER_NAME_SIZE) is the length in `char` values of an array
 containing a driver name string, as returned in
 [VkPhysicalDeviceDriverProperties](#VkPhysicalDeviceDriverProperties)::`driverName`.
 
@@ -1974,7 +1974,7 @@ containing a driver name string, as returned in
 
 #define VK_MAX_DRIVER_NAME_SIZE_KHR       VK_MAX_DRIVER_NAME_SIZE
 
-`VK_MAX_DRIVER_INFO_SIZE` is the length in `char` values of an array
+[VK_MAX_DRIVER_INFO_SIZE](#VK_MAX_DRIVER_INFO_SIZE) is the length in `char` values of an array
 containing a driver information string, as returned in
 [VkPhysicalDeviceDriverProperties](#VkPhysicalDeviceDriverProperties)::`driverInfo`.
 
@@ -2053,7 +2053,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDevicePCIBusInfoPropertiesEXT-sType-sType) VUID-VkPhysicalDevicePCIBusInfoPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceDrmPropertiesEXT` structure is defined as:
 
@@ -2108,7 +2108,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceDrmPropertiesEXT-sType-sType) VUID-VkPhysicalDeviceDrmPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRM_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRM_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceShaderIntegerDotProductProperties` structure is
 defined as:
@@ -2162,121 +2162,121 @@ structure.
 
 * 
 `integerDotProduct8BitUnsignedAccelerated` is a boolean that will be
-`VK_TRUE` if the support for 8-bit unsigned dot product operations
+[VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit unsigned dot product operations
 using the `OpUDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct8BitSignedAccelerated` is a boolean that will be
-`VK_TRUE` if the support for 8-bit signed dot product operations
+[VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit signed dot product operations
 using the `OpSDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct8BitMixedSignednessAccelerated` is a boolean that
-will be `VK_TRUE` if the support for 8-bit mixed signedness dot
+will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit mixed signedness dot
 product operations using the `OpSUDotKHR` SPIR-V instruction is
 accelerated [as defined    below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct4x8BitPackedUnsignedAccelerated` is a boolean that
-will be `VK_TRUE` if the support for 8-bit unsigned dot product
+will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit unsigned dot product
 operations from operands packed into 32-bit integers using the
 `OpUDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct4x8BitPackedSignedAccelerated` is a boolean that
-will be `VK_TRUE` if the support for 8-bit signed dot product
+will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit signed dot product
 operations from operands packed into 32-bit integers using the
 `OpSDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct4x8BitPackedMixedSignednessAccelerated` is a
-boolean that will be `VK_TRUE` if the support for 8-bit mixed
+boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit mixed
 signedness dot product operations from operands packed into 32-bit
 integers using the `OpSUDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct16BitUnsignedAccelerated` is a boolean that will
-be `VK_TRUE` if the support for 16-bit unsigned dot product
+be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 16-bit unsigned dot product
 operations using the `OpUDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct16BitSignedAccelerated` is a boolean that will be
-`VK_TRUE` if the support for 16-bit signed dot product operations
+[VK_TRUE](fundamentals.html#VK_TRUE) if the support for 16-bit signed dot product operations
 using the `OpSDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct16BitMixedSignednessAccelerated` is a boolean that
-will be `VK_TRUE` if the support for 16-bit mixed signedness dot
+will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 16-bit mixed signedness dot
 product operations using the `OpSUDotKHR` SPIR-V instruction is
 accelerated [as defined    below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct32BitUnsignedAccelerated` is a boolean that will
-be `VK_TRUE` if the support for 32-bit unsigned dot product
+be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 32-bit unsigned dot product
 operations using the `OpUDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct32BitSignedAccelerated` is a boolean that will be
-`VK_TRUE` if the support for 32-bit signed dot product operations
+[VK_TRUE](fundamentals.html#VK_TRUE) if the support for 32-bit signed dot product operations
 using the `OpSDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct32BitMixedSignednessAccelerated` is a boolean that
-will be `VK_TRUE` if the support for 32-bit mixed signedness dot
+will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 32-bit mixed signedness dot
 product operations using the `OpSUDotKHR` SPIR-V instruction is
 accelerated [as defined    below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct64BitUnsignedAccelerated` is a boolean that will
-be `VK_TRUE` if the support for 64-bit unsigned dot product
+be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 64-bit unsigned dot product
 operations using the `OpUDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct64BitSignedAccelerated` is a boolean that will be
-`VK_TRUE` if the support for 64-bit signed dot product operations
+[VK_TRUE](fundamentals.html#VK_TRUE) if the support for 64-bit signed dot product operations
 using the `OpSDotKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProduct64BitMixedSignednessAccelerated` is a boolean that
-will be `VK_TRUE` if the support for 64-bit mixed signedness dot
+will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 64-bit mixed signedness dot
 product operations using the `OpSUDotKHR` SPIR-V instruction is
 accelerated [as defined    below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated` is
-a boolean that will be `VK_TRUE` if the support for 8-bit unsigned
+a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit unsigned
 accumulating saturating dot product operations using the
 `OpUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating8BitSignedAccelerated` is a
-boolean that will be `VK_TRUE` if the support for 8-bit signed
+boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit signed
 accumulating saturating dot product operations using the
 `OpSDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 8-bit mixed
+is a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit mixed
 signedness accumulating saturating dot product operations using the
 `OpSUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 8-bit
+is a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit
 unsigned accumulating saturating dot product operations from operands
 packed into 32-bit integers using the `OpUDotAccSatKHR` SPIR-V
 instruction is accelerated
@@ -2284,14 +2284,14 @@ instruction is accelerated
 
 * 
 `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 8-bit signed
+is a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit signed
 accumulating saturating dot product operations from operands packed into
 32-bit integers using the `OpSDotAccSatKHR` SPIR-V instruction is
 accelerated [as defined    below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 8-bit mixed
+is a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 8-bit mixed
 signedness accumulating saturating dot product operations from operands
 packed into 32-bit integers using the `OpSUDotAccSatKHR` SPIR-V
 instruction is accelerated
@@ -2299,63 +2299,63 @@ instruction is accelerated
 
 * 
 `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated` is
-a boolean that will be `VK_TRUE` if the support for 16-bit unsigned
+a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 16-bit unsigned
 accumulating saturating dot product operations using the
 `OpUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating16BitSignedAccelerated` is a
-boolean that will be `VK_TRUE` if the support for 16-bit signed
+boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 16-bit signed
 accumulating saturating dot product operations using the
 `OpSDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 16-bit mixed
+is a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 16-bit mixed
 signedness accumulating saturating dot product operations using the
 `OpSUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated` is
-a boolean that will be `VK_TRUE` if the support for 32-bit unsigned
+a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 32-bit unsigned
 accumulating saturating dot product operations using the
 `OpUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating32BitSignedAccelerated` is a
-boolean that will be `VK_TRUE` if the support for 32-bit signed
+boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 32-bit signed
 accumulating saturating dot product operations using the
 `OpSDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 32-bit mixed
+is a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 32-bit mixed
 signedness accumulating saturating dot product operations using the
 `OpSUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated` is
-a boolean that will be `VK_TRUE` if the support for 64-bit unsigned
+a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 64-bit unsigned
 accumulating saturating dot product operations using the
 `OpUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating64BitSignedAccelerated` is a
-boolean that will be `VK_TRUE` if the support for 64-bit signed
+boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 64-bit signed
 accumulating saturating dot product operations using the
 `OpSDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
 
 * 
 `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated`
-is a boolean that will be `VK_TRUE` if the support for 64-bit mixed
+is a boolean that will be [VK_TRUE](fundamentals.html#VK_TRUE) if the support for 64-bit mixed
 signedness accumulating saturating dot product operations using the
 `OpSUDotAccSatKHR` SPIR-V instruction is accelerated
 [as defined below](#devsandqueues-integer-dot-product-accelerated).
@@ -2382,7 +2382,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderIntegerDotProductProperties-sType-sType) VUID-VkPhysicalDeviceShaderIntegerDotProductProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceImageProcessingPropertiesQCOM` structure is defined
 as:
@@ -2441,7 +2441,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceImageProcessingPropertiesQCOM-sType-sType) VUID-VkPhysicalDeviceImageProcessingPropertiesQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_PROPERTIES_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_PROPERTIES_QCOM](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceShaderTileImagePropertiesEXT` structure is defined
 as:
@@ -2464,17 +2464,17 @@ structure.
 
 * 
 `shaderTileImageCoherentReadAccelerated` is a boolean that will be
-`VK_TRUE` if coherent reads of tile image data is accelerated.
+[VK_TRUE](fundamentals.html#VK_TRUE) if coherent reads of tile image data is accelerated.
 
 * 
 `shaderTileImageReadSampleFromPixelRateInvocation` is a boolean that
-will be `VK_TRUE` if reading from samples from a pixel rate fragment
+will be [VK_TRUE](fundamentals.html#VK_TRUE) if reading from samples from a pixel rate fragment
 invocation is supported when
 [VkPipelineMultisampleStateCreateInfo](primsrast.html#VkPipelineMultisampleStateCreateInfo)::`rasterizationSamples` > 1.
 
 * 
 `shaderTileImageReadFromHelperInvocation` is a boolean that will be
-`VK_TRUE` if reads of tile image data from helper fragment
+[VK_TRUE](fundamentals.html#VK_TRUE) if reads of tile image data from helper fragment
 invocations result in valid values.
 
 If the `VkPhysicalDeviceShaderTileImagePropertiesEXT` structure is included in the `pNext` chain of the
@@ -2489,7 +2489,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceShaderTileImagePropertiesEXT-sType-sType) VUID-VkPhysicalDeviceShaderTileImagePropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_TILE_IMAGE_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_TILE_IMAGE_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceImageProcessing2PropertiesQCOM` structure is
 defined as:
@@ -2526,7 +2526,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceImageProcessing2PropertiesQCOM-sType-sType) VUID-VkPhysicalDeviceImageProcessing2PropertiesQCOM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_2_PROPERTIES_QCOM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_2_PROPERTIES_QCOM](fundamentals.html#VkStructureType)
 
 The `VkPhysicalDeviceLayeredDriverPropertiesMSFT` structure is defined
 as:
@@ -2548,7 +2548,7 @@ structure.
 * 
 `underlyingAPI` is a [VkLayeredDriverUnderlyingApiMSFT](#VkLayeredDriverUnderlyingApiMSFT) value
 indicating which underlying API is used to implement the layered driver,
-or `VK_LAYERED_DRIVER_UNDERLYING_API_NONE_MSFT` if the driver is not
+or [VK_LAYERED_DRIVER_UNDERLYING_API_NONE_MSFT](#VkLayeredDriverUnderlyingApiMSFT) if the driver is not
 layered.
 
 These are properties of the driver layering information of a physical
@@ -2559,7 +2559,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceLayeredDriverPropertiesMSFT-sType-sType) VUID-VkPhysicalDeviceLayeredDriverPropertiesMSFT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT](fundamentals.html#VkStructureType)
 
 Underlying APIs which **may** be returned in
 [VkPhysicalDeviceLayeredDriverPropertiesMSFT](#VkPhysicalDeviceLayeredDriverPropertiesMSFT)::`underlyingAPI` are:
@@ -2595,7 +2595,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceSchedulingControlsPropertiesARM-sType-sType) VUID-VkPhysicalDeviceSchedulingControlsPropertiesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM](fundamentals.html#VkStructureType)
 
 Bits which **can** be set in
 [VkPhysicalDeviceSchedulingControlsPropertiesARM](#VkPhysicalDeviceSchedulingControlsPropertiesARM)::`schedulingControlsFlags`,
@@ -2607,7 +2607,7 @@ typedef VkFlags64 VkPhysicalDeviceSchedulingControlsFlagBitsARM;
 static const VkPhysicalDeviceSchedulingControlsFlagBitsARM VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM = 0x00000001ULL;
 
 * 
-`VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM`
+[VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM](#VkPhysicalDeviceSchedulingControlsFlagBitsARM)
 specifies that a [VkDeviceQueueShaderCoreControlCreateInfoARM](#VkDeviceQueueShaderCoreControlCreateInfoARM)
 structure **may** be included in the `pNext` chain of a
 [VkDeviceQueueCreateInfo](#VkDeviceQueueCreateInfo) or [VkDeviceCreateInfo](#VkDeviceCreateInfo) structure.
@@ -2793,43 +2793,43 @@ typedef enum VkQueueFlagBits {
 } VkQueueFlagBits;
 
 * 
-`VK_QUEUE_GRAPHICS_BIT` specifies that queues in this queue family
+[VK_QUEUE_GRAPHICS_BIT](#VkQueueFlagBits) specifies that queues in this queue family
 support graphics operations.
 
 * 
-`VK_QUEUE_COMPUTE_BIT` specifies that queues in this queue family
+[VK_QUEUE_COMPUTE_BIT](#VkQueueFlagBits) specifies that queues in this queue family
 support compute operations.
 
 * 
-`VK_QUEUE_TRANSFER_BIT` specifies that queues in this queue family
+[VK_QUEUE_TRANSFER_BIT](#VkQueueFlagBits) specifies that queues in this queue family
 support transfer operations.
 
 * 
-`VK_QUEUE_SPARSE_BINDING_BIT` specifies that queues in this queue
+[VK_QUEUE_SPARSE_BINDING_BIT](#VkQueueFlagBits) specifies that queues in this queue
 family support sparse memory management operations (see
 [Sparse Resources](sparsemem.html#sparsememory)).
 If any of the sparse resource features are supported, then at least one
 queue family **must** support this bit.
 
 * 
-`VK_QUEUE_VIDEO_DECODE_BIT_KHR` specifies that queues in this queue
+[VK_QUEUE_VIDEO_DECODE_BIT_KHR](#VkQueueFlagBits) specifies that queues in this queue
 family support [video decode operations](videocoding.html#video-decode-operations).
 
 * 
-`VK_QUEUE_VIDEO_ENCODE_BIT_KHR` specifies that queues in this queue
+[VK_QUEUE_VIDEO_ENCODE_BIT_KHR](#VkQueueFlagBits) specifies that queues in this queue
 family support [video encode operations](videocoding.html#video-encode-operations).
 
 * 
-`VK_QUEUE_OPTICAL_FLOW_BIT_NV` specifies that queues in this queue
+[VK_QUEUE_OPTICAL_FLOW_BIT_NV](#VkQueueFlagBits) specifies that queues in this queue
 family support optical flow operations.
 
 * 
-`VK_QUEUE_DATA_GRAPH_BIT_ARM` specifies that queues in this queue
+[VK_QUEUE_DATA_GRAPH_BIT_ARM](#VkQueueFlagBits) specifies that queues in this queue
 family support [data graph operations](VK_ARM_data_graph/graphs.html#graphs-operations).
 
 * 
-`VK_QUEUE_PROTECTED_BIT` specifies that queues in this queue family
-support the `VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT` bit.
+[VK_QUEUE_PROTECTED_BIT](#VkQueueFlagBits) specifies that queues in this queue family
+support the [VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT](#VkDeviceQueueCreateFlagBits) bit.
 (see [Protected Memory](memory.html#memory-protected-memory)).
 If the physical device supports the [    `protectedMemory`](features.html#features-protectedMemory) feature, at least one of its queue families
 **must** support this bit.
@@ -2865,8 +2865,8 @@ graphics operations, compute operations, and protected memory operations.
 are also allowed on a queue that supports either graphics or compute
 operations.
 Thus, if the capabilities of a queue family include
-`VK_QUEUE_GRAPHICS_BIT` or `VK_QUEUE_COMPUTE_BIT`, then reporting
-the `VK_QUEUE_TRANSFER_BIT` capability separately for that queue family
+[VK_QUEUE_GRAPHICS_BIT](#VkQueueFlagBits) or [VK_QUEUE_COMPUTE_BIT](#VkQueueFlagBits), then reporting
+the [VK_QUEUE_TRANSFER_BIT](#VkQueueFlagBits) capability separately for that queue family
 is **optional**. |
 
 For further details see [Queues](#devsandqueues-queues).
@@ -2956,7 +2956,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueueFamilyProperties2-sType-sType) VUID-VkQueueFamilyProperties2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUEUE_FAMILY_PROPERTIES_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_PROPERTIES_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkQueueFamilyProperties2-pNext-pNext) VUID-VkQueueFamilyProperties2-pNext-pNext
@@ -2998,7 +2998,7 @@ structure.
 in this queue family, and it **must** be greater than 0.
 
 * 
-`priorities` is an array of `VK_MAX_GLOBAL_PRIORITY_SIZE`
+`priorities` is an array of [VK_MAX_GLOBAL_PRIORITY_SIZE](#VK_MAX_GLOBAL_PRIORITY_SIZE)
 [VkQueueGlobalPriority](#VkQueueGlobalPriority) enums representing all supported global
 queue priorities in this queue family.
 The first `priorityCount` elements of the array will be valid.
@@ -3016,18 +3016,18 @@ The valid elements of `priorities` **must** be a continuous sequence of
 
 |  | For example, returning `priorityCount` as 3 with supported
 | --- | --- |
-`priorities` as `VK_QUEUE_GLOBAL_PRIORITY_LOW`,
-`VK_QUEUE_GLOBAL_PRIORITY_MEDIUM` and
-`VK_QUEUE_GLOBAL_PRIORITY_REALTIME` is not allowed. |
+`priorities` as [VK_QUEUE_GLOBAL_PRIORITY_LOW](#VkQueueGlobalPriorityEXT),
+[VK_QUEUE_GLOBAL_PRIORITY_MEDIUM](#VkQueueGlobalPriorityEXT) and
+[VK_QUEUE_GLOBAL_PRIORITY_REALTIME](#VkQueueGlobalPriorityEXT) is not allowed. |
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkQueueFamilyGlobalPriorityProperties-sType-sType) VUID-VkQueueFamilyGlobalPriorityProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES](fundamentals.html#VkStructureType)
 
-`VK_MAX_GLOBAL_PRIORITY_SIZE` is the length of an array of
+[VK_MAX_GLOBAL_PRIORITY_SIZE](#VK_MAX_GLOBAL_PRIORITY_SIZE) is the length of an array of
 [VkQueueGlobalPriority](#VkQueueGlobalPriority) enumerants representing supported queue
 priorities, as returned in
 [VkQueueFamilyGlobalPriorityProperties](#VkQueueFamilyGlobalPriorityProperties)::`priorities`.
@@ -3067,7 +3067,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueueFamilyCheckpointProperties2NV-sType-sType) VUID-VkQueueFamilyCheckpointProperties2NV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV](fundamentals.html#VkStructureType)
 
 The [VkQueueFamilyCheckpointPropertiesNV](#VkQueueFamilyCheckpointPropertiesNV) structure is defined as:
 
@@ -3098,7 +3098,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueueFamilyCheckpointPropertiesNV-sType-sType) VUID-VkQueueFamilyCheckpointPropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV](fundamentals.html#VkStructureType)
 
 The [VkQueueFamilyVideoPropertiesKHR](#VkQueueFamilyVideoPropertiesKHR) structure is defined as:
 
@@ -3131,7 +3131,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueueFamilyVideoPropertiesKHR-sType-sType) VUID-VkQueueFamilyVideoPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUEUE_FAMILY_VIDEO_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_VIDEO_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 The [VkQueueFamilyQueryResultStatusPropertiesKHR](#VkQueueFamilyQueryResultStatusPropertiesKHR) structure is defined
 as:
@@ -3151,9 +3151,9 @@ typedef struct VkQueueFamilyQueryResultStatusPropertiesKHR {
 structure.
 
 * 
-`queryResultStatusSupport` reports `VK_TRUE` if query type
-`VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR` and use of
-`VK_QUERY_RESULT_WITH_STATUS_BIT_KHR` are supported.
+`queryResultStatusSupport` reports [VK_TRUE](fundamentals.html#VK_TRUE) if query type
+[VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR](queries.html#VkQueryType) and use of
+[VK_QUERY_RESULT_WITH_STATUS_BIT_KHR](queries.html#VkQueryResultFlagBits) are supported.
 
 If this structure is included in the `pNext` chain of the
 [VkQueueFamilyProperties2](#VkQueueFamilyProperties2) structure passed to
@@ -3165,7 +3165,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueueFamilyQueryResultStatusPropertiesKHR-sType-sType) VUID-VkQueueFamilyQueryResultStatusPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUEUE_FAMILY_QUERY_RESULT_STATUS_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_QUERY_RESULT_STATUS_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 To enumerate the performance query counters available on a queue family of a
 physical device, call:
@@ -3205,8 +3205,8 @@ application to the number of elements in the `pCounters`,
 `pCounterDescriptions`, or both arrays and on return the variable is
 overwritten with the number of structures actually written out.
 If `pCounterCount` is less than the number of counters available, at
-most `pCounterCount` structures will be written, and `VK_INCOMPLETE`
-will be returned instead of `VK_SUCCESS`, to indicate that not all the
+most `pCounterCount` structures will be written, and [VK_INCOMPLETE](fundamentals.html#VkResult)
+will be returned instead of [VK_SUCCESS](fundamentals.html#VkResult), to indicate that not all the
 available counters were returned.
 
 Valid Usage (Implicit)
@@ -3236,27 +3236,27 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkPerformanceCounterKHR` structure is defined as:
 
@@ -3290,7 +3290,7 @@ that the counter belongs to.
 storage type that the counter’s data uses.
 
 * 
-`uuid` is an array of size `VK_UUID_SIZE`, containing 8-bit
+`uuid` is an array of size [VK_UUID_SIZE](#VK_UUID_SIZE), containing 8-bit
 values that represent a universally unique identifier for the counter of
 the physical device.
 
@@ -3299,7 +3299,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPerformanceCounterKHR-sType-sType) VUID-VkPerformanceCounterKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPerformanceCounterKHR-pNext-pNext) VUID-VkPerformanceCounterKHR-pNext-pNext
@@ -3328,47 +3328,47 @@ typedef enum VkPerformanceCounterUnitKHR {
 } VkPerformanceCounterUnitKHR;
 
 * 
-`VK_PERFORMANCE_COUNTER_UNIT_GENERIC_KHR` - the performance counter
+[VK_PERFORMANCE_COUNTER_UNIT_GENERIC_KHR](#VkPerformanceCounterUnitKHR) - the performance counter
 unit is a generic data point.
 
 * 
-`VK_PERFORMANCE_COUNTER_UNIT_PERCENTAGE_KHR` - the performance
+[VK_PERFORMANCE_COUNTER_UNIT_PERCENTAGE_KHR](#VkPerformanceCounterUnitKHR) - the performance
 counter unit is a percentage (%).
 
 * 
-`VK_PERFORMANCE_COUNTER_UNIT_NANOSECONDS_KHR` - the performance
+[VK_PERFORMANCE_COUNTER_UNIT_NANOSECONDS_KHR](#VkPerformanceCounterUnitKHR) - the performance
 counter unit is a value of nanoseconds (ns).
 
 * 
-`VK_PERFORMANCE_COUNTER_UNIT_BYTES_KHR` - the performance counter
+[VK_PERFORMANCE_COUNTER_UNIT_BYTES_KHR](#VkPerformanceCounterUnitKHR) - the performance counter
 unit is a value of bytes.
 
 * 
-`VK_PERFORMANCE_COUNTER_UNIT_BYTES_PER_SECOND_KHR` - the performance
+[VK_PERFORMANCE_COUNTER_UNIT_BYTES_PER_SECOND_KHR](#VkPerformanceCounterUnitKHR) - the performance
 counter unit is a value of bytes/s.
 
 * 
-`VK_PERFORMANCE_COUNTER_UNIT_KELVIN_KHR` - the performance counter
+[VK_PERFORMANCE_COUNTER_UNIT_KELVIN_KHR](#VkPerformanceCounterUnitKHR) - the performance counter
 unit is a temperature reported in Kelvin.
 
 * 
-`VK_PERFORMANCE_COUNTER_UNIT_WATTS_KHR` - the performance counter
+[VK_PERFORMANCE_COUNTER_UNIT_WATTS_KHR](#VkPerformanceCounterUnitKHR) - the performance counter
 unit is a value of watts (W).
 
 * 
-`VK_PERFORMANCE_COUNTER_UNIT_VOLTS_KHR` - the performance counter
+[VK_PERFORMANCE_COUNTER_UNIT_VOLTS_KHR](#VkPerformanceCounterUnitKHR) - the performance counter
 unit is a value of volts (V).
 
 * 
-`VK_PERFORMANCE_COUNTER_UNIT_AMPS_KHR` - the performance counter
+[VK_PERFORMANCE_COUNTER_UNIT_AMPS_KHR](#VkPerformanceCounterUnitKHR) - the performance counter
 unit is a value of amps (A).
 
 * 
-`VK_PERFORMANCE_COUNTER_UNIT_HERTZ_KHR` - the performance counter
+[VK_PERFORMANCE_COUNTER_UNIT_HERTZ_KHR](#VkPerformanceCounterUnitKHR) - the performance counter
 unit is a value of hertz (Hz).
 
 * 
-`VK_PERFORMANCE_COUNTER_UNIT_CYCLES_KHR` - the performance counter
+[VK_PERFORMANCE_COUNTER_UNIT_CYCLES_KHR](#VkPerformanceCounterUnitKHR) - the performance counter
 unit is a value of cycles.
 
 Performance counters have an associated scope.
@@ -3391,17 +3391,17 @@ typedef enum VkPerformanceCounterScopeKHR {
 } VkPerformanceCounterScopeKHR;
 
 * 
-`VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR` - the performance
+[VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR](#VkPerformanceCounterScopeKHR) - the performance
 counter scope is a single complete command buffer.
 
 * 
-`VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR` - the performance
+[VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR](#VkPerformanceCounterScopeKHR) - the performance
 counter scope is zero or more complete render passes.
 The performance query containing the performance counter **must** begin and
 end outside a render pass instance.
 
 * 
-`VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_KHR` - the performance counter
+[VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_KHR](#VkPerformanceCounterScopeKHR) - the performance counter
 scope is zero or more commands.
 
 Performance counters have an associated storage.
@@ -3421,27 +3421,27 @@ typedef enum VkPerformanceCounterStorageKHR {
 } VkPerformanceCounterStorageKHR;
 
 * 
-`VK_PERFORMANCE_COUNTER_STORAGE_INT32_KHR` - the performance counter
+[VK_PERFORMANCE_COUNTER_STORAGE_INT32_KHR](#VkPerformanceCounterStorageKHR) - the performance counter
 storage is a 32-bit signed integer.
 
 * 
-`VK_PERFORMANCE_COUNTER_STORAGE_INT64_KHR` - the performance counter
+[VK_PERFORMANCE_COUNTER_STORAGE_INT64_KHR](#VkPerformanceCounterStorageKHR) - the performance counter
 storage is a 64-bit signed integer.
 
 * 
-`VK_PERFORMANCE_COUNTER_STORAGE_UINT32_KHR` - the performance
+[VK_PERFORMANCE_COUNTER_STORAGE_UINT32_KHR](#VkPerformanceCounterStorageKHR) - the performance
 counter storage is a 32-bit unsigned integer.
 
 * 
-`VK_PERFORMANCE_COUNTER_STORAGE_UINT64_KHR` - the performance
+[VK_PERFORMANCE_COUNTER_STORAGE_UINT64_KHR](#VkPerformanceCounterStorageKHR) - the performance
 counter storage is a 64-bit unsigned integer.
 
 * 
-`VK_PERFORMANCE_COUNTER_STORAGE_FLOAT32_KHR` - the performance
+[VK_PERFORMANCE_COUNTER_STORAGE_FLOAT32_KHR](#VkPerformanceCounterStorageKHR) - the performance
 counter storage is a 32-bit floating-point.
 
 * 
-`VK_PERFORMANCE_COUNTER_STORAGE_FLOAT64_KHR` - the performance
+[VK_PERFORMANCE_COUNTER_STORAGE_FLOAT64_KHR](#VkPerformanceCounterStorageKHR) - the performance
 counter storage is a 64-bit floating-point.
 
 The `VkPerformanceCounterDescriptionKHR` structure is defined as:
@@ -3469,16 +3469,16 @@ structure.
 behavior for the counter.
 
 * 
-`name` is an array of size `VK_MAX_DESCRIPTION_SIZE`, containing
+`name` is an array of size [VK_MAX_DESCRIPTION_SIZE](extensions.html#VK_MAX_DESCRIPTION_SIZE), containing
 a null-terminated UTF-8 string specifying the name of the counter.
 
 * 
-`category` is an array of size `VK_MAX_DESCRIPTION_SIZE`,
+`category` is an array of size [VK_MAX_DESCRIPTION_SIZE](extensions.html#VK_MAX_DESCRIPTION_SIZE),
 containing a null-terminated UTF-8 string specifying the category of the
 counter.
 
 * 
-`description` is an array of size `VK_MAX_DESCRIPTION_SIZE`,
+`description` is an array of size [VK_MAX_DESCRIPTION_SIZE](extensions.html#VK_MAX_DESCRIPTION_SIZE),
 containing a null-terminated UTF-8 string specifying the description of
 the counter.
 
@@ -3487,7 +3487,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPerformanceCounterDescriptionKHR-sType-sType) VUID-VkPerformanceCounterDescriptionKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_DESCRIPTION_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_DESCRIPTION_KHR](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPerformanceCounterDescriptionKHR-pNext-pNext) VUID-VkPerformanceCounterDescriptionKHR-pNext-pNext
@@ -3509,12 +3509,12 @@ typedef enum VkPerformanceCounterDescriptionFlagBitsKHR {
 } VkPerformanceCounterDescriptionFlagBitsKHR;
 
 * 
-`VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_BIT_KHR`
+[VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_BIT_KHR](#VkPerformanceCounterDescriptionFlagBitsKHR)
 specifies that recording the counter **may** have a noticeable performance
 impact.
 
 * 
-`VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_BIT_KHR`
+[VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_BIT_KHR](#VkPerformanceCounterDescriptionFlagBitsKHR)
 specifies that concurrently recording the counter while other submitted
 command buffers are running **may** impact the accuracy of the recording.
 
@@ -3558,7 +3558,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkQueueFamilyOwnershipTransferPropertiesKHR-sType-sType) VUID-VkQueueFamilyOwnershipTransferPropertiesKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_QUEUE_FAMILY_OWNERSHIP_TRANSFER_PROPERTIES_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_QUEUE_FAMILY_OWNERSHIP_TRANSFER_PROPERTIES_KHR](fundamentals.html#VkStructureType)
 
 To enumerate the by region performance counters available on a queue family
 of a physical device, call:
@@ -3598,8 +3598,8 @@ application to the number of elements in the `pCounters`,
 `pCounterDescriptions`, or both arrays and on return the variable is
 overwritten with the number of structures actually written out.
 If `pCounterCount` is less than the number of counters available, at
-most `pCounterCount` structures will be written, and `VK_INCOMPLETE`
-will be returned instead of `VK_SUCCESS`, to indicate that not all the
+most `pCounterCount` structures will be written, and [VK_INCOMPLETE](fundamentals.html#VkResult)
+will be returned instead of [VK_SUCCESS](fundamentals.html#VkResult), to indicate that not all the
 available counters were returned.
 
 Valid Usage (Implicit)
@@ -3629,27 +3629,27 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkPerformanceCounterARM` structure is defined as:
 
@@ -3675,7 +3675,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPerformanceCounterARM-sType-sType) VUID-VkPerformanceCounterARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPerformanceCounterARM-pNext-pNext) VUID-VkPerformanceCounterARM-pNext-pNext
@@ -3703,7 +3703,7 @@ structure.
 `flags` is reserved for future use.
 
 * 
-`name` is an array of size `VK_MAX_DESCRIPTION_SIZE`, containing
+`name` is an array of size [VK_MAX_DESCRIPTION_SIZE](extensions.html#VK_MAX_DESCRIPTION_SIZE), containing
 a null-terminated UTF-8 string specifying the name of the counter.
 
 Valid Usage (Implicit)
@@ -3711,7 +3711,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPerformanceCounterDescriptionARM-sType-sType) VUID-VkPerformanceCounterDescriptionARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_DESCRIPTION_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_DESCRIPTION_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPerformanceCounterDescriptionARM-pNext-pNext) VUID-VkPerformanceCounterDescriptionARM-pNext-pNext
@@ -3801,8 +3801,8 @@ overwritten with the number of structures actually written to
 `pPhysicalDeviceGroupProperties`.
 If `pPhysicalDeviceGroupCount` is less than the number of device groups
 available, at most `pPhysicalDeviceGroupCount` structures will be
-written, and `VK_INCOMPLETE` will be returned instead of
-`VK_SUCCESS`, to indicate that not all the available device groups were
+written, and [VK_INCOMPLETE](fundamentals.html#VkResult) will be returned instead of
+[VK_SUCCESS](fundamentals.html#VkResult), to indicate that not all the available device groups were
 returned.
 
 Every physical device **must** be in exactly one device group.
@@ -3829,27 +3829,27 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkPhysicalDeviceGroupProperties` structure is defined as:
 
@@ -3878,7 +3878,7 @@ structure.
 group.
 
 * 
-`physicalDevices` is an array of `VK_MAX_DEVICE_GROUP_SIZE`
+`physicalDevices` is an array of [VK_MAX_DEVICE_GROUP_SIZE](#VK_MAX_DEVICE_GROUP_SIZE)
 [VkPhysicalDevice](#VkPhysicalDevice) handles representing all physical devices in the
 group.
 The first `physicalDeviceCount` elements of the array will be valid.
@@ -3887,24 +3887,24 @@ The first `physicalDeviceCount` elements of the array will be valid.
 `subsetAllocation` specifies whether logical devices created from
 the group support allocating device memory on a subset of devices, via
 the `deviceMask` member of the [VkMemoryAllocateFlagsInfo](memory.html#VkMemoryAllocateFlagsInfo).
-If this is `VK_FALSE`, then all device memory allocations are made
+If this is [VK_FALSE](fundamentals.html#VK_FALSE), then all device memory allocations are made
 across all physical devices in the group.
 If `physicalDeviceCount` is `1`, then `subsetAllocation` **must**
-be `VK_FALSE`.
+be [VK_FALSE](fundamentals.html#VK_FALSE).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPhysicalDeviceGroupProperties-sType-sType) VUID-VkPhysicalDeviceGroupProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GROUP_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GROUP_PROPERTIES](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPhysicalDeviceGroupProperties-pNext-pNext) VUID-VkPhysicalDeviceGroupProperties-pNext-pNext
 
  `pNext` **must** be `NULL`
 
-`VK_MAX_DEVICE_GROUP_SIZE` is the length of an array containing
+[VK_MAX_DEVICE_GROUP_SIZE](#VK_MAX_DEVICE_GROUP_SIZE) is the length of an array containing
 [VkPhysicalDevice](#VkPhysicalDevice) handle values representing all physical devices in a
 group, as returned in
 [VkPhysicalDeviceGroupProperties](#VkPhysicalDeviceGroupProperties)::`physicalDevices`.
@@ -3949,9 +3949,9 @@ containing information about how to create the device.
 `ppEnabledExtensionNames` and `pEnabledFeatures` members of
 `pCreateInfo`, respectively, are supported by the implementation.
 If any requested extension is not supported, `vkCreateDevice` **must**
-return `VK_ERROR_EXTENSION_NOT_PRESENT`.
+return [VK_ERROR_EXTENSION_NOT_PRESENT](fundamentals.html#VkResult).
 If any requested feature is not supported, `vkCreateDevice` **must** return
-`VK_ERROR_FEATURE_NOT_PRESENT`.
+[VK_ERROR_FEATURE_NOT_PRESENT](fundamentals.html#VkResult).
 Support for extensions **can** be checked before creating a device by querying
 [vkEnumerateDeviceExtensionProperties](extensions.html#vkEnumerateDeviceExtensionProperties).
 Support for features **can** similarly be checked by querying
@@ -3964,7 +3964,7 @@ Multiple logical devices **can** be created from the same physical device.
 Logical device creation **may** fail due to lack of device-specific resources
 (in addition to other errors).
 If that occurs, `vkCreateDevice` will return
-`VK_ERROR_TOO_MANY_OBJECTS`.
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult).
 
 Valid Usage
 
@@ -3973,7 +3973,7 @@ Valid Usage
 
 All [required device    extensions](extensions.html#extendingvulkan-extensions-extensiondependencies) for each extension in the
 [VkDeviceCreateInfo](#VkDeviceCreateInfo)::`ppEnabledExtensionNames` list **must** also
-be present in that list.
+be present in that list
 
 Valid Usage (Implicit)
 
@@ -4002,36 +4002,36 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_DEVICE_LOST`
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_EXTENSION_NOT_PRESENT`
+[VK_ERROR_EXTENSION_NOT_PRESENT](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_FEATURE_NOT_PRESENT`
+[VK_ERROR_FEATURE_NOT_PRESENT](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_INITIALIZATION_FAILED`
+[VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_TOO_MANY_OBJECTS`
+[VK_ERROR_TOO_MANY_OBJECTS](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkDeviceCreateInfo` structure is defined as:
 
@@ -4163,7 +4163,7 @@ If [VkPhysicalDeviceProperties](#VkPhysicalDeviceProperties)::`apiVersion` adver
 If the `pNext` chain includes a
 [VkPhysicalDeviceVulkan12Features](features.html#VkPhysicalDeviceVulkan12Features) structure and
 [VkPhysicalDeviceVulkan12Features](features.html#VkPhysicalDeviceVulkan12Features)::`bufferDeviceAddress` is
-`VK_TRUE`, `ppEnabledExtensionNames` **must** not contain
+[VK_TRUE](fundamentals.html#VK_TRUE), `ppEnabledExtensionNames` **must** not contain
 `[VK_EXT_buffer_device_address](../appendices/extensions.html#VK_EXT_buffer_device_address)`
 
 * 
@@ -4204,7 +4204,7 @@ If `ppEnabledExtensionNames` contains
 `"VK_KHR_shader_draw_parameters"` and the `pNext` chain includes a
 [VkPhysicalDeviceVulkan11Features](features.html#VkPhysicalDeviceVulkan11Features) structure, then
 `VkPhysicalDeviceVulkan11Features`::`shaderDrawParameters` **must**
-be `VK_TRUE`
+be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkDeviceCreateInfo-ppEnabledExtensionNames-02831) VUID-VkDeviceCreateInfo-ppEnabledExtensionNames-02831
@@ -4213,7 +4213,7 @@ If `ppEnabledExtensionNames` contains `"VK_KHR_draw_indirect_count"`
 and the `pNext` chain includes a
 [VkPhysicalDeviceVulkan12Features](features.html#VkPhysicalDeviceVulkan12Features) structure, then
 `VkPhysicalDeviceVulkan12Features`::`drawIndirectCount` **must** be
-`VK_TRUE`
+[VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkDeviceCreateInfo-ppEnabledExtensionNames-02832) VUID-VkDeviceCreateInfo-ppEnabledExtensionNames-02832
@@ -4222,7 +4222,7 @@ If `ppEnabledExtensionNames` contains
 `"VK_KHR_sampler_mirror_clamp_to_edge"` and the `pNext` chain
 includes a [VkPhysicalDeviceVulkan12Features](features.html#VkPhysicalDeviceVulkan12Features) structure, then
 `VkPhysicalDeviceVulkan12Features`::`samplerMirrorClampToEdge`
-**must** be `VK_TRUE`
+**must** be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkDeviceCreateInfo-ppEnabledExtensionNames-02833) VUID-VkDeviceCreateInfo-ppEnabledExtensionNames-02833
@@ -4231,7 +4231,7 @@ If `ppEnabledExtensionNames` contains `"VK_EXT_descriptor_indexing"`
 and the `pNext` chain includes a
 [VkPhysicalDeviceVulkan12Features](features.html#VkPhysicalDeviceVulkan12Features) structure, then
 `VkPhysicalDeviceVulkan12Features`::`descriptorIndexing` **must**
-be `VK_TRUE`
+be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkDeviceCreateInfo-ppEnabledExtensionNames-02834) VUID-VkDeviceCreateInfo-ppEnabledExtensionNames-02834
@@ -4240,7 +4240,7 @@ If `ppEnabledExtensionNames` contains
 `"VK_EXT_sampler_filter_minmax"` and the `pNext` chain includes a
 [VkPhysicalDeviceVulkan12Features](features.html#VkPhysicalDeviceVulkan12Features) structure, then
 `VkPhysicalDeviceVulkan12Features`::`samplerFilterMinmax` **must**
-be `VK_TRUE`
+be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkDeviceCreateInfo-ppEnabledExtensionNames-02835) VUID-VkDeviceCreateInfo-ppEnabledExtensionNames-02835
@@ -4250,7 +4250,7 @@ If `ppEnabledExtensionNames` contains
 includes a [VkPhysicalDeviceVulkan12Features](features.html#VkPhysicalDeviceVulkan12Features) structure, then
 `VkPhysicalDeviceVulkan12Features`::`shaderOutputViewportIndex`
 and `VkPhysicalDeviceVulkan12Features`::`shaderOutputLayer`
-**must** both be `VK_TRUE`
+**must** both be [VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkDeviceCreateInfo-pNext-06532) VUID-VkDeviceCreateInfo-pNext-06532
@@ -4297,7 +4297,7 @@ If `ppEnabledExtensionNames` contains `"VK_KHR_push_descriptor"` and
 the `pNext` chain includes a [VkPhysicalDeviceVulkan14Features](features.html#VkPhysicalDeviceVulkan14Features)
 structure, then
 `VkPhysicalDeviceVulkan14Features`::`pushDescriptor` **must** be
-`VK_TRUE`
+[VK_TRUE](fundamentals.html#VK_TRUE)
 
 * 
 [](#VUID-VkDeviceCreateInfo-pProperties-04451) VUID-VkDeviceCreateInfo-pProperties-04451
@@ -4373,7 +4373,7 @@ If the [    `sparseImageFloat32AtomicMinMax`](features.html#features-sparseImage
 [](#VUID-VkDeviceCreateInfo-robustBufferAccess-10247) VUID-VkDeviceCreateInfo-robustBufferAccess-10247
 
 If the [`robustBufferAccess`](features.html#features-robustBufferAccess) feature
-is enabled, and [    `robustBufferAccessUpdateAfterBind`](#limits-robustBufferAccessUpdateAfterBind) is `VK_FALSE`, then
+is enabled, and [    `robustBufferAccessUpdateAfterBind`](#limits-robustBufferAccessUpdateAfterBind) is [VK_FALSE](fundamentals.html#VK_FALSE), then
 [    `descriptorBindingUniformBufferUpdateAfterBind`](features.html#features-descriptorBindingUniformBufferUpdateAfterBind),
 [    `descriptorBindingStorageBufferUpdateAfterBind`](features.html#features-descriptorBindingStorageBufferUpdateAfterBind),
 [    `descriptorBindingUniformTexelBufferUpdateAfterBind`](features.html#features-descriptorBindingUniformTexelBufferUpdateAfterBind), and
@@ -4402,7 +4402,7 @@ If the `pNext` chain includes a
 [VkDeviceQueueShaderCoreControlCreateInfoARM](#VkDeviceQueueShaderCoreControlCreateInfoARM) structure then
 [VkPhysicalDeviceSchedulingControlsPropertiesARM](#VkPhysicalDeviceSchedulingControlsPropertiesARM)::`schedulingControlsFlags`
 **must** contain
-`VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM`
+[VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM](#VkPhysicalDeviceSchedulingControlsFlagBitsARM)
 
 * 
 [](#VUID-VkDeviceCreateInfo-None-10778) VUID-VkDeviceCreateInfo-None-10778
@@ -4414,27 +4414,27 @@ If the [maintenance9](features.html#features-maintenance9) feature is not suppor
 [](#VUID-VkDeviceCreateInfo-queueFamilyIndex-11831) VUID-VkDeviceCreateInfo-queueFamilyIndex-11831
 
 If any element of pQueueCreateInfos specifies a `queueFamilyIndex`
-that supports `VK_QUEUE_DATA_GRAPH_BIT_ARM` and that
+that supports [VK_QUEUE_DATA_GRAPH_BIT_ARM](#VkQueueFlagBits) and that
 `queueFamilyIndex` enumerates an engine through
 [vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM](VK_ARM_data_graph/graphs.html#vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM) with
 `type`
-`VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_NEURAL_QCOM`
+[VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_NEURAL_QCOM](VK_ARM_data_graph/graphs.html#VkPhysicalDeviceDataGraphProcessingEngineTypeARM)
 or
-`VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_COMPUTE_QCOM`,
+[VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_COMPUTE_QCOM](VK_ARM_data_graph/graphs.html#VkPhysicalDeviceDataGraphProcessingEngineTypeARM),
 a [VkPhysicalDeviceDataGraphModelFeaturesQCOM](features.html#VkPhysicalDeviceDataGraphModelFeaturesQCOM) structure **must** be
-included in `pNext` with [    dataGraphModel](features.html#features-dataGraphModelQCOM) set to `VK_TRUE`
+included in `pNext` with [    dataGraphModel](features.html#features-dataGraphModelQCOM) set to [VK_TRUE](fundamentals.html#VK_TRUE)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDeviceCreateInfo-sType-sType) VUID-VkDeviceCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceCreateInfo-pNext-pNext) VUID-VkDeviceCreateInfo-pNext-pNext
 
- Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkDeviceDeviceMemoryReportCreateInfoEXT](#VkDeviceDeviceMemoryReportCreateInfoEXT), [VkDeviceDiagnosticsConfigCreateInfoNV](#VkDeviceDiagnosticsConfigCreateInfoNV), [VkDeviceGroupDeviceCreateInfo](#VkDeviceGroupDeviceCreateInfo), [VkDeviceMemoryOverallocationCreateInfoAMD](#VkDeviceMemoryOverallocationCreateInfoAMD), [VkDevicePipelineBinaryInternalCacheControlKHR](#VkDevicePipelineBinaryInternalCacheControlKHR), [VkDevicePrivateDataCreateInfo](#VkDevicePrivateDataCreateInfo), [VkDeviceQueueShaderCoreControlCreateInfoARM](#VkDeviceQueueShaderCoreControlCreateInfoARM), [VkExternalComputeQueueDeviceCreateInfoNV](VK_NV_external_compute_queue/VK_NV_external_compute_queue.html#VkExternalComputeQueueDeviceCreateInfoNV), [VkPhysicalDevice16BitStorageFeatures](features.html#VkPhysicalDevice16BitStorageFeatures), [VkPhysicalDevice4444FormatsFeaturesEXT](features.html#VkPhysicalDevice4444FormatsFeaturesEXT), [VkPhysicalDevice8BitStorageFeatures](features.html#VkPhysicalDevice8BitStorageFeatures), [VkPhysicalDeviceASTCDecodeFeaturesEXT](features.html#VkPhysicalDeviceASTCDecodeFeaturesEXT), [VkPhysicalDeviceAccelerationStructureFeaturesKHR](features.html#VkPhysicalDeviceAccelerationStructureFeaturesKHR), [VkPhysicalDeviceAddressBindingReportFeaturesEXT](features.html#VkPhysicalDeviceAddressBindingReportFeaturesEXT), [VkPhysicalDeviceAmigoProfilingFeaturesSEC](../appendices/extensions.html#VkPhysicalDeviceAmigoProfilingFeaturesSEC), [VkPhysicalDeviceAntiLagFeaturesAMD](features.html#VkPhysicalDeviceAntiLagFeaturesAMD), [VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT](features.html#VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT), [VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT](features.html#VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT), [VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT](features.html#VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT), [VkPhysicalDeviceBorderColorSwizzleFeaturesEXT](features.html#VkPhysicalDeviceBorderColorSwizzleFeaturesEXT), [VkPhysicalDeviceBufferDeviceAddressFeatures](features.html#VkPhysicalDeviceBufferDeviceAddressFeatures), [VkPhysicalDeviceBufferDeviceAddressFeaturesEXT](features.html#VkPhysicalDeviceBufferDeviceAddressFeaturesEXT), [VkPhysicalDeviceClusterAccelerationStructureFeaturesNV](features.html#VkPhysicalDeviceClusterAccelerationStructureFeaturesNV), [VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI](features.html#VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI), [VkPhysicalDeviceCoherentMemoryFeaturesAMD](features.html#VkPhysicalDeviceCoherentMemoryFeaturesAMD), [VkPhysicalDeviceColorWriteEnableFeaturesEXT](features.html#VkPhysicalDeviceColorWriteEnableFeaturesEXT), [VkPhysicalDeviceCommandBufferInheritanceFeaturesNV](features.html#VkPhysicalDeviceCommandBufferInheritanceFeaturesNV), [VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV](features.html#VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV), [VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR](features.html#VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR), [VkPhysicalDeviceConditionalRenderingFeaturesEXT](features.html#VkPhysicalDeviceConditionalRenderingFeaturesEXT), [VkPhysicalDeviceCooperativeMatrix2FeaturesNV](features.html#VkPhysicalDeviceCooperativeMatrix2FeaturesNV), [VkPhysicalDeviceCooperativeMatrixFeaturesKHR](features.html#VkPhysicalDeviceCooperativeMatrixFeaturesKHR), [VkPhysicalDeviceCooperativeMatrixFeaturesNV](features.html#VkPhysicalDeviceCooperativeMatrixFeaturesNV), [VkPhysicalDeviceCooperativeVectorFeaturesNV](features.html#VkPhysicalDeviceCooperativeVectorFeaturesNV), [VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR](features.html#VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR), [VkPhysicalDeviceCopyMemoryIndirectFeaturesNV](features.html#VkPhysicalDeviceCopyMemoryIndirectFeaturesNV), [VkPhysicalDeviceCornerSampledImageFeaturesNV](features.html#VkPhysicalDeviceCornerSampledImageFeaturesNV), [VkPhysicalDeviceCoverageReductionModeFeaturesNV](features.html#VkPhysicalDeviceCoverageReductionModeFeaturesNV), [VkPhysicalDeviceCubicClampFeaturesQCOM](features.html#VkPhysicalDeviceCubicClampFeaturesQCOM), [VkPhysicalDeviceCubicWeightsFeaturesQCOM](features.html#VkPhysicalDeviceCubicWeightsFeaturesQCOM), [VkPhysicalDeviceCudaKernelLaunchFeaturesNV](features.html#VkPhysicalDeviceCudaKernelLaunchFeaturesNV), [VkPhysicalDeviceCustomBorderColorFeaturesEXT](features.html#VkPhysicalDeviceCustomBorderColorFeaturesEXT), [VkPhysicalDeviceCustomResolveFeaturesEXT](features.html#VkPhysicalDeviceCustomResolveFeaturesEXT), [VkPhysicalDeviceDataGraphFeaturesARM](features.html#VkPhysicalDeviceDataGraphFeaturesARM), [VkPhysicalDeviceDataGraphModelFeaturesQCOM](features.html#VkPhysicalDeviceDataGraphModelFeaturesQCOM), [VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV](features.html#VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV), [VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX](features.html#VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX), [VkPhysicalDeviceDepthBiasControlFeaturesEXT](features.html#VkPhysicalDeviceDepthBiasControlFeaturesEXT), [VkPhysicalDeviceDepthClampControlFeaturesEXT](features.html#VkPhysicalDeviceDepthClampControlFeaturesEXT), [VkPhysicalDeviceDepthClampZeroOneFeaturesKHR](features.html#VkPhysicalDeviceDepthClampZeroOneFeaturesKHR), [VkPhysicalDeviceDepthClipControlFeaturesEXT](features.html#VkPhysicalDeviceDepthClipControlFeaturesEXT), [VkPhysicalDeviceDepthClipEnableFeaturesEXT](features.html#VkPhysicalDeviceDepthClipEnableFeaturesEXT), [VkPhysicalDeviceDescriptorBufferFeaturesEXT](features.html#VkPhysicalDeviceDescriptorBufferFeaturesEXT), [VkPhysicalDeviceDescriptorBufferTensorFeaturesARM](features.html#VkPhysicalDeviceDescriptorBufferTensorFeaturesARM), [VkPhysicalDeviceDescriptorIndexingFeatures](features.html#VkPhysicalDeviceDescriptorIndexingFeatures), [VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV](features.html#VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV), [VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE](../appendices/extensions.html#VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE), [VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV](features.html#VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV), [VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT](features.html#VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT), [VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV](features.html#VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV), [VkPhysicalDeviceDeviceMemoryReportFeaturesEXT](features.html#VkPhysicalDeviceDeviceMemoryReportFeaturesEXT), [VkPhysicalDeviceDiagnosticsConfigFeaturesNV](features.html#VkPhysicalDeviceDiagnosticsConfigFeaturesNV), [VkPhysicalDeviceDisplacementMicromapFeaturesNV](features.html#VkPhysicalDeviceDisplacementMicromapFeaturesNV), [VkPhysicalDeviceDynamicRenderingFeatures](features.html#VkPhysicalDeviceDynamicRenderingFeatures), [VkPhysicalDeviceDynamicRenderingLocalReadFeatures](features.html#VkPhysicalDeviceDynamicRenderingLocalReadFeatures), [VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT](features.html#VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT), [VkPhysicalDeviceExclusiveScissorFeaturesNV](features.html#VkPhysicalDeviceExclusiveScissorFeaturesNV), [VkPhysicalDeviceExtendedDynamicState2FeaturesEXT](features.html#VkPhysicalDeviceExtendedDynamicState2FeaturesEXT), [VkPhysicalDeviceExtendedDynamicState3FeaturesEXT](features.html#VkPhysicalDeviceExtendedDynamicState3FeaturesEXT), [VkPhysicalDeviceExtendedDynamicStateFeaturesEXT](features.html#VkPhysicalDeviceExtendedDynamicStateFeaturesEXT), [VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV](features.html#VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV), [VkPhysicalDeviceExternalFormatResolveFeaturesANDROID](features.html#VkPhysicalDeviceExternalFormatResolveFeaturesANDROID), [VkPhysicalDeviceExternalMemoryRDMAFeaturesNV](features.html#VkPhysicalDeviceExternalMemoryRDMAFeaturesNV), [VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX](features.html#VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX), [VkPhysicalDeviceFaultFeaturesEXT](features.html#VkPhysicalDeviceFaultFeaturesEXT), [VkPhysicalDeviceFeatures2](features.html#VkPhysicalDeviceFeatures2), [VkPhysicalDeviceFormatPackFeaturesARM](features.html#VkPhysicalDeviceFormatPackFeaturesARM), [VkPhysicalDeviceFragmentDensityMap2FeaturesEXT](features.html#VkPhysicalDeviceFragmentDensityMap2FeaturesEXT), [VkPhysicalDeviceFragmentDensityMapFeaturesEXT](features.html#VkPhysicalDeviceFragmentDensityMapFeaturesEXT), [VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE](features.html#VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE), [VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT](features.html#VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT), [VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR](features.html#VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR), [VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT](features.html#VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT), [VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV](features.html#VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV), [VkPhysicalDeviceFragmentShadingRateFeaturesKHR](features.html#VkPhysicalDeviceFragmentShadingRateFeaturesKHR), [VkPhysicalDeviceFrameBoundaryFeaturesEXT](features.html#VkPhysicalDeviceFrameBoundaryFeaturesEXT), [VkPhysicalDeviceGlobalPriorityQueryFeatures](features.html#VkPhysicalDeviceGlobalPriorityQueryFeatures), [VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT](features.html#VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT), [VkPhysicalDeviceHdrVividFeaturesHUAWEI](features.html#VkPhysicalDeviceHdrVividFeaturesHUAWEI), [VkPhysicalDeviceHostImageCopyFeatures](features.html#VkPhysicalDeviceHostImageCopyFeatures), [VkPhysicalDeviceHostQueryResetFeatures](features.html#VkPhysicalDeviceHostQueryResetFeatures), [VkPhysicalDeviceImage2DViewOf3DFeaturesEXT](features.html#VkPhysicalDeviceImage2DViewOf3DFeaturesEXT), [VkPhysicalDeviceImageAlignmentControlFeaturesMESA](features.html#VkPhysicalDeviceImageAlignmentControlFeaturesMESA), [VkPhysicalDeviceImageCompressionControlFeaturesEXT](features.html#VkPhysicalDeviceImageCompressionControlFeaturesEXT), [VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT](features.html#VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT), [VkPhysicalDeviceImageProcessing2FeaturesQCOM](features.html#VkPhysicalDeviceImageProcessing2FeaturesQCOM), [VkPhysicalDeviceImageProcessingFeaturesQCOM](features.html#VkPhysicalDeviceImageProcessingFeaturesQCOM), [VkPhysicalDeviceImageRobustnessFeatures](features.html#VkPhysicalDeviceImageRobustnessFeatures), [VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT](features.html#VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT), [VkPhysicalDeviceImageViewMinLodFeaturesEXT](features.html#VkPhysicalDeviceImageViewMinLodFeaturesEXT), [VkPhysicalDeviceImagelessFramebufferFeatures](features.html#VkPhysicalDeviceImagelessFramebufferFeatures), [VkPhysicalDeviceIndexTypeUint8Features](features.html#VkPhysicalDeviceIndexTypeUint8Features), [VkPhysicalDeviceInheritedViewportScissorFeaturesNV](features.html#VkPhysicalDeviceInheritedViewportScissorFeaturesNV), [VkPhysicalDeviceInlineUniformBlockFeatures](features.html#VkPhysicalDeviceInlineUniformBlockFeatures), [VkPhysicalDeviceInvocationMaskFeaturesHUAWEI](features.html#VkPhysicalDeviceInvocationMaskFeaturesHUAWEI), [VkPhysicalDeviceLegacyDitheringFeaturesEXT](features.html#VkPhysicalDeviceLegacyDitheringFeaturesEXT), [VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT](features.html#VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT), [VkPhysicalDeviceLineRasterizationFeatures](features.html#VkPhysicalDeviceLineRasterizationFeatures), [VkPhysicalDeviceLinearColorAttachmentFeaturesNV](features.html#VkPhysicalDeviceLinearColorAttachmentFeaturesNV), [VkPhysicalDeviceMaintenance10FeaturesKHR](features.html#VkPhysicalDeviceMaintenance10FeaturesKHR), [VkPhysicalDeviceMaintenance4Features](features.html#VkPhysicalDeviceMaintenance4Features), [VkPhysicalDeviceMaintenance5Features](features.html#VkPhysicalDeviceMaintenance5Features), [VkPhysicalDeviceMaintenance6Features](features.html#VkPhysicalDeviceMaintenance6Features), [VkPhysicalDeviceMaintenance7FeaturesKHR](features.html#VkPhysicalDeviceMaintenance7FeaturesKHR), [VkPhysicalDeviceMaintenance8FeaturesKHR](features.html#VkPhysicalDeviceMaintenance8FeaturesKHR), [VkPhysicalDeviceMaintenance9FeaturesKHR](features.html#VkPhysicalDeviceMaintenance9FeaturesKHR), [VkPhysicalDeviceMapMemoryPlacedFeaturesEXT](features.html#VkPhysicalDeviceMapMemoryPlacedFeaturesEXT), [VkPhysicalDeviceMemoryDecompressionFeaturesEXT](features.html#VkPhysicalDeviceMemoryDecompressionFeaturesEXT), [VkPhysicalDeviceMemoryPriorityFeaturesEXT](features.html#VkPhysicalDeviceMemoryPriorityFeaturesEXT), [VkPhysicalDeviceMeshShaderFeaturesEXT](features.html#VkPhysicalDeviceMeshShaderFeaturesEXT), [VkPhysicalDeviceMeshShaderFeaturesNV](features.html#VkPhysicalDeviceMeshShaderFeaturesNV), [VkPhysicalDeviceMultiDrawFeaturesEXT](features.html#VkPhysicalDeviceMultiDrawFeaturesEXT), [VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT](features.html#VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT), [VkPhysicalDeviceMultiviewFeatures](features.html#VkPhysicalDeviceMultiviewFeatures), [VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM](features.html#VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM), [VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM](features.html#VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM), [VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT](features.html#VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT), [VkPhysicalDeviceNestedCommandBufferFeaturesEXT](features.html#VkPhysicalDeviceNestedCommandBufferFeaturesEXT), [VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT](features.html#VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT), [VkPhysicalDeviceOpacityMicromapFeaturesEXT](features.html#VkPhysicalDeviceOpacityMicromapFeaturesEXT), [VkPhysicalDeviceOpticalFlowFeaturesNV](features.html#VkPhysicalDeviceOpticalFlowFeaturesNV), [VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT](features.html#VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT), [VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV](features.html#VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV), [VkPhysicalDevicePerStageDescriptorSetFeaturesNV](features.html#VkPhysicalDevicePerStageDescriptorSetFeaturesNV), [VkPhysicalDevicePerformanceCountersByRegionFeaturesARM](features.html#VkPhysicalDevicePerformanceCountersByRegionFeaturesARM), [VkPhysicalDevicePerformanceQueryFeaturesKHR](features.html#VkPhysicalDevicePerformanceQueryFeaturesKHR), [VkPhysicalDevicePipelineBinaryFeaturesKHR](features.html#VkPhysicalDevicePipelineBinaryFeaturesKHR), [VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC](../appendices/extensions.html#VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC), [VkPhysicalDevicePipelineCreationCacheControlFeatures](features.html#VkPhysicalDevicePipelineCreationCacheControlFeatures), [VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR](features.html#VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR), [VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT](features.html#VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT), [VkPhysicalDevicePipelineOpacityMicromapFeaturesARM](features.html#VkPhysicalDevicePipelineOpacityMicromapFeaturesARM), [VkPhysicalDevicePipelinePropertiesFeaturesEXT](features.html#VkPhysicalDevicePipelinePropertiesFeaturesEXT), [VkPhysicalDevicePipelineProtectedAccessFeatures](features.html#VkPhysicalDevicePipelineProtectedAccessFeatures), [VkPhysicalDevicePipelineRobustnessFeatures](features.html#VkPhysicalDevicePipelineRobustnessFeatures), [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR), [VkPhysicalDevicePresentBarrierFeaturesNV](features.html#VkPhysicalDevicePresentBarrierFeaturesNV), [VkPhysicalDevicePresentId2FeaturesKHR](features.html#VkPhysicalDevicePresentId2FeaturesKHR), [VkPhysicalDevicePresentIdFeaturesKHR](features.html#VkPhysicalDevicePresentIdFeaturesKHR), [VkPhysicalDevicePresentMeteringFeaturesNV](features.html#VkPhysicalDevicePresentMeteringFeaturesNV), [VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR](features.html#VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR), [VkPhysicalDevicePresentTimingFeaturesEXT](features.html#VkPhysicalDevicePresentTimingFeaturesEXT), [VkPhysicalDevicePresentWait2FeaturesKHR](features.html#VkPhysicalDevicePresentWait2FeaturesKHR), [VkPhysicalDevicePresentWaitFeaturesKHR](features.html#VkPhysicalDevicePresentWaitFeaturesKHR), [VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT](features.html#VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT), [VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT](features.html#VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT), [VkPhysicalDevicePrivateDataFeatures](features.html#VkPhysicalDevicePrivateDataFeatures), [VkPhysicalDeviceProtectedMemoryFeatures](features.html#VkPhysicalDeviceProtectedMemoryFeatures), [VkPhysicalDeviceProvokingVertexFeaturesEXT](features.html#VkPhysicalDeviceProvokingVertexFeaturesEXT), [VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT](features.html#VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT), [VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT](features.html#VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT), [VkPhysicalDeviceRawAccessChainsFeaturesNV](features.html#VkPhysicalDeviceRawAccessChainsFeaturesNV), [VkPhysicalDeviceRayQueryFeaturesKHR](features.html#VkPhysicalDeviceRayQueryFeaturesKHR), [VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT](features.html#VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT), [VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV](features.html#VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV), [VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV](features.html#VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV), [VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR](features.html#VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR), [VkPhysicalDeviceRayTracingMotionBlurFeaturesNV](features.html#VkPhysicalDeviceRayTracingMotionBlurFeaturesNV), [VkPhysicalDeviceRayTracingPipelineFeaturesKHR](features.html#VkPhysicalDeviceRayTracingPipelineFeaturesKHR), [VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR](features.html#VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR), [VkPhysicalDeviceRayTracingValidationFeaturesNV](features.html#VkPhysicalDeviceRayTracingValidationFeaturesNV), [VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG](features.html#VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG), [VkPhysicalDeviceRenderPassStripedFeaturesARM](features.html#VkPhysicalDeviceRenderPassStripedFeaturesARM), [VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV](features.html#VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV), [VkPhysicalDeviceRobustness2FeaturesKHR](features.html#VkPhysicalDeviceRobustness2FeaturesKHR), [VkPhysicalDeviceSamplerYcbcrConversionFeatures](features.html#VkPhysicalDeviceSamplerYcbcrConversionFeatures), [VkPhysicalDeviceScalarBlockLayoutFeatures](features.html#VkPhysicalDeviceScalarBlockLayoutFeatures), [VkPhysicalDeviceSchedulingControlsFeaturesARM](features.html#VkPhysicalDeviceSchedulingControlsFeaturesARM), [VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures](features.html#VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures), [VkPhysicalDeviceShader64BitIndexingFeaturesEXT](features.html#VkPhysicalDeviceShader64BitIndexingFeaturesEXT), [VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV](features.html#VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV), [VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT](features.html#VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT), [VkPhysicalDeviceShaderAtomicFloatFeaturesEXT](features.html#VkPhysicalDeviceShaderAtomicFloatFeaturesEXT), [VkPhysicalDeviceShaderAtomicInt64Features](features.html#VkPhysicalDeviceShaderAtomicInt64Features), [VkPhysicalDeviceShaderBfloat16FeaturesKHR](features.html#VkPhysicalDeviceShaderBfloat16FeaturesKHR), [VkPhysicalDeviceShaderClockFeaturesKHR](features.html#VkPhysicalDeviceShaderClockFeaturesKHR), [VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM](features.html#VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM), [VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures](features.html#VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures), [VkPhysicalDeviceShaderDrawParametersFeatures](features.html#VkPhysicalDeviceShaderDrawParametersFeatures), [VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD](features.html#VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD), [VkPhysicalDeviceShaderEnqueueFeaturesAMDX](features.html#VkPhysicalDeviceShaderEnqueueFeaturesAMDX), [VkPhysicalDeviceShaderExpectAssumeFeatures](features.html#VkPhysicalDeviceShaderExpectAssumeFeatures), [VkPhysicalDeviceShaderFloat16Int8Features](features.html#VkPhysicalDeviceShaderFloat16Int8Features), [VkPhysicalDeviceShaderFloat8FeaturesEXT](features.html#VkPhysicalDeviceShaderFloat8FeaturesEXT), [VkPhysicalDeviceShaderFloatControls2Features](features.html#VkPhysicalDeviceShaderFloatControls2Features), [VkPhysicalDeviceShaderFmaFeaturesKHR](features.html#VkPhysicalDeviceShaderFmaFeaturesKHR), [VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT](features.html#VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT), [VkPhysicalDeviceShaderImageFootprintFeaturesNV](features.html#VkPhysicalDeviceShaderImageFootprintFeaturesNV), [VkPhysicalDeviceShaderIntegerDotProductFeatures](features.html#VkPhysicalDeviceShaderIntegerDotProductFeatures), [VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL](features.html#VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL), [VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR](features.html#VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR), [VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT](features.html#VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT), [VkPhysicalDeviceShaderObjectFeaturesEXT](features.html#VkPhysicalDeviceShaderObjectFeaturesEXT), [VkPhysicalDeviceShaderQuadControlFeaturesKHR](features.html#VkPhysicalDeviceShaderQuadControlFeaturesKHR), [VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR](features.html#VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR), [VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT](features.html#VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT), [VkPhysicalDeviceShaderSMBuiltinsFeaturesNV](features.html#VkPhysicalDeviceShaderSMBuiltinsFeaturesNV), [VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures](features.html#VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures), [VkPhysicalDeviceShaderSubgroupRotateFeatures](features.html#VkPhysicalDeviceShaderSubgroupRotateFeatures), [VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR](features.html#VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR), [VkPhysicalDeviceShaderTerminateInvocationFeatures](features.html#VkPhysicalDeviceShaderTerminateInvocationFeatures), [VkPhysicalDeviceShaderTileImageFeaturesEXT](features.html#VkPhysicalDeviceShaderTileImageFeaturesEXT), [VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT](features.html#VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT), [VkPhysicalDeviceShaderUntypedPointersFeaturesKHR](features.html#VkPhysicalDeviceShaderUntypedPointersFeaturesKHR), [VkPhysicalDeviceShadingRateImageFeaturesNV](features.html#VkPhysicalDeviceShadingRateImageFeaturesNV), [VkPhysicalDeviceSubgroupSizeControlFeatures](features.html#VkPhysicalDeviceSubgroupSizeControlFeatures), [VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT](features.html#VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT), [VkPhysicalDeviceSubpassShadingFeaturesHUAWEI](features.html#VkPhysicalDeviceSubpassShadingFeaturesHUAWEI), [VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR](features.html#VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR), [VkPhysicalDeviceSynchronization2Features](features.html#VkPhysicalDeviceSynchronization2Features), [VkPhysicalDeviceTensorFeaturesARM](features.html#VkPhysicalDeviceTensorFeaturesARM), [VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT](features.html#VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT), [VkPhysicalDeviceTextureCompressionASTCHDRFeatures](features.html#VkPhysicalDeviceTextureCompressionASTCHDRFeatures), [VkPhysicalDeviceTileMemoryHeapFeaturesQCOM](features.html#VkPhysicalDeviceTileMemoryHeapFeaturesQCOM), [VkPhysicalDeviceTilePropertiesFeaturesQCOM](features.html#VkPhysicalDeviceTilePropertiesFeaturesQCOM), [VkPhysicalDeviceTileShadingFeaturesQCOM](features.html#VkPhysicalDeviceTileShadingFeaturesQCOM), [VkPhysicalDeviceTimelineSemaphoreFeatures](features.html#VkPhysicalDeviceTimelineSemaphoreFeatures), [VkPhysicalDeviceTransformFeedbackFeaturesEXT](features.html#VkPhysicalDeviceTransformFeedbackFeaturesEXT), [VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR](features.html#VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR), [VkPhysicalDeviceUniformBufferStandardLayoutFeatures](features.html#VkPhysicalDeviceUniformBufferStandardLayoutFeatures), [VkPhysicalDeviceVariablePointersFeatures](features.html#VkPhysicalDeviceVariablePointersFeatures), [VkPhysicalDeviceVertexAttributeDivisorFeatures](features.html#VkPhysicalDeviceVertexAttributeDivisorFeatures), [VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT](features.html#VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT), [VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT](features.html#VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT), [VkPhysicalDeviceVideoDecodeVP9FeaturesKHR](features.html#VkPhysicalDeviceVideoDecodeVP9FeaturesKHR), [VkPhysicalDeviceVideoEncodeAV1FeaturesKHR](features.html#VkPhysicalDeviceVideoEncodeAV1FeaturesKHR), [VkPhysicalDeviceVideoEncodeIntraRefreshFeaturesKHR](features.html#VkPhysicalDeviceVideoEncodeIntraRefreshFeaturesKHR), [VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR](features.html#VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR), [VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE](features.html#VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE), [VkPhysicalDeviceVideoMaintenance1FeaturesKHR](features.html#VkPhysicalDeviceVideoMaintenance1FeaturesKHR), [VkPhysicalDeviceVideoMaintenance2FeaturesKHR](features.html#VkPhysicalDeviceVideoMaintenance2FeaturesKHR), [VkPhysicalDeviceVulkan11Features](features.html#VkPhysicalDeviceVulkan11Features), [VkPhysicalDeviceVulkan12Features](features.html#VkPhysicalDeviceVulkan12Features), [VkPhysicalDeviceVulkan13Features](features.html#VkPhysicalDeviceVulkan13Features), [VkPhysicalDeviceVulkan14Features](features.html#VkPhysicalDeviceVulkan14Features), [VkPhysicalDeviceVulkanMemoryModelFeatures](features.html#VkPhysicalDeviceVulkanMemoryModelFeatures), [VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR](features.html#VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR), [VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT](features.html#VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT), [VkPhysicalDeviceYcbcrDegammaFeaturesQCOM](features.html#VkPhysicalDeviceYcbcrDegammaFeaturesQCOM), [VkPhysicalDeviceYcbcrImageArraysFeaturesEXT](features.html#VkPhysicalDeviceYcbcrImageArraysFeaturesEXT), [VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT](features.html#VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT), or [VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures](features.html#VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures)
+ Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkDeviceDeviceMemoryReportCreateInfoEXT](#VkDeviceDeviceMemoryReportCreateInfoEXT), [VkDeviceDiagnosticsConfigCreateInfoNV](#VkDeviceDiagnosticsConfigCreateInfoNV), [VkDeviceGroupDeviceCreateInfo](#VkDeviceGroupDeviceCreateInfo), [VkDeviceMemoryOverallocationCreateInfoAMD](#VkDeviceMemoryOverallocationCreateInfoAMD), [VkDevicePipelineBinaryInternalCacheControlKHR](#VkDevicePipelineBinaryInternalCacheControlKHR), [VkDevicePrivateDataCreateInfo](#VkDevicePrivateDataCreateInfo), [VkDeviceQueueShaderCoreControlCreateInfoARM](#VkDeviceQueueShaderCoreControlCreateInfoARM), [VkExternalComputeQueueDeviceCreateInfoNV](VK_NV_external_compute_queue/VK_NV_external_compute_queue.html#VkExternalComputeQueueDeviceCreateInfoNV), [VkPhysicalDevice16BitStorageFeatures](features.html#VkPhysicalDevice16BitStorageFeatures), [VkPhysicalDevice4444FormatsFeaturesEXT](features.html#VkPhysicalDevice4444FormatsFeaturesEXT), [VkPhysicalDevice8BitStorageFeatures](features.html#VkPhysicalDevice8BitStorageFeatures), [VkPhysicalDeviceASTCDecodeFeaturesEXT](features.html#VkPhysicalDeviceASTCDecodeFeaturesEXT), [VkPhysicalDeviceAccelerationStructureFeaturesKHR](features.html#VkPhysicalDeviceAccelerationStructureFeaturesKHR), [VkPhysicalDeviceAddressBindingReportFeaturesEXT](features.html#VkPhysicalDeviceAddressBindingReportFeaturesEXT), [VkPhysicalDeviceAmigoProfilingFeaturesSEC](../appendices/extensions.html#VkPhysicalDeviceAmigoProfilingFeaturesSEC), [VkPhysicalDeviceAntiLagFeaturesAMD](features.html#VkPhysicalDeviceAntiLagFeaturesAMD), [VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT](features.html#VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT), [VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT](features.html#VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT), [VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT](features.html#VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT), [VkPhysicalDeviceBorderColorSwizzleFeaturesEXT](features.html#VkPhysicalDeviceBorderColorSwizzleFeaturesEXT), [VkPhysicalDeviceBufferDeviceAddressFeatures](features.html#VkPhysicalDeviceBufferDeviceAddressFeatures), [VkPhysicalDeviceBufferDeviceAddressFeaturesEXT](features.html#VkPhysicalDeviceBufferDeviceAddressFeaturesEXT), [VkPhysicalDeviceClusterAccelerationStructureFeaturesNV](features.html#VkPhysicalDeviceClusterAccelerationStructureFeaturesNV), [VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI](features.html#VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI), [VkPhysicalDeviceCoherentMemoryFeaturesAMD](features.html#VkPhysicalDeviceCoherentMemoryFeaturesAMD), [VkPhysicalDeviceColorWriteEnableFeaturesEXT](features.html#VkPhysicalDeviceColorWriteEnableFeaturesEXT), [VkPhysicalDeviceCommandBufferInheritanceFeaturesNV](features.html#VkPhysicalDeviceCommandBufferInheritanceFeaturesNV), [VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV](features.html#VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV), [VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR](features.html#VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR), [VkPhysicalDeviceConditionalRenderingFeaturesEXT](features.html#VkPhysicalDeviceConditionalRenderingFeaturesEXT), [VkPhysicalDeviceCooperativeMatrix2FeaturesNV](features.html#VkPhysicalDeviceCooperativeMatrix2FeaturesNV), [VkPhysicalDeviceCooperativeMatrixFeaturesKHR](features.html#VkPhysicalDeviceCooperativeMatrixFeaturesKHR), [VkPhysicalDeviceCooperativeMatrixFeaturesNV](features.html#VkPhysicalDeviceCooperativeMatrixFeaturesNV), [VkPhysicalDeviceCooperativeVectorFeaturesNV](features.html#VkPhysicalDeviceCooperativeVectorFeaturesNV), [VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR](features.html#VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR), [VkPhysicalDeviceCopyMemoryIndirectFeaturesNV](features.html#VkPhysicalDeviceCopyMemoryIndirectFeaturesNV), [VkPhysicalDeviceCornerSampledImageFeaturesNV](features.html#VkPhysicalDeviceCornerSampledImageFeaturesNV), [VkPhysicalDeviceCoverageReductionModeFeaturesNV](features.html#VkPhysicalDeviceCoverageReductionModeFeaturesNV), [VkPhysicalDeviceCubicClampFeaturesQCOM](features.html#VkPhysicalDeviceCubicClampFeaturesQCOM), [VkPhysicalDeviceCubicWeightsFeaturesQCOM](features.html#VkPhysicalDeviceCubicWeightsFeaturesQCOM), [VkPhysicalDeviceCudaKernelLaunchFeaturesNV](features.html#VkPhysicalDeviceCudaKernelLaunchFeaturesNV), [VkPhysicalDeviceCustomBorderColorFeaturesEXT](features.html#VkPhysicalDeviceCustomBorderColorFeaturesEXT), [VkPhysicalDeviceCustomResolveFeaturesEXT](features.html#VkPhysicalDeviceCustomResolveFeaturesEXT), [VkPhysicalDeviceDataGraphFeaturesARM](features.html#VkPhysicalDeviceDataGraphFeaturesARM), [VkPhysicalDeviceDataGraphModelFeaturesQCOM](features.html#VkPhysicalDeviceDataGraphModelFeaturesQCOM), [VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV](features.html#VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV), [VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX](features.html#VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX), [VkPhysicalDeviceDepthBiasControlFeaturesEXT](features.html#VkPhysicalDeviceDepthBiasControlFeaturesEXT), [VkPhysicalDeviceDepthClampControlFeaturesEXT](features.html#VkPhysicalDeviceDepthClampControlFeaturesEXT), [VkPhysicalDeviceDepthClampZeroOneFeaturesKHR](features.html#VkPhysicalDeviceDepthClampZeroOneFeaturesKHR), [VkPhysicalDeviceDepthClipControlFeaturesEXT](features.html#VkPhysicalDeviceDepthClipControlFeaturesEXT), [VkPhysicalDeviceDepthClipEnableFeaturesEXT](features.html#VkPhysicalDeviceDepthClipEnableFeaturesEXT), [VkPhysicalDeviceDescriptorBufferFeaturesEXT](features.html#VkPhysicalDeviceDescriptorBufferFeaturesEXT), [VkPhysicalDeviceDescriptorBufferTensorFeaturesARM](features.html#VkPhysicalDeviceDescriptorBufferTensorFeaturesARM), [VkPhysicalDeviceDescriptorHeapFeaturesEXT](features.html#VkPhysicalDeviceDescriptorHeapFeaturesEXT), [VkPhysicalDeviceDescriptorIndexingFeatures](features.html#VkPhysicalDeviceDescriptorIndexingFeatures), [VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV](features.html#VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV), [VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE](../appendices/extensions.html#VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE), [VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV](features.html#VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV), [VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT](features.html#VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT), [VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV](features.html#VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV), [VkPhysicalDeviceDeviceMemoryReportFeaturesEXT](features.html#VkPhysicalDeviceDeviceMemoryReportFeaturesEXT), [VkPhysicalDeviceDiagnosticsConfigFeaturesNV](features.html#VkPhysicalDeviceDiagnosticsConfigFeaturesNV), [VkPhysicalDeviceDisplacementMicromapFeaturesNV](features.html#VkPhysicalDeviceDisplacementMicromapFeaturesNV), [VkPhysicalDeviceDynamicRenderingFeatures](features.html#VkPhysicalDeviceDynamicRenderingFeatures), [VkPhysicalDeviceDynamicRenderingLocalReadFeatures](features.html#VkPhysicalDeviceDynamicRenderingLocalReadFeatures), [VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT](features.html#VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT), [VkPhysicalDeviceExclusiveScissorFeaturesNV](features.html#VkPhysicalDeviceExclusiveScissorFeaturesNV), [VkPhysicalDeviceExtendedDynamicState2FeaturesEXT](features.html#VkPhysicalDeviceExtendedDynamicState2FeaturesEXT), [VkPhysicalDeviceExtendedDynamicState3FeaturesEXT](features.html#VkPhysicalDeviceExtendedDynamicState3FeaturesEXT), [VkPhysicalDeviceExtendedDynamicStateFeaturesEXT](features.html#VkPhysicalDeviceExtendedDynamicStateFeaturesEXT), [VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV](features.html#VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV), [VkPhysicalDeviceExternalFormatResolveFeaturesANDROID](features.html#VkPhysicalDeviceExternalFormatResolveFeaturesANDROID), [VkPhysicalDeviceExternalMemoryRDMAFeaturesNV](features.html#VkPhysicalDeviceExternalMemoryRDMAFeaturesNV), [VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX](features.html#VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX), [VkPhysicalDeviceFaultFeaturesEXT](features.html#VkPhysicalDeviceFaultFeaturesEXT), [VkPhysicalDeviceFeatures2](features.html#VkPhysicalDeviceFeatures2), [VkPhysicalDeviceFormatPackFeaturesARM](features.html#VkPhysicalDeviceFormatPackFeaturesARM), [VkPhysicalDeviceFragmentDensityMap2FeaturesEXT](features.html#VkPhysicalDeviceFragmentDensityMap2FeaturesEXT), [VkPhysicalDeviceFragmentDensityMapFeaturesEXT](features.html#VkPhysicalDeviceFragmentDensityMapFeaturesEXT), [VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE](features.html#VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE), [VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT](features.html#VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT), [VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR](features.html#VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR), [VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT](features.html#VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT), [VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV](features.html#VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV), [VkPhysicalDeviceFragmentShadingRateFeaturesKHR](features.html#VkPhysicalDeviceFragmentShadingRateFeaturesKHR), [VkPhysicalDeviceFrameBoundaryFeaturesEXT](features.html#VkPhysicalDeviceFrameBoundaryFeaturesEXT), [VkPhysicalDeviceGlobalPriorityQueryFeatures](features.html#VkPhysicalDeviceGlobalPriorityQueryFeatures), [VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT](features.html#VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT), [VkPhysicalDeviceHdrVividFeaturesHUAWEI](features.html#VkPhysicalDeviceHdrVividFeaturesHUAWEI), [VkPhysicalDeviceHostImageCopyFeatures](features.html#VkPhysicalDeviceHostImageCopyFeatures), [VkPhysicalDeviceHostQueryResetFeatures](features.html#VkPhysicalDeviceHostQueryResetFeatures), [VkPhysicalDeviceImage2DViewOf3DFeaturesEXT](features.html#VkPhysicalDeviceImage2DViewOf3DFeaturesEXT), [VkPhysicalDeviceImageAlignmentControlFeaturesMESA](features.html#VkPhysicalDeviceImageAlignmentControlFeaturesMESA), [VkPhysicalDeviceImageCompressionControlFeaturesEXT](features.html#VkPhysicalDeviceImageCompressionControlFeaturesEXT), [VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT](features.html#VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT), [VkPhysicalDeviceImageProcessing2FeaturesQCOM](features.html#VkPhysicalDeviceImageProcessing2FeaturesQCOM), [VkPhysicalDeviceImageProcessingFeaturesQCOM](features.html#VkPhysicalDeviceImageProcessingFeaturesQCOM), [VkPhysicalDeviceImageRobustnessFeatures](features.html#VkPhysicalDeviceImageRobustnessFeatures), [VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT](features.html#VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT), [VkPhysicalDeviceImageViewMinLodFeaturesEXT](features.html#VkPhysicalDeviceImageViewMinLodFeaturesEXT), [VkPhysicalDeviceImagelessFramebufferFeatures](features.html#VkPhysicalDeviceImagelessFramebufferFeatures), [VkPhysicalDeviceIndexTypeUint8Features](features.html#VkPhysicalDeviceIndexTypeUint8Features), [VkPhysicalDeviceInheritedViewportScissorFeaturesNV](features.html#VkPhysicalDeviceInheritedViewportScissorFeaturesNV), [VkPhysicalDeviceInlineUniformBlockFeatures](features.html#VkPhysicalDeviceInlineUniformBlockFeatures), [VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR](features.html#VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR), [VkPhysicalDeviceInvocationMaskFeaturesHUAWEI](features.html#VkPhysicalDeviceInvocationMaskFeaturesHUAWEI), [VkPhysicalDeviceLegacyDitheringFeaturesEXT](features.html#VkPhysicalDeviceLegacyDitheringFeaturesEXT), [VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT](features.html#VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT), [VkPhysicalDeviceLineRasterizationFeatures](features.html#VkPhysicalDeviceLineRasterizationFeatures), [VkPhysicalDeviceLinearColorAttachmentFeaturesNV](features.html#VkPhysicalDeviceLinearColorAttachmentFeaturesNV), [VkPhysicalDeviceMaintenance10FeaturesKHR](features.html#VkPhysicalDeviceMaintenance10FeaturesKHR), [VkPhysicalDeviceMaintenance4Features](features.html#VkPhysicalDeviceMaintenance4Features), [VkPhysicalDeviceMaintenance5Features](features.html#VkPhysicalDeviceMaintenance5Features), [VkPhysicalDeviceMaintenance6Features](features.html#VkPhysicalDeviceMaintenance6Features), [VkPhysicalDeviceMaintenance7FeaturesKHR](features.html#VkPhysicalDeviceMaintenance7FeaturesKHR), [VkPhysicalDeviceMaintenance8FeaturesKHR](features.html#VkPhysicalDeviceMaintenance8FeaturesKHR), [VkPhysicalDeviceMaintenance9FeaturesKHR](features.html#VkPhysicalDeviceMaintenance9FeaturesKHR), [VkPhysicalDeviceMapMemoryPlacedFeaturesEXT](features.html#VkPhysicalDeviceMapMemoryPlacedFeaturesEXT), [VkPhysicalDeviceMemoryDecompressionFeaturesEXT](features.html#VkPhysicalDeviceMemoryDecompressionFeaturesEXT), [VkPhysicalDeviceMemoryPriorityFeaturesEXT](features.html#VkPhysicalDeviceMemoryPriorityFeaturesEXT), [VkPhysicalDeviceMeshShaderFeaturesEXT](features.html#VkPhysicalDeviceMeshShaderFeaturesEXT), [VkPhysicalDeviceMeshShaderFeaturesNV](features.html#VkPhysicalDeviceMeshShaderFeaturesNV), [VkPhysicalDeviceMultiDrawFeaturesEXT](features.html#VkPhysicalDeviceMultiDrawFeaturesEXT), [VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT](features.html#VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT), [VkPhysicalDeviceMultiviewFeatures](features.html#VkPhysicalDeviceMultiviewFeatures), [VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM](features.html#VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM), [VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM](features.html#VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM), [VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT](features.html#VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT), [VkPhysicalDeviceNestedCommandBufferFeaturesEXT](features.html#VkPhysicalDeviceNestedCommandBufferFeaturesEXT), [VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT](features.html#VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT), [VkPhysicalDeviceOpacityMicromapFeaturesEXT](features.html#VkPhysicalDeviceOpacityMicromapFeaturesEXT), [VkPhysicalDeviceOpticalFlowFeaturesNV](features.html#VkPhysicalDeviceOpticalFlowFeaturesNV), [VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT](features.html#VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT), [VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV](features.html#VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV), [VkPhysicalDevicePerStageDescriptorSetFeaturesNV](features.html#VkPhysicalDevicePerStageDescriptorSetFeaturesNV), [VkPhysicalDevicePerformanceCountersByRegionFeaturesARM](features.html#VkPhysicalDevicePerformanceCountersByRegionFeaturesARM), [VkPhysicalDevicePerformanceQueryFeaturesKHR](features.html#VkPhysicalDevicePerformanceQueryFeaturesKHR), [VkPhysicalDevicePipelineBinaryFeaturesKHR](features.html#VkPhysicalDevicePipelineBinaryFeaturesKHR), [VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC](../appendices/extensions.html#VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC), [VkPhysicalDevicePipelineCreationCacheControlFeatures](features.html#VkPhysicalDevicePipelineCreationCacheControlFeatures), [VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR](features.html#VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR), [VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT](features.html#VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT), [VkPhysicalDevicePipelineOpacityMicromapFeaturesARM](features.html#VkPhysicalDevicePipelineOpacityMicromapFeaturesARM), [VkPhysicalDevicePipelinePropertiesFeaturesEXT](features.html#VkPhysicalDevicePipelinePropertiesFeaturesEXT), [VkPhysicalDevicePipelineProtectedAccessFeatures](features.html#VkPhysicalDevicePipelineProtectedAccessFeatures), [VkPhysicalDevicePipelineRobustnessFeatures](features.html#VkPhysicalDevicePipelineRobustnessFeatures), [VkPhysicalDevicePortabilitySubsetFeaturesKHR](features.html#VkPhysicalDevicePortabilitySubsetFeaturesKHR), [VkPhysicalDevicePresentBarrierFeaturesNV](features.html#VkPhysicalDevicePresentBarrierFeaturesNV), [VkPhysicalDevicePresentId2FeaturesKHR](features.html#VkPhysicalDevicePresentId2FeaturesKHR), [VkPhysicalDevicePresentIdFeaturesKHR](features.html#VkPhysicalDevicePresentIdFeaturesKHR), [VkPhysicalDevicePresentMeteringFeaturesNV](features.html#VkPhysicalDevicePresentMeteringFeaturesNV), [VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR](features.html#VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR), [VkPhysicalDevicePresentTimingFeaturesEXT](features.html#VkPhysicalDevicePresentTimingFeaturesEXT), [VkPhysicalDevicePresentWait2FeaturesKHR](features.html#VkPhysicalDevicePresentWait2FeaturesKHR), [VkPhysicalDevicePresentWaitFeaturesKHR](features.html#VkPhysicalDevicePresentWaitFeaturesKHR), [VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT](features.html#VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT), [VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT](features.html#VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT), [VkPhysicalDevicePrivateDataFeatures](features.html#VkPhysicalDevicePrivateDataFeatures), [VkPhysicalDeviceProtectedMemoryFeatures](features.html#VkPhysicalDeviceProtectedMemoryFeatures), [VkPhysicalDeviceProvokingVertexFeaturesEXT](features.html#VkPhysicalDeviceProvokingVertexFeaturesEXT), [VkPhysicalDevicePushConstantBankFeaturesNV](features.html#VkPhysicalDevicePushConstantBankFeaturesNV), [VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT](features.html#VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT), [VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT](features.html#VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT), [VkPhysicalDeviceRawAccessChainsFeaturesNV](features.html#VkPhysicalDeviceRawAccessChainsFeaturesNV), [VkPhysicalDeviceRayQueryFeaturesKHR](features.html#VkPhysicalDeviceRayQueryFeaturesKHR), [VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT](features.html#VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT), [VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV](features.html#VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV), [VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV](features.html#VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV), [VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR](features.html#VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR), [VkPhysicalDeviceRayTracingMotionBlurFeaturesNV](features.html#VkPhysicalDeviceRayTracingMotionBlurFeaturesNV), [VkPhysicalDeviceRayTracingPipelineFeaturesKHR](features.html#VkPhysicalDeviceRayTracingPipelineFeaturesKHR), [VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR](features.html#VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR), [VkPhysicalDeviceRayTracingValidationFeaturesNV](features.html#VkPhysicalDeviceRayTracingValidationFeaturesNV), [VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG](features.html#VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG), [VkPhysicalDeviceRenderPassStripedFeaturesARM](features.html#VkPhysicalDeviceRenderPassStripedFeaturesARM), [VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV](features.html#VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV), [VkPhysicalDeviceRobustness2FeaturesKHR](features.html#VkPhysicalDeviceRobustness2FeaturesKHR), [VkPhysicalDeviceSamplerYcbcrConversionFeatures](features.html#VkPhysicalDeviceSamplerYcbcrConversionFeatures), [VkPhysicalDeviceScalarBlockLayoutFeatures](features.html#VkPhysicalDeviceScalarBlockLayoutFeatures), [VkPhysicalDeviceSchedulingControlsFeaturesARM](features.html#VkPhysicalDeviceSchedulingControlsFeaturesARM), [VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures](features.html#VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures), [VkPhysicalDeviceShader64BitIndexingFeaturesEXT](features.html#VkPhysicalDeviceShader64BitIndexingFeaturesEXT), [VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV](features.html#VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV), [VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT](features.html#VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT), [VkPhysicalDeviceShaderAtomicFloatFeaturesEXT](features.html#VkPhysicalDeviceShaderAtomicFloatFeaturesEXT), [VkPhysicalDeviceShaderAtomicInt64Features](features.html#VkPhysicalDeviceShaderAtomicInt64Features), [VkPhysicalDeviceShaderBfloat16FeaturesKHR](features.html#VkPhysicalDeviceShaderBfloat16FeaturesKHR), [VkPhysicalDeviceShaderClockFeaturesKHR](features.html#VkPhysicalDeviceShaderClockFeaturesKHR), [VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM](features.html#VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM), [VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures](features.html#VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures), [VkPhysicalDeviceShaderDrawParametersFeatures](features.html#VkPhysicalDeviceShaderDrawParametersFeatures), [VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD](features.html#VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD), [VkPhysicalDeviceShaderEnqueueFeaturesAMDX](features.html#VkPhysicalDeviceShaderEnqueueFeaturesAMDX), [VkPhysicalDeviceShaderExpectAssumeFeatures](features.html#VkPhysicalDeviceShaderExpectAssumeFeatures), [VkPhysicalDeviceShaderFloat16Int8Features](features.html#VkPhysicalDeviceShaderFloat16Int8Features), [VkPhysicalDeviceShaderFloat8FeaturesEXT](features.html#VkPhysicalDeviceShaderFloat8FeaturesEXT), [VkPhysicalDeviceShaderFloatControls2Features](features.html#VkPhysicalDeviceShaderFloatControls2Features), [VkPhysicalDeviceShaderFmaFeaturesKHR](features.html#VkPhysicalDeviceShaderFmaFeaturesKHR), [VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT](features.html#VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT), [VkPhysicalDeviceShaderImageFootprintFeaturesNV](features.html#VkPhysicalDeviceShaderImageFootprintFeaturesNV), [VkPhysicalDeviceShaderIntegerDotProductFeatures](features.html#VkPhysicalDeviceShaderIntegerDotProductFeatures), [VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL](features.html#VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL), [VkPhysicalDeviceShaderLongVectorFeaturesEXT](features.html#VkPhysicalDeviceShaderLongVectorFeaturesEXT), [VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR](features.html#VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR), [VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT](features.html#VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT), [VkPhysicalDeviceShaderObjectFeaturesEXT](features.html#VkPhysicalDeviceShaderObjectFeaturesEXT), [VkPhysicalDeviceShaderQuadControlFeaturesKHR](features.html#VkPhysicalDeviceShaderQuadControlFeaturesKHR), [VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR](features.html#VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR), [VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT](features.html#VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT), [VkPhysicalDeviceShaderSMBuiltinsFeaturesNV](features.html#VkPhysicalDeviceShaderSMBuiltinsFeaturesNV), [VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures](features.html#VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures), [VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT](features.html#VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT), [VkPhysicalDeviceShaderSubgroupRotateFeatures](features.html#VkPhysicalDeviceShaderSubgroupRotateFeatures), [VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR](features.html#VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR), [VkPhysicalDeviceShaderTerminateInvocationFeatures](features.html#VkPhysicalDeviceShaderTerminateInvocationFeatures), [VkPhysicalDeviceShaderTileImageFeaturesEXT](features.html#VkPhysicalDeviceShaderTileImageFeaturesEXT), [VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT](features.html#VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT), [VkPhysicalDeviceShaderUntypedPointersFeaturesKHR](features.html#VkPhysicalDeviceShaderUntypedPointersFeaturesKHR), [VkPhysicalDeviceShadingRateImageFeaturesNV](features.html#VkPhysicalDeviceShadingRateImageFeaturesNV), [VkPhysicalDeviceSubgroupSizeControlFeatures](features.html#VkPhysicalDeviceSubgroupSizeControlFeatures), [VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT](features.html#VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT), [VkPhysicalDeviceSubpassShadingFeaturesHUAWEI](features.html#VkPhysicalDeviceSubpassShadingFeaturesHUAWEI), [VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR](features.html#VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR), [VkPhysicalDeviceSynchronization2Features](features.html#VkPhysicalDeviceSynchronization2Features), [VkPhysicalDeviceTensorFeaturesARM](features.html#VkPhysicalDeviceTensorFeaturesARM), [VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT](features.html#VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT), [VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT](features.html#VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT), [VkPhysicalDeviceTextureCompressionASTCHDRFeatures](features.html#VkPhysicalDeviceTextureCompressionASTCHDRFeatures), [VkPhysicalDeviceTileMemoryHeapFeaturesQCOM](features.html#VkPhysicalDeviceTileMemoryHeapFeaturesQCOM), [VkPhysicalDeviceTilePropertiesFeaturesQCOM](features.html#VkPhysicalDeviceTilePropertiesFeaturesQCOM), [VkPhysicalDeviceTileShadingFeaturesQCOM](features.html#VkPhysicalDeviceTileShadingFeaturesQCOM), [VkPhysicalDeviceTimelineSemaphoreFeatures](features.html#VkPhysicalDeviceTimelineSemaphoreFeatures), [VkPhysicalDeviceTransformFeedbackFeaturesEXT](features.html#VkPhysicalDeviceTransformFeedbackFeaturesEXT), [VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR](features.html#VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR), [VkPhysicalDeviceUniformBufferStandardLayoutFeatures](features.html#VkPhysicalDeviceUniformBufferStandardLayoutFeatures), [VkPhysicalDeviceVariablePointersFeatures](features.html#VkPhysicalDeviceVariablePointersFeatures), [VkPhysicalDeviceVertexAttributeDivisorFeatures](features.html#VkPhysicalDeviceVertexAttributeDivisorFeatures), [VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT](features.html#VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT), [VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT](features.html#VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT), [VkPhysicalDeviceVideoDecodeVP9FeaturesKHR](features.html#VkPhysicalDeviceVideoDecodeVP9FeaturesKHR), [VkPhysicalDeviceVideoEncodeAV1FeaturesKHR](features.html#VkPhysicalDeviceVideoEncodeAV1FeaturesKHR), [VkPhysicalDeviceVideoEncodeIntraRefreshFeaturesKHR](features.html#VkPhysicalDeviceVideoEncodeIntraRefreshFeaturesKHR), [VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR](features.html#VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR), [VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE](features.html#VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE), [VkPhysicalDeviceVideoMaintenance1FeaturesKHR](features.html#VkPhysicalDeviceVideoMaintenance1FeaturesKHR), [VkPhysicalDeviceVideoMaintenance2FeaturesKHR](features.html#VkPhysicalDeviceVideoMaintenance2FeaturesKHR), [VkPhysicalDeviceVulkan11Features](features.html#VkPhysicalDeviceVulkan11Features), [VkPhysicalDeviceVulkan12Features](features.html#VkPhysicalDeviceVulkan12Features), [VkPhysicalDeviceVulkan13Features](features.html#VkPhysicalDeviceVulkan13Features), [VkPhysicalDeviceVulkan14Features](features.html#VkPhysicalDeviceVulkan14Features), [VkPhysicalDeviceVulkanMemoryModelFeatures](features.html#VkPhysicalDeviceVulkanMemoryModelFeatures), [VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR](features.html#VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR), [VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT](features.html#VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT), [VkPhysicalDeviceYcbcrDegammaFeaturesQCOM](features.html#VkPhysicalDeviceYcbcrDegammaFeaturesQCOM), [VkPhysicalDeviceYcbcrImageArraysFeaturesEXT](features.html#VkPhysicalDeviceYcbcrImageArraysFeaturesEXT), [VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT](features.html#VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT), or [VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures](features.html#VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures)
 
 * 
 [](#VUID-VkDeviceCreateInfo-sType-unique) VUID-VkDeviceCreateInfo-sType-unique
@@ -4545,7 +4545,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceGroupDeviceCreateInfo-sType-sType) VUID-VkDeviceGroupDeviceCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_GROUP_DEVICE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_GROUP_DEVICE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceGroupDeviceCreateInfo-pPhysicalDevices-parameter) VUID-VkDeviceGroupDeviceCreateInfo-pPhysicalDevices-parameter
@@ -4557,7 +4557,7 @@ reported by [VkPhysicalDeviceMemoryProperties](memory.html#VkPhysicalDeviceMemor
 [VkDeviceMemoryOverallocationCreateInfoAMD](#VkDeviceMemoryOverallocationCreateInfoAMD) structure to the `pNext`
 chain of the [VkDeviceCreateInfo](#VkDeviceCreateInfo) structure.
 If this structure is not specified, it is as if the
-`VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD` value is used.
+[VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD](#VkMemoryOverallocationBehaviorAMD) value is used.
 
 // Provided by VK_AMD_memory_overallocation_behavior
 typedef struct VkDeviceMemoryOverallocationCreateInfoAMD {
@@ -4581,7 +4581,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceMemoryOverallocationCreateInfoAMD-sType-sType) VUID-VkDeviceMemoryOverallocationCreateInfoAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceMemoryOverallocationCreateInfoAMD-overallocationBehavior-parameter) VUID-VkDeviceMemoryOverallocationCreateInfoAMD-overallocationBehavior-parameter
@@ -4600,15 +4600,15 @@ typedef enum VkMemoryOverallocationBehaviorAMD {
 } VkMemoryOverallocationBehaviorAMD;
 
 * 
-`VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD` lets the
+[VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD](#VkMemoryOverallocationBehaviorAMD) lets the
 implementation decide if overallocation is allowed.
 
 * 
-`VK_MEMORY_OVERALLOCATION_BEHAVIOR_ALLOWED_AMD` specifies
+[VK_MEMORY_OVERALLOCATION_BEHAVIOR_ALLOWED_AMD](#VkMemoryOverallocationBehaviorAMD) specifies
 overallocation is allowed if platform permits.
 
 * 
-`VK_MEMORY_OVERALLOCATION_BEHAVIOR_DISALLOWED_AMD` specifies the
+[VK_MEMORY_OVERALLOCATION_BEHAVIOR_DISALLOWED_AMD](#VkMemoryOverallocationBehaviorAMD) specifies the
 application is not allowed to allocate device memory beyond the heap
 sizes reported by [VkPhysicalDeviceMemoryProperties](memory.html#VkPhysicalDeviceMemoryProperties).
 Allocations that are not explicitly made by the application within the
@@ -4642,7 +4642,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceDiagnosticsConfigCreateInfoNV-sType-sType) VUID-VkDeviceDiagnosticsConfigCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceDiagnosticsConfigCreateInfoNV-flags-parameter) VUID-VkDeviceDiagnosticsConfigCreateInfoNV-flags-parameter
@@ -4661,16 +4661,16 @@ typedef enum VkDeviceDiagnosticsConfigFlagBitsNV {
 } VkDeviceDiagnosticsConfigFlagBitsNV;
 
 * 
-`VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_DEBUG_INFO_BIT_NV`
+[VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_DEBUG_INFO_BIT_NV](#VkDeviceDiagnosticsConfigFlagBitsNV)
 enables the generation of debug information for shaders.
 
 * 
-`VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_RESOURCE_TRACKING_BIT_NV`
+[VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_RESOURCE_TRACKING_BIT_NV](#VkDeviceDiagnosticsConfigFlagBitsNV)
 enables driver side tracking of resources (images, buffers, etc.) used
 to augment the device fault information.
 
 * 
-`VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_AUTOMATIC_CHECKPOINTS_BIT_NV`
+[VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_AUTOMATIC_CHECKPOINTS_BIT_NV](#VkDeviceDiagnosticsConfigFlagBitsNV)
 enables automatic insertion of [    diagnostic checkpoints](debugging.html#device-diagnostic-checkpoints) for draw calls, dispatches,
 trace rays,
 and copies.
@@ -4678,7 +4678,7 @@ The CPU call stack at the time of the command will be associated as the
 marker data for the automatically inserted checkpoints.
 
 * 
-`VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_ERROR_REPORTING_BIT_NV`
+[VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_ERROR_REPORTING_BIT_NV](#VkDeviceDiagnosticsConfigFlagBitsNV)
 enables shader error reporting.
 
 // Provided by VK_NV_device_diagnostics_config
@@ -4732,7 +4732,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceDeviceMemoryReportCreateInfoEXT-sType-sType) VUID-VkDeviceDeviceMemoryReportCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceDeviceMemoryReportCreateInfoEXT-flags-zerobitmask) VUID-VkDeviceDeviceMemoryReportCreateInfoEXT-flags-zerobitmask
@@ -4749,7 +4749,7 @@ The prototype for the
 function implemented by the application is:
 
 // Provided by VK_EXT_device_memory_report
-typedef void (VKAPI_PTR *PFN_vkDeviceMemoryReportCallbackEXT)(
+typedef void (*PFN_vkDeviceMemoryReportCallbackEXT)(
     const VkDeviceMemoryReportCallbackDataEXT*  pCallbackData,
     void*                                       pUserData);
 
@@ -4801,30 +4801,30 @@ as described below.
 
 * 
 `size` is the size of the memory object in bytes.
-If `type` is `VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT`,
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT` or
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATION_FAILED_EXT`,
+If `type` is [VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT](#VkDeviceMemoryReportEventTypeEXT),
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT](#VkDeviceMemoryReportEventTypeEXT) or
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATION_FAILED_EXT](#VkDeviceMemoryReportEventTypeEXT),
 `size` is a valid `VkDeviceSize` value.
 Otherwise, `size` is **undefined**.
 
 * 
 `objectType` is a [VkObjectType](debugging.html#VkObjectType) value specifying the type of
 the object associated with this device memory report event.
-If `type` is `VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT`,
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_FREE_EXT`,
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT`,
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_UNIMPORT_EXT` or
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATION_FAILED_EXT`,
+If `type` is [VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT](#VkDeviceMemoryReportEventTypeEXT),
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_FREE_EXT](#VkDeviceMemoryReportEventTypeEXT),
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT](#VkDeviceMemoryReportEventTypeEXT),
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_UNIMPORT_EXT](#VkDeviceMemoryReportEventTypeEXT) or
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATION_FAILED_EXT](#VkDeviceMemoryReportEventTypeEXT),
 `objectType` is a valid [VkObjectType](debugging.html#VkObjectType) enum.
 Otherwise, `objectType` is **undefined**.
 
 * 
 `objectHandle` is the object this device memory report event is
 attributed to.
-If `type` is `VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT`,
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_FREE_EXT`,
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT` or
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_UNIMPORT_EXT`,
+If `type` is [VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT](#VkDeviceMemoryReportEventTypeEXT),
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_FREE_EXT](#VkDeviceMemoryReportEventTypeEXT),
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT](#VkDeviceMemoryReportEventTypeEXT) or
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_UNIMPORT_EXT](#VkDeviceMemoryReportEventTypeEXT),
 `objectHandle` is a valid Vulkan handle of the type associated with
 `objectType` as defined in the [    `VkObjectType` and Vulkan Handle Relationship](debugging.html#debugging-object-types) table.
 Otherwise, `objectHandle` is **undefined**.
@@ -4832,8 +4832,8 @@ Otherwise, `objectHandle` is **undefined**.
 * 
 `heapIndex` describes which memory heap this device memory
 allocation is made from.
-If `type` is `VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT`
-or `VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATION_FAILED_EXT`,
+If `type` is [VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT](#VkDeviceMemoryReportEventTypeEXT)
+or [VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATION_FAILED_EXT](#VkDeviceMemoryReportEventTypeEXT),
 `heapIndex` corresponds to one of the valid heaps from the
 [VkPhysicalDeviceMemoryProperties](memory.html#VkPhysicalDeviceMemoryProperties) structure.
 Otherwise, `heapIndex` is **undefined**.
@@ -4856,8 +4856,8 @@ system wide.
 | --- | --- |
 triggered callback.
 
-For `VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT` and
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT` events,
+For [VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT](#VkDeviceMemoryReportEventTypeEXT) and
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT](#VkDeviceMemoryReportEventTypeEXT) events,
 `objectHandle` usually will not yet exist when the application or tool
 receives the callback.
 `objectHandle` will only exist when the create or allocate call that
@@ -4869,7 +4869,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceMemoryReportCallbackDataEXT-sType-sType) VUID-VkDeviceMemoryReportCallbackDataEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_MEMORY_REPORT_CALLBACK_DATA_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_MEMORY_REPORT_CALLBACK_DATA_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceMemoryReportCallbackDataEXT-pNext-pNext) VUID-VkDeviceMemoryReportCallbackDataEXT-pNext-pNext
@@ -4896,25 +4896,25 @@ typedef enum VkDeviceMemoryReportEventTypeEXT {
 } VkDeviceMemoryReportEventTypeEXT;
 
 * 
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT` specifies this
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT](#VkDeviceMemoryReportEventTypeEXT) specifies this
 event corresponds to the allocation of an internal device memory object
 or a [VkDeviceMemory](memory.html#VkDeviceMemory).
 
 * 
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_FREE_EXT` specifies this event
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_FREE_EXT](#VkDeviceMemoryReportEventTypeEXT) specifies this event
 corresponds to the deallocation of an internally-allocated device memory
 object or a [VkDeviceMemory](memory.html#VkDeviceMemory).
 
 * 
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT` specifies this event
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT](#VkDeviceMemoryReportEventTypeEXT) specifies this event
 corresponds to the import of an external memory object.
 
 * 
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_UNIMPORT_EXT` specifies this
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_UNIMPORT_EXT](#VkDeviceMemoryReportEventTypeEXT) specifies this
 event is the release of an imported external memory object.
 
 * 
-`VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATION_FAILED_EXT` specifies
+[VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATION_FAILED_EXT](#VkDeviceMemoryReportEventTypeEXT) specifies
 this event corresponds to the failed allocation of an internal device
 memory object or a [VkDeviceMemory](memory.html#VkDeviceMemory).
 
@@ -4950,7 +4950,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDevicePrivateDataCreateInfo-sType-sType) VUID-VkDevicePrivateDataCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_PRIVATE_DATA_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_PRIVATE_DATA_CREATE_INFO](fundamentals.html#VkStructureType)
 
 To disable the implementation’s internal pipeline cache, add a
 [VkDevicePipelineBinaryInternalCacheControlKHR](#VkDevicePipelineBinaryInternalCacheControlKHR) structure to the
@@ -4975,7 +4975,7 @@ structure.
 implementation’s internal pipeline cache.
 
 If the `VkDeviceCreateInfo`::`pNext` chain does not include this
-structure, then `disableInternalCache` defaults to `VK_FALSE`.
+structure, then `disableInternalCache` defaults to [VK_FALSE](fundamentals.html#VK_FALSE).
 
 Valid Usage
 
@@ -4984,14 +4984,14 @@ Valid Usage
 
 If
 [VkPhysicalDevicePipelineBinaryPropertiesKHR](limits.html#VkPhysicalDevicePipelineBinaryPropertiesKHR)::`pipelineBinaryInternalCacheControl`
-is `VK_FALSE`, `disableInternalCache` **must** be `VK_FALSE`
+is [VK_FALSE](fundamentals.html#VK_FALSE), `disableInternalCache` **must** be [VK_FALSE](fundamentals.html#VK_FALSE)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDevicePipelineBinaryInternalCacheControlKHR-sType-sType) VUID-VkDevicePipelineBinaryInternalCacheControlKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_PIPELINE_BINARY_INTERNAL_CACHE_CONTROL_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_PIPELINE_BINARY_INTERNAL_CACHE_CONTROL_KHR](fundamentals.html#VkStructureType)
 
 The number of shader cores used by all the queues of a device **can** be
 controlled by adding a `VkDeviceQueueShaderCoreControlCreateInfoARM`
@@ -5039,7 +5039,7 @@ also result in device loss being reported, however this is not guaranteed.
 Even if device loss is reported, the system may be in an unrecoverable
 state, and further usage of the API is still considered invalid. |
 
-When this happens, certain commands will return `VK_ERROR_DEVICE_LOST`.
+When this happens, certain commands will return [VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult).
 After any such event, the logical device is considered *lost*.
 It is not possible to reset the logical device to a non-lost state, however
 the lost state is specific to a logical device (`VkDevice`), and the
@@ -5047,7 +5047,7 @@ corresponding physical device (`VkPhysicalDevice`) **may** be otherwise
 unaffected.
 
 In some cases, the physical device **may** also be lost, and attempting to
-create a new logical device will fail, returning `VK_ERROR_DEVICE_LOST`.
+create a new logical device will fail, returning [VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult).
 This is usually indicative of a problem with the underlying implementation,
 or its connection to the host.
 If the physical device has not been lost, and a new logical device is
@@ -5077,9 +5077,9 @@ regions are still valid, but the contents are **undefined**.
 It is still legal to call any API command on the device and child objects.
 
 Once a device is lost, command execution **may** fail, and certain commands
-that return a [VkResult](fundamentals.html#VkResult) **may** return `VK_ERROR_DEVICE_LOST`.
+that return a [VkResult](fundamentals.html#VkResult) **may** return [VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult).
 These commands can be identified by the inclusion of
-`VK_ERROR_DEVICE_LOST` in the Return Codes section for each command.
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult) in the Return Codes section for each command.
 Commands that do not allow runtime errors **must** still operate correctly for
 valid usage and, if applicable, return valid data.
 
@@ -5087,22 +5087,22 @@ Commands that wait indefinitely for device execution (namely
 [vkDeviceWaitIdle](synchronization.html#vkDeviceWaitIdle), [vkQueueWaitIdle](synchronization.html#vkQueueWaitIdle), [vkWaitForFences](synchronization.html#vkWaitForFences)
 or [vkAcquireNextImageKHR](VK_KHR_surface/wsi.html#vkAcquireNextImageKHR)
 with a maximum `timeout`, and [vkGetQueryPoolResults](queries.html#vkGetQueryPoolResults) with the
-`VK_QUERY_RESULT_WAIT_BIT` bit set in `flags`) **must** return in
+[VK_QUERY_RESULT_WAIT_BIT](queries.html#VkQueryResultFlagBits) bit set in `flags`) **must** return in
 finite time even in the case of a lost device, and return either
-`VK_SUCCESS` or `VK_ERROR_DEVICE_LOST`.
-For any command that **may** return `VK_ERROR_DEVICE_LOST`, for the purpose
+[VK_SUCCESS](fundamentals.html#VkResult) or [VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult).
+For any command that **may** return [VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult), for the purpose
 of determining whether a command buffer is in the
 [pending state](cmdbuffers.html#commandbuffers-lifecycle), or whether resources are
 considered in-use by the device, a return value of
-`VK_ERROR_DEVICE_LOST` is equivalent to `VK_SUCCESS`.
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult) is equivalent to [VK_SUCCESS](fundamentals.html#VkResult).
 
 If a device was created with the [`maintenance5`](features.html#features-maintenance5) feature enabled, and any device command returns
-`VK_ERROR_DEVICE_LOST`, then all device commands for which
-`VK_ERROR_DEVICE_LOST` is a valid return value and which happen-after it
-on the same host thread **must** return `VK_ERROR_DEVICE_LOST`.
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult), then all device commands for which
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult) is a valid return value and which happen-after it
+on the same host thread **must** return [VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult).
 
 Device commands executing on other threads **must** begin returning
-`VK_ERROR_DEVICE_LOST` within finite time.
+[VK_ERROR_DEVICE_LOST](fundamentals.html#VkResult) within finite time.
 
 The content of any external memory objects that have been exported from or
 imported to a lost device become **undefined**.
@@ -5112,7 +5112,7 @@ lost device are unaffected other than their content becoming **undefined**.
 The layout of subresources of images on other logical devices that are bound
 to `VkDeviceMemory` objects associated with the same underlying memory
 resources as external memory objects on the lost device becomes
-`VK_IMAGE_LAYOUT_UNDEFINED`.
+[VK_IMAGE_LAYOUT_UNDEFINED](resources.html#VkImageLayout).
 
 The state of `VkSemaphore` objects on other logical devices created by
 [importing a semaphore payload](synchronization.html#synchronization-semaphores-importing) with
@@ -5192,7 +5192,10 @@ Host Synchronization
 Host access to `device` **must** be externally synchronized
 
 * 
-Host access to all `VkQueue` objects created from `device` **must** be externally synchronized
+Host access to all `VkQueue` objects created from `device`
+that are not created with
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](#VkDeviceQueueCreateFlagBits)
+             **must** be externally synchronized
 
 As discussed in the [Physical Device Enumeration](#devsandqueues-physical-device-enumeration) section above, the
 [vkGetPhysicalDeviceQueueFamilyProperties](#vkGetPhysicalDeviceQueueFamilyProperties) command is used to retrieve
@@ -5283,10 +5286,10 @@ they did not enable.
 
 For example, [sparse memory management operations](sparsemem.html#sparsememory) **can** be
 performed on queues from queue families exposing the
-`VK_QUEUE_SPARSE_BINDING_BIT` bit, provided the
+[VK_QUEUE_SPARSE_BINDING_BIT](#VkQueueFlagBits) bit, provided the
 [sparseBinding](features.html#features-sparseBinding) feature is enabled.
-If a queue family supports both the `VK_QUEUE_SPARSE_BINDING_BIT` and
-`VK_QUEUE_TRANSFER_BIT` bits, applications **may** create a queue from this
+If a queue family supports both the [VK_QUEUE_SPARSE_BINDING_BIT](#VkQueueFlagBits) and
+[VK_QUEUE_TRANSFER_BIT](#VkQueueFlagBits) bits, applications **may** create a queue from this
 family and issue transfer operations without enabling the
 [sparseBinding](features.html#features-sparseBinding) feature.
 
@@ -5317,15 +5320,15 @@ inclusive
 [](#VUID-VkDeviceQueueCreateInfo-flags-02861) VUID-VkDeviceQueueCreateInfo-flags-02861
 
 If the [`protectedMemory`](features.html#features-protectedMemory) feature is
-not enabled, the `VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT` bit of
+not enabled, the [VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT](#VkDeviceQueueCreateFlagBits) bit of
 `flags` **must** not be set
 
 * 
 [](#VUID-VkDeviceQueueCreateInfo-flags-06449) VUID-VkDeviceQueueCreateInfo-flags-06449
 
-If `flags` includes `VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT`,
+If `flags` includes [VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT](#VkDeviceQueueCreateFlagBits),
 `queueFamilyIndex` **must** be the index of a queue family that
-includes the `VK_QUEUE_PROTECTED_BIT` capability
+includes the [VK_QUEUE_PROTECTED_BIT](#VkQueueFlagBits) capability
 
 * 
 [](#VUID-VkDeviceQueueCreateInfo-pNext-09398) VUID-VkDeviceQueueCreateInfo-pNext-09398
@@ -5334,14 +5337,21 @@ If the `pNext` chain includes a
 [VkDeviceQueueShaderCoreControlCreateInfoARM](#VkDeviceQueueShaderCoreControlCreateInfoARM) structure then
 [VkPhysicalDeviceSchedulingControlsPropertiesARM](#VkPhysicalDeviceSchedulingControlsPropertiesARM)::`schedulingControlsFlags`
 **must** contain
-`VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM`
+[VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM](#VkPhysicalDeviceSchedulingControlsFlagBitsARM)
+
+* 
+[](#VUID-VkDeviceQueueCreateInfo-internallySynchronizedQueues-12348) VUID-VkDeviceQueueCreateInfo-internallySynchronizedQueues-12348
+
+If the [    `internallySynchronizedQueues`](features.html#features-internallySynchronizedQueues) feature is not enabled, `flags`
+**must** not include
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](#VkDeviceQueueCreateFlagBits)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDeviceQueueCreateInfo-sType-sType) VUID-VkDeviceQueueCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceQueueCreateInfo-pNext-pNext) VUID-VkDeviceQueueCreateInfo-pNext-pNext
@@ -5375,11 +5385,18 @@ specifying usage behavior of a queue, are:
 typedef enum VkDeviceQueueCreateFlagBits {
   // Provided by VK_VERSION_1_1
     VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT = 0x00000001,
+  // Provided by VK_KHR_internally_synchronized_queues
+    VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR = 0x00000004,
 } VkDeviceQueueCreateFlagBits;
 
 * 
-`VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT` specifies that the device
+[VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT](#VkDeviceQueueCreateFlagBits) specifies that the device
 queue is a protected-capable queue.
+
+* 
+[VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR](#VkDeviceQueueCreateFlagBits) specifies
+that the device queue is internally synchronized and does not require
+external synchronization.
 
 // Provided by VK_VERSION_1_0
 typedef VkFlags VkDeviceQueueCreateFlags;
@@ -5421,14 +5438,14 @@ queues as specified by [VkQueueGlobalPriority](#VkQueueGlobalPriority)
 
 Queues created without specifying
 `VkDeviceQueueGlobalPriorityCreateInfo` will default to
-`VK_QUEUE_GLOBAL_PRIORITY_MEDIUM`.
+[VK_QUEUE_GLOBAL_PRIORITY_MEDIUM](#VkQueueGlobalPriorityEXT).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDeviceQueueGlobalPriorityCreateInfo-sType-sType) VUID-VkDeviceQueueGlobalPriorityCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceQueueGlobalPriorityCreateInfo-globalPriority-parameter) VUID-VkDeviceQueueGlobalPriorityCreateInfo-globalPriority-parameter
@@ -5476,17 +5493,17 @@ A comparison operation on the enum values can be used to determine the
 priority order.
 
 * 
-`VK_QUEUE_GLOBAL_PRIORITY_LOW` is below the system default.
+[VK_QUEUE_GLOBAL_PRIORITY_LOW](#VkQueueGlobalPriorityEXT) is below the system default.
 Useful for non-interactive tasks.
 
 * 
-`VK_QUEUE_GLOBAL_PRIORITY_MEDIUM` is the system default priority.
+[VK_QUEUE_GLOBAL_PRIORITY_MEDIUM](#VkQueueGlobalPriorityEXT) is the system default priority.
 
 * 
-`VK_QUEUE_GLOBAL_PRIORITY_HIGH` is above the system default.
+[VK_QUEUE_GLOBAL_PRIORITY_HIGH](#VkQueueGlobalPriorityEXT) is above the system default.
 
 * 
-`VK_QUEUE_GLOBAL_PRIORITY_REALTIME` is the highest priority.
+[VK_QUEUE_GLOBAL_PRIORITY_REALTIME](#VkQueueGlobalPriorityEXT) is the highest priority.
 Useful for critical tasks.
 
 Queues with higher system priority **may** be allotted more processing time
@@ -5506,20 +5523,20 @@ queue priority ([VkDeviceQueueCreateInfo](#VkDeviceQueueCreateInfo)::`pQueuePrio
 Abuse of this feature **may** result in starving the rest of the system of
 implementation resources.
 Therefore, the driver implementation **may** deny requests to acquire a
-priority above the default priority (`VK_QUEUE_GLOBAL_PRIORITY_MEDIUM`)
+priority above the default priority ([VK_QUEUE_GLOBAL_PRIORITY_MEDIUM](#VkQueueGlobalPriorityEXT))
 if the caller does not have sufficient privileges.
-In this scenario `VK_ERROR_NOT_PERMITTED` is returned.
+In this scenario [VK_ERROR_NOT_PERMITTED](fundamentals.html#VkResult) is returned.
 
 The driver implementation **may** fail the queue allocation request if
 resources required to complete the operation have been exhausted (either by
 the same process or a different process).
-In this scenario `VK_ERROR_INITIALIZATION_FAILED` is returned.
+In this scenario [VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult) is returned.
 
 If the [`globalPriorityQuery`](features.html#features-globalPriorityQuery) feature
 is enabled and the requested global priority is not reported via
 [VkQueueFamilyGlobalPriorityProperties](#VkQueueFamilyGlobalPriorityProperties), the driver implementation **must**
 fail the queue creation.
-In this scenario, `VK_ERROR_INITIALIZATION_FAILED` is returned.
+In this scenario, [VK_ERROR_INITIALIZATION_FAILED](fundamentals.html#VkResult) is returned.
 
 The number of shader cores used by a queue **can** be controlled by adding a
 `VkDeviceQueueShaderCoreControlCreateInfoARM` structure to the
@@ -5563,7 +5580,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceQueueShaderCoreControlCreateInfoARM-sType-sType) VUID-VkDeviceQueueShaderCoreControlCreateInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_QUEUE_SHADER_CORE_CONTROL_CREATE_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_QUEUE_SHADER_CORE_CONTROL_CREATE_INFO_ARM](fundamentals.html#VkStructureType)
 
 To retrieve a handle to a [VkQueue](#VkQueue) object, call:
 
@@ -5761,7 +5778,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDeviceQueueInfo2-sType-sType) VUID-VkDeviceQueueInfo2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DEVICE_QUEUE_INFO_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DEVICE_QUEUE_INFO_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkDeviceQueueInfo2-pNext-pNext) VUID-VkDeviceQueueInfo2-pNext-pNext
@@ -5861,7 +5878,7 @@ queue before the command returns.
 In Vulkan it is possible to sparsely bind memory to buffers and images as
 described in the [Sparse Resource](sparsemem.html#sparsememory) chapter.
 Sparse memory binding is a queue operation.
-A queue whose flags include the `VK_QUEUE_SPARSE_BINDING_BIT` **must** be
+A queue whose flags include the [VK_QUEUE_SPARSE_BINDING_BIT](#VkQueueFlagBits) **must** be
 able to support the mapping of a virtual address to a physical address on
 the device.
 This causes an update to the page table mappings on the device.

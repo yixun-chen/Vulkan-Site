@@ -42,10 +42,10 @@ layout the attachment is used with in the subpass specified in
 
 If the image referenced by the depth/stencil attachment used in the subpass
 identified by `subpassIndex` was not created with
-`VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT` or if the
+[VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT](VkImageCreateFlagBits.html) or if the
 subpass does not use a depth/stencil attachment, and
 [VkPhysicalDeviceSampleLocationsPropertiesEXT](VkPhysicalDeviceSampleLocationsPropertiesEXT.html)::`variableSampleLocations`
-is `VK_TRUE` then the values specified in `sampleLocationsInfo` are
+is [VK_TRUE](VK_TRUE.html) then the values specified in `sampleLocationsInfo` are
 ignored.
 
 Valid Usage

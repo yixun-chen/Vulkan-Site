@@ -46,7 +46,7 @@ structure.
 representative fragment test is enabled.
 
 If this structure is not included in the `pNext` chain,
-`representativeFragmentTestEnable` is considered to be `VK_FALSE`,
+`representativeFragmentTestEnable` is considered to be [VK_FALSE](VK_FALSE.html),
 and the representative fragment test is disabled.
 
 If the active fragment shader does not specify the `EarlyFragmentTests`
@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPipelineRepresentativeFragmentTestStateCreateInfoNV-sType-sType) VUID-VkPipelineRepresentativeFragmentTestStateCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV](VkStructureType.html)
 
 [VK_NV_representative_fragment_test](VK_NV_representative_fragment_test.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

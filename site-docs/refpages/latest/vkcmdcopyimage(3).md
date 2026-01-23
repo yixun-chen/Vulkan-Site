@@ -83,8 +83,8 @@ block extent in each dimension, except at the edges of the image, where
 region extents **must** match the edge of the image.
 
 Image data **can** be copied between images with different image types.
-If one image is `VK_IMAGE_TYPE_3D` and the other image is
-`VK_IMAGE_TYPE_2D` with multiple layers, then each slice is copied to or
+If one image is [VK_IMAGE_TYPE_3D](VkImageType.html) and the other image is
+[VK_IMAGE_TYPE_2D](VkImageType.html) with multiple layers, then each slice is copied to or
 from a different layer; `depth` slices in the 3D image correspond to
 `layerCount` layers in the 2D image, with an effective `depth` of
 `1` used for the 2D image.
@@ -121,138 +121,138 @@ If `commandBuffer` is a protected command buffer and
 
 If the queue family used to create the [VkCommandPool](VkCommandPool.html) which
 `commandBuffer` was allocated from does not support
-`VK_QUEUE_GRAPHICS_BIT`,
+[VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html),
 and the [`maintenance10`](../../../../spec/latest/chapters/features.html#features-maintenance10) feature is not
 enabled,
 for each element of `pRegions`, where the `aspectMask` member of
-`srcSubresource` is `VK_IMAGE_ASPECT_COLOR_BIT`, the
+`srcSubresource` is [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html), the
 `aspectMask` of `dstSubresource` **must** not be
-`VK_IMAGE_ASPECT_DEPTH_BIT` or `VK_IMAGE_ASPECT_STENCIL_BIT`
+[VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) or [VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-vkCmdCopyImage-commandBuffer-11782) VUID-vkCmdCopyImage-commandBuffer-11782
 
 If the queue family used to create the [VkCommandPool](VkCommandPool.html) which
 `commandBuffer` was allocated from does not support
-`VK_QUEUE_GRAPHICS_BIT` but does support `VK_QUEUE_COMPUTE_BIT`,
+[VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) but does support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html),
 and in any element of `pRegions` the `aspectMask` member of
-`srcSubresource` is `VK_IMAGE_ASPECT_COLOR_BIT` and the
+`srcSubresource` is [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html) and the
 `aspectMask` of `dstSubresource` is
-`VK_IMAGE_ASPECT_DEPTH_BIT`, then the
+[VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html), then the
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of `dstImage`
 **must** contain
-`VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_COMPUTE_QUEUE_BIT_KHR`
+[VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_COMPUTE_QUEUE_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-vkCmdCopyImage-commandBuffer-11783) VUID-vkCmdCopyImage-commandBuffer-11783
 
 If the queue family used to create the [VkCommandPool](VkCommandPool.html) which
 `commandBuffer` was allocated from does not support
-`VK_QUEUE_GRAPHICS_BIT` and `VK_QUEUE_COMPUTE_BIT`, but does
-support `VK_QUEUE_TRANSFER_BIT`, and in any element of
+[VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) and [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), but does
+support [VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html), and in any element of
 `pRegions` the `aspectMask` member of `srcSubresource` is
-`VK_IMAGE_ASPECT_COLOR_BIT` and the `aspectMask` of
-`dstSubresource` is `VK_IMAGE_ASPECT_DEPTH_BIT`, then the
+[VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html) and the `aspectMask` of
+`dstSubresource` is [VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html), then the
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of `dstImage`
 **must** contain
-`VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_TRANSFER_QUEUE_BIT_KHR`
+[VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_TRANSFER_QUEUE_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-vkCmdCopyImage-commandBuffer-11784) VUID-vkCmdCopyImage-commandBuffer-11784
 
 If the queue family used to create the [VkCommandPool](VkCommandPool.html) which
 `commandBuffer` was allocated from does not support
-`VK_QUEUE_GRAPHICS_BIT` but does support `VK_QUEUE_COMPUTE_BIT`,
+[VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) but does support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html),
 and in any element of `pRegions` the `aspectMask` member of
-`srcSubresource` is `VK_IMAGE_ASPECT_COLOR_BIT` and the
+`srcSubresource` is [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html) and the
 `aspectMask` of `dstSubresource` is
-`VK_IMAGE_ASPECT_STENCIL_BIT`, then the
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html), then the
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of `dstImage`
 **must** contain
-`VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_COMPUTE_QUEUE_BIT_KHR`
+[VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_COMPUTE_QUEUE_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-vkCmdCopyImage-commandBuffer-11785) VUID-vkCmdCopyImage-commandBuffer-11785
 
 If the queue family used to create the [VkCommandPool](VkCommandPool.html) which
 `commandBuffer` was allocated from does not support
-`VK_QUEUE_GRAPHICS_BIT` and `VK_QUEUE_COMPUTE_BIT`, but does
-support `VK_QUEUE_TRANSFER_BIT`, and in any element of
+[VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) and [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), but does
+support [VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html), and in any element of
 `pRegions` the `aspectMask` member of `srcSubresource` is
-`VK_IMAGE_ASPECT_COLOR_BIT` and the `aspectMask` of
-`dstSubresource` is `VK_IMAGE_ASPECT_STENCIL_BIT`, then the
+[VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html) and the `aspectMask` of
+`dstSubresource` is [VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html), then the
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of `dstImage`
 **must** contain
-`VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_TRANSFER_QUEUE_BIT_KHR`
+[VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_TRANSFER_QUEUE_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-vkCmdCopyImage-commandBuffer-10218) VUID-vkCmdCopyImage-commandBuffer-10218
 
 If the queue family used to create the [VkCommandPool](VkCommandPool.html) which
 `commandBuffer` was allocated from does not support
-`VK_QUEUE_GRAPHICS_BIT`,
+[VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html),
 and the [`maintenance10`](../../../../spec/latest/chapters/features.html#features-maintenance10) feature is not
 enabled,
 for each element of `pRegions`, where the `aspectMask` member of
-`dstSubresource` is `VK_IMAGE_ASPECT_COLOR_BIT` then the
+`dstSubresource` is [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html) then the
 `aspectMask` of `srcSubresource` **must** not be
-`VK_IMAGE_ASPECT_DEPTH_BIT` or `VK_IMAGE_ASPECT_STENCIL_BIT`
+[VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) or [VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-vkCmdCopyImage-commandBuffer-11786) VUID-vkCmdCopyImage-commandBuffer-11786
 
 If the queue family used to create the [VkCommandPool](VkCommandPool.html) which
 `commandBuffer` was allocated from does not support
-`VK_QUEUE_GRAPHICS_BIT` but does support `VK_QUEUE_COMPUTE_BIT`,
+[VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) but does support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html),
 and in any element of `pRegions` the `aspectMask` member of
-`dstSubresource` is `VK_IMAGE_ASPECT_COLOR_BIT` and the
+`dstSubresource` is [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html) and the
 `aspectMask` of `srcSubresource` is
-`VK_IMAGE_ASPECT_DEPTH_BIT`, then the
+[VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html), then the
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of `srcImage`
 **must** contain
-`VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_COMPUTE_QUEUE_BIT_KHR`
+[VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_COMPUTE_QUEUE_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-vkCmdCopyImage-commandBuffer-11787) VUID-vkCmdCopyImage-commandBuffer-11787
 
 If the queue family used to create the [VkCommandPool](VkCommandPool.html) which
 `commandBuffer` was allocated from does not support
-`VK_QUEUE_GRAPHICS_BIT` and `VK_QUEUE_COMPUTE_BIT`, but does
-support `VK_QUEUE_TRANSFER_BIT`, and in any element of
+[VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) and [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), but does
+support [VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html), and in any element of
 `pRegions` the `aspectMask` member of `dstSubresource` is
-`VK_IMAGE_ASPECT_COLOR_BIT` and the `aspectMask` of
-`srcSubresource` is `VK_IMAGE_ASPECT_DEPTH_BIT`, then the
+[VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html) and the `aspectMask` of
+`srcSubresource` is [VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html), then the
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of `srcImage`
 **must** contain
-`VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_TRANSFER_QUEUE_BIT_KHR`
+[VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_TRANSFER_QUEUE_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-vkCmdCopyImage-commandBuffer-11788) VUID-vkCmdCopyImage-commandBuffer-11788
 
 If the queue family used to create the [VkCommandPool](VkCommandPool.html) which
 `commandBuffer` was allocated from does not support
-`VK_QUEUE_GRAPHICS_BIT` but does support `VK_QUEUE_COMPUTE_BIT`,
+[VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) but does support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html),
 and in any element of `pRegions` the `aspectMask` member of
-`dstSubresource` is `VK_IMAGE_ASPECT_COLOR_BIT` and the
+`dstSubresource` is [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html) and the
 `aspectMask` of `srcSubresource` is
-`VK_IMAGE_ASPECT_STENCIL_BIT`, then the
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html), then the
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of `srcImage`
 **must** contain
-`VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_COMPUTE_QUEUE_BIT_KHR`
+[VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_COMPUTE_QUEUE_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-vkCmdCopyImage-commandBuffer-11789) VUID-vkCmdCopyImage-commandBuffer-11789
 
 If the queue family used to create the [VkCommandPool](VkCommandPool.html) which
 `commandBuffer` was allocated from does not support
-`VK_QUEUE_GRAPHICS_BIT` and `VK_QUEUE_COMPUTE_BIT`, but does
-support `VK_QUEUE_TRANSFER_BIT`, and in any element of
+[VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) and [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), but does
+support [VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html), and in any element of
 `pRegions` the `aspectMask` member of `dstSubresource` is
-`VK_IMAGE_ASPECT_COLOR_BIT` and the `aspectMask` of
-`srcSubresource` is `VK_IMAGE_ASPECT_STENCIL_BIT`, then the
+[VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html) and the `aspectMask` of
+`srcSubresource` is [VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html), then the
 [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of `srcImage`
 **must** contain
-`VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_TRANSFER_QUEUE_BIT_KHR`
+[VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_TRANSFER_QUEUE_BIT_KHR](VkFormatFeatureFlagBits2.html)
 
 * 
 [](#VUID-vkCmdCopyImage-pRegions-00124) VUID-vkCmdCopyImage-pRegions-00124
@@ -265,7 +265,7 @@ in memory
 [](#VUID-vkCmdCopyImage-srcImage-01995) VUID-vkCmdCopyImage-srcImage-01995
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of
-`srcImage` **must** contain `VK_FORMAT_FEATURE_TRANSFER_SRC_BIT`
+`srcImage` **must** contain [VK_FORMAT_FEATURE_TRANSFER_SRC_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-vkCmdCopyImage-srcImageLayout-00128) VUID-vkCmdCopyImage-srcImageLayout-00128
@@ -278,9 +278,9 @@ is executed on a `VkDevice`
 [](#VUID-vkCmdCopyImage-srcImageLayout-01917) VUID-vkCmdCopyImage-srcImageLayout-01917
 
 `srcImageLayout` **must** be
-`VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`,
-`VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_GENERAL`
+[VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL](VkImageLayout.html), or
+[VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html)
 
 * 
 [](#VUID-vkCmdCopyImage-srcImage-09460) VUID-vkCmdCopyImage-srcImage-09460
@@ -289,14 +289,14 @@ If `srcImage` and `dstImage` are the same, and any elements of
 `pRegions` contains the `srcSubresource` and
 `dstSubresource` with matching `mipLevel` and overlapping array
 layers, then the `srcImageLayout` and `dstImageLayout` **must** be
-`VK_IMAGE_LAYOUT_GENERAL`
-or `VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`
+[VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html)
+or [VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](VkImageLayout.html)
 
 * 
 [](#VUID-vkCmdCopyImage-dstImage-01996) VUID-vkCmdCopyImage-dstImage-01996
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-image-format-features) of
-`dstImage` **must** contain `VK_FORMAT_FEATURE_TRANSFER_DST_BIT`
+`dstImage` **must** contain [VK_FORMAT_FEATURE_TRANSFER_DST_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-vkCmdCopyImage-dstImageLayout-00133) VUID-vkCmdCopyImage-dstImageLayout-00133
@@ -309,9 +309,9 @@ is executed on a `VkDevice`
 [](#VUID-vkCmdCopyImage-dstImageLayout-01395) VUID-vkCmdCopyImage-dstImageLayout-01395
 
 `dstImageLayout` **must** be
-`VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`,
-`VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL`, or
-`VK_IMAGE_LAYOUT_GENERAL`
+[VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL](VkImageLayout.html), or
+[VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html)
 
 * 
 [](#VUID-vkCmdCopyImage-srcImage-01548) VUID-vkCmdCopyImage-srcImage-01548
@@ -372,23 +372,23 @@ and the [`maintenance8`](../../../../spec/latest/chapters/features.html#features
 
 For each element of `pRegions` where `srcSubresource.aspectMask`
 and `dstSubresource.aspectMask` each contain at least one of
-`VK_IMAGE_ASPECT_DEPTH_BIT` or `VK_IMAGE_ASPECT_STENCIL_BIT`,
+[VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) or [VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html),
 `srcSubresource.aspectMask` and `dstSubresource.aspectMask`
 **must** match
 
 * 
 [](#VUID-vkCmdCopyImage-srcSubresource-10214) VUID-vkCmdCopyImage-srcSubresource-10214
 
-If `srcSubresource.aspectMask` is `VK_IMAGE_ASPECT_COLOR_BIT`,
+If `srcSubresource.aspectMask` is [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html),
 then `dstSubresource.aspectMask` **must** not contain both
-`VK_IMAGE_ASPECT_DEPTH_BIT` and `VK_IMAGE_ASPECT_STENCIL_BIT`
+[VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) and [VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-vkCmdCopyImage-dstSubresource-10215) VUID-vkCmdCopyImage-dstSubresource-10215
 
-If `dstSubresource.aspectMask` is `VK_IMAGE_ASPECT_COLOR_BIT`,
+If `dstSubresource.aspectMask` is [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html),
 then `srcSubresource.aspectMask` **must** not contain both
-`VK_IMAGE_ASPECT_DEPTH_BIT` and `VK_IMAGE_ASPECT_STENCIL_BIT`
+[VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) and [VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-vkCmdCopyImage-srcImage-08713) VUID-vkCmdCopyImage-srcImage-08713
@@ -410,7 +410,7 @@ then for each element of `pRegions`, `dstSubresource.aspectMask`
 If `srcImage` has a [multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar) and
 the `dstImage` does not have a multi-planar image format, then for
 each element of `pRegions`, `dstSubresource.aspectMask` **must** be
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-vkCmdCopyImage-dstImage-01557) VUID-vkCmdCopyImage-dstImage-01557
@@ -418,23 +418,23 @@ each element of `pRegions`, `dstSubresource.aspectMask` **must** be
 If `dstImage` has a [multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar) and
 the `srcImage` does not have a multi-planar image format, then for
 each element of `pRegions`, `srcSubresource.aspectMask` **must** be
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-vkCmdCopyImage-srcSubresource-10211) VUID-vkCmdCopyImage-srcSubresource-10211
 
-If `srcSubresource.aspectMask` is `VK_IMAGE_ASPECT_COLOR_BIT`
-and `dstSubresource.aspectMask` is `VK_IMAGE_ASPECT_DEPTH_BIT`
-or `VK_IMAGE_ASPECT_STENCIL_BIT`, then the [VkFormat](VkFormat.html) values of
+If `srcSubresource.aspectMask` is [VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html)
+and `dstSubresource.aspectMask` is [VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html)
+or [VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html), then the [VkFormat](VkFormat.html) values of
 `srcImage` and `dstImage` **must** be compatible according to
 [the list of compatible depth-stencil and    color formats](../../../../spec/latest/chapters/formats.html#formats-compatible-zs-color)
 
 * 
 [](#VUID-vkCmdCopyImage-srcSubresource-10212) VUID-vkCmdCopyImage-srcSubresource-10212
 
-If `srcSubresource.aspectMask` is `VK_IMAGE_ASPECT_DEPTH_BIT` or
-`VK_IMAGE_ASPECT_STENCIL_BIT` and `dstSubresource.aspectMask` is
-`VK_IMAGE_ASPECT_COLOR_BIT`, then the [VkFormat](VkFormat.html) values of
+If `srcSubresource.aspectMask` is [VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) or
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html) and `dstSubresource.aspectMask` is
+[VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html), then the [VkFormat](VkFormat.html) values of
 `srcImage` and `dstImage` **must** be compatible according to
 [the list of compatible depth-stencil and    color formats](../../../../spec/latest/chapters/formats.html#formats-compatible-zs-color)
 
@@ -448,7 +448,7 @@ or
     1.1,
 and
     either `srcImage` or `dstImage` is of type
-    `VK_IMAGE_TYPE_3D`, then for each element of `pRegions`,
+    [VK_IMAGE_TYPE_3D](VkImageType.html), then for each element of `pRegions`,
     `srcSubresource.baseArrayLayer` and
     `dstSubresource.baseArrayLayer` **must** both be `0`, and
     `srcSubresource.layerCount` and `dstSubresource.layerCount`
@@ -457,14 +457,14 @@ and
 * 
 [](#VUID-vkCmdCopyImage-srcImage-04443) VUID-vkCmdCopyImage-srcImage-04443
 
-If `srcImage` is of type `VK_IMAGE_TYPE_3D`, then for each
+If `srcImage` is of type [VK_IMAGE_TYPE_3D](VkImageType.html), then for each
 element of `pRegions`, `srcSubresource.baseArrayLayer` **must** be
 `0` and `srcSubresource.layerCount` **must** be `1`
 
 * 
 [](#VUID-vkCmdCopyImage-dstImage-04444) VUID-vkCmdCopyImage-dstImage-04444
 
-If `dstImage` is of type `VK_IMAGE_TYPE_3D`, then for each
+If `dstImage` is of type [VK_IMAGE_TYPE_3D](VkImageType.html), then for each
 element of `pRegions`, `dstSubresource.baseArrayLayer` **must** be
 `0` and `dstSubresource.layerCount` **must** be `1`
 
@@ -499,14 +499,14 @@ specified `srcSubresource` of `srcImage`
 * 
 [](#VUID-vkCmdCopyImage-srcImage-00146) VUID-vkCmdCopyImage-srcImage-00146
 
-If `srcImage` is of type `VK_IMAGE_TYPE_1D`, then for each
+If `srcImage` is of type [VK_IMAGE_TYPE_1D](VkImageType.html), then for each
 element of `pRegions`, `srcOffset.y` **must** be `0` and
 `extent.height` **must** be `1`
 
 * 
 [](#VUID-vkCmdCopyImage-srcOffset-00147) VUID-vkCmdCopyImage-srcOffset-00147
 
-If `srcImage` is of type `VK_IMAGE_TYPE_3D`, then for each
+If `srcImage` is of type [VK_IMAGE_TYPE_3D](VkImageType.html), then for each
 element of `pRegions`, `srcOffset.z` and
 (`extent.depth` +  `srcOffset.z`) **must** both be
 greater than or equal to `0` and less than or equal to the depth of the
@@ -515,33 +515,33 @@ specified `srcSubresource` of `srcImage`
 * 
 [](#VUID-vkCmdCopyImage-srcImage-01785) VUID-vkCmdCopyImage-srcImage-01785
 
-If `srcImage` is of type `VK_IMAGE_TYPE_1D`, then for each
+If `srcImage` is of type [VK_IMAGE_TYPE_1D](VkImageType.html), then for each
 element of `pRegions`, `srcOffset.z` **must** be `0` and
 `extent.depth` **must** be `1`
 
 * 
 [](#VUID-vkCmdCopyImage-dstImage-01786) VUID-vkCmdCopyImage-dstImage-01786
 
-If `dstImage` is of type `VK_IMAGE_TYPE_1D`, then for each
+If `dstImage` is of type [VK_IMAGE_TYPE_1D](VkImageType.html), then for each
 element of `pRegions`, `dstOffset.z` **must** be `0`
 
 * 
 [](#VUID-vkCmdCopyImage-srcImage-10907) VUID-vkCmdCopyImage-srcImage-10907
 
 If either the [VkFormat](VkFormat.html) of each of `srcImage` and
-`dstImage` is not a [compressed image    format](../../../../spec/latest/appendices/compressedtex.html#compressed_image_formats), and `dstImage` is of type `VK_IMAGE_TYPE_1D`, then for
+`dstImage` is not a [compressed image    format](../../../../spec/latest/appendices/compressedtex.html#compressed_image_formats), and `dstImage` is of type [VK_IMAGE_TYPE_1D](VkImageType.html), then for
 each element of `pRegions`, `extent.depth` **must** be `1`
 
 * 
 [](#VUID-vkCmdCopyImage-srcImage-01787) VUID-vkCmdCopyImage-srcImage-01787
 
-If `srcImage` is of type `VK_IMAGE_TYPE_2D`, then for each
+If `srcImage` is of type [VK_IMAGE_TYPE_2D](VkImageType.html), then for each
 element of `pRegions`, `srcOffset.z` **must** be `0`
 
 * 
 [](#VUID-vkCmdCopyImage-dstImage-01788) VUID-vkCmdCopyImage-dstImage-01788
 
-If `dstImage` is of type `VK_IMAGE_TYPE_2D`, then for each
+If `dstImage` is of type [VK_IMAGE_TYPE_2D](VkImageType.html), then for each
 element of `pRegions`, `dstOffset.z` **must** be `0`
 
 * 
@@ -562,7 +562,7 @@ and
 and
     [VkPhysicalDeviceProperties](VkPhysicalDeviceProperties.html)::`apiVersion` is less than Vulkan
     1.1,
-    `srcImage` or `dstImage` is of type `VK_IMAGE_TYPE_2D`, then
+    `srcImage` or `dstImage` is of type [VK_IMAGE_TYPE_2D](VkImageType.html), then
     for each element of `pRegions`, `extent.depth` **must** be `1`
 
 * 
@@ -571,8 +571,8 @@ and
 If `srcImage` and `dstImage` have a different [VkImageType](VkImageType.html),
 and the [`maintenance5`](../../../../spec/latest/chapters/features.html#features-maintenance5) feature is not
 enabled,
-one **must** be `VK_IMAGE_TYPE_3D` and the other **must** be
-`VK_IMAGE_TYPE_2D`
+one **must** be [VK_IMAGE_TYPE_3D](VkImageType.html) and the other **must** be
+[VK_IMAGE_TYPE_2D](VkImageType.html)
 
 * 
 [](#VUID-vkCmdCopyImage-srcImage-08793) VUID-vkCmdCopyImage-srcImage-08793
@@ -580,7 +580,7 @@ one **must** be `VK_IMAGE_TYPE_3D` and the other **must** be
 If `srcImage` and `dstImage` have the same [VkImageType](VkImageType.html),
 for each element of `pRegions`,
 if neither of the `layerCount` members of `srcSubresource` or
-`dstSubresource` are `VK_REMAINING_ARRAY_LAYERS`,
+`dstSubresource` are [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html),
 the `layerCount` members of `srcSubresource` or
 `dstSubresource` **must** match
 
@@ -589,8 +589,8 @@ the `layerCount` members of `srcSubresource` or
 
 If `srcImage` and `dstImage` have the same [VkImageType](VkImageType.html),
 and one of the `layerCount` members of `srcSubresource` or
-`dstSubresource` is `VK_REMAINING_ARRAY_LAYERS`, the other
-member **must** be either `VK_REMAINING_ARRAY_LAYERS` or equal to the
+`dstSubresource` is [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html), the other
+member **must** be either [VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html) or equal to the
 `arrayLayers` member of the [VkImageCreateInfo](VkImageCreateInfo.html) used to create
 the image minus `baseArrayLayer`
 
@@ -598,22 +598,22 @@ the image minus `baseArrayLayer`
 [](#VUID-vkCmdCopyImage-srcImage-01790) VUID-vkCmdCopyImage-srcImage-01790
 
 If `srcImage` and `dstImage` are both of type
-`VK_IMAGE_TYPE_2D`, then for each element of `pRegions`,
+[VK_IMAGE_TYPE_2D](VkImageType.html), then for each element of `pRegions`,
 `extent.depth` **must** be `1`
 
 * 
 [](#VUID-vkCmdCopyImage-srcImage-01791) VUID-vkCmdCopyImage-srcImage-01791
 
-If `srcImage` is of type `VK_IMAGE_TYPE_2D`, and `dstImage`
-is of type `VK_IMAGE_TYPE_3D`, then for each element of
+If `srcImage` is of type [VK_IMAGE_TYPE_2D](VkImageType.html), and `dstImage`
+is of type [VK_IMAGE_TYPE_3D](VkImageType.html), then for each element of
 `pRegions`, `extent.depth` **must** equal
 `srcSubresource.layerCount`
 
 * 
 [](#VUID-vkCmdCopyImage-dstImage-01792) VUID-vkCmdCopyImage-dstImage-01792
 
-If `dstImage` is of type `VK_IMAGE_TYPE_2D`, and `srcImage`
-is of type `VK_IMAGE_TYPE_3D`, then for each element of
+If `dstImage` is of type [VK_IMAGE_TYPE_2D](VkImageType.html), and `srcImage`
+is of type [VK_IMAGE_TYPE_3D](VkImageType.html), then for each element of
 `pRegions`, `extent.depth` **must** equal
 `dstSubresource.layerCount`
 
@@ -638,21 +638,21 @@ height of the specified `dstSubresource` of `dstImage`
 * 
 [](#VUID-vkCmdCopyImage-dstImage-00152) VUID-vkCmdCopyImage-dstImage-00152
 
-If `dstImage` is of type `VK_IMAGE_TYPE_1D`, then for each
+If `dstImage` is of type [VK_IMAGE_TYPE_1D](VkImageType.html), then for each
 element of `pRegions`, `dstOffset.y` **must** be `0`
 
 * 
 [](#VUID-vkCmdCopyImage-srcImage-10908) VUID-vkCmdCopyImage-srcImage-10908
 
 If either the [VkFormat](VkFormat.html) of each of `srcImage` and
-`dstImage` is not a [compressed image    format](../../../../spec/latest/appendices/compressedtex.html#compressed_image_formats), and `dstImage` is of type `VK_IMAGE_TYPE_1D`, then for
+`dstImage` is not a [compressed image    format](../../../../spec/latest/appendices/compressedtex.html#compressed_image_formats), and `dstImage` is of type [VK_IMAGE_TYPE_1D](VkImageType.html), then for
 each element of `pRegions`, `extent.height` **must** be `1`, where
 `extent` is [adjusted for    size-compatibility](../../../../spec/latest/chapters/formats.html#formats-size-compatibility)
 
 * 
 [](#VUID-vkCmdCopyImage-dstOffset-00153) VUID-vkCmdCopyImage-dstOffset-00153
 
-If `dstImage` is of type `VK_IMAGE_TYPE_3D`, then for each
+If `dstImage` is of type [VK_IMAGE_TYPE_3D](VkImageType.html), then for each
 element of `pRegions`, `dstOffset.z` and
 (`extent.depth` +  `dstOffset.z`), where `extent`
 is [adjusted for size-compatibility](../../../../spec/latest/chapters/formats.html#formats-size-compatibility),
@@ -725,36 +725,36 @@ by `srcSubresource`, `extent.depth` **must** be a multiple of the
 [](#VUID-vkCmdCopyImage-aspect-06662) VUID-vkCmdCopyImage-aspect-06662
 
 If the `aspect` member of any element of `pRegions` includes any
-flag other than `VK_IMAGE_ASPECT_STENCIL_BIT` or `srcImage` was
+flag other than [VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html) or `srcImage` was
 not created with [separate stencil    usage](../../../../spec/latest/chapters/resources.html#VkImageStencilUsageCreateInfo),
 `srcImage` **must** have been created with the
-`VK_IMAGE_USAGE_TRANSFER_SRC_BIT` usage flag set
+[VK_IMAGE_USAGE_TRANSFER_SRC_BIT](VkImageUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdCopyImage-aspect-06663) VUID-vkCmdCopyImage-aspect-06663
 
 If the `aspect` member of any element of `pRegions` includes any
-flag other than `VK_IMAGE_ASPECT_STENCIL_BIT` or `dstImage` was
+flag other than [VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html) or `dstImage` was
 not created with [separate stencil    usage](../../../../spec/latest/chapters/resources.html#VkImageStencilUsageCreateInfo),
 `dstImage` **must** have been created with the
-`VK_IMAGE_USAGE_TRANSFER_DST_BIT` usage flag set
+[VK_IMAGE_USAGE_TRANSFER_DST_BIT](VkImageUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdCopyImage-aspect-06664) VUID-vkCmdCopyImage-aspect-06664
 
 If the `aspect` member of any element of `pRegions` includes
-`VK_IMAGE_ASPECT_STENCIL_BIT`, and `srcImage` was created with
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html), and `srcImage` was created with
 [separate stencil usage](../../../../spec/latest/chapters/resources.html#VkImageStencilUsageCreateInfo), `srcImage`
-**must** have been created with the `VK_IMAGE_USAGE_TRANSFER_SRC_BIT`
+**must** have been created with the [VK_IMAGE_USAGE_TRANSFER_SRC_BIT](VkImageUsageFlagBits.html)
 usage flag set
 
 * 
 [](#VUID-vkCmdCopyImage-aspect-06665) VUID-vkCmdCopyImage-aspect-06665
 
 If the `aspect` member of any element of `pRegions` includes
-`VK_IMAGE_ASPECT_STENCIL_BIT`, and `dstImage` was created with
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html), and `dstImage` was created with
 [separate stencil usage](../../../../spec/latest/chapters/resources.html#VkImageStencilUsageCreateInfo), `srcImage`
-**must** have been created with the `VK_IMAGE_USAGE_TRANSFER_DST_BIT`
+**must** have been created with the [VK_IMAGE_USAGE_TRANSFER_DST_BIT](VkImageUsageFlagBits.html)
 usage flag set
 
 * 
@@ -776,7 +776,7 @@ The `srcSubresource.mipLevel` member of each element of
 [](#VUID-vkCmdCopyImage-srcSubresource-07968) VUID-vkCmdCopyImage-srcSubresource-07968
 
 If `srcSubresource.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`,
+[VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html),
 `srcSubresource.baseArrayLayer` + 
 `srcSubresource.layerCount` of each element of `pRegions`
 **must** be less than or equal to the `arrayLayers` specified in
@@ -786,7 +786,7 @@ If `srcSubresource.layerCount` is not
 [](#VUID-vkCmdCopyImage-srcImage-07969) VUID-vkCmdCopyImage-srcImage-07969
 
 `srcImage` **must** not have been created with `flags`
-containing `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`
+containing [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](VkImageCreateFlagBits.html)
 
 * 
 [](#VUID-vkCmdCopyImage-dstImage-07966) VUID-vkCmdCopyImage-dstImage-07966
@@ -807,7 +807,7 @@ The `dstSubresource.mipLevel` member of each element of
 [](#VUID-vkCmdCopyImage-dstSubresource-07968) VUID-vkCmdCopyImage-dstSubresource-07968
 
 If `dstSubresource.layerCount` is not
-`VK_REMAINING_ARRAY_LAYERS`,
+[VK_REMAINING_ARRAY_LAYERS](VK_REMAINING_ARRAY_LAYERS.html),
 `dstSubresource.baseArrayLayer` + 
 `dstSubresource.layerCount` of each element of `pRegions`
 **must** be less than or equal to the `arrayLayers` specified in
@@ -817,7 +817,7 @@ If `dstSubresource.layerCount` is not
 [](#VUID-vkCmdCopyImage-dstImage-07969) VUID-vkCmdCopyImage-dstImage-07969
 
 `dstImage` **must** not have been created with `flags`
-containing `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`
+containing [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](VkImageCreateFlagBits.html)
 
 Valid Usage (Implicit)
 
@@ -859,7 +859,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdCopyImage-commandBuffer-cmdpool) VUID-vkCmdCopyImage-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, or `VK_QUEUE_TRANSFER_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html), or [VK_QUEUE_TRANSFER_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdCopyImage-renderpass) VUID-vkCmdCopyImage-renderpass

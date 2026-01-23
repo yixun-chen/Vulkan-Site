@@ -58,11 +58,27 @@ as described in [Pipeline Layout Compatibility](../../../../spec/latest/chapters
 Valid Usage
 
 * 
+[](#VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-commandBuffer-11295) VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-commandBuffer-11296) VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pResourceHeapBindInfo`
+equal to `NULL`
+
+* 
 [](#VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-set-08070) VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-set-08070
 
 The [VkDescriptorSetLayout](VkDescriptorSetLayout.html) at index `set` when `layout` was
 created **must** have been created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT](VkDescriptorSetLayoutCreateFlagBits.html)
 bit set
 
 * 
@@ -109,7 +125,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-commandBuffer-cmdpool) VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-videocoding) VUID-vkCmdBindDescriptorBufferEmbeddedSamplersEXT-videocoding

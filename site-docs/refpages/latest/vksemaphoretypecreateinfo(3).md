@@ -46,7 +46,7 @@ of the semaphore.
 
 * 
 `initialValue` is the initial payload value if `semaphoreType`
-is `VK_SEMAPHORE_TYPE_TIMELINE`.
+is [VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html).
 
 To create a semaphore of a specific type, add a
 `VkSemaphoreTypeCreateInfo` structure to the
@@ -54,7 +54,7 @@ To create a semaphore of a specific type, add a
 
 If no `VkSemaphoreTypeCreateInfo` structure is included in the
 `pNext` chain of [VkSemaphoreCreateInfo](VkSemaphoreCreateInfo.html), then the created semaphore
-will have a default [VkSemaphoreType](VkSemaphoreType.html) of `VK_SEMAPHORE_TYPE_BINARY`.
+will have a default [VkSemaphoreType](VkSemaphoreType.html) of [VK_SEMAPHORE_TYPE_BINARY](VkSemaphoreType.html).
 
 Valid Usage
 
@@ -63,12 +63,12 @@ Valid Usage
 
 If the [`timelineSemaphore`](../../../../spec/latest/chapters/features.html#features-timelineSemaphore) feature
 is not enabled, `semaphoreType` **must** not equal
-`VK_SEMAPHORE_TYPE_TIMELINE`
+[VK_SEMAPHORE_TYPE_TIMELINE](VkSemaphoreType.html)
 
 * 
 [](#VUID-VkSemaphoreTypeCreateInfo-semaphoreType-03279) VUID-VkSemaphoreTypeCreateInfo-semaphoreType-03279
 
-If `semaphoreType` is `VK_SEMAPHORE_TYPE_BINARY`,
+If `semaphoreType` is [VK_SEMAPHORE_TYPE_BINARY](VkSemaphoreType.html),
 `initialValue` **must** be zero
 
 Valid Usage (Implicit)
@@ -76,7 +76,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSemaphoreTypeCreateInfo-sType-sType) VUID-VkSemaphoreTypeCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SEMAPHORE_TYPE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SEMAPHORE_TYPE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkSemaphoreTypeCreateInfo-semaphoreType-parameter) VUID-VkSemaphoreTypeCreateInfo-semaphoreType-parameter

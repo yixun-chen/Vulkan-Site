@@ -46,7 +46,7 @@ structure.
 group.
 
 * 
-`physicalDevices` is an array of `VK_MAX_DEVICE_GROUP_SIZE`
+`physicalDevices` is an array of [VK_MAX_DEVICE_GROUP_SIZE](VK_MAX_DEVICE_GROUP_SIZE.html)
 [VkPhysicalDevice](VkPhysicalDevice.html) handles representing all physical devices in the
 group.
 The first `physicalDeviceCount` elements of the array will be valid.
@@ -55,17 +55,17 @@ The first `physicalDeviceCount` elements of the array will be valid.
 `subsetAllocation` specifies whether logical devices created from
 the group support allocating device memory on a subset of devices, via
 the `deviceMask` member of the [VkMemoryAllocateFlagsInfo](VkMemoryAllocateFlagsInfo.html).
-If this is `VK_FALSE`, then all device memory allocations are made
+If this is [VK_FALSE](VK_FALSE.html), then all device memory allocations are made
 across all physical devices in the group.
 If `physicalDeviceCount` is `1`, then `subsetAllocation` **must**
-be `VK_FALSE`.
+be [VK_FALSE](VK_FALSE.html).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPhysicalDeviceGroupProperties-sType-sType) VUID-VkPhysicalDeviceGroupProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GROUP_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GROUP_PROPERTIES](VkStructureType.html)
 
 * 
 [](#VUID-VkPhysicalDeviceGroupProperties-pNext-pNext) VUID-VkPhysicalDeviceGroupProperties-pNext-pNext

@@ -180,11 +180,7 @@ variable for the handle:
 vk::raii::Queue presentQueue;
 
 std::vector deviceExtensions = {
-    vk::KHRSwapchainExtensionName,
-    vk::KHRSpirv14ExtensionName,
-    vk::KHRSynchronization2ExtensionName,
-    vk::KHRCreateRenderpass2ExtensionName
-};
+    vk::KHRSwapchainExtensionName};
 
 Next, we need to modify the filtering logic to find the best queue families
 to use as we detect them.  Here’s how we do it in one function at the device

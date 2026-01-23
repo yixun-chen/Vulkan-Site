@@ -54,7 +54,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExportMetalObjectCreateInfoEXT-sType-sType) VUID-VkExportMetalObjectCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECT_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECT_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkExportMetalObjectCreateInfoEXT-exportObjectType-parameter) VUID-VkExportMetalObjectCreateInfoEXT-exportObjectType-parameter

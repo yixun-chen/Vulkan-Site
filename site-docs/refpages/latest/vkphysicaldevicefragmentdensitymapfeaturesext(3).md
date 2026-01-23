@@ -47,14 +47,14 @@ density map attachment.
 If this feature is not enabled and the `pNext` chain of
 [VkRenderPassCreateInfo](VkRenderPassCreateInfo.html) includes a
 [VkRenderPassFragmentDensityMapCreateInfoEXT](VkRenderPassFragmentDensityMapCreateInfoEXT.html) structure,
-`fragmentDensityMapAttachment` **must** be `VK_ATTACHMENT_UNUSED`.
+`fragmentDensityMapAttachment` **must** be [VK_ATTACHMENT_UNUSED](VK_ATTACHMENT_UNUSED.html).
 
 * 
  `fragmentDensityMapDynamic`
 specifies whether the implementation supports dynamic fragment density
 map image views.
 If this feature is not enabled,
-`VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT` **must**
+[VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT](VkImageViewCreateFlagBits.html) **must**
 not be included in [VkImageViewCreateInfo](VkImageViewCreateInfo.html)::`flags`.
 
 * 
@@ -71,7 +71,7 @@ If the `VkPhysicalDeviceFragmentDensityMapFeaturesEXT` structure is included in 
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceFragmentDensityMapFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -79,7 +79,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceFragmentDensityMapFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceFragmentDensityMapFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_fragment_density_map](VK_EXT_fragment_density_map.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

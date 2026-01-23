@@ -58,7 +58,7 @@ including the referenced pipelines
 [](#VUID-vkCmdBindPipelineShaderGroupNV-pipelineBindPoint-02894) VUID-vkCmdBindPipelineShaderGroupNV-pipelineBindPoint-02894
 
 The `pipelineBindPoint` **must** be
-`VK_PIPELINE_BIND_POINT_GRAPHICS`
+[VK_PIPELINE_BIND_POINT_GRAPHICS](VkPipelineBindPoint.html)
 
 * 
 [](#VUID-vkCmdBindPipelineShaderGroupNV-groupIndex-02895) VUID-vkCmdBindPipelineShaderGroupNV-groupIndex-02895
@@ -98,7 +98,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindPipelineShaderGroupNV-commandBuffer-cmdpool) VUID-vkCmdBindPipelineShaderGroupNV-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBindPipelineShaderGroupNV-videocoding) VUID-vkCmdBindPipelineShaderGroupNV-videocoding

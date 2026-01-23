@@ -82,66 +82,66 @@ been built prior to the execution of this command
 
 All acceleration structures in `pAccelerationStructures` **must** have
 been built with
-`VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR` if
+[VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR](VkBuildAccelerationStructureFlagBitsKHR.html) if
 `queryType` is
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR](VkQueryType.html)
 
 * 
 [](#VUID-vkWriteAccelerationStructuresPropertiesKHR-queryType-06742) VUID-vkWriteAccelerationStructuresPropertiesKHR-queryType-06742
 
 `queryType` **must** be
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR`,
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR`,
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR`, or
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR](VkQueryType.html),
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR](VkQueryType.html),
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR](VkQueryType.html), or
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR](VkQueryType.html)
 
 * 
 [](#VUID-vkWriteAccelerationStructuresPropertiesKHR-queryType-03448) VUID-vkWriteAccelerationStructuresPropertiesKHR-queryType-03448
 
 If `queryType` is
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR`, then
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR](VkQueryType.html), then
 `stride` **must** be a multiple of the size of `VkDeviceSize`
 
 * 
 [](#VUID-vkWriteAccelerationStructuresPropertiesKHR-queryType-03449) VUID-vkWriteAccelerationStructuresPropertiesKHR-queryType-03449
 
 If `queryType` is
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR`, then
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR](VkQueryType.html), then
 `pData` **must** point to a `VkDeviceSize`
 
 * 
 [](#VUID-vkWriteAccelerationStructuresPropertiesKHR-queryType-03450) VUID-vkWriteAccelerationStructuresPropertiesKHR-queryType-03450
 
 If `queryType` is
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR`, then
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR](VkQueryType.html), then
 `stride` **must** be a multiple of the size of `VkDeviceSize`
 
 * 
 [](#VUID-vkWriteAccelerationStructuresPropertiesKHR-queryType-03451) VUID-vkWriteAccelerationStructuresPropertiesKHR-queryType-03451
 
 If `queryType` is
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR`, then
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR](VkQueryType.html), then
 `pData` **must** point to a `VkDeviceSize`
 
 * 
 [](#VUID-vkWriteAccelerationStructuresPropertiesKHR-queryType-06731) VUID-vkWriteAccelerationStructuresPropertiesKHR-queryType-06731
 
 If `queryType` is
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR`, then `stride`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR](VkQueryType.html), then `stride`
 **must** be a multiple of the size of `VkDeviceSize`
 
 * 
 [](#VUID-vkWriteAccelerationStructuresPropertiesKHR-queryType-06732) VUID-vkWriteAccelerationStructuresPropertiesKHR-queryType-06732
 
 If `queryType` is
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR`, then `pData`
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR](VkQueryType.html), then `pData`
 **must** point to a `VkDeviceSize`
 
 * 
 [](#VUID-vkWriteAccelerationStructuresPropertiesKHR-queryType-06733) VUID-vkWriteAccelerationStructuresPropertiesKHR-queryType-06733
 
 If `queryType` is
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR`,
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR](VkQueryType.html),
 then `stride` **must** be a multiple of the size of
 `VkDeviceSize`
 
@@ -149,7 +149,7 @@ then `stride` **must** be a multiple of the size of
 [](#VUID-vkWriteAccelerationStructuresPropertiesKHR-queryType-06734) VUID-vkWriteAccelerationStructuresPropertiesKHR-queryType-06734
 
 If `queryType` is
-`VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR`,
+[VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR](VkQueryType.html),
 then `pData` **must** point to a `VkDeviceSize`
 
 * 
@@ -214,21 +214,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_KHR_acceleration_structure](VK_KHR_acceleration_structure.html), [VkAccelerationStructureKHR](VkAccelerationStructureKHR.html), [VkDevice](VkDevice.html), [VkQueryType](VkQueryType.html)
 

@@ -103,7 +103,7 @@ parameters correspond to parameters that would be consumed by
 If `format` is not a supported image format, or if the combination of
 `format`, `type`, `tiling`, `usage`, and `flags` is not
 supported for images, then `vkGetPhysicalDeviceImageFormatProperties`
-returns `VK_ERROR_FORMAT_NOT_SUPPORTED`.
+returns [VK_ERROR_FORMAT_NOT_SUPPORTED](fundamentals.html#VkResult).
 
 The limitations on an image format that are reported by
 `vkGetPhysicalDeviceImageFormatProperties` have the following property:
@@ -119,24 +119,24 @@ If the [`hostImageCopy`](features.html#features-hostImageCopy) feature is suppor
 and:
 
 * 
-`usage` includes `VK_IMAGE_USAGE_SAMPLED_BIT`, and
+`usage` includes [VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits), and
 
 * 
 `flags` does not include any of
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT`,
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`, or
-`VK_IMAGE_CREATE_SPARSE_ALIASED_BIT`
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](resources.html#VkImageCreateFlagBits),
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits), or
+[VK_IMAGE_CREATE_SPARSE_ALIASED_BIT](resources.html#VkImageCreateFlagBits)
 
 Then the result of calls to `vkGetPhysicalDeviceImageFormatProperties`
 with identical parameters except for the inclusion of
-`VK_IMAGE_USAGE_HOST_TRANSFER_BIT` in `usage` **must** be identical.
+[VK_IMAGE_USAGE_HOST_TRANSFER_BIT](resources.html#VkImageUsageFlagBits) in `usage` **must** be identical.
 
 Valid Usage
 
 * 
 [](#VUID-vkGetPhysicalDeviceImageFormatProperties-tiling-02248) VUID-vkGetPhysicalDeviceImageFormatProperties-tiling-02248
 
-`tiling` **must** not be `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`.
+`tiling` **must** not be [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](resources.html#VkImageTiling).
 (Use [vkGetPhysicalDeviceImageFormatProperties2](#vkGetPhysicalDeviceImageFormatProperties2) instead)
 
 Valid Usage (Implicit)
@@ -186,24 +186,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_FORMAT_NOT_SUPPORTED`
+[VK_ERROR_FORMAT_NOT_SUPPORTED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkImageFormatProperties` structure is defined as:
 
@@ -230,11 +230,11 @@ when one of the following conditions is true, in which case it **may**
 instead be `1`:
 
 `vkGetPhysicalDeviceImageFormatProperties`::`tiling` was
-`VK_IMAGE_TILING_LINEAR`
+[VK_IMAGE_TILING_LINEAR](resources.html#VkImageTiling)
 
 * 
 [VkPhysicalDeviceImageFormatInfo2](#VkPhysicalDeviceImageFormatInfo2)::`tiling` was
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](resources.html#VkImageTiling)
 
 * 
 the [VkPhysicalDeviceImageFormatInfo2](#VkPhysicalDeviceImageFormatInfo2)::`pNext` chain included
@@ -247,7 +247,7 @@ image `format` is one of the
 [formats that require a     sampler Y′CBCR conversion](formats.html#formats-requiring-sampler-ycbcr-conversion)
 
 * 
-`flags` contains `VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT`
+`flags` contains [VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT](resources.html#VkImageCreateFlagBits)
 
 `maxArrayLayers` is the maximum number of array layers.
 `maxArrayLayers` **must** be no less than
@@ -256,17 +256,17 @@ of the following conditions is true, in which case it **may** instead be
 `1`:
 
 * 
-`tiling` is `VK_IMAGE_TILING_LINEAR`
+`tiling` is [VK_IMAGE_TILING_LINEAR](resources.html#VkImageTiling)
 
 * 
-`tiling` is `VK_IMAGE_TILING_OPTIMAL` and `type` is
-`VK_IMAGE_TYPE_3D`
+`tiling` is [VK_IMAGE_TILING_OPTIMAL](resources.html#VkImageTiling) and `type` is
+[VK_IMAGE_TYPE_3D](resources.html#VkImageType)
 
 * 
 `format` is one of the
 [formats that require a     sampler Y′CBCR conversion](formats.html#formats-requiring-sampler-ycbcr-conversion)
 
-If `tiling` is `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`, then
+If `tiling` is [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](resources.html#VkImageTiling), then
 `maxArrayLayers` **must** not be 0.
 
 `sampleCounts` is a bitmask of [VkSampleCountFlagBits](limits.html#VkSampleCountFlagBits)
@@ -284,10 +284,10 @@ resource, which is advertised by this property.
 compare that size against `maxResourceSize`.
 If an application attempts to create an image that exceeds this limit, the
 creation will fail and [vkCreateImage](resources.html#vkCreateImage) will return
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`.
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult).
 While the advertised limit **must** be at least 231, it **may** not be possible
 to create an image that approaches that size, particularly for
-`VK_IMAGE_TYPE_1D`. |
+[VK_IMAGE_TYPE_1D](resources.html#VkImageType). |
 
 If the combination of parameters to
 `vkGetPhysicalDeviceImageFormatProperties` is not supported by the
@@ -414,24 +414,24 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_FORMAT_NOT_SUPPORTED`
+[VK_ERROR_FORMAT_NOT_SUPPORTED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 The `VkExternalImageFormatPropertiesNV` structure is defined as:
 
@@ -486,16 +486,16 @@ typedef enum VkExternalMemoryFeatureFlagBitsNV {
 } VkExternalMemoryFeatureFlagBitsNV;
 
 * 
-`VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT_NV` specifies that
+[VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT_NV](#VkExternalMemoryFeatureFlagBitsNV) specifies that
 external memory of the specified type **must** be created as a dedicated
 allocation when used in the manner specified.
 
 * 
-`VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT_NV` specifies that the
+[VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT_NV](#VkExternalMemoryFeatureFlagBitsNV) specifies that the
 implementation supports exporting handles of the specified type.
 
 * 
-`VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT_NV` specifies that the
+[VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT_NV](#VkExternalMemoryFeatureFlagBitsNV) specifies that the
 implementation supports importing handles of the specified type.
 
 // Provided by VK_NV_external_memory_capabilities
@@ -547,19 +547,19 @@ the profiles specified via [VkVideoProfileListInfoKHR](videocoding.html#VkVideoP
 are not supported.
 Furthermore, if [VkPhysicalDeviceImageFormatInfo2](#VkPhysicalDeviceImageFormatInfo2)::`usage` includes
 any image usage flag not supported by the specified video profiles, then
-this command returns `VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR`.
+this command returns [VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR](fundamentals.html#VkResult).
 
 If the [`hostImageCopy`](features.html#features-hostImageCopy) feature is supported,
 and:
 
 * 
-`pImageFormatInfo->usage` includes `VK_IMAGE_USAGE_SAMPLED_BIT`
+`pImageFormatInfo->usage` includes [VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits)
 
 * 
 `pImageFormatInfo->flags` does not include either of
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT`,
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT`, or
-`VK_IMAGE_CREATE_SPARSE_ALIASED_BIT`
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](resources.html#VkImageCreateFlagBits),
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](resources.html#VkImageCreateFlagBits), or
+[VK_IMAGE_CREATE_SPARSE_ALIASED_BIT](resources.html#VkImageCreateFlagBits)
 
 * 
 The `pNext` chain of `pImageFormatInfo` does not include a
@@ -568,11 +568,11 @@ The `pNext` chain of `pImageFormatInfo` does not include a
 
 * 
 `pImageFormatInfo->tiling` is not
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT`
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](resources.html#VkImageTiling)
 
 Then the result of calls to `vkGetPhysicalDeviceImageFormatProperties2`
 with identical parameters except for the inclusion of
-`VK_IMAGE_USAGE_HOST_TRANSFER_BIT` in `pImageFormatInfo->usage`
+[VK_IMAGE_USAGE_HOST_TRANSFER_BIT](resources.html#VkImageUsageFlagBits) in `pImageFormatInfo->usage`
 **must** be identical.
 
 Valid Usage
@@ -585,7 +585,7 @@ If the `pNext` chain of `pImageFormatProperties` includes a
 chain of `pImageFormatInfo` **must** include a
 [VkPhysicalDeviceExternalImageFormatInfo](#VkPhysicalDeviceExternalImageFormatInfo) structure with
 `handleType` set to
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 * 
 [](#VUID-vkGetPhysicalDeviceImageFormatProperties2-pNext-09004) VUID-vkGetPhysicalDeviceImageFormatProperties2-pNext-09004
@@ -593,7 +593,7 @@ chain of `pImageFormatInfo` **must** include a
 If the `pNext` chain of `pImageFormatProperties` includes a
 [VkHostImageCopyDevicePerformanceQuery](#VkHostImageCopyDevicePerformanceQuery) structure,
 `pImageFormatInfo->usage` **must** contain
-`VK_IMAGE_USAGE_HOST_TRANSFER_BIT`
+[VK_IMAGE_USAGE_HOST_TRANSFER_BIT](resources.html#VkImageUsageFlagBits)
 
 Valid Usage (Implicit)
 
@@ -617,39 +617,39 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_FORMAT_NOT_SUPPORTED`
+[VK_ERROR_FORMAT_NOT_SUPPORTED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR`
+[VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR`
+[VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR](fundamentals.html#VkResult)
 
 The `VkPhysicalDeviceImageFormatInfo2` structure is defined as:
 
@@ -709,15 +709,15 @@ Valid Usage
 * 
 [](#VUID-VkPhysicalDeviceImageFormatInfo2-tiling-02249) VUID-VkPhysicalDeviceImageFormatInfo2-tiling-02249
 
-`tiling` **must** be `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT` if
+`tiling` **must** be [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](resources.html#VkImageTiling) if
 and only if the `pNext` chain includes
 [VkPhysicalDeviceImageDrmFormatModifierInfoEXT](#VkPhysicalDeviceImageDrmFormatModifierInfoEXT)
 
 * 
 [](#VUID-VkPhysicalDeviceImageFormatInfo2-tiling-02313) VUID-VkPhysicalDeviceImageFormatInfo2-tiling-02313
 
-If `tiling` is `VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT` and
-`flags` contains `VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT`, then the
+If `tiling` is [VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](resources.html#VkImageTiling) and
+`flags` contains [VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](resources.html#VkImageCreateFlagBits), then the
 `pNext` chain **must** include a [VkImageFormatListCreateInfo](resources.html#VkImageFormatListCreateInfo)
 structure with non-zero `viewFormatCount`
 
@@ -726,7 +726,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceImageFormatInfo2-sType-sType) VUID-VkPhysicalDeviceImageFormatInfo2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPhysicalDeviceImageFormatInfo2-pNext-pNext) VUID-VkPhysicalDeviceImageFormatInfo2-pNext-pNext
@@ -814,12 +814,12 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkImageFormatProperties2-sType-sType) VUID-VkImageFormatProperties2-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_IMAGE_FORMAT_PROPERTIES_2`
+ `sType` **must** be [VK_STRUCTURE_TYPE_IMAGE_FORMAT_PROPERTIES_2](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkImageFormatProperties2-pNext-pNext) VUID-VkImageFormatProperties2-pNext-pNext
 
- Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkAndroidHardwareBufferUsageANDROID](#VkAndroidHardwareBufferUsageANDROID), [VkExternalImageFormatProperties](#VkExternalImageFormatProperties), [VkFilterCubicImageViewImageFormatPropertiesEXT](#VkFilterCubicImageViewImageFormatPropertiesEXT), [VkHostImageCopyDevicePerformanceQuery](#VkHostImageCopyDevicePerformanceQuery), [VkImageCompressionPropertiesEXT](resources.html#VkImageCompressionPropertiesEXT), [VkNativeBufferUsageOHOS](resources.html#VkNativeBufferUsageOHOS), [VkSamplerYcbcrConversionImageFormatProperties](#VkSamplerYcbcrConversionImageFormatProperties), or [VkTextureLODGatherFormatPropertiesAMD](#VkTextureLODGatherFormatPropertiesAMD)
+ Each `pNext` member of any structure (including this one) in the `pNext` chain **must** be either `NULL` or a pointer to a valid instance of [VkAndroidHardwareBufferUsageANDROID](#VkAndroidHardwareBufferUsageANDROID), [VkExternalImageFormatProperties](#VkExternalImageFormatProperties), [VkFilterCubicImageViewImageFormatPropertiesEXT](#VkFilterCubicImageViewImageFormatPropertiesEXT), [VkHostImageCopyDevicePerformanceQuery](#VkHostImageCopyDevicePerformanceQuery), [VkImageCompressionPropertiesEXT](resources.html#VkImageCompressionPropertiesEXT), [VkNativeBufferUsageOHOS](resources.html#VkNativeBufferUsageOHOS), [VkSamplerYcbcrConversionImageFormatProperties](#VkSamplerYcbcrConversionImageFormatProperties), [VkSubsampledImageFormatPropertiesEXT](#VkSubsampledImageFormatPropertiesEXT), or [VkTextureLODGatherFormatPropertiesAMD](#VkTextureLODGatherFormatPropertiesAMD)
 
 * 
 [](#VUID-VkImageFormatProperties2-sType-unique) VUID-VkImageFormatProperties2-sType-unique
@@ -860,7 +860,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkTextureLODGatherFormatPropertiesAMD-sType-sType) VUID-VkTextureLODGatherFormatPropertiesAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD](fundamentals.html#VkStructureType)
 
 To determine the image capabilities compatible with an external memory
 handle type, add a [VkPhysicalDeviceExternalImageFormatInfo](#VkPhysicalDeviceExternalImageFormatInfo) structure
@@ -901,14 +901,14 @@ If `handleType` is not compatible with the `format`, `type`,
 `tiling`, `usage`, and `flags` specified in
 [VkPhysicalDeviceImageFormatInfo2](#VkPhysicalDeviceImageFormatInfo2), then
 [vkGetPhysicalDeviceImageFormatProperties2](#vkGetPhysicalDeviceImageFormatProperties2) returns
-`VK_ERROR_FORMAT_NOT_SUPPORTED`.
+[VK_ERROR_FORMAT_NOT_SUPPORTED](fundamentals.html#VkResult).
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkPhysicalDeviceExternalImageFormatInfo-sType-sType) VUID-VkPhysicalDeviceExternalImageFormatInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPhysicalDeviceExternalImageFormatInfo-handleType-parameter) VUID-VkPhysicalDeviceExternalImageFormatInfo-handleType-parameter
@@ -971,7 +971,7 @@ typedef enum VkExternalMemoryHandleTypeFlagBits {
 typedef VkExternalMemoryHandleTypeFlagBits VkExternalMemoryHandleTypeFlagBitsKHR;
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT` specifies a POSIX
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT](#VkExternalMemoryHandleTypeFlagBitsKHR) specifies a POSIX
 file descriptor handle that has only limited valid usage outside of
 Vulkan and other compatible APIs.
 It **must** be compatible with the POSIX system calls `dup`, `dup2`,
@@ -982,7 +982,7 @@ It owns a reference to the underlying memory resource represented by its
 Vulkan memory object.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT` specifies an NT
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT](#VkExternalMemoryHandleTypeFlagBitsKHR) specifies an NT
 handle that has only limited valid usage outside of Vulkan and other
 compatible APIs.
 It **must** be compatible with the functions `DuplicateHandle`,
@@ -992,7 +992,7 @@ It owns a reference to the underlying memory resource represented by its
 Vulkan memory object.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT` specifies a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](#VkExternalMemoryHandleTypeFlagBitsKHR) specifies a
 global share handle that has only limited valid usage outside of Vulkan
 and other compatible APIs.
 It is not compatible with any native APIs.
@@ -1001,13 +1001,13 @@ represented by its Vulkan memory object, and will therefore become
 invalid when all Vulkan memory objects associated with it are destroyed.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT` specifies an NT
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT](#VkExternalMemoryHandleTypeFlagBitsKHR) specifies an NT
 handle returned by `IDXGIResource1`::`CreateSharedHandle`
 referring to a Direct3D 10 or 11 texture resource.
 It owns a reference to the memory used by the Direct3D resource.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT` specifies a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT](#VkExternalMemoryHandleTypeFlagBitsKHR) specifies a
 global share handle returned by `IDXGIResource`::`GetSharedHandle`
 referring to a Direct3D 10 or 11 texture resource.
 It does not own a reference to the underlying Direct3D resource, and
@@ -1015,68 +1015,68 @@ will therefore become invalid when all Vulkan memory objects and
 Direct3D resources associated with it are destroyed.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT` specifies an NT
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT](#VkExternalMemoryHandleTypeFlagBitsKHR) specifies an NT
 handle returned by `ID3D12Device`::`CreateSharedHandle` referring
 to a Direct3D 12 heap resource.
 It owns a reference to the resources used by the Direct3D heap.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT` specifies an NT
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT](#VkExternalMemoryHandleTypeFlagBitsKHR) specifies an NT
 handle returned by `ID3D12Device`::`CreateSharedHandle` referring
 to a Direct3D 12 committed resource.
 It owns a reference to the memory used by the Direct3D resource.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT` specifies a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](#VkExternalMemoryHandleTypeFlagBitsKHR) specifies a
 host pointer returned by a host memory allocation command.
 It does not own a reference to the underlying memory resource, and will
 therefore become invalid if the host memory is freed.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](#VkExternalMemoryHandleTypeFlagBitsKHR)
 specifies a host pointer to *host mapped foreign memory*.
 It does not own a reference to the underlying memory resource, and will
 therefore become invalid if the foreign memory is unmapped or otherwise
 becomes no longer available.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT` is a file
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT](#VkExternalMemoryHandleTypeFlagBitsKHR) is a file
 descriptor for a Linux dma_buf.
 It owns a reference to the underlying memory resource represented by its
 Vulkan memory object.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](#VkExternalMemoryHandleTypeFlagBitsKHR)
 specifies an `AHardwareBuffer` object defined by the Android NDK.
 See [Android Hardware Buffers](memory.html#memory-external-android-hardware-buffer)
 for more details of this handle type.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA` is a Zircon
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA](#VkExternalMemoryHandleTypeFlagBitsKHR) is a Zircon
 handle to a virtual memory object.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_RDMA_ADDRESS_BIT_NV` is a handle to
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_RDMA_ADDRESS_BIT_NV](#VkExternalMemoryHandleTypeFlagBitsKHR) is a handle to
 an allocation accessible by remote devices.
 It owns a reference to the underlying memory resource represented by its
 Vulkan memory object.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX` specifies a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](#VkExternalMemoryHandleTypeFlagBitsKHR) specifies a
 `_screen_buffer` object defined by the QNX SDP.
 See [QNX Screen Buffer](memory.html#memory-external-qnx-screen-buffer) for more
 details of this handle type.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLBUFFER_BIT_EXT` is a handle to a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLBUFFER_BIT_EXT](#VkExternalMemoryHandleTypeFlagBitsKHR) is a handle to a
 `MTLResource` holding a `MTLBuffer`.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT` is a handle to a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT](#VkExternalMemoryHandleTypeFlagBitsKHR) is a handle to a
 `MTLResource` holding a `MTLTexture`.
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLHEAP_BIT_EXT` is a handle to a
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLHEAP_BIT_EXT](#VkExternalMemoryHandleTypeFlagBitsKHR) is a handle to a
 `MTLResource` holding a `MTLHeap`.
 
 Some external memory handle types can only be shared within the same
@@ -1085,35 +1085,35 @@ following table:
 
 | Handle type | `VkPhysicalDeviceIDProperties`::`driverUUID` | `VkPhysicalDeviceIDProperties`::`deviceUUID` |
 | --- | --- | --- |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT` | Must match | Must match |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT` | Must match | Must match |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT` | Must match | Must match |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT` | Must match | Must match |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT` | Must match | Must match |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT` | Must match | Must match |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT` | Must match | Must match |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT` | No restriction | No restriction |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT` | No restriction | No restriction |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT` | No restriction | No restriction |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID` | No restriction | No restriction |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA` | No restriction | No restriction |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_RDMA_ADDRESS_BIT_NV` | No restriction | No restriction |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX` | No restriction | No restriction |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLBUFFER_BIT_EXT` | No restriction | Must match |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT` | No restriction | Must match |
-| `VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLHEAP_BIT_EXT` | No restriction | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT](#VkExternalMemoryHandleTypeFlagBitsKHR) | Must match | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT](#VkExternalMemoryHandleTypeFlagBitsKHR) | Must match | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](#VkExternalMemoryHandleTypeFlagBitsKHR) | Must match | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT](#VkExternalMemoryHandleTypeFlagBitsKHR) | Must match | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT](#VkExternalMemoryHandleTypeFlagBitsKHR) | Must match | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT](#VkExternalMemoryHandleTypeFlagBitsKHR) | Must match | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT](#VkExternalMemoryHandleTypeFlagBitsKHR) | Must match | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](#VkExternalMemoryHandleTypeFlagBitsKHR) | No restriction | No restriction |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](#VkExternalMemoryHandleTypeFlagBitsKHR) | No restriction | No restriction |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT](#VkExternalMemoryHandleTypeFlagBitsKHR) | No restriction | No restriction |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](#VkExternalMemoryHandleTypeFlagBitsKHR) | No restriction | No restriction |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_ZIRCON_VMO_BIT_FUCHSIA](#VkExternalMemoryHandleTypeFlagBitsKHR) | No restriction | No restriction |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_RDMA_ADDRESS_BIT_NV](#VkExternalMemoryHandleTypeFlagBitsKHR) | No restriction | No restriction |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](#VkExternalMemoryHandleTypeFlagBitsKHR) | No restriction | No restriction |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLBUFFER_BIT_EXT](#VkExternalMemoryHandleTypeFlagBitsKHR) | No restriction | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT](#VkExternalMemoryHandleTypeFlagBitsKHR) | No restriction | Must match |
+| [VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLHEAP_BIT_EXT](#VkExternalMemoryHandleTypeFlagBitsKHR) | No restriction | Must match |
 
 |  | The above table does not restrict the drivers and devices with which
 | --- | --- |
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT` and
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT` **may**
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](#VkExternalMemoryHandleTypeFlagBitsKHR) and
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](#VkExternalMemoryHandleTypeFlagBitsKHR) **may**
 be shared, as these handle types inherently mean memory that does not come
 from the same device, as they import memory from the host or a foreign
 device, respectively. |
 
 |  | Even though the above table does not restrict the drivers and devices with
 | --- | --- |
-which `VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT` **may** be shared,
+which [VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT](#VkExternalMemoryHandleTypeFlagBitsKHR) **may** be shared,
 query mechanisms exist in the Vulkan API that prevent the import of
 incompatible dma-bufs (such as [vkGetMemoryFdPropertiesKHR](memory.html#vkGetMemoryFdPropertiesKHR)) and that
 prevent incompatible usage of dma-bufs (such as
@@ -1160,7 +1160,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalImageFormatProperties-sType-sType) VUID-VkExternalImageFormatProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES](fundamentals.html#VkStructureType)
 
 The `VkExternalMemoryProperties` structure is defined as:
 
@@ -1222,7 +1222,7 @@ typedef enum VkExternalMemoryFeatureFlagBits {
 typedef VkExternalMemoryFeatureFlagBits VkExternalMemoryFeatureFlagBitsKHR;
 
 * 
-`VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT` specifies that
+[VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT](#VkExternalMemoryFeatureFlagBitsKHR) specifies that
 tensors,
     images or buffers created with the specified parameters and handle type
     **must** use the mechanisms defined by [VkMemoryDedicatedRequirements](resources.html#VkMemoryDedicatedRequirements)
@@ -1233,52 +1233,52 @@ tensor,
     image or buffer.
 
 * 
-`VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT` specifies that handles
+[VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT](#VkExternalMemoryFeatureFlagBitsKHR) specifies that handles
 of this type **can** be exported from Vulkan memory objects.
 
 * 
-`VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT` specifies that handles
+[VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT](#VkExternalMemoryFeatureFlagBitsKHR) specifies that handles
 of this type **can** be imported as Vulkan memory objects.
 
 Because their semantics in external APIs roughly align with that of an image
 or buffer with a dedicated allocation in Vulkan, implementations are
-**required** to report `VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT` for
+**required** to report [VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT](#VkExternalMemoryFeatureFlagBitsKHR) for
 the following external handle types:
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT](#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT](#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT](#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](#VkExternalMemoryHandleTypeFlagBitsKHR)
 for images only
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX` for images
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](#VkExternalMemoryHandleTypeFlagBitsKHR) for images
 only
 
 * 
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT`
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_MTLTEXTURE_BIT_EXT](#VkExternalMemoryHandleTypeFlagBitsKHR)
 
 Implementations **must** not report
-`VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT` for buffers with
+[VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT](#VkExternalMemoryFeatureFlagBitsKHR) for buffers with
 external handle type
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID`.
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID](#VkExternalMemoryHandleTypeFlagBitsKHR).
 Implementations **must** not report
-`VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT` for buffers with
+[VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT](#VkExternalMemoryFeatureFlagBitsKHR) for buffers with
 external handle type
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX`.
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX](#VkExternalMemoryHandleTypeFlagBitsKHR).
 Implementations **must** not report
-`VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT` for
+[VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT](#VkExternalMemoryFeatureFlagBitsKHR) for
 tensors,
 images or buffers with external handle type
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT`, or
-`VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT`.
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT](#VkExternalMemoryHandleTypeFlagBitsKHR), or
+[VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT](#VkExternalMemoryHandleTypeFlagBitsKHR).
 
 // Provided by VK_VERSION_1_1
 typedef VkFlags VkExternalMemoryFeatureFlags;
@@ -1293,7 +1293,7 @@ zero or more [VkExternalMemoryFeatureFlagBits](#VkExternalMemoryFeatureFlagBits)
 To query the image capabilities that are compatible with a
 [Linux DRM format modifier](../appendices/glossary.html#glossary-drm-format-modifier), set
 [VkPhysicalDeviceImageFormatInfo2](#VkPhysicalDeviceImageFormatInfo2)::`tiling` to
-`VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT` and add a
+[VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT](resources.html#VkImageTiling) and add a
 [VkPhysicalDeviceImageDrmFormatModifierInfoEXT](#VkPhysicalDeviceImageDrmFormatModifierInfoEXT) structure to the
 `pNext` chain of [VkPhysicalDeviceImageFormatInfo2](#VkPhysicalDeviceImageFormatInfo2).
 
@@ -1336,12 +1336,12 @@ queue families.
 `pQueueFamilyIndices` is a pointer to an array of queue families
 that will access the image.
 It is ignored if `sharingMode` is not
-`VK_SHARING_MODE_CONCURRENT`.
+[VK_SHARING_MODE_CONCURRENT](resources.html#VkSharingMode).
 
 If the `drmFormatModifier` is incompatible with the parameters specified
 in [VkPhysicalDeviceImageFormatInfo2](#VkPhysicalDeviceImageFormatInfo2) and its `pNext` chain, then
 [vkGetPhysicalDeviceImageFormatProperties2](#vkGetPhysicalDeviceImageFormatProperties2) returns
-`VK_ERROR_FORMAT_NOT_SUPPORTED`.
+[VK_ERROR_FORMAT_NOT_SUPPORTED](fundamentals.html#VkResult).
 The implementation **must** support the query of any `drmFormatModifier`,
 including unknown and invalid modifier values.
 
@@ -1350,20 +1350,20 @@ Valid Usage
 * 
 [](#VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sharingMode-02314) VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sharingMode-02314
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`, then
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](resources.html#VkSharingMode), then
 `pQueueFamilyIndices` **must** be a valid pointer to an array of
 `queueFamilyIndexCount` `uint32_t` values
 
 * 
 [](#VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sharingMode-02315) VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sharingMode-02315
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`, then
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](resources.html#VkSharingMode), then
 `queueFamilyIndexCount` **must** be greater than `1`
 
 * 
 [](#VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sharingMode-02316) VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sharingMode-02316
 
-If `sharingMode` is `VK_SHARING_MODE_CONCURRENT`, each element
+If `sharingMode` is [VK_SHARING_MODE_CONCURRENT](resources.html#VkSharingMode), each element
 of `pQueueFamilyIndices` **must** be unique and **must** be less than the
 `pQueueFamilyPropertyCount` returned by
 [vkGetPhysicalDeviceQueueFamilyProperties2](devsandqueues.html#vkGetPhysicalDeviceQueueFamilyProperties2) for the
@@ -1374,7 +1374,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sType-sType) VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sharingMode-parameter) VUID-VkPhysicalDeviceImageDrmFormatModifierInfoEXT-sharingMode-parameter
@@ -1418,7 +1418,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSamplerYcbcrConversionImageFormatProperties-sType-sType) VUID-VkSamplerYcbcrConversionImageFormatProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES](fundamentals.html#VkStructureType)
 
 `combinedImageSamplerDescriptorCount` is a number between 1 and the
 number of planes in the format.
@@ -1457,6 +1457,39 @@ in the descriptor layout, the application **can** use the
 [VkPhysicalDeviceMaintenance6Properties](limits.html#VkPhysicalDeviceMaintenance6Properties)::`maxCombinedImageSamplerDescriptorCount`
 property to determine the maximum descriptor size that will accommodate any
 and all [formats that require a sampler Y′CBCR conversion](formats.html#formats-requiring-sampler-ycbcr-conversion) supported by the implementation.
+
+To determine the number of image descriptors required to support a
+[multi-planar format](formats.html#formats-multiplanar), add
+[VkSubsampledImageFormatPropertiesEXT](#VkSubsampledImageFormatPropertiesEXT) to the `pNext` chain of the
+[VkImageFormatProperties2](#VkImageFormatProperties2) structure in a call to
+`vkGetPhysicalDeviceImageFormatProperties2`.
+
+The `VkSubsampledImageFormatPropertiesEXT` structure is defined as:
+
+// Provided by VK_EXT_descriptor_heap with VK_EXT_fragment_density_map
+typedef struct VkSubsampledImageFormatPropertiesEXT {
+    VkStructureType    sType;
+    const void*        pNext;
+    uint32_t           subsampledImageDescriptorCount;
+} VkSubsampledImageFormatPropertiesEXT;
+
+* 
+`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
+
+* 
+`pNext` is `NULL` or a pointer to a structure extending this
+structure.
+
+* 
+`subsampledImageDescriptorCount` is the number of image descriptors
+that the implementation uses to access the image.
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkSubsampledImageFormatPropertiesEXT-sType-sType) VUID-VkSubsampledImageFormatPropertiesEXT-sType-sType
+
+ `sType` **must** be [VK_STRUCTURE_TYPE_SUBSAMPLED_IMAGE_FORMAT_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 To obtain optimal Android hardware buffer usage flags for specific image
 creation parameters, add a `VkAndroidHardwareBufferUsageANDROID`
@@ -1505,11 +1538,11 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAndroidHardwareBufferUsageANDROID-sType-sType) VUID-VkAndroidHardwareBufferUsageANDROID-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_USAGE_ANDROID`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_USAGE_ANDROID](fundamentals.html#VkStructureType)
 
-To query if using `VK_IMAGE_USAGE_HOST_TRANSFER_BIT` has a negative
+To query if using [VK_IMAGE_USAGE_HOST_TRANSFER_BIT](resources.html#VkImageUsageFlagBits) has a negative
 impact on device performance when accessing an image, add
-`VK_IMAGE_USAGE_HOST_TRANSFER_BIT` to
+[VK_IMAGE_USAGE_HOST_TRANSFER_BIT](resources.html#VkImageUsageFlagBits) to
 [VkPhysicalDeviceImageFormatInfo2](#VkPhysicalDeviceImageFormatInfo2)::`usage`, and add a
 `VkHostImageCopyDevicePerformanceQuery` structure to the `pNext`
 chain of a [VkImageFormatProperties2](#VkImageFormatProperties2) structure passed to
@@ -1536,35 +1569,35 @@ typedef VkHostImageCopyDevicePerformanceQuery VkHostImageCopyDevicePerformanceQu
 structure.
 
 * 
-`optimalDeviceAccess` returns `VK_TRUE` if use of host image
+`optimalDeviceAccess` returns [VK_TRUE](fundamentals.html#VK_TRUE) if use of host image
 copy has no adverse effect on device access performance, compared to an
 image that is created with exact same creation parameters, and bound to
 the same [VkDeviceMemory](memory.html#VkDeviceMemory), except that the
-`VK_IMAGE_USAGE_HOST_TRANSFER_BIT` usage flag is replaced with
-`VK_IMAGE_USAGE_TRANSFER_SRC_BIT` and
-`VK_IMAGE_USAGE_TRANSFER_DST_BIT`.
+[VK_IMAGE_USAGE_HOST_TRANSFER_BIT](resources.html#VkImageUsageFlagBits) usage flag is replaced with
+[VK_IMAGE_USAGE_TRANSFER_SRC_BIT](resources.html#VkImageUsageFlagBits) and
+[VK_IMAGE_USAGE_TRANSFER_DST_BIT](resources.html#VkImageUsageFlagBits).
 
 * 
-`identicalMemoryLayout` returns `VK_TRUE` if use of host image
+`identicalMemoryLayout` returns [VK_TRUE](fundamentals.html#VK_TRUE) if use of host image
 copy has no impact on memory layout compared to an image that is created
 with exact same creation parameters, and bound to the same
 [VkDeviceMemory](memory.html#VkDeviceMemory), except that the
-`VK_IMAGE_USAGE_HOST_TRANSFER_BIT` usage flag is replaced with
-`VK_IMAGE_USAGE_TRANSFER_SRC_BIT` and
-`VK_IMAGE_USAGE_TRANSFER_DST_BIT`.
+[VK_IMAGE_USAGE_HOST_TRANSFER_BIT](resources.html#VkImageUsageFlagBits) usage flag is replaced with
+[VK_IMAGE_USAGE_TRANSFER_SRC_BIT](resources.html#VkImageUsageFlagBits) and
+[VK_IMAGE_USAGE_TRANSFER_DST_BIT](resources.html#VkImageUsageFlagBits).
 
-The implementation **may** return `VK_FALSE` in `optimalDeviceAccess`
-if `identicalMemoryLayout` is `VK_FALSE`.
-If `identicalMemoryLayout` is `VK_TRUE`, `optimalDeviceAccess`
-**must** be `VK_TRUE`.
+The implementation **may** return [VK_FALSE](fundamentals.html#VK_FALSE) in `optimalDeviceAccess`
+if `identicalMemoryLayout` is [VK_FALSE](fundamentals.html#VK_FALSE).
+If `identicalMemoryLayout` is [VK_TRUE](fundamentals.html#VK_TRUE), `optimalDeviceAccess`
+**must** be [VK_TRUE](fundamentals.html#VK_TRUE).
 
-The implementation **may** return `VK_TRUE` in `optimalDeviceAccess`
-while `identicalMemoryLayout` is `VK_FALSE`.
+The implementation **may** return [VK_TRUE](fundamentals.html#VK_TRUE) in `optimalDeviceAccess`
+while `identicalMemoryLayout` is [VK_FALSE](fundamentals.html#VK_FALSE).
 In this situation, any device performance impact **should** not be measurable.
 
 If [VkPhysicalDeviceImageFormatInfo2](#VkPhysicalDeviceImageFormatInfo2)::`format` is a
 block-compressed format and [vkGetPhysicalDeviceImageFormatProperties2](#vkGetPhysicalDeviceImageFormatProperties2)
-returns `VK_SUCCESS`, the implementation **must** return `VK_TRUE` in
+returns [VK_SUCCESS](fundamentals.html#VkResult), the implementation **must** return [VK_TRUE](fundamentals.html#VK_TRUE) in
 `optimalDeviceAccess`.
 
 |  | Applications can make use of `optimalDeviceAccess` to determine their
@@ -1579,7 +1612,7 @@ likely better to use device copies instead. |
 could happen if the implementation has different memory layout patterns,
 some of which are easier to access on the host. |
 
-|  | The most practical reason for `optimalDeviceAccess` to be `VK_FALSE`
+|  | The most practical reason for `optimalDeviceAccess` to be [VK_FALSE](fundamentals.html#VK_FALSE)
 | --- | --- |
 is that host image access may disable framebuffer compression where it would
 otherwise have been enabled.
@@ -1587,7 +1620,7 @@ This represents far more efficient host image access since no compression
 algorithm is required to read or write to the image, but it would impact
 device access performance.
 Some implementations may only set `optimalDeviceAccess` to
-`VK_FALSE` if certain conditions are met, such as specific image usage
+[VK_FALSE](fundamentals.html#VK_FALSE) if certain conditions are met, such as specific image usage
 flags or creation flags. |
 
 Valid Usage (Implicit)
@@ -1595,7 +1628,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkHostImageCopyDevicePerformanceQuery-sType-sType) VUID-VkHostImageCopyDevicePerformanceQuery-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY`
+ `sType` **must** be [VK_STRUCTURE_TYPE_HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY](fundamentals.html#VkStructureType)
 
 To determine if cubic filtering can be used with a given image format and a
 given image view type add a
@@ -1630,7 +1663,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceImageViewImageFormatInfoEXT-sType-sType) VUID-VkPhysicalDeviceImageViewImageFormatInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPhysicalDeviceImageViewImageFormatInfoEXT-imageViewType-parameter) VUID-VkPhysicalDeviceImageViewImageFormatInfoEXT-imageViewType-parameter
@@ -1672,7 +1705,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkFilterCubicImageViewImageFormatPropertiesEXT-sType-sType) VUID-VkFilterCubicImageViewImageFormatPropertiesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT](fundamentals.html#VkStructureType)
 
 Valid Usage
 
@@ -1690,21 +1723,21 @@ structure, the `pNext` chain of the
 [VkSampleCountFlagBits](limits.html#VkSampleCountFlagBits) in `sampleCounts` specifying the supported
 sample counts for the image parameters.
 
-`sampleCounts` will be `VK_SAMPLE_COUNT_1_BIT` if at least one of
+`sampleCounts` will be [VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits) if at least one of
 the following conditions is true:
 
 * 
-`tiling` is `VK_IMAGE_TILING_LINEAR`
+`tiling` is [VK_IMAGE_TILING_LINEAR](resources.html#VkImageTiling)
 
 * 
-`type` is not `VK_IMAGE_TYPE_2D`
+`type` is not [VK_IMAGE_TYPE_2D](resources.html#VkImageType)
 
 * 
-`flags` contains `VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT`
+`flags` contains [VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits)
 
 * 
-Neither the `VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT` flag nor the
-`VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT` flag in
+Neither the [VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits) flag nor the
+[VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT](formats.html#VkFormatFeatureFlagBits) flag in
 `VkFormatProperties`::`optimalTilingFeatures` returned by
 [vkGetPhysicalDeviceFormatProperties](formats.html#vkGetPhysicalDeviceFormatProperties) is set
 
@@ -1718,10 +1751,10 @@ required.
 
 * 
 `usage` contains
-`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR`
+[VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR](resources.html#VkImageUsageFlagBits)
 
 * 
-`usage` contains `VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT`
+`usage` contains [VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT](resources.html#VkImageUsageFlagBits)
 
 Otherwise, the bits set in `sampleCounts` will be the sample counts
 supported for the specified values of `usage` and `format`.
@@ -1729,44 +1762,44 @@ For each bit set in `usage`, the supported sample counts relate to the
 limits in `VkPhysicalDeviceLimits` as follows:
 
 * 
-If `usage` includes `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` and
+If `usage` includes [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) and
 `format` is a floating- or fixed-point color format, a superset of
 `VkPhysicalDeviceLimits`::`framebufferColorSampleCounts`
 
 * 
-If `usage` includes `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` and
+If `usage` includes [VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits) and
 `format` is an integer format, a superset of
 `VkPhysicalDeviceVulkan12Properties`::`framebufferIntegerColorSampleCounts`
 
 * 
 If `usage` includes
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`, and `format`
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits), and `format`
 includes a depth component, a superset of
 `VkPhysicalDeviceLimits`::`framebufferDepthSampleCounts`
 
 * 
 If `usage` includes
-`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`, and `format`
+[VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT](resources.html#VkImageUsageFlagBits), and `format`
 includes a stencil component, a superset of
 `VkPhysicalDeviceLimits`::`framebufferStencilSampleCounts`
 
 * 
-If `usage` includes `VK_IMAGE_USAGE_SAMPLED_BIT`, and
+If `usage` includes [VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits), and
 `format` includes a color component, a superset of
 `VkPhysicalDeviceLimits`::`sampledImageColorSampleCounts`
 
 * 
-If `usage` includes `VK_IMAGE_USAGE_SAMPLED_BIT`, and
+If `usage` includes [VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits), and
 `format` includes a depth component, a superset of
 `VkPhysicalDeviceLimits`::`sampledImageDepthSampleCounts`
 
 * 
-If `usage` includes `VK_IMAGE_USAGE_SAMPLED_BIT`, and
+If `usage` includes [VK_IMAGE_USAGE_SAMPLED_BIT](resources.html#VkImageUsageFlagBits), and
 `format` is an integer format, a superset of
 `VkPhysicalDeviceLimits`::`sampledImageIntegerSampleCounts`
 
 * 
-If `usage` includes `VK_IMAGE_USAGE_STORAGE_BIT`, a superset of
+If `usage` includes [VK_IMAGE_USAGE_STORAGE_BIT](resources.html#VkImageUsageFlagBits), a superset of
 `VkPhysicalDeviceLimits`::`storageImageSampleCounts`
 
 If multiple bits are set in `usage`, `sampleCounts` will be the
@@ -1775,7 +1808,7 @@ intersection of the per-usage values described above.
 If none of the bits described above are set in `usage`, then there is no
 corresponding limit in `VkPhysicalDeviceLimits`.
 In this case, `sampleCounts` **must** include at least
-`VK_SAMPLE_COUNT_1_BIT`.
+[VK_SAMPLE_COUNT_1_BIT](limits.html#VkSampleCountFlagBits).
 
 Implementations **may** support extent values larger than the [required minimum/maximum values](limits.html#limits-minmax) for certain types of images.
 [VkImageFormatProperties](#VkImageFormatProperties)::`maxExtent` for each type is subject to
@@ -1787,7 +1820,7 @@ the constraints below.
 It follows that the query for additional capabilities **must** return extent
 values that are at least as large as the required values. |
 
-For `VK_IMAGE_TYPE_1D`:
+For [VK_IMAGE_TYPE_1D](resources.html#VkImageType):
 
 * 
 `maxExtent.width` ≥
@@ -1799,8 +1832,8 @@ For `VK_IMAGE_TYPE_1D`:
 * 
 `maxExtent.depth` = 1
 
-For `VK_IMAGE_TYPE_2D` when `flags` does not contain
-`VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT`:
+For [VK_IMAGE_TYPE_2D](resources.html#VkImageType) when `flags` does not contain
+[VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits):
 
 * 
 `maxExtent.width` ≥
@@ -1813,8 +1846,8 @@ For `VK_IMAGE_TYPE_2D` when `flags` does not contain
 * 
 `maxExtent.depth` = 1
 
-For `VK_IMAGE_TYPE_2D` when `flags` contains
-`VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT`:
+For [VK_IMAGE_TYPE_2D](resources.html#VkImageType) when `flags` contains
+[VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT](resources.html#VkImageCreateFlagBits):
 
 * 
 `maxExtent.width` ≥
@@ -1827,7 +1860,7 @@ For `VK_IMAGE_TYPE_2D` when `flags` contains
 * 
 `maxExtent.depth` = 1
 
-For `VK_IMAGE_TYPE_3D`:
+For [VK_IMAGE_TYPE_3D](resources.html#VkImageType):
 
 * 
 `maxExtent.width` ≥
@@ -1952,7 +1985,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExternalBufferInfo-sType-sType) VUID-VkPhysicalDeviceExternalBufferInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_BUFFER_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_BUFFER_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPhysicalDeviceExternalBufferInfo-pNext-pNext) VUID-VkPhysicalDeviceExternalBufferInfo-pNext-pNext
@@ -2004,7 +2037,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalBufferProperties-sType-sType) VUID-VkExternalBufferProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_BUFFER_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_BUFFER_PROPERTIES](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExternalBufferProperties-pNext-pNext) VUID-VkExternalBufferProperties-pNext-pNext
@@ -2088,7 +2121,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExternalTensorInfoARM-sType-sType) VUID-VkPhysicalDeviceExternalTensorInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_TENSOR_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_TENSOR_INFO_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPhysicalDeviceExternalTensorInfoARM-pNext-pNext) VUID-VkPhysicalDeviceExternalTensorInfoARM-pNext-pNext
@@ -2136,7 +2169,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalTensorPropertiesARM-sType-sType) VUID-VkExternalTensorPropertiesARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_TENSOR_PROPERTIES_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_TENSOR_PROPERTIES_ARM](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExternalTensorPropertiesARM-pNext-pNext) VUID-VkExternalTensorPropertiesARM-pNext-pNext
@@ -2226,7 +2259,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExternalSemaphoreInfo-sType-sType) VUID-VkPhysicalDeviceExternalSemaphoreInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_SEMAPHORE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_SEMAPHORE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPhysicalDeviceExternalSemaphoreInfo-pNext-pNext) VUID-VkPhysicalDeviceExternalSemaphoreInfo-pNext-pNext
@@ -2274,7 +2307,7 @@ typedef enum VkExternalSemaphoreHandleTypeFlagBits {
 typedef VkExternalSemaphoreHandleTypeFlagBits VkExternalSemaphoreHandleTypeFlagBitsKHR;
 
 * 
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT` specifies a POSIX
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT](#VkExternalSemaphoreHandleTypeFlagBitsKHR) specifies a POSIX
 file descriptor handle that has only limited valid usage outside of
 Vulkan and other compatible APIs.
 It **must** be compatible with the POSIX system calls `dup`, `dup2`,
@@ -2285,7 +2318,7 @@ It owns a reference to the underlying synchronization primitive
 represented by its Vulkan semaphore object.
 
 * 
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT` specifies an NT
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT](#VkExternalSemaphoreHandleTypeFlagBitsKHR) specifies an NT
 handle that has only limited valid usage outside of Vulkan and other
 compatible APIs.
 It **must** be compatible with the functions `DuplicateHandle`,
@@ -2295,7 +2328,7 @@ It owns a reference to the underlying synchronization primitive
 represented by its Vulkan semaphore object.
 
 * 
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT` specifies a
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](#VkExternalSemaphoreHandleTypeFlagBitsKHR) specifies a
 global share handle that has only limited valid usage outside of Vulkan
 and other compatible APIs.
 It is not compatible with any native APIs.
@@ -2305,7 +2338,7 @@ invalid when all Vulkan semaphore objects associated with it are
 destroyed.
 
 * 
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT` specifies an NT
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT](#VkExternalSemaphoreHandleTypeFlagBitsKHR) specifies an NT
 handle returned by `ID3D12Device`::`CreateSharedHandle` referring
 to a Direct3D 12 fence, or `ID3D11Device5`::`CreateFence`
 referring to a Direct3D 11 fence.
@@ -2313,14 +2346,14 @@ It owns a reference to the underlying synchronization primitive
 associated with the Direct3D fence.
 
 * 
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D11_FENCE_BIT` is an alias of
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT` with the same
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D11_FENCE_BIT](#VkExternalSemaphoreHandleTypeFlagBitsKHR) is an alias of
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT](#VkExternalSemaphoreHandleTypeFlagBitsKHR) with the same
 meaning.
 It is provided for convenience and code clarity when interacting with
 D3D11 fences.
 
 * 
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT` specifies a POSIX
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT](#VkExternalSemaphoreHandleTypeFlagBitsKHR) specifies a POSIX
 file descriptor handle to a Linux Sync File or Android Fence object.
 It can be used with any native API accepting a valid sync file or fence
 as input.
@@ -2331,7 +2364,7 @@ any type of sync or fence FD supported by the native system they are
 running on.
 
 * 
-`VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_ZIRCON_EVENT_BIT_FUCHSIA`
+[VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_ZIRCON_EVENT_BIT_FUCHSIA](#VkExternalSemaphoreHandleTypeFlagBitsKHR)
 specifies a handle to a Zircon event object.
 It can be used with any native API that accepts a Zircon event handle.
 Zircon event handles are created with `ZX_RIGHTS_BASIC` and
@@ -2339,7 +2372,7 @@ Zircon event handles are created with `ZX_RIGHTS_BASIC` and
 Vulkan on Fuchsia uses only the ZX_EVENT_SIGNALED bit when signaling or
 waiting.
 
-|  | Handles of type `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT`
+|  | Handles of type [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT](#VkExternalSemaphoreHandleTypeFlagBitsKHR)
 | --- | --- |
 generated by the implementation may represent either Linux Sync Files or
 Android Fences at the implementation’s discretion.
@@ -2354,12 +2387,12 @@ following table:
 
 | Handle type | `VkPhysicalDeviceIDProperties`::`driverUUID` | `VkPhysicalDeviceIDProperties`::`deviceUUID` |
 | --- | --- | --- |
-| `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT` | Must match | Must match |
-| `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT` | Must match | Must match |
-| `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT` | Must match | Must match |
-| `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT` | Must match | Must match |
-| `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT` | No restriction | No restriction |
-| `VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_ZIRCON_EVENT_BIT_FUCHSIA` | No restriction | No restriction |
+| [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT](#VkExternalSemaphoreHandleTypeFlagBitsKHR) | Must match | Must match |
+| [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT](#VkExternalSemaphoreHandleTypeFlagBitsKHR) | Must match | Must match |
+| [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](#VkExternalSemaphoreHandleTypeFlagBitsKHR) | Must match | Must match |
+| [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT](#VkExternalSemaphoreHandleTypeFlagBitsKHR) | Must match | Must match |
+| [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT](#VkExternalSemaphoreHandleTypeFlagBitsKHR) | No restriction | No restriction |
+| [VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_ZIRCON_EVENT_BIT_FUCHSIA](#VkExternalSemaphoreHandleTypeFlagBitsKHR) | No restriction | No restriction |
 
 // Provided by VK_VERSION_1_1
 typedef VkFlags VkExternalSemaphoreHandleTypeFlags;
@@ -2418,7 +2451,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalSemaphoreProperties-sType-sType) VUID-VkExternalSemaphoreProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_SEMAPHORE_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_SEMAPHORE_PROPERTIES](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExternalSemaphoreProperties-pNext-pNext) VUID-VkExternalSemaphoreProperties-pNext-pNext
@@ -2444,11 +2477,11 @@ typedef enum VkExternalSemaphoreFeatureFlagBits {
 typedef VkExternalSemaphoreFeatureFlagBits VkExternalSemaphoreFeatureFlagBitsKHR;
 
 * 
-`VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT` specifies that
+[VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT](#VkExternalSemaphoreFeatureFlagBitsKHR) specifies that
 handles of this type **can** be exported from Vulkan semaphore objects.
 
 * 
-`VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT` specifies that
+[VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT](#VkExternalSemaphoreFeatureFlagBitsKHR) specifies that
 handles of this type **can** be imported as Vulkan semaphore objects.
 
 // Provided by VK_VERSION_1_1
@@ -2534,7 +2567,7 @@ structure.
 specifying an external fence handle type for which capabilities will be
 returned.
 
-|  | Handles of type `VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT` generated by
+|  | Handles of type [VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT](#VkExternalFenceHandleTypeFlagBitsKHR) generated by
 | --- | --- |
 the implementation may represent either Linux Sync Files or Android Fences
 at the implementation’s discretion.
@@ -2548,7 +2581,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceExternalFenceInfo-sType-sType) VUID-VkPhysicalDeviceExternalFenceInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FENCE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FENCE_INFO](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkPhysicalDeviceExternalFenceInfo-pNext-pNext) VUID-VkPhysicalDeviceExternalFenceInfo-pNext-pNext
@@ -2594,7 +2627,7 @@ typedef enum VkExternalFenceHandleTypeFlagBits {
 typedef VkExternalFenceHandleTypeFlagBits VkExternalFenceHandleTypeFlagBitsKHR;
 
 * 
-`VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT` specifies a POSIX file
+[VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT](#VkExternalFenceHandleTypeFlagBitsKHR) specifies a POSIX file
 descriptor handle that has only limited valid usage outside of Vulkan
 and other compatible APIs.
 It **must** be compatible with the POSIX system calls `dup`, `dup2`,
@@ -2605,7 +2638,7 @@ It owns a reference to the underlying synchronization primitive
 represented by its Vulkan fence object.
 
 * 
-`VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT` specifies an NT
+[VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT](#VkExternalFenceHandleTypeFlagBitsKHR) specifies an NT
 handle that has only limited valid usage outside of Vulkan and other
 compatible APIs.
 It **must** be compatible with the functions `DuplicateHandle`,
@@ -2615,7 +2648,7 @@ It owns a reference to the underlying synchronization primitive
 represented by its Vulkan fence object.
 
 * 
-`VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT` specifies a
+[VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](#VkExternalFenceHandleTypeFlagBitsKHR) specifies a
 global share handle that has only limited valid usage outside of Vulkan
 and other compatible APIs.
 It is not compatible with any native APIs.
@@ -2624,7 +2657,7 @@ represented by its Vulkan fence object, and will therefore become
 invalid when all Vulkan fence objects associated with it are destroyed.
 
 * 
-`VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT` specifies a POSIX file
+[VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT](#VkExternalFenceHandleTypeFlagBitsKHR) specifies a POSIX file
 descriptor handle to a Linux Sync File or Android Fence.
 It can be used with any native API accepting a valid sync file or fence
 as input.
@@ -2640,10 +2673,10 @@ following table:
 
 | Handle type | `VkPhysicalDeviceIDProperties`::`driverUUID` | `VkPhysicalDeviceIDProperties`::`deviceUUID` |
 | --- | --- | --- |
-| `VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT` | Must match | Must match |
-| `VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT` | Must match | Must match |
-| `VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT` | Must match | Must match |
-| `VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT` | No restriction | No restriction |
+| [VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT](#VkExternalFenceHandleTypeFlagBitsKHR) | Must match | Must match |
+| [VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT](#VkExternalFenceHandleTypeFlagBitsKHR) | Must match | Must match |
+| [VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT](#VkExternalFenceHandleTypeFlagBitsKHR) | Must match | Must match |
+| [VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT](#VkExternalFenceHandleTypeFlagBitsKHR) | No restriction | No restriction |
 
 // Provided by VK_VERSION_1_1
 typedef VkFlags VkExternalFenceHandleTypeFlags;
@@ -2694,7 +2727,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkExternalFenceProperties-sType-sType) VUID-VkExternalFenceProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_EXTERNAL_FENCE_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_EXTERNAL_FENCE_PROPERTIES](fundamentals.html#VkStructureType)
 
 * 
 [](#VUID-VkExternalFenceProperties-pNext-pNext) VUID-VkExternalFenceProperties-pNext-pNext
@@ -2720,11 +2753,11 @@ typedef enum VkExternalFenceFeatureFlagBits {
 typedef VkExternalFenceFeatureFlagBits VkExternalFenceFeatureFlagBitsKHR;
 
 * 
-`VK_EXTERNAL_FENCE_FEATURE_EXPORTABLE_BIT` specifies handles of this
+[VK_EXTERNAL_FENCE_FEATURE_EXPORTABLE_BIT](#VkExternalFenceFeatureFlagBitsKHR) specifies handles of this
 type **can** be exported from Vulkan fence objects.
 
 * 
-`VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT` specifies handles of this
+[VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT](#VkExternalFenceFeatureFlagBitsKHR) specifies handles of this
 type **can** be imported to Vulkan fence objects.
 
 // Provided by VK_VERSION_1_1
@@ -2775,8 +2808,8 @@ on return the variable is overwritten with the number of values actually
 written to `pTimeDomains`.
 If the value of `pTimeDomainCount` is less than the number of
 calibrateable time domains supported, at most `pTimeDomainCount` values
-will be written to `pTimeDomains`, and `VK_INCOMPLETE` will be
-returned instead of `VK_SUCCESS`, to indicate that not all the available
+will be written to `pTimeDomains`, and [VK_INCOMPLETE](fundamentals.html#VkResult) will be
+returned instead of [VK_SUCCESS](fundamentals.html#VkResult), to indicate that not all the available
 time domains were returned.
 
 Valid Usage (Implicit)
@@ -2801,21 +2834,21 @@ Return Codes
 [Success](fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_INCOMPLETE`
+[VK_INCOMPLETE](fundamentals.html#VkResult)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](fundamentals.html#VkResult)
 
 [Failure](fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](fundamentals.html#VkResult)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](fundamentals.html#VkResult)

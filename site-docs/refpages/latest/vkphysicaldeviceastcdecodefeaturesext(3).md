@@ -41,7 +41,7 @@ structure.
 
 `decodeModeSharedExponent` indicates whether the implementation
 supports decoding ASTC compressed formats to
-`VK_FORMAT_E5B9G9R9_UFLOAT_PACK32` internal precision.
+[VK_FORMAT_E5B9G9R9_UFLOAT_PACK32](VkFormat.html) internal precision.
 
 If the `VkPhysicalDeviceASTCDecodeFeaturesEXT` structure is included in the `pNext` chain of the
 [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html) structure passed to
@@ -49,7 +49,7 @@ If the `VkPhysicalDeviceASTCDecodeFeaturesEXT` structure is included in the `pNe
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceASTCDecodeFeaturesEXT`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -57,7 +57,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceASTCDecodeFeaturesEXT-sType-sType) VUID-VkPhysicalDeviceASTCDecodeFeaturesEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ASTC_DECODE_FEATURES_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ASTC_DECODE_FEATURES_EXT](VkStructureType.html)
 
 [VK_EXT_astc_decode_mode](VK_EXT_astc_decode_mode.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

@@ -32,7 +32,7 @@ before we visualize them on the screen. This infrastructure is
 known as the **swap chain** and must be created explicitly in Vulkan. The swap
 chain is essentially a queue of images that are waiting to be presented to the
 screen. Our application will acquire such an image to draw to it, and then
-return it to the queue. How exactly the queue works. The conditions for
+return it to the queue. How exactly the queue works and the conditions for
 presenting an image from the queue depend on how the swap chain is set up. However,
 the general purpose of the swap chain is to synchronize the presentation of
 images with the refresh rate of the screen.
@@ -56,11 +56,7 @@ First declare a list of required device extensions, similar to the list of
 validation layers to enable.
 
 std::vector deviceExtensions = {
-    vk::KHRSwapchainExtensionName,
-    vk::KHRSpirv14ExtensionName,
-    vk::KHRSynchronization2ExtensionName,
-    vk::KHRCreateRenderpass2ExtensionName
-};
+    vk::KHRSwapchainExtensionName};
 
 It should be noted that the availability of a presentation queue,
 as we checked in the previous chapter, implies that the swap chain extension
@@ -310,8 +306,8 @@ void initVulkan() {
 }
 
 void createSwapChain() {
-    auto surfaceCapabilities = physicalDevice.getSurfaceCapabilitiesKHR( surface );
-    swapChainSurfaceFormat = chooseSwapSurfaceFormat(physicalDevice.getSurfaceFormatsKHR( surface ));
+    auto surfaceCapabilities = physicalDevice.getSurfaceCapabilitiesKHR( *surface );
+    swapChainSurfaceFormat = chooseSwapSurfaceFormat(physicalDevice.getSurfaceFormatsKHR( *surface ));
     swapChainExtent = chooseSwapExtent(surfaceCapabilities);
     auto minImageCount = std::max( 3u, surfaceCapabilities.minImageCount );
     minImageCount = ( surfaceCapabilities.maxImageCount > 0 && minImageCount > surfaceCapabilities.maxImageCount ) ? surfaceCapabilities.maxImageCount : minImageCount;
@@ -342,14 +338,21 @@ filling in a large structure, to be fair, the swapchain is a fairly complex
 object so it is among the larger createInfo structures in Vulkan:
 
 vk::SwapchainCreateInfoKHR swapChainCreateInfo{
-    .flags = vk::SwapchainCreateFlagsKHR(), .
-    surface = surface, .minImageCount = minImageCount,
-    .imageFormat = swapChainSurfaceFormat.format, .imageColorSpace = swapChainSurfaceFormat.colorSpace,
-    .imageExtent = swapChainExtent, .imageArrayLayers =1,
-    .imageUsage = vk::ImageUsageFlagBits::eColorAttachment, .imageSharingMode = vk::SharingMode::eExclusive,
-    .preTransform = surfaceCapabilities.currentTransform, .compositeAlpha = vk::CompositeAlphaFlagBitsKHR::eOpaque,
-    .presentMode = chooseSwapPresentMode(physicalDevice.getSurfacePresentModesKHR( surface )),
-    .clipped = true, .oldSwapchain = nullptr };
+    .flags = vk::SwapchainCreateFlagsKHR(),
+    .surface = *surface,
+    .minImageCount = minImageCount,
+    .imageFormat = swapChainSurfaceFormat.format,
+    .imageColorSpace = swapChainSurfaceFormat.colorSpace,
+    .imageExtent = swapChainExtent,
+    .imageArrayLayers =1,
+    .imageUsage = vk::ImageUsageFlagBits::eColorAttachment,
+    .imageSharingMode = vk::SharingMode::eExclusive,
+    .preTransform = surfaceCapabilities.currentTransform,
+    .compositeAlpha = vk::CompositeAlphaFlagBitsKHR::eOpaque,
+    .presentMode = chooseSwapPresentMode(physicalDevice.getSurfacePresentModesKHR( *surface )),
+    .clipped = true,
+    .oldSwapchain = nullptr
+};
 
 The `imageArrayLayers` specifies the number of layers each image consists of.
 This is always `1` unless you are developing a stereoscopic 3D application. The

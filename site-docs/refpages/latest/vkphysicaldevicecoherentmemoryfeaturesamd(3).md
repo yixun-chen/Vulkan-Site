@@ -47,7 +47,7 @@ If the `VkPhysicalDeviceCoherentMemoryFeaturesAMD` structure is included in the 
 corresponding feature is supported.
 If the application wishes to use a [VkDevice](VkDevice.html) with any features
 described by `VkPhysicalDeviceCoherentMemoryFeaturesAMD`, it **must** add an instance of the structure,
-with the desired feature members set to `VK_TRUE`, to the `pNext`
+with the desired feature members set to [VK_TRUE](VK_TRUE.html), to the `pNext`
 chain of [VkDeviceCreateInfo](VkDeviceCreateInfo.html) when creating the [VkDevice](VkDevice.html).
 
 Valid Usage (Implicit)
@@ -55,7 +55,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceCoherentMemoryFeaturesAMD-sType-sType) VUID-VkPhysicalDeviceCoherentMemoryFeaturesAMD-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COHERENT_MEMORY_FEATURES_AMD`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COHERENT_MEMORY_FEATURES_AMD](VkStructureType.html)
 
 [VK_AMD_device_coherent_memory](VK_AMD_device_coherent_memory.html), `VkBool32`, [VkStructureType](VkStructureType.html)
 

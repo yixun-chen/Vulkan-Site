@@ -49,7 +49,7 @@ The primitive count and primitive offset are interpreted differently
 depending on the [VkGeometryTypeKHR](VkGeometryTypeKHR.html) used:
 
 * 
-For geometries of type `VK_GEOMETRY_TYPE_TRIANGLES_KHR`,
+For geometries of type [VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html),
 `primitiveCount` is the number of triangles to be built, where each
 triangle is treated as 3 vertices.
 
@@ -79,13 +79,13 @@ This matrix describes a transformation from the space in which the
 vertices for all triangles in this geometry are described to the space
 in which the acceleration structure is defined.
 
-For geometries of type `VK_GEOMETRY_TYPE_AABBS_KHR`,
+For geometries of type [VK_GEOMETRY_TYPE_AABBS_KHR](VkGeometryTypeKHR.html),
 `primitiveCount` is the number of axis-aligned bounding boxes.
 `primitiveCount` [VkAabbPositionsKHR](VkAabbPositionsKHR.html) structures are consumed
 from [VkAccelerationStructureGeometryAabbsDataKHR](VkAccelerationStructureGeometryAabbsDataKHR.html)::`data`,
 starting at an offset of `primitiveOffset`.
 
-For geometries of type `VK_GEOMETRY_TYPE_SPHERES_NV`,
+For geometries of type [VK_GEOMETRY_TYPE_SPHERES_NV](VkGeometryTypeKHR.html),
 `primitiveCount` is the number of spheres to be built, where each
 sphere is treated as 1 vertex.
 
@@ -109,7 +109,7 @@ starting at an offset of `primitiveOffset` +
 [VkAccelerationStructureGeometrySpheresDataNV](VkAccelerationStructureGeometrySpheresDataNV.html)::`radiusStride`
 × `firstVertex` respectively.
 
-For geometries of type `VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV`,
+For geometries of type [VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV](VkGeometryTypeKHR.html),
 `primitiveCount` is the number of LSS primitives to be built, where
 each LSS primitive is treated as 2 vertices.
 
@@ -133,7 +133,7 @@ starting at an offset of `primitiveOffset` +
 [VkAccelerationStructureGeometryLinearSweptSpheresDataNV](VkAccelerationStructureGeometryLinearSweptSpheresDataNV.html)::`radiusStride`
 × `firstVertex` respectively.
 
-For geometries of type `VK_GEOMETRY_TYPE_INSTANCES_KHR`,
+For geometries of type [VK_GEOMETRY_TYPE_INSTANCES_KHR](VkGeometryTypeKHR.html),
 `primitiveCount` is the number of acceleration structures.
 `primitiveCount` [VkAccelerationStructureInstanceKHR](VkAccelerationStructureInstanceKHR.html)
 or [VkAccelerationStructureMotionInstanceNV](VkAccelerationStructureMotionInstanceNV.html)
@@ -155,7 +155,7 @@ The number of vertices consumed from
 * 
 [](#VUID-VkAccelerationStructureBuildRangeInfoKHR-primitiveOffset-03656) VUID-VkAccelerationStructureBuildRangeInfoKHR-primitiveOffset-03656
 
-For geometries of type `VK_GEOMETRY_TYPE_TRIANGLES_KHR`, if the
+For geometries of type [VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), if the
 geometry uses indices, the offset `primitiveOffset` from
 [VkAccelerationStructureGeometryTrianglesDataKHR](VkAccelerationStructureGeometryTrianglesDataKHR.html)::`indexData`
 **must** be a multiple of the element size of
@@ -164,7 +164,7 @@ geometry uses indices, the offset `primitiveOffset` from
 * 
 [](#VUID-VkAccelerationStructureBuildRangeInfoKHR-primitiveOffset-03657) VUID-VkAccelerationStructureBuildRangeInfoKHR-primitiveOffset-03657
 
-For geometries of type `VK_GEOMETRY_TYPE_TRIANGLES_KHR`, if the
+For geometries of type [VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), if the
 geometry does not use indices, the offset `primitiveOffset` from
 [VkAccelerationStructureGeometryTrianglesDataKHR](VkAccelerationStructureGeometryTrianglesDataKHR.html)::`vertexData`
 **must** be a multiple of:
@@ -180,7 +180,7 @@ if that format is not a [packed format](../../../../spec/latest/chapters/formats
 
 [](#VUID-VkAccelerationStructureBuildRangeInfoKHR-maxVertex-10774) VUID-VkAccelerationStructureBuildRangeInfoKHR-maxVertex-10774
 
-For geometries of type `VK_GEOMETRY_TYPE_TRIANGLES_KHR`, if the
+For geometries of type [VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), if the
 geometry uses indices, then
 [VkAccelerationStructureGeometryTrianglesDataKHR](VkAccelerationStructureGeometryTrianglesDataKHR.html)::`maxVertex`
 **must** be greater than or equal to `firstVertex` plus the maximum
@@ -192,28 +192,28 @@ in the range [`primitiveOffset`, `primitiveOffset`
 
 [](#VUID-VkAccelerationStructureBuildRangeInfoKHR-None-10775) VUID-VkAccelerationStructureBuildRangeInfoKHR-None-10775
 
-For geometries of type `VK_GEOMETRY_TYPE_TRIANGLES_KHR`, if the
+For geometries of type [VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), if the
 geometry does not use indices, then
 [VkAccelerationStructureGeometryTrianglesDataKHR](VkAccelerationStructureGeometryTrianglesDataKHR.html)::maxVertex **must**
 be greater than or equal to firstVertex + primitiveCount x 3 - 1
 
 [](#VUID-VkAccelerationStructureBuildRangeInfoKHR-transformOffset-03658) VUID-VkAccelerationStructureBuildRangeInfoKHR-transformOffset-03658
 
-For geometries of type `VK_GEOMETRY_TYPE_TRIANGLES_KHR`, the offset
+For geometries of type [VK_GEOMETRY_TYPE_TRIANGLES_KHR](VkGeometryTypeKHR.html), the offset
 `transformOffset` from
 [VkAccelerationStructureGeometryTrianglesDataKHR](VkAccelerationStructureGeometryTrianglesDataKHR.html)::`transformData`
 **must** be a multiple of 16
 
 [](#VUID-VkAccelerationStructureBuildRangeInfoKHR-primitiveOffset-03659) VUID-VkAccelerationStructureBuildRangeInfoKHR-primitiveOffset-03659
 
-For geometries of type `VK_GEOMETRY_TYPE_AABBS_KHR`, the offset
+For geometries of type [VK_GEOMETRY_TYPE_AABBS_KHR](VkGeometryTypeKHR.html), the offset
 `primitiveOffset` from
 [VkAccelerationStructureGeometryAabbsDataKHR](VkAccelerationStructureGeometryAabbsDataKHR.html)::`data` **must** be a
 multiple of 8
 
 [](#VUID-VkAccelerationStructureBuildRangeInfoKHR-primitiveOffset-03660) VUID-VkAccelerationStructureBuildRangeInfoKHR-primitiveOffset-03660
 
-For geometries of type `VK_GEOMETRY_TYPE_INSTANCES_KHR`, the offset
+For geometries of type [VK_GEOMETRY_TYPE_INSTANCES_KHR](VkGeometryTypeKHR.html), the offset
 `primitiveOffset` from
 [VkAccelerationStructureGeometryInstancesDataKHR](VkAccelerationStructureGeometryInstancesDataKHR.html)::`data` **must**
 be a multiple of 16

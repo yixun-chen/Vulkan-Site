@@ -152,31 +152,31 @@ If [VK_KHR_push_descriptor](VK_KHR_push_descriptor.html) is supported:
 * 
 Extending [VkDescriptorUpdateTemplateType](VkDescriptorUpdateTemplateType.html):
 
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET_KHR`
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET_KHR](VkDescriptorUpdateTemplateType.html)
 
 Extending [VkObjectType](VkObjectType.html):
 
 * 
-`VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_KHR`
+[VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_KHR](VkObjectType.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO_KHR](VkStructureType.html)
 
 If [VK_EXT_debug_report](VK_EXT_debug_report.html) is supported:
 
 * 
 Extending [VkDebugReportObjectTypeEXT](VkDebugReportObjectTypeEXT.html):
 
-`VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_KHR_EXT`
+[VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_KHR_EXT](VkDebugReportObjectTypeEXT.html)
 
 If [VK_KHR_push_descriptor](VK_KHR_push_descriptor.html) is supported:
 
 * 
 Extending [VkDescriptorUpdateTemplateType](VkDescriptorUpdateTemplateType.html):
 
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS_KHR`
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS_KHR](VkDescriptorUpdateTemplateType.html)
 
 * 
 Revision 1, 2016-01-11 (Markus Tavenrath)

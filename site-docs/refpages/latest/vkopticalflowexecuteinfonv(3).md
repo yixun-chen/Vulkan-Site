@@ -55,7 +55,7 @@ Valid Usage
 [](#VUID-VkOpticalFlowExecuteInfoNV-regionCount-07593) VUID-VkOpticalFlowExecuteInfoNV-regionCount-07593
 
 `regionCount` **must** be 0 if
-`VK_OPTICAL_FLOW_SESSION_CREATE_ALLOW_REGIONS_BIT_NV` was not set
+[VK_OPTICAL_FLOW_SESSION_CREATE_ALLOW_REGIONS_BIT_NV](VkOpticalFlowSessionCreateFlagBitsNV.html) was not set
 for `VkOpticalFlowSessionNV` on which this command is operating
 
 Valid Usage (Implicit)
@@ -63,7 +63,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkOpticalFlowExecuteInfoNV-sType-sType) VUID-VkOpticalFlowExecuteInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_OPTICAL_FLOW_EXECUTE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_OPTICAL_FLOW_EXECUTE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkOpticalFlowExecuteInfoNV-pNext-pNext) VUID-VkOpticalFlowExecuteInfoNV-pNext-pNext

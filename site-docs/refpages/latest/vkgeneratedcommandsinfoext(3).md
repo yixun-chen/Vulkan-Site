@@ -66,7 +66,7 @@ starting at `indirectAddress`.
 `preprocessAddress` specifies a physical address of the
 `VkBuffer` used for preprocessing the input data for execution.
 If this structure is used with [vkCmdExecuteGeneratedCommandsEXT](vkCmdExecuteGeneratedCommandsEXT.html)
-with its `isPreprocessed` set to `VK_TRUE`, then the
+with its `isPreprocessed` set to [VK_TRUE](VK_TRUE.html), then the
 preprocessing step is skipped but data in this address **may** still be
 modified.
 The contents and the layout of this address are opaque to applications
@@ -122,7 +122,7 @@ memory types allowed in the `memoryTypeBits` member of the
 [](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11065) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11065
 
 If the `indirectCommandsLayout` uses a token of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT`, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT](VkIndirectCommandsTokenTypeEXT.html), then the
 `indirectExecutionSet`’s push constant layout **must** contain the
 `updateRange` specified in
 [VkIndirectCommandsPushConstantTokenEXT](VkIndirectCommandsPushConstantTokenEXT.html)
@@ -131,7 +131,7 @@ If the `indirectCommandsLayout` uses a token of
 [](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11066) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11066
 
 If the `indirectCommandsLayout` uses a token of
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT`, then the
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT](VkIndirectCommandsTokenTypeEXT.html), then the
 `indirectExecutionSet`’s push constant layout **must** contain the
 `updateRange` specified in
 [VkIndirectCommandsPushConstantTokenEXT](VkIndirectCommandsPushConstantTokenEXT.html)
@@ -165,25 +165,73 @@ that was used to determine the `preprocessSize`
 
 `preprocessAddress` **must** be a device address allocated to the
 application from a buffer created with the
-`VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT` usage flag set
+[VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT](VkBufferUsageFlagBits2.html) usage flag set
 
 * 
 [](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11144) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11144
 
 If the `indirectCommandsLayout` contains a
-`VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT` token, then the
-descriptor and push constant layout info provided either by
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](VkIndirectCommandsTokenTypeEXT.html) token, and there
+is a descriptor and push constant layout info provided either by
 `pipelineLayout` or through a [VkPipelineLayoutCreateInfo](VkPipelineLayoutCreateInfo.html) in
 `pNext` of the [VkIndirectCommandsLayoutCreateInfoEXT](VkIndirectCommandsLayoutCreateInfoEXT.html) used to
-create `indirectCommandsLayout` **must** be
+create `indirectCommandsLayout`, the pipeline layout **must** be
 [compatible](../../../../spec/latest/chapters/descriptorsets.html#descriptorsets-compatibility) with the descriptor and push
 constant layout info used by `indirectExecutionSet`
+
+* 
+[](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11328) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11328
+
+If the `indirectCommandsLayout` contains a
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](VkIndirectCommandsTokenTypeEXT.html) token, and there
+was no descriptor and push constant layout info provided either by
+`pipelineLayout` or through a [VkPipelineLayoutCreateInfo](VkPipelineLayoutCreateInfo.html) in
+`pNext` of the [VkIndirectCommandsLayoutCreateInfoEXT](VkIndirectCommandsLayoutCreateInfoEXT.html) used to
+create `indirectCommandsLayout`, pipelines in
+`indirectExecutionSet` **must** have been created with
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2.html)
+
+* 
+[](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11329) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11329
+
+If the `indirectCommandsLayout` contains a
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](VkIndirectCommandsTokenTypeEXT.html) token, and there
+was a descriptor and push constant layout info provided either by
+`pipelineLayout` or through a [VkPipelineLayoutCreateInfo](VkPipelineLayoutCreateInfo.html) in
+`pNext` of the [VkIndirectCommandsLayoutCreateInfoEXT](VkIndirectCommandsLayoutCreateInfoEXT.html) used to
+create `indirectCommandsLayout`, pipelines in
+`indirectExecutionSet` **must** have been created without
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_HEAP_BIT_EXT](VkPipelineCreateFlagBits2.html)
+
+* 
+[](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11330) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11330
+
+If the `indirectCommandsLayout` contains a
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](VkIndirectCommandsTokenTypeEXT.html) token, and there
+was no descriptor and push constant layout info provided either by
+`pipelineLayout` or through a [VkPipelineLayoutCreateInfo](VkPipelineLayoutCreateInfo.html) in
+`pNext` of the [VkIndirectCommandsLayoutCreateInfoEXT](VkIndirectCommandsLayoutCreateInfoEXT.html) used to
+create `indirectCommandsLayout`, shaders in
+`indirectExecutionSet` **must** have been created with
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](VkShaderCreateFlagBitsEXT.html)
+
+* 
+[](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11331) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11331
+
+If the `indirectCommandsLayout` contains a
+[VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](VkIndirectCommandsTokenTypeEXT.html) token, and there
+was a descriptor and push constant layout info provided either by
+`pipelineLayout` or through a [VkPipelineLayoutCreateInfo](VkPipelineLayoutCreateInfo.html) in
+`pNext` of the [VkIndirectCommandsLayoutCreateInfoEXT](VkIndirectCommandsLayoutCreateInfoEXT.html) used to
+create `indirectCommandsLayout`, shaders in
+`indirectExecutionSet` **must** have been created without
+[VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT](VkShaderCreateFlagBitsEXT.html)
 
 * 
 [](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11002) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11002
 
 If `indirectCommandsLayout` was created with a token sequence that
-contained the `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT`
+contained the [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](VkIndirectCommandsTokenTypeEXT.html)
 token, the shader stages used to create the initial shader state of
 `indirectExecutionSet` **must** equal the
 [VkIndirectCommandsExecutionSetTokenEXT](VkIndirectCommandsExecutionSetTokenEXT.html)::`shaderStages` used to
@@ -201,7 +249,7 @@ inputs (`indirectCommandsLayout`, …​) as within this structure
 [](#VUID-VkGeneratedCommandsInfoEXT-sequenceCountAddress-11072) VUID-VkGeneratedCommandsInfoEXT-sequenceCountAddress-11072
 
 The underlying buffer for `sequenceCountAddress` **must** have the
-`VK_BUFFER_USAGE_2_INDIRECT_BUFFER_BIT_KHR` bit set in its usage
+[VK_BUFFER_USAGE_2_INDIRECT_BUFFER_BIT_KHR](VkBufferUsageFlagBits2.html) bit set in its usage
 flag
 
 * 
@@ -230,24 +278,24 @@ When not ignored, `maxDrawCount` ×
 [](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11079) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11079
 
     If `indirectCommandsLayout` was created using a
-    `VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT` token
+    [VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT](VkIndirectCommandsTokenTypeEXT.html) token
 and shader objects are not bound
     then the bound graphics pipeline **must** have been created with
-    `VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE` in
+    [VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE](VkDynamicState.html) in
     `pDynamicStates`
 
 * 
 [](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11083) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11083
 
 If the token sequence of the passed `indirectCommandsLayout`
-contains a `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT`
+contains a [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](VkIndirectCommandsTokenTypeEXT.html)
 token, the `indirectExecutionSet` **must** not be [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
 * 
 [](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-10241) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-10241
 
 If the token sequence of the passed `indirectCommandsLayout` does
-not contains a `VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT`
+not contains a [VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT](VkIndirectCommandsTokenTypeEXT.html)
 token, the `indirectExecutionSet` **must** be [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
 * 
@@ -263,7 +311,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGeneratedCommandsInfoEXT-sType-sType) VUID-VkGeneratedCommandsInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkGeneratedCommandsInfoEXT-shaderStages-parameter) VUID-VkGeneratedCommandsInfoEXT-shaderStages-parameter

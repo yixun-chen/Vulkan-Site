@@ -128,10 +128,10 @@ Extending [VkMemoryRequirements2](VkMemoryRequirements2.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO_KHR`
+[VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS_KHR`
+[VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS_KHR](VkStructureType.html)
 
     // Create an image with a dedicated allocation based on the
     // implementation's preference

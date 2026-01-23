@@ -50,7 +50,7 @@ Ratified
 
 [VK_KHR_surface](VK_KHR_surface.html)
 
-or
+and
 
 [VK_KHR_get_surface_capabilities2](VK_KHR_get_surface_capabilities2.html)
 
@@ -147,13 +147,13 @@ Extending [VkSurfaceCapabilities2KHR](VkSurfaceCapabilities2KHR.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_COMPATIBILITY_KHR`
+[VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_COMPATIBILITY_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_KHR`
+[VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SURFACE_PRESENT_SCALING_CAPABILITIES_KHR`
+[VK_STRUCTURE_TYPE_SURFACE_PRESENT_SCALING_CAPABILITIES_KHR](VkStructureType.html)
 
 * 
 Revision 1, 2025-03-31 (Shahbaz Youssefi)

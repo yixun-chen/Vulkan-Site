@@ -51,7 +51,7 @@ for i in [0, `scissorCount`).
 
 This command sets the scissor rectangles for subsequent drawing commands
 when drawing using [shader objects](../../../../spec/latest/chapters/shaders.html#shaders-objects), or
-when the graphics pipeline is created with `VK_DYNAMIC_STATE_SCISSOR`
+when the graphics pipeline is created with [VK_DYNAMIC_STATE_SCISSOR](VkDynamicState.html)
 set in [VkPipelineDynamicStateCreateInfo](VkPipelineDynamicStateCreateInfo.html)::`pDynamicStates`.
 Otherwise, this state is specified by the
 [VkPipelineViewportStateCreateInfo](VkPipelineViewportStateCreateInfo.html)::`pScissors` values used to
@@ -124,7 +124,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdSetScissor-commandBuffer-cmdpool) VUID-vkCmdSetScissor-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdSetScissor-videocoding) VUID-vkCmdSetScissor-videocoding

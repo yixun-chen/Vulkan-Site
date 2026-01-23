@@ -60,10 +60,10 @@ descriptors to be updated by the descriptor update template.
 
 * 
 `templateType` Specifies the type of the descriptor update template.
-If set to `VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET` it
+If set to [VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET](VkDescriptorUpdateTemplateType.html) it
 **can** only be used to update descriptor sets with a fixed
 `descriptorSetLayout`.
-If set to `VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS` it
+If set to [VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](VkDescriptorUpdateTemplateType.html) it
 **can** only be used to push descriptor sets using the provided
 `pipelineBindPoint`, `pipelineLayout`, and `set` number.
 
@@ -74,7 +74,7 @@ All descriptor sets which are going to be updated through the newly
 created descriptor update template **must** be created with a layout that
 matches (is the same as, or defined identically to) this layout.
 This parameter is ignored if `templateType` is not
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET`.
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET](VkDescriptorUpdateTemplateType.html).
 The implementation **must** not access this object outside of the duration
 of the command this structure is passed to.
 
@@ -82,19 +82,19 @@ of the command this structure is passed to.
 `pipelineBindPoint` is a [VkPipelineBindPoint](VkPipelineBindPoint.html) indicating the
 type of the pipeline that will use the descriptors.
 This parameter is ignored if `templateType` is not
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS`
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](VkDescriptorUpdateTemplateType.html)
 
 * 
 `pipelineLayout` is a [VkPipelineLayout](VkPipelineLayout.html) object used to program
 the bindings.
 This parameter is ignored if `templateType` is not
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS`
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](VkDescriptorUpdateTemplateType.html)
 
 * 
 `set` is the set number of the descriptor set in the pipeline layout
 that will be updated.
 This parameter is ignored if `templateType` is not
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS`
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](VkDescriptorUpdateTemplateType.html)
 
 Valid Usage
 
@@ -102,7 +102,7 @@ Valid Usage
 [](#VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-00350) VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-00350
 
 If `templateType` is
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET`,
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET](VkDescriptorUpdateTemplateType.html),
 `descriptorSetLayout` **must** be a valid `VkDescriptorSetLayout`
 handle
 
@@ -110,7 +110,7 @@ handle
 [](#VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-10355) VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-10355
 
 If `templateType` is
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS`,
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](VkDescriptorUpdateTemplateType.html),
 and the [VK_KHR_push_descriptor](VK_KHR_push_descriptor.html) extension is not enabled,
 [`pushDescriptor`](../../../../spec/latest/chapters/features.html#features-pushDescriptor) **must** be enabled
 
@@ -118,39 +118,39 @@ and the [VK_KHR_push_descriptor](VK_KHR_push_descriptor.html) extension is not e
 [](#VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-00351) VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-00351
 
 If `templateType` is
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS`,
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](VkDescriptorUpdateTemplateType.html),
 `pipelineBindPoint` **must** be a valid [VkPipelineBindPoint](VkPipelineBindPoint.html) value
 
 * 
 [](#VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-00352) VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-00352
 
 If `templateType` is
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS`,
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](VkDescriptorUpdateTemplateType.html),
 `pipelineLayout` **must** be a valid `VkPipelineLayout` handle
 
 * 
 [](#VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-00353) VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-00353
 
 If `templateType` is
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS`, `set`
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS](VkDescriptorUpdateTemplateType.html), `set`
 **must** be the unique set number in the pipeline layout that uses a
 descriptor set layout that was created with
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT`
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT](VkDescriptorSetLayoutCreateFlagBits.html)
 
 * 
 [](#VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-04615) VUID-VkDescriptorUpdateTemplateCreateInfo-templateType-04615
 
 If `templateType` is
-`VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET`,
+[VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET](VkDescriptorUpdateTemplateType.html),
 `descriptorSetLayout` **must** not contain a binding with type
-`VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+[VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html)
 
 Valid Usage (Implicit)
 
 * 
 [](#VUID-VkDescriptorUpdateTemplateCreateInfo-sType-sType) VUID-VkDescriptorUpdateTemplateCreateInfo-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO](VkStructureType.html)
 
 * 
 [](#VUID-VkDescriptorUpdateTemplateCreateInfo-pNext-pNext) VUID-VkDescriptorUpdateTemplateCreateInfo-pNext-pNext

@@ -27,7 +27,7 @@ typedef enum VkCommandBufferResetFlagBits {
 } VkCommandBufferResetFlagBits;
 
 * 
-`VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT` specifies that most
+[VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT](#) specifies that most
 or all memory resources currently owned by the command buffer **should** be
 returned to the parent command pool.
 If this flag is not set, then the command buffer **may** hold onto memory

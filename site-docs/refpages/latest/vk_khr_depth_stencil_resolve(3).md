@@ -110,7 +110,7 @@ Depth and stencil samples are resolved to a single value based on the
 resolve mode.
 The set of possible resolve modes is defined in the
 [VkResolveModeFlagBits](VkResolveModeFlagBits.html) enum.
-The `VK_RESOLVE_MODE_SAMPLE_ZERO_BIT` mode is the only mode that is
+The [VK_RESOLVE_MODE_SAMPLE_ZERO_BIT](VkResolveModeFlagBits.html) mode is the only mode that is
 required of all implementations (that support the extension or support
 Vulkan 1.2 or higher).
 Some implementations may also support averaging (the same as color sample
@@ -147,27 +147,27 @@ Extending [VkSubpassDescription2](VkSubpassDescription2.html):
 * 
 Extending [VkResolveModeFlagBits](VkResolveModeFlagBits.html):
 
-`VK_RESOLVE_MODE_AVERAGE_BIT_KHR`
+[VK_RESOLVE_MODE_AVERAGE_BIT_KHR](VkResolveModeFlagBits.html)
 
 * 
-`VK_RESOLVE_MODE_MAX_BIT_KHR`
+[VK_RESOLVE_MODE_MAX_BIT_KHR](VkResolveModeFlagBits.html)
 
 * 
-`VK_RESOLVE_MODE_MIN_BIT_KHR`
+[VK_RESOLVE_MODE_MIN_BIT_KHR](VkResolveModeFlagBits.html)
 
 * 
-`VK_RESOLVE_MODE_NONE_KHR`
+[VK_RESOLVE_MODE_NONE_KHR](VkResolveModeFlagBits.html)
 
 * 
-`VK_RESOLVE_MODE_SAMPLE_ZERO_BIT_KHR`
+[VK_RESOLVE_MODE_SAMPLE_ZERO_BIT_KHR](VkResolveModeFlagBits.html)
 
 Extending [VkStructureType](VkStructureType.html):
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE_KHR`
+[VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE_KHR](VkStructureType.html)
 
 * 
 GDC 2019

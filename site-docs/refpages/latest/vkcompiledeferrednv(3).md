@@ -48,7 +48,7 @@ Valid Usage
 [](#VUID-vkCompileDeferredNV-pipeline-02237) VUID-vkCompileDeferredNV-pipeline-02237
 
 `pipeline` **must** have been created with
-`VK_PIPELINE_CREATE_DEFER_COMPILE_BIT_NV`
+[VK_PIPELINE_CREATE_DEFER_COMPILE_BIT_NV](VkPipelineCreateFlagBits.html)
 
 * 
 [](#VUID-vkCompileDeferredNV-shader-02238) VUID-vkCompileDeferredNV-shader-02238
@@ -77,21 +77,21 @@ Return Codes
 [Success](../../../../spec/latest/chapters/fundamentals.html#fundamentals-successcodes)
 
 * 
-`VK_SUCCESS`
+[VK_SUCCESS](VkResult.html)
 
 [Failure](../../../../spec/latest/chapters/fundamentals.html#fundamentals-errorcodes)
 
 * 
-`VK_ERROR_OUT_OF_DEVICE_MEMORY`
+[VK_ERROR_OUT_OF_DEVICE_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_OUT_OF_HOST_MEMORY`
+[VK_ERROR_OUT_OF_HOST_MEMORY](VkResult.html)
 
 * 
-`VK_ERROR_UNKNOWN`
+[VK_ERROR_UNKNOWN](VkResult.html)
 
 * 
-`VK_ERROR_VALIDATION_FAILED`
+[VK_ERROR_VALIDATION_FAILED](VkResult.html)
 
 [VK_NV_ray_tracing](VK_NV_ray_tracing.html), [VkDevice](VkDevice.html), [VkPipeline](VkPipeline.html)
 

@@ -322,6 +322,13 @@ an image format of `R64i`, `R64ui`, `R32f`, `R32i`, or
 `R32ui`
 
 * 
+[](#VUID-StandaloneSpirv-OpUntypedImageTexelPointerEXT-11416) VUID-StandaloneSpirv-OpUntypedImageTexelPointerEXT-11416
+
+If an `OpUntypedImageTexelPointerEXT` instruction is used in an
+atomic operation, the image type operand **must** have an image format of
+`R64i`, `R64ui`, `R32f`, `R32i`, or `R32ui`
+
+* 
 [](#VUID-StandaloneSpirv-OpImageQuerySizeLod-04659) VUID-StandaloneSpirv-OpImageQuerySizeLod-04659
 
 `OpImageQuerySizeLod`, `OpImageQueryLod`, and
@@ -382,7 +389,14 @@ is 3D
 * 
 [](#VUID-StandaloneSpirv-None-04667) VUID-StandaloneSpirv-None-04667
 
-Structure types **must** not contain opaque types
+If the `DescriptorHeapEXT` capability is not declared, structure
+types **must** not contain opaque types
+
+* 
+[](#VUID-StandaloneSpirv-DescriptorHeapEXT-11482) VUID-StandaloneSpirv-DescriptorHeapEXT-11482
+
+If the `DescriptorHeapEXT` capability is declared, structure types
+**must** not contain opaque types other than descriptors
 
 * 
 [](#VUID-StandaloneSpirv-BuiltIn-04668) VUID-StandaloneSpirv-BuiltIn-04668
@@ -455,19 +469,18 @@ The `Component` decoration value **must** not be greater than 3
 * 
 [](#VUID-StandaloneSpirv-Component-04921) VUID-StandaloneSpirv-Component-04921
 
-If the `Component` decoration is used on a variable that has a
-`OpTypeVector` type with a `Component` `Type` with a `Width`
-that is less than or equal to 32, the sum of its `Component`
-`Count` and the `Component` decoration value **must** be less than or
-equal to 4
+If the `Component` decoration is used on a variable that has a vector
+type with a `Component` `Type` with a `Width` that is less than
+or equal to 32, the sum of its `Component` `Count` and the
+`Component` decoration value **must** be less than or equal to 4
 
 * 
 [](#VUID-StandaloneSpirv-Component-04922) VUID-StandaloneSpirv-Component-04922
 
-If the `Component` decoration is used on a variable that has a
-`OpTypeVector` type with a `Component` `Type` with a `Width`
-that is equal to 64, the sum of two times its `Component` `Count`
-and the `Component` decoration value **must** be less than or equal to 4
+If the `Component` decoration is used on a variable that has a vector
+type with a `Component` `Type` with a `Width` that is equal to
+64, the sum of two times its `Component` `Count` and the
+`Component` decoration value **must** be less than or equal to 4
 
 * 
 [](#VUID-StandaloneSpirv-Component-04923) VUID-StandaloneSpirv-Component-04923
@@ -700,6 +713,16 @@ variable in the `Workgroup` `Storage` `Class`, or d) *V* is an interface
 variable with an additional level of arrayness,
 [as described in interface    matching](../../../../spec/latest/chapters/interfaces.html#interfaces-iointerfaces-matching), and *T* is the member type of the array type *T2*
 
+[](#VUID-StandaloneSpirv-Function-12294) VUID-StandaloneSpirv-Function-12294
+
+A type *T* that is a vector sized with a specialization constant **must**
+neither be, nor be contained in, the type *T2* of a variable *V*, unless
+either: a) *T* is equal to *T2*, b) *V* is declared in the
+`Function`, or `Private` `Storage` `Class`, c) *V* is a non-Block
+variable in the `Workgroup` `Storage` `Class`, or d) *V* is an interface
+variable with an additional level of arrayness,
+[as described in interface    matching](../../../../spec/latest/chapters/interfaces.html#interfaces-iointerfaces-matching), and *T* is the member type of the array type *T2*
+
 [](#VUID-StandaloneSpirv-OpControlBarrier-04682) VUID-StandaloneSpirv-OpControlBarrier-04682
 
 If `OpControlBarrier` is used in ray generation, intersection,
@@ -887,8 +910,14 @@ capability **must** be declared
 
 [](#VUID-StandaloneSpirv-OpUntypedVariableKHR-11167) VUID-StandaloneSpirv-OpUntypedVariableKHR-11167
 
-Any `OpUntypedVariableKHR` **must** have a `Data` `Type` operand
-specified
+Any `OpUntypedVariableKHR` with a `Storage` `Class` other than
+`UniformConstant` **must** have a `Data` `Type` operand specified
+
+[](#VUID-StandaloneSpirv-OpUntypedVariableKHR-11347) VUID-StandaloneSpirv-OpUntypedVariableKHR-11347
+
+Any `OpUntypedVariableKHR` in the `UniformConstant` storage class
+without a `Data` `Type` **must** be decorated with
+`SamplerHeapEXT` or `ResourceHeapEXT`
 
 [](#VUID-StandaloneSpirv-PhysicalStorageBuffer64-04708) VUID-StandaloneSpirv-PhysicalStorageBuffer64-04708
 
@@ -966,8 +995,9 @@ Any variable in the `Uniform` `Storage` `Class` **must** be decorated as
 [](#VUID-StandaloneSpirv-UniformConstant-06677) VUID-StandaloneSpirv-UniformConstant-06677
 
 Any variable in the `UniformConstant`, `StorageBuffer`, or
-`Uniform` `Storage` `Class` **must** be decorated with `DescriptorSet`
-and `Binding`
+`Uniform` `Storage` `Class` **must** be decorated with `DescriptorSet`,
+`Binding`, or `BuiltIn` with `SamplerHeapEXT` or
+`ResourceHeapEXT`
 
 [](#VUID-StandaloneSpirv-InputAttachmentIndex-06678) VUID-StandaloneSpirv-InputAttachmentIndex-06678
 
@@ -1193,6 +1223,40 @@ The `InputIndex` and `ElementIndex` operands to
 
 The `OutputIndex` and `ElementIndex` operands to
 `OpGraphSetOutputARM` **must** be the  of a constant instruction
+
+[](#VUID-StandaloneSpirv-Result-11336) VUID-StandaloneSpirv-Result-11336
+
+If the `Result` `Type` operand of `OpLoad` is
+`OpTypeSampler`, `Pointer` **must** be derived from a variable
+decorated with `Binding` and `DescriptorSet`, or decorated with
+`BuiltIn` and `SamplerHeapEXT`
+
+[](#VUID-StandaloneSpirv-Result-11337) VUID-StandaloneSpirv-Result-11337
+
+If the `Result` `Type` operand of `OpLoad` is `OpTypeImage`,
+`Pointer` **must** be derived from a variable decorated with
+`Binding` and `DescriptorSet`, or decorated with `BuiltIn` and
+`ResourceHeapEXT`
+
+[](#VUID-StandaloneSpirv-Result-11339) VUID-StandaloneSpirv-Result-11339
+
+If the `Result` `Type` operand of `OpLoad` is
+`OpTypeAccelerationStructureKHR`, and `Pointer` is not in the
+`Private` or `Function` `Storage` `Class`, `Pointer` **must** be
+derived from a variable decorated with `Binding` and
+`DescriptorSet`, or decorated with `BuiltIn` and
+`ResourceHeapEXT`
+
+[](#VUID-StandaloneSpirv-Result-11346) VUID-StandaloneSpirv-Result-11346
+
+The `Result` `Type` operand of `OpBufferPointerEXT` **must** have
+a `Type` operand that is [explicitly    laid out](../../../../spec/latest/chapters/interfaces.html#interfaces-resources-layout)
+
+[](#VUID-StandaloneSpirv-OpTypeUntypedPointerKHR-11417) VUID-StandaloneSpirv-OpTypeUntypedPointerKHR-11417
+
+The `Storage` `Class` of `OpTypeUntypedPointerKHR` **must** be `Image`,
+`UniformConstant`,`Workgroup`, `StorageBuffer`, `Uniform`,
+`PushConstant`, or `PhysicalStorageBuffer`
 
 No cross-references are available
 

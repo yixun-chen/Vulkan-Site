@@ -76,10 +76,10 @@ earlier in [submission order](../../../../spec/latest/chapters/synchronization.h
 `pDependencyInfos` at index i ; or
 
 * 
-The event was created without `VK_EVENT_CREATE_DEVICE_ONLY_BIT`, and
+The event was created without [VK_EVENT_CREATE_DEVICE_ONLY_BIT](VkEventCreateFlagBits.html), and
 the first [synchronization scope](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-scopes)
 defined by the element of `pDependencyInfos` at index i only
-includes host operations (`VK_PIPELINE_STAGE_2_HOST_BIT`).
+includes host operations ([VK_PIPELINE_STAGE_2_HOST_BIT](VkPipelineStageFlagBits2.html)).
 
 The second [synchronization scope](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-scopes)
 and [access scope](../../../../spec/latest/chapters/synchronization.html#synchronization-dependencies-access-scopes) of each
@@ -99,7 +99,7 @@ two **may** execute unhindered. |
 There is no direct ordering guarantee between `vkCmdSetEvent2` and
 [vkCmdResetEvent2](vkCmdResetEvent2.html), [vkCmdResetEvent](vkCmdResetEvent.html), or [vkCmdSetEvent](vkCmdSetEvent.html).
 Another execution dependency (e.g. a pipeline barrier or semaphore with
-`VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT`) is needed to prevent such a race
+[VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT](VkPipelineStageFlagBits2.html)) is needed to prevent such a race
 condition. |
 
 Valid Usage
@@ -122,7 +122,7 @@ Members of `pEvents` **must** not have been signaled by
 For each element i of `pEvents`,
 if the `dependencyFlags` member of the ith element of
 `pDependencyInfos` does not include
-`VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR`, and
+[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](VkDependencyFlagBits.html), and
 if that event is signaled by [vkCmdSetEvent2](vkCmdSetEvent2.html), that command’s
 `dependencyInfo` parameter **must** be exactly equal to the ith
 element of `pDependencyInfos`
@@ -132,16 +132,16 @@ element of `pDependencyInfos`
 
 For each element i of `pEvents`, if the `dependencyFlags`
 member of the ith element of `pDependencyInfos` includes
-`VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR`, that event **must** be
+[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](VkDependencyFlagBits.html), that event **must** be
 signaled by [vkCmdSetEvent2](vkCmdSetEvent2.html) with
-`VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR`
+[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](VkDependencyFlagBits.html)
 
 * 
 [](#VUID-vkCmdWaitEvents2-pEvents-10790) VUID-vkCmdWaitEvents2-pEvents-10790
 
 For each element i of `pEvents`, if the `dependencyFlags`
 member of the ith element of `pDependencyInfos` includes
-`VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR`, the union of
+[VK_DEPENDENCY_ASYMMETRIC_EVENT_BIT_KHR](VkDependencyFlagBits.html), the union of
 `srcStageMask` members of all elements of `pMemoryBarriers`,
 `pBufferMemoryBarriers`, and `pImageMemoryBarriers` of the
 ith element of `pDependencyInfos` **must** equal
@@ -197,23 +197,23 @@ create the command pool that `commandBuffer` was allocated from
 The `dependencyFlags` member of any element of `pDependencyInfo`
 **must** not include any of the following bits:
 
-`VK_DEPENDENCY_BY_REGION_BIT`
+[VK_DEPENDENCY_BY_REGION_BIT](VkDependencyFlagBits.html)
 
 * 
-`VK_DEPENDENCY_DEVICE_GROUP_BIT`
+[VK_DEPENDENCY_DEVICE_GROUP_BIT](VkDependencyFlagBits.html)
 
 * 
-`VK_DEPENDENCY_VIEW_LOCAL_BIT`
+[VK_DEPENDENCY_VIEW_LOCAL_BIT](VkDependencyFlagBits.html)
 
 * 
-`VK_DEPENDENCY_FEEDBACK_LOOP_BIT_EXT`
+[VK_DEPENDENCY_FEEDBACK_LOOP_BIT_EXT](VkDependencyFlagBits.html)
 
 [](#VUID-vkCmdWaitEvents2-maintenance8-10205) VUID-vkCmdWaitEvents2-maintenance8-10205
 
 If the [`maintenance8`](../../../../spec/latest/chapters/features.html#features-maintenance8) feature is not
 enabled, the `dependencyFlags` members of any element of
 `pDependencyInfos` **must** not include
-`VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR`
+[VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR](VkDependencyFlagBits.html)
 
 [](#VUID-vkCmdWaitEvents2-dependencyFlags-03844) VUID-vkCmdWaitEvents2-dependencyFlags-03844
 
@@ -221,7 +221,7 @@ If this command is called inside a render pass instance, the
 `srcStageMask` member of any element of the `pMemoryBarriers`,
 `pBufferMemoryBarriers`, or `pImageMemoryBarriers` members of
 `pDependencyInfos` **must** not include
-`VK_PIPELINE_STAGE_2_HOST_BIT`
+[VK_PIPELINE_STAGE_2_HOST_BIT](VkPipelineStageFlagBits2.html)
 
 [](#VUID-vkCmdWaitEvents2-commandBuffer-03846) VUID-vkCmdWaitEvents2-commandBuffer-03846
 
@@ -259,7 +259,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdWaitEvents2-commandBuffer-cmdpool) VUID-vkCmdWaitEvents2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](VkQueueFlagBits.html), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdWaitEvents2-suspended) VUID-vkCmdWaitEvents2-suspended

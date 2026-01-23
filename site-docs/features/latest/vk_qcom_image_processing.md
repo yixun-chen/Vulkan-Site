@@ -274,7 +274,7 @@ The following summarizes how the built-ins are exposed in GLSL:
     |       sampler2D reference,         | and refCoord specify the bottom-left corner|
     |       uvec2     refCoord,          | of the block in target and reference       |
     |       uvec2     blockSize)         | images. The error metric is the Sum of     |
-    |                                    | Absolute Differences(SAD).                 |
+    |                                    | Absolute Differences (SAD).                |
     +------------------------------------+--------------------------------------------+
     |   vec4 textureBlockMatchSSDQCOM(   | Block matching operation measures the      |
     |       sampler2D target             | correlation (or similarity) of the target  |
@@ -282,7 +282,7 @@ The following summarizes how the built-ins are exposed in GLSL:
     |       sampler2D reference,         | and refCoord specify the bottom-left corner|
     |       uvec2     refCoord,          | of the block in target and reference       |
     |       uvec2     blockSize)         | images. The error metric is the Sum of     |
-    |                                    | Square Differences(SSD).                   |
+    |                                    | Square Differences (SSD).                  |
     +------------------------------------+--------------------------------------------+
 
 Support for weighted sampling, box filtering, and block matching operations are

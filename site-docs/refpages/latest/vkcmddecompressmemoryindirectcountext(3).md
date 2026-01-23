@@ -77,7 +77,7 @@ The [`memoryDecompression`](../../../../spec/latest/chapters/features.html#featu
 
 `indirectCommandsAddress` **must** be a device address allocated to the
 application from a buffer created with the
-`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsAddress-07695) VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsAddress-07695
@@ -89,7 +89,7 @@ application from a buffer created with the
 
 `indirectCommandsCountAddress` **must** be a device address allocated
 to the application from a buffer created with the
-`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage flag set
+[VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT](VkBufferUsageFlagBits.html) usage flag set
 
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsCountAddress-07698) VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsCountAddress-07698
@@ -132,7 +132,7 @@ equal to sizeof([VkDecompressMemoryRegionEXT](VkDecompressMemoryRegionEXT.html))
 [](#VUID-vkCmdDecompressMemoryIndirectCountEXT-decompressionMethod-11769) VUID-vkCmdDecompressMemoryIndirectCountEXT-decompressionMethod-11769
 
 If `decompressionMethod` is
-`VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_EXT`, then all
+[VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_EXT](VkMemoryDecompressionMethodFlagBitsEXT.html), then all
 values in [VkDecompressMemoryRegionEXT](VkDecompressMemoryRegionEXT.html)::`decompressedSize`
 **must** be less than or equal to 65536 bytes
 
@@ -177,7 +177,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountEXT-commandBuffer-cmdpool) VUID-vkCmdDecompressMemoryIndirectCountEXT-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountEXT-renderpass) VUID-vkCmdDecompressMemoryIndirectCountEXT-renderpass

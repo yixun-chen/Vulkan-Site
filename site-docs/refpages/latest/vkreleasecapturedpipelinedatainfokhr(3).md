@@ -45,7 +45,7 @@ Valid Usage
 [](#VUID-VkReleaseCapturedPipelineDataInfoKHR-pipeline-09613) VUID-VkReleaseCapturedPipelineDataInfoKHR-pipeline-09613
 
 `pipeline` **must** have been created with
-`VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR`
+[VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR](VkPipelineCreateFlagBits2.html)
 
 * 
 [](#VUID-VkReleaseCapturedPipelineDataInfoKHR-pipeline-09618) VUID-VkReleaseCapturedPipelineDataInfoKHR-pipeline-09618
@@ -58,7 +58,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkReleaseCapturedPipelineDataInfoKHR-sType-sType) VUID-VkReleaseCapturedPipelineDataInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_RELEASE_CAPTURED_PIPELINE_DATA_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_RELEASE_CAPTURED_PIPELINE_DATA_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkReleaseCapturedPipelineDataInfoKHR-pNext-pNext) VUID-VkReleaseCapturedPipelineDataInfoKHR-pNext-pNext

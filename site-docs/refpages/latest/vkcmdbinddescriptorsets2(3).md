@@ -43,6 +43,22 @@ be bound to.
 Valid Usage
 
 * 
+[](#VUID-vkCmdBindDescriptorSets2-commandBuffer-11295) VUID-vkCmdBindDescriptorSets2-commandBuffer-11295
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pSamplerHeapBindInfo`
+equal to `NULL`
+
+* 
+[](#VUID-vkCmdBindDescriptorSets2-commandBuffer-11296) VUID-vkCmdBindDescriptorSets2-commandBuffer-11296
+
+If `commandBuffer` is a secondary command buffer, it **must** have
+begun with
+[VkCommandBufferInheritanceDescriptorHeapInfoEXT](VkCommandBufferInheritanceDescriptorHeapInfoEXT.html)::`pResourceHeapBindInfo`
+equal to `NULL`
+
+* 
 [](#VUID-vkCmdBindDescriptorSets2-pBindDescriptorSetsInfo-09467) VUID-vkCmdBindDescriptorSets2-pBindDescriptorSetsInfo-09467
 
 Each bit in `pBindDescriptorSetsInfo->stageFlags` **must** be a stage
@@ -69,7 +85,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdBindDescriptorSets2-commandBuffer-cmdpool) VUID-vkCmdBindDescriptorSets2-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), or [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdBindDescriptorSets2-videocoding) VUID-vkCmdBindDescriptorSets2-videocoding

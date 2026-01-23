@@ -365,6 +365,25 @@ whether or not the feature is enabled.
 | `uint32_t` | `maxShaderBindingTableRecordIndex` | `[VK_EXT_ray_tracing_invocation_reorder](VK_EXT_ray_tracing_invocation_reorder.html)` |
 | `VkBool32` | `resolveSrgbFormatAppliesTransferFunction` | `[maintenance10`](../../../../spec/latest/chapters/features.html#features-maintenance10) |
 | `VkBool32` | `resolveSrgbFormatSupportsTransferFunctionControl` | `[maintenance10`](../../../../spec/latest/chapters/features.html#features-maintenance10) |
+| `VkDeviceSize` | `samplerHeapAlignment` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `resourceHeapAlignment` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `maxSamplerHeapSize` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `maxResourceHeapSize` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `minSamplerHeapReservedRange` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `minSamplerHeapReservedRangeWithEmbedded` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `minResourceHeapReservedRange` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `samplerDescriptorSize` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `imageDescriptorSize` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `bufferDescriptorSize` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `samplerDescriptorAlignment` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `imageDescriptorAlignment` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `bufferDescriptorAlignment` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
+| `VkDeviceSize` | `maxPushDataSize` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
+| `size_t` | `imageCaptureReplayOpaqueDataSize` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
+| `uint32_t` | `maxDescriptorHeapEmbeddedSamplers` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
+| `uint32_t` | `samplerYcbcrConversionCount` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
+| `uint32_t` | `sparseDescriptorHeaps` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
+| `uint32_t` | `protectedDescriptorHeaps` | [`descriptorHeap`](../../../../spec/latest/chapters/features.html#features-descriptorHeap) |
 
 | Limit | Unsupported Limit | Supported Limit | Limit Type1 |
 | --- | --- | --- | --- |
@@ -473,38 +492,38 @@ whether or not the feature is enabled.
 | `subgroupSize` | - | 1/4 (Vulkan Core)
 
                                                    4 (Vulkan Roadmap 2022) | min |
-| `subgroupSupportedStages` | - | `VK_SHADER_STAGE_COMPUTE_BIT` (Vulkan Core)
+| `subgroupSupportedStages` | - | [VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html) (Vulkan Core)
 
-                                                   `VK_SHADER_STAGE_COMPUTE_BIT` \|
+                                                   [VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html) \|
 
-                                                   `VK_SHADER_STAGE_FRAGMENT_BIT` (Vulkan Roadmap 2022) | bitfield |
-| `subgroupSupportedOperations` | - | `VK_SUBGROUP_FEATURE_BASIC_BIT` (Vulkan Core)
+                                                   [VK_SHADER_STAGE_FRAGMENT_BIT](VkShaderStageFlagBits.html) (Vulkan Roadmap 2022) | bitfield |
+| `subgroupSupportedOperations` | - | [VK_SUBGROUP_FEATURE_BASIC_BIT](VkSubgroupFeatureFlagBits.html) (Vulkan Core)
 
-                                                   `VK_SUBGROUP_FEATURE_BASIC_BIT` \|
+                                                   [VK_SUBGROUP_FEATURE_BASIC_BIT](VkSubgroupFeatureFlagBits.html) \|
 
-                                                   `VK_SUBGROUP_FEATURE_VOTE_BIT` \|
+                                                   [VK_SUBGROUP_FEATURE_VOTE_BIT](VkSubgroupFeatureFlagBits.html) \|
 
-                                                   `VK_SUBGROUP_FEATURE_ARITHMETIC_BIT` \|
+                                                   [VK_SUBGROUP_FEATURE_ARITHMETIC_BIT](VkSubgroupFeatureFlagBits.html) \|
 
-                                                   `VK_SUBGROUP_FEATURE_BALLOT_BIT` \|
+                                                   [VK_SUBGROUP_FEATURE_BALLOT_BIT](VkSubgroupFeatureFlagBits.html) \|
 
-                                                   `VK_SUBGROUP_FEATURE_SHUFFLE_BIT` \|
+                                                   [VK_SUBGROUP_FEATURE_SHUFFLE_BIT](VkSubgroupFeatureFlagBits.html) \|
 
-                                                   `VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT` \|
+                                                   [VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT](VkSubgroupFeatureFlagBits.html) \|
 
-                                                   `VK_SUBGROUP_FEATURE_QUAD_BIT` (Vulkan Roadmap 2022) | bitfield |
+                                                   [VK_SUBGROUP_FEATURE_QUAD_BIT](VkSubgroupFeatureFlagBits.html) (Vulkan Roadmap 2022) | bitfield |
 | `shaderSignedZeroInfNanPreserveFloat16` | - | - (Vulkan Core)
 
-                                                    `VK_TRUE` (Vulkan Roadmap 2022, Vulkan 1.4) | Boolean |
+                                                    [VK_TRUE](VK_TRUE.html) (Vulkan Roadmap 2022, Vulkan 1.4) | Boolean |
 | `shaderSignedZeroInfNanPreserveFloat32` | - | - (Vulkan Core)
 
-                                                    `VK_TRUE` (Vulkan Roadmap 2022, Vulkan 1.4) | Boolean |
-| `shaderRoundingModeRTEFloat16` | - | `VK_FALSE` (Vulkan Core)
+                                                    [VK_TRUE](VK_TRUE.html) (Vulkan Roadmap 2022, Vulkan 1.4) | Boolean |
+| `shaderRoundingModeRTEFloat16` | - | [VK_FALSE](VK_FALSE.html) (Vulkan Core)
 
-                                                    `VK_TRUE` (Vulkan Roadmap 2024) | Boolean |
-| `shaderRoundingModeRTEFloat32` | - | `VK_FALSE` (Vulkan Core)
+                                                    [VK_TRUE](VK_TRUE.html) (Vulkan Roadmap 2024) | Boolean |
+| `shaderRoundingModeRTEFloat32` | - | [VK_FALSE](VK_FALSE.html) (Vulkan Core)
 
-                                                    `VK_TRUE` (Vulkan Roadmap 2024) | Boolean |
+                                                    [VK_TRUE](VK_TRUE.html) (Vulkan Roadmap 2024) | Boolean |
 | `maxSubgroupSize` | - | - (Vulkan Core)
 
                                                    4 (Vulkan Roadmap 2022) | min |
@@ -547,25 +566,25 @@ whether or not the feature is enabled.
 
                                                    7680 (Vulkan 1.4) | min |
 | `maxFramebufferLayers` | - | 256 | min |
-| `framebufferColorSampleCounts` | - | (`VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT`) | min |
-| `framebufferIntegerColorSampleCounts` | - | (`VK_SAMPLE_COUNT_1_BIT`) | min |
-| `framebufferDepthSampleCounts` | - | (`VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT`) | min |
-| `framebufferStencilSampleCounts` | - | (`VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT`) | min |
-| `framebufferNoAttachmentsSampleCounts` | - | (`VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT`) | min |
+| `framebufferColorSampleCounts` | - | ([VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) \| [VK_SAMPLE_COUNT_4_BIT](VkSampleCountFlagBits.html)) | min |
+| `framebufferIntegerColorSampleCounts` | - | ([VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html)) | min |
+| `framebufferDepthSampleCounts` | - | ([VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) \| [VK_SAMPLE_COUNT_4_BIT](VkSampleCountFlagBits.html)) | min |
+| `framebufferStencilSampleCounts` | - | ([VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) \| [VK_SAMPLE_COUNT_4_BIT](VkSampleCountFlagBits.html)) | min |
+| `framebufferNoAttachmentsSampleCounts` | - | ([VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) \| [VK_SAMPLE_COUNT_4_BIT](VkSampleCountFlagBits.html)) | min |
 | `maxColorAttachments` | - | 4 (Vulkan Core)
 
                                                    7 (Vulkan Roadmap 2022)
 
                                                    8 (Vulkan Roadmap 2024, Vulkan 1.4) | min |
-| `sampledImageColorSampleCounts` | - | (`VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT`) | min |
-| `sampledImageIntegerSampleCounts` | - | `VK_SAMPLE_COUNT_1_BIT` | min |
-| `sampledImageDepthSampleCounts` | - | (`VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT`) | min |
-| `sampledImageStencilSampleCounts` | - | (`VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT`) | min |
-| `storageImageSampleCounts` | `VK_SAMPLE_COUNT_1_BIT` | (`VK_SAMPLE_COUNT_1_BIT` \| `VK_SAMPLE_COUNT_4_BIT`) | min |
+| `sampledImageColorSampleCounts` | - | ([VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) \| [VK_SAMPLE_COUNT_4_BIT](VkSampleCountFlagBits.html)) | min |
+| `sampledImageIntegerSampleCounts` | - | [VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) | min |
+| `sampledImageDepthSampleCounts` | - | ([VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) \| [VK_SAMPLE_COUNT_4_BIT](VkSampleCountFlagBits.html)) | min |
+| `sampledImageStencilSampleCounts` | - | ([VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) \| [VK_SAMPLE_COUNT_4_BIT](VkSampleCountFlagBits.html)) | min |
+| `storageImageSampleCounts` | [VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) | ([VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) \| [VK_SAMPLE_COUNT_4_BIT](VkSampleCountFlagBits.html)) | min |
 | `maxSampleMaskWords` | - | 1 | min |
 | `timestampComputeAndGraphics` | - | - (Vulkan Core)
 
-                                                   `VK_TRUE` (Vulkan Roadmap 2024, Vulkan 1.4) | Boolean |
+                                                   [VK_TRUE](VK_TRUE.html) (Vulkan Roadmap 2024, Vulkan 1.4) | Boolean |
 | `timestampPeriod` | - | - | duration |
 | `maxClipDistances` | 0 | 8 | min |
 | `maxCullDistances` | 0 | 8 | min |
@@ -584,7 +603,7 @@ whether or not the feature is enabled.
 | `strictLines` | - | - | implementation-dependent |
 | `standardSampleLocations` | - | - (Vulkan Core)
 
-                                                   `VK_TRUE` (Vulkan Roadmap 2022, Vulkan 1.4) | Boolean |
+                                                   [VK_TRUE](VK_TRUE.html) (Vulkan Roadmap 2022, Vulkan 1.4) | Boolean |
 | `optimalBufferCopyOffsetAlignment` | - | - | recommendation |
 | `optimalBufferCopyRowPitchAlignment` | - | - | recommendation |
 | `nonCoherentAtomSize` | - | 256 | max |
@@ -592,40 +611,40 @@ whether or not the feature is enabled.
 | `maxMultiviewViewCount` | - | 6 | min |
 | `maxMultiviewInstanceIndex` | - | 227-1 | min |
 | `maxDiscardRectangles` | 0 | 4 | min |
-| `sampleLocationSampleCounts` | - | `VK_SAMPLE_COUNT_4_BIT` | min |
+| `sampleLocationSampleCounts` | - | [VK_SAMPLE_COUNT_4_BIT](VkSampleCountFlagBits.html) | min |
 | `maxSampleLocationGridSize` | - | (1,1) | min |
 | `sampleLocationCoordinateRange` | - | (0.0, 0.9375) | (max,min) |
 | `sampleLocationSubPixelBits` | - | 4 | min |
-| `variableSampleLocations` | - | `VK_FALSE` | implementation-dependent |
-| `nativeUnalignedPerformance` | - | `VK_FALSE` | implementation-dependent |
+| `variableSampleLocations` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `nativeUnalignedPerformance` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
 | `minImportedHostPointerAlignment` | - | 65536 | max |
 | `perViewPositionAllComponents` | - | - | implementation-dependent |
 | `filterMinmaxSingleComponentFormats` | - | - | implementation-dependent |
 | `filterMinmaxImageComponentMapping` | - | - | implementation-dependent |
 | `advancedBlendMaxColorAttachments` | - | 1 | min |
-| `advancedBlendIndependentBlend` | - | `VK_FALSE` | implementation-dependent |
-| `advancedBlendNonPremultipliedSrcColor` | - | `VK_FALSE` | implementation-dependent |
-| `advancedBlendNonPremultipliedDstColor` | - | `VK_FALSE` | implementation-dependent |
-| `advancedBlendCorrelatedOverlap` | - | `VK_FALSE` | implementation-dependent |
-| `advancedBlendAllOperations` | - | `VK_FALSE` | implementation-dependent |
+| `advancedBlendIndependentBlend` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `advancedBlendNonPremultipliedSrcColor` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `advancedBlendNonPremultipliedDstColor` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `advancedBlendCorrelatedOverlap` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `advancedBlendAllOperations` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
 | `maxPerSetDescriptors` | - | 1024 | min |
 | `maxMemoryAllocationSize` | - | 230 | min |
 | `maxBufferSize` | - | 230 | min |
 | `primitiveOverestimationSize` | - | 0.0 | min |
 | `maxExtraPrimitiveOverestimationSize` | - | 0.0 | min |
 | `extraPrimitiveOverestimationSizeGranularity` | - | 0.0 | min |
-| `primitiveUnderestimation` | - | `VK_FALSE` | implementation-dependent |
-| `conservativePointAndLineRasterization` | - | `VK_FALSE` | implementation-dependent |
-| `degenerateTrianglesRasterized` | - | `VK_FALSE` | implementation-dependent |
-| `degenerateLinesRasterized` | - | `VK_FALSE` | implementation-dependent |
-| `fullyCoveredFragmentShaderInputVariable` | - | `VK_FALSE` | implementation-dependent |
-| `conservativeRasterizationPostDepthCoverage` | - | `VK_FALSE` | implementation-dependent |
+| `primitiveUnderestimation` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `conservativePointAndLineRasterization` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `degenerateTrianglesRasterized` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `degenerateLinesRasterized` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `fullyCoveredFragmentShaderInputVariable` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `conservativeRasterizationPostDepthCoverage` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
 | `maxUpdateAfterBindDescriptorsInAllPools` | 0 | 500000 | min |
-| `shaderUniformBufferArrayNonUniformIndexingNative` | - | `VK_FALSE` | implementation-dependent |
-| `shaderSampledImageArrayNonUniformIndexingNative` | - | `VK_FALSE` | implementation-dependent |
-| `shaderStorageBufferArrayNonUniformIndexingNative` | - | `VK_FALSE` | implementation-dependent |
-| `shaderStorageImageArrayNonUniformIndexingNative` | - | `VK_FALSE` | implementation-dependent |
-| `shaderInputAttachmentArrayNonUniformIndexingNative` | - | `VK_FALSE` | implementation-dependent |
+| `shaderUniformBufferArrayNonUniformIndexingNative` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `shaderSampledImageArrayNonUniformIndexingNative` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `shaderStorageBufferArrayNonUniformIndexingNative` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `shaderStorageImageArrayNonUniformIndexingNative` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `shaderInputAttachmentArrayNonUniformIndexingNative` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
 | `maxPerStageDescriptorUpdateAfterBindSamplers` | 0 9 | 500000 9 | min |
 | `maxPerStageDescriptorUpdateAfterBindUniformBuffers` | 0 9 | 12 9 | min |
 | `maxPerStageDescriptorUpdateAfterBindStorageBuffers` | 0 9 | 500000 9 | min |
@@ -700,15 +719,15 @@ whether or not the feature is enabled.
 | `maxTransformFeedbackStreamDataSize` | - | 512 | min |
 | `maxTransformFeedbackBufferDataSize` | - | 512 | min |
 | `maxTransformFeedbackBufferDataStride` | - | 512 | min |
-| `transformFeedbackQueries` | - | `VK_FALSE` | implementation-dependent |
-| `transformFeedbackStreamsLinesTriangles` | - | `VK_FALSE` | implementation-dependent |
-| `transformFeedbackRasterizationStreamSelect` | - | `VK_FALSE` | implementation-dependent |
-| `transformFeedbackDraw` | - | `VK_FALSE` | implementation-dependent |
+| `transformFeedbackQueries` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `transformFeedbackStreamsLinesTriangles` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `transformFeedbackRasterizationStreamSelect` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `transformFeedbackDraw` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
 | `minFragmentDensityTexelSize` | - | (1,1) | min |
 | `maxFragmentDensityTexelSize` | - | (1,1) | min |
 | `fragmentDensityInvocations` | - | - | implementation-dependent |
-| `subsampledLoads` | `VK_TRUE` | `VK_FALSE` | implementation-dependent |
-| `subsampledCoarseReconstructionEarlyAccess` | `VK_FALSE` | `VK_FALSE` | implementation-dependent |
+| `subsampledLoads` | [VK_TRUE](VK_TRUE.html) | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `subsampledCoarseReconstructionEarlyAccess` | [VK_FALSE](VK_FALSE.html) | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
 | `maxSubsampledArrayLayers` | 2 | 2 | min |
 | `maxDescriptorSetSubsampledSamplers` | 1 | 1 | min |
 | `fragmentDensityOffsetGranularity` | - | (1024,1024) | max |
@@ -757,8 +776,8 @@ whether or not the feature is enabled.
 | `deviceGeneratedCommandsMultiDrawIndirectCount` | - | false | implementation-dependent |
 | `maxIndirectShaderObjectCount` | 0 | 212 | implementation-dependent |
 | `maxIndirectCommandsIndirectStride` | - | 2048 | min |
-| `supportedIndirectCommandsInputModes` | - | `VK_INDIRECT_COMMANDS_INPUT_MODE_VULKAN_INDEX_BUFFER_EXT` | min |
-| `supportedIndirectCommandsShaderStages` | - | (`VK_SHADER_STAGE_COMPUTE_BIT` \| `VK_SHADER_STAGE_VERTEX_BIT` \| `VK_SHADER_STAGE_FRAGMENT_BIT`) | min |
+| `supportedIndirectCommandsInputModes` | - | [VK_INDIRECT_COMMANDS_INPUT_MODE_VULKAN_INDEX_BUFFER_EXT](VkIndirectCommandsInputModeFlagBitsEXT.html) | min |
+| `supportedIndirectCommandsShaderStages` | - | ([VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html) \| [VK_SHADER_STAGE_VERTEX_BIT](VkShaderStageFlagBits.html) \| [VK_SHADER_STAGE_FRAGMENT_BIT](VkShaderStageFlagBits.html)) | min |
 | `supportedIndirectCommandsShaderStagesPipelineBinding` | - | 0 | min |
 | `supportedIndirectCommandsShaderStagesShaderBinding` | - | 0 | min |
 | `maxCustomBorderColorSamplers` | - | 32 | min |
@@ -767,24 +786,24 @@ whether or not the feature is enabled.
 | `minFragmentShadingRateAttachmentTexelSize` | (0,0) | (32,32) | max |
 | `maxFragmentShadingRateAttachmentTexelSize` | (0,0) | (8,8) | min |
 | `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` | 0 | 1 | min |
-| `primitiveFragmentShadingRateWithMultipleViewports` | `VK_FALSE` | `VK_FALSE` | implementation-dependent |
-| `layeredShadingRateAttachments` | `VK_FALSE` | `VK_FALSE` | implementation-dependent |
-| `fragmentShadingRateNonTrivialCombinerOps` | - | `VK_FALSE` | implementation-dependent |
+| `primitiveFragmentShadingRateWithMultipleViewports` | [VK_FALSE](VK_FALSE.html) | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `layeredShadingRateAttachments` | [VK_FALSE](VK_FALSE.html) | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `fragmentShadingRateNonTrivialCombinerOps` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
 | `maxFragmentSize` | - | (2,2) | min |
 | `maxFragmentSizeAspectRatio` | - | 2 | min |
 | `maxFragmentShadingRateCoverageSamples` | - | 16 | min |
-| `maxFragmentShadingRateRasterizationSamples` | - | `VK_SAMPLE_COUNT_4_BIT` | min |
-| `fragmentShadingRateWithShaderDepthStencilWrites` | - | `VK_FALSE` | implementation-dependent |
-| `fragmentShadingRateWithSampleMask` | - | `VK_FALSE` | implementation-dependent |
-| `fragmentShadingRateWithShaderSampleMask` | - | `VK_FALSE` | implementation-dependent |
-| `fragmentShadingRateWithConservativeRasterization` | - | `VK_FALSE` | implementation-dependent |
-| `fragmentShadingRateWithFragmentShaderInterlock` | - | `VK_FALSE` | implementation-dependent |
-| `fragmentShadingRateWithCustomSampleLocations` | - | `VK_FALSE` | implementation-dependent |
-| `fragmentShadingRateStrictMultiplyCombiner` | - | `VK_FALSE` | implementation-dependent |
-| `maxFragmentShadingRateInvocationCount` | - | `VK_SAMPLE_COUNT_4_BIT` | min |
-| `combinedImageSamplerDescriptorSingleArray` | - | `VK_FALSE` | implementation-dependent |
-| `bufferlessPushDescriptors` | - | `VK_FALSE` | implementation-dependent |
-| `allowSamplerImageViewPostSubmitCreation` | - | `VK_FALSE` | implementation-dependent |
+| `maxFragmentShadingRateRasterizationSamples` | - | [VK_SAMPLE_COUNT_4_BIT](VkSampleCountFlagBits.html) | min |
+| `fragmentShadingRateWithShaderDepthStencilWrites` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `fragmentShadingRateWithSampleMask` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `fragmentShadingRateWithShaderSampleMask` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `fragmentShadingRateWithConservativeRasterization` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `fragmentShadingRateWithFragmentShaderInterlock` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `fragmentShadingRateWithCustomSampleLocations` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `fragmentShadingRateStrictMultiplyCombiner` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `maxFragmentShadingRateInvocationCount` | - | [VK_SAMPLE_COUNT_4_BIT](VkSampleCountFlagBits.html) | min |
+| `combinedImageSamplerDescriptorSingleArray` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `bufferlessPushDescriptors` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `allowSamplerImageViewPostSubmitCreation` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
 | `descriptorBufferOffsetAlignment` | - | 256 | max |
 | `maxDescriptorBufferBindings` | - | 3 | min |
 | `maxResourceDescriptorBufferBindings` | - | 1 | min |
@@ -819,9 +838,9 @@ whether or not the feature is enabled.
 | `maxSubpassShadingWorkgroupSizeAspectRatio` | 0 | 1 | min |
 | `maxMultiDrawCount` | - | 1024 | min |
 | `maxCommandBufferNestingLevel` | - | 1 | min |
-| `graphicsPipelineLibraryFastLinking` | - | `VK_FALSE` | implementation-dependent |
-| `graphicsPipelineLibraryIndependentInterpolationDecoration` | - | `VK_FALSE` | implementation-dependent |
-| `triStripVertexOrderIndependentOfProvokingVertex` | - | `VK_FALSE` | implementation-dependent |
+| `graphicsPipelineLibraryFastLinking` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `graphicsPipelineLibraryIndependentInterpolationDecoration` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
+| `triStripVertexOrderIndependentOfProvokingVertex` | - | [VK_FALSE](VK_FALSE.html) | implementation-dependent |
 | `maxWeightFilterPhases` | - | 1024 | min |
 | `maxWeightFilterDimension` | - | (64,64) | min |
 | `maxBlockMatchRegion` | - | (64,64) | min |
@@ -847,11 +866,12 @@ whether or not the feature is enabled.
 | `maxRenderPassStripes` | - | 32 | min |
 | `minPlacedMemoryMapAlignment` | - | 65536 | max |
 | `supportedImageAlignmentMask` | - | 1 | min |
-| `separateDepthStencilAttachmentAccess` | `VK_FALSE` | - | implementation-dependent |
+| `separateDepthStencilAttachmentAccess` | [VK_FALSE](VK_FALSE.html) | - | implementation-dependent |
 | `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize` | - | subgroupSize × 2 | min |
 | `cooperativeMatrixFlexibleDimensionsMaxDimension` | - | 256 | min |
 | `cooperativeMatrixWorkgroupScopeReservedSharedMemory` | - | `maxComputeSharedMemorySize` / 2 | max |
 | `maxCooperativeVectorComponents` | - | 128 | min |
+| `maxVectorComponents` | - | 1024 | min |
 | `maxApronSize` | - | 1 | min |
 | `preferNonCoherent` | - | - | implementation-dependent |
 | `tileGranularity` | - | (16,16) | min |
@@ -864,10 +884,36 @@ whether or not the feature is enabled.
 | `maxPerStageDescriptorSetStorageTensors` | - | 16 | min |
 | `maxDescriptorSetUpdateAfterBindStorageTensors` | 0 | 500000 | min |
 | `maxPerStageDescriptorUpdateAfterBindStorageTensors` | 0 | 500000 | min |
-| `shaderTensorSupportedStages` | - | `VK_SHADER_STAGE_COMPUTE_BIT` | bitfield |
+| `shaderTensorSupportedStages` | - | [VK_SHADER_STAGE_COMPUTE_BIT](VkShaderStageFlagBits.html) | bitfield |
 | `maxShaderBindingTableRecordIndex` | - | 228-1 | min |
 | `resolveSrgbFormatAppliesTransferFunction` | - | - | implementation-depdendent |
-| `resolveSrgbFormatSupportsTransferFunctionControl` | `VK_FALSE` | `VK_FALSE` | min |
+| `resolveSrgbFormatSupportsTransferFunctionControl` | [VK_FALSE](VK_FALSE.html) | [VK_FALSE](VK_FALSE.html) | min |
+| `samplerHeapAlignment` | - | 65536 | max |
+| `resourceHeapAlignment` | - | 65536 | max |
+| `maxSamplerHeapSize` | - | max(
+
+                                                    4000 × `samplerDescriptorSize`
+                                                    + `minSamplerHeapReservedRange`,
+
+                                                    2048 × `samplerDescriptorSize`
+                                                    + `minSamplerHeapReservedRangeWithEmbedded`) | min |
+| `maxResourceHeapSize` | - | (220 - 215) × max(`imageDescriptorSize`,
+                                                    `bufferDescriptorSize`)
+                                                    + `minResourceHeapReservedRange` | min |
+| `minSamplerHeapReservedRange` | - | 96 × `samplerDescriptorSize` | max |
+| `minSamplerHeapReservedRangeWithEmbedded` | - | 2048 × `samplerDescriptorSize` | max |
+| `minResourceHeapReservedRange` | - | 215 × max(`imageDescriptorSize`,
+                                                       `bufferDescriptorSize`) | max |
+| `samplerDescriptorSize` | - | 32 | max |
+| `imageDescriptorSize` | - | 64 | max |
+| `bufferDescriptorSize` | - | 128 | max |
+| `samplerDescriptorAlignment` | - | 32 | max |
+| `imageDescriptorAlignment` | - | 64 | max |
+| `bufferDescriptorAlignment` | - | 128 | max |
+| `maxPushDataSize` | - | 256 | min |
+| `maxDescriptorHeapEmbeddedSamplers` | - | 2032 | min |
+| `samplerYcbcrConversionCount` | - | 3 | max |
+| `imageCaptureReplayOpaqueDataSize` | - | - | implementation-dependent |
 
 1
 

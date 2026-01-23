@@ -125,7 +125,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkGraphicsPipelineShaderGroupsCreateInfoNV-sType-sType) VUID-VkGraphicsPipelineShaderGroupsCreateInfoNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_SHADER_GROUPS_CREATE_INFO_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_SHADER_GROUPS_CREATE_INFO_NV](VkStructureType.html)
 
 * 
 [](#VUID-VkGraphicsPipelineShaderGroupsCreateInfoNV-pGroups-parameter) VUID-VkGraphicsPipelineShaderGroupsCreateInfoNV-pGroups-parameter

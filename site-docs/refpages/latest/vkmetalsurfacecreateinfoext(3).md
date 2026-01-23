@@ -48,7 +48,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkMetalSurfaceCreateInfoEXT-sType-sType) VUID-VkMetalSurfaceCreateInfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_METAL_SURFACE_CREATE_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_METAL_SURFACE_CREATE_INFO_EXT](VkStructureType.html)
 
 * 
 [](#VUID-VkMetalSurfaceCreateInfoEXT-pNext-pNext) VUID-VkMetalSurfaceCreateInfoEXT-pNext-pNext

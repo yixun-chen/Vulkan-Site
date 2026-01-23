@@ -65,7 +65,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSetPresentConfigNV-sType-sType) VUID-VkSetPresentConfigNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SET_PRESENT_CONFIG_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SET_PRESENT_CONFIG_NV](VkStructureType.html)
 
 [VK_NV_present_metering](VK_NV_present_metering.html), [VkStructureType](VkStructureType.html)
 

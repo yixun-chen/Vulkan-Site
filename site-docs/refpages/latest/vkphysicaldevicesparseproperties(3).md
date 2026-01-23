@@ -32,7 +32,7 @@ typedef struct VkPhysicalDeviceSparseProperties {
 
 * 
 `residencyStandard2DBlockShape`
-is `VK_TRUE` if the physical device will access all single-sample 2D
+is [VK_TRUE](VK_TRUE.html) if the physical device will access all single-sample 2D
 sparse resources using the standard sparse image block shapes (based on
 image format), as described in the
 [Standard Sparse Image Block    Shapes (Single Sample)](../../../../spec/latest/chapters/sparsemem.html#sparsememory-sparseblockshapessingle) table.
@@ -43,7 +43,7 @@ standard sparse image block dimensions listed in the table.
 
 * 
 `residencyStandard2DMultisampleBlockShape`
-is `VK_TRUE` if the physical device will access all multisample 2D
+is [VK_TRUE](VK_TRUE.html) if the physical device will access all multisample 2D
 sparse resources using the standard sparse image block shapes (based on
 image format), as described in the
 [Standard Sparse Image Block Shapes    (MSAA)](../../../../spec/latest/chapters/sparsemem.html#sparsememory-sparseblockshapesmsaa) table.
@@ -54,7 +54,7 @@ standard sparse image block dimensions listed in the table.
 
 * 
 `residencyStandard3DBlockShape`
-is `VK_TRUE` if the physical device will access all 3D sparse
+is [VK_TRUE](VK_TRUE.html) if the physical device will access all 3D sparse
 resources using the standard sparse image block shapes (based on image
 format), as described in the
 [Standard Sparse Image Block    Shapes (Single Sample)](../../../../spec/latest/chapters/sparsemem.html#sparsememory-sparseblockshapessingle) table.
@@ -65,7 +65,7 @@ image block dimensions listed in the table.
 
 * 
 `residencyAlignedMipSize`
-is `VK_TRUE` if images with mip level dimensions that are not
+is [VK_TRUE](VK_TRUE.html) if images with mip level dimensions that are not
 integer multiples of the corresponding dimensions of the sparse image
 block **may** be placed in the mip tail.
 If this property is not reported, only mip levels with dimensions
@@ -73,7 +73,7 @@ smaller than the `imageGranularity` member of the
 `VkSparseImageFormatProperties` structure will be placed in the mip
 tail.
 If this property is reported the implementation is allowed to return
-`VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT` in the `flags`
+[VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT](VkSparseImageFormatFlagBits.html) in the `flags`
 member of `VkSparseImageFormatProperties`, indicating that mip level
 dimensions that are not integer multiples of the corresponding
 dimensions of the sparse image block will be placed in the mip tail.
@@ -82,7 +82,7 @@ dimensions of the sparse image block will be placed in the mip tail.
 `residencyNonResidentStrict`
 specifies whether the physical device **can** consistently access
 non-resident regions of a resource.
-If this property is `VK_TRUE`, access to non-resident regions of
+If this property is [VK_TRUE](VK_TRUE.html), access to non-resident regions of
 resources will be guaranteed to return values as if the resource was
 populated with 0; writes to non-resident regions will be discarded.
 

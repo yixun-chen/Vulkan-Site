@@ -105,7 +105,7 @@ Extending [VkPhysicalDeviceProperties2](VkPhysicalDeviceProperties2.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRM_PROPERTIES_EXT`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRM_PROPERTIES_EXT](VkStructureType.html)
 
 [`EGL_EXT_device_drm`](https://registry.khronos.org/EGL/extensions/EXT/EGL_EXT_device_drm.txt)
 

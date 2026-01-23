@@ -108,10 +108,10 @@ Extending [VkMemoryAllocateInfo](VkMemoryAllocateInfo.html):
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV`
+[VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV`
+[VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV](VkStructureType.html)
 
 1) If memory objects are shared between processes and APIs, is this
 considered aliasing according to the rules outlined in the
@@ -136,7 +136,7 @@ Other APIs will fall into two categories: Those that are Vulkan compatible
 (a term to be defined by subsequent interopability extensions), or Vulkan
 incompatible.
 When sharing images with Vulkan incompatible APIs, the Vulkan image must be
-transitioned to the `VK_IMAGE_LAYOUT_GENERAL` layout before handing it
+transitioned to the [VK_IMAGE_LAYOUT_GENERAL](VkImageLayout.html) layout before handing it
 off to the external API.
 
 Note this does not attempt to address cross-device transitions, nor

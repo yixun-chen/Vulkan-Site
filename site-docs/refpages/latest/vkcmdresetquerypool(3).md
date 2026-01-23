@@ -63,7 +63,7 @@ The operation of this command happens after the first scope and happens
 before the second scope.
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, this command sets the status of
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](VkQueryType.html), this command sets the status of
 query indices [`firstQuery`, `firstQuery` + 
 `queryCount` - 1] to unavailable for each pass of `queryPool`, as
 indicated by a call to
@@ -72,7 +72,7 @@ indicated by a call to
 |  | Because `vkCmdResetQueryPool` resets all the passes of the indicated
 | --- | --- |
 queries, applications must not record a `vkCmdResetQueryPool` command
-for a `queryPool` created with `VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`
+for a `queryPool` created with [VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](VkQueryType.html)
 in a command buffer that needs to be submitted multiple times as indicated
 by a call to [vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR](vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR.html).
 Otherwise applications will never be able to complete the recorded queries. |
@@ -100,7 +100,7 @@ All queries used by the command **must** not be active
 [](#VUID-vkCmdResetQueryPool-firstQuery-02862) VUID-vkCmdResetQueryPool-firstQuery-02862
 
 If `queryPool` was created with
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, this command **must** not be
+[VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR](VkQueryType.html), this command **must** not be
 recorded in a command buffer that, either directly or through secondary
 command buffers, also contains begin commands for a query from the set
 of queries [`firstQuery`, `firstQuery` + 
@@ -126,7 +126,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-vkCmdResetQueryPool-commandBuffer-cmdpool) VUID-vkCmdResetQueryPool-commandBuffer-cmdpool
 
- The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, `VK_QUEUE_OPTICAL_FLOW_BIT_NV`, `VK_QUEUE_VIDEO_DECODE_BIT_KHR`, or `VK_QUEUE_VIDEO_ENCODE_BIT_KHR` operations
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support [VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html), [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html), [VK_QUEUE_OPTICAL_FLOW_BIT_NV](VkQueueFlagBits.html), [VK_QUEUE_VIDEO_DECODE_BIT_KHR](VkQueueFlagBits.html), or [VK_QUEUE_VIDEO_ENCODE_BIT_KHR](VkQueueFlagBits.html) operations
 
 * 
 [](#VUID-vkCmdResetQueryPool-renderpass) VUID-vkCmdResetQueryPool-renderpass

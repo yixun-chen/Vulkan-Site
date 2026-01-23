@@ -30,27 +30,27 @@ typedef struct VkDescriptorImageInfo {
 
 * 
 `sampler` is a sampler handle, and is used in descriptor updates for
-types `VK_DESCRIPTOR_TYPE_SAMPLER` and
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` if the binding being
+types [VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html) and
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) if the binding being
 updated does not use immutable samplers.
 
 * 
 `imageView` is
 [VK_NULL_HANDLE](VK_NULL_HANDLE.html) or
 an image view handle, and is used in descriptor updates for types
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`,
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, and
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`.
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html), and
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html).
 
 * 
 `imageLayout` is the layout that the image subresources accessible
 from `imageView` will be in at the time this descriptor is accessed.
 `imageLayout` is used in descriptor updates for types
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`,
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`,
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, and
-`VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT`.
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html), and
+[VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT](VkDescriptorType.html).
 
 Members of `VkDescriptorImageInfo` that are not used in an update (as
 described above) are ignored.
@@ -67,23 +67,23 @@ image
 [](#VUID-VkDescriptorImageInfo-imageView-07795) VUID-VkDescriptorImageInfo-imageView-07795
 
 If `imageView` is a 2D view created from a 3D image, then
-`descriptorType` **must** be `VK_DESCRIPTOR_TYPE_STORAGE_IMAGE`,
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE`, or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`
+`descriptorType` **must** be [VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html), or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html)
 
 * 
 [](#VUID-VkDescriptorImageInfo-imageView-07796) VUID-VkDescriptorImageInfo-imageView-07796
 
 If `imageView` is a 2D view created from a 3D image, then the image
 **must** have been created with
-`VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT` set
+[VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT](VkImageCreateFlagBits.html) set
 
 * 
 [](#VUID-VkDescriptorImageInfo-descriptorType-06713) VUID-VkDescriptorImageInfo-descriptorType-06713
 
 If the [`image2DViewOf3D`](../../../../spec/latest/chapters/features.html#features-image2DViewOf3D) feature is
 not enabled or `descriptorType` is not
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE` then
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html) then
 `imageView` **must** not be a 2D view created from a 3D image
 
 * 
@@ -91,8 +91,8 @@ not enabled or `descriptorType` is not
 
 If the [`sampler2DViewOf3D`](../../../../spec/latest/chapters/features.html#features-sampler2DViewOf3D) feature
 is not enabled or `descriptorType` is not
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE` or
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` then
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html) then
 `imageView` **must** not be a 2D view created from a 3D image
 
 * 
@@ -100,38 +100,38 @@ is not enabled or `descriptorType` is not
 
 If `imageView` is created from a depth/stencil image, the
 `aspectMask` used to create the `imageView` **must** include either
-`VK_IMAGE_ASPECT_DEPTH_BIT` or `VK_IMAGE_ASPECT_STENCIL_BIT` but
+[VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) or [VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html) but
 not both
 
 * 
 [](#VUID-VkDescriptorImageInfo-imageLayout-09425) VUID-VkDescriptorImageInfo-imageLayout-09425
 
-If `imageLayout` is `VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`,
+If `imageLayout` is [VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL](VkImageLayout.html),
 then the `aspectMask` used to create `imageView` **must** not
-include either `VK_IMAGE_ASPECT_DEPTH_BIT` or
-`VK_IMAGE_ASPECT_STENCIL_BIT`
+include either [VK_IMAGE_ASPECT_DEPTH_BIT](VkImageAspectFlagBits.html) or
+[VK_IMAGE_ASPECT_STENCIL_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkDescriptorImageInfo-imageLayout-09426) VUID-VkDescriptorImageInfo-imageLayout-09426
 
 If `imageLayout` is
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`,
-`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL`,
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` or
-`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL`, then the
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html),
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL](VkImageLayout.html) or
+[VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL](VkImageLayout.html), then the
 `aspectMask` used to create `imageView` **must** not include
-`VK_IMAGE_ASPECT_COLOR_BIT`
+[VK_IMAGE_ASPECT_COLOR_BIT](VkImageAspectFlagBits.html)
 
 * 
 [](#VUID-VkDescriptorImageInfo-sampler-01564) VUID-VkDescriptorImageInfo-sampler-01564
 
 If `sampler` is used and the [VkFormat](VkFormat.html) of the image is a
 [multi-planar format](../../../../spec/latest/chapters/formats.html#formats-multiplanar), the image **must** have been
-created with `VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT`, and the
+created with [VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT](VkImageCreateFlagBits.html), and the
 `aspectMask` of the `imageView` **must** be a valid
 [multi-planar aspect mask](../../../../spec/latest/chapters/formats.html#formats-multiplanar-image-aspect) bit
 
@@ -140,8 +140,8 @@ created with `VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT`, and the
 
 If the `[VK_KHR_portability_subset](VK_KHR_portability_subset.html)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](VkPhysicalDevicePortabilitySubsetFeaturesKHR.html)::`mutableComparisonSamplers`
-is `VK_FALSE`, then `sampler` **must** have been created with
-[VkSamplerCreateInfo](VkSamplerCreateInfo.html)::`compareEnable` set to `VK_FALSE`
+is [VK_FALSE](VK_FALSE.html), then `sampler` **must** have been created with
+[VkSamplerCreateInfo](VkSamplerCreateInfo.html)::`compareEnable` set to [VK_FALSE](VK_FALSE.html)
 
 Valid Usage (Implicit)
 

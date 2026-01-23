@@ -45,7 +45,7 @@ typedef enum VkTimeDomainKHR {
 typedef VkTimeDomainKHR VkTimeDomainEXT;
 
 * 
-`VK_TIME_DOMAIN_DEVICE_KHR` specifies the device time domain.
+[VK_TIME_DOMAIN_DEVICE_KHR](#) specifies the device time domain.
 Timestamp values in this time domain use the same units and are
 comparable with device timestamp values captured using
 [vkCmdWriteTimestamp](vkCmdWriteTimestamp.html)
@@ -54,20 +54,20 @@ and are defined to be incrementing according to the
 [`timestampPeriod`](../../../../spec/latest/chapters/limits.html#limits-timestampPeriod) of the device.
 
 * 
-`VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT` specifies a time domain
+[VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT](#) specifies a time domain
 unique to a particular swapchain and a specific present stage.
 Timestamp values in this time domain are in units of nanosecond and are
 comparable only with other values from the same swapchain and present
 stage.
 
 * 
-`VK_TIME_DOMAIN_SWAPCHAIN_LOCAL_EXT` specifies a time domain unique
+[VK_TIME_DOMAIN_SWAPCHAIN_LOCAL_EXT](#) specifies a time domain unique
 to a particular swapchain.
 Timestamp values in this time domain are in units of nanosecond and are
 comparable only with other values from the same swapchain.
 
 * 
-`VK_TIME_DOMAIN_CLOCK_MONOTONIC_KHR` specifies the CLOCK_MONOTONIC
+[VK_TIME_DOMAIN_CLOCK_MONOTONIC_KHR](#) specifies the CLOCK_MONOTONIC
 time domain available on POSIX platforms.
 Timestamp values in this time domain are in units of nanoseconds and are
 comparable with platform timestamp values captured using the POSIX
@@ -79,7 +79,7 @@ clock_gettime API as computed by this example:
 or
 `[VK_EXT_calibrated_timestamps](VK_EXT_calibrated_timestamps.html)`
 will use the same time domain for all its [VkQueue](VkQueue.html) so that timestamp
-values reported for `VK_TIME_DOMAIN_DEVICE_KHR` can be matched to any
+values reported for [VK_TIME_DOMAIN_DEVICE_KHR](#) can be matched to any
 timestamp captured through [vkCmdWriteTimestamp](vkCmdWriteTimestamp.html)
 or [vkCmdWriteTimestamp2](vkCmdWriteTimestamp2.html)
 . |
@@ -89,7 +89,7 @@ clock_gettime(CLOCK_MONOTONIC, &tv);
 return tv.tv_nsec + tv.tv_sec*1000000000ull;
 
 * 
-`VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_KHR` specifies the
+[VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_KHR](#) specifies the
 CLOCK_MONOTONIC_RAW time domain available on POSIX platforms.
 Timestamp values in this time domain are in units of nanoseconds and are
 comparable with platform timestamp values captured using the POSIX
@@ -100,7 +100,7 @@ clock_gettime(CLOCK_MONOTONIC_RAW, &tv);
 return tv.tv_nsec + tv.tv_sec*1000000000ull;
 
 * 
-`VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_KHR` specifies the
+[VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_KHR](#) specifies the
 performance counter (QPC) time domain available on Windows.
 Timestamp values in this time domain are in the same units as those
 provided by the Windows QueryPerformanceCounter API and are comparable

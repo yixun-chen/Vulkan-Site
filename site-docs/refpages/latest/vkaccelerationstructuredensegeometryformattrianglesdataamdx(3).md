@@ -22,7 +22,7 @@ VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX - Structure specifyi
 If a `VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX`
 structure is included in the `pNext` chain of a
 [VkAccelerationStructureGeometryKHR](VkAccelerationStructureGeometryKHR.html) structure whose `geometryType`
-member is `VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX`, then
+member is [VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX](VkGeometryTypeKHR.html), then
 that structure defines triangle geometry using compressed data.
 
 The `VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX`
@@ -74,7 +74,7 @@ the compressed data.
 `format` specifies the [VkCompressedTriangleFormatAMDX](VkCompressedTriangleFormatAMDX.html) format
 of the compressed data.
 
-If `format` is `VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX`,
+If `format` is [VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX](VkCompressedTriangleFormatAMDX.html),
 `numVertices` specifies the sum of vertex counts across all blocks.
 
 Valid Usage
@@ -84,7 +84,7 @@ Valid Usage
 
 The buffer from which `compressedData.deviceAddress` is queried
 **must** have been created with the
-`VK_BUFFER_USAGE_2_COMPRESSED_DATA_DGF1_BIT_AMDX` usage flag set
+[VK_BUFFER_USAGE_2_COMPRESSED_DATA_DGF1_BIT_AMDX](VkBufferUsageFlagBits2.html) usage flag set
 
 * 
 [](#VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-denseGeometryFormat-10886) VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-denseGeometryFormat-10886
@@ -97,14 +97,14 @@ feature **must** be enabled
 
 If `format` is VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX, then
 `compressedData` **must** be aligned to
-`VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_ALIGNMENT_AMDX` (128) bytes
+[VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_ALIGNMENT_AMDX](VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_ALIGNMENT_AMDX.html) (128) bytes
 
 * 
 [](#VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-format-10888) VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-format-10888
 
 If `format` is VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX, then
 `dataSize` **must** be a multiple of
-`VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_STRIDE_AMDX` (128) bytes
+[VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_STRIDE_AMDX](VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_STRIDE_AMDX.html) (128) bytes
 
 * 
 [](#VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-pNext-10890) VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-pNext-10890
@@ -124,7 +124,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-sType-sType) VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_DENSE_GEOMETRY_FORMAT_TRIANGLES_DATA_AMDX`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_DENSE_GEOMETRY_FORMAT_TRIANGLES_DATA_AMDX](VkStructureType.html)
 
 * 
 [](#VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-compressedData-parameter) VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-compressedData-parameter

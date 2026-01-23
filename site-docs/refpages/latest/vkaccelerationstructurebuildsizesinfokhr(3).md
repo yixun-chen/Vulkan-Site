@@ -56,7 +56,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkAccelerationStructureBuildSizesInfoKHR-sType-sType) VUID-VkAccelerationStructureBuildSizesInfoKHR-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_SIZES_INFO_KHR`
+ `sType` **must** be [VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_SIZES_INFO_KHR](VkStructureType.html)
 
 * 
 [](#VUID-VkAccelerationStructureBuildSizesInfoKHR-pNext-pNext) VUID-VkAccelerationStructureBuildSizesInfoKHR-pNext-pNext

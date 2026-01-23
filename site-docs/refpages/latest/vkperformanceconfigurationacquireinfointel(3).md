@@ -45,7 +45,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPerformanceConfigurationAcquireInfoINTEL-sType-sType) VUID-VkPerformanceConfigurationAcquireInfoINTEL-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PERFORMANCE_CONFIGURATION_ACQUIRE_INFO_INTEL`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PERFORMANCE_CONFIGURATION_ACQUIRE_INFO_INTEL](VkStructureType.html)
 
 * 
 [](#VUID-VkPerformanceConfigurationAcquireInfoINTEL-pNext-pNext) VUID-VkPerformanceConfigurationAcquireInfoINTEL-pNext-pNext

@@ -68,7 +68,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceCooperativeMatrix2PropertiesNV-sType-sType) VUID-VkPhysicalDeviceCooperativeMatrix2PropertiesNV-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV](VkStructureType.html)
 
 [VK_NV_cooperative_matrix2](VK_NV_cooperative_matrix2.html), [VkStructureType](VkStructureType.html)
 

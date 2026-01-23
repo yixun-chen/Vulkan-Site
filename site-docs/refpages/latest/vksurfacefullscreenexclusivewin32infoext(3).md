@@ -42,7 +42,7 @@ to create the surface with.
 |  | If `hmonitor` is invalidated (e.g. the monitor is unplugged) during the
 | --- | --- |
 lifetime of a swapchain created with this structure, operations on that
-swapchain will return `VK_ERROR_OUT_OF_DATE_KHR`. |
+swapchain will return [VK_ERROR_OUT_OF_DATE_KHR](VkResult.html). |
 
 |  | It is the responsibility of the application to change the display settings
 | --- | --- |
@@ -62,7 +62,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkSurfaceFullScreenExclusiveWin32InfoEXT-sType-sType) VUID-VkSurfaceFullScreenExclusiveWin32InfoEXT-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT`
+ `sType` **must** be [VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT](VkStructureType.html)
 
 [VK_EXT_full_screen_exclusive](VK_EXT_full_screen_exclusive.html), [VK_KHR_win32_surface](VK_KHR_win32_surface.html), [VkStructureType](VkStructureType.html)
 

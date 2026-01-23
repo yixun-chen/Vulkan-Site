@@ -119,13 +119,13 @@ Extending [VkPhysicalDeviceFeatures2](VkPhysicalDeviceFeatures2.html), [VkDevice
 * 
 Extending [VkStructureType](VkStructureType.html):
 
-`VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD`
+[VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD`
+[VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD](VkStructureType.html)
 
 * 
-`VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ANTI_LAG_FEATURES_AMD`
+[VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ANTI_LAG_FEATURES_AMD](VkStructureType.html)
 
 * 
 Revision 1, 2024-06-06 (Arkadiusz Sarw)

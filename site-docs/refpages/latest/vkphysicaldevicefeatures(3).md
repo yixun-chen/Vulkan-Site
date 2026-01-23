@@ -89,10 +89,10 @@ This structure describes the following features:
 * 
  `fullDrawIndexUint32` specifies the
 full 32-bit range of indices is supported for indexed draw calls when
-using a [VkIndexType](VkIndexType.html) of `VK_INDEX_TYPE_UINT32`.
+using a [VkIndexType](VkIndexType.html) of [VK_INDEX_TYPE_UINT32](VkIndexType.html).
 `maxDrawIndexedIndexValue` is the maximum index value that **may** be
 used (aside from the primitive restart index, which is always 232-1
-when the [VkIndexType](VkIndexType.html) is `VK_INDEX_TYPE_UINT32`).
+when the [VkIndexType](VkIndexType.html) is [VK_INDEX_TYPE_UINT32](VkIndexType.html)).
 If this feature is supported, `maxDrawIndexedIndexValue` **must** be
 232-1; otherwise it **must** be no smaller than 224-1.
 See [`maxDrawIndexedIndexValue`](../../../../spec/latest/chapters/limits.html#limits-maxDrawIndexedIndexValue).
@@ -100,7 +100,7 @@ See [`maxDrawIndexedIndexValue`](../../../../spec/latest/chapters/limits.html#li
 * 
  `imageCubeArray` specifies whether image
 views with a [VkImageViewType](VkImageViewType.html) of
-`VK_IMAGE_VIEW_TYPE_CUBE_ARRAY` **can** be created, and that the
+[VK_IMAGE_VIEW_TYPE_CUBE_ARRAY](VkImageViewType.html) **can** be created, and that the
 corresponding `SampledCubeArray` and `ImageCubeArray` SPIR-V
 capabilities **can** be used in shader code.
 
@@ -117,8 +117,8 @@ provided for each bound color attachment.
 * 
  `geometryShader` specifies whether
 geometry shaders are supported.
-If this feature is not enabled, the `VK_SHADER_STAGE_GEOMETRY_BIT`
-and `VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT` enum values **must** not be
+If this feature is not enabled, the [VK_SHADER_STAGE_GEOMETRY_BIT](VkShaderStageFlagBits.html)
+and [VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT](VkPipelineStageFlagBits.html) enum values **must** not be
 used.
 This also specifies whether shader modules **can** declare the
 `Geometry` capability.
@@ -127,11 +127,11 @@ This also specifies whether shader modules **can** declare the
  `tessellationShader` specifies
 whether tessellation control and evaluation shaders are supported.
 If this feature is not enabled, the
-`VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT`,
-`VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT`,
-`VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT`,
-`VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT`, and
-`VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO` enum
+[VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT](VkShaderStageFlagBits.html),
+[VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT](VkShaderStageFlagBits.html),
+[VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT](VkPipelineStageFlagBits.html),
+[VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT](VkPipelineStageFlagBits.html), and
+[VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO](VkStructureType.html) enum
 values **must** not be used.
 This also specifies whether shader modules **can** declare the
 `Tessellation` capability.
@@ -142,17 +142,17 @@ This also specifies whether shader modules **can** declare the
 are supported.
 If this feature is not enabled, the `sampleShadingEnable` member of
 the [VkPipelineMultisampleStateCreateInfo](VkPipelineMultisampleStateCreateInfo.html) structure **must** be
-`VK_FALSE` and the `minSampleShading` member is ignored.
+[VK_FALSE](VK_FALSE.html) and the `minSampleShading` member is ignored.
 This also specifies whether shader modules **can** declare the
 `SampleRateShading` capability.
 
 * 
  `dualSrcBlend` specifies whether blend
 operations which take two sources are supported.
-If this feature is not enabled, the `VK_BLEND_FACTOR_SRC1_COLOR`,
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR`,
-`VK_BLEND_FACTOR_SRC1_ALPHA`, and
-`VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA` enum values **must** not be used
+If this feature is not enabled, the [VK_BLEND_FACTOR_SRC1_COLOR](VkBlendFactor.html),
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR](VkBlendFactor.html),
+[VK_BLEND_FACTOR_SRC1_ALPHA](VkBlendFactor.html), and
+[VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA](VkBlendFactor.html) enum values **must** not be used
 as source or destination blending factors.
 See [Dual-Source Blending](../../../../spec/latest/chapters/framebuffer.html#framebuffer-dsb).
 
@@ -161,7 +161,7 @@ See [Dual-Source Blending](../../../../spec/latest/chapters/framebuffer.html#fra
 are supported.
 If this feature is not enabled, the `logicOpEnable` member of the
 [VkPipelineColorBlendStateCreateInfo](VkPipelineColorBlendStateCreateInfo.html) structure **must** be
-`VK_FALSE`, and the `logicOp` member is ignored.
+[VK_FALSE](VK_FALSE.html), and the `logicOp` member is ignored.
 
 * 
  `multiDrawIndirect` specifies whether
@@ -188,8 +188,8 @@ structures that are provided to the [vkCmdDrawIndirect](vkCmdDrawIndirect.html) 
 clamping is supported.
 If this feature is not enabled, the `depthClampEnable` member of the
 [VkPipelineRasterizationStateCreateInfo](VkPipelineRasterizationStateCreateInfo.html) structure **must** be
-`VK_FALSE`.
-Otherwise, setting `depthClampEnable` to `VK_TRUE` will enable
+[VK_FALSE](VK_FALSE.html).
+Otherwise, setting `depthClampEnable` to [VK_TRUE](VK_TRUE.html) will enable
 depth clamping.
 
 * 
@@ -197,26 +197,26 @@ depth clamping.
 bias clamping is supported.
 If this feature is not enabled, the `depthBiasClamp` member of the
 [VkPipelineRasterizationStateCreateInfo](VkPipelineRasterizationStateCreateInfo.html) structure **must** be 0.0
-unless the `VK_DYNAMIC_STATE_DEPTH_BIAS` dynamic state is enabled,
+unless the [VK_DYNAMIC_STATE_DEPTH_BIAS](VkDynamicState.html) dynamic state is enabled,
 in which case the `depthBiasClamp` parameter to
 [vkCmdSetDepthBias](vkCmdSetDepthBias.html) **must** be 0.0.
 
 * 
  `fillModeNonSolid` specifies whether
 point and wireframe fill modes are supported.
-If this feature is not enabled, the `VK_POLYGON_MODE_POINT` and
-`VK_POLYGON_MODE_LINE` enum values **must** not be used.
+If this feature is not enabled, the [VK_POLYGON_MODE_POINT](VkPolygonMode.html) and
+[VK_POLYGON_MODE_LINE](VkPolygonMode.html) enum values **must** not be used.
 
 * 
  `depthBounds` specifies whether depth
 bounds tests are supported.
 If this feature is not enabled, the `depthBoundsTestEnable` member
 of the [VkPipelineDepthStencilStateCreateInfo](VkPipelineDepthStencilStateCreateInfo.html) structure **must** be
-`VK_FALSE` unless the
-`VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE` dynamic state is
+[VK_FALSE](VK_FALSE.html) unless the
+[VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE](VkDynamicState.html) dynamic state is
 enabled, in which case the `depthBoundsTestEnable` parameter to
-[vkCmdSetDepthBoundsTestEnable](vkCmdSetDepthBoundsTestEnable.html) **must** be `VK_FALSE`.
-When `depthBoundsTestEnable` is `VK_FALSE`, the
+[vkCmdSetDepthBoundsTestEnable](vkCmdSetDepthBoundsTestEnable.html) **must** be [VK_FALSE](VK_FALSE.html).
+When `depthBoundsTestEnable` is [VK_FALSE](VK_FALSE.html), the
 `minDepthBounds` and `maxDepthBounds` members of the
 [VkPipelineDepthStencilStateCreateInfo](VkPipelineDepthStencilStateCreateInfo.html) structure are ignored.
 
@@ -225,7 +225,7 @@ When `depthBoundsTestEnable` is `VK_FALSE`, the
 width other than 1.0 are supported.
 If this feature is not enabled, the `lineWidth` member of the
 [VkPipelineRasterizationStateCreateInfo](VkPipelineRasterizationStateCreateInfo.html) structure **must** be 1.0
-unless the `VK_DYNAMIC_STATE_LINE_WIDTH` dynamic state is enabled,
+unless the [VK_DYNAMIC_STATE_LINE_WIDTH](VkDynamicState.html) dynamic state is enabled,
 in which case the `lineWidth` parameter to [vkCmdSetLineWidth](vkCmdSetLineWidth.html)
 **must** be 1.0.
 When this feature is supported, the range and granularity of supported
@@ -249,8 +249,8 @@ color output in the [Multisample Coverage](../../../../spec/latest/chapters/frag
 operation.
 If this feature is not enabled, then the `alphaToOneEnable` member
 of the [VkPipelineMultisampleStateCreateInfo](VkPipelineMultisampleStateCreateInfo.html) structure **must** be
-`VK_FALSE`.
-Otherwise setting `alphaToOneEnable` to `VK_TRUE` will enable
+[VK_FALSE](VK_FALSE.html).
+Otherwise setting `alphaToOneEnable` to [VK_TRUE](VK_TRUE.html) will enable
 alpha-to-one behavior.
 
 * 
@@ -282,46 +282,46 @@ and 1, respectively.
  `samplerAnisotropy` specifies whether
 anisotropic filtering is supported.
 If this feature is not enabled, the `anisotropyEnable` member of the
-[VkSamplerCreateInfo](VkSamplerCreateInfo.html) structure **must** be `VK_FALSE`.
+[VkSamplerCreateInfo](VkSamplerCreateInfo.html) structure **must** be [VK_FALSE](VK_FALSE.html).
 
  `textureCompressionETC2`
 specifies whether all of the ETC2 and EAC compressed texture formats are
 supported.
 If this feature is enabled, then the
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT`,
-`VK_FORMAT_FEATURE_BLIT_SRC_BIT` and
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT` features **must**
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](VkFormatFeatureFlagBits.html),
+[VK_FORMAT_FEATURE_BLIT_SRC_BIT](VkFormatFeatureFlagBits.html) and
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](VkFormatFeatureFlagBits.html) features **must**
 be supported in `optimalTilingFeatures` for the following formats:
 
 * 
-`VK_FORMAT_ETC2_R8G8B8_UNORM_BLOCK`
+[VK_FORMAT_ETC2_R8G8B8_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ETC2_R8G8B8_SRGB_BLOCK`
+[VK_FORMAT_ETC2_R8G8B8_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ETC2_R8G8B8A1_UNORM_BLOCK`
+[VK_FORMAT_ETC2_R8G8B8A1_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ETC2_R8G8B8A1_SRGB_BLOCK`
+[VK_FORMAT_ETC2_R8G8B8A1_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK`
+[VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ETC2_R8G8B8A8_SRGB_BLOCK`
+[VK_FORMAT_ETC2_R8G8B8A8_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_EAC_R11_UNORM_BLOCK`
+[VK_FORMAT_EAC_R11_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_EAC_R11_SNORM_BLOCK`
+[VK_FORMAT_EAC_R11_SNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_EAC_R11G11_UNORM_BLOCK`
+[VK_FORMAT_EAC_R11G11_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_EAC_R11G11_SNORM_BLOCK`
+[VK_FORMAT_EAC_R11G11_SNORM_BLOCK](VkFormat.html)
 
 To query for additional properties, or if the feature is not enabled,
 [vkGetPhysicalDeviceFormatProperties](vkGetPhysicalDeviceFormatProperties.html) and
@@ -333,93 +333,93 @@ supported properties of individual formats as normal.
 specifies whether all of the ASTC LDR compressed texture formats are
 supported.
 If this feature is enabled, then the
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT`,
-`VK_FORMAT_FEATURE_BLIT_SRC_BIT` and
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT` features **must**
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](VkFormatFeatureFlagBits.html),
+[VK_FORMAT_FEATURE_BLIT_SRC_BIT](VkFormatFeatureFlagBits.html) and
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](VkFormatFeatureFlagBits.html) features **must**
 be supported in `optimalTilingFeatures` for the following formats:
 
-`VK_FORMAT_ASTC_4x4_UNORM_BLOCK`
+[VK_FORMAT_ASTC_4x4_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_4x4_SRGB_BLOCK`
+[VK_FORMAT_ASTC_4x4_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_5x4_UNORM_BLOCK`
+[VK_FORMAT_ASTC_5x4_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_5x4_SRGB_BLOCK`
+[VK_FORMAT_ASTC_5x4_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_5x5_UNORM_BLOCK`
+[VK_FORMAT_ASTC_5x5_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_5x5_SRGB_BLOCK`
+[VK_FORMAT_ASTC_5x5_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_6x5_UNORM_BLOCK`
+[VK_FORMAT_ASTC_6x5_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_6x5_SRGB_BLOCK`
+[VK_FORMAT_ASTC_6x5_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_6x6_UNORM_BLOCK`
+[VK_FORMAT_ASTC_6x6_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_6x6_SRGB_BLOCK`
+[VK_FORMAT_ASTC_6x6_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_8x5_UNORM_BLOCK`
+[VK_FORMAT_ASTC_8x5_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_8x5_SRGB_BLOCK`
+[VK_FORMAT_ASTC_8x5_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_8x6_UNORM_BLOCK`
+[VK_FORMAT_ASTC_8x6_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_8x6_SRGB_BLOCK`
+[VK_FORMAT_ASTC_8x6_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_8x8_UNORM_BLOCK`
+[VK_FORMAT_ASTC_8x8_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_8x8_SRGB_BLOCK`
+[VK_FORMAT_ASTC_8x8_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_10x5_UNORM_BLOCK`
+[VK_FORMAT_ASTC_10x5_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_10x5_SRGB_BLOCK`
+[VK_FORMAT_ASTC_10x5_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_10x6_UNORM_BLOCK`
+[VK_FORMAT_ASTC_10x6_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_10x6_SRGB_BLOCK`
+[VK_FORMAT_ASTC_10x6_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_10x8_UNORM_BLOCK`
+[VK_FORMAT_ASTC_10x8_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_10x8_SRGB_BLOCK`
+[VK_FORMAT_ASTC_10x8_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_10x10_UNORM_BLOCK`
+[VK_FORMAT_ASTC_10x10_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_10x10_SRGB_BLOCK`
+[VK_FORMAT_ASTC_10x10_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_12x10_UNORM_BLOCK`
+[VK_FORMAT_ASTC_12x10_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_12x10_SRGB_BLOCK`
+[VK_FORMAT_ASTC_12x10_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_12x12_UNORM_BLOCK`
+[VK_FORMAT_ASTC_12x12_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_ASTC_12x12_SRGB_BLOCK`
+[VK_FORMAT_ASTC_12x12_SRGB_BLOCK](VkFormat.html)
 
 To query for additional properties, or if the feature is not enabled,
 [vkGetPhysicalDeviceFormatProperties](vkGetPhysicalDeviceFormatProperties.html) and
@@ -429,58 +429,58 @@ supported properties of individual formats as normal.
  `textureCompressionBC` specifies
 whether all of the BC compressed texture formats are supported.
 If this feature is enabled, then the
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT`,
-`VK_FORMAT_FEATURE_BLIT_SRC_BIT` and
-`VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT` features **must**
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT](VkFormatFeatureFlagBits.html),
+[VK_FORMAT_FEATURE_BLIT_SRC_BIT](VkFormatFeatureFlagBits.html) and
+[VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT](VkFormatFeatureFlagBits.html) features **must**
 be supported in `optimalTilingFeatures` for the following formats:
 
 * 
-`VK_FORMAT_BC1_RGB_UNORM_BLOCK`
+[VK_FORMAT_BC1_RGB_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_BC1_RGB_SRGB_BLOCK`
+[VK_FORMAT_BC1_RGB_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_BC1_RGBA_UNORM_BLOCK`
+[VK_FORMAT_BC1_RGBA_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_BC1_RGBA_SRGB_BLOCK`
+[VK_FORMAT_BC1_RGBA_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_BC2_UNORM_BLOCK`
+[VK_FORMAT_BC2_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_BC2_SRGB_BLOCK`
+[VK_FORMAT_BC2_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_BC3_UNORM_BLOCK`
+[VK_FORMAT_BC3_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_BC3_SRGB_BLOCK`
+[VK_FORMAT_BC3_SRGB_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_BC4_UNORM_BLOCK`
+[VK_FORMAT_BC4_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_BC4_SNORM_BLOCK`
+[VK_FORMAT_BC4_SNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_BC5_UNORM_BLOCK`
+[VK_FORMAT_BC5_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_BC5_SNORM_BLOCK`
+[VK_FORMAT_BC5_SNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_BC6H_UFLOAT_BLOCK`
+[VK_FORMAT_BC6H_UFLOAT_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_BC6H_SFLOAT_BLOCK`
+[VK_FORMAT_BC6H_SFLOAT_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_BC7_UNORM_BLOCK`
+[VK_FORMAT_BC7_UNORM_BLOCK](VkFormat.html)
 
 * 
-`VK_FORMAT_BC7_SRGB_BLOCK`
+[VK_FORMAT_BC7_SRGB_BLOCK](VkFormat.html)
 
 To query for additional properties, or if the feature is not enabled,
 [vkGetPhysicalDeviceFormatProperties](vkGetPhysicalDeviceFormatProperties.html) and
@@ -490,23 +490,23 @@ supported properties of individual formats as normal.
  `occlusionQueryPrecise` specifies
 whether occlusion queries returning actual sample counts are supported.
 Occlusion queries are created in a `VkQueryPool` by specifying the
-`queryType` of `VK_QUERY_TYPE_OCCLUSION` in the
+`queryType` of [VK_QUERY_TYPE_OCCLUSION](VkQueryType.html) in the
 [VkQueryPoolCreateInfo](VkQueryPoolCreateInfo.html) structure which is passed to
 [vkCreateQueryPool](vkCreateQueryPool.html).
 If this feature is enabled, queries of this type **can** enable
-`VK_QUERY_CONTROL_PRECISE_BIT` in the `flags` parameter to
+[VK_QUERY_CONTROL_PRECISE_BIT](VkQueryControlFlagBits.html) in the `flags` parameter to
 [vkCmdBeginQuery](vkCmdBeginQuery.html).
 If this feature is not supported, the implementation supports only
 boolean occlusion queries.
 When any samples are passed, boolean queries will return a non-zero
 result value, otherwise a result value of zero is returned.
-When this feature is enabled and `VK_QUERY_CONTROL_PRECISE_BIT` is
+When this feature is enabled and [VK_QUERY_CONTROL_PRECISE_BIT](VkQueryControlFlagBits.html) is
 set, occlusion queries will report the actual number of samples passed.
 
  `pipelineStatisticsQuery`
 specifies whether the pipeline statistics queries are supported.
 If this feature is not enabled, queries of type
-`VK_QUERY_TYPE_PIPELINE_STATISTICS` **cannot** be created, and none of
+[VK_QUERY_TYPE_PIPELINE_STATISTICS](VkQueryType.html) **cannot** be created, and none of
 the [VkQueryPipelineStatisticFlagBits](VkQueryPipelineStatisticFlagBits.html) bits **can** be set in the
 `pipelineStatistics` member of the [VkQueryPoolCreateInfo](VkQueryPoolCreateInfo.html)
 structure.
@@ -552,77 +552,77 @@ This also specifies whether shader modules **can** declare the
 
 `shaderStorageImageExtendedFormats` specifies whether all the
 “storage image extended formats” below are supported; if this feature
-is supported, then the `VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT` **must**
+is supported, then the [VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT](VkFormatFeatureFlagBits.html) **must**
 be supported in `optimalTilingFeatures` for the following formats:
 
 * 
-`VK_FORMAT_R16G16_SFLOAT`
+[VK_FORMAT_R16G16_SFLOAT](VkFormat.html)
 
 * 
-`VK_FORMAT_B10G11R11_UFLOAT_PACK32`
+[VK_FORMAT_B10G11R11_UFLOAT_PACK32](VkFormat.html)
 
 * 
-`VK_FORMAT_R16_SFLOAT`
+[VK_FORMAT_R16_SFLOAT](VkFormat.html)
 
 * 
-`VK_FORMAT_R16G16B16A16_UNORM`
+[VK_FORMAT_R16G16B16A16_UNORM](VkFormat.html)
 
 * 
-`VK_FORMAT_A2B10G10R10_UNORM_PACK32`
+[VK_FORMAT_A2B10G10R10_UNORM_PACK32](VkFormat.html)
 
 * 
-`VK_FORMAT_R16G16_UNORM`
+[VK_FORMAT_R16G16_UNORM](VkFormat.html)
 
 * 
-`VK_FORMAT_R8G8_UNORM`
+[VK_FORMAT_R8G8_UNORM](VkFormat.html)
 
 * 
-`VK_FORMAT_R16_UNORM`
+[VK_FORMAT_R16_UNORM](VkFormat.html)
 
 * 
-`VK_FORMAT_R8_UNORM`
+[VK_FORMAT_R8_UNORM](VkFormat.html)
 
 * 
-`VK_FORMAT_R16G16B16A16_SNORM`
+[VK_FORMAT_R16G16B16A16_SNORM](VkFormat.html)
 
 * 
-`VK_FORMAT_R16G16_SNORM`
+[VK_FORMAT_R16G16_SNORM](VkFormat.html)
 
 * 
-`VK_FORMAT_R8G8_SNORM`
+[VK_FORMAT_R8G8_SNORM](VkFormat.html)
 
 * 
-`VK_FORMAT_R16_SNORM`
+[VK_FORMAT_R16_SNORM](VkFormat.html)
 
 * 
-`VK_FORMAT_R8_SNORM`
+[VK_FORMAT_R8_SNORM](VkFormat.html)
 
 * 
-`VK_FORMAT_R16G16_SINT`
+[VK_FORMAT_R16G16_SINT](VkFormat.html)
 
 * 
-`VK_FORMAT_R8G8_SINT`
+[VK_FORMAT_R8G8_SINT](VkFormat.html)
 
 * 
-`VK_FORMAT_R16_SINT`
+[VK_FORMAT_R16_SINT](VkFormat.html)
 
 * 
-`VK_FORMAT_R8_SINT`
+[VK_FORMAT_R8_SINT](VkFormat.html)
 
 * 
-`VK_FORMAT_A2B10G10R10_UINT_PACK32`
+[VK_FORMAT_A2B10G10R10_UINT_PACK32](VkFormat.html)
 
 * 
-`VK_FORMAT_R16G16_UINT`
+[VK_FORMAT_R16G16_UINT](VkFormat.html)
 
 * 
-`VK_FORMAT_R8G8_UINT`
+[VK_FORMAT_R8G8_UINT](VkFormat.html)
 
 * 
-`VK_FORMAT_R16_UINT`
+[VK_FORMAT_R16_UINT](VkFormat.html)
 
 * 
-`VK_FORMAT_R8_UINT`
+[VK_FORMAT_R8_UINT](VkFormat.html)
 
 |  | `shaderStorageImageExtendedFormats` feature only adds a guarantee of
 | --- | --- |
@@ -635,16 +635,16 @@ To query for additional properties, or if the feature is not supported,
 [vkGetPhysicalDeviceImageFormatProperties](vkGetPhysicalDeviceImageFormatProperties.html) **can** be used to check for
 supported properties of individual formats, as usual rules allow.
 
-`VK_FORMAT_R32G32_UINT`, `VK_FORMAT_R32G32_SINT`, and
-`VK_FORMAT_R32G32_SFLOAT` from `StorageImageExtendedFormats` SPIR-V
+[VK_FORMAT_R32G32_UINT](VkFormat.html), [VK_FORMAT_R32G32_SINT](VkFormat.html), and
+[VK_FORMAT_R32G32_SFLOAT](VkFormat.html) from `StorageImageExtendedFormats` SPIR-V
 capability, are already covered by core Vulkan
 [mandatory format support](../../../../spec/latest/chapters/formats.html#formats-mandatory-features-32bit). |
 
 `shaderStorageImageMultisample` specifies whether multisampled
 storage images are supported.
 If this feature is not enabled, images that are created with the
-`VK_IMAGE_USAGE_STORAGE_BIT` usage flag set **must** be created with
-`samples` equal to `VK_SAMPLE_COUNT_1_BIT`.
+[VK_IMAGE_USAGE_STORAGE_BIT](VkImageUsageFlagBits.html) usage flag set **must** be created with
+`samples` equal to [VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html).
 This also specifies whether shader modules **can** declare the
 `StorageImageMultisample` and `ImageMSArray` capabilities.
 
@@ -667,8 +667,8 @@ dynamically uniform within
 either the subgroup or
 the invocation group in shader code.
 If this feature is not enabled, resources with a descriptor type of
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER` or
-`VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC` **must** be indexed only by
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC](VkDescriptorType.html) **must** be indexed only by
 constant integral expressions when aggregated into arrays in shader
 code.
 This also specifies whether shader modules **can** declare the
@@ -680,9 +680,9 @@ are dynamically uniform within
 either the subgroup or
 the invocation group in shader code.
 If this feature is not enabled, resources with a descriptor type of
-`VK_DESCRIPTOR_TYPE_SAMPLER`,
-`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, or
-`VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE` **must** be indexed only by constant
+[VK_DESCRIPTOR_TYPE_SAMPLER](VkDescriptorType.html),
+[VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER](VkDescriptorType.html), or
+[VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE](VkDescriptorType.html) **must** be indexed only by constant
 integral expressions when aggregated into arrays in shader code.
 This also specifies whether shader modules **can** declare the
 `SampledImageArrayDynamicIndexing` capability.
@@ -693,8 +693,8 @@ dynamically uniform within
 either the subgroup or
 the invocation group in shader code.
 If this feature is not enabled, resources with a descriptor type of
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER` or
-`VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC` **must** be indexed only by
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER](VkDescriptorType.html) or
+[VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC](VkDescriptorType.html) **must** be indexed only by
 constant integral expressions when aggregated into arrays in shader
 code.
 This also specifies whether shader modules **can** declare the
@@ -706,7 +706,7 @@ dynamically uniform within
 either the subgroup or
 the invocation group in shader code.
 If this feature is not enabled, resources with a descriptor type of
-`VK_DESCRIPTOR_TYPE_STORAGE_IMAGE` **must** be indexed only by constant
+[VK_DESCRIPTOR_TYPE_STORAGE_IMAGE](VkDescriptorType.html) **must** be indexed only by constant
 integral expressions when aggregated into arrays in shader code.
 This also specifies whether shader modules **can** declare the
 `StorageImageArrayDynamicIndexing` capability.
@@ -785,8 +785,8 @@ If this feature is not enabled, resource memory **must** be bound only on a
 per-object basis using the [vkBindBufferMemory](vkBindBufferMemory.html) and
 [vkBindImageMemory](vkBindImageMemory.html) commands.
 In this case, buffers and images **must** not be created with
-`VK_BUFFER_CREATE_SPARSE_BINDING_BIT` and
-`VK_IMAGE_CREATE_SPARSE_BINDING_BIT` set in the `flags` member
+[VK_BUFFER_CREATE_SPARSE_BINDING_BIT](VkBufferCreateFlagBits.html) and
+[VK_IMAGE_CREATE_SPARSE_BINDING_BIT](VkImageCreateFlagBits.html) set in the `flags` member
 of the [VkBufferCreateInfo](VkBufferCreateInfo.html) and [VkImageCreateInfo](VkImageCreateInfo.html) structures,
 respectively.
 Otherwise resource memory **can** be managed as described in
@@ -795,67 +795,67 @@ Otherwise resource memory **can** be managed as described in
  `sparseResidencyBuffer` specifies
 whether the device **can** access partially resident buffers.
 If this feature is not enabled, buffers **must** not be created with
-`VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT` set in the `flags`
+[VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT](VkBufferCreateFlagBits.html) set in the `flags`
 member of the [VkBufferCreateInfo](VkBufferCreateInfo.html) structure.
 
  `sparseResidencyImage2D`
 specifies whether the device **can** access partially resident 2D images
 with 1 sample per pixel.
 If this feature is not enabled, images with an `imageType` of
-`VK_IMAGE_TYPE_2D` and `samples` set to
-`VK_SAMPLE_COUNT_1_BIT` **must** not be created with
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` set in the `flags` member
+[VK_IMAGE_TYPE_2D](VkImageType.html) and `samples` set to
+[VK_SAMPLE_COUNT_1_BIT](VkSampleCountFlagBits.html) **must** not be created with
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](VkImageCreateFlagBits.html) set in the `flags` member
 of the [VkImageCreateInfo](VkImageCreateInfo.html) structure.
 
  `sparseResidencyImage3D`
 specifies whether the device **can** access partially resident 3D images.
 If this feature is not enabled, images with an `imageType` of
-`VK_IMAGE_TYPE_3D` **must** not be created with
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` set in the `flags` member
+[VK_IMAGE_TYPE_3D](VkImageType.html) **must** not be created with
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](VkImageCreateFlagBits.html) set in the `flags` member
 of the [VkImageCreateInfo](VkImageCreateInfo.html) structure.
 
  `sparseResidency2Samples`
 specifies whether the physical device **can** access partially resident 2D
 images with 2 samples per pixel.
 If this feature is not enabled, images with an `imageType` of
-`VK_IMAGE_TYPE_2D` and `samples` set to
-`VK_SAMPLE_COUNT_2_BIT` **must** not be created with
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` set in the `flags` member
+[VK_IMAGE_TYPE_2D](VkImageType.html) and `samples` set to
+[VK_SAMPLE_COUNT_2_BIT](VkSampleCountFlagBits.html) **must** not be created with
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](VkImageCreateFlagBits.html) set in the `flags` member
 of the [VkImageCreateInfo](VkImageCreateInfo.html) structure.
 
  `sparseResidency4Samples`
 specifies whether the physical device **can** access partially resident 2D
 images with 4 samples per pixel.
 If this feature is not enabled, images with an `imageType` of
-`VK_IMAGE_TYPE_2D` and `samples` set to
-`VK_SAMPLE_COUNT_4_BIT` **must** not be created with
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` set in the `flags` member
+[VK_IMAGE_TYPE_2D](VkImageType.html) and `samples` set to
+[VK_SAMPLE_COUNT_4_BIT](VkSampleCountFlagBits.html) **must** not be created with
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](VkImageCreateFlagBits.html) set in the `flags` member
 of the [VkImageCreateInfo](VkImageCreateInfo.html) structure.
 
  `sparseResidency8Samples`
 specifies whether the physical device **can** access partially resident 2D
 images with 8 samples per pixel.
 If this feature is not enabled, images with an `imageType` of
-`VK_IMAGE_TYPE_2D` and `samples` set to
-`VK_SAMPLE_COUNT_8_BIT` **must** not be created with
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` set in the `flags` member
+[VK_IMAGE_TYPE_2D](VkImageType.html) and `samples` set to
+[VK_SAMPLE_COUNT_8_BIT](VkSampleCountFlagBits.html) **must** not be created with
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](VkImageCreateFlagBits.html) set in the `flags` member
 of the [VkImageCreateInfo](VkImageCreateInfo.html) structure.
 
  `sparseResidency16Samples`
 specifies whether the physical device **can** access partially resident 2D
 images with 16 samples per pixel.
 If this feature is not enabled, images with an `imageType` of
-`VK_IMAGE_TYPE_2D` and `samples` set to
-`VK_SAMPLE_COUNT_16_BIT` **must** not be created with
-`VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` set in the `flags` member
+[VK_IMAGE_TYPE_2D](VkImageType.html) and `samples` set to
+[VK_SAMPLE_COUNT_16_BIT](VkSampleCountFlagBits.html) **must** not be created with
+[VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT](VkImageCreateFlagBits.html) set in the `flags` member
 of the [VkImageCreateInfo](VkImageCreateInfo.html) structure.
 
  `sparseResidencyAliased`
 specifies whether the physical device **can** correctly access data aliased
 into multiple locations.
 If this feature is not enabled, the
-`VK_BUFFER_CREATE_SPARSE_ALIASED_BIT` and
-`VK_IMAGE_CREATE_SPARSE_ALIASED_BIT` enum values **must** not be used
+[VK_BUFFER_CREATE_SPARSE_ALIASED_BIT](VkBufferCreateFlagBits.html) and
+[VK_IMAGE_CREATE_SPARSE_ALIASED_BIT](VkImageCreateFlagBits.html) enum values **must** not be used
 in `flags` members of the [VkBufferCreateInfo](VkBufferCreateInfo.html) and
 [VkImageCreateInfo](VkImageCreateInfo.html) structures, respectively.
 
@@ -864,9 +864,9 @@ specifies whether all pipelines that will be bound to a command buffer
 during a [subpass which uses no attachments](../../../../spec/latest/chapters/renderpass.html#renderpass-noattachments)
 **must** have the same value for
 [VkPipelineMultisampleStateCreateInfo](VkPipelineMultisampleStateCreateInfo.html)::`rasterizationSamples`.
-If set to `VK_TRUE`, the implementation supports variable
+If set to [VK_TRUE](VK_TRUE.html), the implementation supports variable
 multisample rates in a subpass which uses no attachments.
-If set to `VK_FALSE`, then all pipelines bound in such a subpass
+If set to [VK_FALSE](VK_FALSE.html), then all pipelines bound in such a subpass
 **must** have the same multisample rate.
 This has no effect in situations where a subpass uses any attachments.
 

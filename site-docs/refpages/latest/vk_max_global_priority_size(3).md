@@ -17,7 +17,7 @@
 
 VK_MAX_GLOBAL_PRIORITY_SIZE - Length of an array of global queue priorities
 
-`VK_MAX_GLOBAL_PRIORITY_SIZE` is the length of an array of
+[VK_MAX_GLOBAL_PRIORITY_SIZE](#) is the length of an array of
 [VkQueueGlobalPriority](VkQueueGlobalPriority.html) enumerants representing supported queue
 priorities, as returned in
 [VkQueueFamilyGlobalPriorityProperties](VkQueueFamilyGlobalPriorityProperties.html)::`priorities`.

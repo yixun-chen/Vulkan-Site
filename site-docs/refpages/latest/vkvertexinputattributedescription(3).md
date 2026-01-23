@@ -68,14 +68,14 @@ Valid Usage
 [](#VUID-VkVertexInputAttributeDescription-format-00623) VUID-VkVertexInputAttributeDescription-format-00623
 
 The [format features](../../../../spec/latest/chapters/resources.html#resources-buffer-view-format-features) of
-`format` **must** contain `VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT`
+`format` **must** contain [VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT](VkFormatFeatureFlagBits.html)
 
 * 
 [](#VUID-VkVertexInputAttributeDescription-vertexAttributeAccessBeyondStride-04457) VUID-VkVertexInputAttributeDescription-vertexAttributeAccessBeyondStride-04457
 
 If the `[VK_KHR_portability_subset](VK_KHR_portability_subset.html)` extension is enabled, and
 [VkPhysicalDevicePortabilitySubsetFeaturesKHR](VkPhysicalDevicePortabilitySubsetFeaturesKHR.html)::`vertexAttributeAccessBeyondStride`
-is `VK_FALSE`, the sum of `offset` plus the size of the vertex
+is [VK_FALSE](VK_FALSE.html), the sum of `offset` plus the size of the vertex
 attribute data described by `format` **must** not be greater than
 `stride` in the [VkVertexInputBindingDescription](VkVertexInputBindingDescription.html) referenced in
 `binding`

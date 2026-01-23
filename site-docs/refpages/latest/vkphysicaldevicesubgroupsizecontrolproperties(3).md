@@ -47,8 +47,8 @@ structure.
  `minSubgroupSize` is the
 minimum subgroup size supported by this device.
 `minSubgroupSize` is at least one if any of the physical device’s
-queues support `VK_QUEUE_GRAPHICS_BIT` or
-`VK_QUEUE_COMPUTE_BIT`.
+queues support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) or
+[VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html).
 `minSubgroupSize` is a power-of-two.
 `minSubgroupSize` is less than or equal to `maxSubgroupSize`.
 `minSubgroupSize` is less than or equal to [    `subgroupSize`](../../../../spec/latest/chapters/devsandqueues.html#limits-subgroupSize).
@@ -57,8 +57,8 @@ queues support `VK_QUEUE_GRAPHICS_BIT` or
  `maxSubgroupSize` is the
 maximum subgroup size supported by this device.
 `maxSubgroupSize` is at least one if any of the physical device’s
-queues support `VK_QUEUE_GRAPHICS_BIT` or
-`VK_QUEUE_COMPUTE_BIT`.
+queues support [VK_QUEUE_GRAPHICS_BIT](VkQueueFlagBits.html) or
+[VK_QUEUE_COMPUTE_BIT](VkQueueFlagBits.html).
 `maxSubgroupSize` is a power-of-two.
 `maxSubgroupSize` is greater than or equal to `minSubgroupSize`.
 `maxSubgroupSize` is greater than or equal to [    `subgroupSize`](../../../../spec/latest/chapters/devsandqueues.html#limits-subgroupSize).
@@ -79,7 +79,7 @@ If the `VkPhysicalDeviceSubgroupSizeControlProperties` structure is included in 
 corresponding implementation-dependent property.
 
 If [VkPhysicalDeviceSubgroupProperties](VkPhysicalDeviceSubgroupProperties.html)::`supportedOperations`
-includes [`VK_SUBGROUP_FEATURE_QUAD_BIT`](../../../../spec/latest/chapters/limits.html#features-subgroup-quad),
+includes [](../../../../spec/latest/chapters/limits.html#features-subgroup-quad)[VK_SUBGROUP_FEATURE_QUAD_BIT](VkSubgroupFeatureFlagBits.html),
 `minSubgroupSize` **must** be greater than or equal to 4.
 
 Valid Usage (Implicit)
@@ -87,7 +87,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkPhysicalDeviceSubgroupSizeControlProperties-sType-sType) VUID-VkPhysicalDeviceSubgroupSizeControlProperties-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES`
+ `sType` **must** be [VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES](VkStructureType.html)
 
 [VK_EXT_subgroup_size_control](VK_EXT_subgroup_size_control.html), [VK_VERSION_1_3](VK_VERSION_1_3.html), [VkShaderStageFlags](VkShaderStageFlags.html), [VkStructureType](VkStructureType.html)
 

@@ -59,7 +59,7 @@ This is done by including a [VkDataGraphPipelineIdentifierCreateInfoARM](VkDataG
 structure in the `pNext` chain.
 If the required data is not found in the pipeline cache, creating the data
 graph pipeline is not possible and the implementation **must** fail as
-specified by `VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT`.
+specified by [VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](VkPipelineCreateFlagBits.html).
 
 Applications **can** create a data graph pipeline without providing a pipeline
 cache or shader module by invoking one of the models provided by the
@@ -71,13 +71,13 @@ chain.
 When an identifier
 or built-in model
 is used to create a data graph pipeline, implementations **may** fail pipeline
-creation with `VK_PIPELINE_COMPILE_REQUIRED` for any reason.
+creation with [VK_PIPELINE_COMPILE_REQUIRED](VkResult.html) for any reason.
 
 The data graph engines for this pipeline **can** be selected by including a
 [VkDataGraphProcessingEngineCreateInfoARM](VkDataGraphProcessingEngineCreateInfoARM.html) to the `pNext` chain of
 this structure.
 Otherwise,
-`VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_DEFAULT_ARM` will
+[VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_DEFAULT_ARM](VkPhysicalDeviceDataGraphProcessingEngineTypeARM.html) will
 be used as the sole data graph engine.
 
 The data graph operations that this pipeline uses **must** be supported for the
@@ -103,12 +103,12 @@ One and only one of the following structures **must** be included in the
 [](#VUID-VkDataGraphPipelineCreateInfoARM-flags-09764) VUID-VkDataGraphPipelineCreateInfoARM-flags-09764
 
 `flags` **may** only contain
-`VK_PIPELINE_CREATE_2_NO_PROTECTED_ACCESS_BIT_EXT`,
-`VK_PIPELINE_CREATE_2_PROTECTED_ACCESS_ONLY_BIT_EXT`,
-`VK_PIPELINE_CREATE_2_DISABLE_OPTIMIZATION_BIT`,
-`VK_PIPELINE_CREATE_2_DESCRIPTOR_BUFFER_BIT_EXT`,
-`VK_PIPELINE_CREATE_2_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_KHR` or
-`VK_PIPELINE_CREATE_2_EARLY_RETURN_ON_FAILURE_BIT_KHR`
+[VK_PIPELINE_CREATE_2_NO_PROTECTED_ACCESS_BIT_EXT](VkPipelineCreateFlagBits2.html),
+[VK_PIPELINE_CREATE_2_PROTECTED_ACCESS_ONLY_BIT_EXT](VkPipelineCreateFlagBits2.html),
+[VK_PIPELINE_CREATE_2_DISABLE_OPTIMIZATION_BIT](VkPipelineCreateFlagBits2.html),
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_BUFFER_BIT_EXT](VkPipelineCreateFlagBits2.html),
+[VK_PIPELINE_CREATE_2_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_KHR](VkPipelineCreateFlagBits2.html) or
+[VK_PIPELINE_CREATE_2_EARLY_RETURN_ON_FAILURE_BIT_KHR](VkPipelineCreateFlagBits2.html)
 
 [](#VUID-VkDataGraphPipelineCreateInfoARM-layout-09767) VUID-VkDataGraphPipelineCreateInfoARM-layout-09767
 
@@ -121,14 +121,14 @@ If the
 [`dataGraphUpdateAfterBind`](../../../../spec/latest/chapters/features.html#features-dataGraphUpdateAfterBind)
 feature is not enabled, `layout` must not use any
 [VkDescriptorSetLayout](VkDescriptorSetLayout.html) object created with the
-`VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT` bit set
+[VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT](VkDescriptorSetLayoutCreateFlagBits.html) bit set
 
 [](#VUID-VkDataGraphPipelineCreateInfoARM-dataGraphDescriptorBuffer-09885) VUID-VkDataGraphPipelineCreateInfoARM-dataGraphDescriptorBuffer-09885
 
 If the
 [`dataGraphDescriptorBuffer`](../../../../spec/latest/chapters/features.html#features-dataGraphDescriptorBuffer)
 feature is not enabled, `flags` **must** not contain
-`VK_PIPELINE_CREATE_2_DESCRIPTOR_BUFFER_BIT_EXT`
+[VK_PIPELINE_CREATE_2_DESCRIPTOR_BUFFER_BIT_EXT](VkPipelineCreateFlagBits2.html)
 
 [](#VUID-VkDataGraphPipelineCreateInfoARM-layout-09769) VUID-VkDataGraphPipelineCreateInfoARM-layout-09769
 
@@ -143,7 +143,7 @@ descriptor binding used to create `layout` **must** have a
     If a [VkDataGraphPipelineIdentifierCreateInfoARM](VkDataGraphPipelineIdentifierCreateInfoARM.html)
 or [VkDataGraphPipelineBuiltinModelCreateInfoQCOM](VkDataGraphPipelineBuiltinModelCreateInfoQCOM.html)
     structure is included in the `pNext` chain, then `flags` **must**
-    contain `VK_PIPELINE_CREATE_2_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT`
+    contain [VK_PIPELINE_CREATE_2_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT](VkPipelineCreateFlagBits2.html)
 
 [](#VUID-VkDataGraphPipelineCreateInfoARM-None-11841) VUID-VkDataGraphPipelineCreateInfoARM-None-11841
 
@@ -173,29 +173,29 @@ length of the array
 
 If the [    `pipelineCreationCacheControl`](../../../../spec/latest/chapters/features.html#features-pipelineCreationCacheControl) feature is not enabled, `flags`
 **must** not include
-`VK_PIPELINE_CREATE_2_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_KHR` or
-`VK_PIPELINE_CREATE_2_EARLY_RETURN_ON_FAILURE_BIT_KHR`
+[VK_PIPELINE_CREATE_2_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_KHR](VkPipelineCreateFlagBits2.html) or
+[VK_PIPELINE_CREATE_2_EARLY_RETURN_ON_FAILURE_BIT_KHR](VkPipelineCreateFlagBits2.html)
 
 [](#VUID-VkDataGraphPipelineCreateInfoARM-pSetLayouts-09770) VUID-VkDataGraphPipelineCreateInfoARM-pSetLayouts-09770
 
 The descriptor set layouts in
 [VkPipelineLayoutCreateInfo](VkPipelineLayoutCreateInfo.html)::`pSetLayouts` used to create
 `layout` **must** not include any [VkDescriptorSetLayoutBinding](VkDescriptorSetLayoutBinding.html)
-whose descriptor type is `VK_DESCRIPTOR_TYPE_MUTABLE_EXT`
+whose descriptor type is [VK_DESCRIPTOR_TYPE_MUTABLE_EXT](VkDescriptorType.html)
 
 [](#VUID-VkDataGraphPipelineCreateInfoARM-pipelineProtectedAccess-09772) VUID-VkDataGraphPipelineCreateInfoARM-pipelineProtectedAccess-09772
 
 If the
 [`pipelineProtectedAccess`](../../../../spec/latest/chapters/features.html#features-pipelineProtectedAccess)
 feature is not enabled, `flags` **must** not include
-`VK_PIPELINE_CREATE_2_NO_PROTECTED_ACCESS_BIT_EXT` or
-`VK_PIPELINE_CREATE_2_PROTECTED_ACCESS_ONLY_BIT_EXT`
+[VK_PIPELINE_CREATE_2_NO_PROTECTED_ACCESS_BIT_EXT](VkPipelineCreateFlagBits2.html) or
+[VK_PIPELINE_CREATE_2_PROTECTED_ACCESS_ONLY_BIT_EXT](VkPipelineCreateFlagBits2.html)
 
 [](#VUID-VkDataGraphPipelineCreateInfoARM-flags-09773) VUID-VkDataGraphPipelineCreateInfoARM-flags-09773
 
 `flags` **must** not include both
-`VK_PIPELINE_CREATE_2_NO_PROTECTED_ACCESS_BIT_EXT` and
-`VK_PIPELINE_CREATE_2_PROTECTED_ACCESS_ONLY_BIT_EXT`
+[VK_PIPELINE_CREATE_2_NO_PROTECTED_ACCESS_BIT_EXT](VkPipelineCreateFlagBits2.html) and
+[VK_PIPELINE_CREATE_2_PROTECTED_ACCESS_ONLY_BIT_EXT](VkPipelineCreateFlagBits2.html)
 
 [](#VUID-VkDataGraphPipelineCreateInfoARM-pNext-09804) VUID-VkDataGraphPipelineCreateInfoARM-pNext-09804
 
@@ -216,7 +216,7 @@ included in the `pNext` chain, each member of
 
 If a [VkDataGraphProcessingEngineCreateInfoARM](VkDataGraphProcessingEngineCreateInfoARM.html) structure is not
 included in the `pNext` chain,
-`VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_DEFAULT_ARM`
+[VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_DEFAULT_ARM](VkPhysicalDeviceDataGraphProcessingEngineTypeARM.html)
 **must** be set in an
 [VkQueueFamilyDataGraphPropertiesARM](VkQueueFamilyDataGraphPropertiesARM.html)::`engine` retrieved from
 [vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM](vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM.html) with the
@@ -227,7 +227,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkDataGraphPipelineCreateInfoARM-sType-sType) VUID-VkDataGraphPipelineCreateInfoARM-sType-sType
 
- `sType` **must** be `VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CREATE_INFO_ARM`
+ `sType` **must** be [VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CREATE_INFO_ARM](VkStructureType.html)
 
 * 
 [](#VUID-VkDataGraphPipelineCreateInfoARM-pNext-pNext) VUID-VkDataGraphPipelineCreateInfoARM-pNext-pNext

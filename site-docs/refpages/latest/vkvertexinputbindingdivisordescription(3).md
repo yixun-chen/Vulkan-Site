@@ -87,7 +87,7 @@ inclusive
 [](#VUID-VkVertexInputBindingDivisorDescription-inputRate-01871) VUID-VkVertexInputBindingDivisorDescription-inputRate-01871
 
 [VkVertexInputBindingDescription](VkVertexInputBindingDescription.html)::`inputRate` **must** be of type
-`VK_VERTEX_INPUT_RATE_INSTANCE` for this `binding`
+[VK_VERTEX_INPUT_RATE_INSTANCE](VkVertexInputRate.html) for this `binding`
 
 [VK_EXT_vertex_attribute_divisor](VK_EXT_vertex_attribute_divisor.html), [VK_KHR_vertex_attribute_divisor](VK_KHR_vertex_attribute_divisor.html), [VK_VERSION_1_4](VK_VERSION_1_4.html), [VkPipelineVertexInputDivisorStateCreateInfo](VkPipelineVertexInputDivisorStateCreateInfo.html)
 

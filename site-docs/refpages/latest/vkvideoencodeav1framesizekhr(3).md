@@ -30,17 +30,17 @@ typedef struct VkVideoEncodeAV1FrameSizeKHR {
 
 * 
 `intraFrameSize` is the size in bytes to be used for frames encoded
-with `VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_INTRA_KHR`.
+with [VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_INTRA_KHR](VkVideoEncodeAV1RateControlGroupKHR.html).
 
 * 
 `predictiveFrameSize` is the size in bytes to be used for frames
 encoded with
-`VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_PREDICTIVE_KHR`.
+[VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_PREDICTIVE_KHR](VkVideoEncodeAV1RateControlGroupKHR.html).
 
 * 
 `bipredictiveFrameSize` is the size in bytes to be used for frames
 encoded with
-`VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_BIPREDICTIVE_KHR`.
+[VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_BIPREDICTIVE_KHR](VkVideoEncodeAV1RateControlGroupKHR.html).
 
 [VK_KHR_video_encode_av1](VK_KHR_video_encode_av1.html), [VkVideoEncodeAV1RateControlLayerInfoKHR](VkVideoEncodeAV1RateControlLayerInfoKHR.html)
 
